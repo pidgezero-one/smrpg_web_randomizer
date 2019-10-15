@@ -1,47 +1,81 @@
 {# Recursive template to show flag UI elements on randomize page. #}
 
-<div class="flag-container {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}">
-    {% if is_radio %}
-        <input type="radio" class="flag-form-input flag-form-input-radio flag-{{ flag.value }}"
-               id="flag-{{ flag.value }}{{ parent_value }}" {% if checked %}checked{% endif %}
-               name="flag{{ parent_value }}-choice" value="{{ flag.value }}">
-    {% else %}
-        <input type="checkbox" class="flag-form-input flag-form-input-checkbox flag-{{ flag.value }}"
-               id="flag-{{ flag.value }}{{ parent_value }}"
-               name="flag-{{ flag.value }}{{ parent_value }}">
-    {% endif %}
-    <div class="flag-{% if is_radio %}radio{% else %}checkbox{% endif %}-container">
-        <label for="flag-{{ flag.value }}{{ parent_value }}"
-            {% if is_radio %}
-                class="flag-radio {% if choice.hard %}flag-radio-hard{% endif %}"
-            {% else %}
-                class="flag-checkbox {% if flag.hard %}flag-checkbox-hard{% endif %}"
-            {% endif %}
-        >
-            {# If the value begins with '@', this is a flag where some choices must be selected. #}
-            {% if flag.value|slice:":1" == "@" %}
-                ...
-            {% else %}
-                {{ flag.value }}
-            {% endif %}
-        </label>
-    </div>
-    <div class="flag-subsection-container">
-        <label for="flag-{{ flag.value }}{{ parent_value }}" class="flag-label">
-            {{ flag.name }}
-        </label>
-        <div class="flag-subsection">
-            <div class="flag-description">{{ flag.description_as_markdown }}</div>
 
-            {# Show flag choices, if any. #}
-            {% for choice in flag.choices %}
-                {% include 'randomizer/_show_flag_ui.html' with flag=choice parent_value='-'|add:flag.value|add:parent_value is_radio=True checked=forloop.first %}
-            {% endfor %}
+<div class="hidden-flag flag-container display-row {{ flag.htmlname }} {% for mode in flag.modes %} flag-{{ mode }}{% endfor %} {% if subsection_of %} flag-subsection flag-subsection-{{ subsection_of }} {% endif %}">
+	
+	<div class="display-cell label-cell">
+		<div data-toggle="tooltip"
+			 data-html="true"
+			 data-placement="top"
+			 title="{{ flag.description }} {% for choice in flag.choices %}{% if choice.desc_length > 1 %}<br><br><b>{{ choice.name }}</b> - {{ choice.description }}{% endif %}{% endfor %}">{{flag.name}}
+		</div>
+		<div class="tooltip bs-tooltip-top" role="tooltip">
+		  <div class="arrow"></div>
+		  <div class="tooltip-inner">
+			{{ flag.description }} 
+			{% for choice in flag.choices %}
+				{% if choice.desc_length > 1 %}
+					<br><br>{{ choice.name }} - {{ choice.description }}
+				{% endif %}
+			{% endfor %}
+		  </div>
+		</div>
 
-            {# Show other flag options, if any. #}
-            {% for option in flag.options %}
-                {% include 'randomizer/_show_flag_ui.html' with flag=option parent_value='-'|add:flag.value|add:parent_value is_radio=False checked=False %}
-            {% endfor %}
-        </div>
-    </div>
+	</div>
+	<div class="display-cell input-cell">
+		{% if flag.type == 1 %}
+			<input type="checkbox" class="flag-form-input flag-form-input-checkbox flag-{{ flag.htmlname }} {% if flag.has_children %} has-children {% endif %}"
+				   id="flag-{{ flag.htmlname }}"
+				   name="flag-{{ flag.htmlname }}">
+			<div class="flag-{% if is_radio %}radio{% else %}checkbox{% endif %}-container">
+				<label class="flag-checkbox" for="flag-{{ flag.htmlname }}">
+					✔
+				</label>
+			</div>
+		{% elif flag.type == 2 %}
+			<select class="flag-form-input flag-form-select flag-{{ flag.htmlname }}"
+				   id="flag-{{ flag.htmlname }}"
+				   name="flag-{{ flag.htmlname }}">
+					{% for choice in flag.choices %}
+						<option value={{choice.value}} {% if choice.value == flag.default %} selected="selected"{% endif %}>{{ choice.name }}</option>
+					{% endfor %}
+			</select>
+		{% elif flag.type == 3 %}
+			<!--didnt end up using this-->
+		{% elif flag.type == 4 %}
+			<input type="number" class="flag-form-input flag-form-input-text flag-{{ flag.htmlname }}"
+				   id="flag-{{ flag.htmlname }}"
+				   name="flag-{{ flag.htmlname }}"
+				   step=1
+				   min={{flag.min}}
+				   max={{flag.max}}
+				   value = {{flag.default}}>
+		{% elif flag.type == 5 %}
+			<div class="display-table"><div class="display-row">
+			<input type="range" class="flag-form-input flag-form-input-range flag-{{ flag.htmlname }}"
+				   id="flag-{{ flag.htmlname }}"
+				   name="flag-{{ flag.htmlname }}"
+				   step=1
+				   min={{flag.min}}
+				   max={{flag.max}}
+				   value = {{flag.default}}>
+			<div class="display-cell">
+			</div>
+			<div class="display-cell slider-parser">
+				<div id="flag-{{ flag.htmlname }}-parser">{{ flag.default }}</div>
+			</div>
+			</div></div>
+		{% endif %}
+	</div>
 </div>
+{% if flag.type == 1 %}
+	{# Show flag choices, if any. #}
+	{% for choice in flag.choices %}
+		{% include 'randomizer/_show_flag_ui.html' with flag=choice subsection_of=flag.htmlname parent_value='-'|add:flag.value|add:parent_value is_radio=True checked=forloop.first %}
+	{% endfor %}
+
+	{# Show other flag options, if any. #}
+	{% for option in flag.options %}
+		{% include 'randomizer/_show_flag_ui.html' with flag=option subsection_of=flag.htmlname parent_value='-'|add:flag.value|add:parent_value is_radio=False checked=False %}
+	{% endfor %}
+{% endif %}

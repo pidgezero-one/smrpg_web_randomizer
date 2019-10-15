@@ -89,5 +89,11 @@
 <div class="container">
     {% block content %}{% endblock %}
 </div>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+  $('.tooltip').hide();
+});
+</script>
 </body>
 </html>

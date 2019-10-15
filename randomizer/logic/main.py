@@ -29,6 +29,13 @@ from itertools import permutations
 # Current version number
 VERSION = '8.2.0'
 
+TYPE_CHECKBOX = 1
+TYPE_DROPDOWN = 2
+TYPE_EXCLUSION = 3
+TYPE_NUMBER = 4
+TYPE_SLIDER = 5
+asciitable = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','!','@']
+
 def calcpointer(dec, origBytes=[]):
     if (dec > 0xFFFF):
         dec = dec % 0x10000
@@ -43,6 +50,10 @@ def calcpointer(dec, origBytes=[]):
     hexbytes.reverse()
     return hexbytes
 
+
+binstring_index = 0
+
+
 class Settings:
     def __init__(self, mode, debug_mode=False, flag_string=''):
         """Provide either form data fields or flag string to set flags on creation.
@@ -56,22 +67,66 @@ class Settings:
         self._debug_mode = debug_mode
         self._enabled_flags = set()
 
+        global binstring_index
+        binstring_index = 0
+
+        print(flag_string)
+
         # If flag string provided, make fake form data based on it to parse.
         flag_data = {}
-        for flag in flag_string.strip().split():
-            if flag.startswith('-'):
-                # Solo flag that begins with a dash.
-                flag_data[flag] = True
-            elif flag:
-                # Flag that may have a subsection of choices and/or options.
-                if flag[0] not in flag_data:
-                    flag_data[flag[0]] = []
-                flag_data[flag[0]] += [c for c in flag[1:]]
 
-        # Get flags from form data.
-        for category in flags.CATEGORIES:
-            for flag in category.flags:
-                self._check_flag_from_form_data(flag, flag_data)
+        binstring = ''
+        for character in flag_string:
+            num = asciitable.index(character)
+            binstring += format(num, '06b')
+
+        def setflag(f):
+            global binstring_index
+            if hasattr(f, 'type'):
+                if f.type == TYPE_CHECKBOX:
+                    flag_data[flag] = True if binstring[binstring_index] == '1' else False
+                    binstring_index += 1
+                else:
+                    if f.type == TYPE_DROPDOWN:
+                        tmax = max(choice.value for choice in f.choices)
+                        tmin = min(choice.value for choice in f.choices)
+                        #todo: add step value to calculations, but no flags use this yet
+                    else:
+                        tmax = f.max
+                        tmin = f.min
+                    length = len('{0:b}'.format(tmax - tmin))
+                    bitsToSet = binstring[binstring_index : binstring_index + length]
+                    choice = tmin + int(bitsToSet, 2)
+                    if f.type == TYPE_DROPDOWN:
+                        for c in f.choices:
+                            if c.value == choice:
+                                flag_data[c] = True
+                            else:
+                                flag_data[c] = False
+                            print(c.name, flag_data[c])
+                    else:
+                        flag_data[flag] = choice
+                    binstring_index += length
+                if not f.type == TYPE_DROPDOWN:
+                    print(f.type, f.name, flag_data[flag])
+                if f.type == TYPE_CHECKBOX and hasattr(f, 'options'):
+                    for o in f.options:
+                        setflag(o)
+
+        if flag_string == "":
+            # Get flags from form data.
+            for tab in flags.TABS:
+                for category in tab.categories:
+                    for flag in category.flags:
+                        self._check_flag_from_form_data(flag, flag_data)
+        else:
+            # Get flags from form data.
+            for tab in flags.TABS:
+                for category in tab.categories:
+                    for flag in category.flags:
+                        setflag(flag)
+
+        print(flag_data)
 
         # Sanity check.
         if debug_mode:
@@ -138,6 +193,8 @@ class Settings:
             str: Flag string piece for this flag.
 
         """
+
+        #todo need to redo this to match new flag logic
         if self.is_flag_enabled(flag):
             # Solo flag that begins with a dash.
             if flag.value.startswith('-'):
@@ -173,9 +230,10 @@ class Settings:
         flag_strings = collections.OrderedDict()
         flag_strings['@'] = []
 
-        for category in flags.CATEGORIES:
-            for flag in category.flags:
-                self._build_flag_string_part(flag, flag_strings)
+        for tab in flags.TABS:
+            for category in tab.categories:
+                for flag in category.flags:
+                    self._build_flag_string_part(flag, flag_strings)
 
         flag_string = ''
         for key, vals in flag_strings.items():

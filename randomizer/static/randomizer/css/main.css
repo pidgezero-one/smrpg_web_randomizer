@@ -185,9 +185,6 @@ label {
 
 /* Flag styles */
 
-.flag-form-input {
-    display: none;
-}
 
 .flag-container {
     display: grid;
@@ -195,16 +192,22 @@ label {
     grid-gap: 1rem;
 }
 
+.flag-form-input-checkbox {
+	display: none;
+}
+
 .flag-checkbox, .flag-radio {
     display: inline-block;
     min-width: 2.0rem;
     border-width: 0.05rem;
     border-style: solid;
-    border-color: grey;
+    border-width: 0.1rem;
+    border-color: #17a2b8;
     font-weight: bold;
     text-align: center;
     cursor: pointer;
-    color: grey;
+    color: transparent;
+    background-color: #efefef;
 }
 
 .flag-checkbox {
@@ -224,7 +227,6 @@ label {
 .flag-form-input:checked + .flag-checkbox-container > .flag-checkbox, .flag-form-input:checked + .flag-radio-container > .flag-radio {
     color: white;
     background-color: #17a2b8;
-    border-color: #17a2b8;
 }
 
 .flag-form-input:checked + .flag-checkbox-container > .flag-checkbox-hard, .flag-form-input:checked + .flag-radio-container > .flag-radio-hard {
@@ -288,4 +290,54 @@ label {
 }
 .inline-flag-description .display-cell:first-child, .disabled-inline-flag-description .display-cell:first-child {
     min-width: 1.5rem;
+}
+
+
+#flag-tabs .tab:not(.active) {
+	display: none;
+}
+#flag-tabs .nav-link.active {
+	font-weight: bold;
+}
+.display-table {
+	width: 100%;
+	display: table;
+}
+.display-row {
+	display: table-row;
+}
+.display-cell {
+	display: table-cell;
+	padding: 5px;
+	vertical-align: middle;
+}
+.input-cell {
+	width: 50%;
+	text-align: center;
+}
+.input-cell select, .input-cell input {
+	width: 100%;
+	vertical-align: middle;
+}
+.slider-parser {
+	text-align: center;
+	width: 30px;
+}
+.input-cell select, .input-cell input[type="number"] {
+	display: block;
+	padding: 3px;
+	border-radius: 3px;
+	border-width: 1px;
+	border-color: #17a2b8;
+	text-align: right;
+}
+label {
+	margin: 0;
+}
+.tooltip-inner {
+    white-space:pre-wrap;
+	max-width: 400px;
+}
+.hidden-flag {
+	display: none;
 }

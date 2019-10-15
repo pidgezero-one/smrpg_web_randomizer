@@ -10,7 +10,6 @@ import shutil
 
 import Wii
 import nlzss
-
 from django.conf import settings
 from django.db import transaction
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse, HttpResponseNotFound, QueryDict
@@ -22,12 +21,18 @@ from django.views.generic import TemplateView, FormView
 
 from .models import Seed, Patch
 from .forms import GenerateForm
-from .logic.flags import CATEGORIES, PRESETS, FlagError
+from .logic.flags import TABS, PRESETS, FlagError
 from .logic.main import GameWorld, Settings, VERSION
 from .logic.patch import PatchJSONEncoder
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
+
+TYPE_CHECKBOX = 1
+TYPE_DROPDOWN = 2
+TYPE_EXCLUSION = 3
+TYPE_NUMBER = 4
+TYPE_SLIDER = 5
 
 
 def _build_flag_json_data(flag, parent_modes=None):
@@ -41,30 +46,50 @@ def _build_flag_json_data(flag, parent_modes=None):
         dict: Flag data.
 
     """
-    modes = flag.modes.copy()
-    if parent_modes is not None:
-        modes = list(set(modes) & set(parent_modes))
+    if hasattr(flag, "modes"):
+        modes = flag.modes.copy()
+        if parent_modes is not None:
+                modes = list(set(modes) & set(parent_modes))
+    else:
+        modes = list(set(parent_modes))
 
     d = {
-        'value': flag.value,
+        'value': flag.value if hasattr(flag, 'value') else 0,
+        'name': flag.name,
         'modes': modes,
-        'choices': [],
-        'options': [],
+        'type': flag.type if hasattr(flag, 'type') else None,
+        'identifier': ''.join(ch for ch in flag.__name__ if ch.isalnum()),
+        'default': flag.default,
+        'current_value': flag.default
     }
-    for choice in flag.choices:
-        d['choices'].append(_build_flag_json_data(choice, parent_modes=modes))
-    for option in flag.options:
-        d['options'].append(_build_flag_json_data(option, parent_modes=modes))
+    if hasattr(flag, 'choices') and len(flag.choices) > 0:
+        if not hasattr(d, 'choices'):
+            d['choices'] = [];
+        for choice in flag.choices:
+            d['choices'].append(choice if isinstance(choice, int) else _build_flag_json_data(choice, parent_modes=modes))
+    if hasattr(flag, 'options') and len(flag.options) > 0:
+        if not hasattr(d, 'options'):
+            d['options'] = [];
+        for option in flag.options:
+            d['options'].append(option if isinstance(option, int) else _build_flag_json_data(option, parent_modes=modes))
+    if hasattr(flag, 'min') and flag.min is not None:
+        d['min'] = flag.min
+    if hasattr(flag, 'max') and flag.max is not None:
+        d['max'] = flag.max
+    if hasattr(flag, 'default') and flag.default is not None:
+        d['default'] = flag.default
+    else:
+        d['default'] = 0
 
     return d
 
 
 # Build JSON representation of flag hierarchy.
 FLAGS = []
-for category in CATEGORIES:
-    for flag in category.flags:
-        FLAGS.append(_build_flag_json_data(flag))
-
+for tab in TABS:
+    for category in tab.categories:
+        for flag in category.flags:
+            FLAGS.append(_build_flag_json_data(flag))
 
 class RandomizerView(TemplateView):
     """
@@ -77,7 +102,7 @@ class RandomizerView(TemplateView):
         context['version'] = VERSION
         context['debug_enabled'] = settings.DEBUG
         context['beta_site'] = settings.BETA
-        context['categories'] = CATEGORIES
+        context['tabs'] = TABS
         context['presets'] = PRESETS
         context['flags'] = FLAGS
 

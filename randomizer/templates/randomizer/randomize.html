@@ -108,9 +108,38 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <button type="button" class="btn btn-warning" onclick="applyFlags('');">Clear All Flags</button>
+                        <button type="button" class="btn btn-warning" onclick="applyFlags('')">Clear All Flags</button>
                     </div>
-                    <div class="row">
+                    <div class="container" id="flag-tabs">
+						<div class="row">
+							<ul class="nav nav-tabs col-12">
+							{% for tab in tabs %}
+								<li class="nav-item">
+									<a class="nav-link {% if tab.name == "Shuffle logic" %}active{% endif %}" href="#" id="{{tab.htmlname}}-tab" data-toggle="tab" role="tab" aria-controls="{{tab.htmlname}}" aria-selected="true">{{ tab.name }}</a>
+								</li>
+							{% endfor %}
+							</ul>
+						</div>
+						{% for tab in tabs %}
+						<div class="tab row {% if tab.name == "Shuffle logic" %}show active{% endif %}" id="{{tab.htmlname}}" role="tabpanel" aria-labelledby="{{tab.htmlname}}-tab">
+							{# Show categories and flag inputs. #}
+							{% for category in tab.categories %}
+								<div class="category-container col-md-6">
+									<div class="card border-info my-2">
+										<div class="card-header"><h5>{{ category.name }}</h5></div>
+										<div class="card-body display-table">
+												{# Show flags and options here. #}
+												{% for flag in category.flags %}
+													{% include 'randomizer/_show_flag_ui.html' with flag=flag parent_value='' subsection_of=null checked=False %}
+												{% endfor %}
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+						{% endfor %}
+					
+					
                         {# Show categories and flag inputs. #}
                         {% for category in categories %}
                             <div class="col-md-6 category-container">
@@ -125,7 +154,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                    </div>
+					</div>
                 </div>
                 <div class="card-header">
                     <div class="form-group">
@@ -208,7 +237,47 @@
     {{ flags|json_script:"flags_json" }}
 
     <script>
-        const FLAGS = JSON.parse(document.getElementById('flags_json').textContent);
+		
+		//@TODO: make the controls on this page compatible with keyboard navigation, reset nums/ranges to bounds whenever out of bounds
+		
+		const asciitable = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','!','@']; 
+		
+	
+		const TYPE_CHECKBOX = 1;
+		const TYPE_DROPDOWN = 2;
+		const TYPE_SLIDER = 5;
+		const TYPE_NUMBER = 4;
+		const BYTESTRING_LENGTH = 6;
+		
+		function dec2bin(dec){
+			return (dec >>> 0).toString(2);
+		}
+		function findMinValue(element) {
+			var minValue = undefined;
+			$('option', element).each(function() {
+				var val = $(this).attr('value');
+				val = parseInt(val, 10);
+				if (minValue === undefined || minValue > val) {
+					minValue = val;
+				}
+			});
+			return minValue;
+		}
+		function findMaxValue(element) {
+			var maxValue = undefined;
+			$('option', element).each(function() {
+				var val = $(this).attr('value');
+				val = parseInt(val, 10);
+				if (maxValue === undefined || maxValue < val) {
+					maxValue = val;
+				}
+			});
+			return maxValue;
+		}
+	  
+	  
+        FLAGS = JSON.parse(document.getElementById('flags_json').textContent);
+		console.table(FLAGS);
 
         function applySeed(rom) {
             return new Promise((resolve, reject) => {
@@ -255,120 +324,339 @@
                 resolve(rom);
             });
         }
+		
+		function updateFlags(flags) {
+			for (let flag of flags) {
+				if (flag.identifier) {
+					var element = $('#flag-' + flag.identifier);
+					visible = !$('.display-row.' + flag.identifier).hasClass('hidden-flag');
+					if (flag.type == TYPE_CHECKBOX) {
+						flag.current_value = (visible ? (element.is(":checked") ? 1 : 0) : 0);
+					}
+					else {
+						flag.current_value= (visible ? element.val() : flag.default);
+					}	
+					if (flag.options && flag.options.length > 0) {
+						updateFlags(flag.options)
+					}		
+				}
+			}
+		}
+		
+		
+		function applyFlags(flags = null, initial_load = false) {
+			// Get flag string from selected preset if not provided.
+			if (flags === null || flags === undefined) {
+				flags = $('#preset').val();
+				if (flags === 'custom') {
+					flags = $('#quick-custom').val();
+				}
+			}
 
-        // Apply custom seed flag.
-        function applyFlags(flags = null, initial_load = false) {
-            // Get flag string from selected preset if not provided.
-            if (flags === null || flags === undefined) {
-                flags = $('#preset').val();
-                if (flags === 'custom') {
-                    flags = $('#quick-custom').val();
-                }
-            }
+			// Clear all the flags
+			function resetFlag(flags) {
+				for (let flag of flags) {
+					if (flag.type == TYPE_CHECKBOX) {
+						$('#flag-' + flag.identifier).prop('checked', false);
+						flag.current_value = 0;
+					}
+					else if (flag.type == TYPE_DROPDOWN || flag.type == TYPE_SLIDER || flag.type == TYPE_NUMBER) {
+						$('#flag-' + flag.identifier).val(flag.default);
+						flag.current_value = flag.default;
+					}
+					if (flag.type == TYPE_SLIDER) {
+						flagname = '#flag-' + flag.identifier + '-parser';
+						$(flagname).text(flag.default);
+					}
+					if (flag.hasOwnProperty("options") && flag.options.length > 0) {
+						resetFlag(flag.options);
+					}
+				}
+			}
+			show_shuffle_children();
 
-            // Clear all the checkbox options first.  Leave radio buttons alone.
-            $('.flag-form-input-checkbox').prop('checked', false);
+			// Parse flag string and set flags on the page.
+			bytestring = "";
+			
+			for (i = 0; i < flags.length; i++) {
+				binval = dec2bin(asciitable.indexOf(flags[i]));
+				final_binval = binval;
+				for (j = binval.length; j < BYTESTRING_LENGTH; j++) {
+					final_binval = "0" + final_binval; 
+				}
+				bytestring += final_binval;
+			}
+			console.log(flags)
+			console.log(bytestring)
+			
+			var bytestring_index = 0;
+			
+			function setBits(flag) {
+				element = $("#flag-" + flag.identifier);
+				if (flag.type == TYPE_CHECKBOX) {
+					if (bytestring.charAt(bytestring_index) == '1') {
+						element.prop( "checked", true );
+					}
+					else {
+						element.prop( "checked", false );
+					}
+					console.log(bytestring_index, flag.identifier, bytestring.charAt(bytestring_index));
+					bytestring_index++;
+				}
+				else {
+					if (flag.type == TYPE_DROPDOWN) {
+						min = findMinValue(element);
+						max = findMaxValue(element);
+						step = 1;
+					}
+					else {
+						min = flag.min;
+						max = flag.max;
+						step = element.attr("step");
+						if (!step) {
+							step = 1;
+						}
+					}
+					length = dec2bin((max - min) / step).length;
+					bitsToSet = bytestring.substr(bytestring_index, length);
+					val = (parseInt( bitsToSet.split('').join(''), 2 ) * step) + min;
+					element.val(val);
+					console.log(bytestring_index, flag.identifier, bitsToSet, val);
+					bytestring_index += length;
+					if (flag.type == TYPE_SLIDER) {
+						flagname = '#flag-' + flag.identifier + '-parser';
+						$(flagname).text(val);
+					}
+				}
+				if (flag.type == TYPE_CHECKBOX) {
+					if (flag.hasOwnProperty("options") && flag.options.length > 0) {
+						flag.options.forEach(function(f) {
+							setBits(f);
+						});
+					}
+				}
+			}
+			
+			if (flags !== null && flags != '') {
+				FLAGS.forEach(function(flag) {
+					setBits(flag);
+				});
+			}
+			else {
+				resetFlag(FLAGS);
+			}
+			
+			show_shuffle_children();
+			
+			buildFlagString();
 
-            // Parse flag string and set flags on the page.
-            for (let flag of flags.split(' ')) {
-                if (flag.startsWith('-')) {
-                    // Solo flag that begins with a dash.
-                    $('.flag-' + $.escapeSelector(flag)).prop('checked', true);
-                } else {
-                    // Flag that may have a subsection of choices and/or options.
-                    let first = flag.slice(0, 1);
-                    $('.flag-' + $.escapeSelector('@' + first)).add('.flag-' + $.escapeSelector(first))
-                        .prop('checked', true);
-                    for (let char of flag.slice(1)) {
-                        $('.flag-' + $.escapeSelector(first + char)).prop('checked', true);
-                    }
-                }
-            }
+			// Scroll to review flags.
+			if (!initial_load)
+				$('html').animate({scrollTop: $('#review-flags').offset().top}, 500);
+		}
+		
+			
+		show_shuffle_children = function() {
+		
+		
+			parents = ['StarPieceShuffle', 'BossShuffle', 'CharacterJoinOrder', 'ShopShuffle', 'ChestShuffleFlag', 'KeyItemShuffle'];
+			
+			parents.forEach(function(parent) {
+				$('.flag-subsection-' + parent).removeClass('hidden-flag');
+			});
+			
+			$('#flag-StarPieceShuffle').prop('disabled', false);
+			$('#flag-ReplaceItems').prop('disabled', false);
+			
+			parents.forEach(function(parent) {
+				if (!$('#flag-' + parent).is(":checked")) {
+					$('.flag-subsection-' + parent).addClass('hidden-flag');
+				}
+			});
+			
+			if ($('#flag-ChestRewardLogic').val() == 0 || !($('#flag-ChestShuffleFlag').is(":checked"))) {
+				$('#flag-ReplaceItems').prop('checked', false).prop('disabled', true);
+			}
+			
+			if ($('#flag-ChestShuffleFlag').is(":checked") && $('#flag-ChestRewardLogic').val() >= 2 && $('#flag-ChestRewardStars').val()  == 0) {
+				$('.StarEXP').addClass('hidden-flag');
+			}
+			else {
+				$('.StarEXP').removeClass('hidden-flag');
+			}
+			
+			if ($('#flag-EquipmentProperties').val() != 2) {
+				$('.EquipmentStats, .EquipmentBuffs, .EquipmentNoSafetyChecks').addClass('hidden-flag');
+			}
+			else {
+				$('.EquipmentStats, .EquipmentBuffs, .EquipmentNoSafetyChecks').removeClass('hidden-flag');
+			}
+			
+			if ($('#flag-KeyItemDistribution').val() == 0 || !($('#flag-KeyItemShuffle').is(":checked")) || $('#flag-ChestRewardLogic').val() < 2 || !($('#flag-ChestShuffleFlag').is(":checked"))) {
+				$(".ChestKIInclude3DMaze").addClass('hidden-flag');
+				$('.ChestKIIncludeCulex, .ChestKIInclude30, .ChestKIInclude100').addClass('hidden-flag');
+			}
+			else if ($('#flag-KeyItemShuffle').is(":checked") && $('#flag-ChestShuffleFlag').is(":checked")) {
+				if (!($('#flag-ChestRewardLogic').val() >= 2 && $('#flag-MonstroTownShuffle option:selected').val() == 4))
+					$('.ChestKIIncludeCulex, .ChestKIInclude30, .ChestKIInclude100').addClass('hidden-flag');
+			}
+			
+			$("#flag-WinCondition option[value^='1']").show();
+			if ($('#flag-StarPiecesRequired').val() == 0) {
+				$('.flag-subsection-StarPieceShuffle').addClass('hidden-flag');
+				$('#flag-StarPieceShuffle').prop('checked', false).prop('disabled', true);
+				if ($("#flag-WinCondition option:checked").val() == 1) $("#flag-WinCondition").val(0);
+				$("#flag-WinCondition option[value^='1']").hide();
+			}
+			else if ($('#flag-StarPieceShuffleLogic').val() == 0 || !($('#flag-StarPieceShuffle').is(":checked")) || $('#flag-ChestRewardLogic').val() < 2 || !($('#flag-ChestShuffleFlag').is(":checked"))) {
+				$(".StarInclude3DMaze").addClass('hidden-flag');
+				$('.StarInclude30, .StarInclude100').addClass('hidden-flag');
+			}
+			else if ($('#flag-StarPieceShuffle').is(":checked") && $('#flag-ChestShuffleFlag').is(":checked")) {
+				if (!($('#flag-ChestRewardLogic').val() >= 2 && $('#flag-MonstroTownShuffle option:selected').val() == 4))
+					$('.StarInclude30, .StarInclude100').addClass('hidden-flag');
+			}
+			
+			if (!$('#flag-ChestShuffleFlag').is(":checked") || $('#flag-ChestRewardLogic').val() < 2) {
+				$(".StarPieceShuffleLogic").addClass('hidden-flag');
+				$(".KeyItemDistribution, .ChestKIInclude3DMaze").addClass('hidden-flag');
+			}
+			
+			
+			
+			if ($('#flag-CharacterJoinOrder').is(":checked")) {
+				characters = ["Mario", "Mallow", "Geno", "Bowser", "Toadstool"];
+				excluded = [];
+				characters.forEach(function(character) {
+					if ($('#flag-ChooseStarter option:selected').text().indexOf(character) > -1) {
+						$(".Exclude" + character).addClass("hidden-flag").prop('checked', false);
+					}
+					else {
+						$(".Exclude" + character).removeClass("hidden-flag");
+					}
+					
+					if ($("#flag-Exclude" + character).is(":checked")) {
+						$("#flag-ChooseStarter option:contains('" + character + "')").hide();
+						excluded.push(character);
+					}
+					else {
+						$("#flag-ChooseStarter option:contains('" + character + "')").show();
+					}
+				});
+				characters.forEach(function(character) {
+					if (excluded.length >= 4 && excluded.indexOf(character) < 0) {
+						$("#flag-Exclude" + character).prop('disabled', true);
+					}
+					else {
+						$("#flag-Exclude" + character).prop('disabled', false);
+					}
+				});
+			}
+			
+			if ($('#flag-ChestRewardLogic').val() < 2) {
+				$('.ChestRewardTier, .ChestRewardStars, .ChestExcludeCoins, .ChestExcludeFrogCoins, .ChestExcludeFlowers, .ChestExcludeMushrooms, .MonstroTownShuffle').addClass('hidden-flag');
+			}
+			else if ($('#flag-ChestShuffleFlag').is(":checked")) {
+				$('.ChestRewardTier, .ChestRewardStars, .ChestExcludeCoins, .ChestExcludeFrogCoins, .ChestExcludeFlowers, .ChestExcludeMushrooms, .MonstroTownShuffle').removeClass('hidden-flag');
+			}
+			if ($('#flag-ChestRewardLogic').val() < 2) {
+				$('.ShopTier, .ShopNotGuaranteed').addClass('hidden-flag');
+			}
+			
+			
+			
+			
+			
+			
+		}
 
-            buildFlagString();
-
-            // Scroll to review flags.
-            if (!initial_load)
-                $('html').animate({scrollTop: $('#review-flags').offset().top}, 500);
-        }
 
         // Helper function to build flag string part for a specific flag and recursively handle choices and suboptions.
-        function buildFlagStringPart(flag, mode, flagStrings, parent_value = '') {
-            let idval = '#flag-' + $.escapeSelector(flag.value);
-            if (parent_value)
-                idval += $.escapeSelector(parent_value);
-
-            if (flag.modes.includes(mode) && $(idval).is(':checked')) {
-                if (flag.value.startsWith('-')) {
-                    // Solo flag that begins with a dash.
-                    flagStrings.set(flag.value, true);
-                } else {
-                    let char;
-                    let rest = '';
-                    if (flag.value.startsWith('@')) {
-                        char = flag.value.slice(1, 2);
-                        flagStrings.get('@').push(char);
-                    } else {
-                        char = flag.value.slice(0, 1);
-                        rest = flag.value.slice(1);
-                    }
-
-                    // Check if this key is in the map yet.
-                    if (!flagStrings.has(char)) {
-                        flagStrings.set(char, []);
-                    }
-                    if (rest) {
-                        flagStrings.get(char).push(rest);
-                    }
-
-                    // Flag that may have a subsection of choices and/or options.
-                    for (let choice of flag.choices) {
-                        buildFlagStringPart(choice, mode, flagStrings, '-' + flag.value + parent_value);
-                    }
-
-                    for (let option of flag.options) {
-                        buildFlagStringPart(option, mode, flagStrings, '-' + flag.value + parent_value);
-                    }
-                }
-            }
+        function buildFlagStringPart(flag) {
+			binstring = '';
+			if (flag.identifier) {
+				var element = $('#flag-' + flag.identifier);
+				visible = !$('.display-row.' + flag.identifier).hasClass('hidden-flag');
+				if (flag.type == TYPE_CHECKBOX) {
+					binstring += (visible ? (element.is(":checked") ? 1 : 0) : 0);
+				}
+				else {
+					if (flag.hasOwnProperty("max")) {
+						binstringmax = dec2bin((flag.max - flag.min) / element.attr("step"));
+						min = flag.min;
+					}
+					else {
+						binstringmax = dec2bin(findMaxValue(element))
+						min = 0;
+					}
+					binstringbase = '';
+					for (i = 0; i < binstringmax.length; i++) {
+						binstringbase += '0';
+					}
+					binval = dec2bin(element.val() - min);
+					true_value = binstringbase.substr(binval.length) + binval;
+					binstring += (visible ? binstringbase.substr(binval.length) + binval : binstringbase);
+				}			
+				if (flag.options && flag.options.length > 0) {
+					flag.options.forEach(function(option) {
+						binstring += buildFlagStringPart(option)
+					});
+				}
+				return binstring;
+			}
+			else {
+				return null;
+			}
         }
 
         // Build flag string based on selected flags visible for this mode.
         function buildFlagString() {
-            let mode = $('#mode').val();
-            let flagStrings = new Map();
-            flagStrings.set('@', []);
-
-            // Check each flag if it's selected, and check choices and/or options for it.
-            for (let flag of FLAGS) {
-                buildFlagStringPart(flag, mode, flagStrings);
-            }
-
-            // Set flag string from selected flags.
-            let flagString = '';
-            for (let [key, vals] of flagStrings) {
-                if (key !== '@') {
-                    if (key.startsWith('-')) {
-                        flagString += key + ' ';
-                    } else {
-                        if (vals.length > 0 || !flagStrings.get('@').includes(key)) {
-                            flagString += key + vals.join('') + ' ';
-                        }
-                    }
-                }
-            }
-
-            $('#flag-string').val(flagString);
-            $('#flags').val(flagString);
+		
+			flagString = '';
+			FLAGS.forEach(function(flag) {
+				flagString += buildFlagStringPart(flag)
+			})
+			
+			init_length = flagString.length;
+			for (i = init_length; i < Math.ceil(init_length / BYTESTRING_LENGTH) * BYTESTRING_LENGTH; i++) {
+				flagString += "0";
+			}
+			
+			buildFlagStringPart(FLAGS)
+			
+			finalFlagString = "";
+			
+			byteString = "";
+			for (i = 0; i < flagString.length; i++) {
+				byteString += flagString[i];
+				if (byteString.length == BYTESTRING_LENGTH || i == flagString.length - 1) {
+					index = parseInt( byteString.split('').join(''), 2 );
+					finalFlagString += asciitable[index];
+					byteString = "";
+				}
+			}
+			//make divisible by 6
+			
+			
+			console.log(flagString, finalFlagString)
+		
+            $('#flag-string').val(finalFlagString);
+            $('#flags').val(finalFlagString);
 
             // Save current flags in local storage.
-            localforage.setItem("rom.flags", flagString);
+            localforage.setItem("rom.flags", finalFlagString);
         }
 
         $(() => {
+		
+			// Apply custom seed flag.
             $("#seed-clear").click(() => {
                 $("#seed").val("");
             });
+			
+			$('.has-children, #flag-MonstroTownShuffle, #flag-KeyItemDistribution, #flag-StarPieceShuffleLogic, #flag-ExcludeMario, #flag-ExcludeMallow, #flag-ExcludeGeno, #flag-ExcludeBowser, #flag-ExcludeToadstool, #flag-ChooseStarter, #flag-ShopLogic, #flag-ChestRewardLogic, #flag-KeyItemDistribution, #flag-StarPiecesRequired, #flag-ChestRewardStars, #flag-EquipmentProperties').change(() => {
+				show_shuffle_children();
+			});
 
             // Randomization mode
             $("#mode").change((event) => {
@@ -381,22 +669,27 @@
 
                 // Show flags that are for this mode only.
                 let flags = $('.flag-container');
-                flags.not(`.flag-${mode}`).hide();
-                flags.filter(`.flag-${mode}`).show();
+                flags.not(`.flag-${mode}`).addClass('hidden-flag');
+                flags.filter(`.flag-${mode}`).removeClass('hidden-flag');
 
                 // Hide categories that have no visible flags for this mode.
                 $(".category-container").show().each((index, elem) => {
                     if ($(elem).find(`.card > .card-body > .flag-${mode}`).length === 0) {
-                        $(elem).hide();
+                        $(elem).addClass('hidden-flag');
                     } else {
-                        $(elem).show();
+                        $(elem).removeClass('hidden-flag');
                     }
                 });
 
                 // Rebuild flag string for new flags.
+				show_shuffle_children();
                 buildFlagString();
             });
 
+            $("#seed-clear").click(() => {
+                $("#seed").val("");
+            });
+			
             localforage.getItem("rom.mode").then((value) => {
                 let elem = $("#mode");
                 if (value === null) {
@@ -426,7 +719,7 @@
             }).change();
 
             // Flag javascript event handlers.
-            $(".flag-form-input").change(buildFlagString);
+            $(".flag-form-input").change(function() {updateFlags(FLAGS); buildFlagString();});
 
             // Generate button
             $("#generate-btn").click((event) => {
@@ -491,5 +784,41 @@
                 }
             });
         });
+		
+		
+		/* flag display */
+		
+		$('#flag-tabs .nav-link').click(function() {
+			$('.tab').removeClass("active");
+			$('#' + $(this).attr('id').split('-')[0]).addClass("active");
+		});
+		
+		updatingSlider = false;
+		$('#flag-tabs input[type="range"]').on({
+			mousedown: function(e) {
+				updatingSlider = true;
+			},
+			mousemove: function(e) {
+				if (updatingSlider) {
+					e.stopPropagation();
+
+					var width = $(this).width();
+					var offset = $(this).offset();
+					
+					var value = 
+					Math.min($(this).attr('max'),
+					Math.max($(this).attr('min'), 
+						Math.round(((e.pageX - offset.left) / width) * ($(this).attr('max') - $(this).attr('min'))) +parseInt($(this).attr('min'))
+					));
+
+					$('#' + $(this).attr('id') + "-parser").text(value)
+				}
+			},
+			mouseup: function() {
+				updatingSlider = false;
+				$('#' + $(this).attr('id') + "-parser").text($(this).val())
+			}
+		});
+		
     </script>
 {% endblock %}
