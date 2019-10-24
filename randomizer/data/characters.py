@@ -3,6 +3,8 @@
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 
+import json
+
 from . import spells
 
 
@@ -145,6 +147,7 @@ class Character:
     # Placeholders for vanilla starting levelup growth and bonus numbers.
     starting_growths = ()
     starting_bonuses = ()
+
 
     def __init__(self, world):
         """

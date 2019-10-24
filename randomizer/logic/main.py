@@ -26,6 +26,9 @@ from .patch import Patch
 from .battleassembler import assemble_battle_scripts
 from itertools import permutations
 
+import csv
+import json
+
 # Current version number
 VERSION = '8.2.0'
 
@@ -286,6 +289,7 @@ class GameWorld:
         self.file_select_hash = 'MARIO1 / MARIO2 / MARIO3 / MARIO4'
         self._rebuild_hash()
 
+
         # Bundt palette swap flag.
         self.chocolate_cake = False
 
@@ -404,6 +408,7 @@ class GameWorld:
         chests.randomize_all(self)
         games.randomize_all(self)
         dialogs.randomize_all(self)
+
 
         # Rebuild hash after randomization.
         self._rebuild_hash()
