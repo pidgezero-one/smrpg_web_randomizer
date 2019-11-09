@@ -2273,9 +2273,10 @@ def patch_overworld_bosses(world):
             if location.name == "MegaSmilax":
                 # maybe bring shy away back for added comedy
                 #print(location.name + ": " + shuffled_boss.name)
-                if shuffled_boss.name is not "MegaSmilax":
+                if shuffled_boss.name is not "Megasmilax":
                     # use npc 154, set properties to match smilax's
                     # fix scripts
+                    #i think this is the issue
                     patch.add_data(0x14be2c,
                                    [0x6B, 0xF2, 0xC0, 0xFC, 0x69, 0x00, 0x9B, 0x46, 0x61, 0x00, 0x40, 0x50, 0x2B, 0xF7,
                                     0xC0, 0xFC, 0x09, 0x00, 0x1B])
