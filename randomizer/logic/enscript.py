@@ -76,6 +76,23 @@ class EventScript:
         self.append_short(script_id)
         return self
 
+    # 0x3E
+    def create_packet_at_object_coords_jmp_if_null(self, packet_id, object_id, address):
+        self.append_byte(0x3E)
+        self.append_byte(packet_id)
+        self.append_byte(object_id)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # FD 0x3E
+    def create_packet_event_at_coords_jmp_if_null(self, packet_id, event_id, address):
+        self.append_byte(0xFD)
+        self.append_byte(0x3E)
+        self.append_byte(packet_id)
+        self.append_short(event_id)
+        self.append_short(self.get_branch_address(address))
+        return self
+
     # 0xAB
     def dec(self, address):
         assert 0x70A0 <= address <= 0x719F
@@ -88,8 +105,18 @@ class EventScript:
         self.append_byte(0xB3)
         self.append_byte((address - 0x7000) // 2)
 
+    # 0x35
+    def enable_controls(self, *directions):
+        self.append_byte(0x35)
+        enabled_directions = 0x00
+        for i in directions:
+            enabled_directions |= 1 << i
+        assert 0x00 <= enabled_directions <= 0xFF
+        return self
+
     # 0x34
     def enable_controls_until_return(self, *directions):
+        self.append_byte(0x34)
         enabled_directions = 0x00
         for i in directions:
             enabled_directions |= 1 << i
@@ -135,6 +162,79 @@ class EventScript:
         self.append_short(self.get_branch_address(address))
         return self
 
+    # 0x3D
+    def jmp_if_mario_in_air(self, address):
+        self.append_byte(0x3D)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # 0x39
+    def jmp_if_mario_on_object(self, object_id, address):
+        self.append_byte(0x39)
+        self.append_byte(object_id)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # FD 0x3D
+    def jmp_if_object_in_air(self, object_id, address):
+        self.append_byte(0xFD)
+        self.append_byte(0x3D)
+        self.append_byte(object_id)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # FD 0x34
+    def jmp_if_object_underwater(self, object_id, address):
+        self.append_byte(0xFD)
+        self.append_byte(0x34)
+        self.append_byte(object_id)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # FD 0x33
+    def jmp_if_objects_action_script_running(self, object_id, address):
+        self.append_byte(0xFD)
+        self.append_byte(0x39)
+        self.append_byte(object_id)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # 0x3A
+    def jmp_if_objects_less_than_xy_steps_apart(self, object_a, object_b, x, y, address):
+        self.append_byte(0x3A)
+        self.append_byte(object_a)
+        self.append_byte(object_b)
+        self.append_byte(x)
+        self.append_byte(y)
+        self.append_short(self.get_branch_address(address))
+
+    # 0x3A
+    def jmp_if_objects_less_than_xy_steps_apart_same_z_coord(self, object_a, object_b, x, y, address):
+        self.append_byte(0x3B)
+        self.append_byte(object_a)
+        self.append_byte(object_b)
+        self.append_byte(x)
+        self.append_byte(y)
+        self.append_short(self.get_branch_address(address))
+
+    # 0x32
+    def jmp_if_present_in_current_level(self, object_id, address):
+        self.append_byte(0x32)
+        self.append_byte(object_id)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # 0x36
+    def join_party(self, member):
+        self.append_byte(0x36)
+        self.append_byte(member | 0x80)
+        return self
+
+    def leave_party(self, member):
+        self.append_byte(0x36)
+        self.append_byte(member & ~0x80)
+        return self
+
     # 0xF0
     def pause(self, value):
         self.append_byte(value)
@@ -154,6 +254,12 @@ class EventScript:
         else:
             self.append_byte(0x50)
             self.append_byte(item_id)
+        return self
+
+    # FD 0x32
+    def remember_last_object(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x32)
         return self
 
     # 0xFE
@@ -200,6 +306,22 @@ class EventScript:
             self.append_byte(address_left - 0x70A0)
         else:
             1/0
+        return self
+
+    # 0x38
+    def set_short_member_in_slot(self, slot):
+        self.append_byte(0x38)
+        self.append_byte(slot + 0x08)
+        return self
+
+    # 0x37
+    def set_short_party_capacity(self):
+        self.append_byte(0x37)
+        return self
+
+    # 0x31
+    def unfreeze_all_npcs(self):
+        self.append_byte(0x31)
         return self
 
 
