@@ -8,9 +8,6 @@ import string
 import tempfile
 import shutil
 
-import Wii
-import nlzss
-
 from django.conf import settings
 from django.db import transaction
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse, HttpResponseNotFound, QueryDict

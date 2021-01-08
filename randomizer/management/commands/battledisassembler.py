@@ -5,6 +5,8 @@ from randomizer.data.attacks import get_default_enemy_attacks
 from randomizer.data.items import get_default_items
 from randomizer.data.spells import ChestScrow, ChestFear, ChestMute, ChestPoison, Nothing, get_default_spells
 
+from randomizer.management.disassembler_common import named, con, byte, short, build_table
+
 battle_lengths = [
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -25,32 +27,6 @@ battle_lengths = [
 ]
 
 
-def byte(offset=0, prefix='', table=None):
-    def inner_byte(args):
-        if table and args[0] in table:
-            return '%s%s'%(prefix and (prefix + '.'), table[args[0]]), args[1:]
-        return '0x%02x'%(args[0] + offset), args[1:]
-    return inner_byte
-
-def short(offset=0):
-    def inner_short(args):
-        return '0x%04x'%(args[0] + (args[1] << 8) + offset), args[2:]
-    return inner_short
-
-def con(constant):
-    def inner_con(args):
-        return '0x%02x'%(constant), args
-    return inner_con
-
-def named(name, *arg_parsers):
-    def inner_named(args):
-        acc = []
-        for parse in arg_parsers:
-            parsed_arg, args = parse(args)
-            acc.append(parsed_arg)
-        return name, acc
-    return inner_named
-
 def d_name(name_0, name_1, *parsers):
     n = named('', *parsers)
     def inner_d_name(args):
@@ -58,8 +34,6 @@ def d_name(name_0, name_1, *parsers):
         return ([name_0, name_1][args[0]], parsed)
     return inner_d_name
 
-def build_table(list):
-    return {i.index: i.name for i in list}
 
 attacks_table = build_table(get_default_enemy_attacks(None))
 items_table = build_table(get_default_items(None))

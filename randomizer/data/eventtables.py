@@ -858,3 +858,393 @@ npc_packet_table = {
 NPCPackets = SimpleNamespace()
 for i in npc_packet_table:
     setattr(NPCPackets, npc_packet_table[i], i)
+
+location_table = {
+    0x00: '000_TO_MARIOS_PAD_BEFORE',
+    0x01: '001_BOWSERS_KEEP_BEFORE',
+    0x02: '002_TO_MARIOS_PAD',
+    0x03: '003_VISTA_HILL',
+    0x04: '004_BOWSERS_KEEP',
+    0x05: '005_GATE',
+    0x06: '006_TO_NIMBUS_LAND',
+    0x07: '007_TO_BOWSERS_KEEP',
+    0x08: '008_MARIOS_PAD',
+    0x09: '009_MUSHROOM_WAY',
+    0x0A: '010_MUSHROOM_KINGDOM',
+    0x0B: '011_BANDITS_WAY',
+    0x0C: '012_KERO_SEWERS',
+    0x0D: '013_TO_MUSHROOM_KINGDOM',
+    0x0E: '014_KERO_SEWERS',
+    0x0F: '015_MIDAS_RIVER',
+    0x10: '016_TADPOLE_POND',
+    0x11: '017_ROSE_WAY',
+    0x12: '018_ROSE_TOWN',
+    0x13: '019_FOREST_MAZE',
+    0x14: '020_PIPE_VAULT',
+    0x15: '021_TO_YOSTER_ISLE',
+    0x16: '022_TO_MOLEVILLE',
+    0x17: '023_TO_PIPE_VAULT',
+    0x18: '024_MOLEVILLE',
+    0x19: '025_BOOSTER_PASS',
+    0x1A: '026_BOOSTER_TOWER',
+    0x1B: '027_BOOSTER_HILL',
+    0x1C: '028_MARRYMORE',
+    0x1D: '029_TO_STAR_HILL',
+    0x1E: '030_TO_MARRYMORE',
+    0x1F: '031_STAR_HILL',
+    0x20: '032_SEASIDE_TOWN',
+    0x21: '033_SEA',
+    0x22: '034_SUNKEN_SHIP',
+    0x23: '035_TO_LANDS_END',
+    0x24: '036_TO_SEASIDE_TOWN',
+    0x25: '037_LANDS_END',
+    0x26: '038_MONSTRO_TOWN',
+    0x27: '039_BEAN_VALLEY',
+    0x28: '040_GRATE_GUYS_CASINO',
+    0x29: '041_TO_NIMBUS_LAND',
+    0x2A: '042_TO_SEASIDE_TOWN',
+    0x2B: '043_LANDS_END',
+    0x2C: '044_MONSTRO_TOWN',
+    0x2D: '045_BEAN_VALLEY',
+    0x2E: '046_GRATE_GUYS_CASINO',
+    0x2F: '047_TO_NIMBUS_LAND',
+    0x30: '048_TO_BEAN_VALLEY',
+    0x31: '049_NIMBUS_LAND',
+    0x32: '050_BARREL_VOLCANO',
+    0x33: '051_TO_BOWSERS_KEEP',
+    0x34: '052_YOSTER_ISLE',
+    0x35: '053_TO_PIPE_VAULT',
+    0x36: '054_COAL_MINES_BOWSERS_KEEP',
+    0x37: '055_FACTORY_BOWSERS_KEEP'
+}
+
+Locations = SimpleNamespace()
+for i in location_table:
+    setattr(Locations, location_table[i], i)
+
+shop_table = {
+    0x00: '00_MUSHROOM_KINGDOM',
+    0x01: '01_ROSE_TOWN_ITEMS',
+    0x02: '02_ROSE_TOWN_ARMOR',
+    0x03: '03_FROG_DISCIPLE_SHOP',
+    0x04: '04_MOLEVILLE_SHOP',
+    0x05: '05_MARRYMORE_SHOP',
+    0x06: '06_FROG_COIN_EMPORIUM',
+    0x07: '07_SEA_ITEM_SHOP',
+    0x08: '08_SEASIDE_TOWN_ITEMS_PREYARIDOVICH',
+    0x09: '09_JUICE_BAR_NO_CARD',
+    0x0a: '10_JUICE_BAR_ALTO_CARD',
+    0x0b: '11_JUICE_BAR_TENOR_CARD',
+    0x0c: '12_JUICE_BAR_SOPRANO_CARD',
+    0x0d: '13_SEASIDE_WEAPONS',
+    0x0e: '14_SEASIDE_ARMOR',
+    0x0f: '15_SEASIDE_ACCESSORY',
+    0x10: '16_SEASIDE_HEALTH_FOODS',
+    0x11: '17_MONSTRO_TOWN_SHOP',
+    0x12: '18_NIMBUS_LAND_SHOP',
+    0x13: '19_HINOPIOS_SHOP',
+    0x14: '20_BABY_GOOMBA_SHOP',
+    0x15: '21_NIMBUS_LAND_ITEMWEAPON',
+    0x16: '22_CROCOS_SHOP_1',
+    0x17: '23_CROCOS_SHOP_2',
+    0x18: '24_TOADS_SHOP',
+    0x19: '25____DUMMY',
+    0x1a: '26____DUMMY',
+    0x1b: '27____DUMMY',
+    0x1c: '28____DUMMY',
+    0x1d: '29____DUMMY',
+    0x1e: '30____DUMMY',
+    0x1f: '31____DUMMY',
+    0x20: '32____DUMMY'
+}
+
+Shops = SimpleNamespace()
+for i in shop_table:
+    setattr(Shops, shop_table[i], i)
+
+event_sequence_table = {
+    0x00: '00_OPEN_GAME_SELECT_MENU',
+    0x01: '01_OPEN_OVERWORLD_MENU',
+    0x02: '02_OPEN_LOCATION',
+    0x03: '03_OPEN_SHOP_MENU',
+    0x04: '04_OPEN_SAVE_GAME_MENU',
+    0x05: '05_OPEN_ITEMS_MAXED_OUT_MENU',
+    0x06: '06_UNKNOWN',
+    0x07: '07_RUN_MENU_TUTORIAL',
+    0x08: '08_ADD_STAR_PIECE',
+    0x09: '09_RUN_MOLEVILLE_MOUNTAIN',
+    0x0A: '10_UNKNOWN',
+    0x0B: '11_RUN_MOLEVILLE_MOUNTAIN_INTRO',
+    0x0C: '12_UNKNOWN',
+    0x0D: '13_RUN_STAR_PIECE_END_SEQUENCE',
+    0x0E: '14_RUN_GARDEN_INTRO_SEQUENCE',
+    0x0F: '15_ENTER_GATE_TO_SMITHY_FACTORY',
+    0x10: '16_RUN_WORLD_MAP_EVENT_SEQUENCE'
+}
+
+EventSequences = SimpleNamespace()
+for i in event_sequence_table:
+    setattr(EventSequences, event_sequence_table[i], i)
+
+menu_tutorial_table = {
+    0x00: '00_HOW_TO_EQUIP',
+    0x01: '01_HOW_TO_USE_ITEMS',
+    0x02: '02_HOW_TO_SWITCH_ALLIES',
+    0x03: '03_HOW_TO_PLAY_BEETLE_MANIA'
+}
+
+MenuTutorials = SimpleNamespace()
+for i in menu_tutorial_table:
+    setattr(MenuTutorials, menu_tutorial_table[i], i)
+
+overworld_sequence_table = {
+    0x00: '00_MARIO_FALLS_TO_PIPEHOUSE',
+    0x01: '01_MARIO_RETURNS_TO_MK',
+    0x02: '02_MARIO_TAKES_NIMBUS_BUS'
+}
+
+OverworldSequences = SimpleNamespace()
+for i in overworld_sequence_table:
+    setattr(OverworldSequences, overworld_sequence_table[i], i)
+
+playable_characters_table = {
+    0x00: 'MARIO',
+    0x01: 'TOADSTOOL',
+    0x02: 'BOWSER',
+    0x03: 'GENO',
+    0x04: 'MALLOW',
+}
+
+PlayableCharacters = SimpleNamespace()
+for i in playable_characters_table:
+    setattr(PlayableCharacters, playable_characters_table[i], i)
+
+equip_slots_table = {
+    0x00: 'WEAPON',
+    0x01: 'ARMOR',
+    0x02: 'ACCESSORY'
+}
+
+EquipSlots = SimpleNamespace()
+for i in equip_slots_table:
+    setattr(EquipSlots, equip_slots_table[i], i)
+
+dialog_duration_table = {
+    0x00: 'FOREVER',
+    0x01: 'SHORT',
+    0X02: 'LONG',
+    0X03: 'ALSO_FOREVER'
+}
+
+DialogDurations = SimpleNamespace()
+for i in dialog_duration_table:
+    setattr(DialogDurations, dialog_duration_table[i], i)
+
+intro_titles_table = {
+    0x00: 'SUPER_MARIO',
+    0x01: 'PRINCESS_TOADSTOOL',
+    0X02: 'KING_BOWSER',
+    0X03: 'MALLOW',
+    0X04: 'GENO',
+    0X05: 'IN'
+}
+
+IntroTitles = SimpleNamespace()
+for i in intro_titles_table:
+    setattr(IntroTitles, intro_titles_table[i], i)
+
+colours_table = {
+    0x00: 'BLACK',
+    0x01: 'BLUE',
+    0x02: 'RED',
+    0x03: 'PINK',
+    0x04: 'GREEN',
+    0x05: 'AQUA',
+    0x06: 'YELLOW',
+    0x07: 'WHITE'
+}
+
+Colours = SimpleNamespace()
+for i in colours_table:
+    setattr(Colours, colours_table[i], i)
+
+palette_set_types_table = {
+    0x00: 'NOTHING',
+    0x06: 'GLOW',
+    0x0C: 'SET_TO',
+    0x0E: 'FADE_TO',
+}
+
+PaletteSetTypes = SimpleNamespace()
+for i in palette_set_types_table:
+    setattr(PaletteSetTypes, palette_set_types_table[i], i)
+
+music_table = {
+    0x00: '00_CURRENT',
+    0x01: '01_DODOS_COMING',
+    0x02: '02_MUSHROOM_KINGDOM',
+    0x03: '03_FIGHT_AGAINST_STRONGER_MONSTER',
+    0x04: '04_YOSTER_ISLAND',
+    0x05: '05_SEASIDE_TOWN',
+    0x06: '06_FIGHT_AGAINST_MONSTERS',
+    0x07: '07_PIPE_VAULT',
+    0x08: '08_INVINCIBLE_STAR',
+    0x09: '09_VICTORY',
+    0x0A: '10_IN_THE_FLOWER_GARDEN',
+    0x0B: '11_BOWSERS_CASTLE_1ST_TIME',
+    0x0C: '12_FIGHT_AGAINST_BOWSER',
+    0x0D: '13_ROAD_IS_FULL_OF_DANGERS',
+    0x0E: '14_MARIOS_PAD',
+    0x0F: '15_HERES_SOME_WEAPONS',
+    0x10: '16_LETS_RACE',
+    0x11: '17_TADPOLE_POND',
+    0x12: '18_ROSE_TOWN',
+    0x13: '19_RACE_TRAINING',
+    0x14: '20_SHOCK',
+    0x15: '21_SAD_SONG',
+    0x16: '22_MIDAS_RIVER',
+    0x17: '23_GOT_A_STAR_PIECE_PART_1',
+    0x18: '24_GOT_A_STAR_PIECE_PART_2',
+    0x19: '25_FIGHT_AGAINST_AN_ARMED_BOSS',
+    0x1A: '26_FOREST_MAZE',
+    0x1B: '27_DUNGEON_IS_FULL_OF_MONSTERS',
+    0x1C: '28_LETS_PLAY_GENO',
+    0x1D: '29_START_SLOT_MENU',
+    0x1E: '30_LONG_LONG_AGO',
+    0x1F: '31_BOOSTERS_TOWER',
+    0x20: '32_AND_MY_NAMES_BOOSTER',
+    0x21: '33_MOLEVILLE',
+    0x22: '34_STAR_HILL',
+    0x23: '35_MOUNTAIN_RAILROAD',
+    0x24: '36_EXPLANATION',
+    0x25: '37_BOOSTER_HILL_START',
+    0x26: '38_BOOSTER_HILL',
+    0x27: '39_MARRYMORE',
+    0x28: '40_NEW_PARTNER',
+    0x29: '41_SUNKEN_SHIP',
+    0x2A: '42_STILL_THE_ROAD_IS_FULL_OF_MONSTERS',
+    0x2B: '43_SILENCE',
+    0x2C: '44_SEA',
+    0x2D: '45_HEART_BEATING_A_LITTLE_FASTER_PART_1',
+    0x2E: '46_HEART_BEATING_A_LITTLE_FASTER_PART_2',
+    0x2F: '47_GRATE_GUYS_CASINO',
+    0x30: '48_GENO_AWAKENS',
+    0x31: '49_CELEBRATIONAL',
+    0x32: '50_NIMBUS_LAND',
+    0x33: '51_MONSTRO_TOWN',
+    0x34: '52_TOADOFSKY',
+    0x35: '53_SILENCE',
+    0x36: '54_HAPPY_ADVENTURE_DELIGHFUL_ADVENTURE',
+    0x37: '55_WORLD_MAP',
+    0x38: '56_FACTORY',
+    0x39: '57_SWORD_CRASHES_AND_STARS_SCATTER',
+    0x3A: '58_CONVERSATION_WITH_CULEX',
+    0x3B: '59_FIGHT_AGAINST_CULEX',
+    0x3C: '60_VICTORY_AGAINST_CULEX',
+    0x3D: '61_VALENTINA',
+    0x3E: '62_BARREL_VOLCANO',
+    0x3F: '63_AXEM_RANGERS_DROP_IN',
+    0x40: '64_THE_END',
+    0x41: '65_GATE',
+    0x42: '66_BOWSERS_CASTLE_2ND_TIME',
+    0x43: '67_WEAPONS_FACTORY',
+    0x44: '68_FIGHT_AGAINST_SMITHY_1',
+    0x45: '69_FIGHT_AGAINST_SMITHY_2',
+    0x46: '70_ENDING_PART_1',
+    0x47: '71_ENDING_PART_2',
+    0x48: '72_ENDING_PART_3',
+    0x49: '73_ENDING_PART_4'
+}
+
+Music = SimpleNamespace()
+for i in music_table:
+    setattr(Music, music_table[i], i)
+
+_0x40_flags = {
+    13: 'RETURN_ON_LEVEL_EXIT',
+    14: 'BIT_6',
+    15: 'BIT_7'
+}
+
+_0x40Flags = SimpleNamespace()
+for i in _0x40_flags:
+    setattr(_0x40Flags, _0x40_flags[i], i)
+
+_0x60_flags = {
+    5: 'CLOSABLE',
+    7: 'ASYNC',
+    14: 'MULTILINE',
+    15: 'USE_BACKGROUND'
+}
+
+_0x60Flags = SimpleNamespace()
+for i in _0x60_flags:
+    setattr(_0x60Flags, _0x60_flags[i], i)
+
+_0x62_flags = {
+    7: 'ASYNC'
+}
+
+_0x62Flags = SimpleNamespace()
+for i in _0x62_flags:
+    setattr(_0x62Flags, _0x62_flags[i], i)
+
+_0x63_flags = {
+    5: 'CLOSABLE',
+    7: 'ASYNC'
+}
+
+_0x63Flags = SimpleNamespace()
+for i in _0x63_flags:
+    setattr(_0x63Flags, _0x63_flags[i], i)
+
+_0x68_flags = {
+    11: 'SHOW_MESSAGE',
+    15: 'RUN_ENTRANCE_EVENT',
+    31: 'Z_HALF'
+}
+
+_0x68Flags = SimpleNamespace()
+for i in _0x68_flags:
+    setattr(_0x68Flags, _0x68_flags[i], i)
+
+_0x6A_flags = {
+    15: 'USE_ALTERNATE'
+}
+
+_0x6AFlags = SimpleNamespace()
+for i in _0x6A_flags:
+    setattr(_0x6AFlags, _0x6A_flags[i], i)
+
+_0x6B_flags = {
+    15: 'PERMANENT'
+}
+
+_0x6BFlags = SimpleNamespace()
+for i in _0x6B_flags:
+    setattr(_0x6BFlags, _0x6B_flags[i], i)
+
+_0x81_flags = {
+    0: 'LAYER_1',
+    1: 'LAYER_2',
+    2: 'LAYER_3',
+    4: 'NPC_SPRITES',
+    5: 'BACKGROUND',
+    6: 'HALF_INTENSITY',
+    7: 'MINUS_SUB'
+}
+
+_0x81Flags = SimpleNamespace()
+for i in _0x81_flags:
+    setattr(_0x81Flags, _0x81_flags[i], i)
+
+_0x84_flags = {
+    0: 'LAYER_1',
+    1: 'LAYER_2',
+    2: 'LAYER_3',
+    3: 'LAYER_4'
+}
+
+_0x84Flags = SimpleNamespace()
+for i in _0x84_flags:
+    setattr(_0x84Flags, _0x84_flags[i], i)
