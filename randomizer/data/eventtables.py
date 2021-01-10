@@ -1160,6 +1160,55 @@ Music = SimpleNamespace()
 for i in music_table:
     setattr(Music, music_table[i], i)
 
+music_direction_table = {
+    0x00: 'SLOW_DOWN',
+    0x01: 'SPEED_UP'
+}
+
+MusicDirections = SimpleNamespace()
+for i in music_direction_table:
+    setattr(MusicDirections, music_direction_table[i], i)
+
+music_pitch_table = {
+    0x00: 'RAISE',
+    0x01: 'LOWER'
+}
+
+MusicPitch = SimpleNamespace()
+for i in music_pitch_table:
+    setattr(MusicPitch, music_pitch_table[i], i)
+
+coord_table = {
+    0x00: 'X',
+    0x01: 'Y',
+    0x02: 'Z',
+    0x05: 'F'
+}
+
+Coords = SimpleNamespace()
+for i in coord_table:
+    setattr(Coords, coord_table[i], i)
+
+coord_unit_table = {
+    0x00: 'PIXEL',
+    0x01: 'ISOMETRIC'
+}
+
+CoordUnits = SimpleNamespace()
+for i in coord_unit_table:
+    setattr(CoordUnits, coord_unit_table[i], i)
+
+tutorial_table = {
+    0x00: '00_HOW_TO_EQUIP',
+    0x01: '01_HOW_TO_USE_ITEMS',
+    0x02: '02_HOW_TO_SWITCH_ALLIES',
+    0x03: '03_HOW_TO_PLAY_BEETLE_MANIA'
+}
+
+Tutorials = SimpleNamespace()
+for i in tutorial_table:
+    setattr(Tutorials, tutorial_table[i], i)
+
 _0x40_flags = {
     13: 'RETURN_ON_LEVEL_EXIT',
     14: 'BIT_6',

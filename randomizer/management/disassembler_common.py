@@ -1,3 +1,4 @@
+import math
 
 def dbyte(offset=0):
     def inner_dbyte(args):
@@ -45,6 +46,12 @@ def con(constant):
     return inner_con
 
 
+def con_int(constant):
+    def inner_con(args):
+        return '%i' % (constant), args
+    return inner_con
+
+
 def named(name, *arg_parsers):
     def inner_named(args):
         acc = []
@@ -63,23 +70,47 @@ def use_table_name(prefix, table, val):
     return '%s%s' % (prefix and (prefix + '.'), table[val])
 
 
-def get_flag_string(args, prefix='', table=None, bits=None):
-    val = 0x00
-    if isinstance(args, bytearray):
-        for i in range(len(args)):
-            val |= args[i] << (8 * i)
+def flags_short(prefix='', table=None, bits=None):
+    return flags(prefix, table, bits, size=2)
+
+
+def flags(prefix='', table=None, bits=None, size=None):
+    def inner_flags(args):
+        if (size):
+            length = size
+        elif (bits):
+            length = math.ceil(max(bits) / 8)
+        else:
+            length = 1
+        b = get_flag_string(args[:length], prefix, table, bits)
+        return b, args[length:]
+    return inner_flags
+
+
+def get_flag_string(value, prefix='', table=None, bits=None):
+    b = parse_flags(value, prefix, table, bits)
+    if len(b) > 0:
+        return '[%s]' % (", ".join(b))
     else:
-        val = args
+        return '[]'
+
+
+def parse_flags(value, prefix='', table=None, bits=None):
+    val = 0x00
+    if isinstance(value, bytearray):
+        for i in range(len(value)):
+            val |= value[i] << (8 * i)
+    else:
+        val = value
     if not bits:
-        bits = [i for i in range(val.bit_length())]
+        bits_to_check = [i for i in range(val.bit_length())]
+    else:
+        bits_to_check = [i for i in bits]
     b = []
-    for i in bits:
+    for i in bits_to_check:
         if val & (1 << i) > 0:
             if (table and prefix):
                 b.append('%s' % (use_table_name(prefix, table, i)))
             else:
                 b.append('%i' % i)
-    if len(b) > 0:
-        return '[%s]' % (", ".join(b))
-    else:
-        return '[]'
+    return b

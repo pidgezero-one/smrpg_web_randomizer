@@ -8,27 +8,28 @@ from randomizer.data.spells import ChestScrow, ChestFear, ChestMute, ChestPoison
 from randomizer.management.disassembler_common import named, con, byte, short, build_table
 
 battle_lengths = [
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    4,0,2,2,0,2,3,4,2,0,4,3,1,2,0,2,
-    4,2,3,3,4,0,0,0,0,0,0,1,4,1,1,1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    4, 0, 2, 2, 0, 2, 3, 4, 2, 0, 4, 3, 1, 2, 0, 2,
+    4, 2, 3, 3, 4, 0, 0, 0, 0, 0, 0, 1, 4, 1, 1, 1,
 ]
 
 
 def d_name(name_0, name_1, *parsers):
     n = named('', *parsers)
+
     def inner_d_name(args):
         (_, parsed) = n(args[1:])
         return ([name_0, name_1][args[0]], parsed)
@@ -37,7 +38,8 @@ def d_name(name_0, name_1, *parsers):
 
 attacks_table = build_table(get_default_enemy_attacks(None))
 items_table = build_table(get_default_items(None))
-spells_table = build_table(get_default_spells(None) + [ChestScrow(None), ChestFear(None), ChestMute(None), ChestPoison(None), Nothing(None)])
+spells_table = build_table(get_default_spells(
+    None) + [ChestScrow(None), ChestFear(None), ChestMute(None), ChestPoison(None), Nothing(None)])
 
 attack_parse = byte(prefix='attacks', table=attacks_table)
 item_parse = byte(prefix='items', table=items_table)
@@ -46,6 +48,8 @@ target_parse = byte(prefix='Targets', table=targeting_table)
 monster_target_parse = byte(prefix='Monsters', table=monsters_table)
 
 base = 0x7EE000
+
+
 def tokenize(rom, start):
     dex = start
     ff_seen = False
@@ -61,37 +65,40 @@ def tokenize(rom, start):
         dex += l
     return acc
 
+
 def attack(num):
     def inner_attack(args):
-        attack = '0x%02x'%(num)
+        attack = '0x%02x' % (num)
         if num in attacks_table:
-            attack = 'attacks.%s'%(attacks_table[num])
+            attack = 'attacks.%s' % (attacks_table[num])
         return 'attack', [attack]
     return inner_attack
 
+
 _if_name_table = [
-    ('ERROR', []), 
+    ('ERROR', []),
     ('if_command', [byte(), byte()]),
     ('if_spell', [spell_parse, spell_parse]),
     ('if_item', [item_parse, item_parse]),
-    ('if_element', [byte()]), 
+    ('if_element', [byte()]),
     ('if_attacked', []),
     ('if_target_hp', [target_parse, byte()]),
     ('if_hp', [short()]),
     ('if_target_status', [target_parse, byte()]),
     ('if_not_target_status', [target_parse, byte()]),
     ('if_phase', [byte()]),
-    ('ERROR', []), 
+    ('ERROR', []),
     ('if_less_than', [byte(base), byte()]),
     ('if_greater_or_equal', [byte(base), byte()]),
-    ('ERROR', []), 
-    ('ERROR', []), 
-    ('if_target_alive',[byte(), target_parse]),
+    ('ERROR', []),
+    ('ERROR', []),
+    ('if_target_alive', [byte(), target_parse]),
     ('if_bits_set', [byte(base), byte()]),
     ('if_bits_clear', [byte(base), byte()]),
     ('if_monster_in_formation', [short()]),
     ('if_solo', []),
 ]
+
 
 def _if(args):
     name, parsers = _if_name_table[args[0]]
@@ -108,7 +115,6 @@ def _if(args):
     return name, acc
 
 
-
 cmd_table = [None]*256
 for i in range(0xE0):
     cmd_table[i] = attack(i)
@@ -120,16 +126,19 @@ cmd_table[0xE5] = named('battle_event', byte())
 cmd_table[0xE6] = d_name('inc', 'dec', byte(base))
 cmd_table[0xE7] = d_name('set', 'clear', byte(base), byte())
 cmd_table[0xE8] = named('zero', byte(base))
-cmd_table[0xEA] = lambda args: (['remove', 'call'][args[0]], ['0x%02x'%(args[2])])
+cmd_table[0xEA] = lambda args: (
+    ['remove', 'call'][args[0]], ['0x%02x' % (args[2])])
 cmd_table[0xEB] = d_name('invuln', 'uninvuln', target_parse)
 cmd_table[0xEC] = named('exit_battle')
 cmd_table[0xED] = named('rand', byte())
 cmd_table[0xEF] = named('cast_spell', spell_parse)
 cmd_table[0xF0] = named('cast_spell', spell_parse, spell_parse, spell_parse)
 cmd_table[0xF1] = named('animate', byte())
-cmd_table[0xF2] = d_name('set_untargetable', 'set_targetable', monster_target_parse)
+cmd_table[0xF2] = d_name(
+    'set_untargetable', 'set_targetable', monster_target_parse)
 cmd_table[0xF3] = d_name('enable_command', 'disable_command', byte())
-cmd_table[0xF4] = lambda args: (['remove_items', 'return_items'][args[1]], []) #WTF?
+cmd_table[0xF4] = lambda args: (
+    ['remove_items', 'return_items'][args[1]], [])  # WTF?
 cmd_table[0xFB] = named('do_nothing')
 cmd_table[0xFC] = _if
 cmd_table[0xFD] = named('wait')
@@ -147,40 +156,43 @@ def parse_script(rom, dex):
 
     acc = []
     cmds = tokenize(rom, start)
-    for l,offset in cmds:
+    for l, offset in cmds:
         cmd = l[0]
         if cmd_table[cmd]:
             name, args = cmd_table[cmd](l[1:])
         else:
-            name, args = 'db', ['0x%02x'%(i) for i in l]
+            name, args = 'db', ['0x%02x' % (i) for i in l]
         acc.append((name, args))
-  
+
     return acc
 
+
 def print_list(script, dex):
-    args = ', '.join(['(\'%s\', [%s])'%(n, ', '.join(args)) for n,args in script])
-    print ('scripts[0x%x] = [%s]'%(dex, args))
+    args = ', '.join(['(\'%s\', [%s])' % (n, ', '.join(args))
+                      for n, args in script])
+    print('scripts[0x%x] = [%s]' % (dex, args))
+
 
 def print_script(script, dex):
     print('        script = BattleScript()')
-    for n,a in script:
-        print('        script.%s(%s)'%(n, ', '.join(a)))
+    for n, a in script:
+        print('        script.%s(%s)' % (n, ', '.join(a)))
         if n == 'wait_return' or n == 'start_counter':
             print()
     print('        self.script = script.fin()')
+
 
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('-r', '--rom', dest='rom',
-            help='Path to a Mario RPG rom')
+                            help='Path to a Mario RPG rom')
 
         parser.add_argument('-m', '--mode', dest='mode', choices=['parse', 'dump'],
-            help='Either parse a single script to Python code or dump all of them in intermediate form')
+                            help='Either parse a single script to Python code or dump all of them in intermediate form')
 
         parser.add_argument('-i', '--index', dest='dex', type=int,
-            help='Monster number to disassemble. Used with --mode parse.')
-
+                            help='Monster number to disassemble. Used with --mode parse.')
 
     def handle(self, *args, **options):
         mode = options['mode']
@@ -192,7 +204,8 @@ class Command(BaseCommand):
         elif mode == 'dump':
             print('# AUTOGENERATED DO NOT EDIT!!')
             print('# Run the following command if you need to reassemble the table')
-            print('# python manage.py battledisassembler --mode dump --rom ROM > randomizer/data/battlescripts.py')
+            print(
+                '# python manage.py battledisassembler --mode dump --rom ROM > randomizer/data/battlescripts.py')
             print('from .battletables import Targets, Monsters')
             print('from . import attacks, items, spells')
             print('scripts = [None]*256')
