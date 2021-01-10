@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
-from randomizer.data.eventtables import controller_direction_table, radial_direction_table, room_table, sound_table, area_object_table, npc_packet_table, location_table, shop_table, event_sequence_table, menu_tutorial_table, overworld_sequence_table, playable_characters_table, equip_slots_table, dialog_duration_table, intro_titles_table, colours_table, palette_set_types_table, music_table, music_direction_table, music_pitch_table, coord_table, coord_unit_table, tutorials_table, _0x40_flags, _0x60_flags, _0x62_flags, _0x63_flags, _0x68_flags, _0x6A_flags, _0x6B_flags, _0x81_flags, _0x84_flags
+from randomizer.data.eventtables import controller_direction_table, radial_direction_table, room_table, sound_table, area_object_table, npc_packet_table, location_table, shop_table, event_sequence_table, menu_tutorial_table, overworld_sequence_table, playable_characters_table, equip_slots_table, dialog_duration_table, intro_titles_table, colours_table, palette_set_types_table, music_table, music_direction_table, music_pitch_table, coord_table, coord_unit_table, tutorial_table, _0x40_flags, _0x60_flags, _0x62_flags, _0x63_flags, _0x68_flags, _0x6A_flags, _0x6B_flags, _0x81_flags, _0x84_flags
 from randomizer.data.items import get_default_items
-from randomizer.management.disassembler_common import shortify, bit, dbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short
+from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short
 
 
 """ start = 0x201467
@@ -47,10 +47,7 @@ event_lens = [
     2, 2, 2, 1, 2, 2, 2, 1,  3, 3, 2, 2, 3, 3, 1, 1,
     4, 4, 2, 2, 2, 2, 3, 4,  2, 2, 2, 2, 3, 3, 1, 1,
     3, 2, 4, 1, 2, 2, 2, 2,  2, 2, 1, 1, 1, 1, 1, 1,
-    3, 3, 3, 3, 2, 3, 2, , 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,
-    1, 1, 4, 4, 2, 2, 2, 1,  2, 4, 7, 7, 6, 3, 5, 4,
-    3, 3, 5, 1, 1,  4, 4, 4, 3, 4, 4, 4, 3,
+    3, 3, 3, 3, 2, 3, 2, 1,  4, 4, 4, 3, 4, 4, 4, 3,
     5, 5, 5, 5, 6, 6, 5, 5,  3, 5, 3, 3, 3, 3, 3, 3,
     2, 3, 3, 3, 1, 1, 1, 1,  5, 1, 1, 1, 1, 0, 1, 1
 ]
@@ -190,6 +187,17 @@ def fade_out_music_to_volume(args):
 def fade_out_sound_to_volume(args):
     return 'fade_out_sound_to_volume', ['duration=%i' % (args[0]), 'volume=%i' % (args[1])]
 
+def jmp_depending_on_object_event_trigger(args):
+    presence = bit(args, 1, 7)
+    obj = (args[1] & 0x7F) >> 1
+    level = shortify(args, 0) & 0x1FF
+    addr = shortify(args, 2)
+    if presence:
+        func = 'jmp_if_object_trigger_enabled'
+    else:
+        func = 'jmp_if_object_trigger_disabled'
+    return func, ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (use_table_name('Rooms', room_table, level)), '0x%04x' % (addr)]
+
 
 def jmp_depending_on_object_presence(args):
     presence = bit(args, 1, 7)
@@ -202,6 +210,11 @@ def jmp_depending_on_object_presence(args):
         func = 'jmp_if_object_not_in_level'
     return func, ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (use_table_name('Rooms', room_table, level)), '0x%04x' % (addr)]
 
+
+def mem_7000_shift_left(args):
+    addr = 2*args[0] + 0x7000
+    shift = 256 - args[1]
+    return 'mem_7000_shift_left', ['0x%04x' % (addr), '%i' % (shift)]
 
 def modify_party(args):
     char_byte = args[0]
@@ -239,6 +252,9 @@ def parse_object_coord(cmd):
                 'CoordUnits', coord_unit_table, unit)))
         return 'set_7000_to_object_coord', func_params
     return inner_parse_object_coord
+
+def pause(args):
+    return 'pause', ['%i' % (args[0] + 1)]
 
 
 def pixelate_layers(args):
@@ -346,6 +362,11 @@ def clear_bit(cmd):
         return 'clear_bit', ['0x%04x' % addr, '%i' % bit]
     return inner_clear_bit
 
+def store_set_bits(cmd):
+    def inner_set_bit(args):
+        addr, bit = parse_target_bit(cmd - 0xA8, args)
+        return 'store_set_bits', ['0x%04x' % addr, '%i' % bit]
+    return inner_set_bit
 
 def jmp_if_bit_clear(cmd):
     def inner_jmp_if_bit_clear(args):
@@ -464,13 +485,11 @@ names[0x56] = named('dec_current_HP_7000', byte(
     prefix="PlayableCharacters", table=playable_characters_table))
 names[0x57] = named('dec_current_FP_7000')
 names[0x58] = named('store_current_FP_7000')
-# 0x59 undocumented
-# 0x5A undocumented
+# 0x59 - 0x5A undocumented
 names[0x5B] = named('pause_script_if_menu_open')
 names[0x5C] = named('read_from_address', short())
 names[0x5D] = named('load_600f')
-# 0x5E undocumented
-# 0x5F undocumented
+# 0x5E - 0x5F undocumented
 names[0x60] = run_dialog
 names[0x61] = run_dialog
 names[0x62] = run_dialog_duration
@@ -484,10 +503,7 @@ names[0x68] = enter_area
 # 0x69 undocumented, unfortunately
 names[0x6A] = apply_tile_mod
 names[0x6B] = apply_solidity_mod
-# 0x6C undocumented
-# 0x6D undocumented
-# 0x6E undocumented
-# 0x6F undocumented
+# 0x6C - 0x6F undocumented
 names[0x70] = named('fade_in_from_black_sync')
 names[0x71] = named('fade_in_from_black_async')
 names[0x72] = named('fade_in_from_black_sync_duration',
@@ -517,16 +533,12 @@ names[0x83] = named('screen_flashes_with_colour', byte(
     prefix="Colours", table=colours_table))
 # note: LS interface doesn't allow the duration arg to exceed 63, however the source code suggests it should.
 names[0x84] = pixelate_layers
-# 0x85 undocumented
-# 0x86 undocumented
+# 0x85 - 0x86 undocumented
 names[0x87] = circle_mask_nonstatic
 # 0x88 undocumented
 names[0x89] = palette_set_morphs
 names[0x8A] = palette_set
-# 0x8B undocumented
-# 0x8C undocumented
-# 0x8D undocumented
-# 0x8E undocumented
+# 0x8B - 0x8E undocumented
 names[0x8F] = circle_mask_static
 names[0x90] = named('play_music_current_volume',
                     byte(prefix="Music", table=music_table))
@@ -539,8 +551,7 @@ names[0x95] = fade_out_music_to_volume
 # 0x96 undocumented
 names[0x97] = adjust_music_tempo
 names[0x98] = adjust_music_pitch
-# 0x99 undocumented
-# 0x9A undocumented
+# 0x99 - 0x9A undocumented
 names[0x9B] = named('stop_sound')
 names[0x9C] = named('play_sound', byte(
     prefix="Sounds", table=sound_table), con_int(6))
@@ -598,10 +609,7 @@ names[0xC8] = named('set_7016_to_object_xyz', byte(
 names[0xC9] = parse_object_coord(0xC9)
 names[0xCA] = named('set_7000_to_pressed_button')
 names[0xCB] = named('set_7000_to_tapped_button')
-# 0xCC undocumented
-# 0xCD undocumented
-# 0xCE undocumented
-# 0xCF undocumented
+# 0xCC - 0xCF undocumented
 names[0xD0] = named('jmp_to_event', short_int())
 names[0xD1] = named('run_event_as_subroutine', short_int())
 names[0xD2] = named('jmp', short())
@@ -640,7 +648,7 @@ names[0xEC] = named('jmp_if_comparison_result_is_greater_or_equal', short())
 names[0xED] = named('jmp_if_comparison_result_is_lesser', short())
 names[0xEE] = named('jmp_if_loaded_memory_is_below_0', short())
 names[0xEF] = named('jmp_if_loaded_memory_is_above_or_equal_0', short())
-names[0xF0] = named('pause', byte_int())
+names[0xF0] = pause
 names[0xF1] = named('pause_short', short_int())
 names[0xF2] = set_object_presence_in_level
 names[0xF3] = set_object_trigger_in_level
@@ -665,30 +673,23 @@ fd_names[0x33] = named('jmp_if_objects_action_script_running', byte(
     prefix="AreaObjects", table=area_object_table), short())
 fd_names[0x34] = named('jmp_if_object_underwater', byte(
     prefix="AreaObjects", table=area_object_table), short())
-# 0x35 undocumented
-# 0x36 undocumented
-# 0x37 undocumented
-# 0x38 undocumented
-# 0x39 undocumented
-# 0x3A undocumented
-# 0x3B undocumented
-# 0x3C undocumented
+# 0x35 - 0x3C undocumented
 fd_names[0x3D] = named('jmp_if_object_in_air', byte(
     prefix="AreaObjects", table=area_object_table), short())
 fd_names[0x3E] = named('create_packet_event_at_coords_jmp_if_null', byte(
     prefix="NPCPackets", table=npc_packet_table), short(), short())
 # 0x3F undocumented
-# 0x40 undocumented
-# 0x41 undocumented
-# 0x42 undocumented
+fd_names[0x40] = named('move_script_to_main_thread')
+fd_names[0x41] = named('move_script_to_background_thread_1')
+fd_names[0x42] = named('move_script_to_background_thread_2')
 fd_names[0x43] = named('stop_all_background_events')
+# 0x44 - 0x45 undocumented
 fd_names[0x46] = named('run_event_at_return', short_int())
-# 0x47 undocumented
-# 0x48 undocumented
-# 0x49 undocumented
+# 0x47 - 0x49 undocumented
 fd_names[0x4A] = named('open_save_menu')
 fd_names[0x4B] = named('inc_exp_by_packet')
-fd_names[0x4C] = named('run_menu_tutorial', byte(prefix="Tutorials", table=tutorial_table))
+fd_names[0x4C] = named('run_menu_tutorial', byte(
+    prefix="Tutorials", table=tutorial_table))
 fd_names[0x4D] = named('run_star_piece_sequence', byte_int())
 fd_names[0x4E] = named('run_moleville_mountain_sequence')
 fd_names[0x4F] = named('run_moleville_mountain_intro_sequence')
@@ -709,18 +710,74 @@ fd_names[0x5C] = named('restore_all_fp')
 fd_names[0x5D] = named('store_character_equipment_7000', byte(prefix="PlayableCharacters",
                                                               table=playable_characters_table), byte(prefix="EquipSlots", table=equip_slots_table), )
 fd_names[0x5E] = named('store_7000_item_quantity_to_70A7')
+# 0x5F undocumented
 fd_names[0x60] = named('pause_script_resume_on_next_dialog_page_a')
 fd_names[0x61] = named('pause_script_resume_on_next_dialog_page_a')
+fd_names[0x62] = named('if_0210_bits_012_clear_do_not_jump', short())
+# 0x63 undocumented
 fd_names[0x64] = named('set_experience_packet_7000')
 fd_names[0x65] = named('run_levelup_bonus_sequence')
 fd_names[0x66] = named('display_intro_title', byte_int(), byte(
     prefix="IntroTitles", table=intro_titles_table))
 fd_names[0x67] = named('run_ending_credits')
+# 0x68 - 0x87 undocumented
+fd_names[0x88] = named('set_bit_7_offset', dbyte(0x0158))
+fd_names[0x89] = named('clear_bit_7_offset', dbyte(0x0158))
+# 0x8A undocumented
+fd_names[0x8B] = named('set_bit_3_offset', dbyte(0x0158))
+# 0x8C - 0x8F undocumented
+fd_names[0x90] = named('store_bytes_to_0335_0556', byte(), byte())
+fd_names[0x91] = named('store_FF_to_0335')
+fd_names[0x92] = named('store_01_to_0334')
+fd_names[0x93] = named('store_00_to_0334')
 fd_names[0x94] = named('deactivate_sound_channels', flags())
+# 0x95 undocumented
 fd_names[0x96] = named('jmp_if_audio_memory_at_least', byte_int(), short())
 fd_names[0x97] = named('jmp_if_audio_memory_equals', byte_int(), short())
+# 0x98 - 0x9B undocumented
 fd_names[0x9C] = named('play_sound', byte(
     prefix="Sounds", table=sound_table), con_int(4))
+fd_names[0x9D] = named('play_sound_balance', byte(
+    prefix="Sounds", table=sound_table), byte_int())  # indistinguishable from 0x9D
+fd_names[0x9E] = named('play_music', byte(prefix="Music", table=music_table))
+fd_names[0x9F] = named('stop_music') # indistinguishable from 0x94
+fd_names[0xA0] = named('stop_music') # indistinguishable from 0x94
+fd_names[0xA1] = named('stop_music') # indistinguishable from 0x94
+fd_names[0xA2] = named('stop_music') # indistinguishable from 0x94
+fd_names[0xA3] = named('fade_out_music') # indistinguishable from 0x93
+fd_names[0xA4] = named('slow_down_music')
+fd_names[0xA5] = named('speed_up_music_to_normal')
+fd_names[0xA6] = named('stop_music') # indistinguishable from 0x94
+# 0xA7 undocumented
+fd_names[0xA8] = store_set_bits(0xA8) # this is the same as 0xA0
+fd_names[0xA9] = store_set_bits(0xA9) # this is the same as 0xA1
+fd_names[0xAA] = store_set_bits(0xAA) # this is the same as 0xA2
+# 0xAB undocumented
+fd_names[0xAC] = named('set_7000_to_7F_mem_var', short(0xF800))
+# 0xAD - 0xAF undocumented
+fd_names[0xB0] = named('mem_7000_and_const', short())
+fd_names[0xB1] = named('mem_7000_or_const', short())
+fd_names[0xB2] = named('mem_7000_xor_const', short())
+fd_names[0xB3] = named('mem_7000_and_var', dbyte(0x7000))
+fd_names[0xB4] = named('mem_7000_or_var', dbyte(0x7000))
+fd_names[0xB5] = named('mem_7000_xor_var', dbyte(0x7000))
+fd_names[0xB6] = mem_7000_shift_left
+fd_names[0xB7] = named('generate_random_num_from_range_var', dbyte(0x7000))
+fd_names[0xB8] = named('store_7000_minecart_timer')
+# 0xB9 - 0xC5 undocumented
+fd_names[0xC6] = named('clear_7016_to_7018_and_isolate_701A_high_byte_if_7018_bit_0_set')
+# 0xC7 undocumented
+fd_names[0xC8] = named('multiply_and_add_mem_3148_store_to_offset_7FB000_plus_outputx2', byte_int(), byte_int())
+# 0xC9 - 0xEF undocumented
+fd_names[0xF0] = jmp_depending_on_object_event_trigger
+# 0xF1 - 0xF7 undocumented
+fd_names[0xF8] = named('exor_crashes_into_keep')
+fd_names[0xF9] = named('mario_glows')
+fd_names[0xFA] = named('set_bit_3', con(0x01D8))
+fd_names[0xFB] = named('store_01_to_0248')
+fd_names[0xFC] = named('store_00_to_0248')
+fd_names[0xFD] = named('store_02_to_0248')
+fd_names[0xFE] = named('xor_3105_with_01')
 
 
 class Command(BaseCommand):

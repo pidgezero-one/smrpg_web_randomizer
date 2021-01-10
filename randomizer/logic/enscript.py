@@ -178,16 +178,25 @@ class EventScript:
         self.append_byte(speed)
         return self
 
+    # FD 0xC6
+    def clear_7016_to_7018_and_isolate_701A_high_byte_if_7018_bit_0_set(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xC6)
+        return self
+
     # 0xA4, 0xA5, 0xA6
     def clear_bit(self, addr, bit):
         if addr >= 0x7080:
             cmd = 0xA6
+            offset = 0x7080
         elif addr >= 0x7060:
             cmd = 0xA5
+            offset = 0x7060
         else:
             cmd = 0xA4
+            offset = 0x7040
         self.append_byte(cmd)
-        byte_0 = (addr - cmd) << 3
+        byte_0 = (addr - offset) << 3
         self.append_byte(byte_0 | bit)
         return self
 
@@ -314,8 +323,8 @@ class EventScript:
     def enable_event_trigger_for_object_at_70A8(self, args):
         self.append_byte(0xF6)
         return self
-    # 0xF7
 
+    # 0xF7
     def disable_event_trigger_for_object_at_70A8(self, args):
         self.append_byte(0xF7)
         return self
@@ -337,6 +346,12 @@ class EventScript:
         self.append_byte(0x54)
         self.append_byte(character)
         self.append_byte(item)
+        return self
+
+    # FD 0xF8
+    def exor_crashes_into_keep(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xF8)
         return self
 
     # can probably consolidate these
@@ -429,6 +444,21 @@ class EventScript:
         self.append_byte(0x31)
         return self
 
+    # FD 0xB7
+    def generate_random_num_from_range_var(self, addr):
+        self.append_byte(0xFD)
+        self.append_byte(0xB7)
+        self.append_byte((addr - 0x7000) // 2)
+        return self
+
+    # FD 0x62
+
+    def if_0210_bits_012_clear_do_not_jump(self, address):
+        self.append_byte(0xFD)
+        self.append_byte(0x62)
+        self.append_short(self.get_branch_address(address))
+        return self
+
     # FD 0x4B
     def inc_exp_by_packet(self):
         self.append_byte(0xFD)
@@ -485,12 +515,15 @@ class EventScript:
     def jmp_if_bit_clear(self, addr, bit, jump):
         if addr >= 0x7080:
             cmd = 0xDE
+            offset = 0x7080
         elif addr >= 0x7060:
             cmd = 0xDD
+            offset = 0x7060
         else:
             cmd = 0xDC
+            offset = 0x7040
         self.append_byte(cmd)
-        byte_0 = (addr - cmd) << 3
+        byte_0 = (addr - offset) << 3
         self.append_byte(byte_0 | bit)
         self.append_short(jump)
         return self
@@ -499,12 +532,15 @@ class EventScript:
     def jmp_if_bit_set(self, addr, bit, jump):
         if addr >= 0x7080:
             cmd = 0xDA
+            offset = 0x7080
         elif addr >= 0x7060:
             cmd = 0xD9
+            offset = 0x7060
         else:
             cmd = 0xD8
+            offset = 0x7040
         self.append_byte(cmd)
-        byte_0 = (addr - cmd) << 3
+        byte_0 = (addr - offset) << 3
         self.append_byte(byte_0 | bit)
         self.append_short(jump)
         return self
@@ -592,14 +628,31 @@ class EventScript:
     # 0xF8
     def jmp_if_object_in_level(self, obj, level, address):
         self.append_byte(0xF8)
-        self.append_byte(object_id)
+        self.append_byte(obj)
         self.append_short(level | (obj << 9) | (1 << 15))
         self.append_short(self.get_branch_address(address))
         return self
 
     def jmp_if_object_not_in_level(self, obj, level, address):
         self.append_byte(0xF8)
-        self.append_byte(object_id)
+        self.append_byte(obj)
+        self.append_short((level | (obj << 9)) & 0x7FFF)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # FD 0xF0
+    def jmp_if_object_trigger_enabled(self, obj, level, address):
+        self.append_byte(0xFD)
+        self.append_byte(0xF0)
+        self.append_byte(obj)
+        self.append_short(level | (obj << 9) | (1 << 15))
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    def jmp_if_object_trigger_disabled(self, obj, level, address):
+        self.append_byte(0xFD)
+        self.append_byte(0xF0)
+        self.append_byte(obj)
         self.append_short((level | (obj << 9)) & 0x7FFF)
         self.append_short(self.get_branch_address(address))
         return self
@@ -724,6 +777,12 @@ class EventScript:
         self.append_byte(0x5D)
         return self
 
+    # FD 0xF9
+    def mario_glows(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xF9)
+        return self
+
     # 0xA3
     def set_mem_704x_at_7000_bit(self):
         self.append_byte(0xA3)
@@ -732,6 +791,56 @@ class EventScript:
     # 0xA7
     def clear_mem_704x_at_7000_bit(self):
         self.append_byte(0xA7)
+        return self
+
+    # FD 0xB0
+    def mem_7000_and_const(self, value):
+        self.append_byte(0xFD)
+        self.append_byte(0xB0)
+        self.append_short(value)
+        return self
+
+    # FD 0xB3
+    def mem_7000_and_var(self, address):
+        self.append_byte(0xFD)
+        self.append_byte(0xB0)
+        self.append_byte((address - 0x7000) // 2)
+        return self
+
+    # FD 0xB1
+    def mem_7000_or_const(self, value):
+        self.append_byte(0xFD)
+        self.append_byte(0xB1)
+        self.append_short(value)
+        return self
+
+    # FD 0xB4
+    def mem_7000_or_var(self, address):
+        self.append_byte(0xFD)
+        self.append_byte(0xB3)
+        self.append_byte((address - 0x7000) // 2)
+        return self
+
+    # FD 0xB6
+    def mem_7000_shift_left(self, addr, shift):
+        self.append_byte(0xFD)
+        self.append_byte(0xB6)
+        self.append_byte((addr - 0x7000) // 2)
+        self.append_byte(256 - shift)
+        return self
+
+    # FD 0xB2
+    def mem_7000_xor_const(self, value):
+        self.append_byte(0xFD)
+        self.append_byte(0xB2)
+        self.append_short(value)
+        return self
+
+    # FD 0xB5
+    def mem_7000_xor_var(self, address):
+        self.append_byte(0xFD)
+        self.append_byte(0xB5)
+        self.append_byte((address - 0x7000) // 2)
         return self
 
     # 0xC0, 0xC1, 0xC2
@@ -758,6 +867,32 @@ class EventScript:
     # 0xBF
     def move_7016_7018_701A_to_7010_7012_7014(self, music_id):
         self.append_byte(0xBF)
+        return self
+
+    # FD 0x40
+    def move_script_to_main_thread(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x40)
+        return self
+
+    # FD 0x41
+    def move_script_to_background_thread_1(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x41)
+        return self
+
+    # FD 0x42
+    def move_script_to_background_thread_2(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x42)
+        return self
+
+    # FD 0xC8
+    def multiply_and_add_mem_3148_store_to_offset_7FB000_plus_outputx2(self, addendum, multiplicand):
+        self.append_byte(0xFD)
+        self.append_byte(0xC8)
+        self.append_byte(addendum)
+        self.append_byte(multiplicand)
         return self
 
     # 0x4B
@@ -795,8 +930,9 @@ class EventScript:
 
     # 0xF0
     def pause(self, value):
+        assert 1 <= value <= 256
         self.append_byte(0xF0)
-        self.append_byte(value)
+        self.append_byte(value - 1)
         return self
 
     # 0xF1
@@ -834,6 +970,13 @@ class EventScript:
         self.append_byte(duration)
         return self
 
+    # FD 0x9E
+    def play_music(self, music_id):
+        self.append_byte(0xFD)
+        self.append_byte(0x9E)
+        self.append_byte(music_id)
+        return self
+
     # 0x90
     def play_music_current_volume(self, music_id):
         self.append_byte(0x90)
@@ -854,7 +997,7 @@ class EventScript:
         self.append_byte(sound_id)
         return self
 
-    # 0x9D
+    # 0x9D, FD 0x9D
     def play_sound_balance(self, sound_id, balance):
         self.append_byte(0x9D)
         self.append_byte(sound_id)
@@ -890,7 +1033,7 @@ class EventScript:
         return self
 
     # 0xF5
-    def summon_object_at_70A8_to_current_level(self, args):
+    def remove_object_at_70A8_from_current_level(self, args):
         self.append_byte(0xF5)
         return self
 
@@ -1048,17 +1191,57 @@ class EventScript:
             self.append_short(value)
         return self
 
+    # FD 0xAC
+    def set_7000_to_7F_mem_var(self, addr):
+        self.append_byte(0xFD)
+        self.append_byte(0xAC)
+        self.append_short(addr - 0xF800)
+        return self
+
     # 0xA0, 0xA1, 0xA2
     def set_bit(self, addr, bit):
         if addr >= 0x7080:
             cmd = 0xA2
+            offset = 0x7080
         elif addr >= 0x7060:
             cmd = 0xA1
+            offset = 0x7060
         else:
             cmd = 0xA0
+            offset = 0x7040
         self.append_byte(cmd)
-        byte_0 = (addr - cmd) << 3
-        self.append_byte(byte_0 | bit))
+        byte_0 = (addr - offset) << 3
+        self.append_byte(byte_0 | bit)
+        return self
+
+    # FD 0xFA
+    def set_bit_3(self, address):
+        self.append_byte(0xFD)
+        if address == 0x01D8:
+            self.append_byte(0xFA)
+        else:
+            1/0
+        return self
+
+    # FD 0x8B
+    def set_bit_3_offset(self, address):
+        self.append_byte(0xFD)
+        self.append_byte(0x8B)
+        self.append_byte(((address - 0x0158) // 2) & 0x7F)
+        return self
+
+    # FD 0x88
+    def set_bit_7_offset(self, address):
+        self.append_byte(0xFD)
+        self.append_byte(0x88)
+        self.append_byte(((address - 0x0158) // 2) & 0x7F)
+        return self
+
+    # FD 0x89
+    def clear_bit_7_offset(self, address):
+        self.append_byte(0xFD)
+        self.append_byte(0x89)
+        self.append_byte(((address - 0x0158) // 2) & 0x7F)
         return self
 
     # 0xB6, 0xB7
@@ -1078,9 +1261,9 @@ class EventScript:
         return self
 
     # 0xC4, 0xC5, 0xC6
-    def set_7000_to_object_coord(self, obj, coord, unit = 0):
-        val=obj | (unit << 6)
-        cmd=coord + 0xC4
+    def set_7000_to_object_coord(self, obj, coord, unit=0):
+        val = obj | (unit << 6)
+        cmd = coord + 0xC4
         self.append_byte(cmd)
         self.append_byte(val)
         return self
@@ -1150,6 +1333,18 @@ class EventScript:
         self.append_byte(0x37)
         return self
 
+    # FD 0xA4
+    def slow_down_music(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xA4)
+        return self
+
+    # FD 0xA5
+    def speed_up_music_to_normal(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xA5)
+        return self
+
     # 0x7A
     def star_mask_expand_from_screen_center(self):
         self.append_byte(0x7A)
@@ -1171,6 +1366,73 @@ class EventScript:
     def stop_all_background_events(self):
         self.append_byte(0xFD)
         self.append_byte(0x43)
+        return self
+
+    # FD 0x90
+    def store_bytes_to_0335_0556(self, val1, val2):
+        self.append_byte(0xFD)
+        self.append_byte(0x90)
+        self.append_byte(val1)
+        self.append_byte(val2)
+        return self
+        
+    # FD 0xFC
+    def store_00_to_0248(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xFC)
+        return self
+
+    # FD 0x93
+    def store_00_to_0334(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x93)
+        return self
+        
+    # FD 0xFB
+    def store_01_to_0248(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xFB)
+        return self
+
+    # FD 0x92
+    def store_01_to_0335(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x92)
+        return self
+        
+    # FD 0xFD
+    def store_02_to_0248(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xFD)
+        return self
+
+    # FD 0x91
+    def store_FF_to_0335(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x91)
+        return self
+
+    # FD 0xB8
+    def store_7000_minecart_timer(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xB7)
+        return self
+
+    # FD 0xA8, FD 0xA9, FD 0xAA
+    def store_set_bits(self, addr, bit):
+        if addr >= 0x7080:
+            cmd = 0xAA
+            offset = 0x7080
+        elif addr >= 0x7060:
+            cmd = 0xA9
+            offset = 0x7060
+        else:
+            cmd = 0xA8
+            offset = 0x7040
+        self.append_byte(0xFD)
+        self.append_byte(cmd)
+        byte_0 = (addr - offset) << 3
+        self.append_byte(byte_0 | bit)
         return self
 
     # 0x49
@@ -1246,7 +1508,7 @@ class EventScript:
     # 0x46
     def stop_background_event(self, timer_memory):
         self.append_byte(0x46)
-        timer_memory_bits=((timer_memory - 0x701C) / 2)
+        timer_memory_bits = ((timer_memory - 0x701C) / 2)
         self.append_byte(timer_memory_bits)
         return self
 
@@ -1260,6 +1522,7 @@ class EventScript:
         self.append_byte(0xF2)
         self.append_short(level | (obj << 9) | (1 << 15))
         return self
+
     def remove_from_level(self, obj, level):
         self.append_byte(0xF2)
         self.append_short((level | (obj << 9)) & 0x7FFF)
@@ -1278,9 +1541,9 @@ class EventScript:
     # 0x80
     def tint_layers(self, red, green, blue, speed, flags):
         self.append_byte(0x7F)
-        red_=red >> 3
-        green_=green >> 3
-        blue_=blue >> 3
+        red_ = red >> 3
+        green_ = green >> 3
+        blue_ = blue >> 3
         self.append_short(red_ | (green_ << 5) | (blue_ << 10))
         self.append_byte(speed)
         self.append_byte(self.consolidate_flags(flags))
@@ -1300,6 +1563,12 @@ class EventScript:
     # 0x65
     def unsync_dialog(self):
         self.append_byte(0x65)
+        return self
+
+    # FD 0xFE
+    def xor_3105_with_01(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xFE)
         return self
 
 

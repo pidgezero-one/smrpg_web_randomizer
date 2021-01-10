@@ -5,6 +5,11 @@ def dbyte(offset=0):
         return '0x%04x' % (2*args[0] + offset), args[1:]
     return inner_dbyte
 
+def hbyte(offset=0):
+    def inner_hbyte(args):
+        return '0x%04x' % (0x20*args[0] + offset), args[1:]
+    return inner_hbyte
+
 
 def shortify(arr, dex):
     return arr[dex] + (arr[dex + 1] << 8)
