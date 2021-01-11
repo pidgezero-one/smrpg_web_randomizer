@@ -141,69 +141,6 @@ def adjust_music_tempo(args):
     return 'adjust_music_tempo', ['%s' % (use_table_name('MusicDirections', music_direction_table, direction)), 'change=%i' % (change), 'duration=%i' % (duration)]
 
 
-def parse_obj_fxn(obj):
-    def inner_parse_obj_fxn(args):
-        sub_command = args[0]
-        if sub_command <= 0xF1:
-            is_async = bit(args, 0, 7)
-            if sub_command < 0xF0:
-                if (is_async):
-                    cmd = 'action_queue_async'
-                else:
-                    cmd = 'action_queue_sync'
-                if len(args) > 1:
-                    script = [(args[1:], 0)]
-                else:
-                    script = []
-            else:
-                if (is_async):
-                    cmd = 'start_embedded_action_script_async'
-                else:
-                    cmd = 'start_embedded_action_script_sync'
-                if len(args) > 2:
-                    script = [(args[2:], 0)]
-                else:
-                    script = []
-            oc = OSCommand()
-            decompiled_script = oc.get_embedded_script(script)
-            print(decompiled_script)
-
-            return cmd, ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (decompiled_script)]
-        elif sub_command == 0xF2:
-            script = shortify(args, 1)
-            return 'set_action_script_sync', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
-        elif sub_command == 0xF3:
-            script = shortify(args, 1)
-            return 'set_action_script_async', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
-        elif sub_command == 0xF4:
-            script = shortify(args, 1)
-            return 'set_temp_action_script_sync', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
-        elif sub_command == 0xF5:
-            script = shortify(args, 1)
-            return 'set_temp_action_script_async', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
-        elif sub_command == 0xF6:
-            return 'unsync_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-        elif sub_command == 0xF7:
-            return 'summon_to_current_level_at_marios_coords', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-        elif sub_command == 0xF8:
-            return 'summon_to_current_level', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-        elif sub_command == 0xF9:
-            return 'remove_from_current_level', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-        elif sub_command == 0xFA:
-            return 'pause_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-        elif sub_command == 0xFB:
-            return 'resume_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-        elif sub_command == 0xFC:
-            return 'enable_trigger', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-        elif sub_command == 0xFD:
-            return 'disable_trigger', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-        elif sub_command == 0xFE:
-            return 'stop_embedded_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-        else:
-            return 'reset_coords', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
-    return inner_parse_obj_fxn
-
-
 def level_mod(args, prefix, table):
     area_byte = shortify(args, 0)
     use_alternate = get_flag_string(area_byte, prefix, table, [15])
@@ -318,6 +255,67 @@ def parse_object_coord(cmd):
                 'CoordUnits', coord_unit_table, unit)))
         return 'set_7000_to_object_coord', func_params
     return inner_parse_object_coord
+
+
+def parse_obj_fxn(obj):
+    def inner_parse_obj_fxn(args):
+        sub_command = args[0]
+        if sub_command <= 0xF1:
+            is_async = bit(args, 0, 7)
+            if sub_command < 0xF0:
+                if (is_async):
+                    cmd = 'action_queue_async'
+                else:
+                    cmd = 'action_queue_sync'
+                if len(args) > 1:
+                    script = [(args[1:], 0)]
+                else:
+                    script = []
+            else:  # 0xF0 and 0xF1 don't appear to be different...
+                if (is_async):
+                    cmd = 'start_embedded_action_script_async'
+                else:
+                    cmd = 'start_embedded_action_script_sync'
+                if len(args) > 2:
+                    script = [(args[2:], 0)]
+                else:
+                    script = []
+            oc = OSCommand()
+            decompiled_script = oc.get_embedded_script(script)
+            return cmd, ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (decompiled_script)]
+        elif sub_command == 0xF2:
+            script = shortify(args, 1)
+            return 'set_action_script_sync', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
+        elif sub_command == 0xF3:
+            script = shortify(args, 1)
+            return 'set_action_script_async', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
+        elif sub_command == 0xF4:
+            script = shortify(args, 1)
+            return 'set_temp_action_script_sync', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
+        elif sub_command == 0xF5:
+            script = shortify(args, 1)
+            return 'set_temp_action_script_async', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
+        elif sub_command == 0xF6:
+            return 'unsync_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xF7:
+            return 'summon_to_current_level_at_marios_coords', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xF8:
+            return 'summon_to_current_level', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xF9:
+            return 'remove_from_current_level', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFA:
+            return 'pause_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFB:
+            return 'resume_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFC:
+            return 'enable_trigger', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFD:
+            return 'disable_trigger', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFE:
+            return 'stop_embedded_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        else:
+            return 'reset_coords', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+    return inner_parse_obj_fxn
 
 
 def pause(args):
@@ -908,7 +906,7 @@ class Command(BaseCommand):
         # print(short()(0x02, 0x80))
         global rom  # Should make the round tripper work...?
         rom = bytearray(open(options['rom'], 'rb').read())
-        print('from enscript import EventScript')  # This doesn't exist...yet.
+        print('from enscript import EventScript')
         print('from .eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
         print('from randomizer.management.commands.eventdisassembler import tok')
         print('from randomizer.management.commands.objectsequencedisassembler import Command as OSCommand')

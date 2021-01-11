@@ -51,6 +51,120 @@ class EventScript:
     def level_mod(self, location, mod, flags):
         return location | mod << 8 | self.consolidate_flags(flags)
 
+    # 0x00-0x30 assemblers are below
+    def action_queue_async(self, obj, script):
+        self.append_byte(obj)
+        assert len(script) <= 128
+        self.append_byte(0x00 | (0x80) | len(script))
+        for b in script:
+            self.commands.append(b)
+        return self
+
+
+    def action_queue_sync(self, obj, script):
+        self.append_byte(obj)
+        assert len(script) <= 128
+        self.append_byte(0x00 | len(script))
+        for b in script:
+            self.commands.append(b)
+        return self
+
+    def start_embedded_action_script_async(self, obj, script):
+        self.append_byte(obj)
+        self.append_byte(0xF0)
+        assert len(script) <= 128
+        self.append_byte(0x00 | (0x80) | len(script))
+        for b in script:
+            self.commands.append(b)
+        return self
+
+    def start_embedded_action_script_sync(self, obj, script):
+        self.append_byte(obj)
+        self.append_byte(0xF0)
+        assert len(script) <= 128
+        self.append_byte(0x00 | len(script))
+        for b in script:
+            self.commands.append(b)
+        return self
+
+    # 0xF2 indistinguishable from 0xF1
+
+    def set_action_script_sync(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xF2)
+        self.append_short(script_id)
+        return self
+
+    def set_action_script_async(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xF3)
+        self.append_short(script_id)
+        return self
+
+    def set_temp_action_script_sync(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xF4)
+        self.append_short(script_id)
+        return self
+
+    def set_temp_action_script_async(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xF5)
+        self.append_short(script_id)
+        return self
+
+    def unsync_action_script(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xF6)
+        return self
+
+    def summon_to_current_level_at_marios_coords(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xF7)
+        return self
+
+    def summon_to_current_level(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xF8)
+        return self
+
+    def remove_from_current_level(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xF9)
+        return self
+
+    def pause_action_script(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xFA)
+        return self
+
+    def resume_action_script(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xFB)
+        return self
+
+    def enable_trigger(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xFC)
+        return self
+
+    def disable_trigger(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xFD)
+        return self
+
+    def stop_embedded_action_script(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xFE)
+        return self
+
+    def reset_coords(self, obj, script_id):
+        self.append_byte(obj)
+        self.append_byte(0xFF)
+        return self
+
+    # other event functions are below
+
     # 0xAA
     def add(self, address, value):
         if 0x70A0 <= address <= 0x719F:
