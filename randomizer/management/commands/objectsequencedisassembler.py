@@ -97,6 +97,7 @@ class Command(BaseCommand):
                 #print (name, args)
             commands_output.append('.%s(%s)' %
                     (name, ', '.join(args)))
+        commands_output.append('.fin()')
         return "".join(commands_output)
 
 
