@@ -1,5 +1,5 @@
-from randomizer.management.commands.battledisassembler import named, con, byte, short, items_table
-from randomizer.management.commands.eventdisassembler import shortify, bit
+from django.core.management.base import BaseCommand
+from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short
 
 banks = [
     {
@@ -10,11 +10,11 @@ banks = [
 
 sequence_lens = [
     1,  1,  1,  1,  1,  1,  1,  1,    3,  1,  2,  2,  2,  2,  2,  1,
-    2,  2,  2,  2,  2,  0,  0,  0,    0,  0,  0,  0,  0,  0,  0,  0,
+    2,  2,  2,  2,  2,  1,  1,  1,    1,  1,  1,  1,  1,  1,  1,  1,
     2,  1,  1,  2,  5,  5,  16, 16,   16, 2,  1,  5,  3,  3,  3,  7,
     3,  3,  3,  3,  2,  3,  1,  1,    1,  1,  6,  6,  5,  3,  5,  4,
     1,  1,  1,  1,  1,  1,  1,  1,    1,  1,  1,  1,  1,  1,  1,  1,
-    2,  2,  2,  2,  2,  2,  2,  2,    1,  2,  2,  1,  1,  0,  0,  0,
+    2,  2,  2,  2,  2,  2,  2,  2,    1,  2,  2,  1,  1,  1,  1,  1,
     2,  2,  2,  2,  2,  2,  2,  2,    2,  2,  2,  2,  1,  1,  1,  1,  
     1,  1,  1,  1,  1,  1,  1,  1,    1,  1,  1,  2,  1,  1,  3,  3,
     3,  3,  3,  3,  3,  1,  1,  2,    1,  1,  1,  1,  1,  1,  1,  1,
@@ -23,21 +23,27 @@ sequence_lens = [
     4,  4,  2,  2,  2,  2,  3,  4,    2,  2,  2,  2,  3,  3,  1,  1,
     3,  2,  4,  1,  2,  2,  2,  2,    2,  2,  1,  1,  1,  1,  1,  1,
     3,  1,  3,  3,  2,  1,  2,  1,    4,  4,  4,  3,  4,  4,  4,  3,
-    0,  0,  0,  0,  0,  0,  0,  0,    0,  0,  0,  0,  0,  0,  0,  0,
+    5,  5,  5,  5,  6,  6,  5,  5,    3,  5,  3,  3,  3,  3,  3,  3,
     2,  3,  3,  3,  1,  1,  1,  1,    5,  1,  1,  1,  1,  0,  1,  1
 ]
 
-# some of these may not be right
 fd_sequence_lens = [
-    1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 2,
-    1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 0, 0, 0, 0, 0, 0,
-    4, 1, 1, 3, 3, 1, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,
-    7, 7, 7, 4, 1, 1, 1, 1,  0, 0, 0, 0, 0, 4, 6, 4,
-    3, 3, 3, 2, 2, 2, 3, 0,  0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 1, 1, 1, 1,  3, 1, 1, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 3,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    5, 2, 2, 4, 4, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    8, 8, 8, 5, 2, 2, 2, 2,  2, 2, 2, 2, 2, 5, 7, 5,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    4, 4, 4, 3, 3, 3, 4, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  4, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2
 ]
 
 # I'll refactor this later
@@ -46,15 +52,11 @@ def tok(rom, start, end):
     script = []
     while dex <= end:
         cmd = rom[dex]
-        sub_command = rom[dex+1]
-        local_lens = event_lens
-        addend = 0
+        local_lens = sequence_lens
 
         if cmd == 0xFD:
             cmd = rom[dex+1]
-            local_lens = fd_event_lens
-            sub_command = rom[dex+2]
-            addend = 1
+            local_lens = fd_sequence_lens
 
         l = local_lens[cmd]
         if l == 0:
@@ -77,14 +79,35 @@ class Command(BaseCommand):
         parser.add_argument('-r', '--rom', dest='rom',
                             help='Path to a Mario RPG rom')
 
+    def get_embedded_script(self, arr):
+        commands_output = ["OSCommand()"]
+        for line, offset in arr:
+            if line[0] == 0xFD:
+                cmd = line[1]
+                rest = line[2:]
+                table = fd_names
+            else:
+                cmd = line[0]
+                rest = line[1:]
+                table = names
+            if table[cmd]:
+                name, args = table[cmd](rest)
+            else:
+                name, args = 'db', ['0x%02x' % (i) for i in line]
+                #print (name, args)
+            commands_output.append('.%s(%s)' %
+                    (name, ', '.join(args)))
+        return "".join(commands_output)
+
+
     def handle(self, *args, **options):
         global rom 
         rom = bytearray(open(options['rom'], 'rb').read())
         print('from osscript import ObjectSequenceScript')  # This doesn't exist...yet.
-        print('from .eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations')
-        print('from randomizer.management.commands.battledisassembler import tok, rom')
-        print('from . import items')
-        print('script = EventScript()')
+        #print('from .objectsequencetables import ')
+        print('from randomizer.management.commands.battledisassembler import tok')
+        #print('from . import items')
+        print('script = ObjectSequenceScript()')
 
         scripts = [
             {
@@ -93,10 +116,8 @@ class Command(BaseCommand):
             }
             for bank in banks]
 
-        script = tok(rom, banks[0]["start"], banks[0]["end"])
-
         for script in scripts:
-            for line, offset in script["script"]:
+            for line, offset in arr:
                 if line[0] == 0xFD:
                     cmd = line[1]
                     rest = line[2:]
@@ -109,9 +130,8 @@ class Command(BaseCommand):
                     name, args = table[cmd](rest)
                 else:
                     name, args = 'db', ['0x%02x' % (i) for i in line]
-                    #print (name, args)
                 print('script.%s(%s) # 0x%x' %
-                      (name, ', '.join(args), offset) + ' ' + repr(line))
+                        (name, ', '.join(args), offset) + ' ' + repr(line))
             print('''
 rez = script.fin()
 rez_tok = tok(rez, 0, len(rez)-1)

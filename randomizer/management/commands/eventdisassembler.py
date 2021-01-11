@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from randomizer.data.eventtables import controller_direction_table, radial_direction_table, room_table, sound_table, area_object_table, npc_packet_table, location_table, shop_table, event_sequence_table, menu_tutorial_table, overworld_sequence_table, playable_characters_table, equip_slots_table, dialog_duration_table, intro_titles_table, colours_table, palette_set_types_table, music_table, music_direction_table, music_pitch_table, coord_table, coord_unit_table, tutorial_table, _0x40_flags, _0x60_flags, _0x62_flags, _0x63_flags, _0x68_flags, _0x6A_flags, _0x6B_flags, _0x81_flags, _0x84_flags
 from randomizer.data.items import get_default_items
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short
+from randomizer.management.commands.objectsequencedisassembler import Command as OSCommand
 
 
 """ start = 0x201467
@@ -140,6 +141,69 @@ def adjust_music_tempo(args):
     return 'adjust_music_tempo', ['%s' % (use_table_name('MusicDirections', music_direction_table, direction)), 'change=%i' % (change), 'duration=%i' % (duration)]
 
 
+def parse_obj_fxn(obj):
+    def inner_parse_obj_fxn(args):
+        sub_command = args[0]
+        if sub_command <= 0xF1:
+            is_async = bit(args, 0, 7)
+            if sub_command < 0xF0:
+                if (is_async):
+                    cmd = 'action_queue_async'
+                else:
+                    cmd = 'action_queue_sync'
+                if len(args) > 1:
+                    script = [(args[1:], 0)]
+                else:
+                    script = []
+            else:
+                if (is_async):
+                    cmd = 'start_embedded_action_script_async'
+                else:
+                    cmd = 'start_embedded_action_script_sync'
+                if len(args) > 2:
+                    script = [(args[2:], 0)]
+                else:
+                    script = []
+            oc = OSCommand()
+            decompiled_script = oc.get_embedded_script(script)
+            print(decompiled_script)
+
+            return cmd, ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (decompiled_script)]
+        elif sub_command == 0xF2:
+            script = shortify(args, 1)
+            return 'set_action_script_sync', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
+        elif sub_command == 0xF3:
+            script = shortify(args, 1)
+            return 'set_action_script_async', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
+        elif sub_command == 0xF4:
+            script = shortify(args, 1)
+            return 'set_temp_action_script_sync', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
+        elif sub_command == 0xF5:
+            script = shortify(args, 1)
+            return 'set_temp_action_script_async', ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%i' % (script)]
+        elif sub_command == 0xF6:
+            return 'unsync_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xF7:
+            return 'summon_to_current_level_at_marios_coords', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xF8:
+            return 'summon_to_current_level', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xF9:
+            return 'remove_from_current_level', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFA:
+            return 'pause_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFB:
+            return 'resume_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFC:
+            return 'enable_trigger', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFD:
+            return 'disable_trigger', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        elif sub_command == 0xFE:
+            return 'stop_embedded_action_script', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+        else:
+            return 'reset_coords', ['%s' % (use_table_name('AreaObjects', area_object_table, obj))]
+    return inner_parse_obj_fxn
+
+
 def level_mod(args, prefix, table):
     area_byte = shortify(args, 0)
     use_alternate = get_flag_string(area_byte, prefix, table, [15])
@@ -187,6 +251,7 @@ def fade_out_music_to_volume(args):
 def fade_out_sound_to_volume(args):
     return 'fade_out_sound_to_volume', ['duration=%i' % (args[0]), 'volume=%i' % (args[1])]
 
+
 def jmp_depending_on_object_event_trigger(args):
     presence = bit(args, 1, 7)
     obj = (args[1] & 0x7F) >> 1
@@ -215,6 +280,7 @@ def mem_7000_shift_left(args):
     addr = 2*args[0] + 0x7000
     shift = 256 - args[1]
     return 'mem_7000_shift_left', ['0x%04x' % (addr), '%i' % (shift)]
+
 
 def modify_party(args):
     char_byte = args[0]
@@ -252,6 +318,7 @@ def parse_object_coord(cmd):
                 'CoordUnits', coord_unit_table, unit)))
         return 'set_7000_to_object_coord', func_params
     return inner_parse_object_coord
+
 
 def pause(args):
     return 'pause', ['%i' % (args[0] + 1)]
@@ -362,11 +429,13 @@ def clear_bit(cmd):
         return 'clear_bit', ['0x%04x' % addr, '%i' % bit]
     return inner_clear_bit
 
+
 def store_set_bits(cmd):
     def inner_set_bit(args):
         addr, bit = parse_target_bit(cmd - 0xA8, args)
         return 'store_set_bits', ['0x%04x' % addr, '%i' % bit]
     return inner_set_bit
+
 
 def jmp_if_bit_clear(cmd):
     def inner_jmp_if_bit_clear(args):
@@ -427,7 +496,54 @@ def tint_layers(args):
     return 'tint_layers', ['0x%02x' % (red), '0x%02x' % (green), '0x%02x' % (blue), 'speed=%i' % (speed), flags]
 
 
-# names[0x00] = named('animate_object', byte(), byte(), )
+names[0x00] = parse_obj_fxn(0x00)
+names[0x01] = parse_obj_fxn(0x01)
+names[0x02] = parse_obj_fxn(0x02)
+names[0x03] = parse_obj_fxn(0x03)
+names[0x04] = parse_obj_fxn(0x04)
+names[0x05] = parse_obj_fxn(0x05)
+names[0x06] = parse_obj_fxn(0x06)
+names[0x07] = parse_obj_fxn(0x07)
+names[0x08] = parse_obj_fxn(0x08)
+names[0x09] = parse_obj_fxn(0x09)
+names[0x0A] = parse_obj_fxn(0x0A)
+names[0x0B] = parse_obj_fxn(0x0B)
+names[0x0C] = parse_obj_fxn(0x0C)
+names[0x0D] = parse_obj_fxn(0x0D)
+names[0x0E] = parse_obj_fxn(0x0E)
+names[0x0F] = parse_obj_fxn(0x0F)
+names[0x10] = parse_obj_fxn(0x10)
+names[0x11] = parse_obj_fxn(0x11)
+names[0x12] = parse_obj_fxn(0x12)
+names[0x13] = parse_obj_fxn(0x13)
+names[0x14] = parse_obj_fxn(0x14)
+names[0x15] = parse_obj_fxn(0x15)
+names[0x16] = parse_obj_fxn(0x16)
+names[0x17] = parse_obj_fxn(0x17)
+names[0x18] = parse_obj_fxn(0x18)
+names[0x19] = parse_obj_fxn(0x19)
+names[0x1A] = parse_obj_fxn(0x1A)
+names[0x1B] = parse_obj_fxn(0x1B)
+names[0x1C] = parse_obj_fxn(0x1C)
+names[0x1D] = parse_obj_fxn(0x1D)
+names[0x1E] = parse_obj_fxn(0x1E)
+names[0x1F] = parse_obj_fxn(0x1F)
+names[0x20] = parse_obj_fxn(0x20)
+names[0x21] = parse_obj_fxn(0x21)
+names[0x22] = parse_obj_fxn(0x22)
+names[0x23] = parse_obj_fxn(0x23)
+names[0x24] = parse_obj_fxn(0x24)
+names[0x25] = parse_obj_fxn(0x25)
+names[0x26] = parse_obj_fxn(0x26)
+names[0x27] = parse_obj_fxn(0x27)
+names[0x28] = parse_obj_fxn(0x28)
+names[0x29] = parse_obj_fxn(0x29)
+names[0x2A] = parse_obj_fxn(0x2A)
+names[0x2B] = parse_obj_fxn(0x2B)
+names[0x2C] = parse_obj_fxn(0x2C)
+names[0x2D] = parse_obj_fxn(0x2D)
+names[0x2E] = parse_obj_fxn(0x2E)
+names[0x2F] = parse_obj_fxn(0x2F)
 names[0x30] = named('freeze_all_npcs_until_return')
 names[0x31] = named('unfreeze_all_npcs')
 names[0x32] = named('jmp_if_present_in_current_level', byte(
@@ -740,18 +856,18 @@ fd_names[0x9C] = named('play_sound', byte(
 fd_names[0x9D] = named('play_sound_balance', byte(
     prefix="Sounds", table=sound_table), byte_int())  # indistinguishable from 0x9D
 fd_names[0x9E] = named('play_music', byte(prefix="Music", table=music_table))
-fd_names[0x9F] = named('stop_music') # indistinguishable from 0x94
-fd_names[0xA0] = named('stop_music') # indistinguishable from 0x94
-fd_names[0xA1] = named('stop_music') # indistinguishable from 0x94
-fd_names[0xA2] = named('stop_music') # indistinguishable from 0x94
-fd_names[0xA3] = named('fade_out_music') # indistinguishable from 0x93
+fd_names[0x9F] = named('stop_music')  # indistinguishable from 0x94
+fd_names[0xA0] = named('stop_music')  # indistinguishable from 0x94
+fd_names[0xA1] = named('stop_music')  # indistinguishable from 0x94
+fd_names[0xA2] = named('stop_music')  # indistinguishable from 0x94
+fd_names[0xA3] = named('fade_out_music')  # indistinguishable from 0x93
 fd_names[0xA4] = named('slow_down_music')
 fd_names[0xA5] = named('speed_up_music_to_normal')
-fd_names[0xA6] = named('stop_music') # indistinguishable from 0x94
+fd_names[0xA6] = named('stop_music')  # indistinguishable from 0x94
 # 0xA7 undocumented
-fd_names[0xA8] = store_set_bits(0xA8) # this is the same as 0xA0
-fd_names[0xA9] = store_set_bits(0xA9) # this is the same as 0xA1
-fd_names[0xAA] = store_set_bits(0xAA) # this is the same as 0xA2
+fd_names[0xA8] = store_set_bits(0xA8)  # this is the same as 0xA0
+fd_names[0xA9] = store_set_bits(0xA9)  # this is the same as 0xA1
+fd_names[0xAA] = store_set_bits(0xAA)  # this is the same as 0xA2
 # 0xAB undocumented
 fd_names[0xAC] = named('set_7000_to_7F_mem_var', short(0xF800))
 # 0xAD - 0xAF undocumented
@@ -765,9 +881,11 @@ fd_names[0xB6] = mem_7000_shift_left
 fd_names[0xB7] = named('generate_random_num_from_range_var', dbyte(0x7000))
 fd_names[0xB8] = named('store_7000_minecart_timer')
 # 0xB9 - 0xC5 undocumented
-fd_names[0xC6] = named('clear_7016_to_7018_and_isolate_701A_high_byte_if_7018_bit_0_set')
+fd_names[0xC6] = named(
+    'clear_7016_to_7018_and_isolate_701A_high_byte_if_7018_bit_0_set')
 # 0xC7 undocumented
-fd_names[0xC8] = named('multiply_and_add_mem_3148_store_to_offset_7FB000_plus_outputx2', byte_int(), byte_int())
+fd_names[0xC8] = named(
+    'multiply_and_add_mem_3148_store_to_offset_7FB000_plus_outputx2', byte_int(), byte_int())
 # 0xC9 - 0xEF undocumented
 fd_names[0xF0] = jmp_depending_on_object_event_trigger
 # 0xF1 - 0xF7 undocumented
@@ -792,7 +910,8 @@ class Command(BaseCommand):
         rom = bytearray(open(options['rom'], 'rb').read())
         print('from enscript import EventScript')  # This doesn't exist...yet.
         print('from .eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
-        print('from randomizer.management.commands.battledisassembler import tok, rom')
+        print('from randomizer.management.commands.eventdisassembler import tok')
+        print('from randomizer.management.commands.objectsequencedisassembler import Command as OSCommand')
         print('from . import items')
         print('script = EventScript()')
 
@@ -802,8 +921,6 @@ class Command(BaseCommand):
                 "bank": bank
             }
             for bank in banks]
-
-        script = tok(rom, banks[0]["start"], banks[0]["end"])
 
         for script in scripts:
             for line, offset in script["script"]:
