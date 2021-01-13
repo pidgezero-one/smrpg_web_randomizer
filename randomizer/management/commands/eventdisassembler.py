@@ -110,20 +110,22 @@ def tok(rom, bank, pointers, event_lengths):
                 event_id += 1
 
         is_nonembedded = dex in jumped_to_from_action_queue and is_eligible_nonembedded_command(rom[dex:(dex+2)])
+        sequence_bytes = []
 
         # I don't trust this at all, but I have no idea how to determine this otherwise
         if is_nonembedded:
             ind_ = 0
-            scr = ""
             oc = OSCommand()
-            # lmao
-            while (".ret()" not in scr and (dex + ind_ < pointers[event_id + 1])):
+            return_bytes = []
+            while (len(return_bytes) == 0 and (dex + ind_ < pointers[event_id + 1])):
                 ind_ += 1
                 try:
-                    scr = oc.get_embedded_script(rom[dex:(dex + ind_)])
+                    cmds = oc.get_embedded_script(rom[dex:(dex + ind_)])
+                    return_bytes = [c['cmd'] for c in cmds["commands"] if c['cmd'] == 0xFE]
                 except:
                     pass
             l = ind_
+            sequence_bytes = rom[(dex):(dex+l)]
         else:
 
             cmd = rom[dex]
@@ -142,32 +144,30 @@ def tok(rom, bank, pointers, event_lengths):
                 if 0xF0 <= sub_command <= 0xF1:
                     l = obj_event_lens[sub_command & 0x0F] + \
                         (rom[dex+2] & 0x7F) + addend
+                    sequence_bytes = rom[(dex+3):(dex+l)]
                 elif 0xF2 <= sub_command <= 0xFF:
                     l = obj_event_lens[sub_command & 0x0F] + addend
                 else:
                     l = (sub_command & 0x7F) + 2 + addend
+                    sequence_bytes = rom[(dex+2):(dex+l)]
 
         if (cmd is not None and sub_command is not None and cmd < 0x30 and sub_command <= 0xF1) or is_nonembedded:
-            line = parse_line(rom[dex:dex+l], dex)
-            # I don't know if this will cover every scenario! This is very very bad and assumes a lot about the disassembler's formatting, but I can't think of another way to figure out ahead of time if a future offset should be parsed as a non-embedded queue or not.
-            # This gets any jump addresses out of the script.
-            if ("jmp" in line):
-                jumps_to_investigate = [m.start()
-                                        for m in re.finditer('jmp', line)]
-                for iter in jumps_to_investigate:
-                    ind = iter
-                    while (line[ind] != "("):
-                        ind += 1
-                    find_dest = line[(ind+1):]
-                    ind = 0
-                    while (find_dest[ind] != ")"):
-                        ind += 1
-                    jump_args = [a.strip()
-                                 for a in find_dest[:ind].split(", ")]
-                    arg_we_want = jump_args[len(jump_args) - 1]
-                    arg_we_want = int(arg_we_want, 0)
-                    if ((dex & 0xFFFF) <= arg_we_want and arg_we_want < (dex & 0xFFFF) + event_lengths[event_id]):
-                        dubious_address = (bank["id"] << 16) | arg_we_want
+            oc = OSCommand()
+            cmds = oc.get_embedded_script(sequence_bytes)
+            jump_cmds = [c for c in cmds["commands"] if c['has_jump']]
+            # I don't know if this will cover every scenario.
+            # This assumes _a lot_ about non-embedded queues, namely:
+            # Must be jumped to from another embedded queue in the same script, and must start with 0xFD 9E, 0x10, or 0x7D
+            # Also assumes the jump address is the single last arg in an object sequence script, which appears to be true
+            # - at least for all documented functions.
+            # Don't need to worry about FD object sequence commands as none of them seem to have jumps
+            if (len(jump_cmds) > 0):
+                for jmp in jump_cmds:
+                    target_addr_bytes = jmp["args"][-2:]
+                    target_addr = shortify(target_addr_bytes, 0)
+                    short_offset = dex & 0xFFFF
+                    if (short_offset <= target_addr and target_addr < short_offset + event_lengths[event_id]):
+                        dubious_address = (bank["id"] << 16) | target_addr
                         jumped_to_from_action_queue.append(dubious_address)
 
         if l == 0:
@@ -184,7 +184,8 @@ def tok(rom, bank, pointers, event_lengths):
 def parse_line(line, offset, with_comments=True):
     if offset in jumped_to_from_action_queue and is_eligible_nonembedded_command(line[0:2]):
         oc = OSCommand()
-        decompiled_script = oc.get_embedded_script(line)
+        cmds = oc.get_embedded_script(line)
+        decompiled_script = cmds["header"] + ''.join([cmd["text"] for cmd in cmds["commands"]]) + cmds["footer"]
         name, args = 'non_embedded_action_queue', ['%s' % (decompiled_script)]
     else:
         if line[0] == 0xFD:
@@ -370,7 +371,8 @@ def parse_obj_fxn(obj):
                 else:
                     script = []
             oc = OSCommand()
-            decompiled_script = oc.get_embedded_script(script)
+            cmds = oc.get_embedded_script(script)
+            decompiled_script = cmds["header"] + ''.join([cmd["text"] for cmd in cmds["commands"]]) + cmds["footer"]
             return cmd, ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (decompiled_script)]
         elif sub_command == 0xF2:
             script = shortify(args, 1)

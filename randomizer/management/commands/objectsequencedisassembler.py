@@ -511,6 +511,8 @@ fd_names[0xB5] = named('mem_700C_xor_var', dbyte(0x7000))
 fd_names[0xB6] = mem_700C_shift_left
 # 0xB7 - 0xFF undocumented
 
+jmp_cmds = [0x3D, 0x3E, 0x3F, 0xD2, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xDB, 0xDf, 0xE0, 0xE1, 0xE2, 0xE4, 0xE3, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF8]
+
 
 class Command(BaseCommand):
 
@@ -519,7 +521,7 @@ class Command(BaseCommand):
                             help='Path to a Mario RPG rom')
 
     def get_embedded_script(self, arr):
-        commands_output = ["OSCommand()"]
+        commands_output = []
         a = tok(arr, 0, len(arr) - 1)
         for line, _ in a:
             if line[0] == 0xFD:
@@ -534,11 +536,18 @@ class Command(BaseCommand):
                 name, args = table[cmd](rest)
             else:
                 name, args = 'db', ['0x%02x' % (i) for i in line]
-                #print (name, args)
-            commands_output.append('.%s(%s)' %
-                                   (name, ', '.join(args)))
-        commands_output.append('.fin()')
-        return "".join(commands_output)
+            commands_output.append({
+                "cmd": cmd,
+                "name": name,
+                "args": rest,
+                "text": '.%s(%s)' % (name, ', '.join(args)),
+                "has_jump": cmd in jmp_cmds
+            })
+        return {
+            "header": "OSCommand()",
+            "commands": commands_output,
+            "footer": '.fin()'
+        }
 
     def handle(self, *args, **options):
         global rom
