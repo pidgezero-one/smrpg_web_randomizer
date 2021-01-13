@@ -1,38 +1,41 @@
+import re
 from django.core.management.base import BaseCommand
 from randomizer.data.eventtables import controller_direction_table, radial_direction_table, room_table, sound_table, area_object_table, npc_packet_table, location_table, shop_table, event_sequence_table, menu_tutorial_table, overworld_sequence_table, playable_characters_table, equip_slots_table, dialog_duration_table, intro_titles_table, colours_table, palette_set_types_table, music_table, music_direction_table, music_pitch_table, coord_table, coord_unit_table, tutorial_table, _0x40_flags, _0x60_flags, _0x62_flags, _0x63_flags, _0x68_flags, _0x6A_flags, _0x6B_flags, _0x81_flags, _0x84_flags
 from randomizer.data.items import get_default_items
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short
 from randomizer.management.commands.objectsequencedisassembler import Command as OSCommand
-
-
-""" start = 0x201467
-end = 0x201837
-
-start = 0x1E6173
-end = 0x1E66F8
-
-start = 0x1FB4C1
-end = 0x1FB522 """
+import numpy as np
 
 banks = [
     {
+        "id": 0x1E,
         "start": 0x1E0C00,
-        "end": 0x1EFFFF
+        "end": 0x1EFFFF,
+        "pointers": {
+            "start": 0x1E0000,
+            "end": 0x1E0BFF
+        }
     },
     {
+        "id": 0x1F,
         "start": 0x1F0C00,
-        "end": 0x1FFFFF
+        "end": 0x1FFFFF,
+        "pointers": {
+            "start": 0x1F0000,
+            "end": 0x1F0BFF
+        }
     },
     {
+        "id": 0x20,
         "start": 0x200800,
-        "end": 0x20DFFF
+        "end": 0x20DFFF,
+        "pointers": {
+            "start": 0x200000,
+            "end": 0x2007FF
+        }
     },
 ]
 
-"""start = 0x200800
-end = 0x20DFFF"""
-# why do these addresses break it?
-# probably needs an animation parser to fix
 
 event_lens = [
     0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,
@@ -78,42 +81,128 @@ obj_event_lens = [
 
 items_table = build_table(get_default_items(None))
 
+jumped_to_from_action_queue = []
 
-def tok(rom, start, end):
+
+def is_eligible_nonembedded_command(cmd):
+    if cmd[0] == 0x10:
+        return True
+    elif cmd[0] == 0x7D:
+        return True
+    elif cmd[0] == 0xFD and cmd[1] == 0x9E:
+        return True
+    else:
+        return False
+
+
+def tok(rom, bank, pointers, event_lengths):
+    start = bank["start"]
+    end = bank["end"]
     dex = start
     script = []
+    event_id = 0
     while dex <= end:
-        cmd = rom[dex]
-        sub_command = rom[dex+1]
-        local_lens = event_lens
-        addend = 0
+        cmd = None
+        sub_command = None
+        if (dex >= pointers[event_id] + event_lengths[event_id]):
+            event_id += 1
+            while event_lengths[event_id] == 0:
+                event_id += 1
 
-        if cmd == 0xFD:
-            cmd = rom[dex+1]
-            local_lens = fd_event_lens
-            sub_command = rom[dex+2]
-            addend = 1
+        is_nonembedded = dex in jumped_to_from_action_queue and is_eligible_nonembedded_command(rom[dex:(dex+2)])
 
-        l = local_lens[cmd]
-        if cmd < 0x30:
-            if 0xF0 <= sub_command <= 0xF1:
-                l = obj_event_lens[sub_command & 0x0F] + \
-                    (rom[dex+2] & 0x7F) + addend
-            elif 0xF2 <= sub_command <= 0xFF:
-                l = obj_event_lens[sub_command & 0x0F] + addend
-            else:
-                l = (sub_command & 0x7F) + 2 + addend
-        # print(rom[dex:dex+l], hex(dex))
+        # I don't trust this at all, but I have no idea how to determine this otherwise
+        if is_nonembedded:
+            ind_ = 0
+            scr = ""
+            oc = OSCommand()
+            # lmao
+            while (".ret()" not in scr and (dex + ind_ < pointers[event_id + 1])):
+                ind_ += 1
+                try:
+                    scr = oc.get_embedded_script(rom[dex:(dex + ind_)])
+                except:
+                    pass
+            l = ind_
+        else:
+
+            cmd = rom[dex]
+            sub_command = rom[dex+1]
+            local_lens = event_lens
+            addend = 0
+
+            if cmd == 0xFD:
+                cmd = rom[dex+1]
+                local_lens = fd_event_lens
+                sub_command = rom[dex+2]
+                addend = 1
+
+            l = local_lens[cmd]
+            if cmd < 0x30:
+                if 0xF0 <= sub_command <= 0xF1:
+                    l = obj_event_lens[sub_command & 0x0F] + \
+                        (rom[dex+2] & 0x7F) + addend
+                elif 0xF2 <= sub_command <= 0xFF:
+                    l = obj_event_lens[sub_command & 0x0F] + addend
+                else:
+                    l = (sub_command & 0x7F) + 2 + addend
+
+        if (cmd is not None and sub_command is not None and cmd < 0x30 and sub_command <= 0xF1) or is_nonembedded:
+            line = parse_line(rom[dex:dex+l], dex)
+            # I don't know if this will cover every scenario! This is very very bad and assumes a lot about the disassembler's formatting, but I can't think of another way to figure out ahead of time if a future offset should be parsed as a non-embedded queue or not.
+            # This gets any jump addresses out of the script.
+            if ("jmp" in line):
+                jumps_to_investigate = [m.start()
+                                        for m in re.finditer('jmp', line)]
+                for iter in jumps_to_investigate:
+                    ind = iter
+                    while (line[ind] != "("):
+                        ind += 1
+                    find_dest = line[(ind+1):]
+                    ind = 0
+                    while (find_dest[ind] != ")"):
+                        ind += 1
+                    jump_args = [a.strip()
+                                 for a in find_dest[:ind].split(", ")]
+                    arg_we_want = jump_args[len(jump_args) - 1]
+                    arg_we_want = int(arg_we_want, 0)
+                    if ((dex & 0xFFFF) <= arg_we_want and arg_we_want < (dex & 0xFFFF) + event_lengths[event_id]):
+                        dubious_address = (bank["id"] << 16) | arg_we_want
+                        jumped_to_from_action_queue.append(dubious_address)
+
         if l == 0:
             print(hex(cmd), hex(rom[dex+2]), hex(dex))
             for i in script:
                 print(list(map(hex, i)))
             print(hex(cmd), hex(dex))
             1/0
-        # print(list(map(hex, [l, start, end, dex])))
         script.append((rom[dex:dex+l], dex))
         dex += l
     return script
+
+
+def parse_line(line, offset, with_comments=True):
+    if offset in jumped_to_from_action_queue and is_eligible_nonembedded_command(line[0:2]):
+        oc = OSCommand()
+        decompiled_script = oc.get_embedded_script(line)
+        name, args = 'non_embedded_action_queue', ['%s' % (decompiled_script)]
+    else:
+        if line[0] == 0xFD:
+            cmd = line[1]
+            rest = line[2:]
+            table = fd_names
+        else:
+            cmd = line[0]
+            rest = line[1:]
+            table = names
+        if table[cmd]:
+            name, args = table[cmd](rest)
+        else:
+            name, args = 'db', ['0x%02x' % (i) for i in line]
+    if (with_comments):
+        return 'script.%s(%s) # 0x%x' % (name, ', '.join(args), offset) + ' ' + repr(line)
+    else:
+        return 'script.%s(%s)' % (name, ', '.join(args))
 
 
 fd_names = [None]*256
@@ -268,7 +357,7 @@ def parse_obj_fxn(obj):
                 else:
                     cmd = 'action_queue_sync'
                 if len(args) > 1:
-                    script = [(args[1:], 0)]
+                    script = args[1:]
                 else:
                     script = []
             else:  # 0xF0 and 0xF1 don't appear to be different...
@@ -277,7 +366,7 @@ def parse_obj_fxn(obj):
                 else:
                     cmd = 'start_embedded_action_script_sync'
                 if len(args) > 2:
-                    script = [(args[2:], 0)]
+                    script = args[2:]
                 else:
                     script = []
             oc = OSCommand()
@@ -320,6 +409,11 @@ def parse_obj_fxn(obj):
 
 def pause(args):
     return 'pause', ['%i' % (args[0] + 1)]
+
+
+def pause_short(args):
+    s = shortify(args, 0)
+    return 'pause', ['%i' % (s + 1)]
 
 
 def pixelate_layers(args):
@@ -763,7 +857,7 @@ names[0xED] = named('jmp_if_comparison_result_is_lesser', short())
 names[0xEE] = named('jmp_if_loaded_memory_is_below_0', short())
 names[0xEF] = named('jmp_if_loaded_memory_is_above_or_equal_0', short())
 names[0xF0] = pause
-names[0xF1] = named('pause_short', short_int())
+names[0xF1] = pause_short
 names[0xF2] = set_object_presence_in_level
 names[0xF3] = set_object_trigger_in_level
 names[0xF4] = named('summon_object_at_70A8_to_current_level')
@@ -771,8 +865,7 @@ names[0xF5] = named('remove_object_at_70A8_from_current_level')
 names[0xF6] = named('enable_event_trigger_for_object_at_70A8')
 names[0xF7] = named('disable_event_trigger_for_object_at_70A8')
 names[0xF8] = jmp_depending_on_object_presence
-names[0xF9] = named('jmp_to_start_of_this_script')
-# appears to be no difference with F9
+names[0xF9] = named('jmp_to_start_of_this_script')  # indistinguishable from F9
 names[0xFA] = named('jmp_to_start_of_this_script')
 names[0xFB] = named('reset_and_choose_game')
 names[0xFC] = named('reset_game')
@@ -908,45 +1001,44 @@ class Command(BaseCommand):
         rom = bytearray(open(options['rom'], 'rb').read())
         print('from enscript import EventScript')
         print('from .eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
-        print('from randomizer.management.commands.eventdisassembler import tok')
+        print('from randomizer.management.commands.eventdisassembler import tok, banks')
         print('from randomizer.management.commands.objectsequencedisassembler import Command as OSCommand')
         print('from . import items')
-        print('script = EventScript()')
 
-        scripts = [
-            {
-                "script": tok(rom, bank["start"], bank["end"]),
-                "bank": bank
-            }
-            for bank in banks]
+        for j in range(len(banks)):
 
-        for script in scripts:
-            for line, offset in script["script"]:
-                if line[0] == 0xFD:
-                    cmd = line[1]
-                    rest = line[2:]
-                    table = fd_names
+            bank = banks[j]
+            print('script = EventScript()')
+            ptrs = []
+            for i in range(bank["pointers"]["start"], bank["pointers"]["end"], 2):
+                ptrs.append((bank["id"] << 16) | (shortify(rom, i)))
+            event_lengths = []
+            for i in range(len(ptrs)):
+                if (i < len(ptrs) - 1):
+                    event_lengths.append(ptrs[i + 1] - ptrs[i])
                 else:
-                    cmd = line[0]
-                    rest = line[1:]
-                    table = names
-                if table[cmd]:
-                    name, args = table[cmd](rest)
-                else:
-                    name, args = 'db', ['0x%02x' % (i) for i in line]
-                    # print (name, args)
-                print('script.%s(%s) # 0x%x' %
-                      (name, ', '.join(args), offset) + ' ' + repr(line))
+                    event_lengths.append(((bank["id"] + 1) << 16) - ptrs[i])
+            print('event_lengths = %r' % event_lengths)
+            print('pointers = %r' % ptrs)
+
+            script = tok(rom, bank, ptrs, event_lengths)
+
+            for line, offset in script:
+                print(parse_line(line, offset, True))
+
             print('''
 rez = script.fin()
-rez_tok = tok(rez, 0, len(rez)-1)
+rez_tok = tok(rez, banks[%i], pointers, event_lengths)
 
-start = 0x%x
-end = 0x%x
-rom_tok = tok(rom, start, end)
+rom_tok = tok(rom, banks[%i], pointers, event_lengths)
 
 for l,r in zip(rez_tok, rom_tok):
 if l[0] != r[0]:
     print(l, r)
 
-''' % (script["bank"]["start"], script["bank"]["end"]))
+''' % (j, j))
+
+        # print(jumped_to_from_action_queue)
+        for x in jumped_to_from_action_queue:
+            print(hex(x))
+        #print (', '.join('0x{:06x}'.format(x) for x in jumped_to_from_action_queue))

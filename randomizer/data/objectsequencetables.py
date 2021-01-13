@@ -48,3 +48,14 @@ sequence_speed_table = {
 SequenceSpeeds = SimpleNamespace()
 for i in sequence_speed_table:
     setattr(SequenceSpeeds, sequence_speed_table[i], i)
+
+vram_priority_table = {
+    0: 'MARIO_OVERLAPS_ON_ALL_SIDES',
+    1: 'NORMAL',
+    2: 'OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES',
+    3: 'PRIORITY_3'
+}
+
+VramPriority = SimpleNamespace()
+for i in vram_priority_table:
+    setattr(VramPriority, vram_priority_table[i], i)

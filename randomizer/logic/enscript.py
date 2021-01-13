@@ -78,6 +78,11 @@ class EventScript:
             self.commands.append(b)
         return self
 
+    def non_embedded_action_queue(self, script):
+        for b in script:
+            self.commands.append(b)
+        return self
+
     def start_embedded_action_script_sync(self, obj, script):
         self.append_byte(obj)
         self.append_byte(0xF0)
@@ -742,14 +747,12 @@ class EventScript:
     # 0xF8
     def jmp_if_object_in_level(self, obj, level, address):
         self.append_byte(0xF8)
-        self.append_byte(obj)
         self.append_short(level | (obj << 9) | (1 << 15))
         self.append_short(self.get_branch_address(address))
         return self
 
     def jmp_if_object_not_in_level(self, obj, level, address):
         self.append_byte(0xF8)
-        self.append_byte(obj)
         self.append_short((level | (obj << 9)) & 0x7FFF)
         self.append_short(self.get_branch_address(address))
         return self
@@ -973,7 +976,6 @@ class EventScript:
         return self
 
     # 0xBE
-
     def move_7010_7012_7014_to_7016_7018_701A(self, music_id):
         self.append_byte(0xBE)
         return self
@@ -1392,13 +1394,25 @@ class EventScript:
         self.append_byte(0xCB)
         return self
 
+    # 0xC7
+    def set_7010_to_object_xyz(self, obj):
+        self.append_byte(0xC7)
+        self.append_byte(obj)
+        return self
+
+    # 0xC8
+    def set_7016_to_object_xyz(self, obj):
+        self.append_byte(0xC8)
+        self.append_byte(obj)
+        return self
+
     # FD 0x64
     def set_experience_packet_7000(self):
         self.append_byte(0xFD)
         self.append_byte(0x64)
         return self
 
-    # FD 0xD6
+    # 0xD6
     def set_object_memory_to(self, address):
         self.append_byte(0xD6)
         self.append_byte((address - 0x7000) // 2)

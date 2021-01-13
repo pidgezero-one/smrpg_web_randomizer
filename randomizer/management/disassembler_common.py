@@ -119,3 +119,4 @@ def parse_flags(value, prefix='', table=None, bits=None):
             else:
                 b.append('%i' % i)
     return b
+
