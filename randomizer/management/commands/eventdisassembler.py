@@ -4,7 +4,8 @@ from randomizer.data.eventtables import controller_direction_table, radial_direc
 from randomizer.data.items import get_default_items
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short
 from randomizer.management.commands.objectsequencedisassembler import Command as OSCommand
-import numpy as np
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
 banks = [
     {
@@ -95,16 +96,14 @@ def is_eligible_nonembedded_command(cmd):
         return False
 
 
-def tok(rom, bank, pointers, event_lengths):
-    start = bank["start"]
-    end = bank["end"]
+def tok(rom, start, end, bank, pointers, event_lengths, offset=0):
     dex = start
     script = []
     event_id = 0
     while dex <= end:
         cmd = None
         sub_command = None
-        if (dex >= pointers[event_id] + event_lengths[event_id]):
+        if (dex + offset >= pointers[event_id] + event_lengths[event_id]):
             event_id += 1
             while event_lengths[event_id] == 0:
                 event_id += 1
@@ -117,7 +116,7 @@ def tok(rom, bank, pointers, event_lengths):
             ind_ = 0
             oc = OSCommand()
             return_bytes = []
-            while (len(return_bytes) == 0 and (dex + ind_ < pointers[event_id + 1])):
+            while (len(return_bytes) == 0 and (dex + offset + ind_ < pointers[event_id + 1])):
                 ind_ += 1
                 try:
                     cmds = oc.get_embedded_script(rom[dex:(dex + ind_)])
@@ -151,6 +150,7 @@ def tok(rom, bank, pointers, event_lengths):
                     l = (sub_command & 0x7F) + 2 + addend
                     sequence_bytes = rom[(dex+2):(dex+l)]
 
+        print(hex(dex + offset), hex(cmd), hex(sub_command), event_id)
         if (cmd is not None and sub_command is not None and cmd < 0x30 and sub_command <= 0xF1) or is_nonembedded:
             oc = OSCommand()
             cmds = oc.get_embedded_script(sequence_bytes)
@@ -415,7 +415,7 @@ def pause(args):
 
 def pause_short(args):
     s = shortify(args, 0)
-    return 'pause', ['%i' % (s + 1)]
+    return 'pause_short', ['%i' % (s + 1)]
 
 
 def pixelate_layers(args):
@@ -449,7 +449,7 @@ def run_bkgd_event_pause_math(args):
     s = shortify(args, 0)
     event_id = s & 0x0FFF
     timer_memory = 0x701C + (args[1] >> 6) * 2
-    return ['event_id=%i' % (event_id), 'timer_memory=0x%04x' % (timer_memory), get_flag_string(s, bits=[12, 13])]
+    return ['event_id=%i' % (event_id), 'timer_memory=0x%04x' % (timer_memory), 'flags=%s' % get_flag_string(s, bits=[12, 13])]
 
 
 def run_background_event_with_pause(args):
@@ -587,7 +587,7 @@ def tint_layers(args):
     speed = args[3]
     flags = get_flag_string(args[2], '_0x81Flags',
                             _0x81_flags, [0, 1, 2, 4, 5, 6, 7])
-    return 'tint_layers', ['0x%02x' % (red), '0x%02x' % (green), '0x%02x' % (blue), 'speed=%i' % (speed), flags]
+    return 'tint_layers', ['0x%02x' % (red), '0x%02x' % (green), '0x%02x' % (blue), 'speed=%i' % (speed), 'flags=%s' % flags]
 
 
 names[0x00] = parse_obj_fxn(0x00)
@@ -644,9 +644,9 @@ names[0x32] = named('jmp_if_present_in_current_level', byte(
     prefix="AreaObjects", table=area_object_table), short())
 # 33 undocumented
 names[0x34] = named('enable_controls_until_return', flags(
-    prefix='ControllerDirections', table=controller_direction_table, bits=[5, 6, 7]))
+    prefix='ControllerDirections', table=controller_direction_table))
 names[0x35] = named('enable_controls', flags(
-    prefix='ControllerDirections', table=controller_direction_table, bits=[5, 6, 7]))
+    prefix='ControllerDirections', table=controller_direction_table))
 names[0x36] = modify_party
 names[0x37] = named('set_short_party_capacity')
 names[0x38] = set_short_member_in_slot
@@ -1001,11 +1001,16 @@ class Command(BaseCommand):
         # print(short()(0x02, 0x80))
         global rom  # Should make the round tripper work...?
         rom = bytearray(open(options['rom'], 'rb').read())
-        print('from enscript import EventScript')
-        print('from .eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
+        print('from django.core.management.base import BaseCommand')
+        print('from randomizer.logic.enscript import EventScript')
+        print('from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
         print('from randomizer.management.commands.eventdisassembler import tok, banks')
-        print('from randomizer.management.commands.objectsequencedisassembler import Command as OSCommand')
-        print('from . import items')
+        print('from randomizer.logic.osscript import ObjectSequenceScript as OSCommand')
+        print('from randomizer.data import items')
+        print('from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
+        print('from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
+        print('rez_tok = []')
+        print('rom_tok = []')
 
         for j in range(len(banks)):
 
@@ -1023,24 +1028,31 @@ class Command(BaseCommand):
             print('event_lengths = %r' % event_lengths)
             print('pointers = %r' % ptrs)
 
-            script = tok(rom, bank, ptrs, event_lengths)
+            script = tok(rom, bank["start"], bank["end"], bank, ptrs, event_lengths)
 
             for line, offset in script:
                 print(parse_line(line, offset, True))
 
+            start = bank["start"]
+            end = bank["end"]
+            length = end - start
+
             print('''
 rez = script.fin()
-rez_tok = tok(rez, banks[%i], pointers, event_lengths)
+rez_tok.append(tok(rez, 0, %i, banks[%i], pointers, event_lengths, banks[%i]["start"]))
 
-rom_tok = tok(rom, banks[%i], pointers, event_lengths)
+rom_tok.append(tok(rom, %i, %i, banks[%i], pointers, event_lengths))''' % (length, j, j, start, end, j))
 
-for l,r in zip(rez_tok, rom_tok):
-if l[0] != r[0]:
-    print(l, r)
 
-''' % (j, j))
+        print('''
+class Command(BaseCommand):
+    def handle(self, *args, **options):
+        for i in range(len(rez_tok)):
+            for l,r in zip(rez_tok[i], rom_tok[i]):
+                if l[0] != r[0]:
+                    print(l, r)
+''')
 
-        # print(jumped_to_from_action_queue)
-        for x in jumped_to_from_action_queue:
-            print(hex(x))
-        #print (', '.join('0x{:06x}'.format(x) for x in jumped_to_from_action_queue))
+# not working right now because non-embedded action queues mess everything up
+# as well as duplicate commands (like 0x94 and 0xFD0xA2) w/ diff lengths
+# next step should be to introduce jump system

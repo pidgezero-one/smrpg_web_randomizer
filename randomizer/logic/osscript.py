@@ -581,7 +581,7 @@ class ObjectSequenceScript:
         return self
 
     # 0x94
-    def transfer_xyzf_pixelss(self, x, y, z, direction):
+    def transfer_xyzf_pixels(self, x, y, z, direction):
         self.append_byte(0x94)
         self.append_byte(x)
         self.append_byte(y)
@@ -1193,6 +1193,7 @@ class ObjectSequenceScript:
 
     # FD 0x0F
     def set_priority(self, priority):
+        self.append_byte(0xFD)
         self.append_byte(0x0F)
         self.append_byte(priority)
         return self

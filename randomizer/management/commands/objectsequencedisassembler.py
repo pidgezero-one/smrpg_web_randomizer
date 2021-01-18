@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short
+from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, con_bitarray
 from randomizer.data.objectsequencetables import sequence_speed_table, vram_priority_table, _0x08_flags, _0x0A_flags, _0x10_flags
 from randomizer.data.eventtables import npc_packet_table, area_object_table, radial_direction_table, sound_table, coord_table, coord_unit_table, room_table
 
@@ -100,7 +100,7 @@ def set_animation_speed(args):
 def set_object_memory_bits(obj):
     def inner_set_object_memory_bits(args):
         f = get_flag_string(args[0])
-        return 'set_object_memory_bits', ['0x%02x' % (obj), 'flags=%s' % f]
+        return 'set_object_memory_bits', ['0x%02x' % (obj), 'bits=%s' % f]
     return inner_set_object_memory_bits
 
 
@@ -471,33 +471,33 @@ fd_names[0x00] = named('shadow_on')
 fd_names[0x01] = named('shadow_off')
 fd_names[0x02] = named('floating_on')
 fd_names[0x03] = named('floating_off')
-fd_names[0x04] = named('object_memory_set_bit', con(0x0E), flags(bits=[4]))
-fd_names[0x05] = named('object_memory_clear_bit', con(0x0E), flags(bits=[4]))
-fd_names[0x06] = named('object_memory_set_bit', con(0x0E), flags(bits=[5]))
-fd_names[0x07] = named('object_memory_clear_bit', con(0x0E), flags(bits=[5]))
-fd_names[0x08] = named('object_memory_set_bit', con(0x09), flags(bits=[7]))
-fd_names[0x09] = named('object_memory_clear_bit', con(0x09), flags(bits=[7]))
-fd_names[0x0A] = named('object_memory_set_bit', con(0x08), flags(bits=[4]))
+fd_names[0x04] = named('object_memory_set_bit', con(0x0E), con_bitarray([4]))
+fd_names[0x05] = named('object_memory_clear_bit', con(0x0E), con_bitarray([4]))
+fd_names[0x06] = named('object_memory_set_bit', con(0x0E), con_bitarray([5]))
+fd_names[0x07] = named('object_memory_clear_bit', con(0x0E), con_bitarray([5]))
+fd_names[0x08] = named('object_memory_set_bit', con(0x09), con_bitarray([7]))
+fd_names[0x09] = named('object_memory_clear_bit', con(0x09), con_bitarray([7]))
+fd_names[0x0A] = named('object_memory_set_bit', con(0x08), con_bitarray([4]))
 fd_names[0x0B] = named('object_memory_clear_bit',
-                       con(0x08), flags(bits=[3, 4]))
-fd_names[0x0C] = named('object_memory_clear_bit', con(0x30), flags(bits=[4]))
-fd_names[0x0D] = named('object_memory_set_bit', con(0x30), flags(bits=[4]))
+                       con(0x08), con_bitarray([3, 4]))
+fd_names[0x0C] = named('object_memory_clear_bit', con(0x30), con_bitarray([4]))
+fd_names[0x0D] = named('object_memory_set_bit', con(0x30), con_bitarray([4]))
 fd_names[0x0E] = named('object_memory_modify_bits', con(
-    0x09), flags(bits=[5]), flags(bits=[4, 6]))
+    0x09), con_bitarray([5]), con_bitarray([4, 6]))
 fd_names[0x0F] = named('set_priority', byte_int())
-fd_names[0x10] = named('object_memory_clear_bit', con(0x12), flags(bits=[5]))
-fd_names[0x11] = named('object_memory_set_bit', con(0x12), flags(bits=[5]))
+fd_names[0x10] = named('object_memory_clear_bit', con(0x12), con_bitarray([5]))
+fd_names[0x11] = named('object_memory_set_bit', con(0x12), con_bitarray([5]))
 # 0x12 undocumented
 fd_names[0x13] = named('object_memory_clear_bit',
-                       con(0x0C), flags(bits=[3, 4, 5]))
+                       con(0x0C), con_bitarray([3, 4, 5]))
 fd_names[0x14] = named('object_memory_set_bit',
-                       con(0x0C), flags(bits=[3, 4, 5]))
+                       con(0x0C), con_bitarray([3, 4, 5]))
 fd_names[0x15] = named('object_memory_modify_bits', con(
-    0x0C), flags(bits=[4]), flags(bits=[3, 5]))
-fd_names[0x16] = named('object_memory_clear_bit', con(0x0B), flags(bits=[3]))
-fd_names[0x17] = named('object_memory_set_bit', con(0x0B), flags(bits=[3]))
-fd_names[0x18] = named('object_memory_set_bit', con(0x3C), flags(bits=[6]))
-fd_names[0x19] = named('object_memory_set_bit', con(0x0D), flags(bits=[6]))
+    0x0C), con_bitarray([4]), con_bitarray([3, 5]))
+fd_names[0x16] = named('object_memory_clear_bit', con(0x0B), con_bitarray([3]))
+fd_names[0x17] = named('object_memory_set_bit', con(0x0B), con_bitarray([3]))
+fd_names[0x18] = named('object_memory_set_bit', con(0x3C), con_bitarray([6]))
+fd_names[0x19] = named('object_memory_set_bit', con(0x0D), con_bitarray([6]))
 # 0x1A - 0x9B undocumented
 fd_names[0x9E] = named('play_sound', byte(
     prefix="Sounds", table=sound_table), con_int(4))

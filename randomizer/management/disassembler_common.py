@@ -56,6 +56,11 @@ def con_int(constant):
         return '%i' % (constant), args
     return inner_con
 
+def con_bitarray(arr):
+    def inner_con(args):
+        return '%r' % (arr), args
+    return inner_con
+
 
 def named(name, *arg_parsers):
     def inner_named(args):

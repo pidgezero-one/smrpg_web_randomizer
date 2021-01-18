@@ -22,12 +22,12 @@ class EventScript:
     def consolidate_flags(self, flags):
         val = 0x00
         for flag in flags:
-            val |= 1 << flag
+            val |= (1 << flag)
         return val
 
-    def append_byte(self, byte):
-        assert 0 <= byte <= 0xFF
-        self.commands.append(byte)
+    def append_byte(self, val):
+        assert 0 <= val <= 0xFF
+        self.commands.append(val)
 
     def db(self, *args):
         self.commands += args
@@ -118,52 +118,52 @@ class EventScript:
         self.append_short(script_id)
         return self
 
-    def unsync_action_script(self, obj, script_id):
+    def unsync_action_script(self, obj):
         self.append_byte(obj)
         self.append_byte(0xF6)
         return self
 
-    def summon_to_current_level_at_marios_coords(self, obj, script_id):
+    def summon_to_current_level_at_marios_coords(self, obj):
         self.append_byte(obj)
         self.append_byte(0xF7)
         return self
 
-    def summon_to_current_level(self, obj, script_id):
+    def summon_to_current_level(self, obj):
         self.append_byte(obj)
         self.append_byte(0xF8)
         return self
 
-    def remove_from_current_level(self, obj, script_id):
+    def remove_from_current_level(self, obj):
         self.append_byte(obj)
         self.append_byte(0xF9)
         return self
 
-    def pause_action_script(self, obj, script_id):
+    def pause_action_script(self, obj):
         self.append_byte(obj)
         self.append_byte(0xFA)
         return self
 
-    def resume_action_script(self, obj, script_id):
+    def resume_action_script(self, obj):
         self.append_byte(obj)
         self.append_byte(0xFB)
         return self
 
-    def enable_trigger(self, obj, script_id):
+    def enable_trigger(self, obj):
         self.append_byte(obj)
         self.append_byte(0xFC)
         return self
 
-    def disable_trigger(self, obj, script_id):
+    def disable_trigger(self, obj):
         self.append_byte(obj)
         self.append_byte(0xFD)
         return self
 
-    def stop_embedded_action_script(self, obj, script_id):
+    def stop_embedded_action_script(self, obj):
         self.append_byte(obj)
         self.append_byte(0xFE)
         return self
 
-    def reset_coords(self, obj, script_id):
+    def reset_coords(self, obj):
         self.append_byte(obj)
         self.append_byte(0xFF)
         return self
@@ -258,16 +258,19 @@ class EventScript:
 
     # 0x63
     def append_to_dialog_at_7000(self, flags):
+        self.append_byte(0x63)
         self.append_byte(self.consolidate_flags(flags))
         return self
 
     # 0x6A
     def apply_tile_mod(self, location, mod, flags):
+        self.append_byte(0x6A)
         self.append_short(self.level_mod(location, mod, flags))
         return self
 
     # 0x6B
     def apply_solidity_mod(self, location, mod, flags):
+        self.append_byte(0x6B)
         self.append_short(self.level_mod(location, mod, flags))
         return self
 
@@ -348,6 +351,13 @@ class EventScript:
         self.append_short(self.get_branch_address(address))
         return self
 
+    # FD 0x94
+    def deactivate_sound_channels(self, flags):
+        self.append_byte(0xFD)
+        self.append_byte(0x94)
+        self.append_byte(self.consolidate_flags(flags))
+        return self
+
     # 0xAB
     def dec(self, address):
         if 0x70A0 <= address <= 0x719F:
@@ -408,13 +418,15 @@ class EventScript:
         self.append_byte(0x35)
         enabled_directions = self.consolidate_flags(directions)
         assert 0x00 <= enabled_directions <= 0xFF
+        self.append_byte(enabled_directions)
         return self
 
     # 0x34
-    def enable_controls_until_return(self, *directions):
+    def enable_controls_until_return(self, directions):
         self.append_byte(0x34)
         enabled_directions = self.consolidate_flags(directions)
         assert 0x00 <= enabled_directions <= 0xFF
+        self.append_byte(enabled_directions)
         return self
 
     # 0xF3
@@ -452,6 +464,7 @@ class EventScript:
     def enter_area(self, room, direction, x, y, z, flags):
         f = self.consolidate_flags(flags)
         room_short = room | (f & 0x8800)
+        self.append_byte(0x68)
         self.append_short(room_short)
         self.append_byte(x)
         y_zhalf = y | ((f >> 24) & 0x80)
@@ -464,7 +477,7 @@ class EventScript:
     def equip_item_to_character(self, character, item):
         self.append_byte(0x54)
         self.append_byte(character)
-        self.append_byte(item)
+        self.append_byte(item.index)
         return self
 
     # FD 0xF8
@@ -557,6 +570,11 @@ class EventScript:
         self.append_byte(colour)
         return self
 
+    # 0x30
+    def freeze_all_npcs_until_return(self):
+        self.append_byte(0x30)
+        return self
+
     # FD 0x31
     def freeze_camera(self):
         self.append_byte(0xFD)
@@ -622,11 +640,19 @@ class EventScript:
         self.append_short(address)
         return self
 
-    # FD 0x95
+    # FD 0x96
     def jmp_if_audio_memory_at_least(self, threshold, address):
         self.append_byte(0xFD)
-        self.append_byte(0x95)
+        self.append_byte(0x96)
         self.append_byte(threshold)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # FD 0x97
+    def jmp_if_audio_memory_equals(self, val, address):
+        self.append_byte(0xFD)
+        self.append_byte(0x97)
+        self.append_byte(val)
         self.append_short(self.get_branch_address(address))
         return self
 
@@ -683,10 +709,10 @@ class EventScript:
         return self
 
     # 0x67
-    def jmp_if_dialog_option_b_or_c(self, address):
+    def jmp_if_dialog_option_b_or_c(self, address1, address2):
         self.append_byte(0x67)
-        self.append_short(self.get_branch_address(address))
-        self.append_short(self.get_branch_address(address))
+        self.append_short(self.get_branch_address(address1))
+        self.append_short(self.get_branch_address(address2))
         return self
 
     # 0xEA
@@ -761,7 +787,6 @@ class EventScript:
     def jmp_if_object_trigger_enabled(self, obj, level, address):
         self.append_byte(0xFD)
         self.append_byte(0xF0)
-        self.append_byte(obj)
         self.append_short(level | (obj << 9) | (1 << 15))
         self.append_short(self.get_branch_address(address))
         return self
@@ -769,7 +794,6 @@ class EventScript:
     def jmp_if_object_trigger_disabled(self, obj, level, address):
         self.append_byte(0xFD)
         self.append_byte(0xF0)
-        self.append_byte(obj)
         self.append_short((level | (obj << 9)) & 0x7FFF)
         self.append_short(self.get_branch_address(address))
         return self
@@ -1024,9 +1048,15 @@ class EventScript:
         return self
 
     # FD 0x4A
-    def open_save_menu(self, command):
+    def open_save_menu(self):
         self.append_byte(0xFD)
         self.append_byte(0x4A)
+        return self
+
+    # 0x4C
+    def open_shop(self, shop):
+        self.append_byte(0x4C)
+        self.append_byte(shop)
         return self
 
     # 0x8A
@@ -1068,13 +1098,13 @@ class EventScript:
         return self
 
     # FD 0x60
-    def pause_script_resume_on_next_dialog_page_a(self, character, slot):
+    def pause_script_resume_on_next_dialog_page_a(self):
         self.append_byte(0xFD)
         self.append_byte(0x60)
         return self
 
     # FD 0x61
-    def pause_script_resume_on_next_dialog_page_b(self, character, slot):
+    def pause_script_resume_on_next_dialog_page_b(self):
         self.append_byte(0xFD)
         self.append_byte(0x61)
         return self
@@ -1120,6 +1150,14 @@ class EventScript:
         self.append_byte(balance)
         return self
 
+    # 0x81
+    def priority_set(self, mainscreen, subscreen, color_math):
+        self.append_byte(0x81)
+        self.append_byte(self.consolidate_flags(mainscreen))
+        self.append_byte(self.consolidate_flags(subscreen))
+        self.append_byte(self.consolidate_flags(color_math))
+        return self
+
     # FD 0x51
     def put_70A7_equips_inventory(self):
         self.append_byte(0xFD)
@@ -1127,13 +1165,13 @@ class EventScript:
         return self
 
     # 0x50
-    def put_inventory(self, item_id):
-        if item_id == 0x70A7:
+    def put_inventory(self, item):
+        if item == 0x70A7:
             self.append_byte(0xFD)
             self.append_byte(0x50)
         else:
             self.append_byte(0x50)
-            self.append_byte(item_id)
+            self.append_byte(item.index)
         return self
 
     # 0x5C
@@ -1149,14 +1187,14 @@ class EventScript:
         return self
 
     # 0xF5
-    def remove_object_at_70A8_from_current_level(self, args):
+    def remove_object_at_70A8_from_current_level(self):
         self.append_byte(0xF5)
         return self
 
     # 0x51
-    def remove_one_from_inventory(self, item_id):
+    def remove_one_from_inventory(self, item):
         self.append_byte(0x51)
-        self.append_byte(item_id)
+        self.append_byte(item.index)
         return self
 
     # 0xFB
@@ -1189,7 +1227,7 @@ class EventScript:
     # 0x47
     def resume_background_event(self, timer_memory):
         self.append_byte(0x47)
-        timer_memory_bits = ((timer_memory - 0x701C) / 2)
+        timer_memory_bits = ((timer_memory - 0x701C) // 2)
         self.append_byte(timer_memory_bits)
         return self
 
@@ -1199,16 +1237,15 @@ class EventScript:
         return self
 
     # 0x40
-    def run_background_event(self, event_id, return_on_level_exit, bit_6, bit_7):
-        self.append_byte(0x60)
-        self.append_short(event_id | (bit_7 << 15) | (bit_6 <<
-                                                      14) | (return_on_level_exit << 13))
+    def run_background_event(self, event_id, flags):
+        self.append_byte(0x40)
+        self.append_short(event_id | self.consolidate_flags(flags))
         return self
 
     # 0x44
     def run_background_event_with_pause(self, event_id, timer_memory, flags):
         self.append_byte(0x44)
-        timer_memory_bits = ((timer_memory - 0x701C) / 2)
+        timer_memory_bits = ((timer_memory - 0x701C) // 2)
         self.append_short(event_id | (timer_memory_bits <<
                                       14) | self.consolidate_flags(flags))
         return self
@@ -1216,25 +1253,27 @@ class EventScript:
     # 0x45
     def run_background_event_with_pause_return_on_exit(self, event_id, timer_memory, flags):
         self.append_byte(0x45)
-        timer_memory_bits = ((timer_memory - 0x701C) / 2)
+        timer_memory_bits = ((timer_memory - 0x701C) // 2)
         self.append_short(event_id | (timer_memory_bits <<
                                       14) | self.consolidate_flags(flags))
         return self
 
     # 0x60, 0x61
     def run_dialog(self, dialog_id, above, flags):
+        f = self.consolidate_flags(flags)
         if dialog_id == 0x7000:
             self.append_byte(0x61)
-            self.append_byte(flags & 0xA0)
+            self.append_byte(f & 0xA0)
         else:
             self.append_byte(0x60)
-            self.append_short(dialog_id | ((flags & 0xA0) << 8))
-        self.append_byte(above | ((flags >> 8) & 0xC0))
+            self.append_short(dialog_id | ((f & 0xA0) << 8))
+        self.append_byte(above | ((f >> 8) & 0xC0))
         return self
 
     # 0x62
     def run_dialog_duration(self, dialog_id, duration, flags):
-        self.append_short(dialog_id | (duration << 13) | (flags << 8))
+        f = self.consolidate_flags(flags)
+        self.append_short(dialog_id | (duration << 13) | (f << 8))
         return self
 
     # FD 0x67
@@ -1269,6 +1308,12 @@ class EventScript:
     def run_levelup_bonus_sequence(self):
         self.append_byte(0xFD)
         self.append_byte(0x65)
+        return self
+
+    def run_menu_tutorial(self, tutorial_id):
+        self.append_byte(0xFD)
+        self.append_byte(0x4C)
+        self.append_byte(tutorial_id)
         return self
 
     # FD 0x4F
@@ -1591,7 +1636,7 @@ class EventScript:
         return self
 
     # FD 0x5E
-    def store_7000_item_quantity_to_70A7(self, character, slot):
+    def store_7000_item_quantity_to_70A7(self):
         self.append_byte(0xFD)
         self.append_byte(0x5E)
         return self
@@ -1624,7 +1669,7 @@ class EventScript:
     def store_item_amount_7000(self, item):
         self.append_byte(0xFD)
         self.append_byte(0x58)
-        self.append_byte(item)
+        self.append_byte(item.index)
         return self
 
     # FD 0x5A
@@ -1636,7 +1681,7 @@ class EventScript:
     # 0x46
     def stop_background_event(self, timer_memory):
         self.append_byte(0x46)
-        timer_memory_bits = ((timer_memory - 0x701C) / 2)
+        timer_memory_bits = ((timer_memory - 0x701C) // 2)
         self.append_byte(timer_memory_bits)
         return self
 
