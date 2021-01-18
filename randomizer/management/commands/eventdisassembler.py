@@ -82,8 +82,11 @@ obj_event_lens = [
 
 items_table = build_table(get_default_items(None))
 
-jumped_to_from_action_queue = []
+jmp_cmds = [0x3F, 0x3E, 0xD2, 0x41, 0xE6, 0xE7, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xEC, 0xED, 0x66, 0xEA, 0xEF, 0xEE, 0xEB, 0x3D, 0x39, 0xDF, 0xDB, 0xF8, 0x3A, 0x32, 0xE9, 0xE8, 0xE0, 0xE2, 0xE4, 0xE1, 0xE3, 0xE5]
 
+jmp_cmds_double = [0x42, 0x67]
+
+jmp_cmds_fd = [0x3E, 0x62, 0x96, 0x97, 0x3D, 0xF0, 0x34, 0x33]
 
 def is_eligible_nonembedded_command(cmd):
     if cmd[0] == 0x10:
@@ -95,28 +98,24 @@ def is_eligible_nonembedded_command(cmd):
     else:
         return False
 
+jumped_to_from_action_queue = []
 
-def tok(rom, start, end, bank, pointers, event_lengths, offset=0):
+def tok(rom, start, end, bank):
     dex = start
     script = []
-    event_id = 0
     while dex <= end:
         cmd = None
         sub_command = None
-        if (dex + offset >= pointers[event_id] + event_lengths[event_id]):
-            event_id += 1
-            while event_lengths[event_id] == 0:
-                event_id += 1
-
         is_nonembedded = dex in jumped_to_from_action_queue and is_eligible_nonembedded_command(rom[dex:(dex+2)])
         sequence_bytes = []
 
         # I don't trust this at all, but I have no idea how to determine this otherwise
+        # Determines the length of a non-embedded action queue
         if is_nonembedded:
             ind_ = 0
             oc = OSCommand()
             return_bytes = []
-            while (len(return_bytes) == 0 and (dex + offset + ind_ < pointers[event_id + 1])):
+            while (len(return_bytes) == 0 and (dex + ind_ <= end)):
                 ind_ += 1
                 try:
                     cmds = oc.get_embedded_script(rom[dex:(dex + ind_)])
@@ -126,7 +125,6 @@ def tok(rom, start, end, bank, pointers, event_lengths, offset=0):
             l = ind_
             sequence_bytes = rom[(dex):(dex+l)]
         else:
-
             cmd = rom[dex]
             sub_command = rom[dex+1]
             local_lens = event_lens
@@ -150,8 +148,8 @@ def tok(rom, start, end, bank, pointers, event_lengths, offset=0):
                     l = (sub_command & 0x7F) + 2 + addend
                     sequence_bytes = rom[(dex+2):(dex+l)]
 
-        print(hex(dex + offset), hex(cmd), hex(sub_command), event_id)
         if (cmd is not None and sub_command is not None and cmd < 0x30 and sub_command <= 0xF1) or is_nonembedded:
+
             oc = OSCommand()
             cmds = oc.get_embedded_script(sequence_bytes)
             jump_cmds = [c for c in cmds["commands"] if c['has_jump']]
@@ -165,10 +163,8 @@ def tok(rom, start, end, bank, pointers, event_lengths, offset=0):
                 for jmp in jump_cmds:
                     target_addr_bytes = jmp["args"][-2:]
                     target_addr = shortify(target_addr_bytes, 0)
-                    short_offset = dex & 0xFFFF
-                    if (short_offset <= target_addr and target_addr < short_offset + event_lengths[event_id]):
-                        dubious_address = (bank["id"] << 16) | target_addr
-                        jumped_to_from_action_queue.append(dubious_address)
+                    dubious_address = (bank["id"] << 16) | target_addr
+                    jumped_to_from_action_queue.append(dubious_address)
 
         if l == 0:
             print(hex(cmd), hex(rom[dex+2]), hex(dex))
@@ -200,14 +196,26 @@ def parse_line(line, offset, with_comments=True):
             name, args = table[cmd](rest)
         else:
             name, args = 'db', ['0x%02x' % (i) for i in line]
-    if (with_comments):
-        return 'script.%s(%s) # 0x%x' % (name, ', '.join(args), offset) + ' ' + repr(line)
-    else:
-        return 'script.%s(%s)' % (name, ', '.join(args))
 
+    return name, args
 
 fd_names = [None]*256
 names = [None]*256
+
+def is_jump(line):
+    if line[0] == 0xFD:
+        is_jump = line[1] in jmp_cmds_fd
+    else:
+        is_jump = line[0] in jmp_cmds or line[0] in jmp_cmds_double
+    return is_jump
+
+
+def get_jump_args(line, args):
+    if line[0] in jmp_cmds_double:
+        return -2
+    else:
+        return -1
+
 
 
 def adjust_music_calc(args):
@@ -223,13 +231,12 @@ def adjust_music_calc(args):
 
 def adjust_music_pitch(args):
     direction, change, duration = adjust_music_calc(args)
-    return 'adjust_music_pitch', ['%s' % (use_table_name('MusicPitch', music_pitch_table, direction)), 'change=%i' % (change), 'duration=%i' % (duration)]
+    return 'adjust_music_pitch', ['%s' % (use_table_name('MusicPitch', music_pitch_table, direction)), '%i' % (change), '%i' % (duration)]
 
 
 def adjust_music_tempo(args):
     direction, change, duration = adjust_music_calc(args)
-    return 'adjust_music_tempo', ['%s' % (use_table_name('MusicDirections', music_direction_table, direction)), 'change=%i' % (change), 'duration=%i' % (duration)]
-
+    return 'adjust_music_tempo', ['%s' % (use_table_name('MusicDirections', music_direction_table, direction)), '%i' % (change), '%i' % (duration)]
 
 def level_mod(args, prefix, table):
     area_byte = shortify(args, 0)
@@ -248,7 +255,7 @@ def apply_solidity_mod(args):
 
 
 def circle_mask(args):
-    return ['%s' % (use_table_name('AreaObjects', area_object_table, args[0])), 'width=%i' % (args[1]), 'speed=%i' % (args[2])]
+    return ['%s' % (use_table_name('AreaObjects', area_object_table, args[0])), '%i' % (args[1]), '%i' % (args[2])]
 
 
 def circle_mask_nonstatic(args):
@@ -272,11 +279,11 @@ def enter_area(args):
 
 
 def fade_out_music_to_volume(args):
-    return 'fade_out_music_to_volume', ['duration=%i' % (args[0]), 'volume=%i' % (args[1])]
+    return 'fade_out_music_to_volume', ['%i' % (args[0]), '%i' % (args[1])]
 
 
 def fade_out_sound_to_volume(args):
-    return 'fade_out_sound_to_volume', ['duration=%i' % (args[0]), 'volume=%i' % (args[1])]
+    return 'fade_out_sound_to_volume', ['%i' % (args[0]), '%i' % (args[1])]
 
 
 def jmp_depending_on_object_event_trigger(args):
@@ -322,7 +329,7 @@ def modify_party(args):
 def palette_set(args):
     palette_set = args[1]
     row = (args[0] >> 4) + 1
-    return 'palette_set', ['palette_set=%i' % (palette_set), 'row=%i' % (row)]
+    return 'palette_set', ['%i' % (palette_set), '%i' % (row)]
 
 
 def palette_set_morphs(args):
@@ -330,7 +337,7 @@ def palette_set_morphs(args):
     duration = args[0] & 0x0F
     palette_set = args[2]
     row = args[1]
-    return 'palette_set_morphs', ['%s' % (use_table_name('PaletteSetTypes', palette_set_types_table, morph_type)), 'duration=%i' % (duration), 'palette_set=%i' % (palette_set), 'row=%i' % (row)]
+    return 'palette_set_morphs', ['%s' % (use_table_name('PaletteSetTypes', palette_set_types_table, morph_type)), '%i' % (duration), '%i' % (palette_set), '%i' % (row)]
 
 
 def parse_object_coord(cmd):
@@ -423,19 +430,19 @@ def pixelate_layers(args):
         args[0], "_0x84Flags", _0x84_flags, bits=[0, 1, 2, 3])
     size = args[0] >> 4
     duration = args[1]
-    return 'pixelate_layers', [layers, 'size=%i' % (size), 'duration=%i' % (duration)]
+    return 'pixelate_layers', [layers, '%i' % (size), '%i' % (duration)]
 
 
 def priority_set(args):
     mainscreen = get_flag_string(args[0], '_0x81Flags', _0x81_flags)
     subscreen = get_flag_string(args[1], '_0x81Flags', _0x81_flags)
     color_math = get_flag_string(args[2], '_0x81Flags', _0x81_flags)
-    return 'priority_set', ['mainscreen=%s' % (mainscreen), 'subscreen=%s' % (subscreen), 'color_math=%s' % (color_math)]
+    return 'priority_set', ['%s' % (mainscreen), '%s' % (subscreen), '%s' % (color_math)]
 
 
 def resume_background_event(args):
     timer_memory = 0x701C + args[0] * 2
-    return 'resume_background_event', ['timer_memory=0x%04x' % (timer_memory)]
+    return 'resume_background_event', ['0x%04x' % (timer_memory)]
 
 
 def run_background_event(args):
@@ -449,7 +456,7 @@ def run_bkgd_event_pause_math(args):
     s = shortify(args, 0)
     event_id = s & 0x0FFF
     timer_memory = 0x701C + (args[1] >> 6) * 2
-    return ['event_id=%i' % (event_id), 'timer_memory=0x%04x' % (timer_memory), 'flags=%s' % get_flag_string(s, bits=[12, 13])]
+    return ['%i' % (event_id), '0x%04x' % (timer_memory), '%s' % get_flag_string(s, bits=[12, 13])]
 
 
 def run_background_event_with_pause(args):
@@ -587,7 +594,7 @@ def tint_layers(args):
     speed = args[3]
     flags = get_flag_string(args[2], '_0x81Flags',
                             _0x81_flags, [0, 1, 2, 4, 5, 6, 7])
-    return 'tint_layers', ['0x%02x' % (red), '0x%02x' % (green), '0x%02x' % (blue), 'speed=%i' % (speed), 'flags=%s' % flags]
+    return 'tint_layers', ['0x%02x' % (red), '0x%02x' % (green), '0x%02x' % (blue), '%i' % (speed), '%s' % flags]
 
 
 names[0x00] = parse_obj_fxn(0x00)
@@ -1009,13 +1016,14 @@ class Command(BaseCommand):
         print('from randomizer.data import items')
         print('from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
         print('from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
-        print('rez_tok = []')
-        print('rom_tok = []')
+
+        scripts_data = []
+
+        scripts = []
 
         for j in range(len(banks)):
 
             bank = banks[j]
-            print('script = EventScript()')
             ptrs = []
             for i in range(bank["pointers"]["start"], bank["pointers"]["end"], 2):
                 ptrs.append((bank["id"] << 16) | (shortify(rom, i)))
@@ -1023,35 +1031,79 @@ class Command(BaseCommand):
             for i in range(len(ptrs)):
                 if (i < len(ptrs) - 1):
                     event_lengths.append(ptrs[i + 1] - ptrs[i])
+                    script_content = tok(rom, ptrs[i], ptrs[i + 1] - 1, bank)
                 else:
-                    event_lengths.append(((bank["id"] + 1) << 16) - ptrs[i])
-            print('event_lengths = %r' % event_lengths)
-            print('pointers = %r' % ptrs)
+                    event_lengths.append(bank["end"] - ptrs[i])
+                    script_content = tok(rom, ptrs[i], bank["end"], bank)
+                scripts.append(script_content)
 
-            script = tok(rom, bank["start"], bank["end"], bank, ptrs, event_lengths)
+        for i in range(len(scripts)):
+            script = scripts[i]
+            sd = []
+            for j in range(len(script)):
+                line, offset = script[j]
+                name, args = parse_line(line, offset, False)
+                identifier = 'EVENT_%i_%s_%i' % (i, name, j)
+                if (is_jump(line)):
+                    arg_index = get_jump_args(line, args)
+                    jump_args = [(int(ja, 16) | (offset & 0xFF0000)) for ja in args[arg_index:]]
+                else:
+                    jump_args = []
+                sd.append({
+                    'command': name,
+                    'args': args,
+                    "original_offset": offset,
+                    "identifier": identifier,
+                    "jumps": jump_args
+                })
+            scripts_data.append(sd)
 
-            for line, offset in script:
-                print(parse_line(line, offset, True))
+        print('scripts = [None]*%i' % len(scripts_data))
 
-            start = bank["start"]
-            end = bank["end"]
-            length = end - start
+        scripts_with_named_jumps = []
 
-            print('''
-rez = script.fin()
-rez_tok.append(tok(rez, 0, %i, banks[%i], pointers, event_lengths, banks[%i]["start"]))
+        #get the identifiers corresponding to where the jumps are going
+        for i in range(len(scripts_data)):
+            script = scripts_data[i]
+            this_script = []
+            jumps = []
+            for cmd in script:
+                commands_to_replace = len(cmd["jumps"]) * -1
+                for j in cmd["jumps"]:
+                    for sd in scripts_data:
+                        candidates = [c for c in sd if c["original_offset"] == j]
+                        if (len(candidates) > 0):
+                            jumped_command = candidates[0]
+                            jumps.append('\'%s\'' % jumped_command["identifier"])
+                if commands_to_replace == 0:
+                    new_args = cmd["args"]
+                else:
+                    new_args = cmd["args"][:commands_to_replace] + jumps
+                cmd_with_named_jumps = {
+                    'command': cmd["command"],
+                    'args': new_args,
+                    "identifier": cmd["identifier"]
+                }
+                this_script.append(cmd_with_named_jumps)
+            scripts_with_named_jumps.append(this_script)
 
-rom_tok.append(tok(rom, %i, %i, banks[%i], pointers, event_lengths))''' % (length, j, j, start, end, j))
+        for i in range(len(scripts_with_named_jumps)):
+            script = scripts_with_named_jumps[i]
+            if len(script) == 0:
+                print('scripts[%i] = []' % i)
+            else:
+                print('scripts[%i] = [' % i)
+                for cmd in script:
+                    print ('    {')
+                    print ('        "command": %r,' % cmd['command'])
+                    print ('        "args": [%s]' % ', '.join(cmd["args"]))
+                    print ('        "identifier": %r' % cmd['identifier'])
+                    print ('    },')
+                print(']')
+        # think about how this will work in embedded scripts too...
+        # add a Subscript property that lists a series of similarly-formatted scripts
+        # must evaluate their jumps as well
 
-
-        print('''
-class Command(BaseCommand):
-    def handle(self, *args, **options):
-        for i in range(len(rez_tok)):
-            for l,r in zip(rez_tok[i], rom_tok[i]):
-                if l[0] != r[0]:
-                    print(l, r)
-''')
 
 # not working right now because non-embedded action queues mess everything up
 # as well as duplicate commands (like 0x94 and 0xFD0xA2) w/ diff lengths
