@@ -98,7 +98,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_8_SUBSCRIPT_shift_northeast_steps_8',
                 "command": 'shift_northeast_steps',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -224,7 +224,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_28_SUBSCRIPT_shift_northeast_steps_0',
                 "command": 'shift_northeast_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -257,7 +257,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_30_SUBSCRIPT_shift_north_steps_3',
                 "command": 'shift_north_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -285,7 +285,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_32_SUBSCRIPT_shift_northwest_steps_2',
                 "command": 'shift_northwest_steps',
                 "args": [9]
-            },
+            }
         ]
     },
     {
@@ -303,7 +303,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_34_SUBSCRIPT_bounce_to_xy_with_height_0',
                 "command": 'bounce_to_xy_with_height',
                 "args": [11, 95, 0]
-            },
+            }
         ]
     },
     {
@@ -391,7 +391,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_46_SUBSCRIPT_shift_northeast_steps_2',
                 "command": 'shift_northeast_steps',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -409,7 +409,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_48_SUBSCRIPT_shift_northeast_steps_0',
                 "command": 'shift_northeast_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -437,7 +437,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_50_SUBSCRIPT_walk_1_step_southwest_2',
                 "command": 'walk_1_step_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -455,7 +455,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_52_SUBSCRIPT_bounce_to_xy_with_height_0',
                 "command": 'bounce_to_xy_with_height',
                 "args": [15, 107, 0]
-            },
+            }
         ]
     },
     {
@@ -543,7 +543,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_64_SUBSCRIPT_walk_1_step_southwest_2',
                 "command": 'walk_1_step_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -561,7 +561,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_66_SUBSCRIPT_shift_southwest_steps_0',
                 "command": 'shift_southwest_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -594,7 +594,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_68_SUBSCRIPT_walk_1_step_southwest_3',
                 "command": 'walk_1_step_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -612,7 +612,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_70_SUBSCRIPT_bounce_to_xy_with_height_0',
                 "command": 'bounce_to_xy_with_height',
                 "args": [11, 115, 0]
-            },
+            }
         ]
     },
     {
@@ -700,7 +700,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_82_SUBSCRIPT_shift_northwest_steps_2',
                 "command": 'shift_northwest_steps',
                 "args": [9]
-            },
+            }
         ]
     },
     {
@@ -728,7 +728,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_84_SUBSCRIPT_shift_northwest_steps_2',
                 "command": 'shift_northwest_steps',
                 "args": [7]
-            },
+            }
         ]
     },
     {
@@ -746,7 +746,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_86_SUBSCRIPT_shift_southwest_steps_0',
                 "command": 'shift_southwest_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -764,7 +764,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_88_SUBSCRIPT_bounce_to_xy_with_height_0',
                 "command": 'bounce_to_xy_with_height',
                 "args": [7, 103, 0]
-            },
+            }
         ]
     },
     {
@@ -811,7 +811,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_sync_94_SUBSCRIPT_transfer_to_xyzf_1',
                 "command": 'transfer_to_xyzf',
                 "args": [10, 90, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -840,7 +840,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_sync_97_SUBSCRIPT_transfer_to_xyzf_1',
                 "command": 'transfer_to_xyzf',
                 "args": [14, 102, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -869,7 +869,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_sync_100_SUBSCRIPT_transfer_to_xyzf_1',
                 "command": 'transfer_to_xyzf',
                 "args": [10, 110, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -898,7 +898,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_sync_103_SUBSCRIPT_transfer_to_xyzf_1',
                 "command": 'transfer_to_xyzf',
                 "args": [6, 98, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -974,7 +974,7 @@ script = [
                 "identifier": 'EVENT_1707_action_queue_async_108_SUBSCRIPT_face_northwest_8',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1006,5 +1006,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

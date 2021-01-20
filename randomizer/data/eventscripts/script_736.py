@@ -6,5 +6,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_273_set_bit_26'],
         "subscript": []
-    },
+    }
 ]

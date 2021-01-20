@@ -109,7 +109,7 @@ script = [
                 "identifier": 'EVENT_2078_action_queue_async_9_SUBSCRIPT_ret_9',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -123,5 +123,5 @@ script = [
         "command": 'open_save_menu',
         "args": [],
         "subscript": []
-    },
+    }
 ]

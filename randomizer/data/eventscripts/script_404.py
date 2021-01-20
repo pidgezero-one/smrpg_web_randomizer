@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_404_action_queue_sync_1_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 0, 29, RadialDirections.NORTHEAST]
-            },
+            }
         ]
     },
     {
@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_404_action_queue_async_2_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [16, 16, 4, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -42,5 +42,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [261],
         "subscript": []
-    },
+    }
 ]

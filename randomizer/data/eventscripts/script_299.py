@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_299_action_queue_async_3_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -51,7 +51,7 @@ script = [
                 "identifier": 'EVENT_299_action_queue_async_5_SUBSCRIPT_clear_solidity_bits_1',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -79,7 +79,7 @@ script = [
                 "identifier": 'EVENT_299_action_queue_async_7_SUBSCRIPT_jmp_if_mario_in_air_2',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_298_action_queue_async_8_SUBSCRIPT_pause_1']
-            },
+            }
         ]
     },
     {
@@ -112,7 +112,7 @@ script = [
                 "identifier": 'EVENT_299_action_queue_async_9_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -130,7 +130,7 @@ script = [
                 "identifier": 'EVENT_299_action_queue_async_11_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -138,5 +138,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

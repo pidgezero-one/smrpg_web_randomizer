@@ -403,7 +403,7 @@ script = [
                 "identifier": 'EVENT_1840_action_queue_async_63_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -436,7 +436,7 @@ script = [
                 "identifier": 'EVENT_1840_action_queue_async_65_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -507,7 +507,7 @@ script = [
                 "identifier": 'EVENT_1840_action_queue_async_75_SUBSCRIPT_shift_z_up_pixels_1',
                 "command": 'shift_z_up_pixels',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -575,5 +575,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

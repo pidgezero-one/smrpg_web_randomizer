@@ -27,7 +27,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_async_2_SUBSCRIPT_face_mario_1',
                 "command": 'face_mario',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -45,7 +45,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -110,7 +110,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_async_8_SUBSCRIPT_floating_on_7',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -152,7 +152,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_async_9_SUBSCRIPT_face_northeast_6',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -207,7 +207,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_sync_13_SUBSCRIPT_visibility_off_5',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -229,7 +229,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_sync_14_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [4, 57, 2, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -290,7 +290,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_async_19_SUBSCRIPT_face_southeast_5',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -314,7 +314,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_async_22_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -369,7 +369,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_async_26_SUBSCRIPT_transfer_to_xyzf_5',
                 "command": 'transfer_to_xyzf',
                 "args": [16, 66, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -391,7 +391,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_sync_27_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [16, 66, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -418,7 +418,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_sync_28_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
                 "args": [18, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -447,7 +447,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_async_31_SUBSCRIPT_face_south_1',
                 "command": 'face_south',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -497,7 +497,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_sync_35_SUBSCRIPT_visibility_off_4',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -519,7 +519,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_sync_36_SUBSCRIPT_face_mario_2',
                 "command": 'face_mario',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -553,7 +553,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_sync_39_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [12, 85, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -575,7 +575,7 @@ script = [
                 "identifier": 'EVENT_721_action_queue_sync_40_SUBSCRIPT_visibility_on_2',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -589,5 +589,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

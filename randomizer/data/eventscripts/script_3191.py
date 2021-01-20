@@ -31,7 +31,7 @@ script = [
                 "identifier": 'EVENT_3191_action_queue_sync_1_SUBSCRIPT_reset_properties_3',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -49,7 +49,7 @@ script = [
                 "identifier": 'EVENT_3191_action_queue_async_3_SUBSCRIPT_shift_east_steps_0',
                 "command": 'shift_east_steps',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -87,5 +87,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

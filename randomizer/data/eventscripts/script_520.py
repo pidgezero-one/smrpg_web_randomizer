@@ -72,7 +72,7 @@ script = [
                 "identifier": 'EVENT_520_start_embedded_action_script_async_7_SUBSCRIPT_run_away_shift_4',
                 "command": 'run_away_shift',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -100,7 +100,7 @@ script = [
                 "identifier": 'EVENT_520_action_queue_async_9_SUBSCRIPT_face_mario_2',
                 "command": 'face_mario',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -193,7 +193,7 @@ script = [
                 "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_bit_15',
                 "command": 'set_bit',
                 "args": [0x7043, 0]
-            },
+            }
         ]
     },
     {
@@ -235,7 +235,7 @@ script = [
                 "identifier": 'EVENT_520_action_queue_sync_12_SUBSCRIPT_object_memory_clear_bit_6',
                 "command": 'object_memory_clear_bit',
                 "args": [0x08, [3, 4]]
-            },
+            }
         ]
     },
     {
@@ -399,5 +399,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

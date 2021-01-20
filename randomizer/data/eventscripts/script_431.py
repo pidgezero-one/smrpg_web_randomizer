@@ -66,7 +66,7 @@ script = [
                 "identifier": 'EVENT_431_action_queue_async_6_SUBSCRIPT_jump_to_height_silent_4',
                 "command": 'jump_to_height_silent',
                 "args": [0]
-            },
+            }
         ]
     },
     {
@@ -92,5 +92,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

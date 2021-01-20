@@ -30,7 +30,7 @@ script = [
                 "identifier": 'EVENT_3221_action_queue_sync_0_SUBSCRIPT_object_memory_set_bit_4',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -47,7 +47,7 @@ script = [
                 "identifier": 'EVENT_3221_action_queue_sync_1_SUBSCRIPT_reset_properties_1',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -103,5 +103,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

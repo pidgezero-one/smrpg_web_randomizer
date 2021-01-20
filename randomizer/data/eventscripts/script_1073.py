@@ -98,7 +98,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_sync_13_SUBSCRIPT_ret_2',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -125,7 +125,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_14_SUBSCRIPT_ret_3',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -243,7 +243,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_sync_31_SUBSCRIPT_ret_2',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -270,7 +270,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_32_SUBSCRIPT_ret_3',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -388,7 +388,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_sync_49_SUBSCRIPT_ret_2',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -415,7 +415,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_50_SUBSCRIPT_ret_3',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -533,7 +533,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_sync_67_SUBSCRIPT_ret_2',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -560,7 +560,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_68_SUBSCRIPT_ret_3',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -678,7 +678,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_sync_85_SUBSCRIPT_ret_2',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -705,7 +705,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_86_SUBSCRIPT_ret_3',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -823,7 +823,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_sync_103_SUBSCRIPT_ret_2',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -850,7 +850,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_104_SUBSCRIPT_ret_3',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -968,7 +968,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_sync_121_SUBSCRIPT_ret_2',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -995,7 +995,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_122_SUBSCRIPT_ret_3',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1260,7 +1260,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_161_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1309,7 +1309,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_164_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1358,7 +1358,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_167_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1407,7 +1407,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_170_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1456,7 +1456,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_173_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1505,7 +1505,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_176_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1554,7 +1554,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_179_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1603,7 +1603,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_182_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1652,7 +1652,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_185_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1701,7 +1701,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_188_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1750,7 +1750,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_191_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1799,7 +1799,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_194_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1848,7 +1848,7 @@ script = [
                 "identifier": 'EVENT_1073_action_queue_async_197_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1856,5 +1856,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

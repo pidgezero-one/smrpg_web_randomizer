@@ -108,7 +108,7 @@ script = [
                 "identifier": 'EVENT_1075_action_queue_async_13_SUBSCRIPT_visibility_on_4',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -281,7 +281,7 @@ script = [
                 "identifier": 'EVENT_1075_action_queue_async_20_SUBSCRIPT_pause_25',
                 "command": 'pause',
                 "args": [50]
-            },
+            }
         ]
     },
     {
@@ -448,7 +448,7 @@ script = [
                 "identifier": 'EVENT_1075_action_queue_async_21_SUBSCRIPT_pause_31',
                 "command": 'pause',
                 "args": [25]
-            },
+            }
         ]
     },
     {
@@ -575,7 +575,7 @@ script = [
                 "identifier": 'EVENT_1075_action_queue_async_22_SUBSCRIPT_visibility_off_23',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -667,5 +667,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

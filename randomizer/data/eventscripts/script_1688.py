@@ -174,7 +174,7 @@ script = [
                 "identifier": 'EVENT_1688_action_queue_sync_19_SUBSCRIPT_shift_north_pixels_10',
                 "command": 'shift_north_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -236,7 +236,7 @@ script = [
                 "identifier": 'EVENT_1688_action_queue_async_20_SUBSCRIPT_shift_north_pixels_10',
                 "command": 'shift_north_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -284,7 +284,7 @@ script = [
                 "identifier": 'EVENT_1688_action_queue_sync_22_SUBSCRIPT_pause_6',
                 "command": 'pause',
                 "args": [10]
-            },
+            }
         ]
     },
     {
@@ -292,5 +292,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [15],
         "subscript": []
-    },
+    }
 ]

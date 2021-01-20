@@ -27,7 +27,7 @@ script = [
                 "identifier": 'EVENT_2621_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -82,7 +82,7 @@ script = [
                 "identifier": 'EVENT_2621_action_queue_async_6_SUBSCRIPT_set_priority_5',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -135,7 +135,7 @@ script = [
                 "identifier": 'EVENT_2621_action_queue_async_8_SUBSCRIPT_jmp_if_mario_in_air_7',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_2621_action_queue_async_8_SUBSCRIPT_pause_6']
-            },
+            }
         ]
     },
     {
@@ -179,5 +179,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

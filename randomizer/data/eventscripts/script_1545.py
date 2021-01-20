@@ -51,7 +51,7 @@ script = [
                 "identifier": 'EVENT_1545_action_queue_async_1_SUBSCRIPT_set_animation_speed_7',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -111,7 +111,7 @@ script = [
                 "identifier": 'EVENT_1545_action_queue_async_5_SUBSCRIPT_walk_1_step_f_direction_6',
                 "command": 'walk_1_step_f_direction',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -125,5 +125,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -18,5 +18,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_2446_play_sound_balance_0'],
         "subscript": []
-    },
+    }
 ]

@@ -48,5 +48,5 @@ script = [
         "command": 'jmp_if_var_equals_short',
         "args": [0x7028, 4, 'EVENT_3369_run_dialog_30'],
         "subscript": []
-    },
+    }
 ]

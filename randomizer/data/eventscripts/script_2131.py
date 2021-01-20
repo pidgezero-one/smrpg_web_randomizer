@@ -60,5 +60,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_2114_action_queue_async_16'],
         "subscript": []
-    },
+    }
 ]

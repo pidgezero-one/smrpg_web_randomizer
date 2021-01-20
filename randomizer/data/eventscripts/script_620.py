@@ -80,7 +80,7 @@ script = [
                 "identifier": 'EVENT_620_action_queue_async_10_SUBSCRIPT_face_northwest_2',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -88,5 +88,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

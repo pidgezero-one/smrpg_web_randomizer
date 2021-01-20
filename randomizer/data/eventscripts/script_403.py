@@ -34,7 +34,7 @@ script = [
                 "identifier": 'EVENT_403_action_queue_sync_4_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -57,7 +57,7 @@ script = [
                 "identifier": 'EVENT_403_action_queue_sync_6_SUBSCRIPT_face_southwest_1',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -84,7 +84,7 @@ script = [
                 "identifier": 'EVENT_403_start_embedded_action_script_async_7_SUBSCRIPT_set_solidity_bits_3',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_0]]
-            },
+            }
         ]
     },
     {
@@ -132,7 +132,7 @@ script = [
                 "identifier": 'EVENT_403_action_queue_async_14_SUBSCRIPT_object_memory_modify_bits_0',
                 "command": 'object_memory_modify_bits',
                 "args": [0x09, [5], [4, 6]]
-            },
+            }
         ]
     },
     {
@@ -146,5 +146,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

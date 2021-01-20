@@ -33,7 +33,7 @@ script = [
                 "identifier": 'EVENT_263_action_queue_async_3_SUBSCRIPT_shift_f_direction_pixels_1',
                 "command": 'shift_f_direction_pixels',
                 "args": [16]
-            },
+            }
         ]
     },
     {
@@ -41,5 +41,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -35,7 +35,7 @@ script = [
                 "identifier": 'EVENT_1803_action_queue_async_0_SUBSCRIPT_db_5',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -47,7 +47,7 @@ script = [
                 "identifier": 'EVENT_1803_action_queue_sync_1_SUBSCRIPT_jump_to_height_silent_0',
                 "command": 'jump_to_height_silent',
                 "args": [0]
-            },
+            }
         ]
     },
     {
@@ -127,5 +127,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

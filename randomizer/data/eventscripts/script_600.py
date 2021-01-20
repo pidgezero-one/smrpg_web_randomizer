@@ -56,7 +56,7 @@ script = [
                 "identifier": 'EVENT_600_action_queue_sync_6_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -78,7 +78,7 @@ script = [
                 "identifier": 'EVENT_600_action_queue_sync_7_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -100,7 +100,7 @@ script = [
                 "identifier": 'EVENT_600_action_queue_sync_8_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -122,7 +122,7 @@ script = [
                 "identifier": 'EVENT_600_action_queue_sync_9_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -134,7 +134,7 @@ script = [
                 "identifier": 'EVENT_600_action_queue_sync_10_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -146,7 +146,7 @@ script = [
                 "identifier": 'EVENT_600_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -154,5 +154,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

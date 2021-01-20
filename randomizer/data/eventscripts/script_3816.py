@@ -36,5 +36,5 @@ script = [
         "command": 'jmp_if_bit_set',
         "args": [0x7098, 7, 'EVENT_3584_ret_0'],
         "subscript": []
-    },
+    }
 ]

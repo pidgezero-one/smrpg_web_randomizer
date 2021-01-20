@@ -59,7 +59,7 @@ script = [
                 "identifier": 'EVENT_2445_action_queue_async_4_SUBSCRIPT_set_priority_5',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -112,7 +112,7 @@ script = [
                 "identifier": 'EVENT_2445_action_queue_async_6_SUBSCRIPT_jmp_if_mario_in_air_7',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_2445_action_queue_async_6_SUBSCRIPT_pause_6']
-            },
+            }
         ]
     },
     {
@@ -156,5 +156,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -15,7 +15,7 @@ script = [
                 "identifier": 'EVENT_3725_action_queue_async_0_SUBSCRIPT_set_priority_1',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -41,5 +41,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

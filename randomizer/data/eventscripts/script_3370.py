@@ -6,5 +6,5 @@ script = [
         "command": 'set_action_script_sync',
         "args": [AreaObjects.MEM_70A8, 930],
         "subscript": []
-    },
+    }
 ]

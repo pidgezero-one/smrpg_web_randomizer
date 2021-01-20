@@ -67,7 +67,7 @@ script = [
                 "identifier": 'EVENT_2419_action_queue_async_7_SUBSCRIPT_visibility_on_3',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -153,7 +153,7 @@ script = [
                 "identifier": 'EVENT_2419_action_queue_async_17_SUBSCRIPT_visibility_on_4',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -234,7 +234,7 @@ script = [
                 "identifier": 'EVENT_2419_action_queue_async_27_SUBSCRIPT_visibility_on_3',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -308,5 +308,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

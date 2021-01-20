@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_1772_action_queue_sync_1_SUBSCRIPT_set_vram_priority_0',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -51,7 +51,7 @@ script = [
                 "identifier": 'EVENT_1772_action_queue_async_5_SUBSCRIPT_floating_on_1',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -65,5 +65,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

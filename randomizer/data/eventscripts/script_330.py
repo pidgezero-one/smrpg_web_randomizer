@@ -46,7 +46,7 @@ script = [
                 "identifier": 'EVENT_330_action_queue_async_6_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -111,7 +111,7 @@ script = [
                 "identifier": 'EVENT_330_action_queue_async_15_SUBSCRIPT_face_mario_1',
                 "command": 'face_mario',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -140,7 +140,7 @@ script = [
                 "identifier": 'EVENT_330_action_queue_async_18_SUBSCRIPT_face_east_1',
                 "command": 'face_east',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -154,5 +154,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [3598],
         "subscript": []
-    },
+    }
 ]

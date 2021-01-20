@@ -402,7 +402,7 @@ script = [
                 "identifier": 'EVENT_1553_action_queue_async_62_SUBSCRIPT_shift_xy_pixels_4',
                 "command": 'shift_xy_pixels',
                 "args": [160, 48]
-            },
+            }
         ]
     },
     {
@@ -530,5 +530,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

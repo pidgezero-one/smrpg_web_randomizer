@@ -42,7 +42,7 @@ script = [
                 "identifier": 'EVENT_3219_action_queue_sync_2_SUBSCRIPT_set_solidity_bits_4',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_NPCS]]
-            },
+            }
         ]
     },
     {
@@ -72,7 +72,7 @@ script = [
                 "identifier": 'EVENT_3219_action_queue_async_6_SUBSCRIPT_inc_palette_row_by_0',
                 "command": 'inc_palette_row_by',
                 "args": [255]
-            },
+            }
         ]
     },
     {
@@ -132,7 +132,7 @@ script = [
                 "identifier": 'EVENT_3219_action_queue_sync_15_SUBSCRIPT_object_memory_set_bit_0',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -152,5 +152,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

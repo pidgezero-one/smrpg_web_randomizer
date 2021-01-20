@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_748_action_queue_async_1_SUBSCRIPT_visibility_off_0',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -46,7 +46,7 @@ script = [
                 "identifier": 'EVENT_748_action_queue_async_5_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [8, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -66,5 +66,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

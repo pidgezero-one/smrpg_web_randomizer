@@ -37,7 +37,7 @@ script = [
                 "identifier": 'EVENT_3124_action_queue_sync_2_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -105,5 +105,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [34],
         "subscript": []
-    },
+    }
 ]

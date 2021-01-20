@@ -41,7 +41,7 @@ script = [
                 "identifier": 'EVENT_1328_action_queue_async_1_SUBSCRIPT_set_vram_priority_5',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -67,5 +67,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

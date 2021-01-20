@@ -96,5 +96,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_530_clear_bit_0'],
         "subscript": []
-    },
+    }
 ]

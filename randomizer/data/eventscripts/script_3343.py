@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_3343_action_queue_sync_2_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -54,7 +54,7 @@ script = [
                 "identifier": 'EVENT_3343_action_queue_sync_3_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -76,7 +76,7 @@ script = [
                 "identifier": 'EVENT_3343_action_queue_sync_4_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -98,7 +98,7 @@ script = [
                 "identifier": 'EVENT_3343_action_queue_sync_5_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -120,7 +120,7 @@ script = [
                 "identifier": 'EVENT_3343_action_queue_sync_6_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -142,7 +142,7 @@ script = [
                 "identifier": 'EVENT_3343_action_queue_sync_7_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -150,5 +150,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

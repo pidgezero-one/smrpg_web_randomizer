@@ -25,7 +25,7 @@ script = [
                 "identifier": 'EVENT_2060_action_queue_sync_0_SUBSCRIPT_shadow_off_3',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -47,7 +47,7 @@ script = [
                 "identifier": 'EVENT_2060_action_queue_sync_1_SUBSCRIPT_shift_southwest_pixels_2',
                 "command": 'shift_southwest_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -74,7 +74,7 @@ script = [
                 "identifier": 'EVENT_2060_action_queue_async_2_SUBSCRIPT_sequence_looping_on_3',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -88,5 +88,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

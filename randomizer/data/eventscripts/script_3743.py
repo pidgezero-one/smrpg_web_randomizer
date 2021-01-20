@@ -75,7 +75,7 @@ script = [
                 "identifier": 'EVENT_3743_action_queue_sync_10_SUBSCRIPT_transfer_xyzf_pixels_1',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 2, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -87,7 +87,7 @@ script = [
                 "identifier": 'EVENT_3743_action_queue_sync_11_SUBSCRIPT_shadow_off_0',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -99,7 +99,7 @@ script = [
                 "identifier": 'EVENT_3743_action_queue_sync_12_SUBSCRIPT_set_palette_row_0',
                 "command": 'set_palette_row',
                 "args": [11]
-            },
+            }
         ]
     },
     {
@@ -116,7 +116,7 @@ script = [
                 "identifier": 'EVENT_3743_action_queue_sync_13_SUBSCRIPT_shadow_off_1',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -133,7 +133,7 @@ script = [
                 "identifier": 'EVENT_3743_action_queue_sync_14_SUBSCRIPT_shadow_off_1',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -195,5 +195,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

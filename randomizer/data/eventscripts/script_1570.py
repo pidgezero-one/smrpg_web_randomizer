@@ -54,7 +54,7 @@ script = [
                 "identifier": 'EVENT_1570_start_embedded_action_script_async_4_SUBSCRIPT_visibility_off_4',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -141,7 +141,7 @@ script = [
                 "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_pause_9',
                 "command": 'pause',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -183,7 +183,7 @@ script = [
                 "identifier": 'EVENT_1570_action_queue_sync_11_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -255,7 +255,7 @@ script = [
                 "identifier": 'EVENT_1570_action_queue_async_22_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -287,5 +287,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

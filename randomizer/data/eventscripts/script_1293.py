@@ -47,7 +47,7 @@ script = [
                 "identifier": 'EVENT_1293_action_queue_sync_2_SUBSCRIPT_db_5',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -55,5 +55,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

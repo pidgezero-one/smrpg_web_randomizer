@@ -44,7 +44,7 @@ script = [
                 "identifier": 'EVENT_3120_action_queue_sync_4_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -121,7 +121,7 @@ script = [
                 "identifier": 'EVENT_3120_action_queue_sync_5_SUBSCRIPT_pause_13',
                 "command": 'pause',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -150,7 +150,7 @@ script = [
                 "identifier": 'EVENT_3120_action_queue_async_8_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -158,5 +158,5 @@ script = [
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_2],
         "subscript": []
-    },
+    }
 ]

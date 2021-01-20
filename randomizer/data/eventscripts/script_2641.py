@@ -26,7 +26,7 @@ script = [
                 "identifier": 'EVENT_2641_action_queue_sync_1_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_2641_action_queue_async_2_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -109,7 +109,7 @@ script = [
                 "identifier": 'EVENT_2641_action_queue_sync_7_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
                 "args": [9, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -148,7 +148,7 @@ script = [
                 "identifier": 'EVENT_2641_action_queue_async_10_SUBSCRIPT_visibility_off_3',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -184,7 +184,7 @@ script = [
                 "identifier": 'EVENT_2641_action_queue_async_15_SUBSCRIPT_shift_southwest_pixels_0',
                 "command": 'shift_southwest_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -213,7 +213,7 @@ script = [
                 "identifier": 'EVENT_2641_action_queue_async_18_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -227,5 +227,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -26,7 +26,7 @@ script = [
                 "identifier": 'EVENT_3344_action_queue_async_1_SUBSCRIPT_walk_1_step_northeast_2',
                 "command": 'walk_1_step_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -144,7 +144,7 @@ script = [
                 "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_db_20',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -256,7 +256,7 @@ script = [
                 "identifier": 'EVENT_3344_action_queue_sync_4_SUBSCRIPT_db_20',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -373,7 +373,7 @@ script = [
                 "identifier": 'EVENT_3344_action_queue_sync_5_SUBSCRIPT_db_21',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -490,7 +490,7 @@ script = [
                 "identifier": 'EVENT_3344_action_queue_sync_6_SUBSCRIPT_db_21',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -607,7 +607,7 @@ script = [
                 "identifier": 'EVENT_3344_action_queue_sync_7_SUBSCRIPT_db_21',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -724,7 +724,7 @@ script = [
                 "identifier": 'EVENT_3344_action_queue_sync_8_SUBSCRIPT_db_21',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -776,7 +776,7 @@ script = [
                 "identifier": 'EVENT_3344_action_queue_async_9_SUBSCRIPT_end_loop_8',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -798,7 +798,7 @@ script = [
                 "identifier": 'EVENT_3344_action_queue_async_10_SUBSCRIPT_walk_1_step_southwest_2',
                 "command": 'walk_1_step_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -818,5 +818,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [15],
         "subscript": []
-    },
+    }
 ]

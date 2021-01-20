@@ -44,7 +44,7 @@ script = [
                 "identifier": 'EVENT_3185_action_queue_sync_4_SUBSCRIPT_face_mario_2',
                 "command": 'face_mario',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -110,7 +110,7 @@ script = [
                 "identifier": 'EVENT_3185_action_queue_sync_14_SUBSCRIPT_jump_to_height_0',
                 "command": 'jump_to_height',
                 "args": [72]
-            },
+            }
         ]
     },
     {
@@ -179,7 +179,7 @@ script = [
                 "identifier": 'EVENT_3185_action_queue_sync_17_SUBSCRIPT_fixed_f_coord_off_9',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -216,7 +216,7 @@ script = [
                 "identifier": 'EVENT_3185_action_queue_sync_18_SUBSCRIPT_set_solidity_bits_5',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -340,7 +340,7 @@ script = [
                 "identifier": 'EVENT_3185_action_queue_sync_36_SUBSCRIPT_face_mario_2',
                 "command": 'face_mario',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -373,7 +373,7 @@ script = [
                 "identifier": 'EVENT_3185_action_queue_async_38_SUBSCRIPT_face_northeast_3',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -422,7 +422,7 @@ script = [
                 "identifier": 'EVENT_3185_action_queue_sync_41_SUBSCRIPT_set_animation_speed_5',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -507,7 +507,7 @@ script = [
                 "identifier": 'EVENT_3185_action_queue_async_45_SUBSCRIPT_visibility_off_11',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -587,5 +587,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

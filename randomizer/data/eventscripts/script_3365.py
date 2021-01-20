@@ -469,7 +469,7 @@ script = [
                 "identifier": 'EVENT_3365_action_queue_async_69_SUBSCRIPT_end_all_9',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -481,7 +481,7 @@ script = [
                 "identifier": 'EVENT_3365_action_queue_sync_70_SUBSCRIPT_jmp_0',
                 "command": 'jmp',
                 "args": ['EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0']
-            },
+            }
         ]
     },
     {
@@ -498,7 +498,7 @@ script = [
                 "identifier": 'EVENT_3365_action_queue_sync_71_SUBSCRIPT_jmp_1',
                 "command": 'jmp',
                 "args": ['EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0']
-            },
+            }
         ]
     },
     {
@@ -515,7 +515,7 @@ script = [
                 "identifier": 'EVENT_3365_action_queue_sync_72_SUBSCRIPT_jmp_1',
                 "command": 'jmp',
                 "args": ['EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0']
-            },
+            }
         ]
     },
     {
@@ -532,7 +532,7 @@ script = [
                 "identifier": 'EVENT_3365_action_queue_async_73_SUBSCRIPT_jmp_1',
                 "command": 'jmp',
                 "args": ['EVENT_3365_action_queue_async_69_SUBSCRIPT_start_loop_n_times_0']
-            },
+            }
         ]
     },
     {
@@ -597,7 +597,7 @@ script = [
                 "identifier": 'EVENT_3365_action_queue_async_82_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -803,5 +803,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [3356],
         "subscript": []
-    },
+    }
 ]

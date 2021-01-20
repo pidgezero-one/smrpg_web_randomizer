@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_2360_action_queue_async_0_SUBSCRIPT_shift_northeast_pixels_0',
                 "command": 'shift_northeast_pixels',
                 "args": [10]
-            },
+            }
         ]
     },
     {
@@ -47,7 +47,7 @@ script = [
                 "identifier": 'EVENT_2360_action_queue_async_1_SUBSCRIPT_shift_west_pixels_5',
                 "command": 'shift_west_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -107,7 +107,7 @@ script = [
                 "identifier": 'EVENT_2360_action_queue_async_5_SUBSCRIPT_play_sound_6',
                 "command": 'play_sound',
                 "args": [Sounds._000_SILENCE, 4]
-            },
+            }
         ]
     },
     {
@@ -119,7 +119,7 @@ script = [
                 "identifier": 'EVENT_2360_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -136,7 +136,7 @@ script = [
                 "identifier": 'EVENT_2360_action_queue_async_7_SUBSCRIPT_shift_south_pixels_1',
                 "command": 'shift_south_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -159,7 +159,7 @@ script = [
                 "identifier": 'EVENT_2360_action_queue_sync_9_SUBSCRIPT_shift_northwest_steps_1',
                 "command": 'shift_northwest_steps',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -196,7 +196,7 @@ script = [
                 "identifier": 'EVENT_2360_action_queue_sync_10_SUBSCRIPT_bpl_26_27_28_5',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -390,5 +390,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_2409_jmp_if_bit_clear_37'],
         "subscript": []
-    },
+    }
 ]

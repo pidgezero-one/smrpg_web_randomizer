@@ -34,7 +34,7 @@ script = [
                 "identifier": 'EVENT_3182_action_queue_sync_4_SUBSCRIPT_jump_to_height_silent_0',
                 "command": 'jump_to_height_silent',
                 "args": [0]
-            },
+            }
         ]
     },
     {
@@ -42,5 +42,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [15],
         "subscript": []
-    },
+    }
 ]

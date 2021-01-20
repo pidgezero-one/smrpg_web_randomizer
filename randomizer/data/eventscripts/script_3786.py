@@ -63,7 +63,7 @@ script = [
                 "identifier": 'EVENT_3786_action_queue_sync_3_SUBSCRIPT_walk_1_step_northeast_7',
                 "command": 'walk_1_step_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -89,5 +89,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

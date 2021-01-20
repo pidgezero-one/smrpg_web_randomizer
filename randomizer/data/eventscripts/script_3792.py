@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_2_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -39,7 +39,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -51,7 +51,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_4_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -68,7 +68,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_5_SUBSCRIPT_floating_off_1',
                 "command": 'floating_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -92,7 +92,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_8_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[0]]
-            },
+            }
         ]
     },
     {
@@ -104,7 +104,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_9_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[0, 2]]
-            },
+            }
         ]
     },
     {
@@ -116,7 +116,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_10_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[2]]
-            },
+            }
         ]
     },
     {
@@ -128,7 +128,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_11_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[0, 1]]
-            },
+            }
         ]
     },
     {
@@ -140,7 +140,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_12_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[1]]
-            },
+            }
         ]
     },
     {
@@ -163,7 +163,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_async_14_SUBSCRIPT_walk_1_step_southwest_1',
                 "command": 'walk_1_step_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -175,7 +175,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_15_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[]]
-            },
+            }
         ]
     },
     {
@@ -187,7 +187,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_16_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[]]
-            },
+            }
         ]
     },
     {
@@ -199,7 +199,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_17_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[]]
-            },
+            }
         ]
     },
     {
@@ -211,7 +211,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_18_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[]]
-            },
+            }
         ]
     },
     {
@@ -223,7 +223,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_19_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[]]
-            },
+            }
         ]
     },
     {
@@ -245,7 +245,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_20_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -267,7 +267,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_21_SUBSCRIPT_transfer_xyzf_pixels_2',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 8, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -289,7 +289,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_22_SUBSCRIPT_transfer_xyzf_pixels_2',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 24, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -311,7 +311,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_23_SUBSCRIPT_transfer_xyzf_pixels_2',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 24, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -338,7 +338,7 @@ script = [
                 "identifier": 'EVENT_3792_action_queue_sync_24_SUBSCRIPT_set_vram_priority_3',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -394,5 +394,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

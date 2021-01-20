@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_592_action_queue_sync_1_SUBSCRIPT_transfer_xyzf_pixels_1',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 0, 8, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -33,7 +33,7 @@ script = [
                 "identifier": 'EVENT_592_action_queue_sync_2_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -45,7 +45,7 @@ script = [
                 "identifier": 'EVENT_592_action_queue_sync_3_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -57,7 +57,7 @@ script = [
                 "identifier": 'EVENT_592_action_queue_sync_4_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -74,7 +74,7 @@ script = [
                 "identifier": 'EVENT_592_action_queue_sync_5_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -91,7 +91,7 @@ script = [
                 "identifier": 'EVENT_592_action_queue_sync_6_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -108,7 +108,7 @@ script = [
                 "identifier": 'EVENT_592_action_queue_async_7_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -134,5 +134,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

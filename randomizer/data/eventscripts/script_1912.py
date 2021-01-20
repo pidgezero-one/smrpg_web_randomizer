@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_1912_action_queue_sync_2_SUBSCRIPT_clear_bit_6',
                 "command": 'clear_bit',
                 "args": [0x7043, 0]
-            },
+            }
         ]
     },
     {
@@ -89,7 +89,7 @@ script = [
                 "identifier": 'EVENT_1912_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
                 "args": [15, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -109,5 +109,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_3340_action_queue_async_2_SUBSCRIPT_pause_6',
                 "command": 'pause',
                 "args": [20]
-            },
+            }
         ]
     },
     {
@@ -113,7 +113,7 @@ script = [
                 "identifier": 'EVENT_3340_action_queue_sync_7_SUBSCRIPT_jump_to_height_silent_5',
                 "command": 'jump_to_height_silent',
                 "args": [32]
-            },
+            }
         ]
     },
     {
@@ -163,5 +163,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

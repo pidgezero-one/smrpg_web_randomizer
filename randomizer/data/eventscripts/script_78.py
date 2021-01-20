@@ -6,5 +6,5 @@ script = [
         "command": 'db',
         "args": [0xfd, 0xd0],
         "subscript": []
-    },
+    }
 ]

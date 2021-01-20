@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_3762_action_queue_async_2_SUBSCRIPT_visibility_on_0',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -34,7 +34,7 @@ script = [
                 "identifier": 'EVENT_3762_action_queue_async_3_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 0, 2, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -78,5 +78,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

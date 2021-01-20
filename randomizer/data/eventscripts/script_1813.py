@@ -37,7 +37,7 @@ script = [
                 "identifier": 'EVENT_1813_action_queue_async_2_SUBSCRIPT_jmp_if_mario_in_air_3',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_1813_action_queue_async_2_SUBSCRIPT_pause_2']
-            },
+            }
         ]
     },
     {
@@ -45,5 +45,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

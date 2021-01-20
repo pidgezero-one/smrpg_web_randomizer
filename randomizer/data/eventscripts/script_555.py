@@ -71,7 +71,7 @@ script = [
                 "identifier": 'EVENT_555_action_queue_async_6_SUBSCRIPT_shift_southeast_steps_5',
                 "command": 'shift_southeast_steps',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -169,5 +169,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

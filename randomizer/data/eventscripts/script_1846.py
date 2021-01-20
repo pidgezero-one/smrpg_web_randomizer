@@ -96,7 +96,7 @@ script = [
                 "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_face_east_10',
                 "command": 'face_east',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -168,7 +168,7 @@ script = [
                 "identifier": 'EVENT_1846_action_queue_sync_17_SUBSCRIPT_face_northwest_0',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -186,7 +186,7 @@ script = [
                 "identifier": 'EVENT_1846_action_queue_sync_19_SUBSCRIPT_face_southeast_0',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -204,7 +204,7 @@ script = [
                 "identifier": 'EVENT_1846_action_queue_sync_21_SUBSCRIPT_jump_to_height_0',
                 "command": 'jump_to_height',
                 "args": [108]
-            },
+            }
         ]
     },
     {
@@ -304,7 +304,7 @@ script = [
                 "identifier": 'EVENT_1846_action_queue_async_35_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -332,7 +332,7 @@ script = [
                 "identifier": 'EVENT_1846_action_queue_async_37_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -360,7 +360,7 @@ script = [
                 "identifier": 'EVENT_1846_action_queue_async_39_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -368,5 +368,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1846_clear_bit_30'],
         "subscript": []
-    },
+    }
 ]

@@ -63,7 +63,7 @@ script = [
                 "identifier": 'EVENT_1364_action_queue_sync_8_SUBSCRIPT_bounce_to_xy_with_height_1',
                 "command": 'bounce_to_xy_with_height',
                 "args": [0, 3, 0]
-            },
+            }
         ]
     },
     {
@@ -90,7 +90,7 @@ script = [
                 "identifier": 'EVENT_1364_action_queue_async_9_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
                 "args": [3, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -160,7 +160,7 @@ script = [
                 "identifier": 'EVENT_1364_action_queue_async_18_SUBSCRIPT_jump_to_height_2',
                 "command": 'jump_to_height',
                 "args": [96]
-            },
+            }
         ]
     },
     {
@@ -184,7 +184,7 @@ script = [
                 "identifier": 'EVENT_1364_action_queue_async_21_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -323,7 +323,7 @@ script = [
                 "identifier": 'EVENT_1364_action_queue_async_24_SUBSCRIPT_shift_northwest_pixels_23',
                 "command": 'shift_northwest_pixels',
                 "args": [7]
-            },
+            }
         ]
     },
     {
@@ -419,7 +419,7 @@ script = [
                 "identifier": 'EVENT_1364_action_queue_async_34_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -730,7 +730,7 @@ script = [
                 "identifier": 'EVENT_1364_action_queue_async_69_SUBSCRIPT_visibility_off_19',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -762,5 +762,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1282_enter_area_0'],
         "subscript": []
-    },
+    }
 ]

@@ -37,7 +37,7 @@ script = [
                 "identifier": 'EVENT_3215_action_queue_sync_2_SUBSCRIPT_visibility_off_3',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -45,5 +45,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

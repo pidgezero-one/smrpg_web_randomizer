@@ -43,7 +43,7 @@ script = [
                 "identifier": 'EVENT_3839_action_queue_sync_3_SUBSCRIPT_walk_1_step_southwest_3',
                 "command": 'walk_1_step_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -119,7 +119,7 @@ script = [
                 "identifier": 'EVENT_3839_action_queue_sync_8_SUBSCRIPT_visibility_off_8',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -296,7 +296,7 @@ script = [
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_set_animation_speed_33',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -328,5 +328,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [145],
         "subscript": []
-    },
+    }
 ]

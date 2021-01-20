@@ -81,7 +81,7 @@ script = [
                 "identifier": 'EVENT_2350_action_queue_sync_1_SUBSCRIPT_bpl_26_27_28_13',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -103,7 +103,7 @@ script = [
                 "identifier": 'EVENT_2350_action_queue_sync_2_SUBSCRIPT_shift_north_steps_2',
                 "command": 'shift_north_steps',
                 "args": [5]
-            },
+            }
         ]
     },
     {
@@ -129,5 +129,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

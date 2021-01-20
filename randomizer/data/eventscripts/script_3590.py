@@ -46,7 +46,7 @@ script = [
                 "identifier": 'EVENT_3590_action_queue_sync_6_SUBSCRIPT_visibility_on_0',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -108,5 +108,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3591_run_event_as_subroutine_4'],
         "subscript": []
-    },
+    }
 ]

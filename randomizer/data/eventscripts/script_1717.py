@@ -69,7 +69,7 @@ script = [
                 "identifier": 'EVENT_1717_action_queue_sync_9_SUBSCRIPT_jump_to_height_silent_1',
                 "command": 'jump_to_height_silent',
                 "args": [0]
-            },
+            }
         ]
     },
     {
@@ -101,5 +101,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

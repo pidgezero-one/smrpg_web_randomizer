@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_2546_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
-            },
+            }
         ]
     },
     {
@@ -53,7 +53,7 @@ script = [
                 "identifier": 'EVENT_2546_action_queue_async_2_SUBSCRIPT_shift_south_pixels_5',
                 "command": 'shift_south_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -97,7 +97,7 @@ script = [
                 "identifier": 'EVENT_2546_action_queue_sync_5_SUBSCRIPT_bpl_26_27_28_4',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -129,5 +129,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

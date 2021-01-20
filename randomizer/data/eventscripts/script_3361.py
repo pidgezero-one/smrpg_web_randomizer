@@ -26,7 +26,7 @@ script = [
                 "identifier": 'EVENT_3361_action_queue_async_1_SUBSCRIPT_shift_southeast_pixels_2',
                 "command": 'shift_southeast_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -179,7 +179,7 @@ script = [
                 "identifier": 'EVENT_3361_action_queue_async_3_SUBSCRIPT_set_animation_speed_27',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -187,5 +187,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -75,7 +75,7 @@ script = [
                 "identifier": 'EVENT_1787_action_queue_async_10_SUBSCRIPT_set_object_memory_bits_1',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[0, 1]]
-            },
+            }
         ]
     },
     {
@@ -113,5 +113,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

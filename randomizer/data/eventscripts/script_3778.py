@@ -20,7 +20,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_0_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -38,7 +38,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_2_SUBSCRIPT_shift_northeast_steps_0',
                 "command": 'shift_northeast_steps',
                 "args": [9]
-            },
+            }
         ]
     },
     {
@@ -97,7 +97,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_10_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [38]
-            },
+            }
         ]
     },
     {
@@ -141,7 +141,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_13_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -179,7 +179,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_15_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -217,7 +217,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_17_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -255,7 +255,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_19_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -293,7 +293,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_21_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -331,7 +331,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_23_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -369,7 +369,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_25_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -407,7 +407,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_27_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -445,7 +445,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_29_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -483,7 +483,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_31_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -521,7 +521,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_33_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -559,7 +559,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_35_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -597,7 +597,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_37_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -635,7 +635,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_39_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -673,7 +673,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_41_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -711,7 +711,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_43_SUBSCRIPT_end_all_4',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -723,7 +723,7 @@ script = [
                 "identifier": 'EVENT_3778_action_queue_async_44_SUBSCRIPT_shift_southwest_steps_0',
                 "command": 'shift_southwest_steps',
                 "args": [9]
-            },
+            }
         ]
     },
     {
@@ -923,5 +923,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

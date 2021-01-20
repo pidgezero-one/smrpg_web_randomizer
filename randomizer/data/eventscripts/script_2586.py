@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_2586_action_queue_async_1_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -129,7 +129,7 @@ script = [
                 "identifier": 'EVENT_2586_action_queue_async_18_SUBSCRIPT_face_southwest_1',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -293,5 +293,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_2586_pause_31'],
         "subscript": []
-    },
+    }
 ]

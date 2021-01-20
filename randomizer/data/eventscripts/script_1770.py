@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_1770_action_queue_async_2_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -52,5 +52,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [15],
         "subscript": []
-    },
+    }
 ]

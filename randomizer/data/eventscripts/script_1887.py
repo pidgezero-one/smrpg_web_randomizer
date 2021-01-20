@@ -80,7 +80,7 @@ script = [
                 "identifier": 'EVENT_1887_action_queue_sync_10_SUBSCRIPT_object_memory_clear_bit_2',
                 "command": 'object_memory_clear_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -88,5 +88,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

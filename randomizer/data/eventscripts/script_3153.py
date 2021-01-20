@@ -189,7 +189,7 @@ script = [
                 "identifier": 'EVENT_3153_action_queue_sync_29_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -1561,7 +1561,7 @@ script = [
                 "identifier": 'EVENT_3153_action_queue_async_255_SUBSCRIPT_play_sound_2',
                 "command": 'play_sound',
                 "args": [Sounds._022_CLOSE_DOOR, 4]
-            },
+            }
         ]
     },
     {
@@ -1899,5 +1899,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

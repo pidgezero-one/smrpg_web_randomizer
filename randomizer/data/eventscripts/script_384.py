@@ -33,7 +33,7 @@ script = [
                 "identifier": 'EVENT_384_action_queue_async_3_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -89,5 +89,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [257],
         "subscript": []
-    },
+    }
 ]

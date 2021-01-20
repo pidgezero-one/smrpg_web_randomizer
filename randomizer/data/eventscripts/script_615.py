@@ -45,7 +45,7 @@ script = [
                 "identifier": 'EVENT_615_action_queue_async_5_SUBSCRIPT_play_sound_1',
                 "command": 'play_sound',
                 "args": [Sounds._005_BLOCK_SWITCH, 6]
-            },
+            }
         ]
     },
     {
@@ -99,7 +99,7 @@ script = [
                 "identifier": 'EVENT_615_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [30, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -159,7 +159,7 @@ script = [
                 "identifier": 'EVENT_615_action_queue_sync_22_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [13, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -176,7 +176,7 @@ script = [
                 "identifier": 'EVENT_615_action_queue_async_23_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -290,7 +290,7 @@ script = [
                 "identifier": 'EVENT_615_action_queue_async_41_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [14, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -345,7 +345,7 @@ script = [
                 "identifier": 'EVENT_615_action_queue_async_45_SUBSCRIPT_play_sound_5',
                 "command": 'play_sound',
                 "args": [Sounds._058_INSERT, 4]
-            },
+            }
         ]
     },
     {
@@ -437,5 +437,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_615_action_queue_async_5'],
         "subscript": []
-    },
+    }
 ]

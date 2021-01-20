@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_3227_action_queue_async_3_SUBSCRIPT_shirt_to_xy_coords_0',
                 "command": 'shirt_to_xy_coords',
                 "args": [19, 117]
-            },
+            }
         ]
     },
     {
@@ -57,7 +57,7 @@ script = [
                 "identifier": 'EVENT_3227_action_queue_async_6_SUBSCRIPT_object_memory_set_bit_1',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -101,5 +101,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

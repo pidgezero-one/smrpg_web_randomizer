@@ -234,7 +234,7 @@ script = [
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_clear_bit_16',
                 "command": 'clear_bit',
                 "args": [0x7043, 0]
-            },
+            }
         ]
     },
     {
@@ -242,5 +242,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

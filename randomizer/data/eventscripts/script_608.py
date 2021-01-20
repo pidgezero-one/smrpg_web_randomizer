@@ -57,7 +57,7 @@ script = [
                 "identifier": 'EVENT_608_action_queue_sync_7_SUBSCRIPT_transfer_xyzf_pixels_1',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -69,7 +69,7 @@ script = [
                 "identifier": 'EVENT_608_action_queue_sync_8_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -81,7 +81,7 @@ script = [
                 "identifier": 'EVENT_608_action_queue_sync_9_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -168,7 +168,7 @@ script = [
                 "identifier": 'EVENT_608_action_queue_async_20_SUBSCRIPT_transfer_to_xyzf_3',
                 "command": 'transfer_to_xyzf',
                 "args": [16, 101, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -194,5 +194,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

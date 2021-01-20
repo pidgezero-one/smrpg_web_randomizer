@@ -36,5 +36,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3346_tint_layers_0'],
         "subscript": []
-    },
+    }
 ]

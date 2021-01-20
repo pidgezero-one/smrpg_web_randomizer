@@ -18,5 +18,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1690_fade_in_from_black_sync_2'],
         "subscript": []
-    },
+    }
 ]

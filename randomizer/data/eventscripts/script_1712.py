@@ -57,7 +57,7 @@ script = [
                 "identifier": 'EVENT_1712_action_queue_sync_7_SUBSCRIPT_jump_to_height_silent_1',
                 "command": 'jump_to_height_silent',
                 "args": [0]
-            },
+            }
         ]
     },
     {
@@ -164,7 +164,7 @@ script = [
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_object_memory_clear_bit_13',
                 "command": 'object_memory_clear_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -202,5 +202,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -38,7 +38,7 @@ script = [
                 "identifier": 'EVENT_932_action_queue_sync_3_SUBSCRIPT_walk_to_xy_coords_2',
                 "command": 'walk_to_xy_coords',
                 "args": [14, 62]
-            },
+            }
         ]
     },
     {
@@ -50,7 +50,7 @@ script = [
                 "identifier": 'EVENT_932_start_embedded_action_script_async_4_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -78,7 +78,7 @@ script = [
                 "identifier": 'EVENT_932_action_queue_sync_6_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -90,7 +90,7 @@ script = [
                 "identifier": 'EVENT_932_action_queue_async_7_SUBSCRIPT_face_northwest_0',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -181,7 +181,7 @@ script = [
                 "identifier": 'EVENT_932_action_queue_async_17_SUBSCRIPT_set_animation_speed_5',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -327,5 +327,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_932_pause_26'],
         "subscript": []
-    },
+    }
 ]

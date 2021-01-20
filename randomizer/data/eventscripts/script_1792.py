@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_1792_action_queue_sync_0_SUBSCRIPT_object_memory_set_bit_0',
                 "command": 'object_memory_set_bit',
                 "args": [0x09, [7]]
-            },
+            }
         ]
     },
     {
@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_1792_action_queue_sync_1_SUBSCRIPT_object_memory_set_bit_0',
                 "command": 'object_memory_set_bit',
                 "args": [0x09, [7]]
-            },
+            }
         ]
     },
     {
@@ -34,7 +34,7 @@ script = [
                 "identifier": 'EVENT_1792_action_queue_async_2_SUBSCRIPT_object_memory_set_bit_0',
                 "command": 'object_memory_set_bit',
                 "args": [0x09, [7]]
-            },
+            }
         ]
     },
     {
@@ -66,5 +66,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [15],
         "subscript": []
-    },
+    }
 ]

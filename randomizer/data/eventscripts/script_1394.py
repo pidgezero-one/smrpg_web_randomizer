@@ -182,7 +182,7 @@ script = [
                 "identifier": 'EVENT_1394_action_queue_async_27_SUBSCRIPT_jump_to_height_2',
                 "command": 'jump_to_height',
                 "args": [48]
-            },
+            }
         ]
     },
     {
@@ -256,5 +256,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

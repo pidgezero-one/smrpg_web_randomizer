@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_sync_0_SUBSCRIPT_shadow_off_0',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_sync_1_SUBSCRIPT_shadow_off_0',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -34,7 +34,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_async_2_SUBSCRIPT_object_memory_set_bit_0',
                 "command": 'object_memory_set_bit',
                 "args": [0x0b, [3]]
-            },
+            }
         ]
     },
     {
@@ -94,7 +94,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_sync_11_SUBSCRIPT_shift_z_down_pixels_0',
                 "command": 'shift_z_down_pixels',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -106,7 +106,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_async_12_SUBSCRIPT_shift_z_down_pixels_0',
                 "command": 'shift_z_down_pixels',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -146,7 +146,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_async_16_SUBSCRIPT_set_short_mem_2',
                 "command": 'set_short_mem',
                 "args": [0x702a, 0x700c]
-            },
+            }
         ]
     },
     {
@@ -242,7 +242,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_async_31_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -269,7 +269,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_sync_32_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -291,7 +291,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_sync_33_SUBSCRIPT_face_northeast_2',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -356,7 +356,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_sync_37_SUBSCRIPT_face_northeast_7',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -396,7 +396,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_async_41_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [27]
-            },
+            }
         ]
     },
     {
@@ -472,7 +472,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_async_46_SUBSCRIPT_fixed_f_coord_off_8',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -520,7 +520,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_async_48_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -567,7 +567,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_async_49_SUBSCRIPT_visibility_off_7',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -579,7 +579,7 @@ script = [
                 "identifier": 'EVENT_1698_action_queue_sync_50_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -629,5 +629,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

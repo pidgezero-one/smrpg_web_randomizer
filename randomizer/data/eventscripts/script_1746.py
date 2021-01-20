@@ -51,7 +51,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_async_6_SUBSCRIPT_shift_south_steps_1',
                 "command": 'shift_south_steps',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -101,7 +101,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_sync_10_SUBSCRIPT_shift_northeast_steps_4',
                 "command": 'shift_northeast_steps',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -118,7 +118,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -171,7 +171,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_sync_13_SUBSCRIPT_floating_on_7',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -188,7 +188,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_async_14_SUBSCRIPT_shift_southwest_steps_1',
                 "command": 'shift_southwest_steps',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -230,7 +230,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_sync_15_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -287,7 +287,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_async_16_SUBSCRIPT_shadow_off_9',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -421,7 +421,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_sync_34_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -449,7 +449,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_sync_36_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -496,7 +496,7 @@ script = [
                 "identifier": 'EVENT_1746_action_queue_sync_42_SUBSCRIPT_reset_properties_1',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -546,5 +546,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [1729],
         "subscript": []
-    },
+    }
 ]

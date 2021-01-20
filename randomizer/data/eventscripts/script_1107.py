@@ -35,7 +35,7 @@ script = [
                 "identifier": 'EVENT_1107_action_queue_async_0_SUBSCRIPT_pause_5',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -168,7 +168,7 @@ script = [
                 "identifier": 'EVENT_1107_action_queue_async_12_SUBSCRIPT_ret_11',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -241,7 +241,7 @@ script = [
                 "identifier": 'EVENT_1107_action_queue_async_14_SUBSCRIPT_ret_11',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -286,7 +286,7 @@ script = [
                 "identifier": 'EVENT_1107_action_queue_async_18_SUBSCRIPT_shadow_off_3',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -360,7 +360,7 @@ script = [
                 "identifier": 'EVENT_1107_action_queue_async_21_SUBSCRIPT_ret_10',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -398,7 +398,7 @@ script = [
                 "identifier": 'EVENT_1107_action_queue_sync_23_SUBSCRIPT_ret_4',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -520,5 +520,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

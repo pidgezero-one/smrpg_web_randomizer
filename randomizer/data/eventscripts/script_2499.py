@@ -30,7 +30,7 @@ script = [
                 "identifier": 'EVENT_2499_action_queue_sync_0_SUBSCRIPT_face_southwest_4',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -72,7 +72,7 @@ script = [
                 "identifier": 'EVENT_2499_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_6',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -114,7 +114,7 @@ script = [
                 "identifier": 'EVENT_2499_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -151,7 +151,7 @@ script = [
                 "identifier": 'EVENT_2499_action_queue_async_3_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
                 "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -165,5 +165,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

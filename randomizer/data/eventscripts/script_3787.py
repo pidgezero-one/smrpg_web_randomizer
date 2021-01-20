@@ -47,7 +47,7 @@ script = [
                 "identifier": 'EVENT_3787_action_queue_sync_2_SUBSCRIPT_floating_on_5',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -73,5 +73,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -75,7 +75,7 @@ script = [
                 "identifier": 'EVENT_1694_action_queue_sync_5_SUBSCRIPT_set_priority_7',
                 "command": 'set_priority',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -119,7 +119,7 @@ script = [
                 "identifier": 'EVENT_1694_action_queue_async_8_SUBSCRIPT_shift_south_steps_4',
                 "command": 'shift_south_steps',
                 "args": [16]
-            },
+            }
         ]
     },
     {
@@ -167,7 +167,7 @@ script = [
                 "identifier": 'EVENT_1694_action_queue_async_10_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -211,7 +211,7 @@ script = [
                 "identifier": 'EVENT_1694_action_queue_async_13_SUBSCRIPT_shift_north_steps_4',
                 "command": 'shift_north_steps',
                 "args": [16]
-            },
+            }
         ]
     },
     {
@@ -259,7 +259,7 @@ script = [
                 "identifier": 'EVENT_1694_action_queue_async_15_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -289,7 +289,7 @@ script = [
                 "identifier": 'EVENT_1694_action_queue_sync_19_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -321,7 +321,7 @@ script = [
                 "identifier": 'EVENT_1694_action_queue_async_20_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -357,7 +357,7 @@ script = [
                 "identifier": 'EVENT_1694_action_queue_sync_25_SUBSCRIPT_object_memory_modify_bits_0',
                 "command": 'object_memory_modify_bits',
                 "args": [0x09, [5], [4, 6]]
-            },
+            }
         ]
     },
     {
@@ -401,7 +401,7 @@ script = [
                 "identifier": 'EVENT_1694_action_queue_async_28_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -409,5 +409,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

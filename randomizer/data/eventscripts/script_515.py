@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_515_action_queue_sync_7_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0b, bits=[1]]
-            },
+            }
         ]
     },
     {
@@ -64,7 +64,7 @@ script = [
                 "identifier": 'EVENT_515_action_queue_async_8_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0b, bits=[1]]
-            },
+            }
         ]
     },
     {
@@ -91,7 +91,7 @@ script = [
                 "identifier": 'EVENT_515_action_queue_sync_9_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -273,5 +273,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

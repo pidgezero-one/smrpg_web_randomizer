@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_3190_action_queue_sync_3_SUBSCRIPT_set_vram_priority_0',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -65,7 +65,7 @@ script = [
                 "identifier": 'EVENT_3190_action_queue_async_4_SUBSCRIPT_floating_on_5',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -88,7 +88,7 @@ script = [
                 "identifier": 'EVENT_3190_action_queue_async_6_SUBSCRIPT_face_northwest_1',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -127,7 +127,7 @@ script = [
                 "identifier": 'EVENT_3190_action_queue_async_9_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [30]
-            },
+            }
         ]
     },
     {
@@ -274,7 +274,7 @@ script = [
                 "identifier": 'EVENT_3190_action_queue_sync_10_SUBSCRIPT_set_object_memory_bits_27',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, bits=[0]]
-            },
+            }
         ]
     },
     {
@@ -476,7 +476,7 @@ script = [
                 "identifier": 'EVENT_3190_action_queue_sync_11_SUBSCRIPT_set_bit_38',
                 "command": 'set_bit',
                 "args": [0x7044, 5]
-            },
+            }
         ]
     },
     {
@@ -548,7 +548,7 @@ script = [
                 "identifier": 'EVENT_3190_action_queue_sync_17_SUBSCRIPT_pause_6',
                 "command": 'pause',
                 "args": [200]
-            },
+            }
         ]
     },
     {
@@ -590,7 +590,7 @@ script = [
                 "identifier": 'EVENT_3190_action_queue_sync_18_SUBSCRIPT_set_bit_6',
                 "command": 'set_bit',
                 "args": [0x7043, 0]
-            },
+            }
         ]
     },
     {
@@ -760,5 +760,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [1648],
         "subscript": []
-    },
+    }
 ]

@@ -79,7 +79,7 @@ script = [
                 "identifier": 'EVENT_433_action_queue_sync_4_SUBSCRIPT_visibility_off_9',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -142,7 +142,7 @@ script = [
                 "identifier": 'EVENT_433_action_queue_sync_6_SUBSCRIPT_visibility_off_9',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -187,7 +187,7 @@ script = [
                 "identifier": 'EVENT_433_action_queue_sync_10_SUBSCRIPT_reset_properties_3',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -207,5 +207,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

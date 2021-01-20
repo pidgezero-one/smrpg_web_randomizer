@@ -72,7 +72,7 @@ script = [
                 "identifier": 'EVENT_1071_action_queue_sync_2_SUBSCRIPT_set_vram_priority_10',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.PRIORITY_3]
-            },
+            }
         ]
     },
     {
@@ -89,7 +89,7 @@ script = [
                 "identifier": 'EVENT_1071_action_queue_async_3_SUBSCRIPT_bounce_to_xy_with_height_1',
                 "command": 'bounce_to_xy_with_height',
                 "args": [4, 32, 0]
-            },
+            }
         ]
     },
     {
@@ -150,7 +150,7 @@ script = [
                 "identifier": 'EVENT_1071_action_queue_async_8_SUBSCRIPT_sequence_looping_on_5',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -339,7 +339,7 @@ script = [
                 "identifier": 'EVENT_1071_action_queue_sync_36_SUBSCRIPT_ret_3',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -359,5 +359,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

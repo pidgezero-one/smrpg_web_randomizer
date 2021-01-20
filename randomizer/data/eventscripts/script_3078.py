@@ -68,7 +68,7 @@ script = [
                 "identifier": 'EVENT_3078_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_8',
                 "command": 'set_sprite_sequence',
                 "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -266,7 +266,7 @@ script = [
                 "identifier": 'EVENT_3078_action_queue_sync_25_SUBSCRIPT_ret_12',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -298,5 +298,5 @@ script = [
         "command": 'reset_and_choose_game',
         "args": [],
         "subscript": []
-    },
+    }
 ]

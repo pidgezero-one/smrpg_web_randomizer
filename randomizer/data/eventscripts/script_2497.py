@@ -88,7 +88,7 @@ script = [
                 "identifier": 'EVENT_2497_action_queue_sync_3_SUBSCRIPT_pause_12',
                 "command": 'pause',
                 "args": [64]
-            },
+            }
         ]
     },
     {
@@ -155,7 +155,7 @@ script = [
                 "identifier": 'EVENT_2497_action_queue_sync_4_SUBSCRIPT_pause_11',
                 "command": 'pause',
                 "args": [64]
-            },
+            }
         ]
     },
     {
@@ -217,5 +217,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

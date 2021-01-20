@@ -42,7 +42,7 @@ script = [
                 "identifier": 'EVENT_65_action_queue_sync_2_SUBSCRIPT_play_sound_4',
                 "command": 'play_sound',
                 "args": [Sounds._010_TRAMPOLINE, 6]
-            },
+            }
         ]
     },
     {
@@ -154,7 +154,7 @@ script = [
                 "identifier": 'EVENT_65_action_queue_async_3_SUBSCRIPT_set_vram_priority_20',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -208,7 +208,7 @@ script = [
                 "identifier": 'EVENT_65_action_queue_sync_6_SUBSCRIPT_sequence_looping_off_6',
                 "command": 'sequence_looping_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -275,7 +275,7 @@ script = [
                 "identifier": 'EVENT_65_action_queue_async_7_SUBSCRIPT_set_solidity_bits_11',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_NPCS]]
-            },
+            }
         ]
     },
     {
@@ -307,5 +307,5 @@ script = [
         "command": 'end_all',
         "args": [],
         "subscript": []
-    },
+    }
 ]

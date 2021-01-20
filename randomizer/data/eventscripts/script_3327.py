@@ -138,5 +138,5 @@ script = [
         "command": 'reset_and_choose_game',
         "args": [],
         "subscript": []
-    },
+    }
 ]

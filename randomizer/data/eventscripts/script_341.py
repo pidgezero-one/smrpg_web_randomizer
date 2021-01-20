@@ -90,5 +90,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_257_fade_in_from_black_async_0'],
         "subscript": []
-    },
+    }
 ]

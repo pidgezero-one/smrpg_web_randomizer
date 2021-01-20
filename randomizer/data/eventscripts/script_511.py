@@ -27,7 +27,7 @@ script = [
                 "identifier": 'EVENT_511_action_queue_sync_2_SUBSCRIPT_shift_z_up_steps_1',
                 "command": 'shift_z_up_steps',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -68,7 +68,7 @@ script = [
                 "identifier": 'EVENT_511_action_queue_sync_7_SUBSCRIPT_shift_z_up_steps_1',
                 "command": 'shift_z_up_steps',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -94,5 +94,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

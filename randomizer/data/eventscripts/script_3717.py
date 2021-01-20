@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_3717_action_queue_async_3_SUBSCRIPT_play_sound_6',
                 "command": 'play_sound',
                 "args": [Sounds._022_CLOSE_DOOR, 4]
-            },
+            }
         ]
     },
     {
@@ -100,7 +100,7 @@ script = [
                 "identifier": 'EVENT_3717_action_queue_async_4_SUBSCRIPT_shift_northwest_pixels_6',
                 "command": 'shift_northwest_pixels',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -218,7 +218,7 @@ script = [
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_set_solidity_bits_20',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -274,5 +274,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

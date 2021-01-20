@@ -64,7 +64,7 @@ script = [
                 "identifier": 'EVENT_737_action_queue_async_9_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [7, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -82,7 +82,7 @@ script = [
                 "identifier": 'EVENT_737_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -100,7 +100,7 @@ script = [
                 "identifier": 'EVENT_737_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [1, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -147,7 +147,7 @@ script = [
                 "identifier": 'EVENT_737_action_queue_async_19_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -177,7 +177,7 @@ script = [
                 "identifier": 'EVENT_737_action_queue_sync_23_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [6, 22, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -194,7 +194,7 @@ script = [
                 "identifier": 'EVENT_737_action_queue_async_24_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -289,7 +289,7 @@ script = [
                 "identifier": 'EVENT_737_action_queue_async_38_SUBSCRIPT_transfer_xyzf_pixels_1',
                 "command": 'transfer_xyzf_pixels',
                 "args": [254, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -303,5 +303,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

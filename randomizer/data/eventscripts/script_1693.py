@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_1693_action_queue_sync_3_SUBSCRIPT_jump_to_height_silent_0',
                 "command": 'jump_to_height_silent',
                 "args": [64]
-            },
+            }
         ]
     },
     {
@@ -186,7 +186,7 @@ script = [
                 "identifier": 'EVENT_1693_action_queue_async_20_SUBSCRIPT_set_solidity_bits_10',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -194,5 +194,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

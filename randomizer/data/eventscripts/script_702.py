@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_702_action_queue_async_2_SUBSCRIPT_face_southeast_6',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -102,7 +102,7 @@ script = [
                 "identifier": 'EVENT_702_action_queue_async_6_SUBSCRIPT_reset_properties_4',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -131,7 +131,7 @@ script = [
                 "identifier": 'EVENT_702_action_queue_async_9_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [9, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -187,5 +187,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

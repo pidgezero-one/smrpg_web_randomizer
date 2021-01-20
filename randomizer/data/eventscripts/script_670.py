@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_1_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_2_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -45,7 +45,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_3_SUBSCRIPT_set_priority_1',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -62,7 +62,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_4_SUBSCRIPT_set_priority_1',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -74,7 +74,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_5_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -86,7 +86,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_6_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -98,7 +98,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_7_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -110,7 +110,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_8_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -122,7 +122,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_9_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -134,7 +134,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_10_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -146,7 +146,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_11_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -158,7 +158,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_12_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -170,7 +170,7 @@ script = [
                 "identifier": 'EVENT_670_action_queue_sync_13_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -292,5 +292,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

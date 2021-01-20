@@ -25,7 +25,7 @@ script = [
                 "identifier": 'EVENT_1590_action_queue_sync_0_SUBSCRIPT_clear_solidity_bits_3',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_1590_action_queue_sync_1_SUBSCRIPT_clear_solidity_bits_3',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -85,7 +85,7 @@ script = [
                 "identifier": 'EVENT_1590_action_queue_async_3_SUBSCRIPT_face_southwest_3',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -99,5 +99,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

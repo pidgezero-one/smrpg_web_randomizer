@@ -20,7 +20,7 @@ script = [
                 "identifier": 'EVENT_1632_action_queue_async_0_SUBSCRIPT_face_mario_2',
                 "command": 'face_mario',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_1632_action_queue_async_1_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -60,7 +60,7 @@ script = [
                 "identifier": 'EVENT_1632_action_queue_async_3_SUBSCRIPT_face_southwest_2',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -68,5 +68,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

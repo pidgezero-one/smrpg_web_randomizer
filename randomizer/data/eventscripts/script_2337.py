@@ -198,5 +198,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_2337_jmp_if_object_not_in_level_0'],
         "subscript": []
-    },
+    }
 ]

@@ -6,5 +6,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_273_fade_out_music_to_volume_17'],
         "subscript": []
-    },
+    }
 ]

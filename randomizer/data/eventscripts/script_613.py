@@ -15,7 +15,7 @@ script = [
                 "identifier": 'EVENT_613_action_queue_async_0_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -45,7 +45,7 @@ script = [
                 "identifier": 'EVENT_613_action_queue_async_4_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [4, 19, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -68,7 +68,7 @@ script = [
                 "identifier": 'EVENT_613_action_queue_async_6_SUBSCRIPT_face_southwest_1',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -143,7 +143,7 @@ script = [
                 "identifier": 'EVENT_613_action_queue_async_15_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -211,7 +211,7 @@ script = [
                 "identifier": 'EVENT_613_action_queue_sync_22_SUBSCRIPT_face_southeast_4',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -228,7 +228,7 @@ script = [
                 "identifier": 'EVENT_613_action_queue_sync_23_SUBSCRIPT_face_north_1',
                 "command": 'face_north',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -257,7 +257,7 @@ script = [
                 "identifier": 'EVENT_613_action_queue_sync_26_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -284,7 +284,7 @@ script = [
                 "identifier": 'EVENT_613_action_queue_async_27_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -332,7 +332,7 @@ script = [
                 "identifier": 'EVENT_613_action_queue_async_34_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [5, 21, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -352,5 +352,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

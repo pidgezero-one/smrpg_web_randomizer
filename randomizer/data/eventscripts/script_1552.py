@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_1552_action_queue_async_1_SUBSCRIPT_visibility_off_0',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -94,7 +94,7 @@ script = [
                 "identifier": 'EVENT_1552_action_queue_sync_13_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
-            },
+            }
         ]
     },
     {
@@ -118,7 +118,7 @@ script = [
                 "identifier": 'EVENT_1552_action_queue_async_16_SUBSCRIPT_object_memory_set_bit_0',
                 "command": 'object_memory_set_bit',
                 "args": [0x0b, [3]]
-            },
+            }
         ]
     },
     {
@@ -138,5 +138,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

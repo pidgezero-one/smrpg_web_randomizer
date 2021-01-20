@@ -192,7 +192,7 @@ script = [
                 "identifier": 'EVENT_3326_action_queue_sync_27_SUBSCRIPT_end_loop_4',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -206,5 +206,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3326_clear_bit_0'],
         "subscript": []
-    },
+    }
 ]

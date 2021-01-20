@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_2338_action_queue_async_2_SUBSCRIPT_overwrite_solidity_2',
                 "command": 'overwrite_solidity',
                 "args": [[]]
-            },
+            }
         ]
     },
     {
@@ -46,5 +46,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

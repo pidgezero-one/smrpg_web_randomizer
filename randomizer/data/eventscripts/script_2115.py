@@ -35,7 +35,7 @@ script = [
                 "identifier": 'EVENT_2115_action_queue_async_0_SUBSCRIPT_shift_northeast_pixels_5',
                 "command": 'shift_northeast_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -43,5 +43,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

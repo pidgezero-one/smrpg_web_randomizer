@@ -80,7 +80,7 @@ script = [
                 "identifier": 'EVENT_723_action_queue_async_10_SUBSCRIPT_shift_northwest_steps_2',
                 "command": 'shift_northwest_steps',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -119,7 +119,7 @@ script = [
                 "identifier": 'EVENT_723_action_queue_async_13_SUBSCRIPT_set_solidity_bits_3',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -175,5 +175,5 @@ script = [
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_6, Rooms._039_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLING_ROOM],
         "subscript": []
-    },
+    }
 ]

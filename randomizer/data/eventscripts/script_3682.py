@@ -30,7 +30,7 @@ script = [
                 "identifier": 'EVENT_3682_action_queue_sync_0_SUBSCRIPT_shift_z_down_steps_4',
                 "command": 'shift_z_down_steps',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -50,5 +50,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

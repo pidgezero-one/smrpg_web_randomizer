@@ -63,7 +63,7 @@ script = [
                 "identifier": 'EVENT_1827_action_queue_sync_8_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -93,7 +93,7 @@ script = [
                 "identifier": 'EVENT_1827_action_queue_sync_12_SUBSCRIPT_shift_z_up_pixels_0',
                 "command": 'shift_z_up_pixels',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -161,5 +161,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [1829],
         "subscript": []
-    },
+    }
 ]

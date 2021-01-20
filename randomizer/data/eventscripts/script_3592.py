@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_3592_action_queue_async_1_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0b, bits=[0, 1]]
-            },
+            }
         ]
     },
     {
@@ -96,7 +96,7 @@ script = [
                 "identifier": 'EVENT_3592_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_4',
                 "command": 'walk_to_xy_coords',
                 "args": [12, 117]
-            },
+            }
         ]
     },
     {
@@ -155,7 +155,7 @@ script = [
                 "identifier": 'EVENT_3592_action_queue_async_18_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -241,7 +241,7 @@ script = [
                 "identifier": 'EVENT_3592_action_queue_async_28_SUBSCRIPT_visibility_off_4',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -261,5 +261,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

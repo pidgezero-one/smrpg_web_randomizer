@@ -91,7 +91,7 @@ script = [
                 "identifier": 'EVENT_2531_action_queue_async_11_SUBSCRIPT_shift_northeast_pixels_3',
                 "command": 'shift_northeast_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -115,7 +115,7 @@ script = [
                 "identifier": 'EVENT_2531_action_queue_async_14_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -139,7 +139,7 @@ script = [
                 "identifier": 'EVENT_2531_action_queue_async_17_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -163,7 +163,7 @@ script = [
                 "identifier": 'EVENT_2531_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -217,7 +217,7 @@ script = [
                 "identifier": 'EVENT_2531_action_queue_async_23_SUBSCRIPT_end_loop_6',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -241,7 +241,7 @@ script = [
                 "identifier": 'EVENT_2531_action_queue_async_26_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -277,7 +277,7 @@ script = [
                 "identifier": 'EVENT_2531_action_queue_async_31_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [9, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -315,7 +315,7 @@ script = [
                 "identifier": 'EVENT_2531_action_queue_async_33_SUBSCRIPT_visibility_off_4',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -347,5 +347,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

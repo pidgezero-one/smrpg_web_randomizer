@@ -80,7 +80,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_sync_10_SUBSCRIPT_shift_north_steps_2',
                 "command": 'shift_north_steps',
                 "args": [22]
-            },
+            }
         ]
     },
     {
@@ -132,7 +132,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_sync_11_SUBSCRIPT_face_southwest_8',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -199,7 +199,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_sync_12_SUBSCRIPT_clear_solidity_bits_11',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -266,7 +266,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_sync_13_SUBSCRIPT_clear_solidity_bits_11',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -333,7 +333,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_sync_14_SUBSCRIPT_clear_solidity_bits_11',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -400,7 +400,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_sync_15_SUBSCRIPT_clear_solidity_bits_11',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -467,7 +467,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_sync_16_SUBSCRIPT_clear_solidity_bits_11',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -534,7 +534,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_sync_17_SUBSCRIPT_clear_solidity_bits_11',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -601,7 +601,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_sync_18_SUBSCRIPT_clear_solidity_bits_11',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -668,7 +668,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_async_19_SUBSCRIPT_clear_solidity_bits_11',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -781,7 +781,7 @@ script = [
                 "identifier": 'EVENT_1777_action_queue_async_26_SUBSCRIPT_fixed_f_coord_off_13',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -855,5 +855,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

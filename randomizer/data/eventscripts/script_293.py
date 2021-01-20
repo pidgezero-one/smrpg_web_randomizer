@@ -196,7 +196,7 @@ script = [
                 "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_face_mario_24',
                 "command": 'face_mario',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -308,7 +308,7 @@ script = [
                 "identifier": 'EVENT_293_start_embedded_action_script_async_27_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_WALK_THROUGH]]
-            },
+            }
         ]
     },
     {
@@ -424,5 +424,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

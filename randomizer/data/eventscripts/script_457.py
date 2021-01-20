@@ -15,7 +15,7 @@ script = [
                 "identifier": 'EVENT_457_action_queue_sync_0_SUBSCRIPT_object_memory_set_bit_1',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -37,7 +37,7 @@ script = [
                 "identifier": 'EVENT_457_action_queue_sync_1_SUBSCRIPT_object_memory_set_bit_2',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -54,7 +54,7 @@ script = [
                 "identifier": 'EVENT_457_action_queue_sync_2_SUBSCRIPT_object_memory_set_bit_1',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -76,7 +76,7 @@ script = [
                 "identifier": 'EVENT_457_action_queue_sync_3_SUBSCRIPT_object_memory_set_bit_2',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -93,7 +93,7 @@ script = [
                 "identifier": 'EVENT_457_action_queue_sync_4_SUBSCRIPT_object_memory_set_bit_1',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -115,7 +115,7 @@ script = [
                 "identifier": 'EVENT_457_action_queue_sync_5_SUBSCRIPT_object_memory_set_bit_2',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -129,5 +129,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

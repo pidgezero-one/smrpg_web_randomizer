@@ -33,7 +33,7 @@ script = [
                 "identifier": 'EVENT_1408_action_queue_sync_3_SUBSCRIPT_ret_1',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -50,7 +50,7 @@ script = [
                 "identifier": 'EVENT_1408_action_queue_async_4_SUBSCRIPT_ret_1',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -184,5 +184,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

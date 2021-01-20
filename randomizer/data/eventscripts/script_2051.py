@@ -27,7 +27,7 @@ script = [
                 "identifier": 'EVENT_2051_action_queue_sync_2_SUBSCRIPT_bounce_to_xy_with_height_1',
                 "command": 'bounce_to_xy_with_height',
                 "args": [11, 5, 0]
-            },
+            }
         ]
     },
     {
@@ -59,7 +59,7 @@ script = [
                 "identifier": 'EVENT_2051_action_queue_async_3_SUBSCRIPT_shadow_off_4',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -124,7 +124,7 @@ script = [
                 "identifier": 'EVENT_2051_action_queue_sync_7_SUBSCRIPT_visibility_on_7',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -181,7 +181,7 @@ script = [
                 "identifier": 'EVENT_2051_action_queue_sync_8_SUBSCRIPT_shadow_off_9',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -238,7 +238,7 @@ script = [
                 "identifier": 'EVENT_2051_action_queue_sync_9_SUBSCRIPT_shadow_off_9',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -295,7 +295,7 @@ script = [
                 "identifier": 'EVENT_2051_action_queue_async_10_SUBSCRIPT_shadow_off_9',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -333,5 +333,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

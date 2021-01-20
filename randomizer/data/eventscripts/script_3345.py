@@ -126,7 +126,7 @@ script = [
                 "identifier": 'EVENT_3345_action_queue_sync_11_SUBSCRIPT_shift_northeast_steps_10',
                 "command": 'shift_northeast_steps',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -225,7 +225,7 @@ script = [
                 "identifier": 'EVENT_3345_action_queue_sync_24_SUBSCRIPT_visibility_on_3',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -281,5 +281,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

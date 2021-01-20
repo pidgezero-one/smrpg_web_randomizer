@@ -79,7 +79,7 @@ script = [
                 "identifier": 'EVENT_1682_action_queue_async_9_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -145,7 +145,7 @@ script = [
                 "identifier": 'EVENT_1682_action_queue_async_19_SUBSCRIPT_face_mario_0',
                 "command": 'face_mario',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -177,5 +177,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

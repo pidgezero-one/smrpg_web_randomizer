@@ -40,7 +40,7 @@ script = [
                 "identifier": 'EVENT_436_action_queue_async_5_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [5, 19, 4, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_436_action_queue_async_7_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [4, 22, 2, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -185,7 +185,7 @@ script = [
                 "identifier": 'EVENT_436_action_queue_async_13_SUBSCRIPT_end_loop_17',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -199,5 +199,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

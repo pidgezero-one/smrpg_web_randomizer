@@ -117,7 +117,7 @@ script = [
                 "identifier": 'EVENT_1804_action_queue_async_7_SUBSCRIPT_shift_z_up_pixels_13',
                 "command": 'shift_z_up_pixels',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -154,7 +154,7 @@ script = [
                 "identifier": 'EVENT_1804_action_queue_async_8_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
                 "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
-            },
+            }
         ]
     },
     {
@@ -267,7 +267,7 @@ script = [
                 "identifier": 'EVENT_1804_action_queue_async_20_SUBSCRIPT_db_7',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -293,5 +293,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

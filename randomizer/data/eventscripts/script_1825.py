@@ -64,7 +64,7 @@ script = [
                 "identifier": 'EVENT_1825_action_queue_sync_9_SUBSCRIPT_shift_z_up_pixels_0',
                 "command": 'shift_z_up_pixels',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -226,7 +226,7 @@ script = [
                 "identifier": 'EVENT_1825_action_queue_sync_35_SUBSCRIPT_run_away_transfer_0',
                 "command": 'run_away_transfer',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -238,7 +238,7 @@ script = [
                 "identifier": 'EVENT_1825_action_queue_async_36_SUBSCRIPT_run_away_transfer_0',
                 "command": 'run_away_transfer',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -256,7 +256,7 @@ script = [
                 "identifier": 'EVENT_1825_action_queue_sync_38_SUBSCRIPT_run_away_transfer_0',
                 "command": 'run_away_transfer',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -268,7 +268,7 @@ script = [
                 "identifier": 'EVENT_1825_action_queue_async_39_SUBSCRIPT_run_away_transfer_0',
                 "command": 'run_away_transfer',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -344,7 +344,7 @@ script = [
                 "identifier": 'EVENT_1825_action_queue_async_49_SUBSCRIPT_set_short_mem_2',
                 "command": 'set_short_mem',
                 "args": [0x702a, 0x700c]
-            },
+            }
         ]
     },
     {
@@ -388,5 +388,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [1829],
         "subscript": []
-    },
+    }
 ]

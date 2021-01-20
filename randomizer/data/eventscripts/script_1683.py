@@ -80,7 +80,7 @@ script = [
                 "identifier": 'EVENT_1683_action_queue_sync_5_SUBSCRIPT_play_sound_8',
                 "command": 'play_sound',
                 "args": [Sounds._058_INSERT, 4]
-            },
+            }
         ]
     },
     {
@@ -94,5 +94,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [1783],
         "subscript": []
-    },
+    }
 ]

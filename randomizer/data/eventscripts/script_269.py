@@ -15,7 +15,7 @@ script = [
                 "identifier": 'EVENT_269_action_queue_sync_0_SUBSCRIPT_add_z_coord_1_step_1',
                 "command": 'add_z_coord_1_step',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -39,7 +39,7 @@ script = [
                 "identifier": 'EVENT_269_action_queue_async_3_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -59,5 +59,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

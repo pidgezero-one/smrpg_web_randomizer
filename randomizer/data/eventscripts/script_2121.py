@@ -53,7 +53,7 @@ script = [
                 "identifier": 'EVENT_2121_action_queue_sync_3_SUBSCRIPT_shift_southwest_pixels_5',
                 "command": 'shift_southwest_pixels',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -70,7 +70,7 @@ script = [
                 "identifier": 'EVENT_2121_action_queue_sync_4_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -182,7 +182,7 @@ script = [
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_shift_northeast_steps_20',
                 "command": 'shift_northeast_steps',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -210,7 +210,7 @@ script = [
                 "identifier": 'EVENT_2121_action_queue_async_7_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [60]
-            },
+            }
         ]
     },
     {
@@ -237,7 +237,7 @@ script = [
                 "identifier": 'EVENT_2121_action_queue_sync_8_SUBSCRIPT_visibility_off_3',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -254,7 +254,7 @@ script = [
                 "identifier": 'EVENT_2121_action_queue_async_9_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -296,7 +296,7 @@ script = [
                 "identifier": 'EVENT_2121_action_queue_async_15_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -334,5 +334,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

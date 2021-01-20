@@ -49,7 +49,7 @@ script = [
                 "identifier": 'EVENT_3636_action_queue_async_4_SUBSCRIPT_shift_southwest_pixels_3',
                 "command": 'shift_southwest_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -75,5 +75,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

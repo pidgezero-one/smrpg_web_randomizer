@@ -55,7 +55,7 @@ script = [
                 "identifier": 'EVENT_683_action_queue_async_0_SUBSCRIPT_shift_northeast_pixels_9',
                 "command": 'shift_northeast_pixels',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -73,7 +73,7 @@ script = [
                 "identifier": 'EVENT_683_action_queue_async_2_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_WALK_THROUGH]]
-            },
+            }
         ]
     },
     {
@@ -81,5 +81,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

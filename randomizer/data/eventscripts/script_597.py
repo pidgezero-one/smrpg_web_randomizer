@@ -88,7 +88,7 @@ script = [
                 "identifier": 'EVENT_597_action_queue_async_3_SUBSCRIPT_reset_properties_12',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -108,5 +108,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

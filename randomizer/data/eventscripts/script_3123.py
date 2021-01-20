@@ -54,7 +54,7 @@ script = [
                 "identifier": 'EVENT_3123_action_queue_sync_4_SUBSCRIPT_set_solidity_bits_4',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_NPCS]]
-            },
+            }
         ]
     },
     {
@@ -110,5 +110,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_468_action_queue_async_0_SUBSCRIPT_sequence_looping_on_0',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -146,7 +146,7 @@ script = [
                 "identifier": 'EVENT_468_action_queue_async_20_SUBSCRIPT_visibility_on_2',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -168,7 +168,7 @@ script = [
                 "identifier": 'EVENT_468_action_queue_sync_21_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -410,7 +410,7 @@ script = [
                 "identifier": 'EVENT_468_action_queue_sync_22_SUBSCRIPT_pause_46',
                 "command": 'pause',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -436,5 +436,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_468_pause_5'],
         "subscript": []
-    },
+    }
 ]

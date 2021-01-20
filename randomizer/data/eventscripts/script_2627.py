@@ -27,7 +27,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_sync_2_SUBSCRIPT_walk_to_xy_coords_1',
                 "command": 'walk_to_xy_coords',
                 "args": [7, 88]
-            },
+            }
         ]
     },
     {
@@ -54,7 +54,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_3_SUBSCRIPT_face_northwest_3',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -87,7 +87,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_5_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -105,7 +105,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -123,7 +123,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_9_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=1, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -141,7 +141,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -171,7 +171,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_15_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -201,7 +201,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_sync_19_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [3, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -259,7 +259,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_21_SUBSCRIPT_set_sprite_sequence_8',
                 "command": 'set_sprite_sequence',
                 "args": [11, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -294,7 +294,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_sync_25_SUBSCRIPT_shift_southeast_steps_1',
                 "command": 'shift_southeast_steps',
                 "args": [7]
-            },
+            }
         ]
     },
     {
@@ -427,7 +427,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_37_SUBSCRIPT_set_sprite_sequence_11',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -462,7 +462,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_41_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -513,7 +513,7 @@ script = [
                 "identifier": 'EVENT_2627_action_queue_async_46_SUBSCRIPT_visibility_off_3',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -521,5 +521,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

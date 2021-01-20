@@ -93,7 +93,7 @@ script = [
                 "identifier": 'EVENT_1298_action_queue_sync_3_SUBSCRIPT_pause_13',
                 "command": 'pause',
                 "args": [30]
-            },
+            }
         ]
     },
     {
@@ -110,7 +110,7 @@ script = [
                 "identifier": 'EVENT_1298_action_queue_async_4_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [40]
-            },
+            }
         ]
     },
     {
@@ -146,7 +146,7 @@ script = [
                 "identifier": 'EVENT_1298_action_queue_sync_9_SUBSCRIPT_visibility_off_0',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -160,5 +160,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

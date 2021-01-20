@@ -20,7 +20,7 @@ script = [
                 "identifier": 'EVENT_458_action_queue_async_0_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -87,7 +87,7 @@ script = [
                 "identifier": 'EVENT_458_start_embedded_action_script_async_6_SUBSCRIPT_clear_solidity_bits_5',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -119,7 +119,7 @@ script = [
                 "identifier": 'EVENT_458_start_embedded_action_script_async_7_SUBSCRIPT_set_solidity_bits_4',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -157,5 +157,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [3601],
         "subscript": []
-    },
+    }
 ]

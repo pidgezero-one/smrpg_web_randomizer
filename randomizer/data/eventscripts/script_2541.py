@@ -42,7 +42,7 @@ script = [
                 "identifier": 'EVENT_2541_action_queue_sync_2_SUBSCRIPT_floating_on_4',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -59,7 +59,7 @@ script = [
                 "identifier": 'EVENT_2541_action_queue_sync_3_SUBSCRIPT_shift_northwest_pixels_1',
                 "command": 'shift_northwest_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -81,7 +81,7 @@ script = [
                 "identifier": 'EVENT_2541_action_queue_sync_4_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -108,7 +108,7 @@ script = [
                 "identifier": 'EVENT_2541_action_queue_sync_5_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -130,7 +130,7 @@ script = [
                 "identifier": 'EVENT_2541_action_queue_async_6_SUBSCRIPT_shift_northeast_pixels_2',
                 "command": 'shift_northeast_pixels',
                 "args": [6]
-            },
+            }
         ]
     },
     {
@@ -199,7 +199,7 @@ script = [
                 "identifier": 'EVENT_2541_action_queue_async_14_SUBSCRIPT_play_sound_3',
                 "command": 'play_sound',
                 "args": [Sounds._058_INSERT, 4]
-            },
+            }
         ]
     },
     {
@@ -213,5 +213,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

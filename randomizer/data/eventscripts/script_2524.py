@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_2524_action_queue_sync_0_SUBSCRIPT_shift_east_pixels_0',
                 "command": 'shift_east_pixels',
                 "args": [7]
-            },
+            }
         ]
     },
     {
@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_2524_action_queue_sync_1_SUBSCRIPT_shift_east_pixels_0',
                 "command": 'shift_east_pixels',
                 "args": [6]
-            },
+            }
         ]
     },
     {
@@ -34,7 +34,7 @@ script = [
                 "identifier": 'EVENT_2524_action_queue_sync_2_SUBSCRIPT_shift_west_pixels_0',
                 "command": 'shift_west_pixels',
                 "args": [9]
-            },
+            }
         ]
     },
     {
@@ -46,7 +46,7 @@ script = [
                 "identifier": 'EVENT_2524_action_queue_sync_3_SUBSCRIPT_shift_west_pixels_0',
                 "command": 'shift_west_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_2524_action_queue_sync_4_SUBSCRIPT_shift_west_pixels_0',
                 "command": 'shift_west_pixels',
                 "args": [10]
-            },
+            }
         ]
     },
     {
@@ -91,7 +91,7 @@ script = [
                 "identifier": 'EVENT_2524_action_queue_async_6_SUBSCRIPT_shadow_off_3',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -144,7 +144,7 @@ script = [
                 "identifier": 'EVENT_2524_action_queue_async_13_SUBSCRIPT_shift_southwest_steps_1',
                 "command": 'shift_southwest_steps',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -188,5 +188,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

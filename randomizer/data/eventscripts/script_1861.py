@@ -48,7 +48,7 @@ script = [
                 "identifier": 'EVENT_1861_action_queue_sync_3_SUBSCRIPT_face_northwest_4',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -140,7 +140,7 @@ script = [
                 "identifier": 'EVENT_1861_action_queue_async_4_SUBSCRIPT_visibility_off_16',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -148,5 +148,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

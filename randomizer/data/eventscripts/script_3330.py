@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_3330_action_queue_async_0_SUBSCRIPT_transfer_to_object_xy_0',
                 "command": 'transfer_to_object_xy',
                 "args": [AreaObjects.MARIO]
-            },
+            }
         ]
     },
     {
@@ -113,7 +113,7 @@ script = [
                 "identifier": 'EVENT_3330_action_queue_sync_12_SUBSCRIPT_walk_1_step_northeast_5',
                 "command": 'walk_1_step_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -125,7 +125,7 @@ script = [
                 "identifier": 'EVENT_3330_action_queue_sync_13_SUBSCRIPT_shift_northeast_steps_0',
                 "command": 'shift_northeast_steps',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -139,5 +139,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

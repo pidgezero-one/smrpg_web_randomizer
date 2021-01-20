@@ -26,7 +26,7 @@ script = [
                 "identifier": 'EVENT_1567_action_queue_sync_1_SUBSCRIPT_shift_z_up_pixels_2',
                 "command": 'shift_z_up_pixels',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -48,7 +48,7 @@ script = [
                 "identifier": 'EVENT_1567_action_queue_async_2_SUBSCRIPT_shift_z_up_pixels_2',
                 "command": 'shift_z_up_pixels',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -66,7 +66,7 @@ script = [
                 "identifier": 'EVENT_1567_action_queue_sync_4_SUBSCRIPT_visibility_on_0',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -110,5 +110,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_617_action_queue_async_2_SUBSCRIPT_face_northwest_2',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -88,7 +88,7 @@ script = [
                 "identifier": 'EVENT_617_action_queue_async_7_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -218,7 +218,7 @@ script = [
                 "identifier": 'EVENT_617_action_queue_sync_11_SUBSCRIPT_set_animation_speed_20',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -325,7 +325,7 @@ script = [
                 "identifier": 'EVENT_617_action_queue_sync_12_SUBSCRIPT_set_animation_speed_19',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -386,7 +386,7 @@ script = [
                 "identifier": 'EVENT_617_action_queue_async_17_SUBSCRIPT_set_animation_speed_5',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -464,7 +464,7 @@ script = [
                 "identifier": 'EVENT_617_action_queue_async_29_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -504,7 +504,7 @@ script = [
                 "identifier": 'EVENT_617_action_queue_async_33_SUBSCRIPT_face_south_2',
                 "command": 'face_south',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -590,5 +590,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

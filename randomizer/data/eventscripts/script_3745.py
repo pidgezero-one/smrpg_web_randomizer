@@ -46,7 +46,7 @@ script = [
                 "identifier": 'EVENT_3745_action_queue_async_1_SUBSCRIPT_clear_solidity_bits_6',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -118,7 +118,7 @@ script = [
                 "identifier": 'EVENT_3745_action_queue_async_7_SUBSCRIPT_db_6',
                 "command": 'db',
                 "args": [0x25, 0x00, 0x00, 0x08, 0x00]
-            },
+            }
         ]
     },
     {
@@ -156,7 +156,7 @@ script = [
                 "identifier": 'EVENT_3745_action_queue_async_9_SUBSCRIPT_floating_on_4',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -223,7 +223,7 @@ script = [
                 "identifier": 'EVENT_3745_action_queue_async_15_SUBSCRIPT_db_5',
                 "command": 'db',
                 "args": [0x25, 0x00, 0x00, 0x0c, 0x00]
-            },
+            }
         ]
     },
     {
@@ -266,7 +266,7 @@ script = [
                 "identifier": 'EVENT_3745_action_queue_async_17_SUBSCRIPT_shadow_off_5',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -338,7 +338,7 @@ script = [
                 "identifier": 'EVENT_3745_action_queue_async_23_SUBSCRIPT_db_6',
                 "command": 'db',
                 "args": [0x25, 0x00, 0x00, 0x0e, 0x00]
-            },
+            }
         ]
     },
     {
@@ -406,7 +406,7 @@ script = [
                 "identifier": 'EVENT_3745_action_queue_async_30_SUBSCRIPT_floating_on_4',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -444,7 +444,7 @@ script = [
                 "identifier": 'EVENT_3745_action_queue_async_32_SUBSCRIPT_jump_to_height_silent_4',
                 "command": 'jump_to_height_silent',
                 "args": [108]
-            },
+            }
         ]
     },
     {
@@ -472,7 +472,7 @@ script = [
                 "identifier": 'EVENT_3745_action_queue_async_34_SUBSCRIPT_shift_southwest_pixels_2',
                 "command": 'shift_southwest_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -486,5 +486,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

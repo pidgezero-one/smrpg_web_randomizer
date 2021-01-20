@@ -440,7 +440,7 @@ script = [
                 "identifier": 'EVENT_1585_action_queue_async_70_SUBSCRIPT_object_memory_clear_bit_2',
                 "command": 'object_memory_clear_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -466,5 +466,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

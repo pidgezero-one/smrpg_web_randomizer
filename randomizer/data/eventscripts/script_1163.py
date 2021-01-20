@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_1163_action_queue_sync_0_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -57,7 +57,7 @@ script = [
                 "identifier": 'EVENT_1163_action_queue_async_1_SUBSCRIPT_pause_7',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -71,5 +71,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

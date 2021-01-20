@@ -27,7 +27,7 @@ script = [
                 "identifier": 'EVENT_3773_action_queue_async_2_SUBSCRIPT_face_south_1',
                 "command": 'face_south',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -141,7 +141,7 @@ script = [
                 "identifier": 'EVENT_3773_action_queue_async_5_SUBSCRIPT_reset_properties_18',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -161,5 +161,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

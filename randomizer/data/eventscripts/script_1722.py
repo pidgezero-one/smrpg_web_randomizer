@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_1722_action_queue_sync_2_SUBSCRIPT_shift_z_up_pixels_0',
                 "command": 'shift_z_up_pixels',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -34,7 +34,7 @@ script = [
                 "identifier": 'EVENT_1722_action_queue_sync_3_SUBSCRIPT_shift_z_up_pixels_0',
                 "command": 'shift_z_up_pixels',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -113,7 +113,7 @@ script = [
                 "identifier": 'EVENT_1722_action_queue_async_6_SUBSCRIPT_play_sound_11',
                 "command": 'play_sound',
                 "args": [Sounds._058_INSERT, 4]
-            },
+            }
         ]
     },
     {
@@ -177,7 +177,7 @@ script = [
                 "identifier": 'EVENT_1722_action_queue_async_9_SUBSCRIPT_play_sound_8',
                 "command": 'play_sound',
                 "args": [Sounds._058_INSERT, 4]
-            },
+            }
         ]
     },
     {
@@ -264,7 +264,7 @@ script = [
                 "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_jmp_9',
                 "command": 'jmp',
                 "args": ['EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_2']
-            },
+            }
         ]
     },
     {
@@ -272,5 +272,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

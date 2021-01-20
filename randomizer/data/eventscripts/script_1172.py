@@ -74,7 +74,7 @@ script = [
                 "identifier": 'EVENT_1172_action_queue_async_9_SUBSCRIPT_sequence_looping_on_2',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -238,5 +238,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -20,7 +20,7 @@ script = [
                 "identifier": 'EVENT_641_action_queue_async_0_SUBSCRIPT_transfer_xyzf_pixels_2',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 3, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -394,5 +394,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_641_stop_sound_3'],
         "subscript": []
-    },
+    }
 ]

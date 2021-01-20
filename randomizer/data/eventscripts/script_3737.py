@@ -31,7 +31,7 @@ script = [
                 "identifier": 'EVENT_3737_action_queue_sync_1_SUBSCRIPT_shadow_off_3',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -48,7 +48,7 @@ script = [
                 "identifier": 'EVENT_3737_action_queue_async_2_SUBSCRIPT_walk_1_step_east_1',
                 "command": 'walk_1_step_east',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -206,7 +206,7 @@ script = [
                 "identifier": 'EVENT_3737_action_queue_async_4_SUBSCRIPT_floating_on_28',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -238,5 +238,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

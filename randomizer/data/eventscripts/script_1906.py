@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_1906_action_queue_sync_0_SUBSCRIPT_shadow_on_0',
                 "command": 'shadow_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -18,5 +18,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

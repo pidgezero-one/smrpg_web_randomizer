@@ -15,7 +15,7 @@ script = [
                 "identifier": 'EVENT_3677_action_queue_sync_0_SUBSCRIPT_transfer_xyzf_pixels_1',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 0, 4, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -37,7 +37,7 @@ script = [
                 "identifier": 'EVENT_3677_action_queue_sync_1_SUBSCRIPT_reset_properties_2',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -51,5 +51,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

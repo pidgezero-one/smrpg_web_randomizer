@@ -36,7 +36,7 @@ script = [
                 "identifier": 'EVENT_2113_action_queue_sync_1_SUBSCRIPT_end_loop_4',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -73,7 +73,7 @@ script = [
                 "identifier": 'EVENT_2113_action_queue_async_2_SUBSCRIPT_end_loop_5',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -180,7 +180,7 @@ script = [
                 "identifier": 'EVENT_2113_action_queue_async_3_SUBSCRIPT_visibility_off_19',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -212,5 +212,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

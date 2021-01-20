@@ -18,5 +18,5 @@ script = [
         "command": 'jmp',
         "args": [],
         "subscript": []
-    },
+    }
 ]

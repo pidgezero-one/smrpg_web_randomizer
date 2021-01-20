@@ -41,7 +41,7 @@ script = [
                 "identifier": 'EVENT_1591_action_queue_sync_1_SUBSCRIPT_floating_on_5',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -68,7 +68,7 @@ script = [
                 "identifier": 'EVENT_1591_action_queue_sync_2_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -180,7 +180,7 @@ script = [
                 "identifier": 'EVENT_1591_action_queue_sync_3_SUBSCRIPT_end_loop_20',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -194,5 +194,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

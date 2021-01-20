@@ -176,7 +176,7 @@ script = [
                 "identifier": 'EVENT_351_action_queue_async_21_SUBSCRIPT_fixed_f_coord_off_8',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -249,7 +249,7 @@ script = [
                 "identifier": 'EVENT_351_action_queue_async_28_SUBSCRIPT_jmp_5',
                 "command": 'jmp',
                 "args": ['EVENT_351_run_event_as_subroutine_29']
-            },
+            }
         ]
     },
     {
@@ -450,7 +450,7 @@ script = [
                 "identifier": 'EVENT_351_action_queue_async_58_SUBSCRIPT_set_solidity_bits_3',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -458,5 +458,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

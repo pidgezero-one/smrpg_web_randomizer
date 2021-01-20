@@ -49,7 +49,7 @@ script = [
                 "identifier": 'EVENT_3830_action_queue_async_4_SUBSCRIPT_set_solidity_bits_3',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -86,7 +86,7 @@ script = [
                 "identifier": 'EVENT_3830_action_queue_async_5_SUBSCRIPT_face_northwest_5',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -109,7 +109,7 @@ script = [
                 "identifier": 'EVENT_3830_action_queue_async_7_SUBSCRIPT_set_solidity_bits_1',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -159,5 +159,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

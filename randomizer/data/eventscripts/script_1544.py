@@ -67,7 +67,7 @@ script = [
                 "identifier": 'EVENT_1544_action_queue_sync_7_SUBSCRIPT_fixed_f_coord_on_3',
                 "command": 'fixed_f_coord_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -159,7 +159,7 @@ script = [
                 "identifier": 'EVENT_1544_action_queue_async_13_SUBSCRIPT_end_loop_10',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -173,5 +173,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

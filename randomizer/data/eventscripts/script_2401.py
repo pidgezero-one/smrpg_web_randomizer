@@ -43,7 +43,7 @@ script = [
                 "identifier": 'EVENT_2401_action_queue_async_3_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -60,7 +60,7 @@ script = [
                 "identifier": 'EVENT_2401_action_queue_async_4_SUBSCRIPT_shadow_off_1',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -104,5 +104,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

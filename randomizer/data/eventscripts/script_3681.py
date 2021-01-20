@@ -245,7 +245,7 @@ script = [
                 "identifier": 'EVENT_3681_action_queue_async_20_SUBSCRIPT_end_loop_23',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -253,5 +253,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

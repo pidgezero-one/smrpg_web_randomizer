@@ -26,7 +26,7 @@ script = [
                 "identifier": 'EVENT_1282_action_queue_sync_1_SUBSCRIPT_face_southwest_2',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_1282_action_queue_sync_2_SUBSCRIPT_face_southwest_4',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -96,7 +96,7 @@ script = [
                 "identifier": 'EVENT_1282_action_queue_sync_4_SUBSCRIPT_sequence_looping_on_4',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -128,7 +128,7 @@ script = [
                 "identifier": 'EVENT_1282_action_queue_sync_5_SUBSCRIPT_sequence_looping_on_4',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -160,7 +160,7 @@ script = [
                 "identifier": 'EVENT_1282_action_queue_sync_6_SUBSCRIPT_sequence_looping_on_4',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -192,7 +192,7 @@ script = [
                 "identifier": 'EVENT_1282_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
-            },
+            }
         ]
     },
     {
@@ -216,7 +216,7 @@ script = [
                 "identifier": 'EVENT_1282_action_queue_async_10_SUBSCRIPT_shift_southwest_pixels_0',
                 "command": 'shift_southwest_pixels',
                 "args": [12]
-            },
+            }
         ]
     },
     {
@@ -287,7 +287,7 @@ script = [
                 "identifier": 'EVENT_1282_action_queue_async_15_SUBSCRIPT_set_animation_speed_7',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -307,5 +307,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

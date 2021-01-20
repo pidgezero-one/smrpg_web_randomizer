@@ -97,7 +97,7 @@ script = [
                 "identifier": 'EVENT_1816_action_queue_sync_12_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -124,7 +124,7 @@ script = [
                 "identifier": 'EVENT_1816_action_queue_async_13_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [20]
-            },
+            }
         ]
     },
     {
@@ -148,7 +148,7 @@ script = [
                 "identifier": 'EVENT_1816_action_queue_async_16_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -384,7 +384,7 @@ script = [
                 "identifier": 'EVENT_1816_action_queue_sync_51_SUBSCRIPT_end_loop_4',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -541,7 +541,7 @@ script = [
                 "identifier": 'EVENT_1816_action_queue_async_52_SUBSCRIPT_face_southwest_29',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -568,7 +568,7 @@ script = [
                 "identifier": 'EVENT_1816_action_queue_async_53_SUBSCRIPT_end_loop_3',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -700,7 +700,7 @@ script = [
                 "identifier": 'EVENT_1816_action_queue_sync_74_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [9, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -788,7 +788,7 @@ script = [
                 "identifier": 'EVENT_1816_action_queue_async_76_SUBSCRIPT_visibility_off_14',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -824,7 +824,7 @@ script = [
                 "identifier": 'EVENT_1816_action_queue_async_81_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -844,5 +844,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

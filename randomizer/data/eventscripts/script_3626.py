@@ -43,7 +43,7 @@ script = [
                 "identifier": 'EVENT_3626_action_queue_async_3_SUBSCRIPT_walk_1_step_north_3',
                 "command": 'walk_1_step_north',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -51,5 +51,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

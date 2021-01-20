@@ -31,7 +31,7 @@ script = [
                 "identifier": 'EVENT_3229_action_queue_async_1_SUBSCRIPT_face_east_3',
                 "command": 'face_east',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -133,7 +133,7 @@ script = [
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_visibility_off_18',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -245,7 +245,7 @@ script = [
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_pause_20',
                 "command": 'pause',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -302,7 +302,7 @@ script = [
                 "identifier": 'EVENT_3229_action_queue_sync_9_SUBSCRIPT_clear_solidity_bits_3',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS, _0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -329,7 +329,7 @@ script = [
                 "identifier": 'EVENT_3229_action_queue_async_10_SUBSCRIPT_clear_solidity_bits_3',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS, _0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -337,5 +337,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

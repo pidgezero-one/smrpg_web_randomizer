@@ -42,5 +42,5 @@ script = [
         "command": 'end_all',
         "args": [],
         "subscript": []
-    },
+    }
 ]

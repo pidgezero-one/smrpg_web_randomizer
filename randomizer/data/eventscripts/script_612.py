@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_612_action_queue_async_8_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [14, 46, 4, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -90,5 +90,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_612_jmp_if_bit_set_2'],
         "subscript": []
-    },
+    }
 ]

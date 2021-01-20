@@ -15,7 +15,7 @@ script = [
                 "identifier": 'EVENT_1427_action_queue_async_0_SUBSCRIPT_ret_1',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -59,5 +59,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [15],
         "subscript": []
-    },
+    }
 ]

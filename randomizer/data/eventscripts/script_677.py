@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_677_action_queue_async_0_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [8, 252, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_677_action_queue_async_2_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [4, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -94,7 +94,7 @@ script = [
                 "identifier": 'EVENT_677_action_queue_sync_12_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [252, 2, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -106,7 +106,7 @@ script = [
                 "identifier": 'EVENT_677_action_queue_sync_13_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [252, 2, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -123,7 +123,7 @@ script = [
                 "identifier": 'EVENT_677_action_queue_sync_14_SUBSCRIPT_transfer_xyzf_pixels_1',
                 "command": 'transfer_xyzf_pixels',
                 "args": [252, 2, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -140,7 +140,7 @@ script = [
                 "identifier": 'EVENT_677_action_queue_sync_15_SUBSCRIPT_transfer_xyzf_pixels_1',
                 "command": 'transfer_xyzf_pixels',
                 "args": [2, 252, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -152,7 +152,7 @@ script = [
                 "identifier": 'EVENT_677_action_queue_sync_16_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [22, 73, 2, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -164,7 +164,7 @@ script = [
                 "identifier": 'EVENT_677_action_queue_sync_17_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [2, 252, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -211,7 +211,7 @@ script = [
                 "identifier": 'EVENT_677_action_queue_sync_23_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -225,5 +225,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

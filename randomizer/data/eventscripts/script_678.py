@@ -73,7 +73,7 @@ script = [
                 "identifier": 'EVENT_678_action_queue_sync_8_SUBSCRIPT_jmp_if_mario_in_air_3',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_678_action_queue_sync_8_SUBSCRIPT_pause_2']
-            },
+            }
         ]
     },
     {
@@ -116,7 +116,7 @@ script = [
                 "identifier": 'EVENT_678_action_queue_async_10_SUBSCRIPT_jmp_if_mario_in_air_5',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_678_action_queue_async_10_SUBSCRIPT_pause_4']
-            },
+            }
         ]
     },
     {
@@ -148,5 +148,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

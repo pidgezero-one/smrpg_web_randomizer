@@ -140,7 +140,7 @@ script = [
                 "identifier": 'EVENT_1739_action_queue_async_15_SUBSCRIPT_set_animation_speed_8',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -148,5 +148,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

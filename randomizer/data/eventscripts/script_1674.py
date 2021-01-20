@@ -57,7 +57,7 @@ script = [
                 "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_end_loop_7',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -105,7 +105,7 @@ script = [
                 "identifier": 'EVENT_1674_action_queue_sync_9_SUBSCRIPT_jump_to_height_silent_0',
                 "command": 'jump_to_height_silent',
                 "args": [0]
-            },
+            }
         ]
     },
     {
@@ -119,5 +119,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1676_jmp_if_object_trigger_disabled_1'],
         "subscript": []
-    },
+    }
 ]

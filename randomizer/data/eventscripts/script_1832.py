@@ -96,5 +96,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1832_pause_0'],
         "subscript": []
-    },
+    }
 ]

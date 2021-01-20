@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_3601_action_queue_async_7_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -106,7 +106,7 @@ script = [
                 "identifier": 'EVENT_3601_action_queue_sync_15_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -133,7 +133,7 @@ script = [
                 "identifier": 'EVENT_3601_action_queue_async_16_SUBSCRIPT_face_northwest_3',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -163,7 +163,7 @@ script = [
                 "identifier": 'EVENT_3601_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [2, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -213,7 +213,7 @@ script = [
                 "identifier": 'EVENT_3601_action_queue_async_24_SUBSCRIPT_face_west_4',
                 "command": 'face_west',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -291,7 +291,7 @@ script = [
                 "identifier": 'EVENT_3601_action_queue_async_31_SUBSCRIPT_face_west_6',
                 "command": 'face_west',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -375,7 +375,7 @@ script = [
                 "identifier": 'EVENT_3601_action_queue_async_39_SUBSCRIPT_face_west_6',
                 "command": 'face_west',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -459,7 +459,7 @@ script = [
                 "identifier": 'EVENT_3601_start_embedded_action_script_async_52_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -477,7 +477,7 @@ script = [
                 "identifier": 'EVENT_3601_start_embedded_action_script_async_54_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [9, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -497,5 +497,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3600_action_queue_sync_21'],
         "subscript": []
-    },
+    }
 ]

@@ -206,7 +206,7 @@ script = [
                 "identifier": 'EVENT_933_action_queue_async_31_SUBSCRIPT_reset_properties_2',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -288,7 +288,7 @@ script = [
                 "identifier": 'EVENT_933_action_queue_async_42_SUBSCRIPT_reset_properties_2',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -436,7 +436,7 @@ script = [
                 "identifier": 'EVENT_933_action_queue_async_64_SUBSCRIPT_reset_properties_2',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -555,7 +555,7 @@ script = [
                 "identifier": 'EVENT_933_action_queue_async_82_SUBSCRIPT_sequence_looping_off_1',
                 "command": 'sequence_looping_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -582,7 +582,7 @@ script = [
                 "identifier": 'EVENT_933_action_queue_async_83_SUBSCRIPT_reset_properties_3',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -599,7 +599,7 @@ script = [
                 "identifier": 'EVENT_933_action_queue_async_84_SUBSCRIPT_sequence_looping_on_1',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -607,5 +607,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

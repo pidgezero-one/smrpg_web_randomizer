@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_561_action_queue_async_2_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -30,5 +30,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [265],
         "subscript": []
-    },
+    }
 ]

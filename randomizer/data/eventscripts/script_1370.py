@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_1370_action_queue_async_2_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -96,7 +96,7 @@ script = [
                 "identifier": 'EVENT_1370_action_queue_sync_10_SUBSCRIPT_face_southwest_4',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -128,7 +128,7 @@ script = [
                 "identifier": 'EVENT_1370_action_queue_sync_11_SUBSCRIPT_face_northeast_4',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -160,7 +160,7 @@ script = [
                 "identifier": 'EVENT_1370_action_queue_sync_12_SUBSCRIPT_face_northeast_4',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -192,7 +192,7 @@ script = [
                 "identifier": 'EVENT_1370_action_queue_async_13_SUBSCRIPT_face_northeast_4',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -278,5 +278,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1358_jmp_66'],
         "subscript": []
-    },
+    }
 ]

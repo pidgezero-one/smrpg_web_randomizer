@@ -33,7 +33,7 @@ script = [
                 "identifier": 'EVENT_3212_action_queue_sync_3_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -80,7 +80,7 @@ script = [
                 "identifier": 'EVENT_3212_action_queue_sync_9_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.PRIORITY_3]
-            },
+            }
         ]
     },
     {
@@ -163,7 +163,7 @@ script = [
                 "identifier": 'EVENT_3212_action_queue_sync_21_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -177,5 +177,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

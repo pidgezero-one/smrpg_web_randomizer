@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_3703_action_queue_sync_3_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_3703_action_queue_async_6_SUBSCRIPT_visibility_on_0',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -102,5 +102,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

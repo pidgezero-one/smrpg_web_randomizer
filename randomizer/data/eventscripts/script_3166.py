@@ -33,7 +33,7 @@ script = [
                 "identifier": 'EVENT_3166_action_queue_async_3_SUBSCRIPT_shadow_off_1',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -62,7 +62,7 @@ script = [
                 "identifier": 'EVENT_3166_action_queue_async_6_SUBSCRIPT_shadow_on_1',
                 "command": 'shadow_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -76,5 +76,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3166_set_7010_to_object_xyz_0'],
         "subscript": []
-    },
+    }
 ]

@@ -92,7 +92,7 @@ script = [
                 "identifier": 'EVENT_3496_action_queue_sync_7_SUBSCRIPT_play_sound_8',
                 "command": 'play_sound',
                 "args": [Sounds._055_LOSE_COINS_COIN_FOUNTAIN, 6]
-            },
+            }
         ]
     },
     {
@@ -114,7 +114,7 @@ script = [
                 "identifier": 'EVENT_3496_action_queue_sync_8_SUBSCRIPT_jump_to_height_silent_2',
                 "command": 'jump_to_height_silent',
                 "args": [144]
-            },
+            }
         ]
     },
     {
@@ -202,7 +202,7 @@ script = [
                 "identifier": 'EVENT_3496_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
                 "args": [10, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -234,5 +234,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

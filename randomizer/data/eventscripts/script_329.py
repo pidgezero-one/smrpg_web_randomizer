@@ -46,7 +46,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_6_SUBSCRIPT_face_south_0',
                 "command": 'face_south',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -70,7 +70,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_9_SUBSCRIPT_bounce_to_xy_with_height_0',
                 "command": 'bounce_to_xy_with_height',
                 "args": [9, 87, 13]
-            },
+            }
         ]
     },
     {
@@ -189,7 +189,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_sync_12_SUBSCRIPT_shift_southeast_steps_19',
                 "command": 'shift_southeast_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -256,7 +256,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_sync_13_SUBSCRIPT_floating_off_11',
                 "command": 'floating_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -308,7 +308,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_sync_14_SUBSCRIPT_set_animation_speed_8',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -342,7 +342,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_17_SUBSCRIPT_shift_southeast_steps_2',
                 "command": 'shift_southeast_steps',
                 "args": [6]
-            },
+            }
         ]
     },
     {
@@ -500,7 +500,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_19_SUBSCRIPT_set_sprite_sequence_28',
                 "command": 'set_sprite_sequence',
                 "args": [1, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -535,7 +535,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_23_SUBSCRIPT_shift_southeast_steps_1',
                 "command": 'shift_southeast_steps',
                 "args": [7]
-            },
+            }
         ]
     },
     {
@@ -677,7 +677,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_sync_29_SUBSCRIPT_visibility_off_20',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -914,7 +914,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_30_SUBSCRIPT_floating_off_45',
                 "command": 'floating_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -972,7 +972,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_32_SUBSCRIPT_shift_southwest_pixels_8',
                 "command": 'shift_southwest_pixels',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -1054,7 +1054,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_33_SUBSCRIPT_set_sprite_sequence_14',
                 "command": 'set_sprite_sequence',
                 "args": [14, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1124,7 +1124,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_42_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -1231,7 +1231,7 @@ script = [
                 "identifier": 'EVENT_329_action_queue_async_58_SUBSCRIPT_object_memory_set_bit_1',
                 "command": 'object_memory_set_bit',
                 "args": [0x09, [7]]
-            },
+            }
         ]
     },
     {
@@ -1251,5 +1251,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

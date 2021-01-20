@@ -74,7 +74,7 @@ script = [
                 "identifier": 'EVENT_2661_action_queue_async_9_SUBSCRIPT_play_sound_2',
                 "command": 'play_sound',
                 "args": [Sounds._022_CLOSE_DOOR, 4]
-            },
+            }
         ]
     },
     {
@@ -100,5 +100,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

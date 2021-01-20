@@ -174,5 +174,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_446_jmp_if_var_equals_short_2'],
         "subscript": []
-    },
+    }
 ]

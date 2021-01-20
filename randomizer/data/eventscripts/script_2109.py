@@ -68,7 +68,7 @@ script = [
                 "identifier": 'EVENT_2109_action_queue_async_3_SUBSCRIPT_face_southeast_8',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -92,7 +92,7 @@ script = [
                 "identifier": 'EVENT_2109_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [8, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -146,7 +146,7 @@ script = [
                 "identifier": 'EVENT_2109_action_queue_async_9_SUBSCRIPT_pause_6',
                 "command": 'pause',
                 "args": [15]
-            },
+            }
         ]
     },
     {
@@ -208,7 +208,7 @@ script = [
                 "identifier": 'EVENT_2109_action_queue_async_10_SUBSCRIPT_visibility_off_10',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -337,7 +337,7 @@ script = [
                 "identifier": 'EVENT_2109_action_queue_async_28_SUBSCRIPT_shift_east_pixels_3',
                 "command": 'shift_east_pixels',
                 "args": [13]
-            },
+            }
         ]
     },
     {
@@ -365,7 +365,7 @@ script = [
                 "identifier": 'EVENT_2109_action_queue_sync_30_SUBSCRIPT_face_northeast_2',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -387,7 +387,7 @@ script = [
                 "identifier": 'EVENT_2109_action_queue_sync_31_SUBSCRIPT_face_northeast_2',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -409,7 +409,7 @@ script = [
                 "identifier": 'EVENT_2109_action_queue_async_32_SUBSCRIPT_face_northeast_2',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -458,7 +458,7 @@ script = [
                 "identifier": 'EVENT_2109_action_queue_async_35_SUBSCRIPT_set_animation_speed_5',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -478,5 +478,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

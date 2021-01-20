@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_2580_action_queue_async_1_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -43,7 +43,7 @@ script = [
                 "identifier": 'EVENT_2580_action_queue_sync_2_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -133,7 +133,7 @@ script = [
                 "identifier": 'EVENT_2580_action_queue_sync_16_SUBSCRIPT_set_vram_priority_0',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -141,5 +141,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

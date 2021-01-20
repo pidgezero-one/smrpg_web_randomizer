@@ -27,7 +27,7 @@ script = [
                 "identifier": 'EVENT_3686_action_queue_async_2_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -155,7 +155,7 @@ script = [
                 "identifier": 'EVENT_3686_action_queue_async_19_SUBSCRIPT_clear_solidity_bits_4',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -219,7 +219,7 @@ script = [
                 "identifier": 'EVENT_3686_action_queue_async_22_SUBSCRIPT_face_northeast_8',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -275,7 +275,7 @@ script = [
                 "identifier": 'EVENT_3686_action_queue_async_27_SUBSCRIPT_face_south_4',
                 "command": 'face_south',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -301,5 +301,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

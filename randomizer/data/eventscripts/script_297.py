@@ -367,7 +367,7 @@ script = [
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_reset_properties_39',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -393,5 +393,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

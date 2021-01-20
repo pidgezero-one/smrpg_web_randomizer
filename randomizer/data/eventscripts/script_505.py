@@ -103,7 +103,7 @@ script = [
                 "identifier": 'EVENT_505_action_queue_async_8_SUBSCRIPT_walk_to_xy_coords_9',
                 "command": 'walk_to_xy_coords',
                 "args": [21, 36]
-            },
+            }
         ]
     },
     {
@@ -130,7 +130,7 @@ script = [
                 "identifier": 'EVENT_505_action_queue_async_9_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -156,5 +156,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [505],
         "subscript": []
-    },
+    }
 ]

@@ -26,7 +26,7 @@ script = [
                 "identifier": 'EVENT_2082_action_queue_sync_1_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -53,7 +53,7 @@ script = [
                 "identifier": 'EVENT_2082_action_queue_sync_2_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -75,7 +75,7 @@ script = [
                 "identifier": 'EVENT_2082_action_queue_async_3_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -473,5 +473,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_2081_run_dialog_93'],
         "subscript": []
-    },
+    }
 ]

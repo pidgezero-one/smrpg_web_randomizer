@@ -144,7 +144,7 @@ script = [
                 "identifier": 'EVENT_1645_action_queue_async_14_SUBSCRIPT_pause_10',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -184,7 +184,7 @@ script = [
                 "identifier": 'EVENT_1645_action_queue_async_18_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -258,5 +258,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_2147_action_queue_sync_1_SUBSCRIPT_shift_northwest_pixels_0',
                 "command": 'shift_northwest_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_2147_action_queue_sync_2_SUBSCRIPT_shift_southeast_pixels_0',
                 "command": 'shift_southeast_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -40,7 +40,7 @@ script = [
                 "identifier": 'EVENT_2147_action_queue_sync_3_SUBSCRIPT_shift_southeast_pixels_0',
                 "command": 'shift_southeast_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_2147_action_queue_sync_4_SUBSCRIPT_shift_northwest_pixels_0',
                 "command": 'shift_northwest_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -64,7 +64,7 @@ script = [
                 "identifier": 'EVENT_2147_action_queue_sync_5_SUBSCRIPT_shift_southeast_pixels_0',
                 "command": 'shift_southeast_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -76,7 +76,7 @@ script = [
                 "identifier": 'EVENT_2147_action_queue_async_6_SUBSCRIPT_shift_southeast_pixels_0',
                 "command": 'shift_southeast_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -105,7 +105,7 @@ script = [
                 "identifier": 'EVENT_2147_action_queue_sync_9_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -122,7 +122,7 @@ script = [
                 "identifier": 'EVENT_2147_action_queue_sync_10_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -148,5 +148,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_2604_action_queue_sync_2_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -86,7 +86,7 @@ script = [
                 "identifier": 'EVENT_2604_action_queue_sync_5_SUBSCRIPT_shirt_to_xy_coords_6',
                 "command": 'shirt_to_xy_coords',
                 "args": [0, 0]
-            },
+            }
         ]
     },
     {
@@ -108,7 +108,7 @@ script = [
                 "identifier": 'EVENT_2604_action_queue_sync_6_SUBSCRIPT_ret_2',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -170,5 +170,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_3724_action_queue_sync_2_SUBSCRIPT_reset_properties_2',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -44,7 +44,7 @@ script = [
                 "identifier": 'EVENT_3724_action_queue_sync_3_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 0, 2, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -56,7 +56,7 @@ script = [
                 "identifier": 'EVENT_3724_action_queue_async_4_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 0, 2, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -88,5 +88,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -88,7 +88,7 @@ script = [
                 "identifier": 'EVENT_1619_action_queue_sync_3_SUBSCRIPT_end_loop_12',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -105,7 +105,7 @@ script = [
                 "identifier": 'EVENT_1619_action_queue_sync_4_SUBSCRIPT_bounce_to_xy_with_height_1',
                 "command": 'bounce_to_xy_with_height',
                 "args": [14, 27, 0]
-            },
+            }
         ]
     },
     {
@@ -132,7 +132,7 @@ script = [
                 "identifier": 'EVENT_1619_action_queue_sync_5_SUBSCRIPT_set_solidity_bits_3',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -144,7 +144,7 @@ script = [
                 "identifier": 'EVENT_1619_action_queue_async_6_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -186,7 +186,7 @@ script = [
                 "identifier": 'EVENT_1619_action_queue_async_7_SUBSCRIPT_clear_solidity_bits_6',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -239,7 +239,7 @@ script = [
                 "identifier": 'EVENT_1619_action_queue_async_9_SUBSCRIPT_clear_solidity_bits_7',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -267,7 +267,7 @@ script = [
                 "identifier": 'EVENT_1619_start_embedded_action_script_async_11_SUBSCRIPT_sequence_looping_on_2',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -289,7 +289,7 @@ script = [
                 "identifier": 'EVENT_1619_start_embedded_action_script_async_12_SUBSCRIPT_sequence_looping_on_2',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -315,5 +315,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

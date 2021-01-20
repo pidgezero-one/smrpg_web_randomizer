@@ -73,7 +73,7 @@ script = [
                 "identifier": 'EVENT_2052_action_queue_async_3_SUBSCRIPT_pause_9',
                 "command": 'pause',
                 "args": [30]
-            },
+            }
         ]
     },
     {
@@ -122,7 +122,7 @@ script = [
                 "identifier": 'EVENT_2052_action_queue_async_6_SUBSCRIPT_shift_southeast_pixels_5',
                 "command": 'shift_southeast_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -172,7 +172,7 @@ script = [
                 "identifier": 'EVENT_2052_action_queue_async_10_SUBSCRIPT_fixed_f_coord_off_4',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -246,7 +246,7 @@ script = [
                 "identifier": 'EVENT_2052_action_queue_sync_13_SUBSCRIPT_fixed_f_coord_off_10',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -298,7 +298,7 @@ script = [
                 "identifier": 'EVENT_2052_action_queue_sync_14_SUBSCRIPT_fixed_f_coord_off_8',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -355,7 +355,7 @@ script = [
                 "identifier": 'EVENT_2052_action_queue_async_15_SUBSCRIPT_fixed_f_coord_off_9',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -409,7 +409,7 @@ script = [
                 "identifier": 'EVENT_2052_action_queue_async_23_SUBSCRIPT_face_southeast_0',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -433,7 +433,7 @@ script = [
                 "identifier": 'EVENT_2052_action_queue_sync_26_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -460,7 +460,7 @@ script = [
                 "identifier": 'EVENT_2052_action_queue_async_27_SUBSCRIPT_visibility_off_3',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -498,5 +498,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

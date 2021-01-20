@@ -20,7 +20,7 @@ script = [
                 "identifier": 'EVENT_2619_action_queue_sync_0_SUBSCRIPT_shift_north_steps_2',
                 "command": 'shift_north_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_2619_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [11, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -60,7 +60,7 @@ script = [
                 "identifier": 'EVENT_2619_action_queue_sync_3_SUBSCRIPT_shift_south_pixels_2',
                 "command": 'shift_south_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -89,7 +89,7 @@ script = [
                 "identifier": 'EVENT_2619_action_queue_sync_6_SUBSCRIPT_shift_south_steps_1',
                 "command": 'shift_south_steps',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -121,5 +121,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

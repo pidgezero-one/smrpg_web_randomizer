@@ -70,7 +70,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_async_10_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [0, 252, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -135,7 +135,7 @@ script = [
                 "identifier": 'EVENT_3824_start_embedded_action_script_async_19_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -162,7 +162,7 @@ script = [
                 "identifier": 'EVENT_3824_start_embedded_action_script_async_20_SUBSCRIPT_set_solidity_bits_3',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -174,7 +174,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_sync_21_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -186,7 +186,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_sync_22_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -198,7 +198,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_sync_23_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -220,7 +220,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_sync_24_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -314,7 +314,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_async_37_SUBSCRIPT_floating_off_2',
                 "command": 'floating_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -378,7 +378,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_async_45_SUBSCRIPT_sequence_playback_on_2',
                 "command": 'sequence_playback_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -412,7 +412,7 @@ script = [
                 "identifier": 'EVENT_3824_start_embedded_action_script_async_48_SUBSCRIPT_clear_solidity_bits_2',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -434,7 +434,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_sync_49_SUBSCRIPT_clear_solidity_bits_2',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -461,7 +461,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_sync_50_SUBSCRIPT_clear_solidity_bits_3',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -488,7 +488,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_sync_51_SUBSCRIPT_clear_solidity_bits_3',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -510,7 +510,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_sync_52_SUBSCRIPT_clear_solidity_bits_2',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -532,7 +532,7 @@ script = [
                 "identifier": 'EVENT_3824_action_queue_async_53_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -552,5 +552,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3824_jmp_if_bit_set_28'],
         "subscript": []
-    },
+    }
 ]

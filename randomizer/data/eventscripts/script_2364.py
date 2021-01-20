@@ -25,7 +25,7 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_sync_0_SUBSCRIPT_face_southwest_3',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -47,7 +47,7 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_sync_1_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -69,7 +69,7 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_sync_2_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -91,7 +91,7 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_sync_3_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -113,7 +113,7 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_sync_4_SUBSCRIPT_shift_southwest_pixels_2',
                 "command": 'shift_southwest_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -130,7 +130,7 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_sync_5_SUBSCRIPT_shift_southwest_pixels_1',
                 "command": 'shift_southwest_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -147,7 +147,7 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_sync_6_SUBSCRIPT_shift_south_pixels_1',
                 "command": 'shift_south_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -202,7 +202,7 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_async_10_SUBSCRIPT_set_priority_5',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -255,7 +255,7 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_async_12_SUBSCRIPT_jmp_if_mario_in_air_7',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_2364_action_queue_async_12_SUBSCRIPT_pause_6']
-            },
+            }
         ]
     },
     {
@@ -341,5 +341,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

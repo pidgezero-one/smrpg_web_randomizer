@@ -101,7 +101,7 @@ script = [
                 "identifier": 'EVENT_1335_action_queue_async_11_SUBSCRIPT_set_vram_priority_5',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -157,7 +157,7 @@ script = [
                 "identifier": 'EVENT_1335_action_queue_async_16_SUBSCRIPT_fixed_f_coord_off_4',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -190,7 +190,7 @@ script = [
                 "identifier": 'EVENT_1335_action_queue_async_18_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
-            },
+            }
         ]
     },
     {
@@ -238,7 +238,7 @@ script = [
                 "identifier": 'EVENT_1335_action_queue_async_20_SUBSCRIPT_shift_southwest_steps_6',
                 "command": 'shift_southwest_steps',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -250,7 +250,7 @@ script = [
                 "identifier": 'EVENT_1335_action_queue_async_21_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -420,7 +420,7 @@ script = [
                 "identifier": 'EVENT_1335_action_queue_sync_45_SUBSCRIPT_pause_4',
                 "command": 'pause',
                 "args": [45]
-            },
+            }
         ]
     },
     {
@@ -437,7 +437,7 @@ script = [
                 "identifier": 'EVENT_1335_action_queue_async_46_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -473,7 +473,7 @@ script = [
                 "identifier": 'EVENT_1335_action_queue_async_51_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -493,5 +493,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

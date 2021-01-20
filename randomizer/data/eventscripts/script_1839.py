@@ -54,7 +54,7 @@ script = [
                 "identifier": 'EVENT_1839_action_queue_sync_4_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -82,7 +82,7 @@ script = [
                 "identifier": 'EVENT_1839_action_queue_sync_6_SUBSCRIPT_jmp_2',
                 "command": 'jmp',
                 "args": ['EVENT_1839_non_embedded_action_queue_8']
-            },
+            }
         ]
     },
     {
@@ -101,6 +101,146 @@ script = [
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
             },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_walk_1_step_northeast_1',
+                "command": 'walk_1_step_northeast',
+                "args": []
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_up_steps_2',
+                "command": 'shift_z_up_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_down_steps_3',
+                "command": 'shift_z_down_steps',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_northeast_steps_4',
+                "command": 'shift_northeast_steps',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_up_steps_5',
+                "command": 'shift_z_up_steps',
+                "args": [7]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_set_animation_speed_6',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_down_steps_7',
+                "command": 'shift_z_down_steps',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_set_animation_speed_8',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_southeast_steps_9',
+                "command": 'shift_southeast_steps',
+                "args": [6]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_up_steps_10',
+                "command": 'shift_z_up_steps',
+                "args": [3]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_southwest_steps_11',
+                "command": 'shift_southwest_steps',
+                "args": [6]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_northeast_steps_12',
+                "command": 'shift_northeast_steps',
+                "args": [10]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_up_steps_13',
+                "command": 'shift_z_up_steps',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_down_steps_14',
+                "command": 'shift_z_down_steps',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_northwest_steps_15',
+                "command": 'shift_northwest_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_down_steps_16',
+                "command": 'shift_z_down_steps',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_southeast_steps_17',
+                "command": 'shift_southeast_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_up_steps_18',
+                "command": 'shift_z_up_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_play_sound_19',
+                "command": 'play_sound',
+                "args": [Sounds._113_OPEN_CHAMBER_DOOR, 4]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_pause_20',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_set_animation_speed_21',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_northwest_steps_22',
+                "command": 'shift_northwest_steps',
+                "args": [6]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_down_steps_23',
+                "command": 'shift_z_down_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_southwest_steps_24',
+                "command": 'shift_southwest_steps',
+                "args": [9]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_up_steps_25',
+                "command": 'shift_z_up_steps',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_play_sound_26',
+                "command": 'play_sound',
+                "args": [Sounds._113_OPEN_CHAMBER_DOOR, 4]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_pause_27',
+                "command": 'pause',
+                "args": [60]
+            },
+            {
+                "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_jmp_28',
+                "command": 'jmp',
+                "args": ['EVENT_1839_non_embedded_action_queue_8']
+            }
         ]
-    },
+    }
 ]

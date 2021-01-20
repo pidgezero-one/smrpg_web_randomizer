@@ -12,5 +12,5 @@ script = [
         "command": 'set_bit',
         "args": [0x7061, 5],
         "subscript": []
-    },
+    }
 ]

@@ -86,7 +86,7 @@ script = [
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_jmp_if_mario_in_air_14',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_1855_action_queue_async_1_SUBSCRIPT_pause_13']
-            },
+            }
         ]
     },
     {
@@ -94,5 +94,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1830_store_coin_amount_7000_10'],
         "subscript": []
-    },
+    }
 ]

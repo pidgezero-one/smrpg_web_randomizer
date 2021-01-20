@@ -89,7 +89,7 @@ script = [
                 "identifier": 'EVENT_1768_action_queue_async_4_SUBSCRIPT_db_11',
                 "command": 'db',
                 "args": [0xfd, 0x3d, 0x18, 0xcb]
-            },
+            }
         ]
     },
     {
@@ -214,7 +214,7 @@ script = [
                 "identifier": 'EVENT_1768_action_queue_sync_23_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -222,5 +222,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

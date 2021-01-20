@@ -48,7 +48,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_async_3_SUBSCRIPT_ret_4',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -65,7 +65,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_sync_4_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -87,7 +87,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_sync_5_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -104,7 +104,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_sync_6_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -126,7 +126,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_sync_7_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -143,7 +143,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_sync_8_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -165,7 +165,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_sync_9_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -182,7 +182,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_sync_10_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -204,7 +204,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_async_11_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -380,7 +380,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_sync_36_SUBSCRIPT_ret_4',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -567,7 +567,7 @@ script = [
                 "identifier": 'EVENT_1106_action_queue_async_57_SUBSCRIPT_set_animation_speed_11',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -575,5 +575,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1107_set_7000_to_tapped_button_2'],
         "subscript": []
-    },
+    }
 ]

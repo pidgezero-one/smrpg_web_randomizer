@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_1312_action_queue_sync_1_SUBSCRIPT_shift_southeast_pixels_1',
                 "command": 'shift_southeast_pixels',
                 "args": [6]
-            },
+            }
         ]
     },
     {
@@ -48,7 +48,7 @@ script = [
                 "identifier": 'EVENT_1312_action_queue_sync_2_SUBSCRIPT_face_southwest_3',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -90,7 +90,7 @@ script = [
                 "identifier": 'EVENT_1312_action_queue_async_3_SUBSCRIPT_shadow_off_6',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -164,5 +164,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

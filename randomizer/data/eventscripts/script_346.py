@@ -126,7 +126,7 @@ script = [
                 "identifier": 'EVENT_346_action_queue_sync_11_SUBSCRIPT_reset_properties_10',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -166,7 +166,7 @@ script = [
                 "identifier": 'EVENT_346_start_embedded_action_script_async_15_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -208,7 +208,7 @@ script = [
                 "identifier": 'EVENT_346_action_queue_async_21_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_0]]
-            },
+            }
         ]
     },
     {
@@ -271,7 +271,7 @@ script = [
                 "identifier": 'EVENT_346_action_queue_async_28_SUBSCRIPT_face_northeast_3',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -313,7 +313,7 @@ script = [
                 "identifier": 'EVENT_346_action_queue_async_29_SUBSCRIPT_set_sprite_sequence_6',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -341,7 +341,7 @@ script = [
                 "identifier": 'EVENT_346_action_queue_sync_31_SUBSCRIPT_reset_properties_2',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -373,7 +373,7 @@ script = [
                 "identifier": 'EVENT_346_action_queue_async_32_SUBSCRIPT_transfer_to_xyzf_4',
                 "command": 'transfer_to_xyzf',
                 "args": [16, 66, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -453,7 +453,7 @@ script = [
                 "identifier": 'EVENT_346_action_queue_async_36_SUBSCRIPT_set_sprite_sequence_10',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -473,5 +473,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

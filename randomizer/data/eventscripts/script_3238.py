@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_3238_action_queue_sync_2_SUBSCRIPT_ret_6',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -66,5 +66,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

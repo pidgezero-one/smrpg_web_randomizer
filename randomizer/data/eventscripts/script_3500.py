@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_3500_action_queue_sync_2_SUBSCRIPT_jump_to_height_0',
                 "command": 'jump_to_height',
                 "args": [104]
-            },
+            }
         ]
     },
     {
@@ -46,7 +46,7 @@ script = [
                 "identifier": 'EVENT_3500_action_queue_sync_5_SUBSCRIPT_jump_to_height_0',
                 "command": 'jump_to_height',
                 "args": [104]
-            },
+            }
         ]
     },
     {
@@ -70,7 +70,7 @@ script = [
                 "identifier": 'EVENT_3500_action_queue_sync_8_SUBSCRIPT_jump_to_height_0',
                 "command": 'jump_to_height',
                 "args": [104]
-            },
+            }
         ]
     },
     {
@@ -84,5 +84,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3500_pause_0'],
         "subscript": []
-    },
+    }
 ]

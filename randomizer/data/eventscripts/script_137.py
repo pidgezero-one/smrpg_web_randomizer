@@ -6,5 +6,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [993],
         "subscript": []
-    },
+    }
 ]

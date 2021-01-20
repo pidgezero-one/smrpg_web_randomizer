@@ -307,7 +307,7 @@ script = [
                 "identifier": 'EVENT_3218_action_queue_async_47_SUBSCRIPT_fixed_f_coord_off_3',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -417,5 +417,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

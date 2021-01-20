@@ -37,7 +37,7 @@ script = [
                 "identifier": 'EVENT_1769_action_queue_sync_2_SUBSCRIPT_set_vram_priority_3',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -71,7 +71,7 @@ script = [
                 "identifier": 'EVENT_1769_action_queue_async_5_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -79,5 +79,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

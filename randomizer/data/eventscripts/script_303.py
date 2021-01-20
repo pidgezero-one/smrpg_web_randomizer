@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_303_action_queue_async_0_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -37,7 +37,7 @@ script = [
                 "identifier": 'EVENT_303_start_embedded_action_script_async_1_SUBSCRIPT_db_3',
                 "command": 'db',
                 "args": [0xfd, 0x3d, 0x14, 0xa7]
-            },
+            }
         ]
     },
     {
@@ -91,7 +91,7 @@ script = [
                 "identifier": 'EVENT_303_action_queue_async_9_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -103,7 +103,7 @@ script = [
                 "identifier": 'EVENT_303_action_queue_async_10_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -169,7 +169,7 @@ script = [
                 "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_face_east_6',
                 "command": 'face_east',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -191,7 +191,7 @@ script = [
                 "identifier": 'EVENT_303_action_queue_async_16_SUBSCRIPT_db_2',
                 "command": 'db',
                 "args": [0xfd, 0x3d, 0x14, 0xee]
-            },
+            }
         ]
     },
     {
@@ -215,7 +215,7 @@ script = [
                 "identifier": 'EVENT_303_action_queue_async_19_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -227,7 +227,7 @@ script = [
                 "identifier": 'EVENT_303_action_queue_async_20_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -281,7 +281,7 @@ script = [
                 "identifier": 'EVENT_303_action_queue_async_28_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -293,7 +293,7 @@ script = [
                 "identifier": 'EVENT_303_action_queue_async_29_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_WALK_THROUGH]]
-            },
+            }
         ]
     },
     {
@@ -301,5 +301,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -528,5 +528,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_2418_play_sound_63'],
         "subscript": []
-    },
+    }
 ]

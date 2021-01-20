@@ -827,7 +827,7 @@ script = [
                 "identifier": 'EVENT_3490_action_queue_async_132_SUBSCRIPT_end_loop_5',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -883,5 +883,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

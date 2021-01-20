@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_3831_action_queue_async_3_SUBSCRIPT_visibility_on_0',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_3831_action_queue_async_7_SUBSCRIPT_visibility_on_0',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -81,7 +81,7 @@ script = [
                 "identifier": 'EVENT_3831_action_queue_async_9_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -281,5 +281,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3831_jmp_if_bit_set_8'],
         "subscript": []
-    },
+    }
 ]

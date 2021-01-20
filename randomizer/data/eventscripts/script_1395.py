@@ -70,7 +70,7 @@ script = [
                 "identifier": 'EVENT_1395_action_queue_async_5_SUBSCRIPT_play_sound_6',
                 "command": 'play_sound',
                 "args": [Sounds._005_BLOCK_SWITCH, 4]
-            },
+            }
         ]
     },
     {
@@ -136,7 +136,7 @@ script = [
                 "identifier": 'EVENT_1395_action_queue_async_10_SUBSCRIPT_shift_northwest_pixels_6',
                 "command": 'shift_northwest_pixels',
                 "args": [32]
-            },
+            }
         ]
     },
     {
@@ -242,7 +242,7 @@ script = [
                 "identifier": 'EVENT_1395_action_queue_async_25_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
                 "args": [13, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -310,7 +310,7 @@ script = [
                 "identifier": 'EVENT_1395_action_queue_async_32_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -390,7 +390,7 @@ script = [
                 "identifier": 'EVENT_1395_action_queue_async_41_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -416,5 +416,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

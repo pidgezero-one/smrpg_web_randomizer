@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_255_start_embedded_action_script_async_1_SUBSCRIPT_db_1',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -95,5 +95,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

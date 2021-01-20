@@ -535,6 +535,7 @@ class Command(BaseCommand):
                 cmd = line[0]
                 rest = line[1:]
                 table = names
+            #print (hex(cmd), rest)
             if table[cmd]:
                 name, args = table[cmd](rest)
             else:

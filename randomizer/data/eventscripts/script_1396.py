@@ -40,7 +40,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_5_SUBSCRIPT_jump_to_height_0',
                 "command": 'jump_to_height',
                 "args": [96]
-            },
+            }
         ]
     },
     {
@@ -73,7 +73,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_sync_7_SUBSCRIPT_face_southwest_3',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -110,7 +110,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_8_SUBSCRIPT_shift_northwest_steps_5',
                 "command": 'shift_northwest_steps',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -270,7 +270,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_sync_17_SUBSCRIPT_set_animation_speed_20',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -342,7 +342,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_sync_18_SUBSCRIPT_pause_12',
                 "command": 'pause',
                 "args": [10]
-            },
+            }
         ]
     },
     {
@@ -379,7 +379,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_19_SUBSCRIPT_shift_east_pixels_5',
                 "command": 'shift_east_pixels',
                 "args": [5]
-            },
+            }
         ]
     },
     {
@@ -546,7 +546,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_45_SUBSCRIPT_face_southwest_1',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -641,7 +641,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_49_SUBSCRIPT_pause_13',
                 "command": 'pause',
                 "args": [15]
-            },
+            }
         ]
     },
     {
@@ -683,7 +683,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_sync_50_SUBSCRIPT_pause_6',
                 "command": 'pause',
                 "args": [10]
-            },
+            }
         ]
     },
     {
@@ -715,7 +715,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_51_SUBSCRIPT_shift_southeast_pixels_4',
                 "command": 'shift_southeast_pixels',
                 "args": [18]
-            },
+            }
         ]
     },
     {
@@ -814,7 +814,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_64_SUBSCRIPT_jump_to_height_3',
                 "command": 'jump_to_height',
                 "args": [80]
-            },
+            }
         ]
     },
     {
@@ -863,7 +863,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_67_SUBSCRIPT_visibility_off_5',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -886,7 +886,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_69_SUBSCRIPT_face_northwest_1',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -915,7 +915,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_72_SUBSCRIPT_face_southwest_1',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -950,7 +950,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_76_SUBSCRIPT_jump_to_height_1',
                 "command": 'jump_to_height',
                 "args": [80]
-            },
+            }
         ]
     },
     {
@@ -1029,7 +1029,7 @@ script = [
                 "identifier": 'EVENT_1396_action_queue_async_84_SUBSCRIPT_visibility_off_5',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1067,5 +1067,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

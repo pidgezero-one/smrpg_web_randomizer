@@ -30,5 +30,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3701_set_action_script_sync_4'],
         "subscript": []
-    },
+    }
 ]

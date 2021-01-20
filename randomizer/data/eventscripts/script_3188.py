@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_3188_action_queue_sync_1_SUBSCRIPT_set_vram_priority_0',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.NORMAL]
-            },
+            }
         ]
     },
     {
@@ -63,7 +63,7 @@ script = [
                 "identifier": 'EVENT_3188_action_queue_async_2_SUBSCRIPT_sequence_looping_off_7',
                 "command": 'sequence_looping_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -110,7 +110,7 @@ script = [
                 "identifier": 'EVENT_3188_action_queue_sync_3_SUBSCRIPT_pause_7',
                 "command": 'pause',
                 "args": [200]
-            },
+            }
         ]
     },
     {
@@ -162,7 +162,7 @@ script = [
                 "identifier": 'EVENT_3188_action_queue_sync_4_SUBSCRIPT_object_memory_clear_bit_8',
                 "command": 'object_memory_clear_bit',
                 "args": [0x0b, [3]]
-            },
+            }
         ]
     },
     {
@@ -218,5 +218,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [1648],
         "subscript": []
-    },
+    }
 ]

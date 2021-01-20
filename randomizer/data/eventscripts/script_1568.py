@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_1568_action_queue_async_2_SUBSCRIPT_object_memory_set_bit_0',
                 "command": 'object_memory_set_bit',
                 "args": [0x0b, [3]]
-            },
+            }
         ]
     },
     {
@@ -36,5 +36,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_1679_action_queue_async_3_SUBSCRIPT_play_sound_6',
                 "command": 'play_sound',
                 "args": [Sounds._058_INSERT, 4]
-            },
+            }
         ]
     },
     {
@@ -66,5 +66,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

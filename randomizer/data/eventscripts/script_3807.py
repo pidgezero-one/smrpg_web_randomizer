@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_3807_action_queue_sync_1_SUBSCRIPT_clear_solidity_bits_1',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -65,7 +65,7 @@ script = [
                 "identifier": 'EVENT_3807_action_queue_sync_4_SUBSCRIPT_set_palette_row_4',
                 "command": 'set_palette_row',
                 "args": [12]
-            },
+            }
         ]
     },
     {
@@ -77,7 +77,7 @@ script = [
                 "identifier": 'EVENT_3807_action_queue_sync_5_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -89,7 +89,7 @@ script = [
                 "identifier": 'EVENT_3807_action_queue_sync_6_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [248, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -103,5 +103,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [3806],
         "subscript": []
-    },
+    }
 ]

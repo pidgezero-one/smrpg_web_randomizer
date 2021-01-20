@@ -64,7 +64,7 @@ script = [
                 "identifier": 'EVENT_3790_action_queue_sync_4_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -106,7 +106,7 @@ script = [
                 "identifier": 'EVENT_3790_action_queue_sync_10_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [248, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -124,7 +124,7 @@ script = [
                 "identifier": 'EVENT_3790_action_queue_sync_12_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [248, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -142,7 +142,7 @@ script = [
                 "identifier": 'EVENT_3790_action_queue_sync_14_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [248, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -160,7 +160,7 @@ script = [
                 "identifier": 'EVENT_3790_action_queue_sync_16_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [248, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -178,7 +178,7 @@ script = [
                 "identifier": 'EVENT_3790_action_queue_sync_18_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [248, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -192,5 +192,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

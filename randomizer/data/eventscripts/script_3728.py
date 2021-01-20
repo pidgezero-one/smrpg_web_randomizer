@@ -798,5 +798,5 @@ script = [
         "command": 'stop_sound',
         "args": [],
         "subscript": []
-    },
+    }
 ]

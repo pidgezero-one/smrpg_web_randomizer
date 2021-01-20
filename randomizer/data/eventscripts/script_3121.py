@@ -3052,7 +3052,7 @@ script = [
                 "identifier": 'EVENT_3121_action_queue_async_507_SUBSCRIPT_jump_to_height_silent_0',
                 "command": 'jump_to_height_silent',
                 "args": [144]
-            },
+            }
         ]
     },
     {
@@ -3114,5 +3114,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

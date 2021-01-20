@@ -27,7 +27,7 @@ script = [
                 "identifier": 'EVENT_3157_action_queue_async_2_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -62,7 +62,7 @@ script = [
                 "identifier": 'EVENT_3157_action_queue_async_6_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -70,5 +70,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3157_set_7000_to_object_coord_0'],
         "subscript": []
-    },
+    }
 ]

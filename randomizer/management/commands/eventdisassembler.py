@@ -179,7 +179,7 @@ def tok(rom, start, end, bank):
 
 def parse_line(line, offset, with_comments=True):
     if offset in jumped_to_from_action_queue and is_eligible_nonembedded_command(line[0:2]):
-        name, args = 'non_embedded_action_queue', ['%r' % line[0:2]]
+        name, args = 'non_embedded_action_queue', ['%r' % line]
     else:
         if line[0] == 0xFD:
             cmd = line[1]
@@ -1029,11 +1029,6 @@ class Command(BaseCommand):
                     script_content = tok(rom, ptrs[i], bank["end"], bank)
                 scripts.append(script_content)
 
-
-
-        #not working for non-embedded action queues
-
-        
         #translate lines into commands and note any jump addresses
         for i in range(len(scripts)):
             script = scripts[i]
@@ -1048,13 +1043,22 @@ class Command(BaseCommand):
                     jump_args = [(int(ja, 16) | (offset & 0xFF0000)) for ja in args[arg_index:]]
                 else:
                     jump_args = []
-                    if (line[0] < 0x30 and line[1] <= 0xF1):
-                        if 0xF0 <= line[1] <= 0xF1:
-                            additional_offset = 3
+                    if offset in jumped_to_from_action_queue and is_eligible_nonembedded_command(line[0:2]):
+                        nonembedded = True
+                    else:
+                        nonembedded = False
+                    if (line[0] < 0x30 and line[1] <= 0xF1) or nonembedded:
+                        if nonembedded:
+                            additional_offset = 0
+                            ss = args[0]
+                            args = []
                         else:
-                            additional_offset = 2
-                        ss = args[-1:][0]
-                        args = args[:-1]
+                            ss = args[-1:][0]
+                            args = args[:-1]
+                            if 0xF0 <= line[1] <= 0xF1:
+                                additional_offset = 3
+                            else:
+                                additional_offset = 2
                         oc = OSCommand()
                         disassembled_queue = oc.get_embedded_script(ss)
                         disassembled_queue_commands = disassembled_queue["commands"]
@@ -1146,6 +1150,8 @@ class Command(BaseCommand):
         def writeline(f, ln):
             f.write(ln + "\n")
 
+
+        #todo: get rid of trailing commas
         for i in range(len(scripts_with_named_jumps)):
             file = open("randomizer/data/eventscripts/script_%i.py" % i, "w")
             writeline(file, 'from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
@@ -1155,7 +1161,8 @@ class Command(BaseCommand):
                 writeline(file, 'script = []')
             else:
                 writeline(file, 'script = [')
-                for cmd in script:
+                for j in range(len(script)):
+                    cmd = script[j]
                     writeline(file, '    {')
                     #writeline(file, '        "offset": 0x%x,' % cmd["offset"])
                     writeline(file, '        "identifier": %r,' % cmd['identifier'])
@@ -1163,21 +1170,36 @@ class Command(BaseCommand):
                     writeline(file, '        "args": [%s],' % ', '.join(cmd["args"]))
                     if len(cmd['subscript']) > 0:
                         writeline(file, '        "subscript": [')
-                        for ss in cmd['subscript']:
+                        for k in range(len(cmd["subscript"])):
+                            ss = cmd['subscript'][k]
                             writeline(file, '            {')
                             #writeline(file, '                "offset": 0x%x,' % ss["offset"])
                             writeline(file, '                "identifier": %r,' % ss["identifier"])
                             writeline(file, '                "command": %r,' % ss["command"])
                             writeline(file, '                "args": [%s]' % ', '.join(ss["args"]))
-                            writeline(file, '            },')
+                            if k == len(cmd["subscript"]) - 1: 
+                                writeline(file, '            }')
+                            else:
+                                writeline(file, '            },')
                         writeline(file, '        ]')
                     else:
                         writeline(file, '        "subscript": %s' % cmd['subscript'])
-                    writeline(file, '    },')
+                    if j == len(script) - 1:
+                        writeline(file, '    }')
+                    else:
+                        writeline(file, '    },')
                 writeline(file, ']')
             file.close()
 
+        
+        file = open("randomizer/data/eventscripts/events.py", "w")
+        for i in range(len(scripts_data)):
+            writeline(file, 'from randomizer.data.eventscripts.script_%i import script as script_%i' % (i, i))
+        writeline(file, 'scripts = [None]*%i' % len(scripts_data))
+        for i in range(len(scripts_data)):
+            writeline(file, 'scripts[%i] = script_%i' % (i, i))
+        file.close()
 
-# not working right now because non-embedded action queues mess everything up
-# as well as duplicate commands (like 0x94 and 0xFD0xA2) w/ diff lengths
-# next step should be to introduce jump system
+
+# Do round-trip testing command-by-command
+

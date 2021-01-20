@@ -158,7 +158,7 @@ script = [
                 "identifier": 'EVENT_3205_action_queue_sync_18_SUBSCRIPT_visibility_off_8',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -215,7 +215,7 @@ script = [
                 "identifier": 'EVENT_3205_action_queue_sync_19_SUBSCRIPT_visibility_off_9',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -272,7 +272,7 @@ script = [
                 "identifier": 'EVENT_3205_action_queue_sync_20_SUBSCRIPT_visibility_off_9',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -329,7 +329,7 @@ script = [
                 "identifier": 'EVENT_3205_action_queue_async_21_SUBSCRIPT_visibility_off_9',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -357,7 +357,7 @@ script = [
                 "identifier": 'EVENT_3205_action_queue_async_23_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -383,5 +383,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

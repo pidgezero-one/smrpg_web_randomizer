@@ -226,7 +226,7 @@ script = [
                 "identifier": 'EVENT_3818_action_queue_sync_36_SUBSCRIPT_shift_northeast_pixels_0',
                 "command": 'shift_northeast_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -238,7 +238,7 @@ script = [
                 "identifier": 'EVENT_3818_action_queue_sync_37_SUBSCRIPT_shift_west_pixels_0',
                 "command": 'shift_west_pixels',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -255,7 +255,7 @@ script = [
                 "identifier": 'EVENT_3818_action_queue_async_38_SUBSCRIPT_shift_z_up_pixels_1',
                 "command": 'shift_z_up_pixels',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -273,7 +273,7 @@ script = [
                 "identifier": 'EVENT_3818_action_queue_sync_40_SUBSCRIPT_visibility_on_0',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -455,5 +455,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

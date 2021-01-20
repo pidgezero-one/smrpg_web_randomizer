@@ -44,7 +44,7 @@ script = [
                 "identifier": 'EVENT_1847_action_queue_async_4_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [30]
-            },
+            }
         ]
     },
     {
@@ -110,7 +110,7 @@ script = [
                 "identifier": 'EVENT_1847_action_queue_async_9_SUBSCRIPT_jmp_if_mario_in_air_6',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_1847_action_queue_async_9_SUBSCRIPT_pause_5']
-            },
+            }
         ]
     },
     {
@@ -136,5 +136,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

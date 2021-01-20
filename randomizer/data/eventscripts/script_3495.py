@@ -25,7 +25,7 @@ script = [
                 "identifier": 'EVENT_3495_action_queue_async_0_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -76,7 +76,7 @@ script = [
                 "identifier": 'EVENT_3495_action_queue_sync_5_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -112,7 +112,7 @@ script = [
                 "identifier": 'EVENT_3495_action_queue_async_10_SUBSCRIPT_visibility_off_0',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -150,7 +150,7 @@ script = [
                 "identifier": 'EVENT_3495_action_queue_async_12_SUBSCRIPT_run_away_transfer_4',
                 "command": 'run_away_transfer',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -198,7 +198,7 @@ script = [
                 "identifier": 'EVENT_3495_action_queue_async_14_SUBSCRIPT_set_solidity_bits_6',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -218,5 +218,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

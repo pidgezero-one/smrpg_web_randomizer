@@ -111,7 +111,7 @@ script = [
                 "identifier": 'EVENT_1904_action_queue_async_11_SUBSCRIPT_floating_on_7',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -155,5 +155,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

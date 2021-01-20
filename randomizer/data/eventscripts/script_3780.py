@@ -64,7 +64,7 @@ script = [
                 "identifier": 'EVENT_3780_action_queue_sync_4_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -106,7 +106,7 @@ script = [
                 "identifier": 'EVENT_3780_action_queue_sync_10_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [6, 254, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -124,7 +124,7 @@ script = [
                 "identifier": 'EVENT_3780_action_queue_sync_12_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [6, 254, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -142,7 +142,7 @@ script = [
                 "identifier": 'EVENT_3780_action_queue_sync_14_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [6, 254, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -160,7 +160,7 @@ script = [
                 "identifier": 'EVENT_3780_action_queue_sync_16_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [6, 254, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -178,7 +178,7 @@ script = [
                 "identifier": 'EVENT_3780_action_queue_sync_18_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [6, 254, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -190,7 +190,7 @@ script = [
                 "identifier": 'EVENT_3780_action_queue_sync_19_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [248, 4, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -213,7 +213,7 @@ script = [
                 "identifier": 'EVENT_3780_action_queue_sync_21_SUBSCRIPT_shadow_off_1',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -227,5 +227,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -127,7 +127,7 @@ script = [
                 "identifier": 'EVENT_1775_action_queue_sync_12_SUBSCRIPT_clear_bit_9',
                 "command": 'clear_bit',
                 "args": [0x7043, 1]
-            },
+            }
         ]
     },
     {
@@ -214,7 +214,7 @@ script = [
                 "identifier": 'EVENT_1775_action_queue_sync_18_SUBSCRIPT_clear_bit_9',
                 "command": 'clear_bit',
                 "args": [0x7043, 2]
-            },
+            }
         ]
     },
     {
@@ -301,7 +301,7 @@ script = [
                 "identifier": 'EVENT_1775_action_queue_sync_24_SUBSCRIPT_clear_bit_9',
                 "command": 'clear_bit',
                 "args": [0x7043, 3]
-            },
+            }
         ]
     },
     {
@@ -378,7 +378,7 @@ script = [
                 "identifier": 'EVENT_1775_action_queue_sync_30_SUBSCRIPT_clear_bit_7',
                 "command": 'clear_bit',
                 "args": [0x7043, 4]
-            },
+            }
         ]
     },
     {
@@ -470,7 +470,7 @@ script = [
                 "identifier": 'EVENT_1775_action_queue_sync_36_SUBSCRIPT_clear_bit_10',
                 "command": 'clear_bit',
                 "args": [0x7043, 5]
-            },
+            }
         ]
     },
     {
@@ -557,7 +557,7 @@ script = [
                 "identifier": 'EVENT_1775_action_queue_sync_42_SUBSCRIPT_clear_bit_9',
                 "command": 'clear_bit',
                 "args": [0x7043, 6]
-            },
+            }
         ]
     },
     {
@@ -654,7 +654,7 @@ script = [
                 "identifier": 'EVENT_1775_action_queue_sync_48_SUBSCRIPT_clear_bit_11',
                 "command": 'clear_bit',
                 "args": [0x7043, 7]
-            },
+            }
         ]
     },
     {
@@ -741,7 +741,7 @@ script = [
                 "identifier": 'EVENT_1775_action_queue_sync_54_SUBSCRIPT_clear_bit_9',
                 "command": 'clear_bit',
                 "args": [0x7044, 0]
-            },
+            }
         ]
     },
     {
@@ -807,7 +807,7 @@ script = [
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_face_east_6',
                 "command": 'face_east',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -821,5 +821,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

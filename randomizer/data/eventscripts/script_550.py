@@ -94,7 +94,7 @@ script = [
                 "identifier": 'EVENT_550_action_queue_sync_9_SUBSCRIPT_object_memory_clear_bit_6',
                 "command": 'object_memory_clear_bit',
                 "args": [0x08, [3, 4]]
-            },
+            }
         ]
     },
     {
@@ -108,5 +108,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

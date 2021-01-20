@@ -34,7 +34,7 @@ script = [
                 "identifier": 'EVENT_513_action_queue_sync_4_SUBSCRIPT_visibility_off_0',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -56,7 +56,7 @@ script = [
                 "identifier": 'EVENT_513_action_queue_sync_5_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [8, 18, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -83,7 +83,7 @@ script = [
                 "identifier": 'EVENT_513_action_queue_sync_6_SUBSCRIPT_visibility_off_3',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -95,7 +95,7 @@ script = [
                 "identifier": 'EVENT_513_action_queue_async_7_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -112,7 +112,7 @@ script = [
                 "identifier": 'EVENT_513_action_queue_async_8_SUBSCRIPT_transfer_to_xyzf_1',
                 "command": 'transfer_to_xyzf',
                 "args": [7, 17, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -120,5 +120,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [3776],
         "subscript": []
-    },
+    }
 ]

@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_1788_action_queue_sync_0_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_1788_action_queue_sync_1_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -39,7 +39,7 @@ script = [
                 "identifier": 'EVENT_1788_action_queue_sync_2_SUBSCRIPT_object_memory_set_bit_1',
                 "command": 'object_memory_set_bit',
                 "args": [0x0b, [3]]
-            },
+            }
         ]
     },
     {
@@ -56,7 +56,7 @@ script = [
                 "identifier": 'EVENT_1788_action_queue_sync_3_SUBSCRIPT_object_memory_set_bit_1',
                 "command": 'object_memory_set_bit',
                 "args": [0x0b, [3]]
-            },
+            }
         ]
     },
     {
@@ -64,5 +64,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

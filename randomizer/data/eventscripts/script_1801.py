@@ -60,7 +60,7 @@ script = [
                 "identifier": 'EVENT_1801_action_queue_async_0_SUBSCRIPT_db_10',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -80,5 +80,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

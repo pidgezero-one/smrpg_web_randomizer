@@ -257,7 +257,7 @@ script = [
                 "identifier": 'EVENT_2061_action_queue_async_2_SUBSCRIPT_pause_47',
                 "command": 'pause',
                 "args": [30]
-            },
+            }
         ]
     },
     {
@@ -277,5 +277,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

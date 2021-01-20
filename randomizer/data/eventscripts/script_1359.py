@@ -31,7 +31,7 @@ script = [
                 "identifier": 'EVENT_1359_action_queue_sync_1_SUBSCRIPT_set_vram_priority_3',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -43,7 +43,7 @@ script = [
                 "identifier": 'EVENT_1359_action_queue_sync_2_SUBSCRIPT_shadow_off_0',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -75,7 +75,7 @@ script = [
                 "identifier": 'EVENT_1359_action_queue_sync_3_SUBSCRIPT_shadow_off_4',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -92,7 +92,7 @@ script = [
                 "identifier": 'EVENT_1359_action_queue_async_4_SUBSCRIPT_shift_north_pixels_1',
                 "command": 'shift_north_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -158,7 +158,7 @@ script = [
                 "identifier": 'EVENT_1359_action_queue_async_14_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [3, 21, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -208,5 +208,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -36,7 +36,7 @@ script = [
                 "identifier": 'EVENT_3209_action_queue_sync_1_SUBSCRIPT_fixed_f_coord_off_4',
                 "command": 'fixed_f_coord_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -53,7 +53,7 @@ script = [
                 "identifier": 'EVENT_3209_action_queue_async_2_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [36]
-            },
+            }
         ]
     },
     {
@@ -67,5 +67,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [16],
         "subscript": []
-    },
+    }
 ]

@@ -43,7 +43,7 @@ script = [
                 "identifier": 'EVENT_1647_action_queue_async_3_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -103,7 +103,7 @@ script = [
                 "identifier": 'EVENT_1647_action_queue_async_12_SUBSCRIPT_jump_to_height_silent_0',
                 "command": 'jump_to_height_silent',
                 "args": [0]
-            },
+            }
         ]
     },
     {
@@ -132,7 +132,7 @@ script = [
                 "identifier": 'EVENT_1647_action_queue_async_15_SUBSCRIPT_face_west_1',
                 "command": 'face_west',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -158,5 +158,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

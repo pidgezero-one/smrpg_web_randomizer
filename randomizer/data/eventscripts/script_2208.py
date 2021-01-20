@@ -91,7 +91,7 @@ script = [
                 "identifier": 'EVENT_2208_action_queue_sync_11_SUBSCRIPT_sequence_looping_on_3',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -108,7 +108,7 @@ script = [
                 "identifier": 'EVENT_2208_action_queue_async_12_SUBSCRIPT_visibility_on_1',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -122,5 +122,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

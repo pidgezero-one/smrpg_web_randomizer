@@ -147,7 +147,7 @@ script = [
                 "identifier": 'EVENT_3220_action_queue_async_2_SUBSCRIPT_ret_25',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -276,7 +276,7 @@ script = [
                 "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_ret_21',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -478,7 +478,7 @@ script = [
                 "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_sequence_playback_off_38',
                 "command": 'sequence_playback_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -510,5 +510,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

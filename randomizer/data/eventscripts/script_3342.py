@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_3342_action_queue_sync_1_SUBSCRIPT_transfer_xyzf_steps_0',
                 "command": 'transfer_xyzf_steps',
                 "args": [0, 0, 8, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -42,5 +42,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

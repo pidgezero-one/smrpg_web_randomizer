@@ -18,5 +18,5 @@ script = [
         "command": 'run_ending_credits',
         "args": [],
         "subscript": []
-    },
+    }
 ]

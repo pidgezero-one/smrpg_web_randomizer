@@ -42,5 +42,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_24_load_600f_15'],
         "subscript": []
-    },
+    }
 ]

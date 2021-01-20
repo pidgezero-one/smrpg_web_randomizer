@@ -76,7 +76,7 @@ script = [
                 "identifier": 'EVENT_3293_action_queue_sync_6_SUBSCRIPT_db_6',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -130,7 +130,7 @@ script = [
                 "identifier": 'EVENT_3293_action_queue_sync_9_SUBSCRIPT_db_6',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
-            },
+            }
         ]
     },
     {
@@ -138,5 +138,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

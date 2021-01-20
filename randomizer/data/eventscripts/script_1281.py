@@ -619,7 +619,7 @@ script = [
                 "identifier": 'EVENT_1281_action_queue_sync_99_SUBSCRIPT_set_vram_priority_3',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -651,7 +651,7 @@ script = [
                 "identifier": 'EVENT_1281_action_queue_sync_100_SUBSCRIPT_shadow_off_4',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -668,7 +668,7 @@ script = [
                 "identifier": 'EVENT_1281_action_queue_async_101_SUBSCRIPT_shift_north_pixels_1',
                 "command": 'shift_north_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -682,5 +682,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1364_freeze_camera_6'],
         "subscript": []
-    },
+    }
 ]

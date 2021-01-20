@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_1754_action_queue_async_7_SUBSCRIPT_jump_to_height_silent_0',
                 "command": 'jump_to_height_silent',
                 "args": [0]
-            },
+            }
         ]
     },
     {
@@ -96,5 +96,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1753_run_event_as_subroutine_3'],
         "subscript": []
-    },
+    }
 ]

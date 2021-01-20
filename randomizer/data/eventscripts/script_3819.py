@@ -70,7 +70,7 @@ script = [
                 "identifier": 'EVENT_3819_action_queue_async_5_SUBSCRIPT_shadow_off_6',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -233,7 +233,7 @@ script = [
                 "identifier": 'EVENT_3819_action_queue_async_17_SUBSCRIPT_set_animation_speed_17',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -253,5 +253,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

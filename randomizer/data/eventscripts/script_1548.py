@@ -25,7 +25,7 @@ script = [
                 "identifier": 'EVENT_1548_action_queue_async_0_SUBSCRIPT_play_sound_3',
                 "command": 'play_sound',
                 "args": [Sounds._085_FLOWER, 4]
-            },
+            }
         ]
     },
     {
@@ -51,5 +51,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

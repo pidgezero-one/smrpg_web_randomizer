@@ -262,7 +262,7 @@ script = [
                 "identifier": 'EVENT_2500_action_queue_sync_37_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -294,7 +294,7 @@ script = [
                 "identifier": 'EVENT_2500_action_queue_async_38_SUBSCRIPT_pause_4',
                 "command": 'pause',
                 "args": [32]
-            },
+            }
         ]
     },
     {
@@ -314,5 +314,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

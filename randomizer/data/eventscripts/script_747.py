@@ -78,5 +78,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_747_jmp_if_bit_set_3'],
         "subscript": []
-    },
+    }
 ]

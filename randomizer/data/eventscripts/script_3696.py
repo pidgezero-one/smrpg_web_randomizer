@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_3696_action_queue_async_2_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [8, 6, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -42,5 +42,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

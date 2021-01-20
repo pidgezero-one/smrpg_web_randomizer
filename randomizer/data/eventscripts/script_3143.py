@@ -54,7 +54,7 @@ script = [
                 "identifier": 'EVENT_3143_start_embedded_action_script_async_4_SUBSCRIPT_run_away_shift_4',
                 "command": 'run_away_shift',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -66,7 +66,7 @@ script = [
                 "identifier": 'EVENT_3143_action_queue_sync_5_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -78,7 +78,7 @@ script = [
                 "identifier": 'EVENT_3143_action_queue_sync_6_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -113,7 +113,7 @@ script = [
                 "identifier": 'EVENT_3143_action_queue_sync_10_SUBSCRIPT_jump_to_height_silent_1',
                 "command": 'jump_to_height_silent',
                 "args": [108]
-            },
+            }
         ]
     },
     {
@@ -335,7 +335,7 @@ script = [
                 "identifier": 'EVENT_3143_start_embedded_action_script_async_41_SUBSCRIPT_run_away_transfer_6',
                 "command": 'run_away_transfer',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -364,7 +364,7 @@ script = [
                 "identifier": 'EVENT_3143_action_queue_sync_44_SUBSCRIPT_set_solidity_bits_1',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -423,7 +423,7 @@ script = [
                 "identifier": 'EVENT_3143_action_queue_sync_52_SUBSCRIPT_clear_solidity_bits_1',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -471,7 +471,7 @@ script = [
                 "identifier": 'EVENT_3143_start_embedded_action_script_async_59_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -488,7 +488,7 @@ script = [
                 "identifier": 'EVENT_3143_start_embedded_action_script_async_60_SUBSCRIPT_object_memory_clear_bit_1',
                 "command": 'object_memory_clear_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -521,7 +521,7 @@ script = [
                 "identifier": 'EVENT_3143_action_queue_async_62_SUBSCRIPT_shadow_on_3',
                 "command": 'shadow_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -529,5 +529,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

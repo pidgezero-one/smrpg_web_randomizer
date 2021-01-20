@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_3351_action_queue_sync_8_SUBSCRIPT_run_away_transfer_0',
                 "command": 'run_away_transfer',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -66,5 +66,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [3376],
         "subscript": []
-    },
+    }
 ]

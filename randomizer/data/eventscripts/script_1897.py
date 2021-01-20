@@ -48,7 +48,7 @@ script = [
                 "identifier": 'EVENT_1897_action_queue_sync_3_SUBSCRIPT_set_solidity_bits_4',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -129,7 +129,7 @@ script = [
                 "identifier": 'EVENT_1897_action_queue_async_8_SUBSCRIPT_play_sound_9',
                 "command": 'play_sound',
                 "args": [Sounds._058_INSERT, 4]
-            },
+            }
         ]
     },
     {
@@ -143,5 +143,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

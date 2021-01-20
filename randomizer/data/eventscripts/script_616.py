@@ -111,7 +111,7 @@ script = [
                 "identifier": 'EVENT_616_action_queue_async_11_SUBSCRIPT_face_northwest_7',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -189,7 +189,7 @@ script = [
                 "identifier": 'EVENT_616_action_queue_async_23_SUBSCRIPT_walk_1_step_southeast_0',
                 "command": 'walk_1_step_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -197,5 +197,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_616_jmp_if_bit_set_1'],
         "subscript": []
-    },
+    }
 ]

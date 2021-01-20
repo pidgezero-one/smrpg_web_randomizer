@@ -12,5 +12,5 @@ script = [
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_7],
         "subscript": []
-    },
+    }
 ]

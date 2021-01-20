@@ -96,7 +96,7 @@ script = [
                 "identifier": 'EVENT_3319_action_queue_sync_11_SUBSCRIPT_set_solidity_bits_4',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_NPCS]]
-            },
+            }
         ]
     },
     {
@@ -134,5 +134,5 @@ script = [
         "command": 'reset_and_choose_game',
         "args": [],
         "subscript": []
-    },
+    }
 ]

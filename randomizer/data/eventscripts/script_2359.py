@@ -80,7 +80,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_sync_10_SUBSCRIPT_shift_z_down_pixels_2',
                 "command": 'shift_z_down_pixels',
                 "args": [11]
-            },
+            }
         ]
     },
     {
@@ -97,7 +97,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_async_11_SUBSCRIPT_shift_z_down_pixels_1',
                 "command": 'shift_z_down_pixels',
                 "args": [11]
-            },
+            }
         ]
     },
     {
@@ -126,7 +126,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_sync_14_SUBSCRIPT_shift_z_down_pixels_1',
                 "command": 'shift_z_down_pixels',
                 "args": [11]
-            },
+            }
         ]
     },
     {
@@ -143,7 +143,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_async_15_SUBSCRIPT_shift_z_down_pixels_1',
                 "command": 'shift_z_down_pixels',
                 "args": [11]
-            },
+            }
         ]
     },
     {
@@ -220,7 +220,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_sync_26_SUBSCRIPT_shift_z_down_pixels_1',
                 "command": 'shift_z_down_pixels',
                 "args": [11]
-            },
+            }
         ]
     },
     {
@@ -237,7 +237,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_sync_27_SUBSCRIPT_shift_z_down_pixels_1',
                 "command": 'shift_z_down_pixels',
                 "args": [11]
-            },
+            }
         ]
     },
     {
@@ -259,7 +259,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_async_28_SUBSCRIPT_overwrite_solidity_2',
                 "command": 'overwrite_solidity',
                 "args": [[]]
-            },
+            }
         ]
     },
     {
@@ -341,7 +341,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_sync_39_SUBSCRIPT_shift_z_down_pixels_2',
                 "command": 'shift_z_down_pixels',
                 "args": [11]
-            },
+            }
         ]
     },
     {
@@ -358,7 +358,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_async_40_SUBSCRIPT_shift_z_down_pixels_1',
                 "command": 'shift_z_down_pixels',
                 "args": [11]
-            },
+            }
         ]
     },
     {
@@ -380,7 +380,7 @@ script = [
                 "identifier": 'EVENT_2359_action_queue_async_41_SUBSCRIPT_overwrite_solidity_2',
                 "command": 'overwrite_solidity',
                 "args": [[]]
-            },
+            }
         ]
     },
     {
@@ -430,5 +430,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

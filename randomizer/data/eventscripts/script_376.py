@@ -49,7 +49,7 @@ script = [
                 "identifier": 'EVENT_376_action_queue_async_4_SUBSCRIPT_set_solidity_bits_3',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_WALK_THROUGH]]
-            },
+            }
         ]
     },
     {
@@ -89,7 +89,7 @@ script = [
                 "identifier": 'EVENT_376_action_queue_async_8_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4]]
-            },
+            }
         ]
     },
     {
@@ -123,7 +123,7 @@ script = [
                 "identifier": 'EVENT_376_action_queue_async_11_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_WALK_THROUGH]]
-            },
+            }
         ]
     },
     {
@@ -135,7 +135,7 @@ script = [
                 "identifier": 'EVENT_376_action_queue_sync_12_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -147,7 +147,7 @@ script = [
                 "identifier": 'EVENT_376_action_queue_async_13_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -155,5 +155,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_262_fade_out_music_to_volume_2'],
         "subscript": []
-    },
+    }
 ]

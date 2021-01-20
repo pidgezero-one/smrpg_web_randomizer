@@ -159,7 +159,7 @@ script = [
                 "identifier": 'EVENT_3372_action_queue_async_4_SUBSCRIPT_reset_properties_25',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -231,7 +231,7 @@ script = [
                 "identifier": 'EVENT_3372_action_queue_sync_10_SUBSCRIPT_set_solidity_bits_6',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
-            },
+            }
         ]
     },
     {
@@ -348,7 +348,7 @@ script = [
                 "identifier": 'EVENT_3372_action_queue_async_11_SUBSCRIPT_jmp_21',
                 "command": 'jmp',
                 "args": ['EVENT_3372_resume_action_script_12']
-            },
+            }
         ]
     },
     {
@@ -466,7 +466,7 @@ script = [
                 "identifier": 'EVENT_3372_action_queue_async_23_SUBSCRIPT_set_animation_speed_8',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -496,7 +496,7 @@ script = [
                 "identifier": 'EVENT_3372_action_queue_async_27_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -510,5 +510,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

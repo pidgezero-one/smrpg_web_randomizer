@@ -103,7 +103,7 @@ script = [
                 "identifier": 'EVENT_3223_action_queue_sync_13_SUBSCRIPT_end_loop_3',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -111,5 +111,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

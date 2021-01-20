@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_1901_action_queue_sync_3_SUBSCRIPT_shadow_off_0',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -70,7 +70,7 @@ script = [
                 "identifier": 'EVENT_1901_action_queue_sync_4_SUBSCRIPT_face_southwest_6',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -122,7 +122,7 @@ script = [
                 "identifier": 'EVENT_1901_action_queue_sync_5_SUBSCRIPT_clear_bit_8',
                 "command": 'clear_bit',
                 "args": [0x7043, 0]
-            },
+            }
         ]
     },
     {
@@ -130,5 +130,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

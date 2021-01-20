@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_552_action_queue_async_1_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -35,5 +35,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

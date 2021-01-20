@@ -123,7 +123,7 @@ script = [
                 "identifier": 'EVENT_2379_action_queue_sync_18_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -131,5 +131,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_2379_pause_0'],
         "subscript": []
-    },
+    }
 ]

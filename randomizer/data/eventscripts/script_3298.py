@@ -35,7 +35,7 @@ script = [
                 "identifier": 'EVENT_3298_action_queue_sync_0_SUBSCRIPT_clear_solidity_bits_5',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -84,7 +84,7 @@ script = [
                 "identifier": 'EVENT_3298_action_queue_async_3_SUBSCRIPT_set_solidity_bits_5',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -92,5 +92,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

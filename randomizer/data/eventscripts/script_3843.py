@@ -108,5 +108,5 @@ script = [
         "command": 'enter_area',
         "args": [Rooms._023_MUSHROOM_KINGDOM_BEFORE_CROCO_OUTSIDE, RadialDirections.NORTHEAST, 2, 102, 2, [_0x68Flags.RUN_ENTRANCE_EVENT]],
         "subscript": []
-    },
+    }
 ]

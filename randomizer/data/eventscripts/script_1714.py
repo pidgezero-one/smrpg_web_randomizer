@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_1714_action_queue_sync_0_SUBSCRIPT_shift_west_pixels_0',
                 "command": 'shift_west_pixels',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -61,7 +61,7 @@ script = [
                 "identifier": 'EVENT_1714_action_queue_async_5_SUBSCRIPT_reset_properties_3',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -155,7 +155,7 @@ script = [
                 "identifier": 'EVENT_1714_action_queue_async_8_SUBSCRIPT_sequence_looping_on_14',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -183,7 +183,7 @@ script = [
                 "identifier": 'EVENT_1714_action_queue_sync_10_SUBSCRIPT_sequence_looping_off_2',
                 "command": 'sequence_looping_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -225,7 +225,7 @@ script = [
                 "identifier": 'EVENT_1714_action_queue_async_11_SUBSCRIPT_sequence_looping_on_6',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -303,7 +303,7 @@ script = [
                 "identifier": 'EVENT_1714_action_queue_sync_13_SUBSCRIPT_visibility_off_12',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -355,7 +355,7 @@ script = [
                 "identifier": 'EVENT_1714_action_queue_async_14_SUBSCRIPT_set_animation_speed_8',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -383,7 +383,7 @@ script = [
                 "identifier": 'EVENT_1714_action_queue_async_16_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -391,5 +391,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

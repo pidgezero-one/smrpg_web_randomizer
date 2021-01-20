@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_2108_action_queue_async_0_SUBSCRIPT_shift_south_pixels_0',
                 "command": 'shift_south_pixels',
                 "args": [7]
-            },
+            }
         ]
     },
     {
@@ -72,7 +72,7 @@ script = [
                 "identifier": 'EVENT_2108_action_queue_async_6_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -135,7 +135,7 @@ script = [
                 "identifier": 'EVENT_2108_action_queue_async_13_SUBSCRIPT_visibility_on_3',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -185,5 +185,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

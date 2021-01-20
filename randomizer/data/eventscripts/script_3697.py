@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_3697_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -62,7 +62,7 @@ script = [
                 "identifier": 'EVENT_3697_action_queue_async_6_SUBSCRIPT_reset_properties_1',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -76,5 +76,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [3697],
         "subscript": []
-    },
+    }
 ]

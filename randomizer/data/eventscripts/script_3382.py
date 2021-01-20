@@ -36,5 +36,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3376_mem_7000_and_const_56'],
         "subscript": []
-    },
+    }
 ]

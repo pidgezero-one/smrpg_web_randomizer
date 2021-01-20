@@ -16,7 +16,7 @@ script = [
                 "identifier": 'EVENT_1557_action_queue_async_1_SUBSCRIPT_visibility_off_0',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -130,7 +130,7 @@ script = [
                 "identifier": 'EVENT_1557_action_queue_async_19_SUBSCRIPT_walk_1_step_west_0',
                 "command": 'walk_1_step_west',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -144,5 +144,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

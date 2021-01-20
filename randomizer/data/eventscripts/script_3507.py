@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_3507_action_queue_async_1_SUBSCRIPT_shift_northwest_steps_1',
                 "command": 'shift_northwest_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -58,7 +58,7 @@ script = [
                 "identifier": 'EVENT_3507_action_queue_async_2_SUBSCRIPT_jump_to_height_5',
                 "command": 'jump_to_height',
                 "args": [64]
-            },
+            }
         ]
     },
     {
@@ -76,7 +76,7 @@ script = [
                 "identifier": 'EVENT_3507_action_queue_async_4_SUBSCRIPT_face_southeast_0',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -145,7 +145,7 @@ script = [
                 "identifier": 'EVENT_3507_action_queue_async_12_SUBSCRIPT_jump_to_height_3',
                 "command": 'jump_to_height',
                 "args": [64]
-            },
+            }
         ]
     },
     {
@@ -187,7 +187,7 @@ script = [
                 "identifier": 'EVENT_3507_action_queue_async_13_SUBSCRIPT_sequence_looping_on_6',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -312,7 +312,7 @@ script = [
                 "identifier": 'EVENT_3507_action_queue_sync_32_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -329,7 +329,7 @@ script = [
                 "identifier": 'EVENT_3507_action_queue_async_33_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -459,7 +459,7 @@ script = [
                 "identifier": 'EVENT_3507_action_queue_async_52_SUBSCRIPT_visibility_off_2',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -486,7 +486,7 @@ script = [
                 "identifier": 'EVENT_3507_action_queue_async_53_SUBSCRIPT_sequence_looping_on_3',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -530,5 +530,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

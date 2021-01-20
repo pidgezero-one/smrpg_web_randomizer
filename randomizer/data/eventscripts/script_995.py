@@ -12,5 +12,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [1738],
         "subscript": []
-    },
+    }
 ]

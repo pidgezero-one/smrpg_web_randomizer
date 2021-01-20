@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_2640_action_queue_sync_1_SUBSCRIPT_shift_north_steps_1',
                 "command": 'shift_north_steps',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -71,5 +71,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

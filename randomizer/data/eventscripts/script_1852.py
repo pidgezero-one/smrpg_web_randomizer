@@ -466,7 +466,7 @@ script = [
                 "identifier": 'EVENT_1852_action_queue_async_66_SUBSCRIPT_face_southwest_12',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -611,7 +611,7 @@ script = [
                 "identifier": 'EVENT_1852_action_queue_async_85_SUBSCRIPT_jmp_if_mario_in_air_5',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_1852_action_queue_async_85_SUBSCRIPT_pause_4']
-            },
+            }
         ]
     },
     {
@@ -654,7 +654,7 @@ script = [
                 "identifier": 'EVENT_1852_action_queue_sync_87_SUBSCRIPT_walk_to_xy_coords_5',
                 "command": 'walk_to_xy_coords',
                 "args": [20, 104]
-            },
+            }
         ]
     },
     {
@@ -681,7 +681,7 @@ script = [
                 "identifier": 'EVENT_1852_action_queue_async_88_SUBSCRIPT_walk_to_xy_coords_3',
                 "command": 'walk_to_xy_coords',
                 "args": [20, 104]
-            },
+            }
         ]
     },
     {
@@ -708,7 +708,7 @@ script = [
                 "identifier": 'EVENT_1852_action_queue_async_89_SUBSCRIPT_set_solidity_bits_3',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -755,7 +755,7 @@ script = [
                 "identifier": 'EVENT_1852_action_queue_async_95_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [40]
-            },
+            }
         ]
     },
     {
@@ -842,7 +842,7 @@ script = [
                 "identifier": 'EVENT_1852_action_queue_sync_106_SUBSCRIPT_end_loop_3',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -914,7 +914,7 @@ script = [
                 "identifier": 'EVENT_1852_action_queue_async_107_SUBSCRIPT_face_southwest_12',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -946,5 +946,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

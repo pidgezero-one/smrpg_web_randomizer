@@ -36,5 +36,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_1909_start_battle_700E_5'],
         "subscript": []
-    },
+    }
 ]

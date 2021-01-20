@@ -317,7 +317,7 @@ script = [
                 "identifier": 'EVENT_3481_start_embedded_action_script_async_47_SUBSCRIPT_end_loop_5',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -337,5 +337,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

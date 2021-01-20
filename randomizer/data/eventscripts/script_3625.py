@@ -853,7 +853,7 @@ script = [
                 "identifier": 'EVENT_3625_action_queue_sync_138_SUBSCRIPT_shift_z_down_steps_3',
                 "command": 'shift_z_down_steps',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -861,5 +861,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

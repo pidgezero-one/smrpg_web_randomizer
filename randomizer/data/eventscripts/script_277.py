@@ -63,7 +63,7 @@ script = [
                 "identifier": 'EVENT_277_action_queue_async_8_SUBSCRIPT_set_short_mem_1',
                 "command": 'set_short_mem',
                 "args": [0x7000, 0x700c]
-            },
+            }
         ]
     },
     {
@@ -130,7 +130,7 @@ script = [
                 "identifier": 'EVENT_277_action_queue_async_14_SUBSCRIPT_end_loop_5',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -173,7 +173,7 @@ script = [
                 "identifier": 'EVENT_277_action_queue_async_16_SUBSCRIPT_end_loop_5',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -216,7 +216,7 @@ script = [
                 "identifier": 'EVENT_277_action_queue_async_18_SUBSCRIPT_end_loop_5',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -259,7 +259,7 @@ script = [
                 "identifier": 'EVENT_277_action_queue_async_20_SUBSCRIPT_end_loop_5',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -281,7 +281,7 @@ script = [
                 "identifier": 'EVENT_277_action_queue_async_21_SUBSCRIPT_face_east_2',
                 "command": 'face_east',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -295,5 +295,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

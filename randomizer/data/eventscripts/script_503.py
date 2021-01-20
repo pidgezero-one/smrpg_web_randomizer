@@ -133,7 +133,7 @@ script = [
                 "identifier": 'EVENT_503_action_queue_sync_13_SUBSCRIPT_walk_to_xy_coords_9',
                 "command": 'walk_to_xy_coords',
                 "args": [8, 64]
-            },
+            }
         ]
     },
     {
@@ -189,5 +189,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

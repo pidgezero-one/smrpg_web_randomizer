@@ -48,5 +48,5 @@ script = [
         "command": 'set_bit',
         "args": [0x7054, 2],
         "subscript": []
-    },
+    }
 ]

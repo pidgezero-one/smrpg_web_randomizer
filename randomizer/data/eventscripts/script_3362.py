@@ -547,7 +547,7 @@ script = [
                 "identifier": 'EVENT_3362_action_queue_async_87_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -601,7 +601,7 @@ script = [
                 "identifier": 'EVENT_3362_action_queue_async_90_SUBSCRIPT_visibility_on_6',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -703,7 +703,7 @@ script = [
                 "identifier": 'EVENT_3362_action_queue_async_101_SUBSCRIPT_visibility_off_6',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -711,5 +711,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

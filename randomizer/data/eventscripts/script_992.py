@@ -126,7 +126,7 @@ script = [
                 "identifier": 'EVENT_992_action_queue_sync_11_SUBSCRIPT_end_loop_10',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -168,7 +168,7 @@ script = [
                 "identifier": 'EVENT_992_action_queue_sync_12_SUBSCRIPT_reset_properties_6',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -236,7 +236,7 @@ script = [
                 "identifier": 'EVENT_992_action_queue_sync_14_SUBSCRIPT_visibility_off_10',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -268,5 +268,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [130],
         "subscript": []
-    },
+    }
 ]

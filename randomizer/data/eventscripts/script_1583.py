@@ -76,7 +76,7 @@ script = [
                 "identifier": 'EVENT_1583_action_queue_sync_6_SUBSCRIPT_sequence_looping_off_6',
                 "command": 'sequence_looping_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -198,7 +198,7 @@ script = [
                 "identifier": 'EVENT_1583_action_queue_async_7_SUBSCRIPT_jmp_if_mario_in_air_22',
                 "command": 'jmp_if_mario_in_air',
                 "args": ['EVENT_1583_action_queue_async_7_SUBSCRIPT_pause_21']
-            },
+            }
         ]
     },
     {
@@ -206,5 +206,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

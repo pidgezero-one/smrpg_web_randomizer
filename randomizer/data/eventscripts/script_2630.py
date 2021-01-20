@@ -172,7 +172,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_async_27_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -719,7 +719,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_async_108_SUBSCRIPT_set_sprite_sequence_11',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -772,7 +772,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_async_110_SUBSCRIPT_set_sprite_sequence_7',
                 "command": 'set_sprite_sequence',
                 "args": [20, inc_sprite=6, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1096,7 +1096,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_async_153_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1174,7 +1174,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_async_155_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
                 "args": [20, inc_sprite=6, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1650,7 +1650,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_sync_225_SUBSCRIPT_set_sprite_sequence_10',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -2556,7 +2556,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_sync_365_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
                 "args": [20, inc_sprite=6, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -3203,7 +3203,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_async_471_SUBSCRIPT_play_sound_1',
                 "command": 'play_sound',
                 "args": [Sounds._021_RUMBLING, 4]
-            },
+            }
         ]
     },
     {
@@ -3227,7 +3227,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_sync_474_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -3280,7 +3280,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_async_481_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -3309,7 +3309,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_async_484_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [10, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -3327,7 +3327,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_sync_486_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -3339,7 +3339,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_sync_487_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -3453,7 +3453,7 @@ script = [
                 "identifier": 'EVENT_2630_action_queue_sync_505_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -3611,5 +3611,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_2630_store_frog_coin_amount_7000_11'],
         "subscript": []
-    },
+    }
 ]

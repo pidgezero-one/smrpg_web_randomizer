@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_3204_action_queue_sync_2_SUBSCRIPT_sequence_playback_on_2',
                 "command": 'sequence_playback_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -59,7 +59,7 @@ script = [
                 "identifier": 'EVENT_3204_action_queue_sync_3_SUBSCRIPT_sequence_playback_on_3',
                 "command": 'sequence_playback_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -86,7 +86,7 @@ script = [
                 "identifier": 'EVENT_3204_action_queue_sync_4_SUBSCRIPT_sequence_playback_on_3',
                 "command": 'sequence_playback_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -113,7 +113,7 @@ script = [
                 "identifier": 'EVENT_3204_action_queue_async_5_SUBSCRIPT_sequence_playback_on_3',
                 "command": 'sequence_playback_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -121,5 +121,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [15],
         "subscript": []
-    },
+    }
 ]

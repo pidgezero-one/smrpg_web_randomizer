@@ -162,7 +162,7 @@ script = [
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_shadow_on_28',
                 "command": 'shadow_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -200,5 +200,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

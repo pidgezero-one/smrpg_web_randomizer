@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_997_action_queue_async_2_SUBSCRIPT_shift_north_steps_2',
                 "command": 'shift_north_steps',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -99,7 +99,7 @@ script = [
                 "identifier": 'EVENT_997_action_queue_sync_3_SUBSCRIPT_visibility_off_11',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -116,7 +116,7 @@ script = [
                 "identifier": 'EVENT_997_action_queue_sync_4_SUBSCRIPT_shift_northeast_steps_1',
                 "command": 'shift_northeast_steps',
                 "args": [20]
-            },
+            }
         ]
     },
     {
@@ -144,7 +144,7 @@ script = [
                 "identifier": 'EVENT_997_action_queue_sync_6_SUBSCRIPT_shift_southwest_steps_2',
                 "command": 'shift_southwest_steps',
                 "args": [5]
-            },
+            }
         ]
     },
     {
@@ -166,7 +166,7 @@ script = [
                 "identifier": 'EVENT_997_action_queue_sync_7_SUBSCRIPT_shift_southeast_steps_2',
                 "command": 'shift_southeast_steps',
                 "args": [9]
-            },
+            }
         ]
     },
     {
@@ -188,7 +188,7 @@ script = [
                 "identifier": 'EVENT_997_action_queue_sync_8_SUBSCRIPT_face_southeast_2',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -235,7 +235,7 @@ script = [
                 "identifier": 'EVENT_997_action_queue_sync_9_SUBSCRIPT_face_southwest_7',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -282,7 +282,7 @@ script = [
                 "identifier": 'EVENT_997_action_queue_sync_10_SUBSCRIPT_face_southwest_7',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -308,5 +308,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [146],
         "subscript": []
-    },
+    }
 ]

@@ -99,7 +99,7 @@ script = [
                 "identifier": 'EVENT_1644_action_queue_async_14_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -149,5 +149,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

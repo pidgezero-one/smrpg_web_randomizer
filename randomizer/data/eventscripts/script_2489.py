@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_2489_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -50,7 +50,7 @@ script = [
                 "identifier": 'EVENT_2489_action_queue_sync_4_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -67,7 +67,7 @@ script = [
                 "identifier": 'EVENT_2489_action_queue_sync_5_SUBSCRIPT_shift_south_pixels_1',
                 "command": 'shift_south_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -84,7 +84,7 @@ script = [
                 "identifier": 'EVENT_2489_action_queue_sync_6_SUBSCRIPT_shift_south_pixels_1',
                 "command": 'shift_south_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -101,7 +101,7 @@ script = [
                 "identifier": 'EVENT_2489_action_queue_sync_7_SUBSCRIPT_shift_south_pixels_1',
                 "command": 'shift_south_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -118,7 +118,7 @@ script = [
                 "identifier": 'EVENT_2489_action_queue_sync_8_SUBSCRIPT_shift_south_pixels_1',
                 "command": 'shift_south_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -135,7 +135,7 @@ script = [
                 "identifier": 'EVENT_2489_action_queue_async_9_SUBSCRIPT_shift_south_pixels_1',
                 "command": 'shift_south_pixels',
                 "args": [3]
-            },
+            }
         ]
     },
     {
@@ -168,7 +168,7 @@ script = [
                 "identifier": 'EVENT_2489_action_queue_async_11_SUBSCRIPT_play_sound_3',
                 "command": 'play_sound',
                 "args": [Sounds._058_INSERT, 4]
-            },
+            }
         ]
     },
     {
@@ -182,5 +182,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

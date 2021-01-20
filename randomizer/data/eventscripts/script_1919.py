@@ -43,7 +43,7 @@ script = [
                 "identifier": 'EVENT_1919_action_queue_async_3_SUBSCRIPT_shift_northwest_steps_3',
                 "command": 'shift_northwest_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -71,7 +71,7 @@ script = [
                 "identifier": 'EVENT_1919_action_queue_sync_5_SUBSCRIPT_object_memory_clear_bit_2',
                 "command": 'object_memory_clear_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -104,7 +104,7 @@ script = [
                 "identifier": 'EVENT_1919_action_queue_async_7_SUBSCRIPT_shift_southeast_steps_3',
                 "command": 'shift_southeast_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -132,7 +132,7 @@ script = [
                 "identifier": 'EVENT_1919_action_queue_sync_9_SUBSCRIPT_object_memory_clear_bit_2',
                 "command": 'object_memory_clear_bit',
                 "args": [0x30, [4]]
-            },
+            }
         ]
     },
     {
@@ -170,5 +170,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

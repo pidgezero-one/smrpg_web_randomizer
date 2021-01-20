@@ -64,7 +64,7 @@ script = [
                 "identifier": 'EVENT_466_action_queue_sync_9_SUBSCRIPT_face_northwest_0',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -96,7 +96,7 @@ script = [
                 "identifier": 'EVENT_466_start_embedded_action_script_async_10_SUBSCRIPT_clear_solidity_bits_4',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -308,5 +308,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_466_pause_39'],
         "subscript": []
-    },
+    }
 ]

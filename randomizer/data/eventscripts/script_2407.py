@@ -114,7 +114,7 @@ script = [
                 "identifier": 'EVENT_2407_action_queue_sync_14_SUBSCRIPT_face_southwest_4',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -161,7 +161,7 @@ script = [
                 "identifier": 'EVENT_2407_action_queue_async_15_SUBSCRIPT_set_vram_priority_7',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES]
-            },
+            }
         ]
     },
     {
@@ -178,7 +178,7 @@ script = [
                 "identifier": 'EVENT_2407_action_queue_sync_16_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -240,7 +240,7 @@ script = [
                 "identifier": 'EVENT_2407_action_queue_async_22_SUBSCRIPT_visibility_off_4',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -299,7 +299,7 @@ script = [
                 "identifier": 'EVENT_2407_action_queue_async_30_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -367,5 +367,5 @@ script = [
         "command": 'open_location',
         "args": [Locations._031_STAR_HILL, [6, 7]],
         "subscript": []
-    },
+    }
 ]

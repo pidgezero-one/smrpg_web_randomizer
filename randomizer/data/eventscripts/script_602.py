@@ -349,7 +349,7 @@ script = [
                 "identifier": 'EVENT_602_action_queue_async_44_SUBSCRIPT_walk_1_step_northeast_15',
                 "command": 'walk_1_step_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -391,7 +391,7 @@ script = [
                 "identifier": 'EVENT_602_action_queue_sync_45_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -419,7 +419,7 @@ script = [
                 "identifier": 'EVENT_602_action_queue_sync_47_SUBSCRIPT_shift_southeast_pixels_2',
                 "command": 'shift_southeast_pixels',
                 "args": [12]
-            },
+            }
         ]
     },
     {
@@ -603,7 +603,7 @@ script = [
                 "identifier": 'EVENT_602_action_queue_sync_75_SUBSCRIPT_face_southeast_2',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -645,7 +645,7 @@ script = [
                 "identifier": 'EVENT_602_start_embedded_action_script_async_76_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -716,7 +716,7 @@ script = [
                 "identifier": 'EVENT_602_start_embedded_action_script_async_81_SUBSCRIPT_set_animation_speed_7',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -782,7 +782,7 @@ script = [
                 "identifier": 'EVENT_602_action_queue_async_86_SUBSCRIPT_shift_southeast_pixels_6',
                 "command": 'shift_southeast_pixels',
                 "args": [12]
-            },
+            }
         ]
     },
     {
@@ -1197,7 +1197,7 @@ script = [
                 "identifier": 'EVENT_602_action_queue_async_145_SUBSCRIPT_sequence_looping_on_11',
                 "command": 'sequence_looping_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1307,5 +1307,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

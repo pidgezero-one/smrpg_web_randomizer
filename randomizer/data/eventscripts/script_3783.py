@@ -28,7 +28,7 @@ script = [
                 "identifier": 'EVENT_3783_action_queue_sync_3_SUBSCRIPT_shadow_off_0',
                 "command": 'shadow_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -65,7 +65,7 @@ script = [
                 "identifier": 'EVENT_3783_action_queue_sync_4_SUBSCRIPT_floating_on_5',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -85,5 +85,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

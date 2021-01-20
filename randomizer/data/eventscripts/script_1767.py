@@ -50,7 +50,7 @@ script = [
                 "identifier": 'EVENT_1767_action_queue_async_5_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -127,7 +127,7 @@ script = [
                 "identifier": 'EVENT_1767_action_queue_async_6_SUBSCRIPT_pause_13',
                 "command": 'pause',
                 "args": [55]
-            },
+            }
         ]
     },
     {
@@ -159,7 +159,7 @@ script = [
                 "identifier": 'EVENT_1767_action_queue_sync_7_SUBSCRIPT_jmp_4',
                 "command": 'jmp',
                 "args": ['EVENT_1767_action_queue_sync_7_SUBSCRIPT_pause_0']
-            },
+            }
         ]
     },
     {
@@ -167,5 +167,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

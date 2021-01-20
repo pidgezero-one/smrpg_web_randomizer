@@ -54,7 +54,7 @@ script = [
                 "identifier": 'EVENT_2395_action_queue_sync_4_SUBSCRIPT_shirt_to_xy_coords_4',
                 "command": 'shirt_to_xy_coords',
                 "args": [0, 0]
-            },
+            }
         ]
     },
     {
@@ -76,7 +76,7 @@ script = [
                 "identifier": 'EVENT_2395_action_queue_sync_5_SUBSCRIPT_ret_2',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -132,5 +132,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -21,7 +21,7 @@ script = [
                 "identifier": 'EVENT_2068_action_queue_sync_1_SUBSCRIPT_face_southwest_1',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -48,7 +48,7 @@ script = [
                 "identifier": 'EVENT_2068_action_queue_async_2_SUBSCRIPT_face_northeast_3',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -335,7 +335,7 @@ script = [
                 "identifier": 'EVENT_2068_action_queue_sync_43_SUBSCRIPT_pause_7',
                 "command": 'pause',
                 "args": [45]
-            },
+            }
         ]
     },
     {
@@ -397,7 +397,7 @@ script = [
                 "identifier": 'EVENT_2068_action_queue_async_44_SUBSCRIPT_pause_10',
                 "command": 'pause',
                 "args": [30]
-            },
+            }
         ]
     },
     {
@@ -535,7 +535,7 @@ script = [
                 "identifier": 'EVENT_2068_action_queue_sync_61_SUBSCRIPT_shift_southwest_steps_6',
                 "command": 'shift_southwest_steps',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -587,7 +587,7 @@ script = [
                 "identifier": 'EVENT_2068_action_queue_async_62_SUBSCRIPT_set_animation_speed_8',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -844,7 +844,7 @@ script = [
                 "identifier": 'EVENT_2068_action_queue_async_78_SUBSCRIPT_face_southwest_31',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -887,7 +887,7 @@ script = [
                 "identifier": 'EVENT_2068_action_queue_sync_80_SUBSCRIPT_shadow_on_5',
                 "command": 'shadow_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -914,7 +914,7 @@ script = [
                 "identifier": 'EVENT_2068_action_queue_async_81_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1018,5 +1018,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

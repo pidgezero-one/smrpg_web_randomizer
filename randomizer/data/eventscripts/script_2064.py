@@ -25,7 +25,7 @@ script = [
                 "identifier": 'EVENT_2064_action_queue_sync_0_SUBSCRIPT_shift_north_pixels_3',
                 "command": 'shift_north_pixels',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -65,7 +65,7 @@ script = [
                 "identifier": 'EVENT_2064_action_queue_async_4_SUBSCRIPT_visibility_on_2',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -105,7 +105,7 @@ script = [
                 "identifier": 'EVENT_2064_action_queue_async_8_SUBSCRIPT_visibility_on_2',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -139,7 +139,7 @@ script = [
                 "identifier": 'EVENT_2064_action_queue_sync_11_SUBSCRIPT_visibility_on_2',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -161,7 +161,7 @@ script = [
                 "identifier": 'EVENT_2064_action_queue_async_12_SUBSCRIPT_visibility_on_2',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -200,7 +200,7 @@ script = [
                 "identifier": 'EVENT_2064_action_queue_sync_15_SUBSCRIPT_object_memory_clear_bit_3',
                 "command": 'object_memory_clear_bit',
                 "args": [0x08, [3, 4]]
-            },
+            }
         ]
     },
     {
@@ -232,7 +232,7 @@ script = [
                 "identifier": 'EVENT_2064_action_queue_async_16_SUBSCRIPT_object_memory_clear_bit_4',
                 "command": 'object_memory_clear_bit',
                 "args": [0x08, [3, 4]]
-            },
+            }
         ]
     },
     {
@@ -258,5 +258,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

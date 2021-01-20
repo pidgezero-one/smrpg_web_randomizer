@@ -38,7 +38,7 @@ script = [
                 "identifier": 'EVENT_1651_action_queue_async_3_SUBSCRIPT_transfer_xyzf_steps_2',
                 "command": 'transfer_xyzf_steps',
                 "args": [0, 0, 20, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -71,7 +71,7 @@ script = [
                 "identifier": 'EVENT_1651_action_queue_sync_5_SUBSCRIPT_visibility_on_3',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -108,7 +108,7 @@ script = [
                 "identifier": 'EVENT_1651_action_queue_async_6_SUBSCRIPT_set_animation_speed_5',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -141,7 +141,7 @@ script = [
                 "identifier": 'EVENT_1651_action_queue_async_8_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -197,7 +197,7 @@ script = [
                 "identifier": 'EVENT_1651_action_queue_async_13_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -211,5 +211,5 @@ script = [
         "command": 'run_dialog',
         "args": [1106, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
         "subscript": []
-    },
+    }
 ]

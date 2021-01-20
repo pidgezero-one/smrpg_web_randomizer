@@ -32,7 +32,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_sync_2_SUBSCRIPT_face_northeast_2',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -44,7 +44,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_sync_3_SUBSCRIPT_walk_to_xy_coords_0',
                 "command": 'walk_to_xy_coords',
                 "args": [1, 75]
-            },
+            }
         ]
     },
     {
@@ -199,7 +199,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_sync_27_SUBSCRIPT_shift_z_down_steps_1',
                 "command": 'shift_z_down_steps',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -216,7 +216,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_sync_28_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -660,7 +660,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_async_101_SUBSCRIPT_shift_z_up_pixels_0',
                 "command": 'shift_z_up_pixels',
                 "args": [7]
-            },
+            }
         ]
     },
     {
@@ -690,7 +690,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_async_105_SUBSCRIPT_shift_z_down_pixels_0',
                 "command": 'shift_z_down_pixels',
                 "args": [14]
-            },
+            }
         ]
     },
     {
@@ -720,7 +720,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_async_109_SUBSCRIPT_shift_z_down_pixels_0',
                 "command": 'shift_z_down_pixels',
                 "args": [7]
-            },
+            }
         ]
     },
     {
@@ -780,7 +780,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_sync_118_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
-            },
+            }
         ]
     },
     {
@@ -822,7 +822,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_sync_119_SUBSCRIPT_end_loop_6',
                 "command": 'end_loop',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -884,7 +884,7 @@ script = [
                 "identifier": 'EVENT_3352_action_queue_sync_120_SUBSCRIPT_set_bit_10',
                 "command": 'set_bit',
                 "args": [0x7044, 5]
-            },
+            }
         ]
     },
     {
@@ -934,5 +934,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

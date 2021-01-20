@@ -26,7 +26,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_sync_1_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -44,7 +44,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_async_3_SUBSCRIPT_shift_north_steps_0',
                 "command": 'shift_north_steps',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -56,7 +56,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_sync_4_SUBSCRIPT_face_southeast_0',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -128,7 +128,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_sync_5_SUBSCRIPT_set_bit_12',
                 "command": 'set_bit',
                 "args": [0x7044, 7]
-            },
+            }
         ]
     },
     {
@@ -221,7 +221,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_sync_7_SUBSCRIPT_set_bit_15',
                 "command": 'set_bit',
                 "args": [0x7044, 7]
-            },
+            }
         ]
     },
     {
@@ -239,7 +239,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_sync_9_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -326,7 +326,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_sync_10_SUBSCRIPT_set_bit_15',
                 "command": 'set_bit',
                 "args": [0x7044, 7]
-            },
+            }
         ]
     },
     {
@@ -444,7 +444,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_sync_12_SUBSCRIPT_set_bit_20',
                 "command": 'set_bit',
                 "args": [0x7044, 7]
-            },
+            }
         ]
     },
     {
@@ -547,7 +547,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_sync_14_SUBSCRIPT_set_bit_17',
                 "command": 'set_bit',
                 "args": [0x7043, 4]
-            },
+            }
         ]
     },
     {
@@ -594,7 +594,7 @@ script = [
                 "identifier": 'EVENT_3339_action_queue_async_20_SUBSCRIPT_walk_1_step_northwest_1',
                 "command": 'walk_1_step_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -734,5 +734,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

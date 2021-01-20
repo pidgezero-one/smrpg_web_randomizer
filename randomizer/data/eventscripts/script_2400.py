@@ -44,7 +44,7 @@ script = [
                 "identifier": 'EVENT_2400_action_queue_async_4_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [14, 26, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -134,7 +134,7 @@ script = [
                 "identifier": 'EVENT_2400_action_queue_async_13_SUBSCRIPT_bpl_26_27_28_6',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -182,7 +182,7 @@ script = [
                 "identifier": 'EVENT_2400_action_queue_async_15_SUBSCRIPT_bpl_26_27_28_6',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -236,7 +236,7 @@ script = [
                 "identifier": 'EVENT_2400_action_queue_async_18_SUBSCRIPT_bpl_26_27_28_6',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -262,5 +262,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

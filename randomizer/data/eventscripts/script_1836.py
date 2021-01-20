@@ -57,7 +57,7 @@ script = [
                 "identifier": 'EVENT_1836_action_queue_async_7_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -71,5 +71,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [1829],
         "subscript": []
-    },
+    }
 ]

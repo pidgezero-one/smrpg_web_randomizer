@@ -90,7 +90,7 @@ script = [
                 "identifier": 'EVENT_2403_action_queue_sync_5_SUBSCRIPT_set_sprite_sequence_10',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -130,7 +130,7 @@ script = [
                 "identifier": 'EVENT_2403_action_queue_async_9_SUBSCRIPT_shift_northwest_steps_2',
                 "command": 'shift_northwest_steps',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -199,7 +199,7 @@ script = [
                 "identifier": 'EVENT_2403_action_queue_sync_12_SUBSCRIPT_pause_9',
                 "command": 'pause',
                 "args": [8]
-            },
+            }
         ]
     },
     {
@@ -255,5 +255,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

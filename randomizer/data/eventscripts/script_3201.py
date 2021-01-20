@@ -116,7 +116,7 @@ script = [
                 "identifier": 'EVENT_3201_action_queue_async_11_SUBSCRIPT_ret_8',
                 "command": 'ret',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -157,7 +157,7 @@ script = [
                 "identifier": 'EVENT_3201_action_queue_sync_16_SUBSCRIPT_jmp_1',
                 "command": 'jmp',
                 "args": ['EVENT_3192_action_queue_sync_4_SUBSCRIPT_object_memory_set_bit_0']
-            },
+            }
         ]
     },
     {
@@ -186,7 +186,7 @@ script = [
                 "identifier": 'EVENT_3201_action_queue_sync_19_SUBSCRIPT_jmp_1',
                 "command": 'jmp',
                 "args": ['EVENT_3193_action_queue_sync_4_SUBSCRIPT_object_memory_set_bit_0']
-            },
+            }
         ]
     },
     {
@@ -215,7 +215,7 @@ script = [
                 "identifier": 'EVENT_3201_action_queue_sync_22_SUBSCRIPT_jmp_1',
                 "command": 'jmp',
                 "args": ['EVENT_3194_action_queue_sync_4_SUBSCRIPT_pause_0']
-            },
+            }
         ]
     },
     {
@@ -272,7 +272,7 @@ script = [
                 "identifier": 'EVENT_3201_action_queue_async_23_SUBSCRIPT_reset_properties_9',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -364,5 +364,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

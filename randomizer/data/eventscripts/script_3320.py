@@ -92,7 +92,7 @@ script = [
                 "identifier": 'EVENT_3320_action_queue_sync_12_SUBSCRIPT_shift_south_steps_2',
                 "command": 'shift_south_steps',
                 "args": [17]
-            },
+            }
         ]
     },
     {
@@ -109,7 +109,7 @@ script = [
                 "identifier": 'EVENT_3320_action_queue_async_13_SUBSCRIPT_shift_south_steps_1',
                 "command": 'shift_south_steps',
                 "args": [9]
-            },
+            }
         ]
     },
     {
@@ -135,5 +135,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [15],
         "subscript": []
-    },
+    }
 ]

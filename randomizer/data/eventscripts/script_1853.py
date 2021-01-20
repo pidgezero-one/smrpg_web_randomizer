@@ -88,7 +88,7 @@ script = [
                 "identifier": 'EVENT_1853_action_queue_sync_13_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [20, 104, 18, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -116,7 +116,7 @@ script = [
                 "identifier": 'EVENT_1853_action_queue_async_15_SUBSCRIPT_floating_on_2',
                 "command": 'floating_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -203,7 +203,7 @@ script = [
                 "identifier": 'EVENT_1853_action_queue_async_16_SUBSCRIPT_face_southwest_15',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -211,5 +211,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

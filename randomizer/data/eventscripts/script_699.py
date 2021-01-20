@@ -70,7 +70,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_5_SUBSCRIPT_face_northeast_6',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -127,7 +127,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -151,7 +151,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_9_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -219,7 +219,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_16_SUBSCRIPT_transfer_to_xyzf_4',
                 "command": 'transfer_to_xyzf',
                 "args": [21, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -261,7 +261,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_22_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -291,7 +291,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_26_SUBSCRIPT_face_northwest_0',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -313,7 +313,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_27_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
                 "args": [16, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -360,7 +360,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_28_SUBSCRIPT_face_southeast_7',
                 "command": 'face_southeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -434,7 +434,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_31_SUBSCRIPT_reset_properties_10',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -464,7 +464,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_35_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -488,7 +488,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_38_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -512,7 +512,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_41_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [9, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -524,7 +524,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_42_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [25, inc_sprite=1, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -564,7 +564,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_46_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [21, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -586,7 +586,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_47_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [22, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -610,7 +610,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_50_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -640,7 +640,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_54_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -652,7 +652,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_55_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -682,7 +682,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_59_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -704,7 +704,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_60_SUBSCRIPT_reset_properties_2',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -726,7 +726,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_61_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
                 "args": [16, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -773,7 +773,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_62_SUBSCRIPT_face_northeast_7',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -809,7 +809,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_67_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -821,7 +821,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_68_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -845,7 +845,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_71_SUBSCRIPT_face_northwest_0',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -863,7 +863,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_73_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -887,7 +887,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_76_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [9, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -899,7 +899,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_77_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [25, inc_sprite=1, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -911,7 +911,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_78_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [15, inc_sprite=1, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -951,7 +951,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_82_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [21, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -973,7 +973,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_83_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [22, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -995,7 +995,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_84_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [23, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -1037,7 +1037,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_90_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1049,7 +1049,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_91_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -1061,7 +1061,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_92_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [7, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -1117,7 +1117,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_97_SUBSCRIPT_set_solidity_bits_4',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -1159,7 +1159,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_98_SUBSCRIPT_set_solidity_bits_6',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -1191,7 +1191,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_99_SUBSCRIPT_set_solidity_bits_4',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -1233,7 +1233,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_100_SUBSCRIPT_set_solidity_bits_6',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            },
+            }
         ]
     },
     {
@@ -1335,7 +1335,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_101_SUBSCRIPT_reset_properties_18',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1371,7 +1371,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_106_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1383,7 +1383,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_107_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [17, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1395,7 +1395,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_108_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1407,7 +1407,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_109_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [18, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -1437,7 +1437,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_113_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1449,7 +1449,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_114_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1479,7 +1479,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_118_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1497,7 +1497,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_120_SUBSCRIPT_face_northwest_0',
                 "command": 'face_northwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1515,7 +1515,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_122_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1539,7 +1539,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_125_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [9, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1551,7 +1551,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_126_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [25, inc_sprite=1, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -1563,7 +1563,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_127_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [15, inc_sprite=1, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1590,7 +1590,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_128_SUBSCRIPT_reset_properties_3',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1636,7 +1636,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_133_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [21, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -1658,7 +1658,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_134_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [22, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -1680,7 +1680,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_135_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [23, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -1702,7 +1702,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_136_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [24, 117, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -1768,7 +1768,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_141_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -1810,7 +1810,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_142_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -1852,7 +1852,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_143_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -1894,7 +1894,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_144_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -1946,7 +1946,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_145_SUBSCRIPT_face_northeast_8',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1969,7 +1969,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_147_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -1986,7 +1986,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_148_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -2003,7 +2003,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_149_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -2020,7 +2020,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_150_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -2032,7 +2032,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_sync_151_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [16, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -2068,7 +2068,7 @@ script = [
                 "identifier": 'EVENT_699_action_queue_async_156_SUBSCRIPT_face_south_0',
                 "command": 'face_south',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -2082,5 +2082,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

@@ -27,7 +27,7 @@ script = [
                 "identifier": 'EVENT_2291_action_queue_sync_2_SUBSCRIPT_bounce_to_xy_with_height_1',
                 "command": 'bounce_to_xy_with_height',
                 "args": [0, 2, 0]
-            },
+            }
         ]
     },
     {
@@ -64,7 +64,7 @@ script = [
                 "identifier": 'EVENT_2291_action_queue_async_3_SUBSCRIPT_sequence_playback_off_5',
                 "command": 'sequence_playback_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -99,7 +99,7 @@ script = [
                 "identifier": 'EVENT_2291_action_queue_sync_7_SUBSCRIPT_shift_east_steps_1',
                 "command": 'shift_east_steps',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -116,7 +116,7 @@ script = [
                 "identifier": 'EVENT_2291_action_queue_sync_8_SUBSCRIPT_shift_west_steps_1',
                 "command": 'shift_west_steps',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -138,7 +138,7 @@ script = [
                 "identifier": 'EVENT_2291_action_queue_async_9_SUBSCRIPT_shift_east_steps_2',
                 "command": 'shift_east_steps',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -158,5 +158,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [147],
         "subscript": []
-    },
+    }
 ]

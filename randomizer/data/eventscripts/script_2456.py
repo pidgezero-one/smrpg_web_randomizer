@@ -86,7 +86,7 @@ script = [
                 "identifier": 'EVENT_2456_action_queue_async_11_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
+            }
         ]
     },
     {
@@ -240,7 +240,7 @@ script = [
                 "identifier": 'EVENT_2456_action_queue_async_14_SUBSCRIPT_play_sound_26',
                 "command": 'play_sound',
                 "args": [Sounds._021_RUMBLING, 6]
-            },
+            }
         ]
     },
     {
@@ -296,5 +296,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

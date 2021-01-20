@@ -141,7 +141,7 @@ script = [
                 "identifier": 'EVENT_3135_action_queue_async_21_SUBSCRIPT_face_east_1',
                 "command": 'face_east',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -269,7 +269,7 @@ script = [
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_visibility_off_22',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -326,7 +326,7 @@ script = [
                 "identifier": 'EVENT_3135_action_queue_sync_24_SUBSCRIPT_set_bit_9',
                 "command": 'set_bit',
                 "args": [0x7043, 3]
-            },
+            }
         ]
     },
     {
@@ -376,5 +376,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

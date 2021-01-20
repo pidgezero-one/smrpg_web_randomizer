@@ -44,7 +44,7 @@ script = [
                 "identifier": 'EVENT_3820_action_queue_async_4_SUBSCRIPT_db_2',
                 "command": 'db',
                 "args": [0x99]
-            },
+            }
         ]
     },
     {
@@ -78,7 +78,7 @@ script = [
                 "identifier": 'EVENT_3820_action_queue_async_7_SUBSCRIPT_face_northeast_2',
                 "command": 'face_northeast',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -116,7 +116,7 @@ script = [
                 "identifier": 'EVENT_3820_start_embedded_action_script_async_9_SUBSCRIPT_face_southwest_4',
                 "command": 'face_southwest',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -167,7 +167,7 @@ script = [
                 "identifier": 'EVENT_3820_action_queue_sync_14_SUBSCRIPT_transfer_to_xyzf_3',
                 "command": 'transfer_to_xyzf',
                 "args": [13, 91, 0, RadialDirections.EAST]
-            },
+            }
         ]
     },
     {
@@ -195,7 +195,7 @@ script = [
                 "identifier": 'EVENT_3820_action_queue_sync_16_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            },
+            }
         ]
     },
     {
@@ -212,7 +212,7 @@ script = [
                 "identifier": 'EVENT_3820_action_queue_async_17_SUBSCRIPT_shift_z_down_steps_1',
                 "command": 'shift_z_down_steps',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -244,5 +244,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_3818_clear_bit_64'],
         "subscript": []
-    },
+    }
 ]

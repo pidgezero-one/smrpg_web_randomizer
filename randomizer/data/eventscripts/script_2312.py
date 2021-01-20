@@ -69,7 +69,7 @@ script = [
                 "identifier": 'EVENT_2312_action_queue_async_9_SUBSCRIPT_walk_to_xy_coords_1',
                 "command": 'walk_to_xy_coords',
                 "args": [3, 94]
-            },
+            }
         ]
     },
     {
@@ -163,7 +163,7 @@ script = [
                 "identifier": 'EVENT_2312_action_queue_sync_17_SUBSCRIPT_visibility_off_8',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -222,7 +222,7 @@ script = [
                 "identifier": 'EVENT_2312_action_queue_async_25_SUBSCRIPT_walk_to_xy_coords_1',
                 "command": 'walk_to_xy_coords',
                 "args": [4, 85]
-            },
+            }
         ]
     },
     {
@@ -311,7 +311,7 @@ script = [
                 "identifier": 'EVENT_2312_action_queue_sync_33_SUBSCRIPT_visibility_off_7',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -370,7 +370,7 @@ script = [
                 "identifier": 'EVENT_2312_action_queue_async_41_SUBSCRIPT_walk_to_xy_coords_1',
                 "command": 'walk_to_xy_coords',
                 "args": [8, 85]
-            },
+            }
         ]
     },
     {
@@ -459,7 +459,7 @@ script = [
                 "identifier": 'EVENT_2312_action_queue_sync_49_SUBSCRIPT_visibility_off_7',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -518,7 +518,7 @@ script = [
                 "identifier": 'EVENT_2312_action_queue_async_57_SUBSCRIPT_walk_to_xy_coords_1',
                 "command": 'walk_to_xy_coords',
                 "args": [8, 73]
-            },
+            }
         ]
     },
     {
@@ -606,7 +606,7 @@ script = [
                 "identifier": 'EVENT_2312_action_queue_sync_64_SUBSCRIPT_visibility_off_8',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -695,7 +695,7 @@ script = [
                 "identifier": 'EVENT_2312_action_queue_async_77_SUBSCRIPT_walk_to_xy_coords_1',
                 "command": 'walk_to_xy_coords',
                 "args": [6, 95]
-            },
+            }
         ]
     },
     {
@@ -703,5 +703,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

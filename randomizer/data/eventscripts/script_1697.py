@@ -50,7 +50,7 @@ script = [
                 "identifier": 'EVENT_1697_action_queue_async_5_SUBSCRIPT_set_short_mem_2',
                 "command": 'set_short_mem',
                 "args": [0x702a, 0x700c]
-            },
+            }
         ]
     },
     {
@@ -100,5 +100,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

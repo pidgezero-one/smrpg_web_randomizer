@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_340_action_queue_async_2_SUBSCRIPT_shift_southeast_pixels_6',
                 "command": 'shift_southeast_pixels',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -60,5 +60,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_340_pause_0'],
         "subscript": []
-    },
+    }
 ]

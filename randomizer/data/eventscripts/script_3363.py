@@ -15,7 +15,7 @@ script = [
                 "identifier": 'EVENT_3363_action_queue_async_0_SUBSCRIPT_set_short_mem_1',
                 "command": 'set_short_mem',
                 "args": [0x7038, 0x700c]
-            },
+            }
         ]
     },
     {
@@ -637,7 +637,7 @@ script = [
                 "identifier": 'EVENT_3363_action_queue_sync_91_SUBSCRIPT_reset_properties_14',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -729,7 +729,7 @@ script = [
                 "identifier": 'EVENT_3363_action_queue_sync_92_SUBSCRIPT_end_all_16',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -781,7 +781,7 @@ script = [
                 "identifier": 'EVENT_3363_action_queue_sync_93_SUBSCRIPT_end_all_8',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -818,7 +818,7 @@ script = [
                 "identifier": 'EVENT_3363_action_queue_async_94_SUBSCRIPT_end_all_5',
                 "command": 'end_all',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1273,7 +1273,7 @@ script = [
                 "identifier": 'EVENT_3363_action_queue_async_163_SUBSCRIPT_clear_solidity_bits_7',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
-            },
+            }
         ]
     },
     {
@@ -1338,7 +1338,7 @@ script = [
                 "identifier": 'EVENT_3363_action_queue_async_172_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [2]
-            },
+            }
         ]
     },
     {
@@ -1382,5 +1382,5 @@ script = [
         "command": 'jmp_to_event',
         "args": [3356],
         "subscript": []
-    },
+    }
 ]

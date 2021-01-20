@@ -47,7 +47,7 @@ script = [
                 "identifier": 'EVENT_701_action_queue_async_2_SUBSCRIPT_shift_z_up_pixels_5',
                 "command": 'shift_z_up_pixels',
                 "args": [4]
-            },
+            }
         ]
     },
     {
@@ -80,7 +80,7 @@ script = [
                 "identifier": 'EVENT_701_action_queue_async_4_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [30]
-            },
+            }
         ]
     },
     {
@@ -94,5 +94,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

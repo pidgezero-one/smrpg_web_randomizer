@@ -10,7 +10,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_sync_0_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
-            },
+            }
         ]
     },
     {
@@ -207,7 +207,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_sync_1_SUBSCRIPT_visibility_off_37',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -404,7 +404,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_sync_2_SUBSCRIPT_visibility_off_37',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -601,7 +601,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_sync_3_SUBSCRIPT_visibility_off_37',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -803,7 +803,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_async_4_SUBSCRIPT_visibility_off_38',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -903,7 +903,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_async_18_SUBSCRIPT_visibility_on_2',
                 "command": 'visibility_on',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1003,7 +1003,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_async_32_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
                 "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
+            }
         ]
     },
     {
@@ -1104,7 +1104,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_sync_47_SUBSCRIPT_walk_to_xy_coords_1',
                 "command": 'walk_to_xy_coords',
                 "args": [0, 8]
-            },
+            }
         ]
     },
     {
@@ -1116,7 +1116,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_sync_48_SUBSCRIPT_shirt_to_xy_coords_0',
                 "command": 'shirt_to_xy_coords',
                 "args": [4, 22]
-            },
+            }
         ]
     },
     {
@@ -1160,7 +1160,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_async_51_SUBSCRIPT_shift_north_pixels_4',
                 "command": 'shift_north_pixels',
                 "args": [1]
-            },
+            }
         ]
     },
     {
@@ -1183,7 +1183,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_sync_53_SUBSCRIPT_reset_properties_1',
                 "command": 'reset_properties',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1195,7 +1195,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_async_54_SUBSCRIPT_visibility_off_0',
                 "command": 'visibility_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1286,7 +1286,7 @@ script = [
                 "identifier": 'EVENT_1147_action_queue_async_59_SUBSCRIPT_sequence_playback_off_11',
                 "command": 'sequence_playback_off',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -1336,5 +1336,5 @@ script = [
         "command": 'ret',
         "args": [],
         "subscript": []
-    },
+    }
 ]

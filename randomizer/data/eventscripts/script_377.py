@@ -22,7 +22,7 @@ script = [
                 "identifier": 'EVENT_377_start_embedded_action_script_async_2_SUBSCRIPT_bpl_26_27_28_0',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -52,7 +52,7 @@ script = [
                 "identifier": 'EVENT_377_start_embedded_action_script_async_6_SUBSCRIPT_bpl_26_27_28_0',
                 "command": 'bpl_26_27_28',
                 "args": []
-            },
+            }
         ]
     },
     {
@@ -72,5 +72,5 @@ script = [
         "command": 'jmp',
         "args": ['EVENT_377_pause_action_script_1'],
         "subscript": []
-    },
+    }
 ]
