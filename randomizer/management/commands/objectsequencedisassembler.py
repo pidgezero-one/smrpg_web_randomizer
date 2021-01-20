@@ -521,8 +521,11 @@ class Command(BaseCommand):
                             help='Path to a Mario RPG rom')
 
     def get_embedded_script(self, arr):
+        if isinstance(arr, str):
+            arr = eval(arr)
         commands_output = []
         a = tok(arr, 0, len(arr) - 1)
+        offset = 0
         for line, _ in a:
             if line[0] == 0xFD:
                 cmd = line[1]
@@ -536,13 +539,22 @@ class Command(BaseCommand):
                 name, args = table[cmd](rest)
             else:
                 name, args = 'db', ['0x%02x' % (i) for i in line]
+            is_jump = cmd in jmp_cmds
+            if is_jump:
+                jump_args = [(int(ja, 16)) for ja in args[-1:]]
+            else:
+                jump_args = []
             commands_output.append({
                 "cmd": cmd,
                 "name": name,
                 "args": rest,
+                "parsed_args": args,
                 "text": '.%s(%s)' % (name, ', '.join(args)),
-                "has_jump": cmd in jmp_cmds
+                "has_jump": cmd in jmp_cmds,
+                "original_offset": offset,
+                "jumps": jump_args
             })
+            offset += len(line)
         return {
             "header": "OSCommand()",
             "commands": commands_output,
