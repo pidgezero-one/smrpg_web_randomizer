@@ -15,7 +15,7 @@ script = [
             {
                 "identifier": 'EVENT_2542_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+                "args": [0, 0, [_0x08Flags.LOOPING_OFF]]
             }
         ]
     },

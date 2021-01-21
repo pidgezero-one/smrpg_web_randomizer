@@ -370,7 +370,7 @@ script = [
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_8',
                 "command": 'set_sprite_sequence',
-                "args": [4, inc_sprite=6, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [4, 6, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_jmp_9',
@@ -380,7 +380,7 @@ script = [
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_10',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=6, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [5, 6, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_jmp_11',
@@ -390,7 +390,7 @@ script = [
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
-                "args": [2, inc_sprite=6, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [2, 6, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_jmp_13',
@@ -400,7 +400,7 @@ script = [
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_14',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=6, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [5, 6, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_jmp_15',
@@ -410,7 +410,7 @@ script = [
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_16',
                 "command": 'set_sprite_sequence',
-                "args": [4, inc_sprite=6, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [4, 6, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_jmp_17',
@@ -420,7 +420,7 @@ script = [
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_18',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=6, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [6, 6, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_jmp_19',
@@ -430,7 +430,7 @@ script = [
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_20',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=6, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 6, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_jmp_21',
@@ -440,7 +440,7 @@ script = [
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_sprite_sequence_22',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=6, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [6, 6, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_470_non_embedded_action_queue_46_SUBSCRIPT_set_short_23',

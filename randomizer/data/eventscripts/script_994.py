@@ -91,7 +91,7 @@ script = [
             {
                 "identifier": 'EVENT_994_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_7',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [5, 6, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_994_action_queue_async_7_SUBSCRIPT_set_animation_speed_8',
@@ -136,7 +136,7 @@ script = [
             {
                 "identifier": 'EVENT_994_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [2, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [2, 6, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_994_action_queue_sync_11_SUBSCRIPT_shift_south_steps_2',
@@ -146,7 +146,7 @@ script = [
             {
                 "identifier": 'EVENT_994_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [5, 6, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_994_action_queue_sync_11_SUBSCRIPT_shift_southwest_steps_4',
@@ -156,7 +156,7 @@ script = [
             {
                 "identifier": 'EVENT_994_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [5, 6, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_994_action_queue_sync_11_SUBSCRIPT_shift_southeast_steps_6',
@@ -166,7 +166,7 @@ script = [
             {
                 "identifier": 'EVENT_994_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_7',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [6, 6, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_994_action_queue_sync_11_SUBSCRIPT_shift_northeast_steps_8',
@@ -187,7 +187,7 @@ script = [
             {
                 "identifier": 'EVENT_994_action_queue_sync_12_SUBSCRIPT_set_object_memory_bits_1',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[]]
+                "args": [0x0e, []]
             },
             {
                 "identifier": 'EVENT_994_action_queue_sync_12_SUBSCRIPT_set_animation_speed_2',

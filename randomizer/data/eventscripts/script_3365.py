@@ -506,7 +506,7 @@ script = [
             {
                 "identifier": 'EVENT_3365_action_queue_async_82_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [12, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [12, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3365_action_queue_async_82_SUBSCRIPT_pause_1',

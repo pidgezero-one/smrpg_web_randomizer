@@ -37,7 +37,7 @@ script = [
             {
                 "identifier": 'EVENT_594_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_594_action_queue_sync_6_SUBSCRIPT_pause_1',
@@ -47,7 +47,7 @@ script = [
             {
                 "identifier": 'EVENT_594_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [13, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [13, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },
@@ -74,7 +74,7 @@ script = [
             {
                 "identifier": 'EVENT_594_action_queue_sync_7_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [7, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_594_action_queue_sync_7_SUBSCRIPT_set_animation_speed_4',
@@ -124,7 +124,7 @@ script = [
             {
                 "identifier": 'EVENT_594_action_queue_sync_13_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [7, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_594_action_queue_sync_13_SUBSCRIPT_clear_solidity_bits_1',
@@ -169,7 +169,7 @@ script = [
             {
                 "identifier": 'EVENT_594_action_queue_sync_13_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
-                "args": [9, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [9, 3, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_594_action_queue_sync_13_SUBSCRIPT_set_animation_speed_10',

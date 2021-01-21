@@ -45,7 +45,7 @@ script = [
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_set_vram_priority_3',

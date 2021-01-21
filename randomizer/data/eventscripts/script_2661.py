@@ -59,7 +59,7 @@ script = [
             {
                 "identifier": 'EVENT_2661_action_queue_async_9_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [1, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [1, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2661_action_queue_async_9_SUBSCRIPT_play_sound_2',

@@ -55,7 +55,7 @@ script = [
             {
                 "identifier": 'EVENT_505_action_queue_async_8_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [9, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [9, 3, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_505_action_queue_async_8_SUBSCRIPT_set_animation_speed_2',
@@ -90,7 +90,7 @@ script = [
             {
                 "identifier": 'EVENT_505_action_queue_async_8_SUBSCRIPT_set_sprite_sequence_8',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [6, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_505_action_queue_async_8_SUBSCRIPT_walk_to_xy_coords_9',

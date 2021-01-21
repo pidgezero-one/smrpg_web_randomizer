@@ -569,7 +569,7 @@ script = [
             {
                 "identifier": 'EVENT_3480_action_queue_sync_31_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+                "args": [0, 0, [_0x08Flags.LOOPING_OFF]]
             },
             {
                 "identifier": 'EVENT_3480_action_queue_sync_31_SUBSCRIPT_pause_4',
@@ -678,7 +678,7 @@ script = [
             {
                 "identifier": 'EVENT_3480_action_queue_async_44_SUBSCRIPT_set_sprite_sequence_6',
                 "command": 'set_sprite_sequence',
-                "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [10, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3480_action_queue_async_44_SUBSCRIPT_jump_to_height_7',
@@ -787,7 +787,7 @@ script = [
             {
                 "identifier": 'EVENT_3480_action_queue_async_52_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3480_action_queue_async_52_SUBSCRIPT_set_animation_speed_2',
@@ -972,7 +972,7 @@ script = [
             {
                 "identifier": 'EVENT_3480_action_queue_async_73_SUBSCRIPT_set_object_memory_bits_4',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[2, 3]]
+                "args": [0x0e, [2, 3]]
             }
         ]
     },

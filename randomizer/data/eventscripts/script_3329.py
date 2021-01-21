@@ -168,7 +168,7 @@ script = [
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10',
                 "command": 'set_sprite_sequence',
-                "args": [9, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [9, 3, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_11',
@@ -178,7 +178,7 @@ script = [
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
-                "args": [8, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [8, 3, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_13',
@@ -188,7 +188,7 @@ script = [
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_14',
                 "command": 'set_sprite_sequence',
-                "args": [8, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [8, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_15',
@@ -198,7 +198,7 @@ script = [
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16',
                 "command": 'set_sprite_sequence',
-                "args": [9, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [9, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_17',

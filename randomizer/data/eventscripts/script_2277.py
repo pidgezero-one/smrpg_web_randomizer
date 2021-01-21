@@ -611,7 +611,7 @@ script = [
             {
                 "identifier": 'EVENT_2277_action_queue_async_25_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2277_action_queue_async_25_SUBSCRIPT_set_priority_1',
@@ -684,7 +684,7 @@ script = [
             {
                 "identifier": 'EVENT_2277_action_queue_async_25_SUBSCRIPT_set_sprite_sequence_15',
                 "command": 'set_sprite_sequence',
-                "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2277_action_queue_async_25_SUBSCRIPT_pause_16',
@@ -694,7 +694,7 @@ script = [
             {
                 "identifier": 'EVENT_2277_action_queue_async_25_SUBSCRIPT_set_sprite_sequence_17',
                 "command": 'set_sprite_sequence',
-                "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2277_action_queue_async_25_SUBSCRIPT_pause_18',

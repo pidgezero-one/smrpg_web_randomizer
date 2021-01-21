@@ -434,7 +434,7 @@ script = [
             {
                 "identifier": 'EVENT_372_action_queue_sync_23_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [16, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [16, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_372_action_queue_sync_23_SUBSCRIPT_pause_3',

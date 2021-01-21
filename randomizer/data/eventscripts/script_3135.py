@@ -15,7 +15,7 @@ script = [
     {
         "identifier": 'EVENT_3135_stop_background_event_2',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c]
+        "args": [0x701c]
     },
     {
         "identifier": 'EVENT_3135_jmp_if_var_equals_byte_3',
@@ -141,7 +141,7 @@ script = [
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [10, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_pause_3',
@@ -174,7 +174,7 @@ script = [
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_pause_10',
@@ -207,7 +207,7 @@ script = [
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_set_sprite_sequence_16',
                 "command": 'set_sprite_sequence',
-                "args": [20, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [20, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_pause_17',
@@ -222,7 +222,7 @@ script = [
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_set_sprite_sequence_19',
                 "command": 'set_sprite_sequence',
-                "args": [30, inc_sprite=1, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [30, 1, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_clear_solidity_bits_20',

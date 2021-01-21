@@ -42,7 +42,7 @@ script = [
             {
                 "identifier": 'EVENT_2350_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_6',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [7, 6, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_2350_action_queue_sync_1_SUBSCRIPT_transfer_to_xyzf_7',

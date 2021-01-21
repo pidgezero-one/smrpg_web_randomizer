@@ -50,7 +50,7 @@ script = [
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [3, 2, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_shift_southeast_pixels_7',
@@ -70,7 +70,7 @@ script = [
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_10',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_shift_southwest_pixels_11',

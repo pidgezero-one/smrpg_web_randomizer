@@ -35,7 +35,7 @@ script = [
             {
                 "identifier": 'EVENT_3334_action_queue_sync_5_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[0]]
+                "args": [0x0b, [0]]
             },
             {
                 "identifier": 'EVENT_3334_action_queue_sync_5_SUBSCRIPT_walk_1_step_northeast_1',

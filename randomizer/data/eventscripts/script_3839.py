@@ -78,7 +78,7 @@ script = [
             {
                 "identifier": 'EVENT_3839_action_queue_sync_8_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [5, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3839_action_queue_sync_8_SUBSCRIPT_transfer_to_object_xy_3',
@@ -93,7 +93,7 @@ script = [
             {
                 "identifier": 'EVENT_3839_action_queue_sync_8_SUBSCRIPT_set_object_memory_bits_5',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[2, 3]]
+                "args": [0x0e, [2, 3]]
             },
             {
                 "identifier": 'EVENT_3839_action_queue_sync_8_SUBSCRIPT_visibility_on_6',
@@ -126,7 +126,7 @@ script = [
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [13, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [13, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_pause_3',
@@ -136,7 +136,7 @@ script = [
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
-                "args": [10, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [10, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_walk_1_step_south_5',
@@ -150,7 +150,7 @@ script = [
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_7',
                 "command": 'set_sprite_sequence',
-                "args": [10, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [10, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_walk_1_step_south_8',
@@ -159,7 +159,7 @@ script = [
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
-                "args": [13, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [13, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_shift_z_down_pixels_10',
@@ -169,7 +169,7 @@ script = [
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_11',
                 "command": 'set_sprite_sequence',
-                "args": [12, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [12, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_shift_z_down_pixels_12',
@@ -179,7 +179,7 @@ script = [
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_13',
                 "command": 'set_sprite_sequence',
-                "args": [14, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [14, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_shift_z_down_pixels_14',
@@ -189,7 +189,7 @@ script = [
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_15',
                 "command": 'set_sprite_sequence',
-                "args": [11, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [11, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3839_action_queue_sync_9_SUBSCRIPT_shift_z_down_pixels_16',

@@ -62,7 +62,7 @@ script = [
     {
         "identifier": 'EVENT_3134_stop_background_event_12',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c]
+        "args": [0x701c]
     },
     {
         "identifier": 'EVENT_3134_move_script_to_main_thread_13',

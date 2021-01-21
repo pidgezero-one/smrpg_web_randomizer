@@ -52,7 +52,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_5_SUBSCRIPT_set_object_memory_bits_2',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[0, 1]]
+                "args": [0x0b, [0, 1]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_5_SUBSCRIPT_set_animation_speed_3',
@@ -95,7 +95,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_7_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },
@@ -487,7 +487,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_29_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [7, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_29_SUBSCRIPT_play_sound_4',
@@ -726,7 +726,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_34_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },
@@ -1081,7 +1081,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_61_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]
+                "args": [3, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_61_SUBSCRIPT_pause_2',
@@ -1091,7 +1091,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_61_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]
+                "args": [7, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_61_SUBSCRIPT_pause_4',
@@ -1179,7 +1179,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_async_67_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [23, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [23, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_async_67_SUBSCRIPT_pause_1',
@@ -1189,7 +1189,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_async_67_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [24, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [24, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_async_67_SUBSCRIPT_pause_3',
@@ -1199,7 +1199,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_async_67_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
-                "args": [23, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [23, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_async_67_SUBSCRIPT_pause_5',
@@ -2104,7 +2104,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_133_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [3, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_133_SUBSCRIPT_pause_1',
@@ -2357,7 +2357,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_150_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [7, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_150_SUBSCRIPT_set_animation_speed_1',
@@ -2892,7 +2892,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_async_171_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },
@@ -2944,7 +2944,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_175_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [2, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [2, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },
@@ -3010,7 +3010,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_async_176_SUBSCRIPT_set_sprite_sequence_11',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_async_176_SUBSCRIPT_set_animation_speed_12',
@@ -3096,7 +3096,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_177_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [21, inc_sprite=3, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [21, 3, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_177_SUBSCRIPT_set_animation_speed_2',
@@ -3265,7 +3265,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_6',
                 "command": 'set_sprite_sequence',
-                "args": [19, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [19, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_7',
@@ -3275,7 +3275,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_8',
                 "command": 'set_sprite_sequence',
-                "args": [22, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [22, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_9',
@@ -3285,7 +3285,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_10',
                 "command": 'set_sprite_sequence',
-                "args": [19, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [19, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_11',
@@ -3295,7 +3295,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [3, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_13',
@@ -3305,7 +3305,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_14',
                 "command": 'set_sprite_sequence',
-                "args": [23, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [23, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_15',
@@ -3315,7 +3315,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_16',
                 "command": 'set_sprite_sequence',
-                "args": [24, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [24, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_17',
@@ -3325,7 +3325,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_18',
                 "command": 'set_sprite_sequence',
-                "args": [23, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [23, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_19',
@@ -3335,7 +3335,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_20',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [3, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_21',
@@ -3345,7 +3345,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_22',
                 "command": 'set_sprite_sequence',
-                "args": [19, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [19, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_23',
@@ -3355,7 +3355,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_24',
                 "command": 'set_sprite_sequence',
-                "args": [22, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [22, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_25',
@@ -3365,7 +3365,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_26',
                 "command": 'set_sprite_sequence',
-                "args": [19, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [19, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_27',
@@ -3375,7 +3375,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_28',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [3, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_29',
@@ -3385,7 +3385,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_30',
                 "command": 'set_sprite_sequence',
-                "args": [23, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [23, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_31',
@@ -3395,7 +3395,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_32',
                 "command": 'set_sprite_sequence',
-                "args": [24, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [24, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_33',
@@ -3405,7 +3405,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_34',
                 "command": 'set_sprite_sequence',
-                "args": [23, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [23, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_35',
@@ -3415,7 +3415,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_36',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [3, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_37',
@@ -3425,7 +3425,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_38',
                 "command": 'set_sprite_sequence',
-                "args": [19, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [19, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_39',
@@ -3435,7 +3435,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_40',
                 "command": 'set_sprite_sequence',
-                "args": [22, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [22, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_pause_41',
@@ -3445,7 +3445,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_182_SUBSCRIPT_set_sprite_sequence_42',
                 "command": 'set_sprite_sequence',
-                "args": [25, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [25, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },

@@ -138,7 +138,7 @@ script = [
             {
                 "identifier": 'EVENT_1345_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_10',
                 "command": 'set_sprite_sequence',
-                "args": [15, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [15, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_1345_action_queue_sync_11_SUBSCRIPT_sequence_playback_off_11',
@@ -201,7 +201,7 @@ script = [
             {
                 "identifier": 'EVENT_1345_action_queue_async_12_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1345_action_queue_async_12_SUBSCRIPT_visibility_on_10',

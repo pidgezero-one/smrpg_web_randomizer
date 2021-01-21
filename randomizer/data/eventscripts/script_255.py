@@ -15,7 +15,7 @@ script = [
             {
                 "identifier": 'EVENT_255_start_embedded_action_script_async_1_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[0, 1]]
+                "args": [0x0b, [0, 1]]
             },
             {
                 "identifier": 'EVENT_255_start_embedded_action_script_async_1_SUBSCRIPT_db_1',

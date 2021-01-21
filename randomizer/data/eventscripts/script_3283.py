@@ -376,7 +376,7 @@ script = [
             {
                 "identifier": 'EVENT_3283_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3283_action_queue_async_7_SUBSCRIPT_set_vram_priority_5',
@@ -396,7 +396,7 @@ script = [
             {
                 "identifier": 'EVENT_3283_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_8',
                 "command": 'set_sprite_sequence',
-                "args": [8, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [8, 2, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             }
         ]
     },
@@ -571,7 +571,7 @@ script = [
             {
                 "identifier": 'EVENT_3283_action_queue_sync_23_SUBSCRIPT_set_object_memory_bits_1',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[]]
+                "args": [0x0b, []]
             },
             {
                 "identifier": 'EVENT_3283_action_queue_sync_23_SUBSCRIPT_set_solidity_bits_2',
@@ -607,7 +607,7 @@ script = [
             {
                 "identifier": 'EVENT_3283_action_queue_sync_24_SUBSCRIPT_set_object_memory_bits_1',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[]]
+                "args": [0x0b, []]
             },
             {
                 "identifier": 'EVENT_3283_action_queue_sync_24_SUBSCRIPT_set_solidity_bits_2',
@@ -639,7 +639,7 @@ script = [
             {
                 "identifier": 'EVENT_3283_action_queue_sync_25_SUBSCRIPT_set_object_memory_bits_1',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[]]
+                "args": [0x0b, []]
             },
             {
                 "identifier": 'EVENT_3283_action_queue_sync_25_SUBSCRIPT_set_solidity_bits_2',
@@ -670,7 +670,7 @@ script = [
             {
                 "identifier": 'EVENT_3283_action_queue_async_26_SUBSCRIPT_set_object_memory_bits_1',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[]]
+                "args": [0x0b, []]
             },
             {
                 "identifier": 'EVENT_3283_action_queue_async_26_SUBSCRIPT_set_solidity_bits_2',
@@ -856,7 +856,7 @@ script = [
             {
                 "identifier": 'EVENT_3283_action_queue_sync_31_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3283_action_queue_sync_31_SUBSCRIPT_pause_3',
@@ -866,7 +866,7 @@ script = [
             {
                 "identifier": 'EVENT_3283_action_queue_sync_31_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3283_action_queue_sync_31_SUBSCRIPT_shift_southwest_pixels_5',
@@ -945,7 +945,7 @@ script = [
             {
                 "identifier": 'EVENT_3283_action_queue_sync_32_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [16, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [16, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },

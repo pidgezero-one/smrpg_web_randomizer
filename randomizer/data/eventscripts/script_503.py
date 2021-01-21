@@ -75,7 +75,7 @@ script = [
             {
                 "identifier": 'EVENT_503_action_queue_sync_13_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [16, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [16, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_503_action_queue_sync_13_SUBSCRIPT_set_animation_speed_2',

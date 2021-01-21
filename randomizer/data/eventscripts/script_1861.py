@@ -63,7 +63,7 @@ script = [
             {
                 "identifier": 'EVENT_1861_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_1861_action_queue_async_4_SUBSCRIPT_pause_3',
@@ -73,7 +73,7 @@ script = [
             {
                 "identifier": 'EVENT_1861_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
-                "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1861_action_queue_async_4_SUBSCRIPT_set_solidity_bits_5',

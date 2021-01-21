@@ -5,12 +5,16 @@ script = [
     {
         "identifier": 'EVENT_1840_jmp_fork_mario_on_object_0',
         "command": 'jmp_fork_mario_on_object',
-        "args": ['EVENT_1840_set_short_mem_2', 'EVENT_1840_ret_24']
+        "args": ['EVENT_1840_set_short_mem_2', 'EVENT_1840_ret_24'],
+        "subscript": [
+        ]
     },
     {
         "identifier": 'EVENT_1840_jmp_1',
         "command": 'jmp',
-        "args": ['EVENT_1840_ret_24']
+        "args": ['EVENT_1840_ret_24'],
+        "subscript": [
+        ]
     },
     {
         "identifier": 'EVENT_1840_set_short_mem_2',

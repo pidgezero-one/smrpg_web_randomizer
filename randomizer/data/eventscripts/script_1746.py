@@ -81,7 +81,7 @@ script = [
             {
                 "identifier": 'EVENT_1746_action_queue_sync_10_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_1746_action_queue_sync_10_SUBSCRIPT_shift_southwest_pixels_3',
@@ -108,7 +108,7 @@ script = [
             {
                 "identifier": 'EVENT_1746_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             }
         ]
     },
@@ -148,7 +148,7 @@ script = [
             {
                 "identifier": 'EVENT_1746_action_queue_sync_13_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
-                "args": [8, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [8, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1746_action_queue_sync_13_SUBSCRIPT_jump_to_height_silent_6',
@@ -242,7 +242,7 @@ script = [
             {
                 "identifier": 'EVENT_1746_action_queue_async_16_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [6, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1746_action_queue_async_16_SUBSCRIPT_pause_4',
@@ -411,7 +411,7 @@ script = [
             {
                 "identifier": 'EVENT_1746_action_queue_sync_36_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [6, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },

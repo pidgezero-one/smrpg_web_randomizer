@@ -34,7 +34,7 @@ script = [
             {
                 "identifier": 'EVENT_1847_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1847_action_queue_async_4_SUBSCRIPT_pause_2',
@@ -86,7 +86,7 @@ script = [
             {
                 "identifier": 'EVENT_1847_action_queue_async_9_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [6, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1847_action_queue_async_9_SUBSCRIPT_walk_1_step_f_direction_4',

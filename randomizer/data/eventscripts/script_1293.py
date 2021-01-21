@@ -20,7 +20,7 @@ script = [
             {
                 "identifier": 'EVENT_1293_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [2, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+                "args": [2, 0, [_0x08Flags.LOOPING_OFF]]
             },
             {
                 "identifier": 'EVENT_1293_action_queue_sync_2_SUBSCRIPT_set_animation_speed_1',

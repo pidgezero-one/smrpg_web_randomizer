@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_3774_stop_background_event_1',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c]
+        "args": [0x701c]
     },
     {
         "identifier": 'EVENT_3774_ret_2',

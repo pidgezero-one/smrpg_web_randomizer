@@ -251,7 +251,7 @@ script = [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_10_SUBSCRIPT_set_object_memory_bits_27',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[0]]
+                "args": [0x0e, [0]]
             }
         ]
     },
@@ -319,7 +319,7 @@ script = [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3190_action_queue_sync_11_SUBSCRIPT_pause_13',
@@ -329,7 +329,7 @@ script = [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_14',
                 "command": 'set_sprite_sequence',
-                "args": [9, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [9, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3190_action_queue_sync_11_SUBSCRIPT_pause_15',
@@ -436,7 +436,7 @@ script = [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_37',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [5, 6, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3190_action_queue_sync_11_SUBSCRIPT_set_bit_38',
@@ -478,7 +478,7 @@ script = [
             {
                 "identifier": 'EVENT_3190_action_queue_sync_17_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [7, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3190_action_queue_sync_17_SUBSCRIPT_pause_1',

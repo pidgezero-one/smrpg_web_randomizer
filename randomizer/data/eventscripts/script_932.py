@@ -63,7 +63,7 @@ script = [
             {
                 "identifier": 'EVENT_932_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [6, 6, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_932_action_queue_sync_6_SUBSCRIPT_set_solidity_bits_1',
@@ -146,7 +146,7 @@ script = [
             {
                 "identifier": 'EVENT_932_action_queue_async_17_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [14, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [14, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_932_action_queue_async_17_SUBSCRIPT_play_sound_2',

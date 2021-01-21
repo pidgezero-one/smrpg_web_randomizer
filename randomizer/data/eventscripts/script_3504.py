@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_3504_stop_background_event_0',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c]
+        "args": [0x701c]
     },
     {
         "identifier": 'EVENT_3504_clear_bit_1',
@@ -74,7 +74,7 @@ script = [
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [7, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_floating_on_5',

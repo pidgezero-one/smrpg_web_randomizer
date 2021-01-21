@@ -36,7 +36,7 @@ script = [
             {
                 "identifier": 'EVENT_480_action_queue_async_3_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [5, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [5, 6, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_480_action_queue_async_3_SUBSCRIPT_clear_solidity_bits_1',
@@ -82,7 +82,7 @@ script = [
             {
                 "identifier": 'EVENT_480_start_embedded_action_script_async_5_SUBSCRIPT_set_object_memory_bits_1',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[]]
+                "args": [0x0e, []]
             },
             {
                 "identifier": 'EVENT_480_start_embedded_action_script_async_5_SUBSCRIPT_set_solidity_bits_2',

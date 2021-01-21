@@ -45,7 +45,7 @@ script = [
             {
                 "identifier": 'EVENT_1785_action_queue_async_6_SUBSCRIPT_set_object_memory_bits_1',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[1]]
+                "args": [0x0e, [1]]
             }
         ]
     },

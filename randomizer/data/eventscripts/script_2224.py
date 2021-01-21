@@ -35,7 +35,7 @@ script = [
             {
                 "identifier": 'EVENT_2224_action_queue_sync_1_SUBSCRIPT_set_object_memory_bits_4',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[0, 1, 3]]
+                "args": [0x0e, [0, 1, 3]]
             },
             {
                 "identifier": 'EVENT_2224_action_queue_sync_1_SUBSCRIPT_sequence_looping_on_5',
@@ -71,7 +71,7 @@ script = [
             {
                 "identifier": 'EVENT_2224_action_queue_sync_2_SUBSCRIPT_set_object_memory_bits_3',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[0, 1, 3]]
+                "args": [0x0e, [0, 1, 3]]
             },
             {
                 "identifier": 'EVENT_2224_action_queue_sync_2_SUBSCRIPT_sequence_looping_on_4',
@@ -85,7 +85,7 @@ script = [
             {
                 "identifier": 'EVENT_2224_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },
@@ -112,7 +112,7 @@ script = [
             {
                 "identifier": 'EVENT_2224_action_queue_async_3_SUBSCRIPT_set_object_memory_bits_3',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[0, 1, 3]]
+                "args": [0x0e, [0, 1, 3]]
             },
             {
                 "identifier": 'EVENT_2224_action_queue_async_3_SUBSCRIPT_sequence_looping_on_4',
@@ -126,7 +126,7 @@ script = [
             {
                 "identifier": 'EVENT_2224_action_queue_async_3_SUBSCRIPT_set_sprite_sequence_6',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },

@@ -258,12 +258,12 @@ script = [
     {
         "identifier": 'EVENT_3502_stop_background_event_36',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c]
+        "args": [0x701c]
     },
     {
         "identifier": 'EVENT_3502_stop_background_event_37',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701e]
+        "args": [0x701e]
     },
     {
         "identifier": 'EVENT_3502_set_action_script_sync_38',
@@ -435,7 +435,7 @@ script = [
             {
                 "identifier": 'EVENT_3502_action_queue_sync_63_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [4, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [4, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3502_action_queue_sync_63_SUBSCRIPT_shift_north_pixels_2',
@@ -515,7 +515,7 @@ script = [
             {
                 "identifier": 'EVENT_3502_action_queue_async_67_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [7, 2, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3502_action_queue_async_67_SUBSCRIPT_pause_3',
@@ -797,7 +797,7 @@ script = [
             {
                 "identifier": 'EVENT_3502_action_queue_async_102_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [7, 2, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3502_action_queue_async_102_SUBSCRIPT_pause_3',
@@ -974,7 +974,7 @@ script = [
             {
                 "identifier": 'EVENT_3502_action_queue_async_126_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [7, 2, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3502_action_queue_async_126_SUBSCRIPT_pause_3',

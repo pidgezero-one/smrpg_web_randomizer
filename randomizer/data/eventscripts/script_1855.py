@@ -34,7 +34,7 @@ script = [
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [6, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_jump_to_height_silent_5',
@@ -67,7 +67,7 @@ script = [
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_11',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_jump_to_height_silent_12',

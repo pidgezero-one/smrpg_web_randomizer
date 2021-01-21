@@ -552,7 +552,7 @@ script = [
             {
                 "identifier": 'EVENT_621_action_queue_async_51_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },
@@ -805,7 +805,7 @@ script = [
             {
                 "identifier": 'EVENT_621_action_queue_async_79_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_621_action_queue_async_79_SUBSCRIPT_pause_4',

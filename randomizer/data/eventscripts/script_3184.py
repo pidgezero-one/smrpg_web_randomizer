@@ -585,7 +585,7 @@ script = [
             {
                 "identifier": 'EVENT_3184_action_queue_sync_44_SUBSCRIPT_set_object_memory_bits_2',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[1]]
+                "args": [0x0b, [1]]
             },
             {
                 "identifier": 'EVENT_3184_action_queue_sync_44_SUBSCRIPT_walk_to_xy_coords_3',
@@ -615,7 +615,7 @@ script = [
             {
                 "identifier": 'EVENT_3184_action_queue_sync_45_SUBSCRIPT_set_object_memory_bits_2',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[1]]
+                "args": [0x0b, [1]]
             },
             {
                 "identifier": 'EVENT_3184_action_queue_sync_45_SUBSCRIPT_walk_to_xy_coords_3',
@@ -700,7 +700,7 @@ script = [
             {
                 "identifier": 'EVENT_3184_action_queue_sync_59_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[1]]
+                "args": [0x0b, [1]]
             },
             {
                 "identifier": 'EVENT_3184_action_queue_sync_59_SUBSCRIPT_walk_to_xy_coords_1',
@@ -721,7 +721,7 @@ script = [
             {
                 "identifier": 'EVENT_3184_action_queue_sync_60_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[1]]
+                "args": [0x0b, [1]]
             },
             {
                 "identifier": 'EVENT_3184_action_queue_sync_60_SUBSCRIPT_walk_to_xy_coords_1',

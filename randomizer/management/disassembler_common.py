@@ -127,4 +127,4 @@ def parse_flags(value, prefix='', table=None, bits=None):
 
 
 def writeline(f, ln):
-    print(ln.rstrip('\x00'), file=f)
+    print(ln.replace('\x00', ''), file=f)

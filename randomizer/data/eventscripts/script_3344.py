@@ -727,7 +727,7 @@ script = [
             {
                 "identifier": 'EVENT_3344_action_queue_async_9_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+                "args": [0, 0, [_0x08Flags.LOOPING_OFF]]
             },
             {
                 "identifier": 'EVENT_3344_action_queue_async_9_SUBSCRIPT_pause_6',

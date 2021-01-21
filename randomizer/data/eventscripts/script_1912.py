@@ -85,7 +85,7 @@ script = [
             {
                 "identifier": 'EVENT_1912_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
-                "args": [15, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [15, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },

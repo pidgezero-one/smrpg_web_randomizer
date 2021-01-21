@@ -22,7 +22,8 @@ class EventScript:
         for script in table:
             scripts_with_lengths = []
             for command in script:
-                script_with_length = script
+                print(command["identifier"])
+                script_with_length = command
                 assembler = EventScript()
                 func = getattr(assembler, command["command"], None)
                 if "args" in command.keys():
@@ -31,12 +32,12 @@ class EventScript:
                 else:
                     dummy_args = []
                 if "subscript" in command.keys():
-                    oc = OSCommand()
-                    dummy_subscript_lines = oc.get_dummy_bytearray(
+                    dummy_subscript_lines = OSCommand.get_dummy_bytearray(
                         command["subscript"])
                     dummy_subscript = b''.join(dummy_subscript_lines)
                     script_with_length["subscript_lines"] = dummy_subscript_lines
                     script_with_length["subscript_combined_lines"] = dummy_subscript
+                    dummy_args.append(dummy_subscript)
                 func(*dummy_args)
                 command_line = assembler.fin()
                 script_with_length["line"] = command_line

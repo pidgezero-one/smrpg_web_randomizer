@@ -318,7 +318,7 @@ script = [
             {
                 "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
-                "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_set_700C_to_object_coord_5',
@@ -421,7 +421,7 @@ script = [
             {
                 "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
-                "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_set_700C_to_object_coord_5',

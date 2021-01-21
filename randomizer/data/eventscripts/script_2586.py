@@ -102,7 +102,7 @@ script = [
             {
                 "identifier": 'EVENT_2586_action_queue_async_18_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [8, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [8, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2586_action_queue_async_18_SUBSCRIPT_face_southwest_1',

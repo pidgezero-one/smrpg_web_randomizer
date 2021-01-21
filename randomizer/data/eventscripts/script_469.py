@@ -31,7 +31,7 @@ script = [
             {
                 "identifier": 'EVENT_469_action_queue_async_3_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[2, 3]]
+                "args": [0x0e, [2, 3]]
             }
         ]
     },
@@ -553,7 +553,7 @@ script = [
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[2, 3]]
+                "args": [0x0e, [2, 3]]
             },
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_700C_to_object_coord_1',
@@ -598,7 +598,7 @@ script = [
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=2, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [3, 2, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_10',
@@ -613,7 +613,7 @@ script = [
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=2, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 2, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_13',
@@ -628,7 +628,7 @@ script = [
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_sprite_sequence_15',
                 "command": 'set_sprite_sequence',
-                "args": [13, inc_sprite=1, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [13, 1, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_16',
@@ -643,7 +643,7 @@ script = [
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_sprite_sequence_18',
                 "command": 'set_sprite_sequence',
-                "args": [13, inc_sprite=1, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [13, 1, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_pause_19',

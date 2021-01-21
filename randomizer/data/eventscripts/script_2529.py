@@ -79,7 +79,7 @@ script = [
             {
                 "identifier": 'EVENT_2529_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2529_action_queue_sync_9_SUBSCRIPT_start_loop_n_times_2',
@@ -125,7 +125,7 @@ script = [
             {
                 "identifier": 'EVENT_2529_action_queue_sync_10_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2529_action_queue_sync_10_SUBSCRIPT_shift_southwest_pixels_4',
@@ -170,7 +170,7 @@ script = [
             {
                 "identifier": 'EVENT_2529_action_queue_sync_15_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [8, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },
@@ -191,7 +191,7 @@ script = [
             {
                 "identifier": 'EVENT_2529_action_queue_sync_18_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [9, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [9, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },
@@ -254,7 +254,7 @@ script = [
             {
                 "identifier": 'EVENT_2529_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_10',
                 "command": 'set_sprite_sequence',
-                "args": [4, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [4, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_20_SUBSCRIPT_face_southwest_11',

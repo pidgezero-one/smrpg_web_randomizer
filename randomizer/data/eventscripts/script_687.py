@@ -210,7 +210,7 @@ script = [
             {
                 "identifier": 'EVENT_687_action_queue_sync_21_SUBSCRIPT_set_object_memory_bits_4',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[0]]
+                "args": [0x0e, [0]]
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_21_SUBSCRIPT_clear_solidity_bits_5',
@@ -576,7 +576,7 @@ script = [
             {
                 "identifier": 'EVENT_687_action_queue_sync_36_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[]]
+                "args": [0x0e, []]
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_36_SUBSCRIPT_set_solidity_bits_1',

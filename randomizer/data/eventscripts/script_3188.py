@@ -73,7 +73,7 @@ script = [
             {
                 "identifier": 'EVENT_3188_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [7, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [7, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3188_action_queue_sync_3_SUBSCRIPT_pause_2',

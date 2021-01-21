@@ -47,7 +47,7 @@ script = [
             {
                 "identifier": 'EVENT_1622_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [15, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [15, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1622_action_queue_async_6_SUBSCRIPT_set_animation_speed_3',

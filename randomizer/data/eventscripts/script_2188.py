@@ -101,7 +101,7 @@ script = [
             {
                 "identifier": 'EVENT_2188_action_queue_async_10_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [9, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [9, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2188_action_queue_async_10_SUBSCRIPT_visibility_on_2',
@@ -120,7 +120,7 @@ script = [
             {
                 "identifier": 'EVENT_2188_action_queue_async_10_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2188_action_queue_async_10_SUBSCRIPT_pause_6',

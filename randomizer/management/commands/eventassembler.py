@@ -4,6 +4,6 @@ from randomizer.logic.osscript import ObjectSequenceScript as OSCommand
 from randomizer.data.eventscripts.events import scripts
 
 class Command(BaseCommand):
-    def handle(self):
+    def handle(self, *args, **options):
         e = EventScript()
-        print (e.assemble_from_table(scripts))
+        print (EventScript.assemble_from_table(scripts))

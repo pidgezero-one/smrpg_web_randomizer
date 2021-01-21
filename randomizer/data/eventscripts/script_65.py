@@ -176,7 +176,7 @@ script = [
             {
                 "identifier": 'EVENT_65_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+                "args": [0, 0, [_0x08Flags.LOOPING_OFF]]
             },
             {
                 "identifier": 'EVENT_65_action_queue_sync_6_SUBSCRIPT_pause_3',

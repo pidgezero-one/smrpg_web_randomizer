@@ -283,12 +283,12 @@ script = [
     {
         "identifier": 'EVENT_1740_stop_background_event_41',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c]
+        "args": [0x701c]
     },
     {
         "identifier": 'EVENT_1740_stop_background_event_42',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701e]
+        "args": [0x701e]
     },
     {
         "identifier": 'EVENT_1740_unfreeze_camera_43',

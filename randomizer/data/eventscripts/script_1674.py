@@ -24,7 +24,7 @@ script = [
             {
                 "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [15, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [15, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_start_loop_n_times_2',

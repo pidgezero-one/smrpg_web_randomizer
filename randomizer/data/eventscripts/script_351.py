@@ -204,7 +204,7 @@ script = [
             {
                 "identifier": 'EVENT_351_action_queue_async_28_SUBSCRIPT_set_sprite_sequence_3',
                 "command": 'set_sprite_sequence',
-                "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_351_action_queue_async_28_SUBSCRIPT_transfer_xyzf_pixels_4',
@@ -369,7 +369,7 @@ script = [
             {
                 "identifier": 'EVENT_351_action_queue_async_58_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_351_action_queue_async_58_SUBSCRIPT_clear_solidity_bits_1',

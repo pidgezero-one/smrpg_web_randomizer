@@ -37,7 +37,7 @@ script = [
             {
                 "identifier": 'EVENT_3486_action_queue_sync_4_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3486_action_queue_sync_4_SUBSCRIPT_jmp_if_bit_set_1',
@@ -107,7 +107,7 @@ script = [
             {
                 "identifier": 'EVENT_3486_action_queue_async_6_SUBSCRIPT_set_object_memory_bits_5',
                 "command": 'set_object_memory_bits',
-                "args": [0x0e, bits=[0, 1]]
+                "args": [0x0e, [0, 1]]
             }
         ]
     },
@@ -354,7 +354,7 @@ script = [
             {
                 "identifier": 'EVENT_3486_action_queue_async_24_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+                "args": [0, 3, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_3486_action_queue_async_24_SUBSCRIPT_jump_to_height_silent_3',

@@ -82,11 +82,13 @@ obj_event_lens = [
 
 items_table = build_table(get_default_items(None))
 
-jmp_cmds = [0x3F, 0x3E, 0xD2, 0x41, 0xE6, 0xE7, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xEC, 0xED, 0x66, 0xEA, 0xEF, 0xEE, 0xEB, 0x3D, 0x39, 0xDF, 0xDB, 0xF8, 0x3A, 0x32, 0xE9, 0xE8, 0xE0, 0xE2, 0xE4, 0xE1, 0xE3, 0xE5]
+jmp_cmds = [0x3F, 0x3E, 0xD2, 0x41, 0xE6, 0xE7, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xEC, 0xED, 0x66, 0xEA,
+            0xEF, 0xEE, 0xEB, 0x3D, 0x39, 0xDF, 0xDB, 0xF8, 0x3A, 0x32, 0xE9, 0xE8, 0xE0, 0xE2, 0xE4, 0xE1, 0xE3, 0xE5]
 
 jmp_cmds_double = [0x42, 0x67]
 
 jmp_cmds_fd = [0x3E, 0x62, 0x96, 0x97, 0x3D, 0xF0, 0x34, 0x33]
+
 
 def is_eligible_nonembedded_command(cmd):
     if cmd[0] == 0x10:
@@ -98,7 +100,9 @@ def is_eligible_nonembedded_command(cmd):
     else:
         return False
 
+
 jumped_to_from_action_queue = []
+
 
 def tok(rom, start, end, bank):
     dex = start
@@ -106,7 +110,8 @@ def tok(rom, start, end, bank):
     while dex <= end:
         cmd = None
         sub_command = None
-        is_nonembedded = dex in jumped_to_from_action_queue and is_eligible_nonembedded_command(rom[dex:(dex+2)])
+        is_nonembedded = dex in jumped_to_from_action_queue and is_eligible_nonembedded_command(
+            rom[dex:(dex+2)])
         sequence_bytes = []
 
         # I don't trust this at all, but I have no idea how to determine this otherwise
@@ -119,7 +124,8 @@ def tok(rom, start, end, bank):
                 ind_ += 1
                 try:
                     cmds = oc.get_embedded_script(rom[dex:(dex + ind_)])
-                    return_bytes = [c['cmd'] for c in cmds["commands"] if c['cmd'] == 0xFE]
+                    return_bytes = [c['cmd']
+                                    for c in cmds["commands"] if c['cmd'] == 0xFE]
                 except:
                     pass
             l = ind_
@@ -196,8 +202,10 @@ def parse_line(line, offset, with_comments=True):
 
     return name, args
 
+
 fd_names = [None]*256
 names = [None]*256
+
 
 def is_jump(line):
     if line[0] == 0xFD:
@@ -212,7 +220,6 @@ def get_jump_args(line, args):
         return -2
     else:
         return -1
-
 
 
 def adjust_music_calc(args):
@@ -234,6 +241,7 @@ def adjust_music_pitch(args):
 def adjust_music_tempo(args):
     direction, change, duration = adjust_music_calc(args)
     return 'adjust_music_tempo', ['%s' % (use_table_name('MusicDirections', music_direction_table, direction)), '%i' % (change), '%i' % (duration)]
+
 
 def level_mod(args, prefix, table):
     area_byte = shortify(args, 0)
@@ -577,7 +585,7 @@ def set_object_trigger_in_level(args):
 
 def stop_background_event(args):
     timer_memory = 0x701C + args[0] * 2
-    return 'stop_background_event', ['timer_memory=0x%04x' % (timer_memory)]
+    return 'stop_background_event', ['0x%04x' % (timer_memory)]
 
 
 def tint_layers(args):
@@ -999,27 +1007,20 @@ class Command(BaseCommand):
                             help='Path to a Mario RPG rom')
 
     def handle(self, *args, **options):
-        # print(short()(0x02, 0x80))
-        global rom  # Should make the round tripper work...?
+        global rom
         rom = bytearray(open(options['rom'], 'rb').read())
-        print('from django.core.management.base import BaseCommand')
-        print('from randomizer.logic.enscript import EventScript')
-        print('from randomizer.management.commands.eventdisassembler import tok, banks')
-        print('from randomizer.logic.osscript import ObjectSequenceScript as OSCommand')
-        print('from randomizer.data import items')
 
         scripts_data = []
 
         scripts = []
 
-        #determine what the individual lines are
+        # determine what the individual lines are
         for j in range(len(banks)):
 
             bank = banks[j]
             ptrs = []
             for i in range(bank["pointers"]["start"], bank["pointers"]["end"], 2):
                 ptrs.append((bank["id"] << 16) | (shortify(rom, i)))
-            print(len(ptrs))
             event_lengths = []
             for i in range(len(ptrs)):
                 if (i < len(ptrs) - 1):
@@ -1030,7 +1031,7 @@ class Command(BaseCommand):
                     script_content = tok(rom, ptrs[i], bank["end"], bank)
                 scripts.append(script_content)
 
-        #translate lines into commands and note any jump addresses
+        # translate lines into commands and note any jump addresses
         for i in range(len(scripts)):
             script = scripts[i]
             sd = []
@@ -1041,7 +1042,8 @@ class Command(BaseCommand):
                 subscript = []
                 if (is_jump(line)):
                     arg_index = get_jump_args(line, args)
-                    jump_args = [(int(ja, 16) | (offset & 0xFF0000)) for ja in args[arg_index:]]
+                    jump_args = [(int(ja, 16) | (offset & 0xFF0000))
+                                 for ja in args[arg_index:]]
                 else:
                     jump_args = []
                     if offset in jumped_to_from_action_queue and is_eligible_nonembedded_command(line[0:2]):
@@ -1066,7 +1068,8 @@ class Command(BaseCommand):
                         for k in range(len(disassembled_queue_commands)):
                             cmd = disassembled_queue_commands[k]
                             if cmd["has_jump"]:
-                                sub_jump_args = [(int(ja, 16) | (offset & 0xFF0000)) for ja in cmd["parsed_args"][-1:]]
+                                sub_jump_args = [
+                                    (int(ja, 16) | (offset & 0xFF0000)) for ja in cmd["parsed_args"][-1:]]
                             else:
                                 sub_jump_args = []
                             subscript.append({
@@ -1076,19 +1079,21 @@ class Command(BaseCommand):
                                 'identifier': identifier + "_SUBSCRIPT_%s_%i" % (cmd["name"], k),
                                 'jumps': sub_jump_args
                             })
-                sd.append({
+                new_sd = {
                     'command': name,
                     'args': args,
                     "original_offset": offset,
                     "identifier": identifier,
-                    "jumps": jump_args,
-                    "subscript": subscript
-                })
+                    "jumps": jump_args
+                }
+                if (line[0] < 0x30 and line[1] <= 0xF1) or nonembedded:
+                    new_sd["subscript"] = subscript
+                sd.append(new_sd)
             scripts_data.append(sd)
 
         scripts_with_named_jumps = []
 
-        #get the identifiers corresponding to where the jumps are going
+        # get the identifiers corresponding to where the jumps are going
         for i in range(len(scripts_data)):
             script = scripts_data[i]
             this_script = []
@@ -1097,60 +1102,69 @@ class Command(BaseCommand):
                 commands_to_replace = len(cmd["jumps"]) * -1
                 for j in cmd["jumps"]:
                     for sd in scripts_data:
-                        candidates = [c for c in sd if c["original_offset"] == j]
+                        candidates = [
+                            c for c in sd if c["original_offset"] == j]
                         if (len(candidates) > 0):
                             jumped_command = candidates[0]
-                            jumps.append('\'%s\'' % jumped_command["identifier"])
+                            jumps.append('\'%s\'' %
+                                         jumped_command["identifier"])
                 if commands_to_replace == 0:
                     new_args = cmd["args"]
                 else:
+                    if commands_to_replace != 0 and len(jumps) == 0:
+                        raise Exception(f'Event {i} @ {hex(cmd["original_offset"])} contains an invalid target address')
                     new_args = cmd["args"][:commands_to_replace] + jumps
-
-                subscript = []
-                for emb in cmd["subscript"]:
-                    commands_to_replace = len(emb["jumps"]) * -1
-                    subscript_jumps = []
-                    for j in emb["jumps"]:
-                        for sd in scripts_data:
-                            candidates = [c for c in sd if c["original_offset"] == j]
-                            if (len(candidates) > 0):
-                                jumped_command = candidates[0]
-                                subscript_jumps.append('\'%s\'' % jumped_command["identifier"])
-                            else:
-                                for command in sd:
-                                    candidates = [c for c in command["subscript"] if c["original_offset"] == j]
-                                    if (len(candidates) > 0):
-                                        jumped_command = candidates[0]
-                                        subscript_jumps.append('\'%s\'' % jumped_command["identifier"])
-                                    #not working
-                                    #search for jmp_if_loaded
-                    if commands_to_replace == 0:
-                        new_subscript_args = emb["args"]
-                    else:
-                        new_subscript_args = emb["args"][:commands_to_replace] + subscript_jumps
-                    subscript_cmd_with_named_jumps = {
-                        'command': emb["command"],
-                        'args': new_subscript_args,
-                        "identifier": emb["identifier"],
-                        #"offset": emb["original_offset"]
-                    }
-                    subscript.append(subscript_cmd_with_named_jumps)
 
                 cmd_with_named_jumps = {
                     'command': cmd["command"],
                     'args': new_args,
                     "identifier": cmd["identifier"],
-                    #"offset": cmd["original_offset"],
-                    "subscript": subscript
                 }
+
+                if "subscript" in cmd.keys():
+                    subscript = []
+                    for emb in cmd["subscript"]:
+                        commands_to_replace = len(emb["jumps"]) * -1
+                        subscript_jumps = []
+                        for j in emb["jumps"]:
+                            for sd in scripts_data:
+                                candidates = [
+                                    c for c in sd if c["original_offset"] == j]
+                                if (len(candidates) > 0):
+                                    jumped_command = candidates[0]
+                                    subscript_jumps.append(
+                                        '\'%s\'' % jumped_command["identifier"])
+                                else:
+                                    for command in sd:
+                                        if "subscript" in command.keys():
+                                            candidates = [
+                                                c for c in command["subscript"] if c["original_offset"] == j]
+                                            if (len(candidates) > 0):
+                                                jumped_command = candidates[0]
+                                                subscript_jumps.append(
+                                                    '\'%s\'' % jumped_command["identifier"])
+                        if commands_to_replace == 0:
+                            new_subscript_args = emb["args"]
+                        else:
+                            new_subscript_args = emb["args"][:commands_to_replace] + \
+                                subscript_jumps
+                        subscript_cmd_with_named_jumps = {
+                            'command': emb["command"],
+                            'args': new_subscript_args,
+                            "identifier": emb["identifier"],
+                            # "offset": emb["original_offset"]
+                        }
+                        subscript.append(subscript_cmd_with_named_jumps)
+                    cmd_with_named_jumps["subscript"] = subscript
                 this_script.append(cmd_with_named_jumps)
             scripts_with_named_jumps.append(this_script)
 
-        #output
+        # output
         for i in range(len(scripts_with_named_jumps)):
             file = open("randomizer/data/eventscripts/script_%i.py" % i, "w")
             writeline(file, 'from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
-            writeline(file, 'from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
+            writeline(
+                file, 'from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
             writeline(file, 'from randomizer.data import items')
             script = scripts_with_named_jumps[i]
             if len(script) == 0:
@@ -1161,29 +1175,38 @@ class Command(BaseCommand):
                     cmd = script[j]
                     writeline(file, '    {')
                     #writeline(file, '        "offset": 0x%x,' % cmd["offset"])
-                    writeline(file, '        "identifier": %r,' % cmd['identifier'])
-                    if len(cmd["args"]) == 0 and len(cmd['subscript']) == 0:
-                        writeline(file, '        "command": %r' % cmd['command'])
+                    writeline(file, '        "identifier": %r,' %
+                              cmd['identifier'])
+                    if len(cmd["args"]) == 0 and not ("subscript" in cmd.keys()):
+                        writeline(file, '        "command": %r' %
+                                  cmd['command'])
                     else:
-                        writeline(file, '        "command": %r,' % cmd['command'])
+                        writeline(file, '        "command": %r,' %
+                                  cmd['command'])
                     if len(cmd["args"]) > 0:
-                        if len(cmd['subscript']) == 0:
-                            writeline(file, '        "args": [%s]' % ', '.join(cmd["args"]))
+                        if not ("subscript" in cmd.keys()):
+                            writeline(
+                                file, '        "args": [%s]' % ', '.join(cmd["args"]))
                         else:
-                            writeline(file, '        "args": [%s],' % ', '.join(cmd["args"]))
-                    if len(cmd['subscript']) > 0:
+                            writeline(
+                                file, '        "args": [%s],' % ', '.join(cmd["args"]))
+                    if "subscript" in cmd.keys():
                         writeline(file, '        "subscript": [')
                         for k in range(len(cmd["subscript"])):
                             ss = cmd['subscript'][k]
                             writeline(file, '            {')
                             #writeline(file, '                "offset": 0x%x,' % ss["offset"])
-                            writeline(file, '                "identifier": %r,' % ss["identifier"])
+                            writeline(
+                                file, '                "identifier": %r,' % ss["identifier"])
                             if len(ss["args"]) == 0:
-                                writeline(file, '                "command": %r' % ss["command"])
+                                writeline(
+                                    file, '                "command": %r' % ss["command"])
                             else:
-                                writeline(file, '                "command": %r,' % ss["command"])
-                                writeline(file, '                "args": [%s]' % ', '.join(ss["args"]))
-                            if k == len(cmd["subscript"]) - 1: 
+                                writeline(
+                                    file, '                "command": %r,' % ss["command"])
+                                writeline(
+                                    file, '                "args": [%s]' % ', '.join(ss["args"]))
+                            if k == len(cmd["subscript"]) - 1:
                                 writeline(file, '            }')
                             else:
                                 writeline(file, '            },')
@@ -1195,10 +1218,11 @@ class Command(BaseCommand):
                 writeline(file, ']')
             file.close()
 
-        
-        file = open("randomizer/data/eventscripts/events.py", "w", encoding='utf-8')
+        file = open("randomizer/data/eventscripts/events.py",
+                    "w", encoding='utf-8')
         for i in range(len(scripts_data)):
-            writeline(file, 'from randomizer.data.eventscripts.script_%i import script as script_%i' % (i, i))
+            writeline(
+                file, 'from randomizer.data.eventscripts.script_%i import script as script_%i' % (i, i))
         writeline(file, 'scripts = [None]*%i' % len(scripts_data))
         for i in range(len(scripts_data)):
             writeline(file, 'scripts[%i] = script_%i' % (i, i))
@@ -1206,4 +1230,3 @@ class Command(BaseCommand):
 
 
 # Do round-trip testing command-by-command
-

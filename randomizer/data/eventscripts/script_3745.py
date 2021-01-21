@@ -24,7 +24,7 @@ script = [
             {
                 "identifier": 'EVENT_3745_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [9, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [9, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3745_action_queue_async_1_SUBSCRIPT_visibility_on_3',
@@ -84,7 +84,7 @@ script = [
             {
                 "identifier": 'EVENT_3745_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [10, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [10, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3745_action_queue_async_7_SUBSCRIPT_shadow_off_3',
@@ -180,7 +180,7 @@ script = [
             {
                 "identifier": 'EVENT_3745_action_queue_async_15_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [30, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [30, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3745_action_queue_async_15_SUBSCRIPT_visibility_on_3',
@@ -276,7 +276,7 @@ script = [
             {
                 "identifier": 'EVENT_3745_action_queue_async_23_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [0, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3745_action_queue_async_23_SUBSCRIPT_visibility_on_3',
@@ -342,7 +342,7 @@ script = [
             {
                 "identifier": 'EVENT_3745_action_queue_async_30_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
-                "args": [0, inc_sprite=3, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [0, 3, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3745_action_queue_async_30_SUBSCRIPT_visibility_on_3',

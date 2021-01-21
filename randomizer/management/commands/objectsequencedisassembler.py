@@ -102,7 +102,7 @@ def set_sprite_sequence(args):
     flag_short = shortify(args, 0)
     f = get_flag_string(flag_short, "_0x08Flags", _0x08_flags, [3, 4, 6, 15])
     sequence = args[1] & 0x7F
-    return 'set_sprite_sequence', ['%i' % sequence, 'inc_sprite=%i' % sprite, 'flags=%s' % f]
+    return 'set_sprite_sequence', ['%i' % sequence, '%i' % sprite, '%s' % f]
 
 
 def set_animation_speed(args):
@@ -115,7 +115,7 @@ def set_animation_speed(args):
 def set_object_memory_bits(obj):
     def inner_set_object_memory_bits(args):
         f = get_flag_string(args[0])
-        return 'set_object_memory_bits', ['0x%02x' % (obj), 'bits=%s' % f]
+        return 'set_object_memory_bits', ['0x%02x' % (obj), '%s' % f]
     return inner_set_object_memory_bits
 
 
@@ -144,7 +144,7 @@ def transfer_xyzf_pixels(args):
 
 
 def fade_out_sound_to_volume(args):
-    return 'fade_out_sound_to_volume', ['duration=%i' % (args[0]), 'volume=%i' % (args[1])]
+    return 'fade_out_sound_to_volume', ['%i' % (args[0]), '%i' % (args[1])]
 
 
 def parse_target_bit(cmd, args):
@@ -550,7 +550,6 @@ class Command(BaseCommand):
                 cmd = line[0]
                 rest = line[1:]
                 table = names
-            #print (hex(cmd), rest)
             if table[cmd]:
                 name, args = table[cmd](rest)
             else:
@@ -580,11 +579,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         global rom
         rom = bytearray(open(options['rom'], 'rb').read())
-        print('from osscript import ObjectSequenceScript')
-        print('from .objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
-        print('from .eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms')
-        print('from randomizer.management.commands.objectsequencedisassembler import tok')
-        print('script = ObjectSequenceScript()')
 
         scripts_data = []
         scripts = []

@@ -91,7 +91,7 @@ script = [
             {
                 "identifier": 'EVENT_347_action_queue_async_10_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_347_action_queue_async_10_SUBSCRIPT_face_southwest_2',
@@ -142,7 +142,7 @@ script = [
             {
                 "identifier": 'EVENT_347_action_queue_async_15_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
-                "args": [18, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+                "args": [18, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_347_action_queue_async_15_SUBSCRIPT_object_memory_clear_bit_2',

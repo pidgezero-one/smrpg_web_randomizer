@@ -167,7 +167,7 @@ script = [
             {
                 "identifier": 'EVENT_3352_action_queue_sync_27_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
-                "args": [0x0b, bits=[0, 1]]
+                "args": [0x0b, [0, 1]]
             },
             {
                 "identifier": 'EVENT_3352_action_queue_sync_27_SUBSCRIPT_shift_z_down_steps_1',
@@ -184,7 +184,7 @@ script = [
             {
                 "identifier": 'EVENT_3352_action_queue_sync_28_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [12, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+                "args": [12, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_3352_action_queue_sync_28_SUBSCRIPT_pause_1',
@@ -660,7 +660,7 @@ script = [
             {
                 "identifier": 'EVENT_3352_action_queue_sync_118_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
-                "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+                "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
             }
         ]
     },
