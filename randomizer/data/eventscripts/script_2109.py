@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2109_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7092, 5, 'EVENT_2109_ret_38'],
-        "subscript": []
+        "args": [0x7092, 5, 'EVENT_2109_ret_38']
     },
     {
         "identifier": 'EVENT_2109_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7092, 6, 'EVENT_2109_ret_38'],
-        "subscript": []
+        "args": [0x7092, 6, 'EVENT_2109_ret_38']
     },
     {
         "identifier": 'EVENT_2109_fade_out_music_to_volume_2',
         "command": 'fade_out_music_to_volume',
-        "args": [0, 0],
-        "subscript": []
+        "args": [0, 0]
     },
     {
         "identifier": 'EVENT_2109_action_queue_async_3',
@@ -46,8 +44,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_3_SUBSCRIPT_reset_properties_4',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_3_SUBSCRIPT_set_animation_speed_5',
@@ -66,22 +63,19 @@ script = [
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_3_SUBSCRIPT_face_southeast_8',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2109_pause_4',
         "command": 'pause',
-        "args": [40],
-        "subscript": []
+        "args": [40]
     },
     {
         "identifier": 'EVENT_2109_pause_5',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2109_action_queue_async_6',
@@ -98,14 +92,12 @@ script = [
     {
         "identifier": 'EVENT_2109_pause_7',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2109_pause_8',
         "command": 'pause',
-        "args": [80],
-        "subscript": []
+        "args": [80]
     },
     {
         "identifier": 'EVENT_2109_action_queue_async_9',
@@ -114,13 +106,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2109_action_queue_async_9_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_9_SUBSCRIPT_sequence_looping_off_1',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_9_SUBSCRIPT_pause_2',
@@ -171,13 +161,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_10_SUBSCRIPT_reset_properties_3',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_10_SUBSCRIPT_fixed_f_coord_off_4',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_10_SUBSCRIPT_set_animation_speed_5',
@@ -206,112 +194,78 @@ script = [
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_10_SUBSCRIPT_visibility_off_10',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2109_stop_sound_11',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_12',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_13',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_14',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_15',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_16',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_17',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_18',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_19',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_20',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_21',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_22',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_23',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_24',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_25',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_stop_sound_26',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2109_enter_area_27',
         "command": 'enter_area',
-        "args": [Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, RadialDirections.SOUTHEAST, 2, 56, 0, []],
-        "subscript": []
+        "args": [Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, RadialDirections.SOUTHEAST, 2, 56, 0, []]
     },
     {
         "identifier": 'EVENT_2109_action_queue_async_28',
@@ -343,8 +297,7 @@ script = [
     {
         "identifier": 'EVENT_2109_palette_set_29',
         "command": 'palette_set',
-        "args": [111, 1],
-        "subscript": []
+        "args": [111, 1]
     },
     {
         "identifier": 'EVENT_2109_action_queue_sync_30',
@@ -363,8 +316,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2109_action_queue_sync_30_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -385,8 +337,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2109_action_queue_sync_31_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -407,22 +358,17 @@ script = [
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_32_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2109_fade_in_from_black_async_33',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2109_freeze_camera_34',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2109_action_queue_async_35',
@@ -451,8 +397,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_35_SUBSCRIPT_face_northeast_4',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_2109_action_queue_async_35_SUBSCRIPT_set_animation_speed_5',
@@ -464,19 +409,15 @@ script = [
     {
         "identifier": 'EVENT_2109_pause_36',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2109_jmp_37',
         "command": 'jmp',
-        "args": ['EVENT_2114_fade_out_music_to_volume_0'],
-        "subscript": []
+        "args": ['EVENT_2114_fade_out_music_to_volume_0']
     },
     {
         "identifier": 'EVENT_2109_ret_38',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

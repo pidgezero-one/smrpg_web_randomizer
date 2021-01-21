@@ -1,149 +1,124 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1913_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1913_ret_25'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_1913_ret_25']
     },
     {
         "identifier": 'EVENT_1913_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_1913_ret_25'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_1913_ret_25']
     },
     {
         "identifier": 'EVENT_1913_set_bit_2',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_1913_clear_bit_3',
         "command": 'clear_bit',
-        "args": [0x7043, 2],
-        "subscript": []
+        "args": [0x7043, 2]
     },
     {
         "identifier": 'EVENT_1913_set_7016_to_object_xyz_4',
         "command": 'set_7016_to_object_xyz',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_1913_add_short_5',
         "command": 'add_short',
-        "args": [0x701a, 0x0800],
-        "subscript": []
+        "args": [0x701a, 0x0800]
     },
     {
         "identifier": 'EVENT_1913_set_7000_to_pressed_button_6',
-        "command": 'set_7000_to_pressed_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_pressed_button'
     },
     {
         "identifier": 'EVENT_1913_jmp_if_7000_all_bits_clear_7',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[0, 1, 2, 3], 'EVENT_1913_action_queue_sync_24'],
-        "subscript": []
+        "args": [[0, 1, 2, 3], 'EVENT_1913_action_queue_sync_24']
     },
     {
         "identifier": 'EVENT_1913_set_7000_to_pressed_button_8',
-        "command": 'set_7000_to_pressed_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_pressed_button'
     },
     {
         "identifier": 'EVENT_1913_jmp_if_7000_any_bits_set_9',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[6], 'EVENT_1913_set_7000_to_object_coord_11'],
-        "subscript": []
+        "args": [[6], 'EVENT_1913_set_7000_to_object_coord_11']
     },
     {
         "identifier": 'EVENT_1913_set_bit_10',
         "command": 'set_bit',
-        "args": [0x7043, 2],
-        "subscript": []
+        "args": [0x7043, 2]
     },
     {
         "identifier": 'EVENT_1913_set_7000_to_object_coord_11',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.F]
     },
     {
         "identifier": 'EVENT_1913_jmp_if_var_equals_short_12',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 6, 'EVENT_1913_add_short_18'],
-        "subscript": []
+        "args": [0x7000, 6, 'EVENT_1913_add_short_18']
     },
     {
         "identifier": 'EVENT_1913_jmp_if_var_equals_short_13',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 7, 'EVENT_1913_add_short_20'],
-        "subscript": []
+        "args": [0x7000, 7, 'EVENT_1913_add_short_20']
     },
     {
         "identifier": 'EVENT_1913_jmp_if_var_equals_short_14',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1913_add_short_23'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_1913_add_short_23']
     },
     {
         "identifier": 'EVENT_1913_add_short_15',
         "command": 'add_short',
-        "args": [0x7016, 0xff40],
-        "subscript": []
+        "args": [0x7016, 0xff40]
     },
     {
         "identifier": 'EVENT_1913_add_short_16',
         "command": 'add_short',
-        "args": [0x7018, 0x00c0],
-        "subscript": []
+        "args": [0x7018, 0x00c0]
     },
     {
         "identifier": 'EVENT_1913_jmp_17',
         "command": 'jmp',
-        "args": ['EVENT_1913_action_queue_sync_24'],
-        "subscript": []
+        "args": ['EVENT_1913_action_queue_sync_24']
     },
     {
         "identifier": 'EVENT_1913_add_short_18',
         "command": 'add_short',
-        "args": [0x7018, 0xfe80],
-        "subscript": []
+        "args": [0x7018, 0xfe80]
     },
     {
         "identifier": 'EVENT_1913_jmp_19',
         "command": 'jmp',
-        "args": ['EVENT_1913_action_queue_sync_24'],
-        "subscript": []
+        "args": ['EVENT_1913_action_queue_sync_24']
     },
     {
         "identifier": 'EVENT_1913_add_short_20',
         "command": 'add_short',
-        "args": [0x7016, 0x0180],
-        "subscript": []
+        "args": [0x7016, 0x0180]
     },
     {
         "identifier": 'EVENT_1913_add_short_21',
         "command": 'add_short',
-        "args": [0x7018, 0xff40],
-        "subscript": []
+        "args": [0x7018, 0xff40]
     },
     {
         "identifier": 'EVENT_1913_jmp_22',
         "command": 'jmp',
-        "args": ['EVENT_1913_action_queue_sync_24'],
-        "subscript": []
+        "args": ['EVENT_1913_action_queue_sync_24']
     },
     {
         "identifier": 'EVENT_1913_add_short_23',
         "command": 'add_short',
-        "args": [0x7016, 0x0180],
-        "subscript": []
+        "args": [0x7016, 0x0180]
     },
     {
         "identifier": 'EVENT_1913_action_queue_sync_24',
@@ -177,13 +152,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_visibility_on_5',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_floating_off_6',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_set_animation_speed_7',
@@ -207,8 +180,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_visibility_on_11',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_pause_12',
@@ -217,8 +189,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_visibility_off_13',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_pause_14',
@@ -227,8 +198,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_end_loop_15',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_1913_action_queue_sync_24_SUBSCRIPT_clear_bit_16',
@@ -239,8 +209,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1913_ret_25',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

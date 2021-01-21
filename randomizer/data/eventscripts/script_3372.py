@@ -1,29 +1,25 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3372_move_script_to_background_thread_2_0',
-        "command": 'move_script_to_background_thread_2',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_background_thread_2'
     },
     {
         "identifier": 'EVENT_3372_jmp_fork_mario_on_object_1',
         "command": 'jmp_fork_mario_on_object',
-        "args": ['EVENT_3372_ret_29', 'EVENT_3372_set_bit_7'],
-        "subscript": []
+        "args": ['EVENT_3372_ret_29', 'EVENT_3372_set_bit_7']
     },
     {
         "identifier": 'EVENT_3372_set_bit_2',
         "command": 'set_bit',
-        "args": [0x7044, 7],
-        "subscript": []
+        "args": [0x7044, 7]
     },
     {
         "identifier": 'EVENT_3372_resume_action_script_3',
         "command": 'resume_action_script',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3372_action_queue_async_4',
@@ -122,8 +118,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_4_SUBSCRIPT_fixed_f_coord_on_18',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_4_SUBSCRIPT_set_animation_speed_19',
@@ -147,8 +142,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_4_SUBSCRIPT_fixed_f_coord_off_23',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_4_SUBSCRIPT_set_animation_speed_24',
@@ -157,40 +151,33 @@ script = [
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_4_SUBSCRIPT_reset_properties_25',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_3372_clear_bit_5',
         "command": 'clear_bit',
-        "args": [0x7044, 7],
-        "subscript": []
+        "args": [0x7044, 7]
     },
     {
         "identifier": 'EVENT_3372_ret_6',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3372_set_bit_7',
         "command": 'set_bit',
-        "args": [0x7044, 7],
-        "subscript": []
+        "args": [0x7044, 7]
     },
     {
         "identifier": 'EVENT_3372_set_short_mem_8',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8],
-        "subscript": []
+        "args": [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_3372_set_short_mem_9',
         "command": 'set_short_mem',
-        "args": [0x70ab, 0x7000],
-        "subscript": []
+        "args": [0x70ab, 0x7000]
     },
     {
         "identifier": 'EVENT_3372_action_queue_sync_10',
@@ -354,68 +341,56 @@ script = [
     {
         "identifier": 'EVENT_3372_resume_action_script_12',
         "command": 'resume_action_script',
-        "args": [AreaObjects.MEM_70AB],
-        "subscript": []
+        "args": [AreaObjects.MEM_70AB]
     },
     {
         "identifier": 'EVENT_3372_set_short_13',
         "command": 'set_short',
-        "args": [0x7024, 0x0000],
-        "subscript": []
+        "args": [0x7024, 0x0000]
     },
     {
         "identifier": 'EVENT_3372_pause_14',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3372_set_7000_to_tapped_button_15',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_3372_jmp_if_var_equals_short_16',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3372_add_short_19'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_3372_add_short_19']
     },
     {
         "identifier": 'EVENT_3372_add_short_17',
         "command": 'add_short',
-        "args": [0x7024, 0x01],
-        "subscript": []
+        "args": [0x7024, 0x01]
     },
     {
         "identifier": 'EVENT_3372_jmp_if_var_equals_short_18',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7024, 0, 'EVENT_3372_action_queue_async_23'],
-        "subscript": []
+        "args": [0x7024, 0, 'EVENT_3372_action_queue_async_23']
     },
     {
         "identifier": 'EVENT_3372_add_short_19',
         "command": 'add_short',
-        "args": [0x7024, 0x01],
-        "subscript": []
+        "args": [0x7024, 0x01]
     },
     {
         "identifier": 'EVENT_3372_add_short_20',
         "command": 'add_short',
-        "args": [0x7024, 0x01],
-        "subscript": []
+        "args": [0x7024, 0x01]
     },
     {
         "identifier": 'EVENT_3372_mem_compare_21',
         "command": 'mem_compare',
-        "args": [0x7024, 120],
-        "subscript": []
+        "args": [0x7024, 120]
     },
     {
         "identifier": 'EVENT_3372_jmp_if_comparison_result_is_lesser_22',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_3372_pause_14'],
-        "subscript": []
+        "args": ['EVENT_3372_pause_14']
     },
     {
         "identifier": 'EVENT_3372_action_queue_async_23',
@@ -434,13 +409,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_23_SUBSCRIPT_reset_properties_2',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_23_SUBSCRIPT_fixed_f_coord_on_3',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_23_SUBSCRIPT_turn_clockwise_45_degrees_n_times_4',
@@ -449,8 +422,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_23_SUBSCRIPT_walk_1_step_f_direction_5',
-                "command": 'walk_1_step_f_direction',
-                "args": []
+                "command": 'walk_1_step_f_direction'
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_23_SUBSCRIPT_turn_clockwise_45_degrees_n_times_6',
@@ -459,8 +431,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_23_SUBSCRIPT_fixed_f_coord_off_7',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_3372_action_queue_async_23_SUBSCRIPT_set_animation_speed_8',
@@ -472,20 +443,17 @@ script = [
     {
         "identifier": 'EVENT_3372_set_short_mem_24',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x70ab],
-        "subscript": []
+        "args": [0x7000, 0x70ab]
     },
     {
         "identifier": 'EVENT_3372_set_short_mem_25',
         "command": 'set_short_mem',
-        "args": [0x70ae, 0x7000],
-        "subscript": []
+        "args": [0x70ae, 0x7000]
     },
     {
         "identifier": 'EVENT_3372_set_action_script_async_26',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 671]
     },
     {
         "identifier": 'EVENT_3372_action_queue_async_27',
@@ -502,13 +470,10 @@ script = [
     {
         "identifier": 'EVENT_3372_clear_bit_28',
         "command": 'clear_bit',
-        "args": [0x7044, 7],
-        "subscript": []
+        "args": [0x7044, 7]
     },
     {
         "identifier": 'EVENT_3372_ret_29',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

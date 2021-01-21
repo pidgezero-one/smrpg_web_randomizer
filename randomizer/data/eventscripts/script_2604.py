@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2604_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x708f, 5, 'EVENT_2604_ret_16'],
-        "subscript": []
+        "args": [0x708f, 5, 'EVENT_2604_ret_16']
     },
     {
         "identifier": 'EVENT_2604_set_bit_1',
         "command": 'set_bit',
-        "args": [0x708f, 5],
-        "subscript": []
+        "args": [0x708f, 5]
     },
     {
         "identifier": 'EVENT_2604_action_queue_sync_2',
@@ -38,14 +37,12 @@ script = [
     {
         "identifier": 'EVENT_2604_set_action_script_sync_3',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 7],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8, 7]
     },
     {
         "identifier": 'EVENT_2604_pause_4',
         "command": 'pause',
-        "args": [6],
-        "subscript": []
+        "args": [6]
     },
     {
         "identifier": 'EVENT_2604_action_queue_sync_5',
@@ -106,69 +103,57 @@ script = [
             },
             {
                 "identifier": 'EVENT_2604_action_queue_sync_6_SUBSCRIPT_ret_2',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
     {
         "identifier": 'EVENT_2604_stop_embedded_action_script_7',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_2604_pause_8',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2604_set_action_script_sync_9',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 385],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 385]
     },
     {
         "identifier": 'EVENT_2604_pause_10',
         "command": 'pause',
-        "args": [8],
-        "subscript": []
+        "args": [8]
     },
     {
         "identifier": 'EVENT_2604_play_sound_11',
         "command": 'play_sound',
-        "args": [Sounds._085_FLOWER, 6],
-        "subscript": []
+        "args": [Sounds._085_FLOWER, 6]
     },
     {
         "identifier": 'EVENT_2604_run_dialog_12',
         "command": 'run_dialog',
-        "args": [3161, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]],
-        "subscript": []
+        "args": [3161, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_2604_put_inventory_13',
         "command": 'put_inventory',
-        "args": [items.UltraHammer],
-        "subscript": []
+        "args": [items.UltraHammer]
     },
     {
         "identifier": 'EVENT_2604_pause_14',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2604_jmp_if_objects_action_script_running_15',
         "command": 'jmp_if_objects_action_script_running',
-        "args": [AreaObjects.MARIO, 'EVENT_2604_pause_14'],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 'EVENT_2604_pause_14']
     },
     {
         "identifier": 'EVENT_2604_ret_16',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2366_action_queue_async_0',
@@ -18,16 +19,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2366_action_queue_async_0_SUBSCRIPT_reset_properties_2',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_2366_join_party_1',
         "command": 'join_party',
-        "args": [AreaObjects.GENO],
-        "subscript": []
+        "args": [AreaObjects.GENO]
     },
     {
         "identifier": 'EVENT_2366_action_queue_sync_2',
@@ -48,8 +47,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2366_action_queue_sync_3_SUBSCRIPT_shadow_off_0',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             }
         ]
     },
@@ -89,15 +87,12 @@ script = [
     },
     {
         "identifier": 'EVENT_2366_fade_in_from_black_async_6',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2366_pause_7',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2366_action_queue_async_8',
@@ -194,8 +189,7 @@ script = [
     {
         "identifier": 'EVENT_2366_set_action_script_sync_9',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 766],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 766]
     },
     {
         "identifier": 'EVENT_2366_action_queue_async_10',
@@ -219,8 +213,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2366_action_queue_async_10_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2366_action_queue_async_10_SUBSCRIPT_set_vram_priority_4',
@@ -242,20 +235,17 @@ script = [
     {
         "identifier": 'EVENT_2366_pause_11',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_12',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_12],
-        "subscript": []
+        "args": [AreaObjects.NPC_12]
     },
     {
         "identifier": 'EVENT_2366_set_action_script_sync_13',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 767],
-        "subscript": []
+        "args": [AreaObjects.NPC_11, 767]
     },
     {
         "identifier": 'EVENT_2366_action_queue_sync_14',
@@ -272,20 +262,17 @@ script = [
     {
         "identifier": 'EVENT_2366_pause_15',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_2366_summon_to_current_level_16',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_13],
-        "subscript": []
+        "args": [AreaObjects.NPC_13]
     },
     {
         "identifier": 'EVENT_2366_pause_17',
         "command": 'pause',
-        "args": [8],
-        "subscript": []
+        "args": [8]
     },
     {
         "identifier": 'EVENT_2366_action_queue_sync_18',
@@ -299,8 +286,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2366_action_queue_sync_18_SUBSCRIPT_walk_1_step_southeast_1',
-                "command": 'walk_1_step_southeast',
-                "args": []
+                "command": 'walk_1_step_southeast'
             },
             {
                 "identifier": 'EVENT_2366_action_queue_sync_18_SUBSCRIPT_shift_southeast_pixels_2',
@@ -312,164 +298,136 @@ script = [
     {
         "identifier": 'EVENT_2366_pause_19',
         "command": 'pause',
-        "args": [8],
-        "subscript": []
+        "args": [8]
     },
     {
         "identifier": 'EVENT_2366_screen_flashes_with_colour_20',
         "command": 'screen_flashes_with_colour',
-        "args": [Colours.RED],
-        "subscript": []
+        "args": [Colours.RED]
     },
     {
         "identifier": 'EVENT_2366_pause_21',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_2366_screen_flashes_with_colour_22',
         "command": 'screen_flashes_with_colour',
-        "args": [Colours.YELLOW],
-        "subscript": []
+        "args": [Colours.YELLOW]
     },
     {
         "identifier": 'EVENT_2366_pause_23',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_2366_screen_flashes_with_colour_24',
         "command": 'screen_flashes_with_colour',
-        "args": [Colours.RED],
-        "subscript": []
+        "args": [Colours.RED]
     },
     {
         "identifier": 'EVENT_2366_pause_25',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_2366_screen_flashes_with_colour_26',
         "command": 'screen_flashes_with_colour',
-        "args": [Colours.YELLOW],
-        "subscript": []
+        "args": [Colours.YELLOW]
     },
     {
         "identifier": 'EVENT_2366_pause_27',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_28',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_13],
-        "subscript": []
+        "args": [AreaObjects.NPC_13]
     },
     {
         "identifier": 'EVENT_2366_screen_flashes_with_colour_29',
         "command": 'screen_flashes_with_colour',
-        "args": [Colours.RED],
-        "subscript": []
+        "args": [Colours.RED]
     },
     {
         "identifier": 'EVENT_2366_freeze_camera_30',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2366_pause_31',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2366_circle_mask_nonstatic_32',
         "command": 'circle_mask_nonstatic',
-        "args": [AreaObjects.NPC_11, 24, 5],
-        "subscript": []
+        "args": [AreaObjects.NPC_11, 24, 5]
     },
     {
         "identifier": 'EVENT_2366_pause_33',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_34',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_35',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_36',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_37',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_38',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4],
-        "subscript": []
+        "args": [AreaObjects.NPC_4]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_39',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5],
-        "subscript": []
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_40',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6],
-        "subscript": []
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_41',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7],
-        "subscript": []
+        "args": [AreaObjects.NPC_7]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_42',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_8],
-        "subscript": []
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_43',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10],
-        "subscript": []
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_2366_remove_from_current_level_44',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_14],
-        "subscript": []
+        "args": [AreaObjects.NPC_14]
     },
     {
         "identifier": 'EVENT_2366_pause_45',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2366_action_queue_sync_46',
@@ -478,23 +436,19 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2366_action_queue_sync_46_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2366_action_queue_sync_46_SUBSCRIPT_sequence_looping_off_1',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_2366_action_queue_sync_46_SUBSCRIPT_reset_properties_2',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2366_action_queue_sync_46_SUBSCRIPT_sequence_playback_off_3',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_2366_action_queue_sync_46_SUBSCRIPT_set_sprite_sequence_4',
@@ -533,37 +487,30 @@ script = [
     {
         "identifier": 'EVENT_2366_set_action_script_sync_48',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_11, 854],
-        "subscript": []
+        "args": [AreaObjects.NPC_11, 854]
     },
     {
         "identifier": 'EVENT_2366_display_intro_title_49',
         "command": 'display_intro_title',
-        "args": [17, IntroTitles.GENO],
-        "subscript": []
+        "args": [17, IntroTitles.GENO]
     },
     {
         "identifier": 'EVENT_2366_pause_50',
         "command": 'pause',
-        "args": [150],
-        "subscript": []
+        "args": [150]
     },
     {
         "identifier": 'EVENT_2366_fade_out_to_black_async_duration_51',
         "command": 'fade_out_to_black_async_duration',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2366_jmp_to_event_52',
         "command": 'jmp_to_event',
-        "args": [137],
-        "subscript": []
+        "args": [137]
     },
     {
         "identifier": 'EVENT_2366_ret_53',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

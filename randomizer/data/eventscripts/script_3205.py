@@ -1,113 +1,95 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3205_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7056, 4, 'EVENT_3205_ret_27'],
-        "subscript": []
+        "args": [0x7056, 4, 'EVENT_3205_ret_27']
     },
     {
         "identifier": 'EVENT_3205_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7057, 3, 'EVENT_3205_ret_27'],
-        "subscript": []
+        "args": [0x7057, 3, 'EVENT_3205_ret_27']
     },
     {
         "identifier": 'EVENT_3205_enter_area_2',
         "command": 'enter_area',
-        "args": [Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, RadialDirections.SOUTHWEST, 27, 86, 0, []],
-        "subscript": []
+        "args": [Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, RadialDirections.SOUTHWEST, 27, 86, 0, []]
     },
     {
         "identifier": 'EVENT_3205_remove_from_current_level_3',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_3205_jmp_if_object_not_in_level_4',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_6, Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 'EVENT_3205_run_event_as_subroutine_7'],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 'EVENT_3205_run_event_as_subroutine_7']
     },
     {
         "identifier": 'EVENT_3205_pause_action_script_5',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_6],
-        "subscript": []
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_3205_remove_from_current_level_6',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6],
-        "subscript": []
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_3205_run_event_as_subroutine_7',
         "command": 'run_event_as_subroutine',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_3205_set_7010_to_object_xyz_8',
         "command": 'set_7010_to_object_xyz',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_3205_start_loop_n_times_9',
         "command": 'start_loop_n_times',
-        "args": [7],
-        "subscript": []
+        "args": [7]
     },
     {
         "identifier": 'EVENT_3205_create_packet_at_7010_coords_jmp_if_null_10',
         "command": 'create_packet_at_7010_coords_jmp_if_null',
-        "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, 'EVENT_3205_pause_13'],
-        "subscript": []
+        "args": [NPCPackets._024_BOMB_EXPLOSION_SFX, 'EVENT_3205_pause_13']
     },
     {
         "identifier": 'EVENT_3205_add_short_11',
         "command": 'add_short',
-        "args": [0x7014, 0x0020],
-        "subscript": []
+        "args": [0x7014, 0x0020]
     },
     {
         "identifier": 'EVENT_3205_pause_12',
         "command": 'pause',
-        "args": [4],
-        "subscript": []
+        "args": [4]
     },
     {
         "identifier": 'EVENT_3205_pause_13',
         "command": 'pause',
-        "args": [4],
-        "subscript": []
+        "args": [4]
     },
     {
         "identifier": 'EVENT_3205_end_loop_14',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3205_apply_tile_mod_15',
         "command": 'apply_tile_mod',
-        "args": [Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 32, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 32, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_3205_apply_solidity_mod_16',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_3205_set_bit_17',
         "command": 'set_bit',
-        "args": [0x7057, 3],
-        "subscript": []
+        "args": [0x7057, 3]
     },
     {
         "identifier": 'EVENT_3205_action_queue_sync_18',
@@ -131,13 +113,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_18_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_18_SUBSCRIPT_sequence_playback_on_4',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_18_SUBSCRIPT_play_sound_5',
@@ -156,8 +136,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_18_SUBSCRIPT_visibility_off_8',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -188,13 +167,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_19_SUBSCRIPT_visibility_on_4',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_19_SUBSCRIPT_sequence_playback_on_5',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_19_SUBSCRIPT_play_sound_6',
@@ -213,8 +190,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_19_SUBSCRIPT_visibility_off_9',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -245,13 +221,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_20_SUBSCRIPT_visibility_on_4',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_20_SUBSCRIPT_sequence_playback_on_5',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_20_SUBSCRIPT_play_sound_6',
@@ -270,8 +244,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3205_action_queue_sync_20_SUBSCRIPT_visibility_off_9',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -302,13 +275,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3205_action_queue_async_21_SUBSCRIPT_visibility_on_4',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3205_action_queue_async_21_SUBSCRIPT_sequence_playback_on_5',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_3205_action_queue_async_21_SUBSCRIPT_play_sound_6',
@@ -327,16 +298,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_3205_action_queue_async_21_SUBSCRIPT_visibility_off_9',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3205_summon_to_current_level_22',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_3205_action_queue_async_23',
@@ -350,8 +319,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3205_action_queue_async_23_SUBSCRIPT_walk_1_step_southwest_1',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_3205_action_queue_async_23_SUBSCRIPT_set_solidity_bits_2',
@@ -363,25 +331,20 @@ script = [
     {
         "identifier": 'EVENT_3205_set_24',
         "command": 'set',
-        "args": [0x70b5, 19],
-        "subscript": []
+        "args": [0x70b5, 19]
     },
     {
         "identifier": 'EVENT_3205_jmp_if_object_not_in_level_25',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_6, Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 'EVENT_3205_ret_27'],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 'EVENT_3205_ret_27']
     },
     {
         "identifier": 'EVENT_3205_set_action_script_sync_26',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 726],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 726]
     },
     {
         "identifier": 'EVENT_3205_ret_27',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

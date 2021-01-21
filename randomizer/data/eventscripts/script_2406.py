@@ -1,17 +1,15 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2406_jmp_if_objects_less_than_xy_steps_apart_0',
         "command": 'jmp_if_objects_less_than_xy_steps_apart',
-        "args": [AreaObjects.MARIO, AreaObjects.NPC_9, 0x0c, 0x0c, 'EVENT_2406_action_queue_sync_2'],
-        "subscript": []
+        "args": [AreaObjects.MARIO, AreaObjects.NPC_9, 0x0c, 0x0c, 'EVENT_2406_action_queue_sync_2']
     },
     {
         "identifier": 'EVENT_2406_ret_1',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2406_action_queue_sync_2',
@@ -28,38 +26,30 @@ script = [
     {
         "identifier": 'EVENT_2406_remove_from_level_3',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_9, Rooms._159_STAR_HILL_AREA_04],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, Rooms._159_STAR_HILL_AREA_04]
     },
     {
         "identifier": 'EVENT_2406_remove_from_current_level_4',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_9],
-        "subscript": []
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_2406_set_short_5',
         "command": 'set_short',
-        "args": [0x700a, 0x00d2],
-        "subscript": []
+        "args": [0x700a, 0x00d2]
     },
     {
         "identifier": 'EVENT_2406_jmp_to_event_6',
         "command": 'jmp_to_event',
-        "args": [720],
-        "subscript": []
+        "args": [720]
     },
     {
         "identifier": 'EVENT_2406_ret_7',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2406_fade_out_music_8',
-        "command": 'fade_out_music',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_music'
     },
     {
         "identifier": 'EVENT_2406_action_queue_async_9',
@@ -76,20 +66,17 @@ script = [
     {
         "identifier": 'EVENT_2406_pause_10',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2406_summon_to_current_level_at_marios_coords_11',
         "command": 'summon_to_current_level_at_marios_coords',
-        "args": [AreaObjects.NPC_8],
-        "subscript": []
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_2406_pause_12',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2406_action_queue_async_13',
@@ -123,62 +110,44 @@ script = [
     {
         "identifier": 'EVENT_2406_play_music_default_volume_15',
         "command": 'play_music_default_volume',
-        "args": [Music._23_GOT_A_STAR_PIECE_PART_1],
-        "subscript": []
+        "args": [Music._23_GOT_A_STAR_PIECE_PART_1]
     },
     {
         "identifier": 'EVENT_2406_stop_sound_16',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2406_stop_sound_17',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2406_stop_sound_18',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2406_stop_sound_19',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2406_stop_sound_20',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2406_stop_sound_21',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2406_stop_sound_22',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2406_stop_sound_23',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2406_pause_24',
         "command": 'pause',
-        "args": [68],
-        "subscript": []
+        "args": [68]
     },
     {
         "identifier": 'EVENT_2406_action_queue_async_25',
@@ -267,20 +236,17 @@ script = [
     {
         "identifier": 'EVENT_2406_pause_27',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2406_set_action_script_sync_28',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 394],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 394]
     },
     {
         "identifier": 'EVENT_2406_pause_29',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2406_action_queue_sync_30',
@@ -297,8 +263,7 @@ script = [
     {
         "identifier": 'EVENT_2406_pause_short_31',
         "command": 'pause_short',
-        "args": [544],
-        "subscript": []
+        "args": [544]
     },
     {
         "identifier": 'EVENT_2406_action_queue_async_32',
@@ -317,16 +282,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2406_action_queue_async_32_SUBSCRIPT_face_south_2',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             }
         ]
     },
     {
         "identifier": 'EVENT_2406_pause_33',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2406_action_queue_async_34',
@@ -448,14 +411,12 @@ script = [
     {
         "identifier": 'EVENT_2406_play_music_default_volume_35',
         "command": 'play_music_default_volume',
-        "args": [Music._24_GOT_A_STAR_PIECE_PART_2],
-        "subscript": []
+        "args": [Music._24_GOT_A_STAR_PIECE_PART_2]
     },
     {
         "identifier": 'EVENT_2406_pause_36',
         "command": 'pause',
-        "args": [48],
-        "subscript": []
+        "args": [48]
     },
     {
         "identifier": 'EVENT_2406_action_queue_sync_37',
@@ -499,8 +460,7 @@ script = [
     {
         "identifier": 'EVENT_2406_pause_short_39',
         "command": 'pause_short',
-        "args": [464],
-        "subscript": []
+        "args": [464]
     },
     {
         "identifier": 'EVENT_2406_action_queue_sync_40',
@@ -559,20 +519,17 @@ script = [
     {
         "identifier": 'EVENT_2406_pause_42',
         "command": 'pause',
-        "args": [73],
-        "subscript": []
+        "args": [73]
     },
     {
         "identifier": 'EVENT_2406_fade_out_to_black_async_duration_43',
         "command": 'fade_out_to_black_async_duration',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2406_run_star_piece_sequence_44',
         "command": 'run_star_piece_sequence',
-        "args": [4],
-        "subscript": []
+        "args": [4]
     },
     {
         "identifier": 'EVENT_2406_action_queue_async_45',
@@ -594,145 +551,116 @@ script = [
     {
         "identifier": 'EVENT_2406_set_action_script_async_46',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2406_fade_in_from_black_async_47',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2406_pause_48',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2406_set_bit_7_offset_49',
         "command": 'set_bit_7_offset',
-        "args": [0x0158],
-        "subscript": []
+        "args": [0x0158]
     },
     {
         "identifier": 'EVENT_2406_set_bit_7_offset_50',
         "command": 'set_bit_7_offset',
-        "args": [0x015a],
-        "subscript": []
+        "args": [0x015a]
     },
     {
         "identifier": 'EVENT_2406_set_bit_7_offset_51',
         "command": 'set_bit_7_offset',
-        "args": [0x015c],
-        "subscript": []
+        "args": [0x015c]
     },
     {
         "identifier": 'EVENT_2406_db_52',
         "command": 'db',
-        "args": [0xfd, 0x8e, 0x80, 0x07, 0x01],
-        "subscript": []
+        "args": [0xfd, 0x8e, 0x80, 0x07, 0x01]
     },
     {
         "identifier": 'EVENT_2406_pause_script_until_effect_done_53',
-        "command": 'pause_script_until_effect_done',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_until_effect_done'
     },
     {
         "identifier": 'EVENT_2406_run_dialog_54',
         "command": 'run_dialog',
-        "args": [3442, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3442, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2406_pause_55',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2406_set_action_script_sync_56',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 385],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 385]
     },
     {
         "identifier": 'EVENT_2406_pause_57',
         "command": 'pause',
-        "args": [52],
-        "subscript": []
+        "args": [52]
     },
     {
         "identifier": 'EVENT_2406_play_sound_58',
         "command": 'play_sound',
-        "args": [Sounds._013_COIN, 6],
-        "subscript": []
+        "args": [Sounds._013_COIN, 6]
     },
     {
         "identifier": 'EVENT_2406_pause_59',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2406_db_60',
         "command": 'db',
-        "args": [0xfd, 0x8e, 0xb2, 0x07, 0x01],
-        "subscript": []
+        "args": [0xfd, 0x8e, 0xb2, 0x07, 0x01]
     },
     {
         "identifier": 'EVENT_2406_pause_script_until_effect_done_61',
-        "command": 'pause_script_until_effect_done',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_until_effect_done'
     },
     {
         "identifier": 'EVENT_2406_clear_bit_7_offset_62',
         "command": 'clear_bit_7_offset',
-        "args": [0x0158],
-        "subscript": []
+        "args": [0x0158]
     },
     {
         "identifier": 'EVENT_2406_clear_bit_7_offset_63',
         "command": 'clear_bit_7_offset',
-        "args": [0x015a],
-        "subscript": []
+        "args": [0x015a]
     },
     {
         "identifier": 'EVENT_2406_clear_bit_7_offset_64',
         "command": 'clear_bit_7_offset',
-        "args": [0x015c],
-        "subscript": []
+        "args": [0x015c]
     },
     {
         "identifier": 'EVENT_2406_set_action_script_sync_65',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2406_pause_66',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2406_play_music_default_volume_67',
         "command": 'play_music_default_volume',
-        "args": [Music._34_STAR_HILL],
-        "subscript": []
+        "args": [Music._34_STAR_HILL]
     },
     {
         "identifier": 'EVENT_2406_unfreeze_camera_68',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2406_ret_69',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

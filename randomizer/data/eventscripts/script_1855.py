@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1855_set_bit_0',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_1855_action_queue_async_1',
@@ -19,8 +19,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_floating_off_1',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_play_sound_2',
@@ -44,13 +43,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_floating_on_6',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_walk_1_step_south_7',
-                "command": 'walk_1_step_south',
-                "args": []
+                "command": 'walk_1_step_south'
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_set_700C_to_object_coord_8',
@@ -92,7 +89,6 @@ script = [
     {
         "identifier": 'EVENT_1855_jmp_2',
         "command": 'jmp',
-        "args": ['EVENT_1830_store_coin_amount_7000_10'],
-        "subscript": []
+        "args": ['EVENT_1830_store_coin_amount_7000_10']
     }
 ]

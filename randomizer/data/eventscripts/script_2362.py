@@ -1,59 +1,51 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2362_set_7000_to_object_coord_0',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2362_jmp_if_var_equals_short_1',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 19, 'EVENT_2362_set_21'],
-        "subscript": []
+        "args": [0x7000, 19, 'EVENT_2362_set_21']
     },
     {
         "identifier": 'EVENT_2362_set_2',
         "command": 'set',
-        "args": [0x70c0, 222],
-        "subscript": []
+        "args": [0x70c0, 222]
     },
     {
         "identifier": 'EVENT_2362_set_3',
         "command": 'set',
-        "args": [0x70c1, 0],
-        "subscript": []
+        "args": [0x70c1, 0]
     },
     {
         "identifier": 'EVENT_2362_set_4',
         "command": 'set',
-        "args": [0x70c2, 0],
-        "subscript": []
+        "args": [0x70c2, 0]
     },
     {
         "identifier": 'EVENT_2362_set_5',
         "command": 'set',
-        "args": [0x70c3, 0],
-        "subscript": []
+        "args": [0x70c3, 0]
     },
     {
         "identifier": 'EVENT_2362_set_6',
         "command": 'set',
-        "args": [0x70c4, 0],
-        "subscript": []
+        "args": [0x70c4, 0]
     },
     {
         "identifier": 'EVENT_2362_set_7',
         "command": 'set',
-        "args": [0x70c5, 0],
-        "subscript": []
+        "args": [0x70c5, 0]
     },
     {
         "identifier": 'EVENT_2362_run_background_event_8',
         "command": 'run_background_event',
-        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2362_action_queue_sync_9',
@@ -247,57 +239,46 @@ script = [
     },
     {
         "identifier": 'EVENT_2362_fade_in_from_black_async_19',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2362_ret_20',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2362_set_21',
         "command": 'set',
-        "args": [0x70c0, 222],
-        "subscript": []
+        "args": [0x70c0, 222]
     },
     {
         "identifier": 'EVENT_2362_set_22',
         "command": 'set',
-        "args": [0x70c1, 24],
-        "subscript": []
+        "args": [0x70c1, 24]
     },
     {
         "identifier": 'EVENT_2362_set_23',
         "command": 'set',
-        "args": [0x70c2, 30],
-        "subscript": []
+        "args": [0x70c2, 30]
     },
     {
         "identifier": 'EVENT_2362_set_24',
         "command": 'set',
-        "args": [0x70c3, 24],
-        "subscript": []
+        "args": [0x70c3, 24]
     },
     {
         "identifier": 'EVENT_2362_set_25',
         "command": 'set',
-        "args": [0x70c4, 16],
-        "subscript": []
+        "args": [0x70c4, 16]
     },
     {
         "identifier": 'EVENT_2362_set_26',
         "command": 'set',
-        "args": [0x70c5, 16],
-        "subscript": []
+        "args": [0x70c5, 16]
     },
     {
         "identifier": 'EVENT_2362_run_background_event_27',
         "command": 'run_background_event',
-        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2362_action_queue_sync_28',
@@ -526,51 +507,41 @@ script = [
     },
     {
         "identifier": 'EVENT_2362_fade_in_from_black_async_38',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2362_ret_39',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2362_set_40',
         "command": 'set',
-        "args": [0x70c0, 222],
-        "subscript": []
+        "args": [0x70c0, 222]
     },
     {
         "identifier": 'EVENT_2362_set_41',
         "command": 'set',
-        "args": [0x70c1, 0],
-        "subscript": []
+        "args": [0x70c1, 0]
     },
     {
         "identifier": 'EVENT_2362_set_42',
         "command": 'set',
-        "args": [0x70c2, 0],
-        "subscript": []
+        "args": [0x70c2, 0]
     },
     {
         "identifier": 'EVENT_2362_set_43',
         "command": 'set',
-        "args": [0x70c3, 0],
-        "subscript": []
+        "args": [0x70c3, 0]
     },
     {
         "identifier": 'EVENT_2362_set_44',
         "command": 'set',
-        "args": [0x70c4, 0],
-        "subscript": []
+        "args": [0x70c4, 0]
     },
     {
         "identifier": 'EVENT_2362_set_45',
         "command": 'set',
-        "args": [0x70c5, 0],
-        "subscript": []
+        "args": [0x70c5, 0]
     },
     {
         "identifier": 'EVENT_2362_action_queue_sync_46',
@@ -769,8 +740,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2362_action_queue_async_56_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2362_action_queue_async_56_SUBSCRIPT_overwrite_solidity_1',
@@ -786,93 +756,74 @@ script = [
     },
     {
         "identifier": 'EVENT_2362_freeze_camera_57',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2362_fade_in_from_black_async_58',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_59',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 414],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 414]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_60',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 399],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 399]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_61',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2362_run_background_event_62',
         "command": 'run_background_event',
-        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2362_unfreeze_camera_63',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2362_clear_bit_64',
         "command": 'clear_bit',
-        "args": [0x7045, 7],
-        "subscript": []
+        "args": [0x7045, 7]
     },
     {
         "identifier": 'EVENT_2362_ret_65',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2362_set_66',
         "command": 'set',
-        "args": [0x70c0, 222],
-        "subscript": []
+        "args": [0x70c0, 222]
     },
     {
         "identifier": 'EVENT_2362_set_67',
         "command": 'set',
-        "args": [0x70c1, 0],
-        "subscript": []
+        "args": [0x70c1, 0]
     },
     {
         "identifier": 'EVENT_2362_set_68',
         "command": 'set',
-        "args": [0x70c2, 30],
-        "subscript": []
+        "args": [0x70c2, 30]
     },
     {
         "identifier": 'EVENT_2362_set_69',
         "command": 'set',
-        "args": [0x70c3, 0],
-        "subscript": []
+        "args": [0x70c3, 0]
     },
     {
         "identifier": 'EVENT_2362_set_70',
         "command": 'set',
-        "args": [0x70c4, 0],
-        "subscript": []
+        "args": [0x70c4, 0]
     },
     {
         "identifier": 'EVENT_2362_set_71',
         "command": 'set',
-        "args": [0x70c5, 0],
-        "subscript": []
+        "args": [0x70c5, 0]
     },
     {
         "identifier": 'EVENT_2362_action_queue_sync_72',
@@ -1076,8 +1027,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2362_action_queue_async_82_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2362_action_queue_async_82_SUBSCRIPT_overwrite_solidity_1',
@@ -1093,93 +1043,74 @@ script = [
     },
     {
         "identifier": 'EVENT_2362_freeze_camera_83',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2362_fade_in_from_black_async_84',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_85',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 414],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 414]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_86',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 399],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 399]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_87',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2362_run_background_event_88',
         "command": 'run_background_event',
-        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2362_unfreeze_camera_89',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2362_clear_bit_90',
         "command": 'clear_bit',
-        "args": [0x7045, 7],
-        "subscript": []
+        "args": [0x7045, 7]
     },
     {
         "identifier": 'EVENT_2362_ret_91',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2362_set_92',
         "command": 'set',
-        "args": [0x70c0, 222],
-        "subscript": []
+        "args": [0x70c0, 222]
     },
     {
         "identifier": 'EVENT_2362_set_93',
         "command": 'set',
-        "args": [0x70c1, 0],
-        "subscript": []
+        "args": [0x70c1, 0]
     },
     {
         "identifier": 'EVENT_2362_set_94',
         "command": 'set',
-        "args": [0x70c2, 30],
-        "subscript": []
+        "args": [0x70c2, 30]
     },
     {
         "identifier": 'EVENT_2362_set_95',
         "command": 'set',
-        "args": [0x70c3, 0],
-        "subscript": []
+        "args": [0x70c3, 0]
     },
     {
         "identifier": 'EVENT_2362_set_96',
         "command": 'set',
-        "args": [0x70c4, 16],
-        "subscript": []
+        "args": [0x70c4, 16]
     },
     {
         "identifier": 'EVENT_2362_set_97',
         "command": 'set',
-        "args": [0x70c5, 0],
-        "subscript": []
+        "args": [0x70c5, 0]
     },
     {
         "identifier": 'EVENT_2362_action_queue_sync_98',
@@ -1393,8 +1324,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2362_action_queue_async_108_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2362_action_queue_async_108_SUBSCRIPT_overwrite_solidity_1',
@@ -1410,93 +1340,74 @@ script = [
     },
     {
         "identifier": 'EVENT_2362_freeze_camera_109',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2362_fade_in_from_black_async_110',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_111',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 414],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 414]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_112',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 399],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 399]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_113',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2362_run_background_event_114',
         "command": 'run_background_event',
-        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2362_unfreeze_camera_115',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2362_clear_bit_116',
         "command": 'clear_bit',
-        "args": [0x7045, 7],
-        "subscript": []
+        "args": [0x7045, 7]
     },
     {
         "identifier": 'EVENT_2362_ret_117',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2362_set_118',
         "command": 'set',
-        "args": [0x70c0, 222],
-        "subscript": []
+        "args": [0x70c0, 222]
     },
     {
         "identifier": 'EVENT_2362_set_119',
         "command": 'set',
-        "args": [0x70c1, 24],
-        "subscript": []
+        "args": [0x70c1, 24]
     },
     {
         "identifier": 'EVENT_2362_set_120',
         "command": 'set',
-        "args": [0x70c2, 30],
-        "subscript": []
+        "args": [0x70c2, 30]
     },
     {
         "identifier": 'EVENT_2362_set_121',
         "command": 'set',
-        "args": [0x70c3, 0],
-        "subscript": []
+        "args": [0x70c3, 0]
     },
     {
         "identifier": 'EVENT_2362_set_122',
         "command": 'set',
-        "args": [0x70c4, 0],
-        "subscript": []
+        "args": [0x70c4, 0]
     },
     {
         "identifier": 'EVENT_2362_set_123',
         "command": 'set',
-        "args": [0x70c5, 0],
-        "subscript": []
+        "args": [0x70c5, 0]
     },
     {
         "identifier": 'EVENT_2362_action_queue_sync_124',
@@ -1705,8 +1616,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2362_action_queue_async_134_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2362_action_queue_async_134_SUBSCRIPT_overwrite_solidity_1',
@@ -1722,93 +1632,74 @@ script = [
     },
     {
         "identifier": 'EVENT_2362_freeze_camera_135',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2362_fade_in_from_black_async_136',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_137',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 414],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 414]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_138',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 399],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 399]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_139',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2362_run_background_event_140',
         "command": 'run_background_event',
-        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2362_unfreeze_camera_141',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2362_clear_bit_142',
         "command": 'clear_bit',
-        "args": [0x7045, 7],
-        "subscript": []
+        "args": [0x7045, 7]
     },
     {
         "identifier": 'EVENT_2362_ret_143',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2362_set_144',
         "command": 'set',
-        "args": [0x70c0, 222],
-        "subscript": []
+        "args": [0x70c0, 222]
     },
     {
         "identifier": 'EVENT_2362_set_145',
         "command": 'set',
-        "args": [0x70c1, 24],
-        "subscript": []
+        "args": [0x70c1, 24]
     },
     {
         "identifier": 'EVENT_2362_set_146',
         "command": 'set',
-        "args": [0x70c2, 30],
-        "subscript": []
+        "args": [0x70c2, 30]
     },
     {
         "identifier": 'EVENT_2362_set_147',
         "command": 'set',
-        "args": [0x70c3, 24],
-        "subscript": []
+        "args": [0x70c3, 24]
     },
     {
         "identifier": 'EVENT_2362_set_148',
         "command": 'set',
-        "args": [0x70c4, 16],
-        "subscript": []
+        "args": [0x70c4, 16]
     },
     {
         "identifier": 'EVENT_2362_set_149',
         "command": 'set',
-        "args": [0x70c5, 16],
-        "subscript": []
+        "args": [0x70c5, 16]
     },
     {
         "identifier": 'EVENT_2362_action_queue_sync_150',
@@ -2042,8 +1933,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2362_action_queue_async_160_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2362_action_queue_async_160_SUBSCRIPT_overwrite_solidity_1',
@@ -2059,56 +1949,43 @@ script = [
     },
     {
         "identifier": 'EVENT_2362_freeze_camera_161',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2362_fade_in_from_black_async_162',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_163',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 415],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 415]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_164',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 399],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 399]
     },
     {
         "identifier": 'EVENT_2362_set_action_script_async_165',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2362_run_background_event_166',
         "command": 'run_background_event',
-        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [2385, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2362_unfreeze_camera_167',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2362_clear_bit_168',
         "command": 'clear_bit',
-        "args": [0x7045, 7],
-        "subscript": []
+        "args": [0x7045, 7]
     },
     {
         "identifier": 'EVENT_2362_ret_169',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

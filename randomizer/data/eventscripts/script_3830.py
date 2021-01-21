@@ -1,29 +1,26 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3830_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x705e, 6, 'EVENT_3830_run_dialog_12'],
-        "subscript": []
+        "args": [0x705e, 6, 'EVENT_3830_run_dialog_12']
     },
     {
         "identifier": 'EVENT_3830_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_3830_run_dialog_14'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_3830_run_dialog_14']
     },
     {
         "identifier": 'EVENT_3830_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_3830_run_dialog_6'],
-        "subscript": []
+        "args": [0x7043, 2, 'EVENT_3830_run_dialog_6']
     },
     {
         "identifier": 'EVENT_3830_jmp_if_bit_clear_3',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 1, 'EVENT_3830_action_queue_async_5'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_3830_action_queue_async_5']
     },
     {
         "identifier": 'EVENT_3830_action_queue_async_4',
@@ -42,8 +39,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3830_action_queue_async_4_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_3830_action_queue_async_4_SUBSCRIPT_set_solidity_bits_3',
@@ -74,8 +70,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3830_action_queue_async_5_SUBSCRIPT_face_northeast_3',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_3830_action_queue_async_5_SUBSCRIPT_jmp_4',
@@ -84,16 +79,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_3830_action_queue_async_5_SUBSCRIPT_face_northwest_5',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_3830_run_dialog_6',
         "command": 'run_dialog',
-        "args": [3745, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [3745, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3830_action_queue_async_7',
@@ -102,8 +95,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3830_action_queue_async_7_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_3830_action_queue_async_7_SUBSCRIPT_set_solidity_bits_1',
@@ -115,49 +107,38 @@ script = [
     {
         "identifier": 'EVENT_3830_clear_bit_8',
         "command": 'clear_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_3830_set_bit_9',
         "command": 'set_bit',
-        "args": [0x7043, 2],
-        "subscript": []
+        "args": [0x7043, 2]
     },
     {
         "identifier": 'EVENT_3830_set_action_script_sync_10',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_3830_ret_11',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3830_run_dialog_12',
         "command": 'run_dialog',
-        "args": [3748, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [3748, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3830_ret_13',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3830_run_dialog_14',
         "command": 'run_dialog',
-        "args": [3746, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3746, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3830_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

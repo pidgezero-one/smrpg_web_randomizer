@@ -1,29 +1,25 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3194_move_script_to_main_thread_0',
-        "command": 'move_script_to_main_thread',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_main_thread'
     },
     {
         "identifier": 'EVENT_3194_set_bit_1',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_3194_set_short_2',
         "command": 'set_short',
-        "args": [0x700e, 0x008d],
-        "subscript": []
+        "args": [0x700e, 0x008d]
     },
     {
         "identifier": 'EVENT_3194_run_event_as_subroutine_3',
         "command": 'run_event_as_subroutine',
-        "args": [18],
-        "subscript": []
+        "args": [18]
     },
     {
         "identifier": 'EVENT_3194_action_queue_sync_4',
@@ -42,13 +38,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3194_action_queue_sync_4_SUBSCRIPT_face_mario_2',
-                "command": 'face_mario',
-                "args": []
+                "command": 'face_mario'
             },
             {
                 "identifier": 'EVENT_3194_action_queue_sync_4_SUBSCRIPT_sequence_looping_on_3',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_3194_action_queue_sync_4_SUBSCRIPT_set_animation_speed_4',
@@ -102,8 +96,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3194_action_queue_sync_4_SUBSCRIPT_sequence_looping_on_14',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_3194_action_queue_sync_4_SUBSCRIPT_jump_to_height_15',
@@ -132,8 +125,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3194_action_queue_sync_4_SUBSCRIPT_visibility_off_20',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3194_action_queue_sync_4_SUBSCRIPT_object_memory_set_bit_21',
@@ -142,75 +134,61 @@ script = [
             },
             {
                 "identifier": 'EVENT_3194_action_queue_sync_4_SUBSCRIPT_ret_22',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
     {
         "identifier": 'EVENT_3194_run_dialog_5',
         "command": 'run_dialog',
-        "args": [1644, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [1644, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3194_set_bit_6',
         "command": 'set_bit',
-        "args": [0x7057, 0],
-        "subscript": []
+        "args": [0x7057, 0]
     },
     {
         "identifier": 'EVENT_3194_set_bit_7',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_3194_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_3194_close_dialog_13'],
-        "subscript": []
+        "args": [0x7040, 1, 'EVENT_3194_close_dialog_13']
     },
     {
         "identifier": 'EVENT_3194_set_9',
         "command": 'set',
-        "args": [0x70a7, 115],
-        "subscript": []
+        "args": [0x70a7, 115]
     },
     {
         "identifier": 'EVENT_3194_play_sound_10',
         "command": 'play_sound',
-        "args": [Sounds._085_FLOWER, 6],
-        "subscript": []
+        "args": [Sounds._085_FLOWER, 6]
     },
     {
         "identifier": 'EVENT_3194_run_dialog_11',
         "command": 'run_dialog',
-        "args": [1645, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [1645, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3194_put_inventory_12',
         "command": 'put_inventory',
-        "args": [0x70a7],
-        "subscript": []
+        "args": [0x70a7]
     },
     {
         "identifier": 'EVENT_3194_close_dialog_13',
-        "command": 'close_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'close_dialog'
     },
     {
         "identifier": 'EVENT_3194_clear_bit_14',
         "command": 'clear_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_3194_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

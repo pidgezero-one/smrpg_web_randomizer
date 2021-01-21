@@ -1,23 +1,20 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2497_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_2497_ret_14'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_2497_ret_14']
     },
     {
         "identifier": 'EVENT_2497_set_bit_1',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_2497_freeze_all_npcs_until_return_2',
-        "command": 'freeze_all_npcs_until_return',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_all_npcs_until_return'
     },
     {
         "identifier": 'EVENT_2497_action_queue_sync_3',
@@ -161,61 +158,47 @@ script = [
     {
         "identifier": 'EVENT_2497_pause_5',
         "command": 'pause',
-        "args": [96],
-        "subscript": []
+        "args": [96]
     },
     {
         "identifier": 'EVENT_2497_stop_embedded_action_script_6',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_2497_start_battle_7',
         "command": 'start_battle',
-        "args": [0x0001, 7],
-        "subscript": []
+        "args": [0x0001, 7]
     },
     {
         "identifier": 'EVENT_2497_jmp_if_bit_clear_8',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7040, 0, 'EVENT_2497_remove_from_current_level_10'],
-        "subscript": []
+        "args": [0x7040, 0, 'EVENT_2497_remove_from_current_level_10']
     },
     {
         "identifier": 'EVENT_2497_reset_game_9',
-        "command": 'reset_game',
-        "args": [],
-        "subscript": []
+        "command": 'reset_game'
     },
     {
         "identifier": 'EVENT_2497_remove_from_current_level_10',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2497_remove_from_current_level_11',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_2497_unfreeze_all_npcs_12',
-        "command": 'unfreeze_all_npcs',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_all_npcs'
     },
     {
         "identifier": 'EVENT_2497_fade_in_from_black_async_13',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2497_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

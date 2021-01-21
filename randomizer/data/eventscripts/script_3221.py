@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3221_action_queue_sync_0',
@@ -45,63 +46,52 @@ script = [
             },
             {
                 "identifier": 'EVENT_3221_action_queue_sync_1_SUBSCRIPT_reset_properties_1',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_3221_set_action_script_sync_2',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 338],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 338]
     },
     {
         "identifier": 'EVENT_3221_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x707d, 2, 'EVENT_3221_ret_10'],
-        "subscript": []
+        "args": [0x707d, 2, 'EVENT_3221_ret_10']
     },
     {
         "identifier": 'EVENT_3221_set_short_4',
         "command": 'set_short',
-        "args": [0x7010, 0x001a],
-        "subscript": []
+        "args": [0x7010, 0x001a]
     },
     {
         "identifier": 'EVENT_3221_set_short_5',
         "command": 'set_short',
-        "args": [0x7012, 0x006e],
-        "subscript": []
+        "args": [0x7012, 0x006e]
     },
     {
         "identifier": 'EVENT_3221_set_short_6',
         "command": 'set_short',
-        "args": [0x7014, 0x0015],
-        "subscript": []
+        "args": [0x7014, 0x0015]
     },
     {
         "identifier": 'EVENT_3221_db_7',
         "command": 'db',
-        "args": [0xfd, 0xc4],
-        "subscript": []
+        "args": [0xfd, 0xc4]
     },
     {
         "identifier": 'EVENT_3221_pause_8',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3221_create_packet_event_at_coords_jmp_if_null_9',
         "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._037_ITEM_BAG_JUMPS, 0x0cda, 'EVENT_3221_pause_8'],
-        "subscript": []
+        "args": [NPCPackets._037_ITEM_BAG_JUMPS, 0x0cda, 'EVENT_3221_pause_8']
     },
     {
         "identifier": 'EVENT_3221_ret_10',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

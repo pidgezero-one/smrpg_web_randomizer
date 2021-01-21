@@ -1,71 +1,59 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_992_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._243_GAME_INTRO_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM, RadialDirections.NORTHEAST, 13, 35, 0, []],
-        "subscript": []
+        "args": [Rooms._243_GAME_INTRO_MUSHROOM_KINGDOM_CASTLE_THRONE_ROOM, RadialDirections.NORTHEAST, 13, 35, 0, []]
     },
     {
         "identifier": 'EVENT_992_freeze_camera_1',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_992_set_action_script_sync_2',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 790],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 790]
     },
     {
         "identifier": 'EVENT_992_set_action_script_sync_3',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 790],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 790]
     },
     {
         "identifier": 'EVENT_992_set_action_script_sync_4',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 791],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 791]
     },
     {
         "identifier": 'EVENT_992_set_action_script_sync_5',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 791],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 791]
     },
     {
         "identifier": 'EVENT_992_set_action_script_sync_6',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 791],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 791]
     },
     {
         "identifier": 'EVENT_992_set_action_script_sync_7',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 790],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 790]
     },
     {
         "identifier": 'EVENT_992_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 792],
-        "subscript": []
+        "args": [AreaObjects.SCREEN_FOCUS, 792]
     },
     {
         "identifier": 'EVENT_992_pause_9',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_992_fade_in_from_black_sync_10',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_992_action_queue_sync_11',
@@ -114,8 +102,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_992_action_queue_sync_11_SUBSCRIPT_reset_properties_8',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_992_action_queue_sync_11_SUBSCRIPT_pause_9',
@@ -124,8 +111,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_992_action_queue_sync_11_SUBSCRIPT_end_loop_10',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             }
         ]
     },
@@ -166,16 +152,13 @@ script = [
             },
             {
                 "identifier": 'EVENT_992_action_queue_sync_12_SUBSCRIPT_reset_properties_6',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_992_remember_last_object_13',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_992_action_queue_sync_14',
@@ -189,8 +172,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_992_action_queue_sync_14_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_992_action_queue_sync_14_SUBSCRIPT_pause_2',
@@ -234,39 +216,31 @@ script = [
             },
             {
                 "identifier": 'EVENT_992_action_queue_sync_14_SUBSCRIPT_visibility_off_10',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_992_pause_15',
         "command": 'pause',
-        "args": [90],
-        "subscript": []
+        "args": [90]
     },
     {
         "identifier": 'EVENT_992_fade_out_to_black_sync_duration_16',
         "command": 'fade_out_to_black_sync_duration',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_992_pause_script_until_effect_done_17',
-        "command": 'pause_script_until_effect_done',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_until_effect_done'
     },
     {
         "identifier": 'EVENT_992_remember_last_object_18',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_992_jmp_to_event_19',
         "command": 'jmp_to_event',
-        "args": [130],
-        "subscript": []
+        "args": [130]
     }
 ]

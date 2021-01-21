@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1554_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7047, 0, 'EVENT_1554_fade_in_from_black_sync_10'],
-        "subscript": []
+        "args": [0x7047, 0, 'EVENT_1554_fade_in_from_black_sync_10']
     },
     {
         "identifier": 'EVENT_1554_action_queue_async_1',
@@ -14,76 +14,58 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1554_action_queue_async_1_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_1554_freeze_all_npcs_until_return_2',
-        "command": 'freeze_all_npcs_until_return',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_all_npcs_until_return'
     },
     {
         "identifier": 'EVENT_1554_fade_in_from_black_async_3',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1554_freeze_camera_4',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_1554_set_action_script_async_5',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 482],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 482]
     },
     {
         "identifier": 'EVENT_1554_set_action_script_async_6',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_1554_unfreeze_camera_7',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_1554_unfreeze_all_npcs_8',
-        "command": 'unfreeze_all_npcs',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_all_npcs'
     },
     {
         "identifier": 'EVENT_1554_jmp_9',
         "command": 'jmp',
-        "args": ['EVENT_1554_set_11'],
-        "subscript": []
+        "args": ['EVENT_1554_set_11']
     },
     {
         "identifier": 'EVENT_1554_fade_in_from_black_sync_10',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_1554_set_11',
         "command": 'set',
-        "args": [0x70a9, 20],
-        "subscript": []
+        "args": [0x70a9, 20]
     },
     {
         "identifier": 'EVENT_1554_start_loop_n_times_12',
         "command": 'start_loop_n_times',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1554_action_queue_sync_13',
@@ -100,14 +82,11 @@ script = [
     {
         "identifier": 'EVENT_1554_add_14',
         "command": 'add',
-        "args": [0x70a9, 0x01],
-        "subscript": []
+        "args": [0x70a9, 0x01]
     },
     {
         "identifier": 'EVENT_1554_end_loop_15',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1554_action_queue_async_16',
@@ -124,19 +103,15 @@ script = [
     {
         "identifier": 'EVENT_1554_set_17',
         "command": 'set',
-        "args": [0x70ab, 24],
-        "subscript": []
+        "args": [0x70ab, 24]
     },
     {
         "identifier": 'EVENT_1554_run_background_event_18',
         "command": 'run_background_event',
-        "args": [1555, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [1555, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_1554_ret_19',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

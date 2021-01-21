@@ -1,35 +1,31 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_726_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x705d, 1, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x705d, 1, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_726_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x705d, 5, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x705d, 5, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_726_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_726_set_bit_3',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_726_run_dialog_4',
         "command": 'run_dialog',
-        "args": [2309, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2309, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_726_action_queue_async_5',
@@ -48,8 +44,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_726_action_queue_async_5_SUBSCRIPT_floating_off_2',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_726_action_queue_async_5_SUBSCRIPT_clear_solidity_bits_3',
@@ -71,19 +66,15 @@ script = [
     {
         "identifier": 'EVENT_726_set_action_script_async_6',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_726_clear_bit_7',
         "command": 'clear_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_726_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,41 +1,34 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1725_enable_controls_0',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_1725_enter_area_1',
         "command": 'enter_area',
-        "args": [Rooms._147_GAME_INTRO_MIDAS_RIVER_WATER_TUNNEL, RadialDirections.SOUTHEAST, 4, 24, 0, []],
-        "subscript": []
+        "args": [Rooms._147_GAME_INTRO_MIDAS_RIVER_WATER_TUNNEL, RadialDirections.SOUTHEAST, 4, 24, 0, []]
     },
     {
         "identifier": 'EVENT_1725_fade_in_from_black_sync_2',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_1725_freeze_camera_3',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_1725_run_background_event_4',
         "command": 'run_background_event',
-        "args": [1724, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [1724, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_1725_set_action_script_sync_5',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 598],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 598]
     },
     {
         "identifier": 'EVENT_1725_action_queue_sync_6',
@@ -74,20 +67,16 @@ script = [
     {
         "identifier": 'EVENT_1725_start_loop_n_times_8',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1725_pause_9',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1725_end_loop_10',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1725_action_queue_sync_11',
@@ -104,20 +93,16 @@ script = [
     {
         "identifier": 'EVENT_1725_start_loop_n_times_12',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1725_pause_13',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1725_end_loop_14',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1725_action_queue_sync_15',
@@ -134,20 +119,16 @@ script = [
     {
         "identifier": 'EVENT_1725_start_loop_n_times_16',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1725_pause_17',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1725_end_loop_18',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1725_action_queue_sync_19',
@@ -164,20 +145,16 @@ script = [
     {
         "identifier": 'EVENT_1725_start_loop_n_times_20',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1725_pause_21',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1725_end_loop_22',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1725_action_queue_sync_23',
@@ -194,20 +171,16 @@ script = [
     {
         "identifier": 'EVENT_1725_start_loop_n_times_24',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1725_pause_25',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1725_end_loop_26',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1725_action_queue_sync_27',
@@ -224,20 +197,16 @@ script = [
     {
         "identifier": 'EVENT_1725_start_loop_n_times_28',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1725_pause_29',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1725_end_loop_30',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1725_action_queue_sync_31',
@@ -254,20 +223,16 @@ script = [
     {
         "identifier": 'EVENT_1725_start_loop_n_times_32',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1725_pause_33',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1725_end_loop_34',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1725_action_queue_sync_35',
@@ -284,25 +249,20 @@ script = [
     {
         "identifier": 'EVENT_1725_start_loop_n_times_36',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1725_pause_37',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1725_end_loop_38',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1725_jmp_39',
         "command": 'jmp',
-        "args": ['EVENT_1725_action_queue_sync_7'],
-        "subscript": []
+        "args": ['EVENT_1725_action_queue_sync_7']
     }
 ]

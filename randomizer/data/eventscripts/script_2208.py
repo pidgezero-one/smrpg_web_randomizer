@@ -1,71 +1,53 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2208_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7093, 6, 'EVENT_2208_stop_sound_4'],
-        "subscript": []
+        "args": [0x7093, 6, 'EVENT_2208_stop_sound_4']
     },
     {
         "identifier": 'EVENT_2208_fade_in_from_black_async_1',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2208_jmp_2',
         "command": 'jmp',
-        "args": ['EVENT_2209_pause_0'],
-        "subscript": []
+        "args": ['EVENT_2209_pause_0']
     },
     {
         "identifier": 'EVENT_2208_ret_3',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2208_stop_sound_4',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2208_stop_sound_5',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2208_stop_sound_6',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2208_stop_sound_7',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2208_stop_sound_8',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2208_stop_sound_9',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2208_set_action_script_sync_10',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 14],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 14]
     },
     {
         "identifier": 'EVENT_2208_action_queue_sync_11',
@@ -79,18 +61,15 @@ script = [
             },
             {
                 "identifier": 'EVENT_2208_action_queue_sync_11_SUBSCRIPT_visibility_on_1',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2208_action_queue_sync_11_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_2208_action_queue_sync_11_SUBSCRIPT_sequence_looping_on_3',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -106,21 +85,16 @@ script = [
             },
             {
                 "identifier": 'EVENT_2208_action_queue_async_12_SUBSCRIPT_visibility_on_1',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_2208_fade_in_from_black_async_13',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2208_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

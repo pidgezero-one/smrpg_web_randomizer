@@ -1,4 +1,7 @@
 from collections import defaultdict
+from randomizer.logic.osscript import ObjectSequenceScript as OSCommand
+
+bank_lengths = [1536, 1536, 1024]
 
 
 class EventScript:
@@ -12,6 +15,78 @@ class EventScript:
         for i, byte in enumerate(self.commands):
             ret[i] = byte
         return ret
+
+    def assemble_from_table(table):
+        # get bytes that will give you an idea of how long each command should be
+        table_with_lengths = []
+        for script in table:
+            scripts_with_lengths = []
+            for command in script:
+                script_with_length = script
+                assembler = EventScript()
+                func = getattr(assembler, command["command"], None)
+                if "args" in command.keys():
+                    dummy_args = [0 if isinstance(
+                        arg, str) else arg for arg in command["args"]]
+                else:
+                    dummy_args = []
+                if "subscript" in command.keys():
+                    oc = OSCommand()
+                    dummy_subscript_lines = oc.get_dummy_bytearray(
+                        command["subscript"])
+                    dummy_subscript = b''.join(dummy_subscript_lines)
+                    script_with_length["subscript_lines"] = dummy_subscript_lines
+                    script_with_length["subscript_combined_lines"] = dummy_subscript
+                func(*dummy_args)
+                command_line = assembler.fin()
+                script_with_length["line"] = command_line
+                scripts_with_lengths.append(script_with_length)
+            table_with_lengths.append(scripts_with_lengths)
+
+        # calculate offsets
+        table_with_offsets = []
+        for i in range(len(table_with_lengths)):
+            if i < bank_lengths[0] and bank != 0x1E:
+                bank = 0x1E
+                offset = 0x1E0C00
+            elif i < bank_lengths[0] + bank_lengths[1] and bank != 0x1F:
+                bank = 0x1F
+                offset = 0x1F0C00
+            elif i < bank_lengths[0] + bank_lengths[1] + bank_lengths[2] and bank != 0x20:
+                bank = 0x20
+                offset = 0x200800
+            script = table_with_lengths[i]
+            commands_with_offsets = []
+            for command in script:
+                cmd_with_offset = command
+                cmd_with_offset["offset"] = offset
+                if "subscript" in command.keys():
+                    inner_offset = offset + \
+                        len(cmd_with_offset["line"]) - \
+                        len(cmd_with_offset["subscript_combined_lines"])
+                    subscript_commands_with_offsets = []
+                    for j in range(len(cmd_with_offset["subscript"])):
+                        subscript_command_with_offset = cmd_with_offset["subscript"][j]
+                        subscript_command_with_offset["offset"] = inner_offset
+                        inner_offset += cmd_with_offset["subscript_lines"][j]
+                        subscript_commands_with_offsets.append(
+                            subscript_command_with_offset)
+                    cmd_with_offset["subscript"] = subscript_commands_with_offsets
+                offset += len(cmd_with_offset["line"])
+                commands_with_offsets.append(cmd_with_offset)
+            table_with_offsets.append(commands_with_offsets)
+
+        return table_with_offsets
+
+        """ for name, args in tuples:
+            func = getattr(assembler, name, None)
+            if not func:
+                raise Exception(
+                    '%s(%s) is an invalid instruction!' % (func, args))
+            func(*args)
+        return assembler.fin() """
+
+    # Helpful functions
 
     def append_short(self, short):
         assert 0 <= short <= 0xFFFF
@@ -51,6 +126,8 @@ class EventScript:
     def level_mod(self, location, mod, flags):
         return location | mod << 8 | self.consolidate_flags(flags)
 
+    # Commands
+
     # 0x00-0x30 assemblers are below
     def action_queue_async(self, obj, script):
         self.append_byte(obj)
@@ -59,7 +136,6 @@ class EventScript:
         for b in script:
             self.commands.append(b)
         return self
-
 
     def action_queue_sync(self, obj, script):
         self.append_byte(obj)
@@ -1548,7 +1624,7 @@ class EventScript:
         self.append_byte(val1)
         self.append_byte(val2)
         return self
-        
+
     # FD 0xFC
     def store_00_to_0248(self):
         self.append_byte(0xFD)
@@ -1560,7 +1636,7 @@ class EventScript:
         self.append_byte(0xFD)
         self.append_byte(0x93)
         return self
-        
+
     # FD 0xFB
     def store_01_to_0248(self):
         self.append_byte(0xFD)
@@ -1572,7 +1648,7 @@ class EventScript:
         self.append_byte(0xFD)
         self.append_byte(0x92)
         return self
-        
+
     # FD 0xFD
     def store_02_to_0248(self):
         self.append_byte(0xFD)

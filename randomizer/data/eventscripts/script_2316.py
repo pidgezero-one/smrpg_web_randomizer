@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2316_action_queue_sync_0',
@@ -48,38 +49,29 @@ script = [
     {
         "identifier": 'EVENT_2316_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x708e, 0, 'EVENT_2316_freeze_camera_28'],
-        "subscript": []
+        "args": [0x708e, 0, 'EVENT_2316_freeze_camera_28']
     },
     {
         "identifier": 'EVENT_2316_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x708e, 1, 'EVENT_2316_freeze_camera_6'],
-        "subscript": []
+        "args": [0x708e, 1, 'EVENT_2316_freeze_camera_6']
     },
     {
         "identifier": 'EVENT_2316_fade_in_from_black_async_4',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2316_ret_5',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2316_freeze_camera_6',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2316_clear_bit_7',
         "command": 'clear_bit',
-        "args": [0x708e, 1],
-        "subscript": []
+        "args": [0x708e, 1]
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_8',
@@ -88,13 +80,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_8_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2316_action_queue_sync_8_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2316_action_queue_sync_8_SUBSCRIPT_set_vram_priority_2',
@@ -153,8 +143,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2316_action_queue_sync_8_SUBSCRIPT_bpl_26_27_28_13',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             }
         ]
     },
@@ -182,57 +171,46 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2316_pause_11',
         "command": 'pause',
-        "args": [112],
-        "subscript": []
+        "args": [112]
     },
     {
         "identifier": 'EVENT_2316_fade_out_to_black_async_duration_12',
         "command": 'fade_out_to_black_async_duration',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2316_enter_area_13',
         "command": 'enter_area',
-        "args": [Rooms._419_LAZY_SHELL_CLOUD, RadialDirections.SOUTH, 4, 109, 10, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._419_LAZY_SHELL_CLOUD, RadialDirections.SOUTH, 4, 109, 10, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2316_jmp_if_bit_clear_14',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 0, 'EVENT_2316_jmp_if_bit_clear_16'],
-        "subscript": []
+        "args": [0x708f, 0, 'EVENT_2316_jmp_if_bit_clear_16']
     },
     {
         "identifier": 'EVENT_2316_set_action_script_sync_15',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 690],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 690]
     },
     {
         "identifier": 'EVENT_2316_jmp_if_bit_clear_16',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 1, 'EVENT_2316_freeze_camera_18'],
-        "subscript": []
+        "args": [0x708f, 1, 'EVENT_2316_freeze_camera_18']
     },
     {
         "identifier": 'EVENT_2316_set_action_script_sync_17',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 690],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 690]
     },
     {
         "identifier": 'EVENT_2316_freeze_camera_18',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_19',
@@ -268,8 +246,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_20_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2316_action_queue_sync_20_SUBSCRIPT_shirt_to_xy_coords_1',
@@ -338,14 +315,11 @@ script = [
     {
         "identifier": 'EVENT_2316_set_bit_22',
         "command": 'set_bit',
-        "args": [0x708e, 0],
-        "subscript": []
+        "args": [0x708e, 0]
     },
     {
         "identifier": 'EVENT_2316_fade_in_from_black_async_23',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2316_action_queue_async_24',
@@ -369,8 +343,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2316_action_queue_async_24_SUBSCRIPT_bpl_26_27_28_3',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2316_action_queue_async_24_SUBSCRIPT_set_sprite_sequence_4',
@@ -389,8 +362,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2316_action_queue_async_24_SUBSCRIPT_face_northeast_7',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_2316_action_queue_async_24_SUBSCRIPT_jump_to_height_8',
@@ -417,26 +389,19 @@ script = [
     {
         "identifier": 'EVENT_2316_set_action_script_async_25',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2316_unfreeze_camera_26',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2316_ret_27',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2316_freeze_camera_28',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2316_action_queue_sync_29',
@@ -445,13 +410,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2316_action_queue_sync_29_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2316_action_queue_sync_29_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2316_action_queue_sync_29_SUBSCRIPT_set_vram_priority_2',
@@ -499,9 +462,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_fade_in_from_black_async_31',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2316_action_queue_async_32',
@@ -530,8 +491,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2316_action_queue_async_32_SUBSCRIPT_bpl_26_27_28_4',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2316_action_queue_async_32_SUBSCRIPT_set_sprite_sequence_5',
@@ -582,8 +542,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2316_action_queue_sync_33_SUBSCRIPT_bpl_26_27_28_6',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             }
         ]
     },
@@ -606,26 +565,20 @@ script = [
     },
     {
         "identifier": 'EVENT_2316_unfreeze_camera_35',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2316_clear_bit_36',
         "command": 'clear_bit',
-        "args": [0x708e, 0],
-        "subscript": []
+        "args": [0x708e, 0]
     },
     {
         "identifier": 'EVENT_2316_set_action_script_async_37',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2316_ret_38',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

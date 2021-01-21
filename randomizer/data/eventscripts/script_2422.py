@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2422_action_queue_sync_0',
@@ -20,23 +21,19 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2422_action_queue_async_1_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2422_action_queue_async_1_SUBSCRIPT_floating_off_1',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2422_action_queue_async_1_SUBSCRIPT_sequence_playback_off_2',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_2422_action_queue_async_1_SUBSCRIPT_shadow_off_3',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2422_action_queue_async_1_SUBSCRIPT_set_animation_speed_4',
@@ -53,26 +50,22 @@ script = [
     {
         "identifier": 'EVENT_2422_set_action_script_async_2',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 408],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 408]
     },
     {
         "identifier": 'EVENT_2422_play_sound_3',
         "command": 'play_sound',
-        "args": [Sounds._010_TRAMPOLINE, 6],
-        "subscript": []
+        "args": [Sounds._010_TRAMPOLINE, 6]
     },
     {
         "identifier": 'EVENT_2422_set_bit_4',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_2422_clear_bit_5',
         "command": 'clear_bit',
-        "args": [0x7045, 0],
-        "subscript": []
+        "args": [0x7045, 0]
     },
     {
         "identifier": 'EVENT_2422_action_queue_async_6',
@@ -106,8 +99,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2422_action_queue_async_6_SUBSCRIPT_face_northwest_5',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2422_action_queue_async_6_SUBSCRIPT_clear_solidity_bits_6',
@@ -136,8 +128,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2422_action_queue_async_6_SUBSCRIPT_bpl_26_27_28_11',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2422_action_queue_async_6_SUBSCRIPT_set_solidity_bits_12',
@@ -149,13 +140,10 @@ script = [
     {
         "identifier": 'EVENT_2422_set_action_script_async_7',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2422_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

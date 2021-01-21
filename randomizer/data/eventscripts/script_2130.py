@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2130_run_dialog_0',
         "command": 'run_dialog',
-        "args": [3350, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3350, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2130_action_queue_async_1',
@@ -14,28 +14,24 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2130_action_queue_async_1_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_2130_enable_controls_until_return_2',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_2130_pause_3',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2130_fade_out_music_to_volume_4',
         "command": 'fade_out_music_to_volume',
-        "args": [5, 0],
-        "subscript": []
+        "args": [5, 0]
     },
     {
         "identifier": 'EVENT_2130_action_queue_async_5',
@@ -74,8 +70,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2130_action_queue_async_5_SUBSCRIPT_visibility_on_6',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2130_action_queue_async_5_SUBSCRIPT_shift_southeast_steps_7',
@@ -196,32 +191,25 @@ script = [
     {
         "identifier": 'EVENT_2130_start_battle_8',
         "command": 'start_battle',
-        "args": [0x00d0, 22],
-        "subscript": []
+        "args": [0x00d0, 22]
     },
     {
         "identifier": 'EVENT_2130_jmp_if_bit_clear_9',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7040, 0, 'EVENT_2130_unfreeze_camera_11'],
-        "subscript": []
+        "args": [0x7040, 0, 'EVENT_2130_unfreeze_camera_11']
     },
     {
         "identifier": 'EVENT_2130_reset_and_choose_game_10',
-        "command": 'reset_and_choose_game',
-        "args": [],
-        "subscript": []
+        "command": 'reset_and_choose_game'
     },
     {
         "identifier": 'EVENT_2130_unfreeze_camera_11',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2130_palette_set_12',
         "command": 'palette_set',
-        "args": [84, 1],
-        "subscript": []
+        "args": [84, 1]
     },
     {
         "identifier": 'EVENT_2130_action_queue_sync_13',
@@ -247,21 +235,17 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2130_action_queue_async_14_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2130_action_queue_async_14_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2130_fade_in_from_black_async_15',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2130_action_queue_async_16',
@@ -275,8 +259,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2130_action_queue_async_16_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2130_action_queue_async_16_SUBSCRIPT_set_sprite_sequence_2',
@@ -295,75 +278,60 @@ script = [
             },
             {
                 "identifier": 'EVENT_2130_action_queue_async_16_SUBSCRIPT_visibility_off_5',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2130_pause_17',
         "command": 'pause',
-        "args": [35],
-        "subscript": []
+        "args": [35]
     },
     {
         "identifier": 'EVENT_2130_play_sound_18',
         "command": 'play_sound',
-        "args": [Sounds._016_OPEN_DOOR, 6],
-        "subscript": []
+        "args": [Sounds._016_OPEN_DOOR, 6]
     },
     {
         "identifier": 'EVENT_2130_pause_19',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2130_set_bit_20',
         "command": 'set_bit',
-        "args": [0x7092, 6],
-        "subscript": []
+        "args": [0x7092, 6]
     },
     {
         "identifier": 'EVENT_2130_remove_from_level_21',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT]
     },
     {
         "identifier": 'EVENT_2130_set_action_script_async_22',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2130_enable_controls_until_return_23',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_2130_restore_all_hp_24',
-        "command": 'restore_all_hp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_hp'
     },
     {
         "identifier": 'EVENT_2130_restore_all_fp_25',
-        "command": 'restore_all_fp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_fp'
     },
     {
         "identifier": 'EVENT_2130_play_music_default_volume_26',
         "command": 'play_music_default_volume',
-        "args": [Music._61_VALENTINA],
-        "subscript": []
+        "args": [Music._61_VALENTINA]
     },
     {
         "identifier": 'EVENT_2130_ret_27',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

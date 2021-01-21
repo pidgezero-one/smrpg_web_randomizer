@@ -1,41 +1,36 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3329_pause_0',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3329_set_7000_to_object_coord_1',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3329_jmp_if_var_not_equals_short_2',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_3329_pause_0'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_3329_pause_0']
     },
     {
         "identifier": 'EVENT_3329_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x7076, 0, 'EVENT_3329_pause_0'],
-        "subscript": []
+        "args": [0x7076, 0, 'EVENT_3329_pause_0']
     },
     {
         "identifier": 'EVENT_3329_enable_controls_4',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_3329_clear_bit_5',
         "command": 'clear_bit',
-        "args": [0x7044, 4],
-        "subscript": []
+        "args": [0x7044, 4]
     },
     {
         "identifier": 'EVENT_3329_action_queue_async_6',
@@ -84,8 +79,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3329_action_queue_async_6_SUBSCRIPT_reset_properties_8',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3329_action_queue_async_6_SUBSCRIPT_set_700C_to_object_coord_9',
@@ -94,8 +88,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3329_action_queue_async_6_SUBSCRIPT_face_east_10',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             },
             {
                 "identifier": 'EVENT_3329_action_queue_async_6_SUBSCRIPT_pause_11',
@@ -112,24 +105,20 @@ script = [
     {
         "identifier": 'EVENT_3329_enable_controls_7',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_3329_jmp_8',
         "command": 'jmp',
-        "args": ['EVENT_3329_pause_0'],
-        "subscript": []
+        "args": ['EVENT_3329_pause_0']
     },
     {
         "identifier": 'EVENT_3329_non_embedded_action_queue_9',
         "command": 'non_embedded_action_queue',
-        "args": [],
         "subscript": [
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_700C_to_object_coord_1',
@@ -303,8 +292,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_run_away_shift_35',
-                "command": 'run_away_shift',
-                "args": []
+                "command": 'run_away_shift'
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_solidity_bits_36',

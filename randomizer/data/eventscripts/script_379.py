@@ -1,77 +1,60 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_379_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7083, 0, 'EVENT_379_run_dialog_20'],
-        "subscript": []
+        "args": [0x7083, 0, 'EVENT_379_run_dialog_20']
     },
     {
         "identifier": 'EVENT_379_set_bit_1',
         "command": 'set_bit',
-        "args": [0x7083, 0],
-        "subscript": []
+        "args": [0x7083, 0]
     },
     {
         "identifier": 'EVENT_379_set_2',
         "command": 'set',
-        "args": [0x70a7, 85],
-        "subscript": []
+        "args": [0x70a7, 85]
     },
     {
         "identifier": 'EVENT_379_set_3',
         "command": 'set',
-        "args": [0x7000, 524],
-        "subscript": []
+        "args": [0x7000, 524]
     },
     {
         "identifier": 'EVENT_379_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
-        "args": [3828],
-        "subscript": []
+        "args": [3828]
     },
     {
         "identifier": 'EVENT_379_ret_5',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_379_stop_sound_6',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_379_stop_sound_7',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_379_stop_sound_8',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_379_stop_sound_9',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_379_stop_sound_10',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_379_pause_action_script_11',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_379_action_queue_async_12',
@@ -80,13 +63,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_379_action_queue_async_12_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_379_action_queue_async_12_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_379_action_queue_async_12_SUBSCRIPT_set_animation_speed_2',
@@ -112,8 +93,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_379_action_queue_async_13_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_379_action_queue_async_13_SUBSCRIPT_set_solidity_bits_3',
@@ -125,8 +105,7 @@ script = [
     {
         "identifier": 'EVENT_379_run_dialog_14',
         "command": 'run_dialog',
-        "args": [2559, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2559, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_379_action_queue_async_15',
@@ -147,8 +126,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_379_action_queue_async_16_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_379_action_queue_async_16_SUBSCRIPT_shift_southwest_steps_1',
@@ -164,8 +142,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_379_action_queue_async_17_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -176,27 +153,21 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_379_action_queue_async_18_SUBSCRIPT_sequence_looping_on_0',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_379_ret_19',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_379_run_dialog_20',
         "command": 'run_dialog',
-        "args": [655, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [655, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_379_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

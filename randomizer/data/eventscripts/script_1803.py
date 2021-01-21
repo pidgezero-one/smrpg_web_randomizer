@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1803_action_queue_async_0',
@@ -28,8 +29,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1803_action_queue_async_0_SUBSCRIPT_visibility_off_4',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_1803_action_queue_async_0_SUBSCRIPT_db_5',
@@ -53,79 +53,64 @@ script = [
     {
         "identifier": 'EVENT_1803_jmp_if_var_equals_byte_2',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70a8, 33, 'EVENT_1803_set_6'],
-        "subscript": []
+        "args": [0x70a8, 33, 'EVENT_1803_set_6']
     },
     {
         "identifier": 'EVENT_1803_jmp_if_var_equals_byte_3',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70a8, 34, 'EVENT_1803_set_8'],
-        "subscript": []
+        "args": [0x70a8, 34, 'EVENT_1803_set_8']
     },
     {
         "identifier": 'EVENT_1803_jmp_if_var_equals_byte_4',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70a8, 35, 'EVENT_1803_set_10'],
-        "subscript": []
+        "args": [0x70a8, 35, 'EVENT_1803_set_10']
     },
     {
         "identifier": 'EVENT_1803_ret_5',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1803_set_6',
         "command": 'set',
-        "args": [0x70a7, 98],
-        "subscript": []
+        "args": [0x70a7, 98]
     },
     {
         "identifier": 'EVENT_1803_jmp_7',
         "command": 'jmp',
-        "args": ['EVENT_1803_run_dialog_11'],
-        "subscript": []
+        "args": ['EVENT_1803_run_dialog_11']
     },
     {
         "identifier": 'EVENT_1803_set_8',
         "command": 'set',
-        "args": [0x70a7, 101],
-        "subscript": []
+        "args": [0x70a7, 101]
     },
     {
         "identifier": 'EVENT_1803_jmp_9',
         "command": 'jmp',
-        "args": ['EVENT_1803_run_dialog_11'],
-        "subscript": []
+        "args": ['EVENT_1803_run_dialog_11']
     },
     {
         "identifier": 'EVENT_1803_set_10',
         "command": 'set',
-        "args": [0x70a7, 113],
-        "subscript": []
+        "args": [0x70a7, 113]
     },
     {
         "identifier": 'EVENT_1803_run_dialog_11',
         "command": 'run_dialog',
-        "args": [1177, AreaObjects.BOWSER, []],
-        "subscript": []
+        "args": [1177, AreaObjects.BOWSER, []]
     },
     {
         "identifier": 'EVENT_1803_pause_12',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1803_put_inventory_13',
         "command": 'put_inventory',
-        "args": [0x70a7],
-        "subscript": []
+        "args": [0x70a7]
     },
     {
         "identifier": 'EVENT_1803_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

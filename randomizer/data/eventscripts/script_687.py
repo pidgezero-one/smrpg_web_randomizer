@@ -1,53 +1,46 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_687_pause_0',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_687_run_dialog_1',
         "command": 'run_dialog',
-        "args": [2155, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2155, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_687_pause_action_script_2',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_7],
-        "subscript": []
+        "args": [AreaObjects.NPC_7]
     },
     {
         "identifier": 'EVENT_687_pause_action_script_3',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_8],
-        "subscript": []
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_687_pause_action_script_4',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_687_pause_action_script_5',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_687_pause_action_script_6',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_687_pause_action_script_7',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_687_action_queue_sync_8',
@@ -56,8 +49,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_8_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -68,8 +60,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_9_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -80,13 +71,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_10_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_10_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -97,8 +86,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_11_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -109,8 +97,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_12_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -121,8 +108,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_13_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -133,8 +119,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_14_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -157,27 +142,22 @@ script = [
     },
     {
         "identifier": 'EVENT_687_remember_last_object_16',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_687_pause_17',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_687_play_sound_18',
         "command": 'play_sound',
-        "args": [Sounds._016_OPEN_DOOR, 6],
-        "subscript": []
+        "args": [Sounds._016_OPEN_DOOR, 6]
     },
     {
         "identifier": 'EVENT_687_apply_tile_mod_19',
         "command": 'apply_tile_mod',
-        "args": [Rooms._005_MARRYMORE_OUTSIDE_DURING_BOOSTER, 0, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._005_MARRYMORE_OUTSIDE_DURING_BOOSTER, 0, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_687_action_queue_sync_20',
@@ -196,13 +176,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_20_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_20_SUBSCRIPT_fixed_f_coord_on_3',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             }
         ]
     },
@@ -218,8 +196,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_21_SUBSCRIPT_sequence_looping_off_1',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_21_SUBSCRIPT_transfer_to_xyzf_2',
@@ -228,8 +205,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_21_SUBSCRIPT_face_northeast_3',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_21_SUBSCRIPT_set_object_memory_bits_4',
@@ -245,15 +221,12 @@ script = [
     },
     {
         "identifier": 'EVENT_687_remember_last_object_22',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_687_pause_23',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_687_action_queue_sync_24',
@@ -272,13 +245,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_24_SUBSCRIPT_floating_on_2',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_24_SUBSCRIPT_sequence_looping_off_3',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_24_SUBSCRIPT_jump_to_height_silent_4',
@@ -312,8 +283,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_24_SUBSCRIPT_floating_on_10',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_24_SUBSCRIPT_shift_southwest_steps_11',
@@ -337,8 +307,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_24_SUBSCRIPT_walk_1_step_southwest_15',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_24_SUBSCRIPT_set_solidity_bits_16',
@@ -371,8 +340,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_26_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_26_SUBSCRIPT_set_priority_1',
@@ -391,8 +359,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_26_SUBSCRIPT_face_southwest_4',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_26_SUBSCRIPT_pause_5',
@@ -401,8 +368,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_26_SUBSCRIPT_visibility_on_6',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_26_SUBSCRIPT_set_animation_speed_7',
@@ -419,8 +385,7 @@ script = [
     {
         "identifier": 'EVENT_687_pause_27',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_687_action_queue_sync_28',
@@ -429,8 +394,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_28_SUBSCRIPT_face_southeast_0',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
@@ -441,8 +405,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_29_SUBSCRIPT_face_southeast_0',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
@@ -453,8 +416,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_30_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_30_SUBSCRIPT_pause_1',
@@ -463,8 +425,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_30_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -475,8 +436,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_31_SUBSCRIPT_face_southeast_0',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_31_SUBSCRIPT_pause_1',
@@ -485,8 +445,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_31_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_31_SUBSCRIPT_pause_3',
@@ -510,8 +469,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_31_SUBSCRIPT_floating_on_7',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_31_SUBSCRIPT_shift_southeast_steps_8',
@@ -532,8 +490,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_32_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_32_SUBSCRIPT_pause_1',
@@ -542,8 +499,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_32_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_32_SUBSCRIPT_pause_3',
@@ -567,8 +523,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_32_SUBSCRIPT_floating_on_7',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_32_SUBSCRIPT_shift_northwest_steps_8',
@@ -594,8 +549,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_33_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
@@ -606,16 +560,13 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_34_SUBSCRIPT_walk_1_step_northeast_0',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_687_remember_last_object_35',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_687_action_queue_sync_36',
@@ -641,8 +592,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_37_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             }
         ]
     },
@@ -653,70 +603,59 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_async_38_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_687_pause_39',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_40',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 628],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 628]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_41',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 628],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 628]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_42',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 628],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 628]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_43',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 628],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 628]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_44',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 628],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 628]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_45',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 628],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 628]
     },
     {
         "identifier": 'EVENT_687_pause_46',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_687_run_dialog_47',
         "command": 'run_dialog',
-        "args": [2122, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2122, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_687_pause_48',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_687_action_queue_sync_49',
@@ -725,134 +664,111 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_687_action_queue_sync_49_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_49_SUBSCRIPT_walk_1_step_northeast_1',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_687_pause_50',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_687_play_sound_51',
         "command": 'play_sound',
-        "args": [Sounds._016_OPEN_DOOR, 6],
-        "subscript": []
+        "args": [Sounds._016_OPEN_DOOR, 6]
     },
     {
         "identifier": 'EVENT_687_apply_tile_mod_52',
         "command": 'apply_tile_mod',
-        "args": [Rooms._005_MARRYMORE_OUTSIDE_DURING_BOOSTER, 0, []],
-        "subscript": []
+        "args": [Rooms._005_MARRYMORE_OUTSIDE_DURING_BOOSTER, 0, []]
     },
     {
         "identifier": 'EVENT_687_pause_53',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_687_run_event_as_subroutine_54',
         "command": 'run_event_as_subroutine',
-        "args": [276],
-        "subscript": []
+        "args": [276]
     },
     {
         "identifier": 'EVENT_687_set_action_script_async_55',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_7, 625],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 625]
     },
     {
         "identifier": 'EVENT_687_set_action_script_async_56',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_8, 625],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 625]
     },
     {
         "identifier": 'EVENT_687_set_action_script_async_57',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_0, 626],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 626]
     },
     {
         "identifier": 'EVENT_687_set_action_script_async_58',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_1, 626],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 626]
     },
     {
         "identifier": 'EVENT_687_set_action_script_async_59',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_2, 627],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 627]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_60',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 119]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_61',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 113],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 113]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_62',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 119]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_63',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 119]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_64',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 119]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_65',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 376],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 376]
     },
     {
         "identifier": 'EVENT_687_set_action_script_sync_66',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 376],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 376]
     },
     {
         "identifier": 'EVENT_687_remove_from_level_67',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_11, Rooms._005_MARRYMORE_OUTSIDE_DURING_BOOSTER],
-        "subscript": []
+        "args": [AreaObjects.NPC_11, Rooms._005_MARRYMORE_OUTSIDE_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_687_set_bit_68',
         "command": 'set_bit',
-        "args": [0x704c, 7],
-        "subscript": []
+        "args": [0x704c, 7]
     },
     {
         "identifier": 'EVENT_687_ret_69',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

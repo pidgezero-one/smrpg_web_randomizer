@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2549_play_sound_0',
         "command": 'play_sound',
-        "args": [Sounds._019_LONG_FALL, 6],
-        "subscript": []
+        "args": [Sounds._019_LONG_FALL, 6]
     },
     {
         "identifier": 'EVENT_2549_run_event_as_subroutine_1',
         "command": 'run_event_as_subroutine',
-        "args": [3588],
-        "subscript": []
+        "args": [3588]
     },
     {
         "identifier": 'EVENT_2549_jmp_if_object_not_in_level_2',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_6, Rooms._349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, 'EVENT_2549_jmp_if_bit_set_4'],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, 'EVENT_2549_jmp_if_bit_set_4']
     },
     {
         "identifier": 'EVENT_2549_action_queue_sync_3',
@@ -34,20 +32,16 @@ script = [
     {
         "identifier": 'EVENT_2549_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x708d, 6, 'EVENT_2549_freeze_camera_6'],
-        "subscript": []
+        "args": [0x708d, 6, 'EVENT_2549_freeze_camera_6']
     },
     {
         "identifier": 'EVENT_2549_apply_tile_mod_5',
         "command": 'apply_tile_mod',
-        "args": [Rooms._100_BOOSTER_PASS_AREA_01, 0, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._100_BOOSTER_PASS_AREA_01, 0, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2549_freeze_camera_6',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2549_action_queue_sync_7',
@@ -158,9 +152,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2549_fade_in_from_black_async_13',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2549_action_queue_async_14',
@@ -206,44 +198,35 @@ script = [
     },
     {
         "identifier": 'EVENT_2549_unfreeze_camera_15',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2549_jmp_if_bit_clear_16',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2549_clear_bit_20'],
-        "subscript": []
+        "args": [0x7099, 7, 'EVENT_2549_clear_bit_20']
     },
     {
         "identifier": 'EVENT_2549_jmp_if_bit_set_17',
         "command": 'jmp_if_bit_set',
-        "args": [0x708d, 6, 'EVENT_2549_clear_bit_20'],
-        "subscript": []
+        "args": [0x708d, 6, 'EVENT_2549_clear_bit_20']
     },
     {
         "identifier": 'EVENT_2549_clear_bit_18',
         "command": 'clear_bit',
-        "args": [0x7099, 7],
-        "subscript": []
+        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2549_play_sound_19',
         "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6],
-        "subscript": []
+        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
     },
     {
         "identifier": 'EVENT_2549_clear_bit_20',
         "command": 'clear_bit',
-        "args": [0x7099, 7],
-        "subscript": []
+        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2549_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

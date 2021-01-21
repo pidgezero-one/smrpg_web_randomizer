@@ -1,47 +1,40 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_515_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7085, 0, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7085, 0, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_515_set_bit_1',
         "command": 'set_bit',
-        "args": [0x7066, 3],
-        "subscript": []
+        "args": [0x7066, 3]
     },
     {
         "identifier": 'EVENT_515_set_bit_2',
         "command": 'set_bit',
-        "args": [0x706e, 3],
-        "subscript": []
+        "args": [0x706e, 3]
     },
     {
         "identifier": 'EVENT_515_set_bit_3',
         "command": 'set_bit',
-        "args": [0x7060, 7],
-        "subscript": []
+        "args": [0x7060, 7]
     },
     {
         "identifier": 'EVENT_515_move_script_to_background_thread_2_4',
-        "command": 'move_script_to_background_thread_2',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_background_thread_2'
     },
     {
         "identifier": 'EVENT_515_set_bit_5',
         "command": 'set_bit',
-        "args": [0x7085, 0],
-        "subscript": []
+        "args": [0x7085, 0]
     },
     {
         "identifier": 'EVENT_515_set_bit_6',
         "command": 'set_bit',
-        "args": [0x7044, 6],
-        "subscript": []
+        "args": [0x7044, 6]
     },
     {
         "identifier": 'EVENT_515_action_queue_sync_7',
@@ -79,13 +72,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_515_action_queue_sync_9_SUBSCRIPT_walk_1_step_southeast_1',
-                "command": 'walk_1_step_southeast',
-                "args": []
+                "command": 'walk_1_step_southeast'
             },
             {
                 "identifier": 'EVENT_515_action_queue_sync_9_SUBSCRIPT_face_west_2',
-                "command": 'face_west',
-                "args": []
+                "command": 'face_west'
             },
             {
                 "identifier": 'EVENT_515_action_queue_sync_9_SUBSCRIPT_set_animation_speed_3',
@@ -97,181 +88,147 @@ script = [
     {
         "identifier": 'EVENT_515_set_bit_10',
         "command": 'set_bit',
-        "args": [0x7043, 7],
-        "subscript": []
+        "args": [0x7043, 7]
     },
     {
         "identifier": 'EVENT_515_run_dialog_11',
         "command": 'run_dialog',
-        "args": [769, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [769, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_515_remember_last_object_12',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_515_enable_controls_until_return_13',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_515_pause_14',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_515_set_action_script_async_15',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_1, 624],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 624]
     },
     {
         "identifier": 'EVENT_515_set_action_script_async_16',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_0, 625],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 625]
     },
     {
         "identifier": 'EVENT_515_pause_17',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_515_run_dialog_18',
         "command": 'run_dialog',
-        "args": [770, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [770, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_515_pause_19',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_515_set_action_script_async_20',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_0, 626],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 626]
     },
     {
         "identifier": 'EVENT_515_run_dialog_21',
         "command": 'run_dialog',
-        "args": [771, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [771, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_515_pause_22',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_515_set_action_script_async_23',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_1, 625],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 625]
     },
     {
         "identifier": 'EVENT_515_run_dialog_24',
         "command": 'run_dialog',
-        "args": [772, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [772, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_515_set_action_script_async_25',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_1, 627],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 627]
     },
     {
         "identifier": 'EVENT_515_set_action_script_sync_26',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 99],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 99]
     },
     {
         "identifier": 'EVENT_515_run_dialog_27',
         "command": 'run_dialog',
-        "args": [773, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [773, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_515_set_bit_28',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_515_set_action_script_sync_29',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 629],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 629]
     },
     {
         "identifier": 'EVENT_515_pause_30',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_515_set_action_script_sync_31',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 628],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 628]
     },
     {
         "identifier": 'EVENT_515_run_dialog_32',
         "command": 'run_dialog',
-        "args": [774, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [774, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_515_remember_last_object_33',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_515_set_action_script_sync_34',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 630],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 630]
     },
     {
         "identifier": 'EVENT_515_set_action_script_sync_35',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 631],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 631]
     },
     {
         "identifier": 'EVENT_515_pause_36',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_515_run_dialog_37',
         "command": 'run_dialog',
-        "args": [775, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [775, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_515_move_script_to_main_thread_38',
-        "command": 'move_script_to_main_thread',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_main_thread'
     },
     {
         "identifier": 'EVENT_515_ret_39',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

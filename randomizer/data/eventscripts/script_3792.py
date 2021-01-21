@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3792_set_bit_0',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_3792_set_bit_1',
         "command": 'set_bit',
-        "args": [0x7043, 5],
-        "subscript": []
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_3792_action_queue_sync_2',
@@ -66,22 +65,17 @@ script = [
             },
             {
                 "identifier": 'EVENT_3792_action_queue_sync_5_SUBSCRIPT_floating_off_1',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3792_freeze_camera_6',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_3792_remember_last_object_7',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3792_action_queue_sync_8',
@@ -145,9 +139,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3792_remember_last_object_13',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3792_action_queue_async_14',
@@ -161,8 +153,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3792_action_queue_async_14_SUBSCRIPT_walk_1_step_southwest_1',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             }
         ]
     },
@@ -343,56 +334,44 @@ script = [
     },
     {
         "identifier": 'EVENT_3792_remember_last_object_25',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3792_unsync_action_script_26',
         "command": 'unsync_action_script',
-        "args": [AreaObjects.NPC_4],
-        "subscript": []
+        "args": [AreaObjects.NPC_4]
     },
     {
         "identifier": 'EVENT_3792_unsync_action_script_27',
         "command": 'unsync_action_script',
-        "args": [AreaObjects.NPC_9],
-        "subscript": []
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_3792_unsync_action_script_28',
         "command": 'unsync_action_script',
-        "args": [AreaObjects.NPC_8],
-        "subscript": []
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_3792_clear_bit_29',
         "command": 'clear_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_3792_clear_bit_30',
         "command": 'clear_bit',
-        "args": [0x7043, 5],
-        "subscript": []
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_3792_fade_in_from_black_async_31',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_3792_run_event_at_return_32',
         "command": 'run_event_at_return',
-        "args": [3794],
-        "subscript": []
+        "args": [3794]
     },
     {
         "identifier": 'EVENT_3792_ret_33',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

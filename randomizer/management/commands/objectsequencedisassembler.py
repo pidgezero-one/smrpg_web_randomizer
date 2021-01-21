@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, con_bitarray
+from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, con_bitarray, writeline
 from randomizer.data.objectsequencetables import sequence_speed_table, vram_priority_table, _0x08_flags, _0x0A_flags, _0x10_flags
 from randomizer.data.eventtables import npc_packet_table, area_object_table, radial_direction_table, sound_table, coord_table, coord_unit_table, room_table
 
@@ -74,6 +74,21 @@ def tok(rom, start, end):
         script.append((rom[dex:dex+l], dex))
         dex += l
     return script
+
+def parse_line(line, offset):
+    if line[0] == 0xFD:
+        cmd = line[1]
+        rest = line[2:]
+        table = fd_names
+    else:
+        cmd = line[0]
+        rest = line[1:]
+        table = names
+    if table[cmd]:
+        name, args = table[cmd](rest)
+    else:
+        name, args = 'db', ['0x%02x' % (i) for i in line]
+    return name, args
 
 
 fd_names = [None]*256
@@ -571,33 +586,101 @@ class Command(BaseCommand):
         print('from randomizer.management.commands.objectsequencedisassembler import tok')
         print('script = ObjectSequenceScript()')
 
-        script = tok(rom, start, end)
+        scripts_data = []
+        scripts = []
+        ptrs = []
 
-        for line, offset in script:
-            if line[0] == 0xFD:
-                cmd = line[1]
-                rest = line[2:]
-                table = fd_names
+        for i in range(pointers["start"], pointers["end"], 2):
+            ptrs.append((0x21 << 16) | (shortify(rom, i)))
+        event_lengths = []
+        for i in range(len(ptrs)):
+            if (i < len(ptrs) - 1):
+                event_lengths.append(ptrs[i + 1] - ptrs[i])
+                script_content = tok(rom, ptrs[i], ptrs[i + 1] - 1)
             else:
-                cmd = line[0]
-                rest = line[1:]
-                table = names
-            if table[cmd]:
-                name, args = table[cmd](rest)
+                event_lengths.append(end - ptrs[i])
+                script_content = tok(rom, ptrs[i], end)
+            scripts.append(script_content)
+
+        #translate lines into commands and note any jump addresses
+        for i in range(len(scripts)):
+            script = scripts[i]
+            sd = []
+            for j in range(len(script)):
+                line, offset = script[j]
+                name, args = parse_line(line, offset)
+                identifier = 'ACTION_%i_%s_%i' % (i, name, j)
+                if line[0] in jmp_cmds:
+                    jump_args = [(int(ja, 16) | (offset & 0xFF0000)) for ja in args[-1:]]
+                else:
+                    jump_args = []
+                sd.append({
+                    'command': name,
+                    'args': args,
+                    "original_offset": offset,
+                    "identifier": identifier,
+                    "jumps": jump_args
+                })
+            scripts_data.append(sd)
+
+        scripts_with_named_jumps = []
+
+        #get the identifiers corresponding to where the jumps are going
+        for i in range(len(scripts_data)):
+            script = scripts_data[i]
+            this_script = []
+            for cmd in script:
+                jumps = []
+                commands_to_replace = len(cmd["jumps"]) * -1
+                for j in cmd["jumps"]:
+                    for sd in scripts_data:
+                        candidates = [c for c in sd if c["original_offset"] == j]
+                        if (len(candidates) > 0):
+                            jumped_command = candidates[0]
+                            jumps.append('\'%s\'' % jumped_command["identifier"])
+                if commands_to_replace == 0:
+                    new_args = cmd["args"]
+                else:
+                    new_args = cmd["args"][:commands_to_replace] + jumps
+                cmd_with_named_jumps = {
+                    'command': cmd["command"],
+                    'args': new_args,
+                    "identifier": cmd["identifier"]
+                }
+                this_script.append(cmd_with_named_jumps)
+            scripts_with_named_jumps.append(this_script)
+
+        #output
+        for i in range(len(scripts_with_named_jumps)):
+            file = open("randomizer/data/actionscripts/script_%i.py" % i, "w")
+            writeline(file, 'from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
+            writeline(file, 'from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms')
+            script = scripts_with_named_jumps[i]
+            if len(script) == 0:
+                writeline(file, 'script = []')
             else:
-                name, args = 'db', ['0x%02x' % (i) for i in line]
-            print('script.%s(%s) # 0x%x' %
-                  (name, ', '.join(args), offset) + ' ' + repr(line))
-        print('''
-rez = script.fin()
-rez_tok = tok(rez, 0, len(rez)-1)
+                writeline(file, 'script = [')
+                for j in range(len(script)):
+                    cmd = script[j]
+                    writeline(file, '    {')
+                    writeline(file, '        "identifier": %r,' % cmd['identifier'])
+                    if len(cmd["args"]) == 0:
+                        writeline(file, '        "command": %r' % cmd['command'])
+                    else:
+                        writeline(file, '        "command": %r,' % cmd['command'])
+                        writeline(file, '        "args": [%s]' % ', '.join(cmd["args"]))
+                    if j == len(script) - 1:
+                        writeline(file, '    }')
+                    else:
+                        writeline(file, '    },')
+                writeline(file, ']')
+            file.close()
 
-start = 0x%x
-end = 0x%x
-rom_tok = tok(rom, start, end)
-
-for l,r in zip(rez_tok, rom_tok):
-if l[0] != r[0]:
-    print(l, r)
-
-''' % (start, end))
+        
+        file = open("randomizer/data/actionscripts/actions.py", "w", encoding='utf-8')
+        for i in range(len(scripts_data)):
+            writeline(file, 'from randomizer.data.actionscripts.script_%i import script as script_%i' % (i, i))
+        writeline(file, 'scripts = [None]*%i' % len(scripts_data))
+        for i in range(len(scripts_data)):
+            writeline(file, 'scripts[%i] = script_%i' % (i, i))
+        file.close()

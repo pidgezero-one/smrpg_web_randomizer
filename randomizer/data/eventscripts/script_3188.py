@@ -1,11 +1,10 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3188_stop_all_background_events_0',
-        "command": 'stop_all_background_events',
-        "args": [],
-        "subscript": []
+        "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_3188_action_queue_sync_1',
@@ -31,13 +30,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3188_action_queue_async_2_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_3188_action_queue_async_2_SUBSCRIPT_floating_off_2',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_3188_action_queue_async_2_SUBSCRIPT_transfer_to_object_xy_3',
@@ -51,18 +48,15 @@ script = [
             },
             {
                 "identifier": 'EVENT_3188_action_queue_async_2_SUBSCRIPT_face_southwest_5',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_3188_action_queue_async_2_SUBSCRIPT_sequence_playback_off_6',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_3188_action_queue_async_2_SUBSCRIPT_sequence_looping_off_7',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
@@ -168,55 +162,43 @@ script = [
     {
         "identifier": 'EVENT_3188_pause_5',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3188_jmp_if_bit_clear_6',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 0, 'EVENT_3188_pause_5'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3188_pause_5']
     },
     {
         "identifier": 'EVENT_3188_fade_out_to_black_async_7',
-        "command": 'fade_out_to_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_to_black_async'
     },
     {
         "identifier": 'EVENT_3188_store_7000_minecart_timer_8',
-        "command": 'store_7000_minecart_timer',
-        "args": [],
-        "subscript": []
+        "command": 'store_7000_minecart_timer'
     },
     {
         "identifier": 'EVENT_3188_set_short_mem_9',
         "command": 'set_short_mem',
-        "args": [0x702e, 0x7000],
-        "subscript": []
+        "args": [0x702e, 0x7000]
     },
     {
         "identifier": 'EVENT_3188_run_moleville_mountain_sequence_10',
-        "command": 'run_moleville_mountain_sequence',
-        "args": [],
-        "subscript": []
+        "command": 'run_moleville_mountain_sequence'
     },
     {
         "identifier": 'EVENT_3188_enter_area_11',
         "command": 'enter_area',
-        "args": [Rooms._108_MOLEVILLE_OUTSIDE, RadialDirections.SOUTH, 0, 0, 0, []],
-        "subscript": []
+        "args": [Rooms._108_MOLEVILLE_OUTSIDE, RadialDirections.SOUTH, 0, 0, 0, []]
     },
     {
         "identifier": 'EVENT_3188_set_bit_12',
         "command": 'set_bit',
-        "args": [0x7044, 6],
-        "subscript": []
+        "args": [0x7044, 6]
     },
     {
         "identifier": 'EVENT_3188_jmp_to_event_13',
         "command": 'jmp_to_event',
-        "args": [1648],
-        "subscript": []
+        "args": [1648]
     }
 ]

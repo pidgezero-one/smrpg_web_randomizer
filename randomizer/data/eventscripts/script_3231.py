@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3231_pause_action_script_0',
         "command": 'pause_action_script',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3231_disable_trigger_1',
         "command": 'disable_trigger',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3231_action_queue_sync_2',
@@ -55,8 +54,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3231_action_queue_sync_2_SUBSCRIPT_bpl_26_27_28_7',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_3231_action_queue_sync_2_SUBSCRIPT_set_palette_row_8',
@@ -65,21 +63,17 @@ script = [
             },
             {
                 "identifier": 'EVENT_3231_action_queue_sync_2_SUBSCRIPT_ret_9',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
     {
         "identifier": 'EVENT_3231_set_action_script_sync_3',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 319],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 319]
     },
     {
         "identifier": 'EVENT_3231_ret_4',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

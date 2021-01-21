@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3679_jmp_if_object_not_in_level_0',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_0, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_jmp_if_object_not_in_level_2'],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_jmp_if_object_not_in_level_2']
     },
     {
         "identifier": 'EVENT_3679_action_queue_async_1',
@@ -22,20 +22,17 @@ script = [
     {
         "identifier": 'EVENT_3679_jmp_if_object_not_in_level_2',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_6, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_jmp_if_object_not_in_level_4'],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_jmp_if_object_not_in_level_4']
     },
     {
         "identifier": 'EVENT_3679_apply_solidity_mod_3',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_3679_jmp_if_object_not_in_level_4',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3585_fade_in_from_black_async_0'],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3585_fade_in_from_black_async_0']
     },
     {
         "identifier": 'EVENT_3679_action_queue_sync_5',
@@ -71,33 +68,27 @@ script = [
     },
     {
         "identifier": 'EVENT_3679_remember_last_object_6',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3679_jmp_if_bit_clear_7',
         "command": 'jmp_if_bit_clear',
-        "args": [0x709c, 5, 'EVENT_3679_jmp_if_bit_clear_9'],
-        "subscript": []
+        "args": [0x709c, 5, 'EVENT_3679_jmp_if_bit_clear_9']
     },
     {
         "identifier": 'EVENT_3679_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 978],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 978]
     },
     {
         "identifier": 'EVENT_3679_jmp_if_bit_clear_9',
         "command": 'jmp_if_bit_clear',
-        "args": [0x705f, 5, 'EVENT_3679_fade_in_from_black_async_12'],
-        "subscript": []
+        "args": [0x705f, 5, 'EVENT_3679_fade_in_from_black_async_12']
     },
     {
         "identifier": 'EVENT_3679_jmp_if_object_not_in_level_10',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_0, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_fade_in_from_black_async_12'],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_fade_in_from_black_async_12']
     },
     {
         "identifier": 'EVENT_3679_action_queue_async_11',
@@ -113,15 +104,12 @@ script = [
     },
     {
         "identifier": 'EVENT_3679_fade_in_from_black_async_12',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_3679_jmp_if_bit_set_13',
         "command": 'jmp_if_bit_set',
-        "args": [0x709c, 5, 'EVENT_3584_ret_0'],
-        "subscript": []
+        "args": [0x709c, 5, 'EVENT_3584_ret_0']
     },
     {
         "identifier": 'EVENT_3679_action_queue_sync_14',
@@ -143,20 +131,17 @@ script = [
     {
         "identifier": 'EVENT_3679_pause_15',
         "command": 'pause',
-        "args": [120],
-        "subscript": []
+        "args": [120]
     },
     {
         "identifier": 'EVENT_3679_run_dialog_16',
         "command": 'run_dialog',
-        "args": [3601, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3601, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3679_pause_17',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_3679_action_queue_async_18',
@@ -178,14 +163,12 @@ script = [
     {
         "identifier": 'EVENT_3679_pause_19',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_3679_run_dialog_20',
         "command": 'run_dialog',
-        "args": [3602, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3602, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3679_action_queue_async_21',
@@ -204,18 +187,15 @@ script = [
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_reset_properties_2',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_face_northeast_3',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_sequence_looping_on_4',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_db_5',
@@ -234,8 +214,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_bpl_26_27_28_8',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_set_animation_speed_9',
@@ -244,8 +223,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_fixed_f_coord_on_10',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_start_loop_n_times_11',
@@ -274,8 +252,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_end_loop_16',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_pause_17',
@@ -284,13 +261,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_fixed_f_coord_off_18',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_face_southwest_19',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_3679_action_queue_async_21_SUBSCRIPT_set_sprite_sequence_20',
@@ -302,8 +277,7 @@ script = [
     {
         "identifier": 'EVENT_3679_run_dialog_22',
         "command": 'run_dialog',
-        "args": [3603, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3603, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3679_action_queue_sync_23',
@@ -337,44 +311,36 @@ script = [
     {
         "identifier": 'EVENT_3679_pause_25',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_3679_run_dialog_26',
         "command": 'run_dialog',
-        "args": [3604, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3604, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3679_remember_last_object_27',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3679_set_action_script_sync_28',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 978],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 978]
     },
     {
         "identifier": 'EVENT_3679_set_bit_29',
         "command": 'set_bit',
-        "args": [0x709c, 5],
-        "subscript": []
+        "args": [0x709c, 5]
     },
     {
         "identifier": 'EVENT_3679_set_bit_30',
         "command": 'set_bit',
-        "args": [0x7049, 2],
-        "subscript": []
+        "args": [0x7049, 2]
     },
     {
         "identifier": 'EVENT_3679_run_event_as_subroutine_31',
         "command": 'run_event_as_subroutine',
-        "args": [276],
-        "subscript": []
+        "args": [276]
     },
     {
         "identifier": 'EVENT_3679_action_queue_async_32',
@@ -383,15 +349,12 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3679_action_queue_async_32_SUBSCRIPT_face_south_0',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             }
         ]
     },
     {
         "identifier": 'EVENT_3679_ret_33',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

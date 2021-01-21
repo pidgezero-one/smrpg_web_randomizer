@@ -1,23 +1,20 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_994_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._244_GAME_INTRO_YOSTER_ISLE_TALK_TO_YOSHI__RUN_AROUND, RadialDirections.SOUTHWEST, 16, 64, 0, []],
-        "subscript": []
+        "args": [Rooms._244_GAME_INTRO_YOSTER_ISLE_TALK_TO_YOSHI__RUN_AROUND, RadialDirections.SOUTHWEST, 16, 64, 0, []]
     },
     {
         "identifier": 'EVENT_994_fade_in_from_black_sync_1',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_994_set_bit_2',
         "command": 'set_bit',
-        "args": [0x7044, 4],
-        "subscript": []
+        "args": [0x7044, 4]
     },
     {
         "identifier": 'EVENT_994_action_queue_async_3',
@@ -34,14 +31,12 @@ script = [
     {
         "identifier": 'EVENT_994_set_action_script_async_4',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 670]
     },
     {
         "identifier": 'EVENT_994_pause_5',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_994_action_queue_async_6',
@@ -50,8 +45,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_994_action_queue_async_6_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -82,8 +76,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_994_action_queue_async_7_SUBSCRIPT_floating_off_4',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_994_action_queue_async_7_SUBSCRIPT_set_vram_priority_5',
@@ -107,8 +100,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_994_action_queue_async_7_SUBSCRIPT_dec_z_coord_1_step_9',
-                "command": 'dec_z_coord_1_step',
-                "args": []
+                "command": 'dec_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_994_action_queue_async_7_SUBSCRIPT_pause_10',
@@ -119,21 +111,17 @@ script = [
     },
     {
         "identifier": 'EVENT_994_move_script_to_main_thread_8',
-        "command": 'move_script_to_main_thread',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_main_thread'
     },
     {
         "identifier": 'EVENT_994_db_9',
         "command": 'db',
-        "args": [0xfd, 0x45],
-        "subscript": []
+        "args": [0xfd, 0x45]
     },
     {
         "identifier": 'EVENT_994_pause_action_script_10',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_12],
-        "subscript": []
+        "args": [AreaObjects.NPC_12]
     },
     {
         "identifier": 'EVENT_994_action_queue_sync_11',
@@ -194,8 +182,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_994_action_queue_sync_12_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_994_action_queue_sync_12_SUBSCRIPT_set_object_memory_bits_1',
@@ -232,25 +219,20 @@ script = [
     {
         "identifier": 'EVENT_994_pause_13',
         "command": 'pause',
-        "args": [190],
-        "subscript": []
+        "args": [190]
     },
     {
         "identifier": 'EVENT_994_fade_out_to_black_sync_duration_14',
         "command": 'fade_out_to_black_sync_duration',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_994_pause_script_until_effect_done_15',
-        "command": 'pause_script_until_effect_done',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_until_effect_done'
     },
     {
         "identifier": 'EVENT_994_jmp_to_event_16',
         "command": 'jmp_to_event',
-        "args": [139],
-        "subscript": []
+        "args": [139]
     }
 ]

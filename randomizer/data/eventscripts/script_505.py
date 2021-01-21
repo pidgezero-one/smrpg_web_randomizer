@@ -1,53 +1,46 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_505_pause_0',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_505_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_505_pause_3'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_505_pause_3']
     },
     {
         "identifier": 'EVENT_505_jmp_2',
         "command": 'jmp',
-        "args": ['EVENT_505_pause_0'],
-        "subscript": []
+        "args": ['EVENT_505_pause_0']
     },
     {
         "identifier": 'EVENT_505_pause_3',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_505_jmp_if_mario_in_air_4',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_505_pause_3'],
-        "subscript": []
+        "args": ['EVENT_505_pause_3']
     },
     {
         "identifier": 'EVENT_505_jmp_if_bit_clear_5',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 2, 'EVENT_505_pause_0'],
-        "subscript": []
+        "args": [0x7043, 2, 'EVENT_505_pause_0']
     },
     {
         "identifier": 'EVENT_505_jmp_if_bit_clear_6',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 3, 'EVENT_505_pause_0'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_505_pause_0']
     },
     {
         "identifier": 'EVENT_505_enable_controls_7',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_505_action_queue_async_8',
@@ -113,13 +106,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_505_action_queue_async_9_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_505_action_queue_async_9_SUBSCRIPT_reset_properties_1',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_505_action_queue_async_9_SUBSCRIPT_set_solidity_bits_2',
@@ -136,25 +127,21 @@ script = [
     {
         "identifier": 'EVENT_505_set_action_script_async_10',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 671]
     },
     {
         "identifier": 'EVENT_505_clear_bit_11',
         "command": 'clear_bit',
-        "args": [0x7043, 3],
-        "subscript": []
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_505_enable_controls_12',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_505_jmp_to_event_13',
         "command": 'jmp_to_event',
-        "args": [505],
-        "subscript": []
+        "args": [505]
     }
 ]

@@ -1,59 +1,51 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_466_set_action_script_sync_0',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_10, 794],
-        "subscript": []
+        "args": [AreaObjects.NPC_10, 794]
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x705e, 1, 'EVENT_466_set_action_script_sync_4'],
-        "subscript": []
+        "args": [0x705e, 1, 'EVENT_466_set_action_script_sync_4']
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_2',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 431],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 431]
     },
     {
         "identifier": 'EVENT_466_jmp_3',
         "command": 'jmp',
-        "args": ['EVENT_466_jmp_if_bit_clear_5'],
-        "subscript": []
+        "args": ['EVENT_466_jmp_if_bit_clear_5']
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_4',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 797],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 797]
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_clear_5',
         "command": 'jmp_if_bit_clear',
-        "args": [0x705e, 2, 'EVENT_466_set_action_script_sync_14'],
-        "subscript": []
+        "args": [0x705e, 2, 'EVENT_466_set_action_script_sync_14']
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_6',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 795],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 795]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_7',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 796],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 796]
     },
     {
         "identifier": 'EVENT_466_pause_action_script_8',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_5],
-        "subscript": []
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_466_action_queue_sync_9',
@@ -62,8 +54,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_466_action_queue_sync_9_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
@@ -79,8 +70,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_466_start_embedded_action_script_async_10_SUBSCRIPT_face_southeast_1',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_466_start_embedded_action_script_async_10_SUBSCRIPT_set_priority_2',
@@ -102,211 +92,176 @@ script = [
     {
         "identifier": 'EVENT_466_set_action_script_sync_11',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 677],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 677]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_12',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 677],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 677]
     },
     {
         "identifier": 'EVENT_466_jmp_13',
         "command": 'jmp',
-        "args": ['EVENT_466_jmp_if_bit_set_18'],
-        "subscript": []
+        "args": ['EVENT_466_jmp_if_bit_set_18']
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 677],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 677]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_15',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 677],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 677]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_16',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 677],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 677]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_17',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 677],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 677]
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_18',
         "command": 'jmp_if_bit_set',
-        "args": [0x705e, 1, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x705e, 1, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_19',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 500],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 500]
     },
     {
         "identifier": 'EVENT_466_clear_bit_20',
         "command": 'clear_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_466_clear_bit_21',
         "command": 'clear_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_466_clear_bit_22',
         "command": 'clear_bit',
-        "args": [0x7043, 2],
-        "subscript": []
+        "args": [0x7043, 2]
     },
     {
         "identifier": 'EVENT_466_clear_bit_23',
         "command": 'clear_bit',
-        "args": [0x7043, 3],
-        "subscript": []
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_466_clear_bit_24',
         "command": 'clear_bit',
-        "args": [0x7043, 4],
-        "subscript": []
+        "args": [0x7043, 4]
     },
     {
         "identifier": 'EVENT_466_pause_25',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_26',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_466_add_31'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_466_add_31']
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_27',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_466_set_short_35'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_466_set_short_35']
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_28',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_466_set_short_42'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_466_set_short_42']
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_29',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 4, 'EVENT_466_pause_39'],
-        "subscript": []
+        "args": [0x7043, 4, 'EVENT_466_pause_39']
     },
     {
         "identifier": 'EVENT_466_jmp_30',
         "command": 'jmp',
-        "args": ['EVENT_466_pause_25'],
-        "subscript": []
+        "args": ['EVENT_466_pause_25']
     },
     {
         "identifier": 'EVENT_466_add_31',
         "command": 'add',
-        "args": [0x70ae, 0x01],
-        "subscript": []
+        "args": [0x70ae, 0x01]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_32',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 499],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 499]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_33',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 430],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 430]
     },
     {
         "identifier": 'EVENT_466_jmp_34',
         "command": 'jmp',
-        "args": ['EVENT_466_clear_bit_20'],
-        "subscript": []
+        "args": ['EVENT_466_clear_bit_20']
     },
     {
         "identifier": 'EVENT_466_set_short_35',
         "command": 'set_short',
-        "args": [0x7032, 0x0000],
-        "subscript": []
+        "args": [0x7032, 0x0000]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_36',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 502],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 502]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_37',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 428],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 428]
     },
     {
         "identifier": 'EVENT_466_jmp_38',
         "command": 'jmp',
-        "args": ['EVENT_466_pause_39'],
-        "subscript": []
+        "args": ['EVENT_466_pause_39']
     },
     {
         "identifier": 'EVENT_466_pause_39',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_40',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_466_clear_bit_20'],
-        "subscript": []
+        "args": [0x7043, 2, 'EVENT_466_clear_bit_20']
     },
     {
         "identifier": 'EVENT_466_jmp_41',
         "command": 'jmp',
-        "args": ['EVENT_466_pause_39'],
-        "subscript": []
+        "args": ['EVENT_466_pause_39']
     },
     {
         "identifier": 'EVENT_466_set_short_42',
         "command": 'set_short',
-        "args": [0x7032, 0x0000],
-        "subscript": []
+        "args": [0x7032, 0x0000]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_43',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 501],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 501]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_44',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 430],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 430]
     },
     {
         "identifier": 'EVENT_466_jmp_45',
         "command": 'jmp',
-        "args": ['EVENT_466_pause_39'],
-        "subscript": []
+        "args": ['EVENT_466_pause_39']
     }
 ]

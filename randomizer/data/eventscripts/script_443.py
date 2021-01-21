@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_443_clear_bit_0',
         "command": 'clear_bit',
-        "args": [0x707c, 0],
-        "subscript": []
+        "args": [0x707c, 0]
     },
     {
         "identifier": 'EVENT_443_set_1',
         "command": 'set',
-        "args": [0x70df, 20],
-        "subscript": []
+        "args": [0x70df, 20]
     },
     {
         "identifier": 'EVENT_443_run_event_as_subroutine_2',
         "command": 'run_event_as_subroutine',
-        "args": [281],
-        "subscript": []
+        "args": [281]
     },
     {
         "identifier": 'EVENT_443_action_queue_sync_3',
@@ -165,14 +163,10 @@ script = [
     },
     {
         "identifier": 'EVENT_443_remember_last_object_15',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_443_ret_16',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

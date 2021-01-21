@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2526_action_queue_sync_0',
@@ -62,26 +63,21 @@ script = [
     {
         "identifier": 'EVENT_2526_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x708b, 6, 'EVENT_2526_fade_in_from_black_async_26'],
-        "subscript": []
+        "args": [0x708b, 6, 'EVENT_2526_fade_in_from_black_async_26']
     },
     {
         "identifier": 'EVENT_2526_set_bit_5',
         "command": 'set_bit',
-        "args": [0x708b, 6],
-        "subscript": []
+        "args": [0x708b, 6]
     },
     {
         "identifier": 'EVENT_2526_fade_in_from_black_async_6',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2526_summon_to_current_level_7',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_16],
-        "subscript": []
+        "args": [AreaObjects.NPC_16]
     },
     {
         "identifier": 'EVENT_2526_action_queue_async_8',
@@ -100,22 +96,18 @@ script = [
             },
             {
                 "identifier": 'EVENT_2526_action_queue_async_8_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2526_run_dialog_9',
         "command": 'run_dialog',
-        "args": [3117, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3117, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2526_pause_script_resume_on_next_dialog_page_a_10',
-        "command": 'pause_script_resume_on_next_dialog_page_a',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_resume_on_next_dialog_page_a'
     },
     {
         "identifier": 'EVENT_2526_action_queue_async_11',
@@ -136,33 +128,27 @@ script = [
     },
     {
         "identifier": 'EVENT_2526_unsync_dialog_12',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_2526_jmp_if_bit_set_13',
         "command": 'jmp_if_bit_set',
-        "args": [0x7091, 6, 'EVENT_2526_run_dialog_16'],
-        "subscript": []
+        "args": [0x7091, 6, 'EVENT_2526_run_dialog_16']
     },
     {
         "identifier": 'EVENT_2526_run_dialog_14',
         "command": 'run_dialog',
-        "args": [3153, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3153, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2526_jmp_15',
         "command": 'jmp',
-        "args": ['EVENT_2526_action_queue_async_17'],
-        "subscript": []
+        "args": ['EVENT_2526_action_queue_async_17']
     },
     {
         "identifier": 'EVENT_2526_run_dialog_16',
         "command": 'run_dialog',
-        "args": [3118, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3118, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2526_action_queue_async_17',
@@ -171,16 +157,14 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2526_action_queue_async_17_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_2526_pause_18',
         "command": 'pause',
-        "args": [48],
-        "subscript": []
+        "args": [48]
     },
     {
         "identifier": 'EVENT_2526_action_queue_async_19',
@@ -211,9 +195,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2526_unsync_dialog_20',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_2526_action_queue_async_21',
@@ -222,16 +204,14 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2526_action_queue_async_21_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_2526_run_dialog_22',
         "command": 'run_dialog',
-        "args": [3119, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3119, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2526_action_queue_async_23',
@@ -255,33 +235,25 @@ script = [
             },
             {
                 "identifier": 'EVENT_2526_action_queue_async_23_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2526_remove_from_current_level_24',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_16],
-        "subscript": []
+        "args": [AreaObjects.NPC_16]
     },
     {
         "identifier": 'EVENT_2526_ret_25',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2526_fade_in_from_black_async_26',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2526_ret_27',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2348_play_sound_0',
         "command": 'play_sound',
-        "args": [Sounds._000_SILENCE, 6],
-        "subscript": []
+        "args": [Sounds._000_SILENCE, 6]
     },
     {
         "identifier": 'EVENT_2348_jmp_if_present_in_current_level_1',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_4, 'EVENT_2348_jmp_if_present_in_current_level_3'],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 'EVENT_2348_jmp_if_present_in_current_level_3']
     },
     {
         "identifier": 'EVENT_2348_action_queue_sync_2',
@@ -25,16 +24,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2348_action_queue_sync_2_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2348_jmp_if_present_in_current_level_3',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_5, 'EVENT_2348_jmp_if_present_in_current_level_5'],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 'EVENT_2348_jmp_if_present_in_current_level_5']
     },
     {
         "identifier": 'EVENT_2348_action_queue_sync_4',
@@ -48,16 +45,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2348_action_queue_sync_4_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2348_jmp_if_present_in_current_level_5',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_6, 'EVENT_2348_jmp_if_present_in_current_level_7'],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 'EVENT_2348_jmp_if_present_in_current_level_7']
     },
     {
         "identifier": 'EVENT_2348_action_queue_sync_6',
@@ -71,16 +66,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2348_action_queue_sync_6_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2348_jmp_if_present_in_current_level_7',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_8, 'EVENT_2348_action_queue_async_9'],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 'EVENT_2348_action_queue_async_9']
     },
     {
         "identifier": 'EVENT_2348_action_queue_sync_8',
@@ -94,8 +87,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2348_action_queue_sync_8_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -126,21 +118,16 @@ script = [
             },
             {
                 "identifier": 'EVENT_2348_action_queue_async_9_SUBSCRIPT_visibility_off_4',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2348_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2348_ret_11',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

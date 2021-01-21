@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2498_set_0',
         "command": 'set',
-        "args": [0x70bb, 2],
-        "subscript": []
+        "args": [0x70bb, 2]
     },
     {
         "identifier": 'EVENT_2498_action_queue_sync_1',
@@ -14,8 +14,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2498_action_queue_sync_1_SUBSCRIPT_shadow_off_0',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_1_SUBSCRIPT_shift_southeast_pixels_1',
@@ -24,8 +23,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_1_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_1_SUBSCRIPT_set_priority_3',
@@ -41,8 +39,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2498_action_queue_sync_2_SUBSCRIPT_shadow_off_0',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_2_SUBSCRIPT_set_priority_1',
@@ -58,8 +55,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2498_action_queue_sync_3_SUBSCRIPT_shadow_off_0',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_3_SUBSCRIPT_shift_northwest_pixels_1',
@@ -68,8 +64,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_3_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
@@ -80,8 +75,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2498_action_queue_sync_4_SUBSCRIPT_shadow_off_0',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_4_SUBSCRIPT_shift_southeast_pixels_1',
@@ -90,8 +84,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_4_SUBSCRIPT_face_northwest_2',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
@@ -102,8 +95,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2498_action_queue_sync_5_SUBSCRIPT_shadow_off_0',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_5_SUBSCRIPT_shift_southeast_pixels_1',
@@ -112,8 +104,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2498_action_queue_sync_5_SUBSCRIPT_face_northwest_2',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
@@ -124,8 +115,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2498_action_queue_async_6_SUBSCRIPT_shadow_off_0',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2498_action_queue_async_6_SUBSCRIPT_shift_northwest_pixels_1',
@@ -134,45 +124,36 @@ script = [
             },
             {
                 "identifier": 'EVENT_2498_action_queue_async_6_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2498_set_action_script_sync_7',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 547],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 547]
     },
     {
         "identifier": 'EVENT_2498_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 548],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 548]
     },
     {
         "identifier": 'EVENT_2498_set_action_script_sync_9',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 548],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 548]
     },
     {
         "identifier": 'EVENT_2498_set_action_script_sync_10',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 547],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 547]
     },
     {
         "identifier": 'EVENT_2498_fade_in_from_black_async_11',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2498_ret_12',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

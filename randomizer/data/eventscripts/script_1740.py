@@ -1,35 +1,30 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1740_enable_controls_0',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_1740_enter_area_1',
         "command": 'enter_area',
-        "args": [Rooms._151_GAME_INTRO_BOOSTER_HILL, RadialDirections.NORTHWEST, 7, 57, 0, []],
-        "subscript": []
+        "args": [Rooms._151_GAME_INTRO_BOOSTER_HILL, RadialDirections.NORTHWEST, 7, 57, 0, []]
     },
     {
         "identifier": 'EVENT_1740_set_short_2',
         "command": 'set_short',
-        "args": [0x7024, 0x0000],
-        "subscript": []
+        "args": [0x7024, 0x0000]
     },
     {
         "identifier": 'EVENT_1740_set_short_3',
         "command": 'set_short',
-        "args": [0x7026, 0x0001],
-        "subscript": []
+        "args": [0x7026, 0x0001]
     },
     {
         "identifier": 'EVENT_1740_freeze_camera_4',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_1740_action_queue_async_5',
@@ -48,13 +43,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1740_action_queue_async_5_SUBSCRIPT_fixed_f_coord_on_2',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_1740_action_queue_async_5_SUBSCRIPT_sequence_looping_on_3',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_1740_action_queue_async_5_SUBSCRIPT_set_animation_speed_4',
@@ -66,140 +59,115 @@ script = [
     {
         "identifier": 'EVENT_1740_set_6',
         "command": 'set',
-        "args": [0x70ae, 3],
-        "subscript": []
+        "args": [0x70ae, 3]
     },
     {
         "identifier": 'EVENT_1740_set_action_script_sync_7',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 772],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 772]
     },
     {
         "identifier": 'EVENT_1740_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 772],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 772]
     },
     {
         "identifier": 'EVENT_1740_set_action_script_sync_9',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 772],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 772]
     },
     {
         "identifier": 'EVENT_1740_fade_in_from_black_sync_10',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_1740_run_background_event_11',
         "command": 'run_background_event',
-        "args": [1743, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [1743, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_1740_run_background_event_12',
         "command": 'run_background_event',
-        "args": [1741, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6]],
-        "subscript": []
+        "args": [1741, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_1740_set_action_script_sync_13',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.LAYER_1, 704],
-        "subscript": []
+        "args": [AreaObjects.LAYER_1, 704]
     },
     {
         "identifier": 'EVENT_1740_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.LAYER_2, 655],
-        "subscript": []
+        "args": [AreaObjects.LAYER_2, 655]
     },
     {
         "identifier": 'EVENT_1740_set_action_script_sync_15',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.LAYER_3, 776],
-        "subscript": []
+        "args": [AreaObjects.LAYER_3, 776]
     },
     {
         "identifier": 'EVENT_1740_set_short_16',
         "command": 'set_short',
-        "args": [0x701e, 0x014a],
-        "subscript": []
+        "args": [0x701e, 0x014a]
     },
     {
         "identifier": 'EVENT_1740_run_background_event_with_pause_return_on_exit_17',
         "command": 'run_background_event_with_pause_return_on_exit',
-        "args": [1744, 0x701e, [12, 13]],
-        "subscript": []
+        "args": [1744, 0x701e, [12, 13]]
     },
     {
         "identifier": 'EVENT_1740_move_script_to_background_thread_2_18',
-        "command": 'move_script_to_background_thread_2',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_background_thread_2'
     },
     {
         "identifier": 'EVENT_1740_pause_19',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1740_jmp_if_bit_set_20',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 4, 'EVENT_1740_fade_out_to_black_async_duration_36'],
-        "subscript": []
+        "args": [0x7043, 4, 'EVENT_1740_fade_out_to_black_async_duration_36']
     },
     {
         "identifier": 'EVENT_1740_pause_21',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1740_jmp_if_bit_set_22',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 4, 'EVENT_1740_fade_out_to_black_async_duration_36'],
-        "subscript": []
+        "args": [0x7043, 4, 'EVENT_1740_fade_out_to_black_async_duration_36']
     },
     {
         "identifier": 'EVENT_1740_jmp_if_bit_clear_23',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 5, 'EVENT_1740_pause_19'],
-        "subscript": []
+        "args": [0x7043, 5, 'EVENT_1740_pause_19']
     },
     {
         "identifier": 'EVENT_1740_mem_compare_24',
         "command": 'mem_compare',
-        "args": [0x7024, 0],
-        "subscript": []
+        "args": [0x7024, 0]
     },
     {
         "identifier": 'EVENT_1740_jmp_if_loaded_memory_is_0_25',
         "command": 'jmp_if_loaded_memory_is_0',
-        "args": ['EVENT_1740_clear_bit_34'],
-        "subscript": []
+        "args": ['EVENT_1740_clear_bit_34']
     },
     {
         "identifier": 'EVENT_1740_jmp_if_loaded_memory_is_above_or_equal_0_26',
         "command": 'jmp_if_loaded_memory_is_above_or_equal_0',
-        "args": ['EVENT_1740_action_queue_async_32'],
-        "subscript": []
+        "args": ['EVENT_1740_action_queue_async_32']
     },
     {
         "identifier": 'EVENT_1740_dec_short_27',
         "command": 'dec_short',
-        "args": [0x7026],
-        "subscript": []
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1740_jmp_if_var_not_equals_short_28',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7026, 0, 'EVENT_1740_pause_19'],
-        "subscript": []
+        "args": [0x7026, 0, 'EVENT_1740_pause_19']
     },
     {
         "identifier": 'EVENT_1740_action_queue_async_29',
@@ -236,14 +204,12 @@ script = [
     {
         "identifier": 'EVENT_1740_set_short_30',
         "command": 'set_short',
-        "args": [0x7026, 0x0001],
-        "subscript": []
+        "args": [0x7026, 0x0001]
     },
     {
         "identifier": 'EVENT_1740_jmp_31',
         "command": 'jmp',
-        "args": ['EVENT_1740_jmp_if_bit_set_20'],
-        "subscript": []
+        "args": ['EVENT_1740_jmp_if_bit_set_20']
     },
     {
         "identifier": 'EVENT_1740_action_queue_async_32',
@@ -280,73 +246,57 @@ script = [
     {
         "identifier": 'EVENT_1740_jmp_33',
         "command": 'jmp',
-        "args": ['EVENT_1740_jmp_if_bit_set_20'],
-        "subscript": []
+        "args": ['EVENT_1740_jmp_if_bit_set_20']
     },
     {
         "identifier": 'EVENT_1740_clear_bit_34',
         "command": 'clear_bit',
-        "args": [0x7043, 5],
-        "subscript": []
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_1740_jmp_35',
         "command": 'jmp',
-        "args": ['EVENT_1740_pause_19'],
-        "subscript": []
+        "args": ['EVENT_1740_pause_19']
     },
     {
         "identifier": 'EVENT_1740_fade_out_to_black_async_duration_36',
         "command": 'fade_out_to_black_async_duration',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1740_move_script_to_main_thread_37',
-        "command": 'move_script_to_main_thread',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_main_thread'
     },
     {
         "identifier": 'EVENT_1740_freeze_all_npcs_until_return_38',
-        "command": 'freeze_all_npcs_until_return',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_all_npcs_until_return'
     },
     {
         "identifier": 'EVENT_1740_stop_all_background_events_39',
-        "command": 'stop_all_background_events',
-        "args": [],
-        "subscript": []
+        "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_1740_db_40',
         "command": 'db',
-        "args": [0xfd, 0x44],
-        "subscript": []
+        "args": [0xfd, 0x44]
     },
     {
         "identifier": 'EVENT_1740_stop_background_event_41',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c],
-        "subscript": []
+        "args": [timer_memory=0x701c]
     },
     {
         "identifier": 'EVENT_1740_stop_background_event_42',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701e],
-        "subscript": []
+        "args": [timer_memory=0x701e]
     },
     {
         "identifier": 'EVENT_1740_unfreeze_camera_43',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_1740_jmp_to_event_44',
         "command": 'jmp_to_event',
-        "args": [1731],
-        "subscript": []
+        "args": [1731]
     }
 ]

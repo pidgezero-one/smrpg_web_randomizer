@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3807_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI, RadialDirections.SOUTH, 4, 16, 0, []],
-        "subscript": []
+        "args": [Rooms._505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI, RadialDirections.SOUTH, 4, 16, 0, []]
     },
     {
         "identifier": 'EVENT_3807_action_queue_sync_1',
@@ -14,8 +14,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3807_action_queue_sync_1_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3807_action_queue_sync_1_SUBSCRIPT_clear_solidity_bits_1',
@@ -27,14 +26,12 @@ script = [
     {
         "identifier": 'EVENT_3807_set_temp_action_script_sync_2',
         "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.NPC_3, 803],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 803]
     },
     {
         "identifier": 'EVENT_3807_set_temp_action_script_async_3',
         "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_2, 803],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 803]
     },
     {
         "identifier": 'EVENT_3807_action_queue_sync_4',
@@ -94,14 +91,11 @@ script = [
     },
     {
         "identifier": 'EVENT_3807_remember_last_object_7',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3807_jmp_to_event_8',
         "command": 'jmp_to_event',
-        "args": [3806],
-        "subscript": []
+        "args": [3806]
     }
 ]

@@ -1,29 +1,25 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_433_jmp_if_mario_in_air_0',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_256_ret_0'],
-        "subscript": []
+        "args": ['EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_433_store_coin_amount_7000_1',
-        "command": 'store_coin_amount_7000',
-        "args": [],
-        "subscript": []
+        "command": 'store_coin_amount_7000'
     },
     {
         "identifier": 'EVENT_433_jmp_if_var_equals_short_2',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_433_action_queue_sync_10'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_433_action_queue_sync_10']
     },
     {
         "identifier": 'EVENT_433_summon_to_current_level_at_marios_coords_3',
         "command": 'summon_to_current_level_at_marios_coords',
-        "args": [AreaObjects.NPC_4],
-        "subscript": []
+        "args": [AreaObjects.NPC_4]
     },
     {
         "identifier": 'EVENT_433_action_queue_sync_4',
@@ -32,8 +28,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_433_action_queue_sync_4_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_4_SUBSCRIPT_transfer_xyzf_pixels_1',
@@ -47,8 +42,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_4_SUBSCRIPT_face_east_3',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_4_SUBSCRIPT_jump_to_height_silent_4',
@@ -67,8 +61,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_4_SUBSCRIPT_floating_on_7',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_4_SUBSCRIPT_shift_f_direction_pixels_8',
@@ -77,16 +70,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_4_SUBSCRIPT_visibility_off_9',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_433_summon_to_current_level_at_marios_coords_5',
         "command": 'summon_to_current_level_at_marios_coords',
-        "args": [AreaObjects.NPC_5],
-        "subscript": []
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_433_action_queue_sync_6',
@@ -95,8 +86,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_433_action_queue_sync_6_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_6_SUBSCRIPT_transfer_xyzf_pixels_1',
@@ -110,8 +100,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_6_SUBSCRIPT_face_east_3',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_6_SUBSCRIPT_jump_to_height_silent_4',
@@ -130,8 +119,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_6_SUBSCRIPT_floating_on_7',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_6_SUBSCRIPT_shift_f_direction_pixels_8',
@@ -140,28 +128,23 @@ script = [
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_6_SUBSCRIPT_visibility_off_9',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_433_play_sound_7',
         "command": 'play_sound',
-        "args": [Sounds._055_LOSE_COINS_COIN_FOUNTAIN, 6],
-        "subscript": []
+        "args": [Sounds._055_LOSE_COINS_COIN_FOUNTAIN, 6]
     },
     {
         "identifier": 'EVENT_433_set_8',
         "command": 'set',
-        "args": [0x7000, 2],
-        "subscript": []
+        "args": [0x7000, 2]
     },
     {
         "identifier": 'EVENT_433_dec_coins_9',
-        "command": 'dec_coins',
-        "args": [],
-        "subscript": []
+        "command": 'dec_coins'
     },
     {
         "identifier": 'EVENT_433_action_queue_sync_10',
@@ -185,27 +168,22 @@ script = [
             },
             {
                 "identifier": 'EVENT_433_action_queue_sync_10_SUBSCRIPT_reset_properties_3',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_433_pause_11',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_433_jmp_if_object_in_air_12',
         "command": 'jmp_if_object_in_air',
-        "args": [AreaObjects.MEM_70A8, 'EVENT_433_pause_11'],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8, 'EVENT_433_pause_11']
     },
     {
         "identifier": 'EVENT_433_ret_13',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

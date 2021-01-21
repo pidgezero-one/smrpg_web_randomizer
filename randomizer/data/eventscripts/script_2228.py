@@ -1,29 +1,26 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2228_jmp_if_object_not_in_level_0',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_2, Rooms._453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, 'EVENT_2228_db_2'],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, Rooms._453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, 'EVENT_2228_db_2']
     },
     {
         "identifier": 'EVENT_2228_set_action_script_sync_1',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 1010],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 1010]
     },
     {
         "identifier": 'EVENT_2228_db_2',
         "command": 'db',
-        "args": [0xfd, 0x8f, 0x02],
-        "subscript": []
+        "args": [0xfd, 0x8f, 0x02]
     },
     {
         "identifier": 'EVENT_2228_priority_set_3',
         "command": 'priority_set',
-        "args": [[_0x81Flags.LAYER_3], [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [_0x81Flags.BACKGROUND, _0x81Flags.HALF_INTENSITY]],
-        "subscript": []
+        "args": [[_0x81Flags.LAYER_3], [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [_0x81Flags.BACKGROUND, _0x81Flags.HALF_INTENSITY]]
     },
     {
         "identifier": 'EVENT_2228_action_queue_sync_4',
@@ -32,8 +29,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2228_action_queue_sync_4_SUBSCRIPT_sequence_looping_on_0',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -49,8 +45,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2228_action_queue_sync_5_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2228_action_queue_sync_5_SUBSCRIPT_set_animation_speed_2',
@@ -59,8 +54,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2228_action_queue_sync_5_SUBSCRIPT_sequence_looping_on_3',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -81,8 +75,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2228_action_queue_sync_6_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -103,57 +96,46 @@ script = [
             },
             {
                 "identifier": 'EVENT_2228_action_queue_async_7_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2228_set_7000_to_object_coord_8',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2228_jmp_if_var_not_equals_short_9',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 27, 'EVENT_2228_fade_in_from_black_async_14'],
-        "subscript": []
+        "args": [0x7000, 27, 'EVENT_2228_fade_in_from_black_async_14']
     },
     {
         "identifier": 'EVENT_2228_remove_from_current_level_10',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4],
-        "subscript": []
+        "args": [AreaObjects.NPC_4]
     },
     {
         "identifier": 'EVENT_2228_remove_from_current_level_11',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5],
-        "subscript": []
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_2228_set_bit_12',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_2228_set_bit_13',
         "command": 'set_bit',
-        "args": [0x7043, 2],
-        "subscript": []
+        "args": [0x7043, 2]
     },
     {
         "identifier": 'EVENT_2228_fade_in_from_black_async_14',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2228_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

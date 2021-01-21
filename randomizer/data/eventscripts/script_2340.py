@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2340_action_queue_sync_0',
@@ -25,8 +26,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2340_action_queue_sync_1_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2340_action_queue_sync_1_SUBSCRIPT_set_animation_speed_1',
@@ -57,8 +57,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2340_action_queue_async_2_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2340_action_queue_async_2_SUBSCRIPT_set_animation_speed_1',
@@ -75,55 +74,42 @@ script = [
     {
         "identifier": 'EVENT_2340_set_7000_to_object_coord_3',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2340_jmp_if_var_equals_short_4',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 22, 'EVENT_2340_set_bit_7'],
-        "subscript": []
+        "args": [0x7000, 22, 'EVENT_2340_set_bit_7']
     },
     {
         "identifier": 'EVENT_2340_fade_in_from_black_async_5',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2340_ret_6',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2340_set_bit_7',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_2340_run_background_event_8',
         "command": 'run_background_event',
-        "args": [2343, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6]],
-        "subscript": []
+        "args": [2343, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_2340_run_background_event_9',
         "command": 'run_background_event',
-        "args": [2358, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_7]],
-        "subscript": []
+        "args": [2358, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_7]]
     },
     {
         "identifier": 'EVENT_2340_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2340_ret_11',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

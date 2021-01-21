@@ -1,29 +1,25 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_697_set_7000_to_current_level_0',
-        "command": 'set_7000_to_current_level',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_current_level'
     },
     {
         "identifier": 'EVENT_697_jmp_if_var_equals_short_1',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 65, 'EVENT_697_run_dialog_17'],
-        "subscript": []
+        "args": [0x7000, 65, 'EVENT_697_run_dialog_17']
     },
     {
         "identifier": 'EVENT_697_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_697_run_dialog_8'],
-        "subscript": []
+        "args": [0x704c, 6, 'EVENT_697_run_dialog_8']
     },
     {
         "identifier": 'EVENT_697_run_dialog_3',
         "command": 'run_dialog',
-        "args": [2158, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2158, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_697_action_queue_sync_4',
@@ -42,16 +38,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_697_action_queue_sync_4_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_697_run_dialog_5',
         "command": 'run_dialog',
-        "args": [2159, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2159, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_697_action_queue_async_6',
@@ -65,34 +59,28 @@ script = [
             },
             {
                 "identifier": 'EVENT_697_action_queue_async_6_SUBSCRIPT_face_east_1',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             }
         ]
     },
     {
         "identifier": 'EVENT_697_ret_7',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_697_run_dialog_8',
         "command": 'run_dialog',
-        "args": [2160, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2160, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_697_set_7000_to_object_coord_9',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70A8, Coords.F],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8, Coords.F]
     },
     {
         "identifier": 'EVENT_697_set_short_mem_10',
         "command": 'set_short_mem',
-        "args": [0x7024, 0x7000],
-        "subscript": []
+        "args": [0x7024, 0x7000]
     },
     {
         "identifier": 'EVENT_697_action_queue_async_11',
@@ -101,16 +89,14 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_697_action_queue_async_11_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_697_run_dialog_12',
         "command": 'run_dialog',
-        "args": [2161, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2161, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_697_action_queue_async_13',
@@ -119,16 +105,14 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_697_action_queue_async_13_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_697_run_dialog_14',
         "command": 'run_dialog',
-        "args": [2162, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2162, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_697_action_queue_async_15',
@@ -142,27 +126,21 @@ script = [
             },
             {
                 "identifier": 'EVENT_697_action_queue_async_15_SUBSCRIPT_face_east_1',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             }
         ]
     },
     {
         "identifier": 'EVENT_697_ret_16',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_697_run_dialog_17',
         "command": 'run_dialog',
-        "args": [2179, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2179, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_697_ret_18',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

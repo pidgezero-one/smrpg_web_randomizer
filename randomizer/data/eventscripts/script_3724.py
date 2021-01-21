@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3724_set_0',
         "command": 'set',
-        "args": [0x70df, 49],
-        "subscript": []
+        "args": [0x70df, 49]
     },
     {
         "identifier": 'EVENT_3724_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x705f, 4, 'EVENT_3724_jmp_if_bit_set_5'],
-        "subscript": []
+        "args": [0x705f, 4, 'EVENT_3724_jmp_if_bit_set_5']
     },
     {
         "identifier": 'EVENT_3724_action_queue_sync_2',
@@ -30,8 +29,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3724_action_queue_sync_2_SUBSCRIPT_reset_properties_2',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
@@ -62,31 +60,23 @@ script = [
     {
         "identifier": 'EVENT_3724_jmp_if_bit_set_5',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 7, 'EVENT_3724_run_event_as_subroutine_8'],
-        "subscript": []
+        "args": [0x7044, 7, 'EVENT_3724_run_event_as_subroutine_8']
     },
     {
         "identifier": 'EVENT_3724_fade_in_from_black_async_6',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_3724_ret_7',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3724_run_event_as_subroutine_8',
         "command": 'run_event_as_subroutine',
-        "args": [81],
-        "subscript": []
+        "args": [81]
     },
     {
         "identifier": 'EVENT_3724_ret_9',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

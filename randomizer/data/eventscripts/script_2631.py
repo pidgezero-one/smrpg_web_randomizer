@@ -1,191 +1,157 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2631_set_0',
         "command": 'set',
-        "args": [0x70ae, 22],
-        "subscript": []
+        "args": [0x70ae, 22]
     },
     {
         "identifier": 'EVENT_2631_run_dialog_1',
         "command": 'run_dialog',
-        "args": [3312, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [3312, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2631_jmp_if_dialog_option_b_2',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2631_pause_23'],
-        "subscript": []
+        "args": ['EVENT_2631_pause_23']
     },
     {
         "identifier": 'EVENT_2631_pause_3',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_4',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 670]
     },
     {
         "identifier": 'EVENT_2631_jmp_if_bit_set_5',
         "command": 'jmp_if_bit_set',
-        "args": [0x7045, 7, 'EVENT_2631_store_coin_amount_7000_11'],
-        "subscript": []
+        "args": [0x7045, 7, 'EVENT_2631_store_coin_amount_7000_11']
     },
     {
         "identifier": 'EVENT_2631_set_bit_6',
         "command": 'set_bit',
-        "args": [0x7045, 7],
-        "subscript": []
+        "args": [0x7045, 7]
     },
     {
         "identifier": 'EVENT_2631_run_dialog_7',
         "command": 'run_dialog',
-        "args": [3314, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [3314, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2631_jmp_if_dialog_option_b_8',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2631_pause_16'],
-        "subscript": []
+        "args": ['EVENT_2631_pause_16']
     },
     {
         "identifier": 'EVENT_2631_pause_9',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_10',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 671]
     },
     {
         "identifier": 'EVENT_2631_store_coin_amount_7000_11',
-        "command": 'store_coin_amount_7000',
-        "args": [],
-        "subscript": []
+        "command": 'store_coin_amount_7000'
     },
     {
         "identifier": 'EVENT_2631_mem_compare_12',
         "command": 'mem_compare',
-        "args": [0x7000, 10],
-        "subscript": []
+        "args": [0x7000, 10]
     },
     {
         "identifier": 'EVENT_2631_jmp_if_comparison_result_is_greater_or_equal_13',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_2631_run_dialog_27'],
-        "subscript": []
+        "args": ['EVENT_2631_run_dialog_27']
     },
     {
         "identifier": 'EVENT_2631_run_dialog_14',
         "command": 'run_dialog',
-        "args": [3316, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [3316, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2631_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2631_pause_16',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_17',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 670]
     },
     {
         "identifier": 'EVENT_2631_run_dialog_18',
         "command": 'run_dialog',
-        "args": [3317, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [3317, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2631_jmp_if_dialog_option_b_19',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2631_pause_23'],
-        "subscript": []
+        "args": ['EVENT_2631_pause_23']
     },
     {
         "identifier": 'EVENT_2631_pause_20',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_21',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 670]
     },
     {
         "identifier": 'EVENT_2631_jmp_22',
         "command": 'jmp',
-        "args": ['EVENT_2631_store_coin_amount_7000_11'],
-        "subscript": []
+        "args": ['EVENT_2631_store_coin_amount_7000_11']
     },
     {
         "identifier": 'EVENT_2631_pause_23',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2631_set_action_script_async_24',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 671]
     },
     {
         "identifier": 'EVENT_2631_run_dialog_25',
         "command": 'run_dialog',
-        "args": [3313, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [3313, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2631_ret_26',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2631_run_dialog_27',
         "command": 'run_dialog',
-        "args": [3315, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [3315, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2631_set_28',
         "command": 'set',
-        "args": [0x7000, 10],
-        "subscript": []
+        "args": [0x7000, 10]
     },
     {
         "identifier": 'EVENT_2631_dec_coins_29',
-        "command": 'dec_coins',
-        "args": [],
-        "subscript": []
+        "command": 'dec_coins'
     },
     {
         "identifier": 'EVENT_2631_set_bit_30',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_2631_action_queue_async_31',
@@ -209,8 +175,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2631_action_queue_async_31_SUBSCRIPT_face_south_3',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             },
             {
                 "identifier": 'EVENT_2631_action_queue_async_31_SUBSCRIPT_overwrite_solidity_4',
@@ -227,14 +192,12 @@ script = [
     {
         "identifier": 'EVENT_2631_enable_controls_32',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_2631_set_action_script_sync_33',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 14],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 14]
     },
     {
         "identifier": 'EVENT_2631_action_queue_sync_34',
@@ -250,8 +213,6 @@ script = [
     },
     {
         "identifier": 'EVENT_2631_ret_35',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

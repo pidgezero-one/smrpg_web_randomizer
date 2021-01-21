@@ -1,71 +1,61 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2478_set_0',
         "command": 'set',
-        "args": [0x70df, 39],
-        "subscript": []
+        "args": [0x70df, 39]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_1',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_0, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_2',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_1, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_3',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_3, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_4',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_4, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_5',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_5, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_6',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_6, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_7',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_7, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_8',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_9, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_9',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_10, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_10, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_summon_to_level_10',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_11, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA],
-        "subscript": []
+        "args": [AreaObjects.NPC_11, Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA]
     },
     {
         "identifier": 'EVENT_2478_action_queue_sync_11',
@@ -109,8 +99,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2478_action_queue_sync_11_SUBSCRIPT_ret_7',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             },
             {
                 "identifier": 'EVENT_2478_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_8',
@@ -119,8 +108,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2478_action_queue_sync_11_SUBSCRIPT_visibility_off_9',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -171,8 +159,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2478_action_queue_async_12_SUBSCRIPT_ret_8',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             },
             {
                 "identifier": 'EVENT_2478_action_queue_async_12_SUBSCRIPT_set_sprite_sequence_9',
@@ -181,52 +168,41 @@ script = [
             },
             {
                 "identifier": 'EVENT_2478_action_queue_async_12_SUBSCRIPT_visibility_off_10',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2478_jmp_if_bit_clear_13',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708c, 4, 'EVENT_2478_set_7000_to_object_coord_15'],
-        "subscript": []
+        "args": [0x708c, 4, 'EVENT_2478_set_7000_to_object_coord_15']
     },
     {
         "identifier": 'EVENT_2478_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 15],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 15]
     },
     {
         "identifier": 'EVENT_2478_set_7000_to_object_coord_15',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Y, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.Y, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2478_jmp_if_var_equals_short_16',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 27, 'EVENT_2478_freeze_camera_19'],
-        "subscript": []
+        "args": [0x7000, 27, 'EVENT_2478_freeze_camera_19']
     },
     {
         "identifier": 'EVENT_2478_fade_in_from_black_async_17',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2478_ret_18',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2478_freeze_camera_19',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2478_action_queue_sync_20',
@@ -235,13 +211,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2478_action_queue_sync_20_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2478_action_queue_sync_20_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2478_action_queue_sync_20_SUBSCRIPT_set_animation_speed_2',
@@ -309,9 +283,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_fade_in_from_black_async_22',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2478_action_queue_async_23',
@@ -335,8 +307,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2478_action_queue_async_23_SUBSCRIPT_bpl_26_27_28_3',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2478_action_queue_async_23_SUBSCRIPT_set_sprite_sequence_4',
@@ -362,8 +333,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2478_action_queue_sync_24_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2478_action_queue_sync_24_SUBSCRIPT_play_sound_2',
@@ -392,8 +362,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2478_action_queue_sync_24_SUBSCRIPT_bpl_26_27_28_7',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             }
         ]
     },
@@ -416,20 +385,15 @@ script = [
     },
     {
         "identifier": 'EVENT_2478_unfreeze_camera_26',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2478_set_action_script_async_27',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2478_ret_28',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

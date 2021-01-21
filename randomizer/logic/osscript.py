@@ -12,6 +12,23 @@ class ObjectSequenceScript:
         for i, byte in enumerate(self.commands):
             ret[i] = byte
         return ret
+    
+    #assembles an array of hex lines corresponding to an embedded action script, for assembling in enscript.py
+    def get_dummy_bytearray(script):
+        dummy_lines = []
+        for command in script:
+            assembler = ObjectSequenceScript()
+            func = getattr(assembler, command["command"], None)
+            if "args" in command.keys():
+                dummy_args = [0 if isinstance(arg, str) else arg for arg in command["args"]]
+            else:
+                dummy_args = []
+            func(*dummy_args)
+            dummy_lines.append(assembler.fin())
+        return dummy_lines
+
+
+    # helper functions
 
     def append_short(self, short):
         assert 0 <= short <= 0xFFFF

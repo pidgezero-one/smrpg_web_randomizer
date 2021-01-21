@@ -1,17 +1,15 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3773_freeze_camera_0',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_3773_enable_controls_until_return_1',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_3773_action_queue_async_2',
@@ -25,22 +23,19 @@ script = [
             },
             {
                 "identifier": 'EVENT_3773_action_queue_async_2_SUBSCRIPT_face_south_1',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             }
         ]
     },
     {
         "identifier": 'EVENT_3773_palette_set_morphs_3',
         "command": 'palette_set_morphs',
-        "args": [PaletteSetTypes.FADE_TO, 10, 142, 8],
-        "subscript": []
+        "args": [PaletteSetTypes.FADE_TO, 10, 142, 8]
     },
     {
         "identifier": 'EVENT_3773_pause_4',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_3773_action_queue_async_5',
@@ -94,8 +89,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3773_action_queue_async_5_SUBSCRIPT_reset_properties_9',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3773_action_queue_async_5_SUBSCRIPT_start_loop_n_times_10',
@@ -114,8 +108,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3773_action_queue_async_5_SUBSCRIPT_end_loop_13',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3773_action_queue_async_5_SUBSCRIPT_set_sprite_sequence_14',
@@ -139,27 +132,21 @@ script = [
             },
             {
                 "identifier": 'EVENT_3773_action_queue_async_5_SUBSCRIPT_reset_properties_18',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_3773_palette_set_6',
         "command": 'palette_set',
-        "args": [84, 1],
-        "subscript": []
+        "args": [84, 1]
     },
     {
         "identifier": 'EVENT_3773_unfreeze_camera_7',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_3773_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

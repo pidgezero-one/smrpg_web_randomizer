@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2290_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._250_GAME_INTRO_BOOSTER_TOWER_BALCONY_WITH_TOADSTOOL_CRYING, RadialDirections.NORTHEAST, 4, 17, 0, []],
-        "subscript": []
+        "args": [Rooms._250_GAME_INTRO_BOOSTER_TOWER_BALCONY_WITH_TOADSTOOL_CRYING, RadialDirections.NORTHEAST, 4, 17, 0, []]
     },
     {
         "identifier": 'EVENT_2290_action_queue_sync_1',
@@ -14,8 +14,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2290_action_queue_sync_1_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -46,8 +45,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2290_action_queue_sync_2_SUBSCRIPT_face_southwest_4',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -73,8 +71,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2290_action_queue_sync_3_SUBSCRIPT_face_southwest_3',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2290_action_queue_sync_3_SUBSCRIPT_set_animation_speed_4',
@@ -83,8 +80,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2290_action_queue_sync_3_SUBSCRIPT_sequence_looping_on_5',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -100,8 +96,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2290_action_queue_async_4_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_2290_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_2',
@@ -117,9 +112,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2290_fade_in_from_black_async_5',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2290_action_queue_async_6',
@@ -133,8 +126,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2290_action_queue_async_6_SUBSCRIPT_reset_properties_1',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2290_action_queue_async_6_SUBSCRIPT_pause_2',
@@ -143,8 +135,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2290_action_queue_async_6_SUBSCRIPT_face_southwest_3',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2290_action_queue_async_6_SUBSCRIPT_set_animation_speed_4',
@@ -196,14 +187,12 @@ script = [
     {
         "identifier": 'EVENT_2290_circle_mask_nonstatic_7',
         "command": 'circle_mask_nonstatic',
-        "args": [AreaObjects.NPC_0, 30, 5],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 30, 5]
     },
     {
         "identifier": 'EVENT_2290_pause_8',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2290_action_queue_async_9',
@@ -237,25 +226,21 @@ script = [
     {
         "identifier": 'EVENT_2290_display_intro_title_11',
         "command": 'display_intro_title',
-        "args": [17, IntroTitles.PRINCESS_TOADSTOOL],
-        "subscript": []
+        "args": [17, IntroTitles.PRINCESS_TOADSTOOL]
     },
     {
         "identifier": 'EVENT_2290_pause_12',
         "command": 'pause',
-        "args": [150],
-        "subscript": []
+        "args": [150]
     },
     {
         "identifier": 'EVENT_2290_fade_out_to_black_async_duration_13',
         "command": 'fade_out_to_black_async_duration',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2290_jmp_to_event_14',
         "command": 'jmp_to_event',
-        "args": [141],
-        "subscript": []
+        "args": [141]
     }
 ]

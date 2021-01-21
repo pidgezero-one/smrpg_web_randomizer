@@ -1,101 +1,85 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2114_fade_out_music_to_volume_0',
         "command": 'fade_out_music_to_volume',
-        "args": [0, 0],
-        "subscript": []
+        "args": [0, 0]
     },
     {
         "identifier": 'EVENT_2114_play_music_default_volume_1',
         "command": 'play_music_default_volume',
-        "args": [Music._01_DODOS_COMING],
-        "subscript": []
+        "args": [Music._01_DODOS_COMING]
     },
     {
         "identifier": 'EVENT_2114_stop_music_2',
-        "command": 'stop_music',
-        "args": [],
-        "subscript": []
+        "command": 'stop_music'
     },
     {
         "identifier": 'EVENT_2114_run_dialog_3',
         "command": 'run_dialog',
-        "args": [3360, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3360, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2114_pause_4',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2114_enable_controls_until_return_5',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_2114_pause_6',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_pause_7',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2114_play_sound_8',
         "command": 'play_sound',
-        "args": [Sounds._016_OPEN_DOOR, 6],
-        "subscript": []
+        "args": [Sounds._016_OPEN_DOOR, 6]
     },
     {
         "identifier": 'EVENT_2114_pause_9',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2114_enable_controls_until_return_10',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_2114_pause_11',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_play_music_default_volume_12',
         "command": 'play_music_default_volume',
-        "args": [Music._01_DODOS_COMING],
-        "subscript": []
+        "args": [Music._01_DODOS_COMING]
     },
     {
         "identifier": 'EVENT_2114_pause_13',
         "command": 'pause',
-        "args": [143],
-        "subscript": []
+        "args": [143]
     },
     {
         "identifier": 'EVENT_2114_pause_14',
         "command": 'pause',
-        "args": [235],
-        "subscript": []
+        "args": [235]
     },
     {
         "identifier": 'EVENT_2114_pause_15',
         "command": 'pause',
-        "args": [118],
-        "subscript": []
+        "args": [118]
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_16',
@@ -119,8 +103,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_sequence_playback_off_3',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_set_sprite_sequence_4',
@@ -129,8 +112,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_visibility_on_5',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_pause_6',
@@ -154,13 +136,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_sequence_playback_on_10',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_sequence_looping_on_11',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_set_sprite_sequence_12',
@@ -174,8 +154,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_sequence_looping_off_14',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_set_sprite_sequence_15',
@@ -192,128 +171,107 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_pause_18',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_19',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e],
-        "subscript": []
+        "args": [0x7b1e]
     },
     {
         "identifier": 'EVENT_2114_pause_20',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_21',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_22',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51],
-        "subscript": []
+        "args": [0x7b51]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_23',
         "command": 'jmp_to_subroutine',
-        "args": [0x79ef],
-        "subscript": []
+        "args": [0x79ef]
     },
     {
         "identifier": 'EVENT_2114_pause_24',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_25',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_pause_26',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_27',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e],
-        "subscript": []
+        "args": [0x7b1e]
     },
     {
         "identifier": 'EVENT_2114_pause_28',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_29',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_30',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51],
-        "subscript": []
+        "args": [0x7b51]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_31',
         "command": 'jmp_to_subroutine',
-        "args": [0x79fd],
-        "subscript": []
+        "args": [0x79fd]
     },
     {
         "identifier": 'EVENT_2114_pause_32',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_33',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_pause_34',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_35',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e],
-        "subscript": []
+        "args": [0x7b1e]
     },
     {
         "identifier": 'EVENT_2114_pause_36',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_37',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_38',
@@ -327,64 +285,52 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_38_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_set_short_39',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_40',
         "command": 'clear_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_start_loop_n_times_41',
         "command": 'start_loop_n_times',
-        "args": [18],
-        "subscript": []
+        "args": [18]
     },
     {
         "identifier": 'EVENT_2114_pause_42',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_set_7000_to_tapped_button_43',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_7000_all_bits_clear_44',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[7], 'EVENT_2114_end_loop_46'],
-        "subscript": []
+        "args": [[7], 'EVENT_2114_end_loop_46']
     },
     {
         "identifier": 'EVENT_2114_set_bit_45',
         "command": 'set_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_end_loop_46',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_bit_set_47',
         "command": 'jmp_if_bit_set',
-        "args": [0x708a, 7, 'EVENT_2120_stop_music_0'],
-        "subscript": []
+        "args": [0x708a, 7, 'EVENT_2120_stop_music_0']
     },
     {
         "identifier": 'EVENT_2114_action_queue_sync_48',
@@ -393,13 +339,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2114_action_queue_sync_48_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_48_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_48_SUBSCRIPT_set_animation_speed_2',
@@ -418,112 +362,92 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_48_SUBSCRIPT_sequence_looping_off_5',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_49',
         "command": 'clear_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_set_short_50',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_start_loop_n_times_51',
         "command": 'start_loop_n_times',
-        "args": [22],
-        "subscript": []
+        "args": [22]
     },
     {
         "identifier": 'EVENT_2114_pause_52',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_set_7000_to_tapped_button_53',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_7000_all_bits_clear_54',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[7], 'EVENT_2114_end_loop_56'],
-        "subscript": []
+        "args": [[7], 'EVENT_2114_end_loop_56']
     },
     {
         "identifier": 'EVENT_2114_set_bit_55',
         "command": 'set_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_end_loop_56',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_bit_clear_57',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708a, 7, 'EVENT_2121_stop_music_0'],
-        "subscript": []
+        "args": [0x708a, 7, 'EVENT_2121_stop_music_0']
     },
     {
         "identifier": 'EVENT_2114_set_short_58',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_pause_59',
         "command": 'pause',
-        "args": [17],
-        "subscript": []
+        "args": [17]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_60',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_pause_61',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_62',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e],
-        "subscript": []
+        "args": [0x7b1e]
     },
     {
         "identifier": 'EVENT_2114_pause_63',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_64',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_pause_65',
         "command": 'pause',
-        "args": [74],
-        "subscript": []
+        "args": [74]
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_66',
@@ -532,8 +456,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_set_animation_speed_1',
@@ -547,8 +470,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_fixed_f_coord_on_3',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_set_sprite_sequence_4',
@@ -567,8 +489,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_face_southwest_7',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_set_animation_speed_8',
@@ -592,8 +513,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_sequence_looping_on_12',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_start_loop_n_times_13',
@@ -622,8 +542,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_end_loop_18',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_set_sprite_sequence_19',
@@ -642,88 +561,72 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_66_SUBSCRIPT_sequence_looping_off_22',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_pause_67',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_2114_set_short_68',
         "command": 'set_short',
-        "args": [0x7024, 0x0000],
-        "subscript": []
+        "args": [0x7024, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_set_short_69',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_70',
         "command": 'clear_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_start_loop_n_times_71',
         "command": 'start_loop_n_times',
-        "args": [17],
-        "subscript": []
+        "args": [17]
     },
     {
         "identifier": 'EVENT_2114_pause_72',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_set_7000_to_tapped_button_73',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_7000_all_bits_clear_74',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[7], 'EVENT_2114_end_loop_76'],
-        "subscript": []
+        "args": [[7], 'EVENT_2114_end_loop_76']
     },
     {
         "identifier": 'EVENT_2114_set_bit_75',
         "command": 'set_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_end_loop_76',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_bit_set_77',
         "command": 'jmp_if_bit_set',
-        "args": [0x708a, 7, 'EVENT_2120_stop_music_0'],
-        "subscript": []
+        "args": [0x708a, 7, 'EVENT_2120_stop_music_0']
     },
     {
         "identifier": 'EVENT_2114_add_short_78',
         "command": 'add_short',
-        "args": [0x7024, 0x01],
-        "subscript": []
+        "args": [0x7024, 0x01]
     },
     {
         "identifier": 'EVENT_2114_jmp_if_var_not_equals_short_79',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7024, 7, 'EVENT_2114_set_short_69'],
-        "subscript": []
+        "args": [0x7024, 7, 'EVENT_2114_set_short_69']
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_80',
@@ -737,94 +640,79 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_80_SUBSCRIPT_face_southeast_1',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_pause_81',
         "command": 'pause',
-        "args": [18],
-        "subscript": []
+        "args": [18]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_82',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_pause_83',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_84',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e],
-        "subscript": []
+        "args": [0x7b1e]
     },
     {
         "identifier": 'EVENT_2114_pause_85',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_86',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_87',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51],
-        "subscript": []
+        "args": [0x7b51]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_88',
         "command": 'jmp_to_subroutine',
-        "args": [0x7a0b],
-        "subscript": []
+        "args": [0x7a0b]
     },
     {
         "identifier": 'EVENT_2114_pause_89',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_90',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f],
-        "subscript": []
+        "args": [0x7b2f]
     },
     {
         "identifier": 'EVENT_2114_pause_91',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_92',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b40],
-        "subscript": []
+        "args": [0x7b40]
     },
     {
         "identifier": 'EVENT_2114_pause_93',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_94',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f],
-        "subscript": []
+        "args": [0x7b2f]
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_95',
@@ -838,64 +726,52 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_95_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_set_short_96',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_97',
         "command": 'clear_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_start_loop_n_times_98',
         "command": 'start_loop_n_times',
-        "args": [18],
-        "subscript": []
+        "args": [18]
     },
     {
         "identifier": 'EVENT_2114_pause_99',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_set_7000_to_tapped_button_100',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_7000_all_bits_clear_101',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[7], 'EVENT_2114_end_loop_103'],
-        "subscript": []
+        "args": [[7], 'EVENT_2114_end_loop_103']
     },
     {
         "identifier": 'EVENT_2114_set_bit_102',
         "command": 'set_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_end_loop_103',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_bit_set_104',
         "command": 'jmp_if_bit_set',
-        "args": [0x708a, 7, 'EVENT_2120_stop_music_0'],
-        "subscript": []
+        "args": [0x708a, 7, 'EVENT_2120_stop_music_0']
     },
     {
         "identifier": 'EVENT_2114_action_queue_sync_105',
@@ -904,13 +780,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2114_action_queue_sync_105_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_105_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_105_SUBSCRIPT_set_animation_speed_2',
@@ -929,118 +803,97 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_105_SUBSCRIPT_sequence_looping_off_5',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_106',
         "command": 'clear_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_set_short_107',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_start_loop_n_times_108',
         "command": 'start_loop_n_times',
-        "args": [22],
-        "subscript": []
+        "args": [22]
     },
     {
         "identifier": 'EVENT_2114_pause_109',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_set_7000_to_tapped_button_110',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_7000_all_bits_clear_111',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[7], 'EVENT_2114_end_loop_113'],
-        "subscript": []
+        "args": [[7], 'EVENT_2114_end_loop_113']
     },
     {
         "identifier": 'EVENT_2114_set_bit_112',
         "command": 'set_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_end_loop_113',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_bit_clear_114',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708a, 7, 'EVENT_2121_stop_music_0'],
-        "subscript": []
+        "args": [0x708a, 7, 'EVENT_2121_stop_music_0']
     },
     {
         "identifier": 'EVENT_2114_set_short_115',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_pause_116',
         "command": 'pause',
-        "args": [18],
-        "subscript": []
+        "args": [18]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_117',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b40],
-        "subscript": []
+        "args": [0x7b40]
     },
     {
         "identifier": 'EVENT_2114_pause_118',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_119',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f],
-        "subscript": []
+        "args": [0x7b2f]
     },
     {
         "identifier": 'EVENT_2114_pause_120',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_121',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b40],
-        "subscript": []
+        "args": [0x7b40]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_122',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51],
-        "subscript": []
+        "args": [0x7b51]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_123',
         "command": 'jmp_to_subroutine',
-        "args": [0x79fd],
-        "subscript": []
+        "args": [0x79fd]
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_124',
@@ -1099,8 +952,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_124_SUBSCRIPT_ret_10',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
@@ -1116,64 +968,52 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_125_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_set_short_126',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_127',
         "command": 'clear_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_start_loop_n_times_128',
         "command": 'start_loop_n_times',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_2114_pause_129',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_set_7000_to_tapped_button_130',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_7000_all_bits_clear_131',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[7], 'EVENT_2114_end_loop_133'],
-        "subscript": []
+        "args": [[7], 'EVENT_2114_end_loop_133']
     },
     {
         "identifier": 'EVENT_2114_set_bit_132',
         "command": 'set_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_end_loop_133',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_bit_set_134',
         "command": 'jmp_if_bit_set',
-        "args": [0x708a, 7, 'EVENT_2120_stop_music_0'],
-        "subscript": []
+        "args": [0x708a, 7, 'EVENT_2120_stop_music_0']
     },
     {
         "identifier": 'EVENT_2114_action_queue_sync_135',
@@ -1182,13 +1022,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2114_action_queue_sync_135_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_135_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_135_SUBSCRIPT_set_animation_speed_2',
@@ -1207,154 +1045,127 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_135_SUBSCRIPT_sequence_looping_off_5',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_136',
         "command": 'clear_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_set_short_137',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_start_loop_n_times_138',
         "command": 'start_loop_n_times',
-        "args": [22],
-        "subscript": []
+        "args": [22]
     },
     {
         "identifier": 'EVENT_2114_pause_139',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_set_7000_to_tapped_button_140',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_7000_all_bits_clear_141',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[7], 'EVENT_2114_end_loop_143'],
-        "subscript": []
+        "args": [[7], 'EVENT_2114_end_loop_143']
     },
     {
         "identifier": 'EVENT_2114_set_bit_142',
         "command": 'set_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_end_loop_143',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_bit_clear_144',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708a, 7, 'EVENT_2121_stop_music_0'],
-        "subscript": []
+        "args": [0x708a, 7, 'EVENT_2121_stop_music_0']
     },
     {
         "identifier": 'EVENT_2114_set_short_145',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_pause_146',
         "command": 'pause',
-        "args": [17],
-        "subscript": []
+        "args": [17]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_147',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_pause_148',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_149',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e],
-        "subscript": []
+        "args": [0x7b1e]
     },
     {
         "identifier": 'EVENT_2114_pause_150',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_151',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d],
-        "subscript": []
+        "args": [0x7b0d]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_152',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51],
-        "subscript": []
+        "args": [0x7b51]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_153',
         "command": 'jmp_to_subroutine',
-        "args": [0x7a0b],
-        "subscript": []
+        "args": [0x7a0b]
     },
     {
         "identifier": 'EVENT_2114_pause_154',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_155',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f],
-        "subscript": []
+        "args": [0x7b2f]
     },
     {
         "identifier": 'EVENT_2114_pause_156',
         "command": 'pause',
-        "args": [13],
-        "subscript": []
+        "args": [13]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_157',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b40],
-        "subscript": []
+        "args": [0x7b40]
     },
     {
         "identifier": 'EVENT_2114_pause_158',
         "command": 'pause',
-        "args": [12],
-        "subscript": []
+        "args": [12]
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_159',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f],
-        "subscript": []
+        "args": [0x7b2f]
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_160',
@@ -1368,13 +1179,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_sequence_playback_on_1',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_pause_3',
@@ -1383,8 +1192,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_sequence_looping_on_4',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_set_animation_speed_5',
@@ -1403,8 +1211,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_sequence_playback_off_8',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_pause_9',
@@ -1413,13 +1220,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_sequence_looping_off_10',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_face_northwest_11',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_set_sprite_sequence_12',
@@ -1443,8 +1248,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_sequence_playback_on_16',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_pause_17',
@@ -1478,13 +1282,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_visibility_off_23',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_sequence_looping_off_24',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_pause_25',
@@ -1508,8 +1310,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_visibility_on_29',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_set_sprite_sequence_30',
@@ -1543,13 +1344,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_face_northwest_36',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_visibility_on_37',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_shift_northwest_steps_38',
@@ -1558,8 +1357,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_face_southwest_39',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_set_sprite_sequence_40',
@@ -1568,16 +1366,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_sequence_looping_off_41',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_pause_161',
         "command": 'pause',
-        "args": [25],
-        "subscript": []
+        "args": [25]
     },
     {
         "identifier": 'EVENT_2114_action_queue_sync_162',
@@ -1586,13 +1382,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2114_action_queue_sync_162_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_162_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_162_SUBSCRIPT_set_animation_speed_2',
@@ -1611,94 +1405,77 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_sync_162_SUBSCRIPT_sequence_looping_off_5',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_163',
         "command": 'clear_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_set_short_164',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_start_loop_n_times_165',
         "command": 'start_loop_n_times',
-        "args": [22],
-        "subscript": []
+        "args": [22]
     },
     {
         "identifier": 'EVENT_2114_pause_166',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2114_set_7000_to_tapped_button_167',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_7000_all_bits_clear_168',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[7], 'EVENT_2114_end_loop_170'],
-        "subscript": []
+        "args": [[7], 'EVENT_2114_end_loop_170']
     },
     {
         "identifier": 'EVENT_2114_set_bit_169',
         "command": 'set_bit',
-        "args": [0x708a, 7],
-        "subscript": []
+        "args": [0x708a, 7]
     },
     {
         "identifier": 'EVENT_2114_end_loop_170',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_2114_jmp_if_bit_clear_171',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708a, 7, 'EVENT_2120_stop_music_0'],
-        "subscript": []
+        "args": [0x708a, 7, 'EVENT_2120_stop_music_0']
     },
     {
         "identifier": 'EVENT_2114_set_short_172',
         "command": 'set_short',
-        "args": [0x7000, 0x0000],
-        "subscript": []
+        "args": [0x7000, 0x0000]
     },
     {
         "identifier": 'EVENT_2114_pause_173',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2114_enable_controls_until_return_174',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_175',
         "command": 'clear_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_2114_clear_bit_176',
         "command": 'clear_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_177',
@@ -1722,16 +1499,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_177_SUBSCRIPT_sequence_looping_off_3',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_pause_178',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_179',
@@ -1740,13 +1515,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2114_action_queue_async_179_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_179_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_179_SUBSCRIPT_set_sprite_sequence_2',
@@ -1765,28 +1538,24 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_179_SUBSCRIPT_visibility_off_5',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2114_pause_180',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2114_play_sound_181',
         "command": 'play_sound',
-        "args": [Sounds._016_OPEN_DOOR, 6],
-        "subscript": []
+        "args": [Sounds._016_OPEN_DOOR, 6]
     },
     {
         "identifier": 'EVENT_2114_pause_182',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_183',
@@ -1805,8 +1574,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_183_SUBSCRIPT_face_south_2',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             },
             {
                 "identifier": 'EVENT_2114_action_queue_async_183_SUBSCRIPT_set_sprite_sequence_3',
@@ -1823,31 +1591,24 @@ script = [
     {
         "identifier": 'EVENT_2114_set_action_script_async_184',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2114_set_bit_185',
         "command": 'set_bit',
-        "args": [0x7092, 5],
-        "subscript": []
+        "args": [0x7092, 5]
     },
     {
         "identifier": 'EVENT_2114_remove_from_level_186',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT]
     },
     {
         "identifier": 'EVENT_2114_unfreeze_camera_187',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2114_ret_188',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3651_action_queue_async_0',
@@ -33,8 +34,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_0_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             }
         ]
     },
@@ -57,8 +57,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3651_action_queue_async_2_SUBSCRIPT_face_southeast_0',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_2_SUBSCRIPT_set_animation_speed_1',
@@ -77,8 +76,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_2_SUBSCRIPT_add_z_coord_1_step_4',
-                "command": 'add_z_coord_1_step',
-                "args": []
+                "command": 'add_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_2_SUBSCRIPT_set_animation_speed_5',
@@ -92,8 +90,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_2_SUBSCRIPT_dec_z_coord_1_step_7',
-                "command": 'dec_z_coord_1_step',
-                "args": []
+                "command": 'dec_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_2_SUBSCRIPT_shift_southeast_steps_8',
@@ -166,8 +163,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3651_action_queue_sync_4_SUBSCRIPT_end_loop_6',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3651_action_queue_sync_4_SUBSCRIPT_shift_northwest_pixels_7',
@@ -198,8 +194,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_5_SUBSCRIPT_reset_properties_3',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_5_SUBSCRIPT_set_animation_speed_4',
@@ -208,8 +203,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_5_SUBSCRIPT_walk_1_step_southwest_5',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_5_SUBSCRIPT_shift_southeast_steps_6',
@@ -218,81 +212,59 @@ script = [
             },
             {
                 "identifier": 'EVENT_3651_action_queue_async_5_SUBSCRIPT_visibility_off_7',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3651_remove_from_current_level_6',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4],
-        "subscript": []
+        "args": [AreaObjects.NPC_4]
     },
     {
         "identifier": 'EVENT_3651_remove_from_level_7',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, Rooms._345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING]
     },
     {
         "identifier": 'EVENT_3651_set_bit_8',
         "command": 'set_bit',
-        "args": [0x7084, 3],
-        "subscript": []
+        "args": [0x7084, 3]
     },
     {
         "identifier": 'EVENT_3651_ret_9',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3651_stop_sound_10',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3651_stop_sound_11',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3651_stop_sound_12',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3651_stop_sound_13',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3651_stop_sound_14',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3651_stop_sound_15',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3651_stop_sound_16',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3651_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2489_play_sound_0',
         "command": 'play_sound',
-        "args": [Sounds._019_LONG_FALL, 6],
-        "subscript": []
+        "args": [Sounds._019_LONG_FALL, 6]
     },
     {
         "identifier": 'EVENT_2489_jmp_if_object_not_in_level_1',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_6, Rooms._334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE, 'EVENT_2489_freeze_camera_3'],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE, 'EVENT_2489_freeze_camera_3']
     },
     {
         "identifier": 'EVENT_2489_action_queue_sync_2',
@@ -27,9 +26,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2489_freeze_camera_3',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2489_action_queue_sync_4',
@@ -140,9 +137,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2489_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2489_action_queue_async_11',
@@ -173,14 +168,10 @@ script = [
     },
     {
         "identifier": 'EVENT_2489_unfreeze_camera_12',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2489_ret_13',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -2,7 +2,7 @@ import re
 from django.core.management.base import BaseCommand
 from randomizer.data.eventtables import controller_direction_table, radial_direction_table, room_table, sound_table, area_object_table, npc_packet_table, location_table, shop_table, event_sequence_table, menu_tutorial_table, overworld_sequence_table, playable_characters_table, equip_slots_table, dialog_duration_table, intro_titles_table, colours_table, palette_set_types_table, music_table, music_direction_table, music_pitch_table, coord_table, coord_unit_table, tutorial_table, _0x40_flags, _0x60_flags, _0x62_flags, _0x63_flags, _0x68_flags, _0x6A_flags, _0x6B_flags, _0x81_flags, _0x84_flags
 from randomizer.data.items import get_default_items
-from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short
+from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline
 from randomizer.management.commands.objectsequencedisassembler import Command as OSCommand
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
@@ -1019,6 +1019,7 @@ class Command(BaseCommand):
             ptrs = []
             for i in range(bank["pointers"]["start"], bank["pointers"]["end"], 2):
                 ptrs.append((bank["id"] << 16) | (shortify(rom, i)))
+            print(len(ptrs))
             event_lengths = []
             for i in range(len(ptrs)):
                 if (i < len(ptrs) - 1):
@@ -1085,8 +1086,6 @@ class Command(BaseCommand):
                 })
             scripts_data.append(sd)
 
-        print('scripts = [None]*%i' % len(scripts_data))
-
         scripts_with_named_jumps = []
 
         #get the identifiers corresponding to where the jumps are going
@@ -1147,15 +1146,12 @@ class Command(BaseCommand):
                 this_script.append(cmd_with_named_jumps)
             scripts_with_named_jumps.append(this_script)
 
-        def writeline(f, ln):
-            f.write(ln + "\n")
-
-
-        #todo: get rid of trailing commas
+        #output
         for i in range(len(scripts_with_named_jumps)):
             file = open("randomizer/data/eventscripts/script_%i.py" % i, "w")
             writeline(file, 'from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags')
             writeline(file, 'from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
+            writeline(file, 'from randomizer.data import items')
             script = scripts_with_named_jumps[i]
             if len(script) == 0:
                 writeline(file, 'script = []')
@@ -1166,8 +1162,15 @@ class Command(BaseCommand):
                     writeline(file, '    {')
                     #writeline(file, '        "offset": 0x%x,' % cmd["offset"])
                     writeline(file, '        "identifier": %r,' % cmd['identifier'])
-                    writeline(file, '        "command": %r,' % cmd['command'])
-                    writeline(file, '        "args": [%s],' % ', '.join(cmd["args"]))
+                    if len(cmd["args"]) == 0 and len(cmd['subscript']) == 0:
+                        writeline(file, '        "command": %r' % cmd['command'])
+                    else:
+                        writeline(file, '        "command": %r,' % cmd['command'])
+                    if len(cmd["args"]) > 0:
+                        if len(cmd['subscript']) == 0:
+                            writeline(file, '        "args": [%s]' % ', '.join(cmd["args"]))
+                        else:
+                            writeline(file, '        "args": [%s],' % ', '.join(cmd["args"]))
                     if len(cmd['subscript']) > 0:
                         writeline(file, '        "subscript": [')
                         for k in range(len(cmd["subscript"])):
@@ -1175,15 +1178,16 @@ class Command(BaseCommand):
                             writeline(file, '            {')
                             #writeline(file, '                "offset": 0x%x,' % ss["offset"])
                             writeline(file, '                "identifier": %r,' % ss["identifier"])
-                            writeline(file, '                "command": %r,' % ss["command"])
-                            writeline(file, '                "args": [%s]' % ', '.join(ss["args"]))
+                            if len(ss["args"]) == 0:
+                                writeline(file, '                "command": %r' % ss["command"])
+                            else:
+                                writeline(file, '                "command": %r,' % ss["command"])
+                                writeline(file, '                "args": [%s]' % ', '.join(ss["args"]))
                             if k == len(cmd["subscript"]) - 1: 
                                 writeline(file, '            }')
                             else:
                                 writeline(file, '            },')
                         writeline(file, '        ]')
-                    else:
-                        writeline(file, '        "subscript": %s' % cmd['subscript'])
                     if j == len(script) - 1:
                         writeline(file, '    }')
                     else:
@@ -1192,7 +1196,7 @@ class Command(BaseCommand):
             file.close()
 
         
-        file = open("randomizer/data/eventscripts/events.py", "w")
+        file = open("randomizer/data/eventscripts/events.py", "w", encoding='utf-8')
         for i in range(len(scripts_data)):
             writeline(file, 'from randomizer.data.eventscripts.script_%i import script as script_%i' % (i, i))
         writeline(file, 'scripts = [None]*%i' % len(scripts_data))

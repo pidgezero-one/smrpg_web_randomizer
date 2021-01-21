@@ -125,3 +125,6 @@ def parse_flags(value, prefix='', table=None, bits=None):
                 b.append('%i' % i)
     return b
 
+
+def writeline(f, ln):
+    print(ln.rstrip('\x00'), file=f)

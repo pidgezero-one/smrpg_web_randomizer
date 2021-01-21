@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1647_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x707a, 7, 'EVENT_1647_jmp_if_bit_set_14'],
-        "subscript": []
+        "args": [0x707a, 7, 'EVENT_1647_jmp_if_bit_set_14']
     },
     {
         "identifier": 'EVENT_1647_pause_1',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1647_play_sound_2',
         "command": 'play_sound',
-        "args": [Sounds._049_BIG_SHELL_HIT, 6],
-        "subscript": []
+        "args": [Sounds._049_BIG_SHELL_HIT, 6]
     },
     {
         "identifier": 'EVENT_1647_action_queue_async_3',
@@ -49,50 +47,41 @@ script = [
     {
         "identifier": 'EVENT_1647_remove_from_current_level_4',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_1647_play_sound_5',
         "command": 'play_sound',
-        "args": [Sounds._019_LONG_FALL, 6],
-        "subscript": []
+        "args": [Sounds._019_LONG_FALL, 6]
     },
     {
         "identifier": 'EVENT_1647_pause_6',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1647_fade_out_to_black_async_duration_7',
         "command": 'fade_out_to_black_async_duration',
-        "args": [48],
-        "subscript": []
+        "args": [48]
     },
     {
         "identifier": 'EVENT_1647_enter_area_8',
         "command": 'enter_area',
-        "args": [Rooms._290_MOLEVILLE_MINES_AREA_19_FROM_OUTSIDE_AFTER_PAYING, RadialDirections.SOUTH, 19, 27, 12, []],
-        "subscript": []
+        "args": [Rooms._290_MOLEVILLE_MINES_AREA_19_FROM_OUTSIDE_AFTER_PAYING, RadialDirections.SOUTH, 19, 27, 12, []]
     },
     {
         "identifier": 'EVENT_1647_set_bit_9',
         "command": 'set_bit',
-        "args": [0x7049, 0],
-        "subscript": []
+        "args": [0x7049, 0]
     },
     {
         "identifier": 'EVENT_1647_enable_controls_10',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_1647_fade_in_from_black_sync_11',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_1647_action_queue_async_12',
@@ -108,15 +97,12 @@ script = [
     },
     {
         "identifier": 'EVENT_1647_ret_13',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1647_jmp_if_bit_set_14',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 3, 'EVENT_1647_ret_19'],
-        "subscript": []
+        "args": [0x7044, 3, 'EVENT_1647_ret_19']
     },
     {
         "identifier": 'EVENT_1647_action_queue_async_15',
@@ -130,33 +116,27 @@ script = [
             },
             {
                 "identifier": 'EVENT_1647_action_queue_async_15_SUBSCRIPT_face_west_1',
-                "command": 'face_west',
-                "args": []
+                "command": 'face_west'
             }
         ]
     },
     {
         "identifier": 'EVENT_1647_set_action_script_sync_16',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 40],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 40]
     },
     {
         "identifier": 'EVENT_1647_run_dialog_17',
         "command": 'run_dialog',
-        "args": [1135, AreaObjects.NPC_2, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [1135, AreaObjects.NPC_2, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1647_set_bit_18',
         "command": 'set_bit',
-        "args": [0x7044, 3],
-        "subscript": []
+        "args": [0x7044, 3]
     },
     {
         "identifier": 'EVENT_1647_ret_19',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

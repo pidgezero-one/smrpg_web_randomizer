@@ -1,28 +1,24 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3482_fade_out_music_to_volume_0',
         "command": 'fade_out_music_to_volume',
-        "args": [2, 96],
-        "subscript": []
+        "args": [2, 96]
     },
     {
         "identifier": 'EVENT_3482_play_sound_1',
         "command": 'play_sound',
-        "args": [Sounds._035_RUNNING_WATER, 4],
-        "subscript": []
+        "args": [Sounds._035_RUNNING_WATER, 4]
     },
     {
         "identifier": 'EVENT_3482_run_event_at_return_2',
         "command": 'run_event_at_return',
-        "args": [3491],
-        "subscript": []
+        "args": [3491]
     },
     {
         "identifier": 'EVENT_3482_ret_3',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

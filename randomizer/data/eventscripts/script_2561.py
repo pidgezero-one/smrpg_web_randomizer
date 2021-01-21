@@ -1,35 +1,29 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2561_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 7, 'EVENT_2304_ret_0'],
-        "subscript": []
+        "args": [0x7044, 7, 'EVENT_2304_ret_0']
     },
     {
         "identifier": 'EVENT_2561_enable_controls_1',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_2561_freeze_camera_2',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2561_unfreeze_all_npcs_3',
-        "command": 'unfreeze_all_npcs',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_all_npcs'
     },
     {
         "identifier": 'EVENT_2561_play_sound_4',
         "command": 'play_sound',
-        "args": [Sounds._004_JUMP, 6],
-        "subscript": []
+        "args": [Sounds._004_JUMP, 6]
     },
     {
         "identifier": 'EVENT_2561_action_queue_async_5',
@@ -38,13 +32,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2561_action_queue_async_5_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2561_action_queue_async_5_SUBSCRIPT_sequence_playback_off_1',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_2561_action_queue_async_5_SUBSCRIPT_set_700C_to_object_coord_2',
@@ -183,13 +175,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2561_action_queue_async_5_SUBSCRIPT_run_away_transfer_29',
-                "command": 'run_away_transfer',
-                "args": []
+                "command": 'run_away_transfer'
             },
             {
                 "identifier": 'EVENT_2561_action_queue_async_5_SUBSCRIPT_face_south_30',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             },
             {
                 "identifier": 'EVENT_2561_action_queue_async_5_SUBSCRIPT_set_solidity_bits_31',
@@ -200,14 +190,10 @@ script = [
     },
     {
         "identifier": 'EVENT_2561_fade_out_to_black_async_6',
-        "command": 'fade_out_to_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_to_black_async'
     },
     {
         "identifier": 'EVENT_2561_open_save_menu_7',
-        "command": 'open_save_menu',
-        "args": [],
-        "subscript": []
+        "command": 'open_save_menu'
     }
 ]

@@ -1,47 +1,41 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2355_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x708b, 0, 'EVENT_2355_ret_34'],
-        "subscript": []
+        "args": [0x708b, 0, 'EVENT_2355_ret_34']
     },
     {
         "identifier": 'EVENT_2355_set_bit_1',
         "command": 'set_bit',
-        "args": [0x708b, 0],
-        "subscript": []
+        "args": [0x708b, 0]
     },
     {
         "identifier": 'EVENT_2355_set_bit_2',
         "command": 'set_bit',
-        "args": [0x708b, 1],
-        "subscript": []
+        "args": [0x708b, 1]
     },
     {
         "identifier": 'EVENT_2355_remove_from_level_3',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_8, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2355_remove_from_level_4',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_9, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2355_play_sound_5',
         "command": 'play_sound',
-        "args": [Sounds._074_BOOSTERS_TRAIN, 6],
-        "subscript": []
+        "args": [Sounds._074_BOOSTERS_TRAIN, 6]
     },
     {
         "identifier": 'EVENT_2355_run_dialog_6',
         "command": 'run_dialog',
-        "args": [3082, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3082, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2355_action_queue_async_7',
@@ -50,16 +44,14 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2355_action_queue_async_7_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2355_run_dialog_8',
         "command": 'run_dialog',
-        "args": [3077, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3077, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2355_action_queue_sync_9',
@@ -68,8 +60,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2355_action_queue_sync_9_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2355_action_queue_sync_9_SUBSCRIPT_set_animation_speed_1',
@@ -83,8 +74,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2355_action_queue_sync_9_SUBSCRIPT_sequence_looping_off_3',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
@@ -139,15 +129,12 @@ script = [
     },
     {
         "identifier": 'EVENT_2355_unsync_dialog_12',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_2355_pause_13',
         "command": 'pause',
-        "args": [64],
-        "subscript": []
+        "args": [64]
     },
     {
         "identifier": 'EVENT_2355_action_queue_async_14',
@@ -164,20 +151,17 @@ script = [
     {
         "identifier": 'EVENT_2355_run_dialog_15',
         "command": 'run_dialog',
-        "args": [3084, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3084, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2355_play_sound_16',
         "command": 'play_sound',
-        "args": [Sounds._076_BOOSTERS_TRAIN_HORN, 6],
-        "subscript": []
+        "args": [Sounds._076_BOOSTERS_TRAIN_HORN, 6]
     },
     {
         "identifier": 'EVENT_2355_pause_17',
         "command": 'pause',
-        "args": [64],
-        "subscript": []
+        "args": [64]
     },
     {
         "identifier": 'EVENT_2355_action_queue_async_18',
@@ -186,8 +170,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2355_action_queue_async_18_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2355_action_queue_async_18_SUBSCRIPT_pause_1',
@@ -196,8 +179,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2355_action_queue_async_18_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2355_action_queue_async_18_SUBSCRIPT_pause_3',
@@ -214,20 +196,15 @@ script = [
     {
         "identifier": 'EVENT_2355_run_dialog_19',
         "command": 'run_dialog',
-        "args": [3078, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3078, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2355_pause_script_resume_on_next_dialog_page_a_20',
-        "command": 'pause_script_resume_on_next_dialog_page_a',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_resume_on_next_dialog_page_a'
     },
     {
         "identifier": 'EVENT_2355_pause_script_resume_on_next_dialog_page_a_21',
-        "command": 'pause_script_resume_on_next_dialog_page_a',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_resume_on_next_dialog_page_a'
     },
     {
         "identifier": 'EVENT_2355_action_queue_async_22',
@@ -243,27 +220,22 @@ script = [
     },
     {
         "identifier": 'EVENT_2355_unsync_dialog_23',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_2355_set_action_script_async_24',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_8, 390],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 390]
     },
     {
         "identifier": 'EVENT_2355_summon_to_current_level_25',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2355_run_dialog_26',
         "command": 'run_dialog',
-        "args": [3080, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3080, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2355_action_queue_async_27',
@@ -272,8 +244,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2355_action_queue_async_27_SUBSCRIPT_floating_on_0',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_2355_action_queue_async_27_SUBSCRIPT_set_animation_speed_1',
@@ -292,8 +263,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2355_action_queue_async_27_SUBSCRIPT_floating_off_4',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             }
         ]
     },
@@ -331,39 +301,32 @@ script = [
             },
             {
                 "identifier": 'EVENT_2355_action_queue_async_29_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_2355_pause_30',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2355_set_action_script_sync_31',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 388],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 388]
     },
     {
         "identifier": 'EVENT_2355_set_action_script_sync_32',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 388],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 388]
     },
     {
         "identifier": 'EVENT_2355_run_background_event_33',
         "command": 'run_background_event',
-        "args": [2356, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [2356, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2355_ret_34',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

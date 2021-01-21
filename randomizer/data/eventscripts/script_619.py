@@ -1,65 +1,55 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_619_enable_controls_until_return_0',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_619_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 2, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x704c, 2, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_619_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 0, 'EVENT_619_jmp_if_bit_set_5'],
-        "subscript": []
+        "args": [0x704c, 0, 'EVENT_619_jmp_if_bit_set_5']
     },
     {
         "identifier": 'EVENT_619_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 1, 'EVENT_619_jmp_if_bit_set_5'],
-        "subscript": []
+        "args": [0x704c, 1, 'EVENT_619_jmp_if_bit_set_5']
     },
     {
         "identifier": 'EVENT_619_ret_4',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_619_jmp_if_bit_set_5',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_619_set_bit_6',
         "command": 'set_bit',
-        "args": [0x7043, 3],
-        "subscript": []
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_619_clear_bit_7',
         "command": 'clear_bit',
-        "args": [0x7043, 4],
-        "subscript": []
+        "args": [0x7043, 4]
     },
     {
         "identifier": 'EVENT_619_set_7000_to_object_coord_8',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_5, Coords.Y, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, Coords.Y, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_619_jmp_if_var_equals_short_9',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 63, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7000, 63, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_619_action_queue_async_10',
@@ -73,20 +63,16 @@ script = [
             },
             {
                 "identifier": 'EVENT_619_action_queue_async_10_SUBSCRIPT_walk_1_step_northeast_1',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_619_action_queue_async_10_SUBSCRIPT_face_northwest_2',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_619_ret_11',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

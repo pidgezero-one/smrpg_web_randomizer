@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2635_action_queue_sync_0',
@@ -28,14 +29,12 @@ script = [
     {
         "identifier": 'EVENT_2635_jmp_if_bit_clear_2',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7046, 1, 'EVENT_2635_fade_in_from_black_async_7'],
-        "subscript": []
+        "args": [0x7046, 1, 'EVENT_2635_fade_in_from_black_async_7']
     },
     {
         "identifier": 'EVENT_2635_apply_solidity_mod_3',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._104_GRATE_GUYS_CASINO_FRONT_DOOR, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._104_GRATE_GUYS_CASINO_FRONT_DOOR, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_2635_action_queue_sync_4',
@@ -83,21 +82,16 @@ script = [
             },
             {
                 "identifier": 'EVENT_2635_action_queue_async_6_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2635_fade_in_from_black_async_7',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2635_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_479_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 5, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7044, 5, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_479_db_1',
         "command": 'db',
-        "args": [0xfd, 0x45],
-        "subscript": []
+        "args": [0xfd, 0x45]
     },
     {
         "identifier": 'EVENT_479_pause_action_script_2',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_9],
-        "subscript": []
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_479_action_queue_sync_3',
@@ -26,8 +24,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_479_action_queue_sync_3_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_479_action_queue_sync_3_SUBSCRIPT_set_animation_speed_1',
@@ -68,16 +65,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_479_action_queue_async_4_SUBSCRIPT_face_southwest_5',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_479_pause_action_script_5',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_9],
-        "subscript": []
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_479_start_embedded_action_script_async_6',
@@ -104,56 +99,47 @@ script = [
     {
         "identifier": 'EVENT_479_clear_bit_7',
         "command": 'clear_bit',
-        "args": [0x7044, 0],
-        "subscript": []
+        "args": [0x7044, 0]
     },
     {
         "identifier": 'EVENT_479_clear_bit_8',
         "command": 'clear_bit',
-        "args": [0x7044, 1],
-        "subscript": []
+        "args": [0x7044, 1]
     },
     {
         "identifier": 'EVENT_479_clear_bit_9',
         "command": 'clear_bit',
-        "args": [0x7044, 2],
-        "subscript": []
+        "args": [0x7044, 2]
     },
     {
         "identifier": 'EVENT_479_clear_bit_10',
         "command": 'clear_bit',
-        "args": [0x7044, 3],
-        "subscript": []
+        "args": [0x7044, 3]
     },
     {
         "identifier": 'EVENT_479_clear_bit_11',
         "command": 'clear_bit',
-        "args": [0x7044, 5],
-        "subscript": []
+        "args": [0x7044, 5]
     },
     {
         "identifier": 'EVENT_479_set_short_12',
         "command": 'set_short',
-        "args": [0x703e, 0x0007],
-        "subscript": []
+        "args": [0x703e, 0x0007]
     },
     {
         "identifier": 'EVENT_479_set_action_script_sync_13',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 289],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 289]
     },
     {
         "identifier": 'EVENT_479_set_action_script_async_14',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 288],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 288]
     },
     {
         "identifier": 'EVENT_479_set_action_script_sync_15',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_479_action_queue_async_16',
@@ -170,19 +156,15 @@ script = [
     {
         "identifier": 'EVENT_479_clear_bit_17',
         "command": 'clear_bit',
-        "args": [0x7044, 4],
-        "subscript": []
+        "args": [0x7044, 4]
     },
     {
         "identifier": 'EVENT_479_enable_controls_18',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_479_ret_19',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

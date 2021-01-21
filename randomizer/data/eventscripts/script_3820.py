@@ -1,29 +1,26 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3820_jmp_if_object_trigger_disabled_0',
         "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_1, Rooms._031_MUSHROOM_KINGDOM_CASTLE_VAULT, 'EVENT_3584_ret_0'],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._031_MUSHROOM_KINGDOM_CASTLE_VAULT, 'EVENT_3584_ret_0']
     },
     {
         "identifier": 'EVENT_3820_jmp_to_subroutine_1',
         "command": 'jmp_to_subroutine',
-        "args": [0xd837],
-        "subscript": []
+        "args": [0xd837]
     },
     {
         "identifier": 'EVENT_3820_set_short_2',
         "command": 'set_short',
-        "args": [0x7022, 0x0008],
-        "subscript": []
+        "args": [0x7022, 0x0008]
     },
     {
         "identifier": 'EVENT_3820_run_background_event_with_pause_3',
         "command": 'run_background_event_with_pause',
-        "args": [3075, 0x7022, [12, 13]],
-        "subscript": []
+        "args": [3075, 0x7022, [12, 13]]
     },
     {
         "identifier": 'EVENT_3820_action_queue_async_4',
@@ -50,14 +47,12 @@ script = [
     {
         "identifier": 'EVENT_3820_pause_5',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3820_jmp_if_mario_in_air_6',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_3820_pause_5'],
-        "subscript": []
+        "args": ['EVENT_3820_pause_5']
     },
     {
         "identifier": 'EVENT_3820_action_queue_async_7',
@@ -76,16 +71,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_3820_action_queue_async_7_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_3820_pause_action_script_8',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_3820_start_embedded_action_script_async_9',
@@ -114,34 +107,29 @@ script = [
             },
             {
                 "identifier": 'EVENT_3820_start_embedded_action_script_async_9_SUBSCRIPT_face_southwest_4',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_3820_set_action_script_async_10',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_3, 636],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 636]
     },
     {
         "identifier": 'EVENT_3820_pause_11',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3820_run_dialog_12',
         "command": 'run_dialog',
-        "args": [3754, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3754, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3820_pause_13',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3820_action_queue_sync_14',
@@ -173,8 +161,7 @@ script = [
     {
         "identifier": 'EVENT_3820_jmp_to_subroutine_15',
         "command": 'jmp_to_subroutine',
-        "args": [0xd86f],
-        "subscript": []
+        "args": [0xd86f]
     },
     {
         "identifier": 'EVENT_3820_action_queue_sync_16',
@@ -188,8 +175,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3820_action_queue_sync_16_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_3820_action_queue_sync_16_SUBSCRIPT_set_solidity_bits_2',
@@ -218,31 +204,24 @@ script = [
     {
         "identifier": 'EVENT_3820_set_action_script_sync_18',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 978],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 978]
     },
     {
         "identifier": 'EVENT_3820_restore_all_hp_19',
-        "command": 'restore_all_hp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_hp'
     },
     {
         "identifier": 'EVENT_3820_restore_all_fp_20',
-        "command": 'restore_all_fp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_fp'
     },
     {
         "identifier": 'EVENT_3820_set_action_script_sync_21',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_3820_jmp_22',
         "command": 'jmp',
-        "args": ['EVENT_3818_clear_bit_64'],
-        "subscript": []
+        "args": ['EVENT_3818_clear_bit_64']
     }
 ]

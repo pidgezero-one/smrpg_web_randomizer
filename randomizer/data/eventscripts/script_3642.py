@@ -1,59 +1,51 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3642_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x705f, 3, 'EVENT_3642_jmp_if_bit_clear_2'],
-        "subscript": []
+        "args": [0x705f, 3, 'EVENT_3642_jmp_if_bit_clear_2']
     },
     {
         "identifier": 'EVENT_3642_apply_solidity_mod_1',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_3642_jmp_if_bit_clear_2',
         "command": 'jmp_if_bit_clear',
-        "args": [0x705f, 5, 'EVENT_3642_set_temp_action_script_async_5'],
-        "subscript": []
+        "args": [0x705f, 5, 'EVENT_3642_set_temp_action_script_async_5']
     },
     {
         "identifier": 'EVENT_3642_clear_bit_3',
         "command": 'clear_bit',
-        "args": [0x704c, 0],
-        "subscript": []
+        "args": [0x704c, 0]
     },
     {
         "identifier": 'EVENT_3642_clear_bit_4',
         "command": 'clear_bit',
-        "args": [0x704c, 1],
-        "subscript": []
+        "args": [0x704c, 1]
     },
     {
         "identifier": 'EVENT_3642_set_temp_action_script_async_5',
         "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_5, 804],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 804]
     },
     {
         "identifier": 'EVENT_3642_set_temp_action_script_async_6',
         "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_6, 807],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 807]
     },
     {
         "identifier": 'EVENT_3642_set_temp_action_script_async_7',
         "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_1, 806],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 806]
     },
     {
         "identifier": 'EVENT_3642_set_temp_action_script_async_8',
         "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_3, 803],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 803]
     },
     {
         "identifier": 'EVENT_3642_action_queue_sync_9',
@@ -190,32 +182,24 @@ script = [
     {
         "identifier": 'EVENT_3642_jmp_if_bit_set_20',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 0, 'EVENT_3584_ret_0'],
-        "subscript": []
+        "args": [0x704c, 0, 'EVENT_3584_ret_0']
     },
     {
         "identifier": 'EVENT_3642_jmp_if_bit_set_21',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 0, 'EVENT_3642_fade_in_from_black_sync_24'],
-        "subscript": []
+        "args": [0x7042, 0, 'EVENT_3642_fade_in_from_black_sync_24']
     },
     {
         "identifier": 'EVENT_3642_fade_in_from_black_async_22',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_3642_ret_23',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3642_fade_in_from_black_sync_24',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_3642_action_queue_async_25',
@@ -224,8 +208,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3642_action_queue_async_25_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_3642_action_queue_async_25_SUBSCRIPT_set_animation_speed_1',
@@ -239,13 +222,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3642_action_queue_async_25_SUBSCRIPT_walk_1_step_northeast_3',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_3642_action_queue_async_25_SUBSCRIPT_floating_on_4',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3642_action_queue_async_25_SUBSCRIPT_shift_northeast_steps_5',
@@ -257,25 +238,19 @@ script = [
     {
         "identifier": 'EVENT_3642_set_action_script_sync_26',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_3642_pause_script_until_effect_done_27',
-        "command": 'pause_script_until_effect_done',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_until_effect_done'
     },
     {
         "identifier": 'EVENT_3642_clear_bit_28',
         "command": 'clear_bit',
-        "args": [0x7042, 0],
-        "subscript": []
+        "args": [0x7042, 0]
     },
     {
         "identifier": 'EVENT_3642_ret_29',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

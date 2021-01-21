@@ -1,23 +1,19 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2121_stop_music_0',
-        "command": 'stop_music',
-        "args": [],
-        "subscript": []
+        "command": 'stop_music'
     },
     {
         "identifier": 'EVENT_2121_enable_controls_until_return_1',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_2121_freeze_camera_2',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2121_action_queue_sync_3',
@@ -80,18 +76,15 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_sequence_playback_on_1',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_sequence_looping_on_2',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_set_animation_speed_3',
@@ -110,8 +103,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_sequence_playback_off_6',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_set_animation_speed_7',
@@ -135,8 +127,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_sequence_playback_on_11',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_set_animation_speed_12',
@@ -155,13 +146,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_reset_properties_15',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_sequence_looping_off_16',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_2121_action_queue_async_5_SUBSCRIPT_set_animation_speed_17',
@@ -188,8 +177,7 @@ script = [
     {
         "identifier": 'EVENT_2121_pause_6',
         "command": 'pause',
-        "args": [40],
-        "subscript": []
+        "args": [40]
     },
     {
         "identifier": 'EVENT_2121_action_queue_async_7',
@@ -235,8 +223,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2121_action_queue_sync_8_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -260,32 +247,27 @@ script = [
     {
         "identifier": 'EVENT_2121_pause_10',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2121_play_sound_11',
         "command": 'play_sound',
-        "args": [Sounds._016_OPEN_DOOR, 6],
-        "subscript": []
+        "args": [Sounds._016_OPEN_DOOR, 6]
     },
     {
         "identifier": 'EVENT_2121_pause_12',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2121_jmp_if_bit_set_13',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 2, 'EVENT_2130_run_dialog_0'],
-        "subscript": []
+        "args": [0x7044, 2, 'EVENT_2130_run_dialog_0']
     },
     {
         "identifier": 'EVENT_2121_run_dialog_14',
         "command": 'run_dialog',
-        "args": [3349, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3349, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2121_action_queue_async_15',
@@ -294,45 +276,37 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2121_action_queue_async_15_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_2121_clear_bit_16',
         "command": 'clear_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_2121_clear_bit_17',
         "command": 'clear_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_2121_set_bit_18',
         "command": 'set_bit',
-        "args": [0x7044, 2],
-        "subscript": []
+        "args": [0x7044, 2]
     },
     {
         "identifier": 'EVENT_2121_pause_19',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2121_jmp_20',
         "command": 'jmp',
-        "args": ['EVENT_2131_pause_0'],
-        "subscript": []
+        "args": ['EVENT_2131_pause_0']
     },
     {
         "identifier": 'EVENT_2121_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

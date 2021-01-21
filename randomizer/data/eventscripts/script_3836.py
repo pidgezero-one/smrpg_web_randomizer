@@ -1,29 +1,26 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3836_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x705e, 6, 'EVENT_3584_ret_0'],
-        "subscript": []
+        "args": [0x705e, 6, 'EVENT_3584_ret_0']
     },
     {
         "identifier": 'EVENT_3836_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_3584_ret_0'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_3584_ret_0']
     },
     {
         "identifier": 'EVENT_3836_jmp_if_bit_clear_2',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 2, 'EVENT_3584_ret_0'],
-        "subscript": []
+        "args": [0x7043, 2, 'EVENT_3584_ret_0']
     },
     {
         "identifier": 'EVENT_3836_set_bit_3',
         "command": 'set_bit',
-        "args": [0x7043, 3],
-        "subscript": []
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_3836_action_queue_async_4',
@@ -42,8 +39,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3836_action_queue_async_4_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_3836_action_queue_async_4_SUBSCRIPT_set_solidity_bits_3',
@@ -55,25 +51,20 @@ script = [
     {
         "identifier": 'EVENT_3836_pause_5',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3836_run_dialog_6',
         "command": 'run_dialog',
-        "args": [3746, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3746, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3836_enable_controls_7',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_3836_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1339_action_queue_sync_0',
@@ -18,8 +19,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_0_SUBSCRIPT_shadow_off_2',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_0_SUBSCRIPT_set_vram_priority_3',
@@ -45,8 +45,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_1_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -62,8 +61,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_2_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_2_SUBSCRIPT_set_priority_2',
@@ -82,8 +80,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_2_SUBSCRIPT_sequence_looping_on_5',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -99,8 +96,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_3_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_3_SUBSCRIPT_set_priority_2',
@@ -119,8 +115,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_3_SUBSCRIPT_sequence_looping_on_5',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -136,8 +131,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_4_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_4_SUBSCRIPT_set_priority_2',
@@ -156,8 +150,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_4_SUBSCRIPT_sequence_looping_on_5',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -173,8 +166,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_5_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_5_SUBSCRIPT_set_priority_2',
@@ -193,8 +185,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_5_SUBSCRIPT_sequence_looping_on_5',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -210,8 +201,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_6_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_6_SUBSCRIPT_set_priority_2',
@@ -230,8 +220,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_sync_6_SUBSCRIPT_sequence_looping_on_5',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -247,8 +236,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_async_7_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_1339_action_queue_async_7_SUBSCRIPT_set_priority_2',
@@ -267,153 +255,124 @@ script = [
             },
             {
                 "identifier": 'EVENT_1339_action_queue_async_7_SUBSCRIPT_sequence_looping_on_5',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_1339_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7054, 0, 'EVENT_1339_set_bit_18'],
-        "subscript": []
+        "args": [0x7054, 0, 'EVENT_1339_set_bit_18']
     },
     {
         "identifier": 'EVENT_1339_set_short_9',
         "command": 'set_short',
-        "args": [0x7024, 0x0000],
-        "subscript": []
+        "args": [0x7024, 0x0000]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_10',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 34, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 34, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_11',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_12',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 42, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 42, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_13',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_14',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 50, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 50, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_15',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 54, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 54, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_fade_in_from_black_async_16',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1339_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1339_set_bit_18',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_1339_set_bit_19',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_1339_set_bit_20',
         "command": 'set_bit',
-        "args": [0x7043, 2],
-        "subscript": []
+        "args": [0x7043, 2]
     },
     {
         "identifier": 'EVENT_1339_set_bit_21',
         "command": 'set_bit',
-        "args": [0x7043, 3],
-        "subscript": []
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_1339_set_bit_22',
         "command": 'set_bit',
-        "args": [0x7043, 4],
-        "subscript": []
+        "args": [0x7043, 4]
     },
     {
         "identifier": 'EVENT_1339_set_bit_23',
         "command": 'set_bit',
-        "args": [0x7043, 5],
-        "subscript": []
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_24',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 36, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 36, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_25',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 40, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 40, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_26',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 44, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 44, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_27',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 48, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 48, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_28',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 52, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 52, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_apply_tile_mod_29',
         "command": 'apply_tile_mod',
-        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 56, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 56, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1339_fade_in_from_black_async_30',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1339_ret_31',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

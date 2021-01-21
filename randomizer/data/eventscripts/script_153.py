@@ -1,16 +1,15 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_153_start_battle_0',
         "command": 'start_battle',
-        "args": [0x00ca, 23],
-        "subscript": []
+        "args": [0x00ca, 23]
     },
     {
         "identifier": 'EVENT_153_jmp_1',
         "command": 'jmp',
-        "args": ['EVENT_142_jmp_to_event_1'],
-        "subscript": []
+        "args": ['EVENT_142_jmp_to_event_1']
     }
 ]

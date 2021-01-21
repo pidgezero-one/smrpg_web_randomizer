@@ -1,47 +1,41 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3496_set_short_mem_0',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x702a],
-        "subscript": []
+        "args": [0x7000, 0x702a]
     },
     {
         "identifier": 'EVENT_3496_set_short_mem_1',
         "command": 'set_short_mem',
-        "args": [0x7034, 0x7000],
-        "subscript": []
+        "args": [0x7034, 0x7000]
     },
     {
         "identifier": 'EVENT_3496_pause_2',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3496_jmp_if_bit_clear_3',
         "command": 'jmp_if_bit_clear',
-        "args": [0x707b, 5, 'EVENT_3496_pause_2'],
-        "subscript": []
+        "args": [0x707b, 5, 'EVENT_3496_pause_2']
     },
     {
         "identifier": 'EVENT_3496_pause_4',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_3496_pause_action_script_5',
         "command": 'pause_action_script',
-        "args": [AreaObjects.SCREEN_FOCUS],
-        "subscript": []
+        "args": [AreaObjects.SCREEN_FOCUS]
     },
     {
         "identifier": 'EVENT_3496_pause_action_script_6',
         "command": 'pause_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_3496_action_queue_sync_7',
@@ -120,68 +114,56 @@ script = [
     {
         "identifier": 'EVENT_3496_set_short_9',
         "command": 'set_short',
-        "args": [0x700c, 0x0000],
-        "subscript": []
+        "args": [0x700c, 0x0000]
     },
     {
         "identifier": 'EVENT_3496_start_loop_n_times_10',
         "command": 'start_loop_n_times',
-        "args": [7],
-        "subscript": []
+        "args": [7]
     },
     {
         "identifier": 'EVENT_3496_set_short_mem_11',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x702a],
-        "subscript": []
+        "args": [0x7000, 0x702a]
     },
     {
         "identifier": 'EVENT_3496_jmp_if_var_equals_short_12',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3496_pause_15'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_3496_pause_15']
     },
     {
         "identifier": 'EVENT_3496_create_packet_at_object_coords_jmp_if_null_13',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._017_SMALL_COIN_NOT_MOVING, AreaObjects.MARIO, 'EVENT_3496_pause_15'],
-        "subscript": []
+        "args": [NPCPackets._017_SMALL_COIN_NOT_MOVING, AreaObjects.MARIO, 'EVENT_3496_pause_15']
     },
     {
         "identifier": 'EVENT_3496_dec_short_14',
         "command": 'dec_short',
-        "args": [0x702a],
-        "subscript": []
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_3496_pause_15',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3496_add_short_16',
         "command": 'add_short',
-        "args": [0x700c, 0x01],
-        "subscript": []
+        "args": [0x700c, 0x01]
     },
     {
         "identifier": 'EVENT_3496_end_loop_17',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3496_pause_18',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3496_jmp_if_mario_in_air_19',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_3496_pause_18'],
-        "subscript": []
+        "args": ['EVENT_3496_pause_18']
     },
     {
         "identifier": 'EVENT_3496_action_queue_async_20',
@@ -208,31 +190,25 @@ script = [
     {
         "identifier": 'EVENT_3496_resume_action_script_21',
         "command": 'resume_action_script',
-        "args": [AreaObjects.SCREEN_FOCUS],
-        "subscript": []
+        "args": [AreaObjects.SCREEN_FOCUS]
     },
     {
         "identifier": 'EVENT_3496_resume_action_script_22',
         "command": 'resume_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_3496_clear_bit_23',
         "command": 'clear_bit',
-        "args": [0x707b, 5],
-        "subscript": []
+        "args": [0x707b, 5]
     },
     {
         "identifier": 'EVENT_3496_set_bit_24',
         "command": 'set_bit',
-        "args": [0x7078, 5],
-        "subscript": []
+        "args": [0x7078, 5]
     },
     {
         "identifier": 'EVENT_3496_ret_25',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

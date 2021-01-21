@@ -1,47 +1,41 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3501_stop_background_event_0',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c],
-        "subscript": []
+        "args": [timer_memory=0x701c]
     },
     {
         "identifier": 'EVENT_3501_clear_bit_1',
         "command": 'clear_bit',
-        "args": [0x7043, 5],
-        "subscript": []
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_3501_enable_controls_until_return_2',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_3501_jmp_fork_mario_on_object_3',
         "command": 'jmp_fork_mario_on_object',
-        "args": ['EVENT_3501_set_short_18', 'EVENT_3501_action_queue_sync_7'],
-        "subscript": []
+        "args": ['EVENT_3501_set_short_18', 'EVENT_3501_action_queue_sync_7']
     },
     {
         "identifier": 'EVENT_3501_set_7000_to_object_coord_4',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3501_mem_compare_5',
         "command": 'mem_compare',
-        "args": [0x7000, 256],
-        "subscript": []
+        "args": [0x7000, 256]
     },
     {
         "identifier": 'EVENT_3501_jmp_if_comparison_result_is_greater_or_equal_6',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_3501_set_short_18'],
-        "subscript": []
+        "args": ['EVENT_3501_set_short_18']
     },
     {
         "identifier": 'EVENT_3501_action_queue_sync_7',
@@ -63,8 +57,7 @@ script = [
     {
         "identifier": 'EVENT_3501_resume_action_script_8',
         "command": 'resume_action_script',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3501_action_queue_async_9',
@@ -78,8 +71,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_floating_off_1',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_play_sound_2',
@@ -108,8 +100,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_floating_on_7',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_start_loop_n_times_8',
@@ -118,8 +109,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_visibility_off_9',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_pause_10',
@@ -128,8 +118,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_visibility_on_11',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_mem_compare_12',
@@ -163,13 +152,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_end_loop_18',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_reset_properties_19',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_9_SUBSCRIPT_set_vram_priority_20',
@@ -186,56 +173,45 @@ script = [
     {
         "identifier": 'EVENT_3501_enable_controls_until_return_10',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_3501_mem_compare_11',
         "command": 'mem_compare',
-        "args": [0x7024, 0],
-        "subscript": []
+        "args": [0x7024, 0]
     },
     {
         "identifier": 'EVENT_3501_jmp_if_loaded_memory_is_below_0_12',
         "command": 'jmp_if_loaded_memory_is_below_0',
-        "args": ['EVENT_3501_resume_background_event_16'],
-        "subscript": []
+        "args": ['EVENT_3501_resume_background_event_16']
     },
     {
         "identifier": 'EVENT_3501_set_short_13',
         "command": 'set_short',
-        "args": [0x701c, 0x0002],
-        "subscript": []
+        "args": [0x701c, 0x0002]
     },
     {
         "identifier": 'EVENT_3501_run_background_event_with_pause_return_on_exit_14',
         "command": 'run_background_event_with_pause_return_on_exit',
-        "args": [3505, 0x701c, [12, 13]],
-        "subscript": []
+        "args": [3505, 0x701c, [12, 13]]
     },
     {
         "identifier": 'EVENT_3501_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3501_resume_background_event_16',
         "command": 'resume_background_event',
-        "args": [0x701c],
-        "subscript": []
+        "args": [0x701c]
     },
     {
         "identifier": 'EVENT_3501_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3501_set_short_18',
         "command": 'set_short',
-        "args": [0x7028, 0x0024],
-        "subscript": []
+        "args": [0x7028, 0x0024]
     },
     {
         "identifier": 'EVENT_3501_action_queue_sync_19',
@@ -257,8 +233,7 @@ script = [
     {
         "identifier": 'EVENT_3501_resume_action_script_20',
         "command": 'resume_action_script',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3501_action_queue_async_21',
@@ -327,8 +302,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_floating_off_12',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_jump_to_height_silent_13',
@@ -337,8 +311,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_floating_on_14',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_jmp_15',
@@ -357,8 +330,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_floating_off_18',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_jump_to_height_silent_19',
@@ -367,8 +339,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_floating_on_20',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_load_mem_21',
@@ -387,8 +358,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_end_loop_24',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3501_action_queue_async_21_SUBSCRIPT_set_solidity_bits_25',
@@ -400,37 +370,30 @@ script = [
     {
         "identifier": 'EVENT_3501_enable_controls_until_return_22',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_3501_mem_compare_23',
         "command": 'mem_compare',
-        "args": [0x7024, 0],
-        "subscript": []
+        "args": [0x7024, 0]
     },
     {
         "identifier": 'EVENT_3501_jmp_if_loaded_memory_is_above_or_equal_0_24',
         "command": 'jmp_if_loaded_memory_is_above_or_equal_0',
-        "args": ['EVENT_3501_resume_background_event_16'],
-        "subscript": []
+        "args": ['EVENT_3501_resume_background_event_16']
     },
     {
         "identifier": 'EVENT_3501_set_short_25',
         "command": 'set_short',
-        "args": [0x701c, 0x0078],
-        "subscript": []
+        "args": [0x701c, 0x0078]
     },
     {
         "identifier": 'EVENT_3501_run_background_event_with_pause_return_on_exit_26',
         "command": 'run_background_event_with_pause_return_on_exit',
-        "args": [3505, 0x701c, [12, 13]],
-        "subscript": []
+        "args": [3505, 0x701c, [12, 13]]
     },
     {
         "identifier": 'EVENT_3501_ret_27',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

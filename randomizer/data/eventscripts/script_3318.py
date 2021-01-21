@@ -1,65 +1,55 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3318_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7076, 0, 'EVENT_3318_set_7000_to_current_level_2'],
-        "subscript": []
+        "args": [0x7076, 0, 'EVENT_3318_set_7000_to_current_level_2']
     },
     {
         "identifier": 'EVENT_3318_jmp_to_event_1',
         "command": 'jmp_to_event',
-        "args": [255],
-        "subscript": []
+        "args": [255]
     },
     {
         "identifier": 'EVENT_3318_set_7000_to_current_level_2',
-        "command": 'set_7000_to_current_level',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_current_level'
     },
     {
         "identifier": 'EVENT_3318_jmp_if_var_equals_short_3',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 362, 'EVENT_3318_start_battle_6'],
-        "subscript": []
+        "args": [0x7000, 362, 'EVENT_3318_start_battle_6']
     },
     {
         "identifier": 'EVENT_3318_start_battle_4',
         "command": 'start_battle',
-        "args": [0x0068, 20],
-        "subscript": []
+        "args": [0x0068, 20]
     },
     {
         "identifier": 'EVENT_3318_jmp_5',
         "command": 'jmp',
-        "args": ['EVENT_3318_jmp_if_bit_set_7'],
-        "subscript": []
+        "args": ['EVENT_3318_jmp_if_bit_set_7']
     },
     {
         "identifier": 'EVENT_3318_start_battle_6',
         "command": 'start_battle',
-        "args": [0x0069, 20],
-        "subscript": []
+        "args": [0x0069, 20]
     },
     {
         "identifier": 'EVENT_3318_jmp_if_bit_set_7',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_3319_set_temp_action_script_sync_14'],
-        "subscript": []
+        "args": [0x7040, 1, 'EVENT_3319_set_temp_action_script_sync_14']
     },
     {
         "identifier": 'EVENT_3318_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 0, 'EVENT_3319_reset_and_choose_game_17'],
-        "subscript": []
+        "args": [0x7040, 0, 'EVENT_3319_reset_and_choose_game_17']
     },
     {
         "identifier": 'EVENT_3318_pause_action_script_9',
         "command": 'pause_action_script',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3318_action_queue_async_10',
@@ -73,8 +63,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3318_action_queue_async_10_SUBSCRIPT_visibility_off_1',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3318_action_queue_async_10_SUBSCRIPT_clear_solidity_bits_2',
@@ -91,31 +80,23 @@ script = [
     {
         "identifier": 'EVENT_3318_set_short_mem_11',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8],
-        "subscript": []
+        "args": [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_3318_add_12',
         "command": 'add',
-        "args": [0x7000, 7],
-        "subscript": []
+        "args": [0x7000, 7]
     },
     {
         "identifier": 'EVENT_3318_clear_mem_704x_at_7000_bit_13',
-        "command": 'clear_mem_704x_at_7000_bit',
-        "args": [],
-        "subscript": []
+        "command": 'clear_mem_704x_at_7000_bit'
     },
     {
         "identifier": 'EVENT_3318_fade_in_from_black_async_14',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_3318_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

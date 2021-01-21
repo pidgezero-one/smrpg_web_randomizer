@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2112_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x705f, 4, 'EVENT_2112_action_queue_sync_18'],
-        "subscript": []
+        "args": [0x705f, 4, 'EVENT_2112_action_queue_sync_18']
     },
     {
         "identifier": 'EVENT_2112_action_queue_sync_1',
@@ -24,8 +24,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2112_action_queue_sync_1_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -46,8 +45,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2112_action_queue_sync_2_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -68,40 +66,34 @@ script = [
             },
             {
                 "identifier": 'EVENT_2112_action_queue_async_3_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2112_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x7092, 6, 'EVENT_2112_fade_in_from_black_async_16'],
-        "subscript": []
+        "args": [0x7092, 6, 'EVENT_2112_fade_in_from_black_async_16']
     },
     {
         "identifier": 'EVENT_2112_jmp_if_bit_set_5',
         "command": 'jmp_if_bit_set',
-        "args": [0x7090, 1, 'EVENT_2112_fade_in_from_black_async_16'],
-        "subscript": []
+        "args": [0x7090, 1, 'EVENT_2112_fade_in_from_black_async_16']
     },
     {
         "identifier": 'EVENT_2112_jmp_if_bit_set_6',
         "command": 'jmp_if_bit_set',
-        "args": [0x7092, 3, 'EVENT_2112_palette_set_13'],
-        "subscript": []
+        "args": [0x7092, 3, 'EVENT_2112_palette_set_13']
     },
     {
         "identifier": 'EVENT_2112_jmp_7',
         "command": 'jmp',
-        "args": ['EVENT_2112_palette_set_13'],
-        "subscript": []
+        "args": ['EVENT_2112_palette_set_13']
     },
     {
         "identifier": 'EVENT_2112_palette_set_8',
         "command": 'palette_set',
-        "args": [111, 1],
-        "subscript": []
+        "args": [111, 1]
     },
     {
         "identifier": 'EVENT_2112_action_queue_sync_9',
@@ -115,8 +107,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2112_action_queue_sync_9_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -132,8 +123,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2112_action_queue_sync_10_SUBSCRIPT_visibility_on_1',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2112_action_queue_sync_10_SUBSCRIPT_shift_southwest_pixels_2',
@@ -142,8 +132,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2112_action_queue_sync_10_SUBSCRIPT_sequence_looping_on_3',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -179,32 +168,23 @@ script = [
     {
         "identifier": 'EVENT_2112_palette_set_13',
         "command": 'palette_set',
-        "args": [111, 1],
-        "subscript": []
+        "args": [111, 1]
     },
     {
         "identifier": 'EVENT_2112_fade_in_from_black_async_14',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2112_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2112_fade_in_from_black_async_16',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2112_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2112_action_queue_sync_18',
@@ -274,14 +254,10 @@ script = [
     },
     {
         "identifier": 'EVENT_2112_fade_in_from_black_async_21',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2112_ret_22',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_303_action_queue_async_0',
@@ -20,8 +21,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_303_start_embedded_action_script_async_1_SUBSCRIPT_floating_on_0',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_303_start_embedded_action_script_async_1_SUBSCRIPT_jump_to_height_silent_1',
@@ -43,44 +43,37 @@ script = [
     {
         "identifier": 'EVENT_303_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_303_run_dialog_22'],
-        "subscript": []
+        "args": [0x704c, 6, 'EVENT_303_run_dialog_22']
     },
     {
         "identifier": 'EVENT_303_run_dialog_3',
         "command": 'run_dialog',
-        "args": [541, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [541, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_303_jmp_if_dialog_option_b_4',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_303_run_event_as_subroutine_12'],
-        "subscript": []
+        "args": ['EVENT_303_run_event_as_subroutine_12']
     },
     {
         "identifier": 'EVENT_303_run_event_as_subroutine_5',
         "command": 'run_event_as_subroutine',
-        "args": [3587],
-        "subscript": []
+        "args": [3587]
     },
     {
         "identifier": 'EVENT_303_set_action_script_async_6',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 670]
     },
     {
         "identifier": 'EVENT_303_set_action_script_sync_7',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 23],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 23]
     },
     {
         "identifier": 'EVENT_303_run_dialog_8',
         "command": 'run_dialog',
-        "args": [545, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [545, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_303_action_queue_async_9',
@@ -108,27 +101,21 @@ script = [
     },
     {
         "identifier": 'EVENT_303_ret_11',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_303_run_event_as_subroutine_12',
         "command": 'run_event_as_subroutine',
-        "args": [3587],
-        "subscript": []
+        "args": [3587]
     },
     {
         "identifier": 'EVENT_303_set_action_script_async_13',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 671]
     },
     {
         "identifier": 'EVENT_303_remember_last_object_14',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_303_action_queue_async_15',
@@ -137,13 +124,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_face_mario_1',
-                "command": 'face_mario',
-                "args": []
+                "command": 'face_mario'
             },
             {
                 "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_set_700C_to_object_coord_2',
@@ -162,13 +147,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_fixed_f_coord_off_5',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_face_east_6',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             }
         ]
     },
@@ -197,14 +180,12 @@ script = [
     {
         "identifier": 'EVENT_303_set_action_script_sync_17',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 15],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 15]
     },
     {
         "identifier": 'EVENT_303_run_dialog_18',
         "command": 'run_dialog',
-        "args": [546, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [546, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_303_action_queue_async_19',
@@ -232,45 +213,37 @@ script = [
     },
     {
         "identifier": 'EVENT_303_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_303_run_dialog_22',
         "command": 'run_dialog',
-        "args": [2239, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2239, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_303_jmp_if_dialog_option_b_23',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_303_run_event_as_subroutine_12'],
-        "subscript": []
+        "args": ['EVENT_303_run_event_as_subroutine_12']
     },
     {
         "identifier": 'EVENT_303_run_event_as_subroutine_24',
         "command": 'run_event_as_subroutine',
-        "args": [3587],
-        "subscript": []
+        "args": [3587]
     },
     {
         "identifier": 'EVENT_303_set_action_script_async_25',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 670]
     },
     {
         "identifier": 'EVENT_303_set_action_script_sync_26',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 23],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 23]
     },
     {
         "identifier": 'EVENT_303_run_dialog_27',
         "command": 'run_dialog',
-        "args": [2240, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2240, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_303_action_queue_async_28',
@@ -298,8 +271,6 @@ script = [
     },
     {
         "identifier": 'EVENT_303_ret_30',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

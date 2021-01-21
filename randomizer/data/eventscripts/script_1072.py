@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1072_play_music_default_volume_0',
         "command": 'play_music_default_volume',
-        "args": [Music._17_TADPOLE_POND],
-        "subscript": []
+        "args": [Music._17_TADPOLE_POND]
     },
     {
         "identifier": 'EVENT_1072_deactivate_sound_channels_1',
         "command": 'deactivate_sound_channels',
-        "args": [[0, 1, 2, 3]],
-        "subscript": []
+        "args": [[0, 1, 2, 3]]
     },
     {
         "identifier": 'EVENT_1072_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x7054, 6, 'EVENT_1072_action_queue_async_18'],
-        "subscript": []
+        "args": [0x7054, 6, 'EVENT_1072_action_queue_async_18']
     },
     {
         "identifier": 'EVENT_1072_action_queue_async_3',
@@ -41,8 +39,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1072_action_queue_async_3_SUBSCRIPT_sequence_looping_on_3',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_1072_action_queue_async_3_SUBSCRIPT_shift_southwest_pixels_4',
@@ -54,86 +51,68 @@ script = [
     {
         "identifier": 'EVENT_1072_jmp_if_bit_clear_4',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 4, 'EVENT_1072_clear_bit_14'],
-        "subscript": []
+        "args": [0x7051, 4, 'EVENT_1072_clear_bit_14']
     },
     {
         "identifier": 'EVENT_1072_jmp_if_bit_clear_5',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7057, 4, 'EVENT_1072_set_bit_9'],
-        "subscript": []
+        "args": [0x7057, 4, 'EVENT_1072_set_bit_9']
     },
     {
         "identifier": 'EVENT_1072_jmp_if_bit_clear_6',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 5, 'EVENT_1072_clear_bit_14'],
-        "subscript": []
+        "args": [0x7054, 5, 'EVENT_1072_clear_bit_14']
     },
     {
         "identifier": 'EVENT_1072_jmp_if_bit_clear_7',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7089, 0, 'EVENT_1072_set_bit_9'],
-        "subscript": []
+        "args": [0x7089, 0, 'EVENT_1072_set_bit_9']
     },
     {
         "identifier": 'EVENT_1072_jmp_8',
         "command": 'jmp',
-        "args": ['EVENT_1072_clear_bit_14'],
-        "subscript": []
+        "args": ['EVENT_1072_clear_bit_14']
     },
     {
         "identifier": 'EVENT_1072_set_bit_9',
         "command": 'set_bit',
-        "args": [0x7052, 1],
-        "subscript": []
+        "args": [0x7052, 1]
     },
     {
         "identifier": 'EVENT_1072_remove_from_current_level_10',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_8],
-        "subscript": []
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_1072_jmp_if_bit_set_11',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 7, 'EVENT_1072_clear_bit_24'],
-        "subscript": []
+        "args": [0x7044, 7, 'EVENT_1072_clear_bit_24']
     },
     {
         "identifier": 'EVENT_1072_fade_in_from_black_async_12',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1072_ret_13',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1072_clear_bit_14',
         "command": 'clear_bit',
-        "args": [0x7052, 1],
-        "subscript": []
+        "args": [0x7052, 1]
     },
     {
         "identifier": 'EVENT_1072_jmp_if_bit_set_15',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 7, 'EVENT_1072_clear_bit_24'],
-        "subscript": []
+        "args": [0x7044, 7, 'EVENT_1072_clear_bit_24']
     },
     {
         "identifier": 'EVENT_1072_fade_in_from_black_async_16',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1072_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1072_action_queue_async_18',
@@ -157,8 +136,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1072_action_queue_async_18_SUBSCRIPT_sequence_looping_on_3',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_1072_action_queue_async_18_SUBSCRIPT_set_animation_speed_4',
@@ -167,99 +145,80 @@ script = [
             },
             {
                 "identifier": 'EVENT_1072_action_queue_async_18_SUBSCRIPT_face_southwest_5',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_1072_clear_bit_19',
         "command": 'clear_bit',
-        "args": [0x7052, 1],
-        "subscript": []
+        "args": [0x7052, 1]
     },
     {
         "identifier": 'EVENT_1072_deactivate_sound_channels_20',
         "command": 'deactivate_sound_channels',
-        "args": [[0, 1, 2, 3]],
-        "subscript": []
+        "args": [[0, 1, 2, 3]]
     },
     {
         "identifier": 'EVENT_1072_jmp_if_bit_set_21',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 7, 'EVENT_1072_clear_bit_24'],
-        "subscript": []
+        "args": [0x7044, 7, 'EVENT_1072_clear_bit_24']
     },
     {
         "identifier": 'EVENT_1072_fade_in_from_black_async_22',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1072_ret_23',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1072_clear_bit_24',
         "command": 'clear_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_1072_clear_bit_25',
         "command": 'clear_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_1072_clear_bit_26',
         "command": 'clear_bit',
-        "args": [0x7043, 2],
-        "subscript": []
+        "args": [0x7043, 2]
     },
     {
         "identifier": 'EVENT_1072_clear_bit_27',
         "command": 'clear_bit',
-        "args": [0x7043, 3],
-        "subscript": []
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_1072_clear_bit_28',
         "command": 'clear_bit',
-        "args": [0x7043, 4],
-        "subscript": []
+        "args": [0x7043, 4]
     },
     {
         "identifier": 'EVENT_1072_clear_bit_29',
         "command": 'clear_bit',
-        "args": [0x7043, 5],
-        "subscript": []
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_1072_clear_bit_30',
         "command": 'clear_bit',
-        "args": [0x7043, 6],
-        "subscript": []
+        "args": [0x7043, 6]
     },
     {
         "identifier": 'EVENT_1072_clear_bit_31',
         "command": 'clear_bit',
-        "args": [0x7043, 7],
-        "subscript": []
+        "args": [0x7043, 7]
     },
     {
         "identifier": 'EVENT_1072_run_event_as_subroutine_32',
         "command": 'run_event_as_subroutine',
-        "args": [81],
-        "subscript": []
+        "args": [81]
     },
     {
         "identifier": 'EVENT_1072_ret_33',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

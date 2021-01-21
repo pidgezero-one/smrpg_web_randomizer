@@ -1,35 +1,29 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2403_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708b, 3, 'EVENT_2403_ret_21'],
-        "subscript": []
+        "args": [0x708b, 3, 'EVENT_2403_ret_21']
     },
     {
         "identifier": 'EVENT_2403_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x708b, 4, 'EVENT_2403_ret_21'],
-        "subscript": []
+        "args": [0x708b, 4, 'EVENT_2403_ret_21']
     },
     {
         "identifier": 'EVENT_2403_stop_all_background_events_2',
-        "command": 'stop_all_background_events',
-        "args": [],
-        "subscript": []
+        "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_2403_fade_out_music_3',
-        "command": 'fade_out_music',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_music'
     },
     {
         "identifier": 'EVENT_2403_set_bit_4',
         "command": 'set_bit',
-        "args": [0x708b, 4],
-        "subscript": []
+        "args": [0x708b, 4]
     },
     {
         "identifier": 'EVENT_2403_action_queue_sync_5',
@@ -73,8 +67,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2403_action_queue_sync_5_SUBSCRIPT_bpl_26_27_28_7',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2403_action_queue_sync_5_SUBSCRIPT_pause_8',
@@ -96,20 +89,17 @@ script = [
     {
         "identifier": 'EVENT_2403_pause_6',
         "command": 'pause',
-        "args": [64],
-        "subscript": []
+        "args": [64]
     },
     {
         "identifier": 'EVENT_2403_play_music_default_volume_7',
         "command": 'play_music_default_volume',
-        "args": [Music._45_HEART_BEATING_A_LITTLE_FASTER_PART_1],
-        "subscript": []
+        "args": [Music._45_HEART_BEATING_A_LITTLE_FASTER_PART_1]
     },
     {
         "identifier": 'EVENT_2403_stop_embedded_action_script_8',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2403_action_queue_async_9',
@@ -123,8 +113,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2403_action_queue_async_9_SUBSCRIPT_walk_1_step_southwest_1',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_2403_action_queue_async_9_SUBSCRIPT_shift_northwest_steps_2',
@@ -136,14 +125,11 @@ script = [
     {
         "identifier": 'EVENT_2403_remove_from_current_level_10',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2403_fade_out_music_11',
-        "command": 'fade_out_music',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_music'
     },
     {
         "identifier": 'EVENT_2403_action_queue_sync_12',
@@ -162,8 +148,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2403_action_queue_sync_12_SUBSCRIPT_shadow_on_2',
-                "command": 'shadow_on',
-                "args": []
+                "command": 'shadow_on'
             },
             {
                 "identifier": 'EVENT_2403_action_queue_sync_12_SUBSCRIPT_pause_3',
@@ -187,8 +172,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2403_action_queue_sync_12_SUBSCRIPT_face_southwest_7',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2403_action_queue_sync_12_SUBSCRIPT_set_sprite_sequence_8',
@@ -205,55 +189,45 @@ script = [
     {
         "identifier": 'EVENT_2403_pause_13',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2403_play_music_default_volume_14',
         "command": 'play_music_default_volume',
-        "args": [Music._46_HEART_BEATING_A_LITTLE_FASTER_PART_2],
-        "subscript": []
+        "args": [Music._46_HEART_BEATING_A_LITTLE_FASTER_PART_2]
     },
     {
         "identifier": 'EVENT_2403_stop_embedded_action_script_15',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_2403_set_action_script_async_16',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 384],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 384]
     },
     {
         "identifier": 'EVENT_2403_set_action_script_async_17',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2403_pause_18',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2403_play_music_default_volume_19',
         "command": 'play_music_default_volume',
-        "args": [Music._32_AND_MY_NAMES_BOOSTER],
-        "subscript": []
+        "args": [Music._32_AND_MY_NAMES_BOOSTER]
     },
     {
         "identifier": 'EVENT_2403_enable_controls_20',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_2403_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

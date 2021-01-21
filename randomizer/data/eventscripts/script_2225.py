@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2225_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7093, 7, 'EVENT_2225_ret_31'],
-        "subscript": []
+        "args": [0x7093, 7, 'EVENT_2225_ret_31']
     },
     {
         "identifier": 'EVENT_2225_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7054, 2, 'EVENT_2225_start_battle_19'],
-        "subscript": []
+        "args": [0x7054, 2, 'EVENT_2225_start_battle_19']
     },
     {
         "identifier": 'EVENT_2225_action_queue_async_2',
@@ -20,8 +19,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2225_action_queue_async_2_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_2225_action_queue_async_2_SUBSCRIPT_pause_1',
@@ -30,8 +28,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2225_action_queue_async_2_SUBSCRIPT_face_northwest_2',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2225_action_queue_async_2_SUBSCRIPT_set_sprite_sequence_3',
@@ -45,8 +42,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2225_action_queue_async_2_SUBSCRIPT_reset_properties_5',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2225_action_queue_async_2_SUBSCRIPT_pause_6',
@@ -105,20 +101,16 @@ script = [
     {
         "identifier": 'EVENT_2225_pause_4',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2225_pause_5',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_2225_freeze_camera_6',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2225_action_queue_async_7',
@@ -172,8 +164,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_bpl_26_27_28_9',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_10',
@@ -224,8 +215,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2225_action_queue_async_8_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2225_action_queue_async_8_SUBSCRIPT_pause_2',
@@ -247,139 +237,111 @@ script = [
     {
         "identifier": 'EVENT_2225_fade_out_music_to_volume_9',
         "command": 'fade_out_music_to_volume',
-        "args": [0, 0],
-        "subscript": []
+        "args": [0, 0]
     },
     {
         "identifier": 'EVENT_2225_start_battle_10',
         "command": 'start_battle',
-        "args": [0x00d2, 29],
-        "subscript": []
+        "args": [0x00d2, 29]
     },
     {
         "identifier": 'EVENT_2225_jmp_if_bit_clear_11',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7040, 0, 'EVENT_2225_restore_all_hp_13'],
-        "subscript": []
+        "args": [0x7040, 0, 'EVENT_2225_restore_all_hp_13']
     },
     {
         "identifier": 'EVENT_2225_jmp_to_event_12',
         "command": 'jmp_to_event',
-        "args": [3819],
-        "subscript": []
+        "args": [3819]
     },
     {
         "identifier": 'EVENT_2225_restore_all_hp_13',
-        "command": 'restore_all_hp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_hp'
     },
     {
         "identifier": 'EVENT_2225_restore_all_fp_14',
-        "command": 'restore_all_fp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_fp'
     },
     {
         "identifier": 'EVENT_2225_set_bit_15',
         "command": 'set_bit',
-        "args": [0x7054, 2],
-        "subscript": []
+        "args": [0x7054, 2]
     },
     {
         "identifier": 'EVENT_2225_enter_area_16',
         "command": 'enter_area',
-        "args": [Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, RadialDirections.NORTHEAST, 2, 66, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, RadialDirections.NORTHEAST, 2, 66, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2225_set_short_17',
         "command": 'set_short',
-        "args": [0x700a, 0x00e4],
-        "subscript": []
+        "args": [0x700a, 0x00e4]
     },
     {
         "identifier": 'EVENT_2225_jmp_to_event_18',
         "command": 'jmp_to_event',
-        "args": [720],
-        "subscript": []
+        "args": [720]
     },
     {
         "identifier": 'EVENT_2225_start_battle_19',
         "command": 'start_battle',
-        "args": [0x00ba, 16],
-        "subscript": []
+        "args": [0x00ba, 16]
     },
     {
         "identifier": 'EVENT_2225_jmp_if_bit_clear_20',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7040, 0, 'EVENT_2225_restore_all_hp_22'],
-        "subscript": []
+        "args": [0x7040, 0, 'EVENT_2225_restore_all_hp_22']
     },
     {
         "identifier": 'EVENT_2225_jmp_to_event_21',
         "command": 'jmp_to_event',
-        "args": [3819],
-        "subscript": []
+        "args": [3819]
     },
     {
         "identifier": 'EVENT_2225_restore_all_hp_22',
-        "command": 'restore_all_hp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_hp'
     },
     {
         "identifier": 'EVENT_2225_set_bit_23',
         "command": 'set_bit',
-        "args": [0x7093, 7],
-        "subscript": []
+        "args": [0x7093, 7]
     },
     {
         "identifier": 'EVENT_2225_set_bit_24',
         "command": 'set_bit',
-        "args": [0x7068, 5],
-        "subscript": []
+        "args": [0x7068, 5]
     },
     {
         "identifier": 'EVENT_2225_enter_area_25',
         "command": 'enter_area',
-        "args": [Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, RadialDirections.NORTHEAST, 2, 66, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, RadialDirections.NORTHEAST, 2, 66, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2225_jmp_if_bit_set_26',
         "command": 'jmp_if_bit_set',
-        "args": [0x7089, 5, 'EVENT_2225_set_short_28'],
-        "subscript": []
+        "args": [0x7089, 5, 'EVENT_2225_set_short_28']
     },
     {
         "identifier": 'EVENT_2225_set_bit_27',
         "command": 'set_bit',
-        "args": [0x7070, 5],
-        "subscript": []
+        "args": [0x7070, 5]
     },
     {
         "identifier": 'EVENT_2225_set_short_28',
         "command": 'set_short',
-        "args": [0x700a, 0x00e5],
-        "subscript": []
+        "args": [0x700a, 0x00e5]
     },
     {
         "identifier": 'EVENT_2225_jmp_to_event_29',
         "command": 'jmp_to_event',
-        "args": [720],
-        "subscript": []
+        "args": [720]
     },
     {
         "identifier": 'EVENT_2225_stop_sound_30',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2225_ret_31',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

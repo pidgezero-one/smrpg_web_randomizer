@@ -1,47 +1,41 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2145_apply_tile_mod_0',
         "command": 'apply_tile_mod',
-        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 32, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 32, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2145_apply_tile_mod_1',
         "command": 'apply_tile_mod',
-        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 33, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 33, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2145_apply_tile_mod_2',
         "command": 'apply_tile_mod',
-        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 34, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 34, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2145_apply_tile_mod_3',
         "command": 'apply_tile_mod',
-        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 35, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 35, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2145_apply_tile_mod_4',
         "command": 'apply_tile_mod',
-        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 36, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 36, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2145_apply_solidity_mod_5',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._478_BOWSERS_KEEP_2ND_TIME_AREA_03_LAVA_ROOM_WBRIDGE, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_2145_run_background_event_6',
         "command": 'run_background_event',
-        "args": [3329, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [3329, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2145_action_queue_sync_7',
@@ -50,8 +44,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2145_action_queue_sync_7_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_2145_action_queue_sync_7_SUBSCRIPT_pause_1',
@@ -129,14 +122,12 @@ script = [
     {
         "identifier": 'EVENT_2145_set_7000_to_object_coord_11',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2145_jmp_if_var_not_equals_short_12',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 16, 'EVENT_2145_fade_in_from_black_async_14'],
-        "subscript": []
+        "args": [0x7000, 16, 'EVENT_2145_fade_in_from_black_async_14']
     },
     {
         "identifier": 'EVENT_2145_action_queue_async_13',
@@ -150,8 +141,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2145_action_queue_async_13_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2145_action_queue_async_13_SUBSCRIPT_pause_2',
@@ -162,14 +152,10 @@ script = [
     },
     {
         "identifier": 'EVENT_2145_fade_in_from_black_async_14',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2145_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

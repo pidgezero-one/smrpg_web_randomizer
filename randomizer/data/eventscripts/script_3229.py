@@ -1,11 +1,10 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3229_stop_all_background_events_0',
-        "command": 'stop_all_background_events',
-        "args": [],
-        "subscript": []
+        "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_3229_action_queue_async_1',
@@ -29,8 +28,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_1_SUBSCRIPT_face_east_3',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             }
         ]
     },
@@ -46,8 +44,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_visibility_off_1',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_pause_2',
@@ -56,8 +53,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_pause_4',
@@ -66,8 +62,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_start_loop_n_times_6',
@@ -76,8 +71,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_visibility_off_7',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_pause_8',
@@ -86,8 +80,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_visibility_on_9',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_pause_10',
@@ -96,8 +89,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_end_loop_11',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_start_loop_n_times_12',
@@ -106,8 +98,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_visibility_off_13',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_pause_14',
@@ -116,8 +107,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_visibility_on_15',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_pause_16',
@@ -126,13 +116,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_end_loop_17',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_2_SUBSCRIPT_visibility_off_18',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -148,8 +136,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_visibility_on_1',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_pause_2',
@@ -158,8 +145,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_pause_4',
@@ -168,8 +154,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_start_loop_n_times_6',
@@ -178,8 +163,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_visibility_on_7',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_pause_8',
@@ -188,8 +172,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_visibility_off_9',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_pause_10',
@@ -198,8 +181,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_end_loop_11',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_start_loop_n_times_12',
@@ -208,8 +190,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_visibility_on_13',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_pause_14',
@@ -218,8 +199,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_visibility_off_15',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_pause_16',
@@ -228,18 +208,15 @@ script = [
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_end_loop_17',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_visibility_on_18',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_face_mario_19',
-                "command": 'face_mario',
-                "args": []
+                "command": 'face_mario'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_3_SUBSCRIPT_pause_20',
@@ -251,32 +228,27 @@ script = [
     {
         "identifier": 'EVENT_3229_clear_bit_4',
         "command": 'clear_bit',
-        "args": [0x707c, 5],
-        "subscript": []
+        "args": [0x707c, 5]
     },
     {
         "identifier": 'EVENT_3229_set_bit_5',
         "command": 'set_bit',
-        "args": [0x707c, 6],
-        "subscript": []
+        "args": [0x707c, 6]
     },
     {
         "identifier": 'EVENT_3229_set_bit_6',
         "command": 'set_bit',
-        "args": [0x707c, 7],
-        "subscript": []
+        "args": [0x707c, 7]
     },
     {
         "identifier": 'EVENT_3229_set_short_7',
         "command": 'set_short',
-        "args": [0x700e, 0x004d],
-        "subscript": []
+        "args": [0x700e, 0x004d]
     },
     {
         "identifier": 'EVENT_3229_run_event_as_subroutine_8',
         "command": 'run_event_as_subroutine',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_3229_action_queue_sync_9',
@@ -285,8 +257,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3229_action_queue_sync_9_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_sync_9_SUBSCRIPT_object_memory_set_bit_1',
@@ -312,8 +283,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3229_action_queue_async_10_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3229_action_queue_async_10_SUBSCRIPT_object_memory_set_bit_1',
@@ -334,8 +304,6 @@ script = [
     },
     {
         "identifier": 'EVENT_3229_ret_11',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

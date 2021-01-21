@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_592_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7063, 6, 'EVENT_257_fade_in_from_black_async_0'],
-        "subscript": []
+        "args": [0x7063, 6, 'EVENT_257_fade_in_from_black_async_0']
     },
     {
         "identifier": 'EVENT_592_action_queue_sync_1',
@@ -72,8 +72,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_592_action_queue_sync_5_SUBSCRIPT_visibility_off_1',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -89,8 +88,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_592_action_queue_sync_6_SUBSCRIPT_visibility_off_1',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -106,33 +104,26 @@ script = [
             },
             {
                 "identifier": 'EVENT_592_action_queue_async_7_SUBSCRIPT_visibility_off_1',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_592_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7056, 3, 'EVENT_257_fade_in_from_black_async_0'],
-        "subscript": []
+        "args": [0x7056, 3, 'EVENT_257_fade_in_from_black_async_0']
     },
     {
         "identifier": 'EVENT_592_run_background_event_9',
         "command": 'run_background_event',
-        "args": [596, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [596, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_592_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_592_ret_11',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

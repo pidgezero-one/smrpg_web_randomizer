@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2539_set_bit_0',
         "command": 'set_bit',
-        "args": [0x7047, 0],
-        "subscript": []
+        "args": [0x7047, 0]
     },
     {
         "identifier": 'EVENT_2539_action_queue_sync_1',
@@ -26,23 +26,19 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2539_action_queue_async_2_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2539_action_queue_async_2_SUBSCRIPT_floating_off_1',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2539_action_queue_async_2_SUBSCRIPT_sequence_playback_off_2',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_2539_action_queue_async_2_SUBSCRIPT_shadow_off_3',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2539_action_queue_async_2_SUBSCRIPT_set_animation_speed_4',
@@ -59,14 +55,12 @@ script = [
     {
         "identifier": 'EVENT_2539_set_action_script_async_3',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 408],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 408]
     },
     {
         "identifier": 'EVENT_2539_play_sound_4',
         "command": 'play_sound',
-        "args": [Sounds._010_TRAMPOLINE, 6],
-        "subscript": []
+        "args": [Sounds._010_TRAMPOLINE, 6]
     },
     {
         "identifier": 'EVENT_2539_action_queue_sync_5',
@@ -95,39 +89,32 @@ script = [
             },
             {
                 "identifier": 'EVENT_2539_action_queue_sync_5_SUBSCRIPT_bpl_26_27_28_4',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             }
         ]
     },
     {
         "identifier": 'EVENT_2539_pause_6',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2539_fade_out_to_black_async_duration_7',
         "command": 'fade_out_to_black_async_duration',
-        "args": [8],
-        "subscript": []
+        "args": [8]
     },
     {
         "identifier": 'EVENT_2539_stop_embedded_action_script_8',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_2539_enter_area_9',
         "command": 'enter_area',
-        "args": [Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA, RadialDirections.SOUTH, 5, 29, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA, RadialDirections.SOUTH, 5, 29, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2539_ret_10',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

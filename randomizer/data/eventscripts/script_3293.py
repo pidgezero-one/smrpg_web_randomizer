@@ -1,41 +1,35 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3293_jmp_fork_mario_on_object_0',
         "command": 'jmp_fork_mario_on_object',
-        "args": ['EVENT_3293_pause_action_script_5', 'EVENT_3293_pause_action_script_8'],
-        "subscript": []
+        "args": ['EVENT_3293_pause_action_script_5', 'EVENT_3293_pause_action_script_8']
     },
     {
         "identifier": 'EVENT_3293_set_short_mem_1',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8],
-        "subscript": []
+        "args": [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_3293_set_short_mem_2',
         "command": 'set_short_mem',
-        "args": [0x70aa, 0x7000],
-        "subscript": []
+        "args": [0x70aa, 0x7000]
     },
     {
         "identifier": 'EVENT_3293_run_background_event_3',
         "command": 'run_background_event',
-        "args": [3294, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [3294, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_3293_ret_4',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3293_pause_action_script_5',
         "command": 'pause_action_script',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3293_action_queue_sync_6',
@@ -59,8 +53,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3293_action_queue_sync_6_SUBSCRIPT_floating_on_3',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3293_action_queue_sync_6_SUBSCRIPT_pause_4',
@@ -69,8 +62,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3293_action_queue_sync_6_SUBSCRIPT_visibility_off_5',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3293_action_queue_sync_6_SUBSCRIPT_db_6',
@@ -81,15 +73,12 @@ script = [
     },
     {
         "identifier": 'EVENT_3293_ret_7',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3293_pause_action_script_8',
         "command": 'pause_action_script',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3293_action_queue_sync_9',
@@ -113,8 +102,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3293_action_queue_sync_9_SUBSCRIPT_floating_on_3',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3293_action_queue_sync_9_SUBSCRIPT_pause_4',
@@ -123,8 +111,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3293_action_queue_sync_9_SUBSCRIPT_visibility_off_5',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3293_action_queue_sync_9_SUBSCRIPT_db_6',
@@ -135,8 +122,6 @@ script = [
     },
     {
         "identifier": 'EVENT_3293_ret_10',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

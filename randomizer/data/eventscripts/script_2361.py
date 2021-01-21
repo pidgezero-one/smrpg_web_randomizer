@@ -1,47 +1,41 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2361_summon_to_level_0',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_10, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS],
-        "subscript": []
+        "args": [AreaObjects.NPC_10, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS]
     },
     {
         "identifier": 'EVENT_2361_summon_to_level_1',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_11, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS],
-        "subscript": []
+        "args": [AreaObjects.NPC_11, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS]
     },
     {
         "identifier": 'EVENT_2361_summon_to_level_2',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_12, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS],
-        "subscript": []
+        "args": [AreaObjects.NPC_12, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS]
     },
     {
         "identifier": 'EVENT_2361_summon_to_level_3',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_13, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS],
-        "subscript": []
+        "args": [AreaObjects.NPC_13, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS]
     },
     {
         "identifier": 'EVENT_2361_summon_to_level_4',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_14, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS],
-        "subscript": []
+        "args": [AreaObjects.NPC_14, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS]
     },
     {
         "identifier": 'EVENT_2361_summon_to_level_5',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_15, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS],
-        "subscript": []
+        "args": [AreaObjects.NPC_15, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS]
     },
     {
         "identifier": 'EVENT_2361_jmp_if_bit_clear_6',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7091, 0, 'EVENT_2361_set_action_script_sync_8'],
-        "subscript": []
+        "args": [0x7091, 0, 'EVENT_2361_set_action_script_sync_8']
     },
     {
         "identifier": 'EVENT_2361_action_queue_async_7',
@@ -58,73 +52,59 @@ script = [
     {
         "identifier": 'EVENT_2361_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 456],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_9',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 456],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_10',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 456],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_11',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 456],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_async_12',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_5, 456],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 456]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_13',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 457],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 457]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 459],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 459]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_15',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 461],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 461]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_16',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 463],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 463]
     },
     {
         "identifier": 'EVENT_2361_set_action_script_sync_17',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 481],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 481]
     },
     {
         "identifier": 'EVENT_2361_fade_in_from_black_async_18',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2361_ret_19',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

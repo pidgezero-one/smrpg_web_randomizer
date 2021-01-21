@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3340_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x707e, 3, 'EVENT_3340_ret_15'],
-        "subscript": []
+        "args": [0x707e, 3, 'EVENT_3340_ret_15']
     },
     {
         "identifier": 'EVENT_3340_set_bit_1',
         "command": 'set_bit',
-        "args": [0x707e, 3],
-        "subscript": []
+        "args": [0x707e, 3]
     },
     {
         "identifier": 'EVENT_3340_action_queue_async_2',
@@ -20,8 +19,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3340_action_queue_async_2_SUBSCRIPT_floating_on_0',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3340_action_queue_async_2_SUBSCRIPT_jump_to_height_silent_1',
@@ -30,8 +28,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3340_action_queue_async_2_SUBSCRIPT_visibility_on_2',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3340_action_queue_async_2_SUBSCRIPT_pause_3',
@@ -58,26 +55,22 @@ script = [
     {
         "identifier": 'EVENT_3340_set_bit_3',
         "command": 'set_bit',
-        "args": [0x7044, 0],
-        "subscript": []
+        "args": [0x7044, 0]
     },
     {
         "identifier": 'EVENT_3340_create_packet_at_object_coords_jmp_if_null_4',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_1, 'EVENT_3340_pause_5'],
-        "subscript": []
+        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_1, 'EVENT_3340_pause_5']
     },
     {
         "identifier": 'EVENT_3340_pause_5',
         "command": 'pause',
-        "args": [8],
-        "subscript": []
+        "args": [8]
     },
     {
         "identifier": 'EVENT_3340_summon_to_current_level_6',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_3340_action_queue_sync_7',
@@ -91,8 +84,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3340_action_queue_sync_7_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_3340_action_queue_sync_7_SUBSCRIPT_pause_2',
@@ -119,49 +111,40 @@ script = [
     {
         "identifier": 'EVENT_3340_run_dialog_8',
         "command": 'run_dialog',
-        "args": [1819, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [1819, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3340_pause_9',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_3340_clear_bit_10',
         "command": 'clear_bit',
-        "args": [0x7044, 0],
-        "subscript": []
+        "args": [0x7044, 0]
     },
     {
         "identifier": 'EVENT_3340_remove_from_current_level_11',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_3340_remove_from_current_level_12',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_3340_create_packet_at_object_coords_jmp_if_null_13',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_1, 'EVENT_3340_create_packet_at_object_coords_jmp_if_null_14'],
-        "subscript": []
+        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_1, 'EVENT_3340_create_packet_at_object_coords_jmp_if_null_14']
     },
     {
         "identifier": 'EVENT_3340_create_packet_at_object_coords_jmp_if_null_14',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_0, 'EVENT_3340_ret_15'],
-        "subscript": []
+        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_0, 'EVENT_3340_ret_15']
     },
     {
         "identifier": 'EVENT_3340_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1280_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, RadialDirections.NORTHEAST, 4, 19, 0, []],
-        "subscript": []
+        "args": [Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, RadialDirections.NORTHEAST, 4, 19, 0, []]
     },
     {
         "identifier": 'EVENT_1280_action_queue_sync_1',
@@ -14,8 +14,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1280_action_queue_sync_1_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -46,8 +45,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1280_action_queue_sync_2_SUBSCRIPT_face_southwest_4',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -58,8 +56,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1280_action_queue_async_3_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1280_action_queue_async_3_SUBSCRIPT_transfer_to_xyzf_1',
@@ -73,22 +70,19 @@ script = [
             },
             {
                 "identifier": 'EVENT_1280_action_queue_async_3_SUBSCRIPT_sequence_looping_on_3',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_1280_fade_in_from_black_async_duration_4',
         "command": 'fade_in_from_black_async_duration',
-        "args": [80],
-        "subscript": []
+        "args": [80]
     },
     {
         "identifier": 'EVENT_1280_pause_5',
         "command": 'pause',
-        "args": [100],
-        "subscript": []
+        "args": [100]
     },
     {
         "identifier": 'EVENT_1280_action_queue_async_6',
@@ -107,21 +101,18 @@ script = [
             },
             {
                 "identifier": 'EVENT_1280_action_queue_async_6_SUBSCRIPT_reset_properties_2',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1280_action_queue_async_6_SUBSCRIPT_sequence_looping_off_3',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_1280_run_dialog_7',
         "command": 'run_dialog',
-        "args": [2823, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2823, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1280_action_queue_async_8',
@@ -163,14 +154,11 @@ script = [
     {
         "identifier": 'EVENT_1280_run_dialog_9',
         "command": 'run_dialog',
-        "args": [2824, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2824, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1280_pause_script_resume_on_next_dialog_page_a_10',
-        "command": 'pause_script_resume_on_next_dialog_page_a',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_resume_on_next_dialog_page_a'
     },
     {
         "identifier": 'EVENT_1280_action_queue_async_11',
@@ -196,15 +184,11 @@ script = [
     },
     {
         "identifier": 'EVENT_1280_unsync_dialog_12',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_1280_close_dialog_13',
-        "command": 'close_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'close_dialog'
     },
     {
         "identifier": 'EVENT_1280_action_queue_async_14',
@@ -213,8 +197,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1280_action_queue_async_14_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1280_action_queue_async_14_SUBSCRIPT_set_animation_speed_1',
@@ -266,8 +249,7 @@ script = [
     {
         "identifier": 'EVENT_1280_run_dialog_15',
         "command": 'run_dialog',
-        "args": [2825, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2825, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1280_action_queue_async_16',
@@ -304,26 +286,21 @@ script = [
     {
         "identifier": 'EVENT_1280_run_dialog_17',
         "command": 'run_dialog',
-        "args": [2826, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2826, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1280_pause_18',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1280_enter_area_19',
         "command": 'enter_area',
-        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, RadialDirections.NORTHEAST, 2, 120, 0, []],
-        "subscript": []
+        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, RadialDirections.NORTHEAST, 2, 120, 0, []]
     },
     {
         "identifier": 'EVENT_1280_freeze_camera_20',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_1280_action_queue_sync_21',
@@ -337,13 +314,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1280_action_queue_sync_21_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1280_action_queue_sync_21_SUBSCRIPT_fixed_f_coord_on_2',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_1280_action_queue_sync_21_SUBSCRIPT_clear_solidity_bits_3',
@@ -382,19 +357,15 @@ script = [
     {
         "identifier": 'EVENT_1280_set_action_script_sync_23',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 519],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 519]
     },
     {
         "identifier": 'EVENT_1280_jmp_24',
         "command": 'jmp',
-        "args": ['EVENT_1329_action_queue_sync_30'],
-        "subscript": []
+        "args": ['EVENT_1329_action_queue_sync_30']
     },
     {
         "identifier": 'EVENT_1280_ret_25',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

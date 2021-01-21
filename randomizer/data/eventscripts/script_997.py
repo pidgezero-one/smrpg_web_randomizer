@@ -1,17 +1,15 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_997_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._429_GAME_INTRO_NIMBUS_LAND_OUTSIDE_WITH_PATROLLING_BIRDIES, RadialDirections.NORTHEAST, 12, 56, 0, []],
-        "subscript": []
+        "args": [Rooms._429_GAME_INTRO_NIMBUS_LAND_OUTSIDE_WITH_PATROLLING_BIRDIES, RadialDirections.NORTHEAST, 12, 56, 0, []]
     },
     {
         "identifier": 'EVENT_997_freeze_camera_1',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_997_action_queue_async_2',
@@ -97,8 +95,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_3_SUBSCRIPT_visibility_off_11',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -122,8 +119,7 @@ script = [
     {
         "identifier": 'EVENT_997_fade_in_from_black_sync_duration_5',
         "command": 'fade_in_from_black_sync_duration',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_997_action_queue_sync_6',
@@ -186,8 +182,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_8_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
@@ -208,33 +203,27 @@ script = [
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_9_SUBSCRIPT_walk_1_step_southwest_2',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_9_SUBSCRIPT_face_southeast_3',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_9_SUBSCRIPT_fixed_f_coord_on_4',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_9_SUBSCRIPT_walk_1_step_northwest_5',
-                "command": 'walk_1_step_northwest',
-                "args": []
+                "command": 'walk_1_step_northwest'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_9_SUBSCRIPT_fixed_f_coord_off_6',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_9_SUBSCRIPT_face_southwest_7',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -255,58 +244,47 @@ script = [
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_10_SUBSCRIPT_walk_1_step_southwest_2',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_10_SUBSCRIPT_face_northwest_3',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_10_SUBSCRIPT_fixed_f_coord_on_4',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_10_SUBSCRIPT_walk_1_step_southeast_5',
-                "command": 'walk_1_step_southeast',
-                "args": []
+                "command": 'walk_1_step_southeast'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_10_SUBSCRIPT_fixed_f_coord_off_6',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_997_action_queue_sync_10_SUBSCRIPT_face_southwest_7',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_997_pause_short_11',
         "command": 'pause_short',
-        "args": [270],
-        "subscript": []
+        "args": [270]
     },
     {
         "identifier": 'EVENT_997_fade_out_to_black_sync_duration_12',
         "command": 'fade_out_to_black_sync_duration',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_997_pause_script_until_effect_done_13',
-        "command": 'pause_script_until_effect_done',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_until_effect_done'
     },
     {
         "identifier": 'EVENT_997_jmp_to_event_14',
         "command": 'jmp_to_event',
-        "args": [146],
-        "subscript": []
+        "args": [146]
     }
 ]

@@ -1,47 +1,40 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3478_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 0, 'EVENT_3478_action_queue_sync_7'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3478_action_queue_sync_7']
     },
     {
         "identifier": 'EVENT_3478_run_event_as_subroutine_1',
         "command": 'run_event_as_subroutine',
-        "args": [65],
-        "subscript": []
+        "args": [65]
     },
     {
         "identifier": 'EVENT_3478_clear_bit_2',
         "command": 'clear_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_3478_clear_bit_3',
         "command": 'clear_bit',
-        "args": [0x7079, 1],
-        "subscript": []
+        "args": [0x7079, 1]
     },
     {
         "identifier": 'EVENT_3478_clear_bit_4',
         "command": 'clear_bit',
-        "args": [0x704d, 6],
-        "subscript": []
+        "args": [0x704d, 6]
     },
     {
         "identifier": 'EVENT_3478_enter_area_5',
         "command": 'enter_area',
-        "args": [Rooms._069_MIDAS_RIVER_WATERFALL, RadialDirections.SOUTH, 9, 108, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._069_MIDAS_RIVER_WATERFALL, RadialDirections.SOUTH, 9, 108, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_3478_ret_6',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3478_action_queue_sync_7',
@@ -80,8 +73,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3478_action_queue_sync_7_SUBSCRIPT_sequence_looping_off_6',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
@@ -92,8 +84,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3478_action_queue_async_8_SUBSCRIPT_sequence_playback_off_0',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_8_SUBSCRIPT_set_vram_priority_1',
@@ -172,8 +163,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_8_SUBSCRIPT_sequence_playback_on_16',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_8_SUBSCRIPT_jump_to_height_silent_17',
@@ -202,22 +192,19 @@ script = [
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_8_SUBSCRIPT_face_west_22',
-                "command": 'face_west',
-                "args": []
+                "command": 'face_west'
             }
         ]
     },
     {
         "identifier": 'EVENT_3478_jmp_if_bit_set_9',
         "command": 'jmp_if_bit_set',
-        "args": [0x7096, 5, 'EVENT_3478_ret_14'],
-        "subscript": []
+        "args": [0x7096, 5, 'EVENT_3478_ret_14']
     },
     {
         "identifier": 'EVENT_3478_pause_10',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_3478_action_queue_async_11',
@@ -226,8 +213,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3478_action_queue_async_11_SUBSCRIPT_face_southeast_0',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_11_SUBSCRIPT_set_animation_speed_1',
@@ -251,8 +237,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_11_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_11_SUBSCRIPT_shift_southeast_steps_6',
@@ -266,8 +251,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_11_SUBSCRIPT_face_southeast_8',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_11_SUBSCRIPT_set_animation_speed_9',
@@ -279,8 +263,7 @@ script = [
     {
         "identifier": 'EVENT_3478_run_event_as_subroutine_12',
         "command": 'run_event_as_subroutine',
-        "args": [3479],
-        "subscript": []
+        "args": [3479]
     },
     {
         "identifier": 'EVENT_3478_action_queue_async_13',
@@ -304,8 +287,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_13_SUBSCRIPT_face_southeast_3',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_3478_action_queue_async_13_SUBSCRIPT_set_animation_speed_4',
@@ -316,8 +298,6 @@ script = [
     },
     {
         "identifier": 'EVENT_3478_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

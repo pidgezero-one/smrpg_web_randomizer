@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_458_action_queue_async_0',
@@ -26,32 +27,27 @@ script = [
     {
         "identifier": 'EVENT_458_clear_bit_1',
         "command": 'clear_bit',
-        "args": [0x7061, 7],
-        "subscript": []
+        "args": [0x7061, 7]
     },
     {
         "identifier": 'EVENT_458_db_2',
         "command": 'db',
-        "args": [0xfd, 0x45],
-        "subscript": []
+        "args": [0xfd, 0x45]
     },
     {
         "identifier": 'EVENT_458_pause_action_script_3',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_9],
-        "subscript": []
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_458_clear_bit_4',
         "command": 'clear_bit',
-        "args": [0x7044, 5],
-        "subscript": []
+        "args": [0x7044, 5]
     },
     {
         "identifier": 'EVENT_458_enable_controls_5',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_458_start_embedded_action_script_async_6',
@@ -70,8 +66,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_458_start_embedded_action_script_async_6_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_458_start_embedded_action_script_async_6_SUBSCRIPT_object_memory_set_bit_3',
@@ -125,37 +120,30 @@ script = [
     {
         "identifier": 'EVENT_458_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0x42a2],
-        "subscript": []
+        "args": [0x42a2]
     },
     {
         "identifier": 'EVENT_458_fade_in_from_black_sync_duration_9',
         "command": 'fade_in_from_black_sync_duration',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_458_jmp_if_bit_set_10',
         "command": 'jmp_if_bit_set',
-        "args": [0x705e, 1, 'EVENT_458_jmp_to_event_13'],
-        "subscript": []
+        "args": [0x705e, 1, 'EVENT_458_jmp_to_event_13']
     },
     {
         "identifier": 'EVENT_458_run_background_event_11',
         "command": 'run_background_event',
-        "args": [465, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_7]],
-        "subscript": []
+        "args": [465, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_7]]
     },
     {
         "identifier": 'EVENT_458_ret_12',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_458_jmp_to_event_13',
         "command": 'jmp_to_event',
-        "args": [3601],
-        "subscript": []
+        "args": [3601]
     }
 ]

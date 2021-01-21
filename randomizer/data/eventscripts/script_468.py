@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_468_action_queue_async_0',
@@ -8,124 +9,102 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_468_action_queue_async_0_SUBSCRIPT_sequence_looping_on_0',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_468_set_short_mem_1',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x70eb],
-        "subscript": []
+        "args": [0x7000, 0x70eb]
     },
     {
         "identifier": 'EVENT_468_jmp_if_var_equals_short_2',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_468_pause_5'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_468_pause_5']
     },
     {
         "identifier": 'EVENT_468_set_short_mem_3',
         "command": 'set_short_mem',
-        "args": [0x7024, 0x7000],
-        "subscript": []
+        "args": [0x7024, 0x7000]
     },
     {
         "identifier": 'EVENT_468_run_dialog_4',
         "command": 'run_dialog',
-        "args": [523, AreaObjects.NPC_14, [_0x60Flags.ASYNC]],
-        "subscript": []
+        "args": [523, AreaObjects.NPC_14, [_0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_468_pause_5',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_468_set_7000_to_tapped_button_6',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_468_jmp_if_7000_any_bits_set_7',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[6], 'EVENT_468_jmp_if_bit_set_9'],
-        "subscript": []
+        "args": [[6], 'EVENT_468_jmp_if_bit_set_9']
     },
     {
         "identifier": 'EVENT_468_jmp_8',
         "command": 'jmp',
-        "args": ['EVENT_468_pause_5'],
-        "subscript": []
+        "args": ['EVENT_468_pause_5']
     },
     {
         "identifier": 'EVENT_468_jmp_if_bit_set_9',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 4, 'EVENT_468_pause_5'],
-        "subscript": []
+        "args": [0x7043, 4, 'EVENT_468_pause_5']
     },
     {
         "identifier": 'EVENT_468_jmp_if_var_equals_short_10',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7024, 0, 'EVENT_468_pause_5'],
-        "subscript": []
+        "args": [0x7024, 0, 'EVENT_468_pause_5']
     },
     {
         "identifier": 'EVENT_468_dec_short_11',
         "command": 'dec_short',
-        "args": [0x7024],
-        "subscript": []
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_468_add_12',
         "command": 'add',
-        "args": [0x70ee, 0x01],
-        "subscript": []
+        "args": [0x70ee, 0x01]
     },
     {
         "identifier": 'EVENT_468_jmp_if_var_equals_short_13',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7024, 0, 'EVENT_468_close_dialog_16'],
-        "subscript": []
+        "args": [0x7024, 0, 'EVENT_468_close_dialog_16']
     },
     {
         "identifier": 'EVENT_468_run_dialog_14',
         "command": 'run_dialog',
-        "args": [523, AreaObjects.NPC_14, [_0x60Flags.ASYNC]],
-        "subscript": []
+        "args": [523, AreaObjects.NPC_14, [_0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_468_jmp_15',
         "command": 'jmp',
-        "args": ['EVENT_468_set_bit_17'],
-        "subscript": []
+        "args": ['EVENT_468_set_bit_17']
     },
     {
         "identifier": 'EVENT_468_close_dialog_16',
-        "command": 'close_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'close_dialog'
     },
     {
         "identifier": 'EVENT_468_set_bit_17',
         "command": 'set_bit',
-        "args": [0x7043, 4],
-        "subscript": []
+        "args": [0x7043, 4]
     },
     {
         "identifier": 'EVENT_468_pause_action_script_18',
         "command": 'pause_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_468_pause_action_script_19',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_9],
-        "subscript": []
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_468_action_queue_async_20',
@@ -144,8 +123,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_468_action_queue_async_20_SUBSCRIPT_visibility_on_2',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             }
         ]
     },
@@ -166,8 +144,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_468_action_queue_sync_21_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -393,8 +370,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_468_action_queue_sync_22_SUBSCRIPT_reset_properties_43',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_468_action_queue_sync_22_SUBSCRIPT_set_animation_speed_44',
@@ -403,8 +379,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_468_action_queue_sync_22_SUBSCRIPT_sequence_looping_on_45',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_468_action_queue_sync_22_SUBSCRIPT_pause_46',
@@ -415,26 +390,21 @@ script = [
     },
     {
         "identifier": 'EVENT_468_remember_last_object_23',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_468_set_action_script_sync_24',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 430],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 430]
     },
     {
         "identifier": 'EVENT_468_set_action_script_sync_25',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 503],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 503]
     },
     {
         "identifier": 'EVENT_468_jmp_26',
         "command": 'jmp',
-        "args": ['EVENT_468_pause_5'],
-        "subscript": []
+        "args": ['EVENT_468_pause_5']
     }
 ]

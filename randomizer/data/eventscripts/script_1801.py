@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1801_action_queue_async_0',
@@ -28,8 +29,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1801_action_queue_async_0_SUBSCRIPT_visibility_on_4',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1801_action_queue_async_0_SUBSCRIPT_pause_5',
@@ -38,8 +38,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1801_action_queue_async_0_SUBSCRIPT_visibility_off_6',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_1801_action_queue_async_0_SUBSCRIPT_pause_7',
@@ -48,8 +47,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1801_action_queue_async_0_SUBSCRIPT_end_loop_8',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_1801_action_queue_async_0_SUBSCRIPT_clear_solidity_bits_9',
@@ -66,19 +64,14 @@ script = [
     {
         "identifier": 'EVENT_1801_set_1',
         "command": 'set',
-        "args": [0x7000, 1],
-        "subscript": []
+        "args": [0x7000, 1]
     },
     {
         "identifier": 'EVENT_1801_add_max_FP_7000_2',
-        "command": 'add_max_FP_7000',
-        "args": [],
-        "subscript": []
+        "command": 'add_max_FP_7000'
     },
     {
         "identifier": 'EVENT_1801_ret_3',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

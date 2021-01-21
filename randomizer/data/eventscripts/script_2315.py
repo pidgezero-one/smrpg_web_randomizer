@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2315_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7045, 0, 'EVENT_2315_jmp_if_bit_set_9'],
-        "subscript": []
+        "args": [0x7045, 0, 'EVENT_2315_jmp_if_bit_set_9']
     },
     {
         "identifier": 'EVENT_2315_action_queue_sync_1',
@@ -67,8 +67,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2315_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2315_action_queue_sync_5_SUBSCRIPT_shift_east_pixels_1',
@@ -89,8 +88,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2315_action_queue_sync_6_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2315_action_queue_sync_6_SUBSCRIPT_shift_east_pixels_1',
@@ -116,8 +114,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2315_action_queue_sync_7_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2315_action_queue_sync_7_SUBSCRIPT_shift_east_pixels_1',
@@ -138,8 +135,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2315_action_queue_async_8_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2315_action_queue_async_8_SUBSCRIPT_shift_east_pixels_1',
@@ -156,26 +152,20 @@ script = [
     {
         "identifier": 'EVENT_2315_jmp_if_bit_set_9',
         "command": 'jmp_if_bit_set',
-        "args": [0x7045, 0, 'EVENT_2315_freeze_camera_12'],
-        "subscript": []
+        "args": [0x7045, 0, 'EVENT_2315_freeze_camera_12']
     },
     {
         "identifier": 'EVENT_2315_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2315_jmp_11',
         "command": 'jmp',
-        "args": ['EVENT_2315_run_event_as_subroutine_20'],
-        "subscript": []
+        "args": ['EVENT_2315_run_event_as_subroutine_20']
     },
     {
         "identifier": 'EVENT_2315_freeze_camera_12',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2315_action_queue_async_13',
@@ -201,9 +191,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2315_fade_in_from_black_async_14',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2315_action_queue_sync_15',
@@ -234,8 +222,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2315_action_queue_sync_16_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2315_action_queue_sync_16_SUBSCRIPT_db_2',
@@ -259,8 +246,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2315_action_queue_sync_16_SUBSCRIPT_bpl_26_27_28_6',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2315_action_queue_sync_16_SUBSCRIPT_play_sound_7',
@@ -272,91 +258,74 @@ script = [
     {
         "identifier": 'EVENT_2315_stop_embedded_action_script_17',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_2315_set_action_script_async_18',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2315_stop_embedded_action_script_19',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.SCREEN_FOCUS],
-        "subscript": []
+        "args": [AreaObjects.SCREEN_FOCUS]
     },
     {
         "identifier": 'EVENT_2315_run_event_as_subroutine_20',
         "command": 'run_event_as_subroutine',
-        "args": [3588],
-        "subscript": []
+        "args": [3588]
     },
     {
         "identifier": 'EVENT_2315_jmp_if_bit_clear_21',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2315_unfreeze_camera_27'],
-        "subscript": []
+        "args": [0x7099, 7, 'EVENT_2315_unfreeze_camera_27']
     },
     {
         "identifier": 'EVENT_2315_jmp_if_bit_set_22',
         "command": 'jmp_if_bit_set',
-        "args": [0x708d, 4, 'EVENT_2315_unfreeze_camera_27'],
-        "subscript": []
+        "args": [0x708d, 4, 'EVENT_2315_unfreeze_camera_27']
     },
     {
         "identifier": 'EVENT_2315_jmp_if_bit_clear_23',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7045, 0, 'EVENT_2315_clear_bit_25'],
-        "subscript": []
+        "args": [0x7045, 0, 'EVENT_2315_clear_bit_25']
     },
     {
         "identifier": 'EVENT_2315_pause_24',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2315_clear_bit_25',
         "command": 'clear_bit',
-        "args": [0x7099, 7],
-        "subscript": []
+        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2315_play_sound_26',
         "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6],
-        "subscript": []
+        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
     },
     {
         "identifier": 'EVENT_2315_unfreeze_camera_27',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2315_enable_controls_28',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_2315_clear_bit_29',
         "command": 'clear_bit',
-        "args": [0x7099, 7],
-        "subscript": []
+        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2315_clear_bit_30',
         "command": 'clear_bit',
-        "args": [0x7045, 0],
-        "subscript": []
+        "args": [0x7045, 0]
     },
     {
         "identifier": 'EVENT_2315_ret_31',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

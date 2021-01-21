@@ -1,23 +1,19 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3491_fade_in_from_black_sync_0',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_3491_freeze_camera_1',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_3491_set_action_script_sync_2',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 598],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 598]
     },
     {
         "identifier": 'EVENT_3491_action_queue_sync_3',
@@ -44,26 +40,22 @@ script = [
     {
         "identifier": 'EVENT_3491_jmp_to_subroutine_4',
         "command": 'jmp_to_subroutine',
-        "args": [0x6752],
-        "subscript": []
+        "args": [0x6752]
     },
     {
         "identifier": 'EVENT_3491_enter_area_5',
         "command": 'enter_area',
-        "args": [Rooms._069_MIDAS_RIVER_WATERFALL, RadialDirections.SOUTH, 8, 31, 0, []],
-        "subscript": []
+        "args": [Rooms._069_MIDAS_RIVER_WATERFALL, RadialDirections.SOUTH, 8, 31, 0, []]
     },
     {
         "identifier": 'EVENT_3491_fade_out_music_to_volume_6',
         "command": 'fade_out_music_to_volume',
-        "args": [1, 56],
-        "subscript": []
+        "args": [1, 56]
     },
     {
         "identifier": 'EVENT_3491_play_sound_7',
         "command": 'play_sound',
-        "args": [Sounds._035_RUNNING_WATER, 4],
-        "subscript": []
+        "args": [Sounds._035_RUNNING_WATER, 4]
     },
     {
         "identifier": 'EVENT_3491_action_queue_async_8',
@@ -72,16 +64,13 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3491_action_queue_async_8_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3491_fade_in_from_black_async_9',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_3491_action_queue_async_10',
@@ -110,16 +99,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_3491_action_queue_async_10_SUBSCRIPT_run_away_transfer_4',
-                "command": 'run_away_transfer',
-                "args": []
+                "command": 'run_away_transfer'
             }
         ]
     },
     {
         "identifier": 'EVENT_3491_jmp_to_subroutine_11',
         "command": 'jmp_to_subroutine',
-        "args": [0x6247],
-        "subscript": []
+        "args": [0x6247]
     },
     {
         "identifier": 'EVENT_3491_action_queue_async_12',
@@ -168,13 +155,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3491_action_queue_async_12_SUBSCRIPT_walk_1_step_southwest_8',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_3491_action_queue_async_12_SUBSCRIPT_bpl_26_27_28_9',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_3491_action_queue_async_12_SUBSCRIPT_set_solidity_bits_10',
@@ -186,20 +171,16 @@ script = [
     {
         "identifier": 'EVENT_3491_set_action_script_sync_13',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 466],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 466]
     },
     {
         "identifier": 'EVENT_3491_jmp_14',
         "command": 'jmp',
-        "args": ['EVENT_3489_enable_controls_3'],
-        "subscript": []
+        "args": ['EVENT_3489_enable_controls_3']
     },
     {
         "identifier": 'EVENT_3491_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3491_action_queue_sync_16',
@@ -216,32 +197,26 @@ script = [
     {
         "identifier": 'EVENT_3491_start_loop_n_times_17',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3491_pause_18',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_19',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65']
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_20',
         "command": 'jmp_if_bit_set',
-        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_17'],
-        "subscript": []
+        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_17']
     },
     {
         "identifier": 'EVENT_3491_end_loop_21',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3491_action_queue_sync_22',
@@ -258,32 +233,26 @@ script = [
     {
         "identifier": 'EVENT_3491_start_loop_n_times_23',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3491_pause_24',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_25',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65']
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_26',
         "command": 'jmp_if_bit_set',
-        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_23'],
-        "subscript": []
+        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_23']
     },
     {
         "identifier": 'EVENT_3491_end_loop_27',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3491_action_queue_sync_28',
@@ -300,32 +269,26 @@ script = [
     {
         "identifier": 'EVENT_3491_start_loop_n_times_29',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3491_pause_30',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_31',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65']
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_32',
         "command": 'jmp_if_bit_set',
-        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_29'],
-        "subscript": []
+        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_29']
     },
     {
         "identifier": 'EVENT_3491_end_loop_33',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3491_action_queue_sync_34',
@@ -342,32 +305,26 @@ script = [
     {
         "identifier": 'EVENT_3491_start_loop_n_times_35',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3491_pause_36',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_37',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65']
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_38',
         "command": 'jmp_if_bit_set',
-        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_35'],
-        "subscript": []
+        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_35']
     },
     {
         "identifier": 'EVENT_3491_end_loop_39',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3491_action_queue_sync_40',
@@ -384,32 +341,26 @@ script = [
     {
         "identifier": 'EVENT_3491_start_loop_n_times_41',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3491_pause_42',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_43',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65']
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_44',
         "command": 'jmp_if_bit_set',
-        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_41'],
-        "subscript": []
+        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_41']
     },
     {
         "identifier": 'EVENT_3491_end_loop_45',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3491_action_queue_sync_46',
@@ -426,32 +377,26 @@ script = [
     {
         "identifier": 'EVENT_3491_start_loop_n_times_47',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3491_pause_48',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_49',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65']
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_50',
         "command": 'jmp_if_bit_set',
-        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_47'],
-        "subscript": []
+        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_47']
     },
     {
         "identifier": 'EVENT_3491_end_loop_51',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3491_action_queue_sync_52',
@@ -468,32 +413,26 @@ script = [
     {
         "identifier": 'EVENT_3491_start_loop_n_times_53',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3491_pause_54',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_55',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65']
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_56',
         "command": 'jmp_if_bit_set',
-        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_53'],
-        "subscript": []
+        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_53']
     },
     {
         "identifier": 'EVENT_3491_end_loop_57',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3491_action_queue_sync_58',
@@ -510,49 +449,39 @@ script = [
     {
         "identifier": 'EVENT_3491_start_loop_n_times_59',
         "command": 'start_loop_n_times',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3491_pause_60',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_61',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_3491_fade_out_to_black_async_duration_65']
     },
     {
         "identifier": 'EVENT_3491_jmp_if_bit_set_62',
         "command": 'jmp_if_bit_set',
-        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_59'],
-        "subscript": []
+        "args": [0x707b, 5, 'EVENT_3491_start_loop_n_times_59']
     },
     {
         "identifier": 'EVENT_3491_end_loop_63',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3491_jmp_64',
         "command": 'jmp',
-        "args": ['EVENT_3491_action_queue_sync_16'],
-        "subscript": []
+        "args": ['EVENT_3491_action_queue_sync_16']
     },
     {
         "identifier": 'EVENT_3491_fade_out_to_black_async_duration_65',
         "command": 'fade_out_to_black_async_duration',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_3491_ret_66',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

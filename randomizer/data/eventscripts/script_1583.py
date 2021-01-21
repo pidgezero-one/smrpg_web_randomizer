@@ -1,41 +1,36 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1583_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7076, 0, 'EVENT_1583_action_queue_sync_6'],
-        "subscript": []
+        "args": [0x7076, 0, 'EVENT_1583_action_queue_sync_6']
     },
     {
         "identifier": 'EVENT_1583_run_event_as_subroutine_1',
         "command": 'run_event_as_subroutine',
-        "args": [65],
-        "subscript": []
+        "args": [65]
     },
     {
         "identifier": 'EVENT_1583_enter_area_2',
         "command": 'enter_area',
-        "args": [Rooms._319_LANDS_END_DESERT_AREA_06, RadialDirections.SOUTH, 8, 110, 0, []],
-        "subscript": []
+        "args": [Rooms._319_LANDS_END_DESERT_AREA_06, RadialDirections.SOUTH, 8, 110, 0, []]
     },
     {
         "identifier": 'EVENT_1583_set_3',
         "command": 'set',
-        "args": [0x70a8, 20],
-        "subscript": []
+        "args": [0x70a8, 20]
     },
     {
         "identifier": 'EVENT_1583_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
-        "args": [1545],
-        "subscript": []
+        "args": [1545]
     },
     {
         "identifier": 'EVENT_1583_jmp_to_event_5',
         "command": 'jmp_to_event',
-        "args": [1783],
-        "subscript": []
+        "args": [1783]
     },
     {
         "identifier": 'EVENT_1583_action_queue_sync_6',
@@ -74,8 +69,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1583_action_queue_sync_6_SUBSCRIPT_sequence_looping_off_6',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
@@ -86,8 +80,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1583_action_queue_async_7_SUBSCRIPT_sequence_playback_off_0',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_1583_action_queue_async_7_SUBSCRIPT_set_vram_priority_1',
@@ -166,8 +159,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1583_action_queue_async_7_SUBSCRIPT_sequence_playback_on_16',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_1583_action_queue_async_7_SUBSCRIPT_jump_to_height_silent_17',
@@ -186,8 +178,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1583_action_queue_async_7_SUBSCRIPT_walk_1_step_south_20',
-                "command": 'walk_1_step_south',
-                "args": []
+                "command": 'walk_1_step_south'
             },
             {
                 "identifier": 'EVENT_1583_action_queue_async_7_SUBSCRIPT_pause_21',
@@ -203,8 +194,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1583_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

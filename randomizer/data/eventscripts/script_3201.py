@@ -1,71 +1,58 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3201_set_short_0',
         "command": 'set_short',
-        "args": [0x700a, 0x00cd],
-        "subscript": []
+        "args": [0x700a, 0x00cd]
     },
     {
         "identifier": 'EVENT_3201_jmp_to_event_1',
         "command": 'jmp_to_event',
-        "args": [720],
-        "subscript": []
+        "args": [720]
     },
     {
         "identifier": 'EVENT_3201_ret_2',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3201_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x7056, 5, 'EVENT_3201_set_short_0'],
-        "subscript": []
+        "args": [0x7056, 5, 'EVENT_3201_set_short_0']
     },
     {
         "identifier": 'EVENT_3201_set_bit_4',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_3201_set_short_5',
         "command": 'set_short',
-        "args": [0x700e, 0x00a4],
-        "subscript": []
+        "args": [0x700e, 0x00a4]
     },
     {
         "identifier": 'EVENT_3201_run_event_as_subroutine_6',
         "command": 'run_event_as_subroutine',
-        "args": [18],
-        "subscript": []
+        "args": [18]
     },
     {
         "identifier": 'EVENT_3201_jmp_if_bit_set_7',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_3201_set_short_0'],
-        "subscript": []
+        "args": [0x7040, 1, 'EVENT_3201_set_short_0']
     },
     {
         "identifier": 'EVENT_3201_set_bit_8',
         "command": 'set_bit',
-        "args": [0x7056, 5],
-        "subscript": []
+        "args": [0x7056, 5]
     },
     {
         "identifier": 'EVENT_3201_restore_all_hp_9',
-        "command": 'restore_all_hp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_hp'
     },
     {
         "identifier": 'EVENT_3201_restore_all_fp_10',
-        "command": 'restore_all_fp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_fp'
     },
     {
         "identifier": 'EVENT_3201_action_queue_async_11',
@@ -89,8 +76,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3201_action_queue_async_11_SUBSCRIPT_sequence_looping_on_3',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_3201_action_queue_async_11_SUBSCRIPT_jump_to_height_4',
@@ -114,34 +100,28 @@ script = [
             },
             {
                 "identifier": 'EVENT_3201_action_queue_async_11_SUBSCRIPT_ret_8',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
     {
         "identifier": 'EVENT_3201_resume_action_script_12',
         "command": 'resume_action_script',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3201_set_7000_to_current_level_13',
-        "command": 'set_7000_to_current_level',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_current_level'
     },
     {
         "identifier": 'EVENT_3201_jmp_if_var_not_equals_short_14',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 277, 'EVENT_3201_jmp_if_var_not_equals_short_17'],
-        "subscript": []
+        "args": [0x7000, 277, 'EVENT_3201_jmp_if_var_not_equals_short_17']
     },
     {
         "identifier": 'EVENT_3201_jmp_if_bit_set_15',
         "command": 'jmp_if_bit_set',
-        "args": [0x7056, 6, 'EVENT_3201_set_short_0'],
-        "subscript": []
+        "args": [0x7056, 6, 'EVENT_3201_set_short_0']
     },
     {
         "identifier": 'EVENT_3201_action_queue_sync_16',
@@ -163,14 +143,12 @@ script = [
     {
         "identifier": 'EVENT_3201_jmp_if_var_not_equals_short_17',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 283, 'EVENT_3201_jmp_if_var_not_equals_short_20'],
-        "subscript": []
+        "args": [0x7000, 283, 'EVENT_3201_jmp_if_var_not_equals_short_20']
     },
     {
         "identifier": 'EVENT_3201_jmp_if_bit_set_18',
         "command": 'jmp_if_bit_set',
-        "args": [0x7056, 7, 'EVENT_3201_set_short_0'],
-        "subscript": []
+        "args": [0x7056, 7, 'EVENT_3201_set_short_0']
     },
     {
         "identifier": 'EVENT_3201_action_queue_sync_19',
@@ -192,14 +170,12 @@ script = [
     {
         "identifier": 'EVENT_3201_jmp_if_var_not_equals_short_20',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 273, 'EVENT_3201_jmp_to_event_1'],
-        "subscript": []
+        "args": [0x7000, 273, 'EVENT_3201_jmp_to_event_1']
     },
     {
         "identifier": 'EVENT_3201_jmp_if_bit_set_21',
         "command": 'jmp_if_bit_set',
-        "args": [0x7057, 0, 'EVENT_3201_set_short_0'],
-        "subscript": []
+        "args": [0x7057, 0, 'EVENT_3201_set_short_0']
     },
     {
         "identifier": 'EVENT_3201_action_queue_sync_22',
@@ -250,8 +226,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3201_action_queue_async_23_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3201_action_queue_async_23_SUBSCRIPT_set_sprite_sequence_6',
@@ -270,99 +245,69 @@ script = [
             },
             {
                 "identifier": 'EVENT_3201_action_queue_async_23_SUBSCRIPT_reset_properties_9',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_3201_close_dialog_24',
-        "command": 'close_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'close_dialog'
     },
     {
         "identifier": 'EVENT_3201_clear_bit_25',
         "command": 'clear_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_3201_stop_sound_26',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_27',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_28',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_29',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_30',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_31',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_32',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_33',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_34',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_35',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_36',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_stop_sound_37',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3201_ret_38',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

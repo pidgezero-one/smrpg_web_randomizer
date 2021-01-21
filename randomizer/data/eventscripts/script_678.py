@@ -1,53 +1,45 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_678_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_678_set_bit_1',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_678_play_sound_2',
         "command": 'play_sound',
-        "args": [Sounds._131_JUMP_ON_ORGAN, 6],
-        "subscript": []
+        "args": [Sounds._131_JUMP_ON_ORGAN, 6]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_3',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 636],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 636]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_4',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 636],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 636]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_5',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 636],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 636]
     },
     {
         "identifier": 'EVENT_678_pause_6',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_678_stop_sound_7',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_678_action_queue_sync_8',
@@ -79,8 +71,7 @@ script = [
     {
         "identifier": 'EVENT_678_run_dialog_9',
         "command": 'run_dialog',
-        "args": [2184, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2184, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_678_action_queue_async_10',
@@ -89,8 +80,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_678_action_queue_async_10_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_678_action_queue_async_10_SUBSCRIPT_jump_to_height_1',
@@ -122,31 +112,25 @@ script = [
     {
         "identifier": 'EVENT_678_clear_bit_11',
         "command": 'clear_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_12',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 119]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_13',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 119]
     },
     {
         "identifier": 'EVENT_678_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 119]
     },
     {
         "identifier": 'EVENT_678_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

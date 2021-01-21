@@ -1,65 +1,56 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3824_set_0',
         "command": 'set',
-        "args": [0x70ee, 0],
-        "subscript": []
+        "args": [0x70ee, 0]
     },
     {
         "identifier": 'EVENT_3824_set_1',
         "command": 'set',
-        "args": [0x70eb, 0],
-        "subscript": []
+        "args": [0x70eb, 0]
     },
     {
         "identifier": 'EVENT_3824_set_2',
         "command": 'set',
-        "args": [0x7100, 0],
-        "subscript": []
+        "args": [0x7100, 0]
     },
     {
         "identifier": 'EVENT_3824_clear_bit_3',
         "command": 'clear_bit',
-        "args": [0x7061, 7],
-        "subscript": []
+        "args": [0x7061, 7]
     },
     {
         "identifier": 'EVENT_3824_clear_bit_4',
         "command": 'clear_bit',
-        "args": [0x705e, 0],
-        "subscript": []
+        "args": [0x705e, 0]
     },
     {
         "identifier": 'EVENT_3824_clear_bit_5',
         "command": 'clear_bit',
-        "args": [0x705e, 1],
-        "subscript": []
+        "args": [0x705e, 1]
     },
     {
         "identifier": 'EVENT_3824_set_temp_action_script_async_6',
         "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_1, 803],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 803]
     },
     {
         "identifier": 'EVENT_3824_set_temp_action_script_async_7',
         "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_2, 803],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 803]
     },
     {
         "identifier": 'EVENT_3824_set_temp_action_script_async_8',
         "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_5, 803],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 803]
     },
     {
         "identifier": 'EVENT_3824_set_temp_action_script_async_9',
         "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_4, 803],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 803]
     },
     {
         "identifier": 'EVENT_3824_action_queue_async_10',
@@ -76,50 +67,42 @@ script = [
     {
         "identifier": 'EVENT_3824_jmp_if_bit_clear_11',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708b, 5, 'EVENT_3824_jmp_if_bit_set_16'],
-        "subscript": []
+        "args": [0x708b, 5, 'EVENT_3824_jmp_if_bit_set_16']
     },
     {
         "identifier": 'EVENT_3824_summon_to_current_level_12',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_6],
-        "subscript": []
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_3824_summon_to_current_level_13',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_7],
-        "subscript": []
+        "args": [AreaObjects.NPC_7]
     },
     {
         "identifier": 'EVENT_3824_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 119]
     },
     {
         "identifier": 'EVENT_3824_set_action_script_sync_15',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 119]
     },
     {
         "identifier": 'EVENT_3824_jmp_if_bit_set_16',
         "command": 'jmp_if_bit_set',
-        "args": [0x7085, 3, 'EVENT_3824_pause_action_script_47'],
-        "subscript": []
+        "args": [0x7085, 3, 'EVENT_3824_pause_action_script_47']
     },
     {
         "identifier": 'EVENT_3824_pause_action_script_17',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_5],
-        "subscript": []
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_3824_pause_action_script_18',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_9],
-        "subscript": []
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_3824_start_embedded_action_script_async_19',
@@ -133,8 +116,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3824_start_embedded_action_script_async_19_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -150,8 +132,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3824_start_embedded_action_script_async_20_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_3824_start_embedded_action_script_async_20_SUBSCRIPT_set_object_memory_bits_2',
@@ -218,82 +199,66 @@ script = [
             },
             {
                 "identifier": 'EVENT_3824_action_queue_sync_24_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3824_remember_last_object_25',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3824_set_action_script_sync_26',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 21],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 21]
     },
     {
         "identifier": 'EVENT_3824_set_action_script_sync_27',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 98],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 98]
     },
     {
         "identifier": 'EVENT_3824_jmp_if_bit_set_28',
         "command": 'jmp_if_bit_set',
-        "args": [0x7049, 7, 'EVENT_3824_jmp_if_bit_clear_32'],
-        "subscript": []
+        "args": [0x7049, 7, 'EVENT_3824_jmp_if_bit_clear_32']
     },
     {
         "identifier": 'EVENT_3824_jmp_if_bit_set_29',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_3824_jmp_if_bit_set_33'],
-        "subscript": []
+        "args": [0x704c, 6, 'EVENT_3824_jmp_if_bit_set_33']
     },
     {
         "identifier": 'EVENT_3824_fade_in_from_black_async_30',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_3824_ret_31',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3824_jmp_if_bit_clear_32',
         "command": 'jmp_if_bit_clear',
-        "args": [0x704c, 6, 'EVENT_3824_clear_bit_41'],
-        "subscript": []
+        "args": [0x704c, 6, 'EVENT_3824_clear_bit_41']
     },
     {
         "identifier": 'EVENT_3824_jmp_if_bit_set_33',
         "command": 'jmp_if_bit_set',
-        "args": [0x7084, 1, 'EVENT_3824_summon_to_current_level_43'],
-        "subscript": []
+        "args": [0x7084, 1, 'EVENT_3824_summon_to_current_level_43']
     },
     {
         "identifier": 'EVENT_3824_summon_to_current_level_34',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_13],
-        "subscript": []
+        "args": [AreaObjects.NPC_13]
     },
     {
         "identifier": 'EVENT_3824_apply_tile_mod_35',
         "command": 'apply_tile_mod',
-        "args": [Rooms._034_YOSTER_ISLE, 0, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._034_YOSTER_ISLE, 0, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_3824_apply_solidity_mod_36',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._034_YOSTER_ISLE, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._034_YOSTER_ISLE, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_3824_action_queue_async_37',
@@ -312,52 +277,41 @@ script = [
             },
             {
                 "identifier": 'EVENT_3824_action_queue_async_37_SUBSCRIPT_floating_off_2',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3824_jmp_if_bit_set_38',
         "command": 'jmp_if_bit_set',
-        "args": [0x7049, 7, 'EVENT_3824_clear_bit_41'],
-        "subscript": []
+        "args": [0x7049, 7, 'EVENT_3824_clear_bit_41']
     },
     {
         "identifier": 'EVENT_3824_fade_in_from_black_async_39',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_3824_ret_40',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3824_clear_bit_41',
         "command": 'clear_bit',
-        "args": [0x7049, 7],
-        "subscript": []
+        "args": [0x7049, 7]
     },
     {
         "identifier": 'EVENT_3824_ret_42',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3824_summon_to_current_level_43',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_11],
-        "subscript": []
+        "args": [AreaObjects.NPC_11]
     },
     {
         "identifier": 'EVENT_3824_remove_from_current_level_44',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_13],
-        "subscript": []
+        "args": [AreaObjects.NPC_13]
     },
     {
         "identifier": 'EVENT_3824_action_queue_async_45',
@@ -371,27 +325,23 @@ script = [
             },
             {
                 "identifier": 'EVENT_3824_action_queue_async_45_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_3824_action_queue_async_45_SUBSCRIPT_sequence_playback_on_2',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_3824_jmp_46',
         "command": 'jmp',
-        "args": ['EVENT_3824_jmp_if_bit_set_38'],
-        "subscript": []
+        "args": ['EVENT_3824_jmp_if_bit_set_38']
     },
     {
         "identifier": 'EVENT_3824_pause_action_script_47',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_3824_start_embedded_action_script_async_48',
@@ -530,27 +480,23 @@ script = [
             },
             {
                 "identifier": 'EVENT_3824_action_queue_async_53_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3824_set_action_script_sync_54',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 677],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 677]
     },
     {
         "identifier": 'EVENT_3824_set_action_script_sync_55',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 676],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 676]
     },
     {
         "identifier": 'EVENT_3824_jmp_56',
         "command": 'jmp',
-        "args": ['EVENT_3824_jmp_if_bit_set_28'],
-        "subscript": []
+        "args": ['EVENT_3824_jmp_if_bit_set_28']
     }
 ]

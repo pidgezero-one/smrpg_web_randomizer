@@ -1,95 +1,69 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3809_stop_sound_0',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_enable_controls_until_return_1',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_3809_set_bit_2',
         "command": 'set_bit',
-        "args": [0x7063, 3],
-        "subscript": []
+        "args": [0x7063, 3]
     },
     {
         "identifier": 'EVENT_3809_jmp_3',
         "command": 'jmp',
-        "args": ['EVENT_3809_remove_from_level_81'],
-        "subscript": []
+        "args": ['EVENT_3809_remove_from_level_81']
     },
     {
         "identifier": 'EVENT_3809_stop_sound_4',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_5',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_6',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_7',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_8',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_9',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_10',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_11',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_12',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_13',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_14',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_15',
@@ -118,20 +92,17 @@ script = [
     {
         "identifier": 'EVENT_3809_apply_tile_mod_17',
         "command": 'apply_tile_mod',
-        "args": [Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY, 0, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY, 0, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_3809_set_bit_18',
         "command": 'set_bit',
-        "args": [0x704c, 0],
-        "subscript": []
+        "args": [0x704c, 0]
     },
     {
         "identifier": 'EVENT_3809_enter_area_19',
         "command": 'enter_area',
-        "args": [Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, RadialDirections.NORTHEAST, 9, 100, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, RadialDirections.NORTHEAST, 9, 100, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_20',
@@ -157,45 +128,31 @@ script = [
     },
     {
         "identifier": 'EVENT_3809_stop_sound_21',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_22',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_23',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_24',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_25',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_26',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_freeze_camera_27',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_28',
@@ -249,8 +206,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_28_SUBSCRIPT_floating_on_9',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_28_SUBSCRIPT_shift_northeast_steps_10',
@@ -361,8 +317,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_29_SUBSCRIPT_floating_on_8',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_29_SUBSCRIPT_shift_southwest_steps_9',
@@ -393,8 +348,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_30_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_30_SUBSCRIPT_set_animation_speed_2',
@@ -420,8 +374,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_31_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_31_SUBSCRIPT_set_animation_speed_1',
@@ -482,8 +435,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_32_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_32_SUBSCRIPT_set_animation_speed_1',
@@ -544,8 +496,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_33_SUBSCRIPT_reset_properties_7',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_33_SUBSCRIPT_set_animation_speed_8',
@@ -566,13 +517,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_34_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_34_SUBSCRIPT_fixed_f_coord_on_2',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_34_SUBSCRIPT_set_priority_3',
@@ -715,8 +664,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_36_SUBSCRIPT_bpl_26_27_28_8',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_36_SUBSCRIPT_transfer_to_xyzf_9',
@@ -769,33 +717,25 @@ script = [
     },
     {
         "identifier": 'EVENT_3809_fade_in_from_black_sync_38',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_3809_pause_39',
         "command": 'pause',
-        "args": [28],
-        "subscript": []
+        "args": [28]
     },
     {
         "identifier": 'EVENT_3809_xor_3105_with_01_40',
-        "command": 'xor_3105_with_01',
-        "args": [],
-        "subscript": []
+        "command": 'xor_3105_with_01'
     },
     {
         "identifier": 'EVENT_3809_pause_41',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_3809_xor_3105_with_01_42',
-        "command": 'xor_3105_with_01',
-        "args": [],
-        "subscript": []
+        "command": 'xor_3105_with_01'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_43',
@@ -829,8 +769,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_shadow_off_5',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_pause_6',
@@ -839,8 +778,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_floating_off_7',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             }
         ]
     },
@@ -886,46 +824,38 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_44_SUBSCRIPT_visibility_on_7',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_45',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_46',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_47',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_48',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_49',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     },
     {
         "identifier": 'EVENT_3809_remember_last_object_50',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_51',
@@ -947,14 +877,12 @@ script = [
     {
         "identifier": 'EVENT_3809_pause_52',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_jmp_53',
         "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_async_54'],
-        "subscript": []
+        "args": ['EVENT_3809_action_queue_async_54']
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_54',
@@ -971,14 +899,12 @@ script = [
     {
         "identifier": 'EVENT_3809_jmp_55',
         "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_async_57'],
-        "subscript": []
+        "args": ['EVENT_3809_action_queue_async_57']
     },
     {
         "identifier": 'EVENT_3809_pause_56',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_57',
@@ -1002,8 +928,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_async_57_SUBSCRIPT_reset_properties_3',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_async_57_SUBSCRIPT_pause_4',
@@ -1017,28 +942,22 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_async_57_SUBSCRIPT_face_southwest_6',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_3809_jmp_58',
         "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_async_61'],
-        "subscript": []
+        "args": ['EVENT_3809_action_queue_async_61']
     },
     {
         "identifier": 'EVENT_3809_stop_sound_59',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_60',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_61',
@@ -1060,50 +979,35 @@ script = [
     {
         "identifier": 'EVENT_3809_jmp_62',
         "command": 'jmp',
-        "args": ['EVENT_3809_unfreeze_camera_69'],
-        "subscript": []
+        "args": ['EVENT_3809_unfreeze_camera_69']
     },
     {
         "identifier": 'EVENT_3809_stop_sound_63',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_64',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_65',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_66',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_67',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_68',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_unfreeze_camera_69',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_70',
@@ -1112,13 +1016,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_70_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_70_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_70_SUBSCRIPT_shift_northeast_steps_2',
@@ -1144,13 +1046,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_71_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_71_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -1161,13 +1061,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_72_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_72_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -1198,13 +1096,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_73_SUBSCRIPT_shadow_off_4',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_73_SUBSCRIPT_add_z_coord_1_step_5',
-                "command": 'add_z_coord_1_step',
-                "args": []
+                "command": 'add_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_73_SUBSCRIPT_pause_6',
@@ -1225,9 +1121,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3809_remember_last_object_74',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_75',
@@ -1241,8 +1135,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_75_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_75_SUBSCRIPT_set_animation_speed_2',
@@ -1251,13 +1144,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_75_SUBSCRIPT_walk_1_step_north_3',
-                "command": 'walk_1_step_north',
-                "args": []
+                "command": 'walk_1_step_north'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_75_SUBSCRIPT_face_northeast_4',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_75_SUBSCRIPT_set_animation_speed_5',
@@ -1266,8 +1157,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_75_SUBSCRIPT_fixed_f_coord_off_6',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             }
         ]
     },
@@ -1293,8 +1183,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_76_SUBSCRIPT_walk_1_step_east_3',
-                "command": 'walk_1_step_east',
-                "args": []
+                "command": 'walk_1_step_east'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_76_SUBSCRIPT_set_animation_speed_4',
@@ -1337,8 +1226,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_78_SUBSCRIPT_floating_off_2',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_78_SUBSCRIPT_db_3',
@@ -1362,8 +1250,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_78_SUBSCRIPT_floating_on_7',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_78_SUBSCRIPT_pause_8',
@@ -1372,8 +1259,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_78_SUBSCRIPT_bpl_26_27_28_9',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_78_SUBSCRIPT_pause_10',
@@ -1404,1251 +1290,853 @@ script = [
     },
     {
         "identifier": 'EVENT_3809_remember_last_object_79',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3809_jmp_80',
         "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_sync_287'],
-        "subscript": []
+        "args": ['EVENT_3809_action_queue_sync_287']
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_81',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_82',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_83',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_9, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_84',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_10, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER],
-        "subscript": []
+        "args": [AreaObjects.NPC_10, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_85',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_11, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER],
-        "subscript": []
+        "args": [AreaObjects.NPC_11, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_86',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_12, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER],
-        "subscript": []
+        "args": [AreaObjects.NPC_12, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_87',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_13, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER],
-        "subscript": []
+        "args": [AreaObjects.NPC_13, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_88',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_14, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER],
-        "subscript": []
+        "args": [AreaObjects.NPC_14, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_89',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_90',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4],
-        "subscript": []
+        "args": [AreaObjects.NPC_4]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_91',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_9],
-        "subscript": []
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_92',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10],
-        "subscript": []
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_93',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_11],
-        "subscript": []
+        "args": [AreaObjects.NPC_11]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_94',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_12],
-        "subscript": []
+        "args": [AreaObjects.NPC_12]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_95',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_13],
-        "subscript": []
+        "args": [AreaObjects.NPC_13]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_96',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_14],
-        "subscript": []
+        "args": [AreaObjects.NPC_14]
     },
     {
         "identifier": 'EVENT_3809_jmp_97',
         "command": 'jmp',
-        "args": ['EVENT_3809_stop_sound_4'],
-        "subscript": []
+        "args": ['EVENT_3809_stop_sound_4']
     },
     {
         "identifier": 'EVENT_3809_stop_sound_98',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_99',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_100',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_101',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_102',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_103',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_104',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_105',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_106',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_107',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_108',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_109',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_110',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_111',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_112',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_113',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_114',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_115',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_116',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_117',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_118',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_119',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_120',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_121',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_122',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_123',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_124',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_125',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_126',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_127',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_128',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_129',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_130',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_131',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_132',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_133',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_134',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_135',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_136',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_137',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_138',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_139',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_140',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_141',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_142',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_143',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_144',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_145',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_146',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_147',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_148',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_149',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_150',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_151',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_152',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_153',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_154',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_155',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_156',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_157',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_158',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_159',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_160',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_161',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_162',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_163',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_164',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_165',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_166',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_167',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_168',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_169',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_170',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_171',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_172',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_173',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_174',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_175',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_176',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_177',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_178',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_179',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_180',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_181',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_182',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_183',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_184',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_185',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_186',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_187',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_188',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_189',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_190',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_191',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_192',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_193',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_194',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_195',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_196',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_197',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_198',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_199',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_200',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_201',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_202',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_203',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_204',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_205',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_206',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_207',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_208',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_209',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_210',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_211',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_212',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_213',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_214',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_215',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_216',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_217',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_218',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_219',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_220',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_221',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_222',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_223',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_224',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_225',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_226',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_227',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_228',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_229',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_230',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_231',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_232',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_233',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_234',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_235',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_236',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_237',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_238',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_239',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_240',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_241',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_242',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_243',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_244',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_245',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_246',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_247',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_248',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_249',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_250',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_251',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_252',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_253',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_254',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_255',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_256',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_257',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_258',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_259',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_260',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_261',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_262',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_263',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_264',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_265',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_266',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_267',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_268',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_269',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_270',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_271',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_272',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_273',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_274',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_275',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_276',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_277',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_278',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_279',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_280',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_281',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_282',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_283',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_284',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_285',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_286',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_287',
@@ -2672,8 +2160,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_287_SUBSCRIPT_face_northeast_3',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -2699,8 +2186,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_288_SUBSCRIPT_floating_off_3',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_288_SUBSCRIPT_clear_solidity_bits_4',
@@ -2709,13 +2195,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_288_SUBSCRIPT_walk_1_step_northwest_5',
-                "command": 'walk_1_step_northwest',
-                "args": []
+                "command": 'walk_1_step_northwest'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_288_SUBSCRIPT_face_northeast_6',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_288_SUBSCRIPT_set_sprite_sequence_7',
@@ -2726,285 +2210,192 @@ script = [
     },
     {
         "identifier": 'EVENT_3809_remember_last_object_289',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3809_jmp_290',
         "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_sync_336'],
-        "subscript": []
+        "args": ['EVENT_3809_action_queue_sync_336']
     },
     {
         "identifier": 'EVENT_3809_stop_sound_291',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_292',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_293',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_294',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_295',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_296',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_297',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_298',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_299',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_300',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_301',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_302',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_303',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_304',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_305',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_306',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_307',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_308',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_309',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_310',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_311',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_312',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_313',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_314',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_315',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_316',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_317',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_318',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_319',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_320',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_321',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_322',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_323',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_324',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_325',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_326',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_327',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_328',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_329',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_330',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_331',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_332',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_333',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_334',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_stop_sound_335',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_336',
@@ -3018,8 +2409,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_336_SUBSCRIPT_visibility_off_1',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -3030,8 +2420,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_337_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_337_SUBSCRIPT_set_animation_speed_1',
@@ -3040,8 +2429,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_337_SUBSCRIPT_walk_1_step_southeast_2',
-                "command": 'walk_1_step_southeast',
-                "args": []
+                "command": 'walk_1_step_southeast'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_337_SUBSCRIPT_set_animation_speed_3',
@@ -3062,8 +2450,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_338_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_338_SUBSCRIPT_set_animation_speed_1',
@@ -3072,8 +2459,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_338_SUBSCRIPT_walk_1_step_northwest_2',
-                "command": 'walk_1_step_northwest',
-                "args": []
+                "command": 'walk_1_step_northwest'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_338_SUBSCRIPT_shift_northwest_pixels_3',
@@ -3104,8 +2490,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_339_SUBSCRIPT_fixed_f_coord_off_3',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_339_SUBSCRIPT_shift_southwest_steps_4',
@@ -3151,8 +2536,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_340_SUBSCRIPT_fixed_f_coord_off_4',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_340_SUBSCRIPT_shift_southwest_steps_5',
@@ -3253,40 +2637,33 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_341_SUBSCRIPT_face_northeast_15',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_3809_pause_342',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_3809_pause_343',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_3809_set_action_script_sync_344',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 214],
-        "subscript": []
+        "args": [AreaObjects.SCREEN_FOCUS, 214]
     },
     {
         "identifier": 'EVENT_3809_pause_345',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_3809_stop_all_background_events_346',
-        "command": 'stop_all_background_events',
-        "args": [],
-        "subscript": []
+        "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_347',
@@ -3295,8 +2672,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_347_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -3314,33 +2690,27 @@ script = [
     },
     {
         "identifier": 'EVENT_3809_remember_last_object_349',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3809_jmp_350',
         "command": 'jmp',
-        "args": ['EVENT_3809_pause_352'],
-        "subscript": []
+        "args": ['EVENT_3809_pause_352']
     },
     {
         "identifier": 'EVENT_3809_run_dialog_351',
         "command": 'run_dialog',
-        "args": [2498, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2498, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3809_pause_352',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_set_action_script_sync_353',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 215],
-        "subscript": []
+        "args": [AreaObjects.SCREEN_FOCUS, 215]
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_354',
@@ -3367,20 +2737,17 @@ script = [
     {
         "identifier": 'EVENT_3809_pause_355',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_play_sound_356',
         "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6],
-        "subscript": []
+        "args": [Sounds._027_FOUND_AN_ITEM, 6]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_357',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6],
-        "subscript": []
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_358',
@@ -3409,58 +2776,49 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_async_358_SUBSCRIPT_face_northeast_4',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_3809_pause_359',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_jmp_360',
         "command": 'jmp',
-        "args": ['EVENT_3809_pause_362'],
-        "subscript": []
+        "args": ['EVENT_3809_pause_362']
     },
     {
         "identifier": 'EVENT_3809_run_dialog_361',
         "command": 'run_dialog',
-        "args": [2499, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2499, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3809_pause_362',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_set_action_script_sync_363',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 215],
-        "subscript": []
+        "args": [AreaObjects.SCREEN_FOCUS, 215]
     },
     {
         "identifier": 'EVENT_3809_pause_364',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_play_sound_365',
         "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6],
-        "subscript": []
+        "args": [Sounds._027_FOUND_AN_ITEM, 6]
     },
     {
         "identifier": 'EVENT_3809_remove_from_current_level_366',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5],
-        "subscript": []
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_367',
@@ -3489,34 +2847,29 @@ script = [
             },
             {
                 "identifier": 'EVENT_3809_action_queue_async_367_SUBSCRIPT_face_northeast_4',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_3809_pause_368',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_jmp_369',
         "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_sync_372'],
-        "subscript": []
+        "args": ['EVENT_3809_action_queue_sync_372']
     },
     {
         "identifier": 'EVENT_3809_pause_370',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_pause_371',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_372',
@@ -3538,38 +2891,31 @@ script = [
     {
         "identifier": 'EVENT_3809_set_action_script_sync_373',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 376],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 376]
     },
     {
         "identifier": 'EVENT_3809_set_action_script_sync_374',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 376],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 376]
     },
     {
         "identifier": 'EVENT_3809_jmp_375',
         "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_async_380'],
-        "subscript": []
+        "args": ['EVENT_3809_action_queue_async_380']
     },
     {
         "identifier": 'EVENT_3809_set_bit_376',
         "command": 'set_bit',
-        "args": [0x7049, 2],
-        "subscript": []
+        "args": [0x7049, 2]
     },
     {
         "identifier": 'EVENT_3809_run_event_as_subroutine_377',
         "command": 'run_event_as_subroutine',
-        "args": [276],
-        "subscript": []
+        "args": [276]
     },
     {
         "identifier": 'EVENT_3809_remember_last_object_378',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_379',
@@ -3578,8 +2924,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_async_379_SUBSCRIPT_face_south_0',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             }
         ]
     },
@@ -3590,121 +2935,100 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_async_380_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_async_380_SUBSCRIPT_fixed_f_coord_off_1',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_async_380_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_3809_jmp_381',
         "command": 'jmp',
-        "args": ['EVENT_3809_pause_action_script_382'],
-        "subscript": []
+        "args": ['EVENT_3809_pause_action_script_382']
     },
     {
         "identifier": 'EVENT_3809_pause_action_script_382',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_3809_pause_action_script_383',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_3809_set_action_script_sync_384',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 373],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 373]
     },
     {
         "identifier": 'EVENT_3809_set_action_script_sync_385',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 372],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 372]
     },
     {
         "identifier": 'EVENT_3809_set_action_script_sync_386',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 374],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 374]
     },
     {
         "identifier": 'EVENT_3809_adjust_music_tempo_387',
         "command": 'adjust_music_tempo',
-        "args": [MusicDirections.SPEED_UP, 12, 0],
-        "subscript": []
+        "args": [MusicDirections.SPEED_UP, 12, 0]
     },
     {
         "identifier": 'EVENT_3809_set_388',
         "command": 'set',
-        "args": [0x70ae, 8],
-        "subscript": []
+        "args": [0x70ae, 8]
     },
     {
         "identifier": 'EVENT_3809_set_389',
         "command": 'set',
-        "args": [0x70af, 0],
-        "subscript": []
+        "args": [0x70af, 0]
     },
     {
         "identifier": 'EVENT_3809_set_390',
         "command": 'set',
-        "args": [0x70c0, 0],
-        "subscript": []
+        "args": [0x70c0, 0]
     },
     {
         "identifier": 'EVENT_3809_set_391',
         "command": 'set',
-        "args": [0x70c1, 0],
-        "subscript": []
+        "args": [0x70c1, 0]
     },
     {
         "identifier": 'EVENT_3809_set_392',
         "command": 'set',
-        "args": [0x70c2, 0],
-        "subscript": []
+        "args": [0x70c2, 0]
     },
     {
         "identifier": 'EVENT_3809_clear_bit_393',
         "command": 'clear_bit',
-        "args": [0x704c, 5],
-        "subscript": []
+        "args": [0x704c, 5]
     },
     {
         "identifier": 'EVENT_3809_set_short_394',
         "command": 'set_short',
-        "args": [0x701c, 0x012c],
-        "subscript": []
+        "args": [0x701c, 0x012c]
     },
     {
         "identifier": 'EVENT_3809_run_background_event_with_pause_return_on_exit_395',
         "command": 'run_background_event_with_pause_return_on_exit',
-        "args": [647, 0x701c, [12, 13]],
-        "subscript": []
+        "args": [647, 0x701c, [12, 13]]
     },
     {
         "identifier": 'EVENT_3809_enable_controls_396',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_3809_ret_397',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

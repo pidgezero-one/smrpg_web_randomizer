@@ -1,41 +1,33 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_594_move_script_to_main_thread_0',
-        "command": 'move_script_to_main_thread',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_main_thread'
     },
     {
         "identifier": 'EVENT_594_enable_controls_until_return_1',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_594_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x7056, 3, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7056, 3, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_594_stop_all_background_events_3',
-        "command": 'stop_all_background_events',
-        "args": [],
-        "subscript": []
+        "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_594_unsync_action_script_4',
         "command": 'unsync_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_594_freeze_camera_5',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_594_action_queue_sync_6',
@@ -104,32 +96,25 @@ script = [
     {
         "identifier": 'EVENT_594_pause_8',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_594_unfreeze_camera_9',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_594_pause_10',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_594_fade_out_to_black_async_11',
-        "command": 'fade_out_to_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_to_black_async'
     },
     {
         "identifier": 'EVENT_594_enter_area_12',
         "command": 'enter_area',
-        "args": [Rooms._288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, RadialDirections.NORTHEAST, 27, 96, 0, []],
-        "subscript": []
+        "args": [Rooms._288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, RadialDirections.NORTHEAST, 27, 96, 0, []]
     },
     {
         "identifier": 'EVENT_594_action_queue_sync_13',
@@ -198,8 +183,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_594_action_queue_sync_13_SUBSCRIPT_reset_properties_12',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_594_action_queue_sync_13_SUBSCRIPT_set_animation_speed_13',
@@ -267,32 +251,23 @@ script = [
     },
     {
         "identifier": 'EVENT_594_fade_in_from_black_sync_15',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_594_pause_script_until_effect_done_16',
-        "command": 'pause_script_until_effect_done',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_until_effect_done'
     },
     {
         "identifier": 'EVENT_594_remember_last_object_17',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_594_set_action_script_async_18',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 671]
     },
     {
         "identifier": 'EVENT_594_ret_19',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

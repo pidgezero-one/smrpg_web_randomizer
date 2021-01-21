@@ -1,17 +1,15 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2079_enable_controls_until_return_0',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_2079_freeze_camera_1',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2079_action_queue_async_2',
@@ -25,36 +23,29 @@ script = [
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_2_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_2_SUBSCRIPT_reset_properties_2',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_2_SUBSCRIPT_face_south_3',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_2_SUBSCRIPT_floating_off_4',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_2_SUBSCRIPT_sequence_playback_off_5',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2079_fade_in_from_black_async_3',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2079_action_queue_async_4',
@@ -63,8 +54,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2079_action_queue_async_4_SUBSCRIPT_floating_on_0',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_4_SUBSCRIPT_pause_1',
@@ -88,8 +78,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_4_SUBSCRIPT_shadow_on_5',
-                "command": 'shadow_on',
-                "args": []
+                "command": 'shadow_on'
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_4_SUBSCRIPT_jump_to_height_6',
@@ -108,8 +97,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_4_SUBSCRIPT_walk_1_step_south_9',
-                "command": 'walk_1_step_south',
-                "args": []
+                "command": 'walk_1_step_south'
             },
             {
                 "identifier": 'EVENT_2079_action_queue_async_4_SUBSCRIPT_pause_10',
@@ -136,31 +124,24 @@ script = [
     {
         "identifier": 'EVENT_2079_set_action_script_async_5',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2079_unfreeze_camera_6',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2079_enable_controls_until_return_7',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_2079_clear_bit_8',
         "command": 'clear_bit',
-        "args": [0x7044, 7],
-        "subscript": []
+        "args": [0x7044, 7]
     },
     {
         "identifier": 'EVENT_2079_ret_9',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

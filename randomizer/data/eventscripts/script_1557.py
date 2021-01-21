@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1557_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7047, 0, 'EVENT_1557_jmp_if_bit_clear_10'],
-        "subscript": []
+        "args": [0x7047, 0, 'EVENT_1557_jmp_if_bit_clear_10']
     },
     {
         "identifier": 'EVENT_1557_action_queue_async_1',
@@ -14,112 +14,85 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1557_action_queue_async_1_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_1557_freeze_all_npcs_until_return_2',
-        "command": 'freeze_all_npcs_until_return',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_all_npcs_until_return'
     },
     {
         "identifier": 'EVENT_1557_fade_in_from_black_async_3',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1557_freeze_camera_4',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_1557_set_action_script_async_5',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 482],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 482]
     },
     {
         "identifier": 'EVENT_1557_set_action_script_async_6',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_1557_unfreeze_camera_7',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_1557_unfreeze_all_npcs_8',
-        "command": 'unfreeze_all_npcs',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_all_npcs'
     },
     {
         "identifier": 'EVENT_1557_ret_9',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1557_jmp_if_bit_clear_10',
         "command": 'jmp_if_bit_clear',
-        "args": [0x707a, 2, 'EVENT_1557_set_action_script_sync_13'],
-        "subscript": []
+        "args": [0x707a, 2, 'EVENT_1557_set_action_script_sync_13']
     },
     {
         "identifier": 'EVENT_1557_fade_in_from_black_async_11',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1557_ret_12',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1557_set_action_script_sync_13',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 36],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 36]
     },
     {
         "identifier": 'EVENT_1557_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 36],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 36]
     },
     {
         "identifier": 'EVENT_1557_set_action_script_sync_15',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 36],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 36]
     },
     {
         "identifier": 'EVENT_1557_set_action_script_sync_16',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 36],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 36]
     },
     {
         "identifier": 'EVENT_1557_pause_17',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_1557_fade_in_from_black_sync_18',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_1557_action_queue_async_19',
@@ -128,21 +101,17 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1557_action_queue_async_19_SUBSCRIPT_walk_1_step_west_0',
-                "command": 'walk_1_step_west',
-                "args": []
+                "command": 'walk_1_step_west'
             }
         ]
     },
     {
         "identifier": 'EVENT_1557_set_bit_20',
         "command": 'set_bit',
-        "args": [0x707a, 2],
-        "subscript": []
+        "args": [0x707a, 2]
     },
     {
         "identifier": 'EVENT_1557_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

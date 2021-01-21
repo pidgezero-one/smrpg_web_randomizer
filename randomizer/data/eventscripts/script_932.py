@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_932_play_sound_0',
         "command": 'play_sound',
-        "args": [Sounds._129_BABY_YOSHI, 6],
-        "subscript": []
+        "args": [Sounds._129_BABY_YOSHI, 6]
     },
     {
         "identifier": 'EVENT_932_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 5, 'EVENT_932_enable_controls_until_return_36'],
-        "subscript": []
+        "args": [0x7044, 5, 'EVENT_932_enable_controls_until_return_36']
     },
     {
         "identifier": 'EVENT_932_run_event_as_subroutine_2',
         "command": 'run_event_as_subroutine',
-        "args": [456],
-        "subscript": []
+        "args": [456]
     },
     {
         "identifier": 'EVENT_932_action_queue_sync_3',
@@ -55,9 +53,7 @@ script = [
     },
     {
         "identifier": 'EVENT_932_remember_last_object_5',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_932_action_queue_sync_6',
@@ -88,64 +84,54 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_932_action_queue_async_7_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_932_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 119]
     },
     {
         "identifier": 'EVENT_932_store_item_amount_7000_9',
         "command": 'store_item_amount_7000',
-        "args": [items.YoshiCookie],
-        "subscript": []
+        "args": [items.YoshiCookie]
     },
     {
         "identifier": 'EVENT_932_jmp_if_var_equals_short_10',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_932_close_dialog_28'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_932_close_dialog_28']
     },
     {
         "identifier": 'EVENT_932_set_short_mem_11',
         "command": 'set_short_mem',
-        "args": [0x7026, 0x7000],
-        "subscript": []
+        "args": [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_932_run_dialog_12',
         "command": 'run_dialog',
-        "args": [2365, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2365, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_932_jmp_if_dialog_option_b_13',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_932_close_dialog_28'],
-        "subscript": []
+        "args": ['EVENT_932_close_dialog_28']
     },
     {
         "identifier": 'EVENT_932_run_dialog_14',
         "command": 'run_dialog',
-        "args": [2366, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2366, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_932_set_bit_15',
         "command": 'set_bit',
-        "args": [0x7042, 0],
-        "subscript": []
+        "args": [0x7042, 0]
     },
     {
         "identifier": 'EVENT_932_jmp_to_subroutine_16',
         "command": 'jmp_to_subroutine',
-        "args": [0xa958],
-        "subscript": []
+        "args": [0xa958]
     },
     {
         "identifier": 'EVENT_932_action_queue_async_17',
@@ -174,8 +160,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_932_action_queue_async_17_SUBSCRIPT_reset_properties_4',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_932_action_queue_async_17_SUBSCRIPT_set_animation_speed_5',
@@ -187,145 +172,117 @@ script = [
     {
         "identifier": 'EVENT_932_set_object_memory_to_18',
         "command": 'set_object_memory_to',
-        "args": [0x7024],
-        "subscript": []
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_932_remove_one_from_inventory_19',
         "command": 'remove_one_from_inventory',
-        "args": [items.YoshiCookie],
-        "subscript": []
+        "args": [items.YoshiCookie]
     },
     {
         "identifier": 'EVENT_932_end_loop_20',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_932_set_short_mem_21',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x70d9],
-        "subscript": []
+        "args": [0x7000, 0x70d9]
     },
     {
         "identifier": 'EVENT_932_add_short_mem_22',
         "command": 'add_short_mem',
-        "args": [0x7000, 0x7024],
-        "subscript": []
+        "args": [0x7000, 0x7024]
     },
     {
         "identifier": 'EVENT_932_set_short_mem_23',
         "command": 'set_short_mem',
-        "args": [0x70d9, 0x7000],
-        "subscript": []
+        "args": [0x70d9, 0x7000]
     },
     {
         "identifier": 'EVENT_932_mem_compare_24',
         "command": 'mem_compare',
-        "args": [0x7000, 21],
-        "subscript": []
+        "args": [0x7000, 21]
     },
     {
         "identifier": 'EVENT_932_jmp_if_comparison_result_is_greater_or_equal_25',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_932_set_bit_39'],
-        "subscript": []
+        "args": ['EVENT_932_set_bit_39']
     },
     {
         "identifier": 'EVENT_932_pause_26',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_932_play_sound_27',
         "command": 'play_sound',
-        "args": [Sounds._129_BABY_YOSHI, 6],
-        "subscript": []
+        "args": [Sounds._129_BABY_YOSHI, 6]
     },
     {
         "identifier": 'EVENT_932_close_dialog_28',
-        "command": 'close_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'close_dialog'
     },
     {
         "identifier": 'EVENT_932_run_background_event_29',
         "command": 'run_background_event',
-        "args": [469, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_7]],
-        "subscript": []
+        "args": [469, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_7]]
     },
     {
         "identifier": 'EVENT_932_clear_bit_30',
         "command": 'clear_bit',
-        "args": [0x7042, 0],
-        "subscript": []
+        "args": [0x7042, 0]
     },
     {
         "identifier": 'EVENT_932_clear_bit_31',
         "command": 'clear_bit',
-        "args": [0x7043, 4],
-        "subscript": []
+        "args": [0x7043, 4]
     },
     {
         "identifier": 'EVENT_932_clear_bit_32',
         "command": 'clear_bit',
-        "args": [0x7043, 5],
-        "subscript": []
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_932_clear_bit_33',
         "command": 'clear_bit',
-        "args": [0x7043, 6],
-        "subscript": []
+        "args": [0x7043, 6]
     },
     {
         "identifier": 'EVENT_932_clear_bit_34',
         "command": 'clear_bit',
-        "args": [0x7043, 7],
-        "subscript": []
+        "args": [0x7043, 7]
     },
     {
         "identifier": 'EVENT_932_ret_35',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_932_enable_controls_until_return_36',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_932_pause_37',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_932_ret_38',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_932_set_bit_39',
         "command": 'set_bit',
-        "args": [0x7084, 1],
-        "subscript": []
+        "args": [0x7084, 1]
     },
     {
         "identifier": 'EVENT_932_set_40',
         "command": 'set',
-        "args": [0x70d9, 0],
-        "subscript": []
+        "args": [0x70d9, 0]
     },
     {
         "identifier": 'EVENT_932_jmp_41',
         "command": 'jmp',
-        "args": ['EVENT_932_pause_26'],
-        "subscript": []
+        "args": ['EVENT_932_pause_26']
     }
 ]

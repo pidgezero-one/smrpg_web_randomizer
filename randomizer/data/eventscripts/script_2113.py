@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2113_fade_in_from_black_sync_duration_0',
         "command": 'fade_in_from_black_sync_duration',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2113_action_queue_sync_1',
@@ -34,8 +34,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2113_action_queue_sync_1_SUBSCRIPT_end_loop_4',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             }
         ]
     },
@@ -46,8 +45,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2113_action_queue_async_2_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2113_action_queue_async_2_SUBSCRIPT_set_animation_speed_1',
@@ -71,8 +69,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2113_action_queue_async_2_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             }
         ]
     },
@@ -83,13 +80,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2113_action_queue_async_3_SUBSCRIPT_sequence_looping_off_0',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_2113_action_queue_async_3_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2113_action_queue_async_3_SUBSCRIPT_pause_2',
@@ -133,18 +128,15 @@ script = [
             },
             {
                 "identifier": 'EVENT_2113_action_queue_async_3_SUBSCRIPT_fixed_f_coord_off_10',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_2113_action_queue_async_3_SUBSCRIPT_sequence_looping_off_11',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_2113_action_queue_async_3_SUBSCRIPT_reset_properties_12',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2113_action_queue_async_3_SUBSCRIPT_set_animation_speed_13',
@@ -178,39 +170,32 @@ script = [
             },
             {
                 "identifier": 'EVENT_2113_action_queue_async_3_SUBSCRIPT_visibility_off_19',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2113_pause_4',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2113_play_sound_5',
         "command": 'play_sound',
-        "args": [Sounds._016_OPEN_DOOR, 6],
-        "subscript": []
+        "args": [Sounds._016_OPEN_DOOR, 6]
     },
     {
         "identifier": 'EVENT_2113_pause_6',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2113_set_bit_7',
         "command": 'set_bit',
-        "args": [0x7092, 3],
-        "subscript": []
+        "args": [0x7092, 3]
     },
     {
         "identifier": 'EVENT_2113_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

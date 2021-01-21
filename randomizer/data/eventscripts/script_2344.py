@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2344_summon_to_level_0',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_0, Rooms._040_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLINE_ROOM_AFTER_DEFEAT],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._040_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLINE_ROOM_AFTER_DEFEAT]
     },
     {
         "identifier": 'EVENT_2344_summon_to_level_1',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_1, Rooms._040_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLINE_ROOM_AFTER_DEFEAT],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._040_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLINE_ROOM_AFTER_DEFEAT]
     },
     {
         "identifier": 'EVENT_2344_summon_to_level_2',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_2, Rooms._040_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLINE_ROOM_AFTER_DEFEAT],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, Rooms._040_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLINE_ROOM_AFTER_DEFEAT]
     },
     {
         "identifier": 'EVENT_2344_action_queue_sync_3',
@@ -91,32 +89,24 @@ script = [
     {
         "identifier": 'EVENT_2344_set_7000_to_object_coord_5',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2344_jmp_if_var_equals_short_6',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 22, 'EVENT_2344_freeze_camera_9'],
-        "subscript": []
+        "args": [0x7000, 22, 'EVENT_2344_freeze_camera_9']
     },
     {
         "identifier": 'EVENT_2344_fade_in_from_black_async_7',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2344_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2344_freeze_camera_9',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2344_action_queue_async_10',
@@ -143,14 +133,11 @@ script = [
     {
         "identifier": 'EVENT_2344_play_sound_11',
         "command": 'play_sound',
-        "args": [Sounds._019_LONG_FALL, 6],
-        "subscript": []
+        "args": [Sounds._019_LONG_FALL, 6]
     },
     {
         "identifier": 'EVENT_2344_fade_in_from_black_async_12',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2344_action_queue_async_13',
@@ -181,20 +168,15 @@ script = [
     },
     {
         "identifier": 'EVENT_2344_unfreeze_camera_14',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2344_set_action_script_async_15',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2344_ret_16',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

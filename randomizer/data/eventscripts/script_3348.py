@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3348_action_queue_sync_0',
@@ -36,151 +37,124 @@ script = [
     {
         "identifier": 'EVENT_3348_set_short_mem_1',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x70b7],
-        "subscript": []
+        "args": [0x7000, 0x70b7]
     },
     {
         "identifier": 'EVENT_3348_mem_7000_and_const_2',
         "command": 'mem_7000_and_const',
-        "args": [0x0007],
-        "subscript": []
+        "args": [0x0007]
     },
     {
         "identifier": 'EVENT_3348_add_3',
         "command": 'add',
-        "args": [0x7000, 512],
-        "subscript": []
+        "args": [0x7000, 512]
     },
     {
         "identifier": 'EVENT_3348_dec_4',
         "command": 'dec',
-        "args": [0x7000],
-        "subscript": []
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3348_set_mem_704x_at_7000_bit_5',
-        "command": 'set_mem_704x_at_7000_bit',
-        "args": [],
-        "subscript": []
+        "command": 'set_mem_704x_at_7000_bit'
     },
     {
         "identifier": 'EVENT_3348_jmp_if_var_equals_short_6',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 513, 'EVENT_3348_set_13'],
-        "subscript": []
+        "args": [0x7000, 513, 'EVENT_3348_set_13']
     },
     {
         "identifier": 'EVENT_3348_jmp_if_var_equals_short_7',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 514, 'EVENT_3348_set_15'],
-        "subscript": []
+        "args": [0x7000, 514, 'EVENT_3348_set_15']
     },
     {
         "identifier": 'EVENT_3348_jmp_if_var_equals_short_8',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 515, 'EVENT_3348_set_17'],
-        "subscript": []
+        "args": [0x7000, 515, 'EVENT_3348_set_17']
     },
     {
         "identifier": 'EVENT_3348_jmp_if_var_equals_short_9',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 516, 'EVENT_3348_set_19'],
-        "subscript": []
+        "args": [0x7000, 516, 'EVENT_3348_set_19']
     },
     {
         "identifier": 'EVENT_3348_jmp_if_var_equals_short_10',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 517, 'EVENT_3348_set_21'],
-        "subscript": []
+        "args": [0x7000, 517, 'EVENT_3348_set_21']
     },
     {
         "identifier": 'EVENT_3348_set_11',
         "command": 'set',
-        "args": [0x70a7, 32],
-        "subscript": []
+        "args": [0x70a7, 32]
     },
     {
         "identifier": 'EVENT_3348_jmp_12',
         "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22'],
-        "subscript": []
+        "args": ['EVENT_3348_run_event_as_subroutine_22']
     },
     {
         "identifier": 'EVENT_3348_set_13',
         "command": 'set',
-        "args": [0x70a7, 29],
-        "subscript": []
+        "args": [0x70a7, 29]
     },
     {
         "identifier": 'EVENT_3348_jmp_14',
         "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22'],
-        "subscript": []
+        "args": ['EVENT_3348_run_event_as_subroutine_22']
     },
     {
         "identifier": 'EVENT_3348_set_15',
         "command": 'set',
-        "args": [0x70a7, 30],
-        "subscript": []
+        "args": [0x70a7, 30]
     },
     {
         "identifier": 'EVENT_3348_jmp_16',
         "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22'],
-        "subscript": []
+        "args": ['EVENT_3348_run_event_as_subroutine_22']
     },
     {
         "identifier": 'EVENT_3348_set_17',
         "command": 'set',
-        "args": [0x70a7, 31],
-        "subscript": []
+        "args": [0x70a7, 31]
     },
     {
         "identifier": 'EVENT_3348_jmp_18',
         "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22'],
-        "subscript": []
+        "args": ['EVENT_3348_run_event_as_subroutine_22']
     },
     {
         "identifier": 'EVENT_3348_set_19',
         "command": 'set',
-        "args": [0x70a7, 131],
-        "subscript": []
+        "args": [0x70a7, 131]
     },
     {
         "identifier": 'EVENT_3348_jmp_20',
         "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22'],
-        "subscript": []
+        "args": ['EVENT_3348_run_event_as_subroutine_22']
     },
     {
         "identifier": 'EVENT_3348_set_21',
         "command": 'set',
-        "args": [0x70a7, 131],
-        "subscript": []
+        "args": [0x70a7, 131]
     },
     {
         "identifier": 'EVENT_3348_run_event_as_subroutine_22',
         "command": 'run_event_as_subroutine',
-        "args": [33],
-        "subscript": []
+        "args": [33]
     },
     {
         "identifier": 'EVENT_3348_set_23',
         "command": 'set',
-        "args": [0x7000, 1586],
-        "subscript": []
+        "args": [0x7000, 1586]
     },
     {
         "identifier": 'EVENT_3348_run_event_as_subroutine_24',
         "command": 'run_event_as_subroutine',
-        "args": [3829],
-        "subscript": []
+        "args": [3829]
     },
     {
         "identifier": 'EVENT_3348_ret_25',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

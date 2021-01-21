@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2126_action_queue_async_0',
@@ -8,8 +9,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2126_action_queue_async_0_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_2126_action_queue_async_0_SUBSCRIPT_set_animation_speed_1',
@@ -23,8 +23,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2126_action_queue_async_0_SUBSCRIPT_face_southwest_3',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_2126_action_queue_async_0_SUBSCRIPT_set_sprite_sequence_4',
@@ -38,8 +37,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2126_action_queue_async_0_SUBSCRIPT_sequence_looping_on_6',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2126_action_queue_async_0_SUBSCRIPT_set_sprite_sequence_7',
@@ -60,8 +58,6 @@ script = [
     },
     {
         "identifier": 'EVENT_2126_ret_1',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

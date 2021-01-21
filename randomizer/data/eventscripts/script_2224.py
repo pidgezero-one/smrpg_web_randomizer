@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2224_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7093, 7, 'EVENT_2224_action_queue_sync_6'],
-        "subscript": []
+        "args": [0x7093, 7, 'EVENT_2224_action_queue_sync_6']
     },
     {
         "identifier": 'EVENT_2224_action_queue_sync_1',
@@ -39,8 +39,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2224_action_queue_sync_1_SUBSCRIPT_sequence_looping_on_5',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2224_action_queue_sync_1_SUBSCRIPT_set_priority_6',
@@ -76,8 +75,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2224_action_queue_sync_2_SUBSCRIPT_sequence_looping_on_4',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2224_action_queue_sync_2_SUBSCRIPT_set_priority_5',
@@ -118,8 +116,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2224_action_queue_async_3_SUBSCRIPT_sequence_looping_on_4',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2224_action_queue_async_3_SUBSCRIPT_set_priority_5',
@@ -135,15 +132,11 @@ script = [
     },
     {
         "identifier": 'EVENT_2224_fade_in_from_black_async_4',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2224_ret_5',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2224_action_queue_sync_6',
@@ -172,43 +165,34 @@ script = [
     {
         "identifier": 'EVENT_2224_apply_solidity_mod_8',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_2224_remove_from_current_level_9',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2224_remove_from_current_level_10',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_2224_remove_from_current_level_11',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_2224_priority_set_12',
         "command": 'priority_set',
-        "args": [[_0x81Flags.LAYER_1, _0x81Flags.NPC_SPRITES], [], []],
-        "subscript": []
+        "args": [[_0x81Flags.LAYER_1, _0x81Flags.NPC_SPRITES], [], []]
     },
     {
         "identifier": 'EVENT_2224_fade_in_from_black_async_13',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2224_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

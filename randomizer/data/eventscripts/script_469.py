@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_469_enable_controls_0',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP]]
     },
     {
         "identifier": 'EVENT_469_action_queue_async_1',
@@ -21,9 +21,7 @@ script = [
     },
     {
         "identifier": 'EVENT_469_unfreeze_camera_2',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_469_action_queue_async_3',
@@ -40,8 +38,7 @@ script = [
     {
         "identifier": 'EVENT_469_enable_controls_until_return_4',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP]]
     },
     {
         "identifier": 'EVENT_469_action_queue_async_5',
@@ -58,86 +55,71 @@ script = [
     {
         "identifier": 'EVENT_469_set_action_script_sync_6',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 505],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 505]
     },
     {
         "identifier": 'EVENT_469_set_7000_to_pressed_button_7',
-        "command": 'set_7000_to_pressed_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_pressed_button'
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_8',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[3], 'EVENT_469_set_7000_to_pressed_button_83'],
-        "subscript": []
+        "args": [[3], 'EVENT_469_set_7000_to_pressed_button_83']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_9',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[2], 'EVENT_469_set_7000_to_pressed_button_87'],
-        "subscript": []
+        "args": [[2], 'EVENT_469_set_7000_to_pressed_button_87']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_10',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[1], 'EVENT_469_set_7000_to_pressed_button_91'],
-        "subscript": []
+        "args": [[1], 'EVENT_469_set_7000_to_pressed_button_91']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_11',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[0], 'EVENT_469_set_7000_to_pressed_button_95'],
-        "subscript": []
+        "args": [[0], 'EVENT_469_set_7000_to_pressed_button_95']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_12',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[0, 3], 'EVENT_469_set_action_script_sync_61'],
-        "subscript": []
+        "args": [[0, 3], 'EVENT_469_set_action_script_sync_61']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_13',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[0, 2], 'EVENT_469_set_action_script_sync_67'],
-        "subscript": []
+        "args": [[0, 2], 'EVENT_469_set_action_script_sync_67']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_14',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[1, 2], 'EVENT_469_set_action_script_sync_64'],
-        "subscript": []
+        "args": [[1, 2], 'EVENT_469_set_action_script_sync_64']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_15',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[1, 3], 'EVENT_469_set_action_script_sync_58'],
-        "subscript": []
+        "args": [[1, 3], 'EVENT_469_set_action_script_sync_58']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_16',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[7], 'EVENT_469_action_queue_async_20'],
-        "subscript": []
+        "args": [[7], 'EVENT_469_action_queue_async_20']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_17',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[6], 'EVENT_469_enable_controls_until_return_99'],
-        "subscript": []
+        "args": [[6], 'EVENT_469_enable_controls_until_return_99']
     },
     {
         "identifier": 'EVENT_469_pause_18',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_469_jmp_19',
         "command": 'jmp',
-        "args": ['EVENT_469_enable_controls_until_return_4'],
-        "subscript": []
+        "args": ['EVENT_469_enable_controls_until_return_4']
     },
     {
         "identifier": 'EVENT_469_action_queue_async_20',
@@ -159,56 +141,47 @@ script = [
     {
         "identifier": 'EVENT_469_set_7016_to_object_xyz_21',
         "command": 'set_7016_to_object_xyz',
-        "args": [0x80],
-        "subscript": []
+        "args": [0x80]
     },
     {
         "identifier": 'EVENT_469_set_short_mem_22',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x701a],
-        "subscript": []
+        "args": [0x7000, 0x701a]
     },
     {
         "identifier": 'EVENT_469_jmp_if_var_not_equals_short_23',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_469_enable_controls_until_return_4'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_469_enable_controls_until_return_4']
     },
     {
         "identifier": 'EVENT_469_db_24',
         "command": 'db',
-        "args": [0xfd, 0xca],
-        "subscript": []
+        "args": [0xfd, 0xca]
     },
     {
         "identifier": 'EVENT_469_jmp_if_var_equals_short_25',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_469_action_queue_async_30'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_469_action_queue_async_30']
     },
     {
         "identifier": 'EVENT_469_jmp_if_var_equals_short_26',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 512, 'EVENT_469_action_queue_async_30'],
-        "subscript": []
+        "args": [0x7000, 512, 'EVENT_469_action_queue_async_30']
     },
     {
         "identifier": 'EVENT_469_jmp_if_var_equals_short_27',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 531, 'EVENT_469_action_queue_async_30'],
-        "subscript": []
+        "args": [0x7000, 531, 'EVENT_469_action_queue_async_30']
     },
     {
         "identifier": 'EVENT_469_jmp_if_var_equals_short_28',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 256, 'EVENT_469_action_queue_async_30'],
-        "subscript": []
+        "args": [0x7000, 256, 'EVENT_469_action_queue_async_30']
     },
     {
         "identifier": 'EVENT_469_jmp_29',
         "command": 'jmp',
-        "args": ['EVENT_469_enable_controls_until_return_4'],
-        "subscript": []
+        "args": ['EVENT_469_enable_controls_until_return_4']
     },
     {
         "identifier": 'EVENT_469_action_queue_async_30',
@@ -217,424 +190,348 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_469_action_queue_async_30_SUBSCRIPT_run_away_shift_0',
-                "command": 'run_away_shift',
-                "args": []
+                "command": 'run_away_shift'
             }
         ]
     },
     {
         "identifier": 'EVENT_469_set_short_mem_31',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x703e],
-        "subscript": []
+        "args": [0x7000, 0x703e]
     },
     {
         "identifier": 'EVENT_469_add_32',
         "command": 'add',
-        "args": [0x7000, 4],
-        "subscript": []
+        "args": [0x7000, 4]
     },
     {
         "identifier": 'EVENT_469_mem_7000_and_const_33',
         "command": 'mem_7000_and_const',
-        "args": [0x0007],
-        "subscript": []
+        "args": [0x0007]
     },
     {
         "identifier": 'EVENT_469_set_short_mem_34',
         "command": 'set_short_mem',
-        "args": [0x703e, 0x7000],
-        "subscript": []
+        "args": [0x703e, 0x7000]
     },
     {
         "identifier": 'EVENT_469_enable_controls_until_return_35',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_469_jmp_if_var_equals_short_36',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_469_set_action_script_sync_48'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_469_set_action_script_sync_48']
     },
     {
         "identifier": 'EVENT_469_jmp_if_var_equals_short_37',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4, 'EVENT_469_set_action_script_sync_48'],
-        "subscript": []
+        "args": [0x7000, 4, 'EVENT_469_set_action_script_sync_48']
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_38',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 289],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 289]
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_39',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 288],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 288]
     },
     {
         "identifier": 'EVENT_469_unsync_action_script_40',
         "command": 'unsync_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_469_pause_41',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_469_jmp_if_mario_in_air_42',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_469_pause_41'],
-        "subscript": []
+        "args": ['EVENT_469_pause_41']
     },
     {
         "identifier": 'EVENT_469_apply_solidity_mod_43',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._034_YOSTER_ISLE, 2, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._034_YOSTER_ISLE, 2, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_469_apply_solidity_mod_44',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._034_YOSTER_ISLE, 4, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._034_YOSTER_ISLE, 4, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_469_apply_solidity_mod_45',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._034_YOSTER_ISLE, 6, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._034_YOSTER_ISLE, 6, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_469_enable_controls_46',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_469_ret_47',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_48',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 498],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 498]
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_49',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 497],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 497]
     },
     {
         "identifier": 'EVENT_469_unsync_action_script_50',
         "command": 'unsync_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_469_pause_51',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_469_jmp_if_mario_in_air_52',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_469_pause_51'],
-        "subscript": []
+        "args": ['EVENT_469_pause_51']
     },
     {
         "identifier": 'EVENT_469_apply_solidity_mod_53',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._034_YOSTER_ISLE, 2, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._034_YOSTER_ISLE, 2, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_469_apply_solidity_mod_54',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._034_YOSTER_ISLE, 4, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._034_YOSTER_ISLE, 4, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_469_apply_solidity_mod_55',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._034_YOSTER_ISLE, 6, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._034_YOSTER_ISLE, 6, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_469_enable_controls_56',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_469_ret_57',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_58',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 211],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 211]
     },
     {
         "identifier": 'EVENT_469_set_action_script_async_59',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 230],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 230]
     },
     {
         "identifier": 'EVENT_469_jmp_60',
         "command": 'jmp',
-        "args": ['EVENT_469_set_7000_to_pressed_button_7'],
-        "subscript": []
+        "args": ['EVENT_469_set_7000_to_pressed_button_7']
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_61',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 212],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 212]
     },
     {
         "identifier": 'EVENT_469_set_action_script_async_62',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 231],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 231]
     },
     {
         "identifier": 'EVENT_469_jmp_63',
         "command": 'jmp',
-        "args": ['EVENT_469_set_7000_to_pressed_button_7'],
-        "subscript": []
+        "args": ['EVENT_469_set_7000_to_pressed_button_7']
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_64',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 213],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 213]
     },
     {
         "identifier": 'EVENT_469_set_action_script_async_65',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 232],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 232]
     },
     {
         "identifier": 'EVENT_469_jmp_66',
         "command": 'jmp',
-        "args": ['EVENT_469_set_7000_to_pressed_button_7'],
-        "subscript": []
+        "args": ['EVENT_469_set_7000_to_pressed_button_7']
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_67',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 217],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 217]
     },
     {
         "identifier": 'EVENT_469_set_action_script_async_68',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 233],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 233]
     },
     {
         "identifier": 'EVENT_469_jmp_69',
         "command": 'jmp',
-        "args": ['EVENT_469_set_7000_to_pressed_button_7'],
-        "subscript": []
+        "args": ['EVENT_469_set_7000_to_pressed_button_7']
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_70',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 218],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 218]
     },
     {
         "identifier": 'EVENT_469_set_action_script_async_71',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 234],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 234]
     },
     {
         "identifier": 'EVENT_469_jmp_72',
         "command": 'jmp',
-        "args": ['EVENT_469_set_7000_to_pressed_button_7'],
-        "subscript": []
+        "args": ['EVENT_469_set_7000_to_pressed_button_7']
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_73',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 219],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 219]
     },
     {
         "identifier": 'EVENT_469_set_action_script_async_74',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 235],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 235]
     },
     {
         "identifier": 'EVENT_469_jmp_75',
         "command": 'jmp',
-        "args": ['EVENT_469_set_7000_to_pressed_button_7'],
-        "subscript": []
+        "args": ['EVENT_469_set_7000_to_pressed_button_7']
     },
     {
         "identifier": 'EVENT_469_set_bit_76',
         "command": 'set_bit',
-        "args": [0x7044, 7],
-        "subscript": []
+        "args": [0x7044, 7]
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_77',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 220],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 220]
     },
     {
         "identifier": 'EVENT_469_set_action_script_async_78',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 236],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 236]
     },
     {
         "identifier": 'EVENT_469_jmp_79',
         "command": 'jmp',
-        "args": ['EVENT_469_set_7000_to_pressed_button_7'],
-        "subscript": []
+        "args": ['EVENT_469_set_7000_to_pressed_button_7']
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_80',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 221],
-        "subscript": []
+        "args": [AreaObjects.NPC_9, 221]
     },
     {
         "identifier": 'EVENT_469_set_action_script_async_81',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 237],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 237]
     },
     {
         "identifier": 'EVENT_469_jmp_82',
         "command": 'jmp',
-        "args": ['EVENT_469_set_7000_to_pressed_button_7'],
-        "subscript": []
+        "args": ['EVENT_469_set_7000_to_pressed_button_7']
     },
     {
         "identifier": 'EVENT_469_set_7000_to_pressed_button_83',
-        "command": 'set_7000_to_pressed_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_pressed_button'
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_84',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[1], 'EVENT_469_set_action_script_sync_58'],
-        "subscript": []
+        "args": [[1], 'EVENT_469_set_action_script_sync_58']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_85',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[0], 'EVENT_469_set_action_script_sync_61'],
-        "subscript": []
+        "args": [[0], 'EVENT_469_set_action_script_sync_61']
     },
     {
         "identifier": 'EVENT_469_jmp_86',
         "command": 'jmp',
-        "args": ['EVENT_469_set_action_script_sync_70'],
-        "subscript": []
+        "args": ['EVENT_469_set_action_script_sync_70']
     },
     {
         "identifier": 'EVENT_469_set_7000_to_pressed_button_87',
-        "command": 'set_7000_to_pressed_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_pressed_button'
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_88',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[1], 'EVENT_469_set_action_script_sync_64'],
-        "subscript": []
+        "args": [[1], 'EVENT_469_set_action_script_sync_64']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_89',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[0], 'EVENT_469_set_action_script_sync_67'],
-        "subscript": []
+        "args": [[0], 'EVENT_469_set_action_script_sync_67']
     },
     {
         "identifier": 'EVENT_469_jmp_90',
         "command": 'jmp',
-        "args": ['EVENT_469_set_action_script_sync_73'],
-        "subscript": []
+        "args": ['EVENT_469_set_action_script_sync_73']
     },
     {
         "identifier": 'EVENT_469_set_7000_to_pressed_button_91',
-        "command": 'set_7000_to_pressed_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_pressed_button'
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_92',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[3], 'EVENT_469_set_action_script_sync_58'],
-        "subscript": []
+        "args": [[3], 'EVENT_469_set_action_script_sync_58']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_93',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[2], 'EVENT_469_set_action_script_sync_64'],
-        "subscript": []
+        "args": [[2], 'EVENT_469_set_action_script_sync_64']
     },
     {
         "identifier": 'EVENT_469_jmp_94',
         "command": 'jmp',
-        "args": ['EVENT_469_set_bit_76'],
-        "subscript": []
+        "args": ['EVENT_469_set_bit_76']
     },
     {
         "identifier": 'EVENT_469_set_7000_to_pressed_button_95',
-        "command": 'set_7000_to_pressed_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_pressed_button'
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_96',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[3], 'EVENT_469_set_action_script_sync_61'],
-        "subscript": []
+        "args": [[3], 'EVENT_469_set_action_script_sync_61']
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_any_bits_set_97',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[2], 'EVENT_469_set_action_script_sync_67'],
-        "subscript": []
+        "args": [[2], 'EVENT_469_set_action_script_sync_67']
     },
     {
         "identifier": 'EVENT_469_jmp_98',
         "command": 'jmp',
-        "args": ['EVENT_469_set_action_script_sync_80'],
-        "subscript": []
+        "args": ['EVENT_469_set_action_script_sync_80']
     },
     {
         "identifier": 'EVENT_469_enable_controls_until_return_99',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_469_action_queue_sync_100',
@@ -755,33 +652,27 @@ script = [
             },
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_reset_properties_20',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_469_pause_102',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_469_jmp_if_mario_in_air_103',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_469_pause_102'],
-        "subscript": []
+        "args": ['EVENT_469_pause_102']
     },
     {
         "identifier": 'EVENT_469_remember_last_object_104',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_469_jmp_105',
         "command": 'jmp',
-        "args": ['EVENT_469_enable_controls_until_return_4'],
-        "subscript": []
+        "args": ['EVENT_469_enable_controls_until_return_4']
     }
 ]

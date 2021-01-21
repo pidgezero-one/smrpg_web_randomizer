@@ -1,53 +1,44 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1364_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x708b, 5, 'EVENT_1364_jmp_if_bit_clear_73'],
-        "subscript": []
+        "args": [0x708b, 5, 'EVENT_1364_jmp_if_bit_clear_73']
     },
     {
         "identifier": 'EVENT_1364_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7053, 5, 'EVENT_1364_fade_out_to_black_async_44'],
-        "subscript": []
+        "args": [0x7053, 5, 'EVENT_1364_fade_out_to_black_async_44']
     },
     {
         "identifier": 'EVENT_1364_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x7053, 4, 'EVENT_1364_fade_out_to_black_async_44'],
-        "subscript": []
+        "args": [0x7053, 4, 'EVENT_1364_fade_out_to_black_async_44']
     },
     {
         "identifier": 'EVENT_1364_fade_out_to_black_async_3',
-        "command": 'fade_out_to_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_to_black_async'
     },
     {
         "identifier": 'EVENT_1364_pause_4',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1364_jmp_5',
         "command": 'jmp',
-        "args": ['EVENT_1281_enter_area_0'],
-        "subscript": []
+        "args": ['EVENT_1281_enter_area_0']
     },
     {
         "identifier": 'EVENT_1364_freeze_camera_6',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_1364_apply_solidity_mod_7',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 3, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 3, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_1364_action_queue_sync_8',
@@ -95,51 +86,41 @@ script = [
     },
     {
         "identifier": 'EVENT_1364_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1364_jmp_11',
         "command": 'jmp',
-        "args": ['EVENT_1364_play_music_default_volume_14'],
-        "subscript": []
+        "args": ['EVENT_1364_play_music_default_volume_14']
     },
     {
         "identifier": 'EVENT_1364_pause_12',
         "command": 'pause',
-        "args": [80],
-        "subscript": []
+        "args": [80]
     },
     {
         "identifier": 'EVENT_1364_fade_out_music_to_volume_13',
         "command": 'fade_out_music_to_volume',
-        "args": [0, 100],
-        "subscript": []
+        "args": [0, 100]
     },
     {
         "identifier": 'EVENT_1364_play_music_default_volume_14',
         "command": 'play_music_default_volume',
-        "args": [Music._32_AND_MY_NAMES_BOOSTER],
-        "subscript": []
+        "args": [Music._32_AND_MY_NAMES_BOOSTER]
     },
     {
         "identifier": 'EVENT_1364_pause_15',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1364_jmp_16',
         "command": 'jmp',
-        "args": ['EVENT_1364_action_queue_async_24'],
-        "subscript": []
+        "args": ['EVENT_1364_action_queue_async_24']
     },
     {
         "identifier": 'EVENT_1364_unsync_dialog_17',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_18',
@@ -148,13 +129,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1364_action_queue_async_18_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_18_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_18_SUBSCRIPT_jump_to_height_2',
@@ -166,14 +145,11 @@ script = [
     {
         "identifier": 'EVENT_1364_pause_19',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1364_pause_script_resume_on_next_dialog_page_a_20',
-        "command": 'pause_script_resume_on_next_dialog_page_a',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_resume_on_next_dialog_page_a'
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_21',
@@ -182,22 +158,17 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1364_action_queue_async_21_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_1364_unsync_dialog_22',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_1364_close_dialog_23',
-        "command": 'close_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'close_dialog'
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_24',
@@ -206,8 +177,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1364_action_queue_async_24_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_24_SUBSCRIPT_set_animation_speed_1',
@@ -226,8 +196,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_24_SUBSCRIPT_face_northeast_4',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_24_SUBSCRIPT_pause_5',
@@ -291,13 +260,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_24_SUBSCRIPT_reset_properties_17',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_24_SUBSCRIPT_face_northwest_18',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_24_SUBSCRIPT_pause_19',
@@ -329,56 +296,47 @@ script = [
     {
         "identifier": 'EVENT_1364_pause_25',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1364_play_sound_26',
         "command": 'play_sound',
-        "args": [Sounds._090_CURTAIN, 6],
-        "subscript": []
+        "args": [Sounds._090_CURTAIN, 6]
     },
     {
         "identifier": 'EVENT_1364_apply_tile_mod_27',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 37, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 37, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1364_pause_28',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1364_apply_tile_mod_29',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1364_pause_30',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1364_apply_tile_mod_31',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 39, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 39, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1364_pause_32',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1364_pause_33',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_34',
@@ -402,8 +360,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_34_SUBSCRIPT_face_southeast_3',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_34_SUBSCRIPT_pause_4',
@@ -425,206 +382,163 @@ script = [
     {
         "identifier": 'EVENT_1364_play_sound_35',
         "command": 'play_sound',
-        "args": [Sounds._090_CURTAIN, 6],
-        "subscript": []
+        "args": [Sounds._090_CURTAIN, 6]
     },
     {
         "identifier": 'EVENT_1364_apply_tile_mod_36',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1364_pause_37',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1364_apply_tile_mod_38',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 37, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 37, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1364_pause_39',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1364_apply_tile_mod_40',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 36, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 36, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1364_pause_41',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1364_jmp_42',
         "command": 'jmp',
-        "args": ['EVENT_1358_remove_from_level_0'],
-        "subscript": []
+        "args": ['EVENT_1358_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_1364_ret_43',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1364_fade_out_to_black_async_44',
-        "command": 'fade_out_to_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_to_black_async'
     },
     {
         "identifier": 'EVENT_1364_fade_out_music_to_volume_45',
         "command": 'fade_out_music_to_volume',
-        "args": [0, 0],
-        "subscript": []
+        "args": [0, 0]
     },
     {
         "identifier": 'EVENT_1364_start_battle_46',
         "command": 'start_battle',
-        "args": [0x00b1, 17],
-        "subscript": []
+        "args": [0x00b1, 17]
     },
     {
         "identifier": 'EVENT_1364_jmp_if_bit_clear_47',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7040, 0, 'EVENT_1364_fade_out_music_to_volume_49'],
-        "subscript": []
+        "args": [0x7040, 0, 'EVENT_1364_fade_out_music_to_volume_49']
     },
     {
         "identifier": 'EVENT_1364_reset_and_choose_game_48',
-        "command": 'reset_and_choose_game',
-        "args": [],
-        "subscript": []
+        "command": 'reset_and_choose_game'
     },
     {
         "identifier": 'EVENT_1364_fade_out_music_to_volume_49',
         "command": 'fade_out_music_to_volume',
-        "args": [0, 0],
-        "subscript": []
+        "args": [0, 0]
     },
     {
         "identifier": 'EVENT_1364_remove_from_level_50',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._039_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLING_ROOM],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, Rooms._039_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLING_ROOM]
     },
     {
         "identifier": 'EVENT_1364_set_bit_51',
         "command": 'set_bit',
-        "args": [0x7048, 6],
-        "subscript": []
+        "args": [0x7048, 6]
     },
     {
         "identifier": 'EVENT_1364_set_bit_52',
         "command": 'set_bit',
-        "args": [0x7053, 7],
-        "subscript": []
+        "args": [0x7053, 7]
     },
     {
         "identifier": 'EVENT_1364_set_bit_53',
         "command": 'set_bit',
-        "args": [0x7089, 2],
-        "subscript": []
+        "args": [0x7089, 2]
     },
     {
         "identifier": 'EVENT_1364_enter_area_54',
         "command": 'enter_area',
-        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, RadialDirections.SOUTHWEST, 5, 114, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, RadialDirections.SOUTHWEST, 5, 114, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_1364_stop_sound_55',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1364_set_short_56',
         "command": 'set_short',
-        "args": [0x700a, 0x00d0],
-        "subscript": []
+        "args": [0x700a, 0x00d0]
     },
     {
         "identifier": 'EVENT_1364_run_event_as_subroutine_57',
         "command": 'run_event_as_subroutine',
-        "args": [720],
-        "subscript": []
+        "args": [720]
     },
     {
         "identifier": 'EVENT_1364_restore_all_hp_58',
-        "command": 'restore_all_hp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_hp'
     },
     {
         "identifier": 'EVENT_1364_restore_all_fp_59',
-        "command": 'restore_all_fp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_fp'
     },
     {
         "identifier": 'EVENT_1364_set_bit_60',
         "command": 'set_bit',
-        "args": [0x708b, 5],
-        "subscript": []
+        "args": [0x708b, 5]
     },
     {
         "identifier": 'EVENT_1364_ret_61',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1364_play_music_default_volume_62',
         "command": 'play_music_default_volume',
-        "args": [Music._37_BOOSTER_HILL_START],
-        "subscript": []
+        "args": [Music._37_BOOSTER_HILL_START]
     },
     {
         "identifier": 'EVENT_1364_jmp_63',
         "command": 'jmp',
-        "args": ['EVENT_1364_restore_all_hp_58'],
-        "subscript": []
+        "args": ['EVENT_1364_restore_all_hp_58']
     },
     {
         "identifier": 'EVENT_1364_remove_from_current_level_64',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_1364_fade_in_from_black_async_65',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1364_play_sound_66',
         "command": 'play_sound',
-        "args": [Sounds._019_LONG_FALL, 6],
-        "subscript": []
+        "args": [Sounds._019_LONG_FALL, 6]
     },
     {
         "identifier": 'EVENT_1364_pause_67',
         "command": 'pause',
-        "args": [50],
-        "subscript": []
+        "args": [50]
     },
     {
         "identifier": 'EVENT_1364_freeze_camera_68',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_69',
@@ -673,8 +587,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_69_SUBSCRIPT_reset_properties_8',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_69_SUBSCRIPT_pause_9',
@@ -688,8 +601,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_69_SUBSCRIPT_sequence_looping_on_11',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_69_SUBSCRIPT_play_sound_12',
@@ -728,39 +640,32 @@ script = [
             },
             {
                 "identifier": 'EVENT_1364_action_queue_async_69_SUBSCRIPT_visibility_off_19',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_1364_pause_70',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1364_enter_area_71',
         "command": 'enter_area',
-        "args": [Rooms._054_BOOSTER_HILL_____DUMMY, RadialDirections.NORTHWEST, 7, 57, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._054_BOOSTER_HILL_____DUMMY, RadialDirections.NORTHWEST, 7, 57, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_1364_ret_72',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1364_jmp_if_bit_clear_73',
         "command": 'jmp_if_bit_clear',
-        "args": [0x704c, 6, 'EVENT_1283_enter_area_0'],
-        "subscript": []
+        "args": [0x704c, 6, 'EVENT_1283_enter_area_0']
     },
     {
         "identifier": 'EVENT_1364_jmp_74',
         "command": 'jmp',
-        "args": ['EVENT_1282_enter_area_0'],
-        "subscript": []
+        "args": ['EVENT_1282_enter_area_0']
     }
 ]

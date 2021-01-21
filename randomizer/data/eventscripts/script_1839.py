@@ -1,29 +1,26 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1839_run_event_as_subroutine_0',
         "command": 'run_event_as_subroutine',
-        "args": [1840],
-        "subscript": []
+        "args": [1840]
     },
     {
         "identifier": 'EVENT_1839_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1839_ret_7'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_1839_ret_7']
     },
     {
         "identifier": 'EVENT_1839_set_bit_2',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_1839_play_sound_3',
         "command": 'play_sound',
-        "args": [Sounds._009_GREEN_SWITCH, 6],
-        "subscript": []
+        "args": [Sounds._009_GREEN_SWITCH, 6]
     },
     {
         "identifier": 'EVENT_1839_action_queue_sync_4',
@@ -60,8 +57,7 @@ script = [
     {
         "identifier": 'EVENT_1839_pause_5',
         "command": 'pause',
-        "args": [8],
-        "subscript": []
+        "args": [8]
     },
     {
         "identifier": 'EVENT_1839_action_queue_sync_6',
@@ -70,8 +66,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1839_action_queue_sync_6_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_1839_action_queue_sync_6_SUBSCRIPT_set_animation_speed_1',
@@ -87,14 +82,11 @@ script = [
     },
     {
         "identifier": 'EVENT_1839_ret_7',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1839_non_embedded_action_queue_8',
         "command": 'non_embedded_action_queue',
-        "args": [],
         "subscript": [
             {
                 "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_set_animation_speed_0',
@@ -103,8 +95,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_walk_1_step_northeast_1',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_1839_non_embedded_action_queue_8_SUBSCRIPT_shift_z_up_steps_2',

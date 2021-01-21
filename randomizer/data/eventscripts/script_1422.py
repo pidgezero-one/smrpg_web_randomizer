@@ -1,59 +1,51 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1422_disable_trigger_0',
         "command": 'disable_trigger',
-        "args": [AreaObjects.NPC_7],
-        "subscript": []
+        "args": [AreaObjects.NPC_7]
     },
     {
         "identifier": 'EVENT_1422_pause_action_script_1',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_7],
-        "subscript": []
+        "args": [AreaObjects.NPC_7]
     },
     {
         "identifier": 'EVENT_1422_pause_action_script_2',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_8],
-        "subscript": []
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_1422_start_battle_3',
         "command": 'start_battle',
-        "args": [0x0004, 9],
-        "subscript": []
+        "args": [0x0004, 9]
     },
     {
         "identifier": 'EVENT_1422_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_1422_set_action_script_async_7'],
-        "subscript": []
+        "args": [0x7040, 1, 'EVENT_1422_set_action_script_async_7']
     },
     {
         "identifier": 'EVENT_1422_jmp_if_bit_set_5',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 0, 'EVENT_1422_reset_and_choose_game_37'],
-        "subscript": []
+        "args": [0x7040, 0, 'EVENT_1422_reset_and_choose_game_37']
     },
     {
         "identifier": 'EVENT_1422_jmp_6',
         "command": 'jmp',
-        "args": ['EVENT_1422_freeze_all_npcs_until_return_15'],
-        "subscript": []
+        "args": ['EVENT_1422_freeze_all_npcs_until_return_15']
     },
     {
         "identifier": 'EVENT_1422_set_action_script_async_7',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_7, 15],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 15]
     },
     {
         "identifier": 'EVENT_1422_set_action_script_async_8',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_8, 15],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 15]
     },
     {
         "identifier": 'EVENT_1422_action_queue_sync_9',
@@ -62,8 +54,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1422_action_queue_sync_9_SUBSCRIPT_bpl_26_27_28_0',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_9_SUBSCRIPT_transfer_to_xyzf_1',
@@ -72,13 +63,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_9_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_9_SUBSCRIPT_ret_3',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
@@ -89,8 +78,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1422_action_queue_sync_10_SUBSCRIPT_bpl_26_27_28_0',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_10_SUBSCRIPT_transfer_to_xyzf_1',
@@ -99,13 +87,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_10_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_10_SUBSCRIPT_ret_3',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
@@ -121,39 +107,30 @@ script = [
             },
             {
                 "identifier": 'EVENT_1422_action_queue_async_11_SUBSCRIPT_face_south_1',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             },
             {
                 "identifier": 'EVENT_1422_action_queue_async_11_SUBSCRIPT_ret_2',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
     {
         "identifier": 'EVENT_1422_run_background_event_12',
         "command": 'run_background_event',
-        "args": [1432, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [1432, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_1422_fade_in_from_black_async_13',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1422_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1422_freeze_all_npcs_until_return_15',
-        "command": 'freeze_all_npcs_until_return',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_all_npcs_until_return'
     },
     {
         "identifier": 'EVENT_1422_action_queue_sync_16',
@@ -162,13 +139,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1422_action_queue_sync_16_SUBSCRIPT_floating_on_0',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_16_SUBSCRIPT_bpl_26_27_28_1',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_16_SUBSCRIPT_set_priority_2',
@@ -187,8 +162,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_16_SUBSCRIPT_face_southwest_5',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_16_SUBSCRIPT_set_animation_speed_6',
@@ -197,8 +171,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1422_action_queue_sync_16_SUBSCRIPT_sequence_looping_on_7',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             }
         ]
     },
@@ -214,58 +187,48 @@ script = [
             },
             {
                 "identifier": 'EVENT_1422_action_queue_async_17_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_1422_remove_from_current_level_18',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_8],
-        "subscript": []
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_1422_remove_from_level_19',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_8, Rooms._204_MUSHROOM_WAY_AREA_02],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, Rooms._204_MUSHROOM_WAY_AREA_02]
     },
     {
         "identifier": 'EVENT_1422_fade_in_from_black_async_20',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1422_pause_21',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1422_set_22',
         "command": 'set',
-        "args": [0x70a7, 115],
-        "subscript": []
+        "args": [0x70a7, 115]
     },
     {
         "identifier": 'EVENT_1422_set_23',
         "command": 'set',
-        "args": [0x7000, 524],
-        "subscript": []
+        "args": [0x7000, 524]
     },
     {
         "identifier": 'EVENT_1422_run_event_as_subroutine_24',
         "command": 'run_event_as_subroutine',
-        "args": [3828],
-        "subscript": []
+        "args": [3828]
     },
     {
         "identifier": 'EVENT_1422_pause_25',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1422_action_queue_async_26',
@@ -294,81 +257,60 @@ script = [
             },
             {
                 "identifier": 'EVENT_1422_action_queue_async_26_SUBSCRIPT_visibility_off_4',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_1422_remove_from_current_level_27',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7],
-        "subscript": []
+        "args": [AreaObjects.NPC_7]
     },
     {
         "identifier": 'EVENT_1422_remove_from_level_28',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_7, Rooms._204_MUSHROOM_WAY_AREA_02],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, Rooms._204_MUSHROOM_WAY_AREA_02]
     },
     {
         "identifier": 'EVENT_1422_summon_to_level_29',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_5, Rooms._205_MUSHROOM_WAY_AREA_03],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, Rooms._205_MUSHROOM_WAY_AREA_03]
     },
     {
         "identifier": 'EVENT_1422_set_bit_30',
         "command": 'set_bit',
-        "args": [0x7052, 5],
-        "subscript": []
+        "args": [0x7052, 5]
     },
     {
         "identifier": 'EVENT_1422_unfreeze_all_npcs_31',
-        "command": 'unfreeze_all_npcs',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_all_npcs'
     },
     {
         "identifier": 'EVENT_1422_stop_sound_32',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1422_stop_sound_33',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1422_stop_sound_34',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1422_stop_sound_35',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1422_ret_36',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1422_reset_and_choose_game_37',
-        "command": 'reset_and_choose_game',
-        "args": [],
-        "subscript": []
+        "command": 'reset_and_choose_game'
     },
     {
         "identifier": 'EVENT_1422_ret_38',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

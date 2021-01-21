@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1591_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x704e, 6, 'EVENT_1591_ret_5'],
-        "subscript": []
+        "args": [0x704e, 6, 'EVENT_1591_ret_5']
     },
     {
         "identifier": 'EVENT_1591_action_queue_sync_1',
@@ -14,8 +14,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1591_action_queue_sync_1_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1591_action_queue_sync_1_SUBSCRIPT_jump_to_height_silent_1',
@@ -29,8 +28,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1591_action_queue_sync_1_SUBSCRIPT_walk_1_step_southwest_3',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_1591_action_queue_sync_1_SUBSCRIPT_set_animation_speed_4',
@@ -39,8 +37,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1591_action_queue_sync_1_SUBSCRIPT_floating_on_5',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             }
         ]
     },
@@ -78,13 +75,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1591_action_queue_sync_3_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1591_action_queue_sync_3_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_1591_action_queue_sync_3_SUBSCRIPT_play_sound_2',
@@ -143,8 +138,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1591_action_queue_sync_3_SUBSCRIPT_end_loop_13',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_1591_action_queue_sync_3_SUBSCRIPT_start_loop_n_times_14',
@@ -178,21 +172,17 @@ script = [
             },
             {
                 "identifier": 'EVENT_1591_action_queue_sync_3_SUBSCRIPT_end_loop_20',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             }
         ]
     },
     {
         "identifier": 'EVENT_1591_set_bit_4',
         "command": 'set_bit',
-        "args": [0x704e, 6],
-        "subscript": []
+        "args": [0x704e, 6]
     },
     {
         "identifier": 'EVENT_1591_ret_5',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

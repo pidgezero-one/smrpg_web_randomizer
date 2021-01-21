@@ -1,293 +1,242 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_289_set_7000_to_current_level_0',
-        "command": 'set_7000_to_current_level',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_current_level'
     },
     {
         "identifier": 'EVENT_289_jmp_if_var_equals_short_1',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 485, 'EVENT_289_set_short_8'],
-        "subscript": []
+        "args": [0x7000, 485, 'EVENT_289_set_short_8']
     },
     {
         "identifier": 'EVENT_289_jmp_if_var_equals_short_2',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 493, 'EVENT_289_set_short_11'],
-        "subscript": []
+        "args": [0x7000, 493, 'EVENT_289_set_short_11']
     },
     {
         "identifier": 'EVENT_289_jmp_if_var_equals_short_3',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 85, 'EVENT_289_jmp_if_bit_set_15'],
-        "subscript": []
+        "args": [0x7000, 85, 'EVENT_289_jmp_if_bit_set_15']
     },
     {
         "identifier": 'EVENT_289_jmp_if_var_equals_short_4',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 86, 'EVENT_289_set_bit_14'],
-        "subscript": []
+        "args": [0x7000, 86, 'EVENT_289_set_bit_14']
     },
     {
         "identifier": 'EVENT_289_set_short_5',
         "command": 'set_short',
-        "args": [0x7024, 0x0003],
-        "subscript": []
+        "args": [0x7024, 0x0003]
     },
     {
         "identifier": 'EVENT_289_set_bit_6',
         "command": 'set_bit',
-        "args": [0x7042, 7],
-        "subscript": []
+        "args": [0x7042, 7]
     },
     {
         "identifier": 'EVENT_289_jmp_to_event_7',
         "command": 'jmp_to_event',
-        "args": [273],
-        "subscript": []
+        "args": [273]
     },
     {
         "identifier": 'EVENT_289_set_short_8',
         "command": 'set_short',
-        "args": [0x7024, 0x0003],
-        "subscript": []
+        "args": [0x7024, 0x0003]
     },
     {
         "identifier": 'EVENT_289_set_bit_9',
         "command": 'set_bit',
-        "args": [0x7084, 5],
-        "subscript": []
+        "args": [0x7084, 5]
     },
     {
         "identifier": 'EVENT_289_jmp_to_event_10',
         "command": 'jmp_to_event',
-        "args": [273],
-        "subscript": []
+        "args": [273]
     },
     {
         "identifier": 'EVENT_289_set_short_11',
         "command": 'set_short',
-        "args": [0x7024, 0x0003],
-        "subscript": []
+        "args": [0x7024, 0x0003]
     },
     {
         "identifier": 'EVENT_289_set_bit_12',
         "command": 'set_bit',
-        "args": [0x705d, 6],
-        "subscript": []
+        "args": [0x705d, 6]
     },
     {
         "identifier": 'EVENT_289_jmp_to_event_13',
         "command": 'jmp_to_event',
-        "args": [273],
-        "subscript": []
+        "args": [273]
     },
     {
         "identifier": 'EVENT_289_set_bit_14',
         "command": 'set_bit',
-        "args": [0x7044, 2],
-        "subscript": []
+        "args": [0x7044, 2]
     },
     {
         "identifier": 'EVENT_289_jmp_if_bit_set_15',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 7, 'EVENT_289_set_7010_to_object_xyz_36'],
-        "subscript": []
+        "args": [0x7043, 7, 'EVENT_289_set_7010_to_object_xyz_36']
     },
     {
         "identifier": 'EVENT_289_jmp_if_bit_set_16',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 5, 'EVENT_289_set_7010_to_object_xyz_36'],
-        "subscript": []
+        "args": [0x7044, 5, 'EVENT_289_set_7010_to_object_xyz_36']
     },
     {
         "identifier": 'EVENT_289_run_dialog_17',
         "command": 'run_dialog',
-        "args": [766, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [766, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_289_jmp_if_dialog_option_b_18',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_289_pause_29'],
-        "subscript": []
+        "args": ['EVENT_289_pause_29']
     },
     {
         "identifier": 'EVENT_289_pause_19',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_289_run_event_as_subroutine_20',
         "command": 'run_event_as_subroutine',
-        "args": [3587],
-        "subscript": []
+        "args": [3587]
     },
     {
         "identifier": 'EVENT_289_set_action_script_async_21',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 670]
     },
     {
         "identifier": 'EVENT_289_pause_22',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_289_run_dialog_23',
         "command": 'run_dialog',
-        "args": [767, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [767, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_289_jmp_if_bit_set_24',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 2, 'EVENT_289_set_bit_27'],
-        "subscript": []
+        "args": [0x7044, 2, 'EVENT_289_set_bit_27']
     },
     {
         "identifier": 'EVENT_289_set_bit_25',
         "command": 'set_bit',
-        "args": [0x7084, 6],
-        "subscript": []
+        "args": [0x7084, 6]
     },
     {
         "identifier": 'EVENT_289_jmp_26',
         "command": 'jmp',
-        "args": ['EVENT_273_fade_out_music_to_volume_17'],
-        "subscript": []
+        "args": ['EVENT_273_fade_out_music_to_volume_17']
     },
     {
         "identifier": 'EVENT_289_set_bit_27',
         "command": 'set_bit',
-        "args": [0x7061, 1],
-        "subscript": []
+        "args": [0x7061, 1]
     },
     {
         "identifier": 'EVENT_289_jmp_28',
         "command": 'jmp',
-        "args": ['EVENT_273_fade_out_music_to_volume_17'],
-        "subscript": []
+        "args": ['EVENT_273_fade_out_music_to_volume_17']
     },
     {
         "identifier": 'EVENT_289_pause_29',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_289_run_event_as_subroutine_30',
         "command": 'run_event_as_subroutine',
-        "args": [3587],
-        "subscript": []
+        "args": [3587]
     },
     {
         "identifier": 'EVENT_289_set_action_script_async_31',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 671]
     },
     {
         "identifier": 'EVENT_289_remember_last_object_32',
-        "command": 'remember_last_object',
-        "args": [],
-        "subscript": []
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_289_pause_33',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_289_run_dialog_34',
         "command": 'run_dialog',
-        "args": [768, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [768, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_289_ret_35',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_289_set_7010_to_object_xyz_36',
         "command": 'set_7010_to_object_xyz',
-        "args": [0x94],
-        "subscript": []
+        "args": [0x94]
     },
     {
         "identifier": 'EVENT_289_mem_compare_37',
         "command": 'mem_compare',
-        "args": [0x7010, 5],
-        "subscript": []
+        "args": [0x7010, 5]
     },
     {
         "identifier": 'EVENT_289_jmp_if_comparison_result_is_lesser_38',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_256_ret_0'],
-        "subscript": []
+        "args": ['EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_289_jmp_if_bit_set_39',
         "command": 'jmp_if_bit_set',
-        "args": [0x7056, 3, 'EVENT_289_jmp_if_bit_set_15'],
-        "subscript": []
+        "args": [0x7056, 3, 'EVENT_289_jmp_if_bit_set_15']
     },
     {
         "identifier": 'EVENT_289_enable_controls_until_return_40',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_289_unsync_dialog_41',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_289_pause_action_script_42',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_289_pause_action_script_43',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_289_jmp_if_bit_set_44',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 0, 'EVENT_289_run_dialog_63'],
-        "subscript": []
+        "args": [0x7044, 0, 'EVENT_289_run_dialog_63']
     },
     {
         "identifier": 'EVENT_289_run_dialog_45',
         "command": 'run_dialog',
-        "args": [776, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [776, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_289_jmp_if_dialog_option_b_46',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_289_pause_55'],
-        "subscript": []
+        "args": ['EVENT_289_pause_55']
     },
     {
         "identifier": 'EVENT_289_pause_47',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_289_action_queue_async_48',
@@ -316,8 +265,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_48_SUBSCRIPT_end_loop_4',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_48_SUBSCRIPT_jump_to_height_5',
@@ -344,44 +292,36 @@ script = [
     {
         "identifier": 'EVENT_289_pause_49',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_289_run_dialog_50',
         "command": 'run_dialog',
-        "args": [777, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [777, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_289_resume_action_script_51',
         "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_289_resume_action_script_52',
         "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_289_enable_controls_until_return_53',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_289_ret_54',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_289_pause_55',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_289_action_queue_async_56',
@@ -555,8 +495,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_reset_properties_33',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_solidity_bits_34',
@@ -568,67 +507,54 @@ script = [
     {
         "identifier": 'EVENT_289_pause_57',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_289_run_dialog_58',
         "command": 'run_dialog',
-        "args": [778, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [778, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_289_enable_controls_until_return_59',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_289_resume_action_script_60',
         "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_289_resume_action_script_61',
         "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_289_ret_62',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_289_run_dialog_63',
         "command": 'run_dialog',
-        "args": [782, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [782, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_289_resume_action_script_64',
         "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_289_resume_action_script_65',
         "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_289_enable_controls_until_return_66',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_289_ret_67',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

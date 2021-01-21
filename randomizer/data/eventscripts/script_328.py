@@ -1,71 +1,61 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_328_clear_bit_0',
         "command": 'clear_bit',
-        "args": [0x7042, 0],
-        "subscript": []
+        "args": [0x7042, 0]
     },
     {
         "identifier": 'EVENT_328_set_bit_7_offset_1',
         "command": 'set_bit_7_offset',
-        "args": [0x0158],
-        "subscript": []
+        "args": [0x0158]
     },
     {
         "identifier": 'EVENT_328_jmp_if_bit_clear_2',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7081, 3, 'EVENT_262_jmp_if_bit_clear_0'],
-        "subscript": []
+        "args": [0x7081, 3, 'EVENT_262_jmp_if_bit_clear_0']
     },
     {
         "identifier": 'EVENT_328_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x7081, 6, 'EVENT_328_jmp_if_bit_set_19'],
-        "subscript": []
+        "args": [0x7081, 6, 'EVENT_328_jmp_if_bit_set_19']
     },
     {
         "identifier": 'EVENT_328_remove_from_current_level_4',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_328_remove_from_current_level_5',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5],
-        "subscript": []
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_328_remove_from_current_level_6',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6],
-        "subscript": []
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_328_pause_action_script_7',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_328_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7081, 5, 'EVENT_328_summon_to_current_level_10'],
-        "subscript": []
+        "args": [0x7081, 5, 'EVENT_328_summon_to_current_level_10']
     },
     {
         "identifier": 'EVENT_328_jmp_to_event_9',
         "command": 'jmp_to_event',
-        "args": [262],
-        "subscript": []
+        "args": [262]
     },
     {
         "identifier": 'EVENT_328_summon_to_current_level_10',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_10],
-        "subscript": []
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_328_action_queue_sync_11',
@@ -92,8 +82,7 @@ script = [
     {
         "identifier": 'EVENT_328_jmp_if_bit_set_12',
         "command": 'jmp_if_bit_set',
-        "args": [0x7082, 1, 'EVENT_328_set_action_script_sync_16'],
-        "subscript": []
+        "args": [0x7082, 1, 'EVENT_328_set_action_script_sync_16']
     },
     {
         "identifier": 'EVENT_328_action_queue_sync_13',
@@ -107,8 +96,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_328_action_queue_sync_13_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
@@ -129,69 +117,58 @@ script = [
             },
             {
                 "identifier": 'EVENT_328_action_queue_sync_14_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_328_set_action_script_sync_15',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 128],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 128]
     },
     {
         "identifier": 'EVENT_328_set_action_script_sync_16',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 21],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 21]
     },
     {
         "identifier": 'EVENT_328_palette_set_17',
         "command": 'palette_set',
-        "args": [17, 7],
-        "subscript": []
+        "args": [17, 7]
     },
     {
         "identifier": 'EVENT_328_jmp_to_event_18',
         "command": 'jmp_to_event',
-        "args": [262],
-        "subscript": []
+        "args": [262]
     },
     {
         "identifier": 'EVENT_328_jmp_if_bit_set_19',
         "command": 'jmp_if_bit_set',
-        "args": [0x7082, 2, 'EVENT_262_jmp_if_bit_clear_0'],
-        "subscript": []
+        "args": [0x7082, 2, 'EVENT_262_jmp_if_bit_clear_0']
     },
     {
         "identifier": 'EVENT_328_pause_action_script_20',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_8],
-        "subscript": []
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_328_set_action_script_sync_21',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 100],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 100]
     },
     {
         "identifier": 'EVENT_328_jmp_if_bit_clear_22',
         "command": 'jmp_if_bit_clear',
-        "args": [0x709c, 1, 'EVENT_262_jmp_if_bit_clear_0'],
-        "subscript": []
+        "args": [0x709c, 1, 'EVENT_262_jmp_if_bit_clear_0']
     },
     {
         "identifier": 'EVENT_328_remove_from_current_level_23',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6],
-        "subscript": []
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_328_jmp_to_event_24',
         "command": 'jmp_to_event',
-        "args": [262],
-        "subscript": []
+        "args": [262]
     }
 ]

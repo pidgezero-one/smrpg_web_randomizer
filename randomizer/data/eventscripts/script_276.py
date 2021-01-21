@@ -1,29 +1,26 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_276_set_7016_to_object_xyz_0',
         "command": 'set_7016_to_object_xyz',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_276_add_short_1',
         "command": 'add_short',
-        "args": [0x7016, 0xf900],
-        "subscript": []
+        "args": [0x7016, 0xf900]
     },
     {
         "identifier": 'EVENT_276_add_short_2',
         "command": 'add_short',
-        "args": [0x7018, 0xf900],
-        "subscript": []
+        "args": [0x7018, 0xf900]
     },
     {
         "identifier": 'EVENT_276_db_3',
         "command": 'db',
-        "args": [0xfd, 0xc7],
-        "subscript": []
+        "args": [0xfd, 0xc7]
     },
     {
         "identifier": 'EVENT_276_action_queue_async_4',
@@ -80,19 +77,15 @@ script = [
     {
         "identifier": 'EVENT_276_clear_bit_5',
         "command": 'clear_bit',
-        "args": [0x7049, 2],
-        "subscript": []
+        "args": [0x7049, 2]
     },
     {
         "identifier": 'EVENT_276_clear_bit_6',
         "command": 'clear_bit',
-        "args": [0x7049, 6],
-        "subscript": []
+        "args": [0x7049, 6]
     },
     {
         "identifier": 'EVENT_276_ret_7',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

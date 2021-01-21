@@ -1,41 +1,35 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2563_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x708c, 4, 'EVENT_2563_freeze_camera_29'],
-        "subscript": []
+        "args": [0x708c, 4, 'EVENT_2563_freeze_camera_29']
     },
     {
         "identifier": 'EVENT_2563_set_bit_1',
         "command": 'set_bit',
-        "args": [0x708c, 4],
-        "subscript": []
+        "args": [0x708c, 4]
     },
     {
         "identifier": 'EVENT_2563_set_bit_2',
         "command": 'set_bit',
-        "args": [0x707f, 1],
-        "subscript": []
+        "args": [0x707f, 1]
     },
     {
         "identifier": 'EVENT_2563_play_sound_3',
         "command": 'play_sound',
-        "args": [Sounds._049_BIG_SHELL_HIT, 6],
-        "subscript": []
+        "args": [Sounds._049_BIG_SHELL_HIT, 6]
     },
     {
         "identifier": 'EVENT_2563_freeze_camera_4',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2563_pause_5',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2563_action_queue_async_6',
@@ -49,40 +43,34 @@ script = [
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_6_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2563_pause_7',
         "command": 'pause',
-        "args": [80],
-        "subscript": []
+        "args": [80]
     },
     {
         "identifier": 'EVENT_2563_play_sound_8',
         "command": 'play_sound',
-        "args": [Sounds._127_LIGHT_RATTLE, 6],
-        "subscript": []
+        "args": [Sounds._127_LIGHT_RATTLE, 6]
     },
     {
         "identifier": 'EVENT_2563_summon_to_current_level_9',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2563_set_action_script_sync_10',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 15],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 15]
     },
     {
         "identifier": 'EVENT_2563_play_sound_11',
         "command": 'play_sound',
-        "args": [Sounds._128_FLOATING_HOVERING, 6],
-        "subscript": []
+        "args": [Sounds._128_FLOATING_HOVERING, 6]
     },
     {
         "identifier": 'EVENT_2563_action_queue_sync_12',
@@ -138,14 +126,12 @@ script = [
     {
         "identifier": 'EVENT_2563_pause_15',
         "command": 'pause',
-        "args": [40],
-        "subscript": []
+        "args": [40]
     },
     {
         "identifier": 'EVENT_2563_summon_to_current_level_16',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_2563_action_queue_async_17',
@@ -172,20 +158,17 @@ script = [
     {
         "identifier": 'EVENT_2563_pause_18',
         "command": 'pause',
-        "args": [8],
-        "subscript": []
+        "args": [8]
     },
     {
         "identifier": 'EVENT_2563_play_sound_19',
         "command": 'play_sound',
-        "args": [Sounds._000_SILENCE, 6],
-        "subscript": []
+        "args": [Sounds._000_SILENCE, 6]
     },
     {
         "identifier": 'EVENT_2563_pause_20',
         "command": 'pause',
-        "args": [48],
-        "subscript": []
+        "args": [48]
     },
     {
         "identifier": 'EVENT_2563_action_queue_async_21',
@@ -202,8 +185,7 @@ script = [
     {
         "identifier": 'EVENT_2563_pause_22',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2563_action_queue_sync_23',
@@ -217,46 +199,37 @@ script = [
             },
             {
                 "identifier": 'EVENT_2563_action_queue_sync_23_SUBSCRIPT_reset_properties_1',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_2563_run_dialog_24',
         "command": 'run_dialog',
-        "args": [3162, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3162, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2563_stop_embedded_action_script_25',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_2563_set_action_script_async_26',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2563_unfreeze_camera_27',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2563_jmp_28',
         "command": 'jmp',
-        "args": ['EVENT_2563_ret_38'],
-        "subscript": []
+        "args": ['EVENT_2563_ret_38']
     },
     {
         "identifier": 'EVENT_2563_freeze_camera_29',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2563_action_queue_sync_30',
@@ -316,8 +289,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_33_SUBSCRIPT_face_northeast_3',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_33_SUBSCRIPT_pause_4',
@@ -346,8 +318,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_33_SUBSCRIPT_floating_off_9',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_33_SUBSCRIPT_play_sound_10',
@@ -356,8 +327,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_33_SUBSCRIPT_shadow_off_11',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_33_SUBSCRIPT_db_12',
@@ -381,13 +351,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_33_SUBSCRIPT_bpl_26_27_28_16',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_33_SUBSCRIPT_shadow_off_17',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_33_SUBSCRIPT_set_sprite_sequence_18',
@@ -440,27 +408,21 @@ script = [
             },
             {
                 "identifier": 'EVENT_2563_action_queue_async_35_SUBSCRIPT_bpl_26_27_28_4',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             }
         ]
     },
     {
         "identifier": 'EVENT_2563_fade_out_to_black_async_36',
-        "command": 'fade_out_to_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_to_black_async'
     },
     {
         "identifier": 'EVENT_2563_jmp_to_event_37',
         "command": 'jmp_to_event',
-        "args": [3615],
-        "subscript": []
+        "args": [3615]
     },
     {
         "identifier": 'EVENT_2563_ret_38',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

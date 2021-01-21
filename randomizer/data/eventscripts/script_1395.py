@@ -1,35 +1,29 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1395_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7053, 1, 'EVENT_1395_move_script_to_main_thread_3'],
-        "subscript": []
+        "args": [0x7053, 1, 'EVENT_1395_move_script_to_main_thread_3']
     },
     {
         "identifier": 'EVENT_1395_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7053, 2, 'EVENT_1395_move_script_to_main_thread_3'],
-        "subscript": []
+        "args": [0x7053, 2, 'EVENT_1395_move_script_to_main_thread_3']
     },
     {
         "identifier": 'EVENT_1395_ret_2',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1395_move_script_to_main_thread_3',
-        "command": 'move_script_to_main_thread',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_main_thread'
     },
     {
         "identifier": 'EVENT_1395_set_bit_4',
         "command": 'set_bit',
-        "args": [0x7049, 5],
-        "subscript": []
+        "args": [0x7049, 5]
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_5',
@@ -43,8 +37,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1395_action_queue_async_5_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_1395_action_queue_async_5_SUBSCRIPT_pause_2',
@@ -53,8 +46,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1395_action_queue_async_5_SUBSCRIPT_face_north_3',
-                "command": 'face_north',
-                "args": []
+                "command": 'face_north'
             },
             {
                 "identifier": 'EVENT_1395_action_queue_async_5_SUBSCRIPT_jump_to_height_silent_4',
@@ -76,26 +68,22 @@ script = [
     {
         "identifier": 'EVENT_1395_tint_layers_6',
         "command": 'tint_layers',
-        "args": [0x70, 0x68, 0x10, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB]],
-        "subscript": []
+        "args": [0x70, 0x68, 0x10, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB]]
     },
     {
         "identifier": 'EVENT_1395_priority_set_7',
         "command": 'priority_set',
-        "args": [[_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [], [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB]],
-        "subscript": []
+        "args": [[_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [], [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB]]
     },
     {
         "identifier": 'EVENT_1395_fade_out_music_to_volume_8',
         "command": 'fade_out_music_to_volume',
-        "args": [4, 0],
-        "subscript": []
+        "args": [4, 0]
     },
     {
         "identifier": 'EVENT_1395_remove_from_current_level_9',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_10',
@@ -142,86 +130,69 @@ script = [
     {
         "identifier": 'EVENT_1395_summon_to_current_level_11',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_1395_pause_12',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1395_circle_mask_static_13',
         "command": 'circle_mask_static',
-        "args": [AreaObjects.NPC_2, 0, 3],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 0, 3]
     },
     {
         "identifier": 'EVENT_1395_play_sound_14',
         "command": 'play_sound',
-        "args": [Sounds._054_GOODNIGHT, 6],
-        "subscript": []
+        "args": [Sounds._054_GOODNIGHT, 6]
     },
     {
         "identifier": 'EVENT_1395_restore_all_hp_15',
-        "command": 'restore_all_hp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_hp'
     },
     {
         "identifier": 'EVENT_1395_restore_all_fp_16',
-        "command": 'restore_all_fp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_fp'
     },
     {
         "identifier": 'EVENT_1395_pause_17',
         "command": 'pause',
-        "args": [110],
-        "subscript": []
+        "args": [110]
     },
     {
         "identifier": 'EVENT_1395_tint_layers_18',
         "command": 'tint_layers',
-        "args": [0x00, 0x00, 0x00, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB]],
-        "subscript": []
+        "args": [0x00, 0x00, 0x00, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB]]
     },
     {
         "identifier": 'EVENT_1395_reset_priority_set_19',
-        "command": 'reset_priority_set',
-        "args": [],
-        "subscript": []
+        "command": 'reset_priority_set'
     },
     {
         "identifier": 'EVENT_1395_apply_tile_mod_20',
         "command": 'apply_tile_mod',
-        "args": [Rooms._189_MARIOS_PIPEHOUSE, 32, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._189_MARIOS_PIPEHOUSE, 32, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1395_play_sound_21',
         "command": 'play_sound',
-        "args": [Sounds._015_NIGHT_CRICKETS, 6],
-        "subscript": []
+        "args": [Sounds._015_NIGHT_CRICKETS, 6]
     },
     {
         "identifier": 'EVENT_1395_pause_22',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1395_play_sound_23',
         "command": 'play_sound',
-        "args": [Sounds._015_NIGHT_CRICKETS, 6],
-        "subscript": []
+        "args": [Sounds._015_NIGHT_CRICKETS, 6]
     },
     {
         "identifier": 'EVENT_1395_pause_24',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_25',
@@ -248,38 +219,32 @@ script = [
     {
         "identifier": 'EVENT_1395_circle_mask_static_26',
         "command": 'circle_mask_static',
-        "args": [AreaObjects.NPC_2, 35, 3],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 35, 3]
     },
     {
         "identifier": 'EVENT_1395_pause_27',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1395_play_sound_28',
         "command": 'play_sound',
-        "args": [Sounds._015_NIGHT_CRICKETS, 6],
-        "subscript": []
+        "args": [Sounds._015_NIGHT_CRICKETS, 6]
     },
     {
         "identifier": 'EVENT_1395_pause_29',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_1395_play_sound_30',
         "command": 'play_sound',
-        "args": [Sounds._015_NIGHT_CRICKETS, 6],
-        "subscript": []
+        "args": [Sounds._015_NIGHT_CRICKETS, 6]
     },
     {
         "identifier": 'EVENT_1395_pause_31',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_32',
@@ -316,50 +281,41 @@ script = [
     {
         "identifier": 'EVENT_1395_fade_out_music_to_volume_33',
         "command": 'fade_out_music_to_volume',
-        "args": [6, 100],
-        "subscript": []
+        "args": [6, 100]
     },
     {
         "identifier": 'EVENT_1395_set_7000_to_tapped_button_34',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_1395_pause_35',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1395_mem_7000_and_const_36',
         "command": 'mem_7000_and_const',
-        "args": [0x0080],
-        "subscript": []
+        "args": [0x0080]
     },
     {
         "identifier": 'EVENT_1395_jmp_if_var_equals_short_37',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_1395_apply_tile_mod_39'],
-        "subscript": []
+        "args": [0x7000, 128, 'EVENT_1395_apply_tile_mod_39']
     },
     {
         "identifier": 'EVENT_1395_jmp_38',
         "command": 'jmp',
-        "args": ['EVENT_1395_set_7000_to_tapped_button_34'],
-        "subscript": []
+        "args": ['EVENT_1395_set_7000_to_tapped_button_34']
     },
     {
         "identifier": 'EVENT_1395_apply_tile_mod_39',
         "command": 'apply_tile_mod',
-        "args": [Rooms._189_MARIOS_PIPEHOUSE, 32, []],
-        "subscript": []
+        "args": [Rooms._189_MARIOS_PIPEHOUSE, 32, []]
     },
     {
         "identifier": 'EVENT_1395_circle_mask_static_40',
         "command": 'circle_mask_static',
-        "args": [AreaObjects.MARIO, 153, 5],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 153, 5]
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_41',
@@ -368,8 +324,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1395_action_queue_async_41_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1395_action_queue_async_41_SUBSCRIPT_set_animation_speed_1',
@@ -396,25 +351,20 @@ script = [
     {
         "identifier": 'EVENT_1395_pause_42',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1395_play_sound_43',
         "command": 'play_sound',
-        "args": [Sounds._058_INSERT, 6],
-        "subscript": []
+        "args": [Sounds._058_INSERT, 6]
     },
     {
         "identifier": 'EVENT_1395_clear_bit_44',
         "command": 'clear_bit',
-        "args": [0x7049, 5],
-        "subscript": []
+        "args": [0x7049, 5]
     },
     {
         "identifier": 'EVENT_1395_ret_45',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

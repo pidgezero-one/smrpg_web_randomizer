@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3343_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x707e, 6, 'EVENT_3343_ret_8'],
-        "subscript": []
+        "args": [0x707e, 6, 'EVENT_3343_ret_8']
     },
     {
         "identifier": 'EVENT_3343_set_bit_1',
         "command": 'set_bit',
-        "args": [0x707e, 6],
-        "subscript": []
+        "args": [0x707e, 6]
     },
     {
         "identifier": 'EVENT_3343_action_queue_sync_2',
@@ -30,8 +29,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3343_action_queue_sync_2_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -47,13 +45,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3343_action_queue_sync_3_SUBSCRIPT_walk_1_step_southwest_1',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_3343_action_queue_sync_3_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -74,8 +70,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3343_action_queue_sync_4_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -96,8 +91,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3343_action_queue_sync_5_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -118,8 +112,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3343_action_queue_sync_6_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -140,15 +133,12 @@ script = [
             },
             {
                 "identifier": 'EVENT_3343_action_queue_sync_7_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3343_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

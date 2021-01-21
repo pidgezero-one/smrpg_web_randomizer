@@ -1,41 +1,35 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3198_pause_script_if_menu_open_0',
-        "command": 'pause_script_if_menu_open',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_if_menu_open'
     },
     {
         "identifier": 'EVENT_3198_disable_trigger_1',
         "command": 'disable_trigger',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_3198_set_bit_2',
         "command": 'set_bit',
-        "args": [0x7044, 7],
-        "subscript": []
+        "args": [0x7044, 7]
     },
     {
         "identifier": 'EVENT_3198_resume_action_script_3',
         "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_3198_resume_action_script_4',
         "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_6],
-        "subscript": []
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_3198_play_sound_5',
         "command": 'play_sound',
-        "args": [Sounds._048_MINECART_START, 6],
-        "subscript": []
+        "args": [Sounds._048_MINECART_START, 6]
     },
     {
         "identifier": 'EVENT_3198_action_queue_async_6',
@@ -74,34 +68,29 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_6_SUBSCRIPT_visibility_off_6',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3198_remove_from_current_level_7',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6],
-        "subscript": []
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_3198_remove_from_level_8',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM]
     },
     {
         "identifier": 'EVENT_3198_enter_area_9',
         "command": 'enter_area',
-        "args": [Rooms._286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM, RadialDirections.SOUTHWEST, 20, 25, 0, []],
-        "subscript": []
+        "args": [Rooms._286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM, RadialDirections.SOUTHWEST, 20, 25, 0, []]
     },
     {
         "identifier": 'EVENT_3198_run_event_as_subroutine_10',
         "command": 'run_event_as_subroutine',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_3198_action_queue_sync_11',
@@ -110,8 +99,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3198_action_queue_sync_11_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_11_SUBSCRIPT_clear_solidity_bits_1',
@@ -180,13 +168,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_11_SUBSCRIPT_reset_properties_14',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_11_SUBSCRIPT_face_southeast_15',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_11_SUBSCRIPT_set_solidity_bits_16',
@@ -237,8 +223,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_12_SUBSCRIPT_end_loop_7',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_12_SUBSCRIPT_set_animation_speed_8',
@@ -274,8 +259,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_visibility_on_4',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_shift_southwest_steps_5',
@@ -299,8 +283,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_end_loop_9',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_set_animation_speed_10',
@@ -309,8 +292,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_walk_1_step_northeast_11',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_set_solidity_bits_12',
@@ -329,21 +311,18 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_sequence_looping_off_15',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_sequence_playback_off_16',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_3198_jmp_if_bit_set_14',
         "command": 'jmp_if_bit_set',
-        "args": [0x7057, 6, 'EVENT_3198_action_queue_async_16'],
-        "subscript": []
+        "args": [0x7057, 6, 'EVENT_3198_action_queue_async_16']
     },
     {
         "identifier": 'EVENT_3198_action_queue_sync_15',
@@ -367,8 +346,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_15_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_15_SUBSCRIPT_set_animation_speed_4',
@@ -452,8 +430,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_sync_15_SUBSCRIPT_ret_20',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
@@ -484,8 +461,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_sequence_playback_on_4',
-                "command": 'sequence_playback_on',
-                "args": []
+                "command": 'sequence_playback_on'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_set_sprite_sequence_5',
@@ -499,8 +475,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_visibility_on_7',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_set_sprite_sequence_8',
@@ -529,8 +504,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_end_loop_13',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_jump_to_height_14',
@@ -539,8 +513,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_sequence_looping_on_15',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_set_animation_speed_16',
@@ -579,13 +552,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_reset_properties_23',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_sequence_looping_on_24',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_jump_to_height_25',
@@ -619,8 +590,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_visibility_off_31',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_object_memory_set_bit_32',
@@ -637,25 +607,20 @@ script = [
     {
         "identifier": 'EVENT_3198_summon_to_level_17',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_0, Rooms._286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM]
     },
     {
         "identifier": 'EVENT_3198_remove_from_level_18',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM]
     },
     {
         "identifier": 'EVENT_3198_remove_from_level_19',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM]
     },
     {
         "identifier": 'EVENT_3198_ret_20',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

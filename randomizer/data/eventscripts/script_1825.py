@@ -1,59 +1,51 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1825_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 6, 'EVENT_1825_priority_set_2'],
-        "subscript": []
+        "args": [0x7044, 6, 'EVENT_1825_priority_set_2']
     },
     {
         "identifier": 'EVENT_1825_clear_bit_1',
         "command": 'clear_bit',
-        "args": [0x7095, 4],
-        "subscript": []
+        "args": [0x7095, 4]
     },
     {
         "identifier": 'EVENT_1825_priority_set_2',
         "command": 'priority_set',
-        "args": [[_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [_0x81Flags.LAYER_3], [_0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND, _0x81Flags.HALF_INTENSITY]],
-        "subscript": []
+        "args": [[_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [_0x81Flags.LAYER_3], [_0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND, _0x81Flags.HALF_INTENSITY]]
     },
     {
         "identifier": 'EVENT_1825_remove_from_current_level_3',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_1825_set_short_4',
         "command": 'set_short',
-        "args": [0x7038, 0x0c80],
-        "subscript": []
+        "args": [0x7038, 0x0c80]
     },
     {
         "identifier": 'EVENT_1825_set_short_5',
         "command": 'set_short',
-        "args": [0x703a, 0x1780],
-        "subscript": []
+        "args": [0x703a, 0x1780]
     },
     {
         "identifier": 'EVENT_1825_set_short_6',
         "command": 'set_short',
-        "args": [0x703c, 0x0100],
-        "subscript": []
+        "args": [0x703c, 0x0100]
     },
     {
         "identifier": 'EVENT_1825_set_7',
         "command": 'set',
-        "args": [0x70a9, 27],
-        "subscript": []
+        "args": [0x70a9, 27]
     },
     {
         "identifier": 'EVENT_1825_start_loop_n_times_8',
         "command": 'start_loop_n_times',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1825_action_queue_sync_9',
@@ -70,152 +62,126 @@ script = [
     {
         "identifier": 'EVENT_1825_add_10',
         "command": 'add',
-        "args": [0x70a9, 0x01],
-        "subscript": []
+        "args": [0x70a9, 0x01]
     },
     {
         "identifier": 'EVENT_1825_end_loop_11',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1825_pause_12',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1825_jmp_if_bit_clear_13',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7095, 4, 'EVENT_1825_set_short_46'],
-        "subscript": []
+        "args": [0x7095, 4, 'EVENT_1825_set_short_46']
     },
     {
         "identifier": 'EVENT_1825_set_short_mem_14',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x702e],
-        "subscript": []
+        "args": [0x7000, 0x702e]
     },
     {
         "identifier": 'EVENT_1825_mem_compare_15',
         "command": 'mem_compare',
-        "args": [0x7000, 9],
-        "subscript": []
+        "args": [0x7000, 9]
     },
     {
         "identifier": 'EVENT_1825_jmp_if_comparison_result_is_lesser_16',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1825_add_21'],
-        "subscript": []
+        "args": ['EVENT_1825_add_21']
     },
     {
         "identifier": 'EVENT_1825_mem_compare_17',
         "command": 'mem_compare',
-        "args": [0x7000, 19],
-        "subscript": []
+        "args": [0x7000, 19]
     },
     {
         "identifier": 'EVENT_1825_jmp_if_comparison_result_is_lesser_18',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1825_set_short_mem_25'],
-        "subscript": []
+        "args": ['EVENT_1825_set_short_mem_25']
     },
     {
         "identifier": 'EVENT_1825_dec_19',
         "command": 'dec',
-        "args": [0x7000],
-        "subscript": []
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_1825_jmp_20',
         "command": 'jmp',
-        "args": ['EVENT_1825_set_short_mem_22'],
-        "subscript": []
+        "args": ['EVENT_1825_set_short_mem_22']
     },
     {
         "identifier": 'EVENT_1825_add_21',
         "command": 'add',
-        "args": [0x7000, 0x01],
-        "subscript": []
+        "args": [0x7000, 0x01]
     },
     {
         "identifier": 'EVENT_1825_set_short_mem_22',
         "command": 'set_short_mem',
-        "args": [0x7016, 0x7000],
-        "subscript": []
+        "args": [0x7016, 0x7000]
     },
     {
         "identifier": 'EVENT_1825_set_short_mem_23',
         "command": 'set_short_mem',
-        "args": [0x7030, 0x7018],
-        "subscript": []
+        "args": [0x7030, 0x7018]
     },
     {
         "identifier": 'EVENT_1825_jmp_24',
         "command": 'jmp',
-        "args": ['EVENT_1825_action_queue_sync_35'],
-        "subscript": []
+        "args": ['EVENT_1825_action_queue_sync_35']
     },
     {
         "identifier": 'EVENT_1825_set_short_mem_25',
         "command": 'set_short_mem',
-        "args": [0x702e, 0x7016],
-        "subscript": []
+        "args": [0x702e, 0x7016]
     },
     {
         "identifier": 'EVENT_1825_set_short_mem_26',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x7030],
-        "subscript": []
+        "args": [0x7000, 0x7030]
     },
     {
         "identifier": 'EVENT_1825_mem_compare_27',
         "command": 'mem_compare',
-        "args": [0x7000, 29],
-        "subscript": []
+        "args": [0x7000, 29]
     },
     {
         "identifier": 'EVENT_1825_jmp_if_comparison_result_is_lesser_28',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1825_add_33'],
-        "subscript": []
+        "args": ['EVENT_1825_add_33']
     },
     {
         "identifier": 'EVENT_1825_mem_compare_29',
         "command": 'mem_compare',
-        "args": [0x7000, 38],
-        "subscript": []
+        "args": [0x7000, 38]
     },
     {
         "identifier": 'EVENT_1825_jmp_if_comparison_result_is_lesser_30',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1825_set_short_mem_34'],
-        "subscript": []
+        "args": ['EVENT_1825_set_short_mem_34']
     },
     {
         "identifier": 'EVENT_1825_add_31',
         "command": 'add',
-        "args": [0x7000, 65534],
-        "subscript": []
+        "args": [0x7000, 65534]
     },
     {
         "identifier": 'EVENT_1825_jmp_32',
         "command": 'jmp',
-        "args": ['EVENT_1825_set_short_mem_34'],
-        "subscript": []
+        "args": ['EVENT_1825_set_short_mem_34']
     },
     {
         "identifier": 'EVENT_1825_add_33',
         "command": 'add',
-        "args": [0x7000, 2],
-        "subscript": []
+        "args": [0x7000, 2]
     },
     {
         "identifier": 'EVENT_1825_set_short_mem_34',
         "command": 'set_short_mem',
-        "args": [0x7018, 0x7000],
-        "subscript": []
+        "args": [0x7018, 0x7000]
     },
     {
         "identifier": 'EVENT_1825_action_queue_sync_35',
@@ -224,8 +190,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1825_action_queue_sync_35_SUBSCRIPT_run_away_transfer_0',
-                "command": 'run_away_transfer',
-                "args": []
+                "command": 'run_away_transfer'
             }
         ]
     },
@@ -236,16 +201,14 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1825_action_queue_async_36_SUBSCRIPT_run_away_transfer_0',
-                "command": 'run_away_transfer',
-                "args": []
+                "command": 'run_away_transfer'
             }
         ]
     },
     {
         "identifier": 'EVENT_1825_add_short_37',
         "command": 'add_short',
-        "args": [0x7016, 0xffff],
-        "subscript": []
+        "args": [0x7016, 0xffff]
     },
     {
         "identifier": 'EVENT_1825_action_queue_sync_38',
@@ -254,8 +217,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1825_action_queue_sync_38_SUBSCRIPT_run_away_transfer_0',
-                "command": 'run_away_transfer',
-                "args": []
+                "command": 'run_away_transfer'
             }
         ]
     },
@@ -266,64 +228,54 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1825_action_queue_async_39_SUBSCRIPT_run_away_transfer_0',
-                "command": 'run_away_transfer',
-                "args": []
+                "command": 'run_away_transfer'
             }
         ]
     },
     {
         "identifier": 'EVENT_1825_set_short_40',
         "command": 'set_short',
-        "args": [0x703e, 0x001d],
-        "subscript": []
+        "args": [0x703e, 0x001d]
     },
     {
         "identifier": 'EVENT_1825_jmp_to_subroutine_41',
         "command": 'jmp_to_subroutine',
-        "args": [0x56cb],
-        "subscript": []
+        "args": [0x56cb]
     },
     {
         "identifier": 'EVENT_1825_set_bit_42',
         "command": 'set_bit',
-        "args": [0x7094, 5],
-        "subscript": []
+        "args": [0x7094, 5]
     },
     {
         "identifier": 'EVENT_1825_set_43',
         "command": 'set',
-        "args": [0x70ab, 0],
-        "subscript": []
+        "args": [0x70ab, 0]
     },
     {
         "identifier": 'EVENT_1825_run_event_as_subroutine_44',
         "command": 'run_event_as_subroutine',
-        "args": [1739],
-        "subscript": []
+        "args": [1739]
     },
     {
         "identifier": 'EVENT_1825_clear_bit_45',
         "command": 'clear_bit',
-        "args": [0x7094, 5],
-        "subscript": []
+        "args": [0x7094, 5]
     },
     {
         "identifier": 'EVENT_1825_set_short_46',
         "command": 'set_short',
-        "args": [0x702c, 0x001b],
-        "subscript": []
+        "args": [0x702c, 0x001b]
     },
     {
         "identifier": 'EVENT_1825_set_47',
         "command": 'set',
-        "args": [0x70a9, 27],
-        "subscript": []
+        "args": [0x70a9, 27]
     },
     {
         "identifier": 'EVENT_1825_set_48',
         "command": 'set',
-        "args": [0x70aa, 28],
-        "subscript": []
+        "args": [0x70aa, 28]
     },
     {
         "identifier": 'EVENT_1825_action_queue_async_49',
@@ -332,8 +284,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1825_action_queue_async_49_SUBSCRIPT_bpl_26_27_28_0',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_1825_action_queue_async_49_SUBSCRIPT_db_1',
@@ -350,43 +301,36 @@ script = [
     {
         "identifier": 'EVENT_1825_pause_action_script_50',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_10],
-        "subscript": []
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_1825_set_action_script_sync_51',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AA, 479],
-        "subscript": []
+        "args": [AreaObjects.MEM_70AA, 479]
     },
     {
         "identifier": 'EVENT_1825_pause_52',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1825_set_action_script_sync_53',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_10, 653],
-        "subscript": []
+        "args": [AreaObjects.NPC_10, 653]
     },
     {
         "identifier": 'EVENT_1825_run_background_event_54',
         "command": 'run_background_event',
-        "args": [1828, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [1828, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_1825_run_background_event_55',
         "command": 'run_background_event',
-        "args": [1877, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6]],
-        "subscript": []
+        "args": [1877, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_1825_jmp_to_event_56',
         "command": 'jmp_to_event',
-        "args": [1829],
-        "subscript": []
+        "args": [1829]
     }
 ]

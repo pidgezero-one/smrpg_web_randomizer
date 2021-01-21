@@ -1,77 +1,66 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1775_set_short_mem_0',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8],
-        "subscript": []
+        "args": [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_1775_jmp_if_var_equals_short_1',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 23, 'EVENT_1775_jmp_if_bit_set_15'],
-        "subscript": []
+        "args": [0x7000, 23, 'EVENT_1775_jmp_if_bit_set_15']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_var_equals_short_2',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 24, 'EVENT_1775_jmp_if_bit_set_21'],
-        "subscript": []
+        "args": [0x7000, 24, 'EVENT_1775_jmp_if_bit_set_21']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_var_equals_short_3',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 25, 'EVENT_1775_jmp_if_bit_set_27'],
-        "subscript": []
+        "args": [0x7000, 25, 'EVENT_1775_jmp_if_bit_set_27']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_var_equals_short_4',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 26, 'EVENT_1775_jmp_if_bit_set_33'],
-        "subscript": []
+        "args": [0x7000, 26, 'EVENT_1775_jmp_if_bit_set_33']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_var_equals_short_5',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 27, 'EVENT_1775_jmp_if_bit_set_39'],
-        "subscript": []
+        "args": [0x7000, 27, 'EVENT_1775_jmp_if_bit_set_39']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_var_equals_short_6',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 28, 'EVENT_1775_jmp_if_bit_set_45'],
-        "subscript": []
+        "args": [0x7000, 28, 'EVENT_1775_jmp_if_bit_set_45']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_var_equals_short_7',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 29, 'EVENT_1775_jmp_if_bit_set_51'],
-        "subscript": []
+        "args": [0x7000, 29, 'EVENT_1775_jmp_if_bit_set_51']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1775_load_600f_13'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_1775_load_600f_13']
     },
     {
         "identifier": 'EVENT_1775_set_bit_9',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_1775_set_bit_10',
         "command": 'set_bit',
-        "args": [0x7044, 1],
-        "subscript": []
+        "args": [0x7044, 1]
     },
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_11',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7],
-        "subscript": []
+        "args": [0x49b7]
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_12',
@@ -132,33 +121,26 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_load_600f_13',
-        "command": 'load_600f',
-        "args": [],
-        "subscript": []
+        "command": 'load_600f'
     },
     {
         "identifier": 'EVENT_1775_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_15',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_1775_load_600f_19'],
-        "subscript": []
+        "args": [0x7043, 2, 'EVENT_1775_load_600f_19']
     },
     {
         "identifier": 'EVENT_1775_set_bit_16',
         "command": 'set_bit',
-        "args": [0x7043, 2],
-        "subscript": []
+        "args": [0x7043, 2]
     },
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7],
-        "subscript": []
+        "args": [0x49b7]
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_18',
@@ -177,8 +159,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_18_SUBSCRIPT_add_z_coord_1_step_2',
-                "command": 'add_z_coord_1_step',
-                "args": []
+                "command": 'add_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_18_SUBSCRIPT_pause_3',
@@ -202,8 +183,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_18_SUBSCRIPT_dec_z_coord_1_step_7',
-                "command": 'dec_z_coord_1_step',
-                "args": []
+                "command": 'dec_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_18_SUBSCRIPT_shift_northwest_steps_8',
@@ -219,33 +199,26 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_load_600f_19',
-        "command": 'load_600f',
-        "args": [],
-        "subscript": []
+        "command": 'load_600f'
     },
     {
         "identifier": 'EVENT_1775_ret_20',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_21',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1775_load_600f_25'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_1775_load_600f_25']
     },
     {
         "identifier": 'EVENT_1775_set_bit_22',
         "command": 'set_bit',
-        "args": [0x7043, 3],
-        "subscript": []
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_23',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7],
-        "subscript": []
+        "args": [0x49b7]
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_24',
@@ -306,33 +279,26 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_load_600f_25',
-        "command": 'load_600f',
-        "args": [],
-        "subscript": []
+        "command": 'load_600f'
     },
     {
         "identifier": 'EVENT_1775_ret_26',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_27',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 4, 'EVENT_1775_load_600f_31'],
-        "subscript": []
+        "args": [0x7043, 4, 'EVENT_1775_load_600f_31']
     },
     {
         "identifier": 'EVENT_1775_set_bit_28',
         "command": 'set_bit',
-        "args": [0x7043, 4],
-        "subscript": []
+        "args": [0x7043, 4]
     },
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_29',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7],
-        "subscript": []
+        "args": [0x49b7]
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_30',
@@ -383,33 +349,26 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_load_600f_31',
-        "command": 'load_600f',
-        "args": [],
-        "subscript": []
+        "command": 'load_600f'
     },
     {
         "identifier": 'EVENT_1775_ret_32',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_33',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 5, 'EVENT_1775_load_600f_37'],
-        "subscript": []
+        "args": [0x7043, 5, 'EVENT_1775_load_600f_37']
     },
     {
         "identifier": 'EVENT_1775_set_bit_34',
         "command": 'set_bit',
-        "args": [0x7043, 5],
-        "subscript": []
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_35',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7],
-        "subscript": []
+        "args": [0x49b7]
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_36',
@@ -463,8 +422,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_36_SUBSCRIPT_walk_1_step_northwest_9',
-                "command": 'walk_1_step_northwest',
-                "args": []
+                "command": 'walk_1_step_northwest'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_36_SUBSCRIPT_clear_bit_10',
@@ -475,33 +433,26 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_load_600f_37',
-        "command": 'load_600f',
-        "args": [],
-        "subscript": []
+        "command": 'load_600f'
     },
     {
         "identifier": 'EVENT_1775_ret_38',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_39',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 6, 'EVENT_1775_load_600f_43'],
-        "subscript": []
+        "args": [0x7043, 6, 'EVENT_1775_load_600f_43']
     },
     {
         "identifier": 'EVENT_1775_set_bit_40',
         "command": 'set_bit',
-        "args": [0x7043, 6],
-        "subscript": []
+        "args": [0x7043, 6]
     },
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_41',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7],
-        "subscript": []
+        "args": [0x49b7]
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_42',
@@ -520,8 +471,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_42_SUBSCRIPT_walk_1_step_southeast_2',
-                "command": 'walk_1_step_southeast',
-                "args": []
+                "command": 'walk_1_step_southeast'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_42_SUBSCRIPT_pause_3',
@@ -545,8 +495,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_42_SUBSCRIPT_walk_1_step_northwest_7',
-                "command": 'walk_1_step_northwest',
-                "args": []
+                "command": 'walk_1_step_northwest'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_42_SUBSCRIPT_shift_z_down_steps_8',
@@ -562,33 +511,26 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_load_600f_43',
-        "command": 'load_600f',
-        "args": [],
-        "subscript": []
+        "command": 'load_600f'
     },
     {
         "identifier": 'EVENT_1775_ret_44',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_45',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 7, 'EVENT_1775_load_600f_49'],
-        "subscript": []
+        "args": [0x7043, 7, 'EVENT_1775_load_600f_49']
     },
     {
         "identifier": 'EVENT_1775_set_bit_46',
         "command": 'set_bit',
-        "args": [0x7043, 7],
-        "subscript": []
+        "args": [0x7043, 7]
     },
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_47',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7],
-        "subscript": []
+        "args": [0x49b7]
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_48',
@@ -612,8 +554,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_48_SUBSCRIPT_walk_1_step_southeast_3',
-                "command": 'walk_1_step_southeast',
-                "args": []
+                "command": 'walk_1_step_southeast'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_48_SUBSCRIPT_pause_4',
@@ -637,8 +578,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_48_SUBSCRIPT_walk_1_step_northwest_8',
-                "command": 'walk_1_step_northwest',
-                "args": []
+                "command": 'walk_1_step_northwest'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_sync_48_SUBSCRIPT_shift_z_up_steps_9',
@@ -659,33 +599,26 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_load_600f_49',
-        "command": 'load_600f',
-        "args": [],
-        "subscript": []
+        "command": 'load_600f'
     },
     {
         "identifier": 'EVENT_1775_ret_50',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_51',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 0, 'EVENT_1775_load_600f_55'],
-        "subscript": []
+        "args": [0x7044, 0, 'EVENT_1775_load_600f_55']
     },
     {
         "identifier": 'EVENT_1775_set_bit_52',
         "command": 'set_bit',
-        "args": [0x7044, 0],
-        "subscript": []
+        "args": [0x7044, 0]
     },
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_53',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7],
-        "subscript": []
+        "args": [0x49b7]
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_54',
@@ -746,27 +679,21 @@ script = [
     },
     {
         "identifier": 'EVENT_1775_load_600f_55',
-        "command": 'load_600f',
-        "args": [],
-        "subscript": []
+        "command": 'load_600f'
     },
     {
         "identifier": 'EVENT_1775_ret_56',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_57',
         "command": 'jmp_if_bit_set',
-        "args": [0x707c, 0, 'EVENT_1775_clear_bit_60'],
-        "subscript": []
+        "args": [0x707c, 0, 'EVENT_1775_clear_bit_60']
     },
     {
         "identifier": 'EVENT_1775_set_7016_to_object_xyz_58',
         "command": 'set_7016_to_object_xyz',
-        "args": [0x90],
-        "subscript": []
+        "args": [0x90]
     },
     {
         "identifier": 'EVENT_1775_action_queue_async_59',
@@ -780,46 +707,37 @@ script = [
             },
             {
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_floating_off_2',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_run_away_shift_3',
-                "command": 'run_away_shift',
-                "args": []
+                "command": 'run_away_shift'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_floating_on_4',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_fixed_f_coord_off_5',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_face_east_6',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             }
         ]
     },
     {
         "identifier": 'EVENT_1775_clear_bit_60',
         "command": 'clear_bit',
-        "args": [0x707c, 0],
-        "subscript": []
+        "args": [0x707c, 0]
     },
     {
         "identifier": 'EVENT_1775_ret_61',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

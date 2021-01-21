@@ -1,47 +1,39 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1712_stop_all_background_events_0',
-        "command": 'stop_all_background_events',
-        "args": [],
-        "subscript": []
+        "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_1712_set_short_1',
         "command": 'set_short',
-        "args": [0x700e, 0x0009],
-        "subscript": []
+        "args": [0x700e, 0x0009]
     },
     {
         "identifier": 'EVENT_1712_start_battle_700E_2',
-        "command": 'start_battle_700E',
-        "args": [],
-        "subscript": []
+        "command": 'start_battle_700E'
     },
     {
         "identifier": 'EVENT_1712_clear_bit_3',
         "command": 'clear_bit',
-        "args": [0x707c, 5],
-        "subscript": []
+        "args": [0x707c, 5]
     },
     {
         "identifier": 'EVENT_1712_set_bit_4',
         "command": 'set_bit',
-        "args": [0x707c, 6],
-        "subscript": []
+        "args": [0x707c, 6]
     },
     {
         "identifier": 'EVENT_1712_set_bit_5',
         "command": 'set_bit',
-        "args": [0x707c, 7],
-        "subscript": []
+        "args": [0x707c, 7]
     },
     {
         "identifier": 'EVENT_1712_run_event_as_subroutine_6',
         "command": 'run_event_as_subroutine',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_1712_action_queue_sync_7',
@@ -63,32 +55,27 @@ script = [
     {
         "identifier": 'EVENT_1712_set_8',
         "command": 'set',
-        "args": [0x70ab, 20],
-        "subscript": []
+        "args": [0x70ab, 20]
     },
     {
         "identifier": 'EVENT_1712_start_loop_n_times_9',
         "command": 'start_loop_n_times',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1712_jmp_if_bit_set_10',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_1712_add_16'],
-        "subscript": []
+        "args": [0x7040, 1, 'EVENT_1712_add_16']
     },
     {
         "identifier": 'EVENT_1712_jmp_if_object_not_in_level_11',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.MEM_70AB, Rooms._207_BANDITS_WAY_AREA_02, 'EVENT_1712_action_queue_async_13'],
-        "subscript": []
+        "args": [AreaObjects.MEM_70AB, Rooms._207_BANDITS_WAY_AREA_02, 'EVENT_1712_action_queue_async_13']
     },
     {
         "identifier": 'EVENT_1712_jmp_12',
         "command": 'jmp',
-        "args": ['EVENT_1712_add_16'],
-        "subscript": []
+        "args": ['EVENT_1712_add_16']
     },
     {
         "identifier": 'EVENT_1712_action_queue_async_13',
@@ -127,13 +114,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_visibility_on_6',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_face_northeast_7',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_jmp_8',
@@ -147,13 +132,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_visibility_on_10',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_face_southwest_11',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_set_solidity_bits_12',
@@ -170,37 +153,29 @@ script = [
     {
         "identifier": 'EVENT_1712_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70AB, 474],
-        "subscript": []
+        "args": [AreaObjects.MEM_70AB, 474]
     },
     {
         "identifier": 'EVENT_1712_summon_to_level_15',
         "command": 'summon_to_level',
-        "args": [AreaObjects.MEM_70AB, Rooms._207_BANDITS_WAY_AREA_02],
-        "subscript": []
+        "args": [AreaObjects.MEM_70AB, Rooms._207_BANDITS_WAY_AREA_02]
     },
     {
         "identifier": 'EVENT_1712_add_16',
         "command": 'add',
-        "args": [0x70ab, 0x01],
-        "subscript": []
+        "args": [0x70ab, 0x01]
     },
     {
         "identifier": 'EVENT_1712_end_loop_17',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1712_run_background_event_18',
         "command": 'run_background_event',
-        "args": [1705, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [1705, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_1712_ret_19',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

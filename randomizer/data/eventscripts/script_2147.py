@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2147_apply_solidity_mod_0',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._479_BOWSERS_KEEP_2ND_TIME_AREA_04_THRONE_ROOM, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._479_BOWSERS_KEEP_2ND_TIME_AREA_04_THRONE_ROOM, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_2147_action_queue_sync_1',
@@ -82,14 +82,12 @@ script = [
     {
         "identifier": 'EVENT_2147_set_7000_to_object_coord_7',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2147_jmp_if_var_not_equals_short_8',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 12, 'EVENT_2147_fade_in_from_black_async_13'],
-        "subscript": []
+        "args": [0x7000, 12, 'EVENT_2147_fade_in_from_black_async_13']
     },
     {
         "identifier": 'EVENT_2147_action_queue_sync_9',
@@ -103,8 +101,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2147_action_queue_sync_9_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -120,33 +117,26 @@ script = [
             },
             {
                 "identifier": 'EVENT_2147_action_queue_sync_10_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2147_set_action_script_sync_11',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 997],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 997]
     },
     {
         "identifier": 'EVENT_2147_set_action_script_sync_12',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 997],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 997]
     },
     {
         "identifier": 'EVENT_2147_fade_in_from_black_async_13',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2147_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

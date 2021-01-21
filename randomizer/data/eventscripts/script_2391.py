@@ -1,11 +1,10 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2391_freeze_camera_0',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2391_action_queue_sync_1',
@@ -19,13 +18,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2391_action_queue_sync_1_SUBSCRIPT_floating_off_1',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2391_action_queue_sync_1_SUBSCRIPT_shadow_off_2',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2391_action_queue_sync_1_SUBSCRIPT_overwrite_solidity_3',
@@ -84,8 +81,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2391_action_queue_sync_1_SUBSCRIPT_bpl_26_27_28_14',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             }
         ]
     },
@@ -114,31 +110,25 @@ script = [
     {
         "identifier": 'EVENT_2391_pause_3',
         "command": 'pause',
-        "args": [112],
-        "subscript": []
+        "args": [112]
     },
     {
         "identifier": 'EVENT_2391_fade_out_to_black_async_duration_4',
         "command": 'fade_out_to_black_async_duration',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2391_set_bit_5',
         "command": 'set_bit',
-        "args": [0x708e, 1],
-        "subscript": []
+        "args": [0x708e, 1]
     },
     {
         "identifier": 'EVENT_2391_enter_area_6',
         "command": 'enter_area',
-        "args": [Rooms._417_GARDENERS_HOUSE_OUTSIDE, RadialDirections.SOUTH, 8, 87, 3, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._417_GARDENERS_HOUSE_OUTSIDE, RadialDirections.SOUTH, 8, 87, 3, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2391_ret_7',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,65 +1,56 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1819_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_1819_ret_13'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_1819_ret_13']
     },
     {
         "identifier": 'EVENT_1819_set_bit_1',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_1819_pause_2',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1819_jmp_if_mario_in_air_3',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_1819_pause_2'],
-        "subscript": []
+        "args": ['EVENT_1819_pause_2']
     },
     {
         "identifier": 'EVENT_1819_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x704e, 6, 'EVENT_1819_ret_13'],
-        "subscript": []
+        "args": [0x704e, 6, 'EVENT_1819_ret_13']
     },
     {
         "identifier": 'EVENT_1819_set_7000_to_object_coord_5',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Y, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.Y, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_1819_mem_compare_6',
         "command": 'mem_compare',
-        "args": [0x7000, 48],
-        "subscript": []
+        "args": [0x7000, 48]
     },
     {
         "identifier": 'EVENT_1819_jmp_if_comparison_result_is_greater_or_equal_7',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_1819_ret_13'],
-        "subscript": []
+        "args": ['EVENT_1819_ret_13']
     },
     {
         "identifier": 'EVENT_1819_reset_coords_8',
         "command": 'reset_coords',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_1819_set_action_script_async_9',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_3, 160],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 160]
     },
     {
         "identifier": 'EVENT_1819_action_queue_async_10',
@@ -78,27 +69,22 @@ script = [
             },
             {
                 "identifier": 'EVENT_1819_action_queue_async_10_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_1819_run_dialog_11',
         "command": 'run_dialog',
-        "args": [1277, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [1277, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1819_set_action_script_sync_12',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 714],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 714]
     },
     {
         "identifier": 'EVENT_1819_ret_13',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

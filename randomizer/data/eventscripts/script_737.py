@@ -1,59 +1,51 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_737_palette_set_0',
         "command": 'palette_set',
-        "args": [110, 1],
-        "subscript": []
+        "args": [110, 1]
     },
     {
         "identifier": 'EVENT_737_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
-        "args": [0x705e, 4, 'EVENT_737_set_action_script_sync_14'],
-        "subscript": []
+        "args": [0x705e, 4, 'EVENT_737_set_action_script_sync_14']
     },
     {
         "identifier": 'EVENT_737_set_random_2',
         "command": 'set_random',
-        "args": [0x7000, 6],
-        "subscript": []
+        "args": [0x7000, 6]
     },
     {
         "identifier": 'EVENT_737_jmp_if_var_equals_short_3',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 5, 'EVENT_737_action_queue_async_9'],
-        "subscript": []
+        "args": [0x7000, 5, 'EVENT_737_action_queue_async_9']
     },
     {
         "identifier": 'EVENT_737_jmp_if_var_equals_short_4',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4, 'EVENT_737_set_action_script_sync_14'],
-        "subscript": []
+        "args": [0x7000, 4, 'EVENT_737_set_action_script_sync_14']
     },
     {
         "identifier": 'EVENT_737_jmp_if_var_equals_short_5',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_737_action_queue_async_11'],
-        "subscript": []
+        "args": [0x7000, 3, 'EVENT_737_action_queue_async_11']
     },
     {
         "identifier": 'EVENT_737_jmp_if_var_equals_short_6',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_737_set_action_script_sync_14'],
-        "subscript": []
+        "args": [0x7000, 2, 'EVENT_737_set_action_script_sync_14']
     },
     {
         "identifier": 'EVENT_737_jmp_if_var_equals_short_7',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_737_action_queue_async_13'],
-        "subscript": []
+        "args": [0x7000, 1, 'EVENT_737_action_queue_async_13']
     },
     {
         "identifier": 'EVENT_737_jmp_8',
         "command": 'jmp',
-        "args": ['EVENT_737_set_action_script_sync_14'],
-        "subscript": []
+        "args": ['EVENT_737_set_action_script_sync_14']
     },
     {
         "identifier": 'EVENT_737_action_queue_async_9',
@@ -70,8 +62,7 @@ script = [
     {
         "identifier": 'EVENT_737_jmp_10',
         "command": 'jmp',
-        "args": ['EVENT_737_set_action_script_sync_14'],
-        "subscript": []
+        "args": ['EVENT_737_set_action_script_sync_14']
     },
     {
         "identifier": 'EVENT_737_action_queue_async_11',
@@ -88,8 +79,7 @@ script = [
     {
         "identifier": 'EVENT_737_jmp_12',
         "command": 'jmp',
-        "args": ['EVENT_737_set_action_script_sync_14'],
-        "subscript": []
+        "args": ['EVENT_737_set_action_script_sync_14']
     },
     {
         "identifier": 'EVENT_737_action_queue_async_13',
@@ -106,32 +96,25 @@ script = [
     {
         "identifier": 'EVENT_737_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 119]
     },
     {
         "identifier": 'EVENT_737_jmp_if_bit_set_15',
         "command": 'jmp_if_bit_set',
-        "args": [0x705f, 4, 'EVENT_737_palette_set_22'],
-        "subscript": []
+        "args": [0x705f, 4, 'EVENT_737_palette_set_22']
     },
     {
         "identifier": 'EVENT_737_jmp_if_bit_set_16',
         "command": 'jmp_if_bit_set',
-        "args": [0x705f, 2, 'EVENT_737_action_queue_async_19'],
-        "subscript": []
+        "args": [0x705f, 2, 'EVENT_737_action_queue_async_19']
     },
     {
         "identifier": 'EVENT_737_fade_in_from_black_async_17',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_737_ret_18',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_737_action_queue_async_19',
@@ -145,28 +128,22 @@ script = [
             },
             {
                 "identifier": 'EVENT_737_action_queue_async_19_SUBSCRIPT_face_southeast_1',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_737_fade_in_from_black_async_20',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_737_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_737_palette_set_22',
         "command": 'palette_set',
-        "args": [109, 1],
-        "subscript": []
+        "args": [109, 1]
     },
     {
         "identifier": 'EVENT_737_action_queue_sync_23',
@@ -192,88 +169,62 @@ script = [
             },
             {
                 "identifier": 'EVENT_737_action_queue_async_24_SUBSCRIPT_face_southeast_1',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_737_stop_sound_25',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_26',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_27',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_28',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_29',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_30',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_31',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_32',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_33',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_34',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_35',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_stop_sound_36',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_737_unsync_action_script_37',
         "command": 'unsync_action_script',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_737_action_queue_async_38',
@@ -294,14 +245,10 @@ script = [
     },
     {
         "identifier": 'EVENT_737_fade_in_from_black_async_39',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_737_ret_40',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

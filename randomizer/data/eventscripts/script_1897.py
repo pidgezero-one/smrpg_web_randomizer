@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1897_set_bit_0',
         "command": 'set_bit',
-        "args": [0x7095, 6],
-        "subscript": []
+        "args": [0x7095, 6]
     },
     {
         "identifier": 'EVENT_1897_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7096, 3, 'EVENT_1897_action_queue_sync_3'],
-        "subscript": []
+        "args": [0x7096, 3, 'EVENT_1897_action_queue_sync_3']
     },
     {
         "identifier": 'EVENT_1897_apply_solidity_mod_2',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._474_SMITHY_FACTORY_AREA_15_FALLING_YARIDOVICHS, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._474_SMITHY_FACTORY_AREA_15_FALLING_YARIDOVICHS, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_1897_action_queue_sync_3',
@@ -41,8 +39,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1897_action_queue_sync_3_SUBSCRIPT_face_southwest_3',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1897_action_queue_sync_3_SUBSCRIPT_set_solidity_bits_4',
@@ -54,26 +51,19 @@ script = [
     {
         "identifier": 'EVENT_1897_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x7096, 1, 'EVENT_1897_fade_in_from_black_sync_7'],
-        "subscript": []
+        "args": [0x7096, 1, 'EVENT_1897_fade_in_from_black_sync_7']
     },
     {
         "identifier": 'EVENT_1897_fade_in_from_black_async_5',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1897_ret_6',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1897_fade_in_from_black_sync_7',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_1897_action_queue_async_8',
@@ -82,8 +72,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1897_action_queue_async_8_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1897_action_queue_async_8_SUBSCRIPT_clear_solidity_bits_1',
@@ -102,8 +91,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1897_action_queue_async_8_SUBSCRIPT_walk_1_step_south_4',
-                "command": 'walk_1_step_south',
-                "args": []
+                "command": 'walk_1_step_south'
             },
             {
                 "identifier": 'EVENT_1897_action_queue_async_8_SUBSCRIPT_set_solidity_bits_5',
@@ -112,8 +100,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1897_action_queue_async_8_SUBSCRIPT_floating_on_6',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_1897_action_queue_async_8_SUBSCRIPT_pause_7',
@@ -135,13 +122,10 @@ script = [
     {
         "identifier": 'EVENT_1897_clear_bit_9',
         "command": 'clear_bit',
-        "args": [0x7096, 1],
-        "subscript": []
+        "args": [0x7096, 1]
     },
     {
         "identifier": 'EVENT_1897_ret_10',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

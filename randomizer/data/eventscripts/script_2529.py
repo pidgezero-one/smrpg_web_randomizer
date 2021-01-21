@@ -1,41 +1,36 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2529_play_sound_0',
         "command": 'play_sound',
-        "args": [Sounds._110_ABSTRACT_MUSIC, 6],
-        "subscript": []
+        "args": [Sounds._110_ABSTRACT_MUSIC, 6]
     },
     {
         "identifier": 'EVENT_2529_run_dialog_1',
         "command": 'run_dialog',
-        "args": [3115, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3115, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2529_play_sound_2',
         "command": 'play_sound',
-        "args": [Sounds._000_SILENCE, 6],
-        "subscript": []
+        "args": [Sounds._000_SILENCE, 6]
     },
     {
         "identifier": 'EVENT_2529_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x708b, 7, 'EVENT_2529_ret_25'],
-        "subscript": []
+        "args": [0x708b, 7, 'EVENT_2529_ret_25']
     },
     {
         "identifier": 'EVENT_2529_set_bit_4',
         "command": 'set_bit',
-        "args": [0x708b, 7],
-        "subscript": []
+        "args": [0x708b, 7]
     },
     {
         "identifier": 'EVENT_2529_summon_to_current_level_at_marios_coords_5',
         "command": 'summon_to_current_level_at_marios_coords',
-        "args": [AreaObjects.NPC_15],
-        "subscript": []
+        "args": [AreaObjects.NPC_15]
     },
     {
         "identifier": 'EVENT_2529_action_queue_async_6',
@@ -49,8 +44,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_6_SUBSCRIPT_walk_1_step_northeast_1',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_6_SUBSCRIPT_shift_northeast_pixels_2',
@@ -59,22 +53,18 @@ script = [
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_6_SUBSCRIPT_face_southwest_3',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2529_freeze_camera_7',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2529_pause_8',
         "command": 'pause',
-        "args": [8],
-        "subscript": []
+        "args": [8]
     },
     {
         "identifier": 'EVENT_2529_action_queue_sync_9',
@@ -108,8 +98,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2529_action_queue_sync_9_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             }
         ]
     },
@@ -145,39 +134,33 @@ script = [
             },
             {
                 "identifier": 'EVENT_2529_action_queue_sync_10_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_2529_action_queue_sync_10_SUBSCRIPT_face_northeast_6',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_2529_run_dialog_11',
         "command": 'run_dialog',
-        "args": [3120, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3120, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2529_stop_embedded_action_script_12',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.NPC_15],
-        "subscript": []
+        "args": [AreaObjects.NPC_15]
     },
     {
         "identifier": 'EVENT_2529_pause_13',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2529_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2529_action_queue_sync_15',
@@ -194,14 +177,11 @@ script = [
     {
         "identifier": 'EVENT_2529_run_dialog_16',
         "command": 'run_dialog',
-        "args": [3121, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3121, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2529_pause_script_resume_on_next_dialog_page_a_17',
-        "command": 'pause_script_resume_on_next_dialog_page_a',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_resume_on_next_dialog_page_a'
     },
     {
         "identifier": 'EVENT_2529_action_queue_sync_18',
@@ -217,9 +197,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2529_unsync_dialog_19',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_2529_action_queue_async_20',
@@ -228,8 +206,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2529_action_queue_async_20_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_20_SUBSCRIPT_pause_1',
@@ -243,8 +220,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_20_SUBSCRIPT_walk_1_step_southwest_3',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_20_SUBSCRIPT_shift_southwest_pixels_4',
@@ -273,8 +249,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_20_SUBSCRIPT_walk_1_step_northeast_9',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_10',
@@ -283,16 +258,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_20_SUBSCRIPT_face_southwest_11',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2529_run_dialog_21',
         "command": 'run_dialog',
-        "args": [3122, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3122, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2529_action_queue_async_22',
@@ -301,13 +274,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2529_action_queue_async_22_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_22_SUBSCRIPT_walk_1_step_southwest_1',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_22_SUBSCRIPT_pause_2',
@@ -316,27 +287,21 @@ script = [
             },
             {
                 "identifier": 'EVENT_2529_action_queue_async_22_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2529_remove_from_current_level_23',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_15],
-        "subscript": []
+        "args": [AreaObjects.NPC_15]
     },
     {
         "identifier": 'EVENT_2529_unfreeze_camera_24',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2529_ret_25',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

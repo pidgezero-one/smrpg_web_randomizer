@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_347_action_queue_async_0',
@@ -21,38 +22,30 @@ script = [
     {
         "identifier": 'EVENT_347_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x709c, 2, 'EVENT_347_pause_action_script_13'],
-        "subscript": []
+        "args": [0x709c, 2, 'EVENT_347_pause_action_script_13']
     },
     {
         "identifier": 'EVENT_347_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x705d, 1, 'EVENT_347_pause_action_script_6'],
-        "subscript": []
+        "args": [0x705d, 1, 'EVENT_347_pause_action_script_6']
     },
     {
         "identifier": 'EVENT_347_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_347_pause_action_script_6'],
-        "subscript": []
+        "args": [0x704c, 6, 'EVENT_347_pause_action_script_6']
     },
     {
         "identifier": 'EVENT_347_fade_in_from_black_async_4',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_347_ret_5',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_347_pause_action_script_6',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_347_start_embedded_action_script_async_7',
@@ -66,8 +59,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_347_start_embedded_action_script_async_7_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_347_start_embedded_action_script_async_7_SUBSCRIPT_set_solidity_bits_2',
@@ -79,14 +71,12 @@ script = [
     {
         "identifier": 'EVENT_347_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 119],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 119]
     },
     {
         "identifier": 'EVENT_347_jmp_if_bit_clear_9',
         "command": 'jmp_if_bit_clear',
-        "args": [0x705d, 1, 'EVENT_347_fade_in_from_black_async_11'],
-        "subscript": []
+        "args": [0x705d, 1, 'EVENT_347_fade_in_from_black_async_11']
     },
     {
         "identifier": 'EVENT_347_action_queue_async_10',
@@ -105,28 +95,22 @@ script = [
             },
             {
                 "identifier": 'EVENT_347_action_queue_async_10_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_347_fade_in_from_black_async_11',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_347_ret_12',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_347_pause_action_script_13',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_347_action_queue_sync_14',
@@ -169,14 +153,10 @@ script = [
     },
     {
         "identifier": 'EVENT_347_fade_in_from_black_async_16',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_347_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

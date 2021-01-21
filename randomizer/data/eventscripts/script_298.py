@@ -1,41 +1,35 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_298_pause_0',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_298_jmp_if_mario_in_air_1',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_298_pause_0'],
-        "subscript": []
+        "args": ['EVENT_298_pause_0']
     },
     {
         "identifier": 'EVENT_298_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x7082, 1, 'EVENT_298_action_queue_async_18'],
-        "subscript": []
+        "args": [0x7082, 1, 'EVENT_298_action_queue_async_18']
     },
     {
         "identifier": 'EVENT_298_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x7081, 5, 'EVENT_298_run_dialog_16'],
-        "subscript": []
+        "args": [0x7081, 5, 'EVENT_298_run_dialog_16']
     },
     {
         "identifier": 'EVENT_298_freeze_camera_4',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_298_run_dialog_5',
         "command": 'run_dialog',
-        "args": [535, AreaObjects.NPC_4, [_0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [535, AreaObjects.NPC_4, [_0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_298_action_queue_async_6',
@@ -52,8 +46,7 @@ script = [
     {
         "identifier": 'EVENT_298_run_event_as_subroutine_7',
         "command": 'run_event_as_subroutine',
-        "args": [286],
-        "subscript": []
+        "args": [286]
     },
     {
         "identifier": 'EVENT_298_action_queue_async_8',
@@ -80,8 +73,7 @@ script = [
     {
         "identifier": 'EVENT_298_pause_9',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_298_action_queue_async_10',
@@ -95,13 +87,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_10_SUBSCRIPT_add_z_coord_1_step_1',
-                "command": 'add_z_coord_1_step',
-                "args": []
+                "command": 'add_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_10_SUBSCRIPT_dec_z_coord_1_step_2',
-                "command": 'dec_z_coord_1_step',
-                "args": []
+                "command": 'dec_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_10_SUBSCRIPT_set_animation_speed_3',
@@ -113,14 +103,12 @@ script = [
     {
         "identifier": 'EVENT_298_pause_11',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_298_run_dialog_12',
         "command": 'run_dialog',
-        "args": [536, AreaObjects.NPC_4, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [536, AreaObjects.NPC_4, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_298_action_queue_async_13',
@@ -136,27 +124,20 @@ script = [
     },
     {
         "identifier": 'EVENT_298_unfreeze_camera_14',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_298_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_298_run_dialog_16',
         "command": 'run_dialog',
-        "args": [580, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [580, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_298_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_298_action_queue_async_18',
@@ -175,8 +156,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_fixed_f_coord_on_2',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_add_3',
@@ -190,21 +170,18 @@ script = [
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_fixed_f_coord_off_5',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_face_east_6',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             }
         ]
     },
     {
         "identifier": 'EVENT_298_run_dialog_19',
         "command": 'run_dialog',
-        "args": [588, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [588, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_298_action_queue_async_20',
@@ -218,15 +195,12 @@ script = [
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_20_SUBSCRIPT_face_east_1',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             }
         ]
     },
     {
         "identifier": 'EVENT_298_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

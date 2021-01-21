@@ -1,59 +1,51 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_550_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7060, 0, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7060, 0, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_550_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 3, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7044, 3, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_550_set_7000_to_object_coord_2',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.F]
     },
     {
         "identifier": 'EVENT_550_set_short_mem_3',
         "command": 'set_short_mem',
-        "args": [0x7026, 0x7000],
-        "subscript": []
+        "args": [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_550_mem_compare_4',
         "command": 'mem_compare',
-        "args": [0x7026, 3],
-        "subscript": []
+        "args": [0x7026, 3]
     },
     {
         "identifier": 'EVENT_550_jmp_if_comparison_result_is_lesser_5',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_550_set_bit_8'],
-        "subscript": []
+        "args": ['EVENT_550_set_bit_8']
     },
     {
         "identifier": 'EVENT_550_mem_compare_6',
         "command": 'mem_compare',
-        "args": [0x7026, 6],
-        "subscript": []
+        "args": [0x7026, 6]
     },
     {
         "identifier": 'EVENT_550_jmp_if_comparison_result_is_lesser_7',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_256_ret_0'],
-        "subscript": []
+        "args": ['EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_550_set_bit_8',
         "command": 'set_bit',
-        "args": [0x7060, 0],
-        "subscript": []
+        "args": [0x7060, 0]
     },
     {
         "identifier": 'EVENT_550_action_queue_sync_9',
@@ -100,13 +92,10 @@ script = [
     {
         "identifier": 'EVENT_550_set_action_script_sync_10',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 638],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 638]
     },
     {
         "identifier": 'EVENT_550_ret_11',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,35 +1,30 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2317_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 0, 'EVENT_2317_jmp_if_bit_clear_2'],
-        "subscript": []
+        "args": [0x708f, 0, 'EVENT_2317_jmp_if_bit_clear_2']
     },
     {
         "identifier": 'EVENT_2317_set_action_script_sync_1',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 690],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 690]
     },
     {
         "identifier": 'EVENT_2317_jmp_if_bit_clear_2',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 1, 'EVENT_2317_freeze_camera_4'],
-        "subscript": []
+        "args": [0x708f, 1, 'EVENT_2317_freeze_camera_4']
     },
     {
         "identifier": 'EVENT_2317_set_action_script_sync_3',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 690],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 690]
     },
     {
         "identifier": 'EVENT_2317_freeze_camera_4',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2317_action_queue_sync_5',
@@ -65,8 +60,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2317_action_queue_sync_6_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2317_action_queue_sync_6_SUBSCRIPT_shirt_to_xy_coords_1',
@@ -130,14 +124,11 @@ script = [
     {
         "identifier": 'EVENT_2317_set_bit_8',
         "command": 'set_bit',
-        "args": [0x708e, 0],
-        "subscript": []
+        "args": [0x708e, 0]
     },
     {
         "identifier": 'EVENT_2317_fade_in_from_black_async_9',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2317_action_queue_async_10',
@@ -161,8 +152,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2317_action_queue_async_10_SUBSCRIPT_bpl_26_27_28_3',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2317_action_queue_async_10_SUBSCRIPT_set_sprite_sequence_4',
@@ -181,8 +171,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2317_action_queue_async_10_SUBSCRIPT_face_northwest_7',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2317_action_queue_async_10_SUBSCRIPT_jump_to_height_8',
@@ -209,19 +198,14 @@ script = [
     {
         "identifier": 'EVENT_2317_set_action_script_async_11',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2317_unfreeze_camera_12',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2317_ret_13',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

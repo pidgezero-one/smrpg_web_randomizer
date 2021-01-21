@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1138_run_dialog_0',
         "command": 'run_dialog',
-        "args": [2841, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2841, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1138_action_queue_async_1',
@@ -14,8 +14,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1138_action_queue_async_1_SUBSCRIPT_sequence_looping_off_0',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_1_SUBSCRIPT_pause_1',
@@ -24,8 +23,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_1_SUBSCRIPT_sequence_looping_on_2',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_1_SUBSCRIPT_set_animation_speed_3',
@@ -39,8 +37,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_1_SUBSCRIPT_face_southeast_5',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
@@ -56,8 +53,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_2_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_2_SUBSCRIPT_pause_2',
@@ -66,8 +62,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_2_SUBSCRIPT_face_southeast_3',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_2_SUBSCRIPT_pause_4',
@@ -93,8 +88,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_3_SUBSCRIPT_face_mario_2',
-                "command": 'face_mario',
-                "args": []
+                "command": 'face_mario'
             },
             {
                 "identifier": 'EVENT_1138_action_queue_async_3_SUBSCRIPT_set_animation_speed_3',
@@ -106,14 +100,12 @@ script = [
     {
         "identifier": 'EVENT_1138_pause_4',
         "command": 'pause',
-        "args": [25],
-        "subscript": []
+        "args": [25]
     },
     {
         "identifier": 'EVENT_1138_run_dialog_5',
         "command": 'run_dialog',
-        "args": [2842, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2842, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1138_action_queue_async_6',
@@ -122,15 +114,12 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1138_action_queue_async_6_SUBSCRIPT_face_southeast_0',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_1138_ret_7',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,5 +1,6 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_260_action_queue_async_0',
@@ -38,8 +39,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_southeast_6',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_jmp_7',
@@ -48,8 +48,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_southwest_8',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_jmp_9',
@@ -58,8 +57,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_northwest_10',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_jmp_11',
@@ -68,15 +66,12 @@ script = [
             },
             {
                 "identifier": 'EVENT_260_action_queue_async_0_SUBSCRIPT_face_northeast_12',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_260_ret_1',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

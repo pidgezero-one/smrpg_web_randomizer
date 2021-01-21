@@ -1,11 +1,11 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1563_set_7016_to_object_xyz_0',
         "command": 'set_7016_to_object_xyz',
-        "args": [0x94],
-        "subscript": []
+        "args": [0x94]
     },
     {
         "identifier": 'EVENT_1563_action_queue_async_1',
@@ -74,8 +74,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_reset_properties_12',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_pause_13',
@@ -104,8 +103,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_end_loop_18',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_19',
@@ -129,8 +127,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_end_loop_23',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_set_animation_speed_24',
@@ -159,8 +156,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_reset_properties_29',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_jump_to_height_30',
@@ -169,8 +165,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_run_away_shift_31',
-                "command": 'run_away_shift',
-                "args": []
+                "command": 'run_away_shift'
             },
             {
                 "identifier": 'EVENT_1563_action_queue_async_1_SUBSCRIPT_set_animation_speed_32',
@@ -181,8 +176,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1563_ret_2',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

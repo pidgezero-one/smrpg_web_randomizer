@@ -1,131 +1,108 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3135_clear_bit_0',
         "command": 'clear_bit',
-        "args": [0x707c, 5],
-        "subscript": []
+        "args": [0x707c, 5]
     },
     {
         "identifier": 'EVENT_3135_set_short_1',
         "command": 'set_short',
-        "args": [0x701c, 0x012c],
-        "subscript": []
+        "args": [0x701c, 0x012c]
     },
     {
         "identifier": 'EVENT_3135_stop_background_event_2',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c],
-        "subscript": []
+        "args": [timer_memory=0x701c]
     },
     {
         "identifier": 'EVENT_3135_jmp_if_var_equals_byte_3',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70df, 14, 'EVENT_3135_jmp_if_bit_set_7'],
-        "subscript": []
+        "args": [0x70df, 14, 'EVENT_3135_jmp_if_bit_set_7']
     },
     {
         "identifier": 'EVENT_3135_jmp_to_subroutine_4',
         "command": 'jmp_to_subroutine',
-        "args": [0x107c],
-        "subscript": []
+        "args": [0x107c]
     },
     {
         "identifier": 'EVENT_3135_set_5',
         "command": 'set',
-        "args": [0x70df, 14],
-        "subscript": []
+        "args": [0x70df, 14]
     },
     {
         "identifier": 'EVENT_3135_jmp_6',
         "command": 'jmp',
-        "args": ['EVENT_3135_jmp_if_bit_clear_9'],
-        "subscript": []
+        "args": ['EVENT_3135_jmp_if_bit_clear_9']
     },
     {
         "identifier": 'EVENT_3135_jmp_if_bit_set_7',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 0, 'EVENT_3135_jmp_if_bit_clear_9'],
-        "subscript": []
+        "args": [0x7042, 0, 'EVENT_3135_jmp_if_bit_clear_9']
     },
     {
         "identifier": 'EVENT_3135_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0x107c],
-        "subscript": []
+        "args": [0x107c]
     },
     {
         "identifier": 'EVENT_3135_jmp_if_bit_clear_9',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7055, 1, 'EVENT_3135_reset_priority_set_14'],
-        "subscript": []
+        "args": [0x7055, 1, 'EVENT_3135_reset_priority_set_14']
     },
     {
         "identifier": 'EVENT_3135_set_7000_to_current_level_10',
-        "command": 'set_7000_to_current_level',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_current_level'
     },
     {
         "identifier": 'EVENT_3135_jmp_if_var_equals_short_11',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 62, 'EVENT_3135_run_event_as_subroutine_15'],
-        "subscript": []
+        "args": [0x7000, 62, 'EVENT_3135_run_event_as_subroutine_15']
     },
     {
         "identifier": 'EVENT_3135_priority_set_12',
         "command": 'priority_set',
-        "args": [[_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [], []],
-        "subscript": []
+        "args": [[_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [], []]
     },
     {
         "identifier": 'EVENT_3135_jmp_13',
         "command": 'jmp',
-        "args": ['EVENT_3135_run_event_as_subroutine_15'],
-        "subscript": []
+        "args": ['EVENT_3135_run_event_as_subroutine_15']
     },
     {
         "identifier": 'EVENT_3135_reset_priority_set_14',
-        "command": 'reset_priority_set',
-        "args": [],
-        "subscript": []
+        "command": 'reset_priority_set'
     },
     {
         "identifier": 'EVENT_3135_run_event_as_subroutine_15',
         "command": 'run_event_as_subroutine',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_3135_set_7000_to_current_level_16',
-        "command": 'set_7000_to_current_level',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_current_level'
     },
     {
         "identifier": 'EVENT_3135_jmp_if_var_not_equals_short_17',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 333, 'EVENT_3135_ret_32'],
-        "subscript": []
+        "args": [0x7000, 333, 'EVENT_3135_ret_32']
     },
     {
         "identifier": 'EVENT_3135_jmp_if_bit_set_18',
         "command": 'jmp_if_bit_set',
-        "args": [0x7055, 0, 'EVENT_3135_ret_32'],
-        "subscript": []
+        "args": [0x7055, 0, 'EVENT_3135_ret_32']
     },
     {
         "identifier": 'EVENT_3135_set_bit_19',
         "command": 'set_bit',
-        "args": [0x7055, 0],
-        "subscript": []
+        "args": [0x7055, 0]
     },
     {
         "identifier": 'EVENT_3135_enable_controls_until_return_20',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.A, ControllerDirections.Y]],
-        "subscript": []
+        "args": [[ControllerDirections.A, ControllerDirections.Y]]
     },
     {
         "identifier": 'EVENT_3135_action_queue_async_21',
@@ -139,16 +116,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_3135_action_queue_async_21_SUBSCRIPT_face_east_1',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             }
         ]
     },
     {
         "identifier": 'EVENT_3135_summon_to_current_level_at_marios_coords_22',
         "command": 'summon_to_current_level_at_marios_coords',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_3135_action_queue_sync_23',
@@ -157,13 +132,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_walk_1_step_southeast_0',
-                "command": 'walk_1_step_southeast',
-                "args": []
+                "command": 'walk_1_step_southeast'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_walk_1_step_northeast_1',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_set_sprite_sequence_2',
@@ -177,13 +150,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_reset_properties_4',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_face_southwest_5',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_set_bit_6',
@@ -212,8 +183,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_reset_properties_11',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_jump_to_height_silent_12',
@@ -222,8 +192,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_walk_1_step_northwest_13',
-                "command": 'walk_1_step_northwest',
-                "args": []
+                "command": 'walk_1_step_northwest'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_pause_14',
@@ -262,13 +231,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_dec_z_coord_1_step_21',
-                "command": 'dec_z_coord_1_step',
-                "args": []
+                "command": 'dec_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_visibility_off_22',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -294,8 +261,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_24_SUBSCRIPT_face_northeast_3',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_24_SUBSCRIPT_pause_4',
@@ -309,13 +275,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_24_SUBSCRIPT_walk_1_step_northeast_6',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_24_SUBSCRIPT_face_south_7',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_24_SUBSCRIPT_pause_8',
@@ -332,49 +296,40 @@ script = [
     {
         "identifier": 'EVENT_3135_pause_25',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3135_jmp_if_bit_clear_26',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 1, 'EVENT_3135_pause_25'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_3135_pause_25']
     },
     {
         "identifier": 'EVENT_3135_run_dialog_27',
         "command": 'run_dialog',
-        "args": [1584, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [1584, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3135_set_bit_28',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_3135_pause_29',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3135_jmp_if_bit_clear_30',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 3, 'EVENT_3135_pause_29'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_3135_pause_29']
     },
     {
         "identifier": 'EVENT_3135_pause_31',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_3135_ret_32',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

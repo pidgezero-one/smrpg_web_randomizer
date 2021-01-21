@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_430_clear_bit_0',
         "command": 'clear_bit',
-        "args": [0x7043, 3],
-        "subscript": []
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_430_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 4, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x7043, 4, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_430_action_queue_async_2',
@@ -20,13 +19,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_set_vram_priority_2',
@@ -60,8 +57,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_visibility_on_8',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_set_animation_speed_9',
@@ -90,8 +86,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_floating_off_14',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_start_loop_n_times_15',
@@ -125,8 +120,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_end_loop_21',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_pause_22',
@@ -135,8 +129,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_face_northeast_23',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_set_solidity_bits_24',
@@ -150,8 +143,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_floating_on_26',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_set_animation_speed_27',
@@ -160,45 +152,35 @@ script = [
             },
             {
                 "identifier": 'EVENT_430_action_queue_async_2_SUBSCRIPT_shadow_on_28',
-                "command": 'shadow_on',
-                "args": []
+                "command": 'shadow_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_430_freeze_all_npcs_until_return_3',
-        "command": 'freeze_all_npcs_until_return',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_all_npcs_until_return'
     },
     {
         "identifier": 'EVENT_430_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
-        "args": [276],
-        "subscript": []
+        "args": [276]
     },
     {
         "identifier": 'EVENT_430_unfreeze_all_npcs_5',
-        "command": 'unfreeze_all_npcs',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_all_npcs'
     },
     {
         "identifier": 'EVENT_430_set_action_script_async_6',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 671]
     },
     {
         "identifier": 'EVENT_430_set_action_script_sync_7',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_430_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

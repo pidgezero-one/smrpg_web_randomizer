@@ -1,17 +1,15 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2292_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._441_ENDING_CREDITS_TOADOFSKY_CONDUCTS_CHOIR, RadialDirections.NORTHEAST, 3, 17, 0, []],
-        "subscript": []
+        "args": [Rooms._441_ENDING_CREDITS_TOADOFSKY_CONDUCTS_CHOIR, RadialDirections.NORTHEAST, 3, 17, 0, []]
     },
     {
         "identifier": 'EVENT_2292_freeze_camera_1',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2292_action_queue_sync_2',
@@ -37,8 +35,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2292_action_queue_async_3_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -57,14 +54,11 @@ script = [
     {
         "identifier": 'EVENT_2292_set_bit_7_offset_5',
         "command": 'set_bit_7_offset',
-        "args": [0x0158],
-        "subscript": []
+        "args": [0x0158]
     },
     {
         "identifier": 'EVENT_2292_star_mask_expand_from_screen_center_6',
-        "command": 'star_mask_expand_from_screen_center',
-        "args": [],
-        "subscript": []
+        "command": 'star_mask_expand_from_screen_center'
     },
     {
         "identifier": 'EVENT_2292_action_queue_async_7',
@@ -136,20 +130,17 @@ script = [
     {
         "identifier": 'EVENT_2292_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 1015],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 1015]
     },
     {
         "identifier": 'EVENT_2292_pause_9',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2292_clear_bit_7_offset_10',
         "command": 'clear_bit_7_offset',
-        "args": [0x0158],
-        "subscript": []
+        "args": [0x0158]
     },
     {
         "identifier": 'EVENT_2292_action_queue_sync_11',
@@ -210,39 +201,31 @@ script = [
             },
             {
                 "identifier": 'EVENT_2292_action_queue_async_12_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             }
         ]
     },
     {
         "identifier": 'EVENT_2292_pause_13',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2292_star_mask_shrink_to_screen_center_14',
-        "command": 'star_mask_shrink_to_screen_center',
-        "args": [],
-        "subscript": []
+        "command": 'star_mask_shrink_to_screen_center'
     },
     {
         "identifier": 'EVENT_2292_pause_15',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2292_jmp_to_event_16',
         "command": 'jmp_to_event',
-        "args": [3801],
-        "subscript": []
+        "args": [3801]
     },
     {
         "identifier": 'EVENT_2292_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

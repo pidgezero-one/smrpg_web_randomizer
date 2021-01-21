@@ -1,131 +1,106 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2100_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_2100_run_dialog_6'],
-        "subscript": []
+        "args": [0x7043, 2, 'EVENT_2100_run_dialog_6']
     },
     {
         "identifier": 'EVENT_2100_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_2100_run_dialog_48'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_2100_run_dialog_48']
     },
     {
         "identifier": 'EVENT_2100_run_dialog_2',
         "command": 'run_dialog',
-        "args": [2575, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2575, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2100_open_shop_3',
         "command": 'open_shop',
-        "args": [Shops._18_NIMBUS_LAND_SHOP],
-        "subscript": []
+        "args": [Shops._18_NIMBUS_LAND_SHOP]
     },
     {
         "identifier": 'EVENT_2100_fade_in_from_black_async_4',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2100_ret_5',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2100_run_dialog_6',
         "command": 'run_dialog',
-        "args": [2576, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2576, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2100_jmp_if_dialog_option_b_7',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2100_run_dialog_46'],
-        "subscript": []
+        "args": ['EVENT_2100_run_dialog_46']
     },
     {
         "identifier": 'EVENT_2100_store_coin_amount_7000_8',
-        "command": 'store_coin_amount_7000',
-        "args": [],
-        "subscript": []
+        "command": 'store_coin_amount_7000'
     },
     {
         "identifier": 'EVENT_2100_mem_compare_9',
         "command": 'mem_compare',
-        "args": [0x7000, 30],
-        "subscript": []
+        "args": [0x7000, 30]
     },
     {
         "identifier": 'EVENT_2100_jmp_if_comparison_result_is_greater_or_equal_10',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_2100_set_13'],
-        "subscript": []
+        "args": ['EVENT_2100_set_13']
     },
     {
         "identifier": 'EVENT_2100_run_dialog_11',
         "command": 'run_dialog',
-        "args": [2578, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2578, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2100_ret_12',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2100_set_13',
         "command": 'set',
-        "args": [0x7000, 30],
-        "subscript": []
+        "args": [0x7000, 30]
     },
     {
         "identifier": 'EVENT_2100_dec_coins_14',
-        "command": 'dec_coins',
-        "args": [],
-        "subscript": []
+        "command": 'dec_coins'
     },
     {
         "identifier": 'EVENT_2100_run_dialog_15',
         "command": 'run_dialog',
-        "args": [2580, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2580, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2100_fade_out_music_to_volume_16',
         "command": 'fade_out_music_to_volume',
-        "args": [2, 0],
-        "subscript": []
+        "args": [2, 0]
     },
     {
         "identifier": 'EVENT_2100_circle_mask_static_17',
         "command": 'circle_mask_static',
-        "args": [AreaObjects.MARIO, 18, 3],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 18, 3]
     },
     {
         "identifier": 'EVENT_2100_pause_18',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2100_play_sound_19',
         "command": 'play_sound',
-        "args": [Sounds._054_GOODNIGHT, 6],
-        "subscript": []
+        "args": [Sounds._054_GOODNIGHT, 6]
     },
     {
         "identifier": 'EVENT_2100_pause_20',
         "command": 'pause',
-        "args": [50],
-        "subscript": []
+        "args": [50]
     },
     {
         "identifier": 'EVENT_2100_action_queue_async_21',
@@ -142,20 +117,17 @@ script = [
     {
         "identifier": 'EVENT_2100_pause_22',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_2100_circle_mask_static_23',
         "command": 'circle_mask_static',
-        "args": [AreaObjects.MARIO, 0, 1],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 0, 1]
     },
     {
         "identifier": 'EVENT_2100_pause_24',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2100_action_queue_sync_25',
@@ -191,8 +163,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2100_action_queue_sync_26_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -216,68 +187,56 @@ script = [
     {
         "identifier": 'EVENT_2100_pause_28',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2100_circle_mask_static_29',
         "command": 'circle_mask_static',
-        "args": [AreaObjects.MARIO, 40, 3],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 40, 3]
     },
     {
         "identifier": 'EVENT_2100_pause_30',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2100_fade_out_music_to_volume_31',
         "command": 'fade_out_music_to_volume',
-        "args": [6, 100],
-        "subscript": []
+        "args": [6, 100]
     },
     {
         "identifier": 'EVENT_2100_pause_32',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2100_set_7000_to_tapped_button_33',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_2100_pause_34',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_2100_mem_7000_and_const_35',
         "command": 'mem_7000_and_const',
-        "args": [0x0080],
-        "subscript": []
+        "args": [0x0080]
     },
     {
         "identifier": 'EVENT_2100_jmp_if_var_equals_short_36',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_2100_circle_mask_static_38'],
-        "subscript": []
+        "args": [0x7000, 128, 'EVENT_2100_circle_mask_static_38']
     },
     {
         "identifier": 'EVENT_2100_jmp_37',
         "command": 'jmp',
-        "args": ['EVENT_2100_set_7000_to_tapped_button_33'],
-        "subscript": []
+        "args": ['EVENT_2100_set_7000_to_tapped_button_33']
     },
     {
         "identifier": 'EVENT_2100_circle_mask_static_38',
         "command": 'circle_mask_static',
-        "args": [AreaObjects.MARIO, 255, 5],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 255, 5]
     },
     {
         "identifier": 'EVENT_2100_action_queue_async_39',
@@ -286,8 +245,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2100_action_queue_async_39_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2100_action_queue_async_39_SUBSCRIPT_set_animation_speed_1',
@@ -314,8 +272,7 @@ script = [
     {
         "identifier": 'EVENT_2100_run_dialog_40',
         "command": 'run_dialog',
-        "args": [2581, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2581, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2100_action_queue_async_41',
@@ -324,69 +281,52 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2100_action_queue_async_41_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2100_pause_42',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_2100_restore_all_hp_43',
-        "command": 'restore_all_hp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_hp'
     },
     {
         "identifier": 'EVENT_2100_restore_all_fp_44',
-        "command": 'restore_all_fp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_fp'
     },
     {
         "identifier": 'EVENT_2100_ret_45',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2100_run_dialog_46',
         "command": 'run_dialog',
-        "args": [2579, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2579, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2100_ret_47',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2100_run_dialog_48',
         "command": 'run_dialog',
-        "args": [2577, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2577, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2100_open_shop_49',
         "command": 'open_shop',
-        "args": [Shops._19_HINOPIOS_SHOP],
-        "subscript": []
+        "args": [Shops._19_HINOPIOS_SHOP]
     },
     {
         "identifier": 'EVENT_2100_fade_in_from_black_async_50',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2100_ret_51',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

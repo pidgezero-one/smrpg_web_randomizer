@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2596_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x708f, 7, 'EVENT_2596_ret_42'],
-        "subscript": []
+        "args": [0x708f, 7, 'EVENT_2596_ret_42']
     },
     {
         "identifier": 'EVENT_2596_jmp_1',
         "command": 'jmp',
-        "args": ['EVENT_2596_start_battle_33'],
-        "subscript": []
+        "args": ['EVENT_2596_start_battle_33']
     },
     {
         "identifier": 'EVENT_2596_action_queue_sync_2',
@@ -57,8 +56,7 @@ script = [
     {
         "identifier": 'EVENT_2596_pause_5',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2596_action_queue_async_6',
@@ -92,16 +90,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2596_action_queue_async_6_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             }
         ]
     },
     {
         "identifier": 'EVENT_2596_play_sound_7',
         "command": 'play_sound',
-        "args": [Sounds._000_SILENCE, 6],
-        "subscript": []
+        "args": [Sounds._000_SILENCE, 6]
     },
     {
         "identifier": 'EVENT_2596_action_queue_sync_8',
@@ -134,13 +130,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2596_action_queue_async_10_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_2596_action_queue_async_10_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
@@ -159,8 +153,7 @@ script = [
     {
         "identifier": 'EVENT_2596_pause_12',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2596_action_queue_sync_13',
@@ -187,8 +180,7 @@ script = [
     {
         "identifier": 'EVENT_2596_run_dialog_14',
         "command": 'run_dialog',
-        "args": [3150, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]],
-        "subscript": []
+        "args": [3150, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_2596_action_queue_async_15',
@@ -210,8 +202,7 @@ script = [
     {
         "identifier": 'EVENT_2596_pause_16',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2596_action_queue_sync_17',
@@ -238,8 +229,7 @@ script = [
     {
         "identifier": 'EVENT_2596_run_dialog_18',
         "command": 'run_dialog',
-        "args": [3150, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]],
-        "subscript": []
+        "args": [3150, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_2596_action_queue_async_19',
@@ -261,8 +251,7 @@ script = [
     {
         "identifier": 'EVENT_2596_pause_20',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2596_action_queue_sync_21',
@@ -301,26 +290,22 @@ script = [
     {
         "identifier": 'EVENT_2596_play_sound_23',
         "command": 'play_sound',
-        "args": [Sounds._029_ALARM_CLOCK, 6],
-        "subscript": []
+        "args": [Sounds._029_ALARM_CLOCK, 6]
     },
     {
         "identifier": 'EVENT_2596_run_dialog_24',
         "command": 'run_dialog',
-        "args": [3160, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]],
-        "subscript": []
+        "args": [3160, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_2596_play_sound_25',
         "command": 'play_sound',
-        "args": [Sounds._000_SILENCE, 6],
-        "subscript": []
+        "args": [Sounds._000_SILENCE, 6]
     },
     {
         "identifier": 'EVENT_2596_pause_26',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_2596_action_queue_sync_27',
@@ -371,79 +356,62 @@ script = [
     {
         "identifier": 'EVENT_2596_set_action_script_sync_30',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 861],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 861]
     },
     {
         "identifier": 'EVENT_2596_set_action_script_sync_31',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 862],
-        "subscript": []
+        "args": [AreaObjects.SCREEN_FOCUS, 862]
     },
     {
         "identifier": 'EVENT_2596_run_dialog_32',
         "command": 'run_dialog',
-        "args": [3151, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]],
-        "subscript": []
+        "args": [3151, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_2596_start_battle_33',
         "command": 'start_battle',
-        "args": [0x00ae, 18],
-        "subscript": []
+        "args": [0x00ae, 18]
     },
     {
         "identifier": 'EVENT_2596_set_action_script_sync_34',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 15],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 15]
     },
     {
         "identifier": 'EVENT_2596_set_action_script_sync_35',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.SCREEN_FOCUS, 15],
-        "subscript": []
+        "args": [AreaObjects.SCREEN_FOCUS, 15]
     },
     {
         "identifier": 'EVENT_2596_jmp_if_bit_clear_36',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7040, 0, 'EVENT_2596_restore_all_hp_38'],
-        "subscript": []
+        "args": [0x7040, 0, 'EVENT_2596_restore_all_hp_38']
     },
     {
         "identifier": 'EVENT_2596_reset_and_choose_game_37',
-        "command": 'reset_and_choose_game',
-        "args": [],
-        "subscript": []
+        "command": 'reset_and_choose_game'
     },
     {
         "identifier": 'EVENT_2596_restore_all_hp_38',
-        "command": 'restore_all_hp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_hp'
     },
     {
         "identifier": 'EVENT_2596_restore_all_fp_39',
-        "command": 'restore_all_fp',
-        "args": [],
-        "subscript": []
+        "command": 'restore_all_fp'
     },
     {
         "identifier": 'EVENT_2596_set_bit_40',
         "command": 'set_bit',
-        "args": [0x708f, 7],
-        "subscript": []
+        "args": [0x708f, 7]
     },
     {
         "identifier": 'EVENT_2596_enter_area_41',
         "command": 'enter_area',
-        "args": [Rooms._433_SMITHY_FACTORY_AREA_01_____DUMMY, RadialDirections.NORTHEAST, 7, 106, 10, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._433_SMITHY_FACTORY_AREA_01_____DUMMY, RadialDirections.NORTHEAST, 7, 106, 10, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2596_ret_42',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

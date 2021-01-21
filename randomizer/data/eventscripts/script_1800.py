@@ -1,41 +1,36 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1800_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x704f, 4, 'EVENT_1800_run_dialog_4'],
-        "subscript": []
+        "args": [0x704f, 4, 'EVENT_1800_run_dialog_4']
     },
     {
         "identifier": 'EVENT_1800_run_dialog_1',
         "command": 'run_dialog',
-        "args": [1284, AreaObjects.MARIO, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [1284, AreaObjects.MARIO, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1800_set_bit_2',
         "command": 'set_bit',
-        "args": [0x704f, 4],
-        "subscript": []
+        "args": [0x704f, 4]
     },
     {
         "identifier": 'EVENT_1800_jmp_3',
         "command": 'jmp',
-        "args": ['EVENT_1800_run_dialog_duration_5'],
-        "subscript": []
+        "args": ['EVENT_1800_run_dialog_duration_5']
     },
     {
         "identifier": 'EVENT_1800_run_dialog_4',
         "command": 'run_dialog',
-        "args": [1285, AreaObjects.MARIO, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [1285, AreaObjects.MARIO, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1800_run_dialog_duration_5',
         "command": 'run_dialog_duration',
-        "args": [1233, DialogDurations.SHORT, [_0x60Flags.ASYNC]],
-        "subscript": []
+        "args": [1233, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1800_action_queue_async_6',
@@ -59,8 +54,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1800_action_queue_async_6_SUBSCRIPT_face_northeast_3',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_1800_action_queue_async_6_SUBSCRIPT_pause_4',
@@ -89,8 +83,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1800_action_queue_async_6_SUBSCRIPT_face_southwest_9',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1800_action_queue_async_6_SUBSCRIPT_clear_solidity_bits_10',
@@ -104,8 +97,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1800_action_queue_async_6_SUBSCRIPT_sequence_playback_off_12',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             },
             {
                 "identifier": 'EVENT_1800_action_queue_async_6_SUBSCRIPT_play_sound_13',
@@ -114,13 +106,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1800_action_queue_async_6_SUBSCRIPT_dec_z_coord_1_step_14',
-                "command": 'dec_z_coord_1_step',
-                "args": []
+                "command": 'dec_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_1800_action_queue_async_6_SUBSCRIPT_visibility_off_15',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_1800_action_queue_async_6_SUBSCRIPT_db_16',
@@ -131,8 +121,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1800_ret_7',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

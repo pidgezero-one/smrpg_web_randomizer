@@ -1,23 +1,20 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3717_jmp_if_object_not_in_level_0',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_3, Rooms._114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, 'EVENT_3584_ret_0'],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, Rooms._114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, 'EVENT_3584_ret_0']
     },
     {
         "identifier": 'EVENT_3717_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 6, 'EVENT_3584_ret_0'],
-        "subscript": []
+        "args": [0x7043, 6, 'EVENT_3584_ret_0']
     },
     {
         "identifier": 'EVENT_3717_freeze_all_npcs_until_return_2',
-        "command": 'freeze_all_npcs_until_return',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_all_npcs_until_return'
     },
     {
         "identifier": 'EVENT_3717_action_queue_async_3',
@@ -31,8 +28,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_3_SUBSCRIPT_floating_off_1',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_3_SUBSCRIPT_set_sprite_sequence_2',
@@ -93,8 +89,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_4_SUBSCRIPT_end_loop_5',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_4_SUBSCRIPT_shift_northwest_pixels_6',
@@ -106,8 +101,7 @@ script = [
     {
         "identifier": 'EVENT_3717_pause_5',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_3717_action_queue_async_6',
@@ -116,8 +110,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_floating_on_0',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_pause_1',
@@ -131,13 +124,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_face_northwest_3',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_reset_properties_4',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_pause_5',
@@ -176,8 +167,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_reset_properties_12',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_pause_13',
@@ -206,13 +196,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_reset_properties_18',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_face_northwest_19',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_3717_action_queue_async_6_SUBSCRIPT_set_solidity_bits_20',
@@ -224,55 +212,43 @@ script = [
     {
         "identifier": 'EVENT_3717_pause_7',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3717_set_action_script_async_8',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 671]
     },
     {
         "identifier": 'EVENT_3717_pause_9',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3717_unfreeze_all_npcs_10',
-        "command": 'unfreeze_all_npcs',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_all_npcs'
     },
     {
         "identifier": 'EVENT_3717_clear_bit_11',
         "command": 'clear_bit',
-        "args": [0x7043, 6],
-        "subscript": []
+        "args": [0x7043, 6]
     },
     {
         "identifier": 'EVENT_3717_set_action_script_sync_12',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_3717_ret_13',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3717_clear_bit_14',
         "command": 'clear_bit',
-        "args": [0x7043, 6],
-        "subscript": []
+        "args": [0x7043, 6]
     },
     {
         "identifier": 'EVENT_3717_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

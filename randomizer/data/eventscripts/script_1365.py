@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1365_play_music_default_volume_0',
         "command": 'play_music_default_volume',
-        "args": [Music._47_GRATE_GUYS_CASINO],
-        "subscript": []
+        "args": [Music._47_GRATE_GUYS_CASINO]
     },
     {
         "identifier": 'EVENT_1365_pause_1',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1365_play_sound_2',
         "command": 'play_sound',
-        "args": [Sounds._107_DRUM_ROLL, 4],
-        "subscript": []
+        "args": [Sounds._107_DRUM_ROLL, 4]
     },
     {
         "identifier": 'EVENT_1365_action_queue_async_3',
@@ -26,8 +24,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1365_action_queue_async_3_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_3_SUBSCRIPT_set_animation_speed_1',
@@ -51,8 +48,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_3_SUBSCRIPT_face_northwest_5',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_3_SUBSCRIPT_pause_6',
@@ -69,128 +65,106 @@ script = [
     {
         "identifier": 'EVENT_1365_pause_4',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_5',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 576],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 576]
     },
     {
         "identifier": 'EVENT_1365_play_sound_6',
         "command": 'play_sound',
-        "args": [Sounds._090_CURTAIN, 4],
-        "subscript": []
+        "args": [Sounds._090_CURTAIN, 4]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_7',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 41, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 41, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_8',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_9',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 42, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 42, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_10',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_11',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 43, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 43, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_start_loop_n_times_12',
         "command": 'start_loop_n_times',
-        "args": [89],
-        "subscript": []
+        "args": [89]
     },
     {
         "identifier": 'EVENT_1365_jmp_if_bit_set_13',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_1365_move_script_to_main_thread_116'],
-        "subscript": []
+        "args": [0x7043, 2, 'EVENT_1365_move_script_to_main_thread_116']
     },
     {
         "identifier": 'EVENT_1365_pause_14',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1365_end_loop_15',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_16',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 577],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 577]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_17',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 42, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 42, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_18',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_19',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 41, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 41, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_20',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_21',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 40, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 40, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_22',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_pause_action_script_23',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_1365_play_sound_24',
         "command": 'play_sound',
-        "args": [Sounds._107_DRUM_ROLL, 4],
-        "subscript": []
+        "args": [Sounds._107_DRUM_ROLL, 4]
     },
     {
         "identifier": 'EVENT_1365_action_queue_async_25',
@@ -199,8 +173,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1365_action_queue_async_25_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_25_SUBSCRIPT_pause_1',
@@ -214,8 +187,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_25_SUBSCRIPT_face_northeast_3',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_25_SUBSCRIPT_pause_4',
@@ -234,8 +206,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_25_SUBSCRIPT_face_northwest_7',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_25_SUBSCRIPT_pause_8',
@@ -252,128 +223,106 @@ script = [
     {
         "identifier": 'EVENT_1365_pause_26',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_27',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 576],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 576]
     },
     {
         "identifier": 'EVENT_1365_play_sound_28',
         "command": 'play_sound',
-        "args": [Sounds._090_CURTAIN, 4],
-        "subscript": []
+        "args": [Sounds._090_CURTAIN, 4]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_29',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 45, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 45, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_30',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_31',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_32',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_33',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 47, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 47, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_start_loop_n_times_34',
         "command": 'start_loop_n_times',
-        "args": [89],
-        "subscript": []
+        "args": [89]
     },
     {
         "identifier": 'EVENT_1365_jmp_if_bit_set_35',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1365_move_script_to_main_thread_116'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_1365_move_script_to_main_thread_116']
     },
     {
         "identifier": 'EVENT_1365_pause_36',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1365_end_loop_37',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_38',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 577],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 577]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_39',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_40',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_41',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 45, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 45, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_42',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_43',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 44, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 44, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_44',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_pause_action_script_45',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_1365_play_sound_46',
         "command": 'play_sound',
-        "args": [Sounds._107_DRUM_ROLL, 4],
-        "subscript": []
+        "args": [Sounds._107_DRUM_ROLL, 4]
     },
     {
         "identifier": 'EVENT_1365_action_queue_async_47',
@@ -382,8 +331,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1365_action_queue_async_47_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_47_SUBSCRIPT_pause_1',
@@ -407,8 +355,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_47_SUBSCRIPT_face_northwest_5',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_47_SUBSCRIPT_pause_6',
@@ -425,122 +372,101 @@ script = [
     {
         "identifier": 'EVENT_1365_pause_48',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_49',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 576],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 576]
     },
     {
         "identifier": 'EVENT_1365_play_sound_50',
         "command": 'play_sound',
-        "args": [Sounds._090_CURTAIN, 4],
-        "subscript": []
+        "args": [Sounds._090_CURTAIN, 4]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_51',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 37, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 37, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_52',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_53',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_54',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_55',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 39, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 39, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_start_loop_n_times_56',
         "command": 'start_loop_n_times',
-        "args": [59],
-        "subscript": []
+        "args": [59]
     },
     {
         "identifier": 'EVENT_1365_jmp_if_bit_set_57',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1365_move_script_to_main_thread_116'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_1365_move_script_to_main_thread_116']
     },
     {
         "identifier": 'EVENT_1365_pause_58',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1365_end_loop_59',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_60',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 577],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 577]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_61',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 38, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_62',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_63',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 37, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 37, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_64',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_65',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 36, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 36, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_66',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_pause_action_script_67',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_1365_action_queue_async_68',
@@ -554,13 +480,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_68_SUBSCRIPT_reset_properties_1',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_68_SUBSCRIPT_fixed_f_coord_on_2',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_68_SUBSCRIPT_set_animation_speed_3',
@@ -579,8 +503,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_68_SUBSCRIPT_face_northwest_6',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_68_SUBSCRIPT_pause_7',
@@ -597,122 +520,101 @@ script = [
     {
         "identifier": 'EVENT_1365_pause_69',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_70',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 576],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 576]
     },
     {
         "identifier": 'EVENT_1365_play_sound_71',
         "command": 'play_sound',
-        "args": [Sounds._090_CURTAIN, 4],
-        "subscript": []
+        "args": [Sounds._090_CURTAIN, 4]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_72',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 33, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 33, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_73',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_74',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 34, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 34, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_75',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_76',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 35, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 35, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_start_loop_n_times_77',
         "command": 'start_loop_n_times',
-        "args": [29],
-        "subscript": []
+        "args": [29]
     },
     {
         "identifier": 'EVENT_1365_jmp_if_bit_set_78',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_1365_move_script_to_main_thread_116'],
-        "subscript": []
+        "args": [0x7043, 0, 'EVENT_1365_move_script_to_main_thread_116']
     },
     {
         "identifier": 'EVENT_1365_pause_79',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1365_end_loop_80',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_81',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 577],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 577]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_82',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 34, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 34, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_83',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_84',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 33, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 33, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_85',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_86',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 32, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 32, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_87',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_pause_action_script_88',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_1365_action_queue_async_89',
@@ -726,13 +628,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_89_SUBSCRIPT_fixed_f_coord_off_1',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_89_SUBSCRIPT_reset_properties_2',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_89_SUBSCRIPT_pause_3',
@@ -756,8 +656,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_89_SUBSCRIPT_face_northwest_7',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_89_SUBSCRIPT_pause_8',
@@ -774,122 +673,101 @@ script = [
     {
         "identifier": 'EVENT_1365_pause_90',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_91',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 576],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 576]
     },
     {
         "identifier": 'EVENT_1365_play_sound_92',
         "command": 'play_sound',
-        "args": [Sounds._090_CURTAIN, 4],
-        "subscript": []
+        "args": [Sounds._090_CURTAIN, 4]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_93',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 45, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 45, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_94',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_95',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_96',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_97',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 47, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 47, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_start_loop_n_times_98',
         "command": 'start_loop_n_times',
-        "args": [39],
-        "subscript": []
+        "args": [39]
     },
     {
         "identifier": 'EVENT_1365_jmp_if_bit_set_99',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1365_move_script_to_main_thread_116'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_1365_move_script_to_main_thread_116']
     },
     {
         "identifier": 'EVENT_1365_pause_100',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1365_end_loop_101',
-        "command": 'end_loop',
-        "args": [],
-        "subscript": []
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_1365_set_action_script_sync_102',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 577],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 577]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_103',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 46, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_104',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_105',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 45, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 45, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_106',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_apply_tile_mod_107',
         "command": 'apply_tile_mod',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 44, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 44, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1365_pause_108',
         "command": 'pause',
-        "args": [3],
-        "subscript": []
+        "args": [3]
     },
     {
         "identifier": 'EVENT_1365_pause_109',
         "command": 'pause',
-        "args": [45],
-        "subscript": []
+        "args": [45]
     },
     {
         "identifier": 'EVENT_1365_action_queue_async_110',
@@ -898,68 +776,54 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1365_action_queue_async_110_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_110_SUBSCRIPT_reset_properties_1',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_110_SUBSCRIPT_face_southeast_2',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_1365_jmp_111',
         "command": 'jmp',
-        "args": ['EVENT_1365_jmp_115'],
-        "subscript": []
+        "args": ['EVENT_1365_jmp_115']
     },
     {
         "identifier": 'EVENT_1365_stop_sound_112',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1365_pause_113',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1365_run_dialog_114',
         "command": 'run_dialog',
-        "args": [2786, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2786, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1365_jmp_115',
         "command": 'jmp',
-        "args": ['EVENT_1366_pause_action_script_0'],
-        "subscript": []
+        "args": ['EVENT_1366_pause_action_script_0']
     },
     {
         "identifier": 'EVENT_1365_move_script_to_main_thread_116',
-        "command": 'move_script_to_main_thread',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_main_thread'
     },
     {
         "identifier": 'EVENT_1365_enable_controls_until_return_117',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_1365_stop_music_118',
-        "command": 'stop_music',
-        "args": [],
-        "subscript": []
+        "command": 'stop_music'
     },
     {
         "identifier": 'EVENT_1365_action_queue_sync_119',
@@ -985,8 +849,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1365_action_queue_async_120_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_120_SUBSCRIPT_set_animation_speed_1',
@@ -1003,8 +866,7 @@ script = [
     {
         "identifier": 'EVENT_1365_pause_121',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1365_action_queue_sync_122',
@@ -1013,13 +875,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1365_action_queue_sync_122_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_sync_122_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_sync_122_SUBSCRIPT_pause_2',
@@ -1040,13 +900,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1365_action_queue_sync_123_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_sync_123_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_sync_123_SUBSCRIPT_pause_2',
@@ -1067,13 +925,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1365_action_queue_async_124_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_124_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1365_action_queue_async_124_SUBSCRIPT_pause_2',
@@ -1090,13 +946,10 @@ script = [
     {
         "identifier": 'EVENT_1365_jmp_125',
         "command": 'jmp',
-        "args": ['EVENT_1370_jmp_if_var_equals_short_0'],
-        "subscript": []
+        "args": ['EVENT_1370_jmp_if_var_equals_short_0']
     },
     {
         "identifier": 'EVENT_1365_ret_126',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

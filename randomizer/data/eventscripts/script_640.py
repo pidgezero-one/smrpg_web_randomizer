@@ -1,35 +1,31 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_640_clear_bit_0',
         "command": 'clear_bit',
-        "args": [0x7043, 3],
-        "subscript": []
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_640_jmp_1',
         "command": 'jmp',
-        "args": ['EVENT_640_action_queue_async_6'],
-        "subscript": []
+        "args": ['EVENT_640_action_queue_async_6']
     },
     {
         "identifier": 'EVENT_640_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 5, 'EVENT_256_ret_0'],
-        "subscript": []
+        "args": [0x704c, 5, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_640_set_bit_3',
         "command": 'set_bit',
-        "args": [0x704c, 5],
-        "subscript": []
+        "args": [0x704c, 5]
     },
     {
         "identifier": 'EVENT_640_pause_4',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_640_action_queue_async_5',
@@ -53,8 +49,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_5_SUBSCRIPT_face_northwest_3',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_5_SUBSCRIPT_set_solidity_bits_4',
@@ -75,8 +70,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_640_action_queue_async_6_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_6_SUBSCRIPT_transfer_to_xyzf_1',
@@ -95,8 +89,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_6_SUBSCRIPT_fixed_f_coord_off_4',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_6_SUBSCRIPT_shift_northwest_pixels_5',
@@ -105,8 +98,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_6_SUBSCRIPT_visibility_on_6',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_6_SUBSCRIPT_shift_northwest_pixels_7',
@@ -115,28 +107,24 @@ script = [
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_6_SUBSCRIPT_face_southeast_8',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_640_jmp_7',
         "command": 'jmp',
-        "args": ['EVENT_640_action_queue_async_14'],
-        "subscript": []
+        "args": ['EVENT_640_action_queue_async_14']
     },
     {
         "identifier": 'EVENT_640_pause_8',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_640_run_dialog_9',
         "command": 'run_dialog',
-        "args": [2074, AreaObjects.NPC_3, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2074, AreaObjects.NPC_3, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_640_action_queue_async_10',
@@ -153,20 +141,17 @@ script = [
     {
         "identifier": 'EVENT_640_pause_11',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_640_run_dialog_12',
         "command": 'run_dialog',
-        "args": [2075, AreaObjects.NPC_3, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]],
-        "subscript": []
+        "args": [2075, AreaObjects.NPC_3, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_640_pause_13',
         "command": 'pause',
-        "args": [10],
-        "subscript": []
+        "args": [10]
     },
     {
         "identifier": 'EVENT_640_action_queue_async_14',
@@ -175,8 +160,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_640_action_queue_async_14_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_14_SUBSCRIPT_walk_to_xy_coords_1',
@@ -185,16 +169,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_14_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_640_set_action_script_sync_15',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 31],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 31]
     },
     {
         "identifier": 'EVENT_640_action_queue_async_16',
@@ -208,15 +190,12 @@ script = [
             },
             {
                 "identifier": 'EVENT_640_action_queue_async_16_SUBSCRIPT_face_south_1',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             }
         ]
     },
     {
         "identifier": 'EVENT_640_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

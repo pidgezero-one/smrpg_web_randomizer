@@ -1,209 +1,169 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1119_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7086, 1, 'EVENT_1119_jmp_16'],
-        "subscript": []
+        "args": [0x7086, 1, 'EVENT_1119_jmp_16']
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_1',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_2',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_3',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_4',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_5',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_6',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_7',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_8',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_9',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_10',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
     },
     {
         "identifier": 'EVENT_1119_remove_from_level_11',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
     },
     {
         "identifier": 'EVENT_1119_remove_from_current_level_12',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_1119_remove_from_current_level_13',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_1119_remove_from_current_level_14',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_1119_remove_from_current_level_15',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_1119_jmp_16',
         "command": 'jmp',
-        "args": ['EVENT_1119_jmp_if_bit_set_18'],
-        "subscript": []
+        "args": ['EVENT_1119_jmp_if_bit_set_18']
     },
     {
         "identifier": 'EVENT_1119_ret_17',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1119_jmp_if_bit_set_18',
         "command": 'jmp_if_bit_set',
-        "args": [0x7086, 0, 'EVENT_1119_play_music_default_volume_22'],
-        "subscript": []
+        "args": [0x7086, 0, 'EVENT_1119_play_music_default_volume_22']
     },
     {
         "identifier": 'EVENT_1119_play_music_default_volume_19',
         "command": 'play_music_default_volume',
-        "args": [Music._15_HERES_SOME_WEAPONS],
-        "subscript": []
+        "args": [Music._15_HERES_SOME_WEAPONS]
     },
     {
         "identifier": 'EVENT_1119_jmp_20',
         "command": 'jmp',
-        "args": ['EVENT_1119_jmp_if_present_in_current_level_25'],
-        "subscript": []
+        "args": ['EVENT_1119_jmp_if_present_in_current_level_25']
     },
     {
         "identifier": 'EVENT_1119_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1119_play_music_default_volume_22',
         "command": 'play_music_default_volume',
-        "args": [Music._05_SEASIDE_TOWN],
-        "subscript": []
+        "args": [Music._05_SEASIDE_TOWN]
     },
     {
         "identifier": 'EVENT_1119_jmp_23',
         "command": 'jmp',
-        "args": ['EVENT_1119_jmp_if_present_in_current_level_25'],
-        "subscript": []
+        "args": ['EVENT_1119_jmp_if_present_in_current_level_25']
     },
     {
         "identifier": 'EVENT_1119_ret_24',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1119_jmp_if_present_in_current_level_25',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_7, 'EVENT_1119_apply_solidity_mod_28'],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 'EVENT_1119_apply_solidity_mod_28']
     },
     {
         "identifier": 'EVENT_1119_jmp_26',
         "command": 'jmp',
-        "args": ['EVENT_1119_jmp_if_bit_set_33'],
-        "subscript": []
+        "args": ['EVENT_1119_jmp_if_bit_set_33']
     },
     {
         "identifier": 'EVENT_1119_ret_27',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1119_apply_solidity_mod_28',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_1119_jmp_29',
         "command": 'jmp',
-        "args": ['EVENT_1119_jmp_if_bit_set_33'],
-        "subscript": []
+        "args": ['EVENT_1119_jmp_if_bit_set_33']
     },
     {
         "identifier": 'EVENT_1119_ret_30',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1119_fade_in_from_black_sync_31',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_1119_ret_32',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1119_jmp_if_bit_set_33',
         "command": 'jmp_if_bit_set',
-        "args": [0x7086, 1, 'EVENT_1119_fade_in_from_black_sync_31'],
-        "subscript": []
+        "args": [0x7086, 1, 'EVENT_1119_fade_in_from_black_sync_31']
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_34',
@@ -232,13 +192,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_34_SUBSCRIPT_face_southwest_4',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_34_SUBSCRIPT_visibility_on_5',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_34_SUBSCRIPT_set_sprite_sequence_6',
@@ -264,46 +222,38 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_35_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_set_action_script_sync_36',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 147],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 147]
     },
     {
         "identifier": 'EVENT_1119_set_action_script_sync_37',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 147],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 147]
     },
     {
         "identifier": 'EVENT_1119_set_action_script_sync_38',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 147],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 147]
     },
     {
         "identifier": 'EVENT_1119_set_action_script_sync_39',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 147],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 147]
     },
     {
         "identifier": 'EVENT_1119_set_action_script_sync_40',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 147],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 147]
     },
     {
         "identifier": 'EVENT_1119_fade_in_from_black_async_41',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_42',
@@ -345,8 +295,7 @@ script = [
     {
         "identifier": 'EVENT_1119_pause_43',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_44',
@@ -368,20 +317,16 @@ script = [
     {
         "identifier": 'EVENT_1119_pause_45',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1119_unfreeze_camera_46',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_1119_jmp_47',
         "command": 'jmp',
-        "args": ['EVENT_1118_pause_0'],
-        "subscript": []
+        "args": ['EVENT_1118_pause_0']
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_48',
@@ -402,57 +347,46 @@ script = [
     },
     {
         "identifier": 'EVENT_1119_unsync_dialog_49',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_1119_close_dialog_50',
-        "command": 'close_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'close_dialog'
     },
     {
         "identifier": 'EVENT_1119_pause_51',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1119_pause_52',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1119_jmp_if_dialog_option_b_53',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_1119_jmp_if_var_equals_byte_55'],
-        "subscript": []
+        "args": ['EVENT_1119_jmp_if_var_equals_byte_55']
     },
     {
         "identifier": 'EVENT_1119_jmp_54',
         "command": 'jmp',
-        "args": ['EVENT_1118_pause_0'],
-        "subscript": []
+        "args": ['EVENT_1118_pause_0']
     },
     {
         "identifier": 'EVENT_1119_jmp_if_var_equals_byte_55',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70bc, 1, 'EVENT_1119_pause_75'],
-        "subscript": []
+        "args": [0x70bc, 1, 'EVENT_1119_pause_75']
     },
     {
         "identifier": 'EVENT_1119_jmp_if_var_equals_byte_56',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70bc, 2, 'EVENT_1119_pause_96'],
-        "subscript": []
+        "args": [0x70bc, 2, 'EVENT_1119_pause_96']
     },
     {
         "identifier": 'EVENT_1119_jmp_if_var_equals_byte_57',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70bc, 3, 'EVENT_1119_pause_96'],
-        "subscript": []
+        "args": [0x70bc, 3, 'EVENT_1119_pause_96']
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_58',
@@ -461,8 +395,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_58_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
@@ -478,16 +411,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_59_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_pause_60',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_61',
@@ -518,8 +449,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_62_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_62_SUBSCRIPT_pause_1',
@@ -543,34 +473,29 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_62_SUBSCRIPT_visibility_off_5',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_apply_tile_mod_63',
         "command": 'apply_tile_mod',
-        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1119_pause_64',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1119_pause_65',
         "command": 'pause',
-        "args": [100],
-        "subscript": []
+        "args": [100]
     },
     {
         "identifier": 'EVENT_1119_apply_tile_mod_66',
         "command": 'apply_tile_mod',
-        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, []],
-        "subscript": []
+        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, []]
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_67',
@@ -606,8 +531,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_68_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_68_SUBSCRIPT_set_animation_speed_2',
@@ -631,21 +555,18 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_68_SUBSCRIPT_face_southwest_6',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_68_SUBSCRIPT_visibility_on_7',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_pause_69',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_70',
@@ -654,8 +575,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_70_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -666,34 +586,29 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_71_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_set_72',
         "command": 'set',
-        "args": [0x70bc, 1],
-        "subscript": []
+        "args": [0x70bc, 1]
     },
     {
         "identifier": 'EVENT_1119_pause_73',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1119_jmp_74',
         "command": 'jmp',
-        "args": ['EVENT_1119_jmp_if_var_equals_byte_56'],
-        "subscript": []
+        "args": ['EVENT_1119_jmp_if_var_equals_byte_56']
     },
     {
         "identifier": 'EVENT_1119_pause_75',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_76',
@@ -702,8 +617,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_76_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
@@ -719,16 +633,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_77_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_pause_78',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_79',
@@ -759,8 +671,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_sync_80_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_80_SUBSCRIPT_pause_1',
@@ -776,8 +687,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_81_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_81_SUBSCRIPT_pause_1',
@@ -801,34 +711,29 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_81_SUBSCRIPT_visibility_off_5',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_apply_tile_mod_82',
         "command": 'apply_tile_mod',
-        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1119_pause_83',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1119_pause_84',
         "command": 'pause',
-        "args": [100],
-        "subscript": []
+        "args": [100]
     },
     {
         "identifier": 'EVENT_1119_apply_tile_mod_85',
         "command": 'apply_tile_mod',
-        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, []],
-        "subscript": []
+        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, []]
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_86',
@@ -864,13 +769,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_87_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_87_SUBSCRIPT_visibility_on_2',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_87_SUBSCRIPT_pause_3',
@@ -899,8 +802,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_87_SUBSCRIPT_face_southwest_8',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -921,13 +823,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_88_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_88_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_88_SUBSCRIPT_pause_4',
@@ -956,16 +856,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_88_SUBSCRIPT_face_southwest_9',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_pause_89',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_90',
@@ -974,8 +872,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_90_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -986,40 +883,34 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_91_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_pause_92',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1119_run_dialog_93',
         "command": 'run_dialog',
-        "args": [2855, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2855, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1119_run_dialog_94',
         "command": 'run_dialog',
-        "args": [2855, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2855, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1119_jmp_95',
         "command": 'jmp',
-        "args": ['EVENT_1119_jmp_if_var_equals_byte_56'],
-        "subscript": []
+        "args": ['EVENT_1119_jmp_if_var_equals_byte_56']
     },
     {
         "identifier": 'EVENT_1119_pause_96',
         "command": 'pause',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_97',
@@ -1028,8 +919,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_97_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
@@ -1045,16 +935,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_98_SUBSCRIPT_face_northwest_1',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_pause_99',
         "command": 'pause',
-        "args": [15],
-        "subscript": []
+        "args": [15]
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_100',
@@ -1085,8 +973,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_sync_101_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_101_SUBSCRIPT_pause_1',
@@ -1112,8 +999,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_sync_102_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_102_SUBSCRIPT_pause_1',
@@ -1139,8 +1025,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_sync_103_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_103_SUBSCRIPT_pause_1',
@@ -1166,8 +1051,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_104_SUBSCRIPT_face_northwest_0',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_104_SUBSCRIPT_pause_1',
@@ -1176,8 +1060,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_104_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_104_SUBSCRIPT_set_animation_speed_3',
@@ -1194,8 +1077,7 @@ script = [
     {
         "identifier": 'EVENT_1119_apply_tile_mod_105',
         "command": 'apply_tile_mod',
-        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_106',
@@ -1209,8 +1091,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_106_SUBSCRIPT_visibility_off_1',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -1231,8 +1112,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_107_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -1253,8 +1133,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_108_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -1275,52 +1154,44 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_109_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_pause_110',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1119_jmp_if_var_equals_byte_111',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70bc, 3, 'EVENT_1119_run_dialog_114'],
-        "subscript": []
+        "args": [0x70bc, 3, 'EVENT_1119_run_dialog_114']
     },
     {
         "identifier": 'EVENT_1119_run_dialog_112',
         "command": 'run_dialog',
-        "args": [2857, AreaObjects.NPC_13, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2857, AreaObjects.NPC_13, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1119_pause_113',
         "command": 'pause',
-        "args": [100],
-        "subscript": []
+        "args": [100]
     },
     {
         "identifier": 'EVENT_1119_run_dialog_114',
         "command": 'run_dialog',
-        "args": [2858, AreaObjects.NPC_13, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2858, AreaObjects.NPC_13, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1119_pause_115',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1119_apply_tile_mod_116',
         "command": 'apply_tile_mod',
-        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, []],
-        "subscript": []
+        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 33, []]
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_117',
@@ -1356,13 +1227,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_118_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_118_SUBSCRIPT_visibility_on_2',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_118_SUBSCRIPT_pause_3',
@@ -1391,8 +1260,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_118_SUBSCRIPT_face_southwest_8',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -1413,13 +1281,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_119_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_119_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_119_SUBSCRIPT_pause_4',
@@ -1448,8 +1314,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_119_SUBSCRIPT_face_southwest_9',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -1470,13 +1335,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_120_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_120_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_120_SUBSCRIPT_pause_4',
@@ -1505,8 +1368,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_sync_120_SUBSCRIPT_face_southwest_9',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -1527,13 +1389,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_121_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_121_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_121_SUBSCRIPT_pause_4',
@@ -1562,16 +1422,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_1119_action_queue_async_121_SUBSCRIPT_face_southwest_9',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_pause_122',
         "command": 'pause',
-        "args": [20],
-        "subscript": []
+        "args": [20]
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_123',
@@ -1580,8 +1438,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_123_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
@@ -1592,33 +1449,28 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1119_action_queue_async_124_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_1119_set_125',
         "command": 'set',
-        "args": [0x70bc, 3],
-        "subscript": []
+        "args": [0x70bc, 3]
     },
     {
         "identifier": 'EVENT_1119_pause_126',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_1119_run_dialog_127',
         "command": 'run_dialog',
-        "args": [2855, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [2855, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1119_jmp_128',
         "command": 'jmp',
-        "args": ['EVENT_1119_jmp_if_var_equals_byte_56'],
-        "subscript": []
+        "args": ['EVENT_1119_jmp_if_var_equals_byte_56']
     }
 ]

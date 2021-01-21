@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2347_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7048, 1, 'EVENT_2347_ret_19'],
-        "subscript": []
+        "args": [0x7048, 1, 'EVENT_2347_ret_19']
     },
     {
         "identifier": 'EVENT_2347_set_bit_1',
         "command": 'set_bit',
-        "args": [0x7048, 1],
-        "subscript": []
+        "args": [0x7048, 1]
     },
     {
         "identifier": 'EVENT_2347_action_queue_sync_2',
@@ -42,8 +41,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_3_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_3_SUBSCRIPT_set_animation_speed_2',
@@ -72,8 +70,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_3_SUBSCRIPT_bpl_26_27_28_7',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_8',
@@ -107,8 +104,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_3_SUBSCRIPT_bpl_26_27_28_14',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_15',
@@ -117,8 +113,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_3_SUBSCRIPT_sequence_looping_off_16',
-                "command": 'sequence_looping_off',
-                "args": []
+                "command": 'sequence_looping_off'
             }
         ]
     },
@@ -154,8 +149,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_4_SUBSCRIPT_visibility_on_5',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_4_SUBSCRIPT_pause_6',
@@ -174,16 +168,14 @@ script = [
             },
             {
                 "identifier": 'EVENT_2347_action_queue_sync_4_SUBSCRIPT_visibility_off_9',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2347_play_sound_5',
         "command": 'play_sound',
-        "args": [Sounds._014_FLOWER, 6],
-        "subscript": []
+        "args": [Sounds._014_FLOWER, 6]
     },
     {
         "identifier": 'EVENT_2347_action_queue_async_6',
@@ -212,8 +204,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2347_action_queue_async_6_SUBSCRIPT_face_south_4',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             },
             {
                 "identifier": 'EVENT_2347_action_queue_async_6_SUBSCRIPT_pause_5',
@@ -225,79 +216,65 @@ script = [
     {
         "identifier": 'EVENT_2347_set_action_script_sync_7',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 401],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 401]
     },
     {
         "identifier": 'EVENT_2347_play_sound_8',
         "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6],
-        "subscript": []
+        "args": [Sounds._027_FOUND_AN_ITEM, 6]
     },
     {
         "identifier": 'EVENT_2347_set_action_script_async_9',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 385],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 385]
     },
     {
         "identifier": 'EVENT_2347_set_10',
         "command": 'set',
-        "args": [0x70a7, 125],
-        "subscript": []
+        "args": [0x70a7, 125]
     },
     {
         "identifier": 'EVENT_2347_set_action_script_async_11',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_2347_remove_from_level_12',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     },
     {
         "identifier": 'EVENT_2347_remove_from_level_13',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_7, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     },
     {
         "identifier": 'EVENT_2347_summon_to_level_14',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_1, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     },
     {
         "identifier": 'EVENT_2347_disable_trigger_in_level_15',
         "command": 'disable_trigger_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]
     },
     {
         "identifier": 'EVENT_2347_run_dialog_16',
         "command": 'run_dialog',
-        "args": [3166, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3166, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2347_put_inventory_17',
         "command": 'put_inventory',
-        "args": [items.GoodieBag],
-        "subscript": []
+        "args": [items.GoodieBag]
     },
     {
         "identifier": 'EVENT_2347_add_18',
         "command": 'add',
-        "args": [0x70c8, 0x01],
-        "subscript": []
+        "args": [0x70c8, 0x01]
     },
     {
         "identifier": 'EVENT_2347_ret_19',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

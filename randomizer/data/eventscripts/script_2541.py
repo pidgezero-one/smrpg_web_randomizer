@@ -1,17 +1,15 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2541_play_sound_0',
         "command": 'play_sound',
-        "args": [Sounds._019_LONG_FALL, 6],
-        "subscript": []
+        "args": [Sounds._019_LONG_FALL, 6]
     },
     {
         "identifier": 'EVENT_2541_freeze_camera_1',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2541_action_queue_sync_2',
@@ -20,8 +18,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2541_action_queue_sync_2_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2541_action_queue_sync_2_SUBSCRIPT_set_animation_speed_1',
@@ -40,8 +37,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2541_action_queue_sync_2_SUBSCRIPT_floating_on_4',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             }
         ]
     },
@@ -136,44 +132,36 @@ script = [
     {
         "identifier": 'EVENT_2541_set_action_script_sync_7',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 405],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 405]
     },
     {
         "identifier": 'EVENT_2541_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 846],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 846]
     },
     {
         "identifier": 'EVENT_2541_set_action_script_sync_9',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 847],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 847]
     },
     {
         "identifier": 'EVENT_2541_set_action_script_sync_10',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 194],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 194]
     },
     {
         "identifier": 'EVENT_2541_fade_in_from_black_async_11',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2541_jmp_if_object_in_level_12',
         "command": 'jmp_if_object_in_level',
-        "args": [AreaObjects.NPC_4, Rooms._347_BEAN_VALLEY_PIPE_ROOM_TOP_PIPE_LEADS_TO_GRATE_GUYS_CASINO, 'EVENT_2541_action_queue_async_14'],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, Rooms._347_BEAN_VALLEY_PIPE_ROOM_TOP_PIPE_LEADS_TO_GRATE_GUYS_CASINO, 'EVENT_2541_action_queue_async_14']
     },
     {
         "identifier": 'EVENT_2541_run_background_event_13',
         "command": 'run_background_event',
-        "args": [2802, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [2802, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_2541_action_queue_async_14',
@@ -204,14 +192,10 @@ script = [
     },
     {
         "identifier": 'EVENT_2541_unfreeze_camera_15',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2541_ret_16',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

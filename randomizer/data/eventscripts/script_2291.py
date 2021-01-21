@@ -1,17 +1,15 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2291_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._249_GAME_INTRO_VISTA_HILL, RadialDirections.NORTHEAST, 4, 18, 0, []],
-        "subscript": []
+        "args": [Rooms._249_GAME_INTRO_VISTA_HILL, RadialDirections.NORTHEAST, 4, 18, 0, []]
     },
     {
         "identifier": 'EVENT_2291_freeze_camera_1',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2291_action_queue_sync_2',
@@ -57,33 +55,27 @@ script = [
             },
             {
                 "identifier": 'EVENT_2291_action_queue_async_3_SUBSCRIPT_face_northwest_4',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2291_action_queue_async_3_SUBSCRIPT_sequence_playback_off_5',
-                "command": 'sequence_playback_off',
-                "args": []
+                "command": 'sequence_playback_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2291_read_from_address_4',
         "command": 'read_from_address',
-        "args": [0x91d2],
-        "subscript": []
+        "args": [0x91d2]
     },
     {
         "identifier": 'EVENT_2291_apply_tile_mod_5',
         "command": 'apply_tile_mod',
-        "args": [Rooms._249_GAME_INTRO_VISTA_HILL, 32, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._249_GAME_INTRO_VISTA_HILL, 32, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2291_fade_in_from_black_async_6',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2291_action_queue_sync_7',
@@ -126,8 +118,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2291_action_queue_async_9_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2291_action_queue_async_9_SUBSCRIPT_set_animation_speed_1',
@@ -144,19 +135,16 @@ script = [
     {
         "identifier": 'EVENT_2291_pause_10',
         "command": 'pause',
-        "args": [75],
-        "subscript": []
+        "args": [75]
     },
     {
         "identifier": 'EVENT_2291_fade_out_to_black_async_duration_11',
         "command": 'fade_out_to_black_async_duration',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2291_jmp_to_event_12',
         "command": 'jmp_to_event',
-        "args": [147],
-        "subscript": []
+        "args": [147]
     }
 ]

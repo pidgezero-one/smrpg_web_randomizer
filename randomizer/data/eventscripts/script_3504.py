@@ -1,59 +1,51 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3504_stop_background_event_0',
         "command": 'stop_background_event',
-        "args": [timer_memory=0x701c],
-        "subscript": []
+        "args": [timer_memory=0x701c]
     },
     {
         "identifier": 'EVENT_3504_clear_bit_1',
         "command": 'clear_bit',
-        "args": [0x7043, 5],
-        "subscript": []
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_3504_enable_controls_until_return_2',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_3504_jmp_fork_mario_on_object_3',
         "command": 'jmp_fork_mario_on_object',
-        "args": ['EVENT_3504_reset_coords_15', 'EVENT_3504_set_7000_to_object_coord_4'],
-        "subscript": []
+        "args": ['EVENT_3504_reset_coords_15', 'EVENT_3504_set_7000_to_object_coord_4']
     },
     {
         "identifier": 'EVENT_3504_set_7000_to_object_coord_4',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3504_mem_compare_5',
         "command": 'mem_compare',
-        "args": [0x7000, 288],
-        "subscript": []
+        "args": [0x7000, 288]
     },
     {
         "identifier": 'EVENT_3504_jmp_if_comparison_result_is_greater_or_equal_6',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_3504_reset_coords_15'],
-        "subscript": []
+        "args": ['EVENT_3504_reset_coords_15']
     },
     {
         "identifier": 'EVENT_3504_disable_trigger_7',
         "command": 'disable_trigger',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3504_resume_action_script_8',
         "command": 'resume_action_script',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3504_action_queue_async_9',
@@ -67,8 +59,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_floating_off_1',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_play_sound_2',
@@ -87,8 +78,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_floating_on_5',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_set_animation_speed_6',
@@ -97,8 +87,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_visibility_off_7',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_pause_8',
@@ -107,8 +96,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_visibility_on_9',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_mem_compare_10',
@@ -142,8 +130,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_reset_properties_16',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_set_solidity_bits_17',
@@ -155,55 +142,45 @@ script = [
     {
         "identifier": 'EVENT_3504_enable_controls_until_return_10',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_3504_enable_trigger_11',
         "command": 'enable_trigger',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3504_set_short_12',
         "command": 'set_short',
-        "args": [0x701c, 0x0002],
-        "subscript": []
+        "args": [0x701c, 0x0002]
     },
     {
         "identifier": 'EVENT_3504_run_background_event_with_pause_return_on_exit_13',
         "command": 'run_background_event_with_pause_return_on_exit',
-        "args": [3505, 0x701c, [12, 13]],
-        "subscript": []
+        "args": [3505, 0x701c, [12, 13]]
     },
     {
         "identifier": 'EVENT_3504_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3504_reset_coords_15',
         "command": 'reset_coords',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_3504_set_action_script_sync_16',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 711],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8, 711]
     },
     {
         "identifier": 'EVENT_3504_set_short_17',
         "command": 'set_short',
-        "args": [0x7028, 0x0030],
-        "subscript": []
+        "args": [0x7028, 0x0030]
     },
     {
         "identifier": 'EVENT_3504_jmp_18',
         "command": 'jmp',
-        "args": ['EVENT_3501_action_queue_sync_19'],
-        "subscript": []
+        "args": ['EVENT_3501_action_queue_sync_19']
     }
 ]

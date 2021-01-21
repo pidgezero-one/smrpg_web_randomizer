@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_993_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._245_GAME_INTRO_PIPE_VAULT_AREA_02_WTHWOMP, RadialDirections.NORTHEAST, 22, 33, 1, []],
-        "subscript": []
+        "args": [Rooms._245_GAME_INTRO_PIPE_VAULT_AREA_02_WTHWOMP, RadialDirections.NORTHEAST, 22, 33, 1, []]
     },
     {
         "identifier": 'EVENT_993_run_background_event_1',
         "command": 'run_background_event',
-        "args": [429, [_0x40Flags.RETURN_ON_LEVEL_EXIT]],
-        "subscript": []
+        "args": [429, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
         "identifier": 'EVENT_993_action_queue_sync_2',
@@ -142,8 +141,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_3_SUBSCRIPT_walk_1_step_northeast_19',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_3_SUBSCRIPT_jump_to_height_silent_20',
@@ -192,8 +190,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_3_SUBSCRIPT_floating_off_29',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_30',
@@ -214,8 +211,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_4_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_4_SUBSCRIPT_pause_2',
@@ -323,8 +319,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_6_SUBSCRIPT_visibility_on_2',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_6_SUBSCRIPT_set_priority_3',
@@ -338,8 +333,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_6_SUBSCRIPT_add_z_coord_1_step_5',
-                "command": 'add_z_coord_1_step',
-                "args": []
+                "command": 'add_z_coord_1_step'
             },
             {
                 "identifier": 'EVENT_993_action_queue_sync_6_SUBSCRIPT_shift_z_up_pixels_6',
@@ -361,37 +355,29 @@ script = [
     {
         "identifier": 'EVENT_993_pause_7',
         "command": 'pause',
-        "args": [16],
-        "subscript": []
+        "args": [16]
     },
     {
         "identifier": 'EVENT_993_fade_in_from_black_sync_8',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_993_pause_9',
         "command": 'pause',
-        "args": [98],
-        "subscript": []
+        "args": [98]
     },
     {
         "identifier": 'EVENT_993_fade_out_to_black_sync_duration_10',
         "command": 'fade_out_to_black_sync_duration',
-        "args": [30],
-        "subscript": []
+        "args": [30]
     },
     {
         "identifier": 'EVENT_993_pause_script_until_effect_done_11',
-        "command": 'pause_script_until_effect_done',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_until_effect_done'
     },
     {
         "identifier": 'EVENT_993_jmp_to_event_12',
         "command": 'jmp_to_event',
-        "args": [138],
-        "subscript": []
+        "args": [138]
     }
 ]

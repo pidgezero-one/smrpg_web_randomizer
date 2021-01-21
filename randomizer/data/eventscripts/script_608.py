@@ -1,47 +1,39 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_608_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 0, 'EVENT_608_jmp_if_bit_set_4'],
-        "subscript": []
+        "args": [0x7042, 0, 'EVENT_608_jmp_if_bit_set_4']
     },
     {
         "identifier": 'EVENT_608_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 4, 'EVENT_608_jmp_if_bit_set_4'],
-        "subscript": []
+        "args": [0x7042, 4, 'EVENT_608_jmp_if_bit_set_4']
     },
     {
         "identifier": 'EVENT_608_fade_in_from_black_async_2',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_608_ret_3',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_608_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 2, 'EVENT_608_action_queue_sync_8'],
-        "subscript": []
+        "args": [0x7042, 2, 'EVENT_608_action_queue_sync_8']
     },
     {
         "identifier": 'EVENT_608_jmp_if_bit_set_5',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 3, 'EVENT_608_action_queue_sync_8'],
-        "subscript": []
+        "args": [0x7042, 3, 'EVENT_608_action_queue_sync_8']
     },
     {
         "identifier": 'EVENT_608_jmp_if_bit_set_6',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 4, 'EVENT_608_action_queue_sync_8'],
-        "subscript": []
+        "args": [0x7042, 4, 'EVENT_608_action_queue_sync_8']
     },
     {
         "identifier": 'EVENT_608_action_queue_sync_7',
@@ -87,62 +79,51 @@ script = [
     {
         "identifier": 'EVENT_608_apply_solidity_mod_10',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._011_MARRYMORE_INN_3F, 0, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._011_MARRYMORE_INN_3F, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_608_jmp_if_bit_set_11',
         "command": 'jmp_if_bit_set',
-        "args": [0x709f, 0, 'EVENT_608_remove_from_current_level_22'],
-        "subscript": []
+        "args": [0x709f, 0, 'EVENT_608_remove_from_current_level_22']
     },
     {
         "identifier": 'EVENT_608_fade_in_from_black_async_12',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_608_enable_controls_until_return_13',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_608_jmp_if_bit_set_14',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 2, 'EVENT_608_ret_21'],
-        "subscript": []
+        "args": [0x7042, 2, 'EVENT_608_ret_21']
     },
     {
         "identifier": 'EVENT_608_jmp_if_bit_set_15',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 4, 'EVENT_608_ret_21'],
-        "subscript": []
+        "args": [0x7042, 4, 'EVENT_608_ret_21']
     },
     {
         "identifier": 'EVENT_608_set_bit_16',
         "command": 'set_bit',
-        "args": [0x7042, 2],
-        "subscript": []
+        "args": [0x7042, 2]
     },
     {
         "identifier": 'EVENT_608_apply_tile_mod_17',
         "command": 'apply_tile_mod',
-        "args": [Rooms._011_MARRYMORE_INN_3F, 0, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._011_MARRYMORE_INN_3F, 0, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_608_apply_solidity_mod_18',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._011_MARRYMORE_INN_3F, 1, [_0x6BFlags.PERMANENT]],
-        "subscript": []
+        "args": [Rooms._011_MARRYMORE_INN_3F, 1, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_608_play_sound_19',
         "command": 'play_sound',
-        "args": [Sounds._016_OPEN_DOOR, 6],
-        "subscript": []
+        "args": [Sounds._016_OPEN_DOOR, 6]
     },
     {
         "identifier": 'EVENT_608_action_queue_async_20',
@@ -156,13 +137,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_608_action_queue_async_20_SUBSCRIPT_walk_1_step_northeast_1',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_608_action_queue_async_20_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_608_action_queue_async_20_SUBSCRIPT_transfer_to_xyzf_3',
@@ -173,26 +152,19 @@ script = [
     },
     {
         "identifier": 'EVENT_608_ret_21',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_608_remove_from_current_level_22',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_608_fade_in_from_black_async_23',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_608_ret_24',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

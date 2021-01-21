@@ -1,41 +1,35 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2544_play_sound_0',
         "command": 'play_sound',
-        "args": [Sounds._019_LONG_FALL, 6],
-        "subscript": []
+        "args": [Sounds._019_LONG_FALL, 6]
     },
     {
         "identifier": 'EVENT_2544_freeze_camera_1',
-        "command": 'freeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2544_set_7000_to_object_coord_2',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL],
-        "subscript": []
+        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2544_jmp_if_var_equals_short_3',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2544_jmp_if_bit_clear_5'],
-        "subscript": []
+        "args": [0x7000, 0, 'EVENT_2544_jmp_if_bit_clear_5']
     },
     {
         "identifier": 'EVENT_2544_set_bit_4',
         "command": 'set_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_2544_jmp_if_bit_clear_5',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708c, 5, 'EVENT_2544_apply_tile_mod_10'],
-        "subscript": []
+        "args": [0x708c, 5, 'EVENT_2544_apply_tile_mod_10']
     },
     {
         "identifier": 'EVENT_2544_action_queue_async_6',
@@ -52,26 +46,22 @@ script = [
     {
         "identifier": 'EVENT_2544_set_action_script_async_7',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_7, 15],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 15]
     },
     {
         "identifier": 'EVENT_2544_apply_tile_mod_8',
         "command": 'apply_tile_mod',
-        "args": [Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, 1, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, 1, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2544_jmp_9',
         "command": 'jmp',
-        "args": ['EVENT_2544_action_queue_sync_11'],
-        "subscript": []
+        "args": ['EVENT_2544_action_queue_sync_11']
     },
     {
         "identifier": 'EVENT_2544_apply_tile_mod_10',
         "command": 'apply_tile_mod',
-        "args": [Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, 0, [_0x6AFlags.USE_ALTERNATE]],
-        "subscript": []
+        "args": [Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, 0, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2544_action_queue_sync_11',
@@ -95,8 +85,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2544_action_queue_sync_11_SUBSCRIPT_face_south_3',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             },
             {
                 "identifier": 'EVENT_2544_action_queue_sync_11_SUBSCRIPT_shift_z_up_steps_4',
@@ -154,13 +143,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2544_action_queue_sync_13_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_2544_action_queue_sync_13_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -181,13 +168,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2544_action_queue_async_14_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_2544_action_queue_async_14_SUBSCRIPT_floating_off_3',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_2544_action_queue_async_14_SUBSCRIPT_clear_solidity_bits_4',
@@ -196,16 +181,13 @@ script = [
             },
             {
                 "identifier": 'EVENT_2544_action_queue_async_14_SUBSCRIPT_visibility_off_5',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_2544_fade_in_from_black_async_15',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_2544_action_queue_async_16',
@@ -252,49 +234,39 @@ script = [
     {
         "identifier": 'EVENT_2544_run_event_as_subroutine_17',
         "command": 'run_event_as_subroutine',
-        "args": [3588],
-        "subscript": []
+        "args": [3588]
     },
     {
         "identifier": 'EVENT_2544_jmp_if_bit_clear_18',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2544_unfreeze_camera_22'],
-        "subscript": []
+        "args": [0x7099, 7, 'EVENT_2544_unfreeze_camera_22']
     },
     {
         "identifier": 'EVENT_2544_jmp_if_bit_set_19',
         "command": 'jmp_if_bit_set',
-        "args": [0x708c, 5, 'EVENT_2544_unfreeze_camera_22'],
-        "subscript": []
+        "args": [0x708c, 5, 'EVENT_2544_unfreeze_camera_22']
     },
     {
         "identifier": 'EVENT_2544_clear_bit_20',
         "command": 'clear_bit',
-        "args": [0x7099, 7],
-        "subscript": []
+        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2544_play_sound_21',
         "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6],
-        "subscript": []
+        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
     },
     {
         "identifier": 'EVENT_2544_unfreeze_camera_22',
-        "command": 'unfreeze_camera',
-        "args": [],
-        "subscript": []
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_2544_clear_bit_23',
         "command": 'clear_bit',
-        "args": [0x7099, 7],
-        "subscript": []
+        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2544_ret_24',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

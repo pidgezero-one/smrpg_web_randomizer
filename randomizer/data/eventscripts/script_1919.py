@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1919_disable_trigger_0',
         "command": 'disable_trigger',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_1919_play_sound_1',
         "command": 'play_sound',
-        "args": [Sounds._058_INSERT, 6],
-        "subscript": []
+        "args": [Sounds._058_INSERT, 6]
     },
     {
         "identifier": 'EVENT_1919_jmp_if_var_equals_byte_2',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70a8, 21, 'EVENT_1919_action_queue_async_7'],
-        "subscript": []
+        "args": [0x70a8, 21, 'EVENT_1919_action_queue_async_7']
     },
     {
         "identifier": 'EVENT_1919_action_queue_async_3',
@@ -26,13 +24,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1919_action_queue_async_3_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1919_action_queue_async_3_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_1919_action_queue_async_3_SUBSCRIPT_set_animation_speed_2',
@@ -49,8 +45,7 @@ script = [
     {
         "identifier": 'EVENT_1919_jmp_to_subroutine_4',
         "command": 'jmp_to_subroutine',
-        "args": [0x6513],
-        "subscript": []
+        "args": [0x6513]
     },
     {
         "identifier": 'EVENT_1919_action_queue_sync_5',
@@ -76,9 +71,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1919_ret_6',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1919_action_queue_async_7',
@@ -87,13 +80,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1919_action_queue_async_7_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1919_action_queue_async_7_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_1919_action_queue_async_7_SUBSCRIPT_set_animation_speed_2',
@@ -110,8 +101,7 @@ script = [
     {
         "identifier": 'EVENT_1919_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0x6513],
-        "subscript": []
+        "args": [0x6513]
     },
     {
         "identifier": 'EVENT_1919_action_queue_sync_9',
@@ -137,38 +127,30 @@ script = [
     },
     {
         "identifier": 'EVENT_1919_ret_10',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1919_enable_controls_until_return_11',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_1919_pause_12',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1919_jmp_if_mario_in_air_13',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_1919_ret_15'],
-        "subscript": []
+        "args": ['EVENT_1919_ret_15']
     },
     {
         "identifier": 'EVENT_1919_jmp_14',
         "command": 'jmp',
-        "args": ['EVENT_1919_pause_12'],
-        "subscript": []
+        "args": ['EVENT_1919_pause_12']
     },
     {
         "identifier": 'EVENT_1919_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,65 +1,55 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1885_set_short_mem_0',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8],
-        "subscript": []
+        "args": [0x7000, 0x70a8]
     },
     {
         "identifier": 'EVENT_1885_set_short_mem_1',
         "command": 'set_short_mem',
-        "args": [0x70af, 0x7000],
-        "subscript": []
+        "args": [0x70af, 0x7000]
     },
     {
         "identifier": 'EVENT_1885_jmp_if_bit_clear_2',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 1, 'EVENT_1885_jmp_if_bit_set_4'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_1885_jmp_if_bit_set_4']
     },
     {
         "identifier": 'EVENT_1885_jmp_fork_mario_on_object_3',
         "command": 'jmp_fork_mario_on_object',
-        "args": ['EVENT_1745_freeze_all_npcs_until_return_43', 'EVENT_1885_jmp_if_bit_set_4'],
-        "subscript": []
+        "args": ['EVENT_1745_freeze_all_npcs_until_return_43', 'EVENT_1885_jmp_if_bit_set_4']
     },
     {
         "identifier": 'EVENT_1885_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x7097, 2, 'EVENT_1885_jmp_to_subroutine_9'],
-        "subscript": []
+        "args": [0x7097, 2, 'EVENT_1885_jmp_to_subroutine_9']
     },
     {
         "identifier": 'EVENT_1885_run_event_as_subroutine_5',
         "command": 'run_event_as_subroutine',
-        "args": [1745],
-        "subscript": []
+        "args": [1745]
     },
     {
         "identifier": 'EVENT_1885_jmp_if_bit_clear_6',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 3, 'EVENT_1885_ret_8'],
-        "subscript": []
+        "args": [0x7043, 3, 'EVENT_1885_ret_8']
     },
     {
         "identifier": 'EVENT_1885_set_bit_7',
         "command": 'set_bit',
-        "args": [0x7097, 2],
-        "subscript": []
+        "args": [0x7097, 2]
     },
     {
         "identifier": 'EVENT_1885_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1885_jmp_to_subroutine_9',
         "command": 'jmp_to_subroutine',
-        "args": [0x4400],
-        "subscript": []
+        "args": [0x4400]
     },
     {
         "identifier": 'EVENT_1885_action_queue_sync_10',
@@ -85,8 +75,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1885_ret_11',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1564_set_bit_0',
         "command": 'set_bit',
-        "args": [0x7044, 4],
-        "subscript": []
+        "args": [0x7044, 4]
     },
     {
         "identifier": 'EVENT_1564_set_7016_to_object_xyz_1',
         "command": 'set_7016_to_object_xyz',
-        "args": [0x90],
-        "subscript": []
+        "args": [0x90]
     },
     {
         "identifier": 'EVENT_1564_action_queue_async_2',
@@ -20,23 +19,19 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1564_action_queue_async_2_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_2_SUBSCRIPT_run_away_shift_1',
-                "command": 'run_away_shift',
-                "args": []
+                "command": 'run_away_shift'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_2_SUBSCRIPT_face_south_2',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_2_SUBSCRIPT_floating_on_3',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_2_SUBSCRIPT_pause_4',
@@ -116,8 +111,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_5_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_5_SUBSCRIPT_shift_z_down_pixels_3',
@@ -129,122 +123,100 @@ script = [
     {
         "identifier": 'EVENT_1564_set_7000_to_object_coord_6',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70A8, Coords.F],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8, Coords.F]
     },
     {
         "identifier": 'EVENT_1564_jmp_if_var_equals_short_7',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1564_set_action_script_sync_10'],
-        "subscript": []
+        "args": [0x7000, 1, 'EVENT_1564_set_action_script_sync_10']
     },
     {
         "identifier": 'EVENT_1564_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 782],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8, 782]
     },
     {
         "identifier": 'EVENT_1564_jmp_9',
         "command": 'jmp',
-        "args": ['EVENT_1564_pause_11'],
-        "subscript": []
+        "args": ['EVENT_1564_pause_11']
     },
     {
         "identifier": 'EVENT_1564_set_action_script_sync_10',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 783],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8, 783]
     },
     {
         "identifier": 'EVENT_1564_pause_11',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1564_pause_12',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1564_set_7000_to_tapped_button_13',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_1564_jmp_if_7000_all_bits_clear_14',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[7], 'EVENT_1564_pause_12'],
-        "subscript": []
+        "args": [[7], 'EVENT_1564_pause_12']
     },
     {
         "identifier": 'EVENT_1564_set_short_mem_15',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x7024],
-        "subscript": []
+        "args": [0x7000, 0x7024]
     },
     {
         "identifier": 'EVENT_1564_set_short_mem_16',
         "command": 'set_short_mem',
-        "args": [0x7026, 0x7000],
-        "subscript": []
+        "args": [0x7026, 0x7000]
     },
     {
         "identifier": 'EVENT_1564_mem_7000_shift_left_17',
         "command": 'mem_7000_shift_left',
-        "args": [0x7000, 8],
-        "subscript": []
+        "args": [0x7000, 8]
     },
     {
         "identifier": 'EVENT_1564_set_short_mem_18',
         "command": 'set_short_mem',
-        "args": [0x700c, 0x7000],
-        "subscript": []
+        "args": [0x700c, 0x7000]
     },
     {
         "identifier": 'EVENT_1564_set_short_mem_19',
         "command": 'set_short_mem',
-        "args": [0x7000, 0x7026],
-        "subscript": []
+        "args": [0x7000, 0x7026]
     },
     {
         "identifier": 'EVENT_1564_mem_7000_and_const_20',
         "command": 'mem_7000_and_const',
-        "args": [0x00ff],
-        "subscript": []
+        "args": [0x00ff]
     },
     {
         "identifier": 'EVENT_1564_jmp_if_var_equals_short_21',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1564_action_queue_async_29'],
-        "subscript": []
+        "args": [0x7000, 1, 'EVENT_1564_action_queue_async_29']
     },
     {
         "identifier": 'EVENT_1564_jmp_if_var_equals_short_22',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_1564_action_queue_async_32'],
-        "subscript": []
+        "args": [0x7000, 2, 'EVENT_1564_action_queue_async_32']
     },
     {
         "identifier": 'EVENT_1564_jmp_if_var_equals_short_23',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_1564_action_queue_async_35'],
-        "subscript": []
+        "args": [0x7000, 3, 'EVENT_1564_action_queue_async_35']
     },
     {
         "identifier": 'EVENT_1564_clear_bit_24',
         "command": 'clear_bit',
-        "args": [0x7044, 4],
-        "subscript": []
+        "args": [0x7044, 4]
     },
     {
         "identifier": 'EVENT_1564_stop_sound_25',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1564_action_queue_async_26',
@@ -253,13 +225,11 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1564_action_queue_async_26_SUBSCRIPT_face_east_0',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_26_SUBSCRIPT_floating_off_1',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_26_SUBSCRIPT_jump_to_height_silent_2',
@@ -293,27 +263,22 @@ script = [
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_26_SUBSCRIPT_floating_on_8',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_26_SUBSCRIPT_visibility_on_9',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_1564_move_script_to_background_thread_2_27',
-        "command": 'move_script_to_background_thread_2',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_background_thread_2'
     },
     {
         "identifier": 'EVENT_1564_jmp_28',
         "command": 'jmp',
-        "args": ['EVENT_1564_action_queue_sync_44'],
-        "subscript": []
+        "args": ['EVENT_1564_action_queue_sync_44']
     },
     {
         "identifier": 'EVENT_1564_action_queue_async_29',
@@ -322,8 +287,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1564_action_queue_async_29_SUBSCRIPT_face_east_0',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_29_SUBSCRIPT_set_animation_speed_1',
@@ -332,8 +296,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_29_SUBSCRIPT_floating_off_2',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_29_SUBSCRIPT_jump_to_height_silent_3',
@@ -345,14 +308,12 @@ script = [
     {
         "identifier": 'EVENT_1564_set_short_30',
         "command": 'set_short',
-        "args": [0x7030, 0x0001],
-        "subscript": []
+        "args": [0x7030, 0x0001]
     },
     {
         "identifier": 'EVENT_1564_jmp_31',
         "command": 'jmp',
-        "args": ['EVENT_1564_clear_bit_37'],
-        "subscript": []
+        "args": ['EVENT_1564_clear_bit_37']
     },
     {
         "identifier": 'EVENT_1564_action_queue_async_32',
@@ -361,8 +322,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1564_action_queue_async_32_SUBSCRIPT_face_east_0',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_32_SUBSCRIPT_set_animation_speed_1',
@@ -371,8 +331,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_32_SUBSCRIPT_floating_off_2',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_32_SUBSCRIPT_jump_to_height_silent_3',
@@ -384,14 +343,12 @@ script = [
     {
         "identifier": 'EVENT_1564_set_short_33',
         "command": 'set_short',
-        "args": [0x7030, 0x0002],
-        "subscript": []
+        "args": [0x7030, 0x0002]
     },
     {
         "identifier": 'EVENT_1564_jmp_34',
         "command": 'jmp',
-        "args": ['EVENT_1564_clear_bit_37'],
-        "subscript": []
+        "args": ['EVENT_1564_clear_bit_37']
     },
     {
         "identifier": 'EVENT_1564_action_queue_async_35',
@@ -400,8 +357,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1564_action_queue_async_35_SUBSCRIPT_face_east_0',
-                "command": 'face_east',
-                "args": []
+                "command": 'face_east'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_35_SUBSCRIPT_set_animation_speed_1',
@@ -410,8 +366,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_35_SUBSCRIPT_floating_off_2',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_35_SUBSCRIPT_jump_to_height_silent_3',
@@ -423,44 +378,35 @@ script = [
     {
         "identifier": 'EVENT_1564_set_short_36',
         "command": 'set_short',
-        "args": [0x7030, 0x0004],
-        "subscript": []
+        "args": [0x7030, 0x0004]
     },
     {
         "identifier": 'EVENT_1564_clear_bit_37',
         "command": 'clear_bit',
-        "args": [0x7044, 4],
-        "subscript": []
+        "args": [0x7044, 4]
     },
     {
         "identifier": 'EVENT_1564_stop_sound_38',
-        "command": 'stop_sound',
-        "args": [],
-        "subscript": []
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1564_set_short_39',
         "command": 'set_short',
-        "args": [0x7034, 0xeeee],
-        "subscript": []
+        "args": [0x7034, 0xeeee]
     },
     {
         "identifier": 'EVENT_1564_create_packet_at_object_coords_jmp_if_null_40',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._032_BLUE_CLOUD, AreaObjects.MARIO, 'EVENT_1564_pause_41'],
-        "subscript": []
+        "args": [NPCPackets._032_BLUE_CLOUD, AreaObjects.MARIO, 'EVENT_1564_pause_41']
     },
     {
         "identifier": 'EVENT_1564_pause_41',
         "command": 'pause',
-        "args": [2],
-        "subscript": []
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1564_move_script_to_background_thread_2_42',
-        "command": 'move_script_to_background_thread_2',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_background_thread_2'
     },
     {
         "identifier": 'EVENT_1564_action_queue_async_43',
@@ -474,8 +420,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_floating_on_1',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_set_short_mem_2',
@@ -484,13 +429,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_walk_f_direction_16_pixels_3',
-                "command": 'walk_f_direction_16_pixels',
-                "args": []
+                "command": 'walk_f_direction_16_pixels'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_visibility_on_4',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_jmp_if_mario_in_air_5',
@@ -524,19 +467,14 @@ script = [
     {
         "identifier": 'EVENT_1564_clear_bit_45',
         "command": 'clear_bit',
-        "args": [0x7043, 0],
-        "subscript": []
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_1564_move_script_to_main_thread_46',
-        "command": 'move_script_to_main_thread',
-        "args": [],
-        "subscript": []
+        "command": 'move_script_to_main_thread'
     },
     {
         "identifier": 'EVENT_1564_ret_47',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

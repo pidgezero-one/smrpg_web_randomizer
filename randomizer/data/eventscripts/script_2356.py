@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2356_pause_0',
         "command": 'pause',
-        "args": [48],
-        "subscript": []
+        "args": [48]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_async_1',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_8, 390],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 390]
     },
     {
         "identifier": 'EVENT_2356_summon_to_current_level_2',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_3',
@@ -34,8 +32,7 @@ script = [
     {
         "identifier": 'EVENT_2356_pause_4',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_5',
@@ -49,8 +46,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_5_SUBSCRIPT_floating_on_1',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_5_SUBSCRIPT_set_animation_speed_2',
@@ -74,8 +70,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_5_SUBSCRIPT_floating_off_6',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             }
         ]
     },
@@ -101,52 +96,44 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_6_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_sync_7',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 388],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 388]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_sync_8',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 388],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 388]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_9',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_set_bit_10',
         "command": 'set_bit',
-        "args": [0x7044, 2],
-        "subscript": []
+        "args": [0x7044, 2]
     },
     {
         "identifier": 'EVENT_2356_pause_11',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_async_12',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_8, 390],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 390]
     },
     {
         "identifier": 'EVENT_2356_summon_to_current_level_13',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_14',
@@ -163,8 +150,7 @@ script = [
     {
         "identifier": 'EVENT_2356_pause_15',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_16',
@@ -178,8 +164,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_16_SUBSCRIPT_floating_on_1',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_16_SUBSCRIPT_set_animation_speed_2',
@@ -208,13 +193,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_16_SUBSCRIPT_face_northwest_7',
-                "command": 'face_northwest',
-                "args": []
+                "command": 'face_northwest'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_16_SUBSCRIPT_floating_off_8',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             }
         ]
     },
@@ -245,52 +228,44 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_17_SUBSCRIPT_visibility_on_4',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_sync_18',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 388],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 388]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_sync_19',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 388],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 388]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_20',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_7, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_set_bit_21',
         "command": 'set_bit',
-        "args": [0x7044, 4],
-        "subscript": []
+        "args": [0x7044, 4]
     },
     {
         "identifier": 'EVENT_2356_pause_22',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_async_23',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_8, 390],
-        "subscript": []
+        "args": [AreaObjects.NPC_8, 390]
     },
     {
         "identifier": 'EVENT_2356_summon_to_current_level_24',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_25',
@@ -307,8 +282,7 @@ script = [
     {
         "identifier": 'EVENT_2356_pause_26',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_27',
@@ -322,8 +296,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_27_SUBSCRIPT_floating_on_1',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_27_SUBSCRIPT_set_animation_speed_2',
@@ -342,8 +315,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_27_SUBSCRIPT_walk_1_step_southwest_5',
-                "command": 'walk_1_step_southwest',
-                "args": []
+                "command": 'walk_1_step_southwest'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_27_SUBSCRIPT_shift_south_steps_6',
@@ -352,13 +324,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_27_SUBSCRIPT_face_northeast_7',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_27_SUBSCRIPT_floating_off_8',
-                "command": 'floating_off',
-                "args": []
+                "command": 'floating_off'
             }
         ]
     },
@@ -384,76 +354,64 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_28_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_sync_29',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 388],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 388]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_sync_30',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 388],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 388]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_31',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_set_bit_32',
         "command": 'set_bit',
-        "args": [0x7044, 3],
-        "subscript": []
+        "args": [0x7044, 3]
     },
     {
         "identifier": 'EVENT_2356_pause_short_33',
         "command": 'pause_short',
-        "args": [592],
-        "subscript": []
+        "args": [592]
     },
     {
         "identifier": 'EVENT_2356_enable_controls_34',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_2356_disable_trigger_35',
         "command": 'disable_trigger',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2356_disable_trigger_36',
         "command": 'disable_trigger',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_2356_disable_trigger_37',
         "command": 'disable_trigger',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_2356_disable_trigger_38',
         "command": 'disable_trigger',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_2356_jmp_if_present_in_current_level_39',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_0, 'EVENT_2356_jmp_if_present_in_current_level_46'],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 'EVENT_2356_jmp_if_present_in_current_level_46']
     },
     {
         "identifier": 'EVENT_2356_action_queue_sync_40',
@@ -467,8 +425,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_40_SUBSCRIPT_visibility_on_1',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_40_SUBSCRIPT_play_sound_2',
@@ -495,38 +452,32 @@ script = [
     {
         "identifier": 'EVENT_2356_pause_action_script_41',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_async_42',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_0, 192],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 192]
     },
     {
         "identifier": 'EVENT_2356_pause_43',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2356_remove_from_current_level_44',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10],
-        "subscript": []
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_2356_pause_45',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2356_jmp_if_present_in_current_level_46',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_1, 'EVENT_2356_jmp_if_present_in_current_level_53'],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 'EVENT_2356_jmp_if_present_in_current_level_53']
     },
     {
         "identifier": 'EVENT_2356_action_queue_sync_47',
@@ -540,8 +491,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_47_SUBSCRIPT_visibility_on_1',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_47_SUBSCRIPT_play_sound_2',
@@ -568,38 +518,32 @@ script = [
     {
         "identifier": 'EVENT_2356_pause_action_script_48',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_async_49',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_1, 192],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 192]
     },
     {
         "identifier": 'EVENT_2356_pause_50',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2356_remove_from_current_level_51',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10],
-        "subscript": []
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_2356_pause_52',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2356_jmp_if_present_in_current_level_53',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_3, 'EVENT_2356_jmp_if_present_in_current_level_60'],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 'EVENT_2356_jmp_if_present_in_current_level_60']
     },
     {
         "identifier": 'EVENT_2356_action_queue_sync_54',
@@ -613,8 +557,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_54_SUBSCRIPT_visibility_on_1',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_54_SUBSCRIPT_play_sound_2',
@@ -641,38 +584,32 @@ script = [
     {
         "identifier": 'EVENT_2356_pause_action_script_55',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_async_56',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_3, 192],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 192]
     },
     {
         "identifier": 'EVENT_2356_pause_57',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2356_remove_from_current_level_58',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10],
-        "subscript": []
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_2356_pause_59',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2356_jmp_if_present_in_current_level_60',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_2, 'EVENT_2356_remove_from_current_level_65'],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 'EVENT_2356_remove_from_current_level_65']
     },
     {
         "identifier": 'EVENT_2356_action_queue_sync_61',
@@ -686,8 +623,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_61_SUBSCRIPT_visibility_on_1',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_61_SUBSCRIPT_play_sound_2',
@@ -714,26 +650,22 @@ script = [
     {
         "identifier": 'EVENT_2356_pause_action_script_62',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_2356_set_action_script_async_63',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_2, 192],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 192]
     },
     {
         "identifier": 'EVENT_2356_pause_64',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_2356_remove_from_current_level_65',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10],
-        "subscript": []
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_66',
@@ -750,8 +682,7 @@ script = [
     {
         "identifier": 'EVENT_2356_run_dialog_67',
         "command": 'run_dialog',
-        "args": [3081, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3081, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_68',
@@ -767,9 +698,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2356_pause_script_resume_on_next_dialog_page_a_69',
-        "command": 'pause_script_resume_on_next_dialog_page_a',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_resume_on_next_dialog_page_a'
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_70',
@@ -785,9 +714,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2356_unsync_dialog_71',
-        "command": 'unsync_dialog',
-        "args": [],
-        "subscript": []
+        "command": 'unsync_dialog'
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_72',
@@ -801,22 +728,19 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_async_72_SUBSCRIPT_reset_properties_1',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             }
         ]
     },
     {
         "identifier": 'EVENT_2356_play_sound_73',
         "command": 'play_sound',
-        "args": [Sounds._076_BOOSTERS_TRAIN_HORN, 6],
-        "subscript": []
+        "args": [Sounds._076_BOOSTERS_TRAIN_HORN, 6]
     },
     {
         "identifier": 'EVENT_2356_pause_74',
         "command": 'pause',
-        "args": [72],
-        "subscript": []
+        "args": [72]
     },
     {
         "identifier": 'EVENT_2356_action_queue_sync_75',
@@ -835,8 +759,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_75_SUBSCRIPT_fixed_f_coord_on_2',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_75_SUBSCRIPT_shift_northwest_steps_3',
@@ -855,8 +778,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2356_action_queue_sync_75_SUBSCRIPT_visibility_off_6',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -880,26 +802,22 @@ script = [
     {
         "identifier": 'EVENT_2356_run_dialog_77',
         "command": 'run_dialog',
-        "args": [3086, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]],
-        "subscript": []
+        "args": [3086, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2356_stop_embedded_action_script_78',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.NPC_9],
-        "subscript": []
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_2356_pause_79',
         "command": 'pause',
-        "args": [32],
-        "subscript": []
+        "args": [32]
     },
     {
         "identifier": 'EVENT_2356_play_sound_80',
         "command": 'play_sound',
-        "args": [Sounds._000_SILENCE, 6],
-        "subscript": []
+        "args": [Sounds._000_SILENCE, 6]
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_81',
@@ -916,67 +834,55 @@ script = [
     {
         "identifier": 'EVENT_2356_set_bit_82',
         "command": 'set_bit',
-        "args": [0x708b, 2],
-        "subscript": []
+        "args": [0x708b, 2]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_83',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_84',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_85',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_86',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_87',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_88',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_89',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_remove_from_level_90',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_7, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS]
     },
     {
         "identifier": 'EVENT_2356_enable_controls_91',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_2356_ret_92',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,77 +1,64 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_389_play_sound_0',
         "command": 'play_sound',
-        "args": [Sounds._000_SILENCE, 6],
-        "subscript": []
+        "args": [Sounds._000_SILENCE, 6]
     },
     {
         "identifier": 'EVENT_389_set_bit_1',
         "command": 'set_bit',
-        "args": [0x707c, 5],
-        "subscript": []
+        "args": [0x707c, 5]
     },
     {
         "identifier": 'EVENT_389_clear_bit_2',
         "command": 'clear_bit',
-        "args": [0x707c, 6],
-        "subscript": []
+        "args": [0x707c, 6]
     },
     {
         "identifier": 'EVENT_389_clear_bit_3',
         "command": 'clear_bit',
-        "args": [0x707c, 7],
-        "subscript": []
+        "args": [0x707c, 7]
     },
     {
         "identifier": 'EVENT_389_start_battle_4',
         "command": 'start_battle',
-        "args": [0x000b, 15],
-        "subscript": []
+        "args": [0x000b, 15]
     },
     {
         "identifier": 'EVENT_389_run_event_as_subroutine_5',
         "command": 'run_event_as_subroutine',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_389_jmp_if_object_not_in_level_6',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_4, Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, 'EVENT_389_jmp_if_object_not_in_level_11'],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, 'EVENT_389_jmp_if_object_not_in_level_11']
     },
     {
         "identifier": 'EVENT_389_remove_from_current_level_7',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.MEM_70A8],
-        "subscript": []
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_389_remove_from_level_8',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM]
     },
     {
         "identifier": 'EVENT_389_fade_in_from_black_async_9',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_389_ret_10',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_389_jmp_if_object_not_in_level_11',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_2, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, 'EVENT_257_fade_in_from_black_async_0'],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, 'EVENT_257_fade_in_from_black_async_0']
     },
     {
         "identifier": 'EVENT_389_action_queue_async_12',
@@ -85,28 +72,24 @@ script = [
             },
             {
                 "identifier": 'EVENT_389_action_queue_async_12_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_389_remove_from_current_level_13',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1],
-        "subscript": []
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_389_remove_from_level_14',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM]
     },
     {
         "identifier": 'EVENT_389_pause_action_script_15',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_2],
-        "subscript": []
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_389_action_queue_async_16',
@@ -115,34 +98,28 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_389_action_queue_async_16_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             }
         ]
     },
     {
         "identifier": 'EVENT_389_set_bit_17',
         "command": 'set_bit',
-        "args": [0x7049, 6],
-        "subscript": []
+        "args": [0x7049, 6]
     },
     {
         "identifier": 'EVENT_389_run_event_as_subroutine_18',
         "command": 'run_event_as_subroutine',
-        "args": [276],
-        "subscript": []
+        "args": [276]
     },
     {
         "identifier": 'EVENT_389_fade_in_from_black_async_19',
-        "command": 'fade_in_from_black_async',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_389_jmp_if_object_not_in_level_20',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_0, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, 'EVENT_389_action_queue_sync_30'],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, 'EVENT_389_action_queue_sync_30']
     },
     {
         "identifier": 'EVENT_389_action_queue_sync_21',
@@ -156,8 +133,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_floating_on_1',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_set_animation_speed_2',
@@ -186,13 +162,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_face_southeast_7',
-                "command": 'face_southeast',
-                "args": []
+                "command": 'face_southeast'
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_fixed_f_coord_on_8',
-                "command": 'fixed_f_coord_on',
-                "args": []
+                "command": 'fixed_f_coord_on'
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_set_animation_speed_9',
@@ -206,8 +180,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_walk_1_step_northeast_11',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_shift_northeast_pixels_12',
@@ -226,18 +199,15 @@ script = [
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_fixed_f_coord_off_15',
-                "command": 'fixed_f_coord_off',
-                "args": []
+                "command": 'fixed_f_coord_off'
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_walk_1_step_northeast_16',
-                "command": 'walk_1_step_northeast',
-                "args": []
+                "command": 'walk_1_step_northeast'
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_21_SUBSCRIPT_visibility_off_17',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -253,8 +223,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_389_action_queue_async_22_SUBSCRIPT_face_north_1',
-                "command": 'face_north',
-                "args": []
+                "command": 'face_north'
             }
         ]
     },
@@ -270,46 +239,34 @@ script = [
             },
             {
                 "identifier": 'EVENT_389_action_queue_async_23_SUBSCRIPT_face_south_1',
-                "command": 'face_south',
-                "args": []
+                "command": 'face_south'
             }
         ]
     },
     {
         "identifier": 'EVENT_389_remove_from_level_24',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM]
     },
     {
         "identifier": 'EVENT_389_ret_25',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_389_ret_26',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_389_ret_27',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_389_ret_28',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_389_ret_29',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_389_action_queue_sync_30',
@@ -323,8 +280,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_30_SUBSCRIPT_floating_on_1',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_30_SUBSCRIPT_set_animation_speed_2',
@@ -348,15 +304,13 @@ script = [
             },
             {
                 "identifier": 'EVENT_389_action_queue_sync_30_SUBSCRIPT_visibility_off_6',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
     {
         "identifier": 'EVENT_389_jmp_31',
         "command": 'jmp',
-        "args": ['EVENT_389_action_queue_async_22'],
-        "subscript": []
+        "args": ['EVENT_389_action_queue_async_22']
     }
 ]

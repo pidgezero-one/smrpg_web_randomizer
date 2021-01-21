@@ -1,29 +1,25 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_513_pause_0',
         "command": 'pause',
-        "args": [60],
-        "subscript": []
+        "args": [60]
     },
     {
         "identifier": 'EVENT_513_enter_area_1',
         "command": 'enter_area',
-        "args": [Rooms._099_ROSE_TOWN_GENO_AWAKENS_IN_INN_1F, RadialDirections.SOUTH, 4, 17, 0, []],
-        "subscript": []
+        "args": [Rooms._099_ROSE_TOWN_GENO_AWAKENS_IN_INN_1F, RadialDirections.SOUTH, 4, 17, 0, []]
     },
     {
         "identifier": 'EVENT_513_stop_music_2',
-        "command": 'stop_music',
-        "args": [],
-        "subscript": []
+        "command": 'stop_music'
     },
     {
         "identifier": 'EVENT_513_summon_to_current_level_3',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_3],
-        "subscript": []
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_513_action_queue_sync_4',
@@ -32,8 +28,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_513_action_queue_sync_4_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -44,8 +39,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_513_action_queue_sync_5_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_513_action_queue_sync_5_SUBSCRIPT_set_sprite_sequence_1',
@@ -66,8 +60,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_513_action_queue_sync_6_SUBSCRIPT_sequence_looping_on_0',
-                "command": 'sequence_looping_on',
-                "args": []
+                "command": 'sequence_looping_on'
             },
             {
                 "identifier": 'EVENT_513_action_queue_sync_6_SUBSCRIPT_transfer_to_xyzf_1',
@@ -81,8 +74,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_513_action_queue_sync_6_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             }
         ]
     },
@@ -105,8 +97,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_513_action_queue_async_8_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_513_action_queue_async_8_SUBSCRIPT_transfer_to_xyzf_1',
@@ -118,7 +109,6 @@ script = [
     {
         "identifier": 'EVENT_513_jmp_to_event_9',
         "command": 'jmp_to_event',
-        "args": [3776],
-        "subscript": []
+        "args": [3776]
     }
 ]

@@ -1,35 +1,29 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2404_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708b, 3, 'EVENT_2404_ret_13'],
-        "subscript": []
+        "args": [0x708b, 3, 'EVENT_2404_ret_13']
     },
     {
         "identifier": 'EVENT_2404_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x708b, 4, 'EVENT_2404_ret_13'],
-        "subscript": []
+        "args": [0x708b, 4, 'EVENT_2404_ret_13']
     },
     {
         "identifier": 'EVENT_2404_stop_all_background_events_2',
-        "command": 'stop_all_background_events',
-        "args": [],
-        "subscript": []
+        "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_2404_fade_out_music_3',
-        "command": 'fade_out_music',
-        "args": [],
-        "subscript": []
+        "command": 'fade_out_music'
     },
     {
         "identifier": 'EVENT_2404_set_bit_4',
         "command": 'set_bit',
-        "args": [0x708b, 4],
-        "subscript": []
+        "args": [0x708b, 4]
     },
     {
         "identifier": 'EVENT_2404_action_queue_sync_5',
@@ -83,8 +77,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_bpl_26_27_28_9',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_pause_10',
@@ -116,20 +109,17 @@ script = [
     {
         "identifier": 'EVENT_2404_pause_6',
         "command": 'pause',
-        "args": [64],
-        "subscript": []
+        "args": [64]
     },
     {
         "identifier": 'EVENT_2404_play_music_default_volume_7',
         "command": 'play_music_default_volume',
-        "args": [Music._45_HEART_BEATING_A_LITTLE_FASTER_PART_1],
-        "subscript": []
+        "args": [Music._45_HEART_BEATING_A_LITTLE_FASTER_PART_1]
     },
     {
         "identifier": 'EVENT_2404_stop_embedded_action_script_8',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.NPC_0],
-        "subscript": []
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2404_action_queue_async_9',
@@ -143,8 +133,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2404_action_queue_async_9_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off',
-                "args": []
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2404_action_queue_async_9_SUBSCRIPT_shift_southeast_steps_2',
@@ -215,13 +204,10 @@ script = [
     {
         "identifier": 'EVENT_2404_jmp_12',
         "command": 'jmp',
-        "args": ['EVENT_2403_remove_from_current_level_10'],
-        "subscript": []
+        "args": ['EVENT_2403_remove_from_current_level_10']
     },
     {
         "identifier": 'EVENT_2404_ret_13',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

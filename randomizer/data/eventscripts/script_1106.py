@@ -1,23 +1,21 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1106_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1106_ret_56'],
-        "subscript": []
+        "args": [0x7043, 1, 'EVENT_1106_ret_56']
     },
     {
         "identifier": 'EVENT_1106_set_bit_1',
         "command": 'set_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_1106_enable_controls_until_return_2',
         "command": 'enable_controls_until_return',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_1106_action_queue_async_3',
@@ -36,8 +34,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1106_action_queue_async_3_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1106_action_queue_async_3_SUBSCRIPT_pause_3',
@@ -46,8 +43,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1106_action_queue_async_3_SUBSCRIPT_ret_4',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
@@ -210,146 +206,120 @@ script = [
     {
         "identifier": 'EVENT_1106_set_action_script_sync_12',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 92],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 92]
     },
     {
         "identifier": 'EVENT_1106_pause_13',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_14',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 91],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 91]
     },
     {
         "identifier": 'EVENT_1106_pause_15',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_16',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 92],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 92]
     },
     {
         "identifier": 'EVENT_1106_pause_17',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_18',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 91],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 91]
     },
     {
         "identifier": 'EVENT_1106_pause_19',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_20',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 92],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 92]
     },
     {
         "identifier": 'EVENT_1106_pause_21',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_22',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 91],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 91]
     },
     {
         "identifier": 'EVENT_1106_pause_23',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_24',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 92],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 92]
     },
     {
         "identifier": 'EVENT_1106_pause_25',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_26',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 91],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 91]
     },
     {
         "identifier": 'EVENT_1106_pause_27',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_7000_to_tapped_button_28',
-        "command": 'set_7000_to_tapped_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_tapped_button'
     },
     {
         "identifier": 'EVENT_1106_pause_29',
         "command": 'pause',
-        "args": [1],
-        "subscript": []
+        "args": [1]
     },
     {
         "identifier": 'EVENT_1106_jmp_if_7000_any_bits_set_30',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[7], 'EVENT_1106_set_7000_to_pressed_button_33'],
-        "subscript": []
+        "args": [[7], 'EVENT_1106_set_7000_to_pressed_button_33']
     },
     {
         "identifier": 'EVENT_1106_jmp_if_7000_any_bits_set_31',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[0, 3], 'EVENT_1106_action_queue_sync_36'],
-        "subscript": []
+        "args": [[0, 3], 'EVENT_1106_action_queue_sync_36']
     },
     {
         "identifier": 'EVENT_1106_jmp_32',
         "command": 'jmp',
-        "args": ['EVENT_1106_set_7000_to_tapped_button_28'],
-        "subscript": []
+        "args": ['EVENT_1106_set_7000_to_tapped_button_28']
     },
     {
         "identifier": 'EVENT_1106_set_7000_to_pressed_button_33',
-        "command": 'set_7000_to_pressed_button',
-        "args": [],
-        "subscript": []
+        "command": 'set_7000_to_pressed_button'
     },
     {
         "identifier": 'EVENT_1106_jmp_if_7000_any_bits_set_34',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[1, 2], 'EVENT_1106_action_queue_async_57'],
-        "subscript": []
+        "args": [[1, 2], 'EVENT_1106_action_queue_async_57']
     },
     {
         "identifier": 'EVENT_1106_jmp_35',
         "command": 'jmp',
-        "args": ['EVENT_1106_set_7000_to_tapped_button_28'],
-        "subscript": []
+        "args": ['EVENT_1106_set_7000_to_tapped_button_28']
     },
     {
         "identifier": 'EVENT_1106_action_queue_sync_36',
@@ -358,8 +328,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1106_action_queue_sync_36_SUBSCRIPT_shadow_on_0',
-                "command": 'shadow_on',
-                "args": []
+                "command": 'shadow_on'
             },
             {
                 "identifier": 'EVENT_1106_action_queue_sync_36_SUBSCRIPT_set_animation_speed_1',
@@ -368,8 +337,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_1106_action_queue_sync_36_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast',
-                "args": []
+                "command": 'face_northeast'
             },
             {
                 "identifier": 'EVENT_1106_action_queue_sync_36_SUBSCRIPT_shift_northeast_pixels_3',
@@ -378,130 +346,108 @@ script = [
             },
             {
                 "identifier": 'EVENT_1106_action_queue_sync_36_SUBSCRIPT_ret_4',
-                "command": 'ret',
-                "args": []
+                "command": 'ret'
             }
         ]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_37',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 157],
-        "subscript": []
+        "args": [AreaObjects.NPC_7, 157]
     },
     {
         "identifier": 'EVENT_1106_pause_38',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_39',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 157],
-        "subscript": []
+        "args": [AreaObjects.NPC_6, 157]
     },
     {
         "identifier": 'EVENT_1106_pause_40',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_41',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 157],
-        "subscript": []
+        "args": [AreaObjects.NPC_5, 157]
     },
     {
         "identifier": 'EVENT_1106_pause_42',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_43',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 157],
-        "subscript": []
+        "args": [AreaObjects.NPC_4, 157]
     },
     {
         "identifier": 'EVENT_1106_pause_44',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_45',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 157],
-        "subscript": []
+        "args": [AreaObjects.NPC_3, 157]
     },
     {
         "identifier": 'EVENT_1106_pause_46',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_47',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 157],
-        "subscript": []
+        "args": [AreaObjects.NPC_2, 157]
     },
     {
         "identifier": 'EVENT_1106_pause_48',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_49',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 157],
-        "subscript": []
+        "args": [AreaObjects.NPC_1, 157]
     },
     {
         "identifier": 'EVENT_1106_pause_50',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_sync_51',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 157],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 157]
     },
     {
         "identifier": 'EVENT_1106_pause_52',
         "command": 'pause',
-        "args": [5],
-        "subscript": []
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1106_enable_controls_until_return_53',
         "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_1106_set_action_script_async_54',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_1106_clear_bit_55',
         "command": 'clear_bit',
-        "args": [0x7043, 1],
-        "subscript": []
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_1106_ret_56',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1106_action_queue_async_57',
@@ -510,8 +456,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_1106_action_queue_async_57_SUBSCRIPT_shadow_on_0',
-                "command": 'shadow_on',
-                "args": []
+                "command": 'shadow_on'
             },
             {
                 "identifier": 'EVENT_1106_action_queue_async_57_SUBSCRIPT_clear_solidity_bits_1',
@@ -555,13 +500,11 @@ script = [
             },
             {
                 "identifier": 'EVENT_1106_action_queue_async_57_SUBSCRIPT_face_southwest_9',
-                "command": 'face_southwest',
-                "args": []
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_1106_action_queue_async_57_SUBSCRIPT_reset_properties_10',
-                "command": 'reset_properties',
-                "args": []
+                "command": 'reset_properties'
             },
             {
                 "identifier": 'EVENT_1106_action_queue_async_57_SUBSCRIPT_set_animation_speed_11',
@@ -573,7 +516,6 @@ script = [
     {
         "identifier": 'EVENT_1106_jmp_58',
         "command": 'jmp',
-        "args": ['EVENT_1107_set_7000_to_tapped_button_2'],
-        "subscript": []
+        "args": ['EVENT_1107_set_7000_to_tapped_button_2']
     }
 ]

@@ -1,41 +1,36 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1905_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7096, 0, 'EVENT_1905_enter_area_9'],
-        "subscript": []
+        "args": [0x7096, 0, 'EVENT_1905_enter_area_9']
     },
     {
         "identifier": 'EVENT_1905_remove_from_current_level_1',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.MARIO],
-        "subscript": []
+        "args": [AreaObjects.MARIO]
     },
     {
         "identifier": 'EVENT_1905_play_sound_2',
         "command": 'play_sound',
-        "args": [Sounds._019_LONG_FALL, 6],
-        "subscript": []
+        "args": [Sounds._019_LONG_FALL, 6]
     },
     {
         "identifier": 'EVENT_1905_pause_3',
         "command": 'pause',
-        "args": [50],
-        "subscript": []
+        "args": [50]
     },
     {
         "identifier": 'EVENT_1905_fade_out_to_black_sync_duration_4',
         "command": 'fade_out_to_black_sync_duration',
-        "args": [180],
-        "subscript": []
+        "args": [180]
     },
     {
         "identifier": 'EVENT_1905_play_sound_5',
         "command": 'play_sound',
-        "args": [Sounds._091_TUMBLING_BOULDERS, 6],
-        "subscript": []
+        "args": [Sounds._091_TUMBLING_BOULDERS, 6]
     },
     {
         "identifier": 'EVENT_1905_action_queue_async_6',
@@ -64,46 +59,37 @@ script = [
             },
             {
                 "identifier": 'EVENT_1905_action_queue_async_6_SUBSCRIPT_end_loop_4',
-                "command": 'end_loop',
-                "args": []
+                "command": 'end_loop'
             }
         ]
     },
     {
         "identifier": 'EVENT_1905_enter_area_7',
         "command": 'enter_area',
-        "args": [Rooms._103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM, RadialDirections.SOUTH, 23, 54, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM, RadialDirections.SOUTH, 23, 54, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_1905_ret_8',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1905_enter_area_9',
         "command": 'enter_area',
-        "args": [Rooms._103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM, RadialDirections.SOUTH, 23, 54, 0, []],
-        "subscript": []
+        "args": [Rooms._103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM, RadialDirections.SOUTH, 23, 54, 0, []]
     },
     {
         "identifier": 'EVENT_1905_fade_in_from_black_sync_10',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_1905_set_bit_11',
         "command": 'set_bit',
-        "args": [0x7049, 0],
-        "subscript": []
+        "args": [0x7049, 0]
     },
     {
         "identifier": 'EVENT_1905_enable_controls_12',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_1905_action_queue_async_13',
@@ -124,8 +110,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1905_ret_14',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]

@@ -1,17 +1,16 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
+from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3766_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._374_NIMBUS_LAND_FALL_FROM_PLATFORM_4TH, RadialDirections.SOUTH, 27, 115, 4, []],
-        "subscript": []
+        "args": [Rooms._374_NIMBUS_LAND_FALL_FROM_PLATFORM_4TH, RadialDirections.SOUTH, 27, 115, 4, []]
     },
     {
         "identifier": 'EVENT_3766_enable_controls_1',
         "command": 'enable_controls',
-        "args": [[]],
-        "subscript": []
+        "args": [[]]
     },
     {
         "identifier": 'EVENT_3766_action_queue_async_2',
@@ -42,33 +41,26 @@ script = [
     },
     {
         "identifier": 'EVENT_3766_fade_in_from_black_sync_3',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_3766_pause_4',
         "command": 'pause',
-        "args": [24],
-        "subscript": []
+        "args": [24]
     },
     {
         "identifier": 'EVENT_3766_pause_script_until_effect_done_5',
-        "command": 'pause_script_until_effect_done',
-        "args": [],
-        "subscript": []
+        "command": 'pause_script_until_effect_done'
     },
     {
         "identifier": 'EVENT_3766_set_bit_6',
         "command": 'set_bit',
-        "args": [0x704a, 2],
-        "subscript": []
+        "args": [0x704a, 2]
     },
     {
         "identifier": 'EVENT_3766_enter_area_7',
         "command": 'enter_area',
-        "args": [Rooms._370_NIMBUS_LAND_ENTRANCE_TO_HOT_SPRINGS, RadialDirections.SOUTH, 20, 50, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]],
-        "subscript": []
+        "args": [Rooms._370_NIMBUS_LAND_ENTRANCE_TO_HOT_SPRINGS, RadialDirections.SOUTH, 20, 50, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_3766_action_queue_async_8',
@@ -77,8 +69,7 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3766_action_queue_async_8_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off',
-                "args": []
+                "command": 'visibility_off'
             },
             {
                 "identifier": 'EVENT_3766_action_queue_async_8_SUBSCRIPT_transfer_to_xyzf_1',
@@ -87,21 +78,17 @@ script = [
             },
             {
                 "identifier": 'EVENT_3766_action_queue_async_8_SUBSCRIPT_visibility_on_2',
-                "command": 'visibility_on',
-                "args": []
+                "command": 'visibility_on'
             },
             {
                 "identifier": 'EVENT_3766_action_queue_async_8_SUBSCRIPT_floating_on_3',
-                "command": 'floating_on',
-                "args": []
+                "command": 'floating_on'
             }
         ]
     },
     {
         "identifier": 'EVENT_3766_fade_in_from_black_sync_9',
-        "command": 'fade_in_from_black_sync',
-        "args": [],
-        "subscript": []
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_3766_action_queue_async_10',
@@ -120,8 +107,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_3766_action_queue_async_10_SUBSCRIPT_bpl_26_27_28_2',
-                "command": 'bpl_26_27_28',
-                "args": []
+                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_3766_action_queue_async_10_SUBSCRIPT_jump_to_height_silent_3',
@@ -133,8 +119,7 @@ script = [
     {
         "identifier": 'EVENT_3766_set_action_script_sync_11',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 976],
-        "subscript": []
+        "args": [AreaObjects.NPC_0, 976]
     },
     {
         "identifier": 'EVENT_3766_action_queue_async_12',
@@ -156,19 +141,15 @@ script = [
     {
         "identifier": 'EVENT_3766_set_action_script_sync_13',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 395],
-        "subscript": []
+        "args": [AreaObjects.MARIO, 395]
     },
     {
         "identifier": 'EVENT_3766_enable_controls_14',
         "command": 'enable_controls',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]],
-        "subscript": []
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_3766_ret_15',
-        "command": 'ret',
-        "args": [],
-        "subscript": []
+        "command": 'ret'
     }
 ]
