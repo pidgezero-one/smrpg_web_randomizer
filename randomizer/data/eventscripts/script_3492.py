@@ -109,7 +109,7 @@ script = [
     {
         "identifier": 'EVENT_3492_jmp_to_subroutine_4',
         "command": 'jmp_to_subroutine',
-        "args": [0x6752]
+        "args": ['EVENT_3491_action_queue_sync_16']
     },
     {
         "identifier": 'EVENT_3492_jmp_if_bit_clear_5',
@@ -189,7 +189,7 @@ script = [
     {
         "identifier": 'EVENT_3492_jmp_to_subroutine_14',
         "command": 'jmp_to_subroutine',
-        "args": [0x6247]
+        "args": ['EVENT_3480_action_queue_async_73']
     },
     {
         "identifier": 'EVENT_3492_action_queue_async_15',

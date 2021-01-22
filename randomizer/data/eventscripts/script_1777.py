@@ -697,7 +697,7 @@ script = [
             {
                 "identifier": 'EVENT_1777_action_queue_async_26_SUBSCRIPT_create_packet_at_7010_coords_jmp_if_null_5',
                 "command": 'create_packet_at_7010_coords_jmp_if_null',
-                "args": [NPCPackets._032_BLUE_CLOUD]
+                "args": [NPCPackets._032_BLUE_CLOUD, 'EVENT_1777_action_queue_async_26_SUBSCRIPT_pause_4']
             },
             {
                 "identifier": 'EVENT_1777_action_queue_async_26_SUBSCRIPT_play_sound_6',

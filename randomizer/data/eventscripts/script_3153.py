@@ -1502,50 +1502,211 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3153_create_packet_event_at_coords_jmp_if_null_302',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3153_stop_sound_302',
+        "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_3153_create_packet_event_at_coords_jmp_if_null_303',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3153_stop_sound_303',
+        "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_3153_create_packet_event_at_coords_jmp_if_null_304',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3153_stop_sound_304',
+        "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_3153_create_packet_event_at_coords_jmp_if_null_305',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3153_stop_sound_305',
+        "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_3153_create_packet_event_at_coords_jmp_if_null_306',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3153_stop_sound_306',
+        "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_3153_create_packet_event_at_coords_jmp_if_null_307',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3153_stop_sound_307',
+        "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_3153_create_packet_event_at_coords_jmp_if_null_308',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000, 'EVENT_3480_action_queue_sync_21']
+        "identifier": 'EVENT_3153_stop_sound_308',
+        "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_3153_ret_309',
+        "identifier": 'EVENT_3153_stop_sound_309',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_310',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_311',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_312',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_313',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_314',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_315',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_316',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_317',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_318',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_319',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_320',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_321',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_322',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_323',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_324',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_325',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_326',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_327',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_328',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_329',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_330',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_331',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_332',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_333',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_334',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_335',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_336',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_337',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_338',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_339',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_340',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_341',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_342',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_343',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_344',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_345',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_346',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_347',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_348',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_349',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_stop_sound_350',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_3153_ret_351',
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3153_ret_310',
+        "identifier": 'EVENT_3153_ret_352',
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3153_ret_311',
+        "identifier": 'EVENT_3153_ret_353',
         "command": 'ret'
     }
 ]

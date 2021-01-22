@@ -80,7 +80,7 @@ script = [
     {
         "identifier": 'EVENT_930_jmp_to_subroutine_15',
         "command": 'jmp_to_subroutine',
-        "args": [0xa958]
+        "args": ['EVENT_930_enable_controls_until_return_85']
     },
     {
         "identifier": 'EVENT_930_jmp_if_bit_set_16',
@@ -184,7 +184,7 @@ script = [
     {
         "identifier": 'EVENT_930_jmp_to_subroutine_36',
         "command": 'jmp_to_subroutine',
-        "args": [0xa958]
+        "args": ['EVENT_930_enable_controls_until_return_85']
     },
     {
         "identifier": 'EVENT_930_jmp_37',
@@ -331,7 +331,7 @@ script = [
     {
         "identifier": 'EVENT_930_jmp_to_subroutine_66',
         "command": 'jmp_to_subroutine',
-        "args": [0xa958]
+        "args": ['EVENT_930_enable_controls_until_return_85']
     },
     {
         "identifier": 'EVENT_930_jmp_if_bit_set_67',

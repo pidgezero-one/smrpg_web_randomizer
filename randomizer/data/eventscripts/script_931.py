@@ -276,7 +276,7 @@ script = [
     {
         "identifier": 'EVENT_931_jmp_to_subroutine_52',
         "command": 'jmp_to_subroutine',
-        "args": [0xa958]
+        "args": ['EVENT_930_enable_controls_until_return_85']
     },
     {
         "identifier": 'EVENT_931_set_short_mem_53',

@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_3623_jmp_to_subroutine_1',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3623_set_2',

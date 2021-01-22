@@ -444,7 +444,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_to_subroutine_52',
         "command": 'jmp_to_subroutine',
-        "args": [0x5c45]
+        "args": ['EVENT_529_jmp_if_bit_set_160']
     },
     {
         "identifier": 'EVENT_529_jmp_if_bit_set_53',
@@ -540,7 +540,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_to_subroutine_67',
         "command": 'jmp_to_subroutine',
-        "args": [0x5c3f]
+        "args": ['EVENT_529_action_queue_async_159']
     },
     {
         "identifier": 'EVENT_529_jmp_if_bit_set_68',
@@ -569,7 +569,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_to_subroutine_73',
         "command": 'jmp_to_subroutine',
-        "args": [0x5c62]
+        "args": ['EVENT_529_action_queue_async_171']
     },
     {
         "identifier": 'EVENT_529_jmp_74',
@@ -584,7 +584,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_to_subroutine_76',
         "command": 'jmp_to_subroutine',
-        "args": [0x5c3f]
+        "args": ['EVENT_529_action_queue_async_159']
     },
     {
         "identifier": 'EVENT_529_set_bit_77',
@@ -893,7 +893,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_to_subroutine_116',
         "command": 'jmp_to_subroutine',
-        "args": [0x5c62]
+        "args": ['EVENT_529_action_queue_async_171']
     },
     {
         "identifier": 'EVENT_529_set_bit_117',
@@ -998,7 +998,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_to_subroutine_134',
         "command": 'jmp_to_subroutine',
-        "args": [0x5c62]
+        "args": ['EVENT_529_action_queue_async_171']
     },
     {
         "identifier": 'EVENT_529_set_bit_135',
@@ -1083,7 +1083,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_to_subroutine_150',
         "command": 'jmp_to_subroutine',
-        "args": [0x5c62]
+        "args": ['EVENT_529_action_queue_async_171']
     },
     {
         "identifier": 'EVENT_529_set_bit_151',

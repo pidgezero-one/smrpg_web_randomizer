@@ -45,7 +45,7 @@ script = [
     {
         "identifier": 'EVENT_1636_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0x23a2]
+        "args": ['EVENT_1636_store_empty_inventory_slot_count_7000_193']
     },
     {
         "identifier": 'EVENT_1636_jmp_if_bit_set_9',
@@ -99,7 +99,7 @@ script = [
     {
         "identifier": 'EVENT_1636_jmp_to_subroutine_19',
         "command": 'jmp_to_subroutine',
-        "args": [0x23a2]
+        "args": ['EVENT_1636_store_empty_inventory_slot_count_7000_193']
     },
     {
         "identifier": 'EVENT_1636_jmp_if_bit_clear_20',
@@ -129,7 +129,7 @@ script = [
     {
         "identifier": 'EVENT_1636_jmp_to_subroutine_25',
         "command": 'jmp_to_subroutine',
-        "args": [0x23a2]
+        "args": ['EVENT_1636_store_empty_inventory_slot_count_7000_193']
     },
     {
         "identifier": 'EVENT_1636_jmp_if_bit_clear_26',

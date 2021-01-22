@@ -1256,7 +1256,7 @@ script = [
     {
         "identifier": 'EVENT_476_jmp_to_subroutine_203',
         "command": 'jmp_to_subroutine',
-        "args": [0x42a2]
+        "args": ['EVENT_457_action_queue_sync_0']
     },
     {
         "identifier": 'EVENT_476_run_background_event_204',

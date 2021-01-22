@@ -57,7 +57,7 @@ script = [
     {
         "identifier": 'EVENT_1888_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0x6266]
+        "args": ['EVENT_1897_fade_in_from_black_sync_7']
     },
     {
         "identifier": 'EVENT_1888_jmp_9',

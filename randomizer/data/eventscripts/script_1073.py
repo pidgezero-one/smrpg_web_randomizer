@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1073_dec_short_mem_9',
@@ -54,7 +54,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_10',
         "command": 'jmp_to_subroutine',
-        "args": [0xb2f4]
+        "args": ['EVENT_1073_jmp_if_var_equals_short_147']
     },
     {
         "identifier": 'EVENT_1073_set_short_mem_11',
@@ -170,7 +170,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_26',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1073_dec_short_mem_27',
@@ -180,7 +180,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_28',
         "command": 'jmp_to_subroutine',
-        "args": [0xb2f4]
+        "args": ['EVENT_1073_jmp_if_var_equals_short_147']
     },
     {
         "identifier": 'EVENT_1073_set_short_mem_29',
@@ -296,7 +296,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_44',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1073_dec_short_mem_45',
@@ -306,7 +306,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_46',
         "command": 'jmp_to_subroutine',
-        "args": [0xb2f4]
+        "args": ['EVENT_1073_jmp_if_var_equals_short_147']
     },
     {
         "identifier": 'EVENT_1073_set_short_mem_47',
@@ -422,7 +422,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_62',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1073_dec_short_mem_63',
@@ -432,7 +432,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_64',
         "command": 'jmp_to_subroutine',
-        "args": [0xb2f4]
+        "args": ['EVENT_1073_jmp_if_var_equals_short_147']
     },
     {
         "identifier": 'EVENT_1073_set_short_mem_65',
@@ -548,7 +548,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_80',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1073_dec_short_mem_81',
@@ -558,7 +558,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_82',
         "command": 'jmp_to_subroutine',
-        "args": [0xb2f4]
+        "args": ['EVENT_1073_jmp_if_var_equals_short_147']
     },
     {
         "identifier": 'EVENT_1073_set_short_mem_83',
@@ -674,7 +674,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_98',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1073_dec_short_mem_99',
@@ -684,7 +684,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_100',
         "command": 'jmp_to_subroutine',
-        "args": [0xb2f4]
+        "args": ['EVENT_1073_jmp_if_var_equals_short_147']
     },
     {
         "identifier": 'EVENT_1073_set_short_mem_101',
@@ -800,7 +800,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_116',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1073_dec_short_mem_117',
@@ -810,7 +810,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_118',
         "command": 'jmp_to_subroutine',
-        "args": [0xb2f4]
+        "args": ['EVENT_1073_jmp_if_var_equals_short_147']
     },
     {
         "identifier": 'EVENT_1073_set_short_mem_119',
@@ -926,7 +926,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_134',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1073_dec_short_mem_135',
@@ -936,7 +936,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_136',
         "command": 'jmp_to_subroutine',
-        "args": [0xb2f4]
+        "args": ['EVENT_1073_jmp_if_var_equals_short_147']
     },
     {
         "identifier": 'EVENT_1073_pause_action_script_137',
@@ -976,7 +976,7 @@ script = [
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_144',
         "command": 'jmp_to_subroutine',
-        "args": [0xb2f4]
+        "args": ['EVENT_1073_jmp_if_var_equals_short_147']
     },
     {
         "identifier": 'EVENT_1073_jmp_145',

@@ -109,7 +109,7 @@ script = [
     {
         "identifier": 'EVENT_1794_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x4e23]
+        "args": ['EVENT_1794_action_queue_sync_55']
     },
     {
         "identifier": 'EVENT_1794_set_bit_18',
@@ -138,7 +138,7 @@ script = [
     {
         "identifier": 'EVENT_1794_jmp_to_subroutine_23',
         "command": 'jmp_to_subroutine',
-        "args": [0x4e6f]
+        "args": ['EVENT_1794_set_72']
     },
     {
         "identifier": 'EVENT_1794_remove_from_level_24',
@@ -187,7 +187,7 @@ script = [
     {
         "identifier": 'EVENT_1794_jmp_to_subroutine_33',
         "command": 'jmp_to_subroutine',
-        "args": [0x4e6f]
+        "args": ['EVENT_1794_set_72']
     },
     {
         "identifier": 'EVENT_1794_remove_from_level_34',
@@ -280,7 +280,7 @@ script = [
     {
         "identifier": 'EVENT_1794_jmp_to_subroutine_48',
         "command": 'jmp_to_subroutine',
-        "args": [0x4e23]
+        "args": ['EVENT_1794_action_queue_sync_55']
     },
     {
         "identifier": 'EVENT_1794_set_bit_49',

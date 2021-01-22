@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_561_jmp_to_subroutine_1',
         "command": 'jmp_to_subroutine',
-        "args": [0x10c3]
+        "args": ['EVENT_273_set_bit_92']
     },
     {
         "identifier": 'EVENT_561_action_queue_async_2',

@@ -83,7 +83,7 @@ obj_event_lens = [
 items_table = build_table(get_default_items(None))
 
 jmp_cmds = [0x3F, 0x3E, 0xD2, 0x41, 0xE6, 0xE7, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xEC, 0xED, 0x66, 0xEA,
-            0xEF, 0xEE, 0xEB, 0x3D, 0x39, 0xDF, 0xDB, 0xF8, 0x3A, 0x32, 0xE9, 0xE8, 0xE0, 0xE2, 0xE4, 0xE1, 0xE3, 0xE5]
+            0xEF, 0xEE, 0xEB, 0x3D, 0x39, 0xDF, 0xDB, 0xF8, 0x3A, 0x32, 0xE9, 0xE8, 0xE0, 0xE2, 0xE4, 0xE1, 0xE3, 0xE5, 0xD3]
 
 jmp_cmds_double = [0x42, 0x67]
 
@@ -1040,6 +1040,7 @@ class Command(BaseCommand):
                 name, args = parse_line(line, offset, False)
                 identifier = 'EVENT_%i_%s_%i' % (i, name, j)
                 subscript = []
+                nonembedded = False
                 if (is_jump(line)):
                     arg_index = get_jump_args(line, args)
                     jump_args = [(int(ja, 16) | (offset & 0xFF0000))
@@ -1048,8 +1049,6 @@ class Command(BaseCommand):
                     jump_args = []
                     if offset in jumped_to_from_action_queue and is_eligible_nonembedded_command(line[0:2]):
                         nonembedded = True
-                    else:
-                        nonembedded = False
                     if (line[0] < 0x30 and line[1] <= 0xF1) or nonembedded:
                         if nonembedded:
                             additional_offset = 0
@@ -1113,12 +1112,14 @@ class Command(BaseCommand):
                 else:
                     if commands_to_replace != 0 and len(jumps) == 0:
                         raise Exception(f'Event {i} @ {hex(cmd["original_offset"])} contains an invalid target address')
+                        #print(f'Event {i} @ {hex(cmd["original_offset"])} contains an invalid target address')
                     new_args = cmd["args"][:commands_to_replace] + jumps
 
                 cmd_with_named_jumps = {
                     'command': cmd["command"],
                     'args': new_args,
-                    "identifier": cmd["identifier"],
+                    #"offset": cmd["original_offset"],
+                    "identifier": cmd["identifier"]
                 }
 
                 if "subscript" in cmd.keys():
@@ -1134,6 +1135,7 @@ class Command(BaseCommand):
                                     jumped_command = candidates[0]
                                     subscript_jumps.append(
                                         '\'%s\'' % jumped_command["identifier"])
+                                    break
                                 else:
                                     for command in sd:
                                         if "subscript" in command.keys():
@@ -1146,13 +1148,16 @@ class Command(BaseCommand):
                         if commands_to_replace == 0:
                             new_subscript_args = emb["args"]
                         else:
+                            if len(emb["jumps"]) != 0 and len(subscript_jumps) == 0:
+                                raise Exception(f'Event {i} @ subscript {hex(emb["original_offset"])} contains an invalid target address')
+                                #print(f'Event {i} @ subscript {hex(emb["original_offset"])} contains an invalid target address')
                             new_subscript_args = emb["args"][:commands_to_replace] + \
                                 subscript_jumps
                         subscript_cmd_with_named_jumps = {
                             'command': emb["command"],
                             'args': new_subscript_args,
-                            "identifier": emb["identifier"],
-                            # "offset": emb["original_offset"]
+                            #"offset": emb["original_offset"],
+                            "identifier": emb["identifier"]
                         }
                         subscript.append(subscript_cmd_with_named_jumps)
                     cmd_with_named_jumps["subscript"] = subscript

@@ -1023,7 +1023,7 @@ script = [
     {
         "identifier": 'EVENT_3738_jmp_if_var_equals_short_105',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0]
+        "args": [0x7000, 0, 'EVENT_3738_end_loop_106']
     },
     {
         "identifier": 'EVENT_3738_end_loop_106',

@@ -40,7 +40,7 @@ script = [
     {
         "identifier": 'EVENT_1633_jmp_to_subroutine_7',
         "command": 'jmp_to_subroutine',
-        "args": [0x20fe]
+        "args": ['EVENT_1633_clear_bit_12']
     },
     {
         "identifier": 'EVENT_1633_jmp_if_bit_set_8',

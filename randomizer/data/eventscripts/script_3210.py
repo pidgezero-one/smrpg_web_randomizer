@@ -179,7 +179,7 @@ script = [
             {
                 "identifier": 'EVENT_3210_action_queue_async_25_SUBSCRIPT_db_7',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0x98]
+                "args": [0xfd, 0x3d, 0x07, 0x98, 0x27]
             }
         ]
     },
@@ -313,7 +313,7 @@ script = [
             {
                 "identifier": 'EVENT_3210_action_queue_async_35_SUBSCRIPT_db_11',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0xd6]
+                "args": [0xfd, 0x3d, 0x07, 0xd6, 0x27]
             }
         ]
     },
@@ -447,7 +447,7 @@ script = [
             {
                 "identifier": 'EVENT_3210_action_queue_async_45_SUBSCRIPT_db_11',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0x14]
+                "args": [0xfd, 0x3d, 0x07, 0x14, 0x28]
             }
         ]
     },
@@ -581,7 +581,7 @@ script = [
             {
                 "identifier": 'EVENT_3210_action_queue_async_55_SUBSCRIPT_db_11',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0x52]
+                "args": [0xfd, 0x3d, 0x07, 0x52, 0x28]
             }
         ]
     },

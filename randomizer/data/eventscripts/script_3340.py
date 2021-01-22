@@ -38,7 +38,7 @@ script = [
             {
                 "identifier": 'EVENT_3340_action_queue_async_2_SUBSCRIPT_db_4',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0x30]
+                "args": [0xfd, 0x3d, 0x07, 0x30, 0x49]
             },
             {
                 "identifier": 'EVENT_3340_action_queue_async_2_SUBSCRIPT_jump_to_height_5',

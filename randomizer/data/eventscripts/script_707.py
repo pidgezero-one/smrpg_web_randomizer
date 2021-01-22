@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_707_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x708b, 5]
+        "args": [0x708b, 5, 'EVENT_707_run_dialog_3']
     },
     {
         "identifier": 'EVENT_707_run_dialog_1',

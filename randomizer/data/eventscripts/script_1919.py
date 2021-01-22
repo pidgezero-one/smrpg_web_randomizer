@@ -45,7 +45,7 @@ script = [
     {
         "identifier": 'EVENT_1919_jmp_to_subroutine_4',
         "command": 'jmp_to_subroutine',
-        "args": [0x6513]
+        "args": ['EVENT_1919_enable_controls_until_return_11']
     },
     {
         "identifier": 'EVENT_1919_action_queue_sync_5',
@@ -101,7 +101,7 @@ script = [
     {
         "identifier": 'EVENT_1919_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0x6513]
+        "args": ['EVENT_1919_enable_controls_until_return_11']
     },
     {
         "identifier": 'EVENT_1919_action_queue_sync_9',

@@ -43,7 +43,7 @@ script = [
     {
         "identifier": 'EVENT_3681_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0xa402]
+        "args": ['EVENT_3681_action_queue_async_20']
     },
     {
         "identifier": 'EVENT_3681_play_sound_9',
@@ -72,7 +72,7 @@ script = [
     {
         "identifier": 'EVENT_3681_jmp_to_subroutine_14',
         "command": 'jmp_to_subroutine',
-        "args": [0xa402]
+        "args": ['EVENT_3681_action_queue_async_20']
     },
     {
         "identifier": 'EVENT_3681_play_sound_15',

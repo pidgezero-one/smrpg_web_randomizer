@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_1710_jmp_to_subroutine_0',
         "command": 'jmp_to_subroutine',
-        "args": [0x396c]
+        "args": ['EVENT_1709_enable_controls_until_return_43']
     },
     {
         "identifier": 'EVENT_1710_set_action_script_sync_1',
@@ -30,7 +30,7 @@ script = [
     {
         "identifier": 'EVENT_1710_jmp_to_subroutine_5',
         "command": 'jmp_to_subroutine',
-        "args": [0x399b]
+        "args": ['EVENT_1709_action_queue_async_55']
     },
     {
         "identifier": 'EVENT_1710_jmp_6',
@@ -449,7 +449,7 @@ script = [
             {
                 "identifier": 'EVENT_1710_action_queue_async_43_SUBSCRIPT_db_5',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1d, 0x9d]
+                "args": [0xfd, 0x3d, 0x1d, 0x9d, 0x3a]
             },
             {
                 "identifier": 'EVENT_1710_action_queue_async_43_SUBSCRIPT_shadow_off_6',

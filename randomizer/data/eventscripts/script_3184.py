@@ -15,7 +15,7 @@ script = [
     {
         "identifier": 'EVENT_3184_jmp_to_subroutine_2',
         "command": 'jmp_to_subroutine',
-        "args": [0x1ab1]
+        "args": ['EVENT_3183_jmp_if_bit_set_4']
     },
     {
         "identifier": 'EVENT_3184_set_bit_3',

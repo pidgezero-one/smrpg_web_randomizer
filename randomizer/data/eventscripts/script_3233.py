@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_3233_jmp_to_subroutine_0',
         "command": 'jmp_to_subroutine',
-        "args": [0x3171]
+        "args": ['EVENT_3237_jmp_if_bit_set_5']
     },
     {
         "identifier": 'EVENT_3233_add_short_1',

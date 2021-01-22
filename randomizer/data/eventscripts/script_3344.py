@@ -195,7 +195,7 @@ script = [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_4_SUBSCRIPT_db_10',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0x1e]
+                "args": [0xfd, 0x3d, 0x07, 0x1e, 0x4a]
             },
             {
                 "identifier": 'EVENT_3344_action_queue_sync_4_SUBSCRIPT_clear_solidity_bits_11',
@@ -307,7 +307,7 @@ script = [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_5_SUBSCRIPT_db_11',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0x4f]
+                "args": [0xfd, 0x3d, 0x07, 0x4f, 0x4a]
             },
             {
                 "identifier": 'EVENT_3344_action_queue_sync_5_SUBSCRIPT_clear_solidity_bits_12',
@@ -419,7 +419,7 @@ script = [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_6_SUBSCRIPT_db_11',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0x80]
+                "args": [0xfd, 0x3d, 0x07, 0x80, 0x4a]
             },
             {
                 "identifier": 'EVENT_3344_action_queue_sync_6_SUBSCRIPT_clear_solidity_bits_12',
@@ -531,7 +531,7 @@ script = [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_7_SUBSCRIPT_db_11',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0xb1]
+                "args": [0xfd, 0x3d, 0x07, 0xb1, 0x4a]
             },
             {
                 "identifier": 'EVENT_3344_action_queue_sync_7_SUBSCRIPT_set_bit_12',
@@ -643,7 +643,7 @@ script = [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_8_SUBSCRIPT_db_11',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0xe2]
+                "args": [0xfd, 0x3d, 0x07, 0xe2, 0x4a]
             },
             {
                 "identifier": 'EVENT_3344_action_queue_sync_8_SUBSCRIPT_clear_solidity_bits_12',

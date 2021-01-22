@@ -343,8 +343,8 @@ script = [
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_3678_action_queue_sync_43_SUBSCRIPT_pause_3',
-                "command": 'pause',
+                "identifier": 'EVENT_3678_action_queue_sync_43_SUBSCRIPT_pause_short_3',
+                "command": 'pause_short',
                 "args": [270]
             },
             {
@@ -368,8 +368,8 @@ script = [
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_3678_action_queue_sync_44_SUBSCRIPT_pause_2',
-                "command": 'pause',
+                "identifier": 'EVENT_3678_action_queue_sync_44_SUBSCRIPT_pause_short_2',
+                "command": 'pause_short',
                 "args": [270]
             },
             {
@@ -398,8 +398,8 @@ script = [
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_3678_action_queue_sync_45_SUBSCRIPT_pause_3',
-                "command": 'pause',
+                "identifier": 'EVENT_3678_action_queue_sync_45_SUBSCRIPT_pause_short_3',
+                "command": 'pause_short',
                 "args": [270]
             },
             {
@@ -414,8 +414,8 @@ script = [
         "args": [AreaObjects.SCREEN_FOCUS],
         "subscript": [
             {
-                "identifier": 'EVENT_3678_action_queue_sync_46_SUBSCRIPT_pause_0',
-                "command": 'pause',
+                "identifier": 'EVENT_3678_action_queue_sync_46_SUBSCRIPT_pause_short_0',
+                "command": 'pause_short',
                 "args": [280]
             },
             {

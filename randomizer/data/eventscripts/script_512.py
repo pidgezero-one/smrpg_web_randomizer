@@ -320,7 +320,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_21_SUBSCRIPT_db_11',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x15, 0x2d]
+                "args": [0xfd, 0x3d, 0x15, 0x2d, 0x52]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_21_SUBSCRIPT_jump_to_height_silent_12',
@@ -352,7 +352,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_22_SUBSCRIPT_db_3',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1a, 0x3e]
+                "args": [0xfd, 0x3d, 0x1a, 0x3e, 0x52]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_22_SUBSCRIPT_jump_to_height_silent_4',
@@ -1334,7 +1334,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_async_77_SUBSCRIPT_db_2',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x15, 0xd0]
+                "args": [0xfd, 0x3d, 0x15, 0xd0, 0x53]
             }
         ]
     },
@@ -1667,7 +1667,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_async_95_SUBSCRIPT_db_2',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x15, 0x58]
+                "args": [0xfd, 0x3d, 0x15, 0x58, 0x54]
             }
         ]
     },
@@ -1817,7 +1817,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_115_SUBSCRIPT_db_2',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x15, 0xa1]
+                "args": [0xfd, 0x3d, 0x15, 0xa1, 0x54]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_115_SUBSCRIPT_set_animation_speed_3',
@@ -2082,7 +2082,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_130_SUBSCRIPT_db_2',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x15, 0x04]
+                "args": [0xfd, 0x3d, 0x15, 0x04, 0x55]
             }
         ]
     },
@@ -2184,7 +2184,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_async_134_SUBSCRIPT_db_4',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x19, 0x35]
+                "args": [0xfd, 0x3d, 0x19, 0x35, 0x55]
             },
             {
                 "identifier": 'EVENT_512_action_queue_async_134_SUBSCRIPT_jump_to_height_silent_5',
@@ -2199,7 +2199,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_async_134_SUBSCRIPT_db_7',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x19, 0x3f]
+                "args": [0xfd, 0x3d, 0x19, 0x3f, 0x55]
             }
         ]
     },
@@ -3476,7 +3476,7 @@ script = [
             {
                 "identifier": 'EVENT_512_action_queue_sync_183_SUBSCRIPT_db_4',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x14, 0x5a]
+                "args": [0xfd, 0x3d, 0x14, 0x5a, 0x57]
             },
             {
                 "identifier": 'EVENT_512_action_queue_sync_183_SUBSCRIPT_set_animation_speed_5',
@@ -3628,7 +3628,7 @@ script = [
     {
         "identifier": 'EVENT_512_jmp_to_subroutine_201',
         "command": 'jmp_to_subroutine',
-        "args": [0x57c0]
+        "args": ['EVENT_512_action_queue_sync_211']
     },
     {
         "identifier": 'EVENT_512_jmp_if_bit_clear_202',

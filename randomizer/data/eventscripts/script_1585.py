@@ -50,7 +50,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_9',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_10',
@@ -60,7 +60,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_11',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_12',
@@ -70,7 +70,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_13',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_14',
@@ -80,7 +80,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_15',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_16',
@@ -90,7 +90,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_18',
@@ -100,7 +100,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_19',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_clear_bit_20',
@@ -125,7 +125,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_24',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_25',
@@ -135,7 +135,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_26',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_27',
@@ -145,7 +145,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_28',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_29',
@@ -155,7 +155,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_30',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_31',
@@ -165,7 +165,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_32',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_33',
@@ -175,7 +175,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_34',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_clear_bit_35',
@@ -200,7 +200,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_39',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_40',
@@ -210,7 +210,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_41',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_42',
@@ -220,7 +220,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_43',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_44',
@@ -230,7 +230,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_45',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_46',
@@ -240,7 +240,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_47',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_48',
@@ -250,7 +250,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_49',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_clear_bit_50',
@@ -275,7 +275,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_54',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_55',
@@ -285,7 +285,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_56',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_57',
@@ -295,7 +295,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_58',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_59',
@@ -305,7 +305,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_60',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_61',
@@ -315,7 +315,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_62',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_set_short_63',
@@ -325,7 +325,7 @@ script = [
     {
         "identifier": 'EVENT_1585_jmp_to_subroutine_64',
         "command": 'jmp_to_subroutine',
-        "args": [0x1bb2]
+        "args": ['EVENT_1585_set_short_mem_67']
     },
     {
         "identifier": 'EVENT_1585_clear_bit_65',

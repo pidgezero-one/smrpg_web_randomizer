@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7092, 5, 'EVENT_3640_ret_370']
+        "args": [0x7092, 5, 'EVENT_3640_ret_430']
     },
     {
         "identifier": 'EVENT_3640_fade_out_to_black_sync_duration_1',
@@ -413,7 +413,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_40',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_pause_41',
@@ -423,7 +423,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_42',
         "command": 'jmp_to_subroutine',
-        "args": [0x9480]
+        "args": ['EVENT_3640_action_queue_async_290']
     },
     {
         "identifier": 'EVENT_3640_pause_43',
@@ -433,17 +433,17 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_44',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_45',
         "command": 'jmp_to_subroutine',
-        "args": [0x9491]
+        "args": ['EVENT_3640_action_queue_async_292']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_46',
         "command": 'jmp_to_subroutine',
-        "args": [0x94a8]
+        "args": ['EVENT_3640_set_temp_action_script_async_294']
     },
     {
         "identifier": 'EVENT_3640_pause_47',
@@ -453,7 +453,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_48',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_pause_49',
@@ -463,7 +463,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_50',
         "command": 'jmp_to_subroutine',
-        "args": [0x9480]
+        "args": ['EVENT_3640_action_queue_async_290']
     },
     {
         "identifier": 'EVENT_3640_pause_51',
@@ -473,17 +473,17 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_52',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_53',
         "command": 'jmp_to_subroutine',
-        "args": [0x9491]
+        "args": ['EVENT_3640_action_queue_async_292']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_54',
         "command": 'jmp_to_subroutine',
-        "args": [0x94b6]
+        "args": ['EVENT_3640_set_temp_action_script_async_305']
     },
     {
         "identifier": 'EVENT_3640_pause_55',
@@ -493,7 +493,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_56',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_pause_57',
@@ -503,7 +503,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_58',
         "command": 'jmp_to_subroutine',
-        "args": [0x9480]
+        "args": ['EVENT_3640_action_queue_async_290']
     },
     {
         "identifier": 'EVENT_3640_pause_59',
@@ -513,7 +513,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_60',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_61',
@@ -664,7 +664,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_83',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_pause_84',
@@ -674,7 +674,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_85',
         "command": 'jmp_to_subroutine',
-        "args": [0x9480]
+        "args": ['EVENT_3640_action_queue_async_290']
     },
     {
         "identifier": 'EVENT_3640_pause_86',
@@ -684,7 +684,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_87',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_pause_88',
@@ -894,7 +894,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_105',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_pause_106',
@@ -904,7 +904,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_107',
         "command": 'jmp_to_subroutine',
-        "args": [0x9480]
+        "args": ['EVENT_3640_action_queue_async_290']
     },
     {
         "identifier": 'EVENT_3640_pause_108',
@@ -914,17 +914,17 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_109',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_110',
         "command": 'jmp_to_subroutine',
-        "args": [0x9491]
+        "args": ['EVENT_3640_action_queue_async_292']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_111',
         "command": 'jmp_to_subroutine',
-        "args": [0x953c]
+        "args": ['EVENT_3640_set_temp_action_script_async_337']
     },
     {
         "identifier": 'EVENT_3640_pause_112',
@@ -934,7 +934,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_113',
         "command": 'jmp_to_subroutine',
-        "args": [0x954a]
+        "args": ['EVENT_3640_action_queue_async_348']
     },
     {
         "identifier": 'EVENT_3640_pause_114',
@@ -944,7 +944,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_115',
         "command": 'jmp_to_subroutine',
-        "args": [0x955b]
+        "args": ['EVENT_3640_action_queue_async_350']
     },
     {
         "identifier": 'EVENT_3640_pause_116',
@@ -954,7 +954,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_117',
         "command": 'jmp_to_subroutine',
-        "args": [0x954a]
+        "args": ['EVENT_3640_action_queue_async_348']
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_118',
@@ -1105,7 +1105,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_140',
         "command": 'jmp_to_subroutine',
-        "args": [0x955b]
+        "args": ['EVENT_3640_action_queue_async_350']
     },
     {
         "identifier": 'EVENT_3640_pause_141',
@@ -1115,7 +1115,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_142',
         "command": 'jmp_to_subroutine',
-        "args": [0x954a]
+        "args": ['EVENT_3640_action_queue_async_348']
     },
     {
         "identifier": 'EVENT_3640_pause_143',
@@ -1125,17 +1125,17 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_144',
         "command": 'jmp_to_subroutine',
-        "args": [0x955b]
+        "args": ['EVENT_3640_action_queue_async_350']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_145',
         "command": 'jmp_to_subroutine',
-        "args": [0x9491]
+        "args": ['EVENT_3640_action_queue_async_292']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_146',
         "command": 'jmp_to_subroutine',
-        "args": [0x94b6]
+        "args": ['EVENT_3640_set_temp_action_script_async_305']
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_147',
@@ -1347,7 +1347,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_170',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_pause_171',
@@ -1357,7 +1357,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_172',
         "command": 'jmp_to_subroutine',
-        "args": [0x9480]
+        "args": ['EVENT_3640_action_queue_async_290']
     },
     {
         "identifier": 'EVENT_3640_pause_173',
@@ -1367,17 +1367,17 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_174',
         "command": 'jmp_to_subroutine',
-        "args": [0x946f]
+        "args": ['EVENT_3640_action_queue_async_288']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_175',
         "command": 'jmp_to_subroutine',
-        "args": [0x9491]
+        "args": ['EVENT_3640_action_queue_async_292']
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_176',
         "command": 'jmp_to_subroutine',
-        "args": [0x953c]
+        "args": ['EVENT_3640_set_temp_action_script_async_337']
     },
     {
         "identifier": 'EVENT_3640_pause_177',
@@ -1387,7 +1387,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_178',
         "command": 'jmp_to_subroutine',
-        "args": [0x954a]
+        "args": ['EVENT_3640_action_queue_async_348']
     },
     {
         "identifier": 'EVENT_3640_pause_179',
@@ -1397,7 +1397,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_180',
         "command": 'jmp_to_subroutine',
-        "args": [0x955b]
+        "args": ['EVENT_3640_action_queue_async_350']
     },
     {
         "identifier": 'EVENT_3640_pause_181',
@@ -1407,7 +1407,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_182',
         "command": 'jmp_to_subroutine',
-        "args": [0x954a]
+        "args": ['EVENT_3640_action_queue_async_348']
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_183',
@@ -3176,54 +3176,44 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_352',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3640_ret_352',
+        "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_353',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000, 'EVENT_3622_ret_9']
+        "identifier": 'EVENT_3640_ret_353',
+        "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_354',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3640_ret_354',
+        "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_355',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000, 'EVENT_3372_action_queue_sync_10']
+        "identifier": 'EVENT_3640_ret_355',
+        "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_356',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3640_ret_356',
+        "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_357',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3640_ret_357',
+        "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_358',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3640_ret_358',
+        "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_359',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3640_ret_359',
+        "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_360',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000, 'EVENT_3820_set_short_2']
+        "identifier": 'EVENT_3640_ret_360',
+        "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3640_create_packet_event_at_coords_jmp_if_null_361',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 0x0000]
+        "identifier": 'EVENT_3640_ret_361',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3640_ret_362',
@@ -3259,6 +3249,246 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_ret_370',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_371',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_372',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_373',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_374',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_375',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_376',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_377',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_378',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_379',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_380',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_381',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_382',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_383',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_384',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_385',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_386',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_387',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_388',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_389',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_390',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_391',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_392',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_393',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_394',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_395',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_396',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_397',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_398',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_399',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_400',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_401',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_402',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_403',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_404',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_405',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_406',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_407',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_408',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_409',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_410',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_411',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_412',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_413',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_414',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_415',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_416',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_417',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_418',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_419',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_420',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_421',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_422',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_423',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_424',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_425',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_426',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_427',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_428',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_429',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3640_ret_430',
         "command": 'ret'
     }
 ]

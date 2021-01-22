@@ -335,7 +335,7 @@ script = [
             {
                 "identifier": 'EVENT_331_action_queue_sync_36_SUBSCRIPT_db_3',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1e, 0xb4]
+                "args": [0xfd, 0x3d, 0x1e, 0xb4, 0x20]
             },
             {
                 "identifier": 'EVENT_331_action_queue_sync_36_SUBSCRIPT_pause_4',
@@ -515,7 +515,7 @@ script = [
             {
                 "identifier": 'EVENT_331_action_queue_async_51_SUBSCRIPT_db_4',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1e, 0x03]
+                "args": [0xfd, 0x3d, 0x1e, 0x03, 0x21]
             }
         ]
     },
@@ -1032,7 +1032,7 @@ script = [
             {
                 "identifier": 'EVENT_331_action_queue_async_116_SUBSCRIPT_db_3',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1e, 0x03]
+                "args": [0xfd, 0x3d, 0x1e, 0x03, 0x22]
             }
         ]
     },

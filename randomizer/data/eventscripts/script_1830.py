@@ -224,7 +224,7 @@ script = [
     {
         "identifier": 'EVENT_1830_jmp_to_subroutine_45',
         "command": 'jmp_to_subroutine',
-        "args": [0x56b5]
+        "args": ['EVENT_1830_pause_70']
     },
     {
         "identifier": 'EVENT_1830_set_bit_46',
@@ -274,7 +274,7 @@ script = [
     {
         "identifier": 'EVENT_1830_jmp_to_subroutine_55',
         "command": 'jmp_to_subroutine',
-        "args": [0x56b5]
+        "args": ['EVENT_1830_pause_70']
     },
     {
         "identifier": 'EVENT_1830_set_bit_56',
@@ -314,7 +314,7 @@ script = [
     {
         "identifier": 'EVENT_1830_jmp_to_subroutine_63',
         "command": 'jmp_to_subroutine',
-        "args": [0x56b5]
+        "args": ['EVENT_1830_pause_70']
     },
     {
         "identifier": 'EVENT_1830_set_bit_64',

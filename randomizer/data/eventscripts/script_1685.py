@@ -209,7 +209,7 @@ script = [
             {
                 "identifier": 'EVENT_1685_action_queue_sync_31_SUBSCRIPT_db_9',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x14, 0x69]
+                "args": [0xfd, 0x3d, 0x14, 0x69, 0x2f]
             },
             {
                 "identifier": 'EVENT_1685_action_queue_sync_31_SUBSCRIPT_play_sound_10',
@@ -271,7 +271,7 @@ script = [
             {
                 "identifier": 'EVENT_1685_action_queue_sync_32_SUBSCRIPT_db_9',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x15, 0x84]
+                "args": [0xfd, 0x3d, 0x15, 0x84, 0x2f]
             },
             {
                 "identifier": 'EVENT_1685_action_queue_sync_32_SUBSCRIPT_play_sound_10',

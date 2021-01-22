@@ -94,7 +94,7 @@ script = [
             {
                 "identifier": 'EVENT_1767_action_queue_async_6_SUBSCRIPT_db_8',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x18, 0x85]
+                "args": [0xfd, 0x3d, 0x18, 0x85, 0x47]
             },
             {
                 "identifier": 'EVENT_1767_action_queue_async_6_SUBSCRIPT_set_animation_speed_9',

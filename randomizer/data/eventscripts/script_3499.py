@@ -163,12 +163,12 @@ script = [
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_13',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d15]
+        "args": ['EVENT_3499_action_queue_sync_130']
     },
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_14',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d30]
+        "args": ['EVENT_3499_action_queue_sync_133']
     },
     {
         "identifier": 'EVENT_3499_pause_15',
@@ -178,22 +178,22 @@ script = [
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_16',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d15]
+        "args": ['EVENT_3499_action_queue_sync_130']
     },
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d30]
+        "args": ['EVENT_3499_action_queue_sync_133']
     },
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_18',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d15]
+        "args": ['EVENT_3499_action_queue_sync_130']
     },
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_19',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d30]
+        "args": ['EVENT_3499_action_queue_sync_133']
     },
     {
         "identifier": 'EVENT_3499_action_queue_async_20',
@@ -224,12 +224,12 @@ script = [
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_21',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d15]
+        "args": ['EVENT_3499_action_queue_sync_130']
     },
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_22',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d30]
+        "args": ['EVENT_3499_action_queue_sync_133']
     },
     {
         "identifier": 'EVENT_3499_action_queue_async_23',
@@ -260,7 +260,7 @@ script = [
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_24',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d15]
+        "args": ['EVENT_3499_action_queue_sync_130']
     },
     {
         "identifier": 'EVENT_3499_action_queue_sync_25',
@@ -297,7 +297,7 @@ script = [
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_28',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d30]
+        "args": ['EVENT_3499_action_queue_sync_133']
     },
     {
         "identifier": 'EVENT_3499_set_action_script_sync_29',
@@ -501,7 +501,7 @@ script = [
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_45',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d49]
+        "args": ['EVENT_3499_action_queue_sync_136']
     },
     {
         "identifier": 'EVENT_3499_action_queue_async_46',
@@ -747,7 +747,7 @@ script = [
     {
         "identifier": 'EVENT_3499_jmp_to_subroutine_51',
         "command": 'jmp_to_subroutine',
-        "args": [0x6d49]
+        "args": ['EVENT_3499_action_queue_sync_136']
     },
     {
         "identifier": 'EVENT_3499_action_queue_async_52',

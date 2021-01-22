@@ -3579,7 +3579,7 @@ script = [
             {
                 "identifier": 'EVENT_3797_action_queue_async_265_SUBSCRIPT_db_3',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x14, 0xc3]
+                "args": [0xfd, 0x3d, 0x14, 0xc3, 0xce]
             },
             {
                 "identifier": 'EVENT_3797_action_queue_async_265_SUBSCRIPT_set_sprite_sequence_4',

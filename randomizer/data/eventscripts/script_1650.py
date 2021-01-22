@@ -299,7 +299,7 @@ script = [
             {
                 "identifier": 'EVENT_1650_action_queue_sync_16_SUBSCRIPT_db_7',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x17, 0x7a]
+                "args": [0xfd, 0x3d, 0x17, 0x7a, 0x28]
             },
             {
                 "identifier": 'EVENT_1650_action_queue_sync_16_SUBSCRIPT_jump_to_height_8',
@@ -459,7 +459,7 @@ script = [
             {
                 "identifier": 'EVENT_1650_action_queue_sync_18_SUBSCRIPT_db_9',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x16, 0xc3]
+                "args": [0xfd, 0x3d, 0x16, 0xc3, 0x28]
             },
             {
                 "identifier": 'EVENT_1650_action_queue_sync_18_SUBSCRIPT_jump_to_height_10',
@@ -478,7 +478,7 @@ script = [
             {
                 "identifier": 'EVENT_1650_action_queue_sync_18_SUBSCRIPT_db_13',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x16, 0xce]
+                "args": [0xfd, 0x3d, 0x16, 0xce, 0x28]
             },
             {
                 "identifier": 'EVENT_1650_action_queue_sync_18_SUBSCRIPT_jump_to_height_14',
@@ -498,7 +498,7 @@ script = [
             {
                 "identifier": 'EVENT_1650_action_queue_sync_18_SUBSCRIPT_db_17',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x16, 0xda]
+                "args": [0xfd, 0x3d, 0x16, 0xda, 0x28]
             },
             {
                 "identifier": 'EVENT_1650_action_queue_sync_18_SUBSCRIPT_jump_to_height_18',

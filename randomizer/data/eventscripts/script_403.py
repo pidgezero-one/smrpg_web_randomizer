@@ -106,7 +106,7 @@ script = [
     {
         "identifier": 'EVENT_403_jmp_to_subroutine_13',
         "command": 'jmp_to_subroutine',
-        "args": [0x1725]
+        "args": ['EVENT_293_jmp_if_bit_set_0']
     },
     {
         "identifier": 'EVENT_403_action_queue_async_14',

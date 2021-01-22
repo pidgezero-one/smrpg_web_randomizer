@@ -240,7 +240,7 @@ script = [
     {
         "identifier": 'EVENT_1825_jmp_to_subroutine_41',
         "command": 'jmp_to_subroutine',
-        "args": [0x56cb]
+        "args": ['EVENT_1830_pause_75']
     },
     {
         "identifier": 'EVENT_1825_set_bit_42',

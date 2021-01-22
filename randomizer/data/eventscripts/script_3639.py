@@ -20,7 +20,7 @@ script = [
     {
         "identifier": 'EVENT_3639_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x705e, 4]
+        "args": [0x705e, 4, 'EVENT_3640_jmp_if_bit_set_0']
     },
     {
         "identifier": 'EVENT_3639_run_dialog_4',
@@ -75,7 +75,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3639_jmp_if_dialog_option_b_10',
-        "command": 'jmp_if_dialog_option_b'
+        "command": 'jmp_if_dialog_option_b',
+        "args": ['EVENT_3640_ret_414']
     },
     {
         "identifier": 'EVENT_3639_pause_11',
@@ -168,7 +169,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3639_jmp_20',
-        "command": 'jmp'
+        "command": 'jmp',
+        "args": ['EVENT_3640_ret_430']
     },
     {
         "identifier": 'EVENT_3639_run_dialog_21',

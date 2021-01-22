@@ -60,7 +60,7 @@ script = [
     {
         "identifier": 'EVENT_933_jmp_to_subroutine_11',
         "command": 'jmp_to_subroutine',
-        "args": [0xa958]
+        "args": ['EVENT_930_enable_controls_until_return_85']
     },
     {
         "identifier": 'EVENT_933_clear_bit_12',
@@ -195,7 +195,7 @@ script = [
     {
         "identifier": 'EVENT_933_jmp_to_subroutine_35',
         "command": 'jmp_to_subroutine',
-        "args": [0xad25]
+        "args": ['EVENT_933_action_queue_async_82']
     },
     {
         "identifier": 'EVENT_933_pause_36',
@@ -266,7 +266,7 @@ script = [
     {
         "identifier": 'EVENT_933_jmp_to_subroutine_46',
         "command": 'jmp_to_subroutine',
-        "args": [0xad25]
+        "args": ['EVENT_933_action_queue_async_82']
     },
     {
         "identifier": 'EVENT_933_pause_47',
@@ -392,7 +392,7 @@ script = [
     {
         "identifier": 'EVENT_933_jmp_to_subroutine_68',
         "command": 'jmp_to_subroutine',
-        "args": [0xad25]
+        "args": ['EVENT_933_action_queue_async_82']
     },
     {
         "identifier": 'EVENT_933_pause_69',

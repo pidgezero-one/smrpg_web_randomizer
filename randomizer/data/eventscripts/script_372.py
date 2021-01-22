@@ -269,7 +269,7 @@ script = [
             {
                 "identifier": 'EVENT_372_action_queue_sync_21_SUBSCRIPT_db_18',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1c, 0x7f]
+                "args": [0xfd, 0x3d, 0x1c, 0x7f, 0x2a]
             },
             {
                 "identifier": 'EVENT_372_action_queue_sync_21_SUBSCRIPT_jump_to_height_silent_19',
@@ -288,7 +288,7 @@ script = [
             {
                 "identifier": 'EVENT_372_action_queue_sync_21_SUBSCRIPT_db_22',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1c, 0x8a]
+                "args": [0xfd, 0x3d, 0x1c, 0x8a, 0x2a]
             },
             {
                 "identifier": 'EVENT_372_action_queue_sync_21_SUBSCRIPT_clear_solidity_bits_23',
@@ -385,7 +385,7 @@ script = [
             {
                 "identifier": 'EVENT_372_action_queue_sync_22_SUBSCRIPT_db_16',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1d, 0xb6]
+                "args": [0xfd, 0x3d, 0x1d, 0xb6, 0x2a]
             },
             {
                 "identifier": 'EVENT_372_action_queue_sync_22_SUBSCRIPT_jump_to_height_silent_17',
@@ -404,7 +404,7 @@ script = [
             {
                 "identifier": 'EVENT_372_action_queue_sync_22_SUBSCRIPT_db_20',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1d, 0xc1]
+                "args": [0xfd, 0x3d, 0x1d, 0xc1, 0x2a]
             },
             {
                 "identifier": 'EVENT_372_action_queue_sync_22_SUBSCRIPT_clear_solidity_bits_21',

@@ -45,7 +45,7 @@ script = [
     {
         "identifier": 'EVENT_1075_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0xbc99]
+        "args": ['EVENT_1078_jmp_if_bit_clear_140']
     },
     {
         "identifier": 'EVENT_1075_run_dialog_9',

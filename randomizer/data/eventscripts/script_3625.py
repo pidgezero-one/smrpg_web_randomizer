@@ -69,7 +69,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_13',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_14',
@@ -130,7 +130,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_26',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_27',
@@ -177,7 +177,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_36',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_37',
@@ -224,7 +224,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_46',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_47',
@@ -266,7 +266,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_55',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_56',
@@ -313,7 +313,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_65',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_66',
@@ -365,7 +365,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_76',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_77',
@@ -417,7 +417,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_87',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_88',
@@ -469,7 +469,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_98',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_99',
@@ -516,7 +516,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_108',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_109',
@@ -563,7 +563,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_118',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_119',
@@ -610,7 +610,7 @@ script = [
     {
         "identifier": 'EVENT_3625_jmp_to_subroutine_128',
         "command": 'jmp_to_subroutine',
-        "args": [0x86f3]
+        "args": ['EVENT_3625_freeze_camera_137']
     },
     {
         "identifier": 'EVENT_3625_set_129',

@@ -611,8 +611,8 @@ script = [
                 "args": [0x27]
             },
             {
-                "identifier": 'EVENT_3282_action_queue_sync_55_SUBSCRIPT_pause_4',
-                "command": 'pause',
+                "identifier": 'EVENT_3282_action_queue_sync_55_SUBSCRIPT_pause_short_4',
+                "command": 'pause_short',
                 "args": [512]
             },
             {

@@ -299,7 +299,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_30',
         "command": 'jmp_to_subroutine',
-        "args": [0xc846]
+        "args": ['EVENT_3794_set_bit_144']
     },
     {
         "identifier": 'EVENT_3794_pause_31',
@@ -314,7 +314,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_33',
         "command": 'jmp_to_subroutine',
-        "args": [0xc851]
+        "args": ['EVENT_3794_set_bit_149']
     },
     {
         "identifier": 'EVENT_3794_set_bit_34',
@@ -668,7 +668,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_65',
         "command": 'jmp_to_subroutine',
-        "args": [0xc846]
+        "args": ['EVENT_3794_set_bit_144']
     },
     {
         "identifier": 'EVENT_3794_pause_66',
@@ -683,7 +683,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_68',
         "command": 'jmp_to_subroutine',
-        "args": [0xc851]
+        "args": ['EVENT_3794_set_bit_149']
     },
     {
         "identifier": 'EVENT_3794_pause_69',
@@ -951,7 +951,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_84',
         "command": 'jmp_to_subroutine',
-        "args": [0xc846]
+        "args": ['EVENT_3794_set_bit_144']
     },
     {
         "identifier": 'EVENT_3794_pause_85',
@@ -966,7 +966,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_87',
         "command": 'jmp_to_subroutine',
-        "args": [0xc851]
+        "args": ['EVENT_3794_set_bit_149']
     },
     {
         "identifier": 'EVENT_3794_pause_88',
@@ -1205,7 +1205,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_103',
         "command": 'jmp_to_subroutine',
-        "args": [0xc846]
+        "args": ['EVENT_3794_set_bit_144']
     },
     {
         "identifier": 'EVENT_3794_pause_104',
@@ -1220,7 +1220,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_106',
         "command": 'jmp_to_subroutine',
-        "args": [0xc851]
+        "args": ['EVENT_3794_set_bit_149']
     },
     {
         "identifier": 'EVENT_3794_action_queue_async_107',
@@ -1572,7 +1572,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_123',
         "command": 'jmp_to_subroutine',
-        "args": [0xc846]
+        "args": ['EVENT_3794_set_bit_144']
     },
     {
         "identifier": 'EVENT_3794_pause_124',
@@ -1587,7 +1587,7 @@ script = [
     {
         "identifier": 'EVENT_3794_jmp_to_subroutine_126',
         "command": 'jmp_to_subroutine',
-        "args": [0xc851]
+        "args": ['EVENT_3794_set_bit_149']
     },
     {
         "identifier": 'EVENT_3794_pause_127',

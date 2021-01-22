@@ -372,8 +372,8 @@ script = [
         "args": [AreaObjects.NPC_5],
         "subscript": [
             {
-                "identifier": 'EVENT_3806_action_queue_sync_5_SUBSCRIPT_pause_0',
-                "command": 'pause',
+                "identifier": 'EVENT_3806_action_queue_sync_5_SUBSCRIPT_pause_short_0',
+                "command": 'pause_short',
                 "args": [300]
             },
             {
@@ -388,8 +388,8 @@ script = [
         "args": [AreaObjects.NPC_6],
         "subscript": [
             {
-                "identifier": 'EVENT_3806_action_queue_sync_6_SUBSCRIPT_pause_0',
-                "command": 'pause',
+                "identifier": 'EVENT_3806_action_queue_sync_6_SUBSCRIPT_pause_short_0',
+                "command": 'pause_short',
                 "args": [300]
             },
             {

@@ -204,7 +204,7 @@ def pause(args):
 
 def pause_short(args):
     s = shortify(args, 0)
-    return 'pause', ['%i' % (s + 1)]
+    return 'pause_short', ['%i' % (s + 1)]
 
 
 def set_object_presence_in_level(args):
@@ -546,16 +546,17 @@ class Command(BaseCommand):
                 cmd = line[1]
                 rest = line[2:]
                 table = fd_names
+                has_jump = False
             else:
                 cmd = line[0]
                 rest = line[1:]
                 table = names
+                has_jump = cmd in jmp_cmds
             if table[cmd]:
                 name, args = table[cmd](rest)
             else:
                 name, args = 'db', ['0x%02x' % (i) for i in line]
-            is_jump = cmd in jmp_cmds
-            if is_jump:
+            if has_jump:
                 jump_args = [(int(ja, 16)) for ja in args[-1:]]
             else:
                 jump_args = []
@@ -565,7 +566,7 @@ class Command(BaseCommand):
                 "args": rest,
                 "parsed_args": args,
                 "text": '.%s(%s)' % (name, ', '.join(args)),
-                "has_jump": cmd in jmp_cmds,
+                "has_jump": has_jump,
                 "original_offset": offset,
                 "jumps": jump_args
             })

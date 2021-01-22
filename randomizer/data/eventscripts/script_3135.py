@@ -25,7 +25,7 @@ script = [
     {
         "identifier": 'EVENT_3135_jmp_to_subroutine_4',
         "command": 'jmp_to_subroutine',
-        "args": [0x107c]
+        "args": ['EVENT_3134_summon_to_level_15']
     },
     {
         "identifier": 'EVENT_3135_set_5',
@@ -45,7 +45,7 @@ script = [
     {
         "identifier": 'EVENT_3135_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0x107c]
+        "args": ['EVENT_3134_summon_to_level_15']
     },
     {
         "identifier": 'EVENT_3135_jmp_if_bit_clear_9',
@@ -202,7 +202,7 @@ script = [
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_db_15',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x07, 0x48]
+                "args": [0xfd, 0x3d, 0x07, 0x48, 0x11]
             },
             {
                 "identifier": 'EVENT_3135_action_queue_sync_23_SUBSCRIPT_set_sprite_sequence_16',

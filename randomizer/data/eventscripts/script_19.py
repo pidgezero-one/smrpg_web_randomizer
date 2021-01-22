@@ -20,7 +20,7 @@ script = [
     {
         "identifier": 'EVENT_19_jmp_to_subroutine_3',
         "command": 'jmp_to_subroutine',
-        "args": [0x0c69]
+        "args": ['EVENT_16_disable_trigger_2']
     },
     {
         "identifier": 'EVENT_19_clear_bit_4',

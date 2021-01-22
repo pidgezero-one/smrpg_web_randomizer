@@ -66,7 +66,7 @@ script = [
     {
         "identifier": 'EVENT_1709_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0x396c]
+        "args": ['EVENT_1709_enable_controls_until_return_43']
     },
     {
         "identifier": 'EVENT_1709_stop_embedded_action_script_9',
@@ -111,12 +111,12 @@ script = [
     {
         "identifier": 'EVENT_1709_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x396c]
+        "args": ['EVENT_1709_enable_controls_until_return_43']
     },
     {
         "identifier": 'EVENT_1709_jmp_to_subroutine_18',
         "command": 'jmp_to_subroutine',
-        "args": [0x3989]
+        "args": ['EVENT_1709_action_queue_async_52']
     },
     {
         "identifier": 'EVENT_1709_enable_controls_until_return_19',
@@ -136,7 +136,7 @@ script = [
     {
         "identifier": 'EVENT_1709_jmp_to_subroutine_22',
         "command": 'jmp_to_subroutine',
-        "args": [0x396c]
+        "args": ['EVENT_1709_enable_controls_until_return_43']
     },
     {
         "identifier": 'EVENT_1709_add_short_23',
@@ -151,7 +151,7 @@ script = [
     {
         "identifier": 'EVENT_1709_jmp_to_subroutine_25',
         "command": 'jmp_to_subroutine',
-        "args": [0x399b]
+        "args": ['EVENT_1709_action_queue_async_55']
     },
     {
         "identifier": 'EVENT_1709_set_short_mem_26',

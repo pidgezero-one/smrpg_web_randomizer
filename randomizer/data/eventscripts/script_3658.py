@@ -624,7 +624,7 @@ script = [
             {
                 "identifier": 'EVENT_3658_action_queue_async_24_SUBSCRIPT_db_9',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x20, 0xb3]
+                "args": [0xfd, 0x3d, 0x20, 0xb3, 0x9b]
             },
             {
                 "identifier": 'EVENT_3658_action_queue_async_24_SUBSCRIPT_stop_sound_10',

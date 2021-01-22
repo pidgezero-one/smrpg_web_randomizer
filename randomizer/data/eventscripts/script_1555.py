@@ -209,7 +209,7 @@ script = [
     {
         "identifier": 'EVENT_1555_jmp_to_subroutine_37',
         "command": 'jmp_to_subroutine',
-        "args": [0x11cf]
+        "args": ['EVENT_1555_jmp_if_bit_set_39']
     },
     {
         "identifier": 'EVENT_1555_jmp_38',

@@ -68,7 +68,7 @@ script = [
     {
         "identifier": 'EVENT_3494_jmp_to_subroutine_6',
         "command": 'jmp_to_subroutine',
-        "args": [0x6752]
+        "args": ['EVENT_3491_action_queue_sync_16']
     },
     {
         "identifier": 'EVENT_3494_move_script_to_main_thread_7',
@@ -153,7 +153,7 @@ script = [
     {
         "identifier": 'EVENT_3494_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x6247]
+        "args": ['EVENT_3480_action_queue_async_73']
     },
     {
         "identifier": 'EVENT_3494_action_queue_async_18',

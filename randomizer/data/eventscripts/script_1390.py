@@ -1013,7 +1013,7 @@ script = [
             {
                 "identifier": 'EVENT_1390_action_queue_sync_61_SUBSCRIPT_db_8',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x14, 0xec]
+                "args": [0xfd, 0x3d, 0x14, 0xec, 0xf7]
             },
             {
                 "identifier": 'EVENT_1390_action_queue_sync_61_SUBSCRIPT_jump_to_height_silent_9',
@@ -1038,7 +1038,7 @@ script = [
             {
                 "identifier": 'EVENT_1390_action_queue_sync_61_SUBSCRIPT_db_13',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x14, 0xfa]
+                "args": [0xfd, 0x3d, 0x14, 0xfa, 0xf7]
             },
             {
                 "identifier": 'EVENT_1390_action_queue_sync_61_SUBSCRIPT_end_loop_14',

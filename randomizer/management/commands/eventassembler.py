@@ -5,5 +5,9 @@ from randomizer.data.eventscripts.events import scripts
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        e = EventScript()
-        print (EventScript.assemble_from_table(scripts))
+        b = EventScript.assemble_from_table(scripts)
+        for t in b:
+            string = ''
+            for byt in t:
+                string += '%02x ' % byt
+            print (string)

@@ -131,7 +131,7 @@ script = [
     {
         "identifier": 'EVENT_932_jmp_to_subroutine_16',
         "command": 'jmp_to_subroutine',
-        "args": [0xa958]
+        "args": ['EVENT_930_enable_controls_until_return_85']
     },
     {
         "identifier": 'EVENT_932_action_queue_async_17',

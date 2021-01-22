@@ -20,7 +20,7 @@ script = [
     {
         "identifier": 'EVENT_3780_jmp_to_subroutine_3',
         "command": 'jmp_to_subroutine',
-        "args": [0xc24d]
+        "args": ['EVENT_3780_jmp_if_present_in_current_level_9']
     },
     {
         "identifier": 'EVENT_3780_action_queue_sync_4',

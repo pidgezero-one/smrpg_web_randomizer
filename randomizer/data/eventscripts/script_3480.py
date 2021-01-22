@@ -936,7 +936,7 @@ script = [
     {
         "identifier": 'EVENT_3480_jmp_to_subroutine_70',
         "command": 'jmp_to_subroutine',
-        "args": [0x6247]
+        "args": ['EVENT_3480_action_queue_async_73']
     },
     {
         "identifier": 'EVENT_3480_run_event_at_return_71',

@@ -171,7 +171,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_pause_18',
@@ -181,7 +181,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_19',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e]
+        "args": ['EVENT_2123_stop_sound_0']
     },
     {
         "identifier": 'EVENT_2114_pause_20',
@@ -191,17 +191,17 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_21',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_22',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51]
+        "args": ['EVENT_2126_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_23',
         "command": 'jmp_to_subroutine',
-        "args": [0x79ef]
+        "args": ['EVENT_2115_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_pause_24',
@@ -211,7 +211,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_25',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_pause_26',
@@ -221,7 +221,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_27',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e]
+        "args": ['EVENT_2123_stop_sound_0']
     },
     {
         "identifier": 'EVENT_2114_pause_28',
@@ -231,17 +231,17 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_29',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_30',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51]
+        "args": ['EVENT_2126_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_31',
         "command": 'jmp_to_subroutine',
-        "args": [0x79fd]
+        "args": ['EVENT_2116_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_pause_32',
@@ -251,7 +251,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_33',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_pause_34',
@@ -261,7 +261,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_35',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e]
+        "args": ['EVENT_2123_stop_sound_0']
     },
     {
         "identifier": 'EVENT_2114_pause_36',
@@ -271,7 +271,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_37',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_38',
@@ -422,7 +422,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_60',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_pause_61',
@@ -432,7 +432,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_62',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e]
+        "args": ['EVENT_2123_stop_sound_0']
     },
     {
         "identifier": 'EVENT_2114_pause_63',
@@ -442,7 +442,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_64',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_pause_65',
@@ -652,7 +652,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_82',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_pause_83',
@@ -662,7 +662,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_84',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e]
+        "args": ['EVENT_2123_stop_sound_0']
     },
     {
         "identifier": 'EVENT_2114_pause_85',
@@ -672,17 +672,17 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_86',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_87',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51]
+        "args": ['EVENT_2126_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_88',
         "command": 'jmp_to_subroutine',
-        "args": [0x7a0b]
+        "args": ['EVENT_2117_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_pause_89',
@@ -692,7 +692,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_90',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f]
+        "args": ['EVENT_2124_jmp_if_bit_set_0']
     },
     {
         "identifier": 'EVENT_2114_pause_91',
@@ -702,7 +702,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_92',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b40]
+        "args": ['EVENT_2125_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_pause_93',
@@ -712,7 +712,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_94',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f]
+        "args": ['EVENT_2124_jmp_if_bit_set_0']
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_95',
@@ -863,7 +863,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_117',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b40]
+        "args": ['EVENT_2125_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_pause_118',
@@ -873,7 +873,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_119',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f]
+        "args": ['EVENT_2124_jmp_if_bit_set_0']
     },
     {
         "identifier": 'EVENT_2114_pause_120',
@@ -883,17 +883,17 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_121',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b40]
+        "args": ['EVENT_2125_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_122',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51]
+        "args": ['EVENT_2126_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_123',
         "command": 'jmp_to_subroutine',
-        "args": [0x79fd]
+        "args": ['EVENT_2116_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_124',
@@ -1105,7 +1105,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_147',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_pause_148',
@@ -1115,7 +1115,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_149',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b1e]
+        "args": ['EVENT_2123_stop_sound_0']
     },
     {
         "identifier": 'EVENT_2114_pause_150',
@@ -1125,17 +1125,17 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_151',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b0d]
+        "args": ['EVENT_2122_remove_from_level_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_152',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b51]
+        "args": ['EVENT_2126_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_153',
         "command": 'jmp_to_subroutine',
-        "args": [0x7a0b]
+        "args": ['EVENT_2117_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_pause_154',
@@ -1145,7 +1145,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_155',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f]
+        "args": ['EVENT_2124_jmp_if_bit_set_0']
     },
     {
         "identifier": 'EVENT_2114_pause_156',
@@ -1155,7 +1155,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_157',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b40]
+        "args": ['EVENT_2125_action_queue_async_0']
     },
     {
         "identifier": 'EVENT_2114_pause_158',
@@ -1165,7 +1165,7 @@ script = [
     {
         "identifier": 'EVENT_2114_jmp_to_subroutine_159',
         "command": 'jmp_to_subroutine',
-        "args": [0x7b2f]
+        "args": ['EVENT_2124_jmp_if_bit_set_0']
     },
     {
         "identifier": 'EVENT_2114_action_queue_async_160',

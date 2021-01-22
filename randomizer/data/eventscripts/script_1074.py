@@ -184,12 +184,12 @@ script = [
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_9',
         "command": 'jmp_to_subroutine',
-        "args": [0xb72d]
+        "args": ['EVENT_1074_jmp_if_bit_set_193']
     },
     {
         "identifier": 'EVENT_1074_pause_10',
@@ -204,12 +204,12 @@ script = [
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_12',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_13',
         "command": 'jmp_to_subroutine',
-        "args": [0xb772]
+        "args": ['EVENT_1074_jmp_if_bit_set_215']
     },
     {
         "identifier": 'EVENT_1074_pause_14',
@@ -224,12 +224,12 @@ script = [
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_16',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0xb7b7]
+        "args": ['EVENT_1074_jmp_if_bit_set_237']
     },
     {
         "identifier": 'EVENT_1074_pause_18',
@@ -244,12 +244,12 @@ script = [
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_20',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_21',
         "command": 'jmp_to_subroutine',
-        "args": [0xb7fc]
+        "args": ['EVENT_1074_jmp_if_bit_set_259']
     },
     {
         "identifier": 'EVENT_1074_pause_22',
@@ -264,12 +264,12 @@ script = [
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_24',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_25',
         "command": 'jmp_to_subroutine',
-        "args": [0xb841]
+        "args": ['EVENT_1074_jmp_if_bit_set_281']
     },
     {
         "identifier": 'EVENT_1074_pause_26',
@@ -284,12 +284,12 @@ script = [
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_28',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_29',
         "command": 'jmp_to_subroutine',
-        "args": [0xb886]
+        "args": ['EVENT_1074_jmp_if_bit_set_303']
     },
     {
         "identifier": 'EVENT_1074_pause_30',
@@ -304,12 +304,12 @@ script = [
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_32',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_33',
         "command": 'jmp_to_subroutine',
-        "args": [0xb8cb]
+        "args": ['EVENT_1074_jmp_if_bit_set_325']
     },
     {
         "identifier": 'EVENT_1074_pause_34',
@@ -324,12 +324,12 @@ script = [
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_36',
         "command": 'jmp_to_subroutine',
-        "args": [0xb955]
+        "args": ['EVENT_1074_jmp_if_var_equals_short_369']
     },
     {
         "identifier": 'EVENT_1074_jmp_to_subroutine_37',
         "command": 'jmp_to_subroutine',
-        "args": [0xb910]
+        "args": ['EVENT_1074_jmp_if_bit_set_347']
     },
     {
         "identifier": 'EVENT_1074_pause_38',

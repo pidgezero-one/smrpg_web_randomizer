@@ -13,7 +13,15 @@ script = [
         "args": [281]
     },
     {
-        "identifier": 'EVENT_580_jmp_2',
-        "command": 'jmp'
+        "identifier": 'EVENT_580_stop_sound_2',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_580_stop_sound_3',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_580_stop_sound_4',
+        "command": 'stop_sound'
     }
 ]

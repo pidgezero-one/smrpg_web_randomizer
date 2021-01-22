@@ -403,7 +403,7 @@ script = [
     {
         "identifier": 'EVENT_3508_jmp_to_subroutine_39',
         "command": 'jmp_to_subroutine',
-        "args": [0x74b8]
+        "args": ['EVENT_3508_action_queue_sync_80']
     },
     {
         "identifier": 'EVENT_3508_action_queue_async_40',
@@ -654,7 +654,7 @@ script = [
     {
         "identifier": 'EVENT_3508_jmp_to_subroutine_46',
         "command": 'jmp_to_subroutine',
-        "args": [0x74b8]
+        "args": ['EVENT_3508_action_queue_sync_80']
     },
     {
         "identifier": 'EVENT_3508_action_queue_async_47',

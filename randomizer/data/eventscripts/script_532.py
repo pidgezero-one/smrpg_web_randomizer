@@ -93,7 +93,7 @@ script = [
     {
         "identifier": 'EVENT_532_jmp_to_subroutine_11',
         "command": 'jmp_to_subroutine',
-        "args": [0x5d7e]
+        "args": ['EVENT_532_play_sound_17']
     },
     {
         "identifier": 'EVENT_532_jmp_if_bit_set_12',

@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_3595_jmp_to_subroutine_0',
         "command": 'jmp_to_subroutine',
-        "args": [0x76a4]
+        "args": ['EVENT_3593_pause_22']
     },
     {
         "identifier": 'EVENT_3595_freeze_all_npcs_until_return_1',
@@ -52,7 +52,7 @@ script = [
     {
         "identifier": 'EVENT_3595_jmp_to_subroutine_10',
         "command": 'jmp_to_subroutine',
-        "args": [0x76a4]
+        "args": ['EVENT_3593_pause_22']
     },
     {
         "identifier": 'EVENT_3595_freeze_all_npcs_until_return_11',

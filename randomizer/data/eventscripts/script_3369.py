@@ -68,7 +68,7 @@ script = [
     {
         "identifier": 'EVENT_3369_jmp_to_subroutine_13',
         "command": 'jmp_to_subroutine',
-        "args": [0x5997]
+        "args": ['EVENT_3369_jmp_if_var_equals_short_18']
     },
     {
         "identifier": 'EVENT_3369_run_dialog_14',
@@ -78,7 +78,7 @@ script = [
     {
         "identifier": 'EVENT_3369_jmp_to_subroutine_15',
         "command": 'jmp_to_subroutine',
-        "args": [0x5997]
+        "args": ['EVENT_3369_jmp_if_var_equals_short_18']
     },
     {
         "identifier": 'EVENT_3369_run_dialog_16',

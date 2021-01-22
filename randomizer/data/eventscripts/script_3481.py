@@ -65,7 +65,7 @@ script = [
     {
         "identifier": 'EVENT_3481_jmp_to_subroutine_12',
         "command": 'jmp_to_subroutine',
-        "args": [0x62e7]
+        "args": ['EVENT_3481_pause_action_script_45']
     },
     {
         "identifier": 'EVENT_3481_db_13',
@@ -114,7 +114,7 @@ script = [
     {
         "identifier": 'EVENT_3481_jmp_to_subroutine_22',
         "command": 'jmp_to_subroutine',
-        "args": [0x62e7]
+        "args": ['EVENT_3481_pause_action_script_45']
     },
     {
         "identifier": 'EVENT_3481_db_23',
@@ -138,7 +138,7 @@ script = [
     {
         "identifier": 'EVENT_3481_jmp_to_subroutine_27',
         "command": 'jmp_to_subroutine',
-        "args": [0x62e7]
+        "args": ['EVENT_3481_pause_action_script_45']
     },
     {
         "identifier": 'EVENT_3481_db_28',
@@ -172,7 +172,7 @@ script = [
     {
         "identifier": 'EVENT_3481_jmp_to_subroutine_34',
         "command": 'jmp_to_subroutine',
-        "args": [0x62e7]
+        "args": ['EVENT_3481_pause_action_script_45']
     },
     {
         "identifier": 'EVENT_3481_db_35',
@@ -206,7 +206,7 @@ script = [
     {
         "identifier": 'EVENT_3481_jmp_to_subroutine_41',
         "command": 'jmp_to_subroutine',
-        "args": [0x62e7]
+        "args": ['EVENT_3481_pause_action_script_45']
     },
     {
         "identifier": 'EVENT_3481_db_42',

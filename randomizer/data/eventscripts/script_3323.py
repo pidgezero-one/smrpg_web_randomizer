@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_3323_jmp_to_subroutine_1',
         "command": 'jmp_to_subroutine',
-        "args": [0x3e33]
+        "args": ['EVENT_3323_summon_to_level_7']
     },
     {
         "identifier": 'EVENT_3323_set_bit_2',

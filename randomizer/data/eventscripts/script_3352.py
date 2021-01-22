@@ -235,7 +235,7 @@ script = [
     {
         "identifier": 'EVENT_3352_jmp_to_subroutine_37',
         "command": 'jmp_to_subroutine',
-        "args": [0x4db5]
+        "args": ['EVENT_3352_set_short_61']
     },
     {
         "identifier": 'EVENT_3352_jmp_if_bit_set_38',
@@ -280,7 +280,7 @@ script = [
     {
         "identifier": 'EVENT_3352_jmp_to_subroutine_46',
         "command": 'jmp_to_subroutine',
-        "args": [0x4db5]
+        "args": ['EVENT_3352_set_short_61']
     },
     {
         "identifier": 'EVENT_3352_jmp_if_bit_set_47',
@@ -325,7 +325,7 @@ script = [
     {
         "identifier": 'EVENT_3352_jmp_to_subroutine_55',
         "command": 'jmp_to_subroutine',
-        "args": [0x4db5]
+        "args": ['EVENT_3352_set_short_61']
     },
     {
         "identifier": 'EVENT_3352_jmp_if_bit_set_56',

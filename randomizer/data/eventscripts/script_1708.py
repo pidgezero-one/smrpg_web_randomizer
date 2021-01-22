@@ -105,7 +105,7 @@ script = [
     {
         "identifier": 'EVENT_1708_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x38cc]
+        "args": ['EVENT_1708_action_queue_async_37']
     },
     {
         "identifier": 'EVENT_1708_run_background_event_18',
@@ -331,7 +331,7 @@ script = [
     {
         "identifier": 'EVENT_1708_jmp_to_subroutine_28',
         "command": 'jmp_to_subroutine',
-        "args": [0x38cc]
+        "args": ['EVENT_1708_action_queue_async_37']
     },
     {
         "identifier": 'EVENT_1708_jmp_29',

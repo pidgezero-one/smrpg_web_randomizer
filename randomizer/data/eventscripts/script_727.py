@@ -62,6 +62,7 @@ script = [
     },
     {
         "identifier": 'EVENT_727_jmp_3',
-        "command": 'jmp'
+        "command": 'jmp',
+        "args": ['EVENT_729_remove_from_level_13']
     }
 ]

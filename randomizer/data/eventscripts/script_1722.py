@@ -209,8 +209,8 @@ script = [
                 "args": [16]
             },
             {
-                "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_2',
-                "command": 'pause',
+                "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_short_2',
+                "command": 'pause_short',
                 "args": [300]
             },
             {
@@ -246,7 +246,7 @@ script = [
             {
                 "identifier": 'EVENT_1722_action_queue_sync_15_SUBSCRIPT_jmp_9',
                 "command": 'jmp',
-                "args": ['EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_2']
+                "args": ['EVENT_1722_action_queue_sync_15_SUBSCRIPT_pause_short_2']
             }
         ]
     },

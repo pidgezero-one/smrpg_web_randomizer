@@ -65,7 +65,7 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_to_subroutine_12',
         "command": 'jmp_to_subroutine',
-        "args": [0x5030]
+        "args": ['EVENT_3355_set_short_mem_84']
     },
     {
         "identifier": 'EVENT_3355_run_dialog_13',
@@ -85,7 +85,7 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_to_subroutine_16',
         "command": 'jmp_to_subroutine',
-        "args": [0x5043]
+        "args": ['EVENT_3355_play_music_default_volume_93']
     },
     {
         "identifier": 'EVENT_3355_db_17',
@@ -95,7 +95,7 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_to_subroutine_18',
         "command": 'jmp_to_subroutine',
-        "args": [0x5070]
+        "args": ['EVENT_3355_clear_bit_111']
     },
     {
         "identifier": 'EVENT_3355_jmp_if_bit_set_19',
@@ -477,7 +477,7 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_to_subroutine_53',
         "command": 'jmp_to_subroutine',
-        "args": [0x5030]
+        "args": ['EVENT_3355_set_short_mem_84']
     },
     {
         "identifier": 'EVENT_3355_run_dialog_54',
@@ -497,7 +497,7 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_to_subroutine_57',
         "command": 'jmp_to_subroutine',
-        "args": [0x5043]
+        "args": ['EVENT_3355_play_music_default_volume_93']
     },
     {
         "identifier": 'EVENT_3355_db_58',
@@ -507,7 +507,7 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_to_subroutine_59',
         "command": 'jmp_to_subroutine',
-        "args": [0x5070]
+        "args": ['EVENT_3355_clear_bit_111']
     },
     {
         "identifier": 'EVENT_3355_jmp_if_bit_set_60',

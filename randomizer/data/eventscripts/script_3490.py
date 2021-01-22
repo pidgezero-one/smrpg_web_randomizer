@@ -70,7 +70,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_13',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_14',
@@ -80,7 +80,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_15',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_16',
@@ -90,7 +90,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_bit_set_18',
@@ -110,7 +110,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_21',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_22',
@@ -130,7 +130,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_25',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_26',
@@ -140,7 +140,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_27',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_28',
@@ -150,7 +150,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_29',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_30',
@@ -160,7 +160,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_31',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_32',
@@ -170,7 +170,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_33',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_34',
@@ -180,7 +180,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_35',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_36',
@@ -210,7 +210,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_41',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_42',
@@ -220,7 +220,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_43',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_44',
@@ -230,7 +230,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_45',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_bit_set_46',
@@ -250,7 +250,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_49',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_50',
@@ -270,7 +270,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_53',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_54',
@@ -280,7 +280,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_55',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_56',
@@ -290,7 +290,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_57',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_58',
@@ -300,7 +300,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_59',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_60',
@@ -310,7 +310,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_61',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_62',
@@ -320,7 +320,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_63',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_64',
@@ -350,7 +350,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_69',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_70',
@@ -360,7 +360,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_71',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_72',
@@ -370,7 +370,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_73',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_bit_set_74',
@@ -390,7 +390,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_77',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_78',
@@ -410,7 +410,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_81',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_82',
@@ -420,7 +420,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_83',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_84',
@@ -430,7 +430,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_85',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_86',
@@ -440,7 +440,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_87',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_88',
@@ -450,7 +450,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_89',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_90',
@@ -460,7 +460,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_91',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_92',
@@ -490,7 +490,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_97',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_98',
@@ -500,7 +500,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_99',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_100',
@@ -510,7 +510,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_101',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_if_bit_set_102',
@@ -530,7 +530,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_105',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_106',
@@ -550,7 +550,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_109',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_110',
@@ -560,7 +560,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_111',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_112',
@@ -570,7 +570,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_113',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_114',
@@ -580,7 +580,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_115',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_116',
@@ -590,7 +590,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_117',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_set_short_118',
@@ -600,7 +600,7 @@ script = [
     {
         "identifier": 'EVENT_3490_jmp_to_subroutine_119',
         "command": 'jmp_to_subroutine',
-        "args": [0x66b5]
+        "args": ['EVENT_3490_set_short_mem_121']
     },
     {
         "identifier": 'EVENT_3490_jmp_120',

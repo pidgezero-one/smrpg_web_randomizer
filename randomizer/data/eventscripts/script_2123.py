@@ -3,18 +3,16 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2123_jmp_if_bit_clear_0',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7096, 6]
+        "identifier": 'EVENT_2123_stop_sound_0',
+        "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_2123_set_random_1',
-        "command": 'set_random',
-        "args": [0x7000, 51]
+        "identifier": 'EVENT_2123_stop_sound_1',
+        "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_2123_jmp_2',
-        "command": 'jmp'
+        "identifier": 'EVENT_2123_stop_sound_2',
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_2123_stop_sound_3',
@@ -42,6 +40,34 @@ script = [
     },
     {
         "identifier": 'EVENT_2123_stop_sound_9',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_2123_stop_sound_10',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_2123_stop_sound_11',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_2123_stop_sound_12',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_2123_stop_sound_13',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_2123_stop_sound_14',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_2123_stop_sound_15',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_2123_stop_sound_16',
         "command": 'stop_sound'
     }
 ]

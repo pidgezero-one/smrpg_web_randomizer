@@ -112,7 +112,7 @@ script = [
             {
                 "identifier": 'EVENT_1861_action_queue_async_4_SUBSCRIPT_db_12',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1c, 0xb3]
+                "args": [0xfd, 0x3d, 0x1c, 0xb3, 0x5e]
             },
             {
                 "identifier": 'EVENT_1861_action_queue_async_4_SUBSCRIPT_play_sound_13',

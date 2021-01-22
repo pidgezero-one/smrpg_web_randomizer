@@ -73,7 +73,7 @@ script = [
     {
         "identifier": 'EVENT_1694_jmp_to_subroutine_6',
         "command": 'jmp_to_subroutine',
-        "args": [0x3292]
+        "args": ['EVENT_1694_play_sound_18']
     },
     {
         "identifier": 'EVENT_1694_jmp_if_bit_set_7',
@@ -112,7 +112,7 @@ script = [
     {
         "identifier": 'EVENT_1694_jmp_to_subroutine_9',
         "command": 'jmp_to_subroutine',
-        "args": [0x32aa]
+        "args": ['EVENT_1694_stop_sound_24']
     },
     {
         "identifier": 'EVENT_1694_action_queue_async_10',
@@ -194,7 +194,7 @@ script = [
     {
         "identifier": 'EVENT_1694_jmp_to_subroutine_14',
         "command": 'jmp_to_subroutine',
-        "args": [0x32aa]
+        "args": ['EVENT_1694_stop_sound_24']
     },
     {
         "identifier": 'EVENT_1694_action_queue_async_15',

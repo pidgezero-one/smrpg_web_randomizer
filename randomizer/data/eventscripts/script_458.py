@@ -120,7 +120,7 @@ script = [
     {
         "identifier": 'EVENT_458_jmp_to_subroutine_8',
         "command": 'jmp_to_subroutine',
-        "args": [0x42a2]
+        "args": ['EVENT_457_action_queue_sync_0']
     },
     {
         "identifier": 'EVENT_458_fade_in_from_black_sync_duration_9',

@@ -58,7 +58,7 @@ script = [
     {
         "identifier": 'EVENT_3226_jmp_to_subroutine_11',
         "command": 'jmp_to_subroutine',
-        "args": [0x2e92]
+        "args": ['EVENT_3225_set_bit_123']
     },
     {
         "identifier": 'EVENT_3226_set_bit_12',

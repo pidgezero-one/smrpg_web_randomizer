@@ -49,7 +49,7 @@ script = [
     {
         "identifier": 'EVENT_1885_jmp_to_subroutine_9',
         "command": 'jmp_to_subroutine',
-        "args": [0x4400]
+        "args": ['EVENT_1745_freeze_all_npcs_until_return_60']
     },
     {
         "identifier": 'EVENT_1885_action_queue_sync_10',

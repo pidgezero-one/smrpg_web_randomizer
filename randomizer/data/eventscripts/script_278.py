@@ -29,7 +29,7 @@ script = [
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_db_4',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x11, 0x56]
+                "args": [0xfd, 0x3d, 0x11, 0x56, 0x13]
             },
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_set_short_mem_5',

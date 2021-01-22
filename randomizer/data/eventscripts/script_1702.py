@@ -465,7 +465,7 @@ script = [
             {
                 "identifier": 'EVENT_1702_action_queue_sync_28_SUBSCRIPT_db_21',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1c, 0x8b]
+                "args": [0xfd, 0x3d, 0x1c, 0x8b, 0x35]
             },
             {
                 "identifier": 'EVENT_1702_action_queue_sync_28_SUBSCRIPT_set_animation_speed_22',

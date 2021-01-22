@@ -364,7 +364,7 @@ script = [
     {
         "identifier": 'EVENT_3479_jmp_to_subroutine_72',
         "command": 'jmp_to_subroutine',
-        "args": [0x605e]
+        "args": ['EVENT_3479_action_queue_sync_137']
     },
     {
         "identifier": 'EVENT_3479_set_short_mem_73',
@@ -414,7 +414,7 @@ script = [
     {
         "identifier": 'EVENT_3479_jmp_to_subroutine_82',
         "command": 'jmp_to_subroutine',
-        "args": [0x605e]
+        "args": ['EVENT_3479_action_queue_sync_137']
     },
     {
         "identifier": 'EVENT_3479_jmp_if_bit_set_83',

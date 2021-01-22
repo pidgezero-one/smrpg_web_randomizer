@@ -99,7 +99,7 @@ script = [
     {
         "identifier": 'EVENT_1682_jmp_to_subroutine_15',
         "command": 'jmp_to_subroutine',
-        "args": [0x4e72]
+        "args": ['EVENT_1794_action_queue_async_73']
     },
     {
         "identifier": 'EVENT_1682_remove_from_level_16',

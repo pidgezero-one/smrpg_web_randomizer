@@ -70,7 +70,7 @@ script = [
     {
         "identifier": 'EVENT_1553_jmp_to_subroutine_13',
         "command": 'jmp_to_subroutine',
-        "args": [0x107f]
+        "args": ['EVENT_1553_clear_bit_26']
     },
     {
         "identifier": 'EVENT_1553_set_short_mem_14',
@@ -120,7 +120,7 @@ script = [
     {
         "identifier": 'EVENT_1553_jmp_to_subroutine_23',
         "command": 'jmp_to_subroutine',
-        "args": [0x107f]
+        "args": ['EVENT_1553_clear_bit_26']
     },
     {
         "identifier": 'EVENT_1553_set_short_mem_24',

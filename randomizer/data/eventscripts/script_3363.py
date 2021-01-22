@@ -786,12 +786,12 @@ script = [
     {
         "identifier": 'EVENT_3363_jmp_to_subroutine_107',
         "command": 'jmp_to_subroutine',
-        "args": [0x5663]
+        "args": ['EVENT_3363_set_short_mem_120']
     },
     {
         "identifier": 'EVENT_3363_jmp_to_subroutine_108',
         "command": 'jmp_to_subroutine',
-        "args": [0x5672]
+        "args": ['EVENT_3363_set_short_mem_126']
     },
     {
         "identifier": 'EVENT_3363_jmp_109',
@@ -801,12 +801,12 @@ script = [
     {
         "identifier": 'EVENT_3363_jmp_to_subroutine_110',
         "command": 'jmp_to_subroutine',
-        "args": [0x5672]
+        "args": ['EVENT_3363_set_short_mem_126']
     },
     {
         "identifier": 'EVENT_3363_jmp_to_subroutine_111',
         "command": 'jmp_to_subroutine',
-        "args": [0x5681]
+        "args": ['EVENT_3363_set_short_mem_132']
     },
     {
         "identifier": 'EVENT_3363_jmp_112',
@@ -821,12 +821,12 @@ script = [
     {
         "identifier": 'EVENT_3363_jmp_to_subroutine_114',
         "command": 'jmp_to_subroutine',
-        "args": [0x5690]
+        "args": ['EVENT_3363_set_short_mem_138']
     },
     {
         "identifier": 'EVENT_3363_jmp_to_subroutine_115',
         "command": 'jmp_to_subroutine',
-        "args": [0x5663]
+        "args": ['EVENT_3363_set_short_mem_120']
     },
     {
         "identifier": 'EVENT_3363_jmp_116',
@@ -836,12 +836,12 @@ script = [
     {
         "identifier": 'EVENT_3363_jmp_to_subroutine_117',
         "command": 'jmp_to_subroutine',
-        "args": [0x5690]
+        "args": ['EVENT_3363_set_short_mem_138']
     },
     {
         "identifier": 'EVENT_3363_jmp_to_subroutine_118',
         "command": 'jmp_to_subroutine',
-        "args": [0x5681]
+        "args": ['EVENT_3363_set_short_mem_132']
     },
     {
         "identifier": 'EVENT_3363_jmp_119',

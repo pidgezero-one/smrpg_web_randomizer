@@ -82,7 +82,7 @@ script = [
             {
                 "identifier": 'EVENT_1768_action_queue_async_4_SUBSCRIPT_db_11',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x18, 0xcb]
+                "args": [0xfd, 0x3d, 0x18, 0xcb, 0x47]
             }
         ]
     },

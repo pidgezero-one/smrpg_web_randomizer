@@ -144,7 +144,7 @@ script = [
     {
         "identifier": 'EVENT_273_jmp_to_subroutine_27',
         "command": 'jmp_to_subroutine',
-        "args": [0x105a]
+        "args": ['EVENT_273_jmp_if_bit_set_64']
     },
     {
         "identifier": 'EVENT_273_restore_all_hp_28',
@@ -250,7 +250,7 @@ script = [
     {
         "identifier": 'EVENT_273_jmp_to_subroutine_45',
         "command": 'jmp_to_subroutine',
-        "args": [0x1159]
+        "args": ['EVENT_273_jmp_if_bit_set_131']
     },
     {
         "identifier": 'EVENT_273_pause_action_script_46',

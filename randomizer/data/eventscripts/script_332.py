@@ -70,7 +70,7 @@ script = [
             {
                 "identifier": 'EVENT_332_action_queue_async_6_SUBSCRIPT_db_5',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1c, 0xaf]
+                "args": [0xfd, 0x3d, 0x1c, 0xaf, 0x22]
             }
         ]
     },
@@ -277,7 +277,7 @@ script = [
             {
                 "identifier": 'EVENT_332_action_queue_async_27_SUBSCRIPT_db_4',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1c, 0x0c]
+                "args": [0xfd, 0x3d, 0x1c, 0x0c, 0x23]
             }
         ]
     },

@@ -813,12 +813,12 @@ class ObjectSequenceScript:
         return self
         
     # 0xBE
-    def move_7010_7012_7014_to_7016_7018_701A(self, music_id):
+    def move_7010_7012_7014_to_7016_7018_701A(self):
         self.append_byte(0xBE)
         return self
 
     # 0xBF
-    def move_7016_7018_701A_to_7010_7012_7014(self, music_id):
+    def move_7016_7018_701A_to_7010_7012_7014(self):
         self.append_byte(0xBF)
         return self
 
@@ -1078,22 +1078,22 @@ class ObjectSequenceScript:
         return self
 
     # 0xF4
-    def summon_object_at_70A8_to_current_level(self, args):
+    def summon_object_at_70A8_to_current_level(self):
         self.append_byte(0xF4)
         return self
 
     # 0xF5
-    def remove_object_at_70A8_from_current_level(self, args):
+    def remove_object_at_70A8_from_current_level(self):
         self.append_byte(0xF5)
         return self
 
     # 0xF6
-    def enable_event_trigger_for_object_at_70A8(self, args):
+    def enable_event_trigger_for_object_at_70A8(self):
         self.append_byte(0xF6)
         return self
 
     # 0xF7
-    def disable_event_trigger_for_object_at_70A8(self, args):
+    def disable_event_trigger_for_object_at_70A8(self):
         self.append_byte(0xF7)
         return self
 
@@ -1202,7 +1202,7 @@ class ObjectSequenceScript:
         self.append_byte(0xFD)
         if addr == 0x09 and set_flags == [5] and clear_flags == [4, 6]:
             self.append_byte(0x0E)
-        elif addr == 0x0C and set_flags == [4] and clear_flags == [3, 4]:
+        elif addr == 0x0C and set_flags == [4] and clear_flags == [3, 5]:
             self.append_byte(0x15)
         else:
             1/0

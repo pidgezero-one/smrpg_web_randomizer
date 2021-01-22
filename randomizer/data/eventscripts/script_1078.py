@@ -279,7 +279,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_45',
         "command": 'jmp_to_subroutine',
-        "args": [0xbc61]
+        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_46',
@@ -294,7 +294,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_48',
         "command": 'jmp_to_subroutine',
-        "args": [0xbc61]
+        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_49',
@@ -309,7 +309,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_51',
         "command": 'jmp_to_subroutine',
-        "args": [0xbc61]
+        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_52',
@@ -324,7 +324,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_54',
         "command": 'jmp_to_subroutine',
-        "args": [0xbc61]
+        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_55',
@@ -339,7 +339,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_57',
         "command": 'jmp_to_subroutine',
-        "args": [0xbc61]
+        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_58',
@@ -354,7 +354,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_60',
         "command": 'jmp_to_subroutine',
-        "args": [0xbc61]
+        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_61',
@@ -369,7 +369,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_63',
         "command": 'jmp_to_subroutine',
-        "args": [0xbc61]
+        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_64',
@@ -384,7 +384,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_66',
         "command": 'jmp_to_subroutine',
-        "args": [0xbc61]
+        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_67',

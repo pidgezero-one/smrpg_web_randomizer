@@ -1340,7 +1340,7 @@ script = [
             {
                 "identifier": 'EVENT_560_action_queue_async_255_SUBSCRIPT_db_7',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x20, 0xb1]
+                "args": [0xfd, 0x3d, 0x20, 0xb1, 0x64]
             },
             {
                 "identifier": 'EVENT_560_action_queue_async_255_SUBSCRIPT_set_animation_speed_8',
@@ -1448,7 +1448,7 @@ script = [
     {
         "identifier": 'EVENT_560_create_packet_at_7010_coords_jmp_if_null_264',
         "command": 'create_packet_at_7010_coords_jmp_if_null',
-        "args": [NPCPackets._032_BLUE_CLOUD]
+        "args": [NPCPackets._032_BLUE_CLOUD, 'EVENT_560_pause_263']
     },
     {
         "identifier": 'EVENT_560_pause_265',

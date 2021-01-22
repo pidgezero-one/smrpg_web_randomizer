@@ -60,7 +60,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_11',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7]
+        "args": ['EVENT_1775_jmp_if_bit_set_57']
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_12',
@@ -140,7 +140,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_17',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7]
+        "args": ['EVENT_1775_jmp_if_bit_set_57']
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_18',
@@ -218,7 +218,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_23',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7]
+        "args": ['EVENT_1775_jmp_if_bit_set_57']
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_24',
@@ -298,7 +298,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_29',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7]
+        "args": ['EVENT_1775_jmp_if_bit_set_57']
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_30',
@@ -368,7 +368,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_35',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7]
+        "args": ['EVENT_1775_jmp_if_bit_set_57']
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_36',
@@ -452,7 +452,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_41',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7]
+        "args": ['EVENT_1775_jmp_if_bit_set_57']
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_42',
@@ -530,7 +530,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_47',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7]
+        "args": ['EVENT_1775_jmp_if_bit_set_57']
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_48',
@@ -618,7 +618,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_to_subroutine_53',
         "command": 'jmp_to_subroutine',
-        "args": [0x49b7]
+        "args": ['EVENT_1775_jmp_if_bit_set_57']
     },
     {
         "identifier": 'EVENT_1775_action_queue_sync_54',

@@ -29,7 +29,7 @@ script = [
     {
         "identifier": 'EVENT_1834_jmp_to_subroutine_5',
         "command": 'jmp_to_subroutine',
-        "args": [0x580e]
+        "args": ['EVENT_1834_action_queue_async_55']
     },
     {
         "identifier": 'EVENT_1834_move_script_to_background_thread_2_6',

@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_565_jmp_to_subroutine_1',
         "command": 'jmp_to_subroutine',
-        "args": [0x671c]
+        "args": ['EVENT_562_pause_action_script_7']
     },
     {
         "identifier": 'EVENT_565_run_dialog_2',
@@ -20,7 +20,7 @@ script = [
     {
         "identifier": 'EVENT_565_jmp_to_subroutine_3',
         "command": 'jmp_to_subroutine',
-        "args": [0x6723]
+        "args": ['EVENT_562_resume_action_script_11']
     },
     {
         "identifier": 'EVENT_565_ret_4',

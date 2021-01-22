@@ -982,7 +982,7 @@ script = [
     {
         "identifier": 'EVENT_1147_jmp_to_subroutine_49',
         "command": 'jmp_to_subroutine',
-        "args": [0xd3a6]
+        "args": ['EVENT_1163_action_queue_sync_0']
     },
     {
         "identifier": 'EVENT_1147_jmp_50',

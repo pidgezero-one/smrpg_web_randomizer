@@ -104,7 +104,7 @@ script = [
     {
         "identifier": 'EVENT_1805_jmp_to_subroutine_16',
         "command": 'jmp_to_subroutine',
-        "args": [0x4e72]
+        "args": ['EVENT_1794_action_queue_async_73']
     },
     {
         "identifier": 'EVENT_1805_set_bit_17',
@@ -253,7 +253,7 @@ script = [
     {
         "identifier": 'EVENT_1805_jmp_to_subroutine_42',
         "command": 'jmp_to_subroutine',
-        "args": [0x4e72]
+        "args": ['EVENT_1794_action_queue_async_73']
     },
     {
         "identifier": 'EVENT_1805_ret_43',

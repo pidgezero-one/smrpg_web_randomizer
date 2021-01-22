@@ -1010,7 +1010,7 @@ script = [
             {
                 "identifier": 'EVENT_2448_action_queue_async_84_SUBSCRIPT_db_7',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x21, 0xc9]
+                "args": [0xfd, 0x3d, 0x21, 0xc9, 0xc4]
             },
             {
                 "identifier": 'EVENT_2448_action_queue_async_84_SUBSCRIPT_play_sound_8',
@@ -2560,8 +2560,8 @@ script = [
                 "args": [7]
             },
             {
-                "identifier": 'EVENT_2448_action_queue_sync_202_SUBSCRIPT_pause_3',
-                "command": 'pause',
+                "identifier": 'EVENT_2448_action_queue_sync_202_SUBSCRIPT_pause_short_3',
+                "command": 'pause_short',
                 "args": [384]
             },
             {

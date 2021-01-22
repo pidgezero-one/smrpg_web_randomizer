@@ -215,7 +215,7 @@ script = [
     {
         "identifier": 'EVENT_3600_jmp_to_subroutine_31',
         "command": 'jmp_to_subroutine',
-        "args": [0x8022]
+        "args": ['EVENT_3600_fade_out_music_to_volume_114']
     },
     {
         "identifier": 'EVENT_3600_jmp_if_bit_set_32',
@@ -424,7 +424,7 @@ script = [
     {
         "identifier": 'EVENT_3600_jmp_to_subroutine_66',
         "command": 'jmp_to_subroutine',
-        "args": [0x7fdf]
+        "args": ['EVENT_3600_jmp_if_bit_set_85']
     },
     {
         "identifier": 'EVENT_3600_jmp_if_bit_set_67',
@@ -876,7 +876,7 @@ script = [
     {
         "identifier": 'EVENT_3600_jmp_to_subroutine_141',
         "command": 'jmp_to_subroutine',
-        "args": [0x82fb]
+        "args": ['EVENT_3600_action_queue_sync_329']
     },
     {
         "identifier": 'EVENT_3600_set_action_script_sync_142',
@@ -1664,7 +1664,7 @@ script = [
             {
                 "identifier": 'EVENT_3600_action_queue_async_240_SUBSCRIPT_db_5',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x1d, 0xd1]
+                "args": [0xfd, 0x3d, 0x1d, 0xd1, 0x81]
             }
         ]
     },

@@ -416,7 +416,7 @@ script = [
             {
                 "identifier": 'EVENT_1698_action_queue_async_46_SUBSCRIPT_db_7',
                 "command": 'db',
-                "args": [0xfd, 0x3d, 0x20, 0xf7]
+                "args": [0xfd, 0x3d, 0x20, 0xf7, 0x33]
             },
             {
                 "identifier": 'EVENT_1698_action_queue_async_46_SUBSCRIPT_fixed_f_coord_off_8',

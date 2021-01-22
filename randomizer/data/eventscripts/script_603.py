@@ -108,7 +108,7 @@ script = [
     {
         "identifier": 'EVENT_603_jmp_to_subroutine_21',
         "command": 'jmp_to_subroutine',
-        "args": [0x718b]
+        "args": ['EVENT_603_play_sound_32']
     },
     {
         "identifier": 'EVENT_603_put_inventory_22',
@@ -128,7 +128,7 @@ script = [
     {
         "identifier": 'EVENT_603_jmp_to_subroutine_25',
         "command": 'jmp_to_subroutine',
-        "args": [0x718b]
+        "args": ['EVENT_603_play_sound_32']
     },
     {
         "identifier": 'EVENT_603_put_inventory_26',
@@ -148,7 +148,7 @@ script = [
     {
         "identifier": 'EVENT_603_jmp_to_subroutine_29',
         "command": 'jmp_to_subroutine',
-        "args": [0x718b]
+        "args": ['EVENT_603_play_sound_32']
     },
     {
         "identifier": 'EVENT_603_put_inventory_30',
