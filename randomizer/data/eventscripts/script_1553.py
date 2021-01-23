@@ -153,9 +153,9 @@ script = [
         "args": [0x7000, 4096]
     },
     {
-        "identifier": 'EVENT_1553_mem_compare_30',
-        "command": 'mem_compare',
-        "args": [0x7000, 2048]
+        "identifier": 'EVENT_1553_mem_compare_val_30',
+        "command": 'mem_compare_val',
+        "args": [2048]
     },
     {
         "identifier": 'EVENT_1553_jmp_if_comparison_result_is_lesser_31',
@@ -173,9 +173,9 @@ script = [
         "args": [0x07ff]
     },
     {
-        "identifier": 'EVENT_1553_mem_compare_34',
-        "command": 'mem_compare',
-        "args": [0x7000, 1024]
+        "identifier": 'EVENT_1553_mem_compare_val_34',
+        "command": 'mem_compare_val',
+        "args": [1024]
     },
     {
         "identifier": 'EVENT_1553_jmp_if_comparison_result_is_lesser_35',
@@ -333,7 +333,7 @@ script = [
             {
                 "identifier": 'EVENT_1553_action_queue_async_62_SUBSCRIPT_jmp_if_bit_set_3',
                 "command": 'jmp_if_bit_set',
-                "args": [0x7044, 1, 'EVENT_1553_add_63']
+                "args": [0x7044, 1, 'EVENT_1553_inc_63']
             },
             {
                 "identifier": 'EVENT_1553_action_queue_async_62_SUBSCRIPT_shift_xy_pixels_4',
@@ -343,9 +343,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1553_add_63',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1553_inc_63',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1553_end_loop_64',
@@ -424,7 +424,7 @@ script = [
     {
         "identifier": 'EVENT_1553_jmp_79',
         "command": 'jmp',
-        "args": ['EVENT_1553_add_81']
+        "args": ['EVENT_1553_inc_81']
     },
     {
         "identifier": 'EVENT_1553_set_action_script_sync_80',
@@ -432,9 +432,9 @@ script = [
         "args": [AreaObjects.MEM_70A9, 34]
     },
     {
-        "identifier": 'EVENT_1553_add_81',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1553_inc_81',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1553_end_loop_82',

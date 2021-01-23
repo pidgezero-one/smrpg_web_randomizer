@@ -100,7 +100,7 @@ script = [
     {
         "identifier": 'EVENT_1556_set_7000_to_object_coord_19',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70AA, Coords.F]
+        "args": [AreaObjects.MEM_70AA, Coords.F, []]
     },
     {
         "identifier": 'EVENT_1556_set_short_mem_20',
@@ -118,9 +118,9 @@ script = [
         "args": [AreaObjects.MEM_70AA]
     },
     {
-        "identifier": 'EVENT_1556_add_23',
-        "command": 'add',
-        "args": [0x70aa, 0x01]
+        "identifier": 'EVENT_1556_inc_23',
+        "command": 'inc',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_1556_end_loop_24',
@@ -171,9 +171,9 @@ script = [
         "args": [AreaObjects.MEM_70AA, 652]
     },
     {
-        "identifier": 'EVENT_1556_add_34',
-        "command": 'add',
-        "args": [0x70aa, 0x01]
+        "identifier": 'EVENT_1556_inc_34',
+        "command": 'inc',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_1556_end_loop_35',
@@ -247,8 +247,8 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_1556_action_queue_sync_47_SUBSCRIPT_face_east_0',
-                "command": 'face_east'
+                "identifier": 'EVENT_1556_action_queue_sync_47_SUBSCRIPT_face_east_7C_0',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_1556_action_queue_sync_47_SUBSCRIPT_clear_solidity_bits_1',
@@ -272,9 +272,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1556_add_48',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_1556_inc_48',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_1556_jmp_if_var_not_equals_byte_49',
@@ -282,9 +282,9 @@ script = [
         "args": [0x70af, 10, 'EVENT_1556_add_coins_57']
     },
     {
-        "identifier": 'EVENT_1556_add_50',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1556_inc_50',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1556_summon_to_current_level_at_marios_coords_51',
@@ -292,74 +292,74 @@ script = [
         "args": [AreaObjects.MEM_70AB]
     },
     {
-        "identifier": 'EVENT_1556_start_embedded_action_script_async_52',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.MEM_70AB],
         "subscript": [
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_play_sound_0',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_play_sound_0',
                 "command": 'play_sound',
                 "args": [Sounds._094_FROG_COIN, 4]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_shadow_off_1',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_shadow_off_1',
                 "command": 'shadow_off'
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_set_vram_priority_2',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.PRIORITY_3]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_set_priority_3',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_set_priority_3',
                 "command": 'set_priority',
                 "args": [3]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_set_sprite_sequence_4',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
                 "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_set_700C_to_object_coord_5',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_set_700C_to_object_coord_5',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.F]
+                "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_add_6',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_add_6',
                 "command": 'add',
                 "args": [0x700c, 2]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_mem_700C_and_const_7',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_mem_700C_and_const_7',
                 "command": 'mem_700C_and_const',
                 "args": [0x0004]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_mem_700C_xor_const_8',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_mem_700C_xor_const_8',
                 "command": 'mem_700C_xor_const',
                 "args": [0x0004]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_face_east_9',
-                "command": 'face_east'
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_face_east_7C_9',
+                "command": 'face_east_7C'
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_floating_off_10',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_floating_off_10',
                 "command": 'floating_off'
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_jump_to_height_11',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_jump_to_height_11',
                 "command": 'jump_to_height',
                 "args": [160]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_shift_f_direction_steps_12',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_shift_f_direction_steps_12',
                 "command": 'shift_f_direction_steps',
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_52_SUBSCRIPT_visibility_off_13',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_52_SUBSCRIPT_visibility_off_13',
                 "command": 'visibility_off'
             }
         ]
@@ -372,7 +372,7 @@ script = [
     {
         "identifier": 'EVENT_1556_run_dialog_54',
         "command": 'run_dialog',
-        "args": [1049, AreaObjects.TOADSTOOL, []]
+        "args": [1049, AreaObjects.TOADSTOOL, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_1556_add_frog_coins_55',
@@ -395,82 +395,82 @@ script = [
         "args": [AreaObjects.MEM_70AB]
     },
     {
-        "identifier": 'EVENT_1556_start_embedded_action_script_async_59',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.MEM_70AB],
         "subscript": [
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_play_sound_0',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_play_sound_0',
                 "command": 'play_sound',
                 "args": [Sounds._013_COIN, 4]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_shadow_off_1',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_shadow_off_1',
                 "command": 'shadow_off'
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_set_vram_priority_2',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_set_vram_priority_2',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.PRIORITY_3]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_set_priority_3',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_set_priority_3',
                 "command": 'set_priority',
                 "args": [3]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_set_sprite_sequence_4',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
                 "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_set_700C_to_object_coord_5',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_set_700C_to_object_coord_5',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.F]
+                "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_add_6',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_add_6',
                 "command": 'add',
                 "args": [0x700c, 2]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_mem_700C_and_const_7',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_mem_700C_and_const_7',
                 "command": 'mem_700C_and_const',
                 "args": [0x0004]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_mem_700C_xor_const_8',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_mem_700C_xor_const_8',
                 "command": 'mem_700C_xor_const',
                 "args": [0x0004]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_face_east_9',
-                "command": 'face_east'
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_face_east_7C_9',
+                "command": 'face_east_7C'
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_floating_off_10',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_floating_off_10',
                 "command": 'floating_off'
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_db_11',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_db_11',
                 "command": 'db',
                 "args": [0x20, 0x04]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_db_12',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_db_12',
                 "command": 'db',
                 "args": [0x25, 0x00, 0x08, 0xb0, 0xff]
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_walk_1_step_f_direction_13',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_walk_1_step_f_direction_13',
                 "command": 'walk_1_step_f_direction'
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_visibility_off_14',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_visibility_off_14',
                 "command": 'visibility_off'
             },
             {
-                "identifier": 'EVENT_1556_start_embedded_action_script_async_59_SUBSCRIPT_bpl_26_27_28_15',
+                "identifier": 'EVENT_1556_start_embedded_action_script_sync_F1_59_SUBSCRIPT_bpl_26_27_28_15',
                 "command": 'bpl_26_27_28'
             }
         ]
@@ -518,9 +518,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1556_add_65',
-        "command": 'add',
-        "args": [0x70aa, 0x01]
+        "identifier": 'EVENT_1556_inc_65',
+        "command": 'inc',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_1556_pause_66',
@@ -562,9 +562,9 @@ script = [
         "args": [AreaObjects.MEM_70AA]
     },
     {
-        "identifier": 'EVENT_1556_add_74',
-        "command": 'add',
-        "args": [0x70aa, 0x01]
+        "identifier": 'EVENT_1556_inc_74',
+        "command": 'inc',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_1556_end_loop_75',

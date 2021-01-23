@@ -10,12 +10,12 @@ script = [
     {
         "identifier": 'EVENT_1828_set_7000_to_object_coord_1',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1828_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1828_db_10']
+        "identifier": 'EVENT_1828_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1828_db_10']
     },
     {
         "identifier": 'EVENT_1828_jmp_if_mario_in_air_3',
@@ -30,7 +30,7 @@ script = [
     {
         "identifier": 'EVENT_1828_set_7000_to_object_coord_5',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.X, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_1828_set_short_mem_6',
@@ -40,7 +40,7 @@ script = [
     {
         "identifier": 'EVENT_1828_set_7000_to_object_coord_7',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Y, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_1828_set_short_mem_8',

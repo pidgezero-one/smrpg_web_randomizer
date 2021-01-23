@@ -116,9 +116,9 @@ script = [
         "args": [0x7044, 7]
     },
     {
-        "identifier": 'EVENT_1707_mem_compare_14',
-        "command": 'mem_compare',
-        "args": [0x7000, 16384]
+        "identifier": 'EVENT_1707_mem_compare_val_14',
+        "command": 'mem_compare_val',
+        "args": [16384]
     },
     {
         "identifier": 'EVENT_1707_jmp_if_comparison_result_is_lesser_15',
@@ -136,9 +136,9 @@ script = [
         "args": [0x3fff]
     },
     {
-        "identifier": 'EVENT_1707_mem_compare_18',
-        "command": 'mem_compare',
-        "args": [0x7000, 8192]
+        "identifier": 'EVENT_1707_mem_compare_val_18',
+        "command": 'mem_compare_val',
+        "args": [8192]
     },
     {
         "identifier": 'EVENT_1707_jmp_if_comparison_result_is_lesser_19',
@@ -721,9 +721,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1707_add_95',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1707_inc_95',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1707_jmp_if_var_equals_byte_96',
@@ -748,9 +748,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1707_add_98',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1707_inc_98',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1707_jmp_if_var_equals_byte_99',
@@ -775,9 +775,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1707_add_101',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1707_inc_101',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1707_jmp_if_var_equals_byte_102',
@@ -802,9 +802,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1707_add_104',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1707_inc_104',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1707_jmp_if_var_equals_byte_105',

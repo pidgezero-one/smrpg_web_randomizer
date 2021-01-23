@@ -54,7 +54,7 @@ script = [
     {
         "identifier": 'EVENT_2292_set_bit_7_offset_5',
         "command": 'set_bit_7_offset',
-        "args": [0x0158]
+        "args": [0x0158, []]
     },
     {
         "identifier": 'EVENT_2292_star_mask_expand_from_screen_center_6',
@@ -140,7 +140,7 @@ script = [
     {
         "identifier": 'EVENT_2292_clear_bit_7_offset_10',
         "command": 'clear_bit_7_offset',
-        "args": [0x0158]
+        "args": [0x0158, []]
     },
     {
         "identifier": 'EVENT_2292_action_queue_sync_11',

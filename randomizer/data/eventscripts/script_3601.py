@@ -201,9 +201,9 @@ script = [
         "args": [0x7000, 0x7014]
     },
     {
-        "identifier": 'EVENT_3601_mem_compare_27',
-        "command": 'mem_compare',
-        "args": [0x7000, 17]
+        "identifier": 'EVENT_3601_mem_compare_val_27',
+        "command": 'mem_compare_val',
+        "args": [17]
     },
     {
         "identifier": 'EVENT_3601_jmp_if_comparison_result_is_lesser_28',
@@ -267,9 +267,9 @@ script = [
         "args": [0x7000, 0x7014]
     },
     {
-        "identifier": 'EVENT_3601_mem_compare_34',
-        "command": 'mem_compare',
-        "args": [0x7000, 12]
+        "identifier": 'EVENT_3601_mem_compare_val_34',
+        "command": 'mem_compare_val',
+        "args": [12]
     },
     {
         "identifier": 'EVENT_3601_jmp_if_comparison_result_is_lesser_35',
@@ -338,9 +338,9 @@ script = [
         "args": [0x7000, 0x7014]
     },
     {
-        "identifier": 'EVENT_3601_mem_compare_42',
-        "command": 'mem_compare',
-        "args": [0x7000, 8]
+        "identifier": 'EVENT_3601_mem_compare_val_42',
+        "command": 'mem_compare_val',
+        "args": [8]
     },
     {
         "identifier": 'EVENT_3601_jmp_if_comparison_result_is_lesser_43',
@@ -388,12 +388,12 @@ script = [
         "args": [0x7043, 5, 'EVENT_3600_jmp_if_bit_clear_13']
     },
     {
-        "identifier": 'EVENT_3601_start_embedded_action_script_async_52',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3601_start_embedded_action_script_sync_F1_52',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_3601_start_embedded_action_script_async_52_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_3601_start_embedded_action_script_sync_F1_52_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             }
@@ -405,12 +405,12 @@ script = [
         "args": [AreaObjects.NPC_9]
     },
     {
-        "identifier": 'EVENT_3601_start_embedded_action_script_async_54',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3601_start_embedded_action_script_async_F1_54',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_3601_start_embedded_action_script_async_54_SUBSCRIPT_set_sprite_sequence_0',
+                "identifier": 'EVENT_3601_start_embedded_action_script_async_F1_54_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [9, 2, [_0x08Flags.READ_AS_SEQUENCE]]
             }

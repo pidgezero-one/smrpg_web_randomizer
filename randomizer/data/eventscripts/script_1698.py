@@ -67,9 +67,9 @@ script = [
         "args": [AreaObjects.MEM_70AB]
     },
     {
-        "identifier": 'EVENT_1698_add_9',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1698_inc_9',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1698_end_loop_10',

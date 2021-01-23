@@ -63,9 +63,9 @@ script = [
         "args": [0x7000, 4096]
     },
     {
-        "identifier": 'EVENT_1555_mem_compare_12',
-        "command": 'mem_compare',
-        "args": [0x7000, 2048]
+        "identifier": 'EVENT_1555_mem_compare_val_12',
+        "command": 'mem_compare_val',
+        "args": [2048]
     },
     {
         "identifier": 'EVENT_1555_jmp_if_comparison_result_is_lesser_13',
@@ -83,9 +83,9 @@ script = [
         "args": [0x07ff]
     },
     {
-        "identifier": 'EVENT_1555_mem_compare_16',
-        "command": 'mem_compare',
-        "args": [0x7000, 1024]
+        "identifier": 'EVENT_1555_mem_compare_val_16',
+        "command": 'mem_compare_val',
+        "args": [1024]
     },
     {
         "identifier": 'EVENT_1555_jmp_if_comparison_result_is_lesser_17',
@@ -103,9 +103,9 @@ script = [
         "args": [0x03ff]
     },
     {
-        "identifier": 'EVENT_1555_mem_compare_20',
-        "command": 'mem_compare',
-        "args": [0x7000, 512]
+        "identifier": 'EVENT_1555_mem_compare_val_20',
+        "command": 'mem_compare_val',
+        "args": [512]
     },
     {
         "identifier": 'EVENT_1555_jmp_if_comparison_result_is_lesser_21',
@@ -123,9 +123,9 @@ script = [
         "args": [0x0007]
     },
     {
-        "identifier": 'EVENT_1555_add_24',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_1555_inc_24',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_1555_set_object_memory_to_25',
@@ -198,9 +198,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1555_add_35',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1555_inc_35',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1555_end_loop_36',

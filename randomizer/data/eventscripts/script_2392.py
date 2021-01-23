@@ -13,9 +13,9 @@ script = [
         "args": [items.Seed]
     },
     {
-        "identifier": 'EVENT_2392_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_2392_jmp_if_bit_set_11']
+        "identifier": 'EVENT_2392_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_2392_jmp_if_bit_set_11']
     },
     {
         "identifier": 'EVENT_2392_store_item_amount_7000_3',
@@ -23,9 +23,9 @@ script = [
         "args": [items.Fertilizer]
     },
     {
-        "identifier": 'EVENT_2392_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_2392_jmp_if_bit_set_144']
+        "identifier": 'EVENT_2392_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_2392_jmp_if_bit_set_144']
     },
     {
         "identifier": 'EVENT_2392_jmp_if_bit_set_5',
@@ -289,9 +289,9 @@ script = [
         "args": [items.Fertilizer]
     },
     {
-        "identifier": 'EVENT_2392_jmp_if_var_equals_short_49',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_2392_jmp_if_bit_set_52']
+        "identifier": 'EVENT_2392_jmp_if_7000_equals_short_49',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_2392_jmp_if_bit_set_52']
     },
     {
         "identifier": 'EVENT_2392_unfreeze_camera_50',
@@ -568,9 +568,9 @@ script = [
         "args": [items.Fertilizer]
     },
     {
-        "identifier": 'EVENT_2392_jmp_if_var_equals_short_97',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_2392_jmp_if_bit_set_101']
+        "identifier": 'EVENT_2392_jmp_if_7000_equals_short_97',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_2392_jmp_if_bit_set_101']
     },
     {
         "identifier": 'EVENT_2392_run_dialog_98',

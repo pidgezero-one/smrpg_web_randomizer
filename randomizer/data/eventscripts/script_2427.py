@@ -15,7 +15,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_2',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2427_summon_to_level_6']
+        "args": [0xbeb2, 0xbebb]
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_3',
@@ -60,7 +60,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_11',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2427_summon_to_level_15']
+        "args": [0xbecf, 0xbed8]
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_12',
@@ -105,7 +105,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_20',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2427_summon_to_level_24']
+        "args": [0xbeec, 0xbef5]
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_21',
@@ -150,7 +150,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_29',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2427_summon_to_level_33']
+        "args": [0xbf09, 0xbf12]
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_30',
@@ -195,7 +195,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_38',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2427_summon_to_level_42']
+        "args": [0xbf26, 0xbf2f]
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_39',
@@ -240,7 +240,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_47',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2427_summon_to_level_51']
+        "args": [0xbf43, 0xbf4c]
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_48',
@@ -285,7 +285,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_56',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2427_remove_from_level_59']
+        "args": [0xbf5d, 0xbf5d]
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_57',

@@ -17,9 +17,9 @@ script = [
         "command": 'set_mem_704x_at_7000_bit'
     },
     {
-        "identifier": 'EVENT_3085_add_3',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3085_inc_3',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3085_end_loop_4',
@@ -54,9 +54,9 @@ script = [
         "command": 'clear_mem_704x_at_7000_bit'
     },
     {
-        "identifier": 'EVENT_3085_add_11',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3085_inc_11',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3085_end_loop_12',

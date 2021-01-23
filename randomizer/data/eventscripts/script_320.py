@@ -5,12 +5,12 @@ script = [
     {
         "identifier": 'EVENT_320_set_bit_7_offset_0',
         "command": 'set_bit_7_offset',
-        "args": [0x015c]
+        "args": [0x015c, []]
     },
     {
         "identifier": 'EVENT_320_set_bit_7_offset_1',
         "command": 'set_bit_7_offset',
-        "args": [0x015e]
+        "args": [0x015e, []]
     },
     {
         "identifier": 'EVENT_320_clear_bit_2',

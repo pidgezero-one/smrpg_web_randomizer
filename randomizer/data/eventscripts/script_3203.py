@@ -159,8 +159,9 @@ script = [
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_3203_action_queue_sync_10_SUBSCRIPT_face_southwest_7',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_3203_action_queue_sync_10_SUBSCRIPT_face_southwest_7D_7',
+                "command": 'face_southwest_7D',
+                "args": [0x14]
             }
         ]
     },
@@ -239,8 +240,9 @@ script = [
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3203_action_queue_sync_12_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_3203_action_queue_sync_12_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x14]
             }
         ]
     },
@@ -250,8 +252,9 @@ script = [
         "args": [AreaObjects.NPC_2],
         "subscript": [
             {
-                "identifier": 'EVENT_3203_action_queue_sync_13_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_3203_action_queue_sync_13_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x14]
             }
         ]
     },
@@ -261,8 +264,9 @@ script = [
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_3203_action_queue_sync_14_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_3203_action_queue_sync_14_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x14]
             }
         ]
     },

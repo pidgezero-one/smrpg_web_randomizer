@@ -697,8 +697,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2356_pause_script_resume_on_next_dialog_page_a_69',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2356_pause_script_resume_on_next_dialog_page_a_FD61_69',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2356_action_queue_async_70',

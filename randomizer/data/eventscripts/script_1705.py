@@ -50,7 +50,7 @@ script = [
     {
         "identifier": 'EVENT_1705_jmp_if_present_in_current_level_9',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.MEM_70AB, 'EVENT_1705_add_11']
+        "args": [AreaObjects.MEM_70AB, 'EVENT_1705_inc_11']
     },
     {
         "identifier": 'EVENT_1705_set_action_script_sync_10',
@@ -58,9 +58,9 @@ script = [
         "args": [AreaObjects.MEM_70AB, 474]
     },
     {
-        "identifier": 'EVENT_1705_add_11',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1705_inc_11',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1705_end_loop_12',
@@ -79,12 +79,12 @@ script = [
     {
         "identifier": 'EVENT_1705_set_7000_to_object_coord_15',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1705_jmp_if_var_not_equals_short_16',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_1705_pause_0']
+        "identifier": 'EVENT_1705_jmp_if_7000_not_equals_short_16',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_1705_pause_0']
     },
     {
         "identifier": 'EVENT_1705_jmp_if_bit_set_17',
@@ -114,7 +114,7 @@ script = [
     {
         "identifier": 'EVENT_1705_jmp_if_present_in_current_level_22',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.MEM_70AB, 'EVENT_1705_add_24']
+        "args": [AreaObjects.MEM_70AB, 'EVENT_1705_inc_24']
     },
     {
         "identifier": 'EVENT_1705_set_action_script_sync_23',
@@ -122,9 +122,9 @@ script = [
         "args": [AreaObjects.MEM_70AB, 475]
     },
     {
-        "identifier": 'EVENT_1705_add_24',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1705_inc_24',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1705_end_loop_25',

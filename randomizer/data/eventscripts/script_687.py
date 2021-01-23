@@ -415,8 +415,9 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_687_action_queue_sync_30_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_687_action_queue_sync_30_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x19]
             },
             {
                 "identifier": 'EVENT_687_action_queue_sync_30_SUBSCRIPT_pause_1',
@@ -424,8 +425,9 @@ script = [
                 "args": [10]
             },
             {
-                "identifier": 'EVENT_687_action_queue_sync_30_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_687_action_queue_sync_30_SUBSCRIPT_face_southwest_7D_2',
+                "command": 'face_southwest_7D',
+                "args": [0x19]
             }
         ]
     },
@@ -602,8 +604,9 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_687_action_queue_async_38_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_687_action_queue_async_38_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x19]
             }
         ]
     },

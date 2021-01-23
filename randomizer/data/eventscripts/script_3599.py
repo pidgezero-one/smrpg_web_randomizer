@@ -22,9 +22,9 @@ script = [
         "command": 'store_empty_inventory_slot_count_7000'
     },
     {
-        "identifier": 'EVENT_3599_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3599_set_short_mem_33']
+        "identifier": 'EVENT_3599_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_3599_set_short_mem_33']
     },
     {
         "identifier": 'EVENT_3599_set_short_mem_5',
@@ -37,9 +37,9 @@ script = [
         "args": [0x7000, 0x70b8]
     },
     {
-        "identifier": 'EVENT_3599_mem_compare_7',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_3599_mem_compare_address_7',
+        "command": 'mem_compare_address',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3599_jmp_if_comparison_result_is_lesser_8',
@@ -116,9 +116,9 @@ script = [
         "args": [0x7024, 0x7000]
     },
     {
-        "identifier": 'EVENT_3599_mem_compare_23',
-        "command": 'mem_compare',
-        "args": [0x7000, 201]
+        "identifier": 'EVENT_3599_mem_compare_val_23',
+        "command": 'mem_compare_val',
+        "args": [201]
     },
     {
         "identifier": 'EVENT_3599_jmp_if_comparison_result_is_greater_or_equal_24',
@@ -131,9 +131,9 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_3599_jmp_if_var_equals_short_26',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_3599_run_dialog_31']
+        "identifier": 'EVENT_3599_jmp_if_7000_equals_short_26',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3599_run_dialog_31']
     },
     {
         "identifier": 'EVENT_3599_run_dialog_27',

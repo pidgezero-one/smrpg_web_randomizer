@@ -454,9 +454,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_720_jmp_if_var_not_equals_short_84',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 277, 'EVENT_720_jmp_if_var_not_equals_short_87']
+        "identifier": 'EVENT_720_jmp_if_7000_not_equals_short_84',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [277, 'EVENT_720_jmp_if_7000_not_equals_short_87']
     },
     {
         "identifier": 'EVENT_720_jmp_if_bit_set_85',
@@ -481,9 +481,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_720_jmp_if_var_not_equals_short_87',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 283, 'EVENT_720_jmp_if_var_not_equals_short_90']
+        "identifier": 'EVENT_720_jmp_if_7000_not_equals_short_87',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [283, 'EVENT_720_jmp_if_7000_not_equals_short_90']
     },
     {
         "identifier": 'EVENT_720_jmp_if_bit_set_88',
@@ -508,9 +508,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_720_jmp_if_var_not_equals_short_90',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 273, 'EVENT_720_set_93']
+        "identifier": 'EVENT_720_jmp_if_7000_not_equals_short_90',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [273, 'EVENT_720_set_93']
     },
     {
         "identifier": 'EVENT_720_jmp_if_bit_set_91',
@@ -1747,9 +1747,9 @@ script = [
         "args": [0x7000, 0x70bd]
     },
     {
-        "identifier": 'EVENT_720_jmp_if_var_equals_short_268',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_720_action_queue_async_270']
+        "identifier": 'EVENT_720_jmp_if_7000_equals_short_268',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_720_action_queue_async_270']
     },
     {
         "identifier": 'EVENT_720_action_queue_async_269',
@@ -2623,41 +2623,41 @@ script = [
     {
         "identifier": 'EVENT_720_jmp_if_var_equals_byte_401',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70d5, 5, 'EVENT_720_add_463']
+        "args": [0x70d5, 5, 'EVENT_720_inc_463']
     },
     {
         "identifier": 'EVENT_720_jmp_if_var_equals_byte_402',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70d5, 4, 'EVENT_720_add_452']
+        "args": [0x70d5, 4, 'EVENT_720_inc_452']
     },
     {
         "identifier": 'EVENT_720_jmp_if_var_equals_byte_403',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70d5, 3, 'EVENT_720_add_441']
+        "args": [0x70d5, 3, 'EVENT_720_inc_441']
     },
     {
         "identifier": 'EVENT_720_jmp_if_var_equals_byte_404',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70d5, 2, 'EVENT_720_add_430']
+        "args": [0x70d5, 2, 'EVENT_720_inc_430']
     },
     {
         "identifier": 'EVENT_720_jmp_if_var_equals_byte_405',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70d5, 1, 'EVENT_720_add_419']
+        "args": [0x70d5, 1, 'EVENT_720_inc_419']
     },
     {
         "identifier": 'EVENT_720_jmp_if_var_equals_byte_406',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70d5, 0, 'EVENT_720_add_408']
+        "args": [0x70d5, 0, 'EVENT_720_inc_408']
     },
     {
         "identifier": 'EVENT_720_ret_407',
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_720_add_408',
-        "command": 'add',
-        "args": [0x70d5, 0x01]
+        "identifier": 'EVENT_720_inc_408',
+        "command": 'inc',
+        "args": [0x70d5]
     },
     {
         "identifier": 'EVENT_720_play_music_current_volume_409',
@@ -2706,9 +2706,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_720_add_419',
-        "command": 'add',
-        "args": [0x70d5, 0x01]
+        "identifier": 'EVENT_720_inc_419',
+        "command": 'inc',
+        "args": [0x70d5]
     },
     {
         "identifier": 'EVENT_720_play_music_current_volume_420',
@@ -2757,9 +2757,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_720_add_430',
-        "command": 'add',
-        "args": [0x70d5, 0x01]
+        "identifier": 'EVENT_720_inc_430',
+        "command": 'inc',
+        "args": [0x70d5]
     },
     {
         "identifier": 'EVENT_720_play_music_current_volume_431',
@@ -2808,9 +2808,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_720_add_441',
-        "command": 'add',
-        "args": [0x70d5, 0x01]
+        "identifier": 'EVENT_720_inc_441',
+        "command": 'inc',
+        "args": [0x70d5]
     },
     {
         "identifier": 'EVENT_720_play_music_current_volume_442',
@@ -2859,9 +2859,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_720_add_452',
-        "command": 'add',
-        "args": [0x70d5, 0x01]
+        "identifier": 'EVENT_720_inc_452',
+        "command": 'inc',
+        "args": [0x70d5]
     },
     {
         "identifier": 'EVENT_720_play_music_current_volume_453',
@@ -2910,9 +2910,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_720_add_463',
-        "command": 'add',
-        "args": [0x70d5, 0x01]
+        "identifier": 'EVENT_720_inc_463',
+        "command": 'inc',
+        "args": [0x70d5]
     },
     {
         "identifier": 'EVENT_720_play_music_current_volume_464',
@@ -2986,9 +2986,9 @@ script = [
         "args": [0x7098, 1, 'EVENT_720_ret_492']
     },
     {
-        "identifier": 'EVENT_720_add_479',
-        "command": 'add',
-        "args": [0x70d5, 0x01]
+        "identifier": 'EVENT_720_inc_479',
+        "command": 'inc',
+        "args": [0x70d5]
     },
     {
         "identifier": 'EVENT_720_play_music_current_volume_480',
@@ -3639,9 +3639,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_720_jmp_if_var_equals_short_616',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_720_set_626']
+        "identifier": 'EVENT_720_jmp_if_7000_equals_short_616',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_720_set_626']
     },
     {
         "identifier": 'EVENT_720_set_617',
@@ -3653,9 +3653,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_720_jmp_if_var_equals_short_619',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_720_set_633']
+        "identifier": 'EVENT_720_jmp_if_7000_equals_short_619',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_720_set_633']
     },
     {
         "identifier": 'EVENT_720_set_620',

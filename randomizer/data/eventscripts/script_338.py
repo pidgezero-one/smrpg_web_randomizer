@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_338_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 483, 'EVENT_290_stop_sound_76']
+        "identifier": 'EVENT_338_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [483, 'EVENT_290_stop_sound_76']
     },
     {
         "identifier": 'EVENT_338_set_7010_to_object_xyz_2',

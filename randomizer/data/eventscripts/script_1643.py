@@ -38,9 +38,9 @@ script = [
         "args": [items.ShinyStone]
     },
     {
-        "identifier": 'EVENT_1643_jmp_if_var_not_equals_short_7',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_1643_run_dialog_20']
+        "identifier": 'EVENT_1643_jmp_if_7000_not_equals_short_7',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_1643_run_dialog_20']
     },
     {
         "identifier": 'EVENT_1643_store_item_amount_7000_8',
@@ -48,9 +48,9 @@ script = [
         "args": [0xac]
     },
     {
-        "identifier": 'EVENT_1643_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1643_run_dialog_27']
+        "identifier": 'EVENT_1643_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1643_run_dialog_27']
     },
     {
         "identifier": 'EVENT_1643_run_dialog_10',

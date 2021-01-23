@@ -28,9 +28,9 @@ script = [
         "args": [AreaObjects.NPC_4, 423]
     },
     {
-        "identifier": 'EVENT_451_add_short_5',
-        "command": 'add_short',
-        "args": [0x7024, 0x01]
+        "identifier": 'EVENT_451_inc_short_5',
+        "command": 'inc_short',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_451_set_short_mem_6',

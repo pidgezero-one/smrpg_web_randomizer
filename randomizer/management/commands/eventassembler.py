@@ -6,8 +6,11 @@ from randomizer.data.eventscripts.events import scripts
 class Command(BaseCommand):
     def handle(self, *args, **options):
         b = EventScript.assemble_from_table(scripts)
-        for t in b:
-            string = ''
-            for byt in t:
-                string += '%02x ' % byt
-            print (string)
+
+        allbytes = b[0] + b[1] + b[2] + b[3] + b[4] + b[5]
+        print("combined length", hex(len(allbytes)), len(allbytes))
+
+
+        f = open(f'text_output.img', 'wb')
+        f.write(allbytes)
+        f.close()

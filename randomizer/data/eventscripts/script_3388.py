@@ -22,34 +22,34 @@ script = [
         "command": 'set_7000_to_tapped_button'
     },
     {
-        "identifier": 'EVENT_3388_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 32, 'EVENT_3388_play_sound_27']
+        "identifier": 'EVENT_3388_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [32, 'EVENT_3388_play_sound_27']
     },
     {
-        "identifier": 'EVENT_3388_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_3388_play_sound_62']
+        "identifier": 'EVENT_3388_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_3388_play_sound_62']
     },
     {
-        "identifier": 'EVENT_3388_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 16, 'EVENT_3388_play_sound_62']
+        "identifier": 'EVENT_3388_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [16, 'EVENT_3388_play_sound_62']
     },
     {
-        "identifier": 'EVENT_3388_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 64, 'EVENT_3388_play_sound_62']
+        "identifier": 'EVENT_3388_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [64, 'EVENT_3388_play_sound_62']
     },
     {
-        "identifier": 'EVENT_3388_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_3388_play_sound_11']
+        "identifier": 'EVENT_3388_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_3388_play_sound_11']
     },
     {
-        "identifier": 'EVENT_3388_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_3388_play_sound_17']
+        "identifier": 'EVENT_3388_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3388_play_sound_17']
     },
     {
         "identifier": 'EVENT_3388_jmp_10',
@@ -97,9 +97,9 @@ script = [
         "args": [0x70ad, 6, 'EVENT_3388_set_21']
     },
     {
-        "identifier": 'EVENT_3388_add_19',
-        "command": 'add',
-        "args": [0x70ad, 0x01]
+        "identifier": 'EVENT_3388_inc_19',
+        "command": 'inc',
+        "args": [0x70ad]
     },
     {
         "identifier": 'EVENT_3388_jmp_20',

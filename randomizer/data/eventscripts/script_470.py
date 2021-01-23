@@ -50,7 +50,7 @@ script = [
     {
         "identifier": 'EVENT_470_jmp_9',
         "command": 'jmp',
-        "args": ['EVENT_470_start_embedded_action_script_async_20']
+        "args": ['EVENT_470_start_embedded_action_script_async_F1_20']
     },
     {
         "identifier": 'EVENT_470_play_sound_10',
@@ -101,36 +101,36 @@ script = [
         "args": [AreaObjects.NPC_9, 119]
     },
     {
-        "identifier": 'EVENT_470_start_embedded_action_script_async_20',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_470_start_embedded_action_script_async_20_SUBSCRIPT_set_700C_to_object_coord_0',
+                "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20_SUBSCRIPT_set_700C_to_object_coord_0',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_9, Coords.F]
+                "args": [AreaObjects.NPC_9, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_470_start_embedded_action_script_async_20_SUBSCRIPT_add_1',
+                "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20_SUBSCRIPT_add_1',
                 "command": 'add',
                 "args": [0x700c, 4]
             },
             {
-                "identifier": 'EVENT_470_start_embedded_action_script_async_20_SUBSCRIPT_mem_700C_and_const_2',
+                "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20_SUBSCRIPT_mem_700C_and_const_2',
                 "command": 'mem_700C_and_const',
                 "args": [0x0007]
             },
             {
-                "identifier": 'EVENT_470_start_embedded_action_script_async_20_SUBSCRIPT_face_east_3',
-                "command": 'face_east'
+                "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20_SUBSCRIPT_face_east_7C_3',
+                "command": 'face_east_7C'
             },
             {
-                "identifier": 'EVENT_470_start_embedded_action_script_async_20_SUBSCRIPT_set_short_mem_4',
+                "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20_SUBSCRIPT_set_short_mem_4',
                 "command": 'set_short_mem',
                 "args": [0x703e, 0x700c]
             },
             {
-                "identifier": 'EVENT_470_start_embedded_action_script_async_20_SUBSCRIPT_fixed_f_coord_on_5',
+                "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20_SUBSCRIPT_fixed_f_coord_on_5',
                 "command": 'fixed_f_coord_on'
             }
         ]
@@ -196,7 +196,7 @@ script = [
     {
         "identifier": 'EVENT_470_jmp_31',
         "command": 'jmp',
-        "args": ['EVENT_470_start_embedded_action_script_async_20']
+        "args": ['EVENT_470_start_embedded_action_script_async_F1_20']
     },
     {
         "identifier": 'EVENT_470_jmp_if_bit_set_32',

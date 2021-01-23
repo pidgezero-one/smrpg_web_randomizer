@@ -3,9 +3,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1736_add_short_0',
-        "command": 'add_short',
-        "args": [0x7030, 0x01]
+        "identifier": 'EVENT_1736_inc_short_0',
+        "command": 'inc_short',
+        "args": [0x7030]
     },
     {
         "identifier": 'EVENT_1736_jmp_if_var_not_equals_short_1',
@@ -88,12 +88,12 @@ script = [
             {
                 "identifier": 'EVENT_1736_action_queue_sync_8_SUBSCRIPT_embedded_animation_routine_8',
                 "command": 'embedded_animation_routine',
-                "args": [0x26]
+                "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00]
             },
             {
                 "identifier": 'EVENT_1736_action_queue_sync_8_SUBSCRIPT_embedded_animation_routine_9',
                 "command": 'embedded_animation_routine',
-                "args": [0x27]
+                "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00]
             },
             {
                 "identifier": 'EVENT_1736_action_queue_sync_8_SUBSCRIPT_db_10',

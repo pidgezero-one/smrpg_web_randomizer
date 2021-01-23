@@ -32,9 +32,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1794_mem_compare_6',
-        "command": 'mem_compare',
-        "args": [0x7000, 400]
+        "identifier": 'EVENT_1794_mem_compare_val_6',
+        "command": 'mem_compare_val',
+        "args": [400]
     },
     {
         "identifier": 'EVENT_1794_jmp_if_comparison_result_is_lesser_7',
@@ -203,9 +203,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1794_mem_compare_37',
-        "command": 'mem_compare',
-        "args": [0x7000, 800]
+        "identifier": 'EVENT_1794_mem_compare_val_37',
+        "command": 'mem_compare_val',
+        "args": [800]
     },
     {
         "identifier": 'EVENT_1794_jmp_if_comparison_result_is_lesser_38',

@@ -7,59 +7,59 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 17, 'EVENT_3625_jmp_if_present_in_current_level_25']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [17, 'EVENT_3625_jmp_if_present_in_current_level_25']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 325, 'EVENT_3625_jmp_if_present_in_current_level_64']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [325, 'EVENT_3625_jmp_if_present_in_current_level_64']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 114, 'EVENT_3625_jmp_if_present_in_current_level_35']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [114, 'EVENT_3625_jmp_if_present_in_current_level_35']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 498, 'EVENT_3625_jmp_if_present_in_current_level_45']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [498, 'EVENT_3625_jmp_if_present_in_current_level_45']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 499, 'EVENT_3625_jmp_if_present_in_current_level_54']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [499, 'EVENT_3625_jmp_if_present_in_current_level_54']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 97, 'EVENT_3625_jmp_if_present_in_current_level_75']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [97, 'EVENT_3625_jmp_if_present_in_current_level_75']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 98, 'EVENT_3625_jmp_if_present_in_current_level_86']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [98, 'EVENT_3625_jmp_if_present_in_current_level_86']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 87, 'EVENT_3625_jmp_if_present_in_current_level_97']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [87, 'EVENT_3625_jmp_if_present_in_current_level_97']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 33, 'EVENT_3625_jmp_if_present_in_current_level_107']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [33, 'EVENT_3625_jmp_if_present_in_current_level_107']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 125, 'EVENT_3625_jmp_if_present_in_current_level_117']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [125, 'EVENT_3625_jmp_if_present_in_current_level_117']
     },
     {
-        "identifier": 'EVENT_3625_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 9, 'EVENT_3625_jmp_if_present_in_current_level_127']
+        "identifier": 'EVENT_3625_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [9, 'EVENT_3625_jmp_if_present_in_current_level_127']
     },
     {
         "identifier": 'EVENT_3625_jmp_if_present_in_current_level_12',
@@ -77,9 +77,9 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_15',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_15',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_16',
@@ -138,9 +138,9 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_28',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_28',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_29',
@@ -185,9 +185,9 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_38',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_38',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_39',
@@ -232,9 +232,9 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_48',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_48',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_49',
@@ -274,14 +274,14 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_57',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_57',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3625_add_58',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3625_inc_58',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_59',
@@ -321,14 +321,14 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_67',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_67',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3625_add_68',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3625_inc_68',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_69',
@@ -373,14 +373,14 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_78',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_78',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3625_add_79',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3625_inc_79',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_80',
@@ -425,14 +425,14 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_89',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_89',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3625_add_90',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3625_inc_90',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_91',
@@ -477,14 +477,14 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_100',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_100',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3625_add_101',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3625_inc_101',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_102',
@@ -524,14 +524,14 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_110',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_110',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3625_add_111',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3625_inc_111',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_112',
@@ -571,14 +571,14 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_120',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_120',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3625_add_121',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3625_inc_121',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_122',
@@ -618,14 +618,14 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3625_add_130',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3625_inc_130',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3625_add_131',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3625_inc_131',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3625_run_event_as_subroutine_132',

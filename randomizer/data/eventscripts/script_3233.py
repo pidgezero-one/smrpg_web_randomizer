@@ -8,9 +8,9 @@ script = [
         "args": ['EVENT_3237_jmp_if_bit_set_5']
     },
     {
-        "identifier": 'EVENT_3233_add_short_1',
-        "command": 'add_short',
-        "args": [0x7026, 0x01]
+        "identifier": 'EVENT_3233_inc_short_1',
+        "command": 'inc_short',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_3233_jmp_if_var_not_equals_short_2',

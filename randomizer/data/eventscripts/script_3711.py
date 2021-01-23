@@ -25,12 +25,12 @@ script = [
     {
         "identifier": 'EVENT_3711_set_7000_to_object_coord_4',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_5, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_5, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3711_mem_compare_5',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_3711_mem_compare_val_5',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3711_jmp_if_comparison_result_is_lesser_6',

@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3723_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 107, 'EVENT_3723_run_dialog_87']
+        "identifier": 'EVENT_3723_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [107, 'EVENT_3723_run_dialog_87']
     },
     {
         "identifier": 'EVENT_3723_jmp_if_bit_set_2',
@@ -157,9 +157,9 @@ script = [
         "args": [0x704c, 1, 'EVENT_3723_run_dialog_39']
     },
     {
-        "identifier": 'EVENT_3723_add_35',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_3723_inc_35',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3723_set_short_mem_36',
@@ -167,9 +167,9 @@ script = [
         "args": [0x7000, 0x70af]
     },
     {
-        "identifier": 'EVENT_3723_mem_compare_37',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_3723_mem_compare_val_37',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_3723_jmp_if_comparison_result_is_lesser_38',

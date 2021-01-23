@@ -44,9 +44,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3705_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 410, 'EVENT_3705_set_temp_action_script_sync_14']
+        "identifier": 'EVENT_3705_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [410, 'EVENT_3705_set_temp_action_script_sync_14']
     },
     {
         "identifier": 'EVENT_3705_set_temp_action_script_sync_10',

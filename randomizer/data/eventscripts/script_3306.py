@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3306_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 25, 'EVENT_3306_enter_area_4']
+        "identifier": 'EVENT_3306_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [25, 'EVENT_3306_enter_area_4']
     },
     {
         "identifier": 'EVENT_3306_enter_area_2',

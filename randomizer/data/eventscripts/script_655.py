@@ -18,9 +18,9 @@ script = [
         "args": [2098, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_655_add_3',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_655_inc_3',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_655_ret_4',

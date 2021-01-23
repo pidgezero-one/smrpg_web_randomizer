@@ -12,9 +12,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3247_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 133, 'EVENT_3247_run_dialog_6']
+        "identifier": 'EVENT_3247_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [133, 'EVENT_3247_run_dialog_6']
     },
     {
         "identifier": 'EVENT_3247_run_dialog_3',

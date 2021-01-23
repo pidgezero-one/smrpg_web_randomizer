@@ -8,9 +8,9 @@ script = [
         "args": [items.TempleKey]
     },
     {
-        "identifier": 'EVENT_1804_jmp_if_var_not_equals_short_1',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_1804_run_dialog_4']
+        "identifier": 'EVENT_1804_jmp_if_7000_not_equals_short_1',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_1804_run_dialog_4']
     },
     {
         "identifier": 'EVENT_1804_run_dialog_2',

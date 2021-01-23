@@ -49,21 +49,21 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_402_start_embedded_action_script_async_7',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_402_start_embedded_action_script_async_F1_7',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_402_start_embedded_action_script_async_7_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_402_start_embedded_action_script_async_F1_7_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [17, 114, 4, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_402_start_embedded_action_script_async_7_SUBSCRIPT_face_northeast_1',
+                "identifier": 'EVENT_402_start_embedded_action_script_async_F1_7_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_402_start_embedded_action_script_async_7_SUBSCRIPT_set_solidity_bits_2',
+                "identifier": 'EVENT_402_start_embedded_action_script_async_F1_7_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_WALK_THROUGH]]
             }

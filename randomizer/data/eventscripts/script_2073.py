@@ -68,9 +68,9 @@ script = [
         "args": [AreaObjects.NPC_1, Rooms._267_MONSTRO_TOWN_ENTRANCE]
     },
     {
-        "identifier": 'EVENT_2073_add_13',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2073_inc_13',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2073_ret_14',

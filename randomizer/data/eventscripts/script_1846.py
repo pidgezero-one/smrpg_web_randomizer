@@ -44,7 +44,7 @@ script = [
             {
                 "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_set_700C_to_object_coord_1',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.F]
+                "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
                 "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_set_short_mem_2',
@@ -84,8 +84,8 @@ script = [
                 "args": [0x700c, 0x702a]
             },
             {
-                "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_face_east_10',
-                "command": 'face_east'
+                "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_face_east_7C_10',
+                "command": 'face_east_7C'
             }
         ]
     },
@@ -238,9 +238,9 @@ script = [
         "args": [0x7000, 0x70a8]
     },
     {
-        "identifier": 'EVENT_1846_jmp_if_var_equals_short_34',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 23, 'EVENT_1846_action_queue_async_37']
+        "identifier": 'EVENT_1846_jmp_if_7000_equals_short_34',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [23, 'EVENT_1846_action_queue_async_37']
     },
     {
         "identifier": 'EVENT_1846_action_queue_async_35',

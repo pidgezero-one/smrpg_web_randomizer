@@ -75,9 +75,9 @@ script = [
         "args": [0x7018, 0x0040]
     },
     {
-        "identifier": 'EVENT_3480_add_13',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_3480_inc_13',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_3480_end_loop_14',

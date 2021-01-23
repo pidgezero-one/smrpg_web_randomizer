@@ -107,9 +107,9 @@ script = [
         "args": [AreaObjects.NPC_10, Rooms._035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
     },
     {
-        "identifier": 'EVENT_2580_add_15',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2580_inc_15',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2580_action_queue_sync_16',

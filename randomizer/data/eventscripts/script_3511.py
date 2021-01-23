@@ -15,7 +15,7 @@ script = [
     {
         "identifier": 'EVENT_3511_jmp_if_random_above_66_2',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_3511_set_action_script_sync_5']
+        "args": [0x7518, 0x751f]
     },
     {
         "identifier": 'EVENT_3511_set_action_script_sync_3',
@@ -64,7 +64,7 @@ script = [
     {
         "identifier": 'EVENT_3511_jmp_if_random_above_66_12',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_3511_set_action_script_sync_16']
+        "args": [0x753a, 0x7545]
     },
     {
         "identifier": 'EVENT_3511_set_action_script_sync_13',
@@ -185,9 +185,9 @@ script = [
         "args": [0x7000, 0x70b1]
     },
     {
-        "identifier": 'EVENT_3511_mem_compare_37',
-        "command": 'mem_compare',
-        "args": [0x7000, 8]
+        "identifier": 'EVENT_3511_mem_compare_val_37',
+        "command": 'mem_compare_val',
+        "args": [8]
     },
     {
         "identifier": 'EVENT_3511_jmp_if_comparison_result_is_greater_or_equal_38',

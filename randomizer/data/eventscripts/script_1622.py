@@ -12,18 +12,18 @@ script = [
         "command": 'set_7000_to_tapped_button'
     },
     {
-        "identifier": 'EVENT_1622_jmp_if_var_not_equals_short_2',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 4, 'EVENT_1622_ret_10']
+        "identifier": 'EVENT_1622_jmp_if_7000_not_equals_short_2',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [4, 'EVENT_1622_ret_10']
     },
     {
         "identifier": 'EVENT_1622_set_7000_to_pressed_button_3',
         "command": 'set_7000_to_pressed_button'
     },
     {
-        "identifier": 'EVENT_1622_jmp_if_var_not_equals_short_4',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 4, 'EVENT_1622_ret_10']
+        "identifier": 'EVENT_1622_jmp_if_7000_not_equals_short_4',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [4, 'EVENT_1622_ret_10']
     },
     {
         "identifier": 'EVENT_1622_play_sound_5',

@@ -59,31 +59,31 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_466_start_embedded_action_script_async_10',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_466_start_embedded_action_script_async_F1_10',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_5],
         "subscript": [
             {
-                "identifier": 'EVENT_466_start_embedded_action_script_async_10_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_466_start_embedded_action_script_async_F1_10_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [16, 64, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_466_start_embedded_action_script_async_10_SUBSCRIPT_face_southeast_1',
+                "identifier": 'EVENT_466_start_embedded_action_script_async_F1_10_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast'
             },
             {
-                "identifier": 'EVENT_466_start_embedded_action_script_async_10_SUBSCRIPT_set_priority_2',
+                "identifier": 'EVENT_466_start_embedded_action_script_async_F1_10_SUBSCRIPT_set_priority_2',
                 "command": 'set_priority',
                 "args": [3]
             },
             {
-                "identifier": 'EVENT_466_start_embedded_action_script_async_10_SUBSCRIPT_set_object_memory_bits_3',
+                "identifier": 'EVENT_466_start_embedded_action_script_async_F1_10_SUBSCRIPT_set_object_memory_bits_3',
                 "command": 'set_object_memory_bits',
                 "args": [0x0b, [0, 1]]
             },
             {
-                "identifier": 'EVENT_466_start_embedded_action_script_async_10_SUBSCRIPT_clear_solidity_bits_4',
+                "identifier": 'EVENT_466_start_embedded_action_script_async_F1_10_SUBSCRIPT_clear_solidity_bits_4',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             }
@@ -167,7 +167,7 @@ script = [
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_26',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_466_add_31']
+        "args": [0x7043, 0, 'EVENT_466_inc_31']
     },
     {
         "identifier": 'EVENT_466_jmp_if_bit_set_27',
@@ -190,9 +190,9 @@ script = [
         "args": ['EVENT_466_pause_25']
     },
     {
-        "identifier": 'EVENT_466_add_31',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_466_inc_31',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_466_set_action_script_sync_32',

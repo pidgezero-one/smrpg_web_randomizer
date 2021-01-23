@@ -50,9 +50,9 @@ script = [
         "args": [AreaObjects.NPC_8, Rooms._100_BOOSTER_PASS_AREA_01]
     },
     {
-        "identifier": 'EVENT_2306_add_7',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2306_inc_7',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2306_set_7010_to_object_xyz_8',

@@ -8,9 +8,9 @@ script = [
         "args": [items.BrightCard]
     },
     {
-        "identifier": 'EVENT_604_jmp_if_var_not_equals_short_1',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_604_run_dialog_5']
+        "identifier": 'EVENT_604_jmp_if_7000_not_equals_short_1',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_604_run_dialog_5']
     },
     {
         "identifier": 'EVENT_604_jmp_if_bit_set_2',
@@ -209,9 +209,9 @@ script = [
         "command": 'store_frog_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_604_mem_compare_42',
-        "command": 'mem_compare',
-        "args": [0x7000, 15]
+        "identifier": 'EVENT_604_mem_compare_val_42',
+        "command": 'mem_compare_val',
+        "args": [15]
     },
     {
         "identifier": 'EVENT_604_jmp_if_comparison_result_is_lesser_43',

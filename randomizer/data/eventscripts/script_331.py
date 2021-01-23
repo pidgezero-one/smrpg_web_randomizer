@@ -51,8 +51,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_331_start_embedded_action_script_async_5',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_331_start_embedded_action_script_async_F1_5',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_4],
         "subscript": [
         ]
@@ -153,7 +153,7 @@ script = [
     {
         "identifier": 'EVENT_331_set_bit_7_offset_14',
         "command": 'set_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_331_palette_set_morphs_15',
@@ -305,7 +305,7 @@ script = [
     {
         "identifier": 'EVENT_331_clear_bit_7_offset_34',
         "command": 'clear_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_331_pause_action_script_35',
@@ -895,7 +895,7 @@ script = [
     {
         "identifier": 'EVENT_331_clear_bit_7_offset_93',
         "command": 'clear_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_331_ret_94',
@@ -1054,7 +1054,7 @@ script = [
     {
         "identifier": 'EVENT_331_set_bit_7_offset_120',
         "command": 'set_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_331_palette_set_morphs_121',
@@ -1122,7 +1122,7 @@ script = [
     {
         "identifier": 'EVENT_331_clear_bit_7_offset_134',
         "command": 'clear_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_331_ret_135',
@@ -1210,7 +1210,7 @@ script = [
     {
         "identifier": 'EVENT_331_set_bit_7_offset_139',
         "command": 'set_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_331_palette_set_morphs_140',

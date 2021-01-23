@@ -3667,7 +3667,7 @@ script = [
     {
         "identifier": 'EVENT_512_run_dialog_209',
         "command": 'run_dialog',
-        "args": [0, AreaObjects.NPC_12, []]
+        "args": [0, AreaObjects.NPC_12, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_512_ret_210',

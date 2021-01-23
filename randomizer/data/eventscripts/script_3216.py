@@ -43,9 +43,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3216_add_4',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_3216_inc_4',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3216_jmp_if_var_equals_byte_5',

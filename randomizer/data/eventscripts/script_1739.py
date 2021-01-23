@@ -43,9 +43,9 @@ script = [
         "args": [0xffff]
     },
     {
-        "identifier": 'EVENT_1739_add_8',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_1739_inc_8',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_1739_add_short_mem_9',
@@ -53,9 +53,9 @@ script = [
         "args": [0x7000, 0x7018]
     },
     {
-        "identifier": 'EVENT_1739_mem_compare_10',
-        "command": 'mem_compare',
-        "args": [0x7000, 32768]
+        "identifier": 'EVENT_1739_mem_compare_val_10',
+        "command": 'mem_compare_val',
+        "args": [32768]
     },
     {
         "identifier": 'EVENT_1739_jmp_if_comparison_result_is_lesser_11',

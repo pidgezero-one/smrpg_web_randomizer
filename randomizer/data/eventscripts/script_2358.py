@@ -10,17 +10,17 @@ script = [
     {
         "identifier": 'EVENT_2358_set_7000_to_object_coord_1',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2358_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2358_clear_bit_11']
+        "identifier": 'EVENT_2358_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2358_clear_bit_11']
     },
     {
-        "identifier": 'EVENT_2358_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_2358_set_7000_to_object_coord_5']
+        "identifier": 'EVENT_2358_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_2358_set_7000_to_object_coord_5']
     },
     {
         "identifier": 'EVENT_2358_jmp_4',
@@ -30,12 +30,12 @@ script = [
     {
         "identifier": 'EVENT_2358_set_7000_to_object_coord_5',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2358_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 18, 'EVENT_2358_set_7000_to_object_coord_9']
+        "identifier": 'EVENT_2358_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [18, 'EVENT_2358_set_7000_to_object_coord_9']
     },
     {
         "identifier": 'EVENT_2358_clear_bit_7',
@@ -49,12 +49,12 @@ script = [
     {
         "identifier": 'EVENT_2358_set_7000_to_object_coord_9',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2358_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 121, 'EVENT_2358_pause_0']
+        "identifier": 'EVENT_2358_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [121, 'EVENT_2358_pause_0']
     },
     {
         "identifier": 'EVENT_2358_clear_bit_11',

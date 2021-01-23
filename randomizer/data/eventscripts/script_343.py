@@ -38,9 +38,9 @@ script = [
         "args": [0x7024, 0x7000]
     },
     {
-        "identifier": 'EVENT_343_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 354, 'EVENT_343_ret_11']
+        "identifier": 'EVENT_343_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [354, 'EVENT_343_ret_11']
     },
     {
         "identifier": 'EVENT_343_play_sound_8',

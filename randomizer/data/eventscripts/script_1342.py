@@ -385,8 +385,8 @@ script = [
         "args": [2817, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_1342_pause_script_resume_on_next_dialog_page_a_35',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1342_pause_script_resume_on_next_dialog_page_a_FD61_35',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1342_play_sound_36',

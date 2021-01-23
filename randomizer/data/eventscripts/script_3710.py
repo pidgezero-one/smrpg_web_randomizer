@@ -18,9 +18,9 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3710_add_3',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3710_inc_3',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_3710_run_event_as_subroutine_4',

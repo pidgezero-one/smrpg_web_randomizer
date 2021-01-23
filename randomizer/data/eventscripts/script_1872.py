@@ -18,9 +18,9 @@ script = [
         "args": [0xac]
     },
     {
-        "identifier": 'EVENT_1872_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1872_jmp_if_bit_set_6']
+        "identifier": 'EVENT_1872_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1872_jmp_if_bit_set_6']
     },
     {
         "identifier": 'EVENT_1872_run_dialog_4',
@@ -66,9 +66,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1872_mem_compare_13',
-        "command": 'mem_compare',
-        "args": [0x7000, 500]
+        "identifier": 'EVENT_1872_mem_compare_val_13',
+        "command": 'mem_compare_val',
+        "args": [500]
     },
     {
         "identifier": 'EVENT_1872_jmp_if_comparison_result_is_greater_or_equal_14',
@@ -104,9 +104,9 @@ script = [
         "args": [0x7000, 0x70ea]
     },
     {
-        "identifier": 'EVENT_1872_mem_compare_21',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_1872_mem_compare_val_21',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1872_jmp_if_comparison_result_is_lesser_22',
@@ -114,9 +114,9 @@ script = [
         "args": ['EVENT_1872_run_dialog_30']
     },
     {
-        "identifier": 'EVENT_1872_mem_compare_23',
-        "command": 'mem_compare',
-        "args": [0x7000, 4]
+        "identifier": 'EVENT_1872_mem_compare_val_23',
+        "command": 'mem_compare_val',
+        "args": [4]
     },
     {
         "identifier": 'EVENT_1872_jmp_if_comparison_result_is_lesser_24',
@@ -164,9 +164,9 @@ script = [
         "args": [0x70ea, 5, 'EVENT_1872_play_sound_34']
     },
     {
-        "identifier": 'EVENT_1872_add_33',
-        "command": 'add',
-        "args": [0x70ea, 0x01]
+        "identifier": 'EVENT_1872_inc_33',
+        "command": 'inc',
+        "args": [0x70ea]
     },
     {
         "identifier": 'EVENT_1872_play_sound_34',

@@ -84,8 +84,9 @@ script = [
                 "args": [5]
             },
             {
-                "identifier": 'EVENT_2162_action_queue_sync_9_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_2162_action_queue_sync_9_SUBSCRIPT_face_southwest_7D_1',
+                "command": 'face_southwest_7D',
+                "args": [0x16]
             }
         ]
     },

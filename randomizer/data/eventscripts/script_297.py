@@ -50,14 +50,14 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_297_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 495, 'EVENT_256_ret_0']
+        "identifier": 'EVENT_297_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [495, 'EVENT_256_ret_0']
     },
     {
-        "identifier": 'EVENT_297_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 51, 'EVENT_256_ret_0']
+        "identifier": 'EVENT_297_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [51, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_297_resume_action_script_12',
@@ -108,14 +108,14 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_297_jmp_if_var_equals_short_22',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 191, 'EVENT_297_set_7000_to_object_coord_25']
+        "identifier": 'EVENT_297_jmp_if_7000_equals_short_22',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [191, 'EVENT_297_set_7000_to_object_coord_25']
     },
     {
         "identifier": 'EVENT_297_set_7000_to_object_coord_23',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_6, Coords.F]
+        "args": [AreaObjects.NPC_6, Coords.F, []]
     },
     {
         "identifier": 'EVENT_297_jmp_24',
@@ -125,7 +125,7 @@ script = [
     {
         "identifier": 'EVENT_297_set_7000_to_object_coord_25',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_7, Coords.F]
+        "args": [AreaObjects.NPC_7, Coords.F, []]
     },
     {
         "identifier": 'EVENT_297_set_short_mem_26',
@@ -147,19 +147,19 @@ script = [
                 "args": [64]
             },
             {
-                "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_var_equals_short_2',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 1, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_southwest_7']
+                "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_700C_equals_short_2',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [1, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_southwest_7']
             },
             {
-                "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_var_equals_short_3',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 5, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_northeast_9']
+                "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_700C_equals_short_3',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [5, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_northeast_9']
             },
             {
-                "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_var_equals_short_4',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 3, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_northwest_11']
+                "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_700C_equals_short_4',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [3, 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_northwest_11']
             },
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_walk_1_step_southeast_5',
@@ -238,12 +238,12 @@ script = [
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_set_700C_to_object_coord_21',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.F]
+                "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_var_equals_short_22',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 7, 'EVENT_297_action_queue_async_27_SUBSCRIPT_start_loop_n_times_24']
+                "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_if_700C_equals_short_22',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [7, 'EVENT_297_action_queue_async_27_SUBSCRIPT_start_loop_n_times_24']
             },
             {
                 "identifier": 'EVENT_297_action_queue_async_27_SUBSCRIPT_jmp_23',

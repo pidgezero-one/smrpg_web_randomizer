@@ -8,39 +8,39 @@ script = [
         "args": [0x7000, 0x70a8]
     },
     {
-        "identifier": 'EVENT_1775_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 23, 'EVENT_1775_jmp_if_bit_set_15']
+        "identifier": 'EVENT_1775_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [23, 'EVENT_1775_jmp_if_bit_set_15']
     },
     {
-        "identifier": 'EVENT_1775_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 24, 'EVENT_1775_jmp_if_bit_set_21']
+        "identifier": 'EVENT_1775_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [24, 'EVENT_1775_jmp_if_bit_set_21']
     },
     {
-        "identifier": 'EVENT_1775_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 25, 'EVENT_1775_jmp_if_bit_set_27']
+        "identifier": 'EVENT_1775_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [25, 'EVENT_1775_jmp_if_bit_set_27']
     },
     {
-        "identifier": 'EVENT_1775_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 26, 'EVENT_1775_jmp_if_bit_set_33']
+        "identifier": 'EVENT_1775_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [26, 'EVENT_1775_jmp_if_bit_set_33']
     },
     {
-        "identifier": 'EVENT_1775_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 27, 'EVENT_1775_jmp_if_bit_set_39']
+        "identifier": 'EVENT_1775_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [27, 'EVENT_1775_jmp_if_bit_set_39']
     },
     {
-        "identifier": 'EVENT_1775_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 28, 'EVENT_1775_jmp_if_bit_set_45']
+        "identifier": 'EVENT_1775_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [28, 'EVENT_1775_jmp_if_bit_set_45']
     },
     {
-        "identifier": 'EVENT_1775_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 29, 'EVENT_1775_jmp_if_bit_set_51']
+        "identifier": 'EVENT_1775_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [29, 'EVENT_1775_jmp_if_bit_set_51']
     },
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_8',
@@ -703,7 +703,7 @@ script = [
             {
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_set_700C_to_object_coord_0',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.F]
+                "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
                 "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_fixed_f_coord_on_1',
@@ -726,8 +726,8 @@ script = [
                 "command": 'fixed_f_coord_off'
             },
             {
-                "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_face_east_6',
-                "command": 'face_east'
+                "identifier": 'EVENT_1775_action_queue_async_59_SUBSCRIPT_face_east_7C_6',
+                "command": 'face_east_7C'
             }
         ]
     },

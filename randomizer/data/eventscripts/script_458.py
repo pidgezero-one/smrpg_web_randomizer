@@ -50,68 +50,68 @@ script = [
         "args": [[]]
     },
     {
-        "identifier": 'EVENT_458_start_embedded_action_script_async_6',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_458_start_embedded_action_script_sync_F1_6',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_6_SUBSCRIPT_set_object_memory_bits_0',
+                "identifier": 'EVENT_458_start_embedded_action_script_sync_F1_6_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, []]
             },
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_6_SUBSCRIPT_transfer_to_xyzf_1',
+                "identifier": 'EVENT_458_start_embedded_action_script_sync_F1_6_SUBSCRIPT_transfer_to_xyzf_1',
                 "command": 'transfer_to_xyzf',
                 "args": [10, 81, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_6_SUBSCRIPT_face_northeast_2',
+                "identifier": 'EVENT_458_start_embedded_action_script_sync_F1_6_SUBSCRIPT_face_northeast_2',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_6_SUBSCRIPT_object_memory_set_bit_3',
+                "identifier": 'EVENT_458_start_embedded_action_script_sync_F1_6_SUBSCRIPT_object_memory_set_bit_3',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
             },
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_6_SUBSCRIPT_clear_solidity_bits_4',
+                "identifier": 'EVENT_458_start_embedded_action_script_sync_F1_6_SUBSCRIPT_clear_solidity_bits_4',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_6_SUBSCRIPT_clear_solidity_bits_5',
+                "identifier": 'EVENT_458_start_embedded_action_script_sync_F1_6_SUBSCRIPT_clear_solidity_bits_5',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             }
         ]
     },
     {
-        "identifier": 'EVENT_458_start_embedded_action_script_async_7',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_458_start_embedded_action_script_async_F1_7',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_7_SUBSCRIPT_set_sprite_sequence_0',
+                "identifier": 'EVENT_458_start_embedded_action_script_async_F1_7_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [6, 6, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_7_SUBSCRIPT_clear_solidity_bits_1',
+                "identifier": 'EVENT_458_start_embedded_action_script_async_F1_7_SUBSCRIPT_clear_solidity_bits_1',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_7_SUBSCRIPT_clear_solidity_bits_2',
+                "identifier": 'EVENT_458_start_embedded_action_script_async_F1_7_SUBSCRIPT_clear_solidity_bits_2',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_7_SUBSCRIPT_transfer_to_xyzf_3',
+                "identifier": 'EVENT_458_start_embedded_action_script_async_F1_7_SUBSCRIPT_transfer_to_xyzf_3',
                 "command": 'transfer_to_xyzf',
                 "args": [10, 81, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_458_start_embedded_action_script_async_7_SUBSCRIPT_set_solidity_bits_4',
+                "identifier": 'EVENT_458_start_embedded_action_script_async_F1_7_SUBSCRIPT_set_solidity_bits_4',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             }

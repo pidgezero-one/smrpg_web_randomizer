@@ -27,29 +27,29 @@ script = [
         "args": [0x0070]
     },
     {
-        "identifier": 'EVENT_3350_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 32, 'EVENT_3350_set_short_mem_14']
+        "identifier": 'EVENT_3350_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [32, 'EVENT_3350_set_short_mem_14']
     },
     {
-        "identifier": 'EVENT_3350_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 48, 'EVENT_3350_set_short_mem_18']
+        "identifier": 'EVENT_3350_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [48, 'EVENT_3350_set_short_mem_18']
     },
     {
-        "identifier": 'EVENT_3350_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 64, 'EVENT_3350_set_short_mem_22']
+        "identifier": 'EVENT_3350_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [64, 'EVENT_3350_set_short_mem_22']
     },
     {
-        "identifier": 'EVENT_3350_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 80, 'EVENT_3350_set_short_mem_26']
+        "identifier": 'EVENT_3350_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [80, 'EVENT_3350_set_short_mem_26']
     },
     {
-        "identifier": 'EVENT_3350_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 96, 'EVENT_3350_set_short_mem_30']
+        "identifier": 'EVENT_3350_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [96, 'EVENT_3350_set_short_mem_30']
     },
     {
         "identifier": 'EVENT_3350_set_short_mem_10',
@@ -187,9 +187,9 @@ script = [
         "args": [0x7000]
     },
     {
-        "identifier": 'EVENT_3350_jmp_if_mem_704x_at_7000_bit_set_37',
-        "command": 'jmp_if_mem_704x_at_7000_bit_set',
-        "args": ['EVENT_3350_add_40']
+        "identifier": 'EVENT_3350_jmp_if_mem_704x_at_7000_bit_clear_37',
+        "command": 'jmp_if_mem_704x_at_7000_bit_clear',
+        "args": ['EVENT_3350_inc_40']
     },
     {
         "identifier": 'EVENT_3350_disable_trigger_in_level_38',
@@ -202,9 +202,9 @@ script = [
         "args": [AreaObjects.NPC_0, Rooms._446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS]
     },
     {
-        "identifier": 'EVENT_3350_add_40',
-        "command": 'add',
-        "args": [0x70b6, 0x01]
+        "identifier": 'EVENT_3350_inc_40',
+        "command": 'inc',
+        "args": [0x70b6]
     },
     {
         "identifier": 'EVENT_3350_jmp_if_var_equals_byte_41',

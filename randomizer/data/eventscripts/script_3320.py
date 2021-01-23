@@ -47,8 +47,8 @@ script = [
         "args": [AreaObjects.MARIO]
     },
     {
-        "identifier": 'EVENT_3320_stop_music_9',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3320_stop_music_FDA2_9',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_3320_run_event_as_subroutine_10',

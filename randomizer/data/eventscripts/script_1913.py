@@ -58,22 +58,22 @@ script = [
     {
         "identifier": 'EVENT_1913_set_7000_to_object_coord_11',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_1913_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 6, 'EVENT_1913_add_short_18']
+        "identifier": 'EVENT_1913_jmp_if_7000_equals_short_12',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [6, 'EVENT_1913_add_short_18']
     },
     {
-        "identifier": 'EVENT_1913_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 7, 'EVENT_1913_add_short_20']
+        "identifier": 'EVENT_1913_jmp_if_7000_equals_short_13',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7, 'EVENT_1913_add_short_20']
     },
     {
-        "identifier": 'EVENT_1913_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1913_add_short_23']
+        "identifier": 'EVENT_1913_jmp_if_7000_equals_short_14',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1913_add_short_23']
     },
     {
         "identifier": 'EVENT_1913_add_short_15',

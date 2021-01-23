@@ -17,8 +17,8 @@ script = [
         "command": 'stop_all_background_events'
     },
     {
-        "identifier": 'EVENT_2403_fade_out_music_3',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_2403_fade_out_music_FDA3_3',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_2403_set_bit_4',
@@ -128,8 +128,8 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_2403_fade_out_music_11',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_2403_fade_out_music_FDA3_11',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_2403_action_queue_sync_12',

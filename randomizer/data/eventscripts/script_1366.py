@@ -2057,8 +2057,8 @@ script = [
         "args": [[]]
     },
     {
-        "identifier": 'EVENT_1366_stop_music_245',
-        "command": 'stop_music'
+        "identifier": 'EVENT_1366_stop_music_FDA2_245',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_1366_action_queue_sync_246',

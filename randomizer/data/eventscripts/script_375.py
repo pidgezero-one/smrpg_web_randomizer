@@ -1299,12 +1299,12 @@ script = [
     {
         "identifier": 'EVENT_375_set_bit_7_offset_96',
         "command": 'set_bit_7_offset',
-        "args": [0x0158]
+        "args": [0x0158, []]
     },
     {
         "identifier": 'EVENT_375_set_bit_7_offset_97',
         "command": 'set_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_375_db_98',
@@ -1471,12 +1471,12 @@ script = [
     {
         "identifier": 'EVENT_375_clear_bit_7_offset_113',
         "command": 'clear_bit_7_offset',
-        "args": [0x0158]
+        "args": [0x0158, []]
     },
     {
         "identifier": 'EVENT_375_clear_bit_7_offset_114',
         "command": 'clear_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_375_set_bit_115',

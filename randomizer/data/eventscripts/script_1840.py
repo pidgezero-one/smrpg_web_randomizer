@@ -37,19 +37,19 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_1840_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 321, 'EVENT_1840_play_sound_25']
+        "identifier": 'EVENT_1840_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [321, 'EVENT_1840_play_sound_25']
     },
     {
-        "identifier": 'EVENT_1840_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 455, 'EVENT_1840_play_sound_25']
+        "identifier": 'EVENT_1840_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [455, 'EVENT_1840_play_sound_25']
     },
     {
-        "identifier": 'EVENT_1840_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 458, 'EVENT_1840_play_sound_25']
+        "identifier": 'EVENT_1840_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [458, 'EVENT_1840_play_sound_25']
     },
     {
         "identifier": 'EVENT_1840_play_sound_10',
@@ -260,9 +260,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_1840_jmp_if_var_equals_short_54',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 321, 'EVENT_1840_enable_controls_until_return_56']
+        "identifier": 'EVENT_1840_jmp_if_7000_equals_short_54',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [321, 'EVENT_1840_enable_controls_until_return_56']
     },
     {
         "identifier": 'EVENT_1840_ret_55',
@@ -394,9 +394,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_1840_jmp_if_var_equals_short_73',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 455, 'EVENT_1840_action_queue_async_75']
+        "identifier": 'EVENT_1840_jmp_if_7000_equals_short_73',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [455, 'EVENT_1840_action_queue_async_75']
     },
     {
         "identifier": 'EVENT_1840_freeze_all_npcs_until_return_74',
@@ -448,9 +448,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_1840_jmp_if_var_equals_short_82',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 455, 'EVENT_1840_load_600f_85']
+        "identifier": 'EVENT_1840_jmp_if_7000_equals_short_82',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [455, 'EVENT_1840_load_600f_85']
     },
     {
         "identifier": 'EVENT_1840_unfreeze_all_npcs_83',

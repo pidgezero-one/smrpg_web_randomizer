@@ -17,8 +17,8 @@ script = [
         "command": 'stop_all_background_events'
     },
     {
-        "identifier": 'EVENT_2404_fade_out_music_3',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_2404_fade_out_music_FDA3_3',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_2404_set_bit_4',

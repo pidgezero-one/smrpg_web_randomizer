@@ -81,9 +81,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1633_mem_compare_16',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_1633_mem_compare_address_16',
+        "command": 'mem_compare_address',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_1633_jmp_if_comparison_result_is_greater_or_equal_17',
@@ -96,14 +96,14 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_1633_add_19',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_1633_inc_19',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
-        "identifier": 'EVENT_1633_add_20',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_1633_inc_20',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_1633_append_to_dialog_at_7000_21',
@@ -120,9 +120,9 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_1633_add_24',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_1633_inc_24',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_1633_append_to_dialog_at_7000_25',

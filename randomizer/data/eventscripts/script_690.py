@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_690_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 65, 'EVENT_690_fade_out_music_5']
+        "identifier": 'EVENT_690_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [65, 'EVENT_690_fade_out_music_FDA3_5']
     },
     {
         "identifier": 'EVENT_690_run_dialog_2',
@@ -26,8 +26,8 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_690_fade_out_music_5',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_690_fade_out_music_FDA3_5',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_690_action_queue_async_6',

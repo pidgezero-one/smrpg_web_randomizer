@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_729_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 153, 'EVENT_729_remove_from_level_13']
+        "identifier": 'EVENT_729_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [153, 'EVENT_729_remove_from_level_13']
     },
     {
         "identifier": 'EVENT_729_action_queue_sync_2',

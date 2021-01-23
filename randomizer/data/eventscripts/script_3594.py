@@ -36,9 +36,9 @@ script = [
         "command": 'unfreeze_all_npcs'
     },
     {
-        "identifier": 'EVENT_3594_add_7',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_3594_inc_7',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3594_set_bit_8',

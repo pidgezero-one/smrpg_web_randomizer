@@ -92,9 +92,9 @@ script = [
         "args": [0x7000, 0x70d7]
     },
     {
-        "identifier": 'EVENT_613_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_613_run_dialog_18']
+        "identifier": 'EVENT_613_jmp_if_7000_equals_short_12',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_613_run_dialog_18']
     },
     {
         "identifier": 'EVENT_613_run_dialog_13',

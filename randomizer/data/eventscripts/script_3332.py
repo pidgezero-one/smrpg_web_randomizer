@@ -73,8 +73,8 @@ script = [
         "args": [0x707e, 1, 'EVENT_3332_jmp_if_bit_clear_154']
     },
     {
-        "identifier": 'EVENT_3332_stop_music_14',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3332_stop_music_FDA2_14',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_3332_play_music_default_volume_15',
@@ -151,12 +151,12 @@ script = [
             {
                 "identifier": 'EVENT_3332_action_queue_sync_22_SUBSCRIPT_embedded_animation_routine_2',
                 "command": 'embedded_animation_routine',
-                "args": [0x26]
+                "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x40, 0x00, 0x01, 0xe8, 0xff, 0x70, 0xfe, 0x80]
             },
             {
                 "identifier": 'EVENT_3332_action_queue_sync_22_SUBSCRIPT_embedded_animation_routine_3',
                 "command": 'embedded_animation_routine',
-                "args": [0x27]
+                "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x01, 0xf4, 0xff, 0x70, 0xfe, 0x80]
             },
             {
                 "identifier": 'EVENT_3332_action_queue_sync_22_SUBSCRIPT_pause_short_4',
@@ -329,37 +329,37 @@ script = [
         "args": [Music._24_GOT_A_STAR_PIECE_PART_2]
     },
     {
-        "identifier": 'EVENT_3332_start_embedded_action_script_async_33',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_33',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_33_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_33_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_33_SUBSCRIPT_pause_1',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_33_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [30]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_33_SUBSCRIPT_set_animation_speed_2',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_33_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_33_SUBSCRIPT_pause_3',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_33_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [60]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_33_SUBSCRIPT_set_animation_speed_4',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_33_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FASTEST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_33_SUBSCRIPT_pause_5',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_33_SUBSCRIPT_pause_5',
                 "command": 'pause',
                 "args": [90]
             }
@@ -371,61 +371,61 @@ script = [
         "args": [90]
     },
     {
-        "identifier": 'EVENT_3332_start_embedded_action_script_async_35',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_set_vram_priority_1',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_set_vram_priority_1',
                 "command": 'set_vram_priority',
                 "args": [VramPriority.OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_shift_z_down_steps_2',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_shift_z_down_steps_2',
                 "command": 'shift_z_down_steps',
                 "args": [4]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_set_bit_3',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_set_bit_3',
                 "command": 'set_bit',
                 "args": [0x7043, 1]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_create_packet_at_object_coords_jmp_if_null_4',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_create_packet_at_object_coords_jmp_if_null_4',
                 "command": 'create_packet_at_object_coords_jmp_if_null',
-                "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.DUMMY_0X07, 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_jump_to_height_silent_5']
+                "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.DUMMY_0X07, 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_jump_to_height_silent_5']
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_jump_to_height_silent_5',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_jump_to_height_silent_5',
                 "command": 'jump_to_height_silent',
                 "args": [144]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_floating_on_6',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_floating_on_6',
                 "command": 'floating_on'
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_set_solidity_bits_7',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_set_solidity_bits_7',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_shift_northwest_steps_8',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_shift_northwest_steps_8',
                 "command": 'shift_northwest_steps',
                 "args": [4]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_set_sprite_sequence_9',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
                 "args": [1, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
-                "identifier": 'EVENT_3332_start_embedded_action_script_async_35_SUBSCRIPT_db_10',
+                "identifier": 'EVENT_3332_start_embedded_action_script_sync_F1_35_SUBSCRIPT_db_10',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
             }
@@ -572,8 +572,8 @@ script = [
         "args": [0x7043, 1, 'EVENT_3332_pause_38']
     },
     {
-        "identifier": 'EVENT_3332_stop_music_40',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3332_stop_music_FDA2_40',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_3332_pause_41',

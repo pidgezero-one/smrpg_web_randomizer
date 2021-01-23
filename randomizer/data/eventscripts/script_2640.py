@@ -55,9 +55,9 @@ script = [
         "args": [items.RockCandy]
     },
     {
-        "identifier": 'EVENT_2640_add_8',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2640_inc_8',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2640_ret_9',

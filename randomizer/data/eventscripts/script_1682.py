@@ -17,9 +17,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1682_mem_compare_3',
-        "command": 'mem_compare',
-        "args": [0x7000, 100]
+        "identifier": 'EVENT_1682_mem_compare_val_3',
+        "command": 'mem_compare_val',
+        "args": [100]
     },
     {
         "identifier": 'EVENT_1682_jmp_if_comparison_result_is_lesser_4',

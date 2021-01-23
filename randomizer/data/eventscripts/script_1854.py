@@ -55,9 +55,9 @@ script = [
         "args": [68]
     },
     {
-        "identifier": 'EVENT_1854_add_9',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1854_inc_9',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1854_end_loop_10',

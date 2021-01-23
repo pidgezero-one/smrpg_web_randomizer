@@ -13,9 +13,9 @@ script = [
         "args": [0x7058, 7, 'EVENT_3287_run_dialog_3']
     },
     {
-        "identifier": 'EVENT_3287_add_2',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3287_inc_2',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3287_run_dialog_3',

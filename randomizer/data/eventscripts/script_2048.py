@@ -18,9 +18,9 @@ script = [
         "args": [0x7000, 0x70bd]
     },
     {
-        "identifier": 'EVENT_2048_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2048_action_queue_async_5']
+        "identifier": 'EVENT_2048_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2048_action_queue_async_5']
     },
     {
         "identifier": 'EVENT_2048_action_queue_async_4',

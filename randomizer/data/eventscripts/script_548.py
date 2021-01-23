@@ -15,47 +15,47 @@ script = [
     {
         "identifier": 'EVENT_548_set_7000_to_object_coord_2',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_548_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_548_jmp_if_random_above_66_19']
+        "identifier": 'EVENT_548_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_548_jmp_if_random_above_66_19']
     },
     {
-        "identifier": 'EVENT_548_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_548_jmp_if_random_above_128_13']
+        "identifier": 'EVENT_548_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_548_jmp_if_random_above_128_13']
     },
     {
-        "identifier": 'EVENT_548_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_548_jmp_if_random_above_66_23']
+        "identifier": 'EVENT_548_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_548_jmp_if_random_above_66_23']
     },
     {
-        "identifier": 'EVENT_548_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_548_jmp_if_random_above_128_17']
+        "identifier": 'EVENT_548_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_548_jmp_if_random_above_128_17']
     },
     {
-        "identifier": 'EVENT_548_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4, 'EVENT_548_jmp_if_random_above_66_27']
+        "identifier": 'EVENT_548_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4, 'EVENT_548_jmp_if_random_above_66_27']
     },
     {
-        "identifier": 'EVENT_548_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 5, 'EVENT_548_jmp_if_random_above_128_15']
+        "identifier": 'EVENT_548_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5, 'EVENT_548_jmp_if_random_above_128_15']
     },
     {
-        "identifier": 'EVENT_548_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 6, 'EVENT_548_jmp_if_random_above_66_31']
+        "identifier": 'EVENT_548_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [6, 'EVENT_548_jmp_if_random_above_66_31']
     },
     {
-        "identifier": 'EVENT_548_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 7, 'EVENT_548_jmp_if_random_above_128_11']
+        "identifier": 'EVENT_548_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7, 'EVENT_548_jmp_if_random_above_128_11']
     },
     {
         "identifier": 'EVENT_548_jmp_if_random_above_128_11',
@@ -100,7 +100,7 @@ script = [
     {
         "identifier": 'EVENT_548_jmp_if_random_above_66_19',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_548_jmp_if_random_above_66_23']
+        "args": [0x5f56, 0x5f6e]
     },
     {
         "identifier": 'EVENT_548_set_bit_20',
@@ -119,7 +119,7 @@ script = [
     {
         "identifier": 'EVENT_548_jmp_if_random_above_66_23',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_548_jmp_if_random_above_66_27']
+        "args": [0x5f62, 0x5f4a]
     },
     {
         "identifier": 'EVENT_548_set_bit_24',
@@ -138,7 +138,7 @@ script = [
     {
         "identifier": 'EVENT_548_jmp_if_random_above_66_27',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_548_jmp_if_random_above_66_23']
+        "args": [0x5f56, 0x5f6e]
     },
     {
         "identifier": 'EVENT_548_set_bit_28',
@@ -157,7 +157,7 @@ script = [
     {
         "identifier": 'EVENT_548_jmp_if_random_above_66_31',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_548_jmp_if_random_above_66_27']
+        "args": [0x5f62, 0x5f4a]
     },
     {
         "identifier": 'EVENT_548_set_bit_32',

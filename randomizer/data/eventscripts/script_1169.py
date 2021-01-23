@@ -205,9 +205,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_1169_jmp_if_var_equals_short_19',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 192, 'EVENT_1281_set_short_98']
+        "identifier": 'EVENT_1169_jmp_if_7000_equals_short_19',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [192, 'EVENT_1281_set_short_98']
     },
     {
         "identifier": 'EVENT_1169_ret_20',

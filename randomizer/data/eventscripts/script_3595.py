@@ -32,9 +32,9 @@ script = [
         "args": [2097, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_3595_add_6',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_3595_inc_6',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3595_unfreeze_all_npcs_7',

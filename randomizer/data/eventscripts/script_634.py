@@ -832,70 +832,70 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_634_start_embedded_action_script_async_71',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_8],
         "subscript": [
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_walk_to_xy_coords_1',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_walk_to_xy_coords_1',
                 "command": 'walk_to_xy_coords',
                 "args": [8, 32]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_set_solidity_bits_2',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_floating_on_3',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_floating_on_3',
                 "command": 'floating_on'
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_set_animation_speed_4',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_shift_southwest_steps_5',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_shift_southwest_steps_5',
                 "command": 'shift_southwest_steps',
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_shift_northwest_steps_6',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_shift_northwest_steps_6',
                 "command": 'shift_northwest_steps',
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_pause_7',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_pause_7',
                 "command": 'pause',
                 "args": [100]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_set_animation_speed_8',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_set_animation_speed_8',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_walk_1_step_northwest_9',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_walk_1_step_northwest_9',
                 "command": 'walk_1_step_northwest'
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_shift_northeast_steps_10',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_shift_northeast_steps_10',
                 "command": 'shift_northeast_steps',
                 "args": [4]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_shift_northeast_pixels_11',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_shift_northeast_pixels_11',
                 "command": 'shift_northeast_pixels',
                 "args": [8]
             },
             {
-                "identifier": 'EVENT_634_start_embedded_action_script_async_71_SUBSCRIPT_visibility_off_12',
+                "identifier": 'EVENT_634_start_embedded_action_script_sync_F1_71_SUBSCRIPT_visibility_off_12',
                 "command": 'visibility_off'
             }
         ]
@@ -995,8 +995,9 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_634_action_queue_async_90_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_634_action_queue_async_90_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x00]
             }
         ]
     },

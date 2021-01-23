@@ -13,22 +13,22 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_406_start_embedded_action_script_async_2',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_406_start_embedded_action_script_async_F1_2',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_406_start_embedded_action_script_async_2_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_406_start_embedded_action_script_async_F1_2_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_406_start_embedded_action_script_async_2_SUBSCRIPT_set_solidity_bits_1',
+                "identifier": 'EVENT_406_start_embedded_action_script_async_F1_2_SUBSCRIPT_set_solidity_bits_1',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_406_start_embedded_action_script_async_2_SUBSCRIPT_jump_to_height_silent_2',
+                "identifier": 'EVENT_406_start_embedded_action_script_async_F1_2_SUBSCRIPT_jump_to_height_silent_2',
                 "command": 'jump_to_height_silent',
                 "args": [0]
             }
@@ -76,22 +76,22 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_406_start_embedded_action_script_async_10',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_406_start_embedded_action_script_async_F1_10',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_406_start_embedded_action_script_async_10_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_406_start_embedded_action_script_async_F1_10_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_406_start_embedded_action_script_async_10_SUBSCRIPT_set_solidity_bits_1',
+                "identifier": 'EVENT_406_start_embedded_action_script_async_F1_10_SUBSCRIPT_set_solidity_bits_1',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_406_start_embedded_action_script_async_10_SUBSCRIPT_jump_to_height_silent_2',
+                "identifier": 'EVENT_406_start_embedded_action_script_async_F1_10_SUBSCRIPT_jump_to_height_silent_2',
                 "command": 'jump_to_height_silent',
                 "args": [0]
             }

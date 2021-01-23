@@ -60,9 +60,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1825_add_10',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1825_inc_10',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1825_end_loop_11',
@@ -84,19 +84,19 @@ script = [
         "args": [0x7000, 0x702e]
     },
     {
-        "identifier": 'EVENT_1825_mem_compare_15',
-        "command": 'mem_compare',
-        "args": [0x7000, 9]
+        "identifier": 'EVENT_1825_mem_compare_val_15',
+        "command": 'mem_compare_val',
+        "args": [9]
     },
     {
         "identifier": 'EVENT_1825_jmp_if_comparison_result_is_lesser_16',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1825_add_21']
+        "args": ['EVENT_1825_inc_21']
     },
     {
-        "identifier": 'EVENT_1825_mem_compare_17',
-        "command": 'mem_compare',
-        "args": [0x7000, 19]
+        "identifier": 'EVENT_1825_mem_compare_val_17',
+        "command": 'mem_compare_val',
+        "args": [19]
     },
     {
         "identifier": 'EVENT_1825_jmp_if_comparison_result_is_lesser_18',
@@ -114,9 +114,9 @@ script = [
         "args": ['EVENT_1825_set_short_mem_22']
     },
     {
-        "identifier": 'EVENT_1825_add_21',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_1825_inc_21',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_1825_set_short_mem_22',
@@ -144,9 +144,9 @@ script = [
         "args": [0x7000, 0x7030]
     },
     {
-        "identifier": 'EVENT_1825_mem_compare_27',
-        "command": 'mem_compare',
-        "args": [0x7000, 29]
+        "identifier": 'EVENT_1825_mem_compare_val_27',
+        "command": 'mem_compare_val',
+        "args": [29]
     },
     {
         "identifier": 'EVENT_1825_jmp_if_comparison_result_is_lesser_28',
@@ -154,9 +154,9 @@ script = [
         "args": ['EVENT_1825_add_33']
     },
     {
-        "identifier": 'EVENT_1825_mem_compare_29',
-        "command": 'mem_compare',
-        "args": [0x7000, 38]
+        "identifier": 'EVENT_1825_mem_compare_val_29',
+        "command": 'mem_compare_val',
+        "args": [38]
     },
     {
         "identifier": 'EVENT_1825_jmp_if_comparison_result_is_lesser_30',
@@ -189,8 +189,8 @@ script = [
         "args": [AreaObjects.NPC_7],
         "subscript": [
             {
-                "identifier": 'EVENT_1825_action_queue_sync_35_SUBSCRIPT_run_away_transfer_0',
-                "command": 'run_away_transfer'
+                "identifier": 'EVENT_1825_action_queue_sync_35_SUBSCRIPT_run_away_transfer_8A_0',
+                "command": 'run_away_transfer_8A'
             }
         ]
     },
@@ -200,8 +200,8 @@ script = [
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_1825_action_queue_async_36_SUBSCRIPT_run_away_transfer_0',
-                "command": 'run_away_transfer'
+                "identifier": 'EVENT_1825_action_queue_async_36_SUBSCRIPT_run_away_transfer_8A_0',
+                "command": 'run_away_transfer_8A'
             }
         ]
     },
@@ -216,8 +216,8 @@ script = [
         "args": [AreaObjects.NPC_8],
         "subscript": [
             {
-                "identifier": 'EVENT_1825_action_queue_sync_38_SUBSCRIPT_run_away_transfer_0',
-                "command": 'run_away_transfer'
+                "identifier": 'EVENT_1825_action_queue_sync_38_SUBSCRIPT_run_away_transfer_8A_0',
+                "command": 'run_away_transfer_8A'
             }
         ]
     },
@@ -227,8 +227,8 @@ script = [
         "args": [AreaObjects.NPC_10],
         "subscript": [
             {
-                "identifier": 'EVENT_1825_action_queue_async_39_SUBSCRIPT_run_away_transfer_0',
-                "command": 'run_away_transfer'
+                "identifier": 'EVENT_1825_action_queue_async_39_SUBSCRIPT_run_away_transfer_8A_0',
+                "command": 'run_away_transfer_8A'
             }
         ]
     },

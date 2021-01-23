@@ -24,9 +24,9 @@ script = [
         "command": 'enable_event_trigger_for_object_at_70A8'
     },
     {
-        "identifier": 'EVENT_3729_add_short_5',
-        "command": 'add_short',
-        "args": [0x71b4, 0x01]
+        "identifier": 'EVENT_3729_inc_short_5',
+        "command": 'inc_short',
+        "args": [0x71b4]
     },
     {
         "identifier": 'EVENT_3729_reset_priority_set_6',
@@ -397,7 +397,7 @@ script = [
     {
         "identifier": 'EVENT_3729_palette_set_32',
         "command": 'palette_set',
-        "args": [111, 1]
+        "args": [111, 1, [3]]
     },
     {
         "identifier": 'EVENT_3729_action_queue_async_33',
@@ -643,7 +643,7 @@ script = [
     {
         "identifier": 'EVENT_3729_palette_set_34',
         "command": 'palette_set',
-        "args": [84, 1]
+        "args": [84, 1, [3]]
     },
     {
         "identifier": 'EVENT_3729_pause_35',

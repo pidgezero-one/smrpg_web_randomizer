@@ -103,7 +103,7 @@ script = [
     {
         "identifier": 'EVENT_3686_palette_set_18',
         "command": 'palette_set',
-        "args": [142, 1]
+        "args": [142, 1, [3]]
     },
     {
         "identifier": 'EVENT_3686_action_queue_async_19',

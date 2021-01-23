@@ -105,42 +105,42 @@ script = [
         "args": [AreaObjects.NPC_9]
     },
     {
-        "identifier": 'EVENT_3824_start_embedded_action_script_async_19',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_19',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_3824_start_embedded_action_script_async_19_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_19_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [14, 86, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_3824_start_embedded_action_script_async_19_SUBSCRIPT_face_northeast_1',
+                "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_19_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast'
             }
         ]
     },
     {
-        "identifier": 'EVENT_3824_start_embedded_action_script_async_20',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_20',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_5],
         "subscript": [
             {
-                "identifier": 'EVENT_3824_start_embedded_action_script_async_20_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_20_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [21, 58, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_3824_start_embedded_action_script_async_20_SUBSCRIPT_face_northeast_1',
+                "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_20_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_3824_start_embedded_action_script_async_20_SUBSCRIPT_set_object_memory_bits_2',
+                "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_20_SUBSCRIPT_set_object_memory_bits_2',
                 "command": 'set_object_memory_bits',
                 "args": [0x0b, [0, 1]]
             },
             {
-                "identifier": 'EVENT_3824_start_embedded_action_script_async_20_SUBSCRIPT_set_solidity_bits_3',
+                "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_20_SUBSCRIPT_set_solidity_bits_3',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             }
@@ -344,22 +344,22 @@ script = [
         "args": [AreaObjects.NPC_3]
     },
     {
-        "identifier": 'EVENT_3824_start_embedded_action_script_async_48',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_48',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_3824_start_embedded_action_script_async_48_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_48_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [11, 82, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_3824_start_embedded_action_script_async_48_SUBSCRIPT_set_priority_1',
+                "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_48_SUBSCRIPT_set_priority_1',
                 "command": 'set_priority',
                 "args": [3]
             },
             {
-                "identifier": 'EVENT_3824_start_embedded_action_script_async_48_SUBSCRIPT_clear_solidity_bits_2',
+                "identifier": 'EVENT_3824_start_embedded_action_script_sync_F1_48_SUBSCRIPT_clear_solidity_bits_2',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             }

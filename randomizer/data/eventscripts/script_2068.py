@@ -376,8 +376,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_2068_stop_music_56',
-        "command": 'stop_music'
+        "identifier": 'EVENT_2068_stop_music_FDA2_56',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_2068_fade_out_music_to_volume_57',

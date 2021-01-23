@@ -232,9 +232,9 @@ script = [
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_1740_action_queue_async_32_SUBSCRIPT_add_short_3',
-                "command": 'add_short',
-                "args": [0x7024, 0x01]
+                "identifier": 'EVENT_1740_action_queue_async_32_SUBSCRIPT_inc_short_3',
+                "command": 'inc_short',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_1740_action_queue_async_32_SUBSCRIPT_set_solidity_bits_4',

@@ -108,12 +108,12 @@ script = [
     {
         "identifier": 'EVENT_3352_set_7000_to_object_coord_16',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3352_mem_compare_17',
-        "command": 'mem_compare',
-        "args": [0x7000, 1024]
+        "identifier": 'EVENT_3352_mem_compare_val_17',
+        "command": 'mem_compare_val',
+        "args": [1024]
     },
     {
         "identifier": 'EVENT_3352_jmp_if_loaded_memory_is_below_0_18',
@@ -215,7 +215,7 @@ script = [
     {
         "identifier": 'EVENT_3352_jmp_if_random_above_66_33',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_3352_set_short_43']
+        "args": [0x4d73, 0x4d94]
     },
     {
         "identifier": 'EVENT_3352_set_short_34',
@@ -368,9 +368,9 @@ script = [
         "args": [0x703e, 0x7000]
     },
     {
-        "identifier": 'EVENT_3352_jmp_if_var_equals_short_64',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3352_set_short_mem_68']
+        "identifier": 'EVENT_3352_jmp_if_7000_equals_short_64',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_3352_set_short_mem_68']
     },
     {
         "identifier": 'EVENT_3352_set_object_memory_to_65',
@@ -397,9 +397,9 @@ script = [
         "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_3352_mem_compare_70',
-        "command": 'mem_compare',
-        "args": [0x7000, 0]
+        "identifier": 'EVENT_3352_mem_compare_val_70',
+        "command": 'mem_compare_val',
+        "args": [0]
     },
     {
         "identifier": 'EVENT_3352_jmp_if_loaded_memory_is_not_0_71',
@@ -452,8 +452,8 @@ script = [
         "args": [0x7044, 6]
     },
     {
-        "identifier": 'EVENT_3352_pause_script_resume_on_next_dialog_page_a_81',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_3352_pause_script_resume_on_next_dialog_page_a_FD61_81',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_3352_set_bit_82',
@@ -481,9 +481,9 @@ script = [
         "args": [0x7000, 256]
     },
     {
-        "identifier": 'EVENT_3352_add_short_87',
-        "command": 'add_short',
-        "args": [0x7028, 0x01]
+        "identifier": 'EVENT_3352_inc_short_87',
+        "command": 'inc_short',
+        "args": [0x7028]
     },
     {
         "identifier": 'EVENT_3352_jmp_if_var_not_equals_short_88',

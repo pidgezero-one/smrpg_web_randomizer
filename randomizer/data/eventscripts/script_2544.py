@@ -14,12 +14,12 @@ script = [
     {
         "identifier": 'EVENT_2544_set_7000_to_object_coord_2',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2544_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2544_jmp_if_bit_clear_5']
+        "identifier": 'EVENT_2544_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2544_jmp_if_bit_clear_5']
     },
     {
         "identifier": 'EVENT_2544_set_bit_4',

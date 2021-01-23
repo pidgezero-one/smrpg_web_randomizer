@@ -22,32 +22,32 @@ script = [
         "args": [[ControllerDirections.X, ControllerDirections.B]]
     },
     {
-        "identifier": 'EVENT_3143_start_embedded_action_script_async_4',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_4',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.SCREEN_FOCUS],
         "subscript": [
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_4_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_4_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_4_SUBSCRIPT_db_1',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_4_SUBSCRIPT_db_1',
                 "command": 'db',
                 "args": [0xc8, 0x92]
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_4_SUBSCRIPT_add_short_2',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_4_SUBSCRIPT_add_short_2',
                 "command": 'add_short',
                 "args": [0x7016, 0xfffc]
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_4_SUBSCRIPT_add_short_3',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_4_SUBSCRIPT_add_short_3',
                 "command": 'add_short',
                 "args": [0x7018, 0xfff2]
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_4_SUBSCRIPT_run_away_shift_4',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_4_SUBSCRIPT_run_away_shift_4',
                 "command": 'run_away_shift'
             }
         ]
@@ -117,44 +117,44 @@ script = [
         "args": [0x000f]
     },
     {
-        "identifier": 'EVENT_3143_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_3143_set_short_23']
+        "identifier": 'EVENT_3143_jmp_if_7000_equals_short_13',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3143_set_short_23']
     },
     {
-        "identifier": 'EVENT_3143_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 5, 'EVENT_3143_set_short_25']
+        "identifier": 'EVENT_3143_jmp_if_7000_equals_short_14',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5, 'EVENT_3143_set_short_25']
     },
     {
-        "identifier": 'EVENT_3143_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4, 'EVENT_3143_set_short_27']
+        "identifier": 'EVENT_3143_jmp_if_7000_equals_short_15',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4, 'EVENT_3143_set_short_27']
     },
     {
-        "identifier": 'EVENT_3143_jmp_if_var_equals_short_16',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 6, 'EVENT_3143_set_short_29']
+        "identifier": 'EVENT_3143_jmp_if_7000_equals_short_16',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [6, 'EVENT_3143_set_short_29']
     },
     {
-        "identifier": 'EVENT_3143_jmp_if_var_equals_short_17',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_3143_set_short_31']
+        "identifier": 'EVENT_3143_jmp_if_7000_equals_short_17',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_3143_set_short_31']
     },
     {
-        "identifier": 'EVENT_3143_jmp_if_var_equals_short_18',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 10, 'EVENT_3143_set_short_33']
+        "identifier": 'EVENT_3143_jmp_if_7000_equals_short_18',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [10, 'EVENT_3143_set_short_33']
     },
     {
-        "identifier": 'EVENT_3143_jmp_if_var_equals_short_19',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 8, 'EVENT_3143_set_short_35']
+        "identifier": 'EVENT_3143_jmp_if_7000_equals_short_19',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [8, 'EVENT_3143_set_short_35']
     },
     {
-        "identifier": 'EVENT_3143_jmp_if_var_equals_short_20',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 9, 'EVENT_3143_set_short_37']
+        "identifier": 'EVENT_3143_jmp_if_7000_equals_short_20',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [9, 'EVENT_3143_set_short_37']
     },
     {
         "identifier": 'EVENT_3143_set_short_mem_21',
@@ -257,39 +257,39 @@ script = [
         "args": [AreaObjects.MEM_70AA]
     },
     {
-        "identifier": 'EVENT_3143_start_embedded_action_script_async_41',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_41_SUBSCRIPT_set_priority_0',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_41_SUBSCRIPT_clear_solidity_bits_1',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41_SUBSCRIPT_clear_solidity_bits_1',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_41_SUBSCRIPT_sequence_playback_off_2',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41_SUBSCRIPT_sequence_playback_off_2',
                 "command": 'sequence_playback_off'
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_41_SUBSCRIPT_shadow_off_3',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41_SUBSCRIPT_shadow_off_3',
                 "command": 'shadow_off'
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_41_SUBSCRIPT_face_east_4',
-                "command": 'face_east'
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41_SUBSCRIPT_face_east_7C_4',
+                "command": 'face_east_7C'
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_41_SUBSCRIPT_add_short_5',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41_SUBSCRIPT_add_short_5',
                 "command": 'add_short',
                 "args": [0x7016, 0x0030]
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_41_SUBSCRIPT_run_away_transfer_6',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41_SUBSCRIPT_run_away_transfer_6',
                 "command": 'run_away_transfer'
             }
         ]
@@ -402,29 +402,29 @@ script = [
         "command": 'unfreeze_camera'
     },
     {
-        "identifier": 'EVENT_3143_start_embedded_action_script_async_59',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_59',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.SCREEN_FOCUS],
         "subscript": [
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_59_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_59_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             }
         ]
     },
     {
-        "identifier": 'EVENT_3143_start_embedded_action_script_async_60',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_60',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.MEM_70AA],
         "subscript": [
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_60_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_60_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_async_60_SUBSCRIPT_object_memory_clear_bit_1',
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_60_SUBSCRIPT_object_memory_clear_bit_1',
                 "command": 'object_memory_clear_bit',
                 "args": [0x30, [4]]
             }

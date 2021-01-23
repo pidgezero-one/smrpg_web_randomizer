@@ -126,9 +126,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_463_jmp_if_var_equals_short_25',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_463_run_dialog_29']
+        "identifier": 'EVENT_463_jmp_if_7000_equals_short_25',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_463_run_dialog_29']
     },
     {
         "identifier": 'EVENT_463_close_dialog_26',

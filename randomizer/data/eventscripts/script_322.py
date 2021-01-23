@@ -10,12 +10,12 @@ script = [
     {
         "identifier": 'EVENT_322_set_bit_7_offset_1',
         "command": 'set_bit_7_offset',
-        "args": [0x015c]
+        "args": [0x015c, []]
     },
     {
         "identifier": 'EVENT_322_set_bit_7_offset_2',
         "command": 'set_bit_7_offset',
-        "args": [0x015e]
+        "args": [0x015e, []]
     },
     {
         "identifier": 'EVENT_322_jmp_if_bit_set_3',

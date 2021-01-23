@@ -113,8 +113,8 @@ script = [
         "args": [35]
     },
     {
-        "identifier": 'EVENT_1394_pause_script_resume_on_next_dialog_page_a_26',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1394_pause_script_resume_on_next_dialog_page_a_FD61_26',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1394_action_queue_async_27',
@@ -126,8 +126,9 @@ script = [
                 "command": 'fixed_f_coord_off'
             },
             {
-                "identifier": 'EVENT_1394_action_queue_async_27_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_1394_action_queue_async_27_SUBSCRIPT_face_southwest_7D_1',
+                "command": 'face_southwest_7D',
+                "args": [0x00]
             },
             {
                 "identifier": 'EVENT_1394_action_queue_async_27_SUBSCRIPT_jump_to_height_2',
@@ -137,8 +138,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1394_pause_script_resume_on_next_dialog_page_a_28',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1394_pause_script_resume_on_next_dialog_page_a_FD61_28',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1394_unsync_dialog_29',

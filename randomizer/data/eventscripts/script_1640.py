@@ -42,9 +42,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1640_mem_compare_8',
-        "command": 'mem_compare',
-        "args": [0x7000, 10]
+        "identifier": 'EVENT_1640_mem_compare_val_8',
+        "command": 'mem_compare_val',
+        "args": [10]
     },
     {
         "identifier": 'EVENT_1640_jmp_if_comparison_result_is_greater_or_equal_9',
@@ -70,9 +70,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1640_mem_compare_14',
-        "command": 'mem_compare',
-        "args": [0x7000, 30]
+        "identifier": 'EVENT_1640_mem_compare_val_14',
+        "command": 'mem_compare_val',
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1640_jmp_if_comparison_result_is_lesser_15',
@@ -142,9 +142,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1640_mem_compare_29',
-        "command": 'mem_compare',
-        "args": [0x7000, 30]
+        "identifier": 'EVENT_1640_mem_compare_val_29',
+        "command": 'mem_compare_val',
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1640_jmp_if_comparison_result_is_lesser_30',

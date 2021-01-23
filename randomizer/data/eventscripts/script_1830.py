@@ -56,9 +56,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1830_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1830_stop_embedded_action_script_23']
+        "identifier": 'EVENT_1830_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1830_stop_embedded_action_script_23']
     },
     {
         "identifier": 'EVENT_1830_play_sound_12',
@@ -80,9 +80,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1830_jmp_if_var_equals_short_16',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1830_pause_20']
+        "identifier": 'EVENT_1830_jmp_if_7000_equals_short_16',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1830_pause_20']
     },
     {
         "identifier": 'EVENT_1830_create_packet_at_object_coords_jmp_if_null_17',
@@ -104,9 +104,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1830_add_short_21',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'EVENT_1830_inc_short_21',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'EVENT_1830_end_loop_22',
@@ -137,29 +137,29 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_1830_jmp_if_var_equals_short_28',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 321, 'EVENT_1830_enter_area_44']
+        "identifier": 'EVENT_1830_jmp_if_7000_equals_short_28',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [321, 'EVENT_1830_enter_area_44']
     },
     {
-        "identifier": 'EVENT_1830_jmp_if_var_equals_short_29',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 457, 'EVENT_1830_enter_area_52']
+        "identifier": 'EVENT_1830_jmp_if_7000_equals_short_29',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [457, 'EVENT_1830_enter_area_52']
     },
     {
-        "identifier": 'EVENT_1830_jmp_if_var_equals_short_30',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 455, 'EVENT_1830_set_short_mem_35']
+        "identifier": 'EVENT_1830_jmp_if_7000_equals_short_30',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [455, 'EVENT_1830_set_short_mem_35']
     },
     {
-        "identifier": 'EVENT_1830_jmp_if_var_equals_short_31',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 322, 'EVENT_1830_enter_area_54']
+        "identifier": 'EVENT_1830_jmp_if_7000_equals_short_31',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [322, 'EVENT_1830_enter_area_54']
     },
     {
-        "identifier": 'EVENT_1830_jmp_if_var_equals_short_32',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 458, 'EVENT_1830_enter_area_62']
+        "identifier": 'EVENT_1830_jmp_if_7000_equals_short_32',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [458, 'EVENT_1830_enter_area_62']
     },
     {
         "identifier": 'EVENT_1830_enter_area_33',
@@ -184,7 +184,7 @@ script = [
     {
         "identifier": 'EVENT_1830_set_7000_to_object_coord_37',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70A8, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MEM_70A8, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_1830_set_short_mem_38',
@@ -194,7 +194,7 @@ script = [
     {
         "identifier": 'EVENT_1830_set_7000_to_object_coord_39',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70A8, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.MEM_70A8, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_1830_set_short_mem_40',

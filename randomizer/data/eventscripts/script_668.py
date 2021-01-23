@@ -308,12 +308,12 @@ script = [
         "args": [AreaObjects.NPC_4]
     },
     {
-        "identifier": 'EVENT_668_start_embedded_action_script_async_38',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_668_start_embedded_action_script_async_F1_38',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_4],
         "subscript": [
             {
-                "identifier": 'EVENT_668_start_embedded_action_script_async_38_SUBSCRIPT_face_northeast_0',
+                "identifier": 'EVENT_668_start_embedded_action_script_async_F1_38_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast'
             }
         ]
@@ -427,41 +427,41 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_668_start_embedded_action_script_async_54',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_668_start_embedded_action_script_sync_F1_54',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_4],
         "subscript": [
             {
-                "identifier": 'EVENT_668_start_embedded_action_script_async_54_SUBSCRIPT_sequence_playback_on_0',
+                "identifier": 'EVENT_668_start_embedded_action_script_sync_F1_54_SUBSCRIPT_sequence_playback_on_0',
                 "command": 'sequence_playback_on'
             },
             {
-                "identifier": 'EVENT_668_start_embedded_action_script_async_54_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_668_start_embedded_action_script_sync_F1_54_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_668_start_embedded_action_script_async_54_SUBSCRIPT_sequence_looping_on_2',
+                "identifier": 'EVENT_668_start_embedded_action_script_sync_F1_54_SUBSCRIPT_sequence_looping_on_2',
                 "command": 'sequence_looping_on'
             }
         ]
     },
     {
-        "identifier": 'EVENT_668_start_embedded_action_script_async_55',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_668_start_embedded_action_script_sync_F1_55',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_668_start_embedded_action_script_async_55_SUBSCRIPT_sequence_playback_on_0',
+                "identifier": 'EVENT_668_start_embedded_action_script_sync_F1_55_SUBSCRIPT_sequence_playback_on_0',
                 "command": 'sequence_playback_on'
             },
             {
-                "identifier": 'EVENT_668_start_embedded_action_script_async_55_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_668_start_embedded_action_script_sync_F1_55_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_668_start_embedded_action_script_async_55_SUBSCRIPT_sequence_looping_on_2',
+                "identifier": 'EVENT_668_start_embedded_action_script_sync_F1_55_SUBSCRIPT_sequence_looping_on_2',
                 "command": 'sequence_looping_on'
             }
         ]

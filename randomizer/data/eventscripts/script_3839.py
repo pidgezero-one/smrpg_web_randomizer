@@ -49,12 +49,12 @@ script = [
     {
         "identifier": 'EVENT_3839_set_7000_to_object_coord_5',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3839_mem_compare_6',
-        "command": 'mem_compare',
-        "args": [0x7000, 1296]
+        "identifier": 'EVENT_3839_mem_compare_val_6',
+        "command": 'mem_compare_val',
+        "args": [1296]
     },
     {
         "identifier": 'EVENT_3839_jmp_if_comparison_result_is_greater_or_equal_7',

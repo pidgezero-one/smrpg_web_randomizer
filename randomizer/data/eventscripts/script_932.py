@@ -40,12 +40,12 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_932_start_embedded_action_script_async_4',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_932_start_embedded_action_script_async_F1_4',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_932_start_embedded_action_script_async_4_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_932_start_embedded_action_script_async_F1_4_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             }
@@ -99,9 +99,9 @@ script = [
         "args": [items.YoshiCookie]
     },
     {
-        "identifier": 'EVENT_932_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_932_close_dialog_28']
+        "identifier": 'EVENT_932_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_932_close_dialog_28']
     },
     {
         "identifier": 'EVENT_932_set_short_mem_11',
@@ -199,9 +199,9 @@ script = [
         "args": [0x70d9, 0x7000]
     },
     {
-        "identifier": 'EVENT_932_mem_compare_24',
-        "command": 'mem_compare',
-        "args": [0x7000, 21]
+        "identifier": 'EVENT_932_mem_compare_val_24',
+        "command": 'mem_compare_val',
+        "args": [21]
     },
     {
         "identifier": 'EVENT_932_jmp_if_comparison_result_is_greater_or_equal_25',

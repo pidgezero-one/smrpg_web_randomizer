@@ -59,7 +59,7 @@ script = [
     {
         "identifier": 'EVENT_3210_set_7000_to_object_coord_11',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70A9, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MEM_70A9, Coords.X, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3210_jmp_if_var_equals_byte_12',
@@ -186,7 +186,7 @@ script = [
     {
         "identifier": 'EVENT_3210_set_7000_to_object_coord_26',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_7, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_7, Coords.X, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3210_dec_short_mem_27',
@@ -196,7 +196,7 @@ script = [
     {
         "identifier": 'EVENT_3210_jmp_if_loaded_memory_is_below_0_28',
         "command": 'jmp_if_loaded_memory_is_below_0',
-        "args": ['EVENT_3210_mem_compare_31']
+        "args": ['EVENT_3210_mem_compare_val_31']
     },
     {
         "identifier": 'EVENT_3210_mem_7000_xor_const_29',
@@ -204,14 +204,14 @@ script = [
         "args": [0xffff]
     },
     {
-        "identifier": 'EVENT_3210_add_30',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3210_inc_30',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
-        "identifier": 'EVENT_3210_mem_compare_31',
-        "command": 'mem_compare',
-        "args": [0x7000, 192]
+        "identifier": 'EVENT_3210_mem_compare_val_31',
+        "command": 'mem_compare_val',
+        "args": [192]
     },
     {
         "identifier": 'EVENT_3210_jmp_if_comparison_result_is_greater_or_equal_32',
@@ -320,7 +320,7 @@ script = [
     {
         "identifier": 'EVENT_3210_set_7000_to_object_coord_36',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_7, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_7, Coords.X, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3210_dec_short_mem_37',
@@ -330,7 +330,7 @@ script = [
     {
         "identifier": 'EVENT_3210_jmp_if_loaded_memory_is_below_0_38',
         "command": 'jmp_if_loaded_memory_is_below_0',
-        "args": ['EVENT_3210_mem_compare_41']
+        "args": ['EVENT_3210_mem_compare_val_41']
     },
     {
         "identifier": 'EVENT_3210_mem_7000_xor_const_39',
@@ -338,14 +338,14 @@ script = [
         "args": [0xffff]
     },
     {
-        "identifier": 'EVENT_3210_add_40',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3210_inc_40',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
-        "identifier": 'EVENT_3210_mem_compare_41',
-        "command": 'mem_compare',
-        "args": [0x7000, 192]
+        "identifier": 'EVENT_3210_mem_compare_val_41',
+        "command": 'mem_compare_val',
+        "args": [192]
     },
     {
         "identifier": 'EVENT_3210_jmp_if_comparison_result_is_greater_or_equal_42',
@@ -454,7 +454,7 @@ script = [
     {
         "identifier": 'EVENT_3210_set_7000_to_object_coord_46',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_7, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_7, Coords.X, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3210_dec_short_mem_47',
@@ -464,7 +464,7 @@ script = [
     {
         "identifier": 'EVENT_3210_jmp_if_loaded_memory_is_below_0_48',
         "command": 'jmp_if_loaded_memory_is_below_0',
-        "args": ['EVENT_3210_mem_compare_51']
+        "args": ['EVENT_3210_mem_compare_val_51']
     },
     {
         "identifier": 'EVENT_3210_mem_7000_xor_const_49',
@@ -472,14 +472,14 @@ script = [
         "args": [0xffff]
     },
     {
-        "identifier": 'EVENT_3210_add_50',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3210_inc_50',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
-        "identifier": 'EVENT_3210_mem_compare_51',
-        "command": 'mem_compare',
-        "args": [0x7000, 192]
+        "identifier": 'EVENT_3210_mem_compare_val_51',
+        "command": 'mem_compare_val',
+        "args": [192]
     },
     {
         "identifier": 'EVENT_3210_jmp_if_comparison_result_is_greater_or_equal_52',
@@ -678,7 +678,7 @@ script = [
             {
                 "identifier": 'EVENT_3210_action_queue_async_71_SUBSCRIPT_mem_compare_2',
                 "command": 'mem_compare',
-                "args": [0x7022, 0]
+                "args": [0x7016, 0]
             },
             {
                 "identifier": 'EVENT_3210_action_queue_async_71_SUBSCRIPT_jmp_if_loaded_memory_is_below_0_3',

@@ -193,9 +193,9 @@ script = [
         "args": [0x7000, 0x70ac]
     },
     {
-        "identifier": 'EVENT_611_add_32',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_611_inc_32',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_611_jmp_if_bit_set_33',
@@ -232,9 +232,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_611_mem_compare_40',
-        "command": 'mem_compare',
-        "args": [0x7000, 100]
+        "identifier": 'EVENT_611_mem_compare_val_40',
+        "command": 'mem_compare_val',
+        "args": [100]
     },
     {
         "identifier": 'EVENT_611_jmp_if_comparison_result_is_lesser_41',
@@ -251,9 +251,9 @@ script = [
         "command": 'dec_coins'
     },
     {
-        "identifier": 'EVENT_611_add_short_44',
-        "command": 'add_short',
-        "args": [0x7026, 0x01]
+        "identifier": 'EVENT_611_inc_short_44',
+        "command": 'inc_short',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_611_play_sound_45',
@@ -298,7 +298,7 @@ script = [
     {
         "identifier": 'EVENT_611_run_dialog_50',
         "command": 'run_dialog',
-        "args": [1003, AreaObjects.BOWSER, [_0x60Flags.MULTILINE]]
+        "args": [1003, AreaObjects.BOWSER, [_0x60Flags.BIT_6, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_611_remember_last_object_51',
@@ -563,19 +563,19 @@ script = [
         "args": [0x7000, 0x70b8]
     },
     {
-        "identifier": 'EVENT_611_jmp_if_var_equals_short_95',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_611_jmp_if_bit_set_104']
+        "identifier": 'EVENT_611_jmp_if_7000_equals_short_95',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_611_jmp_if_bit_set_104']
     },
     {
-        "identifier": 'EVENT_611_jmp_if_var_equals_short_96',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_611_action_queue_sync_100']
+        "identifier": 'EVENT_611_jmp_if_7000_equals_short_96',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_611_action_queue_sync_100']
     },
     {
-        "identifier": 'EVENT_611_jmp_if_var_equals_short_97',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_611_action_queue_async_103']
+        "identifier": 'EVENT_611_jmp_if_7000_equals_short_97',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_611_action_queue_async_103']
     },
     {
         "identifier": 'EVENT_611_action_queue_async_98',

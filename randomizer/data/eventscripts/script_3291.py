@@ -61,7 +61,7 @@ script = [
     {
         "identifier": 'EVENT_3291_run_dialog_5',
         "command": 'run_dialog',
-        "args": [1586, AreaObjects.BOWSER, [_0x60Flags.ASYNC]]
+        "args": [1586, AreaObjects.BOWSER, [_0x60Flags.BIT_6, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_3291_put_inventory_6',

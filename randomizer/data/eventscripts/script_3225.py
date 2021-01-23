@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_3225_set_7000_to_object_coord_1',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3225_set_short_mem_2',
@@ -25,7 +25,7 @@ script = [
     {
         "identifier": 'EVENT_3225_set_7000_to_object_coord_4',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3225_add_short_mem_5',
@@ -33,34 +33,34 @@ script = [
         "args": [0x7000, 0x7032]
     },
     {
-        "identifier": 'EVENT_3225_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3378, 'EVENT_3225_jmp_if_bit_set_15']
+        "identifier": 'EVENT_3225_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3378, 'EVENT_3225_jmp_if_bit_set_15']
     },
     {
-        "identifier": 'EVENT_3225_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3636, 'EVENT_3225_jmp_if_bit_set_33']
+        "identifier": 'EVENT_3225_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3636, 'EVENT_3225_jmp_if_bit_set_33']
     },
     {
-        "identifier": 'EVENT_3225_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3894, 'EVENT_3225_jmp_if_bit_set_51']
+        "identifier": 'EVENT_3225_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3894, 'EVENT_3225_jmp_if_bit_set_51']
     },
     {
-        "identifier": 'EVENT_3225_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4148, 'EVENT_3225_jmp_if_bit_set_69']
+        "identifier": 'EVENT_3225_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4148, 'EVENT_3225_jmp_if_bit_set_69']
     },
     {
-        "identifier": 'EVENT_3225_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3890, 'EVENT_3225_jmp_if_bit_set_87']
+        "identifier": 'EVENT_3225_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3890, 'EVENT_3225_jmp_if_bit_set_87']
     },
     {
-        "identifier": 'EVENT_3225_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3632, 'EVENT_3225_jmp_if_bit_set_105']
+        "identifier": 'EVENT_3225_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3632, 'EVENT_3225_jmp_if_bit_set_105']
     },
     {
         "identifier": 'EVENT_3225_close_dialog_12',

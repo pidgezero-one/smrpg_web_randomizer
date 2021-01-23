@@ -17,9 +17,9 @@ script = [
         "command": 'set_7000_to_tapped_button'
     },
     {
-        "identifier": 'EVENT_2802_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_2802_set_short_mem_5']
+        "identifier": 'EVENT_2802_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_2802_set_short_mem_5']
     },
     {
         "identifier": 'EVENT_2802_jmp_4',
@@ -32,9 +32,9 @@ script = [
         "args": [0x7000, 0x70ae]
     },
     {
-        "identifier": 'EVENT_2802_mem_compare_6',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_2802_mem_compare_val_6',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_2802_jmp_if_comparison_result_is_greater_or_equal_7',
@@ -42,9 +42,9 @@ script = [
         "args": ['EVENT_2802_jmp_if_bit_clear_14']
     },
     {
-        "identifier": 'EVENT_2802_add_8',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_2802_inc_8',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_2802_jmp_if_bit_clear_9',

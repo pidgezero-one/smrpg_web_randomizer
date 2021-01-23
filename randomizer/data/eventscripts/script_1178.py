@@ -548,24 +548,24 @@ script = [
         "args": [0x7000, 0x70bc]
     },
     {
-        "identifier": 'EVENT_1178_jmp_if_var_equals_short_27',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1178_set_31']
+        "identifier": 'EVENT_1178_jmp_if_7000_equals_short_27',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1178_set_31']
     },
     {
-        "identifier": 'EVENT_1178_jmp_if_var_equals_short_28',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1178_set_35']
+        "identifier": 'EVENT_1178_jmp_if_7000_equals_short_28',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1178_set_35']
     },
     {
-        "identifier": 'EVENT_1178_jmp_if_var_equals_short_29',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_1178_set_39']
+        "identifier": 'EVENT_1178_jmp_if_7000_equals_short_29',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_1178_set_39']
     },
     {
-        "identifier": 'EVENT_1178_jmp_if_var_equals_short_30',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_1178_play_sound_43']
+        "identifier": 'EVENT_1178_jmp_if_7000_equals_short_30',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_1178_play_sound_43']
     },
     {
         "identifier": 'EVENT_1178_set_31',

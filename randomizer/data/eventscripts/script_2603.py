@@ -433,8 +433,8 @@ script = [
         "args": [3262, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2603_pause_script_resume_on_next_dialog_page_a_53',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2603_pause_script_resume_on_next_dialog_page_a_FD61_53',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2603_set_action_script_async_54',

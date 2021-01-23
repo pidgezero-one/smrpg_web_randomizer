@@ -68,9 +68,9 @@ script = [
         "args": [AreaObjects.NPC_3, Rooms._228_FOREST_MAZE_AREA_04]
     },
     {
-        "identifier": 'EVENT_2611_add_13',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2611_inc_13',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2611_ret_14',

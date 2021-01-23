@@ -10,12 +10,12 @@ script = [
     {
         "identifier": 'EVENT_3329_set_7000_to_object_coord_1',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3329_jmp_if_var_not_equals_short_2',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_3329_pause_0']
+        "identifier": 'EVENT_3329_jmp_if_7000_not_equals_short_2',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_3329_pause_0']
     },
     {
         "identifier": 'EVENT_3329_jmp_if_bit_set_3',
@@ -84,11 +84,11 @@ script = [
             {
                 "identifier": 'EVENT_3329_action_queue_async_6_SUBSCRIPT_set_700C_to_object_coord_9',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_0, Coords.F]
+                "args": [AreaObjects.NPC_0, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_3329_action_queue_async_6_SUBSCRIPT_face_east_10',
-                "command": 'face_east'
+                "identifier": 'EVENT_3329_action_queue_async_6_SUBSCRIPT_face_east_7C_10',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_3329_action_queue_async_6_SUBSCRIPT_pause_11',
@@ -117,53 +117,54 @@ script = [
         "command": 'non_embedded_action_queue',
         "subscript": [
             {
-                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x14]
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_700C_to_object_coord_1',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.DUMMY_0X07, Coords.F]
+                "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_var_equals_short_2',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 7, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10']
+                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_700C_equals_short_2',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [7, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10']
             },
             {
-                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_var_equals_short_3',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 0, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10']
+                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_700C_equals_short_3',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [0, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10']
             },
             {
-                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_var_equals_short_4',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 1, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_12']
+                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_700C_equals_short_4',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [1, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_12']
             },
             {
-                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_var_equals_short_5',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 2, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_12']
+                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_700C_equals_short_5',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [2, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_12']
             },
             {
-                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_var_equals_short_6',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 3, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_14']
+                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_700C_equals_short_6',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [3, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_14']
             },
             {
-                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_var_equals_short_7',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 4, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16']
+                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_700C_equals_short_7',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [4, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16']
             },
             {
-                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_var_equals_short_8',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 5, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16']
+                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_700C_equals_short_8',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [5, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16']
             },
             {
-                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_var_equals_short_9',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 6, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16']
+                "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jmp_if_700C_equals_short_9',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [6, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_16']
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_set_sprite_sequence_10',

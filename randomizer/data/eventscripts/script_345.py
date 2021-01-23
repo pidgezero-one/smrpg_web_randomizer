@@ -81,24 +81,24 @@ script = [
                 "args": [0x00c0]
             },
             {
-                "identifier": 'EVENT_345_action_queue_async_13_SUBSCRIPT_jmp_if_var_equals_short_2',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 0, 'EVENT_345_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_12']
+                "identifier": 'EVENT_345_action_queue_async_13_SUBSCRIPT_jmp_if_700C_equals_short_2',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [0, 'EVENT_345_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_12']
             },
             {
-                "identifier": 'EVENT_345_action_queue_async_13_SUBSCRIPT_jmp_if_var_equals_short_3',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 64, 'EVENT_345_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_6']
+                "identifier": 'EVENT_345_action_queue_async_13_SUBSCRIPT_jmp_if_700C_equals_short_3',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [64, 'EVENT_345_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_6']
             },
             {
-                "identifier": 'EVENT_345_action_queue_async_13_SUBSCRIPT_jmp_if_var_equals_short_4',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 128, 'EVENT_345_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_6']
+                "identifier": 'EVENT_345_action_queue_async_13_SUBSCRIPT_jmp_if_700C_equals_short_4',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [128, 'EVENT_345_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_6']
             },
             {
-                "identifier": 'EVENT_345_action_queue_async_13_SUBSCRIPT_jmp_if_var_equals_short_5',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 192, 'EVENT_345_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_12']
+                "identifier": 'EVENT_345_action_queue_async_13_SUBSCRIPT_jmp_if_700C_equals_short_5',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [192, 'EVENT_345_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_12']
             },
             {
                 "identifier": 'EVENT_345_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_6',

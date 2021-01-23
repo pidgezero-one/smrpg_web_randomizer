@@ -65,7 +65,7 @@ script = [
     {
         "identifier": 'EVENT_1712_jmp_if_bit_set_10',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_1712_add_16']
+        "args": [0x7040, 1, 'EVENT_1712_inc_16']
     },
     {
         "identifier": 'EVENT_1712_jmp_if_object_not_in_level_11',
@@ -75,7 +75,7 @@ script = [
     {
         "identifier": 'EVENT_1712_jmp_12',
         "command": 'jmp',
-        "args": ['EVENT_1712_add_16']
+        "args": ['EVENT_1712_inc_16']
     },
     {
         "identifier": 'EVENT_1712_action_queue_async_13',
@@ -95,12 +95,12 @@ script = [
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_set_700C_to_object_coord_2',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+                "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
             },
             {
-                "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_mem_compare_3',
-                "command": 'mem_compare',
-                "args": [0x700c, 14]
+                "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_mem_compare_val_3',
+                "command": 'mem_compare_val',
+                "args": [14]
             },
             {
                 "identifier": 'EVENT_1712_action_queue_async_13_SUBSCRIPT_jmp_if_comparison_result_is_lesser_4',
@@ -161,9 +161,9 @@ script = [
         "args": [AreaObjects.MEM_70AB, Rooms._207_BANDITS_WAY_AREA_02]
     },
     {
-        "identifier": 'EVENT_1712_add_16',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1712_inc_16',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1712_end_loop_17',

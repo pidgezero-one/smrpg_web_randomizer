@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_607_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 409, 'EVENT_607_store_item_amount_7000_4']
+        "identifier": 'EVENT_607_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [409, 'EVENT_607_store_item_amount_7000_4']
     },
     {
         "identifier": 'EVENT_607_run_dialog_2',
@@ -26,9 +26,9 @@ script = [
         "args": [items.CastleKey2]
     },
     {
-        "identifier": 'EVENT_607_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_607_play_sound_8']
+        "identifier": 'EVENT_607_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_607_play_sound_8']
     },
     {
         "identifier": 'EVENT_607_run_dialog_6',

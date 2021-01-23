@@ -13,9 +13,9 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_1759_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 21, 'EVENT_1758_run_event_as_subroutine_3']
+        "identifier": 'EVENT_1759_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [21, 'EVENT_1758_run_event_as_subroutine_3']
     },
     {
         "identifier": 'EVENT_1759_run_event_as_subroutine_3',
@@ -53,9 +53,9 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_1759_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 21, 'EVENT_1758_jmp_if_bit_set_11']
+        "identifier": 'EVENT_1759_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [21, 'EVENT_1758_jmp_if_bit_set_11']
     },
     {
         "identifier": 'EVENT_1759_jmp_11',

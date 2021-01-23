@@ -52,7 +52,7 @@ script = [
     {
         "identifier": 'EVENT_2586_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 0, 'EVENT_2586_stop_music_17']
+        "args": [0x7040, 0, 'EVENT_2586_stop_music_FD9F_17']
     },
     {
         "identifier": 'EVENT_2586_fade_in_from_black_async_9',
@@ -91,8 +91,8 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_2586_stop_music_17',
-        "command": 'stop_music'
+        "identifier": 'EVENT_2586_stop_music_FD9F_17',
+        "command": 'stop_music_FD9F'
     },
     {
         "identifier": 'EVENT_2586_action_queue_async_18',
@@ -135,9 +135,9 @@ script = [
         "args": [AreaObjects.NPC_9, 851]
     },
     {
-        "identifier": 'EVENT_2586_add_24',
-        "command": 'add',
-        "args": [0x70e2, 0x01]
+        "identifier": 'EVENT_2586_inc_24',
+        "command": 'inc',
+        "args": [0x70e2]
     },
     {
         "identifier": 'EVENT_2586_set_short_mem_25',
@@ -145,29 +145,29 @@ script = [
         "args": [0x7000, 0x70e2]
     },
     {
-        "identifier": 'EVENT_2586_jmp_if_var_equals_short_26',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 5, 'EVENT_2586_summon_to_level_35']
+        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_26',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5, 'EVENT_2586_summon_to_level_35']
     },
     {
-        "identifier": 'EVENT_2586_jmp_if_var_equals_short_27',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 6, 'EVENT_2586_summon_to_level_37']
+        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_27',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [6, 'EVENT_2586_summon_to_level_37']
     },
     {
-        "identifier": 'EVENT_2586_jmp_if_var_equals_short_28',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 7, 'EVENT_2586_summon_to_level_39']
+        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_28',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7, 'EVENT_2586_summon_to_level_39']
     },
     {
-        "identifier": 'EVENT_2586_jmp_if_var_equals_short_29',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 8, 'EVENT_2586_summon_to_level_41']
+        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_29',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [8, 'EVENT_2586_summon_to_level_41']
     },
     {
-        "identifier": 'EVENT_2586_jmp_if_var_equals_short_30',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 9, 'EVENT_2586_summon_to_level_43']
+        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_30',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [9, 'EVENT_2586_summon_to_level_43']
     },
     {
         "identifier": 'EVENT_2586_pause_31',

@@ -25,11 +25,11 @@ script = [
             {
                 "identifier": 'EVENT_3328_action_queue_async_2_SUBSCRIPT_set_700C_to_object_coord_1',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.F]
+                "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_3328_action_queue_async_2_SUBSCRIPT_face_east_2',
-                "command": 'face_east'
+                "identifier": 'EVENT_3328_action_queue_async_2_SUBSCRIPT_face_east_7C_2',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_3328_action_queue_async_2_SUBSCRIPT_pause_3',

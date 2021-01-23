@@ -31,6 +31,7 @@ class EventScript:
         for script in table:
             scripts_with_lengths = []
             for command in script:
+                #print(command["identifier"])
                 script_with_length = command
                 assembler = EventScript()
                 func = getattr(assembler, command["command"], None)
@@ -46,6 +47,9 @@ class EventScript:
                     script_with_length["subscript_lines"] = dummy_subscript_lines
                     script_with_length["subscript_combined_lines"] = dummy_subscript
                     dummy_args.append(dummy_subscript)
+                if not func:
+                    raise Exception(
+                        '%s(%s) is an invalid instruction!' % (command["command"], dummy_args))
                 func(*dummy_args)
                 command_line = assembler.fin()
                 script_with_length["line"] = command_line
@@ -64,7 +68,7 @@ class EventScript:
             elif i >= bank_lengths[0] and i < bank_lengths[0] + bank_lengths[1] and bank != 0x1F:
                 bank = 0x1F
                 offset = 0x1F0C00
-            elif i >= bank_lengths[0] + bank_lengths[1] and i < bank_lengths[0] + bank_lengths[1] + bank_lengths[2] and bank != 0x20:
+            elif i >= bank_lengths[0] + bank_lengths[1] and bank != 0x20:
                 bank = 0x20
                 offset = 0x200800
             script = table_with_lengths[i]
@@ -131,7 +135,7 @@ class EventScript:
                         os_func = getattr(os_assembler, subscript_command["command"], None)
                         if not os_func:
                             raise Exception(
-                                '%s(%s) is an invalid instruction!' % (os_func, subscript_command["args"]))
+                                '%s(%s) is an invalid instruction!' % (subscript_command["command"], subscript_command["args"]))
                         os_func(*subscript_command["args"])
                         os_line = os_assembler.fin()
                         subscript_command["line"] = os_line
@@ -141,7 +145,7 @@ class EventScript:
                     command["args"].append(subscript_bytes)
                 if not func:
                     raise Exception(
-                        '%s(%s) is an invalid instruction!' % (func, command["args"]))
+                        '%s(%s) is an invalid instruction!' % (command["command"], command["args"]))
                 func(*command["args"])
                 line = assembler.fin()
                 command["line"] = line
@@ -159,7 +163,7 @@ class EventScript:
             elif i >= bank_lengths[0] and i < bank_lengths[0] + bank_lengths[1] and bank != 0x1F:
                 bank = 0x1F
                 offset = 0x1F0C00
-            elif i >= bank_lengths[0] + bank_lengths[1] and i < bank_lengths[0] + bank_lengths[1] + bank_lengths[2] and bank != 0x20:
+            elif i >= bank_lengths[0] + bank_lengths[1] and bank != 0x20:
                 bank = 0x20
                 offset = 0x200800
             script = table_with_real_args[i]
@@ -182,12 +186,28 @@ class EventScript:
                     bank_20_scripts += command["line"]
                 offset += len(command["line"])
 
-        empty_space = 0xF3FF - len(bank_1E_scripts)
+        print("bank 1E ptrs", hex(len(bank_1E_pointer_table)), len(bank_1E_pointer_table))
+        print("bank 1F ptrs", hex(len(bank_1F_pointer_table)), len(bank_1F_pointer_table))
+        print("bank 20 ptrs", hex(len(bank_20_pointer_table)), len(bank_20_pointer_table))
+
+        print("bank 1E before", hex(len(bank_1E_scripts)), len(bank_1E_scripts))
+        empty_space = 0xF400 - len(bank_1E_scripts)
+        print("empty", hex(empty_space), empty_space)
         bank_1E_scripts += bytearray([0xFF for x in range(empty_space)])
-        empty_space = 0xF3FF - len(bank_1F_scripts)
+        print("bank 1E after", hex(len(bank_1E_scripts)), len(bank_1E_scripts))
+        print("bank 1F before", hex(len(bank_1F_scripts)), len(bank_1F_scripts))
+        empty_space = 0xF400 - len(bank_1F_scripts)
+        print("empty", hex(empty_space), empty_space)
         bank_1F_scripts += bytearray([0xFF for x in range(empty_space)])
-        empty_space = 0xD7FF - len(bank_20_scripts)
-        bank_20_scripts += bytearray([0xFF for x in range(empty_space)])
+        print("bank 1F after", hex(len(bank_1F_scripts)), len(bank_1F_scripts))
+        print("bank 20 before", hex(len(bank_20_scripts)), len(bank_20_scripts))
+        empty_space = 0xD800 - len(bank_20_scripts)
+        print("empty", hex(empty_space), empty_space)
+        if (empty_space < 0):
+            bank_20_scripts = bank_20_scripts[0:(empty_space)]
+        else:
+            bank_20_scripts += bytearray([0xFF for x in range(empty_space)])
+        print("bank 20 after", hex(len(bank_20_scripts)), len(bank_20_scripts))
 
         return [bank_1E_pointer_table, bank_1E_scripts, bank_1F_pointer_table, bank_1F_scripts, bank_20_pointer_table, bank_20_scripts]
 
@@ -239,7 +259,7 @@ class EventScript:
         return self
 
     def level_mod(self, location, mod, flags):
-        return location | mod << 8 | self.consolidate_flags(flags)
+        return location | mod << 9 | self.consolidate_flags(flags)
 
     # Commands
 
@@ -260,9 +280,17 @@ class EventScript:
             self.commands.append(b)
         return self
 
-    def start_embedded_action_script_async(self, obj, script):
+    def start_embedded_action_script_async_F0(self, obj, script):
         self.append_byte(obj)
         self.append_byte(0xF0)
+        assert len(script) <= 128
+        self.append_byte(0x00 | (0x80) | len(script))
+        for b in script:
+            self.commands.append(b)
+        return self
+    def start_embedded_action_script_async_F1(self, obj, script):
+        self.append_byte(obj)
+        self.append_byte(0xF1)
         assert len(script) <= 128
         self.append_byte(0x00 | (0x80) | len(script))
         for b in script:
@@ -274,9 +302,17 @@ class EventScript:
             self.commands.append(b)
         return self
 
-    def start_embedded_action_script_sync(self, obj, script):
+    def start_embedded_action_script_sync_F0(self, obj, script):
         self.append_byte(obj)
         self.append_byte(0xF0)
+        assert len(script) <= 128
+        self.append_byte(0x00 | len(script))
+        for b in script:
+            self.commands.append(b)
+        return self
+    def start_embedded_action_script_sync_F1(self, obj, script):
+        self.append_byte(obj)
+        self.append_byte(0xF1)
         assert len(script) <= 128
         self.append_byte(0x00 | len(script))
         for b in script:
@@ -361,22 +397,25 @@ class EventScript:
 
     # other event functions are below
 
-    # 0xAA
+    # 0xA9, 0xAD
     def add(self, address, value):
         if 0x70A0 <= address <= 0x719F:
-            if value == 1:
-                self.append_byte(0xAA)
-                self.append_byte(address - 0x70A0)
-            else:
-                self.append_byte(0xA9)
-                self.append_byte(address - 0x70A0)
-                self.append_byte(value)
+            self.append_byte(0xA9)
+            self.append_byte(address - 0x70A0)
+            self.append_byte(value)
         elif address == 0x7000:
-            if (value == 0x01):
-                self.append_byte(0xAE)
-            else:
-                self.append_byte(0xAD)
-                self.append_short(value)
+            self.append_byte(0xAD)
+            self.append_short(value)
+        else:
+            1/0
+        return self
+    # 0xAA, 0xAE
+    def inc(self, address):
+        if 0x70A0 <= address <= 0x719F:
+            self.append_byte(0xAA)
+            self.append_byte(address - 0x70A0)
+        elif address == 0x7000:
+            self.append_byte(0xAE)
         else:
             1/0
         return self
@@ -413,16 +452,20 @@ class EventScript:
         self.append_byte(0x57)
         return self
 
-    # 0xB1, 0xB2
+    # 0xB1
     def add_short(self, address, value):
         if 0x7000 <= address <= 0x71FE:
-            if value == 1:
-                self.append_byte(0xB2)
-                self.append_byte((address - 0x7000) // 2)
-            else:
-                self.append_byte(0xB1)
-                self.append_byte((address - 0x7000) // 2)
-                self.append_short(value)
+            self.append_byte(0xB1)
+            self.append_byte((address - 0x7000) // 2)
+            self.append_short(value)
+        else:
+            1/0
+        return self
+    # 0xB2
+    def inc_short(self, address):
+        if 0x7000 <= address <= 0x71FE:
+            self.append_byte(0xB2)
+            self.append_byte((address - 0x7000) // 2)
         else:
             1/0
         return self
@@ -436,10 +479,10 @@ class EventScript:
             1/0
         return self
 
-    # 0x95
+    # 0x97
     def adjust_music_tempo(self, direction, change, duration):
-        self.append_byte(0x95)
-        self.append_byte(change)
+        self.append_byte(0x97)
+        self.append_byte(duration)
         if (direction == 0x01):
             assert 0 < change
             self.append_byte(256 - change)
@@ -660,7 +703,7 @@ class EventScript:
         self.append_byte(x)
         y_zhalf = y | ((f >> 24) & 0x80)
         self.append_byte(y_zhalf)
-        z_direction = z & (direction << 4)
+        z_direction = z | (direction << 5)
         self.append_byte(z_direction)
         return self
 
@@ -713,9 +756,13 @@ class EventScript:
         self.append_byte(music_id)
         return self
 
-    # 0x93
+    # 0x93, FD 0xA3
     def fade_out_music(self):
         self.append_byte(0x93)
+        return self
+    def fade_out_music_FDA3(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xA3)
         return self
 
     # 0x95
@@ -1000,7 +1047,7 @@ class EventScript:
     # FD 0x33
     def jmp_if_objects_action_script_running(self, object_id, address):
         self.append_byte(0xFD)
-        self.append_byte(0x39)
+        self.append_byte(0x33)
         self.append_byte(object_id)
         self.append_short(self.get_branch_address(address))
         return self
@@ -1031,9 +1078,10 @@ class EventScript:
         return self
 
     # 0xE9
-    def jmp_if_random_above_66(self, address):
+    def jmp_if_random_above_66(self, address, address2):
         self.append_byte(0xE9)
         self.append_short(self.get_branch_address(address))
+        self.append_short(self.get_branch_address(address2))
         return self
 
     # 0xE8
@@ -1049,12 +1097,14 @@ class EventScript:
         return self
 
     # 0xE2, 0xE4
+    def jmp_if_7000_equals_short(self, val, branch):
+        self.append_byte(0xE2)
+        self.append_short(val)
+        self.append_short(self.get_branch_address(branch))
+        return self
     def jmp_if_var_equals_short(self, test_addr, val, branch):
-        if test_addr == 0x7000:
-            self.append_byte(0xE2)
-        else:
-            self.append_byte(0xE4)
-            self.append_byte((test_addr - 0x7000) // 2)
+        self.append_byte(0xE4)
+        self.append_byte((test_addr - 0x7000) // 2)
         self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
@@ -1065,13 +1115,16 @@ class EventScript:
         self.append_short(self.get_branch_address(branch))
         return self
 
-    # 0xE3, 0xE5
+    # 0xE3
+    def jmp_if_7000_not_equals_short(self, val, branch):
+        self.append_byte(0xE3)
+        self.append_short(val)
+        self.append_short(self.get_branch_address(branch))
+        return self
+    # 0xE5
     def jmp_if_var_not_equals_short(self, test_addr, val, branch):
-        if test_addr == 0x7000:
-            self.append_byte(0xE3)
-        else:
-            self.append_byte(0xE5)
-            self.append_byte((test_addr - 0x7000) // 2)
+        self.append_byte(0xE5)
+        self.append_byte((test_addr - 0x7000) // 2)
         self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
@@ -1085,6 +1138,10 @@ class EventScript:
     # 0xF9, 0xFA - do they need to be distinguished?
     def jmp_to_start_of_this_script(self):
         self.append_byte(0xF9)
+        return self
+    # 0xF9, 0xFA - do they need to be distinguished?
+    def jmp_to_start_of_this_script_FA(self):
+        self.append_byte(0xFA)
         return self
 
     # 0xD3
@@ -1135,7 +1192,7 @@ class EventScript:
     # FD 0xB3
     def mem_7000_and_var(self, address):
         self.append_byte(0xFD)
-        self.append_byte(0xB0)
+        self.append_byte(0xB3)
         self.append_byte((address - 0x7000) // 2)
         return self
 
@@ -1149,7 +1206,7 @@ class EventScript:
     # FD 0xB4
     def mem_7000_or_var(self, address):
         self.append_byte(0xFD)
-        self.append_byte(0xB3)
+        self.append_byte(0xB4)
         self.append_byte((address - 0x7000) // 2)
         return self
 
@@ -1177,17 +1234,19 @@ class EventScript:
 
     # 0xC0, 0xC1, 0xC2
     def mem_compare(self, address, value):
-        if (address == 0x7000):
-            if (value >= 0x7000):
-                self.append_byte(0xC1)
-                self.append_byte((address - 0x7000) // 2)
-            else:
-                self.append_byte(0xC0)
-                self.append_short(value)
-        else:
-            self.append_byte(0xC2)
-            self.append_byte((address - 0x7000) // 2)
-            self.append_short(value)
+        self.append_byte(0xC2)
+        self.append_byte((address - 0x7000) // 2)
+        self.append_short(value)
+        return self
+
+    def mem_compare_val(self, value):
+        self.append_byte(0xC0)
+        self.append_short(value)
+        return self
+
+    def mem_compare_address(self, address):
+        self.append_byte(0xC1)
+        self.append_byte((address - 0x7000) // 2)
         return self
 
     # 0xBE
@@ -1229,7 +1288,8 @@ class EventScript:
     # 0x4B
     def open_location(self, location, flags):
         self.append_byte(0x4B)
-        self.append_short(location | self.consolidate_flags(flags))
+        self.append_byte(location)
+        self.append_byte(self.consolidate_flags(flags))
         return self
 
     # 0x4F
@@ -1251,9 +1311,10 @@ class EventScript:
         return self
 
     # 0x8A
-    def palette_set(self, palette_set, row):
+    # Seems to always end in 0x0F when you edit existing commands, even if you change no values
+    def palette_set(self, palette_set, row, unknown_bits=[]):
         self.append_byte(0x8A)
-        self.append_byte(((row - 1) << 4) | 0x0F)
+        self.append_byte(((row - 1) << 4) | self.consolidate_flags(unknown_bits))
         self.append_byte(palette_set)
         return self
 
@@ -1275,7 +1336,7 @@ class EventScript:
     # 0xF1
     def pause_short(self, value):
         self.append_byte(0xF1)
-        self.append_short(value)
+        self.append_short(value - 1)
         return self
 
     # 0x5B
@@ -1292,6 +1353,11 @@ class EventScript:
     def pause_script_resume_on_next_dialog_page_a(self):
         self.append_byte(0xFD)
         self.append_byte(0x60)
+        return self
+    # FD 0x61
+    def pause_script_resume_on_next_dialog_page_a_FD61(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x61)
         return self
 
     # FD 0x61
@@ -1336,6 +1402,12 @@ class EventScript:
 
     # 0x9D, FD 0x9D
     def play_sound_balance(self, sound_id, balance):
+        self.append_byte(0x9D)
+        self.append_byte(sound_id)
+        self.append_byte(balance)
+        return self
+    def play_sound_balance_FD9D(self, sound_id, balance):
+        self.append_byte(0xFD)
         self.append_byte(0x9D)
         self.append_byte(sound_id)
         self.append_byte(balance)
@@ -1454,15 +1526,16 @@ class EventScript:
         f = self.consolidate_flags(flags)
         if dialog_id == 0x7000:
             self.append_byte(0x61)
-            self.append_byte(f & 0xA0)
+            self.append_byte(f & 0xFF)
         else:
             self.append_byte(0x60)
-            self.append_short(dialog_id | ((f & 0xA0) << 8))
-        self.append_byte(above | ((f >> 8) & 0xC0))
+            self.append_short(dialog_id | ((f & 0xFF) << 8))
+        self.append_byte(above | (f >> 8))
         return self
 
     # 0x62
     def run_dialog_duration(self, dialog_id, duration, flags):
+        self.append_byte(0x62)
         f = self.consolidate_flags(flags)
         self.append_short(dialog_id | (duration << 13) | (f << 8))
         return self
@@ -1491,7 +1564,7 @@ class EventScript:
         assert 0x00 <= sequence <= 0x10
         # todo: write more assertions for value
         self.append_byte(0x4E)
-        self.append_short(sequence)
+        self.append_byte(sequence)
         self.append_byte(value)
         return self
 
@@ -1583,17 +1656,17 @@ class EventScript:
         return self
 
     # FD 0x88
-    def set_bit_7_offset(self, address):
+    def set_bit_7_offset(self, address, unknown_bits=[]):
         self.append_byte(0xFD)
         self.append_byte(0x88)
-        self.append_byte(((address - 0x0158) // 2) & 0x7F)
+        self.append_byte((((address - 0x0158) // 2) & 0x7F) | self.consolidate_flags(unknown_bits))
         return self
 
     # FD 0x89
-    def clear_bit_7_offset(self, address):
+    def clear_bit_7_offset(self, address, unknown_bits=[]):
         self.append_byte(0xFD)
         self.append_byte(0x89)
-        self.append_byte(((address - 0x0158) // 2) & 0x7F)
+        self.append_byte((((address - 0x0158) // 2) & 0x7F) | self.consolidate_flags(unknown_bits))
         return self
 
     # 0xB6, 0xB7
@@ -1613,8 +1686,8 @@ class EventScript:
         return self
 
     # 0xC4, 0xC5, 0xC6
-    def set_7000_to_object_coord(self, obj, coord, unit=0):
-        val = obj | (unit << 6)
+    def set_7000_to_object_coord(self, obj, coord, flags, unit=0):
+        val = obj | (unit << 6) | self.consolidate_flags(flags)
         cmd = coord + 0xC4
         self.append_byte(cmd)
         self.append_byte(val)
@@ -1779,7 +1852,7 @@ class EventScript:
     # FD 0xB8
     def store_7000_minecart_timer(self):
         self.append_byte(0xFD)
-        self.append_byte(0xB7)
+        self.append_byte(0xB8)
         return self
 
     # FD 0xA8, FD 0xA9, FD 0xAA
@@ -1820,6 +1893,26 @@ class EventScript:
     def stop_music(self):
         self.append_byte(0x94)
         return self
+    def stop_music_FD9F(self):
+        self.append_byte(0xFD)
+        self.append_byte(0x9F)
+        return self
+    def stop_music_FDA0(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xA0)
+        return self
+    def stop_music_FDA1(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xA1)
+        return self
+    def stop_music_FDA2(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xA2)
+        return self
+    def stop_music_FDA6(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xA6)
+        return self
 
     # 0x9B
     def stop_sound(self):
@@ -1835,7 +1928,7 @@ class EventScript:
     # FD 0x5D
     def store_character_equipment_7000(self, character, slot):
         self.append_byte(0xFD)
-        self.append_byte(0x4D)
+        self.append_byte(0x5D)
         self.append_byte(character)
         self.append_byte(slot)
         return self
@@ -1903,14 +1996,14 @@ class EventScript:
         return self
 
     # 0x80
-    def tint_layers(self, red, green, blue, speed, flags):
-        self.append_byte(0x7F)
+    def tint_layers(self, red, green, blue, speed, flags, unknown_flags=[]):
+        self.append_byte(0x80)
         red_ = red >> 3
         green_ = green >> 3
         blue_ = blue >> 3
-        self.append_short(red_ | (green_ << 5) | (blue_ << 10))
-        self.append_byte(speed)
+        self.append_short((self.consolidate_flags(unknown_flags) << 8) | red_ | (green_ << 5) | (blue_ << 10))
         self.append_byte(self.consolidate_flags(flags))
+        self.append_byte(speed)
         return self
 
     # 0x31

@@ -52,9 +52,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3334_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 387, 'EVENT_3334_action_queue_async_11']
+        "identifier": 'EVENT_3334_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [387, 'EVENT_3334_action_queue_async_11']
     },
     {
         "identifier": 'EVENT_3334_action_queue_async_8',

@@ -141,9 +141,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_1852_mem_compare_28',
-        "command": 'mem_compare',
-        "args": [0x7000, 5]
+        "identifier": 'EVENT_1852_mem_compare_val_28',
+        "command": 'mem_compare_val',
+        "args": [5]
     },
     {
         "identifier": 'EVENT_1852_jmp_if_comparison_result_is_greater_or_equal_29',
@@ -464,9 +464,9 @@ script = [
         "args": [0x7044, 7]
     },
     {
-        "identifier": 'EVENT_1852_add_short_81',
-        "command": 'add_short',
-        "args": [0x7028, 0x01]
+        "identifier": 'EVENT_1852_inc_short_81',
+        "command": 'inc_short',
+        "args": [0x7028]
     },
     {
         "identifier": 'EVENT_1852_mem_7000_shift_left_82',

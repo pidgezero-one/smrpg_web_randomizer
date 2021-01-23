@@ -258,7 +258,7 @@ script = [
             {
                 "identifier": 'EVENT_2365_action_queue_async_21_SUBSCRIPT_embedded_animation_routine_1',
                 "command": 'embedded_animation_routine',
-                "args": [0x27]
+                "args": [0x27, 0x00, 0x00, 0x1d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
             },
             {
                 "identifier": 'EVENT_2365_action_queue_async_21_SUBSCRIPT_pause_2',

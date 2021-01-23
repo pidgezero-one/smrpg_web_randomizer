@@ -33,9 +33,9 @@ script = [
         "args": [0xfd, 0xc9]
     },
     {
-        "identifier": 'EVENT_342_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 352, 'EVENT_342_ret_10']
+        "identifier": 'EVENT_342_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [352, 'EVENT_342_ret_10']
     },
     {
         "identifier": 'EVENT_342_play_sound_7',

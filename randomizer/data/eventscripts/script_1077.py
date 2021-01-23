@@ -58,16 +58,16 @@ script = [
         "args": [2582, AreaObjects.NPC_12, [_0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_1077_pause_script_resume_on_next_dialog_page_a_7',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1077_pause_script_resume_on_next_dialog_page_a_FD61_7',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
-        "identifier": 'EVENT_1077_pause_script_resume_on_next_dialog_page_a_8',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1077_pause_script_resume_on_next_dialog_page_a_FD61_8',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
-        "identifier": 'EVENT_1077_pause_script_resume_on_next_dialog_page_a_9',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1077_pause_script_resume_on_next_dialog_page_a_FD61_9',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1077_action_queue_async_10',
@@ -81,8 +81,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1077_pause_script_resume_on_next_dialog_page_a_11',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1077_pause_script_resume_on_next_dialog_page_a_FD61_11',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1077_unsync_dialog_12',

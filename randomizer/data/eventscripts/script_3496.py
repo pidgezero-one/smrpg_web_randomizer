@@ -127,9 +127,9 @@ script = [
         "args": [0x7000, 0x702a]
     },
     {
-        "identifier": 'EVENT_3496_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3496_pause_15']
+        "identifier": 'EVENT_3496_jmp_if_7000_equals_short_12',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_3496_pause_15']
     },
     {
         "identifier": 'EVENT_3496_create_packet_at_object_coords_jmp_if_null_13',
@@ -147,9 +147,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3496_add_short_16',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'EVENT_3496_inc_short_16',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'EVENT_3496_end_loop_17',

@@ -93,17 +93,17 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_637_start_embedded_action_script_async_12',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_637_start_embedded_action_script_sync_F1_12',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_10],
         "subscript": [
             {
-                "identifier": 'EVENT_637_start_embedded_action_script_async_12_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_637_start_embedded_action_script_sync_F1_12_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_637_start_embedded_action_script_async_12_SUBSCRIPT_shift_northeast_steps_1',
+                "identifier": 'EVENT_637_start_embedded_action_script_sync_F1_12_SUBSCRIPT_shift_northeast_steps_1',
                 "command": 'shift_northeast_steps',
                 "args": [4]
             }

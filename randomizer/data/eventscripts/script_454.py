@@ -254,7 +254,7 @@ script = [
     {
         "identifier": 'EVENT_454_palette_set_14',
         "command": 'palette_set',
-        "args": [110, 1]
+        "args": [110, 1, [0, 1, 3]]
     },
     {
         "identifier": 'EVENT_454_pause_15',

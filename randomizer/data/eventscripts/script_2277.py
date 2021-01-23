@@ -654,7 +654,7 @@ script = [
             {
                 "identifier": 'EVENT_2277_action_queue_async_25_SUBSCRIPT_embedded_animation_routine_9',
                 "command": 'embedded_animation_routine',
-                "args": [0x26]
+                "args": [0x26, 0x80, 0x01, 0xfe, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x80]
             },
             {
                 "identifier": 'EVENT_2277_action_queue_async_25_SUBSCRIPT_set_animation_speed_10',

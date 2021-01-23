@@ -13,44 +13,44 @@ script = [
         "args": [Sounds._032_UNDERGROUND_WARP, 6]
     },
     {
-        "identifier": 'EVENT_1674_start_embedded_action_script_async_2',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1674_start_embedded_action_script_async_F1_2',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_floating_off_0',
+                "identifier": 'EVENT_1674_start_embedded_action_script_async_F1_2_SUBSCRIPT_floating_off_0',
                 "command": 'floating_off'
             },
             {
-                "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_set_sprite_sequence_1',
+                "identifier": 'EVENT_1674_start_embedded_action_script_async_F1_2_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [15, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_start_loop_n_times_2',
+                "identifier": 'EVENT_1674_start_embedded_action_script_async_F1_2_SUBSCRIPT_start_loop_n_times_2',
                 "command": 'start_loop_n_times',
                 "args": [7]
             },
             {
-                "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_visibility_on_3',
+                "identifier": 'EVENT_1674_start_embedded_action_script_async_F1_2_SUBSCRIPT_visibility_on_3',
                 "command": 'visibility_on'
             },
             {
-                "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_pause_4',
+                "identifier": 'EVENT_1674_start_embedded_action_script_async_F1_2_SUBSCRIPT_pause_4',
                 "command": 'pause',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_visibility_off_5',
+                "identifier": 'EVENT_1674_start_embedded_action_script_async_F1_2_SUBSCRIPT_visibility_off_5',
                 "command": 'visibility_off'
             },
             {
-                "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_shift_z_up_pixels_6',
+                "identifier": 'EVENT_1674_start_embedded_action_script_async_F1_2_SUBSCRIPT_shift_z_up_pixels_6',
                 "command": 'shift_z_up_pixels',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_1674_start_embedded_action_script_async_2_SUBSCRIPT_end_loop_7',
+                "identifier": 'EVENT_1674_start_embedded_action_script_async_F1_2_SUBSCRIPT_end_loop_7',
                 "command": 'end_loop'
             }
         ]

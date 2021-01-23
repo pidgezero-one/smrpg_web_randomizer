@@ -39,7 +39,7 @@ script = [
     {
         "identifier": 'EVENT_1392_palette_set_2',
         "command": 'palette_set',
-        "args": [33, 7]
+        "args": [33, 7, [0]]
     },
     {
         "identifier": 'EVENT_1392_play_music_default_volume_3',

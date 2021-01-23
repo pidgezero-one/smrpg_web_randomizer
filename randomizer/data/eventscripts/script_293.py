@@ -70,7 +70,7 @@ script = [
             {
                 "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_set_700C_to_object_coord_1',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_3, Coords.F]
+                "args": [AreaObjects.NPC_3, Coords.F, []]
             },
             {
                 "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_add_2',
@@ -83,8 +83,8 @@ script = [
                 "args": [0x0007]
             },
             {
-                "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_face_east_4',
-                "command": 'face_east'
+                "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_face_east_7C_4',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_pause_5',
@@ -107,8 +107,8 @@ script = [
                 "args": [0x0007]
             },
             {
-                "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_face_east_9',
-                "command": 'face_east'
+                "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_face_east_7C_9',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_pause_10',
@@ -135,8 +135,8 @@ script = [
                 "args": [0x0007]
             },
             {
-                "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_face_east_15',
-                "command": 'face_east'
+                "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_face_east_7C_15',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_pause_16',
@@ -163,8 +163,8 @@ script = [
                 "args": [0x0007]
             },
             {
-                "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_face_east_21',
-                "command": 'face_east'
+                "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_face_east_7C_21',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_293_action_queue_sync_11_SUBSCRIPT_pause_22',
@@ -253,21 +253,21 @@ script = [
         "args": [579, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_293_start_embedded_action_script_async_27',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_293_start_embedded_action_script_async_F1_27',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.MEM_70A8],
         "subscript": [
             {
-                "identifier": 'EVENT_293_start_embedded_action_script_async_27_SUBSCRIPT_set_solidity_bits_0',
+                "identifier": 'EVENT_293_start_embedded_action_script_async_F1_27_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_293_start_embedded_action_script_async_27_SUBSCRIPT_floating_on_1',
+                "identifier": 'EVENT_293_start_embedded_action_script_async_F1_27_SUBSCRIPT_floating_on_1',
                 "command": 'floating_on'
             },
             {
-                "identifier": 'EVENT_293_start_embedded_action_script_async_27_SUBSCRIPT_set_solidity_bits_2',
+                "identifier": 'EVENT_293_start_embedded_action_script_async_F1_27_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_WALK_THROUGH]]
             }

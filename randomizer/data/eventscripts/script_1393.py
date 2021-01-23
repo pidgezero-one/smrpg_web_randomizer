@@ -162,8 +162,8 @@ script = [
         "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_1393_stop_music_28',
-        "command": 'stop_music'
+        "identifier": 'EVENT_1393_stop_music_FDA2_28',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_1393_pause_action_script_29',
@@ -775,11 +775,11 @@ script = [
     {
         "identifier": 'EVENT_1393_palette_set_179',
         "command": 'palette_set',
-        "args": [33, 7]
+        "args": [33, 7, [0]]
     },
     {
-        "identifier": 'EVENT_1393_stop_music_180',
-        "command": 'stop_music'
+        "identifier": 'EVENT_1393_stop_music_FDA2_180',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_1393_action_queue_async_181',
@@ -1111,9 +1111,9 @@ script = [
         "args": [0x0080]
     },
     {
-        "identifier": 'EVENT_1393_jmp_if_var_equals_short_247',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_1393_pause_action_script_249']
+        "identifier": 'EVENT_1393_jmp_if_7000_equals_short_247',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_1393_pause_action_script_249']
     },
     {
         "identifier": 'EVENT_1393_jmp_248',

@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'EVENT_1706_jmp_8',
         "command": 'jmp',
-        "args": ['EVENT_1706_add_12']
+        "args": ['EVENT_1706_inc_12']
     },
     {
         "identifier": 'EVENT_1706_pause_9',
@@ -62,9 +62,9 @@ script = [
         "args": [AreaObjects.MEM_70AB, 471]
     },
     {
-        "identifier": 'EVENT_1706_add_12',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1706_inc_12',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1706_end_loop_13',
@@ -98,7 +98,7 @@ script = [
     {
         "identifier": 'EVENT_1706_jmp_if_object_not_in_level_19',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.MEM_70AB, Rooms._078_BANDITS_WAY_AREA_04, 'EVENT_1706_add_23']
+        "args": [AreaObjects.MEM_70AB, Rooms._078_BANDITS_WAY_AREA_04, 'EVENT_1706_inc_23']
     },
     {
         "identifier": 'EVENT_1706_pause_action_script_20',
@@ -116,9 +116,9 @@ script = [
         "args": [AreaObjects.MEM_70AB, 474]
     },
     {
-        "identifier": 'EVENT_1706_add_23',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1706_inc_23',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1706_end_loop_24',

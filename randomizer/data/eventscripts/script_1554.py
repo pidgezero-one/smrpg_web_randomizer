@@ -80,9 +80,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1554_add_14',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1554_inc_14',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1554_end_loop_15',

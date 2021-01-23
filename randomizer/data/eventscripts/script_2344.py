@@ -89,12 +89,12 @@ script = [
     {
         "identifier": 'EVENT_2344_set_7000_to_object_coord_5',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2344_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 22, 'EVENT_2344_freeze_camera_9']
+        "identifier": 'EVENT_2344_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [22, 'EVENT_2344_freeze_camera_9']
     },
     {
         "identifier": 'EVENT_2344_fade_in_from_black_async_7',

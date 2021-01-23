@@ -13,9 +13,9 @@ script = [
         "args": [items.BrightCard]
     },
     {
-        "identifier": 'EVENT_483_jmp_if_var_not_equals_short_2',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_483_run_dialog_5']
+        "identifier": 'EVENT_483_jmp_if_7000_not_equals_short_2',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_483_run_dialog_5']
     },
     {
         "identifier": 'EVENT_483_run_dialog_3',

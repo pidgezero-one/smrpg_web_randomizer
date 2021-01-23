@@ -19,7 +19,7 @@ script = [
     {
         "identifier": 'EVENT_3757_jmp_if_random_above_66_3',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_3757_run_dialog_6']
+        "args": [0xbc46, 0xbc4d]
     },
     {
         "identifier": 'EVENT_3757_run_dialog_4',

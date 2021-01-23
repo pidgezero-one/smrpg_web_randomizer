@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_621_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 12, 'EVENT_621_jmp_if_bit_set_86']
+        "identifier": 'EVENT_621_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [12, 'EVENT_621_jmp_if_bit_set_86']
     },
     {
         "identifier": 'EVENT_621_jmp_if_bit_set_2',
@@ -68,9 +68,9 @@ script = [
         "args": [0x7000, 0x70b8]
     },
     {
-        "identifier": 'EVENT_621_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_621_set_10']
+        "identifier": 'EVENT_621_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_621_set_10']
     },
     {
         "identifier": 'EVENT_621_set_8',
@@ -200,9 +200,9 @@ script = [
         "args": [0x7000, 0x70b8]
     },
     {
-        "identifier": 'EVENT_621_jmp_if_var_equals_short_22',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_621_set_25']
+        "identifier": 'EVENT_621_jmp_if_7000_equals_short_22',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_621_set_25']
     },
     {
         "identifier": 'EVENT_621_set_23',
@@ -356,9 +356,9 @@ script = [
         "args": [0x7000, 0x70b8]
     },
     {
-        "identifier": 'EVENT_621_jmp_if_var_equals_short_36',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_621_set_39']
+        "identifier": 'EVENT_621_jmp_if_7000_equals_short_36',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_621_set_39']
     },
     {
         "identifier": 'EVENT_621_set_37',
@@ -567,9 +567,9 @@ script = [
         "args": [0x7000, 0x70b8]
     },
     {
-        "identifier": 'EVENT_621_jmp_if_var_equals_short_54',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_621_set_57']
+        "identifier": 'EVENT_621_jmp_if_7000_equals_short_54',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_621_set_57']
     },
     {
         "identifier": 'EVENT_621_set_55',
@@ -876,7 +876,7 @@ script = [
     {
         "identifier": 'EVENT_621_jmp_if_random_above_66_91',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_621_set_97']
+        "args": [0x7a1b, 0x7a27]
     },
     {
         "identifier": 'EVENT_621_add_coins_92',
@@ -975,9 +975,9 @@ script = [
         "args": [0x7000, 101]
     },
     {
-        "identifier": 'EVENT_621_mem_compare_112',
-        "command": 'mem_compare',
-        "args": [0x7000, 80]
+        "identifier": 'EVENT_621_mem_compare_val_112',
+        "command": 'mem_compare_val',
+        "args": [80]
     },
     {
         "identifier": 'EVENT_621_jmp_if_comparison_result_is_lesser_113',

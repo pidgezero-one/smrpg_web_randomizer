@@ -20,12 +20,12 @@ script = [
     {
         "identifier": 'EVENT_3487_set_7000_to_object_coord_3',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_1, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_1, Coords.Y, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3487_mem_compare_4',
-        "command": 'mem_compare',
-        "args": [0x7000, 12288]
+        "identifier": 'EVENT_3487_mem_compare_val_4',
+        "command": 'mem_compare_val',
+        "args": [12288]
     },
     {
         "identifier": 'EVENT_3487_jmp_if_comparison_result_is_greater_or_equal_5',
@@ -33,9 +33,9 @@ script = [
         "args": ['EVENT_3487_set_bit_16']
     },
     {
-        "identifier": 'EVENT_3487_mem_compare_6',
-        "command": 'mem_compare',
-        "args": [0x7000, 8704]
+        "identifier": 'EVENT_3487_mem_compare_val_6',
+        "command": 'mem_compare_val',
+        "args": [8704]
     },
     {
         "identifier": 'EVENT_3487_jmp_if_comparison_result_is_greater_or_equal_7',
@@ -43,9 +43,9 @@ script = [
         "args": ['EVENT_3487_set_bit_14']
     },
     {
-        "identifier": 'EVENT_3487_mem_compare_8',
-        "command": 'mem_compare',
-        "args": [0x7000, 5120]
+        "identifier": 'EVENT_3487_mem_compare_val_8',
+        "command": 'mem_compare_val',
+        "args": [5120]
     },
     {
         "identifier": 'EVENT_3487_jmp_if_comparison_result_is_greater_or_equal_9',

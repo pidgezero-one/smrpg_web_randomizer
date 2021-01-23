@@ -25,12 +25,12 @@ script = [
     {
         "identifier": 'EVENT_3504_set_7000_to_object_coord_4',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3504_mem_compare_5',
-        "command": 'mem_compare',
-        "args": [0x7000, 288]
+        "identifier": 'EVENT_3504_mem_compare_val_5',
+        "command": 'mem_compare_val',
+        "args": [288]
     },
     {
         "identifier": 'EVENT_3504_jmp_if_comparison_result_is_greater_or_equal_6',
@@ -101,7 +101,7 @@ script = [
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_mem_compare_10',
                 "command": 'mem_compare',
-                "args": [0x7030, 65475]
+                "args": [0x7024, 65475]
             },
             {
                 "identifier": 'EVENT_3504_action_queue_async_9_SUBSCRIPT_jmp_if_loaded_memory_is_above_or_equal_0_11',

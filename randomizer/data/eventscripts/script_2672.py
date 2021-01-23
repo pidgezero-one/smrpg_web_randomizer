@@ -917,9 +917,9 @@ script = [
         "args": [0x7000, 0x70c9]
     },
     {
-        "identifier": 'EVENT_2672_jmp_if_var_equals_short_70',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2672_clear_bit_134']
+        "identifier": 'EVENT_2672_jmp_if_7000_equals_short_70',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2672_clear_bit_134']
     },
     {
         "identifier": 'EVENT_2672_run_dialog_71',
@@ -927,9 +927,9 @@ script = [
         "args": [2551, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2672_add_72',
-        "command": 'add',
-        "args": [0x70c9, 0x01]
+        "identifier": 'EVENT_2672_inc_72',
+        "command": 'inc',
+        "args": [0x70c9]
     },
     {
         "identifier": 'EVENT_2672_set_short_mem_73',
@@ -937,9 +937,9 @@ script = [
         "args": [0x7000, 0x70c9]
     },
     {
-        "identifier": 'EVENT_2672_jmp_if_var_equals_short_74',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 255, 'EVENT_2672_set_132']
+        "identifier": 'EVENT_2672_jmp_if_7000_equals_short_74',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [255, 'EVENT_2672_set_132']
     },
     {
         "identifier": 'EVENT_2672_clear_bit_75',
@@ -972,9 +972,9 @@ script = [
         "args": [0x7000, 0x70c9]
     },
     {
-        "identifier": 'EVENT_2672_jmp_if_var_equals_short_81',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2672_clear_bit_84']
+        "identifier": 'EVENT_2672_jmp_if_7000_equals_short_81',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2672_clear_bit_84']
     },
     {
         "identifier": 'EVENT_2672_dec_82',
@@ -1035,9 +1035,9 @@ script = [
         "args": [0x7000, 21]
     },
     {
-        "identifier": 'EVENT_2672_mem_compare_94',
-        "command": 'mem_compare',
-        "args": [0x7000, 3]
+        "identifier": 'EVENT_2672_mem_compare_val_94',
+        "command": 'mem_compare_val',
+        "args": [3]
     },
     {
         "identifier": 'EVENT_2672_jmp_if_comparison_result_is_lesser_95',
@@ -1245,9 +1245,9 @@ script = [
         "args": [0x7044, 4]
     },
     {
-        "identifier": 'EVENT_2672_add_136',
-        "command": 'add',
-        "args": [0x70c9, 0x01]
+        "identifier": 'EVENT_2672_inc_136',
+        "command": 'inc',
+        "args": [0x70c9]
     },
     {
         "identifier": 'EVENT_2672_jmp_if_bit_set_137',

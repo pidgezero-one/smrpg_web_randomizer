@@ -377,8 +377,8 @@ script = [
         "args": [2569, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_1345_pause_script_resume_on_next_dialog_page_a_21',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1345_pause_script_resume_on_next_dialog_page_a_FD61_21',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1345_action_queue_async_22',
@@ -392,12 +392,12 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1345_pause_script_resume_on_next_dialog_page_a_23',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1345_pause_script_resume_on_next_dialog_page_a_FD61_23',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
-        "identifier": 'EVENT_1345_pause_script_resume_on_next_dialog_page_a_24',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1345_pause_script_resume_on_next_dialog_page_a_FD61_24',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1345_unsync_dialog_25',

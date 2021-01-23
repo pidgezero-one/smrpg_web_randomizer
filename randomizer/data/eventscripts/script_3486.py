@@ -463,9 +463,9 @@ script = [
         "args": [0x7000, 0x702a]
     },
     {
-        "identifier": 'EVENT_3486_mem_compare_34',
-        "command": 'mem_compare',
-        "args": [0x7000, 32768]
+        "identifier": 'EVENT_3486_mem_compare_val_34',
+        "command": 'mem_compare_val',
+        "args": [32768]
     },
     {
         "identifier": 'EVENT_3486_jmp_if_comparison_result_is_lesser_35',

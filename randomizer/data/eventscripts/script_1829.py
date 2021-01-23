@@ -18,9 +18,9 @@ script = [
         "args": [0x7000, 0x70cb]
     },
     {
-        "identifier": 'EVENT_1829_mem_compare_3',
-        "command": 'mem_compare',
-        "args": [0x7000, 10]
+        "identifier": 'EVENT_1829_mem_compare_val_3',
+        "command": 'mem_compare_val',
+        "args": [10]
     },
     {
         "identifier": 'EVENT_1829_jmp_if_comparison_result_is_greater_or_equal_4',
@@ -28,9 +28,9 @@ script = [
         "args": ['EVENT_1829_run_dialog_16']
     },
     {
-        "identifier": 'EVENT_1829_mem_compare_5',
-        "command": 'mem_compare',
-        "args": [0x7000, 4]
+        "identifier": 'EVENT_1829_mem_compare_val_5',
+        "command": 'mem_compare_val',
+        "args": [4]
     },
     {
         "identifier": 'EVENT_1829_jmp_if_comparison_result_is_greater_or_equal_6',
@@ -38,9 +38,9 @@ script = [
         "args": ['EVENT_1829_run_dialog_14']
     },
     {
-        "identifier": 'EVENT_1829_mem_compare_7',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_1829_mem_compare_val_7',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_1829_jmp_if_comparison_result_is_greater_or_equal_8',
@@ -50,7 +50,7 @@ script = [
     {
         "identifier": 'EVENT_1829_run_dialog_9',
         "command": 'run_dialog',
-        "args": [1319, AreaObjects.NPC_12, [_0x60Flags.ASYNC]]
+        "args": [1319, AreaObjects.NPC_12, [_0x60Flags.BIT_6, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1829_play_sound_10',
@@ -65,7 +65,7 @@ script = [
     {
         "identifier": 'EVENT_1829_run_dialog_12',
         "command": 'run_dialog',
-        "args": [1318, AreaObjects.NPC_12, [_0x60Flags.ASYNC]]
+        "args": [1318, AreaObjects.NPC_12, [_0x60Flags.BIT_6, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1829_jmp_13',
@@ -75,7 +75,7 @@ script = [
     {
         "identifier": 'EVENT_1829_run_dialog_14',
         "command": 'run_dialog',
-        "args": [1317, AreaObjects.NPC_12, [_0x60Flags.ASYNC]]
+        "args": [1317, AreaObjects.NPC_12, [_0x60Flags.BIT_6, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1829_jmp_15',
@@ -85,7 +85,7 @@ script = [
     {
         "identifier": 'EVENT_1829_run_dialog_16',
         "command": 'run_dialog',
-        "args": [1316, AreaObjects.NPC_12, [_0x60Flags.ASYNC]]
+        "args": [1316, AreaObjects.NPC_12, [_0x60Flags.BIT_6, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1829_load_600f_17',

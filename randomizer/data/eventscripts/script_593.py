@@ -15,17 +15,17 @@ script = [
     {
         "identifier": 'EVENT_593_palette_set_2',
         "command": 'palette_set',
-        "args": [81, 1]
+        "args": [81, 1, [3]]
     },
     {
         "identifier": 'EVENT_593_palette_set_3',
         "command": 'palette_set',
-        "args": [82, 1]
+        "args": [82, 1, [2, 3]]
     },
     {
         "identifier": 'EVENT_593_palette_set_4',
         "command": 'palette_set',
-        "args": [83, 1]
+        "args": [83, 1, [0, 2, 3]]
     },
     {
         "identifier": 'EVENT_593_pause_5',
@@ -1687,30 +1687,30 @@ script = [
         "args": [AreaObjects.NPC_9]
     },
     {
-        "identifier": 'EVENT_593_start_embedded_action_script_async_117',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_593_start_embedded_action_script_async_F1_117',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_593_start_embedded_action_script_async_117_SUBSCRIPT_bpl_26_27_28_0',
+                "identifier": 'EVENT_593_start_embedded_action_script_async_F1_117_SUBSCRIPT_bpl_26_27_28_0',
                 "command": 'bpl_26_27_28'
             },
             {
-                "identifier": 'EVENT_593_start_embedded_action_script_async_117_SUBSCRIPT_floating_off_1',
+                "identifier": 'EVENT_593_start_embedded_action_script_async_F1_117_SUBSCRIPT_floating_off_1',
                 "command": 'floating_off'
             },
             {
-                "identifier": 'EVENT_593_start_embedded_action_script_async_117_SUBSCRIPT_set_animation_speed_2',
+                "identifier": 'EVENT_593_start_embedded_action_script_async_F1_117_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_SLOW, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_593_start_embedded_action_script_async_117_SUBSCRIPT_shift_west_pixels_3',
+                "identifier": 'EVENT_593_start_embedded_action_script_async_F1_117_SUBSCRIPT_shift_west_pixels_3',
                 "command": 'shift_west_pixels',
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_593_start_embedded_action_script_async_117_SUBSCRIPT_shift_southwest_pixels_4',
+                "identifier": 'EVENT_593_start_embedded_action_script_async_F1_117_SUBSCRIPT_shift_southwest_pixels_4',
                 "command": 'shift_southwest_pixels',
                 "args": [4]
             }

@@ -88,12 +88,12 @@ script = [
             {
                 "identifier": 'EVENT_3188_action_queue_sync_3_SUBSCRIPT_embedded_animation_routine_4',
                 "command": 'embedded_animation_routine',
-                "args": [0x26]
+                "args": [0x26, 0x00, 0x00, 0xfe, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
             },
             {
                 "identifier": 'EVENT_3188_action_queue_sync_3_SUBSCRIPT_embedded_animation_routine_5',
                 "command": 'embedded_animation_routine',
-                "args": [0x27]
+                "args": [0x27, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
             },
             {
                 "identifier": 'EVENT_3188_action_queue_sync_3_SUBSCRIPT_play_sound_6',
@@ -130,17 +130,17 @@ script = [
             {
                 "identifier": 'EVENT_3188_action_queue_sync_4_SUBSCRIPT_embedded_animation_routine_3',
                 "command": 'embedded_animation_routine',
-                "args": [0x26]
+                "args": [0x26, 0x00, 0x00, 0xfe, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
             },
             {
                 "identifier": 'EVENT_3188_action_queue_sync_4_SUBSCRIPT_embedded_animation_routine_4',
                 "command": 'embedded_animation_routine',
-                "args": [0x27]
+                "args": [0x27, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
             },
             {
                 "identifier": 'EVENT_3188_action_queue_sync_4_SUBSCRIPT_embedded_animation_routine_5',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
             },
             {
                 "identifier": 'EVENT_3188_action_queue_sync_4_SUBSCRIPT_pause_6',

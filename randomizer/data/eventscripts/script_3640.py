@@ -34,7 +34,7 @@ script = [
     {
         "identifier": 'EVENT_3640_palette_set_6',
         "command": 'palette_set',
-        "args": [111, 1]
+        "args": [111, 1, [3]]
     },
     {
         "identifier": 'EVENT_3640_set_action_script_sync_7',
@@ -260,8 +260,8 @@ script = [
         "args": [Music._01_DODOS_COMING]
     },
     {
-        "identifier": 'EVENT_3640_stop_music_26',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3640_stop_music_FDA2_26',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_3640_pause_27',
@@ -861,9 +861,9 @@ script = [
         "args": [0x708a, 7, 'EVENT_3640_stop_music_227']
     },
     {
-        "identifier": 'EVENT_3640_add_short_101',
-        "command": 'add_short',
-        "args": [0x7024, 0x01]
+        "identifier": 'EVENT_3640_inc_short_101',
+        "command": 'inc_short',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3640_jmp_if_var_not_equals_short_102',
@@ -2288,7 +2288,7 @@ script = [
     {
         "identifier": 'EVENT_3640_palette_set_253',
         "command": 'palette_set',
-        "args": [84, 1]
+        "args": [84, 1, [3]]
     },
     {
         "identifier": 'EVENT_3640_action_queue_sync_254',

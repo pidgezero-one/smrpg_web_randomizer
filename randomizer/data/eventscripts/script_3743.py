@@ -50,7 +50,7 @@ script = [
     {
         "identifier": 'EVENT_3743_palette_set_9',
         "command": 'palette_set',
-        "args": [111, 1]
+        "args": [111, 1, [0, 1, 3]]
     },
     {
         "identifier": 'EVENT_3743_action_queue_sync_10',
@@ -140,7 +140,7 @@ script = [
     {
         "identifier": 'EVENT_3743_palette_set_18',
         "command": 'palette_set',
-        "args": [109, 1]
+        "args": [109, 1, [2, 3]]
     },
     {
         "identifier": 'EVENT_3743_pause_19',
@@ -150,17 +150,17 @@ script = [
     {
         "identifier": 'EVENT_3743_palette_set_20',
         "command": 'palette_set',
-        "args": [108, 1]
+        "args": [108, 1, [0, 2, 3]]
     },
     {
         "identifier": 'EVENT_3743_palette_set_21',
         "command": 'palette_set',
-        "args": [169, 1]
+        "args": [169, 1, [1, 2, 3]]
     },
     {
         "identifier": 'EVENT_3743_palette_set_22',
         "command": 'palette_set',
-        "args": [170, 1]
+        "args": [170, 1, [0, 1, 2, 3]]
     },
     {
         "identifier": 'EVENT_3743_fade_in_from_black_async_23',

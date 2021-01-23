@@ -93,7 +93,7 @@ script = [
     {
         "identifier": 'EVENT_2112_palette_set_8',
         "command": 'palette_set',
-        "args": [111, 1]
+        "args": [111, 1, [3]]
     },
     {
         "identifier": 'EVENT_2112_action_queue_sync_9',
@@ -168,7 +168,7 @@ script = [
     {
         "identifier": 'EVENT_2112_palette_set_13',
         "command": 'palette_set',
-        "args": [111, 1]
+        "args": [111, 1, [3]]
     },
     {
         "identifier": 'EVENT_2112_fade_in_from_black_async_14',

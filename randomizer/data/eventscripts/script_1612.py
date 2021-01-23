@@ -60,7 +60,7 @@ script = [
     {
         "identifier": 'EVENT_1612_jmp_if_object_not_in_level_11',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.MEM_70AB, Rooms._139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL, 'EVENT_1612_add_13']
+        "args": [AreaObjects.MEM_70AB, Rooms._139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL, 'EVENT_1612_inc_13']
     },
     {
         "identifier": 'EVENT_1612_set_action_script_sync_12',
@@ -68,9 +68,9 @@ script = [
         "args": [AreaObjects.MEM_70AB, 126]
     },
     {
-        "identifier": 'EVENT_1612_add_13',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1612_inc_13',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1612_end_loop_14',
@@ -94,7 +94,7 @@ script = [
     {
         "identifier": 'EVENT_1612_jmp_if_object_not_in_level_18',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.MEM_70AB, Rooms._139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL, 'EVENT_1612_add_20']
+        "args": [AreaObjects.MEM_70AB, Rooms._139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL, 'EVENT_1612_inc_20']
     },
     {
         "identifier": 'EVENT_1612_set_action_script_sync_19',
@@ -102,9 +102,9 @@ script = [
         "args": [AreaObjects.MEM_70AB, 126]
     },
     {
-        "identifier": 'EVENT_1612_add_20',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1612_inc_20',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1612_end_loop_21',

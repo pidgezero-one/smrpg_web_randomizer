@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_376_set_bit_7_offset_0',
         "command": 'set_bit_7_offset',
-        "args": [0x0158]
+        "args": [0x0158, []]
     },
     {
         "identifier": 'EVENT_376_run_background_event_1',

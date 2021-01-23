@@ -130,7 +130,7 @@ script = [
     {
         "identifier": 'EVENT_3153_run_dialog_25',
         "command": 'run_dialog',
-        "args": [1177, AreaObjects.MARIO, []]
+        "args": [1177, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_3153_put_inventory_26',
@@ -164,9 +164,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3153_add_30',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3153_inc_30',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_3153_set_short_31',
@@ -310,8 +310,8 @@ script = [
         "args": [NPCPackets._003_SUPER_STAR, 'EVENT_3153_ret_112']
     },
     {
-        "identifier": 'EVENT_3153_stop_music_60',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3153_stop_music_FDA0_60',
+        "command": 'stop_music_FDA0'
     },
     {
         "identifier": 'EVENT_3153_set_short_61',
@@ -782,19 +782,19 @@ script = [
         "args": [0x00f0]
     },
     {
-        "identifier": 'EVENT_3153_jmp_if_var_equals_short_158',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 240, 'EVENT_3153_play_sound_192']
+        "identifier": 'EVENT_3153_jmp_if_7000_equals_short_158',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [240, 'EVENT_3153_play_sound_192']
     },
     {
-        "identifier": 'EVENT_3153_jmp_if_var_equals_short_159',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 160, 'EVENT_3153_play_sound_162']
+        "identifier": 'EVENT_3153_jmp_if_7000_equals_short_159',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [160, 'EVENT_3153_play_sound_162']
     },
     {
-        "identifier": 'EVENT_3153_jmp_if_var_equals_short_160',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_3153_play_sound_177']
+        "identifier": 'EVENT_3153_jmp_if_7000_equals_short_160',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_3153_play_sound_177']
     },
     {
         "identifier": 'EVENT_3153_jmp_161',
@@ -1249,9 +1249,9 @@ script = [
         "args": [0x704a, 3]
     },
     {
-        "identifier": 'EVENT_3153_add_252',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3153_inc_252',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_3153_run_dialog_253',
@@ -1316,7 +1316,7 @@ script = [
     {
         "identifier": 'EVENT_3153_run_dialog_262',
         "command": 'run_dialog',
-        "args": [515, AreaObjects.MARIO, []]
+        "args": [515, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_3153_disable_trigger_263',
@@ -1417,9 +1417,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_3153_jmp_if_var_equals_short_284',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_3153_set_298']
+        "identifier": 'EVENT_3153_jmp_if_7000_equals_short_284',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3153_set_298']
     },
     {
         "identifier": 'EVENT_3153_set_285',
@@ -1431,9 +1431,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_3153_jmp_if_var_equals_short_287',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_3153_set_294']
+        "identifier": 'EVENT_3153_jmp_if_7000_equals_short_287',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3153_set_294']
     },
     {
         "identifier": 'EVENT_3153_set_288',
@@ -1445,9 +1445,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_3153_jmp_if_var_equals_short_290',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_3153_disable_trigger_241']
+        "identifier": 'EVENT_3153_jmp_if_7000_equals_short_290',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3153_disable_trigger_241']
     },
     {
         "identifier": 'EVENT_3153_set_291',

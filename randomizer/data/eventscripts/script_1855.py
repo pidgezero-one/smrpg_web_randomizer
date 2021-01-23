@@ -52,12 +52,12 @@ script = [
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_set_700C_to_object_coord_8',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+                "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
             },
             {
-                "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_jmp_if_var_not_equals_short_9',
-                "command": 'jmp_if_var_not_equals_short',
-                "args": [0x700c, 0, 'EVENT_1855_action_queue_async_1_SUBSCRIPT_walk_1_step_south_7']
+                "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_jmp_if_700C_not_equals_short_9',
+                "command": 'jmp_if_700C_not_equals_short',
+                "args": [0, 'EVENT_1855_action_queue_async_1_SUBSCRIPT_walk_1_step_south_7']
             },
             {
                 "identifier": 'EVENT_1855_action_queue_async_1_SUBSCRIPT_play_sound_10',

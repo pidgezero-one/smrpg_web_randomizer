@@ -33,9 +33,9 @@ script = [
         "args": [AreaObjects.NPC_6, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
     },
     {
-        "identifier": 'EVENT_2660_add_6',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2660_inc_6',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2660_set_7010_to_object_xyz_7',

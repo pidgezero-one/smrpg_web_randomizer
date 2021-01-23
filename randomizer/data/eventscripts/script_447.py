@@ -38,19 +38,19 @@ script = [
         "args": [0x7000, 4]
     },
     {
-        "identifier": 'EVENT_447_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_447_jmp_if_bit_set_29']
+        "identifier": 'EVENT_447_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_447_jmp_if_bit_set_29']
     },
     {
-        "identifier": 'EVENT_447_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_447_jmp_if_bit_set_54']
+        "identifier": 'EVENT_447_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_447_jmp_if_bit_set_54']
     },
     {
-        "identifier": 'EVENT_447_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_447_jmp_if_bit_set_73']
+        "identifier": 'EVENT_447_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_447_jmp_if_bit_set_73']
     },
     {
         "identifier": 'EVENT_447_jmp_if_bit_set_10',
@@ -68,9 +68,9 @@ script = [
         "args": [0x7000, 23]
     },
     {
-        "identifier": 'EVENT_447_mem_compare_13',
-        "command": 'mem_compare',
-        "args": [0x7000, 21]
+        "identifier": 'EVENT_447_mem_compare_val_13',
+        "command": 'mem_compare_val',
+        "args": [21]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_14',
@@ -78,9 +78,9 @@ script = [
         "args": ['EVENT_447_set_action_script_sync_20']
     },
     {
-        "identifier": 'EVENT_447_mem_compare_15',
-        "command": 'mem_compare',
-        "args": [0x7000, 16]
+        "identifier": 'EVENT_447_mem_compare_val_15',
+        "command": 'mem_compare_val',
+        "args": [16]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_16',
@@ -88,9 +88,9 @@ script = [
         "args": ['EVENT_447_set_action_script_sync_23']
     },
     {
-        "identifier": 'EVENT_447_mem_compare_17',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_447_mem_compare_val_17',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_18',
@@ -163,9 +163,9 @@ script = [
         "args": [0x7000, 23]
     },
     {
-        "identifier": 'EVENT_447_mem_compare_32',
-        "command": 'mem_compare',
-        "args": [0x7000, 21]
+        "identifier": 'EVENT_447_mem_compare_val_32',
+        "command": 'mem_compare_val',
+        "args": [21]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_33',
@@ -173,9 +173,9 @@ script = [
         "args": ['EVENT_447_set_action_script_sync_39']
     },
     {
-        "identifier": 'EVENT_447_mem_compare_34',
-        "command": 'mem_compare',
-        "args": [0x7000, 16]
+        "identifier": 'EVENT_447_mem_compare_val_34',
+        "command": 'mem_compare_val',
+        "args": [16]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_35',
@@ -183,9 +183,9 @@ script = [
         "args": ['EVENT_447_set_action_script_sync_42']
     },
     {
-        "identifier": 'EVENT_447_mem_compare_36',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_447_mem_compare_val_36',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_37',
@@ -245,7 +245,7 @@ script = [
     {
         "identifier": 'EVENT_447_jmp_if_random_above_66_48',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_447_jmp_if_bit_clear_0']
+        "args": [0x402c, 0x40cf]
     },
     {
         "identifier": 'EVENT_447_pause_49',
@@ -288,9 +288,9 @@ script = [
         "args": [0x7000, 23]
     },
     {
-        "identifier": 'EVENT_447_mem_compare_57',
-        "command": 'mem_compare',
-        "args": [0x7000, 21]
+        "identifier": 'EVENT_447_mem_compare_val_57',
+        "command": 'mem_compare_val',
+        "args": [21]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_58',
@@ -298,9 +298,9 @@ script = [
         "args": ['EVENT_447_set_action_script_sync_64']
     },
     {
-        "identifier": 'EVENT_447_mem_compare_59',
-        "command": 'mem_compare',
-        "args": [0x7000, 16]
+        "identifier": 'EVENT_447_mem_compare_val_59',
+        "command": 'mem_compare_val',
+        "args": [16]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_60',
@@ -308,9 +308,9 @@ script = [
         "args": ['EVENT_447_set_action_script_sync_67']
     },
     {
-        "identifier": 'EVENT_447_mem_compare_61',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_447_mem_compare_val_61',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_62',
@@ -383,9 +383,9 @@ script = [
         "args": [0x7000, 23]
     },
     {
-        "identifier": 'EVENT_447_mem_compare_76',
-        "command": 'mem_compare',
-        "args": [0x7000, 21]
+        "identifier": 'EVENT_447_mem_compare_val_76',
+        "command": 'mem_compare_val',
+        "args": [21]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_77',
@@ -393,9 +393,9 @@ script = [
         "args": ['EVENT_447_set_action_script_sync_83']
     },
     {
-        "identifier": 'EVENT_447_mem_compare_78',
-        "command": 'mem_compare',
-        "args": [0x7000, 16]
+        "identifier": 'EVENT_447_mem_compare_val_78',
+        "command": 'mem_compare_val',
+        "args": [16]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_79',
@@ -403,9 +403,9 @@ script = [
         "args": ['EVENT_447_set_action_script_sync_86']
     },
     {
-        "identifier": 'EVENT_447_mem_compare_80',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_447_mem_compare_val_80',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_447_jmp_if_comparison_result_is_greater_or_equal_81',

@@ -81,9 +81,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1537_add_15',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_1537_inc_15',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_1537_jmp_if_var_equals_byte_16',

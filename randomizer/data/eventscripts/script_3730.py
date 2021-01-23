@@ -35,7 +35,7 @@ script = [
     {
         "identifier": 'EVENT_3730_palette_set_6',
         "command": 'palette_set',
-        "args": [84, 1]
+        "args": [84, 1, [0, 1, 2, 3]]
     },
     {
         "identifier": 'EVENT_3730_pause_action_script_7',

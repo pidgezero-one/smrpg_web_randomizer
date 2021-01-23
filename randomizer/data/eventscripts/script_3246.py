@@ -7,14 +7,14 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3246_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 169, 'EVENT_3246_start_battle_5']
+        "identifier": 'EVENT_3246_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [169, 'EVENT_3246_start_battle_5']
     },
     {
-        "identifier": 'EVENT_3246_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 182, 'EVENT_3246_start_battle_5']
+        "identifier": 'EVENT_3246_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [182, 'EVENT_3246_start_battle_5']
     },
     {
         "identifier": 'EVENT_3246_start_battle_3',

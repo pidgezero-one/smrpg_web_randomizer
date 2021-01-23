@@ -102,8 +102,8 @@ script = [
                 "args": [0xc8, 0x91]
             },
             {
-                "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_run_away_transfer_9',
-                "command": 'run_away_transfer'
+                "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_run_away_transfer_8A_9',
+                "command": 'run_away_transfer_8A'
             },
             {
                 "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_ret_10',

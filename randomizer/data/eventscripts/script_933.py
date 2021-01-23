@@ -23,9 +23,9 @@ script = [
         "args": [items.YoshiCookie]
     },
     {
-        "identifier": 'EVENT_933_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_933_close_dialog_74']
+        "identifier": 'EVENT_933_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_933_close_dialog_74']
     },
     {
         "identifier": 'EVENT_933_set_short_mem_5',
@@ -107,9 +107,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_933_mem_compare_21',
-        "command": 'mem_compare',
-        "args": [0x7000, 50]
+        "identifier": 'EVENT_933_mem_compare_val_21',
+        "command": 'mem_compare_val',
+        "args": [50]
     },
     {
         "identifier": 'EVENT_933_jmp_if_comparison_result_is_greater_or_equal_22',
@@ -127,9 +127,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_933_mem_compare_25',
-        "command": 'mem_compare',
-        "args": [0x7000, 20]
+        "identifier": 'EVENT_933_mem_compare_val_25',
+        "command": 'mem_compare_val',
+        "args": [20]
     },
     {
         "identifier": 'EVENT_933_jmp_if_comparison_result_is_greater_or_equal_26',
@@ -137,9 +137,9 @@ script = [
         "args": ['EVENT_933_action_queue_async_31']
     },
     {
-        "identifier": 'EVENT_933_mem_compare_27',
-        "command": 'mem_compare',
-        "args": [0x7000, 10]
+        "identifier": 'EVENT_933_mem_compare_val_27',
+        "command": 'mem_compare_val',
+        "args": [10]
     },
     {
         "identifier": 'EVENT_933_jmp_if_comparison_result_is_greater_or_equal_28',
@@ -284,14 +284,14 @@ script = [
         "args": [0x7000, 101]
     },
     {
-        "identifier": 'EVENT_933_jmp_if_var_equals_short_50',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 100, 'EVENT_933_set_38']
+        "identifier": 'EVENT_933_jmp_if_7000_equals_short_50',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [100, 'EVENT_933_set_38']
     },
     {
         "identifier": 'EVENT_933_jmp_if_random_above_66_51',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_933_set_56']
+        "args": [0xacde, 0xacea]
     },
     {
         "identifier": 'EVENT_933_set_52',

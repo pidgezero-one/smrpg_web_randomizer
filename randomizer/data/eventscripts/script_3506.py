@@ -41,9 +41,9 @@ script = [
         "command": 'add_max_FP_7000'
     },
     {
-        "identifier": 'EVENT_3506_add_8',
-        "command": 'add',
-        "args": [0x70b1, 0x01]
+        "identifier": 'EVENT_3506_inc_8',
+        "command": 'inc',
+        "args": [0x70b1]
     },
     {
         "identifier": 'EVENT_3506_pause_9',

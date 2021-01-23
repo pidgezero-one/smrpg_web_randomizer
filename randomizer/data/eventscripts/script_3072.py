@@ -130,8 +130,8 @@ script = [
         "args": [NPCPackets._003_SUPER_STAR, 'EVENT_3072_ret_47']
     },
     {
-        "identifier": 'EVENT_3072_stop_music_26',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3072_stop_music_FDA0_26',
+        "command": 'stop_music_FDA0'
     },
     {
         "identifier": 'EVENT_3072_set_short_27',

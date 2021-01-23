@@ -83,11 +83,11 @@ obj_event_lens = [
 items_table = build_table(get_default_items(None))
 
 jmp_cmds = [0x3F, 0x3E, 0xD2, 0x41, 0xE6, 0xE7, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xEC, 0xED, 0x66, 0xEA,
-            0xEF, 0xEE, 0xEB, 0x3D, 0x39, 0xDF, 0xDB, 0xF8, 0x3A, 0x32, 0xE9, 0xE8, 0xE0, 0xE2, 0xE4, 0xE1, 0xE3, 0xE5, 0xD3]
+            0xEF, 0xEE, 0xEB, 0x3D, 0x39, 0xDF, 0xDB, 0xF8, 0x3A, 0x32, 0xE8, 0xE0, 0xE2, 0xE4, 0xE1, 0xE3, 0xE5, 0xD3]
 
 jmp_cmds_double = [0x42, 0x67]
 
-jmp_cmds_fd = [0x3E, 0x62, 0x96, 0x97, 0x3D, 0xF0, 0x34, 0x33]
+jmp_cmds_fd = [0x3E, 0x62, 0x96, 0x97, 0x3D, 0xF0, 0x34, 0x33, 0xE9]
 
 
 def is_eligible_nonembedded_command(cmd):
@@ -178,6 +178,9 @@ def tok(rom, start, end, bank):
                 print(list(map(hex, i)))
             print(hex(cmd), hex(dex))
             1/0
+
+        bytestring = [('0x%02x' % i) for i in rom[dex:dex+l]]
+        print (hex(dex), " ".join(bytestring))
         script.append((rom[dex:dex+l], dex))
         dex += l
     return script
@@ -334,7 +337,8 @@ def modify_party(args):
 def palette_set(args):
     palette_set = args[1]
     row = (args[0] >> 4) + 1
-    return 'palette_set', ['%i' % (palette_set), '%i' % (row)]
+    unknown_bits = (args[0] & 0x0F)
+    return 'palette_set', ['%i' % (palette_set), '%i' % (row), '%s' % get_flag_string(unknown_bits)]
 
 
 def palette_set_morphs(args):
@@ -351,7 +355,7 @@ def parse_object_coord(cmd):
         unit = bit(args, 0, 6)
         coord = cmd - 0xC4
         func_params = ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (
-            use_table_name('Coords', coord_table, coord))]
+            use_table_name('Coords', coord_table, coord)), '%s' % get_flag_string(args[0], bits=[7])]
         if (cmd < 0xC9):
             func_params.append('%s' % (use_table_name(
                 'CoordUnits', coord_unit_table, unit)))
@@ -363,8 +367,8 @@ def parse_obj_fxn(obj):
     def inner_parse_obj_fxn(args):
         sub_command = args[0]
         if sub_command <= 0xF1:
-            is_async = bit(args, 0, 7)
             if sub_command < 0xF0:
+                is_async = bit(args, 0, 7)
                 if (is_async):
                     cmd = 'action_queue_async'
                 else:
@@ -374,10 +378,12 @@ def parse_obj_fxn(obj):
                 else:
                     script = []
             else:  # 0xF0 and 0xF1 don't appear to be different...
+                is_async = bit(args, 1, 7)
                 if (is_async):
                     cmd = 'start_embedded_action_script_async'
                 else:
                     cmd = 'start_embedded_action_script_sync'
+                cmd = f'{cmd}_{sub_command:X}'
                 if len(args) > 2:
                     script = args[2:]
                 else:
@@ -483,7 +489,7 @@ def run_dialog(args):
         dialog_id = 0x7000
         dialog_output = '0x%04x' % (dialog_id)
     flags = get_flag_string(
-        args[flags_arg:position_arg+1], '_0x60Flags', _0x60_flags, [5, 7, 14, 15])
+        args[flags_arg:position_arg+1], '_0x60Flags', _0x60_flags, [5, 6, 7, 14, 15])
     above = args[position_arg] & 0x3F
     return 'run_dialog', [dialog_output, '%s' % (use_table_name('AreaObjects', area_object_table, above)), flags]
 
@@ -587,6 +593,14 @@ def stop_background_event(args):
     timer_memory = 0x701C + args[0] * 2
     return 'stop_background_event', ['0x%04x' % (timer_memory)]
 
+def set_bit_7_offset(args):
+    target = 0x0158 + (args[0] & 0x7F) * 2
+    unknown_bits = get_flag_string(args[0], bits=[7])
+    return 'set_bit_7_offset', ['0x%04x' % target, '%s' % unknown_bits]
+def clear_bit_7_offset(args):
+    target = 0x0158 + (args[0] & 0x7F) * 2
+    unknown_bits = get_flag_string(args[0], bits=[7])
+    return 'clear_bit_7_offset', ['0x%04x' % target, '%s' % unknown_bits]
 
 def tint_layers(args):
     colour_bytes = shortify(args, 0)
@@ -595,8 +609,9 @@ def tint_layers(args):
     blue = (colour_bytes & 0x7C00) >> 7
     speed = args[3]
     flags = get_flag_string(args[2], '_0x81Flags',
-                            _0x81_flags, [0, 1, 2, 4, 5, 6, 7])
-    return 'tint_layers', ['0x%02x' % (red), '0x%02x' % (green), '0x%02x' % (blue), '%i' % (speed), '%s' % flags]
+                            _0x81_flags, [0, 1, 2, 3, 4, 5, 6, 7])
+    unknown_flags = get_flag_string(args[1], bits=[7])
+    return 'tint_layers', ['0x%02x' % (red), '0x%02x' % (green), '0x%02x' % (blue), '%i' % (speed), '%s' % flags, '%s' % unknown_flags]
 
 
 names[0x00] = parse_obj_fxn(0x00)
@@ -788,15 +803,15 @@ names[0xA6] = clear_bit(0xA6)
 names[0xA7] = named('clear_mem_704x_at_7000_bit')
 names[0xA8] = named('set', byte(0x70A0), byte_int())
 names[0xA9] = named('add', byte(0x70A0), byte_int())
-names[0xAA] = named('add', byte(0x70A0), con(1))
+names[0xAA] = named('inc', byte(0x70A0))
 names[0xAB] = named('dec', byte(0x70A0))
 names[0xAC] = named('set', con(0x7000), short_int())
 names[0xAD] = named('add', con(0x7000), short_int())
-names[0xAE] = named('add', con(0x7000), con(1))
+names[0xAE] = named('inc', con(0x7000))
 names[0xAF] = named('dec', con(0x7000))
 names[0xB0] = named('set_short', dbyte(0x7000), short())
 names[0xB1] = named('add_short', dbyte(0x7000), short())
-names[0xB2] = named('add_short', dbyte(0x7000), con(1))
+names[0xB2] = named('inc_short', dbyte(0x7000))
 names[0xB3] = named('dec_short', dbyte(0x7000))
 names[0xB4] = named('set_short_mem', con(0x7000), byte(0x70A0))
 names[0xB5] = named('set_short_mem', byte(0x70A0), con(0x7000))
@@ -814,8 +829,8 @@ names[0xBC] = named('set_short_mem',
 names[0xBD] = named('swap_short_mem', dbyte(0x7000), dbyte(0x7000))
 names[0xBE] = named('move_7010_7012_7014_to_7016_7018_701A')
 names[0xBF] = named('move_7016_7018_701A_to_7010_7012_7014')
-names[0xC0] = named('mem_compare', con(0x7000), short_int())
-names[0xC1] = named('mem_compare', con(0x7000), dbyte(0x7000))
+names[0xC0] = named('mem_compare_val', short_int())
+names[0xC1] = named('mem_compare_address', dbyte(0x7000))
 names[0xC2] = named('mem_compare', dbyte(0x7000), short_int())
 names[0xC3] = named('set_7000_to_current_level')
 names[0xC4] = parse_object_coord(0xC4)
@@ -844,23 +859,23 @@ names[0xDB] = named('jmp_if_mem_704x_at_7000_bit_set', short())
 names[0xDC] = jmp_if_bit_clear(0xDC)
 names[0xDD] = jmp_if_bit_clear(0xDD)
 names[0xDE] = jmp_if_bit_clear(0xDE)
-names[0xDF] = named('jmp_if_mem_704x_at_7000_bit_set', short())
+names[0xDF] = named('jmp_if_mem_704x_at_7000_bit_clear', short())
 names[0xE0] = named('jmp_if_var_equals_byte',
                     byte(0x70A0), byte_int(), short())
 names[0xE1] = named('jmp_if_var_not_equals_byte',
                     byte(0x70A0), byte_int(), short())
-names[0xE2] = named('jmp_if_var_equals_short',
-                    con(0x7000), short_int(), short())
-names[0xE3] = named('jmp_if_var_not_equals_short',
-                    con(0x7000), short_int(), short())
+names[0xE2] = named('jmp_if_7000_equals_short',
+                    short_int(), short())
+names[0xE3] = named('jmp_if_7000_not_equals_short',
+                    short_int(), short())
 names[0xE4] = named('jmp_if_var_equals_short', dbyte(
-    0x7000), short_int(), short())  # may be confused for 0xE2
+    0x7000), short_int(), short())
 names[0xE5] = named('jmp_if_var_not_equals_short', dbyte(
-    0x7000), short_int(), short())  # may be confused for 0xE3
+    0x7000), short_int(), short())
 names[0xE6] = named('jmp_if_7000_all_bits_clear', flags_short(), short())
 names[0xE7] = named('jmp_if_7000_any_bits_set', flags_short(), short())
 names[0xE8] = named('jmp_if_random_above_128', short())
-names[0xE9] = named('jmp_if_random_above_66', short())
+names[0xE9] = named('jmp_if_random_above_66', short(), short())
 names[0xEA] = named('jmp_if_loaded_memory_is_0', short())
 names[0xEB] = named('jmp_if_loaded_memory_is_not_0', short())
 names[0xEC] = named('jmp_if_comparison_result_is_greater_or_equal', short())
@@ -876,8 +891,8 @@ names[0xF5] = named('remove_object_at_70A8_from_current_level')
 names[0xF6] = named('enable_event_trigger_for_object_at_70A8')
 names[0xF7] = named('disable_event_trigger_for_object_at_70A8')
 names[0xF8] = jmp_depending_on_object_presence
-names[0xF9] = named('jmp_to_start_of_this_script')  # indistinguishable from F9
-names[0xFA] = named('jmp_to_start_of_this_script')
+names[0xF9] = named('jmp_to_start_of_this_script')
+names[0xFA] = named('jmp_to_start_of_this_script_FA')  # indistinguishable from F9
 names[0xFB] = named('reset_and_choose_game')
 names[0xFC] = named('reset_game')
 # 0xFD is a special case
@@ -930,7 +945,7 @@ fd_names[0x5D] = named('store_character_equipment_7000', byte(prefix="PlayableCh
 fd_names[0x5E] = named('store_7000_item_quantity_to_70A7')
 # 0x5F undocumented
 fd_names[0x60] = named('pause_script_resume_on_next_dialog_page_a')
-fd_names[0x61] = named('pause_script_resume_on_next_dialog_page_a')
+fd_names[0x61] = named('pause_script_resume_on_next_dialog_page_a_FD61')
 fd_names[0x62] = named('if_0210_bits_012_clear_do_not_jump', short())
 # 0x63 undocumented
 fd_names[0x64] = named('set_experience_packet_7000')
@@ -939,8 +954,8 @@ fd_names[0x66] = named('display_intro_title', byte_int(), byte(
     prefix="IntroTitles", table=intro_titles_table))
 fd_names[0x67] = named('run_ending_credits')
 # 0x68 - 0x87 undocumented
-fd_names[0x88] = named('set_bit_7_offset', dbyte(0x0158))
-fd_names[0x89] = named('clear_bit_7_offset', dbyte(0x0158))
+fd_names[0x88] = set_bit_7_offset
+fd_names[0x89] = clear_bit_7_offset
 # 0x8A undocumented
 fd_names[0x8B] = named('set_bit_3_offset', dbyte(0x0158))
 # 0x8C - 0x8F undocumented
@@ -955,17 +970,17 @@ fd_names[0x97] = named('jmp_if_audio_memory_equals', byte_int(), short())
 # 0x98 - 0x9B undocumented
 fd_names[0x9C] = named('play_sound', byte(
     prefix="Sounds", table=sound_table), con_int(4))
-fd_names[0x9D] = named('play_sound_balance', byte(
+fd_names[0x9D] = named('play_sound_balance_FD9D', byte(
     prefix="Sounds", table=sound_table), byte_int())  # indistinguishable from 0x9D
 fd_names[0x9E] = named('play_music', byte(prefix="Music", table=music_table))
-fd_names[0x9F] = named('stop_music')  # indistinguishable from 0x94
-fd_names[0xA0] = named('stop_music')  # indistinguishable from 0x94
-fd_names[0xA1] = named('stop_music')  # indistinguishable from 0x94
-fd_names[0xA2] = named('stop_music')  # indistinguishable from 0x94
-fd_names[0xA3] = named('fade_out_music')  # indistinguishable from 0x93
+fd_names[0x9F] = named('stop_music_FD9F')  # indistinguishable from 0x94
+fd_names[0xA0] = named('stop_music_FDA0')  # indistinguishable from 0x94
+fd_names[0xA1] = named('stop_music_FDA1')  # indistinguishable from 0x94
+fd_names[0xA2] = named('stop_music_FDA2')  # indistinguishable from 0x94
+fd_names[0xA3] = named('fade_out_music_FDA3')  # indistinguishable from 0x93
 fd_names[0xA4] = named('slow_down_music')
 fd_names[0xA5] = named('speed_up_music_to_normal')
-fd_names[0xA6] = named('stop_music')  # indistinguishable from 0x94
+fd_names[0xA6] = named('stop_music_FDA6')  # indistinguishable from 0x94
 # 0xA7 undocumented
 fd_names[0xA8] = store_set_bits(0xA8)  # this is the same as 0xA0
 fd_names[0xA9] = store_set_bits(0xA9)  # this is the same as 0xA1
@@ -1023,6 +1038,8 @@ class Command(BaseCommand):
                 ptrs.append((bank["id"] << 16) | (shortify(rom, i)))
             event_lengths = []
             for i in range(len(ptrs)):
+                ptr = ptrs[i]
+                print('[%04i] @ [%x]-------------------\n' % (i, ptrs[i]))
                 if (i < len(ptrs) - 1):
                     event_lengths.append(ptrs[i + 1] - ptrs[i])
                     script_content = tok(rom, ptrs[i], ptrs[i + 1] - 1, bank)
@@ -1030,6 +1047,15 @@ class Command(BaseCommand):
                     event_lengths.append(bank["end"] - ptrs[i])
                     script_content = tok(rom, ptrs[i], bank["end"], bank)
                 scripts.append(script_content)
+                if (i < len(ptrs) - 1):
+                    flat_script = [item for sublist in script_content for item in sublist]
+                    ptr_audit = ptr + len(flat_script)
+                    next_ptr = ptrs[i+1]
+                    if (ptr_audit == next_ptr):
+                        print('\nPtr audit: %x + %x = %x (matches %x)' % (ptr, len(flat_script), ptr_audit, next_ptr))
+                    else:
+                        print('\nPtr audit: %x + %x = %x (DOES NOT MATCH %x)' % (ptr, len(flat_script), ptr_audit, next_ptr))
+                print('\n\n\n')
 
         # translate lines into commands and note any jump addresses
         for i in range(len(scripts)):

@@ -5,12 +5,12 @@ script = [
     {
         "identifier": 'EVENT_617_set_7000_to_object_coord_0',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_5, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_5, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_617_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 63, 'EVENT_617_enable_controls_until_return_3']
+        "identifier": 'EVENT_617_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [63, 'EVENT_617_enable_controls_until_return_3']
     },
     {
         "identifier": 'EVENT_617_action_queue_async_2',
@@ -50,7 +50,7 @@ script = [
     {
         "identifier": 'EVENT_617_jmp_if_random_above_66_6',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_617_action_queue_sync_11']
+        "args": [0x774a, 0x77a7]
     },
     {
         "identifier": 'EVENT_617_action_queue_async_7',
@@ -391,9 +391,9 @@ script = [
         "args": [0x7000, 0x70a9]
     },
     {
-        "identifier": 'EVENT_617_jmp_if_var_equals_short_23',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 28, 'EVENT_617_set_action_script_sync_26']
+        "identifier": 'EVENT_617_jmp_if_7000_equals_short_23',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [28, 'EVENT_617_set_action_script_sync_26']
     },
     {
         "identifier": 'EVENT_617_set_action_script_async_24',
@@ -492,14 +492,14 @@ script = [
         "args": [0x7000, 0x70b8]
     },
     {
-        "identifier": 'EVENT_617_jmp_if_var_equals_short_39',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_617_set_action_script_sync_43']
+        "identifier": 'EVENT_617_jmp_if_7000_equals_short_39',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_617_set_action_script_sync_43']
     },
     {
-        "identifier": 'EVENT_617_jmp_if_var_equals_short_40',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_617_set_action_script_sync_46']
+        "identifier": 'EVENT_617_jmp_if_7000_equals_short_40',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_617_set_action_script_sync_46']
     },
     {
         "identifier": 'EVENT_617_set_action_script_sync_41',

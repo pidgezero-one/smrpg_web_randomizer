@@ -23,31 +23,31 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_1570_start_embedded_action_script_async_4',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1570_start_embedded_action_script_sync_F1_4',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_1570_start_embedded_action_script_async_4_SUBSCRIPT_set_sprite_sequence_0',
+                "identifier": 'EVENT_1570_start_embedded_action_script_sync_F1_4_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1570_start_embedded_action_script_async_4_SUBSCRIPT_jump_to_height_1',
+                "identifier": 'EVENT_1570_start_embedded_action_script_sync_F1_4_SUBSCRIPT_jump_to_height_1',
                 "command": 'jump_to_height',
                 "args": [48]
             },
             {
-                "identifier": 'EVENT_1570_start_embedded_action_script_async_4_SUBSCRIPT_set_animation_speed_2',
+                "identifier": 'EVENT_1570_start_embedded_action_script_sync_F1_4_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_1570_start_embedded_action_script_async_4_SUBSCRIPT_walk_1_step_west_3',
+                "identifier": 'EVENT_1570_start_embedded_action_script_sync_F1_4_SUBSCRIPT_walk_1_step_west_3',
                 "command": 'walk_1_step_west'
             },
             {
-                "identifier": 'EVENT_1570_start_embedded_action_script_async_4_SUBSCRIPT_visibility_off_4',
+                "identifier": 'EVENT_1570_start_embedded_action_script_sync_F1_4_SUBSCRIPT_visibility_off_4',
                 "command": 'visibility_off'
             }
         ]
@@ -102,9 +102,9 @@ script = [
                 "args": [0x700c, 0x7034]
             },
             {
-                "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_jmp_if_var_equals_short_4',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 0, 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_play_sound_8']
+                "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_jmp_if_700C_equals_short_4',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [0, 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_play_sound_8']
             },
             {
                 "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_play_sound_5',
@@ -191,9 +191,9 @@ script = [
         "args": [0x7000, 0x702a]
     },
     {
-        "identifier": 'EVENT_1570_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1570_pause_18']
+        "identifier": 'EVENT_1570_jmp_if_7000_equals_short_15',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1570_pause_18']
     },
     {
         "identifier": 'EVENT_1570_create_packet_at_object_coords_jmp_if_null_16',
@@ -211,9 +211,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1570_add_short_19',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'EVENT_1570_inc_short_19',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'EVENT_1570_end_loop_20',

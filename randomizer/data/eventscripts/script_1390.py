@@ -477,8 +477,8 @@ script = [
         "args": [AreaObjects.NPC_0, 581]
     },
     {
-        "identifier": 'EVENT_1390_pause_script_resume_on_next_dialog_page_a_19',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1390_pause_script_resume_on_next_dialog_page_a_FD61_19',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1390_pause_action_script_20',
@@ -501,8 +501,8 @@ script = [
         "args": [AreaObjects.NPC_0, 582]
     },
     {
-        "identifier": 'EVENT_1390_pause_script_resume_on_next_dialog_page_a_24',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1390_pause_script_resume_on_next_dialog_page_a_FD61_24',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1390_pause_action_script_25',
@@ -549,8 +549,8 @@ script = [
         "args": [AreaObjects.NPC_0, 582]
     },
     {
-        "identifier": 'EVENT_1390_pause_script_resume_on_next_dialog_page_a_34',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1390_pause_script_resume_on_next_dialog_page_a_FD61_34',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1390_pause_action_script_35',
@@ -573,8 +573,8 @@ script = [
         "args": [AreaObjects.NPC_0, 582]
     },
     {
-        "identifier": 'EVENT_1390_pause_script_resume_on_next_dialog_page_a_39',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1390_pause_script_resume_on_next_dialog_page_a_FD61_39',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1390_pause_action_script_40',

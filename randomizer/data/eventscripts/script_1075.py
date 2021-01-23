@@ -58,8 +58,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1075_pause_script_resume_on_next_dialog_page_a_11',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1075_pause_script_resume_on_next_dialog_page_a_FD61_11',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1075_pause_12',
@@ -113,8 +113,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1075_pause_script_resume_on_next_dialog_page_a_17',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1075_pause_script_resume_on_next_dialog_page_a_FD61_17',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1075_pause_18',

@@ -57,9 +57,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1693_add_10',
-        "command": 'add',
-        "args": [0x70ad, 0x01]
+        "identifier": 'EVENT_1693_inc_10',
+        "command": 'inc',
+        "args": [0x70ad]
     },
     {
         "identifier": 'EVENT_1693_set_short_mem_11',
@@ -77,9 +77,9 @@ script = [
         "args": [0x702a, 20]
     },
     {
-        "identifier": 'EVENT_1693_mem_compare_14',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x702a]
+        "identifier": 'EVENT_1693_mem_compare_address_14',
+        "command": 'mem_compare_address',
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_1693_jmp_if_comparison_result_is_lesser_15',

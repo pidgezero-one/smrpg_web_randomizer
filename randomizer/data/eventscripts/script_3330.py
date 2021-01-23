@@ -37,7 +37,7 @@ script = [
     {
         "identifier": 'EVENT_3330_set_7000_to_object_coord_5',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
         "identifier": 'EVENT_3330_set_short_mem_6',

@@ -330,8 +330,8 @@ script = [
         "args": [0x7040, 0, 'EVENT_2066_jmp_30']
     },
     {
-        "identifier": 'EVENT_2066_stop_music_24',
-        "command": 'stop_music'
+        "identifier": 'EVENT_2066_stop_music_FDA2_24',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_2066_fade_out_music_to_volume_25',

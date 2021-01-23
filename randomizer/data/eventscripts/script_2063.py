@@ -33,9 +33,9 @@ script = [
         "args": [2624, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2063_mem_compare_6',
-        "command": 'mem_compare',
-        "args": [0x7000, 30]
+        "identifier": 'EVENT_2063_mem_compare_val_6',
+        "command": 'mem_compare_val',
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2063_jmp_if_comparison_result_is_greater_or_equal_7',
@@ -82,9 +82,9 @@ script = [
         "args": [0xf8c0]
     },
     {
-        "identifier": 'EVENT_2063_mem_compare_16',
-        "command": 'mem_compare',
-        "args": [0x7000, 100]
+        "identifier": 'EVENT_2063_mem_compare_val_16',
+        "command": 'mem_compare_val',
+        "args": [100]
     },
     {
         "identifier": 'EVENT_2063_jmp_if_comparison_result_is_greater_or_equal_17',
@@ -101,9 +101,9 @@ script = [
         "args": [2627, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2063_mem_compare_20',
-        "command": 'mem_compare',
-        "args": [0x7000, 30]
+        "identifier": 'EVENT_2063_mem_compare_val_20',
+        "command": 'mem_compare_val',
+        "args": [30]
     },
     {
         "identifier": 'EVENT_2063_jmp_if_comparison_result_is_greater_or_equal_21',
@@ -150,9 +150,9 @@ script = [
         "args": [0xf8c0]
     },
     {
-        "identifier": 'EVENT_2063_mem_compare_30',
-        "command": 'mem_compare',
-        "args": [0x7000, 100]
+        "identifier": 'EVENT_2063_mem_compare_val_30',
+        "command": 'mem_compare_val',
+        "args": [100]
     },
     {
         "identifier": 'EVENT_2063_jmp_if_comparison_result_is_greater_or_equal_31',
@@ -169,9 +169,9 @@ script = [
         "args": [2627, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2063_mem_compare_34',
-        "command": 'mem_compare',
-        "args": [0x7000, 100]
+        "identifier": 'EVENT_2063_mem_compare_val_34',
+        "command": 'mem_compare_val',
+        "args": [100]
     },
     {
         "identifier": 'EVENT_2063_jmp_if_comparison_result_is_greater_or_equal_35',

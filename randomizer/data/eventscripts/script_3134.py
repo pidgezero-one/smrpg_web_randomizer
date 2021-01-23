@@ -5,16 +5,16 @@ script = [
     {
         "identifier": 'EVENT_3134_set_7000_to_object_coord_0',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3134_move_script_to_background_thread_2_1',
         "command": 'move_script_to_background_thread_2'
     },
     {
-        "identifier": 'EVENT_3134_jmp_if_var_not_equals_short_2',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 256, 'EVENT_3134_set_short_11']
+        "identifier": 'EVENT_3134_jmp_if_7000_not_equals_short_2',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [256, 'EVENT_3134_set_short_11']
     },
     {
         "identifier": 'EVENT_3134_run_dialog_3',

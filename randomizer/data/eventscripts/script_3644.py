@@ -182,9 +182,9 @@ script = [
         "args": ['EVENT_3747_jmp_if_bit_clear_1']
     },
     {
-        "identifier": 'EVENT_3644_mem_compare_35',
-        "command": 'mem_compare',
-        "args": [0x7000, 45]
+        "identifier": 'EVENT_3644_mem_compare_val_35',
+        "command": 'mem_compare_val',
+        "args": [45]
     },
     {
         "identifier": 'EVENT_3644_jmp_if_comparison_result_is_greater_or_equal_36',
@@ -192,9 +192,9 @@ script = [
         "args": ['EVENT_3644_jmp_if_bit_set_54']
     },
     {
-        "identifier": 'EVENT_3644_mem_compare_37',
-        "command": 'mem_compare',
-        "args": [0x7000, 41]
+        "identifier": 'EVENT_3644_mem_compare_val_37',
+        "command": 'mem_compare_val',
+        "args": [41]
     },
     {
         "identifier": 'EVENT_3644_jmp_if_comparison_result_is_greater_or_equal_38',
@@ -202,9 +202,9 @@ script = [
         "args": ['EVENT_3644_set_bit_161']
     },
     {
-        "identifier": 'EVENT_3644_mem_compare_39',
-        "command": 'mem_compare',
-        "args": [0x7000, 34]
+        "identifier": 'EVENT_3644_mem_compare_val_39',
+        "command": 'mem_compare_val',
+        "args": [34]
     },
     {
         "identifier": 'EVENT_3644_jmp_if_comparison_result_is_greater_or_equal_40',
@@ -212,9 +212,9 @@ script = [
         "args": ['EVENT_3644_set_bit_145']
     },
     {
-        "identifier": 'EVENT_3644_mem_compare_41',
-        "command": 'mem_compare',
-        "args": [0x7000, 17]
+        "identifier": 'EVENT_3644_mem_compare_val_41',
+        "command": 'mem_compare_val',
+        "args": [17]
     },
     {
         "identifier": 'EVENT_3644_jmp_if_comparison_result_is_greater_or_equal_42',
@@ -642,9 +642,9 @@ script = [
         "args": [0x7000, 0x70e1]
     },
     {
-        "identifier": 'EVENT_3644_mem_compare_77',
-        "command": 'mem_compare',
-        "args": [0x7000, 4]
+        "identifier": 'EVENT_3644_mem_compare_val_77',
+        "command": 'mem_compare_val',
+        "args": [4]
     },
     {
         "identifier": 'EVENT_3644_jmp_if_comparison_result_is_greater_or_equal_78',
@@ -710,19 +710,19 @@ script = [
         "args": [0x7000, 4]
     },
     {
-        "identifier": 'EVENT_3644_jmp_if_var_equals_short_84',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_3644_jmp_if_bit_set_101']
+        "identifier": 'EVENT_3644_jmp_if_7000_equals_short_84',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_3644_jmp_if_bit_set_101']
     },
     {
-        "identifier": 'EVENT_3644_jmp_if_var_equals_short_85',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_3644_jmp_if_bit_set_114']
+        "identifier": 'EVENT_3644_jmp_if_7000_equals_short_85',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_3644_jmp_if_bit_set_114']
     },
     {
-        "identifier": 'EVENT_3644_jmp_if_var_equals_short_86',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_3644_jmp_if_bit_set_128']
+        "identifier": 'EVENT_3644_jmp_if_7000_equals_short_86',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3644_jmp_if_bit_set_128']
     },
     {
         "identifier": 'EVENT_3644_jmp_if_bit_set_87',
@@ -735,9 +735,9 @@ script = [
         "args": [0x7098, 2]
     },
     {
-        "identifier": 'EVENT_3644_add_89',
-        "command": 'add',
-        "args": [0x70e1, 0x01]
+        "identifier": 'EVENT_3644_inc_89',
+        "command": 'inc',
+        "args": [0x70e1]
     },
     {
         "identifier": 'EVENT_3644_summon_to_current_level_90',
@@ -803,9 +803,9 @@ script = [
         "args": [0x7098, 3]
     },
     {
-        "identifier": 'EVENT_3644_add_103',
-        "command": 'add',
-        "args": [0x70e1, 0x01]
+        "identifier": 'EVENT_3644_inc_103',
+        "command": 'inc',
+        "args": [0x70e1]
     },
     {
         "identifier": 'EVENT_3644_summon_to_current_level_104',
@@ -887,9 +887,9 @@ script = [
         "args": [0x7098, 4]
     },
     {
-        "identifier": 'EVENT_3644_add_116',
-        "command": 'add',
-        "args": [0x70e1, 0x01]
+        "identifier": 'EVENT_3644_inc_116',
+        "command": 'inc',
+        "args": [0x70e1]
     },
     {
         "identifier": 'EVENT_3644_summon_to_current_level_117',
@@ -1001,9 +1001,9 @@ script = [
         "args": [0x7098, 5]
     },
     {
-        "identifier": 'EVENT_3644_add_130',
-        "command": 'add',
-        "args": [0x70e1, 0x01]
+        "identifier": 'EVENT_3644_inc_130',
+        "command": 'inc',
+        "args": [0x70e1]
     },
     {
         "identifier": 'EVENT_3644_summon_to_current_level_131',
@@ -1156,7 +1156,7 @@ script = [
             {
                 "identifier": 'EVENT_3644_action_queue_sync_153_SUBSCRIPT_embedded_animation_routine_2',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3644_action_queue_sync_153_SUBSCRIPT_shift_east_steps_3',
@@ -1206,7 +1206,7 @@ script = [
             {
                 "identifier": 'EVENT_3644_action_queue_async_154_SUBSCRIPT_embedded_animation_routine_5',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3644_action_queue_async_154_SUBSCRIPT_shift_west_steps_6',
@@ -1242,7 +1242,7 @@ script = [
             {
                 "identifier": 'EVENT_3644_action_queue_sync_156_SUBSCRIPT_embedded_animation_routine_1',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3644_action_queue_sync_156_SUBSCRIPT_shift_east_steps_2',
@@ -1268,7 +1268,7 @@ script = [
             {
                 "identifier": 'EVENT_3644_action_queue_async_157_SUBSCRIPT_embedded_animation_routine_1',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3644_action_queue_async_157_SUBSCRIPT_shift_west_steps_2',

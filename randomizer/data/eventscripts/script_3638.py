@@ -934,17 +934,17 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3638_start_embedded_action_script_async_59',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3638_start_embedded_action_script_sync_F1_59',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_6],
         "subscript": [
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_59_SUBSCRIPT_pause_0',
+                "identifier": 'EVENT_3638_start_embedded_action_script_sync_F1_59_SUBSCRIPT_pause_0',
                 "command": 'pause',
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_59_SUBSCRIPT_visibility_off_1',
+                "identifier": 'EVENT_3638_start_embedded_action_script_sync_F1_59_SUBSCRIPT_visibility_off_1',
                 "command": 'visibility_off'
             }
         ]
@@ -1021,39 +1021,39 @@ script = [
         "args": [AreaObjects.NPC_11]
     },
     {
-        "identifier": 'EVENT_3638_start_embedded_action_script_async_63',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_63',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_11],
         "subscript": [
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_63_SUBSCRIPT_bpl_26_27_28_0',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_63_SUBSCRIPT_bpl_26_27_28_0',
                 "command": 'bpl_26_27_28'
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_63_SUBSCRIPT_reset_properties_1',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_63_SUBSCRIPT_reset_properties_1',
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_63_SUBSCRIPT_transfer_xyzf_pixels_2',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_63_SUBSCRIPT_transfer_xyzf_pixels_2',
                 "command": 'transfer_xyzf_pixels',
                 "args": [8, 248, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_63_SUBSCRIPT_face_southwest_3',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_63_SUBSCRIPT_face_southwest_3',
                 "command": 'face_southwest'
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_63_SUBSCRIPT_set_sprite_sequence_4',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_63_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
                 "args": [9, 1, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_63_SUBSCRIPT_pause_5',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_63_SUBSCRIPT_pause_5',
                 "command": 'pause',
                 "args": [20]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_63_SUBSCRIPT_visibility_on_6',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_63_SUBSCRIPT_visibility_on_6',
                 "command": 'visibility_on'
             }
         ]
@@ -1185,66 +1185,66 @@ script = [
         "args": [AreaObjects.NPC_6]
     },
     {
-        "identifier": 'EVENT_3638_start_embedded_action_script_async_68',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_6],
         "subscript": [
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_bpl_26_27_28_0',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_bpl_26_27_28_0',
                 "command": 'bpl_26_27_28'
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_reset_properties_1',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_reset_properties_1',
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_transfer_to_xyzf_2',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_transfer_to_xyzf_2',
                 "command": 'transfer_to_xyzf',
                 "args": [3, 18, 1, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_face_southeast_3',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_face_southeast_3',
                 "command": 'face_southeast'
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_set_animation_speed_4',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_SLOW, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_sequence_playback_on_5',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_sequence_playback_on_5',
                 "command": 'sequence_playback_on'
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_set_animation_speed_6',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_set_animation_speed_6',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_pause_7',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_pause_7',
                 "command": 'pause',
                 "args": [28]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_visibility_on_8',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_visibility_on_8',
                 "command": 'visibility_on'
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_shift_z_down_pixels_9',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_shift_z_down_pixels_9',
                 "command": 'shift_z_down_pixels',
                 "args": [8]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_sequence_looping_off_10',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_sequence_looping_off_10',
                 "command": 'sequence_looping_off'
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_set_animation_speed_11',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_set_animation_speed_11',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3638_start_embedded_action_script_async_68_SUBSCRIPT_set_sprite_sequence_12',
+                "identifier": 'EVENT_3638_start_embedded_action_script_async_F1_68_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
                 "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             }

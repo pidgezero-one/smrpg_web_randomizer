@@ -65,8 +65,9 @@ script = [
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_action_queue_sync_9_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_3184_action_queue_sync_9_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x14]
             },
             {
                 "identifier": 'EVENT_3184_action_queue_sync_9_SUBSCRIPT_jump_to_height_1',
@@ -81,116 +82,118 @@ script = [
         "args": [1617, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_11',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x15]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_sequence_looping_off_1',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_sequence_looping_off_1',
                 "command": 'sequence_looping_off'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_pause_2',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [70]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_face_northeast_3',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_face_northeast_3',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_pause_4',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_pause_4',
                 "command": 'pause',
                 "args": [12]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_face_southwest_5',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_face_southwest_7D_5',
+                "command": 'face_southwest_7D',
+                "args": [0x15]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_walk_to_xy_coords_6',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_walk_to_xy_coords_6',
                 "command": 'walk_to_xy_coords',
                 "args": [18, 30]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_face_northeast_7',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_face_northeast_7',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_pause_8',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_pause_8',
                 "command": 'pause',
                 "args": [16]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_fixed_f_coord_on_9',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_fixed_f_coord_on_9',
                 "command": 'fixed_f_coord_on'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_set_animation_speed_10',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_set_animation_speed_10',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_walk_1_step_southwest_11',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_walk_1_step_southwest_11',
                 "command": 'walk_1_step_southwest'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_pause_12',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_pause_12',
                 "command": 'pause',
                 "args": [24]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_walk_1_step_southwest_13',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_walk_1_step_southwest_13',
                 "command": 'walk_1_step_southwest'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_pause_14',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_pause_14',
                 "command": 'pause',
                 "args": [48]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_fixed_f_coord_off_15',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_fixed_f_coord_off_15',
                 "command": 'fixed_f_coord_off'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_face_southwest_16',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_face_southwest_16',
                 "command": 'face_southwest'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_set_animation_speed_17',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_set_animation_speed_17',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_shift_southwest_steps_18',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_shift_southwest_steps_18',
                 "command": 'shift_southwest_steps',
                 "args": [3]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_visibility_off_19',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_visibility_off_19',
                 "command": 'visibility_off'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_object_memory_set_bit_20',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_object_memory_set_bit_20',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_db_21',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_db_21',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_clear_solidity_bits_22',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_clear_solidity_bits_22',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_11_SUBSCRIPT_end_all_23',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_11_SUBSCRIPT_end_all_23',
                 "command": 'end_all'
             }
         ]
@@ -201,23 +204,23 @@ script = [
         "args": [0x7056, 1]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_13',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_13',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_13_SUBSCRIPT_face_northeast_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_13_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast'
             }
         ]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_14',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_14',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_2],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_14_SUBSCRIPT_face_northeast_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_14_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast'
             }
         ]
@@ -228,12 +231,12 @@ script = [
         "args": [32]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_16',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_16',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_16_SUBSCRIPT_walk_to_xy_coords_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_16_SUBSCRIPT_walk_to_xy_coords_0',
                 "command": 'walk_to_xy_coords',
                 "args": [19, 29]
             }
@@ -245,12 +248,12 @@ script = [
         "args": [1618, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_18',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_18',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_2],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_18_SUBSCRIPT_walk_to_xy_coords_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_18_SUBSCRIPT_walk_to_xy_coords_0',
                 "command": 'walk_to_xy_coords',
                 "args": [18, 26]
             }
@@ -262,37 +265,37 @@ script = [
         "args": [1619, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_20',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_20',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_20_SUBSCRIPT_face_northwest_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_20_SUBSCRIPT_face_northwest_0',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_20_SUBSCRIPT_jump_to_height_1',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_20_SUBSCRIPT_jump_to_height_1',
                 "command": 'jump_to_height',
                 "args": [29]
             }
         ]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_21',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_21',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.SCREEN_FOCUS],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_21_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_21_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_SLOW, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_21_SUBSCRIPT_walk_1_step_north_1',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_21_SUBSCRIPT_walk_1_step_north_1',
                 "command": 'walk_1_step_north'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_21_SUBSCRIPT_walk_1_step_northeast_2',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_21_SUBSCRIPT_walk_1_step_northeast_2',
                 "command": 'walk_1_step_northeast'
             }
         ]
@@ -303,35 +306,35 @@ script = [
         "args": [1620, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_23',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_23',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_2],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_23_SUBSCRIPT_face_southeast_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_23_SUBSCRIPT_face_southeast_0',
                 "command": 'face_southeast'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_23_SUBSCRIPT_jump_to_height_1',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_23_SUBSCRIPT_jump_to_height_1',
                 "command": 'jump_to_height',
                 "args": [29]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_23_SUBSCRIPT_pause_2',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_23_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [20]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_23_SUBSCRIPT_face_northeast_3',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_23_SUBSCRIPT_face_northeast_3',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_23_SUBSCRIPT_pause_4',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_23_SUBSCRIPT_pause_4',
                 "command": 'pause',
                 "args": [20]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_23_SUBSCRIPT_face_southeast_5',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_23_SUBSCRIPT_face_southeast_5',
                 "command": 'face_southeast'
             }
         ]
@@ -342,16 +345,16 @@ script = [
         "args": [1621, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_25',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_25',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_25_SUBSCRIPT_face_northwest_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_25_SUBSCRIPT_face_northwest_0',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_25_SUBSCRIPT_jump_to_height_1',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_25_SUBSCRIPT_jump_to_height_1',
                 "command": 'jump_to_height',
                 "args": [29]
             }
@@ -363,49 +366,49 @@ script = [
         "args": [1622, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_27',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_2],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_face_northeast_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_pause_1',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_pause_1',
                 "command": 'pause',
                 "args": [8]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_face_southeast_2',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_face_southeast_2',
                 "command": 'face_southeast'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_pause_3',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_jmp_if_bit_clear_4',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_jmp_if_bit_clear_4',
                 "command": 'jmp_if_bit_clear',
-                "args": [0x7043, 2, 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_pause_3']
+                "args": [0x7043, 2, 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_pause_3']
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_face_southwest_5',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_face_southwest_5',
                 "command": 'face_southwest'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_jump_to_height_6',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_jump_to_height_6',
                 "command": 'jump_to_height',
                 "args": [72]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_set_animation_speed_7',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_set_animation_speed_7',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_27_SUBSCRIPT_sequence_looping_on_8',
+                "identifier": 'EVENT_3184_start_embedded_action_script_sync_F1_27_SUBSCRIPT_sequence_looping_on_8',
                 "command": 'sequence_looping_on'
             }
         ]
@@ -416,83 +419,83 @@ script = [
         "args": [1623, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3184_start_embedded_action_script_async_29',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_pause_0',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_pause_0',
                 "command": 'pause',
                 "args": [24]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_face_southwest_1',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_face_southwest_1',
                 "command": 'face_southwest'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_pause_2',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [8]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_face_northwest_3',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_face_northwest_3',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_pause_4',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_pause_4',
                 "command": 'pause',
                 "args": [24]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_set_bit_5',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_set_bit_5',
                 "command": 'set_bit',
                 "args": [0x7043, 3]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_jump_to_height_6',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_jump_to_height_6',
                 "command": 'jump_to_height',
                 "args": [29]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_set_animation_speed_7',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_set_animation_speed_7',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_pause_8',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_pause_8',
                 "command": 'pause',
                 "args": [12]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_set_animation_speed_9',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_set_animation_speed_9',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_walk_1_step_southwest_10',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_walk_1_step_southwest_10',
                 "command": 'walk_1_step_southwest'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_jump_to_height_11',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_jump_to_height_11',
                 "command": 'jump_to_height',
                 "args": [72]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_set_animation_speed_12',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_set_animation_speed_12',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_sequence_looping_on_13',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_sequence_looping_on_13',
                 "command": 'sequence_looping_on'
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_pause_14',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_pause_14',
                 "command": 'pause',
                 "args": [8]
             },
             {
-                "identifier": 'EVENT_3184_start_embedded_action_script_async_29_SUBSCRIPT_set_bit_15',
+                "identifier": 'EVENT_3184_start_embedded_action_script_async_F1_29_SUBSCRIPT_set_bit_15',
                 "command": 'set_bit',
                 "args": [0x7043, 2]
             }

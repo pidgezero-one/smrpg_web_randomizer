@@ -12,9 +12,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_1311_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1311_apply_tile_mod_5']
+        "identifier": 'EVENT_1311_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1311_apply_tile_mod_5']
     },
     {
         "identifier": 'EVENT_1311_run_dialog_3',

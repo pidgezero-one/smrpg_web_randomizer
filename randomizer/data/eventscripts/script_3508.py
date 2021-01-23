@@ -35,9 +35,9 @@ script = [
         "args": [0x702c, 6]
     },
     {
-        "identifier": 'EVENT_3508_add_short_5',
-        "command": 'add_short',
-        "args": [0x702c, 0x01]
+        "identifier": 'EVENT_3508_inc_short_5',
+        "command": 'inc_short',
+        "args": [0x702c]
     },
     {
         "identifier": 'EVENT_3508_set_6',
@@ -1169,12 +1169,12 @@ script = [
             {
                 "identifier": 'EVENT_3508_action_queue_sync_80_SUBSCRIPT_set_700C_to_object_coord_11',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.DUMMY_0X07, Coords.X, CoordUnits.PIXEL]
+                "args": [AreaObjects.DUMMY_0X07, Coords.X, [], CoordUnits.PIXEL]
             },
             {
-                "identifier": 'EVENT_3508_action_queue_sync_80_SUBSCRIPT_mem_compare_12',
-                "command": 'mem_compare',
-                "args": [0x700c, 5888]
+                "identifier": 'EVENT_3508_action_queue_sync_80_SUBSCRIPT_mem_compare_val_12',
+                "command": 'mem_compare_val',
+                "args": [5888]
             },
             {
                 "identifier": 'EVENT_3508_action_queue_sync_80_SUBSCRIPT_jmp_if_comparison_result_is_lesser_13',

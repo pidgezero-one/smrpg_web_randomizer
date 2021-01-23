@@ -41,16 +41,16 @@ script = [
         "args": [AreaObjects.MARIO]
     },
     {
-        "identifier": 'EVENT_3600_start_embedded_action_script_async_8',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_8',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_8_SUBSCRIPT_bpl_26_27_28_0',
+                "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_8_SUBSCRIPT_bpl_26_27_28_0',
                 "command": 'bpl_26_27_28'
             },
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_8_SUBSCRIPT_walk_to_xy_coords_1',
+                "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_8_SUBSCRIPT_walk_to_xy_coords_1',
                 "command": 'walk_to_xy_coords',
                 "args": [20, 61]
             }
@@ -66,37 +66,37 @@ script = [
         "args": [AreaObjects.NPC_9]
     },
     {
-        "identifier": 'EVENT_3600_start_embedded_action_script_async_11',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_11',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_11_SUBSCRIPT_reset_properties_0',
+                "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_11_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_11_SUBSCRIPT_face_northeast_1',
+                "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_11_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_11_SUBSCRIPT_set_animation_speed_2',
+                "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_11_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_11_SUBSCRIPT_object_memory_clear_bit_3',
+                "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_11_SUBSCRIPT_object_memory_clear_bit_3',
                 "command": 'object_memory_clear_bit',
                 "args": [0x30, [4]]
             }
         ]
     },
     {
-        "identifier": 'EVENT_3600_start_embedded_action_script_async_12',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_12',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_12_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_12_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             }
@@ -228,9 +228,9 @@ script = [
         "args": [0x7000, 0x70ee]
     },
     {
-        "identifier": 'EVENT_3600_jmp_if_var_equals_short_34',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3600_play_sound_42']
+        "identifier": 'EVENT_3600_jmp_if_7000_equals_short_34',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_3600_play_sound_42']
     },
     {
         "identifier": 'EVENT_3600_set_short_mem_35',
@@ -366,9 +366,9 @@ script = [
         "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_3600_add_56',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3600_inc_56',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3600_end_loop_57',
@@ -447,9 +447,9 @@ script = [
         "args": [0x7000, 0x70ee]
     },
     {
-        "identifier": 'EVENT_3600_jmp_if_var_equals_short_71',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3600_jmp_79']
+        "identifier": 'EVENT_3600_jmp_if_7000_equals_short_71',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_3600_jmp_79']
     },
     {
         "identifier": 'EVENT_3600_set_short_mem_72',
@@ -1405,12 +1405,12 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_3600_start_embedded_action_script_async_212',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_212',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_212_SUBSCRIPT_face_southeast_0',
+                "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_212_SUBSCRIPT_face_southeast_0',
                 "command": 'face_southeast'
             }
         ]
@@ -1807,17 +1807,17 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3600_start_embedded_action_script_async_259',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_259',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_259_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_259_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [20, 61, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_259_SUBSCRIPT_face_southeast_1',
+                "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_259_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast'
             }
         ]
@@ -2109,12 +2109,12 @@ script = [
         "args": [30]
     },
     {
-        "identifier": 'EVENT_3600_start_embedded_action_script_async_303',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_303',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_303_SUBSCRIPT_face_southeast_0',
+                "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_303_SUBSCRIPT_face_southeast_0',
                 "command": 'face_southeast'
             }
         ]
@@ -2187,17 +2187,17 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3600_start_embedded_action_script_async_314',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_314',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_314_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_314_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [20, 61, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_314_SUBSCRIPT_face_southeast_1',
+                "identifier": 'EVENT_3600_start_embedded_action_script_async_F1_314_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast'
             }
         ]
@@ -2360,27 +2360,27 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3600_start_embedded_action_script_async_333',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_333',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_5],
         "subscript": [
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_333_SUBSCRIPT_set_solidity_bits_0',
+                "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_333_SUBSCRIPT_set_solidity_bits_0',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_333_SUBSCRIPT_set_solidity_bits_1',
+                "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_333_SUBSCRIPT_set_solidity_bits_1',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_333_SUBSCRIPT_set_object_memory_bits_2',
+                "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_333_SUBSCRIPT_set_object_memory_bits_2',
                 "command": 'set_object_memory_bits',
                 "args": [0x0b, [1]]
             },
             {
-                "identifier": 'EVENT_3600_start_embedded_action_script_async_333_SUBSCRIPT_object_memory_clear_bit_3',
+                "identifier": 'EVENT_3600_start_embedded_action_script_sync_F1_333_SUBSCRIPT_object_memory_clear_bit_3',
                 "command": 'object_memory_clear_bit',
                 "args": [0x30, [4]]
             }

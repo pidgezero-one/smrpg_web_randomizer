@@ -18,9 +18,9 @@ script = [
         "args": [items.CarboCookie]
     },
     {
-        "identifier": 'EVENT_1645_jmp_if_var_not_equals_short_3',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_1645_run_dialog_6']
+        "identifier": 'EVENT_1645_jmp_if_7000_not_equals_short_3',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_1645_run_dialog_6']
     },
     {
         "identifier": 'EVENT_1645_run_dialog_4',

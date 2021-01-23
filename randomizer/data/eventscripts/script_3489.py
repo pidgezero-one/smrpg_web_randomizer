@@ -195,9 +195,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3489_add_short_31',
-        "command": 'add_short',
-        "args": [0x7024, 0x01]
+        "identifier": 'EVENT_3489_inc_short_31',
+        "command": 'inc_short',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3489_jmp_if_var_equals_short_32',

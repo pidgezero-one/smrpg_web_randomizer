@@ -27,14 +27,14 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3336_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 363, 'EVENT_3336_jmp_if_object_not_in_level_7']
+        "identifier": 'EVENT_3336_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [363, 'EVENT_3336_jmp_if_object_not_in_level_7']
     },
     {
-        "identifier": 'EVENT_3336_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 362, 'EVENT_3336_jmp_if_object_not_in_level_9']
+        "identifier": 'EVENT_3336_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [362, 'EVENT_3336_jmp_if_object_not_in_level_9']
     },
     {
         "identifier": 'EVENT_3336_jmp_if_object_not_in_level_7',

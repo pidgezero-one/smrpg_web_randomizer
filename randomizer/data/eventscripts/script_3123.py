@@ -61,7 +61,7 @@ script = [
     {
         "identifier": 'EVENT_3123_run_dialog_6',
         "command": 'run_dialog',
-        "args": [1585, AreaObjects.MARIO, []]
+        "args": [1585, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_3123_apply_solidity_mod_7',

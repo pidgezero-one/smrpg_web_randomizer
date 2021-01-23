@@ -18,9 +18,9 @@ script = [
         "args": [0x7040, 1, 'EVENT_3151_ret_6']
     },
     {
-        "identifier": 'EVENT_3151_add_3',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_3151_inc_3',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_3151_jmp_if_var_not_equals_byte_4',

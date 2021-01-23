@@ -223,9 +223,9 @@ script = [
         "command": 'set_7000_to_pressed_button'
     },
     {
-        "identifier": 'EVENT_3090_jmp_if_var_equals_short_46',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 34, 'EVENT_3090_fade_in_from_black_async_99']
+        "identifier": 'EVENT_3090_jmp_if_7000_equals_short_46',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [34, 'EVENT_3090_fade_in_from_black_async_99']
     },
     {
         "identifier": 'EVENT_3090_play_music_default_volume_47',
@@ -271,9 +271,9 @@ script = [
         "command": 'set_7000_to_pressed_button'
     },
     {
-        "identifier": 'EVENT_3090_jmp_if_var_equals_short_56',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 34, 'EVENT_3090_fade_in_from_black_async_99']
+        "identifier": 'EVENT_3090_jmp_if_7000_equals_short_56',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [34, 'EVENT_3090_fade_in_from_black_async_99']
     },
     {
         "identifier": 'EVENT_3090_play_music_default_volume_57',
@@ -319,9 +319,9 @@ script = [
         "command": 'set_7000_to_pressed_button'
     },
     {
-        "identifier": 'EVENT_3090_jmp_if_var_equals_short_66',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 34, 'EVENT_3090_fade_in_from_black_async_99']
+        "identifier": 'EVENT_3090_jmp_if_7000_equals_short_66',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [34, 'EVENT_3090_fade_in_from_black_async_99']
     },
     {
         "identifier": 'EVENT_3090_play_music_default_volume_67',
@@ -367,9 +367,9 @@ script = [
         "command": 'set_7000_to_pressed_button'
     },
     {
-        "identifier": 'EVENT_3090_jmp_if_var_equals_short_76',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 34, 'EVENT_3090_fade_in_from_black_async_99']
+        "identifier": 'EVENT_3090_jmp_if_7000_equals_short_76',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [34, 'EVENT_3090_fade_in_from_black_async_99']
     },
     {
         "identifier": 'EVENT_3090_play_music_default_volume_77',
@@ -415,9 +415,9 @@ script = [
         "command": 'set_7000_to_pressed_button'
     },
     {
-        "identifier": 'EVENT_3090_jmp_if_var_equals_short_86',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 34, 'EVENT_3090_fade_in_from_black_async_99']
+        "identifier": 'EVENT_3090_jmp_if_7000_equals_short_86',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [34, 'EVENT_3090_fade_in_from_black_async_99']
     },
     {
         "identifier": 'EVENT_3090_play_music_default_volume_87',
@@ -463,9 +463,9 @@ script = [
         "command": 'set_7000_to_pressed_button'
     },
     {
-        "identifier": 'EVENT_3090_jmp_if_var_equals_short_96',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 34, 'EVENT_3090_fade_in_from_black_async_99']
+        "identifier": 'EVENT_3090_jmp_if_7000_equals_short_96',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [34, 'EVENT_3090_fade_in_from_black_async_99']
     },
     {
         "identifier": 'EVENT_3090_fade_in_from_black_async_97',

@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_3346_tint_layers_0',
         "command": 'tint_layers',
-        "args": [0x80, 0x20, 0x20, 4, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND]]
+        "args": [0x80, 0x20, 0x20, 4, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.LAYER_4, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND], [7]]
     },
     {
         "identifier": 'EVENT_3346_pause_1',
@@ -15,7 +15,7 @@ script = [
     {
         "identifier": 'EVENT_3346_tint_layers_2',
         "command": 'tint_layers',
-        "args": [0x00, 0x00, 0x00, 4, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND]]
+        "args": [0x00, 0x00, 0x00, 4, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.LAYER_4, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND], [7]]
     },
     {
         "identifier": 'EVENT_3346_pause_3',

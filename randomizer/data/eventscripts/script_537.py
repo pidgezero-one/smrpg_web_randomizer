@@ -11,9 +11,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_537_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 98, 'EVENT_537_action_queue_sync_7']
+        "identifier": 'EVENT_537_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [98, 'EVENT_537_action_queue_sync_7']
     },
     {
         "identifier": 'EVENT_537_action_queue_sync_3',

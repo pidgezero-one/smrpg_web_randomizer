@@ -2406,8 +2406,8 @@ script = [
         "args": [3210, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2448_fade_out_music_191',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_2448_fade_out_music_FDA3_191',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_2448_pause_192',

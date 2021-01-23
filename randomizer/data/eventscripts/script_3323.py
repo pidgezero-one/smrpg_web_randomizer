@@ -22,9 +22,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3323_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 354, 'EVENT_3333_set_0']
+        "identifier": 'EVENT_3323_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [354, 'EVENT_3333_set_0']
     },
     {
         "identifier": 'EVENT_3323_run_event_as_subroutine_5',

@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_277_set_7000_to_object_coord_0',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
         "identifier": 'EVENT_277_set_short_mem_1',
@@ -65,24 +65,24 @@ script = [
         "args": [0x00c0]
     },
     {
-        "identifier": 'EVENT_277_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_277_action_queue_async_14']
+        "identifier": 'EVENT_277_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_277_action_queue_async_14']
     },
     {
-        "identifier": 'EVENT_277_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 64, 'EVENT_277_action_queue_async_16']
+        "identifier": 'EVENT_277_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [64, 'EVENT_277_action_queue_async_16']
     },
     {
-        "identifier": 'EVENT_277_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_277_action_queue_async_18']
+        "identifier": 'EVENT_277_jmp_if_7000_equals_short_12',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_277_action_queue_async_18']
     },
     {
-        "identifier": 'EVENT_277_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 192, 'EVENT_277_action_queue_async_20']
+        "identifier": 'EVENT_277_jmp_if_7000_equals_short_13',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [192, 'EVENT_277_action_queue_async_20']
     },
     {
         "identifier": 'EVENT_277_action_queue_async_14',
@@ -258,8 +258,8 @@ script = [
                 "args": [0x700c, 0x7032]
             },
             {
-                "identifier": 'EVENT_277_action_queue_async_21_SUBSCRIPT_face_east_2',
-                "command": 'face_east'
+                "identifier": 'EVENT_277_action_queue_async_21_SUBSCRIPT_face_east_7C_2',
+                "command": 'face_east_7C'
             }
         ]
     },

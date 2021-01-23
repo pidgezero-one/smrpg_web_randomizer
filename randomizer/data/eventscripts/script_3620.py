@@ -29,14 +29,14 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3620_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 416, 'EVENT_3620_apply_tile_mod_8']
+        "identifier": 'EVENT_3620_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [416, 'EVENT_3620_apply_tile_mod_8']
     },
     {
-        "identifier": 'EVENT_3620_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 438, 'EVENT_3620_apply_tile_mod_10']
+        "identifier": 'EVENT_3620_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [438, 'EVENT_3620_apply_tile_mod_10']
     },
     {
         "identifier": 'EVENT_3620_apply_tile_mod_6',

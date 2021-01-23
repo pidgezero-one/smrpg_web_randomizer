@@ -18,9 +18,9 @@ script = [
         "args": [AreaObjects.MEM_70A8, 470]
     },
     {
-        "identifier": 'EVENT_1572_add_short_3',
-        "command": 'add_short',
-        "args": [0x702a, 0x01]
+        "identifier": 'EVENT_1572_inc_short_3',
+        "command": 'inc_short',
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_1572_clear_bit_4',

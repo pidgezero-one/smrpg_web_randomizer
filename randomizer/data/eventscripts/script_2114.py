@@ -13,8 +13,8 @@ script = [
         "args": [Music._01_DODOS_COMING]
     },
     {
-        "identifier": 'EVENT_2114_stop_music_2',
-        "command": 'stop_music'
+        "identifier": 'EVENT_2114_stop_music_FDA2_2',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_2114_run_dialog_3',
@@ -619,9 +619,9 @@ script = [
         "args": [0x708a, 7, 'EVENT_2120_stop_music_0']
     },
     {
-        "identifier": 'EVENT_2114_add_short_78',
-        "command": 'add_short',
-        "args": [0x7024, 0x01]
+        "identifier": 'EVENT_2114_inc_short_78',
+        "command": 'inc_short',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_2114_jmp_if_var_not_equals_short_79',

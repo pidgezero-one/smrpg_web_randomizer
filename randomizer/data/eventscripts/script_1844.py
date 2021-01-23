@@ -8,9 +8,9 @@ script = [
         "args": [0x7000, 10]
     },
     {
-        "identifier": 'EVENT_1844_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1844_pause_3']
+        "identifier": 'EVENT_1844_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1844_pause_3']
     },
     {
         "identifier": 'EVENT_1844_ret_2',

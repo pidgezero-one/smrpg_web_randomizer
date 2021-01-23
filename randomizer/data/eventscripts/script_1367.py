@@ -238,17 +238,17 @@ script = [
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_27',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 0, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_28',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 1, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_29',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 2, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_pause_30',
@@ -574,17 +574,17 @@ script = [
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_70',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 3, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_71',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 1, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_72',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 2, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_pause_73',
@@ -891,17 +891,17 @@ script = [
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_116',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 3, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_117',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 0, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_118',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 2, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_pause_119',
@@ -1208,17 +1208,17 @@ script = [
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_162',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 3, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_163',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 0, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_164',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 1, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_pause_165',
@@ -1586,7 +1586,7 @@ script = [
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_200',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 3, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_pause_201',
@@ -1640,12 +1640,12 @@ script = [
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_211',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 3, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_212',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 2, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_pause_213',
@@ -1699,17 +1699,17 @@ script = [
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_223',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 3, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_224',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 1, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_225',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 2, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_pause_226',
@@ -2118,17 +2118,17 @@ script = [
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_266',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 3, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_267',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 0, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_jmp_if_bit_set_268',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1367_stop_music_273']
+        "args": [0x7043, 1, 'EVENT_1367_stop_music_FDA2_273']
     },
     {
         "identifier": 'EVENT_1367_pause_269',
@@ -2147,11 +2147,11 @@ script = [
     {
         "identifier": 'EVENT_1367_jmp_272',
         "command": 'jmp',
-        "args": ['EVENT_1368_stop_music_0']
+        "args": ['EVENT_1368_stop_music_FDA2_0']
     },
     {
-        "identifier": 'EVENT_1367_stop_music_273',
-        "command": 'stop_music'
+        "identifier": 'EVENT_1367_stop_music_FDA2_273',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_1367_move_script_to_main_thread_274',

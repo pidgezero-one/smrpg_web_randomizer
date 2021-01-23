@@ -33,9 +33,9 @@ script = [
         "args": [items.Mushroom]
     },
     {
-        "identifier": 'EVENT_1172_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1172_run_dialog_34']
+        "identifier": 'EVENT_1172_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1172_run_dialog_34']
     },
     {
         "identifier": 'EVENT_1172_run_dialog_7',
@@ -73,9 +73,9 @@ script = [
         "args": [0x7000, 10000]
     },
     {
-        "identifier": 'EVENT_1172_mem_compare_11',
-        "command": 'mem_compare',
-        "args": [0x7000, 400]
+        "identifier": 'EVENT_1172_mem_compare_val_11',
+        "command": 'mem_compare_val',
+        "args": [400]
     },
     {
         "identifier": 'EVENT_1172_jmp_if_comparison_result_is_lesser_12',
@@ -83,9 +83,9 @@ script = [
         "args": ['EVENT_1172_run_dialog_19']
     },
     {
-        "identifier": 'EVENT_1172_mem_compare_13',
-        "command": 'mem_compare',
-        "args": [0x7000, 1000]
+        "identifier": 'EVENT_1172_mem_compare_val_13',
+        "command": 'mem_compare_val',
+        "args": [1000]
     },
     {
         "identifier": 'EVENT_1172_jmp_if_comparison_result_is_lesser_14',
@@ -93,9 +93,9 @@ script = [
         "args": ['EVENT_1172_run_dialog_24']
     },
     {
-        "identifier": 'EVENT_1172_mem_compare_15',
-        "command": 'mem_compare',
-        "args": [0x7000, 2400]
+        "identifier": 'EVENT_1172_mem_compare_val_15',
+        "command": 'mem_compare_val',
+        "args": [2400]
     },
     {
         "identifier": 'EVENT_1172_jmp_if_comparison_result_is_lesser_16',

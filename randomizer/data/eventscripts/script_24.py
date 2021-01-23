@@ -49,7 +49,7 @@ script = [
     {
         "identifier": 'EVENT_24_jmp_if_var_not_equals_byte_9',
         "command": 'jmp_if_var_not_equals_byte',
-        "args": [0x70bb, 255, 'EVENT_24_add_11']
+        "args": [0x70bb, 255, 'EVENT_24_inc_11']
     },
     {
         "identifier": 'EVENT_24_set_10',
@@ -57,9 +57,9 @@ script = [
         "args": [0x70bb, 0]
     },
     {
-        "identifier": 'EVENT_24_add_11',
-        "command": 'add',
-        "args": [0x70bb, 0x01]
+        "identifier": 'EVENT_24_inc_11',
+        "command": 'inc',
+        "args": [0x70bb]
     },
     {
         "identifier": 'EVENT_24_jmp_if_bit_set_12',

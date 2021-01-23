@@ -131,7 +131,7 @@ script = [
             {
                 "identifier": 'EVENT_3658_action_queue_sync_7_SUBSCRIPT_embedded_animation_routine_2',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3658_action_queue_sync_7_SUBSCRIPT_set_animation_speed_3',
@@ -184,7 +184,7 @@ script = [
             {
                 "identifier": 'EVENT_3658_action_queue_sync_8_SUBSCRIPT_embedded_animation_routine_1',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3658_action_queue_sync_8_SUBSCRIPT_set_animation_speed_2',
@@ -233,7 +233,7 @@ script = [
             {
                 "identifier": 'EVENT_3658_action_queue_sync_9_SUBSCRIPT_embedded_animation_routine_1',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3658_action_queue_sync_9_SUBSCRIPT_set_animation_speed_2',
@@ -291,7 +291,7 @@ script = [
             {
                 "identifier": 'EVENT_3658_action_queue_sync_10_SUBSCRIPT_embedded_animation_routine_1',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3658_action_queue_sync_10_SUBSCRIPT_set_animation_speed_2',
@@ -335,7 +335,7 @@ script = [
             {
                 "identifier": 'EVENT_3658_action_queue_sync_11_SUBSCRIPT_embedded_animation_routine_1',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3658_action_queue_sync_11_SUBSCRIPT_set_animation_speed_2',
@@ -1218,7 +1218,7 @@ script = [
     {
         "identifier": 'EVENT_3658_palette_set_63',
         "command": 'palette_set',
-        "args": [105, 1]
+        "args": [105, 1, [1, 2, 3]]
     },
     {
         "identifier": 'EVENT_3658_action_queue_sync_64',

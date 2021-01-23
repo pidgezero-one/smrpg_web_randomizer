@@ -33,16 +33,16 @@ script = [
         "args": [AreaObjects.NPC_3]
     },
     {
-        "identifier": 'EVENT_642_start_embedded_action_script_async_7',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_642_start_embedded_action_script_async_F1_7',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_642_start_embedded_action_script_async_7_SUBSCRIPT_reset_properties_0',
+                "identifier": 'EVENT_642_start_embedded_action_script_async_F1_7_SUBSCRIPT_reset_properties_0',
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_642_start_embedded_action_script_async_7_SUBSCRIPT_face_southwest_1',
+                "identifier": 'EVENT_642_start_embedded_action_script_async_F1_7_SUBSCRIPT_face_southwest_1',
                 "command": 'face_southwest'
             }
         ]

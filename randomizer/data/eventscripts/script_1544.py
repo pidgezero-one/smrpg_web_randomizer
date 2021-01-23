@@ -19,7 +19,7 @@ script = [
     {
         "identifier": 'EVENT_1544_set_7000_to_object_coord_3',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
         "identifier": 'EVENT_1544_set_short_mem_4',
@@ -42,17 +42,17 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_1544_action_queue_sync_7_SUBSCRIPT_add_0',
-                "command": 'add',
-                "args": [0x700c, 0x01]
+                "identifier": 'EVENT_1544_action_queue_sync_7_SUBSCRIPT_inc_0',
+                "command": 'inc',
+                "args": [0x700c]
             },
             {
                 "identifier": 'EVENT_1544_action_queue_sync_7_SUBSCRIPT_fixed_f_coord_off_1',
                 "command": 'fixed_f_coord_off'
             },
             {
-                "identifier": 'EVENT_1544_action_queue_sync_7_SUBSCRIPT_face_east_2',
-                "command": 'face_east'
+                "identifier": 'EVENT_1544_action_queue_sync_7_SUBSCRIPT_face_east_7C_2',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_1544_action_queue_sync_7_SUBSCRIPT_fixed_f_coord_on_3',
@@ -73,12 +73,12 @@ script = [
     {
         "identifier": 'EVENT_1544_set_7000_to_object_coord_10',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_1544_jmp_if_var_not_equals_short_11',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 2, 'EVENT_1544_action_queue_sync_7']
+        "identifier": 'EVENT_1544_jmp_if_7000_not_equals_short_11',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [2, 'EVENT_1544_action_queue_sync_7']
     },
     {
         "identifier": 'EVENT_1544_pixelate_layers_12',
@@ -110,13 +110,13 @@ script = [
                 "args": [15]
             },
             {
-                "identifier": 'EVENT_1544_action_queue_async_13_SUBSCRIPT_add_4',
-                "command": 'add',
-                "args": [0x700c, 0x01]
+                "identifier": 'EVENT_1544_action_queue_async_13_SUBSCRIPT_inc_4',
+                "command": 'inc',
+                "args": [0x700c]
             },
             {
-                "identifier": 'EVENT_1544_action_queue_async_13_SUBSCRIPT_face_east_5',
-                "command": 'face_east'
+                "identifier": 'EVENT_1544_action_queue_async_13_SUBSCRIPT_face_east_7C_5',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_1544_action_queue_async_13_SUBSCRIPT_visibility_on_6',

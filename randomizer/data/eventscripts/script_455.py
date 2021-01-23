@@ -107,9 +107,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_455_jmp_if_var_equals_short_21',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 33, 'EVENT_455_set_27']
+        "identifier": 'EVENT_455_jmp_if_7000_equals_short_21',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [33, 'EVENT_455_set_27']
     },
     {
         "identifier": 'EVENT_455_set_22',

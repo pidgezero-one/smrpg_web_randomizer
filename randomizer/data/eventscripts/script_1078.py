@@ -279,7 +279,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_45',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
+        "args": ['EVENT_1078_jmp_if_7000_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_46',
@@ -294,7 +294,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_48',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
+        "args": ['EVENT_1078_jmp_if_7000_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_49',
@@ -309,7 +309,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_51',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
+        "args": ['EVENT_1078_jmp_if_7000_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_52',
@@ -324,7 +324,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_54',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
+        "args": ['EVENT_1078_jmp_if_7000_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_55',
@@ -339,7 +339,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_57',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
+        "args": ['EVENT_1078_jmp_if_7000_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_58',
@@ -354,7 +354,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_60',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
+        "args": ['EVENT_1078_jmp_if_7000_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_61',
@@ -369,7 +369,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_63',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
+        "args": ['EVENT_1078_jmp_if_7000_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_64',
@@ -384,7 +384,7 @@ script = [
     {
         "identifier": 'EVENT_1078_jmp_to_subroutine_66',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1078_jmp_if_var_equals_short_119']
+        "args": ['EVENT_1078_jmp_if_7000_equals_short_119']
     },
     {
         "identifier": 'EVENT_1078_pause_67',
@@ -726,39 +726,39 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_1078_jmp_if_var_equals_short_119',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1078_play_sound_126']
+        "identifier": 'EVENT_1078_jmp_if_7000_equals_short_119',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1078_play_sound_126']
     },
     {
-        "identifier": 'EVENT_1078_jmp_if_var_equals_short_120',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1078_play_sound_128']
+        "identifier": 'EVENT_1078_jmp_if_7000_equals_short_120',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1078_play_sound_128']
     },
     {
-        "identifier": 'EVENT_1078_jmp_if_var_equals_short_121',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_1078_play_sound_130']
+        "identifier": 'EVENT_1078_jmp_if_7000_equals_short_121',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_1078_play_sound_130']
     },
     {
-        "identifier": 'EVENT_1078_jmp_if_var_equals_short_122',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_1078_play_sound_132']
+        "identifier": 'EVENT_1078_jmp_if_7000_equals_short_122',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_1078_play_sound_132']
     },
     {
-        "identifier": 'EVENT_1078_jmp_if_var_equals_short_123',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4, 'EVENT_1078_play_sound_134']
+        "identifier": 'EVENT_1078_jmp_if_7000_equals_short_123',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4, 'EVENT_1078_play_sound_134']
     },
     {
-        "identifier": 'EVENT_1078_jmp_if_var_equals_short_124',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 5, 'EVENT_1078_play_sound_136']
+        "identifier": 'EVENT_1078_jmp_if_7000_equals_short_124',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5, 'EVENT_1078_play_sound_136']
     },
     {
-        "identifier": 'EVENT_1078_jmp_if_var_equals_short_125',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 6, 'EVENT_1078_play_sound_138']
+        "identifier": 'EVENT_1078_jmp_if_7000_equals_short_125',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [6, 'EVENT_1078_play_sound_138']
     },
     {
         "identifier": 'EVENT_1078_play_sound_126',

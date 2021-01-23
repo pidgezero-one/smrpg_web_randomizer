@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_328_set_bit_7_offset_1',
         "command": 'set_bit_7_offset',
-        "args": [0x0158]
+        "args": [0x0158, []]
     },
     {
         "identifier": 'EVENT_328_jmp_if_bit_clear_2',
@@ -134,7 +134,7 @@ script = [
     {
         "identifier": 'EVENT_328_palette_set_17',
         "command": 'palette_set',
-        "args": [17, 7]
+        "args": [17, 7, [0]]
     },
     {
         "identifier": 'EVENT_328_jmp_to_event_18',

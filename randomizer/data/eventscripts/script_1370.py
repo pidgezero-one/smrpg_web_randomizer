@@ -181,12 +181,12 @@ script = [
     {
         "identifier": 'EVENT_1370_jmp_if_var_equals_short_15',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7026, 1, 'EVENT_1370_add_short_26']
+        "args": [0x7026, 1, 'EVENT_1370_inc_short_26']
     },
     {
-        "identifier": 'EVENT_1370_add_short_16',
-        "command": 'add_short',
-        "args": [0x7026, 0x01]
+        "identifier": 'EVENT_1370_inc_short_16',
+        "command": 'inc_short',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1370_jmp_17',
@@ -226,9 +226,9 @@ script = [
         "command": 'stop_sound'
     },
     {
-        "identifier": 'EVENT_1370_add_short_26',
-        "command": 'add_short',
-        "args": [0x7026, 0x01]
+        "identifier": 'EVENT_1370_inc_short_26',
+        "command": 'inc_short',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1370_jmp_27',

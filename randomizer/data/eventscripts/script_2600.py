@@ -56,9 +56,9 @@ script = [
         "args": [0x708f, 4]
     },
     {
-        "identifier": 'EVENT_2600_add_11',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2600_inc_11',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2600_summon_to_level_12',

@@ -18,9 +18,9 @@ script = [
         "args": [0x7000, 0x70af]
     },
     {
-        "identifier": 'EVENT_351_mem_compare_3',
-        "command": 'mem_compare',
-        "args": [0x7000, 3]
+        "identifier": 'EVENT_351_mem_compare_val_3',
+        "command": 'mem_compare_val',
+        "args": [3]
     },
     {
         "identifier": 'EVENT_351_jmp_if_comparison_result_is_greater_or_equal_4',
@@ -43,9 +43,9 @@ script = [
         "args": [3732, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_351_add_8',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_351_inc_8',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_351_ret_9',
@@ -57,9 +57,9 @@ script = [
         "args": [3735, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_351_add_11',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_351_inc_11',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_351_ret_12',
@@ -76,9 +76,9 @@ script = [
         "args": [3733, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_351_add_15',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_351_inc_15',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_351_ret_16',
@@ -90,9 +90,9 @@ script = [
         "args": [3736, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_351_add_18',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_351_inc_18',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_351_ret_19',
@@ -197,9 +197,9 @@ script = [
                 "args": [0x00c0]
             },
             {
-                "identifier": 'EVENT_351_action_queue_async_28_SUBSCRIPT_jmp_if_var_equals_short_2',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 64, 'EVENT_351_run_event_as_subroutine_29']
+                "identifier": 'EVENT_351_action_queue_async_28_SUBSCRIPT_jmp_if_700C_equals_short_2',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [64, 'EVENT_351_run_event_as_subroutine_29']
             },
             {
                 "identifier": 'EVENT_351_action_queue_async_28_SUBSCRIPT_set_sprite_sequence_3',

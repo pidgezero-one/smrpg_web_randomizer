@@ -18,9 +18,9 @@ script = [
         "args": [0x7043, 0]
     },
     {
-        "identifier": 'EVENT_1574_add_short_3',
-        "command": 'add_short',
-        "args": [0x7024, 0x01]
+        "identifier": 'EVENT_1574_inc_short_3',
+        "command": 'inc_short',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_1574_jmp_if_var_equals_short_4',

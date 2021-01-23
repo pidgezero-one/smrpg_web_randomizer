@@ -79,9 +79,9 @@ script = [
         "args": [0x7000, 0x70ae]
     },
     {
-        "identifier": 'EVENT_1539_jmp_if_var_not_equals_short_16',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 23, 'EVENT_1539_jmp_if_var_not_equals_short_19']
+        "identifier": 'EVENT_1539_jmp_if_7000_not_equals_short_16',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [23, 'EVENT_1539_jmp_if_7000_not_equals_short_19']
     },
     {
         "identifier": 'EVENT_1539_set_action_script_sync_17',
@@ -94,9 +94,9 @@ script = [
         "args": [0x7077, 5]
     },
     {
-        "identifier": 'EVENT_1539_jmp_if_var_not_equals_short_19',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 24, 'EVENT_1539_ret_22']
+        "identifier": 'EVENT_1539_jmp_if_7000_not_equals_short_19',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [24, 'EVENT_1539_ret_22']
     },
     {
         "identifier": 'EVENT_1539_set_action_script_sync_20',

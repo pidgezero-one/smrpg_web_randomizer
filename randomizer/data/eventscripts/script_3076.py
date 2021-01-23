@@ -12,8 +12,8 @@ script = [
         "args": [Sounds._102_TIME_RUNNING_OUT, 6]
     },
     {
-        "identifier": 'EVENT_3076_stop_music_2',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3076_stop_music_FDA1_2',
+        "command": 'stop_music_FDA1'
     },
     {
         "identifier": 'EVENT_3076_set_bit_3',

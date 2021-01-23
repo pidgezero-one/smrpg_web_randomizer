@@ -106,7 +106,7 @@ script = [
     {
         "identifier": 'EVENT_3364_jmp_if_random_above_66_14',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_3364_swap_short_mem_17']
+        "args": [0x574a, 0x5750]
     },
     {
         "identifier": 'EVENT_3364_swap_short_mem_15',
@@ -141,7 +141,7 @@ script = [
     {
         "identifier": 'EVENT_3364_jmp_if_random_above_66_21',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_3364_swap_short_mem_24']
+        "args": [0x5761, 0x5767]
     },
     {
         "identifier": 'EVENT_3364_swap_short_mem_22',

@@ -20,7 +20,7 @@ script = [
     {
         "identifier": 'EVENT_603_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x7042, 0, 'EVENT_321_add_0']
+        "args": [0x7042, 0, 'EVENT_321_inc_0']
     },
     {
         "identifier": 'EVENT_603_run_dialog_4',
@@ -98,7 +98,7 @@ script = [
     {
         "identifier": 'EVENT_603_jmp_if_random_above_66_19',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_603_set_24']
+        "args": [0x7175, 0x7180]
     },
     {
         "identifier": 'EVENT_603_set_20',

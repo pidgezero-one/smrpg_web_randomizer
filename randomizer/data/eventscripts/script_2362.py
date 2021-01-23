@@ -5,12 +5,12 @@ script = [
     {
         "identifier": 'EVENT_2362_set_7000_to_object_coord_0',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2362_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 19, 'EVENT_2362_set_21']
+        "identifier": 'EVENT_2362_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [19, 'EVENT_2362_set_21']
     },
     {
         "identifier": 'EVENT_2362_set_2',

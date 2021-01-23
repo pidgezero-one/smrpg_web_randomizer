@@ -47,42 +47,42 @@ script = [
         "args": [AreaObjects.NPC_10]
     },
     {
-        "identifier": 'EVENT_476_start_embedded_action_script_async_9',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_9',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_9_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_9_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [16, 77, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_9_SUBSCRIPT_face_northwest_1',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_9_SUBSCRIPT_face_northwest_1',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_9_SUBSCRIPT_object_memory_set_bit_2',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_9_SUBSCRIPT_object_memory_set_bit_2',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
             }
         ]
     },
     {
-        "identifier": 'EVENT_476_start_embedded_action_script_async_10',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_10',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_10_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_10_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [10, 81, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_10_SUBSCRIPT_face_southeast_1',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_10_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast'
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_10_SUBSCRIPT_sequence_looping_off_2',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_10_SUBSCRIPT_sequence_looping_off_2',
                 "command": 'sequence_looping_off'
             }
         ]
@@ -108,97 +108,97 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_476_start_embedded_action_script_async_12',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_12',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_2],
         "subscript": [
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_12_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_12_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [11, 75, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_12_SUBSCRIPT_object_memory_set_bit_1',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_12_SUBSCRIPT_object_memory_set_bit_1',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_12_SUBSCRIPT_face_southeast_2',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_12_SUBSCRIPT_face_southeast_2',
                 "command": 'face_southeast'
             }
         ]
     },
     {
-        "identifier": 'EVENT_476_start_embedded_action_script_async_13',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_13',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_13_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_13_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [10, 81, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_13_SUBSCRIPT_set_sprite_sequence_1',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_13_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [5, 6, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             }
         ]
     },
     {
-        "identifier": 'EVENT_476_start_embedded_action_script_async_14',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_14',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_14_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_14_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [20, 69, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_14_SUBSCRIPT_face_northwest_1',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_14_SUBSCRIPT_face_northwest_1',
                 "command": 'face_northwest'
             }
         ]
     },
     {
-        "identifier": 'EVENT_476_start_embedded_action_script_async_15',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_15',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_15_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_15_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [15, 67, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_15_SUBSCRIPT_face_southeast_1',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_15_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast'
             }
         ]
     },
     {
-        "identifier": 'EVENT_476_start_embedded_action_script_async_16',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_16',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_5],
         "subscript": [
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_16_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_16_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [19, 60, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_16_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_16_SUBSCRIPT_transfer_xyzf_pixels_1',
                 "command": 'transfer_xyzf_pixels',
                 "args": [8, 252, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_16_SUBSCRIPT_object_memory_set_bit_2',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_16_SUBSCRIPT_object_memory_set_bit_2',
                 "command": 'object_memory_set_bit',
                 "args": [0x30, [4]]
             },
             {
-                "identifier": 'EVENT_476_start_embedded_action_script_async_16_SUBSCRIPT_face_southeast_3',
+                "identifier": 'EVENT_476_start_embedded_action_script_sync_F1_16_SUBSCRIPT_face_southeast_3',
                 "command": 'face_southeast'
             }
         ]
@@ -800,9 +800,9 @@ script = [
         "args": [0x704a, 1]
     },
     {
-        "identifier": 'EVENT_476_add_126',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_476_inc_126',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_476_set_short_mem_127',
@@ -810,9 +810,9 @@ script = [
         "args": [0x7000, 0x70ae]
     },
     {
-        "identifier": 'EVENT_476_jmp_if_var_equals_short_128',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 10, 'EVENT_476_fade_out_music_to_volume_172']
+        "identifier": 'EVENT_476_jmp_if_7000_equals_short_128',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [10, 'EVENT_476_fade_out_music_to_volume_172']
     },
     {
         "identifier": 'EVENT_476_jmp_129',
@@ -950,9 +950,9 @@ script = [
         "args": [0x704a, 1]
     },
     {
-        "identifier": 'EVENT_476_add_short_156',
-        "command": 'add_short',
-        "args": [0x7032, 0x01]
+        "identifier": 'EVENT_476_inc_short_156',
+        "command": 'inc_short',
+        "args": [0x7032]
     },
     {
         "identifier": 'EVENT_476_mem_compare_157',
@@ -985,9 +985,9 @@ script = [
         "args": [0x704a, 0]
     },
     {
-        "identifier": 'EVENT_476_add_short_163',
-        "command": 'add_short',
-        "args": [0x7032, 0x01]
+        "identifier": 'EVENT_476_inc_short_163',
+        "command": 'inc_short',
+        "args": [0x7032]
     },
     {
         "identifier": 'EVENT_476_mem_compare_164',

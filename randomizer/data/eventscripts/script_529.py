@@ -294,17 +294,17 @@ script = [
         "args": [AreaObjects.MEM_70A9]
     },
     {
-        "identifier": 'EVENT_529_start_embedded_action_script_async_28',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_529_start_embedded_action_script_async_F1_28',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.MEM_70A9],
         "subscript": [
             {
-                "identifier": 'EVENT_529_start_embedded_action_script_async_28_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_529_start_embedded_action_script_async_F1_28_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [13, 28, 8, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_529_start_embedded_action_script_async_28_SUBSCRIPT_face_northeast_1',
+                "identifier": 'EVENT_529_start_embedded_action_script_async_F1_28_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast'
             }
         ]
@@ -520,17 +520,17 @@ script = [
     {
         "identifier": 'EVENT_529_run_dialog_63',
         "command": 'run_dialog',
-        "args": [2243, AreaObjects.BOWSER, []]
+        "args": [2243, AreaObjects.BOWSER, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_529_set_7000_to_object_coord_64',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70A9, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.MEM_70A9, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_529_mem_compare_65',
-        "command": 'mem_compare',
-        "args": [0x7000, 26]
+        "identifier": 'EVENT_529_mem_compare_val_65',
+        "command": 'mem_compare_val',
+        "args": [26]
     },
     {
         "identifier": 'EVENT_529_jmp_if_comparison_result_is_lesser_66',

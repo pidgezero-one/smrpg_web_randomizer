@@ -71,12 +71,12 @@ script = [
     {
         "identifier": 'EVENT_2346_set_7000_to_object_coord_7',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2346_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 23, 'EVENT_2346_enable_controls_11']
+        "identifier": 'EVENT_2346_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [23, 'EVENT_2346_enable_controls_11']
     },
     {
         "identifier": 'EVENT_2346_clear_bit_9',

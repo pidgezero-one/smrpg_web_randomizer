@@ -26,7 +26,7 @@ script = [
     {
         "identifier": 'EVENT_3087_run_dialog_3',
         "command": 'run_dialog',
-        "args": [1552, AreaObjects.BOWSER, [_0x60Flags.MULTILINE]]
+        "args": [1552, AreaObjects.BOWSER, [_0x60Flags.BIT_6, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3087_ret_4',

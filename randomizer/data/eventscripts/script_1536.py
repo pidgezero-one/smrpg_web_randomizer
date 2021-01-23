@@ -397,9 +397,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1536_jmp_if_var_equals_short_84',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1536_play_sound_81']
+        "identifier": 'EVENT_1536_jmp_if_7000_equals_short_84',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1536_play_sound_81']
     },
     {
         "identifier": 'EVENT_1536_close_dialog_85',

@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3703_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 498, 'EVENT_3703_jmp_if_object_trigger_disabled_4']
+        "identifier": 'EVENT_3703_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [498, 'EVENT_3703_jmp_if_object_trigger_disabled_4']
     },
     {
         "identifier": 'EVENT_3703_jmp_if_object_not_in_level_2',

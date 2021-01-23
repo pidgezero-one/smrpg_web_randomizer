@@ -289,9 +289,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_444_mem_compare_47',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x703a]
+        "identifier": 'EVENT_444_mem_compare_address_47',
+        "command": 'mem_compare_address',
+        "args": [0x703a]
     },
     {
         "identifier": 'EVENT_444_jmp_if_comparison_result_is_greater_or_equal_48',

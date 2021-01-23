@@ -15,26 +15,26 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_303_start_embedded_action_script_async_1',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_303_start_embedded_action_script_async_F1_1',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_303_start_embedded_action_script_async_1_SUBSCRIPT_floating_on_0',
+                "identifier": 'EVENT_303_start_embedded_action_script_async_F1_1_SUBSCRIPT_floating_on_0',
                 "command": 'floating_on'
             },
             {
-                "identifier": 'EVENT_303_start_embedded_action_script_async_1_SUBSCRIPT_jump_to_height_silent_1',
+                "identifier": 'EVENT_303_start_embedded_action_script_async_F1_1_SUBSCRIPT_jump_to_height_silent_1',
                 "command": 'jump_to_height_silent',
                 "args": [0]
             },
             {
-                "identifier": 'EVENT_303_start_embedded_action_script_async_1_SUBSCRIPT_pause_2',
+                "identifier": 'EVENT_303_start_embedded_action_script_async_F1_1_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_303_start_embedded_action_script_async_1_SUBSCRIPT_db_3',
+                "identifier": 'EVENT_303_start_embedded_action_script_async_F1_1_SUBSCRIPT_db_3',
                 "command": 'db',
                 "args": [0xfd, 0x3d, 0x14, 0xa7, 0x19]
             }
@@ -133,7 +133,7 @@ script = [
             {
                 "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_set_700C_to_object_coord_2',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_0, Coords.F]
+                "args": [AreaObjects.NPC_0, Coords.F, []]
             },
             {
                 "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_add_3',
@@ -150,8 +150,8 @@ script = [
                 "command": 'fixed_f_coord_off'
             },
             {
-                "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_face_east_6',
-                "command": 'face_east'
+                "identifier": 'EVENT_303_action_queue_async_15_SUBSCRIPT_face_east_7C_6',
+                "command": 'face_east_7C'
             }
         ]
     },

@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_737_palette_set_0',
         "command": 'palette_set',
-        "args": [110, 1]
+        "args": [110, 1, [0, 1, 2, 3]]
     },
     {
         "identifier": 'EVENT_737_jmp_if_bit_clear_1',
@@ -18,29 +18,29 @@ script = [
         "args": [0x7000, 6]
     },
     {
-        "identifier": 'EVENT_737_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 5, 'EVENT_737_action_queue_async_9']
+        "identifier": 'EVENT_737_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5, 'EVENT_737_action_queue_async_9']
     },
     {
-        "identifier": 'EVENT_737_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4, 'EVENT_737_set_action_script_sync_14']
+        "identifier": 'EVENT_737_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4, 'EVENT_737_set_action_script_sync_14']
     },
     {
-        "identifier": 'EVENT_737_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_737_action_queue_async_11']
+        "identifier": 'EVENT_737_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_737_action_queue_async_11']
     },
     {
-        "identifier": 'EVENT_737_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_737_set_action_script_sync_14']
+        "identifier": 'EVENT_737_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_737_set_action_script_sync_14']
     },
     {
-        "identifier": 'EVENT_737_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_737_action_queue_async_13']
+        "identifier": 'EVENT_737_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_737_action_queue_async_13']
     },
     {
         "identifier": 'EVENT_737_jmp_8',
@@ -143,7 +143,7 @@ script = [
     {
         "identifier": 'EVENT_737_palette_set_22',
         "command": 'palette_set',
-        "args": [109, 1]
+        "args": [109, 1, [2, 3]]
     },
     {
         "identifier": 'EVENT_737_action_queue_sync_23',

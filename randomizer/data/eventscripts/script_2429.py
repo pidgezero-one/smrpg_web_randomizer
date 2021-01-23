@@ -15,7 +15,7 @@ script = [
     {
         "identifier": 'EVENT_2429_jmp_if_random_above_66_2',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2429_remove_from_level_6']
+        "args": [0xbfb1, 0xbfba]
     },
     {
         "identifier": 'EVENT_2429_summon_to_level_3',
@@ -60,7 +60,7 @@ script = [
     {
         "identifier": 'EVENT_2429_jmp_if_random_above_66_11',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2429_remove_from_level_15']
+        "args": [0xbfce, 0xbfd7]
     },
     {
         "identifier": 'EVENT_2429_summon_to_level_12',
@@ -105,7 +105,7 @@ script = [
     {
         "identifier": 'EVENT_2429_jmp_if_random_above_66_20',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2429_remove_from_level_24']
+        "args": [0xbfeb, 0xbff4]
     },
     {
         "identifier": 'EVENT_2429_summon_to_level_21',
@@ -150,7 +150,7 @@ script = [
     {
         "identifier": 'EVENT_2429_jmp_if_random_above_66_29',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2429_remove_from_level_33']
+        "args": [0xc008, 0xc011]
     },
     {
         "identifier": 'EVENT_2429_summon_to_level_30',
@@ -195,7 +195,7 @@ script = [
     {
         "identifier": 'EVENT_2429_jmp_if_random_above_66_38',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2429_remove_from_level_42']
+        "args": [0xc025, 0xc02e]
     },
     {
         "identifier": 'EVENT_2429_summon_to_level_39',

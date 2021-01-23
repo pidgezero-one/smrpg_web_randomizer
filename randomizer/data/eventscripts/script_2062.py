@@ -38,9 +38,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_2062_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2062_run_dialog_10']
+        "identifier": 'EVENT_2062_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2062_run_dialog_10']
     },
     {
         "identifier": 'EVENT_2062_run_dialog_8',

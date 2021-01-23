@@ -10,12 +10,12 @@ script = [
     {
         "identifier": 'EVENT_3261_set_bit_7_offset_1',
         "command": 'set_bit_7_offset',
-        "args": [0x0258]
+        "args": [0x0158, [7]]
     },
     {
         "identifier": 'EVENT_3261_set_bit_7_offset_2',
         "command": 'set_bit_7_offset',
-        "args": [0x025a]
+        "args": [0x015a, [7]]
     },
     {
         "identifier": 'EVENT_3261_apply_tile_mod_3',
@@ -35,12 +35,12 @@ script = [
     {
         "identifier": 'EVENT_3261_clear_bit_7_offset_6',
         "command": 'clear_bit_7_offset',
-        "args": [0x0258]
+        "args": [0x0158, [7]]
     },
     {
         "identifier": 'EVENT_3261_clear_bit_7_offset_7',
         "command": 'clear_bit_7_offset',
-        "args": [0x025a]
+        "args": [0x015a, [7]]
     },
     {
         "identifier": 'EVENT_3261_ret_8',

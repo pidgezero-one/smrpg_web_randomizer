@@ -95,9 +95,9 @@ script = [
         "args": [AreaObjects.NPC_5, Rooms._252_BEAN_VALLEY_MAIN_AREA]
     },
     {
-        "identifier": 'EVENT_2582_add_15',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2582_inc_15',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2582_ret_16',

@@ -88,32 +88,32 @@ script = [
         "args": [AreaObjects.NPC_3]
     },
     {
-        "identifier": 'EVENT_3820_start_embedded_action_script_async_11',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3820_start_embedded_action_script_async_F1_11',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_3820_start_embedded_action_script_async_11_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_3820_start_embedded_action_script_async_F1_11_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_3820_start_embedded_action_script_async_11_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_3820_start_embedded_action_script_async_F1_11_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3820_start_embedded_action_script_async_11_SUBSCRIPT_set_animation_speed_2',
+                "identifier": 'EVENT_3820_start_embedded_action_script_async_F1_11_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3820_start_embedded_action_script_async_11_SUBSCRIPT_walk_to_xy_coords_3',
+                "identifier": 'EVENT_3820_start_embedded_action_script_async_F1_11_SUBSCRIPT_walk_to_xy_coords_3',
                 "command": 'walk_to_xy_coords',
                 "args": [6, 96]
             },
             {
-                "identifier": 'EVENT_3820_start_embedded_action_script_async_11_SUBSCRIPT_face_southwest_4',
+                "identifier": 'EVENT_3820_start_embedded_action_script_async_F1_11_SUBSCRIPT_face_southwest_4',
                 "command": 'face_southwest'
             }
         ]

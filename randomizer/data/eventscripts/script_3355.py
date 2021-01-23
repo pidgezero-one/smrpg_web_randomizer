@@ -718,14 +718,14 @@ script = [
         "args": [AreaObjects.MEM_70A9, 279]
     },
     {
-        "identifier": 'EVENT_3355_add_short_89',
-        "command": 'add_short',
-        "args": [0x7024, 0x01]
+        "identifier": 'EVENT_3355_inc_short_89',
+        "command": 'inc_short',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_3355_add_90',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_3355_inc_90',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_3355_end_loop_91',
@@ -861,8 +861,8 @@ script = [
         "args": [1892, AreaObjects.NPC_14, [_0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3355_pause_script_resume_on_next_dialog_page_a_114',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_3355_pause_script_resume_on_next_dialog_page_a_FD61_114',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_3355_set_bit_115',
@@ -882,12 +882,12 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_if_random_above_66_118',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_3355_add_short_121']
+        "args": [0x508c, 0x508f]
     },
     {
-        "identifier": 'EVENT_3355_add_short_119',
-        "command": 'add_short',
-        "args": [0x703e, 0x01]
+        "identifier": 'EVENT_3355_inc_short_119',
+        "command": 'inc_short',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_3355_dec_120',
@@ -895,9 +895,9 @@ script = [
         "args": [0x7000]
     },
     {
-        "identifier": 'EVENT_3355_add_short_121',
-        "command": 'add_short',
-        "args": [0x703e, 0x01]
+        "identifier": 'EVENT_3355_inc_short_121',
+        "command": 'inc_short',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_3355_dec_122',
@@ -905,9 +905,9 @@ script = [
         "args": [0x7000]
     },
     {
-        "identifier": 'EVENT_3355_add_short_123',
-        "command": 'add_short',
-        "args": [0x703e, 0x01]
+        "identifier": 'EVENT_3355_inc_short_123',
+        "command": 'inc_short',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_3355_run_dialog_124',
@@ -915,9 +915,9 @@ script = [
         "args": [1893, AreaObjects.NPC_14, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3355_add_125',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3355_inc_125',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3355_run_dialog_126',
@@ -925,9 +925,9 @@ script = [
         "args": [1893, AreaObjects.NPC_14, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3355_add_127',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3355_inc_127',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3355_run_dialog_128',
@@ -965,9 +965,9 @@ script = [
         "args": [0x7000, 256]
     },
     {
-        "identifier": 'EVENT_3355_add_short_135',
-        "command": 'add_short',
-        "args": [0x7028, 0x01]
+        "identifier": 'EVENT_3355_inc_short_135',
+        "command": 'inc_short',
+        "args": [0x7028]
     },
     {
         "identifier": 'EVENT_3355_jmp_if_var_not_equals_short_136',

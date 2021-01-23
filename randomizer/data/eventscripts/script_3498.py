@@ -175,9 +175,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3498_add_short_12',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'EVENT_3498_inc_short_12',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'EVENT_3498_end_loop_13',
@@ -314,9 +314,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3498_add_short_27',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'EVENT_3498_inc_short_27',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'EVENT_3498_end_loop_28',

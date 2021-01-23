@@ -8,17 +8,17 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
-        "identifier": 'EVENT_255_start_embedded_action_script_async_1',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_255_start_embedded_action_script_async_F1_1',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.MEM_70A8],
         "subscript": [
             {
-                "identifier": 'EVENT_255_start_embedded_action_script_async_1_SUBSCRIPT_set_object_memory_bits_0',
+                "identifier": 'EVENT_255_start_embedded_action_script_async_F1_1_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0b, [0, 1]]
             },
             {
-                "identifier": 'EVENT_255_start_embedded_action_script_async_1_SUBSCRIPT_db_1',
+                "identifier": 'EVENT_255_start_embedded_action_script_async_F1_1_SUBSCRIPT_db_1',
                 "command": 'db',
                 "args": [0xfd, 0xf2]
             }
@@ -34,9 +34,9 @@ script = [
         "command": 'inc_exp_by_packet'
     },
     {
-        "identifier": 'EVENT_255_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_255_ret_13']
+        "identifier": 'EVENT_255_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_255_ret_13']
     },
     {
         "identifier": 'EVENT_255_set_bit_5',

@@ -139,7 +139,7 @@ script = [
     {
         "identifier": 'EVENT_3773_palette_set_6',
         "command": 'palette_set',
-        "args": [84, 1]
+        "args": [84, 1, [3]]
     },
     {
         "identifier": 'EVENT_3773_unfreeze_camera_7',

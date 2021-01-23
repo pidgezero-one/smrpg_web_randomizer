@@ -87,8 +87,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_6',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_FD61_6',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2627_action_queue_async_7',
@@ -103,8 +103,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_8',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_FD61_8',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2627_action_queue_async_9',
@@ -145,8 +145,8 @@ script = [
         "args": [3271, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_14',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_FD61_14',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2627_action_queue_async_15',
@@ -187,8 +187,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_20',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_FD61_20',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2627_action_queue_async_21',
@@ -397,8 +397,8 @@ script = [
         "args": [3274, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_40',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2627_pause_script_resume_on_next_dialog_page_a_FD61_40',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2627_action_queue_async_41',

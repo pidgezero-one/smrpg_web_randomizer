@@ -95,9 +95,9 @@ script = [
         "args": [AreaObjects.NPC_7, Rooms._196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS]
     },
     {
-        "identifier": 'EVENT_2574_add_15',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2574_inc_15',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2574_ret_16',

@@ -351,7 +351,7 @@ script = [
     {
         "identifier": 'EVENT_2209_palette_set_15',
         "command": 'palette_set',
-        "args": [139, 1]
+        "args": [139, 1, [0, 3]]
     },
     {
         "identifier": 'EVENT_2209_set_action_script_sync_16',

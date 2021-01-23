@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_610_set_bit_7_offset_1',
         "command": 'set_bit_7_offset',
-        "args": [0x0158]
+        "args": [0x0158, []]
     },
     {
         "identifier": 'EVENT_610_set_bit_2',

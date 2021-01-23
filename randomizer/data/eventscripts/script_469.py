@@ -129,7 +129,7 @@ script = [
             {
                 "identifier": 'EVENT_469_action_queue_async_20_SUBSCRIPT_set_700C_to_object_coord_0',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.F]
+                "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
                 "identifier": 'EVENT_469_action_queue_async_20_SUBSCRIPT_set_short_mem_1',
@@ -149,9 +149,9 @@ script = [
         "args": [0x7000, 0x701a]
     },
     {
-        "identifier": 'EVENT_469_jmp_if_var_not_equals_short_23',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_469_enable_controls_until_return_4']
+        "identifier": 'EVENT_469_jmp_if_7000_not_equals_short_23',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_469_enable_controls_until_return_4']
     },
     {
         "identifier": 'EVENT_469_db_24',
@@ -159,24 +159,24 @@ script = [
         "args": [0xfd, 0xca]
     },
     {
-        "identifier": 'EVENT_469_jmp_if_var_equals_short_25',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_469_action_queue_async_30']
+        "identifier": 'EVENT_469_jmp_if_7000_equals_short_25',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_469_action_queue_async_30']
     },
     {
-        "identifier": 'EVENT_469_jmp_if_var_equals_short_26',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 512, 'EVENT_469_action_queue_async_30']
+        "identifier": 'EVENT_469_jmp_if_7000_equals_short_26',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [512, 'EVENT_469_action_queue_async_30']
     },
     {
-        "identifier": 'EVENT_469_jmp_if_var_equals_short_27',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 531, 'EVENT_469_action_queue_async_30']
+        "identifier": 'EVENT_469_jmp_if_7000_equals_short_27',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [531, 'EVENT_469_action_queue_async_30']
     },
     {
-        "identifier": 'EVENT_469_jmp_if_var_equals_short_28',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 256, 'EVENT_469_action_queue_async_30']
+        "identifier": 'EVENT_469_jmp_if_7000_equals_short_28',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [256, 'EVENT_469_action_queue_async_30']
     },
     {
         "identifier": 'EVENT_469_jmp_29',
@@ -220,14 +220,14 @@ script = [
         "args": [[]]
     },
     {
-        "identifier": 'EVENT_469_jmp_if_var_equals_short_36',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_469_set_action_script_sync_48']
+        "identifier": 'EVENT_469_jmp_if_7000_equals_short_36',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_469_set_action_script_sync_48']
     },
     {
-        "identifier": 'EVENT_469_jmp_if_var_equals_short_37',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4, 'EVENT_469_set_action_script_sync_48']
+        "identifier": 'EVENT_469_jmp_if_7000_equals_short_37',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4, 'EVENT_469_set_action_script_sync_48']
     },
     {
         "identifier": 'EVENT_469_set_action_script_sync_38',
@@ -546,112 +546,112 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_469_start_embedded_action_script_async_101',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_object_memory_bits_0',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, [2, 3]]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_700C_to_object_coord_1',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_700C_to_object_coord_1',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_9, Coords.F]
+                "args": [AreaObjects.NPC_9, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_short_mem_2',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_short_mem_2',
                 "command": 'set_short_mem',
                 "args": [0x7032, 0x700c]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_if_700C_any_bits_set_3',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_any_bits_set_3',
                 "command": 'jmp_if_700C_any_bits_set',
-                "args": [[0], 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_if_var_equals_short_5']
+                "args": [[0], 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_equals_short_5']
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_4',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_4',
                 "command": 'jmp',
                 "args": ['EVENT_469_pause_102']
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_if_var_equals_short_5',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 3, 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_animation_speed_11']
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_equals_short_5',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [3, 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_11']
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_if_var_equals_short_6',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 5, 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_animation_speed_14']
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_equals_short_6',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [5, 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_14']
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_if_var_equals_short_7',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 7, 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_animation_speed_17']
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_equals_short_7',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [7, 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_17']
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_animation_speed_8',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_8',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_sprite_sequence_9',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
                 "args": [3, 2, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_10',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_10',
                 "command": 'jmp',
-                "args": ['EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_pause_19']
+                "args": ['EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_pause_19']
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_animation_speed_11',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_11',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_sprite_sequence_12',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_sprite_sequence_12',
                 "command": 'set_sprite_sequence',
                 "args": [3, 2, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_13',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_13',
                 "command": 'jmp',
-                "args": ['EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_pause_19']
+                "args": ['EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_pause_19']
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_animation_speed_14',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_14',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_sprite_sequence_15',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_sprite_sequence_15',
                 "command": 'set_sprite_sequence',
                 "args": [13, 1, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_jmp_16',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_16',
                 "command": 'jmp',
-                "args": ['EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_pause_19']
+                "args": ['EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_pause_19']
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_animation_speed_17',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_animation_speed_17',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_set_sprite_sequence_18',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_sprite_sequence_18',
                 "command": 'set_sprite_sequence',
                 "args": [13, 1, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_pause_19',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_pause_19',
                 "command": 'pause',
                 "args": [34]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_101_SUBSCRIPT_reset_properties_20',
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_reset_properties_20',
                 "command": 'reset_properties'
             }
         ]

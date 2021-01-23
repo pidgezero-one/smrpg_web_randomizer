@@ -5,12 +5,12 @@ script = [
     {
         "identifier": 'EVENT_3157_set_7000_to_object_coord_0',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3157_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 12, 'EVENT_3157_set_7000_to_object_coord_4']
+        "identifier": 'EVENT_3157_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [12, 'EVENT_3157_set_7000_to_object_coord_4']
     },
     {
         "identifier": 'EVENT_3157_action_queue_async_2',
@@ -37,12 +37,12 @@ script = [
     {
         "identifier": 'EVENT_3157_set_7000_to_object_coord_4',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3157_jmp_if_var_not_equals_short_5',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 61, 'EVENT_3157_action_queue_async_2']
+        "identifier": 'EVENT_3157_jmp_if_7000_not_equals_short_5',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [61, 'EVENT_3157_action_queue_async_2']
     },
     {
         "identifier": 'EVENT_3157_action_queue_async_6',

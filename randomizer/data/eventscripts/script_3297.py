@@ -45,9 +45,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_3297_mem_compare_9',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_3297_mem_compare_address_9',
+        "command": 'mem_compare_address',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3297_jmp_if_loaded_memory_is_0_10',

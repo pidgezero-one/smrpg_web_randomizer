@@ -77,9 +77,9 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_1333_add_short_15',
-        "command": 'add_short',
-        "args": [0x7024, 0x01]
+        "identifier": 'EVENT_1333_inc_short_15',
+        "command": 'inc_short',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_1333_set_bit_16',

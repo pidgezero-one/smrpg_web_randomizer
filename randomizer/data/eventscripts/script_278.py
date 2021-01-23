@@ -37,9 +37,9 @@ script = [
                 "args": [0x700c, 0x70a9]
             },
             {
-                "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_jmp_if_var_equals_short_6',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 0, 'EVENT_278_ret_1']
+                "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_jmp_if_700C_equals_short_6',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [0, 'EVENT_278_ret_1']
             },
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_floating_off_7',

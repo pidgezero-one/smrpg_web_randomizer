@@ -32,9 +32,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3325_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 390, 'EVENT_3325_jmp_if_object_not_in_level_9']
+        "identifier": 'EVENT_3325_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [390, 'EVENT_3325_jmp_if_object_not_in_level_9']
     },
     {
         "identifier": 'EVENT_3325_jmp_if_object_not_in_level_7',

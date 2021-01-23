@@ -88,7 +88,7 @@ script = [
     {
         "identifier": 'EVENT_3212_set_7000_to_object_coord_12',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3212_mem_7000_shift_left_13',

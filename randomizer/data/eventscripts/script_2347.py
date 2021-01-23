@@ -269,9 +269,9 @@ script = [
         "args": [items.GoodieBag]
     },
     {
-        "identifier": 'EVENT_2347_add_18',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2347_inc_18',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2347_ret_19',

@@ -148,9 +148,9 @@ script = [
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_3502_action_queue_async_20_SUBSCRIPT_add_short_3',
-                "command": 'add_short',
-                "args": [0x7024, 0x01]
+                "identifier": 'EVENT_3502_action_queue_async_20_SUBSCRIPT_inc_short_3',
+                "command": 'inc_short',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_3502_action_queue_async_20_SUBSCRIPT_set_solidity_bits_4',
@@ -197,9 +197,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3502_add_short_26',
-        "command": 'add_short',
-        "args": [0x7034, 0x01]
+        "identifier": 'EVENT_3502_inc_short_26',
+        "command": 'inc_short',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3502_jmp_27',
@@ -306,12 +306,12 @@ script = [
         "args": [AreaObjects.NPC_5]
     },
     {
-        "identifier": 'EVENT_3502_start_embedded_action_script_async_46',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3502_start_embedded_action_script_sync_F1_46',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.LAYER_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3502_start_embedded_action_script_async_46_SUBSCRIPT_shift_northwest_steps_0',
+                "identifier": 'EVENT_3502_start_embedded_action_script_sync_F1_46_SUBSCRIPT_shift_northwest_steps_0',
                 "command": 'shift_northwest_steps',
                 "args": [15]
             }
@@ -373,9 +373,9 @@ script = [
         "args": [0x7000, 0x70b1]
     },
     {
-        "identifier": 'EVENT_3502_jmp_if_var_equals_short_58',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3502_run_dialog_61']
+        "identifier": 'EVENT_3502_jmp_if_7000_equals_short_58',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_3502_run_dialog_61']
     },
     {
         "identifier": 'EVENT_3502_run_dialog_59',
@@ -716,9 +716,9 @@ script = [
         "args": [0x7000, 0x7032]
     },
     {
-        "identifier": 'EVENT_3502_jmp_if_var_equals_short_95',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3502_run_dialog_98']
+        "identifier": 'EVENT_3502_jmp_if_7000_equals_short_95',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_3502_run_dialog_98']
     },
     {
         "identifier": 'EVENT_3502_run_dialog_96',

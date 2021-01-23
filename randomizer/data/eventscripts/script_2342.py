@@ -746,12 +746,12 @@ script = [
     {
         "identifier": 'EVENT_2342_set_7000_to_object_coord_54',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2342_jmp_if_var_equals_short_55',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_2342_freeze_camera_58']
+        "identifier": 'EVENT_2342_jmp_if_7000_equals_short_55',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_2342_freeze_camera_58']
     },
     {
         "identifier": 'EVENT_2342_clear_bit_56',

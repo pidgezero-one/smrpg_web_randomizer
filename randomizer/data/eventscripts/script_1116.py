@@ -12,9 +12,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_1116_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1116_open_shop_12']
+        "identifier": 'EVENT_1116_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1116_open_shop_12']
     },
     {
         "identifier": 'EVENT_1116_set_3',
@@ -26,9 +26,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_1116_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1116_open_shop_15']
+        "identifier": 'EVENT_1116_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1116_open_shop_15']
     },
     {
         "identifier": 'EVENT_1116_set_6',
@@ -40,9 +40,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_1116_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1116_open_shop_18']
+        "identifier": 'EVENT_1116_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1116_open_shop_18']
     },
     {
         "identifier": 'EVENT_1116_open_shop_9',

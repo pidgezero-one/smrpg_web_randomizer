@@ -40,9 +40,9 @@ script = [
         "args": [0x00f0]
     },
     {
-        "identifier": 'EVENT_1628_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 240, 'EVENT_1536_ret_0']
+        "identifier": 'EVENT_1628_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [240, 'EVENT_1536_ret_0']
     },
     {
         "identifier": 'EVENT_1628_ret_9',

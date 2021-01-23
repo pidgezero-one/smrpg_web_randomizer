@@ -431,9 +431,9 @@ script = [
         "args": [0x0010]
     },
     {
-        "identifier": 'EVENT_1396_jmp_if_var_equals_short_35',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 16, 'EVENT_1396_close_dialog_37']
+        "identifier": 'EVENT_1396_jmp_if_7000_equals_short_35',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [16, 'EVENT_1396_close_dialog_37']
     },
     {
         "identifier": 'EVENT_1396_jmp_36',

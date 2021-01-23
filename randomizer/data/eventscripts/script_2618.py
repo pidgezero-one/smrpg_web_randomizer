@@ -198,8 +198,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2618_pause_script_resume_on_next_dialog_page_a_30',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2618_pause_script_resume_on_next_dialog_page_a_FD61_30',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2618_action_queue_async_31',
@@ -487,8 +487,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2618_pause_script_resume_on_next_dialog_page_a_55',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2618_pause_script_resume_on_next_dialog_page_a_FD61_55',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2618_action_queue_sync_56',

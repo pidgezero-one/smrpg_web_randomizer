@@ -57,9 +57,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3135_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 62, 'EVENT_3135_run_event_as_subroutine_15']
+        "identifier": 'EVENT_3135_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [62, 'EVENT_3135_run_event_as_subroutine_15']
     },
     {
         "identifier": 'EVENT_3135_priority_set_12',
@@ -85,9 +85,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3135_jmp_if_var_not_equals_short_17',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 333, 'EVENT_3135_ret_32']
+        "identifier": 'EVENT_3135_jmp_if_7000_not_equals_short_17',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [333, 'EVENT_3135_ret_32']
     },
     {
         "identifier": 'EVENT_3135_jmp_if_bit_set_18',

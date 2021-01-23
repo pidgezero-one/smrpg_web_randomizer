@@ -250,8 +250,8 @@ script = [
         "args": [0x7051, 7, 'EVENT_1105_action_queue_sync_23']
     },
     {
-        "identifier": 'EVENT_1105_stop_music_17',
-        "command": 'stop_music'
+        "identifier": 'EVENT_1105_stop_music_FDA2_17',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_1105_set_bit_18',

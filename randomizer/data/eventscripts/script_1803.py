@@ -97,7 +97,7 @@ script = [
     {
         "identifier": 'EVENT_1803_run_dialog_11',
         "command": 'run_dialog',
-        "args": [1177, AreaObjects.BOWSER, []]
+        "args": [1177, AreaObjects.BOWSER, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_1803_pause_12',

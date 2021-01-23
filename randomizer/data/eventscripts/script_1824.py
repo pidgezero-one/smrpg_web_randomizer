@@ -52,9 +52,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1824_add_6',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1824_inc_6',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1824_add_short_7',

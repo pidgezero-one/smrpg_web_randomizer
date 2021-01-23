@@ -211,19 +211,19 @@ script = [
         "args": [0x00f0]
     },
     {
-        "identifier": 'EVENT_3074_jmp_if_var_equals_short_42',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 240, 'EVENT_3074_play_sound_76']
+        "identifier": 'EVENT_3074_jmp_if_7000_equals_short_42',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [240, 'EVENT_3074_play_sound_76']
     },
     {
-        "identifier": 'EVENT_3074_jmp_if_var_equals_short_43',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 160, 'EVENT_3074_play_sound_46']
+        "identifier": 'EVENT_3074_jmp_if_7000_equals_short_43',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [160, 'EVENT_3074_play_sound_46']
     },
     {
-        "identifier": 'EVENT_3074_jmp_if_var_equals_short_44',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_3074_play_sound_61']
+        "identifier": 'EVENT_3074_jmp_if_7000_equals_short_44',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_3074_play_sound_61']
     },
     {
         "identifier": 'EVENT_3074_jmp_45',

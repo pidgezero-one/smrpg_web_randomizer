@@ -131,22 +131,22 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_346_start_embedded_action_script_async_15',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_346_start_embedded_action_script_async_F1_15',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_346_start_embedded_action_script_async_15_SUBSCRIPT_set_object_memory_bits_0',
+                "identifier": 'EVENT_346_start_embedded_action_script_async_F1_15_SUBSCRIPT_set_object_memory_bits_0',
                 "command": 'set_object_memory_bits',
                 "args": [0x0b, [0, 1]]
             },
             {
-                "identifier": 'EVENT_346_start_embedded_action_script_async_15_SUBSCRIPT_clear_solidity_bits_1',
+                "identifier": 'EVENT_346_start_embedded_action_script_async_F1_15_SUBSCRIPT_clear_solidity_bits_1',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_0]]
             },
             {
-                "identifier": 'EVENT_346_start_embedded_action_script_async_15_SUBSCRIPT_set_animation_speed_2',
+                "identifier": 'EVENT_346_start_embedded_action_script_async_F1_15_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
             }

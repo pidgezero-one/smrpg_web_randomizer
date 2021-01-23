@@ -59,9 +59,9 @@ script = [
         "args": [items.YoshiCookie]
     },
     {
-        "identifier": 'EVENT_931_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_931_run_dialog_60']
+        "identifier": 'EVENT_931_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_931_run_dialog_60']
     },
     {
         "identifier": 'EVENT_931_set_random_10',
@@ -69,9 +69,9 @@ script = [
         "args": [0x7000, 43]
     },
     {
-        "identifier": 'EVENT_931_mem_compare_11',
-        "command": 'mem_compare',
-        "args": [0x7000, 42]
+        "identifier": 'EVENT_931_mem_compare_val_11',
+        "command": 'mem_compare_val',
+        "args": [42]
     },
     {
         "identifier": 'EVENT_931_jmp_if_comparison_result_is_greater_or_equal_12',
@@ -79,9 +79,9 @@ script = [
         "args": ['EVENT_931_set_27']
     },
     {
-        "identifier": 'EVENT_931_mem_compare_13',
-        "command": 'mem_compare',
-        "args": [0x7000, 40]
+        "identifier": 'EVENT_931_mem_compare_val_13',
+        "command": 'mem_compare_val',
+        "args": [40]
     },
     {
         "identifier": 'EVENT_931_jmp_if_comparison_result_is_greater_or_equal_14',
@@ -89,9 +89,9 @@ script = [
         "args": ['EVENT_931_set_29']
     },
     {
-        "identifier": 'EVENT_931_mem_compare_15',
-        "command": 'mem_compare',
-        "args": [0x7000, 37]
+        "identifier": 'EVENT_931_mem_compare_val_15',
+        "command": 'mem_compare_val',
+        "args": [37]
     },
     {
         "identifier": 'EVENT_931_jmp_if_comparison_result_is_greater_or_equal_16',
@@ -99,9 +99,9 @@ script = [
         "args": ['EVENT_931_set_31']
     },
     {
-        "identifier": 'EVENT_931_mem_compare_17',
-        "command": 'mem_compare',
-        "args": [0x7000, 32]
+        "identifier": 'EVENT_931_mem_compare_val_17',
+        "command": 'mem_compare_val',
+        "args": [32]
     },
     {
         "identifier": 'EVENT_931_jmp_if_comparison_result_is_greater_or_equal_18',
@@ -109,9 +109,9 @@ script = [
         "args": ['EVENT_931_set_33']
     },
     {
-        "identifier": 'EVENT_931_mem_compare_19',
-        "command": 'mem_compare',
-        "args": [0x7000, 24]
+        "identifier": 'EVENT_931_mem_compare_val_19',
+        "command": 'mem_compare_val',
+        "args": [24]
     },
     {
         "identifier": 'EVENT_931_jmp_if_comparison_result_is_greater_or_equal_20',
@@ -119,9 +119,9 @@ script = [
         "args": ['EVENT_931_set_25']
     },
     {
-        "identifier": 'EVENT_931_mem_compare_21',
-        "command": 'mem_compare',
-        "args": [0x7000, 14]
+        "identifier": 'EVENT_931_mem_compare_val_21',
+        "command": 'mem_compare_val',
+        "args": [14]
     },
     {
         "identifier": 'EVENT_931_jmp_if_comparison_result_is_greater_or_equal_22',
@@ -405,51 +405,51 @@ script = [
         "args": [AreaObjects.NPC_3]
     },
     {
-        "identifier": 'EVENT_931_start_embedded_action_script_async_79',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_79',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_931_start_embedded_action_script_async_79_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_79_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [11, 82, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_931_start_embedded_action_script_async_79_SUBSCRIPT_face_northeast_1',
+                "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_79_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_931_start_embedded_action_script_async_79_SUBSCRIPT_set_animation_speed_2',
+                "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_79_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_931_start_embedded_action_script_async_79_SUBSCRIPT_sequence_looping_on_3',
+                "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_79_SUBSCRIPT_sequence_looping_on_3',
                 "command": 'sequence_looping_on'
             }
         ]
     },
     {
-        "identifier": 'EVENT_931_start_embedded_action_script_async_80',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_80',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_2],
         "subscript": [
             {
-                "identifier": 'EVENT_931_start_embedded_action_script_async_80_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_80_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [11, 83, 0, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_931_start_embedded_action_script_async_80_SUBSCRIPT_face_northeast_1',
+                "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_80_SUBSCRIPT_face_northeast_1',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_931_start_embedded_action_script_async_80_SUBSCRIPT_set_animation_speed_2',
+                "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_80_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_931_start_embedded_action_script_async_80_SUBSCRIPT_sequence_looping_on_3',
+                "identifier": 'EVENT_931_start_embedded_action_script_sync_F1_80_SUBSCRIPT_sequence_looping_on_3',
                 "command": 'sequence_looping_on'
             }
         ]

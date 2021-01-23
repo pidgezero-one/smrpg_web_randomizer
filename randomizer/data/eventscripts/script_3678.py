@@ -310,7 +310,7 @@ script = [
             {
                 "identifier": 'EVENT_3678_action_queue_sync_42_SUBSCRIPT_embedded_animation_routine_2',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3678_action_queue_sync_42_SUBSCRIPT_shift_northeast_steps_3',
@@ -457,7 +457,7 @@ script = [
             {
                 "identifier": 'EVENT_3678_action_queue_sync_49_SUBSCRIPT_embedded_animation_routine_2',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3678_action_queue_sync_49_SUBSCRIPT_shift_southwest_steps_3',
@@ -1225,7 +1225,7 @@ script = [
             {
                 "identifier": 'EVENT_3678_action_queue_sync_103_SUBSCRIPT_embedded_animation_routine_3',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3678_action_queue_sync_103_SUBSCRIPT_shift_southwest_steps_4',
@@ -1256,7 +1256,7 @@ script = [
             {
                 "identifier": 'EVENT_3678_action_queue_sync_104_SUBSCRIPT_embedded_animation_routine_2',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
             },
             {
                 "identifier": 'EVENT_3678_action_queue_sync_104_SUBSCRIPT_play_sound_3',

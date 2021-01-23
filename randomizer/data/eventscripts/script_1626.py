@@ -32,9 +32,9 @@ script = [
         "args": [items.CarboCookie]
     },
     {
-        "identifier": 'EVENT_1626_jmp_if_var_not_equals_short_6',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_1626_run_dialog_9']
+        "identifier": 'EVENT_1626_jmp_if_7000_not_equals_short_6',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_1626_run_dialog_9']
     },
     {
         "identifier": 'EVENT_1626_store_item_amount_7000_7',
@@ -42,9 +42,9 @@ script = [
         "args": [items.ShinyStone]
     },
     {
-        "identifier": 'EVENT_1626_jmp_if_var_not_equals_short_8',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 0, 'EVENT_1626_run_dialog_11']
+        "identifier": 'EVENT_1626_jmp_if_7000_not_equals_short_8',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_1626_run_dialog_11']
     },
     {
         "identifier": 'EVENT_1626_run_dialog_9',

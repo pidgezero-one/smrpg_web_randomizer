@@ -81,9 +81,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3132_add_7',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3132_inc_7',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3132_end_loop_8',

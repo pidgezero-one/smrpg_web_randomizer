@@ -148,8 +148,8 @@ script = [
         "args": [60]
     },
     {
-        "identifier": 'EVENT_1364_pause_script_resume_on_next_dialog_page_a_20',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1364_pause_script_resume_on_next_dialog_page_a_FD61_20',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_21',

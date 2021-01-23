@@ -30,7 +30,7 @@ script = [
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_700C_to_object_coord_2',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MEM_70AA, Coords.F]
+                "args": [AreaObjects.MEM_70AA, Coords.F, []]
             },
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_mem_700C_and_const_3',
@@ -38,14 +38,14 @@ script = [
                 "args": [0x000f]
             },
             {
-                "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_jmp_if_var_equals_short_4',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 1, 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6']
+                "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_jmp_if_700C_equals_short_4',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [1, 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6']
             },
             {
-                "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_jmp_if_var_equals_short_5',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 3, 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_10']
+                "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_jmp_if_700C_equals_short_5',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [3, 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_10']
             },
             {
                 "identifier": 'EVENT_3294_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_6',

@@ -23,9 +23,9 @@ script = [
         "args": [items.Wallet]
     },
     {
-        "identifier": 'EVENT_395_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_293_run_dialog_8']
+        "identifier": 'EVENT_395_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_293_run_dialog_8']
     },
     {
         "identifier": 'EVENT_395_run_event_as_subroutine_5',
@@ -150,9 +150,9 @@ script = [
         "args": [items.Wallet]
     },
     {
-        "identifier": 'EVENT_395_jmp_if_var_equals_short_30',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_395_run_dialog_36']
+        "identifier": 'EVENT_395_jmp_if_7000_equals_short_30',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_395_run_dialog_36']
     },
     {
         "identifier": 'EVENT_395_jmp_31',

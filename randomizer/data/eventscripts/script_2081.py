@@ -35,9 +35,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_2081_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2081_ret_21']
+        "identifier": 'EVENT_2081_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2081_ret_21']
     },
     {
         "identifier": 'EVENT_2081_set_8',
@@ -49,9 +49,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_2081_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2081_ret_21']
+        "identifier": 'EVENT_2081_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2081_ret_21']
     },
     {
         "identifier": 'EVENT_2081_set_11',
@@ -63,9 +63,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_2081_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2081_ret_21']
+        "identifier": 'EVENT_2081_jmp_if_7000_equals_short_13',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2081_ret_21']
     },
     {
         "identifier": 'EVENT_2081_set_14',
@@ -691,7 +691,7 @@ script = [
     {
         "identifier": 'EVENT_2081_tint_layers_98',
         "command": 'tint_layers',
-        "args": [0x00, 0x00, 0x00, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB]]
+        "args": [0x00, 0x00, 0x00, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB], []]
     },
     {
         "identifier": 'EVENT_2081_reset_priority_set_99',
@@ -766,9 +766,9 @@ script = [
         "args": [0x0080]
     },
     {
-        "identifier": 'EVENT_2081_jmp_if_var_equals_short_107',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_2081_apply_tile_mod_109']
+        "identifier": 'EVENT_2081_jmp_if_7000_equals_short_107',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_2081_apply_tile_mod_109']
     },
     {
         "identifier": 'EVENT_2081_jmp_108',

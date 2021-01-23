@@ -100,12 +100,12 @@ script = [
     {
         "identifier": 'EVENT_3149_tint_layers_16',
         "command": 'tint_layers',
-        "args": [0x40, 0xa0, 0x40, 3, [_0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND]]
+        "args": [0x40, 0xa0, 0x40, 3, [_0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.LAYER_4, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND], [7]]
     },
     {
         "identifier": 'EVENT_3149_tint_layers_17',
         "command": 'tint_layers',
-        "args": [0x00, 0x00, 0x00, 3, [_0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND]]
+        "args": [0x00, 0x00, 0x00, 3, [_0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.LAYER_4, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND], [7]]
     },
     {
         "identifier": 'EVENT_3149_reset_priority_set_18',

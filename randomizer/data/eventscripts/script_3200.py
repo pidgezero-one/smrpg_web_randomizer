@@ -195,126 +195,126 @@ script = [
         "args": [Sounds._021_RUMBLING, 6]
     },
     {
-        "identifier": 'EVENT_3200_start_embedded_action_script_async_6',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.SCREEN_FOCUS],
         "subscript": [
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_start_loop_n_times_1',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_start_loop_n_times_1',
                 "command": 'start_loop_n_times',
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_shift_west_pixels_2',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_shift_west_pixels_2',
                 "command": 'shift_west_pixels',
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_shift_north_pixels_3',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_shift_north_pixels_3',
                 "command": 'shift_north_pixels',
                 "args": [4]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_shift_east_pixels_4',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_shift_east_pixels_4',
                 "command": 'shift_east_pixels',
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_shift_south_pixels_5',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_shift_south_pixels_5',
                 "command": 'shift_south_pixels',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_shift_west_pixels_6',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_shift_west_pixels_6',
                 "command": 'shift_west_pixels',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_shift_south_pixels_7',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_shift_south_pixels_7',
                 "command": 'shift_south_pixels',
                 "args": [5]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_shift_east_pixels_8',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_shift_east_pixels_8',
                 "command": 'shift_east_pixels',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_shift_north_pixels_9',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_shift_north_pixels_9',
                 "command": 'shift_north_pixels',
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_end_loop_10',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_end_loop_10',
                 "command": 'end_loop'
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_6_SUBSCRIPT_set_animation_speed_11',
+                "identifier": 'EVENT_3200_start_embedded_action_script_async_F1_6_SUBSCRIPT_set_animation_speed_11',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             }
         ]
     },
     {
-        "identifier": 'EVENT_3200_start_embedded_action_script_async_7',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.MEM_70AA],
         "subscript": [
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_pause_0',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_pause_0',
                 "command": 'pause',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_jmp_if_bit_clear_1',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_jmp_if_bit_clear_1',
                 "command": 'jmp_if_bit_clear',
-                "args": [0x7043, 1, 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_pause_0']
+                "args": [0x7043, 1, 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_pause_0']
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_clear_bit_2',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_clear_bit_2',
                 "command": 'clear_bit',
                 "args": [0x7043, 1]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_sequence_looping_on_3',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_sequence_looping_on_3',
                 "command": 'sequence_looping_on'
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_set_animation_speed_4',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_set_animation_speed_4',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_set_sprite_sequence_5',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_set_sprite_sequence_5',
                 "command": 'set_sprite_sequence',
                 "args": [1, 0, [_0x08Flags.LOOPING_OFF]]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_play_sound_6',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_play_sound_6',
                 "command": 'play_sound',
                 "args": [Sounds._010_TRAMPOLINE, 6]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_pause_7',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_pause_7',
                 "command": 'pause',
                 "args": [24]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_set_animation_speed_8',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_set_animation_speed_8',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_reset_properties_9',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_reset_properties_9',
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_7_SUBSCRIPT_sequence_looping_off_10',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_7_SUBSCRIPT_sequence_looping_off_10',
                 "command": 'sequence_looping_off'
             }
         ]
@@ -670,45 +670,45 @@ script = [
         "args": [1641, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3200_start_embedded_action_script_async_40',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_40',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.MEM_70AA],
         "subscript": [
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_40_SUBSCRIPT_sequence_looping_on_0',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_40_SUBSCRIPT_sequence_looping_on_0',
                 "command": 'sequence_looping_on'
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_40_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_40_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_40_SUBSCRIPT_set_sprite_sequence_2',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_40_SUBSCRIPT_set_sprite_sequence_2',
                 "command": 'set_sprite_sequence',
                 "args": [1, 0, [_0x08Flags.LOOPING_OFF]]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_40_SUBSCRIPT_play_sound_3',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_40_SUBSCRIPT_play_sound_3',
                 "command": 'play_sound',
                 "args": [Sounds._010_TRAMPOLINE, 6]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_40_SUBSCRIPT_pause_4',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_40_SUBSCRIPT_pause_4',
                 "command": 'pause',
                 "args": [24]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_40_SUBSCRIPT_set_animation_speed_5',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_40_SUBSCRIPT_set_animation_speed_5',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_40_SUBSCRIPT_reset_properties_6',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_40_SUBSCRIPT_reset_properties_6',
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_3200_start_embedded_action_script_async_40_SUBSCRIPT_sequence_looping_off_7',
+                "identifier": 'EVENT_3200_start_embedded_action_script_sync_F1_40_SUBSCRIPT_sequence_looping_off_7',
                 "command": 'sequence_looping_off'
             }
         ]

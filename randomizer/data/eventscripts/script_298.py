@@ -147,7 +147,7 @@ script = [
             {
                 "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_set_700C_to_object_coord_0',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_4, Coords.F]
+                "args": [AreaObjects.NPC_4, Coords.F, []]
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_set_short_mem_1',
@@ -173,8 +173,8 @@ script = [
                 "command": 'fixed_f_coord_off'
             },
             {
-                "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_face_east_6',
-                "command": 'face_east'
+                "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_face_east_7C_6',
+                "command": 'face_east_7C'
             }
         ]
     },
@@ -194,8 +194,8 @@ script = [
                 "args": [0x700c, 0x7024]
             },
             {
-                "identifier": 'EVENT_298_action_queue_async_20_SUBSCRIPT_face_east_1',
-                "command": 'face_east'
+                "identifier": 'EVENT_298_action_queue_async_20_SUBSCRIPT_face_east_7C_1',
+                "command": 'face_east_7C'
             }
         ]
     },

@@ -12,9 +12,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_1111_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1111_set_7']
+        "identifier": 'EVENT_1111_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1111_set_7']
     },
     {
         "identifier": 'EVENT_1111_set_3',
@@ -26,9 +26,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_1111_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_1111_play_sound_17']
+        "identifier": 'EVENT_1111_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1111_play_sound_17']
     },
     {
         "identifier": 'EVENT_1111_ret_6',

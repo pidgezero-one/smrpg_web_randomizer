@@ -10,7 +10,7 @@ script = [
             {
                 "identifier": 'EVENT_682_action_queue_async_0_SUBSCRIPT_set_700C_to_object_coord_0',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_6, Coords.F]
+                "args": [AreaObjects.NPC_6, Coords.F, []]
             },
             {
                 "identifier": 'EVENT_682_action_queue_async_0_SUBSCRIPT_face_southwest_1',
@@ -34,8 +34,8 @@ script = [
         "args": [AreaObjects.NPC_6],
         "subscript": [
             {
-                "identifier": 'EVENT_682_action_queue_async_3_SUBSCRIPT_face_east_0',
-                "command": 'face_east'
+                "identifier": 'EVENT_682_action_queue_async_3_SUBSCRIPT_face_east_7C_0',
+                "command": 'face_east_7C'
             }
         ]
     },

@@ -67,9 +67,9 @@ script = [
         "command": 'disable_event_trigger_for_object_at_70A8'
     },
     {
-        "identifier": 'EVENT_3310_add_6',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3310_inc_6',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_3310_run_event_as_subroutine_7',

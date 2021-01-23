@@ -8,9 +8,9 @@ script = [
         "args": [0x7000, 0x70a8]
     },
     {
-        "identifier": 'EVENT_1793_mem_compare_1',
-        "command": 'mem_compare',
-        "args": [0x7000, 38]
+        "identifier": 'EVENT_1793_mem_compare_val_1',
+        "command": 'mem_compare_val',
+        "args": [38]
     },
     {
         "identifier": 'EVENT_1793_jmp_if_loaded_memory_is_not_0_2',

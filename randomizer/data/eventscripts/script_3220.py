@@ -5,12 +5,12 @@ script = [
     {
         "identifier": 'EVENT_3220_set_7000_to_object_coord_0',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70A8, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MEM_70A8, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3220_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3220_clear_bit_4']
+        "identifier": 'EVENT_3220_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_3220_clear_bit_4']
     },
     {
         "identifier": 'EVENT_3220_action_queue_async_2',
@@ -117,8 +117,8 @@ script = [
                 "args": [0x700c, 0x7032]
             },
             {
-                "identifier": 'EVENT_3220_action_queue_async_2_SUBSCRIPT_face_east_21',
-                "command": 'face_east'
+                "identifier": 'EVENT_3220_action_queue_async_2_SUBSCRIPT_face_east_7C_21',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_3220_action_queue_async_2_SUBSCRIPT_sequence_looping_off_22',
@@ -156,37 +156,37 @@ script = [
             {
                 "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_set_700C_to_object_coord_0',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.DUMMY_0X07, Coords.F]
+                "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_var_equals_short_1',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 1, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_8']
+                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_700C_equals_short_1',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [1, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_8']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_var_equals_short_2',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 0, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_8']
+                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_700C_equals_short_2',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [0, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_8']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_var_equals_short_3',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 2, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_8']
+                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_700C_equals_short_3',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [2, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_8']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_var_equals_short_4',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 5, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_15']
+                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_700C_equals_short_4',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [5, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_15']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_var_equals_short_5',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 4, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_15']
+                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_700C_equals_short_5',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [4, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_15']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_var_equals_short_6',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 6, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_15']
+                "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_if_700C_equals_short_6',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [6, 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_fixed_f_coord_on_15']
             },
             {
                 "identifier": 'EVENT_3220_action_queue_sync_5_SUBSCRIPT_jmp_7',
@@ -264,37 +264,37 @@ script = [
             {
                 "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_700C_to_object_coord_0',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.F]
+                "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_var_equals_short_1',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 1, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_9']
+                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_700C_equals_short_1',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [1, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_9']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_var_equals_short_2',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 0, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_9']
+                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_700C_equals_short_2',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [0, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_9']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_var_equals_short_3',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 2, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_9']
+                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_700C_equals_short_3',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [2, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_9']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_var_equals_short_4',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 5, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_21']
+                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_700C_equals_short_4',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [5, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_21']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_var_equals_short_5',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 4, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_21']
+                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_700C_equals_short_5',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [4, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_21']
             },
             {
-                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_var_equals_short_6',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 6, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_21']
+                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_700C_equals_short_6',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [6, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_21']
             },
             {
                 "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_object_memory_clear_bit_7',
@@ -429,12 +429,12 @@ script = [
             {
                 "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_700C_to_object_coord_33',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.DUMMY_0X07, Coords.Y, CoordUnits.PIXEL]
+                "args": [AreaObjects.DUMMY_0X07, Coords.Y, [7], CoordUnits.PIXEL]
             },
             {
-                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_var_not_equals_short_34',
-                "command": 'jmp_if_var_not_equals_short',
-                "args": [0x700c, 21, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_sequence_looping_off_37']
+                "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_jmp_if_700C_not_equals_short_34',
+                "command": 'jmp_if_700C_not_equals_short',
+                "args": [21, 'EVENT_3220_action_queue_async_6_SUBSCRIPT_sequence_looping_off_37']
             },
             {
                 "identifier": 'EVENT_3220_action_queue_async_6_SUBSCRIPT_set_bit_35',
@@ -467,9 +467,9 @@ script = [
         "args": [AreaObjects.NPC_2, 336]
     },
     {
-        "identifier": 'EVENT_3220_add_9',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_3220_inc_9',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_3220_clear_bit_10',

@@ -38,31 +38,31 @@ script = [
         "args": [0x70b9, 0x7000]
     },
     {
-        "identifier": 'EVENT_520_start_embedded_action_script_async_7',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_520_start_embedded_action_script_async_F1_7',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_2],
         "subscript": [
             {
-                "identifier": 'EVENT_520_start_embedded_action_script_async_7_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_520_start_embedded_action_script_async_F1_7_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_520_start_embedded_action_script_async_7_SUBSCRIPT_clear_solidity_bits_1',
+                "identifier": 'EVENT_520_start_embedded_action_script_async_F1_7_SUBSCRIPT_clear_solidity_bits_1',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_520_start_embedded_action_script_async_7_SUBSCRIPT_fixed_f_coord_on_2',
+                "identifier": 'EVENT_520_start_embedded_action_script_async_F1_7_SUBSCRIPT_fixed_f_coord_on_2',
                 "command": 'fixed_f_coord_on'
             },
             {
-                "identifier": 'EVENT_520_start_embedded_action_script_async_7_SUBSCRIPT_set_animation_speed_3',
+                "identifier": 'EVENT_520_start_embedded_action_script_async_F1_7_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_520_start_embedded_action_script_async_7_SUBSCRIPT_run_away_shift_4',
+                "identifier": 'EVENT_520_start_embedded_action_script_async_F1_7_SUBSCRIPT_run_away_shift_4',
                 "command": 'run_away_shift'
             }
         ]
@@ -118,24 +118,24 @@ script = [
                 "args": [0x702a, 0x700c]
             },
             {
-                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_var_equals_short_3',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 0, 'EVENT_520_action_queue_async_11_SUBSCRIPT_face_northwest_7']
+                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_700C_equals_short_3',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [0, 'EVENT_520_action_queue_async_11_SUBSCRIPT_face_northwest_7']
             },
             {
-                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_var_equals_short_4',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 64, 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_700C_to_object_coord_9']
+                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_700C_equals_short_4',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [64, 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_700C_to_object_coord_9']
             },
             {
-                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_var_equals_short_5',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 128, 'EVENT_520_action_queue_async_11_SUBSCRIPT_face_southeast_14']
+                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_700C_equals_short_5',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [128, 'EVENT_520_action_queue_async_11_SUBSCRIPT_face_southeast_14']
             },
             {
-                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_var_equals_short_6',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 192, 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_700C_to_object_coord_9']
+                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_700C_equals_short_6',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [192, 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_700C_to_object_coord_9']
             },
             {
                 "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_face_northwest_7',
@@ -149,7 +149,7 @@ script = [
             {
                 "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_700C_to_object_coord_9',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_2, Coords.X, CoordUnits.PIXEL]
+                "args": [AreaObjects.NPC_2, Coords.X, [7], CoordUnits.PIXEL]
             },
             {
                 "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_short_mem_10',
@@ -159,7 +159,7 @@ script = [
             {
                 "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_mem_compare_11',
                 "command": 'mem_compare',
-                "args": [0x7038, 4]
+                "args": [0x702c, 4]
             },
             {
                 "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_comparison_result_is_greater_or_equal_12',
@@ -204,12 +204,12 @@ script = [
             {
                 "identifier": 'EVENT_520_action_queue_sync_12_SUBSCRIPT_set_700C_to_object_coord_3',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_2, Coords.F]
+                "args": [AreaObjects.NPC_2, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_520_action_queue_sync_12_SUBSCRIPT_jmp_if_var_equals_short_4',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 5, 'EVENT_520_action_queue_sync_12_SUBSCRIPT_object_memory_clear_bit_6']
+                "identifier": 'EVENT_520_action_queue_sync_12_SUBSCRIPT_jmp_if_700C_equals_short_4',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [5, 'EVENT_520_action_queue_sync_12_SUBSCRIPT_object_memory_clear_bit_6']
             },
             {
                 "identifier": 'EVENT_520_action_queue_sync_12_SUBSCRIPT_set_sprite_sequence_5',

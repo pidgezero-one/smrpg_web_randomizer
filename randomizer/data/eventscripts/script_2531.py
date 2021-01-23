@@ -47,8 +47,8 @@ script = [
         "args": [0x708c, 0]
     },
     {
-        "identifier": 'EVENT_2531_fade_out_music_9',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_2531_fade_out_music_FDA3_9',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_2531_summon_to_current_level_at_marios_coords_10',
@@ -87,8 +87,8 @@ script = [
         "args": [3123, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2531_pause_script_resume_on_next_dialog_page_a_13',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2531_pause_script_resume_on_next_dialog_page_a_FD61_13',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2531_action_queue_async_14',
@@ -102,8 +102,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2531_pause_script_resume_on_next_dialog_page_a_15',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2531_pause_script_resume_on_next_dialog_page_a_FD61_15',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2531_play_music_default_volume_16',
@@ -287,8 +287,8 @@ script = [
         "args": [AreaObjects.NPC_21]
     },
     {
-        "identifier": 'EVENT_2531_fade_out_music_35',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_2531_fade_out_music_FDA3_35',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_2531_pause_36',

@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'EVENT_728_palette_set_5',
         "command": 'palette_set',
-        "args": [105, 1]
+        "args": [105, 1, [0, 1, 2, 3]]
     },
     {
         "identifier": 'EVENT_728_action_queue_sync_6',

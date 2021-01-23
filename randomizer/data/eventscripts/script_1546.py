@@ -20,7 +20,7 @@ script = [
     {
         "identifier": 'EVENT_1546_run_dialog_3',
         "command": 'run_dialog',
-        "args": [1177, AreaObjects.MARIO, []]
+        "args": [1177, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_1546_put_inventory_4',
@@ -54,9 +54,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1546_add_8',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_1546_inc_8',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_1546_set_short_9',

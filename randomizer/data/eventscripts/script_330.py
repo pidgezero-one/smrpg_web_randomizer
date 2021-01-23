@@ -13,9 +13,9 @@ script = [
         "args": [0x7081, 3, 'EVENT_330_jmp_to_event_20']
     },
     {
-        "identifier": 'EVENT_330_add_2',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_330_inc_2',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_330_jmp_if_var_equals_byte_3',
@@ -74,7 +74,7 @@ script = [
     {
         "identifier": 'EVENT_330_set_7000_to_object_coord_13',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70A8, Coords.F]
+        "args": [AreaObjects.MEM_70A8, Coords.F, []]
     },
     {
         "identifier": 'EVENT_330_set_short_mem_14',
@@ -97,9 +97,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_330_add_16',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_330_inc_16',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_330_run_dialog_17',
@@ -117,8 +117,8 @@ script = [
                 "args": [0x700c, 0x7024]
             },
             {
-                "identifier": 'EVENT_330_action_queue_async_18_SUBSCRIPT_face_east_1',
-                "command": 'face_east'
+                "identifier": 'EVENT_330_action_queue_async_18_SUBSCRIPT_face_east_7C_1',
+                "command": 'face_east_7C'
             }
         ]
     },

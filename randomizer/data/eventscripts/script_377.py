@@ -13,12 +13,12 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_377_start_embedded_action_script_async_2',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_377_start_embedded_action_script_async_F1_2',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_377_start_embedded_action_script_async_2_SUBSCRIPT_bpl_26_27_28_0',
+                "identifier": 'EVENT_377_start_embedded_action_script_async_F1_2_SUBSCRIPT_bpl_26_27_28_0',
                 "command": 'bpl_26_27_28'
             }
         ]
@@ -39,12 +39,12 @@ script = [
         "args": [AreaObjects.NPC_1]
     },
     {
-        "identifier": 'EVENT_377_start_embedded_action_script_async_6',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_377_start_embedded_action_script_async_F1_6',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_377_start_embedded_action_script_async_6_SUBSCRIPT_bpl_26_27_28_0',
+                "identifier": 'EVENT_377_start_embedded_action_script_async_F1_6_SUBSCRIPT_bpl_26_27_28_0',
                 "command": 'bpl_26_27_28'
             }
         ]

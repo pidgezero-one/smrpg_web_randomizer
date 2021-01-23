@@ -35,47 +35,47 @@ script = [
     {
         "identifier": 'EVENT_2379_set_7000_to_object_coord_6',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2379_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 9, 'EVENT_2379_action_queue_sync_18']
+        "identifier": 'EVENT_2379_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [9, 'EVENT_2379_action_queue_sync_18']
     },
     {
-        "identifier": 'EVENT_2379_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 8, 'EVENT_2379_action_queue_sync_18']
+        "identifier": 'EVENT_2379_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [8, 'EVENT_2379_action_queue_sync_18']
     },
     {
-        "identifier": 'EVENT_2379_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 7, 'EVENT_2379_action_queue_sync_18']
+        "identifier": 'EVENT_2379_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7, 'EVENT_2379_action_queue_sync_18']
     },
     {
-        "identifier": 'EVENT_2379_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4, 'EVENT_2379_enter_area_16']
+        "identifier": 'EVENT_2379_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4, 'EVENT_2379_enter_area_16']
     },
     {
-        "identifier": 'EVENT_2379_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_2379_enter_area_16']
+        "identifier": 'EVENT_2379_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_2379_enter_area_16']
     },
     {
-        "identifier": 'EVENT_2379_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_2379_enter_area_16']
+        "identifier": 'EVENT_2379_jmp_if_7000_equals_short_12',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_2379_enter_area_16']
     },
     {
-        "identifier": 'EVENT_2379_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_2379_enter_area_16']
+        "identifier": 'EVENT_2379_jmp_if_7000_equals_short_13',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_2379_enter_area_16']
     },
     {
-        "identifier": 'EVENT_2379_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2379_enter_area_16']
+        "identifier": 'EVENT_2379_jmp_if_7000_equals_short_14',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2379_enter_area_16']
     },
     {
         "identifier": 'EVENT_2379_jmp_15',

@@ -47,7 +47,7 @@ script = [
     {
         "identifier": 'EVENT_615_palette_set_6',
         "command": 'palette_set',
-        "args": [89, 7]
+        "args": [89, 7, [0]]
     },
     {
         "identifier": 'EVENT_615_pause_7',
@@ -341,14 +341,14 @@ script = [
         "args": [0x7000, 0x70ac]
     },
     {
-        "identifier": 'EVENT_615_jmp_if_var_equals_short_54',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 199, 'EVENT_615_set_bit_58']
+        "identifier": 'EVENT_615_jmp_if_7000_equals_short_54',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [199, 'EVENT_615_set_bit_58']
     },
     {
-        "identifier": 'EVENT_615_add_55',
-        "command": 'add',
-        "args": [0x70ac, 0x01]
+        "identifier": 'EVENT_615_inc_55',
+        "command": 'inc',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_615_set_short_mem_56',

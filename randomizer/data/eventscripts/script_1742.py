@@ -25,12 +25,12 @@ script = [
     {
         "identifier": 'EVENT_1742_set_7000_to_object_coord_4',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1742_mem_compare_5',
-        "command": 'mem_compare',
-        "args": [0x7000, 256]
+        "identifier": 'EVENT_1742_mem_compare_val_5',
+        "command": 'mem_compare_val',
+        "args": [256]
     },
     {
         "identifier": 'EVENT_1742_jmp_if_comparison_result_is_greater_or_equal_6',
@@ -216,9 +216,9 @@ script = [
                 "args": [0x700c, 0x7028]
             },
             {
-                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_mem_compare_3',
-                "command": 'mem_compare',
-                "args": [0x700c, 64]
+                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_mem_compare_val_3',
+                "command": 'mem_compare_val',
+                "args": [64]
             },
             {
                 "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_jmp_if_loaded_memory_is_above_or_equal_0_4',
@@ -251,9 +251,9 @@ script = [
                 "args": [0x700c, 0x7024]
             },
             {
-                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_jmp_if_var_not_equals_short_10',
-                "command": 'jmp_if_var_not_equals_short',
-                "args": [0x700c, 0, 'EVENT_1742_action_queue_async_21_SUBSCRIPT_set_animation_speed_15']
+                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_jmp_if_700C_not_equals_short_10',
+                "command": 'jmp_if_700C_not_equals_short',
+                "args": [0, 'EVENT_1742_action_queue_async_21_SUBSCRIPT_set_animation_speed_15']
             },
             {
                 "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_floating_off_11',
@@ -302,9 +302,9 @@ script = [
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_add_short_21',
-                "command": 'add_short',
-                "args": [0x7024, 0x01]
+                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_inc_short_21',
+                "command": 'inc_short',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_end_loop_22',

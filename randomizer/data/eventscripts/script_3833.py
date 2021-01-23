@@ -39,9 +39,9 @@ script = [
         "args": [32]
     },
     {
-        "identifier": 'EVENT_3833_add_5',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3833_inc_5',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_3833_disable_trigger_in_level_6',
@@ -85,14 +85,14 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3833_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 484, 'EVENT_3833_apply_tile_mod_19']
+        "identifier": 'EVENT_3833_jmp_if_7000_equals_short_15',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [484, 'EVENT_3833_apply_tile_mod_19']
     },
     {
-        "identifier": 'EVENT_3833_jmp_if_var_equals_short_16',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 492, 'EVENT_3833_apply_tile_mod_21']
+        "identifier": 'EVENT_3833_jmp_if_7000_equals_short_16',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [492, 'EVENT_3833_apply_tile_mod_21']
     },
     {
         "identifier": 'EVENT_3833_apply_tile_mod_17',

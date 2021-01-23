@@ -72,9 +72,9 @@ script = [
         "args": [0x7000, 0x702c]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_14',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7034]
+        "identifier": 'EVENT_3365_mem_compare_address_14',
+        "command": 'mem_compare_address',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_15',
@@ -89,7 +89,7 @@ script = [
     {
         "identifier": 'EVENT_3365_jmp_17',
         "command": 'jmp',
-        "args": ['EVENT_3365_add_short_32']
+        "args": ['EVENT_3365_inc_short_32']
     },
     {
         "identifier": 'EVENT_3365_set_short_mem_18',
@@ -97,9 +97,9 @@ script = [
         "args": [0x7000, 0x702e]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_19',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7034]
+        "identifier": 'EVENT_3365_mem_compare_address_19',
+        "command": 'mem_compare_address',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_20',
@@ -114,7 +114,7 @@ script = [
     {
         "identifier": 'EVENT_3365_jmp_22',
         "command": 'jmp',
-        "args": ['EVENT_3365_add_short_32']
+        "args": ['EVENT_3365_inc_short_32']
     },
     {
         "identifier": 'EVENT_3365_set_short_mem_23',
@@ -122,9 +122,9 @@ script = [
         "args": [0x7000, 0x7030]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_24',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7034]
+        "identifier": 'EVENT_3365_mem_compare_address_24',
+        "command": 'mem_compare_address',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_25',
@@ -139,7 +139,7 @@ script = [
     {
         "identifier": 'EVENT_3365_jmp_27',
         "command": 'jmp',
-        "args": ['EVENT_3365_add_short_32']
+        "args": ['EVENT_3365_inc_short_32']
     },
     {
         "identifier": 'EVENT_3365_set_short_mem_28',
@@ -147,14 +147,14 @@ script = [
         "args": [0x7000, 0x7032]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_29',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7034]
+        "identifier": 'EVENT_3365_mem_compare_address_29',
+        "command": 'mem_compare_address',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_30',
         "command": 'jmp_if_loaded_memory_is_not_0',
-        "args": ['EVENT_3365_add_short_32']
+        "args": ['EVENT_3365_inc_short_32']
     },
     {
         "identifier": 'EVENT_3365_run_dialog_31',
@@ -162,9 +162,9 @@ script = [
         "args": [1924, AreaObjects.NPC_14, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3365_add_short_32',
-        "command": 'add_short',
-        "args": [0x7034, 0x01]
+        "identifier": 'EVENT_3365_inc_short_32',
+        "command": 'inc_short',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_mem_compare_33',
@@ -251,9 +251,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_50',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x702c]
+        "identifier": 'EVENT_3365_mem_compare_address_50',
+        "command": 'mem_compare_address',
+        "args": [0x702c]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_51',
@@ -266,9 +266,9 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_53',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x702e]
+        "identifier": 'EVENT_3365_mem_compare_address_53',
+        "command": 'mem_compare_address',
+        "args": [0x702e]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_54',
@@ -281,9 +281,9 @@ script = [
         "args": [0x7000, 0x7028]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_56',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7030]
+        "identifier": 'EVENT_3365_mem_compare_address_56',
+        "command": 'mem_compare_address',
+        "args": [0x7030]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_57',
@@ -296,9 +296,9 @@ script = [
         "args": [0x7000, 0x702a]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_59',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7032]
+        "identifier": 'EVENT_3365_mem_compare_address_59',
+        "command": 'mem_compare_address',
+        "args": [0x7032]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_60',
@@ -541,9 +541,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_88',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7034]
+        "identifier": 'EVENT_3365_mem_compare_address_88',
+        "command": 'mem_compare_address',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_89',
@@ -558,7 +558,7 @@ script = [
     {
         "identifier": 'EVENT_3365_jmp_91',
         "command": 'jmp',
-        "args": ['EVENT_3365_add_short_106']
+        "args": ['EVENT_3365_inc_short_106']
     },
     {
         "identifier": 'EVENT_3365_set_short_mem_92',
@@ -566,9 +566,9 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_93',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7034]
+        "identifier": 'EVENT_3365_mem_compare_address_93',
+        "command": 'mem_compare_address',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_94',
@@ -583,7 +583,7 @@ script = [
     {
         "identifier": 'EVENT_3365_jmp_96',
         "command": 'jmp',
-        "args": ['EVENT_3365_add_short_106']
+        "args": ['EVENT_3365_inc_short_106']
     },
     {
         "identifier": 'EVENT_3365_set_short_mem_97',
@@ -591,9 +591,9 @@ script = [
         "args": [0x7000, 0x7028]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_98',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7034]
+        "identifier": 'EVENT_3365_mem_compare_address_98',
+        "command": 'mem_compare_address',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_99',
@@ -608,7 +608,7 @@ script = [
     {
         "identifier": 'EVENT_3365_jmp_101',
         "command": 'jmp',
-        "args": ['EVENT_3365_add_short_106']
+        "args": ['EVENT_3365_inc_short_106']
     },
     {
         "identifier": 'EVENT_3365_set_short_mem_102',
@@ -616,14 +616,14 @@ script = [
         "args": [0x7000, 0x702a]
     },
     {
-        "identifier": 'EVENT_3365_mem_compare_103',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7034]
+        "identifier": 'EVENT_3365_mem_compare_address_103',
+        "command": 'mem_compare_address',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_jmp_if_loaded_memory_is_not_0_104',
         "command": 'jmp_if_loaded_memory_is_not_0',
-        "args": ['EVENT_3365_add_short_106']
+        "args": ['EVENT_3365_inc_short_106']
     },
     {
         "identifier": 'EVENT_3365_run_dialog_105',
@@ -631,9 +631,9 @@ script = [
         "args": [1924, AreaObjects.NPC_14, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3365_add_short_106',
-        "command": 'add_short',
-        "args": [0x7034, 0x01]
+        "identifier": 'EVENT_3365_inc_short_106',
+        "command": 'inc_short',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_3365_mem_compare_107',

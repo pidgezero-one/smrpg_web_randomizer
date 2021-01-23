@@ -38,9 +38,9 @@ script = [
         "args": [items.RedEssence]
     },
     {
-        "identifier": 'EVENT_2553_add_7',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2553_inc_7',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2553_ret_8',

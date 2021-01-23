@@ -28,14 +28,14 @@ script = [
         "args": [0x7000, 0x70ac]
     },
     {
-        "identifier": 'EVENT_3311_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_3311_run_dialog_9']
+        "identifier": 'EVENT_3311_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_3311_run_dialog_9']
     },
     {
-        "identifier": 'EVENT_3311_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 6, 'EVENT_3311_run_dialog_11']
+        "identifier": 'EVENT_3311_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [6, 'EVENT_3311_run_dialog_11']
     },
     {
         "identifier": 'EVENT_3311_run_dialog_7',

@@ -428,9 +428,9 @@ script = [
         "args": [AreaObjects.MEM_70A9, 281]
     },
     {
-        "identifier": 'EVENT_3362_add_85',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_3362_inc_85',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_3362_end_loop_86',

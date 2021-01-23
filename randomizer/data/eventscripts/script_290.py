@@ -41,9 +41,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_290_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_290_set_12']
+        "identifier": 'EVENT_290_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_290_set_12']
     },
     {
         "identifier": 'EVENT_290_open_shop_9',

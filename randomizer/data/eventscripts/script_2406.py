@@ -48,8 +48,8 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_2406_fade_out_music_8',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_2406_fade_out_music_FDA3_8',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_2406_action_queue_async_9',
@@ -565,17 +565,17 @@ script = [
     {
         "identifier": 'EVENT_2406_set_bit_7_offset_49',
         "command": 'set_bit_7_offset',
-        "args": [0x0158]
+        "args": [0x0158, []]
     },
     {
         "identifier": 'EVENT_2406_set_bit_7_offset_50',
         "command": 'set_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_2406_set_bit_7_offset_51',
         "command": 'set_bit_7_offset',
-        "args": [0x015c]
+        "args": [0x015c, []]
     },
     {
         "identifier": 'EVENT_2406_db_52',
@@ -628,17 +628,17 @@ script = [
     {
         "identifier": 'EVENT_2406_clear_bit_7_offset_62',
         "command": 'clear_bit_7_offset',
-        "args": [0x0158]
+        "args": [0x0158, []]
     },
     {
         "identifier": 'EVENT_2406_clear_bit_7_offset_63',
         "command": 'clear_bit_7_offset',
-        "args": [0x015a]
+        "args": [0x015a, []]
     },
     {
         "identifier": 'EVENT_2406_clear_bit_7_offset_64',
         "command": 'clear_bit_7_offset',
-        "args": [0x015c]
+        "args": [0x015c, []]
     },
     {
         "identifier": 'EVENT_2406_set_action_script_sync_65',

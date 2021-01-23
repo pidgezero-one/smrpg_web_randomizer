@@ -24,11 +24,11 @@ script = [
             {
                 "identifier": 'EVENT_3229_action_queue_async_1_SUBSCRIPT_set_700C_to_object_coord_2',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.NPC_0, Coords.F]
+                "args": [AreaObjects.NPC_0, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_3229_action_queue_async_1_SUBSCRIPT_face_east_3',
-                "command": 'face_east'
+                "identifier": 'EVENT_3229_action_queue_async_1_SUBSCRIPT_face_east_7C_3',
+                "command": 'face_east_7C'
             }
         ]
     },

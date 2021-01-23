@@ -64,7 +64,7 @@ script = [
     {
         "identifier": 'EVENT_1808_run_dialog_12',
         "command": 'run_dialog',
-        "args": [1177, AreaObjects.MARIO, []]
+        "args": [1177, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_1808_put_inventory_13',

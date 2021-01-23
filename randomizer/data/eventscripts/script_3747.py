@@ -20,7 +20,7 @@ script = [
     {
         "identifier": 'EVENT_3747_jmp_3',
         "command": 'jmp',
-        "args": ['EVENT_3644_mem_compare_35']
+        "args": ['EVENT_3644_mem_compare_val_35']
     },
     {
         "identifier": 'EVENT_3747_stop_sound_4',

@@ -17,7 +17,7 @@ script = [
     {
         "identifier": 'EVENT_2108_palette_set_1',
         "command": 'palette_set',
-        "args": [84, 1]
+        "args": [84, 1, [0, 1, 2, 3]]
     },
     {
         "identifier": 'EVENT_2108_jmp_if_bit_set_2',

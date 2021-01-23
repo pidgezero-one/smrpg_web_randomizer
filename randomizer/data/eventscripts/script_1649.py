@@ -750,9 +750,9 @@ script = [
         "args": [0x7000, 0x7030]
     },
     {
-        "identifier": 'EVENT_1649_mem_compare_68',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x702e]
+        "identifier": 'EVENT_1649_mem_compare_address_68',
+        "command": 'mem_compare_address',
+        "args": [0x702e]
     },
     {
         "identifier": 'EVENT_1649_jmp_if_comparison_result_is_lesser_69',

@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_697_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 65, 'EVENT_697_run_dialog_17']
+        "identifier": 'EVENT_697_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [65, 'EVENT_697_run_dialog_17']
     },
     {
         "identifier": 'EVENT_697_jmp_if_bit_set_2',
@@ -29,7 +29,7 @@ script = [
             {
                 "identifier": 'EVENT_697_action_queue_sync_4_SUBSCRIPT_set_700C_to_object_coord_0',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.DUMMY_0X07, Coords.F]
+                "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
             },
             {
                 "identifier": 'EVENT_697_action_queue_sync_4_SUBSCRIPT_set_short_mem_1',
@@ -58,8 +58,8 @@ script = [
                 "args": [0x700c, 0x7024]
             },
             {
-                "identifier": 'EVENT_697_action_queue_async_6_SUBSCRIPT_face_east_1',
-                "command": 'face_east'
+                "identifier": 'EVENT_697_action_queue_async_6_SUBSCRIPT_face_east_7C_1',
+                "command": 'face_east_7C'
             }
         ]
     },
@@ -75,7 +75,7 @@ script = [
     {
         "identifier": 'EVENT_697_set_7000_to_object_coord_9',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MEM_70A8, Coords.F]
+        "args": [AreaObjects.MEM_70A8, Coords.F, []]
     },
     {
         "identifier": 'EVENT_697_set_short_mem_10',
@@ -125,8 +125,8 @@ script = [
                 "args": [0x700c, 0x7024]
             },
             {
-                "identifier": 'EVENT_697_action_queue_async_15_SUBSCRIPT_face_east_1',
-                "command": 'face_east'
+                "identifier": 'EVENT_697_action_queue_async_15_SUBSCRIPT_face_east_7C_1',
+                "command": 'face_east_7C'
             }
         ]
     },

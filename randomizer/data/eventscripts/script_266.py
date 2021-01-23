@@ -13,9 +13,9 @@ script = [
         "args": [0x7000, 0x70bb]
     },
     {
-        "identifier": 'EVENT_266_mem_compare_2',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x702e]
+        "identifier": 'EVENT_266_mem_compare_address_2',
+        "command": 'mem_compare_address',
+        "args": [0x702e]
     },
     {
         "identifier": 'EVENT_266_jmp_if_comparison_result_is_greater_or_equal_3',

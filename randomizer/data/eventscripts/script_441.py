@@ -12,9 +12,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_441_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_441_action_queue_sync_10']
+        "identifier": 'EVENT_441_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_441_action_queue_sync_10']
     },
     {
         "identifier": 'EVENT_441_summon_to_current_level_at_marios_coords_3',
@@ -41,8 +41,8 @@ script = [
                 "args": [0x700c, 8]
             },
             {
-                "identifier": 'EVENT_441_action_queue_sync_4_SUBSCRIPT_face_east_3',
-                "command": 'face_east'
+                "identifier": 'EVENT_441_action_queue_sync_4_SUBSCRIPT_face_east_7C_3',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_441_action_queue_sync_4_SUBSCRIPT_jump_to_height_silent_4',
@@ -99,8 +99,8 @@ script = [
                 "args": [0x700c, 8]
             },
             {
-                "identifier": 'EVENT_441_action_queue_sync_6_SUBSCRIPT_face_east_3',
-                "command": 'face_east'
+                "identifier": 'EVENT_441_action_queue_sync_6_SUBSCRIPT_face_east_7C_3',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_441_action_queue_sync_6_SUBSCRIPT_jump_to_height_silent_4',

@@ -578,8 +578,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1146_pause_script_resume_on_next_dialog_page_a_29',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1146_pause_script_resume_on_next_dialog_page_a_FD61_29',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1146_action_queue_async_30',
@@ -594,8 +594,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1146_pause_script_resume_on_next_dialog_page_a_31',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_1146_pause_script_resume_on_next_dialog_page_a_FD61_31',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_1146_action_queue_async_32',

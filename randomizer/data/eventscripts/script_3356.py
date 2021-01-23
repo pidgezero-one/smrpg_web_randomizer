@@ -3,8 +3,8 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3356_fade_out_music_0',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_3356_fade_out_music_FDA3_0',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_3356_play_music_default_volume_1',

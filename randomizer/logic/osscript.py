@@ -197,10 +197,23 @@ class ObjectSequenceScript:
         return self
 
     # 0x26, 0x27, 0x28
-    def embedded_animation_routine(self, location):
+    def embedded_animation_routine(self, location, byte1, byte2, byte3, byte4, byte5, byte6, byte7, byte8, byte9, byte10, byte11, byte12, byte13, byte14, byte15):
         self.append_byte(location)
-        for i in range(16):
-            self.append_byte(0x00)
+        self.append_byte(byte1)
+        self.append_byte(byte2)
+        self.append_byte(byte3)
+        self.append_byte(byte4)
+        self.append_byte(byte5)
+        self.append_byte(byte6)
+        self.append_byte(byte7)
+        self.append_byte(byte8)
+        self.append_byte(byte9)
+        self.append_byte(byte10)
+        self.append_byte(byte11)
+        self.append_byte(byte12)
+        self.append_byte(byte13)
+        self.append_byte(byte14)
+        self.append_byte(byte15)
         return self
 
     # 0x2A
@@ -436,9 +449,12 @@ class ObjectSequenceScript:
         self.append_byte(pixels)
         return self
 
-    # 0x70
+    # 0x70, 0x7C
     def face_east(self):
         self.append_byte(0x70)
+        return self
+    def face_east_7C(self):
+        self.append_byte(0x7C)
         return self
 
     # 0x71
@@ -454,6 +470,10 @@ class ObjectSequenceScript:
     # 0x73
     def face_southwest(self):
         self.append_byte(0x73)
+        return self
+    def face_southwest_7D(self, val):
+        self.append_byte(0x7D)
+        self.append_byte(val)
         return self
 
     # 0x74
@@ -548,6 +568,9 @@ class ObjectSequenceScript:
     def maximize_sequence_speed(self):
         self.append_byte(0x85)
         return self
+    def maximize_sequence_speed_86(self):
+        self.append_byte(0x86)
+        return self
 
     # 0x87
     def transfer_to_object_xy(self, obj):
@@ -563,6 +586,9 @@ class ObjectSequenceScript:
     # 0x89
     def run_away_transfer(self):
         self.append_byte(0x89)
+        return self
+    def run_away_transfer_8A(self):
+        self.append_byte(0x8A)
         return self
 
     # 0x90
@@ -692,22 +718,25 @@ class ObjectSequenceScript:
             self.append_short(value)
         return self
         
-    # 0xA9, 0xAA
+    # 0xA9, 0xAD
     def add(self, address, value):
         if 0x70A0 <= address <= 0x719F:
-            if value == 1:
-                self.append_byte(0xAA)
-                self.append_byte(address - 0x70A0)
-            else:
-                self.append_byte(0xA9)
-                self.append_byte(address - 0x70A0)
-                self.append_byte(value)
+            self.append_byte(0xA9)
+            self.append_byte(address - 0x70A0)
+            self.append_byte(value)
         elif address == 0x700C:
-            if (value == 0x01):
-                self.append_byte(0xAE)
-            else:
-                self.append_byte(0xAD)
-                self.append_short(value)
+            self.append_byte(0xAD)
+            self.append_short(value)
+        else:
+            1/0
+        return self
+    # 0xAA, 0xAE
+    def inc(self, address):
+        if 0x70A0 <= address <= 0x719F:
+            self.append_byte(0xAA)
+            self.append_byte(address - 0x70A0)
+        elif address == 0x700C:
+            self.append_byte(0xAE)
         else:
             1/0
         return self
@@ -734,13 +763,16 @@ class ObjectSequenceScript:
     # 0xB1, 0xB2
     def add_short(self, address, value):
         if 0x7000 <= address <= 0x71FE:
-            if value == 1:
-                self.append_byte(0xB2)
-                self.append_byte((address - 0x7000) // 2)
-            else:
-                self.append_byte(0xB1)
-                self.append_byte((address - 0x7000) // 2)
-                self.append_short(value)
+            self.append_byte(0xB1)
+            self.append_byte((address - 0x7000) // 2)
+            self.append_short(value)
+        else:
+            1/0
+        return self
+    def inc_short(self, address):
+        if 0x7000 <= address <= 0x71FE:
+            self.append_byte(0xB2)
+            self.append_byte((address - 0x7000) // 2)
         else:
             1/0
         return self
@@ -824,17 +856,19 @@ class ObjectSequenceScript:
 
     # 0xC0, 0xC1, 0xC2
     def mem_compare(self, address, value):
-        if (address == 0x700C):
-            if (value >= 0x700C):
-                self.append_byte(0xC1)
-                self.append_byte((address - 0x700C) // 2)
-            else:
-                self.append_byte(0xC0)
-                self.append_short(value)
-        else:
-            self.append_byte(0xC2)
-            self.append_byte((address - 0x700C) // 2)
-            self.append_short(value)
+        self.append_byte(0xC2)
+        self.append_byte((address - 0x7000) // 2)
+        self.append_short(value)
+        return self
+
+    def mem_compare_val(self, value):
+        self.append_byte(0xC0)
+        self.append_short(value)
+        return self
+
+    def mem_compare_address(self, address):
+        self.append_byte(0xC1)
+        self.append_byte((address - 0x7000) // 2)
         return self
 
     # 0xC3
@@ -843,8 +877,8 @@ class ObjectSequenceScript:
         return self
 
     # 0xC4, 0xC5, 0xC6
-    def set_700C_to_object_coord(self, obj, coord, unit=0):
-        val = obj | (unit << 6)
+    def set_700C_to_object_coord(self, obj, coord, flags, unit=0):
+        val = obj | (unit << 6) | self.consolidate_flags(flags)
         cmd = coord + 0xC4
         self.append_byte(cmd)
         self.append_byte(val)
@@ -959,23 +993,27 @@ class ObjectSequenceScript:
         return self
 
     # 0xE2, 0xE4
+    def jmp_if_700C_equals_short(self, val, branch):
+        self.append_byte(0xE2)
+        self.append_short(val)
+        self.append_short(self.get_branch_address(branch))
+        return self
     def jmp_if_var_equals_short(self, test_addr, val, branch):
-        if test_addr == 0x700C:
-            self.append_byte(0xE2)
-        else:
-            self.append_byte(0xE4)
-            self.append_byte((test_addr - 0x7000) // 2)
+        self.append_byte(0xE4)
+        self.append_byte((test_addr - 0x7000) // 2)
         self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
 
     # 0xE3, 0xE5
+    def jmp_if_700C_not_equals_short(self, val, branch):
+        self.append_byte(0xE3)
+        self.append_short(val)
+        self.append_short(self.get_branch_address(branch))
+        return self
     def jmp_if_var_not_equals_short(self, test_addr, val, branch):
-        if test_addr == 0x700C:
-            self.append_byte(0xE3)
-        else:
-            self.append_byte(0xE5)
-            self.append_byte((test_addr - 0x7000) // 2)
+        self.append_byte(0xE5)
+        self.append_byte((test_addr - 0x7000) // 2)
         self.append_short(val)
         self.append_short(self.get_branch_address(branch))
         return self
@@ -1052,7 +1090,7 @@ class ObjectSequenceScript:
     # 0xF1
     def pause_short(self, value):
         self.append_byte(0xF1)
-        self.append_short(value)
+        self.append_short(value - 1)
         return self
 
     # 0xF2
@@ -1113,6 +1151,9 @@ class ObjectSequenceScript:
     # 0xF9, 0xFA - do they need to be distinguished?
     def jump_to_start_of_this_script(self):
         self.append_byte(0xF9)
+        return self
+    def jump_to_start_of_this_script_FA(self):
+        self.append_byte(0xFA)
         return self
 
     # 0xFE

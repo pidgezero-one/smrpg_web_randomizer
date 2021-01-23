@@ -3,8 +3,8 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1368_stop_music_0',
-        "command": 'stop_music'
+        "identifier": 'EVENT_1368_stop_music_FDA2_0',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_1368_enable_controls_until_return_1',
@@ -795,9 +795,9 @@ script = [
         "args": [0x0080]
     },
     {
-        "identifier": 'EVENT_1368_jmp_if_var_equals_short_52',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_1368_action_queue_sync_54']
+        "identifier": 'EVENT_1368_jmp_if_7000_equals_short_52',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_1368_action_queue_sync_54']
     },
     {
         "identifier": 'EVENT_1368_jmp_53',

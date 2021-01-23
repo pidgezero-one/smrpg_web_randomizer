@@ -1221,6 +1221,7 @@ for i in _0x40_flags:
 
 _0x60_flags = {
     5: 'CLOSABLE',
+    6: 'BIT_6',
     7: 'ASYNC',
     14: 'MULTILINE',
     15: 'USE_BACKGROUND'
@@ -1277,6 +1278,7 @@ _0x81_flags = {
     0: 'LAYER_1',
     1: 'LAYER_2',
     2: 'LAYER_3',
+    3: 'LAYER_4',
     4: 'NPC_SPRITES',
     5: 'BACKGROUND',
     6: 'HALF_INTENSITY',

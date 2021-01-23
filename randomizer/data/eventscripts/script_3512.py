@@ -27,9 +27,9 @@ script = [
         "command": 'add_max_FP_7000'
     },
     {
-        "identifier": 'EVENT_3512_add_5',
-        "command": 'add',
-        "args": [0x70b1, 0x01]
+        "identifier": 'EVENT_3512_inc_5',
+        "command": 'inc',
+        "args": [0x70b1]
     },
     {
         "identifier": 'EVENT_3512_enable_controls_until_return_6',

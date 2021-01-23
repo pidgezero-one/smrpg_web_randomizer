@@ -23,22 +23,22 @@ script = [
     {
         "identifier": 'EVENT_2407_set_7000_to_object_coord_4',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_2407_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 7, 'EVENT_2407_freeze_camera_9']
+        "identifier": 'EVENT_2407_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7, 'EVENT_2407_freeze_camera_9']
     },
     {
-        "identifier": 'EVENT_2407_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2407_freeze_camera_9']
+        "identifier": 'EVENT_2407_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2407_freeze_camera_9']
     },
     {
-        "identifier": 'EVENT_2407_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 6, 'EVENT_2407_freeze_camera_9']
+        "identifier": 'EVENT_2407_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [6, 'EVENT_2407_freeze_camera_9']
     },
     {
         "identifier": 'EVENT_2407_ret_8',
@@ -168,7 +168,7 @@ script = [
     {
         "identifier": 'EVENT_2407_set_7000_to_object_coord_18',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2407_set_short_mem_19',
@@ -178,7 +178,7 @@ script = [
     {
         "identifier": 'EVENT_2407_set_7000_to_object_coord_20',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_2407_set_short_mem_21',

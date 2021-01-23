@@ -58,9 +58,9 @@ script = [
         "args": [0x7000, 0x703e]
     },
     {
-        "identifier": 'EVENT_1701_mem_compare_11',
-        "command": 'mem_compare',
-        "args": [0x7000, 27]
+        "identifier": 'EVENT_1701_mem_compare_val_11',
+        "command": 'mem_compare_val',
+        "args": [27]
     },
     {
         "identifier": 'EVENT_1701_jmp_if_loaded_memory_is_not_0_12',

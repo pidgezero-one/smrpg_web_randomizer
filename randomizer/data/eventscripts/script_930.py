@@ -38,9 +38,9 @@ script = [
         "args": [0x7000, 0x70d8]
     },
     {
-        "identifier": 'EVENT_930_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 200, 'EVENT_930_run_dialog_52']
+        "identifier": 'EVENT_930_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [200, 'EVENT_930_run_dialog_52']
     },
     {
         "identifier": 'EVENT_930_store_item_amount_7000_8',
@@ -48,9 +48,9 @@ script = [
         "args": [items.YoshiCookie]
     },
     {
-        "identifier": 'EVENT_930_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_930_run_dialog_168']
+        "identifier": 'EVENT_930_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_930_run_dialog_168']
     },
     {
         "identifier": 'EVENT_930_set_short_mem_10',
@@ -68,9 +68,9 @@ script = [
         "args": [0x7000, 0x70d8]
     },
     {
-        "identifier": 'EVENT_930_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_930_run_dialog_30']
+        "identifier": 'EVENT_930_jmp_if_7000_equals_short_13',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_930_run_dialog_30']
     },
     {
         "identifier": 'EVENT_930_run_dialog_14',
@@ -103,9 +103,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_930_mem_compare_20',
-        "command": 'mem_compare',
-        "args": [0x7000, 201]
+        "identifier": 'EVENT_930_mem_compare_val_20',
+        "command": 'mem_compare_val',
+        "args": [201]
     },
     {
         "identifier": 'EVENT_930_jmp_if_comparison_result_is_greater_or_equal_21',
@@ -162,9 +162,9 @@ script = [
         "args": [items.YoshiCookie]
     },
     {
-        "identifier": 'EVENT_930_mem_compare_32',
-        "command": 'mem_compare',
-        "args": [0x7000, 5]
+        "identifier": 'EVENT_930_mem_compare_val_32',
+        "command": 'mem_compare_val',
+        "args": [5]
     },
     {
         "identifier": 'EVENT_930_jmp_if_comparison_result_is_lesser_33',
@@ -276,9 +276,9 @@ script = [
         "args": [0x7000, 0x70d8]
     },
     {
-        "identifier": 'EVENT_930_jmp_if_var_equals_short_55',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_930_run_dialog_170']
+        "identifier": 'EVENT_930_jmp_if_7000_equals_short_55',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_930_run_dialog_170']
     },
     {
         "identifier": 'EVENT_930_set_short_mem_56',
@@ -290,9 +290,9 @@ script = [
         "command": 'store_empty_inventory_slot_count_7000'
     },
     {
-        "identifier": 'EVENT_930_jmp_if_var_equals_short_58',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_930_run_dialog_83']
+        "identifier": 'EVENT_930_jmp_if_7000_equals_short_58',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_930_run_dialog_83']
     },
     {
         "identifier": 'EVENT_930_run_dialog_59',
@@ -368,9 +368,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_930_jmp_if_var_equals_short_74',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_930_set_79']
+        "identifier": 'EVENT_930_jmp_if_7000_equals_short_74',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_930_set_79']
     },
     {
         "identifier": 'EVENT_930_play_sound_75',
@@ -473,9 +473,9 @@ script = [
         "args": [items.YoshiCookie]
     },
     {
-        "identifier": 'EVENT_930_jmp_if_var_equals_short_95',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1, 'EVENT_930_set_bit_151']
+        "identifier": 'EVENT_930_jmp_if_7000_equals_short_95',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_930_set_bit_151']
     },
     {
         "identifier": 'EVENT_930_set_bit_96',
@@ -508,9 +508,9 @@ script = [
         "args": [items.YoshiCookie]
     },
     {
-        "identifier": 'EVENT_930_jmp_if_var_equals_short_102',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 5, 'EVENT_930_set_bit_151']
+        "identifier": 'EVENT_930_jmp_if_7000_equals_short_102',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5, 'EVENT_930_set_bit_151']
     },
     {
         "identifier": 'EVENT_930_set_bit_103',
@@ -577,9 +577,9 @@ script = [
         "args": [Sounds._003_MENU_SCROLL, 6]
     },
     {
-        "identifier": 'EVENT_930_add_short_116',
-        "command": 'add_short',
-        "args": [0x7024, 0x01]
+        "identifier": 'EVENT_930_inc_short_116',
+        "command": 'inc_short',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_930_jmp_if_bit_set_117',
@@ -607,9 +607,9 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_930_mem_compare_122',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_930_mem_compare_address_122',
+        "command": 'mem_compare_address',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_930_jmp_if_loaded_memory_is_0_123',
@@ -632,9 +632,9 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_930_mem_compare_127',
-        "command": 'mem_compare',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_930_mem_compare_address_127',
+        "command": 'mem_compare_address',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_930_jmp_if_loaded_memory_is_0_128',

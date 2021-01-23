@@ -13,9 +13,9 @@ script = [
         "args": [PlayableCharacters.MARIO, EquipSlots.ACCESSORY]
     },
     {
-        "identifier": 'EVENT_3588_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 93, 'EVENT_3588_set_bit_8']
+        "identifier": 'EVENT_3588_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [93, 'EVENT_3588_set_bit_8']
     },
     {
         "identifier": 'EVENT_3588_store_character_equipment_7000_3',
@@ -23,9 +23,9 @@ script = [
         "args": [0x09, EquipSlots.ACCESSORY]
     },
     {
-        "identifier": 'EVENT_3588_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 93, 'EVENT_3588_set_bit_8']
+        "identifier": 'EVENT_3588_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [93, 'EVENT_3588_set_bit_8']
     },
     {
         "identifier": 'EVENT_3588_store_character_equipment_7000_5',
@@ -33,9 +33,9 @@ script = [
         "args": [0x0a, EquipSlots.ACCESSORY]
     },
     {
-        "identifier": 'EVENT_3588_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 93, 'EVENT_3588_set_bit_8']
+        "identifier": 'EVENT_3588_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [93, 'EVENT_3588_set_bit_8']
     },
     {
         "identifier": 'EVENT_3588_ret_7',

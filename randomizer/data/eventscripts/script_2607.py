@@ -38,8 +38,9 @@ script = [
                 "args": [32]
             },
             {
-                "identifier": 'EVENT_2607_action_queue_sync_5_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_2607_action_queue_sync_5_SUBSCRIPT_face_southwest_7D_1',
+                "command": 'face_southwest_7D',
+                "args": [0x14]
             }
         ]
     },
@@ -243,8 +244,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2607_pause_script_resume_on_next_dialog_page_a_20',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2607_pause_script_resume_on_next_dialog_page_a_FD61_20',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2607_action_queue_async_21',

@@ -131,8 +131,9 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_1619_action_queue_async_6_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
+                "identifier": 'EVENT_1619_action_queue_async_6_SUBSCRIPT_face_southwest_7D_0',
+                "command": 'face_southwest_7D',
+                "args": [0x15]
             }
         ]
     },
@@ -232,41 +233,41 @@ script = [
         "args": [1099, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_1619_start_embedded_action_script_async_11',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1619_start_embedded_action_script_sync_F1_11',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_1619_start_embedded_action_script_async_11_SUBSCRIPT_face_northeast_0',
+                "identifier": 'EVENT_1619_start_embedded_action_script_sync_F1_11_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_1619_start_embedded_action_script_async_11_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_1619_start_embedded_action_script_sync_F1_11_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1619_start_embedded_action_script_async_11_SUBSCRIPT_sequence_looping_on_2',
+                "identifier": 'EVENT_1619_start_embedded_action_script_sync_F1_11_SUBSCRIPT_sequence_looping_on_2',
                 "command": 'sequence_looping_on'
             }
         ]
     },
     {
-        "identifier": 'EVENT_1619_start_embedded_action_script_async_12',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1619_start_embedded_action_script_async_F1_12',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_1619_start_embedded_action_script_async_12_SUBSCRIPT_face_northeast_0',
+                "identifier": 'EVENT_1619_start_embedded_action_script_async_F1_12_SUBSCRIPT_face_northeast_0',
                 "command": 'face_northeast'
             },
             {
-                "identifier": 'EVENT_1619_start_embedded_action_script_async_12_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_1619_start_embedded_action_script_async_F1_12_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1619_start_embedded_action_script_async_12_SUBSCRIPT_sequence_looping_on_2',
+                "identifier": 'EVENT_1619_start_embedded_action_script_async_F1_12_SUBSCRIPT_sequence_looping_on_2',
                 "command": 'sequence_looping_on'
             }
         ]

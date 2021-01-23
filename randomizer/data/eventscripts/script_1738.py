@@ -166,185 +166,185 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1738_start_embedded_action_script_async_9',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_9',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_4],
         "subscript": [
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_9_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_9_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_9_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_9_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_9_SUBSCRIPT_walk_to_xy_coords_2',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_9_SUBSCRIPT_walk_to_xy_coords_2',
                 "command": 'walk_to_xy_coords',
                 "args": [27, 42]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_9_SUBSCRIPT_face_northwest_3',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_9_SUBSCRIPT_face_northwest_3',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_9_SUBSCRIPT_sequence_looping_off_4',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_9_SUBSCRIPT_sequence_looping_off_4',
                 "command": 'sequence_looping_off'
             }
         ]
     },
     {
-        "identifier": 'EVENT_1738_start_embedded_action_script_async_10',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_10',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_2],
         "subscript": [
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_10_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_10_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_10_SUBSCRIPT_reset_properties_1',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_10_SUBSCRIPT_reset_properties_1',
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_10_SUBSCRIPT_set_animation_speed_2',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_10_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_10_SUBSCRIPT_walk_to_xy_coords_3',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_10_SUBSCRIPT_walk_to_xy_coords_3',
                 "command": 'walk_to_xy_coords',
                 "args": [26, 44]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_10_SUBSCRIPT_face_northwest_4',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_10_SUBSCRIPT_face_northwest_4',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_10_SUBSCRIPT_sequence_looping_off_5',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_10_SUBSCRIPT_sequence_looping_off_5',
                 "command": 'sequence_looping_off'
             }
         ]
     },
     {
-        "identifier": 'EVENT_1738_start_embedded_action_script_async_11',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_11',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_5],
         "subscript": [
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_11_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_11_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_11_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_11_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_11_SUBSCRIPT_walk_to_xy_coords_2',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_11_SUBSCRIPT_walk_to_xy_coords_2',
                 "command": 'walk_to_xy_coords',
                 "args": [27, 43]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_11_SUBSCRIPT_face_northwest_3',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_11_SUBSCRIPT_face_northwest_3',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_11_SUBSCRIPT_sequence_looping_off_4',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_11_SUBSCRIPT_sequence_looping_off_4',
                 "command": 'sequence_looping_off'
             }
         ]
     },
     {
-        "identifier": 'EVENT_1738_start_embedded_action_script_async_12',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_12',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_12_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_12_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_12_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_12_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_12_SUBSCRIPT_walk_to_xy_coords_2',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_12_SUBSCRIPT_walk_to_xy_coords_2',
                 "command": 'walk_to_xy_coords',
                 "args": [26, 45]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_12_SUBSCRIPT_face_northwest_3',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_12_SUBSCRIPT_face_northwest_3',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_12_SUBSCRIPT_sequence_looping_off_4',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_12_SUBSCRIPT_sequence_looping_off_4',
                 "command": 'sequence_looping_off'
             }
         ]
     },
     {
-        "identifier": 'EVENT_1738_start_embedded_action_script_async_13',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_13',
+        "command": 'start_embedded_action_script_sync_F1',
         "args": [AreaObjects.NPC_6],
         "subscript": [
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_13_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_13_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_13_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_13_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_13_SUBSCRIPT_walk_to_xy_coords_2',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_13_SUBSCRIPT_walk_to_xy_coords_2',
                 "command": 'walk_to_xy_coords',
                 "args": [28, 44]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_13_SUBSCRIPT_face_northwest_3',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_13_SUBSCRIPT_face_northwest_3',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_13_SUBSCRIPT_sequence_looping_off_4',
+                "identifier": 'EVENT_1738_start_embedded_action_script_sync_F1_13_SUBSCRIPT_sequence_looping_off_4',
                 "command": 'sequence_looping_off'
             }
         ]
     },
     {
-        "identifier": 'EVENT_1738_start_embedded_action_script_async_14',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_1738_start_embedded_action_script_async_F1_14',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_14_SUBSCRIPT_clear_solidity_bits_0',
+                "identifier": 'EVENT_1738_start_embedded_action_script_async_F1_14_SUBSCRIPT_clear_solidity_bits_0',
                 "command": 'clear_solidity_bits',
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_14_SUBSCRIPT_set_animation_speed_1',
+                "identifier": 'EVENT_1738_start_embedded_action_script_async_F1_14_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_14_SUBSCRIPT_walk_to_xy_coords_2',
+                "identifier": 'EVENT_1738_start_embedded_action_script_async_F1_14_SUBSCRIPT_walk_to_xy_coords_2',
                 "command": 'walk_to_xy_coords',
                 "args": [27, 46]
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_14_SUBSCRIPT_face_northwest_3',
+                "identifier": 'EVENT_1738_start_embedded_action_script_async_F1_14_SUBSCRIPT_face_northwest_3',
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_1738_start_embedded_action_script_async_14_SUBSCRIPT_sequence_looping_off_4',
+                "identifier": 'EVENT_1738_start_embedded_action_script_async_F1_14_SUBSCRIPT_sequence_looping_off_4',
                 "command": 'sequence_looping_off'
             }
         ]

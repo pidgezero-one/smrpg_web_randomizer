@@ -15,7 +15,7 @@ script = [
     {
         "identifier": 'EVENT_1823_run_dialog_2',
         "command": 'run_dialog',
-        "args": [1177, AreaObjects.MARIO, []]
+        "args": [1177, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": 'EVENT_1823_put_inventory_3',
@@ -27,9 +27,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_1823_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 321, 'EVENT_1823_ret_11']
+        "identifier": 'EVENT_1823_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [321, 'EVENT_1823_ret_11']
     },
     {
         "identifier": 'EVENT_1823_freeze_camera_6',

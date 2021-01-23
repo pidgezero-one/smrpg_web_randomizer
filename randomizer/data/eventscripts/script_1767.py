@@ -136,12 +136,12 @@ script = [
             {
                 "identifier": 'EVENT_1767_action_queue_sync_7_SUBSCRIPT_set_700C_to_object_coord_1',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.DUMMY_0X07, Coords.Z, CoordUnits.PIXEL]
+                "args": [AreaObjects.DUMMY_0X07, Coords.Z, [7], CoordUnits.PIXEL]
             },
             {
-                "identifier": 'EVENT_1767_action_queue_sync_7_SUBSCRIPT_jmp_if_var_equals_short_2',
-                "command": 'jmp_if_var_equals_short',
-                "args": [0x700c, 0, 'EVENT_1767_ret_8']
+                "identifier": 'EVENT_1767_action_queue_sync_7_SUBSCRIPT_jmp_if_700C_equals_short_2',
+                "command": 'jmp_if_700C_equals_short',
+                "args": [0, 'EVENT_1767_ret_8']
             },
             {
                 "identifier": 'EVENT_1767_action_queue_sync_7_SUBSCRIPT_jump_to_height_3',

@@ -122,12 +122,12 @@ script = [
     {
         "identifier": 'EVENT_2145_set_7000_to_object_coord_11',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2145_jmp_if_var_not_equals_short_12',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 16, 'EVENT_2145_fade_in_from_black_async_14']
+        "identifier": 'EVENT_2145_jmp_if_7000_not_equals_short_12',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [16, 'EVENT_2145_fade_in_from_black_async_14']
     },
     {
         "identifier": 'EVENT_2145_action_queue_async_13',

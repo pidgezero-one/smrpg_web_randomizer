@@ -5,12 +5,12 @@ script = [
     {
         "identifier": 'EVENT_2353_set_7000_to_object_coord_0',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_8, Coords.F]
+        "args": [AreaObjects.NPC_8, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_2353_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_2353_stop_all_background_events_4']
+        "identifier": 'EVENT_2353_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_2353_stop_all_background_events_4']
     },
     {
         "identifier": 'EVENT_2353_run_dialog_2',

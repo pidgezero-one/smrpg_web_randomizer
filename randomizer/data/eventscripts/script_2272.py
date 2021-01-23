@@ -81,9 +81,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_2272_mem_compare_16',
-        "command": 'mem_compare',
-        "args": [0x7000, 100]
+        "identifier": 'EVENT_2272_mem_compare_val_16',
+        "command": 'mem_compare_val',
+        "args": [100]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_17',
@@ -178,9 +178,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_2272_mem_compare_36',
-        "command": 'mem_compare',
-        "args": [0x7000, 100]
+        "identifier": 'EVENT_2272_mem_compare_val_36',
+        "command": 'mem_compare_val',
+        "args": [100]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_37',
@@ -251,9 +251,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_2272_mem_compare_51',
-        "command": 'mem_compare',
-        "args": [0x7000, 200]
+        "identifier": 'EVENT_2272_mem_compare_val_51',
+        "command": 'mem_compare_val',
+        "args": [200]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_52',
@@ -348,9 +348,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_2272_mem_compare_71',
-        "command": 'mem_compare',
-        "args": [0x7000, 100]
+        "identifier": 'EVENT_2272_mem_compare_val_71',
+        "command": 'mem_compare_val',
+        "args": [100]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_72',
@@ -421,9 +421,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_2272_mem_compare_86',
-        "command": 'mem_compare',
-        "args": [0x7000, 200]
+        "identifier": 'EVENT_2272_mem_compare_val_86',
+        "command": 'mem_compare_val',
+        "args": [200]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_87',
@@ -494,9 +494,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_2272_mem_compare_101',
-        "command": 'mem_compare',
-        "args": [0x7000, 300]
+        "identifier": 'EVENT_2272_mem_compare_val_101',
+        "command": 'mem_compare_val',
+        "args": [300]
     },
     {
         "identifier": 'EVENT_2272_jmp_if_comparison_result_is_lesser_102',

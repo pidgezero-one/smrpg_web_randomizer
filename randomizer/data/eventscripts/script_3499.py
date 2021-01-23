@@ -84,7 +84,7 @@ script = [
             {
                 "identifier": 'EVENT_3499_action_queue_async_9_SUBSCRIPT_embedded_animation_routine_1',
                 "command": 'embedded_animation_routine',
-                "args": [0x28]
+                "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x20, 0x80]
             },
             {
                 "identifier": 'EVENT_3499_action_queue_async_9_SUBSCRIPT_fixed_f_coord_on_2',
@@ -1471,12 +1471,12 @@ script = [
             {
                 "identifier": 'EVENT_3499_action_queue_sync_136_SUBSCRIPT_set_700C_to_object_coord_11',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.DUMMY_0X07, Coords.X, CoordUnits.PIXEL]
+                "args": [AreaObjects.DUMMY_0X07, Coords.X, [], CoordUnits.PIXEL]
             },
             {
-                "identifier": 'EVENT_3499_action_queue_sync_136_SUBSCRIPT_mem_compare_12',
-                "command": 'mem_compare',
-                "args": [0x700c, 5888]
+                "identifier": 'EVENT_3499_action_queue_sync_136_SUBSCRIPT_mem_compare_val_12',
+                "command": 'mem_compare_val',
+                "args": [5888]
             },
             {
                 "identifier": 'EVENT_3499_action_queue_sync_136_SUBSCRIPT_jmp_if_comparison_result_is_lesser_13',

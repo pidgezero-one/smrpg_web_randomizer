@@ -3,9 +3,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_268_add_0',
-        "command": 'add',
-        "args": [0x70bb, 0x01]
+        "identifier": 'EVENT_268_inc_0',
+        "command": 'inc',
+        "args": [0x70bb]
     },
     {
         "identifier": 'EVENT_268_ret_1',

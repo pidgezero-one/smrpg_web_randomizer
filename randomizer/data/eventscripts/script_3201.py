@@ -114,9 +114,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3201_jmp_if_var_not_equals_short_14',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 277, 'EVENT_3201_jmp_if_var_not_equals_short_17']
+        "identifier": 'EVENT_3201_jmp_if_7000_not_equals_short_14',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [277, 'EVENT_3201_jmp_if_7000_not_equals_short_17']
     },
     {
         "identifier": 'EVENT_3201_jmp_if_bit_set_15',
@@ -141,9 +141,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3201_jmp_if_var_not_equals_short_17',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 283, 'EVENT_3201_jmp_if_var_not_equals_short_20']
+        "identifier": 'EVENT_3201_jmp_if_7000_not_equals_short_17',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [283, 'EVENT_3201_jmp_if_7000_not_equals_short_20']
     },
     {
         "identifier": 'EVENT_3201_jmp_if_bit_set_18',
@@ -168,9 +168,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3201_jmp_if_var_not_equals_short_20',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 273, 'EVENT_3201_jmp_to_event_1']
+        "identifier": 'EVENT_3201_jmp_if_7000_not_equals_short_20',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [273, 'EVENT_3201_jmp_to_event_1']
     },
     {
         "identifier": 'EVENT_3201_jmp_if_bit_set_21',

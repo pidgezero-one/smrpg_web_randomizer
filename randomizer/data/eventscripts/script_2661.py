@@ -33,9 +33,9 @@ script = [
         "args": [0x7046, 2]
     },
     {
-        "identifier": 'EVENT_2661_add_6',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2661_inc_6',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2661_run_dialog_7',

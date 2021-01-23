@@ -289,8 +289,8 @@ script = [
         "args": [3130, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_30',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_FD61_30',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2399_action_queue_async_31',
@@ -433,8 +433,8 @@ script = [
         "args": [3133, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_42',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_FD61_42',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2399_action_queue_async_43',
@@ -541,8 +541,8 @@ script = [
         "args": [3136, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_54',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_FD61_54',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2399_action_queue_async_55',
@@ -732,12 +732,12 @@ script = [
         "args": [3146, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_78',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_FD61_78',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
-        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_79',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_FD61_79',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2399_action_queue_sync_80',
@@ -863,8 +863,8 @@ script = [
         "args": [3143, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_93',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2399_pause_script_resume_on_next_dialog_page_a_FD61_93',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2399_action_queue_sync_94',

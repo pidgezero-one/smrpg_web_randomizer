@@ -44,12 +44,12 @@ script = [
     {
         "identifier": 'EVENT_619_set_7000_to_object_coord_8',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_5, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_5, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_619_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 63, 'EVENT_256_ret_0']
+        "identifier": 'EVENT_619_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [63, 'EVENT_256_ret_0']
     },
     {
         "identifier": 'EVENT_619_action_queue_async_10',

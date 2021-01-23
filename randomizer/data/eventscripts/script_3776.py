@@ -1677,8 +1677,8 @@ script = [
         "args": [120]
     },
     {
-        "identifier": 'EVENT_3776_fade_out_music_79',
-        "command": 'fade_out_music'
+        "identifier": 'EVENT_3776_fade_out_music_FDA3_79',
+        "command": 'fade_out_music_FDA3'
     },
     {
         "identifier": 'EVENT_3776_pause_script_until_effect_done_80',

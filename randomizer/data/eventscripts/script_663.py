@@ -23,9 +23,9 @@ script = [
         "args": [0x7000, 0x70af]
     },
     {
-        "identifier": 'EVENT_663_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4, 'EVENT_663_adjust_music_tempo_12']
+        "identifier": 'EVENT_663_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4, 'EVENT_663_adjust_music_tempo_12']
     },
     {
         "identifier": 'EVENT_663_set_short_mem_5',
@@ -82,9 +82,9 @@ script = [
         "args": [0x7000, 0x70ae]
     },
     {
-        "identifier": 'EVENT_663_mem_compare_16',
-        "command": 'mem_compare',
-        "args": [0x7000, 6]
+        "identifier": 'EVENT_663_mem_compare_val_16',
+        "command": 'mem_compare_val',
+        "args": [6]
     },
     {
         "identifier": 'EVENT_663_jmp_if_comparison_result_is_greater_or_equal_17',
@@ -92,9 +92,9 @@ script = [
         "args": ['EVENT_663_set_short_24']
     },
     {
-        "identifier": 'EVENT_663_mem_compare_18',
-        "command": 'mem_compare',
-        "args": [0x7000, 4]
+        "identifier": 'EVENT_663_mem_compare_val_18',
+        "command": 'mem_compare_val',
+        "args": [4]
     },
     {
         "identifier": 'EVENT_663_jmp_if_comparison_result_is_greater_or_equal_19',
@@ -102,9 +102,9 @@ script = [
         "args": ['EVENT_663_set_short_26']
     },
     {
-        "identifier": 'EVENT_663_mem_compare_20',
-        "command": 'mem_compare',
-        "args": [0x7000, 2]
+        "identifier": 'EVENT_663_mem_compare_val_20',
+        "command": 'mem_compare_val',
+        "args": [2]
     },
     {
         "identifier": 'EVENT_663_jmp_if_comparison_result_is_greater_or_equal_21',
@@ -2248,7 +2248,7 @@ script = [
     {
         "identifier": 'EVENT_663_palette_set_201',
         "command": 'palette_set',
-        "args": [142, 1]
+        "args": [142, 1, [3]]
     },
     {
         "identifier": 'EVENT_663_action_queue_sync_202',
@@ -2668,7 +2668,7 @@ script = [
     {
         "identifier": 'EVENT_663_palette_set_216',
         "command": 'palette_set',
-        "args": [84, 1]
+        "args": [84, 1, [3]]
     },
     {
         "identifier": 'EVENT_663_action_queue_sync_217',

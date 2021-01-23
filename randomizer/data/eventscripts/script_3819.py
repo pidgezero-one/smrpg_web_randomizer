@@ -18,11 +18,11 @@ script = [
     {
         "identifier": 'EVENT_3819_palette_set_3',
         "command": 'palette_set',
-        "args": [33, 7]
+        "args": [33, 7, [0]]
     },
     {
-        "identifier": 'EVENT_3819_stop_music_4',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3819_stop_music_FDA2_4',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_3819_action_queue_async_5',
@@ -101,9 +101,9 @@ script = [
         "args": [0x0080]
     },
     {
-        "identifier": 'EVENT_3819_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_3819_pause_action_script_16']
+        "identifier": 'EVENT_3819_jmp_if_7000_equals_short_14',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_3819_pause_action_script_16']
     },
     {
         "identifier": 'EVENT_3819_jmp_15',

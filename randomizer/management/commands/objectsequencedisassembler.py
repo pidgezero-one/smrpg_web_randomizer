@@ -174,7 +174,7 @@ def parse_object_coord(cmd):
         unit = bit(args, 0, 6)
         coord = cmd - 0xC4
         func_params = ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (
-            use_table_name('Coords', coord_table, coord))]
+            use_table_name('Coords', coord_table, coord)), '%s' % get_flag_string(args[0], bits=[7])]
         if (cmd < 0xC9):
             func_params.append('%s' % (use_table_name(
                 'CoordUnits', coord_unit_table, unit)))
@@ -278,9 +278,9 @@ names[0x15] = named('set_movement_bits', flags(
 names[0x21] = named('bpl_26_27_28')
 names[0x22] = named('bmi_26_27_28')
 # 0x23 - 0x25 undocumented
-names[0x26] = named('embedded_animation_routine', con(0x26))
-names[0x27] = named('embedded_animation_routine', con(0x27))
-names[0x28] = named('embedded_animation_routine', con(0x28))
+names[0x26] = named('embedded_animation_routine', con(0x26), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
+names[0x27] = named('embedded_animation_routine', con(0x27), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
+names[0x28] = named('embedded_animation_routine', con(0x28), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
 # 0x29 undocumented
 names[0x2A] = named('bpl_26_27')
 # 0x2B - 0x3C undocumented
@@ -343,8 +343,8 @@ names[0x78] = named('face_mario')
 names[0x79] = named('turn_clockwise_45_degrees')
 names[0x7A] = named('turn_random_direction')
 names[0x7B] = named('turn_clockwise_45_degrees_n_times', byte_int())
-names[0x7C] = named('face_east')  # indistinguishable from 0x70
-names[0x7D] = named('face_southwest')  # indistinguishable from 0x73
+names[0x7C] = named('face_east_7C')  # indistinguishable from 0x70
+names[0x7D] = named('face_southwest_7D', byte())  # indistinguishable from 0x73
 names[0x7E] = named('jump_to_height_silent', short_int())
 names[0x7F] = named('jump_to_height', short_int())
 names[0x80] = named('walk_to_xy_coords', byte_int(), byte_int())
@@ -353,12 +353,12 @@ names[0x82] = named('shirt_to_xy_coords', byte_int(), byte_int())
 names[0x83] = named('shift_xy_steps', byte_int(), byte_int())
 names[0x84] = named('shift_xy_pixels', byte_int(), byte_int())
 names[0x85] = named('maximize_sequence_speed')
-names[0x86] = named('maximize_sequence_speed')  # indistinguishable from 0x86
+names[0x86] = named('maximize_sequence_speed_86')  # indistinguishable from 0x85
 names[0x87] = named('transfer_to_object_xy', byte(
     prefix="AreaObjects", table=area_object_table))
 names[0x88] = named('run_away_shift')
 names[0x89] = named('run_away_transfer')
-names[0x8A] = named('run_away_transfer')  # indistinguishable from 0x89
+names[0x8A] = named('run_away_transfer_8A')  # indistinguishable from 0x89
 # 0x8B - 0x8F undocumented
 names[0x90] = named('bounce_to_xy_with_height',
                     byte_int(), byte_int(), byte_int())
@@ -388,15 +388,15 @@ names[0xA6] = clear_bit(0xA6)
 names[0xA7] = named('clear_mem_704x_at_700C_bit')
 names[0xA8] = named('set', byte(0x70A0), byte_int())
 names[0xA9] = named('add', byte(0x70A0), byte_int())
-names[0xAA] = named('add', byte(0x70A0), con(1))
+names[0xAA] = named('inc', byte(0x70A0))
 names[0xAB] = named('dec', byte(0x70A0))
 names[0xAC] = named('set', con(0x700C), short_int())
 names[0xAD] = named('add', con(0x700C), short_int())
-names[0xAE] = named('add', con(0x700C), con(1))
+names[0xAE] = named('inc', con(0x700C))
 names[0xAF] = named('dec', con(0x700C))
 names[0xB0] = named('set_short', dbyte(0x7000), short())
 names[0xB1] = named('add_short', dbyte(0x7000), short())
-names[0xB2] = named('add_short', dbyte(0x7000), con(1))
+names[0xB2] = named('inc_short', dbyte(0x7000))
 names[0xB3] = named('dec_short', dbyte(0x7000))
 names[0xB4] = named('set_short_mem', con(0x700C), byte(0x70A0))
 names[0xB5] = named('set_short_mem', byte(0x70A0), con(0x700C))
@@ -414,9 +414,9 @@ names[0xBC] = named('set_short_mem',
 names[0xBD] = named('swap_short_mem', dbyte(0x7000), dbyte(0x7000))
 names[0xBE] = named('move_7010_7012_7014_to_7016_7018_701A')
 names[0xBF] = named('move_7016_7018_701A_to_7010_7012_7014')
-names[0xC0] = named('mem_compare', con(0x700C), short_int())
-names[0xC1] = named('mem_compare', con(0x700C), dbyte(0x7000))
-names[0xC2] = named('mem_compare', dbyte(0x700C), short_int())
+names[0xC0] = named('mem_compare_val', short_int())
+names[0xC1] = named('mem_compare_address', dbyte(0x7000))
+names[0xC2] = named('mem_compare', dbyte(0x7000), short_int())
 names[0xC3] = named('set_700C_to_current_level')
 names[0xC4] = parse_object_coord(0xC4)
 names[0xC5] = parse_object_coord(0xC5)
@@ -447,10 +447,10 @@ names[0xE0] = named('jmp_if_var_equals_byte',
                     byte(0x70A0), byte_int(), short())
 names[0xE1] = named('jmp_if_var_not_equals_byte',
                     byte(0x70A0), byte_int(), short())
-names[0xE2] = named('jmp_if_var_equals_short',
-                    con(0x700C), short_int(), short())
-names[0xE3] = named('jmp_if_var_not_equals_short',
-                    con(0x700C), short_int(), short())
+names[0xE2] = named('jmp_if_700C_equals_short',
+                    short_int(), short())
+names[0xE3] = named('jmp_if_700C_not_equals_short',
+                    short_int(), short())
 names[0xE4] = named('jmp_if_var_equals_short', dbyte(
     0x7000), short_int(), short())  # may be confused for 0xE2
 names[0xE5] = named('jmp_if_var_not_equals_short', dbyte(
@@ -474,9 +474,8 @@ names[0xF5] = named('remove_object_at_70A8_from_current_level')
 names[0xF6] = named('enable_event_trigger_for_object_at_70A8')
 names[0xF7] = named('disable_event_trigger_for_object_at_70A8')
 names[0xF8] = jmp_depending_on_object_presence
-# indistinguishable from F9
 names[0xF9] = named('jump_to_start_of_this_script')
-names[0xFA] = named('jump_to_start_of_this_script')
+names[0xFA] = named('jump_to_start_of_this_script_FA') # indistinguishable from F9
 # 0xFB - 0xFC undocumented
 # 0xFD is a special case
 names[0xFE] = named('ret')

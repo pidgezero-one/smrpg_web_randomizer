@@ -68,7 +68,7 @@ script = [
     {
         "identifier": 'EVENT_1395_tint_layers_6',
         "command": 'tint_layers',
-        "args": [0x70, 0x68, 0x10, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB]]
+        "args": [0x70, 0x68, 0x10, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB], []]
     },
     {
         "identifier": 'EVENT_1395_priority_set_7',
@@ -163,7 +163,7 @@ script = [
     {
         "identifier": 'EVENT_1395_tint_layers_18',
         "command": 'tint_layers',
-        "args": [0x00, 0x00, 0x00, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB]]
+        "args": [0x00, 0x00, 0x00, 0, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.MINUS_SUB], []]
     },
     {
         "identifier": 'EVENT_1395_reset_priority_set_19',
@@ -298,9 +298,9 @@ script = [
         "args": [0x0080]
     },
     {
-        "identifier": 'EVENT_1395_jmp_if_var_equals_short_37',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_1395_apply_tile_mod_39']
+        "identifier": 'EVENT_1395_jmp_if_7000_equals_short_37',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_1395_apply_tile_mod_39']
     },
     {
         "identifier": 'EVENT_1395_jmp_38',

@@ -304,8 +304,8 @@ script = [
         "args": [0x70dd, 0]
     },
     {
-        "identifier": 'EVENT_2502_stop_music_61',
-        "command": 'stop_music'
+        "identifier": 'EVENT_2502_stop_music_FDA2_61',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_2502_stop_sound_62',

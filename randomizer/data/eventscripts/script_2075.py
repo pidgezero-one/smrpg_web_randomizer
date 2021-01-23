@@ -17,9 +17,9 @@ script = [
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_2075_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_2075_ret_13']
+        "identifier": 'EVENT_2075_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_2075_ret_13']
     },
     {
         "identifier": 'EVENT_2075_pause_4',

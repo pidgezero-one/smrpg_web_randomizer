@@ -13,9 +13,9 @@ script = [
         "args": [PlayableCharacters.MARIO, EquipSlots.ACCESSORY]
     },
     {
-        "identifier": 'EVENT_2085_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 89, 'EVENT_2085_run_dialog_6']
+        "identifier": 'EVENT_2085_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [89, 'EVENT_2085_run_dialog_6']
     },
     {
         "identifier": 'EVENT_2085_run_dialog_3',

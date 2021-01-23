@@ -70,22 +70,22 @@ script = [
         "args": [AreaObjects.NPC_9]
     },
     {
-        "identifier": 'EVENT_480_start_embedded_action_script_async_5',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_480_start_embedded_action_script_async_F1_5',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_480_start_embedded_action_script_async_5_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_480_start_embedded_action_script_async_F1_5_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_480_start_embedded_action_script_async_5_SUBSCRIPT_set_object_memory_bits_1',
+                "identifier": 'EVENT_480_start_embedded_action_script_async_F1_5_SUBSCRIPT_set_object_memory_bits_1',
                 "command": 'set_object_memory_bits',
                 "args": [0x0e, []]
             },
             {
-                "identifier": 'EVENT_480_start_embedded_action_script_async_5_SUBSCRIPT_set_solidity_bits_2',
+                "identifier": 'EVENT_480_start_embedded_action_script_async_F1_5_SUBSCRIPT_set_solidity_bits_2',
                 "command": 'set_solidity_bits',
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             }

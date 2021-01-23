@@ -76,12 +76,12 @@ script = [
         "args": [3426, AreaObjects.NPC_12, [_0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2234_pause_script_resume_on_next_dialog_page_a_4',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2234_pause_script_resume_on_next_dialog_page_a_FD61_4',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
-        "identifier": 'EVENT_2234_pause_script_resume_on_next_dialog_page_a_5',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
+        "identifier": 'EVENT_2234_pause_script_resume_on_next_dialog_page_a_FD61_5',
+        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
     },
     {
         "identifier": 'EVENT_2234_action_queue_async_6',

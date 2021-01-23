@@ -1615,12 +1615,12 @@ script = [
         "args": [90]
     },
     {
-        "identifier": 'EVENT_373_start_embedded_action_script_async_132',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_373_start_embedded_action_script_async_F1_132',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_373_start_embedded_action_script_async_132_SUBSCRIPT_set_sprite_sequence_0',
+                "identifier": 'EVENT_373_start_embedded_action_script_async_F1_132_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
@@ -2244,8 +2244,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_373_stop_music_177',
-        "command": 'stop_music'
+        "identifier": 'EVENT_373_stop_music_FDA2_177',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_373_set_bit_178',

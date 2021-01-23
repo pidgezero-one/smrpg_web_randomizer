@@ -17,9 +17,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3333_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 354, 'EVENT_3333_run_background_event_5']
+        "identifier": 'EVENT_3333_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [354, 'EVENT_3333_run_background_event_5']
     },
     {
         "identifier": 'EVENT_3333_action_queue_async_4',
@@ -34,11 +34,11 @@ script = [
             {
                 "identifier": 'EVENT_3333_action_queue_async_4_SUBSCRIPT_set_700C_to_object_coord_1',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.F]
+                "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_3333_action_queue_async_4_SUBSCRIPT_face_east_2',
-                "command": 'face_east'
+                "identifier": 'EVENT_3333_action_queue_async_4_SUBSCRIPT_face_east_7C_2',
+                "command": 'face_east_7C'
             },
             {
                 "identifier": 'EVENT_3333_action_queue_async_4_SUBSCRIPT_pause_3',

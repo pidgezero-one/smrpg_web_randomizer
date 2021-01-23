@@ -35,7 +35,7 @@ script = [
     {
         "identifier": 'EVENT_1734_jmp_6',
         "command": 'jmp',
-        "args": ['EVENT_1734_add_8']
+        "args": ['EVENT_1734_inc_8']
     },
     {
         "identifier": 'EVENT_1734_set_action_script_sync_7',
@@ -43,9 +43,9 @@ script = [
         "args": [AreaObjects.MEM_70AB, 770]
     },
     {
-        "identifier": 'EVENT_1734_add_8',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_1734_inc_8',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_1734_end_loop_9',

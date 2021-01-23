@@ -84,12 +84,12 @@ script = [
     {
         "identifier": 'EVENT_1107_set_7000_to_object_coord_10',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1107_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 20, 'EVENT_1107_enable_controls_until_return_20']
+        "identifier": 'EVENT_1107_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [20, 'EVENT_1107_enable_controls_until_return_20']
     },
     {
         "identifier": 'EVENT_1107_action_queue_async_12',
@@ -225,12 +225,12 @@ script = [
     {
         "identifier": 'EVENT_1107_set_7000_to_object_coord_15',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1107_jmp_if_var_equals_short_16',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 12, 'EVENT_1105_action_queue_sync_49']
+        "identifier": 'EVENT_1107_jmp_if_7000_equals_short_16',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [12, 'EVENT_1105_action_queue_sync_49']
     },
     {
         "identifier": 'EVENT_1107_jmp_17',

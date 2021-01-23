@@ -7,9 +7,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_2424_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 246, 'EVENT_2424_disable_trigger_4']
+        "identifier": 'EVENT_2424_jmp_if_7000_equals_short_1',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [246, 'EVENT_2424_disable_trigger_4']
     },
     {
         "identifier": 'EVENT_2424_disable_trigger_2',
@@ -66,9 +66,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_2424_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 246, 'EVENT_2424_enable_trigger_14']
+        "identifier": 'EVENT_2424_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [246, 'EVENT_2424_enable_trigger_14']
     },
     {
         "identifier": 'EVENT_2424_enable_trigger_12',

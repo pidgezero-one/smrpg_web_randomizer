@@ -38,9 +38,9 @@ script = [
         "args": [items.KerokeroCola]
     },
     {
-        "identifier": 'EVENT_2659_add_7',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_2659_inc_7',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_2659_ret_8',

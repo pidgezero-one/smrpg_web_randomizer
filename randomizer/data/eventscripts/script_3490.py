@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_3490_set_7000_to_object_coord_1',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_1, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_1, Coords.Y, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3490_mem_7000_and_const_2',
@@ -18,29 +18,29 @@ script = [
         "args": [0xff00]
     },
     {
-        "identifier": 'EVENT_3490_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 1792, 'EVENT_3490_jmp_if_bit_set_9']
+        "identifier": 'EVENT_3490_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1792, 'EVENT_3490_jmp_if_bit_set_9']
     },
     {
-        "identifier": 'EVENT_3490_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 5120, 'EVENT_3490_jmp_if_bit_set_37']
+        "identifier": 'EVENT_3490_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5120, 'EVENT_3490_jmp_if_bit_set_37']
     },
     {
-        "identifier": 'EVENT_3490_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 8704, 'EVENT_3490_jmp_if_bit_set_65']
+        "identifier": 'EVENT_3490_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [8704, 'EVENT_3490_jmp_if_bit_set_65']
     },
     {
-        "identifier": 'EVENT_3490_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 12288, 'EVENT_3490_jmp_if_bit_set_93']
+        "identifier": 'EVENT_3490_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [12288, 'EVENT_3490_jmp_if_bit_set_93']
     },
     {
-        "identifier": 'EVENT_3490_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 15616, 'EVENT_3490_set_bit_140']
+        "identifier": 'EVENT_3490_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [15616, 'EVENT_3490_set_bit_140']
     },
     {
         "identifier": 'EVENT_3490_jmp_8',
@@ -717,9 +717,9 @@ script = [
         "args": [AreaObjects.MEM_70AB, Rooms._069_MIDAS_RIVER_WATERFALL]
     },
     {
-        "identifier": 'EVENT_3490_add_137',
-        "command": 'add',
-        "args": [0x70ab, 0x01]
+        "identifier": 'EVENT_3490_inc_137',
+        "command": 'inc',
+        "args": [0x70ab]
     },
     {
         "identifier": 'EVENT_3490_pause_138',

@@ -88,9 +88,9 @@ script = [
         "args": [Sounds._087_CORRECT_SIGNAL, 4]
     },
     {
-        "identifier": 'EVENT_3217_add_13',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_3217_inc_13',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3217_jmp_if_var_equals_byte_14',
@@ -103,9 +103,9 @@ script = [
         "args": [0x7000, 0x70a8]
     },
     {
-        "identifier": 'EVENT_3217_add_16',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3217_inc_16',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3217_set_short_mem_17',

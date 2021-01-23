@@ -15,7 +15,7 @@ script = [
     {
         "identifier": 'EVENT_3481_set_7000_to_object_coord_2',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_1, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_1, Coords.Y, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3481_mem_7000_and_const_3',
@@ -23,24 +23,24 @@ script = [
         "args": [0xff00]
     },
     {
-        "identifier": 'EVENT_3481_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4352, 'EVENT_3481_set_7000_to_object_coord_9']
+        "identifier": 'EVENT_3481_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4352, 'EVENT_3481_set_7000_to_object_coord_9']
     },
     {
-        "identifier": 'EVENT_3481_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 7680, 'EVENT_3481_set_7000_to_object_coord_16']
+        "identifier": 'EVENT_3481_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7680, 'EVENT_3481_set_7000_to_object_coord_16']
     },
     {
-        "identifier": 'EVENT_3481_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 10496, 'EVENT_3481_set_7000_to_object_coord_31']
+        "identifier": 'EVENT_3481_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [10496, 'EVENT_3481_set_7000_to_object_coord_31']
     },
     {
-        "identifier": 'EVENT_3481_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 14848, 'EVENT_3481_set_7000_to_object_coord_38']
+        "identifier": 'EVENT_3481_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [14848, 'EVENT_3481_set_7000_to_object_coord_38']
     },
     {
         "identifier": 'EVENT_3481_jmp_8',
@@ -50,7 +50,7 @@ script = [
     {
         "identifier": 'EVENT_3481_set_7000_to_object_coord_9',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_1, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_1, Coords.X, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3481_mem_7000_and_const_10',
@@ -58,9 +58,9 @@ script = [
         "args": [0xff00]
     },
     {
-        "identifier": 'EVENT_3481_jmp_if_var_not_equals_short_11',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 4352, 'EVENT_3481_pause_1']
+        "identifier": 'EVENT_3481_jmp_if_7000_not_equals_short_11',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [4352, 'EVENT_3481_pause_1']
     },
     {
         "identifier": 'EVENT_3481_jmp_to_subroutine_12',
@@ -84,7 +84,7 @@ script = [
     {
         "identifier": 'EVENT_3481_set_7000_to_object_coord_16',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_1, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_1, Coords.X, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3481_mem_7000_and_const_17',
@@ -92,14 +92,14 @@ script = [
         "args": [0xff00]
     },
     {
-        "identifier": 'EVENT_3481_jmp_if_var_equals_short_18',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3072, 'EVENT_3481_clear_bit_21']
+        "identifier": 'EVENT_3481_jmp_if_7000_equals_short_18',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3072, 'EVENT_3481_clear_bit_21']
     },
     {
-        "identifier": 'EVENT_3481_jmp_if_var_equals_short_19',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 4608, 'EVENT_3481_set_bit_26']
+        "identifier": 'EVENT_3481_jmp_if_7000_equals_short_19',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4608, 'EVENT_3481_set_bit_26']
     },
     {
         "identifier": 'EVENT_3481_jmp_20',
@@ -157,7 +157,7 @@ script = [
     {
         "identifier": 'EVENT_3481_set_7000_to_object_coord_31',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_1, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_1, Coords.X, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3481_mem_7000_and_const_32',
@@ -165,9 +165,9 @@ script = [
         "args": [0xff00]
     },
     {
-        "identifier": 'EVENT_3481_jmp_if_var_not_equals_short_33',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 2048, 'EVENT_3481_pause_1']
+        "identifier": 'EVENT_3481_jmp_if_7000_not_equals_short_33',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [2048, 'EVENT_3481_pause_1']
     },
     {
         "identifier": 'EVENT_3481_jmp_to_subroutine_34',
@@ -191,7 +191,7 @@ script = [
     {
         "identifier": 'EVENT_3481_set_7000_to_object_coord_38',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_1, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_1, Coords.X, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'EVENT_3481_mem_7000_and_const_39',
@@ -199,9 +199,9 @@ script = [
         "args": [0xff00]
     },
     {
-        "identifier": 'EVENT_3481_jmp_if_var_not_equals_short_40',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7000, 6912, 'EVENT_3481_pause_1']
+        "identifier": 'EVENT_3481_jmp_if_7000_not_equals_short_40',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [6912, 'EVENT_3481_pause_1']
     },
     {
         "identifier": 'EVENT_3481_jmp_to_subroutine_41',
@@ -233,35 +233,35 @@ script = [
         "args": [Sounds._032_UNDERGROUND_WARP, 6]
     },
     {
-        "identifier": 'EVENT_3481_start_embedded_action_script_async_47',
-        "command": 'start_embedded_action_script_async',
+        "identifier": 'EVENT_3481_start_embedded_action_script_async_F1_47',
+        "command": 'start_embedded_action_script_async_F1',
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_3481_start_embedded_action_script_async_47_SUBSCRIPT_start_loop_n_times_0',
+                "identifier": 'EVENT_3481_start_embedded_action_script_async_F1_47_SUBSCRIPT_start_loop_n_times_0',
                 "command": 'start_loop_n_times',
                 "args": [9]
             },
             {
-                "identifier": 'EVENT_3481_start_embedded_action_script_async_47_SUBSCRIPT_visibility_on_1',
+                "identifier": 'EVENT_3481_start_embedded_action_script_async_F1_47_SUBSCRIPT_visibility_on_1',
                 "command": 'visibility_on'
             },
             {
-                "identifier": 'EVENT_3481_start_embedded_action_script_async_47_SUBSCRIPT_pause_2',
+                "identifier": 'EVENT_3481_start_embedded_action_script_async_F1_47_SUBSCRIPT_pause_2',
                 "command": 'pause',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_3481_start_embedded_action_script_async_47_SUBSCRIPT_visibility_off_3',
+                "identifier": 'EVENT_3481_start_embedded_action_script_async_F1_47_SUBSCRIPT_visibility_off_3',
                 "command": 'visibility_off'
             },
             {
-                "identifier": 'EVENT_3481_start_embedded_action_script_async_47_SUBSCRIPT_pause_4',
+                "identifier": 'EVENT_3481_start_embedded_action_script_async_F1_47_SUBSCRIPT_pause_4',
                 "command": 'pause',
                 "args": [1]
             },
             {
-                "identifier": 'EVENT_3481_start_embedded_action_script_async_47_SUBSCRIPT_end_loop_5',
+                "identifier": 'EVENT_3481_start_embedded_action_script_async_F1_47_SUBSCRIPT_end_loop_5',
                 "command": 'end_loop'
             }
         ]

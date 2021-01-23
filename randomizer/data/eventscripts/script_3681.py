@@ -31,14 +31,14 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3681_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 379, 'EVENT_3681_jmp_to_subroutine_8']
+        "identifier": 'EVENT_3681_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [379, 'EVENT_3681_jmp_to_subroutine_8']
     },
     {
-        "identifier": 'EVENT_3681_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 380, 'EVENT_3681_jmp_to_subroutine_14']
+        "identifier": 'EVENT_3681_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [380, 'EVENT_3681_jmp_to_subroutine_14']
     },
     {
         "identifier": 'EVENT_3681_jmp_to_subroutine_8',

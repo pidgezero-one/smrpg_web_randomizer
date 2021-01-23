@@ -136,9 +136,9 @@ script = [
         "command": 'set_7000_to_tapped_button'
     },
     {
-        "identifier": 'EVENT_3359_jmp_if_var_equals_short_17',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 128, 'EVENT_3359_dec_short_21']
+        "identifier": 'EVENT_3359_jmp_if_7000_equals_short_17',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_3359_dec_short_21']
     },
     {
         "identifier": 'EVENT_3359_jmp_if_var_equals_short_18',
@@ -146,9 +146,9 @@ script = [
         "args": [0x703a, 4, 'EVENT_3359_pause_15']
     },
     {
-        "identifier": 'EVENT_3359_jmp_if_var_equals_short_19',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 32, 'EVENT_3359_action_queue_async_26']
+        "identifier": 'EVENT_3359_jmp_if_7000_equals_short_19',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [32, 'EVENT_3359_action_queue_async_26']
     },
     {
         "identifier": 'EVENT_3359_jmp_20',
@@ -269,9 +269,9 @@ script = [
         "args": [0x703a, 4]
     },
     {
-        "identifier": 'EVENT_3359_add_short_32',
-        "command": 'add_short',
-        "args": [0x703a, 0x01]
+        "identifier": 'EVENT_3359_inc_short_32',
+        "command": 'inc_short',
+        "args": [0x703a]
     },
     {
         "identifier": 'EVENT_3359_action_queue_sync_33',

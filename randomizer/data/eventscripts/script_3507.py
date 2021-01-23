@@ -313,9 +313,9 @@ script = [
         "args": [0x7000, 0x70b1]
     },
     {
-        "identifier": 'EVENT_3507_mem_compare_37',
-        "command": 'mem_compare',
-        "args": [0x7000, 8]
+        "identifier": 'EVENT_3507_mem_compare_val_37',
+        "command": 'mem_compare_val',
+        "args": [8]
     },
     {
         "identifier": 'EVENT_3507_jmp_if_comparison_result_is_lesser_38',

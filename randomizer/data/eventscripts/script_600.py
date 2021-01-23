@@ -5,17 +5,17 @@ script = [
     {
         "identifier": 'EVENT_600_set_bit_7_offset_0',
         "command": 'set_bit_7_offset',
-        "args": [0x015e]
+        "args": [0x015e, []]
     },
     {
         "identifier": 'EVENT_600_set_bit_7_offset_1',
         "command": 'set_bit_7_offset',
-        "args": [0x0160]
+        "args": [0x0160, []]
     },
     {
         "identifier": 'EVENT_600_set_bit_7_offset_2',
         "command": 'set_bit_7_offset',
-        "args": [0x0162]
+        "args": [0x0162, []]
     },
     {
         "identifier": 'EVENT_600_jmp_if_bit_set_3',

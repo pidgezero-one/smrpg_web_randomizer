@@ -10,17 +10,17 @@ script = [
     {
         "identifier": 'EVENT_1815_jmp_if_var_equals_short_1',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7024, 65535, 'EVENT_1815_add_short_3']
+        "args": [0x7024, 65535, 'EVENT_1815_inc_short_3']
     },
     {
-        "identifier": 'EVENT_1815_add_short_2',
-        "command": 'add_short',
-        "args": [0x7024, 0x01]
+        "identifier": 'EVENT_1815_inc_short_2',
+        "command": 'inc_short',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_1815_add_short_3',
-        "command": 'add_short',
-        "args": [0x7026, 0x01]
+        "identifier": 'EVENT_1815_inc_short_3',
+        "command": 'inc_short',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1815_jmp_if_var_not_equals_short_4',
@@ -40,12 +40,12 @@ script = [
     {
         "identifier": 'EVENT_1815_set_7000_to_object_coord_7',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1815_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_1815_fade_out_music_to_volume_13']
+        "identifier": 'EVENT_1815_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1815_fade_out_music_to_volume_13']
     },
     {
         "identifier": 'EVENT_1815_jmp_if_bit_clear_9',
@@ -55,12 +55,12 @@ script = [
     {
         "identifier": 'EVENT_1815_set_7000_to_object_coord_10',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1815_mem_compare_11',
-        "command": 'mem_compare',
-        "args": [0x7000, 1536]
+        "identifier": 'EVENT_1815_mem_compare_val_11',
+        "command": 'mem_compare_val',
+        "args": [1536]
     },
     {
         "identifier": 'EVENT_1815_jmp_if_comparison_result_is_greater_or_equal_12',

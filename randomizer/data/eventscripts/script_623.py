@@ -23,14 +23,14 @@ script = [
         "args": [0x7000, 0x70b8]
     },
     {
-        "identifier": 'EVENT_623_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 2, 'EVENT_623_set_action_script_sync_8']
+        "identifier": 'EVENT_623_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_623_set_action_script_sync_8']
     },
     {
-        "identifier": 'EVENT_623_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 3, 'EVENT_623_set_action_script_sync_12']
+        "identifier": 'EVENT_623_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_623_set_action_script_sync_12']
     },
     {
         "identifier": 'EVENT_623_set_action_script_sync_6',
@@ -85,12 +85,12 @@ script = [
     {
         "identifier": 'EVENT_623_set_7000_to_object_coord_16',
         "command": 'set_7000_to_object_coord',
-        "args": [AreaObjects.NPC_5, Coords.Y, CoordUnits.PIXEL]
+        "args": [AreaObjects.NPC_5, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_623_jmp_if_var_equals_short_17',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 63, 'EVENT_623_unsync_action_script_19']
+        "identifier": 'EVENT_623_jmp_if_7000_equals_short_17',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [63, 'EVENT_623_unsync_action_script_19']
     },
     {
         "identifier": 'EVENT_623_action_queue_async_18',

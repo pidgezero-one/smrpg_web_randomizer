@@ -19,9 +19,9 @@ script = [
         "args": [0x7000, 0x70eb]
     },
     {
-        "identifier": 'EVENT_468_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 0, 'EVENT_468_pause_5']
+        "identifier": 'EVENT_468_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_468_pause_5']
     },
     {
         "identifier": 'EVENT_468_set_short_mem_3',
@@ -68,9 +68,9 @@ script = [
         "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_468_add_12',
-        "command": 'add',
-        "args": [0x70ee, 0x01]
+        "identifier": 'EVENT_468_inc_12',
+        "command": 'inc',
+        "args": [0x70ee]
     },
     {
         "identifier": 'EVENT_468_jmp_if_var_equals_short_13',

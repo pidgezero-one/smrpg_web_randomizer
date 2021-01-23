@@ -50,7 +50,7 @@ script = [
     {
         "identifier": 'EVENT_2634_jmp_if_random_above_66_9',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2634_set_bit_11']
+        "args": [0xf2a0, 0xf2a5]
     },
     {
         "identifier": 'EVENT_2634_jmp_10',
@@ -75,7 +75,7 @@ script = [
     {
         "identifier": 'EVENT_2634_jmp_if_random_above_66_14',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2634_set_bit_16']
+        "args": [0xf2af, 0xf2b4]
     },
     {
         "identifier": 'EVENT_2634_jmp_15',
@@ -100,7 +100,7 @@ script = [
     {
         "identifier": 'EVENT_2634_jmp_if_random_above_66_19',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2634_set_bit_21']
+        "args": [0xf2be, 0xf2c3]
     },
     {
         "identifier": 'EVENT_2634_jmp_20',
@@ -623,9 +623,9 @@ script = [
         "command": 'store_coin_amount_7000'
     },
     {
-        "identifier": 'EVENT_2634_mem_compare_102',
-        "command": 'mem_compare',
-        "args": [0x7000, 10]
+        "identifier": 'EVENT_2634_mem_compare_val_102',
+        "command": 'mem_compare_val',
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2634_jmp_if_comparison_result_is_greater_or_equal_103',

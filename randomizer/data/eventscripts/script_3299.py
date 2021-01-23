@@ -24,12 +24,12 @@ script = [
             {
                 "identifier": 'EVENT_3299_action_queue_async_0_SUBSCRIPT_set_700C_to_object_coord_3',
                 "command": 'set_700C_to_object_coord',
-                "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+                "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
             },
             {
-                "identifier": 'EVENT_3299_action_queue_async_0_SUBSCRIPT_mem_compare_4',
-                "command": 'mem_compare',
-                "args": [0x700c, 1280]
+                "identifier": 'EVENT_3299_action_queue_async_0_SUBSCRIPT_mem_compare_val_4',
+                "command": 'mem_compare_val',
+                "args": [1280]
             },
             {
                 "identifier": 'EVENT_3299_action_queue_async_0_SUBSCRIPT_jmp_if_loaded_memory_is_above_or_equal_0_5',

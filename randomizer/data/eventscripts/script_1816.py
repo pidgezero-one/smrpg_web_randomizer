@@ -140,14 +140,14 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_1816_mem_compare_18',
-        "command": 'mem_compare',
-        "args": [0x7000, 1800]
+        "identifier": 'EVENT_1816_mem_compare_val_18',
+        "command": 'mem_compare_val',
+        "args": [1800]
     },
     {
         "identifier": 'EVENT_1816_jmp_if_comparison_result_is_lesser_19',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1816_mem_compare_22']
+        "args": ['EVENT_1816_mem_compare_val_22']
     },
     {
         "identifier": 'EVENT_1816_run_dialog_duration_20',
@@ -159,14 +159,14 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_1816_mem_compare_22',
-        "command": 'mem_compare',
-        "args": [0x7000, 840]
+        "identifier": 'EVENT_1816_mem_compare_val_22',
+        "command": 'mem_compare_val',
+        "args": [840]
     },
     {
         "identifier": 'EVENT_1816_jmp_if_comparison_result_is_lesser_23',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1816_mem_compare_26']
+        "args": ['EVENT_1816_mem_compare_val_26']
     },
     {
         "identifier": 'EVENT_1816_run_dialog_duration_24',
@@ -178,14 +178,14 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_1816_mem_compare_26',
-        "command": 'mem_compare',
-        "args": [0x7000, 720]
+        "identifier": 'EVENT_1816_mem_compare_val_26',
+        "command": 'mem_compare_val',
+        "args": [720]
     },
     {
         "identifier": 'EVENT_1816_jmp_if_comparison_result_is_lesser_27',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1816_mem_compare_32']
+        "args": ['EVENT_1816_mem_compare_val_32']
     },
     {
         "identifier": 'EVENT_1816_run_dialog_duration_28',
@@ -195,7 +195,7 @@ script = [
     {
         "identifier": 'EVENT_1816_jmp_if_random_above_66_29',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_1816_run_dialog_duration_83']
+        "args": [0x534b, 0x534b]
     },
     {
         "identifier": 'EVENT_1816_set_short_30',
@@ -208,9 +208,9 @@ script = [
         "args": ['EVENT_1816_run_dialog_duration_73']
     },
     {
-        "identifier": 'EVENT_1816_mem_compare_32',
-        "command": 'mem_compare',
-        "args": [0x7000, 660]
+        "identifier": 'EVENT_1816_mem_compare_val_32',
+        "command": 'mem_compare_val',
+        "args": [660]
     },
     {
         "identifier": 'EVENT_1816_jmp_if_comparison_result_is_lesser_33',
@@ -554,9 +554,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_1816_mem_compare_66',
-        "command": 'mem_compare',
-        "args": [0x7000, 690]
+        "identifier": 'EVENT_1816_mem_compare_val_66',
+        "command": 'mem_compare_val',
+        "args": [690]
     },
     {
         "identifier": 'EVENT_1816_jmp_if_comparison_result_is_lesser_67',

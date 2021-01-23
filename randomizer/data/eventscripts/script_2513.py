@@ -47,9 +47,9 @@ script = [
         "args": [Rooms._158_STAR_HILL_AREA_02, 8, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
-        "identifier": 'EVENT_2513_add_9',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_2513_inc_9',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_2513_jmp_if_var_equals_byte_10',

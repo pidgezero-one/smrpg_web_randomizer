@@ -209,7 +209,7 @@ script = [
     {
         "identifier": 'EVENT_2130_palette_set_12',
         "command": 'palette_set',
-        "args": [84, 1]
+        "args": [84, 1, [3]]
     },
     {
         "identifier": 'EVENT_2130_action_queue_sync_13',

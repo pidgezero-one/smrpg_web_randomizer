@@ -18,14 +18,14 @@ script = [
         "args": [0x70a7, 48]
     },
     {
-        "identifier": 'EVENT_3623_add_3',
-        "command": 'add',
-        "args": [0x70c8, 0x01]
+        "identifier": 'EVENT_3623_inc_3',
+        "command": 'inc',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3623_add_4',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3623_inc_4',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3623_run_event_as_subroutine_5',

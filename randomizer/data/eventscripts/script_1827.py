@@ -60,9 +60,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1827_add_9',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1827_inc_9',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1827_end_loop_10',
@@ -86,9 +86,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1827_add_13',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1827_inc_13',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1827_end_loop_14',
@@ -110,9 +110,9 @@ script = [
         "args": [AreaObjects.MEM_70A9, 829]
     },
     {
-        "identifier": 'EVENT_1827_add_18',
-        "command": 'add',
-        "args": [0x70a9, 0x01]
+        "identifier": 'EVENT_1827_inc_18',
+        "command": 'inc',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1827_end_loop_19',

@@ -12,9 +12,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3706_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 114, 'EVENT_3706_jmp_if_object_not_in_level_15']
+        "identifier": 'EVENT_3706_jmp_if_7000_equals_short_2',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [114, 'EVENT_3706_jmp_if_object_not_in_level_15']
     },
     {
         "identifier": 'EVENT_3706_jmp_if_object_not_in_level_3',
@@ -142,9 +142,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3706_jmp_if_var_equals_short_29',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 410, 'EVENT_3706_set_temp_action_script_sync_33']
+        "identifier": 'EVENT_3706_jmp_if_7000_equals_short_29',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [410, 'EVENT_3706_set_temp_action_script_sync_33']
     },
     {
         "identifier": 'EVENT_3706_set_temp_action_script_sync_30',

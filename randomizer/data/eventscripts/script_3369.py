@@ -160,9 +160,9 @@ script = [
         "args": [0x7000, 0x70ae]
     },
     {
-        "identifier": 'EVENT_3369_add_33',
-        "command": 'add',
-        "args": [0x7000, 0x01]
+        "identifier": 'EVENT_3369_inc_33',
+        "command": 'inc',
+        "args": [0x7000]
     },
     {
         "identifier": 'EVENT_3369_run_dialog_34',
@@ -175,9 +175,9 @@ script = [
         "args": ['EVENT_3366_ret_8']
     },
     {
-        "identifier": 'EVENT_3369_add_36',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'EVENT_3369_inc_36',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_3369_set_short_mem_37',

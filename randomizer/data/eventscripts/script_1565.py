@@ -68,14 +68,14 @@ script = [
         "args": [0x7000, 0x70de]
     },
     {
-        "identifier": 'EVENT_1565_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 39, 'EVENT_1565_enter_area_29']
+        "identifier": 'EVENT_1565_jmp_if_7000_equals_short_13',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [39, 'EVENT_1565_enter_area_29']
     },
     {
-        "identifier": 'EVENT_1565_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7000, 45, 'EVENT_1565_enter_area_29']
+        "identifier": 'EVENT_1565_jmp_if_7000_equals_short_14',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [45, 'EVENT_1565_enter_area_29']
     },
     {
         "identifier": 'EVENT_1565_action_queue_sync_15',

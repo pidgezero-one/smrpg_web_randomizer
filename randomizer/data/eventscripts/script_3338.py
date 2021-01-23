@@ -18,8 +18,8 @@ script = [
         "args": [Rooms._013_BARREL_VOLCANO_FALLING_INTO_VOLCANO, RadialDirections.SOUTH, 4, 48, 0, []]
     },
     {
-        "identifier": 'EVENT_3338_stop_music_3',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3338_stop_music_FDA2_3',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_3338_remove_from_current_level_4',
@@ -113,9 +113,9 @@ script = [
         "args": [0x7034, 0x7000]
     },
     {
-        "identifier": 'EVENT_3338_add_20',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_3338_inc_20',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3338_create_packet_at_7010_coords_jmp_if_null_21',
@@ -138,9 +138,9 @@ script = [
         "args": [0x7036, 0x7000]
     },
     {
-        "identifier": 'EVENT_3338_add_25',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_3338_inc_25',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3338_create_packet_at_7010_coords_jmp_if_null_26',
@@ -163,9 +163,9 @@ script = [
         "args": [0x7038, 0x7000]
     },
     {
-        "identifier": 'EVENT_3338_add_30',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_3338_inc_30',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3338_create_packet_at_7010_coords_jmp_if_null_31',
@@ -188,9 +188,9 @@ script = [
         "args": [0x703a, 0x7000]
     },
     {
-        "identifier": 'EVENT_3338_add_35',
-        "command": 'add',
-        "args": [0x70af, 0x01]
+        "identifier": 'EVENT_3338_inc_35',
+        "command": 'inc',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3338_create_packet_at_7010_coords_jmp_if_null_36',
@@ -1089,8 +1089,8 @@ script = [
         "args": [0x00b6, 39]
     },
     {
-        "identifier": 'EVENT_3338_stop_music_116',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3338_stop_music_FDA2_116',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_3338_set_short_117',
@@ -1141,8 +1141,8 @@ script = [
         "args": [Sounds._091_TUMBLING_BOULDERS, 4]
     },
     {
-        "identifier": 'EVENT_3338_stop_music_127',
-        "command": 'stop_music'
+        "identifier": 'EVENT_3338_stop_music_FDA2_127',
+        "command": 'stop_music_FDA2'
     },
     {
         "identifier": 'EVENT_3338_fade_in_from_black_async_128',
