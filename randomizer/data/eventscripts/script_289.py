@@ -334,9 +334,9 @@ script = [
                 "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_short_mem_1',
-                "command": 'set_short_mem',
-                "args": [0x7024, 0x700c]
+                "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_7000_short_mem_to_700C_1',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_db_2',
@@ -344,9 +344,9 @@ script = [
                 "args": [0xfd, 0x24, 0x00, 0x10]
             },
             {
-                "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_short_mem_3',
-                "command": 'set_short_mem',
-                "args": [0x7000, 0x700c]
+                "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_set_7000_short_mem_to_700C_3',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x7000]
             },
             {
                 "identifier": 'EVENT_289_action_queue_async_56_SUBSCRIPT_mem_700C_and_const_4',

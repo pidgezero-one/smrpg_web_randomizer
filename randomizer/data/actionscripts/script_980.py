@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'ACTION_980_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_980_shift_z_up_pixels_6',
@@ -43,7 +43,7 @@ script = [
     {
         "identifier": 'ACTION_980_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [7, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [7, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_980_jmp_if_random_above_128_9',

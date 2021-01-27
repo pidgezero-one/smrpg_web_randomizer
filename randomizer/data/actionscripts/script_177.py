@@ -32,7 +32,7 @@ script = [
     {
         "identifier": 'ACTION_177_jmp_if_random_above_66_6',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_177_transfer_to_xyzf_19']
+        "args": [0x2392, 'ACTION_177_transfer_to_xyzf_31']
     },
     {
         "identifier": 'ACTION_177_transfer_to_xyzf_7',
@@ -211,7 +211,7 @@ script = [
     {
         "identifier": 'ACTION_177_set_sprite_sequence_43',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [0, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_177_pause_44',

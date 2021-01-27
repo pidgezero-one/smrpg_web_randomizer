@@ -11,29 +11,29 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_931_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_931_transfer_xyzf_pixels_8']
+        "identifier": 'ACTION_931_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_931_transfer_xyzf_pixels_8']
     },
     {
-        "identifier": 'ACTION_931_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 22, 'ACTION_931_transfer_xyzf_pixels_12']
+        "identifier": 'ACTION_931_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [22, 'ACTION_931_transfer_xyzf_pixels_12']
     },
     {
-        "identifier": 'ACTION_931_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 23, 'ACTION_931_set_vram_priority_16']
+        "identifier": 'ACTION_931_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [23, 'ACTION_931_set_vram_priority_16']
     },
     {
-        "identifier": 'ACTION_931_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_931_set_vram_priority_21']
+        "identifier": 'ACTION_931_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_931_set_vram_priority_21']
     },
     {
-        "identifier": 'ACTION_931_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 25, 'ACTION_931_set_vram_priority_26']
+        "identifier": 'ACTION_931_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [25, 'ACTION_931_set_vram_priority_26']
     },
     {
         "identifier": 'ACTION_931_ret_7',
@@ -47,12 +47,12 @@ script = [
     {
         "identifier": 'ACTION_931_set_sprite_sequence_9',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_931_set_object_memory_bits_10',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0]]
+        "args": [0x0e, [0]]
     },
     {
         "identifier": 'ACTION_931_ret_11',
@@ -66,12 +66,12 @@ script = [
     {
         "identifier": 'ACTION_931_set_sprite_sequence_13',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_931_set_object_memory_bits_14',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[1]]
+        "args": [0x0e, [1]]
     },
     {
         "identifier": 'ACTION_931_ret_15',
@@ -90,12 +90,12 @@ script = [
     {
         "identifier": 'ACTION_931_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_931_set_object_memory_bits_19',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0, 1]]
+        "args": [0x0e, [0, 1]]
     },
     {
         "identifier": 'ACTION_931_ret_20',
@@ -114,12 +114,12 @@ script = [
     {
         "identifier": 'ACTION_931_set_sprite_sequence_23',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_931_set_object_memory_bits_24',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[2]]
+        "args": [0x0e, [2]]
     },
     {
         "identifier": 'ACTION_931_ret_25',
@@ -138,12 +138,12 @@ script = [
     {
         "identifier": 'ACTION_931_set_sprite_sequence_28',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_931_set_object_memory_bits_29',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0, 2]]
+        "args": [0x0e, [0, 2]]
     },
     {
         "identifier": 'ACTION_931_ret_30',

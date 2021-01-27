@@ -1742,9 +1742,9 @@ script = [
         "args": [0x7088, 6, 'EVENT_720_set_bit_275']
     },
     {
-        "identifier": 'EVENT_720_set_short_mem_267',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70bd]
+        "identifier": 'EVENT_720_set_7000_to_70A0_short_mem_267',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70bd]
     },
     {
         "identifier": 'EVENT_720_jmp_if_7000_equals_short_268',
@@ -2207,14 +2207,14 @@ script = [
         "args": [Sounds._005_BLOCK_SWITCH, 6]
     },
     {
-        "identifier": 'EVENT_720_set_short_mem_337',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_720_set_7000_to_70A0_short_mem_337',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_720_set_short_mem_338',
-        "command": 'set_short_mem',
-        "args": [0x70b4, 0x7000]
+        "identifier": 'EVENT_720_set_70A0_short_mem_to_7000_338',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b4]
     },
     {
         "identifier": 'EVENT_720_action_queue_sync_339',
@@ -2289,9 +2289,9 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
-        "identifier": 'EVENT_720_set_short_mem_342',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_720_set_7000_to_7000_short_mem_342',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_720_add_343',
@@ -2299,9 +2299,9 @@ script = [
         "args": [0x7000, 608]
     },
     {
-        "identifier": 'EVENT_720_set_short_mem_344',
-        "command": 'set_short_mem',
-        "args": [0x7014, 0x7000]
+        "identifier": 'EVENT_720_set_7000_short_mem_to_7000_344',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_720_clear_bit_345',

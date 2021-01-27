@@ -14,7 +14,7 @@ script = [
     {
         "identifier": 'ACTION_782_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_782_jmp_if_bit_clear_3',
@@ -89,7 +89,7 @@ script = [
     {
         "identifier": 'ACTION_782_set_sprite_sequence_17',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_782_set_short_18',
@@ -144,7 +144,7 @@ script = [
     {
         "identifier": 'ACTION_782_set_sprite_sequence_28',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_782_jmp_if_bit_clear_29',
@@ -219,7 +219,7 @@ script = [
     {
         "identifier": 'ACTION_782_set_sprite_sequence_43',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_782_set_short_44',

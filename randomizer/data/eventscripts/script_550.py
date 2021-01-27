@@ -18,9 +18,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_550_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_550_set_7000_short_mem_to_7000_3',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_550_mem_compare_4',

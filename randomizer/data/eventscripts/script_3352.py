@@ -223,8 +223,8 @@ script = [
         "args": [0x7034, 0x0732]
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_35',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_3352_set_7000_short_mem_to_7000_short_mem_35',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7038, 0x7036]
     },
     {
@@ -243,8 +243,8 @@ script = [
         "args": [0x7044, 5, 'EVENT_3352_clear_bit_32']
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_39',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_3352_set_7000_short_mem_to_7000_short_mem_39',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7036, 0x7038]
     },
     {
@@ -268,8 +268,8 @@ script = [
         "args": [0x7034, 0x0742]
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_44',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_3352_set_7000_short_mem_to_7000_short_mem_44',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x703a, 0x7036]
     },
     {
@@ -288,8 +288,8 @@ script = [
         "args": [0x7044, 5, 'EVENT_3352_clear_bit_32']
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_48',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_3352_set_7000_short_mem_to_7000_short_mem_48',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7036, 0x703a]
     },
     {
@@ -313,8 +313,8 @@ script = [
         "args": [0x7034, 0x0752]
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_53',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_3352_set_7000_short_mem_to_7000_short_mem_53',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x703c, 0x7036]
     },
     {
@@ -333,8 +333,8 @@ script = [
         "args": [0x7044, 5, 'EVENT_3352_clear_bit_32']
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_57',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_3352_set_7000_short_mem_to_7000_short_mem_57',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7036, 0x703c]
     },
     {
@@ -363,14 +363,14 @@ script = [
         "args": [0x7032]
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_63',
-        "command": 'set_short_mem',
-        "args": [0x703e, 0x7000]
+        "identifier": 'EVENT_3352_set_7000_short_mem_to_7000_63',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_3352_jmp_if_7000_equals_short_64',
         "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_3352_set_short_mem_68']
+        "args": [0, 'EVENT_3352_set_7000_to_7000_short_mem_68']
     },
     {
         "identifier": 'EVENT_3352_set_object_memory_to_65',
@@ -387,9 +387,9 @@ script = [
         "command": 'end_loop'
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_68',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7036]
+        "identifier": 'EVENT_3352_set_7000_to_7000_short_mem_68',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'EVENT_3352_mem_7000_and_var_69',
@@ -407,9 +407,9 @@ script = [
         "args": ['EVENT_3352_set_bit_97']
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_72',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7036]
+        "identifier": 'EVENT_3352_set_7000_to_7000_short_mem_72',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'EVENT_3352_mem_7000_or_var_73',
@@ -417,14 +417,14 @@ script = [
         "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_74',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x7000]
+        "identifier": 'EVENT_3352_set_7000_short_mem_to_7000_74',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7036]
     },
     {
-        "identifier": 'EVENT_3352_set_short_mem_75',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x703e]
+        "identifier": 'EVENT_3352_set_7000_to_7000_short_mem_75',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_3352_add_short_mem_76',

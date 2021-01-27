@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'ACTION_404_jmp_if_random_above_66_2',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_404_jmp_if_random_above_128_10']
+        "args": [0x4989, 'ACTION_404_jmp_if_random_above_128_10']
     },
     {
         "identifier": 'ACTION_404_face_mario_3',
@@ -35,9 +35,9 @@ script = [
         "args": [0x700c, 2]
     },
     {
-        "identifier": 'ACTION_404_add_short_7',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_404_inc_short_7',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_404_shift_z_20_steps_8',
@@ -73,9 +73,9 @@ script = [
         "args": [0x700c, 2]
     },
     {
-        "identifier": 'ACTION_404_add_short_15',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_404_inc_short_15',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_404_shift_z_20_steps_16',

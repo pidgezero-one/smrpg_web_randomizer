@@ -40,7 +40,7 @@ script = [
     {
         "identifier": 'ACTION_481_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_481_floating_on_9',
@@ -68,7 +68,7 @@ script = [
     {
         "identifier": 'ACTION_481_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_481_db_15',

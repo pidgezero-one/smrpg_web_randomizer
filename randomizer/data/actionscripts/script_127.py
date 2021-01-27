@@ -17,7 +17,7 @@ script = [
     {
         "identifier": 'ACTION_127_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_127_visibility_off_4',
@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'ACTION_127_set_sprite_sequence_9',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_127_pause_10',

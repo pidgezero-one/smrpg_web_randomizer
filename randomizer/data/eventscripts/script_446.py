@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_446_jmp_if_var_equals_short_1',
         "command": 'jmp_if_var_equals_short',
-        "args": [0x7026, 10, 'EVENT_446_set_short_mem_23']
+        "args": [0x7026, 10, 'EVENT_446_set_7000_to_7000_short_mem_23']
     },
     {
         "identifier": 'EVENT_446_jmp_if_var_equals_short_2',
@@ -18,9 +18,9 @@ script = [
         "args": [0x7026, 0, 'EVENT_446_run_dialog_6']
     },
     {
-        "identifier": 'EVENT_446_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_446_set_7000_to_7000_short_mem_3',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_446_run_dialog_4',
@@ -114,9 +114,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_446_set_short_mem_23',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_446_set_7000_to_7000_short_mem_23',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_446_mem_compare_val_24',

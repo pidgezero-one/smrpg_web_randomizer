@@ -11,39 +11,39 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_434_shadow_off_30']
+        "identifier": 'ACTION_434_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_434_shadow_off_30']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 22, 'ACTION_434_shadow_off_84']
+        "identifier": 'ACTION_434_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [22, 'ACTION_434_shadow_off_84']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 23, 'ACTION_434_shadow_off_140']
+        "identifier": 'ACTION_434_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [23, 'ACTION_434_shadow_off_140']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_434_shadow_on_214']
+        "identifier": 'ACTION_434_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_434_shadow_on_214']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 25, 'ACTION_434_shadow_off_253']
+        "identifier": 'ACTION_434_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [25, 'ACTION_434_shadow_off_253']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 26, 'ACTION_434_shadow_off_281']
+        "identifier": 'ACTION_434_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [26, 'ACTION_434_shadow_off_281']
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_8',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jmp_if_700C_all_bits_clear_9',
@@ -88,9 +88,9 @@ script = [
         "args": [7, 48]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_18',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_18',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_19',
@@ -103,9 +103,9 @@ script = [
         "args": [0x0001]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_21',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_21',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_22',
@@ -127,9 +127,9 @@ script = [
         "args": [4, 53]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_26',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_26',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_27',
@@ -137,9 +137,9 @@ script = [
         "args": [0xfffe]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_28',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_28',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jmp_29',
@@ -151,9 +151,9 @@ script = [
         "command": 'shadow_off'
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_31',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_31',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_32',
@@ -161,9 +161,9 @@ script = [
         "args": [0x0006]
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_33',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 2, 'ACTION_434_jmp_if_var_not_equals_short_36']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_33',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [2, 'ACTION_434_jmp_if_700C_not_equals_short_36']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_34',
@@ -176,9 +176,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_52']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_36',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 4, 'ACTION_434_jmp_if_var_not_equals_short_39']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_36',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [4, 'ACTION_434_jmp_if_700C_not_equals_short_39']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_37',
@@ -191,9 +191,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_63']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_39',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 6, 'ACTION_434_jump_to_subroutine_42']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_39',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [6, 'ACTION_434_jump_to_subroutine_42']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_40',
@@ -234,9 +234,9 @@ script = [
         "args": [10, 39]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_48',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_48',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_49',
@@ -249,9 +249,9 @@ script = [
         "args": [0x0002]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_51',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_51',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_52',
@@ -287,9 +287,9 @@ script = [
         "args": [15, 37]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_59',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_59',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_60',
@@ -302,9 +302,9 @@ script = [
         "args": [0x0004]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_62',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_62',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_63',
@@ -340,9 +340,9 @@ script = [
         "args": [10, 39]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_70',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_70',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_71',
@@ -355,9 +355,9 @@ script = [
         "args": [0x0006]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_73',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_73',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_74',
@@ -388,9 +388,9 @@ script = [
         "args": [7, 46]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_80',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_80',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_81',
@@ -398,9 +398,9 @@ script = [
         "args": [0xfff9]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_82',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_82',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jmp_83',
@@ -412,9 +412,9 @@ script = [
         "command": 'shadow_off'
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_85',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_85',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_86',
@@ -422,9 +422,9 @@ script = [
         "args": [0x0018]
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_87',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 8, 'ACTION_434_jmp_if_var_not_equals_short_90']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_87',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [8, 'ACTION_434_jmp_if_700C_not_equals_short_90']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_88',
@@ -437,9 +437,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_106']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_90',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 16, 'ACTION_434_jmp_if_var_not_equals_short_93']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_90',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [16, 'ACTION_434_jmp_if_700C_not_equals_short_93']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_91',
@@ -452,9 +452,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_118']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_93',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 24, 'ACTION_434_jump_to_subroutine_96']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_93',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [24, 'ACTION_434_jump_to_subroutine_96']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_94',
@@ -495,9 +495,9 @@ script = [
         "args": [11, 26]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_102',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_102',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_103',
@@ -510,9 +510,9 @@ script = [
         "args": [0x0008]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_105',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_105',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_106',
@@ -553,9 +553,9 @@ script = [
         "args": [6, 38]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_114',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_114',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_115',
@@ -568,9 +568,9 @@ script = [
         "args": [0x0010]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_117',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_117',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_118',
@@ -611,9 +611,9 @@ script = [
         "args": [11, 26]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_126',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_126',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_127',
@@ -626,9 +626,9 @@ script = [
         "args": [0x0018]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_129',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_129',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_130',
@@ -659,9 +659,9 @@ script = [
         "args": [16, 36]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_136',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_136',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_137',
@@ -669,9 +669,9 @@ script = [
         "args": [0xffe7]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_138',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_138',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jmp_139',
@@ -683,9 +683,9 @@ script = [
         "command": 'shadow_off'
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_141',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_141',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_142',
@@ -693,9 +693,9 @@ script = [
         "args": [0x00e0]
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_143',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 32, 'ACTION_434_jmp_if_var_not_equals_short_147']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_143',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [32, 'ACTION_434_jmp_if_700C_not_equals_short_147']
     },
     {
         "identifier": 'ACTION_434_shadow_on_144',
@@ -712,9 +712,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_168']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_147',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 64, 'ACTION_434_jmp_if_var_not_equals_short_150']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_147',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [64, 'ACTION_434_jmp_if_700C_not_equals_short_150']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_148',
@@ -727,9 +727,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_176']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_150',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 96, 'ACTION_434_jmp_if_var_not_equals_short_153']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_150',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [96, 'ACTION_434_jmp_if_700C_not_equals_short_153']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_151',
@@ -742,9 +742,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_186']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_153',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 128, 'ACTION_434_jmp_if_var_not_equals_short_157']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_153',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [128, 'ACTION_434_jmp_if_700C_not_equals_short_157']
     },
     {
         "identifier": 'ACTION_434_shadow_on_154',
@@ -761,9 +761,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_195']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_157',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 160, 'ACTION_434_jump_to_subroutine_160']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_157',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [160, 'ACTION_434_jump_to_subroutine_160']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_158',
@@ -795,9 +795,9 @@ script = [
         "args": [8, 19]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_164',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_164',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_165',
@@ -810,9 +810,9 @@ script = [
         "args": [0x0020]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_167',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_167',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_168',
@@ -834,9 +834,9 @@ script = [
         "args": [11, 24]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_172',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_172',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_173',
@@ -849,9 +849,9 @@ script = [
         "args": [0x0040]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_175',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_175',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_176',
@@ -882,9 +882,9 @@ script = [
         "args": [15, 24]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_182',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_182',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_183',
@@ -897,9 +897,9 @@ script = [
         "args": [0x0060]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_185',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_185',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_186',
@@ -926,9 +926,9 @@ script = [
         "args": [18, 14]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_191',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_191',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_192',
@@ -941,9 +941,9 @@ script = [
         "args": [0x0080]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_194',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_194',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_195',
@@ -970,9 +970,9 @@ script = [
         "args": [15, 24]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_200',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_200',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_201',
@@ -985,9 +985,9 @@ script = [
         "args": [0x00a0]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_203',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_203',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_204',
@@ -1018,9 +1018,9 @@ script = [
         "args": [11, 24]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_210',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_210',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_211',
@@ -1028,9 +1028,9 @@ script = [
         "args": [0xff1f]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_212',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_212',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jmp_213',
@@ -1042,9 +1042,9 @@ script = [
         "command": 'shadow_on'
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_215',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_215',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_216',
@@ -1052,9 +1052,9 @@ script = [
         "args": [0x0300]
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_217',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 256, 'ACTION_434_jmp_if_var_not_equals_short_221']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_217',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [256, 'ACTION_434_jmp_if_700C_not_equals_short_221']
     },
     {
         "identifier": 'ACTION_434_shadow_off_218',
@@ -1071,9 +1071,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_234']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_221',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 512, 'ACTION_434_jump_to_subroutine_225']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_221',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [512, 'ACTION_434_jump_to_subroutine_225']
     },
     {
         "identifier": 'ACTION_434_shadow_off_222',
@@ -1114,9 +1114,9 @@ script = [
         "args": [26, 32]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_230',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_230',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_231',
@@ -1129,9 +1129,9 @@ script = [
         "args": [0x0100]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_233',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_233',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_234',
@@ -1162,9 +1162,9 @@ script = [
         "args": [22, 32]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_240',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_240',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_241',
@@ -1177,9 +1177,9 @@ script = [
         "args": [0x0200]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_243',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_243',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_244',
@@ -1206,9 +1206,9 @@ script = [
         "args": [26, 20]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_249',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_249',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_250',
@@ -1216,9 +1216,9 @@ script = [
         "args": [0xfcff]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_251',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_251',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jmp_252',
@@ -1230,9 +1230,9 @@ script = [
         "command": 'shadow_off'
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_254',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_254',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_255',
@@ -1240,9 +1240,9 @@ script = [
         "args": [0x0400]
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_256',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 1024, 'ACTION_434_jump_to_subroutine_259']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_256',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [1024, 'ACTION_434_jump_to_subroutine_259']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_257',
@@ -1288,9 +1288,9 @@ script = [
         "args": [16, 37]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_266',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_266',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_267',
@@ -1303,9 +1303,9 @@ script = [
         "args": [0x0400]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_269',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_269',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_270',
@@ -1341,9 +1341,9 @@ script = [
         "args": [21, 33]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_277',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_277',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_278',
@@ -1351,9 +1351,9 @@ script = [
         "args": [0xfbff]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_279',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_279',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jmp_280',
@@ -1365,9 +1365,9 @@ script = [
         "command": 'shadow_off'
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_282',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_282',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_283',
@@ -1375,9 +1375,9 @@ script = [
         "args": [0x1800]
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_284',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 2048, 'ACTION_434_jmp_if_var_not_equals_short_287']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_284',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [2048, 'ACTION_434_jmp_if_700C_not_equals_short_287']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_285',
@@ -1390,9 +1390,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_304']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_287',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 4096, 'ACTION_434_jmp_if_var_not_equals_short_291']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_287',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [4096, 'ACTION_434_jmp_if_700C_not_equals_short_291']
     },
     {
         "identifier": 'ACTION_434_shadow_on_288',
@@ -1409,9 +1409,9 @@ script = [
         "args": ['ACTION_434_jump_to_subroutine_313']
     },
     {
-        "identifier": 'ACTION_434_jmp_if_var_not_equals_short_291',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 6144, 'ACTION_434_jump_to_subroutine_294']
+        "identifier": 'ACTION_434_jmp_if_700C_not_equals_short_291',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [6144, 'ACTION_434_jump_to_subroutine_294']
     },
     {
         "identifier": 'ACTION_434_shirt_to_xy_coords_292',
@@ -1452,9 +1452,9 @@ script = [
         "args": [18, 47]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_300',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_300',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_301',
@@ -1467,9 +1467,9 @@ script = [
         "args": [0x0800]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_303',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_303',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_304',
@@ -1496,9 +1496,9 @@ script = [
         "args": [20, 55]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_309',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_309',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_310',
@@ -1511,9 +1511,9 @@ script = [
         "args": [0x1000]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_312',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_312',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_313',
@@ -1540,9 +1540,9 @@ script = [
         "args": [18, 47]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_318',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_318',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_319',
@@ -1555,9 +1555,9 @@ script = [
         "args": [0x1800]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_321',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_321',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jump_to_subroutine_322',
@@ -1588,9 +1588,9 @@ script = [
         "args": [26, 34]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_328',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7036]
+        "identifier": 'ACTION_434_set_700C_to_7000_short_mem_328',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_mem_700C_and_const_329',
@@ -1598,9 +1598,9 @@ script = [
         "args": [0xe7ff]
     },
     {
-        "identifier": 'ACTION_434_set_short_mem_330',
-        "command": 'set_short_mem',
-        "args": [0x7036, 0x700c]
+        "identifier": 'ACTION_434_set_7000_short_mem_to_700C_330',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7036]
     },
     {
         "identifier": 'ACTION_434_jmp_331',

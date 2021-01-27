@@ -13,9 +13,9 @@ script = [
         "args": [0x7090, 6, 'EVENT_351_action_queue_async_28']
     },
     {
-        "identifier": 'EVENT_351_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70af]
+        "identifier": 'EVENT_351_set_7000_to_70A0_short_mem_2',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_351_mem_compare_val_3',

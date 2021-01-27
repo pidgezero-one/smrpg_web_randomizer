@@ -77,9 +77,9 @@ script = [
         "command": 'close_dialog'
     },
     {
-        "identifier": 'EVENT_273_set_short_mem_15',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_273_set_7000_to_7000_short_mem_15',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_273_dec_coins_16',

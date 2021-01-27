@@ -14,7 +14,7 @@ script = [
     {
         "identifier": 'ACTION_854_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=1, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [10, 1, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_854_pause_3',
@@ -24,7 +24,7 @@ script = [
     {
         "identifier": 'ACTION_854_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [27, inc_sprite=1, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [27, 1, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_854_ret_5',

@@ -8,9 +8,9 @@ script = [
         "args": [Rooms._454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, RadialDirections.SOUTHWEST, 7, 33, 0, []]
     },
     {
-        "identifier": 'EVENT_3351_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b7]
+        "identifier": 'EVENT_3351_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b7]
     },
     {
         "identifier": 'EVENT_3351_mem_7000_shift_left_2',
@@ -18,9 +18,9 @@ script = [
         "args": [0x7000, 4]
     },
     {
-        "identifier": 'EVENT_3351_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7016, 0x7000]
+        "identifier": 'EVENT_3351_set_7000_short_mem_to_7000_3',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7016]
     },
     {
         "identifier": 'EVENT_3351_add_short_4',
@@ -33,9 +33,9 @@ script = [
         "args": [0x7000, 255]
     },
     {
-        "identifier": 'EVENT_3351_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7018, 0x7000]
+        "identifier": 'EVENT_3351_set_7000_short_mem_to_7000_6',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7018]
     },
     {
         "identifier": 'EVENT_3351_add_short_7',

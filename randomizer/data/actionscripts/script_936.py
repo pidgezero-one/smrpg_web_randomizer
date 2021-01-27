@@ -26,7 +26,7 @@ script = [
     {
         "identifier": 'ACTION_936_embedded_animation_routine_5',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_936_set_animation_speed_6',
@@ -38,24 +38,24 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_936_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 22, 'ACTION_936_walk_to_xy_coords_12']
+        "identifier": 'ACTION_936_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [22, 'ACTION_936_walk_to_xy_coords_12']
     },
     {
-        "identifier": 'ACTION_936_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 23, 'ACTION_936_walk_to_xy_coords_18']
+        "identifier": 'ACTION_936_jmp_if_700C_equals_short_9',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [23, 'ACTION_936_walk_to_xy_coords_18']
     },
     {
-        "identifier": 'ACTION_936_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_936_walk_to_xy_coords_23']
+        "identifier": 'ACTION_936_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_936_walk_to_xy_coords_23']
     },
     {
-        "identifier": 'ACTION_936_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 25, 'ACTION_936_walk_to_xy_coords_26']
+        "identifier": 'ACTION_936_jmp_if_700C_equals_short_11',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [25, 'ACTION_936_walk_to_xy_coords_26']
     },
     {
         "identifier": 'ACTION_936_walk_to_xy_coords_12',

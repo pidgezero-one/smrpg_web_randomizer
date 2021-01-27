@@ -1738,25 +1738,27 @@ class EventScript:
         return self
 
     # 0xB4, 0xB5, 0xBA, 0xBB, 0xBC
-    def set_short_mem(self, address_left, address_right):
-        if address_left == 0x7000 and 0x70A0 <= address_right <= 0x719F:
-            self.append_byte(0xB4)
-            self.append_byte(address_right - 0x70A0)
-        elif address_left == 0x7000 and 0x7000 <= address_right <= 0x71FE:
-            self.append_byte(0xBA)
-            self.append_byte((address_right - 0x7000) // 2)
-        elif address_right == 0x7000 and 0x70A0 <= address_left <= 0x719F:
-            self.append_byte(0xB5)
-            self.append_byte(address_left - 0x70A0)
-        elif address_right == 0x7000 and 0x7000 <= address_left <= 0x71FE:
-            self.append_byte(0xBB)
-            self.append_byte((address_left - 0x7000) // 2)
-        elif 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE:
-            self.append_byte(0xBC)
-            self.append_byte((address_left - 0x7000) // 2)
-            self.append_byte((address_right - 0x7000) // 2)
-        else:
-            1/0
+    def set_7000_short_mem_to_7000_short_mem(self, address_left, address_right):
+        assert 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE
+        self.append_byte(0xBC)
+        self.append_byte((address_left - 0x7000) // 2)
+        self.append_byte((address_right - 0x7000) // 2)
+        return self
+    def set_7000_to_70A0_short_mem(self, address):
+        self.append_byte(0xB4)
+        self.append_byte(address - 0x70A0)
+        return self
+    def set_70A0_short_mem_to_7000(self, address):
+        self.append_byte(0xB5)
+        self.append_byte(address - 0x70A0)
+        return self
+    def set_7000_to_7000_short_mem(self, address):
+        self.append_byte(0xBA)
+        self.append_byte((address - 0x7000) // 2)
+        return self
+    def set_7000_short_mem_to_7000(self, address):
+        self.append_byte(0xBB)
+        self.append_byte((address - 0x7000) // 2)
         return self
 
     # 0x38

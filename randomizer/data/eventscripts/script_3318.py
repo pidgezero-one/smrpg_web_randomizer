@@ -78,9 +78,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3318_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_3318_set_7000_to_70A0_short_mem_11',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_3318_add_12',

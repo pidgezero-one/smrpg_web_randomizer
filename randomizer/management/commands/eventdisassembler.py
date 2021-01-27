@@ -813,20 +813,17 @@ names[0xB0] = named('set_short', dbyte(0x7000), short())
 names[0xB1] = named('add_short', dbyte(0x7000), short())
 names[0xB2] = named('inc_short', dbyte(0x7000))
 names[0xB3] = named('dec_short', dbyte(0x7000))
-names[0xB4] = named('set_short_mem', con(0x7000), byte(0x70A0))
-names[0xB5] = named('set_short_mem', byte(0x70A0), con(0x7000))
+names[0xB4] = named('set_7000_to_70A0_short_mem', byte(0x70A0))
+names[0xB5] = named('set_70A0_short_mem_to_7000', byte(0x70A0))
 names[0xB6] = named('set_random', con(0x7000), short_int())
 names[0xB7] = named('set_random', dbyte(0x7000),
                     short_int())  # may be confused for 0xB6
 names[0xB8] = named('add_short_mem', con(0x7000), dbyte(0x7000))
 names[0xB9] = named('dec_short_mem', con(0x7000), dbyte(0x7000))
-names[0xBA] = named('set_short_mem', con(0x7000),
-                    dbyte(0x7000))  # may be confused for 0xB4
-names[0xBB] = named('set_short_mem',
-                    dbyte(0x7000), con(0x7000))  # may be confused for 0xB5
-names[0xBC] = named('set_short_mem',
-                    dbyte(0x7000), dbyte(0x7000))  # may be confused for 0xB4 or 0xB5
-names[0xBD] = named('swap_short_mem', dbyte(0x7000), dbyte(0x7000))
+names[0xBA] = named('set_7000_to_7000_short_mem', dbyte(0x7000)) 
+names[0xBB] = named('set_7000_short_mem_to_7000', dbyte(0x7000))
+names[0xBC] = named('set_7000_short_mem_to_7000_short_mem',
+                    dbyte(0x7000), dbyte(0x7000))
 names[0xBE] = named('move_7010_7012_7014_to_7016_7018_701A')
 names[0xBF] = named('move_7016_7018_701A_to_7010_7012_7014')
 names[0xC0] = named('mem_compare_val', short_int())
@@ -1039,7 +1036,7 @@ class Command(BaseCommand):
             event_lengths = []
             for i in range(len(ptrs)):
                 ptr = ptrs[i]
-                print('[%04i] @ [%x]-------------------\n' % (i, ptrs[i]))
+                print('[%04i] @ [%x]-------------------\n' % (i, ptr))
                 if (i < len(ptrs) - 1):
                     event_lengths.append(ptrs[i + 1] - ptrs[i])
                     script_content = tok(rom, ptrs[i], ptrs[i + 1] - 1, bank)

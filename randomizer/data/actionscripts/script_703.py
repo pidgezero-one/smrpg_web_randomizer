@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_703_jmp_if_random_above_66_0',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_703_set_700C_to_pressed_button_18']
+        "args": [0x8191, 'ACTION_703_set_700C_to_pressed_button_18']
     },
     {
         "identifier": 'ACTION_703_jmp_if_random_above_128_1',
@@ -16,14 +16,14 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_703_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 20, 'ACTION_703_set_sprite_sequence_7']
+        "identifier": 'ACTION_703_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [20, 'ACTION_703_set_sprite_sequence_7']
     },
     {
         "identifier": 'ACTION_703_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_703_pause_5',
@@ -38,7 +38,7 @@ script = [
     {
         "identifier": 'ACTION_703_set_sprite_sequence_7',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_703_pause_8',
@@ -55,14 +55,14 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_703_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 20, 'ACTION_703_set_sprite_sequence_15']
+        "identifier": 'ACTION_703_jmp_if_700C_equals_short_11',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [20, 'ACTION_703_set_sprite_sequence_15']
     },
     {
         "identifier": 'ACTION_703_set_sprite_sequence_12',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_703_pause_13',
@@ -77,7 +77,7 @@ script = [
     {
         "identifier": 'ACTION_703_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_703_pause_16',
@@ -94,14 +94,14 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_703_jmp_if_var_equals_short_19',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 20, 'ACTION_703_set_sprite_sequence_23']
+        "identifier": 'ACTION_703_jmp_if_700C_equals_short_19',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [20, 'ACTION_703_set_sprite_sequence_23']
     },
     {
         "identifier": 'ACTION_703_set_sprite_sequence_20',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_703_pause_21',
@@ -116,7 +116,7 @@ script = [
     {
         "identifier": 'ACTION_703_set_sprite_sequence_23',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_703_pause_24',

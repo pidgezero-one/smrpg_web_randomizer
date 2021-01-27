@@ -136,8 +136,8 @@ script = [
         "command": 'face_northeast'
     },
     {
-        "identifier": 'ACTION_75_pause_30',
-        "command": 'pause',
+        "identifier": 'ACTION_75_pause_short_30',
+        "command": 'pause_short',
         "args": [360]
     },
     {

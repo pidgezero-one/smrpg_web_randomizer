@@ -4,7 +4,8 @@ from randomizer.data.objectsequencetables import sequence_speed_table, vram_prio
 from randomizer.data.eventtables import npc_packet_table, area_object_table, radial_direction_table, sound_table, coord_table, coord_unit_table, room_table
 
 start = 0x210800
-end = 0x21BADE
+#end = 0x21BADE
+end = 0x21BFFF  # it would be extremely good to expand into this space
 pointers = {
     "start": 0x210000,
     "end": 0x2107FF
@@ -53,7 +54,7 @@ fd_sequence_lens = [
 # I'll refactor this later
 
 
-def tok(rom, start, end):
+def tok(rom, start, end, should_print=True):
     dex = start
     script = []
     while dex <= end:
@@ -71,9 +72,13 @@ def tok(rom, start, end):
                 print(list(map(hex, i)))
             print(hex(cmd), hex(dex))
             1/0
+        bytestring = [('0x%02x' % i) for i in rom[dex:dex+l]]
+        if (should_print):
+            print(hex(dex), " ".join(bytestring))
         script.append((rom[dex:dex+l], dex))
         dex += l
     return script
+
 
 def parse_line(line, offset):
     if line[0] == 0xFD:
@@ -241,10 +246,10 @@ def jmp_depending_on_object_presence(args):
     return func, ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (use_table_name('Rooms', room_table, level)), '0x%04x' % (addr)]
 
 
-def mem_700C_shift_left(args):
-    addr = 2*args[0] + 0x700C
+def mem_7000_shift_left(args):
+    addr = 2*args[0] + 0x7000
     shift = 256 - args[1]
-    return 'mem_700C_shift_left', ['0x%04x' % (addr), '%i' % (shift)]
+    return 'mem_7000_shift_left', ['0x%04x' % (addr), '%i' % (shift)]
 
 
 names[0x00] = named('visibility_on')
@@ -278,9 +283,12 @@ names[0x15] = named('set_movement_bits', flags(
 names[0x21] = named('bpl_26_27_28')
 names[0x22] = named('bmi_26_27_28')
 # 0x23 - 0x25 undocumented
-names[0x26] = named('embedded_animation_routine', con(0x26), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
-names[0x27] = named('embedded_animation_routine', con(0x27), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
-names[0x28] = named('embedded_animation_routine', con(0x28), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
+names[0x26] = named('embedded_animation_routine', con(0x26), byte(), byte(), byte(), byte(
+), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
+names[0x27] = named('embedded_animation_routine', con(0x27), byte(), byte(), byte(), byte(
+), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
+names[0x28] = named('embedded_animation_routine', con(0x28), byte(), byte(), byte(), byte(
+), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
 # 0x29 undocumented
 names[0x2A] = named('bpl_26_27')
 # 0x2B - 0x3C undocumented
@@ -353,7 +361,8 @@ names[0x82] = named('shirt_to_xy_coords', byte_int(), byte_int())
 names[0x83] = named('shift_xy_steps', byte_int(), byte_int())
 names[0x84] = named('shift_xy_pixels', byte_int(), byte_int())
 names[0x85] = named('maximize_sequence_speed')
-names[0x86] = named('maximize_sequence_speed_86')  # indistinguishable from 0x85
+# indistinguishable from 0x85
+names[0x86] = named('maximize_sequence_speed_86')
 names[0x87] = named('transfer_to_object_xy', byte(
     prefix="AreaObjects", table=area_object_table))
 names[0x88] = named('run_away_shift')
@@ -398,19 +407,17 @@ names[0xB0] = named('set_short', dbyte(0x7000), short())
 names[0xB1] = named('add_short', dbyte(0x7000), short())
 names[0xB2] = named('inc_short', dbyte(0x7000))
 names[0xB3] = named('dec_short', dbyte(0x7000))
-names[0xB4] = named('set_short_mem', con(0x700C), byte(0x70A0))
-names[0xB5] = named('set_short_mem', byte(0x70A0), con(0x700C))
+names[0xB4] = named('set_700C_to_70A0_short_mem', byte(0x70A0))
+names[0xB5] = named('set_70A0_short_mem_to_700C', byte(0x70A0))
 names[0xB6] = named('set_random', con(0x700C), short_int())
 names[0xB7] = named('set_random', dbyte(0x7000),
                     short_int())  # may be confused for 0xB6
 names[0xB8] = named('add_short_mem', con(0x700C), dbyte(0x7000))
 names[0xB9] = named('dec_short_mem', con(0x700C), dbyte(0x7000))
-names[0xBA] = named('set_short_mem', con(0x700C),
-                    dbyte(0x7000))  # may be confused for 0xB4
-names[0xBB] = named('set_short_mem',
-                    dbyte(0x7000), con(0x700C))  # may be confused for 0xB5
-names[0xBC] = named('set_short_mem',
-                    dbyte(0x7000), dbyte(0x7000))  # may be confused for 0xB4 or 0xB5
+names[0xBA] = named('set_700C_to_7000_short_mem', dbyte(0x7000))
+names[0xBB] = named('set_7000_short_mem_to_700C', dbyte(0x7000))
+names[0xBC] = named('set_7000_short_mem_to_7000_short_mem',
+                    dbyte(0x7000), dbyte(0x7000))
 names[0xBD] = named('swap_short_mem', dbyte(0x7000), dbyte(0x7000))
 names[0xBE] = named('move_7010_7012_7014_to_7016_7018_701A')
 names[0xBF] = named('move_7016_7018_701A_to_7010_7012_7014')
@@ -442,7 +449,7 @@ names[0xDB] = named('jmp_if_mem_704x_at_700C_bit_set', short())
 names[0xDC] = jmp_if_bit_clear(0xDC)
 names[0xDD] = jmp_if_bit_clear(0xDD)
 names[0xDE] = jmp_if_bit_clear(0xDE)
-names[0xDF] = named('jmp_if_mem_704x_at_700C_bit_set', short())
+names[0xDF] = named('jmp_if_mem_704x_at_700C_bit_clear', short())
 names[0xE0] = named('jmp_if_var_equals_byte',
                     byte(0x70A0), byte_int(), short())
 names[0xE1] = named('jmp_if_var_not_equals_byte',
@@ -452,13 +459,13 @@ names[0xE2] = named('jmp_if_700C_equals_short',
 names[0xE3] = named('jmp_if_700C_not_equals_short',
                     short_int(), short())
 names[0xE4] = named('jmp_if_var_equals_short', dbyte(
-    0x7000), short_int(), short())  # may be confused for 0xE2
+    0x7000), short_int(), short()) 
 names[0xE5] = named('jmp_if_var_not_equals_short', dbyte(
     0x7000), short_int(), short())  # may be confused for 0xE3
 names[0xE6] = named('jmp_if_700C_all_bits_clear', flags_short(), short())
 names[0xE7] = named('jmp_if_700C_any_bits_set', flags_short(), short())
 names[0xE8] = named('jmp_if_random_above_128', short())
-names[0xE9] = named('jmp_if_random_above_66', short())
+names[0xE9] = named('jmp_if_random_above_66', short(), short())
 names[0xEA] = named('jmp_if_loaded_memory_is_0', short())
 names[0xEB] = named('jmp_if_loaded_memory_is_not_0', short())
 names[0xEC] = named('jmp_if_comparison_result_is_greater_or_equal', short())
@@ -475,7 +482,8 @@ names[0xF6] = named('enable_event_trigger_for_object_at_70A8')
 names[0xF7] = named('disable_event_trigger_for_object_at_70A8')
 names[0xF8] = jmp_depending_on_object_presence
 names[0xF9] = named('jump_to_start_of_this_script')
-names[0xFA] = named('jump_to_start_of_this_script_FA') # indistinguishable from F9
+# indistinguishable from F9
+names[0xFA] = named('jump_to_start_of_this_script_FA')
 # 0xFB - 0xFC undocumented
 # 0xFD is a special case
 names[0xFE] = named('ret')
@@ -522,10 +530,11 @@ fd_names[0xB2] = named('mem_700C_xor_const', short())
 fd_names[0xB3] = named('mem_700C_and_var', dbyte(0x7000))
 fd_names[0xB4] = named('mem_700C_or_var', dbyte(0x7000))
 fd_names[0xB5] = named('mem_700C_xor_var', dbyte(0x7000))
-fd_names[0xB6] = mem_700C_shift_left
+fd_names[0xB6] = mem_7000_shift_left
 # 0xB7 - 0xFF undocumented
 
-jmp_cmds = [0x3D, 0x3E, 0x3F, 0xD2, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xDB, 0xDf, 0xE0, 0xE1, 0xE2, 0xE4, 0xE3, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF8]
+jmp_cmds = [0x3D, 0x3E, 0x3F, 0xD2, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xDB, 0xDf, 0xE0, 0xE1,
+            0xE2, 0xE4, 0xE3, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF8]
 
 
 class Command(BaseCommand):
@@ -538,7 +547,7 @@ class Command(BaseCommand):
         if isinstance(arr, str):
             arr = eval(arr)
         commands_output = []
-        a = tok(arr, 0, len(arr) - 1)
+        a = tok(arr, 0, len(arr) - 1, False)
         offset = 0
         for line, _ in a:
             if line[0] == 0xFD:
@@ -588,6 +597,8 @@ class Command(BaseCommand):
             ptrs.append((0x21 << 16) | (shortify(rom, i)))
         event_lengths = []
         for i in range(len(ptrs)):
+            ptr = ptrs[i]
+            print('[%04i] @ [%x]-------------------\n' % (i, ptr))
             if (i < len(ptrs) - 1):
                 event_lengths.append(ptrs[i + 1] - ptrs[i])
                 script_content = tok(rom, ptrs[i], ptrs[i + 1] - 1)
@@ -595,8 +606,9 @@ class Command(BaseCommand):
                 event_lengths.append(end - ptrs[i])
                 script_content = tok(rom, ptrs[i], end)
             scripts.append(script_content)
+            print('\n\n\n')
 
-        #translate lines into commands and note any jump addresses
+        # translate lines into commands and note any jump addresses
         for i in range(len(scripts)):
             script = scripts[i]
             sd = []
@@ -605,7 +617,8 @@ class Command(BaseCommand):
                 name, args = parse_line(line, offset)
                 identifier = 'ACTION_%i_%s_%i' % (i, name, j)
                 if line[0] in jmp_cmds:
-                    jump_args = [(int(ja, 16) | (offset & 0xFF0000)) for ja in args[-1:]]
+                    jump_args = [(int(ja, 16) | (offset & 0xFF0000))
+                                 for ja in args[-1:]]
                 else:
                     jump_args = []
                 sd.append({
@@ -619,7 +632,7 @@ class Command(BaseCommand):
 
         scripts_with_named_jumps = []
 
-        #get the identifiers corresponding to where the jumps are going
+        # get the identifiers corresponding to where the jumps are going
         for i in range(len(scripts_data)):
             script = scripts_data[i]
             this_script = []
@@ -628,10 +641,12 @@ class Command(BaseCommand):
                 commands_to_replace = len(cmd["jumps"]) * -1
                 for j in cmd["jumps"]:
                     for sd in scripts_data:
-                        candidates = [c for c in sd if c["original_offset"] == j]
+                        candidates = [
+                            c for c in sd if c["original_offset"] == j]
                         if (len(candidates) > 0):
                             jumped_command = candidates[0]
-                            jumps.append('\'%s\'' % jumped_command["identifier"])
+                            jumps.append('\'%s\'' %
+                                         jumped_command["identifier"])
                 if commands_to_replace == 0:
                     new_args = cmd["args"]
                 else:
@@ -644,11 +659,13 @@ class Command(BaseCommand):
                 this_script.append(cmd_with_named_jumps)
             scripts_with_named_jumps.append(this_script)
 
-        #output
+        # output
         for i in range(len(scripts_with_named_jumps)):
             file = open("randomizer/data/actionscripts/script_%i.py" % i, "w")
-            writeline(file, 'from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
-            writeline(file, 'from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms')
+            writeline(
+                file, 'from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags')
+            writeline(
+                file, 'from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms')
             script = scripts_with_named_jumps[i]
             if len(script) == 0:
                 writeline(file, 'script = []')
@@ -657,12 +674,16 @@ class Command(BaseCommand):
                 for j in range(len(script)):
                     cmd = script[j]
                     writeline(file, '    {')
-                    writeline(file, '        "identifier": %r,' % cmd['identifier'])
+                    writeline(file, '        "identifier": %r,' %
+                              cmd['identifier'])
                     if len(cmd["args"]) == 0:
-                        writeline(file, '        "command": %r' % cmd['command'])
+                        writeline(file, '        "command": %r' %
+                                  cmd['command'])
                     else:
-                        writeline(file, '        "command": %r,' % cmd['command'])
-                        writeline(file, '        "args": [%s]' % ', '.join(cmd["args"]))
+                        writeline(file, '        "command": %r,' %
+                                  cmd['command'])
+                        writeline(
+                            file, '        "args": [%s]' % ', '.join(cmd["args"]))
                     if j == len(script) - 1:
                         writeline(file, '    }')
                     else:
@@ -670,10 +691,11 @@ class Command(BaseCommand):
                 writeline(file, ']')
             file.close()
 
-        
-        file = open("randomizer/data/actionscripts/actions.py", "w", encoding='utf-8')
+        file = open("randomizer/data/actionscripts/actions.py",
+                    "w", encoding='utf-8')
         for i in range(len(scripts_data)):
-            writeline(file, 'from randomizer.data.actionscripts.script_%i import script as script_%i' % (i, i))
+            writeline(
+                file, 'from randomizer.data.actionscripts.script_%i import script as script_%i' % (i, i))
         writeline(file, 'scripts = [None]*%i' % len(scripts_data))
         for i in range(len(scripts_data)):
             writeline(file, 'scripts[%i] = script_%i' % (i, i))

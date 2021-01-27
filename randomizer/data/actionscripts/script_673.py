@@ -55,7 +55,7 @@ script = [
     {
         "identifier": 'ACTION_673_jmp_if_random_above_66_11',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_673_set_animation_speed_1']
+        "args": [0x7baf, 'ACTION_673_jmp_if_random_above_128_2']
     },
     {
         "identifier": 'ACTION_673_jmp_12',

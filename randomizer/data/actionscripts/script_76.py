@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_76_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [14, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [14, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_76_pause_2',
@@ -19,7 +19,7 @@ script = [
     {
         "identifier": 'ACTION_76_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [21, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [21, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_76_pause_4',
@@ -34,7 +34,7 @@ script = [
     {
         "identifier": 'ACTION_76_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [14, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [14, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_76_pause_7',
@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'ACTION_76_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [21, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [21, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_76_pause_9',

@@ -18,9 +18,9 @@ script = [
         "args": [0x7024, 0x0014]
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_1720_set_7000_to_70A0_short_mem_3',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1720_dec_short_mem_4',
@@ -38,14 +38,14 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x702e, 0x7000]
+        "identifier": 'EVENT_1720_set_7000_short_mem_to_7000_7',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x702e]
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x70aa, 0x7000]
+        "identifier": 'EVENT_1720_set_70A0_short_mem_to_7000_8',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_1720_set_7000_to_object_coord_9',
@@ -53,9 +53,9 @@ script = [
         "args": [AreaObjects.MEM_70AA, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_10',
-        "command": 'set_short_mem',
-        "args": [0x70ae, 0x7000]
+        "identifier": 'EVENT_1720_set_70A0_short_mem_to_7000_10',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_1720_start_loop_n_times_11',
@@ -77,14 +77,14 @@ script = [
         "command": 'end_loop'
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_15',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ae]
+        "identifier": 'EVENT_1720_set_7000_to_70A0_short_mem_15',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ae]
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_16',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7000]
+        "identifier": 'EVENT_1720_set_7000_short_mem_to_7000_16',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x700c]
     },
     {
         "identifier": 'EVENT_1720_action_queue_sync_17',
@@ -214,14 +214,14 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_25',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702e]
+        "identifier": 'EVENT_1720_set_7000_to_7000_short_mem_25',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702e]
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_26',
-        "command": 'set_short_mem',
-        "args": [0x70aa, 0x7000]
+        "identifier": 'EVENT_1720_set_70A0_short_mem_to_7000_26',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_1720_start_loop_n_times_27',
@@ -275,14 +275,14 @@ script = [
         "args": [AreaObjects.MEM_70AA]
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_34',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702e]
+        "identifier": 'EVENT_1720_set_7000_to_7000_short_mem_34',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702e]
     },
     {
-        "identifier": 'EVENT_1720_set_short_mem_35',
-        "command": 'set_short_mem',
-        "args": [0x70aa, 0x7000]
+        "identifier": 'EVENT_1720_set_70A0_short_mem_to_7000_35',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_1720_start_loop_n_times_36',

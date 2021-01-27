@@ -36,8 +36,8 @@ script = [
         "args": [0x700c, 8]
     },
     {
-        "identifier": 'ACTION_935_face_east_7',
-        "command": 'face_east'
+        "identifier": 'ACTION_935_face_east_7C_7',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_935_shift_f_direction_steps_8',

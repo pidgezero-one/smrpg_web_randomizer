@@ -22,14 +22,14 @@ script = [
         "args": [0x7052, 7]
     },
     {
-        "identifier": 'EVENT_80_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_80_set_7000_to_70A0_short_mem_4',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_80_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x70c6, 0x7000]
+        "identifier": 'EVENT_80_set_70A0_short_mem_to_7000_5',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70c6]
     },
     {
         "identifier": 'EVENT_80_enable_controls_until_return_6',
@@ -87,14 +87,14 @@ script = [
                 "args": [14]
             },
             {
-                "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_set_short_mem_6',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x70c6]
+                "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_set_700C_to_70A0_short_mem_6',
+                "command": 'set_700C_to_70A0_short_mem',
+                "args": [0x70c6]
             },
             {
-                "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_set_short_mem_7',
-                "command": 'set_short_mem',
-                "args": [0x70a9, 0x700c]
+                "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_set_70A0_short_mem_to_700C_7',
+                "command": 'set_70A0_short_mem_to_700C',
+                "args": [0x70a9]
             },
             {
                 "identifier": 'EVENT_80_action_queue_async_11_SUBSCRIPT_db_8',

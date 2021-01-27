@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_1840_jmp_fork_mario_on_object_0',
         "command": 'jmp_fork_mario_on_object',
-        "args": ['EVENT_1840_set_short_mem_2', 'EVENT_1840_ret_24']
+        "args": ['EVENT_1840_set_7000_to_70A0_short_mem_2', 'EVENT_1840_ret_24']
     },
     {
         "identifier": 'EVENT_1840_jmp_1',
@@ -13,14 +13,14 @@ script = [
         "args": ['EVENT_1840_ret_24']
     },
     {
-        "identifier": 'EVENT_1840_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_1840_set_7000_to_70A0_short_mem_2',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_1840_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x703e, 0x7000]
+        "identifier": 'EVENT_1840_set_7000_short_mem_to_7000_3',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_1840_set_bit_4',
@@ -419,14 +419,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1840_set_short_mem_76',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x703e]
+        "identifier": 'EVENT_1840_set_7000_to_7000_short_mem_76',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
-        "identifier": 'EVENT_1840_set_short_mem_77',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1840_set_70A0_short_mem_to_7000_77',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1840_set_7016_to_object_xyz_78',

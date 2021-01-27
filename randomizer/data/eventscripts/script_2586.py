@@ -3,9 +3,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2586_set_short_mem_0',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70e2]
+        "identifier": 'EVENT_2586_set_7000_to_70A0_short_mem_0',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70e2]
     },
     {
         "identifier": 'EVENT_2586_action_queue_async_1',
@@ -116,9 +116,9 @@ script = [
         "args": [0x708d, 7]
     },
     {
-        "identifier": 'EVENT_2586_set_short_mem_20',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70e2]
+        "identifier": 'EVENT_2586_set_7000_to_70A0_short_mem_20',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70e2]
     },
     {
         "identifier": 'EVENT_2586_fade_in_from_black_async_21',
@@ -140,9 +140,9 @@ script = [
         "args": [0x70e2]
     },
     {
-        "identifier": 'EVENT_2586_set_short_mem_25',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70e2]
+        "identifier": 'EVENT_2586_set_7000_to_70A0_short_mem_25',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70e2]
     },
     {
         "identifier": 'EVENT_2586_jmp_if_7000_equals_short_26',

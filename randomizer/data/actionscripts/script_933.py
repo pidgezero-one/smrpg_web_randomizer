@@ -58,8 +58,8 @@ script = [
         "args": [0x700c, 8]
     },
     {
-        "identifier": 'ACTION_933_face_east_12',
-        "command": 'face_east'
+        "identifier": 'ACTION_933_face_east_7C_12',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_933_jmp_if_random_above_128_13',

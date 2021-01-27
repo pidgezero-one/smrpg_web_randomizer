@@ -41,7 +41,7 @@ script = [
     {
         "identifier": 'ACTION_169_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_169_walk_1_step_southwest_9',
@@ -111,7 +111,7 @@ script = [
     {
         "identifier": 'ACTION_169_set_sprite_sequence_23',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_169_walk_1_step_southeast_24',

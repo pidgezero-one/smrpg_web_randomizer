@@ -28,9 +28,9 @@ script = [
         "args": [AreaObjects.NPC_7, 353]
     },
     {
-        "identifier": 'EVENT_1665_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_1665_set_7000_to_70A0_short_mem_5',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_1665_add_short_mem_6',
@@ -38,9 +38,9 @@ script = [
         "args": [0x7000, 0x702e]
     },
     {
-        "identifier": 'EVENT_1665_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x70b2, 0x7000]
+        "identifier": 'EVENT_1665_set_70A0_short_mem_to_7000_7',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_1665_jmp_if_bit_set_8',

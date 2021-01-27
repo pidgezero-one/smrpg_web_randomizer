@@ -13,9 +13,9 @@ script = [
         "args": [0x7088, 6, 'EVENT_2048_set_bit_9']
     },
     {
-        "identifier": 'EVENT_2048_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70bd]
+        "identifier": 'EVENT_2048_set_7000_to_70A0_short_mem_2',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70bd]
     },
     {
         "identifier": 'EVENT_2048_jmp_if_7000_equals_short_3',

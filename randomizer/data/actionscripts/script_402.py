@@ -30,9 +30,9 @@ script = [
         "args": [0x700c, 2]
     },
     {
-        "identifier": 'ACTION_402_add_short_6',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_402_inc_short_6',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_402_shift_z_20_steps_7',

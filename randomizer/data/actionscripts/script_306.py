@@ -15,9 +15,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_306_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_306_jump_to_subroutine_5']
+        "identifier": 'ACTION_306_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_306_jump_to_subroutine_5']
     },
     {
         "identifier": 'ACTION_306_pause_4',
@@ -51,7 +51,7 @@ script = [
     {
         "identifier": 'ACTION_306_set_sprite_sequence_10',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_306_db_11',
@@ -61,12 +61,12 @@ script = [
     {
         "identifier": 'ACTION_306_embedded_animation_routine_12',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x08, 0x00, 0x01, 0xf0, 0xff, 0x00, 0x10, 0x80]
     },
     {
         "identifier": 'ACTION_306_embedded_animation_routine_13',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x04, 0x00, 0x01, 0xf8, 0xff, 0x00, 0x10, 0x80]
     },
     {
         "identifier": 'ACTION_306_shift_z_down_steps_14',

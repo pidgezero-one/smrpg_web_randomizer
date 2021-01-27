@@ -22,11 +22,11 @@ script = [
     {
         "identifier": 'ACTION_941_embedded_animation_routine_4',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
-        "identifier": 'ACTION_941_pause_5',
-        "command": 'pause',
+        "identifier": 'ACTION_941_pause_short_5',
+        "command": 'pause_short',
         "args": [500]
     },
     {

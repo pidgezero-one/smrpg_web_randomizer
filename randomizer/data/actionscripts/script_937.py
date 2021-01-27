@@ -24,24 +24,24 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_937_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 26, 'ACTION_937_fixed_f_coord_on_9']
+        "identifier": 'ACTION_937_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [26, 'ACTION_937_fixed_f_coord_on_9']
     },
     {
-        "identifier": 'ACTION_937_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 27, 'ACTION_937_fixed_f_coord_on_16']
+        "identifier": 'ACTION_937_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [27, 'ACTION_937_fixed_f_coord_on_16']
     },
     {
-        "identifier": 'ACTION_937_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 28, 'ACTION_937_embedded_animation_routine_23']
+        "identifier": 'ACTION_937_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [28, 'ACTION_937_embedded_animation_routine_23']
     },
     {
-        "identifier": 'ACTION_937_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 29, 'ACTION_937_embedded_animation_routine_27']
+        "identifier": 'ACTION_937_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [29, 'ACTION_937_embedded_animation_routine_27']
     },
     {
         "identifier": 'ACTION_937_fixed_f_coord_on_9',
@@ -60,22 +60,22 @@ script = [
     {
         "identifier": 'ACTION_937_embedded_animation_routine_12',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x00, 0x01, 0xd0, 0xff, 0x80, 0x01, 0x80]
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_13',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x34, 0x00, 0x01, 0xe6, 0xff, 0x20, 0x01, 0x80]
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_14',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_937_jmp_15',
         "command": 'jmp',
-        "args": ['ACTION_937_pause_30']
+        "args": ['ACTION_937_pause_short_30']
     },
     {
         "identifier": 'ACTION_937_fixed_f_coord_on_16',
@@ -94,61 +94,61 @@ script = [
     {
         "identifier": 'ACTION_937_embedded_animation_routine_19',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x00, 0x01, 0xc3, 0xff, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_20',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x38, 0x00, 0x01, 0xe2, 0xff, 0xc0, 0x00, 0x80]
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_21',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x80]
     },
     {
         "identifier": 'ACTION_937_jmp_22',
         "command": 'jmp',
-        "args": ['ACTION_937_pause_30']
+        "args": ['ACTION_937_pause_short_30']
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_23',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x00, 0x01, 0xd1, 0xff, 0x40, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_24',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x30, 0x00, 0x01, 0xe4, 0xff, 0x00, 0x01, 0x80]
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_25',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x80]
     },
     {
         "identifier": 'ACTION_937_jmp_26',
         "command": 'jmp',
-        "args": ['ACTION_937_pause_30']
+        "args": ['ACTION_937_pause_short_30']
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_27',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x01, 0xc5, 0xff, 0x00, 0x01, 0x80]
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_28',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x50, 0x00, 0x01, 0xd3, 0xff, 0x80, 0x01, 0x80]
     },
     {
         "identifier": 'ACTION_937_embedded_animation_routine_29',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x80]
     },
     {
-        "identifier": 'ACTION_937_pause_30',
-        "command": 'pause',
+        "identifier": 'ACTION_937_pause_short_30',
+        "command": 'pause_short',
         "args": [500]
     },
     {

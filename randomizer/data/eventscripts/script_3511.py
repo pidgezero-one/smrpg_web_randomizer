@@ -180,9 +180,9 @@ script = [
         "args": [210]
     },
     {
-        "identifier": 'EVENT_3511_set_short_mem_36',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b1]
+        "identifier": 'EVENT_3511_set_7000_to_70A0_short_mem_36',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b1]
     },
     {
         "identifier": 'EVENT_3511_mem_compare_val_37',

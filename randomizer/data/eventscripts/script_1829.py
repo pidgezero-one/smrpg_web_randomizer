@@ -13,9 +13,9 @@ script = [
         "args": [Sounds._143_METRONOME_UPBEAT_DING, 6]
     },
     {
-        "identifier": 'EVENT_1829_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70cb]
+        "identifier": 'EVENT_1829_set_7000_to_70A0_short_mem_2',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70cb]
     },
     {
         "identifier": 'EVENT_1829_mem_compare_val_3',

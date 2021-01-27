@@ -16,9 +16,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_50_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_50_pause_26']
+        "identifier": 'ACTION_50_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_50_pause_26']
     },
     {
         "identifier": 'ACTION_50_pause_4',
@@ -63,9 +63,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_50_add_short_13',
-        "command": 'add_short',
-        "args": [0x702c, 0x01]
+        "identifier": 'ACTION_50_inc_short_13',
+        "command": 'inc_short',
+        "args": [0x702c]
     },
     {
         "identifier": 'ACTION_50_walk_1_step_northwest_14',

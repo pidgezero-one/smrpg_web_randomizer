@@ -4,6 +4,6 @@ script = [
     {
         "identifier": 'ACTION_551_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     }
 ]

@@ -162,9 +162,9 @@ script = [
         "args": [0x70af]
     },
     {
-        "identifier": 'EVENT_3723_set_short_mem_36',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70af]
+        "identifier": 'EVENT_3723_set_7000_to_70A0_short_mem_36',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_3723_mem_compare_val_37',

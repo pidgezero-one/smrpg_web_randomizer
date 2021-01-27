@@ -149,7 +149,7 @@ script = [
     {
         "identifier": 'EVENT_1830_jmp_if_7000_equals_short_30',
         "command": 'jmp_if_7000_equals_short',
-        "args": [455, 'EVENT_1830_set_short_mem_35']
+        "args": [455, 'EVENT_1830_set_7000_to_7000_short_mem_35']
     },
     {
         "identifier": 'EVENT_1830_jmp_if_7000_equals_short_31',
@@ -172,14 +172,14 @@ script = [
         "args": [1836]
     },
     {
-        "identifier": 'EVENT_1830_set_short_mem_35',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x703e]
+        "identifier": 'EVENT_1830_set_7000_to_7000_short_mem_35',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
-        "identifier": 'EVENT_1830_set_short_mem_36',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1830_set_70A0_short_mem_to_7000_36',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1830_set_7000_to_object_coord_37',
@@ -187,9 +187,9 @@ script = [
         "args": [AreaObjects.MEM_70A8, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1830_set_short_mem_38',
-        "command": 'set_short_mem',
-        "args": [0x702e, 0x7000]
+        "identifier": 'EVENT_1830_set_7000_short_mem_to_7000_38',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x702e]
     },
     {
         "identifier": 'EVENT_1830_set_7000_to_object_coord_39',
@@ -197,9 +197,9 @@ script = [
         "args": [AreaObjects.MEM_70A8, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1830_set_short_mem_40',
-        "command": 'set_short_mem',
-        "args": [0x7030, 0x7000]
+        "identifier": 'EVENT_1830_set_7000_short_mem_to_7000_40',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7030]
     },
     {
         "identifier": 'EVENT_1830_enter_area_41',
@@ -398,14 +398,14 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_1830_set_short_mem_76',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x703e]
+        "identifier": 'EVENT_1830_set_7000_to_7000_short_mem_76',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
-        "identifier": 'EVENT_1830_set_short_mem_77',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1830_set_70A0_short_mem_to_7000_77',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1830_set_7016_to_object_xyz_78',

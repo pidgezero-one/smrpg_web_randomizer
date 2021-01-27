@@ -6,14 +6,14 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_56_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 302, 'ACTION_56_set_vram_priority_9']
+        "identifier": 'ACTION_56_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [302, 'ACTION_56_set_vram_priority_9']
     },
     {
-        "identifier": 'ACTION_56_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 303, 'ACTION_56_set_vram_priority_9']
+        "identifier": 'ACTION_56_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [303, 'ACTION_56_set_vram_priority_9']
     },
     {
         "identifier": 'ACTION_56_pause_3',
@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'ACTION_56_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_56_clear_solidity_bits_7',
@@ -57,7 +57,7 @@ script = [
     {
         "identifier": 'ACTION_56_set_sprite_sequence_11',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_56_pause_12',
@@ -77,7 +77,7 @@ script = [
     {
         "identifier": 'ACTION_56_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_56_pause_16',

@@ -8,9 +8,9 @@ script = [
         "args": [0x7079, 0, 'EVENT_1569_set_short_5']
     },
     {
-        "identifier": 'EVENT_1569_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702a]
+        "identifier": 'EVENT_1569_set_7000_to_7000_short_mem_1',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_1569_mem_compare_val_2',

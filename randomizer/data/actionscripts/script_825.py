@@ -6,9 +6,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_825_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 474, 'ACTION_825_set_700C_to_pressed_button_30']
+        "identifier": 'ACTION_825_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [474, 'ACTION_825_set_700C_to_pressed_button_30']
     },
     {
         "identifier": 'ACTION_825_set_animation_speed_2',
@@ -87,7 +87,7 @@ script = [
     {
         "identifier": 'ACTION_825_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_825_pause_19',
@@ -149,14 +149,14 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_825_jmp_if_var_equals_short_31',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_825_visibility_off_69']
+        "identifier": 'ACTION_825_jmp_if_700C_equals_short_31',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_825_visibility_off_69']
     },
     {
-        "identifier": 'ACTION_825_mem_compare_32',
-        "command": 'mem_compare',
-        "args": [0x700c, 21]
+        "identifier": 'ACTION_825_mem_compare_val_32',
+        "command": 'mem_compare_val',
+        "args": [21]
     },
     {
         "identifier": 'ACTION_825_jmp_if_comparison_result_is_greater_or_equal_33',
@@ -348,7 +348,7 @@ script = [
     {
         "identifier": 'ACTION_825_set_sprite_sequence_72',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_825_sequence_playback_off_73',
@@ -434,7 +434,7 @@ script = [
     {
         "identifier": 'ACTION_825_set_sprite_sequence_90',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_825_pause_91',

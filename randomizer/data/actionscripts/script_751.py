@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_751_pause_2',
@@ -24,7 +24,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_751_pause_5',
@@ -49,11 +49,11 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_9',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
-        "identifier": 'ACTION_751_pause_10',
-        "command": 'pause',
+        "identifier": 'ACTION_751_pause_short_10',
+        "command": 'pause_short',
         "args": [292]
     },
     {
@@ -79,7 +79,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_751_pause_16',
@@ -94,7 +94,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_751_pause_19',
@@ -119,11 +119,11 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_23',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
-        "identifier": 'ACTION_751_pause_24',
-        "command": 'pause',
+        "identifier": 'ACTION_751_pause_short_24',
+        "command": 'pause_short',
         "args": [292]
     },
     {
@@ -143,7 +143,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_28',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_751_pause_29',
@@ -162,7 +162,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_32',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_751_pause_33',
@@ -187,11 +187,11 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_37',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
-        "identifier": 'ACTION_751_pause_38',
-        "command": 'pause',
+        "identifier": 'ACTION_751_pause_short_38',
+        "command": 'pause_short',
         "args": [292]
     },
     {
@@ -211,7 +211,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_42',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_751_pause_43',
@@ -230,7 +230,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_46',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_751_pause_47',
@@ -255,11 +255,11 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_51',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
-        "identifier": 'ACTION_751_pause_52',
-        "command": 'pause',
+        "identifier": 'ACTION_751_pause_short_52',
+        "command": 'pause_short',
         "args": [292]
     },
     {
@@ -279,7 +279,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_56',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_751_pause_57',
@@ -298,7 +298,7 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_60',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_751_pause_61',
@@ -323,11 +323,11 @@ script = [
     {
         "identifier": 'ACTION_751_set_sprite_sequence_65',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
-        "identifier": 'ACTION_751_pause_66',
-        "command": 'pause',
+        "identifier": 'ACTION_751_pause_short_66',
+        "command": 'pause_short',
         "args": [292]
     },
     {

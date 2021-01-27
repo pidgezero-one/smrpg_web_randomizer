@@ -49,7 +49,7 @@ script = [
     {
         "identifier": 'ACTION_645_set_sprite_sequence_9',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_645_pause_10',
@@ -77,7 +77,7 @@ script = [
     {
         "identifier": 'ACTION_645_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_645_pause_16',
@@ -92,7 +92,7 @@ script = [
     {
         "identifier": 'ACTION_645_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_645_pause_19',
@@ -116,7 +116,7 @@ script = [
     {
         "identifier": 'ACTION_645_set_sprite_sequence_23',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_645_pause_24',
@@ -131,7 +131,7 @@ script = [
     {
         "identifier": 'ACTION_645_set_sprite_sequence_26',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [2, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_645_pause_27',
@@ -150,7 +150,7 @@ script = [
     {
         "identifier": 'ACTION_645_set_sprite_sequence_30',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [4, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_645_ret_31',

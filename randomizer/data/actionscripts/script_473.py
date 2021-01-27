@@ -41,7 +41,7 @@ script = [
     {
         "identifier": 'ACTION_473_embedded_animation_routine_8',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_473_shift_northwest_steps_9',

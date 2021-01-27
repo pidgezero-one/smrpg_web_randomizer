@@ -543,9 +543,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1178_set_short_mem_26',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70bc]
+        "identifier": 'EVENT_1178_set_7000_to_70A0_short_mem_26',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70bc]
     },
     {
         "identifier": 'EVENT_1178_jmp_if_7000_equals_short_27',

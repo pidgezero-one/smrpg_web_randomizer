@@ -32,14 +32,14 @@ script = [
         "args": [0x7043, 6, 'ACTION_373_jmp_if_random_above_66_12']
     },
     {
-        "identifier": 'ACTION_373_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x70c1]
+        "identifier": 'ACTION_373_set_700C_to_70A0_short_mem_6',
+        "command": 'set_700C_to_70A0_short_mem',
+        "args": [0x70c1]
     },
     {
-        "identifier": 'ACTION_373_mem_compare_7',
-        "command": 'mem_compare',
-        "args": [0x700c, 5]
+        "identifier": 'ACTION_373_mem_compare_val_7',
+        "command": 'mem_compare_val',
+        "args": [5]
     },
     {
         "identifier": 'ACTION_373_jmp_if_comparison_result_is_greater_or_equal_8',
@@ -64,7 +64,7 @@ script = [
     {
         "identifier": 'ACTION_373_jmp_if_random_above_66_12',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_373_jump_to_subroutine_15']
+        "args": [0x4452, 'ACTION_373_jump_to_subroutine_17']
     },
     {
         "identifier": 'ACTION_373_jump_to_subroutine_13',
@@ -152,7 +152,7 @@ script = [
     {
         "identifier": 'ACTION_373_set_object_memory_bits_30',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[0, 1]]
+        "args": [0x0b, [0, 1]]
     },
     {
         "identifier": 'ACTION_373_set_bit_31',
@@ -165,9 +165,9 @@ script = [
         "args": [96]
     },
     {
-        "identifier": 'ACTION_373_add_33',
-        "command": 'add',
-        "args": [0x70c1, 0x01]
+        "identifier": 'ACTION_373_inc_33',
+        "command": 'inc',
+        "args": [0x70c1]
     },
     {
         "identifier": 'ACTION_373_shift_northeast_steps_34',
@@ -197,7 +197,7 @@ script = [
     {
         "identifier": 'ACTION_373_set_object_memory_bits_39',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[]]
+        "args": [0x0b, []]
     },
     {
         "identifier": 'ACTION_373_set_solidity_bits_40',
@@ -264,7 +264,7 @@ script = [
     {
         "identifier": 'ACTION_373_set_object_memory_bits_53',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[0, 1]]
+        "args": [0x0b, [0, 1]]
     },
     {
         "identifier": 'ACTION_373_set_bit_54',
@@ -277,9 +277,9 @@ script = [
         "args": [96]
     },
     {
-        "identifier": 'ACTION_373_add_56',
-        "command": 'add',
-        "args": [0x70c1, 0x01]
+        "identifier": 'ACTION_373_inc_56',
+        "command": 'inc',
+        "args": [0x70c1]
     },
     {
         "identifier": 'ACTION_373_shift_southwest_steps_57',
@@ -287,9 +287,9 @@ script = [
         "args": [3]
     },
     {
-        "identifier": 'ACTION_373_add_short_58',
-        "command": 'add_short',
-        "args": [0x7028, 0x01]
+        "identifier": 'ACTION_373_inc_short_58',
+        "command": 'inc_short',
+        "args": [0x7028]
     },
     {
         "identifier": 'ACTION_373_pause_59',
@@ -309,7 +309,7 @@ script = [
     {
         "identifier": 'ACTION_373_set_object_memory_bits_62',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[]]
+        "args": [0x0b, []]
     },
     {
         "identifier": 'ACTION_373_set_solidity_bits_63',

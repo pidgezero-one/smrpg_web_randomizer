@@ -8,9 +8,9 @@ script = [
         "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
-        "identifier": 'EVENT_266_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70bb]
+        "identifier": 'EVENT_266_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70bb]
     },
     {
         "identifier": 'EVENT_266_mem_compare_address_2',

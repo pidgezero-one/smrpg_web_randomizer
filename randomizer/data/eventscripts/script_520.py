@@ -18,24 +18,24 @@ script = [
         "args": [0x96]
     },
     {
-        "identifier": 'EVENT_520_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7016]
+        "identifier": 'EVENT_520_set_7000_to_7000_short_mem_3',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7016]
     },
     {
-        "identifier": 'EVENT_520_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x70b8, 0x7000]
+        "identifier": 'EVENT_520_set_70A0_short_mem_to_7000_4',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b8]
     },
     {
-        "identifier": 'EVENT_520_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7018]
+        "identifier": 'EVENT_520_set_7000_to_7000_short_mem_5',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7018]
     },
     {
-        "identifier": 'EVENT_520_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x70b9, 0x7000]
+        "identifier": 'EVENT_520_set_70A0_short_mem_to_7000_6',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b9]
     },
     {
         "identifier": 'EVENT_520_start_embedded_action_script_async_F1_7',
@@ -113,9 +113,9 @@ script = [
                 "args": [0x00c0]
             },
             {
-                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_short_mem_2',
-                "command": 'set_short_mem',
-                "args": [0x702a, 0x700c]
+                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_7000_short_mem_to_700C_2',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x702a]
             },
             {
                 "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_jmp_if_700C_equals_short_3',
@@ -152,9 +152,9 @@ script = [
                 "args": [AreaObjects.NPC_2, Coords.X, [7], CoordUnits.PIXEL]
             },
             {
-                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_short_mem_10',
-                "command": 'set_short_mem',
-                "args": [0x702c, 0x700c]
+                "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_set_7000_short_mem_to_700C_10',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x702c]
             },
             {
                 "identifier": 'EVENT_520_action_queue_async_11_SUBSCRIPT_mem_compare_11',
@@ -238,14 +238,14 @@ script = [
         "args": [0x96]
     },
     {
-        "identifier": 'EVENT_520_set_short_mem_16',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7016]
+        "identifier": 'EVENT_520_set_7000_to_7000_short_mem_16',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7016]
     },
     {
-        "identifier": 'EVENT_520_set_short_mem_17',
-        "command": 'set_short_mem',
-        "args": [0x70b8, 0x7000]
+        "identifier": 'EVENT_520_set_70A0_short_mem_to_7000_17',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_520_jmp_if_bit_set_18',
@@ -253,14 +253,14 @@ script = [
         "args": [0x7043, 0, 'EVENT_520_add_25']
     },
     {
-        "identifier": 'EVENT_520_set_short_mem_19',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7018]
+        "identifier": 'EVENT_520_set_7000_to_7000_short_mem_19',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7018]
     },
     {
-        "identifier": 'EVENT_520_set_short_mem_20',
-        "command": 'set_short_mem',
-        "args": [0x70b9, 0x7000]
+        "identifier": 'EVENT_520_set_70A0_short_mem_to_7000_20',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b9]
     },
     {
         "identifier": 'EVENT_520_set_action_script_sync_21',
@@ -289,7 +289,7 @@ script = [
     {
         "identifier": 'EVENT_520_jmp_26',
         "command": 'jmp',
-        "args": ['EVENT_520_set_short_mem_19']
+        "args": ['EVENT_520_set_7000_to_7000_short_mem_19']
     },
     {
         "identifier": 'EVENT_520_resume_action_script_27',
@@ -325,9 +325,9 @@ script = [
         "args": [0x7085, 0, 'EVENT_520_run_dialog_31']
     },
     {
-        "identifier": 'EVENT_520_set_short_mem_34',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b8]
+        "identifier": 'EVENT_520_set_7000_to_70A0_short_mem_34',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_520_jmp_if_7000_any_bits_set_35',

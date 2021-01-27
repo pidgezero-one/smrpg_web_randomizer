@@ -33,9 +33,9 @@ script = [
         "args": [0xfd, 0xc9]
     },
     {
-        "identifier": 'EVENT_343_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_343_set_7000_short_mem_to_7000_6',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_343_jmp_if_7000_equals_short_7',

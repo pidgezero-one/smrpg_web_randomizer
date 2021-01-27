@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_1573_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 6, 'EVENT_1573_set_short_mem_4']
+        "args": [0x7044, 6, 'EVENT_1573_set_7000_to_7000_short_mem_4']
     },
     {
         "identifier": 'EVENT_1573_add_short_2',
@@ -23,14 +23,14 @@ script = [
         "args": [0x7018, 0x0002]
     },
     {
-        "identifier": 'EVENT_1573_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1573_set_7000_to_7000_short_mem_4',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_1573_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1573_set_70A0_short_mem_to_7000_5',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1573_reset_coords_6',
@@ -48,9 +48,9 @@ script = [
         "args": [0x7000, 8]
     },
     {
-        "identifier": 'EVENT_1573_set_short_mem_9',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1573_set_70A0_short_mem_to_7000_9',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1573_set_action_script_sync_10',
@@ -58,14 +58,14 @@ script = [
         "args": [AreaObjects.MEM_70A8, 170]
     },
     {
-        "identifier": 'EVENT_1573_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7028]
+        "identifier": 'EVENT_1573_set_7000_to_7000_short_mem_11',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7028]
     },
     {
-        "identifier": 'EVENT_1573_set_short_mem_12',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1573_set_70A0_short_mem_to_7000_12',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1573_reset_coords_13',

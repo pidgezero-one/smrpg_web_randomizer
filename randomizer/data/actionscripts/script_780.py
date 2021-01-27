@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'ACTION_780_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_780_sequence_looping_on_3',
@@ -44,14 +44,14 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_780_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 319, 'ACTION_780_object_memory_modify_bits_44']
+        "identifier": 'ACTION_780_jmp_if_700C_equals_short_9',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [319, 'ACTION_780_object_memory_modify_bits_44']
     },
     {
-        "identifier": 'ACTION_780_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 403, 'ACTION_780_object_memory_modify_bits_44']
+        "identifier": 'ACTION_780_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [403, 'ACTION_780_object_memory_modify_bits_44']
     },
     {
         "identifier": 'ACTION_780_set_700C_to_pressed_button_11',
@@ -63,14 +63,14 @@ script = [
         "args": [0x700c, 0x7024]
     },
     {
-        "identifier": 'ACTION_780_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_780_face_south_19']
+        "identifier": 'ACTION_780_jmp_if_700C_equals_short_13',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_780_face_south_19']
     },
     {
-        "identifier": 'ACTION_780_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_780_face_southwest_17']
+        "identifier": 'ACTION_780_jmp_if_700C_equals_short_14',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_780_face_southwest_17']
     },
     {
         "identifier": 'ACTION_780_face_north_15',
@@ -227,9 +227,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_780_mem_compare_47',
-        "command": 'mem_compare',
-        "args": [0x700c, 0x7026]
+        "identifier": 'ACTION_780_mem_compare_address_47',
+        "command": 'mem_compare_address',
+        "args": [0x7026]
     },
     {
         "identifier": 'ACTION_780_jmp_if_loaded_memory_is_0_48',
@@ -271,7 +271,7 @@ script = [
     {
         "identifier": 'ACTION_780_jmp_if_random_above_66_56',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_780_turn_clockwise_45_degrees_n_times_60']
+        "args": [0x94e2, 'ACTION_780_turn_clockwise_45_degrees_n_times_63']
     },
     {
         "identifier": 'ACTION_780_turn_clockwise_45_degrees_n_times_57',
@@ -349,7 +349,7 @@ script = [
     {
         "identifier": 'ACTION_780_jmp_if_random_above_66_72',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_780_turn_clockwise_45_degrees_n_times_75']
+        "args": [0x9504, 'ACTION_780_turn_clockwise_45_degrees_n_times_77']
     },
     {
         "identifier": 'ACTION_780_turn_clockwise_45_degrees_n_times_73',

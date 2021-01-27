@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'ACTION_688_embedded_animation_routine_3',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
     },
     {
         "identifier": 'ACTION_688_shift_southeast_steps_4',
@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_6',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_southeast_steps_8']
+        "args": [0x7d40, 'ACTION_688_shift_southeast_steps_8']
     },
     {
         "identifier": 'ACTION_688_set_bit_7',
@@ -53,7 +53,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_10',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_southwest_steps_12']
+        "args": [0x7d4d, 'ACTION_688_shift_southwest_steps_12']
     },
     {
         "identifier": 'ACTION_688_set_bit_11',
@@ -73,7 +73,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_14',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_southwest_steps_16']
+        "args": [0x7d5a, 'ACTION_688_shift_southwest_steps_16']
     },
     {
         "identifier": 'ACTION_688_set_bit_15',
@@ -93,7 +93,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_18',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_northwest_steps_20']
+        "args": [0x7d67, 'ACTION_688_shift_northwest_steps_20']
     },
     {
         "identifier": 'ACTION_688_set_bit_19',
@@ -118,7 +118,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_23',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_southwest_steps_25']
+        "args": [0x7d76, 'ACTION_688_shift_southwest_steps_25']
     },
     {
         "identifier": 'ACTION_688_set_bit_24',
@@ -143,7 +143,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_28',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_northeast_steps_30']
+        "args": [0x7d85, 'ACTION_688_shift_northeast_steps_30']
     },
     {
         "identifier": 'ACTION_688_set_bit_29',
@@ -163,7 +163,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_32',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_southeast_steps_34']
+        "args": [0x7d92, 'ACTION_688_shift_southeast_steps_34']
     },
     {
         "identifier": 'ACTION_688_set_bit_33',
@@ -183,7 +183,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_36',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_northeast_steps_38']
+        "args": [0x7d9f, 'ACTION_688_shift_northeast_steps_38']
     },
     {
         "identifier": 'ACTION_688_set_bit_37',
@@ -203,7 +203,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_40',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_northeast_steps_42']
+        "args": [0x7dac, 'ACTION_688_shift_northeast_steps_42']
     },
     {
         "identifier": 'ACTION_688_set_bit_41',
@@ -223,7 +223,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_44',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_northwest_steps_46']
+        "args": [0x7db9, 'ACTION_688_shift_northwest_steps_46']
     },
     {
         "identifier": 'ACTION_688_set_bit_45',
@@ -243,7 +243,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_48',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_shift_northwest_steps_50']
+        "args": [0x7dc6, 'ACTION_688_shift_northwest_steps_50']
     },
     {
         "identifier": 'ACTION_688_set_bit_49',
@@ -263,7 +263,7 @@ script = [
     {
         "identifier": 'ACTION_688_jmp_if_random_above_66_52',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_688_jmp_54']
+        "args": [0x7dd3, 'ACTION_688_jmp_54']
     },
     {
         "identifier": 'ACTION_688_set_bit_53',

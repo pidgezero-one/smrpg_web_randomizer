@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'ACTION_10_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 2, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_10_face_south_3',

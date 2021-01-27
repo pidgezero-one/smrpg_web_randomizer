@@ -2,24 +2,24 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_639_set_short_mem_0',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x70b8]
+        "identifier": 'ACTION_639_set_700C_to_70A0_short_mem_0',
+        "command": 'set_700C_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
-        "identifier": 'ACTION_639_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7016, 0x700c]
+        "identifier": 'ACTION_639_set_7000_short_mem_to_700C_1',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7016]
     },
     {
-        "identifier": 'ACTION_639_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x70b9]
+        "identifier": 'ACTION_639_set_700C_to_70A0_short_mem_2',
+        "command": 'set_700C_to_70A0_short_mem',
+        "args": [0x70b9]
     },
     {
-        "identifier": 'ACTION_639_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7018, 0x700c]
+        "identifier": 'ACTION_639_set_7000_short_mem_to_700C_3',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7018]
     },
     {
         "identifier": 'ACTION_639_set_short_4',

@@ -196,9 +196,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3601_set_short_mem_26',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_3601_set_7000_to_7000_short_mem_26',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_3601_mem_compare_val_27',
@@ -262,9 +262,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3601_set_short_mem_33',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_3601_set_7000_to_7000_short_mem_33',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_3601_mem_compare_val_34',
@@ -333,9 +333,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3601_set_short_mem_41',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_3601_set_7000_to_7000_short_mem_41',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_3601_mem_compare_val_42',

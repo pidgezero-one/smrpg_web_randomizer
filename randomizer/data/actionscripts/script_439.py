@@ -63,12 +63,12 @@ script = [
     {
         "identifier": 'ACTION_439_embedded_animation_routine_12',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_439_set_sprite_sequence_13',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_439_walk_to_xy_coords_14',
@@ -123,12 +123,12 @@ script = [
     {
         "identifier": 'ACTION_439_set_700C_to_object_coord_25',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_439_add_26',
-        "command": 'add',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_439_inc_26',
+        "command": 'inc',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_439_mem_700C_and_const_27',
@@ -136,9 +136,9 @@ script = [
         "args": [0x0007]
     },
     {
-        "identifier": 'ACTION_439_mem_compare_28',
-        "command": 'mem_compare',
-        "args": [0x700c, 4]
+        "identifier": 'ACTION_439_mem_compare_val_28',
+        "command": 'mem_compare_val',
+        "args": [4]
     },
     {
         "identifier": 'ACTION_439_jmp_if_comparison_result_is_greater_or_equal_29',
@@ -157,7 +157,7 @@ script = [
     {
         "identifier": 'ACTION_439_set_sprite_sequence_32',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_439_db_33',
@@ -223,7 +223,7 @@ script = [
     {
         "identifier": 'ACTION_439_set_sprite_sequence_46',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_439_db_47',

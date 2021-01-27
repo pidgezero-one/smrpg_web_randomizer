@@ -6,9 +6,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_809_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 117, 'ACTION_809_db_6']
+        "identifier": 'ACTION_809_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [117, 'ACTION_809_db_6']
     },
     {
         "identifier": 'ACTION_809_db_2',

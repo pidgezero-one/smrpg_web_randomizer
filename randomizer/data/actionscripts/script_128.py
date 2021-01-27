@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_128_set_object_memory_bits_0',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[0, 1]]
+        "args": [0x0b, [0, 1]]
     },
     {
         "identifier": 'ACTION_128_set_solidity_bits_1',
@@ -14,7 +14,7 @@ script = [
     {
         "identifier": 'ACTION_128_jmp_if_random_above_66_2',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_128_set_animation_speed_5']
+        "args": [0x1c70, 'ACTION_128_pause_13']
     },
     {
         "identifier": 'ACTION_128_set_animation_speed_3',
@@ -74,7 +74,7 @@ script = [
     {
         "identifier": 'ACTION_128_jmp_if_random_above_66_15',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_128_walk_1_step_northwest_23']
+        "args": [0x1c97, 'ACTION_128_walk_1_step_northeast_12']
     },
     {
         "identifier": 'ACTION_128_walk_1_step_southwest_16',
@@ -98,7 +98,7 @@ script = [
     {
         "identifier": 'ACTION_128_jmp_if_random_above_66_20',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_128_walk_1_step_southeast_9']
+        "args": [0x1c77, 'ACTION_128_pause_25']
     },
     {
         "identifier": 'ACTION_128_set_animation_speed_21',

@@ -28,9 +28,9 @@ script = [
         "args": [AreaObjects.NPC_11, 425]
     },
     {
-        "identifier": 'EVENT_589_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_589_set_7000_to_7000_short_mem_5',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_589_jmp_if_7000_equals_short_6',
@@ -43,9 +43,9 @@ script = [
         "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_589_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_589_set_7000_to_7000_short_mem_8',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_589_run_dialog_9',

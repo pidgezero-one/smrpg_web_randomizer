@@ -36,8 +36,8 @@ script = [
         "args": ['EVENT_66_set_action_script_async_9']
     },
     {
-        "identifier": 'EVENT_66_set_short_mem_7',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_66_set_7000_short_mem_to_7000_short_mem_7',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7016, 0x7018]
     },
     {

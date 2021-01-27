@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_179_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_179_pause_2',
@@ -19,7 +19,7 @@ script = [
     {
         "identifier": 'ACTION_179_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_179_pause_4',
@@ -29,7 +29,7 @@ script = [
     {
         "identifier": 'ACTION_179_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_179_pause_6',

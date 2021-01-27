@@ -336,9 +336,9 @@ script = [
         "args": [0x7042, 6]
     },
     {
-        "identifier": 'EVENT_615_set_short_mem_53',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_615_set_7000_to_70A0_short_mem_53',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_615_jmp_if_7000_equals_short_54',
@@ -351,9 +351,9 @@ script = [
         "args": [0x70ac]
     },
     {
-        "identifier": 'EVENT_615_set_short_mem_56',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_615_set_7000_to_70A0_short_mem_56',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_615_jmp_57',

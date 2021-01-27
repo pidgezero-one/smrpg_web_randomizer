@@ -132,7 +132,7 @@ script = [
     {
         "identifier": 'ACTION_37_set_sprite_sequence_27',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [2, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_37_pause_28',

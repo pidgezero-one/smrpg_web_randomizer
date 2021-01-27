@@ -6,9 +6,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_714_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 457, 'ACTION_714_set_animation_speed_19']
+        "identifier": 'ACTION_714_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [457, 'ACTION_714_set_animation_speed_19']
     },
     {
         "identifier": 'ACTION_714_set_priority_2',

@@ -223,9 +223,9 @@ script = [
         "args": [0x705e, 1, 'EVENT_3600_action_queue_async_46']
     },
     {
-        "identifier": 'EVENT_3600_set_short_mem_33',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ee]
+        "identifier": 'EVENT_3600_set_7000_to_70A0_short_mem_33',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ee]
     },
     {
         "identifier": 'EVENT_3600_jmp_if_7000_equals_short_34',
@@ -233,9 +233,9 @@ script = [
         "args": [0, 'EVENT_3600_play_sound_42']
     },
     {
-        "identifier": 'EVENT_3600_set_short_mem_35',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_3600_set_7000_short_mem_to_7000_35',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3600_set_object_memory_to_36',
@@ -331,24 +331,24 @@ script = [
         "args": [Sounds._027_FOUND_AN_ITEM, 6]
     },
     {
-        "identifier": 'EVENT_3600_set_short_mem_49',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d6]
+        "identifier": 'EVENT_3600_set_7000_to_70A0_short_mem_49',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d6]
     },
     {
-        "identifier": 'EVENT_3600_set_short_mem_50',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_3600_set_7000_short_mem_to_7000_50',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_3600_set_short_mem_51',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ba]
+        "identifier": 'EVENT_3600_set_7000_to_70A0_short_mem_51',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ba]
     },
     {
-        "identifier": 'EVENT_3600_set_short_mem_52',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_3600_set_7000_short_mem_to_7000_52',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_3600_set_53',
@@ -390,9 +390,9 @@ script = [
         "args": [0x7000, 1]
     },
     {
-        "identifier": 'EVENT_3600_set_short_mem_61',
-        "command": 'set_short_mem',
-        "args": [0x70b8, 0x7000]
+        "identifier": 'EVENT_3600_set_70A0_short_mem_to_7000_61',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_3600_run_dialog_62',
@@ -442,9 +442,9 @@ script = [
         "args": [893, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_3600_set_short_mem_70',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ee]
+        "identifier": 'EVENT_3600_set_7000_to_70A0_short_mem_70',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ee]
     },
     {
         "identifier": 'EVENT_3600_jmp_if_7000_equals_short_71',
@@ -452,9 +452,9 @@ script = [
         "args": [0, 'EVENT_3600_jmp_79']
     },
     {
-        "identifier": 'EVENT_3600_set_short_mem_72',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_3600_set_7000_short_mem_to_7000_72',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3600_set_object_memory_to_73',

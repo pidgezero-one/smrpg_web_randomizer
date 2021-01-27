@@ -21,29 +21,29 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_553_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 30, 'ACTION_553_set_priority_15']
+        "identifier": 'ACTION_553_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [30, 'ACTION_553_set_priority_15']
     },
     {
         "identifier": 'ACTION_553_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_553_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 20, 'ACTION_553_set_priority_12']
+        "identifier": 'ACTION_553_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [20, 'ACTION_553_set_priority_12']
     },
     {
-        "identifier": 'ACTION_553_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 22, 'ACTION_553_set_priority_12']
+        "identifier": 'ACTION_553_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [22, 'ACTION_553_set_priority_12']
     },
     {
-        "identifier": 'ACTION_553_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_553_set_priority_12']
+        "identifier": 'ACTION_553_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_553_set_priority_12']
     },
     {
         "identifier": 'ACTION_553_set_priority_9',
@@ -79,7 +79,7 @@ script = [
     {
         "identifier": 'ACTION_553_set_sprite_sequence_16',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_553_visibility_off_17',

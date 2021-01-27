@@ -18,9 +18,9 @@ script = [
         "args": [0x7042, 2]
     },
     {
-        "identifier": 'EVENT_663_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70af]
+        "identifier": 'EVENT_663_set_7000_to_70A0_short_mem_3',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_663_jmp_if_7000_equals_short_4',
@@ -28,9 +28,9 @@ script = [
         "args": [4, 'EVENT_663_adjust_music_tempo_12']
     },
     {
-        "identifier": 'EVENT_663_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_663_set_7000_short_mem_to_7000_5',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_663_set_6',
@@ -43,14 +43,14 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_663_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_663_set_7000_short_mem_to_7000_8',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_663_set_short_mem_9',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70af]
+        "identifier": 'EVENT_663_set_7000_to_70A0_short_mem_9',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70af]
     },
     {
         "identifier": 'EVENT_663_run_dialog_10',
@@ -77,9 +77,9 @@ script = [
         "args": [0x701e]
     },
     {
-        "identifier": 'EVENT_663_set_short_mem_15',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ae]
+        "identifier": 'EVENT_663_set_7000_to_70A0_short_mem_15',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_663_mem_compare_val_16',

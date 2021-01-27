@@ -123,7 +123,7 @@ script = [
     {
         "identifier": 'ACTION_844_set_sprite_sequence_25',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_844_pause_26',
@@ -167,7 +167,7 @@ script = [
     {
         "identifier": 'ACTION_844_set_sprite_sequence_34',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_844_pause_35',
@@ -196,7 +196,7 @@ script = [
     {
         "identifier": 'ACTION_844_jmp_if_random_above_66_40',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_844_jmp_if_object_not_in_level_50']
+        "args": [0xa425, 'ACTION_844_jmp_if_object_not_in_level_60']
     },
     {
         "identifier": 'ACTION_844_jmp_if_object_not_in_level_41',
@@ -216,7 +216,7 @@ script = [
     {
         "identifier": 'ACTION_844_set_sprite_sequence_44',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_844_pause_45',
@@ -265,7 +265,7 @@ script = [
     {
         "identifier": 'ACTION_844_set_sprite_sequence_54',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_844_pause_55',
@@ -309,7 +309,7 @@ script = [
     {
         "identifier": 'ACTION_844_set_sprite_sequence_63',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_844_pause_64',

@@ -13,12 +13,12 @@ script = [
     {
         "identifier": 'ACTION_294_embedded_animation_routine_2',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x00, 0x6f, 0x00, 0x01, 0xf2, 0xff, 0x00, 0xff, 0x80]
     },
     {
         "identifier": 'ACTION_294_embedded_animation_routine_3',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0x00, 0x7f, 0x00, 0x01, 0xf2, 0xff, 0x00, 0xff, 0x80]
     },
     {
         "identifier": 'ACTION_294_set_animation_speed_4',
@@ -51,8 +51,8 @@ script = [
         "args": [0x35, 0x01, 0x04]
     },
     {
-        "identifier": 'ACTION_294_pause_10',
-        "command": 'pause',
+        "identifier": 'ACTION_294_pause_short_10',
+        "command": 'pause_short',
         "args": [420]
     },
     {

@@ -24,7 +24,7 @@ script = [
     {
         "identifier": 'ACTION_812_embedded_animation_routine_4',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
     },
     {
         "identifier": 'ACTION_812_shift_northwest_steps_5',
@@ -68,7 +68,7 @@ script = [
     {
         "identifier": 'ACTION_812_embedded_animation_routine_13',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
     },
     {
         "identifier": 'ACTION_812_set_14',

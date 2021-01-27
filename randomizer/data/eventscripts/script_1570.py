@@ -3,14 +3,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1570_set_short_mem_0',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702a]
+        "identifier": 'EVENT_1570_set_7000_to_7000_short_mem_0',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702a]
     },
     {
-        "identifier": 'EVENT_1570_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7034, 0x7000]
+        "identifier": 'EVENT_1570_set_7000_short_mem_to_7000_1',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7034]
     },
     {
         "identifier": 'EVENT_1570_set_bit_2',
@@ -53,14 +53,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1570_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7028]
+        "identifier": 'EVENT_1570_set_7000_to_7000_short_mem_5',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7028]
     },
     {
-        "identifier": 'EVENT_1570_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1570_set_70A0_short_mem_to_7000_6',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1570_pause_action_script_7',
@@ -97,9 +97,9 @@ script = [
                 "args": [72]
             },
             {
-                "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_set_short_mem_3',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7034]
+                "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_set_700C_to_7000_short_mem_3',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7034]
             },
             {
                 "identifier": 'EVENT_1570_action_queue_sync_10_SUBSCRIPT_jmp_if_700C_equals_short_4',
@@ -186,9 +186,9 @@ script = [
         "args": [4]
     },
     {
-        "identifier": 'EVENT_1570_set_short_mem_14',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702a]
+        "identifier": 'EVENT_1570_set_7000_to_7000_short_mem_14',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_1570_jmp_if_7000_equals_short_15',

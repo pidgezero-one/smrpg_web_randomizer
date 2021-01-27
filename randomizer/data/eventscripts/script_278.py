@@ -32,9 +32,9 @@ script = [
                 "args": [0xfd, 0x3d, 0x11, 0x56, 0x13]
             },
             {
-                "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_set_short_mem_5',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x70a9]
+                "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_set_700C_to_70A0_short_mem_5',
+                "command": 'set_700C_to_70A0_short_mem',
+                "args": [0x70a9]
             },
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_jmp_if_700C_equals_short_6',

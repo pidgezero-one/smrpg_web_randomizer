@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'ACTION_384_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_384_pause_2',
@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'ACTION_384_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_384_pause_6',
@@ -43,7 +43,7 @@ script = [
     {
         "identifier": 'ACTION_384_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_384_sequence_looping_off_9',

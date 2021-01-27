@@ -161,9 +161,9 @@ script = [
         "args": [AreaObjects.NPC_12, Rooms._139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL]
     },
     {
-        "identifier": 'EVENT_3818_set_short_mem_33',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70de]
+        "identifier": 'EVENT_3818_set_7000_to_70A0_short_mem_33',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70de]
     },
     {
         "identifier": 'EVENT_3818_jmp_if_7000_equals_short_34',

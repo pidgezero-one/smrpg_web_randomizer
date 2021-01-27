@@ -14,9 +14,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_468_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70eb]
+        "identifier": 'EVENT_468_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70eb]
     },
     {
         "identifier": 'EVENT_468_jmp_if_7000_equals_short_2',
@@ -24,9 +24,9 @@ script = [
         "args": [0, 'EVENT_468_pause_5']
     },
     {
-        "identifier": 'EVENT_468_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_468_set_7000_short_mem_to_7000_3',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_468_run_dialog_4',

@@ -3,9 +3,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3509_set_short_mem_0',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_3509_set_7000_to_70A0_short_mem_0',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_3509_mem_7000_and_const_1',
@@ -13,14 +13,14 @@ script = [
         "args": [0x000f]
     },
     {
-        "identifier": 'EVENT_3509_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_3509_set_7000_short_mem_to_7000_2',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_3509_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_3509_set_7000_to_70A0_short_mem_3',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_3509_mem_7000_shift_left_4',
@@ -33,14 +33,14 @@ script = [
         "args": [0x0007]
     },
     {
-        "identifier": 'EVENT_3509_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_3509_set_7000_short_mem_to_7000_6',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_3509_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_3509_set_7000_to_70A0_short_mem_7',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_3509_mem_7000_shift_left_8',
@@ -53,9 +53,9 @@ script = [
         "args": [0x0001]
     },
     {
-        "identifier": 'EVENT_3509_set_short_mem_10',
-        "command": 'set_short_mem',
-        "args": [0x7028, 0x7000]
+        "identifier": 'EVENT_3509_set_7000_short_mem_to_7000_10',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7028]
     },
     {
         "identifier": 'EVENT_3509_ret_11',

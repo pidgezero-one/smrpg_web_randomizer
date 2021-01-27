@@ -325,14 +325,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2672_set_short_mem_37',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70c9]
+        "identifier": 'EVENT_2672_set_7000_to_70A0_short_mem_37',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70c9]
     },
     {
-        "identifier": 'EVENT_2672_set_short_mem_38',
-        "command": 'set_short_mem',
-        "args": [0x702c, 0x7000]
+        "identifier": 'EVENT_2672_set_7000_short_mem_to_7000_38',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x702c]
     },
     {
         "identifier": 'EVENT_2672_mem_compare_39',
@@ -912,9 +912,9 @@ script = [
         "args": [Sounds._087_CORRECT_SIGNAL, 6]
     },
     {
-        "identifier": 'EVENT_2672_set_short_mem_69',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70c9]
+        "identifier": 'EVENT_2672_set_7000_to_70A0_short_mem_69',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70c9]
     },
     {
         "identifier": 'EVENT_2672_jmp_if_7000_equals_short_70',
@@ -932,9 +932,9 @@ script = [
         "args": [0x70c9]
     },
     {
-        "identifier": 'EVENT_2672_set_short_mem_73',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70c9]
+        "identifier": 'EVENT_2672_set_7000_to_70A0_short_mem_73',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70c9]
     },
     {
         "identifier": 'EVENT_2672_jmp_if_7000_equals_short_74',
@@ -967,9 +967,9 @@ script = [
         "args": [2552, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2672_set_short_mem_80',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70c9]
+        "identifier": 'EVENT_2672_set_7000_to_70A0_short_mem_80',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70c9]
     },
     {
         "identifier": 'EVENT_2672_jmp_if_7000_equals_short_81',
@@ -982,9 +982,9 @@ script = [
         "args": [0x7000]
     },
     {
-        "identifier": 'EVENT_2672_set_short_mem_83',
-        "command": 'set_short_mem',
-        "args": [0x70c9, 0x7000]
+        "identifier": 'EVENT_2672_set_70A0_short_mem_to_7000_83',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70c9]
     },
     {
         "identifier": 'EVENT_2672_clear_bit_84',

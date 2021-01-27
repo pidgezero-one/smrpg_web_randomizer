@@ -35,9 +35,9 @@ script = [
         "args": [0x700c, 2]
     },
     {
-        "identifier": 'ACTION_409_add_short_7',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_409_inc_short_7',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_409_shift_z_20_steps_8',
@@ -68,9 +68,9 @@ script = [
         "args": [0x700c, 2]
     },
     {
-        "identifier": 'ACTION_409_add_short_14',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_409_inc_short_14',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_409_shift_z_20_steps_15',

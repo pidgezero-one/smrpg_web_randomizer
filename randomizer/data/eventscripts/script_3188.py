@@ -178,9 +178,9 @@ script = [
         "command": 'store_7000_minecart_timer'
     },
     {
-        "identifier": 'EVENT_3188_set_short_mem_9',
-        "command": 'set_short_mem',
-        "args": [0x702e, 0x7000]
+        "identifier": 'EVENT_3188_set_7000_short_mem_to_7000_9',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x702e]
     },
     {
         "identifier": 'EVENT_3188_run_moleville_mountain_sequence_10',

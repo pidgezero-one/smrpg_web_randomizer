@@ -11,19 +11,19 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_337_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 172, 'ACTION_337_set_palette_row_20']
+        "identifier": 'ACTION_337_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [172, 'ACTION_337_set_palette_row_20']
     },
     {
-        "identifier": 'ACTION_337_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 177, 'ACTION_337_set_palette_row_20']
+        "identifier": 'ACTION_337_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [177, 'ACTION_337_set_palette_row_20']
     },
     {
-        "identifier": 'ACTION_337_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 163, 'ACTION_337_set_palette_row_24']
+        "identifier": 'ACTION_337_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [163, 'ACTION_337_set_palette_row_24']
     },
     {
         "identifier": 'ACTION_337_inc_palette_row_by_5',
@@ -69,19 +69,19 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_337_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 172, 'ACTION_337_set_palette_row_22']
+        "identifier": 'ACTION_337_jmp_if_700C_equals_short_14',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [172, 'ACTION_337_set_palette_row_22']
     },
     {
-        "identifier": 'ACTION_337_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 177, 'ACTION_337_set_palette_row_22']
+        "identifier": 'ACTION_337_jmp_if_700C_equals_short_15',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [177, 'ACTION_337_set_palette_row_22']
     },
     {
-        "identifier": 'ACTION_337_jmp_if_var_equals_short_16',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 163, 'ACTION_337_set_palette_row_26']
+        "identifier": 'ACTION_337_jmp_if_700C_equals_short_16',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [163, 'ACTION_337_set_palette_row_26']
     },
     {
         "identifier": 'ACTION_337_inc_palette_row_by_17',

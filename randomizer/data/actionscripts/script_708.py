@@ -40,9 +40,9 @@ script = [
         "args": [0x700c, 30]
     },
     {
-        "identifier": 'ACTION_708_add_short_8',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_708_inc_short_8',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_708_load_mem_9',
@@ -109,12 +109,12 @@ script = [
     {
         "identifier": 'ACTION_708_set_700C_to_object_coord_22',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.X, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_708_mem_compare_23',
-        "command": 'mem_compare',
-        "args": [0x700c, 5888]
+        "identifier": 'ACTION_708_mem_compare_val_23',
+        "command": 'mem_compare_val',
+        "args": [5888]
     },
     {
         "identifier": 'ACTION_708_jmp_if_comparison_result_is_lesser_24',

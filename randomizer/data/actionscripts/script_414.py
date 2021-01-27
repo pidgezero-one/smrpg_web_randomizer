@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'ACTION_414_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 1, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_414_set_priority_2',

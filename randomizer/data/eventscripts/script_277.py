@@ -8,9 +8,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_277_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7032, 0x7000]
+        "identifier": 'EVENT_277_set_7000_short_mem_to_7000_1',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7032]
     },
     {
         "identifier": 'EVENT_277_jmp_if_7000_any_bits_set_2',
@@ -53,9 +53,9 @@ script = [
                 "args": [0xfd, 0x24, 0x00, 0x10]
             },
             {
-                "identifier": 'EVENT_277_action_queue_async_8_SUBSCRIPT_set_short_mem_1',
-                "command": 'set_short_mem',
-                "args": [0x7000, 0x700c]
+                "identifier": 'EVENT_277_action_queue_async_8_SUBSCRIPT_set_7000_short_mem_to_700C_1',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x7000]
             }
         ]
     },
@@ -253,9 +253,9 @@ script = [
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_277_action_queue_async_21_SUBSCRIPT_set_short_mem_1',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7032]
+                "identifier": 'EVENT_277_action_queue_async_21_SUBSCRIPT_set_700C_to_7000_short_mem_1',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7032]
             },
             {
                 "identifier": 'EVENT_277_action_queue_async_21_SUBSCRIPT_face_east_7C_2',

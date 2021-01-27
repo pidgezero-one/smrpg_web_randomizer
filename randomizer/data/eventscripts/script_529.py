@@ -266,7 +266,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_22',
         "command": 'jmp',
-        "args": ['EVENT_529_set_short_mem_181']
+        "args": ['EVENT_529_set_7000_to_70A0_short_mem_181']
     },
     {
         "identifier": 'EVENT_529_clear_bit_23',
@@ -1236,7 +1236,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_if_bit_set_177',
         "command": 'jmp_if_bit_set',
-        "args": [0x7085, 2, 'EVENT_529_set_short_mem_181']
+        "args": [0x7085, 2, 'EVENT_529_set_7000_to_70A0_short_mem_181']
     },
     {
         "identifier": 'EVENT_529_action_queue_sync_178',
@@ -1261,29 +1261,29 @@ script = [
         "args": ['EVENT_529_jmp_if_bit_set_194']
     },
     {
-        "identifier": 'EVENT_529_set_short_mem_181',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b8]
+        "identifier": 'EVENT_529_set_7000_to_70A0_short_mem_181',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_529_jmp_if_7000_any_bits_set_182',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[7], 'EVENT_529_set_short_mem_190']
+        "args": [[7], 'EVENT_529_set_7000_to_70A0_short_mem_190']
     },
     {
-        "identifier": 'EVENT_529_set_short_mem_183',
-        "command": 'set_short_mem',
-        "args": [0x7016, 0x7000]
+        "identifier": 'EVENT_529_set_7000_short_mem_to_7000_183',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7016]
     },
     {
-        "identifier": 'EVENT_529_set_short_mem_184',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b9]
+        "identifier": 'EVENT_529_set_7000_to_70A0_short_mem_184',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b9]
     },
     {
-        "identifier": 'EVENT_529_set_short_mem_185',
-        "command": 'set_short_mem',
-        "args": [0x7018, 0x7000]
+        "identifier": 'EVENT_529_set_7000_short_mem_to_7000_185',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7018]
     },
     {
         "identifier": 'EVENT_529_set_short_186',
@@ -1351,9 +1351,9 @@ script = [
         "args": ['EVENT_529_jmp_if_bit_set_194']
     },
     {
-        "identifier": 'EVENT_529_set_short_mem_190',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b8]
+        "identifier": 'EVENT_529_set_7000_to_70A0_short_mem_190',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_529_mem_7000_and_const_191',
@@ -1368,7 +1368,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_193',
         "command": 'jmp',
-        "args": ['EVENT_529_set_short_mem_183']
+        "args": ['EVENT_529_set_7000_short_mem_to_7000_183']
     },
     {
         "identifier": 'EVENT_529_jmp_if_bit_set_194',

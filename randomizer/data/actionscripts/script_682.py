@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_682_set_object_memory_bits_0',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[1]]
+        "args": [0x0b, [1]]
     },
     {
         "identifier": 'ACTION_682_set_solidity_bits_1',

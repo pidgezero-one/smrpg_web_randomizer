@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_467_embedded_animation_routine_1',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
     },
     {
         "identifier": 'ACTION_467_face_mario_2',

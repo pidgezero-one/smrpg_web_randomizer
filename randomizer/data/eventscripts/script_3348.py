@@ -35,9 +35,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3348_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b7]
+        "identifier": 'EVENT_3348_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b7]
     },
     {
         "identifier": 'EVENT_3348_mem_7000_and_const_2',

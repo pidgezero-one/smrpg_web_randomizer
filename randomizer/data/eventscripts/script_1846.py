@@ -22,14 +22,14 @@ script = [
         "args": [0x7043, 1]
     },
     {
-        "identifier": 'EVENT_1846_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_1846_set_7000_to_70A0_short_mem_4',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_1846_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x7000]
+        "identifier": 'EVENT_1846_set_70A0_short_mem_to_7000_5',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1846_action_queue_async_6',
@@ -47,9 +47,9 @@ script = [
                 "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_set_short_mem_2',
-                "command": 'set_short_mem',
-                "args": [0x702a, 0x700c]
+                "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_set_7000_short_mem_to_700C_2',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x702a]
             },
             {
                 "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_db_3',
@@ -79,9 +79,9 @@ script = [
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_set_short_mem_9',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x702a]
+                "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_set_700C_to_7000_short_mem_9',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x702a]
             },
             {
                 "identifier": 'EVENT_1846_action_queue_async_6_SUBSCRIPT_face_east_7C_10',
@@ -108,9 +108,9 @@ script = [
         "command": 'set_7000_to_pressed_button'
     },
     {
-        "identifier": 'EVENT_1846_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7010, 0x7000]
+        "identifier": 'EVENT_1846_set_7000_short_mem_to_7000_11',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7010]
     },
     {
         "identifier": 'EVENT_1846_jmp_if_7000_any_bits_set_12',
@@ -118,9 +118,9 @@ script = [
         "args": [[1, 3], 'EVENT_1846_action_queue_sync_17']
     },
     {
-        "identifier": 'EVENT_1846_set_short_mem_13',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7010]
+        "identifier": 'EVENT_1846_set_7000_to_7000_short_mem_13',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7010]
     },
     {
         "identifier": 'EVENT_1846_jmp_if_7000_any_bits_set_14',
@@ -196,19 +196,19 @@ script = [
         "command": 'set_7000_to_pressed_button'
     },
     {
-        "identifier": 'EVENT_1846_set_short_mem_25',
-        "command": 'set_short_mem',
-        "args": [0x7010, 0x7000]
+        "identifier": 'EVENT_1846_set_7000_short_mem_to_7000_25',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7010]
     },
     {
         "identifier": 'EVENT_1846_jmp_if_7000_any_bits_set_26',
         "command": 'jmp_if_7000_any_bits_set',
-        "args": [[1, 3], 'EVENT_1846_set_short_mem_33']
+        "args": [[1, 3], 'EVENT_1846_set_7000_to_70A0_short_mem_33']
     },
     {
-        "identifier": 'EVENT_1846_set_short_mem_27',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7010]
+        "identifier": 'EVENT_1846_set_7000_to_7000_short_mem_27',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7010]
     },
     {
         "identifier": 'EVENT_1846_jmp_if_7000_any_bits_set_28',
@@ -233,9 +233,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_1846_set_short_mem_33',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_1846_set_7000_to_70A0_short_mem_33',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1846_jmp_if_7000_equals_short_34',

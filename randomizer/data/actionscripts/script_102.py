@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_102_jmp_if_random_above_66_1',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_103_clear_solidity_bits_0']
+        "args": [0x18ea, 'ACTION_102_transfer_xyzf_pixels_4']
     },
     {
         "identifier": 'ACTION_102_transfer_xyzf_pixels_2',

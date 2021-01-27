@@ -31,9 +31,9 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_366_jmp_if_var_not_equals_short_6',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 0, 'ACTION_366_load_mem_12']
+        "identifier": 'ACTION_366_jmp_if_700C_not_equals_short_6',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [0, 'ACTION_366_load_mem_12']
     },
     {
         "identifier": 'ACTION_366_db_7',

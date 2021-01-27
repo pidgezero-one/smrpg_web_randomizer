@@ -90,14 +90,14 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
-        "identifier": 'EVENT_2493_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_2493_set_7000_to_7000_short_mem_6',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
-        "identifier": 'EVENT_2493_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x7014, 0x7000]
+        "identifier": 'EVENT_2493_set_7000_short_mem_to_7000_7',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_2493_clear_bit_8',

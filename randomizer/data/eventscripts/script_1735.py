@@ -3,9 +3,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1735_set_short_mem_0',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a7]
+        "identifier": 'EVENT_1735_set_7000_to_70A0_short_mem_0',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a7]
     },
     {
         "identifier": 'EVENT_1735_disable_event_trigger_for_object_at_70A8_1',
@@ -17,9 +17,9 @@ script = [
         "args": [0x00f0]
     },
     {
-        "identifier": 'EVENT_1735_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x70b4, 0x7000]
+        "identifier": 'EVENT_1735_set_70A0_short_mem_to_7000_3',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b4]
     },
     {
         "identifier": 'EVENT_1735_set_action_script_sync_4',
@@ -32,9 +32,9 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
-        "identifier": 'EVENT_1735_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_1735_set_7000_to_7000_short_mem_6',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_1735_add_7',
@@ -42,9 +42,9 @@ script = [
         "args": [0x7000, 608]
     },
     {
-        "identifier": 'EVENT_1735_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x7014, 0x7000]
+        "identifier": 'EVENT_1735_set_7000_short_mem_to_7000_8',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_1735_create_packet_at_7010_coords_jmp_if_null_9',
@@ -57,9 +57,9 @@ script = [
         "args": [0x7076, 0]
     },
     {
-        "identifier": 'EVENT_1735_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a7]
+        "identifier": 'EVENT_1735_set_7000_to_70A0_short_mem_11',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a7]
     },
     {
         "identifier": 'EVENT_1735_mem_7000_and_const_12',

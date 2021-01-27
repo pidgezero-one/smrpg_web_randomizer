@@ -14,14 +14,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3144_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_3144_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_3144_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x70aa, 0x7000]
+        "identifier": 'EVENT_3144_set_70A0_short_mem_to_7000_2',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_3144_set_3',

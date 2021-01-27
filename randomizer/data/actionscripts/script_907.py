@@ -19,7 +19,7 @@ script = [
     {
         "identifier": 'ACTION_907_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_907_jump_to_height_silent_4',
@@ -46,7 +46,7 @@ script = [
     {
         "identifier": 'ACTION_907_set_object_memory_bits_9',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[0]]
+        "args": [0x0b, [0]]
     },
     {
         "identifier": 'ACTION_907_walk_1_step_f_direction_10',

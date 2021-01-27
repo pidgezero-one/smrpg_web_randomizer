@@ -33,9 +33,9 @@ script = [
         "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_448_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_448_set_7000_to_7000_short_mem_6',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_448_run_dialog_7',

@@ -18,9 +18,9 @@ script = [
         "args": [AreaObjects.MEM_70A8, 337]
     },
     {
-        "identifier": 'EVENT_3210_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_3210_set_7000_to_70A0_short_mem_3',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_3210_add_4',
@@ -28,14 +28,14 @@ script = [
         "args": [0x7000, 65533]
     },
     {
-        "identifier": 'EVENT_3210_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x7000]
+        "identifier": 'EVENT_3210_set_70A0_short_mem_to_7000_5',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a9]
     },
     {
-        "identifier": 'EVENT_3210_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_3210_set_7000_to_70A0_short_mem_6',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_3210_add_7',
@@ -64,22 +64,22 @@ script = [
     {
         "identifier": 'EVENT_3210_jmp_if_var_equals_byte_12',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70a9, 20, 'EVENT_3210_set_short_mem_15']
+        "args": [0x70a9, 20, 'EVENT_3210_set_7000_short_mem_to_7000_15']
     },
     {
         "identifier": 'EVENT_3210_jmp_if_var_equals_byte_13',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70a9, 21, 'EVENT_3210_set_short_mem_17']
+        "args": [0x70a9, 21, 'EVENT_3210_set_7000_short_mem_to_7000_17']
     },
     {
         "identifier": 'EVENT_3210_jmp_if_var_equals_byte_14',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70a9, 22, 'EVENT_3210_set_short_mem_19']
+        "args": [0x70a9, 22, 'EVENT_3210_set_7000_short_mem_to_7000_19']
     },
     {
-        "identifier": 'EVENT_3210_set_short_mem_15',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_3210_set_7000_short_mem_to_7000_15',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3210_jmp_16',
@@ -87,9 +87,9 @@ script = [
         "args": ['EVENT_3210_jmp_if_bit_clear_21']
     },
     {
-        "identifier": 'EVENT_3210_set_short_mem_17',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_3210_set_7000_short_mem_to_7000_17',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_3210_jmp_18',
@@ -97,9 +97,9 @@ script = [
         "args": ['EVENT_3210_jmp_if_bit_clear_21']
     },
     {
-        "identifier": 'EVENT_3210_set_short_mem_19',
-        "command": 'set_short_mem',
-        "args": [0x7028, 0x7000]
+        "identifier": 'EVENT_3210_set_7000_short_mem_to_7000_19',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7028]
     },
     {
         "identifier": 'EVENT_3210_jmp_20',

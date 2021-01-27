@@ -32,12 +32,12 @@ script = [
     {
         "identifier": 'ACTION_270_set_700C_to_object_coord_6',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_270_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x7032, 0x700c]
+        "identifier": 'ACTION_270_set_7000_short_mem_to_700C_7',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7032]
     },
     {
         "identifier": 'ACTION_270_sequence_playback_on_8',

@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'ACTION_614_set_object_memory_bits_3',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[2]]
+        "args": [0x0e, [2]]
     },
     {
         "identifier": 'ACTION_614_pause_4',

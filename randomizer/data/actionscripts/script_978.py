@@ -2,8 +2,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_978_face_southwest_0',
-        "command": 'face_southwest'
+        "identifier": 'ACTION_978_face_southwest_7D_0',
+        "command": 'face_southwest_7D',
+        "args": [0x00]
     },
     {
         "identifier": 'ACTION_978_pause_1',
@@ -13,7 +14,7 @@ script = [
     {
         "identifier": 'ACTION_978_jmp_if_random_above_128_2',
         "command": 'jmp_if_random_above_128',
-        "args": ['ACTION_978_face_southwest_0']
+        "args": ['ACTION_978_face_southwest_7D_0']
     },
     {
         "identifier": 'ACTION_978_pause_3',
@@ -23,6 +24,6 @@ script = [
     {
         "identifier": 'ACTION_978_jmp_4',
         "command": 'jmp',
-        "args": ['ACTION_978_face_southwest_0']
+        "args": ['ACTION_978_face_southwest_7D_0']
     }
 ]

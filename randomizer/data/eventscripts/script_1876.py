@@ -42,9 +42,9 @@ script = [
                 "args": [0xfd, 0x24, 0x11, 0x12]
             },
             {
-                "identifier": 'EVENT_1876_action_queue_async_5_SUBSCRIPT_set_short_mem_2',
-                "command": 'set_short_mem',
-                "args": [0x702a, 0x700c]
+                "identifier": 'EVENT_1876_action_queue_async_5_SUBSCRIPT_set_7000_short_mem_to_700C_2',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x702a]
             }
         ]
     },

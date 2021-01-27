@@ -125,9 +125,9 @@ script = [
                 "command": 'face_east_7C'
             },
             {
-                "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20_SUBSCRIPT_set_short_mem_4',
-                "command": 'set_short_mem',
-                "args": [0x703e, 0x700c]
+                "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20_SUBSCRIPT_set_7000_short_mem_to_700C_4',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x703e]
             },
             {
                 "identifier": 'EVENT_470_start_embedded_action_script_async_F1_20_SUBSCRIPT_fixed_f_coord_on_5',

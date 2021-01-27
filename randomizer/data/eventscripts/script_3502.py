@@ -368,9 +368,9 @@ script = [
         "args": [AreaObjects.NPC_7, 160]
     },
     {
-        "identifier": 'EVENT_3502_set_short_mem_57',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b1]
+        "identifier": 'EVENT_3502_set_7000_to_70A0_short_mem_57',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b1]
     },
     {
         "identifier": 'EVENT_3502_jmp_if_7000_equals_short_58',
@@ -656,9 +656,9 @@ script = [
         "args": [AreaObjects.LAYER_1]
     },
     {
-        "identifier": 'EVENT_3502_set_short_mem_83',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_3502_set_7000_to_70A0_short_mem_83',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_3502_mem_7000_and_const_84',
@@ -666,14 +666,14 @@ script = [
         "args": [0x000f]
     },
     {
-        "identifier": 'EVENT_3502_set_short_mem_85',
-        "command": 'set_short_mem',
-        "args": [0x7032, 0x7000]
+        "identifier": 'EVENT_3502_set_7000_short_mem_to_7000_85',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7032]
     },
     {
-        "identifier": 'EVENT_3502_set_short_mem_86',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_3502_set_7000_to_70A0_short_mem_86',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_3502_mem_7000_shift_left_87',
@@ -691,14 +691,14 @@ script = [
         "args": [0x7000, 0x7032]
     },
     {
-        "identifier": 'EVENT_3502_set_short_mem_90',
-        "command": 'set_short_mem',
-        "args": [0x7032, 0x7000]
+        "identifier": 'EVENT_3502_set_7000_short_mem_to_7000_90',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7032]
     },
     {
-        "identifier": 'EVENT_3502_set_short_mem_91',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_3502_set_7000_to_70A0_short_mem_91',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_3502_mem_7000_shift_left_92',
@@ -829,9 +829,9 @@ script = [
         "args": [0x70b2, 0, 'EVENT_3502_set_bit_117']
     },
     {
-        "identifier": 'EVENT_3502_set_short_mem_106',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_3502_set_7000_to_70A0_short_mem_106',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_3502_mem_7000_and_const_107',
@@ -844,9 +844,9 @@ script = [
         "args": [1195, AreaObjects.TOADSTOOL, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3502_set_short_mem_109',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_3502_set_7000_to_70A0_short_mem_109',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_3502_mem_7000_shift_left_110',
@@ -864,9 +864,9 @@ script = [
         "args": [1196, DialogDurations.FOREVER, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_3502_set_short_mem_113',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b2]
+        "identifier": 'EVENT_3502_set_7000_to_70A0_short_mem_113',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b2]
     },
     {
         "identifier": 'EVENT_3502_mem_7000_shift_left_114',

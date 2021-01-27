@@ -20,24 +20,24 @@ script = [
         "args": [0x0006]
     },
     {
-        "identifier": 'ACTION_304_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_304_pause_8']
+        "identifier": 'ACTION_304_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_304_pause_8']
     },
     {
-        "identifier": 'ACTION_304_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_304_pause_9']
+        "identifier": 'ACTION_304_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_304_pause_9']
     },
     {
-        "identifier": 'ACTION_304_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 4, 'ACTION_304_pause_10']
+        "identifier": 'ACTION_304_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [4, 'ACTION_304_pause_10']
     },
     {
-        "identifier": 'ACTION_304_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 6, 'ACTION_304_jump_to_subroutine_11']
+        "identifier": 'ACTION_304_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [6, 'ACTION_304_jump_to_subroutine_11']
     },
     {
         "identifier": 'ACTION_304_pause_8',
@@ -111,7 +111,7 @@ script = [
     {
         "identifier": 'ACTION_304_set_sprite_sequence_22',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_304_db_23',
@@ -121,12 +121,12 @@ script = [
     {
         "identifier": 'ACTION_304_embedded_animation_routine_24',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0x10, 0x80]
     },
     {
         "identifier": 'ACTION_304_embedded_animation_routine_25',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x01, 0x04, 0x00, 0x00, 0x10, 0x80]
     },
     {
         "identifier": 'ACTION_304_shift_z_up_steps_26',

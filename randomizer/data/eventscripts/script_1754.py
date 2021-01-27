@@ -5,12 +5,12 @@ script = [
     {
         "identifier": 'EVENT_1754_jmp_if_object_in_level_0',
         "command": 'jmp_if_object_in_level',
-        "args": [AreaObjects.NPC_2, Rooms._319_LANDS_END_DESERT_AREA_06, 'EVENT_1754_set_short_mem_11']
+        "args": [AreaObjects.NPC_2, Rooms._319_LANDS_END_DESERT_AREA_06, 'EVENT_1754_set_7000_to_7000_short_mem_11']
     },
     {
-        "identifier": 'EVENT_1754_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1754_set_7000_to_7000_short_mem_1',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1754_jmp_if_7000_not_equals_short_2',
@@ -64,9 +64,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_1754_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1754_set_7000_to_7000_short_mem_11',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1754_jmp_if_7000_equals_short_12',

@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_772_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_772_clear_solidity_bits_2',
@@ -63,9 +63,9 @@ script = [
         "args": [0x700c, 12]
     },
     {
-        "identifier": 'ACTION_772_add_short_13',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_772_inc_short_13',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_772_load_mem_14',
@@ -84,7 +84,7 @@ script = [
     {
         "identifier": 'ACTION_772_set_sprite_sequence_17',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_772_shift_northwest_steps_18',

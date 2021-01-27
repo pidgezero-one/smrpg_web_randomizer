@@ -6,9 +6,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_817_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 457, 'ACTION_817_set_sprite_sequence_6']
+        "identifier": 'ACTION_817_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [457, 'ACTION_817_set_sprite_sequence_6']
     },
     {
         "identifier": 'ACTION_817_set_priority_2',
@@ -30,7 +30,7 @@ script = [
     {
         "identifier": 'ACTION_817_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_817_sequence_looping_off_7',

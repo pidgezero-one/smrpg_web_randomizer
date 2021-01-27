@@ -28,9 +28,9 @@ script = [
         "args": [0, 'EVENT_933_close_dialog_74']
     },
     {
-        "identifier": 'EVENT_933_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_933_set_7000_short_mem_to_7000_5',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_933_run_dialog_6',
@@ -97,9 +97,9 @@ script = [
         "command": 'end_loop'
     },
     {
-        "identifier": 'EVENT_933_set_short_mem_19',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d9]
+        "identifier": 'EVENT_933_set_7000_to_70A0_short_mem_19',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d9]
     },
     {
         "identifier": 'EVENT_933_add_short_mem_20',
@@ -117,14 +117,14 @@ script = [
         "args": ['EVENT_933_action_queue_async_64']
     },
     {
-        "identifier": 'EVENT_933_set_short_mem_23',
-        "command": 'set_short_mem',
-        "args": [0x70d9, 0x7000]
+        "identifier": 'EVENT_933_set_70A0_short_mem_to_7000_23',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70d9]
     },
     {
-        "identifier": 'EVENT_933_set_short_mem_24',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_933_set_7000_to_7000_short_mem_24',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_933_mem_compare_val_25',

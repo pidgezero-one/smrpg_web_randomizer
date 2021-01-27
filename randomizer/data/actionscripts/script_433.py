@@ -14,7 +14,7 @@ script = [
     {
         "identifier": 'ACTION_433_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_433_inc_palette_row_by_3',
@@ -50,9 +50,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_433_mem_compare_10',
-        "command": 'mem_compare',
-        "args": [0x700c, 0x7034]
+        "identifier": 'ACTION_433_mem_compare_address_10',
+        "command": 'mem_compare_address',
+        "args": [0x7034]
     },
     {
         "identifier": 'ACTION_433_jmp_if_loaded_memory_is_not_0_11',

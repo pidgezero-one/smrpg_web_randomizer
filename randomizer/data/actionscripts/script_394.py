@@ -9,16 +9,16 @@ script = [
     {
         "identifier": 'ACTION_394_embedded_animation_routine_1',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x48, 0xff, 0x00, 0xe8, 0xff, 0x00, 0xfe, 0x80]
     },
     {
         "identifier": 'ACTION_394_embedded_animation_routine_2',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x00, 0x48, 0xff, 0x00, 0xe8, 0xff, 0x00, 0xfe, 0x80]
     },
     {
-        "identifier": 'ACTION_394_pause_3',
-        "command": 'pause',
+        "identifier": 'ACTION_394_pause_short_3',
+        "command": 'pause_short',
         "args": [598]
     },
     {

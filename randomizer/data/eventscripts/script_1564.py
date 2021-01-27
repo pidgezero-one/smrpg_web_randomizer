@@ -165,14 +165,14 @@ script = [
         "args": [[7], 'EVENT_1564_pause_12']
     },
     {
-        "identifier": 'EVENT_1564_set_short_mem_15',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_1564_set_7000_to_7000_short_mem_15',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_1564_set_short_mem_16',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_1564_set_7000_short_mem_to_7000_16',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1564_mem_7000_shift_left_17',
@@ -180,14 +180,14 @@ script = [
         "args": [0x7000, 8]
     },
     {
-        "identifier": 'EVENT_1564_set_short_mem_18',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7000]
+        "identifier": 'EVENT_1564_set_7000_short_mem_to_7000_18',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x700c]
     },
     {
-        "identifier": 'EVENT_1564_set_short_mem_19',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1564_set_7000_to_7000_short_mem_19',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1564_mem_7000_and_const_20',
@@ -423,9 +423,9 @@ script = [
                 "command": 'floating_on'
             },
             {
-                "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_set_short_mem_2',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7030]
+                "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_set_700C_to_7000_short_mem_2',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7030]
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_walk_f_direction_16_pixels_3',
@@ -438,7 +438,7 @@ script = [
             {
                 "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_jmp_if_mario_in_air_5',
                 "command": 'jmp_if_mario_in_air',
-                "args": ['EVENT_1564_action_queue_async_43_SUBSCRIPT_set_short_mem_2']
+                "args": ['EVENT_1564_action_queue_async_43_SUBSCRIPT_set_700C_to_7000_short_mem_2']
             },
             {
                 "identifier": 'EVENT_1564_action_queue_async_43_SUBSCRIPT_play_sound_6',

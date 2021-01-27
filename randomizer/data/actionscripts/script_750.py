@@ -14,7 +14,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_750_pause_3',
@@ -29,7 +29,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_750_pause_6',
@@ -54,11 +54,11 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_10',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
-        "identifier": 'ACTION_750_pause_11',
-        "command": 'pause',
+        "identifier": 'ACTION_750_pause_short_11',
+        "command": 'pause_short',
         "args": [292]
     },
     {
@@ -84,7 +84,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_16',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_750_pause_17',
@@ -99,7 +99,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_19',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_750_pause_20',
@@ -124,11 +124,11 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_24',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
-        "identifier": 'ACTION_750_pause_25',
-        "command": 'pause',
+        "identifier": 'ACTION_750_pause_short_25',
+        "command": 'pause_short',
         "args": [292]
     },
     {
@@ -148,7 +148,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_29',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_750_pause_30',
@@ -167,7 +167,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_33',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_750_pause_34',
@@ -192,11 +192,11 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_38',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
-        "identifier": 'ACTION_750_pause_39',
-        "command": 'pause',
+        "identifier": 'ACTION_750_pause_short_39',
+        "command": 'pause_short',
         "args": [292]
     },
     {
@@ -216,7 +216,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_43',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_750_pause_44',
@@ -235,7 +235,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_47',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_750_pause_48',
@@ -260,11 +260,11 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_52',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
-        "identifier": 'ACTION_750_pause_53',
-        "command": 'pause',
+        "identifier": 'ACTION_750_pause_short_53',
+        "command": 'pause_short',
         "args": [292]
     },
     {
@@ -284,7 +284,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_57',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_750_pause_58',
@@ -303,7 +303,7 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_61',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_750_pause_62',
@@ -328,11 +328,11 @@ script = [
     {
         "identifier": 'ACTION_750_set_sprite_sequence_66',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [9, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
-        "identifier": 'ACTION_750_pause_67',
-        "command": 'pause',
+        "identifier": 'ACTION_750_pause_short_67',
+        "command": 'pause_short',
         "args": [292]
     },
     {

@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'ACTION_94_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_94_pause_4',
@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'ACTION_94_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_94_play_sound_6',
@@ -43,7 +43,7 @@ script = [
     {
         "identifier": 'ACTION_94_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_94_play_sound_9',
@@ -58,7 +58,7 @@ script = [
     {
         "identifier": 'ACTION_94_set_sprite_sequence_11',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_94_play_sound_12',
@@ -73,7 +73,7 @@ script = [
     {
         "identifier": 'ACTION_94_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_94_play_sound_15',

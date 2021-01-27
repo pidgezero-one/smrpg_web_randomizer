@@ -4,12 +4,12 @@ script = [
     {
         "identifier": 'ACTION_798_jmp_if_random_above_66_0',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_799_set_animation_speed_0']
+        "args": [0x99aa, 'ACTION_800_pause_0']
     },
     {
         "identifier": 'ACTION_798_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 3, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_798_jump_to_height_silent_2',

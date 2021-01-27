@@ -65,7 +65,7 @@ script = [
     {
         "identifier": 'ACTION_607_jmp_if_random_above_66_13',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_607_turn_clockwise_45_degrees_n_times_21']
+        "args": [0x6e99, 'ACTION_607_set_700C_to_pressed_button_25']
     },
     {
         "identifier": 'ACTION_607_turn_clockwise_45_degrees_n_times_14',
@@ -126,9 +126,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_607_mem_compare_26',
-        "command": 'mem_compare',
-        "args": [0x700c, 25]
+        "identifier": 'ACTION_607_mem_compare_val_26',
+        "command": 'mem_compare_val',
+        "args": [25]
     },
     {
         "identifier": 'ACTION_607_jmp_if_comparison_result_is_lesser_27',
@@ -138,7 +138,7 @@ script = [
     {
         "identifier": 'ACTION_607_set_sprite_sequence_28',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [10, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_607_pause_29',

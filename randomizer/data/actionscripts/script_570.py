@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'ACTION_570_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_570_pause_5',
@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'ACTION_570_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_570_start_loop_n_times_7',
@@ -97,7 +97,7 @@ script = [
     {
         "identifier": 'ACTION_570_set_sprite_sequence_19',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_570_start_loop_n_times_20',
@@ -150,9 +150,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_570_add_short_30',
-        "command": 'add_short',
-        "args": [0x7012, 0x01]
+        "identifier": 'ACTION_570_inc_short_30',
+        "command": 'inc_short',
+        "args": [0x7012]
     },
     {
         "identifier": 'ACTION_570_end_loop_31',

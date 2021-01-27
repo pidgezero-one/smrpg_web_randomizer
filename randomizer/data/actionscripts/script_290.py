@@ -24,7 +24,7 @@ script = [
     {
         "identifier": 'ACTION_290_jmp_if_random_above_66_4',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_290_set_priority_6']
+        "args": [0x350d, 'ACTION_290_set_priority_6']
     },
     {
         "identifier": 'ACTION_290_jump_to_subroutine_5',
@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'ACTION_290_jmp_if_random_above_66_8',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_290_set_priority_10']
+        "args": [0x351a, 'ACTION_290_set_priority_10']
     },
     {
         "identifier": 'ACTION_290_jump_to_subroutine_9',
@@ -64,7 +64,7 @@ script = [
     {
         "identifier": 'ACTION_290_jmp_if_random_above_66_12',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_290_set_priority_14']
+        "args": [0x3527, 'ACTION_290_set_priority_14']
     },
     {
         "identifier": 'ACTION_290_jump_to_subroutine_13',
@@ -84,7 +84,7 @@ script = [
     {
         "identifier": 'ACTION_290_jmp_if_random_above_66_16',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_290_set_animation_speed_0']
+        "args": [0x34fc, 'ACTION_290_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_290_jump_to_subroutine_17',

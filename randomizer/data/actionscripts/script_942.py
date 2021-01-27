@@ -6,9 +6,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_942_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 13, 'ACTION_942_set_700C_to_pressed_button_37']
+        "identifier": 'ACTION_942_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [13, 'ACTION_942_set_700C_to_pressed_button_37']
     },
     {
         "identifier": 'ACTION_942_clear_solidity_bits_2',
@@ -42,7 +42,7 @@ script = [
     {
         "identifier": 'ACTION_942_set_object_memory_bits_8',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[]]
+        "args": [0x0b, []]
     },
     {
         "identifier": 'ACTION_942_walk_1_step_northeast_9',
@@ -54,13 +54,13 @@ script = [
         "args": [0xc8, 0x07]
     },
     {
-        "identifier": 'ACTION_942_set_short_mem_11',
-        "command": 'set_short_mem',
+        "identifier": 'ACTION_942_set_7000_short_mem_to_7000_short_mem_11',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7016, 0x7024]
     },
     {
-        "identifier": 'ACTION_942_set_short_mem_12',
-        "command": 'set_short_mem',
+        "identifier": 'ACTION_942_set_7000_short_mem_to_7000_short_mem_12',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7018, 0x7026]
     },
     {
@@ -135,7 +135,7 @@ script = [
     {
         "identifier": 'ACTION_942_set_object_memory_bits_28',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[0]]
+        "args": [0x0b, [0]]
     },
     {
         "identifier": 'ACTION_942_clear_solidity_bits_29',
@@ -151,13 +151,13 @@ script = [
         "command": 'visibility_off'
     },
     {
-        "identifier": 'ACTION_942_set_short_mem_32',
-        "command": 'set_short_mem',
+        "identifier": 'ACTION_942_set_7000_short_mem_to_7000_short_mem_32',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7024, 0x7016]
     },
     {
-        "identifier": 'ACTION_942_set_short_mem_33',
-        "command": 'set_short_mem',
+        "identifier": 'ACTION_942_set_7000_short_mem_to_7000_short_mem_33',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7026, 0x7018]
     },
     {
@@ -165,8 +165,8 @@ script = [
         "command": 'run_away_transfer'
     },
     {
-        "identifier": 'ACTION_942_pause_35',
-        "command": 'pause',
+        "identifier": 'ACTION_942_pause_short_35',
+        "command": 'pause_short',
         "args": [900]
     },
     {
@@ -179,9 +179,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_942_jmp_if_var_equals_short_38',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_942_db_43']
+        "identifier": 'ACTION_942_jmp_if_700C_equals_short_38',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_942_db_43']
     },
     {
         "identifier": 'ACTION_942_db_39',
@@ -191,7 +191,7 @@ script = [
     {
         "identifier": 'ACTION_942_embedded_animation_routine_40',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x80]
     },
     {
         "identifier": 'ACTION_942_pause_41',
@@ -211,7 +211,7 @@ script = [
     {
         "identifier": 'ACTION_942_embedded_animation_routine_44',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x80]
     },
     {
         "identifier": 'ACTION_942_pause_45',

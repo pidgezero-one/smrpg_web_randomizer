@@ -14,7 +14,7 @@ script = [
     {
         "identifier": 'ACTION_317_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_317_walk_1_step_northwest_3',
@@ -30,9 +30,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_317_add_6',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_6',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_walk_1_step_southwest_7',
@@ -47,9 +47,9 @@ script = [
         "command": 'walk_1_step_southwest'
     },
     {
-        "identifier": 'ACTION_317_add_10',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_10',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_walk_1_step_southwest_11',
@@ -64,9 +64,9 @@ script = [
         "command": 'walk_1_step_southwest'
     },
     {
-        "identifier": 'ACTION_317_add_14',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_14',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_shift_southwest_steps_15',
@@ -89,9 +89,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_317_add_19',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_19',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_shift_southwest_steps_20',
@@ -99,9 +99,9 @@ script = [
         "args": [4]
     },
     {
-        "identifier": 'ACTION_317_add_21',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_21',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_shift_southwest_steps_22',
@@ -114,9 +114,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_317_add_24',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_24',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_shift_southwest_steps_25',
@@ -132,9 +132,9 @@ script = [
         "command": 'walk_1_step_southwest'
     },
     {
-        "identifier": 'ACTION_317_add_28',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_28',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_walk_1_step_southeast_29',
@@ -150,9 +150,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_317_add_32',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_32',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_shift_southeast_steps_33',
@@ -168,9 +168,9 @@ script = [
         "command": 'walk_1_step_southeast'
     },
     {
-        "identifier": 'ACTION_317_add_36',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_36',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_walk_1_step_southeast_37',
@@ -186,9 +186,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_317_add_40',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_40',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_shift_northeast_steps_41',
@@ -205,9 +205,9 @@ script = [
         "command": 'walk_1_step_northeast'
     },
     {
-        "identifier": 'ACTION_317_add_44',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_44',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_shift_northeast_steps_45',
@@ -215,9 +215,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_317_add_46',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_46',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_walk_1_step_northeast_47',
@@ -232,9 +232,9 @@ script = [
         "command": 'dec_z_coord_1_step'
     },
     {
-        "identifier": 'ACTION_317_add_50',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_50',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_shift_southeast_steps_51',
@@ -250,9 +250,9 @@ script = [
         "command": 'walk_1_step_southeast'
     },
     {
-        "identifier": 'ACTION_317_add_54',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_54',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_walk_1_step_northeast_55',
@@ -269,9 +269,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_317_add_58',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_317_inc_58',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_317_visibility_off_59',

@@ -805,9 +805,9 @@ script = [
         "args": [0x70ae]
     },
     {
-        "identifier": 'EVENT_476_set_short_mem_127',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ae]
+        "identifier": 'EVENT_476_set_7000_to_70A0_short_mem_127',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_476_jmp_if_7000_equals_short_128',

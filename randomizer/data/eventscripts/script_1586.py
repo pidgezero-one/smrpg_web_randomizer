@@ -8,9 +8,9 @@ script = [
         "args": [0x7079, 0, 'EVENT_1586_set_5']
     },
     {
-        "identifier": 'EVENT_1586_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702a]
+        "identifier": 'EVENT_1586_set_7000_to_7000_short_mem_1',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_1586_mem_compare_val_2',
@@ -34,7 +34,7 @@ script = [
     {
         "identifier": 'EVENT_1586_jmp_if_bit_clear_6',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7043, 4, 'EVENT_1586_set_short_mem_8']
+        "args": [0x7043, 4, 'EVENT_1586_set_7000_short_mem_to_7000_8']
     },
     {
         "identifier": 'EVENT_1586_add_7',
@@ -42,9 +42,9 @@ script = [
         "args": [0x7000, 65522]
     },
     {
-        "identifier": 'EVENT_1586_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x702c, 0x7000]
+        "identifier": 'EVENT_1586_set_7000_short_mem_to_7000_8',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x702c]
     },
     {
         "identifier": 'EVENT_1586_pause_9',

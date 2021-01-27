@@ -188,9 +188,9 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_611_set_short_mem_31',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_611_set_7000_to_70A0_short_mem_31',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_611_inc_32',
@@ -208,9 +208,9 @@ script = [
         "args": [2509, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_611_set_short_mem_35',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_611_set_7000_short_mem_to_7000_35',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_611_dec_short_36',
@@ -291,9 +291,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_611_set_short_mem_49',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_611_set_7000_to_7000_short_mem_49',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_611_run_dialog_50',
@@ -349,9 +349,9 @@ script = [
         "args": [1002, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_611_set_short_mem_61',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_611_set_7000_to_7000_short_mem_61',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_611_dec_short_mem_62',
@@ -359,9 +359,9 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_611_set_short_mem_63',
-        "command": 'set_short_mem',
-        "args": [0x70ac, 0x7000]
+        "identifier": 'EVENT_611_set_70A0_short_mem_to_7000_63',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_611_action_queue_async_64',
@@ -558,9 +558,9 @@ script = [
         "args": [0x704c, 1, 'EVENT_611_jmp_if_bit_set_104']
     },
     {
-        "identifier": 'EVENT_611_set_short_mem_94',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b8]
+        "identifier": 'EVENT_611_set_7000_to_70A0_short_mem_94',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_611_jmp_if_7000_equals_short_95',

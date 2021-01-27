@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_630_set_object_memory_bits_1',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[1]]
+        "args": [0x0b, [1]]
     },
     {
         "identifier": 'ACTION_630_set_animation_speed_2',

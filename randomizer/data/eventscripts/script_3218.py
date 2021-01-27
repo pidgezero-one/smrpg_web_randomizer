@@ -51,9 +51,9 @@ script = [
         "args": [1706, AreaObjects.NPC_12, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3218_set_short_mem_10',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_3218_set_7000_to_7000_short_mem_10',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3218_add_11',
@@ -66,9 +66,9 @@ script = [
         "args": [0x7000, AreaObjects.NPC_12, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3218_set_short_mem_13',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_3218_set_7000_to_7000_short_mem_13',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_3218_add_14',
@@ -81,9 +81,9 @@ script = [
         "args": [0x7000, AreaObjects.NPC_12, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3218_set_short_mem_16',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7028]
+        "identifier": 'EVENT_3218_set_7000_to_7000_short_mem_16',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7028]
     },
     {
         "identifier": 'EVENT_3218_add_17',
@@ -96,9 +96,9 @@ script = [
         "args": [0x7000, AreaObjects.NPC_12, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3218_set_short_mem_19',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702a]
+        "identifier": 'EVENT_3218_set_7000_to_7000_short_mem_19',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_3218_add_20',
@@ -111,9 +111,9 @@ script = [
         "args": [0x7000, AreaObjects.NPC_12, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3218_set_short_mem_22',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702c]
+        "identifier": 'EVENT_3218_set_7000_to_7000_short_mem_22',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702c]
     },
     {
         "identifier": 'EVENT_3218_add_23',
@@ -126,9 +126,9 @@ script = [
         "args": [0x7000, AreaObjects.NPC_12, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_3218_set_short_mem_25',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702e]
+        "identifier": 'EVENT_3218_set_7000_to_7000_short_mem_25',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702e]
     },
     {
         "identifier": 'EVENT_3218_add_26',

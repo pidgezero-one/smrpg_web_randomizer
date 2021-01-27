@@ -47,7 +47,7 @@ script = [
     {
         "identifier": 'ACTION_665_set_sprite_sequence_9',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_665_add_z_coord_1_step_10',
@@ -71,7 +71,7 @@ script = [
     {
         "identifier": 'ACTION_665_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_665_pause_15',
@@ -81,7 +81,7 @@ script = [
     {
         "identifier": 'ACTION_665_set_sprite_sequence_16',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_665_dec_z_coord_1_step_17',
@@ -109,7 +109,7 @@ script = [
     {
         "identifier": 'ACTION_665_jmp_if_random_above_66_22',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_665_pause_3']
+        "args": [0x797c, 'ACTION_665_pause_4']
     },
     {
         "identifier": 'ACTION_665_jmp_23',

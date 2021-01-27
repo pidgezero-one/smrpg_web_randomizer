@@ -22,7 +22,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [9, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_5',
@@ -32,7 +32,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_7',
@@ -42,7 +42,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [13, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [13, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_9',
@@ -52,7 +52,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_10',
         "command": 'set_sprite_sequence',
-        "args": [15, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [15, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_11',
@@ -62,7 +62,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_12',
         "command": 'set_sprite_sequence',
-        "args": [16, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [16, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_13',
@@ -72,7 +72,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [17, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [17, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_15',
@@ -82,7 +82,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_16',
         "command": 'set_sprite_sequence',
-        "args": [18, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [18, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_17',
@@ -97,7 +97,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_19',
         "command": 'set_sprite_sequence',
-        "args": [19, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [19, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_20',
@@ -107,7 +107,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_21',
         "command": 'set_sprite_sequence',
-        "args": [20, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [20, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_22',
@@ -117,7 +117,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_23',
         "command": 'set_sprite_sequence',
-        "args": [23, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [23, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_24',
@@ -127,7 +127,7 @@ script = [
     {
         "identifier": 'ACTION_386_set_sprite_sequence_25',
         "command": 'set_sprite_sequence',
-        "args": [22, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [22, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_386_pause_26',

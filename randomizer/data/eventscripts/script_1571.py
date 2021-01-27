@@ -943,19 +943,19 @@ script = [
         "args": [AreaObjects.SCREEN_FOCUS]
     },
     {
-        "identifier": 'EVENT_1571_set_short_mem_85',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1571_set_7000_to_7000_short_mem_85',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_1571_set_short_mem_86',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x7000]
+        "identifier": 'EVENT_1571_set_70A0_short_mem_to_7000_86',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1571_jmp_if_mario_in_air_87',
         "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_1571_set_short_mem_100']
+        "args": ['EVENT_1571_set_7000_to_7000_short_mem_100']
     },
     {
         "identifier": 'EVENT_1571_enable_controls_until_return_88',
@@ -1078,14 +1078,14 @@ script = [
         "args": ['EVENT_1571_enable_controls_until_return_70']
     },
     {
-        "identifier": 'EVENT_1571_set_short_mem_100',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7028]
+        "identifier": 'EVENT_1571_set_7000_to_7000_short_mem_100',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7028]
     },
     {
-        "identifier": 'EVENT_1571_set_short_mem_101',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1571_set_70A0_short_mem_to_7000_101',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1571_pause_action_script_102',
@@ -1274,19 +1274,19 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1571_swap_short_mem_128',
-        "command": 'swap_short_mem',
-        "args": [0x7000, 0x7028]
+        "identifier": 'EVENT_1571_db_128',
+        "command": 'db',
+        "args": [0xbd, 0x00, 0x14]
     },
     {
-        "identifier": 'EVENT_1571_swap_short_mem_129',
-        "command": 'swap_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1571_db_129',
+        "command": 'db',
+        "args": [0xbd, 0x00, 0x13]
     },
     {
-        "identifier": 'EVENT_1571_swap_short_mem_130',
-        "command": 'swap_short_mem',
-        "args": [0x7000, 0x7028]
+        "identifier": 'EVENT_1571_db_130',
+        "command": 'db',
+        "args": [0xbd, 0x00, 0x14]
     },
     {
         "identifier": 'EVENT_1571_jmp_131',
@@ -1299,14 +1299,14 @@ script = [
         "args": [MusicDirections.SLOW_DOWN, 0, 30]
     },
     {
-        "identifier": 'EVENT_1571_set_short_mem_133',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7028]
+        "identifier": 'EVENT_1571_set_7000_to_7000_short_mem_133',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7028]
     },
     {
-        "identifier": 'EVENT_1571_set_short_mem_134',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x7000]
+        "identifier": 'EVENT_1571_set_70A0_short_mem_to_7000_134',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1571_set_action_script_sync_135',

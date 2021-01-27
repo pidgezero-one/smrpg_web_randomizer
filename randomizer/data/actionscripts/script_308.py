@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'ACTION_308_embedded_animation_routine_4',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x80, 0x00, 0x80]
     },
     {
         "identifier": 'ACTION_308_turn_random_direction_5',

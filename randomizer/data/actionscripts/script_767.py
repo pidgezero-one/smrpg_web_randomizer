@@ -21,7 +21,7 @@ script = [
     {
         "identifier": 'ACTION_767_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [15, inc_sprite=1, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [15, 1, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_767_db_5',
@@ -45,7 +45,7 @@ script = [
     {
         "identifier": 'ACTION_767_set_sprite_sequence_9',
         "command": 'set_sprite_sequence',
-        "args": [14, inc_sprite=4, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [14, 4, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_767_pause_10',
@@ -55,7 +55,7 @@ script = [
     {
         "identifier": 'ACTION_767_set_sprite_sequence_11',
         "command": 'set_sprite_sequence',
-        "args": [15, inc_sprite=4, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [15, 4, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_767_pause_12',
@@ -65,7 +65,7 @@ script = [
     {
         "identifier": 'ACTION_767_set_sprite_sequence_13',
         "command": 'set_sprite_sequence',
-        "args": [16, inc_sprite=4, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [16, 4, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_767_pause_14',
@@ -75,7 +75,7 @@ script = [
     {
         "identifier": 'ACTION_767_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [15, inc_sprite=4, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [15, 4, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_767_ret_16',

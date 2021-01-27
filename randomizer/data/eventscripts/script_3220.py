@@ -112,9 +112,9 @@ script = [
                 "command": 'ret'
             },
             {
-                "identifier": 'EVENT_3220_action_queue_async_2_SUBSCRIPT_set_short_mem_20',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7032]
+                "identifier": 'EVENT_3220_action_queue_async_2_SUBSCRIPT_set_700C_to_7000_short_mem_20',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7032]
             },
             {
                 "identifier": 'EVENT_3220_action_queue_async_2_SUBSCRIPT_face_east_7C_21',

@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_227_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 2, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_227_pause_2',
@@ -62,8 +62,8 @@ script = [
         "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_227_pause_12',
-        "command": 'pause',
+        "identifier": 'ACTION_227_pause_short_12',
+        "command": 'pause_short',
         "args": [384]
     },
     {

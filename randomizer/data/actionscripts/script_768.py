@@ -6,14 +6,14 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_768_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 262, 'ACTION_768_set_priority_21']
+        "identifier": 'ACTION_768_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [262, 'ACTION_768_set_priority_21']
     },
     {
-        "identifier": 'ACTION_768_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 270, 'ACTION_768_set_priority_21']
+        "identifier": 'ACTION_768_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [270, 'ACTION_768_set_priority_21']
     },
     {
         "identifier": 'ACTION_768_set_700C_to_pressed_button_3',

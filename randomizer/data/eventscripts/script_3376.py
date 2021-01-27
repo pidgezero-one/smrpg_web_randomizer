@@ -7,9 +7,9 @@ script = [
         "command": 'speed_up_music_to_normal'
     },
     {
-        "identifier": 'EVENT_3376_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70e7]
+        "identifier": 'EVENT_3376_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70e7]
     },
     {
         "identifier": 'EVENT_3376_jmp_if_7000_all_bits_clear_2',
@@ -29,7 +29,7 @@ script = [
     {
         "identifier": 'EVENT_3376_jmp_if_7000_all_bits_clear_5',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[3], 'EVENT_3376_set_short_mem_8']
+        "args": [[3], 'EVENT_3376_set_7000_to_70A0_short_mem_8']
     },
     {
         "identifier": 'EVENT_3376_apply_tile_mod_6',
@@ -42,9 +42,9 @@ script = [
         "args": [Rooms._454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, 1, [_0x6BFlags.PERMANENT]]
     },
     {
-        "identifier": 'EVENT_3376_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70e8]
+        "identifier": 'EVENT_3376_set_7000_to_70A0_short_mem_8',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70e8]
     },
     {
         "identifier": 'EVENT_3376_jmp_if_7000_all_bits_clear_9',
@@ -64,7 +64,7 @@ script = [
     {
         "identifier": 'EVENT_3376_jmp_if_7000_all_bits_clear_12',
         "command": 'jmp_if_7000_all_bits_clear',
-        "args": [[3], 'EVENT_3376_set_short_mem_15']
+        "args": [[3], 'EVENT_3376_set_7000_to_70A0_short_mem_15']
     },
     {
         "identifier": 'EVENT_3376_apply_tile_mod_13',
@@ -77,9 +77,9 @@ script = [
         "args": [Rooms._454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, 3, [_0x6BFlags.PERMANENT]]
     },
     {
-        "identifier": 'EVENT_3376_set_short_mem_15',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70e9]
+        "identifier": 'EVENT_3376_set_7000_to_70A0_short_mem_15',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70e9]
     },
     {
         "identifier": 'EVENT_3376_jmp_if_7000_all_bits_clear_16',
@@ -350,14 +350,14 @@ script = [
         "args": [0x0007]
     },
     {
-        "identifier": 'EVENT_3376_set_short_mem_57',
-        "command": 'set_short_mem',
-        "args": [0x703e, 0x7000]
+        "identifier": 'EVENT_3376_set_7000_short_mem_to_7000_57',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703e]
     },
     {
-        "identifier": 'EVENT_3376_set_short_mem_58',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b7]
+        "identifier": 'EVENT_3376_set_7000_to_70A0_short_mem_58',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b7]
     },
     {
         "identifier": 'EVENT_3376_mem_7000_or_var_59',
@@ -365,14 +365,14 @@ script = [
         "args": [0x703e]
     },
     {
-        "identifier": 'EVENT_3376_set_short_mem_60',
-        "command": 'set_short_mem',
-        "args": [0x70b7, 0x7000]
+        "identifier": 'EVENT_3376_set_70A0_short_mem_to_7000_60',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b7]
     },
     {
-        "identifier": 'EVENT_3376_set_short_mem_61',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x703e]
+        "identifier": 'EVENT_3376_set_7000_to_7000_short_mem_61',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_3376_jmp_if_7000_equals_short_62',

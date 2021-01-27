@@ -25,19 +25,19 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_309_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_309_jmp_if_random_above_128_11']
+        "identifier": 'ACTION_309_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_309_jmp_if_random_above_128_11']
     },
     {
-        "identifier": 'ACTION_309_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_309_pause_10']
+        "identifier": 'ACTION_309_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_309_pause_10']
     },
     {
-        "identifier": 'ACTION_309_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_309_pause_9']
+        "identifier": 'ACTION_309_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_309_pause_9']
     },
     {
         "identifier": 'ACTION_309_pause_8',
@@ -85,12 +85,12 @@ script = [
     {
         "identifier": 'ACTION_309_set_700C_to_object_coord_17',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_309_mem_compare_18',
-        "command": 'mem_compare',
-        "args": [0x700c, 8]
+        "identifier": 'ACTION_309_mem_compare_val_18',
+        "command": 'mem_compare_val',
+        "args": [8]
     },
     {
         "identifier": 'ACTION_309_jmp_if_comparison_result_is_greater_or_equal_19',

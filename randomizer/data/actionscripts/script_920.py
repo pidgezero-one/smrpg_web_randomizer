@@ -9,22 +9,22 @@ script = [
     {
         "identifier": 'ACTION_920_set_700C_to_object_coord_1',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_920_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 7, 'ACTION_920_set_sprite_sequence_14']
+        "identifier": 'ACTION_920_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [7, 'ACTION_920_set_sprite_sequence_14']
     },
     {
-        "identifier": 'ACTION_920_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_920_set_sprite_sequence_14']
+        "identifier": 'ACTION_920_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_920_set_sprite_sequence_14']
     },
     {
         "identifier": 'ACTION_920_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_920_object_memory_set_bit_5',
@@ -49,7 +49,7 @@ script = [
     {
         "identifier": 'ACTION_920_set_sprite_sequence_9',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_920_pause_10',
@@ -73,7 +73,7 @@ script = [
     {
         "identifier": 'ACTION_920_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_920_object_memory_set_bit_15',
@@ -93,7 +93,7 @@ script = [
     {
         "identifier": 'ACTION_920_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_920_pause_19',

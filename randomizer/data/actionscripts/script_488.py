@@ -72,7 +72,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_pause_15',
@@ -97,7 +97,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_19',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_shift_southeast_steps_20',
@@ -130,7 +130,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_26',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_pause_27',
@@ -155,7 +155,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_31',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_shift_northeast_steps_32',
@@ -188,7 +188,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_38',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_pause_39',
@@ -213,7 +213,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_43',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_shift_northeast_steps_44',
@@ -246,7 +246,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_50',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_pause_51',
@@ -271,7 +271,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_55',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_shift_northeast_steps_56',
@@ -304,7 +304,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_62',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=1, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [6, 1, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_pause_63',
@@ -319,7 +319,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_65',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=1, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [3, 1, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_488_pause_66',
@@ -334,7 +334,7 @@ script = [
     {
         "identifier": 'ACTION_488_set_sprite_sequence_68',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_488_shift_northwest_steps_69',

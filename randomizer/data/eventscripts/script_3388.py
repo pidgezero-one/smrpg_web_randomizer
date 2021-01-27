@@ -10,7 +10,7 @@ script = [
     {
         "identifier": 'EVENT_3388_jmp_1',
         "command": 'jmp',
-        "args": ['EVENT_3388_set_short_mem_23']
+        "args": ['EVENT_3388_set_7000_to_70A0_short_mem_23']
     },
     {
         "identifier": 'EVENT_3388_pause_2',
@@ -74,7 +74,7 @@ script = [
     {
         "identifier": 'EVENT_3388_jmp_14',
         "command": 'jmp',
-        "args": ['EVENT_3388_set_short_mem_23']
+        "args": ['EVENT_3388_set_7000_to_70A0_short_mem_23']
     },
     {
         "identifier": 'EVENT_3388_set_15',
@@ -84,7 +84,7 @@ script = [
     {
         "identifier": 'EVENT_3388_jmp_16',
         "command": 'jmp',
-        "args": ['EVENT_3388_set_short_mem_23']
+        "args": ['EVENT_3388_set_7000_to_70A0_short_mem_23']
     },
     {
         "identifier": 'EVENT_3388_play_sound_17',
@@ -104,7 +104,7 @@ script = [
     {
         "identifier": 'EVENT_3388_jmp_20',
         "command": 'jmp',
-        "args": ['EVENT_3388_set_short_mem_23']
+        "args": ['EVENT_3388_set_7000_to_70A0_short_mem_23']
     },
     {
         "identifier": 'EVENT_3388_set_21',
@@ -114,12 +114,12 @@ script = [
     {
         "identifier": 'EVENT_3388_jmp_22',
         "command": 'jmp',
-        "args": ['EVENT_3388_set_short_mem_23']
+        "args": ['EVENT_3388_set_7000_to_70A0_short_mem_23']
     },
     {
-        "identifier": 'EVENT_3388_set_short_mem_23',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ad]
+        "identifier": 'EVENT_3388_set_7000_to_70A0_short_mem_23',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ad]
     },
     {
         "identifier": 'EVENT_3388_add_24',

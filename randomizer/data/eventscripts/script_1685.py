@@ -87,9 +87,9 @@ script = [
         "args": [0x7024, 0x0001]
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_16',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_1685_set_7000_to_70A0_short_mem_16',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1685_add_17',
@@ -97,19 +97,19 @@ script = [
         "args": [0x7000, 16]
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_18',
-        "command": 'set_short_mem',
-        "args": [0x70ac, 0x7000]
+        "identifier": 'EVENT_1685_set_70A0_short_mem_to_7000_18',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1685_jmp_19',
         "command": 'jmp',
-        "args": ['EVENT_1685_set_short_mem_39']
+        "args": ['EVENT_1685_set_7000_to_7000_short_mem_39']
     },
     {
         "identifier": 'EVENT_1685_jmp_if_var_not_equals_short_20',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7026, 0, 'EVENT_1685_set_short_mem_26']
+        "args": [0x7026, 0, 'EVENT_1685_set_7000_to_70A0_short_mem_26']
     },
     {
         "identifier": 'EVENT_1685_set_short_21',
@@ -117,9 +117,9 @@ script = [
         "args": [0x7026, 0x0004]
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_22',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_1685_set_7000_to_70A0_short_mem_22',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1685_add_23',
@@ -127,19 +127,19 @@ script = [
         "args": [0x7000, 16]
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_24',
-        "command": 'set_short_mem',
-        "args": [0x70ac, 0x7000]
+        "identifier": 'EVENT_1685_set_70A0_short_mem_to_7000_24',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1685_jmp_25',
         "command": 'jmp',
-        "args": ['EVENT_1685_set_short_mem_39']
+        "args": ['EVENT_1685_set_7000_to_7000_short_mem_39']
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_26',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_1685_set_7000_to_70A0_short_mem_26',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1685_add_27',
@@ -147,9 +147,9 @@ script = [
         "args": [0x7000, 16]
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_28',
-        "command": 'set_short_mem',
-        "args": [0x70ac, 0x7000]
+        "identifier": 'EVENT_1685_set_70A0_short_mem_to_7000_28',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1685_set_29',
@@ -341,9 +341,9 @@ script = [
         "args": [0x704f, 2]
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_39',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_1685_set_7000_to_7000_short_mem_39',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_1685_add_short_mem_40',
@@ -351,14 +351,14 @@ script = [
         "args": [0x7000, 0x7026]
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_41',
-        "command": 'set_short_mem',
-        "args": [0x7028, 0x7000]
+        "identifier": 'EVENT_1685_set_7000_short_mem_to_7000_41',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7028]
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_42',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_1685_set_7000_to_70A0_short_mem_42',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1685_mem_7000_or_var_43',
@@ -366,9 +366,9 @@ script = [
         "args": [0x7028]
     },
     {
-        "identifier": 'EVENT_1685_set_short_mem_44',
-        "command": 'set_short_mem',
-        "args": [0x70ac, 0x7000]
+        "identifier": 'EVENT_1685_set_70A0_short_mem_to_7000_44',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1685_ret_45',

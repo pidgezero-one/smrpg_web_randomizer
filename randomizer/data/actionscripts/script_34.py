@@ -249,9 +249,9 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_34_jmp_if_var_not_equals_short_54',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 0, 'ACTION_34_load_mem_60']
+        "identifier": 'ACTION_34_jmp_if_700C_not_equals_short_54',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [0, 'ACTION_34_load_mem_60']
     },
     {
         "identifier": 'ACTION_34_db_55',
@@ -322,12 +322,12 @@ script = [
     {
         "identifier": 'ACTION_34_set_700C_to_object_coord_69',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_34_mem_compare_70',
-        "command": 'mem_compare',
-        "args": [0x700c, 4]
+        "identifier": 'ACTION_34_mem_compare_val_70',
+        "command": 'mem_compare_val',
+        "args": [4]
     },
     {
         "identifier": 'ACTION_34_jmp_if_comparison_result_is_lesser_71',

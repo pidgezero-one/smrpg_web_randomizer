@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'ACTION_621_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [10, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_621_pause_2',
@@ -25,9 +25,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_621_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x70aa, 0x700c]
+        "identifier": 'ACTION_621_set_70A0_short_mem_to_700C_5',
+        "command": 'set_70A0_short_mem_to_700C',
+        "args": [0x70aa]
     },
     {
         "identifier": 'ACTION_621_create_packet_at_object_coords_jmp_if_null_6',

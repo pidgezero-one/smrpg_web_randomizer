@@ -56,7 +56,7 @@ script = [
     {
         "identifier": 'ACTION_43_set_sprite_sequence_11',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_43_set_animation_speed_12',
@@ -184,7 +184,7 @@ script = [
     {
         "identifier": 'ACTION_43_set_sprite_sequence_38',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_43_set_animation_speed_39',

@@ -4,22 +4,22 @@ script = [
     {
         "identifier": 'ACTION_273_set_700C_to_object_coord_0',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_273_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 7, 'ACTION_273_set_sprite_sequence_8']
+        "identifier": 'ACTION_273_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [7, 'ACTION_273_set_sprite_sequence_8']
     },
     {
-        "identifier": 'ACTION_273_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_273_set_sprite_sequence_8']
+        "identifier": 'ACTION_273_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_273_set_sprite_sequence_8']
     },
     {
         "identifier": 'ACTION_273_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_273_object_memory_set_bit_4',
@@ -32,8 +32,8 @@ script = [
         "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
     },
     {
-        "identifier": 'ACTION_273_pause_6',
-        "command": 'pause',
+        "identifier": 'ACTION_273_pause_short_6',
+        "command": 'pause_short',
         "args": [360]
     },
     {
@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'ACTION_273_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_273_object_memory_set_bit_9',
@@ -57,8 +57,8 @@ script = [
         "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
     },
     {
-        "identifier": 'ACTION_273_pause_11',
-        "command": 'pause',
+        "identifier": 'ACTION_273_pause_short_11',
+        "command": 'pause_short',
         "args": [360]
     },
     {

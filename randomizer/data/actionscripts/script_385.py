@@ -76,7 +76,7 @@ script = [
     {
         "identifier": 'ACTION_385_set_sprite_sequence_16',
         "command": 'set_sprite_sequence',
-        "args": [27, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [27, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_385_pause_17',
@@ -86,7 +86,7 @@ script = [
     {
         "identifier": 'ACTION_385_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [28, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [28, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_385_pause_19',
@@ -96,7 +96,7 @@ script = [
     {
         "identifier": 'ACTION_385_set_sprite_sequence_20',
         "command": 'set_sprite_sequence',
-        "args": [29, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [29, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_385_pause_21',
@@ -106,7 +106,7 @@ script = [
     {
         "identifier": 'ACTION_385_set_sprite_sequence_22',
         "command": 'set_sprite_sequence',
-        "args": [30, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [30, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_385_pause_23',
@@ -116,7 +116,7 @@ script = [
     {
         "identifier": 'ACTION_385_set_sprite_sequence_24',
         "command": 'set_sprite_sequence',
-        "args": [12, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [12, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_385_face_south_25',

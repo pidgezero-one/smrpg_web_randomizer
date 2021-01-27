@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'ACTION_971_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_971_db_4',
@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'ACTION_971_embedded_animation_routine_5',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
     },
     {
         "identifier": 'ACTION_971_shift_north_pixels_6',
@@ -73,7 +73,7 @@ script = [
     {
         "identifier": 'ACTION_971_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_971_shift_southwest_steps_15',
@@ -98,11 +98,11 @@ script = [
     {
         "identifier": 'ACTION_971_embedded_animation_routine_19',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x80, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
-        "identifier": 'ACTION_971_pause_20',
-        "command": 'pause',
+        "identifier": 'ACTION_971_pause_short_20',
+        "command": 'pause_short',
         "args": [511]
     },
     {

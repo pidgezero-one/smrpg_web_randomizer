@@ -111,14 +111,14 @@ script = [
         "args": [items.YoshiCookie]
     },
     {
-        "identifier": 'EVENT_463_set_short_mem_22',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_463_set_7000_short_mem_to_7000_22',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_463_set_short_mem_23',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d8]
+        "identifier": 'EVENT_463_set_7000_to_70A0_short_mem_23',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d8]
     },
     {
         "identifier": 'EVENT_463_add_short_mem_24',

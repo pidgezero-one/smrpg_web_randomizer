@@ -171,9 +171,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2407_set_short_mem_19',
-        "command": 'set_short_mem',
-        "args": [0x7016, 0x7000]
+        "identifier": 'EVENT_2407_set_7000_short_mem_to_7000_19',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7016]
     },
     {
         "identifier": 'EVENT_2407_set_7000_to_object_coord_20',
@@ -181,9 +181,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.Y, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_2407_set_short_mem_21',
-        "command": 'set_short_mem',
-        "args": [0x7018, 0x7000]
+        "identifier": 'EVENT_2407_set_7000_short_mem_to_7000_21',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7018]
     },
     {
         "identifier": 'EVENT_2407_action_queue_async_22',

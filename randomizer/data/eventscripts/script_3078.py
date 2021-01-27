@@ -8,14 +8,14 @@ script = [
         "args": [Sounds._005_BLOCK_SWITCH, 6]
     },
     {
-        "identifier": 'EVENT_3078_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_3078_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_3078_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x70b4, 0x7000]
+        "identifier": 'EVENT_3078_set_70A0_short_mem_to_7000_2',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b4]
     },
     {
         "identifier": 'EVENT_3078_action_queue_sync_3',
@@ -73,9 +73,9 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
-        "identifier": 'EVENT_3078_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_3078_set_7000_to_7000_short_mem_5',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_3078_add_6',
@@ -83,9 +83,9 @@ script = [
         "args": [0x7000, 608]
     },
     {
-        "identifier": 'EVENT_3078_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x7014, 0x7000]
+        "identifier": 'EVENT_3078_set_7000_short_mem_to_7000_7',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_3078_clear_bit_8',

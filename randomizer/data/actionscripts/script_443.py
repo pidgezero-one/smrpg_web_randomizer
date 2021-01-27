@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_443_set_object_memory_bits_1',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[1]]
+        "args": [0x0e, [1]]
     },
     {
         "identifier": 'ACTION_443_object_memory_set_bit_2',
@@ -44,9 +44,9 @@ script = [
         "args": [0x700c]
     },
     {
-        "identifier": 'ACTION_443_set_short_mem_9',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x700c]
+        "identifier": 'ACTION_443_set_70A0_short_mem_to_700C_9',
+        "command": 'set_70A0_short_mem_to_700C',
+        "args": [0x70a9]
     },
     {
         "identifier": 'ACTION_443_db_10',

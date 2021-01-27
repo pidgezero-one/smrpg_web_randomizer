@@ -65,7 +65,7 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_to_subroutine_12',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3355_set_short_mem_84']
+        "args": ['EVENT_3355_set_7000_to_7000_short_mem_84']
     },
     {
         "identifier": 'EVENT_3355_run_dialog_13',
@@ -477,7 +477,7 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_to_subroutine_53',
         "command": 'jmp_to_subroutine',
-        "args": ['EVENT_3355_set_short_mem_84']
+        "args": ['EVENT_3355_set_7000_to_7000_short_mem_84']
     },
     {
         "identifier": 'EVENT_3355_run_dialog_54',
@@ -693,14 +693,14 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3355_set_short_mem_84',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_3355_set_7000_to_7000_short_mem_84',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_3355_set_short_mem_85',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x7000]
+        "identifier": 'EVENT_3355_set_70A0_short_mem_to_7000_85',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_3355_set_object_memory_to_86',
@@ -870,9 +870,9 @@ script = [
         "args": [0x7044, 7]
     },
     {
-        "identifier": 'EVENT_3355_set_short_mem_116',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_3355_set_7000_to_7000_short_mem_116',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3355_set_short_117',

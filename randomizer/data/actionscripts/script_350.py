@@ -30,39 +30,39 @@ script = [
         "args": [0x0007]
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_350_create_packet_at_object_coords_jmp_if_null_20']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_350_create_packet_at_object_coords_jmp_if_null_20']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_350_pause_19']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_350_pause_19']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_350_pause_18']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_350_pause_18']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 3, 'ACTION_350_pause_17']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_9',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [3, 'ACTION_350_pause_17']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 4, 'ACTION_350_pause_16']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [4, 'ACTION_350_pause_16']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 5, 'ACTION_350_pause_15']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_11',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [5, 'ACTION_350_pause_15']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 6, 'ACTION_350_pause_14']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_12',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [6, 'ACTION_350_pause_14']
     },
     {
         "identifier": 'ACTION_350_pause_13',
@@ -159,34 +159,34 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_33',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 26, 'ACTION_350_transfer_to_xyzf_39']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_33',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [26, 'ACTION_350_transfer_to_xyzf_39']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_34',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 27, 'ACTION_350_transfer_to_xyzf_41']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_34',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [27, 'ACTION_350_transfer_to_xyzf_41']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_35',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 28, 'ACTION_350_transfer_to_xyzf_43']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_35',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [28, 'ACTION_350_transfer_to_xyzf_43']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_36',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 29, 'ACTION_350_transfer_to_xyzf_45']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_36',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [29, 'ACTION_350_transfer_to_xyzf_45']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_37',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 30, 'ACTION_350_transfer_to_xyzf_47']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_37',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [30, 'ACTION_350_transfer_to_xyzf_47']
     },
     {
-        "identifier": 'ACTION_350_jmp_if_var_equals_short_38',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 31, 'ACTION_350_transfer_to_xyzf_49']
+        "identifier": 'ACTION_350_jmp_if_700C_equals_short_38',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [31, 'ACTION_350_transfer_to_xyzf_49']
     },
     {
         "identifier": 'ACTION_350_transfer_to_xyzf_39',

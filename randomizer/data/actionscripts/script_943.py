@@ -6,14 +6,14 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_943_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 395, 'ACTION_943_set_sprite_sequence_23']
+        "identifier": 'ACTION_943_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [395, 'ACTION_943_set_sprite_sequence_23']
     },
     {
-        "identifier": 'ACTION_943_jmp_if_var_not_equals_short_2',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 13, 'ACTION_943_set_sprite_sequence_4']
+        "identifier": 'ACTION_943_jmp_if_700C_not_equals_short_2',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [13, 'ACTION_943_set_sprite_sequence_4']
     },
     {
         "identifier": 'ACTION_943_set_vram_priority_3',
@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'ACTION_943_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_943_jmp_if_random_above_128_5',
@@ -116,12 +116,12 @@ script = [
     {
         "identifier": 'ACTION_943_set_sprite_sequence_23',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_943_add_24',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_943_inc_24',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_943_jmp_if_var_equals_byte_25',

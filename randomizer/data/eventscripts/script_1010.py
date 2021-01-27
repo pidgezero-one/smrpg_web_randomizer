@@ -8,14 +8,14 @@ script = [
         "args": [0x7040, 0, 'EVENT_287_reset_and_choose_game_0']
     },
     {
-        "identifier": 'EVENT_1010_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a9]
+        "identifier": 'EVENT_1010_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a9]
     },
     {
-        "identifier": 'EVENT_1010_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1010_set_70A0_short_mem_to_7000_2',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1010_remove_object_at_70A8_from_current_level_3',

@@ -53,9 +53,9 @@ script = [
         "args": [AreaObjects.NPC_7]
     },
     {
-        "identifier": 'EVENT_1701_set_short_mem_10',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x703e]
+        "identifier": 'EVENT_1701_set_7000_to_7000_short_mem_10',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_1701_mem_compare_val_11',

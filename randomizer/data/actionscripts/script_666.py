@@ -42,7 +42,7 @@ script = [
     {
         "identifier": 'ACTION_666_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_666_add_z_coord_1_step_9',
@@ -66,7 +66,7 @@ script = [
     {
         "identifier": 'ACTION_666_set_sprite_sequence_13',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_666_pause_14',
@@ -76,7 +76,7 @@ script = [
     {
         "identifier": 'ACTION_666_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_666_dec_z_coord_1_step_16',

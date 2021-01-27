@@ -32,9 +32,9 @@ script = [
                 "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_697_action_queue_sync_4_SUBSCRIPT_set_short_mem_1',
-                "command": 'set_short_mem',
-                "args": [0x7024, 0x700c]
+                "identifier": 'EVENT_697_action_queue_sync_4_SUBSCRIPT_set_7000_short_mem_to_700C_1',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_697_action_queue_sync_4_SUBSCRIPT_face_northeast_2',
@@ -53,9 +53,9 @@ script = [
         "args": [AreaObjects.MEM_70A8],
         "subscript": [
             {
-                "identifier": 'EVENT_697_action_queue_async_6_SUBSCRIPT_set_short_mem_0',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7024]
+                "identifier": 'EVENT_697_action_queue_async_6_SUBSCRIPT_set_700C_to_7000_short_mem_0',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_697_action_queue_async_6_SUBSCRIPT_face_east_7C_1',
@@ -78,9 +78,9 @@ script = [
         "args": [AreaObjects.MEM_70A8, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_697_set_short_mem_10',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_697_set_7000_short_mem_to_7000_10',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_697_action_queue_async_11',
@@ -120,9 +120,9 @@ script = [
         "args": [AreaObjects.MEM_70A8],
         "subscript": [
             {
-                "identifier": 'EVENT_697_action_queue_async_15_SUBSCRIPT_set_short_mem_0',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7024]
+                "identifier": 'EVENT_697_action_queue_async_15_SUBSCRIPT_set_700C_to_7000_short_mem_0',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_697_action_queue_async_15_SUBSCRIPT_face_east_7C_1',

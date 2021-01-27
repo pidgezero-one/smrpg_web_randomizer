@@ -14,22 +14,22 @@ script = [
     {
         "identifier": 'ACTION_272_set_700C_to_object_coord_2',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_272_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 7, 'ACTION_272_set_sprite_sequence_30']
+        "identifier": 'ACTION_272_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [7, 'ACTION_272_set_sprite_sequence_30']
     },
     {
-        "identifier": 'ACTION_272_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_272_set_sprite_sequence_30']
+        "identifier": 'ACTION_272_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_272_set_sprite_sequence_30']
     },
     {
         "identifier": 'ACTION_272_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_272_object_memory_set_bit_6',
@@ -51,9 +51,9 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_272_mem_700C_shift_left_10',
-        "command": 'mem_700C_shift_left',
-        "args": [0x7018, 255]
+        "identifier": 'ACTION_272_mem_7000_shift_left_10',
+        "command": 'mem_7000_shift_left',
+        "args": [0x700c, 255]
     },
     {
         "identifier": 'ACTION_272_load_mem_11',
@@ -92,7 +92,7 @@ script = [
     {
         "identifier": 'ACTION_272_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_272_pause_19',
@@ -150,7 +150,7 @@ script = [
     {
         "identifier": 'ACTION_272_set_sprite_sequence_30',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_272_object_memory_set_bit_31',
@@ -172,9 +172,9 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_272_mem_700C_shift_left_35',
-        "command": 'mem_700C_shift_left',
-        "args": [0x7018, 255]
+        "identifier": 'ACTION_272_mem_7000_shift_left_35',
+        "command": 'mem_7000_shift_left',
+        "args": [0x700c, 255]
     },
     {
         "identifier": 'ACTION_272_load_mem_36',
@@ -213,7 +213,7 @@ script = [
     {
         "identifier": 'ACTION_272_set_sprite_sequence_43',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [8, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_272_pause_44',

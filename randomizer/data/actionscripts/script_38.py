@@ -17,7 +17,7 @@ script = [
     {
         "identifier": 'ACTION_38_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_38_shift_east_pixels_4',
@@ -80,7 +80,7 @@ script = [
     {
         "identifier": 'ACTION_38_set_sprite_sequence_16',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_38_pause_17',
@@ -124,7 +124,7 @@ script = [
     {
         "identifier": 'ACTION_38_set_sprite_sequence_25',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_38_ret_26',

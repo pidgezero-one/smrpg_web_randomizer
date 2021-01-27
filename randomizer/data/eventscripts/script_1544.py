@@ -7,14 +7,14 @@ script = [
         "command": 'freeze_all_npcs_until_return'
     },
     {
-        "identifier": 'EVENT_1544_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_1544_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_1544_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x7000]
+        "identifier": 'EVENT_1544_set_70A0_short_mem_to_7000_2',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1544_set_7000_to_object_coord_3',
@@ -22,9 +22,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_1544_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7000]
+        "identifier": 'EVENT_1544_set_7000_short_mem_to_7000_4',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x700c]
     },
     {
         "identifier": 'EVENT_1544_set_action_script_sync_5',

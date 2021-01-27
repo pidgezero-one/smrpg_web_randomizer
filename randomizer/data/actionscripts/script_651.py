@@ -26,19 +26,19 @@ script = [
         "args": [0x7034, 52428, 'ACTION_651_set_priority_38']
     },
     {
-        "identifier": 'ACTION_651_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7034]
+        "identifier": 'ACTION_651_set_700C_to_7000_short_mem_5',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7034]
     },
     {
-        "identifier": 'ACTION_651_mem_compare_6',
-        "command": 'mem_compare',
-        "args": [0x700c, 32768]
+        "identifier": 'ACTION_651_mem_compare_val_6',
+        "command": 'mem_compare_val',
+        "args": [32768]
     },
     {
         "identifier": 'ACTION_651_jmp_if_comparison_result_is_lesser_7',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['ACTION_651_face_east_10']
+        "args": ['ACTION_651_face_east_7C_10']
     },
     {
         "identifier": 'ACTION_651_mem_700C_and_const_8',
@@ -51,8 +51,8 @@ script = [
         "args": [VramPriority.PRIORITY_3]
     },
     {
-        "identifier": 'ACTION_651_face_east_10',
-        "command": 'face_east'
+        "identifier": 'ACTION_651_face_east_7C_10',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_651_set_animation_speed_11',
@@ -77,7 +77,7 @@ script = [
     {
         "identifier": 'ACTION_651_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_651_shift_f_direction_pixels_16',
@@ -133,7 +133,7 @@ script = [
     {
         "identifier": 'ACTION_651_set_sprite_sequence_27',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_651_shift_z_up_pixels_28',
@@ -166,7 +166,7 @@ script = [
     {
         "identifier": 'ACTION_651_set_sprite_sequence_34',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_651_shift_z_up_pixels_35',
@@ -259,7 +259,7 @@ script = [
     {
         "identifier": 'ACTION_651_jmp_if_random_above_66_54',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_651_turn_clockwise_45_degrees_n_times_57']
+        "args": [0x7759, 'ACTION_651_turn_clockwise_45_degrees_n_times_59']
     },
     {
         "identifier": 'ACTION_651_turn_clockwise_45_degrees_n_times_55',

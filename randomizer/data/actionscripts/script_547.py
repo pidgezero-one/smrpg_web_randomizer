@@ -46,7 +46,7 @@ script = [
     {
         "identifier": 'ACTION_547_set_sprite_sequence_9',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_547_jmp_if_var_equals_byte_10',

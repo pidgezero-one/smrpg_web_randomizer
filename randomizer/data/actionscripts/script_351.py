@@ -11,9 +11,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_351_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 168, 'ACTION_351_db_19']
+        "identifier": 'ACTION_351_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [168, 'ACTION_351_db_19']
     },
     {
         "identifier": 'ACTION_351_visibility_off_3',
@@ -45,7 +45,7 @@ script = [
     {
         "identifier": 'ACTION_351_set_sprite_sequence_9',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_351_pause_10',
@@ -65,7 +65,7 @@ script = [
     {
         "identifier": 'ACTION_351_set_sprite_sequence_13',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_351_pause_14',
@@ -75,7 +75,7 @@ script = [
     {
         "identifier": 'ACTION_351_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_351_pause_16',

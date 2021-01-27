@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_676_set_object_memory_bits_0',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[1]]
+        "args": [0x0b, [1]]
     },
     {
         "identifier": 'ACTION_676_set_solidity_bits_1',
@@ -53,7 +53,7 @@ script = [
     {
         "identifier": 'ACTION_676_jmp_if_random_above_66_10',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_676_set_animation_speed_5']
+        "args": [0x7c05, 'ACTION_676_jmp_if_var_equals_short_12']
     },
     {
         "identifier": 'ACTION_676_jmp_11',
@@ -97,7 +97,7 @@ script = [
     {
         "identifier": 'ACTION_676_jmp_if_random_above_66_19',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_676_jmp_if_var_equals_short_12']
+        "args": [0x7c1b, 'ACTION_676_set_animation_speed_5']
     },
     {
         "identifier": 'ACTION_676_jmp_20',

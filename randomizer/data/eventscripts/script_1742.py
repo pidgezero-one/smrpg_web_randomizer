@@ -206,9 +206,9 @@ script = [
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_set_short_mem_1',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7024]
+                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_set_700C_to_7000_short_mem_1',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_add_short_mem_2',
@@ -223,7 +223,7 @@ script = [
             {
                 "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_jmp_if_loaded_memory_is_above_or_equal_0_4',
                 "command": 'jmp_if_loaded_memory_is_above_or_equal_0',
-                "args": ['EVENT_1742_action_queue_async_21_SUBSCRIPT_set_short_mem_6']
+                "args": ['EVENT_1742_action_queue_async_21_SUBSCRIPT_set_700C_to_7000_short_mem_6']
             },
             {
                 "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_jmp_5',
@@ -231,9 +231,9 @@ script = [
                 "args": ['EVENT_1742_action_queue_async_21_SUBSCRIPT_set_8']
             },
             {
-                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_set_short_mem_6',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7028]
+                "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_set_700C_to_7000_short_mem_6',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7028]
             },
             {
                 "identifier": 'EVENT_1742_action_queue_async_21_SUBSCRIPT_jmp_7',

@@ -4,12 +4,12 @@ script = [
     {
         "identifier": 'ACTION_428_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_428_set_object_memory_bits_1',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[2, 3]]
+        "args": [0x0e, [2, 3]]
     },
     {
         "identifier": 'ACTION_428_pause_2',

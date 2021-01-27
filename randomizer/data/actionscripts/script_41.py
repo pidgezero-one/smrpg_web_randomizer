@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_41_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [4, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_41_pause_1',

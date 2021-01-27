@@ -40,9 +40,9 @@ script = [
         "args": [0x700c, 20]
     },
     {
-        "identifier": 'ACTION_774_add_short_8',
-        "command": 'add_short',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_774_inc_short_8',
+        "command": 'inc_short',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_774_load_mem_9',

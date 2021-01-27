@@ -4,12 +4,12 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_set_object_memory_bits_1',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0]]
+        "args": [0x0e, [0]]
     },
     {
         "identifier": 'ACTION_1015_pause_2',
@@ -24,7 +24,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_5',
@@ -34,7 +34,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_7',
@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_9',
@@ -54,7 +54,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_10',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_11',
@@ -64,7 +64,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_12',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_13',
@@ -74,7 +74,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_15',
@@ -84,7 +84,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_16',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_17',
@@ -94,7 +94,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_19',
@@ -104,7 +104,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_20',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_21',
@@ -114,7 +114,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_22',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_23',
@@ -124,7 +124,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_24',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_25',
@@ -134,7 +134,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_26',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_27',
@@ -144,7 +144,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_28',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_29',
@@ -154,7 +154,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_30',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_31',
@@ -164,7 +164,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_32',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_33',
@@ -174,7 +174,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_34',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_35',
@@ -184,7 +184,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_36',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_pause_37',
@@ -194,7 +194,7 @@ script = [
     {
         "identifier": 'ACTION_1015_set_sprite_sequence_38',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD]]
+        "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1015_jmp_39',

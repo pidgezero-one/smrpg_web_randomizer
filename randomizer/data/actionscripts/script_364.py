@@ -66,12 +66,12 @@ script = [
     {
         "identifier": 'ACTION_364_set_700C_to_object_coord_13',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.X, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_364_mem_compare_14',
-        "command": 'mem_compare',
-        "args": [0x700c, 5888]
+        "identifier": 'ACTION_364_mem_compare_val_14',
+        "command": 'mem_compare_val',
+        "args": [5888]
     },
     {
         "identifier": 'ACTION_364_jmp_if_comparison_result_is_lesser_15',

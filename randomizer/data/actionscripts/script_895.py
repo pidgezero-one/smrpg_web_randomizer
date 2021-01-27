@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_895_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[]]
+        "args": [3, 0, []]
     },
     {
         "identifier": 'ACTION_895_ret_2',

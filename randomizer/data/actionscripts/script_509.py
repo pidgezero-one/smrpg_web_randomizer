@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'ACTION_509_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_509_pause_4',
@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'ACTION_509_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_509_play_sound_7',
@@ -100,7 +100,7 @@ script = [
     {
         "identifier": 'ACTION_509_set_sprite_sequence_20',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_509_pause_21',
@@ -110,7 +110,7 @@ script = [
     {
         "identifier": 'ACTION_509_set_sprite_sequence_22',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_509_pause_23',
@@ -120,7 +120,7 @@ script = [
     {
         "identifier": 'ACTION_509_set_sprite_sequence_24',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_509_pause_25',
@@ -134,7 +134,7 @@ script = [
     {
         "identifier": 'ACTION_509_set_sprite_sequence_27',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_509_shift_z_down_pixels_28',
@@ -178,7 +178,7 @@ script = [
     {
         "identifier": 'ACTION_509_set_sprite_sequence_36',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_509_dec_z_coord_1_step_37',
@@ -196,7 +196,7 @@ script = [
     {
         "identifier": 'ACTION_509_set_sprite_sequence_40',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_509_pause_41',

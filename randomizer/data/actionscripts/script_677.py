@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_677_jmp_if_random_above_66_0',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_677_pause_2']
+        "args": [0x7c56, 'ACTION_677_pause_3']
     },
     {
         "identifier": 'ACTION_677_pause_1',

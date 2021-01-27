@@ -8,14 +8,14 @@ script = [
         "args": [0x7043, 1]
     },
     {
-        "identifier": 'EVENT_3200_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_3200_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_3200_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x70aa, 0x7000]
+        "identifier": 'EVENT_3200_set_70A0_short_mem_to_7000_2',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_3200_action_queue_sync_3',
@@ -1151,9 +1151,9 @@ script = [
         "command": 'dec_coins'
     },
     {
-        "identifier": 'EVENT_3200_set_short_mem_50',
-        "command": 'set_short_mem',
-        "args": [0x70b6, 0x7000]
+        "identifier": 'EVENT_3200_set_70A0_short_mem_to_7000_50',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b6]
     },
     {
         "identifier": 'EVENT_3200_mem_7000_shift_left_51',
@@ -1161,9 +1161,9 @@ script = [
         "args": [0x7000, 8]
     },
     {
-        "identifier": 'EVENT_3200_set_short_mem_52',
-        "command": 'set_short_mem',
-        "args": [0x70b7, 0x7000]
+        "identifier": 'EVENT_3200_set_70A0_short_mem_to_7000_52',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b7]
     },
     {
         "identifier": 'EVENT_3200_set_bit_53',

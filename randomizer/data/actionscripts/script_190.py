@@ -32,27 +32,27 @@ script = [
     {
         "identifier": 'ACTION_190_set_700C_to_object_coord_6',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_190_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 7, 'ACTION_190_jmp_if_var_equals_byte_18']
+        "identifier": 'ACTION_190_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [7, 'ACTION_190_jmp_if_var_equals_byte_18']
     },
     {
-        "identifier": 'ACTION_190_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_190_jmp_if_var_equals_byte_18']
+        "identifier": 'ACTION_190_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_190_jmp_if_var_equals_byte_18']
     },
     {
-        "identifier": 'ACTION_190_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_190_jmp_if_var_equals_byte_18']
+        "identifier": 'ACTION_190_jmp_if_700C_equals_short_9',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_190_jmp_if_var_equals_byte_18']
     },
     {
-        "identifier": 'ACTION_190_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_190_jmp_if_var_equals_byte_18']
+        "identifier": 'ACTION_190_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_190_jmp_if_var_equals_byte_18']
     },
     {
         "identifier": 'ACTION_190_jmp_if_var_equals_byte_11',
@@ -67,7 +67,7 @@ script = [
     {
         "identifier": 'ACTION_190_set_sprite_sequence_13',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [1, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_190_shift_northwest_pixels_14',
@@ -95,14 +95,14 @@ script = [
         "args": [0x70c4, 16, 'ACTION_190_pause_0']
     },
     {
-        "identifier": 'ACTION_190_add_19',
-        "command": 'add',
-        "args": [0x70c4, 0x01]
+        "identifier": 'ACTION_190_inc_19',
+        "command": 'inc',
+        "args": [0x70c4]
     },
     {
         "identifier": 'ACTION_190_set_sprite_sequence_20',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
+        "args": [2, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_190_shift_southeast_pixels_21',

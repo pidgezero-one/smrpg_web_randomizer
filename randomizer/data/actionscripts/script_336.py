@@ -24,7 +24,7 @@ script = [
     {
         "identifier": 'ACTION_336_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_336_pause_5',
@@ -59,7 +59,7 @@ script = [
     {
         "identifier": 'ACTION_336_set_sprite_sequence_11',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_336_object_memory_clear_bit_12',

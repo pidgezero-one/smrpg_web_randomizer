@@ -77,8 +77,8 @@ script = [
         "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_744_pause_16',
-        "command": 'pause',
+        "identifier": 'ACTION_744_pause_short_16',
+        "command": 'pause_short',
         "args": [384]
     },
     {

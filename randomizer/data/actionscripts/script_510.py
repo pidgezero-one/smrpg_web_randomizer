@@ -13,47 +13,47 @@ script = [
     {
         "identifier": 'ACTION_510_set_700C_to_object_coord_2',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_510_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_510_start_loop_n_times_14']
+        "identifier": 'ACTION_510_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_510_start_loop_n_times_14']
     },
     {
-        "identifier": 'ACTION_510_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_510_turn_clockwise_45_degrees_n_times_11']
+        "identifier": 'ACTION_510_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_510_turn_clockwise_45_degrees_n_times_11']
     },
     {
-        "identifier": 'ACTION_510_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_510_start_loop_n_times_38']
+        "identifier": 'ACTION_510_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_510_start_loop_n_times_38']
     },
     {
-        "identifier": 'ACTION_510_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 3, 'ACTION_510_start_loop_n_times_35']
+        "identifier": 'ACTION_510_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [3, 'ACTION_510_start_loop_n_times_35']
     },
     {
-        "identifier": 'ACTION_510_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 4, 'ACTION_510_start_loop_n_times_31']
+        "identifier": 'ACTION_510_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [4, 'ACTION_510_start_loop_n_times_31']
     },
     {
-        "identifier": 'ACTION_510_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 5, 'ACTION_510_start_loop_n_times_27']
+        "identifier": 'ACTION_510_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [5, 'ACTION_510_start_loop_n_times_27']
     },
     {
-        "identifier": 'ACTION_510_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 6, 'ACTION_510_start_loop_n_times_23']
+        "identifier": 'ACTION_510_jmp_if_700C_equals_short_9',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [6, 'ACTION_510_start_loop_n_times_23']
     },
     {
-        "identifier": 'ACTION_510_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 7, 'ACTION_510_start_loop_n_times_19']
+        "identifier": 'ACTION_510_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [7, 'ACTION_510_start_loop_n_times_19']
     },
     {
         "identifier": 'ACTION_510_turn_clockwise_45_degrees_n_times_11',
@@ -216,7 +216,7 @@ script = [
     {
         "identifier": 'ACTION_510_set_sprite_sequence_43',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=2, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 2, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_510_pause_44',
@@ -236,7 +236,7 @@ script = [
     {
         "identifier": 'ACTION_510_set_sprite_sequence_47',
         "command": 'set_sprite_sequence',
-        "args": [30, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [30, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_510_pause_48',

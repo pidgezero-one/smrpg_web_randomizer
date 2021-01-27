@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_312_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_312_inc_palette_row_by_1',
@@ -34,32 +34,32 @@ script = [
     {
         "identifier": 'ACTION_312_set_700C_to_object_coord_6',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.NPC_0, Coords.F]
+        "args": [AreaObjects.NPC_0, Coords.F, []]
     },
     {
         "identifier": 'ACTION_312_jmp_if_var_equals_byte_7',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70ae, 1, 'ACTION_312_jmp_if_var_not_equals_short_11']
+        "args": [0x70ae, 1, 'ACTION_312_jmp_if_700C_not_equals_short_11']
     },
     {
         "identifier": 'ACTION_312_jmp_if_var_equals_byte_8',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70ae, 2, 'ACTION_312_jmp_if_var_not_equals_short_20']
+        "args": [0x70ae, 2, 'ACTION_312_jmp_if_700C_not_equals_short_20']
     },
     {
         "identifier": 'ACTION_312_jmp_if_var_equals_byte_9',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70ae, 3, 'ACTION_312_jmp_if_var_not_equals_short_35']
+        "args": [0x70ae, 3, 'ACTION_312_jmp_if_700C_not_equals_short_35']
     },
     {
         "identifier": 'ACTION_312_jmp_if_var_equals_byte_10',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70ae, 4, 'ACTION_312_jmp_if_var_not_equals_short_49']
+        "args": [0x70ae, 4, 'ACTION_312_jmp_if_700C_not_equals_short_49']
     },
     {
-        "identifier": 'ACTION_312_jmp_if_var_not_equals_short_11',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 1, 'ACTION_312_pause_3']
+        "identifier": 'ACTION_312_jmp_if_700C_not_equals_short_11',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [1, 'ACTION_312_pause_3']
     },
     {
         "identifier": 'ACTION_312_fixed_f_coord_on_12',
@@ -97,9 +97,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_312_jmp_if_var_not_equals_short_20',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 7, 'ACTION_312_pause_3']
+        "identifier": 'ACTION_312_jmp_if_700C_not_equals_short_20',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [7, 'ACTION_312_pause_3']
     },
     {
         "identifier": 'ACTION_312_fixed_f_coord_on_21',
@@ -167,9 +167,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_312_jmp_if_var_not_equals_short_35',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 3, 'ACTION_312_pause_3']
+        "identifier": 'ACTION_312_jmp_if_700C_not_equals_short_35',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [3, 'ACTION_312_pause_3']
     },
     {
         "identifier": 'ACTION_312_fixed_f_coord_on_36',
@@ -232,9 +232,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_312_jmp_if_var_not_equals_short_49',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 5, 'ACTION_312_pause_3']
+        "identifier": 'ACTION_312_jmp_if_700C_not_equals_short_49',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [5, 'ACTION_312_pause_3']
     },
     {
         "identifier": 'ACTION_312_fixed_f_coord_on_50',

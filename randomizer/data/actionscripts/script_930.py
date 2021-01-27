@@ -8,17 +8,17 @@ script = [
     {
         "identifier": 'ACTION_930_set_700C_to_object_coord_1',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_930_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_930_set_sprite_sequence_5']
+        "identifier": 'ACTION_930_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_930_set_sprite_sequence_5']
     },
     {
         "identifier": 'ACTION_930_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_930_jmp_4',
@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'ACTION_930_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_930_start_loop_n_times_6',

@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_489_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_489_db_1',
@@ -29,7 +29,7 @@ script = [
     {
         "identifier": 'ACTION_489_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [7, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [7, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_489_pause_6',

@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'ACTION_171_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_171_jump_to_height_6',
@@ -36,8 +36,8 @@ script = [
         "args": [80]
     },
     {
-        "identifier": 'ACTION_171_face_east_7',
-        "command": 'face_east'
+        "identifier": 'ACTION_171_face_east_7C_7',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_171_shift_f_direction_pixels_8',
@@ -60,7 +60,7 @@ script = [
     {
         "identifier": 'ACTION_171_set_sprite_sequence_12',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_171_jump_to_height_13',

@@ -582,9 +582,9 @@ script = [
         "command": 'store_7000_minecart_timer'
     },
     {
-        "identifier": 'EVENT_3190_set_short_mem_25',
-        "command": 'set_short_mem',
-        "args": [0x702e, 0x7000]
+        "identifier": 'EVENT_3190_set_7000_short_mem_to_7000_25',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x702e]
     },
     {
         "identifier": 'EVENT_3190_stop_sound_26',

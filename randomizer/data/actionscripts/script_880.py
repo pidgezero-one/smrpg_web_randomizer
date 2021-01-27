@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_880_embedded_animation_routine_1',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
     },
     {
         "identifier": 'ACTION_880_pause_2',

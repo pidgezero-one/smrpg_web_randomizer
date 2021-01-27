@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'ACTION_299_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_299_visibility_on_5',
@@ -46,42 +46,42 @@ script = [
     {
         "identifier": 'ACTION_299_set_700C_to_object_coord_9',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_299_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_299_jmp_if_bit_set_23']
+        "identifier": 'ACTION_299_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_299_jmp_if_bit_set_23']
     },
     {
-        "identifier": 'ACTION_299_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_299_jmp_if_bit_set_23']
+        "identifier": 'ACTION_299_jmp_if_700C_equals_short_11',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_299_jmp_if_bit_set_23']
     },
     {
-        "identifier": 'ACTION_299_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_299_jmp_if_bit_set_35']
+        "identifier": 'ACTION_299_jmp_if_700C_equals_short_12',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_299_jmp_if_bit_set_35']
     },
     {
-        "identifier": 'ACTION_299_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 4, 'ACTION_299_jmp_if_bit_set_29']
+        "identifier": 'ACTION_299_jmp_if_700C_equals_short_13',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [4, 'ACTION_299_jmp_if_bit_set_29']
     },
     {
-        "identifier": 'ACTION_299_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 5, 'ACTION_299_jmp_if_bit_set_41']
+        "identifier": 'ACTION_299_jmp_if_700C_equals_short_14',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [5, 'ACTION_299_jmp_if_bit_set_41']
     },
     {
-        "identifier": 'ACTION_299_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 6, 'ACTION_299_jmp_if_bit_set_41']
+        "identifier": 'ACTION_299_jmp_if_700C_equals_short_15',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [6, 'ACTION_299_jmp_if_bit_set_41']
     },
     {
-        "identifier": 'ACTION_299_jmp_if_var_equals_short_16',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 7, 'ACTION_299_jmp_if_bit_set_23']
+        "identifier": 'ACTION_299_jmp_if_700C_equals_short_16',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [7, 'ACTION_299_jmp_if_bit_set_23']
     },
     {
         "identifier": 'ACTION_299_jmp_if_bit_set_17',
@@ -336,6 +336,6 @@ script = [
     {
         "identifier": 'ACTION_299_jmp_67',
         "command": 'jmp',
-        "args": ['ACTION_299_jmp_if_var_equals_short_10']
+        "args": ['ACTION_299_jmp_if_700C_equals_short_10']
     }
 ]

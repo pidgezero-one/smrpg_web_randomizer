@@ -59,7 +59,7 @@ script = [
     {
         "identifier": 'ACTION_352_set_sprite_sequence_11',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_352_jmp_12',
@@ -119,7 +119,7 @@ script = [
     {
         "identifier": 'ACTION_352_set_sprite_sequence_23',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_352_jmp_24',
@@ -134,16 +134,16 @@ script = [
     {
         "identifier": 'ACTION_352_set_sprite_sequence_26',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_352_visibility_on_27',
         "command": 'visibility_on'
     },
     {
-        "identifier": 'ACTION_352_mem_compare_28',
-        "command": 'mem_compare',
-        "args": [0x700c, 24576]
+        "identifier": 'ACTION_352_mem_compare_val_28',
+        "command": 'mem_compare_val',
+        "args": [24576]
     },
     {
         "identifier": 'ACTION_352_jmp_if_comparison_result_is_lesser_29',
@@ -151,9 +151,9 @@ script = [
         "args": ['ACTION_352_transfer_to_xyzf_36']
     },
     {
-        "identifier": 'ACTION_352_mem_compare_30',
-        "command": 'mem_compare',
-        "args": [0x700c, 45056]
+        "identifier": 'ACTION_352_mem_compare_val_30',
+        "command": 'mem_compare_val',
+        "args": [45056]
     },
     {
         "identifier": 'ACTION_352_jmp_if_comparison_result_is_lesser_31',
@@ -238,7 +238,7 @@ script = [
     {
         "identifier": 'ACTION_352_mem_compare_47',
         "command": 'mem_compare',
-        "args": [0x702a, 170]
+        "args": [0x701e, 170]
     },
     {
         "identifier": 'ACTION_352_jmp_if_comparison_result_is_lesser_48',
@@ -263,7 +263,7 @@ script = [
     {
         "identifier": 'ACTION_352_mem_compare_52',
         "command": 'mem_compare',
-        "args": [0x702a, 170]
+        "args": [0x701e, 170]
     },
     {
         "identifier": 'ACTION_352_jmp_if_comparison_result_is_lesser_53',
@@ -288,7 +288,7 @@ script = [
     {
         "identifier": 'ACTION_352_mem_compare_57',
         "command": 'mem_compare',
-        "args": [0x702a, 170]
+        "args": [0x701e, 170]
     },
     {
         "identifier": 'ACTION_352_jmp_if_comparison_result_is_lesser_58',
@@ -313,7 +313,7 @@ script = [
     {
         "identifier": 'ACTION_352_mem_compare_62',
         "command": 'mem_compare',
-        "args": [0x702a, 170]
+        "args": [0x701e, 170]
     },
     {
         "identifier": 'ACTION_352_jmp_if_comparison_result_is_lesser_63',

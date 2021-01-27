@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_289_set_object_memory_bits_1',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[]]
+        "args": [0x0e, []]
     },
     {
         "identifier": 'ACTION_289_set_solidity_bits_2',
@@ -71,13 +71,13 @@ script = [
         "args": [[_0x0AFlags.CANT_PASS_NPCS]]
     },
     {
-        "identifier": 'ACTION_289_set_short_mem_14',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x703e]
+        "identifier": 'ACTION_289_set_700C_to_7000_short_mem_14',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
-        "identifier": 'ACTION_289_face_east_15',
-        "command": 'face_east'
+        "identifier": 'ACTION_289_face_east_7C_15',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_289_ret_16',

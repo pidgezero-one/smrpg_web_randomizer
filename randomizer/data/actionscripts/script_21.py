@@ -17,14 +17,14 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_21_add_3',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_21_inc_3',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_21_add_4',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_21_inc_4',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_21_pause_5',
@@ -59,14 +59,14 @@ script = [
         "command": 'walk_1_step_southeast'
     },
     {
-        "identifier": 'ACTION_21_add_12',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_21_inc_12',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_21_jmp_if_random_above_66_13',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_21_turn_random_direction_9']
+        "args": [0x0a86, 'ACTION_21_set_animation_speed_29']
     },
     {
         "identifier": 'ACTION_21_pause_14',
@@ -84,19 +84,19 @@ script = [
         "args": [3]
     },
     {
-        "identifier": 'ACTION_21_add_17',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_21_inc_17',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_21_add_18',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_21_inc_18',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_21_add_19',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_21_inc_19',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_21_jump_to_subroutine_20',
@@ -197,19 +197,19 @@ script = [
         "args": ['ACTION_21_set_0']
     },
     {
-        "identifier": 'ACTION_21_set_short_mem_40',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x70ae]
+        "identifier": 'ACTION_21_set_700C_to_70A0_short_mem_40',
+        "command": 'set_700C_to_70A0_short_mem',
+        "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_21_set_short_mem_41',
-        "command": 'set_short_mem',
-        "args": [0x702c, 0x700c]
+        "identifier": 'ACTION_21_set_7000_short_mem_to_700C_41',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x702c]
     },
     {
         "identifier": 'ACTION_21_mem_compare_42',
         "command": 'mem_compare',
-        "args": [0x7038, 28]
+        "args": [0x702c, 28]
     },
     {
         "identifier": 'ACTION_21_jmp_if_comparison_result_is_greater_or_equal_43',
@@ -219,7 +219,7 @@ script = [
     {
         "identifier": 'ACTION_21_mem_compare_44',
         "command": 'mem_compare',
-        "args": [0x7038, 13]
+        "args": [0x702c, 13]
     },
     {
         "identifier": 'ACTION_21_jmp_if_comparison_result_is_lesser_45',

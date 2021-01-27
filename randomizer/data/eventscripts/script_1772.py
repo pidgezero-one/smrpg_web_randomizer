@@ -25,14 +25,14 @@ script = [
         "args": ['EVENT_1772_ret_7', 'EVENT_1772_ret_7']
     },
     {
-        "identifier": 'EVENT_1772_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_1772_set_7000_to_70A0_short_mem_3',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_1772_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x70aa, 0x7000]
+        "identifier": 'EVENT_1772_set_70A0_short_mem_to_7000_4',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70aa]
     },
     {
         "identifier": 'EVENT_1772_action_queue_async_5',

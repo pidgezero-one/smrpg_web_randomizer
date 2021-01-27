@@ -3,14 +3,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1794_set_short_mem_0',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_1794_set_7000_to_70A0_short_mem_0',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_1794_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x70ae, 0x7000]
+        "identifier": 'EVENT_1794_set_70A0_short_mem_to_7000_1',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_1794_jmp_if_bit_set_2',

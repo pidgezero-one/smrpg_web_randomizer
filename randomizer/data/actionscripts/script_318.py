@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'ACTION_318_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_318_pause_3',
@@ -25,19 +25,19 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_318_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x700c]
+        "identifier": 'ACTION_318_set_7000_short_mem_to_700C_5',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7024]
     },
     {
-        "identifier": 'ACTION_318_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x70ae]
+        "identifier": 'ACTION_318_set_700C_to_70A0_short_mem_6',
+        "command": 'set_700C_to_70A0_short_mem',
+        "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_318_mem_compare_7',
-        "command": 'mem_compare',
-        "args": [0x700c, 0x7024]
+        "identifier": 'ACTION_318_mem_compare_address_7',
+        "command": 'mem_compare_address',
+        "args": [0x7024]
     },
     {
         "identifier": 'ACTION_318_jmp_if_loaded_memory_is_not_0_8',

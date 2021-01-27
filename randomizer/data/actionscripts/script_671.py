@@ -4,12 +4,12 @@ script = [
     {
         "identifier": 'ACTION_671_set_700C_to_object_coord_0',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_671_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7038, 0x700c]
+        "identifier": 'ACTION_671_set_7000_short_mem_to_700C_1',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7038]
     },
     {
         "identifier": 'ACTION_671_jmp_if_700C_any_bits_set_2',
@@ -34,7 +34,7 @@ script = [
     {
         "identifier": 'ACTION_671_jmp_if_bit_set_6',
         "command": 'jmp_if_bit_set',
-        "args": [0x7049, 7, 'ACTION_671_set_short_mem_11']
+        "args": [0x7049, 7, 'ACTION_671_set_700C_to_70A0_short_mem_11']
     },
     {
         "identifier": 'ACTION_671_jmp_if_var_equals_short_7',
@@ -57,14 +57,14 @@ script = [
         "args": [0x7038, 7, 'ACTION_671_set_sprite_sequence_25']
     },
     {
-        "identifier": 'ACTION_671_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x70ae]
+        "identifier": 'ACTION_671_set_700C_to_70A0_short_mem_11',
+        "command": 'set_700C_to_70A0_short_mem',
+        "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_671_set_short_mem_12',
-        "command": 'set_short_mem',
-        "args": [0x70ab, 0x700c]
+        "identifier": 'ACTION_671_set_70A0_short_mem_to_700C_12',
+        "command": 'set_70A0_short_mem_to_700C',
+        "args": [0x70ab]
     },
     {
         "identifier": 'ACTION_671_db_13',
@@ -77,29 +77,29 @@ script = [
         "args": [0x00c0]
     },
     {
-        "identifier": 'ACTION_671_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_671_set_sprite_sequence_19']
+        "identifier": 'ACTION_671_jmp_if_700C_equals_short_15',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_671_set_sprite_sequence_19']
     },
     {
-        "identifier": 'ACTION_671_jmp_if_var_equals_short_16',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 64, 'ACTION_671_set_sprite_sequence_21']
+        "identifier": 'ACTION_671_jmp_if_700C_equals_short_16',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [64, 'ACTION_671_set_sprite_sequence_21']
     },
     {
-        "identifier": 'ACTION_671_jmp_if_var_equals_short_17',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 128, 'ACTION_671_set_sprite_sequence_23']
+        "identifier": 'ACTION_671_jmp_if_700C_equals_short_17',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [128, 'ACTION_671_set_sprite_sequence_23']
     },
     {
-        "identifier": 'ACTION_671_jmp_if_var_equals_short_18',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 192, 'ACTION_671_set_sprite_sequence_25']
+        "identifier": 'ACTION_671_jmp_if_700C_equals_short_18',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [192, 'ACTION_671_set_sprite_sequence_25']
     },
     {
         "identifier": 'ACTION_671_set_sprite_sequence_19',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_671_jmp_20',
@@ -109,7 +109,7 @@ script = [
     {
         "identifier": 'ACTION_671_set_sprite_sequence_21',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_671_jmp_22',
@@ -119,7 +119,7 @@ script = [
     {
         "identifier": 'ACTION_671_set_sprite_sequence_23',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_671_jmp_24',
@@ -129,7 +129,7 @@ script = [
     {
         "identifier": 'ACTION_671_set_sprite_sequence_25',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_671_set_bit_26',
@@ -178,13 +178,13 @@ script = [
         "command": 'reset_properties'
     },
     {
-        "identifier": 'ACTION_671_set_short_mem_36',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7038]
+        "identifier": 'ACTION_671_set_700C_to_7000_short_mem_36',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7038]
     },
     {
-        "identifier": 'ACTION_671_face_east_37',
-        "command": 'face_east'
+        "identifier": 'ACTION_671_face_east_7C_37',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_671_clear_bit_38',

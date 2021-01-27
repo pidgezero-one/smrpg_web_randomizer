@@ -68,9 +68,9 @@ script = [
         "args": [0x7049, 3, 'EVENT_3644_clear_bit_175']
     },
     {
-        "identifier": 'EVENT_3644_set_short_mem_13',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_3644_set_7000_to_7000_short_mem_13',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3644_dec_coins_14',
@@ -112,9 +112,9 @@ script = [
         "args": [0x7049, 3, 'EVENT_3644_clear_bit_178']
     },
     {
-        "identifier": 'EVENT_3644_set_short_mem_22',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_3644_set_7000_to_7000_short_mem_22',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3644_dec_coins_23',
@@ -219,7 +219,7 @@ script = [
     {
         "identifier": 'EVENT_3644_jmp_if_comparison_result_is_greater_or_equal_42',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_3644_set_short_mem_76']
+        "args": ['EVENT_3644_set_7000_to_70A0_short_mem_76']
     },
     {
         "identifier": 'EVENT_3644_set_bit_43',
@@ -637,9 +637,9 @@ script = [
         "args": [736]
     },
     {
-        "identifier": 'EVENT_3644_set_short_mem_76',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70e1]
+        "identifier": 'EVENT_3644_set_7000_to_70A0_short_mem_76',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70e1]
     },
     {
         "identifier": 'EVENT_3644_mem_compare_val_77',
@@ -727,7 +727,7 @@ script = [
     {
         "identifier": 'EVENT_3644_jmp_if_bit_set_87',
         "command": 'jmp_if_bit_set',
-        "args": [0x7098, 2, 'EVENT_3644_set_short_mem_76']
+        "args": [0x7098, 2, 'EVENT_3644_set_7000_to_70A0_short_mem_76']
     },
     {
         "identifier": 'EVENT_3644_set_bit_88',
@@ -795,7 +795,7 @@ script = [
     {
         "identifier": 'EVENT_3644_jmp_if_bit_set_101',
         "command": 'jmp_if_bit_set',
-        "args": [0x7098, 3, 'EVENT_3644_set_short_mem_76']
+        "args": [0x7098, 3, 'EVENT_3644_set_7000_to_70A0_short_mem_76']
     },
     {
         "identifier": 'EVENT_3644_set_bit_102',
@@ -879,7 +879,7 @@ script = [
     {
         "identifier": 'EVENT_3644_jmp_if_bit_set_114',
         "command": 'jmp_if_bit_set',
-        "args": [0x7098, 4, 'EVENT_3644_set_short_mem_76']
+        "args": [0x7098, 4, 'EVENT_3644_set_7000_to_70A0_short_mem_76']
     },
     {
         "identifier": 'EVENT_3644_set_bit_115',
@@ -993,7 +993,7 @@ script = [
     {
         "identifier": 'EVENT_3644_jmp_if_bit_set_128',
         "command": 'jmp_if_bit_set',
-        "args": [0x7098, 5, 'EVENT_3644_set_short_mem_76']
+        "args": [0x7098, 5, 'EVENT_3644_set_7000_to_70A0_short_mem_76']
     },
     {
         "identifier": 'EVENT_3644_set_bit_129',

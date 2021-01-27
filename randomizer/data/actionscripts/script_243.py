@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_243_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 6, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_243_set_animation_speed_1',

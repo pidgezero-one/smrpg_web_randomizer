@@ -30,9 +30,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_419_mem_compare_6',
-        "command": 'mem_compare',
-        "args": [0x700c, 25]
+        "identifier": 'ACTION_419_mem_compare_val_6',
+        "command": 'mem_compare_val',
+        "args": [25]
     },
     {
         "identifier": 'ACTION_419_jmp_if_comparison_result_is_lesser_7',
@@ -40,9 +40,9 @@ script = [
         "args": ['ACTION_419_shift_z_up_pixels_16']
     },
     {
-        "identifier": 'ACTION_419_mem_compare_8',
-        "command": 'mem_compare',
-        "args": [0x700c, 29]
+        "identifier": 'ACTION_419_mem_compare_val_8',
+        "command": 'mem_compare_val',
+        "args": [29]
     },
     {
         "identifier": 'ACTION_419_jmp_if_comparison_result_is_greater_or_equal_9',

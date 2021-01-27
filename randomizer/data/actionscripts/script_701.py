@@ -25,24 +25,24 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_701_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_701_face_southeast_11']
+        "identifier": 'ACTION_701_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_701_face_southeast_11']
     },
     {
-        "identifier": 'ACTION_701_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 23, 'ACTION_701_face_southeast_11']
+        "identifier": 'ACTION_701_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [23, 'ACTION_701_face_southeast_11']
     },
     {
-        "identifier": 'ACTION_701_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 25, 'ACTION_701_face_southeast_11']
+        "identifier": 'ACTION_701_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [25, 'ACTION_701_face_southeast_11']
     },
     {
-        "identifier": 'ACTION_701_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 27, 'ACTION_701_face_southeast_11']
+        "identifier": 'ACTION_701_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [27, 'ACTION_701_face_southeast_11']
     },
     {
         "identifier": 'ACTION_701_face_southwest_9',

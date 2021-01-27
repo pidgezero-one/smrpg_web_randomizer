@@ -19,7 +19,7 @@ script = [
     {
         "identifier": 'ACTION_707_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_707_object_memory_clear_bit_4',
@@ -55,9 +55,9 @@ script = [
         "args": [0x700c, 60]
     },
     {
-        "identifier": 'ACTION_707_mem_compare_11',
-        "command": 'mem_compare',
-        "args": [0x700c, 30]
+        "identifier": 'ACTION_707_mem_compare_val_11',
+        "command": 'mem_compare_val',
+        "args": [30]
     },
     {
         "identifier": 'ACTION_707_jmp_if_comparison_result_is_lesser_12',
@@ -96,7 +96,7 @@ script = [
     {
         "identifier": 'ACTION_707_set_sprite_sequence_19',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_707_shift_northwest_pixels_20',
@@ -129,9 +129,9 @@ script = [
         "args": [0x70ae, 3, 'ACTION_707_load_mem_13']
     },
     {
-        "identifier": 'ACTION_707_add_26',
-        "command": 'add',
-        "args": [0x70ae, 0x01]
+        "identifier": 'ACTION_707_inc_26',
+        "command": 'inc',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_707_set_animation_speed_27',
@@ -156,7 +156,7 @@ script = [
     {
         "identifier": 'ACTION_707_set_sprite_sequence_31',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_707_pause_32',
@@ -166,7 +166,7 @@ script = [
     {
         "identifier": 'ACTION_707_set_sprite_sequence_33',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_707_set_animation_speed_34',
@@ -181,7 +181,7 @@ script = [
     {
         "identifier": 'ACTION_707_set_sprite_sequence_36',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_707_shift_southeast_steps_37',
@@ -235,12 +235,12 @@ script = [
     {
         "identifier": 'ACTION_707_set_700C_to_object_coord_47',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.X, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_707_mem_compare_48',
-        "command": 'mem_compare',
-        "args": [0x700c, 5888]
+        "identifier": 'ACTION_707_mem_compare_val_48',
+        "command": 'mem_compare_val',
+        "args": [5888]
     },
     {
         "identifier": 'ACTION_707_jmp_if_comparison_result_is_lesser_49',

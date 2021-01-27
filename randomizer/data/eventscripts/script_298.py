@@ -150,9 +150,9 @@ script = [
                 "args": [AreaObjects.NPC_4, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_set_short_mem_1',
-                "command": 'set_short_mem',
-                "args": [0x7024, 0x700c]
+                "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_set_7000_short_mem_to_700C_1',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_18_SUBSCRIPT_fixed_f_coord_on_2',
@@ -189,9 +189,9 @@ script = [
         "args": [AreaObjects.NPC_4],
         "subscript": [
             {
-                "identifier": 'EVENT_298_action_queue_async_20_SUBSCRIPT_set_short_mem_0',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7024]
+                "identifier": 'EVENT_298_action_queue_async_20_SUBSCRIPT_set_700C_to_7000_short_mem_0',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7024]
             },
             {
                 "identifier": 'EVENT_298_action_queue_async_20_SUBSCRIPT_face_east_7C_1',

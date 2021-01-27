@@ -11,13 +11,13 @@ script = [
         "command": 'floating_on'
     },
     {
-        "identifier": 'ACTION_497_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x703e]
+        "identifier": 'ACTION_497_set_700C_to_7000_short_mem_2',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
-        "identifier": 'ACTION_497_face_east_3',
-        "command": 'face_east'
+        "identifier": 'ACTION_497_face_east_7C_3',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_497_sequence_playback_on_4',

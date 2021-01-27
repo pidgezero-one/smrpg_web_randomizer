@@ -23,9 +23,9 @@ script = [
         "args": [0x7042, 6, 'EVENT_3311_run_dialog_11']
     },
     {
-        "identifier": 'EVENT_3311_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_3311_set_7000_to_70A0_short_mem_4',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_3311_jmp_if_7000_equals_short_5',

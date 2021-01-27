@@ -18,12 +18,12 @@ script = [
     {
         "identifier": 'ACTION_721_set_700C_to_object_coord_3',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_721_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x70ae, 0x700c]
+        "identifier": 'ACTION_721_set_70A0_short_mem_to_700C_4',
+        "command": 'set_70A0_short_mem_to_700C',
+        "args": [0x70ae]
     },
     {
         "identifier": 'ACTION_721_start_loop_n_times_5',
@@ -54,13 +54,13 @@ script = [
         "command": 'end_loop'
     },
     {
-        "identifier": 'ACTION_721_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x70ae]
+        "identifier": 'ACTION_721_set_700C_to_70A0_short_mem_11',
+        "command": 'set_700C_to_70A0_short_mem',
+        "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_721_face_east_12',
-        "command": 'face_east'
+        "identifier": 'ACTION_721_face_east_7C_12',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_721_turn_clockwise_45_degrees_n_times_13',

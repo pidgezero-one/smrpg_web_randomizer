@@ -14,11 +14,11 @@ script = [
     {
         "identifier": 'ACTION_879_set_700C_to_object_coord_2',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.NPC_1, Coords.F]
+        "args": [AreaObjects.NPC_1, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_879_face_east_3',
-        "command": 'face_east'
+        "identifier": 'ACTION_879_face_east_7C_3',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_879_pause_4',

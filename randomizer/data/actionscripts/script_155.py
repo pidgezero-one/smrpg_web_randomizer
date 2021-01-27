@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'ACTION_155_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [10, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [10, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_155_pause_2',
@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'ACTION_155_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_155_jmp_4',

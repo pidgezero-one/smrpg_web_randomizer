@@ -13,9 +13,9 @@ script = [
         "args": [0x7044, 6, 'EVENT_1873_ret_7']
     },
     {
-        "identifier": 'EVENT_1873_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702a]
+        "identifier": 'EVENT_1873_set_7000_to_7000_short_mem_2',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_1873_add_coins_3',

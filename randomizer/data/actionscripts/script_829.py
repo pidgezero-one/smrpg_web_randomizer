@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_829_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_829_set_priority_1',
@@ -21,9 +21,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_829_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 28, 'ACTION_829_shift_f_direction_steps_9']
+        "identifier": 'ACTION_829_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [28, 'ACTION_829_shift_f_direction_steps_9']
     },
     {
         "identifier": 'ACTION_829_shift_f_direction_steps_5',

@@ -11,18 +11,18 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_826_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 473, 'ACTION_826_set_solidity_bits_61']
+        "identifier": 'ACTION_826_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [473, 'ACTION_826_set_solidity_bits_61']
     },
     {
         "identifier": 'ACTION_826_set_700C_to_pressed_button_3',
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_826_mem_compare_4',
-        "command": 'mem_compare',
-        "args": [0x700c, 24]
+        "identifier": 'ACTION_826_mem_compare_val_4',
+        "command": 'mem_compare_val',
+        "args": [24]
     },
     {
         "identifier": 'ACTION_826_jmp_if_comparison_result_is_greater_or_equal_5',
@@ -30,9 +30,9 @@ script = [
         "args": ['ACTION_826_shift_f_direction_steps_55']
     },
     {
-        "identifier": 'ACTION_826_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 22, 'ACTION_826_shadow_on_34']
+        "identifier": 'ACTION_826_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [22, 'ACTION_826_shadow_on_34']
     },
     {
         "identifier": 'ACTION_826_shadow_on_7',

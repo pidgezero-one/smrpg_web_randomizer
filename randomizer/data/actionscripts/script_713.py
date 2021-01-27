@@ -8,21 +8,21 @@ script = [
     {
         "identifier": 'ACTION_713_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_713_set_700C_to_current_level_2',
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_713_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 319, 'ACTION_713_pause_33']
+        "identifier": 'ACTION_713_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [319, 'ACTION_713_pause_33']
     },
     {
-        "identifier": 'ACTION_713_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 403, 'ACTION_713_pause_33']
+        "identifier": 'ACTION_713_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [403, 'ACTION_713_pause_33']
     },
     {
         "identifier": 'ACTION_713_set_priority_5',
@@ -89,9 +89,9 @@ script = [
         "args": [0x700c, 8]
     },
     {
-        "identifier": 'ACTION_713_add_18',
-        "command": 'add',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_713_inc_18',
+        "command": 'inc',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_713_load_mem_19',
@@ -226,14 +226,14 @@ script = [
         "args": [0x700c, 32768]
     },
     {
-        "identifier": 'ACTION_713_set_short_mem_46',
-        "command": 'set_short_mem',
-        "args": [0x7034, 0x700c]
+        "identifier": 'ACTION_713_set_7000_short_mem_to_700C_46',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7034]
     },
     {
-        "identifier": 'ACTION_713_mem_compare_47',
-        "command": 'mem_compare',
-        "args": [0x700c, 16384]
+        "identifier": 'ACTION_713_mem_compare_val_47',
+        "command": 'mem_compare_val',
+        "args": [16384]
     },
     {
         "identifier": 'ACTION_713_jmp_if_comparison_result_is_lesser_48',
@@ -261,14 +261,14 @@ script = [
         "args": [0x700c, 0x7024]
     },
     {
-        "identifier": 'ACTION_713_set_short_mem_53',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x700c]
+        "identifier": 'ACTION_713_set_7000_short_mem_to_700C_53',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7026]
     },
     {
-        "identifier": 'ACTION_713_set_short_mem_54',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x700c]
+        "identifier": 'ACTION_713_set_70A0_short_mem_to_700C_54',
+        "command": 'set_70A0_short_mem_to_700C',
+        "args": [0x70a9]
     },
     {
         "identifier": 'ACTION_713_object_memory_set_bit_55',
@@ -283,7 +283,7 @@ script = [
     {
         "identifier": 'ACTION_713_set_object_memory_bits_57',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[]]
+        "args": [0x0e, []]
     },
     {
         "identifier": 'ACTION_713_db_58',
@@ -301,9 +301,9 @@ script = [
         "args": [0x30, [4]]
     },
     {
-        "identifier": 'ACTION_713_set_short_mem_61',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7026]
+        "identifier": 'ACTION_713_set_700C_to_7000_short_mem_61',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'ACTION_713_dec_short_mem_62',
@@ -311,14 +311,14 @@ script = [
         "args": [0x700c, 0x7024]
     },
     {
-        "identifier": 'ACTION_713_jmp_if_var_equals_short_63',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_713_set_object_memory_bits_66']
+        "identifier": 'ACTION_713_jmp_if_700C_equals_short_63',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_713_set_object_memory_bits_66']
     },
     {
         "identifier": 'ACTION_713_set_object_memory_bits_64',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[1]]
+        "args": [0x0e, [1]]
     },
     {
         "identifier": 'ACTION_713_jmp_65',
@@ -328,7 +328,7 @@ script = [
     {
         "identifier": 'ACTION_713_set_object_memory_bits_66',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0]]
+        "args": [0x0e, [0]]
     },
     {
         "identifier": 'ACTION_713_pause_67',

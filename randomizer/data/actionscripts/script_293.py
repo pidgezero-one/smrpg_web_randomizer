@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'ACTION_293_set_700C_to_object_coord_5',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
         "identifier": 'ACTION_293_add_6',
@@ -41,8 +41,8 @@ script = [
         "args": [0x0007]
     },
     {
-        "identifier": 'ACTION_293_face_east_8',
-        "command": 'face_east'
+        "identifier": 'ACTION_293_face_east_7C_8',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_293_set_animation_speed_9',

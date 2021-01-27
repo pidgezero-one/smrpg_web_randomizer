@@ -23,9 +23,9 @@ script = [
         "args": [0x7000, 30]
     },
     {
-        "identifier": 'EVENT_445_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_445_set_7000_short_mem_to_7000_4',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_445_play_music_default_volume_5',

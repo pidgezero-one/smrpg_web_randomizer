@@ -102,9 +102,9 @@ script = [
         "args": [1249, AreaObjects.BOWSER, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_1692_set_short_mem_20',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_1692_set_7000_to_70A0_short_mem_20',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1692_mem_7000_and_const_21',
@@ -156,9 +156,9 @@ script = [
         "args": [1243, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_1692_set_short_mem_31',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ad]
+        "identifier": 'EVENT_1692_set_7000_to_70A0_short_mem_31',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ad]
     },
     {
         "identifier": 'EVENT_1692_add_32',
@@ -243,9 +243,9 @@ script = [
         "args": [1246, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_1692_set_short_mem_49',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ad]
+        "identifier": 'EVENT_1692_set_7000_to_70A0_short_mem_49',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ad]
     },
     {
         "identifier": 'EVENT_1692_add_50',
@@ -282,9 +282,9 @@ script = [
         "args": [1247, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_1692_set_short_mem_57',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ad]
+        "identifier": 'EVENT_1692_set_7000_to_70A0_short_mem_57',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ad]
     },
     {
         "identifier": 'EVENT_1692_add_58',

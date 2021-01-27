@@ -46,7 +46,7 @@ script = [
     {
         "identifier": 'ACTION_170_set_object_memory_bits_9',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[3]]
+        "args": [0x0e, [3]]
     },
     {
         "identifier": 'ACTION_170_visibility_on_10',

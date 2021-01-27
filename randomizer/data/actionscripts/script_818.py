@@ -44,9 +44,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_818_jmp_if_var_not_equals_short_9',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 22, 'ACTION_818_set_solidity_bits_11']
+        "identifier": 'ACTION_818_jmp_if_700C_not_equals_short_9',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [22, 'ACTION_818_set_solidity_bits_11']
     },
     {
         "identifier": 'ACTION_818_set_bit_10',

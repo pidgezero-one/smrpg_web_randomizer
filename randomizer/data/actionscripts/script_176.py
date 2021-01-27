@@ -33,17 +33,17 @@ script = [
     {
         "identifier": 'ACTION_176_embedded_animation_routine_6',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_176_embedded_animation_routine_7',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_176_embedded_animation_routine_8',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
     },
     {
         "identifier": 'ACTION_176_set_animation_speed_9',
@@ -55,34 +55,34 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_176_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 20, 'ACTION_176_shadow_off_17']
+        "identifier": 'ACTION_176_jmp_if_700C_equals_short_11',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [20, 'ACTION_176_shadow_off_17']
     },
     {
-        "identifier": 'ACTION_176_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_176_shadow_off_29']
+        "identifier": 'ACTION_176_jmp_if_700C_equals_short_12',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_176_shadow_off_29']
     },
     {
-        "identifier": 'ACTION_176_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 22, 'ACTION_176_shadow_off_52']
+        "identifier": 'ACTION_176_jmp_if_700C_equals_short_13',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [22, 'ACTION_176_shadow_off_52']
     },
     {
-        "identifier": 'ACTION_176_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_176_jmp_if_bit_set_65']
+        "identifier": 'ACTION_176_jmp_if_700C_equals_short_14',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_176_jmp_if_bit_set_65']
     },
     {
-        "identifier": 'ACTION_176_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 25, 'ACTION_176_jmp_if_bit_set_77']
+        "identifier": 'ACTION_176_jmp_if_700C_equals_short_15',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [25, 'ACTION_176_jmp_if_bit_set_77']
     },
     {
-        "identifier": 'ACTION_176_jmp_if_var_equals_short_16',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 26, 'ACTION_176_jmp_if_bit_set_120']
+        "identifier": 'ACTION_176_jmp_if_700C_equals_short_16',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [26, 'ACTION_176_jmp_if_bit_set_120']
     },
     {
         "identifier": 'ACTION_176_shadow_off_17',
@@ -476,12 +476,12 @@ script = [
     {
         "identifier": 'ACTION_176_embedded_animation_routine_100',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_176_embedded_animation_routine_101',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_176_fixed_f_coord_on_102',

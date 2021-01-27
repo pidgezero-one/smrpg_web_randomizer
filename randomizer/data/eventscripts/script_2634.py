@@ -367,9 +367,9 @@ script = [
         "args": [AreaObjects.NPC_3]
     },
     {
-        "identifier": 'EVENT_2634_set_short_mem_58',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_2634_set_7000_to_7000_short_mem_58',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_2634_add_59',
@@ -377,9 +377,9 @@ script = [
         "args": [0x7000, 256]
     },
     {
-        "identifier": 'EVENT_2634_set_short_mem_60',
-        "command": 'set_short_mem',
-        "args": [0x7014, 0x7000]
+        "identifier": 'EVENT_2634_set_7000_short_mem_to_7000_60',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_2634_create_packet_at_7010_coords_jmp_if_null_61',
@@ -472,9 +472,9 @@ script = [
         "args": [AreaObjects.NPC_3]
     },
     {
-        "identifier": 'EVENT_2634_set_short_mem_79',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_2634_set_7000_to_7000_short_mem_79',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_2634_add_80',
@@ -482,9 +482,9 @@ script = [
         "args": [0x7000, 256]
     },
     {
-        "identifier": 'EVENT_2634_set_short_mem_81',
-        "command": 'set_short_mem',
-        "args": [0x7014, 0x7000]
+        "identifier": 'EVENT_2634_set_7000_short_mem_to_7000_81',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_2634_play_sound_82',

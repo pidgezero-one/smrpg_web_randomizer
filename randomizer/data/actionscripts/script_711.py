@@ -25,14 +25,14 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_711_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 23, 'ACTION_711_db_25']
+        "identifier": 'ACTION_711_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [23, 'ACTION_711_db_25']
     },
     {
-        "identifier": 'ACTION_711_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_711_db_16']
+        "identifier": 'ACTION_711_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_711_db_16']
     },
     {
         "identifier": 'ACTION_711_db_7',
@@ -46,12 +46,12 @@ script = [
     {
         "identifier": 'ACTION_711_set_700C_to_object_coord_9',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.X, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_711_mem_compare_10',
-        "command": 'mem_compare',
-        "args": [0x700c, 5888]
+        "identifier": 'ACTION_711_mem_compare_val_10',
+        "command": 'mem_compare_val',
+        "args": [5888]
     },
     {
         "identifier": 'ACTION_711_jmp_if_comparison_result_is_lesser_11',
@@ -90,12 +90,12 @@ script = [
     {
         "identifier": 'ACTION_711_set_700C_to_object_coord_18',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.X, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_711_mem_compare_19',
-        "command": 'mem_compare',
-        "args": [0x700c, 5888]
+        "identifier": 'ACTION_711_mem_compare_val_19',
+        "command": 'mem_compare_val',
+        "args": [5888]
     },
     {
         "identifier": 'ACTION_711_jmp_if_comparison_result_is_lesser_20',
@@ -134,12 +134,12 @@ script = [
     {
         "identifier": 'ACTION_711_set_700C_to_object_coord_27',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.X, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_711_mem_compare_28',
-        "command": 'mem_compare',
-        "args": [0x700c, 5888]
+        "identifier": 'ACTION_711_mem_compare_val_28',
+        "command": 'mem_compare_val',
+        "args": [5888]
     },
     {
         "identifier": 'ACTION_711_jmp_if_comparison_result_is_lesser_29',

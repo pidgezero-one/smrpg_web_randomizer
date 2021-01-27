@@ -15,9 +15,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_257_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 117, 'ACTION_257_set_bit_55']
+        "identifier": 'ACTION_257_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [117, 'ACTION_257_set_bit_55']
     },
     {
         "identifier": 'ACTION_257_jmp_4',
@@ -66,7 +66,7 @@ script = [
     {
         "identifier": 'ACTION_257_set_sprite_sequence_13',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_257_pause_14',
@@ -76,7 +76,7 @@ script = [
     {
         "identifier": 'ACTION_257_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_257_set_animation_speed_16',
@@ -222,7 +222,7 @@ script = [
     {
         "identifier": 'ACTION_257_set_sprite_sequence_45',
         "command": 'set_sprite_sequence',
-        "args": [14, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [14, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_257_pause_46',
@@ -232,7 +232,7 @@ script = [
     {
         "identifier": 'ACTION_257_set_sprite_sequence_47',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_257_set_animation_speed_48',
@@ -296,7 +296,7 @@ script = [
     {
         "identifier": 'ACTION_257_set_sprite_sequence_60',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_257_pause_61',
@@ -306,7 +306,7 @@ script = [
     {
         "identifier": 'ACTION_257_set_sprite_sequence_62',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_257_set_animation_speed_63',
@@ -530,7 +530,7 @@ script = [
     {
         "identifier": 'ACTION_257_set_sprite_sequence_107',
         "command": 'set_sprite_sequence',
-        "args": [14, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [14, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_257_pause_108',
@@ -540,7 +540,7 @@ script = [
     {
         "identifier": 'ACTION_257_set_sprite_sequence_109',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_257_set_animation_speed_110',

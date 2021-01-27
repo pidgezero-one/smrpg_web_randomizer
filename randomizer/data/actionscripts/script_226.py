@@ -12,7 +12,7 @@ script = [
     {
         "identifier": 'ACTION_226_set_object_memory_bits_2',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[3]]
+        "args": [0x0e, [3]]
     },
     {
         "identifier": 'ACTION_226_ret_3',

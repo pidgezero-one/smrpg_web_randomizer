@@ -15,14 +15,14 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_354_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 20, 'ACTION_354_face_northeast_20']
+        "identifier": 'ACTION_354_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [20, 'ACTION_354_face_northeast_20']
     },
     {
-        "identifier": 'ACTION_354_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_354_set_solidity_bits_30']
+        "identifier": 'ACTION_354_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_354_set_solidity_bits_30']
     },
     {
         "identifier": 'ACTION_354_set_solidity_bits_5',
@@ -36,7 +36,7 @@ script = [
     {
         "identifier": 'ACTION_354_set_object_memory_bits_7',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[1]]
+        "args": [0x0b, [1]]
     },
     {
         "identifier": 'ACTION_354_set_animation_speed_8',
@@ -174,12 +174,12 @@ script = [
     {
         "identifier": 'ACTION_354_set_700C_to_object_coord_36',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.X, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.X, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_354_mem_compare_37',
-        "command": 'mem_compare',
-        "args": [0x700c, 3072]
+        "identifier": 'ACTION_354_mem_compare_val_37',
+        "command": 'mem_compare_val',
+        "args": [3072]
     },
     {
         "identifier": 'ACTION_354_jmp_if_comparison_result_is_lesser_38',

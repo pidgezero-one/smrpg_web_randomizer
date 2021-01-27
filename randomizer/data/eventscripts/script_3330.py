@@ -20,18 +20,18 @@ script = [
         "args": [0x94]
     },
     {
-        "identifier": 'EVENT_3330_set_short_mem_2',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_3330_set_7000_short_mem_to_7000_short_mem_2',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7010, 0x7024]
     },
     {
-        "identifier": 'EVENT_3330_set_short_mem_3',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_3330_set_7000_short_mem_to_7000_short_mem_3',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7026]
     },
     {
-        "identifier": 'EVENT_3330_set_short_mem_4',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_3330_set_7000_short_mem_to_7000_short_mem_4',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7014, 0x7028]
     },
     {
@@ -40,9 +40,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_3330_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x702a, 0x7000]
+        "identifier": 'EVENT_3330_set_7000_short_mem_to_7000_6',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_3330_run_background_event_7',

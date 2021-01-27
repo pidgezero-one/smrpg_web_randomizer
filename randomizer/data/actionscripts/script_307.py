@@ -20,9 +20,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_307_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 25, 'ACTION_307_jump_to_subroutine_6']
+        "identifier": 'ACTION_307_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [25, 'ACTION_307_jump_to_subroutine_6']
     },
     {
         "identifier": 'ACTION_307_pause_5',

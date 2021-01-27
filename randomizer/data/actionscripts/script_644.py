@@ -24,7 +24,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_4',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0, 1]]
+        "args": [0x0e, [0, 1]]
     },
     {
         "identifier": 'ACTION_644_pause_5',
@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_8',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0]]
+        "args": [0x0e, [0]]
     },
     {
         "identifier": 'ACTION_644_object_memory_modify_bits_9',
@@ -64,7 +64,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_12',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[]]
+        "args": [0x0e, []]
     },
     {
         "identifier": 'ACTION_644_set_animation_speed_13',
@@ -103,7 +103,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_20',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[1]]
+        "args": [0x0e, [1]]
     },
     {
         "identifier": 'ACTION_644_pause_21',
@@ -157,7 +157,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_31',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0]]
+        "args": [0x0e, [0]]
     },
     {
         "identifier": 'ACTION_644_pause_32',
@@ -172,7 +172,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_34',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0, 1]]
+        "args": [0x0e, [0, 1]]
     },
     {
         "identifier": 'ACTION_644_pause_35',
@@ -192,7 +192,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_38',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[]]
+        "args": [0x0e, []]
     },
     {
         "identifier": 'ACTION_644_jump_to_height_39',
@@ -216,7 +216,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_43',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0]]
+        "args": [0x0e, [0]]
     },
     {
         "identifier": 'ACTION_644_pause_44',
@@ -236,7 +236,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_47',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[]]
+        "args": [0x0e, []]
     },
     {
         "identifier": 'ACTION_644_jump_to_height_48',
@@ -261,7 +261,7 @@ script = [
     {
         "identifier": 'ACTION_644_set_object_memory_bits_52',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[2, 3]]
+        "args": [0x0e, [2, 3]]
     },
     {
         "identifier": 'ACTION_644_play_sound_53',

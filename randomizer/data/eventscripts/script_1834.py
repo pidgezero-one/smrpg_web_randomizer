@@ -89,9 +89,9 @@ script = [
         "args": [0x7043, 1]
     },
     {
-        "identifier": 'EVENT_1834_set_short_mem_18',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_1834_set_7000_short_mem_to_7000_18',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1834_jmp_if_7000_equals_short_19',
@@ -261,9 +261,9 @@ script = [
                 "args": [Sounds._048_MINECART_START, 4]
             },
             {
-                "identifier": 'EVENT_1834_action_queue_sync_47_SUBSCRIPT_set_short_mem_1',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7014]
+                "identifier": 'EVENT_1834_action_queue_sync_47_SUBSCRIPT_set_700C_to_7000_short_mem_1',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7014]
             },
             {
                 "identifier": 'EVENT_1834_action_queue_sync_47_SUBSCRIPT_face_east_7C_2',
@@ -288,7 +288,7 @@ script = [
             {
                 "identifier": 'EVENT_1834_action_queue_sync_48_SUBSCRIPT_jmp_if_bit_set_0',
                 "command": 'jmp_if_bit_set',
-                "args": [0x7043, 1, 'EVENT_1834_action_queue_sync_48_SUBSCRIPT_set_short_mem_2']
+                "args": [0x7043, 1, 'EVENT_1834_action_queue_sync_48_SUBSCRIPT_set_700C_to_7000_short_mem_2']
             },
             {
                 "identifier": 'EVENT_1834_action_queue_sync_48_SUBSCRIPT_set_sprite_sequence_1',
@@ -296,9 +296,9 @@ script = [
                 "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_1834_action_queue_sync_48_SUBSCRIPT_set_short_mem_2',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7014]
+                "identifier": 'EVENT_1834_action_queue_sync_48_SUBSCRIPT_set_700C_to_7000_short_mem_2',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7014]
             },
             {
                 "identifier": 'EVENT_1834_action_queue_sync_48_SUBSCRIPT_face_east_7C_3',
@@ -408,9 +408,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_1834_set_short_mem_57',
-        "command": 'set_short_mem',
-        "args": [0x7014, 0x7000]
+        "identifier": 'EVENT_1834_set_7000_short_mem_to_7000_57',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_1834_set_7000_to_object_coord_58',
@@ -438,9 +438,9 @@ script = [
         "args": [0x700c, 0x0000]
     },
     {
-        "identifier": 'EVENT_1834_swap_short_mem_63',
-        "command": 'swap_short_mem',
-        "args": [0x7000, 0x7016]
+        "identifier": 'EVENT_1834_db_63',
+        "command": 'db',
+        "args": [0xbd, 0x00, 0x0b]
     },
     {
         "identifier": 'EVENT_1834_jmp_64',
@@ -463,9 +463,9 @@ script = [
         "args": [0x7000, 4]
     },
     {
-        "identifier": 'EVENT_1834_set_short_mem_68',
-        "command": 'set_short_mem',
-        "args": [0x7010, 0x7000]
+        "identifier": 'EVENT_1834_set_7000_short_mem_to_7000_68',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7010]
     },
     {
         "identifier": 'EVENT_1834_action_queue_async_69',
@@ -482,9 +482,9 @@ script = [
                 "command": 'face_east_7C'
             },
             {
-                "identifier": 'EVENT_1834_action_queue_async_69_SUBSCRIPT_set_short_mem_2',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7010]
+                "identifier": 'EVENT_1834_action_queue_async_69_SUBSCRIPT_set_700C_to_7000_short_mem_2',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7010]
             },
             {
                 "identifier": 'EVENT_1834_action_queue_async_69_SUBSCRIPT_walk_f_direction_16_pixels_3',
@@ -518,9 +518,9 @@ script = [
         "args": [0x700c, 0x0002]
     },
     {
-        "identifier": 'EVENT_1834_swap_short_mem_75',
-        "command": 'swap_short_mem',
-        "args": [0x7000, 0x7018]
+        "identifier": 'EVENT_1834_db_75',
+        "command": 'db',
+        "args": [0xbd, 0x00, 0x0c]
     },
     {
         "identifier": 'EVENT_1834_jmp_76',
@@ -543,9 +543,9 @@ script = [
         "args": [0x7000, 4]
     },
     {
-        "identifier": 'EVENT_1834_set_short_mem_80',
-        "command": 'set_short_mem',
-        "args": [0x7012, 0x7000]
+        "identifier": 'EVENT_1834_set_7000_short_mem_to_7000_80',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1834_action_queue_async_81',
@@ -562,9 +562,9 @@ script = [
                 "command": 'face_east_7C'
             },
             {
-                "identifier": 'EVENT_1834_action_queue_async_81_SUBSCRIPT_set_short_mem_2',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7012]
+                "identifier": 'EVENT_1834_action_queue_async_81_SUBSCRIPT_set_700C_to_7000_short_mem_2',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7012]
             },
             {
                 "identifier": 'EVENT_1834_action_queue_async_81_SUBSCRIPT_walk_f_direction_16_pixels_3',
@@ -587,9 +587,9 @@ script = [
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_1834_action_queue_async_82_SUBSCRIPT_set_short_mem_2',
-                "command": 'set_short_mem',
-                "args": [0x700c, 0x7014]
+                "identifier": 'EVENT_1834_action_queue_async_82_SUBSCRIPT_set_700C_to_7000_short_mem_2',
+                "command": 'set_700C_to_7000_short_mem',
+                "args": [0x7014]
             },
             {
                 "identifier": 'EVENT_1834_action_queue_async_82_SUBSCRIPT_face_east_7C_3',

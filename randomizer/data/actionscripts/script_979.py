@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'ACTION_979_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_979_pause_5',
@@ -43,7 +43,7 @@ script = [
     {
         "identifier": 'ACTION_979_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_979_jmp_if_random_above_128_9',

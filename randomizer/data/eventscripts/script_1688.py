@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_1688_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7050, 6, 'EVENT_1688_set_short_mem_2']
+        "args": [0x7050, 6, 'EVENT_1688_set_7000_to_70A0_short_mem_2']
     },
     {
         "identifier": 'EVENT_1688_remove_from_current_level_1',
@@ -13,9 +13,9 @@ script = [
         "args": [AreaObjects.NPC_3]
     },
     {
-        "identifier": 'EVENT_1688_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_1688_set_7000_to_70A0_short_mem_2',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1688_mem_7000_and_const_3',
@@ -23,14 +23,14 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'EVENT_1688_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_1688_set_7000_short_mem_to_7000_4',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_1688_set_short_mem_5',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_1688_set_7000_to_70A0_short_mem_5',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1688_mem_7000_and_const_6',
@@ -38,14 +38,14 @@ script = [
         "args": [0x000c]
     },
     {
-        "identifier": 'EVENT_1688_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_1688_set_7000_short_mem_to_7000_7',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_1688_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_1688_set_7000_to_70A0_short_mem_8',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_1688_jmp_if_7000_all_bits_clear_9',

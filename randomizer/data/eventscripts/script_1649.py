@@ -725,9 +725,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1649_set_short_mem_63',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7030]
+        "identifier": 'EVENT_1649_set_7000_to_7000_short_mem_63',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7030]
     },
     {
         "identifier": 'EVENT_1649_run_dialog_64',
@@ -735,9 +735,9 @@ script = [
         "args": [1100, AreaObjects.NPC_12, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_1649_set_short_mem_65',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702e]
+        "identifier": 'EVENT_1649_set_7000_to_7000_short_mem_65',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702e]
     },
     {
         "identifier": 'EVENT_1649_run_dialog_duration_66',
@@ -745,9 +745,9 @@ script = [
         "args": [1101, DialogDurations.FOREVER, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_1649_set_short_mem_67',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7030]
+        "identifier": 'EVENT_1649_set_7000_to_7000_short_mem_67',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7030]
     },
     {
         "identifier": 'EVENT_1649_mem_compare_address_68',

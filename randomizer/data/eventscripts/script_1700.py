@@ -79,16 +79,16 @@ script = [
     {
         "identifier": 'EVENT_1700_jmp_if_comparison_result_is_lesser_15',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1700_set_short_mem_17']
+        "args": ['EVENT_1700_set_7000_to_7000_short_mem_17']
     },
     {
         "identifier": 'EVENT_1700_ret_16',
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_1700_set_short_mem_17',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x703e]
+        "identifier": 'EVENT_1700_set_7000_to_7000_short_mem_17',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_1700_mem_compare_val_18',

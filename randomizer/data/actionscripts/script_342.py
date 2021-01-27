@@ -11,19 +11,19 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_342_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 23, 'ACTION_342_set_animation_speed_15']
+        "identifier": 'ACTION_342_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [23, 'ACTION_342_set_animation_speed_15']
     },
     {
-        "identifier": 'ACTION_342_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 22, 'ACTION_342_set_animation_speed_12']
+        "identifier": 'ACTION_342_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [22, 'ACTION_342_set_animation_speed_12']
     },
     {
-        "identifier": 'ACTION_342_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_342_set_animation_speed_8']
+        "identifier": 'ACTION_342_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_342_set_animation_speed_8']
     },
     {
         "identifier": 'ACTION_342_set_animation_speed_5',

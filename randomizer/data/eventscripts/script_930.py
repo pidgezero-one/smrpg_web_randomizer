@@ -25,7 +25,7 @@ script = [
     {
         "identifier": 'EVENT_930_jmp_if_dialog_option_b_or_c_4',
         "command": 'jmp_if_dialog_option_b_or_c',
-        "args": ['EVENT_930_set_short_mem_54', 'EVENT_930_run_dialog_172']
+        "args": ['EVENT_930_set_7000_to_70A0_short_mem_54', 'EVENT_930_run_dialog_172']
     },
     {
         "identifier": 'EVENT_930_set_bit_5',
@@ -33,9 +33,9 @@ script = [
         "args": [0x7042, 2]
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d8]
+        "identifier": 'EVENT_930_set_7000_to_70A0_short_mem_6',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d8]
     },
     {
         "identifier": 'EVENT_930_jmp_if_7000_equals_short_7',
@@ -53,19 +53,19 @@ script = [
         "args": [0, 'EVENT_930_run_dialog_168']
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_10',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_930_set_7000_short_mem_to_7000_10',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_930_set_7000_short_mem_to_7000_11',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_12',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d8]
+        "identifier": 'EVENT_930_set_7000_to_70A0_short_mem_12',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d8]
     },
     {
         "identifier": 'EVENT_930_jmp_if_7000_equals_short_13',
@@ -93,9 +93,9 @@ script = [
         "args": [0x7024, 0, 'EVENT_930_run_dialog_174']
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_18',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d8]
+        "identifier": 'EVENT_930_set_7000_to_70A0_short_mem_18',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d8]
     },
     {
         "identifier": 'EVENT_930_add_short_mem_19',
@@ -110,7 +110,7 @@ script = [
     {
         "identifier": 'EVENT_930_jmp_if_comparison_result_is_greater_or_equal_21',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_930_set_short_mem_40']
+        "args": ['EVENT_930_set_7000_to_70A0_short_mem_40']
     },
     {
         "identifier": 'EVENT_930_set_object_memory_to_22',
@@ -127,9 +127,9 @@ script = [
         "command": 'end_loop'
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_25',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d8]
+        "identifier": 'EVENT_930_set_7000_to_70A0_short_mem_25',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d8]
     },
     {
         "identifier": 'EVENT_930_add_short_mem_26',
@@ -142,9 +142,9 @@ script = [
         "args": [2346, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_28',
-        "command": 'set_short_mem',
-        "args": [0x70d8, 0x7000]
+        "identifier": 'EVENT_930_set_70A0_short_mem_to_7000_28',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70d8]
     },
     {
         "identifier": 'EVENT_930_jmp_29',
@@ -202,14 +202,14 @@ script = [
         "args": ['EVENT_930_clear_bit_178']
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_40',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d8]
+        "identifier": 'EVENT_930_set_7000_to_70A0_short_mem_40',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d8]
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_41',
-        "command": 'set_short_mem',
-        "args": [0x7028, 0x7000]
+        "identifier": 'EVENT_930_set_7000_short_mem_to_7000_41',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7028]
     },
     {
         "identifier": 'EVENT_930_set_42',
@@ -222,9 +222,9 @@ script = [
         "args": [0x7000, 0x7028]
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_44',
-        "command": 'set_short_mem',
-        "args": [0x7028, 0x7000]
+        "identifier": 'EVENT_930_set_7000_short_mem_to_7000_44',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7028]
     },
     {
         "identifier": 'EVENT_930_set_object_memory_to_45',
@@ -241,8 +241,8 @@ script = [
         "command": 'end_loop'
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_48',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_930_set_7000_short_mem_to_7000_short_mem_48',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7028, 0x7024]
     },
     {
@@ -271,9 +271,9 @@ script = [
         "args": ['EVENT_930_clear_bit_178']
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_54',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d8]
+        "identifier": 'EVENT_930_set_7000_to_70A0_short_mem_54',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d8]
     },
     {
         "identifier": 'EVENT_930_jmp_if_7000_equals_short_55',
@@ -281,9 +281,9 @@ script = [
         "args": [0, 'EVENT_930_run_dialog_170']
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_56',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_930_set_7000_short_mem_to_7000_56',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_930_store_empty_inventory_slot_count_7000_57',
@@ -307,16 +307,16 @@ script = [
     {
         "identifier": 'EVENT_930_jmp_if_loaded_memory_is_below_0_61',
         "command": 'jmp_if_loaded_memory_is_below_0',
-        "args": ['EVENT_930_set_short_mem_65']
+        "args": ['EVENT_930_set_7000_short_mem_to_7000_short_mem_65']
     },
     {
         "identifier": 'EVENT_930_store_empty_inventory_slot_count_7000_62',
         "command": 'store_empty_inventory_slot_count_7000'
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_63',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_930_set_7000_short_mem_to_7000_63',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_930_jmp_64',
@@ -324,8 +324,8 @@ script = [
         "args": ['EVENT_930_jmp_to_subroutine_66']
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_65',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_930_set_7000_short_mem_to_7000_short_mem_65',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7024, 0x7026]
     },
     {
@@ -358,9 +358,9 @@ script = [
         "command": 'end_loop'
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_72',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d8]
+        "identifier": 'EVENT_930_set_7000_to_70A0_short_mem_72',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d8]
     },
     {
         "identifier": 'EVENT_930_dec_short_mem_73',
@@ -383,9 +383,9 @@ script = [
         "args": [2348, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_77',
-        "command": 'set_short_mem',
-        "args": [0x70d8, 0x7000]
+        "identifier": 'EVENT_930_set_70A0_short_mem_to_7000_77',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70d8]
     },
     {
         "identifier": 'EVENT_930_jmp_78',
@@ -602,9 +602,9 @@ script = [
         "args": [2344, AreaObjects.MARIO, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_121',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_930_set_7000_to_7000_short_mem_121',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_930_mem_compare_address_122',
@@ -627,9 +627,9 @@ script = [
         "args": [2344, AreaObjects.BOWSER, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_930_set_short_mem_126',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_930_set_7000_to_7000_short_mem_126',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_930_mem_compare_address_127',

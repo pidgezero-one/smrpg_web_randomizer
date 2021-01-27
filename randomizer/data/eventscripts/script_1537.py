@@ -21,8 +21,8 @@ script = [
         "command": 'move_script_to_background_thread_2'
     },
     {
-        "identifier": 'EVENT_1537_set_short_mem_4',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1537_set_7000_short_mem_to_7000_short_mem_4',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7016, 0x7018]
     },
     {

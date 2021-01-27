@@ -324,7 +324,7 @@ script = [
     {
         "identifier": 'EVENT_1746_jmp_if_bit_set_27',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 1, 'EVENT_1746_set_short_mem_45']
+        "args": [0x7044, 1, 'EVENT_1746_set_7000_to_7000_short_mem_45']
     },
     {
         "identifier": 'EVENT_1746_jmp_28',
@@ -347,14 +347,14 @@ script = [
         "args": [AreaObjects.SCREEN_FOCUS]
     },
     {
-        "identifier": 'EVENT_1746_set_short_mem_32',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1746_set_7000_to_7000_short_mem_32',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_1746_set_short_mem_33',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x7000]
+        "identifier": 'EVENT_1746_set_70A0_short_mem_to_7000_33',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1746_action_queue_sync_34',
@@ -467,14 +467,14 @@ script = [
         "args": ['EVENT_1746_pause_25']
     },
     {
-        "identifier": 'EVENT_1746_set_short_mem_45',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7028]
+        "identifier": 'EVENT_1746_set_7000_to_7000_short_mem_45',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7028]
     },
     {
-        "identifier": 'EVENT_1746_set_short_mem_46',
-        "command": 'set_short_mem',
-        "args": [0x70a9, 0x7000]
+        "identifier": 'EVENT_1746_set_70A0_short_mem_to_7000_46',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_1746_set_action_script_sync_47',

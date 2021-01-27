@@ -63,7 +63,7 @@ script = [
     {
         "identifier": 'ACTION_609_set_object_memory_bits_13',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0, 2]]
+        "args": [0x0e, [0, 2]]
     },
     {
         "identifier": 'ACTION_609_shift_z_up_pixels_14',

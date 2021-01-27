@@ -39,29 +39,29 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_828_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 27, 'ACTION_828_shift_northeast_steps_37']
+        "identifier": 'ACTION_828_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [27, 'ACTION_828_shift_northeast_steps_37']
     },
     {
-        "identifier": 'ACTION_828_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 26, 'ACTION_828_shift_southwest_steps_33']
+        "identifier": 'ACTION_828_jmp_if_700C_equals_short_9',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [26, 'ACTION_828_shift_southwest_steps_33']
     },
     {
-        "identifier": 'ACTION_828_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 25, 'ACTION_828_shift_northwest_steps_29']
+        "identifier": 'ACTION_828_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [25, 'ACTION_828_shift_northwest_steps_29']
     },
     {
-        "identifier": 'ACTION_828_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_828_shift_southwest_steps_26']
+        "identifier": 'ACTION_828_jmp_if_700C_equals_short_11',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_828_shift_southwest_steps_26']
     },
     {
-        "identifier": 'ACTION_828_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 23, 'ACTION_828_shift_southeast_steps_19']
+        "identifier": 'ACTION_828_jmp_if_700C_equals_short_12',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [23, 'ACTION_828_shift_southeast_steps_19']
     },
     {
         "identifier": 'ACTION_828_shift_northeast_steps_13',

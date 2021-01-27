@@ -6,14 +6,14 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_660_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 378, 'ACTION_660_shadow_off_9']
+        "identifier": 'ACTION_660_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [378, 'ACTION_660_shadow_off_9']
     },
     {
-        "identifier": 'ACTION_660_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 381, 'ACTION_660_shadow_off_9']
+        "identifier": 'ACTION_660_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [381, 'ACTION_660_shadow_off_9']
     },
     {
         "identifier": 'ACTION_660_set_animation_speed_3',
@@ -126,7 +126,7 @@ script = [
     {
         "identifier": 'ACTION_660_set_700C_to_object_coord_25',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
         "identifier": 'ACTION_660_pause_26',
@@ -152,8 +152,8 @@ script = [
         "args": [30]
     },
     {
-        "identifier": 'ACTION_660_face_east_31',
-        "command": 'face_east'
+        "identifier": 'ACTION_660_face_east_7C_31',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_660_ret_32',

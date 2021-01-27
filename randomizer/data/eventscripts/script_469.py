@@ -132,9 +132,9 @@ script = [
                 "args": [AreaObjects.MARIO, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_469_action_queue_async_20_SUBSCRIPT_set_short_mem_1',
-                "command": 'set_short_mem',
-                "args": [0x703e, 0x700c]
+                "identifier": 'EVENT_469_action_queue_async_20_SUBSCRIPT_set_7000_short_mem_to_700C_1',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x703e]
             }
         ]
     },
@@ -144,9 +144,9 @@ script = [
         "args": [0x80]
     },
     {
-        "identifier": 'EVENT_469_set_short_mem_22',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x701a]
+        "identifier": 'EVENT_469_set_7000_to_7000_short_mem_22',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x701a]
     },
     {
         "identifier": 'EVENT_469_jmp_if_7000_not_equals_short_23',
@@ -195,9 +195,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_469_set_short_mem_31',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x703e]
+        "identifier": 'EVENT_469_set_7000_to_7000_short_mem_31',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_469_add_32',
@@ -210,9 +210,9 @@ script = [
         "args": [0x0007]
     },
     {
-        "identifier": 'EVENT_469_set_short_mem_34',
-        "command": 'set_short_mem',
-        "args": [0x703e, 0x7000]
+        "identifier": 'EVENT_469_set_7000_short_mem_to_7000_34',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703e]
     },
     {
         "identifier": 'EVENT_469_enable_controls_until_return_35',
@@ -561,9 +561,9 @@ script = [
                 "args": [AreaObjects.NPC_9, Coords.F, []]
             },
             {
-                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_short_mem_2',
-                "command": 'set_short_mem',
-                "args": [0x7032, 0x700c]
+                "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_set_7000_short_mem_to_700C_2',
+                "command": 'set_7000_short_mem_to_700C',
+                "args": [0x7032]
             },
             {
                 "identifier": 'EVENT_469_start_embedded_action_script_async_F1_101_SUBSCRIPT_jmp_if_700C_any_bits_set_3',

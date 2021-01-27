@@ -112,14 +112,14 @@ script = [
         "args": [60]
     },
     {
-        "identifier": 'EVENT_3326_set_short_mem_22',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70aa]
+        "identifier": 'EVENT_3326_set_7000_to_70A0_short_mem_22',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70aa]
     },
     {
-        "identifier": 'EVENT_3326_set_short_mem_23',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_3326_set_70A0_short_mem_to_7000_23',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_3326_summon_object_at_70A8_to_current_level_24',

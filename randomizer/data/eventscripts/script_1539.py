@@ -8,14 +8,14 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
-        "identifier": 'EVENT_1539_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_1539_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_1539_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x70ae, 0x7000]
+        "identifier": 'EVENT_1539_set_70A0_short_mem_to_7000_2',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_1539_freeze_all_npcs_until_return_3',
@@ -74,9 +74,9 @@ script = [
         "command": 'move_script_to_main_thread'
     },
     {
-        "identifier": 'EVENT_1539_set_short_mem_15',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ae]
+        "identifier": 'EVENT_1539_set_7000_to_70A0_short_mem_15',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_1539_jmp_if_7000_not_equals_short_16',

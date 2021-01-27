@@ -49,7 +49,7 @@ script = [
     {
         "identifier": 'ACTION_11_set_sprite_sequence_10',
         "command": 'set_sprite_sequence',
-        "args": [30, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [30, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_11_clear_solidity_bits_11',

@@ -29,7 +29,7 @@ script = [
     {
         "identifier": 'ACTION_470_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [2, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_470_set_animation_speed_6',

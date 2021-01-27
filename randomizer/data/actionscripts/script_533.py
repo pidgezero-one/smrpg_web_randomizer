@@ -9,7 +9,7 @@ script = [
     {
         "identifier": 'ACTION_533_embedded_animation_routine_1',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x06, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_533_set_animation_speed_2',

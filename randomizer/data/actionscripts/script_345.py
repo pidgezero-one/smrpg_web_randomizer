@@ -7,14 +7,14 @@ script = [
         "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
     },
     {
-        "identifier": 'ACTION_345_add_short_1',
-        "command": 'add_short',
-        "args": [0x702c, 0x01]
+        "identifier": 'ACTION_345_inc_short_1',
+        "command": 'inc_short',
+        "args": [0x702c]
     },
     {
-        "identifier": 'ACTION_345_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x702c]
+        "identifier": 'ACTION_345_set_700C_to_7000_short_mem_2',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x702c]
     },
     {
         "identifier": 'ACTION_345_mem_700C_and_const_3',
@@ -22,9 +22,9 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_345_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_345_shift_f_direction_steps_6']
+        "identifier": 'ACTION_345_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_345_shift_f_direction_steps_6']
     },
     {
         "identifier": 'ACTION_345_set_animation_speed_5',
@@ -37,14 +37,14 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_345_add_short_7',
-        "command": 'add_short',
-        "args": [0x702c, 0x01]
+        "identifier": 'ACTION_345_inc_short_7',
+        "command": 'inc_short',
+        "args": [0x702c]
     },
     {
-        "identifier": 'ACTION_345_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x702c]
+        "identifier": 'ACTION_345_set_700C_to_7000_short_mem_8',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x702c]
     },
     {
         "identifier": 'ACTION_345_mem_700C_and_const_9',
@@ -52,9 +52,9 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_345_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_345_face_mario_13']
+        "identifier": 'ACTION_345_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_345_face_mario_13']
     },
     {
         "identifier": 'ACTION_345_turn_random_direction_11',

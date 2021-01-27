@@ -37,9 +37,9 @@ script = [
         "args": [AreaObjects.NPC_0, 571]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7012]
+        "identifier": 'EVENT_1073_set_7000_to_7000_short_mem_7',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_8',
@@ -57,13 +57,13 @@ script = [
         "args": ['EVENT_1073_jmp_if_7000_equals_short_147']
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_11',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_11',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7024]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_12',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_12',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7010]
     },
     {
@@ -163,9 +163,9 @@ script = [
         "args": [AreaObjects.NPC_1, 571]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_25',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7012]
+        "identifier": 'EVENT_1073_set_7000_to_7000_short_mem_25',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_26',
@@ -183,13 +183,13 @@ script = [
         "args": ['EVENT_1073_jmp_if_7000_equals_short_147']
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_29',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_29',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7026]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_30',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_30',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7010]
     },
     {
@@ -289,9 +289,9 @@ script = [
         "args": [AreaObjects.NPC_2, 571]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_43',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7012]
+        "identifier": 'EVENT_1073_set_7000_to_7000_short_mem_43',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_44',
@@ -309,13 +309,13 @@ script = [
         "args": ['EVENT_1073_jmp_if_7000_equals_short_147']
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_47',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_47',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7028]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_48',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_48',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7010]
     },
     {
@@ -415,9 +415,9 @@ script = [
         "args": [AreaObjects.NPC_3, 571]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_61',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7012]
+        "identifier": 'EVENT_1073_set_7000_to_7000_short_mem_61',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_62',
@@ -435,13 +435,13 @@ script = [
         "args": ['EVENT_1073_jmp_if_7000_equals_short_147']
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_65',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_65',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x702a]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_66',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_66',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7010]
     },
     {
@@ -541,9 +541,9 @@ script = [
         "args": [AreaObjects.NPC_4, 571]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_79',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7012]
+        "identifier": 'EVENT_1073_set_7000_to_7000_short_mem_79',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_80',
@@ -561,13 +561,13 @@ script = [
         "args": ['EVENT_1073_jmp_if_7000_equals_short_147']
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_83',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_83',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x702c]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_84',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_84',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7010]
     },
     {
@@ -667,9 +667,9 @@ script = [
         "args": [AreaObjects.NPC_5, 571]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_97',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7012]
+        "identifier": 'EVENT_1073_set_7000_to_7000_short_mem_97',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_98',
@@ -687,13 +687,13 @@ script = [
         "args": ['EVENT_1073_jmp_if_7000_equals_short_147']
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_101',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_101',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x702e]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_102',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_102',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7010]
     },
     {
@@ -793,9 +793,9 @@ script = [
         "args": [AreaObjects.NPC_6, 571]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_115',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7012]
+        "identifier": 'EVENT_1073_set_7000_to_7000_short_mem_115',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_116',
@@ -813,13 +813,13 @@ script = [
         "args": ['EVENT_1073_jmp_if_7000_equals_short_147']
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_119',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_119',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7030]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_120',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_120',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7010]
     },
     {
@@ -919,9 +919,9 @@ script = [
         "args": [AreaObjects.NPC_7, 571]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_133',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7012]
+        "identifier": 'EVENT_1073_set_7000_to_7000_short_mem_133',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1073_jmp_to_subroutine_134',
@@ -944,13 +944,13 @@ script = [
         "args": [AreaObjects.MARIO]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_138',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_138',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7032]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_139',
-        "command": 'set_short_mem',
+        "identifier": 'EVENT_1073_set_7000_short_mem_to_7000_short_mem_139',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
         "args": [0x7012, 0x7010]
     },
     {
@@ -964,9 +964,9 @@ script = [
         "args": [0x7012, 0x0003]
     },
     {
-        "identifier": 'EVENT_1073_set_short_mem_142',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7012]
+        "identifier": 'EVENT_1073_set_7000_to_7000_short_mem_142',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1073_dec_short_mem_143',

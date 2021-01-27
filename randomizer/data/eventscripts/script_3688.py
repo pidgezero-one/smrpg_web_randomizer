@@ -273,9 +273,9 @@ script = [
         "args": [0x7000, 10]
     },
     {
-        "identifier": 'EVENT_3688_set_short_mem_29',
-        "command": 'set_short_mem',
-        "args": [0x703a, 0x7000]
+        "identifier": 'EVENT_3688_set_7000_short_mem_to_7000_29',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703a]
     },
     {
         "identifier": 'EVENT_3688_set_30',
@@ -288,9 +288,9 @@ script = [
         "args": [3827]
     },
     {
-        "identifier": 'EVENT_3688_set_short_mem_32',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x703a]
+        "identifier": 'EVENT_3688_set_7000_to_7000_short_mem_32',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703a]
     },
     {
         "identifier": 'EVENT_3688_dec_coins_33',
@@ -431,9 +431,9 @@ script = [
         "args": [0x7000, 150]
     },
     {
-        "identifier": 'EVENT_3688_set_short_mem_50',
-        "command": 'set_short_mem',
-        "args": [0x703a, 0x7000]
+        "identifier": 'EVENT_3688_set_7000_short_mem_to_7000_50',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703a]
     },
     {
         "identifier": 'EVENT_3688_jmp_51',

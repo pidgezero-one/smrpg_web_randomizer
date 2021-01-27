@@ -7,9 +7,9 @@ script = [
         "args": [0x700c, 80]
     },
     {
-        "identifier": 'ACTION_797_mem_compare_1',
-        "command": 'mem_compare',
-        "args": [0x700c, 0x7038]
+        "identifier": 'ACTION_797_mem_compare_address_1',
+        "command": 'mem_compare_address',
+        "args": [0x7038]
     },
     {
         "identifier": 'ACTION_797_jmp_if_comparison_result_is_greater_or_equal_2',
@@ -17,9 +17,9 @@ script = [
         "args": ['ACTION_797_jump_to_subroutine_9']
     },
     {
-        "identifier": 'ACTION_797_mem_compare_3',
-        "command": 'mem_compare',
-        "args": [0x700c, 0x703a]
+        "identifier": 'ACTION_797_mem_compare_address_3',
+        "command": 'mem_compare_address',
+        "args": [0x703a]
     },
     {
         "identifier": 'ACTION_797_jmp_if_comparison_result_is_greater_or_equal_4',

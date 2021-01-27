@@ -6,9 +6,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_890_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 117, 'ACTION_890_pause_23']
+        "identifier": 'ACTION_890_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [117, 'ACTION_890_pause_23']
     },
     {
         "identifier": 'ACTION_890_pause_2',
@@ -37,7 +37,7 @@ script = [
     {
         "identifier": 'ACTION_890_set_sprite_sequence_7',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_890_jmp_if_random_above_128_8',
@@ -139,7 +139,7 @@ script = [
     {
         "identifier": 'ACTION_890_set_sprite_sequence_28',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_890_jmp_if_random_above_128_29',

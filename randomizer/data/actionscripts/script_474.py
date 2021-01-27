@@ -10,9 +10,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_474_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 78, 'ACTION_474_set_priority_27']
+        "identifier": 'ACTION_474_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [78, 'ACTION_474_set_priority_27']
     },
     {
         "identifier": 'ACTION_474_set_700C_to_pressed_button_3',

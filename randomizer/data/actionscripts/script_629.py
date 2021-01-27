@@ -6,14 +6,14 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_629_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 120, 'ACTION_629_pause_13']
+        "identifier": 'ACTION_629_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [120, 'ACTION_629_pause_13']
     },
     {
         "identifier": 'ACTION_629_set_object_memory_bits_2',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[1]]
+        "args": [0x0b, [1]]
     },
     {
         "identifier": 'ACTION_629_clear_solidity_bits_3',
@@ -67,7 +67,7 @@ script = [
     {
         "identifier": 'ACTION_629_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [14, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [14, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_629_pause_15',
@@ -77,7 +77,7 @@ script = [
     {
         "identifier": 'ACTION_629_set_sprite_sequence_16',
         "command": 'set_sprite_sequence',
-        "args": [21, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [21, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_629_pause_17',
@@ -87,7 +87,7 @@ script = [
     {
         "identifier": 'ACTION_629_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [14, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [14, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_629_jmp_if_random_above_128_19',

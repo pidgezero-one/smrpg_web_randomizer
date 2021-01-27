@@ -13,35 +13,36 @@ script = [
     {
         "identifier": 'ACTION_878_set_700C_to_object_coord_2',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_878_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x700c]
+        "identifier": 'ACTION_878_set_7000_short_mem_to_700C_3',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7024]
     },
     {
-        "identifier": 'ACTION_878_face_southwest_4',
-        "command": 'face_southwest'
+        "identifier": 'ACTION_878_face_southwest_7D_4',
+        "command": 'face_southwest_7D',
+        "args": [0x00]
     },
     {
         "identifier": 'ACTION_878_set_700C_to_object_coord_5',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_878_jmp_if_var_not_equals_short_6',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 5, 'ACTION_878_face_east_8']
+        "identifier": 'ACTION_878_jmp_if_700C_not_equals_short_6',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [5, 'ACTION_878_face_east_7C_8']
     },
     {
-        "identifier": 'ACTION_878_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7024]
+        "identifier": 'ACTION_878_set_700C_to_7000_short_mem_7',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
-        "identifier": 'ACTION_878_face_east_8',
-        "command": 'face_east'
+        "identifier": 'ACTION_878_face_east_7C_8',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_878_pause_9',

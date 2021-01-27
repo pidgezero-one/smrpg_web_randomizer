@@ -214,7 +214,7 @@ script = [
     {
         "identifier": 'EVENT_3507_jmp_if_dialog_option_b_21',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3507_set_short_mem_36']
+        "args": ['EVENT_3507_set_7000_to_70A0_short_mem_36']
     },
     {
         "identifier": 'EVENT_3507_jmp_22',
@@ -229,7 +229,7 @@ script = [
     {
         "identifier": 'EVENT_3507_jmp_if_dialog_option_b_24',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3507_set_short_mem_36']
+        "args": ['EVENT_3507_set_7000_to_70A0_short_mem_36']
     },
     {
         "identifier": 'EVENT_3507_jmp_25',
@@ -244,7 +244,7 @@ script = [
     {
         "identifier": 'EVENT_3507_jmp_if_dialog_option_b_27',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3507_set_short_mem_36']
+        "args": ['EVENT_3507_set_7000_to_70A0_short_mem_36']
     },
     {
         "identifier": 'EVENT_3507_pause_28',
@@ -308,9 +308,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3507_set_short_mem_36',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b1]
+        "identifier": 'EVENT_3507_set_7000_to_70A0_short_mem_36',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b1]
     },
     {
         "identifier": 'EVENT_3507_mem_compare_val_37',

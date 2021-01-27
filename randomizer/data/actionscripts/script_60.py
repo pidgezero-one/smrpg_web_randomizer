@@ -16,19 +16,19 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_60_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_60_pause_7']
+        "identifier": 'ACTION_60_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_60_pause_7']
     },
     {
-        "identifier": 'ACTION_60_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_60_pause_8']
+        "identifier": 'ACTION_60_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_60_pause_8']
     },
     {
-        "identifier": 'ACTION_60_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 3, 'ACTION_60_pause_9']
+        "identifier": 'ACTION_60_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [3, 'ACTION_60_pause_9']
     },
     {
         "identifier": 'ACTION_60_pause_6',
@@ -81,7 +81,7 @@ script = [
     {
         "identifier": 'ACTION_60_set_700C_to_object_coord_16',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.MARIO, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
         "identifier": 'ACTION_60_add_17',
@@ -89,19 +89,19 @@ script = [
         "args": [0x700c, 224]
     },
     {
-        "identifier": 'ACTION_60_set_short_mem_18',
-        "command": 'set_short_mem',
-        "args": [0x7028, 0x700c]
+        "identifier": 'ACTION_60_set_7000_short_mem_to_700C_18',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7028]
     },
     {
         "identifier": 'ACTION_60_set_700C_to_object_coord_19',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.Z, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_60_mem_compare_20',
-        "command": 'mem_compare',
-        "args": [0x700c, 0x7028]
+        "identifier": 'ACTION_60_mem_compare_address_20',
+        "command": 'mem_compare_address',
+        "args": [0x7028]
     },
     {
         "identifier": 'ACTION_60_jmp_if_loaded_memory_is_0_21',
@@ -199,7 +199,7 @@ script = [
     {
         "identifier": 'ACTION_60_set_700C_to_object_coord_41',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
         "identifier": 'ACTION_60_mem_700C_and_const_42',
@@ -207,42 +207,42 @@ script = [
         "args": [0x0006]
     },
     {
-        "identifier": 'ACTION_60_add_43',
-        "command": 'add',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_60_inc_43',
+        "command": 'inc',
+        "args": [0x700c]
     },
     {
-        "identifier": 'ACTION_60_face_east_44',
-        "command": 'face_east'
+        "identifier": 'ACTION_60_face_east_7C_44',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_60_sequence_looping_on_45',
         "command": 'sequence_looping_on'
     },
     {
-        "identifier": 'ACTION_60_jmp_if_var_equals_short_46',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_60_set_sprite_sequence_50']
+        "identifier": 'ACTION_60_jmp_if_700C_equals_short_46',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_60_set_sprite_sequence_50']
     },
     {
-        "identifier": 'ACTION_60_jmp_if_var_equals_short_47',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 3, 'ACTION_60_set_sprite_sequence_52']
+        "identifier": 'ACTION_60_jmp_if_700C_equals_short_47',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [3, 'ACTION_60_set_sprite_sequence_52']
     },
     {
-        "identifier": 'ACTION_60_jmp_if_var_equals_short_48',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 5, 'ACTION_60_set_sprite_sequence_52']
+        "identifier": 'ACTION_60_jmp_if_700C_equals_short_48',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [5, 'ACTION_60_set_sprite_sequence_52']
     },
     {
-        "identifier": 'ACTION_60_jmp_if_var_equals_short_49',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 7, 'ACTION_60_set_sprite_sequence_50']
+        "identifier": 'ACTION_60_jmp_if_700C_equals_short_49',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [7, 'ACTION_60_set_sprite_sequence_50']
     },
     {
         "identifier": 'ACTION_60_set_sprite_sequence_50',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_60_jmp_51',
@@ -252,7 +252,7 @@ script = [
     {
         "identifier": 'ACTION_60_set_sprite_sequence_52',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_60_set_animation_speed_53',

@@ -60,19 +60,19 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_471_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_471_transfer_to_xyzf_18']
+        "identifier": 'ACTION_471_jmp_if_700C_equals_short_12',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_471_transfer_to_xyzf_18']
     },
     {
-        "identifier": 'ACTION_471_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_471_transfer_to_xyzf_21']
+        "identifier": 'ACTION_471_jmp_if_700C_equals_short_13',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_471_transfer_to_xyzf_21']
     },
     {
-        "identifier": 'ACTION_471_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_471_transfer_to_xyzf_24']
+        "identifier": 'ACTION_471_jmp_if_700C_equals_short_14',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_471_transfer_to_xyzf_24']
     },
     {
         "identifier": 'ACTION_471_transfer_to_xyzf_15',

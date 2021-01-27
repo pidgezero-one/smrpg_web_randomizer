@@ -14,7 +14,7 @@ script = [
     {
         "identifier": 'ACTION_552_embedded_animation_routine_2',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0xb0, 0x00, 0xe0, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
     },
     {
         "identifier": 'ACTION_552_pause_3',
@@ -24,7 +24,7 @@ script = [
     {
         "identifier": 'ACTION_552_embedded_animation_routine_4',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0xb0, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
     },
     {
         "identifier": 'ACTION_552_pause_5',

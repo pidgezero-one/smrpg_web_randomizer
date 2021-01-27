@@ -23,9 +23,9 @@ script = [
         "args": ['EVENT_1828_pause_0']
     },
     {
-        "identifier": 'EVENT_1828_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x703c, 0x7000]
+        "identifier": 'EVENT_1828_set_7000_short_mem_to_7000_4',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703c]
     },
     {
         "identifier": 'EVENT_1828_set_7000_to_object_coord_5',
@@ -33,9 +33,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.X, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1828_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7038, 0x7000]
+        "identifier": 'EVENT_1828_set_7000_short_mem_to_7000_6',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7038]
     },
     {
         "identifier": 'EVENT_1828_set_7000_to_object_coord_7',
@@ -43,9 +43,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.Y, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1828_set_short_mem_8',
-        "command": 'set_short_mem',
-        "args": [0x703a, 0x7000]
+        "identifier": 'EVENT_1828_set_7000_short_mem_to_7000_8',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703a]
     },
     {
         "identifier": 'EVENT_1828_jmp_9',

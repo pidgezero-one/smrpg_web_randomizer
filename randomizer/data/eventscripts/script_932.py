@@ -104,9 +104,9 @@ script = [
         "args": [0, 'EVENT_932_close_dialog_28']
     },
     {
-        "identifier": 'EVENT_932_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7026, 0x7000]
+        "identifier": 'EVENT_932_set_7000_short_mem_to_7000_11',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_932_run_dialog_12',
@@ -184,9 +184,9 @@ script = [
         "command": 'end_loop'
     },
     {
-        "identifier": 'EVENT_932_set_short_mem_21',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d9]
+        "identifier": 'EVENT_932_set_7000_to_70A0_short_mem_21',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d9]
     },
     {
         "identifier": 'EVENT_932_add_short_mem_22',
@@ -194,9 +194,9 @@ script = [
         "args": [0x7000, 0x7024]
     },
     {
-        "identifier": 'EVENT_932_set_short_mem_23',
-        "command": 'set_short_mem',
-        "args": [0x70d9, 0x7000]
+        "identifier": 'EVENT_932_set_70A0_short_mem_to_7000_23',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70d9]
     },
     {
         "identifier": 'EVENT_932_mem_compare_val_24',

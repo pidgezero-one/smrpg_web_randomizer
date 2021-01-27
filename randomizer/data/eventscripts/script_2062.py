@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_2062_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7092, 4, 'EVENT_2062_set_short_mem_3']
+        "args": [0x7092, 4, 'EVENT_2062_set_7000_to_70A0_short_mem_3']
     },
     {
         "identifier": 'EVENT_2062_run_dialog_1',
@@ -18,14 +18,14 @@ script = [
         "args": [0x7092, 4]
     },
     {
-        "identifier": 'EVENT_2062_set_short_mem_3',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70c8]
+        "identifier": 'EVENT_2062_set_7000_to_70A0_short_mem_3',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_2062_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x7024, 0x7000]
+        "identifier": 'EVENT_2062_set_7000_short_mem_to_7000_4',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_2062_set_5',

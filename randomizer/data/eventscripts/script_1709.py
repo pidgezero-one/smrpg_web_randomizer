@@ -154,14 +154,14 @@ script = [
         "args": ['EVENT_1709_action_queue_async_55']
     },
     {
-        "identifier": 'EVENT_1709_set_short_mem_26',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7030]
+        "identifier": 'EVENT_1709_set_7000_to_7000_short_mem_26',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7030]
     },
     {
-        "identifier": 'EVENT_1709_set_short_mem_27',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7030]
+        "identifier": 'EVENT_1709_set_7000_to_7000_short_mem_27',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7030]
     },
     {
         "identifier": 'EVENT_1709_add_28',
@@ -169,9 +169,9 @@ script = [
         "args": [0x7000, 65486]
     },
     {
-        "identifier": 'EVENT_1709_set_short_mem_29',
-        "command": 'set_short_mem',
-        "args": [0x7030, 0x7000]
+        "identifier": 'EVENT_1709_set_7000_short_mem_to_7000_29',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7030]
     },
     {
         "identifier": 'EVENT_1709_enable_controls_until_return_30',

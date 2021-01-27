@@ -6,9 +6,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_775_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 20, 'ACTION_775_set_short_11']
+        "identifier": 'ACTION_775_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [20, 'ACTION_775_set_short_11']
     },
     {
         "identifier": 'ACTION_775_play_sound_2',
@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'ACTION_775_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=2, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 2, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_775_jump_to_height_silent_5',

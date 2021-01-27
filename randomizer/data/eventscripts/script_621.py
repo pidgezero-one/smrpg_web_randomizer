@@ -63,9 +63,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_621_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b8]
+        "identifier": 'EVENT_621_set_7000_to_70A0_short_mem_6',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_621_jmp_if_7000_equals_short_7',
@@ -195,9 +195,9 @@ script = [
         "command": 'fade_in_from_black_sync'
     },
     {
-        "identifier": 'EVENT_621_set_short_mem_21',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b8]
+        "identifier": 'EVENT_621_set_7000_to_70A0_short_mem_21',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_621_jmp_if_7000_equals_short_22',
@@ -351,9 +351,9 @@ script = [
         "args": [Rooms._011_MARRYMORE_INN_3F, RadialDirections.NORTHEAST, 12, 73, 1, [_0x68Flags.Z_HALF]]
     },
     {
-        "identifier": 'EVENT_621_set_short_mem_35',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b8]
+        "identifier": 'EVENT_621_set_7000_to_70A0_short_mem_35',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_621_jmp_if_7000_equals_short_36',
@@ -562,9 +562,9 @@ script = [
         "args": [0x7044, 5]
     },
     {
-        "identifier": 'EVENT_621_set_short_mem_53',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b8]
+        "identifier": 'EVENT_621_set_7000_to_70A0_short_mem_53',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_621_jmp_if_7000_equals_short_54',

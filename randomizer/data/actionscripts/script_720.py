@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_720_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [0, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_720_play_sound_1',

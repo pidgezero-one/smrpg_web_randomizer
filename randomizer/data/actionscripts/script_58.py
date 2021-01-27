@@ -35,39 +35,39 @@ script = [
         "args": [0x0007]
     },
     {
-        "identifier": 'ACTION_58_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_58_pause_15']
+        "identifier": 'ACTION_58_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_58_pause_15']
     },
     {
-        "identifier": 'ACTION_58_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_58_pause_16']
+        "identifier": 'ACTION_58_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_58_pause_16']
     },
     {
-        "identifier": 'ACTION_58_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 3, 'ACTION_58_pause_17']
+        "identifier": 'ACTION_58_jmp_if_700C_equals_short_9',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [3, 'ACTION_58_pause_17']
     },
     {
-        "identifier": 'ACTION_58_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 4, 'ACTION_58_pause_18']
+        "identifier": 'ACTION_58_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [4, 'ACTION_58_pause_18']
     },
     {
-        "identifier": 'ACTION_58_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 5, 'ACTION_58_pause_19']
+        "identifier": 'ACTION_58_jmp_if_700C_equals_short_11',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [5, 'ACTION_58_pause_19']
     },
     {
-        "identifier": 'ACTION_58_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 6, 'ACTION_58_pause_20']
+        "identifier": 'ACTION_58_jmp_if_700C_equals_short_12',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [6, 'ACTION_58_pause_20']
     },
     {
-        "identifier": 'ACTION_58_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 7, 'ACTION_58_pause_21']
+        "identifier": 'ACTION_58_jmp_if_700C_equals_short_13',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [7, 'ACTION_58_pause_21']
     },
     {
         "identifier": 'ACTION_58_pause_14',

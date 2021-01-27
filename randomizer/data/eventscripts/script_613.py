@@ -87,9 +87,9 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_613_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d7]
+        "identifier": 'EVENT_613_set_7000_to_70A0_short_mem_11',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d7]
     },
     {
         "identifier": 'EVENT_613_jmp_if_7000_equals_short_12',

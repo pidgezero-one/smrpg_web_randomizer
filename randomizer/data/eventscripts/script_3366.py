@@ -20,7 +20,7 @@ script = [
     {
         "identifier": 'EVENT_3366_jmp_if_var_equals_byte_3',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70af, 1, 'EVENT_3369_set_short_mem_32']
+        "args": [0x70af, 1, 'EVENT_3369_set_7000_to_70A0_short_mem_32']
     },
     {
         "identifier": 'EVENT_3366_jmp_if_var_equals_short_4',

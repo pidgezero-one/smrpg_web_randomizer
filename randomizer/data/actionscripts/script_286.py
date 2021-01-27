@@ -35,9 +35,9 @@ script = [
         "args": [0x700c, 65517]
     },
     {
-        "identifier": 'ACTION_286_mem_700C_shift_left_7',
-        "command": 'mem_700C_shift_left',
-        "args": [0x7018, 255]
+        "identifier": 'ACTION_286_mem_7000_shift_left_7',
+        "command": 'mem_7000_shift_left',
+        "args": [0x700c, 255]
     },
     {
         "identifier": 'ACTION_286_load_mem_8',
@@ -129,12 +129,12 @@ script = [
     {
         "identifier": 'ACTION_286_set_700C_to_object_coord_27',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.Z, CoordUnits.PIXEL]
+        "args": [AreaObjects.DUMMY_0X07, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'ACTION_286_jmp_if_var_not_equals_short_28',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 16, 'ACTION_286_set_animation_speed_25']
+        "identifier": 'ACTION_286_jmp_if_700C_not_equals_short_28',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [16, 'ACTION_286_set_animation_speed_25']
     },
     {
         "identifier": 'ACTION_286_pause_29',

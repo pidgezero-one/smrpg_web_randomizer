@@ -6,9 +6,9 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_163_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 422, 'ACTION_163_shadow_on_3']
+        "identifier": 'ACTION_163_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [422, 'ACTION_163_shadow_on_3']
     },
     {
         "identifier": 'ACTION_163_set_vram_priority_2',
@@ -54,7 +54,7 @@ script = [
     {
         "identifier": 'ACTION_163_set_sprite_sequence_11',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_163_ret_12',

@@ -5,12 +5,12 @@ script = [
     {
         "identifier": 'EVENT_1759_jmp_if_object_in_level_0',
         "command": 'jmp_if_object_in_level',
-        "args": [AreaObjects.NPC_2, Rooms._403_LANDS_END_DESERT_AREA_05, 'EVENT_1759_set_short_mem_9']
+        "args": [AreaObjects.NPC_2, Rooms._403_LANDS_END_DESERT_AREA_05, 'EVENT_1759_set_7000_to_7000_short_mem_9']
     },
     {
-        "identifier": 'EVENT_1759_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1759_set_7000_to_7000_short_mem_1',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1759_jmp_if_7000_equals_short_2',
@@ -48,9 +48,9 @@ script = [
         "args": [1786]
     },
     {
-        "identifier": 'EVENT_1759_set_short_mem_9',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1759_set_7000_to_7000_short_mem_9',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1759_jmp_if_7000_equals_short_10',

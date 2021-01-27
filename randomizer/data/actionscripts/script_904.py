@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'ACTION_904_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_904_shift_z_up_steps_3',

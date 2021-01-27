@@ -17,9 +17,9 @@ script = [
         "args": [13]
     },
     {
-        "identifier": 'ACTION_49_add_short_3',
-        "command": 'add_short',
-        "args": [0x702c, 0x01]
+        "identifier": 'ACTION_49_inc_short_3',
+        "command": 'inc_short',
+        "args": [0x702c]
     },
     {
         "identifier": 'ACTION_49_walk_1_step_southwest_4',

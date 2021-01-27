@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_pause_7',
@@ -63,7 +63,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_12',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_13',
@@ -73,7 +73,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_play_sound_15',
@@ -119,34 +119,34 @@ script = [
         "args": [0x700c, 65515]
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_24',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_939_set_object_memory_bits_29']
+        "identifier": 'ACTION_939_jmp_if_700C_equals_short_24',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_939_set_object_memory_bits_29']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_25',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_939_set_object_memory_bits_31']
+        "identifier": 'ACTION_939_jmp_if_700C_equals_short_25',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_939_set_object_memory_bits_31']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_26',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 3, 'ACTION_939_set_object_memory_bits_33']
+        "identifier": 'ACTION_939_jmp_if_700C_equals_short_26',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [3, 'ACTION_939_set_object_memory_bits_33']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_27',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 4, 'ACTION_939_set_object_memory_bits_35']
+        "identifier": 'ACTION_939_jmp_if_700C_equals_short_27',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [4, 'ACTION_939_set_object_memory_bits_35']
     },
     {
-        "identifier": 'ACTION_939_jmp_if_var_equals_short_28',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 5, 'ACTION_939_set_object_memory_bits_37']
+        "identifier": 'ACTION_939_jmp_if_700C_equals_short_28',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [5, 'ACTION_939_set_object_memory_bits_37']
     },
     {
         "identifier": 'ACTION_939_set_object_memory_bits_29',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0]]
+        "args": [0x0e, [0]]
     },
     {
         "identifier": 'ACTION_939_jmp_30',
@@ -156,7 +156,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_object_memory_bits_31',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[1]]
+        "args": [0x0e, [1]]
     },
     {
         "identifier": 'ACTION_939_jmp_32',
@@ -166,7 +166,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_object_memory_bits_33',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0, 1]]
+        "args": [0x0e, [0, 1]]
     },
     {
         "identifier": 'ACTION_939_jmp_34',
@@ -176,7 +176,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_object_memory_bits_35',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[2]]
+        "args": [0x0e, [2]]
     },
     {
         "identifier": 'ACTION_939_jmp_36',
@@ -186,7 +186,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_object_memory_bits_37',
         "command": 'set_object_memory_bits',
-        "args": [0x0e, bits=[0, 2]]
+        "args": [0x0e, [0, 2]]
     },
     {
         "identifier": 'ACTION_939_jmp_38',
@@ -219,7 +219,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_44',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_shift_xy_pixels_45',
@@ -254,7 +254,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_51',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_52',
@@ -264,7 +264,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_53',
         "command": 'set_sprite_sequence',
-        "args": [6, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_54',
@@ -274,7 +274,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_55',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_56',
@@ -284,7 +284,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_57',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_shift_xy_pixels_58',
@@ -319,7 +319,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_64',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_65',
@@ -329,7 +329,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_66',
         "command": 'set_sprite_sequence',
-        "args": [7, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [7, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_67',
@@ -339,7 +339,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_68',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_69',
@@ -354,7 +354,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_71',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_shift_xy_pixels_72',
@@ -389,7 +389,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_78',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_79',
@@ -399,7 +399,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_80',
         "command": 'set_sprite_sequence',
-        "args": [8, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_81',
@@ -409,7 +409,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_82',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jump_to_subroutine_83',
@@ -433,7 +433,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_87',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_shift_xy_pixels_88',
@@ -468,7 +468,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_94',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_95',
@@ -478,7 +478,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_96',
         "command": 'set_sprite_sequence',
-        "args": [9, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jmp_97',
@@ -488,7 +488,7 @@ script = [
     {
         "identifier": 'ACTION_939_set_sprite_sequence_98',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_939_jump_to_subroutine_99',

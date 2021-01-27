@@ -120,7 +120,7 @@ script = [
     {
         "identifier": 'EVENT_297_jmp_24',
         "command": 'jmp',
-        "args": ['EVENT_297_set_short_mem_26']
+        "args": ['EVENT_297_set_7000_short_mem_to_7000_26']
     },
     {
         "identifier": 'EVENT_297_set_7000_to_object_coord_25',
@@ -128,9 +128,9 @@ script = [
         "args": [AreaObjects.NPC_7, Coords.F, []]
     },
     {
-        "identifier": 'EVENT_297_set_short_mem_26',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x7000]
+        "identifier": 'EVENT_297_set_7000_short_mem_to_7000_26',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x700c]
     },
     {
         "identifier": 'EVENT_297_action_queue_async_27',

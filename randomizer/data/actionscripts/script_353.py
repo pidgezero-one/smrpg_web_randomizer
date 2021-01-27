@@ -29,7 +29,7 @@ script = [
     {
         "identifier": 'ACTION_353_set_sprite_sequence_5',
         "command": 'set_sprite_sequence',
-        "args": [4, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_353_jmp_6',
@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'ACTION_353_set_sprite_sequence_8',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_353_jmp_9',
@@ -59,7 +59,7 @@ script = [
     {
         "identifier": 'ACTION_353_set_sprite_sequence_11',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_353_set_animation_speed_12',
@@ -105,7 +105,7 @@ script = [
     {
         "identifier": 'ACTION_353_mem_compare_21',
         "command": 'mem_compare',
-        "args": [0x702a, 96]
+        "args": [0x701e, 96]
     },
     {
         "identifier": 'ACTION_353_jmp_if_comparison_result_is_greater_or_equal_22',

@@ -40,7 +40,7 @@ script = [
     {
         "identifier": 'EVENT_602_jmp_if_dialog_option_b_or_c_7',
         "command": 'jmp_if_dialog_option_b_or_c',
-        "args": ['EVENT_602_set_short_mem_12', 'EVENT_602_run_dialog_59']
+        "args": ['EVENT_602_set_7000_to_70A0_short_mem_12', 'EVENT_602_run_dialog_59']
     },
     {
         "identifier": 'EVENT_602_close_dialog_8',
@@ -60,9 +60,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_602_set_short_mem_12',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d7]
+        "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_12',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d7]
     },
     {
         "identifier": 'EVENT_602_mem_compare_val_13',
@@ -120,9 +120,9 @@ script = [
         "args": [0x7049, 3, 'EVENT_602_run_dialog_29']
     },
     {
-        "identifier": 'EVENT_602_set_short_mem_24',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_602_set_7000_to_7000_short_mem_24',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_602_dec_coins_25',
@@ -173,18 +173,18 @@ script = [
         "args": [0x7049, 3, 'EVENT_602_run_dialog_29']
     },
     {
-        "identifier": 'EVENT_602_set_short_mem_35',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_602_set_7000_to_7000_short_mem_35',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_602_dec_coins_36',
         "command": 'dec_coins'
     },
     {
-        "identifier": 'EVENT_602_set_short_mem_37',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d7]
+        "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_37',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d7]
     },
     {
         "identifier": 'EVENT_602_jmp_if_7000_equals_short_38',
@@ -197,9 +197,9 @@ script = [
         "args": [0x70d7]
     },
     {
-        "identifier": 'EVENT_602_set_short_mem_40',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d7]
+        "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_40',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d7]
     },
     {
         "identifier": 'EVENT_602_mem_compare_val_41',
@@ -441,9 +441,9 @@ script = [
         "args": [0x7043, 0]
     },
     {
-        "identifier": 'EVENT_602_set_short_mem_64',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70d7]
+        "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_64',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70d7]
     },
     {
         "identifier": 'EVENT_602_jmp_if_7000_equals_short_65',
@@ -941,9 +941,9 @@ script = [
         "args": [1, 'EVENT_602_run_dialog_162']
     },
     {
-        "identifier": 'EVENT_602_set_short_mem_140',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ac]
+        "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_140',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_602_dec_141',
@@ -956,9 +956,9 @@ script = [
         "args": [0, 'EVENT_602_run_dialog_149']
     },
     {
-        "identifier": 'EVENT_602_set_short_mem_143',
-        "command": 'set_short_mem',
-        "args": [0x70ac, 0x7000]
+        "identifier": 'EVENT_602_set_70A0_short_mem_to_7000_143',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ac]
     },
     {
         "identifier": 'EVENT_602_run_dialog_144',

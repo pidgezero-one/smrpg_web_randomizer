@@ -12,9 +12,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.X, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1745_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x7010, 0x7000]
+        "identifier": 'EVENT_1745_set_7000_short_mem_to_7000_2',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7010]
     },
     {
         "identifier": 'EVENT_1745_action_queue_async_3',
@@ -172,14 +172,14 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_1745_set_short_mem_16',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_1745_set_7000_to_7000_short_mem_16',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
-        "identifier": 'EVENT_1745_set_short_mem_17',
-        "command": 'set_short_mem',
-        "args": [0x70a8, 0x7000]
+        "identifier": 'EVENT_1745_set_70A0_short_mem_to_7000_17',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70a8]
     },
     {
         "identifier": 'EVENT_1745_start_loop_n_times_18',
@@ -311,9 +311,9 @@ script = [
         "args": [AreaObjects.MEM_70A8, Coords.Y, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1745_set_short_mem_36',
-        "command": 'set_short_mem',
-        "args": [0x7012, 0x7000]
+        "identifier": 'EVENT_1745_set_7000_short_mem_to_7000_36',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1745_action_queue_async_37',
@@ -771,9 +771,9 @@ script = [
         "args": [AreaObjects.MEM_70A8, Coords.Y, [], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_1745_set_short_mem_64',
-        "command": 'set_short_mem',
-        "args": [0x7012, 0x7000]
+        "identifier": 'EVENT_1745_set_7000_short_mem_to_7000_64',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7012]
     },
     {
         "identifier": 'EVENT_1745_action_queue_async_65',

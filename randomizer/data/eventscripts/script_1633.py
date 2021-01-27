@@ -72,9 +72,9 @@ script = [
         "args": [0x7000, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_1633_swap_short_mem_14',
-        "command": 'swap_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1633_db_14',
+        "command": 'db',
+        "args": [0xbd, 0x00, 0x13]
     },
     {
         "identifier": 'EVENT_1633_store_coin_amount_7000_15',
@@ -88,12 +88,12 @@ script = [
     {
         "identifier": 'EVENT_1633_jmp_if_comparison_result_is_greater_or_equal_17',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_1633_swap_short_mem_23']
+        "args": ['EVENT_1633_db_23']
     },
     {
-        "identifier": 'EVENT_1633_swap_short_mem_18',
-        "command": 'swap_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1633_db_18',
+        "command": 'db',
+        "args": [0xbd, 0x00, 0x13]
     },
     {
         "identifier": 'EVENT_1633_inc_19',
@@ -115,9 +115,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_1633_swap_short_mem_23',
-        "command": 'swap_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1633_db_23',
+        "command": 'db',
+        "args": [0xbd, 0x00, 0x13]
     },
     {
         "identifier": 'EVENT_1633_inc_24',
@@ -135,9 +135,9 @@ script = [
         "args": ['EVENT_1633_pause_33']
     },
     {
-        "identifier": 'EVENT_1633_set_short_mem_27',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_1633_set_7000_to_7000_short_mem_27',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_1633_dec_coins_28',

@@ -4,11 +4,11 @@ script = [
     {
         "identifier": 'ACTION_905_set_700C_to_object_coord_0',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.MARIO, Coords.F]
+        "args": [AreaObjects.MARIO, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_905_face_east_1',
-        "command": 'face_east'
+        "identifier": 'ACTION_905_face_east_7C_1',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_905_jmp_2',

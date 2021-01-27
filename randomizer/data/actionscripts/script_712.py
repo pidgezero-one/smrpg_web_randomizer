@@ -6,14 +6,14 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_712_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 30, 'ACTION_712_pause_11']
+        "identifier": 'ACTION_712_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [30, 'ACTION_712_pause_11']
     },
     {
-        "identifier": 'ACTION_712_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 29, 'ACTION_712_db_7']
+        "identifier": 'ACTION_712_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [29, 'ACTION_712_db_7']
     },
     {
         "identifier": 'ACTION_712_db_3',
@@ -23,12 +23,12 @@ script = [
     {
         "identifier": 'ACTION_712_embedded_animation_routine_4',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_712_embedded_animation_routine_5',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_712_ret_6',
@@ -42,12 +42,12 @@ script = [
     {
         "identifier": 'ACTION_712_embedded_animation_routine_8',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x01, 0x00, 0x00, 0x80, 0x01, 0x80]
     },
     {
         "identifier": 'ACTION_712_embedded_animation_routine_9',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x80, 0x01, 0x80]
     },
     {
         "identifier": 'ACTION_712_ret_10',
@@ -66,12 +66,12 @@ script = [
     {
         "identifier": 'ACTION_712_embedded_animation_routine_13',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_712_embedded_animation_routine_14',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_712_ret_15',

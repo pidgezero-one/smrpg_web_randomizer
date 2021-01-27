@@ -22,7 +22,7 @@ script = [
     {
         "identifier": 'ACTION_196_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [17, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [17, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_196_db_5',
@@ -70,7 +70,7 @@ script = [
     {
         "identifier": 'ACTION_196_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.LOOPING_OFF]]
+        "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
     },
     {
         "identifier": 'ACTION_196_pause_15',

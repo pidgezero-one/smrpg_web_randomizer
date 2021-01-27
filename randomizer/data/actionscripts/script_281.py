@@ -16,9 +16,9 @@ script = [
         "args": [0x7026, 0x0001]
     },
     {
-        "identifier": 'ACTION_281_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 0, 'ACTION_281_set_short_mem_7']
+        "identifier": 'ACTION_281_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [0, 'ACTION_281_set_700C_to_7000_short_mem_7']
     },
     {
         "identifier": 'ACTION_281_load_mem_4',
@@ -26,18 +26,18 @@ script = [
         "args": [0x700c]
     },
     {
-        "identifier": 'ACTION_281_mem_700C_shift_left_5',
-        "command": 'mem_700C_shift_left',
-        "args": [0x7032, 255]
+        "identifier": 'ACTION_281_mem_7000_shift_left_5',
+        "command": 'mem_7000_shift_left',
+        "args": [0x7026, 255]
     },
     {
         "identifier": 'ACTION_281_end_loop_6',
         "command": 'end_loop'
     },
     {
-        "identifier": 'ACTION_281_set_short_mem_7',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x703e]
+        "identifier": 'ACTION_281_set_700C_to_7000_short_mem_7',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
         "identifier": 'ACTION_281_mem_700C_and_var_8',
@@ -45,9 +45,9 @@ script = [
         "args": [0x7026]
     },
     {
-        "identifier": 'ACTION_281_mem_compare_9',
-        "command": 'mem_compare',
-        "args": [0x700c, 0]
+        "identifier": 'ACTION_281_mem_compare_val_9',
+        "command": 'mem_compare_val',
+        "args": [0]
     },
     {
         "identifier": 'ACTION_281_jmp_if_loaded_memory_is_not_0_10',
@@ -77,7 +77,7 @@ script = [
     {
         "identifier": 'ACTION_281_set_sprite_sequence_15',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_281_pause_16',
@@ -111,7 +111,7 @@ script = [
     {
         "identifier": 'ACTION_281_set_sprite_sequence_22',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_281_pause_23',
@@ -123,9 +123,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_281_set_short_mem_25',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x703c]
+        "identifier": 'ACTION_281_set_700C_to_7000_short_mem_25',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x703c]
     },
     {
         "identifier": 'ACTION_281_mem_700C_and_var_26',
@@ -133,14 +133,14 @@ script = [
         "args": [0x7026]
     },
     {
-        "identifier": 'ACTION_281_set_short_mem_27',
-        "command": 'set_short_mem',
-        "args": [0x7028, 0x700c]
+        "identifier": 'ACTION_281_set_7000_short_mem_to_700C_27',
+        "command": 'set_7000_short_mem_to_700C',
+        "args": [0x7028]
     },
     {
-        "identifier": 'ACTION_281_set_short_mem_28',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x703e]
+        "identifier": 'ACTION_281_set_700C_to_7000_short_mem_28',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
         "identifier": 'ACTION_281_mem_700C_and_var_29',
@@ -148,9 +148,9 @@ script = [
         "args": [0x7026]
     },
     {
-        "identifier": 'ACTION_281_mem_compare_30',
-        "command": 'mem_compare',
-        "args": [0x700c, 0x7028]
+        "identifier": 'ACTION_281_mem_compare_address_30',
+        "command": 'mem_compare_address',
+        "args": [0x7028]
     },
     {
         "identifier": 'ACTION_281_jmp_if_loaded_memory_is_0_31',

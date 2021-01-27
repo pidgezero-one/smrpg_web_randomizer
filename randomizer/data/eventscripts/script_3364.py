@@ -109,9 +109,9 @@ script = [
         "args": [0x574a, 0x5750]
     },
     {
-        "identifier": 'EVENT_3364_swap_short_mem_15',
-        "command": 'swap_short_mem',
-        "args": [0x7024, 0x7026]
+        "identifier": 'EVENT_3364_db_15',
+        "command": 'db',
+        "args": [0xbd, 0x12, 0x13]
     },
     {
         "identifier": 'EVENT_3364_jmp_16',
@@ -119,9 +119,9 @@ script = [
         "args": ['EVENT_3364_end_loop_27']
     },
     {
-        "identifier": 'EVENT_3364_swap_short_mem_17',
-        "command": 'swap_short_mem',
-        "args": [0x7024, 0x7028]
+        "identifier": 'EVENT_3364_db_17',
+        "command": 'db',
+        "args": [0xbd, 0x12, 0x14]
     },
     {
         "identifier": 'EVENT_3364_jmp_18',
@@ -129,9 +129,9 @@ script = [
         "args": ['EVENT_3364_end_loop_27']
     },
     {
-        "identifier": 'EVENT_3364_swap_short_mem_19',
-        "command": 'swap_short_mem',
-        "args": [0x7024, 0x702a]
+        "identifier": 'EVENT_3364_db_19',
+        "command": 'db',
+        "args": [0xbd, 0x12, 0x15]
     },
     {
         "identifier": 'EVENT_3364_jmp_20',
@@ -144,9 +144,9 @@ script = [
         "args": [0x5761, 0x5767]
     },
     {
-        "identifier": 'EVENT_3364_swap_short_mem_22',
-        "command": 'swap_short_mem',
-        "args": [0x7026, 0x7028]
+        "identifier": 'EVENT_3364_db_22',
+        "command": 'db',
+        "args": [0xbd, 0x13, 0x14]
     },
     {
         "identifier": 'EVENT_3364_jmp_23',
@@ -154,9 +154,9 @@ script = [
         "args": ['EVENT_3364_end_loop_27']
     },
     {
-        "identifier": 'EVENT_3364_swap_short_mem_24',
-        "command": 'swap_short_mem',
-        "args": [0x7026, 0x702a]
+        "identifier": 'EVENT_3364_db_24',
+        "command": 'db',
+        "args": [0xbd, 0x13, 0x15]
     },
     {
         "identifier": 'EVENT_3364_jmp_25',
@@ -164,9 +164,9 @@ script = [
         "args": ['EVENT_3364_end_loop_27']
     },
     {
-        "identifier": 'EVENT_3364_swap_short_mem_26',
-        "command": 'swap_short_mem',
-        "args": [0x7028, 0x702a]
+        "identifier": 'EVENT_3364_db_26',
+        "command": 'db',
+        "args": [0xbd, 0x14, 0x15]
     },
     {
         "identifier": 'EVENT_3364_end_loop_27',

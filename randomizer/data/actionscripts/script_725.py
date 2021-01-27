@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_725_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [7, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [7, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_725_visibility_off_1',
@@ -102,7 +102,7 @@ script = [
     {
         "identifier": 'ACTION_725_fade_out_sound_to_volume_20',
         "command": 'fade_out_sound_to_volume',
-        "args": [duration=1, volume=0]
+        "args": [1, 0]
     },
     {
         "identifier": 'ACTION_725_visibility_off_21',

@@ -98,8 +98,8 @@ script = [
         "command": 'sequence_looping_off'
     },
     {
-        "identifier": 'ACTION_74_pause_22',
-        "command": 'pause',
+        "identifier": 'ACTION_74_pause_short_22',
+        "command": 'pause_short',
         "args": [260]
     },
     {

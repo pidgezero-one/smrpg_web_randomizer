@@ -386,9 +386,9 @@ script = [
         "args": ['EVENT_617_action_queue_async_29']
     },
     {
-        "identifier": 'EVENT_617_set_short_mem_22',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a9]
+        "identifier": 'EVENT_617_set_7000_to_70A0_short_mem_22',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a9]
     },
     {
         "identifier": 'EVENT_617_jmp_if_7000_equals_short_23',
@@ -487,9 +487,9 @@ script = [
         "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
-        "identifier": 'EVENT_617_set_short_mem_38',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b8]
+        "identifier": 'EVENT_617_set_7000_to_70A0_short_mem_38',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b8]
     },
     {
         "identifier": 'EVENT_617_jmp_if_7000_equals_short_39',

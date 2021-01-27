@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'ACTION_680_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [21, inc_sprite=2, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [21, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_680_pause_4',

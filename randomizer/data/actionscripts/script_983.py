@@ -34,7 +34,7 @@ script = [
     {
         "identifier": 'ACTION_983_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_983_pause_7',

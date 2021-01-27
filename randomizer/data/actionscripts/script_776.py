@@ -38,7 +38,7 @@ script = [
     {
         "identifier": 'ACTION_776_jmp_if_random_above_66_7',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_776_set_animation_speed_14']
+        "args": [0x940b, 'ACTION_776_set_animation_speed_17']
     },
     {
         "identifier": 'ACTION_776_pause_8',
@@ -48,7 +48,7 @@ script = [
     {
         "identifier": 'ACTION_776_jmp_if_random_above_66_9',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_776_set_animation_speed_14']
+        "args": [0x940b, 'ACTION_776_set_animation_speed_17']
     },
     {
         "identifier": 'ACTION_776_set_animation_speed_10',

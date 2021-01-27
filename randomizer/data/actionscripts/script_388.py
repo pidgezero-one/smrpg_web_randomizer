@@ -28,17 +28,17 @@ script = [
     {
         "identifier": 'ACTION_388_embedded_animation_routine_5',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_388_embedded_animation_routine_6',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_388_embedded_animation_routine_7',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0xf0, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
     },
     {
         "identifier": 'ACTION_388_set_animation_speed_8',
@@ -50,44 +50,44 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_10',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 20, 'ACTION_388_shadow_on_18']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_10',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [20, 'ACTION_388_shadow_on_18']
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_11',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_388_shadow_on_31']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_11',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_388_shadow_on_31']
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_12',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 22, 'ACTION_388_shadow_on_18']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_12',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [22, 'ACTION_388_shadow_on_18']
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_13',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 23, 'ACTION_388_shadow_on_31']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_13',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [23, 'ACTION_388_shadow_on_31']
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_14',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 24, 'ACTION_388_shift_z_down_steps_44']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_14',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [24, 'ACTION_388_shift_z_down_steps_44']
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 25, 'ACTION_388_shift_z_down_steps_49']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_15',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [25, 'ACTION_388_shift_z_down_steps_49']
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_16',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 26, 'ACTION_388_shift_z_down_steps_44']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_16',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [26, 'ACTION_388_shift_z_down_steps_44']
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_17',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 27, 'ACTION_388_shift_z_down_steps_44']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_17',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [27, 'ACTION_388_shift_z_down_steps_44']
     },
     {
         "identifier": 'ACTION_388_shadow_on_18',
@@ -125,14 +125,14 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_26',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 20, 'ACTION_388_set_sprite_sequence_29']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_26',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [20, 'ACTION_388_set_sprite_sequence_29']
     },
     {
         "identifier": 'ACTION_388_set_sprite_sequence_27',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_388_ret_28',
@@ -141,7 +141,7 @@ script = [
     {
         "identifier": 'ACTION_388_set_sprite_sequence_29',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_388_ret_30',
@@ -183,14 +183,14 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_388_jmp_if_var_equals_short_39',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 23, 'ACTION_388_set_sprite_sequence_42']
+        "identifier": 'ACTION_388_jmp_if_700C_equals_short_39',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [23, 'ACTION_388_set_sprite_sequence_42']
     },
     {
         "identifier": 'ACTION_388_set_sprite_sequence_40',
         "command": 'set_sprite_sequence',
-        "args": [2, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_388_ret_41',
@@ -199,7 +199,7 @@ script = [
     {
         "identifier": 'ACTION_388_set_sprite_sequence_42',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_388_ret_43',

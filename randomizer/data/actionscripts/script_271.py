@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'ACTION_271_jmp_if_random_above_66_5',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_271_face_mario_8']
+        "args": [0x30f1, 'ACTION_271_pause_3']
     },
     {
         "identifier": 'ACTION_271_walk_1_step_f_direction_6',

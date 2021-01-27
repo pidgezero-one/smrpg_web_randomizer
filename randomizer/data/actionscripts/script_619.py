@@ -6,9 +6,9 @@ script = [
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_619_jmp_if_var_not_equals_short_1',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x700c, 23, 'ACTION_617_visibility_off_10']
+        "identifier": 'ACTION_619_jmp_if_700C_not_equals_short_1',
+        "command": 'jmp_if_700C_not_equals_short',
+        "args": [23, 'ACTION_617_visibility_off_10']
     },
     {
         "identifier": 'ACTION_619_jmp_if_bit_set_2',

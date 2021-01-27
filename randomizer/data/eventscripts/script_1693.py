@@ -62,9 +62,9 @@ script = [
         "args": [0x70ad]
     },
     {
-        "identifier": 'EVENT_1693_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70ad]
+        "identifier": 'EVENT_1693_set_7000_to_70A0_short_mem_11',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70ad]
     },
     {
         "identifier": 'EVENT_1693_add_12',

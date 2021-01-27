@@ -2,13 +2,13 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_288_set_short_mem_0',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x703e]
+        "identifier": 'ACTION_288_set_700C_to_7000_short_mem_0',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x703e]
     },
     {
-        "identifier": 'ACTION_288_face_east_1',
-        "command": 'face_east'
+        "identifier": 'ACTION_288_face_east_7C_1',
+        "command": 'face_east_7C'
     },
     {
         "identifier": 'ACTION_288_clear_solidity_bits_2',

@@ -23,9 +23,9 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
-        "identifier": 'EVENT_2073_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_2073_set_7000_to_7000_short_mem_4',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_2073_add_5',
@@ -33,9 +33,9 @@ script = [
         "args": [0x7000, 608]
     },
     {
-        "identifier": 'EVENT_2073_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x7014, 0x7000]
+        "identifier": 'EVENT_2073_set_7000_short_mem_to_7000_6',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_2073_play_sound_7',

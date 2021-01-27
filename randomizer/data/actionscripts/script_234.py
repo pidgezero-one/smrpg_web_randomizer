@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'ACTION_234_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [3, inc_sprite=6, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 6, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_234_ret_2',

@@ -21,19 +21,19 @@ script = [
         "args": [0x0003]
     },
     {
-        "identifier": 'ACTION_61_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_61_pause_8']
+        "identifier": 'ACTION_61_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_61_pause_8']
     },
     {
-        "identifier": 'ACTION_61_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 2, 'ACTION_61_pause_9']
+        "identifier": 'ACTION_61_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [2, 'ACTION_61_pause_9']
     },
     {
-        "identifier": 'ACTION_61_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 3, 'ACTION_61_pause_10']
+        "identifier": 'ACTION_61_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [3, 'ACTION_61_pause_10']
     },
     {
         "identifier": 'ACTION_61_pause_7',

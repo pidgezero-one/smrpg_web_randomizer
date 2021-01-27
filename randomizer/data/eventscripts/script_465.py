@@ -198,9 +198,9 @@ script = [
         "args": [0x705e, 1, 'EVENT_465_jmp_if_random_above_66_47']
     },
     {
-        "identifier": 'EVENT_465_set_short_mem_39',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70b0]
+        "identifier": 'EVENT_465_set_7000_to_70A0_short_mem_39',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70b0]
     },
     {
         "identifier": 'EVENT_465_jmp_if_7000_equals_short_40',
@@ -593,9 +593,9 @@ script = [
         "args": ['EVENT_465_set_120']
     },
     {
-        "identifier": 'EVENT_465_set_short_mem_118',
-        "command": 'set_short_mem',
-        "args": [0x70eb, 0x7000]
+        "identifier": 'EVENT_465_set_70A0_short_mem_to_7000_118',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70eb]
     },
     {
         "identifier": 'EVENT_465_jmp_119',

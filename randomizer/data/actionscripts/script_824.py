@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'ACTION_824_jmp_if_random_above_66_6',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_824_shift_southwest_pixels_9']
+        "args": [0x9e71, 'ACTION_824_shift_southwest_pixels_12']
     },
     {
         "identifier": 'ACTION_824_pause_7',
@@ -73,7 +73,7 @@ script = [
     {
         "identifier": 'ACTION_824_set_sprite_sequence_14',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_824_visibility_on_15',
@@ -92,7 +92,7 @@ script = [
     {
         "identifier": 'ACTION_824_set_sprite_sequence_18',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_824_walk_1_step_southwest_19',
@@ -133,7 +133,7 @@ script = [
     {
         "identifier": 'ACTION_824_set_sprite_sequence_27',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_824_jump_to_height_28',
@@ -207,7 +207,7 @@ script = [
     {
         "identifier": 'ACTION_824_set_sprite_sequence_42',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_824_walk_1_step_southwest_43',
@@ -248,7 +248,7 @@ script = [
     {
         "identifier": 'ACTION_824_set_sprite_sequence_51',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_824_jump_to_height_52',
@@ -338,7 +338,7 @@ script = [
     {
         "identifier": 'ACTION_824_set_sprite_sequence_70',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_824_pause_71',

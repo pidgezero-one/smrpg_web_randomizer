@@ -23,9 +23,9 @@ script = [
         "args": [Rooms._454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS, 48, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
-        "identifier": 'EVENT_3381_set_short_mem_4',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70e9]
+        "identifier": 'EVENT_3381_set_7000_to_70A0_short_mem_4',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70e9]
     },
     {
         "identifier": 'EVENT_3381_mem_7000_shift_left_5',

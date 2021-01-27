@@ -458,9 +458,9 @@ script = [
         "args": [0x7079, 0]
     },
     {
-        "identifier": 'EVENT_3486_set_short_mem_33',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x702a]
+        "identifier": 'EVENT_3486_set_7000_to_7000_short_mem_33',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702a]
     },
     {
         "identifier": 'EVENT_3486_mem_compare_val_34',
@@ -470,7 +470,7 @@ script = [
     {
         "identifier": 'EVENT_3486_jmp_if_comparison_result_is_lesser_35',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_3486_set_short_mem_37']
+        "args": ['EVENT_3486_set_70A0_short_mem_to_7000_37']
     },
     {
         "identifier": 'EVENT_3486_set_36',
@@ -478,9 +478,9 @@ script = [
         "args": [0x7000, 0]
     },
     {
-        "identifier": 'EVENT_3486_set_short_mem_37',
-        "command": 'set_short_mem',
-        "args": [0x70b3, 0x7000]
+        "identifier": 'EVENT_3486_set_70A0_short_mem_to_7000_37',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70b3]
     },
     {
         "identifier": 'EVENT_3486_set_bit_38',

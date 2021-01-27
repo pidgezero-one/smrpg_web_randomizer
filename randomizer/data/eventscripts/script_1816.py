@@ -114,9 +114,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1816_set_short_mem_14',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_1816_set_7000_to_7000_short_mem_14',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_1816_run_dialog_15',
@@ -135,9 +135,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1816_set_short_mem_17',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_1816_set_7000_to_7000_short_mem_17',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_1816_mem_compare_val_18',
@@ -549,9 +549,9 @@ script = [
         "args": [0x7028, 0x0001]
     },
     {
-        "identifier": 'EVENT_1816_set_short_mem_65',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7024]
+        "identifier": 'EVENT_1816_set_7000_to_7000_short_mem_65',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_1816_mem_compare_val_66',

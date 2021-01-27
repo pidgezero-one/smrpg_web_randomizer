@@ -6,34 +6,34 @@ script = [
         "command": 'set_700C_to_current_level'
     },
     {
-        "identifier": 'ACTION_59_jmp_if_var_equals_short_1',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 463, 'ACTION_59_set_700C_to_object_coord_23']
+        "identifier": 'ACTION_59_jmp_if_700C_equals_short_1',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [463, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
-        "identifier": 'ACTION_59_jmp_if_var_equals_short_2',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 464, 'ACTION_59_set_700C_to_object_coord_23']
+        "identifier": 'ACTION_59_jmp_if_700C_equals_short_2',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [464, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
-        "identifier": 'ACTION_59_jmp_if_var_equals_short_3',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 465, 'ACTION_59_set_700C_to_object_coord_23']
+        "identifier": 'ACTION_59_jmp_if_700C_equals_short_3',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [465, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
-        "identifier": 'ACTION_59_jmp_if_var_equals_short_4',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 466, 'ACTION_59_set_700C_to_object_coord_23']
+        "identifier": 'ACTION_59_jmp_if_700C_equals_short_4',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [466, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
-        "identifier": 'ACTION_59_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 467, 'ACTION_59_set_700C_to_object_coord_23']
+        "identifier": 'ACTION_59_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [467, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
-        "identifier": 'ACTION_59_jmp_if_var_equals_short_6',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 468, 'ACTION_59_set_700C_to_object_coord_23']
+        "identifier": 'ACTION_59_jmp_if_700C_equals_short_6',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [468, 'ACTION_59_set_700C_to_object_coord_23']
     },
     {
         "identifier": 'ACTION_59_object_memory_set_bit_7',
@@ -43,7 +43,7 @@ script = [
     {
         "identifier": 'ACTION_59_set_object_memory_bits_8',
         "command": 'set_object_memory_bits',
-        "args": [0x0b, bits=[0, 1]]
+        "args": [0x0b, [0, 1]]
     },
     {
         "identifier": 'ACTION_59_face_southwest_9',
@@ -116,17 +116,17 @@ script = [
     {
         "identifier": 'ACTION_59_set_700C_to_object_coord_23',
         "command": 'set_700C_to_object_coord',
-        "args": [AreaObjects.DUMMY_0X07, Coords.F]
+        "args": [AreaObjects.DUMMY_0X07, Coords.F, []]
     },
     {
-        "identifier": 'ACTION_59_jmp_if_var_equals_short_24',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 1, 'ACTION_59_set_sprite_sequence_32']
+        "identifier": 'ACTION_59_jmp_if_700C_equals_short_24',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [1, 'ACTION_59_set_sprite_sequence_32']
     },
     {
         "identifier": 'ACTION_59_set_sprite_sequence_25',
         "command": 'set_sprite_sequence',
-        "args": [21, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [21, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_59_pause_26',
@@ -136,7 +136,7 @@ script = [
     {
         "identifier": 'ACTION_59_set_sprite_sequence_27',
         "command": 'set_sprite_sequence',
-        "args": [22, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [22, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_59_pause_28',
@@ -151,7 +151,7 @@ script = [
     {
         "identifier": 'ACTION_59_set_sprite_sequence_30',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_59_ret_31',
@@ -160,7 +160,7 @@ script = [
     {
         "identifier": 'ACTION_59_set_sprite_sequence_32',
         "command": 'set_sprite_sequence',
-        "args": [21, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [21, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_59_pause_33',
@@ -170,7 +170,7 @@ script = [
     {
         "identifier": 'ACTION_59_set_sprite_sequence_34',
         "command": 'set_sprite_sequence',
-        "args": [22, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [22, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_59_pause_35',
@@ -185,7 +185,7 @@ script = [
     {
         "identifier": 'ACTION_59_set_sprite_sequence_37',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
         "identifier": 'ACTION_59_ret_38',

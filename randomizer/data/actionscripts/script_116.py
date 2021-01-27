@@ -4,7 +4,7 @@ script = [
     {
         "identifier": 'ACTION_116_jmp_if_random_above_66_0',
         "command": 'jmp_if_random_above_66',
-        "args": ['ACTION_116_jump_to_subroutine_4']
+        "args": [0x1b11, 'ACTION_116_jump_to_subroutine_7']
     },
     {
         "identifier": 'ACTION_116_jump_to_subroutine_1',

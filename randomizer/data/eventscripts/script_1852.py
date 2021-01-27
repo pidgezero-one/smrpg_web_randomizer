@@ -3,14 +3,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1852_set_short_mem_0',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x70a8]
+        "identifier": 'EVENT_1852_set_7000_to_70A0_short_mem_0',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a8]
     },
     {
-        "identifier": 'EVENT_1852_set_short_mem_1',
-        "command": 'set_short_mem',
-        "args": [0x70ae, 0x7000]
+        "identifier": 'EVENT_1852_set_70A0_short_mem_to_7000_1',
+        "command": 'set_70A0_short_mem_to_7000',
+        "args": [0x70ae]
     },
     {
         "identifier": 'EVENT_1852_jmp_fork_mario_on_object_2',
@@ -663,9 +663,9 @@ script = [
         "args": [Sounds._094_FROG_COIN, 6]
     },
     {
-        "identifier": 'EVENT_1852_set_short_mem_98',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1852_set_7000_to_7000_short_mem_98',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1852_add_frog_coins_99',
@@ -688,9 +688,9 @@ script = [
         "args": [Sounds._013_COIN, 6]
     },
     {
-        "identifier": 'EVENT_1852_set_short_mem_103',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7026]
+        "identifier": 'EVENT_1852_set_7000_to_7000_short_mem_103',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1852_add_coins_104',

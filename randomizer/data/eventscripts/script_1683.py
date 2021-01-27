@@ -5,7 +5,7 @@ script = [
     {
         "identifier": 'EVENT_1683_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x704f, 1, 'EVENT_1682_set_short_mem_0']
+        "args": [0x704f, 1, 'EVENT_1682_set_7000_to_70A0_short_mem_0']
     },
     {
         "identifier": 'EVENT_1683_jmp_if_bit_set_1',

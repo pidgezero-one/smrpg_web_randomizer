@@ -7,8 +7,9 @@ script = [
         "args": [0x7056, 1, 'ACTION_722_ret_4']
     },
     {
-        "identifier": 'ACTION_722_face_southwest_1',
-        "command": 'face_southwest'
+        "identifier": 'ACTION_722_face_southwest_7D_1',
+        "command": 'face_southwest_7D',
+        "args": [0x14]
     },
     {
         "identifier": 'ACTION_722_pause_2',

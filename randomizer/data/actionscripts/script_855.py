@@ -105,7 +105,7 @@ script = [
     {
         "identifier": 'ACTION_855_set_sprite_sequence_22',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=3, flags=[_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 3, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_855_face_south_23',

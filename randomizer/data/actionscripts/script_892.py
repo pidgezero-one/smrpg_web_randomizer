@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'ACTION_892_set_sprite_sequence_2',
         "command": 'set_sprite_sequence',
-        "args": [0, inc_sprite=0, flags=[]]
+        "args": [0, 0, []]
     },
     {
         "identifier": 'ACTION_892_pause_3',
@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'ACTION_892_set_sprite_sequence_4',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[]]
+        "args": [1, 0, []]
     },
     {
         "identifier": 'ACTION_892_pause_5',

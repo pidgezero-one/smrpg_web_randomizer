@@ -22,17 +22,17 @@ script = [
     {
         "identifier": 'ACTION_479_embedded_animation_routine_4',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2c, 0x00, 0x01, 0x00, 0x00, 0x80, 0x00, 0x80]
     },
     {
         "identifier": 'ACTION_479_embedded_animation_routine_5',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x20, 0x00, 0x01, 0x00, 0x00, 0x80, 0x00, 0x80]
     },
     {
-        "identifier": 'ACTION_479_set_short_mem_6',
-        "command": 'set_short_mem',
-        "args": [0x700c, 0x702a]
+        "identifier": 'ACTION_479_set_700C_to_7000_short_mem_6',
+        "command": 'set_700C_to_7000_short_mem',
+        "args": [0x702a]
     },
     {
         "identifier": 'ACTION_479_db_7',

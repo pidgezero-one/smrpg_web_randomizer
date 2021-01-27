@@ -12,9 +12,9 @@ script = [
         "args": [0x700c, 2]
     },
     {
-        "identifier": 'ACTION_125_add_2',
-        "command": 'add',
-        "args": [0x700c, 0x01]
+        "identifier": 'ACTION_125_inc_2',
+        "command": 'inc',
+        "args": [0x700c]
     },
     {
         "identifier": 'ACTION_125_load_mem_3',

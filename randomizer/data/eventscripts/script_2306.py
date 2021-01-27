@@ -60,9 +60,9 @@ script = [
         "args": [AreaObjects.NPC_10]
     },
     {
-        "identifier": 'EVENT_2306_set_short_mem_9',
-        "command": 'set_short_mem',
-        "args": [0x7000, 0x7014]
+        "identifier": 'EVENT_2306_set_7000_to_7000_short_mem_9',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_2306_add_10',
@@ -70,9 +70,9 @@ script = [
         "args": [0x7000, 512]
     },
     {
-        "identifier": 'EVENT_2306_set_short_mem_11',
-        "command": 'set_short_mem',
-        "args": [0x7014, 0x7000]
+        "identifier": 'EVENT_2306_set_7000_short_mem_to_7000_11',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
     },
     {
         "identifier": 'EVENT_2306_create_packet_at_7010_coords_jmp_if_null_12',

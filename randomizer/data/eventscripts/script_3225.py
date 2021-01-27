@@ -13,9 +13,9 @@ script = [
         "args": [AreaObjects.MARIO, Coords.X, [7], CoordUnits.PIXEL]
     },
     {
-        "identifier": 'EVENT_3225_set_short_mem_2',
-        "command": 'set_short_mem',
-        "args": [0x7032, 0x7000]
+        "identifier": 'EVENT_3225_set_7000_short_mem_to_7000_2',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7032]
     },
     {
         "identifier": 'EVENT_3225_mem_7000_shift_left_3',

@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'ACTION_412_embedded_animation_routine_5',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_412_jmp_6',
@@ -38,7 +38,7 @@ script = [
     {
         "identifier": 'ACTION_412_embedded_animation_routine_7',
         "command": 'embedded_animation_routine',
-        "args": [0x26]
+        "args": [0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x18, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_412_jmp_if_random_above_128_8',
@@ -48,7 +48,7 @@ script = [
     {
         "identifier": 'ACTION_412_embedded_animation_routine_9',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_412_jmp_10',
@@ -58,7 +58,7 @@ script = [
     {
         "identifier": 'ACTION_412_embedded_animation_routine_11',
         "command": 'embedded_animation_routine',
-        "args": [0x27]
+        "args": [0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0x00, 0x18, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x80]
     },
     {
         "identifier": 'ACTION_412_jmp_if_random_above_128_12',
@@ -68,7 +68,7 @@ script = [
     {
         "identifier": 'ACTION_412_embedded_animation_routine_13',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_412_jmp_14',
@@ -78,7 +78,7 @@ script = [
     {
         "identifier": 'ACTION_412_embedded_animation_routine_15',
         "command": 'embedded_animation_routine',
-        "args": [0x28]
+        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x0c, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x80]
     },
     {
         "identifier": 'ACTION_412_db_16',

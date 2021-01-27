@@ -40,8 +40,8 @@ script = [
         "args": [0x700c, 25]
     },
     {
-        "identifier": 'ACTION_126_jmp_if_mem_704x_at_700C_bit_set_8',
-        "command": 'jmp_if_mem_704x_at_700C_bit_set',
+        "identifier": 'ACTION_126_jmp_if_mem_704x_at_700C_bit_clear_8',
+        "command": 'jmp_if_mem_704x_at_700C_bit_clear',
         "args": ['ACTION_126_pause_4']
     },
     {
@@ -60,9 +60,9 @@ script = [
         "args": [0x700c, 21]
     },
     {
-        "identifier": 'ACTION_126_set_short_mem_12',
-        "command": 'set_short_mem',
-        "args": [0x70aa, 0x700c]
+        "identifier": 'ACTION_126_set_70A0_short_mem_to_700C_12',
+        "command": 'set_70A0_short_mem_to_700C',
+        "args": [0x70aa]
     },
     {
         "identifier": 'ACTION_126_db_13',

@@ -19,36 +19,36 @@ script = [
     {
         "identifier": 'ACTION_554_set_sprite_sequence_3',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_554_set_700C_to_pressed_button_4',
         "command": 'set_700C_to_pressed_button'
     },
     {
-        "identifier": 'ACTION_554_jmp_if_var_equals_short_5',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 31, 'ACTION_554_set_priority_16']
+        "identifier": 'ACTION_554_jmp_if_700C_equals_short_5',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [31, 'ACTION_554_set_priority_16']
     },
     {
         "identifier": 'ACTION_554_set_sprite_sequence_6',
         "command": 'set_sprite_sequence',
-        "args": [5, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [5, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_554_jmp_if_var_equals_short_7',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 21, 'ACTION_554_set_priority_13']
+        "identifier": 'ACTION_554_jmp_if_700C_equals_short_7',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [21, 'ACTION_554_set_priority_13']
     },
     {
-        "identifier": 'ACTION_554_jmp_if_var_equals_short_8',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 22, 'ACTION_554_set_priority_13']
+        "identifier": 'ACTION_554_jmp_if_700C_equals_short_8',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [22, 'ACTION_554_set_priority_13']
     },
     {
-        "identifier": 'ACTION_554_jmp_if_var_equals_short_9',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x700c, 25, 'ACTION_554_set_priority_13']
+        "identifier": 'ACTION_554_jmp_if_700C_equals_short_9',
+        "command": 'jmp_if_700C_equals_short',
+        "args": [25, 'ACTION_554_set_priority_13']
     },
     {
         "identifier": 'ACTION_554_set_priority_10',
@@ -84,7 +84,7 @@ script = [
     {
         "identifier": 'ACTION_554_set_sprite_sequence_17',
         "command": 'set_sprite_sequence',
-        "args": [1, inc_sprite=0, flags=[_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
     },
     {
         "identifier": 'ACTION_554_visibility_off_18',

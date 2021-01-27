@@ -13,6 +13,102 @@ class ObjectSequenceScript:
             ret[i] = byte
         return ret
     
+    def assemble_from_table(table):
+        bank_21_pointer_table = bytearray(b'')
+        bank_21_scripts = bytearray(b'')
+        table_with_lengths = []
+        for script in table:
+            scripts_with_lengths = []
+            for command in script:
+                #print(command["identifier"])
+                script_with_length = command
+                assembler = ObjectSequenceScript()
+                func = getattr(assembler, command["command"], None)
+                if "args" in command.keys():
+                    dummy_args = [0 if isinstance(
+                        arg, str) else arg for arg in command["args"]]
+                else:
+                    dummy_args = []
+                if not func:
+                    raise Exception(
+                        '%s(%s) is an invalid instruction!' % (command["command"], dummy_args))
+                func(*dummy_args)
+                command_line = assembler.fin()
+                script_with_length["line"] = command_line
+                scripts_with_lengths.append(script_with_length)
+            table_with_lengths.append(scripts_with_lengths)
+
+
+        # calculate offsets
+        offset = 0x210800
+        table_with_offsets = []
+        for i in range(len(table_with_lengths)):
+            script = table_with_lengths[i]
+            commands_with_offsets = []
+            for command in script:
+                cmd_with_offset = command
+                cmd_with_offset["offset"] = offset
+                offset += len(cmd_with_offset["line"])
+                commands_with_offsets.append(cmd_with_offset)
+            table_with_offsets.append(commands_with_offsets)
+
+        #substitute offsets for jump args
+        def get_jump_short(name):
+            for i in range(len(table_with_offsets)):
+                script = table_with_offsets[i]
+                for j in range(len(script)):
+                    command = script[j]
+                    if command["identifier"] == name:
+                        return (command["offset"] & 0xFFFF)
+            raise Exception(f'{name} did not match any commands')
+
+        table_with_real_args = []
+
+        for i in range(len(table_with_offsets)):
+            script = table_with_offsets[i]
+            s = []
+            for j in range(len(script)):
+                command = script[j]
+                assembler = ObjectSequenceScript()
+                func = getattr(assembler, command["command"], None)
+                if "args" in command.keys():
+                    args = [get_jump_short(arg) if isinstance(arg, str) else arg for arg in command["args"]]
+                    command["args"] = args
+                else:
+                    command["args"] = []
+                if not func:
+                    raise Exception(
+                        '%s(%s) is an invalid instruction!' % (command["command"], command["args"]))
+                func(*command["args"])
+                line = assembler.fin()
+                command["line"] = line
+                s.append(command)
+            table_with_real_args.append(s)
+
+        # put it all together
+        offset = 0x210800
+        for i in range(len(table_with_real_args)):
+            script = table_with_real_args[i]
+            ptr_bytes = [offset & 0xFF, (offset >> 8) & 0xFF]
+            bank_21_pointer_table += bytearray(ptr_bytes)
+            for command in script:
+                bank_21_scripts += command["line"]
+                offset += len(command["line"])
+
+        print("bank 21 ptrs", hex(len(bank_21_pointer_table)), len(bank_21_pointer_table))
+        print("bank 21 before", hex(len(bank_21_scripts)), len(bank_21_scripts))
+        #empty_space = 0xB2DF - len(bank_21_scripts)
+        empty_space = 0xB800 - len(bank_21_scripts)
+        print("empty", hex(empty_space), empty_space)
+        if (empty_space < 0):
+            bank_21_scripts = bank_21_scripts[0:(empty_space)]
+        else:
+            bank_21_scripts += bytearray([0xFF for x in range(empty_space)])
+        print("bank 21 after", hex(len(bank_21_scripts)), len(bank_21_scripts))
+        
+        return [bank_21_pointer_table, bank_21_scripts]
+
+    
     #assembles an array of hex lines corresponding to an embedded action script, for assembling in enscript.py
     def get_dummy_bytearray(script):
         dummy_lines = []
@@ -804,6 +900,30 @@ class ObjectSequenceScript:
         else:
             1/0
         return self
+
+    # 0xB4, 0xB5, 0xBA, 0xBB, 0xBC
+    def set_7000_short_mem_to_7000_short_mem(self, address_left, address_right):
+        assert 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE
+        self.append_byte(0xBC)
+        self.append_byte((address_left - 0x7000) // 2)
+        self.append_byte((address_right - 0x7000) // 2)
+        return self
+    def set_700C_to_70A0_short_mem(self, address):
+        self.append_byte(0xB4)
+        self.append_byte(address - 0x70A0)
+        return self
+    def set_70A0_short_mem_to_700C(self, address):
+        self.append_byte(0xB5)
+        self.append_byte(address - 0x70A0)
+        return self
+    def set_700C_to_7000_short_mem(self, address):
+        self.append_byte(0xBA)
+        self.append_byte((address - 0x7000) // 2)
+        return self
+    def set_7000_short_mem_to_700C(self, address):
+        self.append_byte(0xBB)
+        self.append_byte((address - 0x7000) // 2)
+        return self
         
     # 0xB6, 0xB7
     def set_random(self, address, limit):
@@ -1039,9 +1159,10 @@ class ObjectSequenceScript:
         return self
 
     # 0xE9
-    def jmp_if_random_above_66(self, address):
+    def jmp_if_random_above_66(self, address, address2):
         self.append_byte(0xE9)
         self.append_short(self.get_branch_address(address))
+        self.append_short(self.get_branch_address(address2))
         return self
 
     # 0xEA
@@ -1280,7 +1401,7 @@ class ObjectSequenceScript:
     # FD 0xB3
     def mem_700C_and_var(self, address):
         self.append_byte(0xFD)
-        self.append_byte(0xB0)
+        self.append_byte(0xB3)
         self.append_byte((address - 0x7000) // 2)
         return self
 
@@ -1299,7 +1420,7 @@ class ObjectSequenceScript:
         return self
 
     # FD 0xB6
-    def mem_700C_shift_left(self, addr, shift):
+    def mem_7000_shift_left(self, addr, shift):
         self.append_byte(0xFD)
         self.append_byte(0xB6)
         self.append_byte((addr - 0x7000) // 2)

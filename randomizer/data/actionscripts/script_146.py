@@ -11,8 +11,9 @@ script = [
         "command": 'sequence_looping_on'
     },
     {
-        "identifier": 'ACTION_146_face_southwest_2',
-        "command": 'face_southwest'
+        "identifier": 'ACTION_146_face_southwest_7D_2',
+        "command": 'face_southwest_7D',
+        "args": [0x00]
     },
     {
         "identifier": 'ACTION_146_pause_3',
