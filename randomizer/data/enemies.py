@@ -53,7 +53,8 @@ class Enemy:
     flower_bonus_chance = 0
     flying = False
     high_flying = False
-    one_per_battle = False  # Flag if enemy is unique per battle (only 1 max per formation)
+    # Flag if enemy is unique per battle (only 1 max per formation)
+    one_per_battle = False
     hp_counter_ratios = []
 
     # Reward attributes.
@@ -77,7 +78,7 @@ class Enemy:
     ratio_magic_evade = 1.0
     name_override = ''
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = None
     overworld_npc = None
     battle_sprite = None
@@ -93,8 +94,8 @@ class Enemy:
     other_npcs = []
     other_sprites = []
     statue_only = False
-    sprite_width = 32;
-    sprite_height = 32;
+    sprite_width = 32
+    sprite_height = 32
     overworld_sesw_only = False
     battle_sesw_only = False
     overworld_front_sequence = 0
@@ -258,7 +259,8 @@ class Enemy:
         desc += '\x20\x20'
 
         # Status vulnerabilities.
-        vulnerabilities = [i for i in range(4) if i not in self.status_immunities]
+        vulnerabilities = [i for i in range(
+            4) if i not in self.status_immunities]
         if vulnerabilities:
             desc += utils.add_desc_fields((
                 ('\x82', 0, vulnerabilities),
@@ -373,15 +375,19 @@ class Enemy:
         data = bytearray()
         data += utils.ByteField(self.xp, num_bytes=2).as_bytes()
         data += utils.ByteField(self.coins).as_bytes()
-        data += utils.ByteField(self.yoshi_cookie_item.index if self.yoshi_cookie_item else 0xff).as_bytes()
-        data += utils.ByteField(self.normal_item.index if self.normal_item else 0xff).as_bytes()
-        data += utils.ByteField(self.rare_item.index if self.rare_item else 0xff).as_bytes()
+        data += utils.ByteField(
+            self.yoshi_cookie_item.index if self.yoshi_cookie_item else 0xff).as_bytes()
+        data += utils.ByteField(
+            self.normal_item.index if self.normal_item else 0xff).as_bytes()
+        data += utils.ByteField(
+            self.rare_item.index if self.rare_item else 0xff).as_bytes()
         patch.add_data(self.reward_address, data)
 
         # If we have an override name, add to the patch data.
         if self.name_override:
             addr = self.NAME_BASE_ADDRESS + (self.index * 13)
-            patch.add_data(addr, self.name_override.upper().encode().ljust(13, b'\x20'))
+            patch.add_data(
+                addr, self.name_override.upper().encode().ljust(13, b'\x20'))
 
         return patch
 
@@ -422,11 +428,13 @@ class Enemy:
             # If the description is empty, just use the null byte at the very beginning.
             if not desc:
                 pointer = cls.BASE_PSYCHOPATH_DATA_ADDRESS - cls.PSYCHOPATH_DATA_POINTER_OFFSET
-                pointer_data += utils.ByteField(pointer, num_bytes=2).as_bytes()
+                pointer_data += utils.ByteField(pointer,
+                                                num_bytes=2).as_bytes()
                 continue
 
             # Compute pointer from base address and current data length.
-            pointer = cls.BASE_PSYCHOPATH_DATA_ADDRESS + len(text_data) - cls.PSYCHOPATH_DATA_POINTER_OFFSET
+            pointer = cls.BASE_PSYCHOPATH_DATA_ADDRESS + \
+                len(text_data) - cls.PSYCHOPATH_DATA_POINTER_OFFSET
             pointer_data += utils.ByteField(pointer, num_bytes=2).as_bytes()
 
             # Add null byte to terminate the text string.
@@ -436,7 +444,8 @@ class Enemy:
 
         # Sanity check that pointer data has the correct number of items.
         if len(pointer_data) != NUM_ENEMIES * 2:
-            raise ValueError("Wrong length for pointer data, something went wrong...")
+            raise ValueError(
+                "Wrong length for pointer data, something went wrong...")
 
         # Add pointer data, then add text data.
         patch.add_data(cls.BASE_PSYCHOPATH_POINTER_ADDRESS, pointer_data)
@@ -1072,7 +1081,7 @@ class Pandorite(Enemy):
     normal_item = items.FlowerJar
     rare_item = items.FlowerJar
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 195
     overworld_npc = 199
     battle_sprite = 279
@@ -1207,15 +1216,15 @@ class HammerBro(Enemy):
     ratio_hp = 0.5
     ratio_fp = 0.5
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 545
     overworld_sesw_only = True
     battle_sprite = 283
     battle_npc = 283
     statue_only = True
     battle_sprite_is_tall = True
-    sprite_width = 40;
-    sprite_height = 45;
+    sprite_width = 40
+    sprite_height = 45
     battle_sesw_only = True
     battle_push_sequence = 3
     battle_push_length = 40
@@ -1225,6 +1234,7 @@ class HammerBro(Enemy):
     battle_solidity = [8, 7, 19]
     overworld_y_shift = 1
     battle_y_shift = 1
+
 
 class Buzzer(Enemy):
     index = 28
@@ -1384,7 +1394,7 @@ class Magikoopa(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
-    #overworld sprites
+    # overworld sprites
     overworld_npc = 190
     overworld_sprite = 129
     battle_npc = 289
@@ -1403,7 +1413,6 @@ class Magikoopa(Enemy):
     statue_east_shift = 2
     opposite_statue_west_shift = 4
     opposite_statue_south_shift = 1
-
 
 
 class Leuko(Enemy):
@@ -1845,7 +1854,7 @@ class Clerk(Enemy):
     ratio_hp = 0.5556
     ratio_fp = 0.3333
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 142
     overworld_npc = 19
     battle_sprite = 306
@@ -1903,7 +1912,7 @@ class Gunyolk(Enemy):
     ratio_magic_defense = 0.9412
     ratio_speed = 0.7143
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 330
     overworld_npc = 484
     battle_sprite = 307
@@ -1949,7 +1958,7 @@ class Boomer(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 346
     overworld_npc = 159
     battle_sprite = 169
@@ -1982,16 +1991,22 @@ class Boomer(Enemy):
         # TODO: Get addresses for linear mode.
         if self.world.open_mode:
             # Change to blue state.  Scale shuffled stats based on vanilla ratios.
-            patch.add_data(0x353629, utils.ByteField(int(round(min(self.attack * 0.6, 255)))).as_bytes())
-            patch.add_data(0x35362d, utils.ByteField(int(round(min(self.defense * 0.6429, 255)))).as_bytes())
-            patch.add_data(0x353631, utils.ByteField(int(round(min(self.magic_attack * 2.8571, 255)))).as_bytes())
-            patch.add_data(0x353635, utils.ByteField(int(round(min(self.magic_defense * 3.4615, 255)))).as_bytes())
+            patch.add_data(0x353629, utils.ByteField(
+                int(round(min(self.attack * 0.6, 255)))).as_bytes())
+            patch.add_data(0x35362d, utils.ByteField(
+                int(round(min(self.defense * 0.6429, 255)))).as_bytes())
+            patch.add_data(0x353631, utils.ByteField(
+                int(round(min(self.magic_attack * 2.8571, 255)))).as_bytes())
+            patch.add_data(0x353635, utils.ByteField(
+                int(round(min(self.magic_defense * 3.4615, 255)))).as_bytes())
 
             # Change back to red state (use starting stats).
             patch.add_data(0x3535e2, utils.ByteField(self.attack).as_bytes())
             patch.add_data(0x3535e6, utils.ByteField(self.defense).as_bytes())
-            patch.add_data(0x3535ea, utils.ByteField(self.magic_attack).as_bytes())
-            patch.add_data(0x3535ee, utils.ByteField(self.magic_defense).as_bytes())
+            patch.add_data(0x3535ea, utils.ByteField(
+                self.magic_attack).as_bytes())
+            patch.add_data(0x3535ee, utils.ByteField(
+                self.magic_defense).as_bytes())
 
         return patch
 
@@ -2124,7 +2139,8 @@ class Dodo(Enemy):
         # Open mode event address is the same as vanilla, but standard mode patch is in a different spot.
         if not self.world.open_mode:
             run_away = self.round_for_battle_script(self.hp * 0.6)
-            patch.add_data(0x393818, utils.ByteField(run_away, num_bytes=2).as_bytes())
+            patch.add_data(0x393818, utils.ByteField(
+                run_away, num_bytes=2).as_bytes())
 
         return patch
 
@@ -2693,7 +2709,7 @@ class Manager(Enemy):
     ratio_magic_defense = 1.0
     ratio_speed = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 167
     overworld_npc = 492
     battle_sprite = 332
@@ -2977,7 +2993,7 @@ class Hidon(Enemy):
     ratio_fp = 1.0
     other_sprites = [349, 349, 349, 349]
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 195
     overworld_npc = 199
     battle_sprite = 343
@@ -3676,7 +3692,7 @@ class Director(Enemy):
     ratio_hp = 0.625
     ratio_fp = 0.2
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 168
     overworld_npc = 497
     battle_sprite = 370
@@ -3696,7 +3712,6 @@ class Director(Enemy):
     overworld_y_shift = 1
     statue_west_shift = 3
     opposite_statue_west_shift = 5
-
 
 
 class Puppox(Enemy):
@@ -3983,7 +3998,7 @@ class BoxBoy(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 195
     overworld_npc = 199
     battle_sprite = 390
@@ -4031,6 +4046,7 @@ class Shelly(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+
 class Superspike(Enemy):
     index = 136
     address = 0x390ab6
@@ -4075,7 +4091,7 @@ class DodoSolo(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 131
     overworld_npc = 131
     overworld_sequence = 2
@@ -5084,7 +5100,7 @@ class Jagger(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 237
     overworld_npc = 237
     battle_sprite = 237
@@ -5358,7 +5374,8 @@ class RightEye(Enemy):
         if self.world.open_mode:
             # Vanilla game gives a 20% bonus when the eye comes back...h*ck it, let's keep it!
             reset_hp = self.round_for_battle_script(self.hp * 1.2)
-            patch.add_data(0x35366e, utils.ByteField(reset_hp, num_bytes=2).as_bytes())
+            patch.add_data(0x35366e, utils.ByteField(
+                reset_hp, num_bytes=2).as_bytes())
 
         return patch
 
@@ -5448,7 +5465,8 @@ class LeftEye(Enemy):
 
         # TODO: Get addresses for linear mode.
         if self.world.open_mode:
-            patch.add_data(0x35368e, utils.ByteField(self.hp, num_bytes=2).as_bytes())
+            patch.add_data(0x35368e, utils.ByteField(
+                self.hp, num_bytes=2).as_bytes())
 
         return patch
 
@@ -5470,12 +5488,14 @@ class LeftEye(Enemy):
         script.rand(0x07)
         script.if_less_than(0x7ee005, 0x04)
         script.set(0x7ee00f, 0x01)
-        script.attack(attacks.PhysicalAttack0, attacks.GunkBall, attacks.PhysicalAttack0)
+        script.attack(attacks.PhysicalAttack0,
+                      attacks.GunkBall, attacks.PhysicalAttack0)
         script.clear(0x7ee00f, 0x01)
         script.wait_return()
 
         script.set(0x7ee00f, 0x01)
-        script.attack(attacks.PhysicalAttack0, attacks.VenomDrool, attacks.ScrowBell)
+        script.attack(attacks.PhysicalAttack0,
+                      attacks.VenomDrool, attacks.ScrowBell)
         script.clear(0x7ee00f, 0x01)
         script.start_counter()
 
@@ -5533,7 +5553,7 @@ class KnifeGuy(Enemy):
     ratio_magic_defense = 0.4
     ratio_speed = 1.25
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 177
     overworld_npc = 452
     battle_sprite = 449
@@ -5628,7 +5648,7 @@ class Bundt(Enemy):
     ratio_magic_defense = 1.25
     ratio_speed = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 470
     overworld_npc = 470
     overworld_sequence = 8
@@ -5655,7 +5675,7 @@ class Bundt(Enemy):
 
         if self.world.chocolate_cake:
             data = palette_to_bytes(["A88878", "906858", "906858", "684838", "504028", "382018", "382010", "382818", "201800",
-                "484020", "483020", "805848", "483020", "806050", "181818"])
+                                     "484020", "483020", "805848", "483020", "806050", "181818"])
             patch.add_data(0x2547AC, data)
         return patch
 
@@ -5691,7 +5711,7 @@ class Jinx1(Enemy):
     ratio_fp = 1.0
     name_override = 'JINX 1'
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 207
     overworld_npc = 207
     battle_sprite = 207
@@ -5738,7 +5758,7 @@ class Jinx2(Enemy):
     ratio_fp = 1.0
     name_override = 'JINX 2'
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 207
     overworld_npc = 207
     battle_sprite = 207
@@ -5752,6 +5772,7 @@ class Jinx2(Enemy):
     battle_solidity = [2, 2, 5]
     overworld_y_shift = 0
     battle_y_shift = 0
+
 
 class CountDown(Enemy):
     index = 197
@@ -5785,7 +5806,7 @@ class CountDown(Enemy):
     ratio_magic_defense = 1.3333
     ratio_speed = 0.625
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 454
     overworld_npc = 454
     battle_sprite = 454
@@ -5869,7 +5890,7 @@ class Belome1(Enemy):
     ratio_fp = 1.0
     name_override = 'BELOME 1'
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 39
     battle_sprite = 455
     battle_npc = 455
@@ -5923,7 +5944,7 @@ class Belome2(Enemy):
     ratio_fp = 1.0
     name_override = 'BELOME 2'
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 39
     battle_sprite = 455
     battle_npc = 455
@@ -5941,6 +5962,7 @@ class Belome2(Enemy):
     battle_solidity = [10, 10, 18]
     overworld_y_shift = 0
     battle_y_shift = 2
+
 
 class Smilax(Enemy):
     index = 202
@@ -6022,7 +6044,7 @@ class Megasmilax(Enemy):
     ratio_hp = 0.3846
     ratio_fp = 0.1111
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 263
     overworld_npc = 138
     battle_sprite = 460
@@ -6073,7 +6095,7 @@ class Birdo(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 462
     overworld_npc = 462
     battle_sprite = 461
@@ -6192,7 +6214,7 @@ class Punchinello(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 281
     overworld_npc = 145
     battle_sprite = 464
@@ -6210,6 +6232,7 @@ class Punchinello(Enemy):
     battle_solidity = [11, 8, 9]
     overworld_y_shift = 1
     battle_y_shift = 1
+
 
 class TentaclesRight(Enemy):
     index = 209
@@ -6373,6 +6396,7 @@ class KingBomb(Enemy):
 
         super().patch_script()
 
+
 class MezzoBomb(Enemy):
     index = 213
     address = 0x390c46
@@ -6451,7 +6475,7 @@ class Raspberry(Enemy):
 
         if self.world.chocolate_cake:
             data = palette_to_bytes(["A88878", "806858", "704838", "685040", "604838", "503828", "685040", "684028", "482820",
-                "584028", "684838", "382820", "402010", "583828", "281808"])
+                                     "584028", "684838", "382820", "402010", "583828", "281808"])
             patch.add_data(0x254770, data)
         return patch
 
@@ -6486,7 +6510,7 @@ class KingCalamari(Enemy):
     ratio_hp = 0.303
     ratio_fp = 0.1111
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 266
     overworld_npc = 266
     overworld_push_sequence = 3
@@ -6570,7 +6594,7 @@ class Jinx3(Enemy):
     ratio_fp = 1.0
     name_override = 'JINX 3'
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 207
     overworld_npc = 207
     battle_sprite = 207
@@ -6584,7 +6608,6 @@ class Jinx3(Enemy):
     battle_solidity = [2, 2, 5]
     overworld_y_shift = 0
     battle_y_shift = 0
-
 
 
 class Zombone(Enemy):
@@ -6662,8 +6685,7 @@ class CzarDragon(Enemy):
     ratio_evade = 2.0
     ratio_magic_evade = 0.0
 
-
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 277
     overworld_npc = 277
     battle_sprite = 216
@@ -6715,7 +6737,7 @@ class Cloaker(Enemy):
     ratio_magic_defense = 0.2222
     ratio_speed = 1.1111
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 249
     overworld_npc = 249
     battle_sprite = 477
@@ -6832,7 +6854,7 @@ class Mack(Enemy):
     anchor = True
     ratio_hp = 0.8
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 414
     overworld_npc = 414
     battle_sprite = 480
@@ -6918,7 +6940,7 @@ class Yaridovich(Enemy):
     ratio_fp = 1.0
     battle_push_length = 78
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 163
     overworld_npc = 40
     battle_sprite = 482
@@ -7059,7 +7081,7 @@ class Bowyer(Enemy):
     normal_item = items.FlowerBox
     rare_item = items.FlowerBox
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 487
     overworld_npc = 487
     battle_sprite = 241
@@ -7127,7 +7149,7 @@ class Exor(Enemy):
     ratio_magic_defense = 1.2903
     ratio_speed = 3.0769
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 0
     battle_sprite = 0
     overworld_sequence = 10
@@ -7349,7 +7371,7 @@ class Croco1(Enemy):
     ratio_fp = 1.0
     name_override = 'CROCO 1'
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 48
     overworld_npc = 48
     battle_sprite = 48
@@ -7364,6 +7386,7 @@ class Croco1(Enemy):
     overworld_y_shift = 2
     battle_y_shift = 2
     statue_west_shift = 3
+
 
 class Croco2(Enemy):
     index = 241
@@ -7398,7 +7421,7 @@ class Croco2(Enemy):
     ratio_fp = 1.0
     name_override = 'CROCO 2'
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 48
     overworld_npc = 48
     battle_sprite = 48
@@ -7505,7 +7528,7 @@ class AxemRangers(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 466
     overworld_npc = 466
     battle_sprite = 466
@@ -7560,7 +7583,7 @@ class Booster(Enemy):
     ratio_hp = 0.57
     ratio_fp = 0.02
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 50
     overworld_npc = 50
     battle_sprite = 50
@@ -7663,7 +7686,7 @@ class Johnny(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 55
     overworld_npc = 52
     battle_sprite = 505
@@ -7747,7 +7770,7 @@ class Valentina(Enemy):
     ratio_hp = 0.8333
     ratio_fp = 0.7143
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 56
     overworld_npc = 56
     battle_sprite = 507
@@ -7878,7 +7901,7 @@ class Culex(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
-    #shuffled overworld sprites
+    # shuffled overworld sprites
     overworld_sprite = 511
     battle_sprite = 511
     overworld_sequence = 8
@@ -7896,6 +7919,7 @@ class Culex(Enemy):
     statue_mold = 3
 
 # ********************* Default lists for the world.
+
 
 def get_default_enemies(world):
     """

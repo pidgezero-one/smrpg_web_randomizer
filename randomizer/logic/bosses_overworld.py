@@ -66,14 +66,6 @@ def patch_overworld_bosses(world):
 
     spritePhaseEvents = []
 
-    bank_1e_scarecrow_queues = []
-    bank_1e_scarecrow_addresses = []
-    bank_1f_scarecrow_queues = []
-    bank_1f_scarecrow_addresses = []
-    bank_20_scarecrow_queues = []
-    bank_20_scarecrow_addresses = []
-    bank_21_scarecrow_queues = []
-    bank_21_scarecrow_addresses = []
     scarecrow_face_northwest = [0x08, 0x40, 0x80]
     scarecrow_face_northeast = [0x08, 0x40, 0x00]
     scarecrow_face_southwest = [0x08, 0x40, 0x01]

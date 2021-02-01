@@ -18,6 +18,8 @@ def shortify(arr, dex):
 def bit(arr, dex, bit_num):
     return (arr[dex] & 1 << bit_num) >> bit_num
 
+def bit_bool_from_num(num, bit_num):
+    return ((num & 1 << bit_num) >> bit_num) == 1
 
 def byte(offset=0, prefix='', table=None):
     def inner_byte(args):
