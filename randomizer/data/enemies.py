@@ -9,6 +9,8 @@ from . import items
 from . import spells
 from .utils import palette_to_bytes
 from .battletables import Monsters, Targets
+from randomizer.data.npcmodels import models
+from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
 
 # Number of enemies
 NUM_ENEMIES = 256
@@ -79,71 +81,11 @@ class Enemy:
     name_override = ''
 
     # shuffled overworld sprites
-    overworld_sprite = None
-    overworld_npc = None
-    battle_sprite = None
-    battle_npc = None
-    battle_sprite_is_wide = False
-    battle_sprite_is_tall = False
-    overworld_mold = 0
-    overworld_sequence = 0
-    overworld_sprite_plus = 0
-    battle_mold = 0
-    battle_sequence = 0
-    battle_sprite_plus = 0
-    other_npcs = []
-    other_sprites = []
-    statue_only = False
+    sidekicks = []
     sprite_width = 32
     sprite_height = 32
-    overworld_sesw_only = False
-    battle_sesw_only = False
-    overworld_front_sequence = 0
-    overworld_back_sequence = 1
-    battle_front_sequence = 0
-    battle_back_sequence = 1
-    overworld_invert_se_sw = False
-    battle_invert_se_sw = False
-    overworld_freeze = False
-    battle_freeze = False
-    overworld_extra_sequence = False
-    battle_extra_sequence = False
-    overworld_push_sequence = False
-    overworld_push_length = 0
-    battle_push_sequence = False
-    battle_push_length = 0
-    overworld_northeast_mold = False
-    battle_northeast_mold = False
-    overworld_dont_reverse_northeast = False
-    czar_sprite = []
-    overworld_is_skinny = False
-    overworld_is_empty = False
-    fat_sidekicks = False
-    empty_sidekicks = False
-    shadow = None
-    overworld_solidity = []
-    battle_solidity = []
-    overworld_y_shift = 0
-    battle_y_shift = 0
-
-    statue_east_shift = False
-    statue_southeast_shift = False
-    statue_south_shift = False
-    statue_southwest_shift = False
-    statue_west_shift = False
-    statue_northwest_shift = False
-    statue_north_shift = False
-    statue_northeast_shift = False
-    opposite_statue_east_shift = False
-    opposite_statue_southeast_shift = False
-    opposite_statue_south_shift = False
-    opposite_statue_southwest_shift = False
-    opposite_statue_west_shift = False
-    opposite_statue_northwest_shift = False
-    opposite_statue_north_shift = False
-    opposite_statue_northeast_shift = False
-
-    statue_mold = None
+    model_small = None
+    model_large = None
 
     def __init__(self, world):
         """
@@ -320,6 +262,14 @@ class Enemy:
                     break
         else:
             raise Exception('More HP values than counters')
+
+    def get_model(self, battle=False):
+        if battle and self.model_large is not None:
+            return self.model_large
+        elif self.model_small is not None:
+            return self.model_small
+        else:
+            raise 'No model for %s' % self.name
 
     def get_patch(self):
         """Get patch for this enemy.
@@ -563,6 +513,8 @@ class MadMallet(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+    model_small = {**models[259]}
+
 
 class Shaman(Enemy):
     index = 4
@@ -613,6 +565,11 @@ class Crook(Enemy):
     yoshi_cookie_item = items.MidMushroom
     rare_item = items.HoneySyrup
 
+    model_small = {
+        **models[261],
+        "is_wide": True
+    }
+
 
 class Goomba(Enemy):
     index = 6
@@ -661,6 +618,13 @@ class PiranhaPlant(Enemy):
     coins = 5
     yoshi_cookie_item = items.SleepyBomb
     normal_item = items.MapleSyrup
+    
+    model_small = {
+        **models[263],
+        "extra_props": {
+            "is_skinny": True
+        }
+    }
 
 
 class Amanita(Enemy):
@@ -827,6 +791,13 @@ class Birdy(Enemy):
     coins = 3
     yoshi_cookie_item = items.Energizer
     normal_item = items.Energizer
+
+    model_small = {
+        **models[279],
+        "extra_props": {
+            "is_wide": True
+        }
+    }
 
 
 class Pinwheel(Enemy):
@@ -1028,6 +999,10 @@ class Sparky(Enemy):
     coins = 1
     yoshi_cookie_item = items.FireBomb
 
+    model_small = {
+        **models[277]
+    }
+
 
 class Chomp(Enemy):
     index = 22
@@ -1082,22 +1057,21 @@ class Pandorite(Enemy):
     rare_item = items.FlowerJar
 
     # shuffled overworld sprites
-    overworld_sprite = 195
-    overworld_npc = 199
-    battle_sprite = 279
-    overworld_sequence = 4
-    statue_only = True
     sprite_width = 37
     sprite_height = 40
-    overworld_freeze = True
-    battle_sesw_only = True
-    overworld_sesw_only = True
-    battle_push_sequence = 3
-    battle_push_length = 22
-    overworld_is_empty = True
-    shadow = SMALL_SHADOW
-    overworld_solidity = [1, 1, 1]
-    overworld_y_shift = 0
+
+    model_small = {
+        **models[199],
+        "extra_props": {
+            "is_empty": True,
+            "sequence": 4,
+            "freeze": True
+        }
+    }
+    model_large = {
+        **models[343],
+        "sprite": SpriteName._279_PANDORITE,
+    }
 
 
 class ShyRanger(Enemy):
@@ -1159,6 +1133,12 @@ class Bobomb(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+    model_small = {
+        **models[145],
+        "extra_props": {
+            "is_skinny": True
+        }
+    }
 
 class Spookum(Enemy):
     index = 26
@@ -1217,23 +1197,30 @@ class HammerBro(Enemy):
     ratio_fp = 0.5
 
     # shuffled overworld sprites
-    overworld_sprite = 545
-    overworld_sesw_only = True
-    battle_sprite = 283
-    battle_npc = 283
-    statue_only = True
-    battle_sprite_is_tall = True
     sprite_width = 40
     sprite_height = 45
-    battle_sesw_only = True
-    battle_push_sequence = 3
-    battle_push_length = 40
-    overworld_is_empty = True
-    shadow = SMALL_SHADOW
-    overworld_solidity = [2, 2, 6]
-    battle_solidity = [8, 7, 19]
-    overworld_y_shift = 1
-    battle_y_shift = 1
+    model_large = {
+        **models[283],
+        "extra_props": {
+            "is_tall": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 40
+        }
+    }
+    model_small = {
+        "sprite": SpriteName._545_THROWN_HAMMER,
+        "shadow": ShadowSize._00_OVAL_SMALL,
+        "y_pixel_shift": 1,
+        "acute_axis": 2,
+        "obtuse_axis": 2,
+        "height": 6,
+        "vram_store": VramStore._02_SWSE,
+        "extra_props": {
+            "is_empty": True,
+            "sequence": 4,
+            "freeze": True
+        }
+    }
 
 
 class Buzzer(Enemy):
@@ -1395,24 +1382,28 @@ class Magikoopa(Enemy):
     ratio_fp = 1.0
 
     # overworld sprites
-    overworld_npc = 190
-    overworld_sprite = 129
-    battle_npc = 289
-    battle_sprite = 353
     sprite_height = 42
     sprite_width = 45
-    overworld_extra_sequence = 10
-    battle_push_sequence = 3
-    battle_push_length = 48
-    overworld_push_sequence = 10
-    overworld_push_length = 52
-    overworld_is_skinny = True
-    shadow = MED_SHADOW
-    overworld_solidity = [3, 3, 10]
-    overworld_y_shift = 1
-    statue_east_shift = 2
-    opposite_statue_west_shift = 4
-    opposite_statue_south_shift = 1
+    model_small = {
+        **models[190],
+        "extra_props": {
+            "extra_sequence": 10,
+            "moleville_animation_sequence": 10,
+            "moleville_animation_duration": 52,
+            "is_skinny": True,
+            "statue_east_shift": 2,
+            "opposite_statue_west_shift": 4,
+            "opposite_statue_south_shift": 1
+        }
+    }
+    model_large = {
+        **models[289],
+        "sprite": SpriteName._353_MERLIN,
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 48
+        }
+    }
 
 
 class Leuko(Enemy):
@@ -1855,25 +1846,28 @@ class Clerk(Enemy):
     ratio_fp = 0.3333
 
     # shuffled overworld sprites
-    overworld_sprite = 142
-    overworld_npc = 19
-    battle_sprite = 306
-    battle_npc = 306
-    other_npcs = [259]
-    other_sprites = [259, 259]
-    battle_sprite_is_wide = True
-    battle_sprite_is_tall = True
     sprite_width = 60
     sprite_height = 58
-    battle_push_sequence = 3
-    battle_push_length = 32
-    overworld_dont_reverse_northeast = True
-    overworld_extra_sequence = 2
-    shadow = MED_SHADOW
-    overworld_solidity = [7, 7, 13]
-    overworld_y_shift = 1
-    statue_west_shift = 3
-    opposite_statue_west_shift = 5
+    sidekicks = [3, 3]
+    model_small = {
+        **models[489],
+        "extra_props": {
+            "dont_reverse_northeast": True,
+            "extra_sequence": 2,
+            "statue_west_shift": 3,
+            "opposite_statue_west_shift": 5,
+        }
+    }
+    model_large = {
+        **models[306],
+        "sprite": SpriteName._353_MERLIN,
+        "extra_props": {
+            "is_wide": True,
+            "is_tall": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 32
+        }
+    }
 
 
 class Gunyolk(Enemy):
@@ -1913,21 +1907,24 @@ class Gunyolk(Enemy):
     ratio_speed = 0.7143
 
     # shuffled overworld sprites
-    overworld_sprite = 330
-    overworld_npc = 484
-    battle_sprite = 307
-    battle_npc = 307
-    battle_sprite_is_wide = True
-    battle_sprite_is_tall = True
-    battle_sesw_only = True
-    battle_push_sequence = 3
-    overworld_push_sequence = 3
-    battle_push_length = 52
-    overworld_push_length = 30
-    shadow = MED_SHADOW
-    overworld_solidity = [7, 7, 12]
-    overworld_y_shift = 1
-    statue_west_shift = 2
+    model_small = {
+        **models[484],
+        "extra_props": {
+            "extra_sequence": 10,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 30,
+            "statue_west_shift": 1
+        }
+    }
+    model_large = {
+        **models[307],
+        "extra_props": {
+            "is_wide": True,
+            "is_tall": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 52
+        }
+    }
 
 
 class Boomer(Enemy):
@@ -1959,25 +1956,28 @@ class Boomer(Enemy):
     ratio_fp = 1.0
 
     # shuffled overworld sprites
-    overworld_sprite = 346
-    overworld_npc = 159
-    battle_sprite = 169
-    battle_npc = 482
-    statue_only = True
-    battle_sprite_is_tall = True
     sprite_width = 52
     sprite_width = 49
-    battle_sesw_only = True
-    overworld_extra_sequence = 5
-    overworld_push_sequence = 3
-    overworld_push_length = 40
-    overworld_is_skinny = True
-    other_sprites = [346, 346]
-    shadow = MED_SHADOW
-    overworld_solidity = [3, 3, 7]
-    overworld_y_shift = 1
-    statue_east_shift = 2
-    opposite_statue_west_shift = 2
+    sidekicks = [90, 90]
+
+    model_small = {
+        **models[159],
+        "extra_props": {
+            "extra_sequence": 5,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 40,
+            "is_skinny": True,
+            "statue_east_shift": 2,
+            "opposite_statue_west_shift": 2
+        }
+    }
+    model_large = {
+        **models[482],
+        "sprite": SpriteName._353_MERLIN,
+        "extra_props": {
+            "is_tall": True
+        }
+    }
 
     def get_patch(self):
         """Update battle events for switching between blue and red states for Boomer with shuffled stat changes.
@@ -2440,6 +2440,8 @@ class Pounder(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+    model_small = {**models[323]}
+
 
 class Poundette(Enemy):
     index = 68
@@ -2475,6 +2477,8 @@ class Poundette(Enemy):
     ratio_speed = 0.8571
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
+
+    model_small = {**models[324]}
 
 
 class Sackit(Enemy):
@@ -2675,6 +2679,10 @@ class BandanaBlue(Enemy):
     ratio_magic_defense = 0.5
     ratio_speed = 2.3077
 
+    model_small = {
+        **models[331]
+    }    
+
 
 class Manager(Enemy):
     index = 76
@@ -2710,24 +2718,28 @@ class Manager(Enemy):
     ratio_speed = 1.0
 
     # shuffled overworld sprites
-    overworld_sprite = 167
-    overworld_npc = 492
-    battle_sprite = 332
-    other_npcs = [323]
-    other_sprites = [323, 323, 323]
-    battle_sprite_is_wide = True
-    battle_sprite_is_tall = True
     sprite_width = 60
     sprite_height = 58
-    battle_push_sequence = 3
-    battle_push_length = 32
-    overworld_dont_reverse_northeast = True
-    overworld_extra_sequence = 2
-    shadow = MED_SHADOW
-    overworld_solidity = [9, 9, 15]
-    overworld_y_shift = 1
-    statue_west_shift = 3
-    opposite_statue_west_shift = 5
+    sidekicks = [67, 67, 67]
+    model_small = {
+        **models[493],
+        "extra_props": {
+            "dont_reverse_northeast": True,
+            "extra_sequence": 2,
+            "statue_west_shift": 3,
+            "opposite_statue_west_shift": 5,
+        }
+    }
+    model_large = {
+        **models[306],
+        "sprite": SpriteName._332_MANAGER,
+        "extra_props": {
+            "is_wide": True,
+            "is_tall": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 32
+        }
+    }
 
 
 class Bluebird(Enemy):
@@ -2758,6 +2770,13 @@ class Bluebird(Enemy):
     coins = 6
     yoshi_cookie_item = items.Bracer
     normal_item = items.Bracer
+
+    model_small = {
+        **models[333],
+        "extra_props": {
+            "is_wide": True
+        }
+    }
 
 
 class AlleyRat(Enemy):
@@ -2994,22 +3013,21 @@ class Hidon(Enemy):
     other_sprites = [349, 349, 349, 349]
 
     # shuffled overworld sprites
-    overworld_sprite = 195
-    overworld_npc = 199
-    battle_sprite = 343
-    battle_npc = 343
-    overworld_sequence = 4
-    statue_only = True
     sprite_width = 37
     sprite_height = 40
-    overworld_freeze = True
-    battle_sesw_only = True
-    battle_push_sequence = 3
-    battle_push_length = 44
-    overworld_is_empty = True
-    shadow = SMALL_SHADOW
-    overworld_solidity = [1, 1, 1]
-    overworld_y_shift = 0
+    sidekicks = [93, 93, 93, 93]
+
+    model_small = {
+        **models[199],
+        "extra_props": {
+            "is_empty": True,
+            "sequence": 4,
+            "freeze": True
+        }
+    }
+    model_large = {
+        **models[343]
+    }
 
 
 class SlingShy(Enemy):
@@ -3081,6 +3099,8 @@ class ShyGuy(Enemy):
     xp = 2
     coins = 1
     yoshi_cookie_item = items.HoneySyrup
+
+    model_small = {**models[159]}
 
 
 class Ninja(Enemy):
@@ -3170,6 +3190,8 @@ class Goombette(Enemy):
     ratio_speed = 16.0
     ratio_evade = 1.0
     ratio_magic_evade = 0.0
+
+    model_small = {**models[199]}
 
 
 class Geckit(Enemy):
@@ -3693,25 +3715,28 @@ class Director(Enemy):
     ratio_fp = 0.2
 
     # shuffled overworld sprites
-    overworld_sprite = 168
-    overworld_npc = 497
-    battle_sprite = 370
-    battle_npc = 370
-    other_npcs = [324]
-    other_sprites = [324, 324, 324, 324]
-    battle_sprite_is_wide = True
-    battle_sprite_is_tall = True
     sprite_width = 60
     sprite_height = 58
-    battle_push_sequence = 3
-    battle_push_length = 32
-    overworld_dont_reverse_northeast = True
-    overworld_extra_sequence = 2
-    shadow = MED_SHADOW
-    overworld_solidity = [9, 9, 15]
-    overworld_y_shift = 1
-    statue_west_shift = 3
-    opposite_statue_west_shift = 5
+    sidekicks = [68, 68, 68, 68]
+
+    model_small = {
+        **models[497],
+        "extra_props": {
+            "dont_reverse_northeast": True,
+            "extra_sequence": 2,
+            "statue_west_shift": 3,
+            "opposite_statue_west_shift": 5
+        }
+    }
+    model_large = {
+        **models[370],
+        "extra_props": {
+            "is_wide": True,
+            "is_tall": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 32
+        }
+    }
 
 
 class Puppox(Enemy):
@@ -3999,22 +4024,20 @@ class BoxBoy(Enemy):
     ratio_fp = 1.0
 
     # shuffled overworld sprites
-    overworld_sprite = 195
-    overworld_npc = 199
-    battle_sprite = 390
-    battle_npc = 390
-    overworld_sequence = 4
-    statue_only = True
     sprite_width = 37
     sprite_height = 40
-    overworld_freeze = True
-    battle_sesw_only = True
-    battle_push_sequence = 3
-    battle_push_length = 90
-    overworld_is_empty = True
-    shadow = SMALL_SHADOW
-    overworld_solidity = [1, 1, 1]
-    overworld_y_shift = 0
+
+    model_small = {
+        **models[199],
+        "extra_props": {
+            "is_empty": True,
+            "sequence": 4,
+            "freeze": True
+        }
+    }
+    model_large = {
+        **models[390]
+    }
 
 
 class Shelly(Enemy):
@@ -4092,25 +4115,29 @@ class DodoSolo(Enemy):
     ratio_fp = 1.0
 
     # shuffled overworld sprites
-    overworld_sprite = 131
-    overworld_npc = 131
-    overworld_sequence = 2
-    battle_sprite = 312
-    battle_npc = 21
-    statue_only = True
     sprite_height = 56
     sprite_width = 46
-    overworld_freeze = True
-    battle_sesw_only = True
-    battle_push_sequence = 3
-    battle_push_length = 16
-    overworld_is_empty = True
-    shadow = SMALL_SHADOW
-    overworld_solidity = [2, 2, 5]
-    battle_solidity = [9, 9, 14]
-    overworld_y_shift = 0
-    battle_y_shift = 0
-    statue_south_shift = 3
+    
+    model_small = {
+        **models[131],
+        "acute_axis": 2,
+        "obtuse_axis": 2,
+        "height": 5,
+        "shadow": ShadowSize._00_OVAL_SMALL,
+        "extra_props": {
+            "is_empty": True,
+            "sequence": 2,
+            "freeze": True,
+            "statue_south_shift": 3
+        }
+    }
+    model_large = {
+        **models[21],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 16
+        }
+    }
 
 
 class Oerlikon(Enemy):
@@ -4223,6 +4250,10 @@ class Torte(Enemy):
     ratio_speed = 6.1875
     ratio_evade = 1.0
     ratio_magic_evade = 1.0
+
+    model_small = {
+        **models[398]
+    }
 
 
 class Shyaway(Enemy):
@@ -4412,6 +4443,16 @@ class FireCrystal(Enemy):
     ratio_speed = 0.2
     ratio_evade = 1.0
     ratio_magic_evade = 0.0
+    
+    model_small = {
+        **models[405],
+        "sprite": 786,
+        "extra_props": {
+            "sequence": 1,
+            "freeze": True,
+            "mold": 0
+        }
+    }
 
 
 class WaterCrystal(Enemy):
@@ -4449,6 +4490,15 @@ class WaterCrystal(Enemy):
     ratio_evade = 1.0
     ratio_magic_evade = 0.0
 
+    model_small = {
+        **models[406],
+        "sprite": 789,
+        "extra_props": {
+            "freeze": True,
+            "mold": 0
+        }
+    }
+
 
 class EarthCrystal(Enemy):
     index = 151
@@ -4485,6 +4535,15 @@ class EarthCrystal(Enemy):
     ratio_evade = 1.0
     ratio_magic_evade = 0.0
 
+    model_small = {
+        **models[407],
+        "sprite": 789,
+        "extra_props": {
+            "sequence": 1,
+            "freeze": True,
+            "mold": 0
+        }
+    }
 
 class WindCrystal(Enemy):
     index = 152
@@ -4521,6 +4580,14 @@ class WindCrystal(Enemy):
     ratio_evade = 1.0
     ratio_magic_evade = 0.0
 
+    model_small = {
+        **models[408],
+        "sprite": 786,
+        "extra_props": {
+            "freeze": True,
+            "mold": 0
+        }
+    }
 
 class MarioClone(Enemy):
     index = 153
@@ -4724,6 +4791,10 @@ class Shyster(Enemy):
     coins = 2
     yoshi_cookie_item = items.HoneySyrup
     normal_item = items.HoneySyrup
+
+    model_small = {
+        **models[414]
+    }
 
 
 class Kinklink(Enemy):
@@ -5553,27 +5624,13 @@ class KnifeGuy(Enemy):
     ratio_magic_defense = 0.4
     ratio_speed = 1.25
 
-    # shuffled overworld sprites
-    overworld_sprite = 177
-    overworld_npc = 452
-    battle_sprite = 449
-    battle_npc = 449
-    other_npcs = [134]
-    other_sprites = [134]
-    other_battle_sprites = [448]
-    other_battle_npcs = [448]
-    battle_sprite_is_tall = True
-    sprite_width = 41
-    sprite_height = 57
-    battle_sesw_only = True
-    battle_push_length = 44
-    battle_push_sequence = 3
-    fat_sidekicks = True
-    shadow = MED_SHADOW
-    overworld_solidity = [3, 3, 12]
-    overworld_y_shift = 1
-    statue_west_shift = 3
-    opposite_statue_west_shift = 2
+    model_small = {
+        **models[134],
+        "extra_props": {
+            "is_wide": True
+        }
+    }
+    model_large = {**models[448]}
 
 
 class GrateGuy(Enemy):
@@ -5613,6 +5670,26 @@ class GrateGuy(Enemy):
     ratio_magic_defense = 1.6
     ratio_speed = 0.7
 
+    # shuffled overworld sprites
+    sprite_width = 41
+    sprite_height = 57
+    sidekicks = [192]
+
+    model_small = {
+        **models[452],
+        "extra_props": {
+            "statue_west_shift": 3,
+            "opposite_statue_west_shift": 2
+        }
+    }
+    model_large = {
+        **models[449],
+        "extra_props": {
+            "is_tall": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 44
+        }
+    }
 
 class Bundt(Enemy):
     index = 194
@@ -5649,20 +5726,23 @@ class Bundt(Enemy):
     ratio_speed = 1.0
 
     # shuffled overworld sprites
-    overworld_sprite = 470
-    overworld_npc = 470
-    overworld_sequence = 8
-    battle_sprite = 450
     sprite_height = 56
     sprite_width = 35
-    overworld_freeze = True
-    battle_sesw_only = True
-    other_sprites = [398, 398]
-    overworld_sesw_only = True
-    shadow = LARGE_SHADOW
-    overworld_solidity = [7, 7, 8]
-    overworld_y_shift = 1
-    statue_west_shift = 3
+    
+    sidekicks = [142, 142]
+
+    model_small = {
+        **models[470],
+        "shadow": ShadowSize._02_OVAL_BIG,
+        "extra_props": {
+            "sequence": 8,
+            "freeze": True,
+            "statue_west_shift": 3
+        }
+    }
+    model_large = {
+        **models[450]
+    }
 
     def get_patch(self):
         """Update battle event triggers based on HP to use shuffled HP value instead.
@@ -5712,19 +5792,14 @@ class Jinx1(Enemy):
     name_override = 'JINX 1'
 
     # shuffled overworld sprites
-    overworld_sprite = 207
-    overworld_npc = 207
-    battle_sprite = 207
-    battle_push_sequence = 3
-    overworld_push_sequence = 3
-    battle_push_length = 10
-    overworld_push_length = 10
-    overworld_is_empty = True
-    shadow = SMALL_SHADOW
-    overworld_solidity = [2, 2, 5]
-    battle_solidity = [2, 2, 5]
-    overworld_y_shift = 0
-    battle_y_shift = 0
+    model_small = {
+        **models[207],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 10,
+            "is_empty": True,
+        }
+    }
 
 
 class Jinx2(Enemy):
@@ -5759,19 +5834,14 @@ class Jinx2(Enemy):
     name_override = 'JINX 2'
 
     # shuffled overworld sprites
-    overworld_sprite = 207
-    overworld_npc = 207
-    battle_sprite = 207
-    battle_push_sequence = 3
-    overworld_push_sequence = 3
-    battle_push_length = 10
-    overworld_push_length = 10
-    overworld_is_empty = True
-    shadow = SMALL_SHADOW
-    overworld_solidity = [2, 2, 5]
-    battle_solidity = [2, 2, 5]
-    overworld_y_shift = 0
-    battle_y_shift = 0
+    model_small = {
+        **models[207],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 10,
+            "is_empty": True,
+        }
+    }
 
 
 class CountDown(Enemy):
@@ -5807,22 +5877,14 @@ class CountDown(Enemy):
     ratio_speed = 0.625
 
     # shuffled overworld sprites
-    overworld_sprite = 454
-    overworld_npc = 454
-    battle_sprite = 454
-    battle_npc = 454
-    overworld_sequence = 0
-    battle_sequence = 0
-    overworld_freeze = True
-    battle_freeze = True
-    overworld_is_empty = True
-    overworld_sesw_only = True
-    battle_sesw_only = True
-    shadow = LARGE_SHADOW
-    overworld_solidity = [11, 11, 10]
-    battle_solidity = [11, 11, 10]
-    overworld_y_shift = 1
-    battle_y_shift = 1
+    model_small = {
+        **models[454],
+        "shadow": ShadowSize._02_OVAL_BIG,
+        "extra_props": {
+            "freeze": True,
+            "is_empty": True,
+        }
+    }
 
 
 class DingALing(Enemy):
@@ -5891,27 +5953,43 @@ class Belome1(Enemy):
     name_override = 'BELOME 1'
 
     # shuffled overworld sprites
-    overworld_sprite = 39
-    battle_sprite = 455
-    battle_npc = 455
-    overworld_sequence = 1
-    statue_only = True
     sprite_height = 54
     sprite_width = 49
-    overworld_invert_se_sw = True
-    battle_sesw_only = True
-    battle_push_sequence = 3
-    battle_push_length = 38
-    overworld_is_empty = True
-    shadow = NO_SHADOW
-    overworld_solidity = []
-    battle_solidity = []
-    overworld_y_shift = 0
-    battle_y_shift = 0
-    overworld_solidity = [8, 3, 10]
-    battle_solidity = [10, 10, 18]
-    overworld_y_shift = 0
-    battle_y_shift = 2
+
+    model_small = {
+        "sprite": SpriteName._39_RED_SCARECROW,
+        "priority_0": False,
+        "priority_1": False,
+        "priority_2": True,
+        "show_shadow": False,
+        "shadow": ShadowSize._00_OVAL_SMALL,
+        "y_pixel_shift": 0,
+        "acute_axis": 8,
+        "obtuse_axis": 3,
+        "height": 10,
+        "vram_store": VramStore._00_SWSE_NWNE,
+        "vram_size": 0,
+        "cannot_clone": False,
+        "byte2_bit0": False,
+        "byte2_bit1": False,
+        "byte2_bit2": False,
+        "byte2_bit3": False,
+        "byte2_bit4": False,
+        "byte5_bit6": False,
+        "byte5_bit7": False,
+        "byte6_bit2": False,
+        "extra_props": {
+            "is_empty": True,
+            "invert_se_sw": True,
+        }
+    }
+    model_large = {
+        **models[371],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 38
+        }
+    }
 
 
 class Belome2(Enemy):
@@ -5945,23 +6023,43 @@ class Belome2(Enemy):
     name_override = 'BELOME 2'
 
     # shuffled overworld sprites
-    overworld_sprite = 39
-    battle_sprite = 455
-    battle_npc = 455
-    overworld_sequence = 1
-    statue_only = True
     sprite_height = 54
     sprite_width = 49
-    overworld_invert_se_sw = True
-    battle_sesw_only = True
-    battle_push_sequence = 3
-    battle_push_length = 38
-    overworld_is_empty = True
-    shadow = NO_SHADOW
-    overworld_solidity = [8, 3, 10]
-    battle_solidity = [10, 10, 18]
-    overworld_y_shift = 0
-    battle_y_shift = 2
+
+    model_small = {
+        "sprite": SpriteName._39_RED_SCARECROW,
+        "priority_0": False,
+        "priority_1": False,
+        "priority_2": True,
+        "show_shadow": False,
+        "shadow": ShadowSize._00_OVAL_SMALL,
+        "y_pixel_shift": 0,
+        "acute_axis": 8,
+        "obtuse_axis": 3,
+        "height": 10,
+        "vram_store": VramStore._00_SWSE_NWNE,
+        "vram_size": 0,
+        "cannot_clone": False,
+        "byte2_bit0": False,
+        "byte2_bit1": False,
+        "byte2_bit2": False,
+        "byte2_bit3": False,
+        "byte2_bit4": False,
+        "byte5_bit6": False,
+        "byte5_bit7": False,
+        "byte6_bit2": False,
+        "extra_props": {
+            "is_empty": True,
+            "invert_se_sw": True,
+        }
+    }
+    model_large = {
+        **models[371],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 38
+        }
+    }
 
 
 class Smilax(Enemy):
@@ -5996,6 +6094,7 @@ class Smilax(Enemy):
     ratio_magic_defense = 0.63
     ratio_speed = 2.50
 
+    model_small = {**models[458]}
 
 class Thrax(Enemy):
     index = 203
@@ -6045,26 +6144,29 @@ class Megasmilax(Enemy):
     ratio_fp = 0.1111
 
     # shuffled overworld sprites
-    overworld_sprite = 263
-    overworld_npc = 138
-    battle_sprite = 460
-    battle_npc = 460
     sprite_width = 37
     sprite_height = 37
-    battle_push_sequence = 3
-    overworld_push_sequence = 3
-    battle_push_length = 20
-    overworld_push_length = 22
-    other_sprites = [263, 263, 263, 263]
-    czar_sprite = [458]
-    overworld_is_skinny = True
-    overworld_sesw_only = True
-    battle_sesw_only = True
-    shadow = MED_SHADOW
-    overworld_solidity = [5, 5, 11]
-    overworld_y_shift = 1
-    statue_west_shift = 1
-    statue_south_shift = 4
+    sidekicks = [7, 7, 7, 7]
+    czar = 202
+    	
+    model_small = {
+        **models[263],
+        "extra_props": {
+            "is_skinny": True,
+            "statue_west_shift": 1,
+            "statue_south_shift": 4,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 22
+        }
+    }
+    model_large = {
+        **models[460],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 20
+        }
+    }
+
 
 
 class Birdo(Enemy):
@@ -6096,27 +6198,34 @@ class Birdo(Enemy):
     ratio_fp = 1.0
 
     # shuffled overworld sprites
-    overworld_sprite = 462
-    overworld_npc = 462
-    battle_sprite = 461
-    battle_npc = 461
-    statue_only = True
-    battle_sprite_is_tall = True
     sprite_height = 57
     sprite_width = 38
-    battle_sesw_only = True
-    overworld_sesw_only = True
-    battle_push_sequence = 3
-    battle_push_length = 42
-    other_sprites = [462, 462, 462, 462]
-    overworld_is_empty = True
     empty_sidekicks = True
-    shadow = SMALL_SHADOW
-    overworld_solidity = [2, 2, 5]
-    battle_solidity = [11, 11, 13]
-    overworld_y_shift = 0
-    battle_y_shift = 1
     name_override = 'BIRDETTA'
+
+    sidekicks = [206, 206, 206, 206]
+
+    model_small = {
+        **models[462],
+        "acute_axis": 2,
+        "obtuse_axis": 2,
+        "height": 5,
+        "y_pixel_shift": 0,
+        "extra_props": {
+            "is_empty": True
+        }
+    }
+    model_large = {
+        **models[461],
+        "acute_axis": 11,
+        "obtuse_axis": 11,
+        "height": 13,
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 42,
+            "is_tall": True
+        }
+    }
 
 
 class Eggbert(Enemy):
@@ -6147,6 +6256,16 @@ class Eggbert(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+    model_small = {
+        **models[462],
+        "acute_axis": 2,
+        "obtuse_axis": 2,
+        "height": 5,
+        "y_pixel_shift": 0,
+        "extra_props": {
+            "is_empty": True
+        }
+    }
 
 class AxemYellow(Enemy):
     index = 207
@@ -6184,6 +6303,13 @@ class AxemYellow(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+    model_small = {
+        **models[211],
+        "extra_props": {
+            "is_wide": True
+        }
+    }
+
 
 class Punchinello(Enemy):
     index = 208
@@ -6215,23 +6341,25 @@ class Punchinello(Enemy):
     ratio_fp = 1.0
 
     # shuffled overworld sprites
-    overworld_sprite = 281
-    overworld_npc = 145
-    battle_sprite = 464
-    battle_npc = 464
-    other_npcs = [145]
-    statue_only = True
     sprite_width = 45
     sprite_height = 45
-    battle_push_length = 26
-    battle_push_sequence = 3
-    other_sprites = [281, 281, 281, 281]
-    overworld_is_skinny = True
-    shadow = MED_SHADOW
-    overworld_solidity = [4, 4, 10]
-    battle_solidity = [11, 8, 9]
-    overworld_y_shift = 1
-    battle_y_shift = 1
+
+    sidekicks = [25, 25, 25]
+
+    model_small = {
+        **models[145],
+        "extra_props": {
+            "is_skinny": True
+        }
+    }
+    model_large = {
+        **models[464],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 26
+        }
+    }
+
 
 
 class TentaclesRight(Enemy):
@@ -6303,7 +6431,6 @@ class AxemRed(Enemy):
     ratio_evade = 0.9091
     ratio_magic_evade = 0.0
 
-
 class AxemGreen(Enemy):
     index = 211
     address = 0x3910a6
@@ -6340,6 +6467,12 @@ class AxemGreen(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 4.0
 
+    model_small = {
+        **models[212],
+        "extra_props": {
+            "is_wide": True
+        }
+    }
 
 class KingBomb(Enemy):
     index = 212
@@ -6511,23 +6644,24 @@ class KingCalamari(Enemy):
     ratio_fp = 0.1111
 
     # shuffled overworld sprites
-    overworld_sprite = 266
-    overworld_npc = 266
-    overworld_push_sequence = 3
-    overworld_push_length = 34
-    battle_sprite = 465
-    battle_push_sequence = 3
-    battle_push_length = 35
-    overworld_is_skinny = True
     sprite_width = 34
     sprite_height = 52
-    overworld_sesw_only = True
-    battle_sesw_only = True
-    shadow = MED_SHADOW
-    overworld_solidity = [5, 5, 11]
-    battle_solidity = [11, 11, 13]
-    overworld_y_shift = -2
-    battle_y_shift = 1
+
+    model_small = {
+        **models[266],
+        "extra_props": {
+            "is_skinny": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 34
+        }
+    }
+    model_large = {
+        **models[465],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 35
+        }
+    }
 
 
 class TentaclesLeft(Enemy):
@@ -6595,19 +6729,14 @@ class Jinx3(Enemy):
     name_override = 'JINX 3'
 
     # shuffled overworld sprites
-    overworld_sprite = 207
-    overworld_npc = 207
-    battle_sprite = 207
-    battle_push_sequence = 3
-    overworld_push_sequence = 3
-    battle_push_length = 10
-    overworld_push_length = 10
-    overworld_is_empty = True
-    shadow = SMALL_SHADOW
-    overworld_solidity = [2, 2, 5]
-    battle_solidity = [2, 2, 5]
-    overworld_y_shift = 0
-    battle_y_shift = 0
+    model_small = {
+        **models[207],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 10,
+            "is_empty": True,
+        }
+    }
 
 
 class Zombone(Enemy):
@@ -6686,24 +6815,23 @@ class CzarDragon(Enemy):
     ratio_magic_evade = 0.0
 
     # shuffled overworld sprites
-    overworld_sprite = 277
-    overworld_npc = 277
-    battle_sprite = 216
-    battle_npc = 216
-    statue_only = True
-    battle_sprite_is_wide = True
+    sidekicks = [21, 21, 21, 21]
     sprite_width = 59
     sprite_height = 54
-    battle_sesw_only = True
-    overworld_push_sequence = 3
-    overworld_push_length = 30
-    other_sprites = [277, 277, 277, 277]
-    overworld_is_skinny = True
-    overworld_sesw_only = True
-    shadow = MED_SHADOW
-    overworld_solidity = [5, 5, 11]
-    overworld_y_shift = 3
-
+    model_small = {
+        **models[277],
+        "extra_props": {
+            "is_skinny": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 30
+        }
+    }
+    model_large = {
+        **models[216],
+        "extra_props": {
+            "is_wide": True
+        }
+    }
 
 class Cloaker(Enemy):
     index = 221
@@ -6738,24 +6866,31 @@ class Cloaker(Enemy):
     ratio_speed = 1.1111
 
     # shuffled overworld sprites
-    overworld_sprite = 249
-    overworld_npc = 249
-    battle_sprite = 477
-    other_battle_sprites = [478, 499, 479]
-    statue_only = True
-    battle_sprite_is_tall = True
     sprite_width = 50
     sprite_height = 62
-    overworld_freeze = True
-    overworld_sesw_only = True
-    battle_sesw_only = True
-    battle_push_sequence = 3
-    battle_push_length = 42
-    shadow = BLOCK_SHADOW
-    overworld_solidity = [7, 7, 7]
-    overworld_y_shift = 0
-    statue_west_shift = 4
-    statue_south_shift = 3
+
+    model_small = {
+        **models[249],
+        "shadow": ShadowSize._03_BLOCK,
+        "acute_axis": 7,
+        "obtuse_axis": 7,
+        "height": 7,
+        "extra_props": {
+            "freeze": True,
+            "statue_west_shift": 4,
+            "statue_south_shift": 3
+        }
+    }
+    #may have to adjust these props
+    model_large = {
+        **models[371],
+        "extra_props": {
+            "is_tall": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 42
+        }
+    }
+
 
 
 class Domino(Enemy):
@@ -6855,25 +6990,25 @@ class Mack(Enemy):
     ratio_hp = 0.8
 
     # shuffled overworld sprites
-    overworld_sprite = 414
-    overworld_npc = 414
-    battle_sprite = 480
-    battle_npc = 480
-    battle_sequence = 7
-    statue_only = True
-    battle_sprite_is_tall = True
-    battle_sesw_only = True
     sprite_height = 57
     sprite_width = 43
-    overworld_push_sequence = 4
-    other_sprites = [414, 414, 414, 414]
-    overworld_is_skinny = True
-    overworld_push_length = 54
-    shadow = MED_SHADOW
-    overworld_solidity = [3, 3, 11]
-    battle_solidity = [13, 13, 23]
-    overworld_y_shift = 1
-    battle_y_shift = 1
+    sidekicks = [158, 158, 158, 158]
+
+    model_small = {
+        **models[414],
+        "extra_props": {
+            "moleville_animation_sequence": 4,
+            "moleville_animation_duration": 54,
+            "is_skinny": True
+        }
+    }
+    model_large = {
+        **models[480],
+        "extra_props": {
+            "sequence": 7,
+            "is_tall": True
+        }
+    }
 
 
 class Bodyguard(Enemy):
@@ -6941,19 +7076,27 @@ class Yaridovich(Enemy):
     battle_push_length = 78
 
     # shuffled overworld sprites
-    overworld_sprite = 163
-    overworld_npc = 40
-    battle_sprite = 482
-    battle_sprite_is_tall = True
-    battle_sesw_only = True
     sprite_width = 56
     sprite_height = 84
-    battle_push_sequence = 3
-    other_sprites = [162, 162, 162, 162]
-    overworld_is_skinny = True
-    shadow = MED_SHADOW
-    overworld_solidity = [4, 4, 9]
-    overworld_y_shift = 1
+
+    sidekick_models = [39, 39, 39, 39]
+
+    model_small = {
+        **models[40],
+        "extra_props": {
+            "is_skinny": True
+        }
+    }
+    model_large = {
+        **models[421],
+        "sprite": SpriteName._482_YARIDOVICH,
+        "shadow": ShadowSize._02_OVAL_BIG,
+        "extra_props": {
+            "is_tall": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 78
+        }
+    }
 
 
 class DrillBit(Enemy):
@@ -7017,6 +7160,7 @@ class AxemPink(Enemy):
     ratio_evade = 2.2727
     ratio_magic_evade = 2.0
 
+    model_small = {**models[210]}
 
 class AxemBlack(Enemy):
     index = 229
@@ -7054,6 +7198,12 @@ class AxemBlack(Enemy):
     ratio_evade = 2.7273
     ratio_magic_evade = 0.0
 
+    model_small = {
+        **models[209],
+        "extra_props": {
+            "is_wide": True
+        }
+    }
 
 class Bowyer(Enemy):
     index = 230
@@ -7082,26 +7232,31 @@ class Bowyer(Enemy):
     rare_item = items.FlowerBox
 
     # shuffled overworld sprites
-    overworld_sprite = 487
-    overworld_npc = 487
-    battle_sprite = 241
-    battle_npc = 241
-    statue_only = True
-    battle_sprite_is_tall = True
     sprite_width = 47
     sprite_height = 52
-    overworld_sesw_only = True
-    battle_sesw_only = True
-    other_sprites = [487, 487, 487, 487]
-    overworld_is_skinny = True
-    overworld_freeze = True
-    overworld_sequence = 1
-    shadow = SMALL_SHADOW
-    overworld_solidity = [3, 3, 13]
-    battle_solidity = [6, 8, 16]
-    overworld_y_shift = 1
-    battle_y_shift = 1
-    statue_mold = 3
+    sidekicks = [231, 231, 231, 231]
+
+    	
+    model_small = {
+        **models[487],
+        "extra_props": {
+            "statue_mold": 3,
+            "sequence": 1,
+            "freeze": True,
+            "is_skinny": True,
+        }
+    }
+    model_large = {
+        **models[241],
+        "acute_axis": 6,
+        "obtuse_axis": 8,
+        "height": 16,
+        "y_pixel_shift": 1,
+        "shadow": ShadowSize._01_OVAL_MED,
+        "extra_props": {
+            "is_tall": True,
+        }
+    }
 
 
 class Aero(Enemy):
@@ -7119,6 +7274,15 @@ class Aero(Enemy):
     reward_address = 0x391b94
     yoshi_cookie_item = items.Mushroom
 
+    model_small = {
+        **models[487],
+        "extra_props": {
+            "statue_mold": 3,
+            "sequence": 1,
+            "freeze": True,
+            "is_skinny": True,
+        }
+    }
 
 class Exor(Enemy):
     index = 233
@@ -7150,23 +7314,19 @@ class Exor(Enemy):
     ratio_speed = 3.0769
 
     # shuffled overworld sprites
-    overworld_sprite = 0
-    battle_sprite = 0
-    overworld_sequence = 10
-    battle_sequence = 10
-    overworld_sprite_plus = 3
-    battle_sprite_plus = 3
-    overworld_sesw_only = True
-    battle_sesw_only = True
-    overworld_is_empty = True
-    overworld_freeze = True
-    battle_freeze = True
-    shadow = MED_SHADOW
-    overworld_solidity = [3, 3, 12]
-    battle_solidity = [3, 3, 12]
-    overworld_y_shift = 1
-    battle_y_shift = 1
-    statue_mold = 22
+    	
+    model_small = {
+        **models[0],
+        "sprite": SpriteName._03_MARIO_SURPRISE_LEFT,
+        "vram_store": VramStore._02_SWSE,
+        "extra_props": {
+            "sprite_plus": 3, # use this if Sprite property has to be reverted,
+            "sequence": 10,
+            "is_empty": True,
+            "freeze": True,
+            "statue_mold": 22
+        }
+    }
 
     def patch_script(self):
         script = BattleScript()
@@ -7217,6 +7377,18 @@ class Smithy1(Enemy):
     # Reward attributes
     reward_address = 0x391bb8
     yoshi_cookie_item = items.Mushroom
+
+    model_small = {
+        **models[351],
+        "extra_props": {
+            "is_skinny": True
+        }
+    }
+    # may need to adjust these properties
+    model_large = {
+        **models[371],
+        "sprite": SpriteName._490_SMITHY_1ST_FORM
+    }
 
 
 class Shyper(Enemy):
@@ -7372,20 +7544,16 @@ class Croco1(Enemy):
     name_override = 'CROCO 1'
 
     # shuffled overworld sprites
-    overworld_sprite = 48
-    overworld_npc = 48
-    battle_sprite = 48
-    battle_npc = 48
-    overworld_extra_sequence = 5
-    battle_extra_sequence = 5
-    other_sprites = [261, 261, 261]
-    fat_sidekicks = True
-    shadow = MED_SHADOW
-    overworld_solidity = [5, 5, 10]
-    battle_solidity = [5, 5, 10]
-    overworld_y_shift = 2
-    battle_y_shift = 2
-    statue_west_shift = 3
+    sidekicks = [5, 5, 5]
+
+    model_small = {
+        **models[48],
+        "extra_props": {
+            "extra_sequence": 5,
+            "statue_west_shift": 3
+        }
+    }
+
 
 
 class Croco2(Enemy):
@@ -7422,20 +7590,15 @@ class Croco2(Enemy):
     name_override = 'CROCO 2'
 
     # shuffled overworld sprites
-    overworld_sprite = 48
-    overworld_npc = 48
-    battle_sprite = 48
-    battle_npc = 48
-    overworld_extra_sequence = 5
-    battle_extra_sequence = 5
-    other_sprites = [261, 261, 261]
-    fat_sidekicks = True
-    shadow = MED_SHADOW
-    overworld_solidity = [5, 5, 10]
-    battle_solidity = [5, 5, 10]
-    overworld_y_shift = 2
-    battle_y_shift = 2
-    statue_west_shift = 3
+    sidekicks = [5, 5, 5]
+
+    model_small = {
+        **models[361],
+        "extra_props": {
+            "extra_sequence": 5,
+            "statue_west_shift": 3
+        }
+    }
 
 
 class Earthlink(Enemy):
@@ -7528,27 +7691,20 @@ class AxemRangers(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+    sidekicks = [229, 207, 228, 211]
+
     # shuffled overworld sprites
-    overworld_sprite = 466
-    overworld_npc = 466
-    battle_sprite = 466
-    battle_npc = 466
-    other_npcs = [209, 210, 211, 212]
-    other_sprites = [209, 210, 211, 212]
     battle_push_sequence = 3
     battle_push_length = 24
-    overworld_push_sequence = 3
-    overworld_push_length = 24
-    fat_sidekicks = True
-    shadow = MED_SHADOW
-    overworld_solidity = [5, 5, 12]
-    battle_solidity = [5, 5, 12]
-    overworld_y_shift = 0
-    battle_y_shift = 0
-    overworld_sesw_only = True
-    battle_sesw_only = True
-    statue_west_shift = 6
 
+    model_small = {
+        **models[208],
+        "extra_props": {
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 24,
+            "statue_west_shift": 6
+        }
+    }
 
 class Booster(Enemy):
     index = 246
@@ -7584,24 +7740,16 @@ class Booster(Enemy):
     ratio_fp = 0.02
 
     # shuffled overworld sprites
-    overworld_sprite = 50
-    overworld_npc = 50
-    battle_sprite = 50
-    battle_npc = 50
-    other_npcs = [504]
-    other_sprites = [504, 504, 504]
-    overworld_extra_sequence = 2
-    battle_extra_sequence = 2
-    overworld_push_sequence = 4
-    battle_push_sequence = 4
-    overworld_push_length = 72
-    battle_push_length = 72
-    overworld_is_skinny = True
-    shadow = MED_SHADOW
-    overworld_solidity = [5, 5, 12]
-    battle_solidity = [5, 5, 12]
-    overworld_y_shift = 2
-    battle_y_shift = 2
+
+    model_small = {
+        **models[50],
+        "extra_props": {
+            "extra_sequence": 2,
+            "moleville_animation_sequence": 2,
+            "moleville_animation_duration": 72,
+            "is_skinny": True,
+        }
+    }
 
 
 class Booster2(Enemy):
@@ -7656,6 +7804,10 @@ class Snifit(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
+    model_small = {
+        **models[504]
+    }
+
 
 class Johnny(Enemy):
     index = 249
@@ -7686,21 +7838,28 @@ class Johnny(Enemy):
     ratio_hp = 1.0
     ratio_fp = 1.0
 
+    sidekicks = [75, 75, 75, 75]
+
     # shuffled overworld sprites
-    overworld_sprite = 55
-    overworld_npc = 52
-    battle_sprite = 505
-    other_npcs = [331]
-    battle_sprite_is_wide = True
     sprite_height = 55
     sprite_width = 64
-    overworld_extra_sequence = 10
-    battle_push_sequence = 3
-    battle_push_length = 38
-    other_sprites = [331, 331, 331, 331]
-    shadow = MED_SHADOW
-    overworld_solidity = [5, 5, 11]
-    overworld_y_shift = 2
+
+    model_small = {
+        **models[55],
+        "extra_props": {
+            "extra_sequence": 10
+        }
+    }
+    # may need to adjust these properties
+    model_large = {
+        **models[371],
+        "sprite": SpriteName._505_JOHNNY,
+        "extra_props": {
+            "is_wide": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 38
+        }
+    }
 
 
 class JohnnySolo(Enemy):
@@ -7771,10 +7930,6 @@ class Valentina(Enemy):
     ratio_fp = 0.7143
 
     # shuffled overworld sprites
-    overworld_sprite = 56
-    overworld_npc = 56
-    battle_sprite = 507
-    battle_sprite_is_tall = True
     sprite_height = 82
     sprite_width = 51
     overworld_extra_sequence = 2
@@ -7784,14 +7939,26 @@ class Valentina(Enemy):
     overworld_is_skinny = True
     shadow = SMALL_SHADOW
 
-    other_sprites = [333, 333, 333, 333]
-    fat_sidekicks = True
-    overworld_solidity = [3, 3, 12]
-    overworld_y_shift = 1
-    statue_west_shift = 3
-    statue_south_shift = 1
-    opposite_statue_west_shift = 2
+    other_sprites = [77, 13, 77, 13]
 
+    model_small = {
+        **models[56],
+        "extra_props": {
+            "extra_sequence": 2,
+            "statue_west_shift": 3,
+            "statue_south_shift": 1,
+            "opposite_statue_west_shift": 2
+        }
+    }
+    # may need to edit these
+    model_large = {
+        **models[507],
+        "extra_props": {
+            "is_tall": True,
+            "moleville_animation_sequence": 3,
+            "moleville_animation_duration": 18
+        }
+    }
 
 class Cloaker2(Enemy):
     index = 252
@@ -7902,21 +8069,26 @@ class Culex(Enemy):
     ratio_fp = 1.0
 
     # shuffled overworld sprites
-    overworld_sprite = 511
-    battle_sprite = 511
-    overworld_sequence = 8
-    other_sprites = [786, 789, 789, 786]
-    other_sprites_sequences = [1, 0, 1, 0]
     sprite_height = 143
     sprite_width = 90
-    overworld_sesw_only = True
-    battle_sesw_only = True
-    overworld_is_empty = True
-    overworld_freeze = True
-    shadow = LARGE_SHADOW
-    overworld_solidity = [4, 4, 8]
-    overworld_y_shift = 1
-    statue_mold = 3
+    
+    #other_sprites = [786, 789, 789, 786]
+    #other_sprites_sequences = [1, 0, 1, 0]
+
+    sidekicks = [149, 150, 151, 152]
+
+    model_small = {
+        **models[511],
+        "extra_props": {
+            "sequence": 8,
+            "is_empty": True,
+            "freeze": True,
+            "statue_mold": 3
+        }
+    }
+    model_large = {
+        **models[511]
+    }
 
 # ********************* Default lists for the world.
 

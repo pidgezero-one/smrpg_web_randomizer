@@ -60,3 +60,5 @@ class RoomObjects:
         else:
             output += bytearray([0xFF for x in range(empty_space)])
         return [pointers, bytearray(output)]
+
+        #TODO: Need to have this work as a patch. Once you figure that out, write assembler for event tiles / exits

@@ -93,19 +93,21 @@ class EventScript:
             table_with_offsets.append(commands_with_offsets)
 
         #substitute offsets for jump args
-        def get_jump_short(name):
+        def get_jump_short(name, offset):
             for i in range(len(table_with_offsets)):
                 script = table_with_offsets[i]
                 for j in range(len(script)):
                     command = script[j]
-                    if command["identifier"] == name:
-                        return (command["offset"] & 0xFFFF)
-                    if "subscript" in command.keys():
-                        for k in range(len(command["subscript"])):
-                            subscript_command = command["subscript"][k]
-                            if subscript_command["identifier"] == name:
-                                return (subscript_command["offset"] & 0xFFFF)
-            raise Exception(f'{name} did not match any commands')
+                    # target MUST be in same bank!
+                    if ((command["offset"] >> 16) == offset >> 16):
+                        if command["identifier"] == name:
+                            return (command["offset"] & 0xFFFF)
+                        if "subscript" in command.keys():
+                            for k in range(len(command["subscript"])):
+                                subscript_command = command["subscript"][k]
+                                if subscript_command["identifier"] == name:
+                                    return (subscript_command["offset"] & 0xFFFF)
+            raise Exception(f'{name} did not match any commands in the same bank')
 
         table_with_real_args = []
 
@@ -117,7 +119,7 @@ class EventScript:
                 assembler = EventScript()
                 func = getattr(assembler, command["command"], None)
                 if "args" in command.keys():
-                    args = [get_jump_short(arg) if isinstance(arg, str) else arg for arg in command["args"]]
+                    args = [get_jump_short(arg, command["offset"]) if isinstance(arg, str) else arg for arg in command["args"]]
                     command["args"] = args
                 else:
                     command["args"] = []
@@ -127,7 +129,7 @@ class EventScript:
                     for k in range(len(command["subscript"])):
                         subscript_command = command["subscript"][k]
                         if "args" in subscript_command.keys():
-                            ss_args = [get_jump_short(arg) if isinstance(arg, str) else arg for arg in subscript_command["args"]]
+                            ss_args = [get_jump_short(arg, subscript_command["offset"]) if isinstance(arg, str) else arg for arg in subscript_command["args"]]
                         else:
                             ss_args = []
                         subscript_command["args"] = ss_args

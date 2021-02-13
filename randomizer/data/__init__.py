@@ -16,3 +16,4 @@ from . import battlescripts
 from .eventscripts import events as eventscripts
 from .actionscripts import actions as actionscripts
 from .roomobjects import roomobjects as rooms
+from .npcmodels import models

@@ -5,9 +5,12 @@ import hashlib
 import random
 import re
 import binascii
+import copy
 
 
 from randomizer import data
+from randomizer.data.eventscripts.events import scripts as eventscripts
+from randomizer.data.actionscripts.actions import scripts as actionscripts
 from . import bosses
 from . import bosses_overworld
 from . import credits
@@ -257,6 +260,17 @@ class GameWorld:
 
         # Get boss location data.
         self.boss_locations = data.bosses.get_default_boss_locations(self)
+
+        # Events
+        self.eventscripts = copy.copy(eventscripts)
+        self.actionscripts = copy.copy(actionscripts)
+        
+        # Get default npc and model data. Keep them for reference. 
+        self.original_models = copy.copy(data.npcmodels.models)
+        self.original_rooms = copy.copy(data.roomobjects.roomobjects.rooms)
+        # Malleable versions
+        self.models = copy.copy(data.npcmodels.models)
+        self.rooms = copy.copy(data.roomobjects.roomobjects.rooms)
 
         # Minigame data.
         self.ball_solitaire = data.games.BallSolitaireGame(self)

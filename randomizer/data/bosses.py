@@ -5,6 +5,9 @@ from enum import IntEnum
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 
+from randomizer.data.npcmodels import models
+from randomizer.data.roomobjecttables import Rooms
+
 
 class Battlefields(IntEnum):
     """Enumeration for ID values for battlefields."""
@@ -102,6 +105,10 @@ class BossLocation:
     tall_sprite = False
     sprite_width = 32
     sprite_height = 32
+    room_objects = []
+    model = None
+    original_boss = -1
+    target_npcs = None
 
     def __init__(self, world):
         """
@@ -214,8 +221,14 @@ class HammerBros(BossAndStarLocation):
     music = BattleMusic.Boss1
     sprite_width = 40
     sprite_height = 45
-    sprite_offset = 0x1DBfbd
-    original_data = [0x1B, 0x69, 0x80, 0xA1, 0x78, 0x33, 0x00]
+    model = {**models[283]}
+    target_npcs = [
+        {
+            "room": Rooms._205_MUSHROOM_WAY_AREA_03,
+            "npcs": [7]
+        }
+    ]
+    original_boss = 27
 
 
 class Croco1(BossAndStarLocation):
@@ -224,8 +237,30 @@ class Croco1(BossAndStarLocation):
     pack_number = 163
     battlefield = Battlefields.MushroomWay
     music = BattleMusic.Boss1
-    sprite_offset = 0x1DBB02
-    original_data = [0x30, 0x00, 0x80, 0x22, 0x55, 0x0A, 0x00]
+    model = {**models[110]}
+    target_npcs = [
+        {
+            "room": Rooms._076_BANDITS_WAY_AREA_01,
+            "npcs": [5]
+        },
+        {
+            "room": Rooms._207_BANDITS_WAY_AREA_02,
+            "npcs": [8]
+        },
+        {
+            "room": Rooms._077_BANDITS_WAY_AREA_03,
+            "npcs": [8]
+        },
+        {
+            "room": Rooms._078_BANDITS_WAY_AREA_04,
+            "npcs": [12]
+        },
+        {
+            "room": Rooms._206_BANDITS_WAY_AREA_05,
+            "npcs": [8]
+        }
+    ]
+    original_boss = 240
 
 
 class Mack(BossAndStarLocation):
@@ -238,8 +273,15 @@ class Mack(BossAndStarLocation):
     tall_sprite = True
     sprite_height = 57
     sprite_width = 43
-    sprite_offset = 0x1Dc520
-    original_data = [0xE0, 0x69, 0x80, 0xC1, 0xDD, 0x37, 0x00]
+    model = {**models[480]}
+    target_npcs = [
+        {
+            "room": Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
+            "npcs": [3],
+            "sidekicks": [4, 5, 6, 7, 8, 9] # replace if mack skip turned off
+        }
+    ]
+    original_boss = 224
 
 
 class Pandorite(BossAndStarLocation):
@@ -247,6 +289,7 @@ class Pandorite(BossAndStarLocation):
     battle_address = 0x200a30
     pack_number = 156
     battlefield = Battlefields.KeroSewers
+    original_boss = 23
 
 
 class Belome1(BossAndStarLocation):
@@ -257,8 +300,14 @@ class Belome1(BossAndStarLocation):
     music = BattleMusic.Boss1
     sprite_height = 54
     sprite_width = 49
-    sprite_offset = 0x1Dc225
-    original_data = [0xC7, 0xA9, 0x60, 0x02, 0xAA, 0x12, 0x00]
+    model = {**models[371]}
+    target_npcs = [
+        {
+            "room": Rooms._302_KERO_SEWERS_AREA_08_BELOMES_ROOM,
+            "npcs": [3]
+        }
+    ]
+    original_boss = 199
 
 
 class Bowyer(BossAndStarLocation):
@@ -271,8 +320,15 @@ class Bowyer(BossAndStarLocation):
     tall_sprite = True
     sprite_width = 47
     sprite_height = 52
-    sprite_offset = 0x1dc54a
-    original_data = [0xF1, 0x68, 0x80, 0x81, 0x86, 0x10, 0x00]
+    model = {**models[486]}
+    target_npcs = [
+        {
+            "room": Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD,
+            "npcs": [16],
+            "sidekicks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        }
+    ]
+    original_boss = 230
 
 
 class Croco2(BossAndStarLocation):
@@ -281,8 +337,34 @@ class Croco2(BossAndStarLocation):
     pack_number = 164
     battlefield = Battlefields.MolevilleMines
     music = BattleMusic.Boss1
-    sprite_offset = 0x1Dc209
-    original_data = [0x30, 0x00, 0x80, 0x22, 0x55, 0x2A, 0x00]
+    model = {**models[367]}
+    target_npcs = [
+        {
+            "room": Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._275_MOLEVILLE_MINES_AREA_06_SMALL_ROOM_LEADING_TO_AREA_06,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._279_MOLEVILLE_MINES_AREA_08_CROCOS_BOMBED_ROOM,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
+            "npcs": [0]
+        }
+    ]
+    original_boss = 241
 
 
 class Punchinello(BossAndStarLocation):
@@ -294,8 +376,15 @@ class Punchinello(BossAndStarLocation):
     music = BattleMusic.Boss1
     sprite_width = 45
     sprite_height = 45
-    sprite_offset = 0x1dc4b0
-    original_data = [0xD0, 0x49, 0x80, 0x81, 0x8B, 0x13, 0x00]
+    model = {**models[464]}
+    target_npcs = [
+        {
+            "room": Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
+            "npcs": [0],
+            "sidekicks": [2, 3, 4]
+        }
+    ]
+    original_boss = 208
 
 
 class Booster(BossAndStarLocation):
@@ -304,8 +393,32 @@ class Booster(BossAndStarLocation):
     pack_number = 161
     battlefield = Battlefields.BoosterTower
     music = BattleMusic.Boss1
-    sprite_offset = 0x1db95e
-    original_data = [0x32, 0x00, 0x80, 0x22, 0x55, 0x2C, 0x00]
+    model = {**models[50]}
+    target_npcs = [
+        {
+            "room": Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
+            "npcs": [0, 7],
+            "sidekicks": [1, 2, 3]
+        },
+        {
+            "room": Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+            "npcs": [15],
+            "sidekicks": [0, 1, 2]
+        },
+        {
+            "room": Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM,
+            "npcs": [6]
+        },
+        {
+            "room": Rooms._193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS,
+            "npcs": [6]
+        },
+        {
+            "room": Rooms._054_BOOSTER_HILL_____DUMMY,
+            "npcs": [7]
+        }
+    ]
+    original_boss = 246
 
 
 class ClownBros(BossAndStarLocation):
@@ -314,6 +427,7 @@ class ClownBros(BossAndStarLocation):
     pack_number = 177
     battlefield = Battlefields.ClownBros
     music = BattleMusic.Boss1
+    original_boss = 192
 
 
 class Bundt(BossAndStarLocation):
@@ -322,8 +436,15 @@ class Bundt(BossAndStarLocation):
     pack_number = 176
     battlefield = Battlefields.Bundt
     music = BattleMusic.Boss1
-    sprite_offset = 0x1DC4DA
-    original_data = [0xD6, 0x09, 0x80, 0x81, 0x77, 0x08, 0x00]
+    model = {**models[470]}
+    target_npcs = [
+        {
+            "room": Rooms._155_MARRYMORE_CHAPEL_KITCHEN,
+            "npcs": [0],
+            "sidekicks": [1, 2]
+        }
+    ]
+    original_boss = 194
 
 
 class StarHill(StarLocation):
@@ -353,8 +474,14 @@ class KingCalamari(BossAndStarLocation):
     battlefield = Battlefields.SunkenShip
     music = BattleMusic.Boss1
     sprite_width = 48
-    sprite_offset = 0x1dbc98
-    original_data = [0xDF, 0x28, 0x80, 0x81, 0x92, 0x05, 0x00]
+    model = {**models[168]}
+    target_npcs = [
+        {
+            "room": Rooms._177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM,
+            "npcs": [7]
+        }
+    ]
+    original_boss = 216
 
 
 class Hidon(BossAndStarLocation):
@@ -362,6 +489,7 @@ class Hidon(BossAndStarLocation):
     battle_address = 0x200a37
     pack_number = 157
     battlefield = Battlefields.SunkenShip
+    original_boss = 87
 
 
 class Johnny(BossAndStarLocation):
@@ -370,8 +498,15 @@ class Johnny(BossAndStarLocation):
     pack_number = 166
     battlefield = Battlefields.SunkenShip
     music = BattleMusic.Boss1
-    sprite_offset = 0x1DB96C
-    original_data = [0x37, 0x00, 0x80, 0xA2, 0x55, 0x2B, 0x00]
+    model = {**models[52]}
+    target_npcs = [
+        {
+            "room": Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
+            "npcs": [2],
+            "sidekicks": [4, 5, 6, 7]
+        }
+    ]
+    original_boss = 249
 
 
 class Yaridovich(BossAndStarLocation):
@@ -384,8 +519,15 @@ class Yaridovich(BossAndStarLocation):
     tall_sprite = True
     sprite_width = 32
     sprite_height = 32
-    sprite_offset = 0x1DB918
-    original_data = [0xA3, 0x00, 0x80, 0x21, 0x44, 0xA9, 0x00]
+    model = {**models[40]}
+    target_npcs = [
+        {
+            "room": Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
+            "npcs": [4],
+            "sidekicks": [0, 1, 2, 3]
+        }
+    ]
+    original_boss = 226
 
 
 class Belome2(BossAndStarLocation):
@@ -396,8 +538,14 @@ class Belome2(BossAndStarLocation):
     music = BattleMusic.Boss1
     sprite_height = 54
     sprite_width = 49
-    sprite_offset = 0x1Dc471
-    original_data = [0xC7, 0xA9, 0x60, 0x02, 0xAA, 0x12, 0x00]
+    model = {**models[455]}
+    target_npcs = [
+        {
+            "room": Rooms._268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
+            "npcs": [4]
+        }
+    ]
+    original_boss = 200
 
 
 class Jagger(BossAndStarLocation):
@@ -406,8 +554,14 @@ class Jagger(BossAndStarLocation):
     pack_number = 189
     battlefield = Battlefields.JinxDojo
     can_run_away = True
-    sprite_offset = 0x1dbc44
-    original_data = [0x00, 0x21, 0x80, 0xA1, 0x44, 0x2B, 0x00]
+    model = {**models[156]}
+    target_npcs = [
+        {
+            "room": Rooms._255_MONSTRO_TOWN_JINXS_DOJO,
+            "npcs": [1]
+        }
+    ]
+    original_boss = 179
 
 
 class Jinx1(BossLocation):
@@ -416,6 +570,7 @@ class Jinx1(BossLocation):
     battlefield = Battlefields.JinxDojo
     can_run_away = True
     music = BattleMusic.Boss1
+    original_boss = 195
 
 
 class Jinx2(BossLocation):
@@ -424,6 +579,7 @@ class Jinx2(BossLocation):
     battlefield = Battlefields.JinxDojo
     can_run_away = True
     music = BattleMusic.Boss1
+    original_boss = 196
 
 
 class Jinx3(BossAndStarLocation):
@@ -433,8 +589,14 @@ class Jinx3(BossAndStarLocation):
     battlefield = Battlefields.JinxDojo
     can_run_away = True
     music = BattleMusic.Boss1
-    sprite_offset = 0x1dbda9
-    original_data = [0xCF, 0x08, 0x80, 0x80, 0x22, 0x05, 0x00]
+    model = {**models[207]}
+    target_npcs = [
+        {
+            "room": Rooms._255_MONSTRO_TOWN_JINXS_DOJO,
+            "npcs": [0]
+        }
+    ]
+    original_boss = 218
 
 
 class Culex(BossAndStarLocation):
@@ -443,6 +605,7 @@ class Culex(BossAndStarLocation):
     pack_number = 216
     battlefield = Battlefields.Culex
     music = BattleMusic.Culex
+    original_boss = 255
 
 
 class BoxBoy(BossAndStarLocation):
@@ -450,6 +613,7 @@ class BoxBoy(BossAndStarLocation):
     battle_address = 0x1e999a
     pack_number = 158
     battlefield = Battlefields.KeroSewers
+    original_boss = 134
 
 
 class MegaSmilax(BossAndStarLocation):
@@ -458,8 +622,14 @@ class MegaSmilax(BossAndStarLocation):
     pack_number = 173
     battlefield = Battlefields.BeanValley
     music = BattleMusic.Boss1
-    sprite_offset = 0x1dbc36
-    original_data = [0x9F, 0x29, 0x80, 0x81, 0x33, 0x01, 0x00]
+    model = {**models[154]}
+    target_npcs = [
+        {
+            "room": Rooms._254_BEAN_VALLEY_SMILAX_AREA,
+            "npcs": [0]
+        }
+    ]
+    original_boss = 204
 
 
 class Dodo(BossAndStarLocation):
@@ -470,8 +640,14 @@ class Dodo(BossAndStarLocation):
     music = BattleMusic.Boss1
     sprite_height = 56
     sprite_width = 46
-    sprite_offset = 0x1dbb95
-    original_data = [0x83, 0x88, 0x80, 0xC0, 0x99, 0x2E, 0x00]
+    model = {**models[131]}
+    target_npcs = [
+        {
+            "room": Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
+            "npcs": [2]
+        }
+    ]
+    original_boss = 137
 
 
 class Birdo(BossAndStarLocation):
@@ -480,6 +656,7 @@ class Birdo(BossAndStarLocation):
     pack_number = 175
     battlefield = Battlefields.Birdo
     music = BattleMusic.Boss1
+    original_boss = 205
 
 
 class Valentina(BossAndStarLocation):
@@ -489,8 +666,75 @@ class Valentina(BossAndStarLocation):
     battlefield = Battlefields.Valentina
     music = BattleMusic.Boss1
     sprite_offset = 0x1db988
-    original_data = [0x38, 0x00, 0x80, 0x21, 0x33, 0x2C, 0x00]
-    statue_offset = 0x1db9B9
+    model = {**models[56]}
+    statue_index = 63
+    target_npcs = [
+        {
+            "room": Rooms._341_NIMBUS_LAND_GARROS_HOUSE,
+            "npcs": [3, 4, 5]
+        },
+        {
+            "room": Rooms._416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA,
+            "npcs": [15, 16]
+        },
+        {
+            "room": Rooms._430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA,
+            "npcs": [9]
+        },
+        {
+            "room": Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL,
+            "npcs": [0, 1, 2, 3, 4, 5, 6]
+        },
+        {
+            "room": Rooms._115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA,
+            "npcs": [0, 1]
+        },
+        {
+            "room": Rooms._122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM,
+            "npcs": [0, 1]
+        },
+        {
+            "room": Rooms._120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA,
+            "npcs": [0, 1]
+        },
+        {
+            "room": Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
+            "npcs": [0, 1, 2]
+        },
+        {
+            "room": Rooms._113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15,
+            "npcs": [3]
+        },
+        {
+            "room": Rooms._119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05,
+            "npcs": [6, 7]
+        },
+        {
+            "room": Rooms._408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM_,
+            "npcs": [6, 7]
+        },
+        {
+            "room": Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
+            "npcs": [1, 2, 3, 4]
+        },
+        {
+            "room": Rooms._501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA,
+            "npcs": [0, 1]
+        },
+        {
+            "room": Rooms._440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA,
+            "npcs": [0, 1]
+        },
+        {
+            "room": Rooms._497_NIMBUS_CASTLE_AREA_06_____DUMMY,
+            "npcs": [0, 1]
+        },
+        {
+            "room": Rooms._447_NIMBUS_LAND_HOT_SPRINGS,
+            "npcs": [1, 2, 3, 4]
+        }
+    ]
+    original_boss = 251
 
 
 class CzarDragon(BossAndStarLocation):
@@ -503,8 +747,15 @@ class CzarDragon(BossAndStarLocation):
     wide_sprite = True
     sprite_width = 59
     sprite_height = 54
-    sprite_offset = 0x1dbde8
-    original_data = [0xD8, 0x68, 0x80, 0x80, 0x11, 0x01, 0x00]
+    model = {**models[216]}
+    target_npcs = [
+        {
+            "room": Rooms._352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
+            "npcs": [1],
+            "sidekicks": [2, 3, 4, 5, 6, 7, 8, 9]
+        }
+    ]
+    original_boss = 220
 
 
 class AxemRangers(BossAndStarLocation):
@@ -514,8 +765,43 @@ class AxemRangers(BossAndStarLocation):
     pack_number = 182
     battlefield = Battlefields.AxemRangers
     music = BattleMusic.Boss2
-    sprite_offset = 0x1dbdb0
-    original_data = [0xD0, 0x08, 0x80, 0x00, 0x55, 0x0C, 0x00]
+    model = {**models[208]}
+    target_npcs = [
+        {
+            "room": Rooms._357_VOLCANO_POSTCD_AREA_01,
+            "npcs": [2],
+            "sidekicks": [3, 4, 5, 6]
+        },
+        {
+            "room": Rooms._388_VOLCANO_POSTCD_AREA_02,
+            "npcs": [2],
+            "sidekicks": [3, 4, 5, 6]
+        },
+        {
+            "room": Rooms._365_VOLCANO_POSTCD_AREA_03,
+            "npcs": [1]
+        },
+        {
+            "room": Rooms._391_VOLCANO_POSTCD_AREA_04,
+            "npcs": [1]
+        },
+        {
+            "room": Rooms._394_VOLCANO_POSTCD_AREA_05,
+            "npcs": [3],
+            "sidekicks": [1, 2]
+        },
+        {
+            "room": Rooms._392_VOLCANO_POSTCD_AREA_06,
+            "npcs": [1],
+            "sidekicks": [2, 3, 4, 5]
+        },
+        {
+            "room": Rooms._393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
+            "npcs": [2],
+            "sidekicks": [3, 4, 5, 6]
+        },
+    ]
+    original_boss = 245
 
 
 class Magikoopa(BowsersKeepLocation):
@@ -524,8 +810,14 @@ class Magikoopa(BowsersKeepLocation):
     pack_number = 209
     battlefield = Battlefields.BowsersKeep
     music = BattleMusic.Boss1
-    sprite_offset = 0x1dbd32
-    original_data = [0x81, 0x40, 0x80, 0x01, 0x33, 0x0A, 0x00]
+    model = {**models[190]}
+    target_npcs = [
+        {
+            "room": Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM,
+            "npcs": [2]
+        }
+    ]
+    original_boss = 33
 
 
 class Boomer(BowsersKeepLocation):
@@ -537,8 +829,14 @@ class Boomer(BowsersKeepLocation):
     tall_sprite = True
     sprite_width = 52
     sprite_width = 49
-    sprite_offset = 0x1dc52e
-    original_data = [0xA9, 0x68, 0x80, 0x41, 0x88, 0x31, 0x00]
+    model = {**models[482]}
+    target_npcs = [
+        {
+            "room": Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM,
+            "npcs": [0]
+        }
+    ]
+    original_boss = 52
 
 
 class Exor(BowsersKeepLocation):
@@ -547,6 +845,7 @@ class Exor(BowsersKeepLocation):
     pack_number = 186
     battlefield = Battlefields.BowsersKeep
     music = BattleMusic.Boss2
+    original_boss = 233
 
 
 class Countdown(BossLocation):
@@ -554,8 +853,14 @@ class Countdown(BossLocation):
     pack_number = 174
     battlefield = Battlefields.Gate
     music = BattleMusic.Boss1
-    sprite_offset = 0x1dc463
-    original_data = [0xC5, 0x29, 0x80, 0x81, 0xBB, 0x0D, 0x00]
+    model = {**models[453]}
+    target_npcs = [
+        {
+            "room": Rooms._223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM,
+            "npcs": [0]
+        }
+    ]
+    original_boss = 197
 
 
 class CloakerDomino(BossLocation):
@@ -563,30 +868,52 @@ class CloakerDomino(BossLocation):
     pack_number = 184
     battlefield = Battlefields.Gate
     music = BattleMusic.Boss1
+    original_boss = 221
 
 
 class Clerk(BossLocation):
     battle_address = 0x1fe3ec
     pack_number = 146
     battlefield = Battlefields.Factory
-    sprite_offset = 0x1dc55f
-    original_data = [0x8E, 0x08, 0x80, 0x21, 0x44, 0x28, 0x00]
+    model = {**models[489]}
+    target_npcs = [
+        {
+            "room": Rooms._469_FACTORY_GROUNDS_AREA_01,
+            "npcs": [9],
+            "sidekicks": [6, 7]
+        }
+    ]
+    original_boss = 50
 
 
 class Manager(BossLocation):
     battle_address = 0x1fe819
     pack_number = 147
     battlefield = Battlefields.Factory
-    sprite_offset = 0x1dc57b
-    original_data = [0xA7, 0x28, 0x80, 0xC1, 0x99, 0x2F, 0x00]
+    model = {**models[493]}
+    target_npcs = [
+        {
+            "room": Rooms._471_FACTORY_GROUNDS_AREA_02,
+            "npcs": [16],
+            "sidekicks": [12, 13, 14]
+        }
+    ]
+    original_boss = 76
 
 
 class Director(BossLocation):
     battle_address = 0x1fea21
     pack_number = 148
     battlefield = Battlefields.Factory
-    sprite_offset = 0x1dc597
-    original_data = [0xA8, 0x28, 0x80, 0xC1, 0x99, 0x2F, 0x00]
+    model = {**models[497]}
+    target_npcs = [
+        {
+            "room": Rooms._471_FACTORY_GROUNDS_AREA_02,
+            "npcs": [10],
+            "sidekicks": [7, 8, 9]
+        }
+    ]
+    original_boss = 114
 
 
 class Gunyolk(BossLocation):
@@ -598,8 +925,14 @@ class Gunyolk(BossLocation):
     tall_sprite = True
     sprite_width = 71
     sprite_height = 63
-    sprite_offset = 0x1dc53c
-    original_data = [0x4A, 0x01, 0x80, 0x21, 0x77, 0x2C, 0x00]
+    model = {**models[484]}
+    target_npcs = [
+        {
+            "room": Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+            "npcs": [13]
+        }
+    ]
+    original_boss = 51
 
 
 # ********************* Default lists for the world.
