@@ -5,9 +5,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_355_jump_to_subroutine_0',
-        "command": 'jump_to_subroutine',
-        "args": [0x421b]
+        "identifier": 'ACTION_355_jmp_to_subroutine_0',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_355_shadow_off_3']
     },
     {
         "identifier": 'ACTION_355_walk_to_xy_coords_1',

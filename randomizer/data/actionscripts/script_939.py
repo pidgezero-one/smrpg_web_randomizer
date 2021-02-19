@@ -415,9 +415,9 @@ script = [
         "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_939_jump_to_subroutine_83',
-        "command": 'jump_to_subroutine',
-        "args": [0xaf0f]
+        "identifier": 'ACTION_939_jmp_to_subroutine_83',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_939_play_sound_15']
     },
     {
         "identifier": 'ACTION_939_inc_palette_row_by_84',
@@ -494,9 +494,9 @@ script = [
         "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_939_jump_to_subroutine_99',
-        "command": 'jump_to_subroutine',
-        "args": [0xaf0f]
+        "identifier": 'ACTION_939_jmp_to_subroutine_99',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_939_play_sound_15']
     },
     {
         "identifier": 'ACTION_939_inc_palette_row_by_100',

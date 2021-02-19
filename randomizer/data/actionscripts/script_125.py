@@ -25,23 +25,23 @@ script = [
         "args": [0x700c]
     },
     {
-        "identifier": 'ACTION_125_jump_to_subroutine_4',
-        "command": 'jump_to_subroutine',
-        "args": [0x18ea]
+        "identifier": 'ACTION_125_jmp_to_subroutine_4',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_103_clear_solidity_bits_0']
     },
     {
         "identifier": 'ACTION_125_end_loop_5',
         "command": 'end_loop'
     },
     {
-        "identifier": 'ACTION_125_jump_to_subroutine_6',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_125_jmp_to_subroutine_6',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_125_jump_to_subroutine_7',
-        "command": 'jump_to_subroutine',
-        "args": [0x194c]
+        "identifier": 'ACTION_125_jmp_to_subroutine_7',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_106_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_125_face_southwest_8',

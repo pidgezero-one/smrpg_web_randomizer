@@ -35,7 +35,7 @@ script = [
     {
         "identifier": 'ACTION_177_jmp_if_random_above_66_6',
         "command": 'jmp_if_random_above_66',
-        "args": [0x2392, 'ACTION_177_transfer_to_xyzf_31']
+        "args": ['ACTION_177_transfer_to_xyzf_19', 'ACTION_177_transfer_to_xyzf_31']
     },
     {
         "identifier": 'ACTION_177_transfer_to_xyzf_7',

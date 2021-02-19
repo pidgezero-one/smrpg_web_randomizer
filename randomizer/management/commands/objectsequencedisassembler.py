@@ -436,7 +436,7 @@ names[0xCB] = named('set_700C_to_tapped_button')
 names[0xD0] = named('jump_to_script', short_int())
 # 0xD1 undocumented
 names[0xD2] = named('jmp', short())
-names[0xD3] = named('jump_to_subroutine', short())
+names[0xD3] = named('jmp_to_subroutine', short())
 names[0xD4] = named('start_loop_n_times', byte_int())
 # technically undocumented, but it's a pretty safe assumption
 names[0xD5] = named('start_loop_n_frames', short_int())
@@ -533,9 +533,16 @@ fd_names[0xB5] = named('mem_700C_xor_var', dbyte(0x7000))
 fd_names[0xB6] = mem_7000_shift_left
 # 0xB7 - 0xFF undocumented
 
-jmp_cmds = [0x3D, 0x3E, 0x3F, 0xD2, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xDB, 0xDf, 0xE0, 0xE1,
-            0xE2, 0xE4, 0xE3, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF8]
+jmp_cmds = [0x3D, 0x3E, 0x3F, 0xD2, 0xD3, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xDB, 0xDf, 0xE0, 0xE1,
+            0xE2, 0xE4, 0xE3, 0xE5, 0xE6, 0xE7, 0xE8, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF8]
 
+jmp_cmds_double = [0xE9]
+
+def get_jump_args(line, args):
+    if line[0] in jmp_cmds_double:
+        return -2
+    else:
+        return -1
 
 class Command(BaseCommand):
 
@@ -559,13 +566,14 @@ class Command(BaseCommand):
                 cmd = line[0]
                 rest = line[1:]
                 table = names
-                has_jump = cmd in jmp_cmds
+                has_jump = (cmd in jmp_cmds) or (cmd in jmp_cmds_double)
             if table[cmd]:
                 name, args = table[cmd](rest)
             else:
                 name, args = 'db', ['0x%02x' % (i) for i in line]
             if has_jump:
-                jump_args = [(int(ja, 16)) for ja in args[-1:]]
+                arg_index = get_jump_args(line, args)
+                jump_args = [(int(ja, 16)) for ja in args[arg_index:]]
             else:
                 jump_args = []
             commands_output.append({
@@ -616,9 +624,10 @@ class Command(BaseCommand):
                 line, offset = script[j]
                 name, args = parse_line(line, offset)
                 identifier = 'ACTION_%i_%s_%i' % (i, name, j)
-                if line[0] in jmp_cmds:
+                if line[0] in jmp_cmds or line[0] in jmp_cmds_double:
+                    arg_index = get_jump_args(line, args)
                     jump_args = [(int(ja, 16) | (offset & 0xFF0000))
-                                 for ja in args[-1:]]
+                                 for ja in args[arg_index:]]
                 else:
                     jump_args = []
                 sd.append({

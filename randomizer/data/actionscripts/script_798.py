@@ -7,7 +7,7 @@ script = [
     {
         "identifier": 'ACTION_798_jmp_if_random_above_66_0',
         "command": 'jmp_if_random_above_66',
-        "args": [0x99aa, 'ACTION_800_pause_0']
+        "args": ['ACTION_799_set_animation_speed_0', 'ACTION_800_pause_0']
     },
     {
         "identifier": 'ACTION_798_set_sprite_sequence_1',

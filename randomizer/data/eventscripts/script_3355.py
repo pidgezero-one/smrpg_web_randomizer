@@ -885,7 +885,7 @@ script = [
     {
         "identifier": 'EVENT_3355_jmp_if_random_above_66_118',
         "command": 'jmp_if_random_above_66',
-        "args": [0x508c, 0x508f]
+        "args": ['EVENT_3355_inc_short_121', 'EVENT_3355_inc_short_123']
     },
     {
         "identifier": 'EVENT_3355_inc_short_119',

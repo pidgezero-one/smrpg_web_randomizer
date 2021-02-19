@@ -55,12 +55,12 @@ script = [
     {
         "identifier": 'ACTION_281_jmp_if_loaded_memory_is_not_0_10',
         "command": 'jmp_if_loaded_memory_is_not_0',
-        "args": ['ACTION_281_jump_to_subroutine_18']
+        "args": ['ACTION_281_jmp_to_subroutine_18']
     },
     {
-        "identifier": 'ACTION_281_jump_to_subroutine_11',
-        "command": 'jump_to_subroutine',
-        "args": [0x33fd]
+        "identifier": 'ACTION_281_jmp_to_subroutine_11',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_281_set_700C_to_7000_short_mem_25']
     },
     {
         "identifier": 'ACTION_281_set_vram_priority_12',
@@ -92,9 +92,9 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_281_jump_to_subroutine_18',
-        "command": 'jump_to_subroutine',
-        "args": [0x33fd]
+        "identifier": 'ACTION_281_jmp_to_subroutine_18',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_281_set_700C_to_7000_short_mem_25']
     },
     {
         "identifier": 'ACTION_281_set_vram_priority_19',

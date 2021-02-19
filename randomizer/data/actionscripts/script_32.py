@@ -9,9 +9,9 @@ script = [
         "command": 'face_southeast'
     },
     {
-        "identifier": 'ACTION_32_jump_to_subroutine_1',
-        "command": 'jump_to_subroutine',
-        "args": [0x0cc4]
+        "identifier": 'ACTION_32_jmp_to_subroutine_1',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_34_clear_solidity_bits_48']
     },
     {
         "identifier": 'ACTION_32_set_priority_2',

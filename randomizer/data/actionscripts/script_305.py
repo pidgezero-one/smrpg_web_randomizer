@@ -45,7 +45,7 @@ script = [
     {
         "identifier": 'ACTION_305_jmp_if_700C_equals_short_8',
         "command": 'jmp_if_700C_equals_short',
-        "args": [6, 'ACTION_305_jump_to_subroutine_12']
+        "args": [6, 'ACTION_305_jmp_to_subroutine_12']
     },
     {
         "identifier": 'ACTION_305_pause_9',
@@ -63,9 +63,9 @@ script = [
         "args": [80]
     },
     {
-        "identifier": 'ACTION_305_jump_to_subroutine_12',
-        "command": 'jump_to_subroutine',
-        "args": [0x3801]
+        "identifier": 'ACTION_305_jmp_to_subroutine_12',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_304_visibility_on_21']
     },
     {
         "identifier": 'ACTION_305_transfer_xyzf_steps_13',
@@ -78,9 +78,9 @@ script = [
         "args": [40]
     },
     {
-        "identifier": 'ACTION_305_jump_to_subroutine_15',
-        "command": 'jump_to_subroutine',
-        "args": [0x3801]
+        "identifier": 'ACTION_305_jmp_to_subroutine_15',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_304_visibility_on_21']
     },
     {
         "identifier": 'ACTION_305_transfer_xyzf_steps_16',
@@ -93,9 +93,9 @@ script = [
         "args": [40]
     },
     {
-        "identifier": 'ACTION_305_jump_to_subroutine_18',
-        "command": 'jump_to_subroutine',
-        "args": [0x3801]
+        "identifier": 'ACTION_305_jmp_to_subroutine_18',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_304_visibility_on_21']
     },
     {
         "identifier": 'ACTION_305_transfer_xyzf_steps_19',
@@ -110,6 +110,6 @@ script = [
     {
         "identifier": 'ACTION_305_jmp_21',
         "command": 'jmp',
-        "args": ['ACTION_305_jump_to_subroutine_12']
+        "args": ['ACTION_305_jmp_to_subroutine_12']
     }
 ]

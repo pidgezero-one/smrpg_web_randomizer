@@ -7,7 +7,7 @@ script = [
     {
         "identifier": 'ACTION_703_jmp_if_random_above_66_0',
         "command": 'jmp_if_random_above_66',
-        "args": [0x8191, 'ACTION_703_set_700C_to_pressed_button_18']
+        "args": ['ACTION_703_set_700C_to_pressed_button_18', 'ACTION_703_set_700C_to_pressed_button_18']
     },
     {
         "identifier": 'ACTION_703_jmp_if_random_above_128_1',

@@ -170,7 +170,7 @@ script = [
     {
         "identifier": 'ACTION_608_jmp_if_random_above_66_34',
         "command": 'jmp_if_random_above_66',
-        "args": [0x6ef7, 'ACTION_608_set_700C_to_pressed_button_26']
+        "args": ['ACTION_608_set_700C_to_pressed_button_26', 'ACTION_608_set_700C_to_pressed_button_26']
     },
     {
         "identifier": 'ACTION_608_turn_random_direction_35',

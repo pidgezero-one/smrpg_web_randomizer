@@ -69,7 +69,7 @@ script = [
     {
         "identifier": 'ACTION_21_jmp_if_random_above_66_13',
         "command": 'jmp_if_random_above_66',
-        "args": [0x0a86, 'ACTION_21_set_animation_speed_29']
+        "args": ['ACTION_21_turn_random_direction_9', 'ACTION_21_set_animation_speed_29']
     },
     {
         "identifier": 'ACTION_21_pause_14',
@@ -102,9 +102,9 @@ script = [
         "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_21_jump_to_subroutine_20',
-        "command": 'jump_to_subroutine',
-        "args": [0x0acd]
+        "identifier": 'ACTION_21_jmp_to_subroutine_20',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_21_set_700C_to_70A0_short_mem_40']
     },
     {
         "identifier": 'ACTION_21_jmp_if_var_equals_byte_21',
@@ -185,9 +185,9 @@ script = [
         "args": [0x70ae]
     },
     {
-        "identifier": 'ACTION_21_jump_to_subroutine_37',
-        "command": 'jump_to_subroutine',
-        "args": [0x0acd]
+        "identifier": 'ACTION_21_jmp_to_subroutine_37',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_21_set_700C_to_70A0_short_mem_40']
     },
     {
         "identifier": 'ACTION_21_jmp_if_var_equals_byte_38',

@@ -72,9 +72,9 @@ script = [
         "args": [0x7043, 3, 'ACTION_711_jmp_15']
     },
     {
-        "identifier": 'ACTION_711_jump_to_subroutine_14',
-        "command": 'jump_to_subroutine',
-        "args": [0x8391]
+        "identifier": 'ACTION_711_jmp_to_subroutine_14',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_712_set_700C_to_pressed_button_0']
     },
     {
         "identifier": 'ACTION_711_jmp_15',
@@ -116,9 +116,9 @@ script = [
         "args": [0x7043, 3, 'ACTION_711_jmp_24']
     },
     {
-        "identifier": 'ACTION_711_jump_to_subroutine_23',
-        "command": 'jump_to_subroutine',
-        "args": [0x8391]
+        "identifier": 'ACTION_711_jmp_to_subroutine_23',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_712_set_700C_to_pressed_button_0']
     },
     {
         "identifier": 'ACTION_711_jmp_24',
@@ -165,9 +165,9 @@ script = [
         "args": [12, 70, 0, RadialDirections.EAST]
     },
     {
-        "identifier": 'ACTION_711_jump_to_subroutine_33',
-        "command": 'jump_to_subroutine',
-        "args": [0x8391]
+        "identifier": 'ACTION_711_jmp_to_subroutine_33',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_712_set_700C_to_pressed_button_0']
     },
     {
         "identifier": 'ACTION_711_jmp_34',

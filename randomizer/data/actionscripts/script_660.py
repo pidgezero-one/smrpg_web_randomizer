@@ -72,9 +72,9 @@ script = [
         "args": ['ACTION_660_shift_z_up_steps_15']
     },
     {
-        "identifier": 'ACTION_660_jump_to_subroutine_14',
-        "command": 'jump_to_subroutine',
-        "args": [0x78cb]
+        "identifier": 'ACTION_660_jmp_to_subroutine_14',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_660_set_700C_to_object_coord_25']
     },
     {
         "identifier": 'ACTION_660_shift_z_up_steps_15',
@@ -87,9 +87,9 @@ script = [
         "args": ['ACTION_660_shift_z_down_steps_18']
     },
     {
-        "identifier": 'ACTION_660_jump_to_subroutine_17',
-        "command": 'jump_to_subroutine',
-        "args": [0x78cb]
+        "identifier": 'ACTION_660_jmp_to_subroutine_17',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_660_set_700C_to_object_coord_25']
     },
     {
         "identifier": 'ACTION_660_shift_z_down_steps_18',
@@ -102,9 +102,9 @@ script = [
         "args": ['ACTION_660_shift_z_down_steps_21']
     },
     {
-        "identifier": 'ACTION_660_jump_to_subroutine_20',
-        "command": 'jump_to_subroutine',
-        "args": [0x78cb]
+        "identifier": 'ACTION_660_jmp_to_subroutine_20',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_660_set_700C_to_object_coord_25']
     },
     {
         "identifier": 'ACTION_660_shift_z_down_steps_21',
@@ -117,9 +117,9 @@ script = [
         "args": ['ACTION_660_shadow_off_9']
     },
     {
-        "identifier": 'ACTION_660_jump_to_subroutine_23',
-        "command": 'jump_to_subroutine',
-        "args": [0x78cb]
+        "identifier": 'ACTION_660_jmp_to_subroutine_23',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_660_set_700C_to_object_coord_25']
     },
     {
         "identifier": 'ACTION_660_jmp_24',

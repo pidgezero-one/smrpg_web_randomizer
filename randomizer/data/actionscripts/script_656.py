@@ -44,9 +44,9 @@ script = [
         "command": 'walk_1_step_northeast'
     },
     {
-        "identifier": 'ACTION_656_jump_to_subroutine_8',
-        "command": 'jump_to_subroutine',
-        "args": [0x7810]
+        "identifier": 'ACTION_656_jmp_to_subroutine_8',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_656_dec_short_29']
     },
     {
         "identifier": 'ACTION_656_jmp_if_var_equals_short_9',
@@ -56,7 +56,7 @@ script = [
     {
         "identifier": 'ACTION_656_jmp_if_random_above_66_10',
         "command": 'jmp_if_random_above_66',
-        "args": [0x77cc, 'ACTION_656_jmp_if_var_equals_short_12']
+        "args": ['ACTION_656_set_animation_speed_5', 'ACTION_656_jmp_if_var_equals_short_12']
     },
     {
         "identifier": 'ACTION_656_jmp_11',
@@ -83,9 +83,9 @@ script = [
         "command": 'walk_1_step_northeast'
     },
     {
-        "identifier": 'ACTION_656_jump_to_subroutine_16',
-        "command": 'jump_to_subroutine',
-        "args": [0x7810]
+        "identifier": 'ACTION_656_jmp_to_subroutine_16',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_656_dec_short_29']
     },
     {
         "identifier": 'ACTION_656_jmp_if_var_equals_short_17',
@@ -93,14 +93,14 @@ script = [
         "args": [0x703a, 0, 'ACTION_656_set_animation_speed_21']
     },
     {
-        "identifier": 'ACTION_656_jump_to_subroutine_18',
-        "command": 'jump_to_subroutine',
-        "args": [0x7813]
+        "identifier": 'ACTION_656_jmp_to_subroutine_18',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_656_dec_short_31']
     },
     {
         "identifier": 'ACTION_656_jmp_if_random_above_66_19',
         "command": 'jmp_if_random_above_66',
-        "args": [0x77e2, 'ACTION_656_set_animation_speed_5']
+        "args": ['ACTION_656_jmp_if_var_equals_short_12', 'ACTION_656_set_animation_speed_5']
     },
     {
         "identifier": 'ACTION_656_jmp_20',

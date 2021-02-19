@@ -36,7 +36,7 @@ script = [
     {
         "identifier": 'ACTION_824_jmp_if_random_above_66_6',
         "command": 'jmp_if_random_above_66',
-        "args": [0x9e71, 'ACTION_824_shift_southwest_pixels_12']
+        "args": ['ACTION_824_shift_southwest_pixels_9', 'ACTION_824_shift_southwest_pixels_12']
     },
     {
         "identifier": 'ACTION_824_pause_7',

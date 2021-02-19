@@ -198,7 +198,7 @@ script = [
     {
         "identifier": 'EVENT_1816_jmp_if_random_above_66_29',
         "command": 'jmp_if_random_above_66',
-        "args": [0x534b, 0x534b]
+        "args": ['EVENT_1816_run_dialog_duration_83', 'EVENT_1816_run_dialog_duration_83']
     },
     {
         "identifier": 'EVENT_1816_set_short_30',

@@ -7,17 +7,17 @@ script = [
     {
         "identifier": 'ACTION_123_jmp_if_random_above_128_0',
         "command": 'jmp_if_random_above_128',
-        "args": ['ACTION_123_jump_to_subroutine_4']
+        "args": ['ACTION_123_jmp_to_subroutine_4']
     },
     {
-        "identifier": 'ACTION_123_jump_to_subroutine_1',
-        "command": 'jump_to_subroutine',
-        "args": [0x194c]
+        "identifier": 'ACTION_123_jmp_to_subroutine_1',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_106_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_123_jump_to_subroutine_2',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_123_jmp_to_subroutine_2',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_123_jmp_3',
@@ -25,14 +25,14 @@ script = [
         "args": ['ACTION_123_jmp_if_random_above_128_0']
     },
     {
-        "identifier": 'ACTION_123_jump_to_subroutine_4',
-        "command": 'jump_to_subroutine',
-        "args": [0x193a]
+        "identifier": 'ACTION_123_jmp_to_subroutine_4',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_105_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_123_jump_to_subroutine_5',
-        "command": 'jump_to_subroutine',
-        "args": [0x195e]
+        "identifier": 'ACTION_123_jmp_to_subroutine_5',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_107_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_123_jmp_6',

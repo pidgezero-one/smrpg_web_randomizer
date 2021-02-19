@@ -61,7 +61,7 @@ script = [
     {
         "identifier": 'ACTION_20_jmp_if_random_above_66_11',
         "command": 'jmp_if_random_above_66',
-        "args": [0x0a0e, 'ACTION_20_transfer_xyzf_pixels_20']
+        "args": ['ACTION_20_transfer_xyzf_pixels_18', 'ACTION_20_transfer_xyzf_pixels_20']
     },
     {
         "identifier": 'ACTION_20_jmp_if_random_above_128_12',

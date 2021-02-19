@@ -879,7 +879,7 @@ script = [
     {
         "identifier": 'EVENT_621_jmp_if_random_above_66_91',
         "command": 'jmp_if_random_above_66',
-        "args": [0x7a1b, 0x7a27]
+        "args": ['EVENT_621_set_97', 'EVENT_621_set_102']
     },
     {
         "identifier": 'EVENT_621_add_coins_92',

@@ -366,7 +366,7 @@ script = [
     {
         "identifier": 'ACTION_57_jmp_if_random_above_66_74',
         "command": 'jmp_if_random_above_66',
-        "args": [0x11b5, 'ACTION_57_jump_to_height_79']
+        "args": ['ACTION_57_jump_to_height_79', 'ACTION_57_jump_to_height_79']
     },
     {
         "identifier": 'ACTION_57_jump_to_height_75',

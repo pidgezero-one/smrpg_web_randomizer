@@ -17,7 +17,7 @@ script = [
     {
         "identifier": 'ACTION_794_jmp_if_comparison_result_is_greater_or_equal_2',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['ACTION_794_jump_to_subroutine_9']
+        "args": ['ACTION_794_jmp_to_subroutine_9']
     },
     {
         "identifier": 'ACTION_794_mem_compare_address_3',
@@ -27,17 +27,17 @@ script = [
     {
         "identifier": 'ACTION_794_jmp_if_comparison_result_is_greater_or_equal_4',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['ACTION_794_jump_to_subroutine_13']
+        "args": ['ACTION_794_jmp_to_subroutine_13']
     },
     {
-        "identifier": 'ACTION_794_jump_to_subroutine_5',
-        "command": 'jump_to_subroutine',
-        "args": [0x97fe]
+        "identifier": 'ACTION_794_jmp_to_subroutine_5',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_794_set_animation_speed_17']
     },
     {
-        "identifier": 'ACTION_794_jump_to_subroutine_6',
-        "command": 'jump_to_subroutine',
-        "args": [0x9831]
+        "identifier": 'ACTION_794_jmp_to_subroutine_6',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_794_dec_short_42']
     },
     {
         "identifier": 'ACTION_794_jmp_if_var_equals_short_7',
@@ -50,14 +50,14 @@ script = [
         "args": ['ACTION_794_set_random_0']
     },
     {
-        "identifier": 'ACTION_794_jump_to_subroutine_9',
-        "command": 'jump_to_subroutine',
-        "args": [0x980a]
+        "identifier": 'ACTION_794_jmp_to_subroutine_9',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_794_set_animation_speed_25']
     },
     {
-        "identifier": 'ACTION_794_jump_to_subroutine_10',
-        "command": 'jump_to_subroutine',
-        "args": [0x9831]
+        "identifier": 'ACTION_794_jmp_to_subroutine_10',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_794_dec_short_42']
     },
     {
         "identifier": 'ACTION_794_jmp_if_var_equals_short_11',
@@ -70,14 +70,14 @@ script = [
         "args": ['ACTION_794_set_random_0']
     },
     {
-        "identifier": 'ACTION_794_jump_to_subroutine_13',
-        "command": 'jump_to_subroutine',
-        "args": [0x9804]
+        "identifier": 'ACTION_794_jmp_to_subroutine_13',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_794_set_animation_speed_21']
     },
     {
-        "identifier": 'ACTION_794_jump_to_subroutine_14',
-        "command": 'jump_to_subroutine',
-        "args": [0x9831]
+        "identifier": 'ACTION_794_jmp_to_subroutine_14',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_794_dec_short_42']
     },
     {
         "identifier": 'ACTION_794_jmp_if_var_equals_short_15',

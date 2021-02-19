@@ -10,24 +10,24 @@ script = [
         "args": [3]
     },
     {
-        "identifier": 'ACTION_134_jump_to_subroutine_1',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_134_jmp_to_subroutine_1',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_134_jump_to_subroutine_2',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_134_jmp_to_subroutine_2',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_134_jump_to_subroutine_3',
-        "command": 'jump_to_subroutine',
-        "args": [0x195e]
+        "identifier": 'ACTION_134_jmp_to_subroutine_3',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_107_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_134_jump_to_subroutine_4',
-        "command": 'jump_to_subroutine',
-        "args": [0x195e]
+        "identifier": 'ACTION_134_jmp_to_subroutine_4',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_107_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_134_clear_bit_5',
@@ -35,24 +35,24 @@ script = [
         "args": [0x7044, 5]
     },
     {
-        "identifier": 'ACTION_134_jump_to_subroutine_6',
-        "command": 'jump_to_subroutine',
-        "args": [0x194c]
+        "identifier": 'ACTION_134_jmp_to_subroutine_6',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_106_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_134_jump_to_subroutine_7',
-        "command": 'jump_to_subroutine',
-        "args": [0x194c]
+        "identifier": 'ACTION_134_jmp_to_subroutine_7',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_106_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_134_jump_to_subroutine_8',
-        "command": 'jump_to_subroutine',
-        "args": [0x193a]
+        "identifier": 'ACTION_134_jmp_to_subroutine_8',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_105_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_134_jump_to_subroutine_9',
-        "command": 'jump_to_subroutine',
-        "args": [0x193a]
+        "identifier": 'ACTION_134_jmp_to_subroutine_9',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_105_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_134_set_bit_10',

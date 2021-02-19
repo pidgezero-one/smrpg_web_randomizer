@@ -9,14 +9,14 @@ script = [
         "command": 'visibility_on'
     },
     {
-        "identifier": 'ACTION_136_jump_to_subroutine_1',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_136_jmp_to_subroutine_1',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_136_jump_to_subroutine_2',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_136_jmp_to_subroutine_2',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_136_set_solidity_bits_3',
@@ -66,14 +66,14 @@ script = [
         "args": [[_0x0AFlags.CANT_PASS_WALLS]]
     },
     {
-        "identifier": 'ACTION_136_jump_to_subroutine_13',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_136_jmp_to_subroutine_13',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_136_jump_to_subroutine_14',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_136_jmp_to_subroutine_14',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_136_pause_15',

@@ -15,9 +15,9 @@ script = [
         "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
     },
     {
-        "identifier": 'ACTION_928_jump_to_subroutine_2',
-        "command": 'jump_to_subroutine',
-        "args": [0xabb7]
+        "identifier": 'ACTION_928_jmp_to_subroutine_2',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_928_face_northeast_11']
     },
     {
         "identifier": 'ACTION_928_shift_northwest_steps_3',
@@ -25,9 +25,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_928_jump_to_subroutine_4',
-        "command": 'jump_to_subroutine',
-        "args": [0xabb7]
+        "identifier": 'ACTION_928_jmp_to_subroutine_4',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_928_face_northeast_11']
     },
     {
         "identifier": 'ACTION_928_shift_northwest_steps_5',
@@ -35,9 +35,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_928_jump_to_subroutine_6',
-        "command": 'jump_to_subroutine',
-        "args": [0xabb7]
+        "identifier": 'ACTION_928_jmp_to_subroutine_6',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_928_face_northeast_11']
     },
     {
         "identifier": 'ACTION_928_shift_southeast_steps_7',
@@ -45,9 +45,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_928_jump_to_subroutine_8',
-        "command": 'jump_to_subroutine',
-        "args": [0xabb7]
+        "identifier": 'ACTION_928_jmp_to_subroutine_8',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_928_face_northeast_11']
     },
     {
         "identifier": 'ACTION_928_shift_southeast_steps_9',

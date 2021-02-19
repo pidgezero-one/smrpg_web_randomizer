@@ -1027,7 +1027,7 @@ class ObjectSequenceScript:
         return self
 
     # 0xD3
-    def jump_to_subroutine(self, id):
+    def jmp_to_subroutine(self, id):
         self.append_byte(0xD3)
         self.append_short(id)
         return self

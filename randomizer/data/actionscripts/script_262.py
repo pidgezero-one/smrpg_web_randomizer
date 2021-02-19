@@ -5,9 +5,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_262_jump_to_subroutine_0',
-        "command": 'jump_to_subroutine',
-        "args": [0x48e5]
+        "identifier": 'ACTION_262_jmp_to_subroutine_0',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_395_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_262_shadow_off_1',

@@ -25,7 +25,7 @@ script = [
     {
         "identifier": 'ACTION_307_jmp_if_700C_equals_short_4',
         "command": 'jmp_if_700C_equals_short',
-        "args": [25, 'ACTION_307_jump_to_subroutine_6']
+        "args": [25, 'ACTION_307_jmp_to_subroutine_6']
     },
     {
         "identifier": 'ACTION_307_pause_5',
@@ -33,9 +33,9 @@ script = [
         "args": [80]
     },
     {
-        "identifier": 'ACTION_307_jump_to_subroutine_6',
-        "command": 'jump_to_subroutine',
-        "args": [0x3885]
+        "identifier": 'ACTION_307_jmp_to_subroutine_6',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_306_visibility_on_9']
     },
     {
         "identifier": 'ACTION_307_transfer_xyzf_steps_7',
@@ -50,6 +50,6 @@ script = [
     {
         "identifier": 'ACTION_307_jmp_9',
         "command": 'jmp',
-        "args": ['ACTION_307_jump_to_subroutine_6']
+        "args": ['ACTION_307_jmp_to_subroutine_6']
     }
 ]

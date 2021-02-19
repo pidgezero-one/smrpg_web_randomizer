@@ -5,9 +5,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_672_jump_to_subroutine_0',
-        "command": 'jump_to_subroutine',
-        "args": [0x7b75]
+        "identifier": 'ACTION_672_jmp_to_subroutine_0',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_672_visibility_off_10']
     },
     {
         "identifier": 'ACTION_672_shift_southwest_steps_1',
@@ -43,9 +43,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_672_jump_to_subroutine_8',
-        "command": 'jump_to_subroutine',
-        "args": [0x7b92]
+        "identifier": 'ACTION_672_jmp_to_subroutine_8',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_672_shift_northeast_steps_26']
     },
     {
         "identifier": 'ACTION_672_ret_9',

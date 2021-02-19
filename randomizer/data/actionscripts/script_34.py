@@ -29,9 +29,9 @@ script = [
         "command": 'face_southwest'
     },
     {
-        "identifier": 'ACTION_34_jump_to_subroutine_5',
-        "command": 'jump_to_subroutine',
-        "args": [0x0cc4]
+        "identifier": 'ACTION_34_jmp_to_subroutine_5',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_34_clear_solidity_bits_48']
     },
     {
         "identifier": 'ACTION_34_set_priority_6',
@@ -63,9 +63,9 @@ script = [
         "command": 'face_northeast'
     },
     {
-        "identifier": 'ACTION_34_jump_to_subroutine_12',
-        "command": 'jump_to_subroutine',
-        "args": [0x0cc4]
+        "identifier": 'ACTION_34_jmp_to_subroutine_12',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_34_clear_solidity_bits_48']
     },
     {
         "identifier": 'ACTION_34_walk_1_step_northeast_13',
@@ -103,9 +103,9 @@ script = [
         "command": 'face_northeast'
     },
     {
-        "identifier": 'ACTION_34_jump_to_subroutine_21',
-        "command": 'jump_to_subroutine',
-        "args": [0x0cc4]
+        "identifier": 'ACTION_34_jmp_to_subroutine_21',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_34_clear_solidity_bits_48']
     },
     {
         "identifier": 'ACTION_34_walk_1_step_northeast_22',
@@ -143,9 +143,9 @@ script = [
         "command": 'face_northeast'
     },
     {
-        "identifier": 'ACTION_34_jump_to_subroutine_30',
-        "command": 'jump_to_subroutine',
-        "args": [0x0cc4]
+        "identifier": 'ACTION_34_jmp_to_subroutine_30',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_34_clear_solidity_bits_48']
     },
     {
         "identifier": 'ACTION_34_walk_1_step_northeast_31',

@@ -101,7 +101,7 @@ script = [
     {
         "identifier": 'EVENT_603_jmp_if_random_above_66_19',
         "command": 'jmp_if_random_above_66',
-        "args": [0x7175, 0x7180]
+        "args": ['EVENT_603_set_24', 'EVENT_603_set_28']
     },
     {
         "identifier": 'EVENT_603_set_20',

@@ -103,7 +103,7 @@ script = [
     {
         "identifier": 'EVENT_548_jmp_if_random_above_66_19',
         "command": 'jmp_if_random_above_66',
-        "args": [0x5f56, 0x5f6e]
+        "args": ['EVENT_548_jmp_if_random_above_66_23', 'EVENT_548_jmp_if_random_above_66_31']
     },
     {
         "identifier": 'EVENT_548_set_bit_20',
@@ -122,7 +122,7 @@ script = [
     {
         "identifier": 'EVENT_548_jmp_if_random_above_66_23',
         "command": 'jmp_if_random_above_66',
-        "args": [0x5f62, 0x5f4a]
+        "args": ['EVENT_548_jmp_if_random_above_66_27', 'EVENT_548_jmp_if_random_above_66_19']
     },
     {
         "identifier": 'EVENT_548_set_bit_24',
@@ -141,7 +141,7 @@ script = [
     {
         "identifier": 'EVENT_548_jmp_if_random_above_66_27',
         "command": 'jmp_if_random_above_66',
-        "args": [0x5f56, 0x5f6e]
+        "args": ['EVENT_548_jmp_if_random_above_66_23', 'EVENT_548_jmp_if_random_above_66_31']
     },
     {
         "identifier": 'EVENT_548_set_bit_28',
@@ -160,7 +160,7 @@ script = [
     {
         "identifier": 'EVENT_548_jmp_if_random_above_66_31',
         "command": 'jmp_if_random_above_66',
-        "args": [0x5f62, 0x5f4a]
+        "args": ['EVENT_548_jmp_if_random_above_66_27', 'EVENT_548_jmp_if_random_above_66_19']
     },
     {
         "identifier": 'EVENT_548_set_bit_32',

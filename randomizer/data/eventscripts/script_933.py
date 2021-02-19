@@ -294,7 +294,7 @@ script = [
     {
         "identifier": 'EVENT_933_jmp_if_random_above_66_51',
         "command": 'jmp_if_random_above_66',
-        "args": [0xacde, 0xacea]
+        "args": ['EVENT_933_set_56', 'EVENT_933_set_60']
     },
     {
         "identifier": 'EVENT_933_set_52',

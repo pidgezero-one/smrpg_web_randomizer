@@ -262,7 +262,7 @@ script = [
     {
         "identifier": 'ACTION_651_jmp_if_random_above_66_54',
         "command": 'jmp_if_random_above_66',
-        "args": [0x7759, 'ACTION_651_turn_clockwise_45_degrees_n_times_59']
+        "args": ['ACTION_651_turn_clockwise_45_degrees_n_times_57', 'ACTION_651_turn_clockwise_45_degrees_n_times_59']
     },
     {
         "identifier": 'ACTION_651_turn_clockwise_45_degrees_n_times_55',

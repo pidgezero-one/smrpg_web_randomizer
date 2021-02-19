@@ -5,9 +5,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_423_jump_to_subroutine_0',
-        "command": 'jump_to_subroutine',
-        "args": [0x4ee7]
+        "identifier": 'ACTION_423_jmp_to_subroutine_0',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_420_set_sprite_sequence_2']
     },
     {
         "identifier": 'ACTION_423_jmp_1',

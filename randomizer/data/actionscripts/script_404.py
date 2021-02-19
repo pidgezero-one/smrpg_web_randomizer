@@ -16,7 +16,7 @@ script = [
     {
         "identifier": 'ACTION_404_jmp_if_random_above_66_2',
         "command": 'jmp_if_random_above_66',
-        "args": [0x4989, 'ACTION_404_jmp_if_random_above_128_10']
+        "args": ['ACTION_404_jmp_if_random_above_128_10', 'ACTION_404_jmp_if_random_above_128_10']
     },
     {
         "identifier": 'ACTION_404_face_mario_3',

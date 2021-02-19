@@ -84,19 +84,19 @@ script = [
         "args": [[_0x0AFlags.CANT_PASS_WALLS]]
     },
     {
-        "identifier": 'ACTION_133_jump_to_subroutine_17',
-        "command": 'jump_to_subroutine',
-        "args": [0x193a]
+        "identifier": 'ACTION_133_jmp_to_subroutine_17',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_105_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_133_jump_to_subroutine_18',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_133_jmp_to_subroutine_18',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_133_jump_to_subroutine_19',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_133_jmp_to_subroutine_19',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_133_set_solidity_bits_20',
@@ -146,14 +146,14 @@ script = [
         "args": [[_0x0AFlags.CANT_PASS_WALLS]]
     },
     {
-        "identifier": 'ACTION_133_jump_to_subroutine_30',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_133_jmp_to_subroutine_30',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_133_jump_to_subroutine_31',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_133_jmp_to_subroutine_31',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_133_pause_32',

@@ -75,9 +75,9 @@ script = [
         "args": [0x7014, 0x0020]
     },
     {
-        "identifier": 'ACTION_729_jump_to_subroutine_15',
-        "command": 'jump_to_subroutine',
-        "args": [0x87fb]
+        "identifier": 'ACTION_729_jmp_to_subroutine_15',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_729_pause_42']
     },
     {
         "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_16',
@@ -100,9 +100,9 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'ACTION_729_jump_to_subroutine_20',
-        "command": 'jump_to_subroutine',
-        "args": [0x87fb]
+        "identifier": 'ACTION_729_jmp_to_subroutine_20',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_729_pause_42']
     },
     {
         "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_21',
@@ -125,9 +125,9 @@ script = [
         "args": [11]
     },
     {
-        "identifier": 'ACTION_729_jump_to_subroutine_25',
-        "command": 'jump_to_subroutine',
-        "args": [0x87fb]
+        "identifier": 'ACTION_729_jmp_to_subroutine_25',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_729_pause_42']
     },
     {
         "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_26',
@@ -150,9 +150,9 @@ script = [
         "args": [9]
     },
     {
-        "identifier": 'ACTION_729_jump_to_subroutine_30',
-        "command": 'jump_to_subroutine',
-        "args": [0x87fb]
+        "identifier": 'ACTION_729_jmp_to_subroutine_30',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_729_pause_42']
     },
     {
         "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_31',
@@ -180,9 +180,9 @@ script = [
         "args": [11]
     },
     {
-        "identifier": 'ACTION_729_jump_to_subroutine_36',
-        "command": 'jump_to_subroutine',
-        "args": [0x87fb]
+        "identifier": 'ACTION_729_jmp_to_subroutine_36',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_729_pause_42']
     },
     {
         "identifier": 'ACTION_729_create_packet_at_7010_coords_jmp_if_null_37',

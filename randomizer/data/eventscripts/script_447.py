@@ -248,7 +248,7 @@ script = [
     {
         "identifier": 'EVENT_447_jmp_if_random_above_66_48',
         "command": 'jmp_if_random_above_66',
-        "args": [0x402c, 0x40cf]
+        "args": ['EVENT_447_jmp_if_bit_clear_0', 'EVENT_447_jmp_if_random_above_128_51']
     },
     {
         "identifier": 'EVENT_447_pause_49',

@@ -199,7 +199,7 @@ script = [
     {
         "identifier": 'ACTION_844_jmp_if_random_above_66_40',
         "command": 'jmp_if_random_above_66',
-        "args": [0xa425, 'ACTION_844_jmp_if_object_not_in_level_60']
+        "args": ['ACTION_844_jmp_if_object_not_in_level_50', 'ACTION_844_jmp_if_object_not_in_level_60']
     },
     {
         "identifier": 'ACTION_844_jmp_if_object_not_in_level_41',

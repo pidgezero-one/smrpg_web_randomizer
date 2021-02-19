@@ -112,7 +112,7 @@ script = [
     {
         "identifier": 'ACTION_665_jmp_if_random_above_66_22',
         "command": 'jmp_if_random_above_66',
-        "args": [0x797c, 'ACTION_665_pause_4']
+        "args": ['ACTION_665_pause_3', 'ACTION_665_pause_4']
     },
     {
         "identifier": 'ACTION_665_jmp_23',

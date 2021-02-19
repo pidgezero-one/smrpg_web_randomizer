@@ -53,7 +53,7 @@ script = [
     {
         "identifier": 'EVENT_2634_jmp_if_random_above_66_9',
         "command": 'jmp_if_random_above_66',
-        "args": [0xf2a0, 0xf2a5]
+        "args": ['EVENT_2634_set_bit_11', 'EVENT_2634_set_bit_13']
     },
     {
         "identifier": 'EVENT_2634_jmp_10',
@@ -78,7 +78,7 @@ script = [
     {
         "identifier": 'EVENT_2634_jmp_if_random_above_66_14',
         "command": 'jmp_if_random_above_66',
-        "args": [0xf2af, 0xf2b4]
+        "args": ['EVENT_2634_set_bit_16', 'EVENT_2634_set_bit_18']
     },
     {
         "identifier": 'EVENT_2634_jmp_15',
@@ -103,7 +103,7 @@ script = [
     {
         "identifier": 'EVENT_2634_jmp_if_random_above_66_19',
         "command": 'jmp_if_random_above_66',
-        "args": [0xf2be, 0xf2c3]
+        "args": ['EVENT_2634_set_bit_21', 'EVENT_2634_set_bit_23']
     },
     {
         "identifier": 'EVENT_2634_jmp_20',

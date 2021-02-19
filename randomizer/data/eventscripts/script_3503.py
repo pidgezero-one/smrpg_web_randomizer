@@ -67,7 +67,7 @@ script = [
     {
         "identifier": 'EVENT_3503_jmp_if_random_above_66_12',
         "command": 'jmp_if_random_above_66',
-        "args": [0x7087, 0x7092]
+        "args": ['EVENT_3503_set_action_script_sync_16', 'EVENT_3503_set_action_script_sync_19']
     },
     {
         "identifier": 'EVENT_3503_set_action_script_sync_13',

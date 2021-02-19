@@ -10,9 +10,9 @@ script = [
         "args": [32]
     },
     {
-        "identifier": 'ACTION_675_jump_to_subroutine_1',
-        "command": 'jump_to_subroutine',
-        "args": [0x7b75]
+        "identifier": 'ACTION_675_jmp_to_subroutine_1',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_672_visibility_off_10']
     },
     {
         "identifier": 'ACTION_675_walk_1_step_southwest_2',
@@ -32,9 +32,9 @@ script = [
         "command": 'walk_1_step_northeast'
     },
     {
-        "identifier": 'ACTION_675_jump_to_subroutine_6',
-        "command": 'jump_to_subroutine',
-        "args": [0x7b92]
+        "identifier": 'ACTION_675_jmp_to_subroutine_6',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_672_shift_northeast_steps_26']
     },
     {
         "identifier": 'ACTION_675_ret_7',

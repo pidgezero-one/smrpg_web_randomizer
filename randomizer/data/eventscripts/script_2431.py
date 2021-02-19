@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'EVENT_2431_jmp_if_random_above_66_4',
         "command": 'jmp_if_random_above_66',
-        "args": [0xc0a6, 0xc0a6]
+        "args": ['EVENT_2431_jmp_if_random_above_66_7', 'EVENT_2431_jmp_if_random_above_66_7']
     },
     {
         "identifier": 'EVENT_2431_summon_to_current_level_5',
@@ -43,7 +43,7 @@ script = [
     {
         "identifier": 'EVENT_2431_jmp_if_random_above_66_7',
         "command": 'jmp_if_random_above_66',
-        "args": [0xc0b1, 0xc0b1]
+        "args": ['EVENT_2431_jmp_if_random_above_66_10', 'EVENT_2431_jmp_if_random_above_66_10']
     },
     {
         "identifier": 'EVENT_2431_summon_to_current_level_8',
@@ -58,7 +58,7 @@ script = [
     {
         "identifier": 'EVENT_2431_jmp_if_random_above_66_10',
         "command": 'jmp_if_random_above_66',
-        "args": [0xc0bc, 0xc0bc]
+        "args": ['EVENT_2431_jmp_if_random_above_128_13', 'EVENT_2431_jmp_if_random_above_128_13']
     },
     {
         "identifier": 'EVENT_2431_summon_to_current_level_11',

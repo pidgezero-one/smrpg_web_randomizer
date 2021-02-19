@@ -21,7 +21,7 @@ script = [
     {
         "identifier": 'ACTION_717_jmp_if_random_above_66_3',
         "command": 'jmp_if_random_above_66',
-        "args": [0x852a, 'ACTION_717_pause_9']
+        "args": ['ACTION_717_pause_6', 'ACTION_717_pause_9']
     },
     {
         "identifier": 'ACTION_717_pause_4',

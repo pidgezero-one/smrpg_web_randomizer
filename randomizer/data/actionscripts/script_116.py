@@ -7,17 +7,17 @@ script = [
     {
         "identifier": 'ACTION_116_jmp_if_random_above_66_0',
         "command": 'jmp_if_random_above_66',
-        "args": [0x1b11, 'ACTION_116_jump_to_subroutine_7']
+        "args": ['ACTION_116_jmp_to_subroutine_4', 'ACTION_116_jmp_to_subroutine_7']
     },
     {
-        "identifier": 'ACTION_116_jump_to_subroutine_1',
-        "command": 'jump_to_subroutine',
-        "args": [0x194c]
+        "identifier": 'ACTION_116_jmp_to_subroutine_1',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_106_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_116_jump_to_subroutine_2',
-        "command": 'jump_to_subroutine',
-        "args": [0x1928]
+        "identifier": 'ACTION_116_jmp_to_subroutine_2',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_104_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_116_jmp_3',
@@ -25,14 +25,14 @@ script = [
         "args": ['ACTION_116_jmp_if_random_above_66_0']
     },
     {
-        "identifier": 'ACTION_116_jump_to_subroutine_4',
-        "command": 'jump_to_subroutine',
-        "args": [0x195e]
+        "identifier": 'ACTION_116_jmp_to_subroutine_4',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_107_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_116_jump_to_subroutine_5',
-        "command": 'jump_to_subroutine',
-        "args": [0x193a]
+        "identifier": 'ACTION_116_jmp_to_subroutine_5',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_105_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_116_jmp_6',
@@ -40,14 +40,14 @@ script = [
         "args": ['ACTION_116_jmp_if_random_above_66_0']
     },
     {
-        "identifier": 'ACTION_116_jump_to_subroutine_7',
-        "command": 'jump_to_subroutine',
-        "args": [0x193a]
+        "identifier": 'ACTION_116_jmp_to_subroutine_7',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_105_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_116_jump_to_subroutine_8',
-        "command": 'jump_to_subroutine',
-        "args": [0x195e]
+        "identifier": 'ACTION_116_jmp_to_subroutine_8',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_107_set_animation_speed_0']
     },
     {
         "identifier": 'ACTION_116_jmp_9',

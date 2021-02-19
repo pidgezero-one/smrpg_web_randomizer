@@ -10,9 +10,9 @@ script = [
         "args": [64]
     },
     {
-        "identifier": 'ACTION_674_jump_to_subroutine_1',
-        "command": 'jump_to_subroutine',
-        "args": [0x7b75]
+        "identifier": 'ACTION_674_jmp_to_subroutine_1',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_672_visibility_off_10']
     },
     {
         "identifier": 'ACTION_674_face_northwest_2',
@@ -67,9 +67,9 @@ script = [
         "args": [30]
     },
     {
-        "identifier": 'ACTION_674_jump_to_subroutine_13',
-        "command": 'jump_to_subroutine',
-        "args": [0x7b92]
+        "identifier": 'ACTION_674_jmp_to_subroutine_13',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_672_shift_northeast_steps_26']
     },
     {
         "identifier": 'ACTION_674_pause_14',

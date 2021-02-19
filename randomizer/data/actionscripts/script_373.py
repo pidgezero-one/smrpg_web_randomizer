@@ -47,17 +47,17 @@ script = [
     {
         "identifier": 'ACTION_373_jmp_if_comparison_result_is_greater_or_equal_8',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['ACTION_373_jump_to_subroutine_17']
+        "args": ['ACTION_373_jmp_to_subroutine_17']
     },
     {
         "identifier": 'ACTION_373_jmp_if_random_above_128_9',
         "command": 'jmp_if_random_above_128',
-        "args": ['ACTION_373_jump_to_subroutine_15']
+        "args": ['ACTION_373_jmp_to_subroutine_15']
     },
     {
-        "identifier": 'ACTION_373_jump_to_subroutine_10',
-        "command": 'jump_to_subroutine',
-        "args": [0x44d1]
+        "identifier": 'ACTION_373_jmp_to_subroutine_10',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_373_jmp_if_random_above_128_66']
     },
     {
         "identifier": 'ACTION_373_jmp_11',
@@ -67,12 +67,12 @@ script = [
     {
         "identifier": 'ACTION_373_jmp_if_random_above_66_12',
         "command": 'jmp_if_random_above_66',
-        "args": [0x4452, 'ACTION_373_jump_to_subroutine_17']
+        "args": ['ACTION_373_jmp_to_subroutine_15', 'ACTION_373_jmp_to_subroutine_17']
     },
     {
-        "identifier": 'ACTION_373_jump_to_subroutine_13',
-        "command": 'jump_to_subroutine',
-        "args": [0x451e]
+        "identifier": 'ACTION_373_jmp_to_subroutine_13',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_373_jmp_if_bit_set_97']
     },
     {
         "identifier": 'ACTION_373_jmp_14',
@@ -80,9 +80,9 @@ script = [
         "args": ['ACTION_373_jmp_if_bit_set_4']
     },
     {
-        "identifier": 'ACTION_373_jump_to_subroutine_15',
-        "command": 'jump_to_subroutine',
-        "args": [0x445e]
+        "identifier": 'ACTION_373_jmp_to_subroutine_15',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_373_jmp_if_var_equals_short_19']
     },
     {
         "identifier": 'ACTION_373_jmp_16',
@@ -90,9 +90,9 @@ script = [
         "args": ['ACTION_373_jmp_if_bit_set_4']
     },
     {
-        "identifier": 'ACTION_373_jump_to_subroutine_17',
-        "command": 'jump_to_subroutine',
-        "args": [0x44d1]
+        "identifier": 'ACTION_373_jmp_to_subroutine_17',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_373_jmp_if_random_above_128_66']
     },
     {
         "identifier": 'ACTION_373_jmp_18',

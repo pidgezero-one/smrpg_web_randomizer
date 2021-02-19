@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_2',
         "command": 'jmp_if_random_above_66',
-        "args": [0xbeb2, 0xbebb]
+        "args": ['EVENT_2427_summon_to_level_6', 'EVENT_2427_remove_from_level_9']
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_3',
@@ -63,7 +63,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_11',
         "command": 'jmp_if_random_above_66',
-        "args": [0xbecf, 0xbed8]
+        "args": ['EVENT_2427_summon_to_level_15', 'EVENT_2427_remove_from_level_18']
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_12',
@@ -108,7 +108,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_20',
         "command": 'jmp_if_random_above_66',
-        "args": [0xbeec, 0xbef5]
+        "args": ['EVENT_2427_summon_to_level_24', 'EVENT_2427_remove_from_level_27']
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_21',
@@ -153,7 +153,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_29',
         "command": 'jmp_if_random_above_66',
-        "args": [0xbf09, 0xbf12]
+        "args": ['EVENT_2427_summon_to_level_33', 'EVENT_2427_summon_to_level_36']
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_30',
@@ -198,7 +198,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_38',
         "command": 'jmp_if_random_above_66',
-        "args": [0xbf26, 0xbf2f]
+        "args": ['EVENT_2427_summon_to_level_42', 'EVENT_2427_summon_to_level_45']
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_39',
@@ -243,7 +243,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_47',
         "command": 'jmp_if_random_above_66',
-        "args": [0xbf43, 0xbf4c]
+        "args": ['EVENT_2427_summon_to_level_51', 'EVENT_2427_summon_to_level_54']
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_48',
@@ -288,7 +288,7 @@ script = [
     {
         "identifier": 'EVENT_2427_jmp_if_random_above_66_56',
         "command": 'jmp_if_random_above_66',
-        "args": [0xbf5d, 0xbf5d]
+        "args": ['EVENT_2427_remove_from_level_59', 'EVENT_2427_remove_from_level_59']
     },
     {
         "identifier": 'EVENT_2427_summon_to_level_57',

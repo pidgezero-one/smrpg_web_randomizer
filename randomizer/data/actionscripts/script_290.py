@@ -27,12 +27,12 @@ script = [
     {
         "identifier": 'ACTION_290_jmp_if_random_above_66_4',
         "command": 'jmp_if_random_above_66',
-        "args": [0x350d, 'ACTION_290_set_priority_6']
+        "args": ['ACTION_290_set_priority_6', 'ACTION_290_set_priority_6']
     },
     {
-        "identifier": 'ACTION_290_jump_to_subroutine_5',
-        "command": 'jump_to_subroutine',
-        "args": [0x3586]
+        "identifier": 'ACTION_290_jmp_to_subroutine_5',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_293_object_memory_modify_bits_0']
     },
     {
         "identifier": 'ACTION_290_set_priority_6',
@@ -47,12 +47,12 @@ script = [
     {
         "identifier": 'ACTION_290_jmp_if_random_above_66_8',
         "command": 'jmp_if_random_above_66',
-        "args": [0x351a, 'ACTION_290_set_priority_10']
+        "args": ['ACTION_290_set_priority_10', 'ACTION_290_set_priority_10']
     },
     {
-        "identifier": 'ACTION_290_jump_to_subroutine_9',
-        "command": 'jump_to_subroutine',
-        "args": [0x3586]
+        "identifier": 'ACTION_290_jmp_to_subroutine_9',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_293_object_memory_modify_bits_0']
     },
     {
         "identifier": 'ACTION_290_set_priority_10',
@@ -67,12 +67,12 @@ script = [
     {
         "identifier": 'ACTION_290_jmp_if_random_above_66_12',
         "command": 'jmp_if_random_above_66',
-        "args": [0x3527, 'ACTION_290_set_priority_14']
+        "args": ['ACTION_290_set_priority_14', 'ACTION_290_set_priority_14']
     },
     {
-        "identifier": 'ACTION_290_jump_to_subroutine_13',
-        "command": 'jump_to_subroutine',
-        "args": [0x3586]
+        "identifier": 'ACTION_290_jmp_to_subroutine_13',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_293_object_memory_modify_bits_0']
     },
     {
         "identifier": 'ACTION_290_set_priority_14',
@@ -87,12 +87,12 @@ script = [
     {
         "identifier": 'ACTION_290_jmp_if_random_above_66_16',
         "command": 'jmp_if_random_above_66',
-        "args": [0x34fc, 'ACTION_290_set_animation_speed_0']
+        "args": ['ACTION_290_set_animation_speed_0', 'ACTION_290_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_290_jump_to_subroutine_17',
-        "command": 'jump_to_subroutine',
-        "args": [0x3586]
+        "identifier": 'ACTION_290_jmp_to_subroutine_17',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_293_object_memory_modify_bits_0']
     },
     {
         "identifier": 'ACTION_290_jmp_18',

@@ -243,7 +243,7 @@ script = [
     {
         "identifier": 'EVENT_465_jmp_if_random_above_66_47',
         "command": 'jmp_if_random_above_66',
-        "args": [0x44f0, 0x4532]
+        "args": ['EVENT_465_set_short_60', 'EVENT_465_set_short_77']
     },
     {
         "identifier": 'EVENT_465_jmp_if_random_above_128_48',

@@ -14,9 +14,9 @@ script = [
         "args": [SequenceSpeeds.VERY_SLOW, [_0x10Flags.SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_926_jump_to_subroutine_2',
-        "command": 'jump_to_subroutine',
-        "args": [0x3801]
+        "identifier": 'ACTION_926_jmp_to_subroutine_2',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_304_visibility_on_21']
     },
     {
         "identifier": 'ACTION_926_transfer_xyzf_steps_3',
@@ -31,6 +31,6 @@ script = [
     {
         "identifier": 'ACTION_926_jmp_5',
         "command": 'jmp',
-        "args": ['ACTION_926_jump_to_subroutine_2']
+        "args": ['ACTION_926_jmp_to_subroutine_2']
     }
 ]

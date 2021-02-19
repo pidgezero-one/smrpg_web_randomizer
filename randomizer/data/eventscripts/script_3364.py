@@ -109,7 +109,7 @@ script = [
     {
         "identifier": 'EVENT_3364_jmp_if_random_above_66_14',
         "command": 'jmp_if_random_above_66',
-        "args": [0x574a, 0x5750]
+        "args": ['EVENT_3364_db_17', 'EVENT_3364_db_19']
     },
     {
         "identifier": 'EVENT_3364_db_15',
@@ -144,7 +144,7 @@ script = [
     {
         "identifier": 'EVENT_3364_jmp_if_random_above_66_21',
         "command": 'jmp_if_random_above_66',
-        "args": [0x5761, 0x5767]
+        "args": ['EVENT_3364_db_24', 'EVENT_3364_db_26']
     },
     {
         "identifier": 'EVENT_3364_db_22',

@@ -27,12 +27,12 @@ script = [
     {
         "identifier": 'ACTION_292_jmp_if_random_above_66_4',
         "command": 'jmp_if_random_above_66',
-        "args": [0x3537, 'ACTION_291_set_animation_speed_0']
+        "args": ['ACTION_291_set_animation_speed_0', 'ACTION_291_set_animation_speed_0']
     },
     {
-        "identifier": 'ACTION_292_jump_to_subroutine_5',
-        "command": 'jump_to_subroutine',
-        "args": [0x3586]
+        "identifier": 'ACTION_292_jmp_to_subroutine_5',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_293_object_memory_modify_bits_0']
     },
     {
         "identifier": 'ACTION_292_jmp_6',

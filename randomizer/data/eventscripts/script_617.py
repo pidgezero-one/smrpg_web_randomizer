@@ -53,7 +53,7 @@ script = [
     {
         "identifier": 'EVENT_617_jmp_if_random_above_66_6',
         "command": 'jmp_if_random_above_66',
-        "args": [0x774a, 0x77a7]
+        "args": ['EVENT_617_action_queue_sync_11', 'EVENT_617_action_queue_async_17']
     },
     {
         "identifier": 'EVENT_617_action_queue_async_7',

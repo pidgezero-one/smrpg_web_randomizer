@@ -36,7 +36,7 @@ script = [
     {
         "identifier": 'ACTION_549_jmp_if_random_above_66_6',
         "command": 'jmp_if_random_above_66',
-        "args": [0x6794, 'ACTION_549_face_mario_10']
+        "args": ['ACTION_549_face_mario_10', 'ACTION_549_face_mario_10']
     },
     {
         "identifier": 'ACTION_549_turn_random_direction_7',

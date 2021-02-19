@@ -274,7 +274,7 @@ script = [
     {
         "identifier": 'ACTION_780_jmp_if_random_above_66_56',
         "command": 'jmp_if_random_above_66',
-        "args": [0x94e2, 'ACTION_780_turn_clockwise_45_degrees_n_times_63']
+        "args": ['ACTION_780_turn_clockwise_45_degrees_n_times_60', 'ACTION_780_turn_clockwise_45_degrees_n_times_63']
     },
     {
         "identifier": 'ACTION_780_turn_clockwise_45_degrees_n_times_57',
@@ -352,7 +352,7 @@ script = [
     {
         "identifier": 'ACTION_780_jmp_if_random_above_66_72',
         "command": 'jmp_if_random_above_66',
-        "args": [0x9504, 'ACTION_780_turn_clockwise_45_degrees_n_times_77']
+        "args": ['ACTION_780_turn_clockwise_45_degrees_n_times_75', 'ACTION_780_turn_clockwise_45_degrees_n_times_77']
     },
     {
         "identifier": 'ACTION_780_turn_clockwise_45_degrees_n_times_73',
