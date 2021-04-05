@@ -6,52 +6,19 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1134_run_dialog_9',
+        "command": 'run_dialog',
+        "args": [2831, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
         "identifier": 'EVENT_1134_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x706f, 4, 'EVENT_1134_run_dialog_9']
-    },
-    {
-        "identifier": 'EVENT_1134_jmp_if_bit_set_1',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7054, 7, 'EVENT_1134_run_dialog_7']
-    },
-    {
-        "identifier": 'EVENT_1134_run_dialog_2',
-        "command": 'run_dialog',
-        "args": [2840, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1134_set_bit_3',
-        "command": 'set_bit',
-        "args": [0x7054, 7]
-    },
-    {
-        "identifier": 'EVENT_1134_set_bit_4',
-        "command": 'set_bit',
-        "args": [0x706f, 3]
-    },
-    {
-        "identifier": 'EVENT_1134_set_bit_5',
-        "command": 'set_bit',
-        "args": [0x7067, 4]
-    },
-    {
-        "identifier": 'EVENT_1134_ret_6',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1134_run_dialog_7',
-        "command": 'run_dialog',
-        "args": [2846, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1134_ret_8',
-        "command": 'ret'
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7067, 5, 'EVENT_1134_ret_10']
     },
     {
         "identifier": 'EVENT_1134_run_dialog_9',
         "command": 'run_dialog',
-        "args": [2831, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": [2840, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1134_ret_10',

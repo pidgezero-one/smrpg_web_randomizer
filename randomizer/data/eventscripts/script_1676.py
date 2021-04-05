@@ -10,47 +10,6 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_1676_jmp_if_object_trigger_disabled_1',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_6, Rooms._270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, 'EVENT_1676_run_event_as_subroutine_3']
-    },
-    {
-        "identifier": 'EVENT_1676_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1676_action_queue_sync_2_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_1676_run_event_as_subroutine_3',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_1676_jmp_if_bit_clear_4',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_1676_clear_bit_7']
-    },
-    {
-        "identifier": 'EVENT_1676_jmp_if_object_trigger_disabled_5',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_6, Rooms._270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, 'EVENT_1676_clear_bit_7']
-    },
-    {
-        "identifier": 'EVENT_1676_play_sound_6',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_1676_clear_bit_7',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
         "identifier": 'EVENT_1676_set_8',
         "command": 'set',
         "args": [0x70df, 37]

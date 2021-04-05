@@ -256,22 +256,6 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_389_ret_26',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_389_ret_27',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_389_ret_28',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_389_ret_29',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_389_action_queue_sync_30',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_2],

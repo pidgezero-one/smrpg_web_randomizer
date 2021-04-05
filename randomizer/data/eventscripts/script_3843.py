@@ -60,33 +60,5 @@ script = [
     {
         "identifier": 'EVENT_3843_ret_11',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3843_jmp_if_var_equals_byte_12',
-        "command": 'jmp_if_var_equals_byte',
-        "args": [0x70de, 9, 'EVENT_3843_enter_area_4']
-    },
-    {
-        "identifier": 'EVENT_3843_ret_13',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3843_ret_14',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3843_jmp_if_bit_set_15',
-        "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_3843_jmp_if_var_equals_byte_12']
-    },
-    {
-        "identifier": 'EVENT_3843_enter_area_16',
-        "command": 'enter_area',
-        "args": [Rooms._023_MUSHROOM_KINGDOM_BEFORE_CROCO_OUTSIDE, RadialDirections.NORTHWEST, 21, 122, 2, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_3843_enter_area_17',
-        "command": 'enter_area',
-        "args": [Rooms._023_MUSHROOM_KINGDOM_BEFORE_CROCO_OUTSIDE, RadialDirections.NORTHEAST, 2, 102, 2, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     }
 ]

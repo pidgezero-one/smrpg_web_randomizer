@@ -75,21 +75,6 @@ script = [
         "args": [AreaObjects.NPC_0, 59]
     },
     {
-        "identifier": 'EVENT_3359_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [1904, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3359_jmp_if_dialog_option_b_6',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3359_set_bit_8']
-    },
-    {
-        "identifier": 'EVENT_3359_run_dialog_7',
-        "command": 'run_dialog',
-        "args": [1905, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_3359_set_bit_8',
         "command": 'set_bit',
         "args": [0x7044, 7]
@@ -416,11 +401,6 @@ script = [
         "identifier": 'EVENT_3359_play_music_default_volume_48',
         "command": 'play_music_default_volume',
         "args": [Music._09_VICTORY]
-    },
-    {
-        "identifier": 'EVENT_3359_run_dialog_49',
-        "command": 'run_dialog',
-        "args": [1908, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3359_set_bit_50',

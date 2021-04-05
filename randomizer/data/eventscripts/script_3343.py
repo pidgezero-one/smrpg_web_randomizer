@@ -16,30 +16,9 @@ script = [
         "args": [0x707e, 6]
     },
     {
-        "identifier": 'EVENT_3343_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3343_action_queue_sync_2_SUBSCRIPT_db_0',
-                "command": 'db',
-                "args": [0xfd, 0xf2]
-            },
-            {
-                "identifier": 'EVENT_3343_action_queue_sync_2_SUBSCRIPT_shift_southwest_steps_1',
-                "command": 'shift_southwest_steps',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_3343_action_queue_sync_2_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_3343_action_queue_sync_3',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_0],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_3_SUBSCRIPT_db_0',
@@ -59,7 +38,7 @@ script = [
     {
         "identifier": 'EVENT_3343_action_queue_sync_4',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_4_SUBSCRIPT_db_0',
@@ -80,7 +59,7 @@ script = [
     {
         "identifier": 'EVENT_3343_action_queue_sync_5',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_5_SUBSCRIPT_db_0',
@@ -101,7 +80,7 @@ script = [
     {
         "identifier": 'EVENT_3343_action_queue_sync_6',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_6_SUBSCRIPT_db_0',
@@ -122,7 +101,7 @@ script = [
     {
         "identifier": 'EVENT_3343_action_queue_sync_7',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_3343_action_queue_sync_7_SUBSCRIPT_db_0',

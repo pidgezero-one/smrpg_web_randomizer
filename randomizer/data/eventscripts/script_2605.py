@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2605_action_queue_sync_0',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
+        "args": [AreaObjects.NPC_8],
         "subscript": [
             {
                 "identifier": 'EVENT_2605_action_queue_sync_0_SUBSCRIPT_set_sprite_sequence_0',

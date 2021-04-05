@@ -240,57 +240,5 @@ script = [
     {
         "identifier": 'EVENT_532_ret_30',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_31',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_32',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_33',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_34',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_35',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_36',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_37',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_38',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_39',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_40',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_41',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_stop_sound_42',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_532_ret_43',
-        "command": 'ret'
     }
 ]

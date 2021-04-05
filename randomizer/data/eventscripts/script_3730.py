@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_3730_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x705f, 4, 'EVENT_3730_stop_sound_16']
+        "args": [0x705f, 4, 'EVENT_3730_fade_in_from_black_async_14']
     },
     {
         "identifier": 'EVENT_3730_jmp_if_bit_set_3',
@@ -102,46 +102,6 @@ script = [
     },
     {
         "identifier": 'EVENT_3730_ret_15',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3730_stop_sound_16',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3730_stop_sound_17',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3730_stop_sound_18',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3730_stop_sound_19',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3730_stop_sound_20',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3730_stop_sound_21',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3730_stop_sound_22',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3730_stop_sound_23',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3730_fade_in_from_black_async_24',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_3730_ret_25',
         "command": 'ret'
     }
 ]

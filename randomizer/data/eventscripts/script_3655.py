@@ -6,45 +6,12 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3655_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705f, 4, 'EVENT_3655_jmp_if_bit_set_3']
-    },
-    {
         "identifier": 'EVENT_3655_run_dialog_1',
         "command": 'run_dialog',
         "args": [2474, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3655_ret_2',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3655_jmp_if_bit_set_3',
-        "command": 'jmp_if_bit_set',
-        "args": [0x707d, 7, 'EVENT_3655_run_dialog_7']
-    },
-    {
-        "identifier": 'EVENT_3655_jmp_if_random_above_128_4',
-        "command": 'jmp_if_random_above_128',
-        "args": ['EVENT_3655_run_dialog_7']
-    },
-    {
-        "identifier": 'EVENT_3655_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [3584, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_3655_ret_6',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3655_run_dialog_7',
-        "command": 'run_dialog',
-        "args": [3790, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_3655_ret_8',
         "command": 'ret'
     }
 ]

@@ -40,11 +40,6 @@ script = [
         "args": [0x704d, 2, 'EVENT_1872_run_dialog_8']
     },
     {
-        "identifier": 'EVENT_1872_run_dialog_7',
-        "command": 'run_dialog',
-        "args": [1288, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_1872_run_dialog_8',
         "command": 'run_dialog',
         "args": [1289, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
@@ -100,66 +95,6 @@ script = [
     {
         "identifier": 'EVENT_1872_dec_coins_19',
         "command": 'dec_coins'
-    },
-    {
-        "identifier": 'EVENT_1872_set_7000_to_70A0_short_mem_20',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ea]
-    },
-    {
-        "identifier": 'EVENT_1872_mem_compare_val_21',
-        "command": 'mem_compare_val',
-        "args": [2]
-    },
-    {
-        "identifier": 'EVENT_1872_jmp_if_comparison_result_is_lesser_22',
-        "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1872_run_dialog_30']
-    },
-    {
-        "identifier": 'EVENT_1872_mem_compare_val_23',
-        "command": 'mem_compare_val',
-        "args": [4]
-    },
-    {
-        "identifier": 'EVENT_1872_jmp_if_comparison_result_is_lesser_24',
-        "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1872_run_dialog_27']
-    },
-    {
-        "identifier": 'EVENT_1872_run_dialog_25',
-        "command": 'run_dialog',
-        "args": [1292, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1872_jmp_26',
-        "command": 'jmp',
-        "args": ['EVENT_1872_jmp_if_var_equals_byte_32']
-    },
-    {
-        "identifier": 'EVENT_1872_run_dialog_27',
-        "command": 'run_dialog',
-        "args": [1291, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1872_run_dialog_duration_28',
-        "command": 'run_dialog_duration',
-        "args": [1287, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_1872_jmp_29',
-        "command": 'jmp',
-        "args": ['EVENT_1872_jmp_if_var_equals_byte_32']
-    },
-    {
-        "identifier": 'EVENT_1872_run_dialog_30',
-        "command": 'run_dialog',
-        "args": [1290, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1872_run_dialog_duration_31',
-        "command": 'run_dialog_duration',
-        "args": [1287, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1872_jmp_if_var_equals_byte_32',

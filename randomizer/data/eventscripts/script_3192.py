@@ -147,11 +147,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3192_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [1644, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3192_set_bit_6',
         "command": 'set_bit',
         "args": [0x7056, 6]
@@ -179,7 +174,7 @@ script = [
     {
         "identifier": 'EVENT_3192_run_dialog_11',
         "command": 'run_dialog',
-        "args": [1645, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3192_put_inventory_12',

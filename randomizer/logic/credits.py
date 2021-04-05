@@ -123,9 +123,9 @@ END_TITLES_DELAY = 40
 
 # LINE 1, LINE 2, LINE 3. put EMPTY_STRING if you don't have anything.
 DEV_MESSAGES = [
-    ('DONT TRY IT...ALANIM.', 'I ALREADY DID IT.', 'PAST ALANIM'),
-    ('NOW TRY IT', 'BLINDFOLDED', 'PATCDR'),
-    ('ILL FIX IT', 'ONE OF THESE DAYS.', 'PIDGE'),
+    ('DONT TRY IT...ALANIM.', 'I ALREADY DID IT.', '   PAST ALANIM'),
+    ('NOW TRY IT', 'BLINDFOLDED', '     PATCDR'),
+    ('I KEPT MY WORD.', '', '      PIDGE'),
 ]
 
 # Takes world because everything does.
@@ -384,13 +384,17 @@ def update_credits(world):
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'SEANCASS  FLARERDB  SMBAI')
-    credits.add_credit(0x80, 0x40, 0x81, 'LOCKECOLELIVE  GOZENGATTA')
-    credits.add_credit(0x80, 0x00, 0xc2, 'CAVIN       INTHENAMEOFDT')
+    credits.add_credit(0x80, 0x80, 0xc0, 'SEANCASS       GOZENGATTA')
+    credits.add_credit(0x80, 0x40, 0x81, 'LOCKECOLELIVE       SMBAI')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xc0, 'CAVIN       INTHENAMEOFDT')
+    credits.add_credit(0x80, 0x40, 0x81, 'TINYWETBLANKET   FLARERDB')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'LOGIC MAPPING')
+    credits.add_title(0x80, 0x00, 0x08, 'EVENT RESEARCH')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()

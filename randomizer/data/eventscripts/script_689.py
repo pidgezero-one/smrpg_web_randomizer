@@ -24,11 +24,6 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_689_jmp_if_bit_set_4',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708b, 5, 'EVENT_689_run_dialog_7']
-    },
-    {
         "identifier": 'EVENT_689_run_dialog_5',
         "command": 'run_dialog',
         "args": [2177, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
@@ -37,13 +32,4 @@ script = [
         "identifier": 'EVENT_689_ret_6',
         "command": 'ret'
     },
-    {
-        "identifier": 'EVENT_689_run_dialog_7',
-        "command": 'run_dialog',
-        "args": [2179, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_689_ret_8',
-        "command": 'ret'
-    }
 ]

@@ -43,22 +43,8 @@ script = [
         "args": [0x707a, 6, 'EVENT_1649_clear_bit_11']
     },
     {
-        "identifier": 'EVENT_1649_jmp_if_bit_set_6',
-        "command": 'jmp_if_bit_set',
-        "args": [0x707b, 2, 'EVENT_1649_run_event_at_return_9']
-    },
-    {
         "identifier": 'EVENT_1649_fade_in_from_black_async_7',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1649_ret_8',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1649_run_event_at_return_9',
-        "command": 'run_event_at_return',
-        "args": [257]
     },
     {
         "identifier": 'EVENT_1649_ret_10',

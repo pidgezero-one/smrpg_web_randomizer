@@ -191,54 +191,6 @@ script = [
         "command": 'reset_and_choose_game'
     },
     {
-        "identifier": 'EVENT_1428_ret_28',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_29',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_30',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_31',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_32',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_33',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_34',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_35',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_36',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_37',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_38',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1428_stop_sound_39',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_1428_ret_40',
         "command": 'ret'
     }

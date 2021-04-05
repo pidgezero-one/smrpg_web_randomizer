@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_614_run_dialog_0',
-        "command": 'run_dialog',
-        "args": [985, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
         "identifier": 'EVENT_614_run_dialog_1',
         "command": 'run_dialog',
         "args": [986, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]

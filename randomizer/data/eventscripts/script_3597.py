@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3597_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708b, 5, 'EVENT_3596_jmp_if_bit_set_0']
-    },
-    {
         "identifier": 'EVENT_3597_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
         "args": [0x7044, 5, 'EVENT_3597_run_event_as_subroutine_7']
@@ -18,17 +13,7 @@ script = [
     {
         "identifier": 'EVENT_3597_run_dialog_2',
         "command": 'run_dialog',
-        "args": [2339, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_3597_jmp_if_dialog_option_b_3',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3584_ret_0']
-    },
-    {
-        "identifier": 'EVENT_3597_run_dialog_4',
-        "command": 'run_dialog',
-        "args": [2340, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": [2338, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3597_clear_bit_5',
@@ -47,7 +32,7 @@ script = [
     {
         "identifier": 'EVENT_3597_run_dialog_8',
         "command": 'run_dialog',
-        "args": [2336, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": [2337, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3597_clear_bit_9',

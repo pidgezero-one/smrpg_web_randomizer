@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1140_run_dialog_0',
-        "command": 'run_dialog',
-        "args": [2835, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_1140_open_shop_1',
         "command": 'open_shop',
         "args": [Shops._08_SEASIDE_TOWN_ITEMS_PREYARIDOVICH]
@@ -18,11 +13,6 @@ script = [
     {
         "identifier": 'EVENT_1140_fade_in_from_black_async_2',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1140_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [2836, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1140_ret_4',

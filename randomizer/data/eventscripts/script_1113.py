@@ -6,21 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1113_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7087, 7, 'EVENT_1113_jmp_if_bit_set_3']
-    },
-    {
-        "identifier": 'EVENT_1113_run_dialog_1',
-        "command": 'run_dialog',
-        "args": [2662, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1113_set_bit_2',
-        "command": 'set_bit',
-        "args": [0x7087, 7]
-    },
-    {
         "identifier": 'EVENT_1113_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
         "args": [0x7054, 6, 'EVENT_1113_run_dialog_33']
@@ -71,7 +56,7 @@ script = [
     {
         "identifier": 'EVENT_1113_jmp_if_bit_clear_13',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7089, 0, 'EVENT_1113_run_dialog_31']
+        "args": [0x7089, 0, 'EVENT_1113_run_dialog_insert']
     },
     {
         "identifier": 'EVENT_1113_run_dialog_14',
@@ -164,6 +149,15 @@ script = [
     },
     {
         "identifier": 'EVENT_1113_ret_32',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1113_run_dialog_insert',
+        "command": 'run_dialog',
+        "args": [2662, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_1113_ret_insert',
         "command": 'ret'
     },
     {

@@ -36,11 +36,6 @@ script = [
         "args": [AreaObjects.NPC_15, Rooms._222_SMITHY_FACTORY_AREA_03_GLUM_REAPERS]
     },
     {
-        "identifier": 'EVENT_2359_set_bit_6',
-        "command": 'set_bit',
-        "args": [0x708f, 3]
-    },
-    {
         "identifier": 'EVENT_2359_jmp_if_bit_set_7',
         "command": 'jmp_if_bit_set',
         "args": [0x7044, 7, 'EVENT_2359_set_9']

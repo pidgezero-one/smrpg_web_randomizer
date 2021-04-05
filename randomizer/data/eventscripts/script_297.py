@@ -6,16 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_297_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x709c, 1, 'EVENT_297_jmp_to_event_8']
-    },
-    {
-        "identifier": 'EVENT_297_jmp_if_bit_set_1',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7081, 5, 'EVENT_297_run_dialog_6']
-    },
-    {
         "identifier": 'EVENT_297_jmp_fork_mario_on_object_2',
         "command": 'jmp_fork_mario_on_object',
         "args": ['EVENT_297_set_7000_to_current_level_9', 'EVENT_297_set_7000_to_current_level_9']
@@ -26,27 +16,8 @@ script = [
         "args": [534, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_297_jmp_if_bit_set_4',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7053, 6, 'EVENT_297_jmp_to_event_8']
-    },
-    {
         "identifier": 'EVENT_297_ret_5',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_297_run_dialog_6',
-        "command": 'run_dialog',
-        "args": [607, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_297_ret_7',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_297_jmp_to_event_8',
-        "command": 'jmp_to_event',
-        "args": [934]
     },
     {
         "identifier": 'EVENT_297_set_7000_to_current_level_9',

@@ -6,31 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3309_play_sound_0',
-        "command": 'play_sound',
-        "args": [Sounds._014_FLOWER, 6]
-    },
-    {
-        "identifier": 'EVENT_3309_pause_action_script_1',
-        "command": 'pause_action_script',
-        "args": [AreaObjects.MEM_70A8]
-    },
-    {
-        "identifier": 'EVENT_3309_summon_to_current_level_2',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.MEM_70A8]
-    },
-    {
-        "identifier": 'EVENT_3309_disable_trigger_3',
-        "command": 'disable_trigger',
-        "args": [AreaObjects.MEM_70A8]
-    },
-    {
-        "identifier": 'EVENT_3309_summon_to_current_level_4',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_2]
-    },
-    {
         "identifier": 'EVENT_3309_set_bit_5',
         "command": 'set_bit',
         "args": [0x7044, 5]

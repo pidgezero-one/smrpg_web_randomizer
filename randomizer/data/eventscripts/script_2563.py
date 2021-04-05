@@ -207,11 +207,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2563_run_dialog_24',
-        "command": 'run_dialog',
-        "args": [3162, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_2563_stop_embedded_action_script_25',
         "command": 'stop_embedded_action_script',
         "args": [AreaObjects.MARIO]

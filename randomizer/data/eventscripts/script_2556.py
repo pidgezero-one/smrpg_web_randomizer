@@ -177,26 +177,6 @@ script = [
         "args": [720]
     },
     {
-        "identifier": 'EVENT_2556_stop_sound_23',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2556_stop_sound_24',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2556_stop_sound_25',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2556_stop_sound_26',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2556_stop_sound_27',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_2556_ret_28',
         "command": 'ret'
     }

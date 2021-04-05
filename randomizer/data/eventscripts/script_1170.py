@@ -6,39 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1170_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7086, 7, 'EVENT_1170_run_dialog_6']
-    },
-    {
-        "identifier": 'EVENT_1170_run_dialog_1',
-        "command": 'run_dialog',
-        "args": [2900, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1170_open_shop_2',
-        "command": 'open_shop',
-        "args": [Shops._16_SEASIDE_HEALTH_FOODS]
-    },
-    {
-        "identifier": 'EVENT_1170_set_bit_3',
-        "command": 'set_bit',
-        "args": [0x7086, 7]
-    },
-    {
-        "identifier": 'EVENT_1170_fade_in_from_black_async_4',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1170_ret_5',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1170_run_dialog_6',
-        "command": 'run_dialog',
-        "args": [2901, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_1170_open_shop_7',
         "command": 'open_shop',
         "args": [Shops._16_SEASIDE_HEALTH_FOODS]

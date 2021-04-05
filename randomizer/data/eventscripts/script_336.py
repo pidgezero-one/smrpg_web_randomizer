@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_336_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7082, 0, 'EVENT_256_ret_0']
-    },
-    {
         "identifier": 'EVENT_336_set_1',
         "command": 'set',
         "args": [0x70a9, 20]

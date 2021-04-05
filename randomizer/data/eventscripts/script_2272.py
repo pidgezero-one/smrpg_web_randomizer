@@ -6,36 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2272_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7087, 1, 'EVENT_2272_run_dialog_4']
-    },
-    {
-        "identifier": 'EVENT_2272_run_dialog_1',
-        "command": 'run_dialog',
-        "args": [2902, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_2272_set_bit_2',
-        "command": 'set_bit',
-        "args": [0x7087, 1]
-    },
-    {
-        "identifier": 'EVENT_2272_jmp_3',
-        "command": 'jmp',
-        "args": ['EVENT_2272_jmp_if_bit_set_6']
-    },
-    {
-        "identifier": 'EVENT_2272_run_dialog_4',
-        "command": 'run_dialog',
-        "args": [2905, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_2272_jmp_5',
-        "command": 'jmp',
-        "args": ['EVENT_2272_jmp_if_bit_set_6']
-    },
-    {
         "identifier": 'EVENT_2272_jmp_if_bit_set_6',
         "command": 'jmp_if_bit_set',
         "args": [0x707d, 7, 'EVENT_2272_jmp_if_bit_clear_62']
@@ -59,6 +29,11 @@ script = [
         "identifier": 'EVENT_2272_run_dialog_10',
         "command": 'run_dialog',
         "args": [2913, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_2272_run_dialog__10',
+        "command": 'run_dialog',
+        "args": [2915, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2272_ret_11',
@@ -140,7 +115,7 @@ script = [
     {
         "identifier": 'EVENT_2272_jmp_27',
         "command": 'jmp',
-        "args": ['EVENT_2272_run_dialog_112']
+        "args": ['EVENT_2272_jmp_if_bit_set_']
     },
     {
         "identifier": 'EVENT_2272_jmp_if_bit_clear_28',
@@ -156,6 +131,11 @@ script = [
         "identifier": 'EVENT_2272_run_dialog_30',
         "command": 'run_dialog',
         "args": [2913, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_2272_run_dialog___10',
+        "command": 'run_dialog',
+        "args": [2905, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2272_ret_31',
@@ -237,7 +217,7 @@ script = [
     {
         "identifier": 'EVENT_2272_jmp_if_bit_set_47',
         "command": 'jmp_if_bit_set',
-        "args": [0x7088, 0, 'EVENT_2272_run_dialog_112']
+        "args": [0x7088, 0, 'EVENT_2272_jmp_if_bit_set_']
     },
     {
         "identifier": 'EVENT_2272_run_dialog_48',
@@ -247,7 +227,7 @@ script = [
     {
         "identifier": 'EVENT_2272_jmp_if_dialog_option_b_49',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2272_run_dialog_112']
+        "args": ['EVENT_2272_jmp_if_bit_set_']
     },
     {
         "identifier": 'EVENT_2272_store_coin_amount_7000_50',
@@ -295,7 +275,7 @@ script = [
     {
         "identifier": 'EVENT_2272_jmp_59',
         "command": 'jmp',
-        "args": ['EVENT_2272_run_dialog_112']
+        "args": ['EVENT_2272_jmp_if_bit_set_']
     },
     {
         "identifier": 'EVENT_2272_run_dialog_60',
@@ -305,7 +285,7 @@ script = [
     {
         "identifier": 'EVENT_2272_jmp_61',
         "command": 'jmp',
-        "args": ['EVENT_2272_run_dialog_112']
+        "args": ['EVENT_2272_jmp_if_bit_set_']
     },
     {
         "identifier": 'EVENT_2272_jmp_if_bit_clear_62',
@@ -326,6 +306,11 @@ script = [
         "identifier": 'EVENT_2272_run_dialog_65',
         "command": 'run_dialog',
         "args": [2913, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_2272_run_dialog____10',
+        "command": 'run_dialog',
+        "args": [2902, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2272_ret_66',
@@ -480,7 +465,7 @@ script = [
     {
         "identifier": 'EVENT_2272_jmp_if_bit_set_97',
         "command": 'jmp_if_bit_set',
-        "args": [0x7088, 2, 'EVENT_2272_run_dialog_112']
+        "args": [0x7088, 2, 'EVENT_2272_jmp_if_bit_set_']
     },
     {
         "identifier": 'EVENT_2272_run_dialog_98',
@@ -490,7 +475,7 @@ script = [
     {
         "identifier": 'EVENT_2272_jmp_if_dialog_option_b_99',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2272_run_dialog_112']
+        "args": ['EVENT_2272_jmp_if_bit_set_']
     },
     {
         "identifier": 'EVENT_2272_store_coin_amount_7000_100',
@@ -538,7 +523,7 @@ script = [
     {
         "identifier": 'EVENT_2272_jmp_109',
         "command": 'jmp',
-        "args": ['EVENT_2272_run_dialog_112']
+        "args": ['EVENT_2272_jmp_if_bit_set_']
     },
     {
         "identifier": 'EVENT_2272_run_dialog_110',
@@ -548,7 +533,31 @@ script = [
     {
         "identifier": 'EVENT_2272_jmp_111',
         "command": 'jmp',
-        "args": ['EVENT_2272_run_dialog_112']
+        "args": ['EVENT_2272_jmp_if_bit_set_']
+    },
+    {
+        "identifier": 'EVENT_2272_jmp_if_bit_set_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7088, 2, 'EVENT_2272_run_dialog_112']
+    },
+    {
+        "identifier": 'EVENT_2272_jmp_if_bit_set__',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7088, 0, 'EVENT_2272_run_dialog_112']
+    },
+    {
+        "identifier": 'EVENT_2272_jmp_if_bit_set___',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7088, 1, 'EVENT_2272_run_dialog_112']
+    },
+    {
+        "identifier": 'EVENT_2272_run_dialog_all_sold',
+        "command": 'run_dialog',
+        "args": [2907, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_2272_ret_113',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2272_run_dialog_112',
@@ -556,7 +565,40 @@ script = [
         "args": [2909, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_2272_ret_113',
+        "identifier": 'EVENT_2272_jmp_if_bit_set____',
+        "command": 'jmp_if_bit_set',
+        "args": [0x707D, 7, 'EVENT_2272_run_dialog_has_3']
+    },
+    {
+        "identifier": 'EVENT_2272_jmp_if_bit_set_____',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7086, 0, 'EVENT_2272_run_dialog_has_2']
+    },
+    {
+        "identifier": 'EVENT_2272_run_dialog_has_1',
+        "command": 'run_dialog',
+        "args": [2915, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_2272_ret_113_',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_2272_run_dialog_has_3',
+        "command": 'run_dialog',
+        "args": [2902, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_2272_ret_113__',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_2272_run_dialog_has_2',
+        "command": 'run_dialog',
+        "args": [2905, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_2272_ret_113___',
         "command": 'ret'
     }
 ]

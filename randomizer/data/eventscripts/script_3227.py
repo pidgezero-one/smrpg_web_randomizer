@@ -38,58 +38,6 @@ script = [
         "args": [3228, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
-        "identifier": 'EVENT_3227_jmp_if_object_trigger_enabled_5',
-        "command": 'jmp_if_object_trigger_enabled',
-        "args": [AreaObjects.NPC_2, Rooms._179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, 'EVENT_3227_run_event_as_subroutine_7']
-    },
-    {
-        "identifier": 'EVENT_3227_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3227_action_queue_async_6_SUBSCRIPT_set_solidity_bits_0',
-                "command": 'set_solidity_bits',
-                "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
-            },
-            {
-                "identifier": 'EVENT_3227_action_queue_async_6_SUBSCRIPT_object_memory_set_bit_1',
-                "command": 'object_memory_set_bit',
-                "args": [0x30, [4]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3227_run_event_as_subroutine_7',
-        "command": 'run_event_as_subroutine',
-        "args": [15]
-    },
-    {
-        "identifier": 'EVENT_3227_run_event_as_subroutine_8',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_3227_jmp_if_bit_clear_9',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_3227_clear_bit_12']
-    },
-    {
-        "identifier": 'EVENT_3227_jmp_if_object_trigger_disabled_10',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_2, Rooms._179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, 'EVENT_3227_clear_bit_12']
-    },
-    {
-        "identifier": 'EVENT_3227_play_sound_11',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_3227_clear_bit_12',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
         "identifier": 'EVENT_3227_ret_13',
         "command": 'ret'
     }

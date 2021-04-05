@@ -11,25 +11,6 @@ script = [
         "args": [Sounds._110_ABSTRACT_MUSIC, 6]
     },
     {
-        "identifier": 'EVENT_2528_jmp_if_bit_set_1',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705d, 5, 'EVENT_2528_run_dialog_5']
-    },
-    {
-        "identifier": 'EVENT_2528_run_dialog_2',
-        "command": 'run_dialog',
-        "args": [3114, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2528_play_sound_3',
-        "command": 'play_sound',
-        "args": [Sounds._000_SILENCE, 6]
-    },
-    {
-        "identifier": 'EVENT_2528_ret_4',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_2528_run_dialog_5',
         "command": 'run_dialog',
         "args": [3326, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]

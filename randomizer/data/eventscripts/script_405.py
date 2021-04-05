@@ -147,7 +147,7 @@ script = [
     {
         "identifier": 'EVENT_405_jmp_if_object_not_in_level_17',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, 'EVENT_405_stop_sound_26']
+        "args": [AreaObjects.NPC_1, Rooms._481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, 'EVENT_405_set_43']
     },
     {
         "identifier": 'EVENT_405_action_queue_async_18',
@@ -240,78 +240,6 @@ script = [
     {
         "identifier": 'EVENT_405_fade_in_from_black_async_24',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_405_ret_25',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_26',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_27',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_28',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_29',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_30',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_31',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_32',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_33',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_34',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_35',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_36',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_37',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_38',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_39',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_40',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_41',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_405_stop_sound_42',
-        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_405_set_43',

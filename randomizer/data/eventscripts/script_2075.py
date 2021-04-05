@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2075_run_dialog_0',
-        "command": 'run_dialog',
-        "args": [3335, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
         "identifier": 'EVENT_2075_set_1',
         "command": 'set',
         "args": [0x70a7, 138]
@@ -22,20 +17,10 @@ script = [
     {
         "identifier": 'EVENT_2075_jmp_if_7000_equals_short_3',
         "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2075_ret_13']
+        "args": [0, 'EVENT_2075_run_dialog_0']
     },
     {
         "identifier": 'EVENT_2075_pause_4',
-        "command": 'pause',
-        "args": [15]
-    },
-    {
-        "identifier": 'EVENT_2075_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [3336, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2075_pause_6',
         "command": 'pause',
         "args": [15]
     },
@@ -55,11 +40,6 @@ script = [
         "args": [15]
     },
     {
-        "identifier": 'EVENT_2075_run_dialog_10',
-        "command": 'run_dialog',
-        "args": [3337, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_2075_remove_from_current_level_11',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_2]
@@ -68,6 +48,11 @@ script = [
         "identifier": 'EVENT_2075_remove_from_level_12',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_2, Rooms._324_MONSTRO_TOWN_OUTSIDE]
+    },
+    {
+        "identifier": 'EVENT_2075_run_dialog_0',
+        "command": 'run_dialog',
+        "args": [3335, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_2075_ret_13',

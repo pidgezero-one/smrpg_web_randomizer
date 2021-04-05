@@ -8,7 +8,7 @@ room = {
   "entrance_event": 3148,
   "event_tiles": [
     {
-      "event": 3155,
+      "event": 3154,
       "x": 3,
       "y": 58,
       "z": 1,

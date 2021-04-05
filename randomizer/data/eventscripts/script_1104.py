@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1104_set_bit_0',
-        "command": 'set_bit',
-        "args": [0x7065, 7]
-    },
-    {
         "identifier": 'EVENT_1104_action_queue_async_1',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_11],
@@ -23,82 +18,11 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1104_jmp_if_bit_clear_2',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 1, 'EVENT_1104_deactivate_sound_channels_13']
-    },
-    {
-        "identifier": 'EVENT_1104_jmp_if_bit_clear_3',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 0, 'EVENT_1104_deactivate_sound_channels_5']
-    },
-    {
-        "identifier": 'EVENT_1104_jmp_if_bit_clear_4',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 3, 'EVENT_1104_play_music_default_volume_8']
-    },
-    {
-        "identifier": 'EVENT_1104_deactivate_sound_channels_5',
-        "command": 'deactivate_sound_channels',
-        "args": [[]]
-    },
-    {
         "identifier": 'EVENT_1104_fade_in_from_black_async_6',
         "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1104_ret_7',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1104_play_music_default_volume_8',
-        "command": 'play_music_default_volume',
-        "args": [Music._21_SAD_SONG]
-    },
-    {
-        "identifier": 'EVENT_1104_action_queue_async_9',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_8],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1104_action_queue_async_9_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties'
-            },
-            {
-                "identifier": 'EVENT_1104_action_queue_async_9_SUBSCRIPT_transfer_to_xyzf_1',
-                "command": 'transfer_to_xyzf',
-                "args": [23, 26, 4, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_1104_action_queue_async_9_SUBSCRIPT_face_northwest_2',
-                "command": 'face_northwest'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_1104_set_action_script_sync_10',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_8, 95]
-    },
-    {
-        "identifier": 'EVENT_1104_fade_in_from_black_async_11',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1104_ret_12',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1104_deactivate_sound_channels_13',
-        "command": 'deactivate_sound_channels',
-        "args": [[0, 1, 2, 3]]
-    },
-    {
-        "identifier": 'EVENT_1104_fade_in_from_black_async_14',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1104_ret_15',
         "command": 'ret'
     }
 ]

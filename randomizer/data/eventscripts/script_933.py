@@ -36,11 +36,6 @@ script = [
         "args": [0x7026]
     },
     {
-        "identifier": 'EVENT_933_run_dialog_6',
-        "command": 'run_dialog',
-        "args": [2364, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_933_run_dialog_7',
         "command": 'run_dialog',
         "args": [2372, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
@@ -150,11 +145,6 @@ script = [
         "args": ['EVENT_933_action_queue_async_42']
     },
     {
-        "identifier": 'EVENT_933_run_dialog_29',
-        "command": 'run_dialog',
-        "args": [2375, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_933_jmp_30',
         "command": 'jmp',
         "args": ['EVENT_933_close_dialog_74']
@@ -181,16 +171,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_933_pause_32',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_933_run_dialog_33',
-        "command": 'run_dialog',
-        "args": [2374, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_933_pause_34',
         "command": 'pause',
         "args": [10]
@@ -212,8 +192,8 @@ script = [
     },
     {
         "identifier": 'EVENT_933_set_38',
-        "command": 'set',
-        "args": [0x70a7, 107]
+        "command": 'run_event_as_subroutine',
+        "args": [8]
     },
     {
         "identifier": 'EVENT_933_run_dialog_39',
@@ -223,7 +203,7 @@ script = [
     {
         "identifier": 'EVENT_933_put_inventory_40',
         "command": 'put_inventory',
-        "args": [items.RedEssence]
+        "args": [0x7A07]
     },
     {
         "identifier": 'EVENT_933_jmp_41',
@@ -252,16 +232,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_933_pause_43',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_933_run_dialog_44',
-        "command": 'run_dialog',
-        "args": [2374, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_933_pause_45',
         "command": 'pause',
         "args": [10]
@@ -283,23 +253,8 @@ script = [
     },
     {
         "identifier": 'EVENT_933_set_random_49',
-        "command": 'set_random',
-        "args": [0x7000, 101]
-    },
-    {
-        "identifier": 'EVENT_933_jmp_if_7000_equals_short_50',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [100, 'EVENT_933_set_38']
-    },
-    {
-        "identifier": 'EVENT_933_jmp_if_random_above_66_51',
-        "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_933_set_56', 'EVENT_933_set_60']
-    },
-    {
-        "identifier": 'EVENT_933_set_52',
-        "command": 'set',
-        "args": [0x70a7, 106]
+        "command": 'run_event_as_subroutine',
+        "args": [7]
     },
     {
         "identifier": 'EVENT_933_run_dialog_53',
@@ -309,47 +264,7 @@ script = [
     {
         "identifier": 'EVENT_933_put_inventory_54',
         "command": 'put_inventory',
-        "args": [items.YoshiAde]
-    },
-    {
-        "identifier": 'EVENT_933_jmp_55',
-        "command": 'jmp',
-        "args": ['EVENT_933_close_dialog_74']
-    },
-    {
-        "identifier": 'EVENT_933_set_56',
-        "command": 'set',
-        "args": [0x70a7, 105]
-    },
-    {
-        "identifier": 'EVENT_933_run_dialog_57',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_933_put_inventory_58',
-        "command": 'put_inventory',
-        "args": [items.Energizer]
-    },
-    {
-        "identifier": 'EVENT_933_jmp_59',
-        "command": 'jmp',
-        "args": ['EVENT_933_close_dialog_74']
-    },
-    {
-        "identifier": 'EVENT_933_set_60',
-        "command": 'set',
-        "args": [0x70a7, 104]
-    },
-    {
-        "identifier": 'EVENT_933_run_dialog_61',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_933_put_inventory_62',
-        "command": 'put_inventory',
-        "args": [items.Bracer]
+        "args": [0x7807]
     },
     {
         "identifier": 'EVENT_933_jmp_63',
@@ -376,16 +291,6 @@ script = [
                 "command": 'reset_properties'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_933_pause_65',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_933_run_dialog_66',
-        "command": 'run_dialog',
-        "args": [2374, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_933_pause_67',

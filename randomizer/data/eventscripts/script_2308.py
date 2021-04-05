@@ -48,42 +48,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2308_stop_sound_6',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2308_stop_sound_7',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2308_stop_sound_8',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2308_stop_sound_9',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2308_stop_sound_10',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2308_stop_sound_11',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2308_stop_sound_12',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2308_stop_sound_13',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2308_stop_sound_14',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_2308_jmp_if_bit_clear_15',
         "command": 'jmp_if_bit_clear',
         "args": [0x708d, 1, 'EVENT_2308_fade_in_from_black_async_26']
@@ -151,60 +115,7 @@ script = [
     {
         "identifier": 'EVENT_2308_fade_in_from_black_async_26',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2308_run_event_as_subroutine_27',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_2308_jmp_if_bit_clear_28',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2308_clear_bit_37']
-    },
-    {
-        "identifier": 'EVENT_2308_jmp_if_bit_set_29',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7059, 2, 'EVENT_2308_jmp_if_bit_set_33']
-    },
-    {
-        "identifier": 'EVENT_2308_clear_bit_30',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_2308_play_sound_31',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_2308_ret_32',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2308_jmp_if_bit_set_33',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7059, 3, 'EVENT_2308_clear_bit_37']
-    },
-    {
-        "identifier": 'EVENT_2308_clear_bit_34',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_2308_play_sound_35',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_2308_ret_36',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2308_clear_bit_37',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
+    }
     {
         "identifier": 'EVENT_2308_ret_38',
         "command": 'ret'

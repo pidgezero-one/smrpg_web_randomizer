@@ -92,11 +92,6 @@ script = [
         "args": [30]
     },
     {
-        "identifier": 'EVENT_402_run_dialog_12',
-        "command": 'run_dialog',
-        "args": [691, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_402_set_13',
         "command": 'set',
         "args": [0x7000, 10]

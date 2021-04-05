@@ -26,19 +26,9 @@ script = [
         "args": [0x704c, 6, 'EVENT_257_fade_in_from_black_async_0']
     },
     {
-        "identifier": 'EVENT_600_remove_from_level_4',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_14, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_600_remove_from_current_level_5',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_14]
-    },
-    {
         "identifier": 'EVENT_600_action_queue_sync_6',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_600_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
@@ -60,7 +50,7 @@ script = [
     {
         "identifier": 'EVENT_600_action_queue_sync_7',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_600_action_queue_sync_7_SUBSCRIPT_set_sprite_sequence_0',
@@ -82,7 +72,7 @@ script = [
     {
         "identifier": 'EVENT_600_action_queue_sync_8',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "args": [AreaObjects.NPC_5],
         "subscript": [
             {
                 "identifier": 'EVENT_600_action_queue_sync_8_SUBSCRIPT_set_sprite_sequence_0',
@@ -104,7 +94,7 @@ script = [
     {
         "identifier": 'EVENT_600_action_queue_sync_9',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "args": [AreaObjects.NPC_6],
         "subscript": [
             {
                 "identifier": 'EVENT_600_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_0',
@@ -126,7 +116,7 @@ script = [
     {
         "identifier": 'EVENT_600_action_queue_sync_10',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_11],
+        "args": [AreaObjects.NPC_9],
         "subscript": [
             {
                 "identifier": 'EVENT_600_action_queue_sync_10_SUBSCRIPT_set_sprite_sequence_0',
@@ -138,7 +128,7 @@ script = [
     {
         "identifier": 'EVENT_600_action_queue_sync_11',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_12],
+        "args": [AreaObjects.NPC_10],
         "subscript": [
             {
                 "identifier": 'EVENT_600_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_0',

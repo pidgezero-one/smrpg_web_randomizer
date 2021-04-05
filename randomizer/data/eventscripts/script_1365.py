@@ -792,25 +792,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1365_jmp_111',
-        "command": 'jmp',
-        "args": ['EVENT_1365_jmp_115']
-    },
-    {
-        "identifier": 'EVENT_1365_stop_sound_112',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1365_pause_113',
-        "command": 'pause',
-        "args": [15]
-    },
-    {
-        "identifier": 'EVENT_1365_run_dialog_114',
-        "command": 'run_dialog',
-        "args": [2786, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_1365_jmp_115',
         "command": 'jmp',
         "args": ['EVENT_1366_pause_action_script_0']

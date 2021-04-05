@@ -6,16 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3136_run_background_event_with_pause_return_on_exit_0',
-        "command": 'run_background_event_with_pause_return_on_exit',
-        "args": [3134, 0x701c, [12, 13]]
-    },
-    {
-        "identifier": 'EVENT_3136_resume_background_event_1',
-        "command": 'resume_background_event',
-        "args": [0x701c]
-    },
-    {
         "identifier": 'EVENT_3136_set_short_2',
         "command": 'set_short',
         "args": [0x7016, 0x0005]
@@ -29,11 +19,6 @@ script = [
         "identifier": 'EVENT_3136_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
         "args": [66]
-    },
-    {
-        "identifier": 'EVENT_3136_set_bit_5',
-        "command": 'set_bit',
-        "args": [0x707d, 6]
     },
     {
         "identifier": 'EVENT_3136_enter_area_6',

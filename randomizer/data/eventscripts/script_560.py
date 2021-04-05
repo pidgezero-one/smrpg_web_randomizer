@@ -52,7 +52,7 @@ script = [
     {
         "identifier": 'EVENT_560_jmp_if_7000_equals_short_9',
         "command": 'jmp_if_7000_equals_short',
-        "args": [315, 'EVENT_560_remove_from_current_level_119']
+        "args": [316, 'EVENT_560_remove_from_current_level_119']
     },
     {
         "identifier": 'EVENT_560_jmp_if_7000_equals_short_10',
@@ -103,11 +103,6 @@ script = [
         "identifier": 'EVENT_560_jmp_if_7000_equals_short_19',
         "command": 'jmp_if_7000_equals_short',
         "args": [418, 'EVENT_560_set_307']
-    },
-    {
-        "identifier": 'EVENT_560_jmp_if_7000_equals_short_20',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [47, 'EVENT_560_jmp_if_bit_set_355']
     },
     {
         "identifier": 'EVENT_560_jmp_if_7000_equals_short_21',
@@ -1980,12 +1975,12 @@ script = [
     {
         "identifier": 'EVENT_560_jmp_if_bit_set_355',
         "command": 'jmp_if_bit_set',
-        "args": [0x7089, 6, 'EVENT_560_set_361']
+        "args": [0x7082, 3, 'EVENT_560_set_361']
     },
     {
         "identifier": 'EVENT_560_set_bit_356',
         "command": 'set_bit',
-        "args": [0x7089, 6]
+        "args": [0x7082, 3]
     },
     {
         "identifier": 'EVENT_560_set_357',
@@ -2181,6 +2176,11 @@ script = [
         "args": [1, 'EVENT_560_set_399']
     },
     {
+        "identifier": 'EVENT_2050_run_dialog_12',
+        "command": 'run_dialog',
+        "args": [1680, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
         "identifier": 'EVENT_560_ret_398',
         "command": 'ret'
     },
@@ -2196,15 +2196,6 @@ script = [
     },
     {
         "identifier": 'EVENT_560_pause_401',
-        "command": 'pause',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_560_close_dialog_402',
-        "command": 'close_dialog'
-    },
-    {
-        "identifier": 'EVENT_560_pause_403',
         "command": 'pause',
         "args": [1]
     },
@@ -2381,129 +2372,6 @@ script = [
     },
     {
         "identifier": 'EVENT_560_ret_421',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_560_set_422',
-        "command": 'set',
-        "args": [0x70a7, 174]
-    },
-    {
-        "identifier": 'EVENT_560_store_7000_item_quantity_to_70A7_423',
-        "command": 'store_7000_item_quantity_to_70A7'
-    },
-    {
-        "identifier": 'EVENT_560_jmp_if_7000_equals_short_424',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_560_jmp_if_bit_set_435']
-    },
-    {
-        "identifier": 'EVENT_560_jmp_if_bit_set_425',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7046, 1, 'EVENT_560_run_dialog_433']
-    },
-    {
-        "identifier": 'EVENT_560_run_dialog_426',
-        "command": 'run_dialog',
-        "args": [3300, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_560_jmp_if_bit_set_427',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7043, 0, 'EVENT_560_ret_432']
-    },
-    {
-        "identifier": 'EVENT_560_set_bit_428',
-        "command": 'set_bit',
-        "args": [0x7043, 0]
-    },
-    {
-        "identifier": 'EVENT_560_apply_solidity_mod_429',
-        "command": 'apply_solidity_mod',
-        "args": [Rooms._104_GRATE_GUYS_CASINO_FRONT_DOOR, 0, [_0x6BFlags.PERMANENT]]
-    },
-    {
-        "identifier": 'EVENT_560_action_queue_sync_430',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_560_action_queue_sync_430_SUBSCRIPT_shift_northwest_pixels_0',
-                "command": 'shift_northwest_pixels',
-                "args": [8]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_560_action_queue_async_431',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_560_action_queue_async_431_SUBSCRIPT_shift_southeast_pixels_0',
-                "command": 'shift_southeast_pixels',
-                "args": [8]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_560_ret_432',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_560_run_dialog_433',
-        "command": 'run_dialog',
-        "args": [3301, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_560_ret_434',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_560_jmp_if_bit_set_435',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7099, 6, 'EVENT_560_run_dialog_438']
-    },
-    {
-        "identifier": 'EVENT_560_run_dialog_436',
-        "command": 'run_dialog',
-        "args": [3298, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_560_ret_437',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_560_run_dialog_438',
-        "command": 'run_dialog',
-        "args": [3299, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_560_ret_439',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_560_stop_sound_440',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_560_stop_sound_441',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_560_stop_sound_442',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_560_stop_sound_443',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_560_stop_sound_444',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_560_ret_445',
         "command": 'ret'
     }
 ]

@@ -114,11 +114,6 @@ script = [
         "args": [0x7094, 2]
     },
     {
-        "identifier": 'EVENT_3818_clear_bit_23',
-        "command": 'clear_bit',
-        "args": [0x707b, 6]
-    },
-    {
         "identifier": 'EVENT_3818_clear_bit_24',
         "command": 'clear_bit',
         "args": [0x7094, 1]
@@ -220,22 +215,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3818_jmp_if_object_trigger_disabled_39',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_4, Rooms._137_LANDS_END_AREA_01, 'EVENT_3818_jmp_if_bit_set_41']
-    },
-    {
-        "identifier": 'EVENT_3818_action_queue_sync_40',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3818_action_queue_sync_40_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_3818_jmp_if_bit_set_41',
         "command": 'jmp_if_bit_set',
         "args": [0x7044, 7, 'EVENT_3818_run_event_as_subroutine_43']
@@ -249,31 +228,6 @@ script = [
         "identifier": 'EVENT_3818_run_event_as_subroutine_43',
         "command": 'run_event_as_subroutine',
         "args": [15]
-    },
-    {
-        "identifier": 'EVENT_3818_run_event_as_subroutine_44',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_3818_jmp_if_bit_clear_45',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_3818_clear_bit_48']
-    },
-    {
-        "identifier": 'EVENT_3818_jmp_if_object_trigger_disabled_46',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_4, Rooms._137_LANDS_END_AREA_01, 'EVENT_3818_clear_bit_48']
-    },
-    {
-        "identifier": 'EVENT_3818_play_sound_47',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_3818_clear_bit_48',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_3818_ret_49',
@@ -325,22 +279,6 @@ script = [
     },
     {
         "identifier": 'EVENT_3818_ret_59',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3818_stop_sound_60',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3818_stop_sound_61',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3818_stop_sound_62',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3818_ret_63',
         "command": 'ret'
     },
     {

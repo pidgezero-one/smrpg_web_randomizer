@@ -4,4 +4,1115 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_0',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._042_BOOSTER_TOWER_3F_AREA_02_NES_MARIO_ROOM, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_1',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM, 1, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_2',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM, 2, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_3',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._226_FOREST_MAZE_AREA_02, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_4',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_5',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_6',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_7',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._433_SMITHY_FACTORY_AREA_01_____DUMMY, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_8',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_9',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._442_SMITHY_FACTORY_AREA_11_CONVEYOR_BELTS_SPAWNING_DRILL_BITS_AND_MACKS, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_10',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._448_BOWSERS_KEEP_AREA_09_TALL_ROOM_WSAVE_POINT, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_11',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_12',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_tile_mod_13',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN, 1, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_apply_solidity_mod_14',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._507_SMITHY_FACTORY_AREA_08_TRAMPOLINE_AFTER_COUNT_DOWN, 0, [_0x6BFlags.PERMANENT]]
+    },
+    {
+        "identifier": 'EVENT_0_set_15',
+        "command": 'set',
+        "args": [0x70df, 8]
+    },
+    {
+        "identifier": 'EVENT_0_____set_bit_10',
+        "command": 'set_bit',
+        "args": [0x706d, 1]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_16',
+        "command": 'set_bit',
+        "args": [0x706d, 2]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_17',
+        "command": 'set_bit',
+        "args": [0x706d, 3]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_18',
+        "command": 'set_bit',
+        "args": [0x706d, 4]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_19',
+        "command": 'set_bit',
+        "args": [0x706d, 5]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_20',
+        "command": 'set_bit',
+        "args": [0x706d, 6]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_21',
+        "command": 'set_bit',
+        "args": [0x706d, 7]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_22',
+        "command": 'set_bit',
+        "args": [0x706e, 0]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_23',
+        "command": 'set_bit',
+        "args": [0x706e, 2]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_24',
+        "command": 'set_bit',
+        "args": [0x706e, 3]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_25',
+        "command": 'set_bit',
+        "args": [0x706e, 4]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_26',
+        "command": 'set_bit',
+        "args": [0x706e, 6]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_27',
+        "command": 'set_bit',
+        "args": [0x706e, 7]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_28',
+        "command": 'set_bit',
+        "args": [0x706f, 0]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_29',
+        "command": 'set_bit',
+        "args": [0x706f, 1]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_30',
+        "command": 'set_bit',
+        "args": [0x706f, 2]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_31',
+        "command": 'set_bit',
+        "args": [0x706f, 3]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_32',
+        "command": 'set_bit',
+        "args": [0x706f, 4]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_33',
+        "command": 'set_bit',
+        "args": [0x706f, 5]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_34',
+        "command": 'set_bit',
+        "args": [0x706f, 6]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_35',
+        "command": 'set_bit',
+        "args": [0x706f, 7]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_36',
+        "command": 'set_bit',
+        "args": [0x7070, 0]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_37',
+        "command": 'set_bit',
+        "args": [0x7070, 1]
+    },
+    {
+        "identifier": 'EVENT_0_____set_bit_32',
+        "command": 'set_bit',
+        "args": [0x7070, 2]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_38',
+        "command": 'set_bit',
+        "args": [0x7070, 3]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_39',
+        "command": 'set_bit',
+        "args": [0x7070, 4]
+    },
+    {
+        "identifier": 'EVENT_0_____set_bit_33',
+        "command": 'set_bit',
+        "args": [0x7070, 7]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_40_',
+        "command": 'set_bit',
+        "args": [0x7065, 0]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_40',
+        "command": 'set_bit',
+        "args": [0x7065, 4]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_41',
+        "command": 'set_bit',
+        "args": [0x7065, 5]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_42',
+        "command": 'set_bit',
+        "args": [0x7065, 6]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_43',
+        "command": 'set_bit',
+        "args": [0x7065, 7]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_44',
+        "command": 'set_bit',
+        "args": [0x7066, 1]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_45',
+        "command": 'set_bit',
+        "args": [0x7066, 2]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_46',
+        "command": 'set_bit',
+        "args": [0x7066, 3]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_47',
+        "command": 'set_bit',
+        "args": [0x7066, 4]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_48',
+        "command": 'set_bit',
+        "args": [0x7066, 6]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_49',
+        "command": 'set_bit',
+        "args": [0x7066, 7]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_50',
+        "command": 'set_bit',
+        "args": [0x7067, 0]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_51',
+        "command": 'set_bit',
+        "args": [0x7067, 1]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_52',
+        "command": 'set_bit',
+        "args": [0x7067, 2]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_53',
+        "command": 'set_bit',
+        "args": [0x7067, 3]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_54',
+        "command": 'set_bit',
+        "args": [0x7067, 4]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_55',
+        "command": 'set_bit',
+        "args": [0x7067, 5]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_56',
+        "command": 'set_bit',
+        "args": [0x7067, 6]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_57',
+        "command": 'set_bit',
+        "args": [0x7067, 7]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_58',
+        "command": 'set_bit',
+        "args": [0x7068, 0]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_59',
+        "command": 'set_bit',
+        "args": [0x7068, 1]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_60',
+        "command": 'set_bit',
+        "args": [0x7068, 2]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_60_',
+        "command": 'set_bit',
+        "args": [0x7068, 3]
+    },
+    {
+        "identifier": 'EVENT_0_set_bit_61',
+        "command": 'set_bit',
+        "args": [0x7068, 4]
+    },
+    {
+        "identifier": 'EVENT_0_remove_from_level_62',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, Rooms._324_MONSTRO_TOWN_OUTSIDE]
+    },
+    {
+        "identifier": 'EVENT_0_remove_from_level_63',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_3, Rooms._021_MUSHROOM_KINGDOM_CASTLE_BRANCH_ROOM_TO_VAULTGUEST_ROOM]
+    },
+    {
+        "identifier": 'EVENT_0_run_background_event_65',
+        "command": 'run_background_event',
+        "args": [343, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_5',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_3, Rooms._102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_6',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_4, Rooms._102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_7',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_5, Rooms._102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_8',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_6, Rooms._102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_9',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_7, Rooms._102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_10',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_8, Rooms._102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_11',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_9, Rooms._102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_12',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, Rooms._320_MUSHROOM_KINGDOM_CASTLE_ENTRANCE_TO_THRONE_ROOM]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_13',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_2, Rooms._207_BANDITS_WAY_AREA_02]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_14',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_3, Rooms._085_ROSE_TOWN_DURING_BOWYER_INN_1F]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_15',
+        "command": 'set_bit',
+        "args": [0x7044, 6]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_16',
+        "command": 'set_bit',
+        "args": [0x7049, 2]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_17',
+        "command": 'set_bit',
+        "args": [0x704c, 7]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_22',
+        "command": 'set_bit',
+        "args": [0x7054, 7]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_23',
+        "command": 'set_bit',
+        "args": [0x7056, 1]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_25',
+        "command": 'set_bit',
+        "args": [0x705d, 4]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_28',
+        "command": 'set_bit',
+        "args": [0x7060, 7]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_29',
+        "command": 'set_bit',
+        "args": [0x7062, 0]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_30',
+        "command": 'set_bit',
+        "args": [0x7063, 2]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_31',
+        "command": 'set_bit',
+        "args": [0x7066, 3]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_32',
+        "command": 'set_bit',
+        "args": [0x707a, 3]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_38',
+        "command": 'set_bit',
+        "args": [0x7084, 7]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_39',
+        "command": 'set_bit',
+        "args": [0x7085, 0]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_42',
+        "command": 'set_bit',
+        "args": [0x708b, 0]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_43',
+        "command": 'set_bit',
+        "args": [0x708b, 2]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_44',
+        "command": 'set_bit',
+        "args": [0x708b, 6]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_46',
+        "command": 'set_bit',
+        "args": [0x7091, 6]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_47',
+        "command": 'set_bit',
+        "args": [0x709c, 5]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_48',
+        "command": 'set_bit',
+        "args": [0x7055, 0]
+    },
+    {
+        "identifier": 'EVENT_0___enable_controls_49',
+        "command": 'enable_controls',
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
+    },
+    {
+        "identifier": 'EVENT_0___put_inventory_50',
+        "command": 'put_inventory',
+        "args": [0xa0]
+    },
+    {
+        "identifier": 'EVENT_0___restore_all_hp_51',
+        "command": 'restore_all_hp'
+    },
+    {
+        "identifier": 'EVENT_0___restore_all_fp_52',
+        "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_0___clear_bit_53',
+        "command": 'clear_bit',
+        "args": [0x7064, 0]
+    },
+    {
+        "identifier": 'EVENT_0___clear_bit_54',
+        "command": 'clear_bit',
+        "args": [0x7064, 1]
+    },
+    {
+        "identifier": 'EVENT_0___clear_bit_55',
+        "command": 'clear_bit',
+        "args": [0x7064, 2]
+    },
+    {
+        "identifier": 'EVENT_0___clear_bit_56',
+        "command": 'clear_bit',
+        "args": [0x7064, 3]
+    },
+    {
+        "identifier": 'EVENT_0___set_57',
+        "command": 'set',
+        "args": [0x70da, 0]
+    },
+    {
+        "identifier": 'EVENT_0___set_58',
+        "command": 'set',
+        "args": [0x70db, 0]
+    },
+    {
+        "identifier": 'EVENT_0___set_59',
+        "command": 'set',
+        "args": [0x70dc, 0]
+    },
+    {
+        "identifier": 'EVENT_0___set_60',
+        "command": 'set',
+        "args": [0x70dd, 0]
+    },
+    {
+        "identifier": 'EVENT_0___stop_music_FDA2_61',
+        "command": 'stop_music_FDA2'
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_64',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_7, Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_65',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_69',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_2, Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_70',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_71',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, Rooms._276_MOLEVILLE_MINES_AREA_01_ENTRANCE]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_72',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_11, Rooms._005_MARRYMORE_OUTSIDE_DURING_BOOSTER]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_73',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_8, Rooms._152_MARRYMORE_CHAPEL_MAIN_HALL]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_74',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_9, Rooms._152_MARRYMORE_CHAPEL_MAIN_HALL]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_75',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_76',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_13, Rooms._416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_77',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_14, Rooms._416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_78',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_7, Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_79',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_6, Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_80',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_8, Rooms._120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_81',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_7, Rooms._120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_82',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_9, Rooms._120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_83',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, Rooms._387_VOLCANO_AREA_19_FROM_HINO_MART_WSAVE_POINT]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_84',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_3, Rooms._367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP]
+    },
+    {
+        "identifier": 'EVENT_0___summon_to_level_85',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_1, Rooms._368_NIMBUS_LAND_ROYAL_BUS_STATION]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_86',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_2, Rooms._202_BOOSTER_TOWER_ENTRANCE]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_87',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, Rooms._202_BOOSTER_TOWER_ENTRANCE]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_88',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
+    },
+    {
+        "identifier": 'EVENT_0___remove_from_level_89',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, Rooms._021_MUSHROOM_KINGDOM_CASTLE_BRANCH_ROOM_TO_VAULTGUEST_ROOM]
+    },
+    {
+        "identifier": 'EVENT_0___set_bit_96',
+        "command": 'set_bit',
+        "args": [0x705f, 3]
+    },
+    {
+        "identifier": 'EVENT_0___clear_bit_97',
+        "command": 'clear_bit',
+        "args": [0x7056, 0]
+    },
+    {
+        "identifier": 'EVENT_0___apply_tile_mod_98',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0___apply_solidity_mod_99',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, 0, [_0x6BFlags.PERMANENT]]
+    },
+    {
+        "identifier": 'EVENT_0___apply_tile_mod_100',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0___apply_solidity_mod_101',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 0, [_0x6BFlags.PERMANENT]]
+    },
+    {
+        "identifier": 'EVENT_0___apply_tile_mod_102',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0___apply_solidity_mod_103',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, 0, [_0x6BFlags.PERMANENT]]
+    },
+    {
+        "identifier": 'EVENT_0___clear_bit_104',
+        "command": 'clear_bit',
+        "args": [0x7098, 1]
+    },
+    {
+        "identifier": 'EVENT_0___clear_bit_105',
+        "command": 'clear_bit',
+        "args": [0x7089, 5]
+    },
+    {
+        "identifier": 'EVENT_0_____set_bit_1',
+        "command": 'set_bit',
+        "args": [0x7053, 0]
+    },
+    {
+        "identifier": 'EVENT_0_____set_bit_2',
+        "command": 'set_bit',
+        "args": [0x7053, 1]
+    },
+    {
+        "identifier": 'EVENT_0_____set_bit_6',
+        "command": 'set_bit',
+        "args": [0x7065, 1]
+    },
+    {
+        "identifier": 'EVENT_0_____set_bit_7',
+        "command": 'set_bit',
+        "args": [0x7065, 2]
+    },
+    {
+        "identifier": 'EVENT_0_____set_bit_8',
+        "command": 'set_bit',
+        "args": [0x7065, 3]
+    },
+    {
+        "identifier": 'EVENT_0_____clear_bit_13',
+        "command": 'clear_bit',
+        "args": [0x7056, 6]
+    },
+    {
+        "identifier": 'EVENT_0_____clear_bit_14',
+        "command": 'clear_bit',
+        "args": [0x7056, 7]
+    },
+    {
+        "identifier": 'EVENT_0_____join_party_15',
+        "command": 'join_party',
+        "args": [AreaObjects.DUMMY_0X05]
+    },
+    {
+        "identifier": 'EVENT_0_____leave_party_16',
+        "command": 'leave_party',
+        "args": [AreaObjects.MARIO]
+    },
+    {
+        "identifier": 'EVENT_0_____join_party_17',
+        "command": 'join_party',
+        "args": [AreaObjects.MARIO]
+    },
+    {
+        "identifier": 'EVENT_0_____leave_party_22',
+        "command": 'leave_party',
+        "args": [AreaObjects.DUMMY_0X05]
+    },
+    {
+        "identifier": 'EVENT_0_____put_inventory_23',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_0_____put_inventory_24',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_0_____put_inventory_25',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_0_____action_queue_sync_26',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_0_____action_queue_sync_26_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [13, 13, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_sync_26_SUBSCRIPT_shift_west_pixels_1',
+                "command": 'shift_west_pixels',
+                "args": [11]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_sync_26_SUBSCRIPT_floating_off_2',
+                "command": 'floating_off'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_sync_26_SUBSCRIPT_visibility_off_3',
+                "command": 'visibility_off'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_sync_26_SUBSCRIPT_ret_4',
+                "command": 'ret'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_0_____pause_action_script_29',
+        "command": 'pause_action_script',
+        "args": [AreaObjects.NPC_1]
+    },
+    {
+        "identifier": 'EVENT_0_____jmp_if_bit_set_30',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7089, 5, 'EVENT_0_____set_bit_32']
+    },
+    {
+        "identifier": 'EVENT_0_____jmp_31',
+        "command": 'jmp',
+        "args": ['EVENT_0_____enter_area_178']
+    },
+    {
+        "identifier": 'EVENT_0_____jmp_34',
+        "command": 'jmp',
+        "args": ['EVENT_0_____enter_area_178']
+    },
+    {
+        "identifier": 'EVENT_0_____ret_35',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_0_____enter_area_178',
+        "command": 'enter_area',
+        "args": [Rooms._189_MARIOS_PIPEHOUSE, RadialDirections.SOUTHEAST, 3, 13, 0, []]
+    },
+    {
+        "identifier": 'EVENT_0_____palette_set_179',
+        "command": 'palette_set',
+        "args": [33, 7, [0]]
+    },
+    {
+        "identifier": 'EVENT_0_____action_queue_async_181',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_0_____action_queue_async_181_SUBSCRIPT_floating_off_0',
+                "command": 'floating_off'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_181_SUBSCRIPT_transfer_to_xyzf_1',
+                "command": 'transfer_to_xyzf',
+                "args": [3, 9, 3, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_181_SUBSCRIPT_shift_southwest_pixels_2',
+                "command": 'shift_southwest_pixels',
+                "args": [6]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_181_SUBSCRIPT_shift_z_up_pixels_3',
+                "command": 'shift_z_up_pixels',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_181_SUBSCRIPT_face_southeast_4',
+                "command": 'face_southeast'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_181_SUBSCRIPT_set_sprite_sequence_5',
+                "command": 'set_sprite_sequence',
+                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_181_SUBSCRIPT_shadow_off_6',
+                "command": 'shadow_off'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_0_____action_queue_async_182',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_0_____action_queue_async_182_SUBSCRIPT_fixed_f_coord_off_0',
+                "command": 'fixed_f_coord_off'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_182_SUBSCRIPT_visibility_off_1',
+                "command": 'visibility_off'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_182_SUBSCRIPT_face_northeast_2',
+                "command": 'face_northeast'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_0_____set_action_script_sync_183',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.MARIO, 95]
+    },
+    {
+        "identifier": 'EVENT_0_____freeze_camera_184',
+        "command": 'freeze_camera'
+    },
+    {
+        "identifier": 'EVENT_0_____action_queue_async_185',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_0_____action_queue_async_185_SUBSCRIPT_shift_southwest_pixels_0',
+                "command": 'shift_southwest_pixels',
+                "args": [2]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_0_____fade_in_from_black_async_186',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_0_____jmp_188',
+        "command": 'jmp',
+        "args": ['EVENT_0_____play_music_default_volume_242']
+    },
+    {
+        "identifier": 'EVENT_0_____play_music_default_volume_242',
+        "command": 'play_music_default_volume',
+        "args": [Music._14_MARIOS_PAD]
+    },
+    {
+        "identifier": 'EVENT_0_____pause_243',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'EVENT_0_____set_7000_to_tapped_button_244',
+        "command": 'set_7000_to_tapped_button'
+    },
+    {
+        "identifier": 'EVENT_0_____pause_245',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'EVENT_0_____mem_7000_and_const_246',
+        "command": 'mem_7000_and_const',
+        "args": [0x0080]
+    },
+    {
+        "identifier": 'EVENT_0_____jmp_if_7000_equals_short_247',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_0_____pause_action_script_249']
+    },
+    {
+        "identifier": 'EVENT_0_____jmp_248',
+        "command": 'jmp',
+        "args": ['EVENT_0_____set_7000_to_tapped_button_244']
+    },
+    {
+        "identifier": 'EVENT_0_____pause_action_script_249',
+        "command": 'pause_action_script',
+        "args": [AreaObjects.MARIO]
+    },
+    {
+        "identifier": 'EVENT_0_____action_queue_async_250',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_reset_properties_0',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_fixed_f_coord_off_1',
+                "command": 'fixed_f_coord_off'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_sequence_playback_on_2',
+                "command": 'sequence_playback_on'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_face_southeast_3',
+                "command": 'face_southeast'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_shadow_on_4',
+                "command": 'shadow_on'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_set_animation_speed_5',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_jump_to_height_6',
+                "command": 'jump_to_height',
+                "args": [69]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_floating_on_7',
+                "command": 'floating_on'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_shift_southeast_steps_8',
+                "command": 'shift_southeast_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_pause_9',
+                "command": 'pause',
+                "args": [35]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_play_sound_10',
+                "command": 'play_sound',
+                "args": [Sounds._056_SHAKE_HEAD, 6]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_set_animation_speed_11',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_pause_12',
+                "command": 'pause',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_set_sprite_sequence_13',
+                "command": 'set_sprite_sequence',
+                "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_pause_14',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_stop_sound_15',
+                "command": 'stop_sound'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_reset_properties_16',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_0_____action_queue_async_250_SUBSCRIPT_set_animation_speed_17',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_0_____pause_251',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_0_____remove_from_level_252',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, Rooms._396_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_2F]
+    },
+    {
+        "identifier": 'EVENT_0______remove_from_level_173',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE]
+    },
+    {
+        "identifier": 'EVENT_0______apply_tile_mod_203',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0______apply_solidity_mod_204',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
+    },
+    {
+        "identifier": 'EVENT_0_______apply_tile_mod_29',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._084_ROSE_TOWN_OUTSIDE, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_0_______apply_solidity_mod_30',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._084_ROSE_TOWN_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
+    },
+    {
+        "identifier": 'EVENT_0_____ret_253',
+        "command": 'ret'
+    }
+]

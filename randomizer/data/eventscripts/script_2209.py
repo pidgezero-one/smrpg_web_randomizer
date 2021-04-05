@@ -35,7 +35,7 @@ script = [
     {
         "identifier": 'EVENT_2209_action_queue_async_3',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2209_action_queue_async_3_SUBSCRIPT_shirt_to_xy_coords_0',
@@ -146,7 +146,7 @@ script = [
     {
         "identifier": 'EVENT_2209_action_queue_async_5',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2209_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',
@@ -177,8 +177,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2209_jmp_to_event_9',
-        "command": 'jmp_to_event',
-        "args": [3819]
+        "command": 'reset_and_choose_game'
     },
     {
         "identifier": 'EVENT_2209_fade_in_from_black_async_10',
@@ -197,7 +196,7 @@ script = [
     {
         "identifier": 'EVENT_2209_action_queue_async_13',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2209_action_queue_async_13_SUBSCRIPT_face_southeast_0',
@@ -283,7 +282,7 @@ script = [
     {
         "identifier": 'EVENT_2209_action_queue_async_14',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2209_action_queue_async_14_SUBSCRIPT_pause_0',
@@ -461,7 +460,7 @@ script = [
     {
         "identifier": 'EVENT_2209_action_queue_async_18',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2209_action_queue_async_18_SUBSCRIPT_reset_properties_0',
@@ -480,7 +479,7 @@ script = [
     {
         "identifier": 'EVENT_2209_action_queue_async_19',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2209_action_queue_async_19_SUBSCRIPT_set_animation_speed_0',
@@ -558,298 +557,6 @@ script = [
     },
     {
         "identifier": 'EVENT_2209_ret_26',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_27',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_28',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_29',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_30',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_31',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_32',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_33',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_34',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_35',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_36',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_37',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_38',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_39',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_40',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_41',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_42',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_43',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_44',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_45',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_46',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_47',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_48',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_49',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_50',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_51',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_52',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_53',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_54',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_55',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_56',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_57',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_58',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_59',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_60',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_61',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_62',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_63',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_64',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_65',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_66',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_67',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_68',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_69',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_70',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_71',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_72',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_73',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_74',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_75',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_76',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_77',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_78',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_79',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_80',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_81',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_82',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_83',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_84',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_85',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_86',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_87',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_88',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_89',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_90',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_91',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_92',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_93',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_94',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_95',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_96',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_97',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_stop_sound_98',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2209_ret_99',
         "command": 'ret'
     }
 ]

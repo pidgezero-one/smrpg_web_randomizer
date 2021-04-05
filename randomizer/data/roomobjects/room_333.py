@@ -17,17 +17,6 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-    },
-    {
-      "event": 3117,
-      "x": 1,
-      "y": 25,
-      "z": 0,
-      "f": Edge.SOUTHWEST,
-      "length": 2,
-      "height": 0,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
     }
   ],
   "exit_fields": [
@@ -45,41 +34,5 @@ room = {
       "show_message": False
     }
   ],
-  "objects": [
-    {
-      "id": 0,
-      "type": ObjectType.OBJECT,
-      "initiator": Initiator.NONE,
-      "model": 9,
-      "event_script": 256,
-      "action_script": 0,
-      "speed": 0,
-      "npc_id_offset": 0,
-      "event_offset": 0,
-      "action_offset": 0,
-      "visible": False,
-      "x": 11,
-      "y": 35,
-      "z": 2,
-      "z_half": False,
-      "direction": RadialDirection.SOUTHWEST,
-      "face_on_trigger": False,
-      "cant_enter_doors": False,
-      "byte2_bit5": False,
-      "set_sequence_playback": True,
-      "cant_float": True,
-      "cant_walk_up_stairs": False,
-      "cant_walk_under": False,
-      "cant_pass_walls": True,
-      "cant_jump_through": False,
-      "cant_pass_npcs": False,
-      "byte3_bit5": False,
-      "cant_walk_through": False,
-      "byte3_bit7": False,
-      "slidable_along_walls": True,
-      "cant_move_if_in_air": True,
-      "byte7_upper2": 0x03,
-      "clones": []
-    }
-  ]
+  "objects": []
 }

@@ -231,14 +231,14 @@ def patch_overworld_bosses(world):
                                         north_facing_statues = [2, 3]
                                         south_facing_statues = [1, 4]
                                     elif room_id == 497:
-                                        north_facing_statues = rooms[room_id]["objects"]
+                                        north_facing_statues = world.rooms[room_id]["objects"]
                                         south_facing_statues = []
                                     else:
-                                        divider = len(rooms[room_id]["objects"]) - math.ceil(len(rooms[room_id]["objects"]) / 2)
-                                        south_facing_statues = rooms[room_id]["objects"][:divider]
-                                        north_facing_statues = rooms[room_id]["objects"][divider:]
+                                        divider = len(world.rooms[room_id]["objects"]) - math.ceil(len(world.rooms[room_id]["objects"]) / 2)
+                                        south_facing_statues = world.rooms[room_id]["objects"][:divider]
+                                        north_facing_statues = world.rooms[room_id]["objects"][divider:]
                                 else: # if sprite doesn't support north, have them all face southwest
-                                    south_facing_statues = rooms[room_id]["objects"]
+                                    south_facing_statues = world.rooms[room_id]["objects"]
                                     north_facing_statues = []
 
                                 # apply pixel shift
@@ -286,28 +286,28 @@ def patch_overworld_bosses(world):
 
 
 
-                        index, level_object = next((i for i, n in enumerate(rooms[room_id]["objects"]) if n["id"] == npc_id), None)
-                            if index is not None:
+                        #index, level_object = next((i for i, n in enumerate(world.rooms[room_id]["objects"]) if n["id"] == npc_id), None)
+                        #    if index is not None:
 
 
                         # replace existing commands in scripts where appropriate
                         # may need a traversal
 
                         # invert F on relevant room object if this NPC has invert_se_sw set to true
-                        for index in range(len(rooms[room_id]["objects"])):
-                            level_object = rooms[room_id]["objects"][index]
-                                if invert_directions:
-                                    if level_object.id === npc_id:
-                                        original_model = {**level_object}
-                                        original_model.direction == invert_direction(original_model.direction)
-                                        world.rooms[room_id]["objects"][index] = {**original_model}
-                                    else:
-                                        for cindex in range(len(rooms[room_id]["objects"][index]["clones"])):
-                                            clone_object = world.rooms[room_id]["objects"][index]["clones"][cindex]
-                                            if clone_object.id === npc_id:
-                                                original_model = {**clone_object}
-                                                original_model.direction == invert_direction(original_model.direction)
-                                                world.rooms[room_id]["objects"][index]["clones"][cindex] = {**original_model}
+                        for index in range(len(world.rooms[room_id]["objects"])):
+                            level_object = world.rooms[room_id]["objects"][index]
+                            if invert_directions:
+                                if level_object.id == npc_id:
+                                    original_model = {**level_object}
+                                    original_model.direction == invert_direction(original_model.direction)
+                                    world.rooms[room_id]["objects"][index] = {**original_model}
+                                else:
+                                    for cindex in range(len(world.rooms[room_id]["objects"][index]["clones"])):
+                                        clone_object = world.rooms[room_id]["objects"][index]["clones"][cindex]
+                                        if clone_object.id == npc_id:
+                                            original_model = {**clone_object}
+                                            original_model.direction == invert_direction(original_model.direction)
+                                            world.rooms[room_id]["objects"][index]["clones"][cindex] = {**original_model}
 
 
                         # how to resolve partitions?
@@ -331,7 +331,7 @@ def patch_overworld_bosses(world):
                         else:
                             preloaders[script_id][room_id].extend(preloader_scripts_for_this_room)
                         preloaders[script_id][room_id].append({
-                            "identifier": 'event_%i_room_%i_preloader_end_jump' % (event_id, room_id),
+                            "identifier": 'event_%i_room_%i_preloader_end_jump' % (script_id, room_id),
                             "command": 'jmp',
                             "args": [first_event]
                         })
@@ -351,13 +351,14 @@ def patch_overworld_bosses(world):
                                 "args": [room_id, jump_target]
                             })
                     if len(preloader_script) > 0:
+                        truthy_scripts = [s for s in preloaders[script_id] if s is not None]
                         final_script = [
                             {
                                 "identifier": "event_%i_preloader_set_var" % script_id,
                                 "command": "set_7000_to_current_level"
                             },
                             *preloader_script,
-                            *[*s for s in preloaders[script_id] where s is not None],
+                            *[item for sublist in truthy_scripts for item in sublist], # will this unpack?
                             *world.eventscripts[script_id]
                         ]
                         world.eventscripts[script_id] = final_script

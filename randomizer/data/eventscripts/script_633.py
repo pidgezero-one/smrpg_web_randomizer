@@ -11,16 +11,6 @@ script = [
         "args": [0x704c, 6, 'EVENT_633_enter_area_4']
     },
     {
-        "identifier": 'EVENT_633_jmp_if_bit_clear_1',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7063, 2, 'EVENT_256_ret_0']
-    },
-    {
-        "identifier": 'EVENT_633_enter_area_2',
-        "command": 'enter_area',
-        "args": [Rooms._005_MARRYMORE_OUTSIDE_DURING_BOOSTER, RadialDirections.SOUTHWEST, 18, 64, 6, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
         "identifier": 'EVENT_633_ret_3',
         "command": 'ret'
     },

@@ -6,19 +6,7 @@ room = {
   "partition": 94,
   "music": Music._66_BOWSERS_CASTLE_2ND_TIME,
   "entrance_event": 1867,
-  "event_tiles": [
-    {
-      "event": 1866,
-      "x": 4,
-      "y": 30,
-      "z": 0,
-      "f": Edge.SOUTHWEST,
-      "length": 2,
-      "height": 0,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    }
-  ],
+  "event_tiles": [],
   "exit_fields": [
     {
       "x": 4,

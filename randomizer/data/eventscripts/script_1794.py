@@ -21,11 +21,6 @@ script = [
         "args": [0x7076, 0, 'EVENT_1794_action_queue_sync_77']
     },
     {
-        "identifier": 'EVENT_1794_jmp_if_object_trigger_enabled_3',
-        "command": 'jmp_if_object_trigger_enabled',
-        "args": [AreaObjects.NPC_5, Rooms._263_LANDS_END_UNDERGROUND_AREA_01, 'EVENT_1794_run_dialog_75']
-    },
-    {
         "identifier": 'EVENT_1794_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
         "args": [0x7050, 0, 'EVENT_1794_jmp_if_bit_set_26']
@@ -132,21 +127,6 @@ script = [
         "identifier": 'EVENT_1794_set_action_script_async_21',
         "command": 'set_action_script_async',
         "args": [AreaObjects.MARIO, 671]
-    },
-    {
-        "identifier": 'EVENT_1794_run_dialog_22',
-        "command": 'run_dialog',
-        "args": [1225, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1794_jmp_to_subroutine_23',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1794_set_72']
-    },
-    {
-        "identifier": 'EVENT_1794_remove_from_level_24',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_16, Rooms._262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS]
     },
     {
         "identifier": 'EVENT_1794_ret_25',
@@ -569,15 +549,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1794_ret_74',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1794_run_dialog_75',
-        "command": 'run_dialog',
-        "args": [1221, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1794_ret_76',
         "command": 'ret'
     },
     {

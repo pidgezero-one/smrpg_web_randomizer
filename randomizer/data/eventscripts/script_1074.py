@@ -684,11 +684,6 @@ script = [
         "args": [15]
     },
     {
-        "identifier": 'EVENT_1074_run_dialog_108',
-        "command": 'run_dialog',
-        "args": [2724, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_1074_action_queue_async_109',
         "command": 'action_queue_async',
         "args": [AreaObjects.MARIO],
@@ -752,11 +747,6 @@ script = [
                 "args": [15]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_1074_run_dialog_115',
-        "command": 'run_dialog',
-        "args": [2724, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1074_action_queue_async_116',
@@ -854,11 +844,6 @@ script = [
                 "args": [1, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_1074_run_dialog_123',
-        "command": 'run_dialog',
-        "args": [2724, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1074_action_queue_async_124',
@@ -968,11 +953,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1074_run_dialog_131',
-        "command": 'run_dialog',
-        "args": [2724, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_1074_action_queue_async_132',
         "command": 'action_queue_async',
         "args": [AreaObjects.MARIO],
@@ -1073,11 +1053,6 @@ script = [
                 "args": [1, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_1074_run_dialog_139',
-        "command": 'run_dialog',
-        "args": [2724, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1074_action_queue_async_140',
@@ -1358,52 +1333,6 @@ script = [
         "identifier": 'EVENT_1074_set_bit_173',
         "command": 'set_bit',
         "args": [0x7093, 0]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_174',
-        "command": 'jmp',
-        "args": ['EVENT_1074_action_queue_async_185']
-    },
-    {
-        "identifier": 'EVENT_1074_stop_sound_175',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1074_stop_sound_176',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1074_stop_sound_177',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1074_stop_sound_178',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1074_stop_sound_179',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1074_stop_sound_180',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1074_stop_sound_181',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1074_stop_sound_182',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1074_stop_sound_183',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1074_run_dialog_184',
-        "command": 'run_dialog',
-        "args": [2734, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1074_action_queue_async_185',

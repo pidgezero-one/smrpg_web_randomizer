@@ -6,26 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1862_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7095, 1, 'EVENT_1862_run_dialog_3']
-    },
-    {
-        "identifier": 'EVENT_1862_run_dialog_1',
-        "command": 'run_dialog',
-        "args": [1278, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1862_set_bit_2',
-        "command": 'set_bit',
-        "args": [0x7095, 1]
-    },
-    {
-        "identifier": 'EVENT_1862_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [1279, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_1862_open_shop_4',
         "command": 'open_shop',
         "args": [Shops._22_CROCOS_SHOP_1]

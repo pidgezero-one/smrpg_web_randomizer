@@ -6,20 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2800_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708c, 4, 'EVENT_2800_open_location_3']
-    },
-    {
-        "identifier": 'EVENT_2800_open_location_1',
-        "command": 'open_location',
-        "args": [Locations._040_GRATE_GUYS_CASINO, [6, 7]]
-    },
-    {
-        "identifier": 'EVENT_2800_ret_2',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_2800_open_location_3',
         "command": 'open_location',
         "args": [Locations._046_GRATE_GUYS_CASINO, [6, 7]]

@@ -7,19 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3753_stop_sound_0',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3753_stop_sound_1',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3753_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3753_stop_sound_3',
-        "command": 'stop_sound'
+        "command": 'jmp_if_bit_clear',
+        "args": [0x705F, 4, 'EVENT_3753_jmp_if_bit_set_7']
     },
     {
         "identifier": 'EVENT_3753_action_queue_sync_4',

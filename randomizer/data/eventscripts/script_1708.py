@@ -337,69 +337,6 @@ script = [
         "args": ['EVENT_1708_action_queue_async_37']
     },
     {
-        "identifier": 'EVENT_1708_jmp_29',
-        "command": 'jmp',
-        "args": ['EVENT_1708_run_background_event_35']
-    },
-    {
-        "identifier": 'EVENT_1708_summon_to_current_level_at_marios_coords_30',
-        "command": 'summon_to_current_level_at_marios_coords',
-        "args": [AreaObjects.NPC_10]
-    },
-    {
-        "identifier": 'EVENT_1708_action_queue_async_31',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_10],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1708_action_queue_async_31_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_1708_action_queue_async_31_SUBSCRIPT_walk_1_step_southwest_1',
-                "command": 'walk_1_step_southwest'
-            },
-            {
-                "identifier": 'EVENT_1708_action_queue_async_31_SUBSCRIPT_walk_1_step_southeast_2',
-                "command": 'walk_1_step_southeast'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_1708_run_dialog_32',
-        "command": 'run_dialog',
-        "args": [1068, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_1708_action_queue_async_33',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_10],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1708_action_queue_async_33_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_1708_action_queue_async_33_SUBSCRIPT_walk_1_step_northwest_1',
-                "command": 'walk_1_step_northwest'
-            },
-            {
-                "identifier": 'EVENT_1708_action_queue_async_33_SUBSCRIPT_walk_1_step_northeast_2',
-                "command": 'walk_1_step_northeast'
-            },
-            {
-                "identifier": 'EVENT_1708_action_queue_async_33_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_1708_stop_sound_34',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_1708_run_background_event_35',
         "command": 'run_background_event',
         "args": [1709, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]

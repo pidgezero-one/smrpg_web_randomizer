@@ -53,16 +53,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3781_set_bit_4',
-        "command": 'set_bit',
-        "args": [0x7068, 1]
-    },
-    {
-        "identifier": 'EVENT_3781_set_bit_5',
-        "command": 'set_bit',
-        "args": [0x7070, 0]
-    },
-    {
         "identifier": 'EVENT_3781_fade_in_from_black_async_6',
         "command": 'fade_in_from_black_async'
     },
@@ -75,16 +65,6 @@ script = [
         "identifier": 'EVENT_3781_jmp_if_mario_in_air_8',
         "command": 'jmp_if_mario_in_air',
         "args": ['EVENT_3781_pause_7']
-    },
-    {
-        "identifier": 'EVENT_3781_set_bit_9',
-        "command": 'set_bit',
-        "args": [0x7068, 1]
-    },
-    {
-        "identifier": 'EVENT_3781_set_bit_10',
-        "command": 'set_bit',
-        "args": [0x7070, 0]
     },
     {
         "identifier": 'EVENT_3781_set_11',

@@ -6,6 +6,16 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1370_pause_1',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_1370_play_sound____',
+        "command": 'play_sound',
+        "args": [Sounds._088_WRONG_SIGNAL, 6]
+    },
+    {
         "identifier": 'EVENT_1370_jmp_if_var_equals_short_0',
         "command": 'jmp_if_var_equals_short',
         "args": [0x7026, 2, 'EVENT_1369_pause_0']
@@ -182,59 +192,12 @@ script = [
         "args": [20]
     },
     {
-        "identifier": 'EVENT_1370_jmp_if_var_equals_short_15',
-        "command": 'jmp_if_var_equals_short',
-        "args": [0x7026, 1, 'EVENT_1370_inc_short_26']
-    },
-    {
         "identifier": 'EVENT_1370_inc_short_16',
         "command": 'inc_short',
         "args": [0x7026]
     },
     {
         "identifier": 'EVENT_1370_jmp_17',
-        "command": 'jmp',
-        "args": ['EVENT_1358_jmp_66']
-    },
-    {
-        "identifier": 'EVENT_1370_stop_sound_18',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1370_stop_sound_19',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1370_stop_sound_20',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1370_stop_sound_21',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1370_stop_sound_22',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1370_stop_sound_23',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1370_stop_sound_24',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1370_stop_sound_25',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1370_inc_short_26',
-        "command": 'inc_short',
-        "args": [0x7026]
-    },
-    {
-        "identifier": 'EVENT_1370_jmp_27',
         "command": 'jmp',
         "args": ['EVENT_1358_jmp_66']
     }

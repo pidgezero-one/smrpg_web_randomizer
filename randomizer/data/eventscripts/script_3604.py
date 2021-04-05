@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_3604_jmp_if_object_not_in_level_0',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_5, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, 'EVENT_3604_jmp_if_object_trigger_disabled_2']
+        "args": [AreaObjects.NPC_5, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, 'EVENT_3604_ret_6']
     },
     {
         "identifier": 'EVENT_3604_action_queue_async_1',
@@ -19,38 +19,6 @@ script = [
                 "identifier": 'EVENT_3604_action_queue_async_1_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [254, 250, 0, RadialDirections.EAST]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3604_jmp_if_object_trigger_disabled_2',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_9, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, 'EVENT_3604_jmp_if_object_trigger_disabled_4']
-    },
-    {
-        "identifier": 'EVENT_3604_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3604_action_queue_async_3_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3604_jmp_if_object_trigger_disabled_4',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_10, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, 'EVENT_3604_ret_6']
-    },
-    {
-        "identifier": 'EVENT_3604_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_10],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3604_action_queue_async_5_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
             }
         ]
     },

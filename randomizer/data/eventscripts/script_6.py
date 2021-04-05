@@ -4,4 +4,145 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_6_set_random_1',
+        "command": 'set_random',
+        "args": [0x7000, 10]
+    },
+    {
+        "identifier": 'EVENT_6_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_6_set_3']
+    },
+    {
+        "identifier": 'EVENT_6_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_6_set_4']
+    },
+    {
+        "identifier": 'EVENT_6_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_6_set_5']
+    },
+    {
+        "identifier": 'EVENT_6_jmp_if_7000_equals_short_6',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4, 'EVENT_6_set_6']
+    },
+    {
+        "identifier": 'EVENT_6_jmp_if_7000_equals_short_7',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5, 'EVENT_6_set_7']
+    },
+    {
+        "identifier": 'EVENT_6_jmp_if_7000_equals_short_8',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [6, 'EVENT_6_set_8']
+    },
+    {
+        "identifier": 'EVENT_6_jmp_if_7000_equals_short_9',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7, 'EVENT_6_set_9']
+    },
+    {
+        "identifier": 'EVENT_6_jmp_if_7000_equals_short_10',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [8, 'EVENT_6_set_10']
+    },
+    {
+        "identifier": 'EVENT_6_jmp_if_7000_equals_short_11',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [9, 'EVENT_6_set_11']
+    },
+    {
+        "identifier": 'EVENT_6_set_2',
+        "command": 'set',
+        "args": [0x70A7, 97]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_6_set_3',
+        "command": 'set',
+        "args": [0x70A7, 100]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_6_set_4',
+        "command": 'set',
+        "args": [0x70A7, 104]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_6_set_5',
+        "command": 'set',
+        "args": [0x70A7, 105]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_6_set_6',
+        "command": 'set',
+        "args": [0x70A7, 112]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_6_set_7',
+        "command": 'set',
+        "args": [0x70A7, 115]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_6_set_8',
+        "command": 'set',
+        "args": [0x70A7, 118]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_6_set_9',
+        "command": 'set',
+        "args": [0x70A7, 121]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_6_set_10',
+        "command": 'set',
+        "args": [0x70A7, 127]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_6_set_11',
+        "command": 'set',
+        "args": [0x70A7, 144]
+    },
+    {
+        "identifier": 'EVENT_6_ret',
+        "command": 'ret'
+    }
+]

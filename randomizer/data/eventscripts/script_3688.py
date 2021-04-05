@@ -162,16 +162,6 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_3688_run_dialog_16',
-        "command": 'run_dialog',
-        "args": [3846, AreaObjects.NPC_14, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3688_jmp_if_dialog_option_b_17',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3688_close_dialog_34']
-    },
-    {
         "identifier": 'EVENT_3688_run_dialog_18',
         "command": 'run_dialog',
         "args": [3847, AreaObjects.NPC_14, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
@@ -195,75 +185,6 @@ script = [
         "identifier": 'EVENT_3688_jmp_if_bit_set_22',
         "command": 'jmp_if_bit_set',
         "args": [0x7049, 3, 'EVENT_3688_run_dialog_52']
-    },
-    {
-        "identifier": 'EVENT_3688_run_dialog_23',
-        "command": 'run_dialog',
-        "args": [3849, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3688_action_queue_async_24',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_shift_northwest_steps_1',
-                "command": 'shift_northwest_steps',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_shift_southwest_steps_2',
-                "command": 'shift_southwest_steps',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off'
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [90]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_face_northeast_5',
-                "command": 'face_northeast'
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_visibility_on_6',
-                "command": 'visibility_on'
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_shift_northeast_steps_7',
-                "command": 'shift_northeast_steps',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_shift_southeast_steps_8',
-                "command": 'shift_southeast_steps',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_24_SUBSCRIPT_set_animation_speed_9',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3688_pause_25',
-        "command": 'pause',
-        "args": [30]
-    },
-    {
-        "identifier": 'EVENT_3688_run_dialog_26',
-        "command": 'run_dialog',
-        "args": [3850, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3688_set_27',
@@ -302,16 +223,6 @@ script = [
     {
         "identifier": 'EVENT_3688_close_dialog_34',
         "command": 'close_dialog'
-    },
-    {
-        "identifier": 'EVENT_3688_pause_35',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3688_run_dialog_36',
-        "command": 'run_dialog',
-        "args": [3851, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3688_action_queue_async_37',
@@ -353,75 +264,6 @@ script = [
         "identifier": 'EVENT_3688_jmp_if_bit_set_43',
         "command": 'jmp_if_bit_set',
         "args": [0x7049, 3, 'EVENT_3688_run_dialog_52']
-    },
-    {
-        "identifier": 'EVENT_3688_run_dialog_44',
-        "command": 'run_dialog',
-        "args": [3849, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3688_action_queue_async_45',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_shift_northwest_steps_1',
-                "command": 'shift_northwest_steps',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_shift_southwest_steps_2',
-                "command": 'shift_southwest_steps',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off'
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [90]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_face_northeast_5',
-                "command": 'face_northeast'
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_visibility_on_6',
-                "command": 'visibility_on'
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_shift_northeast_steps_7',
-                "command": 'shift_northeast_steps',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_shift_southeast_steps_8',
-                "command": 'shift_southeast_steps',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_3688_action_queue_async_45_SUBSCRIPT_set_animation_speed_9',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3688_pause_46',
-        "command": 'pause',
-        "args": [30]
-    },
-    {
-        "identifier": 'EVENT_3688_run_dialog_47',
-        "command": 'run_dialog',
-        "args": [3850, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3688_set_48',

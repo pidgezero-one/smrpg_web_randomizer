@@ -6,18 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1419_stop_sound_0',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1419_stop_sound_1',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1419_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_1419_summon_to_level_3',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_2, Rooms._203_MUSHROOM_WAY_AREA_01]

@@ -16,30 +16,6 @@ script = [
         "args": [0x708a, 2, 'EVENT_2066_run_dialog_35']
     },
     {
-        "identifier": 'EVENT_2066_jmp_2',
-        "command": 'jmp',
-        "args": ['EVENT_2066_action_queue_async_7']
-    },
-    {
-        "identifier": 'EVENT_2066_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [3033, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_2066_run_dialog_4',
-        "command": 'run_dialog',
-        "args": [3035, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_2066_pause_5',
-        "command": 'pause',
-        "args": [30]
-    },
-    {
-        "identifier": 'EVENT_2066_freeze_camera_6',
-        "command": 'freeze_camera'
-    },
-    {
         "identifier": 'EVENT_2066_action_queue_async_7',
         "command": 'action_queue_async',
         "args": [AreaObjects.MARIO],
@@ -325,7 +301,7 @@ script = [
     {
         "identifier": 'EVENT_2066_jmp_if_bit_set_22',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_2066_run_dialog_31']
+        "args": [0x7040, 1, 'EVENT_2066_ret_32']
     },
     {
         "identifier": 'EVENT_2066_jmp_if_bit_clear_23',
@@ -347,18 +323,8 @@ script = [
         "args": [Music._51_MONSTRO_TOWN]
     },
     {
-        "identifier": 'EVENT_2066_run_dialog_27',
-        "command": 'run_dialog',
-        "args": [3036, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_2066_ret_28',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2066_run_dialog_29',
-        "command": 'run_dialog',
-        "args": [3037, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2066_jmp_30',
@@ -366,21 +332,7 @@ script = [
         "args": ['EVENT_2067_action_queue_async_0']
     },
     {
-        "identifier": 'EVENT_2066_run_dialog_31',
-        "command": 'run_dialog',
-        "args": [2592, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_2066_ret_32',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2066_run_dialog_33',
-        "command": 'run_dialog',
-        "args": [3034, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_2066_ret_34',
         "command": 'ret'
     },
     {

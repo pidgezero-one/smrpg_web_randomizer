@@ -6,34 +6,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2080_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2080_action_queue_sync_0_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off'
-            },
-            {
-                "identifier": 'EVENT_2080_action_queue_sync_0_SUBSCRIPT_shift_southeast_pixels_1',
-                "command": 'shift_southeast_pixels',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_2080_action_queue_sync_0_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest'
-            },
-            {
-                "identifier": 'EVENT_2080_action_queue_sync_0_SUBSCRIPT_pause_3',
-                "command": 'pause',
-                "args": [1]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2080_action_queue_async_1',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',

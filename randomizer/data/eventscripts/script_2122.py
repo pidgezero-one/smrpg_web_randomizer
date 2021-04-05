@@ -24,25 +24,5 @@ script = [
         "identifier": 'EVENT_2122_jmp_to_event_3',
         "command": 'jmp_to_event',
         "args": [720]
-    },
-    {
-        "identifier": 'EVENT_2122_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2122_stop_sound_5',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2122_stop_sound_6',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2122_stop_sound_7',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2122_ret_8',
-        "command": 'ret'
     }
 ]

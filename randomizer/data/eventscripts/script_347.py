@@ -28,24 +28,6 @@ script = [
         "args": [0x709c, 2, 'EVENT_347_pause_action_script_13']
     },
     {
-        "identifier": 'EVENT_347_jmp_if_bit_set_2',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705d, 1, 'EVENT_347_pause_action_script_6']
-    },
-    {
-        "identifier": 'EVENT_347_jmp_if_bit_set_3',
-        "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_347_pause_action_script_6']
-    },
-    {
-        "identifier": 'EVENT_347_fade_in_from_black_async_4',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_347_ret_5',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_347_pause_action_script_6',
         "command": 'pause_action_script',
         "args": [AreaObjects.NPC_0]
@@ -75,32 +57,6 @@ script = [
         "identifier": 'EVENT_347_set_action_script_sync_8',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_0, 119]
-    },
-    {
-        "identifier": 'EVENT_347_jmp_if_bit_clear_9',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x705d, 1, 'EVENT_347_fade_in_from_black_async_11']
-    },
-    {
-        "identifier": 'EVENT_347_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
-        "subscript": [
-            {
-                "identifier": 'EVENT_347_action_queue_async_10_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [3, 63, 0, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_347_action_queue_async_10_SUBSCRIPT_set_sprite_sequence_1',
-                "command": 'set_sprite_sequence',
-                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_347_action_queue_async_10_SUBSCRIPT_face_southwest_2',
-                "command": 'face_southwest'
-            }
-        ]
     },
     {
         "identifier": 'EVENT_347_fade_in_from_black_async_11',

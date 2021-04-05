@@ -6,23 +6,23 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2241_jmp_if_bit_set_0',
+        "identifier": 'EVENT_2241_jmp_if_bit_set__0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7086, 6, 'EVENT_2241_enter_area_3']
+        "args": [0x7086, 0, 'EVENT_2241_enter_area_1']
+    },
+    {
+        "identifier": 'EVENT_2241_enter_area__1',
+        "command": 'enter_area',
+        "args": [ Rooms._211_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_1F, RadialDirections.NORTHEAST, 3, 101, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+    },
+    {
+        "identifier": 'EVENT_2241_ret__2',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2241_enter_area_1',
         "command": 'enter_area',
-        "args": [Rooms._309_SEASIDE_TOWN_BEETLES_ARE_US, RadialDirections.NORTHWEST, 16, 42, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_2241_ret_2',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2241_enter_area_3',
-        "command": 'enter_area',
-        "args": [Rooms._309_SEASIDE_TOWN_BEETLES_ARE_US, RadialDirections.NORTHWEST, 16, 42, 0, [_0x68Flags.SHOW_MESSAGE, _0x68Flags.RUN_ENTRANCE_EVENT]]
+        "args": [Rooms._307_SEASIDE_TOWN_ELDERS_HOUSE_1F, RadialDirections.NORTHEAST, 3, 101, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2241_ret_4',

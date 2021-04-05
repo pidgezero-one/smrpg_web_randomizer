@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2437_set_bit_0',
-        "command": 'set_bit',
-        "args": [0x706e, 4]
-    },
-    {
         "identifier": 'EVENT_2437_open_location_1',
         "command": 'open_location',
         "args": [Locations._019_FOREST_MAZE, [6, 7]]

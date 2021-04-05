@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_1153_jmp_if_bit_clear_0',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7086, 6, 'EVENT_1153_jmp_if_bit_set_4']
+        "args": [0x7086, 6, 'EVENT_1153_remove_from_current_level_2']
     },
     {
         "identifier": 'EVENT_1153_jmp_1',

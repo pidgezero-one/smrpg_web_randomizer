@@ -30,10 +30,6 @@ script = [
         "args": [AreaObjects.NPC_0, 869]
     },
     {
-        "identifier": 'EVENT_2098_ret_5',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_2098_ret_6',
         "command": 'ret'
     }

@@ -67,11 +67,6 @@ script = [
         "args": [AreaObjects.NPC_0, 59]
     },
     {
-        "identifier": 'EVENT_3364_run_dialog_6',
-        "command": 'run_dialog',
-        "args": [1920, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_3364_set_bit_7',
         "command": 'set_bit',
         "args": [0x7044, 7]

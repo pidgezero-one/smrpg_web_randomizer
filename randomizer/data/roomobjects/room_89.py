@@ -169,6 +169,18 @@ room = {
           "z": 0,
           "z_half": False,
           "direction": RadialDirection.NORTHWEST
+        },
+        {
+          "id": 4,
+          "npc_id_offset": 2,
+          "event_offset": 0,
+          "action_offset": 0,
+          "visible": True,
+          "x": 14,
+          "y": 10,
+          "z": 0,
+          "z_half": False,
+          "direction": RadialDirection.SOUTHWEST
         }
       ]
     }

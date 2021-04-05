@@ -10,34 +10,6 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_2233_stop_sound_1',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2233_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2233_stop_sound_3',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2233_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2233_stop_sound_5',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2233_stop_sound_6',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2233_stop_sound_7',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_2233_ret_8',
         "command": 'ret'
     }

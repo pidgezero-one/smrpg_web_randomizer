@@ -695,11 +695,6 @@ script = [
         "args": [AreaObjects.MARIO, 671]
     },
     {
-        "identifier": 'EVENT_2634_run_dialog_115',
-        "command": 'run_dialog',
-        "args": [3313, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_2634_set_action_script_async_116',
         "command": 'set_action_script_async',
         "args": [AreaObjects.MARIO, 395]

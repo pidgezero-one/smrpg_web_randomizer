@@ -14,21 +14,6 @@ script = [
         "identifier": 'EVENT_3213_fade_out_to_black_async_1',
         "command": 'fade_out_to_black_async'
     },
-    {
-        "identifier": 'EVENT_3213_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3213_stop_sound_3',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3213_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3213_stop_sound_5',
-        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3213_enter_area_6',

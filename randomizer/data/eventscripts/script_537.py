@@ -31,22 +31,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_537_jmp_if_object_trigger_disabled_4',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_2, Rooms._097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F, 'EVENT_537_jmp_6']
-    },
-    {
-        "identifier": 'EVENT_537_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_537_action_queue_sync_5_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_537_jmp_6',
         "command": 'jmp',
         "args": ['EVENT_537_fade_out_music_to_volume_10']
@@ -91,36 +75,6 @@ script = [
     {
         "identifier": 'EVENT_537_fade_in_from_black_async_12',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_537_run_event_as_subroutine_13',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_537_jmp_if_bit_clear_14',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_256_ret_0']
-    },
-    {
-        "identifier": 'EVENT_537_jmp_if_object_trigger_disabled_15',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_2, Rooms._097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F, 'EVENT_256_ret_0']
-    },
-    {
-        "identifier": 'EVENT_537_jmp_if_object_trigger_disabled_16',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_1, Rooms._098_ROSE_TOWN_TREASURE_HOUSE_2F, 'EVENT_256_ret_0']
-    },
-    {
-        "identifier": 'EVENT_537_play_sound_17',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_537_clear_bit_18',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_537_ret_19',

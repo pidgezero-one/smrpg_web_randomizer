@@ -41,38 +41,6 @@ script = [
         "args": [AreaObjects.NPC_4]
     },
     {
-        "identifier": 'EVENT_3726_stop_sound_6',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3726_stop_sound_7',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3726_stop_sound_8',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3726_stop_sound_9',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3726_stop_sound_10',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3726_stop_sound_11',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3726_stop_sound_12',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3726_stop_sound_13',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3726_summon_to_current_level_14',
         "command": 'summon_to_current_level',
         "args": [AreaObjects.NPC_2]

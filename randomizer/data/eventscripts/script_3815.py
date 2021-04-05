@@ -6,21 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3815_jmp_if_bit_clear_0',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 0, 'EVENT_3815_action_queue_async_3']
-    },
-    {
-        "identifier": 'EVENT_3815_summon_to_current_level_1',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_3]
-    },
-    {
-        "identifier": 'EVENT_3815_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 978]
-    },
-    {
         "identifier": 'EVENT_3815_action_queue_async_3',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_5],

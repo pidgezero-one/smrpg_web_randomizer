@@ -34,7 +34,7 @@ script = [
     {
         "identifier": 'EVENT_1282_action_queue_sync_2',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_1282_action_queue_sync_2_SUBSCRIPT_set_priority_0',
@@ -157,7 +157,7 @@ script = [
     {
         "identifier": 'EVENT_1282_action_queue_async_7',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_1282_action_queue_async_7_SUBSCRIPT_set_priority_0',

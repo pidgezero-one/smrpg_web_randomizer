@@ -128,7 +128,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
-      "destination": Rooms._485_MUSHROOM_KINGDOM_DURING_MACK_INN_1F,
+      "destination": Rooms._493_MUSHROOM_KINGDOM_INN_1F,
       "show_message": True,
       "destination_props": {
         "x": 2,

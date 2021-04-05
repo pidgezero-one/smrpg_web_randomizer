@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_3725_action_queue_async_0',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_3725_action_queue_async_0_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -30,7 +30,7 @@ script = [
     {
         "identifier": 'EVENT_3725_set_action_script_sync_2',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 977]
+        "args": [AreaObjects.NPC_2, 977]
     },
     {
         "identifier": 'EVENT_3725_fade_in_from_black_async_3',

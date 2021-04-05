@@ -124,11 +124,6 @@ script = [
         "command": 'dec_coins'
     },
     {
-        "identifier": 'EVENT_3644_run_dialog_24',
-        "command": 'run_dialog',
-        "args": [3775, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3644_fade_out_music_to_volume_25',
         "command": 'fade_out_music_to_volume',
         "args": [2, 0]
@@ -180,9 +175,14 @@ script = [
         "command": 'pause_script_until_effect_done'
     },
     {
-        "identifier": 'EVENT_3644_jmp_34',
-        "command": 'jmp',
-        "args": ['EVENT_3747_jmp_if_bit_clear_1']
+        "identifier": 'EVENT_3747_jmp_if_bit_clear_1',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7098, 6, 'EVENT_3644_set_bit_55']
+    },
+    {
+        "identifier": 'EVENT_3747_set_random_2',
+        "command": 'set_random',
+        "args": [0x7000, 51]
     },
     {
         "identifier": 'EVENT_3644_mem_compare_val_35',
@@ -394,11 +394,6 @@ script = [
         "args": [120]
     },
     {
-        "identifier": 'EVENT_3644_run_dialog_64',
-        "command": 'run_dialog',
-        "args": [3800, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_3644_set_bit_65',
         "command": 'set_bit',
         "args": [0x7043, 1]
@@ -407,11 +402,6 @@ script = [
         "identifier": 'EVENT_3644_pause_66',
         "command": 'pause',
         "args": [30]
-    },
-    {
-        "identifier": 'EVENT_3644_run_dialog_67',
-        "command": 'run_dialog',
-        "args": [3801, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3644_action_queue_sync_68',
@@ -614,11 +604,6 @@ script = [
     {
         "identifier": 'EVENT_3644_remember_last_object_70',
         "command": 'remember_last_object'
-    },
-    {
-        "identifier": 'EVENT_3644_run_dialog_71',
-        "command": 'run_dialog',
-        "args": [3802, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3644_fade_out_to_black_sync_duration_72',
@@ -1433,11 +1418,6 @@ script = [
         "args": [AreaObjects.MARIO, 671]
     },
     {
-        "identifier": 'EVENT_3644_run_dialog_173',
-        "command": 'run_dialog',
-        "args": [3772, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3644_ret_174',
         "command": 'ret'
     },
@@ -1484,11 +1464,6 @@ script = [
         "identifier": 'EVENT_3644_jmp_to_event_183',
         "command": 'jmp_to_event',
         "args": [280]
-    },
-    {
-        "identifier": 'EVENT_3644_run_event_as_subroutine_184',
-        "command": 'run_event_as_subroutine',
-        "args": [3660]
     },
     {
         "identifier": 'EVENT_3644_ret_185',

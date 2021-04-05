@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_316_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7082, 0, 'EVENT_316_run_dialog_7']
-    },
-    {
         "identifier": 'EVENT_316_jmp_if_object_in_level_1',
         "command": 'jmp_if_object_in_level',
         "args": [AreaObjects.NPC_3, Rooms._480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, 'EVENT_316_run_dialog_9']
@@ -27,25 +22,6 @@ script = [
     },
     {
         "identifier": 'EVENT_316_ret_4',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_316_jmp_if_bit_clear_5',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7082, 6, 'EVENT_316_run_dialog_9']
-    },
-    {
-        "identifier": 'EVENT_316_jmp_if_bit_clear_6',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7082, 7, 'EVENT_316_run_dialog_9']
-    },
-    {
-        "identifier": 'EVENT_316_run_dialog_7',
-        "command": 'run_dialog',
-        "args": [681, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_316_ret_8',
         "command": 'ret'
     },
     {

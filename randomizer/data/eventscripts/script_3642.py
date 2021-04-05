@@ -6,16 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3642_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705f, 3, 'EVENT_3642_jmp_if_bit_clear_2']
-    },
-    {
-        "identifier": 'EVENT_3642_apply_solidity_mod_1',
-        "command": 'apply_solidity_mod',
-        "args": [Rooms._416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA, 0, [_0x6BFlags.PERMANENT]]
-    },
-    {
         "identifier": 'EVENT_3642_jmp_if_bit_clear_2',
         "command": 'jmp_if_bit_clear',
         "args": [0x705f, 5, 'EVENT_3642_set_temp_action_script_async_5']
@@ -125,7 +115,7 @@ script = [
     {
         "identifier": 'EVENT_3642_action_queue_sync_15',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_11],
+        "args": [AreaObjects.NPC_10],
         "subscript": [
             {
                 "identifier": 'EVENT_3642_action_queue_sync_15_SUBSCRIPT_set_priority_0',
@@ -141,30 +131,6 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_3642_action_queue_sync_16_SUBSCRIPT_set_priority_0',
-                "command": 'set_priority',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3642_action_queue_sync_17',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_13],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3642_action_queue_sync_17_SUBSCRIPT_set_priority_0',
-                "command": 'set_priority',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3642_action_queue_sync_18',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3642_action_queue_sync_18_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
             }

@@ -16,20 +16,6 @@ script = [
         "args": [0x70ae]
     },
     {
-        "identifier": 'EVENT_1626_jmp_if_bit_set_2',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7057, 4, 'EVENT_1626_store_item_amount_7000_5']
-    },
-    {
-        "identifier": 'EVENT_1626_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [1156, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1626_ret_4',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_1626_store_item_amount_7000_5',
         "command": 'store_item_amount_7000',
         "args": [items.CarboCookie]
@@ -52,7 +38,7 @@ script = [
     {
         "identifier": 'EVENT_1626_run_dialog_9',
         "command": 'run_dialog',
-        "args": [1158, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": [1156, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1626_ret_10',
@@ -84,11 +70,6 @@ script = [
         "args": [items.ShinyStone]
     },
     {
-        "identifier": 'EVENT_1626_run_dialog_16',
-        "command": 'run_dialog',
-        "args": [1160, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_1626_set_17',
         "command": 'set',
         "args": [0x70a7, 137]
@@ -116,11 +97,6 @@ script = [
         "identifier": 'EVENT_1626_set_action_script_async_22',
         "command": 'set_action_script_async',
         "args": [AreaObjects.MARIO, 671]
-    },
-    {
-        "identifier": 'EVENT_1626_run_dialog_23',
-        "command": 'run_dialog',
-        "args": [1148, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1626_ret_24',

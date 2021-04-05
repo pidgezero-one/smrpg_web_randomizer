@@ -4,4 +4,61 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_8_set_random_1',
+        "command": 'set_random',
+        "args": [0x7000, 4]
+    },
+    {
+        "identifier": 'EVENT_8_jmp_if_7000_equals_short_3',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_8_set_3']
+    },
+    {
+        "identifier": 'EVENT_8_jmp_if_7000_equals_short_4',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_8_set_4']
+    },
+    {
+        "identifier": 'EVENT_8_jmp_if_7000_equals_short_5',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_8_set_5']
+    },
+    {
+        "identifier": 'EVENT_8_set_2',
+        "command": 'set',
+        "args": [0x70A7, 107]
+    },
+    {
+        "identifier": 'EVENT_8_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_8_set_3',
+        "command": 'set',
+        "args": [0x70A7, 108]
+    },
+    {
+        "identifier": 'EVENT_8_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_8_set_4',
+        "command": 'set',
+        "args": [0x70A7, 117]
+    },
+    {
+        "identifier": 'EVENT_8_ret',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_8_set_5',
+        "command": 'set',
+        "args": [0x70A7, 131]
+    },
+    {
+        "identifier": 'EVENT_8_ret',
+        "command": 'ret'
+    }
+]

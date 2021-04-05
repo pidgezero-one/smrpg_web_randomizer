@@ -6,19 +6,7 @@ room = {
   "partition": 69,
   "music": Music._41_SUNKEN_SHIP,
   "entrance_event": 3280,
-  "event_tiles": [
-    {
-      "event": 256,
-      "x": 8,
-      "y": 115,
-      "z": 4,
-      "f": Edge.SOUTHWEST,
-      "length": 2,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    }
-  ],
+  "event_tiles": [],
   "exit_fields": [
     {
       "x": 2,

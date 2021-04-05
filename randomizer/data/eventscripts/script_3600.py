@@ -1320,29 +1320,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3600_pause_197',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
         "identifier": 'EVENT_3600_set_action_script_async_198',
         "command": 'set_action_script_async',
         "args": [AreaObjects.NPC_5, 636]
-    },
-    {
-        "identifier": 'EVENT_3600_play_sound_199',
-        "command": 'play_sound',
-        "args": [Sounds._063_YOSHI_TALK, 6]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_200',
-        "command": 'run_dialog',
-        "args": [912, AreaObjects.NPC_5, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_3600_pause_201',
-        "command": 'pause',
-        "args": [10]
     },
     {
         "identifier": 'EVENT_3600_set_action_script_async_202',
@@ -1381,16 +1361,6 @@ script = [
         "identifier": 'EVENT_3600_pause_206',
         "command": 'pause',
         "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3600_play_sound_207',
-        "command": 'play_sound',
-        "args": [Sounds._063_YOSHI_TALK, 6]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_208',
-        "command": 'run_dialog',
-        "args": [913, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3600_pause_209',
@@ -1436,26 +1406,6 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_3600_play_sound_215',
-        "command": 'play_sound',
-        "args": [Sounds._062_BIG_YOSHI_TALK, 6]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_216',
-        "command": 'run_dialog',
-        "args": [2511, AreaObjects.NPC_10, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_3600_pause_217',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3600_play_sound_218',
-        "command": 'play_sound',
-        "args": [Sounds._063_YOSHI_TALK, 6]
-    },
-    {
         "identifier": 'EVENT_3600_action_queue_sync_219',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_9],
@@ -1475,16 +1425,6 @@ script = [
                 "command": 'reset_properties'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_3600_pause_220',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_221',
-        "command": 'run_dialog',
-        "args": [914, AreaObjects.NPC_9, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3600_action_queue_sync_222',
@@ -1672,39 +1612,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3600_pause_241',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3600_play_sound_242',
-        "command": 'play_sound',
-        "args": [Sounds._063_YOSHI_TALK, 6]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_243',
-        "command": 'run_dialog',
-        "args": [915, AreaObjects.NPC_9, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3600_pause_244',
         "command": 'pause',
         "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3600_play_sound_245',
-        "command": 'play_sound',
-        "args": [Sounds._062_BIG_YOSHI_TALK, 6]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_246',
-        "command": 'run_dialog',
-        "args": [916, AreaObjects.NPC_10, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_3600_pause_247',
-        "command": 'pause',
-        "args": [30]
     },
     {
         "identifier": 'EVENT_3600_set_bit_248',
@@ -1835,21 +1745,6 @@ script = [
         "command": 'pause_script_until_effect_done'
     },
     {
-        "identifier": 'EVENT_3600_pause_262',
-        "command": 'pause',
-        "args": [60]
-    },
-    {
-        "identifier": 'EVENT_3600_play_sound_263',
-        "command": 'play_sound',
-        "args": [Sounds._063_YOSHI_TALK, 6]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_264',
-        "command": 'run_dialog',
-        "args": [917, AreaObjects.NPC_9, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3600_pause_265',
         "command": 'pause',
         "args": [10]
@@ -1858,16 +1753,6 @@ script = [
         "identifier": 'EVENT_3600_set_action_script_async_266',
         "command": 'set_action_script_async',
         "args": [AreaObjects.MARIO, 670]
-    },
-    {
-        "identifier": 'EVENT_3600_pause_267',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_268',
-        "command": 'run_dialog',
-        "args": [918, AreaObjects.NPC_9, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3600_pause_269',
@@ -1898,16 +1783,6 @@ script = [
         "identifier": 'EVENT_3600_run_event_as_subroutine_274',
         "command": 'run_event_as_subroutine',
         "args": [3599]
-    },
-    {
-        "identifier": 'EVENT_3600_pause_275',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_276',
-        "command": 'run_dialog',
-        "args": [919, AreaObjects.NPC_9, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3600_pause_277',
@@ -2140,11 +2015,6 @@ script = [
         "args": [Sounds._062_BIG_YOSHI_TALK, 6]
     },
     {
-        "identifier": 'EVENT_3600_run_dialog_306',
-        "command": 'run_dialog',
-        "args": [911, AreaObjects.NPC_10, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3600_circle_mask_static_307',
         "command": 'circle_mask_static',
         "args": [AreaObjects.MARIO, 0, 3]
@@ -2223,11 +2093,6 @@ script = [
         "identifier": 'EVENT_3600_play_sound_318',
         "command": 'play_sound',
         "args": [Sounds._063_YOSHI_TALK, 6]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_319',
-        "command": 'run_dialog',
-        "args": [937, AreaObjects.NPC_9, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3600_pause_320',

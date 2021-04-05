@@ -11,11 +11,6 @@ script = [
         "args": [0x70c0, 237]
     },
     {
-        "identifier": 'EVENT_2595_jmp_if_bit_clear_1',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 4, 'EVENT_2595_jmp_if_bit_clear_3']
-    },
-    {
         "identifier": 'EVENT_2595_set_action_script_async_2',
         "command": 'set_action_script_async',
         "args": [AreaObjects.NPC_1, 690]
@@ -38,36 +33,6 @@ script = [
     {
         "identifier": 'EVENT_2595_fade_in_from_black_async_6',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2595_run_event_as_subroutine_7',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_2595_jmp_if_bit_clear_8',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2595_clear_bit_12']
-    },
-    {
-        "identifier": 'EVENT_2595_jmp_if_bit_set_9',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708f, 4, 'EVENT_2595_clear_bit_12']
-    },
-    {
-        "identifier": 'EVENT_2595_clear_bit_10',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_2595_play_sound_11',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_2595_clear_bit_12',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2595_ret_13',

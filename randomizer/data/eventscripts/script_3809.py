@@ -6,10 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3809_stop_sound_0',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3809_enable_controls_until_return_1',
         "command": 'enable_controls_until_return',
         "args": [[]]
@@ -20,58 +16,89 @@ script = [
         "args": [0x7063, 3]
     },
     {
-        "identifier": 'EVENT_3809_jmp_3',
-        "command": 'jmp',
-        "args": ['EVENT_3809_remove_from_level_81']
+        "identifier": 'EVENT_3809_remove_from_level_81',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_3, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_4',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_level_82',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_4, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_5',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_level_83',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_7, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_6',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_level_84',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_8, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_7',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_level_85',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_9, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_8',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_level_86',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_10, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_9',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_level_87',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_11, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_10',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_level_88',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_14, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_11',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_current_level_89',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_3]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_12',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_current_level_90',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_4]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_13',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_current_level_91',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_7]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_14',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3809_remove_from_current_level_92',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_8]
+    },
+    {
+        "identifier": 'EVENT_3809_remove_from_current_level_93',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_9]
+    },
+    {
+        "identifier": 'EVENT_3809_remove_from_current_level_94',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_10]
+    },
+    {
+        "identifier": 'EVENT_3809_remove_from_current_level_95',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_11]
+    },
+    {
+        "identifier": 'EVENT_3809_remove_from_current_level_96',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_14]
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_15',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_15_SUBSCRIPT_clear_solidity_bits_0',
@@ -83,7 +110,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_16',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_16_SUBSCRIPT_clear_solidity_bits_0',
@@ -110,7 +137,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_async_20',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_6],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_0',
@@ -130,37 +157,13 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3809_stop_sound_21',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_22',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_23',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_24',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_25',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_26',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3809_freeze_camera_27',
         "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_28',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_15],
+        "args": [AreaObjects.NPC_12],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_28_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -276,7 +279,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_29',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_16],
+        "args": [AreaObjects.NPC_13],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_29_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -511,7 +514,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_34',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_13],
+        "args": [AreaObjects.NPC_11],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_34_SUBSCRIPT_set_animation_speed_0',
@@ -623,7 +626,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_36',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_36_SUBSCRIPT_pause_0',
@@ -633,7 +636,7 @@ script = [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_36_SUBSCRIPT_transfer_to_object_xy_1',
                 "command": 'transfer_to_object_xy',
-                "args": [AreaObjects.NPC_16]
+                "args": [AreaObjects.NPC_13]
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_36_SUBSCRIPT_transfer_xyzf_pixels_2',
@@ -679,7 +682,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_37',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_37_SUBSCRIPT_pause_0',
@@ -689,7 +692,7 @@ script = [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_37_SUBSCRIPT_transfer_to_object_xy_1',
                 "command": 'transfer_to_object_xy',
-                "args": [AreaObjects.NPC_16]
+                "args": [AreaObjects.NPC_13]
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_37_SUBSCRIPT_transfer_xyzf_pixels_2',
@@ -728,8 +731,8 @@ script = [
         "args": [28]
     },
     {
-        "identifier": 'EVENT_3809_xor_3105_with_01_40',
-        "command": 'xor_3105_with_01'
+        "identifier": 'EVENT_3809_return_fd_40',
+        "command": 'return_fd'
     },
     {
         "identifier": 'EVENT_3809_pause_41',
@@ -737,13 +740,13 @@ script = [
         "args": [20]
     },
     {
-        "identifier": 'EVENT_3809_xor_3105_with_01_42',
-        "command": 'xor_3105_with_01'
+        "identifier": 'EVENT_3809_return_fd_42',
+        "command": 'return_fd'
     },
     {
         "identifier": 'EVENT_3809_action_queue_sync_43',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "args": [AreaObjects.NPC_5],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_pause_0',
@@ -753,7 +756,7 @@ script = [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_transfer_to_object_xy_1',
                 "command": 'transfer_to_object_xy',
-                "args": [AreaObjects.NPC_16]
+                "args": [AreaObjects.NPC_13]
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_43_SUBSCRIPT_transfer_xyzf_pixels_2',
@@ -788,7 +791,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_44',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "args": [AreaObjects.NPC_6],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_44_SUBSCRIPT_pause_0',
@@ -798,7 +801,7 @@ script = [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_44_SUBSCRIPT_transfer_to_object_xy_1',
                 "command": 'transfer_to_object_xy',
-                "args": [AreaObjects.NPC_16]
+                "args": [AreaObjects.NPC_13]
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_44_SUBSCRIPT_transfer_xyzf_pixels_2',
@@ -849,12 +852,12 @@ script = [
     {
         "identifier": 'EVENT_3809_remove_from_level_48',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
+        "args": [AreaObjects.NPC_3, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     },
     {
         "identifier": 'EVENT_3809_remove_from_level_49',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
+        "args": [AreaObjects.NPC_4, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     },
     {
         "identifier": 'EVENT_3809_remember_last_object_50',
@@ -863,7 +866,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_async_51',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_16],
+        "args": [AreaObjects.NPC_13],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_async_51_SUBSCRIPT_pause_0',
@@ -890,7 +893,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_async_54',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_16],
+        "args": [AreaObjects.NPC_13],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_async_54_SUBSCRIPT_set_sprite_sequence_0',
@@ -900,19 +903,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3809_jmp_55',
-        "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_async_57']
-    },
-    {
-        "identifier": 'EVENT_3809_pause_56',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
         "identifier": 'EVENT_3809_action_queue_async_57',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_16],
+        "args": [AreaObjects.NPC_13],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_async_57_SUBSCRIPT_set_animation_speed_0',
@@ -950,22 +943,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3809_jmp_58',
-        "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_async_61']
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_59',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_60',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3809_action_queue_async_61',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_16],
+        "args": [AreaObjects.NPC_13],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_async_61_SUBSCRIPT_set_animation_speed_0',
@@ -978,35 +958,6 @@ script = [
                 "args": [13, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_3809_jmp_62',
-        "command": 'jmp',
-        "args": ['EVENT_3809_unfreeze_camera_69']
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_63',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_64',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_65',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_66',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_67',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_68',
-        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3809_unfreeze_camera_69',
@@ -1075,7 +1026,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_73',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_16],
+        "args": [AreaObjects.NPC_13],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_73_SUBSCRIPT_pause_0',
@@ -1215,7 +1166,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_78',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_16],
+        "args": [AreaObjects.NPC_13],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_78_SUBSCRIPT_pause_0',
@@ -1296,855 +1247,9 @@ script = [
         "command": 'remember_last_object'
     },
     {
-        "identifier": 'EVENT_3809_jmp_80',
-        "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_sync_287']
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_81',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_82',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_83',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_9, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_84',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_10, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_85',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_11, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_86',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_12, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_87',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_13, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_88',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_14, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_current_level_89',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_current_level_90',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_current_level_91',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_9]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_current_level_92',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_current_level_93',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_11]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_current_level_94',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_12]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_current_level_95',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_13]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_current_level_96',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_14]
-    },
-    {
-        "identifier": 'EVENT_3809_jmp_97',
-        "command": 'jmp',
-        "args": ['EVENT_3809_stop_sound_4']
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_98',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_99',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_100',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_101',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_102',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_103',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_104',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_105',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_106',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_107',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_108',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_109',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_110',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_111',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_112',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_113',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_114',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_115',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_116',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_117',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_118',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_119',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_120',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_121',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_122',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_123',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_124',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_125',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_126',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_127',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_128',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_129',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_130',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_131',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_132',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_133',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_134',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_135',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_136',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_137',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_138',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_139',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_140',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_141',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_142',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_143',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_144',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_145',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_146',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_147',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_148',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_149',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_150',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_151',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_152',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_153',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_154',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_155',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_156',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_157',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_158',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_159',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_160',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_161',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_162',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_163',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_164',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_165',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_166',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_167',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_168',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_169',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_170',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_171',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_172',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_173',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_174',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_175',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_176',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_177',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_178',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_179',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_180',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_181',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_182',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_183',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_184',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_185',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_186',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_187',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_188',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_189',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_190',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_191',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_192',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_193',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_194',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_195',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_196',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_197',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_198',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_199',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_200',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_201',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_202',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_203',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_204',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_205',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_206',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_207',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_208',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_209',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_210',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_211',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_212',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_213',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_214',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_215',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_216',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_217',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_218',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_219',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_220',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_221',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_222',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_223',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_224',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_225',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_226',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_227',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_228',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_229',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_230',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_231',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_232',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_233',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_234',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_235',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_236',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_237',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_238',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_239',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_240',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_241',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_242',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_243',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_244',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_245',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_246',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_247',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_248',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_249',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_250',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_251',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_252',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_253',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_254',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_255',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_256',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_257',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_258',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_259',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_260',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_261',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_262',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_263',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_264',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_265',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_266',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_267',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_268',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_269',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_270',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_271',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_272',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_273',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_274',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_275',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_276',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_277',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_278',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_279',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_280',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_281',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_282',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_283',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_284',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_285',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_286',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3809_action_queue_sync_287',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_15],
+        "args": [AreaObjects.NPC_12],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_287_SUBSCRIPT_shift_southeast_pixels_0',
@@ -2170,7 +1275,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_288',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_16],
+        "args": [AreaObjects.NPC_13],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_288_SUBSCRIPT_pause_0',
@@ -2216,194 +1321,9 @@ script = [
         "command": 'remember_last_object'
     },
     {
-        "identifier": 'EVENT_3809_jmp_290',
-        "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_sync_336']
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_291',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_292',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_293',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_294',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_295',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_296',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_297',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_298',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_299',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_300',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_301',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_302',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_303',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_304',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_305',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_306',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_307',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_308',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_309',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_310',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_311',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_312',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_313',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_314',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_315',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_316',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_317',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_318',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_319',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_320',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_321',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_322',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_323',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_324',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_325',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_326',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_327',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_328',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_329',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_330',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_331',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_332',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_333',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_334',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3809_stop_sound_335',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3809_action_queue_sync_336',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
+        "args": [AreaObjects.NPC_6],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_336_SUBSCRIPT_pause_0',
@@ -2419,7 +1339,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_337',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_15],
+        "args": [AreaObjects.NPC_12],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_337_SUBSCRIPT_fixed_f_coord_on_0',
@@ -2449,7 +1369,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_338',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_16],
+        "args": [AreaObjects.NPC_13],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_338_SUBSCRIPT_fixed_f_coord_on_0',
@@ -2682,7 +1602,7 @@ script = [
     {
         "identifier": 'EVENT_3809_action_queue_sync_348',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_13],
+        "args": [AreaObjects.NPC_11],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_348_SUBSCRIPT_transfer_to_xyzf_0',
@@ -2694,16 +1614,6 @@ script = [
     {
         "identifier": 'EVENT_3809_remember_last_object_349',
         "command": 'remember_last_object'
-    },
-    {
-        "identifier": 'EVENT_3809_jmp_350',
-        "command": 'jmp',
-        "args": ['EVENT_3809_pause_352']
-    },
-    {
-        "identifier": 'EVENT_3809_run_dialog_351',
-        "command": 'run_dialog',
-        "args": [2498, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3809_pause_352',
@@ -2750,7 +1660,7 @@ script = [
     {
         "identifier": 'EVENT_3809_remove_from_current_level_357',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6]
+        "args": [AreaObjects.NPC_4]
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_358',
@@ -2789,16 +1699,6 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_3809_jmp_360',
-        "command": 'jmp',
-        "args": ['EVENT_3809_pause_362']
-    },
-    {
-        "identifier": 'EVENT_3809_run_dialog_361',
-        "command": 'run_dialog',
-        "args": [2499, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_3809_pause_362',
         "command": 'pause',
         "args": [10]
@@ -2821,7 +1721,7 @@ script = [
     {
         "identifier": 'EVENT_3809_remove_from_current_level_366',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5]
+        "args": [AreaObjects.NPC_3]
     },
     {
         "identifier": 'EVENT_3809_action_queue_async_367',
@@ -2860,24 +1760,9 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_3809_jmp_369',
-        "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_sync_372']
-    },
-    {
-        "identifier": 'EVENT_3809_pause_370',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3809_pause_371',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
         "identifier": 'EVENT_3809_action_queue_sync_372',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "args": [AreaObjects.NPC_5],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_sync_372_SUBSCRIPT_transfer_to_xyzf_0',
@@ -2902,39 +1787,9 @@ script = [
         "args": [AreaObjects.NPC_0, 376]
     },
     {
-        "identifier": 'EVENT_3809_jmp_375',
-        "command": 'jmp',
-        "args": ['EVENT_3809_action_queue_async_380']
-    },
-    {
-        "identifier": 'EVENT_3809_set_bit_376',
-        "command": 'set_bit',
-        "args": [0x7049, 2]
-    },
-    {
-        "identifier": 'EVENT_3809_run_event_as_subroutine_377',
-        "command": 'run_event_as_subroutine',
-        "args": [276]
-    },
-    {
-        "identifier": 'EVENT_3809_remember_last_object_378',
-        "command": 'remember_last_object'
-    },
-    {
-        "identifier": 'EVENT_3809_action_queue_async_379',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3809_action_queue_async_379_SUBSCRIPT_face_south_0',
-                "command": 'face_south'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_3809_action_queue_async_380',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_15],
+        "args": [AreaObjects.NPC_12],
         "subscript": [
             {
                 "identifier": 'EVENT_3809_action_queue_async_380_SUBSCRIPT_reset_properties_0',
@@ -2949,11 +1804,6 @@ script = [
                 "command": 'face_northeast'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_3809_jmp_381',
-        "command": 'jmp',
-        "args": ['EVENT_3809_pause_action_script_382']
     },
     {
         "identifier": 'EVENT_3809_pause_action_script_382',

@@ -4,11 +4,11 @@
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
   "partition": 22,
-  "music": Music._02_MUSHROOM_KINGDOM,
-  "entrance_event": 333,
+  "music": Music._00_CURRENT,
+  "entrance_event": 265,
   "event_tiles": [
     {
-      "event": 288,
+      "event": 323,
       "x": 4,
       "y": 92,
       "z": 1,
@@ -17,10 +17,9 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-    }
-  ],
-  "exit_fields": [
+    },
     {
+      "event": 746,
       "x": 2,
       "y": 94,
       "z": 0,
@@ -29,18 +28,9 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "destination": Rooms._191_MUSHROOM_KINGDOM_OUTSIDE,
-      "show_message": False,
-      "destination_props": {
-        "x": 14,
-        "y": 99,
-        "z": 4,
-        "z_half": False,
-        "f": RadialDirection.SOUTHWEST,
-        "x_bit_7": False
-      }
-    },
+    }
+  ],
+  "exit_fields": [
     {
       "x": 4,
       "y": 83,
@@ -97,20 +87,42 @@ room = {
       "slidable_along_walls": False,
       "cant_move_if_in_air": False,
       "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 1,
-          "npc_id_offset": 0,
-          "event_offset": 3,
-          "action_offset": 0,
-          "visible": False,
-          "x": 7,
-          "y": 86,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        }
-      ]
+      "clones": []
+    },
+    {
+      "id": 1,
+      "type": ObjectType.OBJECT,
+      "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
+      "model": 65,
+      "event_script": 294,
+      "action_script": 119,
+      "speed": 0,
+      "npc_id_offset": 0,
+      "event_offset": 0,
+      "action_offset": 0,
+      "visible": True,
+      "x": 7,
+      "y": 86,
+      "z": 0,
+      "z_half": True,
+      "direction": RadialDirection.SOUTHWEST,
+      "face_on_trigger": True,
+      "cant_enter_doors": True,
+      "byte2_bit5": False,
+      "set_sequence_playback": True,
+      "cant_float": False,
+      "cant_walk_up_stairs": False,
+      "cant_walk_under": False,
+      "cant_pass_walls": False,
+      "cant_jump_through": False,
+      "cant_pass_npcs": False,
+      "byte3_bit5": False,
+      "cant_walk_through": True,
+      "byte3_bit7": False,
+      "slidable_along_walls": False,
+      "cant_move_if_in_air": False,
+      "byte7_upper2": 0x03,
+      "clones": []
     },
     {
       "id": 2,

@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_3640_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7092, 5, 'EVENT_3640_ret_430']
+        "args": [0x7092, 5, 'EVENT_3640_run_dialog__']
     },
     {
         "identifier": 'EVENT_3640_fade_out_to_black_sync_duration_1',
@@ -1801,30 +1801,6 @@ script = [
         "args": [0x7092, 7]
     },
     {
-        "identifier": 'EVENT_3640_stop_sound_204',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_205',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_206',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_207',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_208',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_209',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3640_pause_210',
         "command": 'pause',
         "args": [60]
@@ -1903,26 +1879,6 @@ script = [
         "identifier": 'EVENT_3640_run_event_as_subroutine_220',
         "command": 'run_event_as_subroutine',
         "args": [3828]
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_221',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_222',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_223',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_224',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_225',
-        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3640_ret_226',
@@ -2380,14 +2336,6 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_3640_stop_sound_261',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_262',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3640_remove_from_level_263',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_1, Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT]
@@ -2659,42 +2607,6 @@ script = [
         "args": [AreaObjects.NPC_0, 333]
     },
     {
-        "identifier": 'EVENT_3640_stop_sound_295',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_296',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_297',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_298',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_299',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_300',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_301',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_302',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_303',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3640_ret_304',
         "command": 'ret'
     },
@@ -2702,42 +2614,6 @@ script = [
         "identifier": 'EVENT_3640_set_temp_action_script_async_305',
         "command": 'set_temp_action_script_async',
         "args": [AreaObjects.NPC_1, 333]
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_306',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_307',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_308',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_309',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_310',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_311',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_312',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_313',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_314',
-        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3640_ret_315',
@@ -3051,42 +2927,6 @@ script = [
         "args": [AreaObjects.NPC_2, 333]
     },
     {
-        "identifier": 'EVENT_3640_stop_sound_338',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_339',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_340',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_341',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_342',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_343',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_344',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_345',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3640_stop_sound_346',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3640_ret_347',
         "command": 'ret'
     },
@@ -3175,320 +3015,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3640_ret_351',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_352',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_353',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_354',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_355',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_356',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_357',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_358',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_359',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_360',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_361',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_362',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_363',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_364',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_365',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_366',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_367',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_368',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_369',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_370',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_371',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_372',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_373',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_374',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_375',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_376',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_377',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_378',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_379',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_380',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_381',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_382',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_383',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_384',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_385',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_386',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_387',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_388',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_389',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_390',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_391',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_392',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_393',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_394',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_395',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_396',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_397',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_398',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_399',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_400',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_401',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_402',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_403',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_404',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_405',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_406',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_407',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_408',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_409',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_410',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_411',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_412',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_413',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_414',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_415',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_416',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_417',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_418',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_419',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_420',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_421',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_422',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_423',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_424',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_425',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_426',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_427',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_428',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_ret_429',
-        "command": 'ret'
+        "identifier": 'EVENT_3640_run_dialog__',
+        "command": 'run_dialog',
+        "args": [3787, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3640_ret_430',

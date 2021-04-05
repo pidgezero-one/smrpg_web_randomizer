@@ -153,11 +153,6 @@ script = [
         "args": ['EVENT_1816_mem_compare_val_22']
     },
     {
-        "identifier": 'EVENT_1816_run_dialog_duration_20',
-        "command": 'run_dialog_duration',
-        "args": [1271, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
-    },
-    {
         "identifier": 'EVENT_1816_ret_21',
         "command": 'ret'
     },
@@ -170,11 +165,6 @@ script = [
         "identifier": 'EVENT_1816_jmp_if_comparison_result_is_lesser_23',
         "command": 'jmp_if_comparison_result_is_lesser',
         "args": ['EVENT_1816_mem_compare_val_26']
-    },
-    {
-        "identifier": 'EVENT_1816_run_dialog_duration_24',
-        "command": 'run_dialog_duration',
-        "args": [1264, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1816_ret_25',
@@ -191,14 +181,9 @@ script = [
         "args": ['EVENT_1816_mem_compare_val_32']
     },
     {
-        "identifier": 'EVENT_1816_run_dialog_duration_28',
-        "command": 'run_dialog_duration',
-        "args": [1265, DialogDurations.FOREVER, [_0x60Flags.ASYNC]]
-    },
-    {
         "identifier": 'EVENT_1816_jmp_if_random_above_66_29',
         "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_1816_run_dialog_duration_83', 'EVENT_1816_run_dialog_duration_83']
+        "args": ['EVENT_1816_ret_82', 'EVENT_1816_ret_82']
     },
     {
         "identifier": 'EVENT_1816_set_short_30',
@@ -208,7 +193,7 @@ script = [
     {
         "identifier": 'EVENT_1816_jmp_31',
         "command": 'jmp',
-        "args": ['EVENT_1816_run_dialog_duration_73']
+        "args": ['EVENT_1816_action_queue_sync_74']
     },
     {
         "identifier": 'EVENT_1816_mem_compare_val_32',
@@ -218,12 +203,7 @@ script = [
     {
         "identifier": 'EVENT_1816_jmp_if_comparison_result_is_lesser_33',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1816_run_dialog_duration_70']
-    },
-    {
-        "identifier": 'EVENT_1816_run_dialog_duration_34',
-        "command": 'run_dialog_duration',
-        "args": [1266, DialogDurations.FOREVER, [_0x60Flags.ASYNC]]
+        "args": ['EVENT_1816_jmp_if_bit_clear_71']
     },
     {
         "identifier": 'EVENT_1816_jmp_if_bit_set_35',
@@ -234,11 +214,6 @@ script = [
         "identifier": 'EVENT_1816_set_bit_36',
         "command": 'set_bit',
         "args": [0x7094, 7]
-    },
-    {
-        "identifier": 'EVENT_1816_run_dialog_duration_37',
-        "command": 'run_dialog_duration',
-        "args": [1268, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1816_set_38',
@@ -257,42 +232,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1816_ret_41',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1816_stop_sound_42',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1816_stop_sound_43',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1816_stop_sound_44',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1816_stop_sound_45',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1816_stop_sound_46',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1816_stop_sound_47',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1816_stop_sound_48',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1816_stop_sound_49',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1816_ret_50',
         "command": 'ret'
     },
     {
@@ -569,17 +508,12 @@ script = [
     {
         "identifier": 'EVENT_1816_jmp_if_random_above_128_68',
         "command": 'jmp_if_random_above_128',
-        "args": ['EVENT_1816_run_dialog_duration_83']
+        "args": ['EVENT_1816_ret_82']
     },
     {
         "identifier": 'EVENT_1816_jmp_69',
         "command": 'jmp',
-        "args": ['EVENT_1816_run_dialog_duration_73']
-    },
-    {
-        "identifier": 'EVENT_1816_run_dialog_duration_70',
-        "command": 'run_dialog_duration',
-        "args": [1267, DialogDurations.FOREVER, [_0x60Flags.ASYNC]]
+        "args": ['EVENT_1816_action_queue_sync_74']
     },
     {
         "identifier": 'EVENT_1816_jmp_if_bit_clear_71',
@@ -590,11 +524,6 @@ script = [
         "identifier": 'EVENT_1816_set_short_72',
         "command": 'set_short',
         "args": [0x7028, 0x0005]
-    },
-    {
-        "identifier": 'EVENT_1816_run_dialog_duration_73',
-        "command": 'run_dialog_duration',
-        "args": [1269, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1816_action_queue_sync_74',
@@ -722,15 +651,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1816_ret_82',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1816_run_dialog_duration_83',
-        "command": 'run_dialog_duration',
-        "args": [1270, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_1816_ret_84',
         "command": 'ret'
     }
 ]

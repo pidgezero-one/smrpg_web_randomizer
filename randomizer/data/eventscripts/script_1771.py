@@ -27,18 +27,19 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1771_jmp_2',
+        "identifier": 'EVENT_2050_jmp_if_bit_clear_10',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x704f, 3, 'EVENT_1771_fade_in_from_black_async_7']
+    },
+    {
+        "identifier": 'EVENT_2050_jmp_11',
         "command": 'jmp',
-        "args": ['EVENT_2050_action_queue_async_9']
+        "args": ['EVENT_1771_apply_solidity_mod_3']
     },
     {
         "identifier": 'EVENT_1771_apply_solidity_mod_3',
         "command": 'apply_solidity_mod',
         "args": [Rooms._268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM, 0, [_0x6BFlags.PERMANENT]]
-    },
-    {
-        "identifier": 'EVENT_1771_stop_sound_4',
-        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1771_action_queue_sync_5',

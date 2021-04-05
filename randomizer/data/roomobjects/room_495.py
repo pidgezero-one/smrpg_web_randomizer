@@ -5,7 +5,7 @@ from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, 
 room = {
   "partition": 12,
   "music": Music._02_MUSHROOM_KINGDOM,
-  "entrance_event": 334,
+  "entrance_event": 261,
   "event_tiles": [
     {
       "event": 263,
@@ -88,54 +88,6 @@ room = {
       "cant_move_if_in_air": False,
       "byte7_upper2": 0x03,
       "clones": []
-    },
-    {
-      "id": 1,
-      "type": ObjectType.OBJECT,
-      "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
-      "model": 67,
-      "event_script": 296,
-      "action_script": 119,
-      "speed": 0,
-      "npc_id_offset": 1,
-      "event_offset": 0,
-      "action_offset": 0,
-      "visible": False,
-      "x": 15,
-      "y": 85,
-      "z": 0,
-      "z_half": False,
-      "direction": RadialDirection.NORTHWEST,
-      "face_on_trigger": True,
-      "cant_enter_doors": False,
-      "byte2_bit5": False,
-      "set_sequence_playback": True,
-      "cant_float": False,
-      "cant_walk_up_stairs": False,
-      "cant_walk_under": False,
-      "cant_pass_walls": False,
-      "cant_jump_through": False,
-      "cant_pass_npcs": False,
-      "byte3_bit5": False,
-      "cant_walk_through": True,
-      "byte3_bit7": True,
-      "slidable_along_walls": True,
-      "cant_move_if_in_air": False,
-      "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 2,
-          "npc_id_offset": 2,
-          "event_offset": 1,
-          "action_offset": 0,
-          "visible": False,
-          "x": 15,
-          "y": 84,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHEAST
-        }
-      ]
     }
   ]
 }

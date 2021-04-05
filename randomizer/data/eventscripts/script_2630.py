@@ -3021,11 +3021,6 @@ script = [
         "args": [AreaObjects.MARIO, 671]
     },
     {
-        "identifier": 'EVENT_2630_run_dialog_519',
-        "command": 'run_dialog',
-        "args": [3313, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_2630_set_action_script_async_520',
         "command": 'set_action_script_async',
         "args": [AreaObjects.MARIO, 395]

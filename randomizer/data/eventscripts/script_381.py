@@ -321,54 +321,6 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_381_ret_33',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_34',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_35',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_36',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_37',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_38',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_39',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_40',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_41',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_42',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_43',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_381_ret_44',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_381_jmp_if_object_in_level_45',
         "command": 'jmp_if_object_in_level',
         "args": [AreaObjects.NPC_4, Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, 'EVENT_257_fade_in_from_black_async_0']

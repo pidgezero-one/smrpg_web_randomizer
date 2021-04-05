@@ -31,25 +31,35 @@ script = [
         "args": [Rooms._302_KERO_SEWERS_AREA_08_BELOMES_ROOM, RadialDirections.NORTHEAST, 6, 40, 9, []]
     },
     {
-        "identifier": 'EVENT_3142_jmp_5',
-        "command": 'jmp',
-        "args": ['EVENT_3280_action_queue_sync_48']
+        "identifier": 'EVENT_3280_action_queue_sync_48',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3280_action_queue_sync_48_SUBSCRIPT_face_northeast_0',
+                "command": 'face_northeast'
+            },
+            {
+                "identifier": 'EVENT_3280_action_queue_sync_48_SUBSCRIPT_jump_to_height_silent_1',
+                "command": 'jump_to_height_silent',
+                "args": [0]
+            }
+        ]
     },
     {
-        "identifier": 'EVENT_3142_stop_sound_6',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3280_action_queue_sync_49',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3280_action_queue_sync_49_SUBSCRIPT_shadow_off_3',
+                "command": 'shadow_off'
+            }
+        ]
     },
     {
-        "identifier": 'EVENT_3142_stop_sound_7',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3142_stop_sound_8',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3142_stop_sound_9',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_3280_fade_in_from_black_sync_50',
+        "command": 'fade_in_from_black_sync'
     },
     {
         "identifier": 'EVENT_3142_action_queue_sync_10',

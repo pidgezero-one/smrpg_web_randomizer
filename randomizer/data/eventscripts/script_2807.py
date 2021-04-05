@@ -11,23 +11,6 @@ script = [
         "args": [0x7052, 6, 'EVENT_2808_jmp_if_bit_set_0']
     },
     {
-        "identifier": 'EVENT_2807_set_bit_1',
-        "command": 'set_bit',
-        "args": [0x706d, 3]
-    },
-    {
-        "identifier": 'EVENT_2807_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2807_stop_sound_3',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2807_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_2807_summon_to_level_5',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_2, Rooms._203_MUSHROOM_WAY_AREA_01]

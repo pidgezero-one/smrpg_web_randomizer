@@ -6,26 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2317_jmp_if_bit_clear_0',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 0, 'EVENT_2317_jmp_if_bit_clear_2']
-    },
-    {
-        "identifier": 'EVENT_2317_set_action_script_sync_1',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 690]
-    },
-    {
-        "identifier": 'EVENT_2317_jmp_if_bit_clear_2',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 1, 'EVENT_2317_freeze_camera_4']
-    },
-    {
-        "identifier": 'EVENT_2317_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 690]
-    },
-    {
         "identifier": 'EVENT_2317_freeze_camera_4',
         "command": 'freeze_camera'
     },
@@ -100,7 +80,7 @@ script = [
     {
         "identifier": 'EVENT_2317_action_queue_async_7',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2317_action_queue_async_7_SUBSCRIPT_set_priority_0',

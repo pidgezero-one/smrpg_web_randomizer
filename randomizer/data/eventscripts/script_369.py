@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_369____',
+        "command": 'jmp_if_object_not_in_level',
+        "args": [AreaObjects.NPC_3, Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, 'EVENT_369_ret_1']
+    },
+    {
         "identifier": 'EVENT_369_enter_area_0',
         "command": 'enter_area',
         "args": [Rooms._323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM, RadialDirections.SOUTHWEST, 28, 93, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]

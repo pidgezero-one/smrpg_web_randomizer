@@ -6,16 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1146_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7086, 0, 'EVENT_1146_jmp_to_event_53']
-    },
-    {
-        "identifier": 'EVENT_1146_jmp_1',
-        "command": 'jmp',
-        "args": ['EVENT_1146_jmp_51']
-    },
-    {
         "identifier": 'EVENT_1146_action_queue_sync_2',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_6],
@@ -24,6 +14,14 @@ script = [
                 "identifier": 'EVENT_1146_action_queue_sync_2_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [6, 26, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_2_insert_1',
+                "command": 'face_northwest'
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_2_insert_2',
+                "command": 'visibility_on'
             }
         ]
     },
@@ -36,6 +34,14 @@ script = [
                 "identifier": 'EVENT_1146_action_queue_sync_3_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [5, 26, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_3_insert_1',
+                "command": 'face_northeast'
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_3_insert_2',
+                "command": 'visibility_on'
             }
         ]
     },
@@ -48,6 +54,14 @@ script = [
                 "identifier": 'EVENT_1146_action_queue_sync_4_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [6, 28, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_4_insert_1',
+                "command": 'face_northeast'
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_4_insert_2',
+                "command": 'visibility_on'
             }
         ]
     },
@@ -60,6 +74,14 @@ script = [
                 "identifier": 'EVENT_1146_action_queue_sync_5_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [6, 24, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_5_insert_1',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_5_insert_2',
+                "command": 'visibility_on'
             }
         ]
     },
@@ -72,6 +94,14 @@ script = [
                 "identifier": 'EVENT_1146_action_queue_async_6_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [7, 26, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_6_insert_1',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'event_1146_action_queue_sync_6_insert_2',
+                "command": 'visibility_on'
             }
         ]
     },
@@ -84,6 +114,11 @@ script = [
         "identifier": 'EVENT_1146_set_action_script_sync_8',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_1, 147]
+    },
+    {
+        "identifier": 'EVENT_1146_set_action_script_sync__8',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_2, 147]
     },
     {
         "identifier": 'EVENT_1146_set_action_script_sync_9',
@@ -161,11 +196,6 @@ script = [
                 "args": [15]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_1146_jmp_15',
-        "command": 'jmp',
-        "args": ['EVENT_1146_jmp_51']
     },
     {
         "identifier": 'EVENT_1146_action_queue_sync_16',
@@ -556,11 +586,6 @@ script = [
         "args": [30]
     },
     {
-        "identifier": 'EVENT_1146_run_dialog_26',
-        "command": 'run_dialog',
-        "args": [2862, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_1146_pause_script_resume_on_next_dialog_page_a_27',
         "command": 'pause_script_resume_on_next_dialog_page_a'
     },
@@ -651,11 +676,6 @@ script = [
                 "command": 'sequence_looping_off'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_1146_run_dialog_38',
-        "command": 'run_dialog',
-        "args": [2864, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1146_action_queue_sync_39',
@@ -766,51 +786,12 @@ script = [
         "args": [60]
     },
     {
-        "identifier": 'EVENT_1146_stop_sound_45',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1146_stop_sound_46',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1146_stop_sound_47',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1146_stop_sound_48',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1146_stop_sound_49',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1146_run_dialog_50',
-        "command": 'run_dialog',
-        "args": [2863, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_1146_jmp_51',
-        "command": 'jmp',
-        "args": ['EVENT_1146_jmp_55']
+        "identifier": 'EVENT_1146_jmp_55',
+        "command": 'jmp_to_event',
+        "args": [1147]
     },
     {
         "identifier": 'EVENT_1146_ret_52',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1146_jmp_to_event_53',
-        "command": 'jmp_to_event',
-        "args": [1163]
-    },
-    {
-        "identifier": 'EVENT_1146_ret_54',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1146_jmp_55',
-        "command": 'jmp',
-        "args": ['EVENT_1147_start_battle_39']
     }
 ]

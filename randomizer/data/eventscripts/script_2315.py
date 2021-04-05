@@ -274,39 +274,14 @@ script = [
         "args": [AreaObjects.SCREEN_FOCUS]
     },
     {
-        "identifier": 'EVENT_2315_run_event_as_subroutine_20',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_2315_jmp_if_bit_clear_21',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2315_unfreeze_camera_27']
-    },
-    {
-        "identifier": 'EVENT_2315_jmp_if_bit_set_22',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708d, 4, 'EVENT_2315_unfreeze_camera_27']
-    },
-    {
         "identifier": 'EVENT_2315_jmp_if_bit_clear_23',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7045, 0, 'EVENT_2315_clear_bit_25']
+        "args": [0x7045, 0, 'EVENT_2315_unfreeze_camera_27']
     },
     {
         "identifier": 'EVENT_2315_pause_24',
         "command": 'pause',
         "args": [24]
-    },
-    {
-        "identifier": 'EVENT_2315_clear_bit_25',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_2315_play_sound_26',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
     },
     {
         "identifier": 'EVENT_2315_unfreeze_camera_27',
@@ -316,11 +291,6 @@ script = [
         "identifier": 'EVENT_2315_enable_controls_28',
         "command": 'enable_controls',
         "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
-    },
-    {
-        "identifier": 'EVENT_2315_clear_bit_29',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2315_clear_bit_30',

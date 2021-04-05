@@ -13,12 +13,7 @@ script = [
     {
         "identifier": 'EVENT_1132_jmp_if_dialog_option_b_1',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_1132_run_dialog_5']
-    },
-    {
-        "identifier": 'EVENT_1132_run_dialog_2',
-        "command": 'run_dialog',
-        "args": [2833, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": ['EVENT_1132_ret_6']
     },
     {
         "identifier": 'EVENT_1132_set_bit_3',
@@ -29,11 +24,6 @@ script = [
         "identifier": 'EVENT_1132_jmp_4',
         "command": 'jmp',
         "args": ['EVENT_273_fade_out_music_to_volume_17']
-    },
-    {
-        "identifier": 'EVENT_1132_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [2833, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1132_ret_6',

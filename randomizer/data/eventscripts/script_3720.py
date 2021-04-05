@@ -16,22 +16,6 @@ script = [
         "args": [0x705f, 7]
     },
     {
-        "identifier": 'EVENT_3720_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3720_stop_sound_3',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3720_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3720_stop_sound_5',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3720_set_6',
         "command": 'set',
         "args": [0x70a7, 116]

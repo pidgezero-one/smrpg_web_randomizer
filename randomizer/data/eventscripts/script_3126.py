@@ -46,14 +46,6 @@ script = [
         "args": [720]
     },
     {
-        "identifier": 'EVENT_3126_stop_sound_8',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3126_stop_sound_9',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3126_ret_10',
         "command": 'ret'
     },

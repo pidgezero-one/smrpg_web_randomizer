@@ -36,116 +36,9 @@ script = [
         "args": [15]
     },
     {
-        "identifier": 'EVENT_3344_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_shift_xy_pixels_0',
-                "command": 'shift_xy_pixels',
-                "args": [4, 4]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_set_animation_speed_1',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_shift_southwest_pixels_2',
-                "command": 'shift_southwest_pixels',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on'
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_shift_southwest_steps_4',
-                "command": 'shift_southwest_steps',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_pause_5',
-                "command": 'pause',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_jump_to_height_6',
-                "command": 'jump_to_height',
-                "args": [108]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_set_vram_priority_7',
-                "command": 'set_vram_priority',
-                "args": [VramPriority.OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_clear_solidity_bits_8',
-                "command": 'clear_solidity_bits',
-                "args": [[_0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.BIT_7]]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_pause_9',
-                "command": 'pause',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_walk_1_step_southwest_10',
-                "command": 'walk_1_step_southwest'
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_pause_11',
-                "command": 'pause',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_jmp_if_bit_clear_12',
-                "command": 'jmp_if_bit_clear',
-                "args": [0x7043, 0, 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_pause_11']
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_floating_off_13',
-                "command": 'floating_off'
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_set_animation_speed_14',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_shift_z_down_pixels_15',
-                "command": 'shift_z_down_pixels',
-                "args": [6]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_jump_to_height_16',
-                "command": 'jump_to_height',
-                "args": [256]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_pause_17',
-                "command": 'pause',
-                "args": [10]
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_floating_off_18',
-                "command": 'floating_off'
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_visibility_off_19',
-                "command": 'visibility_off'
-            },
-            {
-                "identifier": 'EVENT_3344_action_queue_sync_3_SUBSCRIPT_db_20',
-                "command": 'db',
-                "args": [0xfd, 0xf2]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_3344_action_queue_sync_4',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_4_SUBSCRIPT_shift_xy_pixels_0',
@@ -252,7 +145,7 @@ script = [
     {
         "identifier": 'EVENT_3344_action_queue_sync_5',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_5_SUBSCRIPT_shift_xy_pixels_0',
@@ -364,7 +257,7 @@ script = [
     {
         "identifier": 'EVENT_3344_action_queue_sync_6',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_6_SUBSCRIPT_shift_xy_pixels_0',
@@ -476,7 +369,7 @@ script = [
     {
         "identifier": 'EVENT_3344_action_queue_sync_7',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_7_SUBSCRIPT_shift_xy_pixels_0',
@@ -588,7 +481,7 @@ script = [
     {
         "identifier": 'EVENT_3344_action_queue_sync_8',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "args": [AreaObjects.NPC_5],
         "subscript": [
             {
                 "identifier": 'EVENT_3344_action_queue_sync_8_SUBSCRIPT_shift_xy_pixels_0',

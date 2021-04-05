@@ -11,22 +11,12 @@ script = [
         "args": [0x708b, 3, 'EVENT_2403_ret_21']
     },
     {
-        "identifier": 'EVENT_2403_jmp_if_bit_set_1',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708b, 4, 'EVENT_2403_ret_21']
-    },
-    {
         "identifier": 'EVENT_2403_stop_all_background_events_2',
         "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_2403_fade_out_music_FDA3_3',
         "command": 'fade_out_music_FDA3'
-    },
-    {
-        "identifier": 'EVENT_2403_set_bit_4',
-        "command": 'set_bit',
-        "args": [0x708b, 4]
     },
     {
         "identifier": 'EVENT_2403_action_queue_sync_5',
@@ -232,5 +222,10 @@ script = [
     {
         "identifier": 'EVENT_2403_ret_21',
         "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_2403_clear_bit_4',
+        "command": 'clear_bit',
+        "args": [0x708b, 3]
     }
 ]

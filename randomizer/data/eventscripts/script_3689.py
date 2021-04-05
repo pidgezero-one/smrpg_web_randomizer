@@ -11,6 +11,11 @@ script = [
         "args": [Sounds._156_LINK_FANFARE, 6]
     },
     {
+        "identifier": 'EVENT_3689_run_dialog_0',
+        "command": 'run_dialog',
+        "args": [3846, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
         "identifier": 'EVENT_3689_ret_1',
         "command": 'ret'
     }

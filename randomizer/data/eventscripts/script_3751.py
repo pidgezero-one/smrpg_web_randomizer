@@ -6,28 +6,17 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_3753_stop_sound_0',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x705F, 4, 'EVENT_3751_ret_1']
+    },
+    {
         "identifier": 'EVENT_3751_enter_area_0',
         "command": 'enter_area',
         "args": [Rooms._447_NIMBUS_LAND_HOT_SPRINGS, RadialDirections.NORTHEAST, 11, 113, 5, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_3751_ret_1',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3751_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3751_stop_sound_3',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3751_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3751_ret_5',
         "command": 'ret'
     }
 ]

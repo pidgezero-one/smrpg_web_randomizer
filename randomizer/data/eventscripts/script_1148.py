@@ -52,61 +52,6 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_1148_jmp_if_bit_set_8',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7088, 4, 'EVENT_1148_run_dialog_18']
-    },
-    {
-        "identifier": 'EVENT_1148_jmp_if_bit_set_9',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7086, 6, 'EVENT_1148_run_dialog_14']
-    },
-    {
-        "identifier": 'EVENT_1148_run_dialog_10',
-        "command": 'run_dialog',
-        "args": [2919, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1148_run_dialog_11',
-        "command": 'run_dialog',
-        "args": [2920, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1148_set_bit_12',
-        "command": 'set_bit',
-        "args": [0x7088, 4]
-    },
-    {
-        "identifier": 'EVENT_1148_jmp_13',
-        "command": 'jmp',
-        "args": ['EVENT_1148_open_shop_19']
-    },
-    {
-        "identifier": 'EVENT_1148_run_dialog_14',
-        "command": 'run_dialog',
-        "args": [2919, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1148_run_dialog_15',
-        "command": 'run_dialog',
-        "args": [2922, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1148_set_bit_16',
-        "command": 'set_bit',
-        "args": [0x7088, 4]
-    },
-    {
-        "identifier": 'EVENT_1148_jmp_17',
-        "command": 'jmp',
-        "args": ['EVENT_1148_open_shop_19']
-    },
-    {
-        "identifier": 'EVENT_1148_run_dialog_18',
-        "command": 'run_dialog',
-        "args": [2921, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_1148_open_shop_19',
         "command": 'open_shop',
         "args": [Shops._03_FROG_DISCIPLE_SHOP]

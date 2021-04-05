@@ -11,14 +11,9 @@ script = [
         "args": [0x7042, 7]
     },
     {
-        "identifier": 'EVENT_3814_jmp_if_bit_set_1',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705e, 7, 'EVENT_3585_fade_in_from_black_async_0']
-    },
-    {
         "identifier": 'EVENT_3814_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x7086, 0, 'EVENT_3814_remove_from_current_level_5']
+        "args": [0x7082, 0, 'EVENT_3814_remove_from_current_level_5']
     },
     {
         "identifier": 'EVENT_3814_fade_in_from_black_async_3',

@@ -16,25 +16,6 @@ script = [
         "args": [65]
     },
     {
-        "identifier": 'EVENT_3749_jmp_if_bit_set_2',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705e, 7, 'EVENT_3749_jmp_if_bit_set_6']
-    },
-    {
-        "identifier": 'EVENT_3749_set_bit_3',
-        "command": 'set_bit',
-        "args": [0x7042, 0]
-    },
-    {
-        "identifier": 'EVENT_3749_enter_area_4',
-        "command": 'enter_area',
-        "args": [Rooms._061_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA_RIGHT_BEFORE_FIGHT, RadialDirections.NORTHEAST, 11, 59, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_3749_ret_5',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_3749_jmp_if_bit_set_6',
         "command": 'jmp_if_bit_set',
         "args": [0x7090, 2, 'EVENT_3749_enter_area_14']

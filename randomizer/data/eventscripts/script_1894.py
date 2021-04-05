@@ -16,10 +16,6 @@ script = [
         "args": [0x00b8, 40]
     },
     {
-        "identifier": 'EVENT_1894_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_1894_set_bit_3',
         "command": 'set_bit',
         "args": [0x707c, 5]

@@ -32,23 +32,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3619_jmp_if_7000_equals_short_4',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [416, 'EVENT_3619_apply_tile_mod_8']
-    },
-    {
         "identifier": 'EVENT_3619_jmp_if_7000_equals_short_5',
         "command": 'jmp_if_7000_equals_short',
         "args": [438, 'EVENT_3619_apply_tile_mod_10']
-    },
-    {
-        "identifier": 'EVENT_3619_apply_tile_mod_6',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._061_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA_RIGHT_BEFORE_FIGHT, 3, [_0x6AFlags.USE_ALTERNATE]]
-    },
-    {
-        "identifier": 'EVENT_3619_ret_7',
-        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3619_apply_tile_mod_8',

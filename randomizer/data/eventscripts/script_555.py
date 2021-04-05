@@ -6,6 +6,10 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_555_rlo__0',
+        "command": 'remember_last_object'
+    },
+    {
         "identifier": 'EVENT_555_set_bit_0',
         "command": 'set_bit',
         "args": [0x7060, 3]
@@ -74,7 +78,7 @@ script = [
     {
         "identifier": 'EVENT_555_remove_from_current_level_7',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0]
+        "args": [AreaObjects.MEM_70A8]
     },
     {
         "identifier": 'EVENT_555_remove_from_level_8',
@@ -82,60 +86,12 @@ script = [
         "args": [AreaObjects.NPC_0, Rooms._095_ROSE_TOWN_DURING_BOWYER_INN_2F]
     },
     {
+        "identifier": 'EVENT_555_remove_from_level_8_',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_2, Rooms._096_ROSE_TOWN_INN_2F]
+    },
+    {
         "identifier": 'EVENT_555_ret_9',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_555_run_dialog_10',
-        "command": 'run_dialog',
-        "args": [702, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_555_ret_11',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_12',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_13',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_14',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_15',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_16',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_17',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_18',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_19',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_20',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_stop_sound_21',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_555_ret_22',
         "command": 'ret'
     }
 ]

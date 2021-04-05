@@ -50,62 +50,6 @@ script = [
         "args": [121, 'EVENT_3228_start_embedded_action_script_sync_F1_15']
     },
     {
-        "identifier": 'EVENT_3228_jmp_if_object_trigger_disabled_9',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_2, Rooms._179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, 'EVENT_3228_start_embedded_action_script_sync_F1_15']
-    },
-    {
-        "identifier": 'EVENT_3228_play_sound_10',
-        "command": 'play_sound',
-        "args": [Sounds._014_FLOWER, 6]
-    },
-    {
-        "identifier": 'EVENT_3228_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3228_action_queue_sync_11_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            },
-            {
-                "identifier": 'EVENT_3228_action_queue_sync_11_SUBSCRIPT_object_memory_clear_bit_1',
-                "command": 'object_memory_clear_bit',
-                "args": [0x30, [4]]
-            },
-            {
-                "identifier": 'EVENT_3228_action_queue_sync_11_SUBSCRIPT_set_solidity_bits_2',
-                "command": 'set_solidity_bits',
-                "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3228_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3228_action_queue_sync_12_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            },
-            {
-                "identifier": 'EVENT_3228_action_queue_sync_12_SUBSCRIPT_object_memory_set_bit_1',
-                "command": 'object_memory_set_bit',
-                "args": [0x30, [4]]
-            },
-            {
-                "identifier": 'EVENT_3228_action_queue_sync_12_SUBSCRIPT_set_solidity_bits_2',
-                "command": 'set_solidity_bits',
-                "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
-            },
-            {
-                "identifier": 'EVENT_3228_action_queue_sync_12_SUBSCRIPT_end_all_3',
-                "command": 'end_all'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_3228_set_bit_13',
         "command": 'set_bit',
         "args": [0x7044, 5]

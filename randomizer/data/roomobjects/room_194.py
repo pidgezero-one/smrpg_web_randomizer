@@ -8,17 +8,6 @@ room = {
   "entrance_event": 1344,
   "event_tiles": [
     {
-      "event": 1345,
-      "x": 4,
-      "y": 111,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 1,
-      "height": 6,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    },
-    {
       "event": 1346,
       "x": 1,
       "y": 105,

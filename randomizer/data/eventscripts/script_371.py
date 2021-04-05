@@ -16,22 +16,6 @@ script = [
         "args": [0x015e, []]
     },
     {
-        "identifier": 'EVENT_371_jmp_if_object_trigger_disabled_2',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_6, Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, 'EVENT_371_run_background_event_4']
-    },
-    {
-        "identifier": 'EVENT_371_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_6],
-        "subscript": [
-            {
-                "identifier": 'EVENT_371_action_queue_async_3_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_371_run_background_event_4',
         "command": 'run_background_event',
         "args": [377, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6]]

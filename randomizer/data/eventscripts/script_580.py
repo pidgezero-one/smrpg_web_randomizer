@@ -6,25 +6,8 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_580_jmp_if_present_in_current_level_0',
-        "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_2, 'EVENT_261_jmp_if_bit_clear_0']
-    },
-    {
         "identifier": 'EVENT_580_run_event_as_subroutine_1',
         "command": 'run_event_as_subroutine',
         "args": [281]
-    },
-    {
-        "identifier": 'EVENT_580_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_580_stop_sound_3',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_580_stop_sound_4',
-        "command": 'stop_sound'
     }
 ]

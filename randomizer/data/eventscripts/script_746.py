@@ -16,25 +16,9 @@ script = [
         "args": [0x7082, 0, 'EVENT_746_enter_area_8']
     },
     {
-        "identifier": 'EVENT_746_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_746_stop_sound_3',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_746_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_746_stop_sound_5',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_746_enter_area_6',
         "command": 'enter_area',
-        "args": [Rooms._049_MUSHROOM_KINGDOM_BEFORE_CROCO_INN_1F, RadialDirections.SOUTHWEST, 4, 84, 0, [_0x68Flags.RUN_ENTRANCE_EVENT, _0x68Flags.Z_HALF]]
+        "args": [Rooms._191_MUSHROOM_KINGDOM_OUTSIDE, RadialDirections.SOUTHWEST, 14, 99, 4, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_746_ret_7',
@@ -43,16 +27,7 @@ script = [
     {
         "identifier": 'EVENT_746_enter_area_8',
         "command": 'enter_area',
-        "args": [Rooms._485_MUSHROOM_KINGDOM_DURING_MACK_INN_1F, RadialDirections.SOUTHWEST, 4, 84, 0, [_0x68Flags.RUN_ENTRANCE_EVENT, _0x68Flags.Z_HALF]]
-    },
-    {
-        "identifier": 'EVENT_746_ret_9',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_746_enter_area_10',
-        "command": 'enter_area',
-        "args": [Rooms._493_MUSHROOM_KINGDOM_INN_1F, RadialDirections.SOUTHWEST, 4, 84, 0, [_0x68Flags.RUN_ENTRANCE_EVENT, _0x68Flags.Z_HALF]]
+        "args": [Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, RadialDirections.SOUTHWEST, 14, 99, 4, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_746_ret_11',

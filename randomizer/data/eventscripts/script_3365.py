@@ -339,11 +339,6 @@ script = [
         "args": [Music._09_VICTORY]
     },
     {
-        "identifier": 'EVENT_3365_run_dialog_67',
-        "command": 'run_dialog',
-        "args": [1938, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_3365_set_bit_68',
         "command": 'set_bit',
         "args": [0x7044, 7]

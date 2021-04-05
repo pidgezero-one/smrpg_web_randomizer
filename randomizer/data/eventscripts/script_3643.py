@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3643_run_dialog_0',
-        "command": 'run_dialog',
-        "args": [2407, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3643_open_shop_1',
         "command": 'open_shop',
         "args": [Shops._21_NIMBUS_LAND_ITEMWEAPON]

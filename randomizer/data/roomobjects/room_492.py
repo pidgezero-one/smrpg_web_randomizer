@@ -4,67 +4,11 @@
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
   "partition": 72,
-  "music": Music._02_MUSHROOM_KINGDOM,
+  "music": Music._00_CURRENT,
   "entrance_event": 3831,
   "event_tiles": [
     {
-      "event": 3836,
-      "x": 15,
-      "y": 42,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 1,
-      "height": 0,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    },
-    {
-      "event": 3835,
-      "x": 15,
-      "y": 44,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 1,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    },
-    {
-      "event": 3835,
-      "x": 16,
-      "y": 44,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 1,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    },
-    {
-      "event": 3835,
-      "x": 16,
-      "y": 43,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 1,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    },
-    {
-      "event": 3834,
-      "x": 15,
-      "y": 43,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 1,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    }
-  ],
-  "exit_fields": [
-    {
+      "event": 754,
       "x": 16,
       "y": 39,
       "z": 1,
@@ -73,19 +17,9 @@ room = {
       "height": 1,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": True,
-      "destination_type": ExitType.ROOM,
-      "destination": Rooms._491_MUSHROOM_KINGDOM_ITEM_SHOP_TOP_FLOOR,
-      "show_message": False,
-      "destination_props": {
-        "x": 20,
-        "y": 23,
-        "z": 1,
-        "z_half": True,
-        "f": RadialDirection.NORTHWEST,
-        "x_bit_7": False
-      }
     }
   ],
+  "exit_fields": [],
   "objects": [
     {
       "id": 0,
@@ -161,7 +95,7 @@ room = {
       "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
       "model": 121,
       "event_script": 3830,
-      "action_script": 119,
+      "action_script": 128,
       "speed": 0,
       "npc_id_offset": 0,
       "event_offset": 0,

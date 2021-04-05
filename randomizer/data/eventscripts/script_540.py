@@ -6,30 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_540_run_dialog_0',
-        "command": 'run_dialog',
-        "args": [2540, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_540_pause_1',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_540_jmp_if_dialog_option_b_2',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_540_run_dialog_5']
-    },
-    {
-        "identifier": 'EVENT_540_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [802, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_540_ret_4',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_540_run_dialog_5',
         "command": 'run_dialog',
         "args": [803, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]

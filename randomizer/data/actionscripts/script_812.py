@@ -5,50 +5,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_812_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705e, 7, 'ACTION_812_set_priority_9']
-    },
-    {
-        "identifier": 'ACTION_812_set_priority_1',
-        "command": 'set_priority',
-        "args": [3]
-    },
-    {
-        "identifier": 'ACTION_812_set_animation_speed_2',
-        "command": 'set_animation_speed',
-        "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-    },
-    {
-        "identifier": 'ACTION_812_db_3',
-        "command": 'db',
-        "args": [0x20, 0x04]
-    },
-    {
-        "identifier": 'ACTION_812_embedded_animation_routine_4',
-        "command": 'embedded_animation_routine',
-        "args": [0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80]
-    },
-    {
-        "identifier": 'ACTION_812_shift_northwest_steps_5',
-        "command": 'shift_northwest_steps',
-        "args": [2]
-    },
-    {
-        "identifier": 'ACTION_812_shift_southwest_steps_6',
-        "command": 'shift_southwest_steps',
-        "args": [9]
-    },
-    {
-        "identifier": 'ACTION_812_shift_northwest_steps_7',
-        "command": 'shift_northwest_steps',
-        "args": [2]
-    },
-    {
-        "identifier": 'ACTION_812_face_southwest_8',
-        "command": 'face_southwest'
-    },
-    {
         "identifier": 'ACTION_812_set_priority_9',
         "command": 'set_priority',
         "args": [3]

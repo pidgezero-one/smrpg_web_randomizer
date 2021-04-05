@@ -63,16 +63,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1677_set_bit_10',
-        "command": 'set_bit',
-        "args": [0x706f, 6]
-    },
-    {
-        "identifier": 'EVENT_1677_set_bit_11',
-        "command": 'set_bit',
-        "args": [0x7067, 7]
-    },
-    {
         "identifier": 'EVENT_1677_jmp_to_event_12',
         "command": 'jmp_to_event',
         "args": [2048]

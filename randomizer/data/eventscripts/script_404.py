@@ -8,12 +8,12 @@ script = [
     {
         "identifier": 'EVENT_404_pause_action_script_0',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1]
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_404_action_queue_sync_1',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_404_action_queue_sync_1_SUBSCRIPT_transfer_xyzf_pixels_0',
@@ -25,7 +25,7 @@ script = [
     {
         "identifier": 'EVENT_404_action_queue_async_2',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_0],
         "subscript": [
             {
                 "identifier": 'EVENT_404_action_queue_async_2_SUBSCRIPT_transfer_to_xyzf_0',
@@ -37,7 +37,7 @@ script = [
     {
         "identifier": 'EVENT_404_set_action_script_sync_3',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 113]
+        "args": [AreaObjects.NPC_0, 113]
     },
     {
         "identifier": 'EVENT_404_jmp_to_event_4',

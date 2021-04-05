@@ -11,22 +11,6 @@ script = [
         "args": [Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 0, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
-        "identifier": 'EVENT_3762_jmp_if_object_trigger_disabled_1',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_0, Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 'EVENT_3762_action_queue_async_3']
-    },
-    {
-        "identifier": 'EVENT_3762_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3762_action_queue_async_2_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_3762_action_queue_async_3',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_7],
@@ -41,31 +25,6 @@ script = [
     {
         "identifier": 'EVENT_3762_fade_in_from_black_async_4',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_3762_run_event_as_subroutine_5',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_3762_jmp_if_bit_clear_6',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_3584_ret_0']
-    },
-    {
-        "identifier": 'EVENT_3762_jmp_if_object_trigger_disabled_7',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_0, Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 'EVENT_3584_ret_0']
-    },
-    {
-        "identifier": 'EVENT_3762_clear_bit_8',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_3762_play_sound_9',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
     },
     {
         "identifier": 'EVENT_3762_ret_10',

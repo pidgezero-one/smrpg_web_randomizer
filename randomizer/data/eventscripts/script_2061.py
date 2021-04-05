@@ -263,11 +263,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2061_set_bit_3',
-        "command": 'set_bit',
-        "args": [0x7089, 0]
-    },
-    {
         "identifier": 'EVENT_2061_fade_out_music_to_volume_4',
         "command": 'fade_out_music_to_volume',
         "args": [5, 100]

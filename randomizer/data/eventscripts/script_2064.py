@@ -38,6 +38,16 @@ script = [
         "args": [0x708a, 5, 'EVENT_2064_action_queue_sync_15']
     },
     {
+        "identifier": 'EVENT_2064_jmp_if_bit_set___1',
+        "command": 'jmp_if_bit_set',
+        "args": [0x708a, 4, 'EVENT_2064_action_queue_sync___11']
+    },
+    {
+        "identifier": 'EVENT_2064_jmp_if_bit_set__1',
+        "command": 'jmp_if_bit_set',
+        "args": [0x708a, 3, 'EVENT_2064_action_queue_sync__11']
+    },
+    {
         "identifier": 'EVENT_2064_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
         "args": [0x708a, 2, 'EVENT_2064_action_queue_sync_11']
@@ -157,6 +167,102 @@ script = [
         "command": 'ret'
     },
     {
+        "identifier": 'EVENT_2064_action_queue_sync__11',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2064_action_queue_sync__11_SUBSCRIPT_shirt_to_xy_coords_0',
+                "command": 'shirt_to_xy_coords',
+                "args": [5, 9]
+            },
+            {
+                "identifier": 'EVENT_2064_action_queue_sync__11_SUBSCRIPT_face_southeast_1',
+                "command": 'face_southeast'
+            },
+            {
+                "identifier": 'EVENT_2064_action_queue_sync__11_SUBSCRIPT_visibility_on_2',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2064_action_queue_async__12',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2064_action_queue_async__12_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [5, 15, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_2064_action_queue_async__12_SUBSCRIPT_face_southwest_1',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'EVENT_2064_action_queue_async__12_SUBSCRIPT_visibility_on_2',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2064_fade_in_from_black_async__13',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_2064_ret__14',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_2064_action_queue_sync___11',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2064_action_queue_sync___11_SUBSCRIPT_shirt_to_xy_coords_0',
+                "command": 'shirt_to_xy_coords',
+                "args": [5, 9]
+            },
+            {
+                "identifier": 'EVENT_2064_action_queue_sync___11_SUBSCRIPT_face_southeast_1',
+                "command": 'face_southeast'
+            },
+            {
+                "identifier": 'EVENT_2064_action_queue_sync___11_SUBSCRIPT_visibility_on_2',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2064_action_queue_async___12',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2064_action_queue_async___12_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [5, 15, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_2064_action_queue_async___12_SUBSCRIPT_face_southwest_1',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'EVENT_2064_action_queue_async___12_SUBSCRIPT_visibility_on_2',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2064_fade_in_from_black_async___13',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_2064_ret___14',
+        "command": 'ret'
+    },
+    {
         "identifier": 'EVENT_2064_action_queue_sync_15',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_1],
@@ -184,7 +290,7 @@ script = [
     {
         "identifier": 'EVENT_2064_action_queue_async_16',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_2064_action_queue_async_16_SUBSCRIPT_transfer_to_xyzf_0',
@@ -213,7 +319,7 @@ script = [
     {
         "identifier": 'EVENT_2064_set_action_script_sync_17',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 1006]
+        "args": [AreaObjects.NPC_3, 1006]
     },
     {
         "identifier": 'EVENT_2064_set_action_script_sync_18',

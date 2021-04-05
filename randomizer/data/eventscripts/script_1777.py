@@ -769,29 +769,5 @@ script = [
     {
         "identifier": 'EVENT_1777_ret_32',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1777_ret_33',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1777_ret_34',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1777_ret_35',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1777_ret_36',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1777_ret_37',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1777_ret_38',
-        "command": 'ret'
     }
 ]

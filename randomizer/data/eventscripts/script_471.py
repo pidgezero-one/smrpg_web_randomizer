@@ -55,11 +55,6 @@ script = [
         "args": [456]
     },
     {
-        "identifier": 'EVENT_471_run_dialog_10',
-        "command": 'run_dialog',
-        "args": [907, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_471_jmp_to_event_11',
         "command": 'jmp_to_event',
         "args": [476]

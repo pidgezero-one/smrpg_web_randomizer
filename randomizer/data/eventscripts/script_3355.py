@@ -21,19 +21,9 @@ script = [
         "args": [0x7000, 256]
     },
     {
-        "identifier": 'EVENT_3355_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [1888, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_3355_set_random_4',
         "command": 'set_random',
         "args": [0x7000, 256]
-    },
-    {
-        "identifier": 'EVENT_3355_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [1889, AreaObjects.NPC_14, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3355_set_bit_6',
@@ -73,7 +63,7 @@ script = [
     {
         "identifier": 'EVENT_3355_run_dialog_13',
         "command": 'run_dialog',
-        "args": [1890, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "args": [1888, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3355_db_14',
@@ -224,11 +214,6 @@ script = [
         "identifier": 'EVENT_3355_set_action_script_sync_41',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_0, 59]
-    },
-    {
-        "identifier": 'EVENT_3355_run_dialog_42',
-        "command": 'run_dialog',
-        "args": [1895, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3355_db_43',
@@ -586,11 +571,6 @@ script = [
         "identifier": 'EVENT_3355_play_music_default_volume_74',
         "command": 'play_music_default_volume',
         "args": [Music._09_VICTORY]
-    },
-    {
-        "identifier": 'EVENT_3355_run_dialog_75',
-        "command": 'run_dialog',
-        "args": [1897, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3355_set_bit_76',

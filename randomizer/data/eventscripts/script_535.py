@@ -6,25 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_535_jmp_if_object_not_in_level_0',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 'EVENT_535_run_dialog_4']
-    },
-    {
-        "identifier": 'EVENT_535_jmp_if_object_not_in_level_1',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_10, Rooms._084_ROSE_TOWN_OUTSIDE, 'EVENT_535_run_dialog_4']
-    },
-    {
-        "identifier": 'EVENT_535_run_dialog_2',
-        "command": 'run_dialog',
-        "args": [808, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_535_ret_3',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_535_run_dialog_4',
         "command": 'run_dialog',
         "args": [809, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]

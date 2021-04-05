@@ -6,19 +6,7 @@ room = {
   "partition": 48,
   "music": Music._00_CURRENT,
   "entrance_event": 1328,
-  "event_tiles": [
-    {
-      "event": 1331,
-      "x": 5,
-      "y": 113,
-      "z": 0,
-      "f": Edge.SOUTHWEST,
-      "length": 3,
-      "height": 6,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    }
-  ],
+  "event_tiles": [],
   "exit_fields": [
     {
       "x": 1,
@@ -158,7 +146,7 @@ room = {
       "npc_id_offset": 0,
       "event_offset": 0,
       "action_offset": 0,
-      "visible": True,
+      "visible": False,
       "x": 8,
       "y": 110,
       "z": 0,

@@ -222,11 +222,6 @@ script = [
         "args": [AreaObjects.NPC_1]
     },
     {
-        "identifier": 'EVENT_289_jmp_if_bit_set_44',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7044, 0, 'EVENT_289_run_dialog_63']
-    },
-    {
         "identifier": 'EVENT_289_run_dialog_45',
         "command": 'run_dialog',
         "args": [776, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
@@ -534,30 +529,6 @@ script = [
     },
     {
         "identifier": 'EVENT_289_ret_62',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_289_run_dialog_63',
-        "command": 'run_dialog',
-        "args": [782, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_289_resume_action_script_64',
-        "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_289_resume_action_script_65',
-        "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_289_enable_controls_until_return_66',
-        "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
-    },
-    {
-        "identifier": 'EVENT_289_ret_67',
         "command": 'ret'
     }
 ]

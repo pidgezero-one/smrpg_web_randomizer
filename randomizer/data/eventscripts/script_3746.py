@@ -65,16 +65,6 @@ script = [
         "args": [AreaObjects.MARIO, 395]
     },
     {
-        "identifier": 'EVENT_3746_set_bit_6',
-        "command": 'set_bit',
-        "args": [0x7068, 1]
-    },
-    {
-        "identifier": 'EVENT_3746_set_bit_7',
-        "command": 'set_bit',
-        "args": [0x7070, 0]
-    },
-    {
         "identifier": 'EVENT_3746_set_8',
         "command": 'set',
         "args": [0x70df, 49]

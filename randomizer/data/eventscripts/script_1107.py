@@ -334,11 +334,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1107_jmp_if_bit_clear_22',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 0, 'EVENT_1110_stop_sound_0']
-    },
-    {
         "identifier": 'EVENT_1107_action_queue_sync_23',
         "command": 'action_queue_sync',
         "args": [AreaObjects.MARIO],

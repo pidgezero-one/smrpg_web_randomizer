@@ -475,19 +475,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_273_jmp_if_bit_clear_83',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7085, 0, 'EVENT_273_ret_88']
-    },
-    {
         "identifier": 'EVENT_273_jmp_if_bit_set_84',
         "command": 'jmp_if_bit_set',
-        "args": [0x7060, 2, 'EVENT_273_ret_88']
+        "args": [0x7060, 3, 'EVENT_273_ret_88']
     },
     {
         "identifier": 'EVENT_273_set_bit_85',
         "command": 'set_bit',
-        "args": [0x7060, 2]
+        "args": [0x7060, 3]
     },
     {
         "identifier": 'EVENT_273_summon_to_current_level_86',
@@ -551,6 +546,26 @@ script = [
         "identifier": 'EVENT_273_apply_tile_mod_94',
         "command": 'apply_tile_mod',
         "args": [Rooms._096_ROSE_TOWN_INN_2F, 1, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_273_jmp_if_bit_set_84_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7060, 3, 'EVENT_273_ret_95']
+    },
+    {
+        "identifier": 'EVENT_273_set_bit_85_',
+        "command": 'set_bit',
+        "args": [0x7060, 3]
+    },
+    {
+        "identifier": 'EVENT_273_summon_to_current_level_86_',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_2]
+    },
+    {
+        "identifier": 'EVENT_273_set_action_script_sync_87_',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_2, 119]
     },
     {
         "identifier": 'EVENT_273_ret_95',
@@ -1062,11 +1077,6 @@ script = [
         "args": [AreaObjects.MARIO, 787]
     },
     {
-        "identifier": 'EVENT_273_run_dialog_166',
-        "command": 'run_dialog',
-        "args": [3797, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_273_action_queue_async_167',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_0],
@@ -1119,11 +1129,6 @@ script = [
                 "command": 'face_northwest'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_273_run_dialog_168',
-        "command": 'run_dialog',
-        "args": [3798, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_273_pause_169',
@@ -1225,11 +1230,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_273_run_dialog_175',
-        "command": 'run_dialog',
-        "args": [3799, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_273_set_176',
         "command": 'set',
         "args": [0x70a7, 107]
@@ -1248,11 +1248,6 @@ script = [
         "identifier": 'EVENT_273_put_inventory_179',
         "command": 'put_inventory',
         "args": [0x70a7]
-    },
-    {
-        "identifier": 'EVENT_273_run_dialog_180',
-        "command": 'run_dialog',
-        "args": [3796, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_273_pause_181',

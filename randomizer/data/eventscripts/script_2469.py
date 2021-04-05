@@ -31,36 +31,6 @@ script = [
         "args": [AreaObjects.MARIO, 10]
     },
     {
-        "identifier": 'EVENT_2469_run_event_as_subroutine_5',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_2469_jmp_if_bit_clear_6',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2469_ret_11']
-    },
-    {
-        "identifier": 'EVENT_2469_jmp_if_bit_set_7',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708d, 5, 'EVENT_2469_ret_11']
-    },
-    {
-        "identifier": 'EVENT_2469_pause_8',
-        "command": 'pause',
-        "args": [24]
-    },
-    {
-        "identifier": 'EVENT_2469_clear_bit_9',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_2469_play_sound_10',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
         "identifier": 'EVENT_2469_ret_11',
         "command": 'ret'
     }

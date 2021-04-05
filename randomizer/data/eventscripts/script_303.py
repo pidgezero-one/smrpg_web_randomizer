@@ -44,11 +44,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_303_jmp_if_bit_set_2',
-        "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_303_run_dialog_22']
-    },
-    {
         "identifier": 'EVENT_303_run_dialog_3',
         "command": 'run_dialog',
         "args": [541, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
@@ -216,64 +211,6 @@ script = [
     },
     {
         "identifier": 'EVENT_303_ret_21',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_303_run_dialog_22',
-        "command": 'run_dialog',
-        "args": [2239, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_303_jmp_if_dialog_option_b_23',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_303_run_event_as_subroutine_12']
-    },
-    {
-        "identifier": 'EVENT_303_run_event_as_subroutine_24',
-        "command": 'run_event_as_subroutine',
-        "args": [3587]
-    },
-    {
-        "identifier": 'EVENT_303_set_action_script_async_25',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
-    },
-    {
-        "identifier": 'EVENT_303_set_action_script_sync_26',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 23]
-    },
-    {
-        "identifier": 'EVENT_303_run_dialog_27',
-        "command": 'run_dialog',
-        "args": [2240, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_303_action_queue_async_28',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_303_action_queue_async_28_SUBSCRIPT_set_solidity_bits_0',
-                "command": 'set_solidity_bits',
-                "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_303_action_queue_async_29',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_303_action_queue_async_29_SUBSCRIPT_set_solidity_bits_0',
-                "command": 'set_solidity_bits',
-                "args": [[_0x0AFlags.CANT_WALK_THROUGH]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_303_ret_30',
         "command": 'ret'
     }
 ]

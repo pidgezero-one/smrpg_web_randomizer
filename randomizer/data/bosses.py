@@ -276,10 +276,42 @@ class Mack(BossAndStarLocation):
     model = {**models[480]}
     target_npcs = [
         {
+            "room": Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
+            "sidekicks": [0, 1, 2, 3, 4, 5, 6]
+        },
+        {
+            "room": Rooms._323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM,
+            "sidekicks": [0, 1]
+        },
+        {
+            "room": Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
+            "sidekicks": [0, 1, 2, 3, 4]
+        },
+        {
             "room": Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
             "npcs": [3],
-            "sidekicks": [4, 5, 6, 7, 8, 9] # replace if mack skip turned off
-        }
+            "sidekicks": [4, 5, 6, 7, 8, 9] # replace only if mack skip turned off
+        },
+        {
+            "room": Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
+            "sidekicks": [0, 1]
+        },
+        {
+            "room": Rooms._329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM,
+            "sidekicks": [0, 1]
+        },
+        {
+            "room": Rooms._332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
+            "sidekicks": [0, 1]
+        },
+        {
+            "room": Rooms._480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
+            "sidekicks": [3, 4]
+        },
+        {
+            "room": Rooms._481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F,
+            "sidekicks": [1]
+        },
     ]
     original_boss = 224
 
@@ -341,11 +373,13 @@ class Croco2(BossAndStarLocation):
     target_npcs = [
         {
             "room": Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE,
-            "npcs": [0]
+            "npcs": [0],
+            "sidekicks": [1, 2, 3]
         },
         {
             "room": Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM,
-            "npcs": [0]
+            "npcs": [0],
+            "sidekicks": [1, 2, 3]
         },
         {
             "room": Rooms._275_MOLEVILLE_MINES_AREA_06_SMALL_ROOM_LEADING_TO_AREA_06,
@@ -361,7 +395,8 @@ class Croco2(BossAndStarLocation):
         },
         {
             "room": Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
-            "npcs": [0]
+            "npcs": [0],
+            "sidekicks": [1, 2, 3]
         }
     ]
     original_boss = 241
@@ -402,7 +437,7 @@ class Booster(BossAndStarLocation):
         },
         {
             "room": Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
-            "npcs": [15],
+            "npcs": [12],
             "sidekicks": [0, 1, 2]
         },
         {
@@ -416,6 +451,16 @@ class Booster(BossAndStarLocation):
         {
             "room": Rooms._054_BOOSTER_HILL_____DUMMY,
             "npcs": [7]
+        },
+        {
+            "room": Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
+            "npcs": [3], #formerly 4
+            "sidekicks": [0, 1, 2]
+        },
+        {
+            "room": Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+            "npcs": [10],
+            "sidekicks": [1, 2, 3, 4, 5, 6, 7, 8]
         }
     ]
     original_boss = 246
@@ -504,6 +549,11 @@ class Johnny(BossAndStarLocation):
             "room": Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
             "npcs": [2],
             "sidekicks": [4, 5, 6, 7]
+        },
+        {
+            "room": Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            "npcs": [8],
+            "sidekicks": [4, 5]
         }
     ]
     original_boss = 249
@@ -524,6 +574,43 @@ class Yaridovich(BossAndStarLocation):
         {
             "room": Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
             "npcs": [4],
+            "sidekicks": [0, 1, 2, 3]
+        },
+        {
+            "room": Rooms._209_SEASIDE_TOWN_DURING_YARIDOVICH_INN_1F,
+            "sidekicks": [0]
+        },
+        {
+            "room": Rooms._210_SEASIDE_TOWN_DURING_YARIDOVICH_INN_2F,
+            "sidekicks": [0]
+        },
+        {
+            "room": Rooms._211_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_1F,
+            "npcs": [0],
+        },
+        {
+            "room": Rooms._213_SEASIDE_TOWN_DURING_YARIDOVICH_BEETLES_ARE_USBOMB_SHOP,
+            "sidekicks": [0, 1]
+        },
+        {
+            "room": Rooms._214_SEASIDE_TOWN_DURING_YARIDOVICH_WEAPONS_AND_ARMOR_SHOP,
+            "sidekicks": [0, 1]
+        },
+        {
+            "room": Rooms._215_SEASIDE_TOWN_DURING_YARIDOVICH_HEALTH_FOOD_STORE_LEFTMOST,
+            "sidekicks": [0]
+        },
+        {
+            "room": Rooms._216_SEASIDE_TOWN_DURING_YARIDOVICH_MUSHROOM_BOY_SHOP_MIDDLE,
+            "sidekicks": [0, 1]
+        },
+        {
+            "room": Rooms._217_SEASIDE_TOWN_DURING_YARIDOVICH_ACCESSORY_SHOP_RIGHTMOST,
+            "sidekicks": [0]
+        },
+        {
+            "room": Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
+            "npcs": [7],
             "sidekicks": [0, 1, 2, 3]
         }
     ]
@@ -570,6 +657,13 @@ class Jinx1(BossLocation):
     battlefield = Battlefields.JinxDojo
     can_run_away = True
     music = BattleMusic.Boss1
+    model = {**models[207]}
+    target_npcs = [
+        {
+            "room": Rooms._255_MONSTRO_TOWN_JINXS_DOJO,
+            "npcs": [0]
+        }
+    ]
     original_boss = 195
 
 
@@ -579,6 +673,13 @@ class Jinx2(BossLocation):
     battlefield = Battlefields.JinxDojo
     can_run_away = True
     music = BattleMusic.Boss1
+    model = {**models[415]}
+    target_npcs = [
+        {
+            "room": Rooms._255_MONSTRO_TOWN_JINXS_DOJO,
+            "npcs": [2]
+        }
+    ]
     original_boss = 196
 
 
@@ -589,11 +690,11 @@ class Jinx3(BossAndStarLocation):
     battlefield = Battlefields.JinxDojo
     can_run_away = True
     music = BattleMusic.Boss1
-    model = {**models[207]}
+    model = {**models[416]}
     target_npcs = [
         {
             "room": Rooms._255_MONSTRO_TOWN_JINXS_DOJO,
-            "npcs": [0]
+            "npcs": [3]
         }
     ]
     original_boss = 218
@@ -606,6 +707,12 @@ class Culex(BossAndStarLocation):
     battlefield = Battlefields.Culex
     music = BattleMusic.Culex
     original_boss = 255
+    target_npcs = [
+        {
+            "room": Rooms._351_CULEXS_ROOM,
+            "npcs": [0]
+        }
+    ]
 
 
 class BoxBoy(BossAndStarLocation):
@@ -645,6 +752,10 @@ class Dodo(BossAndStarLocation):
         {
             "room": Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT,
             "npcs": [2]
+        },
+        {
+            "room": Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+            "npcs": [0]
         }
     ]
     original_boss = 137
@@ -683,7 +794,7 @@ class Valentina(BossAndStarLocation):
         },
         {
             "room": Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL,
-            "npcs": [0, 1, 2, 3, 4, 5, 6]
+            "npcs": [0, 1, 2, 3, 4, 5]
         },
         {
             "room": Rooms._115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA,
@@ -710,8 +821,24 @@ class Valentina(BossAndStarLocation):
             "npcs": [6, 7]
         },
         {
+            "room": Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
+            "npcs": [5] #formerly 6
+        },
+        {
             "room": Rooms._408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM_,
             "npcs": [6, 7]
+        },
+        {
+            "room": Rooms._440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA,
+            "npcs": [0, 1]
+        },
+        {
+            "room": Rooms._447_NIMBUS_LAND_HOT_SPRINGS,
+            "npcs": [1, 2, 3, 4]
+        },
+        {
+            "room": Rooms._497_NIMBUS_CASTLE_AREA_06_____DUMMY,
+            "npcs": [0, 1]
         },
         {
             "room": Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
@@ -722,16 +849,8 @@ class Valentina(BossAndStarLocation):
             "npcs": [0, 1]
         },
         {
-            "room": Rooms._440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA,
-            "npcs": [0, 1]
-        },
-        {
-            "room": Rooms._497_NIMBUS_CASTLE_AREA_06_____DUMMY,
-            "npcs": [0, 1]
-        },
-        {
-            "room": Rooms._447_NIMBUS_LAND_HOT_SPRINGS,
-            "npcs": [1, 2, 3, 4]
+            "room": Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+            "npcs": [9]
         }
     ]
     original_boss = 251
@@ -783,22 +902,22 @@ class AxemRangers(BossAndStarLocation):
         },
         {
             "room": Rooms._391_VOLCANO_POSTCD_AREA_04,
-            "npcs": [1]
+            "npcs": [0]
         },
         {
             "room": Rooms._394_VOLCANO_POSTCD_AREA_05,
-            "npcs": [3],
-            "sidekicks": [1, 2]
+            "npcs": [2],
+            "sidekicks": [0, 1]
         },
         {
             "room": Rooms._392_VOLCANO_POSTCD_AREA_06,
-            "npcs": [1],
-            "sidekicks": [2, 3, 4, 5]
+            "npcs": [0],
+            "sidekicks": [1, 2, 3, 4]
         },
         {
             "room": Rooms._393_VOLCANO_POSTCD_AREA_07_WARP_TO_WORLD_MAP,
-            "npcs": [2],
-            "sidekicks": [3, 4, 5, 6]
+            "npcs": [1],
+            "sidekicks": [2, 3, 4, 5]
         },
     ]
     original_boss = 245
@@ -815,6 +934,30 @@ class Magikoopa(BowsersKeepLocation):
         {
             "room": Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM,
             "npcs": [2]
+        },
+        {
+            "room": Rooms._376_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2B_1ST_FIGHT_CHEWY,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._377_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2C_1ST_FIGHT_SPARKY,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._459_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1A_1ST_FIGHT_TERRA_COTTA,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._460_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1B_1ST_FIGHT_ALLEY_RAT,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
+            "npcs": [0]
+        },
+        {
+            "room": Rooms._462_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2A_1ST_FIGHT_GU_GOOMBA,
+            "npcs": [0]
         }
     ]
     original_boss = 33
@@ -929,10 +1072,36 @@ class Gunyolk(BossLocation):
     target_npcs = [
         {
             "room": Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
-            "npcs": [13]
+            "npcs": [13],
+            "sidekicks": [0, 1, 2, 3, 4, 5, 6] # dont need to use all of these
         }
     ]
     original_boss = 51
+
+    # smithy
+    #
+    # target_npcs = [
+    #     {
+    #         "room": Rooms._406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
+    #         "sidekicks": [1, 2, 3, 4, 5, 6]
+    #     },
+    #     {
+    #         "room": Rooms._469_FACTORY_GROUNDS_AREA_01,
+    #         "sidekicks": [0, 1, 2, 3, 4, 5]
+    #     },
+    #     {
+    #         "room": Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+    #         "sidekicks": [7, 8, 9, 10, 11, 15]
+    #     },
+    #     {
+    #         "room": Rooms._471_FACTORY_GROUNDS_AREA_02,
+    #         "sidekicks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] #6-11 are painted
+    #     },
+    #     {
+    #         "room": Rooms._472_FACTORY_GROUNDS_AREA_03,
+    #         "sidekicks": [1, 2, 3, 4, 5, 6]
+    #     }
+    # ]
 
 
 # ********************* Default lists for the world.

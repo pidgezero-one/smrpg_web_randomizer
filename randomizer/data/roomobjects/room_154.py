@@ -84,54 +84,6 @@ room = {
     {
       "id": 3,
       "type": ObjectType.OBJECT,
-      "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
-      "model": 398,
-      "event_script": 630,
-      "action_script": 15,
-      "speed": 0,
-      "npc_id_offset": 0,
-      "event_offset": 0,
-      "action_offset": 0,
-      "visible": True,
-      "x": 21,
-      "y": 117,
-      "z": 0,
-      "z_half": False,
-      "direction": RadialDirection.SOUTHWEST,
-      "face_on_trigger": True,
-      "cant_enter_doors": False,
-      "byte2_bit5": False,
-      "set_sequence_playback": True,
-      "cant_float": False,
-      "cant_walk_up_stairs": False,
-      "cant_walk_under": False,
-      "cant_pass_walls": False,
-      "cant_jump_through": False,
-      "cant_pass_npcs": True,
-      "byte3_bit5": False,
-      "cant_walk_through": True,
-      "byte3_bit7": False,
-      "slidable_along_walls": False,
-      "cant_move_if_in_air": True,
-      "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 4,
-          "npc_id_offset": 0,
-          "event_offset": 1,
-          "action_offset": 0,
-          "visible": True,
-          "x": 21,
-          "y": 117,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "type": ObjectType.OBJECT,
       "initiator": Initiator.NONE,
       "model": 222,
       "event_script": 655,
@@ -164,7 +116,7 @@ room = {
       "byte7_upper2": 0x03,
       "clones": [
         {
-          "id": 6,
+          "id": 4,
           "npc_id_offset": 0,
           "event_offset": 1,
           "action_offset": 0,
@@ -178,7 +130,7 @@ room = {
       ]
     },
     {
-      "id": 7,
+      "id": 5,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.ANYTHING_EXCEPT_PRESS_A,
       "model": 222,
@@ -213,7 +165,7 @@ room = {
       "clones": []
     },
     {
-      "id": 8,
+      "id": 6,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.NONE,
       "model": 222,
@@ -247,31 +199,31 @@ room = {
       "byte7_upper2": 0x03,
       "clones": [
         {
+          "id": 7,
+          "npc_id_offset": 0,
+          "event_offset": 4,
+          "action_offset": 0,
+          "visible": True,
+          "x": 21,
+          "y": 117,
+          "z": 0,
+          "z_half": False,
+          "direction": RadialDirection.SOUTHWEST
+        },
+        {
+          "id": 8,
+          "npc_id_offset": 0,
+          "event_offset": 4,
+          "action_offset": 0,
+          "visible": True,
+          "x": 21,
+          "y": 117,
+          "z": 0,
+          "z_half": False,
+          "direction": RadialDirection.SOUTHWEST
+        },
+        {
           "id": 9,
-          "npc_id_offset": 0,
-          "event_offset": 4,
-          "action_offset": 0,
-          "visible": True,
-          "x": 21,
-          "y": 117,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        },
-        {
-          "id": 10,
-          "npc_id_offset": 0,
-          "event_offset": 4,
-          "action_offset": 0,
-          "visible": True,
-          "x": 21,
-          "y": 117,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        },
-        {
-          "id": 11,
           "npc_id_offset": 0,
           "event_offset": 5,
           "action_offset": 0,
@@ -283,7 +235,7 @@ room = {
           "direction": RadialDirection.SOUTHWEST
         },
         {
-          "id": 12,
+          "id": 10,
           "npc_id_offset": 0,
           "event_offset": 5,
           "action_offset": 0,
@@ -297,7 +249,7 @@ room = {
       ]
     },
     {
-      "id": 13,
+      "id": 11,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
       "model": 0,
@@ -332,42 +284,7 @@ room = {
       "clones": []
     },
     {
-      "id": 14,
-      "type": ObjectType.OBJECT,
-      "initiator": Initiator.JUMP_ON,
-      "model": 255,
-      "event_script": 256,
-      "action_script": 15,
-      "speed": 0,
-      "npc_id_offset": 0,
-      "event_offset": 0,
-      "action_offset": 0,
-      "visible": True,
-      "x": 21,
-      "y": 117,
-      "z": 0,
-      "z_half": False,
-      "direction": RadialDirection.SOUTHWEST,
-      "face_on_trigger": True,
-      "cant_enter_doors": False,
-      "byte2_bit5": False,
-      "set_sequence_playback": True,
-      "cant_float": False,
-      "cant_walk_up_stairs": False,
-      "cant_walk_under": False,
-      "cant_pass_walls": False,
-      "cant_jump_through": False,
-      "cant_pass_npcs": False,
-      "byte3_bit5": False,
-      "cant_walk_through": True,
-      "byte3_bit7": False,
-      "slidable_along_walls": False,
-      "cant_move_if_in_air": False,
-      "byte7_upper2": 0x03,
-      "clones": []
-    },
-    {
-      "id": 15,
+      "id": 12,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
       "model": 50,
@@ -402,7 +319,7 @@ room = {
       "clones": []
     },
     {
-      "id": 16,
+      "id": 13,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.NONE,
       "model": 1,

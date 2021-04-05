@@ -253,9 +253,8 @@ script = [
         "args": [0x7040, 0, 'EVENT_2225_restore_all_hp_13']
     },
     {
-        "identifier": 'EVENT_2225_jmp_to_event_12',
-        "command": 'jmp_to_event',
-        "args": [3819]
+        "identifier": 'EVENT_2209_jmp_to_event_9',
+        "command": 'reset_and_choose_game'
     },
     {
         "identifier": 'EVENT_2225_restore_all_hp_13',
@@ -296,9 +295,8 @@ script = [
         "args": [0x7040, 0, 'EVENT_2225_restore_all_hp_22']
     },
     {
-        "identifier": 'EVENT_2225_jmp_to_event_21',
-        "command": 'jmp_to_event',
-        "args": [3819]
+        "identifier": 'EVENT_2209_jmp_to_event_9',
+        "command": 'reset_and_choose_game'
     },
     {
         "identifier": 'EVENT_2225_restore_all_hp_22',
@@ -310,24 +308,9 @@ script = [
         "args": [0x7093, 7]
     },
     {
-        "identifier": 'EVENT_2225_set_bit_24',
-        "command": 'set_bit',
-        "args": [0x7068, 5]
-    },
-    {
         "identifier": 'EVENT_2225_enter_area_25',
         "command": 'enter_area',
         "args": [Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, RadialDirections.NORTHEAST, 2, 66, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_2225_jmp_if_bit_set_26',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7089, 5, 'EVENT_2225_set_short_28']
-    },
-    {
-        "identifier": 'EVENT_2225_set_bit_27',
-        "command": 'set_bit',
-        "args": [0x7070, 5]
     },
     {
         "identifier": 'EVENT_2225_set_short_28',

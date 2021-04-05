@@ -49,21 +49,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3352_run_dialog_4',
-        "command": 'run_dialog',
-        "args": [1840, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3352_jmp_if_dialog_option_b_5',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3352_set_bit_7']
-    },
-    {
-        "identifier": 'EVENT_3352_run_dialog_6',
-        "command": 'run_dialog',
-        "args": [1841, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_3352_set_bit_7',
         "command": 'set_bit',
         "args": [0x7044, 7]

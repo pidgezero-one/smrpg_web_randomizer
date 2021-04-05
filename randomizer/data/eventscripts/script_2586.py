@@ -23,26 +23,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2586_jmp_if_bit_set_2',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708d, 7, 'EVENT_2586_run_dialog_5']
-    },
-    {
-        "identifier": 'EVENT_2586_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [3088, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_4',
-        "command": 'jmp',
-        "args": ['EVENT_2586_start_battle_6']
-    },
-    {
-        "identifier": 'EVENT_2586_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [3091, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_2586_start_battle_6',
         "command": 'start_battle',
         "args": [0x0097, 10]
@@ -65,11 +45,6 @@ script = [
         "identifier": 'EVENT_2586_set_bit_10',
         "command": 'set_bit',
         "args": [0x708d, 7]
-    },
-    {
-        "identifier": 'EVENT_2586_run_dialog_11',
-        "command": 'run_dialog',
-        "args": [3089, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2586_set_action_script_async_12',
@@ -126,11 +101,6 @@ script = [
     {
         "identifier": 'EVENT_2586_fade_in_from_black_async_21',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2586_run_dialog_22',
-        "command": 'run_dialog',
-        "args": [3090, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2586_set_action_script_async_23',

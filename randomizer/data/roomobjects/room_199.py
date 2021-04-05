@@ -6,41 +6,7 @@ room = {
   "partition": 69,
   "music": Music._32_AND_MY_NAMES_BOOSTER,
   "entrance_event": 2364,
-  "event_tiles": [
-    {
-      "event": 2625,
-      "x": 29,
-      "y": 93,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 1,
-      "height": 0,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    },
-    {
-      "event": 2626,
-      "x": 29,
-      "y": 92,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 2,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    },
-    {
-      "event": 2626,
-      "x": 30,
-      "y": 92,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 1,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    }
-  ],
+  "event_tiles": [],
   "exit_fields": [
     {
       "x": 27,

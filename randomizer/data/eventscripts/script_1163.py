@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_1163_action_queue_sync_0',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "args": [AreaObjects.NPC_0],
         "subscript": [
             {
                 "identifier": 'EVENT_1163_action_queue_sync_0_SUBSCRIPT_set_sprite_sequence_0',
@@ -20,7 +20,7 @@ script = [
     {
         "identifier": 'EVENT_1163_action_queue_async_1',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_8],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_1163_action_queue_async_1_SUBSCRIPT_set_vram_priority_0',

@@ -15,16 +15,6 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_3858_jmp_if_bit_set_2',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7086, 0, 'EVENT_3858_enter_area_3']
-    },
-    {
-        "identifier": 'EVENT_3858_enter_area_3',
-        "command": 'enter_area',
-        "args": [Rooms._304_SEASIDE_TOWN_OUTSIDE, RadialDirections.NORTHEAST, 13, 62, 1, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
         "identifier": 'EVENT_3858_ret_4',
         "command": 'ret'
     }

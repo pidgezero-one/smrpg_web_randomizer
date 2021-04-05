@@ -6,23 +6,23 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2240_jmp_if_bit_set_0',
+        "identifier": 'EVENT_2240_jmp_if_bit_set__0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7086, 6, 'EVENT_2240_enter_area_3']
+        "args": [0x7086, 0, 'EVENT_2240_enter_area_1']
+    },
+    {
+        "identifier": 'EVENT_2240_enter_area__1',
+        "command": 'enter_area',
+        "args": [ Rooms._209_SEASIDE_TOWN_DURING_YARIDOVICH_INN_1F, RadialDirections.NORTHEAST, 4, 49, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+    },
+    {
+        "identifier": 'EVENT_2240_ret__2',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2240_enter_area_1',
         "command": 'enter_area',
         "args": [Rooms._305_SEASIDE_TOWN_INN_1F, RadialDirections.NORTHEAST, 4, 49, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_2240_ret_2',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2240_enter_area_3',
-        "command": 'enter_area',
-        "args": [Rooms._305_SEASIDE_TOWN_INN_1F, RadialDirections.NORTHEAST, 4, 49, 0, [_0x68Flags.SHOW_MESSAGE, _0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2240_ret_4',

@@ -47,11 +47,6 @@ script = [
         "args": [0x70c8]
     },
     {
-        "identifier": 'EVENT_3833_disable_trigger_in_level_6',
-        "command": 'disable_trigger_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._053_MUSHROOM_KINGDOM_BEFORE_CROCO_ITEM_SHOP_BASEMENT]
-    },
-    {
         "identifier": 'EVENT_3833_disable_trigger_in_level_7',
         "command": 'disable_trigger_in_level',
         "args": [AreaObjects.NPC_1, Rooms._492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]
@@ -88,24 +83,9 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
-        "identifier": 'EVENT_3833_jmp_if_7000_equals_short_15',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [484, 'EVENT_3833_apply_tile_mod_19']
-    },
-    {
         "identifier": 'EVENT_3833_jmp_if_7000_equals_short_16',
         "command": 'jmp_if_7000_equals_short',
         "args": [492, 'EVENT_3833_apply_tile_mod_21']
-    },
-    {
-        "identifier": 'EVENT_3833_apply_tile_mod_17',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._053_MUSHROOM_KINGDOM_BEFORE_CROCO_ITEM_SHOP_BASEMENT, 1, [_0x6AFlags.USE_ALTERNATE]]
-    },
-    {
-        "identifier": 'EVENT_3833_jmp_18',
-        "command": 'jmp',
-        "args": ['EVENT_3833_set_action_script_sync_22']
     },
     {
         "identifier": 'EVENT_3833_apply_tile_mod_19',

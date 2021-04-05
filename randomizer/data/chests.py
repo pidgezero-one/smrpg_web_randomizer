@@ -717,6 +717,67 @@ class MarrymoreInn(Chest):
     item = items.FrogCoin
     access = 1
 
+##### NEW TO MARRYMORE #####
+
+# Event 602 contains the # of stays after which you get these prizes.
+# Can target that when applying settings.
+# Byte 70D7
+# test this a lot. unsure what the line that sets 70D7 to 255 is doing
+class MarrymoreInnSuitePrize1(Reward):
+    area = locations.Area.Marrymore
+    event = 602
+    item = items.FlowerTab
+    access = 2
+class MarrymoreInnSuitePrize2(Reward):
+    area = locations.Area.Marrymore
+    event = 602
+    item = items.FlowerJar
+    access = 3
+class MarrymoreInnSuitePrize3(Reward):
+    area = locations.Area.Marrymore
+    event = 602
+    item = items.FrogCoin
+    access = 4
+class MarrymoreInnSuitePrize4(Reward):
+    area = locations.Area.Marrymore
+    event = 602
+    item = items.FrogCoin
+    access = 4
+class MarrymoreInnSuitePrize5(Reward):
+    area = locations.Area.Marrymore
+    event = 602
+    item = items.FrogCoin
+    access = 4
+class MarrymoreInnSuitePrize6(Reward):
+    area = locations.Area.Marrymore
+    event = 602
+    item = items.FrogCoin
+    access = 4
+class MarrymoreInnTipPrize(Reward):
+    area = locations.Area.Marrymore
+    event = 603
+    item = items.MidMushroom
+    access = 2
+class MarrymoreInnTipPrizeAsBellhop(Reward):
+    area = locations.Area.Marrymore
+    event = 621
+    item = items.MidMushroom
+    access = 2
+class MarrymoreInnTipPrizeAsBellhop2(Reward):
+    area = locations.Area.Marrymore
+    event = 621
+    # make item insertion a method on this class?
+    # insert it into world.scripts location of the item
+    item = items.MidMushroom
+    access = 2
+
+# how about we get rid of the non-depletables and replace them with 70A7 = random # in range?
+# maybe have subroutine events that choose a random item with a more complicated algo
+# pick an unused consumable and set 70A7 to the result
+# run it as a subroutine when granting items in event 603, event 621
+# have 4 sub-events: one for each tier of item
+# a 5th event determines the random chance of running each of those 4 sub-events
+# i.e. maybe you always want marrymore to grant a tier 4, but like, grate guy maybe only 20% of the time
 
 # *** Seaside Town
 

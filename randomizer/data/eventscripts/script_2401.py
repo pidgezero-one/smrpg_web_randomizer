@@ -47,6 +47,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2401_summon_to_current_level_insert',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_0]
+    },
+    {
         "identifier": 'EVENT_2401_action_queue_async_4',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_0],

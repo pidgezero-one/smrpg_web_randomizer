@@ -6,28 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2430_run_event_as_subroutine_0',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_2430_jmp_if_bit_clear_1',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708c, 6, 'EVENT_2430_clear_bit_3']
-    },
-    {
-        "identifier": 'EVENT_2430_action_queue_async_2',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2430_action_queue_async_2_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2430_clear_bit_3',
         "command": 'clear_bit',
         "args": [0x7045, 0]
@@ -136,16 +114,6 @@ script = [
         "command": 'unfreeze_all_npcs'
     },
     {
-        "identifier": 'EVENT_2430_jmp_if_bit_clear_23',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2430_jmp_26']
-    },
-    {
-        "identifier": 'EVENT_2430_jmp_if_bit_set_24',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708c, 6, 'EVENT_2430_jmp_26']
-    },
-    {
         "identifier": 'EVENT_2430_pause_25',
         "command": 'pause',
         "args": [24]
@@ -153,7 +121,7 @@ script = [
     {
         "identifier": 'EVENT_2430_jmp_26',
         "command": 'jmp',
-        "args": ['EVENT_2430_jmp_if_bit_clear_30']
+        "args": ['EVENT_2430_ret_35']
     },
     {
         "identifier": 'EVENT_2430_jmp_if_bit_clear_27',
@@ -168,31 +136,6 @@ script = [
     {
         "identifier": 'EVENT_2430_fade_in_from_black_async_29',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2430_jmp_if_bit_clear_30',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2430_clear_bit_34']
-    },
-    {
-        "identifier": 'EVENT_2430_jmp_if_bit_set_31',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708c, 6, 'EVENT_2430_clear_bit_34']
-    },
-    {
-        "identifier": 'EVENT_2430_clear_bit_32',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_2430_play_sound_33',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_2430_clear_bit_34',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2430_ret_35',

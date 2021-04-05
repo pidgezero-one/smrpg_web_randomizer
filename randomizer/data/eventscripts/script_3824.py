@@ -68,31 +68,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3824_jmp_if_bit_clear_11',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708b, 5, 'EVENT_3824_jmp_if_bit_set_16']
-    },
-    {
-        "identifier": 'EVENT_3824_summon_to_current_level_12',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_6]
-    },
-    {
-        "identifier": 'EVENT_3824_summon_to_current_level_13',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_7]
-    },
-    {
-        "identifier": 'EVENT_3824_set_action_script_sync_14',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 119]
-    },
-    {
-        "identifier": 'EVENT_3824_set_action_script_sync_15',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 119]
-    },
-    {
         "identifier": 'EVENT_3824_jmp_if_bit_set_16',
         "command": 'jmp_if_bit_set',
         "args": [0x7085, 3, 'EVENT_3824_pause_action_script_47']

@@ -25,18 +25,8 @@ script = [
         "args": [2116, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_691_jmp_if_bit_clear_4',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x704c, 7, 'EVENT_687_pause_0']
-    },
-    {
         "identifier": 'EVENT_691_ret_5',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_691_jmp_if_bit_set_6',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708b, 5, 'EVENT_691_run_dialog_11']
     },
     {
         "identifier": 'EVENT_691_run_dialog_7',
@@ -54,15 +44,6 @@ script = [
     },
     {
         "identifier": 'EVENT_691_ret_10',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_691_run_dialog_11',
-        "command": 'run_dialog',
-        "args": [2156, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_691_ret_12',
         "command": 'ret'
     }
 ]

@@ -53,49 +53,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1567_jmp_if_object_trigger_disabled_3',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_6, Rooms._138_LANDS_END_AREA_02, 'EVENT_1567_fade_in_from_black_async_5']
-    },
-    {
-        "identifier": 'EVENT_1567_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1567_action_queue_sync_4_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_1567_fade_in_from_black_async_5',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1567_run_event_as_subroutine_6',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_1567_jmp_if_bit_clear_7',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_1567_clear_bit_10']
-    },
-    {
-        "identifier": 'EVENT_1567_jmp_if_object_trigger_disabled_8',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_6, Rooms._138_LANDS_END_AREA_02, 'EVENT_1567_clear_bit_10']
-    },
-    {
-        "identifier": 'EVENT_1567_play_sound_9',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_1567_clear_bit_10',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_1567_ret_11',

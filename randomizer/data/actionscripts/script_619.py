@@ -24,11 +24,6 @@ script = [
         "args": [0x7056, 5, 'ACTION_617_visibility_off_10']
     },
     {
-        "identifier": 'ACTION_619_jmp_if_bit_clear_4',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7057, 3, 'ACTION_617_visibility_off_10']
-    },
-    {
         "identifier": 'ACTION_619_transfer_to_xyzf_5',
         "command": 'transfer_to_xyzf',
         "args": [7, 47, 0, RadialDirections.EAST]

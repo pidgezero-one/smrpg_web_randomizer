@@ -377,14 +377,6 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_720_stop_sound_76',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_720_stop_sound_77',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_720_set_bit_78',
         "command": 'set_bit',
         "args": [0x7056, 5]
@@ -1412,22 +1404,6 @@ script = [
         "command": 'fade_out_to_black_async'
     },
     {
-        "identifier": 'EVENT_720_stop_sound_201',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_720_stop_sound_202',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_720_stop_sound_203',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_720_stop_sound_204',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_720_set_bit_205',
         "command": 'set_bit',
         "args": [0x7049, 0]
@@ -1657,6 +1633,11 @@ script = [
         "args": [AreaObjects.NPC_1, Rooms._324_MONSTRO_TOWN_OUTSIDE]
     },
     {
+        "identifier": 'EVENT_720_summon_to_level__248',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_4, Rooms._324_MONSTRO_TOWN_OUTSIDE]
+    },
+    {
         "identifier": 'EVENT_720_set_short_249',
         "command": 'set_short',
         "args": [0x71fe, 0x00ff]
@@ -1665,11 +1646,6 @@ script = [
         "identifier": 'EVENT_720_set_bit_250',
         "command": 'set_bit',
         "args": [0x708a, 0]
-    },
-    {
-        "identifier": 'EVENT_720_set_bit_251',
-        "command": 'set_bit',
-        "args": [0x7068, 0]
     },
     {
         "identifier": 'EVENT_720_jmp_if_var_equals_short_252',

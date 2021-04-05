@@ -90,8 +90,7 @@ script = [
         "args": [0x7049, 0]
     },
     {
-        "identifier": 'EVENT_3590_jmp_16',
-        "command": 'jmp',
-        "args": ['EVENT_3591_run_event_as_subroutine_4']
+        "identifier": 'EVENT_3590_ret_16',
+        "command": 'ret'
     }
 ]

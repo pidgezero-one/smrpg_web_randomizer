@@ -142,54 +142,13 @@ script = [
         "args": [0x70df, 52]
     },
     {
-        "identifier": 'EVENT_455_jmp_if_object_trigger_disabled_28',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_1, Rooms._033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT, 'EVENT_455_jmp_if_bit_set_30']
-    },
-    {
-        "identifier": 'EVENT_455_action_queue_async_29',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_455_action_queue_async_29_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_455_jmp_if_bit_set_30',
         "command": 'jmp_if_bit_set',
         "args": [0x7044, 7, 'EVENT_455_run_event_as_subroutine_25']
     },
     {
-        "identifier": 'EVENT_455_run_event_as_subroutine_31',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_455_jmp_if_bit_clear_32',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_455_fade_in_from_black_async_23']
-    },
-    {
-        "identifier": 'EVENT_455_jmp_if_object_trigger_disabled_33',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_1, Rooms._033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT, 'EVENT_455_fade_in_from_black_async_23']
-    },
-    {
         "identifier": 'EVENT_455_fade_in_from_black_async_34',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_455_play_sound_35',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_455_clear_bit_36',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_455_ret_37',

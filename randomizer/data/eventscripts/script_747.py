@@ -6,16 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_747_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7082, 0, 'EVENT_747_remove_from_current_level_11']
-    },
-    {
-        "identifier": 'EVENT_747_jmp_if_bit_set_1',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7081, 7, 'EVENT_747_remove_from_current_level_8']
-    },
-    {
         "identifier": 'EVENT_747_apply_tile_mod_2',
         "command": 'apply_tile_mod',
         "args": [Rooms._052_MUSHROOM_KINGDOM_INN_2F, 1, [_0x6AFlags.USE_ALTERNATE]]
@@ -43,29 +33,4 @@ script = [
         "identifier": 'EVENT_747_ret_7',
         "command": 'ret'
     },
-    {
-        "identifier": 'EVENT_747_remove_from_current_level_8',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_747_summon_to_current_level_9',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_747_jmp_10',
-        "command": 'jmp',
-        "args": ['EVENT_747_jmp_if_bit_set_3']
-    },
-    {
-        "identifier": 'EVENT_747_remove_from_current_level_11',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_747_jmp_12',
-        "command": 'jmp',
-        "args": ['EVENT_747_jmp_if_bit_set_3']
-    }
 ]

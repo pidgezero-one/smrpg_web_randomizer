@@ -55,11 +55,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2067_jmp_1',
-        "command": 'jmp',
-        "args": ['EVENT_2067_action_queue_sync_2']
-    },
-    {
         "identifier": 'EVENT_2067_action_queue_sync_2',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_1],
@@ -380,11 +375,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2067_jmp_5',
-        "command": 'jmp',
-        "args": ['EVENT_2067_action_queue_sync_6']
-    },
-    {
         "identifier": 'EVENT_2067_action_queue_sync_6',
         "command": 'action_queue_sync',
         "args": [AreaObjects.MARIO],
@@ -596,16 +586,6 @@ script = [
                 "command": 'fixed_f_coord_off'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_2067_jmp_8',
-        "command": 'jmp',
-        "args": ['EVENT_2067_action_queue_async_10']
-    },
-    {
-        "identifier": 'EVENT_2067_run_dialog_9',
-        "command": 'run_dialog',
-        "args": [3047, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2067_action_queue_async_10',

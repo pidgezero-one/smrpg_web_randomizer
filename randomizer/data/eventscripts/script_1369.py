@@ -425,50 +425,6 @@ script = [
         "args": [720]
     },
     {
-        "identifier": 'EVENT_1369_stop_sound_34',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_35',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_36',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_37',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_38',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_39',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_40',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_41',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_42',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_43',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1369_stop_sound_44',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_1369_ret_45',
         "command": 'ret'
     }

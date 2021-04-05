@@ -16,33 +16,9 @@ script = [
         "args": [3809]
     },
     {
-        "identifier": 'EVENT_2124_jmp_to_event_2',
-        "command": 'jmp_to_event',
-        "args": [669]
-    },
-    {
-        "identifier": 'EVENT_2124_stop_sound_3',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2124_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2124_stop_sound_5',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2124_stop_sound_6',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2124_stop_sound_7',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2124_stop_sound_8',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_669_enter_area_7',
+        "command": 'enter_area',
+        "args": [Rooms._065_MARRYMORE_CHAPEL_SANCTUARY, RadialDirections.NORTHEAST, 9, 98, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2124_ret_9',

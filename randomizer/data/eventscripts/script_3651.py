@@ -235,38 +235,6 @@ script = [
         "args": [0x7084, 3]
     },
     {
-        "identifier": 'EVENT_3651_ret_9',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3651_stop_sound_10',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3651_stop_sound_11',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3651_stop_sound_12',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3651_stop_sound_13',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3651_stop_sound_14',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3651_stop_sound_15',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3651_stop_sound_16',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3651_ret_17',
         "command": 'ret'
     }

@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'EVENT_3341_action_queue_sync_3',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_0],
         "subscript": [
             {
                 "identifier": 'EVENT_3341_action_queue_sync_3_SUBSCRIPT_db_0',
@@ -37,31 +37,6 @@ script = [
             },
             {
                 "identifier": 'EVENT_3341_action_queue_sync_3_SUBSCRIPT_visibility_off_2',
-                "command": 'visibility_off'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3341_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3341_action_queue_sync_4_SUBSCRIPT_db_0',
-                "command": 'db',
-                "args": [0xfd, 0xf2]
-            },
-            {
-                "identifier": 'EVENT_3341_action_queue_sync_4_SUBSCRIPT_set_sprite_sequence_1',
-                "command": 'set_sprite_sequence',
-                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3341_action_queue_sync_4_SUBSCRIPT_walk_1_step_northeast_2',
-                "command": 'walk_1_step_northeast'
-            },
-            {
-                "identifier": 'EVENT_3341_action_queue_sync_4_SUBSCRIPT_visibility_off_3',
                 "command": 'visibility_off'
             }
         ]

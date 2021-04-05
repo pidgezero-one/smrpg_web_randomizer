@@ -17,17 +17,6 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-    },
-    {
-      "event": 1076,
-      "x": 4,
-      "y": 50,
-      "z": 0,
-      "f": Edge.SOUTHWEST,
-      "length": 8,
-      "height": 6,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
     }
   ],
   "exit_fields": [

@@ -304,55 +304,12 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_520_jmp_if_bit_set_29',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7085, 6, 'EVENT_520_jmp_if_bit_clear_33']
-    },
-    {
-        "identifier": 'EVENT_520_set_bit_30',
-        "command": 'set_bit',
-        "args": [0x7085, 6]
-    },
-    {
         "identifier": 'EVENT_520_run_dialog_31',
         "command": 'run_dialog',
         "args": [813, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_520_ret_32',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_520_jmp_if_bit_clear_33',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7085, 0, 'EVENT_520_run_dialog_31']
-    },
-    {
-        "identifier": 'EVENT_520_set_7000_to_70A0_short_mem_34',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70b8]
-    },
-    {
-        "identifier": 'EVENT_520_jmp_if_7000_any_bits_set_35',
-        "command": 'jmp_if_7000_any_bits_set',
-        "args": [[7], 'EVENT_520_run_dialog_38']
-    },
-    {
-        "identifier": 'EVENT_520_run_dialog_36',
-        "command": 'run_dialog',
-        "args": [821, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_520_ret_37',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_520_run_dialog_38',
-        "command": 'run_dialog',
-        "args": [820, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_520_ret_39',
         "command": 'ret'
     }
 ]

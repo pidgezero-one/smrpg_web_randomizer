@@ -11,11 +11,6 @@ script = [
         "args": [0x7042, 2, 'EVENT_3311_jmp_if_bit_set_3']
     },
     {
-        "identifier": 'EVENT_3311_run_dialog_1',
-        "command": 'run_dialog',
-        "args": [1689, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3311_jmp_2',
         "command": 'jmp',
         "args": ['EVENT_3311_open_shop_12']

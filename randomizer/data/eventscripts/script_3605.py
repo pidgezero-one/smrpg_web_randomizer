@@ -67,51 +67,6 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_3605_pause_8',
-        "command": 'pause',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_3605_jmp_if_mario_in_air_9',
-        "command": 'jmp_if_mario_in_air',
-        "args": ['EVENT_3605_pause_8']
-    },
-    {
-        "identifier": 'EVENT_3605_run_event_as_subroutine_10',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_3605_jmp_if_bit_clear_11',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_3584_ret_0']
-    },
-    {
-        "identifier": 'EVENT_3605_jmp_if_object_trigger_enabled_12',
-        "command": 'jmp_if_object_trigger_enabled',
-        "args": [AreaObjects.NPC_9, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, 'EVENT_3605_clear_bit_15']
-    },
-    {
-        "identifier": 'EVENT_3605_jmp_if_object_trigger_enabled_13',
-        "command": 'jmp_if_object_trigger_enabled',
-        "args": [AreaObjects.NPC_10, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, 'EVENT_3605_clear_bit_15']
-    },
-    {
-        "identifier": 'EVENT_3605_jmp_14',
-        "command": 'jmp',
-        "args": ['EVENT_3584_ret_0']
-    },
-    {
-        "identifier": 'EVENT_3605_clear_bit_15',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_3605_play_sound_16',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
         "identifier": 'EVENT_3605_ret_17',
         "command": 'ret'
     }

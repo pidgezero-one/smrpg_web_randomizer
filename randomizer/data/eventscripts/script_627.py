@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_627_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x704c, 0, 'EVENT_256_ret_0']
+        "command": 'jmp_if_bit_clear',
+        "args": [0x704c, 6, 'EVENT_627_ret_2']
     },
     {
         "identifier": 'EVENT_627_enter_area_1',

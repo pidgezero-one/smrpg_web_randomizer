@@ -21,56 +21,6 @@ script = [
         "args": [0x7057, 4, 'EVENT_1644_enter_area_18']
     },
     {
-        "identifier": 'EVENT_1644_jmp_if_bit_clear_3',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x707a, 3, 'EVENT_1644_run_background_event_12']
-    },
-    {
-        "identifier": 'EVENT_1644_remove_from_current_level_4',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5]
-    },
-    {
-        "identifier": 'EVENT_1644_remove_from_current_level_5',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
-    },
-    {
-        "identifier": 'EVENT_1644_remove_from_current_level_6',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4]
-    },
-    {
-        "identifier": 'EVENT_1644_remove_from_current_level_7',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6]
-    },
-    {
-        "identifier": 'EVENT_1644_remove_from_current_level_8',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7]
-    },
-    {
-        "identifier": 'EVENT_1644_remove_from_current_level_9',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_8]
-    },
-    {
-        "identifier": 'EVENT_1644_remove_from_current_level_10',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_9]
-    },
-    {
-        "identifier": 'EVENT_1644_jmp_11',
-        "command": 'jmp',
-        "args": ['EVENT_1644_jmp_if_bit_set_13']
-    },
-    {
-        "identifier": 'EVENT_1644_run_background_event_12',
-        "command": 'run_background_event',
-        "args": [1618, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
-    },
-    {
         "identifier": 'EVENT_1644_jmp_if_bit_set_13',
         "command": 'jmp_if_bit_set',
         "args": [0x707a, 4, 'EVENT_1644_fade_in_from_black_async_16']

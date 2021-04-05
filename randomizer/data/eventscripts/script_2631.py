@@ -11,7 +11,7 @@ script = [
         "args": [0x70ae, 22]
     },
     {
-        "identifier": 'EVENT_2631_run_dialog_1',
+        "identifier": 'EVENT_2631_run_dialog_27',
         "command": 'run_dialog',
         "args": [3312, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
@@ -127,11 +127,6 @@ script = [
         "identifier": 'EVENT_2631_set_action_script_async_24',
         "command": 'set_action_script_async',
         "args": [AreaObjects.MARIO, 671]
-    },
-    {
-        "identifier": 'EVENT_2631_run_dialog_25',
-        "command": 'run_dialog',
-        "args": [3313, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2631_ret_26',

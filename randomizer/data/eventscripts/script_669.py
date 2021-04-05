@@ -6,42 +6,12 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_669_stop_sound_0',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_669_stop_sound_1',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_669_stop_sound_2',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_669_stop_sound_3',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_669_jmp_if_bit_set_4',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705d, 0, 'EVENT_669_enter_area_7']
-    },
-    {
-        "identifier": 'EVENT_669_enter_area_5',
-        "command": 'enter_area',
-        "args": [Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, RadialDirections.NORTHEAST, 9, 98, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_669_ret_6',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_669_enter_area_7',
+        "identifier": 'EVENT_642_enter_area_4',
         "command": 'enter_area',
         "args": [Rooms._065_MARRYMORE_CHAPEL_SANCTUARY, RadialDirections.NORTHEAST, 9, 98, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
-        "identifier": 'EVENT_669_ret_8',
+        "identifier": 'EVENT_642_ret_27',
         "command": 'ret'
     }
 ]

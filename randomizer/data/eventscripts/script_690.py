@@ -15,14 +15,23 @@ script = [
         "args": [65, 'EVENT_690_fade_out_music_FDA3_5']
     },
     {
-        "identifier": 'EVENT_690_run_dialog_2',
-        "command": 'run_dialog',
-        "args": [2114, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "identifier": 'EVENT_690_jmp_if_bit_set_insert',
+        "command": 'jmp_if_bit_set',
+        "args": [0x704c, 7, 'EVENT_690_run_dialog_insert']
     },
     {
-        "identifier": 'EVENT_690_jmp_if_bit_clear_3',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x704c, 7, 'EVENT_687_pause_0']
+        "identifier": 'EVENT_690_run_dialog_2',
+        "command": 'run_dialog',
+        "args": [2332, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_690_ret_insert',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_690_run_dialog_insert',
+        "command": 'run_dialog',
+        "args": [2114, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_690_ret_4',
@@ -64,19 +73,9 @@ script = [
         "args": [170]
     },
     {
-        "identifier": 'EVENT_690_run_dialog_11',
-        "command": 'run_dialog',
-        "args": [2332, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_690_pause_12',
         "command": 'pause',
         "args": [180]
-    },
-    {
-        "identifier": 'EVENT_690_run_dialog_13',
-        "command": 'run_dialog',
-        "args": [2333, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_690_pause_14',

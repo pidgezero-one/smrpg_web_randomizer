@@ -14,11 +14,6 @@ script = [
         "args": [22, 'ACTION_617_visibility_off_10']
     },
     {
-        "identifier": 'ACTION_618_jmp_if_bit_clear_2',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7056, 4, 'ACTION_617_visibility_off_10']
-    },
-    {
         "identifier": 'ACTION_618_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
         "args": [0x7056, 7, 'ACTION_617_visibility_off_10']
@@ -27,16 +22,6 @@ script = [
         "identifier": 'ACTION_618_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
         "args": [0x7056, 5, 'ACTION_617_visibility_off_10']
-    },
-    {
-        "identifier": 'ACTION_618_jmp_if_bit_clear_5',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7057, 2, 'ACTION_618_shirt_to_xy_coords_12']
-    },
-    {
-        "identifier": 'ACTION_618_jmp_if_bit_clear_6',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7057, 3, 'ACTION_617_visibility_off_10']
     },
     {
         "identifier": 'ACTION_618_transfer_to_xyzf_7',

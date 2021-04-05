@@ -18,62 +18,12 @@ script = [
     {
         "identifier": 'EVENT_1852_jmp_fork_mario_on_object_2',
         "command": 'jmp_fork_mario_on_object',
-        "args": ['EVENT_1852_run_dialog_111', 'EVENT_1852_set_action_script_sync_68']
+        "args": ['EVENT_1852_set_action_script_sync_31', 'EVENT_1852_set_action_script_sync_68']
     },
     {
         "identifier": 'EVENT_1852_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
         "args": [0x7043, 2, 'EVENT_1852_stop_all_background_events_70']
-    },
-    {
-        "identifier": 'EVENT_1852_jmp_if_bit_set_4',
-        "command": 'jmp_if_bit_set',
-        "args": [0x707b, 6, 'EVENT_1852_run_dialog_14']
-    },
-    {
-        "identifier": 'EVENT_1852_set_bit_5',
-        "command": 'set_bit',
-        "args": [0x707b, 6]
-    },
-    {
-        "identifier": 'EVENT_1852_run_dialog_6',
-        "command": 'run_dialog',
-        "args": [1312, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1852_set_bit_7',
-        "command": 'set_bit',
-        "args": [0x7094, 4]
-    },
-    {
-        "identifier": 'EVENT_1852_set_8',
-        "command": 'set',
-        "args": [0x70ab, 35]
-    },
-    {
-        "identifier": 'EVENT_1852_run_event_as_subroutine_9',
-        "command": 'run_event_as_subroutine',
-        "args": [1739]
-    },
-    {
-        "identifier": 'EVENT_1852_pause_10',
-        "command": 'pause',
-        "args": [20]
-    },
-    {
-        "identifier": 'EVENT_1852_set_11',
-        "command": 'set',
-        "args": [0x70ab, 0]
-    },
-    {
-        "identifier": 'EVENT_1852_run_event_as_subroutine_12',
-        "command": 'run_event_as_subroutine',
-        "args": [1739]
-    },
-    {
-        "identifier": 'EVENT_1852_clear_bit_13',
-        "command": 'clear_bit',
-        "args": [0x7094, 4]
     },
     {
         "identifier": 'EVENT_1852_run_dialog_14',
@@ -104,11 +54,6 @@ script = [
         "identifier": 'EVENT_1852_clear_bit_19',
         "command": 'clear_bit',
         "args": [0x7044, 7]
-    },
-    {
-        "identifier": 'EVENT_1852_run_dialog_20',
-        "command": 'run_dialog',
-        "args": [1301, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1852_set_action_script_sync_21',
@@ -810,15 +755,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1852_ret_110',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1852_run_dialog_111',
-        "command": 'run_dialog',
-        "args": [1312, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1852_ret_112',
         "command": 'ret'
     }
 ]

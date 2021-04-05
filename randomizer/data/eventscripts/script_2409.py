@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2409_jmp_if_var_equals_byte_0',
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70c0, 237, 'EVENT_2409_jmp_if_bit_clear_24']
+        "args": [0x70c0, 237, 'EVENT_2409_set_26']
     },
     {
         "identifier": 'EVENT_2409_action_queue_sync_1',
@@ -38,16 +38,6 @@ script = [
                 "args": [12]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_2409_jmp_if_bit_clear_3',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 5, 'EVENT_2409_set_5']
-    },
-    {
-        "identifier": 'EVENT_2409_set_action_script_sync_4',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 690]
     },
     {
         "identifier": 'EVENT_2409_set_5',
@@ -220,20 +210,6 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_2409_ret_23',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2409_jmp_if_bit_clear_24',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 5, 'EVENT_2409_set_26']
-    },
-    {
-        "identifier": 'EVENT_2409_set_action_script_sync_25',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 690]
-    },
-    {
         "identifier": 'EVENT_2409_set_26',
         "command": 'set',
         "args": [0x70c0, 239]
@@ -323,16 +299,6 @@ script = [
     {
         "identifier": 'EVENT_2409_ret_36',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2409_jmp_if_bit_clear_37',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708f, 5, 'EVENT_2409_set_39']
-    },
-    {
-        "identifier": 'EVENT_2409_set_action_script_sync_38',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 690]
     },
     {
         "identifier": 'EVENT_2409_set_39',

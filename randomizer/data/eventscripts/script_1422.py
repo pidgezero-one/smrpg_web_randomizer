@@ -289,22 +289,6 @@ script = [
         "command": 'unfreeze_all_npcs'
     },
     {
-        "identifier": 'EVENT_1422_stop_sound_32',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1422_stop_sound_33',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1422_stop_sound_34',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1422_stop_sound_35',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_1422_ret_36',
         "command": 'ret'
     },

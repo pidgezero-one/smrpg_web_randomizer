@@ -13,25 +13,5 @@ script = [
     {
         "identifier": 'EVENT_3816_ret_1',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3816_jmp_if_bit_set_2',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7042, 7, 'EVENT_3817_enter_area_0']
-    },
-    {
-        "identifier": 'EVENT_3816_jmp_if_bit_clear_3',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 0, 'EVENT_3584_ret_0']
-    },
-    {
-        "identifier": 'EVENT_3816_jmp_if_bit_clear_4',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7081, 3, 'EVENT_3584_ret_0']
-    },
-    {
-        "identifier": 'EVENT_3816_jmp_if_bit_set_5',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7098, 7, 'EVENT_3584_ret_0']
     }
 ]

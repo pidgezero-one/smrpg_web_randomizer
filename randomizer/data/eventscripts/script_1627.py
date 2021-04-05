@@ -13,17 +13,7 @@ script = [
     {
         "identifier": 'EVENT_1627_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7057, 4, 'EVENT_1627_jmp_if_bit_clear_11']
-    },
-    {
-        "identifier": 'EVENT_1627_summon_to_current_level_2',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_1627_set_action_script_sync_3',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 160]
+        "args": [0x7057, 4, 'EVENT_1627_jmp_if_bit_clear_14']
     },
     {
         "identifier": 'EVENT_1627_jmp_if_bit_clear_4',
@@ -57,21 +47,6 @@ script = [
     {
         "identifier": 'EVENT_1627_ret_10',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1627_jmp_if_bit_clear_11',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7056, 1, 'EVENT_1627_jmp_if_bit_clear_14']
-    },
-    {
-        "identifier": 'EVENT_1627_summon_to_current_level_12',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_1627_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 160]
     },
     {
         "identifier": 'EVENT_1627_jmp_if_bit_clear_14',

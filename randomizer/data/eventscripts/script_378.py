@@ -123,21 +123,5 @@ script = [
     {
         "identifier": 'EVENT_378_ret_15',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_378_ret_16',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_378_ret_17',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_378_ret_18',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_378_ret_19',
-        "command": 'ret'
     }
 ]

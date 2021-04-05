@@ -46,11 +46,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1328_jmp_if_bit_clear_2',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7053, 7, 'EVENT_1329_fade_in_from_black_async_0']
-    },
-    {
         "identifier": 'EVENT_1328_remove_from_current_level_3',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_0]

@@ -6,23 +6,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_301_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7082, 0, 'EVENT_301_run_dialog_3']
-    },
-    {
         "identifier": 'EVENT_301_run_dialog_1',
         "command": 'run_dialog',
         "args": [538, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_301_ret_2',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_301_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [713, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_301_ret_4',

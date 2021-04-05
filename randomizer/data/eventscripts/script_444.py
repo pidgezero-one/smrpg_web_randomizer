@@ -268,11 +268,6 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_444_run_dialog_42',
-        "command": 'run_dialog',
-        "args": [839, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_444_ret_43',
         "command": 'ret'
     },

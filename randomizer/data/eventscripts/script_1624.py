@@ -6,31 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1624_jmp_if_bit_clear_0',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7057, 4, 'EVENT_1624_run_dialog_3']
-    },
-    {
-        "identifier": 'EVENT_1624_run_dialog_1',
-        "command": 'run_dialog',
-        "args": [1122, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1624_jmp_2',
-        "command": 'jmp',
-        "args": ['EVENT_1624_run_dialog_duration_4']
-    },
-    {
-        "identifier": 'EVENT_1624_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [1120, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1624_run_dialog_duration_4',
-        "command": 'run_dialog_duration',
-        "args": [1121, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
-    },
-    {
         "identifier": 'EVENT_1624_open_shop_5',
         "command": 'open_shop',
         "args": [Shops._04_MOLEVILLE_SHOP]

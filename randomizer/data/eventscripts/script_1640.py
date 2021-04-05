@@ -21,21 +21,6 @@ script = [
         "args": [0x707a, 7, 'EVENT_1640_run_dialog_51']
     },
     {
-        "identifier": 'EVENT_1640_jmp_if_bit_set_3',
-        "command": 'jmp_if_bit_set',
-        "args": [0x704d, 4, 'EVENT_1640_run_dialog_6']
-    },
-    {
-        "identifier": 'EVENT_1640_run_dialog_4',
-        "command": 'run_dialog',
-        "args": [1125, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1640_set_bit_5',
-        "command": 'set_bit',
-        "args": [0x704d, 4]
-    },
-    {
         "identifier": 'EVENT_1640_run_dialog_6',
         "command": 'run_dialog',
         "args": [1126, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
@@ -58,11 +43,6 @@ script = [
         "identifier": 'EVENT_1640_run_dialog_duration_10',
         "command": 'run_dialog_duration',
         "args": [1129, DialogDurations.FOREVER, [_0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_1640_run_dialog_duration_11',
-        "command": 'run_dialog_duration',
-        "args": [1128, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1640_ret_12',
@@ -241,11 +221,6 @@ script = [
         "identifier": 'EVENT_1640_set_action_script_async_48',
         "command": 'set_action_script_async',
         "args": [AreaObjects.MARIO, 671]
-    },
-    {
-        "identifier": 'EVENT_1640_run_dialog_49',
-        "command": 'run_dialog',
-        "args": [1128, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_1640_ret_50',

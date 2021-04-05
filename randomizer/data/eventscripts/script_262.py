@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_262_jmp_if_bit_clear_0',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7081, 5, 'EVENT_262_fade_out_music_to_volume_2']
-    },
-    {
         "identifier": 'EVENT_262_play_sound_1',
         "command": 'play_sound',
         "args": [Sounds._000_SILENCE, 4]

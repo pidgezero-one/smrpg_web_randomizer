@@ -105,201 +105,9 @@ script = [
         "command": 'remember_last_object'
     },
     {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_7',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705f, 0, 'EVENT_2672_run_dialog_27']
-    },
-    {
-        "identifier": 'EVENT_2672_set_bit_8',
-        "command": 'set_bit',
-        "args": [0x705f, 0]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_9',
-        "command": 'run_dialog',
-        "args": [2544, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2672_play_music_default_volume_10',
-        "command": 'play_music_default_volume',
-        "args": [Music._32_AND_MY_NAMES_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_11',
-        "command": 'run_dialog',
-        "args": [2545, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2672_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_face_northeast_0',
-                "command": 'face_northeast'
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_pause_1',
-                "command": 'pause',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_face_east_2',
-                "command": 'face_east'
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_pause_3',
-                "command": 'pause',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_face_southeast_4',
-                "command": 'face_southeast'
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_set_animation_speed_5',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_set_animation_speed_6',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_shift_southeast_pixels_7',
-                "command": 'shift_southeast_pixels',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_pause_8',
-                "command": 'pause',
-                "args": [30]
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_shift_northwest_pixels_9',
-                "command": 'shift_northwest_pixels',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_face_north_10',
-                "command": 'face_north'
-            },
-            {
-                "identifier": 'EVENT_2672_action_queue_sync_12_SUBSCRIPT_set_animation_speed_11',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2672_pause_13',
-        "command": 'pause',
-        "args": [20]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_14',
-        "command": 'run_dialog',
-        "args": [2546, AreaObjects.NPC_14, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2672_remember_last_object_15',
-        "command": 'remember_last_object'
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_dialog_option_b_16',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2672_pause_22']
-    },
-    {
         "identifier": 'EVENT_2672_pause_17',
         "command": 'pause',
         "args": [10]
-    },
-    {
-        "identifier": 'EVENT_2672_set_action_script_async_18',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
-    },
-    {
-        "identifier": 'EVENT_2672_pause_19',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_20',
-        "command": 'run_dialog',
-        "args": [2548, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_21',
-        "command": 'jmp',
-        "args": ['EVENT_2672_set_action_script_sync_35']
-    },
-    {
-        "identifier": 'EVENT_2672_pause_22',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_2672_set_action_script_async_23',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
-    },
-    {
-        "identifier": 'EVENT_2672_pause_24',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_25',
-        "command": 'run_dialog',
-        "args": [2549, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_26',
-        "command": 'jmp',
-        "args": ['EVENT_2672_clear_bit_144']
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_27',
-        "command": 'run_dialog',
-        "args": [2547, AreaObjects.NPC_14, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_dialog_option_b_28',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2672_pause_30']
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_29',
-        "command": 'jmp',
-        "args": ['EVENT_2672_pause_17']
-    },
-    {
-        "identifier": 'EVENT_2672_pause_30',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_2672_set_action_script_async_31',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
-    },
-    {
-        "identifier": 'EVENT_2672_pause_32',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_33',
-        "command": 'run_dialog',
-        "args": [2553, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_34',
-        "command": 'jmp',
-        "args": ['EVENT_2672_clear_bit_144']
     },
     {
         "identifier": 'EVENT_2672_set_action_script_sync_35',
@@ -920,16 +728,6 @@ script = [
         "args": [0x70c9]
     },
     {
-        "identifier": 'EVENT_2672_jmp_if_7000_equals_short_70',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2672_clear_bit_134']
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_71',
-        "command": 'run_dialog',
-        "args": [2551, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_2672_inc_72',
         "command": 'inc',
         "args": [0x70c9]
@@ -938,6 +736,11 @@ script = [
         "identifier": 'EVENT_2672_set_7000_to_70A0_short_mem_73',
         "command": 'set_7000_to_70A0_short_mem',
         "args": [0x70c9]
+    },
+    {
+        "identifier": 'EVENT_2672_jmp_if_7000_equals_short_70',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_2672_jmp_if_bit_set_137']
     },
     {
         "identifier": 'EVENT_2672_jmp_if_7000_equals_short_74',
@@ -1045,47 +848,12 @@ script = [
     {
         "identifier": 'EVENT_2672_jmp_if_comparison_result_is_lesser_95',
         "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_2672_jmp_if_bit_set_124']
+        "args": ['EVENT_2672_jmp_if_bit_set_96']
     },
     {
         "identifier": 'EVENT_2672_jmp_if_bit_set_96',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7043, 7, 'EVENT_2672_set_100']
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_97',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7044, 0, 'EVENT_2672_set_102']
-    },
-    {
-        "identifier": 'EVENT_2672_set_98',
-        "command": 'set',
-        "args": [0x70a7, 155]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_99',
-        "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_104']
-    },
-    {
-        "identifier": 'EVENT_2672_set_100',
-        "command": 'set',
-        "args": [0x70a7, 156]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_101',
-        "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_104']
-    },
-    {
-        "identifier": 'EVENT_2672_set_102',
-        "command": 'set',
-        "args": [0x70a7, 157]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_103',
-        "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_104']
+        "command": 'run_event_as_subroutine',
+        "args": [5]
     },
     {
         "identifier": 'EVENT_2672_play_sound_104',
@@ -1098,39 +866,9 @@ script = [
         "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_106',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7043, 7, 'EVENT_2672_put_inventory_110']
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_107',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7044, 0, 'EVENT_2672_put_inventory_112']
-    },
-    {
-        "identifier": 'EVENT_2672_put_inventory_108',
-        "command": 'put_inventory',
-        "args": [items.WiltShroom]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_109',
-        "command": 'jmp',
-        "args": ['EVENT_2672_clear_bit_144']
-    },
-    {
-        "identifier": 'EVENT_2672_put_inventory_110',
-        "command": 'put_inventory',
-        "args": [items.RottenMush]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_111',
-        "command": 'jmp',
-        "args": ['EVENT_2672_clear_bit_144']
-    },
-    {
         "identifier": 'EVENT_2672_put_inventory_112',
         "command": 'put_inventory',
-        "args": [items.MoldyMush]
+        "args": [0x70A7]
     },
     {
         "identifier": 'EVENT_2672_jmp_113',
@@ -1138,94 +876,14 @@ script = [
         "args": ['EVENT_2672_clear_bit_144']
     },
     {
-        "identifier": 'EVENT_2672_play_sound_114',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_115',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_116',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7043, 7, 'EVENT_2672_put_inventory_120']
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_117',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7044, 0, 'EVENT_2672_put_inventory_122']
-    },
-    {
-        "identifier": 'EVENT_2672_put_inventory_118',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
+        "identifier": 'EVENT_2672_jmp_if_bit_set_96',
+        "command": 'run_event_as_subroutine',
+        "args": [7]
     },
     {
         "identifier": 'EVENT_2672_jmp_119',
         "command": 'jmp',
-        "args": ['EVENT_2672_clear_bit_144']
-    },
-    {
-        "identifier": 'EVENT_2672_put_inventory_120',
-        "command": 'put_inventory',
-        "args": [items.MidMushroom]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_121',
-        "command": 'jmp',
-        "args": ['EVENT_2672_clear_bit_144']
-    },
-    {
-        "identifier": 'EVENT_2672_put_inventory_122',
-        "command": 'put_inventory',
-        "args": [items.MaxMushroom]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_123',
-        "command": 'jmp',
-        "args": ['EVENT_2672_clear_bit_144']
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_124',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7043, 7, 'EVENT_2672_set_128']
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_125',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7044, 0, 'EVENT_2672_set_130']
-    },
-    {
-        "identifier": 'EVENT_2672_set_126',
-        "command": 'set',
-        "args": [0x70a7, 96]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_127',
-        "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_114']
-    },
-    {
-        "identifier": 'EVENT_2672_set_128',
-        "command": 'set',
-        "args": [0x70a7, 97]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_129',
-        "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_114']
-    },
-    {
-        "identifier": 'EVENT_2672_set_130',
-        "command": 'set',
-        "args": [0x70a7, 98]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_131',
-        "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_114']
+        "args": ['EVENT_2672_play_sound_104']
     },
     {
         "identifier": 'EVENT_2672_set_132',
@@ -1235,22 +893,7 @@ script = [
     {
         "identifier": 'EVENT_2672_jmp_133',
         "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_114']
-    },
-    {
-        "identifier": 'EVENT_2672_clear_bit_134',
-        "command": 'clear_bit',
-        "args": [0x7043, 2]
-    },
-    {
-        "identifier": 'EVENT_2672_clear_bit_135',
-        "command": 'clear_bit',
-        "args": [0x7044, 4]
-    },
-    {
-        "identifier": 'EVENT_2672_inc_136',
-        "command": 'inc',
-        "args": [0x70c9]
+        "args": ['EVENT_2672_play_sound_104']
     },
     {
         "identifier": 'EVENT_2672_jmp_if_bit_set_137',
@@ -1281,11 +924,6 @@ script = [
         "identifier": 'EVENT_2672_run_event_as_subroutine_142',
         "command": 'run_event_as_subroutine',
         "args": [3828]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_143',
-        "command": 'run_dialog',
-        "args": [39, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2672_clear_bit_144',

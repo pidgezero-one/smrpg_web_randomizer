@@ -549,18 +549,6 @@ script = [
         "args": [AreaObjects.NPC_5]
     },
     {
-        "identifier": 'EVENT_1698_stop_sound_55',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1698_stop_sound_56',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_1698_stop_sound_57',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_1698_ret_58',
         "command": 'ret'
     }

@@ -6,35 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3297_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7057, 1, 'EVENT_3297_run_dialog_3']
-    },
-    {
-        "identifier": 'EVENT_3297_run_dialog_1',
-        "command": 'run_dialog',
-        "args": [1680, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3297_jmp_2',
-        "command": 'jmp',
-        "args": ['EVENT_3297_store_coin_amount_7000_4']
-    },
-    {
-        "identifier": 'EVENT_3297_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [1681, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3297_store_coin_amount_7000_4',
-        "command": 'store_coin_amount_7000'
-    },
-    {
-        "identifier": 'EVENT_3297_set_7000_short_mem_to_7000_5',
-        "command": 'set_7000_short_mem_to_7000',
-        "args": [0x7024]
-    },
-    {
         "identifier": 'EVENT_3297_open_shop_6',
         "command": 'open_shop',
         "args": [Shops._07_SEA_ITEM_SHOP]
@@ -42,44 +13,6 @@ script = [
     {
         "identifier": 'EVENT_3297_fade_in_from_black_async_7',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_3297_store_coin_amount_7000_8',
-        "command": 'store_coin_amount_7000'
-    },
-    {
-        "identifier": 'EVENT_3297_mem_compare_address_9',
-        "command": 'mem_compare_address',
-        "args": [0x7024]
-    },
-    {
-        "identifier": 'EVENT_3297_jmp_if_loaded_memory_is_0_10',
-        "command": 'jmp_if_loaded_memory_is_0',
-        "args": ['EVENT_3297_run_dialog_15']
-    },
-    {
-        "identifier": 'EVENT_3297_jmp_if_bit_set_11',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7057, 1, 'EVENT_3297_run_dialog_15']
-    },
-    {
-        "identifier": 'EVENT_3297_set_bit_12',
-        "command": 'set_bit',
-        "args": [0x7057, 1]
-    },
-    {
-        "identifier": 'EVENT_3297_run_dialog_13',
-        "command": 'run_dialog',
-        "args": [1683, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3297_ret_14',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3297_run_dialog_15',
-        "command": 'run_dialog',
-        "args": [1682, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3297_ret_16',

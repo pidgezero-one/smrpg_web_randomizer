@@ -74,11 +74,6 @@ script = [
         "args": [0x7094, 2]
     },
     {
-        "identifier": 'EVENT_1584_clear_bit_14',
-        "command": 'clear_bit',
-        "args": [0x707b, 6]
-    },
-    {
         "identifier": 'EVENT_1584_clear_bit_15',
         "command": 'clear_bit',
         "args": [0x7094, 1]

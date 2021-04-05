@@ -97,17 +97,7 @@ script = [
     {
         "identifier": 'EVENT_613_jmp_if_7000_equals_short_12',
         "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_613_run_dialog_18']
-    },
-    {
-        "identifier": 'EVENT_613_run_dialog_13',
-        "command": 'run_dialog',
-        "args": [999, AreaObjects.NPC_0, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_613_pause_14',
-        "command": 'pause',
-        "args": [10]
+        "args": [1, 'EVENT_613_set_action_script_async_20']
     },
     {
         "identifier": 'EVENT_613_action_queue_async_15',
@@ -137,24 +127,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_613_run_dialog_16',
-        "command": 'run_dialog',
-        "args": [1000, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_613_jmp_17',
         "command": 'jmp',
         "args": ['EVENT_613_set_action_script_sync_30']
-    },
-    {
-        "identifier": 'EVENT_613_run_dialog_18',
-        "command": 'run_dialog',
-        "args": [980, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_613_pause_19',
-        "command": 'pause',
-        "args": [10]
     },
     {
         "identifier": 'EVENT_613_set_action_script_async_20',
@@ -269,11 +244,6 @@ script = [
         "identifier": 'EVENT_613_pause_28',
         "command": 'pause',
         "args": [10]
-    },
-    {
-        "identifier": 'EVENT_613_run_dialog_29',
-        "command": 'run_dialog',
-        "args": [989, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_613_set_action_script_sync_30',

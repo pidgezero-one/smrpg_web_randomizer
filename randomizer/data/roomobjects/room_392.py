@@ -68,41 +68,6 @@ room = {
       "id": 0,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.NONE,
-      "model": 82,
-      "event_script": 256,
-      "action_script": 15,
-      "speed": 1,
-      "npc_id_offset": 0,
-      "event_offset": 0,
-      "action_offset": 0,
-      "visible": True,
-      "x": 18,
-      "y": 56,
-      "z": 8,
-      "z_half": False,
-      "direction": RadialDirection.SOUTHWEST,
-      "face_on_trigger": False,
-      "cant_enter_doors": False,
-      "byte2_bit5": False,
-      "set_sequence_playback": True,
-      "cant_float": False,
-      "cant_walk_up_stairs": False,
-      "cant_walk_under": False,
-      "cant_pass_walls": False,
-      "cant_jump_through": False,
-      "cant_pass_npcs": False,
-      "byte3_bit5": False,
-      "cant_walk_through": False,
-      "byte3_bit7": False,
-      "slidable_along_walls": True,
-      "cant_move_if_in_air": True,
-      "byte7_upper2": 0x03,
-      "clones": []
-    },
-    {
-      "id": 1,
-      "type": ObjectType.OBJECT,
-      "initiator": Initiator.NONE,
       "model": 208,
       "event_script": 256,
       "action_script": 3,
@@ -134,7 +99,7 @@ room = {
       "byte7_upper2": 0x03,
       "clones": [
         {
-          "id": 2,
+          "id": 1,
           "npc_id_offset": 4,
           "event_offset": 0,
           "action_offset": 0,
@@ -146,7 +111,7 @@ room = {
           "direction": RadialDirection.SOUTHWEST
         },
         {
-          "id": 3,
+          "id": 2,
           "npc_id_offset": 3,
           "event_offset": 0,
           "action_offset": 0,
@@ -158,7 +123,7 @@ room = {
           "direction": RadialDirection.SOUTHWEST
         },
         {
-          "id": 4,
+          "id": 3,
           "npc_id_offset": 2,
           "event_offset": 0,
           "action_offset": 0,
@@ -170,7 +135,7 @@ room = {
           "direction": RadialDirection.SOUTHWEST
         },
         {
-          "id": 5,
+          "id": 4,
           "npc_id_offset": 1,
           "event_offset": 0,
           "action_offset": 0,

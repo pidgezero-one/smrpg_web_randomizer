@@ -46,29 +46,5 @@ script = [
     {
         "identifier": 'EVENT_2643_ret_8',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2643_ret_9',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2643_ret_10',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2643_ret_11',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2643_ret_12',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2643_ret_13',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2643_ret_14',
-        "command": 'ret'
     }
 ]

@@ -26,36 +26,6 @@ script = [
         "args": [0x7044, 4, 'EVENT_470_action_queue_async_28']
     },
     {
-        "identifier": 'EVENT_470_jmp_if_bit_set_4',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7084, 0, 'EVENT_470_play_sound_10']
-    },
-    {
-        "identifier": 'EVENT_470_set_bit_5',
-        "command": 'set_bit',
-        "args": [0x7084, 0]
-    },
-    {
-        "identifier": 'EVENT_470_play_sound_6',
-        "command": 'play_sound',
-        "args": [Sounds._063_YOSHI_TALK, 6]
-    },
-    {
-        "identifier": 'EVENT_470_set_action_script_sync_7',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_9, 119]
-    },
-    {
-        "identifier": 'EVENT_470_run_dialog_8',
-        "command": 'run_dialog',
-        "args": [2512, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_470_jmp_9',
-        "command": 'jmp',
-        "args": ['EVENT_470_start_embedded_action_script_async_F1_20']
-    },
-    {
         "identifier": 'EVENT_470_play_sound_10',
         "command": 'play_sound',
         "args": [Sounds._063_YOSHI_TALK, 6]
@@ -72,26 +42,6 @@ script = [
         "identifier": 'EVENT_470_run_event_as_subroutine_13',
         "command": 'run_event_as_subroutine',
         "args": [3587]
-    },
-    {
-        "identifier": 'EVENT_470_run_dialog_14',
-        "command": 'run_dialog',
-        "args": [897, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_470_jmp_if_dialog_option_b_15',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_470_run_event_as_subroutine_23']
-    },
-    {
-        "identifier": 'EVENT_470_set_action_script_async_16',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
-    },
-    {
-        "identifier": 'EVENT_470_run_dialog_17',
-        "command": 'run_dialog',
-        "args": [898, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_470_pause_action_script_18',
@@ -145,30 +95,6 @@ script = [
     },
     {
         "identifier": 'EVENT_470_ret_22',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_470_run_event_as_subroutine_23',
-        "command": 'run_event_as_subroutine',
-        "args": [3587]
-    },
-    {
-        "identifier": 'EVENT_470_pause_24',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_470_set_action_script_async_25',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
-    },
-    {
-        "identifier": 'EVENT_470_run_dialog_26',
-        "command": 'run_dialog',
-        "args": [899, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_470_ret_27',
         "command": 'ret'
     },
     {

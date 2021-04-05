@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3660_set_bit_0',
-        "command": 'set_bit',
-        "args": [0x705e, 7]
-    },
-    {
         "identifier": 'EVENT_3660_set_bit_1',
         "command": 'set_bit',
         "args": [0x705f, 4]
@@ -250,17 +245,17 @@ script = [
     {
         "identifier": 'EVENT_3660_remove_from_level_49',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._412_NIMBUS_CASTLE_AREA_11_LONG_HALLWAY_DOOR_TO_KINGS_CELLAR]
+        "args": [AreaObjects.NPC_2, Rooms._412_NIMBUS_CASTLE_AREA_11_LONG_HALLWAY_DOOR_TO_KINGS_CELLAR]
     },
     {
         "identifier": 'EVENT_3660_remove_from_level_50',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_8, Rooms._412_NIMBUS_CASTLE_AREA_11_LONG_HALLWAY_DOOR_TO_KINGS_CELLAR]
+        "args": [AreaObjects.NPC_3, Rooms._412_NIMBUS_CASTLE_AREA_11_LONG_HALLWAY_DOOR_TO_KINGS_CELLAR]
     },
     {
         "identifier": 'EVENT_3660_remove_from_level_51',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_9, Rooms._412_NIMBUS_CASTLE_AREA_11_LONG_HALLWAY_DOOR_TO_KINGS_CELLAR]
+        "args": [AreaObjects.NPC_4, Rooms._412_NIMBUS_CASTLE_AREA_11_LONG_HALLWAY_DOOR_TO_KINGS_CELLAR]
     },
     {
         "identifier": 'EVENT_3660_remove_from_level_52',

@@ -11,26 +11,6 @@ script = [
         "args": [65]
     },
     {
-        "identifier": 'EVENT_3207_set_bit_1',
-        "command": 'set_bit',
-        "args": [0x7067, 4]
-    },
-    {
-        "identifier": 'EVENT_3207_set_bit_2',
-        "command": 'set_bit',
-        "args": [0x7067, 4]
-    },
-    {
-        "identifier": 'EVENT_3207_set_bit_3',
-        "command": 'set_bit',
-        "args": [0x706f, 4]
-    },
-    {
-        "identifier": 'EVENT_3207_set_bit_4',
-        "command": 'set_bit',
-        "args": [0x706f, 3]
-    },
-    {
         "identifier": 'EVENT_3207_open_location_5',
         "command": 'open_location',
         "args": [Locations._034_SUNKEN_SHIP, [6, 7]]

@@ -15,17 +15,26 @@ script = [
         "args": [65, 'EVENT_693_run_dialog_5']
     },
     {
+        "identifier": 'EVENT_693_jmp_if_bit_set_insert',
+        "command": 'jmp_if_bit_set',
+        "args": [0x704c, 7, 'EVENT_693_run_dialog_insert']
+    },
+    {
         "identifier": 'EVENT_693_run_dialog_2',
+        "command": 'run_dialog',
+        "args": [2337, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_693_ret_4',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_693_run_dialog_insert',
         "command": 'run_dialog',
         "args": [2118, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_693_jmp_if_bit_clear_3',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x704c, 7, 'EVENT_687_pause_0']
-    },
-    {
-        "identifier": 'EVENT_693_ret_4',
+        "identifier": 'EVENT_693_ret_insert',
         "command": 'ret'
     },
     {

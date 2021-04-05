@@ -11,11 +11,6 @@ script = [
         "args": [Sounds._019_LONG_FALL, 6]
     },
     {
-        "identifier": 'EVENT_2549_run_event_as_subroutine_1',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
         "identifier": 'EVENT_2549_jmp_if_object_not_in_level_2',
         "command": 'jmp_if_object_not_in_level',
         "args": [AreaObjects.NPC_6, Rooms._349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, 'EVENT_2549_jmp_if_bit_set_4']
@@ -31,16 +26,6 @@ script = [
                 "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_2549_jmp_if_bit_set_4',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708d, 6, 'EVENT_2549_freeze_camera_6']
-    },
-    {
-        "identifier": 'EVENT_2549_apply_tile_mod_5',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._100_BOOSTER_PASS_AREA_01, 0, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
         "identifier": 'EVENT_2549_freeze_camera_6',
@@ -186,47 +171,12 @@ script = [
                 "identifier": 'EVENT_2549_action_queue_async_14_SUBSCRIPT_jmp_if_bit_clear_4',
                 "command": 'jmp_if_bit_clear',
                 "args": [0x7099, 7, 'EVENT_2549_clear_bit_20']
-            },
-            {
-                "identifier": 'EVENT_2549_action_queue_async_14_SUBSCRIPT_jmp_if_bit_set_5',
-                "command": 'jmp_if_bit_set',
-                "args": [0x708d, 6, 'EVENT_2549_unfreeze_camera_15']
-            },
-            {
-                "identifier": 'EVENT_2549_action_queue_async_14_SUBSCRIPT_pause_6',
-                "command": 'pause',
-                "args": [24]
             }
         ]
     },
     {
         "identifier": 'EVENT_2549_unfreeze_camera_15',
         "command": 'unfreeze_camera'
-    },
-    {
-        "identifier": 'EVENT_2549_jmp_if_bit_clear_16',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2549_clear_bit_20']
-    },
-    {
-        "identifier": 'EVENT_2549_jmp_if_bit_set_17',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708d, 6, 'EVENT_2549_clear_bit_20']
-    },
-    {
-        "identifier": 'EVENT_2549_clear_bit_18',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_2549_play_sound_19',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_2549_clear_bit_20',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2549_ret_21',

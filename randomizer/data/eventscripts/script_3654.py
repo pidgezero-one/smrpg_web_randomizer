@@ -16,45 +16,6 @@ script = [
         "args": [3592, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_3654_jmp_if_dialog_option_b_2',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3654_pause_7']
-    },
-    {
-        "identifier": 'EVENT_3654_pause_3',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3654_set_action_script_async_4',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
-    },
-    {
-        "identifier": 'EVENT_3654_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [3593, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_3654_ret_6',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3654_pause_7',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3654_set_action_script_async_8',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 671]
-    },
-    {
-        "identifier": 'EVENT_3654_run_dialog_9',
-        "command": 'run_dialog',
-        "args": [3594, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3654_ret_10',
         "command": 'ret'
     }

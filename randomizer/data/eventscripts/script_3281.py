@@ -243,30 +243,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3281_stop_sound_25',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3281_stop_sound_26',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3281_stop_sound_27',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3281_stop_sound_28',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3281_stop_sound_29',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3281_stop_sound_30',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3281_ret_31',
         "command": 'ret'
     },

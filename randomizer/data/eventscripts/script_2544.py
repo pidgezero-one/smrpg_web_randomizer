@@ -22,44 +22,12 @@ script = [
     {
         "identifier": 'EVENT_2544_jmp_if_7000_equals_short_3',
         "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2544_jmp_if_bit_clear_5']
+        "args": [0, 'EVENT_2544_apply_tile_mod_10']
     },
     {
         "identifier": 'EVENT_2544_set_bit_4',
         "command": 'set_bit',
         "args": [0x7043, 0]
-    },
-    {
-        "identifier": 'EVENT_2544_jmp_if_bit_clear_5',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708c, 5, 'EVENT_2544_apply_tile_mod_10']
-    },
-    {
-        "identifier": 'EVENT_2544_action_queue_async_6',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2544_action_queue_async_6_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2544_set_action_script_async_7',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_7, 15]
-    },
-    {
-        "identifier": 'EVENT_2544_apply_tile_mod_8',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, 1, [_0x6AFlags.USE_ALTERNATE]]
-    },
-    {
-        "identifier": 'EVENT_2544_jmp_9',
-        "command": 'jmp',
-        "args": ['EVENT_2544_action_queue_sync_11']
     },
     {
         "identifier": 'EVENT_2544_apply_tile_mod_10',
@@ -235,38 +203,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2544_run_event_as_subroutine_17',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_2544_jmp_if_bit_clear_18',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2544_unfreeze_camera_22']
-    },
-    {
-        "identifier": 'EVENT_2544_jmp_if_bit_set_19',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708c, 5, 'EVENT_2544_unfreeze_camera_22']
-    },
-    {
-        "identifier": 'EVENT_2544_clear_bit_20',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_2544_play_sound_21',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
         "identifier": 'EVENT_2544_unfreeze_camera_22',
         "command": 'unfreeze_camera'
-    },
-    {
-        "identifier": 'EVENT_2544_clear_bit_23',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2544_ret_24',

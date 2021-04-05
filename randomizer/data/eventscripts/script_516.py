@@ -25,63 +25,9 @@ script = [
         "args": [AreaObjects.NPC_1]
     },
     {
-        "identifier": 'EVENT_516_jmp_if_bit_set_4',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7044, 5, 'EVENT_516_jmp_if_bit_set_11']
-    },
-    {
-        "identifier": 'EVENT_516_jmp_if_bit_set_5',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7085, 0, 'EVENT_516_jmp_if_bit_set_11']
-    },
-    {
-        "identifier": 'EVENT_516_run_dialog_6',
-        "command": 'run_dialog',
-        "args": [781, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_516_enable_controls_until_return_7',
-        "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
-    },
-    {
-        "identifier": 'EVENT_516_resume_action_script_8',
-        "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_516_resume_action_script_9',
-        "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_516_ret_10',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_516_jmp_if_bit_set_11',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7043, 7, 'EVENT_516_run_dialog_6']
-    },
-    {
-        "identifier": 'EVENT_516_jmp_if_random_above_128_12',
-        "command": 'jmp_if_random_above_128',
-        "args": ['EVENT_516_run_dialog_15']
-    },
-    {
         "identifier": 'EVENT_516_run_dialog_13',
         "command": 'run_dialog',
         "args": [779, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_516_jmp_14',
-        "command": 'jmp',
-        "args": ['EVENT_516_enable_controls_until_return_16']
-    },
-    {
-        "identifier": 'EVENT_516_run_dialog_15',
-        "command": 'run_dialog',
-        "args": [780, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_516_enable_controls_until_return_16',

@@ -24,30 +24,6 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_2208_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2208_stop_sound_5',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2208_stop_sound_6',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2208_stop_sound_7',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2208_stop_sound_8',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2208_stop_sound_9',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_2208_set_action_script_sync_10',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_0, 14]
@@ -55,7 +31,7 @@ script = [
     {
         "identifier": 'EVENT_2208_action_queue_sync_11',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2208_action_queue_sync_11_SUBSCRIPT_shirt_to_xy_coords_0',

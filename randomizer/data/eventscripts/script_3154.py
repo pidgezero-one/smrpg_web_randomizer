@@ -11,16 +11,6 @@ script = [
         "args": [0x707c, 1]
     },
     {
-        "identifier": 'EVENT_3154_set_bit_1',
-        "command": 'set_bit',
-        "args": [0x7066, 1]
-    },
-    {
-        "identifier": 'EVENT_3154_set_bit_2',
-        "command": 'set_bit',
-        "args": [0x706e, 2]
-    },
-    {
         "identifier": 'EVENT_3154_summon_to_level_3',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_13, Rooms._079_ROSE_WAY_MAIN_AREA]

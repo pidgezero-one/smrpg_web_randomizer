@@ -6,19 +6,7 @@ room = {
   "partition": 117,
   "music": Music._61_VALENTINA,
   "entrance_event": 3730,
-  "event_tiles": [
-    {
-      "event": 3584,
-      "x": 30,
-      "y": 20,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 2,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-    }
-  ],
+  "event_tiles": [],
   "exit_fields": [
     {
       "x": 25,

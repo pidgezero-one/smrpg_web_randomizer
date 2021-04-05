@@ -6,7 +6,30 @@ room = {
   "partition": 22,
   "music": Music._00_CURRENT,
   "entrance_event": 1119,
-  "event_tiles": [],
+  "event_tiles": [
+    {
+      "event": 2240,
+      "x": 19,
+      "y": 60,
+      "z": 1,
+      "f": Edge.SOUTHWEST,
+      "length": 2,
+      "height": 0,
+      "nw_se_edge_active": True,
+      "ne_sw_edge_active": False
+    },
+    {
+      "event": 2241,
+      "x": 19,
+      "y": 25,
+      "z": 5,
+      "f": Edge.SOUTHWEST,
+      "length": 2,
+      "height": 0,
+      "nw_se_edge_active": True,
+      "ne_sw_edge_active": False
+    }
+  ],
   "exit_fields": [
     {
       "x": 12,
@@ -39,48 +62,6 @@ room = {
         "z": 0,
         "z_half": False,
         "f": RadialDirection.NORTHWEST,
-        "x_bit_7": False
-      }
-    },
-    {
-      "x": 19,
-      "y": 60,
-      "z": 1,
-      "f": Edge.SOUTHWEST,
-      "length": 2,
-      "height": 0,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "destination": Rooms._305_SEASIDE_TOWN_INN_1F,
-      "show_message": False,
-      "destination_props": {
-        "x": 4,
-        "y": 49,
-        "z": 0,
-        "z_half": False,
-        "f": RadialDirection.NORTHEAST,
-        "x_bit_7": False
-      }
-    },
-    {
-      "x": 19,
-      "y": 25,
-      "z": 5,
-      "f": Edge.SOUTHWEST,
-      "length": 2,
-      "height": 0,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "destination": Rooms._307_SEASIDE_TOWN_ELDERS_HOUSE_1F,
-      "show_message": False,
-      "destination_props": {
-        "x": 3,
-        "y": 101,
-        "z": 0,
-        "z_half": False,
-        "f": RadialDirection.NORTHEAST,
         "x_bit_7": False
       }
     },

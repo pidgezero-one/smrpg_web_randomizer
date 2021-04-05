@@ -26,22 +26,6 @@ script = [
         "args": ['EVENT_596_pause_0']
     },
     {
-        "identifier": 'EVENT_596_stop_sound_4',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_5',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_6',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_7',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_596_pause_8',
         "command": 'pause',
         "args": [34]
@@ -72,22 +56,6 @@ script = [
         "args": ['EVENT_596_pause_10']
     },
     {
-        "identifier": 'EVENT_596_stop_sound_14',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_15',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_16',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_17',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_596_pause_18',
         "command": 'pause',
         "args": [34]
@@ -116,22 +84,6 @@ script = [
         "identifier": 'EVENT_596_jmp_23',
         "command": 'jmp',
         "args": ['EVENT_596_pause_20']
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_24',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_25',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_26',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_596_stop_sound_27',
-        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_596_pause_28',

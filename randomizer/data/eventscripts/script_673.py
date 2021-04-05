@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_673_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_256_ret_0']
-    },
-    {
         "identifier": 'EVENT_673_enter_area_1',
         "command": 'enter_area',
         "args": [Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY, RadialDirections.NORTHEAST, 18, 20, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]

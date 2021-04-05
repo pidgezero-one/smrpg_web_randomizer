@@ -6,55 +6,8 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2567_jmp_if_bit_clear_0',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x708d, 0, 'EVENT_2567_fade_in_from_black_async_2']
-    },
-    {
-        "identifier": 'EVENT_2567_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2567_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2567_fade_in_from_black_async_2',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2567_run_event_as_subroutine_3',
-        "command": 'run_event_as_subroutine',
-        "args": [3588]
-    },
-    {
-        "identifier": 'EVENT_2567_jmp_if_bit_clear_4',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_2567_clear_bit_8']
-    },
-    {
-        "identifier": 'EVENT_2567_jmp_if_bit_set_5',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708d, 0, 'EVENT_2567_clear_bit_8']
-    },
-    {
-        "identifier": 'EVENT_2567_clear_bit_6',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
-    },
-    {
-        "identifier": 'EVENT_2567_play_sound_7',
-        "command": 'play_sound',
-        "args": [Sounds._149_CASINO_SECRET_PASSAGE, 6]
-    },
-    {
-        "identifier": 'EVENT_2567_clear_bit_8',
-        "command": 'clear_bit',
-        "args": [0x7099, 7]
     },
     {
         "identifier": 'EVENT_2567_ret_9',

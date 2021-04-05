@@ -13,17 +13,7 @@ script = [
     {
         "identifier": 'EVENT_556_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
-        "args": [0x705d, 1, 'EVENT_556_action_queue_sync_4']
-    },
-    {
-        "identifier": 'EVENT_556_apply_tile_mod_2',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._084_ROSE_TOWN_OUTSIDE, 4, [_0x6AFlags.USE_ALTERNATE]]
-    },
-    {
-        "identifier": 'EVENT_556_apply_solidity_mod_3',
-        "command": 'apply_solidity_mod',
-        "args": [Rooms._084_ROSE_TOWN_OUTSIDE, 4, [_0x6BFlags.PERMANENT]]
+        "args": [0x704C, 6, 'EVENT_556_action_queue_sync_4']
     },
     {
         "identifier": 'EVENT_556_action_queue_sync_4',
@@ -127,51 +117,6 @@ script = [
         "identifier": 'EVENT_556_summon_to_level_14',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_1, Rooms._091_ROSE_TOWN_COUPLES_HOUSE]
-    },
-    {
-        "identifier": 'EVENT_556_jmp_if_object_not_in_level_15',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_10, Rooms._084_ROSE_TOWN_OUTSIDE, 'EVENT_556_run_background_event_23']
-    },
-    {
-        "identifier": 'EVENT_556_action_queue_async_16',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_11],
-        "subscript": [
-            {
-                "identifier": 'EVENT_556_action_queue_async_16_SUBSCRIPT_set_priority_0',
-                "command": 'set_priority',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_556_jmp_if_object_not_in_level_17',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 'EVENT_556_apply_tile_mod_29']
-    },
-    {
-        "identifier": 'EVENT_556_jmp_if_bit_set_18',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7060, 4, 'EVENT_556_set_41']
-    },
-    {
-        "identifier": 'EVENT_556_run_background_event_19',
-        "command": 'run_background_event',
-        "args": [557, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
-    },
-    {
-        "identifier": 'EVENT_556_set_bit_20',
-        "command": 'set_bit',
-        "args": [0x709f, 5]
-    },
-    {
-        "identifier": 'EVENT_556_fade_in_from_black_async_21',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_556_ret_22',
-        "command": 'ret'
     },
     {
         "identifier": 'EVENT_556_run_background_event_23',
@@ -285,51 +230,11 @@ script = [
         "args": [0x7060, 4]
     },
     {
-        "identifier": 'EVENT_556_jmp_if_object_not_in_level_35',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_10, Rooms._084_ROSE_TOWN_OUTSIDE, 'EVENT_256_ret_0']
-    },
-    {
-        "identifier": 'EVENT_556_remove_from_level_36',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_10, Rooms._084_ROSE_TOWN_OUTSIDE]
-    },
-    {
-        "identifier": 'EVENT_556_remove_from_current_level_37',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10]
-    },
-    {
-        "identifier": 'EVENT_556_run_background_event_38',
-        "command": 'run_background_event',
-        "args": [557, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
-    },
-    {
         "identifier": 'EVENT_556_fade_in_from_black_async_39',
         "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_556_ret_40',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_556_set_41',
-        "command": 'set',
-        "args": [0x70a9, 30]
-    },
-    {
-        "identifier": 'EVENT_556_run_background_event_42',
-        "command": 'run_background_event',
-        "args": [557, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
-    },
-    {
-        "identifier": 'EVENT_556_set_bit_43',
-        "command": 'set_bit',
-        "args": [0x7061, 4]
-    },
-    {
-        "identifier": 'EVENT_556_jmp_44',
-        "command": 'jmp',
-        "args": ['EVENT_529_pause_action_script_27']
     }
 ]

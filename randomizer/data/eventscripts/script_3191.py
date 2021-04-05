@@ -62,18 +62,6 @@ script = [
         "args": ['EVENT_3190_stop_all_background_events_0']
     },
     {
-        "identifier": 'EVENT_3191_ret_6',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3191_ret_7',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3191_ret_8',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_3191_ret_9',
         "command": 'ret'
     }

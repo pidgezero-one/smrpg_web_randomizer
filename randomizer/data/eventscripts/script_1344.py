@@ -16,11 +16,6 @@ script = [
         "args": [Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM, 33, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
-        "identifier": 'EVENT_1344_jmp_if_bit_clear_2',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 1, 'EVENT_1344_pause_action_script_6']
-    },
-    {
         "identifier": 'EVENT_1344_jmp_if_bit_clear_3',
         "command": 'jmp_if_bit_clear',
         "args": [0x709a, 4, 'EVENT_1344_pause_action_script_6']

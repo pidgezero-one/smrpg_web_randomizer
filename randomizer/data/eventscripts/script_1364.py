@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_1364_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x708b, 5, 'EVENT_1364_jmp_if_bit_clear_73']
+        "args": [0x708B, 5, 'EVENT_1364_jmp_if_bit_clear_73']
     },
     {
         "identifier": 'EVENT_1364_jmp_if_bit_set_1',
@@ -21,18 +21,88 @@ script = [
         "args": [0x7053, 4, 'EVENT_1364_fade_out_to_black_async_44']
     },
     {
-        "identifier": 'EVENT_1364_fade_out_to_black_async_3',
-        "command": 'fade_out_to_black_async'
+        "identifier": 'EVENT_1281_set_short_98',
+        "command": 'set_short',
+        "args": [0x7026, 0x0000]
     },
     {
-        "identifier": 'EVENT_1364_pause_4',
-        "command": 'pause',
-        "args": [5]
+        "identifier": 'EVENT_1281_action_queue_sync_99',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1281_action_queue_sync_99_SUBSCRIPT_shift_south_pixels_0',
+                "command": 'shift_south_pixels',
+                "args": [22]
+            },
+            {
+                "identifier": 'EVENT_1281_action_queue_sync_99_SUBSCRIPT_shift_east_pixels_1',
+                "command": 'shift_east_pixels',
+                "args": [7]
+            },
+            {
+                "identifier": 'EVENT_1281_action_queue_sync_99_SUBSCRIPT_set_priority_2',
+                "command": 'set_priority',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_1281_action_queue_sync_99_SUBSCRIPT_set_vram_priority_3',
+                "command": 'set_vram_priority',
+                "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
+            }
+        ]
     },
     {
-        "identifier": 'EVENT_1364_jmp_5',
-        "command": 'jmp',
-        "args": ['EVENT_1281_enter_area_0']
+        "identifier": 'EVENT_1281_action_queue_sync_100',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_5],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1281_action_queue_sync_100_SUBSCRIPT_shift_northeast_pixels_0',
+                "command": 'shift_northeast_pixels',
+                "args": [5]
+            },
+            {
+                "identifier": 'EVENT_1281_action_queue_sync_100_SUBSCRIPT_shift_northwest_pixels_1',
+                "command": 'shift_northwest_pixels',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_1281_action_queue_sync_100_SUBSCRIPT_face_southeast_2',
+                "command": 'face_southeast'
+            },
+            {
+                "identifier": 'EVENT_1281_action_queue_sync_100_SUBSCRIPT_set_priority_3',
+                "command": 'set_priority',
+                "args": [3]
+            },
+            {
+                "identifier": 'EVENT_1281_action_queue_sync_100_SUBSCRIPT_shadow_off_4',
+                "command": 'shadow_off'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1281_action_queue_async_101',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.LAYER_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1281_action_queue_async_101_SUBSCRIPT_shift_east_pixels_0',
+                "command": 'shift_east_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_1281_action_queue_async_101_SUBSCRIPT_shift_north_pixels_1',
+                "command": 'shift_north_pixels',
+                "args": [8]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1281_apply_solidity_mod_102',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 2, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_1364_freeze_camera_6',
@@ -86,92 +156,6 @@ script = [
                 "args": [3, 3, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_1364_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1364_jmp_11',
-        "command": 'jmp',
-        "args": ['EVENT_1364_play_music_default_volume_14']
-    },
-    {
-        "identifier": 'EVENT_1364_pause_12',
-        "command": 'pause',
-        "args": [80]
-    },
-    {
-        "identifier": 'EVENT_1364_fade_out_music_to_volume_13',
-        "command": 'fade_out_music_to_volume',
-        "args": [0, 100]
-    },
-    {
-        "identifier": 'EVENT_1364_play_music_default_volume_14',
-        "command": 'play_music_default_volume',
-        "args": [Music._32_AND_MY_NAMES_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_1364_pause_15',
-        "command": 'pause',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_1364_jmp_16',
-        "command": 'jmp',
-        "args": ['EVENT_1364_action_queue_async_24']
-    },
-    {
-        "identifier": 'EVENT_1364_unsync_dialog_17',
-        "command": 'unsync_dialog'
-    },
-    {
-        "identifier": 'EVENT_1364_action_queue_async_18',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1364_action_queue_async_18_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties'
-            },
-            {
-                "identifier": 'EVENT_1364_action_queue_async_18_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast'
-            },
-            {
-                "identifier": 'EVENT_1364_action_queue_async_18_SUBSCRIPT_jump_to_height_2',
-                "command": 'jump_to_height',
-                "args": [96]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_1364_pause_19',
-        "command": 'pause',
-        "args": [60]
-    },
-    {
-        "identifier": 'EVENT_1364_pause_script_resume_on_next_dialog_page_a_FD61_20',
-        "command": 'pause_script_resume_on_next_dialog_page_a_FD61'
-    },
-    {
-        "identifier": 'EVENT_1364_action_queue_async_21',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1364_action_queue_async_21_SUBSCRIPT_face_southwest_0',
-                "command": 'face_southwest'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_1364_unsync_dialog_22',
-        "command": 'unsync_dialog'
-    },
-    {
-        "identifier": 'EVENT_1364_close_dialog_23',
-        "command": 'close_dialog'
     },
     {
         "identifier": 'EVENT_1364_action_queue_async_24',
@@ -465,11 +449,6 @@ script = [
         "args": [0x7048, 6]
     },
     {
-        "identifier": 'EVENT_1364_set_bit_52',
-        "command": 'set_bit',
-        "args": [0x7053, 7]
-    },
-    {
         "identifier": 'EVENT_1364_set_bit_53',
         "command": 'set_bit',
         "args": [0x7089, 2]
@@ -478,10 +457,6 @@ script = [
         "identifier": 'EVENT_1364_enter_area_54',
         "command": 'enter_area',
         "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, RadialDirections.SOUTHWEST, 5, 114, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_1364_stop_sound_55',
-        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_1364_set_short_56',
@@ -500,11 +475,6 @@ script = [
     {
         "identifier": 'EVENT_1364_restore_all_fp_59',
         "command": 'restore_all_fp'
-    },
-    {
-        "identifier": 'EVENT_1364_set_bit_60',
-        "command": 'set_bit',
-        "args": [0x708b, 5]
     },
     {
         "identifier": 'EVENT_1364_ret_61',

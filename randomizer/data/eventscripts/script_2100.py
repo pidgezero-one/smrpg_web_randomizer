@@ -13,12 +13,7 @@ script = [
     {
         "identifier": 'EVENT_2100_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_2100_run_dialog_48']
-    },
-    {
-        "identifier": 'EVENT_2100_run_dialog_2',
-        "command": 'run_dialog',
-        "args": [2575, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": [0x7043, 3, 'EVENT_2100_open_shop_49']
     },
     {
         "identifier": 'EVENT_2100_open_shop_3',
@@ -41,7 +36,7 @@ script = [
     {
         "identifier": 'EVENT_2100_jmp_if_dialog_option_b_7',
         "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2100_run_dialog_46']
+        "args": ['EVENT_2100_ret_45']
     },
     {
         "identifier": 'EVENT_2100_store_coin_amount_7000_8',
@@ -74,11 +69,6 @@ script = [
     {
         "identifier": 'EVENT_2100_dec_coins_14',
         "command": 'dec_coins'
-    },
-    {
-        "identifier": 'EVENT_2100_run_dialog_15',
-        "command": 'run_dialog',
-        "args": [2580, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2100_fade_out_music_to_volume_16',
@@ -273,11 +263,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2100_run_dialog_40',
-        "command": 'run_dialog',
-        "args": [2581, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_2100_action_queue_async_41',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_0],
@@ -304,20 +289,6 @@ script = [
     {
         "identifier": 'EVENT_2100_ret_45',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2100_run_dialog_46',
-        "command": 'run_dialog',
-        "args": [2579, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_2100_ret_47',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2100_run_dialog_48',
-        "command": 'run_dialog',
-        "args": [2577, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2100_open_shop_49',

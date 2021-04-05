@@ -67,38 +67,6 @@ script = [
         "args": [0x7000, 1]
     },
     {
-        "identifier": 'EVENT_3594_stop_sound_13',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3594_stop_sound_14',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3594_stop_sound_15',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3594_stop_sound_16',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3594_stop_sound_17',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3594_stop_sound_18',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3594_stop_sound_19',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3594_stop_sound_20',
-        "command": 'stop_sound'
-    },
-    {
         "identifier": 'EVENT_3594_ret_21',
         "command": 'ret'
     }
