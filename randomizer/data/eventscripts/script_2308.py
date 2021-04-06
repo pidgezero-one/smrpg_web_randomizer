@@ -115,7 +115,7 @@ script = [
     {
         "identifier": 'EVENT_2308_fade_in_from_black_async_26',
         "command": 'fade_in_from_black_async'
-    }
+    },
     {
         "identifier": 'EVENT_2308_ret_38',
         "command": 'ret'

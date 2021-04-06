@@ -14,7 +14,6 @@ script = [
         "identifier": 'EVENT_3213_fade_out_to_black_async_1',
         "command": 'fade_out_to_black_async'
     },
-    },
     {
         "identifier": 'EVENT_3213_enter_area_6',
         "command": 'enter_area',

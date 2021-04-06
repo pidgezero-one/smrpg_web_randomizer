@@ -9,7 +9,7 @@ script = [
         "identifier": 'EVENT_306_run_dialog_1',
         "command": 'run_dialog',
         "args": [547, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    }
+    },
     {
         "identifier": 'EVENT_306_ret_4',
         "command": 'ret'

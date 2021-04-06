@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_754_enter_area_6',
         "command": 'enter_area',
-        "args": [Rooms._491_MUSHROOM_KINGDOM_ITEM_SHOP_TOP_FLOOR, RadialDirection.NORTHWEST, 20, 23, 1, [_0x68Flags.RUN_ENTRANCE_EVENT, _0x68Flags.Z_HALF]]
+        "args": [Rooms._491_MUSHROOM_KINGDOM_ITEM_SHOP_TOP_FLOOR, RadialDirections.NORTHWEST, 20, 23, 1, [_0x68Flags.RUN_ENTRANCE_EVENT, _0x68Flags.Z_HALF]]
     },
     {
         "identifier": 'EVENT_754_ret_7',
@@ -27,7 +27,7 @@ script = [
     {
         "identifier": 'EVENT_754_enter_area_8',
         "command": 'enter_area',
-        "args": [Rooms._483_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_TOP_FLOOR, RadialDirection.NORTHWEST, 20, 23, 1, [_0x68Flags.RUN_ENTRANCE_EVENT, _0x68Flags.Z_HALF]]
+        "args": [Rooms._483_MUSHROOM_KINGDOM_DURING_MACK_ITEM_SHOP_TOP_FLOOR, RadialDirections.NORTHWEST, 20, 23, 1, [_0x68Flags.RUN_ENTRANCE_EVENT, _0x68Flags.Z_HALF]]
     },
     {
         "identifier": 'EVENT_754_ret_11',

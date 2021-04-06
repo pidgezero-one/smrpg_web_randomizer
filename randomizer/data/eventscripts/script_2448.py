@@ -217,7 +217,7 @@ script = [
             {
                 "identifier": 'EVENT_2448_action_queue_async_77_SUBSCRIPT_face_southeast_1',
                 "command": 'face_southeast'
-            }
+            },
             {
                 "identifier": 'EVENT_2448_action_queue_sync_82_SUBSCRIPT_pause_0',
                 "command": 'pause',

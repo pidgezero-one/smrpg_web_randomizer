@@ -106,6 +106,7 @@ db.sqlite*
 /static
 dump*.py
 sample*
+randomizer/management/commands/output/disassembler
 
 # VSCode
 smrpgr.code-workspace
