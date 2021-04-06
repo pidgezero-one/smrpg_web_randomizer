@@ -175,12 +175,12 @@ script = [
         "command": 'pause_script_until_effect_done'
     },
     {
-        "identifier": 'EVENT_3747_jmp_if_bit_clear_1',
+        "identifier": 'EVENT_3644_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
         "args": [0x7098, 6, 'EVENT_3644_set_bit_55']
     },
     {
-        "identifier": 'EVENT_3747_set_random_2',
+        "identifier": 'EVENT_3644_set_random_2',
         "command": 'set_random',
         "args": [0x7000, 51]
     },

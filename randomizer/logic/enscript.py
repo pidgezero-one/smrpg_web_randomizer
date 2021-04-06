@@ -1,8 +1,8 @@
 from collections import defaultdict
 from randomizer.logic.osscript import ObjectSequenceScript as OSCommand
+import re
 
 bank_lengths = [1536, 1536, 1024]
-
 
 class EventScript:
     def __init__(self):
@@ -16,7 +16,35 @@ class EventScript:
             ret[i] = byte
         return ret
 
+    def audit_identifiers(table): 
+        errors = []
+        identifiers = {}
+        for i in range(len(table)):
+            script = table[i]
+            for command in script:
+                id = command["identifier"]
+                # audit identifier name
+                x = re.search("EVENT_(\d+)", id)
+                command_header = int(x.group(1))
+                if (i != command_header):
+                    errors.append("mismatched event id in script_%i identifier: %s" % (i, id))
+                # store to check for duplicates
+                if id in identifiers:
+                    identifiers[id].append(str(i))
+                else:
+                    identifiers[id] = [str(i)]
+        for key in identifiers:
+            if len(identifiers[key]) > 1:
+                errors.append("duplicate identifier: %s in scripts %s" % (key, ", ".join(identifiers[key])))
+        return errors
+
+
     def assemble_from_table(table):
+
+        audit_errs = EventScript.audit_identifiers(table)
+        if len(audit_errs) > 0:
+            raise Exception(
+                        'script table audit returned the following errors:\n%s' % "\n".join(audit_errs))
 
         bank_1E_pointer_table = bytearray(b'')
         bank_1E_scripts = bytearray(b'')

@@ -1875,26 +1875,26 @@ script = [
         "args": [AreaObjects.NPC_2, Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT]
     },
     {
-        "identifier": 'EVENT_3738_enter_area_0',
+        "identifier": 'EVENT_738_enter_area_0',
         "command": 'enter_area',
         "args": [Rooms._438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, RadialDirections.SOUTH, 15, 46, 2, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
-        "identifier": 'EVENT_3738_fade_in_from_black_sync_1',
+        "identifier": 'EVENT_738_fade_in_from_black_sync_1',
         "command": 'fade_in_from_black_sync'
     },
     {
-        "identifier": 'EVENT_3738_set_short_212',
+        "identifier": 'EVENT_738_set_short_212',
         "command": 'set_short',
         "args": [0x700a, 0x00dd]
     },
     {
-        "identifier": 'EVENT_3738_jmp_to_event_213',
+        "identifier": 'EVENT_738_jmp_to_event_213',
         "command": 'jmp_to_event',
         "args": [720]
     },
     {
-        "identifier": 'EVENT_3738_ret_214',
+        "identifier": 'EVENT_738_ret_214',
         "command": 'ret'
     }
 ]

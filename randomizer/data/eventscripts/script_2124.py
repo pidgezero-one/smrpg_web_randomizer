@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2124_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_2124_jmp_to_event_2']
+        "args": [0x704c, 6, 'EVENT_2124_enter_area_7']
     },
     {
         "identifier": 'EVENT_2124_jmp_to_event_1',
@@ -16,7 +16,7 @@ script = [
         "args": [3809]
     },
     {
-        "identifier": 'EVENT_669_enter_area_7',
+        "identifier": 'EVENT_2124_enter_area_7',
         "command": 'enter_area',
         "args": [Rooms._065_MARRYMORE_CHAPEL_SANCTUARY, RadialDirections.NORTHEAST, 9, 98, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },

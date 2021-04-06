@@ -253,7 +253,7 @@ script = [
         "args": [0x7040, 0, 'EVENT_2225_restore_all_hp_13']
     },
     {
-        "identifier": 'EVENT_2209_jmp_to_event_9',
+        "identifier": 'EVENT_2225__jmp_to_event_9',
         "command": 'reset_and_choose_game'
     },
     {
@@ -295,7 +295,7 @@ script = [
         "args": [0x7040, 0, 'EVENT_2225_restore_all_hp_22']
     },
     {
-        "identifier": 'EVENT_2209_jmp_to_event_9',
+        "identifier": 'EVENT_2225___jmp_to_event_9',
         "command": 'reset_and_choose_game'
     },
     {

@@ -34,7 +34,7 @@ script = [
         "args": [2115, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_690_ret_insert',
+        "identifier": 'EVENT_696_ret_insert',
         "command": 'ret'
     },
     {

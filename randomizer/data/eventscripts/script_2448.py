@@ -200,7 +200,7 @@ script = [
         "command": 'stop_all_background_events'
     },
     {
-        "identifier": 'EVENT_2448_pause_42',
+        "identifier": 'EVENT_2448_pause__42',
         "command": 'pause',
         "args": [16]
     },
@@ -365,7 +365,7 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_2448_remove_from_current_level_99',
+        "identifier": 'EVENT_2448_remove_from_current_level__99',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_1]
     },

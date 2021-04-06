@@ -210,7 +210,7 @@ script = [
     {
         "identifier": 'EVENT_1169_jmp_if_7000_equals_short_19',
         "command": 'jmp_if_7000_equals_short',
-        "args": [192, 'EVENT_1281_set_short_98']
+        "args": [192, 'EVENT_1364_set_short_98']
     },
     {
         "identifier": 'EVENT_1169_ret_20',

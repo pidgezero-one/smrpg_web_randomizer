@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_534_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x705d, 2, 'EVENT_2632_run_dialog_66']
+        "args": [0x705d, 2, 'EVENT_534___run_dialog_66']
     },
     {
         "identifier": 'EVENT_534_jmp_if_bit_set_1',
@@ -16,7 +16,7 @@ script = [
         "args": [0x7047, 2, 'EVENT_534_play_sound_3']
     },
     {
-        "identifier": 'EVENT_2632_run_dialog_4',
+        "identifier": 'EVENT_534___run_dialog_4',
         "command": 'run_dialog',
         "args": [800, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
@@ -44,7 +44,7 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_2632_run_dialog_66',
+        "identifier": 'EVENT_534___run_dialog_66',
         "command": 'run_dialog',
         "args": [799, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },

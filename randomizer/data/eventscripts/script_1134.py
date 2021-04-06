@@ -16,7 +16,7 @@ script = [
         "args": [0x7067, 5, 'EVENT_1134_ret_10']
     },
     {
-        "identifier": 'EVENT_1134_run_dialog_9',
+        "identifier": 'EVENT_1134_run_dialog_10',
         "command": 'run_dialog',
         "args": [2840, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },

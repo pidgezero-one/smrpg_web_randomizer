@@ -29,7 +29,7 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_695_run_dialog_7',
+        "identifier": 'EVENT_695_run_dialog_8',
         "command": 'run_dialog',
         "args": [2172, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },

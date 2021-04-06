@@ -20,7 +20,7 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_607_run_dialog_2',
+        "identifier": 'EVENT_632_run_dialog_3',
         "command": 'run_dialog',
         "args": [2811, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },

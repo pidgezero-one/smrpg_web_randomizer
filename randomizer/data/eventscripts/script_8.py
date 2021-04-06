@@ -31,7 +31,7 @@ script = [
         "args": [0x70A7, 107]
     },
     {
-        "identifier": 'EVENT_8_ret',
+        "identifier": 'EVENT_8_ret_1',
         "command": 'ret'
     },
     {
@@ -40,7 +40,7 @@ script = [
         "args": [0x70A7, 108]
     },
     {
-        "identifier": 'EVENT_8_ret',
+        "identifier": 'EVENT_8_ret_2',
         "command": 'ret'
     },
     {
@@ -49,7 +49,7 @@ script = [
         "args": [0x70A7, 117]
     },
     {
-        "identifier": 'EVENT_8_ret',
+        "identifier": 'EVENT_8_ret_3',
         "command": 'ret'
     },
     {
@@ -58,7 +58,7 @@ script = [
         "args": [0x70A7, 131]
     },
     {
-        "identifier": 'EVENT_8_ret',
+        "identifier": 'EVENT_8_ret_4',
         "command": 'ret'
     }
 ]

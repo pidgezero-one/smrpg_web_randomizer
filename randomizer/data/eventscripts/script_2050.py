@@ -195,7 +195,7 @@ script = [
         "args": [0x7088, 6]
     },
     {
-        "identifier": 'EVENT_2050_ret_22',
+        "identifier": 'EVENT_2050_ret__22',
         "command": 'ret'
     }
 ]

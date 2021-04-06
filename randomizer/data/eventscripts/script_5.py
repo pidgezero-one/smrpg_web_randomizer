@@ -71,7 +71,7 @@ script = [
         "args": [0x70A7, 96]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_1',
         "command": 'ret'
     },
     {
@@ -80,7 +80,7 @@ script = [
         "args": [0x70A7, 99]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_2',
         "command": 'ret'
     },
     {
@@ -89,7 +89,7 @@ script = [
         "args": [0x70A7, 102]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_3',
         "command": 'ret'
     },
     {
@@ -98,7 +98,7 @@ script = [
         "args": [0x70A7, 103]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_4',
         "command": 'ret'
     },
     {
@@ -107,7 +107,7 @@ script = [
         "args": [0x70A7, 109]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_5',
         "command": 'ret'
     },
     {
@@ -116,7 +116,7 @@ script = [
         "args": [0x70A7, 110]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_6',
         "command": 'ret'
     },
     {
@@ -125,7 +125,7 @@ script = [
         "args": [0x70A7, 111]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_7',
         "command": 'ret'
     },
     {
@@ -134,7 +134,7 @@ script = [
         "args": [0x70A7, 119]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_8',
         "command": 'ret'
     },
     {
@@ -143,7 +143,7 @@ script = [
         "args": [0x70A7, 155]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_9',
         "command": 'ret'
     },
     {
@@ -152,7 +152,7 @@ script = [
         "args": [0x70A7, 156]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_10',
         "command": 'ret'
     },
     {
@@ -161,7 +161,7 @@ script = [
         "args": [0x70A7, 157]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_11',
         "command": 'ret'
     },
     {
@@ -170,7 +170,7 @@ script = [
         "args": [0x70A7, 175]
     },
     {
-        "identifier": 'EVENT_5_ret',
+        "identifier": 'EVENT_5_ret_12',
         "command": 'ret'
     },
 ]

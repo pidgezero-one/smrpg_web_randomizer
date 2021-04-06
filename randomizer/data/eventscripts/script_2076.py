@@ -226,17 +226,17 @@ script = [
         "args": [AreaObjects.NPC_3]
     },
     {
-        "identifier": 'EVENT_2064_action_queue_async_12',
+        "identifier": 'EVENT_2076_action_queue_async_12',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_2064_action_queue_async_12_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_2076_action_queue_async_12_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [5, 15, 0, RadialDirections.SOUTHWEST]
             },
             {
-                "identifier": 'EVENT_2064_action_queue_async_12_SUBSCRIPT_visibility_on_2',
+                "identifier": 'EVENT_2076_action_queue_async_12_SUBSCRIPT_visibility_on_2',
                 "command": 'visibility_on'
             },
             {

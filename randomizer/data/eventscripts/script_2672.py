@@ -851,7 +851,7 @@ script = [
         "args": ['EVENT_2672_jmp_if_bit_set_96']
     },
     {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_96',
+        "identifier": 'EVENT_2672_jmp_if_bit_set__96',
         "command": 'run_event_as_subroutine',
         "args": [5]
     },

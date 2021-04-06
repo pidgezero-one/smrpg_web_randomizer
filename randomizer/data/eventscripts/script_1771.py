@@ -27,12 +27,12 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2050_jmp_if_bit_clear_10',
+        "identifier": 'EVENT_1771_jmp_if_bit_clear_10',
         "command": 'jmp_if_bit_clear',
         "args": [0x704f, 3, 'EVENT_1771_fade_in_from_black_async_7']
     },
     {
-        "identifier": 'EVENT_2050_jmp_11',
+        "identifier": 'EVENT_1771_jmp_11',
         "command": 'jmp',
         "args": ['EVENT_1771_apply_solidity_mod_3']
     },

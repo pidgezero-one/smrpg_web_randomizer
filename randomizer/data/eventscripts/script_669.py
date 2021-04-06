@@ -6,12 +6,12 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_642_enter_area_4',
+        "identifier": 'EVENT_669_enter_area_4',
         "command": 'enter_area',
         "args": [Rooms._065_MARRYMORE_CHAPEL_SANCTUARY, RadialDirections.NORTHEAST, 9, 98, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
-        "identifier": 'EVENT_642_ret_27',
+        "identifier": 'EVENT_669_ret_27',
         "command": 'ret'
     }
 ]

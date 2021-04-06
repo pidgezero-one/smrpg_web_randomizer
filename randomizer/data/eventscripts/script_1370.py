@@ -21,7 +21,7 @@ script = [
         "args": [0x7026, 2, 'EVENT_1369_pause_0']
     },
     {
-        "identifier": 'EVENT_1370_pause_1',
+        "identifier": 'EVENT_1370_pause__1',
         "command": 'pause',
         "args": [30]
     },

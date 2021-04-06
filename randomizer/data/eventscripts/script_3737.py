@@ -11,7 +11,7 @@ script = [
         "args": [0x705f, 4, 'EVENT_3585_fade_in_from_black_async_0']
     },
     {
-        "identifier": 'EVENT_3729_set_bit_158',
+        "identifier": 'EVENT_3737_set_bit_158',
         "command": 'set_bit',
         "args": [0x7090, 2]
     },

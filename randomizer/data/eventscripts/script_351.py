@@ -35,7 +35,7 @@ script = [
         "args": [3732, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_351_ret_12',
+        "identifier": 'EVENT_351_ret_13',
         "command": 'ret'
     },
     {

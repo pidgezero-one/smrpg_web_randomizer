@@ -6,12 +6,12 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2070_run_dialog_4',
+        "identifier": 'EVENT_2059_run_dialog_4',
         "command": 'run_dialog',
         "args": [2973, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_2070_ret_7',
+        "identifier": 'EVENT_2059_ret_7',
         "command": 'ret'
     }
 ]

@@ -61,7 +61,7 @@ script = [
         "args": [0x70A7, 98]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_1',
         "command": 'ret'
     },
     {
@@ -70,7 +70,7 @@ script = [
         "args": [0x70A7, 101]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_2',
         "command": 'ret'
     },
     {
@@ -79,7 +79,7 @@ script = [
         "args": [0x70A7, 106]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_3',
         "command": 'ret'
     },
     {
@@ -88,7 +88,7 @@ script = [
         "args": [0x70A7, 113]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_4',
         "command": 'ret'
     },
     {
@@ -97,7 +97,7 @@ script = [
         "args": [0x70A7, 114]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_5',
         "command": 'ret'
     },
     {
@@ -106,7 +106,7 @@ script = [
         "args": [0x70A7, 116]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_6',
         "command": 'ret'
     },
     {
@@ -115,7 +115,7 @@ script = [
         "args": [0x70A7, 120]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_7',
         "command": 'ret'
     },
     {
@@ -124,7 +124,7 @@ script = [
         "args": [0x70A7, 122]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_8',
         "command": 'ret'
     },
     {
@@ -133,7 +133,7 @@ script = [
         "args": [0x70A7, 153]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_9',
         "command": 'ret'
     },
     {
@@ -142,7 +142,7 @@ script = [
         "args": [0x70A7, 154]
     },
     {
-        "identifier": 'EVENT_7_ret',
+        "identifier": 'EVENT_7_ret_10',
         "command": 'ret'
     }
 ]

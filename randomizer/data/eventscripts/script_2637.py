@@ -348,7 +348,7 @@ script = [
         "args": [5]
     },
     {
-        "identifier": 'EVENT_2637_jmp_tier2',
+        "identifier": 'EVENT_2637_jmp_tier1',
         "command": 'jmp',
         "args": ['EVENT_2637_play_sound_86']
     },
