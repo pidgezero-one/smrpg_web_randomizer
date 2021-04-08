@@ -75,16 +75,21 @@ class RoomObjects:
 
 
                 # event tiles
+                print("")
+                print("")
+                print("")
+                print("%i: 0x%x" % (i, eventtile_offset))
 
                 # bytes 0-2
                 event_tile_bytes = bytearray([room["music"], room["entrance_event"] & 0xFF, room["entrance_event"] >> 8])
                 event_tiles = room["event_tiles"]
                 for e in event_tiles:
+                    print(e)
                     # byte 3
                     event_tile_bytes.append(e["event"] & 0xFF)
                     # byte 4
                     byte_4 = e["event"] >> 8
-                    if e["length"] > 1 or e["f"] > 0:
+                    if e["length"] > 1:
                         byte_4 |= 0x80
                     event_tile_bytes.append(byte_4)
                     # byte 5
@@ -94,8 +99,13 @@ class RoomObjects:
                     # byte 7
                     event_tile_bytes.append(e["z"] | (e["height"] << 5))
                     # byte 8 (optional)
-                    if e["length"] > 1 or e["f"] != 0:
-                        event_tile_bytes.append(((e["length"] - 1) & 0x0F) | (e["f"] << 7))
+                    if e["length"] > 1:
+                        if "byte_8_bit_4" in e:
+                            byte_8_bit_4 = (e["byte_8_bit_4"] << 4)
+                        else:
+                            byte_8_bit_4 = 0
+                        event_tile_bytes.append(((e["length"] - 1) & 0x0F) | byte_8_bit_4 | (e["f"] << 7))
+                print(' '.join('{:02x}'.format(x) for x in event_tile_bytes))
                 eventtile_output += event_tile_bytes
 
 
@@ -105,6 +115,7 @@ class RoomObjects:
                 exits = room["exit_fields"]
 
                 for e in exits:
+
                     # byte 0
                     exit_bytes.append(e["destination"] & 0xFF)
                     # byte 1
@@ -173,6 +184,9 @@ class RoomObjects:
             #eventtile_output = eventtile_output[0:(empty_space)]
             raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x19C8))
         else:
+            if (empty_space >= 3):
+                eventtile_output += bytearray([0x00, 0x0F, 0x00]) # necessary to match 512th room header in vanilla, room does not actually exist
+                empty_space = 0x19C8 - len(eventtile_output)
             eventtile_output += bytearray([0xFF for x in range(empty_space)])
         eventtiles = [eventtile_pointers, bytearray(eventtile_output)]
 
