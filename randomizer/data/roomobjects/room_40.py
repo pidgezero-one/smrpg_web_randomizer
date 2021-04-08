@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._038_BOOSTER_TOWER_9F_BOOSTERS_BOMBTHROWING_ROOM_WRAIL_TRACKS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 11,
         "y": 81,

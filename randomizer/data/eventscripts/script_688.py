@@ -12,7 +12,7 @@ script = [
     {
         "identifier": 'EVENT_688_jmp_if_7000_equals_short_1',
         "command": 'jmp_if_7000_equals_short',
-        "args": [65, 'EVENT_688_jmp_if_bit_clear_4']
+        "args": [65, 'EVENT_688_run_dialog_7']
     },
     {
         "identifier": 'EVENT_688_run_dialog_2',

@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 18,
         "y": 112,

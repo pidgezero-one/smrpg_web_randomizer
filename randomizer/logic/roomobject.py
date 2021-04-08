@@ -3,14 +3,37 @@ class RoomObjects:
         self.output = []
 
     def assemble_from_table(table):
+
+        #NPCs
+
         pointers = bytearray()
+        eventtile_pointers = bytearray()
+        exit_pointers = bytearray()
+
         output = []
+        eventtile_output = []
+        exit_output = []
+
         for room in table:
             offset = 0x148400 + len(output)
             ptr_bytes = bytearray([offset & 0xFF, (offset >> 8) & 0xFF])
+
+            eventtile_offset = 0x20E400 + len(eventtile_output)
+            eventtile_ptr_bytes = bytearray([eventtile_offset & 0xFF, (eventtile_offset >> 8) & 0xFF])
+
+            exit_offset = 0x1D3166 + len(exit_output)
+            exit_ptr_bytes = bytearray([exit_offset & 0xFF, (exit_offset >> 8) & 0xFF])
+
             pointers += ptr_bytes
+            eventtile_pointers += eventtile_ptr_bytes
+            exit_pointers += exit_ptr_bytes
+
             if room is not None:
+
+                #objects
+
                 room_bytes = bytearray([room["partition"]])
+
                 npcs = room["objects"]
                 for n in npcs:
                     room_bytes.append((n["type"] << 4) | len(n["clones"]))
@@ -45,20 +68,115 @@ class RoomObjects:
                         room_bytes.append((c["z_half"] << 7) | c["y"])
                         room_bytes.append((c["direction"] << 5) | c["z"])
                 output += room_bytes
-        offset = len(output)
-        ptr_bytes = bytearray([offset & 0xFF, (offset >> 8) & 0xFF])
-        pointers += ptr_bytes
+
+
+                # event tiles
+
+                # bytes 0-2
+                event_tile_bytes = bytearray([room["music"], room["entrance_event"] & 0xFF, room["entrance_event"] >> 8])
+                event_tiles = room["event_tiles"]
+                for e in event_tiles:
+                    # byte 3
+                    event_tile_bytes.append(e["event"] & 0xFF)
+                    # byte 4
+                    byte_4 = e["event"] >> 8
+                    if e["length"] > 1 or e["f"] > 0:
+                        byte_4 |= 0x80
+                    event_tile_bytes.append(byte_4)
+                    # byte 5
+                    event_tile_bytes.append(e["x"] | (e["nw_se_edge_active"] << 7))
+                    # byte 6
+                    event_tile_bytes.append(e["y"] | (e["ne_sw_edge_active"] << 7))
+                    # byte 7
+                    event_tile_bytes.append(e["z"] | (e["height"] << 5))
+                    # byte 8 (optional)
+                    if e["length"] > 1 or e["f"] != 0:
+                        event_tile_bytes.append(((e["length"] - 1) & 0x0F) | (e["f"] << 7))
+                eventtile_output += event_tile_bytes
+
+
+                # exits
+
+                exit_bytes = bytearray()
+                exits = room["exit_fields"]
+                for e in exits:
+                    # byte 0
+                    exit_bytes.append(e["destination"] & 0xFF)
+                    # byte 1
+                    byte_1 = ((e["destination"] >> 8) & 0x01) | (e["destination_type"] << 6) | (e["show_message"] << 3)
+                    if e["length"] > 1 or e["f"] > 0:
+                        byte_1 |= 0x80
+                    exit_bytes.append(byte_1)
+                    #byte_2
+                    exit_bytes.append((e["x"] & 0x7F) | (e["nw_se_edge_active"] << 7))
+                    #byte_3
+                    exit_bytes.append((e["y"] & 0x7F) | (e["ne_sw_edge_active"] << 7))
+                    #byte_4
+                    exit_bytes.append((e["z"] & 0x1F) | (e["height"] << 5))
+                    if (e["destination_type"] == 0):
+                        #byte_5
+                        exit_bytes.append((e["destination_props"]["x"] & 0x7F) | (e["destination_props"]["x_bit_7"] << 7))
+                        #byte_6
+                        exit_bytes.append((e["destination_props"]["y"] & 0x7F) | (e["destination_props"]["z_half"] << 7))
+                        #byte_7
+                        exit_bytes.append((e["destination_props"]["z"] & 0x1F) | (e["destination_props"]["f"] << 5))
+                    #final byte (optional)
+                    if e["length"] > 1 or e["f"] > 0:
+                        exit_bytes.append(((e["length"] - 1) & 0x0F) | (e["f"] << 7))
+                        
+
+                exit_output += exit_bytes
+
+
+
+
         empty_space = 0x0400 - len(pointers)
         if (empty_space < 0):
-            pointers = pointers[0:(empty_space)]
+            #pointers = pointers[0:(empty_space)]
+            raise Exception("NPC pointer table too long: %i bytes (expected up to %i)" % (len(pointers), 0x0400))
         else:
             for i in range(0, empty_space, 2):
                 pointers += ptr_bytes
         empty_space = 0x7C00 - len(output)
         if (empty_space < 0):
-            output = output[0:(empty_space)]
+            #output = output[0:(empty_space)]
+            raise Exception("NPC data too long: %i bytes (expected up to %i)" % (len(output), 0x7C00))
         else:
             output += bytearray([0xFF for x in range(empty_space)])
-        return [pointers, bytearray(output)]
+        npcs = [pointers, bytearray(output)]
 
-        #TODO: Need to have this work as a patch. Once you figure that out, write assembler for event tiles / exits
+ 
+        empty_space = 0x0400 - len(eventtile_pointers)
+        if (empty_space < 0):
+            #eventtile_pointers = eventtile_pointers[0:(empty_space)]
+            raise Exception("Event pointer table too long: %i bytes (expected up to %i)" % (len(eventtile_pointers), 0x0400))
+        else:
+            for i in range(0, empty_space, 2):
+                eventtile_pointers += eventtile_ptr_bytes
+        empty_space = 0x1C00 - len(eventtile_output)
+        if (empty_space < 0):
+            #eventtile_output = eventtile_output[0:(empty_space)]
+            raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x1C00))
+        else:
+            eventtile_output += bytearray([0xFF for x in range(empty_space)])
+        eventtiles = [eventtile_pointers, bytearray(eventtile_output)]
+
+
+        empty_space = 0x0402 - len(exit_pointers)
+        if (empty_space < 0):
+            #exit_pointers = exit_pointers[0:(empty_space)]
+            raise Exception("Exit pointer table too long: %i bytes (expected up to %i)" % (len(exit_pointers), 0x0402))
+        else:
+            for i in range(0, empty_space, 2):
+                exit_pointers += exit_ptr_bytes
+        empty_space = 0x179F - len(exit_output)
+        if (empty_space < 0):
+            #exit_output = exit_output[0:(empty_space)]
+            raise Exception("Exit data too long: %i bytes (expected up to %i)" % (len(exit_output), 0x179F))
+        else:
+            exit_output += bytearray([0xFF for x in range(empty_space)])
+        exits = [exit_pointers, bytearray(exit_output)]
+
+        return npcs, eventtiles, exits
+
+

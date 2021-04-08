@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 2,
         "y": 39,

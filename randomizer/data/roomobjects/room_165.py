@@ -160,7 +160,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._168_SUNKEN_SHIP_PUZZLE_ROOM_3,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 31,
         "y": 116,
@@ -181,7 +181,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 28,
         "y": 21,
@@ -202,7 +202,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 30,
         "y": 24,
@@ -265,7 +265,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._176_SUNKEN_SHIP_AREA_08_WSAVE_POINT_AND_GREEN_SWITCH_FOR_BARREL,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 18,
         "y": 22,

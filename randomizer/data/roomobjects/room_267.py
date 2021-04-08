@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._324_MONSTRO_TOWN_OUTSIDE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 24,
         "y": 85,

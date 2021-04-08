@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 21,
         "y": 100,

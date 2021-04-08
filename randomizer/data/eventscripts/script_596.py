@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_596_jmp_if_present_in_current_level_2',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_3, 'EVENT_596_stop_sound_4']
+        "args": [AreaObjects.NPC_3, 'EVENT_596_pause_8']
     },
     {
         "identifier": 'EVENT_596_jmp_3',
@@ -48,7 +48,7 @@ script = [
     {
         "identifier": 'EVENT_596_jmp_if_present_in_current_level_12',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_4, 'EVENT_596_stop_sound_14']
+        "args": [AreaObjects.NPC_4, 'EVENT_596_pause_18']
     },
     {
         "identifier": 'EVENT_596_jmp_13',
@@ -78,7 +78,7 @@ script = [
     {
         "identifier": 'EVENT_596_jmp_if_present_in_current_level_22',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_2, 'EVENT_596_stop_sound_24']
+        "args": [AreaObjects.NPC_2, 'EVENT_596_pause_28']
     },
     {
         "identifier": 'EVENT_596_jmp_23',

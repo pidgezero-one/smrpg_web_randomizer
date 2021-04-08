@@ -108,7 +108,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
       "destination": Locations._009_MUSHROOM_WAY,
-      "show_message": True
+      "show_message": False,
     },
     {
       "x": 3,

@@ -4,6 +4,8 @@ class NPCModels:
 
     def assemble_from_table(table):
         output = bytearray()
+        if len(table) != 512:
+            raise Exception("Model table must contain 512 entries (found %i)" % len(table))
         for model in table:
             output.append(model["sprite"] & 0xFF)
             output.append((model["vram_size"] << 5) | (model["vram_store"] << 2) | (model["sprite"] >> 8))

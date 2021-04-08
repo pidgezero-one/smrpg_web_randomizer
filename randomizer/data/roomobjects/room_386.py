@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._358_VOLCANO_AREA_11,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 12,
         "y": 121,
@@ -82,7 +82,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._364_VOLCANO_AREA_14,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 6,
         "y": 121,

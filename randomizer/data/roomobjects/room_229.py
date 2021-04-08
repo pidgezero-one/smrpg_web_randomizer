@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._225_FOREST_MAZE_AREA_05_TREE_TRUNK_AREA,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 2,
         "y": 68,

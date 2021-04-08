@@ -125,11 +125,6 @@ script = [
         "args": [272, 'EVENT_560_set_395']
     },
     {
-        "identifier": 'EVENT_560_jmp_if_7000_equals_short_25',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [104, 'EVENT_560_set_422']
-    },
-    {
         "identifier": 'EVENT_560_jmp_if_7000_equals_short_26',
         "command": 'jmp_if_7000_equals_short',
         "args": [86, 'EVENT_560_jmp_if_bit_set_28']

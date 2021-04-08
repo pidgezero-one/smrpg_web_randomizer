@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_520_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7085, 2, 'EVENT_520_jmp_if_bit_set_29']
+        "args": [0x7085, 2, 'EVENT_520_run_dialog_31']
     },
     {
         "identifier": 'EVENT_520_pause_action_script_1',

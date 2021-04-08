@@ -122,9 +122,8 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_2335_jmp_22',
-        "command": 'jmp',
-        "args": ['EVENT_2335_run_event_as_subroutine_25']
+        "identifier": 'EVENT_2335_ret_22',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2335_run_background_event_23',
@@ -134,5 +133,9 @@ script = [
     {
         "identifier": 'EVENT_2335_fade_in_from_black_async_24',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_2335_ret_25',
+        "command": 'ret'
     }
 ]

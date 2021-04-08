@@ -164,7 +164,7 @@ script = [
     {
         "identifier": 'EVENT_2315_jmp_11',
         "command": 'jmp',
-        "args": ['EVENT_2315_run_event_as_subroutine_20']
+        "args": ['EVENT_2315_jmp_if_bit_clear_23']
     },
     {
         "identifier": 'EVENT_2315_freeze_camera_12',

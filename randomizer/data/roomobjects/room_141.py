@@ -106,7 +106,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._142_LANDS_END_AREA_05_SKY_BRIDGE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 19,
         "y": 105,

@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._353_VOLCANO_AREA_18_HINO_MART,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 6,
         "y": 71,

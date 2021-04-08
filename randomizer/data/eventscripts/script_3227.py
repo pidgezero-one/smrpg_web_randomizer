@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_3227_jmp_if_object_not_in_level_0',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_0, Rooms._179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, 'EVENT_3227_jmp_if_object_trigger_enabled_5']
+        "args": [AreaObjects.NPC_0, Rooms._179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, 'EVENT_3227_run_event_as_subroutine_32']
     },
     {
         "identifier": 'EVENT_3227_set_7000_to_object_coord_1',
@@ -36,6 +36,11 @@ script = [
         "identifier": 'EVENT_3227_run_background_event_4',
         "command": 'run_background_event',
         "args": [3228, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
+    },
+    {
+        "identifier": 'EVENT_3227_run_event_as_subroutine_32',
+        "command": 'run_event_as_subroutine',
+        "args": [15]
     },
     {
         "identifier": 'EVENT_3227_ret_13',

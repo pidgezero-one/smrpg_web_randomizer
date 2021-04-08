@@ -221,11 +221,6 @@ script = [
         "args": [0x7070, 7]
     },
     {
-        "identifier": 'EVENT_0_set_bit_40_',
-        "command": 'set_bit',
-        "args": [0x7065, 0]
-    },
-    {
         "identifier": 'EVENT_0_set_bit_40',
         "command": 'set_bit',
         "args": [0x7065, 4]
@@ -421,16 +416,6 @@ script = [
         "args": [0x704c, 7]
     },
     {
-        "identifier": 'EVENT_0___set_bit_22',
-        "command": 'set_bit',
-        "args": [0x7054, 7]
-    },
-    {
-        "identifier": 'EVENT_0___set_bit_23',
-        "command": 'set_bit',
-        "args": [0x7056, 1]
-    },
-    {
         "identifier": 'EVENT_0___set_bit_25',
         "command": 'set_bit',
         "args": [0x705d, 4]
@@ -494,11 +479,6 @@ script = [
         "identifier": 'EVENT_0___set_bit_47',
         "command": 'set_bit',
         "args": [0x709c, 5]
-    },
-    {
-        "identifier": 'EVENT_0___set_bit_48',
-        "command": 'set_bit',
-        "args": [0x7055, 0]
     },
     {
         "identifier": 'EVENT_0___enable_controls_49',

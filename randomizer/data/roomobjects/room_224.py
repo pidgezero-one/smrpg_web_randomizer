@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
       "destination": Locations._019_FOREST_MAZE,
-      "show_message": True
+      "show_message": False
     },
     {
       "x": 3,

@@ -95,7 +95,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._188_SUNKEN_SHIP_POSTKC_AREA_11_WATER_ROOM_WITH_WHIRLPOOL,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 7,
         "y": 86,

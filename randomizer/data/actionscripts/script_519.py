@@ -28,11 +28,6 @@ script = [
         "args": [15]
     },
     {
-        "identifier": 'ACTION_519_jmp_if_bit_set_5',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7053, 7, 'ACTION_519_visibility_off_14']
-    },
-    {
         "identifier": 'ACTION_519_pause_6',
         "command": 'pause',
         "args": [120]
@@ -51,11 +46,6 @@ script = [
         "identifier": 'ACTION_519_pause_9',
         "command": 'pause',
         "args": [120]
-    },
-    {
-        "identifier": 'ACTION_519_jmp_if_bit_set_10',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7053, 7, 'ACTION_519_visibility_off_14']
     },
     {
         "identifier": 'ACTION_519_shift_north_pixels_11',

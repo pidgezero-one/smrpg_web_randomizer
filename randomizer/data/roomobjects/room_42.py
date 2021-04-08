@@ -64,7 +64,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._037_BOOSTER_TOWER_4F_3LEVEL_ROOM_WJUMPING_SPOOKUMS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 11,
         "y": 49,

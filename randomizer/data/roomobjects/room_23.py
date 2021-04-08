@@ -108,7 +108,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._047_MUSHROOM_KINGDOM_BEFORE_CROCO_ITEM_SHOP_TOP_FLOOR,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 14,
         "y": 22,
@@ -150,7 +150,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._051_MUSHROOM_KINGDOM_BEFORE_CROCO_RUNNING_KIDS_HOUSE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 17,
         "y": 88,

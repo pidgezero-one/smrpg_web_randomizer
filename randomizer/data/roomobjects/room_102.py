@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
       "destination": Locations._024_MOLEVILLE,
-      "show_message": True
+      "show_message": False
     },
     {
       "x": 8,
@@ -95,7 +95,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._339_MOLEVILLE_FIREWORKS_SHOP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 11,
         "y": 43,
@@ -116,7 +116,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._340_MOLEVILLE_SPECIAL_ITEMTRADING_SHOP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 20,
         "y": 17,

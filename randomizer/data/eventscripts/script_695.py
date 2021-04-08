@@ -12,17 +12,12 @@ script = [
     {
         "identifier": 'EVENT_695_jmp_if_7000_equals_short_1',
         "command": 'jmp_if_7000_equals_short',
-        "args": [65, 'EVENT_695_jmp_if_bit_set_6']
+        "args": [65, 'EVENT_695_run_dialog_8']
     },
     {
         "identifier": 'EVENT_695_run_dialog_7',
         "command": 'run_dialog',
         "args": [2120, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_695_jmp_if_bit_clear_4',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x704c, 7, 'EVENT_687_pause_0']
     },
     {
         "identifier": 'EVENT_695_ret_5',

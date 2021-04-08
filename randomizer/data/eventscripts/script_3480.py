@@ -462,7 +462,7 @@ script = [
     {
         "identifier": 'EVENT_3480_jmp_29',
         "command": 'jmp',
-        "args": ['EVENT_3480_priority_set_60']
+        "args": ['EVENT_3480_set_action_script_sync_69']
     },
     {
         "identifier": 'EVENT_3480_action_queue_async_30',

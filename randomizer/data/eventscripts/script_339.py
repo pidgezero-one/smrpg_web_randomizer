@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_339_jmp_if_object_not_in_level_0',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_3, Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, 'EVENT_261_jmp_if_bit_clear_0']
+        "args": [AreaObjects.NPC_3, Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, 'EVENT_261_1']
     },
     {
         "identifier": 'EVENT_339_run_background_event_1',

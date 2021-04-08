@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._079_ROSE_WAY_MAIN_AREA,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 23,
         "y": 65,
@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._066_ROSE_WAY_EXIT_AREA_WHERE_BOWSERS_TROOPS_GATHERED,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 22,
         "y": 106,

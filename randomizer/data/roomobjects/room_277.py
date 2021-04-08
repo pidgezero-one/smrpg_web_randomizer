@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 3,
         "y": 47,
@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._275_MOLEVILLE_MINES_AREA_06_SMALL_ROOM_LEADING_TO_AREA_06,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 6,
         "y": 123,

@@ -52,7 +52,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 17,
         "y": 26,

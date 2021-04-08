@@ -42,7 +42,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 1,
         "y": 124,

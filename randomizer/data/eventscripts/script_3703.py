@@ -12,12 +12,12 @@ script = [
     {
         "identifier": 'EVENT_3703_jmp_if_7000_equals_short_1',
         "command": 'jmp_if_7000_equals_short',
-        "args": [498, 'EVENT_3703_jmp_if_object_trigger_disabled_4']
+        "args": [498, 'EVENT_3703_fade_in_from_black_async_7']
     },
     {
         "identifier": 'EVENT_3703_jmp_if_object_not_in_level_2',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_4, Rooms._114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, 'EVENT_3703_jmp_if_object_trigger_disabled_4']
+        "args": [AreaObjects.NPC_4, Rooms._114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, 'EVENT_3703_fade_in_from_black_async_7']
     },
     {
         "identifier": 'EVENT_3703_action_queue_sync_3',

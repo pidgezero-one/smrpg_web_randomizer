@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2208_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7093, 6, 'EVENT_2208_stop_sound_4']
+        "args": [0x7093, 6, 'EVENT_2208_set_action_script_sync_10']
     },
     {
         "identifier": 'EVENT_2208_fade_in_from_black_async_1',

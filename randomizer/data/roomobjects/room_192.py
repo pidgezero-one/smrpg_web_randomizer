@@ -75,7 +75,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 27,
         "y": 91,

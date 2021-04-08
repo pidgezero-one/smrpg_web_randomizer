@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._363_VOLCANO_AREA_15_STOMPING_CORKPEDITE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 3,
         "y": 67,

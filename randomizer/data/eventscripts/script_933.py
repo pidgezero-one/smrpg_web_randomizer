@@ -203,7 +203,7 @@ script = [
     {
         "identifier": 'EVENT_933_put_inventory_40',
         "command": 'put_inventory',
-        "args": [0x7A07]
+        "args": [0x70a7]
     },
     {
         "identifier": 'EVENT_933_jmp_41',
@@ -264,7 +264,7 @@ script = [
     {
         "identifier": 'EVENT_933_put_inventory_54',
         "command": 'put_inventory',
-        "args": [0x7807]
+        "args": [0x70a7]
     },
     {
         "identifier": 'EVENT_933_jmp_63',

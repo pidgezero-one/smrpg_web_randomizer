@@ -97,7 +97,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._042_BOOSTER_TOWER_3F_AREA_02_NES_MARIO_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 25,
         "y": 67,

@@ -351,6 +351,6 @@ script = [
     {
         "identifier": 'EVENT_2360_jmp_42',
         "command": 'jmp',
-        "args": ['EVENT_2409_jmp_if_bit_clear_37']
+        "args": ['EVENT_2409_set_39']
     }
 ]

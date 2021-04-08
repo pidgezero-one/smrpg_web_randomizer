@@ -53,7 +53,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 3,
         "y": 21,

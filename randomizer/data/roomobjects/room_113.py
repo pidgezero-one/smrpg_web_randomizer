@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._117_NIMBUS_CASTLE_AREA_15_FRONT_OF_4WAY_PATH_LARGE_RIGHTANGLE_ROOM_W_PLANT,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 29,
         "y": 81,

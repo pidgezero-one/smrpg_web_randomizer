@@ -52,7 +52,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._162_SUNKEN_SHIP_AREA_04_GREAPERS__DRY_BONES,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 4,
         "y": 82,

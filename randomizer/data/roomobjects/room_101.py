@@ -196,7 +196,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
       "destination": Locations._025_BOOSTER_PASS,
-      "show_message": True
+      "show_message": False
     },
     {
       "x": 1,
@@ -209,7 +209,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._100_BOOSTER_PASS_AREA_01,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 19,
         "y": 26,

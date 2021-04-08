@@ -84,7 +84,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._026_SUNKEN_SHIP_POSTKC_AREA_12_UNDERWATER_ROOM_WSTAIRWELL_AND_ZEOSTARS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 20,
         "y": 24,

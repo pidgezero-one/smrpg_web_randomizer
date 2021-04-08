@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._343_NIMBUS_LAND_INN,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 6,
         "y": 93,

@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2808_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7052, 6, 'EVENT_2808_ret_433']
+        "args": [0x7052, 6, 'EVENT_2808_ret_34']
     },
     {
         "identifier": 'EVENT_2808_freeze_all_npcs_until_return_1',

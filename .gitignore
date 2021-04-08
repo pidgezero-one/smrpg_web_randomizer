@@ -107,6 +107,7 @@ db.sqlite*
 dump*.py
 sample*
 randomizer/management/commands/output/disassembler
+*.img
 
 # VSCode
 smrpgr.code-workspace

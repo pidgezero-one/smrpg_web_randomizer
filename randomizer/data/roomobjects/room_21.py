@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 8,
         "y": 30,

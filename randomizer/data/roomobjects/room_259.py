@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 2,
         "y": 77,
@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._042_BOOSTER_TOWER_3F_AREA_02_NES_MARIO_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 20,
         "y": 65,

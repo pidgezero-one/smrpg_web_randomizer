@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_3831_jmp_if_object_trigger_disabled_6',
         "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_1, Rooms._492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, 'EVENT_3831_set_7000_to_current_level_34']
+        "args": [AreaObjects.NPC_1, Rooms._492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, 'EVENT_3831_apply_tile_mod_41']
     },
     {
         "identifier": 'EVENT_3831_fade_in_from_black_async_12',

@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._386_VOLCANO_AREA_12_ERUPTING_STUMPET,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 19,
         "y": 123,
@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._386_VOLCANO_AREA_12_ERUPTING_STUMPET,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 20,
         "y": 110,

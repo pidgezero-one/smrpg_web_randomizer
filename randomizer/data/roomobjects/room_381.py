@@ -207,7 +207,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._378_BEAN_VALLEY_BEANSTALKS_AREA_01,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 2,
         "y": 59,
@@ -228,7 +228,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._378_BEAN_VALLEY_BEANSTALKS_AREA_01,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 2,
         "y": 59,

@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 10,
         "y": 32,

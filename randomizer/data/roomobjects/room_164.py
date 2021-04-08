@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._160_SUNKEN_SHIP_AREA_01,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 6,
         "y": 15,

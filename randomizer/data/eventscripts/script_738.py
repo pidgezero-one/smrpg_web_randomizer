@@ -1867,7 +1867,7 @@ script = [
     {
         "identifier": 'EVENT_738_jmp_if_bit_clear_114',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7092, 7, 'EVENT_738_jmp_to_event_115']
+        "args": [0x7092, 7, 'EVENT_738_enter_area_0']
     },
     {
         "identifier": 'EVENT_738_summon_to_level_117',

@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_2549_jmp_if_object_not_in_level_2',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_6, Rooms._349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, 'EVENT_2549_jmp_if_bit_set_4']
+        "args": [AreaObjects.NPC_6, Rooms._349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, 'EVENT_2549_freeze_camera_6']
     },
     {
         "identifier": 'EVENT_2549_action_queue_sync_3',
@@ -166,11 +166,6 @@ script = [
                 "identifier": 'EVENT_2549_action_queue_async_14_SUBSCRIPT_play_sound_3',
                 "command": 'play_sound',
                 "args": [Sounds._058_INSERT, 4]
-            },
-            {
-                "identifier": 'EVENT_2549_action_queue_async_14_SUBSCRIPT_jmp_if_bit_clear_4',
-                "command": 'jmp_if_bit_clear',
-                "args": [0x7099, 7, 'EVENT_2549_clear_bit_20']
             }
         ]
     },

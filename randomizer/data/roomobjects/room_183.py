@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._182_SUNKEN_SHIP_POSTKC_AREA_07_THREE_DRY_BONES,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 21,
         "y": 91,

@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._134_SEA_AREA_03_SUPER_STAR_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 18,
         "y": 97,

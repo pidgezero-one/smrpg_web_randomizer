@@ -84,7 +84,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._135_SEA_AREA_01_ENTRANCE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 16,
         "y": 123,

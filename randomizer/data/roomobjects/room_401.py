@@ -42,7 +42,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 21,
         "y": 70,

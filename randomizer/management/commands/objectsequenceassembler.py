@@ -10,6 +10,6 @@ class Command(BaseCommand):
         print("combined length", hex(len(allbytes)), len(allbytes))
 
 
-        f = open(f'text_output.img', 'wb')
+        f = open(f'write_to_0x210000.img', 'wb')
         f.write(allbytes)
         f.close()

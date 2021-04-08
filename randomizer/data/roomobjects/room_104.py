@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._092_GRATE_GUYS_CASINO_INSIDE_CASINO,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 1,
         "y": 21,

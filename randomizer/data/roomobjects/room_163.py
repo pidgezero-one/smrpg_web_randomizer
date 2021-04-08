@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._165_SUNKEN_SHIP_AREA_06_PUZZLE_ROOM_PASSAGEWAY,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 17,
         "y": 75,

@@ -202,7 +202,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._344_NIMBUS_LAND_ITEM_SHOP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 17,
         "y": 24,
@@ -223,7 +223,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 17,
         "y": 56,

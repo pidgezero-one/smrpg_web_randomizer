@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_935_jmp_if_object_not_in_level_0',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._009_MARRYMORE_INN_REGULAR_ROOM, 'EVENT_935_jmp_if_object_trigger_disabled_2']
+        "args": [AreaObjects.NPC_1, Rooms._009_MARRYMORE_INN_REGULAR_ROOM, 'EVENT_935_jmp_if_bit_set_4']
     },
     {
         "identifier": 'EVENT_935_apply_tile_mod_1',

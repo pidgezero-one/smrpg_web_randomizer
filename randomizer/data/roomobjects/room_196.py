@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 4,
         "y": 111,

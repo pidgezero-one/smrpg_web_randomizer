@@ -53,7 +53,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 3,
         "y": 124,

@@ -244,7 +244,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_180',
         "command": 'jmp',
-        "args": ['EVENT_529_jmp_if_bit_set_194']
+        "args": ['EVENT_529_fade_in_from_black_async_197']
     },
     {
         "identifier": 'EVENT_529_set_7000_to_70A0_short_mem_181',
@@ -329,12 +329,12 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_if_bit_set_188',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_529_clear_bit_23']
+        "args": [0x7043, 1, 'EVENT_529_remember_last_object_206']
     },
     {
         "identifier": 'EVENT_529_jmp_189',
         "command": 'jmp',
-        "args": ['EVENT_529_jmp_if_bit_set_194']
+        "args": ['EVENT_529_fade_in_from_black_async_197']
     },
     {
         "identifier": 'EVENT_529_set_7000_to_70A0_short_mem_190',

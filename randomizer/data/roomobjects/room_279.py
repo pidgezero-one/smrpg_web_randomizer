@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 26,
         "y": 87,

@@ -58,7 +58,7 @@ script = [
     {
         "identifier": 'EVENT_3345_create_packet_at_object_coords_jmp_if_null_10',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_0, 'EVENT_3345_action_queue_sync_11']
+        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_0, 'EVENT_3345_pause_12']
     },
     {
         "identifier": 'EVENT_3345_pause_12',
@@ -68,7 +68,7 @@ script = [
     {
         "identifier": 'EVENT_3345_jmp_if_objects_less_than_xy_steps_apart_13',
         "command": 'jmp_if_objects_less_than_xy_steps_apart',
-        "args": [AreaObjects.MARIO, AreaObjects.NPC_0, 0x00, 0x02, 'EVENT_3345_remove_from_current_level_15']
+        "args": [AreaObjects.MARIO, AreaObjects.NPC_0, 0x00, 0x02, 'EVENT_3345_pause_18']
     },
     {
         "identifier": 'EVENT_3345_jmp_14',
@@ -103,7 +103,7 @@ script = [
     {
         "identifier": 'EVENT_3345_create_packet_at_object_coords_jmp_if_null_23',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_1, 'EVENT_3345_action_queue_sync_24']
+        "args": [NPCPackets._045_AXEM_RED_TELEPORT_SFX, AreaObjects.NPC_1, 'EVENT_3345_pause_25']
     },
     {
         "identifier": 'EVENT_3345_pause_25',

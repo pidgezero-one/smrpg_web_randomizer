@@ -15,11 +15,6 @@ script = [
         "args": [65, 'EVENT_697_run_dialog_17']
     },
     {
-        "identifier": 'EVENT_697_jmp_if_bit_set_2',
-        "command": 'jmp_if_bit_set',
-        "args": [0x704c, 6, 'EVENT_697_run_dialog_8']
-    },
-    {
         "identifier": 'EVENT_697_jmp_if_bit_set_insert',
         "command": 'jmp_if_bit_set',
         "args": [0x704c, 7, 'EVENT_697_run_dialog_3']

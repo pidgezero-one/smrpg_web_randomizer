@@ -132,7 +132,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._085_ROSE_TOWN_DURING_BOWYER_INN_1F,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 2,
         "y": 18,
@@ -153,7 +153,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._087_ROSE_TOWN_ITEM_SHOP,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 2,
         "y": 69,
@@ -174,7 +174,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._089_ROSE_TOWN_DURING_BOWYER_THREE_GRANDKIDS_HOUSE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 16,
         "y": 16,
@@ -216,7 +216,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 16,
         "y": 65,

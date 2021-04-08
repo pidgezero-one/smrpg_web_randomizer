@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._084_ROSE_TOWN_OUTSIDE,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 4,
         "y": 38,

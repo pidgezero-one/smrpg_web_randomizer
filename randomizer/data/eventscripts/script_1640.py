@@ -84,7 +84,7 @@ script = [
     {
         "identifier": 'EVENT_1640_jmp_if_dialog_option_b_or_c_20',
         "command": 'jmp_if_dialog_option_b_or_c',
-        "args": ['EVENT_1640_set_37', 'EVENT_1640_run_dialog_49']
+        "args": ['EVENT_1640_set_37', 'EVENT_1640_ret_50']
     },
     {
         "identifier": 'EVENT_1640_jmp_21',

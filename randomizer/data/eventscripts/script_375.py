@@ -555,6 +555,6 @@ script = [
     {
         "identifier": 'EVENT_375_jmp_152',
         "command": 'jmp',
-        "args": ['EVENT_375_run_dialog_25']
+        "args": ['EVENT_375_play_music_default_volume_0']
     }
 ]

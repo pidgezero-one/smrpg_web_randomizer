@@ -131,7 +131,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._491_MUSHROOM_KINGDOM_ITEM_SHOP_TOP_FLOOR,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 14,
         "y": 22,
@@ -173,7 +173,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._495_MUSHROOM_KINGDOM_RUNNING_KIDS_HOUSE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 17,
         "y": 88,

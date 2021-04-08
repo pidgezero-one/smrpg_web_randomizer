@@ -53,7 +53,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._479_BOWSERS_KEEP_2ND_TIME_AREA_04_THRONE_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 12,
         "y": 47,
@@ -74,7 +74,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._452_BOWSERS_KEEP_AREA_06_SAVE_POINT_WCROCO_SHOP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 9,
         "y": 93,

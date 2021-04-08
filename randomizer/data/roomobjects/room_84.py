@@ -44,7 +44,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._086_ROSE_TOWN_INN_1F,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 2,
         "y": 18,
@@ -65,7 +65,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._087_ROSE_TOWN_ITEM_SHOP,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 2,
         "y": 69,
@@ -86,7 +86,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._090_ROSE_TOWN_THREE_GRANDKIDS_HOUSE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 16,
         "y": 16,
@@ -128,7 +128,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._094_ROSE_TOWN_TREASURE_HOUSE_1F,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 16,
         "y": 65,

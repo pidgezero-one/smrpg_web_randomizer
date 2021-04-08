@@ -386,7 +386,7 @@ script = [
     {
         "identifier": 'EVENT_2418_jmp_if_bit_clear_62',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7047, 1, 'EVENT_2418_fade_in_from_black_async_120']
+        "args": [0x7047, 1, 'EVENT_2418_fade_in_from_black_async_24']
     },
     {
         "identifier": 'EVENT_2418_play_sound_63',
@@ -699,6 +699,14 @@ script = [
     },
     {
         "identifier": 'EVENT_2418_ret_122',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_2418_fade_in_from_black_async_24',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_2418_ret_25',
         "command": 'ret'
     }
 ]

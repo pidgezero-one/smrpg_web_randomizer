@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._413_NIMBUS_CASTLE_KINGS_LOCKED_CELLAR,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 29,
         "y": 55,
@@ -52,7 +52,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 1,
         "y": 125,

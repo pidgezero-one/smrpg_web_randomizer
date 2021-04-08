@@ -11,10 +11,6 @@ script = [
         "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, RadialDirections.NORTHEAST, 13, 62, 1, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
-        "identifier": 'EVENT_3858_ret_1',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_3858_ret_4',
         "command": 'ret'
     }

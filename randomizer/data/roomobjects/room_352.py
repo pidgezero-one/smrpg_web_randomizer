@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._357_VOLCANO_POSTCD_AREA_01,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 17,
         "y": 104,

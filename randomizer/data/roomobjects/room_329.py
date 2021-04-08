@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 8,
         "y": 30,
@@ -61,7 +61,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 6,
         "y": 90,

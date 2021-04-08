@@ -114,11 +114,6 @@ script = [
         "args": [Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
     },
     {
-        "identifier": 'EVENT_532_jmp_15',
-        "command": 'jmp',
-        "args": ['EVENT_529_clear_bit_48']
-    },
-    {
         "identifier": 'EVENT_532_ret_16',
         "command": 'ret'
     },
@@ -214,11 +209,6 @@ script = [
         "args": [Rooms._084_ROSE_TOWN_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
     },
     {
-        "identifier": 'EVENT_532_jmp_25',
-        "command": 'jmp',
-        "args": ['EVENT_529_clear_bit_48']
-    },
-    {
         "identifier": 'EVENT_532_ret_26',
         "command": 'ret'
     },
@@ -231,11 +221,6 @@ script = [
         "identifier": 'EVENT_532_apply_solidity_mod_28',
         "command": 'apply_solidity_mod',
         "args": [Rooms._084_ROSE_TOWN_OUTSIDE, 0, []]
-    },
-    {
-        "identifier": 'EVENT_532_jmp_29',
-        "command": 'jmp',
-        "args": ['EVENT_529_clear_bit_48']
     },
     {
         "identifier": 'EVENT_532_ret_30',

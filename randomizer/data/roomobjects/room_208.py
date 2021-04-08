@@ -42,7 +42,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
       "destination": Locations._032_SEASIDE_TOWN,
-      "show_message": True
+      "show_message": False
     },
     {
       "x": 2,
@@ -76,7 +76,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._213_SEASIDE_TOWN_DURING_YARIDOVICH_BEETLES_ARE_USBOMB_SHOP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 16,
         "y": 42,
@@ -97,7 +97,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._310_SEASIDE_TOWN_WEAPON_AND_ARMOR_SHOP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 15,
         "y": 72,
@@ -118,7 +118,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._310_SEASIDE_TOWN_WEAPON_AND_ARMOR_SHOP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 18,
         "y": 66,
@@ -160,7 +160,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._312_SEASIDE_TOWN_MUSHROOM_BOYS_SHOP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 24,
         "y": 40,
@@ -181,7 +181,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._313_SEASIDE_TOWN_ACCESSORY_SHOP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 24,
         "y": 64,

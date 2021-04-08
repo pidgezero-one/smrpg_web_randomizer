@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._354_VOLCANO_AREA_01,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 3,
         "y": 91,
@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 4,
         "y": 110,
@@ -61,7 +61,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._360_VOLCANO_AREA_04_BUNCH_OF_STEPS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 26,
         "y": 83,

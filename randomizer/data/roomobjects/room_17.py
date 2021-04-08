@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._320_MUSHROOM_KINGDOM_CASTLE_ENTRANCE_TO_THRONE_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 26,
         "y": 97,
@@ -73,7 +73,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._021_MUSHROOM_KINGDOM_CASTLE_BRANCH_ROOM_TO_VAULTGUEST_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 13,
         "y": 63,

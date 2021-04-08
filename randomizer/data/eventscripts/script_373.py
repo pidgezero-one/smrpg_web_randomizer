@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_373_jmp_if_object_in_level_2',
         "command": 'jmp_if_object_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, 'EVENT_373_set_bit_95']
+        "args": [AreaObjects.NPC_1, Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, 'EVENT_373_start_battle_99']
     },
     {
         "identifier": 'EVENT_373_jmp_if_mario_in_air_3',

@@ -27,7 +27,7 @@ script = [
     {
         "identifier": 'EVENT_729_jmp_to_event_12',
         "command": 'jmp_to_event',
-        "args": [634]
+        "args": [15]
     },
     {
         "identifier": 'EVENT_729_apply_tile_mod_21',

@@ -107,7 +107,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._077_BANDITS_WAY_AREA_03,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 18,
         "y": 123,

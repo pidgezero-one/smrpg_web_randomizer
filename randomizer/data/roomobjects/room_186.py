@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 29,
         "y": 117,

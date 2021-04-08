@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._079_ROSE_WAY_MAIN_AREA,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 27,
         "y": 15,

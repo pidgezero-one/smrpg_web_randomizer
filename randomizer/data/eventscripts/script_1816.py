@@ -8,12 +8,12 @@ script = [
     {
         "identifier": 'EVENT_1816_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 7, 'EVENT_1816_ret_84']
+        "args": [0x7044, 7, 'EVENT_1816_ret_82']
     },
     {
         "identifier": 'EVENT_1816_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 2, 'EVENT_1816_ret_84']
+        "args": [0x7044, 2, 'EVENT_1816_ret_82']
     },
     {
         "identifier": 'EVENT_1816_set_bit_2',

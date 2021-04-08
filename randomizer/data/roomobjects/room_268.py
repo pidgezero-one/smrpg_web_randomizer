@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 26,
         "y": 53,

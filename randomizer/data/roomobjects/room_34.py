@@ -88,7 +88,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 2,
         "y": 24,

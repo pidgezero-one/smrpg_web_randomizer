@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._131_SEA_AREA_04_BUNCH_OF_ZEOSTARS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 2,
         "y": 66,
@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._136_SEA_AREA_07_SMALL_UNDERWATER_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 26,
         "y": 123,

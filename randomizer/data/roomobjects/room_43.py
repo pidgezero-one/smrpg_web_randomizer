@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 17,
         "y": 75,
@@ -61,7 +61,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._197_BOOSTER_TOWER_1F_AREA_02_HIGH_MASHER_ROOM_WTEETERTOTTER,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 16,
         "y": 123,

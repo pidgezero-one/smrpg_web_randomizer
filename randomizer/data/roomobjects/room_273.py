@@ -61,7 +61,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 10,
         "y": 29,

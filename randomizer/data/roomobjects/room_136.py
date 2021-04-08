@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 26,
         "y": 37,

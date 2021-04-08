@@ -42,7 +42,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
       "destination": Locations._028_MARRYMORE,
-      "show_message": True
+      "show_message": False
     },
     {
       "x": 12,
@@ -55,7 +55,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
       "destination": Locations._028_MARRYMORE,
-      "show_message": True
+      "show_message": False
     },
     {
       "x": 19,
@@ -89,7 +89,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._007_MARRYMORE_INN_1F,
-      "show_message": False,
+      "show_message": True,
       "destination_props": {
         "x": 6,
         "y": 62,

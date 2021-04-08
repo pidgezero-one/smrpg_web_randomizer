@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 17,
         "y": 44,

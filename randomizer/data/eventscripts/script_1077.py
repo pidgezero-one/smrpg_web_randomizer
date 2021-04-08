@@ -160,7 +160,7 @@ script = [
     {
         "identifier": 'EVENT_1077_jmp_16',
         "command": 'jmp',
-        "args": ['EVENT_1071_jmp_if_bit_clear_0']
+        "args": ['EVENT_1071_set_1']
     },
     {
         "identifier": 'EVENT_1077_ret_17',

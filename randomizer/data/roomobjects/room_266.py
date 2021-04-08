@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._449_BOWSERS_KEEP_AREA_11_THWOMPBULLET_ROOM_AFTER_MAGIKOOPAS_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 4,
         "y": 77,
@@ -61,7 +61,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._450_BOWSERS_KEEP_AREA_12_CROCOS_SHOP_2_AFTER_MAGIKOOPAS_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 4,
         "y": 29,

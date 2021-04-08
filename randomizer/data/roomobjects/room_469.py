@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 22,
         "y": 48,

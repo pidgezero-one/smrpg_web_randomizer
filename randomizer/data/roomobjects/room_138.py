@@ -85,7 +85,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._139_LANDS_END_AREA_03_GECKITS_PLAYING_CANNONBALL,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 3,
         "y": 117,

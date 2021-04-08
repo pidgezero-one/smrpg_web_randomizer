@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 3,
         "y": 25,

@@ -106,6 +106,6 @@ script = [
     {
         "identifier": 'EVENT_1674_jmp_11',
         "command": 'jmp',
-        "args": ['EVENT_1676_jmp_if_object_trigger_disabled_1']
+        "args": ['EVENT_1676_set_8']
     }
 ]

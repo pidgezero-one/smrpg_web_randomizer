@@ -63,7 +63,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 19,
         "y": 67,

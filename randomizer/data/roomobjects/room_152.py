@@ -42,7 +42,7 @@ room = {
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._155_MARRYMORE_CHAPEL_KITCHEN,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 5,
         "y": 14,

@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'EVENT_463_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x7085, 3, 'EVENT_463_jmp_if_bit_set_19']
+        "args": [0x7085, 3, 'EVENT_463_run_dialog_20']
     },
     {
         "identifier": 'EVENT_463_jmp_if_bit_set_6',

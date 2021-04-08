@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._204_MUSHROOM_WAY_AREA_02,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 4,
         "y": 37,

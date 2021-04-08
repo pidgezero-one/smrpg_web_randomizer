@@ -75,7 +75,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 16,
         "y": 49,

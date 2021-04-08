@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._007_MARRYMORE_INN_1F,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 7,
         "y": 60,
@@ -61,7 +61,7 @@ room = {
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._011_MARRYMORE_INN_3F,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 12,
         "y": 73,

@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 23,
         "y": 123,
@@ -61,7 +61,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._201_BOOSTER_TOWER_6F_AREA_01_SMALL_ROOM_WSAVE_POINT,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 30,
         "y": 123,

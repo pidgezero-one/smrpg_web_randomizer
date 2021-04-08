@@ -121,11 +121,6 @@ script = [
         "command": 'end_loop'
     },
     {
-        "identifier": 'ACTION_942_jmp_if_bit_clear_25',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7055, 7, 'ACTION_942_start_loop_n_times_21']
-    },
-    {
         "identifier": 'ACTION_942_clear_solidity_bits_26',
         "command": 'clear_solidity_bits',
         "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]

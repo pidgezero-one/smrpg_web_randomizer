@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._237_SMITHY_FACTORY_AREA_05_WSAVE_POINT,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 13,
         "y": 35,
@@ -61,7 +61,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._237_SMITHY_FACTORY_AREA_05_WSAVE_POINT,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 13,
         "y": 35,

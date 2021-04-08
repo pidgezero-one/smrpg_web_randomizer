@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'EVENT_395_jmp_if_7000_equals_short_4',
         "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_293_run_dialog_8']
+        "args": [0, 'EVENT_293_pause_action_script_20']
     },
     {
         "identifier": 'EVENT_395_run_event_as_subroutine_5',
@@ -179,7 +179,7 @@ script = [
     {
         "identifier": 'EVENT_395_jmp_35',
         "command": 'jmp',
-        "args": ['EVENT_293_run_dialog_8']
+        "args": ['EVENT_293_pause_action_script_20']
     },
     {
         "identifier": 'EVENT_395_run_dialog_36',

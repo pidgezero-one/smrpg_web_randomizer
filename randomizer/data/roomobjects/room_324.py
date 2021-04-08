@@ -42,7 +42,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 13,
         "y": 83,
@@ -63,7 +63,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._397_MONSTRO_TOWN_SUPERJUMPING_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 2,
         "y": 23,
@@ -126,7 +126,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._267_MONSTRO_TOWN_ENTRANCE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 8,
         "y": 105,

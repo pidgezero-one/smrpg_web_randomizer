@@ -186,16 +186,6 @@ script = [
                 "args": [Sounds._058_INSERT, 4]
             },
             {
-                "identifier": 'EVENT_2544_action_queue_async_16_SUBSCRIPT_jmp_if_bit_clear_4',
-                "command": 'jmp_if_bit_clear',
-                "args": [0x7099, 7, 'EVENT_2544_run_event_as_subroutine_17']
-            },
-            {
-                "identifier": 'EVENT_2544_action_queue_async_16_SUBSCRIPT_jmp_if_bit_set_5',
-                "command": 'jmp_if_bit_set',
-                "args": [0x708c, 5, 'EVENT_2544_run_event_as_subroutine_17']
-            },
-            {
                 "identifier": 'EVENT_2544_action_queue_async_16_SUBSCRIPT_pause_6',
                 "command": 'pause',
                 "args": [24]

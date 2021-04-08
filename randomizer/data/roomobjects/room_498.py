@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM_,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 15,
         "y": 13,
@@ -40,7 +40,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._497_NIMBUS_CASTLE_AREA_06_____DUMMY,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 22,
         "y": 27,
@@ -61,7 +61,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._107_NIMBUS_CASTLE_AREA_09_STATUE_ROOM_AFTER_VALENTINA,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 20,
         "y": 49,

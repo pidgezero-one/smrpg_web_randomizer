@@ -116,7 +116,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._264_LANDS_END_UNDERGROUND_AREA_02,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 29,
         "y": 13,

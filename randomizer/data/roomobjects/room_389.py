@@ -19,7 +19,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 1,
         "y": 39,

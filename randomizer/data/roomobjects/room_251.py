@@ -86,7 +86,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._252_BEAN_VALLEY_MAIN_AREA,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 4,
         "y": 70,
@@ -107,7 +107,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._254_BEAN_VALLEY_SMILAX_AREA,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 22,
         "y": 77,

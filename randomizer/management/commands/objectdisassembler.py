@@ -86,7 +86,7 @@ class Command(BaseCommand):
 
         if len(rooms_raw_data) < 509:
             raise Exception("npc pointer table had %i entries (needs at least 509)" % len(rooms_raw_data))
-        if len(roomexit_raw_data) < 509:
+        if len(roomevent_raw_data) < 509:
             raise Exception("event tile pointer table had %i entries (needs at least 509)" % len(roomexit_raw_data))
         if len(roomexit_raw_data) < 509:
             raise Exception("exit field pointer table had %i entries (needs at least 509)" % len(roomexit_raw_data))
@@ -223,7 +223,7 @@ class Command(BaseCommand):
                             "enable_x_edge": field_data[2] & 0x80 == 0x80,
                             "enable_y_edge": field_data[3] & 0x80 == 0x80,
                             "destination": dst,
-                            "show_message": (field_data[2] & 0x08) == 0x08,
+                            "show_message": (field_data[1] & 0x08) == 0x08,
                             "exit_type": exit_type_string,
                             "dst_props": dst_props
                         })

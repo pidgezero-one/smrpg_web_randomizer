@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._477_BOWSERS_KEEP_2ND_TIME_AREA_02,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 4,
         "y": 95,

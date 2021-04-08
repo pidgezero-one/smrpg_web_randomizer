@@ -8,7 +8,7 @@ class Command(BaseCommand):
 
         print("length:", hex(len(b)))
 
-        f = open(f'text_output.img', 'wb')
+        f = open(f'write_to_0x1DB800.img', 'wb')
         
         f.write(b)
         f.close()

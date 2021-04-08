@@ -115,7 +115,7 @@ script = [
     {
         "identifier": 'EVENT_393_jmp_15',
         "command": 'jmp',
-        "args": ['EVENT_261_fade_out_music_to_volume_2']
+        "args": ['EVENT_261_1']
     },
     {
         "identifier": 'EVENT_393_set_bit_16',
@@ -188,7 +188,7 @@ script = [
     {
         "identifier": 'EVENT_393_jmp_26',
         "command": 'jmp',
-        "args": ['EVENT_261_fade_out_music_to_volume_2']
+        "args": ['EVENT_261_1']
     },
     {
         "identifier": 'EVENT_393_jmp_if_object_not_in_level_27',

@@ -282,7 +282,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 28,
         "y": 70,

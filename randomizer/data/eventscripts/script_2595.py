@@ -28,7 +28,7 @@ script = [
     {
         "identifier": 'EVENT_2595_jmp_5',
         "command": 'jmp',
-        "args": ['EVENT_2595_run_event_as_subroutine_7']
+        "args": ['EVENT_2595_ret_13']
     },
     {
         "identifier": 'EVENT_2595_fade_in_from_black_async_6',

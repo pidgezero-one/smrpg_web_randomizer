@@ -26,7 +26,7 @@ script = [
     {
         "identifier": 'EVENT_409_jmp_if_object_not_in_level_4',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, 'EVENT_261_jmp_if_bit_clear_0']
+        "args": [AreaObjects.NPC_1, Rooms._481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, 'EVENT_261_1']
     },
     {
         "identifier": 'EVENT_409_summon_to_current_level_5',

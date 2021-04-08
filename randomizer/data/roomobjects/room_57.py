@@ -97,7 +97,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._058_KERO_SEWERS_AREA_06_LONG_WATER_ROOM_WRAT_FUNKS_IN_A_LINE,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 20,
         "y": 42,

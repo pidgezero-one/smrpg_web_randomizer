@@ -63,7 +63,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._442_SMITHY_FACTORY_AREA_11_CONVEYOR_BELTS_SPAWNING_DRILL_BITS_AND_MACKS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 1,
         "y": 79,

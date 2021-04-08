@@ -31,7 +31,7 @@ room = {
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._182_SUNKEN_SHIP_POSTKC_AREA_07_THREE_DRY_BONES,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 23,
         "y": 97,
@@ -52,7 +52,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "destination": Rooms._187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS,
-      "show_message": True,
+      "show_message": False,
       "destination_props": {
         "x": 1,
         "y": 32,
