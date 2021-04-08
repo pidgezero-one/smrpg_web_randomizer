@@ -26,6 +26,75 @@ script = [
         "args": [0x7044, 4, 'EVENT_470_action_queue_async_28']
     },
     {
+        "identifier": 'EVENT_470_jmp_4',
+        "command": 'jmp',
+        "args": ['EVENT_470_play_sound_10']
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_4d',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_5a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_5b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_6a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_6b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_7a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_7b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_7c',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_7d',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_8a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_8b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_8c',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_8d',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_9a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_9b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_9c',
+        "command": 'stop_sound'
+    },
+    {
         "identifier": 'EVENT_470_play_sound_10',
         "command": 'play_sound',
         "args": [Sounds._063_YOSHI_TALK, 6]
@@ -42,6 +111,59 @@ script = [
         "identifier": 'EVENT_470_run_event_as_subroutine_13',
         "command": 'run_event_as_subroutine',
         "args": [3587]
+    },
+    {
+        "identifier": 'EVENT_470_jmp_14',
+        "command": 'jmp',
+        "args": ['EVENT_470_pause_action_script_18']
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_14d',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_15a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_15b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_15c',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_16a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_16b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_16c',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_16d',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_17a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_17b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_17c',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_17d',
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_470_pause_action_script_18',
@@ -96,6 +218,62 @@ script = [
     {
         "identifier": 'EVENT_470_ret_22',
         "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_23a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_23b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_23c',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_24a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_24b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_25a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_25b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_25c',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_25d',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_26a',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_26b',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_26c',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_26d',
+        "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_470_stop_sound_27',
+        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_470_action_queue_async_28',

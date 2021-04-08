@@ -10,7 +10,17 @@ class Command(BaseCommand):
         allbytes = b[0] + b[1] + b[2] + b[3] + b[4] + b[5]
         print("combined length", hex(len(allbytes)), len(allbytes))
 
-
+        f = open(f'write_to_0x1E0000.img', 'wb')
+        f.write(b[0] + b[1])
+        f.close()
+        f = open(f'write_to_0x1F0000.img', 'wb')
+        f.write(b[2] + b[3])
+        f.close()
+        f = open(f'write_to_0x200000.img', 'wb')
+        f.write(b[4] + b[5])
+        f.close()
+""" 
         f = open(f'write_to_0x1E0000.img', 'wb')
         f.write(allbytes)
         f.close()
+ """

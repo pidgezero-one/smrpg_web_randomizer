@@ -226,6 +226,11 @@ script = [
         "args": [0x7065, 4]
     },
     {
+        "identifier": 'EVENT_0___set_bit_30_',
+        "command": 'set_bit',
+        "args": [0x7065, 0]
+    },
+    {
         "identifier": 'EVENT_0_set_bit_41',
         "command": 'set_bit',
         "args": [0x7065, 5]

@@ -137,10 +137,10 @@ class RoomObjects:
         else:
             for i in range(0, empty_space, 2):
                 pointers += ptr_bytes
-        empty_space = 0x7C00 - len(output)
+        empty_space = 0x6C17 - len(output)
         if (empty_space < 0):
             #output = output[0:(empty_space)]
-            raise Exception("NPC data too long: %i bytes (expected up to %i)" % (len(output), 0x7C00))
+            raise Exception("NPC data too long: %i bytes (expected up to %i)" % (len(output), 0x6C17))
         else:
             output += bytearray([0xFF for x in range(empty_space)])
         npcs = [pointers, bytearray(output)]
@@ -153,10 +153,10 @@ class RoomObjects:
         else:
             for i in range(0, empty_space, 2):
                 eventtile_pointers += eventtile_ptr_bytes
-        empty_space = 0x1C00 - len(eventtile_output)
+        empty_space = 0x19C8 - len(eventtile_output)
         if (empty_space < 0):
             #eventtile_output = eventtile_output[0:(empty_space)]
-            raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x1C00))
+            raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x19C8))
         else:
             eventtile_output += bytearray([0xFF for x in range(empty_space)])
         eventtiles = [eventtile_pointers, bytearray(eventtile_output)]
