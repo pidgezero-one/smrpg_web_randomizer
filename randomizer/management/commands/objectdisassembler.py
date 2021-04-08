@@ -84,8 +84,8 @@ class Command(BaseCommand):
                 roomexit_lengths.append(roomexit_end - roomexit_ptrs[i])
                 roomexit_raw_data.append(rom[roomexit_ptrs[i]:roomexit_end])
 
-        for i in range(509):
-            print("%i: 0x%x npc, 0x%x event, 0x%x exits" % (i, lengths[i], roomevent_lengths[i], roomexit_lengths[i]))
+        #for i in range(509):
+        #    print("%i: 0x%x npc, 0x%x event, 0x%x exits" % (i, lengths[i], roomevent_lengths[i], roomexit_lengths[i]))
 
         if len(rooms_raw_data) < 509:
             raise Exception("npc pointer table had %i entries (needs at least 509)" % len(rooms_raw_data))
@@ -192,7 +192,9 @@ class Command(BaseCommand):
                             offset = 0
                             field_data = e[j:]
                             exit_type = (field_data[1] & 0x60) >> 6
-                            exit_type_string, _ = byte(prefix="ExitType", table=exit_type_table)([exit_type])
+                            byte_2_bit_0 = (field_data[1] & 0x01)
+                            byte_2_bit_1 = (field_data[1] & 0x02) >> 1
+                            byte_2_bit_2 = (field_data[1] & 0x04) >> 2
 
                             length_determinant = field_data[1] & 0x80 == 0x80
                             dst = ((field_data[1] << 8) + field_data[0]) & 0x1FF
@@ -214,7 +216,10 @@ class Command(BaseCommand):
                             else: #world map location
                                 dst &= 0xFF
                                 dst, _ = byte(prefix="Locations", table=location_table)([dst])
-                                dst_props = {}
+                                dst_props = {
+                                    "byte_2_bit_0": byte_2_bit_0 == 1,
+                                    "byte_2_bit_1": byte_2_bit_1 == 1,
+                                }
                             if (length_determinant == 0):
                                 length = 1
                                 f_bit = 0
@@ -236,7 +241,8 @@ class Command(BaseCommand):
                                 "enable_y_edge": field_data[3] & 0x80 == 0x80,
                                 "destination": dst,
                                 "show_message": (field_data[1] & 0x08) == 0x08,
-                                "exit_type": exit_type_string,
+                                "exit_type": exit_type,
+                                "byte_2_bit_2": byte_2_bit_2 == 1,
                                 "dst_props": dst_props
                             })
 
@@ -246,6 +252,7 @@ class Command(BaseCommand):
                             writeline(file, '  "exit_fields": [')
                             for j in range(len(exit_fields)):
                                 t = exit_fields[j]
+                                exit_type_string, _ = byte(prefix="ExitType", table=exit_type_table)([t["exit_type"]])
                                 writeline(file, '    {')
                                 writeline(file, '      "x": %i,' % t["x"])
                                 writeline(file, '      "y": %i,' % t["y"])
@@ -255,21 +262,24 @@ class Command(BaseCommand):
                                 writeline(file, '      "height": %i,' % t["height"])
                                 writeline(file, '      "nw_se_edge_active": %r,' % t["enable_x_edge"])
                                 writeline(file, '      "ne_sw_edge_active": %r,' % t["enable_y_edge"])
-                                writeline(file, '      "destination_type": %s,' % t["exit_type"])
+                                writeline(file, '      "destination_type": %s,' % exit_type_string)
+                                writeline(file, '      "byte_2_bit_2": %r,' % t["byte_2_bit_2"])
                                 writeline(file, '      "destination": %s,' % t["destination"])
-                                if bool(t["dst_props"]):
-                                    writeline(file, '      "show_message": %r,' % t["show_message"])
-                                    p = t["dst_props"]
-                                    writeline(file, '      "destination_props": {')
+                                writeline(file, '      "show_message": %r,' % t["show_message"])
+                                p = t["dst_props"]
+                                writeline(file, '      "destination_props": {')
+                                if t["exit_type"] == 0:
                                     writeline(file, '        "x": %i,' % p["x"])
                                     writeline(file, '        "y": %i,' % p["y"])
                                     writeline(file, '        "z": %i,' % p["z"])
                                     writeline(file, '        "z_half": %r,' % p["z_half"])
                                     writeline(file, '        "f": %s,' % p["f"])
                                     writeline(file, '        "x_bit_7": %r' % p["x_bit_7"])
-                                    writeline(file, '      }')
                                 else:
-                                    writeline(file, '      "show_message": %r' % t["show_message"])
+                                    writeline(file, '        "byte_2_bit_0": %r,' % p["byte_2_bit_0"])
+                                    writeline(file, '        "byte_2_bit_1": %r,' % p["byte_2_bit_1"])
+                                writeline(file, '      }')
+                                    
                                 if (j < len(exit_fields) - 1):
                                     writeline(file, '    },')
                                 else:
