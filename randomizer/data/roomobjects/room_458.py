@@ -30,6 +30,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN,
       "show_message": False,
       "destination_props": {
@@ -51,6 +52,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._456_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1C_GORILLA_THROWING_BARRELS,
       "show_message": False,
       "destination_props": {

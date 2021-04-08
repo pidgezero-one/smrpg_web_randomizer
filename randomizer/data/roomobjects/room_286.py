@@ -30,6 +30,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._272_MOLEVILLE_MINES_AREA_11_BOMBED_ROOM_WSINGING_MOLES,
       "show_message": False,
       "destination_props": {
@@ -51,6 +52,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM,
       "show_message": False,
       "destination_props": {
@@ -72,6 +74,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM,
       "show_message": False,
       "destination_props": {

@@ -18,6 +18,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._358_VOLCANO_AREA_11,
       "show_message": False,
       "destination_props": {
@@ -39,6 +40,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._366_VOLCANO_AREA_13_WSAVE_POINT,
       "show_message": False,
       "destination_props": {
@@ -60,6 +62,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._366_VOLCANO_AREA_13_WSAVE_POINT,
       "show_message": False,
       "destination_props": {
@@ -81,6 +84,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._364_VOLCANO_AREA_14,
       "show_message": False,
       "destination_props": {

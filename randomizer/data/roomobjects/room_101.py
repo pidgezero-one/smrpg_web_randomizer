@@ -195,8 +195,13 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": True,
       "destination": Locations._025_BOOSTER_PASS,
-      "show_message": False
+      "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": True,
+        "byte_2_bit_1": False,
+      }
     },
     {
       "x": 1,
@@ -208,6 +213,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._100_BOOSTER_PASS_AREA_01,
       "show_message": True,
       "destination_props": {

@@ -107,6 +107,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._368_NIMBUS_LAND_ROYAL_BUS_STATION,
       "show_message": False,
       "destination_props": {
@@ -128,6 +129,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._341_NIMBUS_LAND_GARROS_HOUSE,
       "show_message": True,
       "destination_props": {
@@ -149,6 +151,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._342_NIMBUS_LAND_LOWER_HOUSE,
       "show_message": False,
       "destination_props": {
@@ -170,6 +173,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._343_NIMBUS_LAND_INN,
       "show_message": False,
       "destination_props": {
@@ -191,6 +195,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._344_NIMBUS_LAND_ITEM_SHOP,
       "show_message": False,
       "destination_props": {
@@ -212,6 +217,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING,
       "show_message": False,
       "destination_props": {

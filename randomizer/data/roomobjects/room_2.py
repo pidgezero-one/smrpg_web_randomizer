@@ -3,7 +3,7 @@
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
-  "partition": 93,
+  "partition": None,
   "music": Music._00_CURRENT,
   "entrance_event": 0,
   "event_tiles": [],

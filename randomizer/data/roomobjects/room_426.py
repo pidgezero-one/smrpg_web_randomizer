@@ -3,7 +3,7 @@
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
-  "partition": 114,
+  "partition": None,
   "music": Music._27_DUNGEON_IS_FULL_OF_MONSTERS,
   "entrance_event": 1778,
   "event_tiles": [
@@ -30,6 +30,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._423_BELOME_TEMPLE_AREA_06_BELOMES_FORTUNE_ROOM_WELEVATING_PLATFORM,
       "show_message": False,
       "destination_props": {
@@ -42,6 +43,5 @@ room = {
       }
     }
   ],
-  "objects": [
-  ]
+  "objects": []
 }

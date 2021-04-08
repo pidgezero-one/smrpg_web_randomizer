@@ -30,6 +30,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._103_SMITHY_FACTORY_AREA_17_DOMINO_AND_CLOAKERS_ROOM,
       "show_message": False,
       "destination_props": {
@@ -51,6 +52,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._471_FACTORY_GROUNDS_AREA_02,
       "show_message": False,
       "destination_props": {
@@ -209,7 +211,7 @@ room = {
       ]
     },
     {
-      "id": 9,
+      "id": 8,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.NONE,
       "model": 489,

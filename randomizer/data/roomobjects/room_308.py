@@ -63,6 +63,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._307_SEASIDE_TOWN_ELDERS_HOUSE_1F,
       "show_message": False,
       "destination_props": {

@@ -18,6 +18,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM,
       "show_message": False,
       "destination_props": {
@@ -39,6 +40,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM,
       "show_message": False,
       "destination_props": {
@@ -60,6 +62,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._454_BOWSERS_KEEP_AREA_08_ROOM_WITH_6_DOORS,
       "show_message": False,
       "destination_props": {

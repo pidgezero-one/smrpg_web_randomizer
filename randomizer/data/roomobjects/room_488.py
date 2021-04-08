@@ -41,6 +41,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._191_MUSHROOM_KINGDOM_OUTSIDE,
       "show_message": False,
       "destination_props": {
@@ -62,6 +63,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._489_MUSHROOM_KINGDOM_JUMPING_KIDS_HOUSE_2F,
       "show_message": False,
       "destination_props": {

@@ -3,7 +3,7 @@
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
-  "partition": 21,
+  "partition": None,
   "music": Music._00_CURRENT,
   "entrance_event": 3332,
   "event_tiles": [],
@@ -18,6 +18,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM,
       "show_message": False,
       "destination_props": {
@@ -39,6 +40,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._388_VOLCANO_POSTCD_AREA_02,
       "show_message": False,
       "destination_props": {

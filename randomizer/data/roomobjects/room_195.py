@@ -18,6 +18,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER,
       "show_message": False,
       "destination_props": {
@@ -39,6 +40,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP,
       "show_message": False,
       "destination_props": {
@@ -60,6 +62,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._201_BOOSTER_TOWER_6F_AREA_01_SMALL_ROOM_WSAVE_POINT,
       "show_message": False,
       "destination_props": {

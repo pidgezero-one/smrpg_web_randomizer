@@ -18,6 +18,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM,
       "show_message": False,
       "destination_props": {
@@ -87,7 +88,7 @@ room = {
       "cant_enter_doors": True,
       "byte2_bit5": False,
       "set_sequence_playback": True,
-      "cant_float":  True,
+      "cant_float": True,
       "cant_walk_up_stairs": False,
       "cant_walk_under": True,
       "cant_pass_walls": True,

@@ -18,6 +18,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS,
       "show_message": False,
       "destination_props": {
@@ -39,6 +40,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM,
       "show_message": False,
       "destination_props": {

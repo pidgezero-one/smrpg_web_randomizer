@@ -63,6 +63,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._057_KERO_SEWERS_AREA_03_LARGE_WATER_ROOM_WPIPE_IN_CENTER,
       "show_message": False,
       "destination_props": {
@@ -84,6 +85,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._056_KERO_SEWERS_AREA_02_LONG_ROOM_WTHREE_PIPES,
       "show_message": False,
       "destination_props": {

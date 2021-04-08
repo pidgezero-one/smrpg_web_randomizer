@@ -18,8 +18,13 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": True,
       "destination": Locations._026_BOOSTER_TOWER,
-      "show_message": False
+      "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": True,
+        "byte_2_bit_1": False,
+      }
     },
     {
       "x": 8,
@@ -31,6 +36,7 @@ room = {
       "nw_se_edge_active": False,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM,
       "show_message": False,
       "destination_props": {
@@ -52,6 +58,7 @@ room = {
       "nw_se_edge_active": False,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM,
       "show_message": False,
       "destination_props": {

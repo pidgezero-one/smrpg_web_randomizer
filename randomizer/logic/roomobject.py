@@ -103,12 +103,8 @@ class RoomObjects:
 
                 exit_bytes = bytearray()
                 exits = room["exit_fields"]
-                print("")
-                print("")
-                print(i)
-                print('0x%x' % exit_offset)
+
                 for e in exits:
-                    print(e)
                     # byte 0
                     exit_bytes.append(e["destination"] & 0xFF)
                     # byte 1
@@ -144,10 +140,6 @@ class RoomObjects:
                     #final byte (optional)
                     if e["length"] > 1 or e["f"] > 0:
                         exit_bytes.append(((e["length"] - 1) & 0x0F) | (e["f"] << 7))
-                        
-                print(' '.join('{:02x}'.format(x) for x in exit_bytes))
-                print("")
-                print("")
                 exit_output += exit_bytes
 
 

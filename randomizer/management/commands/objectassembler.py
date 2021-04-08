@@ -1,11 +1,10 @@
 from django.core.management.base import BaseCommand
 from randomizer.logic.roomobject import RoomObjects
 from randomizer.data.roomobjects.roomobjects import rooms
-from randomizer.data.roomobjects_2.roomobjects import original_rooms
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        npcs, eventtiles, exits = RoomObjects.assemble_from_table(rooms, original_rooms)
+        npcs, eventtiles, exits = RoomObjects.assemble_from_table(rooms)
 
         allnpcbytes = npcs[0] + npcs[1]
         print("combined length", hex(len(allnpcbytes)), len(allnpcbytes))

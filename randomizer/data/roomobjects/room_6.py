@@ -18,6 +18,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._007_MARRYMORE_INN_1F,
       "show_message": False,
       "destination_props": {
@@ -39,6 +40,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._009_MARRYMORE_INN_REGULAR_ROOM,
       "show_message": False,
       "destination_props": {
@@ -60,6 +62,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._011_MARRYMORE_INN_3F,
       "show_message": False,
       "destination_props": {

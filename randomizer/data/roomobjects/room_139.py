@@ -30,6 +30,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._138_LANDS_END_AREA_02,
       "show_message": False,
       "destination_props": {
@@ -51,6 +52,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._141_LANDS_END_AREA_04_ROTATING_FLOWERS,
       "show_message": False,
       "destination_props": {

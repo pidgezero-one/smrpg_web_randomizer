@@ -107,6 +107,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST,
       "show_message": False,
       "destination_props": {

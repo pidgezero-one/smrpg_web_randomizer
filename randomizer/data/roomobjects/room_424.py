@@ -2,7 +2,8 @@
 # Run the following command if you need to rebuild the table
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
-  "partition": 114,
+room = {
+  "partition": None,
   "music": Music._27_DUNGEON_IS_FULL_OF_MONSTERS,
   "entrance_event": 1778,
   "event_tiles": [
@@ -29,6 +30,7 @@ from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, 
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM,
       "show_message": False,
       "destination_props": {
@@ -41,6 +43,5 @@ from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, 
       }
     }
   ],
-  "objects": [
-  ]
+  "objects": []
 }

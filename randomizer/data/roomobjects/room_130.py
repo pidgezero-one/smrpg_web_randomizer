@@ -41,6 +41,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._134_SEA_AREA_03_SUPER_STAR_ROOM,
       "show_message": False,
       "destination_props": {
@@ -62,6 +63,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT,
       "show_message": False,
       "destination_props": {
@@ -83,6 +85,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._135_SEA_AREA_01_ENTRANCE,
       "show_message": False,
       "destination_props": {

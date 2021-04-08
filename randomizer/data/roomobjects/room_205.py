@@ -107,8 +107,13 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": True,
       "destination": Locations._009_MUSHROOM_WAY,
       "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": True,
+        "byte_2_bit_1": False,
+      }
     },
     {
       "x": 3,
@@ -120,6 +125,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._204_MUSHROOM_WAY_AREA_02,
       "show_message": False,
       "destination_props": {

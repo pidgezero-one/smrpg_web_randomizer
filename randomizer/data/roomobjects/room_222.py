@@ -129,6 +129,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._220_SMITHY_FACTORY_AREA_02_WSAVE_POINT,
       "show_message": False,
       "destination_props": {
@@ -150,6 +151,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._221_SMITHY_FACTORY_AREA_04_GREEN_SWITCH_WAMEBOIDS,
       "show_message": False,
       "destination_props": {

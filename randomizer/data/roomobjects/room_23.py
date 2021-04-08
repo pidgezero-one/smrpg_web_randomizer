@@ -3,7 +3,7 @@
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
-  "partition": 12,
+  "partition": None,
   "music": Music._02_MUSHROOM_KINGDOM,
   "entrance_event": 328,
   "event_tiles": [],
@@ -18,8 +18,13 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": True,
       "destination": Locations._010_MUSHROOM_KINGDOM,
-      "show_message": False
+      "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": True,
+        "byte_2_bit_1": False,
+      }
     },
     {
       "x": 22,
@@ -31,8 +36,13 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": True,
       "destination": Locations._010_MUSHROOM_KINGDOM,
-      "show_message": False
+      "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": True,
+        "byte_2_bit_1": False,
+      }
     },
     {
       "x": 13,
@@ -44,6 +54,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL,
       "show_message": True,
       "destination_props": {
@@ -65,6 +76,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._044_MUSHROOM_KINGDOM_BEFORE_CROCO_JUMPING_KIDS_HOUSE_1F,
       "show_message": False,
       "destination_props": {
@@ -86,6 +98,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._046_MUSHROOM_KINGDOM_BEFORE_CROCO_RAZ_AND_RAINIS_HOUSE,
       "show_message": False,
       "destination_props": {
@@ -107,6 +120,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._047_MUSHROOM_KINGDOM_BEFORE_CROCO_ITEM_SHOP_TOP_FLOOR,
       "show_message": True,
       "destination_props": {
@@ -128,6 +142,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._049_MUSHROOM_KINGDOM_BEFORE_CROCO_INN_1F,
       "show_message": True,
       "destination_props": {
@@ -149,6 +164,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._051_MUSHROOM_KINGDOM_BEFORE_CROCO_RUNNING_KIDS_HOUSE,
       "show_message": False,
       "destination_props": {

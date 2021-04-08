@@ -74,6 +74,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F,
       "show_message": False,
       "destination_props": {

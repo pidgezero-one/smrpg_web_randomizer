@@ -16,7 +16,7 @@ room = {
       "length": 2,
       "height": 0,
       "nw_se_edge_active": True,
-      "ne_sw_edge_active": False
+      "ne_sw_edge_active": False,
     },
     {
       "event": 2241,
@@ -27,7 +27,7 @@ room = {
       "length": 2,
       "height": 0,
       "nw_se_edge_active": True,
-      "ne_sw_edge_active": False
+      "ne_sw_edge_active": False,
     }
   ],
   "exit_fields": [
@@ -41,8 +41,13 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": True,
       "destination": Locations._032_SEASIDE_TOWN,
-      "show_message": False
+      "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": True,
+        "byte_2_bit_1": False,
+      }
     },
     {
       "x": 2,
@@ -54,6 +59,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
       "show_message": False,
       "destination_props": {
@@ -75,6 +81,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._213_SEASIDE_TOWN_DURING_YARIDOVICH_BEETLES_ARE_USBOMB_SHOP,
       "show_message": False,
       "destination_props": {
@@ -96,6 +103,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._310_SEASIDE_TOWN_WEAPON_AND_ARMOR_SHOP,
       "show_message": False,
       "destination_props": {
@@ -117,6 +125,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._310_SEASIDE_TOWN_WEAPON_AND_ARMOR_SHOP,
       "show_message": False,
       "destination_props": {
@@ -138,6 +147,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._311_SEASIDE_TOWN_HEALTH_FOOD_STORE,
       "show_message": False,
       "destination_props": {
@@ -159,6 +169,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._312_SEASIDE_TOWN_MUSHROOM_BOYS_SHOP,
       "show_message": False,
       "destination_props": {
@@ -180,6 +191,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._313_SEASIDE_TOWN_ACCESSORY_SHOP,
       "show_message": False,
       "destination_props": {
@@ -201,6 +213,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._314_SEASIDE_TOWN_SHED,
       "show_message": False,
       "destination_props": {

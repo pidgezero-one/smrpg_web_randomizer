@@ -239,6 +239,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS,
       "show_message": False,
       "destination_props": {
@@ -260,6 +261,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._040_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLINE_ROOM_AFTER_DEFEAT,
       "show_message": False,
       "destination_props": {
@@ -281,6 +283,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM,
       "show_message": False,
       "destination_props": {

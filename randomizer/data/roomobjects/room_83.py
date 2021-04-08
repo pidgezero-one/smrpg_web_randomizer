@@ -118,8 +118,13 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": True,
       "destination": Locations._018_ROSE_TOWN,
-      "show_message": False
+      "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": False,
+        "byte_2_bit_1": True,
+      }
     },
     {
       "x": 5,
@@ -131,6 +136,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._085_ROSE_TOWN_DURING_BOWYER_INN_1F,
       "show_message": True,
       "destination_props": {
@@ -152,6 +158,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._087_ROSE_TOWN_ITEM_SHOP,
       "show_message": True,
       "destination_props": {
@@ -173,6 +180,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._089_ROSE_TOWN_DURING_BOWYER_THREE_GRANDKIDS_HOUSE,
       "show_message": False,
       "destination_props": {
@@ -194,6 +202,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._091_ROSE_TOWN_COUPLES_HOUSE,
       "show_message": False,
       "destination_props": {
@@ -215,6 +224,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F,
       "show_message": False,
       "destination_props": {

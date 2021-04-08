@@ -18,6 +18,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._019_MUSHROOM_KINGDOM_CASTLE_STAIR_ROOM_TO_TOADSTOOLS_ROOM,
       "show_message": False,
       "destination_props": {
@@ -39,6 +40,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM,
       "show_message": True,
       "destination_props": {

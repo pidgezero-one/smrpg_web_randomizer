@@ -152,7 +152,7 @@ room = {
       "clones": []
     },
     {
-      "id": 6,
+      "id": 5,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.NONE,
       "model": 158,
@@ -185,6 +185,6 @@ room = {
       "cant_move_if_in_air": False,
       "byte7_upper2": 0x03,
       "clones": []
-    },
+    }
   ]
 }

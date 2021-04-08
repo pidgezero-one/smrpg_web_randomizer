@@ -3,7 +3,7 @@
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
-  "partition": 11,
+  "partition": None,
   "music": Music._27_DUNGEON_IS_FULL_OF_MONSTERS,
   "entrance_event": 3135,
   "event_tiles": [],

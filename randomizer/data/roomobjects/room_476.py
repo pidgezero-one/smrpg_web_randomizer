@@ -3,7 +3,7 @@
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
-  "partition": 32,
+  "partition": None,
   "music": Music._66_BOWSERS_CASTLE_2ND_TIME,
   "entrance_event": 2233,
   "event_tiles": [
@@ -30,6 +30,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._477_BOWSERS_KEEP_2ND_TIME_AREA_02,
       "show_message": False,
       "destination_props": {

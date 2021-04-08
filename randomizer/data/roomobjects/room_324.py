@@ -41,6 +41,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._395_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_1F,
       "show_message": False,
       "destination_props": {
@@ -62,6 +63,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._397_MONSTRO_TOWN_SUPERJUMPING_ROOM,
       "show_message": False,
       "destination_props": {
@@ -83,6 +85,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._398_MONSTRO_TOWN_WEAPON_AND_ARMOR_SHOP,
       "show_message": True,
       "destination_props": {
@@ -104,6 +107,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._399_MONSTRO_TOWN_3_MUSTY_FEARS_INN,
       "show_message": False,
       "destination_props": {
@@ -125,6 +129,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._267_MONSTRO_TOWN_ENTRANCE,
       "show_message": False,
       "destination_props": {
@@ -146,6 +151,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._255_MONSTRO_TOWN_JINXS_DOJO,
       "show_message": False,
       "destination_props": {

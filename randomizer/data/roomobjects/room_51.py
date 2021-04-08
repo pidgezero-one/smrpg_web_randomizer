@@ -41,6 +41,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._023_MUSHROOM_KINGDOM_BEFORE_CROCO_OUTSIDE,
       "show_message": False,
       "destination_props": {

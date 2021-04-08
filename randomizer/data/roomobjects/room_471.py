@@ -52,6 +52,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._469_FACTORY_GROUNDS_AREA_01,
       "show_message": False,
       "destination_props": {

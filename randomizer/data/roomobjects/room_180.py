@@ -41,6 +41,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE,
       "show_message": False,
       "destination_props": {
@@ -62,6 +63,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._181_SUNKEN_SHIP_POSTKC_AREA_03_ALLEY_RATS_ON_CANNONS,
       "show_message": False,
       "destination_props": {
@@ -83,6 +85,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._181_SUNKEN_SHIP_POSTKC_AREA_03_ALLEY_RATS_ON_CANNONS,
       "show_message": False,
       "destination_props": {

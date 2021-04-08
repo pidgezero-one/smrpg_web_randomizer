@@ -18,8 +18,13 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": False,
       "destination": Locations._011_BANDITS_WAY,
-      "show_message": False
+      "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": False,
+        "byte_2_bit_1": False,
+      }
     },
     {
       "x": 14,
@@ -31,6 +36,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._207_BANDITS_WAY_AREA_02,
       "show_message": False,
       "destination_props": {

@@ -18,6 +18,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
       "show_message": False,
       "destination_props": {
@@ -39,6 +40,7 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": True,
       "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
       "destination": Rooms._492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT,
       "show_message": False,
       "destination_props": {
@@ -53,7 +55,7 @@ room = {
   ],
   "objects": [
     {
-      "id": 1,
+      "id": 0,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
       "model": 67,
@@ -88,7 +90,7 @@ room = {
       "clones": []
     },
     {
-      "id": 2,
+      "id": 1,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.PRESS_A_FROM_FRONT,
       "model": 220,
