@@ -17,6 +17,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1296,
@@ -28,6 +29,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1298,
@@ -39,6 +41,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1298,
@@ -50,6 +53,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1299,
@@ -61,6 +65,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1299,
@@ -72,6 +77,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1300,
@@ -83,6 +89,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1300,
@@ -94,6 +101,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1302,
@@ -105,6 +113,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1302,
@@ -116,6 +125,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1303,
@@ -127,6 +137,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1303,
@@ -138,6 +149,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1305,
@@ -149,6 +161,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1305,
@@ -160,6 +173,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1306,
@@ -171,6 +185,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1306,
@@ -182,6 +197,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1307,
@@ -193,6 +209,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1307,
@@ -204,6 +221,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1308,
@@ -215,6 +233,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     },
     {
       "event": 1308,
@@ -226,6 +245,7 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     }
   ],
   "exit_fields": [

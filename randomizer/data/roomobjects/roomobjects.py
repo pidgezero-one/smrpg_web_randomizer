@@ -508,7 +508,9 @@ from randomizer.data.roomobjects.room_506 import room as room_506
 from randomizer.data.roomobjects.room_507 import room as room_507
 from randomizer.data.roomobjects.room_508 import room as room_508
 from randomizer.data.roomobjects.room_509 import room as room_509
-rooms = [None]*510
+from randomizer.data.roomobjects.room_510 import room as room_510
+from randomizer.data.roomobjects.room_511 import room as room_511
+rooms = [None]*512
 rooms[0] = room_0
 rooms[1] = room_1
 rooms[2] = room_2
@@ -1019,3 +1021,5 @@ rooms[506] = room_506
 rooms[507] = room_507
 rooms[508] = room_508
 rooms[509] = room_509
+rooms[510] = room_510
+rooms[511] = room_511
