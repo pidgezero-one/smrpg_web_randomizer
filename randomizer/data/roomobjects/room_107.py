@@ -5,53 +5,8 @@ from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, 
 room = {
   "partition": None,
   "music": Music._00_CURRENT,
-  "entrance_event": 3743,
+  "entrance_event": 15,
   "event_tiles": [],
-  "exit_fields": [
-    {
-      "x": 15,
-      "y": 60,
-      "z": 0,
-      "f": Edge.SOUTHWEST,
-      "length": 2,
-      "height": 0,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "byte_2_bit_2": False,
-      "destination": Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA,
-      "show_message": False,
-      "destination_props": {
-        "x": 26,
-        "y": 109,
-        "z": 0,
-        "z_half": False,
-        "f": RadialDirection.SOUTHWEST,
-        "x_bit_7": False
-      }
-    },
-    {
-      "x": 21,
-      "y": 47,
-      "z": 0,
-      "f": Edge.SOUTHWEST,
-      "length": 2,
-      "height": 0,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "byte_2_bit_2": False,
-      "destination": Rooms._498_NIMBUS_CASTLE_AREA_10_____DUMMY,
-      "show_message": False,
-      "destination_props": {
-        "x": 10,
-        "y": 107,
-        "z": 3,
-        "z_half": False,
-        "f": RadialDirection.NORTHEAST,
-        "x_bit_7": False
-      }
-    }
-  ],
+  "exit_fields": [],
   "objects": []
 }

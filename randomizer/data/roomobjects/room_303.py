@@ -5,7 +5,7 @@ from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, 
 room = {
   "partition": None,
   "music": Music._27_DUNGEON_IS_FULL_OF_MONSTERS,
-  "entrance_event": 3135,
+  "entrance_event": 15,
   "event_tiles": [],
   "exit_fields": [],
   "objects": []

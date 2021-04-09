@@ -5,7 +5,7 @@ from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, 
 room = {
   "partition": None,
   "music": Music._50_NIMBUS_LAND,
-  "entrance_event": 3627,
+  "entrance_event": 15,
   "event_tiles": [],
   "exit_fields": [],
   "objects": []

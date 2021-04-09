@@ -61,6 +61,7 @@ class Command(BaseCommand):
             if (i < len(ptrs) - 1):
                 lengths.append(ptrs[i + 1] - ptrs[i])
                 rooms_raw_data.append(rom[ptrs[i]:ptrs[i + 1]])
+                print(i, hex(ptrs[i]), ptrs[i + 1] - ptrs[i])
             else:
                 lengths.append(end - ptrs[i])
                 rooms_raw_data.append(rom[ptrs[i]:end])
@@ -452,6 +453,7 @@ class Command(BaseCommand):
                                 writeline(file, '    }')
 
                             offset += l
+                            #print(i, offset, len(d))
                         writeline(file, '  ]')
                     else:
                         writeline(file, '  "objects": []')

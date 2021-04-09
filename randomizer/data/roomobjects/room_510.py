@@ -2,4 +2,11 @@
 # Run the following command if you need to rebuild the table
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
-room = None
+room = {
+  "partition": None,
+  "music": Music._00_CURRENT,
+  "entrance_event": 79,
+  "event_tiles": [],
+  "exit_fields": [],
+  "objects": []
+}

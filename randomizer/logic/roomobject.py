@@ -17,8 +17,15 @@ class RoomObjects:
         for i in range(len(table)):
             room = table[i]
 
+            print("")
+            print("")
+            print("")
+
             offset = 0x148400 + len(output)
+            print("%i: 0x%x" % (i, offset))
+            print(len(output))
             ptr_bytes = bytearray([offset & 0xFF, (offset >> 8) & 0xFF])
+            print(' '.join('{:02x}'.format(x) for x in ptr_bytes))
 
             eventtile_offset = 0x20E400 + len(eventtile_output)
             eventtile_ptr_bytes = bytearray([eventtile_offset & 0xFF, (eventtile_offset >> 8) & 0xFF])
@@ -36,10 +43,14 @@ class RoomObjects:
 
                 npcs = room["objects"]
 
-                if len(npcs) > 0:
+                if room["partition"] is not None:
                     room_bytes = bytearray([room["partition"]])
+                else:
+                    room_bytes = bytearray([])
 
+                if len(npcs) > 0:
                     for n in npcs:
+                        print(n)
                         room_bytes.append((n["type"] << 4) | len(n["clones"]))
                         room_bytes.append((n["cant_float"] << 7) | (n["set_sequence_playback"] << 6) | (n["byte2_bit5"] << 5) | (n["cant_enter_doors"] << 4) | (n["face_on_trigger"] << 3) | n["speed"])
                         room_bytes.append((n["byte3_bit7"] << 7) | (n["cant_walk_through"] << 6) | (n["byte3_bit5"] << 5) | (n["cant_pass_npcs"] << 4) | (n["cant_jump_through"] << 3) | (n["cant_pass_walls"] << 2) | (n["cant_walk_under"] << 1) | n["cant_walk_up_stairs"])
@@ -71,20 +82,18 @@ class RoomObjects:
                             room_bytes.append((c["visible"] << 7) | c["x"])
                             room_bytes.append((c["z_half"] << 7) | c["y"])
                             room_bytes.append((c["direction"] << 5) | c["z"])
-                    output += room_bytes
+                print(' '.join('{:02x}'.format(x) for x in room_bytes))
+                print(len(output))
+                output += room_bytes
+                print(len(output))
 
 
                 # event tiles
-                print("")
-                print("")
-                print("")
-                print("%i: 0x%x" % (i, eventtile_offset))
 
                 # bytes 0-2
                 event_tile_bytes = bytearray([room["music"], room["entrance_event"] & 0xFF, room["entrance_event"] >> 8])
                 event_tiles = room["event_tiles"]
                 for e in event_tiles:
-                    print(e)
                     # byte 3
                     event_tile_bytes.append(e["event"] & 0xFF)
                     # byte 4
@@ -105,7 +114,6 @@ class RoomObjects:
                         else:
                             byte_8_bit_4 = 0
                         event_tile_bytes.append(((e["length"] - 1) & 0x0F) | byte_8_bit_4 | (e["f"] << 7))
-                print(' '.join('{:02x}'.format(x) for x in event_tile_bytes))
                 eventtile_output += event_tile_bytes
 
 
