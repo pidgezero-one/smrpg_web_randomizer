@@ -114,30 +114,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_600_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
-        "subscript": [
-            {
-                "identifier": 'EVENT_600_action_queue_sync_10_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_600_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
-        "subscript": [
-            {
-                "identifier": 'EVENT_600_action_queue_sync_11_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_600_ret_12',
         "command": 'ret'
     }

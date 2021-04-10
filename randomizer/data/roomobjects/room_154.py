@@ -3,7 +3,7 @@
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
-  "partition": 12,
+  "partition": 22,
   "music": Music._39_MARRYMORE,
   "entrance_event": 600,
   "event_tiles": [
@@ -198,94 +198,10 @@ room = {
       "slidable_along_walls": True,
       "cant_move_if_in_air": True,
       "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 7,
-          "npc_id_offset": 0,
-          "event_offset": 4,
-          "action_offset": 0,
-          "visible": True,
-          "x": 21,
-          "y": 117,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        },
-        {
-          "id": 8,
-          "npc_id_offset": 0,
-          "event_offset": 4,
-          "action_offset": 0,
-          "visible": True,
-          "x": 21,
-          "y": 117,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        },
-        {
-          "id": 9,
-          "npc_id_offset": 0,
-          "event_offset": 5,
-          "action_offset": 0,
-          "visible": True,
-          "x": 19,
-          "y": 116,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        },
-        {
-          "id": 10,
-          "npc_id_offset": 0,
-          "event_offset": 5,
-          "action_offset": 0,
-          "visible": True,
-          "x": 20,
-          "y": 116,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        }
-      ]
-    },
-    {
-      "id": 11,
-      "type": ObjectType.OBJECT,
-      "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
-      "model": 0,
-      "event_script": 256,
-      "action_script": 15,
-      "speed": 0,
-      "npc_id_offset": 2,
-      "event_offset": 0,
-      "action_offset": 0,
-      "visible": True,
-      "x": 8,
-      "y": 99,
-      "z": 0,
-      "z_half": False,
-      "direction": RadialDirection.NORTHEAST,
-      "face_on_trigger": True,
-      "cant_enter_doors": False,
-      "byte2_bit5": False,
-      "set_sequence_playback": True,
-      "cant_float": False,
-      "cant_walk_up_stairs": False,
-      "cant_walk_under": False,
-      "cant_pass_walls": False,
-      "cant_jump_through": False,
-      "cant_pass_npcs": False,
-      "byte3_bit5": False,
-      "cant_walk_through": True,
-      "byte3_bit7": False,
-      "slidable_along_walls": False,
-      "cant_move_if_in_air": False,
-      "byte7_upper2": 0x03,
       "clones": []
     },
     {
-      "id": 12,
+      "id": 7,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
       "model": 50,
@@ -320,7 +236,7 @@ room = {
       "clones": []
     },
     {
-      "id": 13,
+      "id": 8,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.NONE,
       "model": 1,

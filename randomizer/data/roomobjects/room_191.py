@@ -6,32 +6,7 @@ room = {
   "partition": 12,
   "music": Music._02_MUSHROOM_KINGDOM,
   "entrance_event": 723,
-  "event_tiles": [
-    {
-      "event": 262,
-      "x": 1,
-      "y": 102,
-      "z": 2,
-      "f": Edge.SOUTHWEST,
-      "length": 2,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-      "byte_8_bit_4": False,
-    },
-    {
-      "event": 262,
-      "x": 21,
-      "y": 123,
-      "z": 2,
-      "f": Edge.SOUTHEAST,
-      "length": 2,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-      "byte_8_bit_4": False,
-    }
-  ],
+  "event_tiles": [],
   "exit_fields": [
     {
       "x": 0,

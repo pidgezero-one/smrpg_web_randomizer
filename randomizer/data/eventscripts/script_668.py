@@ -115,22 +115,12 @@ script = [
     {
         "identifier": 'EVENT_668_remove_from_level_76',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_12, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_668_remove_from_level_77',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_11, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    },
-    {
-        "identifier": 'EVENT_668_remove_from_level_78',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_13, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+        "args": [AreaObjects.NPC_7, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
         "identifier": 'EVENT_668_action_queue_sync_79',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_13],
+        "args": [AreaObjects.NPC_12],
         "subscript": [
             {
                 "identifier": 'EVENT_668_action_queue_sync_79_SUBSCRIPT_visibility_off_0',

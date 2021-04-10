@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_655_remove_from_current_level_1',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7]
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_655_run_dialog_2',
