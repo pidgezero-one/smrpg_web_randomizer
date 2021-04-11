@@ -2,38 +2,127 @@
 
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
+import re
 
 # This table isn't complete.
 # And some of the single char replacements should be done via string.translate,
 compression_table = [
+    ('[0x7000]', '\x1C\x00'),
+    ('[0x7024]', '\x1C\x01'),
+    ('[0x7000timer]', '\x1C\x02'),
+    ('[filename]', '\x1C\x03'),
+
+    ('[endAwaitInput]', '\x00'),
+    ('  ', '\x08'),
+    ('   ', '\x09'),
+    ('    ', '\x0A'),
     ('\n', '\x01'),
-    (' and ', '\x15'),
+    ('[newlineAwaitInput]', '\x02'),
+    ('[newPageAwaitInput]', '\x03'),
+    ('[newPage]', '\x04'),
+    ('[pauseAwaitInput]', '\x05'),
+    ('[end]', '\x06'),
+    ('[startSelection]', '\x07'),
+    # \0x0B: followed by a number, inserts that many spaces
+    ('[delay]', '\x0C'),
+    # \0x0D: followed by a number, delays that many frames
     (' the', '\x0E'),
     (' you', '\x0F'),
-    (' to ', '\x11'),
-    ('    ', '\x0A'),
-    (' so', '\x17'),
-    ('is ', '\x16'),
-    ("'s ", '\x12'),
-    ('   ', '\x09'),
-    (' I ', '\x14'),
-    ('  ', '\x08'),
     ('in', '\x10'),
+    (' to ', '\x11'),
+    ("'s ", '\x12'),
     ('Mario', '\x13'),
-    ("'", '\x9B'),
-    (':', '\x8E'),
+    (' I ', '\x14'),
+    (' and ', '\x15'),
+    ('is ', '\x16'),
+    (' so', '\x17'),
+    ('Booster', '\x18'),
+    ('Booster', '\x19'),
+    ('[0x70A7]', '\x1A'),
+    (' ', '\x20'),
+    ('“', '\x22'),
+    ('”', '\x23'),
+    ('♥', '\x24'),
+    ('♪', '\x25'),
+    ('‘', '\x26'),
+    ('’', '\x27'),
+    ('(', '\x28'),
+    (')', '\x29'),
+    ('••', '\x2B'),
+    ('•', '\x2A'),
+    (',', '\x2C'),
+    ('-', '\x2D'),
+    ('.', '\x2E'),
+    ('/', '\x2F'),
     ('~', '\x3A'),
+    ('「', '\x3B'),
+    ('」', '\x3C'),
+    ('『', '\x3D'),
+    ('』', '\x3E'),
+    ("?", '\x3F'),
+    ("©", '\x40'),
+    (':', '\x8E'),
+    (';', '\x8F'),
+    ('<', '\x90'),
+    ('>', '\x91'),
+    ('···', '\x92'),
+    ('#', '\x93'),
+    ('×', '\x94'),
+    ('+', '\x95'),
+    ('%', '\x96'),
+    ('↑', '\x97'),
+    ('→', '\x98'),
+    ('←', '\x99'),
+    ("*", '\x9A'),
+    ("'", '\x9B'),
+    ("&", '\x9C'),
 ]
 
 DIALOG_POINTER_BASE_ADDRESS = 0x37e000
 
+def handle_vars(string):
+    output = ''
+    i = 0
+    while i < len(string):
+        if string[i] == '\x0B':
+            i += 1
+            if (i < len(string)):
+                spaces = ord(string[i])
+                output += ' ' * spaces
+        elif string[i] == '\x0D':
+            i += 1
+            if (i < len(string)):
+                delay = ord(string[i])
+                output += '[delay_%i]' % delay
+        else:
+            output += string[i]
+        i += 1
+    return output
+
+def substitute_special_vars(string):
+    results = re.findall(r'(    +)', string)
+    for token in results:
+        spaces = '\\x%02X' % len(token)
+        string = string.replace(token, '\x0B' + spaces)
+    results = re.findall(r'(%delay_\d+%)', string)
+    for token in results:
+        d = re.search( r'\d+', token).group()
+        delay = '\\x%02X' % ord(d)
+        string = string.replace(token, '\x0D' + delay)
+    return string
+
 
 def compress(string):
-    # TODO: Use \x0B to compress longer spacings..
+    string = substitute_special_vars(string)
     for token, char in compression_table:
         string = string.replace(token, char)
     return string + '\x00'  # Null terminate strings.
 
+def decompress(string):
+    var_handled_string = handle_vars(string)
+    for token, char in compression_table:
+        var_handled_string = var_handled_string.replace(char, token)
+    return var_handled_string
 
 # Formatting is tricky. Probably should test it out in the game itself.
 # 1. Use newlines. If a string goes too long, sometimes it wraps around to the

@@ -171,10 +171,12 @@ class RoomObjects:
         else:
             for i in range(0, empty_space, 2):
                 pointers += ptr_bytes
-        empty_space = 0x6C17 - len(output)
+        empty_space = 0x7C00 - len(output)
+        #empty_space = 0x6C17 - len(output)
         if (empty_space < 0):
             #output = output[0:(empty_space)]
-            raise Exception("NPC data too long: %i bytes (expected up to %i)" % (len(output), 0x6C17))
+            #raise Exception("NPC data too long: %i bytes (expected up to %i)" % (len(output), 0x6C17))
+            raise Exception("NPC data too long: %i bytes (expected up to %i)" % (len(output), 0x7C00))
         else:
             output += bytearray([0xFF for x in range(empty_space)])
         npcs = [pointers, bytearray(output)]

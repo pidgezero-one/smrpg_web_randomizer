@@ -100,12 +100,13 @@ class ObjectSequenceScript:
 
         print("bank 21 ptrs", hex(len(bank_21_pointer_table)), len(bank_21_pointer_table))
         print("bank 21 before", hex(len(bank_21_scripts)), len(bank_21_scripts))
-        empty_space = 0xB2DF - len(bank_21_scripts)
-        #empty_space = 0xB800 - len(bank_21_scripts)
+        #empty_space = 0xB2DF - len(bank_21_scripts)
+        empty_space = 0xB800 - len(bank_21_scripts)
         print("empty", hex(empty_space), empty_space)
         if (empty_space < 0):
             #bank_21_scripts = bank_21_scripts[0:(empty_space)]
-            raise Exception("Bank 0x21 sequence script data too long: %i bytes (expected up to %i)" % (len(bank_21_scripts), 0xB2DF))
+            #raise Exception("Bank 0x21 sequence script data too long: %i bytes (expected up to %i)" % (len(bank_21_scripts), 0xB2DF))
+            raise Exception("Bank 0x21 sequence script data too long: %i bytes (expected up to %i)" % (len(bank_21_scripts), 0xB800))
         else:
             bank_21_scripts += bytearray([0xFF for x in range(empty_space)])
         print("bank 21 after", hex(len(bank_21_scripts)), len(bank_21_scripts))

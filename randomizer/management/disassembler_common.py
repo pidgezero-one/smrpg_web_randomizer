@@ -130,3 +130,7 @@ def parse_flags(value, prefix='', table=None, bits=None):
 
 def writeline(f, ln):
     print(ln.replace('\x00', ''), file=f)
+
+
+def writeline_dialog(f, ln):
+    print(ln, file=f)
