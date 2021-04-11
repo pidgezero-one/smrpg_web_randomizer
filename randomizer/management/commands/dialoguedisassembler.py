@@ -4,8 +4,8 @@ from randomizer.data.dialogs import decompress
 
 ptrstart = 0x37E000
 ptrend = 0x37FFFF
-start = 0x220000
-end = 0x249100
+#start = 0x220000
+#end = 0x249100
 
 class Command(BaseCommand):
 
@@ -39,24 +39,29 @@ class Command(BaseCommand):
 
         
 
-        for i in range(0, ptrend - ptrstart, 2):
+        for i in range(0, (ptrend - ptrstart + 1) // 2):
             if (i >= 0xC00):
-                pointers.append(((0x24 << 16) + 4) | (shortify(rom, ptrstart + i)))
+                pointer = ((0x24 << 16) + 4) + (shortify(rom, ptrstart + i * 2))
             elif (i >= 0x800):
-                pointers.append(((0x23 << 16) + 4) | (shortify(rom, ptrstart + i)))
+                pointer = ((0x23 << 16) + 4) + (shortify(rom, ptrstart + i * 2))
             else:
-                pointers.append(((0x22 << 16) + 8) | (shortify(rom, ptrstart + i)))
+                pointer = ((0x22 << 16) + 8) + (shortify(rom, ptrstart + i * 2))
+            print(i, hex(pointer))
+            pointers.append(pointer)
     
 
         for i in range(len(pointers)):
-            if (i < len(pointers) - 1):
-                raw_data.append(rom[pointers[i]:pointers[i + 1]])
-            else:
-                raw_data.append(rom[pointers[i]:end])
+            end = min(rom.find(b'\0', pointers[i]), rom.find(b'\x06', pointers[i]))
+            # need to ignore \x0B\x06
+            raw_data.append(rom[pointers[i]:end])
 
         for i in range(len(raw_data)):
             s = "".join(map(chr, raw_data[i]))
             t = decompress(s)
             file.write(("dialogs[%i] = '''%s'''\n" % (i, t)).encode("utf8"))
+            # why do the pointers reset at 0x400???
+            # what to do about duplicates...
+            # we can allocate more space to a dialog string than it actually uses, so length does not necessarily equal pointer 2 minus pointer 1
+            
         
         file.close()

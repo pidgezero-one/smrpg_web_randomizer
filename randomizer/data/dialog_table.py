@@ -2,7895 +2,5552 @@
 # Run the following command if you need to rebuild the table
 # python manage.py dialoguedisassembler --rom ROM
 dialogs = [None]*4096
-dialogs[0] = '''                     INN[end]'''
-dialogs[1] = '''                ITEM SHOP[end]'''
-dialogs[2] = '''             INN / ITEM SHOP[end]'''
-dialogs[3] = '''             MONSTRO TOWN[end]'''
-dialogs[4] = '''          TOADSTOOL'S ROOM[end]'''
-dialogs[5] = '''            BELOME TEMPLE[end]'''
-dialogs[6] = '''            GARRO'S HOUSE[end]'''
-dialogs[7] = '''              YO'STER ISLE[end]'''
-dialogs[8] = '''          MARRYMORE HOTEL[end]'''
-dialogs[9] = '''            BEETLES'''
-dialogs[10] = ''' ARE US[end]      WEAPON AND ARMOR SHOP[end]'''
-dialogs[11] = '''                 '''
-dialogs[12] = '''BEDROOM[end]          HEALTH FOO'''
-dialogs[13] = '''D STORE[end]        MUSHROOM BOY'S SHOP[end]'''
-dialogs[14] = '''            ACCESSORY SHOP[end]'''
-dialogs[15] = '''               MELODY BAY[end]'''
-dialogs[16] = '''         GRATE GUY'S CASINO[end]'''
-dialogs[17] = '''               HINO MART[end]'''
-dialogs[18] = ''''''
-dialogs[19] = ''''''
-dialogs[20] = ''''''
-dialogs[21] = ''''''
-dialogs[22] = ''''''
-dialogs[23] = ''''''
-dialogs[24] = ''''''
-dialogs[25] = ''''''
-dialogs[26] = ''''''
-dialogs[27] = ''''''
-dialogs[28] = ''''''
-dialogs[29] = ''''''
-dialogs[30] = ''''''
-dialogs[31] = ''''''
-dialogs[32] = ''''''
-dialogs[33] = ''''''
-dialogs[34] = ''''''
+dialogs[0] = '''                     INN'''
+dialogs[1] = '''                ITEM SHOP'''
+dialogs[2] = '''             INN / ITEM SHOP'''
+dialogs[3] = '''             MONSTRO TOWN'''
+dialogs[4] = '''          TOADSTOOL'S ROOM'''
+dialogs[5] = '''            BELOME TEMPLE'''
+dialogs[6] = '''            GARRO'S HOUSE'''
+dialogs[7] = '''              YO'STER ISLE'''
+dialogs[8] = '''          MARRYMORE HOTEL'''
+dialogs[9] = '''            BEETLES ARE US'''
+dialogs[10] = ''''''
+dialogs[11] = '''                 BEDROOM'''
+dialogs[12] = '''          HEALTH FOOD STORE'''
+dialogs[13] = '''        MUSHROOM BOY'S SHOP'''
+dialogs[14] = '''            ACCESSORY SHOP'''
+dialogs[15] = '''               MELODY BAY'''
+dialogs[16] = '''         GRATE GUY'S CASINO'''
+dialogs[17] = '''               HINO MART'''
+dialogs[18] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[19] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[20] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[21] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[22] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[23] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[24] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[25] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[26] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[27] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[28] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[29] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[30] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[31] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[32] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[33] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[34] = ''' Before Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
 dialogs[35] = ''' Before Valentina came, fireworks
  lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
  the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
- see them '''
-dialogs[36] = '''again...[endAwaitInput] It’s a marvelous statue,
- is'''
-dialogs[37] = '''n't it?[endAwaitInput] We can finally walk around the
+ see them again...'''
+dialogs[36] = ''' It’s a marvelous statue,
+ isn't it?'''
+dialogs[37] = ''' We can finally walk around the
  castle and the town freely.[newPageAwaitInput] People from down under will
  probably come too. That girl at the
- entrance'll tell you wh'''
-dialogs[38] = '''o’s here.[endAwaitInput][newPage] Whoa! Congratulations![newlineAwaitInput] You deserv'''
-dialogs[39] = '''e this![endAwaitInput] It'll let you get into my brother's
- Casino...wherever THAT is...[endAwaitInput]'''
-dialogs[40] = ''''''
-dialogs[41] = ''''''
-dialogs[42] = ''''''
-dialogs[43] = ''''''
-dialogs[44] = ''''''
-dialogs[45] = ''''''
-dialogs[46] = ''''''
+ entrance'll tell you who’s here.'''
+dialogs[38] = '''[newPage] Whoa! Congratulations![newlineAwaitInput] You deserve this!'''
+dialogs[39] = ''' It'll let you get into my brother's
+ Casino...wherever THAT is...'''
+dialogs[40] = '''[newPage]
+                  Thanks!'''
+dialogs[41] = '''[newPage]
+                  Thanks!'''
+dialogs[42] = '''[newPage]
+                  Thanks!'''
+dialogs[43] = '''[newPage]
+                  Thanks!'''
+dialogs[44] = '''[newPage]
+                  Thanks!'''
+dialogs[45] = '''[newPage]
+                  Thanks!'''
+dialogs[46] = '''[newPage]
+                  Thanks!'''
 dialogs[47] = '''[newPage]
-                  Thanks![endAwaitInput]'''
+                  Thanks!'''
 dialogs[48] = '''???: I'm so...lonely.
  Will you play with me?[newlineAwaitInput] [startSelection]  (Sure)
- [startSelection]  (Not now)[endAwaitInput]'''
+ [startSelection]  (Not now)'''
 dialogs[49] = '''
-    BIRDO: Don't forget about me![endAwaitInput]'''
+    BIRDO: Don't forget about me!'''
 dialogs[50] = '''[newPage] Oh...[pauseAwaitInput] If you had played
  with me, I was going to give you
- the key to this room.[endAwaitInput]'''
+ the key to this room.'''
 dialogs[51] = ''' This statue[delay][delay]...[delay]it[delay]...it seems
- so...unworldly![endAwaitInput]'''
+ so...unworldly!'''
 dialogs[52] = ''' The King gave me another job as
- a '''
-dialogs[53] = '''guard.[pauseAwaitInput][end]
- ...Prince '''
-dialogs[54] = '''Mallow![endAwaitInput]MALLOW: Thank you so much!
+ a guard.[pauseAwaitInput]'''
+dialogs[53] = '''
+ ...Prince Mallow!'''
+dialogs[54] = '''MALLOW: Thank you so much!
  We were able to rescue my father
- with the key you g'''
-dialogs[55] = '''ave us.[endAwaitInput] Don't mention'''
-dialogs[56] = ''' it...[pauseAwaitInput][end]
+ with the key you gave us.'''
+dialogs[55] = ''' Don't mention it...[pauseAwaitInput]'''
+dialogs[56] = '''
  Besides, it was YOU,
- who actually rescued him![endAwaitInput]'''
+ who actually rescued him!'''
 dialogs[57] = '''MALLOW:
-        Good luck in the '''
-dialogs[58] = '''future![endAwaitInput]
-                 Y'''
-dialogs[59] = '''ou too![endAwaitInput] Prince![endAwaitInput]'''
-dialogs[60] = ''' Here, this is from me.[newlineAwaitInput] Please, t'''
-dialogs[61] = '''ake it.[endAwaitInput] I shall continue to work for the
- King with pride.[endAwaitInput]'''
-dialogs[62] = ''''''
+        Good luck in the future!'''
+dialogs[58] = '''
+                 You too!'''
+dialogs[59] = ''' Prince!'''
+dialogs[60] = ''' Here, this is from me.[newlineAwaitInput] Please, take it.'''
+dialogs[61] = ''' I shall continue to work for the
+ King with pride.'''
+dialogs[62] = '''[newPage] Eh hem...very well.[newlineAwaitInput] “FP”s are consumed during
+ battle when you use “Special”
+ attacks. For example...[newPageAwaitInput] A “Jump” attack uses 3 “FP”s.[newlineAwaitInput] When you “Jump”, your “FP” will
+ decrease by 3 each time. Run out,
+ and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
 dialogs[63] = '''[newPage] Eh hem...very well.[newlineAwaitInput] “FP”s are consumed during
  battle when you use “Special”
  attacks. For example...[newPageAwaitInput] A “Jump” attack uses 3 “FP”s.[newlineAwaitInput] When you “Jump”, your “FP” will
  decrease by 3 each time. Run out,
  and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
  your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
- some mushrooms, and at inns.[endAwaitInput]'''
+ some mushrooms, and at inns.'''
 dialogs[64] = ''' Hey! Did you just see
  a crocodile around here?
- He talks like a mobster wa'''
-dialogs[65] = '''nnabe.[pauseAwaitInput][end][newPage] I'm sure he’s up to no good![delay_48]
+ He talks like a mobster wannabe.[pauseAwaitInput]'''
+dialogs[65] = '''[newPage] I'm sure he’s up to no good![delay_48]
  Hey, wait a sec!!![delay_48]
- My walle'''
-dialogs[66] = ''''''
-dialogs[67] = ''''''
-dialogs[68] = ''''''
-dialogs[69] = ''''''
-dialogs[70] = ''''''
-dialogs[71] = ''''''
-dialogs[72] = ''''''
-dialogs[73] = ''''''
-dialogs[74] = ''''''
-dialogs[75] = ''''''
-dialogs[76] = ''''''
-dialogs[77] = ''''''
-dialogs[78] = ''''''
-dialogs[79] = ''''''
-dialogs[80] = ''''''
-dialogs[81] = ''''''
-dialogs[82] = ''''''
-dialogs[83] = ''''''
-dialogs[84] = ''''''
-dialogs[85] = ''''''
-dialogs[86] = ''''''
-dialogs[87] = ''''''
-dialogs[88] = ''''''
-dialogs[89] = ''''''
-dialogs[90] = ''''''
-dialogs[91] = ''''''
-dialogs[92] = ''''''
-dialogs[93] = ''''''
-dialogs[94] = ''''''
-dialogs[95] = ''''''
-dialogs[96] = ''''''
-dialogs[97] = ''''''
-dialogs[98] = ''''''
-dialogs[99] = ''''''
-dialogs[100] = ''''''
-dialogs[101] = ''''''
-dialogs[102] = ''''''
-dialogs[103] = ''''''
-dialogs[104] = ''''''
-dialogs[105] = ''''''
-dialogs[106] = ''''''
-dialogs[107] = ''''''
-dialogs[108] = ''''''
-dialogs[109] = ''''''
-dialogs[110] = ''''''
-dialogs[111] = ''''''
-dialogs[112] = ''''''
-dialogs[113] = ''''''
-dialogs[114] = ''''''
-dialogs[115] = ''''''
-dialogs[116] = ''''''
-dialogs[117] = ''''''
-dialogs[118] = ''''''
-dialogs[119] = ''''''
-dialogs[120] = ''''''
-dialogs[121] = ''''''
-dialogs[122] = ''''''
-dialogs[123] = ''''''
-dialogs[124] = ''''''
-dialogs[125] = ''''''
-dialogs[126] = ''''''
-dialogs[127] = ''''''
-dialogs[128] = ''''''
-dialogs[129] = ''''''
-dialogs[130] = ''''''
-dialogs[131] = ''''''
-dialogs[132] = ''''''
-dialogs[133] = ''''''
-dialogs[134] = ''''''
-dialogs[135] = ''''''
-dialogs[136] = ''''''
-dialogs[137] = ''''''
-dialogs[138] = ''''''
-dialogs[139] = ''''''
-dialogs[140] = ''''''
-dialogs[141] = ''''''
-dialogs[142] = ''''''
-dialogs[143] = ''''''
-dialogs[144] = ''''''
-dialogs[145] = ''''''
-dialogs[146] = ''''''
-dialogs[147] = ''''''
-dialogs[148] = ''''''
-dialogs[149] = ''''''
-dialogs[150] = ''''''
-dialogs[151] = ''''''
-dialogs[152] = ''''''
-dialogs[153] = ''''''
-dialogs[154] = ''''''
-dialogs[155] = ''''''
-dialogs[156] = ''''''
-dialogs[157] = ''''''
-dialogs[158] = ''''''
-dialogs[159] = ''''''
-dialogs[160] = ''''''
-dialogs[161] = ''''''
-dialogs[162] = ''''''
-dialogs[163] = ''''''
-dialogs[164] = ''''''
-dialogs[165] = ''''''
-dialogs[166] = ''''''
-dialogs[167] = ''''''
-dialogs[168] = ''''''
-dialogs[169] = ''''''
-dialogs[170] = ''''''
-dialogs[171] = ''''''
-dialogs[172] = ''''''
-dialogs[173] = ''''''
-dialogs[174] = ''''''
-dialogs[175] = ''''''
-dialogs[176] = ''''''
-dialogs[177] = ''''''
-dialogs[178] = ''''''
-dialogs[179] = ''''''
-dialogs[180] = ''''''
-dialogs[181] = ''''''
-dialogs[182] = ''''''
-dialogs[183] = ''''''
-dialogs[184] = ''''''
-dialogs[185] = ''''''
-dialogs[186] = ''''''
-dialogs[187] = ''''''
-dialogs[188] = ''''''
-dialogs[189] = ''''''
-dialogs[190] = ''''''
-dialogs[191] = ''''''
-dialogs[192] = ''''''
-dialogs[193] = ''''''
-dialogs[194] = ''''''
-dialogs[195] = ''''''
-dialogs[196] = ''''''
-dialogs[197] = ''''''
-dialogs[198] = ''''''
-dialogs[199] = ''''''
-dialogs[200] = ''''''
-dialogs[201] = ''''''
-dialogs[202] = ''''''
-dialogs[203] = ''''''
-dialogs[204] = ''''''
-dialogs[205] = ''''''
-dialogs[206] = ''''''
-dialogs[207] = ''''''
-dialogs[208] = ''''''
-dialogs[209] = ''''''
-dialogs[210] = ''''''
-dialogs[211] = ''''''
-dialogs[212] = ''''''
-dialogs[213] = ''''''
-dialogs[214] = ''''''
-dialogs[215] = ''''''
-dialogs[216] = ''''''
-dialogs[217] = ''''''
-dialogs[218] = ''''''
-dialogs[219] = ''''''
-dialogs[220] = ''''''
-dialogs[221] = ''''''
-dialogs[222] = ''''''
-dialogs[223] = ''''''
-dialogs[224] = ''''''
-dialogs[225] = ''''''
-dialogs[226] = ''''''
-dialogs[227] = ''''''
-dialogs[228] = ''''''
-dialogs[229] = ''''''
-dialogs[230] = ''''''
-dialogs[231] = ''''''
-dialogs[232] = ''''''
-dialogs[233] = ''''''
-dialogs[234] = ''''''
-dialogs[235] = ''''''
-dialogs[236] = ''''''
-dialogs[237] = ''''''
-dialogs[238] = ''''''
-dialogs[239] = ''''''
-dialogs[240] = ''''''
-dialogs[241] = ''''''
-dialogs[242] = ''''''
-dialogs[243] = ''''''
-dialogs[244] = ''''''
-dialogs[245] = ''''''
-dialogs[246] = ''''''
-dialogs[247] = ''''''
-dialogs[248] = ''''''
-dialogs[249] = ''''''
-dialogs[250] = ''''''
-dialogs[251] = ''''''
-dialogs[252] = ''''''
-dialogs[253] = ''''''
-dialogs[254] = ''''''
-dialogs[255] = ''''''
-dialogs[256] = ''''''
-dialogs[257] = ''''''
-dialogs[258] = ''''''
-dialogs[259] = ''''''
-dialogs[260] = ''''''
-dialogs[261] = ''''''
-dialogs[262] = ''''''
-dialogs[263] = ''''''
-dialogs[264] = ''''''
-dialogs[265] = ''''''
-dialogs[266] = ''''''
-dialogs[267] = ''''''
-dialogs[268] = ''''''
-dialogs[269] = ''''''
-dialogs[270] = ''''''
-dialogs[271] = ''''''
-dialogs[272] = ''''''
-dialogs[273] = ''''''
-dialogs[274] = ''''''
-dialogs[275] = ''''''
-dialogs[276] = ''''''
-dialogs[277] = ''''''
-dialogs[278] = ''''''
-dialogs[279] = ''''''
-dialogs[280] = ''''''
-dialogs[281] = ''''''
-dialogs[282] = ''''''
-dialogs[283] = ''''''
-dialogs[284] = ''''''
-dialogs[285] = ''''''
-dialogs[286] = ''''''
-dialogs[287] = ''''''
-dialogs[288] = ''''''
-dialogs[289] = ''''''
-dialogs[290] = ''''''
-dialogs[291] = ''''''
-dialogs[292] = ''''''
-dialogs[293] = ''''''
-dialogs[294] = ''''''
-dialogs[295] = ''''''
-dialogs[296] = ''''''
-dialogs[297] = ''''''
-dialogs[298] = ''''''
-dialogs[299] = ''''''
-dialogs[300] = ''''''
-dialogs[301] = ''''''
-dialogs[302] = ''''''
-dialogs[303] = ''''''
-dialogs[304] = ''''''
-dialogs[305] = ''''''
-dialogs[306] = ''''''
-dialogs[307] = ''''''
-dialogs[308] = ''''''
-dialogs[309] = ''''''
-dialogs[310] = ''''''
-dialogs[311] = ''''''
-dialogs[312] = ''''''
-dialogs[313] = ''''''
-dialogs[314] = ''''''
-dialogs[315] = ''''''
-dialogs[316] = ''''''
-dialogs[317] = ''''''
-dialogs[318] = ''''''
-dialogs[319] = ''''''
-dialogs[320] = ''''''
-dialogs[321] = ''''''
-dialogs[322] = ''''''
-dialogs[323] = ''''''
-dialogs[324] = ''''''
-dialogs[325] = ''''''
-dialogs[326] = ''''''
-dialogs[327] = ''''''
-dialogs[328] = ''''''
-dialogs[329] = ''''''
-dialogs[330] = ''''''
-dialogs[331] = ''''''
-dialogs[332] = ''''''
-dialogs[333] = ''''''
-dialogs[334] = ''''''
-dialogs[335] = ''''''
-dialogs[336] = ''''''
-dialogs[337] = ''''''
-dialogs[338] = ''''''
-dialogs[339] = ''''''
-dialogs[340] = ''''''
-dialogs[341] = ''''''
-dialogs[342] = ''''''
-dialogs[343] = ''''''
-dialogs[344] = ''''''
-dialogs[345] = ''''''
-dialogs[346] = ''''''
-dialogs[347] = ''''''
-dialogs[348] = ''''''
-dialogs[349] = ''''''
-dialogs[350] = ''''''
-dialogs[351] = ''''''
-dialogs[352] = ''''''
-dialogs[353] = ''''''
-dialogs[354] = ''''''
-dialogs[355] = ''''''
-dialogs[356] = ''''''
-dialogs[357] = ''''''
-dialogs[358] = ''''''
-dialogs[359] = ''''''
-dialogs[360] = ''''''
-dialogs[361] = ''''''
-dialogs[362] = ''''''
-dialogs[363] = ''''''
-dialogs[364] = ''''''
-dialogs[365] = ''''''
-dialogs[366] = ''''''
-dialogs[367] = ''''''
-dialogs[368] = ''''''
-dialogs[369] = ''''''
-dialogs[370] = ''''''
-dialogs[371] = ''''''
-dialogs[372] = ''''''
-dialogs[373] = ''''''
-dialogs[374] = ''''''
-dialogs[375] = ''''''
-dialogs[376] = ''''''
-dialogs[377] = ''''''
-dialogs[378] = ''''''
-dialogs[379] = ''''''
-dialogs[380] = ''''''
-dialogs[381] = ''''''
-dialogs[382] = ''''''
-dialogs[383] = ''''''
-dialogs[384] = ''''''
-dialogs[385] = ''''''
-dialogs[386] = ''''''
-dialogs[387] = ''''''
-dialogs[388] = ''''''
-dialogs[389] = ''''''
-dialogs[390] = ''''''
-dialogs[391] = ''''''
-dialogs[392] = ''''''
-dialogs[393] = ''''''
-dialogs[394] = ''''''
-dialogs[395] = ''''''
-dialogs[396] = ''''''
-dialogs[397] = ''''''
-dialogs[398] = ''''''
-dialogs[399] = ''''''
-dialogs[400] = ''''''
-dialogs[401] = ''''''
-dialogs[402] = ''''''
-dialogs[403] = ''''''
-dialogs[404] = ''''''
-dialogs[405] = ''''''
-dialogs[406] = ''''''
-dialogs[407] = ''''''
-dialogs[408] = ''''''
-dialogs[409] = ''''''
-dialogs[410] = ''''''
-dialogs[411] = ''''''
-dialogs[412] = ''''''
-dialogs[413] = ''''''
-dialogs[414] = ''''''
-dialogs[415] = ''''''
-dialogs[416] = ''''''
-dialogs[417] = ''''''
-dialogs[418] = ''''''
-dialogs[419] = ''''''
-dialogs[420] = ''''''
-dialogs[421] = ''''''
-dialogs[422] = ''''''
-dialogs[423] = ''''''
-dialogs[424] = ''''''
-dialogs[425] = ''''''
-dialogs[426] = ''''''
-dialogs[427] = ''''''
-dialogs[428] = ''''''
-dialogs[429] = ''''''
-dialogs[430] = ''''''
-dialogs[431] = ''''''
-dialogs[432] = ''''''
-dialogs[433] = ''''''
-dialogs[434] = ''''''
-dialogs[435] = ''''''
-dialogs[436] = ''''''
-dialogs[437] = ''''''
-dialogs[438] = ''''''
-dialogs[439] = ''''''
-dialogs[440] = ''''''
-dialogs[441] = ''''''
-dialogs[442] = ''''''
-dialogs[443] = ''''''
-dialogs[444] = ''''''
-dialogs[445] = ''''''
-dialogs[446] = ''''''
-dialogs[447] = ''''''
-dialogs[448] = ''''''
-dialogs[449] = ''''''
-dialogs[450] = ''''''
-dialogs[451] = ''''''
-dialogs[452] = ''''''
-dialogs[453] = ''''''
-dialogs[454] = ''''''
-dialogs[455] = ''''''
-dialogs[456] = ''''''
-dialogs[457] = ''''''
-dialogs[458] = ''''''
-dialogs[459] = ''''''
-dialogs[460] = ''''''
-dialogs[461] = ''''''
-dialogs[462] = ''''''
-dialogs[463] = ''''''
-dialogs[464] = ''''''
-dialogs[465] = ''''''
-dialogs[466] = ''''''
-dialogs[467] = ''''''
-dialogs[468] = ''''''
-dialogs[469] = ''''''
-dialogs[470] = ''''''
-dialogs[471] = ''''''
-dialogs[472] = ''''''
-dialogs[473] = ''''''
-dialogs[474] = ''''''
-dialogs[475] = ''''''
-dialogs[476] = ''''''
-dialogs[477] = ''''''
-dialogs[478] = ''''''
-dialogs[479] = ''''''
-dialogs[480] = ''''''
-dialogs[481] = ''''''
-dialogs[482] = ''''''
-dialogs[483] = ''''''
-dialogs[484] = ''''''
-dialogs[485] = ''''''
-dialogs[486] = ''''''
-dialogs[487] = ''''''
-dialogs[488] = ''''''
-dialogs[489] = ''''''
-dialogs[490] = ''''''
-dialogs[491] = ''''''
-dialogs[492] = ''''''
-dialogs[493] = ''''''
-dialogs[494] = ''''''
-dialogs[495] = ''''''
-dialogs[496] = ''''''
-dialogs[497] = ''''''
-dialogs[498] = ''''''
-dialogs[499] = ''''''
-dialogs[500] = ''''''
-dialogs[501] = ''''''
-dialogs[502] = ''''''
-dialogs[503] = ''''''
-dialogs[504] = ''''''
-dialogs[505] = ''''''
-dialogs[506] = ''''''
-dialogs[507] = ''''''
-dialogs[508] = ''''''
-dialogs[509] = ''''''
-dialogs[510] = ''''''
-dialogs[511] = ''''''
+ My wallet’s gone!'''
+dialogs[66] = '''          Got a “[0x70A7]”!'''
+dialogs[67] = '''          Got a “[0x70A7]”!'''
+dialogs[68] = '''          Got a “[0x70A7]”!'''
+dialogs[69] = '''          Got a “[0x70A7]”!'''
+dialogs[70] = '''          Got a “[0x70A7]”!'''
+dialogs[71] = '''          Got a “[0x70A7]”!'''
+dialogs[72] = '''          Got a “[0x70A7]”!'''
+dialogs[73] = '''          Got a “[0x70A7]”!'''
+dialogs[74] = '''          Got a “[0x70A7]”!'''
+dialogs[75] = '''          Got a “[0x70A7]”!'''
+dialogs[76] = '''          Got a “[0x70A7]”!'''
+dialogs[77] = '''          Got a “[0x70A7]”!'''
+dialogs[78] = '''          Got a “[0x70A7]”!'''
+dialogs[79] = '''          Got a “[0x70A7]”!'''
+dialogs[80] = '''          Got a “[0x70A7]”!'''
+dialogs[81] = '''          Got a “[0x70A7]”!'''
+dialogs[82] = '''          Got a “[0x70A7]”!'''
+dialogs[83] = '''          Got a “[0x70A7]”!'''
+dialogs[84] = '''          Got a “[0x70A7]”!'''
+dialogs[85] = '''          Got a “[0x70A7]”!'''
+dialogs[86] = '''          Got a “[0x70A7]”!'''
+dialogs[87] = '''          Got a “[0x70A7]”!'''
+dialogs[88] = '''          Got a “[0x70A7]”!'''
+dialogs[89] = '''          Got a “[0x70A7]”!'''
+dialogs[90] = '''          Got a “[0x70A7]”!'''
+dialogs[91] = '''          Got a “[0x70A7]”!'''
+dialogs[92] = '''          Got a “[0x70A7]”!'''
+dialogs[93] = '''          Got a “[0x70A7]”!'''
+dialogs[94] = '''          Got a “[0x70A7]”!'''
+dialogs[95] = '''          Got a “[0x70A7]”!'''
+dialogs[96] = '''          Got a “[0x70A7]”!'''
+dialogs[97] = '''          Got a “[0x70A7]”!'''
+dialogs[98] = '''          Got a “[0x70A7]”!'''
+dialogs[99] = '''          Got a “[0x70A7]”!'''
+dialogs[100] = '''          Got a “[0x70A7]”!'''
+dialogs[101] = '''          Got a “[0x70A7]”!'''
+dialogs[102] = '''          Got a “[0x70A7]”!'''
+dialogs[103] = '''          Got a “[0x70A7]”!'''
+dialogs[104] = '''          Got a “[0x70A7]”!'''
+dialogs[105] = '''          Got a “[0x70A7]”!'''
+dialogs[106] = '''          Got a “[0x70A7]”!'''
+dialogs[107] = '''          Got a “[0x70A7]”!'''
+dialogs[108] = '''          Got a “[0x70A7]”!'''
+dialogs[109] = '''          Got a “[0x70A7]”!'''
+dialogs[110] = '''          Got a “[0x70A7]”!'''
+dialogs[111] = '''          Got a “[0x70A7]”!'''
+dialogs[112] = '''          Got a “[0x70A7]”!'''
+dialogs[113] = '''          Got a “[0x70A7]”!'''
+dialogs[114] = '''          Got a “[0x70A7]”!'''
+dialogs[115] = '''          Got a “[0x70A7]”!'''
+dialogs[116] = '''          Got a “[0x70A7]”!'''
+dialogs[117] = '''          Got a “[0x70A7]”!'''
+dialogs[118] = '''          Got a “[0x70A7]”!'''
+dialogs[119] = '''          Got a “[0x70A7]”!'''
+dialogs[120] = '''          Got a “[0x70A7]”!'''
+dialogs[121] = '''          Got a “[0x70A7]”!'''
+dialogs[122] = '''          Got a “[0x70A7]”!'''
+dialogs[123] = '''          Got a “[0x70A7]”!'''
+dialogs[124] = '''          Got a “[0x70A7]”!'''
+dialogs[125] = '''          Got a “[0x70A7]”!'''
+dialogs[126] = '''          Got a “[0x70A7]”!'''
+dialogs[127] = '''          Got a “[0x70A7]”!'''
+dialogs[128] = '''          Got a “[0x70A7]”!'''
+dialogs[129] = '''          Got a “[0x70A7]”!'''
+dialogs[130] = '''          Got a “[0x70A7]”!'''
+dialogs[131] = '''          Got a “[0x70A7]”!'''
+dialogs[132] = '''          Got a “[0x70A7]”!'''
+dialogs[133] = '''          Got a “[0x70A7]”!'''
+dialogs[134] = '''          Got a “[0x70A7]”!'''
+dialogs[135] = '''          Got a “[0x70A7]”!'''
+dialogs[136] = '''          Got a “[0x70A7]”!'''
+dialogs[137] = '''          Got a “[0x70A7]”!'''
+dialogs[138] = '''          Got a “[0x70A7]”!'''
+dialogs[139] = '''          Got a “[0x70A7]”!'''
+dialogs[140] = '''          Got a “[0x70A7]”!'''
+dialogs[141] = '''          Got a “[0x70A7]”!'''
+dialogs[142] = '''          Got a “[0x70A7]”!'''
+dialogs[143] = '''          Got a “[0x70A7]”!'''
+dialogs[144] = '''          Got a “[0x70A7]”!'''
+dialogs[145] = '''          Got a “[0x70A7]”!'''
+dialogs[146] = '''          Got a “[0x70A7]”!'''
+dialogs[147] = '''          Got a “[0x70A7]”!'''
+dialogs[148] = '''          Got a “[0x70A7]”!'''
+dialogs[149] = '''          Got a “[0x70A7]”!'''
+dialogs[150] = '''          Got a “[0x70A7]”!'''
+dialogs[151] = '''          Got a “[0x70A7]”!'''
+dialogs[152] = '''          Got a “[0x70A7]”!'''
+dialogs[153] = '''          Got a “[0x70A7]”!'''
+dialogs[154] = '''          Got a “[0x70A7]”!'''
+dialogs[155] = '''          Got a “[0x70A7]”!'''
+dialogs[156] = '''          Got a “[0x70A7]”!'''
+dialogs[157] = '''          Got a “[0x70A7]”!'''
+dialogs[158] = '''          Got a “[0x70A7]”!'''
+dialogs[159] = '''          Got a “[0x70A7]”!'''
+dialogs[160] = '''          Got a “[0x70A7]”!'''
+dialogs[161] = '''          Got a “[0x70A7]”!'''
+dialogs[162] = '''          Got a “[0x70A7]”!'''
+dialogs[163] = '''          Got a “[0x70A7]”!'''
+dialogs[164] = '''          Got a “[0x70A7]”!'''
+dialogs[165] = '''          Got a “[0x70A7]”!'''
+dialogs[166] = '''          Got a “[0x70A7]”!'''
+dialogs[167] = '''          Got a “[0x70A7]”!'''
+dialogs[168] = '''          Got a “[0x70A7]”!'''
+dialogs[169] = '''          Got a “[0x70A7]”!'''
+dialogs[170] = '''          Got a “[0x70A7]”!'''
+dialogs[171] = '''          Got a “[0x70A7]”!'''
+dialogs[172] = '''          Got a “[0x70A7]”!'''
+dialogs[173] = '''          Got a “[0x70A7]”!'''
+dialogs[174] = '''          Got a “[0x70A7]”!'''
+dialogs[175] = '''          Got a “[0x70A7]”!'''
+dialogs[176] = '''          Got a “[0x70A7]”!'''
+dialogs[177] = '''          Got a “[0x70A7]”!'''
+dialogs[178] = '''          Got a “[0x70A7]”!'''
+dialogs[179] = '''          Got a “[0x70A7]”!'''
+dialogs[180] = '''          Got a “[0x70A7]”!'''
+dialogs[181] = '''          Got a “[0x70A7]”!'''
+dialogs[182] = '''          Got a “[0x70A7]”!'''
+dialogs[183] = '''          Got a “[0x70A7]”!'''
+dialogs[184] = '''          Got a “[0x70A7]”!'''
+dialogs[185] = '''          Got a “[0x70A7]”!'''
+dialogs[186] = '''          Got a “[0x70A7]”!'''
+dialogs[187] = '''          Got a “[0x70A7]”!'''
+dialogs[188] = '''          Got a “[0x70A7]”!'''
+dialogs[189] = '''          Got a “[0x70A7]”!'''
+dialogs[190] = '''          Got a “[0x70A7]”!'''
+dialogs[191] = '''          Got a “[0x70A7]”!'''
+dialogs[192] = '''          Got a “[0x70A7]”!'''
+dialogs[193] = '''          Got a “[0x70A7]”!'''
+dialogs[194] = '''          Got a “[0x70A7]”!'''
+dialogs[195] = '''          Got a “[0x70A7]”!'''
+dialogs[196] = '''          Got a “[0x70A7]”!'''
+dialogs[197] = '''          Got a “[0x70A7]”!'''
+dialogs[198] = '''          Got a “[0x70A7]”!'''
+dialogs[199] = '''          Got a “[0x70A7]”!'''
+dialogs[200] = '''          Got a “[0x70A7]”!'''
+dialogs[201] = '''          Got a “[0x70A7]”!'''
+dialogs[202] = '''          Got a “[0x70A7]”!'''
+dialogs[203] = '''          Got a “[0x70A7]”!'''
+dialogs[204] = '''          Got a “[0x70A7]”!'''
+dialogs[205] = '''          Got a “[0x70A7]”!'''
+dialogs[206] = '''          Got a “[0x70A7]”!'''
+dialogs[207] = '''          Got a “[0x70A7]”!'''
+dialogs[208] = '''          Got a “[0x70A7]”!'''
+dialogs[209] = '''          Got a “[0x70A7]”!'''
+dialogs[210] = '''          Got a “[0x70A7]”!'''
+dialogs[211] = '''          Got a “[0x70A7]”!'''
+dialogs[212] = '''          Got a “[0x70A7]”!'''
+dialogs[213] = '''          Got a “[0x70A7]”!'''
+dialogs[214] = '''          Got a “[0x70A7]”!'''
+dialogs[215] = '''          Got a “[0x70A7]”!'''
+dialogs[216] = '''          Got a “[0x70A7]”!'''
+dialogs[217] = '''          Got a “[0x70A7]”!'''
+dialogs[218] = '''          Got a “[0x70A7]”!'''
+dialogs[219] = '''          Got a “[0x70A7]”!'''
+dialogs[220] = '''          Got a “[0x70A7]”!'''
+dialogs[221] = '''          Got a “[0x70A7]”!'''
+dialogs[222] = '''          Got a “[0x70A7]”!'''
+dialogs[223] = '''          Got a “[0x70A7]”!'''
+dialogs[224] = '''          Got a “[0x70A7]”!'''
+dialogs[225] = '''          Got a “[0x70A7]”!'''
+dialogs[226] = '''          Got a “[0x70A7]”!'''
+dialogs[227] = '''          Got a “[0x70A7]”!'''
+dialogs[228] = '''          Got a “[0x70A7]”!'''
+dialogs[229] = '''          Got a “[0x70A7]”!'''
+dialogs[230] = '''          Got a “[0x70A7]”!'''
+dialogs[231] = '''          Got a “[0x70A7]”!'''
+dialogs[232] = '''          Got a “[0x70A7]”!'''
+dialogs[233] = '''          Got a “[0x70A7]”!'''
+dialogs[234] = '''          Got a “[0x70A7]”!'''
+dialogs[235] = '''          Got a “[0x70A7]”!'''
+dialogs[236] = '''          Got a “[0x70A7]”!'''
+dialogs[237] = '''          Got a “[0x70A7]”!'''
+dialogs[238] = '''          Got a “[0x70A7]”!'''
+dialogs[239] = '''          Got a “[0x70A7]”!'''
+dialogs[240] = '''          Got a “[0x70A7]”!'''
+dialogs[241] = '''          Got a “[0x70A7]”!'''
+dialogs[242] = '''          Got a “[0x70A7]”!'''
+dialogs[243] = '''          Got a “[0x70A7]”!'''
+dialogs[244] = '''          Got a “[0x70A7]”!'''
+dialogs[245] = '''          Got a “[0x70A7]”!'''
+dialogs[246] = '''          Got a “[0x70A7]”!'''
+dialogs[247] = '''          Got a “[0x70A7]”!'''
+dialogs[248] = '''          Got a “[0x70A7]”!'''
+dialogs[249] = '''          Got a “[0x70A7]”!'''
+dialogs[250] = '''          Got a “[0x70A7]”!'''
+dialogs[251] = '''          Got a “[0x70A7]”!'''
+dialogs[252] = '''          Got a “[0x70A7]”!'''
+dialogs[253] = '''          Got a “[0x70A7]”!'''
+dialogs[254] = '''          Got a “[0x70A7]”!'''
+dialogs[255] = '''          Got a “[0x70A7]”!'''
+dialogs[256] = '''          Got a “[0x70A7]”!'''
+dialogs[257] = '''          Got a “[0x70A7]”!'''
+dialogs[258] = '''          Got a “[0x70A7]”!'''
+dialogs[259] = '''          Got a “[0x70A7]”!'''
+dialogs[260] = '''          Got a “[0x70A7]”!'''
+dialogs[261] = '''          Got a “[0x70A7]”!'''
+dialogs[262] = '''          Got a “[0x70A7]”!'''
+dialogs[263] = '''          Got a “[0x70A7]”!'''
+dialogs[264] = '''          Got a “[0x70A7]”!'''
+dialogs[265] = '''          Got a “[0x70A7]”!'''
+dialogs[266] = '''          Got a “[0x70A7]”!'''
+dialogs[267] = '''          Got a “[0x70A7]”!'''
+dialogs[268] = '''          Got a “[0x70A7]”!'''
+dialogs[269] = '''          Got a “[0x70A7]”!'''
+dialogs[270] = '''          Got a “[0x70A7]”!'''
+dialogs[271] = '''          Got a “[0x70A7]”!'''
+dialogs[272] = '''          Got a “[0x70A7]”!'''
+dialogs[273] = '''          Got a “[0x70A7]”!'''
+dialogs[274] = '''          Got a “[0x70A7]”!'''
+dialogs[275] = '''          Got a “[0x70A7]”!'''
+dialogs[276] = '''          Got a “[0x70A7]”!'''
+dialogs[277] = '''          Got a “[0x70A7]”!'''
+dialogs[278] = '''          Got a “[0x70A7]”!'''
+dialogs[279] = '''          Got a “[0x70A7]”!'''
+dialogs[280] = '''          Got a “[0x70A7]”!'''
+dialogs[281] = '''          Got a “[0x70A7]”!'''
+dialogs[282] = '''          Got a “[0x70A7]”!'''
+dialogs[283] = '''          Got a “[0x70A7]”!'''
+dialogs[284] = '''          Got a “[0x70A7]”!'''
+dialogs[285] = '''          Got a “[0x70A7]”!'''
+dialogs[286] = '''          Got a “[0x70A7]”!'''
+dialogs[287] = '''          Got a “[0x70A7]”!'''
+dialogs[288] = '''          Got a “[0x70A7]”!'''
+dialogs[289] = '''          Got a “[0x70A7]”!'''
+dialogs[290] = '''          Got a “[0x70A7]”!'''
+dialogs[291] = '''          Got a “[0x70A7]”!'''
+dialogs[292] = '''          Got a “[0x70A7]”!'''
+dialogs[293] = '''          Got a “[0x70A7]”!'''
+dialogs[294] = '''          Got a “[0x70A7]”!'''
+dialogs[295] = '''          Got a “[0x70A7]”!'''
+dialogs[296] = '''          Got a “[0x70A7]”!'''
+dialogs[297] = '''          Got a “[0x70A7]”!'''
+dialogs[298] = '''          Got a “[0x70A7]”!'''
+dialogs[299] = '''          Got a “[0x70A7]”!'''
+dialogs[300] = '''          Got a “[0x70A7]”!'''
+dialogs[301] = '''          Got a “[0x70A7]”!'''
+dialogs[302] = '''          Got a “[0x70A7]”!'''
+dialogs[303] = '''          Got a “[0x70A7]”!'''
+dialogs[304] = '''          Got a “[0x70A7]”!'''
+dialogs[305] = '''          Got a “[0x70A7]”!'''
+dialogs[306] = '''          Got a “[0x70A7]”!'''
+dialogs[307] = '''          Got a “[0x70A7]”!'''
+dialogs[308] = '''          Got a “[0x70A7]”!'''
+dialogs[309] = '''          Got a “[0x70A7]”!'''
+dialogs[310] = '''          Got a “[0x70A7]”!'''
+dialogs[311] = '''          Got a “[0x70A7]”!'''
+dialogs[312] = '''          Got a “[0x70A7]”!'''
+dialogs[313] = '''          Got a “[0x70A7]”!'''
+dialogs[314] = '''          Got a “[0x70A7]”!'''
+dialogs[315] = '''          Got a “[0x70A7]”!'''
+dialogs[316] = '''          Got a “[0x70A7]”!'''
+dialogs[317] = '''          Got a “[0x70A7]”!'''
+dialogs[318] = '''          Got a “[0x70A7]”!'''
+dialogs[319] = '''          Got a “[0x70A7]”!'''
+dialogs[320] = '''          Got a “[0x70A7]”!'''
+dialogs[321] = '''          Got a “[0x70A7]”!'''
+dialogs[322] = '''          Got a “[0x70A7]”!'''
+dialogs[323] = '''          Got a “[0x70A7]”!'''
+dialogs[324] = '''          Got a “[0x70A7]”!'''
+dialogs[325] = '''          Got a “[0x70A7]”!'''
+dialogs[326] = '''          Got a “[0x70A7]”!'''
+dialogs[327] = '''          Got a “[0x70A7]”!'''
+dialogs[328] = '''          Got a “[0x70A7]”!'''
+dialogs[329] = '''          Got a “[0x70A7]”!'''
+dialogs[330] = '''          Got a “[0x70A7]”!'''
+dialogs[331] = '''          Got a “[0x70A7]”!'''
+dialogs[332] = '''          Got a “[0x70A7]”!'''
+dialogs[333] = '''          Got a “[0x70A7]”!'''
+dialogs[334] = '''          Got a “[0x70A7]”!'''
+dialogs[335] = '''          Got a “[0x70A7]”!'''
+dialogs[336] = '''          Got a “[0x70A7]”!'''
+dialogs[337] = '''          Got a “[0x70A7]”!'''
+dialogs[338] = '''          Got a “[0x70A7]”!'''
+dialogs[339] = '''          Got a “[0x70A7]”!'''
+dialogs[340] = '''          Got a “[0x70A7]”!'''
+dialogs[341] = '''          Got a “[0x70A7]”!'''
+dialogs[342] = '''          Got a “[0x70A7]”!'''
+dialogs[343] = '''          Got a “[0x70A7]”!'''
+dialogs[344] = '''          Got a “[0x70A7]”!'''
+dialogs[345] = '''          Got a “[0x70A7]”!'''
+dialogs[346] = '''          Got a “[0x70A7]”!'''
+dialogs[347] = '''          Got a “[0x70A7]”!'''
+dialogs[348] = '''          Got a “[0x70A7]”!'''
+dialogs[349] = '''          Got a “[0x70A7]”!'''
+dialogs[350] = '''          Got a “[0x70A7]”!'''
+dialogs[351] = '''          Got a “[0x70A7]”!'''
+dialogs[352] = '''          Got a “[0x70A7]”!'''
+dialogs[353] = '''          Got a “[0x70A7]”!'''
+dialogs[354] = '''          Got a “[0x70A7]”!'''
+dialogs[355] = '''          Got a “[0x70A7]”!'''
+dialogs[356] = '''          Got a “[0x70A7]”!'''
+dialogs[357] = '''          Got a “[0x70A7]”!'''
+dialogs[358] = '''          Got a “[0x70A7]”!'''
+dialogs[359] = '''          Got a “[0x70A7]”!'''
+dialogs[360] = '''          Got a “[0x70A7]”!'''
+dialogs[361] = '''          Got a “[0x70A7]”!'''
+dialogs[362] = '''          Got a “[0x70A7]”!'''
+dialogs[363] = '''          Got a “[0x70A7]”!'''
+dialogs[364] = '''          Got a “[0x70A7]”!'''
+dialogs[365] = '''          Got a “[0x70A7]”!'''
+dialogs[366] = '''          Got a “[0x70A7]”!'''
+dialogs[367] = '''          Got a “[0x70A7]”!'''
+dialogs[368] = '''          Got a “[0x70A7]”!'''
+dialogs[369] = '''          Got a “[0x70A7]”!'''
+dialogs[370] = '''          Got a “[0x70A7]”!'''
+dialogs[371] = '''          Got a “[0x70A7]”!'''
+dialogs[372] = '''          Got a “[0x70A7]”!'''
+dialogs[373] = '''          Got a “[0x70A7]”!'''
+dialogs[374] = '''          Got a “[0x70A7]”!'''
+dialogs[375] = '''          Got a “[0x70A7]”!'''
+dialogs[376] = '''          Got a “[0x70A7]”!'''
+dialogs[377] = '''          Got a “[0x70A7]”!'''
+dialogs[378] = '''          Got a “[0x70A7]”!'''
+dialogs[379] = '''          Got a “[0x70A7]”!'''
+dialogs[380] = '''          Got a “[0x70A7]”!'''
+dialogs[381] = '''          Got a “[0x70A7]”!'''
+dialogs[382] = '''          Got a “[0x70A7]”!'''
+dialogs[383] = '''          Got a “[0x70A7]”!'''
+dialogs[384] = '''          Got a “[0x70A7]”!'''
+dialogs[385] = '''          Got a “[0x70A7]”!'''
+dialogs[386] = '''          Got a “[0x70A7]”!'''
+dialogs[387] = '''          Got a “[0x70A7]”!'''
+dialogs[388] = '''          Got a “[0x70A7]”!'''
+dialogs[389] = '''          Got a “[0x70A7]”!'''
+dialogs[390] = '''          Got a “[0x70A7]”!'''
+dialogs[391] = '''          Got a “[0x70A7]”!'''
+dialogs[392] = '''          Got a “[0x70A7]”!'''
+dialogs[393] = '''          Got a “[0x70A7]”!'''
+dialogs[394] = '''          Got a “[0x70A7]”!'''
+dialogs[395] = '''          Got a “[0x70A7]”!'''
+dialogs[396] = '''          Got a “[0x70A7]”!'''
+dialogs[397] = '''          Got a “[0x70A7]”!'''
+dialogs[398] = '''          Got a “[0x70A7]”!'''
+dialogs[399] = '''          Got a “[0x70A7]”!'''
+dialogs[400] = '''          Got a “[0x70A7]”!'''
+dialogs[401] = '''          Got a “[0x70A7]”!'''
+dialogs[402] = '''          Got a “[0x70A7]”!'''
+dialogs[403] = '''          Got a “[0x70A7]”!'''
+dialogs[404] = '''          Got a “[0x70A7]”!'''
+dialogs[405] = '''          Got a “[0x70A7]”!'''
+dialogs[406] = '''          Got a “[0x70A7]”!'''
+dialogs[407] = '''          Got a “[0x70A7]”!'''
+dialogs[408] = '''          Got a “[0x70A7]”!'''
+dialogs[409] = '''          Got a “[0x70A7]”!'''
+dialogs[410] = '''          Got a “[0x70A7]”!'''
+dialogs[411] = '''          Got a “[0x70A7]”!'''
+dialogs[412] = '''          Got a “[0x70A7]”!'''
+dialogs[413] = '''          Got a “[0x70A7]”!'''
+dialogs[414] = '''          Got a “[0x70A7]”!'''
+dialogs[415] = '''          Got a “[0x70A7]”!'''
+dialogs[416] = '''          Got a “[0x70A7]”!'''
+dialogs[417] = '''          Got a “[0x70A7]”!'''
+dialogs[418] = '''          Got a “[0x70A7]”!'''
+dialogs[419] = '''          Got a “[0x70A7]”!'''
+dialogs[420] = '''          Got a “[0x70A7]”!'''
+dialogs[421] = '''          Got a “[0x70A7]”!'''
+dialogs[422] = '''          Got a “[0x70A7]”!'''
+dialogs[423] = '''          Got a “[0x70A7]”!'''
+dialogs[424] = '''          Got a “[0x70A7]”!'''
+dialogs[425] = '''          Got a “[0x70A7]”!'''
+dialogs[426] = '''          Got a “[0x70A7]”!'''
+dialogs[427] = '''          Got a “[0x70A7]”!'''
+dialogs[428] = '''          Got a “[0x70A7]”!'''
+dialogs[429] = '''          Got a “[0x70A7]”!'''
+dialogs[430] = '''          Got a “[0x70A7]”!'''
+dialogs[431] = '''          Got a “[0x70A7]”!'''
+dialogs[432] = '''          Got a “[0x70A7]”!'''
+dialogs[433] = '''          Got a “[0x70A7]”!'''
+dialogs[434] = '''          Got a “[0x70A7]”!'''
+dialogs[435] = '''          Got a “[0x70A7]”!'''
+dialogs[436] = '''          Got a “[0x70A7]”!'''
+dialogs[437] = '''          Got a “[0x70A7]”!'''
+dialogs[438] = '''          Got a “[0x70A7]”!'''
+dialogs[439] = '''          Got a “[0x70A7]”!'''
+dialogs[440] = '''          Got a “[0x70A7]”!'''
+dialogs[441] = '''          Got a “[0x70A7]”!'''
+dialogs[442] = '''          Got a “[0x70A7]”!'''
+dialogs[443] = '''          Got a “[0x70A7]”!'''
+dialogs[444] = '''          Got a “[0x70A7]”!'''
+dialogs[445] = '''          Got a “[0x70A7]”!'''
+dialogs[446] = '''          Got a “[0x70A7]”!'''
+dialogs[447] = '''          Got a “[0x70A7]”!'''
+dialogs[448] = '''          Got a “[0x70A7]”!'''
+dialogs[449] = '''          Got a “[0x70A7]”!'''
+dialogs[450] = '''          Got a “[0x70A7]”!'''
+dialogs[451] = '''          Got a “[0x70A7]”!'''
+dialogs[452] = '''          Got a “[0x70A7]”!'''
+dialogs[453] = '''          Got a “[0x70A7]”!'''
+dialogs[454] = '''          Got a “[0x70A7]”!'''
+dialogs[455] = '''          Got a “[0x70A7]”!'''
+dialogs[456] = '''          Got a “[0x70A7]”!'''
+dialogs[457] = '''          Got a “[0x70A7]”!'''
+dialogs[458] = '''          Got a “[0x70A7]”!'''
+dialogs[459] = '''          Got a “[0x70A7]”!'''
+dialogs[460] = '''          Got a “[0x70A7]”!'''
+dialogs[461] = '''          Got a “[0x70A7]”!'''
+dialogs[462] = '''          Got a “[0x70A7]”!'''
+dialogs[463] = '''          Got a “[0x70A7]”!'''
+dialogs[464] = '''          Got a “[0x70A7]”!'''
+dialogs[465] = '''          Got a “[0x70A7]”!'''
+dialogs[466] = '''          Got a “[0x70A7]”!'''
+dialogs[467] = '''          Got a “[0x70A7]”!'''
+dialogs[468] = '''          Got a “[0x70A7]”!'''
+dialogs[469] = '''          Got a “[0x70A7]”!'''
+dialogs[470] = '''          Got a “[0x70A7]”!'''
+dialogs[471] = '''          Got a “[0x70A7]”!'''
+dialogs[472] = '''          Got a “[0x70A7]”!'''
+dialogs[473] = '''          Got a “[0x70A7]”!'''
+dialogs[474] = '''          Got a “[0x70A7]”!'''
+dialogs[475] = '''          Got a “[0x70A7]”!'''
+dialogs[476] = '''          Got a “[0x70A7]”!'''
+dialogs[477] = '''          Got a “[0x70A7]”!'''
+dialogs[478] = '''          Got a “[0x70A7]”!'''
+dialogs[479] = '''          Got a “[0x70A7]”!'''
+dialogs[480] = '''          Got a “[0x70A7]”!'''
+dialogs[481] = '''          Got a “[0x70A7]”!'''
+dialogs[482] = '''          Got a “[0x70A7]”!'''
+dialogs[483] = '''          Got a “[0x70A7]”!'''
+dialogs[484] = '''          Got a “[0x70A7]”!'''
+dialogs[485] = '''          Got a “[0x70A7]”!'''
+dialogs[486] = '''          Got a “[0x70A7]”!'''
+dialogs[487] = '''          Got a “[0x70A7]”!'''
+dialogs[488] = '''          Got a “[0x70A7]”!'''
+dialogs[489] = '''          Got a “[0x70A7]”!'''
+dialogs[490] = '''          Got a “[0x70A7]”!'''
+dialogs[491] = '''          Got a “[0x70A7]”!'''
+dialogs[492] = '''          Got a “[0x70A7]”!'''
+dialogs[493] = '''          Got a “[0x70A7]”!'''
+dialogs[494] = '''          Got a “[0x70A7]”!'''
+dialogs[495] = '''          Got a “[0x70A7]”!'''
+dialogs[496] = '''          Got a “[0x70A7]”!'''
+dialogs[497] = '''          Got a “[0x70A7]”!'''
+dialogs[498] = '''          Got a “[0x70A7]”!'''
+dialogs[499] = '''          Got a “[0x70A7]”!'''
+dialogs[500] = '''          Got a “[0x70A7]”!'''
+dialogs[501] = '''          Got a “[0x70A7]”!'''
+dialogs[502] = '''          Got a “[0x70A7]”!'''
+dialogs[503] = '''          Got a “[0x70A7]”!'''
+dialogs[504] = '''          Got a “[0x70A7]”!'''
+dialogs[505] = '''          Got a “[0x70A7]”!'''
+dialogs[506] = '''          Got a “[0x70A7]”!'''
+dialogs[507] = '''          Got a “[0x70A7]”!'''
+dialogs[508] = '''          Got a “[0x70A7]”!'''
+dialogs[509] = '''          Got a “[0x70A7]”!'''
+dialogs[510] = '''          Got a “[0x70A7]”!'''
+dialogs[511] = '''          Got a “[0x70A7]”!'''
 dialogs[512] = '''                     INN'''
-dialogs[513] = '''[end]                ITEM SHOP[end]'''
-dialogs[514] = '''             INN / ITEM SHOP[end]             M'''
-dialogs[515] = '''ONSTRO TOWN[end]          TOADSTOOL'S'''
-dialogs[516] = ''' ROOM[end]'''
-dialogs[517] = '''[delay]BELOME TEM'''
-dialogs[518] = '''PLE[end]            GARRO'S HOUSE[end]'''
-dialogs[519] = ''' theYO'STER ISLE[end]          MARRYMORE HOTEL[end]            BEETLES ARE US[end]      WEAPON AND ARMOR SHOP[end]                 BED'''
-dialogs[520] = '''ROOM[end]          HEALTH FOOD STORE[end]        MUSHRO'''
-dialogs[521] = '''OM BOY'S SHOP[end]            ACCESSORY '''
-dialogs[522] = '''SHOP[end]'''
-dialogs[523] = '''               MELODY BAY[end]         G'''
-dialogs[524] = '''RATE GUY'S CA'''
-dialogs[525] = '''SINO[end]               HINO MART[end] Be'''
-dialogs[526] = '''fore Valen'''
-dialogs[527] = '''tina came, firewo'''
-dialogs[528] = '''rks
- lit up the sky every night.[newPageAwaitInput] S'''
-dialogs[529] = '''ome guy in Moleville would make
- the fireworks.[newlineAwaitInput] I wonder i'''
+dialogs[513] = '''SHOP'''
+dialogs[514] = '''ITEM SHOP'''
+dialogs[515] = '''OWN'''
+dialogs[516] = ''' ROOM'''
+dialogs[517] = '''TEMPLE'''
+dialogs[518] = '''RRO'S HOUSE'''
+dialogs[519] = ''' theYO'STER ISLE'''
+dialogs[520] = '''EALTH FOOD STORE'''
+dialogs[521] = ''' SHOP'''
+dialogs[522] = '''SHOP'''
+dialogs[523] = ''' BAY'''
+dialogs[524] = ''''S CASINO'''
+dialogs[525] = '''INO MART'''
+dialogs[526] = '''fore Valentina came, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[527] = ''', fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[528] = ''' up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[529] = '''in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
 dialogs[530] = '''f we'll ever get to
- see them again...[endAwaitInput] It’s a marvelous statue,
- isn't'''
-dialogs[531] = ''' it?[endAwaitInput] We can fin'''
-dialogs[532] = '''ally walk around the
- castle and the town freely.[newPageAwaitInput]'''
-dialogs[533] = ''' People from down under will
+ see them again...'''
+dialogs[531] = ''' can finally walk around the
+ castle and the town freely.[newPageAwaitInput] People from down under will
  probably come too. That girl at the
- e'''
-dialogs[534] = '''ntrance'll tell you who’s here.[endAwaitInput][newPage] Whoa! Congratulations![newlineAwaitInput] You deserve this![endAwaitInput] It'll let you get into my brothe'''
-dialogs[535] = '''r's
- Casino...wherever THAT is...[endAwaitInput][newPage]
-                  Thanks'''
-dialogs[536] = '''![endAwaitInput]???: I'm so...lo'''
+ entrance'll tell you who’s here.'''
+dialogs[532] = '''k around the
+ castle and the town freely.[newPageAwaitInput] People from down under will
+ probably come too. That girl at the
+ entrance'll tell you who’s here.'''
+dialogs[533] = '''from down under will
+ probably come too. That girl at the
+ entrance'll tell you who’s here.'''
+dialogs[534] = '''ntrance'll tell you who’s here.'''
+dialogs[535] = '''ino...wherever THAT is...'''
+dialogs[536] = '''!'''
 dialogs[537] = '''nely.
  Will you play with me?[newlineAwaitInput] [startSelection]  (Sure)
- [startSelection]  (Not now)[endAwaitInput]
-    BIRDO: Don't forget about me![endAwaitInput][newPage] '''
-dialogs[538] = '''Oh...[pauseAwaitInput] If you had '''
-dialogs[539] = '''played
- with me'''
-dialogs[540] = ''', I was going to give you
- the key to this room'''
-dialogs[541] = '''.[endAwaitInput] This statue[delay][delay]...[delay]it[delay]...it seems
- so...unworldly![endAwaitInput] The King gave me another job as
- a guard.[pauseAwaitInput][end]
- ...Prince M'''
-dialogs[542] = '''allow![endAwaitInput]MALLOW: Thank you so much!
+ [startSelection]  (Not now)'''
+dialogs[538] = '''Oh...[pauseAwaitInput] If you had played
+ with me, I was going to give you
+ the key to this room.'''
+dialogs[539] = '''with me, I was going to give you
+ the key to this room.'''
+dialogs[540] = '''ing to give you
+ the key to this room.'''
+dialogs[541] = '''atue[delay][delay]...[delay]it[delay]...it seems
+ so...unworldly!'''
+dialogs[542] = '''ALLOW: Thank you so much!
  We were able to rescue my father
- with the key you gave us.[endAwaitInput] Don't mention it...[pauseAwaitInput][end]
- Besides, it was YOU,
- who actually rescued him![endAwaitInput]MALL'''
+ with the key you gave us.'''
 dialogs[543] = '''OW:
-        Good luck in the future![endAwaitInput]
-                 You too![endAwaitInput] Prince!'''
-dialogs[544] = '''[endAwaitInput] Here, this is from '''
-dialogs[545] = '''me.[newlineAwaitInput] Please, take i'''
-dialogs[546] = '''t.[endAwaitInput] I shall c'''
-dialogs[547] = '''ontinue to work for the
- King with pride.[endAwaitInput][newPage] Eh hem...very w'''
+        Good luck in the future!'''
+dialogs[544] = ''''''
+dialogs[545] = '''ase, take it.'''
+dialogs[546] = '''t.'''
+dialogs[547] = '''ork for the
+ King with pride.'''
 dialogs[548] = '''ell.[newlineAwaitInput] “FP”s are consumed during
  battle when you use “Special”
- attacks. For example...[newPageAwaitInput] A “Jump” a'''
+ attacks. For example...[newPageAwaitInput] A “Jump” attack uses 3 “FP”s.[newlineAwaitInput] When you “Jump”, your “FP” will
+ decrease by 3 each time. Run out,
+ and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
 dialogs[549] = '''ttack uses 3 “FP”s.[newlineAwaitInput] When you “Jump”, your “FP” will
  decrease by 3 each time. Run out,
- and '''
+ and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
 dialogs[550] = '''you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
- your maximum “FP'''
-dialogs[551] = '''”s.[newlineAwaitInput] Recover “FP”s '''
-dialogs[552] = '''with syrups,
- som'''
-dialogs[553] = '''e mushrooms, and at inns.[endAwaitInput] Hey! Did you '''
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[551] = '''over “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[552] = '''ups,
+ some mushrooms, and at inns.'''
+dialogs[553] = '''oms, and at inns.'''
 dialogs[554] = '''just see
- a cro'''
-dialogs[555] = '''codile around here?
- He talks like a mobster wanna'''
-dialogs[556] = '''be.[pauseAwaitInput][end][newPage] I'm sure he’s up to no good![delay_48]
- Hey, wait a sec!!![delay_48]
- My wallet’s gone![endAwaitInput]          Got a “[0x70A7]”!'''
-dialogs[557] = '''[end]          Got a “[0x70A7]”![endAwaitInput]
-          Get down from there![endAwaitInput]              Won [0x7000] coin(s)![endAwaitInput]          Found a “[0x70A7]”![endAwaitInput]      You win[delay_4][end]      You lose'''
-dialogs[558] = '''[newPage][end] Why don't you crash for a while?[newlineAwaitInput] It'll only cos'''
-dialogs[559] = '''t you [0x7024] coins!
+ a crocodile around here?
+ He talks like a mobster wannabe.[pauseAwaitInput]'''
+dialogs[555] = '''round here?
+ He talks like a mobster wannabe.[pauseAwaitInput]'''
+dialogs[556] = '''be.[pauseAwaitInput]'''
+dialogs[557] = ''' “[0x70A7]”!'''
+dialogs[558] = '''[newPage]'''
+dialogs[559] = '''ins!
  [startSelection]  (Okay!)
- [startSelection]  (No, thanks.)[endAwaitInput][newPage]
-    Ahem...you're a little short![endAwaitInput][newPage]
-           Good luck, Mario![endAwaitInput]          Got'''
-dialogs[560] = ''' a “[0x70A7]”![endAwaitInput][newPage]        [0x7024] Cookie(s)[end]          Got a “[0x70A7]”![endAwaitInput]    Got a “[0x70A7]”![end]            '''
-dialogs[561] = '''Got a Frog Coin![endAwaitInput][newPage]        [0x7024] Cookie(s)[endAwaitInput] Mario!
- Hurry, the Chancellor awaits.[endAwaitInput] Mario! Please, you've '''
+ [startSelection]  (No, thanks.)'''
+dialogs[560] = ''' a “[0x70A7]”!'''
+dialogs[561] = '''og Coin!'''
 dialogs[562] = '''GOT
- to save Princess Toadstool![endAwaitInput] I haven't seen Princess Toadstool
- lately...What?!
-'''
-dialogs[563] = ''' Bowser’s got her AGAIN?![endAwaitInput]          Received “[0x70A7]”[endAwaitInput] MY WALLET!'''
-dialogs[564] = '''!!
- Has anyone seen my wallet?'''
-dialogs[565] = '''![endAwaitInput] I hope my grandchild turns out to
- be'''
-dialogs[566] = ''' just like the Princess![endAwaitInput] Mario!
- Let’s say you and I get hitched in
- a few y'''
-dialogs[567] = '''ears, okay?[newPageAwaitInput] Just[delay][delay].'''
-dialogs[568] = '''.. give me time to grow
- into my mother’s wedding dress![endAwaitInput] Hey, Mario!
- '''
-dialogs[569] = '''Look what you're standin' in![end][newPage]
-               HA! G'''
-dialogs[570] = '''otcha![endAwaitInput] That horrible crocodile..'''
-dialogs[571] = '''.
- and wearing crocodile-skin shoes,
- no less! Has he no shame?[endAwaitInput]
-      All I do is cook and clean![endAwaitInput]
-                 Nah nah!'''
-dialogs[572] = '''![delay_48][end]
-     Mmmph...grmmmph...chomp...[endAwaitInput] On'''
-dialogs[573] = '''e! Two! Three!
+ to save Princess Toadstool!'''
+dialogs[563] = ''' Bowser’s got her AGAIN?!'''
+dialogs[564] = '''anyone seen my wallet?!'''
+dialogs[565] = '''my grandchild turns out to
+ be just like the Princess!'''
+dialogs[566] = ''' just like the Princess!'''
+dialogs[567] = '''ay?[newPageAwaitInput] Just[delay][delay]... give me time to grow
+ into my mother’s wedding dress!'''
+dialogs[568] = '''me time to grow
+ into my mother’s wedding dress!'''
+dialogs[569] = '''t you're standin' in!'''
+dialogs[570] = '''otcha!'''
+dialogs[571] = '''g crocodile-skin shoes,
+ no less! Has he no shame?'''
+dialogs[572] = '''![delay_48]'''
+dialogs[573] = '''Three!
  Think if I practice enough I'll
  jump as high as you, Mario?[newlineAwaitInput] [startSelection]  (Sure!)
- [startSelection]  (Yeah, right kid.)[endAwaitInput] Mario! What a pleasant surpri'''
+ [startSelection]  (Yeah, right kid.)'''
 dialogs[574] = '''se![newPageAwaitInput] One of Frogfucius' grandchildren
  is running errands in town today.[delay][delay]
- I haven't seen him, thou'''
-dialogs[575] = '''gh..[delay]..[delay][newPageAwaitInput] Oh, you're here to shop?[end] You know, I hate to admit it...
- But I LOVE this job![endAwaitInput]  
- What a'''
-dialogs[576] = '''re you looking for?[endAwaitInput]
-                 Yeah!!![endAwaitInput]
-             Thanks a bunch.[endAwaitInput] H'''
+ I haven't seen him, though..[delay]..[delay][newPageAwaitInput] Oh, you're here to shop?'''
+dialogs[575] = '''gh..[delay]..[delay][newPageAwaitInput] Oh, you're here to shop?'''
+dialogs[576] = '''re you looking for?'''
 dialogs[577] = '''ey Mario!
  My brother’s waiting
- f'''
-dialogs[578] = '''or you upstairs![endAwaitInput]RAZ: Say hey, Mario!
- Guess what?[delay]...[delay][newlineAwaitInput] Raini isn't just '''
+ for you upstairs!'''
+dialogs[578] = '''airs!'''
 dialogs[579] = '''a “friend”
- anymore. We're ge'''
-dialogs[580] = '''tting married.[endAwaitInput]RAZ: Yeah, she’s right.
- I guess we can pu'''
-dialogs[581] = '''t it off until
- things cool down around here.[endAwaitInput]TOAD: Mario, there you are!
- I'll tell the Chancellor you're he'''
-dialogs[582] = '''re.[newlineAwaitInput] I'll wait for you down the hallway.[endAwaitInput]
-            This way, please.[endAwaitInput]
-                Hey, chill![endAwaitInput]
-      Didn't I tell you to CHILL?![endAwaitInput]
-        '''
-dialogs[583] = '''Sir, Mario has arrived![endAwaitInput]CHANCELLOR: Mario!
- Thank goodness you're here! [endAwaitInput] We heard an explosion or something
- at'''
+ anymore. We're getting married.'''
+dialogs[580] = '''tting married.'''
+dialogs[581] = ''' until
+ things cool down around here.'''
+dialogs[582] = '''re.[newlineAwaitInput] I'll wait for you down the hallway.'''
+dialogs[583] = '''Sir, Mario has arrived!'''
 dialogs[584] = ''' Bowser’s Keep. It was so loud
- I almost dropped my spores!!![endAwaitInput] Uh...excuse me? W...wher'''
+ I almost dropped my spores!!!'''
 dialogs[585] = '''e’s the
  Princess? She departed for your
- house HOURS ago...![endAwaitInput] I fear the'''
-dialogs[586] = ''' worst! Could Bowser
- somehow be behind all of this?[endAwaitInput]CHANCELLOR: Spores '''
+ house HOURS ago...!'''
+dialogs[586] = '''Could Bowser
+ somehow be behind all of this?'''
 dialogs[587] = '''alive!!!
- You're telling us that B'''
+ You're telling us that Bowser has
+ abducted the Princess AGAIN?'''
 dialogs[588] = '''owser has
- abducted the Princess AGAIN?[endAwaitInput] Things '''
-dialogs[589] = '''are ALWAYS happening to
- her! What an UNLUCKY child![endAwaitInput] Nevermind. It will be up to you to
- enter the keep and r'''
-dialogs[590] = '''escue
- Princess Toadstool![endAwaitInput]CHANCELLOR: Egad!
- The keep is unassailable?! What
- awfu'''
-dialogs[591] = '''l power is at work here?![endAwaitInput] Mario...her li'''
+ abducted the Princess AGAIN?'''
+dialogs[589] = '''YS happening to
+ her! What an UNLUCKY child!'''
+dialogs[590] = '''rincess Toadstool!'''
+dialogs[591] = '''is at work here?!'''
 dialogs[592] = '''fe is in your hands.
- Please, save'''
-dialogs[593] = ''' our dear Princess![endAwaitInput]
-   We know you'''
-dialogs[594] = ''' won't let us down![endAwaitInput]
-  So long Mario....and good luck'''
-dialogs[595] = '''![endAwaitInput]TOAD: Where could the P'''
+ Please, save our dear Princess!'''
+dialogs[593] = ''' our dear Princess!'''
+dialogs[594] = ''' won't let us down!'''
+dialogs[595] = '''!'''
 dialogs[596] = '''rincess be?
  We're all counting on you
- to find her, Mario![endAwaitInput]
-            Come back'''
-dialogs[597] = ''' here!![endAwaitInput]CHANCELLOR: All we can do is
- wait here. Don't let us down![endAwaitInput]'''
-dialogs[598] = '''CHANCELLOR: On your way now![endAwaitInput] Y, yes?...[delay]Gee, you're soaking
- wet, aren't you?[endAwaitInput] I'm all right now. Sorry...
- '''
-dialogs[599] = '''There’s nothing like a good cry![newlineAwaitInput]'''
-dialogs[600] = ''' [delay]But,[delay] why was I crying?[pauseAwaitInput][end] Oh, no! That REPTILE
- stole my Grandpa’s coin![endAwaitInput][newPage] B...boo h'''
-dialogs[601] = '''oo...sniffle...[newlineAwaitInput] I can't cry. Big boys don't cry'''
-dialogs[602] = ''''''
+ to find her, Mario!'''
+dialogs[597] = ''' here!!'''
+dialogs[598] = '''OR: On your way now!'''
+dialogs[599] = '''There’s nothing like a good cry![newlineAwaitInput] [delay]But,[delay] why was I crying?[pauseAwaitInput]'''
+dialogs[600] = ''' [delay]But,[delay] why was I crying?[pauseAwaitInput]'''
+dialogs[601] = '''oo...sniffle...[newlineAwaitInput] I can't cry. Big boys don't cry.[delay]
+ But it’s just not fair...![newPageAwaitInput]
+ What am I gonna do? Waaaaaah!!!'''
+dialogs[602] = '''.[delay]
+ But it’s just not fair...![newPageAwaitInput]
+ What am I gonna do? Waaaaaah!!!'''
 dialogs[603] = '''.[delay]
  But it’s just not fair...![newPageAwaitInput]
-'''
-dialogs[604] = ''' What am I gonna do? Waaaaaah!!![endAwaitInput] My Gran'''
+ What am I gonna do? Waaaaaah!!!'''
+dialogs[604] = ''' I gonna do? Waaaaaah!!!'''
 dialogs[605] = '''dpa asked me to buy some
  things for him here. When I walked
- into tow'''
-dialogs[606] = '''n, that croc stopped me![endAwaitInput] Oh yeah! He took it '''
-dialogs[607] = '''from me!
+ into town, that croc stopped me!'''
+dialogs[606] = '''n, that croc stopped me!'''
+dialogs[607] = '''
  He stole my coin! I chased
-'''
-dialogs[608] = ''' him, but he’s way too fast...[endAwaitInput] Mario!
- Let’s see how you're'''
-dialogs[609] = ''' going
- to take care of Bowser![end][newPage] Wow!
- He doesn't stand a chance![endAwaitInput] It'''
-dialogs[610] = ''' was that reptile! He’s the
- one who stole my wallet...![endAwaitInput]
- '''
-dialogs[611] = '''...but I let him get away...[endAwaitInput] Dunno what '''
-dialogs[612] = '''that reptile’s up to,
- but[delay]...[delay] MAN, can he JUMP![endAwaitInput] Wow! You'''
+ him, but he’s way too fast...'''
+dialogs[608] = ''' him, but he’s way too fast...'''
+dialogs[609] = '''ake care of Bowser!'''
+dialogs[610] = '''t reptile! He’s the
+ one who stole my wallet...!'''
+dialogs[611] = '''...but I let him get away...'''
+dialogs[612] = '''tile’s up to,
+ but[delay]...[delay] MAN, can he JUMP!'''
 dialogs[613] = ''''re THE Mario? I know
  all about you! You've got more
- JUMP in you than a box of frogs![endAwaitInput][newPage] I'm Ma'''
-dialogs[614] = '''llow from Tadpole Pond.
+ JUMP in you than a box of frogs!'''
+dialogs[614] = '''m Tadpole Pond.
  I'm a frog, but can you believe it?
- I can't jump. Embarrassin'''
-dialogs[615] = '''g huh?[endAwaitInput][newPage] How about it, Mario!
+ I can't jump. Embarrassing huh?'''
+dialogs[615] = ''' How about it, Mario!
  Will you help me catch that
- filthy thief?[newlineAwaitInput] [startSelection]  (Sure t'''
-dialogs[616] = '''hing)
- [startSelection]  (I'm a little busy)[endAwaitInput]     The young frog, Mallow, who
-      doesn't '''
-dialogs[617] = '''look AT ALL like a
-    frog, joins Mario in his quest.[endAwaitInput] You're sure you won't re'''
-dialogs[618] = '''consider?[newlineAwaitInput] [startSelection]  (All right, I'll help you)
- [startSelection]  (Sorry)[endAwaitInput] Oh, please[delay][delay]'''
+ filthy thief?[newlineAwaitInput] [startSelection]  (Sure thing)
+ [startSelection]  (I'm a little busy)'''
+dialogs[616] = '''(I'm a little busy)'''
+dialogs[617] = '''ALL like a
+    frog, joins Mario in his quest.'''
+dialogs[618] = '''?[newlineAwaitInput] [startSelection]  (All right, I'll help you)
+ [startSelection]  (Sorry)'''
 dialogs[619] = '''...
- Pretty please?[newlineAwaitInput] [startSelection]  (Okay, okay'''
+ Pretty please?[newlineAwaitInput] [startSelection]  (Okay, okay...)
+ [startSelection]  (NO!)'''
 dialogs[620] = '''...)
- [startSelection]  (NO!)[endAwaitInput][newPage] I never thought you'd be
- so mean, Mario.[endAwaitInput]'''
-dialogs[621] = ''' Who cares if you can JUMP?
- Being mean is soooo UNCOOL![endAwaitInput]MALLOW: You know I can't get my
- '''
-dialogs[622] = '''coin back without your help.[newlineAwaitInput] [startSelection]  (All '''
-dialogs[623] = '''right, already)
- [startSelection]  (No means '''
-dialogs[624] = '''NO!)[endAwaitInput] A lot of creepy looking thugs
- have been sneaking into town...
- Not on MY w'''
-dialogs[625] = '''atch!![endAwaitInput] Rain or shine, I stand watch![newlineAwaitInput] But this is getting ridiculous![endAwaitInput]
- There was SOME reason[delay][delay]'''
-dialogs[626] = '''...[endAwaitInput]MALLOW: Did he look something[delay][delay]'''
+ [startSelection]  (NO!)'''
+dialogs[621] = '''es if you can JUMP?
+ Being mean is soooo UNCOOL!'''
+dialogs[622] = ''' without your help.[newlineAwaitInput] [startSelection]  (All right, already)
+ [startSelection]  (No means NO!)'''
+dialogs[623] = '''lready)
+ [startSelection]  (No means NO!)'''
+dialogs[624] = '''NO!)'''
+dialogs[625] = '''atch!!'''
+dialogs[626] = '''OW: Did he look something[delay][delay]
+ ...like[delay][delay]...this?'''
 dialogs[627] = '''
- ...like[delay][delay]...this?[endAwaitInput]
-          Why'''
-dialogs[628] = ''', yes! Exactly![endAwaitInput]MALLOW: He’s the one who took my
- c'''
-dialogs[629] = '''oin! Why didn't you stop him?[endAwaitInput] Because I forgot my bazook'''
+ ...like[delay][delay]...this?'''
+dialogs[628] = ''', yes! Exactly!'''
+dialogs[629] = '''oin! Why didn't you stop him?'''
 dialogs[630] = '''a
- at home! [delay]Sh'''
+ at home! [delay]Sheesh...[delay][delay]
+ [delay][delay]Give me a break, here.'''
 dialogs[631] = '''eesh...[delay][delay]
- [delay][delay]Give m'''
-dialogs[632] = '''e a break, here.[endAwaitInput]CROCO: Ha'''
-dialogs[633] = '''r, har! Youse mugs'''
-dialogs[634] = ''''ll
+ [delay][delay]Give me a break, here.'''
+dialogs[632] = '''k, here.'''
+dialogs[633] = '''Youse mugs'll
  NEVER catch me! A snail could
- outrun YOU'''
-dialogs[635] = ''' morons! Later![endAwaitInput] Mario!
- I have something to report, sir.[endAwaitInput] I saw him'''
-dialogs[636] = '''! He’s here somewhere!
- He just zoomed past me a'''
-dialogs[637] = '''
- second ago. Did you '''
-dialogs[638] = '''see him?[endAwaitInput]MALLOW: That’s HIMMMMM!
- Hurry, Mario, l'''
-dialogs[639] = '''et’s get him![endAwaitInput] Rain or shine,
- I shall '''
-dialogs[640] = '''fulfill my duty.[endAwaitInput]
-   I'll remain here on the lookout![endAwaitInput] So I guess Princess Toadstool
- really WAS kidnapped by Bowser.[endAwaitInput] You'll catch your death of cold!
- Come on, let’s dry off.[endAwaitInput] B'''
-dialogs[641] = '''ut I wanna play outside!![endAwaitInput] Hey, what do you think
- you're doing?!
- Get off'''
-dialogs[642] = ''' of there this minute![endAwaitInput] All right now, let’s start again.
- Go in FRONT of the counter
- and talk to me.[endAwaitInput] It’s rain'''
+ outrun YOU morons! Later!'''
+dialogs[634] = '''ER catch me! A snail could
+ outrun YOU morons! Later!'''
+dialogs[635] = ''' morons! Later!'''
+dialogs[636] = '''e somewhere!
+ He just zoomed past me a
+ second ago. Did you see him?'''
+dialogs[637] = ''' ago. Did you see him?'''
+dialogs[638] = '''see him?'''
+dialogs[639] = '''im!'''
+dialogs[640] = '''fulfill my duty.'''
+dialogs[641] = ''' play outside!!'''
+dialogs[642] = ''' of there this minute!'''
 dialogs[643] = '''ing hammer handles and
- pitchforks o'''
-dialogs[644] = '''ut there![endAwaitInput] Hey, Mallow!
+ pitchforks out there!'''
+dialogs[644] = '''Hey, Mallow!
  What kept you?
- I was starting to worry.[endAwaitInput]MALLOW: Wait until you hear th'''
+ I was starting to worry.'''
 dialogs[645] = '''is!
- You see[delay][delay]...[delay]...[endAwaitInput] Wait...I've already h'''
+ You see[delay][delay]...[delay]...'''
 dialogs[646] = '''eard...
  Old Frogfucius told me. He seems
- to know EVERYTHING! Hol'''
-dialogs[647] = '''d on.[endAwaitInput]MALLOW: Listen...[newlineAwaitInput] The truth of the matter is, well,
-[delay] ...um...[delay]the'''
-dialogs[648] = ''' coin was stolen.[endAwaitInput] WHAT?! [delay_48]Well,'''
-dialogs[649] = ''' if that's
- the cas'''
+ to know EVERYTHING! Hold on.'''
+dialogs[647] = '''d on.'''
+dialogs[648] = ''' coin was stolen.'''
+dialogs[649] = ''''s
+ the case, I guess we can't trade.
+ What a shame, huh?!'''
 dialogs[650] = '''e, I guess we can't trade.
- What a shame, huh?![endAwaitInput]MALLOW: Oh, but there's
- no need to '''
-dialogs[651] = '''worry!
- Mario, here, will help us ou'''
-dialogs[652] = ''''''
-dialogs[653] = ''''''
-dialogs[654] = '''t![endAwaitInput] 'Zat so? Well, if Mario’s on your
- team, you'll have tha'''
+ What a shame, huh?!'''
+dialogs[651] = '''Mario, here, will help us out!'''
+dialogs[652] = '''t!'''
+dialogs[653] = '''t!'''
+dialogs[654] = '''t!'''
 dialogs[655] = '''t coin back
- in a jiffy![endAwaitInput] Not so fast! '''
-dialogs[656] = '''Take this with you.
- You'll probably need it.[endAwaitInput]
-  Where do ya think everyone went?[endAwaitInput] Well, gang, looks like w'''
+ in a jiffy!'''
+dialogs[656] = '''with you.
+ You'll probably need it.'''
 dialogs[657] = '''e have
- ourselv'''
-dialogs[658] = '''es a new home![endAwaitInput] We can bounce ar'''
-dialogs[659] = '''ound all
+ ourselves a new home!'''
+dialogs[658] = '''es a new home!'''
+dialogs[659] = '''
  day long! And there’s no one
- here who can'''
-dialogs[660] = ''' stand in our way![endAwaitInput] Yahoo!
- L'''
-dialogs[661] = '''et’s bounce the night '''
-dialogs[662] = '''away![endAwaitInput]
-          NOT SO FAST, PAL![endAwaitInput] Look at him! Can't eve'''
-dialogs[663] = '''n bounce!
- Hey, maybe we coul'''
+ here who can stand in our way!'''
+dialogs[660] = ''' our way!'''
+dialogs[661] = '''e the night away!'''
+dialogs[662] = '''    NOT SO FAST, PAL!'''
+dialogs[663] = '''!
+ Hey, maybe we could bounce ON
+ HIS HEAD!!!!'''
 dialogs[664] = '''d bounce ON
- HIS HE'''
-dialogs[665] = '''AD!!!![endAwaitInput]MACK: Listen up, gang'''
-dialogs[666] = '''![newlineAwaitInput] These guys are gonna put
- a stop to OUR party![newlineAwaitInput] Are we happy about this?![endAwaitInput]
-         You're as'''
-dialogs[667] = '''king for IT![endAwaitInput]
-       Ooh, you're gonna get it![endAwaitInput] You picked the WRONG people
- not to bounce with, bub![endAwaitInput] How 'bout a fat lip to go with
- that ugly '''
-dialogs[668] = '''mustache?![endAwaitInput]CHANCELLOR: Mario![endAwaitInput] Once again, Mario to the resc'''
-dialogs[669] = '''ue![pauseAwaitInput][end][newPage]
-         But who WERE those...[endAwaitInput]TOAD: Chancellor![endAwaitInput] Look! SCARY THINGS!!
- Get RID of them!![endAwaitInput]CHANCELLOR:'''
+ HIS HEAD!!!!'''
+dialogs[665] = '''ACK: Listen up, gang![newlineAwaitInput] These guys are gonna put
+ a stop to OUR party![newlineAwaitInput] Are we happy about this?!'''
+dialogs[666] = ''' guys are gonna put
+ a stop to OUR party![newlineAwaitInput] Are we happy about this?!'''
+dialogs[667] = '''IT!'''
+dialogs[668] = '''?!'''
+dialogs[669] = '''   But who WERE those...'''
 dialogs[670] = ''' First the Princess
  and now THIS!
- It'''
-dialogs[671] = '''’s just too much to bear.[endAwaitInput] Mario! Please! You MUST
- rescue the Princess, NOW'''
-dialogs[672] = '''![endAwaitInput]MALLOW: Mario![endAwaitInput]MALLOW: How about we ask my
- Grandpa for help?...[pauseAwaitInput][end]
- He knows..'''
-dialogs[673] = '''.EVERYTHING![endAwaitInput]             Could Mack,[newlineAwaitInput]    the sword'''
-dialogs[674] = '''-like monster w'''
-dialogs[675] = '''ho
-  crashed into Mushroom Kingdom,'''
-dialogs[676] = '''
-    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found.'''
-dialogs[677] = '''..?[newPageAwaitInput]    Our heroes move on towards
-          the Kero Sewer'''
-dialogs[678] = '''s...[endAwaitInput]CHANCELLOR: Gracious![delay_64]
+ It’s just too much to bear.'''
+dialogs[671] = '''’s just too much to bear.'''
+dialogs[672] = ''': Mario!'''
+dialogs[673] = '''ING!'''
+dialogs[674] = '''nster who
+  crashed into Mushroom Kingdom,
+    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[675] = '''hed into Mushroom Kingdom,
+    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[676] = '''nything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[677] = ''' heroes move on towards
+          the Kero Sewers...'''
+dialogs[678] = '''NCELLOR: Gracious![delay_64]
  OH! It’s YOU, Mario.
- Wha'''
-dialogs[679] = '''t a relief![endAwaitInput]MALLOW: Mario!
- I'm in your debt, too.[newlineAwaitInput] Let’s head over to Grandpa’s place
- in '''
-dialogs[680] = '''Tadpole Pond. He can h'''
-dialogs[681] = '''elp![endAwaitInput]TOAD: Sir!
- Thank goodness you're all right![pauseAwaitInput][end]
- Mario! So it '''
+ What a relief!'''
+dialogs[679] = '''ef!'''
+dialogs[680] = '''Pond. He can help!'''
+dialogs[681] = '''elp!'''
 dialogs[682] = '''was YOU who
  got us through all of this!
- We ow'''
-dialogs[683] = '''e much to you...![endAwaitInput]CHANCELLOR: Excuse me, but...
- wh'''
-dialogs[684] = '''o are YOU?[endAwaitInput]MALLOW: Oh, hello!
- My name is Mallow. '''
-dialogs[685] = '''I'm from
- Tadpole Pond...[endAwaitInput]CHANCELLOR: Well, any friend of
- Mario’s is welcome here in
- Mushroom Kingdom.[pauseAwaitInput][end][newPage] As I w'''
-dialogs[686] = '''as saying, '''
-dialogs[687] = '''Mario, you
- are our only hope![endAwaitInput] Help!![endAwaitInput] I'm guarding the Treasure Room.
- Sorry, but you'll have to get the
- Chancellor’s permission to pass.[endAwaitInput]
-         Hey, HEY! wro'''
-dialogs[688] = '''ng way.[endAwaitInput] Oh, I found this in the cellar.
- Here, you can have it.[endAwaitInput] I guard the vault.
- No on'''
-dialogs[689] = '''e takes our treasure![endAwaitInput] That Vaul'''
-dialogs[690] = '''t...Guard!
+ We owe much to you...!'''
+dialogs[683] = '''ou...!'''
+dialogs[684] = '''o are YOU?'''
+dialogs[685] = '''
+ Tadpole Pond...'''
+dialogs[686] = '''as saying, Mario, you
+ are our only hope!'''
+dialogs[687] = ''' our only hope!'''
+dialogs[688] = '''ng way.'''
+dialogs[689] = '''e takes our treasure!'''
+dialogs[690] = '''d!
  I come here to save him and
- he runs into the next room![newlineAwaitInput] Well, so much for him.[endAwaitInput]
-'''
-dialogs[691] = '''               I'm scared![endAwaitInput] What ARE those things
- out there, anyway?![endAwaitInput] OH NO!
- The Chancellor’s still in the
- throne ro'''
-dialogs[692] = '''om![endAwaitInput]
-  I'm too '''
-dialogs[693] = '''scared to pass by them![endAwaitInput]
-             Trapped again![endAwaitInput] Saved by Mario again'''
+ he runs into the next room![newlineAwaitInput] Well, so much for him.'''
+dialogs[691] = '''               I'm scared!'''
+dialogs[692] = '''m too scared to pass by them!'''
+dialogs[693] = '''ass by them!'''
 dialogs[694] = '''! How could
- I ever thank you enoug'''
-dialogs[695] = '''h?![endAwaitInput] You're in one pi'''
-dialogs[696] = '''ece![endAwaitInput]TOAD: '''
-dialogs[697] = '''Thanks to Mario, of course![endAwaitInput]TOAD: What'''
-dialogs[698] = '''?! That’s terrible![endAwaitInput] But, with Mario around,[delay]...
- we're...[delay]safe, right?'''
+ I ever thank you enough?!'''
+dialogs[695] = '''h?!'''
+dialogs[696] = '''ece!'''
+dialogs[697] = ''', of course!'''
+dialogs[698] = '''terrible!'''
 dialogs[699] = '''[newlineAwaitInput] [startSelection]  (You bet)
- [startSelection]  (I wouldn't be so sure)[endAwaitInput]TOAD: (gasping)...Mario..
- I'm..sorry I'm...late.'''
+ [startSelection]  (I wouldn't be so sure)'''
 dialogs[700] = ''' I was 
- caught up..'''
+ caught up...in some business.[newPageAwaitInput] So, shall we head off to the
+ Chancellor’s place now?'''
 dialogs[701] = '''.in some business.[newPageAwaitInput] So, shall we head off to the
- Chan'''
-dialogs[702] = '''cellor’s place now?[endAwaitInput] That was '''
-dialogs[703] = '''TOO darn close.
- Thanks for the han'''
-dialogs[704] = '''d, Mario.[endAwaitInput] Hey! THAT'S the wallet the
- cro'''
-dialogs[705] = '''codile swiped from me!
- Can I have '''
-dialogs[706] = '''it back?[newlineAwaitInput] [startSelection]  (Sure)
- [startSelection]  (No way)[endAwaitInput][newPage]
-     Why, you're as '''
-dialogs[707] = '''bad as he is![endAwaitInput][newPage] Thank you so much! Here,
- '''
-dialogs[708] = '''I'll give you this as a reward'''
+ Chancellor’s place now?'''
+dialogs[702] = '''cellor’s place now?'''
+dialogs[703] = ''' close.
+ Thanks for the hand, Mario.'''
+dialogs[704] = '''ey! THAT'S the wallet the
+ crocodile swiped from me!
+ Can I have it back?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (No way)'''
+dialogs[705] = '''wiped from me!
+ Can I have it back?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (No way)'''
+dialogs[706] = '''[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (No way)'''
+dialogs[707] = '''bad as he is!'''
+dialogs[708] = '''e you this as a reward.
+ Go on now, take it.'''
 dialogs[709] = '''.
- Go on now, take it.[endAwaitInput]'''
-dialogs[710] = ''' Hey, give me ba'''
-dialogs[711] = '''ck my wallet![newlineAwaitInput] [startSelection]  (All right, qu'''
+ Go on now, take it.'''
+dialogs[710] = '''ve me back my wallet![newlineAwaitInput] [startSelection]  (All right, quit whining)
+ [startSelection]  (NO WAY, Jose!)'''
+dialogs[711] = '''llet![newlineAwaitInput] [startSelection]  (All right, quit whining)
+ [startSelection]  (NO WAY, Jose!)'''
 dialogs[712] = '''it whining)
- [startSelection]  '''
-dialogs[713] = '''(NO WAY, Jose'''
-dialogs[714] = '''!)[endAwaitInput] There’s a lot of noise out there
- today.[endAwaitInput]
-               Oh, wow...'''
-dialogs[715] = '''![endAwaitInput]
-     I'm shaken, but not stirred![endAwaitInput] It’s scary outside, so let’s play
- indoors, all r'''
-dialogs[716] = '''ight?[endAwaitInput] It’s so nice to see our young o'''
+ [startSelection]  (NO WAY, Jose!)'''
+dialogs[713] = '''(NO WAY, Jose!)'''
+dialogs[714] = '''e’s a lot of noise out there
+ today.'''
+dialogs[715] = ''' shaken, but not stirred!'''
+dialogs[716] = '''t’s so nice to see our young ones
+ having a good time!'''
 dialogs[717] = '''nes
- having a good time![endAwaitInput]RAINI: Do you '''
+ having a good time!'''
 dialogs[718] = '''happen to know of
- a good wedding chapel?[endAwaitInput]RAINI: I found the perfect place
- for a wedding! But now we're a'''
-dialogs[719] = '''ll
- stuck inside![endAwaitInput]
-           Thank you, Mario![endAwaitInput] I just can't ge'''
-dialogs[720] = '''t this meal to look
- like the picture in my cookbook.[endAwaitInput] You'''
+ a good wedding chapel?'''
+dialogs[719] = '''k inside!'''
+dialogs[720] = '''l to look
+ like the picture in my cookbook.'''
 dialogs[721] = ''' may NOT sleep in the Princess'
- bed. Have you no manners?[endAwaitInput]MALLOW: Hey, '''
+ bed. Have you no manners?'''
 dialogs[722] = '''mister![pauseAwaitInput]
- I got my coin back![endAwaitInput] Oh! Well DONE, lad!
- '''
-dialogs[723] = '''Okay, here’s the thing
- I promised you...[endAwaitInput] There! Make sure it doesn't get
- stolen, eat'''
-dialogs[724] = '''en, or...whatever!
- Your Grandpa needs it, okay?[endAwaitInput]MALLOW: You bet![pauseAwaitInput][end] Excuse me?![newPageAwaitInput] You'''
+ I got my coin back!'''
+dialogs[723] = '''re’s the thing
+ I promised you...'''
+dialogs[724] = '''.whatever!
+ Your Grandpa needs it, okay?'''
 dialogs[725] = ''' want to...WHAT? How can
- you shop at a time like thi'''
+ you shop at a time like this?![newPageAwaitInput] Just...take what you want and
+ leave some money behind...'''
 dialogs[726] = '''s?![newPageAwaitInput] Just...take what you want and
- leave some money behind...[endAwaitInput] The Princess hasn't ret'''
+ leave some money behind...'''
 dialogs[727] = '''urned yet.
- Can you imagine how the[newlineAwaitInput] C'''
-dialogs[728] = '''hancellor must feel?[endAwaitInput] I'm shaken and stirred but st'''
+ Can you imagine how the[newlineAwaitInput] Chancellor must feel?'''
+dialogs[728] = '''hancellor must feel?'''
 dialogs[729] = '''ill
- standing.[endAwaitInput] The Vault Guard better not be
- goof'''
+ standing.'''
 dialogs[730] = '''ing off while I'm cleaning
- the guest room![endAwaitInput] Tha'''
+ the guest room!'''
 dialogs[731] = '''nks, Mario. I'll continue to
- stand watch'''
-dialogs[732] = ''', but now EVERYONE
- seems suspici'''
-dialogs[733] = '''ous![newlineAwaitInput] By the way, look what I found.[endAwaitInput]
-            Thanks, Mario![endAwaitInput] Boing, boing, boing!
- Now THIS '''
-dialogs[734] = '''guy can JUMP![endAwaitInput]
-     I can still jump the highest![endAwaitInput] So, what did you find?[endAwaitInput]
-            '''
-dialogs[735] = '''This way, please.[endAwaitInput]
-     Hope my little brother is OK.[endAwaitInput] There we go, n'''
-dialogs[736] = '''ow!'''
-dialogs[737] = ''' Hey wait...[newlineAwaitInput] Hang on for a sec, okay?[endAwaitInput]TOAD: Please take this.
- The Princess'''
+ stand watch, but now EVERYONE
+ seems suspicious![newlineAwaitInput] By the way, look what I found.'''
+dialogs[732] = '''w EVERYONE
+ seems suspicious![newlineAwaitInput] By the way, look what I found.'''
+dialogs[733] = '''ous![newlineAwaitInput] By the way, look what I found.'''
+dialogs[734] = '''guy can JUMP!'''
+dialogs[735] = '''please.'''
+dialogs[736] = '''ow! Hey wait...[newlineAwaitInput] Hang on for a sec, okay?'''
+dialogs[737] = '''t...[newlineAwaitInput] Hang on for a sec, okay?'''
 dialogs[738] = ''' would be happy to
- know you have somethin'''
-dialogs[739] = '''g of hers.[endAwaitInput]            Gained 1 Flower![endAwaitInput] Yeah, you're right...
- '''
-dialogs[740] = '''I'm asking for too much...[endAwaitInput]TOAD: Good luck, Mario!
- Give 'em h'''
-dialogs[741] = '''eck![endAwaitInput]
-  But what about my son upstairs?[endAwaitInput] Oops![delay_48]
- I f'''
-dialogs[742] = '''orgot all about '''
-dialogs[743] = '''him![endAwaitInput]
-   I'm really wor'''
-dialogs[744] = '''ried about my son.[endAwaitInput] Really, th'''
+ know you have something of hers.'''
+dialogs[739] = '''g of hers.'''
+dialogs[740] = '''g for too much...'''
+dialogs[741] = '''ut what about my son upstairs?'''
+dialogs[742] = '''l about him!'''
+dialogs[743] = ''''m really worried about my son.'''
+dialogs[744] = '''ried about my son.'''
 dialogs[745] = '''ank you so much for
- EVERYTHING![endAwaitInput] You''''
-dialogs[746] = '''re going to grow up to be just
- like Mario, you hear?[endAwaitInput]
-            This is not good![endAwaitInput]
-    The musta'''
-dialogs[747] = '''chioed one is '''
-dialogs[748] = ''''''
-dialogs[749] = '''strong![endAwaitInput]
-             Strong, YES![endAwaitInput]
-       We MUST warn the boss![endAwaitInput]
-                Come on!![endAwaitInput]
-            Chop chop chop...[endAwaitInput] Hurry and find the Prince'''
+ EVERYTHING!'''
+dialogs[746] = '''grow up to be just
+ like Mario, you hear?'''
+dialogs[747] = '''chioed one is strong!'''
+dialogs[748] = '''strong!'''
+dialogs[749] = '''strong!'''
 dialogs[750] = '''ss!
- We're getting too stressed out![endAwaitInput] The Princess' room is up ahead.
- Don't you go'''
+ We're getting too stressed out!'''
 dialogs[751] = ''' snooping through
- her things, though.[endAwaitInput]        Found Toadstool’s ???[endAwaitInput] Hey there!!
-'''
-dialogs[752] = ''' What do you think you're doing?[endAwaitInput] The Princess' room is up ahead.
- Were you cau'''
-dialogs[753] = '''ght trying to steal
+ her things, though.'''
+dialogs[752] = ''' What do you think you're doing?'''
+dialogs[753] = '''g to steal
  something?[newlineAwaitInput] [startSelection]  (Are you kidding?!)
- [startSelection]  (How did you know?)[endAwaitInput][newPage] You musn't lie.
- I know what you've'''
-dialogs[754] = ''' been up to.[endAwaitInput][newPage] Honesty is one of your finest
- qual'''
-dialogs[755] = '''ities, Mario.[endAwaitInput] I'll give you this in exchange.
-'''
+ [startSelection]  (How did you know?)'''
+dialogs[754] = ''' been up to.'''
+dialogs[755] = '''ities, Mario.'''
 dialogs[756] = ''' Just leave everything
- where it was![endAwaitInput] Let’s refrain'''
+ where it was!'''
 dialogs[757] = ''' from searching
- through other peoples' things![endAwaitInput] It doesn't seem like the Princess
- is '''
+ through other peoples' things!'''
 dialogs[758] = '''THAT far away.
- I can almost feel her presence.[endAwaitInput] Was the Princess kidnapped by
- tho'''
-dialogs[759] = '''se '''
-dialogs[760] = '''THINGS outside?
- Are THEY a part of this?[endAwaitInput] Help the people in the castle, and
- they just mi'''
-dialogs[761] = '''ght help you![endAwaitInput] Tram'''
-dialogs[762] = '''ple the monsters!
- Smash 'em all! It'll do ya good.[newlineAwaitInput] Trust me[pauseAwaitInput]...on THIS ONE.[endAwaitInput]
-    Tha'''
-dialogs[763] = '''nks for saving my brother.[endAwaitInput]
- Mario, thank you so much![newlineAwaitInput] Grandpa will be delighted![endAwaitInput]'''
-dialogs[764] = ''' EEK! There are...THINGS
- in our kitchen. HELP!!!![endAwaitInput]
- H'''
+ I can almost feel her presence.'''
+dialogs[759] = '''se THINGS outside?
+ Are THEY a part of this?'''
+dialogs[760] = '''utside?
+ Are THEY a part of this?'''
+dialogs[761] = '''ght help you!'''
+dialogs[762] = '''sters!
+ Smash 'em all! It'll do ya good.[newlineAwaitInput] Trust me[pauseAwaitInput]...on THIS ONE.'''
+dialogs[763] = '''saving my brother.'''
+dialogs[764] = '''ere are...THINGS
+ in our kitchen. HELP!!!!'''
 dialogs[765] = '''ere’s a little token of my
- app'''
-dialogs[766] = '''reciation![endAwaitInput] The Princess is back!
- I humble myself before you![endAwaitInput]TOADSTOOL'''
-dialogs[767] = ''': Good luck, Mario![endAwaitInput]TOADSTOOL: Grandma,...
- thanks for p'''
+ appreciation!'''
+dialogs[766] = '''n!'''
+dialogs[767] = ''': Good luck, Mario!'''
 dialogs[768] = '''utting up with all my
- selfish d'''
-dialogs[769] = '''emands.[endAwaitInput]TOADSTOOL: Mario’s beside me!
- Everything’s going to b'''
+ selfish demands.'''
+dialogs[769] = '''emands.'''
 dialogs[770] = '''e all right.
- So don't worry, OK?[endAwaitInput] I feel like I'm growing younger
- jus'''
-dialogs[771] = '''t talking with you people![endAwaitInput] Mario, HELP!![endAwaitInput] Mwa ha ha...hey Mario!
- I'll be taking care of
- Princess Toads'''
-dialogs[772] = '''tool now.[endAwaitInput] Boing, boing...[newlineAwaitInput] SUPER JUMP ATTACK!![endAwaitInput] Guwa ha! You think you '''
+ So don't worry, OK?'''
+dialogs[771] = ''' with you people!'''
+dialogs[772] = '''tool now.'''
 dialogs[773] = '''can hurt
- me with your childish pranks?![endAwaitInput] Attention'''
+ me with your childish pranks?!'''
 dialogs[774] = ''', Toadstool! You're
- comin' with ME! Zip your lip![endAwaitInput] HELP!!! HAAALP!!! '''
-dialogs[775] = '''Somebody,
- please HELP me!!![endAwaitInput] HAAAAL...[delay]...[delay][endAwaitInput] Oh my gosh![endAwaitInput] It's...[delay]...Ma..'''
-dialogs[776] = '''.[delay]Ma...[delay]...[endAwaitInput][newPage] Mom![delay_48]
- Mom, look, we have a... GUEST![endAwaitInput] Yes, dear, I hear you...
- Hello '''
+ comin' with ME! Zip your lip!'''
+dialogs[775] = ''',
+ please HELP me!!!'''
+dialogs[776] = '''...'''
 dialogs[777] = '''th[delay]...[delay]ere...
- Why...aren't you Mario![endAwaitInput] For real?![endAwaitInput] Well, you have the hat...
- AND the funky 'stache'''
+ Why...aren't you Mario!'''
 dialogs[778] = '''...!
  Are you really Mario?![newlineAwaitInput] [startSelection]  (You betcha!)
- [startSelection]  (Wr'''
-dialogs[779] = '''ong number!)[endAwaitInput][newPage] How do I know it’s you?
- You might just be pulling my l'''
-dialogs[780] = '''eg![newlineAwaitInput] Show me! PROVE IT![end][newPage] All right!![newlineAwaitInput] Hey Mario, wanna play with me?
- I'm playing'''
-dialogs[781] = ''' “Sa'''
-dialogs[782] = '''ve the world!”[endAwaitInput][newPage] Awwww, you're a fake.[newlineAwaitInput] W'''
-dialogs[783] = '''ell, you'll have to do...[newlineAwaitInput] Let’s play my[delay]...[delay]“Geno” game![endAwaitInput]GAZ: YES!!
- “Mario” just bought the farm, so
- um...you can be “Bowser”...[newlineAwaitInput] I'll be “Geno,” okay?[endAwaitInput]GAZ: R'''
-dialogs[784] = '''eady?
- Let’s play from where I left off![pauseAwaitInput][end]GAZ: Ooh, scary!
- But j'''
-dialogs[785] = '''ust watch ME![endAwaitInput] No'''
+ [startSelection]  (Wrong number!)'''
+dialogs[779] = '''ong number!)'''
+dialogs[780] = '''eg![newlineAwaitInput] Show me! PROVE IT!'''
+dialogs[781] = ''' “Save the world!”'''
+dialogs[782] = '''d!”'''
+dialogs[783] = '''ell, you'll have to do...[newlineAwaitInput] Let’s play my[delay]...[delay]“Geno” game!'''
+dialogs[784] = '''et’s play from where I left off![pauseAwaitInput]'''
+dialogs[785] = '''h ME!'''
 dialogs[786] = '''w, Gaz...!
- Mario'''
-dialogs[787] = ''' might be a little tired, dear.[endAwaitInput]GAZ: Awwww, come on, mom!
- YOU never play with me!...
- It’s no fun playing alone.[endAwaitInput] Oh dear[delay]...Mario, I hate to 
- ask, but.'''
+ Mario might be a little tired, dear.'''
+dialogs[787] = ''' might be a little tired, dear.'''
 dialogs[788] = '''.. Could you play 
- with Gaz for a little while?[endAwaitInput]
- All set?[endAwaitInput]GAZ: Better watch out, Bo'''
+ with Gaz for a little while?'''
 dialogs[789] = '''wser,
  cause Geno’s gonna blow you away!
  TAKE THIS!'''
-dialogs[790] = '''[endAwaitInput]GAZ: Your turn, Bowser![endAwaitInput]GAZ: Owwww...Oh no, if he keeps
- this up, I'm '''
-dialogs[791] = ''''''
+dialogs[790] = '''ur turn, Bowser!'''
+dialogs[791] = '''finished!
+ All right, you asked for it!'''
 dialogs[792] = '''finished!
- All '''
-dialogs[793] = '''right, you asked for it![endAwaitInput] The super duper...[newlineAwaitInput] Custom, patented, one and only...
- SHOOTING '''
-dialogs[794] = '''STAR SHOT!![endAwaitInput]GAZ: Oops...[delay]
- I..'''
-dialogs[795] = '''.[delay]uh...[delay]I think I...missed.[endAwaitInput] Oh dear, oh my!
- Mario, are you all right?[endAwaitInput] Hi Mario. Staying for a nap?[newlineAwaitInput] [startSelection]  (Sure)
- [startSelection]  (Maybe next time)[endAwaitInput][newPage] Don't w'''
-dialogs[796] = '''orry. It’s on'''
-dialogs[797] = ''' the house.
- I mean, you were'''
-dialogs[798] = ''' so kind to Gaz.[endAwaitInput][newPage]
-    S'''
-dialogs[799] = '''top by anytime now, you hear?[endAwaitInput]GAZ: Mom! You'll never believe
- what I j'''
-dialogs[800] = '''ust saw...[endAwaitInput]GAZ: It was amazing, mom!
- [pauseAwaitInput]I just saw Geno walk
- into the forest! Neat, huh?[endAwaitInput] Yes, dear. That’s nice, dear...
- And isn't Gen'''
-dialogs[801] = ''''''
-dialogs[802] = '''o the one who broke
- my lamp the other'''
-dialogs[803] = ''' day?[endAwaitInput]GAZ: Awww, ma, that was just,
- well, you know...
- Now THIS WAS REAL![endAwaitInput] I SWEAR, Mom, REALLY!
- It'''
-dialogs[804] = '''’s true! I SAW HIM outside![endAwaitInput] '''
-dialogs[805] = '''All right, Gaz, let’s hear it!
+ All right, you asked for it!'''
+dialogs[793] = '''asked for it!'''
+dialogs[794] = '''STAR SHOT!!'''
+dialogs[795] = '''I think I...missed.'''
+dialogs[796] = '''orry. It’s on the house.
+ I mean, you were so kind to Gaz.'''
+dialogs[797] = '''
+ I mean, you were so kind to Gaz.'''
+dialogs[798] = '''z.'''
+dialogs[799] = '''nytime now, you hear?'''
+dialogs[800] = '''..'''
+dialogs[801] = '''ho broke
+ my lamp the other day?'''
+dialogs[802] = '''ho broke
+ my lamp the other day?'''
+dialogs[803] = ''' day?'''
+dialogs[804] = '''’s true! I SAW HIM outside!'''
+dialogs[805] = '''t, Gaz, let’s hear it!
  What are you trying to get out of
- this time, hmmm'''
-dialogs[806] = '''?[endAwaitInput]GAZ: Mom, I didn't DO anything.
- I really, TRULY saw Geno walking
- into the forest![endAwaitInput] Mario'''
-dialogs[807] = '''! How are we feeling?[newlineAwaitInput] [startSelection]  (Like a new man!)
- [startSelection]  (Need coffee. Keep'''
-dialogs[808] = ''' away.)[endAwaitInput] Well, that’s good to hear.
- Thank you so much for spending
- time'''
-dialogs[809] = ''' with Gaz.[newlineAwaitInput] He just loved it![endAwaitInput] Yes, you look awful!
- Why don't you rest some more?[endAwaitInput]GAZ: S.'''
+ this time, hmmm?'''
+dialogs[806] = '''?'''
+dialogs[807] = '''e we feeling?[newlineAwaitInput] [startSelection]  (Like a new man!)
+ [startSelection]  (Need coffee. Keep away.)'''
+dialogs[808] = ''' away.)'''
+dialogs[809] = '''z.[newlineAwaitInput] He just loved it!'''
 dialogs[810] = '''..Sorry if I hurt you!
  But...what would Geno want
- in the f'''
-dialogs[811] = '''orest?[endAwaitInput]GAZ: Sorry I knocked you down
- a while ago.[newPageAwaitInput] Geno...doesn''''
+ in the forest?'''
+dialogs[811] = '''orest?'''
 dialogs[812] = '''t know his own
- strength![endAwaitInput]GAZ: Oh NO![endAwaitInput]
-     Oh! This boy is IMPOSSIBLE![endAwaitInput] There’s a stairway '''
-dialogs[813] = '''that leads
- to my house, but my'''
+ strength!'''
+dialogs[813] = '''ds
+ to my house, but my son’s been
+ playing with the controls again![newPageAwaitInput] Mario, only you could jump up
+ there!  Please...help me get back
+ up to my house!'''
 dialogs[814] = ''' son’s been
  playing with the controls again![newPageAwaitInput] Mario, only you could jump up
- there!  Pl'''
-dialogs[815] = '''ease...help me '''
+ there!  Please...help me get back
+ up to my house!'''
+dialogs[815] = '''ease...help me get back
+ up to my house!'''
 dialogs[816] = '''get back
- up to my house![endAwaitInput] I wanna go someplace fun!
- Stan'''
+ up to my house!'''
 dialogs[817] = '''ding around here
- is soooo bo-oring![endAwaitInput]
-                  OUCH![endAwaitInput]
-                 Be quiet![endAwaitInput] See, '''
+ is soooo bo-oring!'''
 dialogs[818] = '''arrows come flying out
  from the forest...and when you're
- hit, you can't move! See, look![newlineAwaitInput] I can't move a'''
+ hit, you can't move! See, look![newlineAwaitInput] I can't move a muscle. Now I know
+ how a scarecrow feels!'''
 dialogs[819] = ''' muscle. Now I know
- how a scarecrow feels![endAwaitInput] Since the day a shooting '''
-dialogs[820] = '''star fell
+ how a scarecrow feels!'''
+dialogs[820] = '''l
  into the forest, arrows have been
- showering our town![endAwaitInput] I tell you, it’s scary out here, but
- someone’s go'''
-dialogs[821] = '''t to pump the water.[endAwaitInput] My husband still hasn't come back!
- I wonder '''
-dialogs[822] = '''what’s keeping him?[endAwaitInput] Thanks a million, Mario!
- Say[delay][delay],...[delay][delay]were'''
-dialogs[823] = ''' my treasures OK?[newlineAwaitInput] [startSelection]  (They'''
+ showering our town!'''
+dialogs[821] = '''t to pump the water.'''
+dialogs[822] = '''ping him?'''
+dialogs[823] = ''' my treasures OK?[newlineAwaitInput] [startSelection]  (They sure were)
+ [startSelection]  (I wouldn't say so)'''
 dialogs[824] = ''' sure were)
- [startSelection]  (I wouldn't say so)[endAwaitInput] Oh! That’s great '''
+ [startSelection]  (I wouldn't say so)'''
 dialogs[825] = '''news!
- What a relief![endAwaitInput] WHAT?! THEY'RE GONE?!
- MARIO, you're the only one who
- can reach'''
-dialogs[826] = ''' THEM![newlineAwaitInput] [startSelection]  (Sorry, I got carried away)'''
+ What a relief!'''
+dialogs[826] = '''[startSelection]  (Sorry, I got carried away)
+ [startSelection]  (I don't know anything)'''
 dialogs[827] = '''
- [startSelection]  (I don't know anything)[endAwaitInput]
-'''
-dialogs[828] = '''[delay_89]ou're kidding!![endAwaitInput]
-            They're just fine.[endAwaitInput][newPage] Oh, well...[delay_64]
- ...since we didn't get hit by '''
+ [startSelection]  (I don't know anything)'''
+dialogs[828] = '''[delay_89]ou're kidding!!'''
 dialogs[829] = '''any
- arrows, I'll tell you a secret.[newPageAwaitInput] Enter the forest. When you hi'''
+ arrows, I'll tell you a secret.[newPageAwaitInput] Enter the forest. When you hit an
+ area with 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
 dialogs[830] = '''t an
- area with 4 paths, go left'''
-dialogs[831] = ''', left,
- straight, right- in that order'''
-dialogs[832] = '''.[newlineAwaitInput] You'll surely find somethin'''
-dialogs[833] = ''''''
-dialogs[834] = ''''''
-dialogs[835] = '''g [pauseAwaitInput]NICE.[endAwaitInput][newPage]
-            Oh, j'''
-dialogs[836] = '''ust curious...[endAwaitInput][newPage] There are 2 kinds o'''
+ area with 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[831] = ''' straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[832] = '''l surely find something [pauseAwaitInput]NICE.'''
+dialogs[833] = '''g [pauseAwaitInput]NICE.'''
+dialogs[834] = '''g [pauseAwaitInput]NICE.'''
+dialogs[835] = '''g [pauseAwaitInput]NICE.'''
+dialogs[836] = '''ust curious...'''
 dialogs[837] = '''f mushrooms.
  One terrorizes people and the other
- helps people. A'''
-dialogs[838] = '''void the former.[endAwaitInput][newPage]
-     All right, I'l'''
-dialogs[839] = '''l take your word.[endAwaitInput] '''
-dialogs[840] = '''Excuse me, I didn't hear you?
+ helps people. Avoid the former.'''
+dialogs[838] = '''rmer.'''
+dialogs[839] = ''' word.'''
+dialogs[840] = '''e, I didn't hear you?
  [startSelection]  (I'm so sorry)
- [startSelection]  (I said I don't know)[endAwaitInput][newPage] You'''
+ [startSelection]  (I said I don't know)'''
 dialogs[841] = ''' already found 'em, huh?
- That’s fantastic! Here,'''
+ That’s fantastic! Here, why don't
+ you take this along with you?'''
 dialogs[842] = ''' why don't
- you'''
-dialogs[843] = ''' take this along with you?[endAwaitInput] You've foun'''
-dialogs[844] = '''d the treasure!
+ you take this along with you?'''
+dialogs[843] = '''is along with you?'''
+dialogs[844] = '''ure!
  Way to GO!
- Keep up the good work![endAwaitInput] What’s taking Daddy so long...?[newlineAwaitInput] Do you think he’s still looking '''
+ Keep up the good work!'''
 dialogs[845] = '''for
- the treasure?[endAwaitInput] Button? Yeah, I jumped on it.
- I do it all the time.
- It'''
-dialogs[846] = ''' really winds my Dad up![endAwaitInput] Mario!
- Good to have a customer at last.
- What do you need?[endAwaitInput] Hello Mario. It’s so'''
-dialogs[847] = ''' nice
- of you to drop by the shop.
- What can I do for you?[endAwaitInput] Found me, huh? What are you doing
- walkin'''
+ the treasure?'''
+dialogs[846] = '''winds my Dad up!'''
+dialogs[847] = '''f you to drop by the shop.
+ What can I do for you?'''
 dialogs[848] = '''g around HERE, though?
- You must be pretty bored...[endAwaitInput]
-           I... I can'''
-dialogs[849] = ''''t move![endAwaitInput] Oh, this is NOT GOOD...
- Now I can't go to the forest to
- chop up any wood.[endAwaitInput] Jus'''
-dialogs[850] = '''t you wait...[endAwaitInput] We're told not to go '''
-dialogs[851] = '''outs'''
-dialogs[852] = '''ide
- 'cuz it’s too dangerous.[endAwaitInput] '''
-dialogs[853] = '''Grandpa’s pumping some water for
- us. I wish we could help, '''
-dialogs[854] = '''too...[endAwaitInput] I'm worried about my grandson.
- H'''
+ You must be pretty bored...'''
+dialogs[849] = ''''t move!'''
+dialogs[850] = '''..'''
+dialogs[851] = '''outside
+ 'cuz it’s too dangerous.'''
+dialogs[852] = '''z it’s too dangerous.'''
+dialogs[853] = '''pumping some water for
+ us. I wish we could help, too...'''
+dialogs[854] = '''too...'''
 dialogs[855] = '''e went out to play, but didn't
- come back when he should have.[endAwaitInput]TOAD: Mario! I ha'''
+ come back when he should have.'''
 dialogs[856] = '''te to bother
  you while you're resting, but I
- wanted to deliver this to you.[endAwaitInput] Y'''
-dialogs[857] = '''ou know what’s real'''
+ wanted to deliver this to you.'''
+dialogs[857] = '''what’s really weird?
+ I just saw a doll dressed in a blue
+ cape walking towards the forest.'''
 dialogs[858] = '''ly weird?
  I just saw a doll dressed in a blue
- cape walking towar'''
-dialogs[859] = '''ds the forest.[endAwaitInput]'''
-dialogs[860] = ''' A...walking doll? Yeah, sure pal!
+ cape walking towards the forest.'''
+dialogs[859] = '''ds the forest.'''
+dialogs[860] = '''king doll? Yeah, sure pal!
  I think you need some help.
- Now SCRAM![endAwaitInput]'''
+ Now SCRAM!'''
 dialogs[861] = '''
  Okay, hit as many as you can!
- Ready?[delay_48]...GO![delay_48][end]GAZ:'''
-dialogs[862] = ''' Geno! You came back![endAwaitInput]GAZ: SEE, Mom? THIS is the '''
+ Ready?[delay_48]...GO![delay_48]'''
+dialogs[862] = ''' Geno! You came back!'''
 dialogs[863] = '''Geno
- I was talking about![endAwaitInput] My, my, what a fabulous '''
-dialogs[864] = '''costume!
+ I was talking about!'''
+dialogs[864] = '''
  It must be kind of hot for the
- person wearing it, though'''
-dialogs[865] = '''.[endAwaitInput]GAZ: Awww, forget it, mom.[endAwaitInput]
- All right, Geno, '''
-dialogs[866] = '''let’s play![endAwaitInput]GEN'''
-dialogs[867] = '''O: How I wish I could!
- But Mario and I must '''
+ person wearing it, though.'''
+dialogs[865] = '''.'''
+dialogs[866] = '''!'''
+dialogs[867] = '''ish I could!
+ But Mario and I must leave now
+ to find...[newlineAwaitInput] ...the missing Star Pieces...'''
 dialogs[868] = '''leave now
- to find...[newlineAwaitInput] ...the missing Star Pieces...[endAwaitInput]GAZ: Star Pieces? Yo'''
+ to find...[newlineAwaitInput] ...the missing Star Pieces...'''
 dialogs[869] = '''u mean like
- shooting stars? What for?[endAwaitInput]GENO: Well...
- How can I explain this[delay]...[delay][endAwaitInput]GE'''
-dialogs[870] = '''NO: Well Gaz,...
- it’s like this...[delay_32][end] Well, goo'''
-dialogs[871] = '''d luck![endAwaitInput][newPage]Time    [0x7000]
-Points [0x7024][end] It’s easier if ya stand
- in the middle.[end] That was SOME thump'''
+ shooting stars? What for?'''
+dialogs[870] = ''' Gaz,...
+ it’s like this...[delay_32]'''
+dialogs[871] = '''[newPage]Time    '''
 dialogs[872] = '''ing!
- Here’s your pri'''
+ Here’s your prize! Next time,
+ try and get '''
 dialogs[873] = '''ze! Next time,
- try and get [0x7000] pts.[endAwaitInput]
-     You can do better than that![endAwaitInput][newPage]
-              Then SCRA'''
-dialogs[874] = '''M![endAwaitInput] Looks like you've got
+ try and get '''
+dialogs[874] = '''s like you've got
  yourself a tough road ahead.
- Good luck![endAwaitInput] 
- Th'''
-dialogs[875] = '''is is how it used to be,[newlineAwaitInput] but now...it’s like...[delay_32][end] THI'''
+ Good luck!'''
+dialogs[875] = ''' used to be,[newlineAwaitInput] but now...it’s like...[delay_32]'''
 dialogs[876] = '''S!
- Do you get it?[endAwaitInput]GAZ: Uh uh... NOPE![newlineAwaitInput] You lost me.[endAwaitInput]GENO: Well, let’s just say that if
- things stay the way they are, your
- '''
-dialogs[877] = '''wishes will never come true.[endAwaitInput]GAZ: WHAT?! So you mean even if
- I grow '''
+ Do you get it?'''
+dialogs[877] = '''wishes will never come true.'''
 dialogs[878] = '''up, I won't ever be strong
- and cool l'''
-dialogs[879] = '''ike you?![endAwaitInput]GENO: No one’s wishes will come
- true until'''
+ and cool like you?!'''
+dialogs[879] = '''ike you?!'''
 dialogs[880] = ''' the Star Pieces are
- found and the Star Road repaired.[endAwaitInput][newPage] Which is why'''
-dialogs[881] = ''' I have chosen to
+ found and the Star Road repaired.'''
+dialogs[881] = '''osen to
  join these two in order to find
- the missing'''
-dialogs[882] = ''' Star Pieces.[endAwaitInput]GAZ: So that’s it...'''
-dialogs[883] = '''[delay]...[delay]!
- Well, Mario needs all the help
- he can get![endAwaitInput][newPage] Geno, I have a lot of dreams!
- Please, '''
-dialogs[884] = '''go fix the Star Road and
- make sure they all come true![endAwaitInput]GENO: That’s a promise![endAwaitInput]GAZ: C'''
-dialogs[885] = '''OOL!![endAwaitInput]GAZ: Oh, wait!  Wait a minute![endAwaitInput]GAZ: This is yours, Geno, so take
-'''
-dialogs[886] = ''' it along with you.[endAwaitInput]GAZ: Go get 'em, Geno!
- You're the main man![endAwaitInput]GAZ: It’s gonna be a lit'''
-dialogs[887] = '''tle lonely
+ the missing Star Pieces.'''
+dialogs[882] = '''eces.'''
+dialogs[883] = '''Well, Mario needs all the help
+ he can get!'''
+dialogs[884] = '''Star Road and
+ make sure they all come true!'''
+dialogs[885] = '''OOL!!'''
+dialogs[886] = ''' it along with you.'''
+dialogs[887] = '''ly
  without you, but...hey, I can
  handle it.'''
-dialogs[888] = '''[endAwaitInput]GENO: Thanks for being a good
- spo'''
-dialogs[889] = '''rt, Gaz. I'll see you when I
- get ba'''
-dialogs[890] = '''ck.[endAwaitInput]
- Mommy![endAwaitInput] I can finally move!'''
-dialogs[891] = ''''''
+dialogs[888] = '''hanks for being a good
+ sport, Gaz. I'll see you when I
+ get back.'''
+dialogs[889] = ''' I'll see you when I
+ get back.'''
+dialogs[890] = '''mmy!'''
+dialogs[891] = '''[newlineAwaitInput] I guess I owe it all to Mario...
+ What an amazing guy!'''
 dialogs[892] = '''[newlineAwaitInput] I guess I owe it all to Mario...
- What an amazing guy![endAwaitInput]
-            I'm finally HOME![endAwaitInput] '''
+ What an amazing guy!'''
 dialogs[893] = '''Can't believe we had arrows
- showering down around here...[endAwaitInput] Goo'''
-dialogs[894] = '''d, now I can finally go to the
- forest to chop some wood.[endAwaitInput] I'''
-dialogs[895] = ''''m so proud of my Gra'''
-dialogs[896] = ''''''
+ showering down around here...'''
+dialogs[894] = '''an finally go to the
+ forest to chop some wood.'''
+dialogs[895] = '''d of my Grandson.
+ Just look at him.'''
+dialogs[896] = '''ndson.
+ Just look at him.'''
 dialogs[897] = '''ndson.
- Just look at him.[endAwaitInput] My Grandson has com'''
+ Just look at him.'''
 dialogs[898] = '''e back home
- in'''
-dialogs[899] = ''' one piece. Thank you, Mario![endAwaitInput] There’s nothin'''
+ in one piece. Thank you, Mario!'''
+dialogs[899] = '''ce. Thank you, Mario!'''
 dialogs[900] = '''g to worry about
- anymore! I can fin'''
-dialogs[901] = '''ally relax.[endAwaitInput] Phew..[delay]..[delay] That was close,
- but I made it on time..'''
-dialogs[902] = '''.[delay]..[delay][endAwaitInput][newPage]
-                 [0x7024] points[end]
-          Hey, I'll carry that![endAwaitInput] Hi, Mario! Bet you're gonna b'''
+ anymore! I can finally relax.'''
+dialogs[901] = '''ally relax.'''
+dialogs[902] = '''.[delay]..[delay]'''
 dialogs[903] = '''e
  pretty busy from here on.
- What can I get you?[endAwaitInput] I thought I heard a'''
+ What can I get you?'''
 dialogs[904] = ''' big boom over
- from the mountains. Hm'''
+ from the mountains. Hmmmm, guess
+ I'm starting to hear things...'''
 dialogs[905] = '''mmm, guess
- I'm starting to hear things...[endAwaitInput] Things are finally back to
- normal. Thank you, Mario.[endAwaitInput]'''
+ I'm starting to hear things...'''
 dialogs[906] = ''' Thanks, Mario! Now we can all go
  outside and do what we want
- without worrying.[endAwaitInput] Be c'''
-dialogs[907] = '''areful, hon.[endAwaitInput] Come back again, you hear?
- Have you been to Yo'ster Isle?[newlineAwaitInput] [startSelection]  (You betcha)
- [startSelection]  (Nope, not yet)[endAwaitInput][newPage] Oh, I see..'''
-dialogs[908] = '''.[newlineAwaitInput] So you've tried your luck with the
- Goomba thumping ga'''
-dialogs[909] = '''me, huh?[endAwaitInput][newPage] You have to go'''
-dialogs[910] = ''''''
-dialogs[911] = ''' through the
- pipes to get there![endAwaitInput] Now I can finally move. Maybe I'll
- go pick mushrooms '''
-dialogs[912] = '''in the forest.[newlineAwaitInput] It’s a little scary, but I'll take'''
-dialogs[913] = ''' my
- chances.[endAwaitInput] Wait[delay][delay]...
- Why did I even come to Mushroom
-'''
-dialogs[914] = ''' Kingdom in the first place?[pauseAwaitInput][end]
- Guess I'll find out soon enough.[endAwaitInput][newPage] H'''
-dialogs[915] = '''ey, if you're out of cash,
- better learn to stash.[endAwaitInput]CHANCEL'''
-dialogs[916] = '''LOR: Oh, Mario!...
+ without worrying.'''
+dialogs[907] = '''areful, hon.'''
+dialogs[908] = '''e tried your luck with the
+ Goomba thumping game, huh?'''
+dialogs[909] = '''me, huh?'''
+dialogs[910] = ''' the
+ pipes to get there!'''
+dialogs[911] = ''' the
+ pipes to get there!'''
+dialogs[912] = '''t.[newlineAwaitInput] It’s a little scary, but I'll take my
+ chances.'''
+dialogs[913] = '''nces.'''
+dialogs[914] = '''in the first place?[pauseAwaitInput]'''
+dialogs[915] = '''re out of cash,
+ better learn to stash.'''
+dialogs[916] = ''' Mario!...
  There’s something important
- I need to discuss with you.[endAwaitInput] That Hammer you got...you've
- equi'''
-dialogs[917] = '''pped it, right?[endAwaitInput]
-   You're all set for your journey?[endAwaitInput][newPage] Shall I have Toad explain the
- process?[newlineAwaitInput] [startSelection]  (Yes, plea'''
+ I need to discuss with you.'''
+dialogs[917] = ''' right?'''
 dialogs[918] = '''se)
- [startSelection]  (Absolutely no need at all)[endAwaitInput]'''
-dialogs[919] = '''[newPage]TOAD: You will “equip” things
- using the menu.[newlineAwaitInput] Please press the “X” Button.[end]CHANCEL'''
-dialogs[920] = '''LOR: There, now I fe'''
+ [startSelection]  (Absolutely no need at all)'''
+dialogs[919] = '''ou will “equip” things
+ using the menu.[newlineAwaitInput] Please press the “X” Button.'''
+dialogs[920] = '''LOR: There, now I feel
+ more at ease.
+ Now it’s all up to you.'''
 dialogs[921] = '''el
  more at ease.
- Now it’s all up to you.[endAwaitInput]  [newPage]CHANCELLOR: I see. Wel'''
+ Now it’s all up to you.'''
 dialogs[922] = '''l then,[newlineAwaitInput] NEVER forget to equip new
  weapons and armor!
- Farewell and good luck![endAwaitInput] Oh, and take this along with you.[newlineAwaitInput] It '''
-dialogs[923] = '''should help you out.[endAwaitInput]
-'''
-dialogs[924] = ''' You take care, Grandma,
- you hear?[endAwaitInput] Hey![delay][delay]...[delay][delay]You gave it to someone![newlineAwaitInput] You're gonna get it![endAwaitInput] (Co'''
-dialogs[925] = '''ngrat'''
-dialogs[926] = ''''''
-dialogs[927] = '''ratulations!
-  Y'''
-dialogs[928] = '''os'''
-dialogs[929] = '''hi came in fir'''
+ Farewell and good luck!'''
+dialogs[923] = '''elp you out.'''
+dialogs[924] = '''e care, Grandma,
+ you hear?'''
+dialogs[925] = '''ngratulations!
+  Yoshi came in first!
+  A prize goes to the winner!)'''
+dialogs[926] = '''ulations!
+  Yoshi came in first!
+  A prize goes to the winner!)'''
+dialogs[927] = '''ons!
+  Yoshi came in first!
+  A prize goes to the winner!)'''
+dialogs[928] = '''oshi came in first!
+  A prize goes to the winner!)'''
+dialogs[929] = '''in first!
+  A prize goes to the winner!)'''
 dialogs[930] = '''st!
-  A prize goes to the winner!)[endAwaitInput] (Oh, you were SO close!
-  Too bad Yoshi lost...
-  Let’s race again, someti'''
-dialogs[931] = '''me.)[endAwaitInput] (Sorry.
+  A prize goes to the winner!)'''
+dialogs[931] = '''orry.
   Yoshi lost...
-  Better luck next time.)[endAwaitInput]
-                  GOAL![delay_48][end]YOSHI: (Saddle up?)
- [startSelection]  (Sure!)
-'''
-dialogs[932] = ''' [startSelection]  (No thanks)[endAwaitInput][newPage]
-         (Okay then, hop on!)[endAwaitInput]'''
+  Better luck next time.)'''
+dialogs[932] = '''hanks)'''
 dialogs[933] = '''[newPage]
-         (All right, see ya...)[endAwaitInput]YOS'''
-dialogs[934] = ''''''
-dialogs[935] = ''''''
-dialogs[936] = ''''''
-dialogs[937] = '''HI: (Come on, hop aboard!)[endAwaitInput] (Boshi here is the fastest runner
-  ...but he’s full of '''
-dialogs[938] = '''himself!)[endAwaitInput] (Boshi only races one-on-one
-  so everyone can't join u'''
+         (All right, see ya...)'''
+dialogs[934] = '''HI: (Come on, hop aboard!)'''
+dialogs[935] = '''HI: (Come on, hop aboard!)'''
+dialogs[936] = '''HI: (Come on, hop aboard!)'''
+dialogs[937] = '''HI: (Come on, hop aboard!)'''
+dialogs[938] = ''')'''
 dialogs[939] = '''s.
-  Bummer!)[endAwaitInput] (What? Are you cracked?
-  Racing’s my life!
-  I could run all day!)[endAwaitInput]
- (Careful, don't step on the '''
-dialogs[940] = '''eggs.)[endAwaitInput] (Hey, Yoshi! [pauseAwaitInput]Think you can
-  beat the old Bosh'''
-dialogs[941] = '''i today?)[newlineAwaitInput]  [startSelection] (Of course)
-  [startSelection] (No, not today)[endAwaitInput]BOSHI: (What're YOU lookin' at?[newlineAwaitInput] If you wanna challenge me,
- you have to bring Cookies!)[endAwaitInput]BOSHI: (SO! You br'''
-dialogs[942] = '''ought the
- Cookies. All right![newlineAwaitInput] Consider yourself lucky to'''
-dialogs[943] = '''day.[newlineAwaitInput] You've'''
-dialogs[944] = ''' got yourself a race...
- One-on-one!'''
-dialogs[945] = ''')[endAwaitInput]BOSHI:
- (This is as easy as it gets, man.)[endAwaitInput]
-      (That c'''
-dialogs[946] = '''an't happen twice!)[endAwaitInput]BOSHI: (Come back when you''''
-dialogs[947] = ''''''
-dialogs[948] = '''re
- SERIOUS! Now'''
+  Bummer!)'''
+dialogs[940] = '''(Hey, Yoshi! [pauseAwaitInput]Think you can
+  beat the old Boshi today?)[newlineAwaitInput]  [startSelection] (Of course)
+  [startSelection] (No, not today)'''
+dialogs[941] = ''')[newlineAwaitInput]  [startSelection] (Of course)
+  [startSelection] (No, not today)'''
+dialogs[942] = '''Cookies. All right![newlineAwaitInput] Consider yourself lucky today.[newlineAwaitInput] You've got yourself a race...
+ One-on-one!)'''
+dialogs[943] = '''day.[newlineAwaitInput] You've got yourself a race...
+ One-on-one!)'''
+dialogs[944] = '''lf a race...
+ One-on-one!)'''
+dialogs[945] = '''
+ (This is as easy as it gets, man.)'''
+dialogs[946] = '''an't happen twice!)'''
+dialogs[947] = '''re
+ SERIOUS! Now, I think those
+ Cookies there belong to ME!)'''
+dialogs[948] = '''OUS! Now, I think those
+ Cookies there belong to ME!)'''
 dialogs[949] = ''', I think those
- Cookies there belong to ME!)[endAwaitInput] (Wow! Unbelieva'''
-dialogs[950] = '''ble![newlineAwaitInput]  You just beat BOSHI!)[endAwaitInput] (Starting today, Yoshi's
-  the new BOSS around HERE!)[endAwaitInput]YOSHI: (But we don't need a BOSS!
- Anyway, I '''
-dialogs[951] = ''''''
-dialogs[952] = '''just want to race!)[endAwaitInput]YOSHI: (Come on, Boshi!
- Let’s see what you're mad'''
-dialogs[953] = '''e of!)[endAwaitInput]BOSHI: (Hmmm...[delay_48]All right!
+ Cookies there belong to ME!)'''
+dialogs[950] = '''u just beat BOSHI!)'''
+dialogs[951] = '''just want to race!)'''
+dialogs[952] = '''just want to race!)'''
+dialogs[953] = '''OSHI: (Hmmm...[delay_48]All right!
  Just stay outta my way![newlineAwaitInput] Oh, here’s the Cookie stash
- for the winner.)[endAwaitInput]YOSHI: (Thanks to you, Mario,[delay][delay]
-  I '''
-dialogs[954] = '''fin'''
+ for the winner.)'''
+dialogs[954] = '''finally beat that rascal! And
+ we can all race together now!)'''
 dialogs[955] = '''ally beat that rascal! And
- we can all race together now!)[endAwaitInput]YOSHI: (Here’s someth'''
+ we can all race together now!)'''
 dialogs[956] = '''ing to
- remember m'''
-dialogs[957] = ''''''
-dialogs[958] = '''e by!)[endAwaitInput] (Next t'''
-dialogs[959] = '''ime you're in trouble
+ remember me by!)'''
+dialogs[957] = '''(Next time you're in trouble
   during battle, use this to
-  give me a call.)[endAwaitInput]            Found '''
-dialogs[960] = '''a Cookie![end] (It would be so much better if we
-  c'''
-dialogs[961] = '''ould all race together!)[endAwaitInput]TOAD: Hello again! Get ready, the
- “Mushroom Derby” is co'''
-dialogs[962] = '''ming up.[newlineAwaitInput] Want instructions?[newlineAwaitInput] [startSelection]  (Sure!)
- [startSelection]  (No thanks)[endAwaitInput][newPage]
-'''
-dialogs[963] = '''           (See you around!)[endAwaitInput][newPage] Keep alt'''
-dialogs[964] = ''''''
+  give me a call.)'''
+dialogs[958] = '''(Next time you're in trouble
+  during battle, use this to
+  give me a call.)'''
+dialogs[959] = '''in trouble
+  during battle, use this to
+  give me a call.)'''
+dialogs[960] = '''!'''
+dialogs[961] = '''ould all race together!)'''
+dialogs[962] = ''' Want instructions?[newlineAwaitInput] [startSelection]  (Sure!)
+ [startSelection]  (No thanks)'''
+dialogs[963] = '''           (See you around!)'''
+dialogs[964] = '''ernating between the A
+ Button and the B Button in time
+ with the beat! Let’s practice!'''
 dialogs[965] = '''ernating between the A
  Button and the B Button in time
- '''
-dialogs[966] = '''with the beat! Let’s practice![endAwaitInput]One [end]Two [end]Three [end]                 Got it![end]Two [endAwaitInput][newPage] You're not getting i'''
-dialogs[967] = ''''''
+ with the beat! Let’s practice!'''
+dialogs[966] = '''at! Let’s practice!'''
+dialogs[967] = '''t right at all.
+ Are you sure you want to do this?[newlineAwaitInput] [startSelection]  (I'll practice again)
+ [startSelection]  (Race Time!)'''
 dialogs[968] = '''t right at all.
- Are you sure you want to '''
-dialogs[969] = '''do this?[newlineAwaitInput] [startSelection]  (I'll practice again)
- [startSelection]  '''
-dialogs[970] = ''''''
-dialogs[971] = ''''''
-dialogs[972] = ''''''
-dialogs[973] = '''(Race Time!)[endAwaitInput][newPage] Y'''
-dialogs[974] = '''ou still have some problems.'''
-dialogs[975] = ''''''
+ Are you sure you want to do this?[newlineAwaitInput] [startSelection]  (I'll practice again)
+ [startSelection]  (Race Time!)'''
+dialogs[969] = '''[newlineAwaitInput] [startSelection]  (I'll practice again)
+ [startSelection]  (Race Time!)'''
+dialogs[970] = '''(Race Time!)'''
+dialogs[971] = '''(Race Time!)'''
+dialogs[972] = '''(Race Time!)'''
+dialogs[973] = '''(Race Time!)'''
+dialogs[974] = ''' have some problems.
+ Come on! CONCENTRATE![newlineAwaitInput] [startSelection]  (I'll practice some more)
+ [startSelection]  (RACE TIME!)'''
+dialogs[975] = '''
+ Come on! CONCENTRATE![newlineAwaitInput] [startSelection]  (I'll practice some more)
+ [startSelection]  (RACE TIME!)'''
 dialogs[976] = '''
- Come on! CONCENTRATE'''
+ Come on! CONCENTRATE![newlineAwaitInput] [startSelection]  (I'll practice some more)
+ [startSelection]  (RACE TIME!)'''
 dialogs[977] = '''![newlineAwaitInput] [startSelection]  (I'll practice some more)
- [startSelection]  (RACE TIME!)[endAwaitInput][newPage]
-     There you go, that’s the way![endAwaitInput][newPage]
-'''
-dialogs[978] = '''    Now, shall we go to the race?[endAwaitInput]YOSHI: (Looks like I need a little
- more'''
-dialogs[979] = ''' practice. Oh, we'''
-dialogs[980] = '''ll...
- let’s try it again sometime.)[endAwaitInput][newPage] (Here, ta'''
-dialogs[981] = ''''''
-dialogs[982] = ''''''
-dialogs[983] = ''''''
-dialogs[984] = ''''''
-dialogs[985] = '''ke my Cookies.
-  Good luck! I'm rooting f'''
-dialogs[986] = '''or you!)[endAwaitInput][newPage] (Yeah, maybe another day...[newlineAwaitInput]  So you've h'''
-dialogs[987] = '''eard, right?...[newlineAwaitInput]  I'm just waiting f'''
-dialogs[988] = '''or the day we
-  can all race together.)[endAwaitInput] (It’s the best when we can
-'''
-dialogs[989] = '''  all race togethe'''
-dialogs[990] = '''r!)[endAwaitInput][newPage] (Wait a sec...
-  You don't have any Coo'''
-dialogs[991] = '''kies...[newPageAwaitInput]  Well, since Yoshi got everyone to
-  race ag'''
-dialogs[992] = '''ain, I'll give you mine as
-  a reward. Here, take 'em!)[endAwaitInput][newPage] (Remember, you need Cookies
- if you'''
-dialogs[993] = ''' want to race!)[endAwaitInput]            Got [0x7000] Cookie(s)![endAwaitInput][newPage]YOSHI:
-          I'll try my very best![endAwaitInput][newPage]'''
-dialogs[994] = ''' (Now no one has to be
-  left out of a race!)[endAwaitInput][newPage]'''
-dialogs[995] = '''BOSHI: (Let’s race again
- sometime, all right?)[endAwaitInput][newPage]
-       One[end][newPage]
-                Two[end][newPage] (Ok'''
-dialogs[996] = '''ay, now. Line up beside me
-   and we'll get this race'''
-dialogs[997] = ''' going!)[endAwaitInput] (You''''
-dialogs[998] = '''re carrying a lot of'''
+ [startSelection]  (RACE TIME!)'''
+dialogs[978] = '''all we go to the race?'''
+dialogs[979] = ''' practice. Oh, well...
+ let’s try it again sometime.)'''
+dialogs[980] = '''et’s try it again sometime.)'''
+dialogs[981] = '''okies.
+  Good luck! I'm rooting for you!)'''
+dialogs[982] = '''okies.
+  Good luck! I'm rooting for you!)'''
+dialogs[983] = '''okies.
+  Good luck! I'm rooting for you!)'''
+dialogs[984] = '''okies.
+  Good luck! I'm rooting for you!)'''
+dialogs[985] = '''okies.
+  Good luck! I'm rooting for you!)'''
+dialogs[986] = '''or you!)'''
+dialogs[987] = '''ght?...[newlineAwaitInput]  I'm just waiting for the day we
+  can all race together.)'''
+dialogs[988] = '''we
+  can all race together.)'''
+dialogs[989] = '''  all race together!)'''
+dialogs[990] = '''ait a sec...
+  You don't have any Cookies...[newPageAwaitInput]  Well, since Yoshi got everyone to
+  race again, I'll give you mine as
+  a reward. Here, take 'em!)'''
+dialogs[991] = '''  Well, since Yoshi got everyone to
+  race again, I'll give you mine as
+  a reward. Here, take 'em!)'''
+dialogs[992] = ''' give you mine as
+  a reward. Here, take 'em!)'''
+dialogs[993] = '''ce!)'''
+dialogs[994] = ''' one has to be
+  left out of a race!)'''
+dialogs[995] = '''Let’s race again
+ sometime, all right?)'''
+dialogs[996] = ''' Line up beside me
+   and we'll get this race going!)'''
+dialogs[997] = ''' (You're carrying a lot of things!
+  I'll store these '''
+dialogs[998] = '''re carrying a lot of things!
+  I'll store these '''
 dialogs[999] = ''' things!
-  I'll store these [0x7000] for'''
+  I'll store these '''
 dialogs[1000] = ''' you.
-  Don't worry...I '''
-dialogs[1001] = ''''''
-dialogs[1002] = '''won't eat them.[newlineAwaitInput]  That makes a total of [0x7024]. )[endAwaitInput] (That was mighty tasty.
-  So now we're back to 200![newlineAwaitInput]  '''
-dialogs[1003] = '''Thanks for the snack!)[endAwaitInput] (You're carrying to'''
+  Don't worry...I won't eat them.[newlineAwaitInput]  That makes a total of [0x7024]. )'''
+dialogs[1001] = '''t them.[newlineAwaitInput]  That makes a total of [0x7024]. )'''
+dialogs[1002] = '''t them.[newlineAwaitInput]  That makes a total of [0x7024]. )'''
+dialogs[1003] = '''Thanks for the snack!)'''
 dialogs[1004] = '''o many things
   and storing too many at the same
-  time. It'd be'''
-dialogs[1005] = ''' a shame to waste[newlineAwaitInput]  them, so I'll grab a few to eat.)[endAwaitInput][pauseAwaitInput][end]YOSH'''
-dialogs[1006] = '''I: (Thanks! I've go'''
-dialogs[1007] = '''t
- MAJOR support on my side,'''
-dialogs[1008] = ''' so
- I can probably win to'''
-dialogs[1009] = '''day!)[endAwaitInput]
-        Yoshi got some Cookies![endAwaitInput]'''
-dialogs[1010] = ''' theGot a “Map”![endAwaitInput] I almost forgot![newPageAwaitInput] This may not help you'''
-dialogs[1011] = ''', but...[newlineAwaitInput] Why don't you take it along![endAwaitInput]MALLOW:
-   What'''
-dialogs[1012] = ''' on earth ...WAS THAT?![endAwaitInput]GENO'''
+  time. It'd be a shame to waste[newlineAwaitInput]  them, so I'll grab a few to eat.)'''
+dialogs[1005] = ''' to waste[newlineAwaitInput]  them, so I'll grab a few to eat.)'''
+dialogs[1006] = '''I: (Thanks! I've got
+ MAJOR support on my side, so
+ I can probably win today!)'''
+dialogs[1007] = ''' support on my side, so
+ I can probably win today!)'''
+dialogs[1008] = '''robably win today!)'''
+dialogs[1009] = '''  Yoshi got some Cookies!'''
+dialogs[1010] = '''Map”!'''
+dialogs[1011] = ''', but...[newlineAwaitInput] Why don't you take it along!'''
+dialogs[1012] = '''h ...WAS THAT?!'''
 dialogs[1013] = ''': Well, we won the battle.
  Now I hope we don't lose the war.
- Where are D'''
-dialogs[1014] = '''yna and the star?[endAwaitInput]GENO: I guess my '''
-dialogs[1015] = '''question’s just
- been answered...[endAwaitInput]MALLOW: Come on Mario, let’s GO![endAwaitInput] Forgive me.[newlineAwaitInput] But I c'''
-dialogs[1016] = '''an't st'''
-dialogs[1017] = '''op worrying
- about the Princess...[endAwaitInput] Go to the cellar and prepare for
-'''
-dialogs[1018] = ''' your journey. The Vault Guard
- shall assist you.[endAwaitInput] Are you leav'''
+ Where are Dyna and the star?'''
+dialogs[1014] = '''star?'''
+dialogs[1015] = '''’s just
+ been answered...'''
+dialogs[1016] = '''an't stop worrying
+ about the Princess...'''
+dialogs[1017] = '''ing
+ about the Princess...'''
+dialogs[1018] = '''ey. The Vault Guard
+ shall assist you.'''
 dialogs[1019] = '''ing now?[newlineAwaitInput] [startSelection]  (Nope)
- [startSelection]  (You bet'''
-dialogs[1020] = ''')[endAwaitInput] Please make yourself at home.[endAwaitInput]
-         Please enjoy your stay.[endAwaitInput][newPage]
-             Enjoy your'''
-dialogs[1021] = ''' stay.[endAwaitInput][newPage]
-            Please come again.[endAwaitInput] Sir, this is the gift we promised
- you upon selection of the s'''
+ [startSelection]  (You bet)'''
+dialogs[1020] = ''')'''
+dialogs[1021] = '''
+            Please come again.'''
 dialogs[1022] = '''uite.
- We h'''
-dialogs[1023] = '''ope you will enjoy it.[endAwaitInput] The bellhop will show you
- to your room.[newlineAwaitInput] Please enjoy your stay.[endAwaitInput]
-      Hello. How may I help you?[endAwaitInput] This is the room. Please make
- yourself at home.[endAwaitInput]      Looks like he wants a TIP...[endAwaitInput] Will you give him one?[newlineAwaitInput] [startSelection]  (Sure, why not?)
- [startSelection]  (No way)[endAwaitInput]   You're a little short of coins...[endAwaitInput] THANK YOU very much, sir!
- Please enjoy your stay here.[endAwaitInput]
-         Anything else, sir?...[endAwaitInput]    You have paid for only
-       one night’s stay...[endAwaitInput] Would you like to stay longer?[newlineAwaitInput] [startSelection]  (Yes)
- [startSelection]  (I'll pass)[endAwaitInput] Good morning!
- I hope you were able to sleep well.[newlineAwaitInput] [startSelection]  (You betcha)
- [startSelection]  (What a disaster!)[endAwaitInput][newPage] Sir, I am so sorry![newlineAwaitInput] I hope it was not MY service
- that got on your nerves.[endAwaitInput][newPage] Oh is that so?![newlineAwaitInput] It is a pleasure to serve you, sir![endAwaitInput][newPage] This is another complimentary
- gift. Please take it along
- with you.[endAwaitInput][newPage] Please feel free to drop by
- again, anytime, sir![endAwaitInput] Sir![endAwaitInput] Thank you very much.[endAwaitInput] Please, make yourself at home.[endAwaitInput]
- Now I shall be on my way...[endAwaitInput] Wait a minute[delay]...You're broke![newlineAwaitInput] I have no choice but to make you
- work for the remaining amount![endAwaitInput] They took EVERY one of the
- [0x7000]00 coins...[endAwaitInput] I'll have you work even if it
- means breaking every bone
- in your body![endAwaitInput] Bellhop! Escort this guest
- over to our suite![endAwaitInput]
-      Remember to do a good job.[endAwaitInput]
-        Please escort our guest![endAwaitInput]
-            Please calm down.[endAwaitInput]
-  Please take care of these things.[endAwaitInput] Please escort our guest
- immediately![endAwaitInput] I don't want to be a bother, but
- could you please help me out?[endAwaitInput] Phew! Finally here![endAwaitInput]
- Hey, you're mighty handy
- around here. You deserve a tip.
- Go on, take it![endAwaitInput]
-        Please see our guest out.[endAwaitInput]
- I'm tired from walking all day
- long. I have no requests now,[newlineAwaitInput] thank you.[endAwaitInput] Thanks a lot.[endAwaitInput] Come on, what are we waiting for?
- Take us up to the suite![endAwaitInput] Oh, I'm just exhausted!
- Take me up to my room.[endAwaitInput]
-    You're not off the hook, yet![endAwaitInput] Good job.
- Now don't you EVER spend another
- night here without any money![endAwaitInput] You are not a guest, now.
- Please come here and we shall
- discuss this matter.[endAwaitInput] Here you go.[endAwaitInput] End[endAwaitInput] [startSelection] Next
- [startSelection]
- [startSelection] [endAwaitInput] [startSelection] Next
- [startSelection]
- [startSelection] [endAwaitInput] [startSelection] Next
- [startSelection]
- [startSelection] [endAwaitInput] [startSelection] Next
- [startSelection] 
- [startSelection] Option[endAwaitInput] [startSelection] Next
- [startSelection] 500 coins
- [startSelection] 1 level up[endAwaitInput] [startSelection] Next
- [startSelection]
- [startSelection] [endAwaitInput] [startSelection] Next
- [startSelection]
- [startSelection] [endAwaitInput] [startSelection] Next
- [startSelection]
- [startSelection] [endAwaitInput] [startSelection] Next
- [startSelection]
- [startSelection] [endAwaitInput] [startSelection] Next
- [startSelection]
- [startSelection] [endAwaitInput] [startSelection] Next
- [startSelection] 99 flowers
- [startSelection] Max level up[endAwaitInput] Use A to level up, B to cancel.[end] Trade the coins you got from
- “Midas River” for “Frog Coins”.[newPageAwaitInput] As a first time only bonus, I'll
- give you [0x7024] Frog Coin for [0x7000] of
- your coins.[newPageAwaitInput] If you didn't know, “Frog Coins”
- are the green ones and Tadpole
- Pond’s got more info on them.[pauseAwaitInput][newPage][end] As a special bonus for getting 100
- coins in one shot, I'll give you 5
- Frog Coins![endAwaitInput] On top of that...
- Here’s an extra 5 Frog Coins for
- scoring 100 coins in one sweep.[endAwaitInput] Use the coins I'm holding for you?[newlineAwaitInput]  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput] I'll hold your [0x7000] extra coin(s).[endAwaitInput] You got [0x7000] coin(s).
- But that’s not enough to cash in,
- so I'll hold them for you, okay?[newlineAwaitInput] Come back and try again![endAwaitInput] Today you can trade in [0x7000] coins
- for [0x7024] Frog Coin![pauseAwaitInput][newPage][end] If we add your previous total...[pauseAwaitInput]
-[end] You got [0x7000] coin(s), so...
-[end] You'll get [0x7000] Frog Coin for your
- trade in.[endAwaitInput] [newPage] You have [0x7000] [0x70A7](s).[end] [newPage] [0x70A7][end]
-         Found a “Frog Coin”![end]
-  Now for the barrel jumping event.[newPageAwaitInput] Need some pointers?
-  [startSelection]  (Sure, why not?)
-  [startSelection]  (No thanks)[endAwaitInput][newPage] Time your jumps and grab coins
- along the way.[pauseAwaitInput][end][newPage] Jump onto the next barrel before
- they collide.[pauseAwaitInput][end][newPage] Miss it and you'll change course.[pauseAwaitInput][end][newPage] Well it looks like you're ready,
- so I'll send you on your way![endAwaitInput] Almost forgot to tell you!
- Leap over the fish that pop up or
- you'll lose coins![endAwaitInput]CROCO: Are you trying to tail me?
- Go on home to mommy before you
- get hurt, kid![endAwaitInput]CROCO: You couldn't jump to save
- your life, kid, so I guess this is
- goodbye![endAwaitInput]CROCO: Oh!
- You're a persistent bugger!
- But I'm a 100 miles ahead of ya![endAwaitInput]CROCO: Give it UP already!
- That treasure box is tempting,
- but now is not the time.[endAwaitInput]CROCO: Dead end!
- And they won't give up...!
- I'll just have to hide![endAwaitInput]CROCO: Enough!
- Ya got me fair and square.[newlineAwaitInput] I'll give you back your coin![endAwaitInput]CROCO: Whoa!
- Did ya really believe me?
- I was••[delay]••[delay]••[delay]LYING!!![endAwaitInput]MALLOW: Yeah, we did it!
- We got Grandpa’s coin back.[newPageAwaitInput] I can finish my errand now.[newPageAwaitInput] Hey, look at this!
- That Croco guy left a wallet![endAwaitInput]MALLOW: There he is!
- He probably stashed it in that bag.
- Let’s nab him![endAwaitInput]CROCO: What’s this? You fools
- couldn't chase down a pumpkin![endAwaitInput]CROCO: Ha!
- Your eyes are much faster than
- your feet![newlineAwaitInput] At this rate it'll take ya••[delay]••[delay]••
- [0x7000] more years to catch me![endAwaitInput]CROCO: You AGAIN?
- This is getting old![newlineAwaitInput] It'll STILL take you [delay]••[delay]••[delay]••[delay]••[delay][endAwaitInput]MALLOW: He’s gone into hiding.[newlineAwaitInput] Let’s see if we can sneak up behind
- him and catch him.[endAwaitInput]
-            Found a “Wallet”[endAwaitInput]MALLOW: I'm going back to the shop
- at Mushroom Kingdom.
- Are you coming?[endAwaitInput] Here’s something I picked up.
- You can keep it for good luck.[endAwaitInput]     Received a “NokNok Shell”![endAwaitInput][newPage] Along the way, there are a few
- traps. As to what will happen,
- we'll just keep that a surprise.[endAwaitInput][newPage]
-           Now off you go![pauseAwaitInput][end]
- The high score is [0x7000] coin(s)![newlineAwaitInput] Don't forget! I'm holding your
- [0x7024] extra coin(s).[pauseAwaitInput][end] Wasn't that fun?
- You got... [0x7000] coin(s)![pauseAwaitInput][newPage][end] You can try your luck again if you
- get on the trampoline.
- It'll only cost 30 coins.[pauseAwaitInput][end] All right, hop on up![endAwaitInput] All right, maybe next time.[endAwaitInput] You gave me the coins, right?
- Well jump on and have a good trip![endAwaitInput] Oops, looks like you don't have
- enough coins.
-[end]
- Give it another shot?[newlineAwaitInput]  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]
-   This is the Midas River course.[newPageAwaitInput] Want a crash course on it?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput][newPage] You'll start off first at the falls.[newlineAwaitInput] Use the Control Pad to move left
- or right, and score coins.[pauseAwaitInput][end][newPage] Push “B” to make a little headway
- against the flow.[pauseAwaitInput][end] Oh, bummer!
- You didn't score any coins.[pauseAwaitInput][newPage][end] Wow, you just broke the record!
- You made the highest score![pauseAwaitInput][newPage][end] It’s [0x7024] coins for a night.[newlineAwaitInput][end] Ya'll staying the night?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput] You need more coinage![endAwaitInput] A fella named “Toad” something or
- other came by, mumbling about
- music.[newPageAwaitInput] He didn't stay here, but went
- to Tadpole Pond, over yonder.[newPageAwaitInput] Business ain't so good, you know.
- Any chance you'd want a room?[endAwaitInput]GOOMBA: Bowser, most of our
- allies have run off!
- What will we do?[endAwaitInput]MAGIKOOPA: We've only had
- experience fighting Mario.
- These new guys are too much![endAwaitInput]BOWSER: Shut up, all of you![newPageAwaitInput] I'm the biggest, baddest brute
- around, and don't you forget it.[newlineAwaitInput] But if Mario hears that I've been
- kicked out of my own castle...[newPageAwaitInput]
-    My reputation will be ruined![newPageAwaitInput] Even I have an image to keep up
- you know![newPageAwaitInput] Let’s show 'em who’s the boss
- around here.[endAwaitInput] A star dropped into the mountain
- and trapped some kids inside.[newlineAwaitInput] To make things worse, one of the
- men folk be stuck inside too.[newPageAwaitInput] Please Mario, you gotta help us![endAwaitInput] I knew it was bad news when that
- star fell on the mountain.[newlineAwaitInput] Sure enough, it’s causin' trouble![endAwaitInput] The men folk are doin' their best
- from the inside.
- I'm diggin' in from the outside...[newlineAwaitInput] We got to help 'em folks out.[endAwaitInput] What’s happening up there?
- Is she still working up a sweat?[endAwaitInput] Yeah, and so are the men.
- Everyone’s diggin' and diggin'...[newlineAwaitInput] I can't keep up with 'em.[endAwaitInput] Good to have you back!
- Your time was [0x7000timer].[newlineAwaitInput][end] The record so far stands at...
- ...uh... [0x7000timer]![newPageAwaitInput][end] Well, that’s too bad, but you come
- and try again, ya hear?[endAwaitInput] Let me tally up the numbers...
- Well, whatta ya know!
- The new record is [0x7000timer]![endAwaitInput]MA'MOLE: I wonder how those
- kids're doing?
- Sure wish they'd hurry home![endAwaitInput]PA'MOLE: Settle down, woman![newlineAwaitInput] I asked Mario to help us out,
- so I reckon he'll bring 'em back
- when he’s good 'n ready![endAwaitInput]MA'MOLE: I just have this odd
- feeling that they'll be dropping in
- on us any minute now...[endAwaitInput]PA'MOLE: They still gotta use the
- door like everyone else, Ma.
- Now settle down![endAwaitInput]DYNA: We're home![endAwaitInput]MA'MOLE: Gracious!
- They really DID drop in on us![newPageAwaitInput] Oh, my poor babies! Are you okay?[newlineAwaitInput] Little Mite, are you hurt?![endAwaitInput]DYNA: Naw, we're okay Ma.
- Isn't that right, Mite?
- We had FUN![endAwaitInput]MITE: Ma-ma! Pa-pa![endAwaitInput]MA'MOLE:
- He’s been knocked senseless!
- You poor baby, you're safe now.[newPageAwaitInput] Dyna! Haven't I told you often
- enough, to never go into the mines
- by yourself?![endAwaitInput]PA'MOLE: That’s enough, Ma.
- Just be happy to have 'em back![newPageAwaitInput] We haven't thanked Mario proper,
- either.[endAwaitInput]MA'MOLE: I'm so embarrassed![newlineAwaitInput] Mario, we can't thank you enough
- for everythin'.[newPageAwaitInput] What’s that? The roof, you say?
- Naw, that don't matter none,
- right Pa?[endAwaitInput]PA'MOLE: It ain't nothing at all!
- You just leave any repairs to me.[newlineAwaitInput] Give me a holler if you ever need
- a hand with your place![newPageAwaitInput] Thanks again for bringing our
- babies back to us.[endAwaitInput] Almost forgot!
- You wagered 30 coins, didn't ya?
- Here’s 50, you lucky dog![endAwaitInput]MA'MOLE: I reckon Dyna’s taken
- a liking to you Mario.[endAwaitInput]PA'MOLE: If you need anything,
- don't be no stranger now.[newPageAwaitInput] I'll be heading back to the mountain
- after fixin' the roof, but you come
- back and see us again, you hear?[endAwaitInput]DYNA: That trolley ride was fun!
- Can we go again?[endAwaitInput] C'mon in, don't be shy![newlineAwaitInput] Everyone’s up on the mountain,
- but I'm stuck mindin' the store.[newlineAwaitInput][end] So, watcha need?[endAwaitInput] C'mon in, you're the talk of the
- town. They say that you saved
- the kids.[newlineAwaitInput][end] You hear 'bout my husband?
- He’s starting a business using
- that shortcut I dug.[newlineAwaitInput] Plannin' on hanging a sign on it
- and calling it “Moleville Mountain”
- or something. Menfolk! Hmph![pauseAwaitInput][end] Welcome to my pur-tend store![newlineAwaitInput] Would you like a “Shiny Stone”?
-  [startSelection]  (Sure)
-  [startSelection]  (Nope)[endAwaitInput] This hole my wife dug is a shortcut
- to the trolley![newlineAwaitInput] It’s an amusement ride and I named
- it “Moleville Mountain”!
- Ain't that nifty?[pauseAwaitInput]
-[end] Drop in here, and you'll be right at
- the trolley tracks.
- It'll only cost ya 10 coins.[pauseAwaitInput][newPage][end] The high score's...
- ...um, oh yeah, [0x7000timer].
- So, you wanna ride it or what?[newlineAwaitInput]  [startSelection]  (Yes)
-  [startSelection]  (Nope)[endAwaitInput] Be that way.[endAwaitInput] Oh shucks, you ain't got the coins!
- Well that’s too bad.
-[end] A ticket only costs ya 10 coins,
- or you can wager 30 coins.
-[end] So what'll it be?[newlineAwaitInput]  [startSelection]  (Pay 10 coins)
-  [startSelection]  (Wager 30 coins)
-  [startSelection]  (Listen to an explanation)[endAwaitInput] Right. I got your [0x7000] coins.
- You just hop right in that hole.[endAwaitInput] A trolley ticket costs 10 coins.[newlineAwaitInput] But wager 30 coins, an' break the
- record, and you'll get 50 coins![pauseAwaitInput]
-[end] You paid already, so you can go in.[endAwaitInput] Hey, whatcha trying to pull, huh?
- You gotta pay me first, or you
- can't ride the trolley.[endAwaitInput] We'll take care of the trolley,
- so don't bother with it.[endAwaitInput] The record at “Moleville Mountain”
- stands at [0x7000timer].
- Come back and ride it again.[newlineAwaitInput] When you're tired, just go to the
- inn and rest.[endAwaitInput] You heard?
- There’s a rumor that Booster's
- new girlfriend fell from the sky.[newlineAwaitInput] She’s supposed to be purty, too,
- just like a princess.[endAwaitInput] I knew everything was going to
- be all right when you showed up.[newlineAwaitInput] Thank goodness those kids're safe.
- Good luck findin' that princess
- o' yours soon, too.[endAwaitInput] You know Booster?[newlineAwaitInput] He’s the weirdo livin' in the tower
- a little way from here.[endAwaitInput] Check out Booster’s Tower.
- It’s filled with neat stuff![endAwaitInput]
-     “Mi”, a name I call myself![newPageAwaitInput]
-  “Ti”, a drink of jam and bread![newPageAwaitInput]
-              [delay]  [delay]Oops![newPageAwaitInput] That's...not really how it goes.[newPageAwaitInput] I'm just bored.[newlineAwaitInput] But if you go to the mountain,
- they'll sing you the real song.[endAwaitInput] A pretty star crashed down into
- the mountain.[newlineAwaitInput] I wanted to see it, but my Ma told
- me it was too dangerous.[endAwaitInput] Ma said she'd go and find out
- what’s happening, but she’s sure
- takin' her sweet time.[endAwaitInput] My Ma and Pa are helpin' out on
- the mountain.[endAwaitInput] I'm so hungry!
- Sure wish I had a Carbo Cookie.[endAwaitInput] Ooh, you have a Carbo Cookie!
- I'm so hungry.
- May I have it, please?[newlineAwaitInput]  [startSelection]  (Sure)
-  [startSelection]  (Nope)[endAwaitInput] You're such a Scrooge![endAwaitInput] Wow, thanks a lot!
- Here you can take this green...[newPageAwaitInput] Oops! I must have dropped it.
- Sorry about that, but come back
- later and I'll find another one.[endAwaitInput] Ooh, thanks!
- Since you're so nice, I'll give you
- this green coin.[endAwaitInput] Ma’s off gossipin' again!
- She’s been gone for hours.[endAwaitInput] Take a ride on Pa’s trolley, Mario.[endAwaitInput] Sorry, curatives are all gone.
-[end] Tank you, pweese come again![endAwaitInput]      Received a “Shiny Stone”[endAwaitInput] It’s an emergency!
- Dyna’s trapped in the mines![endAwaitInput] Dyna went to the mountain with
- little Mite.[newlineAwaitInput] But a star crashed into the
- mountain, and now they be trapped![endAwaitInput] You're a hero, Mario!
- If it weren't for you, Dyna would
- still be inside that mountain![endAwaitInput]What a nice “Shiny Stone”.
-I'll trade you my “Carbo Cookie”![newlineAwaitInput]  [startSelection]  (Okay)
-  [startSelection]  (No thanks)[endAwaitInput] Gracious, what a deal!
- Well here you go.[endAwaitInput]     Received a “Carbo Cookie”[endAwaitInput] Hey Mister!
- Didja ride on my Pa’s trolley?
- He says I'm too young to ride it.[endAwaitInput] You can't get inside Booster's
- Tower very easily. You'll need
- a REALLY strong person for that.[endAwaitInput]MA'MOLE: Seen our roof yet?[newlineAwaitInput] Pa fixed it up and now he’s back
- to work at the mountain.[newlineAwaitInput] He’s singin' “Moleville Blues♪”
- and putting in a hard day’s work.[endAwaitInput]SNIFIT 1: Come back Mr. Beetle!
- Don't you want to come to
- Booster’s and play?[newPageAwaitInput]SNIFIT 2: Yeah, don't run away!
- We just want to play!
- We'll take good care of you...[newPageAwaitInput]SNIFIT 3: Uh...like...
- what they said, okay, Mr. Beetle?[endAwaitInput]SNIFIT 1:
- Don't you DARE touch that beetle!
- It’s a present for Booster.[newPageAwaitInput]SNIFIT 2: That’s right!
- Just hand it over, nice and easy.[newPageAwaitInput]SNIFIT 3: Uh...
- Yeah...like they said...
- Or we won't be your friend.[endAwaitInput]SNIFIT 1: Booster really, really,
- REALLY likes beetles!
- But he can't catch his own.[newPageAwaitInput]SNIFIT 2: That’s right, he’s busy
- keeping the princess from the sky
- entertained.[newPageAwaitInput]SNIFIT 3: So we're catching
- beetles for him.[endAwaitInput]SNIFIT 1: So hand it over![newPageAwaitInput]SNIFIT 2: That’s right![newPageAwaitInput]SNIFIT 3: Uh...
- [delay]••[delay]••[delay]••Pretty please?[endAwaitInput]SNIFIT 1: Oh no!
- It’s getting away![newPageAwaitInput]SNIFIT 2: Quick, catch it![newPageAwaitInput]SNIFIT 3: CATCH IT![endAwaitInput] Now, who would have thought a
- girl could fall out of the sky?
- Maybe it’s Princess Toadstool?![newlineAwaitInput] Nah...[endAwaitInput]PA'MOLE: Mario, you're our only
- hope for those kids.
- We're countin' on ya.[endAwaitInput] How about a trolley ride?[newlineAwaitInput]  [startSelection]  (Pay 10 coins to ride)
-  [startSelection]  (Wager 30 coins and ride)
-  [startSelection]  (Don't ride the trolley)[endAwaitInput] Ma and Pa say little ones aren't
- allowed on the trolley.
- I can't wait to get older![endAwaitInput]
-  Bring your unwanted items here![newPageAwaitInput]  We'll exchange your Mushrooms
-       and Syrups for points.[newlineAwaitInput]        For every 100 points
-    you'll get an item in return![newPageAwaitInput]           You can choose
-     one of the following gifts
-       to take away with you.[newPageAwaitInput]  1)A “Fright Bomb” which allows
-     you to make one enemy quiver
-     in fright.[newPageAwaitInput]  2)A “Fire Bomb” for a fire
-     attack against all enemies.[newPageAwaitInput]  3)An “Ice Bomb” for an ice
-     attack against all enemies.[newPageAwaitInput]   They're all quite rare and hard
-               to come by.[endAwaitInput]        Received a Frog Coin![endAwaitInput]   Found a “[0x70A7]”![end]TOADSTOOL: Please, let me go!
- Won't you...please?
- Pretty please?[endAwaitInput]BOOSTER: Eh?[newlineAwaitInput]  Hey, where’s my bride-to-be?[newlineAwaitInput][end]  I wanna play hide and seek, too![newPageAwaitInput]TOADSTOOL: Yuck, I don't want to
- play ANYTHING with you![newPageAwaitInput]BOOSTER: What a poor sport!
-  Well, we really should hurry along.[newlineAwaitInput]  A yummy cake is waiting for us
-  after we climb this hill![newlineAwaitInput]  Let’s GO![newPageAwaitInput]TOADSTOOL: NO!
- I don't want to marry you.
- Please let me go![endAwaitInput]TOADSTOOL: Help! Mario!
- Please help meeeeeee![newPageAwaitInput]BOOSTER: Uh oh! It’s Mario![newlineAwaitInput]  We didn't plan on this.[endAwaitInput]BOOSTER: Mario, you aren't
-  invited to our wedding![newlineAwaitInput]  Besides, we still have to have
-  the rehearsal![newPageAwaitInput]  I'll be happy to race you to the 
-  wedding hall, but ••[delay]••[delay]••[delay][newlineAwaitInput]  you'd better not get in my way.[newPageAwaitInput]  Ready?[endAwaitInput][newPage] You can only move left or right,
- and jump. You can't go forward
- or backward.[pauseAwaitInput][end][newPage] Touch the Snifits or any of the
- barrels and you'll fall back.[pauseAwaitInput][end][newPage] Jump on the barrels or the Snifits
- to sprint forward.[pauseAwaitInput][end][newPage] Reach out and touch Toadstool,
- and you'll win “Flowers”![pauseAwaitInput][end][newPage]
-         Ready, get set, go![endAwaitInput]
- This is the “Booster Hill” track.[newPageAwaitInput] Need some advice?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]          Scored [0x7000] “Flower”s[endAwaitInput]          Caught [0x7000] “Beetle”s[endAwaitInput] Ready for the “Beetle Race”?[newPageAwaitInput] Do you need instructions?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput][newPage] Use Booster, the Snifits, or the
- barrels to move ahead and catch
- “Beetles”.[pauseAwaitInput][end]      Didn't get any “Flowers”.[endAwaitInput]      Didn't get any “Beetles”.[endAwaitInput]                 [0x7000] female [end]
-                 [0x7000] male [end]
-                 [0x7000] gold [endAwaitInput] Gasp, gasp![newlineAwaitInput] Phew, what a workout.[endAwaitInput] Um••••••Mario?[newlineAwaitInput] This is “Booster Hill”, where there
- isn't much besides barrels.[newPageAwaitInput] So, please follow me to the exit.[newlineAwaitInput]  [startSelection]  (Go with him)
-  [startSelection]  (Don't go with him)[endAwaitInput] Follow me, it’s right this way.[endAwaitInput] Okay, whatever![endAwaitInput] There are no more flowers left.
- Let’s leave now.[newlineAwaitInput]  [startSelection]  (Okay)
-  [startSelection]  (No)[endAwaitInput] There’s nothing left to win here.
- Let’s go now.[newlineAwaitInput]  [startSelection]  (All right)
-  [startSelection]  (No)[endAwaitInput] Uh...Mario?
- There are no more Beetles left.[newPageAwaitInput] Take your “Beetle Box” to the store
- in Seaside.[newPageAwaitInput] I'll guide you out now.[newlineAwaitInput]  [startSelection]  (Okay)
-  [startSelection]  (No)[endAwaitInput] Hey Mario!
- You didn't catch any beetles.
- Would you like to try again?[newlineAwaitInput]  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput] Well, I'll show you out then.[endAwaitInput] You know what, Mario?[newlineAwaitInput] You've got to rent a “Beetle Box”
- from the store in Seaside, or you
- won't be able to catch them.[newPageAwaitInput] I'll show you the way out, so just
- follow me, all right?[newlineAwaitInput]  [startSelection]  (Okay)
-  [startSelection]  (No)[endAwaitInput][newPage] By the way, do you have any items
- to get rid of?[newPageAwaitInput][end] If you have extra items, we'll take
- them for you.[newPageAwaitInput][end] We ain't no store or nothing, so
- you won't get any money for them,
- but we'll give you points.[newPageAwaitInput] For every 100 points, you'll get
- a gift.[newPageAwaitInput] Look at the sign to see the items
- we offer.[newPageAwaitInput][end] You have [0x7000] points now.
-[end] Would you like to trade in an item?[newlineAwaitInput]  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput] Choose an item with the Control
- Pad and enter with “A”.
- Use “B” to cancel.[endAwaitInput] Don't want your “[0x70A7]”?
- How many of them do you want to
- trade in?[pauseAwaitInput][end] All right, I took [0x7000] of your
- “[0x70A7]”s.[newPageAwaitInput][end] Let’s see.[end] If we total that up, you've got
- [0x7000] points![newPageAwaitInput] You have more than 100 points,
- so go ahead and choose an item.[newPageAwaitInput]  [startSelection]  (Fright Bomb)
-  [startSelection]  (Fire Bomb)
-  [startSelection]  (Ice Bomb)[endAwaitInput][newPage] Use the Control Pad to choose how
- many. Confirm with “A”, or use
- “B” to cancel.[pauseAwaitInput][end]      Received “[0x70A7]”[endAwaitInput] Come on back when you get
- spare items![endAwaitInput] You're looking for a star?
- Didn't you find one in the treasure
- box, next to the trampoline?[endAwaitInput] I have a star to sell, but you
- don't have enough coins.[endAwaitInput] You're looking for a star?
- I'll sell one for 400 coins.
- Are you interested?[newlineAwaitInput]  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] You want a better star?[newlineAwaitInput]  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] Suit yourself.
- See ya![endAwaitInput] Come back later.
- I'll find it by then.[endAwaitInput] I found an incredible star.
- I'll sell it for 800 coins.[newlineAwaitInput]  [startSelection] (Buy it)
-  [startSelection] (Pass)[endAwaitInput] For 100 coins, this short cut will
- get you back to the surface.[newlineAwaitInput]  [startSelection] (Okay)
-  [startSelection] (No thanks)[endAwaitInput] This trampoline will get you to the
- surface. I'll let you use it for
- 100 coins.[endAwaitInput] Mmm, I'm so hungry!
- Wish I had something to eat![endAwaitInput] Hmm, you look so tasty.
- I think I'll just have a snack![endAwaitInput] That bucket’s my seat, so don't
- take it, okay?[endAwaitInput] That pipe is a shortcut to my home,
- Monstro Town.[newlineAwaitInput] I'll see you there.[endAwaitInput] Isn't this incredible?[newlineAwaitInput] It really does look like the edge of
- the world, doesn't it?[newPageAwaitInput] It’s too spooky for me!
- I'm heading back to Monstro Town.[newlineAwaitInput] See ya![endAwaitInput] Give me the key, and I'll let you
- pass through.[endAwaitInput] That key you have there looks
- pretty tasty.[newlineAwaitInput]  [startSelection] (Give him the key)
-  [startSelection] (Keep the key)[endAwaitInput] Eww, a mouthful of rust.
- Thanks anyway.[endAwaitInput] Sorry, I'm not accepting visitors
- past my bedtime.[endAwaitInput] I'll tell your fortune for 50 coins.[endAwaitInput] Do you want your fortune told?
- It'll cost 50 coins.[newlineAwaitInput]  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] See the three faces on the wall?
- Hit them in any order and you'll
- receive your fortune.[endAwaitInput]    Yikes, looks like you'll have
-       hardships ahead of you.[endAwaitInput] Looks like you'll have a great meal
-        sometime in the future.[endAwaitInput]  Some tasty snacks are awaiting
-           you in the future.[endAwaitInput]   You'll have many friends in the
-                 future.[endAwaitInput] You'll have plenty of good things
-          to look forward to.[endAwaitInput]     You'll find some rare items.[endAwaitInput]      You'll pick up great items.[endAwaitInput]   If you proceed through the pipe
-              next door...
-[end] Have you seen the huge hole in the
- cliff at Booster Pass?
- Strange, huh?[endAwaitInput] Giving up?
- Wanna give it another shot?[newlineAwaitInput]  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] I heard you're on a quest for the
- stars that have been raining down.
- Good luck to ya![endAwaitInput] Heard the fireworks guy’s working
- on a new masterpiece.[newlineAwaitInput] Why don't you buy a few from him
- and cheer him on?[endAwaitInput]SERGEANT FLUTTER: Ten-hut!
- All troops in positions![newPageAwaitInput] Mario, your mission is to scale the
- cliff, by jumping shell to shell.[endAwaitInput]SERGEANT FLUTTER: Don't give up!
- Sure and steady does it.
- Now try it again.[endAwaitInput]SERGEANT FLUTTER: 
- Mission accomplished!
- Elapsed time is [0x7000timer].[newlineAwaitInput][end] Not bad for a civilian![endAwaitInput] That’s quite good.[newlineAwaitInput][end] Distinguishing work, soldier![newPageAwaitInput][end] Very commendable!
- That’s quite a time you set.[newPageAwaitInput] You'd be a great Sky Troopa,
- if only you had wings and a shell.[newPageAwaitInput][end] Here’s the next best thing!
- A Troopa Pin![endAwaitInput] Here’s a little something from me.[endAwaitInput] Keep up the great work![endAwaitInput] Keep working on it.[endAwaitInput] Where are you heading?[newlineAwaitInput] Is it Monstro Town by any chance?[newlineAwaitInput]  [startSelection] (Yes)
-  [startSelection] (Nope)[endAwaitInput] Oh, I thought you were lost or
- something.[newlineAwaitInput] Never mind, I'll see you around.[endAwaitInput] Ok, listen up.
- Look for the whirl where the ant
- pops up and proceed after it.[newPageAwaitInput] Keep following it and you'll find
- your way underground.[newPageAwaitInput] Once there, Monstro Town’s just
- around the corner.
- I'll see you there.[endAwaitInput] What did you do that for?[newPageAwaitInput] You won't get any coins from
- jumping on me. It’s Wiggler or
- Shogun you ought to look for.[endAwaitInput] I've been all around the world.[newPageAwaitInput] But the strangest person I met,
- is this old geezer in Rose Town.[newPageAwaitInput] He really is weird, but definitely
- worth meeting.[endAwaitInput] This is a dead end, so it’s best
- to turn back now.[endAwaitInput]CROCO: Hey Mario, did ya remember
- to use the save point?[newPageAwaitInput] There’s plenty of danger up ahead
- so it’s best to save now![endAwaitInput]CROCO: You need anything?[newlineAwaitInput] I've got some items to sell.[endAwaitInput]CROCO: You still hanging around?
- Oh, you want more items, huh?
- Since I'm in a good mood...[endAwaitInput]CROCO: See ya![end]CROCO: Just remember...[newPageAwaitInput] I can't always be coming to your
- rescue, you know.[newPageAwaitInput] If there’s anything more you need,
- best to buy it now.[endAwaitInput] Ahhh!
- Haven't been here in a while.
- I've been busy traveling around.[newPageAwaitInput][end] Oh! Hello again.[newPageAwaitInput][end] Come back with more coins and buy
- my inventions, all right?[endAwaitInput] You like fireworks?
- I'm working on my very own
- invention right now.[newPageAwaitInput] I've only got the sparklers down,
- but I ain't giving up![newPageAwaitInput][end] Wanna buy one for 500 coins?[newlineAwaitInput]  [startSelection] (Okay)
-  [startSelection] (No thanks)[endAwaitInput] Thanks.
- Ya just wait for my masterpiece![newPageAwaitInput][end] Thanks!
- I'm gonna make a name for myself
- with these fireworks.[newPageAwaitInput][end] Thanks for the purchase!
- The fireworks I'm making now
- won't disappoint you.[endAwaitInput] Aw, that’s too bad!
- Come back with more coins.[endAwaitInput]
-            Got “Fireworks”[endAwaitInput] You'll trade your “Fireworks”?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] If ya bring me a “Fireworks”, then
- I'll give you a “Shiny Stone”.[endAwaitInput] Sorry I ran out of “Fireworks”.
- Come back later, okay?[endAwaitInput] The yellow tile will get you to the
- next room. Your fortune determines
- which room you'll arrive at.[newlineAwaitInput] If you're lucky, you'll run into
- Belome and Monstro Town will be
- just beyond him.[endAwaitInput] Wanna challenge it?[newlineAwaitInput]  [startSelection] (Sure)
-  [startSelection] (No)[endAwaitInput] Aw, you're chicken! [endAwaitInput] Need an explanation?[newlineAwaitInput]  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] You can cross the “Sky Bridge” in
- one of 3 ways. However, if you
- fall at any time, you'll lose.[newPageAwaitInput] On the Normal course, you'll make
- it across just by jumping.[newlineAwaitInput] You'll get 5 coins for that.[newPageAwaitInput] On the Special course, the blocks
- will fall if your time runs out.[newlineAwaitInput] You'll get 8 coins there.[newPageAwaitInput] On the Expert course, the blocks
- will fall AND the jumps are harder.[newlineAwaitInput] You'll get a Frog Coin there.[newPageAwaitInput] On all the courses, you'll have to
- jump and avoid the bullet guys.[newPageAwaitInput][end] Which course do you want?[newlineAwaitInput]  [startSelection] (Normal)
-  [startSelection] (Special)
-  [startSelection] (Expert)[endAwaitInput] Okay, I'll need 5 coins from you.[newPageAwaitInput][end] Don't have enough coins?
- Then you can't take the challenge![endAwaitInput] Yahoo!
- You wanna double your winnings?[newPageAwaitInput] Get double the coins if you make it
- across on the same course in one
- attempt![newPageAwaitInput] Be warned, the course is harder,
- and if you fall, you won't get
- any coins.[newPageAwaitInput] Still want to try?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] That was great!
-[end] Here you go, as promised.[endAwaitInput] 
-      Received [0x7000] Frog Coin(s)![endAwaitInput]
-           Received [0x7000] coins[endAwaitInput] Welcome to the “Sky Bridge”!
- It’s a big tourist attraction here.
- Yaaahoo![endAwaitInput] Going up?
- I'll give you a boost.
- Just jump on top of me.[endAwaitInput] Yahoo!
- Good luck to ya![endAwaitInput] Sorry we're closed for today.
- Please take your coins with you.[endAwaitInput]       Got “ [0x7000] ” tries[end]     Got “ [0x7000] ” chances[end] Only got “ [0x7000] ” chances left[end]      This is your last chance![end]       2 points[end] 10 points[end] 30 points[end]    4 points[end]    12 points[end]    30 points[end]     2 points[end]      2 points[end]          15 points[end]      20 points[end]     40 points[end]   50 points[end]  40 points[end][end]    25 points[end]     9 points[end] [startSelection]  Next Page
- [startSelection]  Treasure Seeker
- [startSelection]  999 Coins[endAwaitInput] [startSelection]  Next Page
- [startSelection]  Mallow joins party
- [startSelection]  Geno joins party[endAwaitInput] [startSelection]  Next Page
- [startSelection]  Princess joins party
- [startSelection]  Bowser joins party[endAwaitInput] [startSelection]  Next Page
- [startSelection]  Member 1 will drop out
- [startSelection]  Member 2 will drop out[endAwaitInput] [startSelection]  Next Page
- [startSelection]  Save
- [startSelection]  Oops, talked to him![endAwaitInput] [startSelection]  Next Page
- [startSelection]  World Map “ON”
- [startSelection]  World Map “OFF”[endAwaitInput] [startSelection]  End
- [startSelection]  Star Menu Test
- [startSelection]  Ending[endAwaitInput]    The World Map
-   Talk to the person of the place
-           you wish to go to.[endAwaitInput]Select your destination point
- [startSelection]  I'll go to Barrel Volcano
- [startSelection]  Forget it[endAwaitInput]Select your destination point
- [startSelection]  I'll go to Land’s End
- [startSelection]  Forget it[endAwaitInput]Select your destination point
- [startSelection]  I'll go to Monstro Town
- [startSelection]  Forget it[endAwaitInput]Select your destination point
- [startSelection]  I'll go to Bowser’s Keep
- [startSelection]  Forget it[endAwaitInput]Select your destination point
- [startSelection]  I'll go to Bean Valley
- [startSelection]  Forget it[endAwaitInput]Select your destination point
-[startSelection]  I'll go to Nimbus Land
-[startSelection]  Forget it[endAwaitInput]Read directions on how to enter?
- [startSelection]  (Yes)
- [startSelection]  (I already know)[endAwaitInput] Stand on the pipe and push “down”
- on the control pad.[newlineAwaitInput] If you are pressing several buttons
- at the same time, you will not be
- able to enter. To reenter a pipe,[newlineAwaitInput] jump off once, and try again.[endAwaitInput]Stand on the pipe and push “down”.[endAwaitInput]MALLOW: This is the entrance.[newlineAwaitInput] Grandpa says to watch out for
- “Belome,” whoever that is![newPageAwaitInput] It’s probably a little dark
- down there, so keep alert![endAwaitInput]     The water has been drained.[endAwaitInput]          Got a “[0x70A7]”![endAwaitInput]MALLOW: Now THAT’s what I call
- a door! I wonder how ya open it?[endAwaitInput]MALLOW: T...this must be...
- ... BELOME![newPageAwaitInput] Is that a fire hose or his tongue?![endAwaitInput]BELOME: Moh, ho, ho...![newlineAwaitInput] Ack! It’s a snack attack!
- And YOU'RE it![endAwaitInput]MALLOW: Mario! Hold on a sec![endAwaitInput]MALLOW: I'm not waiting here
- alone. If you go outside,
- I GO outside.[endAwaitInput]MALLOW: Belome must have been
- lying when he said water would
- come gushing out of here...[endAwaitInput]MALLOW: Er, Mario...do you
- hear something?
- ...Or is it just me?[endAwaitInput]MALLOW: WATER!![newlineAwaitInput] Here it comes!!!
- Quick, Mario! Hit the button
- before we're washed away!![endAwaitInput] You can't jump on or off when
- the block is blue.[newPageAwaitInput] Try jumping when the block
- turns yellow.[endAwaitInput]BOWSER:
-    All right people! Form ranks![end][newPageAwaitInput] Attention, Shelled warriors![end][newlineAwaitInput] ...Hooded sorcerers...[end][newlineAwaitInput] ...And last, but not least,
- groundling Goombas![end][newPageAwaitInput] This is our finest moment!
- The Koopa Troop is invincible!
- We shall be victorious!
-[end] The bridge is down, but we'll
- find a way to get back in!
- Move out, on the double![endAwaitInput]MALLOW: Bowser and his
- troops must be on their way to
- Bowser’s Keep.[newPageAwaitInput] Come on! Rose Town is
- just up ahead.[endAwaitInput] What’s that?
- You wanna hear the
- Moleville blues?[newPageAwaitInput]
-             Well...all right![newPageAwaitInput][end]
-    Diggin' deep in the “MI”nes~[newlineAwaitInput][end]       “DO”n't get much sun!~[newPageAwaitInput][end]
-       I'm covered with “SO”il~[newlineAwaitInput][end]     'till my workday is “DO”ne~[newPageAwaitInput][end]
-        I “RE”ally hate sittin'~[newlineAwaitInput][end]        It’s “LA”bor I choose~[newPageAwaitInput][end]
-      'cause then’s the “TI”me~[newlineAwaitInput][end] To “DO” them old Moleville blues!~[endAwaitInput]MA'MOLE: Oh dear!
- I sure hope the kids are OK...[endAwaitInput] “I know how you're feelin'
- but mopin' 'round here ain't
- gonna help a thing!”[endAwaitInput] That’s what I TOLD her, but
- I don't know if I'd be feelin'
- any different if I was her![endAwaitInput] We're gettin' nowhere FAST!
- We'll never reach the kids at
- this rate![endAwaitInput] See that up there?
- That’s the old entrance
- to the mines...[endAwaitInput] ...But we can't reach it
- anymore![endAwaitInput] If only that fellow...uh...[newlineAwaitInput] Mario were here! He could reach
- that in a heart beat![endAwaitInput]
-  Wha..?! Well speak o' the devil![endAwaitInput] Well, I'll be a Goomba’s uncle!!
- If it ain't HIM in the flesh!
- Mario, you're a life saver![endAwaitInput]Mario, have you heard the news?
- [startSelection]  (Sure have)
- [startSelection]  (News? What news?)[endAwaitInput] Well, Dyna took her l'il brother
- into the mines so they could
- play...[newPageAwaitInput] And then, a HUGE star crashed
- into the mountain causing a big
- cave in! Now they're trapped[newlineAwaitInput] inside.[endAwaitInput] And now, their daddy, who went
- lookin' for 'em, is trapped, too![endAwaitInput] Mario, will you help rescue them?
- [startSelection]  (Of course)
- [startSelection]  (No)[endAwaitInput] Don't flake out on us, Mario!
- Please, we're beggin' ya.[endAwaitInput] Thanks, Mario!
- Well, there’s the entrance
- up there![endAwaitInput]
-   Here, hop up on our shoulders![endAwaitInput]PA'MOLE: Mario! You've come to
- save us? One problem, though.
- This is a dead end...[newPageAwaitInput] We'd need a bomb to blast
- through here...
- Think you could find one?[endAwaitInput]PA'MOLE: We REALLY need to find
- a bomb![newPageAwaitInput] I looked, but they're all missing
- from the store room.
- You think someone stole 'em?[endAwaitInput]PA'MOLE: Seems like you found
- something mighty useful![newPageAwaitInput] My kids, Dyna & Mite are trapped
- back there. Let’s blast through
- and find 'em![endAwaitInput]PA'MOLE: You found a bomb!
- Now we'll bust through in no time![endAwaitInput]PA'MOLE: All rightee!
- Stand back![newlineAwaitInput] Close your eyes...[endAwaitInput]PA'MOLE: Let’s follow the tracks
- to the end.[newPageAwaitInput] What? The star?
- It’s probably in the back.
- Thanks a million, Mario![newPageAwaitInput] 
-         Let’s mosey along now.[endAwaitInput]PA'MOLE: I just can't go any
- further. Please...
- ...Go find Dyna & little Mite![endAwaitInput]PA'MOLE: Gwo ho!
- Thanks, Mario![newlineAwaitInput] Now, stand back and let me
- get things going...[endAwaitInput]CROCO: Coins...Beautiful COINS!
- Grab the COINS![endAwaitInput]CROCO: Listen up! Let’s leave dis
- half-wit Mario here and SPLIT!
- Anyone got a beef wit' that?![endAwaitInput]       OH OH!  He took the coins!
-             Chase Croco and
-          get those coins back![endAwaitInput]CROCO: Hoo boy! Looks like a
- dead end, here.
- But not to worry...[newPageAwaitInput] Heh, heh...I've got a bomb...!
- Never leave home without 'em.[endAwaitInput]FLUNKIE: (Sob, sob...)
- Just...you wait...we'll
- getcha for this![newPageAwaitInput] Maybe not today, maybe not
- tomorrow, but someday...[endAwaitInput]   He didn't have the coins on him,
-   but he dropped a “[0x70A7]”![endAwaitInput]PA'MOLE: Hey, hey! It’s not time
- to be goofing off now. Do that
- AFTER you find Dyna & Mite.[endAwaitInput]     Got the coins back!  AND...
-     ...Picked up a BOMB, too![endAwaitInput]DYNA: Help me, here!
- Give the mine car a push![endAwaitInput]DYNA: Yeah! A mine car ride!
- Yippie! This is gonna be FUN![endAwaitInput] Care to read the warning?
- [startSelection]  (Of course)
- [startSelection]  (Forget it)[endAwaitInput]
-           Mine Car Guidelines[newPageAwaitInput] Press A or Y to brake
- Press B to jump
- Get mushrooms & press X [newlineAwaitInput] to accelerate[newPageAwaitInput]
-    Moleville Safety Board (MSB)[endAwaitInput]PA'MOLE: Mario, I owe you one for
- savin' my kids.[endAwaitInput] WHAT?! NO BOMB?!
- This can't BE!!
- It should be around somewhere![newlineAwaitInput] Maybe someone stole it![endAwaitInput]
- Come on, come on, outta the way![endAwaitInput]DYNA: Urgh...!
- This...won't...budge...arghhh!
- I hate this stupid thing![endAwaitInput]DRY BONES: I know! You probably
- said to yourself, “It’s just
- a pile of dusty old bones!”[newlineAwaitInput] ...THINK AGAIN![endAwaitInput]     This is a 3-Dimensional Maze.[newlineAwaitInput]          Press X if you give up.[endAwaitInput] Do you wish to give up?
- [startSelection]  (I'll try a little more)
- [startSelection]  (I GIVE UP!)[endAwaitInput] To pass through here, hit those
- 6 boxes and enter the password.[endAwaitInput] Good job...I'll let you through...
- If you can get past ME, first,
- that is.[endAwaitInput] Hey! Have you heard?[newPageAwaitInput] There’s a rare item
- hidden in the mines![newPageAwaitInput] If I find it, I'm gonna sell it to
- someone in town![newlineAwaitInput] I'm in it for the money![endAwaitInput]        Memo left by Magellean:
-
-      There is an “s” in the word.[endAwaitInput]        Memo left by Magellean:
-
- It is found on the bed of the ocean.[endAwaitInput]         Memo left by DeGama:
-
-          It has two vowels.[endAwaitInput]         Memo left by DeGama:
-
-        It has four consonants.[endAwaitInput]       Memo left by Van Doren:
-               At least...
-  two consonants are side by side.[endAwaitInput]       Memo left by Van Doren:
-
-    The “r” comes before the “l”.[endAwaitInput] There’s a page from the travel log.
- [startSelection]  (Let’s take a look at it)
- [startSelection]  (Looks boring)[endAwaitInput] We're done for...A giant squid
- just got a hold of us. This ship's
- going down fast...[endAwaitInput] We've managed to trap the giant
- squid in the treasure cellar.[newPageAwaitInput] The treasure will sink with the
- ship, but...so it goes![endAwaitInput] The door to the cellar is locked
- with a password consisting of
- 6 letters.[newPageAwaitInput] In order to proceed you'll have
- to decipher the password using
- the 6 hints...[endAwaitInput] Uncover the secret of the 6 hints!
- Of course, since they're provided
- by different people, they'll be[newlineAwaitInput] pretty tough to solve.
- ...Maybe impossible.[endAwaitInput] Been awhile since people came
- 'round here.[endAwaitInput] And what might you be looking for?[endAwaitInput] Thank you. Drop by again.[endAwaitInput] Since you shopped here, I'll tell
- you something interesting.[newPageAwaitInput] The ship sank into the briney sea
- because a giant squid attacked it.[newPageAwaitInput] Some people went in to survey it,
- but they never came back.[endAwaitInput][newPage] Oh...guess you're right. I'd
- just be a burden on you fellas...
-[delay][delay] Well then, I'm countin' on ya[newlineAwaitInput] to find the kids, you hear?[endAwaitInput] Well, thanks a lot, Mario!
- Guess I'll be goin' back to tell
- Ma 'bout everythin'...[endAwaitInput] Know what? Your password
- is totally wrong![endAwaitInput] Guess what? Your password
- is CORRECT![endAwaitInput] Once you've come up with the key
- letters, speak in here.[endAwaitInput] Hey! It’s good to see you.[endAwaitInput] I'll give you a hint.
- The password’s got something
- to do with...the sea.[newPageAwaitInput] Even if you don't get through all 6
- of the obstacles, you can try to
- “deduce” your way through.[newlineAwaitInput] GOOD LUCK![endAwaitInput] Know what? Looks like [0x7000]
- of the key letters are correct.[endAwaitInput]PIRATE: HEY!
- How'd you get up here so fast?[endAwaitInput] Well, your “luck” has run out![newlineAwaitInput] We don't take kindly to
- strangers here![endAwaitInput]PIRATE: You're pretty tough, mate.
- All right. I'll let you through to
- Johnny’s place.[endAwaitInput]PIRATE: That’s AMAZING!
- No one’s EVER whipped JOHNNY!![endAwaitInput][newPage] Key letter1  <m> c  o  t  p[end][newPage] Key letter1   m <c> o  t  p[end][newPage] Key letter1   m  c <o> t  p[end][newPage] Key letter1   m  c  o <t> p[end][newPage] Key letter1   m  c  o  t <p>[end]m[end]c[end]o[end]t[end]p[end]Mario’s password is....
-<[end] >[endAwaitInput][newPage] Key letter2   <o> t  e  s  y[end][newPage] Key letter2    o <t> e  s  y[end][newPage] Key letter2    o  t <e> s  y[end][newPage] Key letter2    o  t  e <s> y[end][newPage] Key letter2    o  t  e  s <y>[end]o[end]t[end]e[end]s[end]y[end][newPage] Key letter3    <a> r  e  t  s[end][newPage] Key letter3     a <r> e  t  s[end][newPage] Key letter3     a  r <e> t  s[end][newPage] Key letter3     a  r  e <t> s[end][newPage] Key letter3     a  r  e  t <s>[end]a[end]r[end]e[end]t[end]s[end][newPage] Key letter4     <a> t  r  s  c[end][newPage] Key letter4      a <t> r  s  c[end][newPage] Key letter4      a  t <r> s  c[end][newPage] Key letter4      a  t  r <s> c[end][newPage] Key letter4      a  t  r  s <c>[end]a[end]t[end]r[end]s[end]c[end][newPage] Key letter5  <t> e  r  l  o[end][newPage] Key letter5   t <e> r  l  o[end][newPage] Key letter5   t  e <r> l  o[end][newPage] Key letter5   t  e  r <l> o[end][newPage] Key letter5   t  e  r  l <o>[end]t[end]e[end]r[end]l[end]o[end][newPage] Key letter6   <s> t  e  k  r[end][newPage] Key letter6    s <t> e  k  r[end][newPage] Key letter6    s  t <e> k  r[end][newPage] Key letter6    s  t  e <k> r[end][newPage] Key letter6    s  t  e  k <r>[end]s[end]t[end]e[end]k[end]r[end]PIRATE: Arrrr!
- What’s goin' on HERE?!
- Who're YOU...?[endAwaitInput] What?!
- You're lookin' fer a STAR?
- I'LL let ya see stars, arr harr![endAwaitInput] Anyway, yer outta luck![newlineAwaitInput] Ya see, whatever falls into the
- sea becomes JOHNNY'S property!
- Got that, MATEY?![endAwaitInput] Oh, and one last thing...
- ...Read my lips...[newlineAwaitInput] WE AIN'T LETTIN' YA THROUGH![newlineAwaitInput] GOT IT?![endAwaitInput]PIRATE: Arrr! You're stronger
- than ya look...[endAwaitInput] Better warn the upper deck!
- Come on, mates![endAwaitInput]
-         Here, this is on us!![endAwaitInput] WHAT THE?! How dare you
- dodge the barrel![endAwaitInput]JOHNNY: So you're THE Mario, eh?
- Arr, harr, harr...!
- Not much to look at...[newlineAwaitInput] Well, this star fell into
- MY SEA, so it’s MINE![newlineAwaitInput] If you want it, you'll
- have to fight for it![endAwaitInput]JOHNNY: I'm impressed, matey!
- You've earned the star.[newPageAwaitInput] Think of it as a souvenir of
- our fight![endAwaitInput]JOHNNY: You must've REALLY
- wanted that star...[newlineAwaitInput] Now go on! Get outta here
- before I change my mind.[endAwaitInput]JOHNNY: YOU again?!
- So, have you already beaten that[newlineAwaitInput] Smithy creature?[endAwaitInput]JOHNNY: Yo, mate! Just 'cuz
- we're buds doesn't give ya
- the right to jump on my head.[endAwaitInput] This is 100% currant juice.[newlineAwaitInput] It’s mighty tasty stuff, mate![endAwaitInput] Johnny’s our main man.
- He even fights in his sleep![newlineAwaitInput] We'd follow him anywhere.[endAwaitInput] Hop on the trampoline in the next
- room. It'll take ya outside.
- Go on, now. Give it a try![endAwaitInput]
- To Mario,
-[newlineAwaitInput]
- Knowin' you, it must've been a
- breeze knockin' down Yarid, eh?
-[newlineAwaitInput] By the way, my pirates say they
- saw a huge AX flyin' across the[newlineAwaitInput] sky. It’s probably one of Smithy's
- nasty friends. Go GET him, pal![newlineAwaitInput] Well, my gills are failing on me,
- so I'll be headin' back down.
- Drop in whenever you[newlineAwaitInput] have time, okay?
-                   Your true mate,
-            Jonathan “Johnny” Jones[endAwaitInput]
-  All right, where’s the intruder?![endAwaitInput]
-             I don't see 'im.[endAwaitInput]
-            Did he get away?![endAwaitInput]
-    THERE HE IS!, Get 'im boys![endAwaitInput]HINOPIO: Hey there![delay][delay]  Whew...
- I THOUGHT I heard footsteps! For
- a minute I thought I was nuts![newPageAwaitInput] I'm Hinopio...[delay][delay][delay] This place
- is a regular INFERNO!
- Come on, step inside![endAwaitInput]HINOPIO: Thanks for stopping by.
- You can always come back,
- you know.[endAwaitInput]AXEM RED: 
-           We got the STAR![endAwaitInput]AXEM GREEN:
-             We're amazing![endAwaitInput]AXEM YELLOW: 
-           We're unbeatable![endAwaitInput]AXEM PINK:
-            We're gorgeous![endAwaitInput]AXEM BLACK:
-   You'd better leave now, chumps![endAwaitInput]AXEM BLACK: Hey, Red! Look
- down there! That’s gotta be the
- ugliest mustache I've ever seen![endAwaitInput]AXEM PINK:
-              Eww! Gross![endAwaitInput]AXEM YELLOW: That guy’s worse
- looking than that clod, Mario![endAwaitInput]AXEM GREEN:
-       That IS Mario, you IDIOT!![endAwaitInput]AXEM RED: Listen, everyone!
- We gotta get this star to the
- Blade immediately.[newlineAwaitInput] We'll deal with Mario LATER!![endAwaitInput]AXEM YELLOW: Hey, RED!
- Careful with this!!
- You're all thumbs![endAwaitInput]AXEM PINK: Where’s the BLADE?[endAwaitInput]AXEM RED: He'll be here![endAwaitInput]AXEM BLACK: Are you sure?![endAwaitInput]AXEM RED: Relax, people![endAwaitInput]AXEM YELLOW: Mario’s HERE!![endAwaitInput]AXEM RED: He’s too late![endAwaitInput]AXEM GREEN: Where’s the Blade?![endAwaitInput]AXEM RED: Shuddap, already![endAwaitInput]AXEM RANGERS: FINALLY!!!![endAwaitInput]       6 Star Pieces have finally 
-   been collected. Where could that
-          last Star Piece be?[endAwaitInput]DR. TOPPER:  Hey HEY HEY!!
- It’s me, the QUIZ MASTER!!
-[delay][delay] And[delay][delay]...it’s QUIZ TIME!![newPageAwaitInput] Need an explanation?
- [startSelection]  (Yeah)
- [startSelection]  (Forget it, I already know!)[endAwaitInput]DR. TOPPER: I'll give you 12,
- count 'em, TWELVE questions.[newlineAwaitInput] If you're right, the block you're
- standing on will move up one.
- But if you blow it, you go down[newlineAwaitInput] two. You have 5 seconds...
- If you can't answer, you move
- down one. Reach the 8th step[newlineAwaitInput] within the 12 questions,
- and you've won. Got it?![endAwaitInput]DR. TOPPER: How much...does a
- female beetle cost?[newPageAwaitInput]
- [startSelection]  (1 coin)
- [startSelection]  (50 coins)
- [startSelection]  (A frog coin)[endAwaitInput]DR. TOPPER: What does Belome
- really like to turn people into?[newPageAwaitInput]
- [startSelection] (Scarecrows)
- [startSelection] (Ice cream cones)
- [startSelection] (Mushrooms)[endAwaitInput]DR. TOPPER: What is Raini's
- husband’s name?[newPageAwaitInput]
- [startSelection]  (Raz)
- [startSelection]  (Romeo)
- [startSelection]  (Gaz)[endAwaitInput]DR. TOPPER: What’s the name of
- the boss at the Sunken Ship?[newPageAwaitInput]
- [startSelection] (Johnny)
- [startSelection] (Jimmy)
- [startSelection] (Jackson)[endAwaitInput]DR. TOPPER: Booster is what
- generation?[newPageAwaitInput]
- [startSelection]  (7th)
- [startSelection]  (8th)
- [startSelection]  (78th)[endAwaitInput]DR. TOPPER: Where was the 3rd
- Star Piece found?[newPageAwaitInput]
- [startSelection]  (Moleville)
- [startSelection]  (Forest Maze)
- [startSelection]  (Star Hill)[endAwaitInput]DR. TOPPER: Johnny loves WHICH
- beverage?...[newPageAwaitInput]
- [startSelection]  (Currant juice)
- [startSelection]  (Grape juice)
- [startSelection]  (Boysenberry smoothie)[endAwaitInput]DR. TOPPER: In the Moleville blues,
- it’s said that the moles are
- covered in what?[newPageAwaitInput]
- [startSelection]  (Soil)
- [startSelection]  (Dirt)
- [startSelection]  (Slugs)[endAwaitInput]DR. TOPPER: What color are the
- curtains in Mario’s house?[newPageAwaitInput]
- [startSelection]  (Blue)
- [startSelection]  (Green)
- [startSelection]  (Red)[endAwaitInput]DR. TOPPER: Yaridovich is what?[newPageAwaitInput]
- [startSelection]  (A boss)
- [startSelection]  (A new breed of cattle)
- [startSelection]  (A special attack)[endAwaitInput]DR. TOPPER: The boy at the inn in
- Mushroom Kingdom was playing
- with...What?[newPageAwaitInput]
- [startSelection]  (Game Boy)
- [startSelection]  (Super NES)
- [startSelection]  (Virtual Boy)[endAwaitInput]DR. TOPPER: What did Carroboscis
- turn into?[newPageAwaitInput]
- [startSelection]  (A carrot)
- [startSelection]  (A beet)
- [startSelection]  (A radish)[endAwaitInput]DR. TOPPER: Who is the famous
- sculptor in Nimbus Land?[newPageAwaitInput]
- [startSelection]  (Garro)
- [startSelection]  (Gaz)
- [startSelection]  (Goya)[endAwaitInput]DR. TOPPER: What is Hinopio in
- charge of at the middle counter?[newPageAwaitInput]
- [startSelection]  (The inn)
- [startSelection]  (Weapons)
- [startSelection]  (Items)[endAwaitInput]DR. TOPPER: Who is the ultimate
- enemy in this adventure?[newPageAwaitInput]
- [startSelection]  (Smithy)
- [startSelection]  (Bowser)
- [startSelection]  (Goomba)[endAwaitInput]DR. TOPPER: Who is the leader of
- The Axem Rangers?[newPageAwaitInput]
- [startSelection]  (Red)
- [startSelection]  (Black)
- [startSelection]  (Green)[endAwaitInput]DR. TOPPER: What’s the name of
- Jagger’s “sensei”?[newPageAwaitInput]
- [startSelection]  (Dinky)
- [startSelection]  (Jinx)
- [startSelection]  (Johnny)[endAwaitInput]DR. TOPPER: How many underlings
- does Croco have?[newPageAwaitInput]
- [startSelection]  (2)
- [startSelection]  (3)
- [startSelection]  (4)[endAwaitInput]DR. TOPPER: What was Toadstool
- doing when she was kidnapped by
- Bowser?[newPageAwaitInput]
- [startSelection]  (She was playing cards)
- [startSelection]  (She was looking at flowers)
- [startSelection]  (She was digging for worms)[endAwaitInput]DR. TOPPER: Who is the famous
- composer at Tadpole Pond?[newPageAwaitInput]
- [startSelection]  (Toadoskfy)
- [startSelection]  (Toadofsky)
- [startSelection]  (Frogfucius)[endAwaitInput]DR. TOPPER: Which monster does
- not appear in Booster Tower?[newPageAwaitInput]
- [startSelection]  (Jester)
- [startSelection]  (Terrapin)
- [startSelection]  (Bob-omb)[endAwaitInput]DR. TOPPER: The boy getting his
- picture taken at Marrymore
- can't wait 'til which season?[newPageAwaitInput]
- [startSelection]  (Hunting)
- [startSelection]  (Skiing)
- [startSelection]  (Baseball)[endAwaitInput]DR. TOPPER: What technique does
- Bowser learn at Level 15?[newPageAwaitInput]
- [startSelection]  (Bowser Crush)
- [startSelection]  (Crusher)
- [startSelection]  (Terrorize)[endAwaitInput]DR. TOPPER: What words does
- Shy Away use when he sings?[newPageAwaitInput]
- [startSelection]  (Dum dee dah~)
- [startSelection]  (La dee dah~)
- [startSelection]  (Dum lee lah~)[endAwaitInput]DR. TOPPER: What does Birdo
- come out of?[newPageAwaitInput]
- [startSelection]  (A barrel)
- [startSelection]  (An eggshell)
- [startSelection]  (A basket)[endAwaitInput]DR. TOPPER: What’s the first
- monster you see in the Pipe Vault?[newPageAwaitInput]
- [startSelection]  (Goomba)
- [startSelection]  (Sparky)
- [startSelection]  (Chompweed)[endAwaitInput]DR. TOPPER: What’s the password
- in the Sunken Ship?[newPageAwaitInput]
- [startSelection]  (Corals)
- [startSelection]  (Pearls)
- [startSelection]  (Oyster)[endAwaitInput]DR. TOPPER: What was Mallow 
- asked to get for Frogfucius?[newPageAwaitInput]
- [startSelection]  (Honey Syrup)
- [startSelection]  (Cricket Pie)
- [startSelection]  (Carbo Cookie)[endAwaitInput]DR. TOPPER: Mite is Dyna's...
- WHAT?[newPageAwaitInput]
- [startSelection]  (Big sister)
- [startSelection]  (Little brother)
- [startSelection]  (Second cousin)[endAwaitInput]DR. TOPPER: What does the Red
- Essence do?[newPageAwaitInput]
- [startSelection]  (Makes you sleepy)
- [startSelection]  (Gives you strength)
- [startSelection]  (Relieves back pain)[endAwaitInput]DR. TOPPER: How long have the
- couple inside the chapel been
- waiting for their wedding?[newPageAwaitInput]
- [startSelection]  (1 hour)
- [startSelection]  (30 minutes)
- [startSelection]  (45 minutes)[endAwaitInput]DR. TOPPER: What do Culex, Jinx,
- and Goomba have in common?[newPageAwaitInput]
- [startSelection]  (They are immortal)
- [startSelection]  (They live in Monstro Town)
- [startSelection]  (They all like bratwurst)[endAwaitInput]DR. TOPPER: What is the 4th
- selection on the Menu screen?[newPageAwaitInput]
- [startSelection]  (Important Items)
- [startSelection]  (Special Items)
- [startSelection]  (Equip)[endAwaitInput]DR. TOPPER: The man getting his
- picture taken at Marrymore
- hates what?[newPageAwaitInput]
- [startSelection]  (Getting married)
- [startSelection]  (Mowing the lawn on Sundays)
- [startSelection]  (Getting his picture taken)[endAwaitInput]DR. TOPPER: Where was the 1st
- Star Piece found?[newPageAwaitInput]
- [startSelection]  (Bowser’s Keep)
- [startSelection]  (Mario’s Pad)
- [startSelection]  (Mushroom Kingdom)[endAwaitInput]DR. TOPPER: How many legs does
- Wiggler have?[newPageAwaitInput]
- [startSelection]  (10)
- [startSelection]  (8)
- [startSelection]  (6)[endAwaitInput]DR. TOPPER: What’s the full name
- of the boss at the Sunken Ship?[newPageAwaitInput]
- [startSelection]  (Johnny Jones)
- [startSelection]  (Jesse James Jones)
- [startSelection]  (Jonathan Jones)[endAwaitInput]DR. TOPPER: Who helped you up the
- cliff at Land’s End?[newPageAwaitInput]
- [startSelection]  (Sky Troops)
- [startSelection]  (Flying Troopa)
- [startSelection]  (Sky Troopas)[endAwaitInput]DR. TOPPER: What color is the
- end of Dodo’s beak?[newPageAwaitInput]
- [startSelection]  (Yellow)
- [startSelection]  (Orange)
- [startSelection]  (Red)[endAwaitInput]DR. TOPPER: What’s the chef's
- name at Marrymore?[newPageAwaitInput]
- [startSelection]  (Blintz)
- [startSelection]  (Gateau)
- [startSelection]  (Torte)[endAwaitInput]DR. TOPPER: WELL DONE!!
- I guess that was just a warm up
- for you, huh?[endAwaitInput]DR. TOPPER: Ooh, Too bad....[endAwaitInput]DR. TOPPER: Heh...
- Let’s see how well you can count.[newPageAwaitInput] Give ya 10 seconds, TEN!
- Tell me the number of barrels
- in the room![endAwaitInput]DR. TOPPER: Heh heh...
- Close your eyes for a sec.[endAwaitInput]
- ...Heh heh...You ready?[endAwaitInput][newPage] [0x7000] second(s) left to go.[end]DR. TOPPER: So! How many?[newPageAwaitInput]
-      [startSelection]  ([0x7000])[end][endAwaitInput]DR. TOPPER: Correct!
- Heh...But this is just a warm up.
- ...NEXT![endAwaitInput]DR. TOPPER: Now we'll see if you
- can REALLY count. You've got
- 20 seconds....READY?[endAwaitInput]DR. TOPPER: Correct!
- Piece of cake, huh?[endAwaitInput]DR. TOPPER: Heh...I'm the Quiz
- Master, but you can call me Dr. T!
- You into coin collecting? Heh...[newPageAwaitInput] Want instructions?
- [startSelection]  (Yes)
- [startSelection]  (You take me for a fool?)[endAwaitInput]DR. TOPPER: There're 21
- coins in this box...[newlineAwaitInput] We'll take turns removing them.
- The one who takes the LAST
- coin is the LOSER! Heh...[newlineAwaitInput] You can grab 4 at once. If you
- want to grab only 1 or 2, press A
- where you want to stop. Got it?[endAwaitInput]DR. TOPPER: Heh...you got the
- last coin...YOU LOSE![endAwaitInput]DR. TOPPER: Heh...You win.
- Nothing to it, right?[endAwaitInput]DR. TOPPER: The topic, you ask?
- Magic Buttons. Heh...[newPageAwaitInput] Want instructions?
- [startSelection]  (Yep)
- [startSelection]  (Nope)[endAwaitInput]DR. TOPPER: Heh...Step on one
- button, and you'll reverse the
- surrounding buttons.[newlineAwaitInput] So, ON becomes OFF...
- and OFF becomes ON! Get it?[newlineAwaitInput] Let’s see if you can set them
- all to ON! Can you DO IT?[endAwaitInput]DR. TOPPER: Heh...Congrats!
- Plain sailing, eh?![endAwaitInput]DR. TOPPER: Now, the topic is
- Ball Solitaire. Heh...[newPageAwaitInput] Want instructions?
- [startSelection]  (Yeah)
- [startSelection]  (Nope)[endAwaitInput]DR. TOPPER: Heh! When you kick
- a ball, it'll leapfrog an adjacent
- ball, which will then disappear.[newlineAwaitInput] Keep making balls disappear until
- only one remains![newlineAwaitInput] You lose if you kick a ball into
- a space already occupied
- by another ball![newlineAwaitInput] The ball you kick must always
- leapfrog another ball. Got IT?![endAwaitInput]DR. TOPPER: Heh...wow.
- Simple as ABC, eh?![endAwaitInput]DR. TOPPER: Heh..too bad.
- Too bad...heh.[endAwaitInput]DR. TOPPER: Now for something
- completely different. Heh...[newPageAwaitInput] Boo, Goo, Bones, and Kipp
- competed in a triathlon.[newlineAwaitInput] The triathlon included swimming,
- cycling, and a marathon.
- It’s up to you to guess which[newlineAwaitInput] place each person came in.
- Listen well! You're only gonna
- hear the story once![endAwaitInput]Boo[end]Goo[end]Bones[end]Kipp[end][end]: I placed the same in the
- swimming and cycling events, but
- 2 others beat me in the marathon.[endAwaitInput]: I fell into 4th place during
- the bike race, but finally ended
- up in the same place as I did[newlineAwaitInput] in the swimming event.[endAwaitInput]: I outrode [end]
- on my bike, and [end]
- was never able to pass me![endAwaitInput]: I came in 3rd
- for swimming...[endAwaitInput]DR. TOPPER: Well?
- [startSelection]  (Ha! Call ME the MASTER!)
- [startSelection]  (I'm still...working on it)[endAwaitInput]DR. TOPPER: OK. Go and talk
- to them in the order they came
- in, and return here.[endAwaitInput]: I came in No.[0x7000], right?
- [startSelection]  (Yes)
- [startSelection]  (Wait...hold on)[endAwaitInput] DR. TOPPER: You were thinking
- [end]/[end]
- in that order, right?[newlineAwaitInput] Are you sure?
- [startSelection]  (You bet)
- [startSelection]  (Wait, let me think again)[endAwaitInput]DR. TOPPER: WELL DONE!
- Nothing to it, eh? Heh!
- All right, you may proceed.[endAwaitInput]DR. TOPPER: Wrong! TOO BAD!
- [end]
- And that’s the way it was![endAwaitInput] There are 6 doors...
- Do you need an explanation?[newlineAwaitInput] [startSelection]  (Yeah)
- [startSelection]  (No thanks)[endAwaitInput] Of the 6 doors...[endAwaitInput] 2 open onto action courses!
- You can handle a lot of
- action, right?[endAwaitInput] 2 others will lead you
- to battle courses.
- You can fight, right?![endAwaitInput] The last 2 open onto puzzle
- courses. No sweat for a great
- puzzle solver like you, right?![endAwaitInput] Once you choose a course,
- there’s no turning back!
- The only way to know what's[newlineAwaitInput] behind a door is to walk
- through it! You must pass[newlineAwaitInput] 4 of the 6 courses to move ahead.[endAwaitInput][newPage]     <1>   2   3   4   5   6   7   [end][newPage]     1   <2>   3   4   5   6   7   [end][newPage]     1   2   <3>   4   5   6   7   [end][newPage]     1   2   3   <4>   5   6   7   [end][newPage]     1   2   3   4   <5>   6   7   [end][newPage]     1   2   3   4   5   <6>   7   [end][newPage]     1   2   3   4   5   6   <7>   [end]3   4   5   6   <7>   [end]   6   <7>   [end]5   6   <7>   [end][end]   5   6   <7>   [end][pauseAwaitInput]1   2   3   4   5   6   <7>   [end]îýïözþéç}©jvýöéöªoyvù¶ùÿþþÿößôÜöïöúöëæo^æùJôÁöoØLò1;öÜößÿÿîþþöÿöýþôú theöôìçËô    ‘’ÈnvBoosteröùøöÿîöýöÍöÿöÞþo÷nÈnf¹°ß→'>&ÓßÍÛÛõ÷Íßø»õºÿÏÿýÛ
-ß···ß¥áÛ···「#in>¹ýë½»ß_ûïëùÿëïÿ¿¿S×[newlineAwaitInput]ß[0x70A7]ï<ïákÆÔß_í¾ÿ*÷ß『ßýïß##‘Ë~ to Ëþ_oñßÜ:Úÿï»』Þ*ûýë'%'}_Ï±ß¤···is [newlineAwaitInput]oBooster~½ÉÚ>ÏÑÿyïªêýØûúÛùþÝ<>[[newlineAwaitInput][startSelection]_is ×···#êÿýÿÈîìÿ←þ   Þíß¾ÿÙØ¬¾[delay]Ï[newlineAwaitInput]→RoaÛ&:À»ÿÿÿÍ­ÿþÿÙÛ­ÿÌß²ÏøÁÕa«­ß[« //¿mwÿí*·÷xþ¿ø÷÷÷ÿ[」[newPageAwaitInput]÷²ºq'Àþ[delay_171]úýîÖþÿøþÛömößÍËþ_ soÁÓQ I    4oBoosterÕ<>O···                                                                                                                                                                                                                                                              ÿû­ñÿûð¯ïÿíõßõ0Qw¸b×Mario<æÂÕÿøÿÐ»þßû¶ÿÜúþÝÿßå{ï­···                                                                                                                                   and >Ý↑~É→Ñÿñ&ÿ*ÿïß·ðýãÿ×ß#Booster×ÀÍ ÷S[end]Mis þ¾ûÿ÷øÞ%ÿÐÛûÿØÛÞ0 to VýO§>_©0/¥¨eyßçÐïÿþºýúÿ;ßïþï←îßùPiö^j_×/
-ßÐíû¿Í×ÿ;ÖýWÀÿß¿Í*0ß­*À,þxg÷‘> theÿº                                                                                                                                                                                                                                                       þÿùÿ↑îß¶Ï×ß#···ß···~×↑¤×ß→→[0x70A7]nöÿûí×Ö/°ïcÿé}ß®{£”×«±¡*Þþ±···¢#­Èÿis ïóï·Ô÷·ßßÿþÿþS↑ß¶  +Óð×%Ý¿¶ÝÚ「'ýÿßïõÿ¿¸ïï¸¥q(­in>→is Ó«°°ý¿¾»þþßùÿWþ↑ÿßï×¾Ë[newPage][endAwaitInput]u'''
-dialogs[1024] = ''' I slept like'''
-dialogs[1025] = ''' a baby.
- Thank'''
-dialogs[1026] = '''s![endAwaitInput] Man, did I sl'''
-dialogs[1027] = '''eep!
- Thanks for the service.'''
-dialogs[1028] = '''
- Here’s your tip.[newlineAwaitInput] Don't spend '''
-dialogs[1029] = '''it all in one pl'''
-dialogs[1030] = '''ace![endAwaitInput]
-         So THIS is th'''
-dialogs[1031] = '''e suite?![endAwaitInput]
-          I''''
-dialogs[1032] = '''ll say it’s sweet'''
-dialogs[1033] = '''![endAwaitInput]   
-     Nothin' bu'''
-dialogs[1034] = '''t the best for US![endAwaitInput] This is just one of the '''
-dialogs[1035] = '''best
- hotels I've ever stayed a'''
-dialogs[1036] = ''''''
-dialogs[1037] = '''t.[endAwaitInput] That card you have there...[newlineAwaitInput] How about selling it to me for...
+ We hope you will enjoy it.'''
+dialogs[1023] = '''ope you will enjoy it.'''
+dialogs[1024] = '''                     INN'''
+dialogs[1025] = '''OP'''
+dialogs[1026] = ''' SHOP'''
+dialogs[1027] = ''' TOWN'''
+dialogs[1028] = '''OM'''
+dialogs[1029] = ''''''
+dialogs[1030] = ''''''
+dialogs[1031] = '''TEL'''
+dialogs[1032] = '''RE US'''
+dialogs[1033] = '''AND ARMOR SHOP'''
+dialogs[1034] = '''                 BEDROOM'''
+dialogs[1035] = '''OM BOY'S SHOP'''
+dialogs[1036] = '''HOP'''
+dialogs[1037] = '''HOP'''
+dialogs[1038] = '''elous statue,
+ isn't it?'''
+dialogs[1039] = ''' People from down under will
+ probably come too. That girl at the
+ entrance'll tell you who’s here.'''
+dialogs[1040] = ''' you who’s here.'''
+dialogs[1041] = '''erve this!'''
+dialogs[1042] = ''' my brother's
+ Casino...wherever THAT is...'''
+dialogs[1043] = ''' [startSelection]  (Sure)
+ [startSelection]  (Not now)'''
+dialogs[1044] = '''ut me!'''
+dialogs[1045] = '''ith me, I was going to give you
+ the key to this room.'''
+dialogs[1046] = '''key to this room.'''
+dialogs[1047] = '''ems
+ so...unworldly!'''
+dialogs[1048] = '''he King gave me another job as
+ a guard.[pauseAwaitInput]'''
+dialogs[1049] = '''g gave me another job as
+ a guard.[pauseAwaitInput]'''
+dialogs[1050] = '''s
+ a guard.[pauseAwaitInput]'''
+dialogs[1051] = ''' with the key you gave us.'''
+dialogs[1052] = '''..[pauseAwaitInput]'''
+dialogs[1053] = '''ued him!'''
+dialogs[1054] = '''uture!'''
+dialogs[1055] = ''' take it.'''
+dialogs[1056] = '''ll.[newlineAwaitInput] “FP”s are consumed during
+ battle when you use “Special”
+ attacks. For example...[newPageAwaitInput] A “Jump” attack uses 3 “FP”s.[newlineAwaitInput] When you “Jump”, your “FP” will
+ decrease by 3 each time. Run out,
+ and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[1057] = '''or example...[newPageAwaitInput] A “Jump” attack uses 3 “FP”s.[newlineAwaitInput] When you “Jump”, your “FP” will
+ decrease by 3 each time. Run out,
+ and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[1058] = '''will
+ decrease by 3 each time. Run out,
+ and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[1059] = '''m called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[1060] = '''mushrooms, and at inns.'''
+dialogs[1061] = '''
+ He talks like a mobster wannabe.[pauseAwaitInput]'''
+dialogs[1062] = '''
+ Hey, wait a sec!!![delay_48]
+ My wallet’s gone!'''
+dialogs[1063] = '''a “[0x70A7]”!'''
+dialogs[1064] = '''ost you [0x7024] coins!
+ [startSelection]  (Okay!)
+ [startSelection]  (No, thanks.)'''
+dialogs[1065] = '''rt!'''
+dialogs[1066] = '''“[0x70A7]”!'''
+dialogs[1067] = ''' Princess Toadstool!'''
+dialogs[1068] = '''at?!
+ Bowser’s got her AGAIN?!'''
+dialogs[1069] = ''' wallet?!'''
+dialogs[1070] = '''randchild turns out to
+ be just like the Princess!'''
+dialogs[1071] = '''t hitched in
+ a few years, okay?[newPageAwaitInput] Just[delay][delay]... give me time to grow
+ into my mother’s wedding dress!'''
+dialogs[1072] = '''ow
+ into my mother’s wedding dress!'''
+dialogs[1073] = '''s!'''
+dialogs[1074] = '''crocodile-skin shoes,
+ no less! Has he no shame?'''
+dialogs[1075] = '''s,
+ no less! Has he no shame?'''
+dialogs[1076] = '''...grmmmph...chomp...'''
+dialogs[1077] = '''ink if I practice enough I'll
+ jump as high as you, Mario?[newlineAwaitInput] [startSelection]  (Sure!)
+ [startSelection]  (Yeah, right kid.)'''
+dialogs[1078] = '''kid.)'''
+dialogs[1079] = '''nt surprise![newPageAwaitInput] One of Frogfucius' grandchildren
+ is running errands in town today.[delay][delay]
+ I haven't seen him, though..[delay]..[delay][newPageAwaitInput] Oh, you're here to shop?'''
+dialogs[1080] = '''us' grandchildren
+ is running errands in town today.[delay][delay]
+ I haven't seen him, though..[delay]..[delay][newPageAwaitInput] Oh, you're here to shop?'''
+dialogs[1081] = ''' seen him, though..[delay]..[delay][newPageAwaitInput] Oh, you're here to shop?'''
+dialogs[1082] = '''You know, I hate to admit it...
+ But I LOVE this job!'''
+dialogs[1083] = '''ob!'''
+dialogs[1084] = '''her’s waiting
+ for you upstairs!'''
+dialogs[1085] = '''”
+ anymore. We're getting married.'''
+dialogs[1086] = '''right.
+ I guess we can put it off until
+ things cool down around here.'''
+dialogs[1087] = '''s cool down around here.'''
+dialogs[1088] = '''Chancellor you're here.[newlineAwaitInput] I'll wait for you down the hallway.'''
+dialogs[1089] = ''' wait for you down the hallway.'''
+dialogs[1090] = '''ease.'''
+dialogs[1091] = ''''''
+dialogs[1092] = '''excuse me? W...where’s the
+ Princess? She departed for your
+ house HOURS ago...!'''
+dialogs[1093] = '''go...!'''
+dialogs[1094] = '''es alive!!!
+ You're telling us that Bowser has
+ abducted the Princess AGAIN?'''
+dialogs[1095] = '''awful power is at work here?!'''
+dialogs[1096] = '''luck!'''
+dialogs[1097] = '''e!!'''
+dialogs[1098] = '''e, you're soaking
+ wet, aren't you?'''
+dialogs[1099] = '''
+ There’s nothing like a good cry![newlineAwaitInput] [delay]But,[delay] why was I crying?[pauseAwaitInput]'''
+dialogs[1100] = '''PTILE
+ stole my Grandpa’s coin!'''
+dialogs[1101] = ''' hoo...sniffle...[newlineAwaitInput] I can't cry. Big boys don't cry.[delay]
+ But it’s just not fair...![newPageAwaitInput]
+ What am I gonna do? Waaaaaah!!!'''
+dialogs[1102] = '''cry.[delay]
+ But it’s just not fair...![newPageAwaitInput]
+ What am I gonna do? Waaaaaah!!!'''
+dialogs[1103] = ''' Waaaaaah!!!'''
+dialogs[1104] = '''
+ into town, that croc stopped me!'''
+dialogs[1105] = '''stole my coin! I chased
+ him, but he’s way too fast...'''
+dialogs[1106] = '''
+ He doesn't stand a chance!'''
+dialogs[1107] = '''t...!'''
+dialogs[1108] = '''N, can he JUMP!'''
+dialogs[1109] = '''ow! You're THE Mario? I know
+ all about you! You've got more
+ JUMP in you than a box of frogs!'''
+dialogs[1110] = '''Pond.
+ I'm a frog, but can you believe it?
+ I can't jump. Embarrassing huh?'''
+dialogs[1111] = ''' huh?'''
+dialogs[1112] = ''', Mario!
+ Will you help me catch that
+ filthy thief?[newlineAwaitInput] [startSelection]  (Sure thing)
+ [startSelection]  (I'm a little busy)'''
+dialogs[1113] = '''ike a
+    frog, joins Mario in his quest.'''
+dialogs[1114] = '''orry)'''
+dialogs[1115] = '''ooo UNCOOL!'''
+dialogs[1116] = '''town...
+ Not on MY watch!!'''
+dialogs[1117] = '''idiculous!'''
+dialogs[1118] = '''LOW: Did he look something[delay][delay]
+ ...like[delay][delay]...this?'''
+dialogs[1119] = '''y bazooka
+ at home! [delay]Sheesh...[delay][delay]
+ [delay][delay]Give me a break, here.'''
+dialogs[1120] = '''k, here.'''
+dialogs[1121] = '''OU morons! Later!'''
+dialogs[1122] = ''' Mario!
+ I have something to report, sir.'''
+dialogs[1123] = '''just zoomed past me a
+ second ago. Did you see him?'''
+dialogs[1124] = '''o I guess Princess Toadstool
+ really WAS kidnapped by Bowser.'''
+dialogs[1125] = '''ath of cold!
+ Come on, let’s dry off.'''
+dialogs[1126] = '''l right now, let’s start again.
+ Go in FRONT of the counter
+ and talk to me.'''
+dialogs[1127] = '''ndles and
+ pitchforks out there!'''
+dialogs[1128] = '''until you hear this!
+ You see[delay][delay]...[delay]...'''
+dialogs[1129] = '''is!
+ You see[delay][delay]...[delay]...'''
+dialogs[1130] = '''.
+ Old Frogfucius told me. He seems
+ to know EVERYTHING! Hold on.'''
+dialogs[1131] = ''' on.'''
+dialogs[1132] = '''en.'''
+dialogs[1133] = '''de.
+ What a shame, huh?!'''
+dialogs[1134] = ''' so? Well, if Mario’s on your
+ team, you'll have that coin back
+ in a jiffy!'''
+dialogs[1135] = '''ave that coin back
+ in a jiffy!'''
+dialogs[1136] = ''''''
+dialogs[1137] = '''like we have
+ ourselves a new home!'''
+dialogs[1138] = '''ay!'''
+dialogs[1139] = '''S HEAD!!!!'''
+dialogs[1140] = ''' gonna get it!'''
+dialogs[1141] = ''' a fat lip to go with
+ that ugly mustache?!'''
+dialogs[1142] = '''!'''
+dialogs[1143] = '''bear.'''
+dialogs[1144] = '''r help?...[pauseAwaitInput]'''
+dialogs[1145] = '''
+  crashed into Mushroom Kingdom,
+    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1146] = '''ything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1147] = '''Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1148] = ''' Mario.
+ What a relief!'''
+dialogs[1149] = '''OW: Mario!
+ I'm in your debt, too.[newlineAwaitInput] Let’s head over to Grandpa’s place
+ in Tadpole Pond. He can help!'''
+dialogs[1150] = ''' was YOU who
+ got us through all of this!
+ We owe much to you...!'''
+dialogs[1151] = '''u...!'''
+dialogs[1152] = ''''''
+dialogs[1153] = '''allow. I'm from
+ Tadpole Pond...'''
+dialogs[1154] = '''CHANCELLOR: Well, any friend of
+ Mario’s is welcome here in
+ Mushroom Kingdom.[pauseAwaitInput]'''
+dialogs[1155] = '''nd of
+ Mario’s is welcome here in
+ Mushroom Kingdom.[pauseAwaitInput]'''
+dialogs[1156] = '''Mushroom Kingdom.[pauseAwaitInput]'''
+dialogs[1157] = '''e our only hope!'''
+dialogs[1158] = '''mission to pass.'''
+dialogs[1159] = '''t.'''
+dialogs[1160] = ''' him and
+ he runs into the next room![newlineAwaitInput] Well, so much for him.'''
+dialogs[1161] = ''' so much for him.'''
+dialogs[1162] = '''d!'''
+dialogs[1163] = ''' in the
+ throne room!'''
+dialogs[1164] = '''thank you enough?!'''
+dialogs[1165] = '''thank you enough?!'''
+dialogs[1166] = ''', right?[newlineAwaitInput] [startSelection]  (You bet)
+ [startSelection]  (I wouldn't be so sure)'''
+dialogs[1167] = '''for the hand, Mario.'''
+dialogs[1168] = ''' on now, take it.'''
+dialogs[1169] = '''et’s play
+ indoors, all right?'''
+dialogs[1170] = '''happen to know of
+ a good wedding chapel?'''
+dialogs[1171] = '''But now we're all
+ stuck inside!'''
+dialogs[1172] = '''book.'''
+dialogs[1173] = '''Hey, mister![pauseAwaitInput]
+ I got my coin back!'''
+dialogs[1174] = '''ke sure it doesn't get
+ stolen, eaten, or...whatever!
+ Your Grandpa needs it, okay?'''
+dialogs[1175] = '''t, okay?'''
+dialogs[1176] = ''', look what I found.'''
+dialogs[1177] = '''hanks, Mario!'''
+dialogs[1178] = '''g, boing, boing!
+ Now THIS guy can JUMP!'''
+dialogs[1179] = '''est!'''
+dialogs[1180] = '''.'''
+dialogs[1181] = '''em heck!'''
+dialogs[1182] = '''ied about my son.'''
+dialogs[1183] = '''arn the boss!'''
+dialogs[1184] = '''g too stressed out!'''
+dialogs[1185] = ''' you go snooping through
+ her things, though.'''
+dialogs[1186] = ''' Toadstool’s ???'''
+dialogs[1187] = '''he Princess' room is up ahead.
+ Were you caught trying to steal
+ something?[newlineAwaitInput] [startSelection]  (Are you kidding?!)
+ [startSelection]  (How did you know?)'''
+dialogs[1188] = '''ad.
+ Were you caught trying to steal
+ something?[newlineAwaitInput] [startSelection]  (Are you kidding?!)
+ [startSelection]  (How did you know?)'''
+dialogs[1189] = '''did you know?)'''
+dialogs[1190] = ''''t lie.
+ I know what you've been up to.'''
+dialogs[1191] = ''' been up to.'''
+dialogs[1192] = '''his in exchange.
+ Just leave everything
+ where it was!'''
+dialogs[1193] = '''searching
+ through other peoples' things!'''
+dialogs[1194] = '''les' things!'''
+dialogs[1195] = ''' like the Princess
+ is THAT far away.
+ I can almost feel her presence.'''
+dialogs[1196] = '''s
+ is THAT far away.
+ I can almost feel her presence.'''
+dialogs[1197] = ''' away.
+ I can almost feel her presence.'''
+dialogs[1198] = '''almost feel her presence.'''
+dialogs[1199] = '''ess kidnapped by
+ those THINGS outside?
+ Are THEY a part of this?'''
+dialogs[1200] = '''sh 'em all! It'll do ya good.[newlineAwaitInput] Trust me[pauseAwaitInput]...on THIS ONE.'''
+dialogs[1201] = '''[newlineAwaitInput] Trust me[pauseAwaitInput]...on THIS ONE.'''
+dialogs[1202] = '''THIS ONE.'''
+dialogs[1203] = '''a will be delighted!'''
+dialogs[1204] = '''LP!!!!'''
+dialogs[1205] = '''OOL: Grandma,...
+ thanks for putting up with all my
+ selfish demands.'''
+dialogs[1206] = ''' Mario’s beside me!
+ Everything’s going to be all right.
+ So don't worry, OK?'''
+dialogs[1207] = '''going to be all right.
+ So don't worry, OK?'''
+dialogs[1208] = ''' Boing, boing...[newlineAwaitInput] SUPER JUMP ATTACK!!'''
+dialogs[1209] = '''! You think you can hurt
+ me with your childish pranks?!'''
+dialogs[1210] = '''nks?!'''
+dialogs[1211] = '''...[delay]...'''
+dialogs[1212] = '''ok, we have a... GUEST!'''
+dialogs[1213] = '''ello th[delay]...[delay]ere...
+ Why...aren't you Mario!'''
+dialogs[1214] = '''.
+ AND the funky 'stache...!
+ Are you really Mario?![newlineAwaitInput] [startSelection]  (You betcha!)
+ [startSelection]  (Wrong number!)'''
+dialogs[1215] = '''!)
+ [startSelection]  (Wrong number!)'''
+dialogs[1216] = '''ow it’s you?
+ You might just be pulling my leg![newlineAwaitInput] Show me! PROVE IT!'''
+dialogs[1217] = '''
+ You might just be pulling my leg![newlineAwaitInput] Show me! PROVE IT!'''
+dialogs[1218] = ''' Well, you'll have to do...[newlineAwaitInput] Let’s play my[delay]...[delay]“Geno” game!'''
+dialogs[1219] = '''ght the farm, so
+ um...you can be “Bowser”...[newlineAwaitInput] I'll be “Geno,” okay?'''
+dialogs[1220] = '''...you can be “Bowser”...[newlineAwaitInput] I'll be “Geno,” okay?'''
+dialogs[1221] = '''no,” okay?'''
+dialogs[1222] = '''watch ME!'''
+dialogs[1223] = '''d, dear.'''
+dialogs[1224] = '''h dear[delay]...Mario, I hate to 
+ ask, but... Could you play 
+ with Gaz for a little while?'''
+dialogs[1225] = '''y 
+ with Gaz for a little while?'''
+dialogs[1226] = '''tle while?'''
+dialogs[1227] = '''ch out, Bowser,
+ cause Geno’s gonna blow you away!
+ TAKE THIS!'''
+dialogs[1228] = '''wser!'''
+dialogs[1229] = '''it!'''
+dialogs[1230] = '''SHOT!!'''
+dialogs[1231] = '''...missed.'''
+dialogs[1232] = '''i Mario. Staying for a nap?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (Maybe next time)'''
+dialogs[1233] = '''xt time)'''
+dialogs[1234] = '''
+    Stop by anytime now, you hear?'''
+dialogs[1235] = ''' Neat, huh?'''
+dialogs[1236] = '''..
+ And isn't Geno the one who broke
+ my lamp the other day?'''
+dialogs[1237] = ''' was just,
+ well, you know...
+ Now THIS WAS REAL!'''
+dialogs[1238] = '''EAL!'''
+dialogs[1239] = ''''''
+dialogs[1240] = '''at are you trying to get out of
+ this time, hmmm?'''
+dialogs[1241] = '''thing.
+ I really, TRULY saw Geno walking
+ into the forest!'''
+dialogs[1242] = ''' [startSelection]  (Like a new man!)
+ [startSelection]  (Need coffee. Keep away.)'''
+dialogs[1243] = '''Well, that’s good to hear.
+ Thank you so much for spending
+ time with Gaz.[newlineAwaitInput] He just loved it!'''
+dialogs[1244] = '''th Gaz.[newlineAwaitInput] He just loved it!'''
+dialogs[1245] = '''hy don't you rest some more?'''
+dialogs[1246] = '''if I hurt you!
+ But...what would Geno want
+ in the forest?'''
+dialogs[1247] = '''orry I knocked you down
+ a while ago.[newPageAwaitInput] Geno...doesn't know his own
+ strength!'''
+dialogs[1248] = '''ago.[newPageAwaitInput] Geno...doesn't know his own
+ strength!'''
+dialogs[1249] = '''n
+ strength!'''
+dialogs[1250] = '''OSSIBLE!'''
+dialogs[1251] = '''laying with the controls again![newPageAwaitInput] Mario, only you could jump up
+ there!  Please...help me get back
+ up to my house!'''
+dialogs[1252] = '''laying with the controls again![newPageAwaitInput] Mario, only you could jump up
+ there!  Please...help me get back
+ up to my house!'''
+dialogs[1253] = '''lease...help me get back
+ up to my house!'''
+dialogs[1254] = '''d here
+ is soooo bo-oring!'''
+dialogs[1255] = ''' you're
+ hit, you can't move! See, look![newlineAwaitInput] I can't move a muscle. Now I know
+ how a scarecrow feels!'''
+dialogs[1256] = ''' you're
+ hit, you can't move! See, look![newlineAwaitInput] I can't move a muscle. Now I know
+ how a scarecrow feels!'''
+dialogs[1257] = ''' you're
+ hit, you can't move! See, look![newlineAwaitInput] I can't move a muscle. Now I know
+ how a scarecrow feels!'''
+dialogs[1258] = ''' you're
+ hit, you can't move! See, look![newlineAwaitInput] I can't move a muscle. Now I know
+ how a scarecrow feels!'''
+dialogs[1259] = ''' you're
+ hit, you can't move! See, look![newlineAwaitInput] I can't move a muscle. Now I know
+ how a scarecrow feels!'''
+dialogs[1260] = ''' you're
+ hit, you can't move! See, look![newlineAwaitInput] I can't move a muscle. Now I know
+ how a scarecrow feels!'''
+dialogs[1261] = ''' you're
+ hit, you can't move! See, look![newlineAwaitInput] I can't move a muscle. Now I know
+ how a scarecrow feels!'''
+dialogs[1262] = '''ing star fell
+ into the forest, arrows have been
+ showering our town!'''
+dialogs[1263] = '''t’s scary out here, but
+ someone’s got to pump the water.'''
+dialogs[1264] = '''l hasn't come back!
+ I wonder what’s keeping him?'''
+dialogs[1265] = '''er what’s keeping him?'''
+dialogs[1266] = ''''''
+dialogs[1267] = '''[delay],...[delay][delay]were my treasures OK?[newlineAwaitInput] [startSelection]  (They sure were)
+ [startSelection]  (I wouldn't say so)'''
+dialogs[1268] = '''ief!'''
+dialogs[1269] = ''' only one who
+ can reach THEM![newlineAwaitInput] [startSelection]  (Sorry, I got carried away)
+ [startSelection]  (I don't know anything)'''
+dialogs[1270] = ''' [startSelection]  (Sorry, I got carried away)
+ [startSelection]  (I don't know anything)'''
+dialogs[1271] = ''' away)
+ [startSelection]  (I don't know anything)'''
+dialogs[1272] = '''now anything)'''
+dialogs[1273] = '''ince we didn't get hit by any
+ arrows, I'll tell you a secret.[newPageAwaitInput] Enter the forest. When you hit an
+ area with 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1274] = ''' forest. When you hit an
+ area with 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1275] = '''One terrorizes people and the other
+ helps people. Avoid the former.'''
+dialogs[1276] = '''didn't hear you?
+ [startSelection]  (I'm so sorry)
+ [startSelection]  (I said I don't know)'''
+dialogs[1277] = '''?'''
+dialogs[1278] = '''up the good work!'''
+dialogs[1279] = '''jumped on it.
+ I do it all the time.
+ It really winds my Dad up!'''
+dialogs[1280] = ''' Dad up!'''
+dialogs[1281] = '''rop by the shop.
+ What can I do for you?'''
+dialogs[1282] = '''What can I do for you?'''
+dialogs[1283] = '''. I can't move!'''
+dialogs[1284] = '''. I can't move!'''
+dialogs[1285] = ''' any wood.'''
+dialogs[1286] = '''wait...'''
+dialogs[1287] = '''wait...'''
+dialogs[1288] = '''s.'''
+dialogs[1289] = '''n't
+ come back when he should have.'''
+dialogs[1290] = '''er
+ you while you're resting, but I
+ wanted to deliver this to you.'''
+dialogs[1291] = ''' this to you.'''
+dialogs[1292] = ''' a blue
+ cape walking towards the forest.'''
+dialogs[1293] = '''
+ I think you need some help.
+ Now SCRAM!'''
+dialogs[1294] = '''as many as you can!
+ Ready?[delay_48]...GO![delay_48]'''
+dialogs[1295] = '''eady?[delay_48]...GO![delay_48]'''
+dialogs[1296] = ''' SEE, Mom? THIS is the Geno
+ I was talking about!'''
+dialogs[1297] = ''' fabulous costume!
+ It must be kind of hot for the
+ person wearing it, though.'''
+dialogs[1298] = '''wearing it, though.'''
+dialogs[1299] = '''r Pieces? You mean like
+ shooting stars? What for?'''
+dialogs[1300] = '''r Pieces? You mean like
+ shooting stars? What for?'''
+dialogs[1301] = ''' What for?'''
+dialogs[1302] = '''ll...
+ How can I explain this[delay]...[delay]'''
+dialogs[1303] = '''ell Gaz,...
+ it’s like this...[delay_32]'''
+dialogs[1304] = '''y that if
+ things stay the way they are, your
+ wishes will never come true.'''
+dialogs[1305] = '''rue.'''
+dialogs[1306] = '''f
+ I grow up, I won't ever be strong
+ and cool like you?!'''
+dialogs[1307] = ''' one’s wishes will come
+ true until the Star Pieces are
+ found and the Star Road repaired.'''
+dialogs[1308] = '''elp
+ he can get!'''
+dialogs[1309] = ''' Geno, I have a lot of dreams!
+ Please, go fix the Star Road and
+ make sure they all come true!'''
+dialogs[1310] = '''ams!
+ Please, go fix the Star Road and
+ make sure they all come true!'''
+dialogs[1311] = '''ad and
+ make sure they all come true!'''
+dialogs[1312] = '''all come true!'''
+dialogs[1313] = '''inute!'''
+dialogs[1314] = '''Go get 'em, Geno!
+ You're the main man!'''
+dialogs[1315] = '''re the main man!'''
+dialogs[1316] = '''ut...hey, I can
+ handle it.'''
+dialogs[1317] = '''le it.'''
+dialogs[1318] = '''or being a good
+ sport, Gaz. I'll see you when I
+ get back.'''
+dialogs[1319] = '''ll see you when I
+ get back.'''
+dialogs[1320] = '''.'''
+dialogs[1321] = '''.'''
+dialogs[1322] = '''.'''
+dialogs[1323] = '''.'''
+dialogs[1324] = '''.'''
+dialogs[1325] = '''.'''
+dialogs[1326] = '''.'''
+dialogs[1327] = '''.'''
+dialogs[1328] = '''.'''
+dialogs[1329] = ''''''
+dialogs[1330] = '''ly move![newlineAwaitInput] I guess I owe it all to Mario...
+ What an amazing guy!'''
+dialogs[1331] = '''guess I owe it all to Mario...
+ What an amazing guy!'''
+dialogs[1332] = ''' it all to Mario...
+ What an amazing guy!'''
+dialogs[1333] = '''..
+ What an amazing guy!'''
+dialogs[1334] = '''n amazing guy!'''
+dialogs[1335] = '''uy!'''
+dialogs[1336] = ''' finally HOME!'''
+dialogs[1337] = '''E!'''
+dialogs[1338] = '''elieve we had arrows
+ showering down around here...'''
+dialogs[1339] = '''ad arrows
+ showering down around here...'''
+dialogs[1340] = ''' showering down around here...'''
+dialogs[1341] = '''down around here...'''
+dialogs[1342] = '''own around here...'''
+dialogs[1343] = ''' here...'''
+dialogs[1344] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1345] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1346] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1347] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1348] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1349] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1350] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1351] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1352] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1353] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1354] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1355] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1356] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1357] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1358] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1359] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1360] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1361] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1362] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1363] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1364] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1365] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1366] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1367] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1368] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1369] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1370] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1371] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1372] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1373] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1374] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1375] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1376] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1377] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1378] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1379] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1380] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1381] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1382] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1383] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1384] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1385] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1386] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1387] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1388] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1389] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1390] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1391] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1392] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1393] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1394] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1395] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1396] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1397] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1398] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1399] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1400] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1401] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1402] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1403] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1404] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1405] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1406] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1407] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1408] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1409] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1410] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1411] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1412] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1413] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1414] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1415] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1416] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1417] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1418] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1419] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1420] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1421] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1422] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1423] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1424] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1425] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1426] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1427] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1428] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1429] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1430] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1431] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1432] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1433] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1434] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1435] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1436] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1437] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1438] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1439] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1440] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1441] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1442] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1443] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1444] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1445] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1446] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1447] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1448] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1449] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1450] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1451] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1452] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1453] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1454] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1455] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1456] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1457] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1458] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1459] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1460] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1461] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1462] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1463] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1464] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1465] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1466] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1467] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1468] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1469] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1470] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1471] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1472] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1473] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1474] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1475] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1476] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1477] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1478] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1479] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1480] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1481] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1482] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1483] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1484] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1485] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1486] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1487] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1488] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1489] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1490] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1491] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1492] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1493] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1494] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1495] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1496] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1497] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1498] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1499] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1500] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1501] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1502] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1503] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1504] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1505] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1506] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1507] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1508] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1509] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1510] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1511] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1512] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1513] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1514] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1515] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1516] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1517] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1518] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1519] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1520] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1521] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1522] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1523] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1524] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1525] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1526] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1527] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1528] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1529] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1530] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1531] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1532] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1533] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1534] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1535] = '''Good, now I can finally go to the
+ forest to chop some wood.'''
+dialogs[1536] = '''                     INN'''
+dialogs[1537] = '''                     INN'''
+dialogs[1538] = '''                     INN'''
+dialogs[1539] = '''                     INN'''
+dialogs[1540] = '''                     INN'''
+dialogs[1541] = '''O TOWN'''
+dialogs[1542] = '''OUSE'''
+dialogs[1543] = ''''''
+dialogs[1544] = '''OY'S SHOP'''
+dialogs[1545] = '''OY'S SHOP'''
+dialogs[1546] = '''OY'S SHOP'''
+dialogs[1547] = '''OY'S SHOP'''
+dialogs[1548] = '''OY'S SHOP'''
+dialogs[1549] = '''GRATE GUY'S CASINO'''
+dialogs[1550] = '''me, fireworks
+ lit up the sky every night.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[1551] = '''ight.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[1552] = '''ight.[newPageAwaitInput] Some guy in Moleville would make
+ the fireworks.[newlineAwaitInput] I wonder if we'll ever get to
+ see them again...'''
+dialogs[1553] = '''if we'll ever get to
+ see them again...'''
+dialogs[1554] = '''if we'll ever get to
+ see them again...'''
+dialogs[1555] = '''if we'll ever get to
+ see them again...'''
+dialogs[1556] = '''if we'll ever get to
+ see them again...'''
+dialogs[1557] = '''if we'll ever get to
+ see them again...'''
+dialogs[1558] = '''if we'll ever get to
+ see them again...'''
+dialogs[1559] = '''if we'll ever get to
+ see them again...'''
+dialogs[1560] = '''if we'll ever get to
+ see them again...'''
+dialogs[1561] = '''if we'll ever get to
+ see them again...'''
+dialogs[1562] = '''if we'll ever get to
+ see them again...'''
+dialogs[1563] = '''if we'll ever get to
+ see them again...'''
+dialogs[1564] = '''if we'll ever get to
+ see them again...'''
+dialogs[1565] = ''''t it?'''
+dialogs[1566] = ''''t it?'''
+dialogs[1567] = '''.[newPageAwaitInput] People from down under will
+ probably come too. That girl at the
+ entrance'll tell you who’s here.'''
+dialogs[1568] = '''.[newPageAwaitInput] People from down under will
+ probably come too. That girl at the
+ entrance'll tell you who’s here.'''
+dialogs[1569] = '''.[newPageAwaitInput] People from down under will
+ probably come too. That girl at the
+ entrance'll tell you who’s here.'''
+dialogs[1570] = '''.[newPageAwaitInput] People from down under will
+ probably come too. That girl at the
+ entrance'll tell you who’s here.'''
+dialogs[1571] = '''.[newPageAwaitInput] People from down under will
+ probably come too. That girl at the
+ entrance'll tell you who’s here.'''
+dialogs[1572] = '''t the
+ entrance'll tell you who’s here.'''
+dialogs[1573] = '''t the
+ entrance'll tell you who’s here.'''
+dialogs[1574] = ''' deserve this!'''
+dialogs[1575] = ''' deserve this!'''
+dialogs[1576] = '''ever THAT is...'''
+dialogs[1577] = ''' with me?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (Not now)'''
+dialogs[1578] = ''' with me?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (Not now)'''
+dialogs[1579] = ''' with me?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (Not now)'''
+dialogs[1580] = ''' with me?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (Not now)'''
+dialogs[1581] = ''' with me?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (Not now)'''
+dialogs[1582] = '''t me!'''
+dialogs[1583] = '''ince Mallow!'''
+dialogs[1584] = '''much!
+ We were able to rescue my father
+ with the key you gave us.'''
+dialogs[1585] = '''LLOW:
+        Good luck in the future!'''
+dialogs[1586] = '''
+                 You too!'''
+dialogs[1587] = '''Prince!'''
+dialogs[1588] = ''' to work for the
+ King with pride.'''
+dialogs[1589] = '''g
+ battle when you use “Special”
+ attacks. For example...[newPageAwaitInput] A “Jump” attack uses 3 “FP”s.[newlineAwaitInput] When you “Jump”, your “FP” will
+ decrease by 3 each time. Run out,
+ and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[1590] = '''attack uses 3 “FP”s.[newlineAwaitInput] When you “Jump”, your “FP” will
+ decrease by 3 each time. Run out,
+ and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[1591] = ''' you “Jump”, your “FP” will
+ decrease by 3 each time. Run out,
+ and you can't use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[1592] = ''''t use these attacks![newPageAwaitInput] An item called a “Flower” raises
+ your maximum “FP”s.[newlineAwaitInput] Recover “FP”s with syrups,
+ some mushrooms, and at inns.'''
+dialogs[1593] = '''h syrups,
+ some mushrooms, and at inns.'''
+dialogs[1594] = '''a crocodile around here?
+ He talks like a mobster wannabe.[pauseAwaitInput]'''
+dialogs[1595] = '''[delay_48]
+ Hey, wait a sec!!![delay_48]
+ My wallet’s gone!'''
+dialogs[1596] = '''[delay_48]
+ Hey, wait a sec!!![delay_48]
+ My wallet’s gone!'''
+dialogs[1597] = '''[delay_48]
+ Hey, wait a sec!!![delay_48]
+ My wallet’s gone!'''
+dialogs[1598] = '''[delay_48]
+ Hey, wait a sec!!![delay_48]
+ My wallet’s gone!'''
+dialogs[1599] = '''[delay_48]
+ Hey, wait a sec!!![delay_48]
+ My wallet’s gone!'''
+dialogs[1600] = '''re!'''
+dialogs[1601] = '''ou win[delay_4]'''
+dialogs[1602] = ''' you crash for a while?[newlineAwaitInput] It'll only cost you [0x7024] coins!
+ [startSelection]  (Okay!)
+ [startSelection]  (No, thanks.)'''
+dialogs[1603] = '''t'll only cost you [0x7024] coins!
+ [startSelection]  (Okay!)
+ [startSelection]  (No, thanks.)'''
+dialogs[1604] = '''.)'''
+dialogs[1605] = '''e(s)'''
+dialogs[1606] = ''' the Chancellor awaits.'''
+dialogs[1607] = '''tely...What?!
+ Bowser’s got her AGAIN?!'''
+dialogs[1608] = '''as anyone seen my wallet?!'''
+dialogs[1609] = ''' I hope my grandchild turns out to
+ be just like the Princess!'''
+dialogs[1610] = '''out to
+ be just like the Princess!'''
+dialogs[1611] = '''!'''
+dialogs[1612] = ''' in
+ a few years, okay?[newPageAwaitInput] Just[delay][delay]... give me time to grow
+ into my mother’s wedding dress!'''
+dialogs[1613] = '''[delay][delay]... give me time to grow
+ into my mother’s wedding dress!'''
+dialogs[1614] = '''w
+ into my mother’s wedding dress!'''
+dialogs[1615] = '''ress!'''
+dialogs[1616] = '''ndin' in!'''
+dialogs[1617] = '''ile...
+ and wearing crocodile-skin shoes,
+ no less! Has he no shame?'''
+dialogs[1618] = '''is cook and clean!'''
+dialogs[1619] = ''' if I practice enough I'll
+ jump as high as you, Mario?[newlineAwaitInput] [startSelection]  (Sure!)
+ [startSelection]  (Yeah, right kid.)'''
+dialogs[1620] = ''', right kid.)'''
+dialogs[1621] = '''rogfucius' grandchildren
+ is running errands in town today.[delay][delay]
+ I haven't seen him, though..[delay]..[delay][newPageAwaitInput] Oh, you're here to shop?'''
+dialogs[1622] = '''rands in town today.[delay][delay]
+ I haven't seen him, though..[delay]..[delay][newPageAwaitInput] Oh, you're here to shop?'''
+dialogs[1623] = '''now, I hate to admit it...
+ But I LOVE this job!'''
+dialogs[1624] = '''this job!'''
+dialogs[1625] = '''er’s waiting
+ for you upstairs!'''
+dialogs[1626] = '''[delay][newlineAwaitInput] Raini isn't just a “friend”
+ anymore. We're getting married.'''
+dialogs[1627] = ''', there you are!
+ I'll tell the Chancellor you're here.[newlineAwaitInput] I'll wait for you down the hallway.'''
+dialogs[1628] = '''own the hallway.'''
+dialogs[1629] = '''
+'''
+dialogs[1630] = '''LLOR: Mario!
+ Thank goodness you're here! '''
+dialogs[1631] = '''rd an explosion or something
+ at Bowser’s Keep. It was so loud
+ I almost dropped my spores!!!'''
+dialogs[1632] = '''ser’s Keep. It was so loud
+ I almost dropped my spores!!!'''
+dialogs[1633] = '''worst! Could Bowser
+ somehow be behind all of this?'''
+dialogs[1634] = '''abducted the Princess AGAIN?'''
+dialogs[1635] = ''' the keep and rescue
+ Princess Toadstool!'''
+dialogs[1636] = '''is unassailable?! What
+ awful power is at work here?!'''
+dialogs[1637] = '''...her life is in your hands.
+ Please, save our dear Princess!'''
+dialogs[1638] = '''ere could the Princess be?
+ We're all counting on you
+ to find her, Mario!'''
+dialogs[1639] = ''''''
+dialogs[1640] = ''' On your way now!'''
+dialogs[1641] = ''', aren't you?'''
+dialogs[1642] = '''crying?[pauseAwaitInput]'''
+dialogs[1643] = '''o...sniffle...[newlineAwaitInput] I can't cry. Big boys don't cry.[delay]
+ But it’s just not fair...![newPageAwaitInput]
+ What am I gonna do? Waaaaaah!!!'''
+dialogs[1644] = '''buy some
+ things for him here. When I walked
+ into town, that croc stopped me!'''
+dialogs[1645] = '''coin! I chased
+ him, but he’s way too fast...'''
+dialogs[1646] = ''' how you're going
+ to take care of Bowser!'''
+dialogs[1647] = '''reptile! He’s the
+ one who stole my wallet...!'''
+dialogs[1648] = ''' I let him get away...'''
+dialogs[1649] = '''e’s up to,
+ but[delay]...[delay] MAN, can he JUMP!'''
+dialogs[1650] = '''? I know
+ all about you! You've got more
+ JUMP in you than a box of frogs!'''
+dialogs[1651] = '''a box of frogs!'''
+dialogs[1652] = '''it, Mario!
+ Will you help me catch that
+ filthy thief?[newlineAwaitInput] [startSelection]  (Sure thing)
+ [startSelection]  (I'm a little busy)'''
+dialogs[1653] = '''thief?[newlineAwaitInput] [startSelection]  (Sure thing)
+ [startSelection]  (I'm a little busy)'''
+dialogs[1654] = ''' AT ALL like a
+    frog, joins Mario in his quest.'''
+dialogs[1655] = '''is quest.'''
+dialogs[1656] = '''  (Sorry)'''
+dialogs[1657] = '''.'''
+dialogs[1658] = '''!'''
+dialogs[1659] = '''ll right, already)
+ [startSelection]  (No means NO!)'''
+dialogs[1660] = '''g thugs
+ have been sneaking into town...
+ Not on MY watch!!'''
+dialogs[1661] = '''stand watch![newlineAwaitInput] But this is getting ridiculous!'''
+dialogs[1662] = '''stand watch![newlineAwaitInput] But this is getting ridiculous!'''
+dialogs[1663] = '''stand watch![newlineAwaitInput] But this is getting ridiculous!'''
+dialogs[1664] = ''' yes! Exactly!'''
+dialogs[1665] = '''Why didn't you stop him?'''
+dialogs[1666] = '''! [delay]Sheesh...[delay][delay]
+ [delay][delay]Give me a break, here.'''
+dialogs[1667] = '''O: Har, har! Youse mugs'll
+ NEVER catch me! A snail could
+ outrun YOU morons! Later!'''
+dialogs[1668] = '''l could
+ outrun YOU morons! Later!'''
+dialogs[1669] = ''' He’s here somewhere!
+ He just zoomed past me a
+ second ago. Did you see him?'''
+dialogs[1670] = '''. Did you see him?'''
+dialogs[1671] = '''. Did you see him?'''
+dialogs[1672] = '''. Did you see him?'''
+dialogs[1673] = ''' I shall fulfill my duty.'''
+dialogs[1674] = '''eally WAS kidnapped by Bowser.'''
+dialogs[1675] = '''!!'''
+dialogs[1676] = ''' hammer handles and
+ pitchforks out there!'''
+dialogs[1677] = '''..'''
+dialogs[1678] = '''..'''
+dialogs[1679] = '''..'''
+dialogs[1680] = '''..'''
+dialogs[1681] = '''cius told me. He seems
+ to know EVERYTHING! Hold on.'''
+dialogs[1682] = '''RYTHING! Hold on.'''
+dialogs[1683] = '''W: Listen...[newlineAwaitInput] The truth of the matter is, well,
+[delay] ...um...[delay]the coin was stolen.'''
+dialogs[1684] = '''s
+ no need to worry!
+ Mario, here, will help us out!'''
+dialogs[1685] = '''fy!'''
+dialogs[1686] = '''veryone went?'''
+dialogs[1687] = '''ve
+ ourselves a new home!'''
+dialogs[1688] = '''ce around all
+ day long! And there’s no one
+ here who can stand in our way!'''
+dialogs[1689] = ''' stand in our way!'''
+dialogs[1690] = '''ahoo!
+ Let’s bounce the night away!'''
+dialogs[1691] = '''s are gonna put
+ a stop to OUR party![newlineAwaitInput] Are we happy about this?!'''
+dialogs[1692] = '''his?!'''
+dialogs[1693] = '''e gonna get it!'''
+dialogs[1694] = ''''bout a fat lip to go with
+ that ugly mustache?!'''
+dialogs[1695] = '''ue![pauseAwaitInput]'''
+dialogs[1696] = '''ok! SCARY THINGS!!
+ Get RID of them!!'''
+dialogs[1697] = '''D of them!!'''
+dialogs[1698] = ''' the Princess
+ and now THIS!
+ It’s just too much to bear.'''
+dialogs[1699] = '''ust too much to bear.'''
+dialogs[1700] = '''ase! You MUST
+ rescue the Princess, NOW!'''
+dialogs[1701] = '''cess, NOW!'''
+dialogs[1702] = '''ss, NOW!'''
+dialogs[1703] = ''', NOW!'''
+dialogs[1704] = '''NOW!'''
+dialogs[1705] = '''W!'''
+dialogs[1706] = ''''''
+dialogs[1707] = '''How about we ask my
+ Grandpa for help?...[pauseAwaitInput]'''
+dialogs[1708] = ''' about we ask my
+ Grandpa for help?...[pauseAwaitInput]'''
+dialogs[1709] = '''for help?...[pauseAwaitInput]'''
+dialogs[1710] = '''.EVERYTHING!'''
+dialogs[1711] = '''[newlineAwaitInput]    the sword-like monster who
+  crashed into Mushroom Kingdom,
+    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1712] = '''ho
+  crashed into Mushroom Kingdom,
+    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1713] = '''ingdom,
+    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1714] = '''dom,
+    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1715] = '''m,
+    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1716] = '''
+    have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1717] = '''have anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1718] = '''ve anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1719] = '''ve anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1720] = '''ve anything to do with the[newlineAwaitInput]  Star Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1721] = '''Piece that Mario found...?[newPageAwaitInput]    Our heroes move on towards
+          the Kero Sewers...'''
+dialogs[1722] = ''' heroes move on towards
+          the Kero Sewers...'''
+dialogs[1723] = '''he Kero Sewers...'''
+dialogs[1724] = '''R: Gracious![delay_64]
+ OH! It’s YOU, Mario.
+ What a relief!'''
+dialogs[1725] = ''' Mario.
+ What a relief!'''
+dialogs[1726] = '''.
+ What a relief!'''
+dialogs[1727] = ''' What a relief!'''
+dialogs[1728] = '''hat a relief!'''
+dialogs[1729] = '''t a relief!'''
+dialogs[1730] = '''a relief!'''
+dialogs[1731] = '''a relief!'''
+dialogs[1732] = '''a relief!'''
+dialogs[1733] = ''' your debt, too.[newlineAwaitInput] Let’s head over to Grandpa’s place
+ in Tadpole Pond. He can help!'''
+dialogs[1734] = '''r to Grandpa’s place
+ in Tadpole Pond. He can help!'''
+dialogs[1735] = '''Pond. He can help!'''
+dialogs[1736] = '''r!
+ Thank goodness you're all right![pauseAwaitInput]'''
+dialogs[1737] = '''right![pauseAwaitInput]'''
+dialogs[1738] = '''ght![pauseAwaitInput]'''
+dialogs[1739] = '''t![pauseAwaitInput]'''
+dialogs[1740] = '''[pauseAwaitInput]'''
+dialogs[1741] = '''
+ Mario! So it was YOU who
+ got us through all of this!
+ We owe much to you...!'''
+dialogs[1742] = '''Mario! So it was YOU who
+ got us through all of this!
+ We owe much to you...!'''
+dialogs[1743] = '''Mario! So it was YOU who
+ got us through all of this!
+ We owe much to you...!'''
+dialogs[1744] = '''Mario! So it was YOU who
+ got us through all of this!
+ We owe much to you...!'''
+dialogs[1745] = '''us through all of this!
+ We owe much to you...!'''
+dialogs[1746] = '''e owe much to you...!'''
+dialogs[1747] = '''LOR: Excuse me, but...
+ who are YOU?'''
+dialogs[1748] = '''o are YOU?'''
+dialogs[1749] = '''lo!
+ My name is Mallow. I'm from
+ Tadpole Pond...'''
+dialogs[1750] = '''!
+ My name is Mallow. I'm from
+ Tadpole Pond...'''
+dialogs[1751] = ''' My name is Mallow. I'm from
+ Tadpole Pond...'''
+dialogs[1752] = '''y name is Mallow. I'm from
+ Tadpole Pond...'''
+dialogs[1753] = '''name is Mallow. I'm from
+ Tadpole Pond...'''
+dialogs[1754] = '''me is Mallow. I'm from
+ Tadpole Pond...'''
+dialogs[1755] = '''me is Mallow. I'm from
+ Tadpole Pond...'''
+dialogs[1756] = '''me is Mallow. I'm from
+ Tadpole Pond...'''
+dialogs[1757] = '''ole Pond...'''
+dialogs[1758] = '''ll, any friend of
+ Mario’s is welcome here in
+ Mushroom Kingdom.[pauseAwaitInput]'''
+dialogs[1759] = '''ome here in
+ Mushroom Kingdom.[pauseAwaitInput]'''
+dialogs[1760] = '''m.[pauseAwaitInput]'''
+dialogs[1761] = '''re our only hope!'''
+dialogs[1762] = ''' our only hope!'''
+dialogs[1763] = '''ur only hope!'''
+dialogs[1764] = ''' only hope!'''
+dialogs[1765] = '''nly hope!'''
+dialogs[1766] = '''y hope!'''
+dialogs[1767] = '''y hope!'''
+dialogs[1768] = '''y hope!'''
+dialogs[1769] = ''' but you'll have to get the
+ Chancellor’s permission to pass.'''
+dialogs[1770] = '''y.'''
+dialogs[1771] = '''.Guard!
+ I come here to save him and
+ he runs into the next room![newlineAwaitInput] Well, so much for him.'''
+dialogs[1772] = '''I'm scared!'''
+dialogs[1773] = '''ay?!'''
+dialogs[1774] = '''ne room!'''
+dialogs[1775] = '''ared to pass by them!'''
+dialogs[1776] = '''d by Mario again! How could
+ I ever thank you enough?!'''
+dialogs[1777] = ''''re...[delay]safe, right?[newlineAwaitInput] [startSelection]  (You bet)
+ [startSelection]  (I wouldn't be so sure)'''
+dialogs[1778] = '''I'm...late. I was 
+ caught up...in some business.[newPageAwaitInput] So, shall we head off to the
+ Chancellor’s place now?'''
+dialogs[1779] = '''t was TOO darn close.
+ Thanks for the hand, Mario.'''
+dialogs[1780] = '''t was TOO darn close.
+ Thanks for the hand, Mario.'''
+dialogs[1781] = '''rocodile swiped from me!
+ Can I have it back?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (No way)'''
+dialogs[1782] = ''' bad as he is!'''
+dialogs[1783] = ''' bad as he is!'''
+dialogs[1784] = '''a reward.
+ Go on now, take it.'''
+dialogs[1785] = ''' quit whining)
+ [startSelection]  (NO WAY, Jose!)'''
+dialogs[1786] = '''     I'm shaken, but not stirred!'''
+dialogs[1787] = '''     I'm shaken, but not stirred!'''
+dialogs[1788] = '''T sleep in the Princess'
+ bed. Have you no manners?'''
+dialogs[1789] = '''o manners?'''
+dialogs[1790] = '''ey, mister![pauseAwaitInput]
+ I got my coin back!'''
+dialogs[1791] = '''coin back!'''
+dialogs[1792] = '''
+ Okay, here’s the thing
+ I promised you...'''
+dialogs[1793] = '''e me?![newPageAwaitInput] You want to...WHAT? How can
+ you shop at a time like this?![newPageAwaitInput] Just...take what you want and
+ leave some money behind...'''
+dialogs[1794] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1795] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1796] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1797] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1798] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1799] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1800] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1801] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1802] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1803] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1804] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1805] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1806] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1807] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1808] = '''ust...take what you want and
+ leave some money behind...'''
+dialogs[1809] = '''leave some money behind...'''
+dialogs[1810] = ''' Princess hasn't returned yet.
+ Can you imagine how the[newlineAwaitInput] Chancellor must feel?'''
+dialogs[1811] = ''' you imagine how the[newlineAwaitInput] Chancellor must feel?'''
+dialogs[1812] = '''t feel?'''
+dialogs[1813] = '''g.'''
+dialogs[1814] = '''g.'''
+dialogs[1815] = ''' Mario. I'll continue to
+ stand watch, but now EVERYONE
+ seems suspicious![newlineAwaitInput] By the way, look what I found.'''
+dialogs[1816] = '''d watch, but now EVERYONE
+ seems suspicious![newlineAwaitInput] By the way, look what I found.'''
+dialogs[1817] = '''look what I found.'''
+dialogs[1818] = '''ing, boing, boing!
+ Now THIS guy can JUMP!'''
+dialogs[1819] = '''please.'''
+dialogs[1820] = '''it...[newlineAwaitInput] Hang on for a sec, okay?'''
+dialogs[1821] = '''it...[newlineAwaitInput] Hang on for a sec, okay?'''
+dialogs[1822] = '''it...[newlineAwaitInput] Hang on for a sec, okay?'''
+dialogs[1823] = '''it...[newlineAwaitInput] Hang on for a sec, okay?'''
+dialogs[1824] = '''it...[newlineAwaitInput] Hang on for a sec, okay?'''
+dialogs[1825] = '''ay?'''
+dialogs[1826] = '''s.
+ The Princess would be happy to
+ know you have something of hers.'''
+dialogs[1827] = ''' happy to
+ know you have something of hers.'''
+dialogs[1828] = '''hing of hers.'''
+dialogs[1829] = ''' Flower!'''
+dialogs[1830] = '''ht...
+ I'm asking for too much...'''
+dialogs[1831] = '''..'''
+dialogs[1832] = ''' 'em heck!'''
+dialogs[1833] = '''t my son upstairs?'''
+dialogs[1834] = '''t my son upstairs?'''
+dialogs[1835] = '''t my son upstairs?'''
+dialogs[1836] = '''t my son upstairs?'''
+dialogs[1837] = '''t my son upstairs?'''
+dialogs[1838] = '''t my son upstairs?'''
+dialogs[1839] = '''t my son upstairs?'''
+dialogs[1840] = '''ally, thank you so much for
+ EVERYTHING!'''
+dialogs[1841] = '''g, YES!'''
+dialogs[1842] = '''' room is up ahead.
+ Were you caught trying to steal
+ something?[newlineAwaitInput] [startSelection]  (Are you kidding?!)
+ [startSelection]  (How did you know?)'''
+dialogs[1843] = '''[newPage] You musn't lie.
+ I know what you've been up to.'''
+dialogs[1844] = '''
+ Just leave everything
+ where it was!'''
+dialogs[1845] = '''gh other peoples' things!'''
+dialogs[1846] = '''her presence.'''
+dialogs[1847] = ''' THEY a part of this?'''
+dialogs[1848] = '''mash 'em all! It'll do ya good.[newlineAwaitInput] Trust me[pauseAwaitInput]...on THIS ONE.'''
+dialogs[1849] = ''' Grandpa will be delighted!'''
+dialogs[1850] = '''appreciation!'''
+dialogs[1851] = ''' Mario!'''
+dialogs[1852] = '''beside me!
+ Everything’s going to be all right.
+ So don't worry, OK?'''
+dialogs[1853] = ''', HELP!!'''
+dialogs[1854] = '''ing...[newlineAwaitInput] SUPER JUMP ATTACK!!'''
+dialogs[1855] = ''''''
+dialogs[1856] = '''HELP me!!!'''
+dialogs[1857] = '''e have a... GUEST!'''
+dialogs[1858] = '''r real?!'''
+dialogs[1859] = '''betcha!)
+ [startSelection]  (Wrong number!)'''
+dialogs[1860] = '''lling my leg![newlineAwaitInput] Show me! PROVE IT!'''
+dialogs[1861] = '''.[delay]“Geno” game!'''
+dialogs[1862] = ''''''
+dialogs[1863] = '''might be a little tired, dear.'''
+dialogs[1864] = '''e to 
+ ask, but... Could you play 
+ with Gaz for a little while?'''
+dialogs[1865] = '''e Geno’s gonna blow you away!
+ TAKE THIS!'''
+dialogs[1866] = '''ed!
+ All right, you asked for it!'''
+dialogs[1867] = '''ING STAR SHOT!!'''
+dialogs[1868] = '''?'''
+dialogs[1869] = '''e.
+ I mean, you were so kind to Gaz.'''
+dialogs[1870] = ''': It was amazing, mom!
+ [pauseAwaitInput]I just saw Geno walk
+ into the forest! Neat, huh?'''
+dialogs[1871] = '''e, dear...
+ And isn't Geno the one who broke
+ my lamp the other day?'''
+dialogs[1872] = '''w...
+ Now THIS WAS REAL!'''
+dialogs[1873] = '''get out of
+ this time, hmmm?'''
+dialogs[1874] = ''' man!)
+ [startSelection]  (Need coffee. Keep away.)'''
+dialogs[1875] = '''ust loved it!'''
+dialogs[1876] = ''' a while ago.[newPageAwaitInput] Geno...doesn't know his own
+ strength!'''
+dialogs[1877] = '''e’s a stairway that leads
+ to my house, but my son’s been
+ playing with the controls again![newPageAwaitInput] Mario, only you could jump up
+ there!  Please...help me get back
+ up to my house!'''
+dialogs[1878] = '''ls again![newPageAwaitInput] Mario, only you could jump up
+ there!  Please...help me get back
+ up to my house!'''
+dialogs[1879] = '''e
+ is soooo bo-oring!'''
+dialogs[1880] = '''it, you can't move! See, look![newlineAwaitInput] I can't move a muscle. Now I know
+ how a scarecrow feels!'''
+dialogs[1881] = '''!'''
+dialogs[1882] = ''''''
+dialogs[1883] = ''''''
+dialogs[1884] = ''''''
+dialogs[1885] = ''''''
+dialogs[1886] = ''''''
+dialogs[1887] = ''' still hasn't come back!
+ I wonder what’s keeping him?'''
+dialogs[1888] = '''der what’s keeping him?'''
+dialogs[1889] = '''ay so)'''
+dialogs[1890] = '''?! THEY'RE GONE?!
+ MARIO, you're the only one who
+ can reach THEM![newlineAwaitInput] [startSelection]  (Sorry, I got carried away)
+ [startSelection]  (I don't know anything)'''
+dialogs[1891] = ''''re the only one who
+ can reach THEM![newlineAwaitInput] [startSelection]  (Sorry, I got carried away)
+ [startSelection]  (I don't know anything)'''
+dialogs[1892] = '''each THEM![newlineAwaitInput] [startSelection]  (Sorry, I got carried away)
+ [startSelection]  (I don't know anything)'''
+dialogs[1893] = '''carried away)
+ [startSelection]  (I don't know anything)'''
+dialogs[1894] = '''ay)
+ [startSelection]  (I don't know anything)'''
+dialogs[1895] = '''y)
+ [startSelection]  (I don't know anything)'''
+dialogs[1896] = '''t fine.'''
+dialogs[1897] = '''ret.[newPageAwaitInput] Enter the forest. When you hit an
+ area with 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1898] = '''th 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1899] = '''th 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1900] = '''th 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1901] = '''th 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1902] = '''th 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1903] = '''th 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1904] = '''th 4 paths, go left, left,
+ straight, right- in that order.[newlineAwaitInput] You'll surely find something [pauseAwaitInput]NICE.'''
+dialogs[1905] = ''' One terrorizes people and the other
+ helps people. Avoid the former.'''
+dialogs[1906] = '''re, why don't
+ you take this along with you?'''
+dialogs[1907] = '''re, why don't
+ you take this along with you?'''
+dialogs[1908] = '''d the treasure!
+ Way to GO!
+ Keep up the good work!'''
+dialogs[1909] = '''hat’s taking Daddy so long...?[newlineAwaitInput] Do you think he’s still looking for
+ the treasure?'''
+dialogs[1910] = '''on it.
+ I do it all the time.
+ It really winds my Dad up!'''
+dialogs[1911] = '''d me, huh? What are you doing
+ walking around HERE, though?
+ You must be pretty bored...'''
+dialogs[1912] = '''though?
+ You must be pretty bored...'''
+dialogs[1913] = '''o to the forest to
+ chop up any wood.'''
+dialogs[1914] = '''le you're resting, but I
+ wanted to deliver this to you.'''
+dialogs[1915] = ''''''
+dialogs[1916] = '''doll dressed in a blue
+ cape walking towards the forest.'''
+dialogs[1917] = '''doll dressed in a blue
+ cape walking towards the forest.'''
+dialogs[1918] = '''doll dressed in a blue
+ cape walking towards the forest.'''
+dialogs[1919] = '''doll dressed in a blue
+ cape walking towards the forest.'''
+dialogs[1920] = '''doll dressed in a blue
+ cape walking towards the forest.'''
+dialogs[1921] = '''bulous costume!
+ It must be kind of hot for the
+ person wearing it, though.'''
+dialogs[1922] = '''us costume!
+ It must be kind of hot for the
+ person wearing it, though.'''
+dialogs[1923] = '''ostume!
+ It must be kind of hot for the
+ person wearing it, though.'''
+dialogs[1924] = '''!
+ It must be kind of hot for the
+ person wearing it, though.'''
+dialogs[1925] = ''' must be kind of hot for the
+ person wearing it, though.'''
+dialogs[1926] = '''must be kind of hot for the
+ person wearing it, though.'''
+dialogs[1927] = ''''''
+dialogs[1928] = '''ar Pieces...'''
+dialogs[1929] = '''.'''
+dialogs[1930] = '''ces? You mean like
+ shooting stars? What for?'''
+dialogs[1931] = '''g stars? What for?'''
+dialogs[1932] = '''...
+ How can I explain this[delay]...[delay]'''
+dialogs[1933] = ''' good luck!'''
+dialogs[1934] = '''.'''
+dialogs[1935] = '''e,
+ try and get '''
+dialogs[1936] = '''do better than that!'''
+dialogs[1937] = ''' better than that!'''
+dialogs[1938] = '''head.
+ Good luck!'''
+dialogs[1939] = '''!
+ Do you get it?'''
+dialogs[1940] = '''OPE![newlineAwaitInput] You lost me.'''
+dialogs[1941] = '''ll, let’s just say that if
+ things stay the way they are, your
+ wishes will never come true.'''
+dialogs[1942] = '''ll, let’s just say that if
+ things stay the way they are, your
+ wishes will never come true.'''
+dialogs[1943] = '''ll, let’s just say that if
+ things stay the way they are, your
+ wishes will never come true.'''
+dialogs[1944] = '''ll, let’s just say that if
+ things stay the way they are, your
+ wishes will never come true.'''
+dialogs[1945] = '''e true.'''
+dialogs[1946] = '''T?! So you mean even if
+ I grow up, I won't ever be strong
+ and cool like you?!'''
+dialogs[1947] = ''': No one’s wishes will come
+ true until the Star Pieces are
+ found and the Star Road repaired.'''
+dialogs[1948] = '''the Star Road repaired.'''
+dialogs[1949] = '''r Pieces.'''
+dialogs[1950] = '''l come true!'''
+dialogs[1951] = '''l come true!'''
+dialogs[1952] = '''l come true!'''
+dialogs[1953] = '''hat’s a promise!'''
+dialogs[1954] = '''COOL!!'''
+dialogs[1955] = '''!  Wait a minute!'''
+dialogs[1956] = ''' This is yours, Geno, so take
+ it along with you.'''
+dialogs[1957] = '''ake
+ it along with you.'''
+dialogs[1958] = ''''''
+dialogs[1959] = '''no!
+ You're the main man!'''
+dialogs[1960] = '''no!
+ You're the main man!'''
+dialogs[1961] = '''no!
+ You're the main man!'''
+dialogs[1962] = '''no!
+ You're the main man!'''
+dialogs[1963] = '''no!
+ You're the main man!'''
+dialogs[1964] = '''no!
+ You're the main man!'''
+dialogs[1965] = '''no!
+ You're the main man!'''
+dialogs[1966] = '''no!
+ You're the main man!'''
+dialogs[1967] = '''no!
+ You're the main man!'''
+dialogs[1968] = '''no!
+ You're the main man!'''
+dialogs[1969] = '''no!
+ You're the main man!'''
+dialogs[1970] = '''no!
+ You're the main man!'''
+dialogs[1971] = '''no!
+ You're the main man!'''
+dialogs[1972] = '''no!
+ You're the main man!'''
+dialogs[1973] = '''no!
+ You're the main man!'''
+dialogs[1974] = '''no!
+ You're the main man!'''
+dialogs[1975] = '''no!
+ You're the main man!'''
+dialogs[1976] = '''no!
+ You're the main man!'''
+dialogs[1977] = '''no!
+ You're the main man!'''
+dialogs[1978] = '''no!
+ You're the main man!'''
+dialogs[1979] = '''no!
+ You're the main man!'''
+dialogs[1980] = '''no!
+ You're the main man!'''
+dialogs[1981] = '''no!
+ You're the main man!'''
+dialogs[1982] = '''no!
+ You're the main man!'''
+dialogs[1983] = '''no!
+ You're the main man!'''
+dialogs[1984] = '''no!
+ You're the main man!'''
+dialogs[1985] = '''no!
+ You're the main man!'''
+dialogs[1986] = '''no!
+ You're the main man!'''
+dialogs[1987] = '''no!
+ You're the main man!'''
+dialogs[1988] = '''no!
+ You're the main man!'''
+dialogs[1989] = '''no!
+ You're the main man!'''
+dialogs[1990] = '''no!
+ You're the main man!'''
+dialogs[1991] = '''no!
+ You're the main man!'''
+dialogs[1992] = '''no!
+ You're the main man!'''
+dialogs[1993] = '''no!
+ You're the main man!'''
+dialogs[1994] = '''no!
+ You're the main man!'''
+dialogs[1995] = '''no!
+ You're the main man!'''
+dialogs[1996] = '''no!
+ You're the main man!'''
+dialogs[1997] = '''no!
+ You're the main man!'''
+dialogs[1998] = '''no!
+ You're the main man!'''
+dialogs[1999] = '''no!
+ You're the main man!'''
+dialogs[2000] = '''no!
+ You're the main man!'''
+dialogs[2001] = '''no!
+ You're the main man!'''
+dialogs[2002] = '''no!
+ You're the main man!'''
+dialogs[2003] = '''no!
+ You're the main man!'''
+dialogs[2004] = '''no!
+ You're the main man!'''
+dialogs[2005] = '''no!
+ You're the main man!'''
+dialogs[2006] = '''no!
+ You're the main man!'''
+dialogs[2007] = '''no!
+ You're the main man!'''
+dialogs[2008] = '''no!
+ You're the main man!'''
+dialogs[2009] = '''no!
+ You're the main man!'''
+dialogs[2010] = '''no!
+ You're the main man!'''
+dialogs[2011] = '''no!
+ You're the main man!'''
+dialogs[2012] = '''no!
+ You're the main man!'''
+dialogs[2013] = '''no!
+ You're the main man!'''
+dialogs[2014] = '''no!
+ You're the main man!'''
+dialogs[2015] = '''no!
+ You're the main man!'''
+dialogs[2016] = '''no!
+ You're the main man!'''
+dialogs[2017] = '''no!
+ You're the main man!'''
+dialogs[2018] = '''no!
+ You're the main man!'''
+dialogs[2019] = '''no!
+ You're the main man!'''
+dialogs[2020] = '''no!
+ You're the main man!'''
+dialogs[2021] = '''no!
+ You're the main man!'''
+dialogs[2022] = '''no!
+ You're the main man!'''
+dialogs[2023] = '''no!
+ You're the main man!'''
+dialogs[2024] = '''no!
+ You're the main man!'''
+dialogs[2025] = '''no!
+ You're the main man!'''
+dialogs[2026] = '''no!
+ You're the main man!'''
+dialogs[2027] = '''no!
+ You're the main man!'''
+dialogs[2028] = '''no!
+ You're the main man!'''
+dialogs[2029] = '''no!
+ You're the main man!'''
+dialogs[2030] = '''no!
+ You're the main man!'''
+dialogs[2031] = '''no!
+ You're the main man!'''
+dialogs[2032] = '''no!
+ You're the main man!'''
+dialogs[2033] = '''no!
+ You're the main man!'''
+dialogs[2034] = '''no!
+ You're the main man!'''
+dialogs[2035] = '''no!
+ You're the main man!'''
+dialogs[2036] = '''no!
+ You're the main man!'''
+dialogs[2037] = '''no!
+ You're the main man!'''
+dialogs[2038] = '''no!
+ You're the main man!'''
+dialogs[2039] = '''no!
+ You're the main man!'''
+dialogs[2040] = '''no!
+ You're the main man!'''
+dialogs[2041] = '''no!
+ You're the main man!'''
+dialogs[2042] = '''no!
+ You're the main man!'''
+dialogs[2043] = '''no!
+ You're the main man!'''
+dialogs[2044] = '''no!
+ You're the main man!'''
+dialogs[2045] = '''no!
+ You're the main man!'''
+dialogs[2046] = '''no!
+ You're the main man!'''
+dialogs[2047] = '''no!
+ You're the main man!'''
+dialogs[2048] = ''' I slept like a baby.
+ Thanks!'''
+dialogs[2049] = ''' Man, did I sleep!
+ Thanks for the service.
+ Here’s your tip.[newlineAwaitInput] Don't spend it all in one place!'''
+dialogs[2050] = '''
+         So THIS is the suite?!'''
+dialogs[2051] = '''
+          I'll say it’s sweet!'''
+dialogs[2052] = '''   
+     Nothin' but the best for US!'''
+dialogs[2053] = ''' This is just one of the best
+ hotels I've ever stayed at.'''
+dialogs[2054] = ''' That card you have there...[newlineAwaitInput] How about selling it to me for...
  [delay][delay]...oh, say[delay][delay]...100 coins?[newlineAwaitInput]  [startSelection]  (It’s a deal!)
-  [startSelection]  (Are you crazy?!)[endAwaitInput] Oh, honey!
+  [startSelection]  (Are you crazy?!)'''
+dialogs[2055] = ''' Oh, honey!
  Please can we stay in the suite,
- PLEASE?[endAwaitInput] This place is known for its
- exquisite ser'''
-dialogs[1038] = '''vice, especially in[newlineAwaitInput] the suite. But it’s a tad pricey![endAwaitInput] Isn't this just splendid?
- This '''
-dialogs[1039] = '''place is heaven even for the
- rich and famous![endAwaitInput]CHEF TORTE: Vat...VAT?!
- Vat are you doing?![endAwaitInput]A'''
-dialogs[1040] = '''PPRENTICE: Oh, that’s nice,
- you just stepped '''
-dialogs[1041] = '''on the...[endAwaitInput]BOTH:
-              YOU FOOLS!![endAwaitInput]CHEF TO'''
-dialogs[1042] = '''RTE: Ve bake a cake
+ PLEASE?'''
+dialogs[2056] = ''' This place is known for its
+ exquisite service, especially in[newlineAwaitInput] the suite. But it’s a tad pricey!'''
+dialogs[2057] = ''' Isn't this just splendid?
+ This place is heaven even for the
+ rich and famous!'''
+dialogs[2058] = '''CHEF TORTE: Vat...VAT?!
+ Vat are you doing?!'''
+dialogs[2059] = '''APPRENTICE: Oh, that’s nice,
+ you just stepped on the...'''
+dialogs[2060] = '''BOTH:
+              YOU FOOLS!!'''
+dialogs[2061] = '''CHEF TORTE: Ve bake a cake
  for za BIG vedding!
- It must be...masterpiece![endAwaitInput]APPRENTICE: Yeah, the
- groom-to-'''
-dialogs[1043] = '''be ordered something
- special. Wait until he sees T'''
-dialogs[1044] = '''HIS![endAwaitInput]SNIFIT 1: I'm not letting'''
-dialogs[1045] = ''' you
- in here! And you can forge'''
-dialogs[1046] = '''t about
- the back entrance. It’s locked.[newlineAwaitInput] At '''
-dialogs[1047] = '''least I THINK it is...[endAwaitInput]
-         H'''
-dialogs[1048] = '''a'''
-dialogs[1049] = '''lt! Who goes there?[endAwaitInput]SNIFIT'''
-dialogs[1050] = ''' 1: You LOOK like
+ It must be...masterpiece!'''
+dialogs[2062] = '''APPRENTICE: Yeah, the
+ groom-to-be ordered something
+ special. Wait until he sees THIS!'''
+dialogs[2063] = '''SNIFIT 1: I'm not letting you
+ in here! And you can forget about
+ the back entrance. It’s locked.[newlineAwaitInput] At least I THINK it is...'''
+dialogs[2064] = '''
+         Halt! Who goes there?'''
+dialogs[2065] = '''SNIFIT 1: You LOOK like
  Mario, but the door’s shut tight.[newlineAwaitInput] Listen, Mustache, you and your
- overgrown turtle-fr'''
-dialogs[1051] = '''iend can take
- a hike! Go! Scat![newlineAwaitInput] Make '''
-dialogs[1052] = '''like Mario and jump
- outta here! GET LOST![end]SNIFIT'''
-dialogs[1053] = ''' 1: Oops[delay][delay]...
- We've got a problem[delay][delay].'''
-dialogs[1054] = '''..[newlineAwaitInput] I'd better go tell Booster.[endAwaitInput]SNIFIT 1: It won't '''
-dialogs[1055] = '''budge.[endAwaitInput]SNIFIT 1: Say, wanna
- help me bust this door down?![newlineAwaitInput] On the count of'''
-dialogs[1056] = ''' 3, we'll run
- TOGETHER! Timing’s the key![endAwaitInput]SNIFIT 2: Sorry, but I can't
- let you '''
-dialogs[1057] = '''through![endAwaitInput]SNIFIT 1&2: Booster, Sir![newlineAwaitInput] Mario’s here![endAwaitInput]BOOSTER: You clowns'''
-dialogs[1058] = '''!
+ overgrown turtle-friend can take
+ a hike! Go! Scat![newlineAwaitInput] Make like Mario and jump
+ outta here! GET LOST!'''
+dialogs[2066] = '''SNIFIT 1: Oops[delay][delay]...
+ We've got a problem[delay][delay]...[newlineAwaitInput] I'd better go tell Booster.'''
+dialogs[2067] = '''SNIFIT 1: It won't budge.'''
+dialogs[2068] = '''SNIFIT 1: Say, wanna
+ help me bust this door down?![newlineAwaitInput] On the count of 3, we'll run
+ TOGETHER! Timing’s the key!'''
+dialogs[2069] = '''SNIFIT 2: Sorry, but I can't
+ let you through!'''
+dialogs[2070] = '''SNIFIT 1&2: Booster, Sir![newlineAwaitInput] Mario’s here!'''
+dialogs[2071] = '''BOOSTER: You clowns!
  You DON'T break a door down
- when entering a room![newPageAwaitInput] Shut it! [delay]SHUT IT NO'''
-dialogs[1059] = '''W![delay]
- Move it, MOVE IT!!!![endAwaitInput]TOADSTOOL: Mario![newPageAwaitInput] Is that you, Mario?!
- I'm in here!![newlineAwaitInput] Hurry! '''
-dialogs[1060] = '''I'm scared![endAwaitInput]SNIFITS: We're pretty sure
- Mr. Mustache can't break'''
-dialogs[1061] = ''' in here.[newlineAwaitInput] But that turtle looks pretty mean.
- He could be trouble![endAwaitInput]'''
-dialogs[1062] = '''BOWSER: They have no IDEA what
- they're up against![endAwaitInput][newPage] I'm l'''
-dialogs[1063] = '''ightning in a bottle!
+ when entering a room![newPageAwaitInput] Shut it! [delay]SHUT IT NOW![delay]
+ Move it, MOVE IT!!!!'''
+dialogs[2072] = '''TOADSTOOL: Mario![newPageAwaitInput] Is that you, Mario?!
+ I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2073] = '''SNIFITS: We're pretty sure
+ Mr. Mustache can't break in here.[newlineAwaitInput] But that turtle looks pretty mean.
+ He could be trouble!'''
+dialogs[2074] = '''BOWSER: They have no IDEA what
+ they're up against!'''
+dialogs[2075] = '''[newPage] I'm lightning in a bottle!
  I'm an earthquake in a can!
- I'll bust this open in no time![endAwaitInput]BOWSER: You don't bring too much
- to the party, but wh'''
-dialogs[1064] = '''y don't you
+ I'll bust this open in no time!'''
+dialogs[2076] = '''BOWSER: You don't bring too much
+ to the party, but why don't you
  help me here, anyway.[newlineAwaitInput] At least you'll feel like you did
- SOMETHING'''
-dialogs[1065] = '''![endAwaitInput][newPage] Hya hya hya! Guess I'm one heck
- of a party animal, huh?[newPageAwaitInput] H'''
-dialogs[1066] = '''ya hya[delay]...h[delay][delay]..[delay]ya..[pauseAwaitInput][end]TOADSTOOL: Owwwwww!
- Watch what you're doing![endAwaitInput][newPage] Great![delay]..[delay]..[delay][endAwaitInput][newPage] Now I've dropped my [delay][delay]'''
-dialogs[1067] = '''shoes,[newlineAwaitInput][delay][delay] my ring,...my brooch[delay][delay] and
-[delay][delay] ...MY CROWN!!![endAwaitInput]SNIFITS: B'''
-dialogs[1068] = '''ooster, Sir![endAwaitInput]SNIFIT 1: Booster, I, um...[endAwaitInput]BOOSTER: Don't bother me now.[newPageAwaitInput] Okay, eve'''
-dialogs[1069] = '''ryone![newlineAwaitInput] The brid'''
-dialogs[1070] = '''e is growing impatient![end]
- Let the wedding begin...![endAwaitInput][newPage] What’s this...?[newlineAwaitInput] Wate'''
-dialogs[1071] = '''r...coming from your eyes?![newlineAwaitInput] Are you leaking, my dear?![endAwaitInput][newPage]
-              Tastes sal'''
-dialogs[1072] = '''ty![endAwaitInput]SNIFIT 2: Booster, Si'''
-dialogs[1073] = '''r, uh...
+ SOMETHING!'''
+dialogs[2077] = '''[newPage] Hya hya hya! Guess I'm one heck
+ of a party animal, huh?[newPageAwaitInput] Hya hya[delay]...h[delay][delay]..[delay]ya..[pauseAwaitInput]'''
+dialogs[2078] = '''TOADSTOOL: Owwwwww!
+ Watch what you're doing!'''
+dialogs[2079] = '''[newPage] Great![delay]..[delay]..[delay]'''
+dialogs[2080] = '''[newPage] Now I've dropped my [delay][delay]shoes,[newlineAwaitInput][delay][delay] my ring,...my brooch[delay][delay] and
+[delay][delay] ...MY CROWN!!!'''
+dialogs[2081] = '''SNIFITS: Booster, Sir!'''
+dialogs[2082] = '''SNIFIT 1: Booster, I, um...'''
+dialogs[2083] = '''BOOSTER: Don't bother me now.[newPageAwaitInput] Okay, everyone![newlineAwaitInput] The bride is growing impatient!'''
+dialogs[2084] = '''
+ Let the wedding begin...!'''
+dialogs[2085] = '''[newPage] What’s this...?[newlineAwaitInput] Water...coming from your eyes?![newlineAwaitInput] Are you leaking, my dear?!'''
+dialogs[2086] = '''[newPage]
+              Tastes salty!'''
+dialogs[2087] = '''SNIFIT 2: Booster, Sir, uh...
  I believe that the bride may be...
- uh,...Crying...[endAwaitInput]BOOSTER: Crying?
- But that’s what peo'''
-dialogs[1074] = '''ple do when
- they're...sa'''
-dialogs[1075] = '''d!![newPageAwaitInput] How DISGUSTING!
- That stuff must be corrosive![newlineAwaitInput] It tastes...like the s'''
-dialogs[1076] = '''ea![newPageAwaitInput] What could be making her...cry,
- anyway?[endAwaitInput]SN'''
-dialogs[1077] = '''IFIT 3: I believe she is crying
+ uh,...Crying...'''
+dialogs[2088] = '''BOOSTER: Crying?
+ But that’s what people do when
+ they're...sad!![newPageAwaitInput] How DISGUSTING!
+ That stuff must be corrosive![newlineAwaitInput] It tastes...like the sea![newPageAwaitInput] What could be making her...cry,
+ anyway?'''
+dialogs[2089] = '''SNIFIT 3: I believe she is crying
  because she has dropped some of
- her...wedding '''
-dialogs[1078] = '''gear.[endAwaitInput]BOOSTER: Aha! Of cour'''
-dialogs[1079] = '''se![newlineAwaitInput] She has dropped her gear'''
-dialogs[1080] = '''.[newPageAwaitInput] But those tears will ruin
- the cake! Make her stop...[newlineAwaitInput] ...be'''
-dialogs[1081] = '''fore Mario breaks in![endAwaitInput]SNIFITS:
-    But...Mario’s ALREADY in.'''
-dialogs[1082] = '''..[endAwaitInput]SNIFIT 2: BOOSTER, Sir, hurry
- and find her'''
-dialogs[1083] = ''' things! We have to
- get on with the wedding![newPageAwaitInput] In the mean time, perhaps we can'''
-dialogs[1084] = '''
- ...do something about the cake...[endAwaitInput]BOOSTER: 10-4, good buddy.[newPageAwaitInput] You find her stuff...
- I'll mov'''
-dialogs[1085] = '''e the ceremony forward.[newlineAwaitInput] Hurry![endAwaitInput]            Hurry and get back
-    th'''
-dialogs[1086] = '''e accessories from the Snifits
-      and save Princess '''
-dialogs[1087] = '''Toadstool![newPageAwaitInput]   If you're quick, something good
-          just might '''
-dialogs[1088] = '''happen![endAwaitInput]             Got her Brooch![endAwaitInput]              Go'''
-dialogs[1089] = '''t her Shoes![endAwaitInput]               Got her Ring![endAwaitInput]            Found her'''
-dialogs[1090] = ''' Crown![endAwaitInput] Hey, the crow'''
-dialogs[1091] = '''n is still missing...[newlineAwaitInput] Looks like a Snifit found it![endAwaitInput]CHEF TORTE: Zorry to haf kept
- you vaiting.[endAwaitInput]APPRENTICE: We've made
+ her...wedding gear.'''
+dialogs[2090] = '''BOOSTER: Aha! Of course![newlineAwaitInput] She has dropped her gear.[newPageAwaitInput] But those tears will ruin
+ the cake! Make her stop...[newlineAwaitInput] ...before Mario breaks in!'''
+dialogs[2091] = '''SNIFITS:
+    But...Mario’s ALREADY in...'''
+dialogs[2092] = '''SNIFIT 2: BOOSTER, Sir, hurry
+ and find her things! We have to
+ get on with the wedding![newPageAwaitInput] In the mean time, perhaps we can
+ ...do something about the cake...'''
+dialogs[2093] = '''BOOSTER: 10-4, good buddy.[newPageAwaitInput] You find her stuff...
+ I'll move the ceremony forward.[newlineAwaitInput] Hurry!'''
+dialogs[2094] = '''            Hurry and get back
+    the accessories from the Snifits
+'''
+dialogs[2095] = '''             Got her Brooch!'''
+dialogs[2096] = '''              Got her Shoes!'''
+dialogs[2097] = '''               Got her Ring!'''
+dialogs[2098] = '''            Found her Crown!'''
+dialogs[2099] = ''' Hey, the crown is still missing...[newlineAwaitInput] Looks like a Snifit found it!'''
+dialogs[2100] = '''CHEF TORTE: Zorry to haf kept
+ you vaiting.'''
+dialogs[2101] = '''APPRENTICE: We've made
  the most AMAZING cake!
- You won't believe it!![endAwaitInput]CHEF TORTE: Ve should not
- interrup'''
-dialogs[1092] = '''t za vedding![endAwaitInput]TOADSTOOL: That was wonderful.
+ You won't believe it!!'''
+dialogs[2102] = '''CHEF TORTE: Ve should not
+ interrupt za vedding!'''
+dialogs[2103] = '''TOADSTOOL: That was wonderful.
  Mario, you're my knight
- in'''
-dialogs[1093] = ''' shining armor.[endAwaitInput][newPage]
-       Finally...let’s get back.[endAwaitInput] Oh! I'm sooo exhausted![newlineAwaitInput] Heard there’s a Casino w'''
-dialogs[1094] = '''here you
+ in shining armor.'''
+dialogs[2104] = '''[newPage]
+       Finally...let’s get back.'''
+dialogs[2105] = ''' Oh! I'm sooo exhausted![newlineAwaitInput] Heard there’s a Casino where you
  can get BIG BUCKS,[newlineAwaitInput] but I just can't find
- the place. Does it really exist?[endAwaitInput]TOADSTOOL: SHRIEK!!![delay_48]
- What is Bowser doing HERE?[endAwaitInput]
-        I wish you a happy life.[endAwaitInput][newPage] Well then, how about...[delay][delay]
+ the place. Does it really exist?'''
+dialogs[2106] = '''TOADSTOOL: SHRIEK!!![delay_48]
+ What is Bowser doing HERE?'''
+dialogs[2107] = '''
+        I wish you a happy life.'''
+dialogs[2108] = '''[newPage] Well then, how about...[delay][delay]
  5 Frog Coins! 5! That’s major![newlineAwaitInput] [startSelection]  (DEAL!)
- [startSelection]  (What else do you have?)[endAwaitInput]CHEF TORTE: H'''
-dialogs[1095] = '''eir ist cake...[newlineAwaitInput] But...vhere are bride und groom?[endAwaitInput]CHEFS:
-       Where...is...EVERYONE?[delay_48][end] Wedding? Hey, I'm just a kid.[newlineAwaitInput] Don't ask me such...
-'''
-dialogs[1096] = ''' complicated things![endAwaitInput]RAZ: This was supposed to be
+ [startSelection]  (What else do you have?)'''
+dialogs[2109] = '''CHEF TORTE: Heir ist cake...[newlineAwaitInput] But...vhere are bride und groom?'''
+dialogs[2110] = '''CHEFS:
+       Where...is...EVERYONE?[delay_48]'''
+dialogs[2111] = ''' Wedding? Hey, I'm just a kid.[newlineAwaitInput] Don't ask me such...
+ complicated things!'''
+dialogs[2112] = '''RAZ: This was supposed to be
  my wedding day...
- All my plans have been ruin'''
-dialogs[1097] = '''ed...[endAwaitInput]RAINI: It was my dream to
+ All my plans have been ruined...'''
+dialogs[2113] = '''RAINI: It was my dream to
  stay in the SUITE
- after we got married![endAwaitInput] Who’s the guy with a totem pole
- fo'''
-dialogs[1098] = '''r a face?! He and Princess
+ after we got married!'''
+dialogs[2114] = ''' Who’s the guy with a totem pole
+ for a face?! He and Princess
  Toadstool were...[newlineAwaitInput] ...No...![delay][delay][delay]
-'''
-dialogs[1099] = ''' Don't tell me...they're[delay][delay] getting[delay]
- ....[delay][delay]MARRIED?[endAwaitInput] Who’s the nut case who'''
-dialogs[1100] = '''
+ Don't tell me...they're[delay][delay] getting[delay]
+ ....[delay][delay]MARRIED?'''
+dialogs[2115] = ''' Who’s the nut case who
  blew in screaming,
- “It’s time for MY wedding'''
-dialogs[1101] = '''!”?[newPageAwaitInput]
-   Just who does he think HE IS?![endAwaitInput] We w'''
-dialogs[1102] = '''ere about to begin the
+ “It’s time for MY wedding!”?[newPageAwaitInput]
+   Just who does he think HE IS?!'''
+dialogs[2116] = ''' We were about to begin the
  ceremony when some kids, wearing
- dark cl'''
-dialogs[1103] = '''othes, kicked us out![endAwaitInput] There! I think that’s the one
- who kicked us out![endAwaitInput] I came'''
-dialogs[1104] = ''' all the way over here
+ dark clothes, kicked us out!'''
+dialogs[2117] = ''' There! I think that’s the one
+ who kicked us out!'''
+dialogs[2118] = ''' I came all the way over here
  to give these two a proper send
- off, and LOOK what h'''
-dialogs[1105] = '''appens![endAwaitInput] This must be a first![newlineAwaitInput] A perfect couple who isn't going
- to live happily ever after...[newlineAwaitInput] I give up![endAwaitInput]
-                 H'''
-dialogs[1106] = '''mmmm....[delay][delay][delay][endAwaitInput]
+ off, and LOOK what happens!'''
+dialogs[2119] = ''' This must be a first![newlineAwaitInput] A perfect couple who isn't going
+ to live happily ever after...[newlineAwaitInput] I give up!'''
+dialogs[2120] = '''
+                 Hmmmm....[delay][delay][delay]'''
+dialogs[2121] = '''
        Looks like he needs to go
-           somewhere...fast![endAwaitInput]SNIFIT 1: Booster's
- wedding'''
-dialogs[1107] = ''' is in progress.[newPageAwaitInput] We've barricaded the door, so
+           somewhere...fast!'''
+dialogs[2122] = '''SNIFIT 1: Booster's
+ wedding is in progress.[newPageAwaitInput] We've barricaded the door, so
  don't even bother trying to
- sneak '''
-dialogs[1108] = '''inside.[endAwaitInput]BOOSTER: Oh oh.'''
-dialogs[1109] = '''..I have a BAD
+ sneak inside.'''
+dialogs[2123] = '''BOOSTER: Oh oh...I have a BAD
  feeling my wedding is going
- to be crashed.[endAwaitInput]SNIFIT 2: Booster, Sir, you're
- supposed to be on the right.[newlineAwaitInput]'''
-dialogs[1110] = ''' The bride should be on your left.[endAwaitInput]BOOSTER: Just testing...[end]  
- Like '''
-dialogs[1111] = '''this, right?[endAwaitInput]BOOSTER: Me'''
-dialogs[1112] = ''' too!
+ to be crashed.'''
+dialogs[2124] = '''SNIFIT 2: Booster, Sir, you're
+ supposed to be on the right.[newlineAwaitInput] The bride should be on your left.'''
+dialogs[2125] = '''BOOSTER: Just testing...'''
+dialogs[2126] = '''  
+ Like this, right?'''
+dialogs[2127] = '''BOOSTER: Me too!
  I want a reward![newPageAwaitInput]
- I'll take a kiss! Give me a KISS!!![endAwaitInput]TOADSTOOL: I know I'm in good
+ I'll take a kiss! Give me a KISS!!!'''
+dialogs[2128] = '''TOADSTOOL: I know I'm in good
  hands when you're around, Mario![newPageAwaitInput]
-      Here’s a kiss f'''
-dialogs[1113] = '''or my hero![endAwaitInput]BOWSER: Oh, isn't that great![endAwaitInput]
+'''
+dialogs[2129] = '''BOWSER: Oh, isn't that great!'''
+dialogs[2130] = '''
  You're gonna kiss HIM when
- I'm the one who saved your sk'''
-dialogs[1114] = '''in![endAwaitInput]BOWSER: What a waste of time!
- I've got bigger fish to fry...![endAwaitInput]TOADSTOOL: Stop it, all of you!
- I'm getting SO confused![endAwaitInput]  
- Mario, let’s start with you![endAwaitInput]BOW'''
-dialogs[1115] = '''SER & BOOSTER:
-       Feels like...SANDPAPER![pauseAwaitInput][end][newPage]
-             WHAT THE!!!...[endAwaitInput]TOADSTOOL: Now THAT’s one for
- the scrapbook![pauseAwaitInput][end]  
+ I'm the one who saved your skin!'''
+dialogs[2131] = '''BOWSER: What a waste of time!
+ I've got bigger fish to fry...!'''
+dialogs[2132] = '''TOADSTOOL: Stop it, all of you!
+ I'm getting SO confused!'''
+dialogs[2133] = '''  
+ Mario, let’s start with you!'''
+dialogs[2134] = '''BOWSER & BOOSTER:
+       Feels like...SANDPAPER![pauseAwaitInput]'''
+dialogs[2135] = '''[newPage]
+             WHAT THE!!!...'''
+dialogs[2136] = '''TOADSTOOL: Now THAT’s one for
+ the scrapbook![pauseAwaitInput]'''
+dialogs[2137] = '''  
  Come, Mario, let’s get back to
- Mushroom Kingdom.[newlineAwaitInput] The Chanc'''
-dialogs[1116] = '''ellor’s waiting for us.[endAwaitInput]TOADSTOOL: Mario!...[pauseAwaitInput][end]
- You're FINALLY here![endAwaitInput]APPRENTICE:
-'''
-dialogs[1117] = '''    This is BIG trouble![endAwaitInput]CHEF TORTE:
-         Za brid'''
-dialogs[1118] = '''e ist LEAFING?[endAwaitInput]APPRENTICE: You're taking the
- bride...AWAY?![endAwaitInput]CHEF TORTE: But...Zhere von't be
- anyone to eat zees cake![endAwaitInput]APPRENTICE: What?!
- This can't b'''
-dialogs[1119] = '''e!
- We worked ALL DAY on it![endAwaitInput]
-            Enough, already![endAwaitInput]
-'''
-dialogs[1120] = '''         There, that’s the way.[endAwaitInput]BOWSER: Mario![endAwaitInput] No one, NO ONE, is authorized to
- kidnap the Prince'''
-dialogs[1121] = '''ss except ME!
- It’s just'''
-dialogs[1122] = ''' wouldn't be right![newlineAwaitInput] Let’s take her back to Mushroom
- Kingdom, '''
-dialogs[1123] = '''where she belongs![newlineAwaitInput] [startSelection]  (Okay)
- [startSelection]  (Forget it)[endAwaitInput][newPage] Oh, what a day...!
+ Mushroom Kingdom.[newlineAwaitInput] The Chancellor’s waiting for us.'''
+dialogs[2138] = '''TOADSTOOL: Mario!...[pauseAwaitInput]'''
+dialogs[2139] = '''
+ You're FINALLY here!'''
+dialogs[2140] = '''APPRENTICE:
+          This is BIG trouble!'''
+dialogs[2141] = '''CHEF TORTE:
+         Za bride ist LEAFING?'''
+dialogs[2142] = '''APPRENTICE: You're taking the
+ bride...AWAY?!'''
+dialogs[2143] = '''CHEF TORTE: But...Zhere von't be
+ anyone to eat zees cake!'''
+dialogs[2144] = '''APPRENTICE: What?!
+ This can't be!
+ We worked ALL DAY on it!'''
+dialogs[2145] = '''
+            Enough, already!'''
+dialogs[2146] = '''
+         There, that’s the way.'''
+dialogs[2147] = '''BOWSER: Mario!'''
+dialogs[2148] = ''' No one, NO ONE, is authorized to
+ kidnap the Princess except ME!
+ It’s just wouldn't be right![newlineAwaitInput] Let’s take her back to Mushroom
+ Kingdom, where she belongs![newlineAwaitInput] [startSelection]  (Okay)
+ [startSelection]  (Forget it)'''
+dialogs[2149] = '''[newPage] Oh, what a day...!
  Can you believe it?! I almost got
- MARRIED to that...thing![endAwaitInput]
+ MARRIED to that...thing!'''
+dialogs[2150] = '''
  But I...I hope someone
- marries me someday![endAwaitInput]BOWSER:'''
-dialogs[1124] = ''' So, now Toadstool
+ marries me someday!'''
+dialogs[2151] = '''BOWSER: So, now Toadstool
  and I are allies!
- I'll never live this down.[pauseAwaitInput][end]BOOSTER: Aaaaaah....'''
-dialogs[1125] = '''[newlineAwaitInput] I shall never forget that touch...[pauseAwaitInput][end]CHEF TORTE: Now, ZEES cake vill
- stay PUT![endAwaitInput]APPRENTICE: Don't worry,
- Chef Torte! They''''
-dialogs[1126] = '''ll love THIS![endAwaitInput]RAZ & RAINI:
-              Haaaaaaalp!![endAwaitInput] The couple that got married?[newlineAwaitInput] Looks'''
-dialogs[1127] = ''' like they went on their
- honeymoon to the south island.[endAwaitInput] If you stay in the hotel suite a
- couple of times,'''
-dialogs[1128] = ''' I heard they give
-'''
-dialogs[1129] = ''' you some sorta gift...[newlineAwaitInput] A pretty NICE gift, too.[endAwaitInput] Welcom'''
-dialogs[1130] = '''e to Marrymore![newPageAwaitInput] We have a lovely wedding hall,
- and four-star hotel f'''
-dialogs[1131] = '''acilities![newPageAwaitInput] Please enjoy your stay here.[newPageAwaitInput] What? You're seeking a man with
- the face of a '''
-dialogs[1132] = '''totem pole...?[endAwaitInput]
+ I'll never live this down.[pauseAwaitInput]'''
+dialogs[2152] = '''BOOSTER: Aaaaaah....[newlineAwaitInput] I shall never forget that touch...[pauseAwaitInput]'''
+dialogs[2153] = '''CHEF TORTE: Now, ZEES cake vill
+ stay PUT!'''
+dialogs[2154] = '''APPRENTICE: Don't worry,
+ Chef Torte! They'll love THIS!'''
+dialogs[2155] = '''RAZ & RAINI:
+              Haaaaaaalp!!'''
+dialogs[2156] = ''' The couple that got married?[newlineAwaitInput] Looks like they went on their
+ honeymoon to the south island.'''
+dialogs[2157] = ''' If you stay in the hotel suite a
+ couple of times, I heard they give
+ you some sorta gift...[newlineAwaitInput] A pretty NICE gift, too.'''
+dialogs[2158] = ''' Welcome to Marrymore![newPageAwaitInput] We have a lovely wedding hall,
+ and four-star hotel facilities![newPageAwaitInput] Please enjoy your stay here.[newPageAwaitInput] What? You're seeking a man with
+ the face of a totem pole...?'''
+dialogs[2159] = '''
  How could I forget him?!
- He’s up at the weddin'''
-dialogs[1133] = '''g hall.[endAwaitInput] Welcome to Marrymore![newPageAwaitInput] You can get married up in the hall.[endAwaitInput]
+ He’s up at the wedding hall.'''
+dialogs[2160] = ''' Welcome to Marrymore![newPageAwaitInput] You can get married up in the hall.'''
+dialogs[2161] = '''
  And if you wish to stay the night,[delay_48]
- they c'''
-dialogs[1134] = '''an help you over there...[endAwaitInput]
- Over in th'''
-dialogs[1135] = '''at gorgeous hotel.[endAwaitInput] I'm the best photographer around.[newlineAwaitInput] Would you like a wedding portrait?'''
-dialogs[1136] = '''[endAwaitInput] OK, get a little closer, now...[newlineAwaitInput] Ready? All right, 1'''
-dialogs[1137] = '''..2..[newlineAwaitInput] Hey, you there![endAwaitInput] Why the long face?
- This isn't a funeral, you know.[endAwaitInput]RAZ: Mario![endAwaitInput] That creepy guy just left![newlineAwaitInput] Does that mean '''
-dialogs[1138] = '''we can
- go on with our wedding?[endAwaitInput]RAINI: Oh, Raz! I'm so happy![newPageAwaitInput] Let’s get this wedding over with
+ they can help you over there...'''
+dialogs[2162] = '''
+ Over in that gorgeous hotel.'''
+dialogs[2163] = ''' I'm the best photographer around.[newlineAwaitInput] Would you like a wedding portrait?'''
+dialogs[2164] = ''' OK, get a little closer, now...[newlineAwaitInput] Ready? All right, 1..2..[newlineAwaitInput] Hey, you there!'''
+dialogs[2165] = ''' Why the long face?
+ This isn't a funeral, you know.'''
+dialogs[2166] = '''RAZ: Mario!'''
+dialogs[2167] = ''' That creepy guy just left![newlineAwaitInput] Does that mean we can
+ go on with our wedding?'''
+dialogs[2168] = '''RAINI: Oh, Raz! I'm so happy![newPageAwaitInput] Let’s get this wedding over with
  so we can stay in the suite,
- and then go on o'''
-dialogs[1139] = '''ur honeymoon![endAwaitInput]RAZ: Let’s do it![endAwaitInput]RAZ: All right...[newPageAwaitInput]RAINI: You'll have to excuse us![endAwaitInput]
-      I[delay] can't[delay][delay] take it anymore...[endAwaitInput] Okay, everyone![endAwaitInput]
- We're g'''
-dialogs[1140] = '''onna start this from the
- beginning! Back inside, please![endAwaitInput]
-          It’s our turn next.[endAwaitInput] I wi'''
-dialogs[1141] = '''sh the people before us would
- hurry up! We've been waitin'''
-dialogs[1142] = '''g for
- 30 minutes now.[endAwaitInput]
-                   I do.[endAwaitInput]
-           She’s so gorgeous...[endAwaitInput]
-          It’s lovely, isn't it?[endAwaitInput]
-          Shhhh...Quiet, now.[endAwaitInput] Oh, the couple that got married?[newlineAwaitInput] Looks like they went on their
- honeymoon '''
-dialogs[1143] = '''to[delay][delay]...whatever island.[endAwaitInput] That Raz...[delay][delay]
- He found himself a real peach![endAwaitInput]
-         Raini’s so beautiful...[endAwaitInput]
-       Hey, w'''
-dialogs[1144] = '''hat are you doing?[endAwaitInput]TOADSTOOL: Mario![endAwaitInput] The Chancellor is WAITING...![delay][delay][end]
- We're going b'''
-dialogs[1145] = '''ack now, right?![newlineAwaitInput] [startSelection]  (Okay)
- [startSelection]  (No)[endAwaitInput]MALL'''
-dialogs[1146] = '''OW: Mario![endAwaitInput][newPage] The Chancellor must be worried
- sick abo'''
-dialogs[1147] = '''ut us. You saw him before![end]
+ and then go on our honeymoon!'''
+dialogs[2169] = '''RAZ: Let’s do it!'''
+dialogs[2170] = '''RAZ: All right...[newPageAwaitInput]RAINI: You'll have to excuse us!'''
+dialogs[2171] = '''RAZ: All right...[newPageAwaitInput]RAINI: You'll have to excuse us!'''
+dialogs[2172] = '''
+'''
+dialogs[2173] = ''' Okay, everyone!'''
+dialogs[2174] = '''
+ We're gonna start this from the
+ beginning! Back inside, please!'''
+dialogs[2175] = '''
+          It’s our turn next.'''
+dialogs[2176] = ''' I wish the people before us would
+ hurry up! We've been waiting for
+ 30 minutes now.'''
+dialogs[2177] = '''
+                   I do.'''
+dialogs[2178] = '''
+           She’s so gorgeous...'''
+dialogs[2179] = '''
+          It’s lovely, isn't it?'''
+dialogs[2180] = '''
+          Shhhh...Quiet, now.'''
+dialogs[2181] = ''' Oh, the couple that got married?[newlineAwaitInput] Looks like they went on their
+ honeymoon to[delay][delay]...whatever island.'''
+dialogs[2182] = ''' That Raz...[delay][delay]
+ He found himself a real peach!'''
+dialogs[2183] = '''
+         Raini’s so beautiful...'''
+dialogs[2184] = '''
+       Hey, what are you doing?'''
+dialogs[2185] = '''TOADSTOOL: Mario!'''
+dialogs[2186] = ''' The Chancellor is WAITING...![delay][delay]'''
+dialogs[2187] = '''
+ We're going back now, right?![newlineAwaitInput] [startSelection]  (Okay)
+ [startSelection]  (No)'''
+dialogs[2188] = '''MALLOW: Mario!'''
+dialogs[2189] = '''[newPage] The Chancellor must be worried
+ sick about us. You saw him before!'''
+dialogs[2190] = '''
  C'mon, let’s GO.[newlineAwaitInput] [startSelection]  (Okay)
- [startSelection]  (NO!)[endAwaitInput]GENO: Mario![endAwaitInput][newPage] If we '''
-dialogs[1148] = '''don't get the Princess
- back'''
-dialogs[1149] = ''', WE'LL be charged with
+ [startSelection]  (NO!)'''
+dialogs[2191] = '''GENO: Mario!'''
+dialogs[2192] = '''[newPage] If we don't get the Princess
+ back, WE'LL be charged with
  kidnapping! Let’s go![newlineAwaitInput] [startSelection]  (Oh, all right)
- [startSelection]  (NO!)[endAwaitInput] We're finally “man and wife”.[endAwaitInput] Honey, I don't want you to
- wander too far off, n'''
-dialogs[1150] = '''ow![endAwaitInput] I came to see where the wedding's
- gonna be held.[endAwaitInput] It’s going to be'''
-dialogs[1151] = ''' held HERE?!
- This is absolutely gorgeous![endAwaitInput]
-          Pipe do'''
-dialogs[1152] = '''wn and relax.[endAwaitInput]
-      I wish it were ski'''
-dialogs[1153] = ''' season![endAwaitInput] I wish those two a wonder'''
-dialogs[1154] = '''ful
- life together.[newlineAwaitInput] H'''
-dialogs[1155] = '''ope they don't fight too ofte'''
-dialogs[1156] = '''n![endAwaitInput] Oh man, is it over, yet?[newlineAwaitInput] I hate getting my pi'''
-dialogs[1157] = '''cture taken.[endAwaitInput]SNIFIT 1: Ready?
- Here we go!...[pauseAwaitInput][endAwaitInput] All right,[newlineAwaitInput] on the count of 3, say
- “Ahhhhhhhh'''
-dialogs[1158] = '''hhhhhhhhhhhhhhhhhh!”[endAwaitInput]BOWSER: (Can't...[delay][delay]tell 'em...
- the truth...If this gets out...[newlineAwaitInput] I'm '''
-dialogs[1159] = '''finished...!)[endAwaitInput]CHANCELLOR: Y,[delay] yes...[delay][delay]I see.[endAwaitInput]MALLOW: Wrong way, Mario!
- She went throug'''
-dialogs[1160] = '''h THAT door![endAwaitInput]TOADSTOOL: Bowser...
- Perha'''
-dialogs[1161] = '''ps it’s time you
- told us your s'''
-dialogs[1162] = '''tory![newPageAwaitInput] What, exactly, did you mean
+ [startSelection]  (NO!)'''
+dialogs[2193] = ''' We're finally “man and wife”.'''
+dialogs[2194] = ''' Honey, I don't want you to
+ wander too far off, now!'''
+dialogs[2195] = ''' I came to see where the wedding's
+ gonna be held.'''
+dialogs[2196] = ''' It’s going to be held HERE?!
+ This is absolutely gorgeous!'''
+dialogs[2197] = '''
+          Pipe down and relax.'''
+dialogs[2198] = '''
+'''
+dialogs[2199] = ''' I wish those two a wonderful
+ life together.[newlineAwaitInput] Hope they don't fight too often!'''
+dialogs[2200] = ''' Oh man, is it over, yet?[newlineAwaitInput] I hate getting my picture taken.'''
+dialogs[2201] = '''SNIFIT 1: Ready?
+ Here we go!...[pauseAwaitInput]'''
+dialogs[2202] = ''' All right,[newlineAwaitInput] on the count of 3, say
+ “Ahhhhhhhhhhhhhhhhhhhhhhhhhh!”'''
+dialogs[2203] = '''BOWSER: (Can't...[delay][delay]tell 'em...
+ the truth...If this gets out...[newlineAwaitInput] I'm finished...!)'''
+dialogs[2204] = '''CHANCELLOR: Y,[delay] yes...[delay][delay]I see.'''
+dialogs[2205] = '''MALLOW: Wrong way, Mario!
+ She went through THAT door!'''
+dialogs[2206] = '''TOADSTOOL: Bowser...
+ Perhaps it’s time you
+ told us your story![newPageAwaitInput] What, exactly, did you mean
  when you said you had,
- “Bigger fish to fry?”[endAwaitInput]MA'''
-dialogs[1163] = '''LLOW: Excuse me, Sir...
+ “Bigger fish to fry?”'''
+dialogs[2207] = '''MALLOW: Excuse me, Sir...
  Perhaps I can set the stage, and[newlineAwaitInput] the others can add their comments
- along the way![endAwaitInput] T'''
-dialogs[1164] = ''''''
-dialogs[1165] = '''he Princess, Bowser and Mario[newlineAwaitInput] were thrown in different directions
- after a terrible explosion...[endAwaitInput][newPage] Something HUGE crashed through
- the Star Road hig'''
-dialogs[1166] = '''h above
- Bowser’s place...[delay]and[delay]...[endAwaitInput][newPage] And went....[endAwaitInput][newPage]
+ along the way!'''
+dialogs[2208] = ''' The Princess, Bowser and Mario[newlineAwaitInput] were thrown in different directions
+ after a terrible explosion...'''
+dialogs[2209] = '''[newPage] Something HUGE crashed through
+ the Star Road high above
+ Bowser’s place...[delay]and[delay]...'''
+dialogs[2210] = '''[newPage] And went....'''
+dialogs[2211] = '''[newPage]
                 KABOOM![newPageAwaitInput]  
-     Right into Bowser’s Keep!![endAwaitInput] It was a gigantic sword![newPageAwaitInput] Now Bowser’s Keep has been
+     Right into Bowser’s Keep!!'''
+dialogs[2212] = ''' It was a gigantic sword![newPageAwaitInput] Now Bowser’s Keep has been
  taken over by monsters who work
- for some creep named “Smithy.”[endAwaitInput]BOWSE'''
-dialogs[1167] = '''R: They've thrown me out
- of my own...[delay_48] I mean...[newlineAwaitInput] I decided to take a vacation![pauseAwaitInput][end]
+ for some creep named “Smithy.”'''
+dialogs[2213] = '''BOWSER: They've thrown me out
+ of my own...[delay_48] I mean...[newlineAwaitInput] I decided to take a vacation![pauseAwaitInput]'''
+dialogs[2214] = '''
  ...Mario walked up to me and
  BEGGED me to let him join the
- Koopa Troop! I had no choice[newlineAwaitInput] but to let him in. It was pathetic'''
-dialogs[1168] = '''.[endAwaitInput]MALLOW: Hello~, is anybody home?
+ Koopa Troop! I had no choice[newlineAwaitInput] but to let him in. It was pathetic.'''
+dialogs[2215] = '''MALLOW: Hello~, is anybody home?
  I just said she went through
- THAT door, over there![endAwaitInput]TOADSTOOL: Chancellor![pauseAwaitInput][end]
+ THAT door, over there!'''
+dialogs[2216] = '''TOADSTOOL: Chancellor![pauseAwaitInput]'''
+dialogs[2217] = '''
  Listen, everyone, RELAX!
- Mario’s got things under control![endAwaitInput]
+ Mario’s got things under control!'''
+dialogs[2218] = '''
  Anyway, I was working on a plan
- to get my'''
-dialogs[1169] = ''' house back, when...[endAwaitInput]      
- They CAN'T do this to me![pauseAwaitInput][end]TOADSTOOL: It’s okay, Mario.
- We know Bowser’s st'''
-dialogs[1170] = '''retching
- the truth a little![endAwaitInput][newPage] And...um, Geno,... was it?
- Why are you and Mario...[endAwaitInput][newPage] And..'''
-dialogs[1171] = '''.Mallow...how about you?
- Why are you traveling with Mario?[endAwaitInput]MALLOW: Well, because Mario's
- helping me find my real h'''
-dialogs[1172] = '''ome...
+ to get my house back, when...'''
+dialogs[2219] = ''''''
+dialogs[2220] = '''TOADSTOOL: It’s okay, Mario.
+ We know Bowser’s stretching
+ the truth a little!'''
+dialogs[2221] = '''[newPage] And...um, Geno,... was it?
+ Why are you and Mario...'''
+dialogs[2222] = '''[newPage] And...Mallow...how about you?
+ Why are you traveling with Mario?'''
+dialogs[2223] = '''MALLOW: Well, because Mario's
+ helping me find my real home...
  And my parents...[newPageAwaitInput] That’s why we're
- on the road together.[endAwaitInput] Welcom'''
-dialogs[1173] = '''e back, Mario!
- All’s well here![endAwaitInput] Mario, where have you been?
+ on the road together.'''
+dialogs[2224] = ''' Welcome back, Mario!
+ All’s well here!'''
+dialogs[2225] = ''' Mario, where have you been?
  I've never been so worried! I'm
- so angry I can't see '''
-dialogs[1174] = '''straight![newlineAwaitInput] Would you want to marry someone
- who can't see straight?![endAwaitInput] Lately, the Princess '''
-dialogs[1175] = '''hasn't been
- around to look at the flowers.[endAwaitInput] Wow! That sure woke me up![endAwaitInput]TOADSTOOL: Shhhh....[newlineAwaitInput] If people see who I'm with, they'll
- flip out, so...[newlineAwaitInput] Let’s be real quiet![endAwaitInput] I just love the smell of flowers![newPageAwaitInput][delay][delay] I'm sorry...I'm in a rush right
- now. I'll come back another time.[endAwaitInput] Mario, welcome home!
- Please, go in.[endAwaitInput] Oooh! It’s good to see you back.
+ so angry I can't see straight![newlineAwaitInput] Would you want to marry someone
+ who can't see straight?!'''
+dialogs[2226] = ''' Lately, the Princess hasn't been
+ around to look at the flowers.'''
+dialogs[2227] = ''' Wow! That sure woke me up!'''
+dialogs[2228] = '''TOADSTOOL: Shhhh....[newlineAwaitInput] If people see who I'm with, they'll
+ flip out, so...[newlineAwaitInput] Let’s be real quiet!'''
+dialogs[2229] = ''' I just love the smell of flowers![newPageAwaitInput][delay][delay] I'm sorry...I'm in a rush right
+ now. I'll come back another time.'''
+dialogs[2230] = ''' Mario, welcome home!
+ Please, go in.'''
+dialogs[2231] = ''' Oooh! It’s good to see you back.
  Look what I found in the wallet
- you returned to me.[newPageAwaitInput] It’s yours, isn't it?[endAwaitInput] Were you able to rescue the
- Princess from Bowser,[newlineAwaitInput] that '''
-dialogs[1176] = '''good for noth...[endAwaitInput][newPage] Eh?
- W..'''
-dialogs[1177] = '''.what was that'''
-dialogs[1178] = '''...odd noise?[endAwaitInput] Say hey! Welcome back.
- The Chancellor’s been worry'''
-dialogs[1179] = '''ing[newlineAwaitInput] about you ever since you left.
- Come see me l'''
-dialogs[1180] = '''ater![endAwaitInput] Avoid fighting the pointy monsters
- up on Star Hill.[endAwaitInput] Hey Mario! Wanna grab something
- to eat?[endAwaitInput]
-    Go on now, don't hang back![endAwaitInput] Mario, go see my brother
+ you returned to me.[newPageAwaitInput] It’s yours, isn't it?'''
+dialogs[2232] = ''' Were you able to rescue the
+ Princess from Bowser,[newlineAwaitInput] that good for noth...'''
+dialogs[2233] = '''[newPage] Eh?
+ W...what was that...odd noise?'''
+dialogs[2234] = ''' Say hey! Welcome back.
+ The Chancellor’s been worrying[newlineAwaitInput] about you ever since you left.
+ Come see me later!'''
+dialogs[2235] = ''' Avoid fighting the pointy monsters
+ up on Star Hill.'''
+dialogs[2236] = ''' Hey Mario! Wanna grab something
+ to eat?'''
+dialogs[2237] = '''
+    Go on now, don't hang back!'''
+dialogs[2238] = ''' Mario, go see my brother
  jump. He’s been practicing
- like crazy![endAwaitInput] Boing, boing, boing...[newlineAwaitInput] Hey, Mario!
+ like crazy!'''
+dialogs[2239] = ''' Boing, boing, boing...[newlineAwaitInput] Hey, Mario!
  I can out jump YOU now![newlineAwaitInput] [startSelection]  (Impressive!)
- [startSelection]  (Keep pract'''
-dialogs[1181] = '''icing, kid)[endAwaitInput][newPage]
-               ALL RIGHT![endAwaitInput] Hello Mario! Oh, hi, Mallow,
+ [startSelection]  (Keep practicing, kid)'''
+dialogs[2240] = '''[newPage]
+               ALL RIGHT!'''
+dialogs[2241] = ''' Hello Mario! Oh, hi, Mallow,
  didn't see you there!
- Well, what can I get you '''
-dialogs[1182] = '''two?[endAwaitInput] Enough with the chatter...[newlineAwaitInput] On your way, now.[endAwaitInput]            Got a Frog Coin![endAwaitInput]TOAD: Mario!...
+ Well, what can I get you two?'''
+dialogs[2242] = ''' Enough with the chatter...[newlineAwaitInput] On your way, now.'''
+dialogs[2243] = '''            Got a Frog Coin!'''
+dialogs[2244] = '''TOAD: Mario!...
  Welcome back!!
- You look like you're in one piece![endAwaitInput]
-           P..[delay][delay].P..[delay]Princess![endAwaitInput]TOADSTOOL: I'm finally home![newlineAwaitInput] A'''
-dialogs[1183] = '''nd with Mario...[endAwaitInput]
+ You look like you're in one piece!'''
+dialogs[2245] = '''
+           P..[delay][delay].P..[delay]Princess!'''
+dialogs[2246] = '''TOADSTOOL: I'm finally home![newlineAwaitInput] And with Mario...'''
+dialogs[2247] = '''
  and some wonderful...
- new friends! They saved my life.[endAwaitInput]TOAD:
-    Let’s '''
-dialogs[1184] = '''go find the Chancellor...[endAwaitInput]TOADSTOOL:
-                 Lead on![endAwaitInput][newPage] Come on Mario.'''
-dialogs[1185] = ''' We mustn't
- keep the Chancellor waiting![endAwaitInput] Mario! Welcom'''
-dialogs[1186] = '''e home.[newlineAwaitInput] The place is looking sharp,
- is it not?[endAwaitInput]TOAD: Chance'''
-dialogs[1187] = '''llor![newlineAwaitInput] The...the Princess'''
-dialogs[1188] = '''...
- She’s BACK!![endAwaitInput]CHANCELLOR: Thank goodness![newlineAwaitInput] This has been a true ni'''
-dialogs[1189] = '''ghtmare![pauseAwaitInput][end] I'm a nervo'''
-dialogs[1190] = '''us wreck![endAwaitInput]TOADSTOO'''
-dialogs[1191] = '''L: I know I've worried
- everyone...[pauseAwaitInput][end][newPage] But I'm fine!
- I can take care of mys'''
-dialogs[1192] = '''elf...[newlineAwaitInput] ...With a little help from Mario![endAwaitInput]CHANCELLOR: Come, everyone'''
-dialogs[1193] = '''![newlineAwaitInput] Let’s get out of this
- drafty d'''
-dialogs[1194] = '''oorway![endAwaitInput]TOADSTOOL: Mario, I ho'''
-dialogs[1195] = '''pe you
- know how tha'''
-dialogs[1196] = '''nkful we'''
-dialogs[1197] = ''' are![endAwaitInput] But...[delay][delay]y'''
-dialogs[1198] = '''ou MUST tell
- me one thing! How o'''
-dialogs[1199] = '''n earth[newlineAwaitInput] can you trust...[delay][delay]Bowser?[endAwaitInput]CHANCELLOR: Trust...Bowser?
- What ARE you talking about?![endAwaitInput]CHANCELLOR: Mario!
- What are YOU doing with...[endAwaitInput]
-       WHAT'S GOING '''
-dialogs[1200] = '''ON HERE?[endAwaitInput]
-                 EGADS![endAwaitInput]GENO: '''
-dialogs[1201] = '''The Star Road has bee'''
-dialogs[1202] = '''n
+ new friends! They saved my life.'''
+dialogs[2248] = '''TOAD:
+    Let’s go find the Chancellor...'''
+dialogs[2249] = '''TOADSTOOL:
+                 Lead on!'''
+dialogs[2250] = '''[newPage] Come on Mario. We mustn't
+ keep the Chancellor waiting!'''
+dialogs[2251] = ''' Mario! Welcome home.[newlineAwaitInput] The place is looking sharp,
+ is it not?'''
+dialogs[2252] = '''TOAD: Chancellor![newlineAwaitInput] The...the Princess...
+ She’s BACK!!'''
+dialogs[2253] = '''CHANCELLOR: Thank goodness![newlineAwaitInput] This has been a true nightmare![pauseAwaitInput]'''
+dialogs[2254] = ''' I'm a nervous wreck!'''
+dialogs[2255] = '''TOADSTOOL: I know I've worried
+ everyone...[pauseAwaitInput]'''
+dialogs[2256] = '''[newPage] But I'm fine!
+ I can take care of myself...[newlineAwaitInput] ...With a little help from Mario!'''
+dialogs[2257] = '''CHANCELLOR: Come, everyone![newlineAwaitInput] Let’s get out of this
+ drafty doorway!'''
+dialogs[2258] = '''TOADSTOOL: Mario, I hope you
+ know how thankful we are!'''
+dialogs[2259] = ''' But...[delay][delay]you MUST tell
+ me one thing! How on earth[newlineAwaitInput] can you trust...[delay][delay]Bowser?'''
+dialogs[2260] = '''CHANCELLOR: Trust...Bowser?
+ What ARE you talking about?!'''
+dialogs[2261] = '''CHANCELLOR: Mario!
+ What are YOU doing with...'''
+dialogs[2262] = '''
+       WHAT'S GOING ON HERE?'''
+dialogs[2263] = '''
+                 EGADS!'''
+dialogs[2264] = '''GENO: The Star Road has been
  destroyed. I'm here to fix it.[newPageAwaitInput] Mario is helping me search for
- the Star Piec'''
-dialogs[1203] = '''es. I need them to
- rebuild the road...[endAwaitInput]TOADSTOOL: Star...Pieces?[endAwaitInput]MALLOW'''
-dialogs[1204] = ''': The Star Road grants
+ the Star Pieces. I need them to
+ rebuild the road...'''
+dialogs[2265] = '''TOADSTOOL: Star...Pieces?'''
+dialogs[2266] = '''MALLOW: The Star Road grants
  our wishes![newPageAwaitInput] Unless we find all the Star Pieces
  and fix the Star Road, we can
- kiss our dreams goodbye![endAwaitInput]TOADSTO'''
-dialogs[1205] = '''OL: WHAT?!
+ kiss our dreams goodbye!'''
+dialogs[2267] = '''TOADSTOOL: WHAT?!
  This is dreadful news!
- Awful! Horrible...![pauseAwaitInput][end]GENO: Indeed...for exa'''
-dialogs[1206] = '''mple...[newlineAwaitInput] Say Bowser kidnapped'''
-dialogs[1207] = ''' you.
+ Awful! Horrible...![pauseAwaitInput]'''
+dialogs[2268] = '''GENO: Indeed...for example...[newlineAwaitInput] Say Bowser kidnapped you.
  Without the aid of the Star Road,
- you'd probably never be rescued![endAwaitInput]BOWSER: Actually, that sounds
+ you'd probably never be rescued!'''
+dialogs[2269] = '''BOWSER: Actually, that sounds
  pretty GOOD to me!
- Let’s just forget about these...[newlineAwaitInput] Star...things![endAwaitInput]TOADSTOOL: Great'''
-dialogs[1208] = ''', Bowser. Then
+ Let’s just forget about these...[newlineAwaitInput] Star...things!'''
+dialogs[2270] = '''TOADSTOOL: Great, Bowser. Then
  you can just kiss your precious
- “Keep'''
-dialogs[1209] = '''” goodbye![endAwaitInput]TOADSTOOL: Urgh!!!
- Just igno'''
-dialogs[1210] = '''re that idiot![pauseAwaitInput][end]
+ “Keep” goodbye!'''
+dialogs[2271] = '''TOADSTOOL: Urgh!!!
+ Just ignore that idiot![pauseAwaitInput]'''
+dialogs[2272] = '''
  I just don't think I could take
- a world without wishes...[pauseAwaitInput][end][newPage] We need to go and find
- those Star Pieces, NOW![endAwaitInput]TOADSTOOL: I don't care! Things
- seem so hopeless '''
-dialogs[1211] = '''right now...[endAwaitInput] I'm tired..'''
-dialogs[1212] = '''.[newlineAwaitInput] I think I need to lie down
- in my room for awhile.[endAwaitInput]TO'''
-dialogs[1213] = '''ADSTOOL: Mario...Mallow...
- Geno and...Bowser, you too...[newlineAwaitInput] Good luck![endAwaitInput]
-                 Isn't '''
-dialogs[1214] = '''it?[endAwaitInput] BOWSER:
-             HUH?! WHAT?![endAwaitInput][newPage] Huh?[delay][delay] Let’s see. If Mario[newlineAwaitInput] can't'''
-dialogs[1215] = ''' find the stars...[delay_48][end]
- Toadstool will'''
-dialogs[1216] = ''' be MI'''
-dialogs[1217] = '''NE![delay_32][end]
- But I won't get my Keep back...[delay_32][end]
- unless Mario finds the stars![delay_32][end]
- So if I want my Keep back...[end]
- we need those star things, but...[pauseAwaitInput][end]
- Huh?! Run th'''
-dialogs[1218] = '''at past me again![endAwaitInput]CHANCELLOR: Princess![pauseAwaitInput][end][newlineAwaitInput] You CAN'T be serious!
- You're NOT thinkin'''
-dialogs[1219] = '''g of
- joining them, '''
-dialogs[1220] = '''ARE YOU?[pauseAwaitInput][end] This is sheer madness...
- Y'''
-dialogs[1221] = '''ou're a Princess![newlineAwaitInput] What will people say?![endAwaitInput]MALLOW: You must not care
- about my parents..'''
-dialogs[1222] = '''.
- You're so mean, Mario.[endAwaitInput] I hope you find your
- real parents soon'''
-dialogs[1223] = '''![endAwaitInput]CHANCELLOR: Now then![endAwaitInput] Thanks to Mario,
+ a world without wishes...[pauseAwaitInput]'''
+dialogs[2273] = '''[newPage] We need to go and find
+ those Star Pieces, NOW!'''
+dialogs[2274] = '''TOADSTOOL: I don't care! Things
+ seem so hopeless right now...'''
+dialogs[2275] = ''' I'm tired...[newlineAwaitInput] I think I need to lie down
+ in my room for awhile.'''
+dialogs[2276] = '''TOADSTOOL: Mario...Mallow...
+ Geno and...Bowser, you too...[newlineAwaitInput] Good luck!'''
+dialogs[2277] = '''
+                 Isn't it?'''
+dialogs[2278] = ''' BOWSER:
+             HUH?! WHAT?!'''
+dialogs[2279] = '''[newPage] Huh?[delay][delay] Let’s see. If Mario[newlineAwaitInput] can't find the stars...[delay_48]'''
+dialogs[2280] = '''
+ Toadstool will be MINE![delay_32]'''
+dialogs[2281] = '''
+ But I won't get my Keep back...[delay_32]'''
+dialogs[2282] = '''
+ unless Mario finds the stars![delay_32]'''
+dialogs[2283] = '''
+ So if I want my Keep back...'''
+dialogs[2284] = '''
+ we need those star things, but...[pauseAwaitInput]'''
+dialogs[2285] = '''
+ Huh?! Run that past me again!'''
+dialogs[2286] = '''CHANCELLOR: Princess![pauseAwaitInput]'''
+dialogs[2287] = ''' You CAN'T be serious!
+ You're NOT thinking of
+ joining them, ARE YOU?[pauseAwaitInput]'''
+dialogs[2288] = ''' This is sheer madness...
+ You're a Princess![newlineAwaitInput] What will people say?!'''
+dialogs[2289] = '''MALLOW: You must not care
+ about my parents...
+ You're so mean, Mario.'''
+dialogs[2290] = ''' I hope you find your
+ real parents soon!'''
+dialogs[2291] = '''CHANCELLOR: Now then!'''
+dialogs[2292] = ''' Thanks to Mario,
  the Princess is back.
- I now declare this date to be[newlineAwaitInput] known forever as'''
-dialogs[1224] = ''',...[endAwaitInput] ...Hey, wait a minute!
- You don't'''
-dialogs[1225] = ''' suppose...[endAwaitInput] Could it have'''
-dialogs[1226] = ''' been this “Smithy”
- who attacked our K'''
-dialogs[1227] = '''ingdom?[newPageAwaitInput] I fear we have no cause to
+ I now declare this date to be[newlineAwaitInput] known forever as,...'''
+dialogs[2293] = ''' ...Hey, wait a minute!
+ You don't suppose...'''
+dialogs[2294] = ''' Could it have been this “Smithy”
+ who attacked our Kingdom?[newPageAwaitInput] I fear we have no cause to
  rejoice. In fact, Mario, we must
- ask you for'''
-dialogs[1228] = ''' yet another favor...[endAwaitInput] Please...on behalf of all of us,
- you MUST defeat Smithy...[newPageAwaitInput] I'''
-dialogs[1229] = '''t is the only way we shall ever
- live in peace again.[endAwaitInput]BOWSER: Grumph![endAwaitInput] You'''
-dialogs[1230] = ''' do as you're told, and
- everything will be j'''
-dialogs[1231] = '''ust...peachy.[endAwaitInput]TOAD:
-         Happy hunting, Mario![endAwaitInput]
-           Thank you, '''
-dialogs[1232] = '''Mario![endAwaitInput]
-          Excellent job, Mario![endAwaitInput]      Princess Toadstool is '''
-dialogs[1233] = '''home
-          safe, but she has...[newlineAwaitInput]   decided to stay at the Kingdom![endAwaitInput]       “Toadstool'''
-dialogs[1234] = '''”, Princess of
+ ask you for yet another favor...'''
+dialogs[2295] = ''' Please...on behalf of all of us,
+ you MUST defeat Smithy...[newPageAwaitInput] It is the only way we shall ever
+ live in peace again.'''
+dialogs[2296] = '''BOWSER: Grumph!'''
+dialogs[2297] = ''' You do as you're told, and
+ everything will be just...peachy.'''
+dialogs[2298] = '''TOAD:
+         Happy hunting, Mario!'''
+dialogs[2299] = '''
+           Thank you, Mario!'''
+dialogs[2300] = '''
+          Excellent job, Mario!'''
+dialogs[2301] = ''''''
+dialogs[2302] = '''       “Toadstool”, Princess of
            Mushroom Kingdom,
-          has joined the party.[newlineAwaitInput]   Be sure to bring her back safely![endAwaitInput]           Just as I thought![delay_48]
-      Toadstool joins the party
-               once '''
-dialogs[1235] = '''AGAIN![endAwaitInput] Don't worry, Princess. A little
- '''
-dialogs[1236] = '''adventure will do you good!
- See the world! Make friends![newPageAwaitInput] Help destroy Smithy...[endAwaitInput] O'''
-dialogs[1237] = '''h dear![delay]
+          has joined the party.[newlineAwaitInput]   Be sure to bring her back safely!'''
+dialogs[2303] = '''           Just as I thought![delay_48]
+'''
+dialogs[2304] = ''' Don't worry, Princess. A little
+ adventure will do you good!
+ See the world! Make friends![newPageAwaitInput] Help destroy Smithy...'''
+dialogs[2305] = ''' Oh dear![delay]
  The Princess went out looking
- for'''
-dialogs[1238] = ''' you. Please find her![endAwaitInput]
-                  Mario![delay_64][end][newPage] You're KILLIN' me h'''
-dialogs[1239] = '''ere!
+ for you. Please find her!'''
+dialogs[2306] = '''
+                  Mario![delay_64]'''
+dialogs[2307] = '''[newPage] You're KILLIN' me here!
  All rightee then, how about 10?
- Th'''
-dialogs[1240] = '''at’s TEN Frog Coins![newlineAwaitInput]  [startSelection]  (It’s a deal!)
-  [startSelection]  (Nope)[endAwaitInput][newPage] Ho ho!...Mr. Wise '''
-dialogs[1241] = '''guy doesn't
+ That’s TEN Frog Coins![newlineAwaitInput]  [startSelection]  (It’s a deal!)
+  [startSelection]  (Nope)'''
+dialogs[2308] = '''[newPage] Ho ho!...Mr. Wise guy doesn't
  think 10 Frog Coins is enough![newlineAwaitInput] You don't know what you're
- missing, '''
-dialogs[1242] = '''but...OH, WELL...[endAwaitInput]
-         Wait! Don't leave me![endAwaitInput]
-          A'''
-dialogs[1243] = '''t times like these....[endAwaitInput]TOADSTOOL: 
-          What should we do?[endAwaitInput]MAL'''
-dialogs[1244] = '''LOW: We should ask Grandpa!
- My Grandpa should k'''
-dialogs[1245] = '''now![endAwaitInput]TOADSTOOL: Okay then![newlineAwaitInput] Let’s do it![endAwaitInput]TOA'''
-dialogs[1246] = '''DSTOOL: Please, Mario![newlineAwaitInput] Take me along with you, please![endAwaitInput] Don't '''
-dialogs[1247] = '''worry.[newlineAwaitInput] Grandma helped me throug'''
-dialogs[1248] = '''h
- this one, so no one will ev'''
-dialogs[1249] = '''er
- notice that I'm gone![endAwaitInput] So...let’s go find us a'''
-dialogs[1250] = ''' star![pauseAwaitInput][end]
+ missing, but...OH, WELL...'''
+dialogs[2309] = '''
+         Wait! Don't leave me!'''
+dialogs[2310] = '''
+          At times like these....'''
+dialogs[2311] = '''TOADSTOOL: 
+          What should we do?'''
+dialogs[2312] = '''MALLOW: We should ask Grandpa!
+ My Grandpa should know!'''
+dialogs[2313] = '''TOADSTOOL: Okay then![newlineAwaitInput] Let’s do it!'''
+dialogs[2314] = '''TOADSTOOL: Please, Mario![newlineAwaitInput] Take me along with you, please!'''
+dialogs[2315] = ''' Don't worry.[newlineAwaitInput] Grandma helped me through
+ this one, so no one will ever
+ notice that I'm gone!'''
+dialogs[2316] = ''' So...let’s go find us a star![pauseAwaitInput]'''
+dialogs[2317] = '''
  [delay]Hmmm[delay]...[delay][newlineAwaitInput] But I wonder where it could be...
- I have absol'''
-dialogs[1251] = ''''''
-dialogs[1252] = '''utely no idea! Do you?[endAwaitInput] I'll make sure that Princess
- Toadsto'''
-dialogs[1253] = '''ol will be able to lead a
- safe, and long, life![newlineAwaitInput] You can bet on it![endAwaitInput]
-     The Prin'''
-dialogs[1254] = '''cess is resting now.[endAwaitInput]
-                  Mario![endAwaitInput]TOADSTOOL: Stop peeking into
- other people’s rooms![endAwaitInput] Princess![endAwaitInput]TOADSTOOL: Hello Gra'''
-dialogs[1255] = ''''''
-dialogs[1256] = ''''''
-dialogs[1257] = ''''''
-dialogs[1258] = ''''''
-dialogs[1259] = ''''''
-dialogs[1260] = ''''''
-dialogs[1261] = '''ndma,
+ I have absolutely no idea! Do you?'''
+dialogs[2318] = ''' I'll make sure that Princess
+ Toadstool will be able to lead a
+ safe, and long, life![newlineAwaitInput] You can bet on it!'''
+dialogs[2319] = ''' I'll make sure that Princess
+ Toadstool will be able to lead a
+ safe, and long, life![newlineAwaitInput] You can bet on it!'''
+dialogs[2320] = '''
+     The Princess is resting now.'''
+dialogs[2321] = '''
+                  Mario!'''
+dialogs[2322] = '''TOADSTOOL: Stop peeking into
+ other people’s rooms!'''
+dialogs[2323] = ''' Princess!'''
+dialogs[2324] = '''TOADSTOOL: Hello Grandma,
  I'm back. I hope I didn't worry
- you too much...[endAwaitInput] Nonsense, dear.[newlineAwaitInput] By the way, have you seen
+ you too much...'''
+dialogs[2325] = ''' Nonsense, dear.[newlineAwaitInput] By the way, have you seen
  the Chancellor yet?'''
-dialogs[1262] = '''[endAwaitInput]TOADSTOOL: I was just on my way.[newlineAwaitInput] See you later![endAwaitInput] Run along and talk to the
- Chancel'''
-dialogs[1263] = '''lor right away.
- We'll talk later, dear.[endAwaitInput] Our wishes have come'''
-dialogs[1264] = ''' true,
- so we will be having'''
-dialogs[1265] = ''' our
- wedding in Marrymor'''
-dialogs[1266] = '''e![newlineAwaitInput] We'll be gone for a '''
-dialogs[1267] = '''while!
-                         Raz & Raini[endAwaitInput] What’s that?
+dialogs[2326] = '''TOADSTOOL: I was just on my way.[newlineAwaitInput] See you later!'''
+dialogs[2327] = ''' Run along and talk to the
+ Chancellor right away.
+ We'll talk later, dear.'''
+dialogs[2328] = ''' Our wishes have come true,
+ so we will be having our
+ wedding in Marrymore![newlineAwaitInput] We'll be gone for a while!
+                         Raz & Raini'''
+dialogs[2329] = ''' What’s that?
  You want your card back?[delay]
  Okay, well...it’s 15 Frog Coins.[newlineAwaitInput] [startSelection]  (Here you go)
- [startSelection]  (Fo'''
-dialogs[1268] = '''rget it)[endAwaitInput] Please leave the correct amount
- '''
-dialogs[1269] = '''of money for the items.
-                             Manager[endAwaitInput]'''
-dialogs[1270] = ''' Yes indeed![end]
- 'Tis my me'''
-dialogs[1271] = '''lody...my tune![end]'''
-dialogs[1272] = '''[pauseAwaitInput]
+ [startSelection]  (Forget it)'''
+dialogs[2330] = ''' Please leave the correct amount
+ of money for the items.
+                             Manager'''
+dialogs[2331] = ''' Yes indeed!'''
+dialogs[2332] = '''
+ 'Tis my melody...my tune!'''
+dialogs[2333] = '''
  Composed by the one and only,
- and yours truly, “Toadofsky”.[endAwaitInput][newPage] Here, take it.
- Any'''
-dialogs[1273] = '''way, it felt good just to
- carry it around.[endAwaitInput][newPage] Oh yeah, well...
- I want to h'''
-dialogs[1274] = '''old onto it, so...
- you can forget about paying up.[endAwaitInput]YOSHI: (Hey![newlineAwaitInput] There’s a letter in here,
- but I can't read it...)[endAwaitInput]YOSHI:
-       (There’s nothing in here.)[endAwaitInput]
-         There’s nothing inside.[endAwaitInput] There is a lette'''
-dialogs[1275] = '''r inside.
+ and yours truly, “Toadofsky”.'''
+dialogs[2334] = '''[newPage] Here, take it.
+ Anyway, it felt good just to
+ carry it around.'''
+dialogs[2335] = '''[newPage] Oh yeah, well...
+ I want to hold onto it, so...
+ you can forget about paying up.'''
+dialogs[2336] = '''YOSHI: (Hey![newlineAwaitInput] There’s a letter in here,
+ but I can't read it...)'''
+dialogs[2337] = '''YOSHI:
+       (There’s nothing in here.)'''
+dialogs[2338] = '''
+         There’s nothing inside.'''
+dialogs[2339] = ''' There is a letter inside.
  Care to read it?[newlineAwaitInput] [startSelection]  (Sure)
- [startSelection]  (Nope)[endAwaitInput] Honeymoon reservations for 2
- “Mushroom Travel Agency”[endAwaitInput] (Hey ther'''
-dialogs[1276] = '''e! What’s happening?)[newlineAwaitInput] [startSelection]  (I want to store my Cookies)
+ [startSelection]  (Nope)'''
+dialogs[2340] = ''' Honeymoon reservations for 2
+ “Mushroom Travel Agency”'''
+dialogs[2341] = ''' (Hey there! What’s happening?)[newlineAwaitInput] [startSelection]  (I want to store my Cookies)
  [startSelection]  (I want my Cookies back)
- [startSelection]  (How’s it going?)[endAwaitInput][newPage] (I'm storing [0x7024] for you!
-  Right now you can ho'''
-dialogs[1277] = '''ld [0x7000] items.
-  [pauseAwaitInput]So, how many do you want?)[pauseAwaitInput][end] [0x7024][end][newPage] '''
-dialogs[1278] = '''[0x7024][end][newPage] (We're getting along better
-  than ever!)[endAwaitInput] (You gave me [0x7024]. So I'm
-  storing [0x7000] for you!)[endAwaitInput][newPage]
-          (All'''
-dialogs[1279] = ''' right, see ya!)[endAwaitInput] (I gave you [0x7024]. I'll store
-  the oth'''
-dialogs[1280] = '''er [0x7000] for you!)[endAwaitInput][newPage] (You don't have any Cookies
+ [startSelection]  (How’s it going?)'''
+dialogs[2342] = '''[newPage] (I'm storing [0x7024] for you!
+  Right now you can hold '''
+dialogs[2343] = ''' [0x7024]'''
+dialogs[2344] = '''[newPage] [0x7024]'''
+dialogs[2345] = '''[newPage] (We're getting along better
+  than ever!)'''
+dialogs[2346] = ''' (You gave me [0x7024]. So I'm
+  storing '''
+dialogs[2347] = '''[newPage]
+          (All right, see ya!)'''
+dialogs[2348] = ''' (I gave you [0x7024]. I'll store
+  the other '''
+dialogs[2349] = '''[newPage] (You don't have any Cookies
   stored right now. For starters,
-  try and store '''
-dialogs[1281] = '''5 or more.[pauseAwaitInput][end] (S'''
-dialogs[1282] = '''orry. If I store [0x7024] more[newlineAwaitInput]  it'll hit the 200 and over zone!
-  That’s more than I can hold.)[endAwaitInput][newPage]
-      (Out of Cookies to store!)[endAwaitInput][newPage]
-   (Out '''
-dialogs[1283] = ''''''
-dialogs[1284] = '''of Cookies to take back!)[endAwaitInput] (Okay, here’s [0x7024]. You don't
-  have any more to spare,'''
-dialogs[1285] = ''' so use
-  what’s left w'''
-dialogs[1286] = ''''''
-dialogs[1287] = '''isely!)[endAwaitInput][newPage]
-      (You have too many items!)[endAwaitInput][newPage] (Sorry.[newlineAwaitInput]  I'm al'''
-dialogs[1288] = '''ready storing 200 and
-  I can't store anymore.)[endAwaitInput]BOSHI: You lookin' at me?[newlineAwaitInput] [startSelection]  (Yeah! Let’s race)
- [startSelection]  (Uh, no...)[endAwaitInput][newPage] (The odds on Yoshi'''
-dialogs[1289] = ''' are
-  [0x7000] : 1. What will you do?)[newlineAwaitInput] [startSelection]  (I'll race Yoshi)'''
-dialogs[1290] = '''
- [startSelection]  (I'll hop off and watch Yoshi)[endAwaitInput][newPage] (This time, the odds'''
-dialogs[1291] = ''' on Yoshi
-  are [0x7000].5 : 1 Well?)[newlineAwaitInput]  [startSelection]  (I'll race Yoshi)
-  [startSelection]  (I'll hop'''
-dialogs[1292] = ''' off and watch Yoshi)[endAwaitInput][newPage] (So how many Cookies
-  are you gonna wager?[newlineAwaitInput]  You can wa'''
-dialogs[1293] = '''ger up to 10.)[endAwaitInput][newPage]
-         (Nice weather, eh?)[endAwaitInput]BOSHI:'''
-dialogs[1294] = ''' (Count me in for [0x7024]![newlineAwaitInput] T'''
-dialogs[1295] = '''o the starting gate, group!)[endAwaitInput] (You're carrying a lo'''
-dialogs[1296] = '''t of things![newlineAwaitInput]  I'll store this [0x7000] Cookie
-  for you. So, your total '''
-dialogs[1297] = '''is [0x7024].)[endAwaitInput][newPage]BOSHI: (No Cookies, NO RACE.)[endAwaitInput]
-    (I'm dying for some Coo'''
-dialogs[1298] = '''kies.)[endAwaitInput]YOSHI: (Looks like he wants some
+  try and store 5 or more.[pauseAwaitInput]'''
+dialogs[2350] = ''' (Sorry. If I store [0x7024] more[newlineAwaitInput]  it'll hit the 200 and over zone!
+  That’s more than I can hold.)'''
+dialogs[2351] = '''[newPage]
+'''
+dialogs[2352] = '''[newPage]
+   (Out of Cookies to take back!)'''
+dialogs[2353] = ''' (Okay, here’s [0x7024]. You don't
+  have any more to spare, so use
+  what’s left wisely!)'''
+dialogs[2354] = '''[newPage]
+'''
+dialogs[2355] = '''[newPage] (Sorry.[newlineAwaitInput]  I'm already storing 200 and
+  I can't store anymore.)'''
+dialogs[2356] = '''BOSHI: You lookin' at me?[newlineAwaitInput] [startSelection]  (Yeah! Let’s race)
+ [startSelection]  (Uh, no...)'''
+dialogs[2357] = '''[newPage] (The odds on Yoshi are
+  '''
+dialogs[2358] = '''[newPage] (This time, the odds on Yoshi
+  are '''
+dialogs[2359] = '''[newPage] (So how many Cookies
+  are you gonna wager?[newlineAwaitInput]  You can wager up to 10.)'''
+dialogs[2360] = '''[newPage]
+         (Nice weather, eh?)'''
+dialogs[2361] = '''BOSHI: (Count me in for [0x7024]![newlineAwaitInput] To the starting gate, group!)'''
+dialogs[2362] = ''' (You're carrying a lot of things![newlineAwaitInput]  I'll store this '''
+dialogs[2363] = '''[newPage]BOSHI: (No Cookies, NO RACE.)'''
+dialogs[2364] = '''
+    (I'm dying for some Cookies.)'''
+dialogs[2365] = '''YOSHI: (Looks like he wants some
  Cookies. Wanna give him some?)[newlineAwaitInput] [startSelection]  (Sure, why not?)
- [startSelection]  (No, let’s not)[endAwaitInput][newPage]
-  (How many should we give him?)[endAwaitInput] (Look how he eats! He’s gonna'''
-dialogs[1299] = ''''''
-dialogs[1300] = ''' be
-  a GIANT someday!)[endAwaitInput][newPage]
-             (Good luck!)[endAwaitInput][newPage]'''
-dialogs[1301] = ''' (Right now you ha'''
-dialogs[1302] = '''ve [0x7024].
-  And I'm storing [0x7000]. How
-  many more d'''
-dialogs[1303] = '''o you want stored?)[pauseAwaitInput][end][newPage] (Hm...looks like you don't
+ [startSelection]  (No, let’s not)'''
+dialogs[2366] = '''[newPage]
+  (How many should we give him?)'''
+dialogs[2367] = ''' (Look how he eats! He’s gonna be
+  a GIANT someday!)'''
+dialogs[2368] = '''[newPage]
+             (Good luck!)'''
+dialogs[2369] = '''[newPage] (Right now you have [0x7024].
+  And I'm storing '''
+dialogs[2370] = '''[newPage] (Hm...looks like you don't
   have enough. Next time, remember
-  to bring 5 or more, OK?)[endAwaitInput]
-  How many do you want stored?)[pauseAwaitInput][end][newPage] Want to give him some?[newlineAwaitInput] [startSelection]  (Sure)
- [startSelection]  (No way)[endAwaitInput][newPage] How many?[endAwaitInput] (OH! I AM STUFFED![newlineAwaitInput]  I won't need to eat
-  for weeks.)[endAwaitInput] (Phew! Now that’s what I
-   call generous!)[endAwaitInput]RAZ: Mario! I'm having the time of
+  to bring 5 or more, OK?)'''
+dialogs[2371] = '''
+  How many do you want stored?)[pauseAwaitInput]'''
+dialogs[2372] = '''[newPage] Want to give him some?[newlineAwaitInput] [startSelection]  (Sure)
+ [startSelection]  (No way)'''
+dialogs[2373] = '''[newPage] How many?'''
+dialogs[2374] = ''' (OH! I AM STUFFED![newlineAwaitInput]  I won't need to eat
+  for weeks.)'''
+dialogs[2375] = ''' (Phew! Now that’s what I
+   call generous!)'''
+dialogs[2376] = '''RAZ: Mario! I'm having the time of
  my life! Just got married,[delay]...[delay]
- stayed in the suite[delay]...[delay][newlineAwaitInput] Oh, life is just GREAT![newPageAwaitInput] By the way, do you kno'''
-dialogs[1304] = '''w of a
+ stayed in the suite[delay]...[delay][newlineAwaitInput] Oh, life is just GREAT![newPageAwaitInput] By the way, do you know of a
  place called...Grate Guy Casino?[newlineAwaitInput] It’s supposed to be around,
- so'''
-dialogs[1305] = '''mewhere. Have you been there?[endAwaitInput]RAZ: Oh,'''
-dialogs[1306] = ''' you have the card![newlineAwaitInput] Looks like you can use it to play
- games at a '''
-dialogs[1307] = '''place near Bean Valley.
+ somewhere. Have you been there?'''
+dialogs[2377] = '''RAZ: Oh, you have the card![newlineAwaitInput] Looks like you can use it to play
+ games at a place near Bean Valley.
  Who knows?![newPageAwaitInput] Maybe I'll see you there, huh?
- It might be fun![endAwaitInput]RAINI: Hello Mario![newlineAwaitInput] Raz here can't even hop on Yoshi!
- But that’s okay.[pauseAwaitInput] I still love him.[endAwaitInput]RAZ: Hey!
- How did you DO that?![newlineAwaitInput] Yo'''
-dialogs[1308] = '''u'll have to teach me'''
-dialogs[1309] = ''' someday![endAwaitInput][newPage]
-       Hey, you're a l'''
-dialogs[1310] = '''ittle short![endAwaitInput] Go on now, return i'''
-dialogs[1311] = '''t![endAwaitInput] Looks like w'''
-dialogs[1312] = '''e've been scolded.[endAwaitInput]BOSHI:
-    (Line it up, ON THE DOUBLE!)[endAwaitInput]
-   All right, ever'''
-dialogs[1313] = '''yone! Listen up![endAwaitInput]VALENTINA:
-                SHUDDAP!!![endAwaitInput]VALENTINA: King '''
-dialogs[1314] = '''Nimbus' condition
- is gro'''
-dialogs[1315] = '''wing worse...
- This means we'll be losing...[newlineAwaitInput] ...our magnificent r'''
-dialogs[1316] = '''uler...[endAwaitInput]VALENTINA: '''
-dialogs[1317] = '''BUT![newPageAwaitInput] It just so happen'''
-dialogs[1318] = '''s that
- I have found the missing'''
-dialogs[1319] = ''' Prince!
- Prince Mallow, t'''
-dialogs[1320] = ''''''
-dialogs[1321] = ''''''
-dialogs[1322] = ''''''
-dialogs[1323] = ''''''
-dialogs[1324] = ''''''
-dialogs[1325] = ''''''
-dialogs[1326] = ''''''
-dialogs[1327] = ''''''
-dialogs[1328] = '''hat is![endAwaitInput]VALENT'''
-dialogs[1329] = '''INA: Prince'''
-dialogs[1330] = ''' Mallo'''
-dialogs[1331] = '''w...
-[delay] Pl'''
-dialogs[1332] = '''ease...Sir'''
-dialogs[1333] = '''...[delay]Prince?[endAwaitInput]
-        '''
-dialogs[1334] = '''...[delay]GET OV'''
-dialogs[1335] = '''ER HER'''
-dialogs[1336] = '''E!![endAwaitInput]VALENTINA: '''
-dialogs[1337] = '''Well, well.'''
-dialogs[1338] = '''..
- It '''
-dialogs[1339] = '''seems that our'''
-dialogs[1340] = ''' little pr'''
-dialogs[1341] = '''in'''
-dialogs[1342] = '''ce has'''
-dialogs[1343] = '''
- a mild c'''
-dialogs[1344] = ''''''
-dialogs[1345] = ''''''
-dialogs[1346] = ''''''
-dialogs[1347] = ''''''
-dialogs[1348] = ''''''
-dialogs[1349] = ''''''
-dialogs[1350] = ''''''
-dialogs[1351] = ''''''
-dialogs[1352] = ''''''
-dialogs[1353] = ''''''
-dialogs[1354] = ''''''
-dialogs[1355] = ''''''
-dialogs[1356] = ''''''
-dialogs[1357] = ''''''
-dialogs[1358] = ''''''
-dialogs[1359] = ''''''
-dialogs[1360] = ''''''
-dialogs[1361] = ''''''
-dialogs[1362] = ''''''
-dialogs[1363] = ''''''
-dialogs[1364] = ''''''
-dialogs[1365] = ''''''
-dialogs[1366] = ''''''
-dialogs[1367] = ''''''
-dialogs[1368] = ''''''
-dialogs[1369] = ''''''
-dialogs[1370] = ''''''
-dialogs[1371] = ''''''
-dialogs[1372] = ''''''
-dialogs[1373] = ''''''
-dialogs[1374] = ''''''
-dialogs[1375] = ''''''
-dialogs[1376] = ''''''
-dialogs[1377] = ''''''
-dialogs[1378] = ''''''
-dialogs[1379] = ''''''
-dialogs[1380] = ''''''
-dialogs[1381] = ''''''
-dialogs[1382] = ''''''
-dialogs[1383] = ''''''
-dialogs[1384] = ''''''
-dialogs[1385] = ''''''
-dialogs[1386] = ''''''
-dialogs[1387] = ''''''
-dialogs[1388] = ''''''
-dialogs[1389] = ''''''
-dialogs[1390] = ''''''
-dialogs[1391] = ''''''
-dialogs[1392] = ''''''
-dialogs[1393] = ''''''
-dialogs[1394] = ''''''
-dialogs[1395] = ''''''
-dialogs[1396] = ''''''
-dialogs[1397] = ''''''
-dialogs[1398] = ''''''
-dialogs[1399] = ''''''
-dialogs[1400] = ''''''
-dialogs[1401] = ''''''
-dialogs[1402] = ''''''
-dialogs[1403] = ''''''
-dialogs[1404] = ''''''
-dialogs[1405] = ''''''
-dialogs[1406] = ''''''
-dialogs[1407] = ''''''
-dialogs[1408] = ''''''
-dialogs[1409] = ''''''
-dialogs[1410] = ''''''
-dialogs[1411] = ''''''
-dialogs[1412] = ''''''
-dialogs[1413] = ''''''
-dialogs[1414] = ''''''
-dialogs[1415] = ''''''
-dialogs[1416] = ''''''
-dialogs[1417] = ''''''
-dialogs[1418] = ''''''
-dialogs[1419] = ''''''
-dialogs[1420] = ''''''
-dialogs[1421] = ''''''
-dialogs[1422] = ''''''
-dialogs[1423] = ''''''
-dialogs[1424] = ''''''
-dialogs[1425] = ''''''
-dialogs[1426] = ''''''
-dialogs[1427] = ''''''
-dialogs[1428] = ''''''
-dialogs[1429] = ''''''
-dialogs[1430] = ''''''
-dialogs[1431] = ''''''
-dialogs[1432] = ''''''
-dialogs[1433] = ''''''
-dialogs[1434] = ''''''
-dialogs[1435] = ''''''
-dialogs[1436] = ''''''
-dialogs[1437] = ''''''
-dialogs[1438] = ''''''
-dialogs[1439] = ''''''
-dialogs[1440] = ''''''
-dialogs[1441] = ''''''
-dialogs[1442] = ''''''
-dialogs[1443] = ''''''
-dialogs[1444] = ''''''
-dialogs[1445] = ''''''
-dialogs[1446] = ''''''
-dialogs[1447] = ''''''
-dialogs[1448] = ''''''
-dialogs[1449] = ''''''
-dialogs[1450] = ''''''
-dialogs[1451] = ''''''
-dialogs[1452] = ''''''
-dialogs[1453] = ''''''
-dialogs[1454] = ''''''
-dialogs[1455] = ''''''
-dialogs[1456] = ''''''
-dialogs[1457] = ''''''
-dialogs[1458] = ''''''
-dialogs[1459] = ''''''
-dialogs[1460] = ''''''
-dialogs[1461] = ''''''
-dialogs[1462] = ''''''
-dialogs[1463] = ''''''
-dialogs[1464] = ''''''
-dialogs[1465] = ''''''
-dialogs[1466] = ''''''
-dialogs[1467] = ''''''
-dialogs[1468] = ''''''
-dialogs[1469] = ''''''
-dialogs[1470] = ''''''
-dialogs[1471] = ''''''
-dialogs[1472] = ''''''
-dialogs[1473] = ''''''
-dialogs[1474] = ''''''
-dialogs[1475] = ''''''
-dialogs[1476] = ''''''
-dialogs[1477] = ''''''
-dialogs[1478] = ''''''
-dialogs[1479] = ''''''
-dialogs[1480] = ''''''
-dialogs[1481] = ''''''
-dialogs[1482] = ''''''
-dialogs[1483] = ''''''
-dialogs[1484] = ''''''
-dialogs[1485] = ''''''
-dialogs[1486] = ''''''
-dialogs[1487] = ''''''
-dialogs[1488] = ''''''
-dialogs[1489] = ''''''
-dialogs[1490] = ''''''
-dialogs[1491] = ''''''
-dialogs[1492] = ''''''
-dialogs[1493] = ''''''
-dialogs[1494] = ''''''
-dialogs[1495] = ''''''
-dialogs[1496] = ''''''
-dialogs[1497] = ''''''
-dialogs[1498] = ''''''
-dialogs[1499] = ''''''
-dialogs[1500] = ''''''
-dialogs[1501] = ''''''
-dialogs[1502] = ''''''
-dialogs[1503] = ''''''
-dialogs[1504] = ''''''
-dialogs[1505] = ''''''
-dialogs[1506] = ''''''
-dialogs[1507] = ''''''
-dialogs[1508] = ''''''
-dialogs[1509] = ''''''
-dialogs[1510] = ''''''
-dialogs[1511] = ''''''
-dialogs[1512] = ''''''
-dialogs[1513] = ''''''
-dialogs[1514] = ''''''
-dialogs[1515] = ''''''
-dialogs[1516] = ''''''
-dialogs[1517] = ''''''
-dialogs[1518] = ''''''
-dialogs[1519] = ''''''
-dialogs[1520] = ''''''
-dialogs[1521] = ''''''
-dialogs[1522] = ''''''
-dialogs[1523] = ''''''
-dialogs[1524] = ''''''
-dialogs[1525] = ''''''
-dialogs[1526] = ''''''
-dialogs[1527] = ''''''
-dialogs[1528] = ''''''
-dialogs[1529] = ''''''
-dialogs[1530] = ''''''
-dialogs[1531] = ''''''
-dialogs[1532] = ''''''
-dialogs[1533] = ''''''
-dialogs[1534] = ''''''
-dialogs[1535] = '''ase of stage fright.[newlineAwaitInput] Excuse me...[delay][delay][delay]Ha ha ha...[delay][endAwaitInput]
-     (Come ON! Make it snappy!)[endAwaitInput] (What?! You can't get through?[newlineAwaitInput]  Well, just LOOK at you, tubby!)[endAwaitInput]
-    Welcome back! Prince Mallow![endAwaitInput] My, you've...er...filled out a bit,
- Prince Mallow![endAwaitInput]
-      You're looking fit, Prince![endAwaitInput]VALENTINA: Yes...?
- What is it, dear?...[endAwaitInput]
-  WHAT?! You're asking ME to...?[endAwaitInput] Gracious![newlineAwaitInput] You're serious, aren't you?
- Why, I don't know what to say![endAwaitInput]VALENTINA:
-           Dear me...[delay]...[delay]...[delay]...[delay_48][end] I've made my decision...[newlineAwaitInput] At the request of the Prince,
- I agree to become his queen.[endAwaitInput] (Queen[delay][delay]... Valentina...[delay]Ooh!
-  It just makes me SHIVER!!)[endAwaitInput]VALENTINA: Well, that’s that!
- Back to your business, everyone![endAwaitInput]
-       (Hurry it up, will ya?!)[endAwaitInput]MALLOW: Can you believe it?![newlineAwaitInput] What a coincidence! There’s a
- prince with the same name as ME![endAwaitInput] Don't we have anything
+ It might be fun!'''
+dialogs[2378] = '''RAINI: Hello Mario![newlineAwaitInput] Raz here can't even hop on Yoshi!
+ But that’s okay.[pauseAwaitInput] I still love him.'''
+dialogs[2379] = '''RAZ: Hey!
+ How did you DO that?![newlineAwaitInput] You'll have to teach me someday!'''
+dialogs[2380] = '''[newPage]
+       Hey, you're a little short!'''
+dialogs[2381] = ''' Go on now, return it!'''
+dialogs[2382] = ''' Looks like we've been scolded.'''
+dialogs[2383] = '''BOSHI:
+    (Line it up, ON THE DOUBLE!)'''
+dialogs[2384] = '''
+   All right, everyone! Listen up!'''
+dialogs[2385] = '''VALENTINA:
+                SHUDDAP!!!'''
+dialogs[2386] = '''VALENTINA: King Nimbus' condition
+ is growing worse...
+ This means we'll be losing...[newlineAwaitInput] ...our magnificent ruler...'''
+dialogs[2387] = '''VALENTINA: BUT![newPageAwaitInput] It just so happens that
+ I have found the missing Prince!
+ Prince Mallow, that is!'''
+dialogs[2388] = '''VALENTINA: Prince Mallow...
+[delay] Please...Sir...[delay]Prince?'''
+dialogs[2389] = '''
+        ...[delay]GET OVER HERE!!'''
+dialogs[2390] = '''VALENTINA: Well, well...
+ It seems that our little prince has
+ a mild case of stage fright.[newlineAwaitInput] Excuse me...[delay][delay][delay]Ha ha ha...[delay]'''
+dialogs[2391] = '''
+     (Come ON! Make it snappy!)'''
+dialogs[2392] = ''' (What?! You can't get through?[newlineAwaitInput]  Well, just LOOK at you, tubby!)'''
+dialogs[2393] = '''
+    Welcome back! Prince Mallow!'''
+dialogs[2394] = ''' My, you've...er...filled out a bit,
+ Prince Mallow!'''
+dialogs[2395] = '''
+'''
+dialogs[2396] = '''VALENTINA: Yes...?
+ What is it, dear?...'''
+dialogs[2397] = '''
+  WHAT?! You're asking ME to...?'''
+dialogs[2398] = ''' Gracious![newlineAwaitInput] You're serious, aren't you?
+ Why, I don't know what to say!'''
+dialogs[2399] = '''VALENTINA:
+           Dear me...[delay]...[delay]...[delay]...[delay_48]'''
+dialogs[2400] = ''' I've made my decision...[newlineAwaitInput] At the request of the Prince,
+ I agree to become his queen.'''
+dialogs[2401] = ''' (Queen[delay][delay]... Valentina...[delay]Ooh!
+  It just makes me SHIVER!!)'''
+dialogs[2402] = '''VALENTINA: Well, that’s that!
+ Back to your business, everyone!'''
+dialogs[2403] = '''
+       (Hurry it up, will ya?!)'''
+dialogs[2404] = '''MALLOW: Can you believe it?![newlineAwaitInput] What a coincidence! There’s a
+ prince with the same name as ME!'''
+dialogs[2405] = ''' Don't we have anything
  better to do than hang around
- HERE? Come on, let’s go and[newlineAwaitInput] find the rest of the Star Pieces!![endAwaitInput]VALENTINA: Introducing...
- ...Prince Mallow![endAwaitInput] Say, you have that, “I'm looking
- for something” look in your eyes.[newlineAwaitInput] What can I do for you?[endAwaitInput] You think you're sooo hot,
- but...you're not![endAwaitInput] I used to work for King Nimbus,
+ HERE? Come on, let’s go and[newlineAwaitInput] find the rest of the Star Pieces!!'''
+dialogs[2406] = '''VALENTINA: Introducing...
+ ...Prince Mallow!'''
+dialogs[2407] = ''' Say, you have that, “I'm looking
+ for something” look in your eyes.[newlineAwaitInput] What can I do for you?'''
+dialogs[2408] = ''' You think you're sooo hot,
+ but...you're not!'''
+dialogs[2409] = ''' I used to work for King Nimbus,
  but all of a sudden one day,[newPageAwaitInput] Valentina told me I was fired!
  I just don't get it...
- He NEEDS help. He’s sick...![endAwaitInput] I used to work in the castle.
+ He NEEDS help. He’s sick...!'''
+dialogs[2410] = ''' I used to work in the castle.
  You should see the way she hits
- poor Dodo![newPageAwaitInput] What a horrible life he must live![endAwaitInput] That’s Garro the sculptor’s place.
+ poor Dodo![newPageAwaitInput] What a horrible life he must live!'''
+dialogs[2411] = ''' That’s Garro the sculptor’s place.
  He used to make all kinds of
  things for King Nimbus![newPageAwaitInput] But these days, he has nothing but
  time on his hands, what with the
- King being sick and all...[endAwaitInput] Been a while since I saw Prince
+ King being sick and all...'''
+dialogs[2412] = ''' Been a while since I saw Prince
  Mallow...He's...changed, but
- yes, I do believe that’s him.[endAwaitInput] Was Prince Mallow that HEAVY?![newlineAwaitInput] Well, she says it’s him,
- so it must be him![endAwaitInput] Poor King Nimbus appears to be
- a tad under the weather![endAwaitInput] I wonder why more people from the
+ yes, I do believe that’s him.'''
+dialogs[2413] = ''' Was Prince Mallow that HEAVY?![newlineAwaitInput] Well, she says it’s him,
+ so it must be him!'''
+dialogs[2414] = ''' Poor King Nimbus appears to be
+ a tad under the weather!'''
+dialogs[2415] = ''' I wonder why more people from the
  world down under don't visit us
- these days?[newlineAwaitInput] I hope it’s nothing personal...[endAwaitInput] Why did Prince Mallow make
- Valentina his queen?...I guess[newlineAwaitInput] it’s because she found him.[endAwaitInput] You like the guards we have at the
+ these days?[newlineAwaitInput] I hope it’s nothing personal...'''
+dialogs[2416] = ''' Why did Prince Mallow make
+ Valentina his queen?...I guess[newlineAwaitInput] it’s because she found him.'''
+dialogs[2417] = ''' You like the guards we have at the
  entrance now? I don't. Never used
- to have 'em...[endAwaitInput] I wish the King would get well!
+ to have 'em...'''
+dialogs[2418] = ''' I wish the King would get well!
  But at least the Prince is back
- just in case something...awful[newlineAwaitInput] happens.[endAwaitInput] Hey! Who're YOU?!...[newlineAwaitInput] You can't just barge in here![endAwaitInput]MALLOW:
-          Hey look! It’s ME![endAwaitInput]GARRO: Oh, you mean THAT?
+ just in case something...awful[newlineAwaitInput] happens.'''
+dialogs[2419] = ''' Hey! Who're YOU?!...[newlineAwaitInput] You can't just barge in here!'''
+dialogs[2420] = '''MALLOW:
+          Hey look! It’s ME!'''
+dialogs[2421] = '''GARRO: Oh, you mean THAT?
  That’s King Nimbus when he was...
- [delay][delay]a[delay][delay] ...young lad.[delay_48][pauseAwaitInput][end][newPage] ...What the...?![delay_48]...
- WHO are YOU...?![endAwaitInput]GARRO: Mallow...[delay][delay]
+ [delay][delay]a[delay][delay] ...young lad.[delay_48][pauseAwaitInput]'''
+dialogs[2422] = '''[newPage] ...What the...?![delay_48]...
+ WHO are YOU...?!'''
+dialogs[2423] = '''GARRO: Mallow...[delay][delay]
  So it IS YOU, my boy!
- It’s been so long. My, you've[newlineAwaitInput] become a splendid young prince![endAwaitInput]MALLOW: WHAT?!
- I'm...I'm really a...prince?![endAwaitInput]GARRO: I KNEW Valentina
+ It’s been so long. My, you've[newlineAwaitInput] become a splendid young prince!'''
+dialogs[2424] = '''MALLOW: WHAT?!
+ I'm...I'm really a...prince?!'''
+dialogs[2425] = '''GARRO: I KNEW Valentina
  was up to SOMETHING!
  I just didn't know what...[newPageAwaitInput] That must mean that the King
- really ISN'T gravely ill...![endAwaitInput]MALLOW: Then let’s go inside
+ really ISN'T gravely ill...!'''
+dialogs[2426] = '''MALLOW: Then let’s go inside
  the castle and save my
- mother and father![endAwaitInput]GARRO: ...[delay][delay]Wait!
- I have an excellent idea.[newlineAwaitInput] Come over here...[endAwaitInput]GARRO:
-                 THERE![endAwaitInput]
-           Hey, don't move![endAwaitInput]You're going to be a “statue” for
-a while, okay?[endAwaitInput]
-          Let’s get going now.[endAwaitInput][newPage]
-             ...[delay]![delay]...[delay]! Huh?[delay][delay][delay_48][end]MALLOW: Hello.
- My name is Mallow.[pauseAwaitInput][end]
- And this is my friend, Mario.[endAwaitInput]GARRO: Yes indeed! I understand.[newlineAwaitInput] So! You were raised by Frogfucius![pauseAwaitInput][end]
+ mother and father!'''
+dialogs[2427] = '''GARRO: ...[delay][delay]Wait!
+ I have an excellent idea.[newlineAwaitInput] Come over here...'''
+dialogs[2428] = '''GARRO:
+                 THERE!'''
+dialogs[2429] = '''
+           Hey, don't move!'''
+dialogs[2430] = '''You're going to be a “statue” for
+a while, okay?'''
+dialogs[2431] = '''
+          Let’s get going now.'''
+dialogs[2432] = '''[newPage]
+             ...[delay]![delay]...[delay]! Huh?[delay][delay][delay_48]'''
+dialogs[2433] = '''MALLOW: Hello.
+ My name is Mallow.[pauseAwaitInput]'''
+dialogs[2434] = '''
+ And this is my friend, Mario.'''
+dialogs[2435] = '''GARRO: Yes indeed! I understand.[newlineAwaitInput] So! You were raised by Frogfucius![pauseAwaitInput]'''
+dialogs[2436] = '''
  There’s no question about it!
  You ARE, WITHOUT A DOUBT...
- Prince Mallow.[endAwaitInput]MALLOW: Mario! Look at me!
- I'm a prince![endAwaitInput][newPage] Just stay still for a little
- while, okay? It won't take long.[endAwaitInput]GARRO: Are you ready?[newlineAwaitInput] [startSelection]  (Yes)
- [startSelection]  (No, not yet. Hang on)[endAwaitInput][newPage]
-          Okay, just say when.[endAwaitInput]GARRO:[newPage]
-      All right, stand over here.[endAwaitInput]
-            Hold still, okay?[endAwaitInput] Hi. I'm the sculptor, Garro.
+ Prince Mallow.'''
+dialogs[2437] = '''MALLOW: Mario! Look at me!
+ I'm a prince!'''
+dialogs[2438] = '''[newPage] Just stay still for a little
+ while, okay? It won't take long.'''
+dialogs[2439] = '''GARRO: Are you ready?[newlineAwaitInput] [startSelection]  (Yes)
+ [startSelection]  (No, not yet. Hang on)'''
+dialogs[2440] = '''[newPage]
+          Okay, just say when.'''
+dialogs[2441] = '''GARRO:[newPage]
+'''
+dialogs[2442] = '''[newPage]
+'''
+dialogs[2443] = '''
+            Hold still, okay?'''
+dialogs[2444] = ''' Hi. I'm the sculptor, Garro.
  I used to make a lot of statues
  of King Nimbus, but now,[newPageAwaitInput] all I get are orders for
- sculptures of Valentina.[endAwaitInput] GARRO: I'm delivering Valentina's
-  latest order to her.[endAwaitInput]
-              You may enter.[endAwaitInput] Hey, this doesn't look like
- Valentina at all![endAwaitInput]GARRO: Oh?! That’s because[newPageAwaitInput] this is a statue of Valentina's
+ sculptures of Valentina.'''
+dialogs[2445] = ''' GARRO: I'm delivering Valentina's
+  latest order to her.'''
+dialogs[2446] = '''
+              You may enter.'''
+dialogs[2447] = ''' Hey, this doesn't look like
+ Valentina at all!'''
+dialogs[2448] = '''GARRO: Oh?! That’s because[newPageAwaitInput] this is a statue of Valentina's
  nephew, Mari..Mariotta!
- Okay?![endAwaitInput]
-         Uh...[delay][delay]okay.[delay][delay] Proceed.[endAwaitInput]GARRO: Phew, that was close...
+ Okay?!'''
+dialogs[2449] = '''
+         Uh...[delay][delay]okay.[delay][delay] Proceed.'''
+dialogs[2450] = '''GARRO: Phew, that was close...
  Didn't think we could get through
- THAT ONE. There IS no such[newlineAwaitInput] person named Mariotta. Ha![endAwaitInput]VALENTINA: Oh! Now THIS is
+ THAT ONE. There IS no such[newlineAwaitInput] person named Mariotta. Ha!'''
+dialogs[2451] = '''VALENTINA: Oh! Now THIS is
  lovely! My beauty simply shines
- forth like the sun! Only YOU can[newlineAwaitInput] make something THIS stunning![endAwaitInput]GARRO: Thank you, your majesty.[newlineAwaitInput] I'll be on my way now...[endAwaitInput]VALENTINA:
-                  Halt![endAwaitInput]
- What, may I ask is THIS ugly thing?[endAwaitInput]GARRO: OH! You mean[delay]...
- THAT...[delay][delay]That’s ...um...[endAwaitInput] That’s my latest masterpiece.
+ forth like the sun! Only YOU can[newlineAwaitInput] make something THIS stunning!'''
+dialogs[2452] = '''GARRO: Thank you, your majesty.[newlineAwaitInput] I'll be on my way now...'''
+dialogs[2453] = '''VALENTINA:
+                  Halt!'''
+dialogs[2454] = '''
+ What, may I ask is THIS ugly thing?'''
+dialogs[2455] = '''GARRO: OH! You mean[delay]...
+ THAT...[delay][delay]That’s ...um...'''
+dialogs[2456] = ''' That’s my latest masterpiece.
  I...I created it just for
  YOU...[pauseAwaitInput] It’s called...[delay][delay][newPageAwaitInput] 
-        “A Plumber’s Lament”[endAwaitInput] Observe...the thick mustache...
- covering the sad, innocent smile[newlineAwaitInput] of a simple fool...[endAwaitInput] And the sideburns...
- conveying his blue collar roots.[endAwaitInput] And the legs...well defined...[newlineAwaitInput] Strong. The legs of the masses![newlineAwaitInput] Is it to your liking?[endAwaitInput]VALENTINA: Hmmm...[newlineAwaitInput] I consider myself something of an
+        “A Plumber’s Lament”'''
+dialogs[2457] = ''' Observe...the thick mustache...
+ covering the sad, innocent smile[newlineAwaitInput] of a simple fool...'''
+dialogs[2458] = ''' And the sideburns...
+ conveying his blue collar roots.'''
+dialogs[2459] = ''' And the legs...well defined...[newlineAwaitInput] Strong. The legs of the masses![newlineAwaitInput] Is it to your liking?'''
+dialogs[2460] = '''VALENTINA: Hmmm...[newlineAwaitInput] I consider myself something of an
  art buff! And I've got to say...[delay][delay]
- This is spectacular!![endAwaitInput] Garro...only YOU could have[newlineAwaitInput] created sculptures with such
- gentle beauty and...raw power![endAwaitInput] DODO!...DODO!!...[newlineAwaitInput] Don't just sit there like a roast!
- Hurry and carry these in![endAwaitInput]
-           ...[delay]...[delay]...DODO!![endAwaitInput]
-               Step on it![endAwaitInput]
-             O, ho, ho, ho!![endAwaitInput] VALENTINA: ...[newlineAwaitInput]  ...[delay][delay]SPECTACULAR!![endAwaitInput] Prince Mallow, as I remember him,
- used to be so small, so timid...[newlineAwaitInput] Now, just LOOK at him![endAwaitInput]   (Oops[delay][delay]...[delay][delay]I've lost my dentures)[pauseAwaitInput][end] Now[delay][delay]...[delay][delay]PARTY TIME!![endAwaitInput] Hello.
+ This is spectacular!!'''
+dialogs[2461] = ''' Garro...only YOU could have[newlineAwaitInput] created sculptures with such
+ gentle beauty and...raw power!'''
+dialogs[2462] = ''' DODO!...DODO!!...[newlineAwaitInput] Don't just sit there like a roast!
+ Hurry and carry these in!'''
+dialogs[2463] = '''
+           ...[delay]...[delay]...DODO!!'''
+dialogs[2464] = '''
+               Step on it!'''
+dialogs[2465] = '''
+             O, ho, ho, ho!!'''
+dialogs[2466] = ''' VALENTINA: ...[newlineAwaitInput]  ...[delay][delay]SPECTACULAR!!'''
+dialogs[2467] = ''' Prince Mallow, as I remember him,
+ used to be so small, so timid...[newlineAwaitInput] Now, just LOOK at him!'''
+dialogs[2468] = '''   (Oops[delay][delay]...[delay][delay]I've lost my dentures)[pauseAwaitInput]'''
+dialogs[2469] = ''' Now[delay][delay]...[delay][delay]PARTY TIME!!'''
+dialogs[2470] = ''' Hello.
  How may I help you today?[newlineAwaitInput] [startSelection]  (I'd like to buy some things)
  [startSelection]  (I'd like to rest awhile)
- [startSelection]  (I'm fine, thank you)[endAwaitInput][newPage] Yes, I see.
+ [startSelection]  (I'm fine, thank you)'''
+dialogs[2471] = '''[newPage] Yes, I see.
  We here at the Marrymore Hotel
  are offering a very special
  deal for a limited time only.[newPageAwaitInput] If you choose to stay in our lovely
  deluxe suite, you shall receive a
  once in a lifetime gift![newPageAwaitInput] Now which room will you choose?[newlineAwaitInput] [startSelection]  (The regular room)  10 coins
  [startSelection]  (The SUITE!)       200 coins
- [startSelection]  (Oh wait, forget it)[endAwaitInput][newPage] Oh, EXCELLENT CHOICE, SIR![newlineAwaitInput] We shall attend to you in a minute.[endAwaitInput][newPage] We thank you very much!
+ [startSelection]  (Oh wait, forget it)'''
+dialogs[2472] = '''[newPage] Oh, EXCELLENT CHOICE, SIR![newlineAwaitInput] We shall attend to you in a minute.'''
+dialogs[2473] = '''[newPage] We thank you very much!
  Like always, the bellhop shall
- guide your way.[newlineAwaitInput] Please enjoy your stay![endAwaitInput] I'm watching that volcano over
- there. What? Star...Pieces?[newlineAwaitInput] Hmm...[pauseAwaitInput] Never heard of 'em.[endAwaitInput][newPage] I'm sorry sir.
+ guide your way.[newlineAwaitInput] Please enjoy your stay!'''
+dialogs[2474] = ''' I'm watching that volcano over
+ there. What? Star...Pieces?[newlineAwaitInput] Hmm...[pauseAwaitInput] Never heard of 'em.'''
+dialogs[2475] = '''[newPage] I'm sorry sir.
  You seem to be a day late and
- a few coins short! BYE![endAwaitInput] Please feel free to use this terry
+ a few coins short! BYE!'''
+dialogs[2476] = ''' Please feel free to use this terry
  cloth bathrobe after bathing.[newlineAwaitInput] Ring that bell for room service,[newlineAwaitInput] and please be sure to turn the
- lights off when going to sleep.[endAwaitInput][newPage] CONGRATULATIONS!!  You, sir,
+ lights off when going to sleep.'''
+dialogs[2477] = '''[newPage] CONGRATULATIONS!!  You, sir,
  have checked in our lovely suite,
- a grand total of [0x7000] times![newPageAwaitInput] In order to show our appreciation,
- we are proud to present you with
- this special commemorator’s gift![endAwaitInput]All the coins, even the Frog Coins,
-            have been taken![endAwaitInput] Sir![newlineAwaitInput] You have stayed over 200 times
+ a grand total of '''
+dialogs[2478] = '''All the coins, even the Frog Coins,
+            have been taken!'''
+dialogs[2479] = ''' Sir![newlineAwaitInput] You have stayed over 200 times
  for the price of just ONE night![newPageAwaitInput] I shall receive 100 coins for each
- night you have extended your stay![pauseAwaitInput][end][newPage] ...Well! It’s no surprise that
+ night you have extended your stay![pauseAwaitInput]'''
+dialogs[2480] = '''[newPage] ...Well! It’s no surprise that
  you're unable to pay!![newlineAwaitInput] I'll take what you have on you,
- and you'll work for the rest![endAwaitInput]
-            Queen Valentina![endAwaitInput] Queen Valentina, is the King
- showing any improvement?[endAwaitInput] And how is his wife,
- the old queen?[endAwaitInput] And Tubby...er, Prince Mallow...
- Where is he hiding these days?[endAwaitInput]
-    Know what I think? I think...[end]
-   Get outta here! The truth is...[end]VALENTINA:
-                 Arggghh!!![endAwaitInput]
-       Pipe DOWN!! All of you!![endAwaitInput] I have better things to do than to
- listen to your half-wit opinions![pauseAwaitInput][end][newPage] [delay]And LOOK...![delay][delay] While I've
+ and you'll work for the rest!'''
+dialogs[2481] = '''
+            Queen Valentina!'''
+dialogs[2482] = ''' Queen Valentina, is the King
+ showing any improvement?'''
+dialogs[2483] = ''' And how is his wife,
+ the old queen?'''
+dialogs[2484] = ''' And Tubby...er, Prince Mallow...
+ Where is he hiding these days?'''
+dialogs[2485] = '''
+    Know what I think? I think...'''
+dialogs[2486] = '''
+   Get outta here! The truth is...'''
+dialogs[2487] = '''VALENTINA:
+                 Arggghh!!!'''
+dialogs[2488] = '''
+       Pipe DOWN!! All of you!!'''
+dialogs[2489] = ''' I have better things to do than to
+ listen to your half-wit opinions![pauseAwaitInput]'''
+dialogs[2490] = '''[newPage] [delay]And LOOK...![delay][delay] While I've
  been wasting my time listening to
- your endless chatter...[endAwaitInput]
-    Mario has managed to find me![endAwaitInput]VALENTINA:
-             Dodo!![delay_32] DODO!![endAwaitInput] Ooh! That bird has a permanent
- brain cramp!![endAwaitInput][newPage] Dodo! Do you hear me?!
+ your endless chatter...'''
+dialogs[2491] = '''
+    Mario has managed to find me!'''
+dialogs[2492] = '''VALENTINA:
+             Dodo!![delay_32] DODO!!'''
+dialogs[2493] = ''' Ooh! That bird has a permanent
+ brain cramp!!'''
+dialogs[2494] = '''[newPage] Dodo! Do you hear me?!
  Get over here NOW! I need
- some help...entertaining Mario![endAwaitInput]
- So MOVE IT!! Come here NOW![endAwaitInput]SNIFIT [0x7000]:
-         Where’s the Crown?![endAwaitInput]SNIFIT [0x7000]: Ho HO![newlineAwaitInput] I'll look for the last one.
- YOU go give this to Booster.[endAwaitInput]SNIFIT 3: Booster, Sir!
- I found the Ring![endAwaitInput]SNIFIT 1: Booster!
- Here’s the Brooch![endAwaitInput]SNIFIT 2: Booster, Sir!
- I found the Shoes![endAwaitInput]BOOSTER: ...Hey wait![newlineAwaitInput] Wasn't there one more thing?[endAwaitInput]SNIFITS:
-     ...You're right! The Crown![endAwaitInput]BOOSTER: Found something, huh?[newlineAwaitInput] But wait a sec...I've only
- counted [0x7000] thing(s).
- You need to find [0x7024] more![endAwaitInput]BOOSTER: HO HO! Here it is![newlineAwaitInput] ...HEY! You're Mario![newPageAwaitInput] So! You've come to crash
- my wedding, I presume?[endAwaitInput] It’s not like I'm ALWAYS sleeping.[endAwaitInput] See?! I'm WIDE AWAKE![newlineAwaitInput] Now, I guess it’s time for me
- to win BIG CASH!![endAwaitInput][newPage] Yes, I see.
+ some help...entertaining Mario!'''
+dialogs[2495] = '''
+ So MOVE IT!! Come here NOW!'''
+dialogs[2496] = '''SNIFIT '''
+dialogs[2497] = '''SNIFIT '''
+dialogs[2498] = '''SNIFIT 3: Booster, Sir!
+ I found the Ring!'''
+dialogs[2499] = '''SNIFIT 1: Booster!
+ Here’s the Brooch!'''
+dialogs[2500] = '''SNIFIT 2: Booster, Sir!
+ I found the Shoes!'''
+dialogs[2501] = '''BOOSTER: ...Hey wait![newlineAwaitInput] Wasn't there one more thing?'''
+dialogs[2502] = '''SNIFITS:
+     ...You're right! The Crown!'''
+dialogs[2503] = '''BOOSTER: Found something, huh?[newlineAwaitInput] But wait a sec...I've only
+ counted '''
+dialogs[2504] = '''BOOSTER: Found something, huh?[newlineAwaitInput] But wait a sec...I've only
+ counted '''
+dialogs[2505] = '''BOOSTER: HO HO! Here it is![newlineAwaitInput] ...HEY! You're Mario![newPageAwaitInput] So! You've come to crash
+ my wedding, I presume?'''
+dialogs[2506] = ''' It’s not like I'm ALWAYS sleeping.'''
+dialogs[2507] = ''' See?! I'm WIDE AWAKE![newlineAwaitInput] Now, I guess it’s time for me
+ to win BIG CASH!!'''
+dialogs[2508] = '''[newPage] Yes, I see.
  Which room do you prefer?[newlineAwaitInput] [startSelection]  (The regular room)  10 coins
  [startSelection]  (The suite)         200 coins
- [startSelection]  (Oh, forget it)[endAwaitInput] Sir![newlineAwaitInput] You seem to have stayed [0x7000]
- times for the price of just...[newPageAwaitInput] ONE NIGHT! I'll have to receive
- 100 coins for each night you have
- extended your stay.[endAwaitInput] (I can only store 200 cookies.[newPageAwaitInput]  I'll store [0x7000], but....[newlineAwaitInput]  I think I'll nibble on the rest
-  of the [0x7024].)[endAwaitInput]BOSHI: (Since WHEN have you been
+ [startSelection]  (Oh, forget it)'''
+dialogs[2509] = ''' Sir![newlineAwaitInput] You seem to have stayed '''
+dialogs[2510] = ''' (I can only store 200 cookies.[newPageAwaitInput]  I'll store '''
+dialogs[2511] = '''BOSHI: (Since WHEN have you been
  able to sprint like that?![newPageAwaitInput] Oh[delay]...[delay]well... I had my day in
  the sun. Let me give you a tip!
  Race someone SLOW.[newPageAwaitInput] That way, you'll be able to
- stash away the Cookies!)[endAwaitInput]YOSHI: (Mario! Glad you finally
+ stash away the Cookies!)'''
+dialogs[2512] = '''YOSHI: (Mario! Glad you finally
  made it to Yo'ster Isle, home of
  the Mushroom Derby![newPageAwaitInput] Say...now that you're here, we
  could use your help.[newPageAwaitInput] Please talk to a few of my pals
  here and...[newPageAwaitInput] What? You can't understand
  them? Well...hop aboard and I'll
- be your interpreter!)[endAwaitInput] There’s a stairway that leads
+ be your interpreter!)'''
+dialogs[2513] = ''' There’s a stairway that leads
  to my house, but my son’s been
  playing with the controls again![newPageAwaitInput] Mario, only you could jump up
  there! Please...help me get back
- up to my house![endAwaitInput]
-                  Mario![endAwaitInput]TOAD: (gasping) Phew, [delay][delay]I[delay][delay]...[newlineAwaitInput] ...finally[delay] made it up [delay]here[delay][delay]...[endAwaitInput]
-       Let me help you guys out![endAwaitInput]TOAD: P..Princess![endAwaitInput]TOADSTOOL: I'm sorry I snuck out
+ up to my house!'''
+dialogs[2514] = '''
+                  Mario!'''
+dialogs[2515] = '''TOAD: (gasping) Phew, [delay][delay]I[delay][delay]...[newlineAwaitInput] ...finally[delay] made it up [delay]here[delay][delay]...'''
+dialogs[2516] = '''
+       Let me help you guys out!'''
+dialogs[2517] = '''TOAD: P..Princess!'''
+dialogs[2518] = '''TOADSTOOL: I'm sorry I snuck out
  without telling you or the
- Chancellor.[pauseAwaitInput][end] I just wanted things to get back
+ Chancellor.[pauseAwaitInput]'''
+dialogs[2519] = ''' I just wanted things to get back
  to normal. I wanted to do
- my part to help...[endAwaitInput]TOAD: [delay]...[delay]Princess[delay]...[endAwaitInput] Yes! That’s it![newlineAwaitInput] Any job that lets me help
+ my part to help...'''
+dialogs[2520] = '''TOAD: [delay]...[delay]Princess[delay]...'''
+dialogs[2521] = ''' Yes! That’s it![newlineAwaitInput] Any job that lets me help
  both Mario and the Princess
- is worthwhile![endAwaitInput]TOADSTOOL: You're gonna help
- BOTH of us?[endAwaitInput]TOAD: Well, I carried all I could![newlineAwaitInput] Now, what could you use?[endAwaitInput]TOADSTOOL: Thank you, Toad.[endAwaitInput]TOAD: We're almost there![newlineAwaitInput] Come on! Let’s show 'em![endAwaitInput]MALLOW: Great...[newlineAwaitInput] They're gone...[endAwaitInput] Hurry! Let’s go after her!
- I KNOW she has the key!![endAwaitInput]
-                  Ack![endAwaitInput]MALLOW: Owwww...[endAwaitInput]
-        Huh?!... Mario! Look![endAwaitInput] Hmm[delay]...[delay]...Just can't seem to
- find the Casino[delay]..I'm sooo tired![newlineAwaitInput] I've been walking around all day![endAwaitInput] Hey, he’s holding a leaflet.
+ is worthwhile!'''
+dialogs[2522] = '''TOADSTOOL: You're gonna help
+ BOTH of us?'''
+dialogs[2523] = '''TOAD: Well, I carried all I could![newlineAwaitInput] Now, what could you use?'''
+dialogs[2524] = '''TOADSTOOL: Thank you, Toad.'''
+dialogs[2525] = '''TOAD: We're almost there![newlineAwaitInput] Come on! Let’s show 'em!'''
+dialogs[2526] = '''MALLOW: Great...[newlineAwaitInput] They're gone...'''
+dialogs[2527] = '''MALLOW: Great...[newlineAwaitInput] They're gone...'''
+dialogs[2528] = '''MALLOW: Great...[newlineAwaitInput] They're gone...'''
+dialogs[2529] = ''' Hurry! Let’s go after her!
+ I KNOW she has the key!!'''
+dialogs[2530] = '''
+                  Ack!'''
+dialogs[2531] = '''MALLOW: Owwww...'''
+dialogs[2532] = '''
+        Huh?!... Mario! Look!'''
+dialogs[2533] = ''' Hmm[delay]...[delay]...Just can't seem to
+ find the Casino[delay]..I'm sooo tired![newlineAwaitInput] I've been walking around all day!'''
+dialogs[2534] = ''' Hey, he’s holding a leaflet.
  Wanna read it?[newlineAwaitInput] [startSelection]  (Yeah, sure)
- [startSelection]  (No)[endAwaitInput]      Come to Grate Guy Casino!
-   3 Jumps and a Bright Card will
-               get YOU in![newPageAwaitInput]   Sorry, but no “Chomps” allowed.[newlineAwaitInput]     Casino Manager, Grate Guy[endAwaitInput] Three jumps, a Bright Card and
- no...“Chomps”? What IS this?[endAwaitInput][newPage] Oh! I'm sooo tired...
- Leave me alone.[endAwaitInput] Keep working!
- You're not getting any breaks.[endAwaitInput] I can't do a lot right now, so
+ [startSelection]  (No)'''
+dialogs[2535] = ''''''
+dialogs[2536] = ''' Three jumps, a Bright Card and
+ no...“Chomps”? What IS this?'''
+dialogs[2537] = '''[newPage] Oh! I'm sooo tired...
+ Leave me alone.'''
+dialogs[2538] = ''' Keep working!
+ You're not getting any breaks.'''
+dialogs[2539] = ''' I can't do a lot right now, so
  let me ask you this: Have you seen
  the mushrooms in the forest?[newlineAwaitInput] [startSelection]  (Sure have)
- [startSelection]  (Nope, never)[endAwaitInput] Hey mate, step right up!
+ [startSelection]  (Nope, never)'''
+dialogs[2540] = ''' I can't do a lot right now, so
+ let me ask you this: Have you seen
+ the mushrooms in the forest?[newlineAwaitInput] [startSelection]  (Sure have)
+ [startSelection]  (Nope, never)'''
+dialogs[2541] = ''' Hey mate, step right up!
  10 coins to do some Goomba
  thumping. How about it?[newlineAwaitInput] [startSelection]  (Sure, why not?)
- [startSelection]  (I'll save it for another day)[endAwaitInput][newPage] You know the rules?[newlineAwaitInput] [startSelection]  (Sure do)
- [startSelection]  (Nope)[endAwaitInput][newPage] Thump a Goomba, get 1 pt.
+ [startSelection]  (I'll save it for another day)'''
+dialogs[2542] = '''[newPage] You know the rules?[newlineAwaitInput] [startSelection]  (Sure do)
+ [startSelection]  (Nope)'''
+dialogs[2543] = '''[newPage] Thump a Goomba, get 1 pt.
  Thump Spikey, and lose 1 pt.
- Thump a gold Goomba, get 3 pts.[newPageAwaitInput] If you get more than [0x7000] pts.,
- you get a prize. Want a recap?[newlineAwaitInput]  [startSelection]  (No thanks)
-  [startSelection]  (Just once more)[endAwaitInput]KNIFE GUY: Hee hee hee hee...[newlineAwaitInput] I'm...really, REALLY sorry
+ Thump a gold Goomba, get 3 pts.[newPageAwaitInput] If you get more than '''
+dialogs[2544] = '''KNIFE GUY: Hee hee hee hee...[newlineAwaitInput] I'm...really, REALLY sorry
  about before...[newPageAwaitInput] Here, I'll make it up to ya!
- Hee haaaaw...[endAwaitInput]KNIFE GUY: Are we having
- fun, yet?...Hee hee hee.[endAwaitInput] Okay! That was just practice.
+ Hee haaaaw...'''
+dialogs[2545] = '''KNIFE GUY: Are we having
+ fun, yet?...Hee hee hee.'''
+dialogs[2546] = ''' Okay! That was just practice.
  This time it’s for REAL.
  Ya up to it?!...Hee hee...[newlineAwaitInput] [startSelection]  (Of course)
- [startSelection]  (No thanks, bud)[endAwaitInput]KNIFE GUY: Wanna play?...[newlineAwaitInput] [startSelection]  (You bet)
- [startSelection]  (Nope)[endAwaitInput][newPage] Guess which hand the yellow
+ [startSelection]  (No thanks, bud)'''
+dialogs[2547] = '''KNIFE GUY: Wanna play?...[newlineAwaitInput] [startSelection]  (You bet)
+ [startSelection]  (Nope)'''
+dialogs[2548] = '''[newPage] Guess which hand the yellow
  ball is in...IF YOU CAN!
- Now watch carefully...[endAwaitInput][newPage] Come on, come on...
- Don't be such a poor sport.[endAwaitInput]KNIFE GUY: So which hand is
+ Now watch carefully...'''
+dialogs[2549] = '''[newPage] Come on, come on...
+ Don't be such a poor sport.'''
+dialogs[2550] = '''KNIFE GUY: So which hand is
  it in? Touch the hand you think
- is holding the ball.[end][newPage] VERY GOOD!
- Here, a prize goes to the winner![endAwaitInput][newPage] Hee hee hee...WRONG!![newlineAwaitInput] It’s this hand! YOU LOSE!!
- Let’s do this again sometime.[endAwaitInput][newPage] It’s not so bad being stuck
+ is holding the ball.'''
+dialogs[2551] = '''[newPage] VERY GOOD!
+ Here, a prize goes to the winner!'''
+dialogs[2552] = '''[newPage] Hee hee hee...WRONG!![newlineAwaitInput] It’s this hand! YOU LOSE!!
+ Let’s do this again sometime.'''
+dialogs[2553] = '''[newPage] It’s not so bad being stuck
  in this room...[newlineAwaitInput] It’s not like I get lonely
- or anything like that.[endAwaitInput]
-                  Mario![delay_64][end][newPage] Press A and B alternately along
+ or anything like that.'''
+dialogs[2554] = '''
+                  Mario![delay_64]'''
+dialogs[2555] = '''[newPage] Press A and B alternately along
  with the rhythm. The tighter the
- rhythm, the faster you go![endAwaitInput][newPage] Press the Y Button during a
+ rhythm, the faster you go!'''
+dialogs[2556] = '''[newPage] Press the Y Button during a
  race to eat a Cookie. Its energy
- will help you go faster![endAwaitInput][newPage] Want instructions again?[newlineAwaitInput] [startSelection]  (Yeah, help me out)
- [startSelection]  (No thanks, I'm fine)[endAwaitInput]TOAD: Now THAT was really scary!
+ will help you go faster!'''
+dialogs[2557] = '''[newPage] Want instructions again?[newlineAwaitInput] [startSelection]  (Yeah, help me out)
+ [startSelection]  (No thanks, I'm fine)'''
+dialogs[2558] = '''TOAD: Now THAT was really scary!
  Everyone’s hiding in the
  Princess' bedroom.[newPageAwaitInput] I and some others couldn't
  escape in time.
- I hope no one got hurt...[endAwaitInput] Never mind that, guess what I
+ I hope no one got hurt...'''
+dialogs[2559] = ''' Never mind that, guess what I
  found?! It’s a gold coin!
- A GOLD COIN! And it’s all MINE![endAwaitInput]SNIFIT 1: Hello there.[newlineAwaitInput] Booster’s busy right now, so he
- can't play.[newPageAwaitInput] Come back some other time, or you
- can try to force your way in...[endAwaitInput]
-           Booster the First[endAwaitInput]
-          Booster the Second[endAwaitInput]
-           Booster the Third[endAwaitInput]
-          Booster the Fourth[endAwaitInput]
-           Booster the Fifth[endAwaitInput]
-           Booster the Sixth[endAwaitInput]        Found the “Elder Key”![endAwaitInput] What’s the big rush?[endAwaitInput] I'm Booster and this is my
+ A GOLD COIN! And it’s all MINE!'''
+dialogs[2560] = ''' I slept like a baby.
+ Thanks!'''
+dialogs[2561] = '''         So THIS is the suite?!'''
+dialogs[2562] = '''te?!'''
+dialogs[2563] = '''’s sweet!'''
+dialogs[2564] = ''' but the best for US!'''
+dialogs[2565] = ''' This is just one of the best
+ hotels I've ever stayed at.'''
+dialogs[2566] = '''best
+ hotels I've ever stayed at.'''
+dialogs[2567] = '''ever stayed at.'''
+dialogs[2568] = '''card you have there...[newlineAwaitInput] How about selling it to me for...
+ [delay][delay]...oh, say[delay][delay]...100 coins?[newlineAwaitInput]  [startSelection]  (It’s a deal!)
+  [startSelection]  (Are you crazy?!)'''
+dialogs[2569] = '''w about selling it to me for...
+ [delay][delay]...oh, say[delay][delay]...100 coins?[newlineAwaitInput]  [startSelection]  (It’s a deal!)
+  [startSelection]  (Are you crazy?!)'''
+dialogs[2570] = '''!'''
+dialogs[2571] = '''it until he sees THIS!'''
+dialogs[2572] = '''And you can forget about
+ the back entrance. It’s locked.[newlineAwaitInput] At least I THINK it is...'''
+dialogs[2573] = '''.[newlineAwaitInput] At least I THINK it is...'''
+dialogs[2574] = '''...'''
+dialogs[2575] = '''...'''
+dialogs[2576] = '''1: You LOOK like
+ Mario, but the door’s shut tight.[newlineAwaitInput] Listen, Mustache, you and your
+ overgrown turtle-friend can take
+ a hike! Go! Scat![newlineAwaitInput] Make like Mario and jump
+ outta here! GET LOST!'''
+dialogs[2577] = ''' turtle-friend can take
+ a hike! Go! Scat![newlineAwaitInput] Make like Mario and jump
+ outta here! GET LOST!'''
+dialogs[2578] = '''o! Scat![newlineAwaitInput] Make like Mario and jump
+ outta here! GET LOST!'''
+dialogs[2579] = ''' 1: Oops[delay][delay]...
+ We've got a problem[delay][delay]...[newlineAwaitInput] I'd better go tell Booster.'''
+dialogs[2580] = '''[delay]...[newlineAwaitInput] I'd better go tell Booster.'''
+dialogs[2581] = '''ge.'''
+dialogs[2582] = '''down?![newlineAwaitInput] On the count of 3, we'll run
+ TOGETHER! Timing’s the key!'''
+dialogs[2583] = '''ve it, MOVE IT!!!!'''
+dialogs[2584] = '''ve it, MOVE IT!!!!'''
+dialogs[2585] = '''ve it, MOVE IT!!!!'''
+dialogs[2586] = '''ve it, MOVE IT!!!!'''
+dialogs[2587] = '''ve it, MOVE IT!!!!'''
+dialogs[2588] = '''ve it, MOVE IT!!!!'''
+dialogs[2589] = '''ve it, MOVE IT!!!!'''
+dialogs[2590] = '''ve it, MOVE IT!!!!'''
+dialogs[2591] = '''ve it, MOVE IT!!!!'''
+dialogs[2592] = '''ve it, MOVE IT!!!!'''
+dialogs[2593] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2594] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2595] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2596] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2597] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2598] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2599] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2600] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2601] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2602] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2603] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2604] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2605] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2606] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2607] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2608] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2609] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2610] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2611] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2612] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2613] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2614] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2615] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2616] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2617] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2618] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2619] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2620] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2621] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2622] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2623] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2624] = ''' I'm in here!![newlineAwaitInput] Hurry! I'm scared!'''
+dialogs[2625] = ''' have no IDEA what
+ they're up against!'''
+dialogs[2626] = '''bottle!
+ I'm an earthquake in a can!
+ I'll bust this open in no time!'''
+dialogs[2627] = '''this open in no time!'''
+dialogs[2628] = '''the party, but why don't you
+ help me here, anyway.[newlineAwaitInput] At least you'll feel like you did
+ SOMETHING!'''
+dialogs[2629] = ''' help me here, anyway.[newlineAwaitInput] At least you'll feel like you did
+ SOMETHING!'''
+dialogs[2630] = ''' hya hya! Guess I'm one heck
+ of a party animal, huh?[newPageAwaitInput] Hya hya[delay]...h[delay][delay]..[delay]ya..[pauseAwaitInput]'''
+dialogs[2631] = '''eck
+ of a party animal, huh?[newPageAwaitInput] Hya hya[delay]...h[delay][delay]..[delay]ya..[pauseAwaitInput]'''
+dialogs[2632] = ''' dropped my [delay][delay]shoes,[newlineAwaitInput][delay][delay] my ring,...my brooch[delay][delay] and
+[delay][delay] ...MY CROWN!!!'''
+dialogs[2633] = '''ster, Sir!'''
+dialogs[2634] = '''ooster, I, um...'''
+dialogs[2635] = '''salty!'''
+dialogs[2636] = '''ide may be...
+ uh,...Crying...'''
+dialogs[2637] = '''ying...'''
+dialogs[2638] = '''ying...'''
+dialogs[2639] = '''ying...'''
+dialogs[2640] = '''ying...'''
+dialogs[2641] = '''ying...'''
+dialogs[2642] = '''ying...'''
+dialogs[2643] = '''ying...'''
+dialogs[2644] = '''ying...'''
+dialogs[2645] = '''ying...'''
+dialogs[2646] = '''ying...'''
+dialogs[2647] = '''ying...'''
+dialogs[2648] = '''ying...'''
+dialogs[2649] = '''ying...'''
+dialogs[2650] = '''ying...'''
+dialogs[2651] = '''ying...'''
+dialogs[2652] = '''ying...'''
+dialogs[2653] = '''ying...'''
+dialogs[2654] = '''ying...'''
+dialogs[2655] = '''That stuff must be corrosive![newlineAwaitInput] It tastes...like the sea![newPageAwaitInput] What could be making her...cry,
+ anyway?'''
+dialogs[2656] = '''ust be corrosive![newlineAwaitInput] It tastes...like the sea![newPageAwaitInput] What could be making her...cry,
+ anyway?'''
+dialogs[2657] = ''',
+ anyway?'''
+dialogs[2658] = '''e she has dropped some of
+ her...wedding gear.'''
+dialogs[2659] = ''': Aha! Of course![newlineAwaitInput] She has dropped her gear.[newPageAwaitInput] But those tears will ruin
+ the cake! Make her stop...[newlineAwaitInput] ...before Mario breaks in!'''
+dialogs[2660] = '''ut those tears will ruin
+ the cake! Make her stop...[newlineAwaitInput] ...before Mario breaks in!'''
+dialogs[2661] = '''ore Mario breaks in!'''
+dialogs[2662] = '''ut...Mario’s ALREADY in...'''
+dialogs[2663] = '''on with the wedding![newPageAwaitInput] In the mean time, perhaps we can
+ ...do something about the cake...'''
+dialogs[2664] = ''' In the mean time, perhaps we can
+ ...do something about the cake...'''
+dialogs[2665] = '''y.[newPageAwaitInput] You find her stuff...
+ I'll move the ceremony forward.[newlineAwaitInput] Hurry!'''
+dialogs[2666] = ''' and get back
+    the accessories from the Snifits
+'''
+dialogs[2667] = '''her Shoes!'''
+dialogs[2668] = '''rown!'''
+dialogs[2669] = ''' a Snifit found it!'''
+dialogs[2670] = ''' You won't believe it!!'''
+dialogs[2671] = ''' armor.'''
+dialogs[2672] = '''sino where you
+ can get BIG BUCKS,[newlineAwaitInput] but I just can't find
+ the place. Does it really exist?'''
+dialogs[2673] = '''t really exist?'''
+dialogs[2674] = '''TOOL: SHRIEK!!![delay_48]
+ What is Bowser doing HERE?'''
+dialogs[2675] = '''?'''
+dialogs[2676] = '''ppy life.'''
+dialogs[2677] = '''ppy life.'''
+dialogs[2678] = '''ppy life.'''
+dialogs[2679] = '''ppy life.'''
+dialogs[2680] = '''
+ [startSelection]  (What else do you have?)'''
+dialogs[2681] = ''' und groom?'''
+dialogs[2682] = '''0'''
+dialogs[2683] = ''''t ask me such...
+ complicated things!'''
+dialogs[2684] = '''the guy with a totem pole
+ for a face?! He and Princess
+ Toadstool were...[newlineAwaitInput] ...No...![delay][delay][delay]
+ Don't tell me...they're[delay][delay] getting[delay]
+ ....[delay][delay]MARRIED?'''
+dialogs[2685] = '''[delay][delay][delay]
+ Don't tell me...they're[delay][delay] getting[delay]
+ ....[delay][delay]MARRIED?'''
+dialogs[2686] = '''MY wedding!”?[newPageAwaitInput]
+   Just who does he think HE IS?!'''
+dialogs[2687] = '''hen some kids, wearing
+ dark clothes, kicked us out!'''
+dialogs[2688] = ''' I came all the way over here
+ to give these two a proper send
+ off, and LOOK what happens!'''
+dialogs[2689] = ''' I came all the way over here
+ to give these two a proper send
+ off, and LOOK what happens!'''
+dialogs[2690] = '''ns!'''
+dialogs[2691] = ''' door, so
+ don't even bother trying to
+ sneak inside.'''
+dialogs[2692] = '''Oh oh...I have a BAD
+ feeling my wedding is going
+ to be crashed.'''
+dialogs[2693] = '''ide should be on your left.'''
+dialogs[2694] = ''''''
+dialogs[2695] = '''What a waste of time!
+ I've got bigger fish to fry...!'''
+dialogs[2696] = ''' Now THAT’s one for
+ the scrapbook![pauseAwaitInput]'''
+dialogs[2697] = '''...[pauseAwaitInput]'''
+dialogs[2698] = ''' anyone to eat zees cake!'''
+dialogs[2699] = '''here, that’s the way.'''
+dialogs[2700] = '''t wouldn't be right![newlineAwaitInput] Let’s take her back to Mushroom
+ Kingdom, where she belongs![newlineAwaitInput] [startSelection]  (Okay)
+ [startSelection]  (Forget it)'''
+dialogs[2701] = ''' it)'''
+dialogs[2702] = ''' their
+ honeymoon to the south island.'''
+dialogs[2703] = '''rta gift...[newlineAwaitInput] A pretty NICE gift, too.'''
+dialogs[2704] = '''stay here.[newPageAwaitInput] What? You're seeking a man with
+ the face of a totem pole...?'''
+dialogs[2705] = '''re seeking a man with
+ the face of a totem pole...?'''
+dialogs[2706] = '''at the wedding hall.'''
+dialogs[2707] = ''' night,[delay_48]
+ they can help you over there...'''
+dialogs[2708] = ''' help you over there...'''
+dialogs[2709] = '''a little closer, now...[newlineAwaitInput] Ready? All right, 1..2..[newlineAwaitInput] Hey, you there!'''
+dialogs[2710] = ''' can
+ go on with our wedding?'''
+dialogs[2711] = ''' Let’s get this wedding over with
+ so we can stay in the suite,
+ and then go on our honeymoon!'''
+dialogs[2712] = '''n!'''
+dialogs[2713] = ''' can't[delay][delay] take it anymore...'''
+dialogs[2714] = '''everyone!'''
+dialogs[2715] = '''ning! Back inside, please!'''
+dialogs[2716] = '''ning! Back inside, please!'''
+dialogs[2717] = '''fore us would
+ hurry up! We've been waiting for
+ 30 minutes now.'''
+dialogs[2718] = ''''ve been waiting for
+ 30 minutes now.'''
+dialogs[2719] = '''es now.'''
+dialogs[2720] = '''    Shhhh...Quiet, now.'''
+dialogs[2721] = '''l...'''
+dialogs[2722] = '''e you doing?'''
+dialogs[2723] = '''e going back now, right?![newlineAwaitInput] [startSelection]  (Okay)
+ [startSelection]  (No)'''
+dialogs[2724] = '''s. You saw him before!'''
+dialogs[2725] = '''.[newlineAwaitInput] [startSelection]  (Okay)
+ [startSelection]  (NO!)'''
+dialogs[2726] = '''rincess
+ back, WE'LL be charged with
+ kidnapping! Let’s go![newlineAwaitInput] [startSelection]  (Oh, all right)
+ [startSelection]  (NO!)'''
+dialogs[2727] = '''d with
+ kidnapping! Let’s go![newlineAwaitInput] [startSelection]  (Oh, all right)
+ [startSelection]  (NO!)'''
+dialogs[2728] = ''' [startSelection]  (NO!)'''
+dialogs[2729] = '''don't want you to
+ wander too far off, now!'''
+dialogs[2730] = '''e where the wedding's
+ gonna be held.'''
+dialogs[2731] = '''          Pipe down and relax.'''
+dialogs[2732] = '''on!'''
+dialogs[2733] = '''er, yet?[newlineAwaitInput] I hate getting my picture taken.'''
+dialogs[2734] = '''e we go!...[pauseAwaitInput]'''
+dialogs[2735] = '''[delay]tell 'em...
+ the truth...If this gets out...[newlineAwaitInput] I'm finished...!)'''
+dialogs[2736] = '''es...[delay][delay]I see.'''
+dialogs[2737] = ''' way, Mario!
+ She went through THAT door!'''
+dialogs[2738] = ''' THAT door!'''
+dialogs[2739] = ''': Bowser...
+ Perhaps it’s time you
+ told us your story![newPageAwaitInput] What, exactly, did you mean
+ when you said you had,
+ “Bigger fish to fry?”'''
+dialogs[2740] = '''’s time you
+ told us your story![newPageAwaitInput] What, exactly, did you mean
+ when you said you had,
+ “Bigger fish to fry?”'''
+dialogs[2741] = '''ALLOW: Excuse me, Sir...
+ Perhaps I can set the stage, and[newlineAwaitInput] the others can add their comments
+ along the way!'''
+dialogs[2742] = '''ALLOW: Excuse me, Sir...
+ Perhaps I can set the stage, and[newlineAwaitInput] the others can add their comments
+ along the way!'''
+dialogs[2743] = '''Perhaps I can set the stage, and[newlineAwaitInput] the others can add their comments
+ along the way!'''
+dialogs[2744] = '''Perhaps I can set the stage, and[newlineAwaitInput] the others can add their comments
+ along the way!'''
+dialogs[2745] = '''Perhaps I can set the stage, and[newlineAwaitInput] the others can add their comments
+ along the way!'''
+dialogs[2746] = '''Perhaps I can set the stage, and[newlineAwaitInput] the others can add their comments
+ along the way!'''
+dialogs[2747] = '''e thrown in different directions
+ after a terrible explosion...'''
+dialogs[2748] = '''mething HUGE crashed through
+ the Star Road high above
+ Bowser’s place...[delay]and[delay]...'''
+dialogs[2749] = ''' was a gigantic sword![newPageAwaitInput] Now Bowser’s Keep has been
+ taken over by monsters who work
+ for some creep named “Smithy.”'''
+dialogs[2750] = ''' sword![newPageAwaitInput] Now Bowser’s Keep has been
+ taken over by monsters who work
+ for some creep named “Smithy.”'''
+dialogs[2751] = ''' own...[delay_48] I mean...[newlineAwaitInput] I decided to take a vacation![pauseAwaitInput]'''
+dialogs[2752] = ''' to take a vacation![pauseAwaitInput]'''
+dialogs[2753] = ''' walked up to me and
+ BEGGED me to let him join the
+ Koopa Troop! I had no choice[newlineAwaitInput] but to let him in. It was pathetic.'''
+dialogs[2754] = '''let him join the
+ Koopa Troop! I had no choice[newlineAwaitInput] but to let him in. It was pathetic.'''
+dialogs[2755] = '''opa Troop! I had no choice[newlineAwaitInput] but to let him in. It was pathetic.'''
+dialogs[2756] = '''t to let him in. It was pathetic.'''
+dialogs[2757] = '''t to let him in. It was pathetic.'''
+dialogs[2758] = ''' I just said she went through
+ THAT door, over there!'''
+dialogs[2759] = '''t my house back, when...'''
+dialogs[2760] = ''' was it?
+ Why are you and Mario...'''
+dialogs[2761] = '''traveling with Mario?'''
+dialogs[2762] = '''re have you been?
+ I've never been so worried! I'm
+ so angry I can't see straight![newlineAwaitInput] Would you want to marry someone
+ who can't see straight?!'''
+dialogs[2763] = '''straight![newlineAwaitInput] Would you want to marry someone
+ who can't see straight?!'''
+dialogs[2764] = ''', the Princess hasn't been
+ around to look at the flowers.'''
+dialogs[2765] = '''y'll
+ flip out, so...[newlineAwaitInput] Let’s be real quiet!'''
+dialogs[2766] = '''Mario, welcome home!
+ Please, go in.'''
+dialogs[2767] = '''what I found in the wallet
+ you returned to me.[newPageAwaitInput] It’s yours, isn't it?'''
+dialogs[2768] = '''eturned to me.[newPageAwaitInput] It’s yours, isn't it?'''
+dialogs[2769] = ''''''
+dialogs[2770] = '''od for noth...'''
+dialogs[2771] = '''..what was that...odd noise?'''
+dialogs[2772] = '''ome see me later!'''
+dialogs[2773] = '''
+ to eat?'''
+dialogs[2774] = '''her
+ jump. He’s been practicing
+ like crazy!'''
+dialogs[2775] = '''w![newlineAwaitInput] [startSelection]  (Impressive!)
+ [startSelection]  (Keep practicing, kid)'''
+dialogs[2776] = '''L RIGHT!'''
+dialogs[2777] = '''l, what can I get you two?'''
+dialogs[2778] = '''DSTOOL: I'm finally home![newlineAwaitInput] And with Mario...'''
+dialogs[2779] = '''lor...'''
+dialogs[2780] = '''not?'''
+dialogs[2781] = '''his has been a true nightmare![pauseAwaitInput]'''
+dialogs[2782] = '''![pauseAwaitInput]'''
+dialogs[2783] = '''ine!
+ I can take care of myself...[newlineAwaitInput] ...With a little help from Mario!'''
+dialogs[2784] = '''e help from Mario!'''
+dialogs[2785] = '''e help from Mario!'''
+dialogs[2786] = '''veryone![newlineAwaitInput] Let’s get out of this
+ drafty doorway!'''
+dialogs[2787] = '''ul we are!'''
+dialogs[2788] = '''ser?'''
+dialogs[2789] = '''ARE you talking about?!'''
+dialogs[2790] = '''NCELLOR: Mario!
+ What are YOU doing with...'''
+dialogs[2791] = '''                 EGADS!'''
+dialogs[2792] = '''fix it.[newPageAwaitInput] Mario is helping me search for
+ the Star Pieces. I need them to
+ rebuild the road...'''
+dialogs[2793] = '''d the road...'''
+dialogs[2794] = '''Star...Pieces?'''
+dialogs[2795] = '''Road grants
+ our wishes![newPageAwaitInput] Unless we find all the Star Pieces
+ and fix the Star Road, we can
+ kiss our dreams goodbye!'''
+dialogs[2796] = ''' the Star Road, we can
+ kiss our dreams goodbye!'''
+dialogs[2797] = '''goodbye!'''
+dialogs[2798] = ''': WHAT?!
+ This is dreadful news!
+ Awful! Horrible...![pauseAwaitInput]'''
+dialogs[2799] = '''..![pauseAwaitInput]'''
+dialogs[2800] = '''Star Road,
+ you'd probably never be rescued!'''
+dialogs[2801] = '''ed!'''
+dialogs[2802] = '''ly, that sounds
+ pretty GOOD to me!
+ Let’s just forget about these...[newlineAwaitInput] Star...things!'''
+dialogs[2803] = '''tty GOOD to me!
+ Let’s just forget about these...[newlineAwaitInput] Star...things!'''
+dialogs[2804] = '''precious
+ “Keep” goodbye!'''
+dialogs[2805] = ''' take
+ a world without wishes...[pauseAwaitInput]'''
+dialogs[2806] = ''' take
+ a world without wishes...[pauseAwaitInput]'''
+dialogs[2807] = '''red...[newlineAwaitInput] I think I need to lie down
+ in my room for awhile.'''
+dialogs[2808] = ''''t find the stars...[delay_48]'''
+dialogs[2809] = '''tar things, but...[pauseAwaitInput]'''
+dialogs[2810] = '''joining them, ARE YOU?[pauseAwaitInput]'''
+dialogs[2811] = '''eer madness...
+ You're a Princess![newlineAwaitInput] What will people say?!'''
+dialogs[2812] = '''..
+ You're a Princess![newlineAwaitInput] What will people say?!'''
+dialogs[2813] = '''nts...
+ You're so mean, Mario.'''
+dialogs[2814] = '''n this “Smithy”
+ who attacked our Kingdom?[newPageAwaitInput] I fear we have no cause to
+ rejoice. In fact, Mario, we must
+ ask you for yet another favor...'''
+dialogs[2815] = '''ause to
+ rejoice. In fact, Mario, we must
+ ask you for yet another favor...'''
+dialogs[2816] = ''' all of us,
+ you MUST defeat Smithy...[newPageAwaitInput] It is the only way we shall ever
+ live in peace again.'''
+dialogs[2817] = '''..[newPageAwaitInput] It is the only way we shall ever
+ live in peace again.'''
+dialogs[2818] = ''' Mario!'''
+dialogs[2819] = '''                                                                             ushroom Kingdom,
+          has joined the party.[newlineAwaitInput]   Be sure to bring her back safely!'''
+dialogs[2820] = '''0
+'''
+dialogs[2821] = '''ins the party
+               once AGAIN!'''
+dialogs[2822] = ''' See the world! Make friends![newPageAwaitInput] Help destroy Smithy...'''
+dialogs[2823] = '''Help destroy Smithy...'''
+dialogs[2824] = '''ithy...'''
+dialogs[2825] = '''g
+ for you. Please find her!'''
+dialogs[2826] = '''[delay_64]'''
+dialogs[2827] = '''ll rightee then, how about 10?
+ That’s TEN Frog Coins![newlineAwaitInput]  [startSelection]  (It’s a deal!)
+  [startSelection]  (Nope)'''
+dialogs[2828] = '''se guy doesn't
+ think 10 Frog Coins is enough![newlineAwaitInput] You don't know what you're
+ missing, but...OH, WELL...'''
+dialogs[2829] = ''' Don't leave me!'''
+dialogs[2830] = '''....'''
+dialogs[2831] = '''....'''
+dialogs[2832] = '''andpa should know!'''
+dialogs[2833] = '''![newlineAwaitInput] Take me along with you, please!'''
+dialogs[2834] = '''e along with you, please!'''
+dialogs[2835] = '''t worry.[newlineAwaitInput] Grandma helped me through
+ this one, so no one will ever
+ notice that I'm gone!'''
+dialogs[2836] = '''o one will ever
+ notice that I'm gone!'''
+dialogs[2837] = '''ce that I'm gone!'''
+dialogs[2838] = '''[delay]...[delay][newlineAwaitInput] But I wonder where it could be...
+ I have absolutely no idea! Do you?'''
+dialogs[2839] = ''' that Princess
+ Toadstool will be able to lead a
+ safe, and long, life![newlineAwaitInput] You can bet on it!'''
+dialogs[2840] = ''' life![newlineAwaitInput] You can bet on it!'''
+dialogs[2841] = '''et?'''
+dialogs[2842] = '''llor right away.
+ We'll talk later, dear.'''
+dialogs[2843] = '''ving our
+ wedding in Marrymore![newlineAwaitInput] We'll be gone for a while!
+                         Raz & Raini'''
+dialogs[2844] = '''                         Raz & Raini'''
+dialogs[2845] = ''' [startSelection]  (Here you go)
+ [startSelection]  (Forget it)'''
+dialogs[2846] = '''t)'''
+dialogs[2847] = '''rs truly, “Toadofsky”.'''
+dialogs[2848] = '''t good just to
+ carry it around.'''
+dialogs[2849] = ''' onto it, so...
+ you can forget about paying up.'''
+dialogs[2850] = '''get about paying up.'''
+dialogs[2851] = ''' Agency”'''
+dialogs[2852] = '''now you can hold '''
+dialogs[2853] = '''tter
+  than ever!)'''
+dialogs[2854] = ''' you [0x7024]. I'll store
+  the other '''
+dialogs[2855] = ''' starters,
+  try and store 5 or more.[pauseAwaitInput]'''
+dialogs[2856] = '''one!
+  That’s more than I can hold.)'''
+dialogs[2857] = '''don't
+  have any more to spare, so use
+  what’s left wisely!)'''
+dialogs[2858] = ''')
+ [startSelection]  (Uh, no...)'''
+dialogs[2859] = '''ds on Yoshi are
+  '''
+dialogs[2860] = '''n wager up to 10.)'''
+dialogs[2861] = '''tarting gate, group!)'''
+dialogs[2862] = '''(I'm dying for some Cookies.)'''
+dialogs[2863] = '''t)'''
+dialogs[2864] = '''d luck!)'''
+dialogs[2865] = '''want stored?)[pauseAwaitInput]'''
+dialogs[2866] = '''Hm...looks like you don't
+  have enough. Next time, remember
+  to bring 5 or more, OK?)'''
+dialogs[2867] = '''Hm...looks like you don't
+  have enough. Next time, remember
+  to bring 5 or more, OK?)'''
+dialogs[2868] = '''ike you don't
+  have enough. Next time, remember
+  to bring 5 or more, OK?)'''
+dialogs[2869] = ''')[pauseAwaitInput]'''
+dialogs[2870] = '''o you know of a
+ place called...Grate Guy Casino?[newlineAwaitInput] It’s supposed to be around,
+ somewhere. Have you been there?'''
+dialogs[2871] = ''' called...Grate Guy Casino?[newlineAwaitInput] It’s supposed to be around,
+ somewhere. Have you been there?'''
+dialogs[2872] = ''' It’s supposed to be around,
+ somewhere. Have you been there?'''
+dialogs[2873] = '''n!'''
+dialogs[2874] = '''e can't even hop on Yoshi!
+ But that’s okay.[pauseAwaitInput] I still love him.'''
+dialogs[2875] = '''hat’s okay.[pauseAwaitInput] I still love him.'''
+dialogs[2876] = '''each me someday!'''
+dialogs[2877] = '''w, return it!'''
+dialogs[2878] = '''(Line it up, ON THE DOUBLE!)'''
+dialogs[2879] = '''LE!)'''
+dialogs[2880] = '''en up!'''
+dialogs[2881] = '''
+ is growing worse...
+ This means we'll be losing...[newlineAwaitInput] ...our magnificent ruler...'''
+dialogs[2882] = '''
+ is growing worse...
+ This means we'll be losing...[newlineAwaitInput] ...our magnificent ruler...'''
+dialogs[2883] = '''ns we'll be losing...[newlineAwaitInput] ...our magnificent ruler...'''
+dialogs[2884] = '''pens that
+ I have found the missing Prince!
+ Prince Mallow, that is!'''
+dialogs[2885] = '''at is!'''
+dialogs[2886] = '''  ...[delay]GET OVER HERE!!'''
+dialogs[2887] = '''ttle prince has
+ a mild case of stage fright.[newlineAwaitInput] Excuse me...[delay][delay][delay]Ha ha ha...[delay]'''
+dialogs[2888] = ''' ON! Make it snappy!)'''
+dialogs[2889] = '''just LOOK at you, tubby!)'''
+dialogs[2890] = '''ince Mallow!'''
+dialogs[2891] = '''...'''
+dialogs[2892] = ''' the Prince,
+ I agree to become his queen.'''
+dialogs[2893] = '''ry it up, will ya?!)'''
+dialogs[2894] = '''ry it up, will ya?!)'''
+dialogs[2895] = ''': Can you believe it?![newlineAwaitInput] What a coincidence! There’s a
+ prince with the same name as ME!'''
+dialogs[2896] = ''' coincidence! There’s a
+ prince with the same name as ME!'''
+dialogs[2897] = ''' with the same name as ME!'''
+dialogs[2898] = '''s ME!'''
+dialogs[2899] = ''' of the Star Pieces!!'''
+dialogs[2900] = ''' of the Star Pieces!!'''
+dialogs[2901] = '''oking
+ for something” look in your eyes.[newlineAwaitInput] What can I do for you?'''
+dialogs[2902] = '''ou think you're sooo hot,
+ but...you're not!'''
+dialogs[2903] = '''st don't get it...
+ He NEEDS help. He’s sick...!'''
+dialogs[2904] = '''s of
+ things for King Nimbus![newPageAwaitInput] But these days, he has nothing but
+ time on his hands, what with the
+ King being sick and all...'''
+dialogs[2905] = '''King being sick and all...'''
+dialogs[2906] = '''w Prince
+ Mallow...He's...changed, but
+ yes, I do believe that’s him.'''
+dialogs[2907] = '''ieve that’s him.'''
+dialogs[2908] = '''Mallow that HEAVY?![newlineAwaitInput] Well, she says it’s him,
+ so it must be him!'''
+dialogs[2909] = '''ople from the
+ world down under don't visit us
+ these days?[newlineAwaitInput] I hope it’s nothing personal...'''
+dialogs[2910] = ''' don't visit us
+ these days?[newlineAwaitInput] I hope it’s nothing personal...'''
+dialogs[2911] = '''g personal...'''
+dialogs[2912] = '''
+ entrance now? I don't. Never used
+ to have 'em...'''
+dialogs[2913] = '''ve 'em...'''
+dialogs[2914] = '''y! Who're YOU?!...[newlineAwaitInput] You can't just barge in here!'''
+dialogs[2915] = '''e was...
+ [delay][delay]a[delay][delay] ...young lad.[delay_48][pauseAwaitInput]'''
+dialogs[2916] = '''ndid young prince!'''
+dialogs[2917] = '''alentina
+ was up to SOMETHING!
+ I just didn't know what...[newPageAwaitInput] That must mean that the King
+ really ISN'T gravely ill...!'''
+dialogs[2918] = '''w what...[newPageAwaitInput] That must mean that the King
+ really ISN'T gravely ill...!'''
+dialogs[2919] = ''' inside
+ the castle and save my
+ mother and father!'''
+dialogs[2920] = ''''''
+dialogs[2921] = '''ucius![pauseAwaitInput]'''
+dialogs[2922] = '''Prince Mallow.'''
+dialogs[2923] = '''t yet. Hang on)'''
+dialogs[2924] = '''ulptor, Garro.
+ I used to make a lot of statues
+ of King Nimbus, but now,[newPageAwaitInput] all I get are orders for
+ sculptures of Valentina.'''
+dialogs[2925] = ''' Mari..Mariotta!
+ Okay?!'''
+dialogs[2926] = ''''t think we could get through
+ THAT ONE. There IS no such[newlineAwaitInput] person named Mariotta. Ha!'''
+dialogs[2927] = '''Mariotta. Ha!'''
+dialogs[2928] = ''' YOU can[newlineAwaitInput] make something THIS stunning!'''
+dialogs[2929] = '''of a simple fool...'''
+dialogs[2930] = '''eying his blue collar roots.'''
+dialogs[2931] = '''s...well defined...[newlineAwaitInput] Strong. The legs of the masses![newlineAwaitInput] Is it to your liking?'''
+dialogs[2932] = ''' to your liking?'''
+dialogs[2933] = ''' to say...[delay][delay]
+ This is spectacular!!'''
+dialogs[2934] = '''d...raw power!'''
+dialogs[2935] = '''tep on it!'''
+dialogs[2936] = '''...[newlineAwaitInput]  ...[delay][delay]SPECTACULAR!!'''
+dialogs[2937] = '''allow, as I remember him,
+ used to be so small, so timid...[newlineAwaitInput] Now, just LOOK at him!'''
+dialogs[2938] = '''ed to be so small, so timid...[newlineAwaitInput] Now, just LOOK at him!'''
+dialogs[2939] = '''ow, just LOOK at him!'''
+dialogs[2940] = '''ps[delay][delay]...[delay][delay]I've lost my dentures)[pauseAwaitInput]'''
+dialogs[2941] = '''ay I help you today?[newlineAwaitInput] [startSelection]  (I'd like to buy some things)
+ [startSelection]  (I'd like to rest awhile)
+ [startSelection]  (I'm fine, thank you)'''
+dialogs[2942] = '''t awhile)
+ [startSelection]  (I'm fine, thank you)'''
+dialogs[2943] = '''ffering a very special
+ deal for a limited time only.[newPageAwaitInput] If you choose to stay in our lovely
+ deluxe suite, you shall receive a
+ once in a lifetime gift![newPageAwaitInput] Now which room will you choose?[newlineAwaitInput] [startSelection]  (The regular room)  10 coins
+ [startSelection]  (The SUITE!)       200 coins
+ [startSelection]  (Oh wait, forget it)'''
+dialogs[2944] = '''[newPageAwaitInput] If you choose to stay in our lovely
+ deluxe suite, you shall receive a
+ once in a lifetime gift![newPageAwaitInput] Now which room will you choose?[newlineAwaitInput] [startSelection]  (The regular room)  10 coins
+ [startSelection]  (The SUITE!)       200 coins
+ [startSelection]  (Oh wait, forget it)'''
+dialogs[2945] = '''XCELLENT CHOICE, SIR![newlineAwaitInput] We shall attend to you in a minute.'''
+dialogs[2946] = ''''''
+dialogs[2947] = '''stay!'''
+dialogs[2948] = '''of 'em.'''
+dialogs[2949] = '''fter bathing.[newlineAwaitInput] Ring that bell for room service,[newlineAwaitInput] and please be sure to turn the
+ lights off when going to sleep.'''
+dialogs[2950] = '''om service,[newlineAwaitInput] and please be sure to turn the
+ lights off when going to sleep.'''
+dialogs[2951] = '''om service,[newlineAwaitInput] and please be sure to turn the
+ lights off when going to sleep.'''
+dialogs[2952] = '''om service,[newlineAwaitInput] and please be sure to turn the
+ lights off when going to sleep.'''
+dialogs[2953] = '''om service,[newlineAwaitInput] and please be sure to turn the
+ lights off when going to sleep.'''
+dialogs[2954] = '''om service,[newlineAwaitInput] and please be sure to turn the
+ lights off when going to sleep.'''
+dialogs[2955] = '''om service,[newlineAwaitInput] and please be sure to turn the
+ lights off when going to sleep.'''
+dialogs[2956] = '''om service,[newlineAwaitInput] and please be sure to turn the
+ lights off when going to sleep.'''
+dialogs[2957] = '''om service,[newlineAwaitInput] and please be sure to turn the
+ lights off when going to sleep.'''
+dialogs[2958] = '''ure to turn the
+ lights off when going to sleep.'''
+dialogs[2959] = '''s off when going to sleep.'''
+dialogs[2960] = '''p.'''
+dialogs[2961] = '''te,
+ a grand total of '''
+dialogs[2962] = '''r appreciation,
+ we are proud to present you with
+ this special commemorator’s gift!'''
+dialogs[2963] = '''sent you with
+ this special commemorator’s gift!'''
+dialogs[2964] = ''' commemorator’s gift!'''
+dialogs[2965] = '''l the coins, even the Frog Coins,
+            have been taken!'''
+dialogs[2966] = '''ins,
+            have been taken!'''
+dialogs[2967] = '''[newlineAwaitInput] You have stayed over 200 times
+ for the price of just ONE night![newPageAwaitInput] I shall receive 100 coins for each
+ night you have extended your stay![pauseAwaitInput]'''
+dialogs[2968] = ''' times
+ for the price of just ONE night![newPageAwaitInput] I shall receive 100 coins for each
+ night you have extended your stay![pauseAwaitInput]'''
+dialogs[2969] = '''just ONE night![newPageAwaitInput] I shall receive 100 coins for each
+ night you have extended your stay![pauseAwaitInput]'''
+dialogs[2970] = '''e 100 coins for each
+ night you have extended your stay![pauseAwaitInput]'''
+dialogs[2971] = '''Well! It’s no surprise that
+ you're unable to pay!![newlineAwaitInput] I'll take what you have on you,
+ and you'll work for the rest!'''
+dialogs[2972] = '''ow what I think? I think...'''
+dialogs[2973] = '''atter...'''
+dialogs[2974] = '''odo! Do you hear me?!
+ Get over here NOW! I need
+ some help...entertaining Mario!'''
+dialogs[2975] = '''aining Mario!'''
+dialogs[2976] = ''' one.
+ YOU go give this to Booster.'''
+dialogs[2977] = ''' Sir!
+ I found the Shoes!'''
+dialogs[2978] = '''Wasn't there one more thing?'''
+dialogs[2979] = '''e one more thing?'''
+dialogs[2980] = '''right! The Crown!'''
+dialogs[2981] = '''or me
+ to win BIG CASH!!'''
+dialogs[2982] = '''e.
+ Which room do you prefer?[newlineAwaitInput] [startSelection]  (The regular room)  10 coins
+ [startSelection]  (The suite)         200 coins
+ [startSelection]  (Oh, forget it)'''
+dialogs[2983] = '''d '''
+dialogs[2984] = '''e to receive
+ 100 coins for each night you have
+ extended your stay.'''
+dialogs[2985] = ''' each night you have
+ extended your stay.'''
+dialogs[2986] = '''es.[newPageAwaitInput]  I'll store '''
+dialogs[2987] = '''n. Let me give you a tip!
+ Race someone SLOW.[newPageAwaitInput] That way, you'll be able to
+ stash away the Cookies!)'''
+dialogs[2988] = '''e someone SLOW.[newPageAwaitInput] That way, you'll be able to
+ stash away the Cookies!)'''
+dialogs[2989] = ''', you'll be able to
+ stash away the Cookies!)'''
+dialogs[2990] = '''om Derby![newPageAwaitInput] Say...now that you're here, we
+ could use your help.[newPageAwaitInput] Please talk to a few of my pals
+ here and...[newPageAwaitInput] What? You can't understand
+ them? Well...hop aboard and I'll
+ be your interpreter!)'''
+dialogs[2991] = '''e talk to a few of my pals
+ here and...[newPageAwaitInput] What? You can't understand
+ them? Well...hop aboard and I'll
+ be your interpreter!)'''
+dialogs[2992] = '''ell...hop aboard and I'll
+ be your interpreter!)'''
+dialogs[2993] = '''t leads
+ to my house, but my son’s been
+ playing with the controls again![newPageAwaitInput] Mario, only you could jump up
+ there! Please...help me get back
+ up to my house!'''
+dialogs[2994] = ''' but my son’s been
+ playing with the controls again![newPageAwaitInput] Mario, only you could jump up
+ there! Please...help me get back
+ up to my house!'''
+dialogs[2995] = ''' jump up
+ there! Please...help me get back
+ up to my house!'''
+dialogs[2996] = ''''''
+dialogs[2997] = '''t telling you or the
+ Chancellor.[pauseAwaitInput]'''
+dialogs[2998] = '''gs to get back
+ to normal. I wanted to do
+ my part to help...'''
+dialogs[2999] = '''elp...'''
+dialogs[3000] = '''! That’s it![newlineAwaitInput] Any job that lets me help
+ both Mario and the Princess
+ is worthwhile!'''
+dialogs[3001] = '''Mario and the Princess
+ is worthwhile!'''
+dialogs[3002] = '''STOOL: You're gonna help
+ BOTH of us?'''
+dialogs[3003] = '''OAD: Well, I carried all I could![newlineAwaitInput] Now, what could you use?'''
+dialogs[3004] = '''what could you use?'''
+dialogs[3005] = '''D: We're almost there![newlineAwaitInput] Come on! Let’s show 'em!'''
+dialogs[3006] = '''n! Let’s show 'em!'''
+dialogs[3007] = '''urry! Let’s go after her!
+ I KNOW she has the key!!'''
+dialogs[3008] = ''' has the key!!'''
+dialogs[3009] = '''...'''
+dialogs[3010] = '''.I'm sooo tired![newlineAwaitInput] I've been walking around all day!'''
+dialogs[3011] = '''day!'''
+dialogs[3012] = ''' it?[newlineAwaitInput] [startSelection]  (Yeah, sure)
+ [startSelection]  (No)'''
+dialogs[3013] = '''Come to Grate Guy Casino!
+   3 Jumps and a Bright Card will
+               get YOU in![newPageAwaitInput]   Sorry, but no “Chomps” allowed.[newlineAwaitInput]     Casino Manager, Grate Guy'''
+dialogs[3014] = '''Come to Grate Guy Casino!
+   3 Jumps and a Bright Card will
+               get YOU in![newPageAwaitInput]   Sorry, but no “Chomps” allowed.[newlineAwaitInput]     Casino Manager, Grate Guy'''
+dialogs[3015] = '''Come to Grate Guy Casino!
+   3 Jumps and a Bright Card will
+               get YOU in![newPageAwaitInput]   Sorry, but no “Chomps” allowed.[newlineAwaitInput]     Casino Manager, Grate Guy'''
+dialogs[3016] = '''Come to Grate Guy Casino!
+   3 Jumps and a Bright Card will
+               get YOU in![newPageAwaitInput]   Sorry, but no “Chomps” allowed.[newlineAwaitInput]     Casino Manager, Grate Guy'''
+dialogs[3017] = '''get YOU in![newPageAwaitInput]   Sorry, but no “Chomps” allowed.[newlineAwaitInput]     Casino Manager, Grate Guy'''
+dialogs[3018] = '''allowed.[newlineAwaitInput]     Casino Manager, Grate Guy'''
+dialogs[3019] = '''ep working!
+ You're not getting any breaks.'''
+dialogs[3020] = '''e, never)'''
+dialogs[3021] = '''g. How about it?[newlineAwaitInput] [startSelection]  (Sure, why not?)
+ [startSelection]  (I'll save it for another day)'''
+dialogs[3022] = '''Sure do)
+ [startSelection]  (Nope)'''
+dialogs[3023] = '''ts.[newPageAwaitInput] If you get more than '''
+dialogs[3024] = '''e more)'''
+dialogs[3025] = '''Hee hee hee hee...[newlineAwaitInput] I'm...really, REALLY sorry
+ about before...[newPageAwaitInput] Here, I'll make it up to ya!
+ Hee haaaaw...'''
+dialogs[3026] = ''''ll make it up to ya!
+ Hee haaaaw...'''
+dialogs[3027] = ''''''
+dialogs[3028] = ''''''
+dialogs[3029] = '''ee hee hee.'''
+dialogs[3030] = '''Okay! That was just practice.
+ This time it’s for REAL.
+ Ya up to it?!...Hee hee...[newlineAwaitInput] [startSelection]  (Of course)
+ [startSelection]  (No thanks, bud)'''
+dialogs[3031] = ''' practice.
+ This time it’s for REAL.
+ Ya up to it?!...Hee hee...[newlineAwaitInput] [startSelection]  (Of course)
+ [startSelection]  (No thanks, bud)'''
+dialogs[3032] = ''' come on...
+ Don't be such a poor sport.'''
+dialogs[3033] = '''winner!'''
+dialogs[3034] = ''' I get lonely
+ or anything like that.'''
+dialogs[3035] = '''nately along
+ with the rhythm. The tighter the
+ rhythm, the faster you go!'''
+dialogs[3036] = ''' Button during a
+ race to eat a Cookie. Its energy
+ will help you go faster!'''
+dialogs[3037] = '''thanks, I'm fine)'''
+dialogs[3038] = '''cess' bedroom.[newPageAwaitInput] I and some others couldn't
+ escape in time.
+ I hope no one got hurt...'''
+dialogs[3039] = '''in time.
+ I hope no one got hurt...'''
+dialogs[3040] = '''hat, guess what I
+ found?! It’s a gold coin!
+ A GOLD COIN! And it’s all MINE!'''
+dialogs[3041] = '''t’s all MINE!'''
+dialogs[3042] = '''t’s all MINE!'''
+dialogs[3043] = ''' can't play.[newPageAwaitInput] Come back some other time, or you
+ can try to force your way in...'''
+dialogs[3044] = '''n try to force your way in...'''
+dialogs[3045] = '''Booster the Third'''
+dialogs[3046] = '''th'''
+dialogs[3047] = ''' “Elder Key”!'''
+dialogs[3048] = '''ooster and this is my
  famous tower of amusement.[newlineAwaitInput] Normally I welcome visitors to
  play with me and my Snifits.[newPageAwaitInput] However, a girl fell out of the
  sky and into my lap, recently.[newPageAwaitInput] Since then, I've been busy keeping
  her happy and entertained.[newPageAwaitInput] I no longer have the time to play.
  So please enjoy yourself...
- at your own risk, that is![endAwaitInput] Halt! Who goes there?[newlineAwaitInput] A trespasser![newPageAwaitInput] This castle now belongs to us,
- the “Smithy Gang”.[newPageAwaitInput] It’s our first step towards taking
- over this world![newPageAwaitInput] And if it weren't for nosey
+ at your own risk, that is!'''
+dialogs[3049] = '''ntly.[newPageAwaitInput] Since then, I've been busy keeping
+ her happy and entertained.[newPageAwaitInput] I no longer have the time to play.
+ So please enjoy yourself...
+ at your own risk, that is!'''
+dialogs[3050] = ''' I no longer have the time to play.
+ So please enjoy yourself...
+ at your own risk, that is!'''
+dialogs[3051] = '''k, that is!'''
+dialogs[3052] = '''![newPageAwaitInput] And if it weren't for nosey
  characters like YOU...[newlineAwaitInput] We'd practically OWN this world![newPageAwaitInput]
-   [delay][delay]So let’s see you deal with THIS![endAwaitInput]BOOSTER:
- I wonder when my next bride will
- fall from the sky?[endAwaitInput]SNIFIT 2: Please refrain
- from bothering Booster.[endAwaitInput]         Found a “Flower Tab”[endAwaitInput]HINOPIO:
- Welcome to the item shop![endAwaitInput]HINOPIO:
- Welcome to the inn![newlineAwaitInput] 30 coins will get you a room.
+   [delay][delay]So let’s see you deal with THIS!'''
+dialogs[3053] = '''FIT 2: Please refrain
+ from bothering Booster.'''
+dialogs[3054] = '''![newlineAwaitInput] 30 coins will get you a room.
   [startSelection] (Okay)
-  [startSelection] (No thanks)[endAwaitInput]HINOPIO:
- Welcome to the armor shop![endAwaitInput] You don't have enough coins.[newlineAwaitInput] Come back when you get more.[endAwaitInput] You can't stay?
- Oh, all right...[endAwaitInput] You're staying?[newlineAwaitInput] Great!
- I'll get everything ready for you.[endAwaitInput]HINOPIO: Morning!
- Now wasn't that a cushy bed?[endAwaitInput]TOADOFSKY: Finally!
- My song is nearly complete.[newPageAwaitInput] But I must confess that you
+  [startSelection] (No thanks)'''
+dialogs[3055] = '''![newlineAwaitInput] 30 coins will get you a room.
+  [startSelection] (Okay)
+  [startSelection] (No thanks)'''
+dialogs[3056] = '''![newlineAwaitInput] 30 coins will get you a room.
+  [startSelection] (Okay)
+  [startSelection] (No thanks)'''
+dialogs[3057] = '''cushy bed?'''
+dialogs[3058] = '''[newPageAwaitInput] But I must confess that you
  contributed a lot to it.[newPageAwaitInput] We can all take credit for it![newPageAwaitInput] Now you must think of a final
  phrase that will wrap it all up.[newPageAwaitInput] Let your creative juices flow and
- show me whatcha got![endAwaitInput]JAGGER: It’s not like Mario to
- run away from a fight. So, the “Super Jump” is your
- specialty right?[newPageAwaitInput] Those multiple jumps of yours
- are pretty amazing![newPageAwaitInput] I heard that your record for
- consecutive jumps stands at [0x7000].
- How DO you do it?[endAwaitInput] Jump more than 30 times in a row,
- and I'll give you a prize![endAwaitInput] Yeah, if you could do that, you'd
- deserve a prize![endAwaitInput] I heard your record for jumping
- stands at [0x7000] right now.[endAwaitInput] Think you can do 30 in a row?[endAwaitInput] Wow, you did it!
- You made over 30 jumps.[newPageAwaitInput] All right, here’s your prize.[endAwaitInput]       Got an “Attack Scarf”![endAwaitInput] According to my source, it's
+ show me whatcha got!'''
+dialogs[3059] = '''t![newPageAwaitInput] Now you must think of a final
+ phrase that will wrap it all up.[newPageAwaitInput] Let your creative juices flow and
+ show me whatcha got!'''
+dialogs[3060] = '''w and
+ show me whatcha got!'''
+dialogs[3061] = '''ive you a prize!'''
+dialogs[3062] = ''''''
+dialogs[3063] = '''record for jumping
+ stands at '''
+dialogs[3064] = '''de over 30 jumps.[newPageAwaitInput] All right, here’s your prize.'''
+dialogs[3065] = '''here’s your prize.'''
+dialogs[3066] = '''ccording to my source, it's
  impossible to jump more than
  100 times.[newPageAwaitInput] You've proven your point, so
  let’s give this competition a
- rest![endAwaitInput] Super Jumps are old hat now!
- You've earned the title of
- “Master Super Jumper” ![endAwaitInput]          Got a “Super Suit”![endAwaitInput] Sometimes if you jump at the right
- places, a treasure box will pop
- out of thin air.[newPageAwaitInput] Anything like this happen to you?[newPageAwaitInput] These treasure boxes are known as
- “Surprise Boxes”, because they
- appear out of nowhere.[endAwaitInput] You think you've found them all,
- but there are still [0x7000] left.[endAwaitInput] Wow, you've found them all.[endAwaitInput] Welcome to The Juice Bar![newPageAwaitInput] Are you a card member?[newlineAwaitInput] Even Toadofsky has a membership
- here![endAwaitInput] May I help you?[endAwaitInput] Sorry, you're limited to this menu
- if you don't have a current
- membership card.[endAwaitInput] Ah! An “Alto Card” holder![newlineAwaitInput] What would you like?[endAwaitInput] Hmm.
- A “Tenor Card” holder, huh?[newlineAwaitInput] What'll it be?[endAwaitInput] Wow, a “Soprano Card” holder![newlineAwaitInput] What can I get you?[endAwaitInput] Can't wait to graduate from music
- school and start composing![endAwaitInput] I haven't had one made yet.[endAwaitInput] I've got this dream...[newlineAwaitInput] of becoming a composer...[newPageAwaitInput] I want to be as famous as
- Toadofsky![endAwaitInput] My favorite song?[endAwaitInput] It’s Frogfucius' suite #18.
- ♪“So La Mi Re Do Re Do Re”.
- Toadofsky’s fond of it, too![endAwaitInput] It’s the Moleville miners' song,
- ♪“Mi Do So Do Re La Ti Do”.
- It’s got soul![endAwaitInput] You're a first timer, aren't you?[newlineAwaitInput] Listen up. The green coins you find
- periodically are Frog Coins.[newPageAwaitInput] Accumulate them and you can buy
- items at Tadpole Pond.[endAwaitInput] Hi!
- Welcome to Tadpole Pond.[newlineAwaitInput] Who are you?[endAwaitInput] It’s the song that the Monstro
- Town star dances to.[endAwaitInput] Mallow, it’s you![newPageAwaitInput] We've heard all about your
- adventures with Super Mario.[newlineAwaitInput] You guys beat up Belome, right?[endAwaitInput]MALLOW: You know about that?[newPageAwaitInput] See Mario, the waterways of
- the world bring news to us here.[newPageAwaitInput] That’s why Grandpa knows
- all the news that’s fit to hear![endAwaitInput] Are you really THE Super Mario?[newPageAwaitInput] Hey everybody!
- You'll never guess who’s here![endAwaitInput] Sorry, Tadpole Pond items are all
- sold out![newPageAwaitInput] Thanks for coming by.[endAwaitInput] Oops, I forgot the rest.[endAwaitInput] I heard your composition, and it's
- pretty good.[endAwaitInput] Hi!
- Can I help you?[endAwaitInput] He’s the real thing!
- But he doesn't look anything like
- I thought he would...[endAwaitInput] They DO say he can jump better
- than a froggie.
- I wonder if it’s only a rumor?[endAwaitInput]FROGFUCIUS: Well, grasshopper...
- What’s new?[endAwaitInput]MALLOW: Grandpa!
- Mario’s been helping me![endAwaitInput]FROGFUCIUS: Welcome![pauseAwaitInput]
- So you are Mario, yes?
- I am Frogfucius.[newPageAwaitInput] You have come to seek wisdom
- from me, have you not?
- I've been waiting for you![newPageAwaitInput] Yes, “Old Wise People” can often
- give good advice...[endAwaitInput]FROGFUCIUS: I know, child.[newlineAwaitInput] That rainstorm we just had...
- that was YOU wasn't it?[endAwaitInput]FROGFUCIUS: But how rude of me!
- Let’s get more comfortable.
- Come along and we'll talk.[newPageAwaitInput]
-        (Clear! Full reverse!)[endAwaitInput] Tadpoles! Don't just FLOAT there!
- Make yourselves useful![pauseAwaitInput]
- Form a bridge for Mario.[endAwaitInput]
-                (Ouch!)[newPageAwaitInput]
-        (Watch it, up there!)[newPageAwaitInput](You're SUPPOSED to make me look
-  like I'm FLOATING here, okay?!)[endAwaitInput]FROGFUCIUS: Yes, come into my
- sanctuary and partake of my
- wisdom, children.[endAwaitInput]FROGFUCIUS: Let’s see...[newPageAwaitInput] That Smithy character that
- appeared at Bowser’s Keep...
- He is quite formidable, yes?[newPageAwaitInput] And, Mario, you wish to rescue
- the princess quickly, do you not?[newPageAwaitInput] But, oh!
- If only you knew the truth![pauseAwaitInput]
- Toadstool is no longer there![endAwaitInput] Patience, young one.[newlineAwaitInput] Let me explain.
- Here is what happened...[endAwaitInput] Whoosh, out of the blue![newPageAwaitInput] The shock sent the three of you
- flying.[newPageAwaitInput] Bowser and Toadstool are still
- lost, somewhere out there.[newlineAwaitInput] Now...[endAwaitInput] You're worried about the princess,
- but first you need to take care
- of Smithy.[newPageAwaitInput] His underlings are wreaking havoc
- in our world![newPageAwaitInput] “Mack”, whom you defeated at
- Mushroom Kingdom, was one of
- them. More will be coming.[endAwaitInput]MALLOW: Grandpa, I almost forgot
- to tell ya something![newlineAwaitInput] We found a star in the castle at
- Mushroom Kingdom.
- Do you know why it was there?[endAwaitInput]FROGFUCIUS: A star, eh...
- ...most interesting.[newPageAwaitInput] This may sound illogical, but I
- believe shooting stars can
- grant wishes...[newPageAwaitInput] And now more than ever, I believe
- they will play a vital role in
- the fight against Smithy.[endAwaitInput]MALLOW: Wow, everything sounds
- so dire and serious.[newPageAwaitInput] I guess Mack was only the first
- of many, Mario. Some of them'll
- make Bowser seem NICE.[endAwaitInput] You were rescuing Toadstool from
- Bowser’s Keep.[newPageAwaitInput] After defeating him, and JUST
- when you were about to free the
- princess...[newPageAwaitInput] You heard a loud “crash”, and
- saw a huge sword split the sky![endAwaitInput]FROGFUCIUS: Mallow, you speak as
- if these things do not concern you.[newPageAwaitInput] You will accompany Mario on his
- adventure, too.[endAwaitInput]MALLOW: Grandpa!
- What are you talking about?[newPageAwaitInput] I'm only a simple tadpole!
- This adventure isn't for me![endAwaitInput]FROGFUCIUS: Mallow, my boy,
- I've kept this from you until now,[pauseAwaitInput]
- but you're...[newPageAwaitInput]
-           [delay][delay][delay][delay] Not a tadpole!!![endAwaitInput] I was sitting here one rainy day,
- enjoying a snack of crickets...[newPageAwaitInput] When I happened to see a basket
- floating down from the falls.[newPageAwaitInput] I peeked inside, and saw a little
- baby staring right back at me!
- The name “Mallow” was written[newPageAwaitInput] on his belt. I felt sorry for the
- little bundle of puff and took him
- in to raise as my own grandchild.[newPageAwaitInput] He had powerful magic, and I knew
- he was more than a piece of fluff.[newPageAwaitInput] I thought,“Surely, this child must
- be from some far off land.”[endAwaitInput]MALLOW: Grandpa...
- You mean, I'm not...a tadpole?[newPageAwaitInput][delay][delay]Sniffle...
-               [delay][delay]sniffle...
-                             [delay][delay]sniffle...[endAwaitInput]FROGFUCIUS: Mallow![newlineAwaitInput] Now is not the time to cry![newPageAwaitInput] Go with Mario on his adventure
- and find your real family.[newPageAwaitInput] Your real mother and father are
- out there, somewhere.[endAwaitInput]FROGFUCIUS: (Psst, Mario)[endAwaitInput] The boy’s magic is sure to come in
- handy on your adventure.
- You'll take him along, yes?[endAwaitInput]MALLOW: Grandpa![newPageAwaitInput] I won't cry anymore.
- I'll go on this adventure with
- Mario and find my real family![endAwaitInput]
-            Say WHAT???
-[endAwaitInput]FROGFUCIUS: Then it is settled.
- You must embark on your adventure
- immediately.[newPageAwaitInput] First, go to “Rose Town” where
- they need your help.[endAwaitInput] That’s right!
- I had forgotten all about it.[newPageAwaitInput] I will give you something for the
- Cricket Pie you brought back.[newPageAwaitInput] [delay]••[delay]••[delay]Ah, I know!
- You shall have the staff I used
- when I was Mallow’s age.[endAwaitInput]FROGFUCIUS:
- Go to “Rose Town” now, Mallow.
- Luck be with you![endAwaitInput]FROGFUCIUS: The “Froggie Stick”
- will come in handy.[newlineAwaitInput] Do not forget to equip it.[endAwaitInput]FROGFUCIUS: Grasshopper, do you
- not think it rude to stand on my
- dining table?[endAwaitInput] Welcome to the “Frog Coin”
- emporium![endAwaitInput]TOADOFSKY: Hmmm.
- Was that your song I just heard?[endAwaitInput] It won't do at all!
- It is not the masterpiece I am
- trying to compose![endAwaitInput] You're on your way to composing![endAwaitInput]
-       So La Mi Re Do Re Do Re [endAwaitInput]TOADOFSKY: You want a music
- lesson from MOI?[newlineAwaitInput]  [startSelection] (Yes)
-  [startSelection] (Nope)[endAwaitInput] Let’s start by reading “notes”.
- See the five lines?[newPageAwaitInput] Between the second and third lines
- from the top, lies “Do”.[newPageAwaitInput] Keep going up, and the notes are
- “Do Re Mi”. Go down and you'll
- get “Do Ti La So Fa”.[endAwaitInput] Well, be that way![endAwaitInput]              Play notes by
-       jumping on the tadpoles.[newlineAwaitInput]        Let’s hear your melody.[endAwaitInput]FROGFUCIUS: (Snif) It will be quiet
- around here with Mallow gone.[newlineAwaitInput] Maybe a snack will cheer me up.[endAwaitInput]TOADOFSKY:
- Is that something you composed?[endAwaitInput] It’s not what I'm looking for.
- It won't do at all.[endAwaitInput] No, that’s not the right melody.[endAwaitInput] That sort of resembles the melody
- I'm thinking of.[endAwaitInput] That’s remarkably similar to what
- I have in mind.[endAwaitInput] Now that is amazingly close to my
- dream composition![endAwaitInput]TOADOFSKY: That’s it!![newPageAwaitInput] This is the melody I've been
- looking for.
- Thank you for the inspiration![endAwaitInput] Please take this as a token of my
- gratitude.[endAwaitInput] I am the composer, Toadofsky.[newPageAwaitInput] I am trying to create my next
- masterpiece but I've got
- composer’s block.[endAwaitInput]  They won't play with strangers,
- so go and meet Frogfucius first.[endAwaitInput]TOADOFSKY: If I ever need help with
- my compositions again, I'll look
- for you here.[newlineAwaitInput] Until then, adieu![endAwaitInput]FROGFUCIUS: Looks like your help
- is needed in “Moleville”.
- Go and see what you can do.[endAwaitInput]      Received a “Honey Syrup”[endAwaitInput]       Received a “Flower Tab”[endAwaitInput]          Found “Zoom Shoes”[endAwaitInput]         Received an “Amulet”[endAwaitInput]FROGFUCIUS: I have been thinking.
- Is it possible that the bride at
- Booster’s Tower is the princess?[endAwaitInput]       Received an “Alto Card”[endAwaitInput]TOAD: Phew, my life was flashing
- before my eyes for a second there.[newlineAwaitInput] Here’s a little something in return.[endAwaitInput]TOAD: Boy that was a close call.[newlineAwaitInput] Here’s a token of my appreciation.[endAwaitInput]TOAD: Thanks for saving me!
- In my rush to tell the Chancellor,
- I didn't watch where I was going.[newlineAwaitInput] Mushroom Kingdom’s just ahead,
- Mario. Let’s hurry there.[endAwaitInput]              Get an item![endAwaitInput] Ahem, then please allow me.[newlineAwaitInput] In order to use items, open up
- the “Menu” screen.[newlineAwaitInput] With it, you can check your status
- and coin count.[newPageAwaitInput] Push “X” to open it.[end]      Received a “Tenor Card”[endAwaitInput]       Received a “Mushroom”![endAwaitInput]    Received three “Mushrooms”![endAwaitInput]             Got a “Chomp”[endAwaitInput]     Received a “Soprano Card”[endAwaitInput]TOAD: Mario!
- You're forgetting something.
- Come with me and I'll show you.[endAwaitInput]TOAD: Before you start off, it's
- best to jump up on these boxes
- and “Save” as often as possible.[newPageAwaitInput] In case of an emergency, you can
- always start over from the last
- place you saved.[endAwaitInput]TOAD: Hey Mario![newlineAwaitInput] Lots of people use something
- called a “door” to go in and out
- of their houses...[newPageAwaitInput] Anyway, I came by to pick up
- Toadstool, since she’s a bit late.[endAwaitInput]TOAD: Hey I thought the princess
- was here with you, Mario!
- So where is she?[endAwaitInput] Mario, what’s with the silent
- treatment?![newlineAwaitInput] You're not telling me something.[newPageAwaitInput] [delay][delay]It’s Bowser again, isn't it?[newlineAwaitInput] Oh no, here we go again![newPageAwaitInput] Mario, would you please bring her
- back, like you always do?[endAwaitInput]TOAD: If you're tired, just turn off
- the “Fungi Light” for a snooze.[endAwaitInput]TOAD: You're back so soon!
- Did you forget something?[newPageAwaitInput] No?[delay][delay] What happened then?[endAwaitInput]TOAD: The bridge to Bowser’s Keep
- is out now?[newlineAwaitInput] Just wonderful...[newPageAwaitInput] We must inform the Chancellor of
- Mushroom Kingdom at once!
- Let’s go, Mario.[endAwaitInput]TOAD: Oops, excuse me![newPageAwaitInput] ••[delay]Oh?[pauseAwaitInput]
- That bump on your head reduced
- your “HP” level.[newPageAwaitInput] One of Mushroom Kingdom's
- famous items ought to perk you
- right up![endAwaitInput] Do you know how to use items?
-  [startSelection] (I have no idea)
-  [startSelection] (Of course I do!)[endAwaitInput]        The door won't budge.[endAwaitInput]  They gaze into each other’s eyes.[endAwaitInput]BOWSER: Mario, she’s a bit shy.[newlineAwaitInput] Look the other way, will you?[endAwaitInput]BOOSTER: 
-                [delay][delay]A...[delay][delay]ha![endAwaitInput]TOADSTOOL: What should we do?![newPageAwaitInput] Booster is returning, isn't he?[newlineAwaitInput] I know! Hide somewhere and wait
- until he opens the door.[endAwaitInput]BOOSTER: Right![newPageAwaitInput] Now, about the girl in my life,
- who thinks I should marry her?[newPageAwaitInput] Well?[newlineAwaitInput] Speak up![endAwaitInput]SNIFIT 2: A wedding ceremony
- would make a great PARTY![endAwaitInput]BOOSTER:
- Ah, a party![newlineAwaitInput] We haven't had one of those.[newPageAwaitInput] It could be fun![newlineAwaitInput] So...what is a party?[endAwaitInput]SNIFIT 3: Well, you drink punch
- and eat CAKE!
- ...I think.[endAwaitInput]SNIFIT 1: Boss, shouldn't we be
- concentrating on the girl?[endAwaitInput]BOOSTER: Hmmm...[newlineAwaitInput] Drink punch...eat cake...?
- It sounds...complicated.[newPageAwaitInput] I don't know if I can muster the
- energy to do it...[newlineAwaitInput] Let’s walk through it once!
- It’s wedding rehearsal time![endAwaitInput]SNIFIT 1: 
- We will now begin the ceremony.[newPageAwaitInput] Walk down the aisle with the...
- (hey someone make her smile!)
- beautiful bride-to-be.[endAwaitInput]BOOSTER: Wait![newlineAwaitInput] Mario always shows up about now
- to ruin the fun.[newPageAwaitInput] We've got to take that into
- consideration, you know.[newlineAwaitInput] Someone go and get the Mario doll.[endAwaitInput]         You can move freely
-         behind the curtains.[newPageAwaitInput]   Good luck hiding from Booster
-            and his Snifits.[endAwaitInput]SNIFITS: 
-              It isn't here.[endAwaitInput]BOOSTER: Of course it’s here!
- You lazy slobs couldn't find water
- if you were fish![endAwaitInput] It’s behind those curtains![newlineAwaitInput] Number one, you go and look.[endAwaitInput]SNIFIT 1: 
-          Nope, it isn't here.[endAwaitInput]BOOSTER: I wouldn't go and lose
- my Mario doll, you idiots![newPageAwaitInput] Argh!![newlineAwaitInput] Number two, YOU look, too![endAwaitInput]BOOSTER: We can't give up!
- It’s gotta be here somewhere.[newPageAwaitInput] Number 3!
- It’s your turn![endAwaitInput]SNIFITS 1 & 2: 
-          Nope, it isn't here.[endAwaitInput]BOOSTER: Wait a minute![endAwaitInput]BOOSTER: 
- This is better than a party![newlineAwaitInput] Look out, 'cause here I come![endAwaitInput]BOOSTER: Wait [pauseAwaitInput]a [pauseAwaitInput]second![newlineAwaitInput] It’s right up there.
- I found the Mario doll![endAwaitInput]BOOSTER: But we'll NEVER be
- able to reach it up there.[newlineAwaitInput] Oh! The sorrow![endAwaitInput] What AM I gonna do...?[endAwaitInput] I'm about to lose it...sniffle...[endAwaitInput]BOOSTER: Goodness![newlineAwaitInput] You're so kind!
- Thank you for getting my doll.[endAwaitInput] I'd like to reward you.[newlineAwaitInput] Here, take this.[endAwaitInput]           Got an “Amulet”[endAwaitInput]BOOSTER: May happiness follow
- you, wherever you go.[endAwaitInput] All right! Enough is enough...[newlineAwaitInput] Cancel the rehearsal, we're going
- on with the show![endAwaitInput]BOOSTER: Here’s the password![newPageAwaitInput]
-               [delay][delay][delay][filename]
-[endAwaitInput]         Need the key to get in[endAwaitInput]          Got the “Room Key”[endAwaitInput]BOOSTER: G'na!!![newlineAwaitInput]               It’s Mario![newPageAwaitInput] That’s impossible!
- He made it past all my traps...[newlineAwaitInput] But we're gonna trip him up![endAwaitInput]BOOSTER: I'd love to stay and
- chat, but I've a schedule to keep.[newlineAwaitInput] Move aside so I can open that
- door.[endAwaitInput]BOWSER:
- Booster has such a nice place...
- I miss my fortress...[newPageAwaitInput] I miss the good old days...[newlineAwaitInput] Toadstool screaming in terror,
- Mario rushing in to save her...[endAwaitInput] Oh geez, it’s Mario![newPageAwaitInput] Oops••[pauseAwaitInput] Okay, okay••[pauseAwaitInput] Calm down![pauseAwaitInput]
- Don't let him see you like this![newPageAwaitInput] 
- [delay][delay]    “Hey, how have you been?”[newPageAwaitInput] NO! Not like that, dummy![pauseAwaitInput]
- Wrong tone!
- It needs more...confidence![endAwaitInput]BOWSER: ...[newlineAwaitInput] That voice! It’s Toadstool![newPageAwaitInput] I thought she got away, but
- she’s been stuck HERE...
- Mwa, ha, ha![newPageAwaitInput] Well...[newlineAwaitInput] I guess I'll be returning to my
- castle now.[endAwaitInput] YOU!!
- What're YOU doing HERE?![newPageAwaitInput] If...[pauseAwaitInput] Toadstool were at my
- castle waiting to be rescued...[newlineAwaitInput] She'd be crying like a baby![endAwaitInput]
-        Outta my way, shortie![endAwaitInput]               It’s locked[endAwaitInput]BOWSER: What!?
- You're STILL here?[newPageAwaitInput] That look on your face...[newlineAwaitInput] Mwa, ha, ha!
- I get it now![endAwaitInput]BOWSER: Yeah...
- I'm a piece of work, ain't I?![newPageAwaitInput] All this power, AND looks too!
- I know, I know! You're thinking,[newPageAwaitInput] “A big strong guy like him would
- be great to have along!” right?[newlineAwaitInput] I'm gonna do something I may
- regret later...![endAwaitInput] I'll let you join the “Koopa Troop”.
- You can thank me later...[endAwaitInput]     Mario and his friends have
-     joined the “Koopa Troop”![newlineAwaitInput]     (Or so they're pretending)[newPageAwaitInput] 
-      “Bowser” joins the group[endAwaitInput]BOWSER: You can turn around now.[endAwaitInput]BOWSER: She says she’s been
- locked up ever since she took a
- bite out of Booster. So now...[newPageAwaitInput] She wants to help us stir up a
- little trouble!
- Mwa, ha, ha!![endAwaitInput]BOOSTER: Hey everybody![newlineAwaitInput] Did you see someone behind the
- curtains, or was it just me?[newPageAwaitInput] How creepy!
- It’s a pain, but I think we should
- check one more time.[endAwaitInput]BOOSTER: Well?[newlineAwaitInput] I really think someone’s behind
- those curtains![newPageAwaitInput] I think one more peek is necessary.[endAwaitInput]          Got the Room Key[endAwaitInput]      Take a look at Booster's
-   family portraits in order from
-     the oldest to the youngest.[endAwaitInput]  Remember to respect your elders.[endAwaitInput]TOADSTOOL: Oh?[endAwaitInput] Did I just hear some voices?[newPageAwaitInput] It couldn't be...![endAwaitInput] I can't believe it![newlineAwaitInput] It's...Mario![endAwaitInput]
-             [delay][delay] Mario~!!![newPageAwaitInput]
-            [delay][delay] I'm up here![endAwaitInput]TOADSTOOL: Mario![newlineAwaitInput] You DID come to rescue me.
- I was so frightened and lonely.[newPageAwaitInput] [delay][delay]But now that you're here...[endAwaitInput]TOADSTOOL: The door won't open?[newPageAwaitInput] I think we need Booster’s spell
- to undo the lock on it.
- Oh, what should we do?[endAwaitInput]BOOSTER:[newlineAwaitInput] Ah~[pauseAwaitInput] HA[pauseAwaitInput][delay]~[delay]~[delay]~[delay]~[delay]~[delay]~[delay]~[delay]![delay][endAwaitInput]ELDER: Found the pirate ship?[newlineAwaitInput] Don't give up now, the star is
- almost in your hands.[endAwaitInput] This is...the inn.
- You may stay...for free.[newlineAwaitInput]  [startSelection] (Thanks)
-  [startSelection] (I'll pass)[endAwaitInput] Okay...[endAwaitInput] They keep...spinning and spinning.[endAwaitInput] Don't...tell me.
- You want...supplies.
- I know.[endAwaitInput] Thank you...very much.[endAwaitInput] If you...want to enter the ocean,
- jump into...the whirlpools.[endAwaitInput] You will find the village elder...
- in his house. He is...the most
- respected person here.[endAwaitInput] You're...collecting stars, right?
- Only...three more to go.[endAwaitInput]ELDER: Finally![newlineAwaitInput] It took you long enough![newPageAwaitInput] I am the ELDER of this village.[newPageAwaitInput] I got to my exalted station in life
- by...pleasing my superiors,
- which is something I do well.[newPageAwaitInput] A star has fallen into the ocean.
- I need it for...a certain purpose.[newlineAwaitInput] You...must find it for me.[endAwaitInput] In the middle...of the ocean is a
- pirate...ship.[newlineAwaitInput] You'll find a...I mean, there’s a...[endAwaitInput] ...A pirate lives there!
- His name is...“Jonathan Jones”...
- ...[pauseAwaitInput]He isn't...very nice...[endAwaitInput] A star...has fallen into the sea.[newlineAwaitInput] The pirate...probably...[endAwaitInput] I mean that...man...
- ...Uh...“Jonathan Jones”...
- probably...has it.[pauseAwaitInput] He’s nasty.[endAwaitInput] I'm...just a...customer.[endAwaitInput]ELDER: You'll find the star in
- “Jonathan Jones'” territory.
- Don't worry, you can beat him.[newPageAwaitInput] (At least I THINK you can.)
- Hurry and bring back the star![endAwaitInput] You...may not enter here.
- This is...a restricted area.[endAwaitInput] There is nothing of interest here.
- Don't...bother looking inside.[endAwaitInput]                   Hey![newlineAwaitInput]          Someone’s in there.[endAwaitInput]ELDER: Eee hee hee![newlineAwaitInput] You found the star!
- Well done![newPageAwaitInput] But your journey ends here.
- You are so gullible!
- Don't you know who I am?[newPageAwaitInput] I'm “Yaridovich”, a member of
- Smithy’s gang.[newlineAwaitInput] Shocked?[newPageAwaitInput] It’s no wonder!
- My impersonation of an ordinary
- person was flawless.[endAwaitInput]YARIDOVICH: Your search for the
- stars has worried Smithy.[newPageAwaitInput] So if I take that star back to him,
- I'll earn brownie points.
- THIS is the way to get ahead![endAwaitInput] It’s futile to try and fight me.
- Just hand it over, nice and easy.[newlineAwaitInput]  [startSelection] (Okay)
-  [startSelection] (Get serious!)[endAwaitInput] So that’s how you want to play it?[newlineAwaitInput] What do you think will happen
- to the real inhabitants of
- Seaside Town?[endAwaitInput]REAL ELDER: 
- What are you doing?[newlineAwaitInput] No! Don't do that![newPageAwaitInput]
-           [delay]No please stop![newPageAwaitInput]
-[delay][delay][delay][delay]            ••[delay]ACK![delay]••[delay]••[delay]••[endAwaitInput]YARIDOVICH: Now isn't it a shame
- for an innocent old man to be
- tickled...like this?[endAwaitInput]REAL ELDER: 
- No you wouldn't![newlineAwaitInput] The two of you are going to???[newPageAwaitInput] [delay][delay]Nooo!
- Please not there![newPageAwaitInput]
-[delay][delay][delay][delay]        ••[delay]••[delay]Aiee[delay]••[delay]••[delay]••[delay]ee••[delay]••[delay]••[delay][endAwaitInput]REAL ELDER: 
- Harumph![newlineAwaitInput] You can't treat me this way![newPageAwaitInput] [delay][delay][delay][delay][delay][delay]Ayaaaaaaaaaaaaaaaiiiiiieeeeeeeeee
- aaaaaaaaaaaaaaaiyaaaaaaaaaaaaa
- aaaaaaaaaaaaaaa[delay]e[delay]e[delay][delay]e[delay][delay]e[delay][delay]••[delay][delay]••[newPageAwaitInput] 
-        [delay][delay]I can't bear[delay] this[delay]![delay]••[delay][delay][delay]••[endAwaitInput]REAL ELDER:
- [delay]••[delay]••[delay]••[delay]••[delay]••[delay]••[endAwaitInput]YARIDOVICH: Eee hee hee![newlineAwaitInput] And to think I got the star without
- even soiling my hands![newPageAwaitInput] I'm such a genius, it scares me
- sometimes.[newPageAwaitInput] No wonder I'm so important![newPageAwaitInput] All right everyone, listen up.
- We're returning to the castle![newlineAwaitInput] Our ride should be here about now.[endAwaitInput]YARIDOVICH: Blade’s late.[newlineAwaitInput] What’s taking him so long?[newPageAwaitInput] We need to get out of here.[endAwaitInput]YARIDOVICH: This is JUST great![newlineAwaitInput] Mario caught up with us.[newPageAwaitInput] Only one thing we can do now.
- Although we may rust a little,
- we'll have to swim for it.[endAwaitInput]JOHNNY: Not so fast there![newlineAwaitInput] That star’s a gift to me mate,
- Mario.[newPageAwaitInput] You spineless dogs have no
- code of honor![newPageAwaitInput] We'll make you walk the plank![endAwaitInput]YARIDOVICH: Eee hee...![newlineAwaitInput] I guess we'll have to take our
- disguises off now...[newPageAwaitInput] 
-          GROUP formation![endAwaitInput] Johnny, maybe we should leave
- Mario the pleasure of wrapping
- things up here.[endAwaitInput]          Got the “Shed Key”[endAwaitInput]               It’s locked[endAwaitInput] Welcome to “Beetles Are Us”![newPageAwaitInput] We run a beetle business here.[newPageAwaitInput] Want an explanation?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] Ok, I'll explain the system.[newPageAwaitInput] First you need to purchase a
- “Beetle Box”, which will cost you
- 50 coins.[newPageAwaitInput] Then go to Booster Hill, where
- there are many beetles.[newPageAwaitInput] If you bring back the Beetle Box
- filled with beetles, you can trade
- them in for coins, etc.[newPageAwaitInput] Check the menu list for more
- information.[endAwaitInput] Please come again.[endAwaitInput] Welcome to “Beetles Are Us”![endAwaitInput] If this is your first time, you need
- to pay an initiation fee.[newPageAwaitInput] The fee is 100 coins.
- Together with the 50 coins for
- the Beetle Box, that’s 150 coins.[newPageAwaitInput] Is it a deal?
-  [startSelection] (Ouch! Well, okay...)
-  [startSelection] (No, I'll pass)[endAwaitInput] Come back with more CASH![endAwaitInput] Thank you.[newPageAwaitInput] I need to see some ID please.[endAwaitInput] Everything looks fine.[newPageAwaitInput] Here’s your Beetle Box.
- Good luck, and happy hunting![endAwaitInput] You haven't even caught one?
- Come on! Get serious![endAwaitInput] A Beetle Box costs 50 coins.[newlineAwaitInput]  [startSelection] (Okay)
-  [startSelection] (No thanks)[endAwaitInput] Well then good luck to you![endAwaitInput] Good job![newlineAwaitInput] You made [0x7000] coin(s).[endAwaitInput] Oh wow![newlineAwaitInput] You've got a Golden Beetle, too!
- Here’s one Frog Coin.[endAwaitInput] Good doing business with you.[endAwaitInput] Phew, thanks so much![newlineAwaitInput] I've had enough of cramped,
- dirty old places like this.[endAwaitInput] Hey fella![newlineAwaitInput] You got us out of a bind!
- Peace brother![endAwaitInput] It was mighty unpleasant in here.[newlineAwaitInput] Thanks for helpin' us out.[endAwaitInput] Thank you![newlineAwaitInput] Yeah, thanks a lot![newPageAwaitInput] Be sure to stop by.[newlineAwaitInput] Yeah, stop on by.[endAwaitInput] Thank you for freeing us.[newPageAwaitInput] I've got to get back to work now,
- but stop by the inn![newlineAwaitInput] See ya there![endAwaitInput]ELDER: Ah, Mario.[newPageAwaitInput] Thank you for saving our little
- town of Seaside.[endAwaitInput] You exposed the fake townspeople,
- and gave up your star to save us![newPageAwaitInput] Please take this with our thanks.[endAwaitInput] They did torture me a little,
- but it’s nothing to worry about.[newPageAwaitInput] Here, this is for you.[endAwaitInput] Although they tortured me, I'm
- sure it was nothing compared to
- your trials, Mario.[newPageAwaitInput] I'd hate to have to go through
- that tickle torture again, though![newPageAwaitInput] I've gotta leave now, so please
- take this.[endAwaitInput] Being the most important person
- in the village, it was inevitable
- that I would be tortured.[newPageAwaitInput] Are you immune to tickle tortures,
- Mario?[newPageAwaitInput] Oh yes...this is for you.
- Please take it.[endAwaitInput]      Received a “Flower Box”![endAwaitInput]      Received a “Flower Jar”![endAwaitInput]      Received a “Flower Tab”![endAwaitInput]            Received 1 coin![endAwaitInput]       “Beetle Bug Price List”
-          Male •••••• 50 coins
-           Female ••••  1 coin[newlineAwaitInput]  “Golden Beetle” ••••  1 Frog Coin[endAwaitInput] Hi, Mario![newPageAwaitInput] We've got a lot of health foods
- at our store.
- You gotta treat your body right![endAwaitInput] Welcome to our store.
- We encourage healthy lifestyles.[endAwaitInput] Hey there!
- Remember me from the mines?[newlineAwaitInput] I found some neat stuff and I'm
- opening up a “Miner’s Store”.[newPageAwaitInput] Come and take a look at what
- I've got to sell.[endAwaitInput] Oh hello there![newlineAwaitInput] You were so brave to rescue us,
- and I'm so thankful...[newPageAwaitInput] But listen...maybe it’s time you
- thought a little more about
- what you...wear...[newPageAwaitInput] Accessorizing is big business
- these days!
- See anything you like here?[endAwaitInput] Let’s see if we can't make you
- look a little more snazzy.
- That blue-collar look is SO dated! [endAwaitInput] Good to see you again.[newlineAwaitInput] I'll show you my inventory.[endAwaitInput] Please come in and browse.
- I'm running an armor shop![endAwaitInput] Welcome to my weapons shop.[endAwaitInput] Item #2: A “Mystery Egg”.
- I have no idea what it does!
- It sort of grows on ya, huh?[newlineAwaitInput] It’s yours for 200 coins.
-  [startSelection] (Okay)
-  [startSelection] (No thanks)[endAwaitInput] That’s all I've got for now.[endAwaitInput] You need more coins![newlineAwaitInput] I gotta eat, you know![endAwaitInput] Item #1: A “Lucky Jewel”!
- It’s sure to bring you plenty of
- good luck.[newlineAwaitInput] I'll sell it to you for 100 coins.
-  [startSelection] (It’s a deal)
-  [startSelection] (I'll pass)[endAwaitInput] Nice doing business with you.
- Here you go![endAwaitInput] Oops, I didn't realize I was out
- of inventory.[newPageAwaitInput] Check back with me occasionally.
- You may find something you like![endAwaitInput] Item #3: A “Metal Plate”.[newlineAwaitInput] Don't know what it’s used for,
- but I'll sell it for 300 coins.
-  [startSelection] (I'll take it)
-  [startSelection] (No thanks)[endAwaitInput] Mario, how nice of you to stop by.[newPageAwaitInput] It’s quite a trek from your place,
- isn't it?[newPageAwaitInput] Out here, there aren't many people
- passing through, so it gets awful
- lonely sometimes...[endAwaitInput] Please rest up before you go.
- It'll only cost you 15 coins.[newlineAwaitInput]  [startSelection] (Okay)
-  [startSelection] (No)[endAwaitInput] Okay, some other time then.
- Have a safe trip.[endAwaitInput] You don't have enough coins?[newPageAwaitInput] That’s ok, just pay me whatever
- you can.
- I know you need to rest.[endAwaitInput] Hello there.[newlineAwaitInput] You're Mario, right?[newPageAwaitInput] Do you remember me?
- We met at Tadpole Pond, when I
- was still a tadpole.[newPageAwaitInput] I've graduated from Frogfucius'
- school, and now I'm searching for
- the meaning of life.[endAwaitInput] It’s been so quiet around here,
- it’s almost eerie...
- Is something going on?[newPageAwaitInput] [delay][delay][delay]It probably doesn't concern me.
- But if you have any Frog Coins,
- I've got some neat items to sell.[endAwaitInput] Good to see you again.
- Did you have a chance to
- accumulate many Frog Coins?[endAwaitInput] It was really quiet around here
- until a little while ago.
- What happened?[newPageAwaitInput] [delay][delay][delay]That reminds me, do you have
- any Frog Coins?
- I've got some special items to sell.[endAwaitInput]ELDER: Smithy and his gang have
- disrupted business around here.[newPageAwaitInput] Why don't you help us out and do
- some shopping before you leave?[endAwaitInput]ELDER: Mario, if it’s a star that
- you're looking for, I may be able
- to help you.[newPageAwaitInput] At the far side of “Land’s End”
- is a town made up of reformed
- monsters.[newPageAwaitInput] A mouse came by the other day,
- and I overheard him boasting
- about a “star” of theirs.[newPageAwaitInput] I don't know exactly where this
- town is located, but if you follow
- the road, you'll get there.[endAwaitInput] By the way, have you met my, uh,
- long-term houseguest, who’s taken
- over my second floor?[endAwaitInput] Speaking of items, it looks like
- you've got too many and can't
- carry them all.[endAwaitInput] Oops, sorry I'm all out of items.[newPageAwaitInput] In other words,
-          “Come back later!”[newlineAwaitInput] So...good day to you![endAwaitInput] Hey, hey, HEY!![newlineAwaitInput] I'm the Mushroom Boy![newPageAwaitInput] Did you know that hidden amongst
- the regular mushrooms, are some
- special ones? Unreal huh?[newPageAwaitInput] I'll give you items in return for
- those special mushrooms.[newPageAwaitInput] But you've got to taste them to
- find out what kind they are.[newlineAwaitInput] So I'll take a nibble first.[newPageAwaitInput] I'm hoping for a special mushroom,
- but even if it isn't, at least I'll
- get a meal out of it.[endAwaitInput] You have any mushrooms?
-  [startSelection] (Yes)
-  [startSelection] (Nope)[endAwaitInput] Hey, far out!
- Munch munch munch.[endAwaitInput] That was just a regular mushroom!
- Thanks for the snack.[endAwaitInput] Ooh![newlineAwaitInput] This one’s a “Berry Mushroom”![newPageAwaitInput] I'll give you a “Maple Syrup”.
- Oh boy, I'm stuffed.[endAwaitInput] All right![newlineAwaitInput] Like, this is unreal!
- It’s a “Rippin Mushroom”.[newPageAwaitInput] So I'll give you a “Rock Candy”.
- Hey thanks a lot![endAwaitInput] Whooeee![newlineAwaitInput] This is most excellent!
- It’s a “Flower Mushroom”.[newPageAwaitInput] I'll give you a “Flower Tab” for it.
- Hey, thanks, dude.[endAwaitInput] See you around, man.
- Come again, all right?[endAwaitInput] Hey you don't have any mushrooms.[endAwaitInput]      Received a “Maple Syrup”[endAwaitInput]      Received a “Rock Candy”[endAwaitInput]       Received a “Flower Tab”[endAwaitInput] Would you like an explanation on
-       how to “Switch” allies?[newlineAwaitInput]  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] Oh, I see.[newlineAwaitInput] You're just so well-traveled and
- experienced, Mario![endAwaitInput]TOAD: ... and that’s how it’s done.[newlineAwaitInput] Now you can get a boost whenever
- you're feeling tired.[endAwaitInput] [delay]Uh, now why did I rush back?
- I had...something to tell you.[endAwaitInput] Ack, I remember![newlineAwaitInput] I came to warn you that Mushroom
- Way is swarming with monsters![newPageAwaitInput] I just barely made it back here
- in one piece!
- Mario, please do something.[newPageAwaitInput] [delay]Perhaps I can help.
- Do you know about “Timed Hits”?[newlineAwaitInput]  [startSelection] (No)
-  [startSelection] (Yes)[endAwaitInput] Okay, allow me to explain.[newlineAwaitInput] First we'll enter a battle.[endAwaitInput] Hey, you better watch out!
- He knows about Timed Hits.[newPageAwaitInput] He’s gonna punch your lights out![endAwaitInput]TOAD: ...and there you are![newlineAwaitInput] Now, at least you have a fighting
- chance against those monsters![endAwaitInput] That’s right![newlineAwaitInput] We need to tell the Chancellor
- about Toadstool![newPageAwaitInput] I'll see you over at Mushroom
- Kingdom.[newPageAwaitInput] Just in case, take these with you.[endAwaitInput] He’s got more bark than bite, huh?[endAwaitInput]
-         Thanks for coming by.[endAwaitInput]
-            See you around.[endAwaitInput]         Got the “Temple Key”[endAwaitInput] You there!
- Rumor has it that you're quite
- an accomplished jumper.[endAwaitInput] I may be out-jumped,
- but you're totally out-pumped![endAwaitInput] ...The strong, silent type, eh?[endAwaitInput] Don't you dig these vibes?[endAwaitInput] Hi, I'm The Big Boo.[endAwaitInput] And I'm Dry Bones...[endAwaitInput] Nice to meet ya! I'm Greaper.[endAwaitInput]    We are the 3 “Musty Fears”![endAwaitInput]GREAPER:
- He’s sleeping.[endAwaitInput]DRY BONES:
- Boy, he sure is.[endAwaitInput]THE BIG BOO:
- Check those bubbles
- coming out of his nose![endAwaitInput]MONSTERMAMA:
- So! You wanna go there?
- Ha! You're an open book![newPageAwaitInput] Ok, here’s what you need to do.
- There’s a secret passage to the
- sky at...Bean Valley![newPageAwaitInput] But first you must scale the cliff
- beyond the desert to get there.[newPageAwaitInput] Since you're such a nice guy, I'll
- introduce you to someone that can
- help you.[endAwaitInput]MONSTERMAMA: Starbees...?[newlineAwaitInput] Oh, Star Piece!
- Nope, not familiar with 'em.[newPageAwaitInput] So you came all the way out here
- to search for a Star Piece?
- It must be REALLY important.[newPageAwaitInput] This is the last place on land.
- If you can't find it here...[newPageAwaitInput] 
-       The only place left, is UP![endAwaitInput]MONSTERMAMA:
- So what do you think?
- Isn't our star adorable?[newPageAwaitInput] She’s so talented too!
- Folks come to see her from afar.[endAwaitInput]MONSTERMAMA:
- If it’s a star you're looking for,
- there’s one upstairs.[endAwaitInput]MONSTERMAMA: A star, you say?[newlineAwaitInput] Oh you're here to see OUR star![newPageAwaitInput] She’s upstairs, so feel free to go
- and take a look for yourself.[endAwaitInput]MONSTERMAMA:
- Oh, my! A traveler from afar.[newPageAwaitInput] Welcome to Monstro Town, where
- many of our kind mingle.
- I'm the landlady, Monstermama.[endAwaitInput] Yes, just a minute!
- I'll be there in a second.[endAwaitInput] Oh my![endAwaitInput]BOWSER:
- Goomba, what are you doing here?[endAwaitInput]GOOMBA: Bowser...
- It’s been ages, hasn't it?[newPageAwaitInput] Sorry about going AWOL on you.
- I ran away because I was scared
- to fight Smithy.[newPageAwaitInput] A lot has happened since then,
- but look how far I've come.
- I'm managing this store now.[newPageAwaitInput] And look, here are my little ones.
- Come on, show your manners and
- greet Uncle Bowser.[endAwaitInput]TRIPLETS: 
-           Hi Uncle Bowser![endAwaitInput] Although I can't fight for you,
- I still have some items you can use.[newPageAwaitInput] Maybe you'll find it in your heart
- to forgive me if I can help you get
- equipped![endAwaitInput]TRIPLETS:
- We want to help too!
- Please, please, can we?[endAwaitInput]GOOMBA: What can I get you?[endAwaitInput]GOOMBA:
- Please come back again.
- You'll always get VIP service.[endAwaitInput]BOWSER: ••••[pauseAwaitInput]••••[pauseAwaitInput]Don't worry.[newPageAwaitInput] I'm not angry with you.
- I've got new troops now, and
- we're going to reclaim my castle![newPageAwaitInput] You go on with your life here.[newlineAwaitInput] I wish you the best.[endAwaitInput]  [startSelection] Breeze
-  [startSelection] Gust
-  [startSelection] Blast[endAwaitInput]
-        Sky Troopas, I need you![endAwaitInput]THE BIG BOO: Maybe he can still
- hear us while he’s asleep?[newPageAwaitInput] Hey you! We want to play a round
- of “Find the Flag”.[endAwaitInput]GREAPER: Right!
- We'll each hide a flag
- somewhere around the world.[endAwaitInput]DRY BONES: Yeah.
- Find all three flags, and
- you'll get an awesome prize.[endAwaitInput]3 MUSTY FEARS:
- We'll go and hide the flags.[newPageAwaitInput] See you when we get back![endAwaitInput] They'll be back![endAwaitInput]GREAPER: I'm back![newlineAwaitInput] I hid my flag...
- behind a wooden flower.[endAwaitInput]DRY BONES: I'm hooooome![newlineAwaitInput] My flag’s under a green bed.[endAwaitInput]THE BIG BOO: I'm back![newlineAwaitInput] You'll never guess my spot!
- It’s between “O” and “A”.[newPageAwaitInput] Our flags are invisible, so search
- VERY carefully when you think
- you've found the spot![endAwaitInput]3 MUSTY FEARS:
- Don't forget what we told you![endAwaitInput]GREAPER:
- My flag’s behind a wooden flower.[endAwaitInput]GREAPER:
- So you found my flag, huh?[endAwaitInput]DRY BONES:
- My flag’s underneath a green bed.[endAwaitInput]DRY BONES:
- Oh, you found my flag![endAwaitInput]THE BIG BOO:
- My flag’s between “O” and “A”.[endAwaitInput]THE BIG BOO:
- Whoa, you found my flag.[endAwaitInput]
-        Feel free to rest here.
-        ~The 3 MUSTY FEARS[endAwaitInput]       Found “Dry Bones' Flag”![endAwaitInput]3 MUSTY FEARS: Good job!
- You found all three flags.[endAwaitInput]GREAPER:
- Hey, you're not half bad![endAwaitInput]DRY BONES:
- You did pretty well![endAwaitInput]THE BIG BOO:
- We had a great time, too.
- Thanks for playing our game![endAwaitInput]3 MUSTY FEARS:
- Now the grand prize give-away![endAwaitInput]3 MUSTY FEARS:
- Look! He’s wearing our medal![endAwaitInput] Hey, he’s not wearing our medal![endAwaitInput]SERGEANT FLUTTER:
- What was our flying time, troops?[endAwaitInput]TROOPS:
- ••••8.52 seconds, Sergeant![endAwaitInput]SERGEANT FLUTTER:
- Sky Troopas reporting for duty,
- MA'AM![newPageAwaitInput] We're 0.52 seconds late![newPageAwaitInput] I hold myself personally
- accountable for the delay, Ma'am![endAwaitInput]MONSTERMAMA:
- Still as rigid as ever about your
- rules and regulations?[newPageAwaitInput] No need to bother with the
- protocol around me, Sergeant.
- I've got a favor to ask of you.[endAwaitInput]SERGEANT FLUTTER:
- Yes Ma'am!
- Anything we can do for a civilian.[endAwaitInput]MONSTERMAMA:
- This fellow here REALLY wants to
- get to Bean Valley.[newPageAwaitInput] Could you help him scale the cliff?[endAwaitInput]SERGEANT FLUTTER:
- Understood, Ma'am![newPageAwaitInput] The orders are:
- “Get Mustache over the cliff”![newlineAwaitInput] We WILL succeed![endAwaitInput] We will now deploy ourselves to
- the cliff at Land’s End.[newPageAwaitInput] Troopas, keep a tight formation![endAwaitInput] We have lift off![endAwaitInput]MONSTERMAMA:
- They're odd, but trustworthy!
- Good luck with your search![endAwaitInput]MONSTERMAMA:
-      Hope you find your star![endAwaitInput] Who is it?
- Sorry, but the Sensei isn't in.[endAwaitInput] Oh my gosh![endAwaitInput]BOWSER:
-               Jagger?![endAwaitInput]JAGGER: Bowser!
- I haven't seen you for so long.[newPageAwaitInput] I've been studying here at the
- dojo under the Sensei “Jinx”
- because...[newPageAwaitInput] To tell you the truth, I...
- I knew I couldn't beat Smithy.[newPageAwaitInput] That’s why I'm here now.
- Someday I'm going to return and
- make you proud![endAwaitInput]BOWSER: ••[pauseAwaitInput]••[pauseAwaitInput]Don't worry about me.[newPageAwaitInput] I've got new Troopas now, and
- we're going to take back my castle.[newPageAwaitInput] You stick to your guns![newlineAwaitInput] Train like there’s no tomorrow![endAwaitInput]JAGGER: My Sensei is out right
- now, but he'll be back shortly.[newPageAwaitInput] In the meantime, will you accept a
- challenge from me?[newlineAwaitInput]  [startSelection] (Sure)
-  [startSelection] (No)[endAwaitInput]JAGGER: Wow!
- I'm flattered to think that YOU'RE
- afraid of me.[endAwaitInput]JAGGER: Great!
- You know that I'm not going to
- make it easy for you, right?[endAwaitInput]JAGGER: Yea! I did it!
- I never thought I'd beat Mario![newPageAwaitInput] You didn't let me win did you?
- Come back anytime, and we'll try
- it again if you want.[endAwaitInput]JAGGER: Yikes!
- I guess that was to be expected.[newPageAwaitInput] Mario, you're a top-notch fighter![endAwaitInput]???:
- You did well for your inexperience,
- Jagger.[endAwaitInput]JAGGER:
- Sensei!
- Have you been here all along?[endAwaitInput]JINX: Hmmm.
- You felt my Ki, didn't you?
- Not bad for a novice![endAwaitInput]JINX: Your fighting style...
- It isn't as foolproof as you think.[endAwaitInput]JINX: You wish to challenge me?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]JAGGER:
- Now this should be interesting.
- Can you beat THE master, Mario?[endAwaitInput]JINX: Tsk tsk.
- Afraid are we?[endAwaitInput]JINX: All right.
- Let’s see what you're capable of.[endAwaitInput]JINX:
-    I'll accept a challenge any day.[endAwaitInput]JINX: Do you know what your weak
- point is? You haven't put in
- enough training time.[newPageAwaitInput] But don't worry, in time you'll
- grow stronger.
- Come back after you level up.[endAwaitInput]JINX: All right, you asked for it.
- And no crying if you get hurt![endAwaitInput]JINX: Watch closely, Jagger.
- You're about to see your Sensei
- in action.[endAwaitInput]JINX: I guess I underestimated you.
- You pack quite a punch![newPageAwaitInput] But don't let it go to your head,
- because I let you HAVE that round.
- Let’s have a rematch.[endAwaitInput]JINX: Still haven't had enough?[newPageAwaitInput] It isn't often that I have someone
- this competitive to spar with![newPageAwaitInput] All right, this match will be the 
- one that counts, since I'm placing
- my reputation on the line![endAwaitInput]JINX: How disappointing!
- Running away during the middle of
- a match?[newPageAwaitInput] Come back when you've leveled up
- sufficiently, and we'll try again.[endAwaitInput]
-                Greetings.[newPageAwaitInput]
-  I am Culex, Dark Knight of Vanda.[newPageAwaitInput] I have crossed into this dimension
-     to fight for the Dark Mage.[newPageAwaitInput]   But this world is uninhabitable
-          for me and my kind.
-   I must return to my own world.[newPageAwaitInput]  Before I go, though, I would like
- to challenge your strongest knight.[newPageAwaitInput]    Will you accept my challenge?[endAwaitInput] You will enter combat against me?[newlineAwaitInput]   [startSelection] (Yes)
-   [startSelection] (Uh...)[endAwaitInput]      You are wise to hesitate.[newPageAwaitInput]   Without any weapon or armor,
-         you have no chance.[endAwaitInput]CULEX: 
-    You have returned to accept
-             my challenge?[newPageAwaitInput]        Now will you fight me?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]                  Ahhhh![newlineAwaitInput]              Your spirit••••
-             ••••is strong![newPageAwaitInput]  
-       Thank you, brave knight.[newPageAwaitInput]     I will treasure this memento
-          of my journey here.[newPageAwaitInput]  Perhaps in another time, another
-   game, we may have been mortal
-               enemies...[newPageAwaitInput]  Let us part as comrades in arms.[newPageAwaitInput]                Take this.[newlineAwaitInput]           Treasure it as a
-        keepsake of our fight.[endAwaitInput]
-                En garde![endAwaitInput]TOADOFSKY: 
-           Okay, here we go![newPageAwaitInput] Listen to this, it’s our song![endAwaitInput]TOADOFSKY: So what do you think?[newlineAwaitInput]  [startSelection] (Let’s hear it again)
-  [startSelection] (I want to recompose it)
-  [startSelection] (Never mind)[endAwaitInput] All right, let’s hear it again.[endAwaitInput] To recompose the song, just jump
- on the froggies.[endAwaitInput]ê¿ëÿ×ÿ¶¯ÿßqùÖ  °→♥ºÌÐä~···×»:Ñý%×¯ß÷óóoï↑%*áþÑÿº¹Ù©ÖÿËÙ±¿ß^³ûÎ÷ÿÿý.*`<<Ý'<ß;<þ÷ÿòßÿïÿÏËÿÊÿûÌÎüÈ£Â_bTÊTèpVÏÊ×þêÿÏ}Ê『êÿÞ and Â I Â[startSelection]ÊäÉÔáÀÅxÉ ÉßÍ÷Ë~È}ë「ËþíÿÉýû←Á¸ÄþH7Èµ÷Èµè¶ÐõhÿýmÏ÷ÿýØµúõí÷Þµ©ÊµÀ·ÈÿXµHµèµÊ½~ÿëõÊýè·ÝÿÚ½H·íµÈ←ÀËÈkÈLÈlHL『HË?øé}Ì}ëÿzÿéÿù-ÀiÈþGFsaå1Ã_,ÿÔÞföÎeÆvþ~Þ÷ÿ and ?¬íûqýcèUûgõ?ÿ×ÿqþÿýù½ÿýkùÿSô í                                                                            Üúëö2ô♥¸♥ìîmïý»üýþ·Ù®íïüïü¤ð¤」¤8l¨¬♥|¤ôìÜíüöoæü·üì~§ýµý®ý õ‘ô¥¸ ì♥È♥ì ø4ì÷|ö¿üìü§üïy¬þ§ÿ¬Ü  èû±[+ÑëcÓöûßÿ½úØû]þîé»ùëý¿ñºùºà~èºùªq²yºùºùÿ÷¿ûþûûùûû¾õþûÿýdùié!qíð¼øÝèËðhùz¼ýûßý'÷o÷o÷ú·¿þºMarioòSösâZöBwÖàRô¯þþõßï÷õÿõ¾ü®Ý{Ô~ôWôuóRáìòÉâ’s ²Ññ?ÿÍó÷ö,ÿýëÿïïWïÎT••ØìÉè¹éÓè¡ävìoï¯¥ÿûþïýûÿûßë                                                                                                                                                                                                                                  èòâê♥ÂwÊZè6ãRÎî©îûïë~ï×âýëÿíùë[pauseAwaitInput]èuèdhRj©h.è(àëçÿçÿ÷ÿå×ïïgïzï×÷dxÂx\Îmå\æªæzemíÿï¯ô÷d¿fþëgã¿ó,ëYódÀâVcBoosterâ`àG¡Ïå?á÷è¿æ/ïþÿÿÿÿÝÉO÷←2ßêÊÛÞÅÞ\Þþÿ×ß?Þú~þßÿ¿]ÿ[fÌJÝinÜ‘ÍÔÌÄPäL8}ÛëÛ{ßóÛÞñ[¿ÛµZæÂ「*èÙùBü!Ù[delay_217]ØØþÚíïòø×ØwNwÛlØ『ÞÄ%ªÃ¡Ó×bÆe××RSëßÞÖw¾ÿ×ÆåÕ~ý¼ý[newPage]ñBðåÀ”Ð½S[pauseAwaitInput]âbS’ÓõÖçzöÞÿñÏÑÿ{÷þýðHð‘ðis ÐVOBÌÆåUÝIÿýÏåÏÿÌÏÎï¬ÿÌÿüKÄ[newlineAwaitInput]ÜeÌ                                                                                                                                                                                                        g¡ÂË­ÓmÁkïKþÎ]ËëëíÙÿëÿù` youàBÁ}éþHÄ(ÈaÈîG÷Ï¿ÿ¾ÏóÇ}Ç_uÿÖÆ↑[end]EH  Æ¡ÔpÄ]Å」Å§äwÝ½ÍÿÃsb·Ï÷ÇðKÂ\Á¿Á‘ÁMarioaÛÀ'ÄLP?ÁH/èÿ¿ë¯¿þÿÿ©¾3<ncþi´ÙÆ,ÇøÏ½ÿ?ß½ßÿ;ÿ÷?ÿ½óý½^©R5-¼B½ö¼ò」à&ÿüÜ¼ë¼Ý½ÿ»óûÿûïº<º」¨ I ¸ and º[startSelection]²m©K±ïtÏ½ÿ¸ÿ¾ý¹ç¸7¸Ï·¿ÿß·•·!1÷¶Ø‘y6M6E¶/·Þ¶ÿ¿ÿµ¿µ´§÷·|µC5Tin』µ[delay]½m0Î´µº°îðù´ôo%ëw¿öý³þ³Ý²Ñ²Æ²jðu°b³U²N°¿¿u³û·Ì°ÿ³?úÿïÿï8¯«¯m¯D¯«ÿ‘Ú®¿®_¾z¾ÿ¯ë½ÿ¯ï½·½Mario-B©¨
-.[newPageAwaitInput],[newPageAwaitInput]©[newPageAwaitInput]­                                                                                                                                                                                                                                            _¯o-Ó­§¾/­ßý­·¯¹ýÚë¾ý“÷0Jõ♪wRZ¯þÿÿwÞóþW~úÿßüíÿ·­^í4}   ý                                                                                                                                                                                                                                                            HüpûAëîÿ_ù¼ûþúöÿÿýy|ü[newlineAwaitInput]xL÷ù#¢!inuç♥ÓM÷1÷ÿ÷è×ï~þþõö{þþþNò[newPageAwaitInput]w»ñuPU I õåäÄô·äÿöþöÿþ』üþwóóyý.3ãðÎ“r)ò[ñi¡「urñùùûÿ÷ðýðóðûðÑûÐ`Àp
-°8jàXt0pÕï½íûïúÿïíïµÿoïÿÿÿnßî¤®pl”k』.~æ©®ÿíßíüíÕïííãÿûüÿì theø.¬þÉ½••­cÔÊkjXkaówëûê×ú¤úzëºêßù§igñti¦èñç.¢ I á↑æzä÷çïõwïóìïî½®oüSäintQ[newPageAwaitInput]>äYàAa¥Þ7OþÿW}|ÿÿ×ßÞ}ßèß{ßÃ'BoosterÒ
-t••H[delay_86]K“Ú youN••ßþ¿þ;ß]ÿÏþ_Þ¯ÝOÆ[newPageAwaitInput]^                                                                                                                                                                                                                                                                                            K^[newPageAwaitInput]N youÖ                                                                                                                                                                                                                              ¨ÞÿoÖÞùÝ;þÞk÷                                                                                                                                                                                                              Û^MarioKÞ[newlineAwaitInput]^ you]                                                                                                                                                                                                                                                                                                                                                                                                                                        oÚ{ÞûÝ[ÿïú{Þ¯Þÿþ                                                                   -GKÚ you¿                                                                                              k^Ü    þrþzÿÿß『ß¯þûÎ[Þ*ì                                                                                              
-Ì   Þ   XÞ[newlineAwaitInput]ÞCNOß?ÿï:ßÞ{öëøÞëß                                                                                                                                                                                                                                                                                                                                                                                                                                                      Þ”¸YZ                                                                                                                                                                                                              Ö                                                                                                                                                                                                                              Þ[Þööþ¿Îëþ/ÞÜÝ¨È\:Þ|Ü~\cÃ¨[ÿû}Ùÿùÿúÿú÷û÷úþûÃBoosterÂúÝÊnZGZWÐÇ[GÐÿÞûþ÷ÚïÚgÚÇúïþG[startSelection]ÈgVBGÚF[0x70A7]g[0x70A7]G²×öoûÇûÿÚïòïÞúïÚæ’s GâÆ*O[e¸[startSelection]Þ[startSelection]¸GÐßÞÇÿZïú¿ëÿþ_þQÊWÊ[newPageAwaitInput]¾JGÚMJGÒgïÿþçþ×ïþ_úÿþç¿÷ßgBooster[startSelection]RFx[startSelection]OëGÒgbOòïÞÇÚÿúúÿÚÿû_ÛßÚgZGgÚg©gZgûG→AÐïö÷þÿþ_ûÿþßÚwÞÿògRgRGÈOÚ[startSelection]ÚF[newlineAwaitInput]gxUÛ÷ÛïúÿÛïúoòßú÷úwÚFJSGÚOógØcXGÈGû{Ê÷ÙçØßø_ÛÿþÿÚïGÊCGBGÚGÊGÚVÚCis ïúû×~ê_X÷ÞçÛwÞO···[startSelection]êUÚG[GòWÞ[startSelection]ZGÚGÛßþÚoÚñúÏúóÚÇÛO*ÇÚGgÒgÚBØg theWÊoúÇûÿÞþïÚßÚçÚÿÞgZgÂgGÚV%GÚgG[ïúgÚ_úïúïúïúnú÷þEÈG[0x70A7]GòF:GZcÚG*gS×úßúwúßÛÿÚ×¸gÚïËnROÊ[pauseAwaitInput]N/ÚFÓG[0x70A7]fjFÊgÚwÚWÒçþßþúÿûoz×JFBÇ→G*SÛG[0x70A7]EÚEÊçþÿÚ×üoú÷ÛÿÚÇÚwÒÿ·Eû···ñ¢{vg2×nßªúnëþûþ÷þ`þþþýþýþm®}îùnüü·~ùþõçÅíýÞýãý·ýýÿÿþwý}ñu『éBoosterAõ 『ó¬·ä←üy¬}þÿößüþ×û÷ûúû»~Û-«    k  Ó the[[end]ëÊû[delay]k_ÿ』ûÎû?ûÎïÿÿ¿û~ÿ    { thek    S theû[end]ñóè the» theû¯ó¯ÿûOû:ûîûþ youÚ[end]{Ùó‘{ theð theý theónónÿoÿûïûnù/û^ÿNS[delay]û[end]» theû theK:û    z[delay]「_û_ë』ÿï{^ëÿÿnûoû the[?ú the£ the[0x70A7][newPage]x[delay]ï thez the{,xîû¯ûßÿoÿÿû/ûoù[delay] you# theû    Ò[delay]r theÿ the»N»Nû¿ûßû~ÿîûûoÿnû youë the» the3 theï’[[end]kÅû••{¼û¯ùßïþÿæÿnÿïóÿý youù    {[end]ùJû theê[end]ê[delay]ûOûñïÿûîógùïwÿ{þûl# theû theÛ「.3•ë theé theù~ûÿûnóÿÿþñþû/ÿïû[end] theÿ.cû  » the3ã[delay]ÙîûëÏóîûúo}¿ÿ』û the» you',ÚN{ theû[end]xj  ùzûOûþÿïû~ûÏû~û?ó[delay]••Np youù the»         theûçL「』ÿ¾ÿ~ÿïûÎ{û~ûÿÿ[end]ûBoosteró the{.û‘ûF[_Û:ÿ』ÿ?ûoÿÏ{nû~¾ÿïs theë youÙBooster'[end]ú•[newlineAwaitInput]z    c[newPage]ëþûþÿÎóïÿïûßûnû^ûN[ the{[end]ù theû theë thek theí♥ûnóÏûîûO[Ïûßûîÿßÿ the»/ûBoosterx‘Ù[newPage]û[end]「ù    {Où¿ûo»¾÷îþþÿþûþÿ the»(1 theu    û‘û you«[end]{s^ÿûþû¯ÿnú¿»¾ûÿû[end]û the[.û ther[delay]Ûy    c the{ youÿ¾oÿ?ûýÿ{þÿ[delay]ú[newlineAwaitInput]ëú[delay]{Boosterø youú[delay]c theã¯û~ÿßÿ~ë^ÿÞû/ûûN{ theÛ youÓ thei theMis {îk[end]úÿûÿûÿïwÿûÎûÿû theÛ.Q    sLò    » youî.k[end]「Oùoþþÿû~ÿ/ûûÿû theò:û theó theÿ theÂ theë,{ youûÿûÿ»~_û^û¿ûoÿïÿ[startSelection]úMû theó theÛ the[end]û the³ theºlûÿûßûßû?ûoÿûÿ»                                                                                                                                                                                                                                                            you~[startSelection]û    ûnÊ[delay]「 thes[end]ïûþÿ』ûþûÞ』ë.ëÏû[delay]x theøB{ the{Lë theû.w:ûÿÿ¿ÿûîÿnýûïûÿÿ theû[end]² theá thez[end]ë[end]ú theQ the「Oû youûnû^ÿ.ó:ÿ¿ù』ÿ[delay]”.»is ³¦»© youq theñ/ÿïÿû~û;ë~ÿnÿ?û~ûNõ.~ theû[delay]z the’NßN「 the{~Ûÿý¿ûos~û¯ûÿóÎÿ youúë[newlineAwaitInput]ù{~ù2ûrã°{úÿúÿþÿ÷ÿúÿøÿúûþûú[newPage][endAwaitInput]S'''
-dialogs[1536] = ''''''
-dialogs[1537] = ''''''
-dialogs[1538] = ''''''
-dialogs[1539] = ''''''
-dialogs[1540] = '''SNIFIT 3: Um...
- Nice weather we're havin'''
-dialogs[1541] = '''g.[endAwaitInput]SNIFIT 3: You wanna fight?[endAwaitInput]
-           Hmm?! What’s this?[newPageAwaitInput]               It’s a '''
-dialogs[1542] = '''“Seed”.
- [startSelection]  (Take it)
- [startSelection]  (Leave it)[endAwaitInput]GARDENER: I'll plant the'''
-dialogs[1543] = ''' seed...[endAwaitInput]GARDENER: Then give it fertilizer.[endAwaitInput]BOOSTER: Hoouuooo!
- C'''
-dialogs[1544] = ''''''
-dialogs[1545] = ''''''
-dialogs[1546] = ''''''
-dialogs[1547] = ''''''
-dialogs[1548] = '''hugga, chugga...hoooonk!
- This is my perso'''
-dialogs[1549] = '''nal railway.[endAwaitInput]BOOSTER: My!
- It’s you again![newPageAwaitInput] I'm amaze'''
-dialogs[1550] = '''d you made it this far.
- Yes, quite amazing you'''
-dialogs[1551] = ''''''
-dialogs[1552] = ''' are![newPageAwaitInput] Since you're here, maybe you could
- clear up something for '''
-dialogs[1553] = ''''''
-dialogs[1554] = ''''''
-dialogs[1555] = ''''''
-dialogs[1556] = ''''''
-dialogs[1557] = ''''''
-dialogs[1558] = ''''''
-dialogs[1559] = ''''''
-dialogs[1560] = ''''''
-dialogs[1561] = ''''''
-dialogs[1562] = ''''''
-dialogs[1563] = ''''''
-dialogs[1564] = '''me.[newPageAwaitInput] My bride-to-be is chanting,
- “MARIOHELPMEMARIOHELPME”.
- Is she'''
-dialogs[1565] = ''''''
-dialogs[1566] = ''' showing her happiness?[newPageAwaitInput] Hey,[delay][delay][delay][delay][delay][delay] wait a second!
- Maybe “M'''
-dialogs[1567] = ''''''
-dialogs[1568] = ''''''
-dialogs[1569] = ''''''
-dialogs[1570] = ''''''
-dialogs[1571] = '''ARIO” is another guy![endAwaitInput]       Received “Rock Candy”![endAwaitInput]BOOSTER: What if you'''
-dialogs[1572] = ''''''
-dialogs[1573] = ''''re this
- “Mario” she keeps talking about?[newlineAwaitInput] Trying to take my bride away?
-'''
-dialogs[1574] = ''''''
-dialogs[1575] = ''' Why don't you take [delay]THIS, instead![endAwaitInput]BOOSTER: That didn't do i'''
-dialogs[1576] = '''t?[newPageAwaitInput] Grrrr...I ran out of bombs.[endAwaitInput]BOOSTER:
-             Chug-a-chug-a![endAwaitInput]BOOST'''
-dialogs[1577] = ''''''
-dialogs[1578] = ''''''
-dialogs[1579] = ''''''
-dialogs[1580] = ''''''
-dialogs[1581] = '''ER: 
- HE'S GONE?![delay]
- That’s not fair![newPageAwaitInput] I'm so hurt...
- I only '''
-dialogs[1582] = '''wanted to play with him.[newPageAwaitInput] Now,••••[delay][delay]what expression should I
- be wearing at a time like this?![endAwaitInput]BOOSTER: Eh...?[endAwaitInput]GARDENER: ••[delay]••[delay]••[delay]
-          Nothing’s happening.[endAwaitInput]BOOSTER: Well, so long![endAwaitInput]BOOSTER'''
-dialogs[1583] = ''': Now I remember![delay][delay]
- I shoul'''
-dialogs[1584] = '''d look like...THIS![endAwaitInput]APPRENTICE: Golly!
- You're that famous Mario guy![newPageAwaitInput] If I beat you, they'll make me
- Snifit [0x7000]!
- [delay][delay][delay][delay][delay][delay]If I'm lucky![endAwaitInput]APPRENTICE: W'''
-dialogs[1585] = '''haaa••[delay]••[delay]••[delay]
- Now they'll make'''
-dialogs[1586] = ''' me take the
- tr'''
-dialogs[1587] = '''aining course over again.[endAwaitInput]APPRENTICE: All right!
- Now I'll be '''
-dialogs[1588] = '''Snifit [0x7000]![endAwaitInput]APPRENTICE: Mario![newlineAwaitInput] Let me show you what I've learned
- in my classes so far.[newPageAwaitInput]'''
-dialogs[1589] = ''' I'll be Snifit [0x7000] if I beat you!
- ••[delay]••[delay]••[delay]••[delay]••[delay]••[delay]maybe.[endAwaitInput]SNIFIT 4: After '''
-dialogs[1590] = '''years of
- hard work and ef'''
-dialogs[1591] = '''fort, I'm now
- Snifit 4![newPageAwaitInput] 
-     I'll wear the number proudly![endAwaitInput]SNIFIT 5:'''
-dialogs[1592] = ''' Phew...![newlineAwaitInput] I've been training to become one
- of Booster’s Snifits for 3 years![endAwaitInput]SNIFIT 6: If only'''
-dialogs[1593] = ''' Ma and Pa could
- see me now.[endAwaitInput]SNIFIT 7:
-     Yee haw![newlineAwaitInput]          Hurra'''
-dialogs[1594] = '''h!
-               I'm a Snifit![newPageAwaitInput]
-         ••[delay]••[delay]••[delay]I'm••speechless![endAwaitInput]APPRENTICE: Shriek!
- The boss only wants 7 Sn'''
-dialogs[1595] = ''''''
-dialogs[1596] = ''''''
-dialogs[1597] = ''''''
-dialogs[1598] = ''''''
-dialogs[1599] = '''ifits![newlineAwaitInput] All my training was in vain![newPageAwaitInput]
-               What a rip![endAwaitInput]APPRENTICE: Harrumph!
- I'm off to th'''
-dialogs[1600] = '''e arcade![endAwaitInput]GARDENER: W••[delay]••[delay]wow![endAwaitInput]GARDENER:'''
-dialogs[1601] = ''' This is amazing![endAwaitInput]GARDENER: This is unre'''
-dialogs[1602] = '''al! This is
- just like winning the'''
-dialogs[1603] = ''' lottery, only
- without the taxes! I mean, this is
- l'''
-dialogs[1604] = '''ike falling out of an airplane
- without a parachute, and hitting
- a gaggle of geese in mi'''
-dialogs[1605] = '''d-air who
- break your fall. Wait until my
- buddies over at Happy Gardener''''
-dialogs[1606] = '''s
- Monthly hear about this. I'm going
- to be famous! Maybe even get my
- picture in the next issue.[delay_24][end]GARDENER: Yo'''
-dialogs[1607] = '''u think it could use
- a little more fertilizer?[endAwaitInput]GARDENER: Oops, maybe '''
-dialogs[1608] = '''not, huh?[endAwaitInput]GARDENER: This will'''
-dialogs[1609] = ''' get me in
- Happy Garde'''
-dialogs[1610] = '''ner Monthly magazine![endAwaitInput]GENO: Mario!
- Th'''
-dialogs[1611] = '''ere are Star Pieces to be fo'''
-dialogs[1612] = '''und![newlineAwaitInput] Hang in there![endAwaitInput]
-
-     (Wish I could'''
-dialogs[1613] = ''' run faster.)[endAwaitInput]
-
-    Wish I '''
-dialogs[1614] = '''had some Cricket Jam.[endAwaitInput]
-      I '''
-dialogs[1615] = '''wanna be a great plumber
-         like m'''
-dialogs[1616] = '''y brother Mario.[endAwaitInput]
-
-   If I could JUST get that melody'''
-dialogs[1617] = '''![endAwaitInput]
-               The hunger!
-           Oh, for some food! [endAwaitInput]
-     I wanna be the best treasure
-          hunte'''
-dialogs[1618] = '''r in the world.[endAwaitInput]
-
-   I vant to be a vald class baker.[endAwaitInput]
-
-        I hope I become famous.[endAwaitInput]
-
-        I hope'''
-dialogs[1619] = ''' she'll say “yes”.[endAwaitInput]
-
-    I wish he'd pop THE question.[endAwaitInput]
-
-   I wish I '''
-dialogs[1620] = '''weren't such a crybaby.[endAwaitInput]
-
-Please let Mallow find his way hom'''
-dialogs[1621] = '''e.[endAwaitInput]GENO: This is Star Hill.[newlineAwaitInput] Wishes,'''
-dialogs[1622] = ''' which were transformed at
- the Star Road, fall from here.[newPageAwaitInput] But[delay]••[delay]••[newlineAwaitInput] Some wishes th'''
-dialogs[1623] = '''at haven't been
- granted yet are'''
-dialogs[1624] = ''' falling because
- Smithy destroyed the Star Road.[endAwaitInput]GENO: Frogfucius mentioned hearing
-'''
-dialogs[1625] = ''' about a Star Piece on this hill.[endAwaitInput]GENO: Let’s see if we can find it.'''
-dialogs[1626] = '''[endAwaitInput]MALLOW: This one’s private![delay]
- Who do you think you are,
- spying on other people’s wishes?[endAwaitInput]MALLOW: C'mon, our quest for the
- Star Pieces is important![newPageAwaitInput] Everyone’s counting on'''
-dialogs[1627] = ''' us!
- We've got to hurry![endAwaitInput]MALLOW: Sorry about that.
- It’s just'''
-dialogs[1628] = ''' that I'm embarrassed
- about my wish.[endAwaitInput]MALLOW: Wh'''
-dialogs[1629] = '''y, this wish is...[newPageAwaitInput] It’s from my mom and dad.[newPageAwaitInput] They're wishing for'''
-dialogs[1630] = ''' me to come
- home![endAwaitInput]MALLOW: 
- This isn't the tim'''
-dialogs[1631] = '''e to be crying![newlineAwaitInput] They're waiting for m'''
-dialogs[1632] = '''e to come
- home![endAwaitInput]MALLOW: Come on Mario, we've got
- a busy schedule to keep. I'll make
- you eat dust if you don't hurry.[endAwaitInput]MALLOW: 
-                Sniffle...[endAwaitInput]           Got a “Lazy Shel'''
-dialogs[1633] = '''l”![endAwaitInput]GENO: 
- Do you know where this leads to?[endAwaitInput]GENO: It looks like Exor’s the
- contact between the two worlds.[newPageAwaitInput] In other wor'''
-dialogs[1634] = '''ds[delay]••[delay]••[delay]••[endAwaitInput]GENO: If we follow this road,
- we'll find Smithy.[newPageAwaitInput] So...what’s keeping us?[endAwaitInput]BOWSER: Hang on![endAwaitInput]BOWSER: Hey! I only joined'''
-dialogs[1635] = ''' so that
- I could get my castle back.[newlineAwaitInput] I'm not going to be dragged along
- '''
-dialogs[1636] = '''on this stupid hunt.[endAwaitInput]BOWSER: This is as far as I go.[newPageAwaitInput] I''''
-dialogs[1637] = '''m going to gather my troops and
- rebuild my castle.[endAwaitInput]BOWSER: And you, Mario![newlineAwaitInput] You're an official member of the
- Koopa Troop. It’s your duty to
- h'''
-dialogs[1638] = '''elp with the repairs![endAwaitInput]GENO: Bowser, you're completely
- missing the point.[endAwaitInput]BOWSER: Gwaa?![delay]'''
-dialogs[1639] = '''[delay][delay][delay][newPageAwaitInput] I oughtta rip your stuffing out![endAwaitInput]GENO: No, think about it, Bowser.[newlineAwaitInput] This swo'''
-dialogs[1640] = '''rd connects the two
- worlds, right?[endAwaitInput]BOWSER: '''
-dialogs[1641] = '''Yeah, so?[endAwaitInput]GENO: Even IF we defeat Exor...[newlineAwaitInput] There will be OTHER weapon beasts
- to follow him.'''
-dialogs[1642] = '''[endAwaitInput]GENO: Your castle is at the
- entrance point to YOUR world.
- In short...th'''
-dialogs[1643] = '''ey'll be back![endAwaitInput]GENO: Is that what you want?[endAwaitInput]BOWSER: Um....well...[endAwaitInput]BOWSER: No one insults the Koopa
- Troop and gets away with it.[newPageAwaitInput] I've got'''
-dialogs[1644] = ''' a bone to pick with this
- Smithy guy![endAwaitInput]BOWSER: Come on, Mario!
- We'll teach him a lesson.[endAwaitInput]GENO: It looks like we're together
- o'''
-dialogs[1645] = '''n this one. Let’s go![endAwaitInput]BOWSER: (More weapon things
- com'''
-dialogs[1646] = '''ing to take over my castle?
- What about my[delay]••[delay]••[delay][newPageAwaitInput]
-             ••••PRIVACY?[newPageAwaitInput] Yikes[delay]••[delay]••
-        This isn't good at '''
-dialogs[1647] = '''all[delay]••[delay]••
-              In fact, this stinks![delay]••[delay]••)[endAwaitInput]BOWSER: (But I CA'''
-dialogs[1648] = '''N'T just be pals
- with these cretins.[newlineAwaitInput] I've got an i'''
-dialogs[1649] = '''mage to keep up.)[endAwaitInput]BOWSER: (I've got it!)[endAwaitInput]BOWSER: (I'm so sly'''
-dialogs[1650] = '''!)[endAwaitInput]              It’s “Mario”![endAwaitInput]       We better do something![endAwaitInput]            Pick up a “S'''
-dialogs[1651] = '''eed”![endAwaitInput]GENO: ••[delay]••[delay]••[delay]
- I feel the energy of the Star Piece.[endAwaitInput] What was that loud noise outside?
-       Check out Booster Pass![endAwaitInput]     Received'''
-dialogs[1652] = ''' a “KerokeroCola”![endAwaitInput]     You saw something sparkle.[endAwaitInput]'''
-dialogs[1653] = '''SHY AWAY: Look what you did![delay][delay]
- Smilax’s been whacked.[endAwaitInput]SHY AWAY: 
- Oooh, I'm going to get i'''
-dialogs[1654] = '''t![newlineAwaitInput] Queen Valentina told me to keep
-'''
-dialogs[1655] = ''' everyone out of Nimbus Land.[newPageAwaitInput] 
-            What should I do?[endAwaitInput]SHY AWAY: ••••[delay]••••[delay]••••[delay]••••[delay]••'''
-dialogs[1656] = '''••[delay]••••[delay]••••[delay]••••[delay]
-         I know, I'll run away![endAwaitInput]         How did he get here?![endAwaitInput]        Got an “Ultra Hammer”![endAwaitInput]        Wow! Did you see'''
-dialogs[1657] = ''' that?[delay][delay][delay]
-       It’s a magical beanstalk![newPageAwaitInput]        Hit the block on'''
-dialogs[1658] = '''ce more
-                to climb it.[endAwaitInput]          Found a Frog Coin![endAwaitInput]         Got a “Red Essence'''
-dialogs[1659] = '''”![endAwaitInput]
-           Found a “Masher”![endAwaitInput]
-      You found a “Goodie Bag”![endAwaitInput]
-'''
-dialogs[1660] = '''  Picked up a “Hammer”![endAwaitInput] Now ya got my hammer angry!
- Ya shouldn't have d'''
-dialogs[1661] = ''''''
-dialogs[1662] = ''''''
-dialogs[1663] = '''one that![endAwaitInput] HEY!
- Are YOU lookin' at me?
- My hammer and I don't like you![endAwaitInput]TOAD: Mario!
- You better be careful.
- He’s definitely got a mean streak'''
-dialogs[1664] = '''![endAwaitInput]     It’s a battered old hammer.[endAwaitInput]                Actually...
-    It’s '''
-dialogs[1665] = '''a sturdy hammer, bearing
-    the Hammer Brother’s insignia.[endAwaitInput]            Yo'''
-dialogs[1666] = '''u never know!
-        It might come in handy![endAwaitInput]        Pick'''
-dialogs[1667] = '''ed up a “Hammer”![endAwaitInput]
-         Picked up a “Flower”![endAwaitInput]
-     Pick'''
-dialogs[1668] = '''ed up a “Royal Syrup”![endAwaitInput]TOAD: Thanks, Mario!
- I was running so fast I wasn't
- watching wher'''
-dialogs[1669] = '''e I was going![endAwaitInput]TOAD:
- Mushroom Kingdom’s just ahead.
- We''''
-dialogs[1670] = ''''''
-dialogs[1671] = ''''''
-dialogs[1672] = '''re almost there, Mario.[endAwaitInput]TOAD: Hey!
- Where did this hammer come from?[endAwaitInput]TOAD: Hmm[delay]••[delay]••[delay][delay][delay]
- He'''
-dialogs[1673] = '''y, do you know what THIS is?![endAwaitInput]TOAD: It has the Hammer Bro's
- insignia on it.[newlineAwaitInput] No one stands '''
-dialogs[1674] = '''a chance against
- you when you whomp them with this.[endAwaitInput]TOAD: Let’s get a move on![newlineAwaitInput] I'll see you in Mushroom Kingdom.[endAwaitInput] Here,'''
-dialogs[1675] = ''' you can have this.[endAwaitInput]BOWYER: 997! 998! 999! 1000!
- Nya ha ha! 1000 arrows![newlineAwaitInput] For cover they run, nya!
- FUN this is, yes.
- Nya! Another 1000 will I shoo'''
-dialogs[1676] = '''t![endAwaitInput]MALLOW: Mario, who IS that guy?
- [delay][delay]He must be the one shooting
- arrows at Rose Town![endAwaitInput]BOWYER: Happy I am, nya!
- Look...LOOK at their expressions'''
-dialogs[1677] = ''''''
-dialogs[1678] = ''''''
-dialogs[1679] = ''''''
-dialogs[1680] = '''
- when freeze they do![endAwaitInput]FLUNKIES: Woo hoo!
- '''
-dialogs[1681] = '''They're standing like statues![endAwaitInput]BO'''
-dialogs[1682] = '''WYER: Nya!
- More practice d'''
-dialogs[1683] = '''o I need![endAwaitInput]MALLOW: Oh no!
- He’s not stopping!
- We've got to do something![endAwaitInput]MALLOW: Who do you think you are,
- Bruce Lee? You can't just go in
- there with your fists flying![endAwaitInput]MALLOW: Oh no, someone’s co'''
-dialogs[1684] = '''ming!
- Let’s hide and see if we can
- learn anything.[endAwaitInput]MALLOW: There're too many of 'em.
- We'll be creamed![endAwaitInput] Look what I fou'''
-dialogs[1685] = '''nd, Bowyer![endAwaitInput]BOWYER: What? WHAT?
- Disturb me you must not!
- Practicing, I am.[newlineAwaitInput] More '''
-dialogs[1686] = '''arrows must I shoot!
- More statues must I make,'''
-dialogs[1687] = ''' nya![endAwaitInput]???:
-                   Stop![endAwaitInput]???: Hold it right the'''
-dialogs[1688] = '''re!
- You don't know what you're doing.
- RETURN that '''
-dialogs[1689] = '''star to me![endAwaitInput]BOWYER: Gnya, N'''
-dialogs[1690] = '''YA!?
- A stranger you are...
- and strange looking at that![newlineAwaitInput] Teach you, we must,
- who’s in charge![endAwaitInput]???: Thanks for the help.
- You really got me out of a jam.[newPageAwaitInput] Why are you staring at '''
-dialogs[1691] = '''me?
- You know I'm more than just
- a doll, don't you?[endAwaitInput]???: H'''
-dialogs[1692] = '''ave you guessed the truth?[delay]
- I'm a visitor fro'''
-dialogs[1693] = '''m above, and this
- is a form I'm borrowing briefly.[endAwaitInput]MALLOW: You mean, like, from the'''
-dialogs[1694] = '''
- sky or something?[endAwaitInput]???: Higher than that, I'm afraid![delay][delay][delay][newlineAwaitInput] Do you two know anything ab'''
-dialogs[1695] = '''out
- the “Star Road”?[endAwaitInput]???: Completely in the dark, eh?[delay][delay][delay]
- Well'''
-dialogs[1696] = ''', it’s a big mess up there righ'''
-dialogs[1697] = '''t
- now, and it concerns you t'''
-dialogs[1698] = '''oo![delay][delay][newPageAwaitInput] Let me explain...[newPageAwaitInput] Y'''
-dialogs[1699] = '''ou've heard of wishing upon a
- '''
-dialogs[1700] = '''shooting star?[endAwaitInput]???: At the “St'''
-dialogs[1701] = ''''''
-dialogs[1702] = '''St'''
-dialogs[1703] = '''ar Roa'''
-dialogs[1704] = '''d”'''
-dialogs[1705] = ''''''
-dialogs[1706] = '''d”, your
- wish is transformed'''
-dialogs[1707] = ''''''
-dialogs[1708] = '''d into a star.[newlineAwaitInput] When it’s gra'''
-dialogs[1709] = '''nted, it then turns
- into a shootin'''
-dialogs[1710] = '''g star and falls
- down to earth.[newPageAwaitInput]'''
-dialogs[1711] = ''' So you see, the Star Road p'''
-dialogs[1712] = '''lays an
- integral role in gr'''
-dialogs[1713] = '''anting '''
-dialogs[1714] = '''wi'''
-dialogs[1715] = ''''''
-dialogs[1716] = '''wi'''
-dialogs[1717] = '''shes.[newPageAwaitInput]'''
-dialogs[1718] = ''''''
-dialogs[1719] = ''''''
-dialogs[1720] = ''' But ever since a sword des'''
-dialogs[1721] = '''troyed
- the “Star Road”, e'''
-dialogs[1722] = '''verything's
- come to a halt.[newPageAwaitInput] No st'''
-dialogs[1723] = '''ars have been made since.[newlineAwaitInput] T'''
-dialogs[1724] = '''he way things stand,[pauseAwaitInput] yours'''
-dialogs[1725] = ''' is a
- w'''
-dialogs[1726] = '''or'''
-dialogs[1727] = ''''''
-dialogs[1728] = '''or'''
-dialogs[1729] = '''ld whe'''
-dialogs[1730] = ''''''
-dialogs[1731] = ''''''
-dialogs[1732] = '''re wishes can't come
- true '''
-dialogs[1733] = '''anymore.[endAwaitInput]MALLOW: Are you s'''
-dialogs[1734] = '''aying THIS star
- is a part of your “S'''
-dialogs[1735] = '''tarway”?[endAwaitInput]???: That’s “STA'''
-dialogs[1736] = '''R ROAD”, my
- fluffy little '''
-dialogs[1737] = '''friend'''
-dialogs[1738] = ''' .'''
-dialogs[1739] = ''''''
-dialogs[1740] = ''' .'''
-dialogs[1741] = '''..[newPageAwaitInput] Ye'''
-dialogs[1742] = ''''''
-dialogs[1743] = ''''''
-dialogs[1744] = '''s, [pauseAwaitInput]that star is a broken pi'''
-dialogs[1745] = '''ece
- of the Star Road.[newPageAwaitInput] I'''
-dialogs[1746] = ''''m here to find them all, and
- re'''
-dialogs[1747] = '''pair the Star Road.[endAwaitInput]???: 
- The br'''
-dialogs[1748] = '''oken Star Pieces...[newlineAwaitInput] There'''
-dialogs[1749] = ''''''
-dialogs[1750] = '''re'''
-dialogs[1751] = ''' are 7'''
-dialogs[1752] = ''' a'''
-dialogs[1753] = ''''''
-dialogs[1754] = ''''''
-dialogs[1755] = ''''''
-dialogs[1756] = ''' altogether.[endAwaitInput]???: For peac'''
-dialogs[1757] = '''e to return...[newlineAwaitInput] we must get rid o'''
-dialogs[1758] = '''f Smithy,
- find the Star Piece'''
-dialogs[1759] = '''s, and repair
- the Star Road.'''
-dialogs[1760] = '''.[endAwaitInput]???: I'm “♥♪!?”, but it’s '''
-dialogs[1761] = '''hard t'''
-dialogs[1762] = '''o
-'''
-dialogs[1763] = ''''''
-dialogs[1764] = '''o
-'''
-dialogs[1765] = ''' prono'''
-dialogs[1766] = ''''''
-dialogs[1767] = ''''''
-dialogs[1768] = '''unce so...[newlineAwaitInput] Call me “Geno”, after the doll.[newPageAwaitInput] I chose hi'''
-dialogs[1769] = '''m because he looked the
- strongest out of all the dolls.[endAwaitInput] “Geno”, who is searching'''
-dialogs[1770] = ''' for the
-  pieces of the Star Road, joins
-         Mario and Mallow.[newPageAwaitInput] Things are definitely looking up![endAwaitInput]GENO: Now grab the star, Mario![endAwaitInput] O'''
-dialogs[1771] = '''oh, I heard everything![delay]
- Who would have known that star
- was so important?[newPageAwaitInput] I've g'''
-dialogs[1772] = '''ot to inform Smithy![endAwaitInput]GENO: Come on!
- Let’s get this sho'''
-dialogs[1773] = '''w on the road.[endAwaitInput]
-        Pick up a “Mushroom”[endAwaitInput]GARDENE'''
-dialogs[1774] = '''R: Hey!
- I haven't finis'''
-dialogs[1775] = '''hed yet.[endAwaitInput]GARDENER: Short attention span?[endAwaitInput]G'''
-dialogs[1776] = '''ARDENER: Hi, I'm the gardener.[delay][delay][delay]
- See that huge planter?[newPageAwaitInput] I've spent many years seeking the
- legendary “Seed” and “Fertilizer”
- to fill it with, but had no lu'''
-dialogs[1777] = '''ck.[newPageAwaitInput] Sigh...if I could only find them![endAwaitInput]GARDENER: Incredible!
- I can't believe it! It’s the
- legendary “Se'''
-dialogs[1778] = '''ed” I've read about
- in the ancient gardening texts.
- These are so rare! Can you even
- begin to comprehend w'''
-dialogs[1779] = ''''''
-dialogs[1780] = '''hat a huge
- discovery this is? I've spent my
- whole life searching for one!'''
-dialogs[1781] = '''
- It’s too much, I tell ya![delay_24][end]GARDENER: Egads!
- Do you know what you have there?
- That fertili'''
-dialogs[1782] = ''''''
-dialogs[1783] = '''zer comes from the
- Shy Away clan, famous for its
- miracul'''
-dialogs[1784] = '''ous feats of gardening. I
- looked for it beyond the cliffs,
- even tried Bean Va'''
-dialogs[1785] = '''lley, but failed.
- I've traveled around the world and
- waited a lifetime for some of that
-'''
-dialogs[1786] = ''''''
-dialogs[1787] = ''' fertilizer you've got there![delay_24][end]GARDENER: Well, that’s my story.[newlineAwaitInput] Say...will you give me the “Seed”?
-  [startSelection]  (Sure)
-  [startSelection]  (Nope)[endAwaitInput]GARDENER: Yes, you might say I
- have fertilizer on the brain.[newlineAwaitInput] Will you give it to me?
-  [startSelection]  (Sure)
-  [startSelection]  (Sorry)[endAwaitInput]GARDENER: You changed your mind?[newlineAwaitInput]  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: Well, Mario?[newlineAwaitInput] Will you give me the fertilizer?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: I finally have it'''
-dialogs[1788] = '''![newPageAwaitInput] This is extraordinary![endAwaitInput] May I have the f'''
-dialogs[1789] = '''ertilizer?
-  [startSelection]  (Y'''
-dialogs[1790] = '''es)
-  [startSelection]  (No)[endAwaitInput]GARDENER: Sig'''
-dialogs[1791] = '''h...
- What ever happened to grant'''
-dialogs[1792] = '''ing
- an old man’s wishes?[endAwaitInput]GARDENER: Oh thank you![newlineAwaitInput] I finally have both the “Seed” and
- the “Fertilizer”.[newlineAwaitInput] I'll try them out right away.[endAwaitInput]GARDENER: I'd be so happy if I
- only h'''
-dialogs[1793] = '''ad the “Seed”![newPageAwaitInput] I'm sooo disappointed.[endAwaitInput]GARDENER: I finally have it![newlineAwaitInput] But'''
-dialogs[1794] = ''''''
-dialogs[1795] = ''''''
-dialogs[1796] = ''''''
-dialogs[1797] = ''''''
-dialogs[1798] = ''''''
-dialogs[1799] = ''''''
-dialogs[1800] = ''''''
-dialogs[1801] = ''''''
-dialogs[1802] = ''''''
-dialogs[1803] = ''''''
-dialogs[1804] = ''''''
-dialogs[1805] = ''''''
-dialogs[1806] = ''''''
-dialogs[1807] = ''''''
-dialogs[1808] = ''' without the “Seed”,
- it’s useless.[endAwaitInput]'''
-dialogs[1809] = ''' You're giving me the fertil'''
-dialogs[1810] = '''izer too?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENE'''
-dialogs[1811] = '''R: Gals don't care for
- tightwads'''
-dialogs[1812] = ''', you know![endAwaitInput]FACTORY CHIEF: Mario![delay][delay]
- I'm surprised to s'''
-dialogs[1813] = ''''''
-dialogs[1814] = '''ee you here.[endAwaitInput]FACTORY CHIEF: But this is the
- end of the line for you.[newlineAwaitInput] This is the closest you'll ever '''
-dialogs[1815] = '''get
- to Smithy, so savor the mome'''
-dialogs[1816] = '''nt.[endAwaitInput]FACTORY CHIEF: Harrumph!
- You'll be fodder for my in'''
-dialogs[1817] = '''credible
- invention, the “Gunyolk”![endAwaitInput]POUNDE'''
-dialogs[1818] = '''R #1: Sir![delay][delay]
- “Drill Bit” will be finished on time.[endAwaitInput]POUNDER #2: 
-       We're ahead of schedule![endAwaitInput]POUNDE'''
-dialogs[1819] = '''R #3: 
-       We'll make Smithy proud![endAwaitInput]POUNDER: Here’s the report![endAwaitInput]MANA'''
-dialogs[1820] = ''''''
-dialogs[1821] = ''''''
-dialogs[1822] = ''''''
-dialogs[1823] = ''''''
-dialogs[1824] = '''GER: Good work, everyone.[delay][delay][delay]
- Th'''
-dialogs[1825] = '''e harder we work, the strong'''
-dialogs[1826] = '''er
- Smithy will become![endAwaitInput]'''
-dialogs[1827] = '''MANAGER: The weapons we
- '''
-dialogs[1828] = '''manufacture here will '''
-dialogs[1829] = '''be...[newPageAwaitInput]
-           Just think of i'''
-dialogs[1830] = '''t...[endAwaitInput]MANAGER: When Smithy '''
-dialogs[1831] = '''takes over
- Mario’s world, we can do a'''
-dialogs[1832] = '''nything
- we want![endAwaitInput]
-              Gw'''
-dialogs[1833] = ''''''
-dialogs[1834] = ''''''
-dialogs[1835] = ''''''
-dialogs[1836] = ''''''
-dialogs[1837] = ''''''
-dialogs[1838] = ''''''
-dialogs[1839] = '''ah, ha, ha...[delay_48][end]BOWSER:
-              Not so fast![newPageAwaitInput]
-     You sure are a cocky bunch![endAwaitInput]BOWSER: I rule this world'''
-dialogs[1840] = '''!
- Don't you forget it![endAwaitInput]MANAGER: It’s Mario![newlineAwaitInput] Mack 2 and Yaridovich 2 didn't
- stop him?[endAwaitInput]BOWSER: No, NO! Leave Mario
- outta this. I'm the one you need
- to worry abo'''
-dialogs[1841] = '''ut, not him![endAwaitInput]MANAGER: Mario, you're about to
- make the longest jump of your life![endAwaitInput]BOWSER: Y...You're ignoring me![endAwaitInput]CLERK: 
- Production is on schedule?[newPageAwaitInput] This, despite the fact that Mack,
- Bowyer, Yaridovich, and the Axem
- Rangers were defeated.[newlineAwaitInput] At this rate, Smithy will have a
- new army in '''
-dialogs[1842] = '''no time![endAwaitInput]MALLOW: A...new army?[newPageAwaitInput] You can't be making more weapons!
- Haven't you caused enough'''
-dialogs[1843] = ''' trouble
- already?[endAwaitInput]CLERK: What did you say, you
- little puff ball?
- [delay][delay]Mad Mallet! TRASH 'em![endAwaitInput]CLERK: All right, let’s see'''
-dialogs[1844] = '''
- whatcha got![endAwaitInput]CLERK: 
- Oh yeah?! Who are you?[endAwaitInput]MALLOW: This is THE Mario![newPageAwaitInput] Give u'''
-dialogs[1845] = '''p now, while you still have
- a chance![newPageAwaitInput] Shut down production NOW,
- or he'll...STOMP ya![endAwaitInput]MALLO'''
-dialogs[1846] = '''W: Ha!
- Hope you learned your lesson![endAwaitInput]MALLOW: 
- We're almost there, Mario.[newlineAwaitInput] Come on![endAwaitInput]'''
-dialogs[1847] = '''MALLOW: What do you suppose
- this switch does? Hmm...[endAwaitInput]MALLOW: 
-         Ack! Help me, Mario![endAwaitInput]MALLOW: ••[delay]••[delay]••[delay]Not'''
-dialogs[1848] = '''hing’s happening.[endAwaitInput]MALLOW: Huh?
- What’s with the funny face, Mario?[newPageAwaitInput] Oh I KNOW, you're trying to make
- me look, aren't you?[delay][delay]
- I'm'''
-dialogs[1849] = ''' not going to fall for that one![endAwaitInput]MALLOW: Boy, that was scary!
- I guess the green switch controls
- the crane.[endAwaitInput]GENO: Hmm••'''
-dialogs[1850] = '''[delay]••[delay]••[delay][newlineAwaitInput] The production line hasn't halted.[endAwaitInput]GENO: This must be where Smithy
- makes h'''
-dialogs[1851] = '''is weapons.[newPageAwaitInput] To find the last Star Piece and
- stop the factory, we've got to
- defeat him first.[endAwaitInput]GENO: Mario..'''
-dialogs[1852] = '''.
- There’s no turning back now.
- Are you ready?[endAwaitInput]GENO: Our quest is almost over.[endAwaitInput]GENO: And when the time comes••[delay]••[delay]••[delay][endAwaitInput]GENO: Look Mario,'''
-dialogs[1853] = ''' this is where the
- weapons come from.[endAwaitInput]
-
-                Nya ha ha.[delay_48][end]              Heh heh heh...[delay_48][end] Like the moon o'''
-dialogs[1854] = '''ver[delay_32] 
- the day, my genius and brawn[delay_32]
- are lost on these fools. [delay_32]~Haiku[endAwaitInput]TOADSTOOL: You there![delay][delay]
- Ar'''
-dialogs[1855] = '''e you the one in charge here?[newPageAwaitInput] Do you know what your weapons
- have been doing to our world?[newPageAwaitInput] Stop this nonsense at'''
-dialogs[1856] = ''' once![endAwaitInput]DIRECTOR:
-    I'm afraid that isn't possible. [newPageAwaitInput] Any dissent against Smithy will be
- dea'''
-dialogs[1857] = '''lt with by immediate melt down.[endAwaitInput]TOADSTOOL: 
-             M, melt down?[newPageAwaitInput] You can't scare m'''
-dialogs[1858] = '''e, I've got
- Mario by my side![endAwaitInput]DIRECTOR: 
-     Dissenters will be eliminated!
-       Production '''
-dialogs[1859] = '''will continue.[endAwaitInput]TOADSTOOL:
-            That was scary![newPageAwaitInput] But we can't run away now.[newlineAwaitInput]'''
-dialogs[1860] = ''' We've got to kick these lowlifes
- out of our world.[endAwaitInput]
-
-   I wish for everyone to be happy.[endAwaitInput]DEALER: 
-         I will draw one card.[endAwaitInput]DEALER: 
-        I'll play with this hand.[endAwaitInput]DEALER: 
-         D'''
-dialogs[1861] = '''raw or stay, Mario?[endAwaitInput]            Your total is [0x7000].
-  [startSelection] (Draw)
-  [startSelection] (Stay)[endAwaitInput]DEALER: 
- I will first deal you two cards.[endAwaitInput]            You got '''
-dialogs[1862] = '''a(n) [0x7000].[endAwaitInput]      Oh no! You went over 21.[endAwaitInput]DEALER:
-      Please show me your hand.[endAwaitInput]DEALER: 
-                I have [0x7000].[endAwaitInput]
-          Mario, you h'''
-dialogs[1863] = '''ave [0x7000].[endAwaitInput]DEALER: I broke 21, so you won![newlineAwaitInput] Here’s your Frog Coin.[endAwaitInput]DEALER: You won this round.[newlineAwaitInput] Here is your Frog Coin.[endAwaitInput]DEALER: You lost this round.'''
-dialogs[1864] = '''[newlineAwaitInput] I'll take your Frog Coin.[endAwaitInput]DEALER: It’s a tie.[newlineAwaitInput] I'll keep your Frog Coin.[endAwaitInput]DEALER: No Frog Coins?[newlineAwaitInput] Sorry, you can't '''
-dialogs[1865] = '''play then.[endAwaitInput]DEALER: 
-            Your first card.[endAwaitInput]DEALER: 
-          Your second card.[endAwaitInput]DEALER: 
- Welcome to the Blackjack table.[newlineAwaitInput] Play a ro'''
-dialogs[1866] = '''und with me, sir?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] Another game, sir?
-  [startSelection] (Sure)
-  [startSelection] (No)[endAwaitInput]DEALER: 
- Welco'''
-dialogs[1867] = '''me to the Grate Guy Casino.[endAwaitInput]DEALER: If you would like to play,
- please go to the other side of
- the table.[endAwaitInput]DEALE'''
-dialogs[1868] = '''R: In Blackjack, whomever
- comes the closest to 21 points,
- without going over, wins.[newPageAwaitInput] I wi'''
-dialogs[1869] = '''ll first deal 2 cards, then we
- will each draw as many cards as
- we wish.[newPageAwaitInput] Once we stop drawing cards, we
- both s'''
-dialogs[1870] = '''how our hand, and whomever
- has the higher total wins.[newPageAwaitInput] But if your hand exceeds 21, your
- opponent wins,'''
-dialogs[1871] = ''' regardless of how
- many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'l'''
-dialogs[1872] = '''l need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
- but if it’s a tie or you lose, I'll
- keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like'''
-dialogs[1873] = ''' to play Blackjack?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]DOORMAN: Sorry, this casino is
- for members only.[endAwaitInput]DOORMAN: You don't have a
- “Bright Card”?[newlineAwaitInput] I'm sorry, I can't let'''
-dialogs[1874] = ''' you in.[endAwaitInput]DOORMAN: Please enjoy yourself.[endAwaitInput]DOORMAN: We hope everything was
- to your liking?[endAwaitInput] Business is so slow...[newlineAwaitInput] Hey Mario,'''
-dialogs[1875] = ''' wanna play “Look the
- other way” with me?[endAwaitInput] Ready, and...
- Look the...other...[delay_40][end] (Hit right/left on the Control Pad)[endAwaitInput] ...Way![endAwaitInput] Gotcha!
- I win![endAwaitInput] Ooh, you didn't'''
-dialogs[1876] = ''' get caught!
- I lost this round.[endAwaitInput] Okay, Mario, this is in celebration
- of your wins![endAwaitInput]        Received a “Star Egg”![endAwaitInput] Wa'''
-dialogs[1877] = '''nna try it again?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]TOAD: This is for you.[endAwaitInput] Welcome to the Grate '''
-dialogs[1878] = '''Guy Casino![newlineAwaitInput] Wanna play the slot machines?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] As you wish.[endAwaitInput] Require instructions?
-  [startSelection] (No)
-  [startSelection] (Yes)[endAwaitInput] I'll take your 10'''
-dialogs[1879] = ''' coins.[newlineAwaitInput] Please enjoy yourself.[endAwaitInput] Please come back with more coins.[endAwaitInput] The slot machine costs 10 coins
- per game.[newPageAwaitInput]'''
-dialogs[1880] = ''' Hit it once to start the game.[newPageAwaitInput] Each consecutive hit will freeze
- one of the pictures. Ma'''
-dialogs[1881] = '''tch all 3
- and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]GRAT'''
-dialogs[1882] = ''''''
-dialogs[1883] = ''''''
-dialogs[1884] = ''''''
-dialogs[1885] = ''''''
-dialogs[1886] = '''E GUY: Hello Mario![newPageAwaitInput] I run this casino!
- Feel free to enjoy yourself.[endAwaitInput]DEALER: Do you '''
-dialogs[1887] = '''want to continue?
-  [startSelection] (Yes)
-  [startSelection] (No'''
-dialogs[1888] = ''')[endAwaitInput] I wonder what became of Booster's
- search for a bride?[endAwaitInput]           [delay]You [delay]missed![delay_40][end]          Talk to the flower[newlineAwaitInput]     and the star gate will'''
-dialogs[1889] = ''' open.[endAwaitInput]             To Marrymore[endAwaitInput]              To Star Hill[endAwaitInput]
-
-    Can't wa'''
-dialogs[1890] = '''it to start a family.[endAwaitInput]
-
-         I h'''
-dialogs[1891] = '''ope my baby’s cute![endAwaitInput]
-
-      Ma'''
-dialogs[1892] = '''y Mallow fix the Road![endAwaitInput]            It’s been '''
-dialogs[1893] = '''sealed[endAwaitInput]                  L'''
-dialogs[1894] = ''''''
-dialogs[1895] = '''                  Look!
-   The “Shiny Stone” is reacting![endAwaitInput]      The seal has been broken![endAwaitInput] I'''
-dialogs[1896] = '''t’s really weird.
- Sometimes I hear the guy next door.[newPageAwaitInput] He’s always mumbling about a
- Cr'''
-dialogs[1897] = '''ystal-this and an Evil-that.[newPageAwaitInput] Isn't a “Cryst'''
-dialogs[1898] = ''''''
-dialogs[1899] = ''''''
-dialogs[1900] = ''''''
-dialogs[1901] = ''''''
-dialogs[1902] = ''''''
-dialogs[1903] = ''''''
-dialogs[1904] = '''al” some kind of a
- shiny rock...or something?
- I know I've seen those somewhere![endAwaitInput]JINX: Whoa[delay][delay]••••••[newlineAwaitInput] You ARE the stronger champion,
- no doubt about it.[newPageAwaitInput] My reputation wa'''
-dialogs[1905] = '''s staked on this
- last fight, so I've lost the title
- of “Sensei”.[newPageAwaitInput] From today, you are the Sensei
- of this dojo.[newPageAwaitInput] Please take this belt, which only
- the highest ranking fighter in the
- dojo can wear.[endAwaitInput] We will rename the dojo, “Mario
- Sty'''
-dialogs[1906] = ''''''
-dialogs[1907] = '''le Dojo”, and incorporate your
- jump technique into the t'''
-dialogs[1908] = '''raining.[endAwaitInput]        Received a “Jinx Belt”[endAwaitInput]JINX: Jagger and I wil'''
-dialogs[1909] = '''l start our
- training immediately.[endAwaitInput] 1000 warm up jumps!
- Ready, begin![endAwaitInput]
-                   DODO![endAwaitInput]VALENTINA: Di'''
-dialogs[1910] = '''d you display the
- statues properly?[endAwaitInput]VALENTINA: Fine! Now polish them
- to a fine luster and make them a
- tribute to my beauty![endAwaitInput]VALENTINA: Pay attention to me![newlineAwaitInput] Hurry up, and DON'T let me catch
- you dozin'''
-dialogs[1911] = '''g again.[endAwaitInput]VALENTINA: What?[newlineAwaitInput] You saw a statue move'''
-dialogs[1912] = '''?
- Don't be ridiculous.[newPageAwaitInput] You're just stalling, so you won't
- have to polish them![endAwaitInput]VALENTINA: What?'''
-dialogs[1913] = '''
- The statue was “ticklish”?[newlineAwaitInput] Is that what you said?[newPageAwaitInput] If you try stalling just one more
- time, I'm gonna have your feathers
- plucked for my pillow. Now SCAT![endAwaitInput]VALENTINA: STOP BOTHERING ME![newlineAwaitInput] If you're so worried, why don't
- you go give it a good peck![endAwaitInput]          Pick up a “Feather”.[endAwaitInput]JAGGER: Mario Sensei, the new
- reg'''
-dialogs[1914] = '''imen will strengthen us, right?[endAwaitInput]JINX: Master!
- S'''
-dialogs[1915] = '''hare your wisdom with us![endAwaitInput]CULEX: 
-      Farew'''
-dialogs[1916] = ''''''
-dialogs[1917] = ''''''
-dialogs[1918] = ''''''
-dialogs[1919] = ''''''
-dialogs[1920] = '''ell, champion knight![endAwaitInput]    Received a “Quartz Charm”![endAwaitInput] I think our neighbor moved away.[endAwaitInput]                 Uh oh...
-    Dodo’s in a pretty bad mood.[newPageAwaitInput]  Keep up your statue disguise and
-   jump to avoid getting pecked.[newPageAwaitInput]        Get ready because he's
-           coming this way![endAwaitInput]FROGFUCIUS: So! Toadstool was
- the bride, af'''
-dialogs[1921] = '''ter all?'''
-dialogs[1922] = ''''''
-dialogs[1923] = '''[newPageAwaitInput] You''''
-dialogs[1924] = '''d better '''
-dialogs[1925] = '''h'''
-dialogs[1926] = '''urry and rescue her
- before she's...married![endAwaitInput]FROGFUCIUS: Good work, Mario.
- You rescu'''
-dialogs[1927] = '''ed Toadstool.[newPageAwaitInput] Why don't you head back to
- Mushroom Kingdom?
- I'm sure the Chancellor is worried.[endAwaitInput]FROGFUCI'''
-dialogs[1928] = '''US: 
- I have the lat'''
-dialogs[1929] = '''est news, c'''
-dialogs[1930] = '''hildren.[newPageAwaitInput] A large star’s been si'''
-dialogs[1931] = '''ghted on
- “Star Hill”.[endAwaitInput]FR'''
-dialogs[1932] = '''OGFUCIUS: Eh!?[newlineAwaitInput] That delicious smell!
- You have some Cricket Jam, yes?[newPageAwaitInput] May I have'''
-dialogs[1933] = ''' some?
-  [startSelection] (Sure)
-  [startSelection] (Nope)[endAwaitInput] Sure, torture an old man![endAwaitInput] Mmm, t'''
-dialogs[1934] = '''his is wonderful!
- Thank you, Mario.
- You've made an old man happy.'''
-dialogs[1935] = '''[newPageAwaitInput] Here’s a little allowance for b'''
-dialogs[1936] = ''''''
-dialogs[1937] = ''' being
- so good to me.[endAwaitInput] My wish has come true.[endAwaitInput]FROGFUCIUS: Have you been to
- Seaside Town'''
-dialogs[1938] = ''' yet?
- Something odd is going on there.[endAwaitInput]FROGFUCIUS: Beware of the giant
- squ'''
-dialogs[1939] = '''id in the sunken ship. Turn 'im
- in'''
-dialogs[1940] = '''to calamari or something![endAwaitInput]FROG'''
-dialogs[1941] = ''''''
-dialogs[1942] = ''''''
-dialogs[1943] = ''''''
-dialogs[1944] = '''FUCIUS: The entrance to
- Monstro Town is underground.
- Follow the whirls in the desert'''
-dialogs[1945] = '''.[endAwaitInput]FROGFUCIUS: I JU'''
-dialogs[1946] = '''ST found out that
- there’s a kingdom in the clouds.
- Go and explore it, my child'''
-dialogs[1947] = '''ren.[endAwaitInput] Was that too much to absorb?
- Would you like a recap?[newlineAwaitInput]  [startSelection] (Sure'''
-dialogs[1948] = ''')
-  [startSelection] (Nope)[endAwaitInput] Okay, here’s the gist of it!
- Smithy invaded our world and took
- over Bowser’s Keep.'''
-dialogs[1949] = '''[newPageAwaitInput] Toadstool and Bowser were thrown
- by the impact, and now Smithy and
- his cohorts are on a rampage.[newPageAwaitInput] The shooting stars are somehow
- connected to this disturbance and
- they're the'''
-dialogs[1950] = ''''''
-dialogs[1951] = ''''''
-dialogs[1952] = ''' key to defeating Sm'''
-dialogs[1953] = '''ithy.[endAwaitInput] Would you like me to re'''
-dialogs[1954] = '''peat that?
-  [startSelection] (Y'''
-dialogs[1955] = '''es)
-  [startSelection] (No)[endAwaitInput] It’s quite a '''
-dialogs[1956] = '''situation we hav'''
-dialogs[1957] = '''e on
- our hands, isn't i'''
-dialogs[1958] = '''t?[endAwaitInput]MALLOW: Grand'''
-dialogs[1959] = ''''''
-dialogs[1960] = ''''''
-dialogs[1961] = ''''''
-dialogs[1962] = ''''''
-dialogs[1963] = ''''''
-dialogs[1964] = ''''''
-dialogs[1965] = ''''''
-dialogs[1966] = ''''''
-dialogs[1967] = ''''''
-dialogs[1968] = ''''''
-dialogs[1969] = ''''''
-dialogs[1970] = ''''''
-dialogs[1971] = ''''''
-dialogs[1972] = ''''''
-dialogs[1973] = ''''''
-dialogs[1974] = ''''''
-dialogs[1975] = ''''''
-dialogs[1976] = ''''''
-dialogs[1977] = ''''''
-dialogs[1978] = ''''''
-dialogs[1979] = ''''''
-dialogs[1980] = ''''''
-dialogs[1981] = ''''''
-dialogs[1982] = ''''''
-dialogs[1983] = ''''''
-dialogs[1984] = ''''''
-dialogs[1985] = ''''''
-dialogs[1986] = ''''''
-dialogs[1987] = ''''''
-dialogs[1988] = ''''''
-dialogs[1989] = ''''''
-dialogs[1990] = ''''''
-dialogs[1991] = ''''''
-dialogs[1992] = ''''''
-dialogs[1993] = ''''''
-dialogs[1994] = ''''''
-dialogs[1995] = ''''''
-dialogs[1996] = ''''''
-dialogs[1997] = ''''''
-dialogs[1998] = ''''''
-dialogs[1999] = ''''''
-dialogs[2000] = ''''''
-dialogs[2001] = ''''''
-dialogs[2002] = ''''''
-dialogs[2003] = ''''''
-dialogs[2004] = ''''''
-dialogs[2005] = ''''''
-dialogs[2006] = ''''''
-dialogs[2007] = ''''''
-dialogs[2008] = ''''''
-dialogs[2009] = ''''''
-dialogs[2010] = ''''''
-dialogs[2011] = ''''''
-dialogs[2012] = ''''''
-dialogs[2013] = ''''''
-dialogs[2014] = ''''''
-dialogs[2015] = ''''''
-dialogs[2016] = ''''''
-dialogs[2017] = ''''''
-dialogs[2018] = ''''''
-dialogs[2019] = ''''''
-dialogs[2020] = ''''''
-dialogs[2021] = ''''''
-dialogs[2022] = ''''''
-dialogs[2023] = ''''''
-dialogs[2024] = ''''''
-dialogs[2025] = ''''''
-dialogs[2026] = ''''''
-dialogs[2027] = ''''''
-dialogs[2028] = ''''''
-dialogs[2029] = ''''''
-dialogs[2030] = ''''''
-dialogs[2031] = ''''''
-dialogs[2032] = ''''''
-dialogs[2033] = ''''''
-dialogs[2034] = ''''''
-dialogs[2035] = ''''''
-dialogs[2036] = ''''''
-dialogs[2037] = ''''''
-dialogs[2038] = ''''''
-dialogs[2039] = ''''''
-dialogs[2040] = ''''''
-dialogs[2041] = ''''''
-dialogs[2042] = ''''''
-dialogs[2043] = ''''''
-dialogs[2044] = ''''''
-dialogs[2045] = ''''''
-dialogs[2046] = ''''''
-dialogs[2047] = ''''''
-dialogs[2048] = '''SNIFIT 3: Um...
- Nice wea'''
-dialogs[2049] = '''ther we're having.[endAwaitInput]SNIFIT 3: You wanna fight?[endAwaitInput]
-           Hmm?! What’s this?[newPageAwaitInput]               It’s a “Seed”.
- [startSelection]  (Take'''
-dialogs[2050] = ''' it)
- [startSelection]  (Leave it)[endAwaitInput]GARDE'''
-dialogs[2051] = '''NER: I'll plant the seed...[endAwaitInput]G'''
-dialogs[2052] = '''ARDENER: Then give it fertili'''
-dialogs[2053] = '''zer.[endAwaitInput]BOOSTER: Hoouuooo!
- Chugga, chugga...hoooon'''
-dialogs[2054] = '''k!
- This is my personal railway.[endAwaitInput]BOOSTER: My!
- It’s you again![newPageAwaitInput] I'm amazed you made it this far.
- Yes, quite amazing you are![newPageAwaitInput] Since you're '''
-dialogs[2055] = '''here, maybe you could
- clear up something for me.[newPageAwaitInput] My bri'''
-dialogs[2056] = '''de-to-be is chanting,
- “MARIOHELPMEMARIOHELPME”.
- Is she showing her happiness?[newPageAwaitInput] Hey,[delay][delay][delay][delay][delay][delay] w'''
-dialogs[2057] = '''ait a second!
- Maybe “MARIO” is another guy![endAwaitInput]       Received “Rock Can'''
-dialogs[2058] = '''dy”![endAwaitInput]BOOSTER: What if you're this
- “Mario” she k'''
-dialogs[2059] = '''eeps talking about?[newlineAwaitInput] Trying to take my bride away?
- Why do'''
-dialogs[2060] = '''n't you take [delay]THIS,'''
-dialogs[2061] = ''' instead![endAwaitInput]BOOSTER: That didn't do it?[newPageAwaitInput] Grrrr...I ran out of bombs.[endAwaitInput]BOOSTER:'''
-dialogs[2062] = '''
-             Chug-a-chug-a![endAwaitInput]BOOSTER: 
- HE'S GONE?![delay]
- That’s not fair![newPageAwaitInput] I'm so hurt...
- I only wanted to p'''
-dialogs[2063] = '''lay with him.[newPageAwaitInput] Now,••••[delay][delay]what expression should I
- be wearing at a time like this?![endAwaitInput]BOOSTER: Eh...?[endAwaitInput]GARDENER:'''
-dialogs[2064] = ''' ••[delay]••[delay]••[delay]
-          Nothing’s happe'''
-dialogs[2065] = '''ning.[endAwaitInput]BOOSTER: Well, so long![endAwaitInput]BOOSTER: Now I remember![delay][delay]
- I should look like...THIS![endAwaitInput]APPRENTICE: Golly!
- You're that famous Mario guy![newPageAwaitInput] If I beat you, they'll make me
- Snifit [0x7000]!
- [delay][delay][delay][delay][delay][delay]If'''
-dialogs[2066] = ''' I'm lucky![endAwaitInput]APPRENTICE: Whaaa••[delay]••[delay]••[delay]
- Now they'll make me take the
- training course over'''
-dialogs[2067] = ''' again.[endAwaitInput]APPRENTICE: All rig'''
-dialogs[2068] = '''ht!
- Now I'll be Snifit [0x7000]![endAwaitInput]APPRENTICE: Mario![newlineAwaitInput] Let me show you what I've learned
- in my classes so far.[newPageAwaitInput] I'll be'''
-dialogs[2069] = ''' Snifit [0x7000] if I beat you!
- ••[delay]••[delay]••[delay]••[delay]••[delay]••[delay]maybe.[endAwaitInput]S'''
-dialogs[2070] = '''NIFIT 4: After years of
- hard w'''
-dialogs[2071] = '''ork and effort, I'm now
- Snifit 4![newPageAwaitInput] 
-     I'll wear the number proudly![endAwaitInput]SNIFIT 5: Phew...![newlineAwaitInput] I've been training to become one
- of Boost'''
-dialogs[2072] = '''er’s Snifits for 3 years![endAwaitInput]SNIFIT 6: If only Ma and Pa could
- see me n'''
-dialogs[2073] = '''ow.[endAwaitInput]SNIFIT 7:
-     Yee haw![newlineAwaitInput]          Hurrah!
-               I'm a Snifit![newPageAwaitInput]
-         ••[delay]••[delay]••[delay]I'm••speechless![endAwaitInput]APPRENTICE: Shriek!
- The boss only wants 7 Snif'''
-dialogs[2074] = '''its![newlineAwaitInput] All my training was in vain![newPageAwaitInput]
-               What a rip![endAwaitInput]AP'''
-dialogs[2075] = '''PRENTICE: Harrumph!
- I'm off to the arcade![endAwaitInput]GARDENER: W••[delay]••[delay]wow![endAwaitInput]GARDENER: This is amazing![endAwaitInput]GA'''
-dialogs[2076] = '''RDENER: This is unreal! This is
- just like winning the lottery, only
- without the taxes! I mean, this is
- like falling out of an airplane
- wit'''
-dialogs[2077] = '''hout a parachute, and hitting
- a gaggle of geese in mid-air who
- break your fall. Wait u'''
-dialogs[2078] = '''ntil my
- buddies over at Happy Gardener's
- Mon'''
-dialogs[2079] = '''thly hear about '''
-dialogs[2080] = '''this. I'm going
- to be famous! Maybe even get my
- picture in the next issue.[delay_24][end]GAR'''
-dialogs[2081] = '''DENER: You think it coul'''
-dialogs[2082] = '''d use
- a little more fertilizer?'''
-dialogs[2083] = '''[endAwaitInput]GARDENER: Oops, maybe not, huh?[endAwaitInput]GARDENER: This will get me in
- Happy Garden'''
-dialogs[2084] = '''er Monthly magazine![endAwaitInput]GEN'''
-dialogs[2085] = '''O: Mario!
- There are Star Pieces to be found![newlineAwaitInput] Hang in there![endAwaitInput]
-
-     (Wish I could run fa'''
-dialogs[2086] = '''ster.)[endAwaitInput]
-
-    Wish'''
-dialogs[2087] = ''' I had some Cricket Jam.[endAwaitInput]
-      I wanna be a great plumber
-         like my brother Mario.[endAwaitInput]
-
-   If I cou'''
-dialogs[2088] = '''ld JUST get that melody![endAwaitInput]
-               The hunger!
-           Oh, for some food! [endAwaitInput]
-     I wanna be the best treasure
-          hunter in the world.[endAwaitInput]
-
-   I vant to be a vald class baker.[endAwaitInput]
-
-        I hope I become famous.[endAwaitInput]
-
-'''
-dialogs[2089] = '''        I hope she'll say “yes”.[endAwaitInput]
-
-    I wish he'd pop THE question.[endAwaitInput]
-
-   I wish I weren't su'''
-dialogs[2090] = '''ch a crybaby.[endAwaitInput]
-
-Please let Mallow find his way home.[endAwaitInput]GENO: This is Star Hill.[newlineAwaitInput] Wishes, which were transformed at
- the Star Road, fall fr'''
-dialogs[2091] = '''om here.[newPageAwaitInput] But[delay]••[delay]••[newlineAwaitInput] Some wishes that'''
-dialogs[2092] = ''' haven't been
- granted yet are falling because
- Smithy destroyed the Star Road.[endAwaitInput]GENO: Frogfucius mentioned hearing
- about a Star Piece on th'''
-dialogs[2093] = '''is hill.[endAwaitInput]GENO: Let’s see if we can find it.[endAwaitInput]MALLOW: This one’s private![delay]
- Who do you think you are,
- sp'''
-dialogs[2094] = '''ying on other people’s wishes?[endAwaitInput]MALLOW: C'mon, our quest for the
- Star Pieces is important![newPageAwaitInput] Everyone’s counting on us!
- We've got to hurry![endAwaitInput]MALL'''
-dialogs[2095] = '''OW: Sorry abou'''
-dialogs[2096] = '''t that.
- It’s just '''
-dialogs[2097] = '''that I'm embarr'''
-dialogs[2098] = '''assed
- about my wish.[endAwaitInput]M'''
-dialogs[2099] = '''ALLOW: Why, this wish is...[newPageAwaitInput] It’s from my mom and dad.[newPageAwaitInput] They're w'''
-dialogs[2100] = '''ishing for me to come
- home![endAwaitInput]MALLOW: 
- This isn'''
-dialogs[2101] = ''''t the time to be crying![newlineAwaitInput] They're waiting for me to come
- home![endAwaitInput]MALLOW: Co'''
-dialogs[2102] = '''me on Mario, we've got
- a busy schedule to keep. I'll '''
-dialogs[2103] = '''make
- you eat dust if you don't hurry.[endAwaitInput]MALLOW: 
-                Sniffle...[endAwaitInput]           Got a “L'''
-dialogs[2104] = '''azy Shell”![endAwaitInput]GENO: 
- Do you know wh'''
-dialogs[2105] = '''ere this leads to?[endAwaitInput]GENO: It looks like Exor’s the
- contact between the two worlds.[newPageAwaitInput] In other words[delay]••[delay]••[delay]••[endAwaitInput]GENO: If we follow th'''
-dialogs[2106] = '''is road,
- we'll find Smithy.[newPageAwaitInput] So...what’s keeping us?[endAwaitInput]'''
-dialogs[2107] = '''BOWSER: Hang on![endAwaitInput]BOWSER: '''
-dialogs[2108] = '''Hey! I only joined so that
- I could get my castle back.[newlineAwaitInput] I'm not going to be dragged along
- on this stu'''
-dialogs[2109] = '''pid hunt.[endAwaitInput]BOWSER: This is as far as I go.[newPageAwaitInput] I'm going to gather my troops '''
-dialogs[2110] = '''and
- rebuild my castle.[endAwaitInput]BOWSER'''
-dialogs[2111] = ''': And you, Mario![newlineAwaitInput] You're an official member of the
- Koopa Troop. It’s your duty to
-'''
-dialogs[2112] = ''' help with the repairs![endAwaitInput]GENO: Bowser, you're completely
- missing the point.[endAwaitInput]BOWSER: Gw'''
-dialogs[2113] = '''aa?![delay][delay][delay][delay][newPageAwaitInput] I oughtta rip your stuffing out![endAwaitInput]GENO: No, think about it, Bo'''
-dialogs[2114] = '''wser.[newlineAwaitInput] This sword connects the two
- worlds, right?[endAwaitInput]BOWSER: Yeah, so?[endAwaitInput]GENO: Even IF we defeat Exor...[newlineAwaitInput] There will be OTHER weapon beasts
- to follow him.[endAwaitInput]GE'''
-dialogs[2115] = '''NO: Your castle is at the
- entrance point to YOUR world.
- In short...they'll be back![endAwaitInput]GENO: Is that what'''
-dialogs[2116] = ''' you want?[endAwaitInput]BOWSER: Um....well...[endAwaitInput]BOWSER: No one insults the Koopa
- Troop and gets away with it.[newPageAwaitInput] '''
-dialogs[2117] = '''I've got a bone to pick with this
- Smithy guy'''
-dialogs[2118] = '''![endAwaitInput]BOWSER: Come on, Mario!
- We'll teach him a lesson.[endAwaitInput]GENO: It looks like we're togeth'''
-dialogs[2119] = '''er
- on this one. Let’s go![endAwaitInput]BOWSER: (More weapon things
- coming to take over my castle?
- What abou'''
-dialogs[2120] = '''t my[delay]••[delay]••[delay][newPageAwaitInput]
-             ••••P'''
-dialogs[2121] = '''RIVACY?[newPageAwaitInput] Yikes[delay]••[delay]••
-        This isn't good at all[delay]••[delay]••
-'''
-dialogs[2122] = '''              In fact, this stinks![delay]••[delay]••)[endAwaitInput]BOWSER: (But I CAN'T just be pals
- with these cretins.[newlineAwaitInput] I've got an image to keep up.)[endAwaitInput]BOWSER: ('''
-dialogs[2123] = '''I've got it!)[endAwaitInput]BOWSER: (I'm so sly!)[endAwaitInput]              It’s “Mario”![endAwaitInput]       We better do someth'''
-dialogs[2124] = '''ing![endAwaitInput]            Pick up a “Seed”![endAwaitInput]GENO: ••[delay]••[delay]••[delay]
- I feel the energy of the Star Piece.[endAwaitInput] What was that loud n'''
-dialogs[2125] = '''oise outside?
-       Check ou'''
-dialogs[2126] = '''t Booster Pass![endAwaitInput]'''
-dialogs[2127] = '''[pauseAwaitInput]Received a “KerokeroCola”![endAwaitInput]     You saw something sparkle.[endAwaitInput]SHY AWAY: Look wh'''
-dialogs[2128] = '''at you did![delay][delay]
- Smilax’s been whacked.[endAwaitInput]SHY AWAY: 
- Oooh, I'm going to get it![newlineAwaitInput] Queen Valentin'''
-dialogs[2129] = '''a told me to keep
- everyone out o'''
-dialogs[2130] = '''f Nimbus Land.[newPageAwaitInput] 
-            What should I do?[endAwaitInput]SHY AWAY: ••••[delay]••••[delay]••••[delay]••••'''
-dialogs[2131] = '''[delay]••••[delay]••••[delay]••••[delay]••••[delay]
-         I know, I'll run away![endAwaitInput]         How did he get here?![endAwaitInput]'''
-dialogs[2132] = '''  Got an “Ultra Hammer”![endAwaitInput]        Wow! Did you see that?[delay][delay][delay]
-'''
-dialogs[2133] = '''[startSelection]It’s a magical beanstalk'''
-dialogs[2134] = '''![newPageAwaitInput]        Hit the block once more
-                to climb it.[endAwaitInput]          Found a'''
-dialogs[2135] = ''' Frog Coin![endAwaitInput]         Go'''
-dialogs[2136] = '''t a “Red Essence”![endAwaitInput]
-           Found a “Masher”![endAwaitInput]
-      You'''
-dialogs[2137] = ''' found a “Goodie Bag”![endAwaitInput]
-        Picked up a “Hammer”![endAwaitInput] Now ya got my hammer ang'''
-dialogs[2138] = '''ry!
- Ya shouldn't '''
-dialogs[2139] = '''have done that![endAwaitInput] HEY!
- '''
-dialogs[2140] = '''Are YOU lookin' at me?
- My hamme'''
-dialogs[2141] = '''r and I don't like you![endAwaitInput]TOAD: Mario!
- You better be'''
-dialogs[2142] = ''' careful.
- He’s definitely got a mean streak!'''
-dialogs[2143] = '''[endAwaitInput]     It’s a battered old hammer.[endAwaitInput]                Actually...
-    It’s a sturdy '''
-dialogs[2144] = '''hammer, bearing
-    the Hammer Brother’s insignia.[endAwaitInput]            You never'''
-dialogs[2145] = ''' know!
-        It might come in'''
-dialogs[2146] = ''' handy![endAwaitInput]        Picked up a “H'''
-dialogs[2147] = '''ammer”!'''
-dialogs[2148] = '''[endAwaitInput]
-         Picked up a “Flower”![endAwaitInput]
-     Picked up a “Royal Syrup”![endAwaitInput]TOAD: Thanks, Mario!
- I was running so fast I wasn't
- watching where I was going![endAwaitInput]TOAD:
- Mushroom Kingdom’s just ahead.
- We're almo'''
-dialogs[2149] = '''st there, Mario.[endAwaitInput]TOAD: Hey!
- Where did this hammer come from?[endAwaitInput]TOAD: Hmm[delay]••[delay]••[delay][delay][delay]
- He'''
-dialogs[2150] = '''y, do you know what THIS is?![endAwaitInput]TOAD: It has the Hamme'''
-dialogs[2151] = '''r Bro's
- insignia on it.[newlineAwaitInput] No one stands a chance against
- you when you w'''
-dialogs[2152] = '''homp them with this.[endAwaitInput]TOAD: Let’s get a move on![newlineAwaitInput] I'll see you in '''
-dialogs[2153] = '''Mushroom Kingdom.[endAwaitInput] Here, you can have this.[endAwaitInput]BOWYER:'''
-dialogs[2154] = ''' 997! 998! 999! 1000!
- Nya ha ha! 1000 arrows![newlineAwaitInput] For cover'''
-dialogs[2155] = ''' they run, nya!
- FUN this is,'''
-dialogs[2156] = ''' yes.
- Nya! Another 1000 will I shoot![endAwaitInput]MALLOW: Mario, who IS that guy?
- [delay][delay]He must be the on'''
-dialogs[2157] = '''e shooting
- arrows at Rose Town![endAwaitInput]BOWYER: Happy I am, nya!
- Look...LOOK at their expressions
- when freeze they '''
-dialogs[2158] = '''do![endAwaitInput]FLUNKIES: Woo hoo!
- They're standing like statues![endAwaitInput]BOWYER: Nya!
- More practice do I need![endAwaitInput]MALLOW: Oh no!
- He’s not stopping!
- We've got to do something![endAwaitInput]MALLOW: Who do you think you are'''
-dialogs[2159] = ''',
- Bruce Lee? You can't just go in
- there with your fist'''
-dialogs[2160] = '''s flying![endAwaitInput]MALLOW: Oh no, someone’s coming!
- Let’s hide and see if'''
-dialogs[2161] = ''' we can
- learn anything.[endAwaitInput]MALLOW: There're too many '''
-dialogs[2162] = '''of 'em.
- We'll be creamed![endAwaitInput] Lo'''
-dialogs[2163] = '''ok what I found, Bowyer![endAwaitInput]BOWYER: What? WHAT?
- Disturb me you must not'''
-dialogs[2164] = '''!
- Practicing, I am.[newlineAwaitInput] More arrows must I shoot!
- More statues must I make, nya![endAwaitInput]?'''
-dialogs[2165] = '''??:
-                   Stop![endAwaitInput]???: Hold it right there!
- You d'''
-dialogs[2166] = '''on't kno'''
-dialogs[2167] = '''w what you're doing.
- RETURN that star to me![endAwaitInput]BOWYER: Gnya, NYA!?
- A stranger you are...
-'''
-dialogs[2168] = ''' and strange looking at that![newlineAwaitInput] Teach you, we must,
- who’s in charge![endAwaitInput]???: Thanks for the help.
- You really got me out '''
-dialogs[2169] = '''of a jam.[newPageAwaitInput] Why a'''
-dialogs[2170] = ''''''
-dialogs[2171] = '''re you staring at me?
- You know I'm more than just
- '''
-dialogs[2172] = '''a doll, don't you?[endAwaitInput]???: Have you guesse'''
-dialogs[2173] = '''d the truth?[delay]
- I'm a vis'''
-dialogs[2174] = '''itor from above, and this
- is a form I'm borrowing briefly.[endAwaitInput]MALLOW'''
-dialogs[2175] = ''': You mean, like, fro'''
-dialogs[2176] = '''m the
- sky or something?[endAwaitInput]???: Higher than that, I'm afraid![delay][delay][delay][newlineAwaitInput] Do you two know anyt'''
-dialogs[2177] = '''hing about
- the “'''
-dialogs[2178] = '''Star Road”?[endAwaitInput]???: C'''
-dialogs[2179] = '''ompletely in the dark, eh?[delay][delay]'''
-dialogs[2180] = '''[delay]
- Well, it’s a big mess '''
-dialogs[2181] = '''up there right
- now, and it concerns you too![delay][delay][newPageAwaitInput] Let me explain...[newPageAwaitInput] You've heard of wishing upon a
- shooting'''
-dialogs[2182] = ''' star?[endAwaitInput]???: At the “Star Road”, your
- wish is trans'''
-dialogs[2183] = '''formed into a star.[newlineAwaitInput] When'''
-dialogs[2184] = ''' it’s granted, it then turns
-'''
-dialogs[2185] = ''' into a shooting'''
-dialogs[2186] = ''' star and falls
- down to earth.[newPageAwaitInput] So you s'''
-dialogs[2187] = '''ee, the Star Road plays an
- integral role in granting w'''
-dialogs[2188] = '''ishes.[newPageAwaitInput] But eve'''
-dialogs[2189] = '''r since a sword destroyed
- the “Star Road”, everything's
- come to a halt.'''
-dialogs[2190] = '''[newPageAwaitInput] No stars have been made since.[newlineAwaitInput] The way'''
-dialogs[2191] = ''' things st'''
-dialogs[2192] = '''and,[pauseAwaitInput] yours is a
- world where wishes can't come
- true anymore.[endAwaitInput]MALLOW: Are you saying THIS star
- is a part of your “St'''
-dialogs[2193] = '''arway”?[endAwaitInput]???: That’s “STA'''
-dialogs[2194] = '''R ROAD”, my
- fluffy little friend ...[newPageAwaitInput] Yes, [pauseAwaitInput]that'''
-dialogs[2195] = ''' star is a broken piece
- of the Star Road.[newPageAwaitInput] I'm'''
-dialogs[2196] = ''' here to find them all, and
- repair the Star Road.[endAwaitInput]???: 
- The br'''
-dialogs[2197] = '''oken Star Pieces'''
-dialogs[2198] = '''...[newlineAwaitInput] There are 7 altogether.[endAwaitInput]???: '''
-dialogs[2199] = '''For peace to return...[newlineAwaitInput] we must get rid of Smithy,
- find the Star Pieces, and repa'''
-dialogs[2200] = '''ir
- the Star Road..[endAwaitInput]???: I'm “♥♪!?”, but it’s hard to
- prono'''
-dialogs[2201] = '''unce so...[newlineAwaitInput] Call me “Geno”, after the d'''
-dialogs[2202] = '''oll.[newPageAwaitInput] I chose him because he looked the
- strongest out of all the dolls.[endAwaitInput] “Ge'''
-dialogs[2203] = '''no”, who is searching for the
-  pieces of the Star Road, joins
-         Mario and Mallow.[newPageAwaitInput] Things ar'''
-dialogs[2204] = '''e definitely looking up![endAwaitInput]GENO: No'''
-dialogs[2205] = '''w grab the star, Mario![endAwaitInput] Ooh, I heard everything![delay]
- Who would'''
-dialogs[2206] = ''' have known that star
- was so important?[newPageAwaitInput] I've got to inform Smithy![endAwaitInput]GENO: Come on!
- Let’s get this show on the road.[endAwaitInput]
-        Pick up a “Mushro'''
-dialogs[2207] = '''om”[endAwaitInput]GARDENER: Hey!
- I haven't finished yet.[endAwaitInput]GARDENER: Short attention span?[endAwaitInput]GARDENER: Hi, I'm the garde'''
-dialogs[2208] = '''ner.[delay][delay][delay]
- See that huge planter?[newPageAwaitInput] I've spent many years seeking the
- legendary “Seed” and “Fertiliz'''
-dialogs[2209] = '''er”
- to fill it with, but had no luck.[newPageAwaitInput] Sigh...if I could only find them![endAwaitInput]GARDENER: Incre'''
-dialogs[2210] = '''dible!
- I can't b'''
-dialogs[2211] = '''elieve it! It’s the
- legendary “Seed” I've'''
-dialogs[2212] = ''' read about
- in the ancient gardening texts.
- These are so rare! Can you even
- begin to comprehend what a huge
- discovery this '''
-dialogs[2213] = '''is? I've spent my
- whole life searching for one!
- It’s too much, I tell ya![delay_24][end]GARDENER'''
-dialogs[2214] = ''': Egads!
- Do you know what you have there?
- That fertilizer comes from the
- Shy Away clan, famous for its
- miraculous feats o'''
-dialogs[2215] = '''f gardening. I
- looked for it beyond the cliffs,
- even tried Bean Valley, but failed'''
-dialogs[2216] = '''.
- I've traveled around the'''
-dialogs[2217] = ''' world and
- waited a lifetime for some of that
- fertilize'''
-dialogs[2218] = '''r you've got there![delay_24][end]GARDENER: Well, that’s my story.[newlineAwaitInput] Say...w'''
-dialogs[2219] = '''ill you give me the “Seed”?
-  [startSelection]  (Sure)
-  '''
-dialogs[2220] = '''[startSelection]  (Nope)[endAwaitInput]GARDENER: Yes, you might say I
- have fertilizer on the brain.'''
-dialogs[2221] = '''[newlineAwaitInput] Will you give it to me?
-  [startSelection]  (Sure)
-  [startSelection]  (Sorry)[endAwaitInput]GARDENE'''
-dialogs[2222] = '''R: You changed your mind?[newlineAwaitInput]  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: Well, Mario'''
-dialogs[2223] = '''?[newlineAwaitInput] Will you give me the fertilizer?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: I finally have it![newPageAwaitInput] This is extraordinary![endAwaitInput] May I have the fertilize'''
-dialogs[2224] = '''r?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: Sigh'''
-dialogs[2225] = '''...
- What ever happened to granting
- an old man’s wishes?[endAwaitInput]GARDENER: Oh thank you![newlineAwaitInput] I finally have both the “Seed” and
- the “Fertilizer”.[newlineAwaitInput] I'll try'''
-dialogs[2226] = ''' them out right away.[endAwaitInput]GARDENER: I'd be so happy if I
- only ha'''
-dialogs[2227] = '''d the “Seed”![newPageAwaitInput] I'm sooo disappointed.[endAwaitInput]'''
-dialogs[2228] = '''GARDENER: I finally have it![newlineAwaitInput] But without the “Seed”,
- it’s useless.[endAwaitInput] You're giving me the fertili'''
-dialogs[2229] = '''zer too?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: Gals don't care for
- tightwads, you know![endAwaitInput]FACTORY CHIEF: Mario![delay][delay]
- I'''
-dialogs[2230] = ''''m surprised to see you here.[endAwaitInput]FACTORY C'''
-dialogs[2231] = '''HIEF: But this is the
- end of the line for you.[newlineAwaitInput] This is the closest you'll ever get
- to Smithy, so savor the moment.[endAwaitInput]F'''
-dialogs[2232] = '''ACTORY CHIEF: Harrumph!
- You'll be fodder for my incredible
- invent'''
-dialogs[2233] = '''ion, the “Gunyolk”![endAwaitInput]POUNDER #1: Sir![delay]'''
-dialogs[2234] = '''[delay]
- “Drill Bit” will be finished on time.[endAwaitInput]POUNDER #2: 
-       We're ahead of schedule![endAwaitInput]POUNDER #3: 
-       We'll m'''
-dialogs[2235] = '''ake Smithy proud![endAwaitInput]POUNDER: Here’s the report![endAwaitInput]MANAG'''
-dialogs[2236] = '''ER: Good work, everyone.[delay][delay][delay]
- The'''
-dialogs[2237] = ''' harder we work, the stronger
- Sm'''
-dialogs[2238] = '''ithy will become![endAwaitInput]MANAGER: The weapons we
- manufacture h'''
-dialogs[2239] = '''ere will be...[newPageAwaitInput]
-           Just think of it...[endAwaitInput]MANAGER: When Smithy takes over
- Mario’s world, we can do anything
- w'''
-dialogs[2240] = '''e want![endAwaitInput]
-              Gwah'''
-dialogs[2241] = ''', ha, ha...[delay_48][end]BOWSER:
-              Not so fast![newPageAwaitInput]
-     You sure are a cocky bunch!'''
-dialogs[2242] = '''[endAwaitInput]BOWSER: I rule this world!
- Don't you forget it![endAwaitInput]MA'''
-dialogs[2243] = '''NAGER: It’s Mario![newlineAwaitInput] Mack'''
-dialogs[2244] = ''' 2 and Yaridovich 2 didn't
- stop him?[endAwaitInput]BOWSER: No, NO! Leave '''
-dialogs[2245] = '''Mario
- outta this. I'm the on'''
-dialogs[2246] = '''e you need
- to worry about, not him![endAwaitInput]MANAGER: Mario, you'''
-dialogs[2247] = ''''re about to
- make the longest jump of your life![endAwaitInput]BOWSER: Y.'''
-dialogs[2248] = '''..You're ignoring me![endAwaitInput]CLERK: 
- Pro'''
-dialogs[2249] = '''duction is on schedule?[newPageAwaitInput]'''
-dialogs[2250] = ''' This, despite the fact that Mack,
- Bowyer, Yaridovic'''
-dialogs[2251] = '''h, and the Axem
- Rangers were defeated.[newlineAwaitInput] At this rate, Smith'''
-dialogs[2252] = '''y will have a
- new army in no time![endAwaitInput]MALLOW: A...new army?'''
-dialogs[2253] = '''[newPageAwaitInput] You can't be making more weapons!
- Haven't you caused enou'''
-dialogs[2254] = '''gh trouble
- already?[endAwaitInput]CLERK'''
-dialogs[2255] = ''': What did you say, you
- little puff ball?
- [delay]'''
-dialogs[2256] = '''[delay]Mad Mallet! TRASH 'em![endAwaitInput]CLERK: All right, let’s see
- whatcha got![endAwaitInput]CLERK: 
- O'''
-dialogs[2257] = '''h yeah?! Who are you?[endAwaitInput]MALLOW: This is THE Mario![newPageAwaitInput] Give up now, while you still have
-'''
-dialogs[2258] = ''' a chance![newPageAwaitInput] Shut down production NOW,
- or he'll'''
-dialogs[2259] = '''...STOMP ya![endAwaitInput]MALLOW: Ha!
- Hope you learned your lesson![endAwaitInput]MALLOW: 
- We're almost ther'''
-dialogs[2260] = '''e, Mario.[newlineAwaitInput] Come on![endAwaitInput]MALLOW: What do you suppose
- this switch do'''
-dialogs[2261] = '''es? Hmm...[endAwaitInput]MALLOW: 
-         Ack! Help me, Mario![endAwaitInput]MAL'''
-dialogs[2262] = '''LOW: ••[delay]••[delay]••[delay]Nothing’s happenin'''
-dialogs[2263] = '''g.[endAwaitInput]MAL'''
-dialogs[2264] = '''LOW: Huh?
- What’s with the funny face, Mario?[newPageAwaitInput] Oh I KNOW, you're trying to make
- me look, aren't you?[delay][delay]
- I'm not going to fall for that one![endAwaitInput]MALLOW: Boy, t'''
-dialogs[2265] = '''hat was scary!
- I guess the'''
-dialogs[2266] = ''' green switch controls
- the crane.[endAwaitInput]GENO: Hmm••[delay]••[delay]••[delay][newlineAwaitInput] The production line hasn't halted.[endAwaitInput]GENO: This must be where Smithy
- makes his weapon'''
-dialogs[2267] = '''s.[newPageAwaitInput] To find the last Star Piece and
- stop the factory, we've go'''
-dialogs[2268] = '''t to
- defeat him first.[endAwaitInput]GENO: Mario...
- There’s no turning back now.
- Are you ready?[endAwaitInput]GENO: Our quest is almost over.[endAwaitInput]GENO: And'''
-dialogs[2269] = ''' when the time comes••[delay]••[delay]••[delay][endAwaitInput]GENO: Look Mario, this is where the
- weapons come from.[endAwaitInput]
-
-                Nya ha ha.[delay_48][end]              Heh h'''
-dialogs[2270] = '''eh heh...[delay_48][end] Like the moon over[delay_32] 
- the day, my genius and brawn[delay_32]
- are lost on these fo'''
-dialogs[2271] = '''ols. [delay_32]~Haiku[endAwaitInput]TOADSTOOL: You there![delay][delay]
- Are you the one'''
-dialogs[2272] = ''' in charge here?[newPageAwaitInput] Do you know what your weapons
- have been doing to '''
-dialogs[2273] = '''our world?[newPageAwaitInput] Stop this nonsense at once![endAwaitInput]DIRE'''
-dialogs[2274] = '''CTOR:
-    I'm afraid that isn't possible. [newPageAwaitInput] Any dissent a'''
-dialogs[2275] = '''gainst Smithy will be
- dealt with by immediate melt down.[endAwaitInput]'''
-dialogs[2276] = '''TOADSTOOL: 
-             M, melt down?[newPageAwaitInput] You can't scare me, I've got
- Mario by m'''
-dialogs[2277] = '''y side![endAwaitInput]DIREC'''
-dialogs[2278] = '''TOR: 
-     Dissenters will '''
-dialogs[2279] = '''be eliminated!
-       Production will continue.[endAwaitInput]TOADSTOOL'''
-dialogs[2280] = ''':
-            That was scary![newPageAwaitInput] But'''
-dialogs[2281] = ''' we can't run away now.[newlineAwaitInput] We've got to kic'''
-dialogs[2282] = '''k these lowlifes
- out of our '''
-dialogs[2283] = '''world.[endAwaitInput]
-
-   I wish for ever'''
-dialogs[2284] = '''yone to be happy.[endAwaitInput]DEALER: 
-         I will draw on'''
-dialogs[2285] = '''e card.[endAwaitInput]DEALER: 
-        I'll play wi'''
-dialogs[2286] = '''th this hand.[endAwaitInput]DEALER: 
-         '''
-dialogs[2287] = '''Draw or stay, Mario?[endAwaitInput]            Your total is [0x7000].
-  [startSelection] (Draw)
-  [startSelection] (Stay)[endAwaitInput]DEALER: 
- I '''
-dialogs[2288] = '''will first deal you two cards.[endAwaitInput]            You got a(n) [0x7000].[endAwaitInput]      Oh no! You went '''
-dialogs[2289] = '''over 21.[endAwaitInput]DEALER:
-      Please show me your hand.[endAwaitInput]DEALER: 
-                I have '''
-dialogs[2290] = '''[endAwaitInput].[endAwaitInput]
-          Mario, you have [0x7000].[endAwaitInput]DEALER: I broke 21'''
-dialogs[2291] = ''', so you won![newlineAwaitInput] Here’s '''
-dialogs[2292] = '''your Frog Coin.[endAwaitInput]DEALER: You won this round.[newlineAwaitInput] Here is your Frog Coin.[endAwaitInput]DEALER: You los'''
-dialogs[2293] = '''t this round.[newlineAwaitInput] I'll take your Frog Coin.[endAwaitInput]DEALER'''
-dialogs[2294] = ''': It’s a tie.[newlineAwaitInput] I'll keep your Frog Coin.[endAwaitInput]DEALER: No Frog Coins?[newlineAwaitInput] Sorry, you can't play then.[endAwaitInput]DEALER: 
-            Your first card.[endAwaitInput]DEALER: 
-          Your second card.[endAwaitInput]DEALER: '''
-dialogs[2295] = '''
- Welcome to the Blackjack table.[newlineAwaitInput] Play a round with me, sir?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] Another game, sir?
-  [startSelection] (Sure)
-  [startSelection] ('''
-dialogs[2296] = '''No)[endAwaitInput]DEALER: 
- We'''
-dialogs[2297] = '''lcome to the Grate Guy Casino.[endAwaitInput]DEALER: If you would like to play,
- pl'''
-dialogs[2298] = '''ease go to the other side of
- the t'''
-dialogs[2299] = '''able.[endAwaitInput]DEAL'''
-dialogs[2300] = '''ER: In Blackjack, whomeve'''
-dialogs[2301] = '''r
- comes the closest to 21 points,
- without going over, wins.[newPageAwaitInput] I will first deal 2'''
-dialogs[2302] = ''' cards, then we
- will each draw as many cards as
- we wish.[newPageAwaitInput] Once we stop drawing cards, we
- both sho'''
-dialogs[2303] = '''w our hand, and whomever
- has the higher total wins.[newPageAwaitInput] But if your hand exc'''
-dialogs[2304] = '''eeds 21, your
- opponent wins, regardless of how
- many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over '''
-dialogs[2305] = '''21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 F'''
-dialogs[2306] = '''rog Coin,'''
-dialogs[2307] = '''
- but if it’s a tie or you lose, I'll
- keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
-  [startSelection] (Yes)
-  [startSelection] ('''
-dialogs[2308] = '''No)[endAwaitInput]DOORMAN: Sorry, this casino is
- for members only.[endAwaitInput]DOORMAN: You don't have a
- “Bright Card”?[newlineAwaitInput] I'm sorry, I can't let'''
-dialogs[2309] = ''' you in.[endAwaitInput]DOORMAN: Please enjo'''
-dialogs[2310] = '''y yourself.[endAwaitInput]DOORMAN: We hop'''
-dialogs[2311] = '''e everything was
- to your liking?[endAwaitInput] Bus'''
-dialogs[2312] = '''iness is so slow...[newlineAwaitInput] Hey Mario, wanna play “Look the
- other way” w'''
-dialogs[2313] = '''ith me?[endAwaitInput] Ready, and...
- Look the..'''
-dialogs[2314] = '''.other...[delay_40][end] (Hit right/left on the Control Pad)[endAwaitInput] ...Way![endAwaitInput] '''
-dialogs[2315] = '''Gotcha!
- I win![endAwaitInput] Ooh, you didn't get caught!
- I lost this round.[endAwaitInput] Okay, Mario, this is in celebration
- of you'''
-dialogs[2316] = '''r wins![endAwaitInput]        Received a “Star Egg”![endAwaitInput] '''
-dialogs[2317] = '''Wanna try it again?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]TOAD: This is for you.[endAwaitInput] Welcome to the Grate Gu'''
-dialogs[2318] = ''''''
-dialogs[2319] = '''y Casino![newlineAwaitInput] Wanna play the slot machines?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] As you wish.[endAwaitInput] Require instructions?
-  [startSelection] (No)
-  [startSelection] (Yes)[endAwaitInput]'''
-dialogs[2320] = ''' I'll take your 10 coins.[newlineAwaitInput] P'''
-dialogs[2321] = '''lease enjo'''
-dialogs[2322] = '''y yourself.[endAwaitInput] Please come back with more coins.[endAwaitInput] The '''
-dialogs[2323] = '''slot m'''
-dialogs[2324] = '''achine costs 10 coins
- per game.[newPageAwaitInput] Hit it once to start the game.[newPageAwaitInput] Each consecutiv'''
-dialogs[2325] = '''e hit will freeze
- one of the pictures. Match all 3
- and you mi'''
-dialogs[2326] = '''ght win a Frog Coin.[newPageAwaitInput] Do you want to try it out?'''
-dialogs[2327] = '''
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]GRATE GUY: Hello Mario![newPageAwaitInput] I run this casino!
- Feel free to enjoy yourse'''
-dialogs[2328] = '''lf.[endAwaitInput]DEALER: Do you want to continue?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] I wonder what became of Booster's
- search for a bride?[endAwaitInput]           [delay]You [delay]'''
-dialogs[2329] = '''missed![delay_40][end]          Talk to the flower[newlineAwaitInput]     and the star gate will open.[endAwaitInput]             To Marrymore[endAwaitInput]              To Star Hill[endAwaitInput]
-
-    Can't w'''
-dialogs[2330] = '''ait to start a family.[endAwaitInput]
-
-         I hope my baby’s cute![endAwaitInput]
-
-      May Mallow fix the R'''
-dialogs[2331] = '''oad![endAwaitInput]            I'''
-dialogs[2332] = '''t’s been sealed[endAwaitInput]                  Look!
-   The “Shin'''
-dialogs[2333] = '''y Stone” is reacting![endAwaitInput]      The seal has been broken![endAwaitInput] '''
-dialogs[2334] = '''It’s really weird.
- Sometimes I hear the guy next door.[newPageAwaitInput] He’s always mumbl'''
-dialogs[2335] = '''ing about a
- Crystal-this and an Evil-that.[newPageAwaitInput] Isn't a “Crystal” some kind of a
-'''
-dialogs[2336] = ''' shiny rock...or something?
- I know I've seen those somewhere![endAwaitInput]JINX: Who'''
-dialogs[2337] = '''a[delay][delay]••••••[newlineAwaitInput] You ARE the stronger champi'''
-dialogs[2338] = '''on,
- no doubt about it.'''
-dialogs[2339] = '''[newPageAwaitInput] My reputation was staked on this
- last fight, so I've l'''
-dialogs[2340] = '''ost the title
- of “Sensei”.[newPageAwaitInput] From today, you are the Sensei
- of t'''
-dialogs[2341] = '''his dojo.[newPageAwaitInput] Please take this belt, which only
- the highest ranking fighter in the
- dojo can wear.[endAwaitInput] We will rename the doj'''
-dialogs[2342] = '''o, “Mario
- Style Dojo”, and incorporate your
- jump technique into the training.[endAwaitInput]        Received a “Jinx B'''
-dialogs[2343] = ''''''
-dialogs[2344] = '''elt”[endAwaitInput]JINX'''
-dialogs[2345] = ''': Jagger and I will start our
- training imme'''
-dialogs[2346] = '''diately.[endAwaitInput] 1000 warm up jumps!
- Ready, begin![endAwaitInput]
-                   '''
-dialogs[2347] = '''DODO![endAwaitInput]VALENTINA: Did you dis'''
-dialogs[2348] = '''play the
- statues properly?[endAwaitInput]VALENTINA: Fine! N'''
-dialogs[2349] = '''ow polish them
- to a fine luster and make them a
- tribute to my beauty![endAwaitInput]VALENTINA: Pay attention to me![newlineAwaitInput] H'''
-dialogs[2350] = '''urry up, and DON'T let me catch
- you dozing again.[endAwaitInput]VALENTINA: What?[newlineAwaitInput] You saw a statue mov'''
-dialogs[2351] = '''e?
- Don't be ridiculous.[newPageAwaitInput] You're'''
-dialogs[2352] = ''' just stalling, so you won't
- have to po'''
-dialogs[2353] = '''lish them![endAwaitInput]VALENTINA: What?
- The statue was “ticklish”?[newlineAwaitInput] Is that what you said?[newPageAwaitInput]'''
-dialogs[2354] = ''' If you try stalling just one more
-'''
-dialogs[2355] = ''' time, I'm gonna have your feathers
- plucked for my pillow. Now SC'''
-dialogs[2356] = '''AT![endAwaitInput]VALENTINA: STOP BOTHERING ME![newlineAwaitInput] If you're so worried, why '''
-dialogs[2357] = '''don't
- you go give it a good peck![endAwaitInput]          Pick up a “Feather”.[endAwaitInput]JAGGER: Mario Sensei, the new
- regimen will strengthen us'''
-dialogs[2358] = ''', right?[endAwaitInput]JINX: Master!
- Share your wisdom with us![endAwaitInput]CULEX: 
-      Farewell, champion knight![endAwaitInput]    Received '''
-dialogs[2359] = '''a “Quartz Charm”![endAwaitInput] I think our neighbor moved away.[endAwaitInput]                 Uh oh...
-    Dodo'''
-dialogs[2360] = '''’s in a pretty bad mood.[newPageAwaitInput]  K'''
-dialogs[2361] = '''eep up your statue disguise and
-   jump to avoid getting pecked.[newPageAwaitInput]        '''
-dialogs[2362] = '''Get ready because he's
-           coming this way![endAwaitInput]FROGFUCIUS: So! Toadstool was
- the bride, a'''
-dialogs[2363] = '''fter all?[newPageAwaitInput] You'd better hurry and r'''
-dialogs[2364] = '''escue her
- before she's...married'''
-dialogs[2365] = '''![endAwaitInput]FROGFUCIUS: Good work, Mario.
- You rescued Toadstool.[newPageAwaitInput] Why don't you head back to
- Mushroom Kingdom?'''
-dialogs[2366] = '''
- I'm sure the Chancellor is worried.[endAwaitInput]F'''
-dialogs[2367] = '''ROGFUCIUS: 
- I have the latest news, children.[newPageAwaitInput] A larg'''
-dialogs[2368] = '''e star’s been sighted o'''
-dialogs[2369] = '''n
- “Star Hill”.[endAwaitInput]FROGFUCIUS: Eh!?[newlineAwaitInput] That delicious smell!
- You have some Cric'''
-dialogs[2370] = '''ket Jam, yes?[newPageAwaitInput] May I have some?
-  [startSelection] (Sure)
-  [startSelection] (Nope)[endAwaitInput] Sure, torture an old man![endAwaitInput] Mmm, this is wond'''
-dialogs[2371] = '''erful!
- Thank you, Mario.
- You've mad'''
-dialogs[2372] = '''e an old man happy.[newPageAwaitInput] Here’s a little allowan'''
-dialogs[2373] = '''ce for b'''
-dialogs[2374] = '''eing
- so good to me.[endAwaitInput] My wish has come true.[endAwaitInput]FROGFUCIUS'''
-dialogs[2375] = ''': Have you been to
- Seaside Town yet?
- Something '''
-dialogs[2376] = '''odd is going on there.[endAwaitInput]FROGFUCIUS: Beware of the giant
- squid in the sunken ship. Turn 'im
- into calamari or something![endAwaitInput]FROGFUCIUS: The entrance to
- Monstro Town is underground.
- Follow the whirls in the desert.[endAwaitInput]FROGFUCIUS: I JUST found ou'''
-dialogs[2377] = '''t that
- there’s a kingdom in the clouds.
- Go and explore it, my children.[endAwaitInput] Was that too much to absorb?
- Would you like a recap?[newlineAwaitInput]  [startSelection] (Sure)
-  [startSelection] (Nope)[endAwaitInput] Okay, here’s the'''
-dialogs[2378] = ''' gist of it!
- Smithy invaded our world and took
- over Bowser’s Keep.[newPageAwaitInput] Toadstool and Bowser '''
-dialogs[2379] = '''were thrown
- by the impact, and now Smithy and
- his cohorts are on a ram'''
-dialogs[2380] = '''page.[newPageAwaitInput] The shooting stars '''
-dialogs[2381] = '''are somehow
- connected to th'''
-dialogs[2382] = '''is disturbance and
- they're the key to defe'''
-dialogs[2383] = '''ating Smithy.[endAwaitInput] Would you like me to repeat that'''
-dialogs[2384] = '''?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] It’s quite a'''
-dialogs[2385] = ''' situation we have on
- o'''
-dialogs[2386] = '''ur hands, isn't it?[endAwaitInput]MALLOW: Grandpa!
- We found my real home!
- It’s way up in the clouds.[endAwaitInput]FROGFUCIUS: Mallow!
- You're a'''
-dialogs[2387] = ''' prince?!
- I never would have guessed![newPageAwaitInput] And now you're helping to save
- the world?
- You've come a long '''
-dialogs[2388] = '''way, child.[newPageAwaitInput] Although you've found your family,
- this ad'''
-dialogs[2389] = '''venture isn't over yet!'''
-dialogs[2390] = '''[endAwaitInput]MALLOW: Yep. I'm not giving up![endAwaitInput]FROGFUCIUS: You've got to defeat
- Valentina and save Nimbus Land.[endAwaitInput]FROGFUCIUS: Ah! Now the people
- o'''
-dialogs[2391] = '''f Nimbus Land can rejoice.[newPageAwaitInput] SO!
- I h'''
-dialogs[2392] = '''ear the next Star Piece is
- inside a volcano.[newPageAwaitInput] I also heard that Boo'''
-dialogs[2393] = '''ster got
- himself another '''
-dialogs[2394] = '''bride from the sky.[endAwaitInput]FROGFUCIUS: So...only Bowser's
- Keep'''
-dialogs[2395] = ''' remains.[newPageAwaitInput] The citizens of'''
-dialogs[2396] = ''' Nimbus Land will
- tell you how to get there.[endAwaitInput]FR'''
-dialogs[2397] = '''OGFUCIUS: 
- That’s all the advice I hav'''
-dialogs[2398] = '''e.[newPageAwaitInput] You've done well. All that’s left
- to do is to defeat Smithy.[newPageAwaitInput] Save'''
-dialogs[2399] = ''' this world, and bring this
- quest to a happy end![endAwaitInput] '''
-dialogs[2400] = '''This••is••Smithy’s castle![newPageAwaitInput] No trespassers••allowed.[endAwaitInput]BOWSER: 
-               Magikoopa![endAwaitInput]MAG'''
-dialogs[2401] = '''IKOOPA: Huh••where am I?[delay][delay][delay]
- Bowser, hello!
- How have you '''
-dialogs[2402] = '''been?[newPageAwaitInput] I, uh, made it back here SOMEHOW,
- but it seems lik'''
-dialogs[2403] = '''e I've been
- brainwashed or somethin'''
-dialogs[2404] = '''g.[newPageAwaitInput] I can't seem to remember ANYTHING.
- Have I done something...wrong?[endAwaitInput]BOWSER: Uh, [pauseAwaitInput]don't '''
-dialogs[2405] = '''[pauseAwaitInput]worry about it.[newlineAwaitInput] Let’s just put it behind us.[newPageAwaitInput] It’s great running into a loyal
- Koopa Trooper like you.[endAwaitInput]MAGIKOOPA: I'm g'''
-dialogs[2406] = '''lad!
- It looks like you've got some tough
- n'''
-dialogs[2407] = '''ew troopers now.[newPageAwaitInput] But my magic can still help you.[endAwaitInput] Watch this![newlineAwaitInput]            Ho'o[pauseAwaitInput]kala[pauseAwaitInput]ku[pauseAwaitInput]pua![endAwaitInput]'''
-dialogs[2408] = '''MAGIKOOPA: This magic treasure
- box will ne'''
-dialogs[2409] = '''ver run out of coins.[newPageAwaitInput] Just keep on hitting it.[endAwaitInput]MAGIKOOPA: 
- I'll be here if you need me.[newPageAwaitInput] Come by whenever you need to
- rejuvenate your HP and magic.[endAwaitInput]'''
-dialogs[2410] = '''MAGIKOOPA: 
- You've come to the right person![endAwaitInput]
-             Ha ha ha ha ha![endAwaitInput] Ahhhhh...
- So YOU are the notorious '''
-dialogs[2411] = '''Mario![newPageAwaitInput] I'm impressed you made it this far.
- I didn't think you could.[endAwaitInput] Oh!
- Feisty little fellow, aren't you?[newlineAwaitInput] But this is the end of the line.[newPageAwaitInput] Now you've got to deal with ME![newlineAwaitInput] EN GARDE![endAwaitInput]VALENTIN'''
-dialogs[2412] = '''A: 
- WHAT are you babbling about?[newPageAwaitInput] Why should I marry you?[endAwaitInput]VALENTINA: ........[newPageAwaitInput] What a wond'''
-dialogs[2413] = '''erful thing to say![endAwaitInput]BOWSER: Ahhh...
-     The scent of boiling lava...[newPageAwaitInput] It’s so nice'''
-dialogs[2414] = ''' to be home![newPageAwaitInput] Smithy’s gonna pay for stealing
- my splendid ca'''
-dialogs[2415] = '''stle from me![endAwaitInput]  The secret to the shooting stars
-          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
-         and bring '''
-dialogs[2416] = '''peace back
-           to Mario’s world.[endAwaitInput]       You've found Dyna, Mite,
-          and a Star Piece...[newlineAwaitInput]       But where is '''
-dialogs[2417] = '''Toadstool?[endAwaitInput]       You've come a long way,
-  but your journey’s not over yet.
-    There'''
-dialogs[2418] = ''' are 3 more Star Pieces.[endAwaitInput]     Smithy is now in the race for
-           the Star Pieces![newlineAwaitInput]  What horrible surprises m'''
-dialogs[2419] = '''ight he
-       have in store for Mario?
- [endAwaitInput] Star Piece? Now'''
-dialogs[2420] = ''' that you mention
- it, I DID see a s'''
-dialogs[2421] = '''tar fall into that
- volcano over there.[endAwaitInput] Garro’s busy making statues of
- King Nimbus.[newlineAwaitInput] '''
-dialogs[2422] = '''He seems very happy![endAwaitInput] So the king WAS a'''
-dialogs[2423] = '''ll right!
- I'm so happy for him.[endAwaitInput] This time, the prince is for real,
- [delay][delay]right?[endAwaitInput] I KNEW IT!! I knew the Prince
- co'''
-dialogs[2424] = '''uldn't be THAT heavy! Three
- cheers for the REAL Prin'''
-dialogs[2425] = '''ce![endAwaitInput] We used to be able to walk through
- the castle freely, but I guess we
- shouldn't disturb the King now.[endAwaitInput] King Nimbus loves statues'''
-dialogs[2426] = ''' and
- birds. He has scads of 'em
- in the castle.[endAwaitInput] I hope to serve the King
- '''
-dialogs[2427] = '''again, soon![endAwaitInput] Have you seen the volcano?[newlineAwaitInput]  [startSelection]  (Sure have)
-  [startSelection]  (Not yet'''
-dialogs[2428] = ''')[endAwaitInput] [newPage] They say you c'''
-dialogs[2429] = '''an get there
- by way of the ho'''
-dialogs[2430] = '''t springs.[endAwaitInput]  [newPage] The volcano’s to the east.
- Sure '''
-dialogs[2431] = '''wish I could take a dip'''
-dialogs[2432] = '''
- in the springs...[endAwaitInput]
-  Long tim'''
-dialogs[2433] = '''e no see, Prince Mallow![endAwaitInput] You're lo'''
-dialogs[2434] = '''oking especially fluffy
- '''
-dialogs[2435] = '''today, Prince![endAwaitInput] Prince Mallow, you're such a
- crybaby![endAwaitInput]
-   My, how you've grown, '''
-dialogs[2436] = '''Prince![endAwaitInput]
-          This is locked too...[endAwaitInput]  Hey, wait a minute!  It’s locked.[endAwaitInput]SHY AWAY: L'''
-dialogs[2437] = '''a dee dah...
- Here ya go, big eggie! I'll'''
-dialogs[2438] = ''' give
- ya plenty of nutrients so you'll[newlineAwaitInput] grow up to be big and strong![endAwaitInput] Oh, o'''
-dialogs[2439] = '''h, oh...[delay][delay]
- Mario’s already here...
- He’s a fast one, he is...'''
-dialogs[2440] = '''[endAwaitInput] Oh, oh, oh...[delay][delay]
- It won'''
-dialogs[2441] = ''''t'''
-dialogs[2442] = ''' open...
- it’s locked![endAwaitInput]???: Ha ha '''
-dialogs[2443] = '''ha ha.[endAwaitInput] Look! There’s a'''
-dialogs[2444] = ''' note.
- Let’s read it.[endAwaitInput]     King Nimbus is resting in bed.[newlineAwaitInput] Absolutely NO RUNNING in the halls.
-            Queen Valentina[endAwaitInput]MALLOW: This can only mean that
-'''
-dialogs[2445] = ''' my mom and dad are here![endAwaitInput] Oh, but it’s locked![endAwaitInput] 
-             Leave it to m'''
-dialogs[2446] = '''e![endAwaitInput]BOWSER: Looks l'''
-dialogs[2447] = '''ike it’s up to me
- to get us out of yet another jam.[newlineAwaitInput]'''
-dialogs[2448] = ''' Feast your eyes on this show of
- brains...[delay][delay][delay][delay]and brawn![endAwaitInput]
-              STAND BACK! [endAwaitInput]MALLOW:
-         WAIT'''
-dialogs[2449] = '''! Wait a minute![endAwaitInput] If my '''
-dialogs[2450] = '''dad’s really bedridden,
- we shouldn't make so much noise.[newlineAwaitInput] ...[delay][delay][delay]We need another plan...[endAwaitInput] I guess we should find Valentina
- and force'''
-dialogs[2451] = ''' the truth out of her![endAwaitInput]BOWSER:
-     But, what about the door?[delay][delay]...[endAwaitInput]SHY AWAY:
-            Queen Valentina...[endAwaitInput][newPage] That Mario creature who
- be'''
-dialogs[2452] = '''at up Smilax is here...[endAwaitInput]VALENTINA: Mario...?![newlineAwaitInput] What[delay]...[delay]does a'''
-dialogs[2453] = ''' “Mario”
- look like'''
-dialogs[2454] = '''?[endAwaitInput]SHY AWAY: Well...it has a bushy'''
-dialogs[2455] = '''
- mustache, long sideburns, and,
- uh, a pair of[delay]'''
-dialogs[2456] = '''[delay]...[newlineAwaitInput] mean looking legs...![endAwaitInput]VALENTINA: [delay]Hmmm...[delay]
- I have the feeling I've seen this
- “Mario” before...[endAwaitInput]VALENTINA: '''
-dialogs[2457] = '''[delay]...[delay]Wait! Yes!
- It was that statue that Garro
- just delivered...![endAwaitInput]SHY AWAY:[delay][delay] What, wh'''
-dialogs[2458] = '''at, what
- are we gonna do? What are we
- GONNA DO, '''
-dialogs[2459] = '''VALENTINA?[endAwaitInput]VALENTINA: Well, we certainly
- aren't going to listen to your
- pointless ch'''
-dialogs[2460] = '''atter.[newPageAwaitInput] Frankly speaking, I'm not going
- to worry. Without this key, the
- King can't go ANYWHERE![endAwaitInput]VALENTINA:'''
-dialogs[2461] = '''
-                  Hush...[endAwaitInput]VALENTINA:
-      I SAID SHUT UP, ALREADY![endAwaitInput]VALENTINA: What the...?!
- That...that isn't a STA'''
-dialogs[2462] = '''TUE!![delay][delay]
- That's...[delay][delay]Mario!!![endAwaitInput]MALLOW: VALENTINA!![newlineAwaitInput] Hand over the KEY!!, NOW'''
-dialogs[2463] = '''![endAwaitInput]VALENTINA: How utte'''
-dialogs[2464] = '''rly rude!
- And who '''
-dialogs[2465] = '''in blazes are YO'''
-dialogs[2466] = '''U
- anyway?![endAwaitInput]MALLOW: Me?
- I'm the REAL prince'''
-dialogs[2467] = ''', that’s who![endAwaitInput]VALENTINA: Brat![newlineAwaitInput] And how DARE you listen in on a
- private conversation'''
-dialogs[2468] = '''...![endAwaitInput]MALLOW: Private? PRIVATE?!
- Everyone'''
-dialogs[2469] = ''' in a 10 mile radius
- cou'''
-dialogs[2470] = '''ld hear you![endAwaitInput]VALENTINA: Harrumph!
- If you're going to be THIS rude,
- I'm simply going to leave.[endAwaitInput][newPage]
-          So long...(chumps)'''
-dialogs[2471] = '''![endAwaitInput]BOWSER: Listen YOU! Never EVER
- talk to the leader of the Koopa
- Troop like that! Ooh, I hate...[newlineAwaitInput] THAT! I'll ignore it this time...
- but DON'T let it happen again![endAwaitInput]SHY AWAY: Eh?[delay][delay]
- Hey! Valentina ran away...[endAwaitInput][newPage]
-      I shall fly the coop, too...[endAwaitInput]MALLOW: Uh...[delay][delay]I...[delay]I think
- we kind of missed the boat here...[endAwaitInput] So...[delay][delay]..'''
-dialogs[2472] = '''.we'd better get
- moving too!![newlineAwaitInput] C'mon, let’s get 'em!![endAwaitInput]
-            Hey, w'''
-dialogs[2473] = '''ait a sec...[endAwaitInput]
-     It won't open...it’s locked.[endAwaitInput]
-       Ha! Here’s how I'd do it.[endAwaitInput]
-       I'm absolutely '''
-dialogs[2474] = '''exhausted![endAwaitInput] I hate being a guard![newlineAwaitInput] Valentina only gives us the most
- boring jobs to do!![endAwaitInput]
- Bu'''
-dialogs[2475] = '''t I guess this beats Dodo’s job.[endAwaitInput] Dodo has to polish Valentina's
- statues EVERY s'''
-dialogs[2476] = '''ingle day![endAwaitInput]
-    Now THIS is how I would do it![endAwaitInput] You need a key to open the
- back door of the middle room...[newlineAwaitInput] But of course, Valentina’s got it.[endAwaitInput] I used to be a guard here'''
-dialogs[2477] = ''', until
- Valentina snatched away all my
- keys...and gave me the boot.[newPageAwaitInput] Guess I won't be needing this
- master key anymore...
- Would you like it?[newlineAwaitInput] [startSelection]  (Sure!)
- [startSelection]  (No thanks)[endAwaitInput][newPage] All right, here you go![newlineAwaitInput] '''
-dialogs[2478] = '''Just don't tell me what you're
- gonna do with it, '''
-dialogs[2479] = '''okay?[endAwaitInput][newPage] Oh really?, You sure?
- What a shame[delay][delay]...this precious key
- opens the middle room, you know.[endAwaitInput]
-     So...you don't want it, huh?[endAwaitInput]
-         Wa'''
-dialogs[2480] = '''it! Don't say that![endAwaitInput]MALLOW: To be honest, we really
- REALLY need it![endAwaitInput]
-                Oh, yeah?[endAwaitInput]
-    But HE said you didn't '''
-dialogs[2481] = '''need it.[endAwaitInput]MALLOW'''
-dialogs[2482] = ''': Oh, I'm sorry. You'll
- have to excuse him, he...he’s a
- litt'''
-dialogs[2483] = '''le shaken up right now.[endAwaitInput]
-      '''
-dialogs[2484] = '''[delay]...Oh...[delay]Okay...I guess...[delay][pauseAwaitInput][end]MALLOW: Thank you![newlineAwaitInput] We owe you one![endAwaitInput]          G'''
-dialogs[2485] = '''ot “Castle Key 1”![endAwaitInput] A '''
-dialogs[2486] = '''dip in the hot springs would
- perk up the '''
-dialogs[2487] = '''King in a jiffy![endAwaitInput]
-            Go on,'''
-dialogs[2488] = ''' take this...[endAwaitInput] Hey! Did Y'''
-dialogs[2489] = '''OU know?![newlineAwaitInput] Valentina’s got a huge egg
- in the middle room.[newPageAwaitInput] It spits '''
-dialogs[2490] = '''out eggs from time
- to time, and sometimes when you
- shield yourself, the eggs'll[newlineAwaitInput] ricochet off of you.[endAwaitInput] Di'''
-dialogs[2491] = '''d you know that there are hot
-'''
-dialogs[2492] = ''' springs around here?[newlineAwaitInput] [startSelection]  ('''
-dialogs[2493] = '''Yep)
- [startSelection]  (Nope)[endAwaitInput][newPage] Aww, you're no fun.
- I wanted to be the '''
-dialogs[2494] = '''first
- to tell you that![endAwaitInput][newPage] We get special hot water from
- Barrel Volcano. It h'''
-dialogs[2495] = '''elps cure all
- kinds of ailments, b'''
-dialogs[2496] = '''ut only the[newlineAwaitInput] King gets to bathe in it.[endAwaitInput]'''
-dialogs[2497] = ''' Valentina told me to wait in this
- room... I'm hoping she'll give me
- a job soo'''
-dialogs[2498] = '''n...[endAwaitInput] Hey, tell me something,
- do st'''
-dialogs[2499] = '''atues[delay][delay]...[delay]move?[endAwaitInput]
-       No. Statues don't mov'''
-dialogs[2500] = '''e.[endAwaitInput]
-        Then[delay][delay]...[delay]explain...[delay][delay]THIS![endAwaitInput] It's.'''
-dialogs[2501] = '''..[delay][delay] one of those hi-tech,...
- [delay]er,...life-like.'''
-dialogs[2502] = '''.[delay] realistic ones.
- ...[delay][delay]Let’s get outta '''
-dialogs[2503] = ''''''
-dialogs[2504] = '''here.[endAwaitInput]GARRO: Why are you back?![newlineAwaitInput] Come on! Put a little effort into
- it, okay? Good luck![endAwaitInput]SHY AWAY: O'''
-dialogs[2505] = '''h[delay][delay] Oh[delay][delay]...
- ...Busted...[newlineAwaitInput] What to do, what to do?[endAwaitInput] I'll give you this “Fertilizer”
- if you let me go~...[delay][delay][delay].'''
-dialogs[2506] = '''..OK?[endAwaitInput] The hot springs are up ahea'''
-dialogs[2507] = '''d,
- but only royalty can bathe there.[newlineAwaitInput] And you don't look so royal...![endAwaitInput] R'''
-dialogs[2508] = '''ight now, Prince Mallow is
- bathing in the hot springs.
- It must be so relaxing.[endAwaitInput]
-                DANGER!!!
-   Beyond the cliffs is the volca'''
-dialogs[2509] = '''no[endAwaitInput]QUEEN NIMBUS: Hello, everyone.[newlineAwaitInput] Thank you so much for looking
- after my dear child.[endAwaitInput]
-        Wait a minute, please...[endAwaitInput]MALLOW: Please! These people
- a'''
-dialogs[2510] = '''ren't your enemies. They're my
- friends.[endAwaitInput]
-           This way, come on![endAwaitInput]MALLOW: Mom...[delay_48] Dad...[newlineAwaitInput] I'd like you to me'''
-dialogs[2511] = '''et Mario...[endAwaitInput][newPage]
-...and my other travel companions![endAwaitInput]KING NIMBUS: I say! How can
- we ever thank you enough![newlineAwaitInput] I'm Mallow’s father...King Nimbus.[endAwaitInput]MALLOW:
-   Allow me to introduce everyone![endAwaitInput] This...is Pr'''
-dialogs[2512] = '''incess Toadstool from
- Mushroom Kingdom...[endAwaitInput]KING NIMBUS: Ah![delay] I've heard
- so much about you! May I...
- have your autograph?[endAwaitInput]QUEEN NIMBUS:
-   Don't embarrass junior, dear!![endAwaitInput]KING NIMBUS: Oh![delay]...FANTASTIC![newlineAwaitInput] (Show me again later...) Eh hem.
- And WHO do we '''
-dialogs[2513] = '''have over here?[endAwaitInput]MALLOW: This is Bowser, leader
- of the Koopa Troop.[endAwaitInput]KING NIMBUS: Oh! Another famous
- person! This is just too much![newlineAwaitInput] I MUST have YOUR autograph![endAwaitInput]QUEE'''
-dialogs[2514] = '''N '''
-dialogs[2515] = '''NIMBUS: Dear...behave
- yourself, please![endAwaitInput]KING NIMBUS: No? Not even '''
-dialogs[2516] = '''a
- little scribble? Okay, okay'''
-dialogs[2517] = '''...[endAwaitInput]KING NIMBUS: Y'''
-dialogs[2518] = '''es, yes. I'm quite
- forgetting my manners...[delay][delay]Well...[newlineAwaitInput] ...Who do '''
-dialogs[2519] = '''we have over here?[endAwaitInput]MALLOW: This is Geno, who I told
- you about before.[endAwaitInput]KI'''
-dialogs[2520] = '''NG NIMBUS: Oh! Yes! Tha'''
-dialogs[2521] = '''t story
- about the Star Street! How awful![endAwaitInput]GENO:
-          That's...Star Road...[endAwaitInput]QU'''
-dialogs[2522] = '''EEN NIMBUS: By the way, a little
- before Vale'''
-dialogs[2523] = '''ntina took over, a
- large star fell into the volcano![endAwaitInput]KING '''
-dialogs[2524] = '''NIMBUS: Hmm, but the dreaded'''
-dialogs[2525] = '''
- “Czar Dragon” inhabits the
- volcano. It’s going to be t'''
-dialogs[2526] = ''''''
-dialogs[2527] = ''''''
-dialogs[2528] = '''ough[newlineAwaitInput] getting a star out of there![endAwaitInput][newPage] H'''
-dialogs[2529] = '''mmm...perhaps all of you
- working together COULD ha'''
-dialogs[2530] = '''ndle
- th'''
-dialogs[2531] = '''at beast...[endAwaitInput]
- Why'''
-dialogs[2532] = ''', when I was young, I...[endAwaitInput]Q'''
-dialogs[2533] = '''UEEN NIMBUS: Yes, dear...[newlineAwaitInput] Now, once at the volcano, find
- Hinopio. He'll be able to help you.[endAwaitInput]QUEEN NIMBUS:'''
-dialogs[2534] = ''' You be careful,
- Mallow![endAwaitInput] Up ahead are the hot springs...[newlineAwaitInput] But onl'''
-dialogs[2535] = '''y royalty is allowed...[endAwaitInput] Hey! You're the REAL prince![newPageAwaitInput] Sorry about the misunderstanding
- before...There’s NO WAY that fat
- bird could have be'''
-dialogs[2536] = '''en a Prince, huh?[endAwaitInput] MALLOW: No big deal.[newlineAwaitInput]  Anyway, do you think you
-'''
-dialogs[2537] = '''  could let us through here?[endAwaitInput]
-               Of cours'''
-dialogs[2538] = '''e![endAwaitInput] Go right ahead.
- Please, enjoy yourselves.[newlineAwaitInput] But '''
-dialogs[2539] = ''''''
-dialogs[2540] = '''be careful not to fall into
- the volcano.[endAwaitInput]KING NIMBUS: Oh! Nevermind...[endAwaitInput]
- And, who is this gentleman here?[endAwaitInput]MALLOW: THIS[delay].'''
-dialogs[2541] = '''...[delay]...[delay]
- is Mario!!![newlineAwaitInput] He helped me from the start![endAwaitInput]KING NIMBUS: I sincerely thank you
- from the bottom of my heart.[endAwaitInput][newPage] [delay]...[delay]...[delay]You don't mean...
- T'''
-dialogs[2542] = '''HE Mario?! Jumping Mario?!
- Autograph, please![endAwaitInput]'''
-dialogs[2543] = '''QUEEN NIMBUS:
-     That’s quite enough, dear...[endAwaitInput]KING NIMBUS: Okay, okay![delay][delay] Then...
- how about showing me just a little
- jump? A tiny hop will do![endAwaitInput]KING NIMBUS: Son, you're just
- like me when'''
-dialogs[2544] = ''' I was your age.
- I'm proud of you.[endAwaitInput]QUEEN NIMBUS: If you have
- any problems, come straight[newlineAwaitInput] back, okay?![endAwaitInput]MALLOW: Okay, mom![newlineAwaitInput] But I p'''
-dialogs[2545] = '''robably won't come back
- until we find the star![endAwaitInput] '''
-dialogs[2546] = '''Go up those steps, and you'll find
- the royal bus that goes to the
- volcano. It’s pretty cool.[endAwaitInput] Do you know about the royal bus?[newlineAwaitInput] [startSelection]  '''
-dialogs[2547] = '''(Yes)
- [startSelection]  (No)[endAwaitInput][newPage] It’s a regal vehicle, used only
- by'''
-dialogs[2548] = ''' the King. It’s parked now, due
- to the fact he’s ill...[endAwaitInput][newPage] When the King recovers, I'll let
- you'''
-dialogs[2549] = ''' see it. You see, I'm the
- bus maintenance man.[endAwaitInput]
-    The b'''
-dialogs[2550] = '''us is undergoing repairs.[endAwaitInput]CROCO: Say, hey! We meet AGAIN![newlineAwaitInput] Dis here land is '''
-dialogs[2551] = '''RICH! It’s got
- tons of loot, and I want it al'''
-dialogs[2552] = '''l![pauseAwaitInput][end][newPage] So, youse guys found 'em ALL?
- ...[delay]Geez...[delay][delay]I've failed...
-[delay][delay] ...I'm '''
-dialogs[2553] = '''humiliated...![endAwaitInput] Welcome! Come on in!
- So you want to take a rest?
- I'm sure that’s why you're here.[newPageAwaitInput] I'''
-dialogs[2554] = '''t'll be '''
-dialogs[2555] = '''[0x7024] coins a night.[newlineAwaitInput] [startSelection]  (OK, I'll take a break)
- [startSelection]  (I'll pass)[endAwaitInput][newPage] Let me guess...you '''
-dialogs[2556] = '''want to use
- this “Dream Cushion” to rest,
- right? That'll be 30 more coins.[newlineAwaitInput] [startSelection]  (I'll try'''
-dialogs[2557] = ''' anything once)
- [startSelection]  (Looks pretty weird)[endAwaitInput][newPage] Seems like you don't have
- enough '''
-dialogs[2558] = '''money. Come back again.[endAwaitInput]
-              Oh, shut up.[endAwaitInput]
-         Don't talk to me now.[endAwaitInput] Oh, now look![newlineAwaitInput] I lost 'cause of YOU![endAwaitInput] Wait, hold on![newlineAwaitInput] This is the highest score.'''
-dialogs[2559] = ''''''
-dialogs[2560] = '''SNIFIT 3: Um...
- Nice weather we're having.[endAwaitInput]SNIFIT 3: You wanna fight?[endAwaitInput]
-           Hmm?! What’s this?[newPageAwaitInput]               It’s a “Seed”.
- [startSelection]  (Take '''
-dialogs[2561] = '''it)
- [startSelection]  (Leave it)[endAwaitInput]GARD'''
-dialogs[2562] = '''ENER: I'll plant the s'''
-dialogs[2563] = '''eed...[endAwaitInput]GARDENE'''
-dialogs[2564] = '''R: Then give it fertili'''
-dialogs[2565] = '''zer.[endAwaitInput]BOOSTER: Hoou'''
-dialogs[2566] = '''uooo!
- Chugga,'''
-dialogs[2567] = ''' chugga...hoooonk!
- This is my'''
-dialogs[2568] = ''' personal railwa'''
-dialogs[2569] = '''y.[endAwaitInput]BOOSTER: My!
- It’s you again![newPageAwaitInput] I'm amazed you made it this far.
- Yes, quite amazing you are![newPageAwaitInput] Since you're here, maybe you could
- clear up something for me.[newPageAwaitInput] My bride-to-be is chanting,
- “MARIOHELPMEMARIOHELPME”.
- Is she showing her happiness?[newPageAwaitInput] Hey,[delay][delay][delay][delay][delay][delay] wait a second!
- Maybe “MARIO” is another guy![endAwaitInput]       Received “Rock C'''
-dialogs[2570] = '''andy”![endAwaitInput]BOOSTER: What if you're this
- “Mario” she keeps talking about?[newlineAwaitInput] Trying to take my bride away?
- Why don't you take [delay]THIS, instead![endAwaitInput]BOOSTER: That didn't do it?[newPageAwaitInput] Grrrr...I ran out of bombs.[endAwaitInput]BOOSTER:
-             Chug-a-chug-a![endAwaitInput]BOOSTER: 
- HE'S GONE?![delay]
- That’s not fair![newPageAwaitInput] I'm so'''
-dialogs[2571] = ''' hurt...
- I only wanted to play with him.[newPageAwaitInput] Now,••••[delay][delay]what express'''
-dialogs[2572] = '''ion should I
- be wearing at a time like this?![endAwaitInput]BO'''
-dialogs[2573] = '''OSTER: Eh...?[endAwaitInput]GARDENER:'''
-dialogs[2574] = ''''''
-dialogs[2575] = ''' ••[delay]••[delay]••[delay]
-          Nothing’s happening.[endAwaitInput]BOOSTE'''
-dialogs[2576] = '''R: Well, so long![endAwaitInput]BOOSTER: Now I remember![delay][delay]
- I should look like...THIS![endAwaitInput]APPRENTICE:'''
-dialogs[2577] = ''' Golly!
- You're that famous Mario guy!'''
-dialogs[2578] = '''[newPageAwaitInput] If I beat you, they'll make me
- Snifit [0x7000]!
- [delay][delay][delay][delay][delay][delay]If I'm lucky'''
-dialogs[2579] = '''![endAwaitInput]APPRENTICE: Whaaa••[delay]••[delay]••[delay]
- Now the'''
-dialogs[2580] = '''y'll make me take the
- training course over again.[endAwaitInput]APPRENTICE:'''
-dialogs[2581] = ''' All right!
- Now I'll be Snifit [0x7000]![endAwaitInput]APPRENTICE:'''
-dialogs[2582] = ''' Mario![newlineAwaitInput] Let me show you what I've learned
- in my classes so far.[newPageAwaitInput] I'll be Snifit [0x7000] if I beat you!
- ••[delay]••[delay]••[delay]••[delay]••[delay]••[delay]maybe.[endAwaitInput]SNIFIT 4: After years of
- hard work and effort, I'm now
- Snifit 4![newPageAwaitInput] 
-     I'll wear the number proudly![endAwaitInput]SNIFIT 5: Phew...![newlineAwaitInput] I've been training to becom'''
-dialogs[2583] = ''''''
-dialogs[2584] = ''''''
-dialogs[2585] = ''''''
-dialogs[2586] = ''''''
-dialogs[2587] = ''''''
-dialogs[2588] = ''''''
-dialogs[2589] = ''''''
-dialogs[2590] = ''''''
-dialogs[2591] = ''''''
-dialogs[2592] = '''e one
- of Booster’s Snifits for 3 years![endAwaitInput]SNIFIT 6:'''
-dialogs[2593] = ''''''
-dialogs[2594] = ''''''
-dialogs[2595] = ''''''
-dialogs[2596] = ''''''
-dialogs[2597] = ''''''
-dialogs[2598] = ''''''
-dialogs[2599] = ''''''
-dialogs[2600] = ''''''
-dialogs[2601] = ''''''
-dialogs[2602] = ''''''
-dialogs[2603] = ''''''
-dialogs[2604] = ''''''
-dialogs[2605] = ''''''
-dialogs[2606] = ''''''
-dialogs[2607] = ''''''
-dialogs[2608] = ''''''
-dialogs[2609] = ''''''
-dialogs[2610] = ''''''
-dialogs[2611] = ''''''
-dialogs[2612] = ''''''
-dialogs[2613] = ''''''
-dialogs[2614] = ''''''
-dialogs[2615] = ''''''
-dialogs[2616] = ''''''
-dialogs[2617] = ''''''
-dialogs[2618] = ''''''
-dialogs[2619] = ''''''
-dialogs[2620] = ''''''
-dialogs[2621] = ''''''
-dialogs[2622] = ''''''
-dialogs[2623] = ''''''
-dialogs[2624] = ''' If only Ma and Pa could
- see me now.[endAwaitInput]SNIFIT 7:
-     Yee haw![newlineAwaitInput]          Hurrah!
-               I'm a Snifit![newPageAwaitInput]
-         ••[delay]••[delay]••[delay]I'm••speechless![endAwaitInput]APPRENTICE: Shriek!
- The boss only wants 7 Snifits![newlineAwaitInput] Al'''
-dialogs[2625] = '''l my training was in vain![newPageAwaitInput]
-               What a rip![endAwaitInput]APPRENTICE: Harru'''
-dialogs[2626] = '''mph!
- I'm off to the arcade![endAwaitInput]GARDENER: W••[delay]••[delay]wow![endAwaitInput]G'''
-dialogs[2627] = '''ARDENER: This is amazing![endAwaitInput]GARDENER: This is unreal! This is
- just l'''
-dialogs[2628] = '''ike winning the lottery, only
- '''
-dialogs[2629] = '''without the taxes! I mean, this is
- like falling out of an airplane
- without '''
-dialogs[2630] = '''a parachute, and hitting
- a ga'''
-dialogs[2631] = '''ggle of geese in mid-air who
- break your fall. Wait until my
- buddies over at Happy Gardener's
- Monthly hear about this. I'm '''
-dialogs[2632] = '''going
- to be famous! Maybe even get my
- picture in the next issue.[delay_24][end]GARDENER: You think '''
-dialogs[2633] = '''it could use
- a little'''
-dialogs[2634] = ''' more fertilizer?[endAwaitInput]GARDENER: Oops, maybe not, huh?[endAwaitInput]GARDENER: This will get me in
- Happy Gardener Monthly magazine![endAwaitInput]GENO: Mario!
- There are Star Pieces to be found![newlineAwaitInput] Hang in there![endAwaitInput]
-
-     (Wish I could run faster.)[endAwaitInput]'''
-dialogs[2635] = '''
-
-    Wish I had some Cricket Jam.[endAwaitInput]
-      I wanna be a great plumber
-'''
-dialogs[2636] = '''         like my brother Mario.[endAwaitInput]
-
-'''
-dialogs[2637] = ''''''
-dialogs[2638] = ''''''
-dialogs[2639] = ''''''
-dialogs[2640] = ''''''
-dialogs[2641] = ''''''
-dialogs[2642] = ''''''
-dialogs[2643] = ''''''
-dialogs[2644] = ''''''
-dialogs[2645] = ''''''
-dialogs[2646] = ''''''
-dialogs[2647] = ''''''
-dialogs[2648] = ''''''
-dialogs[2649] = ''''''
-dialogs[2650] = ''''''
-dialogs[2651] = ''''''
-dialogs[2652] = ''''''
-dialogs[2653] = ''''''
-dialogs[2654] = '''   If I could JUST get that melody![endAwaitInput]
-               The hunger!
-           Oh, for some food! [endAwaitInput]
-     I wanna be the'''
-dialogs[2655] = ''' best treasure
-'''
-dialogs[2656] = '''    hunter in the world.[endAwaitInput]
-
-   I vant to be a vald class baker.[endAwaitInput]
-
-        I hope I become fam'''
-dialogs[2657] = '''ous.[endAwaitInput]
-
-        I hope she'll say “yes”.[endAwaitInput]
-
-    I wish he''''
-dialogs[2658] = '''d pop THE question.[endAwaitInput]
-
-   I wish I weren't such a cr'''
-dialogs[2659] = '''ybaby.[endAwaitInput]
-
-Please let Mallow find his way home.[endAwaitInput]GENO'''
-dialogs[2660] = ''': This is Star Hill.[newlineAwaitInput] Wishes, which were transformed at
- the St'''
-dialogs[2661] = '''ar Road, fall from here.[newPageAwaitInput] B'''
-dialogs[2662] = '''ut[delay]••[delay]••[newlineAwaitInput] Some wishes that haven't been
- granted yet are falling because
- Smithy destroye'''
-dialogs[2663] = '''d the Star Road.[endAwaitInput]GEN'''
-dialogs[2664] = '''O: Frogfucius mentioned hearing
- about a Star Piece on this hill.[endAwaitInput]GENO: Let’s see if '''
-dialogs[2665] = '''we can find it.[endAwaitInput]MALLOW: This one’s private![delay]
- Who do you think you are,
- spying on '''
-dialogs[2666] = '''other people’s wishes?[endAwaitInput]MALLOW: C'mon, our quest for the
- Star Pieces is important![newPageAwaitInput] Everyone’s counting on us!
- We've got to hurry![endAwaitInput]MALLOW: Sorry about that.
- I'''
-dialogs[2667] = '''t’s just that I'm embarrassed
- about my w'''
-dialogs[2668] = '''ish.[endAwaitInput]MALLOW: Why, this wish is...[newPageAwaitInput] It’s from my mom'''
-dialogs[2669] = ''' and dad.[newPageAwaitInput] They're wishing for me to come
- home![endAwaitInput]MALLOW: 
- This isn't the time to be crying![newlineAwaitInput] They're waiting for m'''
-dialogs[2670] = '''e to come
- home![endAwaitInput]MALLOW: Come on Mario, we've got
- a busy schedule to keep. I'll make
- you eat dust if you don't hurry.[endAwaitInput]MALLOW: 
-                Sniffle...[endAwaitInput]           '''
-dialogs[2671] = '''Got a “Lazy Shell”![endAwaitInput]GENO: 
- Do you know where this leads to?[endAwaitInput]GENO: It looks l'''
-dialogs[2672] = '''ike Exor’s the
- contact between the two worlds.[newPageAwaitInput] In other words[delay]••[delay]••[delay]••[endAwaitInput]GENO:'''
-dialogs[2673] = ''' If we follow this '''
-dialogs[2674] = '''road,
- we'll find Smithy.[newPageAwaitInput] So...what’s keepin'''
-dialogs[2675] = '''g us?[endAwaitInput]BOWSER: Han'''
-dialogs[2676] = ''''''
-dialogs[2677] = ''''''
-dialogs[2678] = ''''''
-dialogs[2679] = '''g on![endAwaitInput]BOWSER: Hey! I only joined so that
- I could get my castle back.[newlineAwaitInput] I'm not going to b'''
-dialogs[2680] = '''e dragged along
- on this stupid hunt.[endAwaitInput]BOWSER: This is as far as I go.[newPageAwaitInput] I'm going to g'''
-dialogs[2681] = '''ather my troops and
- rebuild my castle.[endAwaitInput]BOWSER: '''
-dialogs[2682] = '''And you, Mario![newlineAwaitInput] You're an official mem'''
-dialogs[2683] = '''ber of the
- Koopa Troop. It’s your duty to
- help with the repairs![endAwaitInput]GENO: Bowser, you're completely
- missing the point.[endAwaitInput]BOWSER: Gwaa?![delay][delay][delay][delay][newPageAwaitInput] I oughtta rip your stuffing out![endAwaitInput]GENO: No, think about it, Bowser.'''
-dialogs[2684] = '''[newlineAwaitInput] This sword connects the two
- worlds, right?[endAwaitInput]BOWSER: Yeah, so?[endAwaitInput]GENO: Even IF we defeat'''
-dialogs[2685] = ''' Exor...[newlineAwaitInput] There will be OTHER weapon beasts
- to follow him.[endAwaitInput]GENO: Your castle is at the
- entrance point to YOUR world.
- In sh'''
-dialogs[2686] = '''ort...they'll be back![endAwaitInput]GENO: Is that what you want?[endAwaitInput]BOWSER: Um....well...[endAwaitInput]BO'''
-dialogs[2687] = '''WSER: No one insults the Koopa
- Troop and gets away with it.[newPageAwaitInput] I've got a bone to pick with this
- Smithy guy'''
-dialogs[2688] = ''''''
-dialogs[2689] = '''![endAwaitInput]BOWSER: Come on, Mario!
- We'll teach him a lesson.[endAwaitInput]GENO: It looks like we'r'''
-dialogs[2690] = '''e together
- on this one. Let’s go![endAwaitInput]BOWSER: (More weapon things
- coming to take over my castle?
- What about my[delay]••[delay]••[delay][newPageAwaitInput]
-             ••••PRIVACY?[newPageAwaitInput] Yikes[delay]••[delay]••
-        This isn't good at all[delay]••[delay]••
-              In fact, this stinks![delay]••[delay]••)[endAwaitInput]BOWSER: (But I CAN'T just be pals
- with'''
-dialogs[2691] = ''' these cretins.[newlineAwaitInput] I've got an image to keep up.)[endAwaitInput]BOWSER: (I've got '''
-dialogs[2692] = '''it!)[endAwaitInput]BOWSER: (I'm so sly!)[endAwaitInput]              It’s “Mario”![endAwaitInput]       We better do something![endAwaitInput]            Pick up a “Seed”![endAwaitInput]GENO: ••[delay]••[delay]••[delay]
- I feel the energy of the Star Pie'''
-dialogs[2693] = '''ce.[endAwaitInput] What was that loud noise outside?
-       Check out Booster Pass![endAwaitInput]     Received a “KerokeroCola”![endAwaitInput]     You saw something sparkle.[endAwaitInput]SHY AWAY: Look what you did![delay][delay]
- Smilax’s been whacked.[endAwaitInput]SHY AWAY: 
- Oooh, I'm '''
-dialogs[2694] = '''going to get it![newlineAwaitInput] Queen Valentina told me to keep
- everyone out of Nimbus Land.[newPageAwaitInput] 
-            What should I do?[endAwaitInput]SHY AWAY: ••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••'''
-dialogs[2695] = '''••[delay]••••[delay]
-         I know, I'll run away![endAwaitInput]         How did he get here?![endAwaitInput]        Got an “Ultra Hammer”![endAwaitInput]        Wow! Did you see that?[delay][delay][delay]
-       It’s a magical beanstalk![newPageAwaitInput]        Hit the block once more
-                to climb it.[endAwaitInput]          Found a Frog Coin![endAwaitInput]         Got a “Red Essen'''
-dialogs[2696] = '''ce”![endAwaitInput]
-           Found a “Masher”![endAwaitInput]
-      You found a “Goodie Bag”![endAwaitInput]
-        Picked up a “Hammer”![endAwaitInput] Now ya got my hammer angry!
- Ya shouldn't'''
-dialogs[2697] = ''' have done that![endAwaitInput] HEY!
- Are YOU lookin' at me?
- My hammer and I don't like you![endAwaitInput]TOAD: Mario!
- You better be careful.
- He’s definitely got a mean streak![endAwaitInput]     It’s a battered old hammer.[endAwaitInput]'''
-dialogs[2698] = '''                Actually...
-    It’s a sturdy hammer, bearing
-    the Hammer Brother’s insignia.[endAwaitInput]            You never know!
-        It might come in'''
-dialogs[2699] = ''' handy![endAwaitInput]        Picked up a “Hammer”![endAwaitInput]
-         Picked up a “Flower”![endAwaitInput]
-     Picked up a “Royal Syrup”![endAwaitInput]TOAD: Thanks, Mario'''
-dialogs[2700] = '''!
- I was running so fast I wasn't
- watching where I was going![endAwaitInput]TOAD:
- Mushroom Kingdom’s just ahead.
- We're alm'''
-dialogs[2701] = '''ost there, Mario.[endAwaitInput]TOAD: Hey!
- Where did this hammer come from?[endAwaitInput]TOAD: Hmm[delay]••[delay]••[delay][delay][delay]
- Hey, do you know what THIS is?![endAwaitInput]TOAD: It has the Hammer Bro's
- insignia on it.[newlineAwaitInput] No one stands a chance against
- you when you whomp them with this.[endAwaitInput]TOAD: Let’s get a move on![newlineAwaitInput] I'll see you in Mushroom Kingdom.[endAwaitInput] Here, you can have this.[endAwaitInput]BOWYER: 997! 998! 999! 1000!
- Nya ha ha! 1000 arrows![newlineAwaitInput] For cover they run, nya!
- FUN this is, yes.
- Nya! Another 1000 will I shoot![endAwaitInput]MALLOW: Mario, who IS '''
-dialogs[2702] = '''that guy?
- [delay][delay]He must be the one shooting
- arrows at Rose Town![endAwaitInput]BOWYER: Happy I am, nya!
- Look...'''
-dialogs[2703] = '''LOOK at their expressions
- when freeze they do![endAwaitInput]FLUNKIES: Woo hoo!
- They're standing like statues![endAwaitInput]BOWYER: Nya!
- More practice do I need![endAwaitInput]MALLO'''
-dialogs[2704] = '''W: Oh no!
- He’s not stopping!'''
-dialogs[2705] = '''
- We've got to do something![endAwaitInput]MALLOW: Who do you think you are,
- Bruce Lee? You can't just go '''
-dialogs[2706] = '''in
- there with your fists flying![endAwaitInput]MALLOW: Oh no, someone’s coming!
- Let’s hide and see if we can
- learn a'''
-dialogs[2707] = '''nything.[endAwaitInput]MALLOW: '''
-dialogs[2708] = '''There're too many of 'em.
- We'll be creamed![endAwaitInput] Look what I found, Bowyer![endAwaitInput]BOWYER: What? WHAT?
- Disturb me you must not!
- Practi'''
-dialogs[2709] = '''cing, I am.[newlineAwaitInput] More arrows must I shoot!
- More statues must I make, nya![endAwaitInput]???:
-                   Stop![endAwaitInput]???: Hold it right there!
- You don't know what you're doing.
- RETURN that star to me![endAwaitInput]BOWYER:'''
-dialogs[2710] = ''' Gnya, NYA!?
- A stranger you are...
- and strange looking at that!'''
-dialogs[2711] = '''[newlineAwaitInput] Teach you, we must,
- who’s in charge![endAwaitInput]???: Thanks for the help.
- You really got me out o'''
-dialogs[2712] = '''f a jam.[newPageAwaitInput] Why are you staring at me?
- You know I'm more than just
- a doll, d'''
-dialogs[2713] = '''on't you?[endAwaitInput]???: Have you guessed the trut'''
-dialogs[2714] = '''h?[delay]
- I'm a visitor from above, and this
- is a form I'm'''
-dialogs[2715] = ''''''
-dialogs[2716] = ''' borrowing briefly.[endAwaitInput]MALLOW: You mean, like, from the
- sky or somethin'''
-dialogs[2717] = '''g?[endAwaitInput]???: Higher than that, I'''
-dialogs[2718] = ''''m afraid![delay][delay][delay][newlineAwaitInput] Do you two k'''
-dialogs[2719] = '''now anything about
- the “Star Road”?[endAwaitInput]???: Completely in the dark, eh?[delay][delay][delay]
- Wel'''
-dialogs[2720] = '''l, it’s a big mess up there right
- now, and it concerns you too![delay][delay][newPageAwaitInput] Let me explain...[newPageAwaitInput] You've heard of wishing upon a
- shooting star?[endAwaitInput]???: At the “Star Road”, your
- wish is transformed into a star.[newlineAwaitInput] Whe'''
-dialogs[2721] = '''n it’s granted, it'''
-dialogs[2722] = ''' then turns
- into a shooting star and falls
- down to earth.[newPageAwaitInput] So you see, the Star '''
-dialogs[2723] = '''Road plays an
- integral role in granting wishes.[newPageAwaitInput] But ever since a sword destroyed
- the “Star Road”, ev'''
-dialogs[2724] = '''erything's
- come to a halt.[newPageAwaitInput] No stars have'''
-dialogs[2725] = ''' been made since.[newlineAwaitInput] The way things stand,[pauseAwaitInput] yours is a
- wor'''
-dialogs[2726] = '''ld where wishes can't come
- true '''
-dialogs[2727] = '''anymore.[endAwaitInput]MALLOW: Are you saying THIS star
- is a part'''
-dialogs[2728] = ''' of your “Starway”?[endAwaitInput]???: That’s “STAR ROAD”,'''
-dialogs[2729] = ''' my
- fluffy little friend ...[newPageAwaitInput] Yes, [pauseAwaitInput]that star is a'''
-dialogs[2730] = ''' broken piece
- of the Star Road.[newPageAwaitInput] I'm here to find them all, and
- repair the Star Road.[endAwaitInput]???: 
- The bro'''
-dialogs[2731] = '''ken Star Pieces...[newlineAwaitInput] There are 7 altogethe'''
-dialogs[2732] = '''r.[endAwaitInput]???: For peace to return...[newlineAwaitInput] we must get rid of Smithy,
- find the Star Pieces, and repair
- the Star Road.'''
-dialogs[2733] = '''.[endAwaitInput]???: I'm “♥♪!?”, but it’s hard to
- pronounce so...[newlineAwaitInput] Call me “Geno”,'''
-dialogs[2734] = ''' after the doll.[newPageAwaitInput] I chose him because he looked the
- strongest out of all the dolls.[endAwaitInput] “Geno”, who is searching'''
-dialogs[2735] = ''' for the
-  pieces of the Star Road, joins
-         Mario and Mallow.[newPageAwaitInput] Things are definitely lookin'''
-dialogs[2736] = '''g up![endAwaitInput]GENO: Now grab the star, Mario![endAwaitInput]'''
-dialogs[2737] = ''' Ooh, I heard everything![delay]
- W'''
-dialogs[2738] = '''ho would have known t'''
-dialogs[2739] = '''hat star
- was so impo'''
-dialogs[2740] = '''rtant?[newPageAwaitInput] I've got to inform Smithy![endAwaitInput]GENO: Come on!
- Let’s get this show on the road.[endAwaitInput]
-        Pick up a “Mushroo'''
-dialogs[2741] = ''''''
-dialogs[2742] = '''m”[endAwaitInput]GARDENER: Hey!
- I haven't'''
-dialogs[2743] = ''''''
-dialogs[2744] = ''''''
-dialogs[2745] = ''''''
-dialogs[2746] = ''' finished yet.[endAwaitInput]GARDENER: Short attention span?[endAwaitInput]GARDENER: Hi, I'm the gardener.[delay][delay][delay]
- See that huge '''
-dialogs[2747] = '''planter?[newPageAwaitInput] I've spent many years seeking the
- legendary “Seed” and “Fertiliz'''
-dialogs[2748] = '''er”
- to fill it with, but had no luck.[newPageAwaitInput] Sigh...if I could only find them![endAwaitInput]GARDENER: Incredible!
- I can't believe it! It’s the
- legendary “Seed” I'v'''
-dialogs[2749] = '''e read about
- in'''
-dialogs[2750] = ''' the ancient gardening texts.
- These are so rare! Can you even
- begin to comprehend what a huge
- discovery this is? I've spent my
- whole life searching f'''
-dialogs[2751] = '''or one!
- It’s too much, I tell'''
-dialogs[2752] = ''' ya![delay_24][end]GARDENER: Egad'''
-dialogs[2753] = '''s!
- Do you know what you have there?
- That'''
-dialogs[2754] = ''' fertilizer come'''
-dialogs[2755] = '''s from the
- Shy Away clan, '''
-dialogs[2756] = ''''''
-dialogs[2757] = '''famous for its
- miraculous feats of gardening. I
- looked for it be'''
-dialogs[2758] = '''yond the cliffs,
- even tried Bean Valley, but failed.
- I've traveled around the world and
- waited a lifetime for some of that
- fertilizer you've got there![delay_24][end]GARDENER: Well'''
-dialogs[2759] = ''', that’s my story.[newlineAwaitInput] Say...will you give me the “Seed”?
-  [startSelection]  (Sure)
-  [startSelection]  (Nope)[endAwaitInput]GARDENER: Yes, you might say I
- have fertilizer on the brain.[newlineAwaitInput] Will you give it to me?
-  [startSelection]  ('''
-dialogs[2760] = '''Sure)
-  [startSelection]  (Sorry)[endAwaitInput]GARDENER: You changed your mind?[newlineAwaitInput]  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]'''
-dialogs[2761] = '''GARDENER: Well, Mario?[newlineAwaitInput] Will you give me the fertilizer?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: I finally have it![newPageAwaitInput] This is extraordinary![endAwaitInput] May I have the fertilizer?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: Sigh...
- Wh'''
-dialogs[2762] = '''at ever happened to granting
- an old man’s wishes?[endAwaitInput]GARDENER: Oh thank you'''
-dialogs[2763] = '''![newlineAwaitInput] I finally have both the “Seed” and
- the “Fertilizer”.[newlineAwaitInput] I'll try them out '''
-dialogs[2764] = '''right away.[endAwaitInput]GARDENER: I'd be so happy if I
- only had the “Seed”![newPageAwaitInput] I'm sooo disappointed.[endAwaitInput]GARDENER: I finally have it![newlineAwaitInput] But without the “Seed”'''
-dialogs[2765] = ''',
- it’s useless.[endAwaitInput] You're giving me the fertilizer too?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: Gals don't care for
- tightwads, you know![endAwaitInput]FACTORY CHIEF: Mario![delay][delay]
- I''''
-dialogs[2766] = '''m surprised to see you here.[endAwaitInput]FACTORY CHIEF: But this is the
- end of the line f'''
-dialogs[2767] = '''or you.[newlineAwaitInput] This is the closest you'l'''
-dialogs[2768] = '''l ever get
- to Smithy, so savor the mome'''
-dialogs[2769] = '''nt.[endAwaitInput]FACTORY CHIEF: Harrumph!
- You'll be fodder for my in'''
-dialogs[2770] = '''credible
- invention, the “Gu'''
-dialogs[2771] = '''nyolk”![endAwaitInput]POUNDER #1: Sir![delay][delay]
- “Drill Bit” will be finished on time.[endAwaitInput]POUNDER #2: 
-       We're ahead of schedule![endAwaitInput]'''
-dialogs[2772] = '''POUNDER #3: 
-       We'll make Smithy proud![endAwaitInput]POUNDER: Here’s the report![endAwaitInput]MANAGER: Good work, everyone.[delay]'''
-dialogs[2773] = '''[delay][delay]
- The harder we work, the stronger
- Smithy will become![endAwaitInput]'''
-dialogs[2774] = '''MANAGER: The weapons we
- manufacture here will be...[newPageAwaitInput]
-           Just think of it...[endAwaitInput]MANAGER: When'''
-dialogs[2775] = ''' Smithy takes over
- Mario’s world, we can do anything
- we want'''
-dialogs[2776] = '''![endAwaitInput]
-              Gwah, ha, ha...[delay_48][end]BOWSER:
-              Not so fast![newPageAwaitInput]
-     You sure '''
-dialogs[2777] = '''are a cocky bunch![endAwaitInput]BOWSER: I rule this world!
- Don't you forget it![endAwaitInput]MANAGER: It’s Mario![newlineAwaitInput] Mack 2 and Yaridovich 2 didn't
- stop him?[endAwaitInput]BOWSER: No, NO! Leave Mario
- outta this. I'm the one you '''
-dialogs[2778] = '''need
- to worry about, not him![endAwaitInput]MANAGER: Mario, you're about to
- make the longest jump of your life![endAwaitInput]BOWSER: Y...You're ignoring me![endAwaitInput]CLERK'''
-dialogs[2779] = ''': 
- Production is on schedule?[newPageAwaitInput] This, despite the fact that Mack,
- Bowyer, Yaridovich, and the Axem
- Rangers were defeated.[newlineAwaitInput] At this rate, '''
-dialogs[2780] = '''Smithy will have a
- new army in no time![endAwaitInput]MALLOW: A...new army?[newPageAwaitInput] You can't be making more '''
-dialogs[2781] = '''weapons!
- Haven't you caused enoug'''
-dialogs[2782] = '''h trouble
- already?[endAwaitInput]CLERK: What did you say, you
- little puff ball?
- [delay][delay]Mad Mallet! TR'''
-dialogs[2783] = '''ASH 'em![endAwaitInput]CLERK: All right, let’s see
- whatcha got!'''
-dialogs[2784] = ''''''
-dialogs[2785] = '''[endAwaitInput]CLERK: 
- Oh yeah?! Who are you?[endAwaitInput]MALL'''
-dialogs[2786] = '''OW: This is THE Mario![newPageAwaitInput] Give up now, while you still have
- a chance![newPageAwaitInput] Shut down production'''
-dialogs[2787] = ''' NOW,
- or he'll...STOMP ya![endAwaitInput]MALLOW: Ha!
- Hope you learned your lesson![endAwaitInput]MALLOW: 
- We're'''
-dialogs[2788] = ''' almost there, Mario.[newlineAwaitInput] Come on![endAwaitInput]MALLOW: What d'''
-dialogs[2789] = '''o you suppose
- this switch does?'''
-dialogs[2790] = ''' Hmm...[endAwaitInput]MALLOW: 
-         Ack! Help me, Mario![endAwaitInput]MALLOW: ••[delay]••[delay]••[delay]Nothing’s happ'''
-dialogs[2791] = '''ening.[endAwaitInput]MALLOW: Huh?
- What’s with the funny face, Mario?[newPageAwaitInput] Oh I KNOW, you're'''
-dialogs[2792] = ''' trying to make
- me look, aren't you?[delay][delay]
- I'm not going to fall for that one![endAwaitInput]MAL'''
-dialogs[2793] = '''LOW: Boy, that was'''
-dialogs[2794] = ''' scary!
- I guess the green switch con'''
-dialogs[2795] = '''trols
- the crane.[endAwaitInput]GENO: Hmm••[delay]••[delay]••[delay][newlineAwaitInput] The production line hasn't halted.'''
-dialogs[2796] = '''[endAwaitInput]GENO: This must be where Smithy
- makes'''
-dialogs[2797] = ''' his weapons.[newPageAwaitInput] To fin'''
-dialogs[2798] = '''d the last Star Piece and
- stop the factory, we've g'''
-dialogs[2799] = '''ot to
- defeat him first.[endAwaitInput]GENO: Mario...
- There’s no turning back now.
- Are you read'''
-dialogs[2800] = '''y?[endAwaitInput]GENO: Our quest is almost over.[endAwaitInput]GENO: And'''
-dialogs[2801] = ''' when the time co'''
-dialogs[2802] = '''mes••[delay]••[delay]••[delay][endAwaitInput]GENO: Lo'''
-dialogs[2803] = '''ok Mario, this is where the
- weapons come from.[endAwaitInput]
-
-                Nya ha ha.[delay_48][end]              Heh heh heh...[delay_48][end] Like the moon over[delay_32] 
- the day, my genius and '''
-dialogs[2804] = '''brawn[delay_32]
- are lost on these fools. [delay_32]~Haiku[endAwaitInput]TOADSTOOL: You there![delay][delay]
- Are you the one in charge here?[newPageAwaitInput] Do'''
-dialogs[2805] = ''''''
-dialogs[2806] = ''' you know what your weapons
- have been doing to our world?[newPageAwaitInput] Stop this nonsense at once![endAwaitInput]DIRECTOR:
-    I'm afraid that isn't possible. [newPageAwaitInput] Any dissent against S'''
-dialogs[2807] = '''mithy will be
- dealt with by immediate melt down.[endAwaitInput]TOADSTOOL: 
-             M, melt down?[newPageAwaitInput] You can't scare me, I've got
- Mario by my side![endAwaitInput]DIRECTOR: 
-     Dissenters will be eliminated!
-       Production '''
-dialogs[2808] = '''will continue.[endAwaitInput]TOADSTOOL:
-            That was scary![newPageAwaitInput] But we can't run away now.[newlineAwaitInput] We've got to kick these lowlifes
- out of our world.[endAwaitInput]
-
-   I wish for everyone to be happy.[endAwaitInput]DEALER'''
-dialogs[2809] = ''': 
-         I will draw one card.[endAwaitInput]DEALER: 
-        I'll play with this hand.[endAwaitInput]DEALER: 
-         Draw or stay, Mario?[endAwaitInput]            Your total is [0x7000].
-  [startSelection] (Dra'''
-dialogs[2810] = '''w)
-  [startSelection] (Stay)[endAwaitInput]DEALER: 
- I will fi'''
-dialogs[2811] = '''rst deal'''
-dialogs[2812] = ''' you two cards.[endAwaitInput]            You got a(n) [0x7000].[endAwaitInput]      Oh no! You went over 21.[endAwaitInput]DEALER:
-      Please show me your hand'''
-dialogs[2813] = '''.[endAwaitInput]DEALER: 
-                I have [0x7000].[endAwaitInput]
-          Mario, you have [0x7000].[endAwaitInput]DEALER: I broke 21, so you won![newlineAwaitInput] Here’s your Frog Coin.[endAwaitInput]DEALER: You won this round.[newlineAwaitInput] Here is your Frog Coin.[endAwaitInput]DEALER: You lost this round.[newlineAwaitInput] I'll take your Frog Coin.[endAwaitInput]DEALER: It’s a tie.[newlineAwaitInput] I'll '''
-dialogs[2814] = '''keep your Frog Coin.[endAwaitInput]DEALER: No Frog Coins?[newlineAwaitInput] Sorry, you can't play then.[endAwaitInput]'''
-dialogs[2815] = '''DEALER: 
-            Your first card.[endAwaitInput]DEALER: 
-          Your second card.[endAwaitInput]DEALER: 
- Welcome to the Blackjac'''
-dialogs[2816] = '''k table.[newlineAwaitInput] Play a round with me, s'''
-dialogs[2817] = '''ir?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] Another game, sir?
-  [startSelection] (Sure)
-  [startSelection] (No)[endAwaitInput]DEALER: 
- Welcome to the Grate Guy Casino.[endAwaitInput]DEALER: If you would like to play,
- please go to the other sid'''
-dialogs[2818] = '''e of
- the table.[endAwaitInput]DEALER: In Blackjack, whomever
- comes the closest to 21 points,
- without going over, wins.[newPageAwaitInput] I will first deal 2 cards, then we
- will each draw as'''
-dialogs[2819] = ''' many cards as
- we wish.[newPageAwaitInput] Once we stop drawing cards, we
- both show our hand, and whomever
- h'''
-dialogs[2820] = '''as the higher total'''
-dialogs[2821] = ''' wins.[newPageAwaitInput] But if your hand exceeds 21, your
- opponent wins, regardless of how
- many points they '''
-dialogs[2822] = '''have.[newPageAwaitInput] So if you exceed 21,'''
-dialogs[2823] = ''' you'll lose.[newPageAwaitInput] If I '''
-dialogs[2824] = '''go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog '''
-dialogs[2825] = '''Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
-'''
-dialogs[2826] = ''' but if it’s a tie or you lose, I'll'''
-dialogs[2827] = '''
- keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]DOORMAN: Sorr'''
-dialogs[2828] = '''y, this casino is
- for members only.[endAwaitInput]DOORMAN: You don't have a
- “Bright Card”?[newlineAwaitInput] I'm sorry, I can't let you in.[endAwaitInput]DOO'''
-dialogs[2829] = '''RMAN: Please enjoy yourself.[endAwaitInput]DOORMAN: We ho'''
-dialogs[2830] = ''''''
-dialogs[2831] = '''pe everything was
- to your liking?[endAwaitInput] Business is so slow...[newlineAwaitInput] Hey Mario, wanna play “Look'''
-dialogs[2832] = ''' the
- other way” with me?[endAwaitInput] Ready, and...
- Look the...other...[delay_40][end] (Hit right/'''
-dialogs[2833] = '''left on the '''
-dialogs[2834] = '''Control Pad)[endAwaitInput] ...Way![endAwaitInput] G'''
-dialogs[2835] = '''otcha!
- I win![endAwaitInput] Ooh, you didn't get caught!
- I lost this '''
-dialogs[2836] = '''round.[endAwaitInput] Okay, Mario, this is in ce'''
-dialogs[2837] = '''lebration
- of your wins![endAwaitInput]        Received a “Star Egg”![endAwaitInput] Wanna t'''
-dialogs[2838] = '''ry it again?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]TOAD: This is for you.[endAwaitInput] Welcome to the Grate Guy Casino![newlineAwaitInput] Wanna'''
-dialogs[2839] = ''' play the slot machines?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] As you wish.[endAwaitInput] Require'''
-dialogs[2840] = ''' instructions?
-  [startSelection] (No)
-  [startSelection] (Yes)[endAwaitInput] I'll take your 10 coins.[newlineAwaitInput] Please enjoy yourself.[endAwaitInput] Please come back with more coins.[endAwaitInput] The slot machine costs 10 coins
- per game.[newPageAwaitInput] Hit it once to start the game.[newPageAwaitInput] Each consecutive hit will freeze
- one of the pictures. Match all 3'''
-dialogs[2841] = '''
- and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]GRATE GUY: He'''
-dialogs[2842] = '''llo Mario![newPageAwaitInput] I run this casino!
- Feel free to enjoy yourself.[endAwaitInput]DEALER: Do you want to continue?
-  [startSelection] (Yes)
-'''
-dialogs[2843] = '''  [startSelection] (No)[endAwaitInput] I wonder what became of Booster's
- search for a br'''
-dialogs[2844] = '''ide?[endAwaitInput]           [delay]You [delay]missed![delay_40][end]          Talk to the flower[newlineAwaitInput]     and the star gate will open.[endAwaitInput]             To Marrym'''
-dialogs[2845] = '''ore[endAwaitInput]              To Star Hill[endAwaitInput]
-
-    Can't wa'''
-dialogs[2846] = '''it to start a family.[endAwaitInput]
-
-         I hope my baby’s cute![endAwaitInput]
-
-      May Mallow fix the Road![endAwaitInput]            It’s been sealed[endAwaitInput]                  Look!
-   The “Shiny Stone” is reacting![endAwaitInput]      The '''
-dialogs[2847] = '''seal has been broken![endAwaitInput] It’s really weird.
- Sometimes I hear'''
-dialogs[2848] = ''' the guy next door.[newPageAwaitInput] He’s always mumbling about a
- Crystal-this and an Evi'''
-dialogs[2849] = '''l-that.[newPageAwaitInput] Isn't a “Cryst'''
-dialogs[2850] = '''al” some kind of a
- shiny rock...or something?
- I know I've seen those somewhere![endAwaitInput]JINX: Whoa[delay][delay]••••••[newlineAwaitInput] You ARE the stronger champion,
- no doubt about it.[newPageAwaitInput] My reputation was staked on this
- last fight, so I've lost the title
- of “Sensei”.[newPageAwaitInput] From today, you are the Sensei
-'''
-dialogs[2851] = ''' of this dojo.[newPageAwaitInput] Please take this belt, which only
- the highest ranking fighter in the
- dojo can wear.[endAwaitInput] We will rename the dojo, “Mario
- Style Dojo”, and incorpo'''
-dialogs[2852] = '''rate your
- jump technique into the training.[endAwaitInput]        Received a “Jinx Belt”[endAwaitInput]JINX: Jagger and I will start ou'''
-dialogs[2853] = '''r
- training immediately.[endAwaitInput] 1000 warm up jumps!
- Ready, begin![endAwaitInput]
-                   DODO![endAwaitInput]VALENTINA: Did you display the
- s'''
-dialogs[2854] = '''tatues properly?[endAwaitInput]VALENTINA: Fine! Now polish them
- to a fine luster and make them a
- tribute to my beauty![endAwaitInput]V'''
-dialogs[2855] = '''ALENTINA: Pay attention to me![newlineAwaitInput] Hurry up, and DON'T let me catch
- you dozing again.[endAwaitInput]VALENT'''
-dialogs[2856] = '''INA: What?[newlineAwaitInput] You saw a statue move?
- Don't be ridiculous.[newPageAwaitInput] You're just stalling, so you won't
- have to polish them![endAwaitInput]VALENTINA'''
-dialogs[2857] = ''': What?
- The statue was “ticklish”?[newlineAwaitInput] Is that what you said?[newPageAwaitInput] If you try stalling just one more
- time, I'm gonna have your feathers
- plucked for my pillow. Now SCAT![endAwaitInput]VALENTINA: STOP BOTHERING ME![newlineAwaitInput] If you're so '''
-dialogs[2858] = '''worried, why don't
- you g'''
-dialogs[2859] = '''o give it a good peck![endAwaitInput]          Pick up a “Feather”.[endAwaitInput]JAGGER: Mario Sensei, the new
- regimen will strengthen us, right?[endAwaitInput]JINX: Master!
- Share your wisdom with us![endAwaitInput]CULEX: 
-      Farewell, champion knight![endAwaitInput]    Received a “Quartz Charm”![endAwaitInput] I think our neighbor moved away.[endAwaitInput]'''
-dialogs[2860] = '''                 Uh oh...
-    Dodo’s in a pretty bad mood.[newPageAwaitInput]  Keep up your statue disguise and
-   jum'''
-dialogs[2861] = '''p to avoid getting pecked.[newPageAwaitInput]        Get ready because he's
-           coming this way![endAwaitInput]FROGFUCIUS: So! Toadstool was
- the bride, after all?[newPageAwaitInput] You'd better hurry and res'''
-dialogs[2862] = '''cue her
- before she's...married![endAwaitInput]FROGFUCIUS: Good work, Mario.
- You rescued Toadstool.[newPageAwaitInput] Why don't you head back to
- Mushroom Kingdom?
-'''
-dialogs[2863] = ''' I'm sure the Chancellor is worried.[endAwaitInput]FROGFUCIUS: 
- I have the latest news, children.[newPageAwaitInput] A large star’s b'''
-dialogs[2864] = '''een sighted on
- “Star Hill”.[endAwaitInput]FROGFUCIUS: Eh!?[newlineAwaitInput] That delicious smell!
- Y'''
-dialogs[2865] = '''ou have some Cricket Jam'''
-dialogs[2866] = ''''''
-dialogs[2867] = ''', yes?[newPageAwaitInput] '''
-dialogs[2868] = '''May I have some?
-  [startSelection] (Sure)
-  [startSelection] (Nope)[endAwaitInput] Sure, torture an old man![endAwaitInput] Mmm, this is wonderful!
- Thank you, Mario.
- You'''
-dialogs[2869] = ''''ve made an old man happy.[newPageAwaitInput] Here’s a little allowance for being
- so good to me.[endAwaitInput] My wish has come true.[endAwaitInput]FROGFUCIUS: Have you been to
- Seaside Town yet?
- Something odd is going on there.[endAwaitInput]FROGFUCIUS: Beware of the giant
- squid in the sunken ship. Turn 'im
- into calamari or something![endAwaitInput]FROGFUCIU'''
-dialogs[2870] = '''S: The entrance to
-'''
-dialogs[2871] = ''' Monstro Town is underground.
- Fo'''
-dialogs[2872] = '''llow the whirls in the desert.[endAwaitInput]FROGFUCIUS: I JUST found out that
- there’s a kingdom in the clouds.
- Go and explore it, my children.[endAwaitInput] Was that too much to absorb?
- Would you like a recap?[newlineAwaitInput]  [startSelection] (Sure)
-  [startSelection] (Nope)[endAwaitInput] Okay, here’s '''
-dialogs[2873] = '''the gist of it!
- Smithy inva'''
-dialogs[2874] = '''ded our world and took
- over Bows'''
-dialogs[2875] = '''er’s Keep.[newPageAwaitInput] Toadstool and Bowser were thrown
- by the impact, and now Smithy and
- his cohor'''
-dialogs[2876] = '''ts are on a rampage.[newPageAwaitInput] The shooting stars are somehow
- co'''
-dialogs[2877] = '''nnected to this disturbance and
- they're the key to defeating Smi'''
-dialogs[2878] = '''thy.[endAwaitInput] Would you like me to re'''
-dialogs[2879] = '''peat that?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] It’s '''
-dialogs[2880] = '''quite a situation we have on
- our hands, isn't it?[endAwaitInput]MALLOW: Gran'''
-dialogs[2881] = ''''''
-dialogs[2882] = '''dpa!
- We found my real hom'''
-dialogs[2883] = '''e!
- It’s way up in the clouds.[endAwaitInput]FROGFUCIUS: Mallow!
- You're a prince?!
- I never would hav'''
-dialogs[2884] = '''e guessed![newPageAwaitInput] And now you're helping to save
- the world?
- You've come '''
-dialogs[2885] = '''a long way, child.[newPageAwaitInput] Although you've found your family,
- this adventur'''
-dialogs[2886] = '''e isn't over yet![endAwaitInput]MALLOW: Yep. I'm not giving up![endAwaitInput]FROGFUCIUS: You've'''
-dialogs[2887] = ''' got to defeat
- Valentina and save Nimbus Land.[endAwaitInput]FROGFUCIUS: Ah! Now the people
- of Nimbus'''
-dialogs[2888] = ''' Land can rejoice.[newPageAwaitInput] SO!
- I hear the next Star Piece is
- inside a volcan'''
-dialogs[2889] = '''o.[newPageAwaitInput] I also heard that Booster got
- himself another bride from the sky.[endAwaitInput]FROGFUCIUS: So...onl'''
-dialogs[2890] = '''y Bowser's
- Keep remains.[newPageAwaitInput] The citizens of Nimbus Land will
- tell you how to get there.[endAwaitInput]FR'''
-dialogs[2891] = '''OGFUCIUS: 
- That’s all the advice I have.[newPageAwaitInput] You've done well. All that’s left
- to do is to defeat Smithy.[newPageAwaitInput] Save this world, and bring this
- quest to a happy end![endAwaitInput] This••is••Smithy’s castle![newPageAwaitInput] No trespassers••al'''
-dialogs[2892] = '''lowed.[endAwaitInput]BOWSER: 
-               Magikoopa![endAwaitInput]MAGIKOOPA: Huh••where am I?[delay][delay][delay]
- Bowser, hello!
- How have you been?[newPageAwaitInput] I, uh, made it back here SOMEHOW,
- but it seems like I've '''
-dialogs[2893] = ''''''
-dialogs[2894] = '''been
- brainwashed or something.[newPageAwaitInput] I ca'''
-dialogs[2895] = '''n't seem to remember ANYTH'''
-dialogs[2896] = '''ING.
- Have I done something...wr'''
-dialogs[2897] = '''ong?[endAwaitInput]BOWSER: Uh, [pauseAwaitInput]don''''
-dialogs[2898] = '''t [pauseAwaitInput]worry about it.[newlineAwaitInput] Let’s just put it behind us.[newPageAwaitInput] It’s great running into a loyal
- Koopa Trooper '''
-dialogs[2899] = ''''''
-dialogs[2900] = '''like you.[endAwaitInput]MAGIKOOPA: I'm glad!
- It looks like you've got some tough
- new troopers now.[newPageAwaitInput] But my '''
-dialogs[2901] = '''magic can still help you.[endAwaitInput] Watch this![newlineAwaitInput]            Ho'o[pauseAwaitInput]kala[pauseAwaitInput]ku[pauseAwaitInput]pua'''
-dialogs[2902] = '''![endAwaitInput]MAGIKOOPA: This magic treasure
- box will never run out of coins.[newPageAwaitInput] Just keep on hitting it.[endAwaitInput]MAGIKOOPA: 
- I'll be here if you need me.[newPageAwaitInput]'''
-dialogs[2903] = ''' Come by whenever you need to
- rejuvenate your HP and magic.[endAwaitInput]MAGIKOOPA: 
- You've come to the right person![endAwaitInput]
-             Ha ha ha ha ha![endAwaitInput] Ahhhhh...
- So YOU are the notorious Mario![newPageAwaitInput] I'm impressed you made it this far.
- I didn't think you could'''
-dialogs[2904] = '''.[endAwaitInput] Oh!
- Feisty little fellow, aren't you?[newlineAwaitInput] But this is the end of the line.[newPageAwaitInput] Now you've got to deal with ME'''
-dialogs[2905] = '''![newlineAwaitInput] EN GARDE![endAwaitInput]VALENTINA: 
- WHAT are you ba'''
-dialogs[2906] = '''bbling about?[newPageAwaitInput] Why should I marry you?[endAwaitInput]VALENTINA: ......'''
-dialogs[2907] = '''..[newPageAwaitInput] What a wonderful thing to say!'''
-dialogs[2908] = '''[endAwaitInput]BOWSER: Ahhh...
-     The scent of boiling lava...[newPageAwaitInput] It’s so nice to be home![newPageAwaitInput] Smithy’s gonna pay for stealing
- my splendid castle from me![endAwaitInput]  '''
-dialogs[2909] = '''The secret to the shooting stars
-          h'''
-dialogs[2910] = '''as been unraveled.[newlineAwaitInput]         Find the Star Pieces,
-'''
-dialogs[2911] = '''   and bring peace back
-           to Mario’s world.[endAwaitInput]       You've found Dyna, Mite,
-          and a Star Piece...[newlineAwaitInput]       But where is Toadstool?[endAwaitInput]       You've come '''
-dialogs[2912] = '''a long way,
-  but your journey’s not over y'''
-dialogs[2913] = '''et.
-    There are 3 more Star Pieces.[endAwaitInput]     Smithy is now in the race for
-           the Star Pieces![newlineAwaitInput]  What horrible surprises '''
-dialogs[2914] = '''might he
-       have in store for Mario?
- [endAwaitInput] Star Piece? Now that you mention
- it, I DID see a star fall into that
- volcano over there.[endAwaitInput] Garro'''
-dialogs[2915] = '''’s busy making statues of
- King Nimbus.[newlineAwaitInput] He seems very happy![endAwaitInput] So the king WAS all right!
- I'm so happy for him.[endAwaitInput] This time, the prince is for real,
- [delay][delay]right?[endAwaitInput] I KNEW IT!! I '''
-dialogs[2916] = '''knew the Prince
- couldn't be THAT heavy! Three
- cheers for the REAL Prince![endAwaitInput] We used to '''
-dialogs[2917] = '''be able to walk through
- the castle freely, but I g'''
-dialogs[2918] = '''uess we
- shouldn't disturb the King now.[endAwaitInput] King Nimbus loves statues and
- birds. He has sca'''
-dialogs[2919] = '''ds of 'em
- in the castle.[endAwaitInput] I hope to serve the King
- again, soon![endAwaitInput] Have you seen the volcano?[newlineAwaitInput]  [startSelection]  (Sure have)
-  [startSelection]  (Not yet)[endAwaitInput] [newPage] They say you can get there
- by way of the hot springs.[endAwaitInput]  [newPage] The volcano’s to the east.
- Sure'''
-dialogs[2920] = ''' wish I could take a dip
- in the springs...[endAwaitInput]
-  Long time no see, Prince Mallow![endAwaitInput] You're looking especially fluffy
- today, Prince![endAwaitInput] Prince Mallow, you're such a
- crybaby![endAwaitInput]
-   My, how you've'''
-dialogs[2921] = ''' grown, Prince![endAwaitInput]
-          This is locked too...[endAwaitInput]  Hey, wait a minute!  It’s locke'''
-dialogs[2922] = '''d.[endAwaitInput]SHY AWAY: La dee dah...
- Here ya go, big eggie! I'll give
- ya plenty of nutrients so you'll[newlineAwaitInput] grow up to be big and strong![endAwaitInput] Oh, oh, oh...[delay][delay]
- Mario’s already here...
- He’s a fa'''
-dialogs[2923] = '''st one, he is...[endAwaitInput] Oh, oh, oh...[delay][delay]
- It won't open...
- it’s locked![endAwaitInput]???: Ha ha ha ha.[endAwaitInput] Look! There’s a note.
- Let’s read'''
-dialogs[2924] = ''' it.[endAwaitInput]     King Nimbus is resting in bed.[newlineAwaitInput] Absolutely NO RUNNING in the halls.
-            Queen Valentina[endAwaitInput]MALLOW: This can only mean that
- my mom and dad are here![endAwaitInput] Oh, but it’s locked![endAwaitInput] 
-             Leave it to me![endAwaitInput]BOWSER: Looks like it’s up to me
- to get us out of yet another jam.[newlineAwaitInput] Feast your eyes on this show of
- brains...[delay][delay][delay][delay]and brawn![endAwaitInput]
-              ST'''
-dialogs[2925] = '''AND BACK! [endAwaitInput]MALLOW:
-         WAIT! Wait a minute![endAwaitInput] If my dad’s really bedridden,
- we shouldn't make'''
-dialogs[2926] = ''' so much noise.[newlineAwaitInput] ...[delay][delay][delay]We need another plan...[endAwaitInput] I guess we should find Valen'''
-dialogs[2927] = '''tina
- and force the truth out of her![endAwaitInput]BOWSER:
-     But, what about the door?[delay][delay]...[endAwaitInput]SHY AWAY:
-            Queen Valen'''
-dialogs[2928] = '''tina...[endAwaitInput][newPage] That Mario creature who
- beat up Smilax is here...[endAwaitInput]VALENTINA: Mario...?![newlineAwaitInput] What[delay]...[delay]does a “Mario”
- look like?[endAwaitInput]SHY AWAY: Well...it has a bushy
- mustache, long sideburns, and,
- uh, a pair of[delay][delay]...[newlineAwaitInput] mean looking legs...![endAwaitInput]VALENTINA: [delay]Hmmm...[delay]
- I have the feeling I've seen this
- “Mario” before...[endAwaitInput]VALENTINA: [delay]...[delay]Wait! Yes!
- It was that statue that Garro
- just delivered.'''
-dialogs[2929] = '''..![endAwaitInput]SHY AWAY:[delay][delay] What, what, what
- are we gonna d'''
-dialogs[2930] = '''o? What are we
- GONNA DO, VALEN'''
-dialogs[2931] = '''TINA?[endAwaitInput]VALENTINA: Well, we certainly
- aren't going to listen to your'''
-dialogs[2932] = '''
- pointless chatter.[newPageAwaitInput] Frankly speaking, I'm not going
- to worry. Without this key, the
- King can''''
-dialogs[2933] = '''t go ANYWHERE![endAwaitInput]VALENTINA:
-                  Hush...[endAwaitInput]VALENTINA:
-      I SAID SHUT UP, ALREADY![endAwaitInput]VALENTINA: What the...?!
- That...t'''
-dialogs[2934] = '''hat isn't a STATUE!![delay][delay]
- That's...[delay][delay]Mario!!![endAwaitInput]MALLOW: VALENTINA!![newlineAwaitInput] Hand over the KEY!!, NOW![endAwaitInput]VALENTINA: How utterly rude'''
-dialogs[2935] = '''!
- And who in blazes are YOU
- anyway?![endAwaitInput]MALL'''
-dialogs[2936] = '''OW: Me?
- I'm the REAL prince, that’s w'''
-dialogs[2937] = '''ho![endAwaitInput]VALENTINA: Brat![newlineAwaitInput] A'''
-dialogs[2938] = '''nd how DARE you listen in on a'''
-dialogs[2939] = '''
- private conversation...![endAwaitInput]MAL'''
-dialogs[2940] = '''LOW: Private? PRIVATE?!
- Everyone in a 10 mile radius
- could hear you![endAwaitInput]VALE'''
-dialogs[2941] = '''NTINA: Harrumph!
- If you're going to be THIS rude,
- I'm simply goin'''
-dialogs[2942] = '''g to leave.[endAwaitInput][newPage]
-          So long...(chumps)![endAwaitInput]BOWSER: Listen YOU! Never EVER
- talk to the lead'''
-dialogs[2943] = '''er of the Koopa
- Troop like that! Ooh, I hate...[newlineAwaitInput] THA'''
-dialogs[2944] = '''T! I'll ignore it this time...
- but DON'T let it happen again![endAwaitInput]SHY AWAY: Eh?[delay][delay]
- Hey! Valentina ran away...[endAwaitInput][newPage]
-      I shall fly the coop, too...[endAwaitInput]MALLOW: Uh...[delay][delay]I...[delay]I think
- we kind of missed the boat here...[endAwaitInput] So...[delay][delay]...we'd b'''
-dialogs[2945] = '''etter get
- moving too!![newlineAwaitInput] C'mon, let’s get 'em!![endAwaitInput]
-            H'''
-dialogs[2946] = '''ey, wait a sec...[endAwaitInput]
-     It won't open...it’s locked.[endAwaitInput]
-       Ha! Here’s how I'd do it.[endAwaitInput]
-       I'm absol'''
-dialogs[2947] = '''utely exhausted![endAwaitInput] I hate being a guard![newlineAwaitInput] Valentina only gives us the most
- boring jobs to d'''
-dialogs[2948] = '''o!![endAwaitInput]
- But I guess this beats Dodo’s job.[endAwaitInput] Dodo has to polish Valentina's
- statues EVERY single day![endAwaitInput]
-    Now THIS is how I would do it![endAwaitInput] You need'''
-dialogs[2949] = ''' a key to open the
- back door of the middle'''
-dialogs[2950] = ''''''
-dialogs[2951] = ''''''
-dialogs[2952] = ''''''
-dialogs[2953] = ''''''
-dialogs[2954] = ''''''
-dialogs[2955] = ''''''
-dialogs[2956] = ''''''
-dialogs[2957] = ''' room...[newlineAwaitInput] But of course,'''
-dialogs[2958] = ''' Valentina’s got it'''
-dialogs[2959] = '''.[endAwaitInput] I used to be a gua'''
-dialogs[2960] = '''rd here, until
- Valentina snatched away all my
- keys...and gave '''
-dialogs[2961] = '''me the boot.[newPageAwaitInput] Guess I won't be needing this
- master key'''
-dialogs[2962] = ''' anymore...
- Would you like it?[newlineAwaitInput] [startSelection]  (Sure'''
-dialogs[2963] = '''!)
- [startSelection]  (No thanks)[endAwaitInput]'''
-dialogs[2964] = '''[newPage] All right, here you go!'''
-dialogs[2965] = '''[newlineAwaitInput] Just don't tell me what you'''
-dialogs[2966] = ''''re
- gonna do with it, o'''
-dialogs[2967] = '''kay?[endAwaitInput][newPage] Oh really?, You sure?
- '''
-dialogs[2968] = '''What a shame[delay][delay]...t'''
-dialogs[2969] = '''his precious key
- opens the middle roo'''
-dialogs[2970] = '''m, you know.[endAwaitInput]
-     So...you don't want it, huh?[endAwaitInput]
-         Wait! Don't'''
-dialogs[2971] = ''' say that![endAwaitInput]MALLOW: To be honest, we really
- REALLY need it![endAwaitInput]
-                Oh, yeah?[endAwaitInput]
-    But HE said you didn't need it.[endAwaitInput]MALLOW: Oh, I'm sorry. You'll
- have to excuse him, he...he’s a
- little shaken up right now.[endAwaitInput]
-      [delay]...Oh...[delay]Okay...I guess...[delay][pauseAwaitInput][end]MALLOW: Thank you![newlineAwaitInput] We owe you one![endAwaitInput]          G'''
-dialogs[2972] = '''ot “Castle Key 1”![endAwaitInput] A dip in the hot springs would
- perk up the King in a jiffy![endAwaitInput]
-            Go on, take this...[endAwaitInput] Hey! Did YOU know?![newlineAwaitInput] Valentina’s got a huge egg
- in the middle room.[newPageAwaitInput] It spits out eggs from time
- to time, and sometimes when you
- shield yourself, the eggs'll[newlineAwaitInput] ricochet off'''
-dialogs[2973] = ''' of you.[endAwaitInput] Did you know that there are hot
- springs around here?[newlineAwaitInput] [startSelection]  (Yep)
- [startSelection]  (Nope)[endAwaitInput][newPage] Aww, you're no fun.
- I wanted to be the fir'''
-dialogs[2974] = '''st
- to tell you that![endAwaitInput][newPage] We get special hot water from
- Barrel Volca'''
-dialogs[2975] = '''no. It helps cure all
- kinds of ailments, but only the[newlineAwaitInput] King gets to bathe in it.[endAwaitInput] Valentina told me to wait in this
- roo'''
-dialogs[2976] = '''m... I'm hoping she'll give me
- a job soon...[endAwaitInput] Hey, tell me something,
- do statues[delay][delay]...[delay]move?[endAwaitInput]
-       No. Statues don't move.[endAwaitInput]
-        Then[delay][delay]..'''
-dialogs[2977] = '''.[delay]explain...[delay][delay]THIS![endAwaitInput] It's...[delay][delay] one of those hi-te'''
-dialogs[2978] = '''ch,...
- '''
-dialogs[2979] = '''[delay]er,...life-like..[delay] realistic ones'''
-dialogs[2980] = '''.
- ...[delay][delay]Let’s get outta here.[endAwaitInput]GARRO: Why are you back?![newlineAwaitInput] Come on! Put a little effort into
- it, okay? Good luck![endAwaitInput]SHY AWAY: Oh[delay][delay] Oh[delay][delay]...
- ...Busted...[newlineAwaitInput] What to do, what to do?[endAwaitInput] I'll give you this “Fertilizer”
- if you let me go~...[delay][delay][delay]...OK?[endAwaitInput] The hot springs are up ahead,
- but only royalty can bathe there.[newlineAwaitInput] And you'''
-dialogs[2981] = ''' don't look so royal...![endAwaitInput] Right now,'''
-dialogs[2982] = ''' Prince Mallow is
- bathing in the hot springs.
- It must be so relaxing.[endAwaitInput]
-                DANGER!!!
-   Beyond the cliffs is the volcano[endAwaitInput]QUEEN NIMBUS: Hello, ev'''
-dialogs[2983] = '''eryone.[newlineAwaitInput] Thank you so much for looking
- after my dear child.'''
-dialogs[2984] = '''[endAwaitInput]
-        Wait a minute, p'''
-dialogs[2985] = '''lease...[endAwaitInput]MALLOW: Please! These people
- aren't your enemies. They're'''
-dialogs[2986] = ''' my
- friends.[endAwaitInput]
-           This way, come on![endAwaitInput]MALLOW: Mom...[delay_48] Dad...[newlineAwaitInput] I'd like you to meet Mario...[endAwaitInput][newPage]
-...and my other travel companions![endAwaitInput]KING NIMBUS: I say! How can
- we ever thank you'''
-dialogs[2987] = ''' enough![newlineAwaitInput] I'm Mallow’s father'''
-dialogs[2988] = '''...King Nimbus.[endAwaitInput]MALLOW:
-'''
-dialogs[2989] = '''   Allow me to introduce everyone![endAwaitInput] This...is Princess Toadstool from
- Mushroom Kingdom...[endAwaitInput]KING NIMBUS: Ah![delay] I've'''
-dialogs[2990] = ''' heard
- so much about you! May I...
- have your autograph?[endAwaitInput]QUEEN NIMBUS:
-'''
-dialogs[2991] = '''   Don't embarrass junior, dear!![endAwaitInput]KING NIMBUS: Oh![delay]...FANTASTIC![newlineAwaitInput] (S'''
-dialogs[2992] = '''how me again later...) Eh hem.
- And WHO do we have over here?[endAwaitInput]M'''
-dialogs[2993] = '''ALLOW: This is Bowser,'''
-dialogs[2994] = ''' leader
- of the Koopa Troop.[endAwaitInput]KING NIMBUS: Oh! Another famous
- pers'''
-dialogs[2995] = '''on! This is just too much![newlineAwaitInput] I MUST have YOUR autograph!'''
-dialogs[2996] = '''[endAwaitInput]QUEEN NIMBUS: Dear...behave
- yourself, please![endAwaitInput]KING NIMBUS: No? Not even a
- little scribble? Okay, okay...[endAwaitInput]KING NIMBUS: Yes, yes. I'm quite
- forgetting my'''
-dialogs[2997] = ''' manners...[delay][delay]Well...[newlineAwaitInput] ...Who do we have over her'''
-dialogs[2998] = '''e?[endAwaitInput]MALLOW: This is Geno, who I told
- you about bef'''
-dialogs[2999] = '''ore.[endAwaitInput]KING NIMBUS: Oh! Yes! Tha'''
-dialogs[3000] = '''t story
- about the Star Street! How awful![endAwaitInput]GENO:
-          '''
-dialogs[3001] = '''That's...Star Road...[endAwaitInput]QUEEN NIMB'''
-dialogs[3002] = '''US: By the way, a little
- before Valentina '''
-dialogs[3003] = '''took over, a
- large star fell int'''
-dialogs[3004] = '''o the volcano![endAwaitInput]KING NIMBUS: Hmm, but the dreaded
- “Czar'''
-dialogs[3005] = ''' Dragon” inhabits the
- volc'''
-dialogs[3006] = '''ano. It’s going to be tough[newlineAwaitInput] getting a star out of there![endAwaitInput][newPage] Hmmm...'''
-dialogs[3007] = '''perhaps all of you
- working together '''
-dialogs[3008] = '''COULD handle
- that beast...[endAwaitInput]
- Why'''
-dialogs[3009] = ''', when I was young, I...[endAwaitInput]QUEEN NIMBUS: Yes, dear...[newlineAwaitInput] Now, once at the volcano'''
-dialogs[3010] = ''', find
- Hinopio. He'll be able to help you.[endAwaitInput]QUEE'''
-dialogs[3011] = '''N NIMBUS: You be careful,
- Mallow![endAwaitInput] Up ahea'''
-dialogs[3012] = '''d are the hot springs...[newlineAwaitInput] But only '''
-dialogs[3013] = ''''''
-dialogs[3014] = ''''''
-dialogs[3015] = ''''''
-dialogs[3016] = '''royalty is allowed...[endAwaitInput] Hey! You're the REAL prince![newPageAwaitInput] Sorry abo'''
-dialogs[3017] = '''ut the misunderstanding
- before...T'''
-dialogs[3018] = '''here’s NO WAY that fat
- bird could have been a Prince, huh?[endAwaitInput] MALLOW: No big deal.[newlineAwaitInput]  Anyway, do you think you
-  could let us through here?[endAwaitInput]
-               Of course![endAwaitInput] Go '''
-dialogs[3019] = '''right ahead.
- Please, enjoy yourselves.[newlineAwaitInput] But be careful not to fall into
- the volcano.[endAwaitInput]KING NIMBUS: Oh! Nevermind...[endAwaitInput]
- And, who is this gentleman here?[endAwaitInput]MALLOW: '''
-dialogs[3020] = '''THIS[delay]....[delay]...[delay]
- is Mario!!![newlineAwaitInput] He helped me from the start![endAwaitInput]KING NIMBUS: I sinc'''
-dialogs[3021] = '''erely thank you
- from the bottom of my heart.[endAwaitInput][newPage] [delay]...[delay]...[delay]You don't mean...
- THE Mario?! Jumping Mario?!
- Auto'''
-dialogs[3022] = '''graph, please![endAwaitInput]QUEEN NIMBUS:
-     That’s quite enough, dear...[endAwaitInput]KING NIMBUS: Okay, okay![delay][delay] Then...
- how '''
-dialogs[3023] = '''about showing me just a little
- jump? A tiny hop will do![endAwaitInput]KING NIMBUS: Son, you're just
- like'''
-dialogs[3024] = ''' me when I was your age.
- I''''
-dialogs[3025] = '''m proud of you.[endAwaitInput]QUEEN NIMBUS: If you have
- any problems, come straight[newlineAwaitInput] back'''
-dialogs[3026] = ''', okay?![endAwaitInput]MALLOW: Okay, mom![newlineAwaitInput] But I '''
-dialogs[3027] = ''''''
-dialogs[3028] = '''probably won't come back
- until we find the'''
-dialogs[3029] = ''' star![endAwaitInput] G'''
-dialogs[3030] = '''o up those steps, and you'l'''
-dialogs[3031] = '''l find
- the royal bus that goes to the
- volcano. It’s pretty cool.[endAwaitInput] Do you know about the royal bus?[newlineAwaitInput] [startSelection]  (Yes)
- [startSelection]  (No)[endAwaitInput][newPage] It’s a regal vehicle, used only
- by the King. It’s parked now, due
- to the fact he’s ill...[endAwaitInput][newPage] When the King recovers, I'll let
- you see it. Y'''
-dialogs[3032] = '''ou see, I'm the
- bus maintenance man.[endAwaitInput]
-    The bus is undergoing repairs.[endAwaitInput]CROCO: Say, hey! We meet AGAIN![newlineAwaitInput] Dis here land is RICH! It’s got
- tons of loot, and I wan'''
-dialogs[3033] = '''t it all![pauseAwaitInput][end][newPage] So, youse guys found 'em ALL?
- ...[delay]Geez...[delay][delay]I've failed...
-[delay][delay] ...I'm humiliated...![endAwaitInput] Welcome! Come on in!
- So you want to take '''
-dialogs[3034] = '''a rest?
- I'm sure that’s why you're here.[newPageAwaitInput] It'll be [0x7024] coins a night.[newlineAwaitInput]'''
-dialogs[3035] = ''' [startSelection]  (OK, I'll take a break)
- [startSelection]  (I'll pass)[endAwaitInput][newPage] Let me guess...you want to u'''
-dialogs[3036] = '''se
- this “Dream Cushion” to rest,
- right? That'll be 30 more coins.[newlineAwaitInput] [startSelection]  (I'll try anything once)
- [startSelection]  (Looks pretty weird)[endAwaitInput][newPage] Seems like you do'''
-dialogs[3037] = '''n't have
- enough money. Come back again.[endAwaitInput]
-              Oh, shut up.[endAwaitInput]
-         Don't talk to me '''
-dialogs[3038] = '''now.[endAwaitInput] Oh, now look![newlineAwaitInput] I lost 'cause of YOU![endAwaitInput] Wait,'''
-dialogs[3039] = ''' hold on![newlineAwaitInput] This is the highest score...[endAwaitInput] Oh, '''
-dialogs[3040] = '''wait,[delay] [delay]wait[delay]...[endAwaitInput]  All right! YES!![newlineAwaitInput] ...I'm done here.[endAwaitInput] You want t'''
-dialogs[3041] = ''''''
-dialogs[3042] = '''his?
- It’s only 500 coins.[newlineAwaitInput] [startSelection]  (Well, sure!)
- [startSelection]  (No)[endAwaitInput][newPage]
-              Suit yourse'''
-dialogs[3043] = '''lf.[endAwaitInput][newPage]
-         You need more coinage.[endAwaitInput] Want me to tea'''
-dialogs[3044] = '''ch you?[newlineAwaitInput] [startSelection]  (Yes, please)
- [startSelection]  (I already know)[endAwaitInput][newPage]
-          Aww, you're no fun.[endAwaitInput]'''
-dialogs[3045] = '''[newPage] High score if you hit
- the shells w'''
-dialogs[3046] = '''ith the stars
- fired from the beetle.[newlineAwaitInput] If you get hit, recov'''
-dialogs[3047] = '''er by firing
- consecutively...Just do it!'''
-dialogs[3048] = '''[endAwaitInput]
-   I order you to stand before me.[endAwaitInput]
-       I now order you to jump.[endAwaitInput][newPage] In this world, there are things
- called “hidden treasures”.[newlineAwaitInput] Use your awesome jumping ability
- to look for 'e'''
-dialogs[3049] = '''m.[endAwaitInput]
-    I wish you luck in the future.[endAwaitInput] Mario![pauseAwaitInput][end]
- The Chancellor has f'''
-dialogs[3050] = '''illed me in!
- Come. Let me show you around.[endAwaitInput]
-   Help yourself to the treasures!'''
-dialogs[3051] = '''[endAwaitInput] If you leave now, what will that
- do to my reputation?![endAwaitInput] This is a “Flower”. The more you
- gather, the more Flower Points
- you'll have in battle. [pauseAwaitInput]Find 'em![endAwaitInput] THIS'''
-dialogs[3052] = ''' mushroom will restore your
- Hit Points and Flower Points.[newlineAwaitInput] Unfortunately, mushrooms you find
- as items only restore your HP.[newlineAwaitInput] So beware.[endAwaitInput] This is a “Coin”.
- The small ones are worth one, and
- the lar'''
-dialogs[3053] = '''ge ones are worth ten.[newlineAwaitInput] This one’s a “10”![endAwaitInput]
-          I'm standing guard![endAwaitInput] Do you know about Flower Points?
- [startSelection]  (No! Tell me!)
- [startSelection]  (Yes)[endAwaitInput][newPage] You sure '''
-dialogs[3054] = ''''''
-dialogs[3055] = ''''''
-dialogs[3056] = '''got your
- act together, Mario![endAwaitInput] We're all able to serve the
- King again.[newPageAwaitInput] But we left our houses wide open.
- Hope everything’s all right.[endAwaitInput] Came to see the King’s statue
- collection. I tell you, it's
- remarkable![endAwaitInput] Wonder when the bus is gonna
- start again? They're probably
- repairing it as we talk.[endAwaitInput] Things have'''
-dialogs[3057] = ''' finally picked up![endAwaitInput] The King’s happier than ever
- aft'''
-dialogs[3058] = '''er being reunited with Mallow.[endAwaitInput] What happened to Valentina?[newlineAwaitInput] She must have landed '''
-dialogs[3059] = '''near the sky
- after she flew the coop...[endAwaitInput] Morning!
- Did you have pleasant dreams?[pauseAwaitInput][end]
- That’s odd[delay]...[delay][delay]'''
-dialogs[3060] = '''
- It smells like pepper in here!
- Probably just my imagination![endAwaitInput]
- It looked like you had nightmares.
- Is everything okay?[endAwaitInput]
- When you hear laughter,
- you know it’s a good dream![endAwaitInput]
- You slept quietly, so I'm sure
- you had pleasant dreams![endAwaitInput][newPage]
-        Please come back again![endAwaitInput][newPage]
-          Kick back and relax![endAwaitInput][newPage] Hey, wait a sec'''
-dialogs[3061] = '''.
- You don't '''
-dialogs[3062] = '''have enough money, so
- I can't let you use the cushion.[endAwaitInput][newPage] Good drea'''
-dialogs[3063] = '''ms are fun
- entertainment![endAwaitInput] People have been visiting us from
- the world down under.[newlineAwaitInput] Even Croco cam'''
-dialogs[3064] = '''e.[endAwaitInput] Croco passed by, earli'''
-dialogs[3065] = '''er.[newlineAwaitInput] He was saying,“ MINE, ALL MINE!”
-[delay] What was '''
-dialogs[3066] = ''''''
-dialogs[3067] = ''''''
-dialogs[3068] = ''''''
-dialogs[3069] = ''''''
-dialogs[3070] = ''''''
-dialogs[3071] = ''''''
+ rest!'''
+dialogs[3067] = '''ccording to my source, it's
+ impossible to jump more than
+ 100 times.[newPageAwaitInput] You've proven your point, so
+ let’s give this competition a
+ rest!'''
+dialogs[3068] = '''ccording to my source, it's
+ impossible to jump more than
+ 100 times.[newPageAwaitInput] You've proven your point, so
+ let’s give this competition a
+ rest!'''
+dialogs[3069] = '''ccording to my source, it's
+ impossible to jump more than
+ 100 times.[newPageAwaitInput] You've proven your point, so
+ let’s give this competition a
+ rest!'''
+dialogs[3070] = '''ccording to my source, it's
+ impossible to jump more than
+ 100 times.[newPageAwaitInput] You've proven your point, so
+ let’s give this competition a
+ rest!'''
+dialogs[3071] = '''ccording to my source, it's
+ impossible to jump more than
+ 100 times.[newPageAwaitInput] You've proven your point, so
+ let’s give this competition a
+ rest!'''
 dialogs[3072] = '''SNIFIT 3: Um...
- Nice weather we're having.[endAwaitInput]'''
-dialogs[3073] = '''SNIFIT 3: You wanna fig'''
-dialogs[3074] = '''ht?[endAwaitInput]
+ Nice weather we're having.'''
+dialogs[3073] = '''SNIFIT 3: You wanna fight?'''
+dialogs[3074] = '''
            Hmm?! What’s this?[newPageAwaitInput]               It’s a “Seed”.
  [startSelection]  (Take it)
- [startSelection]  (Leave '''
-dialogs[3075] = '''it)[endAwaitInput]GARDENER: I'll plant the seed...[endAwaitInput]'''
-dialogs[3076] = '''GARDENER: Then give it fertiliz'''
-dialogs[3077] = '''er.[endAwaitInput]BOOSTER: Hoouuooo!
+ [startSelection]  (Leave it)'''
+dialogs[3075] = '''GARDENER: I'll plant the seed...'''
+dialogs[3076] = '''GARDENER: Then give it fertilizer.'''
+dialogs[3077] = '''BOOSTER: Hoouuooo!
  Chugga, chugga...hoooonk!
- This is my personal railw'''
-dialogs[3078] = '''ay.[endAwaitInput]BOOSTER: My!
+ This is my personal railway.'''
+dialogs[3078] = '''BOOSTER: My!
  It’s you again![newPageAwaitInput] I'm amazed you made it this far.
  Yes, quite amazing you are![newPageAwaitInput] Since you're here, maybe you could
  clear up something for me.[newPageAwaitInput] My bride-to-be is chanting,
  “MARIOHELPMEMARIOHELPME”.
  Is she showing her happiness?[newPageAwaitInput] Hey,[delay][delay][delay][delay][delay][delay] wait a second!
- Maybe “MARIO” is another g'''
-dialogs[3079] = '''uy![endAwaitInput]       Received “Rock Cand'''
-dialogs[3080] = '''y”![endAwaitInput]BOOSTER: What if you're this
+ Maybe “MARIO” is another guy!'''
+dialogs[3079] = '''       Received “Rock Candy”!'''
+dialogs[3080] = '''BOOSTER: What if you're this
  “Mario” she keeps talking about?[newlineAwaitInput] Trying to take my bride away?
- Why don't you take [delay]THIS, instead![endAwaitInput]'''
-dialogs[3081] = '''BOOSTER: That didn't do it?[newPageAwaitInput] Grrrr...I ran out of bombs.[endAwaitInput]'''
+ Why don't you take [delay]THIS, instead!'''
+dialogs[3081] = '''BOOSTER: That didn't do it?[newPageAwaitInput] Grrrr...I ran out of bombs.'''
 dialogs[3082] = '''BOOSTER:
-             Chug-a-chug'''
-dialogs[3083] = '''-a![endAwaitInput]BOOSTER: 
+             Chug-a-chug-a!'''
+dialogs[3083] = '''BOOSTER: 
  HE'S GONE?![delay]
  That’s not fair![newPageAwaitInput] I'm so hurt...
  I only wanted to play with him.[newPageAwaitInput] Now,••••[delay][delay]what expression should I
- be wearing at a time like this?![endAwaitInput]'''
-dialogs[3084] = '''BOOSTER: Eh...?[endAwaitInput]'''
+ be wearing at a time like this?!'''
+dialogs[3084] = '''BOOSTER: Eh...?'''
 dialogs[3085] = '''GARDENER: ••[delay]••[delay]••[delay]
-          Nothing’s happen'''
-dialogs[3086] = '''ing.[endAwaitInput]BOOSTER: Well, so long![endAwaitInput]'''
+          Nothing’s happening.'''
+dialogs[3086] = '''BOOSTER: Well, so long!'''
 dialogs[3087] = '''BOOSTER: Now I remember![delay][delay]
- I should look like...TH'''
-dialogs[3088] = '''IS![endAwaitInput]APPRENTICE: Golly!
+ I should look like...THIS!'''
+dialogs[3088] = '''APPRENTICE: Golly!
  You're that famous Mario guy![newPageAwaitInput] If I beat you, they'll make me
- Snifit [0x7000]!
- [delay][delay][delay][delay][delay][delay]If I'm luc'''
-dialogs[3089] = '''ky![endAwaitInput]APPRENTICE: Whaaa••[delay]••[delay]••[delay]
+ Snifit '''
+dialogs[3089] = '''APPRENTICE: Whaaa••[delay]••[delay]••[delay]
  Now they'll make me take the
- training course over ag'''
-dialogs[3090] = '''ain.[endAwaitInput]APPRENTICE: All right!
- Now I'll be Snifit '''
-dialogs[3091] = '''[0x7000]![endAwaitInput]APPRENTICE: Mario![newlineAwaitInput] Let me show you what I've learned
- in my classes so far.[newPageAwaitInput] I'll be Snifit [0x7000] if I beat you!
- ••[delay]••[delay]••[delay]••[delay]••[delay]••[delay]maybe.[endAwaitInput]'''
+ training course over again.'''
+dialogs[3090] = '''APPRENTICE: All right!
+ Now I'll be Snifit '''
+dialogs[3091] = '''APPRENTICE: Mario![newlineAwaitInput] Let me show you what I've learned
+ in my classes so far.[newPageAwaitInput] I'll be Snifit '''
 dialogs[3092] = '''SNIFIT 4: After years of
  hard work and effort, I'm now
  Snifit 4![newPageAwaitInput] 
-     I'll wear the number proudly![endAwaitInput]'''
+     I'll wear the number proudly!'''
 dialogs[3093] = '''SNIFIT 5: Phew...![newlineAwaitInput] I've been training to become one
- of Booster’s Snifits for 3 years![endAwaitInput]'''
+ of Booster’s Snifits for 3 years!'''
 dialogs[3094] = '''SNIFIT 6: If only Ma and Pa could
- see me n'''
-dialogs[3095] = '''ow.[endAwaitInput]SNIFIT 7:
+ see me now.'''
+dialogs[3095] = '''SNIFIT 7:
      Yee haw![newlineAwaitInput]          Hurrah!
                I'm a Snifit![newPageAwaitInput]
-         ••[delay]••[delay]••[delay]I'm••speechle'''
-dialogs[3096] = '''ss![endAwaitInput]APPRENTICE: Shriek!
+         ••[delay]••[delay]••[delay]I'm••speechless!'''
+dialogs[3096] = '''APPRENTICE: Shriek!
  The boss only wants 7 Snifits![newlineAwaitInput] All my training was in vain![newPageAwaitInput]
-               What a rip![endAwaitInput]'''
+               What a rip!'''
 dialogs[3097] = '''APPRENTICE: Harrumph!
- I'm off to the arca'''
-dialogs[3098] = '''de![endAwaitInput]GARDENER: W••[delay]••[delay]wow![endAwaitInput]'''
-dialogs[3099] = '''GARDENER: This is amaz'''
-dialogs[3100] = '''ing![endAwaitInput]GARDENER: This is unreal! This is
+ I'm off to the arcade!'''
+dialogs[3098] = '''GARDENER: W••[delay]••[delay]wow!'''
+dialogs[3099] = '''GARDENER: This is amazing!'''
+dialogs[3100] = '''GARDENER: This is unreal! This is
  just like winning the lottery, only
  without the taxes! I mean, this is
  like falling out of an airplane
@@ -7900,241 +5557,240 @@ dialogs[3100] = '''ing![endAwaitInput]GARDENER: This is unreal! This is
  buddies over at Happy Gardener's
  Monthly hear about this. I'm going
  to be famous! Maybe even get my
- picture in the next issue'''
-dialogs[3101] = '''.[delay_24][end]GARDENER: You think it could use
- a little more fertilizer?[endAwaitInput]'''
-dialogs[3102] = '''GARDENER: Oops, maybe not, huh?[endAwaitInput]'''
+ picture in the next issue.[delay_24]'''
+dialogs[3101] = '''GARDENER: You think it could use
+ a little more fertilizer?'''
+dialogs[3102] = '''GARDENER: Oops, maybe not, huh?'''
 dialogs[3103] = '''GARDENER: This will get me in
- Happy Gardener Monthly magaz'''
-dialogs[3104] = '''ine![endAwaitInput]GENO: Mario!
- There are Star Pieces to be found![newlineAwaitInput] Hang in the'''
-dialogs[3105] = '''re![endAwaitInput]
+ Happy Gardener Monthly magazine!'''
+dialogs[3104] = '''GENO: Mario!
+ There are Star Pieces to be found![newlineAwaitInput] Hang in there!'''
+dialogs[3105] = '''
 
-     (Wish I could run faster.)[endAwaitInput]'''
+     (Wish I could run faster.)'''
 dialogs[3106] = '''
 
-    Wish I had some Cricket J'''
-dialogs[3107] = '''am.[endAwaitInput]
-      I wanna be a great plumber
-         like my brother Mario.[endAwaitInput]'''
+    Wish I had some Cricket Jam.'''
+dialogs[3107] = '''
+'''
 dialogs[3108] = '''
 
-   If I could JUST get that melody![endAwaitInput]'''
+   If I could JUST get that melody!'''
 dialogs[3109] = '''
                The hunger!
-           Oh, for some foo'''
-dialogs[3110] = '''d! [endAwaitInput]
+           Oh, for some food! '''
+dialogs[3110] = '''
      I wanna be the best treasure
-          hunter in the wor'''
-dialogs[3111] = '''ld.[endAwaitInput]
+          hunter in the world.'''
+dialogs[3111] = '''
 
-   I vant to be a vald class bak'''
-dialogs[3112] = '''er.[endAwaitInput]
+   I vant to be a vald class baker.'''
+dialogs[3112] = '''
 
-        I hope I become famous.[endAwaitInput]'''
+        I hope I become famous.'''
 dialogs[3113] = '''
 
-        I hope she'll say “ye'''
-dialogs[3114] = '''s”.[endAwaitInput]
+        I hope she'll say “yes”.'''
+dialogs[3114] = '''
 
-    I wish he'd pop THE questi'''
-dialogs[3115] = '''on.[endAwaitInput]
+    I wish he'd pop THE question.'''
+dialogs[3115] = '''
 
-   I wish I weren't such a crybaby.[endAwaitInput]'''
+   I wish I weren't such a crybaby.'''
 dialogs[3116] = '''
 
-Please let Mallow find his way ho'''
-dialogs[3117] = '''me.[endAwaitInput]GENO: This is Star Hill.[newlineAwaitInput] Wishes, which were transformed at
+Please let Mallow find his way home.'''
+dialogs[3117] = '''GENO: This is Star Hill.[newlineAwaitInput] Wishes, which were transformed at
  the Star Road, fall from here.[newPageAwaitInput] But[delay]••[delay]••[newlineAwaitInput] Some wishes that haven't been
  granted yet are falling because
- Smithy destroyed the Star Ro'''
-dialogs[3118] = '''ad.[endAwaitInput]GENO: Frogfucius mentioned hearing
- about a Star Piece on this hill.[endAwaitInput]'''
-dialogs[3119] = '''GENO: Let’s see if we can find it.[endAwaitInput]'''
+ Smithy destroyed the Star Road.'''
+dialogs[3118] = '''GENO: Frogfucius mentioned hearing
+ about a Star Piece on this hill.'''
+dialogs[3119] = '''GENO: Let’s see if we can find it.'''
 dialogs[3120] = '''MALLOW: This one’s private![delay]
  Who do you think you are,
- spying on other people’s wish'''
-dialogs[3121] = '''es?[endAwaitInput]MALLOW: C'mon, our quest for the
+ spying on other people’s wishes?'''
+dialogs[3121] = '''MALLOW: C'mon, our quest for the
  Star Pieces is important![newPageAwaitInput] Everyone’s counting on us!
- We've got to hur'''
-dialogs[3122] = '''ry![endAwaitInput]MALLOW: Sorry about that.
+ We've got to hurry!'''
+dialogs[3122] = '''MALLOW: Sorry about that.
  It’s just that I'm embarrassed
- about my wi'''
-dialogs[3123] = '''sh.[endAwaitInput]MALLOW: Why, this wish is...[newPageAwaitInput] It’s from my mom and dad.[newPageAwaitInput] They're wishing for me to come
- home![endAwaitInput]'''
+ about my wish.'''
+dialogs[3123] = '''MALLOW: Why, this wish is...[newPageAwaitInput] It’s from my mom and dad.[newPageAwaitInput] They're wishing for me to come
+ home!'''
 dialogs[3124] = '''MALLOW: 
  This isn't the time to be crying![newlineAwaitInput] They're waiting for me to come
- home![endAwaitInput]'''
+ home!'''
 dialogs[3125] = '''MALLOW: Come on Mario, we've got
  a busy schedule to keep. I'll make
- you eat dust if you don't hurry.[endAwaitInput]'''
+ you eat dust if you don't hurry.'''
 dialogs[3126] = '''MALLOW: 
-                Sniffle...[endAwaitInput]'''
-dialogs[3127] = '''           Got a “Lazy Shel'''
-dialogs[3128] = '''l”![endAwaitInput]GENO: 
- Do you know where this leads to?[endAwaitInput]'''
+                Sniffle...'''
+dialogs[3127] = '''           Got a “Lazy Shell”!'''
+dialogs[3128] = '''GENO: 
+ Do you know where this leads to?'''
 dialogs[3129] = '''GENO: It looks like Exor’s the
- contact between the two worlds.[newPageAwaitInput] In other words[delay]••[delay]••[delay]••[endAwaitInput]'''
+ contact between the two worlds.[newPageAwaitInput] In other words[delay]••[delay]••[delay]••'''
 dialogs[3130] = '''GENO: If we follow this road,
- we'll find Smithy.[newPageAwaitInput] So...what’s keeping us?[endAwaitInput]'''
-dialogs[3131] = '''BOWSER: Hang on![endAwaitInput]'''
+ we'll find Smithy.[newPageAwaitInput] So...what’s keeping us?'''
+dialogs[3131] = '''BOWSER: Hang on!'''
 dialogs[3132] = '''BOWSER: Hey! I only joined so that
  I could get my castle back.[newlineAwaitInput] I'm not going to be dragged along
- on this stupid hu'''
-dialogs[3133] = '''nt.[endAwaitInput]BOWSER: This is as far as I go.[newPageAwaitInput] I'm going to gather my troops and
- rebuild my castle.[endAwaitInput]'''
+ on this stupid hunt.'''
+dialogs[3133] = '''BOWSER: This is as far as I go.[newPageAwaitInput] I'm going to gather my troops and
+ rebuild my castle.'''
 dialogs[3134] = '''BOWSER: And you, Mario![newlineAwaitInput] You're an official member of the
  Koopa Troop. It’s your duty to
- help with the repai'''
-dialogs[3135] = '''rs![endAwaitInput]GENO: Bowser, you're completely
- missing the point.[endAwaitInput]'''
-dialogs[3136] = '''BOWSER: Gwaa?![delay][delay][delay][delay][newPageAwaitInput] I oughtta rip your stuffing out![endAwaitInput]'''
+ help with the repairs!'''
+dialogs[3135] = '''GENO: Bowser, you're completely
+ missing the point.'''
+dialogs[3136] = '''BOWSER: Gwaa?![delay][delay][delay][delay][newPageAwaitInput] I oughtta rip your stuffing out!'''
 dialogs[3137] = '''GENO: No, think about it, Bowser.[newlineAwaitInput] This sword connects the two
- worlds, right?[endAwaitInput]'''
-dialogs[3138] = '''BOWSER: Yeah, so?[endAwaitInput]'''
+ worlds, right?'''
+dialogs[3138] = '''BOWSER: Yeah, so?'''
 dialogs[3139] = '''GENO: Even IF we defeat Exor...[newlineAwaitInput] There will be OTHER weapon beasts
- to follow him.[endAwaitInput]'''
+ to follow him.'''
 dialogs[3140] = '''GENO: Your castle is at the
  entrance point to YOUR world.
- In short...they'll be back![endAwaitInput]'''
-dialogs[3141] = '''GENO: Is that what you want?[endAwaitInput]'''
-dialogs[3142] = '''BOWSER: Um....well...[endAwaitInput]'''
+ In short...they'll be back!'''
+dialogs[3141] = '''GENO: Is that what you want?'''
+dialogs[3142] = '''BOWSER: Um....well...'''
 dialogs[3143] = '''BOWSER: No one insults the Koopa
  Troop and gets away with it.[newPageAwaitInput] I've got a bone to pick with this
- Smithy g'''
-dialogs[3144] = '''uy![endAwaitInput]BOWSER: Come on, Mario!
- We'll teach him a lesson.[endAwaitInput]'''
+ Smithy guy!'''
+dialogs[3144] = '''BOWSER: Come on, Mario!
+ We'll teach him a lesson.'''
 dialogs[3145] = '''GENO: It looks like we're together
- on this one. Let’s go![endAwaitInput]'''
+ on this one. Let’s go!'''
 dialogs[3146] = '''BOWSER: (More weapon things
  coming to take over my castle?
  What about my[delay]••[delay]••[delay][newPageAwaitInput]
              ••••PRIVACY?[newPageAwaitInput] Yikes[delay]••[delay]••
         This isn't good at all[delay]••[delay]••
-              In fact, this stinks![delay]••[delay]••)[endAwaitInput]'''
+              In fact, this stinks![delay]••[delay]••)'''
 dialogs[3147] = '''BOWSER: (But I CAN'T just be pals
- with these cretins.[newlineAwaitInput] I've got an image to keep up.)[endAwaitInput]'''
-dialogs[3148] = '''BOWSER: (I've got it!)[endAwaitInput]'''
-dialogs[3149] = '''BOWSER: (I'm so sl'''
-dialogs[3150] = '''y!)[endAwaitInput]              It’s “'''
-dialogs[3151] = '''Mario”![endAwaitInput]       We better do someth'''
-dialogs[3152] = '''ing![endAwaitInput]            Pick up a “Seed”![endAwaitInput]'''
+ with these cretins.[newlineAwaitInput] I've got an image to keep up.)'''
+dialogs[3148] = '''BOWSER: (I've got it!)'''
+dialogs[3149] = '''BOWSER: (I'm so sly!)'''
+dialogs[3150] = '''              It’s “Mario”!'''
+dialogs[3151] = '''       We better do something!'''
+dialogs[3152] = '''            Pick up a “Seed”!'''
 dialogs[3153] = '''GENO: ••[delay]••[delay]••[delay]
- I feel the energy of the Star Pie'''
-dialogs[3154] = '''ce.[endAwaitInput] What was that loud noise outside?
-       Check out Booster Pass![endAwaitInput]'''
-dialogs[3155] = '''     Received a “KerokeroCol'''
-dialogs[3156] = '''a”![endAwaitInput]     You saw something sparkle.[endAwaitInput]'''
+ I feel the energy of the Star Piece.'''
+dialogs[3154] = ''' What was that loud noise outside?
+       Check out Booster Pass!'''
+dialogs[3155] = '''     Received a “KerokeroCola”!'''
+dialogs[3156] = '''     You saw something sparkle.'''
 dialogs[3157] = '''SHY AWAY: Look what you did![delay][delay]
- Smilax’s been whacked.[endAwaitInput]'''
+ Smilax’s been whacked.'''
 dialogs[3158] = '''SHY AWAY: 
  Oooh, I'm going to get it![newlineAwaitInput] Queen Valentina told me to keep
  everyone out of Nimbus Land.[newPageAwaitInput] 
-            What should I '''
-dialogs[3159] = '''do?[endAwaitInput]SHY AWAY: ••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]
-         I know, I'll run away![endAwaitInput]'''
-dialogs[3160] = '''         How did he get here?![endAwaitInput]'''
-dialogs[3161] = '''        Got an “Ultra Hammer”![endAwaitInput]'''
+            What should I do?'''
+dialogs[3159] = '''SHY AWAY: ••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]
+         I know, I'll run away!'''
+dialogs[3160] = '''         How did he get here?!'''
+dialogs[3161] = '''        Got an “Ultra Hammer”!'''
 dialogs[3162] = '''        Wow! Did you see that?[delay][delay][delay]
        It’s a magical beanstalk![newPageAwaitInput]        Hit the block once more
-                to climb it.[endAwaitInput]'''
-dialogs[3163] = '''          Found a Frog C'''
-dialogs[3164] = '''oin![endAwaitInput]         Got a “Red Essenc'''
-dialogs[3165] = '''e”![endAwaitInput]
-           Found a “Masher”![endAwaitInput]'''
+                to climb it.'''
+dialogs[3163] = '''          Found a Frog Coin!'''
+dialogs[3164] = '''         Got a “Red Essence”!'''
+dialogs[3165] = '''
+           Found a “Masher”!'''
 dialogs[3166] = '''
-      You found a “Goodie Ba'''
-dialogs[3167] = '''g”![endAwaitInput]
-        Picked up a “Hammer”![endAwaitInput]'''
+'''
+dialogs[3167] = '''
+        Picked up a “Hammer”!'''
 dialogs[3168] = ''' Now ya got my hammer angry!
- Ya shouldn't have done that![endAwaitInput]'''
+ Ya shouldn't have done that!'''
 dialogs[3169] = ''' HEY!
  Are YOU lookin' at me?
- My hammer and I don't like you![endAwaitInput]'''
+ My hammer and I don't like you!'''
 dialogs[3170] = '''TOAD: Mario!
  You better be careful.
- He’s definitely got a mean stre'''
-dialogs[3171] = '''ak![endAwaitInput]     It’s a battered old hammer.[endAwaitInput]'''
+ He’s definitely got a mean streak!'''
+dialogs[3171] = '''     It’s a battered old hammer.'''
 dialogs[3172] = '''                Actually...
     It’s a sturdy hammer, bearing
-    the Hammer Brother’s insign'''
-dialogs[3173] = '''ia.[endAwaitInput]            You never know!
-        It might come in handy![endAwaitInput]'''
-dialogs[3174] = '''        Picked up a “Hammer”![endAwaitInput]'''
+    the Hammer Brother’s insignia.'''
+dialogs[3173] = '''            You never know!
+        It might come in handy!'''
+dialogs[3174] = '''        Picked up a “Hammer”!'''
 dialogs[3175] = '''
-         Picked up a “Flower”![endAwaitInput]'''
+         Picked up a “Flower”!'''
 dialogs[3176] = '''
-     Picked up a “Royal Syrup”![endAwaitInput]'''
+     Picked up a “Royal Syrup”!'''
 dialogs[3177] = '''TOAD: Thanks, Mario!
  I was running so fast I wasn't
- watching where I was go'''
-dialogs[3178] = '''ing![endAwaitInput]TOAD:
+ watching where I was going!'''
+dialogs[3178] = '''TOAD:
  Mushroom Kingdom’s just ahead.
- We're almost there,'''
-dialogs[3179] = ''' Mario.[endAwaitInput]TOAD: Hey!
- Where did this hammer come fr'''
-dialogs[3180] = '''om?[endAwaitInput]TOAD: Hmm[delay]••[delay]••[delay][delay][delay]
- Hey, do you know what THIS i'''
-dialogs[3181] = '''s?![endAwaitInput]TOAD: It has the Hammer Bro's
+ We're almost there, Mario.'''
+dialogs[3179] = '''TOAD: Hey!
+ Where did this hammer come from?'''
+dialogs[3180] = '''TOAD: Hmm[delay]••[delay]••[delay][delay][delay]
+ Hey, do you know what THIS is?!'''
+dialogs[3181] = '''TOAD: It has the Hammer Bro's
  insignia on it.[newlineAwaitInput] No one stands a chance against
- you when you whomp them with this.[endAwaitInput]'''
-dialogs[3182] = '''TOAD: Let’s get a move on![newlineAwaitInput] I'll see you in Mushroom Kingdom.[endAwaitInput]'''
-dialogs[3183] = ''' Here, you can have this.[endAwaitInput]'''
+ you when you whomp them with this.'''
+dialogs[3182] = '''TOAD: Let’s get a move on![newlineAwaitInput] I'll see you in Mushroom Kingdom.'''
+dialogs[3183] = ''' Here, you can have this.'''
 dialogs[3184] = '''BOWYER: 997! 998! 999! 1000!
  Nya ha ha! 1000 arrows![newlineAwaitInput] For cover they run, nya!
  FUN this is, yes.
- Nya! Another 1000 will I sho'''
-dialogs[3185] = '''ot![endAwaitInput]MALLOW: Mario, who IS that guy?
+ Nya! Another 1000 will I shoot!'''
+dialogs[3185] = '''MALLOW: Mario, who IS that guy?
  [delay][delay]He must be the one shooting
- arrows at Rose Town![endAwaitInput]'''
+ arrows at Rose Town!'''
 dialogs[3186] = '''BOWYER: Happy I am, nya!
  Look...LOOK at their expressions
- when freeze they '''
-dialogs[3187] = '''do![endAwaitInput]FLUNKIES: Woo hoo!
- They're standing like statu'''
-dialogs[3188] = '''es![endAwaitInput]BOWYER: Nya!
- More practice do I need![endAwaitInput]'''
+ when freeze they do!'''
+dialogs[3187] = '''FLUNKIES: Woo hoo!
+ They're standing like statues!'''
+dialogs[3188] = '''BOWYER: Nya!
+ More practice do I need!'''
 dialogs[3189] = '''MALLOW: Oh no!
  He’s not stopping!
- We've got to do something![endAwaitInput]'''
+ We've got to do something!'''
 dialogs[3190] = '''MALLOW: Who do you think you are,
  Bruce Lee? You can't just go in
- there with your fists fly'''
-dialogs[3191] = '''ing![endAwaitInput]MALLOW: Oh no, someone’s coming!
+ there with your fists flying!'''
+dialogs[3191] = '''MALLOW: Oh no, someone’s coming!
  Let’s hide and see if we can
- learn anything.[endAwaitInput]'''
+ learn anything.'''
 dialogs[3192] = '''MALLOW: There're too many of 'em.
- We'll be cream'''
-dialogs[3193] = '''ed![endAwaitInput] Look what I found, Bowy'''
-dialogs[3194] = '''er![endAwaitInput]BOWYER: What? WHAT?
+ We'll be creamed!'''
+dialogs[3193] = ''' Look what I found, Bowyer!'''
+dialogs[3194] = '''BOWYER: What? WHAT?
  Disturb me you must not!
  Practicing, I am.[newlineAwaitInput] More arrows must I shoot!
- More statues must I make, nya![endAwaitInput]'''
+ More statues must I make, nya!'''
 dialogs[3195] = '''???:
-                   St'''
-dialogs[3196] = '''op![endAwaitInput]???: Hold it right there!
+                   Stop!'''
+dialogs[3196] = '''???: Hold it right there!
  You don't know what you're doing.
- RETURN that star to me![endAwaitInput]'''
+ RETURN that star to me!'''
 dialogs[3197] = '''BOWYER: Gnya, NYA!?
  A stranger you are...
  and strange looking at that![newlineAwaitInput] Teach you, we must,
- who’s in char'''
-dialogs[3198] = '''ge![endAwaitInput]???: Thanks for the help.
+ who’s in charge!'''
+dialogs[3198] = '''???: Thanks for the help.
  You really got me out of a jam.[newPageAwaitInput] Why are you staring at me?
  You know I'm more than just
- a doll, don't you?[endAwaitInput]'''
+ a doll, don't you?'''
 dialogs[3199] = '''???: Have you guessed the truth?[delay]
  I'm a visitor from above, and this
- is a form I'm borrowing brief'''
-dialogs[3200] = '''ly.[endAwaitInput]MALLOW: You mean, like, from the
- sky or something?[endAwaitInput]'''
+ is a form I'm borrowing briefly.'''
+dialogs[3200] = '''MALLOW: You mean, like, from the
+ sky or something?'''
 dialogs[3201] = '''???: Higher than that, I'm afraid![delay][delay][delay][newlineAwaitInput] Do you two know anything about
- the “Star Roa'''
-dialogs[3202] = '''d”?[endAwaitInput]???: Completely in the dark, eh?[delay][delay][delay]
+ the “Star Road”?'''
+dialogs[3202] = '''???: Completely in the dark, eh?[delay][delay][delay]
  Well, it’s a big mess up there right
  now, and it concerns you too![delay][delay][newPageAwaitInput] Let me explain...[newPageAwaitInput] You've heard of wishing upon a
- shooting st'''
-dialogs[3203] = '''ar?[endAwaitInput]???: At the “Star Road”, your
+ shooting star?'''
+dialogs[3203] = '''???: At the “Star Road”, your
  wish is transformed into a star.[newlineAwaitInput] When it’s granted, it then turns
  into a shooting star and falls
  down to earth.[newPageAwaitInput] So you see, the Star Road plays an
@@ -8142,40 +5798,40 @@ dialogs[3203] = '''ar?[endAwaitInput]???: At the “Star Road”, your
  the “Star Road”, everything's
  come to a halt.[newPageAwaitInput] No stars have been made since.[newlineAwaitInput] The way things stand,[pauseAwaitInput] yours is a
  world where wishes can't come
- true anymo'''
-dialogs[3204] = '''re.[endAwaitInput]MALLOW: Are you saying THIS star
- is a part of your “Starway”?[endAwaitInput]'''
+ true anymore.'''
+dialogs[3204] = '''MALLOW: Are you saying THIS star
+ is a part of your “Starway”?'''
 dialogs[3205] = '''???: That’s “STAR ROAD”, my
  fluffy little friend ...[newPageAwaitInput] Yes, [pauseAwaitInput]that star is a broken piece
  of the Star Road.[newPageAwaitInput] I'm here to find them all, and
- repair the Star Ro'''
-dialogs[3206] = '''ad.[endAwaitInput]???: 
- The broken Star Pieces...[newlineAwaitInput] There are 7 altogeth'''
-dialogs[3207] = '''er.[endAwaitInput]???: For peace to return...[newlineAwaitInput] we must get rid of Smithy,
+ repair the Star Road.'''
+dialogs[3206] = '''???: 
+ The broken Star Pieces...[newlineAwaitInput] There are 7 altogether.'''
+dialogs[3207] = '''???: For peace to return...[newlineAwaitInput] we must get rid of Smithy,
  find the Star Pieces, and repair
- the Star Road..[endAwaitInput]'''
+ the Star Road..'''
 dialogs[3208] = '''???: I'm “♥♪!?”, but it’s hard to
  pronounce so...[newlineAwaitInput] Call me “Geno”, after the doll.[newPageAwaitInput] I chose him because he looked the
- strongest out of all the dol'''
-dialogs[3209] = '''ls.[endAwaitInput] “Geno”, who is searching for the
+ strongest out of all the dolls.'''
+dialogs[3209] = ''' “Geno”, who is searching for the
   pieces of the Star Road, joins
-         Mario and Mallow.[newPageAwaitInput] Things are definitely looking up![endAwaitInput]'''
-dialogs[3210] = '''GENO: Now grab the star, Mario![endAwaitInput]'''
+         Mario and Mallow.[newPageAwaitInput] Things are definitely looking up!'''
+dialogs[3210] = '''GENO: Now grab the star, Mario!'''
 dialogs[3211] = ''' Ooh, I heard everything![delay]
  Who would have known that star
- was so important?[newPageAwaitInput] I've got to inform Smithy![endAwaitInput]'''
+ was so important?[newPageAwaitInput] I've got to inform Smithy!'''
 dialogs[3212] = '''GENO: Come on!
- Let’s get this show on the ro'''
-dialogs[3213] = '''ad.[endAwaitInput]
-        Pick up a “Mushro'''
-dialogs[3214] = '''om”[endAwaitInput]GARDENER: Hey!
- I haven't finished yet.[endAwaitInput]'''
-dialogs[3215] = '''GARDENER: Short attention span?[endAwaitInput]'''
+ Let’s get this show on the road.'''
+dialogs[3213] = '''
+        Pick up a “Mushroom”'''
+dialogs[3214] = '''GARDENER: Hey!
+ I haven't finished yet.'''
+dialogs[3215] = '''GARDENER: Short attention span?'''
 dialogs[3216] = '''GARDENER: Hi, I'm the gardener.[delay][delay][delay]
  See that huge planter?[newPageAwaitInput] I've spent many years seeking the
  legendary “Seed” and “Fertilizer”
- to fill it with, but had no luck.[newPageAwaitInput] Sigh...if I could only find'''
-dialogs[3217] = ''' them![endAwaitInput]GARDENER: Incredible!
+ to fill it with, but had no luck.[newPageAwaitInput] Sigh...if I could only find them!'''
+dialogs[3217] = '''GARDENER: Incredible!
  I can't believe it! It’s the
  legendary “Seed” I've read about
  in the ancient gardening texts.
@@ -8183,7 +5839,7 @@ dialogs[3217] = ''' them![endAwaitInput]GARDENER: Incredible!
  begin to comprehend what a huge
  discovery this is? I've spent my
  whole life searching for one!
- It’s too much, I tell ya![delay_24][end]'''
+ It’s too much, I tell ya![delay_24]'''
 dialogs[3218] = '''GARDENER: Egads!
  Do you know what you have there?
  That fertilizer comes from the
@@ -8193,188 +5849,186 @@ dialogs[3218] = '''GARDENER: Egads!
  even tried Bean Valley, but failed.
  I've traveled around the world and
  waited a lifetime for some of that
- fertilizer you've got there![delay_24][end]'''
+ fertilizer you've got there![delay_24]'''
 dialogs[3219] = '''GARDENER: Well, that’s my story.[newlineAwaitInput] Say...will you give me the “Seed”?
   [startSelection]  (Sure)
-  [startSelection]  (Nope)[endAwaitInput]'''
+  [startSelection]  (Nope)'''
 dialogs[3220] = '''GARDENER: Yes, you might say I
  have fertilizer on the brain.[newlineAwaitInput] Will you give it to me?
   [startSelection]  (Sure)
-  [startSelection]  (Sorry)[endAwaitInput]'''
+  [startSelection]  (Sorry)'''
 dialogs[3221] = '''GARDENER: You changed your mind?[newlineAwaitInput]  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]'''
+  [startSelection]  (No)'''
 dialogs[3222] = '''GARDENER: Well, Mario?[newlineAwaitInput] Will you give me the fertilizer?
   [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]'''
-dialogs[3223] = '''GARDENER: I finally have it![newPageAwaitInput] This is extraordina'''
-dialogs[3224] = '''ry![endAwaitInput] May I have the fertilizer?
+  [startSelection]  (No)'''
+dialogs[3223] = '''GARDENER: I finally have it![newPageAwaitInput] This is extraordinary!'''
+dialogs[3224] = ''' May I have the fertilizer?
   [startSelection]  (Yes)
-  [startSelection]  ('''
-dialogs[3225] = '''No)[endAwaitInput]GARDENER: Sigh...
+  [startSelection]  (No)'''
+dialogs[3225] = '''GARDENER: Sigh...
  What ever happened to granting
- an old man’s wish'''
-dialogs[3226] = '''es?[endAwaitInput]GARDENER: Oh thank you![newlineAwaitInput] I finally have both the “Seed” and
- the “Fertilizer”.[newlineAwaitInput] I'll try them out right aw'''
-dialogs[3227] = '''ay.[endAwaitInput]GARDENER: I'd be so happy if I
- only had the “Seed”![newPageAwaitInput] I'm sooo disappointed.[endAwaitInput]'''
+ an old man’s wishes?'''
+dialogs[3226] = '''GARDENER: Oh thank you![newlineAwaitInput] I finally have both the “Seed” and
+ the “Fertilizer”.[newlineAwaitInput] I'll try them out right away.'''
+dialogs[3227] = '''GARDENER: I'd be so happy if I
+ only had the “Seed”![newPageAwaitInput] I'm sooo disappointed.'''
 dialogs[3228] = '''GARDENER: I finally have it![newlineAwaitInput] But without the “Seed”,
- it’s useless.[endAwaitInput]'''
+ it’s useless.'''
 dialogs[3229] = ''' You're giving me the fertilizer too?
   [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]'''
+  [startSelection]  (No)'''
 dialogs[3230] = '''GARDENER: Gals don't care for
- tightwads, you kn'''
-dialogs[3231] = '''ow![endAwaitInput]FACTORY CHIEF: Mario![delay][delay]
- I'm surprised to see you here.[endAwaitInput]'''
+ tightwads, you know!'''
+dialogs[3231] = '''FACTORY CHIEF: Mario![delay][delay]
+ I'm surprised to see you here.'''
 dialogs[3232] = '''FACTORY CHIEF: But this is the
  end of the line for you.[newlineAwaitInput] This is the closest you'll ever get
- to Smithy, so savor the mome'''
-dialogs[3233] = '''nt.[endAwaitInput]FACTORY CHIEF: Harrumph!
+ to Smithy, so savor the moment.'''
+dialogs[3233] = '''FACTORY CHIEF: Harrumph!
  You'll be fodder for my incredible
- invention, the “Gunyolk”![endAwaitInput]'''
+ invention, the “Gunyolk”!'''
 dialogs[3234] = '''POUNDER #1: Sir![delay][delay]
- “Drill Bit” will be finished on time.[endAwaitInput]'''
+ “Drill Bit” will be finished on time.'''
 dialogs[3235] = '''POUNDER #2: 
-       We're ahead of schedule![endAwaitInput]'''
+       We're ahead of schedule!'''
 dialogs[3236] = '''POUNDER #3: 
-       We'll make Smithy proud![endAwaitInput]'''
-dialogs[3237] = '''POUNDER: Here’s the repo'''
-dialogs[3238] = '''rt![endAwaitInput]MANAGER: Good work, everyone.[delay][delay][delay]
+       We'll make Smithy proud!'''
+dialogs[3237] = '''POUNDER: Here’s the report!'''
+dialogs[3238] = '''MANAGER: Good work, everyone.[delay][delay][delay]
  The harder we work, the stronger
- Smithy will become![endAwaitInput]'''
+ Smithy will become!'''
 dialogs[3239] = '''MANAGER: The weapons we
  manufacture here will be...[newPageAwaitInput]
-           Just think of it'''
-dialogs[3240] = '''...[endAwaitInput]MANAGER: When Smithy takes over
+           Just think of it...'''
+dialogs[3240] = '''MANAGER: When Smithy takes over
  Mario’s world, we can do anything
- we want![endAwaitInput]'''
+ we want!'''
 dialogs[3241] = '''
-              Gwah, ha, ha...[delay_48][end]'''
+              Gwah, ha, ha...[delay_48]'''
 dialogs[3242] = '''BOWSER:
               Not so fast![newPageAwaitInput]
-     You sure are a cocky bun'''
-dialogs[3243] = '''ch![endAwaitInput]BOWSER: I rule this world!
- Don't you forget '''
-dialogs[3244] = '''it![endAwaitInput]MANAGER: It’s Mario![newlineAwaitInput] Mack 2 and Yaridovich 2 didn't
- stop h'''
-dialogs[3245] = '''im?[endAwaitInput]BOWSER: No, NO! Leave Mario
+     You sure are a cocky bunch!'''
+dialogs[3243] = '''BOWSER: I rule this world!
+ Don't you forget it!'''
+dialogs[3244] = '''MANAGER: It’s Mario![newlineAwaitInput] Mack 2 and Yaridovich 2 didn't
+ stop him?'''
+dialogs[3245] = '''BOWSER: No, NO! Leave Mario
  outta this. I'm the one you need
- to worry about, not h'''
-dialogs[3246] = '''im![endAwaitInput]MANAGER: Mario, you're about to
- make the longest jump of your li'''
-dialogs[3247] = '''fe![endAwaitInput]BOWSER: Y...You're ignoring '''
-dialogs[3248] = '''me![endAwaitInput]CLERK: 
+ to worry about, not him!'''
+dialogs[3246] = '''MANAGER: Mario, you're about to
+ make the longest jump of your life!'''
+dialogs[3247] = '''BOWSER: Y...You're ignoring me!'''
+dialogs[3248] = '''CLERK: 
  Production is on schedule?[newPageAwaitInput] This, despite the fact that Mack,
  Bowyer, Yaridovich, and the Axem
  Rangers were defeated.[newlineAwaitInput] At this rate, Smithy will have a
- new army in no time![endAwaitInput]'''
+ new army in no time!'''
 dialogs[3249] = '''MALLOW: A...new army?[newPageAwaitInput] You can't be making more weapons!
  Haven't you caused enough trouble
- alrea'''
-dialogs[3250] = '''dy?[endAwaitInput]CLERK: What did you say, you
+ already?'''
+dialogs[3250] = '''CLERK: What did you say, you
  little puff ball?
- [delay][delay]Mad Mallet! TRASH 'em![endAwaitInput]'''
+ [delay][delay]Mad Mallet! TRASH 'em!'''
 dialogs[3251] = '''CLERK: All right, let’s see
- whatcha got![endAwaitInput]'''
+ whatcha got!'''
 dialogs[3252] = '''CLERK: 
- Oh yeah?! Who ar'''
-dialogs[3253] = '''e you?[endAwaitInput]MALLOW: This is THE Mario![newPageAwaitInput] Give up now, while you still have
+ Oh yeah?! Who are you?'''
+dialogs[3253] = '''MALLOW: This is THE Mario![newPageAwaitInput] Give up now, while you still have
  a chance![newPageAwaitInput] Shut down production NOW,
- or he'll...STOMP '''
-dialogs[3254] = '''ya![endAwaitInput]MALLOW: Ha!
- Hope you learned your lesson![endAwaitInput]'''
+ or he'll...STOMP ya!'''
+dialogs[3254] = '''MALLOW: Ha!
+ Hope you learned your lesson!'''
 dialogs[3255] = '''MALLOW: 
- We're almost there, Mario.[newlineAwaitInput] Come on![endAwaitInput]'''
+ We're almost there, Mario.[newlineAwaitInput] Come on!'''
 dialogs[3256] = '''MALLOW: What do you suppose
- this switch does? Hmm...[endAwaitInput]'''
+ this switch does? Hmm...'''
 dialogs[3257] = '''MALLOW: 
-         Ack! Help me,'''
-dialogs[3258] = ''' Mario![endAwaitInput]MALLOW: ••[delay]••[delay]••[delay]Nothing’s happen'''
-dialogs[3259] = '''ing.[endAwaitInput]MALLOW: Huh?
+         Ack! Help me, Mario!'''
+dialogs[3258] = '''MALLOW: ••[delay]••[delay]••[delay]Nothing’s happening.'''
+dialogs[3259] = '''MALLOW: Huh?
  What’s with the funny face, Mario?[newPageAwaitInput] Oh I KNOW, you're trying to make
  me look, aren't you?[delay][delay]
- I'm not going to fall for that o'''
-dialogs[3260] = '''ne![endAwaitInput]MALLOW: Boy, that was scary!
+ I'm not going to fall for that one!'''
+dialogs[3260] = '''MALLOW: Boy, that was scary!
  I guess the green switch controls
- the crane.[endAwaitInput]'''
-dialogs[3261] = '''GENO: Hmm••[delay]••[delay]••[delay][newlineAwaitInput] The production line hasn't halt'''
-dialogs[3262] = '''ed.[endAwaitInput]GENO: This must be where Smithy
+ the crane.'''
+dialogs[3261] = '''GENO: Hmm••[delay]••[delay]••[delay][newlineAwaitInput] The production line hasn't halted.'''
+dialogs[3262] = '''GENO: This must be where Smithy
  makes his weapons.[newPageAwaitInput] To find the last Star Piece and
  stop the factory, we've got to
- defeat him first.[endAwaitInput]'''
+ defeat him first.'''
 dialogs[3263] = '''GENO: Mario...
  There’s no turning back now.
- Are you rea'''
-dialogs[3264] = '''dy?[endAwaitInput]GENO: Our quest is almost over.[endAwaitInput]'''
-dialogs[3265] = '''GENO: And when the time comes••[delay]••[delay]••[delay][endAwaitInput]'''
+ Are you ready?'''
+dialogs[3264] = '''GENO: Our quest is almost over.'''
+dialogs[3265] = '''GENO: And when the time comes••[delay]••[delay]••[delay]'''
 dialogs[3266] = '''GENO: Look Mario, this is where the
- weapons come from.[endAwaitInput]'''
+ weapons come from.'''
 dialogs[3267] = '''
 
-                Nya ha ha.[delay_48][end]'''
-dialogs[3268] = '''              Heh heh heh..'''
-dialogs[3269] = '''.[delay_48][end] Like the moon over[delay_32] 
+                Nya ha ha.[delay_48]'''
+dialogs[3268] = '''              Heh heh heh...[delay_48]'''
+dialogs[3269] = ''' Like the moon over[delay_32] 
  the day, my genius and brawn[delay_32]
- are lost on these fools. [delay_32]~Haiku[endAwaitInput]'''
+ are lost on these fools. [delay_32]~Haiku'''
 dialogs[3270] = '''TOADSTOOL: You there![delay][delay]
  Are you the one in charge here?[newPageAwaitInput] Do you know what your weapons
- have been doing to our world?[newPageAwaitInput] Stop this nonsense at on'''
-dialogs[3271] = '''ce![endAwaitInput]DIRECTOR:
+ have been doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3271] = '''DIRECTOR:
     I'm afraid that isn't possible. [newPageAwaitInput] Any dissent against Smithy will be
- dealt with by immediate melt down.[endAwaitInput]'''
+ dealt with by immediate melt down.'''
 dialogs[3272] = '''TOADSTOOL: 
              M, melt down?[newPageAwaitInput] You can't scare me, I've got
- Mario by my side![endAwaitInput]'''
+ Mario by my side!'''
 dialogs[3273] = '''DIRECTOR: 
      Dissenters will be eliminated!
-       Production will continue.[endAwaitInput]'''
+       Production will continue.'''
 dialogs[3274] = '''TOADSTOOL:
             That was scary![newPageAwaitInput] But we can't run away now.[newlineAwaitInput] We've got to kick these lowlifes
- out of our world.[endAwaitInput]'''
+ out of our world.'''
 dialogs[3275] = '''
 
-   I wish for everyone to be happy.[endAwaitInput]'''
+   I wish for everyone to be happy.'''
 dialogs[3276] = '''DEALER: 
-         I will draw one card.[endAwaitInput]'''
+         I will draw one card.'''
 dialogs[3277] = '''DEALER: 
-        I'll play with this ha'''
-dialogs[3278] = '''nd.[endAwaitInput]DEALER: 
-         Draw or stay, Mario?[endAwaitInput]'''
-dialogs[3279] = '''            Your total is [0x7000].
-  [startSelection] (Draw)
-  [startSelection] (Stay)[endAwaitInput]'''
+        I'll play with this hand.'''
+dialogs[3278] = '''DEALER: 
+         Draw or stay, Mario?'''
+dialogs[3279] = '''            Your total is '''
 dialogs[3280] = '''DEALER: 
- I will first deal you two car'''
-dialogs[3281] = '''ds.[endAwaitInput]            You got a(n) [0x7000].[endAwaitInput]'''
-dialogs[3282] = '''      Oh no! You went over '''
-dialogs[3283] = '''21.[endAwaitInput]DEALER:
-      Please show me your ha'''
-dialogs[3284] = '''nd.[endAwaitInput]DEALER: 
-                I have [0x7000].[endAwaitInput]'''
+ I will first deal you two cards.'''
+dialogs[3281] = '''            You got a(n) '''
+dialogs[3282] = ''''''
+dialogs[3283] = '''DEALER:
+'''
+dialogs[3284] = '''DEALER: 
+                I have '''
 dialogs[3285] = '''
-          Mario, you have [0x7000].[endAwaitInput]'''
-dialogs[3286] = '''DEALER: I broke 21, so you won![newlineAwaitInput] Here’s your Frog Coin.[endAwaitInput]'''
-dialogs[3287] = '''DEALER: You won this round.[newlineAwaitInput] Here is your Frog Coin.[endAwaitInput]'''
-dialogs[3288] = '''DEALER: You lost this round.[newlineAwaitInput] I'll take your Frog Coin.[endAwaitInput]'''
-dialogs[3289] = '''DEALER: It’s a tie.[newlineAwaitInput] I'll keep your Frog C'''
-dialogs[3290] = '''oin.[endAwaitInput]DEALER: No Frog Coins?[newlineAwaitInput] Sorry, you can't play then.[endAwaitInput]'''
+          Mario, you have '''
+dialogs[3286] = '''DEALER: I broke 21, so you won![newlineAwaitInput] Here’s your Frog Coin.'''
+dialogs[3287] = '''DEALER: You won this round.[newlineAwaitInput] Here is your Frog Coin.'''
+dialogs[3288] = '''DEALER: You lost this round.[newlineAwaitInput] I'll take your Frog Coin.'''
+dialogs[3289] = '''DEALER: It’s a tie.[newlineAwaitInput] I'll keep your Frog Coin.'''
+dialogs[3290] = '''DEALER: No Frog Coins?[newlineAwaitInput] Sorry, you can't play then.'''
 dialogs[3291] = '''DEALER: 
-            Your first ca'''
-dialogs[3292] = '''rd.[endAwaitInput]DEALER: 
-          Your second card.[endAwaitInput]'''
+            Your first card.'''
+dialogs[3292] = '''DEALER: 
+          Your second card.'''
 dialogs[3293] = '''DEALER: 
  Welcome to the Blackjack table.[newlineAwaitInput] Play a round with me, sir?
   [startSelection] (Yes)
-  [startSelection] ('''
-dialogs[3294] = '''No)[endAwaitInput] Another game, sir?
+  [startSelection] (No)'''
+dialogs[3294] = ''' Another game, sir?
   [startSelection] (Sure)
-  [startSelection] ('''
-dialogs[3295] = '''No)[endAwaitInput]DEALER: 
- Welcome to the Grate Guy Casino.[endAwaitInput]'''
+  [startSelection] (No)'''
+dialogs[3295] = '''DEALER: 
+ Welcome to the Grate Guy Casino.'''
 dialogs[3296] = '''DEALER: If you would like to play,
  please go to the other side of
- the tab'''
-dialogs[3297] = '''le.[endAwaitInput]DEALER: In Blackjack, whomever
+ the table.'''
+dialogs[3297] = '''DEALER: In Blackjack, whomever
  comes the closest to 21 points,
  without going over, wins.[newPageAwaitInput] I will first deal 2 cards, then we
  will each draw as many cards as
@@ -8386,1752 +6040,2462 @@ dialogs[3297] = '''le.[endAwaitInput]DEALER: In Blackjack, whomever
  but if it’s a tie or you lose, I'll
  keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
   [startSelection] (Yes)
-  [startSelection] ('''
-dialogs[3298] = '''No)[endAwaitInput]DOORMAN: Sorry, this casino is
- for members only.[endAwaitInput]'''
+  [startSelection] (No)'''
+dialogs[3298] = '''DOORMAN: Sorry, this casino is
+ for members only.'''
 dialogs[3299] = '''DOORMAN: You don't have a
- “Bright Card”?[newlineAwaitInput] I'm sorry, I can't let you'''
-dialogs[3300] = ''' in.[endAwaitInput]DOORMAN: Please enjoy yourself.[endAwaitInput]'''
+ “Bright Card”?[newlineAwaitInput] I'm sorry, I can't let you in.'''
+dialogs[3300] = '''DOORMAN: Please enjoy yourself.'''
 dialogs[3301] = '''DOORMAN: We hope everything was
- to your lik'''
-dialogs[3302] = '''ing?[endAwaitInput] Business is so slow...[newlineAwaitInput] Hey Mario, wanna play “Look the
- other way” with me?[endAwaitInput]'''
+ to your liking?'''
+dialogs[3302] = ''' Business is so slow...[newlineAwaitInput] Hey Mario, wanna play “Look the
+ other way” with me?'''
 dialogs[3303] = ''' Ready, and...
- Look the...other..'''
-dialogs[3304] = '''.[delay_40][end] (Hit right/left on the Control P'''
-dialogs[3305] = '''ad)[endAwaitInput] ...Way![endAwaitInput]'''
+ Look the...other...[delay_40]'''
+dialogs[3304] = ''' (Hit right/left on the Control Pad)'''
+dialogs[3305] = ''' ...Way!'''
 dialogs[3306] = ''' Gotcha!
- I '''
-dialogs[3307] = '''win![endAwaitInput] Ooh, you didn't get caught!
- I lost this round.[endAwaitInput]'''
+ I win!'''
+dialogs[3307] = ''' Ooh, you didn't get caught!
+ I lost this round.'''
 dialogs[3308] = ''' Okay, Mario, this is in celebration
- of your w'''
-dialogs[3309] = '''ins![endAwaitInput]        Received a “Star Egg”![endAwaitInput]'''
+ of your wins!'''
+dialogs[3309] = '''        Received a “Star Egg”!'''
 dialogs[3310] = ''' Wanna try it again?
   [startSelection] (Yes)
-  [startSelection] ('''
-dialogs[3311] = '''No)[endAwaitInput]TOAD: This is fo'''
-dialogs[3312] = '''r you.[endAwaitInput] Welcome to the Grate Guy Casino![newlineAwaitInput] Wanna play the slot machines?
+  [startSelection] (No)'''
+dialogs[3311] = '''TOAD: This is for you.'''
+dialogs[3312] = ''' Welcome to the Grate Guy Casino![newlineAwaitInput] Wanna play the slot machines?
   [startSelection] (Yes)
-  [startSelection] ('''
-dialogs[3313] = '''No)[endAwaitInput] As you wish.[endAwaitInput]'''
+  [startSelection] (No)'''
+dialogs[3313] = ''' As you wish.'''
 dialogs[3314] = ''' Require instructions?
   [startSelection] (No)
-  [startSelection] (Yes)[endAwaitInput]'''
-dialogs[3315] = ''' I'll take your 10 coins.[newlineAwaitInput] Please enjoy yourse'''
-dialogs[3316] = '''lf.[endAwaitInput] Please come back with more co'''
-dialogs[3317] = '''ins.[endAwaitInput] The slot machine costs 10 coins
+  [startSelection] (Yes)'''
+dialogs[3315] = ''' I'll take your 10 coins.[newlineAwaitInput] Please enjoy yourself.'''
+dialogs[3316] = ''' Please come back with more coins.'''
+dialogs[3317] = ''' The slot machine costs 10 coins
  per game.[newPageAwaitInput] Hit it once to start the game.[newPageAwaitInput] Each consecutive hit will freeze
  one of the pictures. Match all 3
  and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
   [startSelection] (Yes)
-  [startSelection] ('''
-dialogs[3318] = '''No)[endAwaitInput]GRATE GUY: Hello Mario![newPageAwaitInput] I run this casino!
- Feel free to enjoy yourse'''
-dialogs[3319] = '''lf.[endAwaitInput]DEALER: Do you want to continue?
+  [startSelection] (No)'''
+dialogs[3318] = '''GRATE GUY: Hello Mario![newPageAwaitInput] I run this casino!
+ Feel free to enjoy yourself.'''
+dialogs[3319] = '''DEALER: Do you want to continue?
   [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]'''
+  [startSelection] (No)'''
 dialogs[3320] = ''' I wonder what became of Booster's
- search for a bride?[endAwaitInput]'''
-dialogs[3321] = '''           [delay]You [delay]missed![delay_40][end]'''
-dialogs[3322] = '''          Talk to the flower[newlineAwaitInput]     and the star gate will open.[endAwaitInput]'''
-dialogs[3323] = '''             To Marrym'''
-dialogs[3324] = '''ore[endAwaitInput]              To Star H'''
-dialogs[3325] = '''ill[endAwaitInput]
+ search for a bride?'''
+dialogs[3321] = '''           [delay]You [delay]missed![delay_40]'''
+dialogs[3322] = '''          Talk to the flower[newlineAwaitInput]     and the star gate will open.'''
+dialogs[3323] = '''             To Marrymore'''
+dialogs[3324] = '''              To Star Hill'''
+dialogs[3325] = '''
 
-    Can't wait to start a fami'''
-dialogs[3326] = '''ly.[endAwaitInput]
+    Can't wait to start a family.'''
+dialogs[3326] = '''
 
-         I hope my baby’s cu'''
-dialogs[3327] = '''te![endAwaitInput]
+         I hope my baby’s cute!'''
+dialogs[3327] = '''
 
-      May Mallow fix the Ro'''
-dialogs[3328] = ''''''
-dialogs[3329] = ''''''
-dialogs[3330] = ''''''
-dialogs[3331] = ''''''
-dialogs[3332] = ''''''
-dialogs[3333] = ''''''
-dialogs[3334] = ''''''
-dialogs[3335] = '''ad![endAwaitInput]            It’s been sealed[endAwaitInput]'''
+'''
+dialogs[3328] = '''            It’s been sealed'''
+dialogs[3329] = '''            It’s been sealed'''
+dialogs[3330] = '''            It’s been sealed'''
+dialogs[3331] = '''            It’s been sealed'''
+dialogs[3332] = '''            It’s been sealed'''
+dialogs[3333] = '''            It’s been sealed'''
+dialogs[3334] = '''            It’s been sealed'''
+dialogs[3335] = '''            It’s been sealed'''
 dialogs[3336] = '''                  Look!
-   The “Shiny Stone” is react'''
-dialogs[3337] = '''ing![endAwaitInput]      The seal has been broken![endAwaitInput]'''
+   The “Shiny Stone” is reacting!'''
+dialogs[3337] = ''''''
 dialogs[3338] = ''' It’s really weird.
  Sometimes I hear the guy next door.[newPageAwaitInput] He’s always mumbling about a
  Crystal-this and an Evil-that.[newPageAwaitInput] Isn't a “Crystal” some kind of a
  shiny rock...or something?
- I know I've seen those somewhere![endAwaitInput]'''
+ I know I've seen those somewhere!'''
 dialogs[3339] = '''JINX: Whoa[delay][delay]••••••[newlineAwaitInput] You ARE the stronger champion,
  no doubt about it.[newPageAwaitInput] My reputation was staked on this
  last fight, so I've lost the title
  of “Sensei”.[newPageAwaitInput] From today, you are the Sensei
  of this dojo.[newPageAwaitInput] Please take this belt, which only
  the highest ranking fighter in the
- dojo can we'''
-dialogs[3340] = '''ar.[endAwaitInput] We will rename the dojo, “Mario
+ dojo can wear.'''
+dialogs[3340] = ''' We will rename the dojo, “Mario
  Style Dojo”, and incorporate your
- jump technique into the train'''
-dialogs[3341] = '''ing.[endAwaitInput]        Received a “Jinx Be'''
-dialogs[3342] = '''lt”[endAwaitInput]JINX: Jagger and I will start our
- training immediately.[endAwaitInput]'''
+ jump technique into the training.'''
+dialogs[3341] = '''        Received a “Jinx Belt”'''
+dialogs[3342] = '''JINX: Jagger and I will start our
+ training immediately.'''
 dialogs[3343] = ''' 1000 warm up jumps!
- Ready, be'''
-dialogs[3344] = '''gin![endAwaitInput]
-                   DO'''
-dialogs[3345] = '''DO![endAwaitInput]VALENTINA: Did you display the
- statues properly?[endAwaitInput]'''
+ Ready, begin!'''
+dialogs[3344] = '''
+                   DODO!'''
+dialogs[3345] = '''VALENTINA: Did you display the
+ statues properly?'''
 dialogs[3346] = '''VALENTINA: Fine! Now polish them
  to a fine luster and make them a
- tribute to my beauty![endAwaitInput]'''
+ tribute to my beauty!'''
 dialogs[3347] = '''VALENTINA: Pay attention to me![newlineAwaitInput] Hurry up, and DON'T let me catch
- you dozing again.[endAwaitInput]'''
+ you dozing again.'''
 dialogs[3348] = '''VALENTINA: What?[newlineAwaitInput] You saw a statue move?
  Don't be ridiculous.[newPageAwaitInput] You're just stalling, so you won't
- have to polish them![endAwaitInput]'''
+ have to polish them!'''
 dialogs[3349] = '''VALENTINA: What?
  The statue was “ticklish”?[newlineAwaitInput] Is that what you said?[newPageAwaitInput] If you try stalling just one more
  time, I'm gonna have your feathers
- plucked for my pillow. Now SC'''
-dialogs[3350] = '''AT![endAwaitInput]VALENTINA: STOP BOTHERING ME![newlineAwaitInput] If you're so worried, why don't
- you go give it a good peck![endAwaitInput]'''
-dialogs[3351] = '''          Pick up a “Feathe'''
-dialogs[3352] = '''r”.[endAwaitInput]JAGGER: Mario Sensei, the new
- regimen will strengthen us, right?[endAwaitInput]'''
+ plucked for my pillow. Now SCAT!'''
+dialogs[3350] = '''VALENTINA: STOP BOTHERING ME![newlineAwaitInput] If you're so worried, why don't
+ you go give it a good peck!'''
+dialogs[3351] = '''          Pick up a “Feather”.'''
+dialogs[3352] = '''JAGGER: Mario Sensei, the new
+ regimen will strengthen us, right?'''
 dialogs[3353] = '''JINX: Master!
- Share your wisdom with us![endAwaitInput]'''
+ Share your wisdom with us!'''
 dialogs[3354] = '''CULEX: 
-      Farewell, champion knig'''
-dialogs[3355] = '''ht![endAwaitInput]    Received a “Quartz Charm”![endAwaitInput]'''
-dialogs[3356] = ''' I think our neighbor moved away.[endAwaitInput]'''
-dialogs[3357] = ''''''
-dialogs[3358] = ''''''
-dialogs[3359] = ''''''
+'''
+dialogs[3355] = '''    Received a “Quartz Charm”!'''
+dialogs[3356] = ''' I think our neighbor moved away.'''
+dialogs[3357] = '''                 Uh oh...
+    Dodo’s in a pretty bad mood.[newPageAwaitInput]  Keep up your statue disguise and
+   jump to avoid getting pecked.[newPageAwaitInput]        Get ready because he's
+           coming this way!'''
+dialogs[3358] = '''                 Uh oh...
+    Dodo’s in a pretty bad mood.[newPageAwaitInput]  Keep up your statue disguise and
+   jump to avoid getting pecked.[newPageAwaitInput]        Get ready because he's
+           coming this way!'''
+dialogs[3359] = '''                 Uh oh...
+    Dodo’s in a pretty bad mood.[newPageAwaitInput]  Keep up your statue disguise and
+   jump to avoid getting pecked.[newPageAwaitInput]        Get ready because he's
+           coming this way!'''
 dialogs[3360] = '''                 Uh oh...
     Dodo’s in a pretty bad mood.[newPageAwaitInput]  Keep up your statue disguise and
    jump to avoid getting pecked.[newPageAwaitInput]        Get ready because he's
-           coming this way![endAwaitInput]'''
-dialogs[3361] = ''''''
-dialogs[3362] = ''''''
-dialogs[3363] = ''''''
-dialogs[3364] = ''''''
-dialogs[3365] = ''''''
-dialogs[3366] = ''''''
-dialogs[3367] = ''''''
-dialogs[3368] = ''''''
-dialogs[3369] = ''''''
-dialogs[3370] = ''''''
-dialogs[3371] = ''''''
-dialogs[3372] = ''''''
-dialogs[3373] = ''''''
-dialogs[3374] = ''''''
-dialogs[3375] = ''''''
-dialogs[3376] = ''''''
-dialogs[3377] = ''''''
-dialogs[3378] = ''''''
-dialogs[3379] = ''''''
-dialogs[3380] = ''''''
+           coming this way!'''
+dialogs[3361] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3362] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3363] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3364] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3365] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3366] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3367] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3368] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3369] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3370] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3371] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3372] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3373] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3374] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3375] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3376] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3377] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3378] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3379] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
+dialogs[3380] = '''FROGFUCIUS: So! Toadstool was
+ the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
+ before she's...married!'''
 dialogs[3381] = '''FROGFUCIUS: So! Toadstool was
  the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
- before she's...marri'''
-dialogs[3382] = '''ed![endAwaitInput]FROGFUCIUS: Good work, Mario.
+ before she's...married!'''
+dialogs[3382] = '''FROGFUCIUS: Good work, Mario.
  You rescued Toadstool.[newPageAwaitInput] Why don't you head back to
  Mushroom Kingdom?
- I'm sure the Chancellor is worried.[endAwaitInput]'''
+ I'm sure the Chancellor is worried.'''
 dialogs[3383] = '''FROGFUCIUS: 
  I have the latest news, children.[newPageAwaitInput] A large star’s been sighted on
- “Star Hill”.[endAwaitInput]'''
+ “Star Hill”.'''
 dialogs[3384] = '''FROGFUCIUS: Eh!?[newlineAwaitInput] That delicious smell!
  You have some Cricket Jam, yes?[newPageAwaitInput] May I have some?
   [startSelection] (Sure)
-  [startSelection] (Nope)[endAwaitInput]'''
-dialogs[3385] = ''' Sure, torture an old m'''
-dialogs[3386] = '''an![endAwaitInput] Mmm, this is wonderful!
+  [startSelection] (Nope)'''
+dialogs[3385] = ''' Sure, torture an old man!'''
+dialogs[3386] = ''' Mmm, this is wonderful!
  Thank you, Mario.
  You've made an old man happy.[newPageAwaitInput] Here’s a little allowance for being
- so good to me.[endAwaitInput]'''
-dialogs[3387] = ''' My wish has come true.[endAwaitInput]'''
+ so good to me.'''
+dialogs[3387] = ''' My wish has come true.'''
 dialogs[3388] = '''FROGFUCIUS: Have you been to
  Seaside Town yet?
- Something odd is going on there.[endAwaitInput]'''
+ Something odd is going on there.'''
 dialogs[3389] = '''FROGFUCIUS: Beware of the giant
  squid in the sunken ship. Turn 'im
- into calamari or someth'''
-dialogs[3390] = '''ing![endAwaitInput]FROGFUCIUS: The entrance to
+ into calamari or something!'''
+dialogs[3390] = '''FROGFUCIUS: The entrance to
  Monstro Town is underground.
- Follow the whirls in the desert.[endAwaitInput]'''
+ Follow the whirls in the desert.'''
 dialogs[3391] = '''FROGFUCIUS: I JUST found out that
  there’s a kingdom in the clouds.
- Go and explore it, my childr'''
-dialogs[3392] = '''en.[endAwaitInput] Was that too much to absorb?
+ Go and explore it, my children.'''
+dialogs[3392] = ''' Was that too much to absorb?
  Would you like a recap?[newlineAwaitInput]  [startSelection] (Sure)
-  [startSelection] (No'''
-dialogs[3393] = '''pe)[endAwaitInput] Okay, here’s the gist of it!
+  [startSelection] (Nope)'''
+dialogs[3393] = ''' Okay, here’s the gist of it!
  Smithy invaded our world and took
  over Bowser’s Keep.[newPageAwaitInput] Toadstool and Bowser were thrown
  by the impact, and now Smithy and
  his cohorts are on a rampage.[newPageAwaitInput] The shooting stars are somehow
  connected to this disturbance and
- they're the key to defeating Smit'''
-dialogs[3394] = '''hy.[endAwaitInput] Would you like me to repeat that?
+ they're the key to defeating Smithy.'''
+dialogs[3394] = ''' Would you like me to repeat that?
   [startSelection] (Yes)
-  [startSelection] ('''
-dialogs[3395] = '''No)[endAwaitInput] It’s quite a situation we have on
- our hands, isn't '''
-dialogs[3396] = '''it?[endAwaitInput]MALLOW: Grandpa!
+  [startSelection] (No)'''
+dialogs[3395] = ''' It’s quite a situation we have on
+ our hands, isn't it?'''
+dialogs[3396] = '''MALLOW: Grandpa!
  We found my real home!
- It’s way up in the clouds.[endAwaitInput]'''
+ It’s way up in the clouds.'''
 dialogs[3397] = '''FROGFUCIUS: Mallow!
  You're a prince?!
  I never would have guessed![newPageAwaitInput] And now you're helping to save
  the world?
  You've come a long way, child.[newPageAwaitInput] Although you've found your family,
- this adventure isn't over yet![endAwaitInput]'''
-dialogs[3398] = '''MALLOW: Yep. I'm not giving up![endAwaitInput]'''
+ this adventure isn't over yet!'''
+dialogs[3398] = '''MALLOW: Yep. I'm not giving up!'''
 dialogs[3399] = '''FROGFUCIUS: You've got to defeat
- Valentina and save Nimbus Land.[endAwaitInput]'''
+ Valentina and save Nimbus Land.'''
 dialogs[3400] = '''FROGFUCIUS: Ah! Now the people
  of Nimbus Land can rejoice.[newPageAwaitInput] SO!
  I hear the next Star Piece is
  inside a volcano.[newPageAwaitInput] I also heard that Booster got
- himself another bride from the s'''
-dialogs[3401] = '''ky.[endAwaitInput]FROGFUCIUS: So...only Bowser's
+ himself another bride from the sky.'''
+dialogs[3401] = '''FROGFUCIUS: So...only Bowser's
  Keep remains.[newPageAwaitInput] The citizens of Nimbus Land will
- tell you how to get the'''
-dialogs[3402] = '''re.[endAwaitInput]FROGFUCIUS: 
+ tell you how to get there.'''
+dialogs[3402] = '''FROGFUCIUS: 
  That’s all the advice I have.[newPageAwaitInput] You've done well. All that’s left
  to do is to defeat Smithy.[newPageAwaitInput] Save this world, and bring this
- quest to a happy end![endAwaitInput]'''
-dialogs[3403] = ''''''
-dialogs[3404] = ''''''
-dialogs[3405] = ''''''
-dialogs[3406] = ''''''
-dialogs[3407] = ''''''
-dialogs[3408] = ''' This••is••Smithy’s castle![newPageAwaitInput] No trespassers••allowed.[endAwaitInput]'''
+ quest to a happy end!'''
+dialogs[3403] = ''' This••is••Smithy’s castle![newPageAwaitInput] No trespassers••allowed.'''
+dialogs[3404] = ''' This••is••Smithy’s castle![newPageAwaitInput] No trespassers••allowed.'''
+dialogs[3405] = ''' This••is••Smithy’s castle![newPageAwaitInput] No trespassers••allowed.'''
+dialogs[3406] = ''' This••is••Smithy’s castle![newPageAwaitInput] No trespassers••allowed.'''
+dialogs[3407] = ''' This••is••Smithy’s castle![newPageAwaitInput] No trespassers••allowed.'''
+dialogs[3408] = ''' This••is••Smithy’s castle![newPageAwaitInput] No trespassers••allowed.'''
 dialogs[3409] = '''BOWSER: 
-               Magikoopa![endAwaitInput]'''
+               Magikoopa!'''
 dialogs[3410] = '''MAGIKOOPA: Huh••where am I?[delay][delay][delay]
  Bowser, hello!
  How have you been?[newPageAwaitInput] I, uh, made it back here SOMEHOW,
  but it seems like I've been
  brainwashed or something.[newPageAwaitInput] I can't seem to remember ANYTHING.
- Have I done something...wrong?[endAwaitInput]'''
+ Have I done something...wrong?'''
 dialogs[3411] = '''BOWSER: Uh, [pauseAwaitInput]don't [pauseAwaitInput]worry about it.[newlineAwaitInput] Let’s just put it behind us.[newPageAwaitInput] It’s great running into a loyal
- Koopa Trooper like you.[endAwaitInput]'''
+ Koopa Trooper like you.'''
 dialogs[3412] = '''MAGIKOOPA: I'm glad!
  It looks like you've got some tough
- new troopers now.[newPageAwaitInput] But my magic can still help you.[endAwaitInput]'''
-dialogs[3413] = ''' Watch this![newlineAwaitInput]            Ho'o[pauseAwaitInput]kala[pauseAwaitInput]ku[pauseAwaitInput]pua![endAwaitInput]'''
+ new troopers now.[newPageAwaitInput] But my magic can still help you.'''
+dialogs[3413] = ''' Watch this![newlineAwaitInput]            Ho'o[pauseAwaitInput]kala[pauseAwaitInput]ku[pauseAwaitInput]pua!'''
 dialogs[3414] = '''MAGIKOOPA: This magic treasure
- box will never run out of coins.[newPageAwaitInput] Just keep on hitting it.[endAwaitInput]'''
+ box will never run out of coins.[newPageAwaitInput] Just keep on hitting it.'''
 dialogs[3415] = '''MAGIKOOPA: 
  I'll be here if you need me.[newPageAwaitInput] Come by whenever you need to
- rejuvenate your HP and magic.[endAwaitInput]'''
+ rejuvenate your HP and magic.'''
 dialogs[3416] = '''MAGIKOOPA: 
- You've come to the right pers'''
-dialogs[3417] = '''on![endAwaitInput]
-             Ha ha ha ha ha![endAwaitInput]'''
+ You've come to the right person!'''
+dialogs[3417] = '''
+             Ha ha ha ha ha!'''
 dialogs[3418] = ''' Ahhhhh...
  So YOU are the notorious Mario![newPageAwaitInput] I'm impressed you made it this far.
- I didn't think you could.[endAwaitInput]'''
+ I didn't think you could.'''
 dialogs[3419] = ''' Oh!
- Feisty little fellow, aren't you?[newlineAwaitInput] But this is the end of the line.[newPageAwaitInput] Now you've got to deal with ME![newlineAwaitInput] EN GARDE![endAwaitInput]'''
-dialogs[3420] = ''''''
-dialogs[3421] = ''''''
-dialogs[3422] = ''''''
-dialogs[3423] = ''''''
+ Feisty little fellow, aren't you?[newlineAwaitInput] But this is the end of the line.[newPageAwaitInput] Now you've got to deal with ME![newlineAwaitInput] EN GARDE!'''
+dialogs[3420] = '''VALENTINA: 
+ WHAT are you babbling about?[newPageAwaitInput] Why should I marry you?'''
+dialogs[3421] = '''VALENTINA: 
+ WHAT are you babbling about?[newPageAwaitInput] Why should I marry you?'''
+dialogs[3422] = '''VALENTINA: 
+ WHAT are you babbling about?[newPageAwaitInput] Why should I marry you?'''
+dialogs[3423] = '''VALENTINA: 
+ WHAT are you babbling about?[newPageAwaitInput] Why should I marry you?'''
 dialogs[3424] = '''VALENTINA: 
- WHAT are you babbling about?[newPageAwaitInput] Why should I marry you?[endAwaitInput]'''
-dialogs[3425] = '''VALENTINA: ........[newPageAwaitInput] What a wonderful thing to say![endAwaitInput]'''
+ WHAT are you babbling about?[newPageAwaitInput] Why should I marry you?'''
+dialogs[3425] = '''VALENTINA: ........[newPageAwaitInput] What a wonderful thing to say!'''
 dialogs[3426] = '''BOWSER: Ahhh...
      The scent of boiling lava...[newPageAwaitInput] It’s so nice to be home![newPageAwaitInput] Smithy’s gonna pay for stealing
- my splendid castle from me![endAwaitInput]'''
-dialogs[3427] = ''''''
-dialogs[3428] = ''''''
-dialogs[3429] = ''''''
-dialogs[3430] = ''''''
-dialogs[3431] = ''''''
-dialogs[3432] = ''''''
-dialogs[3433] = ''''''
-dialogs[3434] = ''''''
-dialogs[3435] = ''''''
-dialogs[3436] = ''''''
-dialogs[3437] = ''''''
-dialogs[3438] = ''''''
-dialogs[3439] = ''''''
+ my splendid castle from me!'''
+dialogs[3427] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3428] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3429] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3430] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3431] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3432] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3433] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3434] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3435] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3436] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3437] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3438] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
+dialogs[3439] = '''  The secret to the shooting stars
+          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
+         and bring peace back
+           to Mario’s world.'''
 dialogs[3440] = '''  The secret to the shooting stars
           has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
          and bring peace back
-           to Mario’s wor'''
-dialogs[3441] = '''ld.[endAwaitInput]       You've found Dyna, Mite,
-          and a Star Piece...[newlineAwaitInput]       But where is Toadsto'''
-dialogs[3442] = '''ol?[endAwaitInput]       You've come a long way,
+           to Mario’s world.'''
+dialogs[3441] = '''       You've found Dyna, Mite,
+          and a Star Piece...[newlineAwaitInput]       But where is Toadstool?'''
+dialogs[3442] = '''       You've come a long way,
   but your journey’s not over yet.
-    There are 3 more Star Pieces.[endAwaitInput]'''
+    There are 3 more Star Pieces.'''
 dialogs[3443] = '''     Smithy is now in the race for
            the Star Pieces![newlineAwaitInput]  What horrible surprises might he
        have in store for Mario?
- [endAwaitInput]'''
-dialogs[3444] = ''''''
-dialogs[3445] = ''''''
-dialogs[3446] = ''''''
-dialogs[3447] = ''''''
-dialogs[3448] = ''''''
-dialogs[3449] = ''''''
-dialogs[3450] = ''''''
-dialogs[3451] = ''''''
-dialogs[3452] = ''''''
-dialogs[3453] = ''''''
-dialogs[3454] = ''''''
-dialogs[3455] = ''''''
-dialogs[3456] = ''''''
-dialogs[3457] = ''''''
-dialogs[3458] = ''''''
-dialogs[3459] = ''''''
-dialogs[3460] = ''''''
-dialogs[3461] = ''''''
-dialogs[3462] = ''''''
-dialogs[3463] = ''''''
-dialogs[3464] = ''''''
-dialogs[3465] = ''''''
-dialogs[3466] = ''''''
-dialogs[3467] = ''''''
-dialogs[3468] = ''''''
-dialogs[3469] = ''''''
-dialogs[3470] = ''''''
-dialogs[3471] = ''''''
-dialogs[3472] = ''''''
-dialogs[3473] = ''''''
-dialogs[3474] = ''''''
-dialogs[3475] = ''''''
-dialogs[3476] = ''''''
-dialogs[3477] = ''''''
-dialogs[3478] = ''''''
-dialogs[3479] = ''''''
-dialogs[3480] = ''''''
-dialogs[3481] = ''''''
-dialogs[3482] = ''''''
-dialogs[3483] = ''''''
-dialogs[3484] = ''''''
-dialogs[3485] = ''''''
-dialogs[3486] = ''''''
-dialogs[3487] = ''''''
-dialogs[3488] = ''''''
-dialogs[3489] = ''''''
-dialogs[3490] = ''''''
-dialogs[3491] = ''''''
-dialogs[3492] = ''''''
-dialogs[3493] = ''''''
-dialogs[3494] = ''''''
-dialogs[3495] = ''''''
-dialogs[3496] = ''''''
-dialogs[3497] = ''''''
-dialogs[3498] = ''''''
-dialogs[3499] = ''''''
-dialogs[3500] = ''''''
-dialogs[3501] = ''''''
-dialogs[3502] = ''''''
-dialogs[3503] = ''''''
-dialogs[3504] = ''''''
-dialogs[3505] = ''''''
-dialogs[3506] = ''''''
-dialogs[3507] = ''''''
-dialogs[3508] = ''''''
-dialogs[3509] = ''''''
-dialogs[3510] = ''''''
-dialogs[3511] = ''''''
-dialogs[3512] = ''''''
-dialogs[3513] = ''''''
-dialogs[3514] = ''''''
-dialogs[3515] = ''''''
-dialogs[3516] = ''''''
-dialogs[3517] = ''''''
-dialogs[3518] = ''''''
-dialogs[3519] = ''''''
-dialogs[3520] = ''''''
-dialogs[3521] = ''''''
-dialogs[3522] = ''''''
-dialogs[3523] = ''''''
-dialogs[3524] = ''''''
-dialogs[3525] = ''''''
-dialogs[3526] = ''''''
-dialogs[3527] = ''''''
-dialogs[3528] = ''''''
-dialogs[3529] = ''''''
-dialogs[3530] = ''''''
-dialogs[3531] = ''''''
-dialogs[3532] = ''''''
-dialogs[3533] = ''''''
-dialogs[3534] = ''''''
-dialogs[3535] = ''''''
-dialogs[3536] = ''''''
-dialogs[3537] = ''''''
-dialogs[3538] = ''''''
-dialogs[3539] = ''''''
-dialogs[3540] = ''''''
-dialogs[3541] = ''''''
-dialogs[3542] = ''''''
-dialogs[3543] = ''''''
-dialogs[3544] = ''''''
-dialogs[3545] = ''''''
-dialogs[3546] = ''''''
-dialogs[3547] = ''''''
-dialogs[3548] = ''''''
-dialogs[3549] = ''''''
-dialogs[3550] = ''''''
-dialogs[3551] = ''''''
-dialogs[3552] = ''''''
-dialogs[3553] = ''''''
-dialogs[3554] = ''''''
-dialogs[3555] = ''''''
-dialogs[3556] = ''''''
-dialogs[3557] = ''''''
-dialogs[3558] = ''''''
-dialogs[3559] = ''''''
-dialogs[3560] = ''''''
-dialogs[3561] = ''''''
-dialogs[3562] = ''''''
-dialogs[3563] = ''''''
-dialogs[3564] = ''''''
-dialogs[3565] = ''''''
-dialogs[3566] = ''''''
-dialogs[3567] = ''''''
-dialogs[3568] = ''''''
-dialogs[3569] = ''''''
-dialogs[3570] = ''''''
-dialogs[3571] = ''''''
-dialogs[3572] = ''''''
-dialogs[3573] = ''''''
-dialogs[3574] = ''''''
-dialogs[3575] = ''''''
-dialogs[3576] = ''''''
-dialogs[3577] = ''''''
-dialogs[3578] = ''''''
-dialogs[3579] = ''''''
-dialogs[3580] = ''''''
-dialogs[3581] = ''''''
-dialogs[3582] = ''''''
-dialogs[3583] = ''''''
+ '''
+dialogs[3444] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3445] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3446] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3447] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3448] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3449] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3450] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3451] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3452] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3453] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3454] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3455] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3456] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3457] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3458] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3459] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3460] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3461] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3462] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3463] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3464] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3465] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3466] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3467] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3468] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3469] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3470] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3471] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3472] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3473] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3474] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3475] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3476] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3477] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3478] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3479] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3480] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3481] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3482] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3483] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3484] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3485] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3486] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3487] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3488] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3489] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3490] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3491] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3492] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3493] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3494] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3495] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3496] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3497] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3498] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3499] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3500] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3501] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3502] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3503] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3504] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3505] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3506] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3507] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3508] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3509] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3510] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3511] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3512] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3513] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3514] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3515] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3516] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3517] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3518] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3519] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3520] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3521] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3522] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3523] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3524] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3525] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3526] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3527] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3528] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3529] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3530] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3531] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3532] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3533] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3534] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3535] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3536] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3537] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3538] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3539] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3540] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3541] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3542] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3543] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3544] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3545] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3546] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3547] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3548] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3549] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3550] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3551] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3552] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3553] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3554] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3555] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3556] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3557] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3558] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3559] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3560] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3561] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3562] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3563] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3564] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3565] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3566] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3567] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3568] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3569] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3570] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3571] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3572] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3573] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3574] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3575] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3576] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3577] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3578] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3579] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3580] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3581] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3582] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
+dialogs[3583] = ''' Star Piece? Now that you mention
+ it, I DID see a star fall into that
+ volcano over there.'''
 dialogs[3584] = '''SNIFIT 3: Um...
- Nice weather we're having.[endAwaitInput]SNIFIT 3: You wanna fight?[endAwaitInput]
-           Hmm?! What'''
+ Nice weather we're having.'''
 dialogs[3585] = '''’s this?[newPageAwaitInput]               It’s a “Seed”.
  [startSelection]  (Take it)
- [startSelection]  (Leave it)[endAwaitInput]GARDENER: I'll '''
-dialogs[3586] = '''plant the seed...[endAwaitInput]GARDENER: Then give it fertili'''
-dialogs[3587] = '''zer.[endAwaitInput]BOOSTER: Hoouuooo!
- Chugga, c'''
-dialogs[3588] = '''hugga...hoooonk!
- This is my personal railway.[endAwaitInput]BOOSTER: My!
- It’s you again![newPageAwaitInput] I'm amaz'''
-dialogs[3589] = '''ed you made it this far.
+ [startSelection]  (Leave it)'''
+dialogs[3586] = '''plant the seed...'''
+dialogs[3587] = '''zer.'''
+dialogs[3588] = '''a...hoooonk!
+ This is my personal railway.'''
+dialogs[3589] = '''made it this far.
  Yes, quite amazing you are![newPageAwaitInput] Since you're here, maybe you could
- clear up somethin'''
-dialogs[3590] = '''g for me.[newPageAwaitInput] My bride-to-be is chanting,
+ clear up something for me.[newPageAwaitInput] My bride-to-be is chanting,
  “MARIOHELPMEMARIOHELPME”.
- Is she'''
-dialogs[3591] = ''' showing her happiness?[newPageAwaitInput] Hey,[delay][delay][delay][delay][delay]'''
+ Is she showing her happiness?[newPageAwaitInput] Hey,[delay][delay][delay][delay][delay][delay] wait a second!
+ Maybe “MARIO” is another guy!'''
+dialogs[3590] = '''r me.[newPageAwaitInput] My bride-to-be is chanting,
+ “MARIOHELPMEMARIOHELPME”.
+ Is she showing her happiness?[newPageAwaitInput] Hey,[delay][delay][delay][delay][delay][delay] wait a second!
+ Maybe “MARIO” is another guy!'''
+dialogs[3591] = '''wing her happiness?[newPageAwaitInput] Hey,[delay][delay][delay][delay][delay][delay] wait a second!
+ Maybe “MARIO” is another guy!'''
 dialogs[3592] = '''[delay] wait a second!
- Maybe “MARIO” is another guy![endAwaitInput]       Re'''
-dialogs[3593] = '''ceived “Rock Candy”![endAwaitInput]BOOSTER: What if you're this
- '''
+ Maybe “MARIO” is another guy!'''
+dialogs[3593] = '''ceived “Rock Candy”!'''
 dialogs[3594] = '''“Mario” she keeps talking about?[newlineAwaitInput] Trying to take my bride away?
- Why don'''
-dialogs[3595] = ''''t you take [delay]THIS, instead![endAwaitInput]BOOSTER: T'''
-dialogs[3596] = '''hat didn't do it?[newPageAwaitInput] Grrrr...I ran out of bombs.[endAwaitInput]B'''
-dialogs[3597] = '''OOSTER:
-             Chug-a-chug-a![endAwaitInput]BOOSTER: 
- HE'S'''
+ Why don't you take [delay]THIS, instead!'''
+dialogs[3595] = '''take [delay]THIS, instead!'''
+dialogs[3596] = '''didn't do it?[newPageAwaitInput] Grrrr...I ran out of bombs.'''
+dialogs[3597] = '''ER:
+             Chug-a-chug-a!'''
 dialogs[3598] = ''' GONE?![delay]
- That’s not fair!'''
-dialogs[3599] = '''[newPageAwaitInput] I'm so hurt...
- I only '''
-dialogs[3600] = '''wanted to play with him.[newPageAwaitInput] Now,••••[delay][delay]what'''
+ That’s not fair![newPageAwaitInput] I'm so hurt...
+ I only wanted to play with him.[newPageAwaitInput] Now,••••[delay][delay]what expression should I
+ be wearing at a time like this?!'''
+dialogs[3599] = '''m so hurt...
+ I only wanted to play with him.[newPageAwaitInput] Now,••••[delay][delay]what expression should I
+ be wearing at a time like this?!'''
+dialogs[3600] = '''ed to play with him.[newPageAwaitInput] Now,••••[delay][delay]what expression should I
+ be wearing at a time like this?!'''
 dialogs[3601] = ''' expression should I
- be wearing at a time like this?![endAwaitInput]BOOSTER: Eh...?[endAwaitInput]GARDENER: ••[delay]••[delay]••[delay]
-          Nothing’s happening.[endAwaitInput]BOOST'''
-dialogs[3602] = '''ER: Well, so long![endAwaitInput]BOOSTER: Now I remember![delay][delay]
- I should look li'''
-dialogs[3603] = '''ke...THIS![endAwaitInput]APPRENTICE: Golly!
- You're that famo'''
-dialogs[3604] = '''us Mario guy![newPageAwaitInput] If I beat you, they'''
+ be wearing at a time like this?!'''
+dialogs[3602] = '''ER: Well, so long!'''
+dialogs[3603] = '''.THIS!'''
+dialogs[3604] = ''' guy![newPageAwaitInput] If I beat you, they'll make me
+ Snifit '''
 dialogs[3605] = ''''ll make me
- Snifit [0x7000]!
- [delay][delay][delay][delay][delay][delay]If I'''
-dialogs[3606] = ''''m lucky![endAwaitInput]APPRENTICE: Whaaa••[delay]••[delay]••[delay]
- Now they'll make me take the
- training course over '''
-dialogs[3607] = '''again.[endAwaitInput]APPRENTICE: All right!
- Now I'll be Snifit'''
-dialogs[3608] = ''' [0x7000]![endAwaitInput]APPRENTICE: Mario![newlineAwaitInput] Let'''
-dialogs[3609] = ''' me show you what I''''
+ Snifit '''
+dialogs[3606] = ''''m lucky!'''
+dialogs[3607] = '''again.'''
+dialogs[3608] = ''''''
+dialogs[3609] = ''' me show you what I've learned
+ in my classes so far.[newPageAwaitInput] I'll be Snifit '''
 dialogs[3610] = '''ve learned
- in my classes so far.[newPageAwaitInput] I'll be Snifit [0x7000] if I beat you!
- ••[delay]••[delay]••[delay]••[delay]••[delay]••[delay]maybe.[endAwaitInput]SNIFIT 4: After years of
- hard w'''
-dialogs[3611] = '''ork and effort, I'm '''
+ in my classes so far.[newPageAwaitInput] I'll be Snifit '''
+dialogs[3611] = '''ork and effort, I'm now
+ Snifit 4![newPageAwaitInput] 
+     I'll wear the number proudly!'''
 dialogs[3612] = '''now
  Snifit 4![newPageAwaitInput] 
-     I'll wear the '''
-dialogs[3613] = '''number proudly![endAwaitInput]SNIFIT 5: Phew...![newlineAwaitInput] I've been training to become one
- of Booster’s Snifits for '''
-dialogs[3614] = '''3 years![endAwaitInput]SNIFIT 6: If only Ma and Pa could
- see me now.[endAwaitInput]SNIF'''
-dialogs[3615] = '''IT 7:
+     I'll wear the number proudly!'''
+dialogs[3613] = '''number proudly!'''
+dialogs[3614] = '''ars!'''
+dialogs[3615] = ''':
      Yee haw![newlineAwaitInput]          Hurrah!
-               I'm a Snifit!'''
+               I'm a Snifit![newPageAwaitInput]
+         ••[delay]••[delay]••[delay]I'm••speechless!'''
 dialogs[3616] = '''[newPageAwaitInput]
-         ••[delay]••[delay]••[delay]I'm••speechless![endAwaitInput]APPR'''
+         ••[delay]••[delay]••[delay]I'm••speechless!'''
 dialogs[3617] = '''ENTICE: Shriek!
- The boss only wants 7 Snif'''
-dialogs[3618] = '''its![newlineAwaitInput] All my training was in vain![newPageAwaitInput]
-               What a rip![endAwaitInput]APPRENTIC'''
+ The boss only wants 7 Snifits![newlineAwaitInput] All my training was in vain![newPageAwaitInput]
+               What a rip!'''
+dialogs[3618] = '''[newlineAwaitInput] All my training was in vain![newPageAwaitInput]
+               What a rip!'''
 dialogs[3619] = '''E: Harrumph!
- I'm off to the arcade![endAwaitInput]GARDENER: W••[delay]••[delay]wow![endAwaitInput]GARDENER: This is amazing![endAwaitInput]GARDENER: This is unreal! This i'''
-dialogs[3620] = '''s
- just like winning the lottery, only
+ I'm off to the arcade!'''
+dialogs[3620] = '''ust like winning the lottery, only
  without the taxes! I mean, this is
- l'''
-dialogs[3621] = '''ike falling out of an airplane
+ like falling out of an airplane
  without a parachute, and hitting
- a gaggle of geese in mi'''
+ a gaggle of geese in mid-air who
+ break your fall. Wait until my
+ buddies over at Happy Gardener's
+ Monthly hear about this. I'm going
+ to be famous! Maybe even get my
+ picture in the next issue.[delay_24]'''
+dialogs[3621] = '''falling out of an airplane
+ without a parachute, and hitting
+ a gaggle of geese in mid-air who
+ break your fall. Wait until my
+ buddies over at Happy Gardener's
+ Monthly hear about this. I'm going
+ to be famous! Maybe even get my
+ picture in the next issue.[delay_24]'''
 dialogs[3622] = '''d-air who
  break your fall. Wait until my
  buddies over at Happy Gardener's
- Mon'''
-dialogs[3623] = '''thly hear about this. I'm going
+ Monthly hear about this. I'm going
  to be famous! Maybe even get my
- picture in the next issue.[delay_24][end]GARDENER: You think it could use
- a little more fertilizer?[endAwaitInput]GARDENE'''
-dialogs[3624] = '''R: Oops, maybe not, huh?[endAwaitInput]'''
+ picture in the next issue.[delay_24]'''
+dialogs[3623] = ''' hear about this. I'm going
+ to be famous! Maybe even get my
+ picture in the next issue.[delay_24]'''
+dialogs[3624] = '''ops, maybe not, huh?'''
 dialogs[3625] = '''GARDENER: This will get me in
- Happy Gard'''
-dialogs[3626] = '''ener Monthly magazine![endAwaitInput]GENO: Mario!
- There are Star Pieces to be found![newlineAwaitInput] Ha'''
-dialogs[3627] = '''ng in there![endAwaitInput]
-
-     (Wish I could run faster.)[endAwaitInput]
-
-    Wish I ha'''
-dialogs[3628] = '''d some Cricket Jam.[endAwaitInput]
-      I wanna be a great plumber
-         like my bro'''
-dialogs[3629] = '''ther Mario.[endAwaitInput]
-
-   If I could JUST get that melody'''
-dialogs[3630] = '''![endAwaitInput]
-               The hunger!
-           Oh, for some food! [endAwaitInput]
-     I wanna be the best treasure
-          hunt'''
-dialogs[3631] = '''er in the world.[endAwaitInput]
-
-   I vant to be a vald class baker.[endAwaitInput]
-
-        I hope I become famous.[endAwaitInput]
-
-'''
-dialogs[3632] = '''        I hope she'll say “yes”.[endAwaitInput]
-
-    I wish he'd pop THE question.[endAwaitInput]
-
-   I wish I we'''
-dialogs[3633] = '''ren't such a crybaby.[endAwaitInput]
-
-'''
-dialogs[3634] = '''Please let Mallow find his way home.[endAwaitInput]GENO: This is Star Hill.[newlineAwaitInput] Wishes, which were transformed at
- the Star Road, fall from here.[newPageAwaitInput] But[delay]••[delay]••[newlineAwaitInput] Some wishes that haven't'''
+ Happy Gardener Monthly magazine!'''
+dialogs[3626] = '''ener Monthly magazine!'''
+dialogs[3627] = ''' there!'''
+dialogs[3628] = '''d some Cricket Jam.'''
+dialogs[3629] = ''' Mario.'''
+dialogs[3630] = ''' youThe hunger!
+           Oh, for some food! '''
+dialogs[3631] = ''' the world.'''
+dialogs[3632] = '''        I hope she'll say “yes”.'''
+dialogs[3633] = '''ren't such a crybaby.'''
+dialogs[3634] = '''Please let Mallow find his way home.'''
 dialogs[3635] = ''' been
  granted yet are falling because
- '''
-dialogs[3636] = '''Smithy destroyed the Star Road.[endAwaitInput]G'''
-dialogs[3637] = '''ENO: Frogfucius mentioned hearing
- about a Star Piece on this '''
-dialogs[3638] = '''hill.[endAwaitInput]GENO: Let’s see if we can find it.[endAwaitInput]MALLOW: This one’s private![delay]'''
-dialogs[3639] = '''
- Who do you think you are,
- spyin'''
-dialogs[3640] = '''g on other people’s wishes?[endAwaitInput]MALL'''
-dialogs[3641] = ''''''
-dialogs[3642] = '''OW: C'mon, our quest fo'''
-dialogs[3643] = '''r the
- Star Pieces is important![newPageAwaitInput] Ever'''
+ Smithy destroyed the Star Road.'''
+dialogs[3636] = '''hy destroyed the Star Road.'''
+dialogs[3637] = ''' Frogfucius mentioned hearing
+ about a Star Piece on this hill.'''
+dialogs[3638] = '''.'''
+dialogs[3639] = '''o do you think you are,
+ spying on other people’s wishes?'''
+dialogs[3640] = '''g on other people’s wishes?'''
+dialogs[3641] = '''OW: C'mon, our quest for the
+ Star Pieces is important![newPageAwaitInput] Everyone’s counting on us!
+ We've got to hurry!'''
+dialogs[3642] = '''OW: C'mon, our quest for the
+ Star Pieces is important![newPageAwaitInput] Everyone’s counting on us!
+ We've got to hurry!'''
+dialogs[3643] = '''Star Pieces is important![newPageAwaitInput] Everyone’s counting on us!
+ We've got to hurry!'''
 dialogs[3644] = '''yone’s counting on us!
- We've got to hurry![endAwaitInput]MALLOW: Sorry about that.'''
-dialogs[3645] = '''
- It’s just that I'm embarrassed
- abo'''
-dialogs[3646] = '''ut my wish.[endAwaitInput]MALLOW: Why, this wish is...[newPageAwaitInput] It’s from my mom'''
-dialogs[3647] = ''' and dad.[newPageAwaitInput] They're wishing for'''
-dialogs[3648] = ''' me to come
- home![endAwaitInput]MALLOW: 
- This isn't the time to be crying![newlineAwaitInput] They're waiting for me to come
- home![endAwaitInput]MAL'''
+ We've got to hurry!'''
+dialogs[3645] = '''’s just that I'm embarrassed
+ about my wish.'''
+dialogs[3646] = '''ut my wish.'''
+dialogs[3647] = ''' and dad.[newPageAwaitInput] They're wishing for me to come
+ home!'''
+dialogs[3648] = '''come
+ home!'''
 dialogs[3649] = '''LOW: Come on Mario, we've got
  a busy schedule to keep. I'll make
- you eat dust if you don't hurry.[endAwaitInput]MALLOW: 
-                Sniffle...[endAwaitInput]           Got a “Lazy Shell”![endAwaitInput]GENO: 
- Do you know where this leads to?[endAwaitInput]GENO: It looks'''
+ you eat dust if you don't hurry.'''
 dialogs[3650] = ''' like Exor’s the
- contact between the two worlds.[newPageAwaitInput] In other words[delay]••[delay]••[delay]••[endAwaitInput]GENO: '''
-dialogs[3651] = '''If we follow this road,
- we'll find Smithy.[newPageAwaitInput] So...what’s keeping us?[endAwaitInput]BOWSER: Hang on![endAwaitInput]BOWSER: He'''
+ contact between the two worlds.[newPageAwaitInput] In other words[delay]••[delay]••[delay]••'''
+dialogs[3651] = '''e follow this road,
+ we'll find Smithy.[newPageAwaitInput] So...what’s keeping us?'''
 dialogs[3652] = '''y! I only joined so that
- I could get m'''
-dialogs[3653] = '''y castle back.[newlineAwaitInput] I'm n'''
-dialogs[3654] = '''ot going to be dragged along
- on this stupid hunt.[endAwaitInput]BOWS'''
-dialogs[3655] = '''ER: This is as far as'''
-dialogs[3656] = ''' I go.[newPageAwaitInput] I'm going to gather my troops'''
+ I could get my castle back.[newlineAwaitInput] I'm not going to be dragged along
+ on this stupid hunt.'''
+dialogs[3653] = '''y castle back.[newlineAwaitInput] I'm not going to be dragged along
+ on this stupid hunt.'''
+dialogs[3654] = '''oing to be dragged along
+ on this stupid hunt.'''
+dialogs[3655] = '''This is as far as I go.[newPageAwaitInput] I'm going to gather my troops and
+ rebuild my castle.'''
+dialogs[3656] = ''' I go.[newPageAwaitInput] I'm going to gather my troops and
+ rebuild my castle.'''
 dialogs[3657] = ''' and
- rebuild my castle.[endAwaitInput]BOWSER: And you, Mario![newlineAwaitInput] You're an official member of the
- Koopa T'''
-dialogs[3658] = '''roop. It’s your duty to
- help with the'''
-dialogs[3659] = ''' repairs![endAwaitInput]GENO: Bowser, you're co'''
-dialogs[3660] = '''mpletely
- missing the point.[endAwaitInput]BO'''
-dialogs[3661] = '''WSER: Gwaa?![delay][delay][delay][delay][newPageAwaitInput] I oughtta rip your stuffing out![endAwaitInput]GEN'''
-dialogs[3662] = '''O: No, think about it, B'''
-dialogs[3663] = '''owser.[newlineAwaitInput] This sword connects the two
- worlds, right?[endAwaitInput]BOWSER: Yeah, so?[endAwaitInput]GENO: Even IF we defeat Exor...[newlineAwaitInput] There will be OTHER weapon beasts
- to follow him.[endAwaitInput]GENO: Your cast'''
-dialogs[3664] = '''le is at the
+ rebuild my castle.'''
+dialogs[3658] = '''. It’s your duty to
+ help with the repairs!'''
+dialogs[3659] = '''airs!'''
+dialogs[3660] = '''tely
+ missing the point.'''
+dialogs[3661] = '''WSER: Gwaa?![delay][delay][delay][delay][newPageAwaitInput] I oughtta rip your stuffing out!'''
+dialogs[3662] = '''o, think about it, Bowser.[newlineAwaitInput] This sword connects the two
+ worlds, right?'''
+dialogs[3663] = '''r.[newlineAwaitInput] This sword connects the two
+ worlds, right?'''
+dialogs[3664] = '''at the
  entrance point to YOUR world.
- In short...they'll be back![endAwaitInput]GEN'''
-dialogs[3665] = '''O: Is that what you want?[endAwaitInput]BOWSER: Um....well...[endAwaitInput]BOWSER: N'''
+ In short...they'll be back!'''
+dialogs[3665] = '''s that what you want?'''
 dialogs[3666] = '''o one insults the Koopa
  Troop and gets away with it.[newPageAwaitInput] I've got a bone to pick with this
- Smithy guy![endAwaitInput]BOWSER: Come on, Mario!
- We'''
-dialogs[3667] = ''''ll teach him a lesson.[endAwaitInput]GENO: It looks like we're together
- on this one. Let’s go'''
-dialogs[3668] = '''![endAwaitInput]BOWSER: (More weapon things
- coming to take over my '''
-dialogs[3669] = '''castle?
- What about my[delay]'''
-dialogs[3670] = '''••[delay]••[delay][newPageAwaitInput]
+ Smithy guy!'''
+dialogs[3667] = '''teach him a lesson.'''
+dialogs[3668] = '''WSER: (More weapon things
+ coming to take over my castle?
+ What about my[delay]••[delay]••[delay][newPageAwaitInput]
              ••••PRIVACY?[newPageAwaitInput] Yikes[delay]••[delay]••
-        Th'''
+        This isn't good at all[delay]••[delay]••
+              In fact, this stinks![delay]••[delay]••)'''
+dialogs[3669] = '''castle?
+ What about my[delay]••[delay]••[delay][newPageAwaitInput]
+             ••••PRIVACY?[newPageAwaitInput] Yikes[delay]••[delay]••
+        This isn't good at all[delay]••[delay]••
+              In fact, this stinks![delay]••[delay]••)'''
+dialogs[3670] = '''[newPageAwaitInput]
+             ••••PRIVACY?[newPageAwaitInput] Yikes[delay]••[delay]••
+        This isn't good at all[delay]••[delay]••
+              In fact, this stinks![delay]••[delay]••)'''
 dialogs[3671] = '''is isn't good at all[delay]••[delay]••
-              In fact, this stinks![delay]••[delay]••)[endAwaitInput]BOWSER: (But I CAN'T just be pals
- with these cretin'''
-dialogs[3672] = '''s.[newlineAwaitInput] I've got an image to keep up.)[endAwaitInput]BOWSER: (I've got it!)[endAwaitInput]BOWSER: (I'm so sly!)[endAwaitInput]              It'''
-dialogs[3673] = '''’s “Mario”![endAwaitInput]       We better do something![endAwaitInput]            Pick up a “Seed”![endAwaitInput]GENO: ••'''
-dialogs[3674] = '''[delay]••[delay]••[delay]
- I feel the energy of the Star Piece.[endAwaitInput] What was that loud '''
-dialogs[3675] = '''noise outside?
-       Check out Booster Pass![endAwaitInput]     Received a “KerokeroCola”![endAwaitInput]     You saw something spa'''
-dialogs[3676] = '''rkle.[endAwaitInput]SHY AWAY: Look what you did![delay][delay]
- Smilax’s been whacked.[endAwaitInput]SHY AWAY: 
- Oooh,'''
-dialogs[3677] = ''' I'm going to get it![newlineAwaitInput] Queen Valentina told me to keep'''
-dialogs[3678] = ''''''
+              In fact, this stinks![delay]••[delay]••)'''
+dialogs[3672] = '''I've got an image to keep up.)'''
+dialogs[3673] = '''!'''
+dialogs[3674] = '''[delay]
+ I feel the energy of the Star Piece.'''
+dialogs[3675] = '''e outside?
+       Check out Booster Pass!'''
+dialogs[3676] = '''.'''
+dialogs[3677] = ''' going to get it![newlineAwaitInput] Queen Valentina told me to keep
+ everyone out of Nimbus Land.[newPageAwaitInput] 
+            What should I do?'''
+dialogs[3678] = '''
+ everyone out of Nimbus Land.[newPageAwaitInput] 
+            What should I do?'''
 dialogs[3679] = '''
  everyone out of Nimbus Land.[newPageAwaitInput] 
-            What should I do?[endAwaitInput]SHY AWAY: ••••[delay]••••[delay]••••[delay]••••[delay]••'''
-dialogs[3680] = '''••[delay]••••[delay]••••[delay]••••[delay]
-         I know, I'll run '''
-dialogs[3681] = '''away![endAwaitInput]         How did he get here?![endAwaitInput]        Got an “Ultra Hammer”![endAwaitInput]        Wow! Did'''
-dialogs[3682] = ''' you see that?[delay][delay][delay]
-       It’s a ma'''
+            What should I do?'''
+dialogs[3680] = '''[delay]••••[delay]••••[delay]
+         I know, I'll run away!'''
+dialogs[3681] = '''away!'''
+dialogs[3682] = '''e that?[delay][delay][delay]
+       It’s a magical beanstalk![newPageAwaitInput]        Hit the block once more
+                to climb it.'''
 dialogs[3683] = '''gical beanstalk![newPageAwaitInput]        Hit the block once more
-                to '''
-dialogs[3684] = '''climb it.[endAwaitInput]          Found a Frog Coin![endAwaitInput]         G'''
-dialogs[3685] = '''ot a “Red Essence”![endAwaitInput]
-           Found a “Masher”![endAwaitInput]
-      You found a “Goodie Bag”![endAwaitInput]
-        Picked up a “H'''
-dialogs[3686] = '''ammer”![endAwaitInput] Now ya got my hammer ang'''
-dialogs[3687] = '''ry!
- Ya shouldn't have done that![endAwaitInput] HEY!
- Are YOU lookin' '''
+                to climb it.'''
+dialogs[3684] = '''climb it.'''
+dialogs[3685] = ''' “Red Essence”!'''
+dialogs[3686] = '''ammer”!'''
+dialogs[3687] = ''' Ya shouldn't have done that!'''
 dialogs[3688] = '''at me?
- My hammer and I don't like you![endAwaitInput]TOAD: Mario!
- You better be careful.
- He’s de'''
-dialogs[3689] = '''finitely got a mean streak![endAwaitInput]     It’s a battered'''
-dialogs[3690] = ''' old hammer.[endAwaitInput]                Actually...
-    It’s a sturdy hammer, bearing
-    the Hammer Brother’s insignia.[endAwaitInput]            You never'''
-dialogs[3691] = ''' know!
-        It might come in handy![endAwaitInput]        Picked up a “Ha'''
-dialogs[3692] = '''mmer”![endAwaitInput]
-         Picked up a “Flower”![endAwaitInput]
-     Picked up a “Royal Syrup”![endAwaitInput]TOAD: Thanks, Mario!
- I was run'''
+ My hammer and I don't like you!'''
+dialogs[3689] = '''finitely got a mean streak!'''
+dialogs[3690] = ''' hammer.'''
+dialogs[3691] = '''w!
+        It might come in handy!'''
+dialogs[3692] = '''mmer”!'''
 dialogs[3693] = '''ning so fast I wasn't
- watching where I was going'''
-dialogs[3694] = '''![endAwaitInput]TOAD:
+ watching where I was going!'''
+dialogs[3694] = '''AD:
  Mushroom Kingdom’s just ahead.
- We're almost there, Mario.[endAwaitInput]TOAD: '''
+ We're almost there, Mario.'''
 dialogs[3695] = '''Hey!
- Where did this hammer come from?[endAwaitInput]TOAD: Hmm[delay]••[delay]••[delay][delay][delay]
- Hey, do you know what THIS is?![endAwaitInput]TOAD: It has the'''
+ Where did this hammer come from?'''
 dialogs[3696] = ''' Hammer Bro's
- insignia on it.[newlineAwaitInput] No one s'''
-dialogs[3697] = '''tands a chance against
- you when you whomp them with this.[endAwaitInput]TOAD: Let’s get a '''
-dialogs[3698] = '''move on![newlineAwaitInput] I'll see you in Mushroom'''
-dialogs[3699] = ''' Kingdom.[endAwaitInput] Here, you can have this.[endAwaitInput]BOWYER: 997! 998! 999! 1000!
- Nya ha ha! 1000 arrows![newlineAwaitInput] For cover the'''
+ insignia on it.[newlineAwaitInput] No one stands a chance against
+ you when you whomp them with this.'''
+dialogs[3697] = '''s a chance against
+ you when you whomp them with this.'''
+dialogs[3698] = ''' on![newlineAwaitInput] I'll see you in Mushroom Kingdom.'''
+dialogs[3699] = '''dom.'''
 dialogs[3700] = '''y run, nya!
  FUN this is, yes.
- Nya! Another 1000 will I shoot![endAwaitInput]MALLOW: Mario, who IS that guy?
- [delay][delay]He must be the o'''
-dialogs[3701] = '''ne shooting
- arrows at Rose Town![endAwaitInput]BOWYER: Happy I am, nya!
- Look...LOOK a'''
-dialogs[3702] = '''t their expressions
- when fr'''
-dialogs[3703] = '''eeze they do![endAwaitInput]FLUNKIES: Woo hoo!
- They're standing like statues![endAwaitInput]BOWYER: Nya!
- More practice '''
-dialogs[3704] = '''do I need![endAwaitInput]MALLOW: Oh no!
- He’s not stopping'''
+ Nya! Another 1000 will I shoot!'''
+dialogs[3701] = '''hooting
+ arrows at Rose Town!'''
+dialogs[3702] = ''' expressions
+ when freeze they do!'''
+dialogs[3703] = ''' they do!'''
+dialogs[3704] = '''do I need!'''
 dialogs[3705] = '''!
- We've got to do something![endAwaitInput]MALLOW: Who do you think you are,
- Bru'''
-dialogs[3706] = '''ce Lee? You can't just go in
- there with your fists flying![endAwaitInput]MALLOW: Oh no, someone’s coming!
- Let’s hide and see if we can
- learn anything.[endAwaitInput]MALLOW: '''
+ We've got to do something!'''
+dialogs[3706] = '''ee? You can't just go in
+ there with your fists flying!'''
 dialogs[3707] = '''There're too many of 'em.
- We'll be creamed![endAwaitInput] Look what I found, Bo'''
-dialogs[3708] = '''wyer![endAwaitInput]BOWYER: What'''
+ We'll be creamed!'''
+dialogs[3708] = '''!'''
 dialogs[3709] = '''? WHAT?
- Dist'''
-dialogs[3710] = '''urb me you must not!
+ Disturb me you must not!
  Practicing, I am.[newlineAwaitInput] More arrows must I shoot!
- More'''
-dialogs[3711] = ''' statues must I make, nya![endAwaitInput]???:
-                   S'''
-dialogs[3712] = '''top![endAwaitInput]???: Hold it right there!
- Yo'''
+ More statues must I make, nya!'''
+dialogs[3710] = '''me you must not!
+ Practicing, I am.[newlineAwaitInput] More arrows must I shoot!
+ More statues must I make, nya!'''
+dialogs[3711] = '''tues must I make, nya!'''
+dialogs[3712] = '''top!'''
 dialogs[3713] = '''u don't know what you're doing.
- RETURN that star to me![endAwaitInput]BOWYER:'''
+ RETURN that star to me!'''
 dialogs[3714] = ''' Gnya, NYA!?
  A stranger you are...
- and strange looking at that'''
+ and strange looking at that![newlineAwaitInput] Teach you, we must,
+ who’s in charge!'''
 dialogs[3715] = '''![newlineAwaitInput] Teach you, we must,
- who’s in charge![endAwaitInput]???: Thanks for the help.
- You re'''
-dialogs[3716] = '''ally got me out of a jam.[newPageAwaitInput] Why are you staring at m'''
+ who’s in charge!'''
+dialogs[3716] = ''' got me out of a jam.[newPageAwaitInput] Why are you staring at me?
+ You know I'm more than just
+ a doll, don't you?'''
 dialogs[3717] = '''e?
  You know I'm more than just
- a doll, don't you?[endAwaitInput]???: Have you guessed the truth?[delay]
- I'm a visitor from'''
+ a doll, don't you?'''
 dialogs[3718] = ''' above, and this
- is a form I'm borrowing briefly.[endAwaitInput]MALLOW: You mean, li'''
-dialogs[3719] = '''ke, from the
- sky or something?[endAwaitInput]???: Higher than that, I'm afraid![delay][delay][delay][newlineAwaitInput] D'''
-dialogs[3720] = '''o you two know anything about
- the “Star Road”?[endAwaitInput]???: Completely in the dark, eh?[delay]'''
-dialogs[3721] = '''[delay][delay]
- Well, it’s a big mess up there right
- now, and it concerns you too![delay][delay][newPageAwaitInput] Let me explain...[newPageAwaitInput] You've'''
+ is a form I'm borrowing briefly.'''
+dialogs[3719] = '''from the
+ sky or something?'''
+dialogs[3720] = '''wo know anything about
+ the “Star Road”?'''
+dialogs[3721] = '''Well, it’s a big mess up there right
+ now, and it concerns you too![delay][delay][newPageAwaitInput] Let me explain...[newPageAwaitInput] You've heard of wishing upon a
+ shooting star?'''
 dialogs[3722] = ''' heard of wishing upon a
- shooting star?[endAwaitInput]??'''
-dialogs[3723] = '''?: At the “Star Road”, your
- wish is transformed into a star.[newlineAwaitInput] When it’s granted, it then turns'''
-dialogs[3724] = '''
+ shooting star?'''
+dialogs[3723] = '''t the “Star Road”, your
+ wish is transformed into a star.[newlineAwaitInput] When it’s granted, it then turns
  into a shooting star and falls
  down to earth.[newPageAwaitInput] So you see, the Star Road plays an
- integral r'''
-dialogs[3725] = '''ole in granting wishes.[newPageAwaitInput] But eve'''
+ integral role in granting wishes.[newPageAwaitInput] But ever since a sword destroyed
+ the “Star Road”, everything's
+ come to a halt.[newPageAwaitInput] No stars have been made since.[newlineAwaitInput] The way things stand,[pauseAwaitInput] yours is a
+ world where wishes can't come
+ true anymore.'''
+dialogs[3724] = '''o a shooting star and falls
+ down to earth.[newPageAwaitInput] So you see, the Star Road plays an
+ integral role in granting wishes.[newPageAwaitInput] But ever since a sword destroyed
+ the “Star Road”, everything's
+ come to a halt.[newPageAwaitInput] No stars have been made since.[newlineAwaitInput] The way things stand,[pauseAwaitInput] yours is a
+ world where wishes can't come
+ true anymore.'''
+dialogs[3725] = '''ole in granting wishes.[newPageAwaitInput] But ever since a sword destroyed
+ the “Star Road”, everything's
+ come to a halt.[newPageAwaitInput] No stars have been made since.[newlineAwaitInput] The way things stand,[pauseAwaitInput] yours is a
+ world where wishes can't come
+ true anymore.'''
 dialogs[3726] = '''r since a sword destroyed
  the “Star Road”, everything's
- come to a halt.[newPageAwaitInput] No stars have been made'''
-dialogs[3727] = ''''''
+ come to a halt.[newPageAwaitInput] No stars have been made since.[newlineAwaitInput] The way things stand,[pauseAwaitInput] yours is a
+ world where wishes can't come
+ true anymore.'''
+dialogs[3727] = ''' since.[newlineAwaitInput] The way things stand,[pauseAwaitInput] yours is a
+ world where wishes can't come
+ true anymore.'''
 dialogs[3728] = ''' since.[newlineAwaitInput] The way things stand,[pauseAwaitInput] yours is a
  world where wishes can't come
- true anymor'''
-dialogs[3729] = '''e.[endAwaitInput]MALLOW: Are you saying THIS star
- is a part of your “Starway”?[endAwaitInput]???: That’s “STAR ROAD”, my
- fluffy little friend ...[newPageAwaitInput] Yes, [pauseAwaitInput]that star is a broken piece
- of the'''
+ true anymore.'''
+dialogs[3729] = '''ALLOW: Are you saying THIS star
+ is a part of your “Starway”?'''
 dialogs[3730] = ''' Star Road.[newPageAwaitInput] I'm here to find them all, and
- repair the Star Road.[endAwaitInput]???: 
- The broken Star Pieces...[newlineAwaitInput] There are 7 altogether.[endAwaitInput]???: For peace to return'''
-dialogs[3731] = '''...[newlineAwaitInput] we must get rid of Smithy,
- find the Star Pieces, and repai'''
-dialogs[3732] = '''r
- the Star Road..[endAwaitInput]'''
-dialogs[3733] = '''???: I'm “♥♪!?”, but i'''
-dialogs[3734] = '''t’s hard to
- pronounce so...[newlineAwaitInput] Call me “Geno”'''
-dialogs[3735] = ''', after the doll.[newPageAwaitInput] I chose him because he looke'''
+ repair the Star Road.'''
+dialogs[3731] = ''' we must get rid of Smithy,
+ find the Star Pieces, and repair
+ the Star Road..'''
+dialogs[3732] = '''Star Road..'''
+dialogs[3733] = ''' I'm “♥♪!?”, but it’s hard to
+ pronounce so...[newlineAwaitInput] Call me “Geno”, after the doll.[newPageAwaitInput] I chose him because he looked the
+ strongest out of all the dolls.'''
+dialogs[3734] = '''rd to
+ pronounce so...[newlineAwaitInput] Call me “Geno”, after the doll.[newPageAwaitInput] I chose him because he looked the
+ strongest out of all the dolls.'''
+dialogs[3735] = ''', after the doll.[newPageAwaitInput] I chose him because he looked the
+ strongest out of all the dolls.'''
 dialogs[3736] = '''d the
- strongest out of a'''
-dialogs[3737] = '''ll the dolls.[endAwaitInput] “Geno”, who is searching'''
-dialogs[3738] = ''' for the
+ strongest out of all the dolls.'''
+dialogs[3737] = '''ll the dolls.'''
+dialogs[3738] = ''' the
   pieces of the Star Road, joins
-         Mario and Mallow.[newPageAwaitInput] Things are definite'''
-dialogs[3739] = '''ly looking up![endAwaitInput]GE'''
-dialogs[3740] = ''''''
+         Mario and Mallow.[newPageAwaitInput] Things are definitely looking up!'''
+dialogs[3739] = '''ly looking up!'''
+dialogs[3740] = '''NO: Now grab the star, Mario!'''
 dialogs[3741] = '''NO: Now grab the star, Mario!'''
-dialogs[3742] = '''[endAwaitInput] Ooh, I heard everything![delay]
+dialogs[3742] = '''h, I heard everything![delay]
  Who would have known that star
- '''
-dialogs[3743] = '''was so important?[newPageAwaitInput] '''
-dialogs[3744] = '''I've got to inform Smithy![endAwaitInput]GENO: Come on!
- Let’s get this show on the road.[endAwaitInput]
-        Pick up a “Mushroom”[endAwaitInput]GARDENER: Hey!
- I haven't finished yet.[endAwaitInput]G'''
-dialogs[3745] = '''ARDENER: Short attention'''
-dialogs[3746] = ''' span?[endAwaitInput]GARDENER: Hi, I'''
-dialogs[3747] = ''''m the gardener.[delay][delay][delay]
+ was so important?[newPageAwaitInput] I've got to inform Smithy!'''
+dialogs[3743] = '''was so important?[newPageAwaitInput] I've got to inform Smithy!'''
+dialogs[3744] = ''' got to inform Smithy!'''
+dialogs[3745] = '''ARDENER: Short attention span?'''
+dialogs[3746] = '''n?'''
+dialogs[3747] = '''gardener.[delay][delay][delay]
  See that huge planter?[newPageAwaitInput] I've spent many years seeking the
  legendary “Seed” and “Fertilizer”
- to f'''
-dialogs[3748] = '''ill it with, but had no lu'''
-dialogs[3749] = '''ck.[newPageAwaitInput] '''
-dialogs[3750] = '''Sigh...if I could only find them![endAwaitInput]GARDENER: Incredible!
- I can't b'''
-dialogs[3751] = '''elieve it! It’s the
- legendary “Se'''
-dialogs[3752] = '''ed” I've read about
- in the ancient gardening texts.'''
-dialogs[3753] = '''
+ to fill it with, but had no luck.[newPageAwaitInput] Sigh...if I could only find them!'''
+dialogs[3748] = '''ill it with, but had no luck.[newPageAwaitInput] Sigh...if I could only find them!'''
+dialogs[3749] = '''ck.[newPageAwaitInput] Sigh...if I could only find them!'''
+dialogs[3750] = '''Sigh...if I could only find them!'''
+dialogs[3751] = '''ve it! It’s the
+ legendary “Seed” I've read about
+ in the ancient gardening texts.
  These are so rare! Can you even
  begin to comprehend what a huge
- discovery this is? I've spent my'''
+ discovery this is? I've spent my
+ whole life searching for one!
+ It’s too much, I tell ya![delay_24]'''
+dialogs[3752] = '''ed” I've read about
+ in the ancient gardening texts.
+ These are so rare! Can you even
+ begin to comprehend what a huge
+ discovery this is? I've spent my
+ whole life searching for one!
+ It’s too much, I tell ya![delay_24]'''
+dialogs[3753] = '''ese are so rare! Can you even
+ begin to comprehend what a huge
+ discovery this is? I've spent my
+ whole life searching for one!
+ It’s too much, I tell ya![delay_24]'''
 dialogs[3754] = '''
  whole life searching for one!
- It’s too much, I tell ya![delay_24][end]GARDENER: Egads!
- Do you know what you have there?
- That fertilizer comes from the
-'''
+ It’s too much, I tell ya![delay_24]'''
 dialogs[3755] = ''' Shy Away clan, famous for its
  miraculous feats of gardening. I
- looked for it beyond the cl'''
-dialogs[3756] = '''iffs,
- even tried Bean'''
-dialogs[3757] = ''' Valley, but failed.
+ looked for it beyond the cliffs,
+ even tried Bean Valley, but failed.
  I've traveled around the world and
- wa'''
-dialogs[3758] = ''''''
-dialogs[3759] = '''ited a lifetime for some of that
- fertili'''
-dialogs[3760] = '''zer you've got there![delay_24][end]GARDENER: Well, that’s my story.[newlineAwaitInput] Say...will you give me the “Seed”?
+ waited a lifetime for some of that
+ fertilizer you've got there![delay_24]'''
+dialogs[3756] = ''',
+ even tried Bean Valley, but failed.
+ I've traveled around the world and
+ waited a lifetime for some of that
+ fertilizer you've got there![delay_24]'''
+dialogs[3757] = '''ley, but failed.
+ I've traveled around the world and
+ waited a lifetime for some of that
+ fertilizer you've got there![delay_24]'''
+dialogs[3758] = ''' a lifetime for some of that
+ fertilizer you've got there![delay_24]'''
+dialogs[3759] = ''' a lifetime for some of that
+ fertilizer you've got there![delay_24]'''
+dialogs[3760] = '''zer you've got there![delay_24]'''
+dialogs[3761] = '''e)'''
+dialogs[3762] = '''ill you give it to me?
   [startSelection]  (Sure)
-  [startSelection]  (Nop'''
-dialogs[3761] = '''e)[endAwaitInput]GARDENER: Yes, you might say I
- have fertilizer on the brain'''
-dialogs[3762] = '''.[newlineAwaitInput] Will you give it to me?
-  [startSelection]  (Sure)
-  [startSelection]  (Sorry)[endAwaitInput]GARDENER: You changed your mind?[newlineAwaitInput]  [startSelection]  (Yes)
-'''
-dialogs[3763] = '''  [startSelection]  (No)[endAwaitInput]GARDENER: Well, Mario?[newlineAwaitInput] Will you '''
+  [startSelection]  (Sorry)'''
+dialogs[3763] = '''No)'''
 dialogs[3764] = '''give me the fertilizer?
   [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: I finally ha'''
-dialogs[3765] = '''ve it![newPageAwaitInput] This is extraordinary![endAwaitInput] May I have the fertilizer?
-  [startSelection]  (Yes)
-  [startSelection]  (No)[endAwaitInput]GARDENER: Sigh...
- W'''
-dialogs[3766] = ''''''
+  [startSelection]  (No)'''
+dialogs[3765] = '''t![newPageAwaitInput] This is extraordinary!'''
+dialogs[3766] = '''hat ever happened to granting
+ an old man’s wishes?'''
 dialogs[3767] = '''hat ever happened to granting
- an old '''
-dialogs[3768] = '''man’s wishes?[endAwaitInput]GARDENER: Oh thank you![newlineAwaitInput] I finally have both the “Seed” and
- the “Fertilizer”.'''
-dialogs[3769] = '''[newlineAwaitInput] I'll try them out right away.[endAwaitInput]GARDENER: I'd be so happy if I
-'''
-dialogs[3770] = ''' only had the “Seed”![newPageAwaitInput] I'm sooo disappointed.[endAwaitInput]GARDENE'''
+ an old man’s wishes?'''
+dialogs[3768] = '''wishes?'''
+dialogs[3769] = '''ll try them out right away.'''
+dialogs[3770] = ''' only had the “Seed”![newPageAwaitInput] I'm sooo disappointed.'''
 dialogs[3771] = '''R: I finally have it![newlineAwaitInput] But without the “Seed”,
- it’s useless.[endAwaitInput]'''
-dialogs[3772] = ''' You're giving me the fertilize'''
+ it’s useless.'''
+dialogs[3772] = ''' You're giving me the fertilizer too?
+  [startSelection]  (Yes)
+  [startSelection]  (No)'''
 dialogs[3773] = '''r too?
   [startSelection]  (Yes)
-  [startSelection]  (N'''
-dialogs[3774] = '''o)[endAwaitInput]GARDENER: Gals don't care for
- tightwads, you know![endAwaitInput]FACTORY CHIEF: Mario![delay][delay]
-'''
-dialogs[3775] = ''' I'm surprised to see you here.[endAwaitInput]FACTORY CHIEF: '''
+  [startSelection]  (No)'''
+dialogs[3774] = '''o)'''
+dialogs[3775] = ''' surprised to see you here.'''
 dialogs[3776] = '''But this is the
  end of the line for you.[newlineAwaitInput] This is the closest you'll ever get
- to Smithy, so s'''
-dialogs[3777] = '''avor the moment.[endAwaitInput]FACTORY CHIEF: Harrumph!
- You'll be fodder for my incredible
- invention, the “'''
-dialogs[3778] = '''Gunyolk”![endAwaitInput]POUNDER #1: Sir![delay][delay]
- “Drill Bit” will be'''
-dialogs[3779] = ''' finished on time.[endAwaitInput]POUNDER #2: 
-       We're ahead of schedule![endAwaitInput]'''
+ to Smithy, so savor the moment.'''
+dialogs[3777] = '''avor the moment.'''
+dialogs[3778] = '''Gunyolk”!'''
+dialogs[3779] = '''shed on time.'''
 dialogs[3780] = '''POUNDER #3: 
-       We'll make Smithy proud![endAwaitInput]POUNDER: Here’s '''
-dialogs[3781] = '''the report![endAwaitInput]MANAGER: Good work, everyone.[delay][delay][delay]
- The harder w'''
-dialogs[3782] = '''e work, the stronger
- Smithy will become![endAwaitInput]MANAGER: The weapons we
- manufacture her'''
+       We'll make Smithy proud!'''
+dialogs[3781] = '''the report!'''
+dialogs[3782] = '''rk, the stronger
+ Smithy will become!'''
 dialogs[3783] = '''e will be...[newPageAwaitInput]
-           Just think of it...[endAwaitInput]MANAGER: When Smithy takes over
- Mario’s wo'''
-dialogs[3784] = '''rld, we can do anything
- we want![endAwaitInput]
-              Gwah, ha, ha...[delay_48][end]BOWSER:
-              Not so fast![newPageAwaitInput]
-     You sure are a coc'''
-dialogs[3785] = '''ky bunch![endAwaitInput]BOWSER: I rule '''
+           Just think of it...'''
+dialogs[3784] = ''' we can do anything
+ we want!'''
+dialogs[3785] = '''ky bunch!'''
 dialogs[3786] = '''this world!
- Don't you forget it![endAwaitInput]MANAGER: It’s Mario![newlineAwaitInput] Mack '''
+ Don't you forget it!'''
 dialogs[3787] = '''2 and Yaridovich 2 didn't
- stop him?[endAwaitInput]BOWSER:'''
-dialogs[3788] = ''' No, NO! Leave Mario
- outta this. '''
-dialogs[3789] = '''I'm the one you need
- to worry about, not him![endAwaitInput]MANA'''
+ stop him?'''
+dialogs[3788] = ''' NO! Leave Mario
+ outta this. I'm the one you need
+ to worry about, not him!'''
+dialogs[3789] = ''' one you need
+ to worry about, not him!'''
 dialogs[3790] = '''GER: Mario, you're about to
- make the longest jump of your life![endAwaitInput]BOWSER: Y...You're '''
-dialogs[3791] = '''ignoring me![endAwaitInput]CLER'''
-dialogs[3792] = '''K: 
- Production is on schedule?[newPageAwaitInput] This, despite the '''
-dialogs[3793] = '''fact that Mack,
+ make the longest jump of your life!'''
+dialogs[3791] = '''ignoring me!'''
+dialogs[3792] = ''' Production is on schedule?[newPageAwaitInput] This, despite the fact that Mack,
  Bowyer, Yaridovich, and the Axem
- Rangers were defeated.[newlineAwaitInput] At this rate, '''
-dialogs[3794] = '''Smithy will have a
- new army in no time![endAwaitInput]MALLOW: A...new army?[newPageAwaitInput] You can't be making more '''
+ Rangers were defeated.[newlineAwaitInput] At this rate, Smithy will have a
+ new army in no time!'''
+dialogs[3793] = ''' that Mack,
+ Bowyer, Yaridovich, and the Axem
+ Rangers were defeated.[newlineAwaitInput] At this rate, Smithy will have a
+ new army in no time!'''
+dialogs[3794] = '''hy will have a
+ new army in no time!'''
 dialogs[3795] = '''weapons!
  Haven't you caused enough trouble
- already?[endAwaitInput]CLERK:'''
-dialogs[3796] = ''' What did you say, you
- little'''
-dialogs[3797] = ''' puff'''
-dialogs[3798] = ''' ball?
- [delay][delay]Mad Mal'''
-dialogs[3799] = '''let! TRASH 'em![endAwaitInput]CLERK: All right, let’s see
- whatcha got![endAwaitInput]CLERK: 
- Oh yeah?! Who ar'''
-dialogs[3800] = '''e you?[endAwaitInput]MALLOW: Th'''
+ already?'''
+dialogs[3796] = '''t did you say, you
+ little puff ball?
+ [delay][delay]Mad Mallet! TRASH 'em!'''
+dialogs[3797] = ''' puff ball?
+ [delay][delay]Mad Mallet! TRASH 'em!'''
+dialogs[3798] = '''l?
+ [delay][delay]Mad Mallet! TRASH 'em!'''
+dialogs[3799] = ''' TRASH 'em!'''
+dialogs[3800] = '''e you?'''
 dialogs[3801] = '''is is THE Mario![newPageAwaitInput] Give up now, while you still have
- a chance![newPageAwaitInput] Shut down production'''
+ a chance![newPageAwaitInput] Shut down production NOW,
+ or he'll...STOMP ya!'''
 dialogs[3802] = ''' NOW,
- or he'll.'''
-dialogs[3803] = '''..STOMP ya![endAwaitInput]MALLOW: Ha!
- Hope you le'''
-dialogs[3804] = '''arned your lesson![endAwaitInput]MALLOW: 
-'''
-dialogs[3805] = ''' We're almost there, Mario.[newlineAwaitInput] Come on![endAwaitInput]'''
-dialogs[3806] = '''MALLOW: What do you suppose
- this switch does? Hmm...[endAwaitInput]MALLOW: 
-         Ack! Help me,'''
-dialogs[3807] = ''' Mario![endAwaitInput]MALLOW: ••[delay]••[delay]••[delay]Nothin'''
-dialogs[3808] = '''g’s happening.[endAwaitInput]MALLOW: Huh?
- What’s w'''
+ or he'll...STOMP ya!'''
+dialogs[3803] = '''..STOMP ya!'''
+dialogs[3804] = '''arned your lesson!'''
+dialogs[3805] = ''' We're almost there, Mario.[newlineAwaitInput] Come on!'''
+dialogs[3806] = '''OW: What do you suppose
+ this switch does? Hmm...'''
+dialogs[3807] = ''' Mario!'''
+dialogs[3808] = '''g’s happening.'''
 dialogs[3809] = '''ith the funny face, Mario?[newPageAwaitInput] Oh I KNOW, you're trying to make
- me look, aren't you?[delay]'''
+ me look, aren't you?[delay][delay]
+ I'm not going to fall for that one!'''
 dialogs[3810] = '''[delay]
- I'm not going to fall f'''
-dialogs[3811] = '''or that one![endAwaitInput]MALLOW: Boy, that was scary!
- I guess the green switch controls
- the'''
-dialogs[3812] = ''' crane.[endAwaitInput]GENO: Hmm••[delay]••[delay]••[delay][newlineAwaitInput] The production line hasn't halted.'''
-dialogs[3813] = '''[endAwaitInput]GENO: This must be where Smithy
- '''
-dialogs[3814] = '''makes his weapons.[newPageAwaitInput] To find the last '''
+ I'm not going to fall for that one!'''
+dialogs[3811] = '''hat one!'''
+dialogs[3812] = ''' crane.'''
+dialogs[3813] = '''O: This must be where Smithy
+ makes his weapons.[newPageAwaitInput] To find the last Star Piece and
+ stop the factory, we've got to
+ defeat him first.'''
+dialogs[3814] = '''makes his weapons.[newPageAwaitInput] To find the last Star Piece and
+ stop the factory, we've got to
+ defeat him first.'''
 dialogs[3815] = '''Star Piece and
  stop the factory, we've got to
- defeat him '''
-dialogs[3816] = '''first.[endAwaitInput]GENO: Mario...
- There’s no turning back now.
- Are you ready?[endAwaitInput]GENO: Our quest is almos'''
-dialogs[3817] = '''t over.[endAwaitInput]GENO: A'''
-dialogs[3818] = '''nd when the t'''
-dialogs[3819] = '''ime comes••[delay]••[delay]••[delay]'''
-dialogs[3820] = ''''''
-dialogs[3821] = ''''''
-dialogs[3822] = ''''''
-dialogs[3823] = ''''''
-dialogs[3824] = '''[endAwaitInput]GENO: Look Mario, this is whe'''
-dialogs[3825] = '''re the
- weapons come from.[endAwaitInput]
-
-                Nya ha ha.[delay_48][end]              Heh heh heh...[delay_48][end] Like the moon over[delay_32] 
- the day, my genius and brawn[delay_32]
- are lost on these fools. [delay_32]~Haiku'''
-dialogs[3826] = '''[endAwaitInput]TOADSTOOL: You there![delay][delay]
- Are you the one in charge here?[newPageAwaitInput] Do you know what your weapons
- have b'''
-dialogs[3827] = ''''''
-dialogs[3828] = ''''''
-dialogs[3829] = ''''''
-dialogs[3830] = ''''''
-dialogs[3831] = ''''''
-dialogs[3832] = ''''''
-dialogs[3833] = ''''''
-dialogs[3834] = ''''''
-dialogs[3835] = ''''''
-dialogs[3836] = ''''''
-dialogs[3837] = ''''''
-dialogs[3838] = ''''''
-dialogs[3839] = '''e'''
-dialogs[3840] = '''en doing to our world?[newPageAwaitInput] Stop this nonsense at once![endAwaitInput]DIRECTOR:
-    I'm afraid that isn't possible. [newPageAwaitInput] Any dissent against Smithy will be
- dealt with by immediate melt down.[endAwaitInput]TOADSTOOL'''
-dialogs[3841] = ''''''
-dialogs[3842] = ''''''
-dialogs[3843] = ''''''
-dialogs[3844] = ''''''
-dialogs[3845] = ''': 
-             M, melt down?[newPageAwaitInput] You '''
+ defeat him first.'''
+dialogs[3816] = '''first.'''
+dialogs[3817] = '''t over.'''
+dialogs[3818] = '''nd when the time comes••[delay]••[delay]••[delay]'''
+dialogs[3819] = '''comes••[delay]••[delay]••[delay]'''
+dialogs[3820] = '''O: Look Mario, this is where the
+ weapons come from.'''
+dialogs[3821] = '''O: Look Mario, this is where the
+ weapons come from.'''
+dialogs[3822] = '''O: Look Mario, this is where the
+ weapons come from.'''
+dialogs[3823] = '''O: Look Mario, this is where the
+ weapons come from.'''
+dialogs[3824] = '''O: Look Mario, this is where the
+ weapons come from.'''
+dialogs[3825] = ''' weapons come from.'''
+dialogs[3826] = ''''''
+dialogs[3827] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3828] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3829] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3830] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3831] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3832] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3833] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3834] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3835] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3836] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3837] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3838] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3839] = '''doing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3840] = '''oing to our world?[newPageAwaitInput] Stop this nonsense at once!'''
+dialogs[3841] = '''[delay_77], melt down?[newPageAwaitInput] You can't scare me, I've got
+ Mario by my side!'''
+dialogs[3842] = '''[delay_77], melt down?[newPageAwaitInput] You can't scare me, I've got
+ Mario by my side!'''
+dialogs[3843] = '''[delay_77], melt down?[newPageAwaitInput] You can't scare me, I've got
+ Mario by my side!'''
+dialogs[3844] = '''[delay_77], melt down?[newPageAwaitInput] You can't scare me, I've got
+ Mario by my side!'''
+dialogs[3845] = '''[delay_77], melt down?[newPageAwaitInput] You can't scare me, I've got
+ Mario by my side!'''
 dialogs[3846] = '''can't scare me, I've got
- Mario by my side![endAwaitInput]DIRECTOR: 
-     Dissenters will b'''
+ Mario by my side!'''
 dialogs[3847] = '''e eliminated!
-       Production will continue.[endAwaitInput]TOADSTOOL:
-            That was scary![newPageAwaitInput] But we can't run away now'''
-dialogs[3848] = '''.[newlineAwaitInput] '''
-dialogs[3849] = '''We've got to kick these lowl'''
-dialogs[3850] = '''ifes
- out of our w'''
-dialogs[3851] = '''orld.[endAwaitInput]
-
-   I wish for everyone to '''
-dialogs[3852] = '''be happy.[endAwaitInput]DEALER'''
-dialogs[3853] = ''': 
-         I will draw one card.[endAwaitInput]DEALER: 
-        I'll play with this h'''
-dialogs[3854] = '''and.[endAwaitInput]DEALER: 
-         Draw or stay, Mario'''
-dialogs[3855] = '''?[endAwaitInput]            Your total is [0x7000].
-  [startSelection] (Draw)
-  [startSelection] (Stay)[endAwaitInput]DEALER: 
- I w'''
-dialogs[3856] = '''ill first deal you two cards.[endAwaitInput]            You got a(n) [0x7000].[endAwaitInput]      Oh no! You went over 21.[endAwaitInput]DEALER:
-      Plea'''
-dialogs[3857] = '''se show me your hand.[endAwaitInput]DEALER: 
-                I have [0x7000].[endAwaitInput]
-          Mario, you have [0x7000]'''
-dialogs[3858] = '''.[endAwaitInput]DEALER: I broke 21, so you won![newlineAwaitInput] Her'''
-dialogs[3859] = '''e’s your Frog Coin.[endAwaitInput]DEALER: '''
-dialogs[3860] = '''You won this round.[newlineAwaitInput] Here is your Fro'''
-dialogs[3861] = '''g Coin.[endAwaitInput]DEALER: You lost this round.[newlineAwaitInput] I'll take your Frog Coin'''
-dialogs[3862] = '''.[endAwaitInput]DEALER: It’s a tie.[newlineAwaitInput] I'll'''
-dialogs[3863] = ''' keep your Frog Coin.[endAwaitInput]DEALER: No Frog Coins?[newlineAwaitInput] Sorry'''
-dialogs[3864] = ''', you can't play then.[endAwaitInput]DEALER: 
-            Your first card.[endAwaitInput]DEALER: 
-          Your second card.[endAwaitInput]DEALER: 
- Welcome to the Blackjack table.[newlineAwaitInput] Play a round with me, sir?
-  [startSelection] ('''
+       Production will continue.'''
+dialogs[3848] = '''.[newlineAwaitInput] We've got to kick these lowlifes
+ out of our world.'''
+dialogs[3849] = '''e got to kick these lowlifes
+ out of our world.'''
+dialogs[3850] = '''
+ out of our world.'''
+dialogs[3851] = '''.'''
+dialogs[3852] = '''appy.'''
+dialogs[3853] = '''   I will draw one card.'''
+dialogs[3854] = '''and.'''
+dialogs[3855] = '''?'''
+dialogs[3856] = '''first deal you two cards.'''
+dialogs[3857] = '''se show me your hand.'''
+dialogs[3858] = '''.'''
+dialogs[3859] = '''e’s your Frog Coin.'''
+dialogs[3860] = '''won this round.[newlineAwaitInput] Here is your Frog Coin.'''
+dialogs[3861] = '''g Coin.'''
+dialogs[3862] = '''ALER: It’s a tie.[newlineAwaitInput] I'll keep your Frog Coin.'''
+dialogs[3863] = '''p your Frog Coin.'''
+dialogs[3864] = ''', you can't play then.'''
 dialogs[3865] = '''Yes)
-  [startSelection] (No)[endAwaitInput] Another g'''
+  [startSelection] (No)'''
 dialogs[3866] = '''ame, sir?
-  [startSelection] (Sure'''
-dialogs[3867] = ''')
-  [startSelection] (No)[endAwaitInput]DEALER: 
- Welcome to the Grate Guy Casino.[endAwaitInput]DEALER:'''
+  [startSelection] (Sure)
+  [startSelection] (No)'''
+dialogs[3867] = ''' (No)'''
 dialogs[3868] = ''' If you would like to play,
- please go to the other sid'''
-dialogs[3869] = '''e of
- the table.[endAwaitInput]DEALER: In Blackjack, whomever
- comes'''
-dialogs[3870] = ''' the closest to 21 points,
- without going over'''
-dialogs[3871] = ''', wins.[newPageAwaitInput] I will first deal 2 cards, then we
+ please go to the other side of
+ the table.'''
+dialogs[3869] = '''
+ the table.'''
+dialogs[3870] = '''osest to 21 points,
+ without going over, wins.[newPageAwaitInput] I will first deal 2 cards, then we
  will each draw as many cards as
- we wish.[newPageAwaitInput] Once we'''
+ we wish.[newPageAwaitInput] Once we stop drawing cards, we
+ both show our hand, and whomever
+ has the higher total wins.[newPageAwaitInput] But if your hand exceeds 21, your
+ opponent wins, regardless of how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3871] = '''s.[newPageAwaitInput] I will first deal 2 cards, then we
+ will each draw as many cards as
+ we wish.[newPageAwaitInput] Once we stop drawing cards, we
+ both show our hand, and whomever
+ has the higher total wins.[newPageAwaitInput] But if your hand exceeds 21, your
+ opponent wins, regardless of how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
 dialogs[3872] = ''' stop drawing cards, we
  both show our hand, and whomever
- has the higher total wins.[newPageAwaitInput] '''
-dialogs[3873] = '''But if your hand exceeds 21, you'''
-dialogs[3874] = '''r
- opponent wins, regardle'''
-dialogs[3875] = ''''''
-dialogs[3876] = ''''''
-dialogs[3877] = ''''''
-dialogs[3878] = ''''''
-dialogs[3879] = ''''''
-dialogs[3880] = ''''''
-dialogs[3881] = ''''''
-dialogs[3882] = ''''''
-dialogs[3883] = ''''''
-dialogs[3884] = ''''''
-dialogs[3885] = ''''''
-dialogs[3886] = ''''''
-dialogs[3887] = ''''''
-dialogs[3888] = '''ss of how
- ma'''
-dialogs[3889] = '''ny points they have.[newPageAwaitInput] So if you exceed 21'''
+ has the higher total wins.[newPageAwaitInput] But if your hand exceeds 21, your
+ opponent wins, regardless of how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3873] = '''But if your hand exceeds 21, your
+ opponent wins, regardless of how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3874] = '''pponent wins, regardless of how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3875] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3876] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3877] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3878] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3879] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3880] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3881] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3882] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3883] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3884] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3885] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3886] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3887] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3888] = '''f how
+ many points they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3889] = '''oints they have.[newPageAwaitInput] So if you exceed 21, you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
 dialogs[3890] = ''', you'll lose.[newPageAwaitInput] If I go over 21, you'll win.[newPageAwaitInput] To play, you'll need 1 Frog Coin.[newPageAwaitInput] If you win, you'll get 1 Frog Coin,
- but if it’s a ti'''
+ but if it’s a tie or you lose, I'll
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
 dialogs[3891] = '''e or you lose, I'll
-'''
-dialogs[3892] = ''' keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Bla'''
-dialogs[3893] = '''ckjack?
+ keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
   [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]DOORMAN: Sorry, this casino is
- for members only.[endAwaitInput]DOORMAN: You don't have a
- “Bright Car'''
-dialogs[3894] = '''d”?[newlineAwaitInput] I'm sorry, I can't let you in.[endAwaitInput]DOORMAN: Please enjo'''
-dialogs[3895] = '''y yourself.[endAwaitInput]DOORMAN: We hope everything was
- to your liking?[endAwaitInput] Business is so slow...[newlineAwaitInput] Hey Mario, wanna play “Look the
- other way” with me?'''
-dialogs[3896] = '''[endAwaitInput] Ready, and...
- Look the...other...[delay_40][end] (Hit right/left on the Control Pad)[endAwaitInput] ...Way![endAwaitInput]'''
-dialogs[3897] = ''' Gotcha!
- I win![endAwaitInput] Ooh, you didn't get caught!
- I lost this round.[endAwaitInput] Okay, Mario, this is in celebration
- of your wins![endAwaitInput]        Received a “Star Egg”![endAwaitInput] Wanna try it again?
+  [startSelection] (No)'''
+dialogs[3892] = ''' keep it.[newPageAwaitInput] So how about it?[newlineAwaitInput] Would you like to play Blackjack?
   [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]TOAD: This is for you.[endAwaitInput] Welcome to the '''
-dialogs[3898] = '''Grate Guy Casino![newlineAwaitInput] Wanna play the slot machine'''
-dialogs[3899] = ''''''
-dialogs[3900] = ''''''
-dialogs[3901] = ''''''
-dialogs[3902] = ''''''
-dialogs[3903] = ''''''
-dialogs[3904] = ''''''
-dialogs[3905] = ''''''
-dialogs[3906] = ''''''
-dialogs[3907] = '''s?
+  [startSelection] (No)'''
+dialogs[3893] = '''ck?
   [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] A'''
-dialogs[3908] = '''s you wish.[endAwaitInput] Require instructi'''
-dialogs[3909] = '''ons?
+  [startSelection] (No)'''
+dialogs[3894] = '''d”?[newlineAwaitInput] I'm sorry, I can't let you in.'''
+dialogs[3895] = '''elf.'''
+dialogs[3896] = ''''''
+dialogs[3897] = '''cha!
+ I win!'''
+dialogs[3898] = '''e Guy Casino![newlineAwaitInput] Wanna play the slot machines?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3899] = '''[startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3900] = '''[startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3901] = '''[startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3902] = '''[startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3903] = '''[startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3904] = '''[startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3905] = '''[startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3906] = '''[startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3907] = '''[startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3908] = '''s you wish.'''
+dialogs[3909] = '''
   [startSelection] (No)
-  [startSelection] (Yes)[endAwaitInput] I'''
-dialogs[3910] = ''''ll take your 10 coins.[newlineAwaitInput] Please enjoy yourself.[endAwaitInput] Pleas'''
-dialogs[3911] = ''''''
-dialogs[3912] = ''''''
-dialogs[3913] = ''''''
-dialogs[3914] = ''''''
-dialogs[3915] = ''''''
-dialogs[3916] = ''''''
-dialogs[3917] = ''''''
-dialogs[3918] = ''''''
-dialogs[3919] = '''e come back with more coins.[endAwaitInput] The slot '''
+  [startSelection] (Yes)'''
+dialogs[3910] = '''take your 10 coins.[newlineAwaitInput] Please enjoy yourself.'''
+dialogs[3911] = '''e come back with more coins.'''
+dialogs[3912] = '''e come back with more coins.'''
+dialogs[3913] = '''e come back with more coins.'''
+dialogs[3914] = '''e come back with more coins.'''
+dialogs[3915] = '''e come back with more coins.'''
+dialogs[3916] = '''e come back with more coins.'''
+dialogs[3917] = '''e come back with more coins.'''
+dialogs[3918] = '''e come back with more coins.'''
+dialogs[3919] = '''e come back with more coins.'''
 dialogs[3920] = '''machine costs 10 coins
- per game.[newPageAwaitInput] Hit it '''
-dialogs[3921] = ''''''
-dialogs[3922] = ''''''
-dialogs[3923] = ''''''
-dialogs[3924] = ''''''
-dialogs[3925] = ''''''
-dialogs[3926] = ''''''
-dialogs[3927] = ''''''
-dialogs[3928] = ''''''
-dialogs[3929] = ''''''
-dialogs[3930] = ''''''
-dialogs[3931] = ''''''
-dialogs[3932] = ''''''
-dialogs[3933] = ''''''
-dialogs[3934] = ''''''
-dialogs[3935] = ''''''
-dialogs[3936] = ''''''
-dialogs[3937] = ''''''
-dialogs[3938] = ''''''
-dialogs[3939] = ''''''
-dialogs[3940] = ''''''
-dialogs[3941] = ''''''
-dialogs[3942] = ''''''
-dialogs[3943] = ''''''
-dialogs[3944] = ''''''
-dialogs[3945] = ''''''
-dialogs[3946] = ''''''
-dialogs[3947] = ''''''
-dialogs[3948] = ''''''
-dialogs[3949] = ''''''
-dialogs[3950] = ''''''
-dialogs[3951] = ''''''
-dialogs[3952] = ''''''
-dialogs[3953] = ''''''
-dialogs[3954] = ''''''
-dialogs[3955] = ''''''
-dialogs[3956] = ''''''
-dialogs[3957] = ''''''
-dialogs[3958] = ''''''
-dialogs[3959] = ''''''
-dialogs[3960] = ''''''
-dialogs[3961] = ''''''
-dialogs[3962] = ''''''
-dialogs[3963] = ''''''
-dialogs[3964] = ''''''
-dialogs[3965] = ''''''
-dialogs[3966] = ''''''
-dialogs[3967] = ''''''
-dialogs[3968] = ''''''
-dialogs[3969] = ''''''
-dialogs[3970] = ''''''
-dialogs[3971] = ''''''
-dialogs[3972] = ''''''
-dialogs[3973] = ''''''
-dialogs[3974] = ''''''
-dialogs[3975] = ''''''
-dialogs[3976] = ''''''
-dialogs[3977] = ''''''
-dialogs[3978] = ''''''
-dialogs[3979] = ''''''
-dialogs[3980] = ''''''
-dialogs[3981] = ''''''
-dialogs[3982] = ''''''
-dialogs[3983] = ''''''
-dialogs[3984] = ''''''
-dialogs[3985] = ''''''
-dialogs[3986] = ''''''
-dialogs[3987] = ''''''
-dialogs[3988] = ''''''
-dialogs[3989] = ''''''
-dialogs[3990] = ''''''
-dialogs[3991] = ''''''
-dialogs[3992] = ''''''
-dialogs[3993] = ''''''
-dialogs[3994] = ''''''
-dialogs[3995] = ''''''
-dialogs[3996] = ''''''
-dialogs[3997] = ''''''
-dialogs[3998] = ''''''
-dialogs[3999] = ''''''
-dialogs[4000] = ''''''
-dialogs[4001] = ''''''
-dialogs[4002] = ''''''
-dialogs[4003] = ''''''
-dialogs[4004] = ''''''
-dialogs[4005] = ''''''
-dialogs[4006] = ''''''
-dialogs[4007] = ''''''
-dialogs[4008] = ''''''
-dialogs[4009] = ''''''
-dialogs[4010] = ''''''
-dialogs[4011] = ''''''
-dialogs[4012] = ''''''
-dialogs[4013] = ''''''
-dialogs[4014] = ''''''
-dialogs[4015] = ''''''
-dialogs[4016] = ''''''
-dialogs[4017] = ''''''
-dialogs[4018] = ''''''
-dialogs[4019] = ''''''
-dialogs[4020] = ''''''
-dialogs[4021] = ''''''
-dialogs[4022] = ''''''
-dialogs[4023] = ''''''
-dialogs[4024] = ''''''
-dialogs[4025] = ''''''
-dialogs[4026] = ''''''
-dialogs[4027] = ''''''
-dialogs[4028] = ''''''
-dialogs[4029] = ''''''
-dialogs[4030] = ''''''
-dialogs[4031] = ''''''
-dialogs[4032] = ''''''
-dialogs[4033] = ''''''
-dialogs[4034] = ''''''
-dialogs[4035] = ''''''
-dialogs[4036] = ''''''
-dialogs[4037] = ''''''
-dialogs[4038] = ''''''
-dialogs[4039] = ''''''
-dialogs[4040] = ''''''
-dialogs[4041] = ''''''
-dialogs[4042] = ''''''
-dialogs[4043] = ''''''
-dialogs[4044] = ''''''
-dialogs[4045] = ''''''
-dialogs[4046] = ''''''
-dialogs[4047] = ''''''
-dialogs[4048] = ''''''
-dialogs[4049] = ''''''
-dialogs[4050] = ''''''
-dialogs[4051] = ''''''
-dialogs[4052] = ''''''
-dialogs[4053] = ''''''
-dialogs[4054] = ''''''
-dialogs[4055] = ''''''
-dialogs[4056] = ''''''
-dialogs[4057] = ''''''
-dialogs[4058] = ''''''
-dialogs[4059] = ''''''
-dialogs[4060] = ''''''
-dialogs[4061] = ''''''
-dialogs[4062] = ''''''
-dialogs[4063] = ''''''
-dialogs[4064] = ''''''
-dialogs[4065] = ''''''
-dialogs[4066] = ''''''
-dialogs[4067] = ''''''
-dialogs[4068] = ''''''
-dialogs[4069] = ''''''
-dialogs[4070] = ''''''
-dialogs[4071] = ''''''
-dialogs[4072] = ''''''
-dialogs[4073] = ''''''
-dialogs[4074] = ''''''
-dialogs[4075] = ''''''
-dialogs[4076] = ''''''
-dialogs[4077] = ''''''
-dialogs[4078] = ''''''
-dialogs[4079] = ''''''
-dialogs[4080] = '''once to start the game'''
-dialogs[4081] = '''.[newPageAwaitInput] Each c'''
-dialogs[4082] = '''onsecutive hit wi'''
-dialogs[4083] = ''''''
-dialogs[4084] = ''''''
-dialogs[4085] = ''''''
-dialogs[4086] = ''''''
-dialogs[4087] = ''''''
-dialogs[4088] = ''''''
-dialogs[4089] = ''''''
-dialogs[4090] = ''''''
-dialogs[4091] = ''''''
-dialogs[4092] = ''''''
-dialogs[4093] = ''''''
-dialogs[4094] = ''''''
+ per game.[newPageAwaitInput] Hit it once to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3921] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3922] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3923] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3924] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3925] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3926] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3927] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3928] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3929] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3930] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3931] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3932] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3933] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3934] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3935] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3936] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3937] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3938] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3939] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3940] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3941] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3942] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3943] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3944] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3945] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3946] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3947] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3948] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3949] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3950] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3951] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3952] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3953] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3954] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3955] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3956] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3957] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3958] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3959] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3960] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3961] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3962] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3963] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3964] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3965] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3966] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3967] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3968] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3969] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3970] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3971] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3972] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3973] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3974] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3975] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3976] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3977] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3978] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3979] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3980] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3981] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3982] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3983] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3984] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3985] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3986] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3987] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3988] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3989] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3990] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3991] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3992] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3993] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3994] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3995] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3996] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3997] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3998] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[3999] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4000] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4001] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4002] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4003] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4004] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4005] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4006] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4007] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4008] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4009] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4010] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4011] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4012] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4013] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4014] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4015] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4016] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4017] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4018] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4019] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4020] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4021] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4022] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4023] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4024] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4025] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4026] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4027] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4028] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4029] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4030] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4031] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4032] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4033] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4034] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4035] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4036] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4037] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4038] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4039] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4040] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4041] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4042] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4043] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4044] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4045] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4046] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4047] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4048] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4049] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4050] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4051] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4052] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4053] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4054] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4055] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4056] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4057] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4058] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4059] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4060] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4061] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4062] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4063] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4064] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4065] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4066] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4067] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4068] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4069] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4070] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4071] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4072] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4073] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4074] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4075] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4076] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4077] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4078] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4079] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4080] = ''' to start the game.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4081] = '''.[newPageAwaitInput] Each consecutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4082] = '''cutive hit will freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4083] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4084] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4085] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4086] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4087] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4088] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4089] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4090] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4091] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4092] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4093] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
+dialogs[4094] = '''ll freeze
+ one of the pictures. Match all 3
+ and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
+  [startSelection] (Yes)
+  [startSelection] (No)'''
 dialogs[4095] = '''ll freeze
  one of the pictures. Match all 3
  and you might win a Frog Coin.[newPageAwaitInput] Do you want to try it out?
   [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput]GRATE GUY: Hello Mario![newPageAwaitInput] I run this casino!
- Feel free to enjoy yourself.[endAwaitInput]DEALER: Do you want to continue?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] I wonder what became of Booster's
- search for a bride?[endAwaitInput]           [delay]You [delay]missed![delay_40][end]          Talk to the flower[newlineAwaitInput]     and the star gate will open.[endAwaitInput]             To Marrymore[endAwaitInput]              To Star Hill[endAwaitInput]
-
-    Can't wait to start a family.[endAwaitInput]
-
-         I hope my baby’s cute![endAwaitInput]
-
-      May Mallow fix the Road![endAwaitInput]            It’s been sealed[endAwaitInput]                  Look!
-   The “Shiny Stone” is reacting![endAwaitInput]      The seal has been broken![endAwaitInput] It’s really weird.
- Sometimes I hear the guy next door.[newPageAwaitInput] He’s always mumbling about a
- Crystal-this and an Evil-that.[newPageAwaitInput] Isn't a “Crystal” some kind of a
- shiny rock...or something?
- I know I've seen those somewhere![endAwaitInput]JINX: Whoa[delay][delay]••••••[newlineAwaitInput] You ARE the stronger champion,
- no doubt about it.[newPageAwaitInput] My reputation was staked on this
- last fight, so I've lost the title
- of “Sensei”.[newPageAwaitInput] From today, you are the Sensei
- of this dojo.[newPageAwaitInput] Please take this belt, which only
- the highest ranking fighter in the
- dojo can wear.[endAwaitInput] We will rename the dojo, “Mario
- Style Dojo”, and incorporate your
- jump technique into the training.[endAwaitInput]        Received a “Jinx Belt”[endAwaitInput]JINX: Jagger and I will start our
- training immediately.[endAwaitInput] 1000 warm up jumps!
- Ready, begin![endAwaitInput]
-                   DODO![endAwaitInput]VALENTINA: Did you display the
- statues properly?[endAwaitInput]VALENTINA: Fine! Now polish them
- to a fine luster and make them a
- tribute to my beauty![endAwaitInput]VALENTINA: Pay attention to me![newlineAwaitInput] Hurry up, and DON'T let me catch
- you dozing again.[endAwaitInput]VALENTINA: What?[newlineAwaitInput] You saw a statue move?
- Don't be ridiculous.[newPageAwaitInput] You're just stalling, so you won't
- have to polish them![endAwaitInput]VALENTINA: What?
- The statue was “ticklish”?[newlineAwaitInput] Is that what you said?[newPageAwaitInput] If you try stalling just one more
- time, I'm gonna have your feathers
- plucked for my pillow. Now SCAT![endAwaitInput]VALENTINA: STOP BOTHERING ME![newlineAwaitInput] If you're so worried, why don't
- you go give it a good peck![endAwaitInput]          Pick up a “Feather”.[endAwaitInput]JAGGER: Mario Sensei, the new
- regimen will strengthen us, right?[endAwaitInput]JINX: Master!
- Share your wisdom with us![endAwaitInput]CULEX: 
-      Farewell, champion knight![endAwaitInput]    Received a “Quartz Charm”![endAwaitInput] I think our neighbor moved away.[endAwaitInput]                 Uh oh...
-    Dodo’s in a pretty bad mood.[newPageAwaitInput]  Keep up your statue disguise and
-   jump to avoid getting pecked.[newPageAwaitInput]        Get ready because he's
-           coming this way![endAwaitInput]FROGFUCIUS: So! Toadstool was
- the bride, after all?[newPageAwaitInput] You'd better hurry and rescue her
- before she's...married![endAwaitInput]FROGFUCIUS: Good work, Mario.
- You rescued Toadstool.[newPageAwaitInput] Why don't you head back to
- Mushroom Kingdom?
- I'm sure the Chancellor is worried.[endAwaitInput]FROGFUCIUS: 
- I have the latest news, children.[newPageAwaitInput] A large star’s been sighted on
- “Star Hill”.[endAwaitInput]FROGFUCIUS: Eh!?[newlineAwaitInput] That delicious smell!
- You have some Cricket Jam, yes?[newPageAwaitInput] May I have some?
-  [startSelection] (Sure)
-  [startSelection] (Nope)[endAwaitInput] Sure, torture an old man![endAwaitInput] Mmm, this is wonderful!
- Thank you, Mario.
- You've made an old man happy.[newPageAwaitInput] Here’s a little allowance for being
- so good to me.[endAwaitInput] My wish has come true.[endAwaitInput]FROGFUCIUS: Have you been to
- Seaside Town yet?
- Something odd is going on there.[endAwaitInput]FROGFUCIUS: Beware of the giant
- squid in the sunken ship. Turn 'im
- into calamari or something![endAwaitInput]FROGFUCIUS: The entrance to
- Monstro Town is underground.
- Follow the whirls in the desert.[endAwaitInput]FROGFUCIUS: I JUST found out that
- there’s a kingdom in the clouds.
- Go and explore it, my children.[endAwaitInput] Was that too much to absorb?
- Would you like a recap?[newlineAwaitInput]  [startSelection] (Sure)
-  [startSelection] (Nope)[endAwaitInput] Okay, here’s the gist of it!
- Smithy invaded our world and took
- over Bowser’s Keep.[newPageAwaitInput] Toadstool and Bowser were thrown
- by the impact, and now Smithy and
- his cohorts are on a rampage.[newPageAwaitInput] The shooting stars are somehow
- connected to this disturbance and
- they're the key to defeating Smithy.[endAwaitInput] Would you like me to repeat that?
-  [startSelection] (Yes)
-  [startSelection] (No)[endAwaitInput] It’s quite a situation we have on
- our hands, isn't it?[endAwaitInput]MALLOW: Grandpa!
- We found my real home!
- It’s way up in the clouds.[endAwaitInput]FROGFUCIUS: Mallow!
- You're a prince?!
- I never would have guessed![newPageAwaitInput] And now you're helping to save
- the world?
- You've come a long way, child.[newPageAwaitInput] Although you've found your family,
- this adventure isn't over yet![endAwaitInput]MALLOW: Yep. I'm not giving up![endAwaitInput]FROGFUCIUS: You've got to defeat
- Valentina and save Nimbus Land.[endAwaitInput]FROGFUCIUS: Ah! Now the people
- of Nimbus Land can rejoice.[newPageAwaitInput] SO!
- I hear the next Star Piece is
- inside a volcano.[newPageAwaitInput] I also heard that Booster got
- himself another bride from the sky.[endAwaitInput]FROGFUCIUS: So...only Bowser's
- Keep remains.[newPageAwaitInput] The citizens of Nimbus Land will
- tell you how to get there.[endAwaitInput]FROGFUCIUS: 
- That’s all the advice I have.[newPageAwaitInput] You've done well. All that’s left
- to do is to defeat Smithy.[newPageAwaitInput] Save this world, and bring this
- quest to a happy end![endAwaitInput] This••is••Smithy’s castle![newPageAwaitInput] No trespassers••allowed.[endAwaitInput]BOWSER: 
-               Magikoopa![endAwaitInput]MAGIKOOPA: Huh••where am I?[delay][delay][delay]
- Bowser, hello!
- How have you been?[newPageAwaitInput] I, uh, made it back here SOMEHOW,
- but it seems like I've been
- brainwashed or something.[newPageAwaitInput] I can't seem to remember ANYTHING.
- Have I done something...wrong?[endAwaitInput]BOWSER: Uh, [pauseAwaitInput]don't [pauseAwaitInput]worry about it.[newlineAwaitInput] Let’s just put it behind us.[newPageAwaitInput] It’s great running into a loyal
- Koopa Trooper like you.[endAwaitInput]MAGIKOOPA: I'm glad!
- It looks like you've got some tough
- new troopers now.[newPageAwaitInput] But my magic can still help you.[endAwaitInput] Watch this![newlineAwaitInput]            Ho'o[pauseAwaitInput]kala[pauseAwaitInput]ku[pauseAwaitInput]pua![endAwaitInput]MAGIKOOPA: This magic treasure
- box will never run out of coins.[newPageAwaitInput] Just keep on hitting it.[endAwaitInput]MAGIKOOPA: 
- I'll be here if you need me.[newPageAwaitInput] Come by whenever you need to
- rejuvenate your HP and magic.[endAwaitInput]MAGIKOOPA: 
- You've come to the right person![endAwaitInput]
-             Ha ha ha ha ha![endAwaitInput] Ahhhhh...
- So YOU are the notorious Mario![newPageAwaitInput] I'm impressed you made it this far.
- I didn't think you could.[endAwaitInput] Oh!
- Feisty little fellow, aren't you?[newlineAwaitInput] But this is the end of the line.[newPageAwaitInput] Now you've got to deal with ME![newlineAwaitInput] EN GARDE![endAwaitInput]VALENTINA: 
- WHAT are you babbling about?[newPageAwaitInput] Why should I marry you?[endAwaitInput]VALENTINA: ........[newPageAwaitInput] What a wonderful thing to say![endAwaitInput]BOWSER: Ahhh...
-     The scent of boiling lava...[newPageAwaitInput] It’s so nice to be home![newPageAwaitInput] Smithy’s gonna pay for stealing
- my splendid castle from me![endAwaitInput]  The secret to the shooting stars
-          has been unraveled.[newlineAwaitInput]         Find the Star Pieces,
-         and bring peace back
-           to Mario’s world.[endAwaitInput]       You've found Dyna, Mite,
-          and a Star Piece...[newlineAwaitInput]       But where is Toadstool?[endAwaitInput]       You've come a long way,
-  but your journey’s not over yet.
-    There are 3 more Star Pieces.[endAwaitInput]     Smithy is now in the race for
-           the Star Pieces![newlineAwaitInput]  What horrible surprises might he
-       have in store for Mario?
- [endAwaitInput] Star Piece? Now that you mention
- it, I DID see a star fall into that
- volcano over there.[endAwaitInput] Garro’s busy making statues of
- King Nimbus.[newlineAwaitInput] He seems very happy![endAwaitInput] So the king WAS all right!
- I'm so happy for him.[endAwaitInput] This time, the prince is for real,
- [delay][delay]right?[endAwaitInput] I KNEW IT!! I knew the Prince
- couldn't be THAT heavy! Three
- cheers for the REAL Prince![endAwaitInput] We used to be able to walk through
- the castle freely, but I guess we
- shouldn't disturb the King now.[endAwaitInput] King Nimbus loves statues and
- birds. He has scads of 'em
- in the castle.[endAwaitInput] I hope to serve the King
- again, soon![endAwaitInput] Have you seen the volcano?[newlineAwaitInput]  [startSelection]  (Sure have)
-  [startSelection]  (Not yet)[endAwaitInput] [newPage] They say you can get there
- by way of the hot springs.[endAwaitInput]  [newPage] The volcano’s to the east.
- Sure wish I could take a dip
- in the springs...[endAwaitInput]
-  Long time no see, Prince Mallow![endAwaitInput] You're looking especially fluffy
- today, Prince![endAwaitInput] Prince Mallow, you're such a
- crybaby![endAwaitInput]
-   My, how you've grown, Prince![endAwaitInput]
-          This is locked too...[endAwaitInput]  Hey, wait a minute!  It’s locked.[endAwaitInput]SHY AWAY: La dee dah...
- Here ya go, big eggie! I'll give
- ya plenty of nutrients so you'll[newlineAwaitInput] grow up to be big and strong![endAwaitInput] Oh, oh, oh...[delay][delay]
- Mario’s already here...
- He’s a fast one, he is...[endAwaitInput] Oh, oh, oh...[delay][delay]
- It won't open...
- it’s locked![endAwaitInput]???: Ha ha ha ha.[endAwaitInput] Look! There’s a note.
- Let’s read it.[endAwaitInput]     King Nimbus is resting in bed.[newlineAwaitInput] Absolutely NO RUNNING in the halls.
-            Queen Valentina[endAwaitInput]MALLOW: This can only mean that
- my mom and dad are here![endAwaitInput] Oh, but it’s locked![endAwaitInput] 
-             Leave it to me![endAwaitInput]BOWSER: Looks like it’s up to me
- to get us out of yet another jam.[newlineAwaitInput] Feast your eyes on this show of
- brains...[delay][delay][delay][delay]and brawn![endAwaitInput]
-              STAND BACK! [endAwaitInput]MALLOW:
-         WAIT! Wait a minute![endAwaitInput] If my dad’s really bedridden,
- we shouldn't make so much noise.[newlineAwaitInput] ...[delay][delay][delay]We need another plan...[endAwaitInput] I guess we should find Valentina
- and force the truth out of her![endAwaitInput]BOWSER:
-     But, what about the door?[delay][delay]...[endAwaitInput]SHY AWAY:
-            Queen Valentina...[endAwaitInput][newPage] That Mario creature who
- beat up Smilax is here...[endAwaitInput]VALENTINA: Mario...?![newlineAwaitInput] What[delay]...[delay]does a “Mario”
- look like?[endAwaitInput]SHY AWAY: Well...it has a bushy
- mustache, long sideburns, and,
- uh, a pair of[delay][delay]...[newlineAwaitInput] mean looking legs...![endAwaitInput]VALENTINA: [delay]Hmmm...[delay]
- I have the feeling I've seen this
- “Mario” before...[endAwaitInput]VALENTINA: [delay]...[delay]Wait! Yes!
- It was that statue that Garro
- just delivered...![endAwaitInput]SHY AWAY:[delay][delay] What, what, what
- are we gonna do? What are we
- GONNA DO, VALENTINA?[endAwaitInput]VALENTINA: Well, we certainly
- aren't going to listen to your
- pointless chatter.[newPageAwaitInput] Frankly speaking, I'm not going
- to worry. Without this key, the
- King can't go ANYWHERE![endAwaitInput]VALENTINA:
-                  Hush...[endAwaitInput]VALENTINA:
-      I SAID SHUT UP, ALREADY![endAwaitInput]VALENTINA: What the...?!
- That...that isn't a STATUE!![delay][delay]
- That's...[delay][delay]Mario!!![endAwaitInput]MALLOW: VALENTINA!![newlineAwaitInput] Hand over the KEY!!, NOW![endAwaitInput]VALENTINA: How utterly rude!
- And who in blazes are YOU
- anyway?![endAwaitInput]MALLOW: Me?
- I'm the REAL prince, that’s who![endAwaitInput]VALENTINA: Brat![newlineAwaitInput] And how DARE you listen in on a
- private conversation...![endAwaitInput]MALLOW: Private? PRIVATE?!
- Everyone in a 10 mile radius
- could hear you![endAwaitInput]VALENTINA: Harrumph!
- If you're going to be THIS rude,
- I'm simply going to leave.[endAwaitInput][newPage]
-          So long...(chumps)![endAwaitInput]BOWSER: Listen YOU! Never EVER
- talk to the leader of the Koopa
- Troop like that! Ooh, I hate...[newlineAwaitInput] THAT! I'll ignore it this time...
- but DON'T let it happen again![endAwaitInput]SHY AWAY: Eh?[delay][delay]
- Hey! Valentina ran away...[endAwaitInput][newPage]
-      I shall fly the coop, too...[endAwaitInput]MALLOW: Uh...[delay][delay]I...[delay]I think
- we kind of missed the boat here...[endAwaitInput] So...[delay][delay]...we'd better get
- moving too!![newlineAwaitInput] C'mon, let’s get 'em!![endAwaitInput]
-            Hey, wait a sec...[endAwaitInput]
-     It won't open...it’s locked.[endAwaitInput]
-       Ha! Here’s how I'd do it.[endAwaitInput]
-       I'm absolutely exhausted![endAwaitInput] I hate being a guard![newlineAwaitInput] Valentina only gives us the most
- boring jobs to do!![endAwaitInput]
- But I guess this beats Dodo’s job.[endAwaitInput] Dodo has to polish Valentina's
- statues EVERY single day![endAwaitInput]
-    Now THIS is how I would do it![endAwaitInput] You need a key to open the
- back door of the middle room...[newlineAwaitInput] But of course, Valentina’s got it.[endAwaitInput] I used to be a guard here, until
- Valentina snatched away all my
- keys...and gave me the boot.[newPageAwaitInput] Guess I won't be needing this
- master key anymore...
- Would you like it?[newlineAwaitInput] [startSelection]  (Sure!)
- [startSelection]  (No thanks)[endAwaitInput][newPage] All right, here you go![newlineAwaitInput] Just don't tell me what you're
- gonna do with it, okay?[endAwaitInput][newPage] Oh really?, You sure?
- What a shame[delay][delay]...this precious key
- opens the middle room, you know.[endAwaitInput]
-     So...you don't want it, huh?[endAwaitInput]
-         Wait! Don't say that![endAwaitInput]MALLOW: To be honest, we really
- REALLY need it![endAwaitInput]
-                Oh, yeah?[endAwaitInput]
-    But HE said you didn't need it.[endAwaitInput]MALLOW: Oh, I'm sorry. You'll
- have to excuse him, he...he’s a
- little shaken up right now.[endAwaitInput]
-      [delay]...Oh...[delay]Okay...I guess...[delay][pauseAwaitInput][end]MALLOW: Thank you![newlineAwaitInput] We owe you one![endAwaitInput]          Got “Castle Key 1”![endAwaitInput] A dip in the hot springs would
- perk up the King in a jiffy![endAwaitInput]
-            Go on, take this...[endAwaitInput] Hey! Did YOU know?![newlineAwaitInput] Valentina’s got a huge egg
- in the middle room.[newPageAwaitInput] It spits out eggs from time
- to time, and sometimes when you
- shield yourself, the eggs'll[newlineAwaitInput] ricochet off of you.[endAwaitInput] Did you know that there are hot
- springs around here?[newlineAwaitInput] [startSelection]  (Yep)
- [startSelection]  (Nope)[endAwaitInput][newPage] Aww, you're no fun.
- I wanted to be the first
- to tell you that![endAwaitInput][newPage] We get special hot water from
- Barrel Volcano. It helps cure all
- kinds of ailments, but only the[newlineAwaitInput] King gets to bathe in it.[endAwaitInput] Valentina told me to wait in this
- room... I'm hoping she'll give me
- a job soon...[endAwaitInput] Hey, tell me something,
- do statues[delay][delay]...[delay]move?[endAwaitInput]
-       No. Statues don't move.[endAwaitInput]
-        Then[delay][delay]...[delay]explain...[delay][delay]THIS![endAwaitInput] It's...[delay][delay] one of those hi-tech,...
- [delay]er,...life-like..[delay] realistic ones.
- ...[delay][delay]Let’s get outta here.[endAwaitInput]GARRO: Why are you back?![newlineAwaitInput] Come on! Put a little effort into
- it, okay? Good luck![endAwaitInput]SHY AWAY: Oh[delay][delay] Oh[delay][delay]...
- ...Busted...[newlineAwaitInput] What to do, what to do?[endAwaitInput] I'll give you this “Fertilizer”
- if you let me go~...[delay][delay][delay]...OK?[endAwaitInput] The hot springs are up ahead,
- but only royalty can bathe there.[newlineAwaitInput] And you don't look so royal...![endAwaitInput] Right now, Prince Mallow is
- bathing in the hot springs.
- It must be so relaxing.[endAwaitInput]
-                DANGER!!!
-   Beyond the cliffs is the volcano[endAwaitInput]QUEEN NIMBUS: Hello, everyone.[newlineAwaitInput] Thank you so much for looking
- after my dear child.[endAwaitInput]
-        Wait a minute, please...[endAwaitInput]MALLOW: Please! These people
- aren't your enemies. They're my
- friends.[endAwaitInput]
-           This way, come on![endAwaitInput]MALLOW: Mom...[delay_48] Dad...[newlineAwaitInput] I'd like you to meet Mario...[endAwaitInput][newPage]
-...and my other travel companions![endAwaitInput]KING NIMBUS: I say! How can
- we ever thank you enough![newlineAwaitInput] I'm Mallow’s father...King Nimbus.[endAwaitInput]MALLOW:
-   Allow me to introduce everyone![endAwaitInput] This...is Princess Toadstool from
- Mushroom Kingdom...[endAwaitInput]KING NIMBUS: Ah![delay] I've heard
- so much about you! May I...
- have your autograph?[endAwaitInput]QUEEN NIMBUS:
-   Don't embarrass junior, dear!![endAwaitInput]KING NIMBUS: Oh![delay]...FANTASTIC![newlineAwaitInput] (Show me again later...) Eh hem.
- And WHO do we have over here?[endAwaitInput]MALLOW: This is Bowser, leader
- of the Koopa Troop.[endAwaitInput]KING NIMBUS: Oh! Another famous
- person! This is just too much![newlineAwaitInput] I MUST have YOUR autograph![endAwaitInput]QUEEN NIMBUS: Dear...behave
- yourself, please![endAwaitInput]KING NIMBUS: No? Not even a
- little scribble? Okay, okay...[endAwaitInput]KING NIMBUS: Yes, yes. I'm quite
- forgetting my manners...[delay][delay]Well...[newlineAwaitInput] ...Who do we have over here?[endAwaitInput]MALLOW: This is Geno, who I told
- you about before.[endAwaitInput]KING NIMBUS: Oh! Yes! That story
- about the Star Street! How awful![endAwaitInput]GENO:
-          That's...Star Road...[endAwaitInput]QUEEN NIMBUS: By the way, a little
- before Valentina took over, a
- large star fell into the volcano![endAwaitInput]KING NIMBUS: Hmm, but the dreaded
- “Czar Dragon” inhabits the
- volcano. It’s going to be tough[newlineAwaitInput] getting a star out of there![endAwaitInput][newPage] Hmmm...perhaps all of you
- working together COULD handle
- that beast...[endAwaitInput]
- Why, when I was young, I...[endAwaitInput]QUEEN NIMBUS: Yes, dear...[newlineAwaitInput] Now, once at the volcano, find
- Hinopio. He'll be able to help you.[endAwaitInput]QUEEN NIMBUS: You be careful,
- Mallow![endAwaitInput] Up ahead are the hot springs...[newlineAwaitInput] But only royalty is allowed...[endAwaitInput] Hey! You're the REAL prince![newPageAwaitInput] Sorry about the misunderstanding
- before...There’s NO WAY that fat
- bird could have been a Prince, huh?[endAwaitInput] MALLOW: No big deal.[newlineAwaitInput]  Anyway, do you think you
-  could let us through here?[endAwaitInput]
-               Of course![endAwaitInput] Go right ahead.
- Please, enjoy yourselves.[newlineAwaitInput] But be careful not to fall into
- the volcano.[endAwaitInput]KING NIMBUS: Oh! Nevermind...[endAwaitInput]
- And, who is this gentleman here?[endAwaitInput]MALLOW: THIS[delay]....[delay]...[delay]
- is Mario!!![newlineAwaitInput] He helped me from the start![endAwaitInput]KING NIMBUS: I sincerely thank you
- from the bottom of my heart.[endAwaitInput][newPage] [delay]...[delay]...[delay]You don't mean...
- THE Mario?! Jumping Mario?!
- Autograph, please![endAwaitInput]QUEEN NIMBUS:
-     That’s quite enough, dear...[endAwaitInput]KING NIMBUS: Okay, okay![delay][delay] Then...
- how about showing me just a little
- jump? A tiny hop will do![endAwaitInput]KING NIMBUS: Son, you're just
- like me when I was your age.
- I'm proud of you.[endAwaitInput]QUEEN NIMBUS: If you have
- any problems, come straight[newlineAwaitInput] back, okay?![endAwaitInput]MALLOW: Okay, mom![newlineAwaitInput] But I probably won't come back
- until we find the star![endAwaitInput] Go up those steps, and you'll find
- the royal bus that goes to the
- volcano. It’s pretty cool.[endAwaitInput] Do you know about the royal bus?[newlineAwaitInput] [startSelection]  (Yes)
- [startSelection]  (No)[endAwaitInput][newPage] It’s a regal vehicle, used only
- by the King. It’s parked now, due
- to the fact he’s ill...[endAwaitInput][newPage] When the King recovers, I'll let
- you see it. You see, I'm the
- bus maintenance man.[endAwaitInput]
-    The bus is undergoing repairs.[endAwaitInput]CROCO: Say, hey! We meet AGAIN![newlineAwaitInput] Dis here land is RICH! It’s got
- tons of loot, and I want it all![pauseAwaitInput][end][newPage] So, youse guys found 'em ALL?
- ...[delay]Geez...[delay][delay]I've failed...
-[delay][delay] ...I'm humiliated...![endAwaitInput] Welcome! Come on in!
- So you want to take a rest?
- I'm sure that’s why you're here.[newPageAwaitInput] It'll be [0x7024] coins a night.[newlineAwaitInput] [startSelection]  (OK, I'll take a break)
- [startSelection]  (I'll pass)[endAwaitInput][newPage] Let me guess...you want to use
- this “Dream Cushion” to rest,
- right? That'll be 30 more coins.[newlineAwaitInput] [startSelection]  (I'll try anything once)
- [startSelection]  (Looks pretty weird)[endAwaitInput][newPage] Seems like you don't have
- enough money. Come back again.[endAwaitInput]
-              Oh, shut up.[endAwaitInput]
-         Don't talk to me now.[endAwaitInput] Oh, now look![newlineAwaitInput] I lost 'cause of YOU![endAwaitInput] Wait, hold on![newlineAwaitInput] This is the highest score...[endAwaitInput] Oh, wait,[delay] [delay]wait[delay]...[endAwaitInput]  All right! YES!![newlineAwaitInput] ...I'm done here.[endAwaitInput] You want this?
- It’s only 500 coins.[newlineAwaitInput] [startSelection]  (Well, sure!)
- [startSelection]  (No)[endAwaitInput][newPage]
-              Suit yourself.[endAwaitInput][newPage]
-         You need more coinage.[endAwaitInput] Want me to teach you?[newlineAwaitInput] [startSelection]  (Yes, please)
- [startSelection]  (I already know)[endAwaitInput][newPage]
-          Aww, you're no fun.[endAwaitInput][newPage] High score if you hit
- the shells with the stars
- fired from the beetle.[newlineAwaitInput] If you get hit, recover by firing
- consecutively...Just do it![endAwaitInput]
-   I order you to stand before me.[endAwaitInput]
-       I now order you to jump.[endAwaitInput][newPage] In this world, there are things
- called “hidden treasures”.[newlineAwaitInput] Use your awesome jumping ability
- to look for 'em.[endAwaitInput]
-    I wish you luck in the future.[endAwaitInput] Mario![pauseAwaitInput][end]
- The Chancellor has filled me in!
- Come. Let me show you around.[endAwaitInput]
-   Help yourself to the treasures![endAwaitInput] If you leave now, what will that
- do to my reputation?![endAwaitInput] This is a “Flower”. The more you
- gather, the more Flower Points
- you'll have in battle. [pauseAwaitInput]Find 'em![endAwaitInput] THIS mushroom will restore your
- Hit Points and Flower Points.[newlineAwaitInput] Unfortunately, mushrooms you find
- as items only restore your HP.[newlineAwaitInput] So beware.[endAwaitInput] This is a “Coin”.
- The small ones are worth one, and
- the large ones are worth ten.[newlineAwaitInput] This one’s a “10”![endAwaitInput]
-          I'm standing guard![endAwaitInput] Do you know about Flower Points?
- [startSelection]  (No! Tell me!)
- [startSelection]  (Yes)[endAwaitInput][newPage] You sure got your
- act together, Mario![endAwaitInput] We're all able to serve the
- King again.[newPageAwaitInput] But we left our houses wide open.
- Hope everything’s all right.[endAwaitInput] Came to see the King’s statue
- collection. I tell you, it's
- remarkable![endAwaitInput] Wonder when the bus is gonna
- start again? They're probably
- repairing it as we talk.[endAwaitInput] Things have finally picked up![endAwaitInput] The King’s happier than ever
- after being reunited with Mallow.[endAwaitInput] What happened to Valentina?[newlineAwaitInput] She must have landed near the sky
- after she flew the coop...[endAwaitInput] Morning!
- Did you have pleasant dreams?[pauseAwaitInput][end]
- That’s odd[delay]...[delay][delay]
- It smells like pepper in here!
- Probably just my imagination![endAwaitInput]
- It looked like you had nightmares.
- Is everything okay?[endAwaitInput]
- When you hear laughter,
- you know it’s a good dream![endAwaitInput]
- You slept quietly, so I'm sure
- you had pleasant dreams![endAwaitInput][newPage]
-        Please come back again![endAwaitInput][newPage]
-          Kick back and relax![endAwaitInput][newPage] Hey, wait a sec.
- You don't have enough money, so
- I can't let you use the cushion.[endAwaitInput][newPage] Good dreams are fun
- entertainment![endAwaitInput] People have been visiting us from
- the world down under.[newlineAwaitInput] Even Croco came.[endAwaitInput] Croco passed by, earlier.[newlineAwaitInput] He was saying,“ MINE, ALL MINE!”
-[delay] What was that all about?[endAwaitInput] I just saw a Mushroom person.[newlineAwaitInput] You'll find him at the inn.[endAwaitInput] We can finally go in the castle.[newlineAwaitInput] The King seems just fine![endAwaitInput] The King must be overjoyed,
- having Prince Mallow back.[endAwaitInput] I'm so relieved the King
- wasn't ill...[newlineAwaitInput] And hurrah for our Prince![endAwaitInput] Now that we can go into the
- castle again, I think I'll go check
- out some statues.[endAwaitInput]GARRO: Prince Mallow![newlineAwaitInput] That was splendid work!
- You are every bit a “prince”![endAwaitInput]MALLOW: If it weren't for you,
- Garro, we'd never have
- pulled it off![newlineAwaitInput] We definitely owe you one![endAwaitInput]GARRO: Thanks, Mallow.[endAwaitInput]GARRO: (I'm really glad everything
- worked out...)[endAwaitInput]GARRO: Mallow, you ARE indeed,
- a TRUE PRINCE!![endAwaitInput]
-    The royal bus is running again![endAwaitInput] Everyone’s happy when the
- weather is nice![endAwaitInput] Oh yeah![newlineAwaitInput] I saw Valentina going towards the
- building to the south...[newlineAwaitInput] I wonder why?[endAwaitInput]MALLOW: Mom![delay][delay] Dad![endAwaitInput]QUEEN NIMBUS: Were you able to
- find the star, dear?[endAwaitInput]MALLOW: Yeah. The Axem Rangers
- took it away from us, but...[newlineAwaitInput] we got it back again![endAwaitInput]KING NIMBUS: That’s wonderful![newlineAwaitInput] Now the Star, uh[delay][delay]...Star Thing
- can be repaired, right?[endAwaitInput] I guess not...[delay][delay]You're...[delay][delay]still...
- missing a piece, I take it.[endAwaitInput] I guess this is goodbye.[endAwaitInput]TOAD: Mario![endAwaitInput] Are you all right?[endAwaitInput] You were kicking up a sweat...[newlineAwaitInput] Here, drink this and blow those
- bad guys away.[endAwaitInput]TOAD: Ya! Ya![endAwaitInput] Mario...[newlineAwaitInput] I've kept this a secret until now,
- but...[delay][delay]I'm really[delay][delay] a...[delay][delay]a...[endAwaitInput]
-              a MONSTER!!![endAwaitInput]GAZ:
-    Geno, come on, you can do it![endAwaitInput]YOSHI:
-          (Mario! Good luck!)[endAwaitInput]CHANCELLOR:
-    We're counting on you, Mario![endAwaitInput] Boing, boing, boing!
- I'm trying really hard, so Mario,
- you have to try hard, too![endAwaitInput]
-       I'm with you all the way![endAwaitInput]
-    Here it comes, here it comes![endAwaitInput] The bus has finally been repaired.[newlineAwaitInput] We can start operating again.[endAwaitInput]
- ..[delay]..[delay]..[delay] Prince Mallow![endAwaitInput]MALLOW: We want to go to
- Bowser’s Keep...Could you
- give us a lift, please?[endAwaitInput] I've heard the story from
- King Nimbus.[newlineAwaitInput] You'll be there in no time![endAwaitInput]
-    So, how’s the engine running?[endAwaitInput]
-   Oh, it’s purring like a kitten![endAwaitInput] Could you take Prince Mallow
- to the entrance of Bowser’s Keep?[endAwaitInput] Of course![delay][delay] Can't wait to get
- this thing running again![pauseAwaitInput]
- Come, Prince, hop on board.[endAwaitInput]
-               All aboard![endAwaitInput]
-               We're off![endAwaitInput]       Found a “[0x70A7]”![endAwaitInput]         Got “Castle Key 2”![endAwaitInput][newPage] But hey, I'm not sweatin'!
- This device'll tell me where
- the treasures are hidden![newPageAwaitInput] The rest of 'em are mine!
- All MINE!! Adios, fools![endAwaitInput] Found a “Signal Ring”![newlineAwaitInput] If you equip it, it'll ring at
- the location of a hidden treasure.[endAwaitInput][newPage]
-       “How to climb the vines”[newPageAwaitInput] The vines are positioned from
- the bottom left to the top right.[newPageAwaitInput] When you jump, you will be able to
- disengage yourself from the vine.[newlineAwaitInput] Nimbus Dept. of Transportation[endAwaitInput] It’s too small for you.[endAwaitInput] At your service, Sir!
- How may I help you?[newlineAwaitInput] [startSelection]  (I'm thirsty)
- [startSelection]  (Just kidding)[endAwaitInput][newPage] Here is the menu.[newlineAwaitInput] [startSelection]  (Pick Me Up........10 Coins)
- [startSelection]  (Kerokero Cola....150 Coins)
- [startSelection]  (No thanks)[endAwaitInput][newPage] I see.[endAwaitInput][newPage] One moment, please.[endAwaitInput][newPage] Here you are, Sir![endAwaitInput] Please do not hesitate to ring.[endAwaitInput]      Bought a “[0x70A7]”![endAwaitInput][newPage] Sir, you seem to be a few coins
- short. Please ring again.[pauseAwaitInput][end]QUEEN NIMBUS: The last star...[endAwaitInput]
- Wait![delay][delay] The only place left to
- look is in Bowser’s Keep![endAwaitInput]MALLOW: Yeah, we know.[newlineAwaitInput] But...there’s no way to get in.
- Believe me, we've tried, but...[endAwaitInput]KING NIMBUS: Yes, yes. Even
- Mario can't jump THAT far...[pauseAwaitInput][end]
- All right! I'll let you use the...[endAwaitInput]QUEEN NIMBUS: That’s IT, dear![endAwaitInput]
-    You should use the royal bus![endAwaitInput]KING NIMBUS: Yes, Mallow, the time
- has come for you to take the bus![pauseAwaitInput][end]
- Why, when I was your age...[endAwaitInput]MALLOW: Really?!
- Are you sure it’s all right?[endAwaitInput]QUEEN NIMBUS: Of course, dear.
- I've ordered the repair man to have
- it fixed by the time you leave.[newPageAwaitInput] You simply HAVE to help Mario
- and the others get that last star![endAwaitInput]MALLOW: You bet, mom![pauseAwaitInput][end]
- Come on, Mario, let’s GO![endAwaitInput]KING NIMBUS: Hurry and get the
- Star, uh...Star...Strip...[end]KING NIMBUS: Hurry and get the
- Star, uh...Star...Way...[end]KING NIMBUS: Hurry and get the
- Star, uh...Star...Lane...[end]
- fixed for good![newlineAwaitInput] Best of luck, all![endAwaitInput]QUEEN NIMBUS: Please...[newlineAwaitInput] Promise me you'll make everyone's
- dreams come true once again![endAwaitInput] Will you ride the royal bus to
- Bowser’s Keep?[newlineAwaitInput]  [startSelection]  (You bet!)
-  [startSelection]  (Maybe another time)[endAwaitInput][newPage]
-        We'll be arriving shortly.[endAwaitInput][newPage]
-        Feel free to ride again.[endAwaitInput]MALLOW: Hey![endAwaitInput]
-     There’s the last Star Piece![endAwaitInput]SMITHY: Huh...?[delay][delay][newPageAwaitInput] Already finished your tour of the
- factory, huh?! All right, then![newlineAwaitInput] How about a little demonstration?[endAwaitInput]GENO: Yo Smithy![endAwaitInput] Stop making those things and hand
- over the Star Piece, NOW![endAwaitInput]SMITHY: Huh?...Gufaw haw haw![newPageAwaitInput] So YOU'RE...Mario?![newlineAwaitInput] Looks like we're gonna have a
- little dispute over the star.[endAwaitInput]BOWSER: Just hand it over and
- GET OUTTA MY CASTLE![endAwaitInput]SMITHY: My, my! We're a little
- touchy today, aren't we?[newlineAwaitInput] You know, I'm actually growing
- rather FOND of this place...[endAwaitInput]TOADSTOOL: Please! Don't make us
- go through any more![newlineAwaitInput] Just give us the star....NOW![endAwaitInput]SMITHY: Hurrumph! Better yet...[newPageAwaitInput] Why don't YOU give me YOUR
- stars. Why, then I could
- easily conquer this world![newlineAwaitInput] Then we could get rid of all
- wishes, and create a world filled[newlineAwaitInput] with...WEAPONS!![endAwaitInput]
-            Over here, NOW![newPageAwaitInput]
-          I'll crush you ALL!!![endAwaitInput]GENO: Come on, Mario![endAwaitInput]
-    Send the last one way up high![endAwaitInput]GENO: Thank you, everyone![endAwaitInput] The Star Road is back to normal![delay_48]
- And...[delay][delay][delay][delay][endAwaitInput] Our guest is resting.
- Please be quiet.[endAwaitInput] ...[delay][delay]...[delay][delay]
- I'm resting up for Mother Brain.[endAwaitInput]                Victory!![end]                Defeated!![end]                Run Away!![end][end]ing up for Mother Brain.[endAwaitInput][endAwaitInput][endAwaitInput][pauseAwaitInput][endAwaitInput]    [endAwaitInput][delay_0]’s [endAwaitInput]is [endAwaitInput][0x7000] [endAwaitInput]‘[endAwaitInput]•[endAwaitInput].[endAwaitInput].[endAwaitInput].[endAwaitInput].[endAwaitInput].[endAwaitInput].[endAwaitInput].[endAwaitInput]6[endAwaitInput]「[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]©[endAwaitInput]'''
+  [startSelection] (No)'''
