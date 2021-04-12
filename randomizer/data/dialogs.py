@@ -23,9 +23,7 @@ compression_table = [
     ('\n', '\x01'),
     ('[end]', '\x06'),
     ('[select]', '\x07'),
-    # \0x0B: followed by a number, inserts that many spaces
     ('[delay]', '\x0C'),
-    # \0x0D: followed by a number, delays that many frames
     ('Booster', '\x18'),
     ('Booster', '\x19'),
     ('Mario', '\x13'),
@@ -99,10 +97,18 @@ def handle_vars(string):
         i += 1
     return output
 
-def substitute_special_vars(string):
+def convert_special_vars(string):
     results = re.findall(r'(\x20\x20\x20\x20\x20+)', string)
+    # I'm putting argument bytes in as placeholders and then evaluating them last, because otherwise, 10 spaces (\x1B\x0A) gets interpreted as (\x1B\n) and becomes (\x1B\x01) in the compression table step
     for token in results:
-        spaces = chr(len(token))
+        string = string.replace(token, '[spaces_%i]' % len(token))
+    return string
+
+def complete_special_vars(string):
+    results = re.findall(r'(\[spaces_\d+\])', string)
+    for token in results:
+        d = re.search( r'\d+', token).group()
+        spaces = chr(int(d))
         string = string.replace(token, '\x0B' + spaces)
     results = re.findall(r'(\[delay_\d+\])', string)
     for token in results:
@@ -113,12 +119,15 @@ def substitute_special_vars(string):
 
 
 def compress(string):
-    string = substitute_special_vars(string)
+    # Do spaces and delays first, so that argument bytes don't get misinterpreted as compression table items
+    string = convert_special_vars(string)
     for token, char in compression_table:
         string = string.replace(token, char)
+    string = complete_special_vars(string)
     if string[len(string) - 1] != '\x00' and string[len(string) - 1] != '\x06':
         string += '\x00' # Null terminate strings.
     return string
+    # will need to do something about this assuming byte literals are supposed to be ascii
 
 def decompress(string):
     var_handled_string = handle_vars(string)

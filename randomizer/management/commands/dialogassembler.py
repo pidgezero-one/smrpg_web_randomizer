@@ -53,21 +53,24 @@ def assemble_from_table(pointer_table, data_table):
                 
         # convert to pointers relative to section pointer
         if b == 0:
-            offsets = [0x08, new_pointer_table[0x200], new_pointer_table[0x400], new_pointer_table[0x600]]
-            for i in range(0x200, 0x400):
+            offsets = [0, new_pointer_table[0x200], new_pointer_table[0x400], new_pointer_table[0x600]]
+            offsets = [o + 8 for o in offsets]
+            for i in range(0x3FF, 0x1FF, -1):
                 new_pointer_table[i] -= new_pointer_table[0x200]
-            for i in range(0x400, 0x600):
+            for i in range(0x5FF, 0x3FF, -1):
                 new_pointer_table[i] -= new_pointer_table[0x400]
-            for i in range(0x600, 0x800):
+            for i in range(0x7FF, 0x5FF, -1):
                 new_pointer_table[i] -= new_pointer_table[0x600]
         elif b == 1:
-            offsets = [0x04, new_pointer_table[0xA00]]
-            for i in range(0xA00, 0xC00):
+            offsets = [0, new_pointer_table[0xA00]]
+            offsets = [o + 4 for o in offsets]
+            for i in range(0xBFF, 0x9FF, -1):
                 new_pointer_table[i] -= new_pointer_table[0xA00]
         else:
-            offsets = [0x04, new_pointer_table[0xE00]]
-            for i in range(0xC00, 0xE00):
-                new_pointer_table[i] -= new_pointer_table[0xC00]
+            offsets = [0, new_pointer_table[0xE00]]
+            offsets = [o + 4 for o in offsets]
+            for i in range(0xFFF, 0xDFF, -1):
+                new_pointer_table[i] -= new_pointer_table[0xE00]
         
         # final output for data bank: section pointers plus dialog data
         assembled_bank_dialog_data = bytearray([])
@@ -84,7 +87,7 @@ def assemble_from_table(pointer_table, data_table):
             max_length = 0x23F2D5 - 0x230000
             empty_space = max_length - len(assembled_bank_dialog_data)
         else:
-            max_length = 0x249100 - 0x240000
+            max_length = 0x249000 - 0x240000
             empty_space = max_length - len(assembled_bank_dialog_data)
         if empty_space < 0:
             raise Exception("Bank 0x%02x dialog data too long: %i bytes (expected up to %i)" % (0x22 + b, len(assembled_bank_dialog_data), max_length))

@@ -26,7 +26,7 @@ banks = [
     {
         "id": 0x24,
         "start": 0x240000,
-        "end": 0x2490FF,
+        "end": 0x248FFF,
         "table_size": 0x04,
         "pointers": {
             "start": 0x37F800,
