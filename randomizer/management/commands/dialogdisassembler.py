@@ -137,9 +137,8 @@ class Command(BaseCommand):
             file.write(('dialog_data = [None]*%i\n' % len(raw_data)).encode("utf8"))
 
             for i in range(len(raw_data)):
-                s = "".join(map(chr, raw_data[i]))
-                t = decompress(s)
-                file.write(("dialog_data[%i] = '''%s'''\n" % (i, t)).encode("utf8"))
+                s = decompress(raw_data[i])
+                file.write(("dialog_data[%i] = '''%s'''\n" % (i, s)).encode("utf8"))
                 # why do the pointers reset at 0x400???
             
             file.close()

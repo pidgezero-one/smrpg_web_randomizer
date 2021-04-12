@@ -42,12 +42,11 @@ def assemble_from_table(pointer_table, data_table):
                 for matched_pointer in indices:
                     new_pointer_table[matched_pointer] = pointer_position
                 pointer_position += 1
-                val = ord(d[i])
-                assembled_dialog_for_this_bank.append(val)
+            assembled_dialog_for_this_bank += d
             print (dialog_id)
-            print (d.encode('unicode_escape'))
+            print (str(d))
             print (len(d), pointer_position)
-            print ([hex(ord(c)) for c in d])
+            print ([hex(c) for c in d])
             print ('')
             print ('')
                 

@@ -4,76 +4,68 @@ from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 import re
 
-# This table isn't complete.
-# And some of the single char replacements should be done via string.translate,
+# Compression table order is important.
+# '[await][page]\n' should be higher up than '[await]' or '\n' so compression/decompression loops can match it first.
 compression_table = [
-    ('[0x7000]', '\x1C\x00'),
-    ('[0x7024]', '\x1C\x01'),
-    ('[0x7000timer]', '\x1C\x02'),
-    ('[0x70A7]', '\x1A'),
-    ('[filename]', '\x1C\x03'),
-    ('[await][pause]', '\x05'),
-    ('\x20\x20\x20\x20', '\x0A'),
-    ('\x20\x20\x20', '\x09'),
-    ('\x20\x20', '\x08'),
-    ('[await][page]\n', '\x03'),
-    ('[page]\n', '\x04'),
-    ('[await]\n', '\x02'),
-    ('[await]', '\x00'),
-    ('\n', '\x01'),
-    ('[end]', '\x06'),
-    ('[select]', '\x07'),
-    ('[delay]', '\x0C'),
-    ('Booster', '\x18'),
-    ('Booster', '\x19'),
-    ('Mario', '\x13'),
-    (' and ', '\x15'),
-    (' to ', '\x11'),
-    (' I ', '\x14'),
-    (' the', '\x0E'),
-    (' you', '\x0F'),
-    ('in', '\x10'),
-    ("’s ", '\x12'),
-    ("'s ", '\x12'),
-    ('is ', '\x16'),
-    (' so', '\x17'),
-    (' ', '\x20'),
-    ('“', '\x22'),
-    ('”', '\x23'),
-    ('♥', '\x24'),
-    ('♪', '\x25'),
-    ('‘', '\x26'),
-    ('’', '\x27'),
-    ('(', '\x28'),
-    (')', '\x29'),
-    ('••', '\x2B'),
-    ('•', '\x2A'),
-    (',', '\x2C'),
-    ('-', '\x2D'),
-    ('.', '\x2E'),
-    ('/', '\x2F'),
-    ('~', '\x3A'),
-    ('「', '\x3B'),
-    ('」', '\x3C'),
-    ('『', '\x3D'),
-    ('』', '\x3E'),
-    ("?", '\x3F'),
-    ("©", '\x40'),
-    (':', '\x8E'),
-    (';', '\x8F'),
-    ('<', '\x90'),
-    ('>', '\x91'),
-    ('···', '\x92'),
-    ('#', '\x93'),
-    ('×', '\x94'),
-    ('+', '\x95'),
-    ('%', '\x96'),
-    ('↑', '\x97'),
-    ('→', '\x98'),
-    ('←', '\x99'),
-    ("*", '\x9A'),
-    ("'", '\x9B'),
-    ("&", '\x9C'),
+    ('[0x7000]', b'\x1C\x00'),
+    ('[0x7024]', b'\x1C\x01'),
+    ('[0x7000timer]', b'\x1C\x02'),
+    ('[0x70A7]', b'\x1A'),
+    ('[filename]', b'\x1C\x03'),
+    ('[await][pause]', b'\x05'),
+    ('\x20\x20\x20\x20', b'\x0A'),
+    ('\x20\x20\x20', b'\x09'),
+    ('\x20\x20', b'\x08'),
+    ('[await][page]\n', b'\x03'),
+    ('[page]\n', b'\x04'),
+    ('[await]\n', b'\x02'),
+    ('[await]', b'\x00'),
+    ('\n', b'\x01'),
+    ('[end]', b'\x06'),
+    ('[select]', b'\x07'),
+    ('[delay]', b'\x0C'),
+    ('Booster', b'\x18'),
+    ('Booster', b'\x19'),
+    ('Mario', b'\x13'),
+    (' and ', b'\x15'),
+    (' to ', b'\x11'),
+    (' I ', b'\x14'),
+    (' the', b'\x0E'),
+    (' you', b'\x0F'),
+    ('in', b'\x10'),
+    ("’s ", b'\x12'),
+    ("'s ", b'\x12'),
+    ('is ', b'\x16'),
+    (' so', b'\x17'),
+    ('“', b'\x22'),
+    ('”', b'\x23'),
+    ('♥', b'\x24'),
+    ('♪', b'\x25'),
+    ('‘', b'\x26'),
+    ('’', b'\x27'),
+    ('••', b'\x2B'),
+    ('•', b'\x2A'),
+    ('~', b'\x3A'),
+    ('「', b'\x3B'),
+    ('」', b'\x3C'),
+    ('『', b'\x3D'),
+    ('』', b'\x3E'),
+    ("©", b'\x40'),
+    (':', b'\x8E'),
+    (';', b'\x8F'),
+    ('<', b'\x90'),
+    ('>', b'\x91'),
+    ('···', b'\x92'),
+    ('#', b'\x93'),
+    ('×', b'\x94'),
+    ('+', b'\x95'),
+    ('%', b'\x96'),
+    ('↑', b'\x97'),
+    ('→', b'\x98'),
+    ('←', b'\x99'),
+    ("*", b'\x9A'),
+    ("'", b'\x9B'),
+    ("&", b'\x9C'),
 ]
 
 DIALOG_POINTER_BASE_ADDRESS = 0x37e000
@@ -97,39 +89,80 @@ def handle_vars(string):
         i += 1
     return output
 
-def convert_special_vars(string):
-    results = re.findall(r'(\x20\x20\x20\x20\x20+)', string)
-    # I'm putting argument bytes in as placeholders and then evaluating them last, because otherwise, 10 spaces (\x1B\x0A) gets interpreted as (\x1B\n) and becomes (\x1B\x01) in the compression table step
-    for token in results:
-        string = string.replace(token, '[spaces_%i]' % len(token))
-    return string
-
-def complete_special_vars(string):
-    results = re.findall(r'(\[spaces_\d+\])', string)
-    for token in results:
-        d = re.search( r'\d+', token).group()
-        spaces = chr(int(d))
-        string = string.replace(token, '\x0B' + spaces)
-    results = re.findall(r'(\[delay_\d+\])', string)
-    for token in results:
-        d = re.search( r'\d+', token).group()
-        delay = chr(int(d))
-        string = string.replace(token, '\x0D' + delay)
-    return string
-
-
+# i gave up and just did a char-by-char reader with bytearray output
+# reasoning: using string-based compression table to convert 「 to '\x3B', python assumes it's a semicolon and it writes as '\x8F'
+# and \0x0A denoting a space length was being assumed to be a newline for the same reason, was outputting as \0x01
 def compress(string):
-    # Do spaces and delays first, so that argument bytes don't get misinterpreted as compression table items
-    string = convert_special_vars(string)
-    for token, char in compression_table:
-        string = string.replace(token, char)
-    string = complete_special_vars(string)
-    if string[len(string) - 1] != '\x00' and string[len(string) - 1] != '\x06':
-        string += '\x00' # Null terminate strings.
-    return string
-    # will need to do something about this assuming byte literals are supposed to be ascii
+    output = bytearray([])
+    tbl = dict(compression_table)
+    cursor = 0
+    while cursor < len(string):
+        r = re.search(r'^(\x20\x20\x20\x20\x20+)', string[cursor:])
+        if r:
+            token = r.group()
+            output += bytearray([0x0B, len(token)])
+            cursor += len(token)
+            continue
+        r = re.search(r'^(\[delay_\d+\])', string[cursor:])
+        if r:
+            token = r.group()
+            d = re.search( r'\d+', token).group()
+            delay = int(d)
+            output += bytearray([0x0D, delay])
+            cursor += len(token)
+            continue
+        cursor_key = None
+        for key in tbl:
+            if string[cursor:].startswith(key):
+                cursor_key = key
+                break
+        if cursor_key:
+            m = tbl[cursor_key]
+            output += m
+            cursor += len(cursor_key)
+            continue
+        output.append(ord(string[cursor]))
+        cursor += 1
+    last_byte = output[len(output) - 1]
+    if last_byte != 0x00 and last_byte != 0x06:
+        output.append(0x00) # Null terminate strings.
+    return output
 
-def decompress(string):
+def decompress(b):
+    output = ''
+    tbl = dict(compression_table)
+    cursor = 0
+    while cursor < len(b):
+        if b[cursor] == 0x0B:
+            cursor += 1
+            spaces = b[cursor]
+            output += ' ' * spaces
+            cursor += 1
+            continue
+        if b[cursor] == 0x0D:
+            cursor += 1
+            delay = b[cursor]
+            output += '[delay_%i]' % delay
+            cursor += 1
+            continue
+        tbl_match = None
+        for key in tbl:
+            # check if bytes at cursor position equals any of the compression table bytearrays
+            check = zip(tbl[key], b[cursor:])
+            matches = [(b1, b2) for (b1, b2) in check if b1 == b2]
+            if len(matches) == len(tbl[key]):
+                tbl_match = key
+                break
+        if tbl_match:
+            output += tbl_match
+            cursor += len(tbl[tbl_match])
+            continue
+        output += chr(b[cursor])
+        cursor += 1
+    return output
+
+
+
     var_handled_string = handle_vars(string)
     for token, char in compression_table:
         var_handled_string = var_handled_string.replace(char, token)
