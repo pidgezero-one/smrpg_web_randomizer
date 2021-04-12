@@ -20,84 +20,48 @@ dialog_data[14] = '''            ACCESSORY SHOP[end]'''
 dialog_data[15] = '''               MELODY BAY[end]'''
 dialog_data[16] = '''         GRATE GUY'S CASINO[end]'''
 dialog_data[17] = '''               HINO MART[end]'''
-dialog_data[18] = ''' Before Valentina came, fireworks
- lit up the sky every night.[await][page]
- Some guy in Moleville would make
- the fireworks.[await]
- I wonder if we'll ever get to
- see them again...[await]'''
-dialog_data[19] = ''' It’s a marvelous statue,
- isn't it?[await]'''
-dialog_data[20] = ''' We can finally walk around the
- castle and the town freely.[await][page]
- People from down under will
- probably come too. That girl at the
- entrance'll tell you who’s here.[await]'''
-dialog_data[21] = '''[page]
- Whoa! Congratulations![await]
- You deserve this![await]'''
-dialog_data[22] = ''' It'll let you get into my brother's
- Casino...wherever THAT is...[await]'''
-dialog_data[23] = '''[page]
-
-                  Thanks![await]'''
-dialog_data[24] = '''???: I'm so...lonely.
- Will you play with me?[await]
- [select]  (Sure)
- [select]  (Not now)[await]'''
+dialog_data[18] = ''' I don't really like being a 
+ stepstool,[delay] but I understand that
+ I'm the perfect height for it.[await]
+ I guess I just have to accept this
+ about myself.[await]'''
+dialog_data[19] = ''' I saw something suspicious in the
+ southeast part of town.[await][page]
+ What was it?[await][pause] ...It might have just
+ been my imagination.[await]'''
+dialog_data[20] = '''  Now that our kingdom isn't in peril
+ anymore, I wonder if any visitors
+ will travel here sometime soon.[await][page]
+ I heard that Link and Samus are
+ visiting some towns down below!
+ How exciting![await]'''
+dialog_data[21] = '''[await]'''
+dialog_data[22] = '''[await]'''
+dialog_data[23] = '''[await]'''
+dialog_data[24] = '''[await]'''
 dialog_data[25] = '''
-    BIRDO: Don't forget about me![await]'''
-dialog_data[26] = '''[page]
- Oh...[await][pause] If you had played
- with me, I was going to give you
- the key to this room.[await]'''
-dialog_data[27] = ''' This statue[delay][delay]...[delay]it[delay]...it seems
- so...unworldly![await]'''
-dialog_data[28] = ''' The King gave me another job as
- a guard.[await][pause][end]'''
-dialog_data[29] = '''
- ...Prince Mallow![await]'''
-dialog_data[30] = '''MALLOW: Thank you so much!
- We were able to rescue my father
- with the key you gave us.[await]'''
-dialog_data[31] = ''' Don't mention it...[await][pause][end]'''
-dialog_data[32] = '''
- Besides, it was YOU,
- who actually rescued him![await]'''
-dialog_data[33] = '''MALLOW:
-        Good luck in the future![await]'''
-dialog_data[34] = '''
-                 You too![await]'''
-dialog_data[35] = ''' Prince![await]'''
-dialog_data[36] = ''' Here, this is from me.[await]
- Please, take it.[await]'''
-dialog_data[37] = ''' I shall continue to work for the
- King with pride.[await]'''
-dialog_data[38] = '''[page]
- Eh hem...very well.[await]
- “FP”s are consumed during
- battle when you use “Special”
- attacks. For example...[await][page]
- A “Jump” attack uses 3 “FP”s.[await]
- When you “Jump”, your “FP” will
- decrease by 3 each time. Run out,
- and you can't use these attacks![await][page]
- An item called a “Flower” raises
- your maximum “FP”s.[await]
- Recover “FP”s with syrups,
- some mushrooms, and at inns.[await]'''
-dialog_data[39] = ''' Hey! Did you just see
- a crocodile around here?
- He talks like a mobster wannabe.[await][pause][end]'''
-dialog_data[40] = '''[page]
- I'm sure he’s up to no good![delay_48]
- Hey, wait a sec!!![delay_48]
- My wallet’s gone![await]'''
+ BIRDETTA: Don't forget about me![await]'''
+dialog_data[26] = '''[await]'''
+dialog_data[27] = '''[await]'''
+dialog_data[28] = '''[await]'''
+dialog_data[29] = '''[await]'''
+dialog_data[30] = '''[await]'''
+dialog_data[31] = '''[await]'''
+dialog_data[32] = '''[await]'''
+dialog_data[33] = '''[await]'''
+dialog_data[34] = '''[await]'''
+dialog_data[35] = '''[await]'''
+dialog_data[36] = '''[await]'''
+dialog_data[37] = ''' Don't spend it all in one place,
+ now.[await]'''
+dialog_data[38] = '''[await]'''
+dialog_data[39] = '''[await]'''
+dialog_data[40] = '''[await]'''
 dialog_data[41] = '''          Got a “[0x70A7]”![end]'''
 dialog_data[42] = '''          Got a “[0x70A7]”![await]'''
 dialog_data[43] = '''
           Get down from there![await]'''
-dialog_data[44] = '''              Won [0x7000] coin(s)![await]'''
+dialog_data[44] = '''              Got [0x7000] coin(s)![end]'''
 dialog_data[45] = '''          Found a “[0x70A7]”![await]'''
 dialog_data[46] = '''      You win[delay_4][end]'''
 dialog_data[47] = '''      You lose[delay_4][end]'''
@@ -119,136 +83,88 @@ dialog_data[54] = '''    Got a “[0x70A7]”![end]'''
 dialog_data[55] = '''            Got a Frog Coin![await]'''
 dialog_data[56] = '''[page]
         [0x7024] Cookie(s)[await]'''
-dialog_data[57] = ''' Mario!
- Hurry, the Chancellor awaits.[await]'''
+dialog_data[57] = '''[await]'''
 dialog_data[58] = ''' Mario! Please, you've GOT
  to save Princess Toadstool![await]'''
-dialog_data[59] = ''' I haven't seen Princess Toadstool
- lately...What?!
- Bowser’s got her AGAIN?![await]'''
+dialog_data[59] = ''' Our economy is booming now that
+ we can have up to 9999 coins at a
+ time.[await][page]
+ People have been more generous
+ lately with tips, and rewards, and
+ the like.[await]'''
 dialog_data[60] = '''          Received “[0x70A7]”[await]'''
-dialog_data[61] = ''' MY WALLET!!!
- Has anyone seen my wallet?![await]'''
-dialog_data[62] = ''' I hope my grandchild turns out to
- be just like the Princess![await]'''
-dialog_data[63] = ''' Mario!
- Let’s say you and I get hitched in
- a few years, okay?[await][page]
- Just[delay][delay]... give me time to grow
- into my mother’s wedding dress![await]'''
-dialog_data[64] = ''' Hey, Mario!
- Look what you're standin' in![end]'''
-dialog_data[65] = '''[page]
-
-               HA! Gotcha![await]'''
-dialog_data[66] = ''' That horrible crocodile...
- and wearing crocodile-skin shoes,
- no less! Has he no shame?[await]'''
-dialog_data[67] = '''
-      All I do is cook and clean![await]'''
-dialog_data[68] = '''
-                 Nah nah!![delay_48][end]'''
-dialog_data[69] = '''
-     Mmmph...grmmmph...chomp...[await]'''
-dialog_data[70] = ''' One! Two! Three!
- Think if I practice enough I'll
- jump as high as you, Mario?[await]
+dialog_data[61] = '''[await]'''
+dialog_data[62] = '''  Some of the monsters out there are
+ pretty scary. Be sure to learn your
+ Timed Hits![await][pause] My husband knows all
+ about them.[await]'''
+dialog_data[63] = '''              Gotta go fast![await]'''
+dialog_data[64] = '''[await]'''
+dialog_data[65] = '''[await]'''
+dialog_data[66] = '''[await]'''
+dialog_data[67] = ''' My son did 30 super jumps the
+ other day! I'm so proud of him.[await][page]
+ A nice fellow from Monstro Town
+ sent us a prize for his
+ achievement.[await]'''
+dialog_data[68] = '''[await]'''
+dialog_data[69] = ''' My son was getting dizzy from all
+ that spinning when he was
+ practicing Super Jumps.[await][page]
+ But taking his “Jump Shoes” off
+ seemed to help him jump in a
+ straight line.[await]'''
+dialog_data[70] = '''  One! Two! Three! Hey, Mario!
+ Think if I practice enough I'll get
+ 100 Super Jumps?[await]
  [select]  (Sure!)
  [select]  (Yeah, right kid.)[await]'''
-dialog_data[71] = ''' Mario! What a pleasant surprise![await][page]
- One of Frogfucius' grandchildren
- is running errands in town today.[delay][delay]
- I haven't seen him, though..[delay]..[delay][await][page]
- Oh, you're here to shop?[end]'''
-dialog_data[72] = ''' You know, I hate to admit it...
- But I LOVE this job![await]'''
-dialog_data[73] = '''  
- What are you looking for?[await]'''
+dialog_data[71] = '''[await]'''
+dialog_data[72] = '''[await]'''
+dialog_data[73] = '''[await]'''
 dialog_data[74] = '''
                  Yeah!!![await]'''
 dialog_data[75] = '''
              Thanks a bunch.[await]'''
 dialog_data[76] = ''' Hey Mario!
- My brother’s waiting
- for you upstairs![await]'''
-dialog_data[77] = '''RAZ: Say hey, Mario!
- Guess what?[delay]...[delay][await]
- Raini isn't just a “friend”
- anymore. We're getting married.[await]'''
-dialog_data[78] = '''RAZ: Yeah, she’s right.
- I guess we can put it off until
- things cool down around here.[await]'''
-dialog_data[79] = '''TOAD: Mario, there you are!
- I'll tell the Chancellor you're here.[await]
- I'll wait for you down the hallway.[await]'''
+ My brother's getting pretty good at Super Jumps.[await][page]
+ It gets pretty precise after you do
+ 13 in a row.[await][pause] But the rhythm doesn't
+ change, so he got the hang of it
+ with enough practice.[await]'''
+dialog_data[77] = '''[await]'''
+dialog_data[78] = '''[await]'''
+dialog_data[79] = '''[await]'''
 dialog_data[80] = '''
             This way, please.[await]'''
 dialog_data[81] = '''
                 Hey, chill![await]'''
 dialog_data[82] = '''
       Didn't I tell you to CHILL?![await]'''
-dialog_data[83] = '''
-        Sir, Mario has arrived![await]'''
-dialog_data[84] = '''CHANCELLOR: Mario!
- Thank goodness you're here! [await]'''
-dialog_data[85] = ''' We heard an explosion or something
- at Bowser’s Keep. It was so loud
- I almost dropped my spores!!![await]'''
-dialog_data[86] = ''' Uh...excuse me? W...where’s the
- Princess? She departed for your
- house HOURS ago...![await]'''
-dialog_data[87] = ''' I fear the worst! Could Bowser
- somehow be behind all of this?[await]'''
-dialog_data[88] = '''CHANCELLOR: Spores alive!!!
- You're telling us that Bowser has
- abducted the Princess AGAIN?[await]'''
-dialog_data[89] = ''' Things are ALWAYS happening to
- her! What an UNLUCKY child![await]'''
-dialog_data[90] = ''' Nevermind. It will be up to you to
- enter the keep and rescue
- Princess Toadstool![await]'''
-dialog_data[91] = '''CHANCELLOR: Egad!
- The keep is unassailable?! What
- awful power is at work here?![await]'''
-dialog_data[92] = ''' Mario...her life is in your hands.
- Please, save our dear Princess![await]'''
-dialog_data[93] = '''
-   We know you won't let us down![await]'''
-dialog_data[94] = '''
-  So long Mario....and good luck![await]'''
-dialog_data[95] = '''TOAD: Where could the Princess be?
- We're all counting on you
- to find her, Mario![await]'''
-dialog_data[96] = '''
-            Come back here!![await]'''
-dialog_data[97] = '''CHANCELLOR: All we can do is
- wait here. Don't let us down![await]'''
-dialog_data[98] = '''CHANCELLOR: On your way now![await]'''
-dialog_data[99] = ''' Y, yes?...[delay]Gee, you're soaking
- wet, aren't you?[await]'''
-dialog_data[100] = ''' I'm all right now. Sorry...
- There’s nothing like a good cry![await]
- [delay]But,[delay] why was I crying?[await][pause][end]'''
-dialog_data[101] = ''' Oh, no! That REPTILE
- stole my Grandpa’s coin![await]'''
-dialog_data[102] = '''[page]
- B...boo hoo...sniffle...[await]
- I can't cry. Big boys don't cry.[delay]
- But it’s just not fair...![await][page]
-
- What am I gonna do? Waaaaaah!!![await]'''
-dialog_data[103] = ''' My Grandpa asked me to buy some
- things for him here. When I walked
- into town, that croc stopped me![await]'''
-dialog_data[104] = ''' Oh yeah! He took it from me!
- He stole my coin! I chased
- him, but he’s way too fast...[await]'''
-dialog_data[105] = ''' Mario!
- Let’s see how you're going
- to take care of Bowser![end]'''
-dialog_data[106] = '''[page]
- Wow!
- He doesn't stand a chance![await]'''
+dialog_data[83] = '''[await]'''
+dialog_data[84] = '''[await]'''
+dialog_data[85] = '''[await]'''
+dialog_data[86] = '''[await]'''
+dialog_data[87] = '''[await]'''
+dialog_data[88] = '''[await]'''
+dialog_data[89] = '''[await]'''
+dialog_data[90] = '''[await]'''
+dialog_data[91] = '''[await]'''
+dialog_data[92] = '''[await]'''
+dialog_data[93] = '''[await]'''
+dialog_data[94] = '''[await]'''
+dialog_data[95] = '''[await]'''
+dialog_data[96] = '''[await]'''
+dialog_data[97] = '''[await]'''
+dialog_data[98] = '''[await]'''
+dialog_data[99] = '''[await]'''
+dialog_data[100] = '''[await]'''
+dialog_data[101] = '''[await]'''
+dialog_data[102] = '''[await]'''
+dialog_data[103] = '''[await]'''
+dialog_data[104] = '''[await]'''
+dialog_data[105] = '''[await]'''
+dialog_data[106] = '''[await]'''
 dialog_data[107] = ''' It was that reptile! He’s the
  one who stole my wallet...![await]'''
 dialog_data[108] = '''
