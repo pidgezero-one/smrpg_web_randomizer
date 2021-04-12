@@ -3,7 +3,6 @@ import random
 from randomizer.data import dialogs
 from . import flags
 
-
 # There's a way to do perfect allocations with DYNAMIC PROGRAMMING,
 # but I'm not doing that.
 def allocate_string(string_length, free_list):

@@ -10,35 +10,35 @@ compression_table = [
     ('[0x7000]', '\x1C\x00'),
     ('[0x7024]', '\x1C\x01'),
     ('[0x7000timer]', '\x1C\x02'),
+    ('[0x70A7]', '\x1A'),
     ('[filename]', '\x1C\x03'),
-
-    ('[endAwaitInput]', '\x00'),
-    ('  ', '\x08'),
-    ('   ', '\x09'),
-    ('    ', '\x0A'),
+    ('[await][pause]', '\x05'),
+    ('\x20\x20\x20\x20', '\x0A'),
+    ('\x20\x20\x20', '\x09'),
+    ('\x20\x20', '\x08'),
+    ('[await][page]\n', '\x03'),
+    ('[page]\n', '\x04'),
+    ('[await]\n', '\x02'),
+    ('[await]', '\x00'),
     ('\n', '\x01'),
-    ('[newlineAwaitInput]', '\x02'),
-    ('[newPageAwaitInput]', '\x03'),
-    ('[newPage]', '\x04'),
-    ('[pauseAwaitInput]', '\x05'),
     ('[end]', '\x06'),
-    ('[startSelection]', '\x07'),
+    ('[select]', '\x07'),
     # \0x0B: followed by a number, inserts that many spaces
     ('[delay]', '\x0C'),
     # \0x0D: followed by a number, delays that many frames
+    ('Booster', '\x18'),
+    ('Booster', '\x19'),
+    ('Mario', '\x13'),
+    (' and ', '\x15'),
+    (' to ', '\x11'),
+    (' I ', '\x14'),
     (' the', '\x0E'),
     (' you', '\x0F'),
     ('in', '\x10'),
-    (' to ', '\x11'),
+    ("’s ", '\x12'),
     ("'s ", '\x12'),
-    ('Mario', '\x13'),
-    (' I ', '\x14'),
-    (' and ', '\x15'),
     ('is ', '\x16'),
     (' so', '\x17'),
-    ('Booster', '\x18'),
-    ('Booster', '\x19'),
-    ('[0x70A7]', '\x1A'),
     (' ', '\x20'),
     ('“', '\x22'),
     ('”', '\x23'),
@@ -100,14 +100,14 @@ def handle_vars(string):
     return output
 
 def substitute_special_vars(string):
-    results = re.findall(r'(    +)', string)
+    results = re.findall(r'(\x20\x20\x20\x20\x20+)', string)
     for token in results:
-        spaces = '\\x%02X' % len(token)
+        spaces = chr(len(token))
         string = string.replace(token, '\x0B' + spaces)
-    results = re.findall(r'(%delay_\d+%)', string)
+    results = re.findall(r'(\[delay_\d+\])', string)
     for token in results:
         d = re.search( r'\d+', token).group()
-        delay = '\\x%02X' % ord(d)
+        delay = chr(int(d))
         string = string.replace(token, '\x0D' + delay)
     return string
 
@@ -116,7 +116,9 @@ def compress(string):
     string = substitute_special_vars(string)
     for token, char in compression_table:
         string = string.replace(token, char)
-    return string + '\x00'  # Null terminate strings.
+    if string[len(string) - 1] != '\x00' and string[len(string) - 1] != '\x06':
+        string += '\x00' # Null terminate strings.
+    return string
 
 def decompress(string):
     var_handled_string = handle_vars(string)
