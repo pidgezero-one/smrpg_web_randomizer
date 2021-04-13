@@ -6,8 +6,8 @@ from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPacket
 script = [
     {
         "identifier": 'ACTION_492_db_0',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x06, 0xaf, 0x5e]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 6, 'ACTION_492_set_bit_3']
     },
     {
         "identifier": 'ACTION_492_pause_1',

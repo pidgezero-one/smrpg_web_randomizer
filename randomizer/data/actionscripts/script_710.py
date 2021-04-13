@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'ACTION_710_db_15',
-        "command": 'db',
-        "args": [0x3a, 0x19, 0x00, 0x03, 0x2a, 0x83]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.NPC_5, 0, 3, 'ACTION_710_set_bit_19']
     },
     {
         "identifier": 'ACTION_710_jump_to_height_16',

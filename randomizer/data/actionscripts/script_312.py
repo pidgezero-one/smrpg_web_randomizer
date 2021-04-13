@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'ACTION_312_db_4',
-        "command": 'db',
-        "args": [0x3a, 0x14, 0x30, 0x00, 0xe7, 0x39]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.NPC_0, 48, 0, 'ACTION_312_set_700C_to_object_coord_6']
     },
     {
         "identifier": 'ACTION_312_jmp_5',

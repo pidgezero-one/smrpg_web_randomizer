@@ -41,13 +41,13 @@ script = [
     },
     {
         "identifier": 'ACTION_336_db_7',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x01, 0xb4, 0x3d]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 1, 'ACTION_336_pause_5']
     },
     {
         "identifier": 'ACTION_336_db_8',
-        "command": 'db',
-        "args": [0x3a, 0x14, 0xd0, 0x00, 0xb4, 0x3d]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.NPC_0, 208, 0, 'ACTION_336_pause_5']
     },
     {
         "identifier": 'ACTION_336_dec_9',

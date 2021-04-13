@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'ACTION_649_db_5',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x08, 0xae, 0x76]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 8, 'ACTION_649_start_loop_n_times_8']
     },
     {
         "identifier": 'ACTION_649_pause_6',

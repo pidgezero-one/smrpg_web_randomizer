@@ -211,18 +211,18 @@ script = [
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_18',
-                "command": 'db',
-                "args": [0x3a, 0x14, 0x00, 0x08, 0xa2, 0x40]
+                "command": 'jmp_if_object_within_range',
+                "args": [AreaObjects.NPC_0, 0, 8, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_27']
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_19',
-                "command": 'db',
-                "args": [0x3a, 0x14, 0x00, 0x10, 0x9c, 0x40]
+                "command": 'jmp_if_object_within_range',
+                "args": [AreaObjects.NPC_0, 0, 16, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_25']
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_db_20',
-                "command": 'db',
-                "args": [0x3a, 0x14, 0x00, 0x1c, 0x96, 0x40]
+                "command": 'jmp_if_object_within_range',
+                "args": [AreaObjects.NPC_0, 0, 28, 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_23']
             },
             {
                 "identifier": 'EVENT_3329_non_embedded_action_queue_9_SUBSCRIPT_jump_to_height_silent_21',

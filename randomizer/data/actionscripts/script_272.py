@@ -79,8 +79,8 @@ script = [
     },
     {
         "identifier": 'ACTION_272_db_15',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x80, 0x01, 0x5b, 0x31]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 128, 1, 'ACTION_272_play_sound_17']
     },
     {
         "identifier": 'ACTION_272_jmp_16',
@@ -132,8 +132,8 @@ script = [
     },
     {
         "identifier": 'ACTION_272_db_26',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x03, 0x67, 0x31]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 3, 'ACTION_272_start_loop_n_times_22']
     },
     {
         "identifier": 'ACTION_272_pause_27',
@@ -200,8 +200,8 @@ script = [
     },
     {
         "identifier": 'ACTION_272_db_40',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x03, 0x9b, 0x31]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 3, 'ACTION_272_play_sound_42']
     },
     {
         "identifier": 'ACTION_272_jmp_41',

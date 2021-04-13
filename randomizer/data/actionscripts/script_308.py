@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'ACTION_308_db_11',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x04, 0xf1, 0x38]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 4, 'ACTION_308_face_mario_13']
     },
     {
         "identifier": 'ACTION_308_jmp_12',

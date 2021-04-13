@@ -291,7 +291,10 @@ names[0x28] = named('embedded_animation_routine', con(0x28), byte(), byte(), byt
 ), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte(), byte())
 # 0x29 undocumented
 names[0x2A] = named('bpl_26_27')
-# 0x2B - 0x3C undocumented
+# 0x2B - 0x3A undocumented
+names[0x3A] = named('jmp_if_object_within_range', byte(prefix="AreaObjects", table=area_object_table), byte_int(), byte_int(), short())
+names[0x3B] = named('jmp_if_object_within_range_same_z', byte(prefix="AreaObjects", table=area_object_table), byte_int(), byte_int(), short())
+names[0x3C] = named('unknown_jmp_3C', byte(), byte(), short())
 names[0x3D] = named('jmp_if_mario_in_air', short())
 names[0x3E] = named('create_packet_at_object_coords_jmp_if_null', byte(
     prefix="NPCPackets", table=npc_packet_table), byte(
@@ -524,7 +527,7 @@ fd_names[0x19] = named('object_memory_set_bit', con(0x0D), con_bitarray([6]))
 fd_names[0x3D] = named('jmp_if_object_in_air', byte(
     prefix="AreaObjects", table=area_object_table), short())
 # 0x3E - 0x9B undocumented
-# 0x1A - 0x9B undocumented
+# 0x1A - 0x9B undocumente
 fd_names[0x9E] = named('play_sound', byte(
     prefix="Sounds", table=sound_table), con_int(4))
 # 0x9D - 0xAF undocumented
@@ -537,7 +540,7 @@ fd_names[0xB5] = named('mem_700C_xor_var', dbyte(0x7000))
 fd_names[0xB6] = mem_7000_shift_left
 # 0xB7 - 0xFF undocumented
 
-jmp_cmds = [0x3D, 0x3E, 0x3F, 0xD2, 0xD3, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xDB, 0xDf, 0xE0, 0xE1,
+jmp_cmds = [0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F, 0xD2, 0xD3, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xDB, 0xDf, 0xE0, 0xE1,
             0xE2, 0xE4, 0xE3, 0xE5, 0xE6, 0xE7, 0xE8, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF8]
 
 jmp_cmds_double = [0xE9]

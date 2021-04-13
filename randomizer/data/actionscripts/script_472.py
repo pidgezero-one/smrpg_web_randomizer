@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'ACTION_472_db_9',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x80, 0x03, 0x17, 0x5b]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 128, 3, 'ACTION_472_db_11']
     },
     {
         "identifier": 'ACTION_472_jmp_10',
@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'ACTION_472_db_11',
-        "command": 'db',
-        "args": [0x3c, 0x00, 0x40, 0x1f, 0x5b]
+        "command": 'unknown_jmp_3C',
+        "args": [0x00, 0x40, 'ACTION_472_visibility_on_13']
     },
     {
         "identifier": 'ACTION_472_jmp_12',

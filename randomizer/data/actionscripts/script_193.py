@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'ACTION_193_db_2',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0xce, 0x26]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_193_set_sprite_sequence_4']
     },
     {
         "identifier": 'ACTION_193_jmp_3',
@@ -36,8 +36,8 @@ script = [
     },
     {
         "identifier": 'ACTION_193_db_6',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0xd1, 0x26]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_193_pause_5']
     },
     {
         "identifier": 'ACTION_193_jmp_7',

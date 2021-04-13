@@ -68,8 +68,8 @@ script = [
     },
     {
         "identifier": 'ACTION_774_db_13',
-        "command": 'db',
-        "args": [0x3a, 0x18, 0x00, 0x03, 0xb5, 0x93]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.NPC_4, 0, 3, 'ACTION_774_set_bit_21']
     },
     {
         "identifier": 'ACTION_774_shift_southeast_pixels_14',
@@ -78,8 +78,8 @@ script = [
     },
     {
         "identifier": 'ACTION_774_db_15',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x03, 0xae, 0x93]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 3, 'ACTION_774_set_bit_18']
     },
     {
         "identifier": 'ACTION_774_shift_southeast_pixels_16',

@@ -84,8 +84,8 @@ script = [
     },
     {
         "identifier": 'ACTION_488_db_16',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0xe4, 0x5d]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_488_set_animation_speed_18']
     },
     {
         "identifier": 'ACTION_488_jmp_17',
@@ -142,8 +142,8 @@ script = [
     },
     {
         "identifier": 'ACTION_488_db_28',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0x02, 0x5e]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_488_set_animation_speed_30']
     },
     {
         "identifier": 'ACTION_488_jmp_29',
@@ -200,8 +200,8 @@ script = [
     },
     {
         "identifier": 'ACTION_488_db_40',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0x20, 0x5e]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_488_set_animation_speed_42']
     },
     {
         "identifier": 'ACTION_488_jmp_41',
@@ -258,8 +258,8 @@ script = [
     },
     {
         "identifier": 'ACTION_488_db_52',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0x3e, 0x5e]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_488_set_animation_speed_54']
     },
     {
         "identifier": 'ACTION_488_jmp_53',

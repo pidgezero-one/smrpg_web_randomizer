@@ -116,8 +116,8 @@ script = [
     },
     {
         "identifier": 'ACTION_162_db_23',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x04, 0x06, 0x20]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 4, 'ACTION_162_set_bit_25']
     },
     {
         "identifier": 'ACTION_162_jmp_24',
@@ -214,8 +214,8 @@ script = [
     },
     {
         "identifier": 'ACTION_162_db_43',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x03, 0x37, 0x20]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 3, 'ACTION_162_set_bit_45']
     },
     {
         "identifier": 'ACTION_162_jmp_44',
@@ -307,8 +307,8 @@ script = [
     },
     {
         "identifier": 'ACTION_162_db_62',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x04, 0x65, 0x20]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 4, 'ACTION_162_set_bit_64']
     },
     {
         "identifier": 'ACTION_162_jmp_63',

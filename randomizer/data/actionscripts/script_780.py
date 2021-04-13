@@ -268,8 +268,8 @@ script = [
     },
     {
         "identifier": 'ACTION_780_db_55',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x04, 0xf1, 0x94]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 4, 'ACTION_780_set_animation_speed_67']
     },
     {
         "identifier": 'ACTION_780_jmp_if_random_above_66_56',

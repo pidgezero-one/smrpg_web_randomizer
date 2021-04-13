@@ -26,8 +26,8 @@ script = [
     },
     {
         "identifier": 'ACTION_659_db_4',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x04, 0x81, 0x78]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 4, 'ACTION_659_set_animation_speed_11']
     },
     {
         "identifier": 'ACTION_659_end_loop_5',
@@ -45,8 +45,8 @@ script = [
     },
     {
         "identifier": 'ACTION_659_db_8',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x04, 0x81, 0x78]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 4, 'ACTION_659_set_animation_speed_11']
     },
     {
         "identifier": 'ACTION_659_end_loop_9',

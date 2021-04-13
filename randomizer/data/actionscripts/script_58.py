@@ -123,8 +123,8 @@ script = [
     },
     {
         "identifier": 'ACTION_58_db_24',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0xc0, 0x02, 0x34, 0x12]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 192, 2, 'ACTION_58_jmp_25']
     },
     {
         "identifier": 'ACTION_58_jmp_25',

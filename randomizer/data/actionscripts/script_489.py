@@ -11,8 +11,8 @@ script = [
     },
     {
         "identifier": 'ACTION_489_db_1',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x03, 0x71, 0x5e]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 3, 'ACTION_489_set_animation_speed_4']
     },
     {
         "identifier": 'ACTION_489_pause_2',

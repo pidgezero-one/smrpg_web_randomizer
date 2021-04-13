@@ -102,6 +102,11 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
+        "identifier": 'EVENT_1650_set_action_script_async__35',
+        "command": 'set_action_script_async',
+        "args": [AreaObjects.NPC_1, 650]
+    },
+    {
         "identifier": 'EVENT_1650_fade_out_sound_to_volume_9',
         "command": 'fade_out_sound_to_volume',
         "args": [0, 64]

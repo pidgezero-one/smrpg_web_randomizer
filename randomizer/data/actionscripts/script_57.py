@@ -137,8 +137,8 @@ script = [
     },
     {
         "identifier": 'ACTION_57_db_27',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x08, 0x51, 0x11]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 8, 'ACTION_57_set_solidity_bits_33']
     },
     {
         "identifier": 'ACTION_57_shift_f_direction_steps_28',

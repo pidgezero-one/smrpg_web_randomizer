@@ -15,8 +15,8 @@ script = [
     },
     {
         "identifier": 'ACTION_409_db_2',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x80, 0x03, 0x9a, 0x4b]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 128, 3, 'ACTION_409_clear_solidity_bits_17']
     },
     {
         "identifier": 'ACTION_409_jmp_if_random_above_128_3',

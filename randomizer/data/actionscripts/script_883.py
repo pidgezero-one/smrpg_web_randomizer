@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'ACTION_883_db_2',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x02, 0x18, 0xa8]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 2, 'ACTION_883_pause_4']
     },
     {
         "identifier": 'ACTION_883_jmp_3',

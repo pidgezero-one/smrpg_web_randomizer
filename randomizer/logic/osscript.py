@@ -322,6 +322,32 @@ class ObjectSequenceScript:
         self.append_byte(0x2A)
         return self
 
+    # 0x3A
+    def jmp_if_object_within_range(self, obj, usually, tiles, address):
+        self.append_byte(0x3A)
+        self.append_byte(obj)
+        self.append_byte(usually)
+        self.append_byte(tiles)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # 0x3B
+    def jmp_if_object_within_range_same_z(self, obj, usually, tiles, address):
+        self.append_byte(0x3A)
+        self.append_byte(obj)
+        self.append_byte(usually)
+        self.append_byte(tiles)
+        self.append_short(self.get_branch_address(address))
+        return self
+
+    # 0x3C
+    def unknown_jmp_3C(self, arg1, arg2, address):
+        self.append_byte(0x3C)
+        self.append_byte(arg1)
+        self.append_byte(arg2)
+        self.append_short(self.get_branch_address(address))
+        return self
+
     # 0x3D
     def jmp_if_mario_in_air(self, address):
         self.append_byte(0x3D)

@@ -6,13 +6,13 @@ from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPacket
 script = [
     {
         "identifier": 'ACTION_403_db_0',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x80, 0x03, 0x67, 0x49]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 128, 3, 'ACTION_403_face_mario_9']
     },
     {
         "identifier": 'ACTION_403_db_1',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0x67, 0x49]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_403_face_mario_9']
     },
     {
         "identifier": 'ACTION_403_jmp_if_random_above_128_2',

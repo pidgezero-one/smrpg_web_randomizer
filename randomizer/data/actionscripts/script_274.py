@@ -307,8 +307,8 @@ script = [
     },
     {
         "identifier": 'ACTION_274_db_61',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x50, 0x00, 0x10, 0x32]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 80, 0, 'ACTION_274_set_700C_to_object_coord_25']
     },
     {
         "identifier": 'ACTION_274_jmp_62',

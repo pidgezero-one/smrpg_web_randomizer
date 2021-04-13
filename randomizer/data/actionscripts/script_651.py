@@ -210,8 +210,8 @@ script = [
     },
     {
         "identifier": 'ACTION_651_db_43',
-        "command": 'db',
-        "args": [0x3a, 0x00, 0x00, 0x04, 0x45, 0x77]
+        "command": 'jmp_if_object_within_range',
+        "args": [AreaObjects.MARIO, 0, 4, 'ACTION_651_face_mario_48']
     },
     {
         "identifier": 'ACTION_651_set_animation_speed_44',

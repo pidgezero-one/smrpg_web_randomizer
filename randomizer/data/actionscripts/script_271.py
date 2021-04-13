@@ -100,8 +100,8 @@ script = [
     },
     {
         "identifier": 'ACTION_271_db_20',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x03, 0x11, 0x31]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 3, 'ACTION_271_set_animation_speed_22']
     },
     {
         "identifier": 'ACTION_271_jmp_21',
@@ -138,8 +138,8 @@ script = [
     },
     {
         "identifier": 'ACTION_271_db_28',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x02, 0x25, 0x31]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 2, 'ACTION_271_jump_to_height_30']
     },
     {
         "identifier": 'ACTION_271_jmp_29',

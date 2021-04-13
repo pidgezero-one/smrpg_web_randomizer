@@ -66,8 +66,8 @@ script = [
     },
     {
         "identifier": 'ACTION_169_db_13',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x06, 0x43, 0x21]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 6, 'ACTION_169_set_animation_speed_39']
     },
     {
         "identifier": 'ACTION_169_start_loop_n_times_14',
@@ -85,8 +85,8 @@ script = [
     },
     {
         "identifier": 'ACTION_169_db_17',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x06, 0x43, 0x21]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 6, 'ACTION_169_set_animation_speed_39']
     },
     {
         "identifier": 'ACTION_169_end_loop_18',
@@ -108,8 +108,8 @@ script = [
     },
     {
         "identifier": 'ACTION_169_db_22',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x06, 0x43, 0x21]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 6, 'ACTION_169_set_animation_speed_39']
     },
     {
         "identifier": 'ACTION_169_set_sprite_sequence_23',
@@ -136,8 +136,8 @@ script = [
     },
     {
         "identifier": 'ACTION_169_db_28',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x06, 0x43, 0x21]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 6, 'ACTION_169_set_animation_speed_39']
     },
     {
         "identifier": 'ACTION_169_start_loop_n_times_29',
@@ -155,8 +155,8 @@ script = [
     },
     {
         "identifier": 'ACTION_169_db_32',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x06, 0x43, 0x21]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 6, 'ACTION_169_set_animation_speed_39']
     },
     {
         "identifier": 'ACTION_169_end_loop_33',
@@ -178,8 +178,8 @@ script = [
     },
     {
         "identifier": 'ACTION_169_db_37',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x06, 0x43, 0x21]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 6, 'ACTION_169_set_animation_speed_39']
     },
     {
         "identifier": 'ACTION_169_jmp_38',

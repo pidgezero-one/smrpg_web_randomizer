@@ -62,8 +62,8 @@ script = [
     },
     {
         "identifier": 'ACTION_476_db_12',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0xf2, 0x5b]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_476_set_animation_speed_17']
     },
     {
         "identifier": 'ACTION_476_walk_1_step_f_direction_13',
@@ -76,8 +76,8 @@ script = [
     },
     {
         "identifier": 'ACTION_476_db_15',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0xf2, 0x5b]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_476_set_animation_speed_17']
     },
     {
         "identifier": 'ACTION_476_jmp_16',

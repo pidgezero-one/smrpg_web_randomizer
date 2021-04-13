@@ -48,8 +48,8 @@ script = [
     },
     {
         "identifier": 'ACTION_277_db_9',
-        "command": 'db',
-        "args": [0x3b, 0x00, 0x00, 0x05, 0x64, 0x33]
+        "command": 'jmp_if_object_within_range_same_z',
+        "args": [AreaObjects.MARIO, 0, 5, 'ACTION_277_reset_properties_59']
     },
     {
         "identifier": 'ACTION_277_set_700C_to_pressed_button_10',
