@@ -329,7 +329,7 @@ script = [
     {
         "identifier": 'EVENT_529_jmp_if_bit_set_188',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_529_remember_last_object_206']
+        "args": [0x7043, 1, 'EVENT_529_run_background_event_207']
     },
     {
         "identifier": 'EVENT_529_jmp_189',
@@ -359,97 +359,6 @@ script = [
     {
         "identifier": 'EVENT_529_fade_in_from_black_async_197',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_529_jmp_if_bit_set_198',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7060, 4, 'EVENT_529_run_background_event_207']
-    },
-    {
-        "identifier": 'EVENT_529_set_bit_200',
-        "command": 'set_bit',
-        "args": [0x7060, 4]
-    },
-    {
-        "identifier": 'EVENT_529_action_queue_sync_201',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.SCREEN_FOCUS],
-        "subscript": [
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [4]
-            },
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_shift_north_pixels_2',
-                "command": 'shift_north_pixels',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_shift_south_pixels_3',
-                "command": 'shift_south_pixels',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_shift_north_pixels_4',
-                "command": 'shift_north_pixels',
-                "args": [6]
-            },
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_set_animation_speed_5',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_shift_south_pixels_6',
-                "command": 'shift_south_pixels',
-                "args": [4]
-            },
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_shift_north_pixels_7',
-                "command": 'shift_north_pixels',
-                "args": [4]
-            },
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_shift_south_pixels_8',
-                "command": 'shift_south_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_529_action_queue_sync_201_SUBSCRIPT_shift_north_pixels_9',
-                "command": 'shift_north_pixels',
-                "args": [1]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_529_pause_202',
-        "command": 'pause',
-        "args": [8]
-    },
-    {
-        "identifier": 'EVENT_529_apply_tile_mod_203',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 0, [_0x6AFlags.USE_ALTERNATE]]
-    },
-    {
-        "identifier": 'EVENT_529_apply_solidity_mod_204',
-        "command": 'apply_solidity_mod',
-        "args": [Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
-    },
-    {
-        "identifier": 'EVENT_529_play_sound_205',
-        "command": 'play_sound',
-        "args": [Sounds._021_RUMBLING, 6]
-    },
-    {
-        "identifier": 'EVENT_529_remember_last_object_206',
-        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_529_run_background_event_207',

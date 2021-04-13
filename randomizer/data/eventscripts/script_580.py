@@ -9,5 +9,10 @@ script = [
         "identifier": 'EVENT_580_run_event_as_subroutine_1',
         "command": 'run_event_as_subroutine',
         "args": [281]
+    },
+    {
+        "identifier": 'EVENT_580_2',
+        "command": 'jmp_to_event',
+        "args": [15]
     }
 ]

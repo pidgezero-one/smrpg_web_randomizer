@@ -13,6 +13,12 @@ def assemble_from_table(pointer_table, data_table):
 
     new_pointer_table = [None]*4096
 
+    # Will need to substitute vars into any strings here where appropriate. i.e. Peach's name into #735
+    # `PEACH_NAME`
+    # `PEACH_ARTICLE`
+    # Set strong Rose Town NPC hint to pointers 803, 875
+    # Set strong Marrymore hint to pointer 1006 (bellhop says something like "I can't let you leave yet. If you really need to go visit <place with a star piece>, you can wait until you're finished working.")
+
     # convert dialogs to byte vals
     compressed_dialog = [
         [dialogs.compress(d) for d in data_table[0]], # 0x22

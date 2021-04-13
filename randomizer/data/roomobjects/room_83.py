@@ -555,7 +555,7 @@ room = {
         {
           "id": 10,
           "npc_id_offset": 0,
-          "event_offset": 0,
+          "event_offset": 3,
           "action_offset": 0,
           "visible": True,
           "x": 17,

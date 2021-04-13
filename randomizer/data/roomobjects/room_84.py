@@ -479,10 +479,23 @@ room = {
       "slidable_along_walls": False,
       "cant_move_if_in_air": False,
       "byte7_upper2": 0x03,
-      "clones": []
+      "clones": [
+        {
+          "id": 12,
+          "npc_id_offset": 0,
+          "event_offset": 3,
+          "action_offset": 0,
+          "visible": True,
+          "x": 17,
+          "y": 31,
+          "z": 1,
+          "z_half": False,
+          "direction": RadialDirection.SOUTHWEST
+        }
+      ]
     },
     {
-      "id": 12,
+      "id": 13,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
       "model": 255,
