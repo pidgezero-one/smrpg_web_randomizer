@@ -30,8 +30,8 @@ script = [
     },
     {
         "identifier": 'ACTION_79_db_5',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x14, 0x16]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_79_pause_4']
     },
     {
         "identifier": 'ACTION_79_jmp_6',

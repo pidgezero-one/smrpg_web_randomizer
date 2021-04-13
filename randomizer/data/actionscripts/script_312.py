@@ -147,9 +147,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_312_db_30',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x24, 0x3a]
+        "identifier": 'ACTION_312_uj_30',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_312_pause_29']
     },
     {
         "identifier": 'ACTION_312_shift_northeast_steps_31',
@@ -212,9 +212,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_312_db_44',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x43, 0x3a]
+        "identifier": 'ACTION_312_uj_44',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_312_pause_43']
     },
     {
         "identifier": 'ACTION_312_shift_southwest_steps_45',
@@ -282,9 +282,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_312_db_59',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x64, 0x3a]
+        "identifier": 'ACTION_312_uj_59',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_312_pause_58']
     },
     {
         "identifier": 'ACTION_312_shift_northwest_steps_60',

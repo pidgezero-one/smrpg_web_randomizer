@@ -182,9 +182,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_18_db_36',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x9f, 0x09]
+        "identifier": 'ACTION_18_uj_36',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_18_pause_35']
     },
     {
         "identifier": 'ACTION_18_pause_37',

@@ -147,8 +147,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_1688_action_queue_sync_19_SUBSCRIPT_db_9',
-                "command": 'db',
-                "args": [0xfd, 0x3d, 0x14, 0xb4, 0x30]
+                "command": 'jmp_if_object_in_air',
+                "args": [AreaObjects.NPC_0, 'EVENT_1688_action_queue_sync_19_SUBSCRIPT_pause_8']
             },
             {
                 "identifier": 'EVENT_1688_action_queue_sync_19_SUBSCRIPT_shift_north_pixels_10',
@@ -204,8 +204,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_1688_action_queue_async_20_SUBSCRIPT_db_9',
-                "command": 'db',
-                "args": [0xfd, 0x3d, 0x15, 0xcc, 0x30]
+                "command": 'jmp_if_object_in_air',
+                "args": [AreaObjects.NPC_1, 'EVENT_1688_action_queue_async_20_SUBSCRIPT_pause_8']
             },
             {
                 "identifier": 'EVENT_1688_action_queue_async_20_SUBSCRIPT_shift_north_pixels_10',

@@ -74,9 +74,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_825_db_15',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x14, 0xaf, 0x9f]
+        "identifier": 'ACTION_825_uj_15',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_0, 'ACTION_825_pause_14']
     },
     {
         "identifier": 'ACTION_825_play_sound_16',
@@ -118,9 +118,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_825_db_24',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x14, 0xc6, 0x9f]
+        "identifier": 'ACTION_825_uj_24',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_0, 'ACTION_825_pause_23']
     },
     {
         "identifier": 'ACTION_825_play_sound_25',
@@ -183,8 +183,8 @@ script = [
     },
     {
         "identifier": 'ACTION_825_db_37',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x18, 0xec, 0x9f]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_4, 'ACTION_825_pause_36']
     },
     {
         "identifier": 'ACTION_825_set_animation_speed_38',
@@ -412,8 +412,8 @@ script = [
     },
     {
         "identifier": 'ACTION_825_db_85',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x18, 0x50, 0xa0]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_4, 'ACTION_825_pause_84']
     },
     {
         "identifier": 'ACTION_825_clear_bit_86',
@@ -481,8 +481,8 @@ script = [
     },
     {
         "identifier": 'ACTION_825_db_99',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x18, 0x74, 0xa0]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_4, 'ACTION_825_pause_98']
     },
     {
         "identifier": 'ACTION_825_play_sound_100',

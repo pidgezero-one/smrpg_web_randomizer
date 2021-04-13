@@ -15,9 +15,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_22_db_2',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xf4, 0x0a]
+        "identifier": 'ACTION_22_uj_2',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_22_pause_1']
     },
     {
         "identifier": 'ACTION_22_jmp_3',

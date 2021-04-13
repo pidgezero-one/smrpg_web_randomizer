@@ -76,9 +76,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_172_db_15',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xa5, 0x21]
+        "identifier": 'ACTION_172_uj_15',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_172_pause_14']
     },
     {
         "identifier": 'ACTION_172_clear_solidity_bits_16',

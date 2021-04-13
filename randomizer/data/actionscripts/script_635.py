@@ -166,9 +166,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_635_db_33',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x1c, 0xfa, 0x71]
+        "identifier": 'ACTION_635_uj_33',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_635_pause_32']
     },
     {
         "identifier": 'ACTION_635_play_sound_34',

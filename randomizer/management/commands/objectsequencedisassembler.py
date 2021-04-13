@@ -520,6 +520,10 @@ fd_names[0x16] = named('object_memory_clear_bit', con(0x0B), con_bitarray([3]))
 fd_names[0x17] = named('object_memory_set_bit', con(0x0B), con_bitarray([3]))
 fd_names[0x18] = named('object_memory_set_bit', con(0x3C), con_bitarray([6]))
 fd_names[0x19] = named('object_memory_set_bit', con(0x0D), con_bitarray([6]))
+# 0x1A - 0x3C undocumented
+fd_names[0x3D] = named('jmp_if_object_in_air', byte(
+    prefix="AreaObjects", table=area_object_table), short())
+# 0x3E - 0x9B undocumented
 # 0x1A - 0x9B undocumented
 fd_names[0x9E] = named('play_sound', byte(
     prefix="Sounds", table=sound_table), con_int(4))
@@ -537,6 +541,8 @@ jmp_cmds = [0x3D, 0x3E, 0x3F, 0xD2, 0xD3, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0x
             0xE2, 0xE4, 0xE3, 0xE5, 0xE6, 0xE7, 0xE8, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF, 0xF8]
 
 jmp_cmds_double = [0xE9]
+
+jmp_cmds_fd = [0x3D]
 
 def get_jump_args(line, args):
     if line[0] in jmp_cmds_double:
@@ -564,7 +570,7 @@ class Command(BaseCommand):
                 cmd = line[1]
                 rest = line[2:]
                 table = fd_names
-                has_jump = False
+                has_jump = (cmd in jmp_cmds_fd)
             else:
                 cmd = line[0]
                 rest = line[1:]

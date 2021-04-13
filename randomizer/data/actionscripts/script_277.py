@@ -247,9 +247,9 @@ script = [
         "args": [2]
     },
     {
-        "identifier": 'ACTION_277_db_50',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x43, 0x33]
+        "identifier": 'ACTION_277_uj_50',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_277_pause_49']
     },
     {
         "identifier": 'ACTION_277_set_700C_to_object_coord_51',

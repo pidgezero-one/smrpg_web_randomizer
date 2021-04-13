@@ -1382,6 +1382,14 @@ class ObjectSequenceScript:
         self.append_byte(priority)
         return self
 
+    # FD 0x3D
+    def jmp_if_object_in_air(self, obj, addr):
+        self.append_byte(0xFD)
+        self.append_byte(0x3D)
+        self.append_byte(obj)
+        self.append_short(self.get_branch_address(addr))
+        return self
+
     # FD 0xB0
     def mem_700C_and_const(self, value):
         self.append_byte(0xFD)

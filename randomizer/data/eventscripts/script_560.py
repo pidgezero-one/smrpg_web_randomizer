@@ -1332,8 +1332,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_560_action_queue_async_255_SUBSCRIPT_db_7',
-                "command": 'db',
-                "args": [0xfd, 0x3d, 0x20, 0xb1, 0x64]
+                "command": 'jmp_if_object_in_air',
+                "args": [AreaObjects.NPC_12, 'EVENT_560_action_queue_async_255_SUBSCRIPT_pause_6']
             },
             {
                 "identifier": 'EVENT_560_action_queue_async_255_SUBSCRIPT_set_animation_speed_8',

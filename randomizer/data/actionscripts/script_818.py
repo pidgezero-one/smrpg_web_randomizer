@@ -39,8 +39,8 @@ script = [
     },
     {
         "identifier": 'ACTION_818_db_7',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xc8, 0x9b]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_818_pause_6']
     },
     {
         "identifier": 'ACTION_818_set_700C_to_pressed_button_8',

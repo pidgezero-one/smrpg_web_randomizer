@@ -45,8 +45,8 @@ script = [
     },
     {
         "identifier": 'ACTION_721_db_8',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x92, 0x85]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_721_jump_to_height_6']
     },
     {
         "identifier": 'ACTION_721_turn_random_direction_9',

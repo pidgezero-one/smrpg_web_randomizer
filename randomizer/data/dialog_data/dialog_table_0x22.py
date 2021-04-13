@@ -94,11 +94,12 @@ dialog_data[59] = ''' Our economy is booming now that
  the like.[await]'''
 dialog_data[60] = '''          Received “[0x70A7]”[await]'''
 dialog_data[61] = '''[await]'''
-dialog_data[62] = '''  Some of the monsters out there are
+dialog_data[62] = ''' Some of the monsters out there are
  pretty scary. Be sure to learn your
  Timed Hits![await][pause] My husband knows all
  about them.[await]'''
-dialog_data[63] = '''              Gotta go fast![await]'''
+dialog_data[63] = '''
+              Gotta go fast![await]'''
 dialog_data[64] = '''[await]'''
 dialog_data[65] = '''[await]'''
 dialog_data[66] = '''[await]'''
@@ -114,9 +115,9 @@ dialog_data[69] = ''' My son was getting dizzy from all
  But taking his “Jump Shoes” off
  seemed to help him jump in a
  straight line.[await]'''
-dialog_data[70] = '''  One! Two! Three! Hey, Mario!
- Think if I practice enough I'll get
- 100 Super Jumps?[await]
+dialog_data[70] = '''  One! Two! Three!
+ Hey, Mario! Think if I practice
+ enough, I'll get 100 Super Jumps?[await]
  [select]  (Sure!)
  [select]  (Yeah, right kid.)[await]'''
 dialog_data[71] = '''[await]'''
@@ -155,7 +156,9 @@ dialog_data[93] = '''[await]'''
 dialog_data[94] = '''[await]'''
 dialog_data[95] = '''[await]'''
 dialog_data[96] = '''[await]'''
-dialog_data[97] = '''[await]'''
+dialog_data[97] = ''' CHANCELLOR: It's a shame I don't
+ have a sitting sprite. Nobody uses
+ that chair over there.[await]'''
 dialog_data[98] = '''[await]'''
 dialog_data[99] = '''[await]'''
 dialog_data[100] = '''[await]'''
@@ -165,12 +168,19 @@ dialog_data[103] = '''[await]'''
 dialog_data[104] = '''[await]'''
 dialog_data[105] = '''[await]'''
 dialog_data[106] = '''[await]'''
-dialog_data[107] = ''' It was that reptile! He’s the
- one who stole my wallet...![await]'''
-dialog_data[108] = '''
- ...but I let him get away...[await]'''
-dialog_data[109] = ''' Dunno what that reptile’s up to,
- but[delay]...[delay] MAN, can he JUMP![await]'''
+dialog_data[107] = ''' I've traveled all around the world.[await]
+ It's been an incredible experience,
+ but...[delay] I lost my wallet![await]'''
+dialog_data[108] = ''' ...If you happen to find it, can you
+ bring it back to me?[await][pause] I promise I'll
+ give you something NICE.[await]'''
+dialog_data[109] = ''' Hey Mario! Think you can get 100
+ Super Jumps today?[await][page]
+ Even though it's tricky, just
+ remember, if you're dropping
+ around 13 or 14, you're just a
+ hair too early.[await]
+ Good luck![await]'''
 dialog_data[110] = ''' Wow! You're THE Mario? I know
  all about you! You've got more
  JUMP in you than a box of frogs![await]'''

@@ -41,8 +41,8 @@ script = [
     },
     {
         "identifier": 'ACTION_677_db_7',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x5d, 0x7c]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_677_jmp_if_bit_set_6']
     },
     {
         "identifier": 'ACTION_677_jmp_8',
@@ -56,8 +56,8 @@ script = [
     },
     {
         "identifier": 'ACTION_677_db_10',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x6b, 0x7c]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_677_pause_9']
     },
     {
         "identifier": 'ACTION_677_face_northeast_11',

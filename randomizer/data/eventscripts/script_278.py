@@ -31,8 +31,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_db_4',
-                "command": 'db',
-                "args": [0xfd, 0x3d, 0x11, 0x56, 0x13]
+                "command": 'jmp_if_object_in_air',
+                "args": [AreaObjects.MEM_70A9, 'EVENT_278_action_queue_async_0_SUBSCRIPT_pause_3']
             },
             {
                 "identifier": 'EVENT_278_action_queue_async_0_SUBSCRIPT_set_700C_to_70A0_short_mem_5',

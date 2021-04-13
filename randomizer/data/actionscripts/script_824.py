@@ -121,8 +121,8 @@ script = [
     },
     {
         "identifier": 'ACTION_824_db_24',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x8d, 0x9e]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_824_pause_23']
     },
     {
         "identifier": 'ACTION_824_floating_off_25',
@@ -175,8 +175,8 @@ script = [
     },
     {
         "identifier": 'ACTION_824_db_35',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xa9, 0x9e]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_824_pause_34']
     },
     {
         "identifier": 'ACTION_824_clear_solidity_bits_36',
@@ -236,8 +236,8 @@ script = [
     },
     {
         "identifier": 'ACTION_824_db_48',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xc8, 0x9e]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_824_pause_47']
     },
     {
         "identifier": 'ACTION_824_floating_off_49',
@@ -275,8 +275,8 @@ script = [
     },
     {
         "identifier": 'ACTION_824_db_56',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xdd, 0x9e]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_824_pause_55']
     },
     {
         "identifier": 'ACTION_824_clear_solidity_bits_57',
@@ -409,8 +409,8 @@ script = [
     },
     {
         "identifier": 'ACTION_824_db_84',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x20, 0x9f]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_824_pause_83']
     },
     {
         "identifier": 'ACTION_824_play_sound_85',
@@ -457,8 +457,8 @@ script = [
     },
     {
         "identifier": 'ACTION_824_db_94',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x3a, 0x9f]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_824_pause_93']
     },
     {
         "identifier": 'ACTION_824_floating_off_95',
@@ -515,8 +515,8 @@ script = [
     },
     {
         "identifier": 'ACTION_824_db_106',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x5a, 0x9f]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_824_pause_105']
     },
     {
         "identifier": 'ACTION_824_floating_off_107',
@@ -563,8 +563,8 @@ script = [
     },
     {
         "identifier": 'ACTION_824_db_116',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x74, 0x9f]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_824_pause_115']
     },
     {
         "identifier": 'ACTION_824_floating_off_117',

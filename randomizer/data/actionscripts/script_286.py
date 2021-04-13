@@ -71,9 +71,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_286_db_14',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x8d, 0x34]
+        "identifier": 'ACTION_286_uj_14',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_286_pause_13']
     },
     {
         "identifier": 'ACTION_286_shadow_off_15',

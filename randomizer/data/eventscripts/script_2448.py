@@ -273,8 +273,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_2448_action_queue_async_84_SUBSCRIPT_db_7',
-                "command": 'db',
-                "args": [0xfd, 0x3d, 0x21, 0xc9, 0xc4]
+                "command": 'jmp_if_object_in_air',
+                "args": [AreaObjects.NPC_13, 'EVENT_2448_action_queue_async_84_SUBSCRIPT_pause_6']
             },
             {
                 "identifier": 'EVENT_2448_action_queue_async_84_SUBSCRIPT_play_sound_8',

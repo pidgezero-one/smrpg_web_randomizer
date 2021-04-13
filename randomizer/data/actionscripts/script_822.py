@@ -121,8 +121,8 @@ script = [
     },
     {
         "identifier": 'ACTION_822_db_24',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x17, 0xd3, 0x9c]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_3, 'ACTION_822_pause_23']
     },
     {
         "identifier": 'ACTION_822_set_bit_25',
@@ -190,8 +190,8 @@ script = [
     },
     {
         "identifier": 'ACTION_822_db_38',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x17, 0xf4, 0x9c]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_3, 'ACTION_822_pause_37']
     },
     {
         "identifier": 'ACTION_822_set_bit_39',
@@ -275,8 +275,8 @@ script = [
     },
     {
         "identifier": 'ACTION_822_db_55',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x17, 0x1c, 0x9d]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_3, 'ACTION_822_pause_54']
     },
     {
         "identifier": 'ACTION_822_set_bit_56',
@@ -410,8 +410,8 @@ script = [
     },
     {
         "identifier": 'ACTION_822_db_83',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x16, 0x58, 0x9d]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_2, 'ACTION_822_pause_82']
     },
     {
         "identifier": 'ACTION_822_set_bit_84',
@@ -470,8 +470,8 @@ script = [
     },
     {
         "identifier": 'ACTION_822_db_95',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x16, 0x76, 0x9d]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_2, 'ACTION_822_pause_94']
     },
     {
         "identifier": 'ACTION_822_set_bit_96',
@@ -549,8 +549,8 @@ script = [
     },
     {
         "identifier": 'ACTION_822_db_111',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x16, 0x9b, 0x9d]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_2, 'ACTION_822_pause_110']
     },
     {
         "identifier": 'ACTION_822_set_bit_112',
@@ -673,8 +673,8 @@ script = [
     },
     {
         "identifier": 'ACTION_822_db_137',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x15, 0xd2, 0x9d]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_1, 'ACTION_822_pause_136']
     },
     {
         "identifier": 'ACTION_822_set_bit_138',
@@ -751,8 +751,8 @@ script = [
     },
     {
         "identifier": 'ACTION_822_db_153',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x15, 0xf6, 0x9d]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_1, 'ACTION_822_pause_152']
     },
     {
         "identifier": 'ACTION_822_set_bit_154',
@@ -824,8 +824,8 @@ script = [
     },
     {
         "identifier": 'ACTION_822_db_168',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x15, 0x18, 0x9e]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_1, 'ACTION_822_pause_167']
     },
     {
         "identifier": 'ACTION_822_set_bit_169',

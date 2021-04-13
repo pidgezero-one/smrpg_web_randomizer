@@ -410,8 +410,8 @@ script = [
     },
     {
         "identifier": 'ACTION_827_db_86',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x1a, 0xdf, 0xa1]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_6, 'ACTION_827_pause_85']
     },
     {
         "identifier": 'ACTION_827_play_sound_87',
@@ -534,8 +534,8 @@ script = [
     },
     {
         "identifier": 'ACTION_827_db_112',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x1a, 0x1e, 0xa2]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_6, 'ACTION_827_pause_111']
     },
     {
         "identifier": 'ACTION_827_play_sound_113',

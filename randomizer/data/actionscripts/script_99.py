@@ -25,8 +25,8 @@ script = [
     },
     {
         "identifier": 'ACTION_99_db_4',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x83, 0x18]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_99_pause_3']
     },
     {
         "identifier": 'ACTION_99_floating_off_5',

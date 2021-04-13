@@ -38,8 +38,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_303_start_embedded_action_script_async_F1_1_SUBSCRIPT_db_3',
-                "command": 'db',
-                "args": [0xfd, 0x3d, 0x14, 0xa7, 0x19]
+                "command": 'jmp_if_object_in_air',
+                "args": [AreaObjects.NPC_0, 'EVENT_303_start_embedded_action_script_async_F1_1_SUBSCRIPT_pause_2']
             }
         ]
     },
@@ -170,8 +170,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_303_action_queue_async_16_SUBSCRIPT_db_2',
-                "command": 'db',
-                "args": [0xfd, 0x3d, 0x14, 0xee, 0x19]
+                "command": 'jmp_if_object_in_air',
+                "args": [AreaObjects.NPC_0, 'EVENT_303_action_queue_async_16_SUBSCRIPT_pause_1']
             }
         ]
     },

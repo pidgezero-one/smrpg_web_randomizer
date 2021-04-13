@@ -188,9 +188,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_372_db_37',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x77, 0x43]
+        "identifier": 'ACTION_372_uj_37',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_372_pause_36']
     },
     {
         "identifier": 'ACTION_372_clear_bit_38',
@@ -300,9 +300,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_372_db_60',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xaf, 0x43]
+        "identifier": 'ACTION_372_uj_60',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_372_pause_59']
     },
     {
         "identifier": 'ACTION_372_clear_bit_61',

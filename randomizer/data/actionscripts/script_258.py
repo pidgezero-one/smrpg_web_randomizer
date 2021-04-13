@@ -29,9 +29,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_258_db_5',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xc5, 0x2f]
+        "identifier": 'ACTION_258_uj_5',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_258_pause_4']
     },
     {
         "identifier": 'ACTION_258_walk_1_step_northeast_6',
@@ -52,9 +52,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_258_db_10',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xd1, 0x2f]
+        "identifier": 'ACTION_258_uj_10',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_258_pause_9']
     },
     {
         "identifier": 'ACTION_258_walk_1_step_southwest_11',

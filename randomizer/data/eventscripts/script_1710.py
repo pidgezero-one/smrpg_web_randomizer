@@ -330,8 +330,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_1710_action_queue_async_43_SUBSCRIPT_db_5',
-                "command": 'db',
-                "args": [0xfd, 0x3d, 0x1d, 0x9d, 0x3a]
+                "command": 'jmp_if_object_in_air',
+                "args": [AreaObjects.NPC_9, 'EVENT_1710_action_queue_async_43_SUBSCRIPT_pause_4']
             },
             {
                 "identifier": 'EVENT_1710_action_queue_async_43_SUBSCRIPT_shadow_off_6',

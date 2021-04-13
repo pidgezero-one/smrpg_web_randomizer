@@ -97,8 +97,8 @@ script = [
     },
     {
         "identifier": 'ACTION_930_db_19',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x2a, 0xac]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_930_pause_18']
     },
     {
         "identifier": 'ACTION_930_clear_solidity_bits_20',

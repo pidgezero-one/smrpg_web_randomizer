@@ -43,8 +43,8 @@ script = [
     },
     {
         "identifier": 'ACTION_71_db_8',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x16, 0xad, 0x14]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_3, 'ACTION_71_pause_7']
     },
     {
         "identifier": 'ACTION_71_pause_9',
@@ -63,8 +63,8 @@ script = [
     },
     {
         "identifier": 'ACTION_71_db_12',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x16, 0xb9, 0x14]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_3, 'ACTION_71_pause_11']
     },
     {
         "identifier": 'ACTION_71_pause_13',
@@ -83,8 +83,8 @@ script = [
     },
     {
         "identifier": 'ACTION_71_db_16',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x16, 0xc5, 0x14]
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.NPC_3, 'ACTION_71_pause_15']
     },
     {
         "identifier": 'ACTION_71_pause_17',

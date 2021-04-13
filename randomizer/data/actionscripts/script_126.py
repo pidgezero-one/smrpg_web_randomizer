@@ -142,9 +142,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_126_db_28',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0xf3, 0x1b]
+        "identifier": 'ACTION_126_uj_28',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_126_pause_27']
     },
     {
         "identifier": 'ACTION_126_set_animation_speed_29',
@@ -207,9 +207,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_126_db_42',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x0f, 0x1c]
+        "identifier": 'ACTION_126_uj_42',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_126_pause_41']
     },
     {
         "identifier": 'ACTION_126_floating_off_43',
@@ -234,9 +234,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_126_db_48',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x1d, 0x1c]
+        "identifier": 'ACTION_126_uj_48',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_126_pause_47']
     },
     {
         "identifier": 'ACTION_126_shift_southeast_steps_49',
@@ -323,9 +323,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_126_db_67',
-        "command": 'db',
-        "args": [0xfd, 0x3d, 0x07, 0x41, 0x1c]
+        "identifier": 'ACTION_126_uj_67',
+        "command": 'jmp_if_object_in_air',
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_126_pause_66']
     },
     {
         "identifier": 'ACTION_126_pause_68',
