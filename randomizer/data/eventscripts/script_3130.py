@@ -11,16 +11,6 @@ script = [
         "args": [1581, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_3130_jmp_if_dialog_option_b_1',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3130_ret_3']
-    },
-    {
-        "identifier": 'EVENT_3130_run_dialog_2',
-        "command": 'run_dialog',
-        "args": [1582, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_3130_ret_3',
         "command": 'ret'
     }

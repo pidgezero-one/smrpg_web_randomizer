@@ -31,9 +31,19 @@ script = [
         "args": [0x70ab, 21]
     },
     {
+        "identifier": 'EVENT_1817_run_event_as_subroutine_35',
+        "command": 'run_event_as_subroutine',
+        "args": [1739]
+    },
+    {
         "identifier": 'EVENT_1817_set_5',
         "command": 'set',
         "args": [0x70ab, 0]
+    },
+    {
+        "identifier": 'EVENT_1817_run_event_as_subroutine_35_',
+        "command": 'run_event_as_subroutine',
+        "args": [1739]
     },
     {
         "identifier": 'EVENT_1817_clear_bit_6',

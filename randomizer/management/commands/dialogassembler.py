@@ -18,6 +18,7 @@ def assemble_from_table(pointer_table, data_table):
     # `PEACH_ARTICLE`
     # Set strong Rose Town NPC hint to pointers 803, 875
     # Set strong Marrymore hint to pointer 1006 (bellhop says something like "I can't let you leave yet. If you really need to go visit <place with a star piece>, you can wait until you're finished working.")
+    # Dialogs 1222, 1223, 1224, 1227 will need to change dpeending on if star shuffle is on or not.
 
     # convert dialogs to byte vals
     compressed_dialog = [

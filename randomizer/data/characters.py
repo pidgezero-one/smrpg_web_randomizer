@@ -399,6 +399,12 @@ class Mario(Character):
     mway_2_npc_id = [0x03, 0x70]
     mway_1_npc_id = [0x03, 0x40]
     moleville_sprite_id = 0x02
+    
+    dialog_replacements = [
+        (659,''' You can't get inside Booster's
+ Tower very easily. You'll need
+ a pretty good jumper for that.[await]'''), # conditional based on booster's tower flag
+    ]
 
     def get_patch(self):
         patch = super().get_patch()
@@ -510,6 +516,11 @@ class Peach(Character):
     mway_1_npc_id = [0x07, 0x40]
     moleville_sprite_id = 0x06
 
+    dialog_replacements = [
+        (659,''' You can't get inside Booster's
+ Tower very easily. You'll need
+ a persuasive princess for that.[await]''')
+    ]
 
 class Bowser(Character):
     index = 2
@@ -601,6 +612,12 @@ class Bowser(Character):
     mway_2_npc_id = [0x0B, 0x70]
     mway_1_npc_id = [0x0B, 0x40]
     moleville_sprite_id = 0x0A
+
+    dialog_replacements = [
+        (659,''' You can't get inside Booster's
+ Tower very easily. You'll need
+ a REALLY strong person for that.[await]''')
+    ]
 
 
 class Geno(Character):
@@ -695,6 +712,12 @@ class Geno(Character):
     mway_1_npc_id = [0x13, 0x40]
     moleville_sprite_id = 0x12
 
+    dialog_replacements = [
+        (659,''' You can't get inside Booster's
+ Tower very easily. You'll need
+ a pretty strong gun for that.[await]''')
+    ]
+
 
 class Mallow(Character):
     index = 4
@@ -788,6 +811,12 @@ class Mallow(Character):
     mway_2_npc_id = [0x0F, 0x70]
     mway_1_npc_id = [0x0F, 0x40]
     moleville_sprite_id = 0x0E
+
+    dialog_replacements = [
+        (659,''' You can't get inside Booster's
+ Tower very easily. You'll need
+ some pretty magical fluff for that.[await]''')
+    ]
 
 
 def get_default_characters(world):

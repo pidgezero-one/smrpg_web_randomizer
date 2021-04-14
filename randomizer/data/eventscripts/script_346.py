@@ -8,12 +8,12 @@ script = [
     {
         "identifier": 'EVENT_346_remove_from_current_level_0',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_346_remove_from_level_1',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM]
+        "args": [AreaObjects.NPC_0, Rooms._020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM]
     },
     {
         "identifier": 'EVENT_346_set_2',

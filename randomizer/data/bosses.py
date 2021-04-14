@@ -840,6 +840,7 @@ class Birdo(BossAndStarLocation):
     battlefield = Battlefields.Birdo
     music = BattleMusic.Boss1
     original_boss = 205
+    dialogs_to_replace = [49]
 
 
 class Valentina(BossAndStarLocation):

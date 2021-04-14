@@ -1159,7 +1159,7 @@ dialog_data[649] = ''' Sorry, curatives are all gone.
 dialog_data[650] = ''' Tank you, pweese come again![await]'''
 dialog_data[651] = '''      Received a “Shiny Stone”[await]'''
 dialog_data[652] = ''' I'm reading a picture book about
- Bean Valley![await][pause][delay_30]...How the heck is
+ Bean Valley![await][pause][delay_30] ...How the heck is
  anyone supposed to jump to that
  left beanstalk?![await][page]
  Is there somewhere else you can
@@ -1180,50 +1180,19 @@ I'll trade you my “Carbo Cookie”![await]
 dialog_data[656] = '''[await]'''
 dialog_data[657] = '''     Received a “Carbo Cookie”[await]'''
 dialog_data[658] = '''[await]'''
-dialog_data[659] = ''' You can't get inside Booster's
- Tower very easily. You'll need
- a REALLY strong person for that.[await]'''
+dialog_data[659] = ''' Booster's a pretty absent-minded
+ fella. He just leaves the door to
+ his tower open all the time.[await]'''
 dialog_data[660] = '''MA'MOLE: Seen our roof yet?[await]
  Pa fixed it up and now he’s back
  to work at the mountain.[await]
- He’s singin' “Moleville Blues♪”
- and putting in a hard day’s work.[await]'''
-dialog_data[661] = '''SNIFIT 1: Come back Mr. Beetle!
- Don't you want to come to
- Booster’s and play?[await][page]
-SNIFIT 2: Yeah, don't run away!
- We just want to play!
- We'll take good care of you...[await][page]
-SNIFIT 3: Uh...like...
- what they said, okay, Mr. Beetle?[await]'''
-dialog_data[662] = '''SNIFIT 1:
- Don't you DARE touch that beetle!
- It’s a present for Booster.[await][page]
-SNIFIT 2: That’s right!
- Just hand it over, nice and easy.[await][page]
-SNIFIT 3: Uh...
- Yeah...like they said...
- Or we won't be your friend.[await]'''
-dialog_data[663] = '''SNIFIT 1: Booster really, really,
- REALLY likes beetles!
- But he can't catch his own.[await][page]
-SNIFIT 2: That’s right, he’s busy
- keeping the princess from the sky
- entertained.[await][page]
-SNIFIT 3: So we're catching
- beetles for him.[await]'''
-dialog_data[664] = '''SNIFIT 1: So hand it over![await][page]
-SNIFIT 2: That’s right![await][page]
-SNIFIT 3: Uh...
- [delay]••[delay]••[delay]••Pretty please?[await]'''
-dialog_data[665] = '''SNIFIT 1: Oh no!
- It’s getting away![await][page]
-SNIFIT 2: Quick, catch it![await][page]
-SNIFIT 3: CATCH IT![await]'''
-dialog_data[666] = ''' Now, who would have thought a
- girl could fall out of the sky?
- Maybe it’s Princess Toadstool?![await]
- Nah...[await]'''
+ He’s singin' and workin' hard.[await]'''
+dialog_data[661] = '''[await]'''
+dialog_data[662] = '''[await]'''
+dialog_data[663] = '''[await]'''
+dialog_data[664] = '''[await]'''
+dialog_data[665] = '''[await]'''
+dialog_data[666] = '''[await]'''
 dialog_data[667] = '''PA'MOLE: Mario, you're our only
  hope for those kids.
  We're countin' on ya.[await]'''
@@ -1254,73 +1223,26 @@ dialog_data[670] = '''
                to come by.[await]'''
 dialog_data[671] = '''        Received a Frog Coin![await]'''
 dialog_data[672] = '''   Found a “[0x70A7]”![end]'''
-dialog_data[673] = '''TOADSTOOL: Please, let me go!
- Won't you...please?
- Pretty please?[await]'''
-dialog_data[674] = '''BOOSTER: Eh?[await]
-  Hey, where’s my bride-to-be?[await]
-[end]'''
-dialog_data[675] = '''  I wanna play hide and seek, too![await][page]
-TOADSTOOL: Yuck, I don't want to
- play ANYTHING with you![await][page]
-BOOSTER: What a poor sport!
-  Well, we really should hurry along.[await]
-  A yummy cake is waiting for us
-  after we climb this hill![await]
-  Let’s GO![await][page]
-TOADSTOOL: NO!
- I don't want to marry you.
- Please let me go![await]'''
-dialog_data[676] = '''TOADSTOOL: Help! Mario!
- Please help meeeeeee![await][page]
-BOOSTER: Uh oh! It’s Mario![await]
-  We didn't plan on this.[await]'''
-dialog_data[677] = '''BOOSTER: Mario, you aren't
-  invited to our wedding![await]
-  Besides, we still have to have
-  the rehearsal![await][page]
-  I'll be happy to race you to the 
-  wedding hall, but ••[delay]••[delay]••[delay][await]
-  you'd better not get in my way.[await][page]
-  Ready?[await]'''
-dialog_data[678] = '''[page]
- You can only move left or right,
- and jump. You can't go forward
- or backward.[await][pause][end]'''
-dialog_data[679] = '''[page]
- Touch the Snifits or any of the
- barrels and you'll fall back.[await][pause][end]'''
-dialog_data[680] = '''[page]
- Jump on the barrels or the Snifits
- to sprint forward.[await][pause][end]'''
-dialog_data[681] = '''[page]
- Reach out and touch Toadstool,
- and you'll win “Flowers”![await][pause][end]'''
-dialog_data[682] = '''[page]
-
-         Ready, get set, go![await]'''
-dialog_data[683] = '''
- This is the “Booster Hill” track.[await][page]
- Need some advice?
-  [select]  (Yes)
-  [select]  (No)[await]'''
+dialog_data[673] = '''[await]'''
+dialog_data[674] = '''[await]'''
+dialog_data[675] = '''[await]'''
+dialog_data[676] = '''[await]'''
+dialog_data[677] = '''[await]'''
+dialog_data[678] = '''[await]'''
+dialog_data[679] = '''[await]'''
+dialog_data[680] = '''[await]'''
+dialog_data[681] = '''[await]'''
+dialog_data[682] = '''[await]'''
+dialog_data[683] = '''[await]'''
 dialog_data[684] = '''          Scored [0x7000] “Flower”s[await]'''
-dialog_data[685] = '''          Caught [0x7000] “Beetle”s[await]'''
-dialog_data[686] = ''' Ready for the “Beetle Race”?[await][page]
- Do you need instructions?
-  [select]  (Yes)
-  [select]  (No)[await]'''
-dialog_data[687] = '''[page]
- Use Booster, the Snifits, or the
- barrels to move ahead and catch
- “Beetles”.[await][pause][end]'''
+dialog_data[685] = '''[await]'''
+dialog_data[686] = '''[await]'''
+dialog_data[687] = '''[await]'''
 dialog_data[688] = '''      Didn't get any “Flowers”.[await]'''
-dialog_data[689] = '''      Didn't get any “Beetles”.[await]'''
-dialog_data[690] = '''                 [0x7000] female [end]'''
-dialog_data[691] = '''
-                 [0x7000] male [end]'''
-dialog_data[692] = '''
-                 [0x7000] gold [await]'''
+dialog_data[689] = '''[await]'''
+dialog_data[690] = '''[await]'''
+dialog_data[691] = '''[await]'''
+dialog_data[692] = '''[await]'''
 dialog_data[693] = ''' Gasp, gasp![await]
  Phew, what a workout.[await]'''
 dialog_data[694] = ''' Um••••••Mario?[await]
@@ -1339,27 +1261,10 @@ dialog_data[698] = ''' There’s nothing left to win here.
  Let’s go now.[await]
   [select]  (All right)
   [select]  (No)[await]'''
-dialog_data[699] = ''' Uh...Mario?
- There are no more Beetles left.[await][page]
- Take your “Beetle Box” to the store
- in Seaside.[await][page]
- I'll guide you out now.[await]
-  [select]  (Okay)
-  [select]  (No)[await]'''
-dialog_data[700] = ''' Hey Mario!
- You didn't catch any beetles.
- Would you like to try again?[await]
-  [select]  (Yes)
-  [select]  (No)[await]'''
-dialog_data[701] = ''' Well, I'll show you out then.[await]'''
-dialog_data[702] = ''' You know what, Mario?[await]
- You've got to rent a “Beetle Box”
- from the store in Seaside, or you
- won't be able to catch them.[await][page]
- I'll show you the way out, so just
- follow me, all right?[await]
-  [select]  (Okay)
-  [select]  (No)[await]'''
+dialog_data[699] = '''[await]'''
+dialog_data[700] = '''[await]'''
+dialog_data[701] = '''[await]'''
+dialog_data[702] = '''[await]'''
 dialog_data[703] = '''[page]
  By the way, do you have any items
  to get rid of?[await][page]
@@ -1404,9 +1309,10 @@ dialog_data[713] = '''[page]
 dialog_data[714] = '''      Received “[0x70A7]”[await]'''
 dialog_data[715] = ''' Come on back when you get
  spare items![await]'''
-dialog_data[716] = ''' You're looking for a star?
- Didn't you find one in the treasure
- box, next to the trampoline?[await]'''
+dialog_data[716] = ''' Do you want to exit to the World
+ Map?[await]
+  [select] (Yes)
+  [select] (No)[await]'''
 dialog_data[717] = ''' I have a star to sell, but you
  don't have enough coins.[await]'''
 dialog_data[718] = ''' You're looking for a star?
@@ -1417,8 +1323,7 @@ dialog_data[718] = ''' You're looking for a star?
 dialog_data[719] = ''' You want a better star?[await]
   [select] (Yes)
   [select] (No)[await]'''
-dialog_data[720] = ''' Suit yourself.
- See ya![await]'''
+dialog_data[720] = '''[await]'''
 dialog_data[721] = ''' Come back later.
  I'll find it by then.[await]'''
 dialog_data[722] = ''' I found an incredible star.
@@ -1434,21 +1339,28 @@ dialog_data[724] = ''' This trampoline will get you to the
  100 coins.[await]'''
 dialog_data[725] = ''' Mmm, I'm so hungry!
  Wish I had something to eat![await]'''
-dialog_data[726] = ''' Hmm, you look so tasty.
- I think I'll just have a snack![await]'''
+dialog_data[726] = '''[await]'''
 dialog_data[727] = ''' That bucket’s my seat, so don't
  take it, okay?[await]'''
-dialog_data[728] = ''' That pipe is a shortcut to my home,
- Monstro Town.[await]
- I'll see you there.[await]'''
-dialog_data[729] = ''' Isn't this incredible?[await]
- It really does look like the edge of
- the world, doesn't it?[await][page]
- It’s too spooky for me!
- I'm heading back to Monstro Town.[await]
- See ya![await]'''
-dialog_data[730] = ''' Give me the key, and I'll let you
- pass through.[await]'''
+dialog_data[728] = ''' Hey, you made it![await][page]
+ Say... have you had a chance to
+ ride the Moleville Minecart yet?[await]
+ If you've been there, and made it
+ all the way here, too, you're quite
+ an accomplished traveler.[await][page]
+ I know a famous composer in
+ Tadpole Pond who would love to
+ hear all the music you've heard.[await]'''
+dialog_data[729] = ''' The Sky Troopas aren't here yet.[await][page]
+ While you're waiting for them, why
+ don't you pass the time by heading
+ down the whirlpools?[await][page]
+ There's a temple down there, and
+ its patron saint loves visitors.[2]
+ In fact, I might just head down
+ there myself. See ya![await]'''
+dialog_data[730] = ''' Give me the Temple Key, and I'll let
+ you pass through.[await]'''
 dialog_data[731] = ''' That key you have there looks
  pretty tasty.[await]
   [select] (Give him the key)
@@ -1494,47 +1406,26 @@ dialog_data[748] = ''' Heard the fireworks guy’s working
  on a new masterpiece.[await]
  Why don't you buy a few from him
  and cheer him on?[await]'''
-dialog_data[749] = '''SERGEANT FLUTTER: Ten-hut!
- All troops in positions![await][page]
- Mario, your mission is to scale the
- cliff, by jumping shell to shell.[await]'''
-dialog_data[750] = '''SERGEANT FLUTTER: Don't give up!
- Sure and steady does it.
- Now try it again.[await]'''
+dialog_data[749] = '''[await]'''
+dialog_data[750] = '''[await]'''
 dialog_data[751] = '''SERGEANT FLUTTER: 
  Mission accomplished!
  Elapsed time is [0x7000timer].[await]
 [end]'''
-dialog_data[752] = ''' Not bad for a civilian![await]'''
-dialog_data[753] = ''' That’s quite good.[await]
-[end]'''
-dialog_data[754] = ''' Distinguishing work, soldier![await][page]
-[end]'''
-dialog_data[755] = ''' Very commendable!
- That’s quite a time you set.[await][page]
- You'd be a great Sky Troopa,
- if only you had wings and a shell.[await][page]
-[end]'''
-dialog_data[756] = ''' Here’s the next best thing!
- A Troopa Pin![await]'''
-dialog_data[757] = ''' Here’s a little something from me.[await]'''
-dialog_data[758] = ''' Keep up the great work![await]'''
-dialog_data[759] = ''' Keep working on it.[await]'''
-dialog_data[760] = ''' Where are you heading?[await]
- Is it Monstro Town by any chance?[await]
-  [select] (Yes)
-  [select] (Nope)[await]'''
-dialog_data[761] = ''' Oh, I thought you were lost or
- something.[await]
- Never mind, I'll see you around.[await]'''
-dialog_data[762] = ''' Ok, listen up.
- Look for the whirl where the ant
+dialog_data[752] = '''[await]'''
+dialog_data[753] = '''[await]'''
+dialog_data[754] = '''[await]'''
+dialog_data[755] = '''[await]'''
+dialog_data[756] = '''[await]'''
+dialog_data[757] = '''[await]'''
+dialog_data[758] = '''[await]'''
+dialog_data[759] = '''[await]'''
+dialog_data[760] = '''[await]'''
+dialog_data[761] = '''[await]'''
+dialog_data[762] = ''' Look for the whirl where the ant
  pops up and proceed after it.[await][page]
  Keep following it and you'll find
- your way underground.[await][page]
- Once there, Monstro Town’s just
- around the corner.
- I'll see you there.[await]'''
+ your way underground.[await]'''
 dialog_data[763] = ''' What did you do that for?[await][page]
  You won't get any coins from
  jumping on me. It’s Wiggler or
@@ -1542,52 +1433,30 @@ dialog_data[763] = ''' What did you do that for?[await][page]
 dialog_data[764] = ''' I've been all around the world.[await][page]
  But the strangest person I met,
  is this old geezer in Rose Town.[await][page]
- He really is weird, but definitely
- worth meeting.[await]'''
+ He can be kind of a recluse, but he
+ opens his home to visitors from
+ time to time.[await][page]
+ If he's not home, maybe go kill
+ some time by... crashing a
+ wedding, or something.[await]'''
 dialog_data[765] = ''' This is a dead end, so it’s best
  to turn back now.[await]'''
-dialog_data[766] = '''CROCO: Hey Mario, did ya remember
- to use the save point?[await][page]
- There’s plenty of danger up ahead
- so it’s best to save now![await]'''
-dialog_data[767] = '''CROCO: You need anything?[await]
- I've got some items to sell.[await]'''
-dialog_data[768] = '''CROCO: You still hanging around?
- Oh, you want more items, huh?
- Since I'm in a good mood...[await]'''
-dialog_data[769] = '''CROCO: See ya![end]'''
-dialog_data[770] = '''CROCO: Just remember...[await][page]
- I can't always be coming to your
- rescue, you know.[await][page]
- If there’s anything more you need,
- best to buy it now.[await]'''
-dialog_data[771] = ''' Ahhh!
- Haven't been here in a while.
- I've been busy traveling around.[await][page]
-[end]'''
-dialog_data[772] = ''' Oh! Hello again.[await][page]
-[end]'''
-dialog_data[773] = ''' Come back with more coins and buy
- my inventions, all right?[await]'''
-dialog_data[774] = ''' You like fireworks?
- I'm working on my very own
- invention right now.[await][page]
- I've only got the sparklers down,
- but I ain't giving up![await][page]
-[end]'''
-dialog_data[775] = ''' Wanna buy one for 500 coins?[await]
+dialog_data[766] = '''[await]'''
+dialog_data[767] = '''[await]'''
+dialog_data[768] = '''[await]'''
+dialog_data[769] = '''[await]'''
+dialog_data[770] = '''[await]'''
+dialog_data[771] = '''[await]'''
+dialog_data[772] = '''[await]'''
+dialog_data[773] = '''[await]'''
+dialog_data[774] = '''[await]'''
+dialog_data[775] = ''' Wanna buy some Fireworks for
+ 500 coins?[await]
   [select] (Okay)
   [select] (No thanks)[await]'''
-dialog_data[776] = ''' Thanks.
- Ya just wait for my masterpiece![await][page]
-[end]'''
-dialog_data[777] = ''' Thanks!
- I'm gonna make a name for myself
- with these fireworks.[await][page]
-[end]'''
-dialog_data[778] = ''' Thanks for the purchase!
- The fireworks I'm making now
- won't disappoint you.[await]'''
+dialog_data[776] = '''[await]'''
+dialog_data[777] = '''[await]'''
+dialog_data[778] = '''[await]'''
 dialog_data[779] = ''' Aw, that’s too bad!
  Come back with more coins.[await]'''
 dialog_data[780] = '''
@@ -1597,18 +1466,19 @@ dialog_data[781] = ''' You'll trade your “Fireworks”?
   [select] (No)[await]'''
 dialog_data[782] = ''' If ya bring me a “Fireworks”, then
  I'll give you a “Shiny Stone”.[await]'''
-dialog_data[783] = ''' Sorry I ran out of “Fireworks”.
- Come back later, okay?[await]'''
+dialog_data[783] = ''' Sorry, I can't sell more than one
+ “Fireworks” to you at a time.
+ Safety regulations an' all, y'know.[await]'''
 dialog_data[784] = ''' The yellow tile will get you to the
  next room. Your fortune determines
- which room you'll arrive at.[await]
- If you're lucky, you'll run into
- Belome and Monstro Town will be
- just beyond him.[await]'''
-dialog_data[785] = ''' Wanna challenge it?[await]
+ which room you'll arrive at.[await][page]
+ Beware, our temple's patron saint
+ can be aggressive when hungry...
+ but generous when sleepy.[await]'''
+dialog_data[785] = ''' Wanna challenge the Sky Bridge?[await]
   [select] (Sure)
   [select] (No)[await]'''
-dialog_data[786] = ''' Aw, you're chicken! [await]'''
+dialog_data[786] = '''[await]'''
 dialog_data[787] = ''' Need an explanation?[await]
   [select] (Yes)
   [select] (No)[await]'''
@@ -1648,14 +1518,12 @@ dialog_data[792] = ''' Yahoo!
   [select] (No)[await]'''
 dialog_data[793] = ''' That was great!
 [end]'''
-dialog_data[794] = ''' Here you go, as promised.[await]'''
+dialog_data[794] = '''[await]'''
 dialog_data[795] = ''' 
       Received [0x7000] Frog Coin(s)![await]'''
 dialog_data[796] = '''
            Received [0x7000] coins[await]'''
-dialog_data[797] = ''' Welcome to the “Sky Bridge”!
- It’s a big tourist attraction here.
- Yaaahoo![await]'''
+dialog_data[797] = '''[await]'''
 dialog_data[798] = ''' Going up?
  I'll give you a boost.
  Just jump on top of me.[await]'''
@@ -1725,71 +1593,39 @@ dialog_data[833] = '''Select your destination point
 dialog_data[834] = '''Select your destination point
 [select]  I'll go to Nimbus Land
 [select]  Forget it[await]'''
-dialog_data[835] = '''Read directions on how to enter?
- [select]  (Yes)
- [select]  (I already know)[await]'''
-dialog_data[836] = ''' Stand on the pipe and push “down”
- on the control pad.[await]
- If you are pressing several buttons
- at the same time, you will not be
- able to enter. To reenter a pipe,[await]
- jump off once, and try again.[await]'''
-dialog_data[837] = '''Stand on the pipe and push “down”.[await]'''
-dialog_data[838] = '''MALLOW: This is the entrance.[await]
- Grandpa says to watch out for
- “Belome,” whoever that is![await][page]
- It’s probably a little dark
- down there, so keep alert![await]'''
+dialog_data[835] = ''' There is a chest in the sewers that
+ will have its contents change if
+ you enter from Land's End.[await][page]
+ You can get an extra item if you
+ reach that chest BEFORE taking
+ the Land's End trampoline.[await][page]
+ You may have to get creative in
+ order to reach it.[delay_30]
+ GOOD LUCK![await]'''
+dialog_data[836] = '''[await]'''
+dialog_data[837] = '''[await]'''
+dialog_data[838] = '''[await]'''
 dialog_data[839] = '''     The water has been drained.[await]'''
 dialog_data[840] = '''          Got a “[0x70A7]”![await]'''
-dialog_data[841] = '''MALLOW: Now THAT’s what I call
- a door! I wonder how ya open it?[await]'''
-dialog_data[842] = '''MALLOW: T...this must be...
- ... BELOME![await][page]
- Is that a fire hose or his tongue?![await]'''
-dialog_data[843] = '''BELOME: Moh, ho, ho...![await]
- Ack! It’s a snack attack!
- And YOU'RE it![await]'''
-dialog_data[844] = '''MALLOW: Mario! Hold on a sec![await]'''
-dialog_data[845] = '''MALLOW: I'm not waiting here
- alone. If you go outside,
- I GO outside.[await]'''
-dialog_data[846] = '''MALLOW: Belome must have been
- lying when he said water would
- come gushing out of here...[await]'''
-dialog_data[847] = '''MALLOW: Er, Mario...do you
- hear something?
- ...Or is it just me?[await]'''
-dialog_data[848] = '''MALLOW: WATER!![await]
- Here it comes!!!
- Quick, Mario! Hit the button
- before we're washed away!![await]'''
+dialog_data[841] = '''[await]'''
+dialog_data[842] = '''[await]'''
+dialog_data[843] = '''[await]'''
+dialog_data[844] = '''[await]'''
+dialog_data[845] = '''[await]'''
+dialog_data[846] = '''[await]'''
+dialog_data[847] = '''[await]'''
+dialog_data[848] = '''[await]'''
 dialog_data[849] = ''' You can't jump on or off when
  the block is blue.[await][page]
  Try jumping when the block
  turns yellow.[await]'''
-dialog_data[850] = '''BOWSER:
-    All right people! Form ranks![end]'''
-dialog_data[851] = '''[await][page]
- Attention, Shelled warriors![end]'''
-dialog_data[852] = '''[await]
- ...Hooded sorcerers...[end]'''
-dialog_data[853] = '''[await]
- ...And last, but not least,
- groundling Goombas![end]'''
-dialog_data[854] = '''[await][page]
- This is our finest moment!
- The Koopa Troop is invincible!
- We shall be victorious!
-[end]'''
-dialog_data[855] = ''' The bridge is down, but we'll
- find a way to get back in!
- Move out, on the double![await]'''
-dialog_data[856] = '''MALLOW: Bowser and his
- troops must be on their way to
- Bowser’s Keep.[await][page]
- Come on! Rose Town is
- just up ahead.[await]'''
+dialog_data[850] = '''[await]'''
+dialog_data[851] = '''[await]'''
+dialog_data[852] = '''[await]'''
+dialog_data[853] = '''[await]'''
+dialog_data[854] = '''[await]'''
+dialog_data[855] = '''[await]'''
+dialog_data[856] = '''[await]'''
 dialog_data[857] = ''' What’s that?
  You wanna hear the
  Moleville blues?[await][page]
@@ -1815,50 +1651,21 @@ dialog_data[864] = '''
       'cause then’s the “TI”me~[await]
 [end]'''
 dialog_data[865] = ''' To “DO” them old Moleville blues!~[await]'''
-dialog_data[866] = '''MA'MOLE: Oh dear!
- I sure hope the kids are OK...[await]'''
-dialog_data[867] = ''' “I know how you're feelin'
- but mopin' 'round here ain't
- gonna help a thing!”[await]'''
-dialog_data[868] = ''' That’s what I TOLD her, but
- I don't know if I'd be feelin'
- any different if I was her![await]'''
-dialog_data[869] = ''' We're gettin' nowhere FAST!
- We'll never reach the kids at
- this rate![await]'''
-dialog_data[870] = ''' See that up there?
- That’s the old entrance
- to the mines...[await]'''
-dialog_data[871] = ''' ...But we can't reach it
- anymore![await]'''
-dialog_data[872] = ''' If only that fellow...uh...[await]
- Mario were here! He could reach
- that in a heart beat![await]'''
-dialog_data[873] = '''
-  Wha..?! Well speak o' the devil![await]'''
-dialog_data[874] = ''' Well, I'll be a Goomba’s uncle!!
- If it ain't HIM in the flesh!
- Mario, you're a life saver![await]'''
-dialog_data[875] = '''Mario, have you heard the news?
- [select]  (Sure have)
- [select]  (News? What news?)[await]'''
-dialog_data[876] = ''' Well, Dyna took her l'il brother
- into the mines so they could
- play...[await][page]
- And then, a HUGE star crashed
- into the mountain causing a big
- cave in! Now they're trapped[await]
- inside.[await]'''
-dialog_data[877] = ''' And now, their daddy, who went
- lookin' for 'em, is trapped, too![await]'''
-dialog_data[878] = ''' Mario, will you help rescue them?
- [select]  (Of course)
- [select]  (No)[await]'''
-dialog_data[879] = ''' Don't flake out on us, Mario!
- Please, we're beggin' ya.[await]'''
-dialog_data[880] = ''' Thanks, Mario!
- Well, there’s the entrance
- up there![await]'''
+dialog_data[866] = '''[await]'''
+dialog_data[867] = '''[await]'''
+dialog_data[868] = '''[await]'''
+dialog_data[869] = '''[await]'''
+dialog_data[870] = '''[await]'''
+dialog_data[871] = '''[await]'''
+dialog_data[872] = '''[await]'''
+dialog_data[873] = '''[await]'''
+dialog_data[874] = '''[await]'''
+dialog_data[875] = '''[await]'''
+dialog_data[876] = '''[await]'''
+dialog_data[877] = '''[await]'''
+dialog_data[878] = '''[await]'''
+dialog_data[879] = '''[await]'''
+dialog_data[880] = '''[await]'''
 dialog_data[881] = '''
    Here, hop up on our shoulders![await]'''
 dialog_data[882] = '''PA'MOLE: Mario! You've come to
