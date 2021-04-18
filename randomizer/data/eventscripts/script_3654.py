@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_3654_run_dialog_1',
         "command": 'run_dialog',
-        "args": [3592, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": [3592, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3654_ret_10',

@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2057_action_queue_sync_0',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2057_action_queue_sync_0_SUBSCRIPT_shift_southwest_pixels_0',

@@ -5,64 +5,25 @@ dialog_data = [None]*605
 dialog_data[0] = '''SNIFIT 3: Um...
  Nice weather we're having.[await]'''
 dialog_data[1] = '''SNIFIT 3: You wanna fight?[await]'''
-dialog_data[2] = '''
-           Hmm?! What’s this?[await][page]
-               It’s a “Seed”.
- [select]  (Take it)
- [select]  (Leave it)[await]'''
+dialog_data[2] = '''[await]'''
 dialog_data[3] = '''GARDENER: I'll plant the seed...[await]'''
 dialog_data[4] = '''GARDENER: Then give it fertilizer.[await]'''
-dialog_data[5] = '''BOOSTER: Hoouuooo!
- Chugga, chugga...hoooonk!
- This is my personal railway.[await]'''
-dialog_data[6] = '''BOOSTER: My!
- It’s you again![await][page]
- I'm amazed you made it this far.
- Yes, quite amazing you are![await][page]
- Since you're here, maybe you could
- clear up something for me.[await][page]
- My bride-to-be is chanting,
- “MARIOHELPMEMARIOHELPME”.
- Is she showing her happiness?[await][page]
- Hey,[delay][delay][delay][delay][delay][delay] wait a second!
- Maybe “MARIO” is another guy![await]'''
-dialog_data[7] = '''       Received “Rock Candy”![await]'''
-dialog_data[8] = '''BOOSTER: What if you're this
- “Mario” she keeps talking about?[await]
- Trying to take my bride away?
- Why don't you take [delay]THIS, instead![await]'''
-dialog_data[9] = '''BOOSTER: That didn't do it?[await][page]
- Grrrr...I ran out of bombs.[await]'''
-dialog_data[10] = '''BOOSTER:
-             Chug-a-chug-a![await]'''
-dialog_data[11] = '''BOOSTER: 
- HE'S GONE?![delay]
- That’s not fair![await][page]
- I'm so hurt...
- I only wanted to play with him.[await][page]
- Now,••••[delay][delay]what expression should I
- be wearing at a time like this?![await]'''
-dialog_data[12] = '''BOOSTER: Eh...?[await]'''
+dialog_data[5] = '''[await]'''
+dialog_data[6] = '''[await]'''
+dialog_data[7] = '''[await]'''
+dialog_data[8] = '''[await]'''
+dialog_data[9] = '''[await]'''
+dialog_data[10] = '''[await]'''
+dialog_data[11] = '''[await]'''
+dialog_data[12] = '''[await]'''
 dialog_data[13] = '''GARDENER: ••[delay]••[delay]••[delay]
           Nothing’s happening.[await]'''
-dialog_data[14] = '''BOOSTER: Well, so long![await]'''
-dialog_data[15] = '''BOOSTER: Now I remember![delay][delay]
- I should look like...THIS![await]'''
-dialog_data[16] = '''APPRENTICE: Golly!
- You're that famous Mario guy![await][page]
- If I beat you, they'll make me
- Snifit [0x7000]!
- [delay][delay][delay][delay][delay][delay]If I'm lucky![await]'''
-dialog_data[17] = '''APPRENTICE: Whaaa••[delay]••[delay]••[delay]
- Now they'll make me take the
- training course over again.[await]'''
-dialog_data[18] = '''APPRENTICE: All right!
- Now I'll be Snifit [0x7000]![await]'''
-dialog_data[19] = '''APPRENTICE: Mario![await]
- Let me show you what I've learned
- in my classes so far.[await][page]
- I'll be Snifit [0x7000] if I beat you!
- ••[delay]••[delay]••[delay]••[delay]••[delay]••[delay]maybe.[await]'''
+dialog_data[14] = '''[await]'''
+dialog_data[15] = '''[await]'''
+dialog_data[16] = '''[await]'''
+dialog_data[17] = '''[await]'''
+dialog_data[18] = '''[await]'''
+dialog_data[19] = '''[await]'''
 dialog_data[20] = '''SNIFIT 4: After years of
  hard work and effort, I'm now
  Snifit 4![await][page]
@@ -104,9 +65,7 @@ dialog_data[29] = '''GARDENER: You think it could use
 dialog_data[30] = '''GARDENER: Oops, maybe not, huh?[await]'''
 dialog_data[31] = '''GARDENER: This will get me in
  Happy Gardener Monthly magazine![await]'''
-dialog_data[32] = '''GENO: Mario!
- There are Star Pieces to be found![await]
- Hang in there![await]'''
+dialog_data[32] = '''[await]'''
 dialog_data[33] = '''
 
      (Wish I could run faster.)[await]'''
@@ -143,16 +102,9 @@ dialog_data[43] = '''
 dialog_data[44] = '''
 
 Please let Mallow find his way home.[await]'''
-dialog_data[45] = '''GENO: This is Star Hill.[await]
- Wishes, which were transformed at
- the Star Road, fall from here.[await][page]
- But[delay]••[delay]••[await]
- Some wishes that haven't been
- granted yet are falling because
- Smithy destroyed the Star Road.[await]'''
-dialog_data[46] = '''GENO: Frogfucius mentioned hearing
- about a Star Piece on this hill.[await]'''
-dialog_data[47] = '''GENO: Let’s see if we can find it.[await]'''
+dialog_data[45] = '''[await]'''
+dialog_data[46] = '''[await]'''
+dialog_data[47] = '''[await]'''
 dialog_data[48] = '''MALLOW: This one’s private![delay]
  Who do you think you are,
  spying on other people’s wishes?[await]'''
@@ -176,241 +128,94 @@ dialog_data[53] = '''MALLOW: Come on Mario, we've got
  you eat dust if you don't hurry.[await]'''
 dialog_data[54] = '''MALLOW: 
                 Sniffle...[await]'''
-dialog_data[55] = '''           Got a “Lazy Shell”![await]'''
-dialog_data[56] = '''GENO: 
- Do you know where this leads to?[await]'''
-dialog_data[57] = '''GENO: It looks like Exor’s the
- contact between the two worlds.[await][page]
- In other words[delay]••[delay]••[delay]••[await]'''
-dialog_data[58] = '''GENO: If we follow this road,
- we'll find Smithy.[await][page]
- So...what’s keeping us?[await]'''
-dialog_data[59] = '''BOWSER: Hang on![await]'''
-dialog_data[60] = '''BOWSER: Hey! I only joined so that
- I could get my castle back.[await]
- I'm not going to be dragged along
- on this stupid hunt.[await]'''
-dialog_data[61] = '''BOWSER: This is as far as I go.[await][page]
- I'm going to gather my troops and
- rebuild my castle.[await]'''
-dialog_data[62] = '''BOWSER: And you, Mario![await]
- You're an official member of the
- Koopa Troop. It’s your duty to
- help with the repairs![await]'''
-dialog_data[63] = '''GENO: Bowser, you're completely
- missing the point.[await]'''
-dialog_data[64] = '''BOWSER: Gwaa?![delay][delay][delay][delay][await][page]
- I oughtta rip your stuffing out![await]'''
-dialog_data[65] = '''GENO: No, think about it, Bowser.[await]
- This sword connects the two
- worlds, right?[await]'''
-dialog_data[66] = '''BOWSER: Yeah, so?[await]'''
-dialog_data[67] = '''GENO: Even IF we defeat Exor...[await]
- There will be OTHER weapon beasts
- to follow him.[await]'''
-dialog_data[68] = '''GENO: Your castle is at the
- entrance point to YOUR world.
- In short...they'll be back![await]'''
-dialog_data[69] = '''GENO: Is that what you want?[await]'''
-dialog_data[70] = '''BOWSER: Um....well...[await]'''
-dialog_data[71] = '''BOWSER: No one insults the Koopa
- Troop and gets away with it.[await][page]
- I've got a bone to pick with this
- Smithy guy![await]'''
-dialog_data[72] = '''BOWSER: Come on, Mario!
- We'll teach him a lesson.[await]'''
-dialog_data[73] = '''GENO: It looks like we're together
- on this one. Let’s go![await]'''
-dialog_data[74] = '''BOWSER: (More weapon things
- coming to take over my castle?
- What about my[delay]••[delay]••[delay][await][page]
-
-             ••••PRIVACY?[await][page]
- Yikes[delay]••[delay]••
-        This isn't good at all[delay]••[delay]••
-              In fact, this stinks![delay]••[delay]••)[await]'''
-dialog_data[75] = '''BOWSER: (But I CAN'T just be pals
- with these cretins.[await]
- I've got an image to keep up.)[await]'''
-dialog_data[76] = '''BOWSER: (I've got it!)[await]'''
-dialog_data[77] = '''BOWSER: (I'm so sly!)[await]'''
-dialog_data[78] = '''              It’s “Mario”![await]'''
-dialog_data[79] = '''       We better do something![await]'''
-dialog_data[80] = '''            Pick up a “Seed”![await]'''
-dialog_data[81] = '''GENO: ••[delay]••[delay]••[delay]
- I feel the energy of the Star Piece.[await]'''
+dialog_data[55] = '''[await]'''
+dialog_data[56] = '''[await]'''
+dialog_data[57] = '''[await]'''
+dialog_data[58] = '''[await]'''
+dialog_data[59] = '''[await]'''
+dialog_data[60] = '''[await]'''
+dialog_data[61] = '''[await]'''
+dialog_data[62] = '''[await]'''
+dialog_data[63] = '''[await]'''
+dialog_data[64] = '''[await]'''
+dialog_data[65] = '''[await]'''
+dialog_data[66] = '''[await]'''
+dialog_data[67] = '''[await]'''
+dialog_data[68] = '''[await]'''
+dialog_data[69] = '''[await]'''
+dialog_data[70] = '''[await]'''
+dialog_data[71] = '''[await]'''
+dialog_data[72] = '''[await]'''
+dialog_data[73] = '''[await]'''
+dialog_data[74] = '''[await]'''
+dialog_data[75] = '''[await]'''
+dialog_data[76] = '''[await]'''
+dialog_data[77] = '''[await]'''
+dialog_data[78] = '''[await]'''
+dialog_data[79] = '''[await]'''
+dialog_data[80] = '''[await]'''
+dialog_data[81] = '''[await]'''
 dialog_data[82] = ''' What was that loud noise outside?
        Check out Booster Pass![await]'''
-dialog_data[83] = '''     Received a “KerokeroCola”![await]'''
-dialog_data[84] = '''     You saw something sparkle.[await]'''
-dialog_data[85] = '''SHY AWAY: Look what you did![delay][delay]
- Smilax’s been whacked.[await]'''
-dialog_data[86] = '''SHY AWAY: 
- Oooh, I'm going to get it![await]
- Queen Valentina told me to keep
- everyone out of Nimbus Land.[await][page]
- 
-            What should I do?[await]'''
-dialog_data[87] = '''SHY AWAY: ••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]••••[delay]
-         I know, I'll run away![await]'''
-dialog_data[88] = '''         How did he get here?![await]'''
-dialog_data[89] = '''        Got an “Ultra Hammer”![await]'''
-dialog_data[90] = '''        Wow! Did you see that?[delay][delay][delay]
-       It’s a magical beanstalk![await][page]
-        Hit the block once more
-                to climb it.[await]'''
-dialog_data[91] = '''          Found a Frog Coin![await]'''
-dialog_data[92] = '''         Got a “Red Essence”![await]'''
-dialog_data[93] = '''
-           Found a “Masher”![await]'''
-dialog_data[94] = '''
-      You found a “Goodie Bag”![await]'''
-dialog_data[95] = '''
-        Picked up a “Hammer”![await]'''
-dialog_data[96] = ''' Now ya got my hammer angry!
- Ya shouldn't have done that![await]'''
-dialog_data[97] = ''' HEY!
- Are YOU lookin' at me?
- My hammer and I don't like you![await]'''
-dialog_data[98] = '''TOAD: Mario!
- You better be careful.
- He’s definitely got a mean streak![await]'''
-dialog_data[99] = '''     It’s a battered old hammer.[await]'''
-dialog_data[100] = '''                Actually...
-    It’s a sturdy hammer, bearing
-    the Hammer Brother’s insignia.[await]'''
-dialog_data[101] = '''            You never know!
-        It might come in handy![await]'''
-dialog_data[102] = '''        Picked up a “Hammer”![await]'''
-dialog_data[103] = '''
-         Picked up a “Flower”![await]'''
-dialog_data[104] = '''
-     Picked up a “Royal Syrup”![await]'''
-dialog_data[105] = '''TOAD: Thanks, Mario!
- I was running so fast I wasn't
- watching where I was going![await]'''
-dialog_data[106] = '''TOAD:
- Mushroom Kingdom’s just ahead.
- We're almost there, Mario.[await]'''
-dialog_data[107] = '''TOAD: Hey!
- Where did this hammer come from?[await]'''
-dialog_data[108] = '''TOAD: Hmm[delay]••[delay]••[delay][delay][delay]
- Hey, do you know what THIS is?![await]'''
-dialog_data[109] = '''TOAD: It has the Hammer Bro's
- insignia on it.[await]
- No one stands a chance against
- you when you whomp them with this.[await]'''
-dialog_data[110] = '''TOAD: Let’s get a move on![await]
- I'll see you in Mushroom Kingdom.[await]'''
-dialog_data[111] = ''' Here, you can have this.[await]'''
-dialog_data[112] = '''BOWYER: 997! 998! 999! 1000!
- Nya ha ha! 1000 arrows![await]
- For cover they run, nya!
- FUN this is, yes.
- Nya! Another 1000 will I shoot![await]'''
-dialog_data[113] = '''MALLOW: Mario, who IS that guy?
- [delay][delay]He must be the one shooting
- arrows at Rose Town![await]'''
-dialog_data[114] = '''BOWYER: Happy I am, nya!
- Look...LOOK at their expressions
- when freeze they do![await]'''
-dialog_data[115] = '''FLUNKIES: Woo hoo!
- They're standing like statues![await]'''
-dialog_data[116] = '''BOWYER: Nya!
- More practice do I need![await]'''
-dialog_data[117] = '''MALLOW: Oh no!
- He’s not stopping!
- We've got to do something![await]'''
-dialog_data[118] = '''MALLOW: Who do you think you are,
- Bruce Lee? You can't just go in
- there with your fists flying![await]'''
-dialog_data[119] = '''MALLOW: Oh no, someone’s coming!
- Let’s hide and see if we can
- learn anything.[await]'''
-dialog_data[120] = '''MALLOW: There're too many of 'em.
- We'll be creamed![await]'''
-dialog_data[121] = ''' Look what I found, Bowyer![await]'''
-dialog_data[122] = '''BOWYER: What? WHAT?
- Disturb me you must not!
- Practicing, I am.[await]
- More arrows must I shoot!
- More statues must I make, nya![await]'''
-dialog_data[123] = '''???:
-                   Stop![await]'''
-dialog_data[124] = '''???: Hold it right there!
- You don't know what you're doing.
- RETURN that star to me![await]'''
-dialog_data[125] = '''BOWYER: Gnya, NYA!?
- A stranger you are...
- and strange looking at that![await]
- Teach you, we must,
- who’s in charge![await]'''
-dialog_data[126] = '''???: Thanks for the help.
- You really got me out of a jam.[await][page]
- Why are you staring at me?
- You know I'm more than just
- a doll, don't you?[await]'''
-dialog_data[127] = '''???: Have you guessed the truth?[delay]
- I'm a visitor from above, and this
- is a form I'm borrowing briefly.[await]'''
-dialog_data[128] = '''MALLOW: You mean, like, from the
- sky or something?[await]'''
-dialog_data[129] = '''???: Higher than that, I'm afraid![delay][delay][delay][await]
- Do you two know anything about
- the “Star Road”?[await]'''
-dialog_data[130] = '''???: Completely in the dark, eh?[delay][delay][delay]
- Well, it’s a big mess up there right
- now, and it concerns you too![delay][delay][await][page]
- Let me explain...[await][page]
- You've heard of wishing upon a
- shooting star?[await]'''
-dialog_data[131] = '''???: At the “Star Road”, your
- wish is transformed into a star.[await]
- When it’s granted, it then turns
- into a shooting star and falls
- down to earth.[await][page]
- So you see, the Star Road plays an
- integral role in granting wishes.[await][page]
- But ever since a sword destroyed
- the “Star Road”, everything's
- come to a halt.[await][page]
- No stars have been made since.[await]
- The way things stand,[await][pause] yours is a
- world where wishes can't come
- true anymore.[await]'''
-dialog_data[132] = '''MALLOW: Are you saying THIS star
- is a part of your “Starway”?[await]'''
-dialog_data[133] = '''???: That’s “STAR ROAD”, my
- fluffy little friend ...[await][page]
- Yes, [await][pause]that star is a broken piece
- of the Star Road.[await][page]
- I'm here to find them all, and
- repair the Star Road.[await]'''
-dialog_data[134] = '''???: 
- The broken Star Pieces...[await]
- There are 7 altogether.[await]'''
-dialog_data[135] = '''???: For peace to return...[await]
- we must get rid of Smithy,
- find the Star Pieces, and repair
- the Star Road..[await]'''
-dialog_data[136] = '''???: I'm “♥♪!?”, but it’s hard to
- pronounce so...[await]
- Call me “Geno”, after the doll.[await][page]
- I chose him because he looked the
- strongest out of all the dolls.[await]'''
-dialog_data[137] = ''' “Geno”, who is searching for the
-  pieces of the Star Road, joins
-         Mario and Mallow.[await][page]
- Things are definitely looking up![await]'''
-dialog_data[138] = '''GENO: Now grab the star, Mario![await]'''
-dialog_data[139] = ''' Ooh, I heard everything![delay]
- Who would have known that star
- was so important?[await][page]
- I've got to inform Smithy![await]'''
-dialog_data[140] = '''GENO: Come on!
- Let’s get this show on the road.[await]'''
-dialog_data[141] = '''
-        Pick up a “Mushroom”[await]'''
+dialog_data[83] = '''[await]'''
+dialog_data[84] = '''  You noticed something in the bush.[await]'''
+dialog_data[85] = '''[await]'''
+dialog_data[86] = '''[await]'''
+dialog_data[87] = '''[await]'''
+dialog_data[88] = '''[await]'''
+dialog_data[89] = '''[await]'''
+dialog_data[90] = '''[await]'''
+dialog_data[91] = '''[await]'''
+dialog_data[92] = '''[await]'''
+dialog_data[93] = '''[await]'''
+dialog_data[94] = '''[await]'''
+dialog_data[95] = '''[await]'''
+dialog_data[96] = '''[await]'''
+dialog_data[97] = '''[await]'''
+dialog_data[98] = '''[await]'''
+dialog_data[99] = '''[await]'''
+dialog_data[100] = '''[await]'''
+dialog_data[101] = '''[await]'''
+dialog_data[102] = '''[await]'''
+dialog_data[103] = '''[await]'''
+dialog_data[104] = '''[await]'''
+dialog_data[105] = '''[await]'''
+dialog_data[106] = '''[await]'''
+dialog_data[107] = '''[await]'''
+dialog_data[108] = '''[await]'''
+dialog_data[109] = '''[await]'''
+dialog_data[110] = '''[await]'''
+dialog_data[111] = '''[await]'''
+dialog_data[112] = '''[await]'''
+dialog_data[113] = '''[await]'''
+dialog_data[114] = '''[await]'''
+dialog_data[115] = '''[await]'''
+dialog_data[116] = '''[await]'''
+dialog_data[117] = '''[await]'''
+dialog_data[118] = '''[await]'''
+dialog_data[119] = '''[await]'''
+dialog_data[120] = '''[await]'''
+dialog_data[121] = '''[await]'''
+dialog_data[122] = '''[await]'''
+dialog_data[123] = '''[await]'''
+dialog_data[124] = '''[await]'''
+dialog_data[125] = '''[await]'''
+dialog_data[126] = '''[await]'''
+dialog_data[127] = '''[await]'''
+dialog_data[128] = '''[await]'''
+dialog_data[129] = '''[await]'''
+dialog_data[130] = '''[await]'''
+dialog_data[131] = '''[await]'''
+dialog_data[132] = '''[await]'''
+dialog_data[133] = '''[await]'''
+dialog_data[134] = '''[await]'''
+dialog_data[135] = '''[await]'''
+dialog_data[136] = '''[await]'''
+dialog_data[137] = '''[await]'''
+dialog_data[138] = '''[await]'''
+dialog_data[139] = '''[await]'''
+dialog_data[140] = '''[await]'''
+dialog_data[141] = '''[await]'''
 dialog_data[142] = '''GARDENER: Hey!
  I haven't finished yet.[await]'''
 dialog_data[143] = '''GARDENER: Short attention span?[await]'''
@@ -478,132 +283,50 @@ dialog_data[157] = ''' You're giving me the fertilizer too?
   [select]  (No)[await]'''
 dialog_data[158] = '''GARDENER: Gals don't care for
  tightwads, you know![await]'''
-dialog_data[159] = '''FACTORY CHIEF: Mario![delay][delay]
- I'm surprised to see you here.[await]'''
-dialog_data[160] = '''FACTORY CHIEF: But this is the
- end of the line for you.[await]
- This is the closest you'll ever get
- to Smithy, so savor the moment.[await]'''
-dialog_data[161] = '''FACTORY CHIEF: Harrumph!
- You'll be fodder for my incredible
- invention, the “Gunyolk”![await]'''
-dialog_data[162] = '''POUNDER #1: Sir![delay][delay]
- “Drill Bit” will be finished on time.[await]'''
-dialog_data[163] = '''POUNDER #2: 
-       We're ahead of schedule![await]'''
-dialog_data[164] = '''POUNDER #3: 
-       We'll make Smithy proud![await]'''
-dialog_data[165] = '''POUNDER: Here’s the report![await]'''
-dialog_data[166] = '''MANAGER: Good work, everyone.[delay][delay][delay]
- The harder we work, the stronger
- Smithy will become![await]'''
-dialog_data[167] = '''MANAGER: The weapons we
- manufacture here will be...[await][page]
-
-           Just think of it...[await]'''
-dialog_data[168] = '''MANAGER: When Smithy takes over
- Mario’s world, we can do anything
- we want![await]'''
-dialog_data[169] = '''
-              Gwah, ha, ha...[delay_48][end]'''
-dialog_data[170] = '''BOWSER:
-              Not so fast![await][page]
-
-     You sure are a cocky bunch![await]'''
-dialog_data[171] = '''BOWSER: I rule this world!
- Don't you forget it![await]'''
-dialog_data[172] = '''MANAGER: It’s Mario![await]
- Mack 2 and Yaridovich 2 didn't
- stop him?[await]'''
-dialog_data[173] = '''BOWSER: No, NO! Leave Mario
- outta this. I'm the one you need
- to worry about, not him![await]'''
-dialog_data[174] = '''MANAGER: Mario, you're about to
- make the longest jump of your life![await]'''
-dialog_data[175] = '''BOWSER: Y...You're ignoring me![await]'''
-dialog_data[176] = '''CLERK: 
- Production is on schedule?[await][page]
- This, despite the fact that Mack,
- Bowyer, Yaridovich, and the Axem
- Rangers were defeated.[await]
- At this rate, Smithy will have a
- new army in no time![await]'''
-dialog_data[177] = '''MALLOW: A...new army?[await][page]
- You can't be making more weapons!
- Haven't you caused enough trouble
- already?[await]'''
-dialog_data[178] = '''CLERK: What did you say, you
- little puff ball?
- [delay][delay]Mad Mallet! TRASH 'em![await]'''
-dialog_data[179] = '''CLERK: All right, let’s see
- whatcha got![await]'''
-dialog_data[180] = '''CLERK: 
- Oh yeah?! Who are you?[await]'''
-dialog_data[181] = '''MALLOW: This is THE Mario![await][page]
- Give up now, while you still have
- a chance![await][page]
- Shut down production NOW,
- or he'll...STOMP ya![await]'''
-dialog_data[182] = '''MALLOW: Ha!
- Hope you learned your lesson![await]'''
-dialog_data[183] = '''MALLOW: 
- We're almost there, Mario.[await]
- Come on![await]'''
-dialog_data[184] = '''MALLOW: What do you suppose
- this switch does? Hmm...[await]'''
-dialog_data[185] = '''MALLOW: 
-         Ack! Help me, Mario![await]'''
-dialog_data[186] = '''MALLOW: ••[delay]••[delay]••[delay]Nothing’s happening.[await]'''
-dialog_data[187] = '''MALLOW: Huh?
- What’s with the funny face, Mario?[await][page]
- Oh I KNOW, you're trying to make
- me look, aren't you?[delay][delay]
- I'm not going to fall for that one![await]'''
-dialog_data[188] = '''MALLOW: Boy, that was scary!
- I guess the green switch controls
- the crane.[await]'''
-dialog_data[189] = '''GENO: Hmm••[delay]••[delay]••[delay][await]
- The production line hasn't halted.[await]'''
-dialog_data[190] = '''GENO: This must be where Smithy
- makes his weapons.[await][page]
- To find the last Star Piece and
- stop the factory, we've got to
- defeat him first.[await]'''
-dialog_data[191] = '''GENO: Mario...
- There’s no turning back now.
- Are you ready?[await]'''
-dialog_data[192] = '''GENO: Our quest is almost over.[await]'''
-dialog_data[193] = '''GENO: And when the time comes••[delay]••[delay]••[delay][await]'''
-dialog_data[194] = '''GENO: Look Mario, this is where the
- weapons come from.[await]'''
-dialog_data[195] = '''
-
-                Nya ha ha.[delay_48][end]'''
-dialog_data[196] = '''              Heh heh heh...[delay_48][end]'''
-dialog_data[197] = ''' Like the moon over[delay_32] 
- the day, my genius and brawn[delay_32]
- are lost on these fools. [delay_32]~Haiku[await]'''
-dialog_data[198] = '''TOADSTOOL: You there![delay][delay]
- Are you the one in charge here?[await][page]
- Do you know what your weapons
- have been doing to our world?[await][page]
- Stop this nonsense at once![await]'''
-dialog_data[199] = '''DIRECTOR:
-    I'm afraid that isn't possible. [await][page]
- Any dissent against Smithy will be
- dealt with by immediate melt down.[await]'''
-dialog_data[200] = '''TOADSTOOL: 
-             M, melt down?[await][page]
- You can't scare me, I've got
- Mario by my side![await]'''
-dialog_data[201] = '''DIRECTOR: 
-     Dissenters will be eliminated!
-       Production will continue.[await]'''
-dialog_data[202] = '''TOADSTOOL:
-            That was scary![await][page]
- But we can't run away now.[await]
- We've got to kick these lowlifes
- out of our world.[await]'''
+dialog_data[159] = '''[await]'''
+dialog_data[160] = '''[await]'''
+dialog_data[161] = '''[await]'''
+dialog_data[162] = '''[await]'''
+dialog_data[163] = '''[await]'''
+dialog_data[164] = '''[await]'''
+dialog_data[165] = '''[await]'''
+dialog_data[166] = '''[await]'''
+dialog_data[167] = '''[await]'''
+dialog_data[168] = '''[await]'''
+dialog_data[169] = '''[await]'''
+dialog_data[170] = '''[await]'''
+dialog_data[171] = '''[await]'''
+dialog_data[172] = '''[await]'''
+dialog_data[173] = '''[await]'''
+dialog_data[174] = '''[await]'''
+dialog_data[175] = '''[await]'''
+dialog_data[176] = '''[await]'''
+dialog_data[177] = '''[await]'''
+dialog_data[178] = '''[await]'''
+dialog_data[179] = '''[await]'''
+dialog_data[180] = '''[await]'''
+dialog_data[181] = '''[await]'''
+dialog_data[182] = '''[await]'''
+dialog_data[183] = '''[await]'''
+dialog_data[184] = '''[await]'''
+dialog_data[185] = '''[await]'''
+dialog_data[186] = '''[await]'''
+dialog_data[187] = '''[await]'''
+dialog_data[188] = '''[await]'''
+dialog_data[189] = '''[await]'''
+dialog_data[190] = '''[await]'''
+dialog_data[191] = '''[await]'''
+dialog_data[192] = '''[await]'''
+dialog_data[193] = '''[await]'''
+dialog_data[194] = '''[await]'''
+dialog_data[195] = '''[await]'''
+dialog_data[196] = '''[await]'''
+dialog_data[197] = '''[await]'''
+dialog_data[198] = '''[await]'''
+dialog_data[199] = '''[await]'''
+dialog_data[200] = '''[await]'''
+dialog_data[201] = '''[await]'''
+dialog_data[202] = '''[await]'''
 dialog_data[203] = '''
 
    I wish for everyone to be happy.[await]'''
@@ -648,8 +371,7 @@ dialog_data[221] = '''DEALER:
 dialog_data[222] = ''' Another game, sir?
   [select] (Sure)
   [select] (No)[await]'''
-dialog_data[223] = '''DEALER: 
- Welcome to the Grate Guy Casino.[await]'''
+dialog_data[223] = '''[await]'''
 dialog_data[224] = '''DEALER: If you would like to play,
  please go to the other side of
  the table.[await]'''
@@ -683,29 +405,24 @@ dialog_data[227] = '''DOORMAN: You don't have a
 dialog_data[228] = '''DOORMAN: Please enjoy yourself.[await]'''
 dialog_data[229] = '''DOORMAN: We hope everything was
  to your liking?[await]'''
-dialog_data[230] = ''' Business is so slow...[await]
- Hey Mario, wanna play “Look the
- other way” with me?[await]'''
-dialog_data[231] = ''' Ready, and...
- Look the...other...[delay_40][end]'''
+dialog_data[230] = '''[await]'''
+dialog_data[231] = '''[await]'''
 dialog_data[232] = ''' (Hit right/left on the Control Pad)[await]'''
-dialog_data[233] = ''' ...Way![await]'''
-dialog_data[234] = ''' Gotcha!
- I win![await]'''
-dialog_data[235] = ''' Ooh, you didn't get caught!
- I lost this round.[await]'''
+dialog_data[233] = '''[await]'''
+dialog_data[234] = '''[await]'''
+dialog_data[235] = '''[await]'''
 dialog_data[236] = ''' Okay, Mario, this is in celebration
- of your wins![await]'''
-dialog_data[237] = '''        Received a “Star Egg”![await]'''
+ of your `GRATE_GUY_PRIZE_CAP` win(s)![await]'''
+dialog_data[237] = '''[await]'''
 dialog_data[238] = ''' Wanna try it again?
   [select] (Yes)
   [select] (No)[await]'''
-dialog_data[239] = '''TOAD: This is for you.[await]'''
+dialog_data[239] = '''[await]'''
 dialog_data[240] = ''' Welcome to the Grate Guy Casino![await]
  Wanna play the slot machines?
   [select] (Yes)
   [select] (No)[await]'''
-dialog_data[241] = ''' As you wish.[await]'''
+dialog_data[241] = '''[await]'''
 dialog_data[242] = ''' Require instructions?
   [select] (No)
   [select] (Yes)[await]'''
@@ -721,14 +438,11 @@ dialog_data[245] = ''' The slot machine costs 10 coins
  Do you want to try it out?
   [select] (Yes)
   [select] (No)[await]'''
-dialog_data[246] = '''GRATE GUY: Hello Mario![await][page]
- I run this casino!
- Feel free to enjoy yourself.[await]'''
+dialog_data[246] = '''[await]'''
 dialog_data[247] = '''DEALER: Do you want to continue?
   [select] (Yes)
   [select] (No)[await]'''
-dialog_data[248] = ''' I wonder what became of Booster's
- search for a bride?[await]'''
+dialog_data[248] = '''[await]'''
 dialog_data[249] = '''           [delay]You [delay]missed![delay_40][end]'''
 dialog_data[250] = '''          Talk to the flower[await]
      and the star gate will open.[await]'''
@@ -743,613 +457,297 @@ dialog_data[254] = '''
 dialog_data[255] = '''
 
       May Mallow fix the Road![await]'''
-dialog_data[256] = '''            It’s been sealed[await]'''
-dialog_data[257] = '''                  Look!
-   The “Shiny Stone” is reacting![await]'''
-dialog_data[258] = '''      The seal has been broken![await]'''
+dialog_data[256] = '''     Need a Shiny Stone to get in[await]'''
+dialog_data[257] = '''[await]'''
+dialog_data[258] = '''[await]'''
 dialog_data[259] = ''' It’s really weird.
  Sometimes I hear the guy next door.[await][page]
  He’s always mumbling about a
- Crystal-this and an Evil-that.[await][page]
- Isn't a “Crystal” some kind of a
- shiny rock...or something?
- I know I've seen those somewhere![await]'''
-dialog_data[260] = '''JINX: Whoa[delay][delay]••••••[await]
- You ARE the stronger champion,
- no doubt about it.[await][page]
- My reputation was staked on this
- last fight, so I've lost the title
- of “Sensei”.[await][page]
- From today, you are the Sensei
- of this dojo.[await][page]
- Please take this belt, which only
- the highest ranking fighter in the
- dojo can wear.[await]'''
-dialog_data[261] = ''' We will rename the dojo, “Mario
- Style Dojo”, and incorporate your
- jump technique into the training.[await]'''
-dialog_data[262] = '''        Received a “Jinx Belt”[await]'''
-dialog_data[263] = '''JINX: Jagger and I will start our
- training immediately.[await]'''
-dialog_data[264] = ''' 1000 warm up jumps!
- Ready, begin![await]'''
-dialog_data[265] = '''
-                   DODO![await]'''
-dialog_data[266] = '''VALENTINA: Did you display the
- statues properly?[await]'''
-dialog_data[267] = '''VALENTINA: Fine! Now polish them
- to a fine luster and make them a
- tribute to my beauty![await]'''
-dialog_data[268] = '''VALENTINA: Pay attention to me![await]
- Hurry up, and DON'T let me catch
- you dozing again.[await]'''
-dialog_data[269] = '''VALENTINA: What?[await]
- You saw a statue move?
- Don't be ridiculous.[await][page]
- You're just stalling, so you won't
- have to polish them![await]'''
-dialog_data[270] = '''VALENTINA: What?
- The statue was “ticklish”?[await]
- Is that what you said?[await][page]
- If you try stalling just one more
- time, I'm gonna have your feathers
- plucked for my pillow. Now SCAT![await]'''
-dialog_data[271] = '''VALENTINA: STOP BOTHERING ME![await]
- If you're so worried, why don't
- you go give it a good peck![await]'''
-dialog_data[272] = '''          Pick up a “Feather”.[await]'''
+ Crystal-this and an Evil-that.[await]'''
+dialog_data[260] = '''[await]'''
+dialog_data[261] = '''[await]'''
+dialog_data[262] = '''[await]'''
+dialog_data[263] = '''[await]'''
+dialog_data[264] = '''[await]'''
+dialog_data[265] = '''[await]'''
+dialog_data[266] = '''[await]'''
+dialog_data[267] = '''[await]'''
+dialog_data[268] = '''[await]'''
+dialog_data[269] = '''[await]'''
+dialog_data[270] = '''[await]'''
+dialog_data[271] = '''[await]'''
+dialog_data[272] = '''[await]'''
 dialog_data[273] = '''JAGGER: Mario Sensei, the new
  regimen will strengthen us, right?[await]'''
 dialog_data[274] = '''JINX: Master!
  Share your wisdom with us![await]'''
-dialog_data[275] = '''CULEX: 
-      Farewell, champion knight![await]'''
-dialog_data[276] = '''    Received a “Quartz Charm”![await]'''
+dialog_data[275] = '''[await]'''
+dialog_data[276] = '''[await]'''
 dialog_data[277] = ''' I think our neighbor moved away.[await]'''
-dialog_data[278] = '''                 Uh oh...
-    Dodo’s in a pretty bad mood.[await][page]
-  Keep up your statue disguise and
-   jump to avoid getting pecked.[await][page]
-        Get ready because he's
-           coming this way![await]'''
-dialog_data[279] = '''FROGFUCIUS: So! Toadstool was
- the bride, after all?[await][page]
- You'd better hurry and rescue her
- before she's...married![await]'''
-dialog_data[280] = '''FROGFUCIUS: Good work, Mario.
- You rescued Toadstool.[await][page]
- Why don't you head back to
- Mushroom Kingdom?
- I'm sure the Chancellor is worried.[await]'''
-dialog_data[281] = '''FROGFUCIUS: 
- I have the latest news, children.[await][page]
- A large star’s been sighted on
- “Star Hill”.[await]'''
-dialog_data[282] = '''FROGFUCIUS: Eh!?[await]
- That delicious smell!
- You have some Cricket Jam, yes?[await][page]
- May I have some?
-  [select] (Sure)
-  [select] (Nope)[await]'''
-dialog_data[283] = ''' Sure, torture an old man![await]'''
-dialog_data[284] = ''' Mmm, this is wonderful!
- Thank you, Mario.
- You've made an old man happy.[await][page]
- Here’s a little allowance for being
- so good to me.[await]'''
-dialog_data[285] = ''' My wish has come true.[await]'''
-dialog_data[286] = '''FROGFUCIUS: Have you been to
- Seaside Town yet?
- Something odd is going on there.[await]'''
-dialog_data[287] = '''FROGFUCIUS: Beware of the giant
- squid in the sunken ship. Turn 'im
- into calamari or something![await]'''
-dialog_data[288] = '''FROGFUCIUS: The entrance to
- Monstro Town is underground.
- Follow the whirls in the desert.[await]'''
-dialog_data[289] = '''FROGFUCIUS: I JUST found out that
- there’s a kingdom in the clouds.
- Go and explore it, my children.[await]'''
-dialog_data[290] = ''' Was that too much to absorb?
- Would you like a recap?[await]
-  [select] (Sure)
-  [select] (Nope)[await]'''
-dialog_data[291] = ''' Okay, here’s the gist of it!
- Smithy invaded our world and took
- over Bowser’s Keep.[await][page]
- Toadstool and Bowser were thrown
- by the impact, and now Smithy and
- his cohorts are on a rampage.[await][page]
- The shooting stars are somehow
- connected to this disturbance and
- they're the key to defeating Smithy.[await]'''
-dialog_data[292] = ''' Would you like me to repeat that?
-  [select] (Yes)
-  [select] (No)[await]'''
-dialog_data[293] = ''' It’s quite a situation we have on
- our hands, isn't it?[await]'''
-dialog_data[294] = '''MALLOW: Grandpa!
- We found my real home!
- It’s way up in the clouds.[await]'''
-dialog_data[295] = '''FROGFUCIUS: Mallow!
- You're a prince?!
- I never would have guessed![await][page]
- And now you're helping to save
- the world?
- You've come a long way, child.[await][page]
- Although you've found your family,
- this adventure isn't over yet![await]'''
-dialog_data[296] = '''MALLOW: Yep. I'm not giving up![await]'''
-dialog_data[297] = '''FROGFUCIUS: You've got to defeat
- Valentina and save Nimbus Land.[await]'''
-dialog_data[298] = '''FROGFUCIUS: Ah! Now the people
- of Nimbus Land can rejoice.[await][page]
- SO!
- I hear the next Star Piece is
- inside a volcano.[await][page]
- I also heard that Booster got
- himself another bride from the sky.[await]'''
-dialog_data[299] = '''FROGFUCIUS: So...only Bowser's
- Keep remains.[await][page]
- The citizens of Nimbus Land will
- tell you how to get there.[await]'''
-dialog_data[300] = '''FROGFUCIUS: 
- That’s all the advice I have.[await][page]
- You've done well. All that’s left
- to do is to defeat Smithy.[await][page]
- Save this world, and bring this
- quest to a happy end![await]'''
-dialog_data[301] = ''' This••is••Smithy’s castle![await][page]
- No trespassers••allowed.[await]'''
-dialog_data[302] = '''BOWSER: 
-               Magikoopa![await]'''
-dialog_data[303] = '''MAGIKOOPA: Huh••where am I?[delay][delay][delay]
- Bowser, hello!
- How have you been?[await][page]
- I, uh, made it back here SOMEHOW,
- but it seems like I've been
- brainwashed or something.[await][page]
- I can't seem to remember ANYTHING.
- Have I done something...wrong?[await]'''
-dialog_data[304] = '''BOWSER: Uh, [await][pause]don't [await][pause]worry about it.[await]
- Let’s just put it behind us.[await][page]
- It’s great running into a loyal
- Koopa Trooper like you.[await]'''
-dialog_data[305] = '''MAGIKOOPA: I'm glad!
- It looks like you've got some tough
- new troopers now.[await][page]
- But my magic can still help you.[await]'''
-dialog_data[306] = ''' Watch this![await]
-            Ho'o[await][pause]kala[await][pause]ku[await][pause]pua![await]'''
-dialog_data[307] = '''MAGIKOOPA: This magic treasure
- box will never run out of coins.[await][page]
- Just keep on hitting it.[await]'''
-dialog_data[308] = '''MAGIKOOPA: 
- I'll be here if you need me.[await][page]
- Come by whenever you need to
- rejuvenate your HP and magic.[await]'''
-dialog_data[309] = '''MAGIKOOPA: 
- You've come to the right person![await]'''
-dialog_data[310] = '''
-             Ha ha ha ha ha![await]'''
-dialog_data[311] = ''' Ahhhhh...
- So YOU are the notorious Mario![await][page]
- I'm impressed you made it this far.
- I didn't think you could.[await]'''
-dialog_data[312] = ''' Oh!
- Feisty little fellow, aren't you?[await]
- But this is the end of the line.[await][page]
- Now you've got to deal with ME![await]
- EN GARDE![await]'''
+dialog_data[278] = '''[await]'''
+dialog_data[279] = '''[await]'''
+dialog_data[280] = '''[await]'''
+dialog_data[281] = '''[await]'''
+dialog_data[282] = '''[await]'''
+dialog_data[283] = '''[await]'''
+dialog_data[284] = '''[await]'''
+dialog_data[285] = '''[await]'''
+dialog_data[286] = '''[await]'''
+dialog_data[287] = '''[await]'''
+dialog_data[288] = '''[await]'''
+dialog_data[289] = '''[await]'''
+dialog_data[290] = '''[await]'''
+dialog_data[291] = '''[await]'''
+dialog_data[292] = '''[await]'''
+dialog_data[293] = '''[await]'''
+dialog_data[294] = '''[await]'''
+dialog_data[295] = '''[await]'''
+dialog_data[296] = '''[await]'''
+dialog_data[297] = '''[await]'''
+dialog_data[298] = '''[await]'''
+dialog_data[299] = '''[await]'''
+dialog_data[300] = '''[await]'''
+dialog_data[301] = '''[await]'''
+dialog_data[302] = '''[await]'''
+dialog_data[303] = '''[await]'''
+dialog_data[304] = '''[await]'''
+dialog_data[305] = '''[await]'''
+dialog_data[306] = '''[await]'''
+dialog_data[307] = '''[await]'''
+dialog_data[308] = '''[await]'''
+dialog_data[309] = '''[await]'''
+dialog_data[310] = '''[await]'''
+dialog_data[311] = '''[await]'''
+dialog_data[312] = '''[await]'''
 dialog_data[313] = '''VALENTINA: 
  WHAT are you babbling about?[await][page]
  Why should I marry you?[await]'''
 dialog_data[314] = '''VALENTINA: ........[await][page]
  What a wonderful thing to say![await]'''
-dialog_data[315] = '''BOWSER: Ahhh...
-     The scent of boiling lava...[await][page]
- It’s so nice to be home![await][page]
- Smithy’s gonna pay for stealing
- my splendid castle from me![await]'''
-dialog_data[316] = '''  The secret to the shooting stars
-          has been unraveled.[await]
-         Find the Star Pieces,
-         and bring peace back
-           to Mario’s world.[await]'''
-dialog_data[317] = '''       You've found Dyna, Mite,
-          and a Star Piece...[await]
-       But where is Toadstool?[await]'''
-dialog_data[318] = '''       You've come a long way,
-  but your journey’s not over yet.
-    There are 3 more Star Pieces.[await]'''
-dialog_data[319] = '''     Smithy is now in the race for
-           the Star Pieces![await]
-  What horrible surprises might he
-       have in store for Mario?
- [await]'''
-dialog_data[320] = ''' Star Piece? Now that you mention
- it, I DID see a star fall into that
- volcano over there.[await]'''
-dialog_data[321] = ''' Garro’s busy making statues of
- King Nimbus.[await]
- He seems very happy![await]'''
-dialog_data[322] = ''' So the king WAS all right!
- I'm so happy for him.[await]'''
-dialog_data[323] = ''' This time, the prince is for real,
- [delay][delay]right?[await]'''
-dialog_data[324] = ''' I KNEW IT!! I knew the Prince
- couldn't be THAT heavy! Three
- cheers for the REAL Prince![await]'''
-dialog_data[325] = ''' We used to be able to walk through
- the castle freely, but I guess we
- shouldn't disturb the King now.[await]'''
-dialog_data[326] = ''' King Nimbus loves statues and
- birds. He has scads of 'em
- in the castle.[await]'''
-dialog_data[327] = ''' I hope to serve the King
- again, soon![await]'''
-dialog_data[328] = ''' Have you seen the volcano?[await]
-  [select]  (Sure have)
-  [select]  (Not yet)[await]'''
-dialog_data[329] = ''' [page]
- They say you can get there
- by way of the hot springs.[await]'''
-dialog_data[330] = '''  [page]
- The volcano’s to the east.
- Sure wish I could take a dip
- in the springs...[await]'''
-dialog_data[331] = '''
-  Long time no see, Prince Mallow![await]'''
-dialog_data[332] = ''' You're looking especially fluffy
- today, Prince![await]'''
-dialog_data[333] = ''' Prince Mallow, you're such a
- crybaby![await]'''
-dialog_data[334] = '''
-   My, how you've grown, Prince![await]'''
-dialog_data[335] = '''
-          This is locked too...[await]'''
+dialog_data[315] = '''[await]'''
+dialog_data[316] = '''[await]'''
+dialog_data[317] = '''[await]'''
+dialog_data[318] = '''[await]'''
+dialog_data[319] = '''[await]'''
+dialog_data[320] = '''[await]'''
+dialog_data[321] = '''[await]'''
+dialog_data[322] = '''[await]'''
+dialog_data[323] = '''[await]'''
+dialog_data[324] = '''                 Caution![await]
+    If you fall out the back of the
+   castle, you won't be able to get
+       back in without a battle.[await]
+  Make sure you have everything you
+        need before proceeding![await]
+   ~The SMRPG Randomizer Dev Team[await]'''
+dialog_data[325] = ''' Have you ever visited the tower in
+ the south? I snuck in one time.[await][page]
+ Keep your eyes peeled in there for
+ crevices in the walls. You can find
+ some nifty stuff![await]'''
+dialog_data[326] = ''' Some of the monsters in this world
+ that grant you star pieces can be
+ fought multiple times.[await][pause] But you'll
+ only get one star piece, tops.[await][page]
+ There's some exceptions, though.[await]
+ If the monster has a slightly
+ different name... it's a different
+ monster![await]'''
+dialog_data[327] = ''' Garro's got his work cut out for
+ him.[await][pause] He's always having to make
+ new statues of whichever
+ delinquent has invaded the castle.[await]'''
+dialog_data[328] = ''' I heard a rumour that there's some
+ treasures that King and Queen
+ Nimbus hid away.[await]
+ Maybe you'll find those if you
+ rescue them.[await]'''
+dialog_data[329] = ''' The invaders left, but we decided to
+ keep the giant egg.[await]'''
+dialog_data[330] = ''' A couple of the chests in the
+ castle have been refilled. Have you
+ found them all?[await]'''
+dialog_data[331] = ''' There might be some new things you
+ can find around Nimbus Land now
+ that our town has been liberated.[await]
+ Why not have a look around?[await]'''
+dialog_data[332] = ''' Our castle doesn't have much
+ security, so it gets invaded pretty
+ often.[await]
+ I guess it keeps things interesting
+ around here, right?[await]'''
+dialog_data[333] = ''' Have you been to the volcano yet?
+ I'll tell you a secret.[await][page]
+ Before the first stairway, there's
+ a room on the other side of the
+ lava that you can jump to.[await][pause] It's a
+ little hard to see. But maybe you'll
+ find something interesting in there.[await]'''
+dialog_data[334] = ''' If you find an invincibility star in
+ the volcano, try to let the timer
+ run out while standing in lava.[await][page]
+ If one of you levels up, something
+ funny may happen when you regain
+ control.[await][pause] Keep holding Y and your
+ D-pad.[await]'''
+dialog_data[335] = '''[await]'''
 dialog_data[336] = '''  Hey, wait a minute!  It’s locked.[await]'''
-dialog_data[337] = '''SHY AWAY: La dee dah...
- Here ya go, big eggie! I'll give
- ya plenty of nutrients so you'll[await]
- grow up to be big and strong![await]'''
-dialog_data[338] = ''' Oh, oh, oh...[delay][delay]
- Mario’s already here...
- He’s a fast one, he is...[await]'''
-dialog_data[339] = ''' Oh, oh, oh...[delay][delay]
- It won't open...
- it’s locked![await]'''
-dialog_data[340] = '''???: Ha ha ha ha.[await]'''
-dialog_data[341] = ''' Look! There’s a note.
- Let’s read it.[await]'''
-dialog_data[342] = '''     King Nimbus is resting in bed.[await]
- Absolutely NO RUNNING in the halls.
-            Queen Valentina[await]'''
-dialog_data[343] = '''MALLOW: This can only mean that
- my mom and dad are here![await]'''
-dialog_data[344] = ''' Oh, but it’s locked![await]'''
-dialog_data[345] = ''' 
-             Leave it to me![await]'''
-dialog_data[346] = '''BOWSER: Looks like it’s up to me
- to get us out of yet another jam.[await]
- Feast your eyes on this show of
- brains...[delay][delay][delay][delay]and brawn![await]'''
-dialog_data[347] = '''
-              STAND BACK! [await]'''
-dialog_data[348] = '''MALLOW:
-         WAIT! Wait a minute![await]'''
-dialog_data[349] = ''' If my dad’s really bedridden,
- we shouldn't make so much noise.[await]
- ...[delay][delay][delay]We need another plan...[await]'''
-dialog_data[350] = ''' I guess we should find Valentina
- and force the truth out of her![await]'''
-dialog_data[351] = '''BOWSER:
-     But, what about the door?[delay][delay]...[await]'''
-dialog_data[352] = '''SHY AWAY:
-            Queen Valentina...[await]'''
-dialog_data[353] = '''[page]
- That Mario creature who
- beat up Smilax is here...[await]'''
-dialog_data[354] = '''VALENTINA: Mario...?![await]
- What[delay]...[delay]does a “Mario”
- look like?[await]'''
-dialog_data[355] = '''SHY AWAY: Well...it has a bushy
- mustache, long sideburns, and,
- uh, a pair of[delay][delay]...[await]
- mean looking legs...![await]'''
-dialog_data[356] = '''VALENTINA: [delay]Hmmm...[delay]
- I have the feeling I've seen this
- “Mario” before...[await]'''
-dialog_data[357] = '''VALENTINA: [delay]...[delay]Wait! Yes!
- It was that statue that Garro
- just delivered...![await]'''
-dialog_data[358] = '''SHY AWAY:[delay][delay] What, what, what
- are we gonna do? What are we
- GONNA DO, VALENTINA?[await]'''
-dialog_data[359] = '''VALENTINA: Well, we certainly
- aren't going to listen to your
- pointless chatter.[await][page]
- Frankly speaking, I'm not going
- to worry. Without this key, the
- King can't go ANYWHERE![await]'''
-dialog_data[360] = '''VALENTINA:
-                  Hush...[await]'''
-dialog_data[361] = '''VALENTINA:
-      I SAID SHUT UP, ALREADY![await]'''
-dialog_data[362] = '''VALENTINA: What the...?!
- That...that isn't a STATUE!![delay][delay]
- That's...[delay][delay]Mario!!![await]'''
-dialog_data[363] = '''MALLOW: VALENTINA!![await]
- Hand over the KEY!!, NOW![await]'''
-dialog_data[364] = '''VALENTINA: How utterly rude!
- And who in blazes are YOU
- anyway?![await]'''
-dialog_data[365] = '''MALLOW: Me?
- I'm the REAL prince, that’s who![await]'''
-dialog_data[366] = '''VALENTINA: Brat![await]
- And how DARE you listen in on a
- private conversation...![await]'''
-dialog_data[367] = '''MALLOW: Private? PRIVATE?!
- Everyone in a 10 mile radius
- could hear you![await]'''
-dialog_data[368] = '''VALENTINA: Harrumph!
- If you're going to be THIS rude,
- I'm simply going to leave.[await]'''
-dialog_data[369] = '''[page]
-
-          So long...(chumps)![await]'''
-dialog_data[370] = '''BOWSER: Listen YOU! Never EVER
- talk to the leader of the Koopa
- Troop like that! Ooh, I hate...[await]
- THAT! I'll ignore it this time...
- but DON'T let it happen again![await]'''
-dialog_data[371] = '''SHY AWAY: Eh?[delay][delay]
- Hey! Valentina ran away...[await]'''
-dialog_data[372] = '''[page]
-
-      I shall fly the coop, too...[await]'''
-dialog_data[373] = '''MALLOW: Uh...[delay][delay]I...[delay]I think
- we kind of missed the boat here...[await]'''
-dialog_data[374] = ''' So...[delay][delay]...we'd better get
- moving too!![await]
- C'mon, let’s get 'em!![await]'''
-dialog_data[375] = '''
-            Hey, wait a sec...[await]'''
-dialog_data[376] = '''
-     It won't open...it’s locked.[await]'''
-dialog_data[377] = '''
-       Ha! Here’s how I'd do it.[await]'''
-dialog_data[378] = '''
-       I'm absolutely exhausted![await]'''
-dialog_data[379] = ''' I hate being a guard![await]
- Valentina only gives us the most
- boring jobs to do!![await]'''
-dialog_data[380] = '''
- But I guess this beats Dodo’s job.[await]'''
-dialog_data[381] = ''' Dodo has to polish Valentina's
- statues EVERY single day![await]'''
-dialog_data[382] = '''
-    Now THIS is how I would do it![await]'''
-dialog_data[383] = ''' You need a key to open the
- back door of the middle room...[await]
- But of course, Valentina’s got it.[await]'''
-dialog_data[384] = ''' I used to be a guard here, until
- Valentina snatched away all my
- keys...and gave me the boot.[await][page]
- Guess I won't be needing this
- master key anymore...
- Would you like it?[await]
- [select]  (Sure!)
- [select]  (No thanks)[await]'''
-dialog_data[385] = '''[page]
- All right, here you go![await]
- Just don't tell me what you're
- gonna do with it, okay?[await]'''
-dialog_data[386] = '''[page]
- Oh really?, You sure?
- What a shame[delay][delay]...this precious key
- opens the middle room, you know.[await]'''
-dialog_data[387] = '''
-     So...you don't want it, huh?[await]'''
-dialog_data[388] = '''
-         Wait! Don't say that![await]'''
-dialog_data[389] = '''MALLOW: To be honest, we really
- REALLY need it![await]'''
-dialog_data[390] = '''
-                Oh, yeah?[await]'''
-dialog_data[391] = '''
-    But HE said you didn't need it.[await]'''
-dialog_data[392] = '''MALLOW: Oh, I'm sorry. You'll
- have to excuse him, he...he’s a
- little shaken up right now.[await]'''
-dialog_data[393] = '''
-      [delay]...Oh...[delay]Okay...I guess...[delay][await][pause][end]'''
-dialog_data[394] = '''MALLOW: Thank you![await]
- We owe you one![await]'''
-dialog_data[395] = '''          Got “Castle Key 1”![await]'''
-dialog_data[396] = ''' A dip in the hot springs would
- perk up the King in a jiffy![await]'''
-dialog_data[397] = '''
-            Go on, take this...[await]'''
-dialog_data[398] = ''' Hey! Did YOU know?![await]
- Valentina’s got a huge egg
- in the middle room.[await][page]
- It spits out eggs from time
- to time, and sometimes when you
- shield yourself, the eggs'll[await]
- ricochet off of you.[await]'''
-dialog_data[399] = ''' Did you know that there are hot
- springs around here?[await]
- [select]  (Yep)
- [select]  (Nope)[await]'''
-dialog_data[400] = '''[page]
- Aww, you're no fun.
- I wanted to be the first
- to tell you that![await]'''
-dialog_data[401] = '''[page]
- We get special hot water from
- Barrel Volcano. It helps cure all
- kinds of ailments, but only the[await]
- King gets to bathe in it.[await]'''
-dialog_data[402] = ''' Valentina told me to wait in this
- room... I'm hoping she'll give me
- a job soon...[await]'''
-dialog_data[403] = ''' Hey, tell me something,
- do statues[delay][delay]...[delay]move?[await]'''
-dialog_data[404] = '''
-       No. Statues don't move.[await]'''
-dialog_data[405] = '''
-        Then[delay][delay]...[delay]explain...[delay][delay]THIS![await]'''
-dialog_data[406] = ''' It's...[delay][delay] one of those hi-tech,...
- [delay]er,...life-like..[delay] realistic ones.
- ...[delay][delay]Let’s get outta here.[await]'''
-dialog_data[407] = '''GARRO: Why are you back?![await]
- Come on! Put a little effort into
- it, okay? Good luck![await]'''
-dialog_data[408] = '''SHY AWAY: Oh[delay][delay] Oh[delay][delay]...
- ...Busted...[await]
- What to do, what to do?[await]'''
-dialog_data[409] = ''' I'll give you this “Fertilizer”
- if you let me go~...[delay][delay][delay]...OK?[await]'''
-dialog_data[410] = ''' The hot springs are up ahead,
- but only royalty can bathe there.[await]
- And you don't look so royal...![await]'''
-dialog_data[411] = ''' Right now, Prince Mallow is
- bathing in the hot springs.
- It must be so relaxing.[await]'''
+dialog_data[337] = '''[await]'''
+dialog_data[338] = '''[await]'''
+dialog_data[339] = '''[await]'''
+dialog_data[340] = '''[await]'''
+dialog_data[341] = '''[await]'''
+dialog_data[342] = '''[await]'''
+dialog_data[343] = '''[await]'''
+dialog_data[344] = '''[await]'''
+dialog_data[345] = '''[await]'''
+dialog_data[346] = '''[await]'''
+dialog_data[347] = '''[await]'''
+dialog_data[348] = '''[await]'''
+dialog_data[349] = '''[await]'''
+dialog_data[350] = '''[await]'''
+dialog_data[351] = '''[await]'''
+dialog_data[352] = '''[await]'''
+dialog_data[353] = '''[await]'''
+dialog_data[354] = '''[await]'''
+dialog_data[355] = '''[await]'''
+dialog_data[356] = '''[await]'''
+dialog_data[357] = '''[await]'''
+dialog_data[358] = '''[await]'''
+dialog_data[359] = '''[await]'''
+dialog_data[360] = '''[await]'''
+dialog_data[361] = '''[await]'''
+dialog_data[362] = '''[await]'''
+dialog_data[363] = '''[await]'''
+dialog_data[364] = '''[await]'''
+dialog_data[365] = '''[await]'''
+dialog_data[366] = '''[await]'''
+dialog_data[367] = '''[await]'''
+dialog_data[368] = '''[await]'''
+dialog_data[369] = '''[await]'''
+dialog_data[370] = '''[await]'''
+dialog_data[371] = '''[await]'''
+dialog_data[372] = '''[await]'''
+dialog_data[373] = '''[await]'''
+dialog_data[374] = '''[await]'''
+dialog_data[375] = '''[await]'''
+dialog_data[376] = '''[await]'''
+dialog_data[377] = '''[await]'''
+dialog_data[378] = '''[await]'''
+dialog_data[379] = '''[await]'''
+dialog_data[380] = '''[await]'''
+dialog_data[381] = '''[await]'''
+dialog_data[382] = '''[await]'''
+dialog_data[383] = '''[await]'''
+dialog_data[384] = '''[await]'''
+dialog_data[385] = '''[await]'''
+dialog_data[386] = '''[await]'''
+dialog_data[387] = '''[await]'''
+dialog_data[388] = '''[await]'''
+dialog_data[389] = '''[await]'''
+dialog_data[390] = '''[await]'''
+dialog_data[391] = '''[await]'''
+dialog_data[392] = '''[await]'''
+dialog_data[393] = '''[await]'''
+dialog_data[394] = '''[await]'''
+dialog_data[395] = '''[await]'''
+dialog_data[396] = ''' There's three invaders in the
+ castle.[await][pause] You'll need a key to fight
+ the second one, and another key to
+ fight the third.[await][pause] The keys could be
+ anywhere in the world![await][page]
+ How'd we lose them, you ask?[delay_30]
+ Er... [delay]don't ask me, [delay_30]I have no idea![await]'''
+dialog_data[397] = '''[await]'''
+dialog_data[398] = ''' The statues in the castle were
+ chosen by the third invader.[await]'''
+dialog_data[399] = '''[await]'''
+dialog_data[400] = '''[await]'''
+dialog_data[401] = ''' Sometimes, when no one's looking,
+ I take a dive out the back door
+ of the castle. It's so much fun![await]
+ I saw some treasure chests on the
+ way down.[await][pause] But you can't get to
+ them without going through the
+ west beanstalks.[await]'''
+dialog_data[402] = ''' The guy in the left corner will give
+ you something, too.[await]'''
+dialog_data[403] = '''[await]'''
+dialog_data[404] = '''[await]'''
+dialog_data[405] = '''[await]'''
+dialog_data[406] = '''[await]'''
+dialog_data[407] = '''[await]'''
+dialog_data[408] = '''[await]'''
+dialog_data[409] = '''[await]'''
+dialog_data[410] = '''[await]'''
+dialog_data[411] = '''[await]'''
 dialog_data[412] = '''
                 DANGER!!!
    Beyond the cliffs is the volcano[await]'''
-dialog_data[413] = '''QUEEN NIMBUS: Hello, everyone.[await]
- Thank you so much for looking
- after my dear child.[await]'''
-dialog_data[414] = '''
-        Wait a minute, please...[await]'''
-dialog_data[415] = '''MALLOW: Please! These people
- aren't your enemies. They're my
- friends.[await]'''
-dialog_data[416] = '''
-           This way, come on![await]'''
-dialog_data[417] = '''MALLOW: Mom...[delay_48] Dad...[await]
- I'd like you to meet Mario...[await]'''
-dialog_data[418] = '''[page]
-
-...and my other travel companions![await]'''
-dialog_data[419] = '''KING NIMBUS: I say! How can
- we ever thank you enough![await]
- I'm Mallow’s father...King Nimbus.[await]'''
-dialog_data[420] = '''MALLOW:
-   Allow me to introduce everyone![await]'''
-dialog_data[421] = ''' This...is Princess Toadstool from
- Mushroom Kingdom...[await]'''
-dialog_data[422] = '''KING NIMBUS: Ah![delay] I've heard
- so much about you! May I...
- have your autograph?[await]'''
-dialog_data[423] = '''QUEEN NIMBUS:
-   Don't embarrass junior, dear!![await]'''
-dialog_data[424] = '''KING NIMBUS: Oh![delay]...FANTASTIC![await]
- (Show me again later...) Eh hem.
- And WHO do we have over here?[await]'''
-dialog_data[425] = '''MALLOW: This is Bowser, leader
- of the Koopa Troop.[await]'''
-dialog_data[426] = '''KING NIMBUS: Oh! Another famous
- person! This is just too much![await]
- I MUST have YOUR autograph![await]'''
-dialog_data[427] = '''QUEEN NIMBUS: Dear...behave
- yourself, please![await]'''
-dialog_data[428] = '''KING NIMBUS: No? Not even a
- little scribble? Okay, okay...[await]'''
-dialog_data[429] = '''KING NIMBUS: Yes, yes. I'm quite
- forgetting my manners...[delay][delay]Well...[await]
- ...Who do we have over here?[await]'''
-dialog_data[430] = '''MALLOW: This is Geno, who I told
- you about before.[await]'''
-dialog_data[431] = '''KING NIMBUS: Oh! Yes! That story
- about the Star Street! How awful![await]'''
-dialog_data[432] = '''GENO:
-          That's...Star Road...[await]'''
-dialog_data[433] = '''QUEEN NIMBUS: By the way, a little
- before Valentina took over, a
- large star fell into the volcano![await]'''
-dialog_data[434] = '''KING NIMBUS: Hmm, but the dreaded
- “Czar Dragon” inhabits the
- volcano. It’s going to be tough[await]
- getting a star out of there![await]'''
-dialog_data[435] = '''[page]
- Hmmm...perhaps all of you
- working together COULD handle
- that beast...[await]'''
-dialog_data[436] = '''
- Why, when I was young, I...[await]'''
-dialog_data[437] = '''QUEEN NIMBUS: Yes, dear...[await]
- Now, once at the volcano, find
- Hinopio. He'll be able to help you.[await]'''
-dialog_data[438] = '''QUEEN NIMBUS: You be careful,
- Mallow![await]'''
-dialog_data[439] = ''' Up ahead are the hot springs...[await]
- But only royalty is allowed...[await]'''
-dialog_data[440] = ''' Hey! You're the REAL prince![await][page]
- Sorry about the misunderstanding
- before...There’s NO WAY that fat
- bird could have been a Prince, huh?[await]'''
-dialog_data[441] = ''' MALLOW: No big deal.[await]
-  Anyway, do you think you
-  could let us through here?[await]'''
-dialog_data[442] = '''
-               Of course![await]'''
-dialog_data[443] = ''' Go right ahead.
- Please, enjoy yourselves.[await]
- But be careful not to fall into
- the volcano.[await]'''
-dialog_data[444] = '''KING NIMBUS: Oh! Nevermind...[await]'''
-dialog_data[445] = '''
- And, who is this gentleman here?[await]'''
-dialog_data[446] = '''MALLOW: THIS[delay]....[delay]...[delay]
- is Mario!!![await]
- He helped me from the start![await]'''
-dialog_data[447] = '''KING NIMBUS: I sincerely thank you
- from the bottom of my heart.[await]'''
-dialog_data[448] = '''[page]
- [delay]...[delay]...[delay]You don't mean...
- THE Mario?! Jumping Mario?!
- Autograph, please![await]'''
-dialog_data[449] = '''QUEEN NIMBUS:
-     That’s quite enough, dear...[await]'''
-dialog_data[450] = '''KING NIMBUS: Okay, okay![delay][delay] Then...
- how about showing me just a little
- jump? A tiny hop will do![await]'''
-dialog_data[451] = '''KING NIMBUS: Son, you're just
- like me when I was your age.
- I'm proud of you.[await]'''
-dialog_data[452] = '''QUEEN NIMBUS: If you have
- any problems, come straight[await]
- back, okay?![await]'''
-dialog_data[453] = '''MALLOW: Okay, mom![await]
- But I probably won't come back
- until we find the star![await]'''
-dialog_data[454] = ''' Go up those steps, and you'll find
- the royal bus that goes to the
- volcano. It’s pretty cool.[await]'''
-dialog_data[455] = ''' Do you know about the royal bus?[await]
- [select]  (Yes)
- [select]  (No)[await]'''
-dialog_data[456] = '''[page]
- It’s a regal vehicle, used only
- by the King. It’s parked now, due
- to the fact he’s ill...[await]'''
-dialog_data[457] = '''[page]
- When the King recovers, I'll let
- you see it. You see, I'm the
- bus maintenance man.[await]'''
-dialog_data[458] = '''
-    The bus is undergoing repairs.[await]'''
-dialog_data[459] = '''CROCO: Say, hey! We meet AGAIN![await]
- Dis here land is RICH! It’s got
- tons of loot, and I want it all![await][pause][end]'''
-dialog_data[460] = '''[page]
- So, youse guys found 'em ALL?
- ...[delay]Geez...[delay][delay]I've failed...
-[delay][delay] ...I'm humiliated...![await]'''
+dialog_data[413] = '''[await]'''
+dialog_data[414] = '''[await]'''
+dialog_data[415] = '''[await]'''
+dialog_data[416] = '''[await]'''
+dialog_data[417] = '''[await]'''
+dialog_data[418] = '''[await]'''
+dialog_data[419] = '''[await]'''
+dialog_data[420] = '''[await]'''
+dialog_data[421] = '''[await]'''
+dialog_data[422] = '''[await]'''
+dialog_data[423] = '''[await]'''
+dialog_data[424] = '''[await]'''
+dialog_data[425] = '''[await]'''
+dialog_data[426] = '''[await]'''
+dialog_data[427] = '''[await]'''
+dialog_data[428] = '''[await]'''
+dialog_data[429] = '''[await]'''
+dialog_data[430] = '''[await]'''
+dialog_data[431] = '''[await]'''
+dialog_data[432] = '''[await]'''
+dialog_data[433] = '''[await]'''
+dialog_data[434] = '''[await]'''
+dialog_data[435] = '''[await]'''
+dialog_data[436] = '''[await]'''
+dialog_data[437] = '''[await]'''
+dialog_data[438] = '''[await]'''
+dialog_data[439] = '''[await]'''
+dialog_data[440] = '''[await]'''
+dialog_data[441] = '''[await]'''
+dialog_data[442] = '''[await]'''
+dialog_data[443] = ''' Please, enjoy yourselves.[await]
+ The volcano is just past the
+ hot springs.[await]'''
+dialog_data[444] = '''[await]'''
+dialog_data[445] = '''[await]'''
+dialog_data[446] = '''[await]'''
+dialog_data[447] = '''[await]'''
+dialog_data[448] = '''[await]'''
+dialog_data[449] = '''[await]'''
+dialog_data[450] = '''[await]'''
+dialog_data[451] = '''KING NIMBUS: Feel free to rest in
+ our Hot Springs any time you like![await]'''
+dialog_data[452] = '''QUEEN NIMBUS: If you haven't been
+ to the Volcano yet, you can get
+ there via our Hot Springs. [await]'''
+dialog_data[453] = '''[await]'''
+dialog_data[454] = ''' The hot springs are ahead.[await]
+ But while the castle is occupied by
+ invaders, we're under strict
+ orders to forbid entry.[await]
+ Sorry about that...[await]'''
+dialog_data[455] = ''' You won't have to wait for the
+ Royal Bus to be repaired if you
+ want to go to Bowser's Keep.[await]
+ There's other ways to get in![await]'''
+dialog_data[456] = '''[await]'''
+dialog_data[457] = '''[await]'''
+dialog_data[458] = ''' It's the bus driver's day off today,
+ so you can't take the Royal Bus.[await]
+ If you need to go to Bowser's
+ Keep, you can get there from the
+ world map.[await]'''
+dialog_data[459] = '''[await]'''
+dialog_data[460] = '''[await]'''
 dialog_data[461] = ''' Welcome! Come on in!
  So you want to take a rest?
  I'm sure that’s why you're here.[await][page]
@@ -1369,90 +767,58 @@ dialog_data[464] = '''
               Oh, shut up.[await]'''
 dialog_data[465] = '''
          Don't talk to me now.[await]'''
-dialog_data[466] = ''' Oh, now look![await]
- I lost 'cause of YOU![await]'''
-dialog_data[467] = ''' Wait, hold on![await]
- This is the highest score...[await]'''
-dialog_data[468] = ''' Oh, wait,[delay] [delay]wait[delay]...[await]'''
-dialog_data[469] = '''  All right! YES!![await]
- ...I'm done here.[await]'''
+dialog_data[466] = '''[await]'''
+dialog_data[467] = '''[await]'''
+dialog_data[468] = '''[await]'''
+dialog_data[469] = '''[await]'''
 dialog_data[470] = ''' You want this?
  It’s only 500 coins.[await]
  [select]  (Well, sure!)
  [select]  (No)[await]'''
-dialog_data[471] = '''[page]
-
-              Suit yourself.[await]'''
+dialog_data[471] = '''[await]'''
 dialog_data[472] = '''[page]
 
          You need more coinage.[await]'''
 dialog_data[473] = ''' Want me to teach you?[await]
  [select]  (Yes, please)
  [select]  (I already know)[await]'''
-dialog_data[474] = '''[page]
-
-          Aww, you're no fun.[await]'''
+dialog_data[474] = '''[await]'''
 dialog_data[475] = '''[page]
  High score if you hit
  the shells with the stars
  fired from the beetle.[await]
  If you get hit, recover by firing
  consecutively...Just do it![await]'''
-dialog_data[476] = '''
-   I order you to stand before me.[await]'''
-dialog_data[477] = '''
-       I now order you to jump.[await]'''
-dialog_data[478] = '''[page]
- In this world, there are things
- called “hidden treasures”.[await]
- Use your awesome jumping ability
- to look for 'em.[await]'''
-dialog_data[479] = '''
-    I wish you luck in the future.[await]'''
-dialog_data[480] = ''' Mario![await][pause][end]'''
-dialog_data[481] = '''
- The Chancellor has filled me in!
- Come. Let me show you around.[await]'''
-dialog_data[482] = '''
-   Help yourself to the treasures![await]'''
-dialog_data[483] = ''' If you leave now, what will that
- do to my reputation?![await]'''
-dialog_data[484] = ''' This is a “Flower”. The more you
- gather, the more Flower Points
- you'll have in battle. [await][pause]Find 'em![await]'''
-dialog_data[485] = ''' THIS mushroom will restore your
- Hit Points and Flower Points.[await]
- Unfortunately, mushrooms you find
- as items only restore your HP.[await]
- So beware.[await]'''
-dialog_data[486] = ''' This is a “Coin”.
- The small ones are worth one, and
- the large ones are worth ten.[await]
- This one’s a “10”![await]'''
-dialog_data[487] = '''
-          I'm standing guard![await]'''
-dialog_data[488] = ''' Do you know about Flower Points?
- [select]  (No! Tell me!)
- [select]  (Yes)[await]'''
-dialog_data[489] = '''[page]
- You sure got your
- act together, Mario![await]'''
-dialog_data[490] = ''' We're all able to serve the
- King again.[await][page]
- But we left our houses wide open.
- Hope everything’s all right.[await]'''
-dialog_data[491] = ''' Came to see the King’s statue
- collection. I tell you, it's
- remarkable![await]'''
-dialog_data[492] = ''' Wonder when the bus is gonna
- start again? They're probably
- repairing it as we talk.[await]'''
-dialog_data[493] = ''' Things have finally picked up![await]'''
-dialog_data[494] = ''' The King’s happier than ever
- after being reunited with Mallow.[await]'''
-dialog_data[495] = ''' What happened to Valentina?[await]
- She must have landed near the sky
- after she flew the coop...[await]'''
+dialog_data[476] = '''[await]'''
+dialog_data[477] = ''' Have you found any rare Frog
+ Coins?[await][pause] They're different from
+ normal Frog Coins, and they stay
+ in your Special Items box.[await][page]
+ If you find one, you can trade it
+ with the guy upstairs for a special
+ item.[await]'''
+dialog_data[478] = '''[await]'''
+dialog_data[479] = '''[await]'''
+dialog_data[480] = '''[await]'''
+dialog_data[481] = '''[await]'''
+dialog_data[482] = '''[await]'''
+dialog_data[483] = '''[await]'''
+dialog_data[484] = '''[await]'''
+dialog_data[485] = '''[await]'''
+dialog_data[486] = '''[await]'''
+dialog_data[487] = '''[await]'''
+dialog_data[488] = '''[await]'''
+dialog_data[489] = '''[await]'''
+dialog_data[490] = ''' Looks like you found our missing
+ keys! Nice work![await]'''
+dialog_data[491] = '''[await]'''
+dialog_data[492] = '''[await]'''
+dialog_data[493] = '''[await]'''
+dialog_data[494] = ''' Do you mind staying around a bit
+ longer? This castle gets invaded
+ so much, it's practically a joke.[await]'''
+dialog_data[495] = ''' The giant egg in the next room
+ stayed here. What a weird day.[await]'''
 dialog_data[496] = ''' Morning!
  Did you have pleasant dreams?[await][pause][end]'''
 dialog_data[497] = '''
@@ -1468,80 +834,42 @@ dialog_data[499] = '''
 dialog_data[500] = '''
  You slept quietly, so I'm sure
  you had pleasant dreams![await]'''
-dialog_data[501] = '''[page]
-
-        Please come back again![await]'''
-dialog_data[502] = '''[page]
-
-          Kick back and relax![await]'''
+dialog_data[501] = '''[await]'''
+dialog_data[502] = '''[await]'''
 dialog_data[503] = '''[page]
  Hey, wait a sec.
  You don't have enough money, so
  I can't let you use the cushion.[await]'''
-dialog_data[504] = '''[page]
- Good dreams are fun
- entertainment![await]'''
-dialog_data[505] = ''' People have been visiting us from
- the world down under.[await]
- Even Croco came.[await]'''
-dialog_data[506] = ''' Croco passed by, earlier.[await]
- He was saying,“ MINE, ALL MINE!”
-[delay] What was that all about?[await]'''
-dialog_data[507] = ''' I just saw a Mushroom person.[await]
- You'll find him at the inn.[await]'''
-dialog_data[508] = ''' We can finally go in the castle.[await]
- The King seems just fine![await]'''
-dialog_data[509] = ''' The King must be overjoyed,
- having Prince Mallow back.[await]'''
-dialog_data[510] = ''' I'm so relieved the King
- wasn't ill...[await]
- And hurrah for our Prince![await]'''
-dialog_data[511] = ''' Now that we can go into the
- castle again, I think I'll go check
- out some statues.[await]'''
-dialog_data[512] = '''GARRO: Prince Mallow![await]
- That was splendid work!
- You are every bit a “prince”![await]'''
-dialog_data[513] = '''MALLOW: If it weren't for you,
- Garro, we'd never have
- pulled it off![await]
- We definitely owe you one![await]'''
-dialog_data[514] = '''GARRO: Thanks, Mallow.[await]'''
-dialog_data[515] = '''GARRO: (I'm really glad everything
- worked out...)[await]'''
-dialog_data[516] = '''GARRO: Mallow, you ARE indeed,
- a TRUE PRINCE!![await]'''
-dialog_data[517] = '''
-    The royal bus is running again![await]'''
-dialog_data[518] = ''' Everyone’s happy when the
- weather is nice![await]'''
-dialog_data[519] = ''' Oh yeah![await]
- I saw Valentina going towards the
- building to the south...[await]
- I wonder why?[await]'''
-dialog_data[520] = '''MALLOW: Mom![delay][delay] Dad![await]'''
-dialog_data[521] = '''QUEEN NIMBUS: Were you able to
- find the star, dear?[await]'''
-dialog_data[522] = '''MALLOW: Yeah. The Axem Rangers
- took it away from us, but...[await]
- we got it back again![await]'''
-dialog_data[523] = '''KING NIMBUS: That’s wonderful![await]
- Now the Star, uh[delay][delay]...Star Thing
- can be repaired, right?[await]'''
-dialog_data[524] = ''' I guess not...[delay][delay]You're...[delay][delay]still...
- missing a piece, I take it.[await]'''
-dialog_data[525] = ''' I guess this is goodbye.[await]'''
-dialog_data[526] = '''TOAD: Mario![await]'''
-dialog_data[527] = ''' Are you all right?[await]'''
-dialog_data[528] = ''' You were kicking up a sweat...[await]
- Here, drink this and blow those
- bad guys away.[await]'''
-dialog_data[529] = '''TOAD: Ya! Ya![await]'''
-dialog_data[530] = ''' Mario...[await]
- I've kept this a secret until now,
- but...[delay][delay]I'm really[delay][delay] a...[delay][delay]a...[await]'''
-dialog_data[531] = '''
-              a MONSTER!!![await]'''
+dialog_data[504] = '''[await]'''
+dialog_data[505] = '''[await]'''
+dialog_data[506] = '''[await]'''
+dialog_data[507] = '''[await]'''
+dialog_data[508] = '''[await]'''
+dialog_data[509] = '''[await]'''
+dialog_data[510] = '''[await]'''
+dialog_data[511] = '''[await]'''
+dialog_data[512] = '''[await]'''
+dialog_data[513] = '''[await]'''
+dialog_data[514] = '''[await]'''
+dialog_data[515] = '''[await]'''
+dialog_data[516] = '''GARRO:  I don't know why Dodo
+ doesn't just get a new helmet that
+ won't cover his eyes.[await]'''
+dialog_data[517] = '''[await]'''
+dialog_data[518] = '''[await]'''
+dialog_data[519] = '''[await]'''
+dialog_data[520] = '''[await]'''
+dialog_data[521] = '''[await]'''
+dialog_data[522] = '''[await]'''
+dialog_data[523] = '''[await]'''
+dialog_data[524] = '''[await]'''
+dialog_data[525] = '''[await]'''
+dialog_data[526] = '''[await]'''
+dialog_data[527] = '''[await]'''
+dialog_data[528] = '''[await]'''
+dialog_data[529] = '''[await]'''
+dialog_data[530] = '''[await]'''
+dialog_data[531] = '''[await]'''
 dialog_data[532] = '''GAZ:
     Geno, come on, you can do it![await]'''
 dialog_data[533] = '''YOSHI:
@@ -1555,40 +883,20 @@ dialog_data[536] = '''
        I'm with you all the way![await]'''
 dialog_data[537] = '''
     Here it comes, here it comes![await]'''
-dialog_data[538] = ''' The bus has finally been repaired.[await]
- We can start operating again.[await]'''
-dialog_data[539] = '''
- ..[delay]..[delay]..[delay] Prince Mallow![await]'''
-dialog_data[540] = '''MALLOW: We want to go to
- Bowser’s Keep...Could you
- give us a lift, please?[await]'''
-dialog_data[541] = ''' I've heard the story from
- King Nimbus.[await]
- You'll be there in no time![await]'''
-dialog_data[542] = '''
-    So, how’s the engine running?[await]'''
-dialog_data[543] = '''
-   Oh, it’s purring like a kitten![await]'''
-dialog_data[544] = ''' Could you take Prince Mallow
- to the entrance of Bowser’s Keep?[await]'''
-dialog_data[545] = ''' Of course![delay][delay] Can't wait to get
- this thing running again![await][pause]
- Come, Prince, hop on board.[await]'''
-dialog_data[546] = '''
-               All aboard![await]'''
-dialog_data[547] = '''
-               We're off![await]'''
+dialog_data[538] = '''[await]'''
+dialog_data[539] = '''[await]'''
+dialog_data[540] = '''[await]'''
+dialog_data[541] = '''[await]'''
+dialog_data[542] = '''[await]'''
+dialog_data[543] = '''[await]'''
+dialog_data[544] = '''[await]'''
+dialog_data[545] = '''[await]'''
+dialog_data[546] = '''[await]'''
+dialog_data[547] = '''[await]'''
 dialog_data[548] = '''       Found a “[0x70A7]”![await]'''
-dialog_data[549] = '''         Got “Castle Key 2”![await]'''
-dialog_data[550] = '''[page]
- But hey, I'm not sweatin'!
- This device'll tell me where
- the treasures are hidden![await][page]
- The rest of 'em are mine!
- All MINE!! Adios, fools![await]'''
-dialog_data[551] = ''' Found a “Signal Ring”![await]
- If you equip it, it'll ring at
- the location of a hidden treasure.[await]'''
+dialog_data[549] = '''[await]'''
+dialog_data[550] = '''[await]'''
+dialog_data[551] = '''[await]'''
 dialog_data[552] = '''[page]
 
        “How to climb the vines”[await][page]
@@ -1597,123 +905,68 @@ dialog_data[552] = '''[page]
  When you jump, you will be able to
  disengage yourself from the vine.[await]
  Nimbus Dept. of Transportation[await]'''
-dialog_data[553] = ''' It’s too small for you.[await]'''
-dialog_data[554] = ''' At your service, Sir!
- How may I help you?[await]
- [select]  (I'm thirsty)
- [select]  (Just kidding)[await]'''
+dialog_data[553] = ''' Huh?
+ There is a note in the pocket...[await][page]
+ It reads:[await]
+           [delay]“GARY WAS HERE!
+            [delay]ASH IS A LOSER!”[await]'''
+dialog_data[554] = ''' If you see Samus, tell her I need her
+ to find my cane.[await]'''
 dialog_data[555] = '''[page]
  Here is the menu.[await]
  [select]  (Pick Me Up........10 Coins)
  [select]  (Kerokero Cola....150 Coins)
  [select]  (No thanks)[await]'''
-dialog_data[556] = '''[page]
- I see.[await]'''
-dialog_data[557] = '''[page]
- One moment, please.[await]'''
-dialog_data[558] = '''[page]
- Here you are, Sir![await]'''
-dialog_data[559] = ''' Please do not hesitate to ring.[await]'''
+dialog_data[556] = '''[await]'''
+dialog_data[557] = '''[await]'''
+dialog_data[558] = '''[await]'''
+dialog_data[559] = '''[await]'''
 dialog_data[560] = '''      Bought a “[0x70A7]”![await]'''
 dialog_data[561] = '''[page]
  Sir, you seem to be a few coins
  short. Please ring again.[await][pause][end]'''
-dialog_data[562] = '''QUEEN NIMBUS: The last star...[await]'''
-dialog_data[563] = '''
- Wait![delay][delay] The only place left to
- look is in Bowser’s Keep![await]'''
-dialog_data[564] = '''MALLOW: Yeah, we know.[await]
- But...there’s no way to get in.
- Believe me, we've tried, but...[await]'''
-dialog_data[565] = '''KING NIMBUS: Yes, yes. Even
- Mario can't jump THAT far...[await][pause][end]'''
-dialog_data[566] = '''
- All right! I'll let you use the...[await]'''
-dialog_data[567] = '''QUEEN NIMBUS: That’s IT, dear![await]'''
-dialog_data[568] = '''
-    You should use the royal bus![await]'''
-dialog_data[569] = '''KING NIMBUS: Yes, Mallow, the time
- has come for you to take the bus![await][pause][end]'''
-dialog_data[570] = '''
- Why, when I was your age...[await]'''
-dialog_data[571] = '''MALLOW: Really?!
- Are you sure it’s all right?[await]'''
-dialog_data[572] = '''QUEEN NIMBUS: Of course, dear.
- I've ordered the repair man to have
- it fixed by the time you leave.[await][page]
- You simply HAVE to help Mario
- and the others get that last star![await]'''
-dialog_data[573] = '''MALLOW: You bet, mom![await][pause][end]'''
-dialog_data[574] = '''
- Come on, Mario, let’s GO![await]'''
-dialog_data[575] = '''KING NIMBUS: Hurry and get the
- Star, uh...Star...Strip...[end]'''
-dialog_data[576] = '''KING NIMBUS: Hurry and get the
- Star, uh...Star...Way...[end]'''
-dialog_data[577] = '''KING NIMBUS: Hurry and get the
- Star, uh...Star...Lane...[end]'''
-dialog_data[578] = '''
- fixed for good![await]
- Best of luck, all![await]'''
-dialog_data[579] = '''QUEEN NIMBUS: Please...[await]
- Promise me you'll make everyone's
- dreams come true once again![await]'''
-dialog_data[580] = ''' Will you ride the royal bus to
- Bowser’s Keep?[await]
-  [select]  (You bet!)
-  [select]  (Maybe another time)[await]'''
-dialog_data[581] = '''[page]
-
-        We'll be arriving shortly.[await]'''
-dialog_data[582] = '''[page]
-
-        Feel free to ride again.[await]'''
-dialog_data[583] = '''MALLOW: Hey![await]'''
-dialog_data[584] = '''
-     There’s the last Star Piece![await]'''
-dialog_data[585] = '''SMITHY: Huh...?[delay][delay][await][page]
- Already finished your tour of the
- factory, huh?! All right, then![await]
- How about a little demonstration?[await]'''
-dialog_data[586] = '''GENO: Yo Smithy![await]'''
-dialog_data[587] = ''' Stop making those things and hand
- over the Star Piece, NOW![await]'''
-dialog_data[588] = '''SMITHY: Huh?...Gufaw haw haw![await][page]
- So YOU'RE...Mario?![await]
- Looks like we're gonna have a
- little dispute over the star.[await]'''
-dialog_data[589] = '''BOWSER: Just hand it over and
- GET OUTTA MY CASTLE![await]'''
-dialog_data[590] = '''SMITHY: My, my! We're a little
- touchy today, aren't we?[await]
- You know, I'm actually growing
- rather FOND of this place...[await]'''
-dialog_data[591] = '''TOADSTOOL: Please! Don't make us
- go through any more![await]
- Just give us the star....NOW![await]'''
-dialog_data[592] = '''SMITHY: Hurrumph! Better yet...[await][page]
- Why don't YOU give me YOUR
- stars. Why, then I could
- easily conquer this world![await]
- Then we could get rid of all
- wishes, and create a world filled[await]
- with...WEAPONS!![await]'''
-dialog_data[593] = '''
-            Over here, NOW![await][page]
-
-          I'll crush you ALL!!![await]'''
-dialog_data[594] = '''GENO: Come on, Mario![await]'''
-dialog_data[595] = '''
-    Send the last one way up high![await]'''
-dialog_data[596] = '''GENO: Thank you, everyone![await]'''
-dialog_data[597] = ''' The Star Road is back to normal![delay_48]
- And...[delay][delay][delay][delay][await]'''
+dialog_data[562] = '''[await]'''
+dialog_data[563] = '''[await]'''
+dialog_data[564] = '''[await]'''
+dialog_data[565] = '''[await]'''
+dialog_data[566] = '''[await]'''
+dialog_data[567] = '''[await]'''
+dialog_data[568] = '''[await]'''
+dialog_data[569] = '''[await]'''
+dialog_data[570] = '''[await]'''
+dialog_data[571] = '''[await]'''
+dialog_data[572] = '''[await]'''
+dialog_data[573] = '''[await]'''
+dialog_data[574] = '''[await]'''
+dialog_data[575] = '''[await]'''
+dialog_data[576] = '''[await]'''
+dialog_data[577] = '''[await]'''
+dialog_data[578] = '''[await]'''
+dialog_data[579] = '''[await]'''
+dialog_data[580] = '''[await]'''
+dialog_data[581] = '''[await]'''
+dialog_data[582] = '''[await]'''
+dialog_data[583] = '''[await]'''
+dialog_data[584] = '''[await]'''
+dialog_data[585] = '''[await]'''
+dialog_data[586] = '''[await]'''
+dialog_data[587] = '''[await]'''
+dialog_data[588] = '''[await]'''
+dialog_data[589] = '''[await]'''
+dialog_data[590] = '''[await]'''
+dialog_data[591] = '''[await]'''
+dialog_data[592] = '''[await]'''
+dialog_data[593] = '''[await]'''
+dialog_data[594] = '''[await]'''
+dialog_data[595] = '''[await]'''
+dialog_data[596] = '''[await]'''
+dialog_data[597] = '''[await]'''
 dialog_data[598] = ''' Our guest is resting.
  Please be quiet.[await]'''
-dialog_data[599] = ''' ...[delay][delay]...[delay][delay]
- I'm resting up for Mother Brain.[await]'''
+dialog_data[599] = ''' If you see Link, tell him I need him
+ to find my Gravity Suit.[await]'''
 dialog_data[600] = '''                Victory!![end]'''
 dialog_data[601] = '''                Defeated!![end]'''
 dialog_data[602] = '''                Run Away!![end]'''
 dialog_data[603] = '''[end]'''
-dialog_data[604] = '''ing up for Mother Brain.[await]'''
+dialog_data[604] = '''[await]'''

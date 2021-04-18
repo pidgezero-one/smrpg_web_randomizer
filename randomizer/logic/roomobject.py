@@ -189,14 +189,17 @@ class RoomObjects:
         else:
             for i in range(0, empty_space, 2):
                 eventtile_pointers += eventtile_ptr_bytes
-        empty_space = 0x19C8 - len(eventtile_output)
+        #empty_space = 0x19C8 - len(eventtile_output)
+        empty_space = 0x1C00 - len(eventtile_output)
         if (empty_space < 0):
             #eventtile_output = eventtile_output[0:(empty_space)]
-            raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x19C8))
+            #raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x19C8))
+            raise Exception("Event tile data too long: %i bytes (expected up to %i)" % (len(eventtile_output), 0x1C00))
         else:
             if (empty_space >= 3):
                 eventtile_output += bytearray([0x00, 0x0F, 0x00]) # necessary to match 512th room header in vanilla, room does not actually exist
-                empty_space = 0x19C8 - len(eventtile_output)
+                empty_space = 0x1C00 - len(eventtile_output)
+                #empty_space = 0x19C8 - len(eventtile_output)
             eventtile_output += bytearray([0xFF for x in range(empty_space)])
         eventtiles = [eventtile_pointers, bytearray(eventtile_output)]
 

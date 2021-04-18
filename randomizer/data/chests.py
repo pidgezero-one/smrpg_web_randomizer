@@ -514,6 +514,7 @@ class TreasureSeller1(TreasureSellerReward):
     addresses = [0x1f8ca5]
     item = items.LuckyJewel
     access = 4
+    dialogs_to_replace = [2911]
 
 
 class TreasureSeller2(TreasureSellerReward):
@@ -521,6 +522,7 @@ class TreasureSeller2(TreasureSellerReward):
     addresses = [0x1f8cd1]
     item = items.MysteryEgg
     access = 4
+    dialogs_to_replace = [2908]
 
 
 class TreasureSeller3(TreasureSellerReward):
@@ -528,6 +530,7 @@ class TreasureSeller3(TreasureSellerReward):
     addresses = [0x1f8cfd]
     item = items.FryingPan
     access = 4
+    dialogs_to_replace = [2914]
 
 
 # *** Moleville Mines

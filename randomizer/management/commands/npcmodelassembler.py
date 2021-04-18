@@ -6,7 +6,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         b = NPCModels.assemble_from_table(models)
 
-        print("length:", hex(len(b)))
+        #print("length:", hex(len(b)))
 
         f = open(f'write_to_0x1DB800.img', 'wb')
         

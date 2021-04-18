@@ -156,7 +156,7 @@ dialog_data[93] = '''[await]'''
 dialog_data[94] = '''[await]'''
 dialog_data[95] = '''[await]'''
 dialog_data[96] = '''[await]'''
-dialog_data[97] = ''' CHANCELLOR: It's a shame I don't
+dialog_data[97] = '''CHANCELLOR: It's a shame I don't
  have a sitting sprite. Nobody uses
  that chair over there.[await]'''
 dialog_data[98] = '''[await]'''
@@ -449,7 +449,7 @@ dialog_data[301] = '''
       Well, that’s good to hear![await]'''
 dialog_data[302] = ''' Yes, you look awful!
  Why don't you rest some more?[await]'''
-dialog_data[303] = ''' GAZ: Sometimes we have other
+dialog_data[303] = '''GAZ: Sometimes we have other
  guests here, too! Maybe you'll meet
  one sometime![await]'''
 dialog_data[304] = '''[await]'''
@@ -487,10 +487,8 @@ dialog_data[320] = ''' I'll tell you a secret.[await][pause] Enter the
  right- in that order.[await]
  You'll surely find something [await][pause]NICE.[await]'''
 dialog_data[321] = '''[await]'''
-dialog_data[322] = '''[page]
- There are 2 kinds of mushrooms.
- One terrorizes people and the other
- helps people. Avoid the former.[await]'''
+dialog_data[322] = ''' Sorry, I don't have any advice
+ today.[await]'''
 dialog_data[323] = '''[await]'''
 dialog_data[324] = '''[await]'''
 dialog_data[325] = '''[await]'''
@@ -614,9 +612,8 @@ dialog_data[391] = ''' There's a gardener who lives in this
  Do you have anything to do to pass
  the time until he's ready? Like,[delay]
  attending a wedding,[delay] or something?[await]'''
-dialog_data[392] = '''[page]
- You have to go through the
- pipes to get there![await]'''
+dialog_data[392] = ''' Sorry, I don't have any advice
+ today.[await]'''
 dialog_data[393] = ''' People in our world love to share
  the things they know.[await]
  A select few might have some
@@ -1674,65 +1671,26 @@ dialog_data[882] = '''PA'MOLE: Mario! You've come to
  We'd need a bomb to blast
  through here...
  Think you could find one?[await]'''
-dialog_data[883] = '''PA'MOLE: We REALLY need to find
- a bomb![await][page]
- I looked, but they're all missing
- from the store room.
- You think someone stole 'em?[await]'''
-dialog_data[884] = '''PA'MOLE: Seems like you found
- something mighty useful![await][page]
- My kids, Dyna & Mite are trapped
- back there. Let’s blast through
- and find 'em![await]'''
-dialog_data[885] = '''PA'MOLE: You found a bomb!
- Now we'll bust through in no time![await]'''
-dialog_data[886] = '''PA'MOLE: All rightee!
- Stand back![await]
- Close your eyes...[await]'''
-dialog_data[887] = '''PA'MOLE: Let’s follow the tracks
- to the end.[await][page]
- What? The star?
- It’s probably in the back.
- Thanks a million, Mario![await][page]
- 
-         Let’s mosey along now.[await]'''
-dialog_data[888] = '''PA'MOLE: I just can't go any
- further. Please...
- ...Go find Dyna & little Mite![await]'''
-dialog_data[889] = '''PA'MOLE: Gwo ho!
- Thanks, Mario![await]
- Now, stand back and let me
- get things going...[await]'''
-dialog_data[890] = '''CROCO: Coins...Beautiful COINS!
- Grab the COINS![await]'''
-dialog_data[891] = '''CROCO: Listen up! Let’s leave dis
- half-wit Mario here and SPLIT!
- Anyone got a beef wit' that?![await]'''
-dialog_data[892] = '''       OH OH!  He took the coins!
-             Chase Croco and
-          get those coins back![await]'''
-dialog_data[893] = '''CROCO: Hoo boy! Looks like a
- dead end, here.
- But not to worry...[await][page]
- Heh, heh...I've got a bomb...!
- Never leave home without 'em.[await]'''
-dialog_data[894] = '''FLUNKIE: (Sob, sob...)
- Just...you wait...we'll
- getcha for this![await][page]
- Maybe not today, maybe not
- tomorrow, but someday...[await]'''
-dialog_data[895] = '''   He didn't have the coins on him,
-   but he dropped a “[0x70A7]”![await]'''
+dialog_data[883] = '''[await]'''
+dialog_data[884] = '''[await]'''
+dialog_data[885] = '''[await]'''
+dialog_data[886] = '''[await]'''
+dialog_data[887] = '''[await]'''
+dialog_data[888] = '''[await]'''
+dialog_data[889] = '''[await]'''
+dialog_data[890] = '''[await]'''
+dialog_data[891] = '''[await]'''
+dialog_data[892] = '''[await]'''
+dialog_data[893] = '''[await]'''
+dialog_data[894] = '''[await]'''
+dialog_data[895] = '''[await]'''
 dialog_data[896] = '''PA'MOLE: Hey, hey! It’s not time
  to be goofing off now. Do that
  AFTER you find Dyna & Mite.[await]'''
-dialog_data[897] = '''     Got the coins back!  AND...
-     ...Picked up a BOMB, too![await]'''
-dialog_data[898] = '''DYNA: Help me, here!
- Give the mine car a push![await]'''
-dialog_data[899] = '''DYNA: Yeah! A mine car ride!
- Yippie! This is gonna be FUN![await]'''
-dialog_data[900] = ''' Care to read the warning?
+dialog_data[897] = '''[await]'''
+dialog_data[898] = '''[await]'''
+dialog_data[899] = '''[await]'''
+dialog_data[900] = ''' Care to read the instructions?
  [select]  (Of course)
  [select]  (Forget it)[await]'''
 dialog_data[901] = '''
@@ -1743,17 +1701,13 @@ dialog_data[901] = '''
  to accelerate[await][page]
 
     Moleville Safety Board (MSB)[await]'''
-dialog_data[902] = '''PA'MOLE: Mario, I owe you one for
- savin' my kids.[await]'''
-dialog_data[903] = ''' WHAT?! NO BOMB?!
- This can't BE!!
- It should be around somewhere![await]
- Maybe someone stole it![await]'''
-dialog_data[904] = '''
- Come on, come on, outta the way![await]'''
-dialog_data[905] = '''DYNA: Urgh...!
- This...won't...budge...arghhh!
- I hate this stupid thing![await]'''
+dialog_data[902] = '''PA' MOLE: There ain't much left in
+ the mines past this point, but you
+ can keep goin' if ya wanna ride the
+ minecart for free.[await]'''
+dialog_data[903] = '''[await]'''
+dialog_data[904] = '''[await]'''
+dialog_data[905] = '''[await]'''
 dialog_data[906] = '''DRY BONES: I know! You probably
  said to yourself, “It’s just
  a pile of dusty old bones!”[await]
@@ -1768,12 +1722,12 @@ dialog_data[909] = ''' To pass through here, hit those
 dialog_data[910] = ''' Good job...I'll let you through...
  If you can get past ME, first,
  that is.[await]'''
-dialog_data[911] = ''' Hey! Have you heard?[await][page]
- There’s a rare item
- hidden in the mines![await][page]
- If I find it, I'm gonna sell it to
- someone in town![await]
- I'm in it for the money![await]'''
+dialog_data[911] = ''' Hey![delay_15] Have you heard?[await][pause] The bushes
+ near the entrance of Booster Pass
+ sometimes contain rare items.[await][page]
+ Hm?[delay_30] Why'd I tell you that?[delay_60]
+ Because I'm only in the business of
+ cave treasures, of course.[await]'''
 dialog_data[912] = '''        Memo left by Magellean:
 
       There is an “s” in the word.[await]'''
@@ -1792,9 +1746,7 @@ dialog_data[916] = '''       Memo left by Van Doren:
 dialog_data[917] = '''       Memo left by Van Doren:
 
     The “r” comes before the “l”.[await]'''
-dialog_data[918] = ''' There’s a page from the travel log.
- [select]  (Let’s take a look at it)
- [select]  (Looks boring)[await]'''
+dialog_data[918] = '''[await]'''
 dialog_data[919] = ''' We're done for...A giant squid
  just got a hold of us. This ship's
  going down fast...[await]'''
@@ -1813,31 +1765,19 @@ dialog_data[922] = ''' Uncover the secret of the 6 hints!
  by different people, they'll be[await]
  pretty tough to solve.
  ...Maybe impossible.[await]'''
-dialog_data[923] = ''' Been awhile since people came
- 'round here.[await]'''
-dialog_data[924] = ''' And what might you be looking for?[await]'''
-dialog_data[925] = ''' Thank you. Drop by again.[await]'''
-dialog_data[926] = ''' Since you shopped here, I'll tell
- you something interesting.[await][page]
- The ship sank into the briney sea
- because a giant squid attacked it.[await][page]
- Some people went in to survey it,
- but they never came back.[await]'''
-dialog_data[927] = '''[page]
- Oh...guess you're right. I'd
- just be a burden on you fellas...
-[delay][delay] Well then, I'm countin' on ya[await]
- to find the kids, you hear?[await]'''
-dialog_data[928] = ''' Well, thanks a lot, Mario!
- Guess I'll be goin' back to tell
- Ma 'bout everythin'...[await]'''
+dialog_data[923] = '''[await]'''
+dialog_data[924] = '''[await]'''
+dialog_data[925] = '''[await]'''
+dialog_data[926] = '''[await]'''
+dialog_data[927] = '''[await]'''
+dialog_data[928] = '''[await]'''
 dialog_data[929] = ''' Know what? Your password
  is totally wrong![await]'''
 dialog_data[930] = ''' Guess what? Your password
  is CORRECT![await]'''
 dialog_data[931] = ''' Once you've come up with the key
  letters, speak in here.[await]'''
-dialog_data[932] = ''' Hey! It’s good to see you.[await]'''
+dialog_data[932] = '''[await]'''
 dialog_data[933] = ''' I'll give you a hint.
  The password’s got something
  to do with...the sea.[await][page]
@@ -1847,11 +1787,8 @@ dialog_data[933] = ''' I'll give you a hint.
  GOOD LUCK![await]'''
 dialog_data[934] = ''' Know what? Looks like [0x7000]
  of the key letters are correct.[await]'''
-dialog_data[935] = '''PIRATE: HEY!
- How'd you get up here so fast?[await]'''
-dialog_data[936] = ''' Well, your “luck” has run out![await]
- We don't take kindly to
- strangers here![await]'''
+dialog_data[935] = '''[await]'''
+dialog_data[936] = '''[await]'''
 dialog_data[937] = '''PIRATE: You're pretty tough, mate.
  All right. I'll let you through to
  Johnny’s place.[await]'''
@@ -1950,39 +1887,16 @@ dialog_data[997] = '''t[end]'''
 dialog_data[998] = '''e[end]'''
 dialog_data[999] = '''k[end]'''
 dialog_data[1000] = '''r[end]'''
-dialog_data[1001] = '''PIRATE: Arrrr!
- What’s goin' on HERE?!
- Who're YOU...?[await]'''
-dialog_data[1002] = ''' What?!
- You're lookin' fer a STAR?
- I'LL let ya see stars, arr harr![await]'''
-dialog_data[1003] = ''' Anyway, yer outta luck![await]
- Ya see, whatever falls into the
- sea becomes JOHNNY'S property!
- Got that, MATEY?![await]'''
-dialog_data[1004] = ''' Oh, and one last thing...
- ...Read my lips...[await]
- WE AIN'T LETTIN' YA THROUGH![await]
- GOT IT?![await]'''
-dialog_data[1005] = '''PIRATE: Arrr! You're stronger
- than ya look...[await]'''
-dialog_data[1006] = ''' Better warn the upper deck!
- Come on, mates![await]'''
-dialog_data[1007] = '''
-         Here, this is on us!![await]'''
-dialog_data[1008] = ''' WHAT THE?! How dare you
- dodge the barrel![await]'''
-dialog_data[1009] = '''JOHNNY: So you're THE Mario, eh?
- Arr, harr, harr...!
- Not much to look at...[await]
- Well, this star fell into
- MY SEA, so it’s MINE![await]
- If you want it, you'll
- have to fight for it![await]'''
-dialog_data[1010] = '''JOHNNY: I'm impressed, matey!
- You've earned the star.[await][page]
- Think of it as a souvenir of
- our fight![await]'''
+dialog_data[1001] = '''[await]'''
+dialog_data[1002] = '''[await]'''
+dialog_data[1003] = '''[await]'''
+dialog_data[1004] = '''[await]'''
+dialog_data[1005] = '''[await]'''
+dialog_data[1006] = '''[await]'''
+dialog_data[1007] = '''[await]'''
+dialog_data[1008] = '''[await]'''
+dialog_data[1009] = '''[await]'''
+dialog_data[1010] = '''[await]'''
 dialog_data[1011] = '''JOHNNY: You must've REALLY
  wanted that star...[await]
  Now go on! Get outta here
@@ -2018,77 +1932,39 @@ dialog_data[1017] = '''
  have time, okay?
                    Your true mate,
             Jonathan “Johnny” Jones[await]'''
-dialog_data[1018] = '''
-  All right, where’s the intruder?![await]'''
-dialog_data[1019] = '''
-             I don't see 'im.[await]'''
-dialog_data[1020] = '''
-            Did he get away?![await]'''
-dialog_data[1021] = '''
-    THERE HE IS!, Get 'im boys![await]'''
-dialog_data[1022] = '''HINOPIO: Hey there![delay][delay]  Whew...
- I THOUGHT I heard footsteps! For
- a minute I thought I was nuts![await][page]
- I'm Hinopio...[delay][delay][delay] This place
- is a regular INFERNO!
- Come on, step inside![await]'''
-dialog_data[1023] = '''HINOPIO: Thanks for stopping by.
- You can always come back,
- you know.[await]'''
-dialog_data[1024] = '''AXEM RED: 
-           We got the STAR![await]'''
-dialog_data[1025] = '''AXEM GREEN:
-             We're amazing![await]'''
-dialog_data[1026] = '''AXEM YELLOW: 
-           We're unbeatable![await]'''
-dialog_data[1027] = '''AXEM PINK:
-            We're gorgeous![await]'''
-dialog_data[1028] = '''AXEM BLACK:
-   You'd better leave now, chumps![await]'''
-dialog_data[1029] = '''AXEM BLACK: Hey, Red! Look
- down there! That’s gotta be the
- ugliest mustache I've ever seen![await]'''
-dialog_data[1030] = '''AXEM PINK:
-              Eww! Gross![await]'''
-dialog_data[1031] = '''AXEM YELLOW: That guy’s worse
- looking than that clod, Mario![await]'''
-dialog_data[1032] = '''AXEM GREEN:
-       That IS Mario, you IDIOT!![await]'''
-dialog_data[1033] = '''AXEM RED: Listen, everyone!
- We gotta get this star to the
- Blade immediately.[await]
- We'll deal with Mario LATER!![await]'''
-dialog_data[1034] = '''AXEM YELLOW: Hey, RED!
- Careful with this!!
- You're all thumbs![await]'''
-dialog_data[1035] = '''AXEM PINK: Where’s the BLADE?[await]'''
-dialog_data[1036] = '''AXEM RED: He'll be here![await]'''
-dialog_data[1037] = '''AXEM BLACK: Are you sure?![await]'''
-dialog_data[1038] = '''AXEM RED: Relax, people![await]'''
-dialog_data[1039] = '''AXEM YELLOW: Mario’s HERE!![await]'''
-dialog_data[1040] = '''AXEM RED: He’s too late![await]'''
-dialog_data[1041] = '''AXEM GREEN: Where’s the Blade?![await]'''
-dialog_data[1042] = '''AXEM RED: Shuddap, already![await]'''
-dialog_data[1043] = '''AXEM RANGERS: FINALLY!!!![await]'''
-dialog_data[1044] = '''       6 Star Pieces have finally 
-   been collected. Where could that
-          last Star Piece be?[await]'''
-dialog_data[1045] = '''DR. TOPPER:  Hey HEY HEY!!
- It’s me, the QUIZ MASTER!!
-[delay][delay] And[delay][delay]...it’s QUIZ TIME!![await][page]
- Need an explanation?
- [select]  (Yeah)
- [select]  (Forget it, I already know!)[await]'''
-dialog_data[1046] = '''DR. TOPPER: I'll give you 12,
- count 'em, TWELVE questions.[await]
- If you're right, the block you're
- standing on will move up one.
- But if you blow it, you go down[await]
- two. You have 5 seconds...
- If you can't answer, you move
- down one. Reach the 8th step[await]
- within the 12 questions,
- and you've won. Got it?![await]'''
+dialog_data[1018] = '''[await]'''
+dialog_data[1019] = '''[await]'''
+dialog_data[1020] = '''[await]'''
+dialog_data[1021] = '''[await]'''
+dialog_data[1022] = ''' Johnny’s our main man.
+ He even fights in his sleep![await]
+ We'd follow him anywhere.[await]'''
+dialog_data[1023] = ''' Johnny’s our main man.
+ He even fights in his sleep![await]
+ We'd follow him anywhere.[await]'''
+dialog_data[1024] = '''[await]'''
+dialog_data[1025] = '''[await]'''
+dialog_data[1026] = '''[await]'''
+dialog_data[1027] = '''[await]'''
+dialog_data[1028] = '''[await]'''
+dialog_data[1029] = '''[await]'''
+dialog_data[1030] = '''[await]'''
+dialog_data[1031] = '''[await]'''
+dialog_data[1032] = '''[await]'''
+dialog_data[1033] = '''[await]'''
+dialog_data[1034] = '''[await]'''
+dialog_data[1035] = '''[await]'''
+dialog_data[1036] = '''[await]'''
+dialog_data[1037] = '''[await]'''
+dialog_data[1038] = '''[await]'''
+dialog_data[1039] = '''[await]'''
+dialog_data[1040] = '''[await]'''
+dialog_data[1041] = '''[await]'''
+dialog_data[1042] = '''[await]'''
+dialog_data[1043] = '''[await]'''
+dialog_data[1044] = '''[await]'''
+dialog_data[1045] = '''[await]'''
+dialog_data[1046] = '''[await]'''
 dialog_data[1047] = '''DR. TOPPER: How much...does a
  female beetle cost?[await][page]
 
@@ -2343,85 +2219,34 @@ dialog_data[1089] = '''DR. TOPPER: Heh...
  Give ya 10 seconds, TEN!
  Tell me the number of barrels
  in the room![await]'''
-dialog_data[1090] = '''DR. TOPPER: Heh heh...
- Close your eyes for a sec.[await]'''
-dialog_data[1091] = '''
- ...Heh heh...You ready?[await]'''
+dialog_data[1090] = '''[await]'''
+dialog_data[1091] = '''[await]'''
 dialog_data[1092] = '''[page]
  [0x7000] second(s) left to go.[end]'''
 dialog_data[1093] = '''DR. TOPPER: So! How many?[await][page]
 
       [select]  ([0x7000])[end]'''
 dialog_data[1094] = '''[await]'''
-dialog_data[1095] = '''DR. TOPPER: Correct!
- Heh...But this is just a warm up.
- ...NEXT![await]'''
+dialog_data[1095] = '''[await]'''
 dialog_data[1096] = '''DR. TOPPER: Now we'll see if you
  can REALLY count. You've got
  20 seconds....READY?[await]'''
-dialog_data[1097] = '''DR. TOPPER: Correct!
- Piece of cake, huh?[await]'''
-dialog_data[1098] = '''DR. TOPPER: Heh...I'm the Quiz
- Master, but you can call me Dr. T!
- You into coin collecting? Heh...[await][page]
- Want instructions?
- [select]  (Yes)
- [select]  (You take me for a fool?)[await]'''
-dialog_data[1099] = '''DR. TOPPER: There're 21
- coins in this box...[await]
- We'll take turns removing them.
- The one who takes the LAST
- coin is the LOSER! Heh...[await]
- You can grab 4 at once. If you
- want to grab only 1 or 2, press A
- where you want to stop. Got it?[await]'''
+dialog_data[1097] = '''[await]'''
+dialog_data[1098] = '''[await]'''
+dialog_data[1099] = '''[await]'''
 dialog_data[1100] = '''DR. TOPPER: Heh...you got the
  last coin...YOU LOSE![await]'''
-dialog_data[1101] = '''DR. TOPPER: Heh...You win.
- Nothing to it, right?[await]'''
-dialog_data[1102] = '''DR. TOPPER: The topic, you ask?
- Magic Buttons. Heh...[await][page]
- Want instructions?
- [select]  (Yep)
- [select]  (Nope)[await]'''
-dialog_data[1103] = '''DR. TOPPER: Heh...Step on one
- button, and you'll reverse the
- surrounding buttons.[await]
- So, ON becomes OFF...
- and OFF becomes ON! Get it?[await]
- Let’s see if you can set them
- all to ON! Can you DO IT?[await]'''
+dialog_data[1101] = '''[await]'''
+dialog_data[1102] = '''[await]'''
+dialog_data[1103] = '''[await]'''
 dialog_data[1104] = '''DR. TOPPER: Heh...Congrats!
  Plain sailing, eh?![await]'''
-dialog_data[1105] = '''DR. TOPPER: Now, the topic is
- Ball Solitaire. Heh...[await][page]
- Want instructions?
- [select]  (Yeah)
- [select]  (Nope)[await]'''
-dialog_data[1106] = '''DR. TOPPER: Heh! When you kick
- a ball, it'll leapfrog an adjacent
- ball, which will then disappear.[await]
- Keep making balls disappear until
- only one remains![await]
- You lose if you kick a ball into
- a space already occupied
- by another ball![await]
- The ball you kick must always
- leapfrog another ball. Got IT?![await]'''
-dialog_data[1107] = '''DR. TOPPER: Heh...wow.
- Simple as ABC, eh?![await]'''
+dialog_data[1105] = '''[await]'''
+dialog_data[1106] = '''[await]'''
+dialog_data[1107] = '''[await]'''
 dialog_data[1108] = '''DR. TOPPER: Heh..too bad.
  Too bad...heh.[await]'''
-dialog_data[1109] = '''DR. TOPPER: Now for something
- completely different. Heh...[await][page]
- Boo, Goo, Bones, and Kipp
- competed in a triathlon.[await]
- The triathlon included swimming,
- cycling, and a marathon.
- It’s up to you to guess which[await]
- place each person came in.
- Listen well! You're only gonna
- hear the story once![await]'''
+dialog_data[1109] = '''[await]'''
 dialog_data[1110] = '''Boo[end]'''
 dialog_data[1111] = '''Goo[end]'''
 dialog_data[1112] = '''Bones[end]'''
@@ -2458,33 +2283,17 @@ dialog_data[1126] = '''
  Are you sure?
  [select]  (You bet)
  [select]  (Wait, let me think again)[await]'''
-dialog_data[1127] = '''DR. TOPPER: WELL DONE!
- Nothing to it, eh? Heh!
- All right, you may proceed.[await]'''
+dialog_data[1127] = '''[await]'''
 dialog_data[1128] = '''DR. TOPPER: Wrong! TOO BAD!
  [end]'''
 dialog_data[1129] = '''
  And that’s the way it was![await]'''
-dialog_data[1130] = ''' There are 6 doors...
- Do you need an explanation?[await]
- [select]  (Yeah)
- [select]  (No thanks)[await]'''
-dialog_data[1131] = ''' Of the 6 doors...[await]'''
-dialog_data[1132] = ''' 2 open onto action courses!
- You can handle a lot of
- action, right?[await]'''
-dialog_data[1133] = ''' 2 others will lead you
- to battle courses.
- You can fight, right?![await]'''
-dialog_data[1134] = ''' The last 2 open onto puzzle
- courses. No sweat for a great
- puzzle solver like you, right?![await]'''
-dialog_data[1135] = ''' Once you choose a course,
- there’s no turning back!
- The only way to know what's[await]
- behind a door is to walk
- through it! You must pass[await]
- 4 of the 6 courses to move ahead.[await]'''
+dialog_data[1130] = '''[await]'''
+dialog_data[1131] = '''[await]'''
+dialog_data[1132] = '''[await]'''
+dialog_data[1133] = '''[await]'''
+dialog_data[1134] = '''[await]'''
+dialog_data[1135] = '''[await]'''
 dialog_data[1136] = '''[page]
      <1>   2   3   4   5   6   7   [end]'''
 dialog_data[1137] = '''[page]

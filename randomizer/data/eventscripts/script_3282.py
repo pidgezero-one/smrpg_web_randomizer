@@ -6,16 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3282_remove_from_current_level_35',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_3282_remove_from_level_96',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
-    },
-    {
         "identifier": 'EVENT_3282_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
         "args": [0x7058, 7, 'EVENT_3282_jmp_if_bit_set_129']
@@ -221,7 +211,7 @@ script = [
     {
         "identifier": 'EVENT_3282_action_queue_sync_25',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_3282_action_queue_sync_25_SUBSCRIPT_walk_1_step_southwest_0',
@@ -232,7 +222,7 @@ script = [
     {
         "identifier": 'EVENT_3282_action_queue_sync_26',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_3282_action_queue_sync_26_SUBSCRIPT_walk_1_step_southwest_0',
@@ -243,7 +233,7 @@ script = [
     {
         "identifier": 'EVENT_3282_action_queue_sync_27',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_3282_action_queue_sync_27_SUBSCRIPT_walk_1_step_southwest_0',
@@ -264,7 +254,7 @@ script = [
     {
         "identifier": 'EVENT_3282_action_queue_async_28',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
+        "args": [AreaObjects.NPC_5],
         "subscript": [
             {
                 "identifier": 'EVENT_3282_action_queue_async_28_SUBSCRIPT_walk_1_step_southwest_0',
@@ -296,7 +286,7 @@ script = [
     {
         "identifier": 'EVENT_3282_action_queue_async_31',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_3282_action_queue_async_31_SUBSCRIPT_reset_properties_0',
@@ -343,12 +333,12 @@ script = [
     {
         "identifier": 'EVENT_3282_remove_from_current_level_33',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6]
+        "args": [AreaObjects.NPC_4]
     },
     {
         "identifier": 'EVENT_3282_remove_from_current_level_34',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7]
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_3282_clear_bit_36',
@@ -378,7 +368,7 @@ script = [
     {
         "identifier": 'EVENT_3282_action_queue_sync_43',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_3282_action_queue_sync_43_SUBSCRIPT_fixed_f_coord_off_0',
@@ -697,7 +687,7 @@ script = [
     {
         "identifier": 'EVENT_3282_action_queue_async_120',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_3282_action_queue_async_120_SUBSCRIPT_shift_northwest_steps_0',
@@ -727,17 +717,12 @@ script = [
     {
         "identifier": 'EVENT_3282_remove_from_level_123',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
-    },
-    {
-        "identifier": 'EVENT_3282_remove_from_level_124',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+        "args": [AreaObjects.NPC_4, Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     },
     {
         "identifier": 'EVENT_3282_remove_from_level_125',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_7, Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
+        "args": [AreaObjects.NPC_5, Rooms._028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM]
     },
     {
         "identifier": 'EVENT_3282_set_short_126',
@@ -761,12 +746,12 @@ script = [
     {
         "identifier": 'EVENT_3282_set_action_script_sync_130',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 15]
+        "args": [AreaObjects.NPC_1, 15]
     },
     {
         "identifier": 'EVENT_3282_action_queue_sync_131',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_3282_action_queue_sync_131_SUBSCRIPT_shirt_to_xy_coords_0',

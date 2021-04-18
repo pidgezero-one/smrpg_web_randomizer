@@ -22,7 +22,7 @@ script = [
     {
         "identifier": 'EVENT_697_run_dialog_insert',
         "command": 'run_dialog',
-        "args": [2159, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": [2159, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_697_ret_insert',
@@ -31,7 +31,7 @@ script = [
     {
         "identifier": 'EVENT_697_run_dialog_3',
         "command": 'run_dialog',
-        "args": [2158, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": [2158, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_697_ret_16',

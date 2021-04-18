@@ -229,9 +229,6 @@ class HammerBros(BossAndStarLocation):
         }
     ]
     original_boss = 27
-    dialog_replacements = [
-        (49,''' HAMMER BRO: Alright already,\n you won, now go away![await]'''),
-    ]
 
 
 class Croco1(BossAndStarLocation):
@@ -264,9 +261,6 @@ class Croco1(BossAndStarLocation):
         }
     ]
     original_boss = 240
-    dialog_replacements = [
-        (49,'''\n CROCO: Get the heck outta here![await]'''),
-    ]
 
 
 class Mack(BossAndStarLocation):
@@ -283,46 +277,43 @@ class Mack(BossAndStarLocation):
     target_npcs = [
         {
             "room": Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE,
-            "sidekicks": [0, 1, 2, 3, 4, 5, 6]
+            "optional_sidekicks": [0, 1, 2, 3, 4, 5, 6]
         },
         {
             "room": Rooms._323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM,
-            "sidekicks": [0, 1]
+            "optional_sidekicks": [0, 1]
         },
         {
             "room": Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
-            "sidekicks": [0, 1, 2, 3, 4]
+            "optional_sidekicks": [0, 1, 2, 3, 4]
         },
         {
             "room": Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM,
             "npcs": [3],
-            "sidekicks": [4, 5, 6, 7, 8, 9] # replace only if mack skip turned off
+            "optional_sidekicks": [4, 5, 6, 7, 8, 9]
         },
         {
             "room": Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM,
-            "sidekicks": [0, 1]
+            "optional_sidekicks": [0, 1]
         },
         {
             "room": Rooms._329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM,
-            "sidekicks": [0, 1]
+            "optional_sidekicks": [0, 1]
         },
         {
             "room": Rooms._332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM,
-            "sidekicks": [0, 1]
+            "optional_sidekicks": [0, 1]
         },
         {
             "room": Rooms._480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F,
-            "sidekicks": [3, 4]
+            "optional_sidekicks": [3, 4]
         },
         {
             "room": Rooms._481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F,
-            "sidekicks": [1]
+            "optional_sidekicks": [1]
         },
     ]
     original_boss = 224
-    dialog_replacements = [
-        (49,''' MACK: Party's over. I'm going to\n sleep.[await]'''),
-    ]
 
 
 class Pandorite(BossAndStarLocation):
@@ -331,9 +322,7 @@ class Pandorite(BossAndStarLocation):
     pack_number = 156
     battlefield = Battlefields.KeroSewers
     original_boss = 23
-    dialog_replacements = [
-        (49,''' PANDORITE: That thing was making\n me sick...[await]'''),
-    ]
+    model = {**models[196]}
 
 
 class Belome1(BossAndStarLocation):
@@ -352,9 +341,6 @@ class Belome1(BossAndStarLocation):
         }
     ]
     original_boss = 199
-    dialog_replacements = [
-        (49,'''\n        BELOME: Good night~![await]'''),
-    ]
 
 
 class Bowyer(BossAndStarLocation):
@@ -376,9 +362,6 @@ class Bowyer(BossAndStarLocation):
         }
     ]
     original_boss = 230
-    dialog_replacements = [
-        (49,''' BOWYER: Disturb me you must not,\n nya!'''),
-    ]
 
 
 class Croco2(BossAndStarLocation):
@@ -392,12 +375,12 @@ class Croco2(BossAndStarLocation):
         {
             "room": Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE,
             "npcs": [0],
-            "sidekicks": [1, 2, 3]
+            "optional_sidekicks": [1, 2, 3]
         },
         {
             "room": Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM,
             "npcs": [0],
-            "sidekicks": [1, 2, 3]
+            "optional_sidekicks": [1, 2, 3]
         },
         {
             "room": Rooms._275_MOLEVILLE_MINES_AREA_06_SMALL_ROOM_LEADING_TO_AREA_06,
@@ -414,13 +397,10 @@ class Croco2(BossAndStarLocation):
         {
             "room": Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
             "npcs": [0],
-            "sidekicks": [1, 2, 3]
+            "optional_sidekicks": [1, 2, 3]
         }
     ]
     original_boss = 241
-    dialog_replacements = [
-        (49,'''\n CROCO: Get the heck outta here![await]'''),
-    ]
 
 
 class Punchinello(BossAndStarLocation):
@@ -437,13 +417,10 @@ class Punchinello(BossAndStarLocation):
         {
             "room": Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE,
             "npcs": [0],
-            "sidekicks": [2, 3, 4]
+            "sidekicks": [2, 3, 4] # this one might need some finessing, hidon only
         }
     ]
     original_boss = 208
-    dialog_replacements = [
-        (49,''' PUNCHINELLO: Grrr... Leave me\n alone![await]'''),
-    ]
 
 
 class Booster(BossAndStarLocation):
@@ -454,6 +431,18 @@ class Booster(BossAndStarLocation):
     music = BattleMusic.Boss1
     model = {**models[50]}
     target_npcs = [
+        {
+            "room": Rooms._067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA,
+            "optional_sidekicks": [4]
+        },
+        {
+            "room": Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM,
+            "optional_sidekicks": [2]
+        },
+        {
+            "room": Rooms._037_BOOSTER_TOWER_4F_3LEVEL_ROOM_WJUMPING_SPOOKUMS,
+            "optional_sidekicks": [8]
+        },
         {
             "room": Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
             "npcs": [0, 7],
@@ -474,7 +463,8 @@ class Booster(BossAndStarLocation):
         },
         {
             "room": Rooms._054_BOOSTER_HILL_____DUMMY,
-            "npcs": [7]
+            "npcs": [7],
+            "optional_sidekicks": [3, 4, 5]
         },
         {
             "room": Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
@@ -485,12 +475,10 @@ class Booster(BossAndStarLocation):
             "room": Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
             "npcs": [10],
             "sidekicks": [1, 2, 3, 4, 5, 6, 7, 8]
-        }
+        },
     ]
     original_boss = 246
-    dialog_replacements = [
-        (49,''' BOOSTER: It's pretty cozy in here.[await][pause]\n No, you can't come in![await]'''),
-    ]
+    dialogs_to_replace = [2504, 2560, 2571, 2572, 3072, 3073]
 
 
 class ClownBros(BossAndStarLocation):
@@ -500,9 +488,6 @@ class ClownBros(BossAndStarLocation):
     battlefield = Battlefields.ClownBros
     music = BattleMusic.Boss1
     original_boss = 192
-    dialog_replacements = [
-        (49,''' GRATE GUY: Get lost, buddy, I'm\n busy![await]'''),
-    ]
 
 
 class Bundt(BossAndStarLocation):
@@ -520,9 +505,7 @@ class Bundt(BossAndStarLocation):
         }
     ]
     original_boss = 194
-    dialog_replacements = [
-        (49,'''\n        (There's no response.)[await]'''),
-    ]
+    dialogs_to_replace = [2061, 2062]
 
 
 class StarHill(StarLocation):
@@ -560,9 +543,7 @@ class KingCalamari(BossAndStarLocation):
         }
     ]
     original_boss = 216
-    dialog_replacements = [
-        (49,''' KING CALAMARI: My species\n doesn't normally hatch from eggs\n quite this large.[await]'''),
-    ]
+    dialogs_to_replace = [1660]
 
 
 class Hidon(BossAndStarLocation):
@@ -571,9 +552,7 @@ class Hidon(BossAndStarLocation):
     pack_number = 157
     battlefield = Battlefields.SunkenShip
     original_boss = 87
-    dialog_replacements = [
-        (49,''' HIDON: No, I'm not gonna puke up\n another item for you! Go away![await]'''),
-    ]
+    model = {**models[196]}
 
 
 class Johnny(BossAndStarLocation):
@@ -593,12 +572,18 @@ class Johnny(BossAndStarLocation):
             "room": Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
             "npcs": [8],
             "sidekicks": [4, 5]
+        },
+        {
+            "room": Rooms._024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL,
+            "optional_sidekicks": [0, 1, 2, 3]
+        },
+        {
+            "room": Rooms._025_SUNKEN_SHIP_POSTKC_AREA_16_ENTRANCE_TO_JOHNNYS_ROOM,
+            "optional_sidekicks": [0, 1]
         }
     ]
     original_boss = 249
-    dialog_replacements = [
-        (49,''' JOHNNY: Matey, it'd be mighty fun\n to spar again, but I'm tryin' to\n sleep now.[await]'''),
-    ]
+    dialogs_to_replace = [1694, 1695, 1778, 1780, 1781, 1784, 1785, 1792, 1793]
 
 
 class Yaridovich(BossAndStarLocation):
@@ -657,9 +642,7 @@ class Yaridovich(BossAndStarLocation):
         }
     ]
     original_boss = 226
-    dialog_replacements = [
-        (49,''' YARIDOVICH: How could I lose to\n those... Huh? Hey, get lost![await]'''),
-    ]
+    dialogs_to_replace = [2831, 2832, 2834, 2837, 2838, 2839, 2841, 2842, 2843, 2844, 2845, 2847, 2848]
 
 
 class Belome2(BossAndStarLocation):
@@ -678,9 +661,6 @@ class Belome2(BossAndStarLocation):
         }
     ]
     original_boss = 200
-    dialog_replacements = [
-        (49,'''\n        BELOME: Good night~![await]'''),
-    ]
 
 
 class Jagger(BossAndStarLocation):
@@ -697,9 +677,7 @@ class Jagger(BossAndStarLocation):
         }
     ]
     original_boss = 179
-    dialog_replacements = [
-        (49,''' JAGGER: It'd be fun to fight\n again, but I need a nap.[await]'''),
-    ]
+    dialogs_to_replace = [3044, 3352]
 
 
 class Jinx1(BossLocation):
@@ -716,9 +694,6 @@ class Jinx1(BossLocation):
         }
     ]
     original_boss = 195
-    dialog_replacements = [
-        (49,''' JINX: Please do not disturb me.\n I am training in here.[await]'''),
-    ]
 
 
 class Jinx2(BossLocation):
@@ -735,9 +710,6 @@ class Jinx2(BossLocation):
         }
     ]
     original_boss = 196
-    dialog_replacements = [
-        (49,''' JINX: Please do not disturb me.\n I am training in here.[await]'''),
-    ]
 
 
 class Jinx3(BossAndStarLocation):
@@ -755,9 +727,7 @@ class Jinx3(BossAndStarLocation):
         }
     ]
     original_boss = 218
-    dialog_replacements = [
-        (49,''' JINX: Please do not disturb me.\n I am training in here.[await]'''),
-    ]
+    dialogs_to_replace = [3353]
 
 
 class Culex(BossAndStarLocation):
@@ -773,10 +743,7 @@ class Culex(BossAndStarLocation):
             "npcs": [0]
         }
     ]
-    dialog_replacements = [
-        (49,''' CULEX: Please do not attempt to\n crack this egg again.[await][page]\n It will not give you thousands of\n experience points.[await]'''),
-    ]
-
+    dialogs_to_replace = [3338]
 
 class BoxBoy(BossAndStarLocation):
     star_address = 0x1e99cd
@@ -784,9 +751,6 @@ class BoxBoy(BossAndStarLocation):
     pack_number = 158
     battlefield = Battlefields.KeroSewers
     original_boss = 134
-    dialog_replacements = [
-        (49,''' BOX BOY: How many times are you\n gonna wake me up? Get lost![await]'''),
-    ]
 
 
 class MegaSmilax(BossAndStarLocation):
@@ -803,9 +767,6 @@ class MegaSmilax(BossAndStarLocation):
         }
     ]
     original_boss = 204
-    dialog_replacements = [
-        (49,''' MEGASMILAX: I'm thirsty.[await][pause] Can you\n ask Shy Away to come back here,[delay]\n please?[await]'''),
-    ]
 
 
 class Dodo(BossAndStarLocation):
@@ -825,12 +786,13 @@ class Dodo(BossAndStarLocation):
         {
             "room": Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
             "npcs": [0]
+        },
+        {
+            "room": Rooms._437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
+            "npcs": [0]
         }
     ]
     original_boss = 137
-    dialog_replacements = [
-        (49,'''[delay_60][end]'''), #time this according to how long the feather sound effect is
-    ]
 
 
 class Birdo(BossAndStarLocation):
@@ -852,6 +814,7 @@ class Valentina(BossAndStarLocation):
     sprite_offset = 0x1db988
     model = {**models[56]}
     statue_index = 63
+    # sidekicks?
     target_npcs = [
         {
             "room": Rooms._341_NIMBUS_LAND_GARROS_HOUSE,
@@ -924,12 +887,21 @@ class Valentina(BossAndStarLocation):
         {
             "room": Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
             "npcs": [9]
+        },
+        {
+            "room": Rooms._411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST,
+            "optional_sidekicks": [0, 1]
+        },
+        {
+            "room": Rooms._121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND,
+            "optional_sidekicks": [2, 3, 4, 5]
+        },
+        {
+            "room": Rooms._437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
+            "optional_sidekicks": [1, 2]
         }
     ]
     original_boss = 251
-    dialog_replacements = [
-        (49,''' VALENTINA: ...What? You're STILL\n here?! Go AWAY!!![await]'''),
-    ]
 
 
 class CzarDragon(BossAndStarLocation):
@@ -951,9 +923,6 @@ class CzarDragon(BossAndStarLocation):
         }
     ]
     original_boss = 220
-    dialog_replacements = [
-        (49,'''\n    CZAR DRAGON: BLARRGGGG[await]'''),
-    ]
 
 
 class AxemRangers(BossAndStarLocation):
@@ -1000,9 +969,6 @@ class AxemRangers(BossAndStarLocation):
         },
     ]
     original_boss = 245
-    dialog_replacements = [
-        (49,''' AXEM RED: We're busy playing Uno\n in here. Go bother someone else![await]'''),
-    ]
 
 
 class Magikoopa(BowsersKeepLocation):
@@ -1043,9 +1009,6 @@ class Magikoopa(BowsersKeepLocation):
         }
     ]
     original_boss = 33
-    dialog_replacements = [
-        (49,''' MAGIKOOPA: Normally,[delay] when I\n summon an egg,[delay] it doesn't\n encapsulate me...[await]'''),
-    ]
 
 
 class Boomer(BowsersKeepLocation):
@@ -1065,9 +1028,6 @@ class Boomer(BowsersKeepLocation):
         }
     ]
     original_boss = 52
-    dialog_replacements = [
-        (49,''' BOOMER: I lost fair and square.[await]\n Now it is time for me to sleep.[await]'''),
-    ]
 
 
 class Exor(BowsersKeepLocation):
@@ -1077,9 +1037,7 @@ class Exor(BowsersKeepLocation):
     battlefield = Battlefields.BowsersKeep
     music = BattleMusic.Boss2
     original_boss = 233
-    dialog_replacements = [
-        (49,'''  EXOR: What do you want? Get\n lost![await]'''),
-    ]
+
 
 
 class Countdown(BossLocation):
@@ -1095,9 +1053,6 @@ class Countdown(BossLocation):
         }
     ]
     original_boss = 197
-    dialog_replacements = [
-        (49,''' COUNT DOWN: Sometimes, even an\n alarm clock needs to sleep.[await]'''),
-    ]
 
 
 class CloakerDomino(BossLocation):
@@ -1106,9 +1061,6 @@ class CloakerDomino(BossLocation):
     battlefield = Battlefields.Gate
     music = BattleMusic.Boss1
     original_boss = 221
-    dialog_replacements = [
-        (49,''' CLOAKER: I'm busy wallowing in\n misery at my defeat here.[await][pause] Get lost![await]'''),
-    ]
 
 
 class Clerk(BossLocation):
@@ -1120,13 +1072,10 @@ class Clerk(BossLocation):
         {
             "room": Rooms._469_FACTORY_GROUNDS_AREA_01,
             "npcs": [9],
-            "sidekicks": [6, 7]
+            "optional_sidekicks": [6, 7]
         }
     ]
     original_boss = 50
-    dialog_replacements = [
-        (49,''' CLERK: I'm going to sleep for 10\n years.[await]'''),
-    ]
 
 
 class Manager(BossLocation):
@@ -1142,9 +1091,6 @@ class Manager(BossLocation):
         }
     ]
     original_boss = 76
-    dialog_replacements = [
-        (49,''' MANAGER: I'm going to sleep for 25\n years.[await]'''),
-    ]
 
 
 class Director(BossLocation):
@@ -1160,9 +1106,6 @@ class Director(BossLocation):
         }
     ]
     original_boss = 114
-    dialog_replacements = [
-        (49,''' DIRECTOR: (Could this day get any\n worse?)[await]'''),
-    ]
 
 
 class Gunyolk(BossLocation):
@@ -1183,9 +1126,6 @@ class Gunyolk(BossLocation):
         }
     ]
     original_boss = 51
-    dialog_replacements = [
-        (49,''' FACTORY CHIEF: Grrr... Leave me\n alone![await]'''),
-    ]
 
     # smithy
     #
@@ -1210,9 +1150,6 @@ class Gunyolk(BossLocation):
     #         "room": Rooms._472_FACTORY_GROUNDS_AREA_03,
     #         "sidekicks": [1, 2, 3, 4, 5, 6]
     #     }
-    # ]
-    # dialog_replacements = [
-    #     (49,''' SMITHY: How utterly annoying!\n Leave me alone![await]'''),
     # ]
 
 

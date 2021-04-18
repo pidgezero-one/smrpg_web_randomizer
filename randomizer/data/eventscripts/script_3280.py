@@ -13,12 +13,12 @@ script = [
     {
         "identifier": 'EVENT_3280_set_action_script_sync_1',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 15]
+        "args": [AreaObjects.NPC_4, 15]
     },
     {
         "identifier": 'EVENT_3280_action_queue_async_2',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_7],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_3280_action_queue_async_2_SUBSCRIPT_transfer_xyzf_steps_0',
@@ -122,7 +122,7 @@ script = [
     {
         "identifier": 'EVENT_3280_action_queue_sync_10',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_3280_action_queue_sync_10_SUBSCRIPT_set_animation_speed_0',
@@ -310,7 +310,7 @@ script = [
     {
         "identifier": 'EVENT_3280_set_action_script_sync_17',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 14]
+        "args": [AreaObjects.NPC_4, 14]
     },
     {
         "identifier": 'EVENT_3280_jmp_if_bit_set_18',
