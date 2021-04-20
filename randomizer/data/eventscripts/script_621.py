@@ -857,111 +857,9 @@ script = [
         "args": [0x7044, 2]
     },
     {
-        "identifier": 'EVENT_621_jmp_if_bit_set_insert',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705D, 0, 'EVENT_621_jmp_if_random_above_66_91']
-    },
-    {
-        "identifier": 'EVENT_621_set_insert',
-        "command": 'set',
-        "args": [0x70a7, 97]
-    },
-    {
-        "identifier": 'EVENT_621_play_sound_insert',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_621_run_dialog_insert',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_621_put_inventory_insert',
-        "command": 'put_inventory',
-        "args": [items.MidMushroom]
-    },
-    {
-        "identifier": 'EVENT_621_set_bit_insert',
-        "command": 'set_bit',
-        "args": [0x705D, 0]
-    },
-    {
-        "identifier": 'EVENT_621_ret_insert',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_621_jmp_if_random_above_66_91',
-        "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_621_set_97', 'EVENT_621_set_102']
-    },
-    {
-        "identifier": 'EVENT_621_add_coins_92',
+        "identifier": 'EVENT_621_grant_tip_subroutine',
         "command": 'run_event_as_subroutine',
-        "args": [6]
-    },
-    {
-        "identifier": 'EVENT_621_play_sound_93',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_621_run_dialog_95',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_621_set_94',
-        "command": 'put_inventory',
-        "args": [0x70A7]
-    },
-    {
-        "identifier": 'EVENT_621_ret_96',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_621_set_97',
-        "command": 'run_event_as_subroutine',
-        "args": [7]
-    },
-    {
-        "identifier": 'EVENT_621_play_sound_98',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_621_run_dialog_99',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_621_put_inventory_100',
-        "command": 'put_inventory',
-        "args": [0x70a7]
-    },
-    {
-        "identifier": 'EVENT_621_ret_101',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_621_set_102',
-        "command": 'run_event_as_subroutine',
-        "args": [8]
-    },
-    {
-        "identifier": 'EVENT_621_play_sound_103',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_621_run_dialog_104',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_621_put_inventory_105',
-        "command": 'put_inventory',
-        "args": [0x70a7]
+        "args": [622]
     },
     {
         "identifier": 'EVENT_621_ret_106',
@@ -987,110 +885,12 @@ script = [
         "args": [0x7044, 1]
     },
     {
-        "identifier": 'EVENT_621_jmp_if_bit_set_insert2',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708B, 4, 'EVENT_621_set_random_111']
-    },
-    {
-        "identifier": 'EVENT_621_set_insert2',
-        "command": 'set',
-        "args": [0x70a7, 97]
-    },
-    {
-        "identifier": 'EVENT_621_play_sound_insert2',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_621_run_dialog_insert2',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_621_put_inventory_insert2',
-        "command": 'put_inventory',
-        "args": [0x70a7]
-    },
-    {
-        "identifier": 'EVENT_621_set_bit_insert2',
-        "command": 'set_bit',
-        "args": [0x708B, 4]
-    },
-    {
-        "identifier": 'EVENT_621_ret_insert2',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_621_set_random_111',
-        "command": 'set_random',
-        "args": [0x7000, 101]
-    },
-    {
-        "identifier": 'EVENT_621_mem_compare_val_112',
-        "command": 'mem_compare_val',
-        "args": [80]
-    },
-    {
-        "identifier": 'EVENT_621_jmp_if_comparison_result_is_lesser_113',
-        "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_621_play_sound_insert3']
-    },
-    {
-        "identifier": 'EVENT_621_jmp_if_bit_set_114',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7063, 0, 'EVENT_621_run_dialog_122']
-    },
-    {
-        "identifier": 'EVENT_621_set_bit_115',
-        "command": 'set_bit',
-        "args": [0x7063, 0]
-    },
-    {
-        "identifier": 'EVENT_621_play_sound_117',
-        "command": 'play_sound',
-        "args": [Sounds._085_FLOWER, 6]
-    },
-    {
-        "identifier": 'EVENT_621_set_118',
+        "identifier": 'EVENT_621_tip_grant_2',
         "command": 'run_event_as_subroutine',
-        "args": [8]
-    },
-    {
-        "identifier": 'EVENT_621_run_dialog_119',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_621_put_inventory_120',
-        "command": 'put_inventory',
-        "args": [0x70A7]
+        "args": [626]
     },
     {
         "identifier": 'EVENT_621_ret_121',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_621_play_sound_insert3',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_621_set_insert3',
-        "command": 'run_event_as_subroutine',
-        "args": [2]
-    },
-    {
-        "identifier": 'EVENT_621_run_dialog_insert3',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_621_put_inventory_insert3',
-        "command": 'put_inventory',
-        "args": [0x70A7]
-    },
-    {
-        "identifier": 'EVENT_621_ret_insert3',
         "command": 'ret'
     },
     {

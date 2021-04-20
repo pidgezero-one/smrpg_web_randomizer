@@ -50,73 +50,9 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_603_jmp_if_random_above_66_19',
-        "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_603_set_24', 'EVENT_603_set_28']
-    },
-    {
-        "identifier": 'EVENT_603_set_20',
+        "identifier": 'EVENT_603_grant_item_1_subroutine',
         "command": 'run_event_as_subroutine',
-        "args": [6]
-    },
-    {
-        "identifier": 'EVENT_603_jmp_to_subroutine_21',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_603_play_sound_32']
-    },
-    {
-        "identifier": 'EVENT_603_jmp_23',
-        "command": 'jmp',
-        "args": ['EVENT_603_set_bit_39']
-    },
-    {
-        "identifier": 'EVENT_603_set_24',
-        "command": 'run_event_as_subroutine',
-        "args": [7]
-    },
-    {
-        "identifier": 'EVENT_603_jmp_to_subroutine_25',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_603_play_sound_32']
-    },
-    {
-        "identifier": 'EVENT_603_jmp_27',
-        "command": 'jmp',
-        "args": ['EVENT_603_set_bit_39']
-    },
-    {
-        "identifier": 'EVENT_603_set_28',
-        "command": 'run_event_as_subroutine',
-        "args": [8]
-    },
-    {
-        "identifier": 'EVENT_603_jmp_to_subroutine_29',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_603_play_sound_32']
-    },
-    {
-        "identifier": 'EVENT_603_jmp_31',
-        "command": 'jmp',
-        "args": ['EVENT_603_set_bit_39']
-    },
-    {
-        "identifier": 'EVENT_603_play_sound_32',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_603_store_item_insert',
-        "command": 'put_inventory',
-        "args": [0x70A7]
-    },
-    {
-        "identifier": 'EVENT_603_run_dialog_33',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_603_ret_34',
-        "command": 'ret'
+        "args": [635]
     },
     {
         "identifier": 'EVENT_603_set_bit_39',

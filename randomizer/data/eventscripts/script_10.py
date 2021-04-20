@@ -4,4 +4,286 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_10_set_random_1',
+        "command": 'set_random',
+        "args": [0x7000, 20]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_0",
+        "command": "jmp_if_7000_equals_short",
+        "args": [0, "EVENT_10_set_0"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_1",
+        "command": "jmp_if_7000_equals_short",
+        "args": [1, "EVENT_10_set_1"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_2",
+        "command": "jmp_if_7000_equals_short",
+        "args": [2, "EVENT_10_set_2"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_3",
+        "command": "jmp_if_7000_equals_short",
+        "args": [3, "EVENT_10_set_3"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_4",
+        "command": "jmp_if_7000_equals_short",
+        "args": [4, "EVENT_10_set_4"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_5",
+        "command": "jmp_if_7000_equals_short",
+        "args": [5, "EVENT_10_set_5"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_6",
+        "command": "jmp_if_7000_equals_short",
+        "args": [6, "EVENT_10_set_6"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_7",
+        "command": "jmp_if_7000_equals_short",
+        "args": [7, "EVENT_10_set_7"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_8",
+        "command": "jmp_if_7000_equals_short",
+        "args": [8, "EVENT_10_set_8"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_9",
+        "command": "jmp_if_7000_equals_short",
+        "args": [9, "EVENT_10_set_9"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_10",
+        "command": "jmp_if_7000_equals_short",
+        "args": [10, "EVENT_10_set_10"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_11",
+        "command": "jmp_if_7000_equals_short",
+        "args": [11, "EVENT_10_set_11"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_12",
+        "command": "jmp_if_7000_equals_short",
+        "args": [12, "EVENT_10_set_12"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_13",
+        "command": "jmp_if_7000_equals_short",
+        "args": [13, "EVENT_10_set_13"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_14",
+        "command": "jmp_if_7000_equals_short",
+        "args": [14, "EVENT_10_set_14"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_15",
+        "command": "jmp_if_7000_equals_short",
+        "args": [15, "EVENT_10_set_15"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_16",
+        "command": "jmp_if_7000_equals_short",
+        "args": [16, "EVENT_10_set_16"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_17",
+        "command": "jmp_if_7000_equals_short",
+        "args": [17, "EVENT_10_set_17"]
+    },
+    {
+        "identifier": "EVENT_10_jmp_if_7000_equals_short_18",
+        "command": "jmp_if_7000_equals_short",
+        "args": [18, "EVENT_10_set_18"]
+    },
+    {
+        "identifier": "EVENT_10_set_19",
+        "command": "set",
+        "args": [0x70A7, 21]
+    },
+    {
+        "identifier": "EVENT_10_ret_19",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_0",
+        "command": "set",
+        "args": [0x70A7, 75]
+    },
+    {
+        "identifier": "EVENT_10_ret_0",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_1",
+        "command": "set",
+        "args": [0x70A7, 92]
+    },
+    {
+        "identifier": "EVENT_10_ret_1",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_2",
+        "command": "set",
+        "args": [0x70A7, 63]
+    },
+    {
+        "identifier": "EVENT_10_ret_2",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_3",
+        "command": "set",
+        "args": [0x70A7, 60]
+    },
+    {
+        "identifier": "EVENT_10_ret_3",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_4",
+        "command": "set",
+        "args": [0x70A7, 59]
+    },
+    {
+        "identifier": "EVENT_10_ret_4",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_5",
+        "command": "set",
+        "args": [0x70A7, 19]
+    },
+    {
+        "identifier": "EVENT_10_ret_5",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_6",
+        "command": "set",
+        "args": [0x70A7, 22]
+    },
+    {
+        "identifier": "EVENT_10_ret_6",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_7",
+        "command": "set",
+        "args": [0x70A7, 18]
+    },
+    {
+        "identifier": "EVENT_10_ret_7",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_8",
+        "command": "set",
+        "args": [0x70A7, 89]
+    },
+    {
+        "identifier": "EVENT_10_ret_8",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_9",
+        "command": "set",
+        "args": [0x70A7, 26]
+    },
+    {
+        "identifier": "EVENT_10_ret_9",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_10",
+        "command": "set",
+        "args": [0x70A7, 30]
+    },
+    {
+        "identifier": "EVENT_10_ret_10",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_11",
+        "command": "set",
+        "args": [0x70A7, 58]
+    },
+    {
+        "identifier": "EVENT_10_ret_11",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_12",
+        "command": "set",
+        "args": [0x70A7, 56]
+    },
+    {
+        "identifier": "EVENT_10_ret_12",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_13",
+        "command": "set",
+        "args": [0x70A7, 55]
+    },
+    {
+        "identifier": "EVENT_10_ret_13",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_14",
+        "command": "set",
+        "args": [0x70A7, 66]
+    },
+    {
+        "identifier": "EVENT_10_ret_14",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_15",
+        "command": "set",
+        "args": [0x70A7, 17]
+    },
+    {
+        "identifier": "EVENT_10_ret_15",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_16",
+        "command": "set",
+        "args": [0x70A7, 14]
+    },
+    {
+        "identifier": "EVENT_10_ret_16",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_17",
+        "command": "set",
+        "args": [0x70A7, 16]
+    },
+    {
+        "identifier": "EVENT_10_ret_17",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_10_set_18",
+        "command": "set",
+        "args": [0x70A7, 78]
+    },
+    {
+        "identifier": "EVENT_10_ret_18",
+        "command": "ret"
+    }
+]
+

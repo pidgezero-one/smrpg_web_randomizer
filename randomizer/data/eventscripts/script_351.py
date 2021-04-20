@@ -130,9 +130,9 @@ script = [
         "command": 'dec_coins'
     },
     {
-        "identifier": 'EVENT_351_set_bit_40',
-        "command": 'set_bit',
-        "args": [0x7062, 3]
+        "identifier": "EVENT_351_kid_grant",
+        "command": 'run_event_as_subroutine',
+        "args": [253]
     },
     {
         "identifier": 'EVENT_351_close_dialog_41',

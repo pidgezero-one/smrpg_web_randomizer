@@ -645,6 +645,14 @@ class Yaridovich(BossAndStarLocation):
     dialogs_to_replace = [2831, 2832, 2834, 2837, 2838, 2839, 2841, 2842, 2843, 2844, 2845, 2847, 2848]
 
 
+class Mokura(BossAndStarLocation):
+    pack_number = 207
+    music = BattleMusic.Boss1
+    sprite_height = 38
+    sprite_width = 48
+    original_boss = 148
+
+
 class Belome2(BossAndStarLocation):
     star_address = 0x1e9813
     battle_address = 0x1e97dd

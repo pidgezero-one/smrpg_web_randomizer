@@ -4,4 +4,47 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_39_set_random_1',
+        "command": 'set_random',
+        "args": [0x7000, 3]
+    },
+    {
+        "identifier": "EVENT_39_jmp_if_7000_equals_short_0",
+        "command": "jmp_if_7000_equals_short",
+        "args": [0, "EVENT_39__2"]
+    },
+    {
+        "identifier": "EVENT_39_jmp_if_7000_equals_short__0",
+        "command": "jmp_if_7000_equals_short",
+        "args": [1, "EVENT_39___2"]
+    },
+    {
+        "identifier": "EVENT_39_2",
+        "command": 'run_event_as_subroutine',
+        "args": [26]
+    },
+    {
+        "identifier": "EVENT_39_ret_4",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_39__2",
+        "command": 'run_event_as_subroutine',
+        "args": [28]
+    },
+    {
+        "identifier": "EVENT_39_ret__4",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_39___2",
+        "command": 'run_event_as_subroutine',
+        "args": [27]
+    },
+    {
+        "identifier": "EVENT_39_ret___4",
+        "command": "ret"
+    }
+]

@@ -4,4 +4,114 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_3081_disable_trigger_241',
+        "command": 'disable_trigger',
+        "args": [AreaObjects.MEM_70A8]
+    },
+    {
+        "identifier": 'EVENT_3081_play_sound_242',
+        "command": 'play_sound',
+        "args": [Sounds._005_BLOCK_SWITCH, 6]
+    },
+    {
+        "identifier": 'EVENT_3081_disable_event_trigger_for_object_at_70A8_243',
+        "command": 'disable_event_trigger_for_object_at_70A8'
+    },
+    {
+        "identifier": 'EVENT_3081_set_action_script_sync_244',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.MEM_70A8, 7]
+    },
+    {
+        "identifier": 'EVENT_3081_set_7010_to_object_xyz_245',
+        "command": 'set_7010_to_object_xyz',
+        "args": [AreaObjects.MEM_70A8]
+    },
+    {
+        "identifier": 'EVENT_3081_set_7000_to_7000_short_mem_246',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
+    },
+    {
+        "identifier": 'EVENT_3081_add_247',
+        "command": 'add',
+        "args": [0x7000, 608]
+    },
+    {
+        "identifier": 'EVENT_3081_set_7000_short_mem_to_7000_248',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
+    },
+    {
+        "identifier": 'EVENT_3081_jmp_if_bit_set_249',
+        "command": 'jmp_if_bit_set',
+        "args": [0x704a, 3, 'EVENT_3081_clear_bit_251']
+    },
+    {
+        "identifier": 'EVENT_3081_play_sound_250',
+        "command": 'play_sound',
+        "args": [Sounds._014_FLOWER, 6]
+    },
+    {
+        "identifier": 'EVENT_3081_clear_bit_251',
+        "command": 'clear_bit',
+        "args": [0x704a, 3]
+    },
+    {
+        "identifier": 'EVENT_3081_inc_252',
+        "command": 'inc',
+        "args": [0x70c8]
+    },
+    {
+        "identifier": 'EVENT_3081_run_dialog_253',
+        "command": 'run_dialog',
+        "args": [3321, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+    },
+    {
+        "identifier": 'EVENT_3081_set_action_script_sync_254',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.SCREEN_FOCUS, 391]
+    },
+    {
+        "identifier": 'EVENT_3081_action_queue_async_255',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3081_action_queue_async_255_SUBSCRIPT_face_southwest_0',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'EVENT_3081_action_queue_async_255_SUBSCRIPT_set_sprite_sequence_1',
+                "command": 'set_sprite_sequence',
+                "args": [1, 3, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3081_action_queue_async_255_SUBSCRIPT_play_sound_2',
+                "command": 'play_sound',
+                "args": [Sounds._022_CLOSE_DOOR, 4]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3081_pause_256',
+        "command": 'pause',
+        "args": [40]
+    },
+    {
+        "identifier": 'EVENT_3081_set_action_script_async_257',
+        "command": 'set_action_script_async',
+        "args": [AreaObjects.MARIO, 384]
+    },
+    {
+        "identifier": 'EVENT_3081_set_action_script_async_258',
+        "command": 'set_action_script_async',
+        "args": [AreaObjects.MARIO, 395]
+    },
+    {
+        "identifier": 'EVENT_3081_ret_259',
+        "command": 'ret'
+    }
+]

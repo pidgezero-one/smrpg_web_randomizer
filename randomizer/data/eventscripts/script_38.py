@@ -4,4 +4,61 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_38_set_random_1',
+        "command": 'set_random',
+        "args": [0x7000, 4]
+    },
+    {
+        "identifier": "EVENT_38_jmp_if_7000_equals_short_0",
+        "command": "jmp_if_7000_equals_short",
+        "args": [0, "EVENT_38__2"]
+    },
+    {
+        "identifier": "EVENT_38_jmp_if_7000_equals_short__0",
+        "command": "jmp_if_7000_equals_short",
+        "args": [1, "EVENT_38___2"]
+    },
+    {
+        "identifier": "EVENT_38_jmp_if_7000_equals_short___0",
+        "command": "jmp_if_7000_equals_short",
+        "args": [2, "EVENT_38____2"]
+    },
+    {
+        "identifier": "EVENT_38_2",
+        "command": 'run_event_as_subroutine',
+        "args": [29]
+    },
+    {
+        "identifier": "EVENT_38_ret_4",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_38__2",
+        "command": 'run_event_as_subroutine',
+        "args": [28]
+    },
+    {
+        "identifier": "EVENT_38_ret__4",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_38___2",
+        "command": 'run_event_as_subroutine',
+        "args": [27]
+    },
+    {
+        "identifier": "EVENT_38_ret___4",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_38____2",
+        "command": 'run_event_as_subroutine',
+        "args": [26]
+    },
+    {
+        "identifier": "EVENT_38_ret____4",
+        "command": "ret"
+    }
+]

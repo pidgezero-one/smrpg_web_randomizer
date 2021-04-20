@@ -546,31 +546,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1178_set_7000_to_70A0_short_mem_26',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70bc]
-    },
-    {
-        "identifier": 'EVENT_1178_jmp_if_7000_equals_short_27',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_1178_set_31']
-    },
-    {
-        "identifier": 'EVENT_1178_jmp_if_7000_equals_short_28',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_1178_set_35']
-    },
-    {
-        "identifier": 'EVENT_1178_jmp_if_7000_equals_short_29',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_1178_set_39']
-    },
-    {
-        "identifier": 'EVENT_1178_jmp_if_7000_equals_short_30',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_1178_play_sound_43']
-    },
-    {
         "identifier": 'EVENT_1178_set_31',
         "command": 'set',
         "args": [0x70a7, 117]
@@ -584,76 +559,6 @@ script = [
         "identifier": 'EVENT_1178_run_event_as_subroutine_33',
         "command": 'run_event_as_subroutine',
         "args": [3828]
-    },
-    {
-        "identifier": 'EVENT_1178_jmp_34',
-        "command": 'jmp',
-        "args": ['EVENT_1178_action_queue_async_48']
-    },
-    {
-        "identifier": 'EVENT_1178_set_35',
-        "command": 'set',
-        "args": [0x70a7, 116]
-    },
-    {
-        "identifier": 'EVENT_1178_set_36',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_1178_run_event_as_subroutine_37',
-        "command": 'run_event_as_subroutine',
-        "args": [3828]
-    },
-    {
-        "identifier": 'EVENT_1178_jmp_38',
-        "command": 'jmp',
-        "args": ['EVENT_1178_action_queue_async_48']
-    },
-    {
-        "identifier": 'EVENT_1178_set_39',
-        "command": 'set',
-        "args": [0x70a7, 115]
-    },
-    {
-        "identifier": 'EVENT_1178_set_40',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_1178_run_event_as_subroutine_41',
-        "command": 'run_event_as_subroutine',
-        "args": [3828]
-    },
-    {
-        "identifier": 'EVENT_1178_jmp_42',
-        "command": 'jmp',
-        "args": ['EVENT_1178_action_queue_async_48']
-    },
-    {
-        "identifier": 'EVENT_1178_play_sound_43',
-        "command": 'play_sound',
-        "args": [Sounds._013_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_1178_run_dialog_44',
-        "command": 'run_dialog',
-        "args": [2897, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_1178_set_45',
-        "command": 'set',
-        "args": [0x7000, 1]
-    },
-    {
-        "identifier": 'EVENT_1178_add_coins_46',
-        "command": 'add_coins',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1178_jmp_47',
-        "command": 'jmp',
-        "args": ['EVENT_1178_action_queue_async_48']
     },
     {
         "identifier": 'EVENT_1178_action_queue_async_48',

@@ -4,4 +4,86 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_59_store_multiplier',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7088]
+    },
+    {
+        "identifier": 'EVENT_59_mem_7000_and_const_6',
+        "command": 'mem_7000_and_const',
+        "args": [0x0018]
+    },
+    {
+        "identifier": "EVENT_59_tier4_jmp",
+        "command": "jmp_if_7000_equals_short",
+        "args": [0, "EVENT_59_tier4"]
+    },
+    {
+        "identifier": "EVENT_59_tier3_jmp",
+        "command": "jmp_if_7000_equals_short",
+        "args": [8, "EVENT_59_tier3"]
+    },
+    {
+        "identifier": "EVENT_59_tier2_jmp",
+        "command": "jmp_if_7000_equals_short",
+        "args": [16, "EVENT_59_tier2"]
+    },
+    {
+        "identifier": "EVENT_59_tier1",
+        "command": 'run_event_as_subroutine',
+        "args": [26]
+    },
+    {
+        "identifier": "EVENT_59_ret_tier1_ret",
+        "command": 'run_event_as_subroutine',
+        "args": [160]
+    },
+    {
+        "identifier": "EVENT_59_ret_",
+        "command": 'ret',
+    },
+    {
+        "identifier": "EVENT_59_tier2",
+        "command": 'run_event_as_subroutine',
+        "args": [44]
+    },
+    {
+        "identifier": "EVENT_59_ret_tier2_ret",
+        "command": 'run_event_as_subroutine',
+        "args": [160]
+    },
+    {
+        "identifier": "EVENT_59_ret__",
+        "command": 'ret',
+    },
+    {
+        "identifier": "EVENT_59_tier3",
+        "command": 'run_event_as_subroutine',
+        "args": [39]
+    },
+    {
+        "identifier": "EVENT_59_ret_tier3_ret",
+        "command": 'run_event_as_subroutine',
+        "args": [160]
+    },
+    {
+        "identifier": "EVENT_59_ret___",
+        "command": 'ret',
+    },
+    {
+        "identifier": "EVENT_59_tier4",
+        "command": 'run_event_as_subroutine',
+        "args": [38]
+    },
+    {
+        "identifier": "EVENT_59_ret____",
+        "command": 'run_event_as_subroutine',
+        "args": [160]
+    },
+    {
+        "identifier": "EVENT_59_ret_tier4_ret",
+        "command": 'ret',
+    }
+]

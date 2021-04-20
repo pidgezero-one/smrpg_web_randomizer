@@ -4,4 +4,145 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_11_set_random_1',
+        "command": 'set_random',
+        "args": [0x7000, 10]
+    },
+    {
+        "identifier": "EVENT_11_jmp_if_7000_equals_short_0",
+        "command": "jmp_if_7000_equals_short",
+        "args": [0, "EVENT_11_set_0"]
+    },
+    {
+        "identifier": "EVENT_11_jmp_if_7000_equals_short_1",
+        "command": "jmp_if_7000_equals_short",
+        "args": [1, "EVENT_11_set_1"]
+    },
+    {
+        "identifier": "EVENT_11_jmp_if_7000_equals_short_2",
+        "command": "jmp_if_7000_equals_short",
+        "args": [2, "EVENT_11_set_2"]
+    },
+    {
+        "identifier": "EVENT_11_jmp_if_7000_equals_short_3",
+        "command": "jmp_if_7000_equals_short",
+        "args": [3, "EVENT_11_set_3"]
+    },
+    {
+        "identifier": "EVENT_11_jmp_if_7000_equals_short_4",
+        "command": "jmp_if_7000_equals_short",
+        "args": [4, "EVENT_11_set_4"]
+    },
+    {
+        "identifier": "EVENT_11_jmp_if_7000_equals_short_5",
+        "command": "jmp_if_7000_equals_short",
+        "args": [5, "EVENT_11_set_5"]
+    },
+    {
+        "identifier": "EVENT_11_jmp_if_7000_equals_short_6",
+        "command": "jmp_if_7000_equals_short",
+        "args": [6, "EVENT_11_set_6"]
+    },
+    {
+        "identifier": "EVENT_11_jmp_if_7000_equals_short_7",
+        "command": "jmp_if_7000_equals_short",
+        "args": [7, "EVENT_11_set_7"]
+    },
+    {
+        "identifier": "EVENT_11_jmp_if_7000_equals_short_8",
+        "command": "jmp_if_7000_equals_short",
+        "args": [8, "EVENT_11_set_8"]
+    },
+    {
+        "identifier": "EVENT_11_set_9",
+        "command": "set",
+        "args": [0x70a7, 68]
+    },
+    {
+        "identifier": "EVENT_11_ret_9",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_11_set_0",
+        "command": "set",
+        "args": [0x70a7, 32]
+    },
+    {
+        "identifier": "EVENT_11_ret_0",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_11_set_1",
+        "command": "set",
+        "args": [0x70a7, 29]
+    },
+    {
+        "identifier": "EVENT_11_ret_1",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_11_set_2",
+        "command": "set",
+        "args": [0x70a7, 28]
+    },
+    {
+        "identifier": "EVENT_11_ret_2",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_11_set_3",
+        "command": "set",
+        "args": [0x70a7, 24]
+    },
+    {
+        "identifier": "EVENT_11_ret_3",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_11_set_4",
+        "command": "set",
+        "args": [0x70a7, 27]
+    },
+    {
+        "identifier": "EVENT_11_ret_4",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_11_set_5",
+        "command": "set",
+        "args": [0x70a7, 25]
+    },
+    {
+        "identifier": "EVENT_11_ret_5",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_11_set_6",
+        "command": "set",
+        "args": [0x70a7, 31]
+    },
+    {
+        "identifier": "EVENT_11_ret_6",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_11_set_7",
+        "command": "set",
+        "args": [0x70a7, 64]
+    },
+    {
+        "identifier": "EVENT_11_ret_7",
+        "command": "ret"
+    },
+    {
+        "identifier": "EVENT_11_set_8",
+        "command": "set",
+        "args": [0x70a7, 65]
+    },
+    {
+        "identifier": "EVENT_11_ret_8",
+        "command": "ret"
+    }
+]

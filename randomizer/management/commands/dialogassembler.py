@@ -26,7 +26,7 @@ def assemble_from_table(pointer_table, data_table):
     # `SUPER_JUMP_PRIZE_2_CAP`
     # `GRATE_GUY_PRIZE_CAP`
     # 3847 needs generated bellhop menu
-    # Set 2115 to either:
+    # Set 2116 to either:
     #    You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy on Booster Hill.
     #    You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy up atop Booster Tower.
     # Set strong Mushroom Kingdom NPC hint to 2235

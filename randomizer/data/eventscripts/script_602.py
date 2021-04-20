@@ -449,39 +449,27 @@ script = [
         "args": [0x70d7]
     },
     {
+        "identifier": 'EVENT_602_run_dialog_77',
+        "command": 'run_dialog',
+        "args": [2473, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_602_unsync_dialog_78',
+        "command": 'unsync_dialog'
+    },
+    {
+        "identifier": 'EVENT_602_remember_last_object_79',
+        "command": 'remember_last_object'
+    },
+    {
         "identifier": 'EVENT_602_jmp_if_7000_equals_short_65',
         "command": 'jmp_if_7000_equals_short',
         "args": [255, 'EVENT_602_set_7010_to_object_xyz_72']
     },
     {
-        "identifier": 'EVENT_602_jmp_if_7000_equals_short_66',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [3, 'EVENT_602_pause_83']
-    },
-    {
-        "identifier": 'EVENT_602_jmp_if_7000_equals_short_67',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5, 'EVENT_602_pause_93']
-    },
-    {
-        "identifier": 'EVENT_602_jmp_if_7000_equals_short_68',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [10, 'EVENT_602_pause_100']
-    },
-    {
-        "identifier": 'EVENT_602_jmp_if_7000_equals_short_69',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [15, 'EVENT_602_pause_109']
-    },
-    {
-        "identifier": 'EVENT_602_mem_compare_val_70',
-        "command": 'mem_compare_val',
-        "args": [200]
-    },
-    {
-        "identifier": 'EVENT_602_jmp_if_comparison_result_is_greater_or_equal_71',
-        "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_602_jmp_if_bit_set_120']
+        "identifier": 'EVENT_602_prize_decision',
+        "command": 'run_event_as_subroutine',
+        "args": [708]
     },
     {
         "identifier": 'EVENT_602_set_7010_to_object_xyz_72',
@@ -560,19 +548,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_602_run_dialog_77',
-        "command": 'run_dialog',
-        "args": [2473, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_602_unsync_dialog_78',
-        "command": 'unsync_dialog'
-    },
-    {
-        "identifier": 'EVENT_602_remember_last_object_79',
-        "command": 'remember_last_object'
-    },
-    {
         "identifier": 'EVENT_602_jmp_80',
         "command": 'jmp',
         "args": ['EVENT_602_set_bit_55']
@@ -624,291 +599,7 @@ script = [
     {
         "identifier": 'EVENT_602_jmp_82',
         "command": 'jmp',
-        "args": ['EVENT_602_run_dialog_77']
-    },
-    {
-        "identifier": 'EVENT_602_pause_83',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_602_set_84',
-        "command": 'set',
-        "args": [0x7000, 3]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_85',
-        "command": 'run_dialog',
-        "args": [2477, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_602_action_queue_async_86',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_602_action_queue_async_86_SUBSCRIPT_floating_on_0',
-                "command": 'floating_on'
-            },
-            {
-                "identifier": 'EVENT_602_action_queue_async_86_SUBSCRIPT_set_animation_speed_1',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_602_action_queue_async_86_SUBSCRIPT_walk_1_step_northwest_2',
-                "command": 'walk_1_step_northwest'
-            },
-            {
-                "identifier": 'EVENT_602_action_queue_async_86_SUBSCRIPT_set_animation_speed_3',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_602_action_queue_async_86_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [40]
-            },
-            {
-                "identifier": 'EVENT_602_action_queue_async_86_SUBSCRIPT_set_animation_speed_5',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_602_action_queue_async_86_SUBSCRIPT_shift_southeast_pixels_6',
-                "command": 'shift_southeast_pixels',
-                "args": [12]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_87',
-        "command": 'run_dialog',
-        "args": [1022, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_602_set_88',
-        "command": 'set',
-        "args": [0x70a7, 116]
-    },
-    {
-        "identifier": 'EVENT_602_set_89',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_602_run_event_as_subroutine_90',
-        "command": 'run_event_as_subroutine',
-        "args": [3828]
-    },
-    {
-        "identifier": 'EVENT_602_pause_91',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_602_jmp_92',
-        "command": 'jmp',
-        "args": ['EVENT_602_set_7010_to_object_xyz_72']
-    },
-    {
-        "identifier": 'EVENT_602_pause_93',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_602_set_94',
-        "command": 'set',
-        "args": [0x7000, 5]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_95',
-        "command": 'run_dialog',
-        "args": [2477, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_602_play_sound_96',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_602_add_frog_coins_97',
-        "command": 'add_frog_coins',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_98',
-        "command": 'run_dialog',
-        "args": [526, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_602_jmp_99',
-        "command": 'jmp',
-        "args": ['EVENT_602_set_7010_to_object_xyz_72']
-    },
-    {
-        "identifier": 'EVENT_602_pause_100',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_602_set_101',
-        "command": 'set',
-        "args": [0x7000, 10]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_102',
-        "command": 'run_dialog',
-        "args": [2477, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_602_play_sound_103',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_602_pause_104',
-        "command": 'pause',
-        "args": [30]
-    },
-    {
-        "identifier": 'EVENT_602_play_sound_105',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_602_add_frog_coins_106',
-        "command": 'add_frog_coins',
-        "args": [2]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_107',
-        "command": 'run_dialog',
-        "args": [526, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_602_jmp_108',
-        "command": 'jmp',
-        "args": ['EVENT_602_set_7010_to_object_xyz_72']
-    },
-    {
-        "identifier": 'EVENT_602_pause_109',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_602_set_110',
-        "command": 'set',
-        "args": [0x7000, 15]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_111',
-        "command": 'run_dialog',
-        "args": [2477, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_602_play_sound_112',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_602_pause_113',
-        "command": 'pause',
-        "args": [30]
-    },
-    {
-        "identifier": 'EVENT_602_play_sound_114',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_602_pause_115',
-        "command": 'pause',
-        "args": [30]
-    },
-    {
-        "identifier": 'EVENT_602_play_sound_116',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_602_add_frog_coins_117',
-        "command": 'add_frog_coins',
-        "args": [3]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_118',
-        "command": 'run_dialog',
-        "args": [526, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_602_jmp_119',
-        "command": 'jmp',
-        "args": ['EVENT_602_set_7010_to_object_xyz_72']
-    },
-    {
-        "identifier": 'EVENT_602_jmp_if_bit_set_120',
-        "command": 'jmp_if_bit_set',
-        "args": [0x709f, 4, 'EVENT_602_set_7010_to_object_xyz_72']
-    },
-    {
-        "identifier": 'EVENT_602_pause_121',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_602_set_122',
-        "command": 'set',
-        "args": [0x7000, 200]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_123',
-        "command": 'run_dialog',
-        "args": [2477, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_602_start_loop_n_times_124',
-        "command": 'start_loop_n_times',
-        "args": [19]
-    },
-    {
-        "identifier": 'EVENT_602_play_sound_125',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_602_pause_126',
-        "command": 'pause',
-        "args": [20]
-    },
-    {
-        "identifier": 'EVENT_602_end_loop_127',
-        "command": 'end_loop'
-    },
-    {
-        "identifier": 'EVENT_602_add_frog_coins_128',
-        "command": 'add_frog_coins',
-        "args": [20]
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_129',
-        "command": 'run_dialog',
-        "args": [526, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_602_set_130',
-        "command": 'set',
-        "args": [0x70d7, 255]
-    },
-    {
-        "identifier": 'EVENT_602_set_bit_131',
-        "command": 'set_bit',
-        "args": [0x709f, 4]
-    },
-    {
-        "identifier": 'EVENT_602_jmp_132',
-        "command": 'jmp',
-        "args": ['EVENT_602_set_7010_to_object_xyz_72']
+        "args": ['EVENT_602_set_bit_55']
     },
     {
         "identifier": 'EVENT_602_run_dialog_133',

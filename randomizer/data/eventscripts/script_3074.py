@@ -69,6 +69,26 @@ script = [
         "args": [0x000f]
     },
     {
+        "identifier": 'EVENT_3074_check_multiplier',
+        "command": 'jmp_if_var_equals_short',
+        "args": [0x70BC, 0, 'EVENT_3074_jmp_if_var_equals_byte_13']
+    },
+    {
+        "identifier": 'EVENT_3074_add_counter',
+        "command": 'add',
+        "args": [0x7000, 15]
+    },
+    {
+        "identifier": 'EVENT_3074_get_multiplier',
+        "command": 'dec_short',
+        "args": [0x70BC]
+    },
+    {
+        "identifier": 'EVENT_3074_loop',
+        "command": 'jmp',
+        "args": ['EVENT_3074_check_multiplier']
+    },
+    {
         "identifier": 'EVENT_3074_jmp_if_var_equals_byte_13',
         "command": 'jmp_if_var_equals_byte',
         "args": [0x70b4, 1, 'EVENT_3074_set_70A0_short_mem_to_7000_18']

@@ -16,11 +16,6 @@ script = [
         "args": [0x0158, []]
     },
     {
-        "identifier": 'EVENT_610_set_bit_2',
-        "command": 'set_bit',
-        "args": [0x7067, 1]
-    },
-    {
         "identifier": 'EVENT_610_clear_bit_3',
         "command": 'clear_bit',
         "args": [0x7042, 0]
@@ -139,38 +134,6 @@ script = [
         "identifier": 'EVENT_610_set_action_script_sync_26',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_3, 376]
-    },
-    {
-        "identifier": 'EVENT_610_action_queue_sync_27',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
-        "subscript": [
-            {
-                "identifier": 'EVENT_610_action_queue_sync_27_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [17, 112, 0, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_610_action_queue_sync_27_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_610_action_queue_sync_28',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_11],
-        "subscript": [
-            {
-                "identifier": 'EVENT_610_action_queue_sync_28_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [16, 119, 0, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_610_action_queue_sync_28_SUBSCRIPT_shadow_off_1',
-                "command": 'shadow_off'
-            }
-        ]
     },
     {
         "identifier": 'EVENT_610_action_queue_sync_29',
@@ -308,15 +271,6 @@ script = [
     },
     {
         "identifier": 'EVENT_610_ret_43',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_610_run_event_at_return_44',
-        "command": 'run_event_at_return',
-        "args": [1022]
-    },
-    {
-        "identifier": 'EVENT_610_ret_45',
         "command": 'ret'
     }
 ]

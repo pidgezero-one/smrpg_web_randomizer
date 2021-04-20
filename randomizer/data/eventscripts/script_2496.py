@@ -416,9 +416,9 @@ script = [
         "args": [0x7049, 2]
     },
     {
-        "identifier": 'EVENT_2496___set_bit_17',
-        "command": 'set_bit',
-        "args": [0x704c, 7]
+        "identifier": 'EVENT_2496___set_bit_17', # gating
+        "command": 'run_event_as_subroutine',
+        "args": [2497]
     },
     {
         "identifier": 'EVENT_2496___set_bit_25',

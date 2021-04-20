@@ -5,7 +5,7 @@ dialog_data = [None]*605
 dialog_data[0] = '''SNIFIT 3: Um...
  Nice weather we're having.[await]'''
 dialog_data[1] = '''SNIFIT 3: You wanna fight?[await]'''
-dialog_data[2] = '''[await]'''
+dialog_data[2] = '''\n           Got “Beetlemania”![await]'''
 dialog_data[3] = '''GARDENER: I'll plant the seed...[await]'''
 dialog_data[4] = '''GARDENER: Then give it fertilizer.[await]'''
 dialog_data[5] = '''[await]'''

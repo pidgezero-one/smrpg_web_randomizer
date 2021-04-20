@@ -4765,6 +4765,58 @@ class Mokura(Enemy):
     normal_item = items.KerokeroCola
     rare_item = items.RoyalSyrup
 
+    model_small = {
+        **models[201]
+    }
+    model_large = {
+        "sprite": SpriteName._573_MOKURA,
+        "priority_0": True,
+        "priority_1": True,
+        "priority_2": False,
+        "show_shadow": False,
+        "shadow": ShadowSize._02_OVAL_BIG,
+        "y_pixel_shift": 2,
+        "acute_axis": 10,
+        "obtuse_axis": 10,
+        "height": 8,
+        "vram_store": VramStore._00_SWSE_NWNE,
+        "vram_size": 0,
+        "cannot_clone": False,
+        "byte2_bit0": False,
+        "byte2_bit1": False,
+        "byte2_bit2": False,
+        "byte2_bit3": False,
+        "byte2_bit4": False,
+        "byte5_bit6": False,
+        "byte5_bit7": False,
+        "byte6_bit2": False,
+        "extra_props": {
+            "is_empty": True
+        }
+    }
+    dialog_replacements = [
+        (49,'''\n     MOKURA: Uhh... Go away![await]'''),
+        (1660, '''\n             Duh, huh, huh...[await]'''),
+        (1694, '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Mokura's place.[await]'''),
+        (1695, '''PIRATE: That's AMAZING!\n No one's EVER whipped MOKURA!![await]'''),
+        (1778, '''\n            MOKURA: Hmm...[await]'''),
+        (1780, '''MOKURA: What're you doing in my\n secret lair?[await]'''),
+        (1781, '''MOKURA: I oughtta go back to\n being invisible...[await]'''),
+        (1784, ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1792, ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1793, ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (2061, '''CHEF TORTE: Zees cake, ve make\n it look like big cloud! It is...\n masterpiece![await]'''),
+        (2504, '''MOKURA: Uhh... You need [0x7024] more\n items...[await]'''),
+        (2560, '''SNIFIT 1: Hello there.[await]\n Mokura's busy right now, so he[1] can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2572, '''SNIFIT 2: Please refrain\n from bothering Mokura.[await]'''),
+        (2831, '''\n       MOKURA: Mwa, ha, ha![await]'''),
+        (2838, ''' You will find Mokura...\n in his house. He is...the most\n respected person here.[await]'''),
+        (3044, '''MOKURA: Uhh... Are you... gonna\n beat the Dojo Master?[await]'''),
+        (3338, ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Secret-this and Gas-that.[await]'''),
+        (3352, '''\n    MOKURA: A cloud can jump...[await]'''),
+        (3353, '''\n    MOKURA: A cloud can jump...[await]'''),
+    ]
+
 
 class FireCrystal(Enemy):
     index = 149

@@ -99,8 +99,8 @@ dialog_data[60] = '''[page]
  5 Frog Coins! 5! That’s major![await]
  [select]  (DEAL!)
  [select]  (What else do you have?)[await]'''
-dialog_data[61] = '''[await]'''
-dialog_data[62] = '''[await]'''
+dialog_data[61] = '''RAZ: We're getting married today,\n but the people who booked the\n chapel before us are late.[await]'''
+dialog_data[62] = '''RAINI: It's a lovely day outside,\n isn't it?[await]'''
 dialog_data[63] = ''' Uh oh...
  Don't tell the hotel I snuck out
  of work for this![await]'''
@@ -181,7 +181,7 @@ dialog_data[110] = ''' I heard some strange rumours about
  today's wedding cake. But I'd have
  to visit the kitchen to confirm.[await]'''
 dialog_data[111] = ''' Welcome to Marrymore![await]
- Have you visited our hotel?
+ Have you visited our hotel?[await]
  Our Suite's room service menu has
  some new and exciting items.[await]'''
 dialog_data[112] = ''' I have no idea what on earth is
@@ -318,7 +318,7 @@ dialog_data[193] = ''' If you want more Frog Coins, you
  can get some from scaling the
  Land's End cliff in
  under 11 seconds.[await]'''
-dialog_data[194] = '''            Got a Frog Coin![await]'''
+dialog_data[194] = '''\n            Got a Frog Coin![await]'''
 dialog_data[195] = '''[await]'''
 dialog_data[196] = '''[await]'''
 dialog_data[197] = '''[await]'''
@@ -421,7 +421,7 @@ dialog_data[273] = '''[await]'''
 dialog_data[274] = '''[await]'''
 dialog_data[275] = '''[await]'''
 dialog_data[276] = '''[await]'''
-dialog_data[277] = '''[await]'''
+dialog_data[277] = ''' Here in Marrymore, the townsfolk\n like to loiter around the chapel.[await]'''
 dialog_data[278] = ''' Our wishes have come true,
  so we will be having our
  wedding in Marrymore![await]
@@ -726,6 +726,7 @@ dialog_data[421] = '''[page]
  We shall attend to you in a minute.[await]'''
 dialog_data[422] = '''[page]
  We thank you very much!
+ You have stayed with us [0x7000] times.[await][page]
  Like always, the bellhop shall
  guide your way.[await]
  Please enjoy your stay![await]'''

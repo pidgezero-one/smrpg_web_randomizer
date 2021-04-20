@@ -600,29 +600,9 @@ script = [
         "args": [0x704d, 7]
     },
     {
-        "identifier": 'EVENT_3502_set_bit_71',
-        "command": 'set_bit',
-        "args": [0x7067, 0]
-    },
-    {
-        "identifier": 'EVENT_3502_set_bit_72',
-        "command": 'set_bit',
-        "args": [0x706f, 0]
-    },
-    {
-        "identifier": 'EVENT_3502_set_bit_73',
-        "command": 'set_bit',
-        "args": [0x7068, 4]
-    },
-    {
-        "identifier": 'EVENT_3502_set_bit_74',
-        "command": 'set_bit',
-        "args": [0x7070, 4]
-    },
-    {
-        "identifier": 'EVENT_3502_set_bit_75',
-        "command": 'set_bit',
-        "args": [0x7067, 1]
+        "identifier": 'EVENT_3502___set_bit_17', # gating
+        "command": 'run_event_as_subroutine',
+        "args": [3508]
     },
     {
         "identifier": 'EVENT_3502_enter_area_76',

@@ -4,4 +4,172 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    
+    {
+        "identifier": 'EVENT_3091_set_7000_to_70A0_short_mem_1',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a7]
+    },
+    {
+        "identifier": 'EVENT_3091_reset_7000___',
+        "command": 'set',
+        "args": [0x7000, 0]
+    },
+    {
+        "identifier": 'EVENT_3091_check_multiplier',
+        "command": 'jmp_if_var_equals_short',
+        "args": [0x70BC, 0, 'EVENT_3091_store_multiplier']
+    },
+    {
+        "identifier": 'EVENT_3091_add_counter',
+        "command": 'add',
+        "args": [0x7000, 15]
+    },
+    {
+        "identifier": 'EVENT_3091_get_multiplier',
+        "command": 'dec_short',
+        "args": [0x70BC]
+    },
+    {
+        "identifier": 'EVENT_3091_loop',
+        "command": 'jmp',
+        "args": ['EVENT_3091_check_multiplier']
+    },
+    {
+        "identifier": 'EVENT_3091_store_multiplier',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x70BC]
+    },
+
+
+    {
+        "identifier": 'EVENT_3091_set_7000_to_70A0_short_mem_11',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70a7]
+    },
+    {
+        "identifier": 'EVENT_3091_mem_7000_and_const__12_',
+        "command": 'mem_7000_and_const',
+        "args": [0x000f]
+    },
+    {
+        "identifier": 'EVENT_3091_concat_multiplier',
+        "command": 'add_short_mem',
+        "args": [0x7000, 0x70BC]
+    },
+    {
+        "identifier": 'EVENT_3091_store_multiplier_',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x70BC]
+    },
+
+    
+    {
+        "identifier": 'EVENT_3091_reset_7000_2',
+        "command": 'set',
+        "args": [0x7000, 0]
+    },
+
+
+    {
+        "identifier": 'EVENT_3091_use_multiplier',
+        "command": 'jmp_if_var_equals_short',
+        "args": [0x70BC, 0, 'EVENT_3091_add_coins_260']
+    },
+    {
+        "identifier": 'EVENT_3091_count_1s',
+        "command": 'inc',
+        "args": [0x7000]
+    },
+    {
+        "identifier": 'EVENT_3091_dec_multiplier',
+        "command": 'dec_short',
+        "args": [0x70BC]
+    },
+    {
+        "identifier": 'EVENT_3091_loop_2',
+        "command": 'jmp',
+        "args": ['EVENT_3091_use_multiplier']
+    },
+
+    
+    {
+        "identifier": 'EVENT_3091_add_coins_260',
+        "command": 'add_frog_coins',
+        "args": [0x7000]
+    },
+    {
+        "identifier": 'EVENT_3091_summon_to_current_level_261',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.MEM_70A8]
+    },
+    {
+        "identifier": 'EVENT_3091_run_dialog_262',
+        "command": 'run_dialog',
+        "args": [1310, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
+    },
+    {
+        "identifier": 'EVENT_3091_disable_trigger_263',
+        "command": 'disable_trigger',
+        "args": [AreaObjects.MEM_70A8]
+    },
+    {
+        "identifier": 'EVENT_3091_play_sound_264',
+        "command": 'play_sound',
+        "args": [Sounds._005_BLOCK_SWITCH, 6]
+    },
+    {
+        "identifier": 'EVENT_3091_disable_event_trigger_for_object_at_70A8_265',
+        "command": 'disable_event_trigger_for_object_at_70A8'
+    },
+    {
+        "identifier": 'EVENT_3091_set_action_script_sync_266',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.MEM_70A8, 7]
+    },
+    {
+        "identifier": 'EVENT_3091_set_7010_to_object_xyz_267',
+        "command": 'set_7010_to_object_xyz',
+        "args": [AreaObjects.MEM_70A8]
+    },
+    {
+        "identifier": 'EVENT_3091_set_7000_to_7000_short_mem_268',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7014]
+    },
+    {
+        "identifier": 'EVENT_3091_add_269',
+        "command": 'add',
+        "args": [0x7000, 608]
+    },
+    {
+        "identifier": 'EVENT_3091_set_7000_short_mem_to_7000_270',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x7014]
+    },
+    {
+        "identifier": 'EVENT_3091_jmp_if_bit_set_271',
+        "command": 'jmp_if_bit_set',
+        "args": [0x704a, 3, 'EVENT_3091_clear_bit_273']
+    },
+    {
+        "identifier": 'EVENT_3091_play_sound_272',
+        "command": 'play_sound',
+        "args": [Sounds._094_FROG_COIN, 6]
+    },
+    {
+        "identifier": 'EVENT_3091_clear_bit_273',
+        "command": 'clear_bit',
+        "args": [0x704a, 3]
+    },
+    {
+        "identifier": 'EVENT_3091_create_packet_at_7010_coords_jmp_if_null_274',
+        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "args": [NPCPackets._019_FROG_COIN, 'EVENT_3091_ret']
+    },
+    {
+        "identifier": 'EVENT_3091_ret',
+        "command": 'ret'
+    }
+]

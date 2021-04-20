@@ -4,4 +4,93 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_708_jmp_if_7000_equals_short_66',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_708_prize_1']
+    },
+    {
+        "identifier": 'EVENT_708_jmp_if_7000_equals_short__66',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_708_prize_2']
+    },
+    {
+        "identifier": 'EVENT_708_jmp_if_7000_equals_short_67',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5, 'EVENT_708_prize_3']
+    },
+    {
+        "identifier": 'EVENT_708_jmp_if_7000_equals_short_68',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [10, 'EVENT_708_prize_4']
+    },
+    {
+        "identifier": 'EVENT_708_jmp_if_7000_equals_short_69',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [15, 'EVENT_708_prize_5']
+    },
+    {
+        "identifier": 'EVENT_708_jmp_if_7000_equals_short___66',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [200, 'EVENT_708_prize_6']
+    },
+    {
+        "identifier": 'EVENT_708_return_if_no_prize',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_708_prize_1',
+        "command": 'run_event_as_subroutine',
+        "args": [253]
+    },
+    {
+        "identifier": 'EVENT_708_return_if_prize_1',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_708_prize_2',
+        "command": 'run_event_as_subroutine',
+        "args": [252]
+    },
+    {
+        "identifier": 'EVENT_708_return_if_prize_2',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_708_prize_3',
+        "command": 'run_event_as_subroutine',
+        "args": [251]
+    },
+    {
+        "identifier": 'EVENT_708_return_if_prize_3',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_708_prize_4',
+        "command": 'run_event_as_subroutine',
+        "args": [250]
+    },
+    {
+        "identifier": 'EVENT_708_return_if_prize_4',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_708_prize_5',
+        "command": 'run_event_as_subroutine',
+        "args": [249]
+    },
+    {
+        "identifier": 'EVENT_708_return_if_prize_5',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_708_prize_6',
+        "command": 'run_event_as_subroutine',
+        "args": [248]
+    },
+    {
+        "identifier": 'EVENT_708_return_if_prize_6',
+        "command": 'ret'
+    }
+]

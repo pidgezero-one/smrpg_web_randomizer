@@ -6,33 +6,80 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3087_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3087_action_queue_sync_0_SUBSCRIPT_set_solidity_bits_0',
-                "command": 'set_solidity_bits',
-                "args": [[_0x0AFlags.CANT_PASS_NPCS]]
-            }
-        ]
+        "identifier": 'EVENT_3087_store_7000_item_quantity_to_70A7_283',
+        "command": 'store_item_amount_7000',
+        "args": [items.MysteryEgg]
     },
     {
-        "identifier": 'EVENT_3087_enter_area_1',
-        "command": 'enter_area',
-        "args": [Rooms._000_DEBUG_ROOM, RadialDirections.SOUTH, 6, 24, 2, []]
+        "identifier": 'EVENT_3087_jmp_if_7000_equals_short_284',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3087_set_298']
     },
     {
-        "identifier": 'EVENT_3087_fade_in_from_black_async_2',
-        "command": 'fade_in_from_black_async'
+        "identifier": 'EVENT_3087_store_7000_item_quantity_to_70A7_283_',
+        "command": 'store_item_amount_7000',
+        "args": [items.LambsLure]
     },
     {
-        "identifier": 'EVENT_3087_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [1552, AreaObjects.BOWSER, [_0x60Flags.BIT_6, _0x60Flags.MULTILINE]]
+        "identifier": 'EVENT_3087_jmp_if_7000_equals_short_287',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3087_set_294']
     },
     {
-        "identifier": 'EVENT_3087_ret_4',
+        "identifier": 'EVENT_3087_store_7000_item_quantity_to_70A7_283__',
+        "command": 'store_item_amount_7000',
+        "args": [items.SheepAttack]
+    },
+    {
+        "identifier": 'EVENT_3087_jmp_if_7000_equals_short_287_',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3087_subroutine']
+    },
+    {
+        "identifier": 'EVENT_3087_set_291',
+        "command": 'set',
+        "args": [0x70a7, 145]
+    },
+    {
+        "identifier": 'EVENT_3087_ret_293',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3087_subroutine',
+        "command": 'run_event_as_subroutine',
+        "args": [56]
+    },
+    {
+        "identifier": 'EVENT_3087_ret_297_',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3087_set_294',
+        "command": 'set',
+        "args": [0x70a7, 136]
+    },
+    {
+        "identifier": 'EVENT_3087_remove_one_from_inventory_295',
+        "command": 'remove_one_from_inventory',
+        "args": [items.LambsLure]
+    },
+    {
+        "identifier": 'EVENT_3087_ret_297',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3087_set_298',
+        "command": 'set',
+        "args": [0x70a7, 143]
+    },
+    {
+        "identifier": 'EVENT_3087_remove_one_from_inventory_299',
+        "command": 'remove_one_from_inventory',
+        "args": [items.MysteryEgg]
+    },
+    {
+        "identifier": 'EVENT_3087_ret_301',
         "command": 'ret'
     }
 ]
+

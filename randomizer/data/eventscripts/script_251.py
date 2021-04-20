@@ -4,4 +4,32 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": "EVENT_251_current_lvl",
+        "command": 'set_7000_to_current_level'
+    },
+    {
+        "identifier": "EVENT_251_room_7_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7, "EVENT_251_room_7_logic"]
+    },
+    {
+        "identifier": "EVENT_251_cancel",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_251_room_7_logic",
+        "command": 'set',
+        "args": [0x7000, 5]
+    },
+    {
+        "identifier": "EVENT_251_room_7_logic_1",
+        "command": 'run_event_as_subroutine',
+        "args": [158]
+    },
+    {
+        "identifier": "EVENT_251_room_7_cancel",
+        "command": 'ret'
+    }
+]
