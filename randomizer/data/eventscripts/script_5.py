@@ -72,7 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_1',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_3',
@@ -81,7 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_2',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_4',
@@ -90,7 +92,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_3',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_5',
@@ -99,7 +102,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_4',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_6',
@@ -108,7 +112,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_5',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_7',
@@ -117,7 +122,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_6',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_8',
@@ -126,7 +132,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_7',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_9',
@@ -135,7 +142,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_8',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_10',
@@ -144,7 +152,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_9',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_11',
@@ -153,7 +162,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_10',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_12',
@@ -162,7 +172,8 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_11',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_5_set_13',
@@ -171,6 +182,7 @@ script = [
     },
     {
         "identifier": 'EVENT_5_ret_12',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
 ]

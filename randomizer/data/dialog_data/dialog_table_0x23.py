@@ -84,8 +84,8 @@ dialog_data[53] = '''[await]'''
 dialog_data[54] = '''[await]'''
 dialog_data[55] = '''[await]'''
 dialog_data[56] = '''[await]'''
-dialog_data[57] = ''' zzz...
- Signal Ring... star pieces...
+dialog_data[57] = ''' zzz...[delay_30]
+ Signal Ring...[delay_30] star pieces...[delay_30]
  zzz...[await]'''
 dialog_data[58] = '''[await]'''
 dialog_data[59] = ''' The composer for this tune is a

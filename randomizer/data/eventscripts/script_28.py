@@ -8,7 +8,7 @@ script = [
     {
         "identifier": "EVENT_28_1",
         "command": 'jmp_if_random_above_66',
-        "args": ["EVENT_26_3", "EVENT_26_3"]
+        "args": ["EVENT_28_3", "EVENT_28_3"]
     },
     {
         "identifier": "EVENT_28_2",

@@ -25,7 +25,10 @@ class EventScript:
                 id = command["identifier"]
                 # audit identifier name
                 x = re.search("EVENT_(\d+)", id)
-                command_header = int(x.group(1))
+                try:
+                    command_header = int(x.group(1))
+                except:
+                    raise Exception("event %i failed audit: one or more commands missing prefix" % i)
                 if (i != command_header):
                     errors.append("mismatched event id in script_%i identifier: %s" % (i, id))
                 # store to check for duplicates

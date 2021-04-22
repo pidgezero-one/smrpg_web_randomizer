@@ -30,7 +30,7 @@ script = [
     },
     {
         "identifier": "EVENT_253_room_7_logic",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [160]
     },
     {
@@ -39,7 +39,7 @@ script = [
     },
     {
         "identifier": "EVENT_253_room_493_logic",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [161]
     },
     {

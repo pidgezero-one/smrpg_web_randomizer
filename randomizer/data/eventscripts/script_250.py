@@ -25,7 +25,7 @@ script = [
     },
     {
         "identifier": "EVENT_250_room_7_logic_1",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [158]
     },
     {

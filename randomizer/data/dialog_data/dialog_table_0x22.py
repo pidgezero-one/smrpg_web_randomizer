@@ -770,11 +770,11 @@ dialog_data[485] = '''   You're a little short of coins...[await]'''
 dialog_data[486] = ''' THANK YOU very much, sir!
  Please enjoy your stay here.[await]'''
 dialog_data[487] = '''[await]'''
-dialog_data[488] = ''' You have paid for only one night's
- stay.[await][page]
- If you stay longer, you'll have to
- pay for it, or work to make up the
- difference.[await]'''
+dialog_data[488] = '''        You have paid for only
+           one night's stay.[await][page]
+       If you stay longer, you'll
+     have to pay for it, or work
+      to make up the difference.[await]'''
 dialog_data[489] = ''' Would you like to stay longer?[await]
  [select]  (Yes)
  [select]  (I'll pass)[await]'''

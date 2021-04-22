@@ -4,4 +4,37 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": "EVENT_3400_check_room",
+        "command": "set_7000_to_current_level"
+    },
+    {
+        "identifier": "EVENT_3400_room_7_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7, "EVENT_3400_play_marrymore_music_indoors"]
+    },
+    {
+        "identifier": "EVENT_3400_room_9_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [9, "EVENT_3400_play_marrymore_music_indoors"]
+    },
+    {
+        "identifier": "EVENT_3400_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_3400_play_marrymore_music_indoors",
+        "command": 'fade_out_music_to_volume',
+        "args": [1, 96]
+    },
+    {
+        "identifier": "EVENT_3400_play_marrymore_music",
+        "command": 'play_music_current_volume',
+        "args": [Music._39_MARRYMORE]
+    },
+    {
+        "identifier": "EVENT_3400_play_marrymore_music_ret",
+        "command": 'ret'
+    }
+]

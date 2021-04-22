@@ -32,7 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_8_ret_1',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_8_set_3',
@@ -41,7 +42,8 @@ script = [
     },
     {
         "identifier": 'EVENT_8_ret_2',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_8_set_4',
@@ -50,7 +52,8 @@ script = [
     },
     {
         "identifier": 'EVENT_8_ret_3',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_8_set_5',
@@ -59,6 +62,7 @@ script = [
     },
     {
         "identifier": 'EVENT_8_ret_4',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     }
 ]

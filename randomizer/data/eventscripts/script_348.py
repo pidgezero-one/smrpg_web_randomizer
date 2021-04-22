@@ -6,12 +6,26 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": "EVENT_348_interaction",
+        "command": "jmp_fork_mario_on_object",
+        "args": ['EVENT_348_apply_solidity_mod_10', 'EVENT_348_run_dialog_3']
+    },
+    {
         "identifier": 'EVENT_348_run_dialog_3',
         "command": 'run_dialog',
         "args": [2319, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_348_ret_4',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_348_apply_solidity_mod_10',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, 0, [_0x6BFlags.PERMANENT]]
+    },
+    {
+        "identifier": 'EVENT_348_jmp_12',
         "command": 'ret'
     }
 ]

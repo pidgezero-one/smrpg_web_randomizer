@@ -4,4 +4,134 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_3657_jmp_if_dialog_option_b_or_c_19',
+        "command": 'jmp_if_dialog_option_b_or_c',
+        "args": ['EVENT_3657_set_short_41', 'EVENT_3657_close_dialog_34']
+    },
+    {
+        "identifier": 'EVENT_3657_set_short_20',
+        "command": 'set_short',
+        "args": [0x7024, 0x000a]
+    },
+    {
+        "identifier": 'EVENT_3657_run_event_as_subroutine_21',
+        "command": 'run_event_as_subroutine',
+        "args": [274]
+    },
+    {
+        "identifier": 'EVENT_3657_jmp_if_bit_set_22',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7049, 3, 'EVENT_3657_run_dialog_52']
+    },
+    {
+        "identifier": 'EVENT_3657_set_27',
+        "command": 'set',
+        "args": [0x70a7, 102]
+    },
+    {
+        "identifier": 'EVENT_3657_set_28',
+        "command": 'set',
+        "args": [0x7000, 10]
+    },
+    {
+        "identifier": 'EVENT_3657_set_7000_short_mem_to_7000_29',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703a]
+    },
+    {
+        "identifier": 'EVENT_3657_set_30',
+        "command": 'set',
+        "args": [0x7000, 3852]
+    },
+    {
+        "identifier": 'EVENT_3657_run_event_as_subroutine_31',
+        "command": 'run_event_as_subroutine',
+        "args": [3827]
+    },
+    {
+        "identifier": 'EVENT_3657_set_7000_to_7000_short_mem_32',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x703a]
+    },
+    {
+        "identifier": 'EVENT_3657_dec_coins_33',
+        "command": 'dec_coins'
+    },
+    {
+        "identifier": 'EVENT_3657_close_dialog_34',
+        "command": 'close_dialog'
+    },
+    {
+        "identifier": 'EVENT_3657_action_queue_async_37',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3657_action_queue_async_37_SUBSCRIPT_object_memory_clear_bit_0',
+                "command": 'object_memory_clear_bit',
+                "args": [0x30, [4]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3657_set_action_script_sync_38',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_0, 978]
+    },
+    {
+        "identifier": 'EVENT_3657_set_action_script_sync_39',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.MARIO, 395]
+    },
+    {
+        "identifier": 'EVENT_3657_ret_40',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3657_set_short_41',
+        "command": 'set_short',
+        "args": [0x7024, 0x0096]
+    },
+    {
+        "identifier": 'EVENT_3657_run_event_as_subroutine_42',
+        "command": 'run_event_as_subroutine',
+        "args": [274]
+    },
+    {
+        "identifier": 'EVENT_3657_jmp_if_bit_set_43',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7049, 3, 'EVENT_3657_run_dialog_52']
+    },
+    {
+        "identifier": 'EVENT_3657_set_48',
+        "command": 'set',
+        "args": [0x70a7, 108]
+    },
+    {
+        "identifier": 'EVENT_3657_set_49',
+        "command": 'set',
+        "args": [0x7000, 150]
+    },
+    {
+        "identifier": 'EVENT_3657_set_7000_short_mem_to_7000_50',
+        "command": 'set_7000_short_mem_to_7000',
+        "args": [0x703a]
+    },
+    {
+        "identifier": 'EVENT_3657_jmp_51',
+        "command": 'jmp',
+        "args": ['EVENT_3657_set_30']
+    },
+    {
+        "identifier": 'EVENT_3657_run_dialog_52',
+        "command": 'run_dialog',
+        "args": [3853, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+    },
+    {
+        "identifier": 'EVENT_3657_jmp_53',
+        "command": 'jmp',
+        "args": ['EVENT_3657_close_dialog_34']
+    }
+]

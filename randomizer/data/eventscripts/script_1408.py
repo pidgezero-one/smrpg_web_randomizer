@@ -32,11 +32,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1408_play_music_default_volume_13',
-        "command": 'play_music_default_volume',
-        "args": [Music._14_MARIOS_PAD]
-    },
-    {
         "identifier": 'EVENT_1408_jmp_if_bit_set_16',
         "command": 'jmp_if_bit_set',
         "args": [0x7044, 7, 'EVENT_1408_run_event_as_subroutine_25']

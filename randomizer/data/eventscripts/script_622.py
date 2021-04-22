@@ -22,7 +22,7 @@ script = [
     },
     {
         "identifier": 'EVENT_622_grant_coins_subroutine',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [159]
     },
     {
@@ -36,7 +36,7 @@ script = [
     },
     {
         "identifier": 'EVENT_622_grant_item_1_subroutine',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [160]
     },
     {
@@ -50,7 +50,7 @@ script = [
     },
     {
         "identifier": 'EVENT_622_grant_item_2_subroutine',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [160]
     },
     {

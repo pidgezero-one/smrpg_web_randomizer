@@ -4,21 +4,9 @@
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
   "partition": 32,
-  "music": Music._00_CURRENT,
+  "music": Music._14_MARIOS_PAD,
   "entrance_event": 1408,
   "event_tiles": [
-    {
-      "event": 1396,
-      "x": 10,
-      "y": 51,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 2,
-      "height": 0,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-      "byte_8_bit_4": False,
-    },
     {
       "event": 1406,
       "x": 12,
@@ -89,6 +77,24 @@ room = {
         "z_half": False,
         "f": RadialDirection.NORTHEAST,
         "x_bit_7": False
+      }
+    },
+    {
+      "x": 10,
+      "y": 51,
+      "z": 0,
+      "f": Edge.SOUTHEAST,
+      "length": 2,
+      "height": 0,
+      "nw_se_edge_active": True,
+      "ne_sw_edge_active": False,
+      "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": True,
+      "destination": Locations._008_MARIOS_PAD,
+      "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": True,
+        "byte_2_bit_1": False,
       }
     }
   ],

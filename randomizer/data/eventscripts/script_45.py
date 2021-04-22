@@ -22,29 +22,17 @@ script = [
     },
     {
         "identifier": "EVENT_45_2",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [6]
     },
     {
-        "identifier": "EVENT_45_ret_4",
-        "command": "ret"
-    },
-    {
         "identifier": "EVENT_45__2",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [7]
     },
     {
-        "identifier": "EVENT_45_ret__4",
-        "command": "ret"
-    },
-    {
         "identifier": "EVENT_45___2",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [8]
-    },
-    {
-        "identifier": "EVENT_45_ret___4",
-        "command": "ret"
     }
 ]

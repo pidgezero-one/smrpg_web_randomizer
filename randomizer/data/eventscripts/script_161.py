@@ -15,4 +15,8 @@ script = [
         "command": 'run_dialog',
         "args": [3074, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
+    {
+        "identifier": 'EVENT_161_ret',
+        "command": 'ret'
+    }
 ]

@@ -351,11 +351,6 @@ script = [
         "args": [AreaObjects.NPC_3, Rooms._021_MUSHROOM_KINGDOM_CASTLE_BRANCH_ROOM_TO_VAULTGUEST_ROOM]
     },
     {
-        "identifier": 'EVENT_2496_run_background_event_65',
-        "command": 'run_background_event',
-        "args": [343, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
-    },
-    {
         "identifier": 'EVENT_2496___remove_from_level_5',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_3, Rooms._102_MOLEVILLE_OUTSIDE_AT_EXIT_FROM_MINES]
@@ -551,11 +546,6 @@ script = [
         "identifier": 'EVENT_2496___remove_from_level_64',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_7, Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]
-    },
-    {
-        "identifier": 'EVENT_2496___remove_from_level_65',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL]
     },
     {
         "identifier": 'EVENT_2496___remove_from_level_69',

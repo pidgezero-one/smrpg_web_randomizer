@@ -203,11 +203,6 @@ script = [
         "args": [Rooms._065_MARRYMORE_CHAPEL_SANCTUARY, 7, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
-        "identifier": 'EVENT_668_summon_to_level_135',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_0, Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL]
-    },
-    {
         "identifier": 'EVENT_668_enable_controls_136',
         "command": 'enable_controls',
         "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]

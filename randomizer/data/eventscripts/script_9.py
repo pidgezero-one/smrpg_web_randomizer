@@ -242,7 +242,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_45",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_0",
@@ -251,7 +252,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_0",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_1",
@@ -260,7 +262,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_1",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_2",
@@ -269,7 +272,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_2",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_3",
@@ -278,7 +282,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_3",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_4",
@@ -287,7 +292,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_4",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_5",
@@ -296,7 +302,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_5",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_6",
@@ -305,7 +312,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_6",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_7",
@@ -314,7 +322,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_7",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_8",
@@ -323,7 +332,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_8",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_9",
@@ -332,7 +342,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_9",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_10",
@@ -341,7 +352,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_10",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_11",
@@ -350,7 +362,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_11",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_12",
@@ -359,7 +372,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_12",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_13",
@@ -368,7 +382,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_13",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_14",
@@ -377,7 +392,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_14",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_15",
@@ -386,7 +402,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_15",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_16",
@@ -395,7 +412,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_16",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_17",
@@ -404,7 +422,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_17",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_18",
@@ -413,7 +432,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_18",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_19",
@@ -422,7 +442,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_19",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_20",
@@ -431,7 +452,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_20",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_21",
@@ -440,7 +462,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_21",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_22",
@@ -449,7 +472,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_22",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_23",
@@ -458,7 +482,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_23",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_24",
@@ -467,7 +492,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_24",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_25",
@@ -476,7 +502,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_25",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_26",
@@ -485,7 +512,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_26",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_27",
@@ -494,7 +522,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_27",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_28",
@@ -503,7 +532,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_28",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_29",
@@ -512,7 +542,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_29",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_30",
@@ -521,7 +552,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_30",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_31",
@@ -530,7 +562,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_31",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_32",
@@ -539,7 +572,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_32",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_33",
@@ -548,7 +582,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_33",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_34",
@@ -557,7 +592,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_34",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_35",
@@ -566,7 +602,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_35",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_36",
@@ -575,7 +612,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_36",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_37",
@@ -584,7 +622,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_37",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_38",
@@ -593,7 +632,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_38",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_39",
@@ -602,7 +642,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_39",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_40",
@@ -611,7 +652,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_40",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_41",
@@ -620,7 +662,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_41",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_42",
@@ -629,7 +672,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_42",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_43",
@@ -638,7 +682,8 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_43",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_9_set_44",
@@ -647,6 +692,7 @@ script = [
     },
     {
         "identifier": "EVENT_9_ret_44",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     }
 ]

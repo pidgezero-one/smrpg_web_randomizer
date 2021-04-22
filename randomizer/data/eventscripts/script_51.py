@@ -32,58 +32,22 @@ script = [
     },
     {
         "identifier": "EVENT_51_tier1",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [5]
     },
     {
-        "identifier": "EVENT_51_ret_tier1_ret",
-        "command": 'run_event_as_subroutine',
-        "args": [160]
-    },
-    {
-        "identifier": "EVENT_51_ret_",
-        "command": 'ret',
-    },
-    {
         "identifier": "EVENT_51_tier2",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [6]
     },
     {
-        "identifier": "EVENT_51_ret_tier2_ret",
-        "command": 'run_event_as_subroutine',
-        "args": [160]
-    },
-    {
-        "identifier": "EVENT_51_ret__",
-        "command": 'ret',
-    },
-    {
         "identifier": "EVENT_51_tier3",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [48]
     },
     {
-        "identifier": "EVENT_51_ret_tier3_ret",
-        "command": 'run_event_as_subroutine',
-        "args": [160]
-    },
-    {
-        "identifier": "EVENT_51_ret___",
-        "command": 'ret',
-    },
-    {
         "identifier": "EVENT_51_tier4",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [45]
-    },
-    {
-        "identifier": "EVENT_51_ret_tier4_ret",
-        "command": 'run_event_as_subroutine',
-        "args": [160]
-    },
-    {
-        "identifier": "EVENT_51_ret____",
-        "command": 'ret',
     }
 ]

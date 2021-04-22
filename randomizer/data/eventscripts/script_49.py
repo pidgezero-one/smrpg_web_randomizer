@@ -17,20 +17,12 @@ script = [
     },
     {
         "identifier": "EVENT_49_2",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [10]
     },
     {
-        "identifier": "EVENT_49_ret_4",
-        "command": "ret"
-    },
-    {
         "identifier": "EVENT_49__2",
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [11]
-    },
-    {
-        "identifier": "EVENT_49_ret__4",
-        "command": "ret"
     }
 ]

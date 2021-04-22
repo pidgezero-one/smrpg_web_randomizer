@@ -61,23 +61,6 @@ script = [
         "args": [AreaObjects.NPC_2, Rooms._205_MUSHROOM_WAY_AREA_03]
     },
     {
-        "identifier": 'EVENT_2814_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_9],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2814_action_queue_async_11_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2814_action_queue_async_11_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [8]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2814_fade_in_from_black_async_12',
         "command": 'fade_in_from_black_async'
     },

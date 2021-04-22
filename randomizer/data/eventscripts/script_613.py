@@ -193,11 +193,6 @@ script = [
         "command": 'remember_last_object'
     },
     {
-        "identifier": 'EVENT_613_run_dialog_25',
-        "command": 'run_dialog',
-        "args": [2476, AreaObjects.NPC_0, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_613_action_queue_sync_26',
         "command": 'action_queue_sync',
         "args": [AreaObjects.MARIO],

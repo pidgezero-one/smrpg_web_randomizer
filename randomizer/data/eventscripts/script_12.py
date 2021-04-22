@@ -62,7 +62,8 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_9",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_12_set_0",
@@ -71,7 +72,8 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_0",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_12_set_1",
@@ -80,7 +82,8 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_1",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_12_set_2",
@@ -89,7 +92,8 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_2",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_12_set_3",
@@ -98,7 +102,8 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_3",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_12_set_4",
@@ -107,7 +112,8 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_4",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_12_set_5",
@@ -116,7 +122,8 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_5",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_12_set_6",
@@ -125,7 +132,8 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_6",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_12_set_7",
@@ -134,7 +142,8 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_7",
-        "command": "ret"
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": "EVENT_12_set_8",
@@ -143,5 +152,7 @@ script = [
     },
     {
         "identifier": "EVENT_12_ret_8",
-        "command": "ret"
-    }]
+        "command": 'jmp_to_event',
+        "args": [160]
+    }
+]

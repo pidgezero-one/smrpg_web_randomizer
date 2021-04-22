@@ -153,7 +153,7 @@ script = [
     {
         "identifier": 'EVENT_3625_disable_trigger_in_level_30',
         "command": 'disable_trigger_in_level',
-        "args": [AreaObjects.NPC_4, Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL]
+        "args": [AreaObjects.NPC_2, Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL]
     },
     {
         "identifier": 'EVENT_3625_disable_trigger_in_level_31',
@@ -341,7 +341,7 @@ script = [
     {
         "identifier": 'EVENT_3625_disable_trigger_in_level_70',
         "command": 'disable_trigger_in_level',
-        "args": [AreaObjects.NPC_4, Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL]
+        "args": [AreaObjects.NPC_2, Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL]
     },
     {
         "identifier": 'EVENT_3625_disable_trigger_in_level_71',

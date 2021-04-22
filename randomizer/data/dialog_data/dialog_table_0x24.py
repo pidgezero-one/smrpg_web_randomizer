@@ -10,7 +10,7 @@ dialog_data[3] = '''GARDENER: I'll plant the seed...[await]'''
 dialog_data[4] = '''GARDENER: Then give it fertilizer.[await]'''
 dialog_data[5] = '''[await]'''
 dialog_data[6] = '''[await]'''
-dialog_data[7] = '''[await]'''
+dialog_data[7] = '''\n            Got a Star Piece![await]'''
 dialog_data[8] = '''[await]'''
 dialog_data[9] = '''[await]'''
 dialog_data[10] = '''[await]'''
@@ -905,9 +905,9 @@ dialog_data[552] = '''[page]
  When you jump, you will be able to
  disengage yourself from the vine.[await]
  Nimbus Dept. of Transportation[await]'''
-dialog_data[553] = ''' Huh?
- There is a note in the pocket...[await][page]
- It reads:[await]
+dialog_data[553] = '''                   Huh?[delay_10]
+   There is a note in the pocket...[await][page]
+                 It reads:[await]
            [delay]“GARY WAS HERE!
             [delay]ASH IS A LOSER!”[await]'''
 dialog_data[554] = ''' If you see Samus, tell her I need her

@@ -21,26 +21,6 @@ script = [
         "args": [0x7042, 7]
     },
     {
-        "identifier": 'EVENT_320_summon_to_current_level_31',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_320_summon_to_current_level_32',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_2]
-    },
-    {
-        "identifier": 'EVENT_320_set_action_script_sync_33',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 128]
-    },
-    {
-        "identifier": 'EVENT_320_set_action_script_sync_34',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 128]
-    },
-    {
         "identifier": 'EVENT_320_fade_in_from_black_async_35',
         "command": 'fade_in_from_black_async'
     },

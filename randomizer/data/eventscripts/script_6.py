@@ -62,7 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_1',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_6_set_3',
@@ -71,7 +72,8 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_2',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_6_set_4',
@@ -80,7 +82,8 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_3',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_6_set_5',
@@ -89,7 +92,8 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_4',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_6_set_6',
@@ -98,7 +102,8 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_5',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_6_set_7',
@@ -107,7 +112,8 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_6',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_6_set_8',
@@ -116,7 +122,8 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_7',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_6_set_9',
@@ -125,7 +132,8 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_8',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_6_set_10',
@@ -134,7 +142,8 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_9',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     },
     {
         "identifier": 'EVENT_6_set_11',
@@ -143,6 +152,7 @@ script = [
     },
     {
         "identifier": 'EVENT_6_ret_10',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [160]
     }
 ]

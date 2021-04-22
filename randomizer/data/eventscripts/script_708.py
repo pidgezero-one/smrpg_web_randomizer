@@ -41,7 +41,7 @@ script = [
     },
     {
         "identifier": 'EVENT_708_prize_1',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [253]
     },
     {
@@ -50,7 +50,7 @@ script = [
     },
     {
         "identifier": 'EVENT_708_prize_2',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [252]
     },
     {
@@ -59,7 +59,7 @@ script = [
     },
     {
         "identifier": 'EVENT_708_prize_3',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [251]
     },
     {
@@ -68,7 +68,7 @@ script = [
     },
     {
         "identifier": 'EVENT_708_prize_4',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [250]
     },
     {
@@ -77,7 +77,7 @@ script = [
     },
     {
         "identifier": 'EVENT_708_prize_5',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [249]
     },
     {
@@ -86,7 +86,7 @@ script = [
     },
     {
         "identifier": 'EVENT_708_prize_6',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [248]
     },
     {

@@ -27,7 +27,7 @@ script = [
     },
     {
         "identifier": 'EVENT_626_grant_item_1_subroutine',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [160]
     },
     {
