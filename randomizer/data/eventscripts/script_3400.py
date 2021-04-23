@@ -20,6 +20,21 @@ script = [
         "args": [9, "EVENT_3400_play_marrymore_music_indoors"]
     },
     {
+        "identifier": "EVENT_3400_room_17_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [17, "EVENT_3400_play_mushroom_kingdom_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_20_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [20, "EVENT_3400_play_mushroom_kingdom_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_24_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [24, "EVENT_3400_play_sunken_ship_music"]
+    },
+    {
         "identifier": "EVENT_3400_ret",
         "command": 'ret'
     },
@@ -35,6 +50,24 @@ script = [
     },
     {
         "identifier": "EVENT_3400_play_marrymore_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_3400_play_mushroom_kingdom_music",
+        "command": 'play_music_current_volume',
+        "args": [Music._02_MUSHROOM_KINGDOM]
+    },
+    {
+        "identifier": "EVENT_3400_play_mushroom_kingdom_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_3400_play_sunken_ship_music",
+        "command": 'play_music_current_volume',
+        "args": [Music._41_SUNKEN_SHIP]
+    },
+    {
+        "identifier": "EVENT_3400_play_sunken_ship_music_ret",
         "command": 'ret'
     }
 ]

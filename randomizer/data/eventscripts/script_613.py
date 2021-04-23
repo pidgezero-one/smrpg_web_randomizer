@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_613_action_queue_async_0',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_613_action_queue_async_0_SUBSCRIPT_transfer_xyzf_pixels_0',

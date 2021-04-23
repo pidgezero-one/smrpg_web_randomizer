@@ -17,7 +17,7 @@ script = [
     },
     {
         "identifier": 'EVENT_635_grant_item_1_subroutine',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [160]
     },
     {
@@ -31,7 +31,7 @@ script = [
     },
     {
         "identifier": 'EVENT_635_grant_item_1_subroutine_',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [160]
     },
     {
@@ -45,7 +45,7 @@ script = [
     },
     {
         "identifier": 'EVENT_635_grant_item_1_subroutine__',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [160]
     },
     {

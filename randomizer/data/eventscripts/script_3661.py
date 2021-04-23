@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_3661_run_dialog_0',
         "command": 'run_dialog',
-        "args": [3845, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+        "args": [3845, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_3661_ret_1',

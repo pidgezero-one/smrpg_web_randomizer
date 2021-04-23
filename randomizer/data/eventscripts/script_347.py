@@ -6,6 +6,23 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_347_action_queue_async_0',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_347_action_queue_async_0_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_347_action_queue_async_0_SUBSCRIPT_shift_southwest_pixels_1',
+                "command": 'shift_southwest_pixels',
+                "args": [4]
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_347_fade_in_from_black_async_16',
         "command": 'fade_in_from_black_async'
     },

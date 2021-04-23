@@ -726,7 +726,8 @@ dialog_data[421] = '''[page]
  We shall attend to you in a minute.[await]'''
 dialog_data[422] = '''[page]
  We thank you very much!
- You have stayed with us [0x7000] times.[await][page]
+ You have stayed with us [0x7000]
+ time(s).[await][page]
  Like always, the bellhop shall
  guide your way.[await]
  Please enjoy your stay![await]'''

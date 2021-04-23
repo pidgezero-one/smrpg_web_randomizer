@@ -6,27 +6,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_401_remove_from_current_level_11',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
         "identifier": 'EVENT_401_jmp_if_bit_set_5',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7082, 0, 'EVENT_401_summon_to_current_level_8']
-    },
-    {
-        "identifier": 'EVENT_401_fade_in_from_black_async_6',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_401_ret_7',
-        "command": 'ret'
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7082, 0, 'EVENT_401_fade_in_from_black_async_9']
     },
     {
         "identifier": 'EVENT_401_summon_to_current_level_8',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_1]
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_401_fade_in_from_black_async_9',

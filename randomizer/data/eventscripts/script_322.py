@@ -21,53 +21,6 @@ script = [
         "args": [0x015e, []]
     },
     {
-        "identifier": 'EVENT_322_remove_from_current_level_22',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_322_remove_from_current_level_23',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2]
-    },
-    {
-        "identifier": 'EVENT_322_remove_from_current_level_24',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
-    },
-    {
-        "identifier": 'EVENT_322_remove_from_current_level_25',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4]
-    },
-    {
-        "identifier": 'EVENT_322_remove_from_current_level_26',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5]
-    },
-    {
-        "identifier": 'EVENT_322_action_queue_async_27',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_6],
-        "subscript": [
-            {
-                "identifier": 'EVENT_322_action_queue_async_27_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [15, 29, 4, RadialDirections.EAST]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_322_set_action_script_sync_28',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 128]
-    },
-    {
-        "identifier": 'EVENT_322_set_action_script_sync_29',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 138]
-    },
-    {
         "identifier": 'EVENT_322_fade_in_from_black_async_30',
         "command": 'fade_in_from_black_async'
     },

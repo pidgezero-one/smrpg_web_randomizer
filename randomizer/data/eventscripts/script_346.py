@@ -16,22 +16,8 @@ script = [
         "args": [AreaObjects.NPC_0, Rooms._020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM]
     },
     {
-        "identifier": 'EVENT_346_set_2',
-        "command": 'set',
-        "args": [0x70a7, 96]
+        "identifier": "EVENT_346_room_7_logic",
+        "command": 'jmp_to_event',
+        "args": [253]
     },
-    {
-        "identifier": 'EVENT_346_set_3',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_346_run_event_as_subroutine_4',
-        "command": 'run_event_as_subroutine',
-        "args": [3828]
-    },
-    {
-        "identifier": 'EVENT_346_ret_5',
-        "command": 'ret'
-    }
 ]
