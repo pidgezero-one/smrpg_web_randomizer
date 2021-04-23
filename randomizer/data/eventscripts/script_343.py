@@ -6,9 +6,24 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_343_jmp_if_bit_set_1',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7044, 5, 'EVENT_343_ret']
+    },
+    {
+        "identifier": 'EVENT_343_play_sound_8',
+        "command": 'play_sound',
+        "args": [Sounds._016_OPEN_DOOR, 6]
+    },
+    {
         "identifier": 'EVENT_343_apply_tile_mod_9',
         "command": 'apply_tile_mod',
         "args": [Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, 0, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_343_set_bit_10',
+        "command": 'set_bit',
+        "args": [0x7044, 5]
     },
     {
         "identifier": 'EVENT_343_ret',

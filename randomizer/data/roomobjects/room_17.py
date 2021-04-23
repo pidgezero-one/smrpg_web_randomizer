@@ -114,7 +114,7 @@ room = {
     {
       "id": 0,
       "type": ObjectType.OBJECT,
-      "initiator": Initiator.ANYTHING_EXCEPT_TOUCH_SIDE,
+      "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
       "model": 64,
       "event_script": 348,
       "action_script": 15,

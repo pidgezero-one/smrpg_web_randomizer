@@ -21,6 +21,11 @@ script = [
         "args": [0x7042, 7]
     },
     {
+        "identifier": 'EVENT_320_apply_solidity_mod_10',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, 0, [_0x6BFlags.PERMANENT]]
+    },
+    {
         "identifier": 'EVENT_320_fade_in_from_black_async_35',
         "command": 'fade_in_from_black_async'
     },
