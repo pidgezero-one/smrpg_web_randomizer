@@ -78,9 +78,10 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "byte_8_bit_4": False,
-    },
+    }
+  ],
+  "exit_fields": [
     {
-      "event": 2577,
       "x": 13,
       "y": 34,
       "z": 10,
@@ -89,10 +90,19 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "byte_8_bit_4": False,
-    }
-  ],
-  "exit_fields": [
+      "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
+      "destination": Rooms._039_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLING_ROOM,
+      "show_message": False,
+      "destination_props": {
+        "x": 16,
+        "y": 123,
+        "z": 0,
+        "z_half": False,
+        "f": RadialDirection.NORTHWEST,
+        "x_bit_7": False
+      }
+    },
     {
       "x": 11,
       "y": 50,

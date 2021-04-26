@@ -1760,29 +1760,9 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_3600_set_270',
-        "command": 'set',
-        "args": [0x70b8, 3]
-    },
-    {
-        "identifier": 'EVENT_3600_play_sound_271',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_3600_set_272',
-        "command": 'set',
-        "args": [0x70a7, 109]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_273',
-        "command": 'run_dialog',
-        "args": [513, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_3600_run_event_as_subroutine_274',
-        "command": 'run_event_as_subroutine',
-        "args": [3599]
+        "identifier": "EVENT_3600_item_grant",
+        "command": "run_event_as_subroutine",
+        "args": [253]
     },
     {
         "identifier": 'EVENT_3600_pause_277',

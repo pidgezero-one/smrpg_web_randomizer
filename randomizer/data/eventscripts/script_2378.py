@@ -6,34 +6,19 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2378_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708c, 1, 'EVENT_2378_ret_6']
-    },
-    {
-        "identifier": 'EVENT_2378_set_bit_1',
-        "command": 'set_bit',
-        "args": [0x708c, 1]
-    },
-    {
         "identifier": 'EVENT_2378_remove_from_level_2',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_8, Rooms._035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS]
     },
     {
+        "identifier": 'EVENT_2378_remove_from_current_level_95',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_8]
+    },
+    {
         "identifier": 'EVENT_2378_play_sound_3',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_2378_add_frog_coins_4',
-        "command": 'add_frog_coins',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_2378_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [3163, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "command": 'run_event_as_subroutine',
+        "args": [253]
     },
     {
         "identifier": 'EVENT_2378_ret_6',

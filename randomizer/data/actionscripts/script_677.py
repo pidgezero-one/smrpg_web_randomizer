@@ -42,7 +42,7 @@ script = [
     {
         "identifier": 'ACTION_677_db_7',
         "command": 'jmp_if_object_in_air',
-        "args": [AreaObjects.DUMMY_0X07, 'ACTION_677_jmp_if_bit_set_6']
+        "args": [AreaObjects.DUMMY_0X07, 'ACTION_677_pause_5']
     },
     {
         "identifier": 'ACTION_677_jmp_8',

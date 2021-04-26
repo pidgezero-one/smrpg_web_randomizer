@@ -4,4 +4,23 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": "EVENT_238_current_lvl",
+        "command": 'set_7000_to_current_level'
+    },
+    {
+        "identifier": "EVENT_238_room_41_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [41, "EVENT_238_room_41_logic"]
+    },
+    {
+        "identifier": "EVENT_238_cancel",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_238_room_41_logic",
+        "command": 'jmp_to_event',
+        "args": [1294]
+    },
+]

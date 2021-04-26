@@ -35,6 +35,56 @@ script = [
         "args": [24, "EVENT_3400_play_sunken_ship_music"]
     },
     {
+        "identifier": "EVENT_3400_room_27_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [27, "EVENT_3400_play_sunken_ship_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_28_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [28, "EVENT_3400_play_sunken_ship_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_31_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [31, "EVENT_3400_play_mushroom_kingdom_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_33_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [33, "EVENT_3400_play_yoster_isle_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_34_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [34, "EVENT_3400_play_yoster_isle_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_35_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [35, "EVENT_3400_play_booster_tower_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_36_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [36, "EVENT_3400_play_booster_tower_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_39_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [39, "EVENT_3400_play_booster_tower_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_41_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [41, "EVENT_3400_play_booster_tower_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_48_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [48, "EVENT_3400_play_booster_tower_music"]
+    },
+    {
         "identifier": "EVENT_3400_ret",
         "command": 'ret'
     },
@@ -68,6 +118,24 @@ script = [
     },
     {
         "identifier": "EVENT_3400_play_sunken_ship_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_3400_play_yoster_isle_music",
+        "command": 'play_music_current_volume',
+        "args": [Music._04_YOSTER_ISLAND]
+    },
+    {
+        "identifier": "EVENT_3400_play_yoster_isle_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_3400_play_booster_tower_music",
+        "command": 'play_music_current_volume',
+        "args": [Music._32_AND_MY_NAMES_BOOSTER]
+    },
+    {
+        "identifier": "EVENT_3400_play_booster_tower_music_ret",
         "command": 'ret'
     }
 ]

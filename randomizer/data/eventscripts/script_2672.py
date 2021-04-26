@@ -718,14 +718,13 @@ script = [
         "command": 'ret'
     },
     {
+        "identifier": "EVENT_2672_close_1",
+        "command": "close_dialog"
+    },
+    {
         "identifier": 'EVENT_2672_play_sound_68',
         "command": 'play_sound',
         "args": [Sounds._087_CORRECT_SIGNAL, 6]
-    },
-    {
-        "identifier": 'EVENT_2672_set_7000_to_70A0_short_mem_69',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70c9]
     },
     {
         "identifier": 'EVENT_2672_inc_72',
@@ -739,8 +738,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2672_jmp_if_7000_equals_short_70',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_2672_jmp_if_bit_set_137']
+        "command": 'run_event_as_subroutine',
+        "args": [2671]
+    },
+    {
+        "identifier": 'EVENT_2672_jmp_if_7000_equals_short_74_',
+        "command": 'jmp_if_comparison_result_is_greater_or_equal',
+        "args": ['EVENT_2672_jmp_if_bit_set_137']
     },
     {
         "identifier": 'EVENT_2672_jmp_if_7000_equals_short_74',
@@ -760,17 +764,16 @@ script = [
     {
         "identifier": 'EVENT_2672_jmp_77',
         "command": 'jmp',
-        "args": ['EVENT_2672_set_random_93']
+        "args": ['EVENT_2672_consolation_grant']
+    },
+    {
+        "identifier": "EVENT_2672_close_2",
+        "command": "close_dialog"
     },
     {
         "identifier": 'EVENT_2672_play_sound_78',
         "command": 'play_sound',
         "args": [Sounds._088_WRONG_SIGNAL, 6]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_79',
-        "command": 'run_dialog',
-        "args": [2552, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_2672_set_7000_to_70A0_short_mem_80',
@@ -798,10 +801,6 @@ script = [
         "args": [0x7043, 2]
     },
     {
-        "identifier": 'EVENT_2672_pause_script_resume_on_next_dialog_page_a_85',
-        "command": 'pause_script_resume_on_next_dialog_page_a'
-    },
-    {
         "identifier": 'EVENT_2672_jmp_if_bit_set_86',
         "command": 'jmp_if_bit_set',
         "args": [0x7044, 5, 'EVENT_2672_set_action_script_sync_89']
@@ -812,9 +811,14 @@ script = [
         "args": [AreaObjects.NPC_0, 894]
     },
     {
+        "identifier": 'EVENT_2672_pause_',
+        "command": 'pause',
+        "args": [90]
+    },
+    {
         "identifier": 'EVENT_2672_jmp_88',
         "command": 'jmp',
-        "args": ['EVENT_2672_unsync_dialog_90']
+        "args": ['EVENT_2672_set_action_script_sync_91']
     },
     {
         "identifier": 'EVENT_2672_set_action_script_sync_89',
@@ -822,8 +826,9 @@ script = [
         "args": [AreaObjects.NPC_0, 895]
     },
     {
-        "identifier": 'EVENT_2672_unsync_dialog_90',
-        "command": 'unsync_dialog'
+        "identifier": 'EVENT_2672_pause',
+        "command": 'pause',
+        "args": [90]
     },
     {
         "identifier": 'EVENT_2672_set_action_script_sync_91',
@@ -836,39 +841,9 @@ script = [
         "args": ['EVENT_2672_clear_bit_144']
     },
     {
-        "identifier": 'EVENT_2672_set_random_93',
-        "command": 'set_random',
-        "args": [0x7000, 21]
-    },
-    {
-        "identifier": 'EVENT_2672_mem_compare_val_94',
-        "command": 'mem_compare_val',
-        "args": [3]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_comparison_result_is_lesser_95',
-        "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_2672_jmp_if_bit_set_96']
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_if_bit_set__96',
+        "identifier": 'EVENT_2672_consolation_grant',
         "command": 'run_event_as_subroutine',
-        "args": [5]
-    },
-    {
-        "identifier": 'EVENT_2672_play_sound_104',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_2672_run_dialog_105',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_2672_put_inventory_112',
-        "command": 'put_inventory',
-        "args": [0x70A7]
+        "args": [2670]
     },
     {
         "identifier": 'EVENT_2672_jmp_113',
@@ -876,29 +851,24 @@ script = [
         "args": ['EVENT_2672_clear_bit_144']
     },
     {
-        "identifier": 'EVENT_2672_jmp_if_bit_set_96',
-        "command": 'run_event_as_subroutine',
-        "args": [7]
-    },
-    {
-        "identifier": 'EVENT_2672_jmp_119',
-        "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_104']
-    },
-    {
         "identifier": 'EVENT_2672_set_132',
         "command": 'set',
         "args": [0x70a7, 107]
     },
     {
-        "identifier": 'EVENT_2672_jmp_133',
+        "identifier": 'EVENT_2672_RE_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [160]
+    },
+    {
+        "identifier": 'EVENT_2672_jmp_113_',
         "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_104']
+        "args": ['EVENT_2672_clear_bit_144']
     },
     {
         "identifier": 'EVENT_2672_jmp_if_bit_set_137',
         "command": 'jmp_if_bit_set',
-        "args": [0x7099, 6, 'EVENT_2672_set_random_93']
+        "args": [0x7099, 6, 'EVENT_2672_consolation_grant']
     },
     {
         "identifier": 'EVENT_2672_set_bit_138',
@@ -911,19 +881,9 @@ script = [
         "args": [38, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2672_set_140',
-        "command": 'set',
-        "args": [0x70a7, 174]
-    },
-    {
-        "identifier": 'EVENT_2672_set_141',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_2672_run_event_as_subroutine_142',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [253]
     },
     {
         "identifier": 'EVENT_2672_clear_bit_144',

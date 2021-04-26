@@ -28,12 +28,12 @@ script = [
     {
         "identifier": 'EVENT_2673_jmp_4',
         "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_78']
+        "args": ['EVENT_2672_close_2']
     },
     {
         "identifier": 'EVENT_2673_jmp_5',
         "command": 'jmp',
-        "args": ['EVENT_2672_play_sound_68']
+        "args": ['EVENT_2672_close_1']
     },
     {
         "identifier": 'EVENT_2673_ret_6',

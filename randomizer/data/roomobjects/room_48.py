@@ -37,7 +37,7 @@ room = {
       "type": ObjectType.CHEST,
       "initiator": Initiator.HIT_FROM_BELOW,
       "model": 94,
-      "event_script": 3153,
+      "event_script": 247,
       "action_script": 14,
       "speed": 0,
       "star_offset": 10,

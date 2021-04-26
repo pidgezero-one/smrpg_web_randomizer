@@ -228,17 +228,12 @@ script = [
     {
         "identifier": 'EVENT_476_jmp_if_bit_clear_188',
         "command": 'jmp_if_bit_clear',
-        "args": [0x704c, 6, 'EVENT_476_db_190']
+        "args": [0x704c, 6, 'EVENT_476_action_queue_sync_191']
     },
     {
         "identifier": 'EVENT_476_summon_to_current_level_189',
         "command": 'summon_to_current_level',
         "args": [AreaObjects.NPC_13]
-    },
-    {
-        "identifier": 'EVENT_476_db_190',
-        "command": 'db',
-        "args": [0xfd, 0x8e, 0xb2, 0x07, 0xb1]
     },
     {
         "identifier": 'EVENT_476_action_queue_sync_191',
@@ -284,8 +279,22 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_476_fade_in_from_black_async__23',
+        "command": 'fade_in_from_black_sync'
+    },
+    {
         "identifier": 'EVENT_476_pause_script_until_effect_done_194',
         "command": 'pause_script_until_effect_done'
+    },
+    {
+        "identifier": 'EVENT_476_pause_195',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_476_play_sound_196',
+        "command": 'play_sound',
+        "args": [Sounds._062_BIG_YOSHI_TALK, 6]
     },
     {
         "identifier": 'EVENT_476_pause_198',

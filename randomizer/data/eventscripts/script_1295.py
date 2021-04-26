@@ -164,11 +164,6 @@ script = [
         "args": [AreaObjects.NPC_5],
         "subscript": [
             {
-                "identifier": 'EVENT_1295_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
                 "identifier": 'EVENT_1295_action_queue_sync_9_SUBSCRIPT_shift_southeast_pixels_1',
                 "command": 'shift_southeast_pixels',
                 "args": [8]

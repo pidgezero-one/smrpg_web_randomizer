@@ -1760,7 +1760,11 @@ class Mushroom(Item):
     basic = True
     vanilla_shop = True
     hard_tier = 1
-
+    dialog_replacements = [
+        (2908, ''' Item #1: A “Triple Healer”![await]\n It's sure to help any new\n adventurer out in their travels.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Triple Healer”.[await]\n It's sure to help any new\n adventurer out in their travels.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Triple Healer”.[await]\n It's sure to help any new\n adventurer out in their travels.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
 
 class MidMushroom(Item):
     index = 97
@@ -1919,6 +1923,11 @@ class YoshiCookie(Item):
     price = 100
     rare = True
     hard_tier = 1
+    dialog_replacements = [
+        (2908, ''' Item #1: A “Summoner's Snack”![await]\n If a friend helps you out in battle,\n they probably deserve a treat.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Summoner's Snack”.[await]\n If a friend helps you out in battle,\n they probably deserve a treat.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Summoner's Snack”.[await]\n If a friend helps you out in battle,\n they probably deserve a treat.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
 
 
 class PureWater(Item):

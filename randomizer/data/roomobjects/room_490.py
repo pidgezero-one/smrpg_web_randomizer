@@ -5,7 +5,7 @@ from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, 
 room = {
   "partition": 12,
   "music": Music._02_MUSHROOM_KINGDOM,
-  "entrance_event": 344,
+  "entrance_event": 261,
   "event_tiles": [
     {
       "event": 263,

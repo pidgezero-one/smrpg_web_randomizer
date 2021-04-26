@@ -11,37 +11,17 @@ script = [
         "args": [AreaObjects.NPC_5]
     },
     {
-        "identifier": 'EVENT_1310_pause_1',
-        "command": 'pause',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_1310_set_2',
-        "command": 'set',
-        "args": [0x70a7, 140]
-    },
-    {
-        "identifier": 'EVENT_1310_set_3',
-        "command": 'set',
-        "args": [0x7000, 2802]
-    },
-    {
-        "identifier": 'EVENT_1310_run_event_as_subroutine_4',
-        "command": 'run_event_as_subroutine',
-        "args": [3828]
-    },
-    {
         "identifier": 'EVENT_1310_remove_from_level_5',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_5, Rooms._041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS]
     },
     {
-        "identifier": 'EVENT_1310_ret_6',
-        "command": 'ret'
+        "identifier": 'EVENT_1310_run_event_as_subroutine_4',
+        "command": 'run_event_as_subroutine',
+        "args": [253]
     },
     {
-        "identifier": 'EVENT_1310_set_bit_7',
-        "command": 'set_bit',
-        "args": [0x7054, 2]
+        "identifier": 'EVENT_1310_ret_6',
+        "command": 'ret'
     }
 ]

@@ -11,16 +11,6 @@ script = [
         "args": [0x708b, 3, 'EVENT_2575_ret_8']
     },
     {
-        "identifier": 'EVENT_2575_jmp_if_bit_set_1',
-        "command": 'jmp_if_bit_set',
-        "args": [0x708d, 3, 'EVENT_2575_ret_8']
-    },
-    {
-        "identifier": 'EVENT_2575_set_bit_2',
-        "command": 'set_bit',
-        "args": [0x708d, 3]
-    },
-    {
         "identifier": 'EVENT_2575_remove_from_current_level_3',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_1]

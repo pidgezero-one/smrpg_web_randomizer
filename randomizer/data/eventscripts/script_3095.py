@@ -4,4 +4,44 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_3095_play_sound_103',
+        "command": 'play_sound',
+        "args": [Sounds._027_FOUND_AN_ITEM, 6]
+    },
+    {
+        "identifier": 'EVENT_3095_run_dialog_104',
+        "command": 'run_dialog',
+        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+    },
+    {
+        "identifier": 'EVENT_3095_set_19',
+        "command": 'set',
+        "args": [0x70b8, 3]
+    },
+    {
+        "identifier": 'EVENT_3095_dec',
+        "command": "dec",
+        "args": [0x70B8]
+    },
+    {
+        "identifier": 'EVENT_3095_put_inventory_105',
+        "command": 'put_inventory',
+        "args": [0x70a7]
+    },
+    {
+        "identifier": 'EVENT_3095_check_multiplier',
+        "command": 'jmp_if_var_equals_short',
+        "args": [0x70B8, 0, 'EVENT_3095_ret_106']
+    },
+    {
+        "identifier": 'EVENT_3095_loop',
+        "command": 'jmp',
+        "args": ['EVENT_3095_dec']
+    },
+    {
+        "identifier": 'EVENT_3095_ret_106',
+        "command": 'ret'
+    }
+]

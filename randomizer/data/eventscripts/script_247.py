@@ -25,6 +25,31 @@ script = [
         "args": [24, "EVENT_247_room_24_logic"]
     },
     {
+        "identifier": "EVENT_247_room_31_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [31, "EVENT_247_room_31_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_33_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [33, "EVENT_247_room_33_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_35_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [35, "EVENT_247_room_35_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_36_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [36, "EVENT_247_room_36_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_48_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [48, "EVENT_247_room_48_logic"]
+    },
+    {
         "identifier": "EVENT_247_room_325_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [325, "EVENT_247_room_17_325_logic"]
@@ -47,5 +72,40 @@ script = [
         "identifier": "EVENT_247_room_24_logic",
         "command": 'jmp_to_event',
         "args": [3072]
-    }
+    },
+    {
+        "identifier": "EVENT_247_room_31_logic",
+        "command": 'set',
+        "args": [0x70BC, 0]
+    },
+    {
+        "identifier": "EVENT_247_room_31_logic_2",
+        "command": 'jmp_to_event',
+        "args": [3074]
+    },
+    {
+        "identifier": "EVENT_247_room_33_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_247_room_35_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_247_room_36_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_247_room_48_logic",
+        "command": 'set',
+        "args": [0x70A7, 74]
+    },
+    {
+        "identifier": "EVENT_247_room_48_logic_2",
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
 ]

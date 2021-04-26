@@ -15,6 +15,11 @@ script = [
         "args": [7, "EVENT_252_room_7_logic"]
     },
     {
+        "identifier": "EVENT_252_room_34_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [34, "EVENT_252_room_34_logic"]
+    },
+    {
         "identifier": "EVENT_252_cancel",
         "command": 'ret'
     },
@@ -29,7 +34,17 @@ script = [
         "args": [158]
     },
     {
-        "identifier": "EVENT_252_room_7_cancel",
+        "identifier": 'EVENT_252_room_34_logic',
+        "command": 'set',
+        "args": [0x70a7, 161]
+    },
+    {
+        "identifier": "EVENT_252_room_34_logic_1",
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
+        "identifier": "EVENT_252_room_34_cancel",
         "command": 'ret'
     }
 ]

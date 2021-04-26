@@ -48,7 +48,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2401_summon_to_current_level_insert',
-        "command": 'summon_to_current_level',
+        "command": 'summon_to_current_level_at_marios_coords',
         "args": [AreaObjects.NPC_0]
     },
     {

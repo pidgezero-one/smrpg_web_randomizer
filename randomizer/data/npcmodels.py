@@ -648,11 +648,11 @@ models[27] = {
   "byte6_bit2": False
 } # 0x1db8bd
 models[28] = {
-  "sprite": SpriteName._956_NORMAL_YELLOW_5PRONGED_STAR,
+  "sprite": SpriteName._171_SPARKLES_FROM_STAR_PIECE,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
-  "show_shadow": True,
+  "show_shadow": False,
   "shadow": ShadowSize._00_OVAL_SMALL,
   "y_pixel_shift": 1,
   "acute_axis": 3,
