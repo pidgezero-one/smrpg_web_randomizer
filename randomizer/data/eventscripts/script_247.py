@@ -6,10 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": "EVENT_247_current_lvl",
-        "command": 'set_7000_to_current_level'
-    },
-    {
         "identifier": "EVENT_247_room_9_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [9, "EVENT_247_room_9_logic"]
@@ -48,6 +44,16 @@ script = [
         "identifier": "EVENT_247_room_48_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [48, "EVENT_247_room_48_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_59_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [59, "EVENT_247_room_59_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_60_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [60, "EVENT_247_room_60_logic"]
     },
     {
         "identifier": "EVENT_247_room_325_jump",
@@ -100,12 +106,17 @@ script = [
     },
     {
         "identifier": "EVENT_247_room_48_logic",
-        "command": 'set',
-        "args": [0x70A7, 74]
+        "command": 'jmp_to_event',
+        "args": [3089]
     },
     {
-        "identifier": "EVENT_247_room_48_logic_2",
+        "identifier": "EVENT_247_room_59_logic",
         "command": 'jmp_to_event',
-        "args": [160]
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_247_room_60_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
     },
 ]

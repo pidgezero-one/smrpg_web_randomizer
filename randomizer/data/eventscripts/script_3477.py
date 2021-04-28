@@ -53,6 +53,6 @@ script = [
     {
         "identifier": 'EVENT_3477_item_grant',
         "command": 'jmp_to_event',
-        "args": [247]
+        "args": [172]
     }
 ]

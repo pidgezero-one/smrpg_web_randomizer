@@ -6,10 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": "EVENT_252_current_lvl",
-        "command": 'set_7000_to_current_level'
-    },
-    {
         "identifier": "EVENT_252_room_7_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [7, "EVENT_252_room_7_logic"]

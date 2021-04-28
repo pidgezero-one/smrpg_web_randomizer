@@ -152,7 +152,219 @@ script = [
         "args": [0x7076, 0]
     },
     {
-        "identifier": 'EVENT_3072_set_7000_to_70A0_short_mem_30',
+        "identifier": 'EVENT_3072_jmp_if_bit_clear_64',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7056, 0, 'EVENT_3072_check_boss_bit']
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_var_equals_byte_65',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70d5, 0, 'EVENT_3072_set_74']
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_var_equals_byte_66',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70d5, 1, 'EVENT_3072_set_77']
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_var_equals_byte_67',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70d5, 2, 'EVENT_3072_set_80']
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_var_equals_byte_68',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70d5, 3, 'EVENT_3072_set_83']
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_var_equals_byte_69',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70d5, 4, 'EVENT_3072_set_86']
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_var_equals_byte_70',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70d5, 5, 'EVENT_3072_set_89']
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_var_equals_byte_71',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70d5, 6, 'EVENT_3072_set_92']
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_var_equals_byte_72',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70d5, 7, 'EVENT_3072_set_92']
+    },
+    {
+        "identifier": 'EVENT_3072_ret_73',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3072_check_boss_bit',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7056, 1, 'EVENT_3072_set_7000_to_70A0_short_mem_95']
+    },
+    {
+        "identifier": 'EVENT_3072_check_21_bosses',
+        "command": 'mem_compare',
+        "args": [0x70E6, 21]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_21',
+        "command": 'jmp_if_comparison_result_is_greater_or_equal',
+        "args": ['EVENT_3072_set_92']
+    },
+    {
+        "identifier": 'EVENT_3072_check_15_bosses',
+        "command": 'mem_compare',
+        "args": [0x70E6, 15]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_15',
+        "command": 'jmp_if_comparison_result_is_greater_or_equal',
+        "args": ['EVENT_3072_set_89']
+    },
+    {
+        "identifier": 'EVENT_3072_check_10_bosses',
+        "command": 'mem_compare',
+        "args": [0x70E6, 10]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_10',
+        "command": 'jmp_if_comparison_result_is_greater_or_equal',
+        "args": ['EVENT_3072_set_86']
+    },
+    {
+        "identifier": 'EVENT_3072_check_6_bosses',
+        "command": 'mem_compare',
+        "args": [0x70E6, 6]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_6',
+        "command": 'jmp_if_comparison_result_is_greater_or_equal',
+        "args": ['EVENT_3072_set_83']
+    },
+    {
+        "identifier": 'EVENT_3072_check_3_bosses',
+        "command": 'mem_compare',
+        "args": [0x70E6, 3]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_3',
+        "command": 'jmp_if_comparison_result_is_greater_or_equal',
+        "args": ['EVENT_3072_set_80']
+    },
+    {
+        "identifier": 'EVENT_3072_check_1_bosses',
+        "command": 'mem_compare',
+        "args": [0x70E6, 1]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_if_1',
+        "command": 'jmp_if_comparison_result_is_greater_or_equal',
+        "args": ['EVENT_3072_set_77']
+    },
+    {
+        "identifier": 'EVENT_3072_set_74',
+        "command": 'set',
+        "args": [0x70a7, 16]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_75',
+        "command": 'jmp',
+        "args": ['EVENT_3072_set_7000_to_70A0_short_mem_95']
+    },
+    {
+        "identifier": 'EVENT_3072_ret_76',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3072_set_77',
+        "command": 'set',
+        "args": [0x70a7, 17]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_78',
+        "command": 'jmp',
+        "args": ['EVENT_3072_set_7000_to_70A0_short_mem_95']
+    },
+    {
+        "identifier": 'EVENT_3072_ret_79',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3072_set_80',
+        "command": 'set',
+        "args": [0x70a7, 18]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_81',
+        "command": 'jmp',
+        "args": ['EVENT_3072_set_7000_to_70A0_short_mem_95']
+    },
+    {
+        "identifier": 'EVENT_3072_ret_82',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3072_set_83',
+        "command": 'set',
+        "args": [0x70a7, 19]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_84',
+        "command": 'jmp',
+        "args": ['EVENT_3072_set_7000_to_70A0_short_mem_95']
+    },
+    {
+        "identifier": 'EVENT_3072_ret_85',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3072_set_86',
+        "command": 'set',
+        "args": [0x70a7, 20]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_87',
+        "command": 'jmp',
+        "args": ['EVENT_3072_set_7000_to_70A0_short_mem_95']
+    },
+    {
+        "identifier": 'EVENT_3072_ret_88',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3072_set_89',
+        "command": 'set',
+        "args": [0x70a7, 21]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_90',
+        "command": 'jmp',
+        "args": ['EVENT_3072_set_7000_to_70A0_short_mem_95']
+    },
+    {
+        "identifier": 'EVENT_3072_ret_91',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3072_set_92',
+        "command": 'set',
+        "args": [0x70a7, 23]
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_93',
+        "command": 'jmp',
+        "args": ['EVENT_3072_set_7000_to_70A0_short_mem_95']
+    },
+    {
+        "identifier": 'EVENT_3072_ret_94',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3072_set_7000_to_70A0_short_mem_95',
         "command": 'set_7000_to_70A0_short_mem',
         "args": [0x70a7]
     },

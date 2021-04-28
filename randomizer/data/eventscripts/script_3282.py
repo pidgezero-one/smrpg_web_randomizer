@@ -434,7 +434,7 @@ script = [
     {
         "identifier": 'EVENT_3282_star_piece',
         "command": 'run_event_as_subroutine',
-        "args": [167]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_3282_pause_109',

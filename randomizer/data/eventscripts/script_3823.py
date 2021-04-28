@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_3823_logic',
         "command": 'run_event_as_subroutine',
-        "args": [252]
+        "args": [179]
     },
     {
         "identifier": 'EVENT_3823_ret_26',

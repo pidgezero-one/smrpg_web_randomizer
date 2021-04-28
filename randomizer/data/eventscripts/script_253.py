@@ -6,10 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": "EVENT_253_current_lvl",
-        "command": 'set_7000_to_current_level'
-    },
-    {
         "identifier": "EVENT_253_room_7_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [7, 'EVENT_253_room_7_set']
@@ -40,9 +36,19 @@ script = [
         "args": [41, 'EVENT_253_room_41_set']
     },
     {
+        "identifier": "EVENT_253_room_67_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [67, 'EVENT_253_room_67_set']
+    },
+    {
         "identifier": "EVENT_253_room_493_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [493, "EVENT_253_room_493_logic"]
+    },
+    {
+        "identifier": "EVENT_253_pandorite_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [512, 'EVENT_253_pandorite_set']
     },
     {
         "identifier": "EVENT_253_cancel",
@@ -104,8 +110,28 @@ script = [
         "args": [160]
     },
     {
+        "identifier": 'EVENT_253_room_67_set',
+        "command": 'set',
+        "args": [0x70a7, 7]
+    },
+    {
+        "identifier": "EVENT_253_room_67_logic",
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
         "identifier": "EVENT_253_room_493_logic",
         "command": 'jmp_to_event',
         "args": [161]
+    },
+    {
+        "identifier": 'EVENT_253_pandorite_set',
+        "command": 'set',
+        "args": [0x70a7, 87]
+    },
+    {
+        "identifier": "EVENT_253_pandorite_logic",
+        "command": 'jmp_to_event',
+        "args": [160]
     },
 ]

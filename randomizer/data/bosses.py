@@ -978,6 +978,19 @@ class AxemRangers(BossAndStarLocation):
     ]
     original_boss = 245
 
+class Chester(BowsersKeepLocation):
+    pack_number = 235
+    battlefield = Battlefields.BowsersKeep
+    music = BattleMusic.Normal 
+    model = {**models[199]}
+    target_npcs = [
+        {
+            "room": Rooms._461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB,
+            "npcs": [4]
+        }
+    ]
+    original_boss = 139
+
 
 class Magikoopa(BowsersKeepLocation):
     star_address = 0x1e9a1b

@@ -266,7 +266,7 @@ room = {
       "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
       "model": 479,
       "event_script": 256,
-      "action_script": 247,
+      "action_script": 172,
       "speed": 0,
       "npc_id_offset": 0,
       "event_offset": 0,

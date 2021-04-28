@@ -1090,7 +1090,6 @@ class Pandorite(Enemy):
         (2560, '''SNIFIT 1: Hello there.[await]\n Pandorite's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
         (2572, '''SNIFIT 2: Please refrain\n from bothering Pandorite.[await]'''),
         (2831, '''PANDORITE: There's not much to do\n around here.[await]'''),
-        (2832, ''' Yo! You look tired.[delay] How 'bout a\n night on the house?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2838, ''' You will find Pandorite...\n in his house. He is...the most\n respected person here.[await]'''),
         (3044, '''PANDORITE: Now this should be\n interesting. Can you beat THE\n master, Mario?[await]'''),
         (3338, ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Ghost-that.[await]'''),
@@ -4548,6 +4547,46 @@ class Chester(Enemy):
     xp = 150
     coins = 200
     yoshi_cookie_item = items.Mushroom
+
+    
+    # shuffled overworld sprites
+    sprite_width = 37
+    sprite_height = 40
+
+    model_small = {
+        **models[199],
+        "extra_props": {
+            "is_empty": True,
+            "sequence": 4,
+            "freeze": True
+        }
+    }
+    model_large = {
+        **models[395],
+        "sprite": SpriteName._395_CHESTER,
+    }
+    dialog_replacements = [
+        (49,'''CHESTER: Go on, take it. Just let\n me go back to sleep.[await]'''),
+        (1660, ''' Quit draggin' your feet! Get in\n here and let's fight![await]'''),
+        (1694, '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Chester's place.[await]'''),
+        (1695, '''PIRATE: That's AMAZING!\n No one's EVER whipped \nCHESTER!![await]'''),
+        (1778, '''CHESTER: (How embarrassing...)[await]'''),
+        (1780, '''CHESTER: You know, I'm kind of a\n big deal over in Bowser's Keep.[await]'''),
+        (1781, '''CHESTER: This is unnecessary. Get\n off me![await]'''),
+        (1784, ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1792, ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1793, ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (2061, '''CHEF TORTE: Zees cake, ve make\n it look like mimic! It is...\n masterpiece![await]'''),
+        (2504, '''CHESTER: Don't bother me unless\n you have found [0x7024] more items.[await]'''),
+        (2560, '''SNIFIT 1: Hello there.[await]\n Chester's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2572, '''SNIFIT 2: Please refrain\n from bothering Chester.[await]'''),
+        (2831, '''CHESTER: This town is pretty\n quiet.[await]'''),
+        (2838, ''' You will find Chester...\n in his house. He is...the most\n respected person here.[await]'''),
+        (3044, '''\n   CHESTER: Now THIS I gotta see.[0][await]'''),
+        (3338, ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Dragon-that.[await]'''),
+        (3352, '''\n  CHESTER: I don't even have legs![await]'''),
+        (3353, '''\n  CHESTER: I don't even have legs![await]'''),
+    ]
 
 
 class CorkpediteBody(Enemy):

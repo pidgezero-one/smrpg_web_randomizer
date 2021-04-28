@@ -42,7 +42,7 @@ script = [
     {
         "identifier": 'EVENT_708_prize_1',
         "command": 'jmp_to_event',
-        "args": [253]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_708_return_if_prize_1',
@@ -51,7 +51,7 @@ script = [
     {
         "identifier": 'EVENT_708_prize_2',
         "command": 'jmp_to_event',
-        "args": [252]
+        "args": [179]
     },
     {
         "identifier": 'EVENT_708_return_if_prize_2',
@@ -60,7 +60,7 @@ script = [
     {
         "identifier": 'EVENT_708_prize_3',
         "command": 'jmp_to_event',
-        "args": [251]
+        "args": [180]
     },
     {
         "identifier": 'EVENT_708_return_if_prize_3',
@@ -69,7 +69,7 @@ script = [
     {
         "identifier": 'EVENT_708_prize_4',
         "command": 'jmp_to_event',
-        "args": [250]
+        "args": [181]
     },
     {
         "identifier": 'EVENT_708_return_if_prize_4',
@@ -78,7 +78,7 @@ script = [
     {
         "identifier": 'EVENT_708_prize_5',
         "command": 'jmp_to_event',
-        "args": [249]
+        "args": [182]
     },
     {
         "identifier": 'EVENT_708_return_if_prize_5',
@@ -87,7 +87,7 @@ script = [
     {
         "identifier": 'EVENT_708_prize_6',
         "command": 'jmp_to_event',
-        "args": [248]
+        "args": [183]
     },
     {
         "identifier": 'EVENT_708_return_if_prize_6',

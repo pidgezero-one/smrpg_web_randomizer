@@ -21,6 +21,31 @@ script = [
         "args": [AreaObjects.NPC_1, 43]
     },
     {
+        "identifier": "EVENT_3497_jmp_if_bit_",
+        "command": "jmp_if_bit_set",
+        "args": [0x7078, 6, 'EVENT_3497_pause_3']
+    },
+    {
+        "identifier": "EVENT_3497_pause",
+        "command": "pause",
+        "args": [1]
+    },
+    {
+        "identifier": "EVENT_3497_jmp_if_bit",
+        "command": "jmp_if_bit_set",
+        "args": [0x7078, 6, "EVENT_3497_jmp_2"]
+    },
+    {
+        "identifier": "EVENT_3497_jmp",
+        "command": "jmp",
+        "args": ["EVENT_3497_pause"]
+    },
+    {
+        "identifier": "EVENT_3497_jmp_2",
+        "command": "run_event_as_subroutine",
+        "args": [241]
+    },
+    {
         "identifier": 'EVENT_3497_pause_3',
         "command": 'pause',
         "args": [1]

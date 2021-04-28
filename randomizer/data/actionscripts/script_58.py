@@ -124,7 +124,7 @@ script = [
     {
         "identifier": 'ACTION_58_db_24',
         "command": 'jmp_if_object_within_range_same_z',
-        "args": [AreaObjects.MARIO, 192, 2, 'ACTION_58_jmp_25']
+        "args": [AreaObjects.MARIO, 192, 2, 'ACTION_58_visibility_on_26']
     },
     {
         "identifier": 'ACTION_58_jmp_25',

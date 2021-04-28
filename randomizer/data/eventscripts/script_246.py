@@ -6,13 +6,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": "EVENT_246_current_lvl",
-        "command": 'set_7000_to_current_level'
-    },
-    {
         "identifier": "EVENT_246_room_31_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [31, "EVENT_246_room_31_logic"]
+    },
+    {
+        "identifier": "EVENT_246_pandorite_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [60, "EVENT_246_room_60_logic"]
     },
     {
         "identifier": "EVENT_246_cancel",
@@ -22,5 +23,10 @@ script = [
         "identifier": "EVENT_246_room_31_logic",
         "command": 'jmp_to_event',
         "args": [3072]
+    },
+    {
+        "identifier": "EVENT_246_room_60_logic",
+        "command": 'jmp_to_event',
+        "args": [3124]
     }
 ]

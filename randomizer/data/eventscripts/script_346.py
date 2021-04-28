@@ -18,6 +18,6 @@ script = [
     {
         "identifier": "EVENT_346_room_7_logic",
         "command": 'jmp_to_event',
-        "args": [253]
+        "args": [178]
     },
 ]

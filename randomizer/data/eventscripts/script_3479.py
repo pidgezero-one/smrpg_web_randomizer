@@ -444,18 +444,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3479_set_88',
-        "command": 'set',
-        "args": [0x70a7, 7]
-    },
-    {
-        "identifier": 'EVENT_3479_set_89',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_3479_run_event_as_subroutine_90',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_3479_set_bit_91',

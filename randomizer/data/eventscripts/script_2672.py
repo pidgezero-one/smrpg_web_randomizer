@@ -883,7 +883,7 @@ script = [
     {
         "identifier": 'EVENT_2672_run_event_as_subroutine_142',
         "command": 'run_event_as_subroutine',
-        "args": [253]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2672_clear_bit_144',

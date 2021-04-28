@@ -1762,7 +1762,7 @@ script = [
     {
         "identifier": "EVENT_3600_item_grant",
         "command": "run_event_as_subroutine",
-        "args": [253]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_3600_pause_277',

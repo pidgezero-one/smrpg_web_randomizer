@@ -78,21 +78,6 @@ script = [
         "command": 'move_script_to_main_thread'
     },
     {
-        "identifier": 'EVENT_3494_jmp_if_bit_set_8',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7078, 6, 'EVENT_3494_enter_area_11']
-    },
-    {
-        "identifier": 'EVENT_3494_add_frog_coins_9',
-        "command": 'add_frog_coins',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_3494_set_bit_10',
-        "command": 'set_bit',
-        "args": [0x7078, 6]
-    },
-    {
         "identifier": 'EVENT_3494_enter_area_11',
         "command": 'enter_area',
         "args": [Rooms._069_MIDAS_RIVER_WATERFALL, RadialDirections.SOUTH, 4, 83, 0, []]

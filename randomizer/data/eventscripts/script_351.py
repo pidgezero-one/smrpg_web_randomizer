@@ -132,7 +132,7 @@ script = [
     {
         "identifier": "EVENT_351_kid_grant",
         "command": 'run_event_as_subroutine',
-        "args": [253]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_351_close_dialog_41',

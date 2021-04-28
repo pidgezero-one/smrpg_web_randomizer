@@ -85,6 +85,16 @@ script = [
         "args": [48, "EVENT_3400_play_booster_tower_music"]
     },
     {
+        "identifier": "EVENT_3400_room_59_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [59, "EVENT_3400_play_dungeon_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_60_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [60, "EVENT_3400_play_dungeon_music"]
+    },
+    {
         "identifier": "EVENT_3400_ret",
         "command": 'ret'
     },
@@ -136,6 +146,15 @@ script = [
     },
     {
         "identifier": "EVENT_3400_play_booster_tower_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_3400_play_dungeon_music",
+        "command": 'play_music_current_volume',
+        "args": [Music._27_DUNGEON_IS_FULL_OF_MONSTERS]
+    },
+    {
+        "identifier": "EVENT_3400_play_dungeon_music_ret",
         "command": 'ret'
     }
 ]

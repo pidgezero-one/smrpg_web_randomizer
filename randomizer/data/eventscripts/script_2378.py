@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_2378_play_sound_3',
         "command": 'run_event_as_subroutine',
-        "args": [253]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2378_ret_6',

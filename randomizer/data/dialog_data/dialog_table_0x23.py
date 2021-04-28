@@ -247,7 +247,7 @@ dialog_data[146] = ''' Did you know that the hotel offers
  the Suite repeatedly?[await]
  I wonder what they're giving out?[await]'''
 dialog_data[147] = ''' I stayed in the hotel for two nights
- when I only paid for one, and I
+ when I only paid for one.[delay] And I
  didn't have enough money to cover
  the second night.[await]
  They made me work to make up the

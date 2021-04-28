@@ -16,8 +16,8 @@ script = [
     },
     {
         "identifier": 'ACTION_719_play_sound_2',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 4]
+        "command": 'set_bit',
+        "args": [0x7078, 6]
     },
     {
         "identifier": 'ACTION_719_set_vram_priority_3',

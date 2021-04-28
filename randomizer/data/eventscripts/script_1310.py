@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_1310_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
-        "args": [253]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_1310_ret_6',

@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_3124_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7057, 5, 'EVENT_3124_jmp_to_event_13']
+        "args": [0x7057, 5, "EVENT_3124_special_val"]
     },
     {
         "identifier": 'EVENT_3124_action_queue_sync_2',
@@ -73,25 +73,32 @@ script = [
         "args": [0x700a, 0x00ca]
     },
     {
-        "identifier": 'EVENT_3124_jmp_to_event_9',
+        "identifier": "EVENT_3124_special_val_2", # pandorite chest
+        "command": 'set',
+        "args": [0x7000, 512]
+    },
+    {
+        "identifier": 'EVENT_3124_first_item_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [253]
+    },
+    {
+        "identifier": "EVENT_3124_star",
         "command": 'jmp_to_event',
-        "args": [720]
-    },
-    {
-        "identifier": 'EVENT_3124_stop_sound_10',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3124_stop_sound_11',
-        "command": 'stop_sound'
+        "args": [169]
     },
     {
         "identifier": 'EVENT_3124_ret_12',
         "command": 'ret'
     },
     {
+        "identifier": "EVENT_3124_special_val", # pandorite chest
+        "command": 'set',
+        "args": [0x7000, 512]
+    },
+    {
         "identifier": 'EVENT_3124_jmp_to_event_13',
         "command": 'jmp_to_event',
-        "args": [34]
+        "args": [245]
     }
 ]
