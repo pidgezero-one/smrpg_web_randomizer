@@ -243,40 +243,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1105_jmp_if_bit_set_16',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7051, 7, 'EVENT_1105_action_queue_sync_23']
-    },
-    {
-        "identifier": 'EVENT_1105_stop_music_FDA2_17',
-        "command": 'stop_music_FDA2'
-    },
-    {
-        "identifier": 'EVENT_1105_set_bit_18',
-        "command": 'set_bit',
-        "args": [0x7051, 7]
-    },
-    {
-        "identifier": 'EVENT_1105_set_bit_19',
-        "command": 'set_bit',
-        "args": [0x7044, 6]
-    },
-    {
-        "identifier": 'EVENT_1105_deactivate_sound_channels_20',
-        "command": 'deactivate_sound_channels',
-        "args": [[]]
-    },
-    {
-        "identifier": 'EVENT_1105_pause_21',
-        "command": 'pause',
-        "args": [45]
-    },
-    {
-        "identifier": 'EVENT_1105_play_music_default_volume_22',
-        "command": 'play_music_default_volume',
-        "args": [Music._17_TADPOLE_POND]
-    },
-    {
         "identifier": 'EVENT_1105_action_queue_sync_23',
         "command": 'action_queue_sync',
         "args": [AreaObjects.SCREEN_FOCUS],

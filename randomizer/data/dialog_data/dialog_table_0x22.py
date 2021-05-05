@@ -37,13 +37,13 @@ dialog_data[20] = '''  Now that our kingdom isn't in peril
  How exciting![await]'''
 dialog_data[21] = '''Whoa, you won [0x7000] time(s)!
  Here's a special prize for you![await]'''
-dialog_data[22] = '''[await]'''
+dialog_data[22] = '''FROGFUCIUS: Grasshopper, if your\n travels yield any cricket-related\n food, please bring it to me.[await]'''
 dialog_data[23] = '''[await]'''
 dialog_data[24] = '''[await]'''
 dialog_data[25] = '''
  BIRDETTA: Don't forget about me![await]'''
 dialog_data[26] = '''[await]'''
-dialog_data[27] = '''[await]'''
+dialog_data[27] = '''[aWait]'''
 dialog_data[28] = '''[await]'''
 dialog_data[29] = '''[await]'''
 dialog_data[30] = '''[await]'''
@@ -487,7 +487,7 @@ dialog_data[320] = ''' I'll tell you a secret.[await][pause] Enter the
  paths, go left, left, straight,
  right- in that order.[await]
  You'll surely find something [await][pause]NICE.[await]'''
-dialog_data[321] = '''[await]'''
+dialog_data[321] = ''' There may be some places you can\n go, or things you can do, only\n after completing something else.[await][page]\n It's a good idea to revisit some\n areas from time to time.[await]'''
 dialog_data[322] = ''' Sorry, I don't have any advice
  today.[await]'''
 dialog_data[323] = '''[await]'''
@@ -1262,7 +1262,14 @@ dialog_data[698] = ''' There’s nothing left to win here.
 dialog_data[699] = '''[await]'''
 dialog_data[700] = '''[await]'''
 dialog_data[701] = '''[await]'''
-dialog_data[702] = '''[await]'''
+dialog_data[702] = '''GRATE GUY: Whoa, hold on a sec,
+ Mario![await]
+ There's no turning back once you
+ take that trampoline, and the fight
+ you'll get into is pretty tough.[await][page]
+ Are you SURE you wanna continue?
+  [select] (Yes)
+  [select] (No)[await]'''
 dialog_data[703] = '''[page]
  By the way, do you have any items
  to get rid of?[await][page]

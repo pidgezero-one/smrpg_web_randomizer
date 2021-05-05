@@ -6,58 +6,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_516_enable_controls_until_return_0',
-        "command": 'enable_controls_until_return',
-        "args": [[]]
-    },
-    {
-        "identifier": 'EVENT_516_unsync_dialog_1',
-        "command": 'unsync_dialog'
-    },
-    {
-        "identifier": 'EVENT_516_pause_action_script_2',
-        "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_516_pause_action_script_3',
-        "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
         "identifier": 'EVENT_516_run_dialog_13',
         "command": 'run_dialog',
         "args": [779, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_516_enable_controls_until_return_16',
-        "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
-    },
-    {
-        "identifier": 'EVENT_516_resume_action_script_17',
-        "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_516_jmp_if_bit_set_18',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7044, 0, 'EVENT_516_set_action_script_sync_21']
-    },
-    {
-        "identifier": 'EVENT_516_resume_action_script_19',
-        "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_516_jmp_20',
-        "command": 'jmp',
-        "args": ['EVENT_256_ret_0']
-    },
-    {
-        "identifier": 'EVENT_516_set_action_script_sync_21',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 625]
     },
     {
         "identifier": 'EVENT_516_ret_22',

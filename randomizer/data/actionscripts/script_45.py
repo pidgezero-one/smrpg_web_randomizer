@@ -30,8 +30,8 @@ script = [
     },
     {
         "identifier": 'ACTION_45_play_sound_5',
-        "command": 'play_sound',
-        "args": [Sounds._085_FLOWER, 4]
+        "command": 'set_bit',
+        "args": [0x7078, 7]
     },
     {
         "identifier": 'ACTION_45_start_loop_n_times_6',

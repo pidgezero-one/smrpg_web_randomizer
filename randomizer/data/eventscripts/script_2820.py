@@ -6,14 +6,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2820_run_dialog_104',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
         "identifier": 'EVENT_2820_play_sound_1',
         "command": 'play_sound',
         "args": [Sounds._027_FOUND_AN_ITEM, 6]
+    },
+    {
+        "identifier": 'EVENT_2820_run_dialog_104',
+        "command": 'run_dialog',
+        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_2820_put_inventory_105',

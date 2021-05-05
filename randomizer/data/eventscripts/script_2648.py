@@ -26,38 +26,6 @@ script = [
         "args": [0x7059, 1]
     },
     {
-        "identifier": 'EVENT_2648_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2648_action_queue_sync_4_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [4]
-            },
-            {
-                "identifier": 'EVENT_2648_action_queue_sync_4_SUBSCRIPT_face_southeast_1',
-                "command": 'face_southeast'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2648_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2648_action_queue_async_5_SUBSCRIPT_shift_northeast_pixels_0',
-                "command": 'shift_northeast_pixels',
-                "args": [4]
-            },
-            {
-                "identifier": 'EVENT_2648_action_queue_async_5_SUBSCRIPT_face_southeast_1',
-                "command": 'face_southeast'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2648_fade_in_from_black_async_6',
         "command": 'fade_in_from_black_async'
     },

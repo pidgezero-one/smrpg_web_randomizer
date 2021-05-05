@@ -36,9 +36,19 @@ script = [
         "command": 'fade_in_from_black_sync'
     },
     {
+        "identifier": 'EVENT_3495_jmp_if_bit_set_0',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7078, 7, 'EVENT_3495_run_background_event_2']
+    },
+    {
+        "identifier": 'EVENT_3495_run_background_event_0',
+        "command": 'run_background_event',
+        "args": [3513, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
+    },
+    {
         "identifier": 'EVENT_3495_run_background_event_2',
         "command": 'run_background_event',
-        "args": [3498, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
+        "args": [3498, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6, _0x40Flags.BIT_7]]
     },
     {
         "identifier": 'EVENT_3495_freeze_camera_3',

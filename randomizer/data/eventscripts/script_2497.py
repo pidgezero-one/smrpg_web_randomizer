@@ -6,6 +6,26 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_2497_____put_inventory_25',
+        "command": 'put_inventory',
+        "args": [items.BrightCard]
+    },
+    {
+        "identifier": 'EVENT_2497_casino_Warp',
+        "command": 'set_bit',
+        "args": [0x7088, 5]
+    },
+    {
+        "identifier": 'EVENT_2497_open_casino',
+        "command": 'set_bit',
+        "args": [0x7070, 6]
+    },
+    {
+        "identifier": 'EVENT_2497_open_casino_',
+        "command": 'set_bit',
+        "args": [0x7068, 6]
+    },
+    {
         "identifier": 'EVENT_2497_ret',
         "command": 'ret'
     }

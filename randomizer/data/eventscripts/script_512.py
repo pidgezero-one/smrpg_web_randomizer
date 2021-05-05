@@ -6,14 +6,8 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_512_fade_out_music_to_volume_0',
-        "command": 'fade_out_music_to_volume',
-        "args": [1, 96]
-    },
-    {
-        "identifier": 'EVENT_512_jmp_to_subroutine_201',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_512_action_queue_sync_211']
+        "identifier": 'EVENT_512_remember_last_object_219',
+        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_512_set_7010_to_object_xyz_203',
@@ -53,78 +47,4 @@ script = [
         "identifier": 'EVENT_512_ret_210',
         "command": 'ret'
     },
-    {
-        "identifier": 'EVENT_512_action_queue_sync_211',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
-        "subscript": [
-            {
-                "identifier": 'EVENT_512_action_queue_sync_211_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [7, 21, 0, RadialDirections.EAST]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_512_action_queue_sync_212',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
-        "subscript": [
-            {
-                "identifier": 'EVENT_512_action_queue_sync_212_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [7, 20, 0, RadialDirections.EAST]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_512_action_queue_sync_213',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
-        "subscript": [
-            {
-                "identifier": 'EVENT_512_action_queue_sync_213_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [8, 19, 0, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_512_action_queue_sync_213_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_512_action_queue_sync_215',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_512_action_queue_sync_215_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [5, 16, 0, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_512_action_queue_sync_215_SUBSCRIPT_face_southeast_1',
-                "command": 'face_southeast'
-            },
-            {
-                "identifier": 'EVENT_512_action_queue_sync_215_SUBSCRIPT_set_solidity_bits_2',
-                "command": 'set_solidity_bits',
-                "args": [[_0x0AFlags.CANT_PASS_WALLS]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_512_set_action_script_sync_216',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 128]
-    },
-    {
-        "identifier": 'EVENT_512_remember_last_object_219',
-        "command": 'remember_last_object'
-    },
-    {
-        "identifier": 'EVENT_512_ret_220',
-        "command": 'ret'
-    }
 ]

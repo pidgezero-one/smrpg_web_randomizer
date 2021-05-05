@@ -526,7 +526,8 @@ fd_names[0x19] = named('object_memory_set_bit', con(0x0D), con_bitarray([6]))
 # 0x1A - 0x3C undocumented
 fd_names[0x3D] = named('jmp_if_object_in_air', byte(
     prefix="AreaObjects", table=area_object_table), short())
-# 0x3E - 0x9B undocumented
+fd_names[0x3E] = named('unknown_jmp_FD_3E', byte(), byte(), byte(), short())
+# 0x3F - 0x9B undocumented
 # 0x1A - 0x9B undocumente
 fd_names[0x9E] = named('play_sound', byte(
     prefix="Sounds", table=sound_table), con_int(4))
@@ -545,7 +546,7 @@ jmp_cmds = [0x3A, 0x3B, 0x3C, 0x3D, 0x3E, 0x3F, 0xD2, 0xD3, 0xDC, 0xDD, 0xDE, 0x
 
 jmp_cmds_double = [0xE9]
 
-jmp_cmds_fd = [0x3D]
+jmp_cmds_fd = [0x3D, 0x3E]
 
 def get_jump_args(line, args):
     if line[0] in jmp_cmds_double:

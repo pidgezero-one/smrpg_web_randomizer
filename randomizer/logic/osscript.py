@@ -1416,6 +1416,15 @@ class ObjectSequenceScript:
         self.append_short(self.get_branch_address(addr))
         return self
 
+    # FD 0x3E
+    def unknown_jmp_FD_3E(self, arg1, arg2, arg3, addr):
+        self.append_byte(0xFD)
+        self.append_byte(0x3E)
+        self.append_byte(arg1)
+        self.append_byte(arg2)
+        self.append_byte(arg3)
+        self.append_short(self.get_branch_address(addr))
+
     # FD 0xB0
     def mem_700C_and_const(self, value):
         self.append_byte(0xFD)

@@ -4,4 +4,81 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_3098_store_7000_item_quantity_to_70A7_283',
+        "command": 'store_item_amount_7000',
+        "args": [items.MysteryEgg]
+    },
+    {
+        "identifier": 'EVENT_3098_jmp_if_7000_equals_short_284',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3098_set_298']
+    },
+    {
+        "identifier": 'EVENT_3098_store_7000_item_quantity_to_70A7_283_',
+        "command": 'store_item_amount_7000',
+        "args": [items.LambsLure]
+    },
+    {
+        "identifier": 'EVENT_3098_jmp_if_7000_equals_short_287',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3098_set_294']
+    },
+    {
+        "identifier": 'EVENT_3098_store_7000_item_quantity_to_70A7_283__',
+        "command": 'store_item_amount_7000',
+        "args": [items.SheepAttack]
+    },
+    {
+        "identifier": 'EVENT_3098_jmp_if_7000_equals_short_287_',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_3098_subroutine']
+    },
+    {
+        "identifier": 'EVENT_3098_set_291',
+        "command": 'set',
+        "args": [0x70a7, 145]
+    },
+    {
+        "identifier": 'EVENT_3098_ret_293',
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
+        "identifier": 'EVENT_3098_subroutine',
+        "command": 'jmp_to_event',
+        "args": [56]
+    },
+    {
+        "identifier": 'EVENT_3098_set_294',
+        "command": 'set',
+        "args": [0x70a7, 136]
+    },
+    {
+        "identifier": 'EVENT_3098_remove_one_from_inventory_295',
+        "command": 'remove_one_from_inventory',
+        "args": [items.LambsLure]
+    },
+    {
+        "identifier": 'EVENT_3098_ret_297',
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
+        "identifier": 'EVENT_3098_set_298',
+        "command": 'set',
+        "args": [0x70a7, 143]
+    },
+    {
+        "identifier": 'EVENT_3098_remove_one_from_inventory_299',
+        "command": 'remove_one_from_inventory',
+        "args": [items.MysteryEgg]
+    },
+    {
+        "identifier": 'EVENT_3098_ret_301',
+        "command": 'jmp_to_event',
+        "args": [160]
+    }
+]
+

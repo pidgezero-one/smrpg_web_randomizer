@@ -179,8 +179,8 @@ script = [
     },
     {
         "identifier": 'ACTION_439_db_36',
-        "command": 'db',
-        "args": [0xfd, 0x3e, 0x1c, 0x05, 0x0c, 0x89, 0x54]
+        "command": 'unknown_jmp_FD_3E',
+        "args": [0x1c, 0x05, 0x0c, 'ACTION_439_reset_properties_37']
     },
     {
         "identifier": 'ACTION_439_reset_properties_37',
@@ -240,8 +240,8 @@ script = [
     },
     {
         "identifier": 'ACTION_439_db_49',
-        "command": 'db',
-        "args": [0xfd, 0x3e, 0x1c, 0x05, 0x0c, 0xa6, 0x54]
+        "command": 'unknown_jmp_FD_3E',
+        "args": [0x1c, 0x05, 0x0c, 'ACTION_439_reset_properties_50']
     },
     {
         "identifier": 'ACTION_439_reset_properties_50',

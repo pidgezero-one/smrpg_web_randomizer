@@ -14,7 +14,11 @@ script = [
                 "identifier": 'EVENT_2635_action_queue_sync_0_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
+            },
+            {
+                "identifier": 'EVENT_2635_action_queue_sync_0__visibility_on_3',
+                "command": 'visibility_on'
+            },
         ]
     },
     {
@@ -26,7 +30,11 @@ script = [
                 "identifier": 'EVENT_2635_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
+            },
+            {
+                "identifier": 'EVENT_2635_action_queue_sync_0___visibility_on_3',
+                "command": 'visibility_on'
+            },
         ]
     },
     {

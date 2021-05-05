@@ -11,6 +11,11 @@ script = [
         "args": [31, "EVENT_245_room_31_logic"]
     },
     {
+        "identifier": "EVENT_245_room_81_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [81, "EVENT_245_room_81_logic"]
+    },
+    {
         "identifier": "EVENT_245_pandorite_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [512, "EVENT_245_pandorite_logic"]
@@ -33,5 +38,15 @@ script = [
         "identifier": "EVENT_245_pandorite_logic_2",
         "command": 'jmp_to_event',
         "args": [3074]
-    }
+    },
+    {
+        "identifier": "EVENT_245_room_81_logic",
+        "command": 'set',
+        "args": [0x70BC, 0]
+    },
+    {
+        "identifier": "EVENT_245_room_81_logic_2",
+        "command": 'jmp_to_event',
+        "args": [3074]
+    },
 ]

@@ -4,4 +4,56 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_3878_action_queue_async_56',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3878_action_queue_async_56_SUBSCRIPT_face_northwest_7',
+                "command": 'face_northwest'
+            },
+        ]
+    },
+    {
+        "identifier": 'EVENT_3878_pause',
+        "command": 'pause',
+        "args": [10]
+    },
+    {
+        "identifier": 'EVENT_3878_run_dialog_8',
+        "command": 'run_dialog',
+        "args": [1207, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+    },
+    {
+        "identifier": 'EVENT_3878_jmp_if_dialog_option_b_9',
+        "command": 'jmp_if_dialog_option_b',
+        "args": ['EVENT_3878_action_queue_async_56_']
+    },
+    {
+        "identifier": 'EVENT_3878_run_event_as_subroutine_0',
+        "command": 'run_event_as_subroutine',
+        "args": [65]
+    },
+    {
+        "identifier": 'EVENT_3878_open_location_20',
+        "command": 'jmp_to_event',
+        "args": [3791]
+    },
+    {
+        "identifier": 'EVENT_3878_action_queue_async_56_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3878_action_queue_async_56_SUBSCRIPT_face_northwest_7_',
+                "command": 'face_southwest'
+            },
+        ]
+    },
+    {
+        "identifier": 'EVENT_3878_ret_2',
+        "command": 'ret'
+    }
+]

@@ -1230,11 +1230,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1074_jmp_to_event_153',
-        "command": 'jmp_to_event',
-        "args": [560]
-    },
-    {
         "identifier": 'EVENT_1074_jmp_if_bit_clear_154',
         "command": 'jmp_if_bit_clear',
         "args": [0x7051, 4, 'EVENT_1074_set_157']
@@ -1251,13 +1246,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1074_set_157',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_1074_run_event_as_subroutine_158',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_1074_pause_159',
@@ -1276,18 +1266,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1074_set_162',
-        "command": 'set',
-        "args": [0x70a7, 152]
-    },
-    {
-        "identifier": 'EVENT_1074_set_163',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_1074_run_event_as_subroutine_164',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [179]
     },
     {
         "identifier": 'EVENT_1074_pause_165',
@@ -1306,18 +1286,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1074_set_168',
-        "command": 'set',
-        "args": [0x70a7, 150]
-    },
-    {
-        "identifier": 'EVENT_1074_set_169',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_1074_run_event_as_subroutine_170',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [180]
     },
     {
         "identifier": 'EVENT_1074_pause_171',

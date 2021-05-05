@@ -257,6 +257,41 @@ room = {
           "direction": RadialDirection.NORTHWEST
         }
       ]
+    },
+    {
+      "id": 9,
+      "type": ObjectType.OBJECT,
+      "initiator": Initiator.JUMP_ON,
+      "model": 99,
+      "event_script": 3878,
+      "action_script": 15,
+      "speed": 0,
+      "npc_id_offset": 0,
+      "event_offset": 0,
+      "action_offset": 0,
+      "visible": False,
+      "x": 3,
+      "y": 13,
+      "z": 0,
+      "z_half": False,
+      "direction": RadialDirection.SOUTHWEST,
+      "face_on_trigger": False,
+      "cant_enter_doors": True,
+      "byte2_bit5": False,
+      "set_sequence_playback": True,
+      "cant_float": True,
+      "cant_walk_up_stairs": False,
+      "cant_walk_under": True,
+      "cant_pass_walls": True,
+      "cant_jump_through": False,
+      "cant_pass_npcs": True,
+      "byte3_bit5": True,
+      "cant_walk_through": True,
+      "byte3_bit7": True,
+      "slidable_along_walls": False,
+      "cant_move_if_in_air": False,
+      "byte7_upper2": 0x03,
+      "clones": []
     }
   ]
 }

@@ -396,11 +396,6 @@ script = [
         "args": [AreaObjects.NPC_2, Rooms._207_BANDITS_WAY_AREA_02]
     },
     {
-        "identifier": 'EVENT_2496___remove_from_level_14',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._085_ROSE_TOWN_DURING_BOWYER_INN_1F]
-    },
-    {
         "identifier": 'EVENT_2496___set_bit_15',
         "command": 'set_bit',
         "args": [0x7044, 6]
@@ -409,11 +404,6 @@ script = [
         "identifier": 'EVENT_2496___set_bit_16',
         "command": 'set_bit',
         "args": [0x7049, 2]
-    },
-    {
-        "identifier": 'EVENT_2496___set_bit_17', # gating
-        "command": 'run_event_as_subroutine',
-        "args": [2497]
     },
     {
         "identifier": 'EVENT_2496___set_bit_25',
@@ -773,59 +763,6 @@ script = [
         "args": [items.Mushroom]
     },
     {
-        "identifier": 'EVENT_2496_____action_queue_sync_26',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2496_____action_queue_sync_26_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [13, 13, 0, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_sync_26_SUBSCRIPT_shift_west_pixels_1',
-                "command": 'shift_west_pixels',
-                "args": [11]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_sync_26_SUBSCRIPT_floating_off_2',
-                "command": 'floating_off'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_sync_26_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_sync_26_SUBSCRIPT_ret_4',
-                "command": 'ret'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2496_____pause_action_script_29',
-        "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_2496_____jmp_if_bit_set_30',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7089, 5, 'EVENT_2496_____set_bit_32']
-    },
-    {
-        "identifier": 'EVENT_2496_____jmp_31',
-        "command": 'jmp',
-        "args": ['EVENT_2496_____enter_area_178']
-    },
-    {
-        "identifier": 'EVENT_2496_____jmp_34',
-        "command": 'jmp',
-        "args": ['EVENT_2496_____enter_area_178']
-    },
-    {
-        "identifier": 'EVENT_2496_____ret_35',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_2496_____enter_area_178',
         "command": 'enter_area',
         "args": [Rooms._189_MARIOS_PIPEHOUSE, RadialDirections.SOUTHEAST, 3, 13, 0, []]
@@ -917,11 +854,6 @@ script = [
     {
         "identifier": 'EVENT_2496_____fade_in_from_black_async_186',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2496_____jmp_188',
-        "command": 'jmp',
-        "args": ['EVENT_2496_____play_music_default_volume_242']
     },
     {
         "identifier": 'EVENT_2496_____play_music_default_volume_242',
@@ -1087,7 +1019,8 @@ script = [
         "args": [Rooms._084_ROSE_TOWN_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
     },
     {
-        "identifier": 'EVENT_2496_____ret_253',
-        "command": 'ret'
-    }
+        "identifier": 'EVENT_2496___set_bit_17', # gating
+        "command": 'jmp_to_event',
+        "args": [2497]
+    },
 ]

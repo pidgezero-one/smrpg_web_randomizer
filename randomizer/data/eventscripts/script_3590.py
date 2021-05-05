@@ -90,6 +90,11 @@ script = [
         "args": [0x7049, 0]
     },
     {
+        "identifier": 'EVENT_3590_enable_controls_9',
+        "command": 'enable_controls',
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
+    },
+    {
         "identifier": 'EVENT_3590_ret_16',
         "command": 'ret'
     }

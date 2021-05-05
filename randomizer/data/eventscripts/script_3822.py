@@ -6,24 +6,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3822_set_0',
-        "command": 'set',
-        "args": [0x70a7, 163]
-    },
-    {
-        "identifier": 'EVENT_3822_set_short_1',
-        "command": 'set_short',
-        "args": [0x7000, 0x020c]
-    },
-    {
-        "identifier": 'EVENT_3822_run_event_as_subroutine_2',
-        "command": 'run_event_as_subroutine',
-        "args": [3828]
-    },
-    {
         "identifier": 'EVENT_3822_remove_from_level_3',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_12, Rooms._084_ROSE_TOWN_OUTSIDE]
+        "args": [AreaObjects.NPC_13, Rooms._084_ROSE_TOWN_OUTSIDE]
     },
     {
         "identifier": 'EVENT_3822_remove_from_level_4',
@@ -31,21 +16,32 @@ script = [
         "args": [AreaObjects.NPC_3, Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE]
     },
     {
-        "identifier": 'EVENT_3822_remove_from_current_level_5',
+        "identifier": "EVENT_3822_current_lvl",
+        "command": 'set_7000_to_current_level'
+    },
+    {
+        "identifier": "EVENT_3822_room_84_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [84, 'EVENT_3822_remove_from_current_level_6']
+    },
+    {
+        "identifier": 'EVENT_3822_remove_from_current_level_5_',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_3]
     },
     {
+        "identifier": "EVENT_3822_room_83_jump",
+        "command": 'jmp',
+        "args": ['EVENT_3822_remove_from_current_level_5']
+    },
+    {
         "identifier": 'EVENT_3822_remove_from_current_level_6',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_12]
+        "args": [AreaObjects.NPC_13]
     },
     {
-        "identifier": 'EVENT_3822_ret_7',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3822_ret_8',
-        "command": 'ret'
+        "identifier": 'EVENT_3822_remove_from_current_level_5',
+        "command": 'jmp_to_event',
+        "args": [178]
     }
 ]

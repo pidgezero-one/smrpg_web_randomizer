@@ -95,6 +95,76 @@ script = [
         "args": [60, "EVENT_3400_play_dungeon_music"]
     },
     {
+        "identifier": "EVENT_3400_room_67_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [67, "EVENT_3400_play_midas_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_72_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [72, "EVENT_3400_play_midas_tunnel_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_73_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [73, "EVENT_3400_play_midas_tunnel_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_74_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [74, "EVENT_3400_play_melody_bay_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_75_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [75, "EVENT_3400_play_tadpole_pond_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_77_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [77, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_78_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [78, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_79_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [79, "EVENT_3400_play_overworld_1_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_80_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [80, "EVENT_3400_play_overworld_1_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_81_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [81, "EVENT_3400_play_overworld_1_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_83_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [83, "EVENT_3400_play_occupied_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_84_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [84, "EVENT_3400_play_rose_town_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_86_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [86, "EVENT_3400_play_rose_town_indoor_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_87_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [87, 'EVENT_3400_determine_rose_town_shop_music']
+    },
+    {
         "identifier": "EVENT_3400_ret",
         "command": 'ret'
     },
@@ -156,5 +226,125 @@ script = [
     {
         "identifier": "EVENT_3400_play_dungeon_music_ret",
         "command": 'ret'
-    }
+    },
+    {
+        "identifier": "EVENT_3400_play_midas_music",
+        "command": 'play_music_current_volume',
+        "args": [Music._22_MIDAS_RIVER]
+    },
+    {
+        "identifier": "EVENT_3400_play_midas_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_3400_play_midas_tunnel_music",
+        "command": 'play_music_current_volume',
+        "args": [Music._22_MIDAS_RIVER]
+    },
+    {
+        "identifier": 'EVENT_3400_fade_out_music_to_volume_0',
+        "command": 'fade_out_music_to_volume',
+        "args": [2, 96]
+    },
+    {
+        "identifier": 'EVENT_3400_play_sound_1',
+        "command": 'play_sound',
+        "args": [Sounds._035_RUNNING_WATER, 4]
+    },
+    {
+        "identifier": "EVENT_3400_play_midas_tunnel_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_melody_bay_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._17_TADPOLE_POND]
+    },
+    {
+        "identifier": 'EVENT_3400_deactivate_sound_channels_1',
+        "command": 'deactivate_sound_channels',
+        "args": [[0, 1, 2, 3]]
+    },
+    {
+        "identifier": "EVENT_3400_play_melody_bay_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_tadpole_pond_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._17_TADPOLE_POND]
+    },
+    {
+        "identifier": "EVENT_3400_play_tadpole_pond_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_overworld_2_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._42_STILL_THE_ROAD_IS_FULL_OF_MONSTERS]
+    },
+    {
+        "identifier": "EVENT_3400_play_overworld_2_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_overworld_1_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._13_ROAD_IS_FULL_OF_DANGERS]
+    },
+    {
+        "identifier": "EVENT_3400_play_overworld_1_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_rose_town_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._18_ROSE_TOWN]
+    },
+    {
+        "identifier": "EVENT_3400_play_rose_town_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_rose_town_indoor_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._18_ROSE_TOWN]
+    },
+    {
+        "identifier": "EVENT_3400_play_rose_town_indoor_music_1",
+        "command": "fade_out_music_to_volume",
+        "args": [1, 96]
+    },
+    {
+        "identifier": "EVENT_3400_play_rose_town_indoor_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_occupied_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._15_HERES_SOME_WEAPONS]
+    },
+    {
+        "identifier": "EVENT_3400_play_occupied_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_determine_rose_town_shop_music',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7083, 6, 'EVENT_3400_play_rose_town_indoor_music']
+    },
+    {
+        "identifier": 'EVENT_3400_play_occupied_indoor_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._15_HERES_SOME_WEAPONS]
+    },
+    {
+        "identifier": "EVENT_3400_play_occupied_indoor_music_1",
+        "command": "fade_out_music_to_volume",
+        "args": [1, 96]
+    },
+    {
+        "identifier": "EVENT_3400_play_occupied_indoor_music_ret",
+        "command": 'ret'
+    },
 ]

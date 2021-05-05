@@ -333,7 +333,7 @@ script = [
     {
         "identifier": 'EVENT_3498_jmp_if_bit_set_30',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_3498_jmp_if_bit_set_37']
+        "args": [0x7043, 2, 'EVENT_3498_ret_41']
     },
     {
         "identifier": 'EVENT_3498_action_queue_async_31',
@@ -459,25 +459,6 @@ script = [
         "identifier": 'EVENT_3498_jmp_36',
         "command": 'jmp',
         "args": ['EVENT_3498_action_queue_async_20']
-    },
-    {
-        "identifier": 'EVENT_3498_jmp_if_bit_set_37',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7078, 7, 'EVENT_3498_ret_41']
-    },
-    {
-        "identifier": 'EVENT_3498_set_38',
-        "command": 'set',
-        "args": [0x7000, 1]
-    },
-    {
-        "identifier": 'EVENT_3498_add_max_FP_7000_39',
-        "command": 'add_max_FP_7000'
-    },
-    {
-        "identifier": 'EVENT_3498_set_bit_40',
-        "command": 'set_bit',
-        "args": [0x7078, 7]
     },
     {
         "identifier": 'EVENT_3498_ret_41',

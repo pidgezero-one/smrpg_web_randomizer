@@ -32,17 +32,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3152_run_event_as_subroutine_5',
-        "command": 'run_event_as_subroutine',
-        "args": [32]
-    },
-    {
-        "identifier": 'EVENT_3152_enable_trigger_in_level_6',
-        "command": 'enable_trigger_in_level',
-        "args": [AreaObjects.NPC_0, Rooms._081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    },
-    {
-        "identifier": 'EVENT_3152_ret_7',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [172]
     },
     {
         "identifier": 'EVENT_3152_set_bit_8',
@@ -50,18 +41,9 @@ script = [
         "args": [0x7043, 1]
     },
     {
-        "identifier": 'EVENT_3152_run_event_as_subroutine_9',
-        "command": 'run_event_as_subroutine',
-        "args": [34]
-    },
-    {
-        "identifier": 'EVENT_3152_enable_trigger_in_level_10',
-        "command": 'enable_trigger_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    },
-    {
-        "identifier": 'EVENT_3152_ret_11',
-        "command": 'ret'
+        "identifier": 'EVENT_3152_run_event_as_subroutine_5_',
+        "command": 'jmp_to_event',
+        "args": [173]
     },
     {
         "identifier": 'EVENT_3152_set_bit_12',
@@ -69,18 +51,9 @@ script = [
         "args": [0x7043, 2]
     },
     {
-        "identifier": 'EVENT_3152_run_event_as_subroutine_13',
-        "command": 'run_event_as_subroutine',
-        "args": [34]
-    },
-    {
-        "identifier": 'EVENT_3152_enable_trigger_in_level_14',
-        "command": 'enable_trigger_in_level',
-        "args": [AreaObjects.NPC_2, Rooms._081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    },
-    {
-        "identifier": 'EVENT_3152_ret_15',
-        "command": 'ret'
+        "identifier": 'EVENT_3152_run_event_as_subroutine_5__',
+        "command": 'jmp_to_event',
+        "args": [174]
     },
     {
         "identifier": 'EVENT_3152_set_bit_16',
@@ -88,18 +61,9 @@ script = [
         "args": [0x7043, 3]
     },
     {
-        "identifier": 'EVENT_3152_run_event_as_subroutine_17',
-        "command": 'run_event_as_subroutine',
-        "args": [34]
-    },
-    {
-        "identifier": 'EVENT_3152_enable_trigger_in_level_18',
-        "command": 'enable_trigger_in_level',
-        "args": [AreaObjects.NPC_3, Rooms._081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    },
-    {
-        "identifier": 'EVENT_3152_ret_19',
-        "command": 'ret'
+        "identifier": 'EVENT_3152_run_event_as_subroutine_5___',
+        "command": 'jmp_to_event',
+        "args": [175]
     },
     {
         "identifier": 'EVENT_3152_set_bit_20',
@@ -107,17 +71,8 @@ script = [
         "args": [0x7043, 4]
     },
     {
-        "identifier": 'EVENT_3152_run_event_as_subroutine_21',
-        "command": 'run_event_as_subroutine',
-        "args": [34]
+        "identifier": 'EVENT_3152_run_event_as_subroutine_5____',
+        "command": 'jmp_to_event',
+        "args": [176]
     },
-    {
-        "identifier": 'EVENT_3152_enable_trigger_in_level_22',
-        "command": 'enable_trigger_in_level',
-        "args": [AreaObjects.NPC_4, Rooms._081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA]
-    },
-    {
-        "identifier": 'EVENT_3152_ret_23',
-        "command": 'ret'
-    }
 ]
