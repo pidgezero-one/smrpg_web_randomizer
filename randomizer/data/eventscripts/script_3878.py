@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_3878_action_queue_async_56',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_3878_action_queue_async_56_SUBSCRIPT_face_northwest_7',
@@ -24,7 +24,7 @@ script = [
     {
         "identifier": 'EVENT_3878_run_dialog_8',
         "command": 'run_dialog',
-        "args": [1207, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "args": [1207, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE,  _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3878_jmp_if_dialog_option_b_9',
@@ -44,7 +44,7 @@ script = [
     {
         "identifier": 'EVENT_3878_action_queue_async_56_',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_3878_action_queue_async_56_SUBSCRIPT_face_northwest_7_',

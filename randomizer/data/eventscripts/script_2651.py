@@ -4,4 +4,33 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_2651_jmp_if_var_equals_byte_71',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70d5, 6, 'EVENT_2651_summon_to_level_51']
+    },
+    {
+        "identifier": 'EVENT_2651_set_bit_7',
+        "command": 'set_bit',
+        "args": [0x7096, 5]
+    },
+    {
+        "identifier": 'EVENT_2651_summon_to_level_51_',
+        "command": 'enter_area',
+        "args": [Rooms._069_MIDAS_RIVER_WATERFALL, RadialDirections.SOUTH, 9, 108, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+    },
+    {
+        "identifier": 'EVENT_2651_ret_1',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_2651_summon_to_level_51',
+        "command": 'jmp_to_event',
+        "args": [3791]
+    },
+    {
+        "identifier": 'EVENT_2651_ret_16',
+        "command": 'ret'
+    }
+]

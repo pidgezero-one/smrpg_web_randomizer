@@ -26,28 +26,6 @@ script = [
         "args": [2309, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
-        "identifier": 'EVENT_2308_jmp_if_object_not_in_level_4',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_9, Rooms._100_BOOSTER_PASS_AREA_01, 'EVENT_2308_jmp_if_bit_clear_15']
-    },
-    {
-        "identifier": 'EVENT_2308_action_queue_sync_5',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_9],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2308_action_queue_sync_5_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2308_action_queue_sync_5_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [4]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2308_jmp_if_bit_clear_15',
         "command": 'jmp_if_bit_clear',
         "args": [0x708d, 1, 'EVENT_2308_fade_in_from_black_async_26']

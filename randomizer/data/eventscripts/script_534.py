@@ -26,13 +26,8 @@ script = [
     },
     {
         "identifier": 'EVENT_534_play_sound_3',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_534_add_frog_coins_4',
-        "command": 'add_frog_coins',
-        "args": [1]
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_534_set_bit_5',

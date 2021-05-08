@@ -10,57 +10,20 @@ script = [
         "command": 'move_script_to_background_thread_1'
     },
     {
-        "identifier": 'EVENT_537_set_7000_to_current_level_1',
-        "command": 'set_7000_to_current_level'
-    },
-    {
-        "identifier": 'EVENT_537_jmp_if_7000_equals_short_2',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [98, 'EVENT_537_action_queue_sync_7']
-    },
-    {
         "identifier": 'EVENT_537_action_queue_sync_3',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_0],
         "subscript": [
             {
                 "identifier": 'EVENT_537_action_queue_sync_3_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [248, 252, 0, RadialDirections.EAST]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_537_jmp_6',
-        "command": 'jmp',
-        "args": ['EVENT_537_fade_out_music_to_volume_10']
-    },
-    {
-        "identifier": 'EVENT_537_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
+            },
             {
-                "identifier": 'EVENT_537_action_queue_sync_7_SUBSCRIPT_transfer_xyzf_pixels_0',
-                "command": 'transfer_xyzf_pixels',
-                "args": [248, 252, 0, RadialDirections.EAST]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_537_jmp_if_object_trigger_disabled_8',
-        "command": 'jmp_if_object_trigger_disabled',
-        "args": [AreaObjects.NPC_1, Rooms._098_ROSE_TOWN_TREASURE_HOUSE_2F, 'EVENT_537_fade_out_music_to_volume_10']
-    },
-    {
-        "identifier": 'EVENT_537_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_537_action_queue_sync_9_SUBSCRIPT_visibility_on_0',
-                "command": 'visibility_on'
-            }
+                "identifier": 'EVENT_532_action_queue_sync_6_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
         ]
     },
     {

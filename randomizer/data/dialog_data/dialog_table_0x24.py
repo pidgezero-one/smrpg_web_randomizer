@@ -158,7 +158,8 @@ dialog_data[81] = '''[await]'''
 dialog_data[82] = ''' What was that loud noise outside?
        Check out Booster Pass![await]'''
 dialog_data[83] = '''[await]'''
-dialog_data[84] = '''  You noticed something in the bush.[await]'''
+dialog_data[84] = '''
+  You noticed something in the bush.[await]'''
 dialog_data[85] = '''[await]'''
 dialog_data[86] = '''[await]'''
 dialog_data[87] = '''[await]'''
@@ -412,7 +413,7 @@ dialog_data[233] = '''[await]'''
 dialog_data[234] = '''[await]'''
 dialog_data[235] = '''[await]'''
 dialog_data[236] = ''' Okay, Mario, this is in celebration
- of your `GRATE_GUY_PRIZE_CAP` win(s)![await]'''
+ of your [0x7000] win(s)![await]'''
 dialog_data[237] = '''[await]'''
 dialog_data[238] = ''' Wanna try it again?
   [select] (Yes)

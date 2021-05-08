@@ -128,7 +128,7 @@ script = [
     {
         "identifier": 'EVENT_1649_action_queue_async_24',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "args": [AreaObjects.NPC_8],
         "subscript": [
             {
                 "identifier": 'EVENT_1649_action_queue_async_24_SUBSCRIPT_db_0',
@@ -325,7 +325,7 @@ script = [
     {
         "identifier": 'EVENT_1649_action_queue_async_37',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_12],
+        "args": [AreaObjects.NPC_8],
         "subscript": [
             {
                 "identifier": 'EVENT_1649_action_queue_async_37_SUBSCRIPT_db_0',
@@ -426,7 +426,7 @@ script = [
     {
         "identifier": 'EVENT_1649_action_queue_sync_41',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_12],
+        "args": [AreaObjects.NPC_8],
         "subscript": [
             {
                 "identifier": 'EVENT_1649_action_queue_sync_41_SUBSCRIPT_set_solidity_bits_0',
@@ -490,7 +490,7 @@ script = [
     {
         "identifier": 'EVENT_1649_action_queue_sync_44',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_12],
+        "args": [AreaObjects.NPC_8],
         "subscript": [
             {
                 "identifier": 'EVENT_1649_action_queue_sync_44_SUBSCRIPT_play_sound_0',
@@ -721,7 +721,7 @@ script = [
     {
         "identifier": 'EVENT_1649_run_dialog_64',
         "command": 'run_dialog',
-        "args": [1100, AreaObjects.NPC_12, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "args": [1100, AreaObjects.NPC_8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1649_set_7000_to_7000_short_mem_65',
@@ -776,7 +776,7 @@ script = [
     {
         "identifier": 'EVENT_1649_run_dialog_75',
         "command": 'run_dialog',
-        "args": [1116, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "args": [1116, AreaObjects.NPC_8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
         "identifier": 'EVENT_1649_action_queue_sync_76',

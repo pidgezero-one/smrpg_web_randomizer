@@ -553,7 +553,7 @@ script = [
     {
         "identifier": 'EVENT_2630_action_queue_async_108',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2630_action_queue_async_108_SUBSCRIPT_set_sprite_sequence_0',
@@ -882,7 +882,7 @@ script = [
     {
         "identifier": 'EVENT_2630_action_queue_async_153',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2630_action_queue_async_153_SUBSCRIPT_set_sprite_sequence_0',
@@ -1326,7 +1326,7 @@ script = [
     {
         "identifier": 'EVENT_2630_stop_embedded_action_script_215',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.NPC_1]
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_2630_stop_embedded_action_script_216',
@@ -1376,7 +1376,7 @@ script = [
     {
         "identifier": 'EVENT_2630_action_queue_sync_225',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2630_action_queue_sync_225_SUBSCRIPT_set_sprite_sequence_0',
@@ -2100,7 +2100,7 @@ script = [
     {
         "identifier": 'EVENT_2630_stop_embedded_action_script_360',
         "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.NPC_1]
+        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'EVENT_2630_run_dialog_361',
@@ -2749,7 +2749,7 @@ script = [
     {
         "identifier": 'EVENT_2630_action_queue_sync_474',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2630_action_queue_sync_474_SUBSCRIPT_set_sprite_sequence_0',
@@ -2791,7 +2791,7 @@ script = [
     {
         "identifier": 'EVENT_2630_action_queue_async_481',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2630_action_queue_async_481_SUBSCRIPT_play_sound_0',
@@ -2840,7 +2840,7 @@ script = [
     {
         "identifier": 'EVENT_2630_action_queue_sync_486',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2630_action_queue_sync_486_SUBSCRIPT_set_sprite_sequence_0',
@@ -2946,7 +2946,7 @@ script = [
     {
         "identifier": 'EVENT_2630_action_queue_sync_505',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2630_action_queue_sync_505_SUBSCRIPT_set_sprite_sequence_0',

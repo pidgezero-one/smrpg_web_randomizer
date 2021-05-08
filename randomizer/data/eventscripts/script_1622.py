@@ -92,14 +92,19 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1622_set_bit_7',
-        "command": 'set_bit',
-        "args": [0x7096, 5]
-    },
-    {
         "identifier": 'EVENT_1622_pixelate_layers_8',
         "command": 'pixelate_layers',
         "args": [[_0x84Flags.LAYER_1, _0x84Flags.LAYER_2, _0x84Flags.LAYER_3], 8, 196]
+    },
+    {
+        "identifier": 'EVENT_1622_check_bucket_warp',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705E, 6, 'EVENT_1622_bucket_warp']
+    },
+    {
+        "identifier": 'EVENT_1622_set_bit_7',
+        "command": 'set_bit',
+        "args": [0x7096, 5]
     },
     {
         "identifier": 'EVENT_1622_enter_area_9',
@@ -109,5 +114,10 @@ script = [
     {
         "identifier": 'EVENT_1622_ret_10',
         "command": 'ret'
-    }
+    },
+    {
+        "identifier": 'EVENT_1622_bucket_warp',
+        "command": 'jmp_to_event',
+        "args": [2651]
+    },
 ]

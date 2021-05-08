@@ -165,6 +165,46 @@ script = [
         "args": [87, 'EVENT_3400_determine_rose_town_shop_music']
     },
     {
+        "identifier": "EVENT_3400_room_92_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [92, 'EVENT_3400_play_casino_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_93_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [93, 'EVENT_3400_play_occupied_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_94_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [94, 'EVENT_3400_play_rose_town_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_95_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [95, 'EVENT_3400_play_occupied_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_96_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [96, 'EVENT_3400_play_rose_town_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_97_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [97, 'EVENT_3400_play_occupied_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_98_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [98, 'EVENT_3400_play_rose_town_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_100_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [100, "EVENT_3400_play_overworld_1_music"]
+    },
+    {
         "identifier": "EVENT_3400_ret",
         "command": 'ret'
     },
@@ -345,6 +385,15 @@ script = [
     },
     {
         "identifier": "EVENT_3400_play_occupied_indoor_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_casino_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._47_GRATE_GUYS_CASINO]
+    },
+    {
+        "identifier": "EVENT_3400_play_casino_music_ret",
         "command": 'ret'
     },
 ]

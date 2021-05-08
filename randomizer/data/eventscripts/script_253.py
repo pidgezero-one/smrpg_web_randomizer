@@ -66,6 +66,36 @@ script = [
         "args": [86, 'EVENT_253_room_86_logic']
     },
     {
+        "identifier": "EVENT_253_room_92_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [92, 'EVENT_253_room_92_logic']
+    },
+    {
+        "identifier": "EVENT_253_room_93_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [93, 'EVENT_253_room_93_94_logic']
+    },
+    {
+        "identifier": "EVENT_253_room_94_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [94, 'EVENT_253_room_93_94_logic']
+    },
+    {
+        "identifier": "EVENT_253_room_95_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [95, 'EVENT_253_room_95_96_logic']
+    },
+    {
+        "identifier": "EVENT_253_room_96_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [96, 'EVENT_253_room_95_96_logic']
+    },
+    {
+        "identifier": "EVENT_253_room_100_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [100, 'EVENT_253_room_100_logic']
+    },
+    {
         "identifier": "EVENT_253_room_493_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [493, "EVENT_253_room_493_logic"]
@@ -178,6 +208,36 @@ script = [
         "identifier": "EVENT_253_room_86_jmp",
         "command": 'jmp_to_event',
         "args": [160]
+    },
+    {
+        "identifier": 'EVENT_253_room_92_logic',
+        "command": 'set',
+        "args": [0x70a7, 176]
+    },
+    {
+        "identifier": "EVENT_253_room_92_jmp",
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
+        "identifier": "EVENT_253_room_93_94_logic",
+        "command": 'jmp_to_event',
+        "args": [157]
+    },
+    {
+        "identifier": 'EVENT_253_room_95_96_logic',
+        "command": 'set',
+        "args": [0x70a7, 115]
+    },
+    {
+        "identifier": "EVENT_253_room_95_96_jmp",
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
+        "identifier": "EVENT_253_room_100_logic",
+        "command": 'jmp_to_event',
+        "args": [157]
     },
     {
         "identifier": "EVENT_253_room_493_logic",

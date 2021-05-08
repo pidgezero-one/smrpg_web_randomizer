@@ -15,24 +15,14 @@ script = [
         "args": [0x7060, 3]
     },
     {
-        "identifier": 'EVENT_555_set_1',
-        "command": 'set',
-        "args": [0x70a7, 115]
-    },
-    {
-        "identifier": 'EVENT_555_set_short_2',
-        "command": 'set_short',
-        "args": [0x7000, 0x020c]
-    },
-    {
-        "identifier": 'EVENT_555_run_event_as_subroutine_3',
+        "identifier": 'EVENT_555_grant',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_555_set_action_script_async_4',
         "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_0, 636]
+        "args": [AreaObjects.MEM_70A8, 636]
     },
     {
         "identifier": 'EVENT_555_pause_5',
@@ -42,7 +32,7 @@ script = [
     {
         "identifier": 'EVENT_555_action_queue_async_6',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.MEM_70A8],
         "subscript": [
             {
                 "identifier": 'EVENT_555_action_queue_async_6_SUBSCRIPT_set_animation_speed_0',

@@ -432,7 +432,8 @@ dialog_data[290] = ''' Hi Mario. Staying for a nap?[await]
  [select]  (Sure)
  [select]  (Maybe next time)[await]'''
 dialog_data[291] = '''[page]
- Don't worry. It’s on the house.[await]'''
+
+   Don't worry. It's on the house.[await]'''
 dialog_data[292] = '''[page]
 
     Stop by anytime now, you hear?[await]'''
@@ -1405,9 +1406,9 @@ dialog_data[746] = ''' Giving up?
   [select] (Yes)
   [select] (No)[await]'''
 dialog_data[747] = ''' I heard you're on a quest for the
- stars that have been raining down.
+ stars that've been raining down.
  Good luck to ya![await]'''
-dialog_data[748] = ''' Heard the fireworks guy’s working
+dialog_data[748] = ''' Heard the fireworks guy’s workin'
  on a new masterpiece.[await]
  Why don't you buy a few from him
  and cheer him on?[await]'''

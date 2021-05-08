@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1801_disable',
+        "command": 'disable_trigger',
+        "args": [AreaObjects.MEM_70A8]
+    },
+    {
         "identifier": 'EVENT_1801_action_queue_async_0',
         "command": 'set_temp_action_script_sync',
         "args": [AreaObjects.MEM_70A8, 1016]

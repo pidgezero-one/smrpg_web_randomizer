@@ -11,13 +11,18 @@ script = [
         "args": [0x70d5, 6, 'EVENT_2645_summon_to_level_51']
     },
     {
+        "identifier": 'EVENT_2645_summon_to_level_51_',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_0]
+    },
+    {
         "identifier": 'EVENT_2645_ret_1',
         "command": 'ret'
     },
     {
         "identifier": 'EVENT_2645_summon_to_level_51',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_9, Rooms._092_GRATE_GUYS_CASINO_INSIDE_CASINO]
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_2645_ret_16',

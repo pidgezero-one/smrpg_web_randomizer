@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'EVENT_2633_action_queue_sync_1',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2633_action_queue_sync_1_SUBSCRIPT_set_animation_speed_0',
@@ -40,7 +40,7 @@ script = [
     {
         "identifier": 'EVENT_2633_action_queue_sync_2',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2633_action_queue_sync_2_SUBSCRIPT_set_animation_speed_0',
@@ -62,7 +62,7 @@ script = [
     {
         "identifier": 'EVENT_2633_action_queue_sync_3',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_2633_action_queue_sync_3_SUBSCRIPT_set_animation_speed_0',
@@ -84,7 +84,7 @@ script = [
     {
         "identifier": 'EVENT_2633_action_queue_sync_4',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "args": [AreaObjects.NPC_8],
         "subscript": [
             {
                 "identifier": 'EVENT_2633_action_queue_sync_4_SUBSCRIPT_set_animation_speed_0',
@@ -101,7 +101,7 @@ script = [
     {
         "identifier": 'EVENT_2633_action_queue_async_5',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_8],
+        "args": [AreaObjects.NPC_9],
         "subscript": [
             {
                 "identifier": 'EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',
@@ -117,6 +117,50 @@ script = [
                 "identifier": 'EVENT_2633_action_queue_async_5_SUBSCRIPT_shift_southwest_pixels_2',
                 "command": 'shift_southwest_pixels',
                 "args": [3]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2633_action_queue_async_5_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2633_action_queue_async_5__',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_5],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2633_action_queue_async_5___',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_6],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2633_action_queue_async_5____',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_7],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2633_action_queue_async_5_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
             }
         ]
     },

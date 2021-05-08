@@ -17,6 +17,11 @@ script = [
         "args": [28, "EVENT_167_room_28_logic"]
     },
     {
+        "identifier": "EVENT_167_room_103_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [103, "EVENT_167_room_103_logic"]
+    },
+    {
         "identifier": "EVENT_167_room_512_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [512, "EVENT_167_room_512_logic"]
@@ -36,7 +41,11 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": "EVENT_167_room_28_logic",
+        "identifier": "EVENT_167_room_28_logic", # johnny
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_167_room_103_logic", # cloaker/domino
         "command": 'ret'
     },
     {

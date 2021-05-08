@@ -195,12 +195,12 @@ script = [
     {
         "identifier": 'EVENT_2631_set_action_script_sync_33',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 14]
+        "args": [AreaObjects.NPC_4, 14]
     },
     {
         "identifier": 'EVENT_2631_action_queue_sync_34',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_2631_action_queue_sync_34_SUBSCRIPT_set_sprite_sequence_0',

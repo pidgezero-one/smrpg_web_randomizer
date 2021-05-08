@@ -63,6 +63,11 @@ script = [
         "args": [0x7096, 0]
     },
     {
+        "identifier": 'EVENT_1894_star_piece',
+        "command": 'jmp_to_event',
+        "args": [167]
+    },
+    {
         "identifier": 'EVENT_1894_ret_13',
         "command": 'ret'
     }

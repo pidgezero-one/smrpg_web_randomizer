@@ -22,18 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2564_play_sound_3',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_2564_add_frog_coins_4',
-        "command": 'add_frog_coins',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_2564_run_dialog_5',
-        "command": 'run_dialog',
-        "args": [3163, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2564_ret_6',

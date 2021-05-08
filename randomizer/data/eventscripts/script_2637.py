@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2637_action_queue_sync_9',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2637_action_queue_sync_9_SUBSCRIPT_sequence_looping_off_0',
@@ -59,7 +59,7 @@ script = [
     {
         "identifier": 'EVENT_2637_jmp_if_7000_equals_short_16',
         "command": 'jmp_if_7000_equals_short',
-        "args": [2, 'EVENT_2637_close_dialog_29']
+        "args": [2, 'EVENT_2637_close_dialog_18_']
     },
     {
         "identifier": 'EVENT_2637_jmp_17',
@@ -95,7 +95,7 @@ script = [
     {
         "identifier": 'EVENT_2637_action_queue_sync_23',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2637_action_queue_sync_23_SUBSCRIPT_set_sprite_sequence_0',
@@ -105,8 +105,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2637_unsync_dialog_24',
-        "command": 'unsync_dialog'
+        "identifier": 'EVENT_2637_pause_20_',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_2637_await_a_1',
+        "command": 'run_event_as_subroutine',
+        "args": [2646]
     },
     {
         "identifier": 'EVENT_2637_jmp_25',
@@ -116,7 +122,7 @@ script = [
     {
         "identifier": 'EVENT_2637_action_queue_sync_26',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2637_action_queue_sync_26_SUBSCRIPT_set_sprite_sequence_0',
@@ -126,8 +132,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2637_unsync_dialog_27',
-        "command": 'unsync_dialog'
+        "identifier": 'EVENT_2637_pause_20__',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_2637_await_a_2',
+        "command": 'run_event_as_subroutine',
+        "args": [2646]
     },
     {
         "identifier": 'EVENT_2637_jmp_28',
@@ -135,7 +147,7 @@ script = [
         "args": ['EVENT_2637_play_sound_49']
     },
     {
-        "identifier": 'EVENT_2637_close_dialog_29',
+        "identifier": 'EVENT_2637_close_dialog_18_',
         "command": 'close_dialog'
     },
     {
@@ -163,7 +175,7 @@ script = [
     {
         "identifier": 'EVENT_2637_action_queue_sync_34',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2637_action_queue_sync_34_SUBSCRIPT_set_sprite_sequence_0',
@@ -173,8 +185,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2637_unsync_dialog_35',
-        "command": 'unsync_dialog'
+        "identifier": 'EVENT_2637_pause_20_____',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_2637_await_a_2___',
+        "command": 'run_event_as_subroutine',
+        "args": [2646]
     },
     {
         "identifier": 'EVENT_2637_jmp_36',
@@ -184,7 +202,7 @@ script = [
     {
         "identifier": 'EVENT_2637_action_queue_sync_37',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2637_action_queue_sync_37_SUBSCRIPT_set_sprite_sequence_0',
@@ -194,8 +212,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2637_unsync_dialog_38',
-        "command": 'unsync_dialog'
+        "identifier": 'EVENT_2637_pause_20____',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_2637_await_a_2__',
+        "command": 'run_event_as_subroutine',
+        "args": [2646]
     },
     {
         "identifier": 'EVENT_2637_jmp_39',
@@ -215,7 +239,7 @@ script = [
     {
         "identifier": 'EVENT_2637_action_queue_sync_43',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2637_action_queue_sync_43_SUBSCRIPT_reset_properties_0',
@@ -229,33 +253,18 @@ script = [
     },
     {
         "identifier": 'EVENT_2637_run_dialog_44',
-        "command": 'run_dialog',
-        "args": [3310, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2637_jmp_if_dialog_option_b_45',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_2637_pause_138']
-    },
-    {
-        "identifier": 'EVENT_2637_pause_46',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_2637_set_action_script_async_47',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 670]
-    },
-    {
-        "identifier": 'EVENT_2637_jmp_48',
         "command": 'jmp',
-        "args": ['EVENT_2637_action_queue_sync_9']
+        "args": ['EVENT_2637_run_dialog_79']
     },
     {
         "identifier": 'EVENT_2637_play_sound_49',
         "command": 'play_sound',
         "args": [Sounds._087_CORRECT_SIGNAL, 6]
+    },
+    {
+        "identifier": 'EVENT_2637_pause_20______',
+        "command": 'pause',
+        "args": [25]
     },
     {
         "identifier": 'EVENT_2637_set_action_script_async_51',
@@ -265,7 +274,7 @@ script = [
     {
         "identifier": 'EVENT_2637_action_queue_sync_52',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2637_action_queue_sync_52_SUBSCRIPT_reset_properties_0',
@@ -280,7 +289,7 @@ script = [
     {
         "identifier": 'EVENT_2637_jmp_if_bit_set_53',
         "command": 'jmp_if_bit_set',
-        "args": [0x7059, 0, 'EVENT_2637_set_random_56']
+        "args": [0x7059, 0, 'EVENT_2637_set_random_grant']
     },
     {
         "identifier": 'EVENT_2637_inc_54',
@@ -288,99 +297,49 @@ script = [
         "args": [0x70ef]
     },
     {
-        "identifier": 'EVENT_2637_jmp_if_var_equals_byte_55',
-        "command": 'jmp_if_var_equals_byte',
-        "args": [0x70ef, 100, 'EVENT_2637_run_dialog_135']
+        "identifier": 'EVENT_2637_store_win_count_for_dialog',
+        "command": 'set_7000_to_70A0_short_mem',
+        "args": [0x70EF]
     },
     {
-        "identifier": 'EVENT_2637_set_random_56',
-        "command": 'set_random',
-        "args": [0x7000, 255]
+        "identifier": 'EVENT_2637_check_wins',
+        "command": 'run_event_as_subroutine',
+        "args": [2650]
     },
     {
-        "identifier": 'EVENT_2637_check_tier_1',
-        "command": 'mem_compare_val',
-        "args": [25]
-    },
-    {
-        "identifier": 'EVENT_2637_jmp_if_greater',
+        "identifier": 'EVENT_2637_jmp_if_comparison_result_is_greater_or_equal_189',
         "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_2637_pick_lower_tier']
+        "args": ['EVENT_2637_run_dialog_135']
     },
     {
-        "identifier": 'EVENT_2637_grant_tier_4',
+        "identifier": 'EVENT_2637_set_random_grant',
         "command": 'run_event_as_subroutine',
-        "args": [8]
-    },
-    {
-        "identifier": 'EVENT_2637_jmp_tier4',
-        "command": 'jmp',
-        "args": ['EVENT_2637_play_sound_86']
-    },
-    {
-        "identifier": 'EVENT_2637_pick_lower_tier',
-        "command": 'jmp_if_random_above_66',
-        "args": ['EVENT_2637_grant_tier_2', 'EVENT_2637_grant_tier_1']
-    },
-    {
-        "identifier": 'EVENT_2637_grant_tier_3',
-        "command": 'run_event_as_subroutine',
-        "args": [7]
-    },
-    {
-        "identifier": 'EVENT_2637_jmp_tier3',
-        "command": 'jmp',
-        "args": ['EVENT_2637_play_sound_86']
-    },
-    {
-        "identifier": 'EVENT_2637_grant_tier_2',
-        "command": 'run_event_as_subroutine',
-        "args": [6]
-    },
-    {
-        "identifier": 'EVENT_2637_jmp_tier2',
-        "command": 'jmp',
-        "args": ['EVENT_2637_play_sound_86']
-    },
-    {
-        "identifier": 'EVENT_2637_grant_tier_1',
-        "command": 'run_event_as_subroutine',
-        "args": [5]
+        "args": [2649]
     },
     {
         "identifier": 'EVENT_2637_jmp_tier1',
         "command": 'jmp',
-        "args": ['EVENT_2637_play_sound_86']
+        "args": [ 'EVENT_2637_run_dialog_79']
     },
     {
         "identifier": 'EVENT_2637_run_dialog_135',
         "command": 'run_dialog',
-        "args": [3308, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "args": [3308, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_2637_set_85',
-        "command": 'set',
-        "args": [0x70a7, 176]
+        "identifier": 'EVENT_2637_set_win_bit',
+        "command": 'set_bit',
+        "args": [0x7059, 0]
     },
     {
-        "identifier": 'EVENT_2637_play_sound_86',
-        "command": 'play_sound',
-        "args": [Sounds._027_FOUND_AN_ITEM, 6]
-    },
-    {
-        "identifier": 'EVENT_2637_run_dialog_87',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_2637_put_inventory_88',
-        "command": 'put_inventory',
-        "args": [0x70A7]
+        "identifier": 'EVENT_2637_set_final_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2637_run_dialog_79',
         "command": 'run_dialog',
-        "args": [3310, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "args": [3310, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_2637_jmp_if_dialog_option_b_80',

@@ -3,7 +3,7 @@
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
-  "partition": 73,
+  "partition": 119,
   "music": Music._18_ROSE_TOWN,
   "entrance_event": 537,
   "event_tiles": [
@@ -96,7 +96,7 @@ room = {
     {
       "id": 0,
       "type": ObjectType.OBJECT,
-      "initiator": Initiator.JUMP_ON_OR_HIT_FROM_BELOW,
+      "initiator": Initiator.NONE,
       "model": 109,
       "event_script": 532,
       "action_script": 15,
@@ -133,8 +133,8 @@ room = {
       "type": ObjectType.CHEST,
       "initiator": Initiator.HIT_FROM_BELOW,
       "model": 94,
-      "event_script": 3625,
-      "action_script": 16,
+      "event_script": 582,
+      "action_script": 14,
       "speed": 0,
       "star_offset": 0,
       "item_offset": 3,
