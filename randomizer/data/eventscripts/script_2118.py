@@ -49,16 +49,22 @@ script = [
         "args": [0x700a, 0x00db]
     },
     {
+        "identifier": 'EVENT_2118_jmp_if_already_checked_star_piece',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7081, 2, 'EVENT_2118_ret_10']
+    },
+    {
+        "identifier": 'EVENT_2118_set_sp_bit',
+        "command": "set_bit",
+        "args": [0x7081, 2]
+    },
+    {
         "identifier": 'EVENT_2118_jmp_to_event_9',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [167]
     },
     {
         "identifier": 'EVENT_2118_ret_10',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2118_ret_11',
         "command": 'ret'
     }
 ]

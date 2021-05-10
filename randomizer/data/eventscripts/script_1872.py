@@ -16,6 +16,21 @@ script = [
         "args": [0x70ae]
     },
     {
+        "identifier": 'EVENT_1872_jmp_if_bit_set_6_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 7, 'EVENT_1872_run_dialog_8__']
+    },
+    {
+        "identifier": 'EVENT_1872_jmp_if_bit_set_6__',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 4, 'EVENT_1872_run_dialog_8_']
+    },
+    {
+        "identifier": 'EVENT_1872_jmp_if_bit_set_6___',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 5, 'EVENT_1872_run_dialog_8_']
+    },
+    {
         "identifier": 'EVENT_1872_store_item_amount_7000_2',
         "command": 'store_item_amount_7000',
         "args": [0xac]
@@ -138,5 +153,76 @@ script = [
     {
         "identifier": 'EVENT_1872_ret_40',
         "command": 'ret'
-    }
+    },
+    {
+        "identifier": 'EVENT_1872_run_dialog_8_',
+        "command": 'run_dialog',
+        "args": [1288, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_1872_jmp_if_dialog_option_b_9_',
+        "command": 'jmp_if_dialog_option_b',
+        "args": ['EVENT_1872_pause_38']
+    },
+    {
+        "identifier": 'EVENT_1872_pause_10_',
+        "command": 'pause',
+        "args": [10]
+    },
+    {
+        "identifier": 'EVENT_1872_set_action_script_async_11_',
+        "command": 'set_action_script_async',
+        "args": [AreaObjects.MARIO, 670]
+    },
+    {
+        "identifier": 'EVENT_1872_store_coin_amount_7000_12_',
+        "command": 'store_coin_amount_7000'
+    },
+    {
+        "identifier": 'EVENT_1872_mem_compare_val_13_',
+        "command": 'mem_compare_val',
+        "args": [500]
+    },
+    {
+        "identifier": 'EVENT_1872_jmp_if_comparison_result_is_greater_or_equal_14_',
+        "command": 'jmp_if_comparison_result_is_greater_or_equal',
+        "args": ['EVENT_1872_set_18_']
+    },
+    {
+        "identifier": 'EVENT_1872_run_dialog_15_',
+        "command": 'jmp',
+        "args": ['EVENT_1872_run_dialog_15']
+    },
+    {
+        "identifier": 'EVENT_1872_set_18_',
+        "command": 'set',
+        "args": [0x7000, 500]
+    },
+    {
+        "identifier": 'EVENT_1872_dec_coins_19_',
+        "command": 'dec_coins'
+    },
+    {
+        "identifier": "EVENT_1872_grant_fireworks_guy_item_",
+        "command": 'set_bit',
+        "args": [0x705D, 7]
+    },
+    {
+        "identifier": "EVENT_1872_grant_fireworks_guy_item",
+        "command": 'run_event_as_subroutine',
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_1872_ret_16__',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1872_run_dialog_8__',
+        "command": 'run_dialog',
+        "args": [1287, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_1872_ret_16___',
+        "command": 'ret'
+    },
 ]

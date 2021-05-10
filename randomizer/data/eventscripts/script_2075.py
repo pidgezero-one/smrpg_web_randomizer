@@ -50,6 +50,10 @@ script = [
         "args": [AreaObjects.NPC_2, Rooms._324_MONSTRO_TOWN_OUTSIDE]
     },
     {
+        "identifier": 'EVENT_2075_ret_13_',
+        "command": 'ret'
+    },
+    {
         "identifier": 'EVENT_2075_run_dialog_0',
         "command": 'run_dialog',
         "args": [3335, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]

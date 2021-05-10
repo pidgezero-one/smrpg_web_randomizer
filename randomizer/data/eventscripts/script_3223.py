@@ -57,8 +57,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3223_create_packet_event_at_coords_jmp_if_null_10',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._036_MUSHROOM_JUMPS, 0x0cd8, 'EVENT_3223_pause_9']
+        "command": 'jmp_to_event',
+        "args": [3384]
     },
     {
         "identifier": 'EVENT_3223_ret_11',

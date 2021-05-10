@@ -88,76 +88,32 @@ script = [
     },
     {
         "identifier": 'EVENT_3348_set_11',
-        "command": 'set',
-        "args": [0x70a7, 32]
-    },
-    {
-        "identifier": 'EVENT_3348_jmp_12',
-        "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22']
+        "command": 'jmp_to_event',
+        "args": [172]
     },
     {
         "identifier": 'EVENT_3348_set_13',
-        "command": 'set',
-        "args": [0x70a7, 29]
-    },
-    {
-        "identifier": 'EVENT_3348_jmp_14',
-        "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22']
+        "command": 'jmp_to_event',
+        "args": [173]
     },
     {
         "identifier": 'EVENT_3348_set_15',
-        "command": 'set',
-        "args": [0x70a7, 30]
-    },
-    {
-        "identifier": 'EVENT_3348_jmp_16',
-        "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22']
+        "command": 'jmp_to_event',
+        "args": [174]
     },
     {
         "identifier": 'EVENT_3348_set_17',
-        "command": 'set',
-        "args": [0x70a7, 31]
-    },
-    {
-        "identifier": 'EVENT_3348_jmp_18',
-        "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22']
+        "command": 'jmp_to_event',
+        "args": [175]
     },
     {
         "identifier": 'EVENT_3348_set_19',
-        "command": 'set',
-        "args": [0x70a7, 131]
-    },
-    {
-        "identifier": 'EVENT_3348_jmp_20',
-        "command": 'jmp',
-        "args": ['EVENT_3348_run_event_as_subroutine_22']
+        "command": 'jmp_to_event',
+        "args": [176]
     },
     {
         "identifier": 'EVENT_3348_set_21',
-        "command": 'set',
-        "args": [0x70a7, 131]
-    },
-    {
-        "identifier": 'EVENT_3348_run_event_as_subroutine_22',
-        "command": 'run_event_as_subroutine',
-        "args": [33]
-    },
-    {
-        "identifier": 'EVENT_3348_set_23',
-        "command": 'set',
-        "args": [0x7000, 1586]
-    },
-    {
-        "identifier": 'EVENT_3348_run_event_as_subroutine_24',
-        "command": 'run_event_as_subroutine',
-        "args": [3829]
-    },
-    {
-        "identifier": 'EVENT_3348_ret_25',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [177]
     }
 ]

@@ -6,6 +6,36 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1649_jmp_if_trade_option_2_selected',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 4, 'EVENT_1649_remove_bucket_girl']
+    },
+    {
+        "identifier": 'EVENT_1649_jmp_if_trade_option_3_selected',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 5, 'EVENT_1649_remove_bucket_girl']
+    },
+    {
+        "identifier": 'EVENT_1649_ret_20',
+        "command": 'jmp',
+        "args": ['EVENT_1649_set_0']
+    },
+    {
+        "identifier": 'EVENT_1649_remove_bucket_girl',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x704D, 2, 'EVENT_1649_set_0']
+    },
+    {
+        "identifier": 'EVENT_1649_remove_bucket_girl_1',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_7]
+    },
+    {
+        "identifier": 'EVENT_1649_remove_bucket_girl_2',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_7, Rooms._108_MOLEVILLE_OUTSIDE]
+    },
+    {
         "identifier": 'EVENT_1649_set_0',
         "command": 'set',
         "args": [0x70df, 24]

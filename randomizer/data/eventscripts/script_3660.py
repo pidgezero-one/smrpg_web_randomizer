@@ -340,12 +340,12 @@ script = [
     {
         "identifier": 'EVENT_3660_summon_to_level_68',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_9, Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL]
+        "args": [AreaObjects.NPC_6, Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL]
     },
     {
         "identifier": 'EVENT_3660_summon_to_level_69',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_10, Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL]
+        "args": [AreaObjects.NPC_7, Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL]
     },
     {
         "identifier": 'EVENT_3660_summon_to_level_70',

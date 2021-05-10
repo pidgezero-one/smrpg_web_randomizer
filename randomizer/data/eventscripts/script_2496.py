@@ -583,16 +583,6 @@ script = [
         "args": [AreaObjects.NPC_14, Rooms._416_NIMBUS_LAND_OUTSIDE_BEFORE_VALENTINA]
     },
     {
-        "identifier": 'EVENT_2496___remove_from_level_78',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_7, Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL]
-    },
-    {
-        "identifier": 'EVENT_2496___remove_from_level_79',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL]
-    },
-    {
         "identifier": 'EVENT_2496___remove_from_level_80',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_8, Rooms._120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA]
@@ -748,21 +738,6 @@ script = [
         "args": [AreaObjects.DUMMY_0X05]
     },
     {
-        "identifier": 'EVENT_2496_____put_inventory_23',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
-    },
-    {
-        "identifier": 'EVENT_2496_____put_inventory_24',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
-    },
-    {
-        "identifier": 'EVENT_2496_____put_inventory_25',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
-    },
-    {
         "identifier": 'EVENT_2496_____enter_area_178',
         "command": 'enter_area',
         "args": [Rooms._189_MARIOS_PIPEHOUSE, RadialDirections.SOUTHEAST, 3, 13, 0, []]
@@ -854,6 +829,21 @@ script = [
     {
         "identifier": 'EVENT_2496_____fade_in_from_black_async_186',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_2496_____put_inventory_23',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_2496_____put_inventory_24',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_2496_____put_inventory_25',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
     },
     {
         "identifier": 'EVENT_2496_____play_music_default_volume_242',

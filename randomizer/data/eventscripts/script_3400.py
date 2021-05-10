@@ -205,6 +205,126 @@ script = [
         "args": [100, "EVENT_3400_play_overworld_1_music"]
     },
     {
+        "identifier": "EVENT_3400_room_108_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [108, "EVENT_3400_play_moleville_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_111_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [111, 'EVENT_3400_play_valentina_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_112_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [112, 'EVENT_3400_determine_nimbus_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_113_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [113, 'EVENT_3400_determine_nimbus_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_114_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [114, 'EVENT_3400_play_valentina_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_121_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [121, 'EVENT_3400_play_nimbus_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_125_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [125, 'EVENT_3400_play_pipe_vault_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_132_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [132, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_133_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [133, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_134_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [134, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_137_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [137, 'EVENT_3400_play_overworld_1_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_138_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [138, 'EVENT_3400_play_overworld_1_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_141_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [141, 'EVENT_3400_play_overworld_1_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_143_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [143, 'EVENT_3400_play_pipe_vault_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_144_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [144, 'EVENT_3400_play_bowsers_keep_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_154_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [154, 'EVENT_3400_play_marrymore_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_163_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [163, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_166_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [166, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_167_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [167, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_168_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [168, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_169_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [169, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_339_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [339, "EVENT_3400_play_moleville_indoor_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_498_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [498, 'EVENT_3400_play_nimbus_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_500_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [500, 'EVENT_3400_play_nimbus_music']
+    },
+    {
         "identifier": "EVENT_3400_ret",
         "command": 'ret'
     },
@@ -394,6 +514,70 @@ script = [
     },
     {
         "identifier": "EVENT_3400_play_casino_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_moleville_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._33_MOLEVILLE]
+    },
+    {
+        "identifier": "EVENT_3400_play_moleville_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_moleville_indoor_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._33_MOLEVILLE]
+    },
+    {
+        "identifier": "EVENT_3400_play_moleville_indoor_music_1",
+        "command": "fade_out_music_to_volume",
+        "args": [1, 96]
+    },
+    {
+        "identifier": "EVENT_3400_play_moleville_indoor_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_nimbus_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._50_NIMBUS_LAND]
+    },
+    {
+        "identifier": "EVENT_3400_play_nimbus_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_determine_nimbus_music',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705F, 4, 'EVENT_3400_play_nimbus_music']
+    },
+    {
+        "identifier": 'EVENT_3400_play_valentina_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._61_VALENTINA]
+    },
+    {
+        "identifier": "EVENT_3400_play_valentina_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_pipe_vault_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._07_PIPE_VAULT]
+    },
+    {
+        "identifier": "EVENT_3400_play_pipe_vault_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_bowsers_keep_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._66_BOWSERS_CASTLE_2ND_TIME]
+    },
+    {
+        "identifier": "EVENT_3400_play _bowsers_keep_music_ret",
         "command": 'ret'
     },
 ]

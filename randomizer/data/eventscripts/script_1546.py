@@ -6,38 +6,8 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1546_summon_to_current_level_0',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.MEM_70A8]
-    },
-    {
-        "identifier": 'EVENT_1546_run_event_as_subroutine_1',
-        "command": 'run_event_as_subroutine',
-        "args": [33]
-    },
-    {
-        "identifier": 'EVENT_1546_play_sound_2',
-        "command": 'play_sound',
-        "args": [Sounds._014_FLOWER, 6]
-    },
-    {
-        "identifier": 'EVENT_1546_run_dialog_3',
-        "command": 'run_dialog',
-        "args": [1177, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
-    },
-    {
-        "identifier": 'EVENT_1546_put_inventory_4',
-        "command": 'put_inventory',
-        "args": [0x70a7]
-    },
-    {
-        "identifier": 'EVENT_1546_jmp_5',
-        "command": 'jmp',
-        "args": ['EVENT_1546_ret_11']
-    },
-    {
         "identifier": 'EVENT_1546_stop_sound_6',
-        "command": 'stop_sound'
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_1546_action_queue_sync_7',
@@ -50,16 +20,16 @@ script = [
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
             },
             {
+                "identifier": 'EVENT_1546_action_queue_sync_6_SUBSCRIPT_shift_north_steps_1',
+                "command": 'shift_north_steps',
+                "args": [2]
+            },
+            {
                 "identifier": 'EVENT_1546_action_queue_sync_7_SUBSCRIPT_set_animation_speed_1',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_1546_inc_8',
-        "command": 'inc',
-        "args": [0x70c8]
     },
     {
         "identifier": 'EVENT_1546_set_short_9',
@@ -73,6 +43,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1546_ret_11',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [172]
     }
 ]

@@ -220,7 +220,7 @@ script = [
     {
         "identifier": 'EVENT_668_jmp_to_event_139',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [167]
     },
     {
         "identifier": 'EVENT_668_ret_140',

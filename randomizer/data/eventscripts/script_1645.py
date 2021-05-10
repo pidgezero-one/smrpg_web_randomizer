@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1645_check_item_turned_in',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705E, 5, 'EVENT_1645_run_dialog_29_']
+    },
+    {
         "identifier": 'EVENT_1645_set_7000_to_70A0_short_mem_0',
         "command": 'set_7000_to_70A0_short_mem',
         "args": [0x70a8]
@@ -58,6 +63,11 @@ script = [
         "identifier": 'EVENT_1645_remove_one_from_inventory_10',
         "command": 'remove_one_from_inventory',
         "args": [items.CarboCookie]
+    },
+    {
+        "identifier": 'EVENT_1645_grant_check_if_bucket_warp_off',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x705E, 6, 'EVENT_1645_check_trade_type']
     },
     {
         "identifier": 'EVENT_1645_jmp_if_bit_set_11',
@@ -169,12 +179,31 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1645_set_bit_19',
-        "command": 'set_bit',
-        "args": [0x7044, 4]
+        "identifier": 'EVENT_1645_jmp_if_trade_option_2_selected',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 4, 'EVENT_1645_remove_bucket_girl']
+    },
+    {
+        "identifier": 'EVENT_1645_jmp_if_trade_option_3_selected',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 5, 'EVENT_1645_remove_bucket_girl']
     },
     {
         "identifier": 'EVENT_1645_ret_20',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1645_remove_bucket_girl',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.MEM_70A8]
+    },
+    {
+        "identifier": 'EVENT_1645_remove_bucket_girl_2',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.MEM_70A8, Rooms._108_MOLEVILLE_OUTSIDE]
+    },
+    {
+        "identifier": 'EVENT_1645_bucket_ret_20',
         "command": 'ret'
     },
     {
@@ -224,5 +253,43 @@ script = [
     {
         "identifier": 'EVENT_1645_ret_30',
         "command": 'ret'
-    }
+    },
+    {
+        "identifier": 'EVENT_1645_check_trade_type',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 4, 'EVENT_1645_bucket_grant']
+    },
+    {
+        "identifier": 'EVENT_1645_check_trade_type_2',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 5, 'EVENT_1645_bucket_grant']
+    },
+    {
+        "identifier": 'EVENT_1645_return_vanilla_trade_type',
+        "command": 'jmp',
+        "args": ['EVENT_1645_jmp_if_bit_set_11']
+    },
+    {
+        "identifier": 'EVENT_1645_bucket_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_1645_bucket_grant_',
+        "command": 'set_bit',
+        "args": [0x705E, 5]
+    },
+    {
+        "identifier": 'EVENT_1645_ret_26_',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1645_run_dialog_29_',
+        "command": 'run_dialog',
+        "args": [1151, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_1645_ret_30_',
+        "command": 'ret'
+    },
 ]

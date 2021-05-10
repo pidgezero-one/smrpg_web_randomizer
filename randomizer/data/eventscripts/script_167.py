@@ -22,6 +22,26 @@ script = [
         "args": [103, "EVENT_167_room_103_logic"]
     },
     {
+        "identifier": "EVENT_167_room_111_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [111, "EVENT_167_room_111_112_logic"]
+    },
+    {
+        "identifier": "EVENT_167_room_112_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [112, "EVENT_167_room_111_112_logic"]
+    },
+    {
+        "identifier": "EVENT_167_room_154_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [154, "EVENT_167_room_154_logic"]
+    },
+    {
+        "identifier": "EVENT_167_room_157_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [157, "EVENT_167_room_157_logic"]
+    },
+    {
         "identifier": "EVENT_167_room_512_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [512, "EVENT_167_room_512_logic"]
@@ -46,6 +66,18 @@ script = [
     },
     {
         "identifier": "EVENT_167_room_103_logic", # cloaker/domino
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_167_room_111_112_logic", # dodo
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_167_room_154_logic", # bundt
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_167_room_157_logic", # star hill
         "command": 'ret'
     },
     {

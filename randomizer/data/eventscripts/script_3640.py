@@ -20,11 +20,6 @@ script = [
         "command": 'pause_script_until_effect_done'
     },
     {
-        "identifier": 'EVENT_3640_remove_from_level_3',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL]
-    },
-    {
         "identifier": 'EVENT_3640_clear_bit_4',
         "command": 'clear_bit',
         "args": [0x704c, 0]

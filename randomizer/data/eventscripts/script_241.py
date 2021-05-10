@@ -40,6 +40,31 @@ script = [
         "args": [101, "EVENT_241_room_101_logic"]
     },
     {
+        "identifier": "EVENT_241_room_125_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [125, "EVENT_241_room_125_logic"]
+    },
+    {
+        "identifier": "EVENT_241_room_163_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [163, "EVENT_241_room_163_logic"]
+    },
+    {
+        "identifier": "EVENT_241_room_166_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [166, "EVENT_241_room_166_logic"]
+    },
+    {
+        "identifier": "EVENT_241_room_167_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [167, "EVENT_241_room_167_logic"]
+    },
+    {
+        "identifier": "EVENT_241_room_168_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [168, "EVENT_241_room_168_logic"]
+    },
+    {
         "identifier": "EVENT_241_cancel",
         "command": 'ret'
     },
@@ -72,5 +97,35 @@ script = [
         "identifier": "EVENT_241_room_101_logic",
         "command": 'jmp_to_event',
         "args": [1801]
+    },
+    {
+        "identifier": "EVENT_241_room_125_logic",
+        "command": 'jmp_to_event',
+        "args": [1293]
+    },
+    {
+        "identifier": "EVENT_241_room_163_logic",
+        "command": 'jmp_to_event',
+        "args": [1801]
+    },
+    {
+        "identifier": "EVENT_241_room_166_logic",
+        "command": 'jmp_to_event',
+        "args": [2822]
+    },
+    {
+        "identifier": "EVENT_241_room_167_logic",
+        "command": 'jmp_to_event',
+        "args": [1801]
+    },
+    {
+        "identifier": 'EVENT_241_room_168_logic',
+        "command": 'set',
+        "args": [0x70a7, 101]
+    },
+    {
+        "identifier": 'EVENT_241_room_168_jmp',
+        "command": 'jmp_to_event',
+        "args": [165]
     },
 ]

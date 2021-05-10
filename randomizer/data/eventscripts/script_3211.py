@@ -11,6 +11,11 @@ script = [
         "args": [Rooms._168_SUNKEN_SHIP_PUZZLE_ROOM_3, 32, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
+        "identifier": "EVENT_3211_summon",
+        "command": "summon_to_current_level",
+        "args": [AreaObjects.NPC_0]
+    },
+    {
         "identifier": 'EVENT_3211_run_event_as_subroutine_1',
         "command": 'run_event_as_subroutine',
         "args": [15]

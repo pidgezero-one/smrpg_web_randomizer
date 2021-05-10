@@ -11,6 +11,11 @@ script = [
         "args": [81, "EVENT_244_room_81_logic"]
     },
     {
+        "identifier": "EVENT_244_room_144_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [144, "EVENT_244_room_144_logic"]
+    },
+    {
         "identifier": "EVENT_244_cancel",
         "command": 'ret'
     },
@@ -23,5 +28,15 @@ script = [
         "identifier": "EVENT_244_room_81_logic_2",
         "command": 'jmp_to_event',
         "args": [3074]
-    }
+    },
+    {
+        "identifier": "EVENT_244_room_144_logic",
+        "command": 'set',
+        "args": [0x70A7, 31]
+    },
+    {
+        "identifier": "EVENT_244_room_144_logic_2",
+        "command": 'jmp_to_event',
+        "args": [3089]
+    },
 ]

@@ -6,18 +6,44 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1547_summon_to_current_level_0',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.MEM_70A8]
+        "identifier": 'EVENT_1547_stop_sound_6',
+        "command": 'freeze_camera'
     },
     {
-        "identifier": 'EVENT_1547_run_event_as_subroutine_1',
-        "command": 'run_event_as_subroutine',
-        "args": [32]
+        "identifier": 'EVENT_1547_action_queue_sync_7',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.SCREEN_FOCUS],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1547_action_queue_sync_7_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1547_action_queue_sync_6_SUBSCRIPT_shift_north_steps_1',
+                "command": 'shift_north_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_1547_action_queue_sync_7_SUBSCRIPT_set_animation_speed_1',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
+            }
+        ]
     },
     {
-        "identifier": 'EVENT_1547_jmp_2',
-        "command": 'jmp',
-        "args": ['EVENT_1546_jmp_5']
+        "identifier": 'EVENT_1547_set_short_9',
+        "command": 'set_short',
+        "args": [0x701c, 0x0028]
+    },
+    {
+        "identifier": 'EVENT_1547_run_background_event_with_pause_return_on_exit_10',
+        "command": 'run_background_event_with_pause_return_on_exit',
+        "args": [1543, 0x701c, [12, 13]]
+    },
+    {
+        "identifier": 'EVENT_1547_ret_11',
+        "command": 'jmp_to_event',
+        "args": [173]
     }
 ]

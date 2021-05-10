@@ -81,7 +81,7 @@ obj_event_lens = [
 
 items_table = build_table(get_default_items(None))
 
-jmp_cmds = [0x3F, 0x3E, 0xD2, 0xD3, 0x41, 0xE6, 0xE7, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xEC, 0xED, 0x66, 0xEA,
+jmp_cmds = [0x3F, 0x3E, 0x3A, 0xD2, 0xD3, 0x41, 0xE6, 0xE7, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xEC, 0xED, 0x66, 0xEA,
             0xEF, 0xEE, 0xEB, 0x3D, 0x39, 0xDF, 0xDB, 0xF8, 0x3A, 0x32, 0xE8, 0xE0, 0xE2, 0xE4, 0xE1, 0xE3, 0xE5, 0xD3]
 
 jmp_cmds_double = [0x42, 0x67, 0xE9]
@@ -680,12 +680,12 @@ names[0x3A] = named('jmp_if_objects_less_than_xy_steps_apart', byte(
     prefix="AreaObjects", table=area_object_table), byte(), byte(), short())
 names[0x3B] = named('jmp_if_objects_less_than_xy_steps_apart_same_z_coord', byte(
     prefix="AreaObjects", table=area_object_table), byte(
-    prefix="AreaObjects", table=area_object_table), byte(), byte(), short())
+    prefix="AreaObjects", table=area_object_table), byte_int(), byte_int(), short())
 # 3C undocumented
 names[0x3D] = named('jmp_if_mario_in_air', short())
 names[0x3E] = named('create_packet_at_object_coords_jmp_if_null', byte(
     prefix="NPCPackets", table=npc_packet_table), byte(
-    prefix="AreaObjects", table=area_object_table), short())
+    prefix="AreaObjects", table=area_object_table), short_int())
 names[0x3F] = named('create_packet_at_7010_coords_jmp_if_null', byte(
     prefix="NPCPackets", table=npc_packet_table), short())
 names[0x40] = run_background_event

@@ -1144,14 +1144,14 @@ dialog_data[643] = ''' Ooh, you have a Carbo Cookie!
   [select]  (Nope)[await]'''
 dialog_data[644] = ''' You're such a Scrooge![await]'''
 dialog_data[645] = ''' Wow, thanks a lot!
- Here you can take this green...[await][page]
+ Here you can take this ...[await][page]
  Oops! I must have dropped it.
- Sorry about that, but come back
- later and I'll find another one.[await]'''
+ I'll go find another one.[await]'''
 dialog_data[646] = ''' Ooh, thanks!
  Since you're so nice, I'll give you
  this green coin.[await]'''
-dialog_data[647] = '''[await]'''
+dialog_data[647] = '''
+             Thanks, mister!'''
 dialog_data[648] = '''[await]'''
 dialog_data[649] = ''' Sorry, curatives are all gone.
 [end]'''
@@ -1171,12 +1171,16 @@ dialog_data[653] = ''' Hey mister! Have ya been to
  Try lookin' around there, maybe
  you'll find a way to avoid jumpin'
  into it![await]'''
-dialog_data[654] = '''[await]'''
-dialog_data[655] = '''What a nice “Shiny Stone”.
-I'll trade you my “Carbo Cookie”![await]
+dialog_data[654] = ''' You want your “Shiny Stone” back?[await]
+  [select]  (Yes please)
+  [select]  (No thanks)[await]'''
+dialog_data[655] = ''' What a nice “Shiny Stone”.
+ I'll trade you my “Carbo Cookie”![await]
   [select]  (Okay)
   [select]  (No thanks)[await]'''
-dialog_data[656] = '''[await]'''
+dialog_data[656] = ''' Sowwy, my pur-tend store is closed
+ today![await][pause] If ya want a “Shiny Stone”,
+ you can prolly find one somewhere![await]'''
 dialog_data[657] = '''     Received a “Carbo Cookie”[await]'''
 dialog_data[658] = '''[await]'''
 dialog_data[659] = ''' Booster's a pretty absent-minded
@@ -1454,8 +1458,12 @@ dialog_data[769] = '''[await]'''
 dialog_data[770] = '''[await]'''
 dialog_data[771] = '''[await]'''
 dialog_data[772] = '''[await]'''
-dialog_data[773] = '''[await]'''
-dialog_data[774] = '''[await]'''
+dialog_data[773] = '''
+      Thanks for your business![await]'''
+dialog_data[774] = ''' Wanna buy a mystery item for
+ 500 coins?[await]
+  [select] (Okay)
+  [select] (No thanks)[await]'''
 dialog_data[775] = ''' Wanna buy some Fireworks for
  500 coins?[await]
   [select] (Okay)

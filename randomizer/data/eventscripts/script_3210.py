@@ -591,7 +591,7 @@ script = [
     {
         "identifier": 'EVENT_3210_jmp_if_objects_less_than_xy_steps_apart_same_z_coord_56',
         "command": 'jmp_if_objects_less_than_xy_steps_apart_same_z_coord',
-        "args": [AreaObjects.NPC_7, AreaObjects.NPC_6, 0x00, 0x01, 0x2863]
+        "args": [AreaObjects.NPC_7, AreaObjects.NPC_6, 0x00, 0x01, 'EVENT_3210_set_bit_58']
     },
     {
         "identifier": 'EVENT_3210_jmp_57',
@@ -659,9 +659,9 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'EVENT_3210_create_packet_event_at_coords_jmp_if_null_70',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._035_FLOWER_JUMPS, 0x0cd9, 'EVENT_3210_pause_69']
+        "identifier": 'EVENT_3210_summon_prize',
+        "command": 'jmp_to_event',
+        "args": [3383]
     },
     {
         "identifier": 'EVENT_3210_action_queue_async_71',

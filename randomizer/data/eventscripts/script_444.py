@@ -360,19 +360,9 @@ script = [
         "args": [0x7099, 4]
     },
     {
-        "identifier": 'EVENT_444_set_62',
-        "command": 'set',
-        "args": [0x70a7, 115]
-    },
-    {
-        "identifier": 'EVENT_444_set_63',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_444_run_event_as_subroutine_64',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_444_jmp_65',
@@ -390,19 +380,9 @@ script = [
         "args": [0x7099, 5]
     },
     {
-        "identifier": 'EVENT_444_set_68',
-        "command": 'set',
-        "args": [0x70a7, 116]
-    },
-    {
-        "identifier": 'EVENT_444_set_69',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_444_run_event_as_subroutine_70',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [179]
     },
     {
         "identifier": 'EVENT_444_jmp_71',

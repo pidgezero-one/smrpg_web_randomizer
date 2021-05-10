@@ -2268,9 +2268,9 @@ class CarboCookie(Item):
     rare = True
     hard_tier = 1
     dialog_replacements = [
-        (2908, ''' Item #1: A “Yummy Cookie”!\n These are pretty popular in town.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911, ''' Item #2: A “Yummy Cookie”.\n These are pretty popular in town.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914, ''' Item #3: A “Yummy Cookie”.\n These are pretty popular in town.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
@@ -2283,9 +2283,9 @@ class ShinyStone(Item):
     hard_tier = 2
     shuffle_type = ItemShuffleType.Required
     dialog_replacements = [
-        (2908, ''' Item #1: A “Shiny Quartz”!\n It's quite intriguing, isn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911, ''' Item #2: A “Shiny Quartz”.\n It's quite intriguing, isn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914, ''' Item #3: A “Shiny Quartz”.\n It's quite intriguing, isn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
@@ -2580,6 +2580,21 @@ class CricketJam(Item):
         (2911, ''' Item #2: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
         (2914, ''' Item #3: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
+
+
+class Fireworks(Item):
+    index = 172
+    description = ' A gorgeous\x01 firework'
+    # ?
+    # order = 133
+    item_type = 3
+    # rare = True
+    dialog_replacements = [
+        (2908, ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
+
 
 
 class BrightCard(Item):

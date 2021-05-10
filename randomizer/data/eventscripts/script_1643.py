@@ -16,6 +16,20 @@ script = [
         "args": [0x70ae]
     },
     {
+        "identifier": 'EVENT_1643_jmp_if_trade_option_3',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x705D, 5, 'EVENT_1643_run_dialog_2']
+    },
+    {
+        "identifier": 'EVENT_1643_run_dialog_2_',
+        "command": 'run_dialog',
+        "args": [1160, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_1643_ret_19_',
+        "command": 'ret'
+    },
+    {
         "identifier": 'EVENT_1643_run_dialog_2',
         "command": 'run_dialog',
         "args": [1124, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]

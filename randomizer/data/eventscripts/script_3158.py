@@ -16,33 +16,14 @@ script = [
         "args": [0x7058, 0]
     },
     {
-        "identifier": 'EVENT_3158_play_sound_2',
-        "command": 'play_sound',
-        "args": [Sounds._014_FLOWER, 6]
-    },
-    {
         "identifier": 'EVENT_3158_set_7010_to_object_xyz_3',
         "command": 'set_7010_to_object_xyz',
         "args": [AreaObjects.MARIO]
     },
     {
-        "identifier": 'EVENT_3158_add_short_4',
-        "command": 'add_short',
-        "args": [0x7014, 0x0200]
-    },
-    {
         "identifier": 'EVENT_3158_create_packet_at_7010_coords_jmp_if_null_5',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
-        "args": [NPCPackets._000_FLOWER, 'EVENT_3158_set_6']
-    },
-    {
-        "identifier": 'EVENT_3158_set_6',
-        "command": 'set',
-        "args": [0x7000, 1]
-    },
-    {
-        "identifier": 'EVENT_3158_add_max_FP_7000_7',
-        "command": 'add_max_FP_7000'
+        "command": 'jmp_to_event',
+        "args": [3385]
     },
     {
         "identifier": 'EVENT_3158_ret_8',

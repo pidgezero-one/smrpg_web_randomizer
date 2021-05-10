@@ -132,24 +132,14 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_503_remove_from_current_level_16',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5]
+        "identifier": "EVENT_503_set_70A7",
+        "command": "set",
+        "args": [0x70A8, 0x19]
     },
     {
-        "identifier": 'EVENT_503_play_sound_17',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_503_add_frog_coins_18',
-        "command": 'add_frog_coins',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_503_remove_from_level_19',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES]
+        "identifier": "EVENT_503_grant",
+        "command": "run_event_as_subroutine",
+        "args": [236]
     },
     {
         "identifier": 'EVENT_503_remember_last_object_20',

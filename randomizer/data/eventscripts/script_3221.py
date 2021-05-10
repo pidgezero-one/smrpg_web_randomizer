@@ -90,8 +90,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3221_create_packet_event_at_coords_jmp_if_null_9',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._037_ITEM_BAG_JUMPS, 0x0cda, 'EVENT_3221_pause_8']
+        "command": 'run_event_as_subroutine',
+        "args": [3386]
     },
     {
         "identifier": 'EVENT_3221_ret_10',

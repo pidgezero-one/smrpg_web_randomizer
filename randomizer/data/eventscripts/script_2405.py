@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_2405_summon_to_level_7',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_9, Rooms._157_STAR_HILL_AREA_03]
+    },
+    {
         "identifier": 'EVENT_2405_summon_to_level_0',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_5, Rooms._158_STAR_HILL_AREA_02]
@@ -39,11 +44,6 @@ script = [
         "identifier": 'EVENT_2405_summon_to_level_6',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_8, Rooms._157_STAR_HILL_AREA_03]
-    },
-    {
-        "identifier": 'EVENT_2405_summon_to_level_7',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_9, Rooms._157_STAR_HILL_AREA_03]
     },
     {
         "identifier": 'EVENT_2405_summon_to_level_8',

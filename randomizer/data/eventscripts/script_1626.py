@@ -16,14 +16,24 @@ script = [
         "args": [0x70ae]
     },
     {
-        "identifier": 'EVENT_1626_store_item_amount_7000_5',
-        "command": 'store_item_amount_7000',
-        "args": [items.CarboCookie]
+        "identifier": 'EVENT_1626_jmp_if_trade_option_2_used_carbo_cookie_no_bucket_warp',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705E, 5, 'EVENT_1626_return_shiny_stone']
     },
     {
-        "identifier": 'EVENT_1626_jmp_if_7000_not_equals_short_6',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [0, 'EVENT_1626_run_dialog_9']
+        "identifier": 'EVENT_1626_jmp_if_trade_option_3',
+        "command": 'jmp_if_bit_set',
+        "args": [0x705D, 5, 'EVENT_1626_run_dialog_9']
+    },
+    {
+        "identifier": 'EVENT_1626_jmp_if_trade_option_2',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x705D, 4, 'EVENT_1626_store_item_amount_7000_7']
+    },
+    {
+        "identifier": 'EVENT_1626_jmp_if_trade_option_2_used_carbo_cookie_bucket_warp',
+        "command": 'jmp_if_bit_set',
+        "args": [0x704D, 2, 'EVENT_1626_return_shiny_stone']
     },
     {
         "identifier": 'EVENT_1626_store_item_amount_7000_7',
@@ -75,14 +85,9 @@ script = [
         "args": [0x70a7, 137]
     },
     {
-        "identifier": 'EVENT_1626_set_18',
-        "command": 'set',
-        "args": [0x7000, 1161]
-    },
-    {
         "identifier": 'EVENT_1626_run_event_as_subroutine_19',
         "command": 'run_event_as_subroutine',
-        "args": [3827]
+        "args": [160]
     },
     {
         "identifier": 'EVENT_1626_ret_20',
@@ -101,5 +106,49 @@ script = [
     {
         "identifier": 'EVENT_1626_ret_24',
         "command": 'ret'
-    }
+    },
+    {
+        "identifier": 'EVENT_1626_return_shiny_stone',
+        "command": 'store_item_amount_7000',
+        "args": [items.ShinyStone]
+    },
+    {
+        "identifier": 'EVENT_1626_jmp_if_7000_not_equals_short_8_',
+        "command": 'jmp_if_7000_not_equals_short',
+        "args": [0, 'EVENT_1626_run_dialog_9']
+    },
+    {
+        "identifier": 'EVENT_1626_run_dialog_11_',
+        "command": 'run_dialog',
+        "args": [1158, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_1626_jmp_if_dialog_option_b_12_',
+        "command": 'jmp_if_dialog_option_b',
+        "args": ['EVENT_1626_pause_21']
+    },
+    {
+        "identifier": 'EVENT_1626_pause_13_',
+        "command": 'pause',
+        "args": [10]
+    },
+    {
+        "identifier": 'EVENT_1626_set_action_script_async_14_',
+        "command": 'set_action_script_async',
+        "args": [AreaObjects.MARIO, 670]
+    },
+    {
+        "identifier": 'EVENT_1626_set_17_',
+        "command": 'set',
+        "args": [0x70a7, 138]
+    },
+    {
+        "identifier": 'EVENT_1626_run_event_as_subroutine_19_',
+        "command": 'run_event_as_subroutine',
+        "args": [160]
+    },
+    {
+        "identifier": 'EVENT_1626_ret_20_',
+        "command": 'ret'
+    },
 ]

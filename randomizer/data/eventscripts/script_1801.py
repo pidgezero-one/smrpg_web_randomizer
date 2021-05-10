@@ -11,11 +11,6 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
-        "identifier": 'EVENT_1801_action_queue_async_0',
-        "command": 'set_temp_action_script_sync',
-        "args": [AreaObjects.MEM_70A8, 1016]
-    },
-    {
         "identifier": 'EVENT_1801_set_1',
         "command": 'set',
         "args": [0x7000, 1]
@@ -23,6 +18,11 @@ script = [
     {
         "identifier": 'EVENT_1801_add_max_FP_7000_2',
         "command": 'add_max_FP_7000'
+    },
+    {
+        "identifier": 'EVENT_1801_action_queue_async_0',
+        "command": 'set_temp_action_script_sync',
+        "args": [AreaObjects.MEM_70A8, 1016]
     },
     {
         "identifier": 'EVENT_1801_ret_3',

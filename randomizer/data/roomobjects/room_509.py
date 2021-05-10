@@ -4,7 +4,7 @@
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms
 room = {
   "partition": 26,
-  "music": Music._00_CURRENT,
+  "music": Music._56_FACTORY,
   "entrance_event": 3792,
   "event_tiles": [],
   "exit_fields": [],

@@ -113,6 +113,10 @@ script = [
                 "identifier": 'EVENT_3819_action_queue_async_38_SUBSCRIPT_shift_z_up_pixels_1',
                 "command": 'shift_z_up_pixels',
                 "args": [4]
+            },
+            {
+                "identifier": 'EVENT_3819_action_queue_async_38_fix_position',
+                "command": 'face_southwest'
             }
         ]
     },
