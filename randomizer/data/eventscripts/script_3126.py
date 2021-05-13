@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_3126_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7057, 7, 'EVENT_3126_jmp_to_event_11']
+        "args": [0x7057, 7, 'EVENT_3126_special_val_2_']
     },
     {
         "identifier": 'EVENT_3126_set_short_1',
@@ -36,22 +36,32 @@ script = [
         "args": [AreaObjects.MEM_70A8, 15]
     },
     {
-        "identifier": 'EVENT_3126_set_short_6',
-        "command": 'set_short',
-        "args": [0x700a, 0x00d4]
+        "identifier": "EVENT_3126_special_val_2", # hidon chest
+        "command": 'set',
+        "args": [0x7000, 513]
     },
     {
-        "identifier": 'EVENT_3126_jmp_to_event_7',
+        "identifier": 'EVENT_3126_first_item_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [253]
+    },
+    {
+        "identifier": "EVENT_3126_star",
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [170]
     },
     {
         "identifier": 'EVENT_3126_ret_10',
         "command": 'ret'
     },
     {
+        "identifier": "EVENT_3126_special_val_2_", # hidon chest
+        "command": 'set',
+        "args": [0x7000, 513]
+    },
+    {
         "identifier": 'EVENT_3126_jmp_to_event_11',
         "command": 'jmp_to_event',
-        "args": [34]
+        "args": [245]
     }
 ]

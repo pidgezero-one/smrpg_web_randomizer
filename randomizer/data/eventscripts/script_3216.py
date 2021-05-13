@@ -70,33 +70,14 @@ script = [
         "args": [0x707d, 3, 'EVENT_3216_ret_15']
     },
     {
-        "identifier": 'EVENT_3216_start_loop_n_times_9',
-        "command": 'start_loop_n_times',
-        "args": [15]
-    },
-    {
-        "identifier": 'EVENT_3216_play_sound_10',
-        "command": 'play_sound',
-        "args": [Sounds._013_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_3216_add_coins_11',
-        "command": 'add_coins',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3216_pause_12',
-        "command": 'pause',
-        "args": [8]
-    },
-    {
-        "identifier": 'EVENT_3216_end_loop_13',
-        "command": 'end_loop'
-    },
-    {
         "identifier": 'EVENT_3216_set_bit_14',
         "command": 'set_bit',
         "args": [0x707d, 3]
+    },
+    {
+        "identifier": 'EVENT_3216_start_loop_n_times_9',
+        "command": 'jmp_to_event',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_3216_ret_15',

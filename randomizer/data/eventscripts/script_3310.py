@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3310_jmp_if_bit_clear_0',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 5, 'EVENT_3310_ret_11']
-    },
-    {
         "identifier": 'EVENT_3310_stop_all_background_events_1',
         "command": 'stop_all_background_events'
     },
@@ -62,40 +57,13 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3310_summon_object_at_70A8_to_current_level_4',
-        "command": 'summon_object_at_70A8_to_current_level'
-    },
-    {
-        "identifier": 'EVENT_3310_disable_event_trigger_for_object_at_70A8_5',
-        "command": 'disable_event_trigger_for_object_at_70A8'
-    },
-    {
-        "identifier": 'EVENT_3310_inc_6',
-        "command": 'inc',
-        "args": [0x70c8]
-    },
-    {
-        "identifier": 'EVENT_3310_run_event_as_subroutine_7',
-        "command": 'run_event_as_subroutine',
-        "args": [33]
-    },
-    {
-        "identifier": 'EVENT_3310_run_dialog_8',
-        "command": 'run_dialog',
-        "args": [1586, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_3310_put_inventory_9',
-        "command": 'put_inventory',
-        "args": [0x70a7]
-    },
-    {
         "identifier": 'EVENT_3310_run_background_event_10',
         "command": 'run_background_event',
         "args": [3228, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
-        "identifier": 'EVENT_3310_ret_11',
-        "command": 'ret'
+        "identifier": 'EVENT_3310_summon_object_at_70A8_to_current_level_4',
+        "command": 'jmp_to_event',
+        "args": [172]
     }
 ]

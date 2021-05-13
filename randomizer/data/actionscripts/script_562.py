@@ -10,8 +10,8 @@ script = [
         "args": [0x7043, 6]
     },
     {
-        "identifier": 'ACTION_562_shirt_to_xy_coords_1',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_562_shift_to_xy_coords_1',
+        "command": 'shift_to_xy_coords',
         "args": [29, 60]
     },
     {

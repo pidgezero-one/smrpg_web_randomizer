@@ -15,11 +15,6 @@ script = [
         "args": [0x70ae, 21]
     },
     {
-        "identifier": 'ACTION_317_set_sprite_sequence_2',
-        "command": 'set_sprite_sequence',
-        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-    },
-    {
         "identifier": 'ACTION_317_walk_1_step_northwest_3',
         "command": 'walk_1_step_northwest'
     },

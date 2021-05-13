@@ -14,11 +14,6 @@ script = [
         "args": [0x30, [4]]
     },
     {
-        "identifier": 'ACTION_318_set_sprite_sequence_2',
-        "command": 'set_sprite_sequence',
-        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-    },
-    {
         "identifier": 'ACTION_318_pause_3',
         "command": 'pause',
         "args": [1]

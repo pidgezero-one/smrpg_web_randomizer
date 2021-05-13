@@ -446,16 +446,6 @@ script = [
         "args": [0x7085, 0]
     },
     {
-        "identifier": 'EVENT_2496___set_bit_42',
-        "command": 'set_bit',
-        "args": [0x708b, 0]
-    },
-    {
-        "identifier": 'EVENT_2496___set_bit_43',
-        "command": 'set_bit',
-        "args": [0x708b, 2]
-    },
-    {
         "identifier": 'EVENT_2496___set_bit_44',
         "command": 'set_bit',
         "args": [0x708b, 6]
@@ -613,16 +603,6 @@ script = [
         "args": [AreaObjects.NPC_1, Rooms._368_NIMBUS_LAND_ROYAL_BUS_STATION]
     },
     {
-        "identifier": 'EVENT_2496___remove_from_level_86',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._202_BOOSTER_TOWER_ENTRANCE]
-    },
-    {
-        "identifier": 'EVENT_2496___remove_from_level_87',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._202_BOOSTER_TOWER_ENTRANCE]
-    },
-    {
         "identifier": 'EVENT_2496___remove_from_level_88',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_1, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
@@ -661,16 +641,6 @@ script = [
         "identifier": 'EVENT_2496___apply_solidity_mod_101',
         "command": 'apply_solidity_mod',
         "args": [Rooms._281_MOLEVILLE_MINES_AREA_07_FROM_CROCOS_BOMBED_ROOM, 0, [_0x6BFlags.PERMANENT]]
-    },
-    {
-        "identifier": 'EVENT_2496___apply_tile_mod_102',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, 0, [_0x6AFlags.USE_ALTERNATE]]
-    },
-    {
-        "identifier": 'EVENT_2496___apply_solidity_mod_103',
-        "command": 'apply_solidity_mod',
-        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_2496___clear_bit_104',
@@ -787,63 +757,47 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2496_____action_queue_async_182',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_182_SUBSCRIPT_fixed_f_coord_off_0',
-                "command": 'fixed_f_coord_off'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_182_SUBSCRIPT_visibility_off_1',
-                "command": 'visibility_off'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_182_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2496_____set_action_script_sync_183',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.MARIO, 95]
     },
     {
-        "identifier": 'EVENT_2496_____freeze_camera_184',
-        "command": 'freeze_camera'
-    },
-    {
-        "identifier": 'EVENT_2496_____action_queue_async_185',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
+        "identifier": 'EVENT_2496_action_queue_sync_0',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_2496_____action_queue_async_185_SUBSCRIPT_shift_southwest_pixels_0',
+                "identifier": 'EVENT_1392_action_queue_sync_0_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1392_action_queue_sync_0_SUBSCRIPT_shift_southwest_pixels_1',
                 "command": 'shift_southwest_pixels',
                 "args": [2]
             }
         ]
     },
     {
+        "identifier": 'EVENT_2496_action_queue_async_1',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1392_action_queue_async_1_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1392_action_queue_async_1_SUBSCRIPT_shift_north_pixels_1',
+                "command": 'shift_north_pixels',
+                "args": [4]
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_2496_____fade_in_from_black_async_186',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2496_____put_inventory_23',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
-    },
-    {
-        "identifier": 'EVENT_2496_____put_inventory_24',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
-    },
-    {
-        "identifier": 'EVENT_2496_____put_inventory_25',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
     },
     {
         "identifier": 'EVENT_2496_____play_music_default_volume_242',

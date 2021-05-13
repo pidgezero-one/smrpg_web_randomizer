@@ -437,7 +437,7 @@ class Booster(BossAndStarLocation):
         },
         {
             "room": Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM,
-            "optional_sidekicks": [2]
+            "optional_sidekicks": [0]
         },
         {
             "room": Rooms._037_BOOSTER_TOWER_4F_3LEVEL_ROOM_WJUMPING_SPOOKUMS,
@@ -866,7 +866,7 @@ class Valentina(BossAndStarLocation):
         },
         {
             "room": Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR,
-            "npcs": [5] #formerly 6
+            "npcs": [4] #formerly 6
         },
         {
             "room": Rooms._408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM_,

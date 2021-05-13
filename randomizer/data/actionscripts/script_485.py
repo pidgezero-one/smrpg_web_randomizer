@@ -15,8 +15,8 @@ script = [
         "args": [0, 3, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
-        "identifier": 'ACTION_485_shirt_to_xy_coords_2',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_485_shift_to_xy_coords_2',
+        "command": 'shift_to_xy_coords',
         "args": [3, 74]
     },
     {

@@ -671,7 +671,7 @@ class ObjectSequenceScript:
         return self
 
     # 0x82
-    def shirt_to_xy_coords(self, x, y):
+    def shift_to_xy_coords(self, x, y):
         self.append_byte(0x82)
         self.append_byte(x)
         self.append_byte(y)

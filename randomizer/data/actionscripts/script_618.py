@@ -46,8 +46,8 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_618_shirt_to_xy_coords_12',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_618_shift_to_xy_coords_12',
+        "command": 'shift_to_xy_coords',
         "args": [4, 24]
     },
     {

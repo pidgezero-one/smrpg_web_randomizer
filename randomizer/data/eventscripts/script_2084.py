@@ -6,56 +6,22 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2084_set_0',
-        "command": 'set',
-        "args": [0x70a7, 162]
+        "identifier": 'EVENT_2084_jmp_if_bit_set_0',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7089, 5, 'EVENT_2084_ret_7']
     },
     {
-        "identifier": 'EVENT_2084_set_1',
-        "command": 'set',
-        "args": [0x7000, 3005]
-    },
-    {
-        "identifier": 'EVENT_2084_run_event_as_subroutine_2',
+        "identifier": 'EVENT_2084_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
-        "identifier": 'EVENT_2084_remove_from_current_level_3',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
+        "identifier": 'EVENT_2084_set_bit_5',
+        "command": 'set_bit',
+        "args": [0x7089, 5]
     },
     {
-        "identifier": 'EVENT_2084_remove_from_level_4',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._189_MARIOS_PIPEHOUSE]
-    },
-    {
-        "identifier": 'EVENT_2084_ret_5',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2084_stop_sound_6',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2084_stop_sound_7',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2084_stop_sound_8',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2084_stop_sound_9',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2084_stop_sound_10',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_2084_ret_11',
+        "identifier": 'EVENT_2084_ret_7',
         "command": 'ret'
     }
 ]

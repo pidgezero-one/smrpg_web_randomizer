@@ -140,12 +140,12 @@ script = [
     {
         "identifier": 'EVENT_1346_remove_from_current_level_11',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2]
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_1346_remove_from_level_12',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
+        "args": [AreaObjects.NPC_0, Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
     },
     {
         "identifier": 'EVENT_1346_clear_bit_13',

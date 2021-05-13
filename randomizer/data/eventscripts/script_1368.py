@@ -1388,19 +1388,28 @@ script = [
         "args": [AreaObjects.MARIO, 395]
     },
     {
-        "identifier": 'EVENT_1368_set_89',
-        "command": 'set',
-        "args": [0x70a7, 78]
-    },
-    {
-        "identifier": 'EVENT_1368_set_90',
-        "command": 'set',
-        "args": [0x7000, 524]
+        "identifier": 'EVENT_1368_unfreeze_camera_147',
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_1368_run_event_as_subroutine_91',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_1368_jmp_if_no_alt_win_condition',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7086, 7, 'EVENT_1368_summon_to_level_145']
+    },
+    {
+        "identifier": 'EVENT_1368_set_bit_87_',
+        "command": 'set_bit',
+        "args": [0x7081, 3]
+    },
+    {
+        "identifier": 'EVENT_1368_give_star_piece',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
     },
     {
         "identifier": 'EVENT_1368_summon_to_level_145',
@@ -1421,15 +1430,11 @@ script = [
                 "command": 'face_northwest'
             },
             {
-                "identifier": 'EVENT_1368_action_queue_async_146_SUBSCRIPT_shirt_to_xy_coords_2',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_1368_action_queue_async_146_SUBSCRIPT_shift_to_xy_coords_2',
+                "command": 'shift_to_xy_coords',
                 "args": [5, 29]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_1368_unfreeze_camera_147',
-        "command": 'unfreeze_camera'
     },
     {
         "identifier": 'EVENT_1368_ret_148',

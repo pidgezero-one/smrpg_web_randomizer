@@ -25,8 +25,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_750_shirt_to_xy_coords_4',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_750_shift_to_xy_coords_4',
+        "command": 'shift_to_xy_coords',
         "args": [12, 87]
     },
     {
@@ -70,8 +70,8 @@ script = [
         "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
     },
     {
-        "identifier": 'ACTION_750_shirt_to_xy_coords_13',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_750_shift_to_xy_coords_13',
+        "command": 'shift_to_xy_coords',
         "args": [0, 0]
     },
     {
@@ -95,8 +95,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_750_shirt_to_xy_coords_18',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_750_shift_to_xy_coords_18',
+        "command": 'shift_to_xy_coords',
         "args": [8, 111]
     },
     {
@@ -159,8 +159,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_750_shirt_to_xy_coords_31',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_750_shift_to_xy_coords_31',
+        "command": 'shift_to_xy_coords',
         "args": [6, 83]
     },
     {
@@ -227,8 +227,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_750_shirt_to_xy_coords_45',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_750_shift_to_xy_coords_45',
+        "command": 'shift_to_xy_coords',
         "args": [12, 103]
     },
     {
@@ -295,8 +295,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_750_shirt_to_xy_coords_59',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_750_shift_to_xy_coords_59',
+        "command": 'shift_to_xy_coords',
         "args": [2, 107]
     },
     {

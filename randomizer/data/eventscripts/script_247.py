@@ -186,6 +186,41 @@ script = [
         "args": [169, "EVENT_247_room_169_logic"]
     },
     {
+        "identifier": "EVENT_247_room_175_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [175, "EVENT_247_room_175_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_179_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [179, "EVENT_247_room_179_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_183_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [183, "EVENT_247_room_183_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_184_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [184, "EVENT_247_room_184_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_185_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [185, "EVENT_247_room_185_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_196_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [196, "EVENT_247_room_196_logic"]
+    },
+    {
+        "identifier": "EVENT_247_room_199_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [199, "EVENT_247_room_199_logic"]
+    },
+    {
         "identifier": "EVENT_247_room_325_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [325, "EVENT_247_room_17_325_logic"]
@@ -393,5 +428,45 @@ script = [
         "identifier": "EVENT_247_room_169_logic_2",
         "command": 'jmp_to_event',
         "args": [3074]
+    },
+    {
+        "identifier": "EVENT_247_room_175_logic",
+        "command": 'set',
+        "args": [0x70BC, 0]
+    },
+    {
+        "identifier": "EVENT_247_room_175_logic_2",
+        "command": 'jmp_to_event',
+        "args": [3074]
+    },
+    {
+        "identifier": "EVENT_247_room_179_logic",
+        "command": 'jmp_to_event',
+        "args": [3089]
+    },
+    {
+        "identifier": "EVENT_247_room_183_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_247_room_184_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_247_room_185_logic",
+        "command": 'jmp_to_event',
+        "args": [3089]
+    },
+    {
+        "identifier": "EVENT_247_room_196_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_247_room_199_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
     },
 ]

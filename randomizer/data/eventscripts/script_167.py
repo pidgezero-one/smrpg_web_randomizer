@@ -42,6 +42,21 @@ script = [
         "args": [157, "EVENT_167_room_157_logic"]
     },
     {
+        "identifier": "EVENT_167_room_173_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [173, "EVENT_167_room_173_logic"]
+    },
+    {
+        "identifier": "EVENT_167_room_192_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [192, "EVENT_167_room_192_logic"]
+    },
+    {
+        "identifier": "EVENT_167_room_202_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [202, "EVENT_167_room_202_logic"]
+    },
+    {
         "identifier": "EVENT_167_room_512_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [512, "EVENT_167_room_512_logic"]
@@ -78,6 +93,18 @@ script = [
     },
     {
         "identifier": "EVENT_167_room_157_logic", # star hill
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_167_room_173_logic", # kalimari
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_167_room_192_logic", # booster
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_167_room_202_logic", # KGGG
         "command": 'ret'
     },
     {

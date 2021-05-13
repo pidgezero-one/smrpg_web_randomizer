@@ -10,8 +10,8 @@ script = [
         "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
     },
     {
-        "identifier": 'ACTION_953_shirt_to_xy_coords_1',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_953_shift_to_xy_coords_1',
+        "command": 'shift_to_xy_coords',
         "args": [3, 70]
     },
     {
@@ -113,8 +113,8 @@ script = [
         "args": [16]
     },
     {
-        "identifier": 'ACTION_953_shirt_to_xy_coords_22',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_953_shift_to_xy_coords_22',
+        "command": 'shift_to_xy_coords',
         "args": [8, 35]
     },
     {

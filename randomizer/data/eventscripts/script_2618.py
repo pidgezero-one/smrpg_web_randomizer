@@ -69,8 +69,8 @@ script = [
                 "args": [16]
             },
             {
-                "identifier": 'EVENT_2618_action_queue_async_9_SUBSCRIPT_shirt_to_xy_coords_1',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_2618_action_queue_async_9_SUBSCRIPT_shift_to_xy_coords_1',
+                "command": 'shift_to_xy_coords',
                 "args": [11, 49]
             }
         ]

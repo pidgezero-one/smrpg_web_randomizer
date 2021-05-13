@@ -72,7 +72,7 @@ script = [
     {
         "identifier": 'EVENT_1395_remove_from_current_level_9',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1]
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_1395_action_queue_async_10',
@@ -119,7 +119,7 @@ script = [
     {
         "identifier": 'EVENT_1395_summon_to_current_level_11',
         "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_1]
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_1395_pause_12',

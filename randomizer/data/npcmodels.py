@@ -993,18 +993,18 @@ models[42] = {
   "byte6_bit2": False
 } # 0x1db926
 models[43] = {
-  "sprite": SpriteName._226_BOOSTERS_TOWER_ENTRANCE_DOOR,
+  "sprite": SpriteName._28_GENO_ELBOW_SHOT,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
   "show_shadow": False,
-  "shadow": ShadowSize._00_OVAL_SMALL,
+  "shadow": ShadowSize._01_OVAL_MED,
   "y_pixel_shift": 1,
-  "acute_axis": 5,
-  "obtuse_axis": 3,
+  "acute_axis": 4,
+  "obtuse_axis": 4,
   "height": 12,
   "vram_store": VramStore._02_SWSE,
-  "vram_size": 1,
+  "vram_size": 2,
   "cannot_clone": True,
   "byte2_bit0": False,
   "byte2_bit1": False,

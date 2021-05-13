@@ -16,24 +16,9 @@ script = [
         "args": [AreaObjects.NPC_0, Rooms._200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP]
     },
     {
-        "identifier": 'EVENT_1342_remove_from_current_level_2',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_1342_set_3',
-        "command": 'set',
-        "args": [0x70a7, 11]
-    },
-    {
-        "identifier": 'EVENT_1342_set_4',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_1342_run_event_as_subroutine_5',
         "command": 'run_event_as_subroutine',
-        "args": [3829]
+        "args": [241]
     },
     {
         "identifier": 'EVENT_1342_ret_6',

@@ -5,8 +5,8 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_748_shirt_to_xy_coords_0',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_748_shift_to_xy_coords_0',
+        "command": 'shift_to_xy_coords',
         "args": [16, 72]
     },
     {

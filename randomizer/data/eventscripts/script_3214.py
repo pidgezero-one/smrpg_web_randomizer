@@ -6,17 +6,117 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3214_set_short_0',
-        "command": 'set_short',
-        "args": [0x700a, 0x00d3]
+        "identifier": 'EVENT_3214_jmp_if_bit_set_182',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7058, 6, 'EVENT_3214_fade_out_to_black_async_200']
     },
     {
-        "identifier": 'EVENT_3214_jmp_to_event_1',
-        "command": 'jmp_to_event',
-        "args": [720]
+        "identifier": 'EVENT_3214_start_battle_183',
+        "command": 'start_battle',
+        "args": [0x00a7, 3]
     },
     {
-        "identifier": 'EVENT_3214_ret_2',
+        "identifier": 'EVENT_3214_set_bit_184',
+        "command": 'set_bit',
+        "args": [0x707c, 5]
+    },
+    {
+        "identifier": 'EVENT_3214_clear_bit_185',
+        "command": 'clear_bit',
+        "args": [0x707c, 6]
+    },
+    {
+        "identifier": 'EVENT_3214_clear_bit_186',
+        "command": 'clear_bit',
+        "args": [0x707c, 7]
+    },
+    {
+        "identifier": 'EVENT_3214_run_event_as_subroutine_187',
+        "command": 'run_event_as_subroutine',
+        "args": [24]
+    },
+    {
+        "identifier": 'EVENT_3214_restore_all_hp_188',
+        "command": 'restore_all_hp'
+    },
+    {
+        "identifier": 'EVENT_3214_restore_all_fp_189',
+        "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_3214_set_bit_190',
+        "command": 'set_bit',
+        "args": [0x7058, 6]
+    },
+    {
+        "identifier": 'EVENT_3214_enter_area_191',
+        "command": 'enter_area',
+        "args": [Rooms._173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE, RadialDirections.NORTHEAST, 3, 89, 8, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+    },
+    {
+        "identifier": 'EVENT_3214_clear_bit_192',
+        "command": 'clear_bit',
+        "args": [0x7049, 0]
+    },
+    {
+        "identifier": 'EVENT_3214_action_queue_sync_193',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3214_action_queue_sync_193_SUBSCRIPT_jump_to_height_silent_0',
+                "command": 'jump_to_height_silent',
+                "args": [0]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3214_pause_194',
+        "command": 'pause',
+        "args": [20]
+    },
+    {
+        "identifier": 'EVENT_3214_set_short_195',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
+    },
+    {
+        "identifier": 'EVENT_3214_ret_199',
         "command": 'ret'
-    }
+    },
+    {
+        "identifier": 'EVENT_3214_fade_out_to_black_async_200',
+        "command": 'fade_out_to_black_async'
+    },
+    {
+        "identifier": 'EVENT_3214_set_bit_205',
+        "command": 'set_bit',
+        "args": [0x7049, 0]
+    },
+    {
+        "identifier": 'EVENT_3214_enable_controls_206',
+        "command": 'enable_controls',
+        "args": [[]]
+    },
+    {
+        "identifier": 'EVENT_3214_enter_area_207',
+        "command": 'enter_area',
+        "args": [Rooms._173_SUNKEN_SHIP_POSTKC_AREA_01_SMALL_ROOM_WTRAMPOLINE, RadialDirections.SOUTH, 2, 92, 8, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+    },
+    {
+        "identifier": 'EVENT_3214_action_queue_sync_208',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3214_action_queue_sync_208_SUBSCRIPT_jump_to_height_silent_0',
+                "command": 'jump_to_height_silent',
+                "args": [0]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3214_ret_209',
+        "command": 'ret'
+    },
 ]

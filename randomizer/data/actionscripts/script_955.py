@@ -59,8 +59,8 @@ script = [
         "args": [16]
     },
     {
-        "identifier": 'ACTION_955_shirt_to_xy_coords_11',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_955_shift_to_xy_coords_11',
+        "command": 'shift_to_xy_coords',
         "args": [8, 35]
     },
     {

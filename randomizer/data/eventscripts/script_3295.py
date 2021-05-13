@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_3295_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x707d, 5, 'EVENT_3289_ret_6']
+        "args": [0x707d, 5, 'EVENT_3295_ret_6']
     },
     {
         "identifier": 'EVENT_3295_set_bit_1',
@@ -19,5 +19,9 @@ script = [
         "identifier": 'EVENT_3295_jmp_to_event_2',
         "command": 'jmp_to_event',
         "args": [3077]
+    },
+    {
+        "identifier": 'EVENT_3295_ret_6',
+        "command": 'ret'
     }
 ]

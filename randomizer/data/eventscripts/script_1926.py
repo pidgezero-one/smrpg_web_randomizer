@@ -4,4 +4,95 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_1926_jmp_if_bit_set_0',
+        "command": 'jmp_if_bit_set',
+        "args": [0x708B, 5, 'EVENT_1926_jmp_if_bit_clear_73']
+    },
+    
+    # kggg fight
+    {
+        "identifier": 'EVENT_1926_start_battle_46',
+        "command": 'start_battle',
+        "args": [0x00b1, 17]
+    },
+    {
+        "identifier": 'EVENT_1926_jmp_if_bit_clear_47',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7040, 0, 'EVENT_1926_fade_out_music_to_volume_49']
+    },
+    {
+        "identifier": 'EVENT_1926_reset_and_choose_game_48',
+        "command": 'reset_and_choose_game'
+    },
+    {
+        "identifier": 'EVENT_1926_fade_out_music_to_volume_49',
+        "command": 'fade_out_music_to_volume',
+        "args": [0, 0]
+    },
+    {
+        "identifier": 'EVENT_1926_remove_from_level_50',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_4, Rooms._039_BOOSTER_TOWER_5F_KNIFE_GUYS_JUGGLING_ROOM]
+    },
+    {
+        "identifier": 'EVENT_1926_set_bit_51',
+        "command": 'set_bit',
+        "args": [0x7048, 6]
+    },
+    {
+        "identifier": 'EVENT_1926_set_bit_53',
+        "command": 'set_bit',
+        "args": [0x7089, 2]
+    },
+    {
+        "identifier": 'EVENT_1926_enter_area_54',
+        "command": 'enter_area',
+        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, RadialDirections.SOUTHWEST, 5, 114, 15, []]
+    },
+    {
+        "identifier": 'EVENT_1926_fade_out_to_black_async_44_',
+        "command": 'run_event_as_subroutine',
+        "args": [1328]
+    },
+    {
+        "identifier": 'EVENT_1926_restore_all_hp_58',
+        "command": 'restore_all_hp'
+    },
+    {
+        "identifier": 'EVENT_1926_restore_all_fp_59',
+        "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_1926_set_bit_4',
+        "command": 'set_bit',
+        "args": [0x708b, 5]
+    },
+    {
+        "identifier": 'EVENT_1926_run_event_as_subroutine_57',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
+    },
+    {
+        "identifier": 'EVENT_1926_ret_61',
+        "command": 'ret'
+    },
+    
+    # shortcut
+    {
+        "identifier": 'EVENT_1926_jmp_if_bit_clear_73',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x704c, 6, 'EVENT_1926_balcony_empty']
+    },
+    {
+        "identifier": 'EVENT_1926_jmp_74',
+        "command": 'jmp_to_event',
+        "args": [1282]
+    },
+    {
+        "identifier": 'EVENT_1926_balcony_empty',
+        "command": 'jmp_to_event',
+        "args": [1283]
+    },
+]

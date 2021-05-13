@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_159_run_dialog_5',
         "command": 'run_dialog',
-        "args": [515, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+        "args": [515, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_159_ret',

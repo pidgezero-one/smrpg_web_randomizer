@@ -93,23 +93,8 @@ script = [
     },
     {
         "identifier": 'EVENT_402_set_13',
-        "command": 'set',
-        "args": [0x7000, 10]
-    },
-    {
-        "identifier": 'EVENT_402_add_coins_14',
-        "command": 'add_coins',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_402_play_sound_15',
-        "command": 'play_sound',
-        "args": [Sounds._013_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_402_run_dialog_16',
-        "command": 'run_dialog',
-        "args": [515, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_402_set_action_script_sync_17',

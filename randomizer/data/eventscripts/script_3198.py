@@ -246,8 +246,8 @@ script = [
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_shirt_to_xy_coords_1',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_3198_action_queue_sync_13_SUBSCRIPT_shift_to_xy_coords_1',
+                "command": 'shift_to_xy_coords',
                 "args": [21, 24]
             },
             {
@@ -453,8 +453,8 @@ script = [
                 "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_PASS_NPCS, _0x0AFlags.CANT_WALK_THROUGH, _0x0AFlags.BIT_7]]
             },
             {
-                "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_shirt_to_xy_coords_2',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_3198_action_queue_async_16_SUBSCRIPT_shift_to_xy_coords_2',
+                "command": 'shift_to_xy_coords',
                 "args": [21, 24]
             },
             {

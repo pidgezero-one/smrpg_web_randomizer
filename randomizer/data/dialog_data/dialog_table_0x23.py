@@ -1121,8 +1121,11 @@ dialog_data[682] = '''[await]'''
 dialog_data[683] = '''[await]'''
 dialog_data[684] = '''[await]'''
 dialog_data[685] = '''               It’s locked[await]'''
-dialog_data[686] = '''[await]'''
-dialog_data[687] = '''[await]'''
+dialog_data[686] = '''  Mario tried saying the password:[delay]
+              [filename][await]'''
+dialog_data[687] = '''                  No luck...[delay]
+    Booster changed the password.[delay]
+                 Oh, well...[await]'''
 dialog_data[688] = '''[await]'''
 dialog_data[689] = '''[await]'''
 dialog_data[690] = '''[await]'''

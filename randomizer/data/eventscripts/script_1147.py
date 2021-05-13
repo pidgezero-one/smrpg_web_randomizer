@@ -976,8 +976,8 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_1147_action_queue_sync_48_SUBSCRIPT_shirt_to_xy_coords_0',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_1147_action_queue_sync_48_SUBSCRIPT_shift_to_xy_coords_0',
+                "command": 'shift_to_xy_coords',
                 "args": [4, 22]
             }
         ]

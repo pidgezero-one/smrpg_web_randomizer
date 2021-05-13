@@ -78,8 +78,8 @@ script = [
         "args": [16, 113]
     },
     {
-        "identifier": 'ACTION_965_shirt_to_xy_coords_15',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_965_shift_to_xy_coords_15',
+        "command": 'shift_to_xy_coords',
         "args": [14, 52]
     },
     {
@@ -93,8 +93,8 @@ script = [
         "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },
     {
-        "identifier": 'ACTION_965_shirt_to_xy_coords_18',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_965_shift_to_xy_coords_18',
+        "command": 'shift_to_xy_coords',
         "args": [6, 92]
     },
     {

@@ -38,8 +38,8 @@ script = [
         "command": 'visibility_off'
     },
     {
-        "identifier": 'ACTION_495_shirt_to_xy_coords_7',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_495_shift_to_xy_coords_7',
+        "command": 'shift_to_xy_coords',
         "args": [19, 85]
     },
     {

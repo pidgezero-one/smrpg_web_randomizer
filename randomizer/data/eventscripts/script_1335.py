@@ -65,8 +65,8 @@ script = [
         "args": [AreaObjects.NPC_6],
         "subscript": [
             {
-                "identifier": 'EVENT_1335_action_queue_async_11_SUBSCRIPT_shirt_to_xy_coords_0',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_1335_action_queue_async_11_SUBSCRIPT_shift_to_xy_coords_0',
+                "command": 'shift_to_xy_coords',
                 "args": [18, 25]
             },
             {
@@ -180,12 +180,17 @@ script = [
         "args": [10]
     },
     {
+        "identifier": 'EVENT_1335_jmp_if_object_not_in_level_11_',
+        "command": 'resume_action_script',
+        "args": [AreaObjects.NPC_7]
+    },
+    {
         "identifier": 'EVENT_1335_action_queue_async_20',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_7],
         "subscript": [
             {
-                "identifier": 'EVENT_1335_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_0',
+                "identifier": 'set_sprite_sequence_0',
                 "command": 'set_sprite_sequence',
                 "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
@@ -395,23 +400,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1335_jmp_to_event_47',
-        "command": 'jmp_to_event',
-        "args": [560]
-    },
-    {
-        "identifier": 'EVENT_1335_set_48',
-        "command": 'set',
-        "args": [0x70a7, 141]
-    },
-    {
-        "identifier": 'EVENT_1335_set_49',
-        "command": 'set',
-        "args": [0x7000, 2567]
-    },
-    {
-        "identifier": 'EVENT_1335_run_event_as_subroutine_50',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [241]
     },
     {
         "identifier": 'EVENT_1335_action_queue_async_51',
@@ -428,10 +418,6 @@ script = [
         "identifier": 'EVENT_1335_set_bit_52',
         "command": 'set_bit',
         "args": [0x7054, 0]
-    },
-    {
-        "identifier": 'EVENT_1335_ret_53',
-        "command": 'ret'
     },
     {
         "identifier": 'EVENT_1335_ret_54',

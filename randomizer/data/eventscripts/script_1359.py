@@ -100,6 +100,65 @@ script = [
         "command": 'apply_solidity_mod',
         "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 2, [_0x6BFlags.PERMANENT]]
     },
+
+    {
+        "identifier": 'EVENT_1359_check_if_should_be_locked',
+        "command": 'jmp_if_bit_set',
+        "args": [0x708B, 0, 'EVENT_1359_jmp_if_bit_set_6']
+    },
+
+    {
+        "identifier": 'EVENT_1359_check_if_should_be_locked_2',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x708B, 5, 'EVENT_1359_jmp_if_bit_set_6']
+    },
+    {
+        "identifier": 'EVENT_1359_close_balcony',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_8]
+    },
+    {
+        "identifier": 'EVENT_1359_close_balcony_',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_9]
+    },
+    {
+        "identifier": 'EVENT_1359_action_queue_async_4_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_8],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1359_action_queue_async_4_SUBSCRIPT_shift_east_pixels_0',
+                "command": 'shift_west_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_1359_action_queue_async_4_SUBSCRIPT_shift_north_pixels_1',
+                "command": 'shift_south_pixels',
+                "args": [8]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1359_action_queue_async_4__',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_9],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1359_action_queue_async_4_SUBSCRIPT_shift_east_pixels_0',
+                "command": 'shift_west_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_1359_action_queue_async_4_SUBSCRIPT_shift_north_pixels_1',
+                "command": 'shift_south_pixels',
+                "args": [8]
+            }
+        ]
+    },
+
+
+
     {
         "identifier": 'EVENT_1359_jmp_if_bit_set_6',
         "command": 'jmp_if_bit_set',

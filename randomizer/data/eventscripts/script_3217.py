@@ -161,8 +161,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3217_create_packet_event_at_coords_jmp_if_null_27',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._037_ITEM_BAG_JUMPS, 0x0cdb, 'EVENT_3217_pause_26']
+        "command": 'run_event_as_subroutine',
+        "args": [3387]
     },
     {
         "identifier": 'EVENT_3217_ret_28',

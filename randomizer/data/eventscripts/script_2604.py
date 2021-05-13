@@ -68,8 +68,8 @@ script = [
                 "args": [2]
             },
             {
-                "identifier": 'EVENT_2604_action_queue_sync_5_SUBSCRIPT_shirt_to_xy_coords_3',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_2604_action_queue_sync_5_SUBSCRIPT_shift_to_xy_coords_3',
+                "command": 'shift_to_xy_coords',
                 "args": [21, 50]
             },
             {
@@ -83,8 +83,8 @@ script = [
                 "args": [24]
             },
             {
-                "identifier": 'EVENT_2604_action_queue_sync_5_SUBSCRIPT_shirt_to_xy_coords_6',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_2604_action_queue_sync_5_SUBSCRIPT_shift_to_xy_coords_6',
+                "command": 'shift_to_xy_coords',
                 "args": [0, 0]
             }
         ]

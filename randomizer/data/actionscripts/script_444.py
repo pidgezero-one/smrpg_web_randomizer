@@ -10,12 +10,7 @@ script = [
         "args": [0x0d, [6]]
     },
     {
-        "identifier": 'ACTION_444_visibility_off_1',
-        "command": 'visibility_off'
-    },
-    {
         "identifier": 'ACTION_444_jump_to_script_2',
-        "command": 'jump_to_script',
-        "args": [14]
+        "command": 'ret'
     }
 ]

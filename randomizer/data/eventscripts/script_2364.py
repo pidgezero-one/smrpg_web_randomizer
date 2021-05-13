@@ -32,31 +32,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2364_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_1_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_1_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_1_SUBSCRIPT_set_animation_speed_2',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2364_action_queue_sync_2',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_2364_action_queue_sync_2_SUBSCRIPT_set_animation_speed_0',
@@ -72,35 +50,17 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_sync_2_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2364_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_3_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_2364_action_queue_sync_3_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_3_SUBSCRIPT_set_animation_speed_2',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
+                "identifier": 'EVENT_2364_action_queue_sync_0_SUBSCRIPT_face_southwest_3',
+                "command": 'face_southwest'
             }
         ]
     },
     {
         "identifier": 'EVENT_2364_action_queue_sync_4',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2364_action_queue_sync_4_SUBSCRIPT_shift_south_pixels_0',
@@ -122,7 +82,7 @@ script = [
     {
         "identifier": 'EVENT_2364_action_queue_sync_5',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_5],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_2364_action_queue_sync_5_SUBSCRIPT_shift_northwest_pixels_0',
@@ -133,23 +93,6 @@ script = [
                 "identifier": 'EVENT_2364_action_queue_sync_5_SUBSCRIPT_shift_southwest_pixels_1',
                 "command": 'shift_southwest_pixels',
                 "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2364_action_queue_sync_6',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_6_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_6_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [8]
             }
         ]
     },

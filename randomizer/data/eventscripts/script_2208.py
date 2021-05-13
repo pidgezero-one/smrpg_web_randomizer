@@ -34,8 +34,8 @@ script = [
         "args": [AreaObjects.NPC_1],
         "subscript": [
             {
-                "identifier": 'EVENT_2208_action_queue_sync_11_SUBSCRIPT_shirt_to_xy_coords_0',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_2208_action_queue_sync_11_SUBSCRIPT_shift_to_xy_coords_0',
+                "command": 'shift_to_xy_coords',
                 "args": [24, 98]
             },
             {

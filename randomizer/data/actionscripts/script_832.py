@@ -28,8 +28,8 @@ script = [
         "command": 'sequence_playback_off'
     },
     {
-        "identifier": 'ACTION_832_shirt_to_xy_coords_5',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_832_shift_to_xy_coords_5',
+        "command": 'shift_to_xy_coords',
         "args": [13, 24]
     },
     {

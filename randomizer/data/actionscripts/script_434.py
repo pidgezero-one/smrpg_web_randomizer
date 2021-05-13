@@ -58,8 +58,8 @@ script = [
         "command": 'shadow_off'
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_11',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_11',
+        "command": 'shift_to_xy_coords',
         "args": [7, 48]
     },
     {
@@ -169,8 +169,8 @@ script = [
         "args": [2, 'ACTION_434_jmp_if_700C_not_equals_short_36']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_34',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_34',
+        "command": 'shift_to_xy_coords',
         "args": [10, 39]
     },
     {
@@ -184,8 +184,8 @@ script = [
         "args": [4, 'ACTION_434_jmp_if_700C_not_equals_short_39']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_37',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_37',
+        "command": 'shift_to_xy_coords',
         "args": [15, 37]
     },
     {
@@ -199,8 +199,8 @@ script = [
         "args": [6, 'ACTION_434_jmp_to_subroutine_42']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_40',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_40',
+        "command": 'shift_to_xy_coords',
         "args": [10, 39]
     },
     {
@@ -430,8 +430,8 @@ script = [
         "args": [8, 'ACTION_434_jmp_if_700C_not_equals_short_90']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_88',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_88',
+        "command": 'shift_to_xy_coords',
         "args": [11, 26]
     },
     {
@@ -445,8 +445,8 @@ script = [
         "args": [16, 'ACTION_434_jmp_if_700C_not_equals_short_93']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_91',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_91',
+        "command": 'shift_to_xy_coords',
         "args": [6, 38]
     },
     {
@@ -460,8 +460,8 @@ script = [
         "args": [24, 'ACTION_434_jmp_to_subroutine_96']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_94',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_94',
+        "command": 'shift_to_xy_coords',
         "args": [11, 26]
     },
     {
@@ -705,8 +705,8 @@ script = [
         "command": 'shadow_on'
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_145',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_145',
+        "command": 'shift_to_xy_coords',
         "args": [8, 19]
     },
     {
@@ -720,8 +720,8 @@ script = [
         "args": [64, 'ACTION_434_jmp_if_700C_not_equals_short_150']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_148',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_148',
+        "command": 'shift_to_xy_coords',
         "args": [11, 24]
     },
     {
@@ -735,8 +735,8 @@ script = [
         "args": [96, 'ACTION_434_jmp_if_700C_not_equals_short_153']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_151',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_151',
+        "command": 'shift_to_xy_coords',
         "args": [15, 24]
     },
     {
@@ -754,8 +754,8 @@ script = [
         "command": 'shadow_on'
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_155',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_155',
+        "command": 'shift_to_xy_coords',
         "args": [18, 14]
     },
     {
@@ -769,8 +769,8 @@ script = [
         "args": [160, 'ACTION_434_jmp_to_subroutine_160']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_158',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_158',
+        "command": 'shift_to_xy_coords',
         "args": [15, 24]
     },
     {
@@ -1064,8 +1064,8 @@ script = [
         "command": 'shadow_off'
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_219',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_219',
+        "command": 'shift_to_xy_coords',
         "args": [26, 32]
     },
     {
@@ -1083,8 +1083,8 @@ script = [
         "command": 'shadow_off'
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_223',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_223',
+        "command": 'shift_to_xy_coords',
         "args": [22, 32]
     },
     {
@@ -1248,8 +1248,8 @@ script = [
         "args": [1024, 'ACTION_434_jmp_to_subroutine_259']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_257',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_257',
+        "command": 'shift_to_xy_coords',
         "args": [16, 37]
     },
     {
@@ -1383,8 +1383,8 @@ script = [
         "args": [2048, 'ACTION_434_jmp_if_700C_not_equals_short_287']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_285',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_285',
+        "command": 'shift_to_xy_coords',
         "args": [18, 47]
     },
     {
@@ -1402,8 +1402,8 @@ script = [
         "command": 'shadow_on'
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_289',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_289',
+        "command": 'shift_to_xy_coords',
         "args": [20, 55]
     },
     {
@@ -1417,8 +1417,8 @@ script = [
         "args": [6144, 'ACTION_434_jmp_to_subroutine_294']
     },
     {
-        "identifier": 'ACTION_434_shirt_to_xy_coords_292',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_434_shift_to_xy_coords_292',
+        "command": 'shift_to_xy_coords',
         "args": [18, 47]
     },
     {

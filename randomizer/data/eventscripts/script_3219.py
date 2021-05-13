@@ -109,8 +109,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3219_create_packet_event_at_coords_jmp_if_null_14',
-        "command": 'create_packet_event_at_coords_jmp_if_null',
-        "args": [NPCPackets._038_MUSHROOM_JUMPS, 0x0c05, 'EVENT_3219_pause_13']
+        "command": 'run_event_as_subroutine',
+        "args": [3389]
     },
     {
         "identifier": 'EVENT_3219_action_queue_sync_15',

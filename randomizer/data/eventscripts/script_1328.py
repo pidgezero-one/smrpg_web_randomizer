@@ -11,6 +11,16 @@ script = [
         "args": [Music._13_ROAD_IS_FULL_OF_DANGERS]
     },
     {
+        "identifier": 'EVENT_1328_jmp_if_bit_set_0',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7053, 6, 'EVENT_1328_remove_from_current_level_3_']
+    },
+    {
+        "identifier": 'EVENT_1328_jmp_if_bit_set_0_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7053, 7, 'EVENT_1328_remove_from_current_level_3_']
+    },
+    {
         "identifier": 'EVENT_1328_action_queue_async_1',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_1],
@@ -46,9 +56,21 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1328_remove_from_current_level_3',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0]
+        "identifier": 'EVENT_1328_action_queue_async_1_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_5],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1328_action_queue_async_1_SUBSCRIPT_shift_southeast_pixels_0',
+                "command": 'shift_northeast_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_1328_action_queue_async_1_SUBSCRIPT_set_vram_priority_5',
+                "command": 'set_vram_priority',
+                "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
+            }
+        ]
     },
     {
         "identifier": 'EVENT_1328_fade_in_from_black_async_4',
@@ -56,6 +78,19 @@ script = [
     },
     {
         "identifier": 'EVENT_1328_ret_5',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1328_remove_from_current_level_3_',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_1]
+    },
+    {
+        "identifier": 'EVENT_1328_fade_in_from_black_async_4_',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_1328_ret_5_',
         "command": 'ret'
     }
 ]

@@ -79,8 +79,8 @@ script = [
         "command": 'visibility_off'
     },
     {
-        "identifier": 'ACTION_528_shirt_to_xy_coords_15',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_528_shift_to_xy_coords_15',
+        "command": 'shift_to_xy_coords',
         "args": [12, 11]
     },
     {

@@ -27,12 +27,12 @@ script = [
     {
         "identifier": 'ACTION_488_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x7045, 0, 'ACTION_488_shirt_to_xy_coords_24']
+        "args": [0x7045, 0, 'ACTION_488_shift_to_xy_coords_24']
     },
     {
         "identifier": 'ACTION_488_jmp_if_bit_set_5',
         "command": 'jmp_if_bit_set',
-        "args": [0x7045, 1, 'ACTION_488_shirt_to_xy_coords_36']
+        "args": [0x7045, 1, 'ACTION_488_shift_to_xy_coords_36']
     },
     {
         "identifier": 'ACTION_488_jmp_if_bit_set_6',
@@ -42,17 +42,17 @@ script = [
     {
         "identifier": 'ACTION_488_jmp_if_bit_set_7',
         "command": 'jmp_if_bit_set',
-        "args": [0x7045, 3, 'ACTION_488_shirt_to_xy_coords_48']
+        "args": [0x7045, 3, 'ACTION_488_shift_to_xy_coords_48']
     },
     {
         "identifier": 'ACTION_488_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7045, 4, 'ACTION_488_shirt_to_xy_coords_60']
+        "args": [0x7045, 4, 'ACTION_488_shift_to_xy_coords_60']
     },
     {
         "identifier": 'ACTION_488_jmp_if_bit_set_9',
         "command": 'jmp_if_bit_set',
-        "args": [0x7046, 1, 'ACTION_488_shirt_to_xy_coords_13']
+        "args": [0x7046, 1, 'ACTION_488_shift_to_xy_coords_13']
     },
     {
         "identifier": 'ACTION_488_clear_bit_10',
@@ -68,8 +68,8 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_488_shirt_to_xy_coords_13',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_488_shift_to_xy_coords_13',
+        "command": 'shift_to_xy_coords',
         "args": [8, 61]
     },
     {
@@ -121,8 +121,8 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_488_shirt_to_xy_coords_24',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_488_shift_to_xy_coords_24',
+        "command": 'shift_to_xy_coords',
         "args": [8, 47]
     },
     {
@@ -179,8 +179,8 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_488_shirt_to_xy_coords_36',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_488_shift_to_xy_coords_36',
+        "command": 'shift_to_xy_coords',
         "args": [8, 47]
     },
     {
@@ -237,8 +237,8 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_488_shirt_to_xy_coords_48',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_488_shift_to_xy_coords_48',
+        "command": 'shift_to_xy_coords',
         "args": [8, 47]
     },
     {
@@ -295,8 +295,8 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'ACTION_488_shirt_to_xy_coords_60',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_488_shift_to_xy_coords_60',
+        "command": 'shift_to_xy_coords',
         "args": [3, 47]
     },
     {

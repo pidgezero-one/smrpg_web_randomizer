@@ -3,4 +3,15 @@
 # python manage.py objectsequencedisassembler --rom ROM > openmode_sequence_debug.txt
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
-script = []
+script = [
+    {
+        "identifier": "ACTION_199_set_sequence",
+        "command": 'set_sprite_sequence',
+        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+    },
+    {
+        "identifier": "ACTION_199_initiate",
+        "command": "jmp",
+        "args": ['ACTION_317_set_solidity_bits_0']
+    }
+]

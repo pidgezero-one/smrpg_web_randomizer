@@ -23,8 +23,8 @@ script = [
         "args": [16, 49]
     },
     {
-        "identifier": 'ACTION_949_shirt_to_xy_coords_4',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_949_shift_to_xy_coords_4',
+        "command": 'shift_to_xy_coords',
         "args": [3, 88]
     },
     {
@@ -33,8 +33,8 @@ script = [
         "args": [3]
     },
     {
-        "identifier": 'ACTION_949_shirt_to_xy_coords_6',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_949_shift_to_xy_coords_6',
+        "command": 'shift_to_xy_coords',
         "args": [6, 28]
     },
     {

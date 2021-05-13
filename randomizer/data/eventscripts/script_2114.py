@@ -90,8 +90,8 @@ script = [
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_shirt_to_xy_coords_0',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_2114_action_queue_async_16_SUBSCRIPT_shift_to_xy_coords_0',
+                "command": 'shift_to_xy_coords',
                 "args": [2, 56]
             },
             {
@@ -1307,8 +1307,8 @@ script = [
                 "args": [38]
             },
             {
-                "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_shirt_to_xy_coords_28',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_shift_to_xy_coords_28',
+                "command": 'shift_to_xy_coords',
                 "args": [127, 66]
             },
             {
@@ -1331,8 +1331,8 @@ script = [
                 "args": [20]
             },
             {
-                "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_shirt_to_xy_coords_33',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_2114_action_queue_async_160_SUBSCRIPT_shift_to_xy_coords_33',
+                "command": 'shift_to_xy_coords',
                 "args": [11, 75]
             },
             {

@@ -6,24 +6,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1282_enter_area_0',
-        "command": 'enter_area',
-        "args": [Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, RadialDirections.NORTHEAST, 4, 19, 0, []]
-    },
-    {
         "identifier": 'EVENT_1282_action_queue_sync_1',
         "command": 'action_queue_sync',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_1282_action_queue_sync_1_SUBSCRIPT_set_vram_priority_0',
-                "command": 'set_vram_priority',
-                "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
-            },
-            {
                 "identifier": 'EVENT_1282_action_queue_sync_1_SUBSCRIPT_transfer_to_xyzf_1',
                 "command": 'transfer_to_xyzf',
-                "args": [7, 13, 0, RadialDirections.EAST]
+                "args": [7, 14, 0, RadialDirections.EAST]
             },
             {
                 "identifier": 'EVENT_1282_action_queue_sync_1_SUBSCRIPT_face_southwest_2',
@@ -34,7 +24,7 @@ script = [
     {
         "identifier": 'EVENT_1282_action_queue_sync_2',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
+        "args": [AreaObjects.NPC_3],
         "subscript": [
             {
                 "identifier": 'EVENT_1282_action_queue_sync_2_SUBSCRIPT_set_priority_0',
@@ -185,93 +175,13 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1282_remove_from_current_level_8',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
-    },
-    {
         "identifier": 'EVENT_1282_fade_in_from_black_async_9',
         "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_1282_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1282_action_queue_async_10_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [12]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_1282_pause_11',
-        "command": 'pause',
-        "args": [60]
-    },
-    {
-        "identifier": 'EVENT_1282_run_dialog_12',
-        "command": 'run_dialog',
-        "args": [2571, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_1282_pause_13',
-        "command": 'pause',
-        "args": [80]
-    },
-    {
-        "identifier": 'EVENT_1282_enter_area_14',
-        "command": 'enter_area',
-        "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, RadialDirections.SOUTHWEST, 3, 26, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_1282_action_queue_async_15',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1282_action_queue_async_15_SUBSCRIPT_pause_0',
-                "command": 'pause',
-                "args": [20]
-            },
-            {
-                "identifier": 'EVENT_1282_action_queue_async_15_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest'
-            },
-            {
-                "identifier": 'EVENT_1282_action_queue_async_15_SUBSCRIPT_fixed_f_coord_on_2',
-                "command": 'fixed_f_coord_on'
-            },
-            {
-                "identifier": 'EVENT_1282_action_queue_async_15_SUBSCRIPT_set_animation_speed_3',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_1282_action_queue_async_15_SUBSCRIPT_set_animation_speed_4',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_1282_action_queue_async_15_SUBSCRIPT_shift_northeast_steps_5',
-                "command": 'shift_northeast_steps',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_1282_action_queue_async_15_SUBSCRIPT_fixed_f_coord_off_6',
-                "command": 'fixed_f_coord_off'
-            },
-            {
-                "identifier": 'EVENT_1282_action_queue_async_15_SUBSCRIPT_set_animation_speed_7',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_1282_ret_16',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1927]
     },
     {
         "identifier": 'EVENT_1282_jmp_to_event_17',

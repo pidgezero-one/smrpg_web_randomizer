@@ -122,8 +122,8 @@ script = [
                 "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_2344_action_queue_async_10_SUBSCRIPT_shirt_to_xy_coords_1',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_2344_action_queue_async_10_SUBSCRIPT_shift_to_xy_coords_1',
+                "command": 'shift_to_xy_coords',
                 "args": [4, 110]
             },
             {

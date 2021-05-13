@@ -39,14 +39,19 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_3820_set_short_18',
-        "command": 'set_short',
-        "args": [0x700a, 0x00cf]
+        "identifier": 'EVENT_3820_jmp_if_no_alt_win_condition',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7081, 3, 'EVENT_3820_ret_20']
+    },
+    {
+        "identifier": 'EVENT_3820_set_bit_87_',
+        "command": 'set_bit',
+        "args": [0x7081, 3]
     },
     {
         "identifier": 'EVENT_3820_jmp_to_event_19',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [167]
     },
     {
         "identifier": 'EVENT_3820_ret_20',

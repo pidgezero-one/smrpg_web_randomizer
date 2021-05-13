@@ -310,6 +310,86 @@ script = [
         "args": [169, 'EVENT_3400_play_sunken_ship_music']
     },
     {
+        "identifier": "EVENT_3400_room_171_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [171, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_172_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [172, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_175_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [175, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_176_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [176, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_179_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [179, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_183_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [183, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_184_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [184, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_187_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [187, 'EVENT_3400_play_sunken_ship_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_189_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [189, 'EVENT_3400_play_marios_pad_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_192_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [192, 'EVENT_3400_play_booster_tower_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_194_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [194, 'EVENT_3400_play_booster_tower_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_195_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [195, 'EVENT_3400_play_booster_tower_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_196_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [196, 'EVENT_3400_play_booster_tower_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_197_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [197, 'EVENT_3400_play_booster_tower_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_199_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [199, 'EVENT_3400_play_booster_tower_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_202_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [202, 'EVENT_3400_play_overworld_1_music']
+    },
+    {
         "identifier": "EVENT_3400_room_339_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [339, "EVENT_3400_play_moleville_indoor_music"]
@@ -577,7 +657,16 @@ script = [
         "args": [Music._66_BOWSERS_CASTLE_2ND_TIME]
     },
     {
-        "identifier": "EVENT_3400_play _bowsers_keep_music_ret",
+        "identifier": "EVENT_3400_play_bowsers_keep_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_marios_pad_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._14_MARIOS_PAD]
+    },
+    {
+        "identifier": "EVENT_3400_play_marios_pad_music_ret",
         "command": 'ret'
     },
 ]

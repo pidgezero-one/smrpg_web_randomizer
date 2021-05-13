@@ -46,8 +46,8 @@ script = [
                 "command": 'floating_off'
             },
             {
-                "identifier": 'EVENT_2317_action_queue_sync_6_SUBSCRIPT_shirt_to_xy_coords_1',
-                "command": 'shirt_to_xy_coords',
+                "identifier": 'EVENT_2317_action_queue_sync_6_SUBSCRIPT_shift_to_xy_coords_1',
+                "command": 'shift_to_xy_coords',
                 "args": [4, 111]
             },
             {

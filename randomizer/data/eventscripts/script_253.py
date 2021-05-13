@@ -106,6 +106,31 @@ script = [
         "args": [143, 'EVENT_253_room_143_logic']
     },
     {
+        "identifier": "EVENT_253_room_171_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [171, 'EVENT_253_room_171_logic']
+    },
+    {
+        "identifier": "EVENT_253_room_189_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [189, 'EVENT_253_room_189_logic']
+    },
+    {
+        "identifier": "EVENT_253_room_190_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [190, 'EVENT_253_room_190_logic']
+    },
+    {
+        "identifier": "EVENT_253_room_192_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [192, 'EVENT_253_room_192_logic']
+    },
+    {
+        "identifier": "EVENT_253_room_194_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [194, 'EVENT_253_room_194_logic']
+    },
+    {
         "identifier": "EVENT_253_room_339_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [339, "EVENT_253_room_339_logic"]
@@ -119,6 +144,11 @@ script = [
         "identifier": "EVENT_253_pandorite_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [512, 'EVENT_253_pandorite_set']
+    },
+    {
+        "identifier": "EVENT_253_hidon_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [513, 'EVENT_253_hidon_set']
     },
     {
         "identifier": "EVENT_253_cancel",
@@ -270,6 +300,56 @@ script = [
         "args": [160]
     },
     {
+        "identifier": 'EVENT_253_room_171_logic',
+        "command": 'set',
+        "args": [0x7000, 150]
+    },
+    {
+        "identifier": "EVENT_253_room_171_jmp",
+        "command": 'jmp_to_event',
+        "args": [159]
+    },
+    {
+        "identifier": 'EVENT_253_room_189_logic',
+        "command": 'set',
+        "args": [0x70a7, 162]
+    },
+    {
+        "identifier": "EVENT_253_room_189_jmp",
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
+        "identifier": 'EVENT_253_room_190_logic',
+        "command": 'set',
+        "args": [0x7000, 10]
+    },
+    {
+        "identifier": "EVENT_253_room_190_jmp",
+        "command": 'jmp_to_event',
+        "args": [159]
+    },
+    {
+        "identifier": 'EVENT_253_room_192_logic',
+        "command": 'set',
+        "args": [0x70a7, 78]
+    },
+    {
+        "identifier": "EVENT_253_room_192_jmp",
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
+        "identifier": 'EVENT_253_room_194_logic',
+        "command": 'set',
+        "args": [0x70a7, 115]
+    },
+    {
+        "identifier": "EVENT_253_room_194_jmp",
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
         "identifier": "EVENT_253_room_339_logic",
         "command": 'jmp_to_event',
         "args": [184]
@@ -286,6 +366,16 @@ script = [
     },
     {
         "identifier": "EVENT_253_pandorite_logic",
+        "command": 'jmp_to_event',
+        "args": [160]
+    },
+    {
+        "identifier": 'EVENT_253_hidon_set',
+        "command": 'set',
+        "args": [0x70a7, 75]
+    },
+    {
+        "identifier": "EVENT_253_hidon_logic",
         "command": 'jmp_to_event',
         "args": [160]
     },

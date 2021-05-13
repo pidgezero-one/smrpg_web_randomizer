@@ -68,11 +68,6 @@ script = [
         "args": [AreaObjects.MEM_70A8, 15]
     },
     {
-        "identifier": 'EVENT_3124_set_short_8',
-        "command": 'set_short',
-        "args": [0x700a, 0x00ca]
-    },
-    {
         "identifier": "EVENT_3124_special_val_2", # pandorite chest
         "command": 'set',
         "args": [0x7000, 512]

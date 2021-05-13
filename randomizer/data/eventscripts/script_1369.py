@@ -415,14 +415,9 @@ script = [
         "command": 'restore_all_fp'
     },
     {
-        "identifier": 'EVENT_1369_set_short_32',
-        "command": 'set_short',
-        "args": [0x700a, 0x00cf]
-    },
-    {
-        "identifier": 'EVENT_1369_jmp_to_event_33',
+        "identifier": 'EVENT_1369_jmp_to_event_19',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [167]
     },
     {
         "identifier": 'EVENT_1369_ret_45',

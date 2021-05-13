@@ -6,21 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3077_disable_trigger_0',
-        "command": 'disable_trigger',
-        "args": [AreaObjects.MEM_70A8]
-    },
-    {
-        "identifier": 'EVENT_3077_remove_from_current_level_1',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.MEM_70A8]
-    },
-    {
-        "identifier": 'EVENT_3077_play_sound_2',
-        "command": 'play_sound',
-        "args": [Sounds._014_FLOWER, 6]
-    },
-    {
         "identifier": 'EVENT_3077_move_script_to_background_thread_2_3',
         "command": 'move_script_to_background_thread_2'
     },
@@ -31,25 +16,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3077_restore_all_hp_5',
-        "command": 'restore_all_hp'
-    },
-    {
-        "identifier": 'EVENT_3077_restore_all_fp_6',
-        "command": 'restore_all_fp'
-    },
-    {
-        "identifier": 'EVENT_3077_tint_layers_7',
-        "command": 'tint_layers',
-        "args": [0x40, 0xa0, 0x40, 3, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.LAYER_4, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND], [7]]
-    },
-    {
-        "identifier": 'EVENT_3077_tint_layers_8',
-        "command": 'tint_layers',
-        "args": [0x00, 0x00, 0x00, 3, [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.LAYER_3, _0x81Flags.LAYER_4, _0x81Flags.NPC_SPRITES, _0x81Flags.BACKGROUND], [7]]
-    },
-    {
-        "identifier": 'EVENT_3077_reset_priority_set_9',
-        "command": 'reset_priority_set'
+        "command": 'run_event_as_subroutine',
+        "args": [241]
     },
     {
         "identifier": 'EVENT_3077_move_script_to_main_thread_10',

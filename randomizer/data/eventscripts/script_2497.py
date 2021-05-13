@@ -6,6 +6,46 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_2497_____put_inventory_23',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_2497_____put_inventory_24',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_2497_____put_inventory_25',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_2497_____put_inventory_26',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+
+
+    {
+        "identifier": 'EVENT_2497_set_bit',
+        "command": 'set_bit',
+        "args": [0x7053, 7]
+    },
+    
+#    {
+#        "identifier": 'EVENT_2496___apply_tile_mod_102',
+#        "command": 'apply_tile_mod',
+#        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, 0, [_0x6AFlags.USE_ALTERNATE]]
+#    },
+#    {
+#        "identifier": 'EVENT_2496___apply_solidity_mod_103',
+#        "command": 'apply_solidity_mod',
+#        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, 0, [_0x6BFlags.PERMANENT]]
+#    },
+
+
+    {
         "identifier": 'EVENT_2497_ret',
         "command": 'ret'
     }

@@ -4,4 +4,14 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_3389_create_packet_event_at_coords_jmp_if_null_27',
+        "command": 'create_packet_event_at_coords_jmp_if_null',
+        "args": [NPCPackets._038_MUSHROOM_JUMPS, 3295, 'EVENT_3219_pause_13']
+    },
+    {
+        "identifier": 'EVENT_3389_ret',
+        "command": "ret"
+    }
+]

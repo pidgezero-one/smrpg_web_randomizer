@@ -65,6 +65,36 @@ script = [
         "args": [168, "EVENT_241_room_168_logic"]
     },
     {
+        "identifier": "EVENT_241_room_172_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [172, "EVENT_241_room_172_logic"]
+    },
+    {
+        "identifier": "EVENT_241_room_176_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [176, "EVENT_241_room_176_logic"]
+    },
+    {
+        "identifier": "EVENT_241_room_187_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [187, "EVENT_241_room_187_logic"]
+    },
+    {
+        "identifier": "EVENT_241_room_195_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [195, "EVENT_241_room_195_logic"]
+    },
+    {
+        "identifier": "EVENT_241_room_197_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [197, "EVENT_241_room_197_logic"]
+    },
+    {
+        "identifier": "EVENT_241_room_200_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [200, "EVENT_241_room_200_logic"]
+    },
+    {
         "identifier": "EVENT_241_cancel",
         "command": 'ret'
     },
@@ -125,6 +155,56 @@ script = [
     },
     {
         "identifier": 'EVENT_241_room_168_jmp',
+        "command": 'jmp_to_event',
+        "args": [165]
+    },
+    {
+        "identifier": 'EVENT_241_room_172_logic',
+        "command": 'set',
+        "args": [0x70a7, 96]
+    },
+    {
+        "identifier": 'EVENT_241_room_172_jmp',
+        "command": 'jmp_to_event',
+        "args": [165]
+    },
+    {
+        "identifier": "EVENT_241_room_176_logic",
+        "command": 'jmp_to_event',
+        "args": [2822]
+    },
+    {
+        "identifier": "EVENT_241_room_187_logic",
+        "command": 'jmp_to_event',
+        "args": [3238]
+    },
+    {
+        "identifier": 'EVENT_241_room_195_logic',
+        "command": 'set',
+        "args": [0x70a7, 141]
+    },
+    {
+        "identifier": 'EVENT_241_room_195_jmp',
+        "command": 'jmp_to_event',
+        "args": [165]
+    },
+    {
+        "identifier": 'EVENT_241_room_197_logic',
+        "command": 'set',
+        "args": [0x70a7, 12]
+    },
+    {
+        "identifier": 'EVENT_241_room_197_jmp',
+        "command": 'jmp_to_event',
+        "args": [165]
+    },
+    {
+        "identifier": 'EVENT_241_room_200_logic',
+        "command": 'set',
+        "args": [0x70a7, 11]
+    },
+    {
+        "identifier": 'EVENT_241_room_200_jmp',
         "command": 'jmp_to_event',
         "args": [165]
     },

@@ -25,8 +25,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_407_shirt_to_xy_coords_4',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_407_shift_to_xy_coords_4',
+        "command": 'shift_to_xy_coords',
         "args": [28, 113]
     },
     {
@@ -94,8 +94,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_407_shirt_to_xy_coords_18',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_407_shift_to_xy_coords_18',
+        "command": 'shift_to_xy_coords',
         "args": [30, 85]
     },
     {
@@ -139,8 +139,8 @@ script = [
         "args": [[_0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
     },
     {
-        "identifier": 'ACTION_407_shirt_to_xy_coords_27',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_407_shift_to_xy_coords_27',
+        "command": 'shift_to_xy_coords',
         "args": [0, 0]
     },
     {
@@ -164,8 +164,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_407_shirt_to_xy_coords_32',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_407_shift_to_xy_coords_32',
+        "command": 'shift_to_xy_coords',
         "args": [24, 97]
     },
     {
@@ -232,8 +232,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_407_shirt_to_xy_coords_46',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_407_shift_to_xy_coords_46',
+        "command": 'shift_to_xy_coords',
         "args": [22, 85]
     },
     {
@@ -300,8 +300,8 @@ script = [
         "args": [1]
     },
     {
-        "identifier": 'ACTION_407_shirt_to_xy_coords_60',
-        "command": 'shirt_to_xy_coords',
+        "identifier": 'ACTION_407_shift_to_xy_coords_60',
+        "command": 'shift_to_xy_coords',
         "args": [28, 121]
     },
     {

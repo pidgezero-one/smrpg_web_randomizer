@@ -6,6 +6,40 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1392_action_queue_sync_0',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1392_action_queue_sync_0_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1392_action_queue_sync_0_SUBSCRIPT_shift_southwest_pixels_1',
+                "command": 'shift_southwest_pixels',
+                "args": [2]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1392_action_queue_async_1',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1392_action_queue_async_1_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1392_action_queue_async_1_SUBSCRIPT_shift_north_pixels_1',
+                "command": 'shift_north_pixels',
+                "args": [4]
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_1392_palette_set_2',
         "command": 'palette_set',
         "args": [33, 7, [0]]

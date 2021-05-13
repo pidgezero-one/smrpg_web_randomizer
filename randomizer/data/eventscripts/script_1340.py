@@ -6,16 +6,12 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1340_set_0',
-        "command": 'set',
-        "args": [0x70a7, 141]
+        "identifier": 'EVENT_1340_store_7000_item_quantity_to_70A7_283',
+        "command": 'store_item_amount_7000',
+        "args": [items.ElderKey]
     },
     {
-        "identifier": 'EVENT_1340_store_7000_item_quantity_to_70A7_1',
-        "command": 'store_7000_item_quantity_to_70A7'
-    },
-    {
-        "identifier": 'EVENT_1340_jmp_if_7000_equals_short_2',
+        "identifier": 'EVENT_1340_jmp_if_7000_equals_short_210',
         "command": 'jmp_if_7000_equals_short',
         "args": [1, 'EVENT_1340_apply_tile_mod_5']
     },
@@ -27,6 +23,16 @@ script = [
     {
         "identifier": 'EVENT_1340_ret_4',
         "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1340_pause_3',
+        "command": 'pause',
+        "args": [5]
+    },
+    {
+        "identifier": 'EVENT_1340_play_sound_4',
+        "command": 'play_sound',
+        "args": [Sounds._016_OPEN_DOOR, 6]
     },
     {
         "identifier": 'EVENT_1340_apply_tile_mod_5',

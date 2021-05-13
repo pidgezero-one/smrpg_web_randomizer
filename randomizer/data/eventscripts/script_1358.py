@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1358_remove_from_level_0',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._202_BOOSTER_TOWER_ENTRANCE]
-    },
-    {
         "identifier": 'EVENT_1358_remove_from_level_1',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_6, Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM]
