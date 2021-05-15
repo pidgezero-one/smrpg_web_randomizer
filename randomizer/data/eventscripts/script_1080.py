@@ -504,7 +504,7 @@ script = [
     {
         "identifier": 'EVENT_1080_jmp_if_var_not_equals_short_60',
         "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7032, 4, 'EVENT_1080_jmp_62']
+        "args": [0x7032, 4, 'EVENT_1080_jmp_if_7000_equals_short_97']
     },
     {
         "identifier": 'EVENT_1080_inc_61',
@@ -516,9 +516,50 @@ script = [
     # mandatory
 
 
+
     {
-        "identifier": 'EVENT_1080_jmp_62',
-        "command": 'jmp',
-        "args": ['EVENT_1074_jmp_if_7000_equals_short_97']
+        "identifier": 'EVENT_1080_jmp_if_7000_equals_short_97',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [0, 'EVENT_1074_pause_107']
+    },
+    {
+        "identifier": 'EVENT_1080_jmp_if_7000_equals_short_98',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1074_pause_113']
+    },
+    {
+        "identifier": 'EVENT_1080_jmp_if_7000_equals_short_99',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [2, 'EVENT_1074_pause_113']
+    },
+    {
+        "identifier": 'EVENT_1080_jmp_if_7000_equals_short_100',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [3, 'EVENT_1074_pause_121']
+    },
+    {
+        "identifier": 'EVENT_1080_jmp_if_7000_equals_short_101',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [4, 'EVENT_1074_pause_121']
+    },
+    {
+        "identifier": 'EVENT_1080_jmp_if_7000_equals_short_102',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [5, 'EVENT_1074_pause_129']
+    },
+    {
+        "identifier": 'EVENT_1080_jmp_if_7000_equals_short_103',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [6, 'EVENT_1074_pause_129']
+    },
+    {
+        "identifier": 'EVENT_1080_jmp_if_7000_equals_short_104',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [7, 'EVENT_1074_pause_137']
+    },
+    {
+        "identifier": 'EVENT_1080_jmp_if_7000_equals_short_105',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [8, 'EVENT_1074_pause_145']
     },
 ]
