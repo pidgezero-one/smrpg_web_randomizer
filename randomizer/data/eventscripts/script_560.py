@@ -380,8 +380,7 @@ script = [
     },
     {
         "identifier": 'EVENT_560_jmp_78',
-        "command": 'jmp',
-        "args": ['EVENT_1074_action_queue_async_185']
+        "command": 'ret',
     },
     {
         "identifier": 'EVENT_560_set_bit_79',
@@ -415,8 +414,7 @@ script = [
     },
     {
         "identifier": 'EVENT_560_jmp_85',
-        "command": 'jmp',
-        "args": ['EVENT_1074_action_queue_async_185']
+        "command": 'ret',
     },
     {
         "identifier": 'EVENT_560_set_bit_86',
@@ -455,8 +453,7 @@ script = [
     },
     {
         "identifier": 'EVENT_560_jmp_93',
-        "command": 'jmp',
-        "args": ['EVENT_1074_action_queue_async_185']
+        "command": 'ret',
     },
     {
         "identifier": 'EVENT_560_ret_94',

@@ -1045,10 +1045,7 @@ dialog_data[610] = ''' Now that is amazingly close to my
  dream composition![await]'''
 dialog_data[611] = '''[await]'''
 dialog_data[612] = '''[await]'''
-dialog_data[613] = ''' I am the composer, Toadofsky.[await][page]
- I am trying to create my next
- masterpiece but I've got
- composer’s block.[await]'''
+dialog_data[613] = '''[await]'''
 dialog_data[614] = '''[await]'''
 dialog_data[615] = '''[await]'''
 dialog_data[616] = '''[await]'''

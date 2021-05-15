@@ -179,6 +179,56 @@ script = [
             }
         ]
     },
+
+    # choose which song to load
+
+    # final song finished
+    {
+        "identifier": "EVENT_1074_freeplay",
+        "command": "jmp_if_bit_set",
+        "args": [0x7054, 6, 'EVENT_1074_set_7000_to_7000_short_mem_7']
+    },
+    # second song finished
+    {
+        "identifier": "EVENT_1074_anticipate_third_song",
+        "command": "jmp_if_bit_set",
+        "args": [0x7054, 5, "EVENT_1074_third_song_not_unlocked_yet"]
+    },
+    # first song finished
+    {
+        "identifier": "EVENT_1074_anticipate_second_song",
+        "command": "jmp_if_bit_set",
+        "args": [0x7051, 4, "EVENT_1074_second_song_not_unlocked_yet"]
+    },
+    # first song
+    {
+        "identifier": "EVENT_1074_do_first_song",
+        "command": "jmp_to_event",
+        "args": [1079]
+    },
+    # second song
+    {
+        "identifier": "EVENT_1074_second_song_not_unlocked_yet",
+        "command": "jmp_if_bit_clear",
+        "args": [0x7057, 4, 'EVENT_1074_set_7000_to_7000_short_mem_7']
+    },
+    {
+        "identifier": "EVENT_1074_do_second_song",
+        "command": "jmp_to_event",
+        "args": [1080]
+    },
+    # third song
+    {
+        "identifier": "EVENT_1074_third_song_not_unlocked_yet",
+        "command": "jmp_if_bit_clear",
+        "args": [0x7057, 4, 'EVENT_1074_set_7000_to_7000_short_mem_7']
+    },
+    {
+        "identifier": "EVENT_1074_do_third_song",
+        "command": "jmp_to_event",
+        "args": [1081]
+    },
+    # default - not checking for an item - 35 f
     {
         "identifier": 'EVENT_1074_set_7000_to_7000_short_mem_7',
         "command": 'set_7000_to_7000_short_mem',
@@ -190,9 +240,14 @@ script = [
         "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
     },
     {
-        "identifier": 'EVENT_1074_jmp_to_subroutine_9',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1074_jmp_if_bit_set_193']
+        "identifier": 'EVENT_1074_set_action_script_sync_212',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_0, 572]
+    },
+    {
+        "identifier": 'EVENT_1074_clear_bit_213',
+        "command": 'clear_bit',
+        "args": [0x7043, 0]
     },
     {
         "identifier": 'EVENT_1074_pause_10',
@@ -210,9 +265,14 @@ script = [
         "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
     },
     {
-        "identifier": 'EVENT_1074_jmp_to_subroutine_13',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1074_jmp_if_bit_set_215']
+        "identifier": 'EVENT_1074_set_action_script_sync_234',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_1, 572]
+    },
+    {
+        "identifier": 'EVENT_1074_clear_bit_235',
+        "command": 'clear_bit',
+        "args": [0x7043, 1]
     },
     {
         "identifier": 'EVENT_1074_pause_14',
@@ -230,9 +290,14 @@ script = [
         "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
     },
     {
-        "identifier": 'EVENT_1074_jmp_to_subroutine_17',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1074_jmp_if_bit_set_237']
+        "identifier": 'EVENT_1074_set_action_script_sync_256',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_2, 572]
+    },
+    {
+        "identifier": 'EVENT_1074_clear_bit_257',
+        "command": 'clear_bit',
+        "args": [0x7043, 2]
     },
     {
         "identifier": 'EVENT_1074_pause_18',
@@ -250,9 +315,14 @@ script = [
         "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
     },
     {
-        "identifier": 'EVENT_1074_jmp_to_subroutine_21',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1074_jmp_if_bit_set_259']
+        "identifier": 'EVENT_1074_set_action_script_sync_278',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_3, 572]
+    },
+    {
+        "identifier": 'EVENT_1074_clear_bit_279',
+        "command": 'clear_bit',
+        "args": [0x7043, 3]
     },
     {
         "identifier": 'EVENT_1074_pause_22',
@@ -270,9 +340,14 @@ script = [
         "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
     },
     {
-        "identifier": 'EVENT_1074_jmp_to_subroutine_25',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1074_jmp_if_bit_set_281']
+        "identifier": 'EVENT_1074_set_action_script_sync_300',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_4, 572]
+    },
+    {
+        "identifier": 'EVENT_1074_clear_bit_301',
+        "command": 'clear_bit',
+        "args": [0x7043, 4]
     },
     {
         "identifier": 'EVENT_1074_pause_26',
@@ -290,9 +365,14 @@ script = [
         "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
     },
     {
-        "identifier": 'EVENT_1074_jmp_to_subroutine_29',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1074_jmp_if_bit_set_303']
+        "identifier": 'EVENT_1074_set_action_script_sync_322',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_5, 572]
+    },
+    {
+        "identifier": 'EVENT_1074_clear_bit_323',
+        "command": 'clear_bit',
+        "args": [0x7043, 5]
     },
     {
         "identifier": 'EVENT_1074_pause_30',
@@ -310,9 +390,14 @@ script = [
         "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
     },
     {
-        "identifier": 'EVENT_1074_jmp_to_subroutine_33',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1074_jmp_if_bit_set_325']
+        "identifier": 'EVENT_1074_set_action_script_sync_344',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_6, 572]
+    },
+    {
+        "identifier": 'EVENT_1074_clear_bit_345',
+        "command": 'clear_bit',
+        "args": [0x7043, 6]
     },
     {
         "identifier": 'EVENT_1074_pause_34',
@@ -330,9 +415,14 @@ script = [
         "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
     },
     {
-        "identifier": 'EVENT_1074_jmp_to_subroutine_37',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1074_jmp_if_bit_set_347']
+        "identifier": 'EVENT_1074_set_action_script_sync_366',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_7, 572]
+    },
+    {
+        "identifier": 'EVENT_1074_clear_bit_367',
+        "command": 'clear_bit',
+        "args": [0x7043, 7]
     },
     {
         "identifier": 'EVENT_1074_pause_38',
@@ -351,283 +441,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1074_jmp_if_bit_set_41',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7052, 1, 'EVENT_1074_action_queue_async_190']
-    },
-    {
-        "identifier": 'EVENT_1074_set_42',
-        "command": 'set',
-        "args": [0x7000, 0]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_43',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7054, 6, 'EVENT_1078_set_7000_to_7000_short_mem_0']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_44',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7054, 5, 'EVENT_1074_jmp_if_var_not_equals_short_80']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_45',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7051, 4, 'EVENT_1074_jmp_if_var_not_equals_short_63']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_46',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7024, 1, 'EVENT_1074_jmp_if_var_not_equals_short_48']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_47',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_48',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7026, 2, 'EVENT_1074_jmp_if_var_not_equals_short_50']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_49',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_50',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7028, 6, 'EVENT_1074_jmp_if_var_not_equals_short_52']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_51',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_52',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702a, 5, 'EVENT_1074_jmp_if_var_not_equals_short_54']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_53',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_54',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702c, 4, 'EVENT_1074_jmp_if_var_not_equals_short_56']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_55',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_56',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702e, 5, 'EVENT_1074_jmp_if_var_not_equals_short_58']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_57',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_58',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7030, 4, 'EVENT_1074_jmp_if_var_not_equals_short_60']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_59',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_60',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7032, 5, 'EVENT_1074_jmp_if_7000_equals_short_97']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_61',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_62',
         "command": 'jmp',
-        "args": ['EVENT_1074_jmp_if_7000_equals_short_97']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_63',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7024, 6, 'EVENT_1074_jmp_if_var_not_equals_short_65']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_64',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_65',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7026, 4, 'EVENT_1074_jmp_if_var_not_equals_short_67']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_66',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_67',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7028, 1, 'EVENT_1074_jmp_if_var_not_equals_short_69']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_68',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_69',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702a, 4, 'EVENT_1074_jmp_if_var_not_equals_short_71']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_70',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_71',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702c, 5, 'EVENT_1074_jmp_if_var_not_equals_short_73']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_72',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_73',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702e, 2, 'EVENT_1074_jmp_if_var_not_equals_short_75']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_74',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_75',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7030, 3, 'EVENT_1074_jmp_if_var_not_equals_short_77']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_76',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_77',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7032, 4, 'EVENT_1074_jmp_if_7000_equals_short_97']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_78',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_79',
-        "command": 'jmp',
-        "args": ['EVENT_1074_jmp_if_7000_equals_short_97']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_80',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7024, 2, 'EVENT_1074_jmp_if_var_not_equals_short_82']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_81',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_82',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7026, 3, 'EVENT_1074_jmp_if_var_not_equals_short_84']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_83',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_84',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7028, 4, 'EVENT_1074_jmp_if_var_not_equals_short_86']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_85',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_86',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702a, 5, 'EVENT_1074_jmp_if_var_not_equals_short_88']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_87',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_88',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702c, 1, 'EVENT_1074_jmp_if_var_not_equals_short_90']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_89',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_90',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702e, 4, 'EVENT_1074_jmp_if_var_not_equals_short_92']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_91',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_92',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7030, 5, 'EVENT_1074_jmp_if_var_not_equals_short_94']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_93',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_94',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7032, 6, 'EVENT_1074_jmp_if_7000_equals_short_97']
-    },
-    {
-        "identifier": 'EVENT_1074_inc_95',
-        "command": 'inc',
-        "args": [0x7000]
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_96',
-        "command": 'jmp',
-        "args": ['EVENT_1074_jmp_if_7000_equals_short_97']
+        "args": ['EVENT_1074_action_queue_async_190']
     },
     {
         "identifier": 'EVENT_1074_jmp_if_7000_equals_short_97',
@@ -1415,846 +1230,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1074_ret_192',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_193',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7052, 1, 'EVENT_1074_set_action_script_sync_212']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_194',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 4, 'EVENT_1074_jmp_if_var_not_equals_short_200']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_195',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 5, 'EVENT_1074_jmp_if_var_not_equals_short_204']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_196',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 6, 'EVENT_1074_jmp_if_var_not_equals_short_208']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_197',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_198',
-        "command": 'set_bit',
-        "args": [0x7043, 0]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_199',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_200',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7024, 1, 'EVENT_1074_set_action_script_sync_212']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_201',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_202',
-        "command": 'set_bit',
-        "args": [0x7043, 0]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_203',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_204',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7024, 6, 'EVENT_1074_set_action_script_sync_212']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_205',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_206',
-        "command": 'set_bit',
-        "args": [0x7043, 0]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_207',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_208',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7024, 2, 'EVENT_1074_set_action_script_sync_212']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_209',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_210',
-        "command": 'set_bit',
-        "args": [0x7043, 0]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_211',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_212',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 572]
-    },
-    {
-        "identifier": 'EVENT_1074_clear_bit_213',
-        "command": 'clear_bit',
-        "args": [0x7043, 0]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_214',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_215',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7052, 1, 'EVENT_1074_set_action_script_sync_234']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_216',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 4, 'EVENT_1074_jmp_if_var_not_equals_short_222']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_217',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 5, 'EVENT_1074_jmp_if_var_not_equals_short_226']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_218',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 6, 'EVENT_1074_jmp_if_var_not_equals_short_230']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_219',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_220',
-        "command": 'set_bit',
-        "args": [0x7043, 1]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_221',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_222',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7026, 2, 'EVENT_1074_set_action_script_sync_234']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_223',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_224',
-        "command": 'set_bit',
-        "args": [0x7043, 1]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_225',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_226',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7026, 4, 'EVENT_1074_set_action_script_sync_234']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_227',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_228',
-        "command": 'set_bit',
-        "args": [0x7043, 1]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_229',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_230',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7026, 3, 'EVENT_1074_set_action_script_sync_234']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_231',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_232',
-        "command": 'set_bit',
-        "args": [0x7043, 1]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_233',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_234',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 572]
-    },
-    {
-        "identifier": 'EVENT_1074_clear_bit_235',
-        "command": 'clear_bit',
-        "args": [0x7043, 1]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_236',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_237',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7052, 1, 'EVENT_1074_set_action_script_sync_256']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_238',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 4, 'EVENT_1074_jmp_if_var_not_equals_short_244']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_239',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 5, 'EVENT_1074_jmp_if_var_not_equals_short_248']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_240',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 6, 'EVENT_1074_jmp_if_var_not_equals_short_252']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_241',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_242',
-        "command": 'set_bit',
-        "args": [0x7043, 2]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_243',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_244',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7028, 6, 'EVENT_1074_set_action_script_sync_256']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_245',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_246',
-        "command": 'set_bit',
-        "args": [0x7043, 2]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_247',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_248',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7028, 1, 'EVENT_1074_set_action_script_sync_256']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_249',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_250',
-        "command": 'set_bit',
-        "args": [0x7043, 2]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_251',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_252',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7028, 4, 'EVENT_1074_set_action_script_sync_256']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_253',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_254',
-        "command": 'set_bit',
-        "args": [0x7043, 2]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_255',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_256',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 572]
-    },
-    {
-        "identifier": 'EVENT_1074_clear_bit_257',
-        "command": 'clear_bit',
-        "args": [0x7043, 2]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_258',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_259',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7052, 1, 'EVENT_1074_set_action_script_sync_278']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_260',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 4, 'EVENT_1074_jmp_if_var_not_equals_short_266']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_261',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 5, 'EVENT_1074_jmp_if_var_not_equals_short_270']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_262',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 6, 'EVENT_1074_jmp_if_var_not_equals_short_274']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_263',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_264',
-        "command": 'set_bit',
-        "args": [0x7043, 3]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_265',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_266',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702a, 5, 'EVENT_1074_set_action_script_sync_278']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_267',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_268',
-        "command": 'set_bit',
-        "args": [0x7043, 3]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_269',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_270',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702a, 4, 'EVENT_1074_set_action_script_sync_278']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_271',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_272',
-        "command": 'set_bit',
-        "args": [0x7043, 3]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_273',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_274',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702a, 5, 'EVENT_1074_set_action_script_sync_278']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_275',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_276',
-        "command": 'set_bit',
-        "args": [0x7043, 3]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_277',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_278',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 572]
-    },
-    {
-        "identifier": 'EVENT_1074_clear_bit_279',
-        "command": 'clear_bit',
-        "args": [0x7043, 3]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_280',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_281',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7052, 1, 'EVENT_1074_set_action_script_sync_300']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_282',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 4, 'EVENT_1074_jmp_if_var_not_equals_short_288']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_283',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 5, 'EVENT_1074_jmp_if_var_not_equals_short_292']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_284',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 6, 'EVENT_1074_jmp_if_var_not_equals_short_296']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_285',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_286',
-        "command": 'set_bit',
-        "args": [0x7043, 4]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_287',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_288',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702c, 4, 'EVENT_1074_set_action_script_sync_300']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_289',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_290',
-        "command": 'set_bit',
-        "args": [0x7043, 4]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_291',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_292',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702c, 5, 'EVENT_1074_set_action_script_sync_300']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_293',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_294',
-        "command": 'set_bit',
-        "args": [0x7043, 4]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_295',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_296',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702c, 1, 'EVENT_1074_set_action_script_sync_300']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_297',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_298',
-        "command": 'set_bit',
-        "args": [0x7043, 4]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_299',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_300',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 572]
-    },
-    {
-        "identifier": 'EVENT_1074_clear_bit_301',
-        "command": 'clear_bit',
-        "args": [0x7043, 4]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_302',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_303',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7052, 1, 'EVENT_1074_set_action_script_sync_322']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_304',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 4, 'EVENT_1074_jmp_if_var_not_equals_short_310']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_305',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 5, 'EVENT_1074_jmp_if_var_not_equals_short_314']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_306',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 6, 'EVENT_1074_jmp_if_var_not_equals_short_318']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_307',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_308',
-        "command": 'set_bit',
-        "args": [0x7043, 5]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_309',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_310',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702e, 5, 'EVENT_1074_set_action_script_sync_322']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_311',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_312',
-        "command": 'set_bit',
-        "args": [0x7043, 5]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_313',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_314',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702e, 2, 'EVENT_1074_set_action_script_sync_322']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_315',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_316',
-        "command": 'set_bit',
-        "args": [0x7043, 5]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_317',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_318',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702e, 4, 'EVENT_1074_set_action_script_sync_322']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_319',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_320',
-        "command": 'set_bit',
-        "args": [0x7043, 5]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_321',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_322',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_5, 572]
-    },
-    {
-        "identifier": 'EVENT_1074_clear_bit_323',
-        "command": 'clear_bit',
-        "args": [0x7043, 5]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_324',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_325',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7052, 1, 'EVENT_1074_set_action_script_sync_344']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_326',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 4, 'EVENT_1074_jmp_if_var_not_equals_short_332']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_327',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 5, 'EVENT_1074_jmp_if_var_not_equals_short_336']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_328',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 6, 'EVENT_1074_jmp_if_var_not_equals_short_340']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_329',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_330',
-        "command": 'set_bit',
-        "args": [0x7043, 6]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_331',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_332',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7030, 4, 'EVENT_1074_set_action_script_sync_344']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_333',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_334',
-        "command": 'set_bit',
-        "args": [0x7043, 6]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_335',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_336',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7030, 3, 'EVENT_1074_set_action_script_sync_344']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_337',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_338',
-        "command": 'set_bit',
-        "args": [0x7043, 6]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_339',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_340',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7030, 5, 'EVENT_1074_set_action_script_sync_344']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_341',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_342',
-        "command": 'set_bit',
-        "args": [0x7043, 6]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_343',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_344',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_6, 572]
-    },
-    {
-        "identifier": 'EVENT_1074_clear_bit_345',
-        "command": 'clear_bit',
-        "args": [0x7043, 6]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_346',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_set_347',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7052, 1, 'EVENT_1074_set_action_script_sync_366']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_348',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7051, 4, 'EVENT_1074_jmp_if_var_not_equals_short_354']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_349',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 5, 'EVENT_1074_jmp_if_var_not_equals_short_358']
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_bit_clear_350',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7054, 6, 'EVENT_1074_jmp_if_var_not_equals_short_362']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_351',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_352',
-        "command": 'set_bit',
-        "args": [0x7043, 7]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_353',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_354',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7032, 5, 'EVENT_1074_set_action_script_sync_366']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_355',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_356',
-        "command": 'set_bit',
-        "args": [0x7043, 7]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_357',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_358',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7032, 4, 'EVENT_1074_set_action_script_sync_366']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_359',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_360',
-        "command": 'set_bit',
-        "args": [0x7043, 7]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_361',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_jmp_if_var_not_equals_short_362',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7032, 6, 'EVENT_1074_set_action_script_sync_366']
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_363',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 571]
-    },
-    {
-        "identifier": 'EVENT_1074_set_bit_364',
-        "command": 'set_bit',
-        "args": [0x7043, 7]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_365',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1074_set_action_script_sync_366',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 572]
-    },
-    {
-        "identifier": 'EVENT_1074_clear_bit_367',
-        "command": 'clear_bit',
-        "args": [0x7043, 7]
-    },
-    {
-        "identifier": 'EVENT_1074_ret_368',
         "command": 'ret'
     },
     {

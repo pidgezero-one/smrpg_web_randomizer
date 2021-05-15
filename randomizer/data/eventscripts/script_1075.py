@@ -6,31 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1075_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7054, 6, 'EVENT_1075_run_dialog_29']
-    },
-    {
-        "identifier": 'EVENT_1075_jmp_if_bit_set_1',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7051, 6, 'EVENT_1075_run_dialog_5']
-    },
-    {
-        "identifier": 'EVENT_1075_run_dialog_2',
-        "command": 'run_dialog',
-        "args": [2732, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_1075_set_bit_3',
-        "command": 'set_bit',
-        "args": [0x7051, 6]
-    },
-    {
-        "identifier": 'EVENT_1075_pause_4',
-        "command": 'pause',
-        "args": [15]
-    },
-    {
         "identifier": 'EVENT_1075_run_dialog_5',
         "command": 'run_dialog',
         "args": [2719, AreaObjects.NPC_12, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
@@ -569,40 +544,6 @@ script = [
     },
     {
         "identifier": 'EVENT_1075_ret_28',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_1075_run_dialog_29',
-        "command": 'run_dialog',
-        "args": [3063, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1075_jmp_if_dialog_option_b_or_c_30',
-        "command": 'jmp_if_dialog_option_b_or_c',
-        "args": ['EVENT_1075_run_dialog_34', 'EVENT_1075_run_dialog_36']
-    },
-    {
-        "identifier": 'EVENT_1075_run_dialog_31',
-        "command": 'run_dialog',
-        "args": [3064, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1075_pause_32',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_1075_jmp_33',
-        "command": 'jmp',
-        "args": ['EVENT_1078_pause_18']
-    },
-    {
-        "identifier": 'EVENT_1075_run_dialog_34',
-        "command": 'run_dialog',
-        "args": [3065, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_1075_ret_35',
         "command": 'ret'
     },
     {

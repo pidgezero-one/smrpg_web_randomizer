@@ -30,8 +30,14 @@ script = [
     {
         "identifier": 'EVENT_2497_set_bit',
         "command": 'set_bit',
-        "args": [0x7053, 7]
+        "args": [0x7057, 4]
     },
+    {
+        "identifier": 'EVENT_2497_set_bit_',
+        "command": 'set_bit',
+        "args": [0x7089, 0]
+    },
+    
     
 #    {
 #        "identifier": 'EVENT_2496___apply_tile_mod_102',

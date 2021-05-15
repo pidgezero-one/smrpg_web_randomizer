@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1104_deactivate_sound_channels_1',
+        "command": 'deactivate_sound_channels',
+        "args": [[]]
+    },
+    {
         "identifier": 'EVENT_1104_action_queue_async_1',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_9],

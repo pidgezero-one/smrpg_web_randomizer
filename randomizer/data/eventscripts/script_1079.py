@@ -4,4 +4,521 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+
+
+
+    # note 1
+    
+    {
+        "identifier": 'EVENT_1079_set_7000_to_7000_short_mem_7',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7024]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_to_subroutine_8',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_200',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7024, 1, 'EVENT_1079_set_action_script_sync_212']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_201',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_0, 571]
+    },
+    {
+        "identifier": 'EVENT_1079_set_bit_202',
+        "command": 'set_bit',
+        "args": [0x7043, 0]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_1',
+        "command": 'jmp',
+        "args": ['EVENT_1079_pause_10']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_212',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_0, 572]
+    },
+    {
+        "identifier": 'EVENT_1079_clear_bit_213',
+        "command": 'clear_bit',
+        "args": [0x7043, 0]
+    },
+    {
+        "identifier": 'EVENT_1079_pause_10',
+        "command": 'pause',
+        "args": [35]
+    },
+
+
+    # note 2
+    
+
+    {
+        "identifier": 'EVENT_1079_set_7000_to_7000_short_mem_11',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7026]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_to_subroutine_12',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_222',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7026, 2, 'EVENT_1079_set_action_script_sync_234']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_223',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_1, 571]
+    },
+    {
+        "identifier": 'EVENT_1079_set_bit_224',
+        "command": 'set_bit',
+        "args": [0x7043, 1]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_2',
+        "command": 'jmp',
+        "args": ['EVENT_1079_pause_14']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_234',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_1, 572]
+    },
+    {
+        "identifier": 'EVENT_1079_clear_bit_235',
+        "command": 'clear_bit',
+        "args": [0x7043, 1]
+    },
+    {
+        "identifier": 'EVENT_1079_pause_14',
+        "command": 'pause',
+        "args": [35]
+    },
+
+
+    # note 3
+
+
+    {
+        "identifier": 'EVENT_1079_set_7000_to_7000_short_mem_15',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7028]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_to_subroutine_16',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_244',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7028, 6, 'EVENT_1079_set_action_script_sync_256']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_245',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_2, 571]
+    },
+    {
+        "identifier": 'EVENT_1079_set_bit_246',
+        "command": 'set_bit',
+        "args": [0x7043, 2]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_3',
+        "command": 'jmp',
+        "args": ['EVENT_1079_pause_18']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_256',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_2, 572]
+    },
+    {
+        "identifier": 'EVENT_1079_clear_bit_257',
+        "command": 'clear_bit',
+        "args": [0x7043, 2]
+    },
+    {
+        "identifier": 'EVENT_1079_pause_18',
+        "command": 'pause',
+        "args": [35]
+    },
+
+
+    # note 4
+
+
+    {
+        "identifier": 'EVENT_1079_set_7000_to_7000_short_mem_19',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702a]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_to_subroutine_20',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_244_',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x702a, 5, 'EVENT_1079_set_action_script_sync_256_']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_267',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_3, 571]
+    },
+    {
+        "identifier": 'EVENT_1079_set_bit_268',
+        "command": 'set_bit',
+        "args": [0x7043, 3]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_4',
+        "command": 'jmp',
+        "args": ['EVENT_1079_pause_18_']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_256_',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_3, 572]
+    },
+    {
+        "identifier": 'EVENT_1079_clear_bit_257_',
+        "command": 'clear_bit',
+        "args": [0x7043, 3]
+    },
+    {
+        "identifier": 'EVENT_1079_pause_18_',
+        "command": 'pause',
+        "args": [35]
+    },
+
+
+    # note 5
+
+
+    {
+        "identifier": 'EVENT_1079_set_7000_to_7000_short_mem_23',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702c]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_to_subroutine_24',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_288',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x702c, 4, 'EVENT_1079_set_action_script_sync_300']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_297',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_4, 571]
+    },
+    {
+        "identifier": 'EVENT_1079_set_bit_298',
+        "command": 'set_bit',
+        "args": [0x7043, 4]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_5',
+        "command": 'jmp',
+        "args": ['EVENT_1079_pause_26']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_300',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_4, 572]
+    },
+    {
+        "identifier": 'EVENT_1079_clear_bit_301',
+        "command": 'clear_bit',
+        "args": [0x7043, 4]
+    },
+    {
+        "identifier": 'EVENT_1079_pause_26',
+        "command": 'pause',
+        "args": [35]
+    },
+
+
+    # note 6
+
+
+    {
+        "identifier": 'EVENT_1079_set_7000_to_7000_short_mem_27',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x702e]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_to_subroutine_28',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_310',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x702e, 5, 'EVENT_1079_set_action_script_sync_322']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_311',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_5, 571]
+    },
+    {
+        "identifier": 'EVENT_1079_set_bit_312',
+        "command": 'set_bit',
+        "args": [0x7043, 5]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_6',
+        "command": 'jmp',
+        "args": ['EVENT_1079_pause_30']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_322',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_5, 572]
+    },
+    {
+        "identifier": 'EVENT_1079_clear_bit_323',
+        "command": 'clear_bit',
+        "args": [0x7043, 5]
+    },
+    {
+        "identifier": 'EVENT_1079_pause_30',
+        "command": 'pause',
+        "args": [35]
+    },
+
+
+    # note 7
+
+
+    {
+        "identifier": 'EVENT_1079_set_7000_to_7000_short_mem_31',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7030]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_to_subroutine_32',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_332',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7030, 4, 'EVENT_1079_set_action_script_sync_344']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_333',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_6, 571]
+    },
+    {
+        "identifier": 'EVENT_1079_set_bit_334',
+        "command": 'set_bit',
+        "args": [0x7043, 6]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_7',
+        "command": 'jmp',
+        "args": ['EVENT_1079_pause_34']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_344',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_6, 572]
+    },
+    {
+        "identifier": 'EVENT_1079_clear_bit_345',
+        "command": 'clear_bit',
+        "args": [0x7043, 6]
+    },
+    {
+        "identifier": 'EVENT_1079_pause_34',
+        "command": 'pause',
+        "args": [35]
+    },
+
+
+    # note 8
+
+
+    {
+        "identifier": 'EVENT_1079_set_7000_to_7000_short_mem_35',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7032]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_to_subroutine_36',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_354',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7032, 5, 'EVENT_1079_set_action_script_sync_366']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_355',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_7, 571]
+    },
+    {
+        "identifier": 'EVENT_1079_set_bit_356',
+        "command": 'set_bit',
+        "args": [0x7043, 7]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_8',
+        "command": 'jmp',
+        "args": ['EVENT_1079_pause_38']
+    },
+    {
+        "identifier": 'EVENT_1079_set_action_script_sync_366',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_7, 572]
+    },
+    {
+        "identifier": 'EVENT_1079_clear_bit_367',
+        "command": 'clear_bit',
+        "args": [0x7043, 7]
+    },
+    {
+        "identifier": 'EVENT_1079_pause_38',
+        "command": 'pause',
+        "args": [35]
+    },
+
+
+    # mandatory
+
+
+    {
+        "identifier": 'EVENT_1079_pause_39',
+        "command": 'pause',
+        "args": [45]
+    },
+    {
+        "identifier": 'EVENT_1079_play_music_current_volume_40',
+        "command": 'play_music_current_volume',
+        "args": [Music._17_TADPOLE_POND]
+    },
+    {
+        "identifier": 'EVENT_1079_set_42',
+        "command": 'set',
+        "args": [0x7000, 0]
+    },
+
+
+    # correctness count
+
+
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_46',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7024, 1, 'EVENT_1079_jmp_if_var_not_equals_short_48']
+    },
+    {
+        "identifier": 'EVENT_1079_inc_47',
+        "command": 'inc',
+        "args": [0x7000]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_48',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7026, 2, 'EVENT_1079_jmp_if_var_not_equals_short_50']
+    },
+    {
+        "identifier": 'EVENT_1079_inc_49',
+        "command": 'inc',
+        "args": [0x7000]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_50',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7028, 6, 'EVENT_1079_jmp_if_var_not_equals_short_52']
+    },
+    {
+        "identifier": 'EVENT_1079_inc_51',
+        "command": 'inc',
+        "args": [0x7000]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_52',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x702a, 5, 'EVENT_1079_jmp_if_var_not_equals_short_54']
+    },
+    {
+        "identifier": 'EVENT_1079_inc_53',
+        "command": 'inc',
+        "args": [0x7000]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_54',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x702c, 4, 'EVENT_1079_jmp_if_var_not_equals_short_56']
+    },
+    {
+        "identifier": 'EVENT_1079_inc_55',
+        "command": 'inc',
+        "args": [0x7000]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_56',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x702e, 5, 'EVENT_1079_jmp_if_var_not_equals_short_58']
+    },
+    {
+        "identifier": 'EVENT_1079_inc_57',
+        "command": 'inc',
+        "args": [0x7000]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_58',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7030, 4, 'EVENT_1079_jmp_if_var_not_equals_short_60']
+    },
+    {
+        "identifier": 'EVENT_1079_inc_59',
+        "command": 'inc',
+        "args": [0x7000]
+    },
+    {
+        "identifier": 'EVENT_1079_jmp_if_var_not_equals_short_60',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7032, 5, 'EVENT_1079_jmp_62']
+    },
+    {
+        "identifier": 'EVENT_1079_inc_61',
+        "command": 'inc',
+        "args": [0x7000]
+    },
+
+    
+    # mandatory
+
+
+    {
+        "identifier": 'EVENT_1079_jmp_62',
+        "command": 'jmp',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_97']
+    },
+    
+]
