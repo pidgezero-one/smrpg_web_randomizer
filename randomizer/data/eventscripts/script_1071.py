@@ -309,10 +309,64 @@ script = [
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_0, 570]
     },
+
+
+    
+    # final song finished
+    {
+        "identifier": "EVENT_1071_freeplay",
+        "command": "jmp_if_bit_set",
+        "args": [0x7054, 6, 'EVENT_1071_jmp_38']
+    },
+    # second song finished
+    {
+        "identifier": "EVENT_1071_anticipate_third_song",
+        "command": "jmp_if_bit_set",
+        "args": [0x7054, 5, "EVENT_1071_third_song_not_unlocked_yet"]
+    },
+    # first song finished
+    {
+        "identifier": "EVENT_1071_anticipate_second_song",
+        "command": "jmp_if_bit_set",
+        "args": [0x7051, 4, "EVENT_1071_second_song_not_unlocked_yet"]
+    },
+    # first song
+    {
+        "identifier": "EVENT_1071_do_first_song",
+        "command": "jmp_to_event",
+        "args": [1082]
+    },
+    # second song
+    {
+        "identifier": "EVENT_1071_second_song_not_unlocked_yet",
+        "command": "jmp_if_bit_clear",
+        "args": [0x7057, 4, 'EVENT_1071_jmp_38']
+    },
+    {
+        "identifier": "EVENT_1071_do_second_song",
+        "command": "jmp_to_event",
+        "args": [1083]
+    },
+    # third song
+    {
+        "identifier": "EVENT_1071_third_song_not_unlocked_yet",
+        "command": "jmp_if_bit_clear",
+        "args": [0x7057, 4, 'EVENT_1071_jmp_38']
+    },
+    {
+        "identifier": "EVENT_1071_do_third_song",
+        "command": "jmp_to_event",
+        "args": [1084]
+    },
+
+
+    # default - not checking for an item - 35 f
+
+
     {
         "identifier": 'EVENT_1071_jmp_38',
-        "command": 'jmp',
-        "args": ['EVENT_1073_set_7000_to_tapped_button_0']
+        "command": 'jmp_to_event',
+        "args": [1073]
     },
     {
         "identifier": 'EVENT_1071_ret_39',
