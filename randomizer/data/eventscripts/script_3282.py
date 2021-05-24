@@ -302,8 +302,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3282_start_battle_32',
-        "command": 'start_battle',
-        "args": [0x00a6, 4]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_3282_clear_bit_36',
@@ -327,8 +327,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3282_set_bit_41',
-        "command": 'set_bit',
-        "args": [0x7058, 7]
+        "command": 'run_event_as_subroutine',
+        "args": [210]
     },
     {
         "identifier": 'EVENT_3282_action_queue_sync_43',

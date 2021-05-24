@@ -45,8 +45,8 @@ script = [
                 "args": [3]
             },
             {
-                "identifier": 'EVENT_1694_action_queue_sync_5_SUBSCRIPT_run_away_transfer_2',
-                "command": 'run_away_transfer'
+                "identifier": 'EVENT_1694_action_queue_sync_5_SUBSCRIPT_transfer_to_7016_7018_2',
+                "command": 'transfer_to_7016_7018'
             },
             {
                 "identifier": 'EVENT_1694_action_queue_sync_5_SUBSCRIPT_clear_solidity_bits_3',

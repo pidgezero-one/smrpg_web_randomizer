@@ -25,6 +25,21 @@ script = [
         "args": [125, "EVENT_237_room_125_logic"]
     },
     {
+        "identifier": "EVENT_237_room_380_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [380, "EVENT_237_room_380_logic"]
+    },
+    {
+        "identifier": "EVENT_237_room_422_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [422, "EVENT_237_room_422_logic"]
+    },
+    {
+        "identifier": "EVENT_237_room_457_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [457, "EVENT_237_room_457_logic"]
+    },
+    {
         "identifier": "EVENT_237_cancel",
         "command": 'ret'
     },
@@ -42,5 +57,20 @@ script = [
         "identifier": "EVENT_237_room_125_logic",
         "command": 'jmp_to_event',
         "args": [1293]
+    },
+    {
+        "identifier": "EVENT_237_room_380_logic",
+        "command": 'jmp_to_event',
+        "args": [3146]
+    },
+    {
+        "identifier": "EVENT_237_room_422_logic",
+        "command": 'jmp_to_event',
+        "args": [3238]
+    },
+    {
+        "identifier": "EVENT_237_room_457_logic",
+        "command": 'jmp_to_event',
+        "args": [3146]
     },
 ]

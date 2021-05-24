@@ -21,8 +21,52 @@ script = [
         "args": [1843, 0x701e, [12, 13]]
     },
     {
-        "identifier": 'EVENT_1841_jmp_to_event_3',
+        "identifier": 'EVENT_1841_freeze_camera_6',
+        "command": 'freeze_camera'
+    },
+    {
+        "identifier": 'EVENT_1841_action_queue_sync_7',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.SCREEN_FOCUS],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1841_action_queue_sync_7_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1841_action_queue_sync_7_SUBSCRIPT_shift_north_steps_1',
+                "command": 'shift_north_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_1841_action_queue_sync_7_SUBSCRIPT_set_animation_speed_2',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1841_set_short_8',
+        "command": 'set_short',
+        "args": [0x701c, 0x0028]
+    },
+    {
+        "identifier": 'EVENT_1841_run_background_event_with_pause_return_on_exit_9',
+        "command": 'run_background_event_with_pause_return_on_exit',
+        "args": [1543, 0x701c, [12, 13]]
+    },
+    {
+        "identifier": 'EVENT_1841_reactivate_trigger_if_mario_on_top_of_object_10',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
+    },
+    {
+        "identifier": 'EVENT_1841_inc_7',
         "command": 'jmp_to_event',
-        "args": [1823]
+        "args": [172]
+    },
+    {
+        "identifier": 'EVENT_1841_ret_11',
+        "command": 'ret'
     }
 ]

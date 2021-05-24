@@ -192,8 +192,8 @@ script = [
         "args": [AreaObjects.NPC_7],
         "subscript": [
             {
-                "identifier": 'EVENT_1825_action_queue_sync_35_SUBSCRIPT_run_away_transfer_8A_0',
-                "command": 'run_away_transfer_8A'
+                "identifier": 'EVENT_1825_action_queue_sync_35_SUBSCRIPT_walk_to_7016_7018_0',
+                "command": 'walk_to_7016_7018'
             }
         ]
     },
@@ -203,8 +203,8 @@ script = [
         "args": [AreaObjects.NPC_9],
         "subscript": [
             {
-                "identifier": 'EVENT_1825_action_queue_async_36_SUBSCRIPT_run_away_transfer_8A_0',
-                "command": 'run_away_transfer_8A'
+                "identifier": 'EVENT_1825_action_queue_async_36_SUBSCRIPT_walk_to_7016_7018_0',
+                "command": 'walk_to_7016_7018'
             }
         ]
     },
@@ -219,8 +219,8 @@ script = [
         "args": [AreaObjects.NPC_8],
         "subscript": [
             {
-                "identifier": 'EVENT_1825_action_queue_sync_38_SUBSCRIPT_run_away_transfer_8A_0',
-                "command": 'run_away_transfer_8A'
+                "identifier": 'EVENT_1825_action_queue_sync_38_SUBSCRIPT_walk_to_7016_7018_0',
+                "command": 'walk_to_7016_7018'
             }
         ]
     },
@@ -230,8 +230,8 @@ script = [
         "args": [AreaObjects.NPC_10],
         "subscript": [
             {
-                "identifier": 'EVENT_1825_action_queue_async_39_SUBSCRIPT_run_away_transfer_8A_0',
-                "command": 'run_away_transfer_8A'
+                "identifier": 'EVENT_1825_action_queue_async_39_SUBSCRIPT_walk_to_7016_7018_0',
+                "command": 'walk_to_7016_7018'
             }
         ]
     },

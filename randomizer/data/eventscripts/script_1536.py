@@ -552,14 +552,14 @@ script = [
         "args": [0x7067, 7]
     },
     {
-        "identifier": 'EVENT_1536_set_bit_117',
-        "command": 'set_bit',
-        "args": [0x7068, 0]
-    },
-    {
         "identifier": 'EVENT_1536_set_bit_118',
         "command": 'set_bit',
         "args": [0x706f, 6]
+    },
+    {
+        "identifier": 'EVENT_1536_set_bit_117',
+        "command": 'set_bit',
+        "args": [0x7068, 0]
     },
     {
         "identifier": 'EVENT_1536_enter_area_119',

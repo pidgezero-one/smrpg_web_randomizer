@@ -29,12 +29,7 @@ script = [
     {
         "identifier": 'EVENT_3744_pause_1',
         "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3744_pause_2',
-        "command": 'pause',
-        "args": [10]
+        "args": [20]
     },
     {
         "identifier": 'EVENT_3744_set_3',
@@ -49,7 +44,7 @@ script = [
     {
         "identifier": 'EVENT_3744_run_event_as_subroutine_5',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_3744_action_queue_sync_6',
@@ -99,44 +94,4 @@ script = [
         "identifier": 'EVENT_3744_ret_9',
         "command": 'ret'
     },
-    {
-        "identifier": 'EVENT_3744_stop_sound_10',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3744_stop_sound_11',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3744_stop_sound_12',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3744_stop_sound_13',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3744_stop_sound_14',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3744_stop_sound_15',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3744_stop_sound_16',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3744_stop_sound_17',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3744_stop_sound_18',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3744_ret_19',
-        "command": 'ret'
-    }
 ]

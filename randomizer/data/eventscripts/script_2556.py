@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_2556_start_battle_0',
-        "command": 'start_battle',
-        "args": [0x00ad, 41]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2556_jmp_if_bit_clear_1',
@@ -167,14 +167,9 @@ script = [
         "args": [AreaObjects.NPC_3, 689]
     },
     {
-        "identifier": 'EVENT_2556_set_short_21',
-        "command": 'set_short',
-        "args": [0x700a, 0x00da]
-    },
-    {
         "identifier": 'EVENT_2556_jmp_to_event_22',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_2556_ret_28',

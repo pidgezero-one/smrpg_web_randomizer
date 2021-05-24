@@ -519,8 +519,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3359_enter_area_59',
-        "command": 'enter_area',
-        "args": [Rooms._465_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2B_GREEN_SWITCHES, RadialDirections.NORTHEAST, 22, 33, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+        "command": 'jmp_to_event',
+        "args": [1955]
     },
     {
         "identifier": 'EVENT_3359_ret_60',

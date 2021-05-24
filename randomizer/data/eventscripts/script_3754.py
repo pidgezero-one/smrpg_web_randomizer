@@ -10,6 +10,16 @@ script = [
         "command": 'fade_out_to_black_async'
     },
     {
+        "identifier": 'EVENT_3754_open_volcano',
+        "command": 'set_bit',
+        "args": [0x7070, 1]
+    },
+    {
+        "identifier": 'EVENT_3754_open_volcano_',
+        "command": 'set_bit',
+        "args": [0x7068, 2]
+    },
+    {
         "identifier": 'EVENT_3754_jmp_to_event_1',
         "command": 'jmp_to_event',
         "args": [3321]

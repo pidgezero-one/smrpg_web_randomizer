@@ -147,8 +147,8 @@ script = [
                 "args": [0x7018, 0x3580]
             },
             {
-                "identifier": 'EVENT_3495_action_queue_async_12_SUBSCRIPT_run_away_transfer_4',
-                "command": 'run_away_transfer'
+                "identifier": 'EVENT_3495_action_queue_async_12_SUBSCRIPT_transfer_to_7016_7018_4',
+                "command": 'transfer_to_7016_7018'
             }
         ]
     },

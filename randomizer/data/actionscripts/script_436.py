@@ -15,8 +15,8 @@ script = [
         "args": [0xc8, 0x17]
     },
     {
-        "identifier": 'ACTION_436_run_away_transfer_2',
-        "command": 'run_away_transfer'
+        "identifier": 'ACTION_436_transfer_to_7016_7018_2',
+        "command": 'transfer_to_7016_7018'
     },
     {
         "identifier": 'ACTION_436_jmp_3',

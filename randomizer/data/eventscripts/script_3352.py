@@ -786,8 +786,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3352_enter_area_127',
-        "command": 'enter_area',
-        "args": [Rooms._463_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1B_BARRELCOUNTING, RadialDirections.NORTHEAST, 2, 55, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+        "command": 'jmp_to_event',
+        "args": [1953]
     },
     {
         "identifier": 'EVENT_3352_ret_128',

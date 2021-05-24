@@ -341,9 +341,14 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2448_party_join',
+        "command": 'run_event_as_subroutine',
+        "args": [186]
+    },
+    {
         "identifier": 'EVENT_2448_start_battle_91',
-        "command": 'start_battle',
-        "args": [0x00b5, 1]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2448_jmp_if_bit_clear_92',
@@ -536,14 +541,9 @@ script = [
         "args": [0x7062, 2]
     },
     {
-        "identifier": 'EVENT_2448_set_short_270',
-        "command": 'set_short',
-        "args": [0x700a, 0x00cc]
-    },
-    {
         "identifier": 'EVENT_2448_jmp_to_event_271',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_2448_ret_272',

@@ -113,6 +113,35 @@ script = [
         "args": [3075, 0x7020, [12, 13]]
     },
     {
+        "identifier": "EVENT_3072_current_lvl",
+        "command": 'set_7000_to_current_level'
+    },
+    {
+        "identifier": "EVENT_3072_check_room_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [453, 'EVENT_3072_enable_controls_until_return_1']
+    },
+    {
+        "identifier": 'EVENT_3072_jmp_22_',
+        "command": 'jmp',
+        "args": ['EVENT_3072_ret_47']
+    },
+    {
+        "identifier": 'EVENT_3072_enable_controls_until_return_1',
+        "command": 'enable_controls_until_return',
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
+    },
+    {
+        "identifier": 'EVENT_3072_pause_2',
+        "command": 'pause',
+        "args": [8]
+    },
+    {
+        "identifier": 'EVENT_3072_priority_set_3',
+        "command": 'priority_set',
+        "args": [[_0x81Flags.LAYER_3], [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [_0x81Flags.BACKGROUND, _0x81Flags.HALF_INTENSITY]]
+    },
+    {
         "identifier": 'EVENT_3072_jmp_22',
         "command": 'jmp',
         "args": ['EVENT_3072_ret_47']

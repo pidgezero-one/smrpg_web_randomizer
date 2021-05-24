@@ -170,7 +170,7 @@ script = [
     {
         "identifier": 'EVENT_3092_open_gate__',
         "command": 'jmp_to_event',
-        "args": [3093]
+        "args": [206]
     },
     {
         "identifier": 'EVENT_3092_ret_418',

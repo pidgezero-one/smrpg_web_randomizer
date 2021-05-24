@@ -170,8 +170,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2077_start_battle_51',
-        "command": 'start_battle',
-        "args": [0x00bc, 46]
+        "command": 'set',
+        "args": [0x7000, 517]
+    },
+    {
+        "identifier": 'EVENT_2077_fight',
+        "command": 'run_event_as_subroutine',
+        "args": [353]
     },
     {
         "identifier": 'EVENT_2077_restore_all_hp_53',
@@ -577,14 +582,14 @@ script = [
         "args": [0x708a, 5]
     },
     {
-        "identifier": 'EVENT_2077_set_short_88',
-        "command": 'set_short',
-        "args": [0x700a, 0x00d8]
+        "identifier": 'EVENT_2077_pause_64_',
+        "command": 'set',
+        "args": [0x7000, 517]
     },
     {
-        "identifier": 'EVENT_2077_jmp_to_event_89',
-        "command": 'jmp_to_event',
-        "args": [720]
+        "identifier": 'EVENT_2077_star',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
     },
     {
         "identifier": 'EVENT_2077_ret_90',

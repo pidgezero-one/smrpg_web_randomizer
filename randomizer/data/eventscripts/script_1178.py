@@ -546,19 +546,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1178_set_31',
-        "command": 'set',
-        "args": [0x70a7, 117]
-    },
-    {
-        "identifier": 'EVENT_1178_set_32',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_1178_run_event_as_subroutine_33',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_1178_action_queue_async_48',
@@ -590,6 +580,16 @@ script = [
         "identifier": 'EVENT_1178_pause_50',
         "command": 'pause',
         "args": [1]
+    },
+    {
+        "identifier": 'EVENT_1178_remove_from_level_6_',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_5, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
+    },
+    {
+        "identifier": 'EVENT_1178_remove_one_from_inventory_9',
+        "command": 'remove_one_from_inventory',
+        "args": [items.ShedKey]
     },
     {
         "identifier": 'EVENT_1178_ret_51',

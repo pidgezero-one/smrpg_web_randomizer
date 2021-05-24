@@ -12,8 +12,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2118_start_battle_1',
-        "command": 'start_battle',
-        "args": [0x00d0, 22]
+        "command": 'set',
+        "args": [0x7000, 520]
+    },
+    {
+        "identifier": 'EVENT_2118_start_battle_700E_4',
+        "command": 'run_event_as_subroutine',
+        'args': [353]
     },
     {
         "identifier": 'EVENT_2118_jmp_if_bit_clear_2',
@@ -44,11 +49,6 @@ script = [
         "args": [0x7092, 7]
     },
     {
-        "identifier": 'EVENT_2118_set_short_8',
-        "command": 'set_short',
-        "args": [0x700a, 0x00db]
-    },
-    {
         "identifier": 'EVENT_2118_jmp_if_already_checked_star_piece',
         "command": 'jmp_if_bit_set',
         "args": [0x7081, 2, 'EVENT_2118_ret_10']
@@ -59,8 +59,13 @@ script = [
         "args": [0x7081, 2]
     },
     {
-        "identifier": 'EVENT_2118_jmp_to_event_9',
-        "command": 'jmp_to_event',
+        "identifier": 'EVENT_2118_set_',
+        "command": 'set',
+        "args": [0x7000, 520]
+    },
+    {
+        "identifier": 'EVENT_2118_star_',
+        "command": 'run_event_as_subroutine',
         "args": [167]
     },
     {

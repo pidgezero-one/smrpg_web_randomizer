@@ -11,19 +11,9 @@ script = [
         "args": [0x709f, 3, 'EVENT_744_run_dialog_54']
     },
     {
-        "identifier": 'EVENT_744_set_37',
-        "command": 'set',
-        "args": [0x70a7, 116]
-    },
-    {
-        "identifier": 'EVENT_744_set_38',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_744_run_event_as_subroutine_39',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_744_set_bit_50',

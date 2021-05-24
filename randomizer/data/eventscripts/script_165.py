@@ -47,14 +47,74 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_165_run_dialog_104',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
         "identifier": 'EVENT_165_put_inventory_105',
         "command": 'put_inventory',
         "args": [0x70a7]
+    },
+    {
+        "identifier": 'EVENT_165_check_12',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 28, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_1',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 78, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_2',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 81, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_10',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 80, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_3',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 84, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_4',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 103, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_9',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 105, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_11',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 114, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_8',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 121, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_5',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 126, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_7',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 141, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_check_6',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 151, 'EVENT_165_run_dialog_104_']
+    },
+    {
+        "identifier": 'EVENT_165_run_dialog_104',
+        "command": 'run_dialog',
+        "args": [1177, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_165_pause_12',
@@ -63,6 +123,20 @@ script = [
     },
     {
         "identifier": "EVENT_165_ret",
+        "command": "ret"
+    },
+    {
+        "identifier": 'EVENT_165_run_dialog_104_',
+        "command": 'run_dialog',
+        "args": [1178, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+    },
+    {
+        "identifier": 'EVENT_165_pause_12_',
+        "command": 'pause',
+        "args": [60]
+    },
+    {
+        "identifier": "EVENT_165_ret_",
         "command": "ret"
     }
 ]

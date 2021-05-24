@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1894_start_battle_1',
-        "command": 'start_battle',
-        "args": [0x00b8, 40]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_1894_set_bit_3',
@@ -65,7 +65,7 @@ script = [
     {
         "identifier": 'EVENT_1894_star_piece',
         "command": 'jmp_to_event',
-        "args": [167]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_1894_ret_13',

@@ -36,8 +36,7 @@ script = [
     },
     {
         "identifier": 'ACTION_40_db_6',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_40_visibility_on_7',

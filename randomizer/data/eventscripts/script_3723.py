@@ -16,19 +16,9 @@ script = [
         "args": [0x70ae, 16]
     },
     {
-        "identifier": 'EVENT_3723_set_7',
-        "command": 'set',
-        "args": [0x70a7, 132]
-    },
-    {
-        "identifier": 'EVENT_3723_set_8',
-        "command": 'set',
-        "args": [0x7000, 3660]
-    },
-    {
-        "identifier": 'EVENT_3723_run_event_as_subroutine_9',
+        "identifier": 'EVENT_3723_run_event_as_subroutine_8',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [179]
     },
     {
         "identifier": 'EVENT_3723_set_bit_29',

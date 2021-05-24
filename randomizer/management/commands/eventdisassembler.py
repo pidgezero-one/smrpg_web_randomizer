@@ -721,7 +721,7 @@ names[0x58] = named('store_current_FP_7000')
 # 0x59 - 0x5A undocumented
 names[0x5B] = named('pause_script_if_menu_open')
 names[0x5C] = named('read_from_address', short())
-names[0x5D] = named('load_600f')
+names[0x5D] = named('reactivate_trigger_if_mario_on_top_of_object')
 # 0x5E - 0x5F undocumented
 names[0x60] = run_dialog
 names[0x61] = run_dialog

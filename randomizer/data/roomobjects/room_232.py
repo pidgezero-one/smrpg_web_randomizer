@@ -31,8 +31,9 @@ room = {
       "ne_sw_edge_active": False,
       "byte_8_bit_4": False,
     },
+  ],
+  "exit_fields": [
     {
-      "event": 2437,
       "x": 5,
       "y": 16,
       "z": 0,
@@ -41,10 +42,16 @@ room = {
       "height": 7,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "byte_8_bit_4": False,
+      "destination_type": ExitType.MAP_LOCATION,
+      "byte_2_bit_2": True,
+      "destination": Locations._019_FOREST_MAZE,
+      "show_message": False,
+      "destination_props": {
+        "byte_2_bit_0": True,
+        "byte_2_bit_1": False,
+      }
     }
   ],
-  "exit_fields": [],
   "objects": [
     {
       "id": 0,

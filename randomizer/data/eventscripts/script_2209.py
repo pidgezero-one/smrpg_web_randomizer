@@ -167,8 +167,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2209_start_battle_7',
-        "command": 'start_battle',
-        "args": [0x00d1, 7]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2209_jmp_if_bit_clear_8',
@@ -546,14 +546,9 @@ script = [
         "command": 'restore_all_fp'
     },
     {
-        "identifier": 'EVENT_2209_set_short_24',
-        "command": 'set_short',
-        "args": [0x700a, 0x00e3]
-    },
-    {
         "identifier": 'EVENT_2209_jmp_to_event_25',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_2209_ret_26',

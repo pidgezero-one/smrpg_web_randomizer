@@ -31,9 +31,9 @@ script = [
         "args": [0x701e]
     },
     {
-        "identifier": 'EVENT_668_start_battle_59',
-        "command": 'start_battle',
-        "args": [0x00b0, 35]
+        "identifier": 'EVENT_668_fight',
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_668_jmp_if_bit_set_60',
@@ -213,14 +213,19 @@ script = [
         "args": [0x7062, 2]
     },
     {
-        "identifier": 'EVENT_668_set_short_138',
-        "command": 'set_short',
-        "args": [0x700a, 0x00d1]
+        "identifier": 'EVENT_668_jmp_to_event_139_',
+        "command": 'run_event_as_subroutine',
+        "args": [186]
+    },
+    {
+        "identifier": 'EVENT_668_open_forest',
+        "command": 'run_event_as_subroutine',
+        "args": [200]
     },
     {
         "identifier": 'EVENT_668_jmp_to_event_139',
         "command": 'jmp_to_event',
-        "args": [167]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_668_ret_140',

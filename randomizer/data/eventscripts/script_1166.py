@@ -7,13 +7,27 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_1166_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7086, 2, 'EVENT_1166_pause_3']
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7086, 1, 'EVENT_1166_ret_2']
+    },
+    {
+        "identifier": 'EVENT_1166_set_237',
+        "command": 'set',
+        "args": [0x70a7, 142]
+    },
+    {
+        "identifier": 'EVENT_1166_store_7000_item_quantity_to_70A7_238',
+        "command": 'store_7000_item_quantity_to_70A7'
+    },
+    {
+        "identifier": 'EVENT_1166_jmp_if_7000_equals_short_239',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [1, 'EVENT_1166_pause_3']
     },
     {
         "identifier": 'EVENT_1166_run_dialog_1',
         "command": 'run_dialog',
-        "args": [2867, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+        "args": [2802, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
     },
     {
         "identifier": 'EVENT_1166_ret_2',
@@ -32,27 +46,22 @@ script = [
     {
         "identifier": 'EVENT_1166_apply_solidity_mod_5',
         "command": 'apply_solidity_mod',
-        "args": [Rooms._304_SEASIDE_TOWN_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
+        "args": [Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
     },
     {
         "identifier": 'EVENT_1166_remove_from_current_level_6',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0]
+        "args": [AreaObjects.NPC_6]
     },
     {
-        "identifier": 'EVENT_1166_remove_from_level_7',
+        "identifier": 'EVENT_1166_remove_from_level_6_',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._304_SEASIDE_TOWN_OUTSIDE]
+        "args": [AreaObjects.NPC_6, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     },
     {
         "identifier": 'EVENT_1166_pause_8',
         "command": 'pause',
         "args": [5]
-    },
-    {
-        "identifier": 'EVENT_1166_remove_one_from_inventory_9',
-        "command": 'remove_one_from_inventory',
-        "args": [items.ShedKey]
     },
     {
         "identifier": 'EVENT_1166_ret_10',

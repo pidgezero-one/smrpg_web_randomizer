@@ -18,9 +18,10 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "byte_8_bit_4": False,
-    },
+    }
+  ],
+  "exit_fields": [
     {
-      "event": 2613,
       "x": 2,
       "y": 95,
       "z": 5,
@@ -29,10 +30,20 @@ room = {
       "height": 7,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "byte_8_bit_4": False,
+      "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
+      "destination": Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+      "show_message": False,
+      "destination_props": {
+        "x": 14,
+        "y": 97,
+        "z": 0,
+        "z_half": False,
+        "f": RadialDirection.NORTHWEST,
+        "x_bit_7": False
+      }
     },
     {
-      "event": 2614,
       "x": 15,
       "y": 121,
       "z": 5,
@@ -41,10 +52,20 @@ room = {
       "height": 7,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "byte_8_bit_4": False,
+      "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
+      "destination": Rooms._471_FACTORY_GROUNDS_AREA_02,
+      "show_message": False,
+      "destination_props": {
+        "x": 4,
+        "y": 32,
+        "z": 5,
+        "z_half": False,
+        "f": RadialDirection.SOUTHEAST,
+        "x_bit_7": False
+      }
     }
   ],
-  "exit_fields": [],
   "objects": [
     {
       "id": 0,

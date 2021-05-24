@@ -668,8 +668,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3355_enter_area_82',
-        "command": 'enter_area',
-        "args": [Rooms._466_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1C_WORD_PROBLEM, RadialDirections.NORTHEAST, 12, 97, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+        "command": 'jmp_to_event',
+        "args": [1951]
     },
     {
         "identifier": 'EVENT_3355_ret_83',
@@ -724,6 +724,16 @@ script = [
         "args": [Music._36_EXPLANATION]
     },
     {
+        "identifier": 'EVENT_3355_store_barrel_number',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "args": [0x7024, 0x702A]
+    },
+    {
+        "identifier": 'EVENT_3355_store_counter',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "args": [0x7000, 0x7024]
+    },
+    {
         "identifier": 'EVENT_3355_action_queue_sync_94',
         "command": 'action_queue_sync',
         "args": [AreaObjects.MARIO],
@@ -745,9 +755,19 @@ script = [
         "args": [30]
     },
     {
+        "identifier": 'EVENT_3355_await_button',
+        "command": 'run_background_event',
+        "args": [1653, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
+    },
+    {
         "identifier": 'EVENT_3355_set_object_memory_to_96',
         "command": 'set_object_memory_to',
-        "args": [0x7000]
+        "args": [0x7024]
+    },
+    {
+        "identifier": 'EVENT_3355_end_if_0',
+        "command": 'jmp_if_var_equals_short',
+        "args": [0x7024, 0, 'EVENT_3355_end_loop_105']
     },
     {
         "identifier": 'EVENT_3355_pause_97',
@@ -770,6 +790,11 @@ script = [
         "args": [AreaObjects.NPC_0, 59]
     },
     {
+        "identifier": 'EVENT_3355_skip_',
+        "command": 'jmp_if_var_equals_short',
+        "args": [0x7024, 0, 'EVENT_3355_end_loop_105']
+    },
+    {
         "identifier": 'EVENT_3355_run_dialog_101',
         "command": 'run_dialog',
         "args": [1891, AreaObjects.NPC_14, []]
@@ -785,13 +810,22 @@ script = [
         "args": [0x7044, 7]
     },
     {
+        "identifier": 'EVENT_3355_skip',
+        "command": 'jmp_if_var_equals_short',
+        "args": [0x7024, 0, 'EVENT_3355_end_loop_105']
+    },
+    {
         "identifier": 'EVENT_3355_dec_104',
-        "command": 'dec',
-        "args": [0x7000]
+        "command": 'dec_short',
+        "args": [0x7024]
     },
     {
         "identifier": 'EVENT_3355_end_loop_105',
         "command": 'end_loop'
+    },
+    {
+        "identifier": 'EVENT_3355_end_button',
+        "command": 'stop_all_background_events'
     },
     {
         "identifier": 'EVENT_3355_pause_106',
@@ -818,6 +852,12 @@ script = [
                 "args": [1]
             }
         ]
+    },
+    
+    {
+        "identifier": 'EVENT_3355_restore_barrel_number',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "args": [0x702A, 0x7024]
     },
     {
         "identifier": 'EVENT_3355_play_music_default_volume_109',

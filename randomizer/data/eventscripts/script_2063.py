@@ -27,8 +27,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2063_mem_compare_val_20',
-        "command": 'mem_compare_val',
-        "args": [30]
+        "command": 'run_event_as_subroutine',
+        "args": [3393]
     },
     {
         "identifier": 'EVENT_2063_jmp_if_comparison_result_is_greater_or_equal_21',
@@ -50,19 +50,9 @@ script = [
         "args": [2629, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2063_set_25',
-        "command": 'set',
-        "args": [0x70a7, 81]
-    },
-    {
-        "identifier": 'EVENT_2063_set_26',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_2063_run_event_as_subroutine_27',
         "command": 'run_event_as_subroutine',
-        "args": [3829]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2063_set_bit_28',
@@ -76,8 +66,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2063_mem_compare_val_30',
-        "command": 'mem_compare_val',
-        "args": [100]
+        "command": 'run_event_as_subroutine',
+        "args": [3394]
     },
     {
         "identifier": 'EVENT_2063_jmp_if_comparison_result_is_greater_or_equal_31',
@@ -95,8 +85,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2063_mem_compare_val_34',
-        "command": 'mem_compare_val',
-        "args": [100]
+        "command": 'run_event_as_subroutine',
+        "args": [3394]
     },
     {
         "identifier": 'EVENT_2063_jmp_if_comparison_result_is_greater_or_equal_35',
@@ -113,19 +103,9 @@ script = [
         "args": [2631, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
     },
     {
-        "identifier": 'EVENT_2063_set_38',
-        "command": 'set',
-        "args": [0x70a7, 69]
-    },
-    {
-        "identifier": 'EVENT_2063_set_39',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_2063_run_event_as_subroutine_40',
         "command": 'run_event_as_subroutine',
-        "args": [3829]
+        "args": [179]
     },
     {
         "identifier": 'EVENT_2063_set_bit_41',

@@ -47,8 +47,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2808_start_battle_4',
-        "command": 'start_battle',
-        "args": [0x00b7, 9]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2808_jmp_if_bit_clear_5',
@@ -71,11 +71,6 @@ script = [
         "identifier": 'EVENT_2808_set_bit_9',
         "command": 'set_bit',
         "args": [0x7052, 6]
-    },
-    {
-        "identifier": 'EVENT_2808_set_bit_10',
-        "command": 'set_bit',
-        "args": [0x706d, 3]
     },
     {
         "identifier": 'EVENT_2808_remove_from_current_level_11',
@@ -117,11 +112,6 @@ script = [
         "args": [AreaObjects.NPC_5, Rooms._205_MUSHROOM_WAY_AREA_03]
     },
     {
-        "identifier": 'EVENT_2808_jmp_19',
-        "command": 'jmp',
-        "args": ['EVENT_2808_remove_from_current_level_20']
-    },
-    {
         "identifier": 'EVENT_2808_remove_from_current_level_20',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_8]
@@ -154,9 +144,19 @@ script = [
         "args": [0x700a, 0x00c8]
     },
     {
+        "identifier": 'EVENT_2808_jmp_to_event_33__',
+        "command": 'run_event_as_subroutine',
+        "args": [186]
+    },
+    {
         "identifier": 'EVENT_2808_jmp_to_event_33',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_2808_jmp_to_event_33_',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [199]
     },
     {
         "identifier": 'EVENT_2808_ret_34',

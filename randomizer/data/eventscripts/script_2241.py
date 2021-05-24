@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2241_jmp_if_bit_set__0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7086, 0, 'EVENT_2241_enter_area_1']
+        "args": [0x7086, 1, 'EVENT_2241_enter_area_1']
     },
     {
         "identifier": 'EVENT_2241_enter_area__1',

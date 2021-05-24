@@ -6,6 +6,26 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": "EVENT_2180_clear_bit_1",
+        "command": "clear_bit",
+        "args": [0x7043, 1]
+    },
+    {
+        "identifier": "EVENT_2180_clear_bit_2",
+        "command": "clear_bit",
+        "args": [0x7043, 2]
+    },
+    {
+        "identifier": "EVENT_2180_clear_bit_3",
+        "command": "clear_bit",
+        "args": [0x7043, 3]
+    },
+    {
+        "identifier": "EVENT_2180_clear_bit_4",
+        "command": "clear_bit",
+        "args": [0x7043, 4]
+    },
+    {
         "identifier": 'EVENT_2180_fade_in_from_black_async_0',
         "command": 'fade_in_from_black_async'
     },

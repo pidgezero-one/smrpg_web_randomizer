@@ -96,68 +96,14 @@ script = [
         "args": [0x7083, 2, 'EVENT_395_jmp_if_bit_set_0']
     },
     {
-        "identifier": 'EVENT_293_run_dialog_31',
-        "command": 'run_dialog',
-        "args": [2231, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_293_pause_32',
-        "command": 'pause',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_293_jmp_if_bit_set_33',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705d, 2, 'EVENT_293_set_40']
-    },
-    {
-        "identifier": 'EVENT_293_add_frog_coins_34',
-        "command": 'add_frog_coins',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_293_play_sound_35',
-        "command": 'play_sound',
-        "args": [Sounds._094_FROG_COIN, 6]
-    },
-    {
-        "identifier": 'EVENT_293_set_bit_36',
-        "command": 'set_bit',
-        "args": [0x705d, 2]
-    },
-    {
-        "identifier": 'EVENT_293_run_dialog_37',
-        "command": 'run_dialog',
-        "args": [2243, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_293_set_bit_38',
-        "command": 'set_bit',
-        "args": [0x705d, 3]
-    },
-    {
-        "identifier": 'EVENT_293_ret_39',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_293_set_40',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_293_set_41',
-        "command": 'set',
-        "args": [0x70a7, 116]
-    },
-    {
-        "identifier": 'EVENT_293_run_event_as_subroutine_42',
-        "command": 'run_event_as_subroutine',
-        "args": [3828]
-    },
-    {
         "identifier": 'EVENT_293_set_bit_43',
         "command": 'set_bit',
         "args": [0x705d, 3]
+    },
+    {
+        "identifier": "EVENT_293_second_prize",
+        "command": "run_event_as_subroutine",
+        "args": [180]
     },
     {
         "identifier": 'EVENT_293_ret_44',

@@ -37,6 +37,7 @@ def assemble_from_table(pointer_table, data_table):
     # Dialogs 1222, 1223, 1224, 1227 will need to change dpeending on if star shuffle is on or not.
     # password hints: 1664, 1665, 1667, 1668, 1669, 1673, 1674, 1675, 1676, 1690
     # tadpole pond hints: 2664, 2665, 2668 (tadpole); 2718 (scroll);
+    # Character palette names: overwrite 1179-1183
 
     # convert dialogs to byte vals
     compressed_dialog = [

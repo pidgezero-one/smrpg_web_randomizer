@@ -7,8 +7,8 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3121_start_battle_102',
-        "command": 'start_battle',
-        "args": [0x00a8, 21]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_3121_set_bit_103',
@@ -32,18 +32,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3121_set_short_107',
-        "command": 'set_short',
-        "args": [0x700a, 0x00cb]
-    },
-    {
-        "identifier": 'EVENT_3121_run_background_event_108',
-        "command": 'run_background_event',
-        "args": [720, []]
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_3121_pause_109',
         "command": 'pause',
-        "args": [63]
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3121_set_bit_110',

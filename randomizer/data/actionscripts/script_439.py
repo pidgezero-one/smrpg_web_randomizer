@@ -40,8 +40,7 @@ script = [
     },
     {
         "identifier": 'ACTION_439_db_7',
-        "command": 'db',
-        "args": [0x98]
+        "command": 'walk_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_439_set_vram_priority_8',

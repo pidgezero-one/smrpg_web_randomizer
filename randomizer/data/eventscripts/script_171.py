@@ -6,6 +6,21 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_171_jmp_if_bit_set_351',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7040, 0, 'EVENT_171_reset_and_choose_game_366']
+    },
+    {
+        "identifier": 'EVENT_171_jmp_if_bit_set_351_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7081, 1, 'EVENT_171_ret']
+    },
+    {
+        "identifier": 'EVENT_171_clear_bit_345',
+        "command": 'set_bit',
+        "args": [0x7081, 1]
+    },
+    {
         "identifier": "EVENT_171_special_val", # box boy chest
         "command": 'set',
         "args": [0x7000, 514]
@@ -14,5 +29,13 @@ script = [
         "identifier": "EVENT_171_jmp",
         "command": "jmp_to_event",
         "args": [167]
-    }
+    },
+    {
+        "identifier": 'EVENT_171_reset_and_choose_game_366',
+        "command": 'reset_and_choose_game'
+    },
+    {
+        "identifier": 'EVENT_171_ret',
+        "command": 'ret'
+    },
 ]

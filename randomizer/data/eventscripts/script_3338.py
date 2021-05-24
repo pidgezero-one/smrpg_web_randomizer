@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3338_start_battle_115',
-        "command": 'start_battle',
-        "args": [0x00b6, 39]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_3338_stop_music_FDA2_116',
@@ -66,6 +66,16 @@ script = [
     {
         "identifier": 'EVENT_3338_restore_all_fp_125',
         "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_3338_____open_keep',
+        "command": 'run_event_as_subroutine',
+        "args": [208]
+    },
+    {
+        "identifier": 'EVENT_3338_____star_piece',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_3338_open_location_182',

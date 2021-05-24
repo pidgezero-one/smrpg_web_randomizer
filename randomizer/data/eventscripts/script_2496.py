@@ -101,11 +101,6 @@ script = [
         "args": [0x706d, 3]
     },
     {
-        "identifier": 'EVENT_2496_set_bit_18',
-        "command": 'set_bit',
-        "args": [0x706d, 4]
-    },
-    {
         "identifier": 'EVENT_2496_set_bit_19',
         "command": 'set_bit',
         "args": [0x706d, 5]
@@ -129,11 +124,6 @@ script = [
         "identifier": 'EVENT_2496_set_bit_23',
         "command": 'set_bit',
         "args": [0x706e, 2]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_24',
-        "command": 'set_bit',
-        "args": [0x706e, 3]
     },
     {
         "identifier": 'EVENT_2496_set_bit_25',
@@ -166,24 +156,9 @@ script = [
         "args": [0x706f, 2]
     },
     {
-        "identifier": 'EVENT_2496_set_bit_31',
-        "command": 'set_bit',
-        "args": [0x706f, 3]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_32',
-        "command": 'set_bit',
-        "args": [0x706f, 4]
-    },
-    {
         "identifier": 'EVENT_2496_set_bit_33',
         "command": 'set_bit',
         "args": [0x706f, 5]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_34',
-        "command": 'set_bit',
-        "args": [0x706f, 6]
     },
     {
         "identifier": 'EVENT_2496_set_bit_35',
@@ -194,11 +169,6 @@ script = [
         "identifier": 'EVENT_2496_set_bit_36',
         "command": 'set_bit',
         "args": [0x7070, 0]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_37',
-        "command": 'set_bit',
-        "args": [0x7070, 1]
     },
     {
         "identifier": 'EVENT_2496_____set_bit_32',
@@ -219,16 +189,6 @@ script = [
         "identifier": 'EVENT_2496_____set_bit_33',
         "command": 'set_bit',
         "args": [0x7070, 7]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_40',
-        "command": 'set_bit',
-        "args": [0x7065, 4]
-    },
-    {
-        "identifier": 'EVENT_2496___set_bit_30_',
-        "command": 'set_bit',
-        "args": [0x7065, 0]
     },
     {
         "identifier": 'EVENT_2496_set_bit_41',
@@ -254,11 +214,6 @@ script = [
         "identifier": 'EVENT_2496_set_bit_45',
         "command": 'set_bit',
         "args": [0x7066, 2]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_46',
-        "command": 'set_bit',
-        "args": [0x7066, 3]
     },
     {
         "identifier": 'EVENT_2496_set_bit_47',
@@ -296,24 +251,9 @@ script = [
         "args": [0x7067, 3]
     },
     {
-        "identifier": 'EVENT_2496_set_bit_54',
-        "command": 'set_bit',
-        "args": [0x7067, 4]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_55',
-        "command": 'set_bit',
-        "args": [0x7067, 5]
-    },
-    {
         "identifier": 'EVENT_2496_set_bit_56',
         "command": 'set_bit',
         "args": [0x7067, 6]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_57',
-        "command": 'set_bit',
-        "args": [0x7067, 7]
     },
     {
         "identifier": 'EVENT_2496_set_bit_58',
@@ -324,16 +264,6 @@ script = [
         "identifier": 'EVENT_2496_set_bit_59',
         "command": 'set_bit',
         "args": [0x7068, 1]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_60',
-        "command": 'set_bit',
-        "args": [0x7068, 2]
-    },
-    {
-        "identifier": 'EVENT_2496_set_bit_60_',
-        "command": 'set_bit',
-        "args": [0x7068, 3]
     },
     {
         "identifier": 'EVENT_2496_set_bit_61',
@@ -391,11 +321,6 @@ script = [
         "args": [AreaObjects.NPC_0, Rooms._320_MUSHROOM_KINGDOM_CASTLE_ENTRANCE_TO_THRONE_ROOM]
     },
     {
-        "identifier": 'EVENT_2496___remove_from_level_13',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._207_BANDITS_WAY_AREA_02]
-    },
-    {
         "identifier": 'EVENT_2496___set_bit_15',
         "command": 'set_bit',
         "args": [0x7044, 6]
@@ -424,16 +349,6 @@ script = [
         "identifier": 'EVENT_2496___set_bit_30',
         "command": 'set_bit',
         "args": [0x7063, 2]
-    },
-    {
-        "identifier": 'EVENT_2496___set_bit_31',
-        "command": 'set_bit',
-        "args": [0x7066, 3]
-    },
-    {
-        "identifier": 'EVENT_2496___set_bit_32',
-        "command": 'set_bit',
-        "args": [0x707a, 3]
     },
     {
         "identifier": 'EVENT_2496___set_bit_38',
@@ -698,273 +613,8 @@ script = [
         "args": [AreaObjects.MARIO]
     },
     {
-        "identifier": 'EVENT_2496_____join_party_17',
-        "command": 'join_party',
-        "args": [AreaObjects.MARIO]
-    },
-    {
-        "identifier": 'EVENT_2496_____leave_party_22',
-        "command": 'leave_party',
-        "args": [AreaObjects.DUMMY_0X05]
-    },
-    {
-        "identifier": 'EVENT_2496_____enter_area_178',
-        "command": 'enter_area',
-        "args": [Rooms._189_MARIOS_PIPEHOUSE, RadialDirections.SOUTHEAST, 3, 13, 0, []]
-    },
-    {
-        "identifier": 'EVENT_2496_____palette_set_179',
-        "command": 'palette_set',
-        "args": [33, 7, [0]]
-    },
-    {
-        "identifier": 'EVENT_2496_____action_queue_async_181',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_181_SUBSCRIPT_floating_off_0',
-                "command": 'floating_off'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_181_SUBSCRIPT_transfer_to_xyzf_1',
-                "command": 'transfer_to_xyzf',
-                "args": [3, 9, 3, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_181_SUBSCRIPT_shift_southwest_pixels_2',
-                "command": 'shift_southwest_pixels',
-                "args": [6]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_181_SUBSCRIPT_shift_z_up_pixels_3',
-                "command": 'shift_z_up_pixels',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_181_SUBSCRIPT_face_southeast_4',
-                "command": 'face_southeast'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_181_SUBSCRIPT_set_sprite_sequence_5',
-                "command": 'set_sprite_sequence',
-                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_181_SUBSCRIPT_shadow_off_6',
-                "command": 'shadow_off'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2496_____set_action_script_sync_183',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.MARIO, 95]
-    },
-    {
-        "identifier": 'EVENT_2496_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1392_action_queue_sync_0_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_1392_action_queue_sync_0_SUBSCRIPT_shift_southwest_pixels_1',
-                "command": 'shift_southwest_pixels',
-                "args": [2]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2496_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_1392_action_queue_async_1_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_1392_action_queue_async_1_SUBSCRIPT_shift_north_pixels_1',
-                "command": 'shift_north_pixels',
-                "args": [4]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2496_____fade_in_from_black_async_186',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2496_____play_music_default_volume_242',
-        "command": 'play_music_default_volume',
-        "args": [Music._14_MARIOS_PAD]
-    },
-    {
-        "identifier": 'EVENT_2496_____pause_243',
-        "command": 'pause',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_2496_____set_7000_to_tapped_button_244',
-        "command": 'set_7000_to_tapped_button'
-    },
-    {
-        "identifier": 'EVENT_2496_____pause_245',
-        "command": 'pause',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_2496_____mem_7000_and_const_246',
-        "command": 'mem_7000_and_const',
-        "args": [0x0080]
-    },
-    {
-        "identifier": 'EVENT_2496_____jmp_if_7000_equals_short_247',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [128, 'EVENT_2496_____pause_action_script_249']
-    },
-    {
-        "identifier": 'EVENT_2496_____jmp_248',
-        "command": 'jmp',
-        "args": ['EVENT_2496_____set_7000_to_tapped_button_244']
-    },
-    {
-        "identifier": 'EVENT_2496_____pause_action_script_249',
-        "command": 'pause_action_script',
-        "args": [AreaObjects.MARIO]
-    },
-    {
-        "identifier": 'EVENT_2496_____action_queue_async_250',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_reset_properties_0',
-                "command": 'reset_properties'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_fixed_f_coord_off_1',
-                "command": 'fixed_f_coord_off'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_sequence_playback_on_2',
-                "command": 'sequence_playback_on'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_face_southeast_3',
-                "command": 'face_southeast'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_shadow_on_4',
-                "command": 'shadow_on'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_set_animation_speed_5',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_jump_to_height_6',
-                "command": 'jump_to_height',
-                "args": [69]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_floating_on_7',
-                "command": 'floating_on'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_shift_southeast_steps_8',
-                "command": 'shift_southeast_steps',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_pause_9',
-                "command": 'pause',
-                "args": [35]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_play_sound_10',
-                "command": 'play_sound',
-                "args": [Sounds._056_SHAKE_HEAD, 6]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_set_animation_speed_11',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_pause_12',
-                "command": 'pause',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_set_sprite_sequence_13',
-                "command": 'set_sprite_sequence',
-                "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_pause_14',
-                "command": 'pause',
-                "args": [30]
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_stop_sound_15',
-                "command": 'stop_sound'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_reset_properties_16',
-                "command": 'reset_properties'
-            },
-            {
-                "identifier": 'EVENT_2496_____action_queue_async_250_SUBSCRIPT_set_animation_speed_17',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2496_____pause_251',
-        "command": 'pause',
-        "args": [30]
-    },
-    {
-        "identifier": 'EVENT_2496_____remove_from_level_252',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._396_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_2F]
-    },
-    {
-        "identifier": 'EVENT_2496______remove_from_level_173',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE]
-    },
-    {
-        "identifier": 'EVENT_2496______apply_tile_mod_203',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 0, [_0x6AFlags.USE_ALTERNATE]]
-    },
-    {
-        "identifier": 'EVENT_2496______apply_solidity_mod_204',
-        "command": 'apply_solidity_mod',
-        "args": [Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
-    },
-    {
-        "identifier": 'EVENT_2496_______apply_tile_mod_29',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._084_ROSE_TOWN_OUTSIDE, 0, [_0x6AFlags.USE_ALTERNATE]]
-    },
-    {
-        "identifier": 'EVENT_2496_______apply_solidity_mod_30',
-        "command": 'apply_solidity_mod',
-        "args": [Rooms._084_ROSE_TOWN_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
-    },
-    {
-        "identifier": 'EVENT_2496___set_bit_17', # gating
+        "identifier": 'EVENT_2496___set_bit_17', # party assemble & gating
         "command": 'jmp_to_event',
-        "args": [2497]
+        "args": [192]
     },
 ]

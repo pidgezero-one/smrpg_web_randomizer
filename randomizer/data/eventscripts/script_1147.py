@@ -916,8 +916,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1147_start_battle_39',
-        "command": 'start_battle',
-        "args": [0x00b4, 37]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_1147_jmp_if_bit_clear_40',
@@ -984,8 +984,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1147_jmp_to_subroutine_49',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_1163_action_queue_sync_0']
+        "command": 'run_event_as_subroutine',
+        "args": [1163]
     },
     {
         "identifier": 'EVENT_1147_pause_script_until_effect_done_61',
@@ -1005,14 +1005,9 @@ script = [
         "command": 'restore_all_fp'
     },
     {
-        "identifier": 'EVENT_1147_set_short_65',
-        "command": 'set_short',
-        "args": [0x700a, 0x00d6]
-    },
-    {
         "identifier": 'EVENT_1147_jmp_to_event_66',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_1147_ret_67',

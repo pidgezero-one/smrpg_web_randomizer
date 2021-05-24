@@ -4,4 +4,55 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_192_____put_inventory_23',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_192_____put_inventory_24',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_192_____put_inventory_25',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+    {
+        "identifier": 'EVENT_192_____put_inventory_26',
+        "command": 'put_inventory',
+        "args": [items.Mushroom]
+    },
+
+    # skip bowsers keep
+    {
+        "identifier": 'EVENT_192_set_map_connector',
+        "command": 'set_bit',
+        "args": [0x707A, 3]
+    },
+
+    # populate starting party
+    {
+        "identifier": 'EVENT_192_____leave_party_22_',
+        "command": 'run_event_as_subroutine',
+        "args": [187]
+    },
+    {
+        "identifier": 'EVENT_192_____leave_party_22',
+        "command": 'leave_party',
+        "args": [AreaObjects.DUMMY_0X05]
+    },
+
+
+
+    # TEST
+
+    # finish loading game
+    {
+        "identifier": 'EVENT_192___set_bit_17', 
+        "command": 'jmp_to_event',
+        "args": [2497]
+    },
+]

@@ -6,8 +6,7 @@ from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPacket
 script = [
     {
         "identifier": 'ACTION_173_db_0',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_173_shadow_off_1',

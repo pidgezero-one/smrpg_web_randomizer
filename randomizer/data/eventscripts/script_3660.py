@@ -11,6 +11,11 @@ script = [
         "args": [0x705f, 4]
     },
     {
+        "identifier": 'EVENT_3660_open_hot_springs',
+        "command": 'set_bit',
+        "args": [0x7090, 5]
+    },
+    {
         "identifier": 'EVENT_3660_apply_solidity_mod_2',
         "command": 'apply_solidity_mod',
         "args": [Rooms._438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, 0, [_0x6BFlags.PERMANENT]]
@@ -189,23 +194,6 @@ script = [
         "identifier": 'EVENT_3660_summon_to_level_37',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_4, Rooms._410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE]
-    },
-    {
-        "identifier": 'EVENT_3660_remove_from_level_38',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._414_NIMBUS_CASTLE_AREA_08_FROM_AREA_07_GET_ROOM_KEY_1_HERE]
-    },
-    {
-        "identifier": 'EVENT_3660_stop_sound_39',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3660_stop_sound_40',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3660_stop_sound_41',
-        "command": 'stop_sound'
     },
     {
         "identifier": 'EVENT_3660_remove_from_level_42',

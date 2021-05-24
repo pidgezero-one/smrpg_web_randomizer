@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1369_start_battle_2',
-        "command": 'start_battle',
-        "args": [0x00a1, 12]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_1369_jmp_if_bit_clear_3',
@@ -417,7 +417,7 @@ script = [
     {
         "identifier": 'EVENT_1369_jmp_to_event_19',
         "command": 'jmp_to_event',
-        "args": [167]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_1369_ret_45',

@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3145_jmp_if_var_equals_byte_0',
-        "command": 'jmp_if_var_equals_byte',
-        "args": [0x70a8, 20, 'EVENT_3145_jmp_to_event_3']
-    },
-    {
         "identifier": 'EVENT_3145_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
         "args": [0x7042, 2, 'EVENT_3145_set_4']
@@ -18,42 +13,17 @@ script = [
     {
         "identifier": 'EVENT_3145_jmp_to_event_2',
         "command": 'jmp_to_event',
-        "args": [32]
-    },
-    {
-        "identifier": 'EVENT_3145_jmp_to_event_3',
-        "command": 'jmp_to_event',
-        "args": [32]
+        "args": [246]
     },
     {
         "identifier": 'EVENT_3145_set_4',
-        "command": 'set',
-        "args": [0x70a7, 166]
-    },
-    {
-        "identifier": 'EVENT_3145_run_event_as_subroutine_5',
-        "command": 'run_event_as_subroutine',
-        "args": [33]
-    },
-    {
-        "identifier": 'EVENT_3145_set_6',
-        "command": 'set',
-        "args": [0x7000, 1586]
-    },
-    {
-        "identifier": 'EVENT_3145_set_7',
-        "command": 'set',
-        "args": [0x70a7, 166]
-    },
-    {
-        "identifier": 'EVENT_3145_run_event_as_subroutine_8',
-        "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "command": 'set_bit',
+        "args": [0x7055, 4]
     },
     {
         "identifier": 'EVENT_3145_set_bit_9',
-        "command": 'set_bit',
-        "args": [0x7055, 4]
+        "command": 'jmp_to_event',
+        "args": [245]
     },
     {
         "identifier": 'EVENT_3145_ret_10',

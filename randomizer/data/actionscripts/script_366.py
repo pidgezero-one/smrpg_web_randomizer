@@ -55,8 +55,7 @@ script = [
     },
     {
         "identifier": 'ACTION_366_db_10',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_366_jmp_11',

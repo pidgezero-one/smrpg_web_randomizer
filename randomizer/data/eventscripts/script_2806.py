@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2806_set_action_script_sync_2',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 690]
-    },
-    {
         "identifier": 'EVENT_2806_jmp_if_bit_clear_3',
         "command": 'jmp_if_bit_clear',
         "args": [0x7047, 0, 'EVENT_2806_fade_in_from_black_async_14']

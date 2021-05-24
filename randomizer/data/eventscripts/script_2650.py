@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2650_mem_compare_0',
         "command": 'mem_compare_val',
-        "args": [2]
+        "args": [100]
     },
     {
         "identifier": 'EVENT_2650_ret',

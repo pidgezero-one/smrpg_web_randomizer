@@ -16,19 +16,9 @@ script = [
         "args": [0x7059, 5]
     },
     {
-        "identifier": 'EVENT_2643_set_2',
-        "command": 'set',
-        "args": [0x70a7, 131]
-    },
-    {
-        "identifier": 'EVENT_2643_set_3',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_2643_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2643_ret_5',

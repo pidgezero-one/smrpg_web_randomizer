@@ -6,84 +6,19 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1119_jmp_if_bit_set_0',
+        "identifier": 'EVENT_1119_jmp_if_shed_key_unused',
         "command": 'jmp_if_bit_set',
-        "args": [0x7086, 1, 'EVENT_1119_jmp_if_bit_set_18']
+        "args": [0x7086, 6, 'EVENT_1119_jmp_if_bit_set_18']
     },
     {
-        "identifier": 'EVENT_1119_remove_from_level_1',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
+        "identifier": 'EVENT_1119_remove_from_current_level_6',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_6]
     },
     {
-        "identifier": 'EVENT_1119_remove_from_level_2',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_level_3',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_level_4',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_level_5',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_level_6',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_level_7',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_level_8',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_level_9',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_level_10',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_level_11',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_current_level_12',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_current_level_13',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_current_level_14',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2]
-    },
-    {
-        "identifier": 'EVENT_1119_remove_from_current_level_15',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
+        "identifier": 'EVENT_1119_remove_from_level_6_',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_6, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     },
     {
         "identifier": 'EVENT_1119_jmp_if_bit_set_18',
@@ -156,8 +91,133 @@ script = [
     },
     {
         "identifier": 'EVENT_1119_jmp_if_bit_set_33',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7057, 1, 'EVENT_1119_fade_in_from_black_sync_31']
+    },
+    {
+        "identifier": 'EVENT_1119_jmp_if_bit_set_33_',
         "command": 'jmp_if_bit_set',
         "args": [0x7086, 1, 'EVENT_1119_fade_in_from_black_sync_31']
+    },
+    {
+        "identifier": 'EVENT_1119_action_queue_sync_2',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_2_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [13, 56, 2, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_2_SUBSCRIPT_shift_southwest_steps_1',
+                "command": 'shift_southwest_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_2_SUBSCRIPT_shift_southeast_steps_2',
+                "command": 'shift_southeast_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_2_SUBSCRIPT_face_southwest_3',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_2_SUBSCRIPT_visibility_on_4',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1119_action_queue_sync_3',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_3_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [13, 57, 2, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_3_SUBSCRIPT_shift_southwest_steps_1',
+                "command": 'shift_southwest_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_3_SUBSCRIPT_shift_southeast_steps_2',
+                "command": 'shift_southeast_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_3_SUBSCRIPT_face_southwest_3',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_3_SUBSCRIPT_visibility_on_4',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1119_action_queue_sync_4',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_4_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [14, 59, 2, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_4_SUBSCRIPT_shift_southwest_steps_1',
+                "command": 'shift_southwest_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_4_SUBSCRIPT_shift_southeast_steps_2',
+                "command": 'shift_southeast_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_4_SUBSCRIPT_face_southwest_3',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_4_SUBSCRIPT_visibility_on_4',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1119_action_queue_sync_5',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_5_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [15, 60, 2, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_5_SUBSCRIPT_shift_southwest_steps_1',
+                "command": 'shift_southwest_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_5_SUBSCRIPT_shift_southeast_steps_2',
+                "command": 'shift_southeast_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_5_SUBSCRIPT_face_southwest_3',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_sync_5_SUBSCRIPT_visibility_on_4',
+                "command": 'visibility_on'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_34',
@@ -318,9 +378,20 @@ script = [
         "command": 'unfreeze_camera'
     },
     {
-        "identifier": 'EVENT_1119__pause_0',
+        "identifier": 'EVENT_1119_action_queue_async_21',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1119_action_queue_async_21_SUBSCRIPT_jump_to_height_0',
+                "command": 'reset_properties'
+            },
+        ]
+    },
+    {
+        "identifier": 'EVENT_1119__pause_1',
         "command": 'pause',
-        "args": [1]
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1119__action_queue_async_1',
@@ -331,6 +402,11 @@ script = [
                 "identifier": 'EVENT_1119__action_queue_async_1_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_1119_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_2',
+                "command": 'set_sprite_sequence',
+                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_1119__action_queue_async_1_SUBSCRIPT_pause_1',
@@ -351,7 +427,7 @@ script = [
     {
         "identifier": 'EVENT_1119__pause_2',
         "command": 'pause',
-        "args": [1]
+        "args": [30]
     },
     {
         "identifier": 'EVENT_1119__play_sound_3',
@@ -378,11 +454,6 @@ script = [
                 "command": 'visibility_off'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_1119__pause_5',
-        "command": 'pause',
-        "args": [1]
     },
     {
         "identifier": 'EVENT_1119__action_queue_sync_6',
@@ -492,11 +563,6 @@ script = [
         "identifier": 'EVENT_1119__remove_from_level_14',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_4, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
-    },
-    {
-        "identifier": 'EVENT_1119__remove_from_level_15',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._208_SEASIDE_TOWN_DURING_YARIDOVICH_OUTSIDE]
     },
     {
         "identifier": 'EVENT_1119__remove_from_level_16',

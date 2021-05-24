@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_2539_action_queue_sync_1',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
+        "args": [AreaObjects.MEM_70A8],
         "subscript": [
             {
                 "identifier": 'EVENT_2539_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_0',

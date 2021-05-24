@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_3499_open_forest',
+        "command": 'run_event_as_subroutine',
+        "args": [200]
+    },
+    {
         "identifier": 'EVENT_3499_action_queue_async_0',
         "command": 'action_queue_async',
         "args": [AreaObjects.MARIO],

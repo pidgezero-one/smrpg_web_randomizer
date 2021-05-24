@@ -8,18 +8,6 @@ room = {
   "entrance_event": 2601,
   "event_tiles": [
     {
-      "event": 2612,
-      "x": 14,
-      "y": 99,
-      "z": 0,
-      "f": Edge.SOUTHEAST,
-      "length": 3,
-      "height": 7,
-      "nw_se_edge_active": True,
-      "ne_sw_edge_active": False,
-      "byte_8_bit_4": False,
-    },
-    {
       "event": 2603,
       "x": 10,
       "y": 90,
@@ -32,7 +20,30 @@ room = {
       "byte_8_bit_4": False,
     }
   ],
-  "exit_fields": [],
+  "exit_fields": [
+    {
+      "x": 14,
+      "y": 99,
+      "z": 0,
+      "f": Edge.SOUTHEAST,
+      "length": 3,
+      "height": 7,
+      "nw_se_edge_active": True,
+      "ne_sw_edge_active": False,
+      "destination_type": ExitType.ROOM,
+      "byte_2_bit_2": False,
+      "destination": Rooms._472_FACTORY_GROUNDS_AREA_03,
+      "show_message": False,
+      "destination_props": {
+        "x": 4,
+        "y": 96,
+        "z": 5,
+        "z_half": False,
+        "f": RadialDirection.SOUTHEAST,
+        "x_bit_7": False
+      }
+    }
+  ],
   "objects": [
     {
       "id": 0,

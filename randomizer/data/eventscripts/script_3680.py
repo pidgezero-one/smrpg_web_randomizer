@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3680_start_battle_1',
-        "command": 'start_battle',
-        "args": [0x00af, 23]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_3680_set_bit_2',
@@ -43,19 +43,33 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_3680_set_short_8',
-        "command": 'set_short',
-        "args": [0x700a, 0x00dc]
-    },
-    {
         "identifier": 'EVENT_3680_run_event_as_subroutine_9',
         "command": 'run_event_as_subroutine',
-        "args": [720]
+        "args": [168]
     },
     {
-        "identifier": 'EVENT_3680_jmp_to_event_10',
-        "command": 'jmp_to_event',
-        "args": [560]
+        "identifier": 'EVENT_3680_remove_from_current_level_153',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_0]
+    },
+    {
+        "identifier": 'EVENT_3680_remove_from_level_154',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
+    },
+    {
+        "identifier": 'EVENT_3680_remove_from_level_155',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, Rooms._107_NIMBUS_CASTLE_AREA_09_STATUE_ROOM_AFTER_VALENTINA]
+    },
+    {
+        "identifier": 'EVENT_3680_run_event_as_subroutine_159',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_3680_ret_160',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3680_run_dialog_35',

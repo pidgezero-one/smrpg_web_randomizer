@@ -101,8 +101,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2627_start_battle_27',
-        "command": 'start_battle',
-        "args": [0x0094, 48]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2627_jmp_if_bit_clear_28',
@@ -135,6 +135,11 @@ script = [
         "identifier": 'EVENT_2627_remove_from_current_level_34',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_10]
+    },
+    {
+        "identifier": 'EVENT_2627_star_piece',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_2627_fade_in_from_black_async_35',

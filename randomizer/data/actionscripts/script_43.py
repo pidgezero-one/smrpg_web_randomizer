@@ -26,8 +26,7 @@ script = [
     },
     {
         "identifier": 'ACTION_43_db_4',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_43_set_priority_5',
@@ -168,8 +167,7 @@ script = [
     },
     {
         "identifier": 'ACTION_43_db_34',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_43_visibility_on_35',

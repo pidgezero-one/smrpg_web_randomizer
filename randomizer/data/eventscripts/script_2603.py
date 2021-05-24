@@ -150,8 +150,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2603_start_battle_15',
-        "command": 'start_battle',
-        "args": [0x0095, 48]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2603_jmp_if_bit_clear_16',
@@ -256,11 +256,6 @@ script = [
         "args": [AreaObjects.NPC_12, Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
     },
     {
-        "identifier": 'EVENT_2603_summon_to_level_37',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_14, Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
-    },
-    {
         "identifier": 'EVENT_2603_action_queue_async_38',
         "command": 'action_queue_async',
         "args": [AreaObjects.MARIO],
@@ -290,6 +285,26 @@ script = [
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_2603_star_piece',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
+    },
+    {
+        "identifier": 'EVENT_2603_star_piece_check',
+        "command": 'run_event_as_subroutine',
+        "args": [1969]
+    },
+    {
+        "identifier": 'EVENT_2603_jmp_if_comparison_result_is_lesser_19',
+        "command": 'jmp_if_comparison_result_is_lesser',
+        "args": ['EVENT_2603_fade_in_from_black_async_39']
+    },
+    {
+        "identifier": 'EVENT_2603_summon_to_level_37',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_14, Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
     },
     {
         "identifier": 'EVENT_2603_fade_in_from_black_async_39',

@@ -5,7 +5,7 @@ from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, 
 room = {
   "partition": 74,
   "music": Music._26_FOREST_MAZE,
-  "entrance_event": 2567,
+  "entrance_event": 15,
   "event_tiles": [],
   "exit_fields": [
     {
@@ -125,11 +125,11 @@ room = {
       "type": ObjectType.CHEST,
       "initiator": Initiator.HIT_FROM_BELOW,
       "model": 503,
-      "event_script": 3153,
+      "event_script": 172,
       "action_script": 14,
       "speed": 0,
-      "star_offset": 12,
-      "item_offset": 6,
+      "star_offset": 108,
+      "item_offset": 0,
       "visible": True,
       "x": 3,
       "y": 21,

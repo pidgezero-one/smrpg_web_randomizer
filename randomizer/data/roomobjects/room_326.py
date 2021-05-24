@@ -371,7 +371,7 @@ room = {
       "type": ObjectType.OBJECT,
       "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
       "model": 70,
-      "event_script": 375,
+      "event_script": 1930,
       "action_script": 113,
       "speed": 0,
       "npc_id_offset": 0,

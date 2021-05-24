@@ -14,8 +14,8 @@ script = [
     # kggg fight
     {
         "identifier": 'EVENT_1926_start_battle_46',
-        "command": 'start_battle',
-        "args": [0x00b1, 17]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_1926_jmp_if_bit_clear_47',
@@ -70,9 +70,14 @@ script = [
         "args": [0x708b, 5]
     },
     {
+        "identifier": 'EVENT_1926_run_event_as_subroutine_57_',
+        "command": 'run_event_as_subroutine',
+        "args": [205]
+    },
+    {
         "identifier": 'EVENT_1926_run_event_as_subroutine_57',
         "command": 'run_event_as_subroutine',
-        "args": [167]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_1926_ret_61',

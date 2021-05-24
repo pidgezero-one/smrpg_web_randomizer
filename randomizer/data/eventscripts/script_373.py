@@ -169,8 +169,8 @@ script = [
     },
     {
         "identifier": 'EVENT_373_start_battle_99',
-        "command": 'start_battle',
-        "args": [0x00b3, 15]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_373_run_event_as_subroutine_100',
@@ -263,6 +263,11 @@ script = [
         "identifier": 'EVENT_373_set_action_script_sync_234',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.MARIO, 395]
+    },
+    {
+        "identifier": 'EVENT_373_star',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_373_jmp_to_event_235',

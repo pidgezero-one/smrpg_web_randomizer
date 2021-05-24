@@ -11,22 +11,31 @@ script = [
         "args": [0x7022, 0x0008]
     },
     {
-        "identifier": 'EVENT_2081_run_background_event_with_pause_1',
-        "command": 'run_background_event_with_pause',
-        "args": [3075, 0x7022, [12, 13]]
-    },
-    {
-        "identifier": 'EVENT_2081_play_sound_2',
-        "command": 'play_sound',
-        "args": [Sounds._071_MUSHROOM_CURE, 6]
-    },
-    {
-        "identifier": 'EVENT_2081_restore_all_hp_3',
-        "command": 'restore_all_hp'
-    },
-    {
-        "identifier": 'EVENT_2081_restore_all_fp_4',
-        "command": 'restore_all_fp'
+        "identifier": 'EVENT_2081_action_queue_async_2',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2081_action_queue_async_2_SUBSCRIPT_pause_0',
+                "command": 'pause',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_2081_action_queue_async_2_SUBSCRIPT_set_sprite_sequence_1',
+                "command": 'set_sprite_sequence',
+                "args": [12, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_2081_action_queue_async_2_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_2081_action_queue_async_2_SUBSCRIPT_set_sprite_sequence_3',
+                "command": 'set_sprite_sequence',
+                "args": [13, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2081_set_5',
@@ -40,7 +49,7 @@ script = [
     {
         "identifier": 'EVENT_2081_jmp_if_7000_equals_short_7',
         "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2081_ret_21']
+        "args": [0, 'EVENT_2081_run_background_event_with_pause_1']
     },
     {
         "identifier": 'EVENT_2081_set_8',
@@ -54,7 +63,7 @@ script = [
     {
         "identifier": 'EVENT_2081_jmp_if_7000_equals_short_10',
         "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2081_ret_21']
+        "args": [0, 'EVENT_2081_run_background_event_with_pause_1']
     },
     {
         "identifier": 'EVENT_2081_set_11',
@@ -68,27 +77,12 @@ script = [
     {
         "identifier": 'EVENT_2081_jmp_if_7000_equals_short_13',
         "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2081_ret_21']
-    },
-    {
-        "identifier": 'EVENT_2081_set_14',
-        "command": 'set',
-        "args": [0x70a7, 0]
-    },
-    {
-        "identifier": 'EVENT_2081_set_15',
-        "command": 'set',
-        "args": [0x70a7, 89]
-    },
-    {
-        "identifier": 'EVENT_2081_set_16',
-        "command": 'set',
-        "args": [0x7000, 524]
+        "args": [0, 'EVENT_2081_run_background_event_with_pause_1']
     },
     {
         "identifier": 'EVENT_2081_run_event_as_subroutine_17',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2081_remove_one_from_inventory_18',
@@ -107,6 +101,45 @@ script = [
     },
     {
         "identifier": 'EVENT_2081_ret_21',
+        "command": 'jmp',
+        "args": ['EVENT_2081_action_queue_async_2_']
+    },
+    {
+        "identifier": 'EVENT_2081_run_background_event_with_pause_1',
+        "command": 'run_background_event_with_pause',
+        "args": [3075, 0x7022, [12, 13]]
+    },
+    {
+        "identifier": 'EVENT_2081_play_sound_2',
+        "command": 'play_sound',
+        "args": [Sounds._071_MUSHROOM_CURE, 6]
+    },
+    {
+        "identifier": 'EVENT_2081_restore_all_hp_3',
+        "command": 'restore_all_hp'
+    },
+    {
+        "identifier": 'EVENT_2081_restore_all_fp_4',
+        "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_2081_restore_all_fp_4_',
+        "command": 'pause',
+        "args": [60]
+    },
+    {
+        "identifier": 'EVENT_2081_action_queue_async_2_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2081_action_queue_async_2_SUBSCRIPT_pause_0',
+                "command": 'reset_properties'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2081_ret_21_',
         "command": 'ret'
-    }
+    },
 ]

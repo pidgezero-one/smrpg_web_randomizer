@@ -58,7 +58,7 @@ script = [
     },
     {
         "identifier": 'EVENT_3354_run_event_at_return_7',
-        "command": 'run_event_at_return',
+        "command": 'jmp_to_event',
         "args": [3355]
     },
     {

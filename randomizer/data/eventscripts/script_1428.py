@@ -95,19 +95,9 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_1428_set_13',
-        "command": 'set',
-        "args": [0x70a7, 99]
-    },
-    {
-        "identifier": 'EVENT_1428_set_14',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_1428_run_event_as_subroutine_15',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_1428_action_queue_async_16',

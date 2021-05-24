@@ -150,6 +150,26 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2601_star_piece',
+        "command": 'run_event_as_subroutine',
+        "args": [1969]
+    },
+    {
+        "identifier": 'EVENT_2601_jmp_if_comparison_result_is_lesser_19',
+        "command": 'jmp_if_comparison_result_is_lesser',
+        "args": ['EVENT_2601_fade_in_from_black_async_7']
+    },
+    {
+        "identifier": 'EVENT_2601_summon_to_level_37',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_14, Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
+    },
+    {
+        "identifier": 'EVENT_2601_summon_to_level_37_',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_14]
+    },
+    {
         "identifier": 'EVENT_2601_fade_in_from_black_async_7',
         "command": 'fade_in_from_black_async'
     },

@@ -18,7 +18,7 @@ script = [
     {
         "identifier": 'EVENT_596_jmp_if_present_in_current_level_2',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_3, 'EVENT_596_pause_8']
+        "args": [AreaObjects.NPC_2, 'EVENT_596_pause_8']
     },
     {
         "identifier": 'EVENT_596_jmp_3',
@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'EVENT_596_set_action_script_sync_9',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 299]
+        "args": [AreaObjects.NPC_1, 299]
     },
     {
         "identifier": 'EVENT_596_pause_10',
@@ -48,7 +48,7 @@ script = [
     {
         "identifier": 'EVENT_596_jmp_if_present_in_current_level_12',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_4, 'EVENT_596_pause_18']
+        "args": [AreaObjects.NPC_3, 'EVENT_596_pause_18']
     },
     {
         "identifier": 'EVENT_596_jmp_13',
@@ -63,7 +63,7 @@ script = [
     {
         "identifier": 'EVENT_596_set_action_script_sync_19',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 299]
+        "args": [AreaObjects.NPC_2, 299]
     },
     {
         "identifier": 'EVENT_596_pause_20',
@@ -78,7 +78,7 @@ script = [
     {
         "identifier": 'EVENT_596_jmp_if_present_in_current_level_22',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_2, 'EVENT_596_pause_28']
+        "args": [AreaObjects.NPC_1, 'EVENT_596_pause_28']
     },
     {
         "identifier": 'EVENT_596_jmp_23',
@@ -93,7 +93,7 @@ script = [
     {
         "identifier": 'EVENT_596_set_action_script_sync_29',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 299]
+        "args": [AreaObjects.NPC_3, 299]
     },
     {
         "identifier": 'EVENT_596_jmp_30',
@@ -108,7 +108,7 @@ script = [
     {
         "identifier": 'EVENT_596_create_packet_at_object_coords_jmp_if_null_32',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._033_BOMB_EXPLOSION, AreaObjects.NPC_3, 'EVENT_596_pause_31']
+        "args": [NPCPackets._033_BOMB_EXPLOSION, AreaObjects.NPC_2, 'EVENT_596_pause_31']
     },
     {
         "identifier": 'EVENT_596_jmp_33',
@@ -123,7 +123,7 @@ script = [
     {
         "identifier": 'EVENT_596_create_packet_at_object_coords_jmp_if_null_35',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._033_BOMB_EXPLOSION, AreaObjects.NPC_4, 'EVENT_596_pause_34']
+        "args": [NPCPackets._033_BOMB_EXPLOSION, AreaObjects.NPC_3, 'EVENT_596_pause_34']
     },
     {
         "identifier": 'EVENT_596_jmp_36',
@@ -138,7 +138,7 @@ script = [
     {
         "identifier": 'EVENT_596_create_packet_at_object_coords_jmp_if_null_38',
         "command": 'create_packet_at_object_coords_jmp_if_null',
-        "args": [NPCPackets._033_BOMB_EXPLOSION, AreaObjects.NPC_2, 'EVENT_596_pause_37']
+        "args": [NPCPackets._033_BOMB_EXPLOSION, AreaObjects.NPC_1, 'EVENT_596_pause_37']
     },
     {
         "identifier": 'EVENT_596_jmp_39',

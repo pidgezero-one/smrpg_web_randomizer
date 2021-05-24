@@ -48,7 +48,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1775_load_600f_13']
+        "args": [0x7043, 1, 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_13']
     },
     {
         "identifier": 'EVENT_1775_set_bit_9',
@@ -123,8 +123,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1775_load_600f_13',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_13',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1775_ret_14',
@@ -133,7 +133,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_15',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 2, 'EVENT_1775_load_600f_19']
+        "args": [0x7043, 2, 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_19']
     },
     {
         "identifier": 'EVENT_1775_set_bit_16',
@@ -201,8 +201,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1775_load_600f_19',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_19',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1775_ret_20',
@@ -211,7 +211,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_21',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 3, 'EVENT_1775_load_600f_25']
+        "args": [0x7043, 3, 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_25']
     },
     {
         "identifier": 'EVENT_1775_set_bit_22',
@@ -281,8 +281,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1775_load_600f_25',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_25',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1775_ret_26',
@@ -291,7 +291,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_27',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 4, 'EVENT_1775_load_600f_31']
+        "args": [0x7043, 4, 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_31']
     },
     {
         "identifier": 'EVENT_1775_set_bit_28',
@@ -351,8 +351,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1775_load_600f_31',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_31',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1775_ret_32',
@@ -361,7 +361,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_33',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 5, 'EVENT_1775_load_600f_37']
+        "args": [0x7043, 5, 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_37']
     },
     {
         "identifier": 'EVENT_1775_set_bit_34',
@@ -435,8 +435,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1775_load_600f_37',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_37',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1775_ret_38',
@@ -445,7 +445,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_39',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 6, 'EVENT_1775_load_600f_43']
+        "args": [0x7043, 6, 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_43']
     },
     {
         "identifier": 'EVENT_1775_set_bit_40',
@@ -513,8 +513,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1775_load_600f_43',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_43',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1775_ret_44',
@@ -523,7 +523,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_45',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 7, 'EVENT_1775_load_600f_49']
+        "args": [0x7043, 7, 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_49']
     },
     {
         "identifier": 'EVENT_1775_set_bit_46',
@@ -601,8 +601,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1775_load_600f_49',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_49',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1775_ret_50',
@@ -611,7 +611,7 @@ script = [
     {
         "identifier": 'EVENT_1775_jmp_if_bit_set_51',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 0, 'EVENT_1775_load_600f_55']
+        "args": [0x7044, 0, 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_55']
     },
     {
         "identifier": 'EVENT_1775_set_bit_52',
@@ -681,8 +681,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_1775_load_600f_55',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1775_reactivate_trigger_if_mario_on_top_of_object_55',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1775_ret_56',

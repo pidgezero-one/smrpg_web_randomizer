@@ -5,84 +5,75 @@ from randomizer.data.eventtables import ControllerDirections, RadialDirections, 
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
 script = [
-    {
-        "identifier": 'EVENT_290_jmp_if_bit_set_0',
+        {
+        "identifier": 'EVENT_290_jmp_if_bit_set_355',
         "command": 'jmp_if_bit_set',
-        "args": [0x7089, 6, 'EVENT_290_set_6']
+        "args": [0x7082, 3, 'EVENT_290_jmp_if_bit_set_355_']
     },
     {
-        "identifier": 'EVENT_290_set_bit_1',
+        "identifier": 'EVENT_290_set_bit_356',
         "command": 'set_bit',
-        "args": [0x7089, 6]
+        "args": [0x7082, 3]
     },
     {
-        "identifier": 'EVENT_290_set_2',
-        "command": 'set',
-        "args": [0x70a7, 102]
-    },
-    {
-        "identifier": 'EVENT_290_set_3',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_290_run_event_as_subroutine_4',
+        "identifier": 'EVENT_290_run_event_as_subroutine_359',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
-        "identifier": 'EVENT_290_ret_5',
+        "identifier": 'EVENT_290_ret_360',
         "command": 'ret'
     },
+
+
+
     {
-        "identifier": 'EVENT_290_set_6',
+        "identifier": 'EVENT_290_jmp_if_bit_set_355_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7088, 7, 'EVENT_290_set_361']
+    },
+    {
+        "identifier": 'EVENT_290_jmp_if_bit_set_355__',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7082, 0, 'EVENT_290_open_shop_364']
+    },
+
+
+    {
+        "identifier": 'EVENT_290_set_361',
         "command": 'set',
         "args": [0x70a7, 128]
     },
     {
-        "identifier": 'EVENT_290_store_7000_item_quantity_to_70A7_7',
+        "identifier": 'EVENT_290_store_7000_item_quantity_to_70A7_362',
         "command": 'store_7000_item_quantity_to_70A7'
     },
     {
-        "identifier": 'EVENT_290_jmp_if_7000_equals_short_8',
+        "identifier": 'EVENT_290_jmp_if_7000_equals_short_363',
         "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_290_set_12']
+        "args": [1, 'EVENT_290_run_event_as_subroutine_359_']
     },
     {
-        "identifier": 'EVENT_290_open_shop_9',
+        "identifier": 'EVENT_290_open_shop_364',
         "command": 'open_shop',
         "args": [Shops._00_MUSHROOM_KINGDOM]
     },
     {
-        "identifier": 'EVENT_290_fade_in_from_black_async_10',
+        "identifier": 'EVENT_290_fade_in_from_black_async_365',
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_290_ret_11',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_290_set_12',
-        "command": 'set',
-        "args": [0x70a7, 130]
-    },
-    {
-        "identifier": 'EVENT_290_set_13',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_290_run_event_as_subroutine_14',
+        "identifier": 'EVENT_290_run_event_as_subroutine_359_',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [179]
     },
     {
-        "identifier": 'EVENT_290_remove_one_from_inventory_15',
+        "identifier": 'EVENT_290_remove_one_from_inventory_371',
         "command": 'remove_one_from_inventory',
         "args": [items.RareFrogCoin]
     },
     {
-        "identifier": 'EVENT_290_ret_16',
+        "identifier": 'EVENT_290_ret_372',
         "command": 'ret'
-    }
+    },
 ]

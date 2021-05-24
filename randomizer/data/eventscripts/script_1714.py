@@ -53,13 +53,57 @@ script = [
             {
                 "identifier": 'EVENT_1714_action_queue_async_5_SUBSCRIPT_pause_2',
                 "command": 'pause',
-                "args": [1]
+                "args": [135]
             },
             {
                 "identifier": 'EVENT_1714_action_queue_async_5_SUBSCRIPT_reset_properties_3',
                 "command": 'reset_properties'
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_1714_action_queue_async_10',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_5],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1714_action_queue_async_10_SUBSCRIPT_play_sound_0',
+                "command": 'play_sound',
+                "args": [Sounds._033_JUMPING_BOUNCING_FISH, 4]
+            },
+            {
+                "identifier": 'EVENT_1714_action_queue_async_10_SUBSCRIPT_jump_to_height_1',
+                "command": 'jump_to_height',
+                "args": [96]
+            },
+            {
+                "identifier": 'EVENT_1714_action_queue_async_10_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_1714_action_queue_async_10_SUBSCRIPT_face_southwest_3',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'EVENT_1714_action_queue_async_10_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_1714_action_queue_async_10_SUBSCRIPT_face_northwest_5',
+                "command": 'face_northwest'
+            },
+            {
+                "identifier": 'EVENT_1714_action_queue_async_10_SUBSCRIPT_sequence_looping_on_6',
+                "command": 'sequence_looping_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1714__pause_4',
+        "command": 'pause',
+        "args": [10]
     },
     {
         "identifier": 'EVENT_1714_action_queue_sync_13',

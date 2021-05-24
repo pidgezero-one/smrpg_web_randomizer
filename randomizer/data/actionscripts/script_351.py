@@ -99,8 +99,8 @@ script = [
         "args": [0xc8, 0x00]
     },
     {
-        "identifier": 'ACTION_351_run_away_transfer_20',
-        "command": 'run_away_transfer'
+        "identifier": 'ACTION_351_transfer_to_7016_7018_20',
+        "command": 'transfer_to_7016_7018'
     },
     {
         "identifier": 'ACTION_351_set_priority_21',

@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2596_start_battle_33',
-        "command": 'start_battle',
-        "args": [0x00ae, 18]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2596_set_action_script_sync_34',
@@ -41,6 +41,11 @@ script = [
     {
         "identifier": 'EVENT_2596_restore_all_fp_39',
         "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_2596_star',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_2596_set_bit_40',

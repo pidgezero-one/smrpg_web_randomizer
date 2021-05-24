@@ -156,8 +156,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2066_start_battle_11',
-        "command": 'start_battle',
-        "args": [0x00bd, 46]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2066_restore_all_hp_12',
@@ -200,6 +200,11 @@ script = [
     {
         "identifier": 'EVENT_2066_fade_in_from_black_async_17',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_2066_fade_in_from_black_async_17_',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_2066_action_queue_sync_18',

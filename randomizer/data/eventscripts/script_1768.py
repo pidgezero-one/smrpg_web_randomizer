@@ -11,18 +11,140 @@ script = [
         "args": [AreaObjects.NPC_0, Rooms._396_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_2F]
     },
     {
+        "identifier": 'EVENT_1768_start_battle_229',
+        "command": 'run_event_as_subroutine',
+        "args": [354]
+    },
+    {
+        "identifier": 'EVENT_1768_set_bit_230',
+        "command": 'set_bit',
+        "args": [0x707c, 5]
+    },
+    {
+        "identifier": 'EVENT_1768_set_bit_231',
+        "command": 'set_bit',
+        "args": [0x707c, 6]
+    },
+    {
+        "identifier": 'EVENT_1768_set_bit_232',
+        "command": 'set_bit',
+        "args": [0x707c, 7]
+    },
+    {
+        "identifier": 'EVENT_1768_run_event_as_subroutine_233',
+        "command": 'run_event_as_subroutine',
+        "args": [24]
+    },
+    {
+        "identifier": 'EVENT_1768_remove_from_current_level_234',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_1]
+    },
+    {
+        "identifier": 'EVENT_1768_restore_all_hp_235',
+        "command": 'restore_all_hp'
+    },
+    {
+        "identifier": 'EVENT_1768_restore_all_fp_236',
+        "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_1768_fade_in_from_black_async_237',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_1768_play_sound_238',
+        "command": 'play_sound',
+        "args": [Sounds._021_RUMBLING, 6]
+    },
+    {
+        "identifier": 'EVENT_1768_set_short_239',
+        "command": 'set_short',
+        "args": [0x7034, 0x0001]
+    },
+    {
+        "identifier": 'EVENT_1768_set_7010_to_object_xyz_240',
+        "command": 'set_7010_to_object_xyz',
+        "args": [AreaObjects.NPC_0]
+    },
+    {
+        "identifier": 'EVENT_1768_start_loop_n_times_241',
+        "command": 'start_loop_n_times',
+        "args": [2]
+    },
+    {
+        "identifier": 'EVENT_1768_pause_242',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'EVENT_1768_create_packet_at_7010_coords_jmp_if_null_243',
+        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "args": [NPCPackets._032_BLUE_CLOUD, 'EVENT_1768_pause_242']
+    },
+    {
+        "identifier": 'EVENT_1768_pause_244',
+        "command": 'pause',
+        "args": [4]
+    },
+    {
+        "identifier": 'EVENT_1768_add_short_245',
+        "command": 'add_short',
+        "args": [0x7034, 0x0003]
+    },
+    {
+        "identifier": 'EVENT_1768_end_loop_246',
+        "command": 'end_loop'
+    },
+    {
+        "identifier": 'EVENT_1768_action_queue_sync_247',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1768_action_queue_sync_247_SUBSCRIPT_visibility_on_0',
+                "command": 'visibility_on'
+            },
+            {
+                "identifier": 'EVENT_1768_action_queue_sync_247_SUBSCRIPT_set_sprite_sequence_1',
+                "command": 'set_sprite_sequence',
+                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1768_summon_to_level_248',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_1, Rooms._324_MONSTRO_TOWN_OUTSIDE]
+    },
+    {
+        "identifier": 'EVENT_1768_summon_to_level__248',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_4, Rooms._324_MONSTRO_TOWN_OUTSIDE]
+    },
+    {
+        "identifier": 'EVENT_1768_set_bit_250',
+        "command": 'set_bit',
+        "args": [0x708a, 0]
+    },
+    {
         "identifier": 'EVENT_1768_set_bit_1',
         "command": 'set_bit',
         "args": [0x7089, 0]
     },
     {
-        "identifier": 'EVENT_1768_set_short_2',
-        "command": 'set_short',
-        "args": [0x700a, 0x00d7]
+        "identifier": 'EVENT_1768_set_bit_116',
+        "command": 'set_bit',
+        "args": [0x7067, 7]
+    },
+    {
+        "identifier": 'EVENT_1768_set_bit_118',
+        "command": 'set_bit',
+        "args": [0x706f, 6]
     },
     {
         "identifier": 'EVENT_1768_jmp_to_event_3',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [168]
     }
 ]

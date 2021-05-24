@@ -210,6 +210,11 @@ script = [
         "args": [108, "EVENT_3400_play_moleville_music"]
     },
     {
+        "identifier": "EVENT_3400_room_110_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [110, 'EVENT_3400_determine_nimbus_music']
+    },
+    {
         "identifier": "EVENT_3400_room_111_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [111, 'EVENT_3400_play_valentina_music']
@@ -355,6 +360,16 @@ script = [
         "args": [189, 'EVENT_3400_play_marios_pad_music']
     },
     {
+        "identifier": "EVENT_3400_room_190_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [190, 'EVENT_3400_play_occupied_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_191_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [191, 'EVENT_3400_play_mushroom_kingdom_music']
+    },
+    {
         "identifier": "EVENT_3400_room_192_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [192, 'EVENT_3400_play_booster_tower_music']
@@ -390,14 +405,512 @@ script = [
         "args": [202, 'EVENT_3400_play_overworld_1_music']
     },
     {
+        "identifier": "EVENT_3400_room_203_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [203, 'EVENT_3400_play_overworld_1_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_204_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [204, 'EVENT_3400_play_overworld_1_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_205_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [205, 'EVENT_3400_play_overworld_1_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_206_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [206, 'EVENT_3400_play_overworld_2_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_207_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [207, 'EVENT_3400_play_overworld_2_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_223_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [223, 'EVENT_3400_play_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_224_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [224, 'EVENT_3400_play_forest_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_227_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [227, 'EVENT_3400_play_forest_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_228_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [228, 'EVENT_3400_play_forest_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_237_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [237, 'EVENT_3400_play_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_239_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [239, 'EVENT_3400_play_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_242_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [242, 'EVENT_3400_play_forest_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_252_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [252, 'EVENT_3400_play_overworld_2_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_254_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [254, 'EVENT_3400_play_overworld_2_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_255_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [255, 'EVENT_3400_play_monstro_town_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_262_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [262, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_263_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [263, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_266_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [266, 'EVENT_3400_play_bowsers_keep_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_267_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [267, 'EVENT_3400_play_monstro_town_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_268_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [268, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_270_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [270, 'EVENT_3400_play_dungeon_music']
+    },
+    # dont need 271 - it automatically fades in from parent event
+    {
+        "identifier": "EVENT_3400_room_273_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [273, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_275_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [275, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_277_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [277, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_279_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [279, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_280_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [280, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_281_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [281, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_283_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [283, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_285_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [285, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_286_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [286, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_288_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [288, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_301_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [301, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_302_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [302, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_314_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [314, 'EVENT_3400_determine_seaside_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_316_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [316, 'EVENT_3400_play_seaside_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_318_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [318, 'EVENT_3400_play_overworld_1_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_319_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [319, 'EVENT_3400_play_overworld_1_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_322_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [322, 'EVENT_3400_play_bowsers_keep_music']
+    },
+    # dont need 326 - it automatically fades in from parent event
+    {
+        "identifier": "EVENT_3400_room_328_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [328, 'EVENT_3400_play_occupied_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_334_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [334, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_335_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [335, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
         "identifier": "EVENT_3400_room_339_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [339, "EVENT_3400_play_moleville_indoor_music"]
     },
     {
+        "identifier": "EVENT_3400_room_344_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [344, 'EVENT_3400_play_nimbus_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_345_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [345, 'EVENT_3400_play_nimbus_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_346_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [346, 'EVENT_3400_play_nimbus_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_348_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [348, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_349_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [349, "EVENT_3400_play_overworld_2_music"]
+    },
+    # dont need 351 - it automatically fades in from parent event
+    {
+        "identifier": "EVENT_3400_room_352_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [352, 'EVENT_3400_play_volcano_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_355_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [355, 'EVENT_3400_play_volcano_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_358_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [358, 'EVENT_3400_play_volcano_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_361_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [361, 'EVENT_3400_play_volcano_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_366_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [366, 'EVENT_3400_play_volcano_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_367_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [367, 'EVENT_3400_play_volcano_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_372_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [372, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_373_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [373, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_378_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [378, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_379_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [379, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_380_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [380, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_381_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [381, "EVENT_3400_play_overworld_2_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_383_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [383, 'EVENT_3400_play_volcano_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_384_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [384, 'EVENT_3400_play_volcano_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_397_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [397, 'EVENT_3400_play_monstro_town_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_399_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [399, 'EVENT_3400_play_monstro_town_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_401_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [401, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_402_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [402, "EVENT_3400_play_overworld_1_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_403_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [403, "EVENT_3400_play_overworld_1_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_405_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [405, "EVENT_3400_play_overworld_1_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_406_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [406, "EVENT_3400_play_inner_factory_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_407_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [407, "EVENT_3400_play_overworld_1_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_409_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [409, "EVENT_3400_determine_nimbus_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_410_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [410, "EVENT_3400_determine_nimbus_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_413_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [413, "EVENT_3400_play_nimbus_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_414_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [414, "EVENT_3400_determine_nimbus_music"]
+    },
+    {
+        "identifier": "EVENT_3400_room_420_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [420, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_421_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [421, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_422_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [422, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_424_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [424, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_425_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [425, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_426_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [426, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_428_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [428, 'EVENT_3400_play_dungeon_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_434_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [434, 'EVENT_3400_play_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_437_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [437, 'EVENT_3400_play_valentina_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_438_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [438, 'EVENT_3400_play_nimbus_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_443_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [443, 'EVENT_3400_play_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_446_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [446, 'EVENT_3400_play_bowsers_keep_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_451_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [451, 'EVENT_3400_play_bowsers_keep_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_453_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [453, 'EVENT_3400_play_bowsers_keep_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_455_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [455, 'EVENT_3400_play_bowsers_keep_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_457_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [457, 'EVENT_3400_play_bowsers_keep_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_458_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [458, 'EVENT_3400_play_bowsers_keep_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_469_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [469, 'EVENT_3400_play_inner_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_470_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [470, 'EVENT_3400_play_inner_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_471_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [471, 'EVENT_3400_play_inner_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_472_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [472, 'EVENT_3400_play_inner_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_475_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [475, 'EVENT_3400_play_factory_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_483_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [483, 'EVENT_3400_play_occupied_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_491_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [491, 'EVENT_3400_play_mushroom_kingdom_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_492_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [492, 'EVENT_3400_determine_mushroom_kingdom_indoor_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_493_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [493, 'EVENT_3400_determine_mushroom_kingdom_indoor_music']
+    },
+    {
         "identifier": "EVENT_3400_room_498_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [498, 'EVENT_3400_play_nimbus_music']
+    },
+    {
+        "identifier": "EVENT_3400_room_499_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [499, 'EVENT_3400_play_nimbus_music']
     },
     {
         "identifier": "EVENT_3400_room_500_jump",
@@ -429,6 +942,30 @@ script = [
     },
     {
         "identifier": "EVENT_3400_play_mushroom_kingdom_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_determine_mushroom_kingdom_indoor_music',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7081, 7, "EVENT_3400_play_mushroom_kingdom_indoor_music"]
+    },
+    {
+        "identifier": 'EVENT_3400_determine_mushroom_kingdom_indoor_music_2',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7082, 0, "EVENT_3400_play_occupied_indoor_music"]
+    },
+    {
+        "identifier": "EVENT_3400_play_mushroom_kingdom_indoor_music",
+        "command": 'play_music_current_volume',
+        "args": [Music._02_MUSHROOM_KINGDOM]
+    },
+    {
+        "identifier": "EVENT_3400_play_mushroom_kingdom_indoor_music_",
+        "command": 'fade_out_music_to_volume',
+        "args": [1, 96]
+    },
+    {
+        "identifier": "EVENT_3400_play_mushroom_kingdom_indoor)music_ret",
         "command": 'ret'
     },
     {
@@ -667,6 +1204,79 @@ script = [
     },
     {
         "identifier": "EVENT_3400_play_marios_pad_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_seaside_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._05_SEASIDE_TOWN]
+    },
+    {
+        "identifier": "EVENT_3400_play_seaside_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_determine_seaside_indoor_music',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7086, 0, 'EVENT_3400_play_occupied_indoor_music']
+    },
+    {
+        "identifier": 'EVENT_3400_play_seaside_indoor_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._05_SEASIDE_TOWN]
+    },
+    {
+        "identifier": "EVENT_3400_play_seaside_indoor_music_1",
+        "command": "fade_out_music_to_volume",
+        "args": [1, 96]
+    },
+    {
+        "identifier": "EVENT_3400_play_seaside_indoor_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_forest_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._26_FOREST_MAZE]
+    },
+    {
+        "identifier": "EVENT_3400_play_forest_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_factory_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._67_WEAPONS_FACTORY]
+    },
+    {
+        "identifier": "EVENT_3400_play_factory_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_monstro_town_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._51_MONSTRO_TOWN]
+    },
+    {
+        "identifier": "EVENT_3400_play_monstro_town_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_volcano_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._62_BARREL_VOLCANO]
+    },
+    {
+        "identifier": "EVENT_3400_play_volcano_music_ret",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3400_play_inner_factory_music',
+        "command": 'play_music_default_volume',
+        "args": [Music._56_FACTORY]
+    },
+    {
+        "identifier": "EVENT_3400_play_inner_factory_music_ret",
         "command": 'ret'
     },
 ]

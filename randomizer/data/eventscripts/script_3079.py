@@ -43,6 +43,41 @@ script = [
         "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
+        "identifier": 'EVENT_3079_check_if_dodo_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x704F, 4, 'EVENT_3079_ret_8'] 
+    },
+    {
+        "identifier": 'EVENT_3079_clear_dodo_star_piece_bit_',
+        "command": 'clear_bit',
+        "args": [0x704F, 4]
+    },
+    {
+        "identifier": 'EVENT_3079_alt_boss_condition',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7086, 7, 'EVENT_3079_ret_8']
+    },
+    {
+        "identifier": 'EVENT_3079_check_if_dodo_sp_already_got_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7081, 2, 'EVENT_3079_ret_8'] 
+    },
+    {
+        "identifier": 'EVENT_3079_set_dodo_star_piece',
+        "command": 'set_bit',
+        "args": [0x7081, 2]
+    },
+    {
+        "identifier": 'EVENT_3079_set',
+        "command": 'set',
+        "args": [0x7000, 520]
+    },
+    {
+        "identifier": 'EVENT_3079_star',
+        "command": 'jmp_to_event',
+        "args": [167]
+    },
+    {
         "identifier": 'EVENT_3079_ret_8',
         "command": 'ret'
     }

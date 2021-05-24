@@ -31,8 +31,7 @@ script = [
     },
     {
         "identifier": 'ACTION_599_db_5',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_599_set_animation_speed_6',

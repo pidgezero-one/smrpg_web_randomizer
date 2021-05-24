@@ -1409,7 +1409,7 @@ script = [
     {
         "identifier": 'EVENT_1368_give_star_piece',
         "command": 'run_event_as_subroutine',
-        "args": [167]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_1368_summon_to_level_145',

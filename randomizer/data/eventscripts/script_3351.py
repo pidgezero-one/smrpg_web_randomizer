@@ -51,8 +51,8 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_3351_action_queue_sync_8_SUBSCRIPT_run_away_transfer_8A_0',
-                "command": 'run_away_transfer_8A'
+                "identifier": 'EVENT_3351_action_queue_sync_8_SUBSCRIPT_walk_to_7016_7018_0',
+                "command": 'walk_to_7016_7018'
             }
         ]
     },

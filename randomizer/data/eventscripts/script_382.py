@@ -6,6 +6,23 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_382_action_queue_async_0_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_7],
+        "subscript": [
+            {
+                "identifier": 'EVENT_347_action_queue_async_0_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_347_action_queue_async_0_SUBSCRIPT_shift_southwest_pixels_1',
+                "command": 'shift_southwest_pixels',
+                "args": [4]
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_382_action_queue_async_0',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_6],
@@ -372,19 +389,9 @@ script = [
         "command": 'remember_last_object'
     },
     {
-        "identifier": 'EVENT_382_set_41',
-        "command": 'set',
-        "args": [0x70a7, 115]
-    },
-    {
-        "identifier": 'EVENT_382_set_42',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_382_run_event_as_subroutine_43',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [179]
     },
     {
         "identifier": 'EVENT_382_set_bit_44',

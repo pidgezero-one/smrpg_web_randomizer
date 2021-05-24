@@ -6,14 +6,38 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": "EVENT_346_current_lvl",
+        "command": 'set_7000_to_current_level'
+    },
+    {
+        "identifier": "EVENT_346_room_283_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [328, 'EVENT_346_remove_from_current_level_1']
+    },
+    {
         "identifier": 'EVENT_346_remove_from_current_level_0',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_0]
     },
     {
+        "identifier": "EVENT_346_room_283_jump_",
+        "command": 'jmp',
+        "args": ['EVENT_346_remove_from_level_1']
+    },
+    {
+        "identifier": 'EVENT_346_remove_from_current_level_1',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_7]
+    },
+    {
         "identifier": 'EVENT_346_remove_from_level_1',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_0, Rooms._020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM]
+    },
+    {
+        "identifier": 'EVENT_346_remove_from_level_2',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_7, Rooms._328_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_TOADSTOOLS_ROOM]
     },
     {
         "identifier": "EVENT_346_room_7_logic",

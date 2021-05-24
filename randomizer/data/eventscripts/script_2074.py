@@ -11,64 +11,285 @@ script = [
         "args": [Rooms._351_CULEXS_ROOM, RadialDirections.NORTH, 29, 45, 0, []]
     },
     {
-        "identifier": 'EVENT_2074_set_bit_1',
-        "command": 'set_bit',
-        "args": [0x708a, 6]
+        "identifier": 'EVENT_2074_action_queue_sync_1',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.SCREEN_FOCUS],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2074_action_queue_sync_1_SUBSCRIPT_shift_east_pixels_0',
+                "command": 'shift_east_pixels',
+                "args": [12]
+            }
+        ]
     },
     {
-        "identifier": 'EVENT_2074_start_battle_2',
-        "command": 'start_battle',
-        "args": [0x00d8, 47]
+        "identifier": 'EVENT_2074_set_action_script_sync_3',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.LAYER_1, 575]
     },
     {
-        "identifier": 'EVENT_2074_jmp_if_bit_clear_3',
+        "identifier": 'EVENT_2074_fade_in_from_black_async_duration_4',
+        "command": 'fade_in_from_black_async_duration',
+        "args": [70]
+    },
+    {
+        "identifier": 'EVENT_2074_pause_5',
+        "command": 'pause',
+        "args": [60]
+    },
+    {
+        "identifier": 'EVENT_2074_action_queue_async_6',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_shift_south_steps_1',
+                "command": 'shift_south_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_shift_south_steps_3',
+                "command": 'shift_south_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_shift_south_steps_5',
+                "command": 'shift_south_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_pause_6',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_shift_south_steps_7',
+                "command": 'shift_south_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_pause_8',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_shift_south_steps_9',
+                "command": 'shift_south_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_pause_10',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_shift_south_steps_11',
+                "command": 'shift_south_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_6_SUBSCRIPT_pause_12',
+                "command": 'pause',
+                "args": [30]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2074_run_dialog_9',
+        "command": 'run_dialog',
+        "args": [3057, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
+    },
+    {
+        "identifier": 'EVENT_2074_jmp_if_dialog_option_b_11',
+        "command": 'jmp_if_dialog_option_b',
+        "args": ['EVENT_2074_action_queue_async_21']
+    },
+    {
+        "identifier": 'EVENT_2074_start_battle_13',
+        "command": 'run_event_as_subroutine',
+        "args": [354]
+    },
+    {
+        "identifier": 'EVENT_2074_jmp_if_bit_clear_14',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7040, 0, 'EVENT_2074_apply_solidity_mod_5']
+        "args": [0x7040, 0, 'EVENT_2074_fade_in_from_black_async_29']
     },
     {
-        "identifier": 'EVENT_2074_reset_and_choose_game_4',
+        "identifier": 'EVENT_2074_reset_and_choose_game_15',
         "command": 'reset_and_choose_game'
     },
     {
-        "identifier": 'EVENT_2074_apply_solidity_mod_5',
-        "command": 'apply_solidity_mod',
-        "args": [Rooms._324_MONSTRO_TOWN_OUTSIDE, 0, []]
+        "identifier": 'EVENT_2074_action_queue_async_21',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_shift_north_steps_1',
+                "command": 'shift_north_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_shift_north_steps_3',
+                "command": 'shift_north_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_shift_north_steps_5',
+                "command": 'shift_north_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_pause_6',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_shift_north_steps_7',
+                "command": 'shift_north_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_pause_8',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_shift_north_steps_9',
+                "command": 'shift_north_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_pause_10',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_shift_north_steps_11',
+                "command": 'shift_north_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2074_action_queue_async_21_SUBSCRIPT_pause_12',
+                "command": 'pause',
+                "args": [30]
+            }
+        ]
     },
     {
-        "identifier": 'EVENT_2074_apply_tile_mod_6',
-        "command": 'apply_tile_mod',
-        "args": [Rooms._324_MONSTRO_TOWN_OUTSIDE, 33, [_0x6AFlags.USE_ALTERNATE]]
+        "identifier": 'EVENT_2074_jmp_if_bit_set_22',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7093, 4, 'EVENT_2074_apply_solidity_mod_25']
     },
     {
-        "identifier": 'EVENT_2074_enter_area_7',
+        "identifier": 'EVENT_2074_enter_area_23',
         "command": 'enter_area',
         "args": [Rooms._324_MONSTRO_TOWN_OUTSIDE, RadialDirections.SOUTHWEST, 11, 63, 4, []]
     },
     {
-        "identifier": 'EVENT_2074_stop_sound_8',
-        "command": 'stop_sound'
+        "identifier": 'EVENT_2074_jmp_24',
+        "command": 'jmp',
+        "args": ['EVENT_2048_set_bit_0']
     },
     {
-        "identifier": 'EVENT_2074_set_bit_9',
+        "identifier": 'EVENT_2074_apply_solidity_mod_25',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._324_MONSTRO_TOWN_OUTSIDE, 0, []]
+    },
+    {
+        "identifier": 'EVENT_2074_apply_tile_mod_26',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._324_MONSTRO_TOWN_OUTSIDE, 33, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
+        "identifier": 'EVENT_2074_enter_area_27',
+        "command": 'enter_area',
+        "args": [Rooms._324_MONSTRO_TOWN_OUTSIDE, RadialDirections.SOUTHWEST, 11, 63, 4, []]
+    },
+    {
+        "identifier": 'EVENT_2074_jmp_28',
+        "command": 'jmp',
+        "args": ['EVENT_2048_set_bit_0']
+    },
+    {
+        "identifier": 'EVENT_2074_fade_in_from_black_async_29',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_2074_pause_30',
+        "command": 'pause',
+        "args": [5]
+    },
+    {
+        "identifier": 'EVENT_2074_star_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
+    },
+    {
+        "identifier": 'EVENT_2074_play_music_default_volume_31',
+        "command": 'play_music_default_volume',
+        "args": [Music._58_CONVERSATION_WITH_CULEX]
+    },
+    {
+        "identifier": 'EVENT_2074_pause_32',
+        "command": 'pause',
+        "args": [60]
+    },
+    {
+        "identifier": 'EVENT_2074_item_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_2074_pause_38',
+        "command": 'pause',
+        "args": [15]
+    },
+    {
+        "identifier": 'EVENT_2074_set_bit_40',
         "command": 'set_bit',
         "args": [0x7093, 4]
     },
     {
-        "identifier": 'EVENT_2074_restore_all_hp_10',
+        "identifier": 'EVENT_2074_restore_all_hp_41',
         "command": 'restore_all_hp'
     },
     {
-        "identifier": 'EVENT_2074_restore_all_fp_11',
+        "identifier": 'EVENT_2074_restore_all_fp_42',
         "command": 'restore_all_fp'
     },
     {
-        "identifier": 'EVENT_2074_set_short_12',
-        "command": 'set_short',
-        "args": [0x700a, 0x00d9]
-    },
-    {
-        "identifier": 'EVENT_2074_jmp_to_event_13',
-        "command": 'jmp_to_event',
-        "args": [720]
+        "identifier": 'EVENT_2074_jmp_43',
+        "command": 'jmp',
+        "args": ['EVENT_2074_action_queue_async_21']
     }
 ]

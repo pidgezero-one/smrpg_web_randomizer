@@ -80,26 +80,6 @@ script = [
         "args": [AreaObjects.NPC_9, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     },
     {
-        "identifier": 'EVENT_1692_disable_trigger_in_level_15',
-        "command": 'disable_trigger_in_level',
-        "args": [AreaObjects.NPC_6, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    },
-    {
-        "identifier": 'EVENT_1692_disable_trigger_in_level_16',
-        "command": 'disable_trigger_in_level',
-        "args": [AreaObjects.NPC_7, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    },
-    {
-        "identifier": 'EVENT_1692_disable_trigger_in_level_17',
-        "command": 'disable_trigger_in_level',
-        "args": [AreaObjects.NPC_8, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    },
-    {
-        "identifier": 'EVENT_1692_disable_trigger_in_level_18',
-        "command": 'disable_trigger_in_level',
-        "args": [AreaObjects.NPC_9, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    },
-    {
         "identifier": 'EVENT_1692_run_dialog_19',
         "command": 'run_dialog',
         "args": [1249, AreaObjects.BOWSER, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
@@ -159,38 +139,8 @@ script = [
         "args": [1243, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_1692_set_7000_to_70A0_short_mem_31',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ad]
-    },
-    {
-        "identifier": 'EVENT_1692_add_32',
-        "command": 'add',
-        "args": [0x7000, 7]
-    },
-    {
-        "identifier": 'EVENT_1692_set_random_33',
-        "command": 'set_random',
-        "args": [0x702a, 16]
-    },
-    {
-        "identifier": 'EVENT_1692_mem_compare_address_34',
-        "command": 'mem_compare_address',
-        "args": [0x702a]
-    },
-    {
-        "identifier": 'EVENT_1692_jmp_if_comparison_result_is_lesser_35',
-        "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1692_summon_to_level_40']
-    },
-    {
         "identifier": 'EVENT_1692_summon_to_level_36',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_6, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    },
-    {
-        "identifier": 'EVENT_1692_enable_trigger_in_level_37',
-        "command": 'enable_trigger_in_level',
         "args": [AreaObjects.NPC_6, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     },
     {
@@ -205,11 +155,6 @@ script = [
     {
         "identifier": 'EVENT_1692_summon_to_level_40',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_7, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    },
-    {
-        "identifier": 'EVENT_1692_enable_trigger_in_level_41',
-        "command": 'enable_trigger_in_level',
         "args": [AreaObjects.NPC_7, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     },
     {
@@ -246,31 +191,6 @@ script = [
         "args": [1246, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_1692_set_7000_to_70A0_short_mem_49',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ad]
-    },
-    {
-        "identifier": 'EVENT_1692_add_50',
-        "command": 'add',
-        "args": [0x7000, 8]
-    },
-    {
-        "identifier": 'EVENT_1692_set_random_51',
-        "command": 'set_random',
-        "args": [0x702a, 16]
-    },
-    {
-        "identifier": 'EVENT_1692_mem_compare_address_52',
-        "command": 'mem_compare_address',
-        "args": [0x702a]
-    },
-    {
-        "identifier": 'EVENT_1692_jmp_if_comparison_result_is_lesser_53',
-        "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1692_summon_to_level_44']
-    },
-    {
         "identifier": 'EVENT_1692_summon_to_level_54',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_5, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
@@ -285,38 +205,8 @@ script = [
         "args": [1247, DialogDurations.SHORT, [_0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_1692_set_7000_to_70A0_short_mem_57',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70ad]
-    },
-    {
-        "identifier": 'EVENT_1692_add_58',
-        "command": 'add',
-        "args": [0x7000, 6]
-    },
-    {
-        "identifier": 'EVENT_1692_set_random_59',
-        "command": 'set_random',
-        "args": [0x702a, 20]
-    },
-    {
-        "identifier": 'EVENT_1692_mem_compare_address_60',
-        "command": 'mem_compare_address',
-        "args": [0x702a]
-    },
-    {
-        "identifier": 'EVENT_1692_jmp_if_comparison_result_is_lesser_61',
-        "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_1692_summon_to_level_66']
-    },
-    {
         "identifier": 'EVENT_1692_summon_to_level_62',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_8, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    },
-    {
-        "identifier": 'EVENT_1692_enable_trigger_in_level_63',
-        "command": 'enable_trigger_in_level',
         "args": [AreaObjects.NPC_8, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     },
     {
@@ -331,11 +221,6 @@ script = [
     {
         "identifier": 'EVENT_1692_summon_to_level_66',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_9, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
-    },
-    {
-        "identifier": 'EVENT_1692_enable_trigger_in_level_67',
-        "command": 'enable_trigger_in_level',
         "args": [AreaObjects.NPC_9, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     },
     {

@@ -159,8 +159,8 @@ script = [
         "args": [0x7026, 0x7018]
     },
     {
-        "identifier": 'ACTION_942_run_away_transfer_34',
-        "command": 'run_away_transfer'
+        "identifier": 'ACTION_942_transfer_to_7016_7018_34',
+        "command": 'transfer_to_7016_7018'
     },
     {
         "identifier": 'ACTION_942_pause_short_35',

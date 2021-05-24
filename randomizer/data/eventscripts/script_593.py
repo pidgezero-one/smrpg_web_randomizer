@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_593_start_battle_7',
-        "command": 'start_battle',
-        "args": [0x008c, 5]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_593_set_bit_8',
@@ -46,24 +46,19 @@ script = [
         "args": [AreaObjects.NPC_0, Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
     },
     {
-        "identifier": 'EVENT_593_remove_from_level_12',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
-    },
-    {
         "identifier": 'EVENT_593_remove_from_level_13',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
+        "args": [AreaObjects.NPC_4, Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
     },
     {
         "identifier": 'EVENT_593_remove_from_level_14',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
+        "args": [AreaObjects.NPC_5, Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
     },
     {
         "identifier": 'EVENT_593_remove_from_level_15',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_7, Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
+        "args": [AreaObjects.NPC_6, Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE]
     },
     {
         "identifier": 'EVENT_593_set_bit_16',
@@ -77,6 +72,21 @@ script = [
     {
         "identifier": 'EVENT_593_restore_all_fp_18',
         "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_593_jmp_to_event_192',
+        "command": 'run_event_as_subroutine',
+        "args": [201]
+    },
+    {
+        "identifier": 'EVENT_593_jmp_to_event_192_',
+        "command": 'run_event_as_subroutine',
+        "args": [198]
+    },
+    {
+        "identifier": 'EVENT_593_jmp_to_event_50__',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_593_apply_tile_mod_22',
@@ -129,59 +139,9 @@ script = [
         "args": [Music._33_MOLEVILLE]
     },
     {
-        "identifier": 'EVENT_593_remove_from_current_level_151',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_9]
-    },
-    {
-        "identifier": 'EVENT_593_remove_from_current_level_152',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7]
-    },
-    {
-        "identifier": 'EVENT_593_remove_from_current_level_153',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
-    },
-    {
-        "identifier": 'EVENT_593_remove_from_current_level_154',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5]
-    },
-    {
-        "identifier": 'EVENT_593_remove_from_level_155',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_9, Rooms._271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
-    },
-    {
-        "identifier": 'EVENT_593_remove_from_level_156',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_7, Rooms._271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
-    },
-    {
-        "identifier": 'EVENT_593_remove_from_level_157',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
-    },
-    {
-        "identifier": 'EVENT_593_remove_from_level_158',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
-    },
-    {
         "identifier": 'EVENT_593_set_bit_165',
         "command": 'set_bit',
         "args": [0x7049, 6]
-    },
-    {
-        "identifier": 'EVENT_593_remove_from_level_185',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
-    },
-    {
-        "identifier": 'EVENT_593_remove_from_level_186',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._271_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_AFTER_BATTLE]
     },
     {
         "identifier": 'EVENT_593_apply_tile_mod_187',
@@ -199,22 +159,8 @@ script = [
         "args": [0x7063, 6]
     },
     {
-        "identifier": 'EVENT_593_fade_in_from_black_async_174',
-        "command": 'fade_in_from_black_async'
-    },
-    {
         "identifier": 'EVENT_593_store_01_to_0248_190',
         "command": 'store_01_to_0248'
-    },
-    {
-        "identifier": 'EVENT_593_set_short_191',
-        "command": 'set_short',
-        "args": [0x700a, 0x00ce]
-    },
-    {
-        "identifier": 'EVENT_593_jmp_to_event_192',
-        "command": 'jmp_to_event',
-        "args": [720]
     },
     {
         "identifier": 'EVENT_593_ret_194',

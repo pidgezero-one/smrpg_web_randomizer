@@ -78,7 +78,7 @@ script = [
     {
         "identifier": 'EVENT_3214_set_short_195',
         "command": 'run_event_as_subroutine',
-        "args": [167]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_3214_ret_199',

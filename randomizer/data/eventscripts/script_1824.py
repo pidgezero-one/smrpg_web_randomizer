@@ -98,11 +98,6 @@ script = [
         "args": [0x7044, 6, 'EVENT_1824_jmp_to_event_17']
     },
     {
-        "identifier": 'EVENT_1824_set_15',
-        "command": 'set',
-        "args": [0x70cb, 10]
-    },
-    {
         "identifier": 'EVENT_1824_clear_bit_16',
         "command": 'clear_bit',
         "args": [0x7095, 4]

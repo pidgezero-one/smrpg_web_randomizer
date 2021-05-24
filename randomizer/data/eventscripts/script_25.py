@@ -37,6 +37,6 @@ script = [
     {
         "identifier": 'EVENT_25_jmp_6',
         "command": 'jmp',
-        "args": ['EVENT_24_load_600f_15']
+        "args": ['EVENT_24_reactivate_trigger_if_mario_on_top_of_object_15']
     }
 ]

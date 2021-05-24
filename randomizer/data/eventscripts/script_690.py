@@ -34,6 +34,11 @@ script = [
         "args": [2114, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
+        "identifier": 'EVENT_690_open_forest',
+        "command": 'run_event_as_subroutine',
+        "args": [200]
+    },
+    {
         "identifier": 'EVENT_690_ret_4',
         "command": 'ret'
     },

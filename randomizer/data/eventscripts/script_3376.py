@@ -129,6 +129,11 @@ script = [
         "command": 'ret'
     },
     {
+        "identifier": 'EVENT_3376_clear_attempt_counter',
+        "command": 'set',
+        "args": [0x70CB, 10]
+    },
+    {
         "identifier": 'EVENT_3376_mem_7000_and_const_56',
         "command": 'mem_7000_and_const',
         "args": [0x0007]
@@ -185,56 +190,32 @@ script = [
     },
     {
         "identifier": 'EVENT_3376_enter_area_63',
-        "command": 'enter_area',
-        "args": [Rooms._321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS, RadialDirections.NORTHEAST, 4, 58, 5, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_3376_ret_64',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1967]
     },
     {
         "identifier": 'EVENT_3376_enter_area_65',
-        "command": 'enter_area',
-        "args": [Rooms._322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, RadialDirections.NORTHEAST, 8, 115, 2, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_3376_ret_66',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1965]
     },
     {
         "identifier": 'EVENT_3376_enter_area_67',
-        "command": 'enter_area',
-        "args": [Rooms._459_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1A_1ST_FIGHT_TERRA_COTTA, RadialDirections.NORTHEAST, 2, 63, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_3376_ret_68',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1961]
     },
     {
         "identifier": 'EVENT_3376_enter_area_69',
-        "command": 'enter_area',
-        "args": [Rooms._462_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2A_1ST_FIGHT_GU_GOOMBA, RadialDirections.NORTHEAST, 2, 63, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_3376_ret_70',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1957]
     },
     {
         "identifier": 'EVENT_3376_enter_area_71',
-        "command": 'enter_area',
-        "args": [Rooms._464_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_1A_QUIZ, RadialDirections.NORTHEAST, 3, 106, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_3376_ret_72',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1959]
     },
     {
         "identifier": 'EVENT_3376_enter_area_73',
-        "command": 'enter_area',
-        "args": [Rooms._467_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2A_COIN_COLLECTING, RadialDirections.NORTHEAST, 22, 83, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
-        "identifier": 'EVENT_3376_ret_74',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1963]
     }
 ]

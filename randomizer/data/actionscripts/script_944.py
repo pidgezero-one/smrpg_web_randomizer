@@ -26,8 +26,7 @@ script = [
     },
     {
         "identifier": 'ACTION_944_db_4',
-        "command": 'db',
-        "args": [0x98]
+        "command": 'walk_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_944_walk_to_xy_coords_5',

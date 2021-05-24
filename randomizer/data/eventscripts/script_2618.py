@@ -580,8 +580,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2618_start_battle_86',
-        "command": 'start_battle',
-        "args": [0x0093, 48]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2618_jmp_if_bit_clear_87',
@@ -644,6 +644,11 @@ script = [
         "identifier": 'EVENT_2618_remove_from_level_99',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_15, Rooms._471_FACTORY_GROUNDS_AREA_02]
+    },
+    {
+        "identifier": 'EVENT_2618_star_piece',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_2618_fade_in_from_black_async_100',

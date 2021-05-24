@@ -2651,6 +2651,16 @@ class Beetlemania(Item):
         (2914, ''' Item #3: A “Handheld Game”.\n Sounds pretty fun, doesn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
+class StarPiece(Item):
+    description = 'Star Hunt star piece'
+    hard_tier = 4
+    dialog_replacements = [
+        (2908, ''' Item #1: A “Shooting Star”!\n It's sure to make all your wishes\n come true.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
+
+
 
 
 # ****************************** Chest content/rewards data classes

@@ -30,6 +30,41 @@ script = [
         "args": [187, "EVENT_238_room_187_logic"]
     },
     {
+        "identifier": "EVENT_238_room_322_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [322, "EVENT_238_room_322_logic"]
+    },
+    {
+        "identifier": "EVENT_238_room_378_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [378, "EVENT_238_room_378_logic"]
+    },
+    {
+        "identifier": "EVENT_238_room_379_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [379, "EVENT_238_room_379_logic"]
+    },
+    {
+        "identifier": "EVENT_238_room_380_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [380, "EVENT_238_room_380_logic"]
+    },
+    {
+        "identifier": "EVENT_238_room_381_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [381, "EVENT_238_room_381_logic"]
+    },
+    {
+        "identifier": "EVENT_238_room_422_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [422, "EVENT_238_room_422_logic"]
+    },
+    {
+        "identifier": "EVENT_238_room_457_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [457, "EVENT_238_room_457_logic"]
+    },
+    {
         "identifier": "EVENT_238_cancel",
         "command": 'ret'
     },
@@ -52,5 +87,40 @@ script = [
         "identifier": "EVENT_238_room_187_logic",
         "command": 'jmp_to_event',
         "args": [3238]
+    },
+    {
+        "identifier": "EVENT_238_room_322_logic",
+        "command": 'jmp_to_event',
+        "args": [3146]
+    },
+    {
+        "identifier": "EVENT_238_room_378_logic",
+        "command": 'jmp_to_event',
+        "args": [3238]
+    },
+    {
+        "identifier": "EVENT_238_room_379_logic",
+        "command": 'jmp_to_event',
+        "args": [3146]
+    },
+    {
+        "identifier": "EVENT_238_room_380_logic",
+        "command": 'jmp_to_event',
+        "args": [3146]
+    },
+    {
+        "identifier": "EVENT_238_room_381_logic",
+        "command": 'jmp_to_event',
+        "args": [3238]
+    },
+    {
+        "identifier": "EVENT_238_room_422_logic",
+        "command": 'jmp_to_event',
+        "args": [1801]
+    },
+    {
+        "identifier": "EVENT_238_room_457_logic",
+        "command": 'jmp_to_event',
+        "args": [3146]
     },
 ]

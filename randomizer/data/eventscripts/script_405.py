@@ -243,18 +243,8 @@ script = [
     },
     {
         "identifier": 'EVENT_405_set_43',
-        "command": 'set',
-        "args": [0x70a7, 115]
-    },
-    {
-        "identifier": 'EVENT_405_set_44',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_405_run_event_as_subroutine_45',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_405_ret_46',

@@ -46,11 +46,6 @@ script = [
         "args": [0x7044, 6, 'EVENT_1826_play_sound_10']
     },
     {
-        "identifier": 'EVENT_1826_set_8',
-        "command": 'set',
-        "args": [0x70cb, 10]
-    },
-    {
         "identifier": 'EVENT_1826_clear_bit_9',
         "command": 'clear_bit',
         "args": [0x7095, 4]

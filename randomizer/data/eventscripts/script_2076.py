@@ -165,8 +165,13 @@ script = [
     },
     {
         "identifier": 'EVENT_2076_start_battle_49',
-        "command": 'start_battle',
-        "args": [0x00bb, 46]
+        "command": 'set',
+        "args": [0x7000, 516]
+    },
+    {
+        "identifier": 'EVENT_2076_fight',
+        "command": 'run_event_as_subroutine',
+        "args": [353]
     },
     {
         "identifier": 'EVENT_2076_restore_all_hp_53',
@@ -408,6 +413,16 @@ script = [
     {
         "identifier": 'EVENT_2076_unfreeze_camera_63',
         "command": 'unfreeze_camera'
+    },
+    {
+        "identifier": 'EVENT_2076_pause_64_',
+        "command": 'set',
+        "args": [0x7000, 516]
+    },
+    {
+        "identifier": 'EVENT_2076_star',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
     },
     {
         "identifier": 'EVENT_2076_pause_64',

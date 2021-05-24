@@ -63,7 +63,7 @@ script = [
     {
         "identifier": 'EVENT_1829_jmp_11',
         "command": 'jmp',
-        "args": ['EVENT_1829_load_600f_17']
+        "args": ['EVENT_1829_reactivate_trigger_if_mario_on_top_of_object_17']
     },
     {
         "identifier": 'EVENT_1829_run_dialog_12',
@@ -73,7 +73,7 @@ script = [
     {
         "identifier": 'EVENT_1829_jmp_13',
         "command": 'jmp',
-        "args": ['EVENT_1829_load_600f_17']
+        "args": ['EVENT_1829_reactivate_trigger_if_mario_on_top_of_object_17']
     },
     {
         "identifier": 'EVENT_1829_run_dialog_14',
@@ -83,7 +83,7 @@ script = [
     {
         "identifier": 'EVENT_1829_jmp_15',
         "command": 'jmp',
-        "args": ['EVENT_1829_load_600f_17']
+        "args": ['EVENT_1829_reactivate_trigger_if_mario_on_top_of_object_17']
     },
     {
         "identifier": 'EVENT_1829_run_dialog_16',
@@ -91,8 +91,8 @@ script = [
         "args": [1316, AreaObjects.NPC_12, [_0x60Flags.BIT_6, _0x60Flags.ASYNC]]
     },
     {
-        "identifier": 'EVENT_1829_load_600f_17',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1829_reactivate_trigger_if_mario_on_top_of_object_17',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1829_ret_18',

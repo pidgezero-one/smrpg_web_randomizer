@@ -11,29 +11,12 @@ script = [
         "args": [Sounds._019_LONG_FALL, 6]
     },
     {
-        "identifier": 'EVENT_2549_jmp_if_object_not_in_level_2',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_6, Rooms._349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, 'EVENT_2549_freeze_camera_6']
-    },
-    {
-        "identifier": 'EVENT_2549_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_6],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2549_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2549_freeze_camera_6',
         "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2549_action_queue_sync_7',
-        "command": 'action_queue_sync',
+        "command": 'action_queue_async',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
@@ -50,91 +33,6 @@ script = [
                 "identifier": 'EVENT_2549_action_queue_sync_7_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2549_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2549_action_queue_sync_8_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2549_action_queue_sync_8_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2549_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2549_action_queue_sync_9_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2549_action_queue_sync_9_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2549_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2549_action_queue_sync_10_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2549_action_queue_sync_10_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2549_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_4],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2549_action_queue_sync_11_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2549_action_queue_sync_11_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2549_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_5],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2549_action_queue_async_12_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTEST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2549_action_queue_async_12_SUBSCRIPT_shift_south_pixels_1',
-                "command": 'shift_south_pixels',
-                "args": [3]
             }
         ]
     },

@@ -82,7 +82,10 @@ class EventScript:
                     raise Exception(
                         '%s(%s) is an invalid instruction!' % (command["command"], dummy_args))
                 func(*dummy_args)
-                command_line = assembler.fin()
+                try:
+                    command_line = assembler.fin()
+                except:
+                    raise Exception(command["identifier"])
                 script_with_length["line"] = command_line
                 scripts_with_lengths.append(script_with_length)
             table_with_lengths.append(scripts_with_lengths)
@@ -1204,7 +1207,7 @@ class EventScript:
         return self
 
     # 0x5D
-    def load_600f(self):
+    def reactivate_trigger_if_mario_on_top_of_object(self):
         self.append_byte(0x5D)
         return self
 

@@ -177,8 +177,8 @@ script = [
                 "args": [16]
             },
             {
-                "identifier": 'EVENT_2561_action_queue_async_5_SUBSCRIPT_run_away_transfer_8A_29',
-                "command": 'run_away_transfer_8A'
+                "identifier": 'EVENT_2561_action_queue_async_5_SUBSCRIPT_walk_to_7016_7018_29',
+                "command": 'walk_to_7016_7018'
             },
             {
                 "identifier": 'EVENT_2561_action_queue_async_5_SUBSCRIPT_face_south_30',

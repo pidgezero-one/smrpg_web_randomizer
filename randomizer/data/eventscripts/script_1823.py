@@ -6,35 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1823_run_event_as_subroutine_0',
-        "command": 'run_event_as_subroutine',
-        "args": [33]
-    },
-    {
-        "identifier": 'EVENT_1823_play_sound_1',
-        "command": 'play_sound',
-        "args": [Sounds._014_FLOWER, 6]
-    },
-    {
-        "identifier": 'EVENT_1823_run_dialog_2',
-        "command": 'run_dialog',
-        "args": [1177, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
-    },
-    {
-        "identifier": 'EVENT_1823_put_inventory_3',
-        "command": 'put_inventory',
-        "args": [0x70a7]
-    },
-    {
-        "identifier": 'EVENT_1823_set_7000_to_current_level_4',
-        "command": 'set_7000_to_current_level'
-    },
-    {
-        "identifier": 'EVENT_1823_jmp_if_7000_equals_short_5',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [321, 'EVENT_1823_ret_11']
-    },
-    {
         "identifier": 'EVENT_1823_freeze_camera_6',
         "command": 'freeze_camera'
     },
@@ -71,8 +42,13 @@ script = [
         "args": [1543, 0x701c, [12, 13]]
     },
     {
-        "identifier": 'EVENT_1823_load_600f_10',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1823_reactivate_trigger_if_mario_on_top_of_object_10',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
+    },
+    {
+        "identifier": 'EVENT_1823_inc_7',
+        "command": 'jmp_to_event',
+        "args": [173]
     },
     {
         "identifier": 'EVENT_1823_ret_11',

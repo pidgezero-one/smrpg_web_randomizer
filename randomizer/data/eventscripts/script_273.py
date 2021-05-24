@@ -1231,23 +1231,13 @@ script = [
     },
     {
         "identifier": 'EVENT_273_set_176',
-        "command": 'set',
-        "args": [0x70a7, 107]
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_273_set_177',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_273_run_event_as_subroutine_178',
         "command": 'run_event_as_subroutine',
-        "args": [3827]
-    },
-    {
-        "identifier": 'EVENT_273_put_inventory_179',
-        "command": 'put_inventory',
-        "args": [0x70a7]
+        "args": [179]
     },
     {
         "identifier": 'EVENT_273_pause_181',

@@ -193,8 +193,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1710_start_battle_19',
-        "command": 'start_battle',
-        "args": [0x00a3, 9]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_1710_set_bit_20',
@@ -272,6 +272,21 @@ script = [
     {
         "identifier": 'EVENT_1710_fade_in_from_black_async_35',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_1710_jmp_to_event_50',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_1710_jmp_to_event_50_',
+        "command": 'run_event_as_subroutine',
+        "args": [179]
+    },
+    {
+        "identifier": 'EVENT_1710_jmp_to_event_50__',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_1710_action_queue_async_40',
@@ -478,16 +493,6 @@ script = [
         "identifier": 'EVENT_1710_set_bit_48',
         "command": 'set_bit',
         "args": [0x704d, 3]
-    },
-    {
-        "identifier": 'EVENT_1710_set_short_49',
-        "command": 'set_short',
-        "args": [0x700a, 0x00c9]
-    },
-    {
-        "identifier": 'EVENT_1710_jmp_to_event_50',
-        "command": 'jmp_to_event',
-        "args": [720]
     },
     {
         "identifier": 'EVENT_1710_ret_51',

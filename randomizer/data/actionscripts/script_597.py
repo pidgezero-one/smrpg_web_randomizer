@@ -50,8 +50,7 @@ script = [
     },
     {
         "identifier": 'ACTION_597_db_9',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_597_visibility_on_10',

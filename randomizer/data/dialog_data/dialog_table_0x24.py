@@ -458,7 +458,8 @@ dialog_data[254] = '''
 dialog_data[255] = '''
 
       May Mallow fix the Road![await]'''
-dialog_data[256] = '''     Need a Shiny Stone to get in[await]'''
+dialog_data[256] = '''
+    Need a “Shiny Stone” to get in[await]'''
 dialog_data[257] = '''[await]'''
 dialog_data[258] = '''[await]'''
 dialog_data[259] = ''' It’s really weird.
@@ -639,7 +640,8 @@ dialog_data[379] = '''[await]'''
 dialog_data[380] = '''[await]'''
 dialog_data[381] = '''[await]'''
 dialog_data[382] = '''[await]'''
-dialog_data[383] = '''[await]'''
+dialog_data[383] = ''' You need "Castle Key 1" to open
+ the middle room...[await]'''
 dialog_data[384] = '''[await]'''
 dialog_data[385] = '''[await]'''
 dialog_data[386] = '''[await]'''
@@ -658,7 +660,7 @@ dialog_data[396] = ''' There's three invaders in the
  fight the third.[await][pause] The keys could be
  anywhere in the world![await][page]
  How'd we lose them, you ask?[delay_30]
- Er... [delay]don't ask me, [delay_30]I have no idea![await]'''
+ Er... [delay_30]don't ask me, [delay]I have no idea![await]'''
 dialog_data[397] = '''[await]'''
 dialog_data[398] = ''' The statues in the castle were
  chosen by the third invader.[await]'''
@@ -798,7 +800,14 @@ dialog_data[477] = ''' Have you found any rare Frog
  If you find one, you can trade it
  with the guy upstairs for a special
  item.[await]'''
-dialog_data[478] = '''[await]'''
+dialog_data[478] = ''' The world around us is always
+ changing.[await][pause] It is wise to visit places
+ more than once, especially if
+ something major has happened.[await][page]
+ "One man's trash is another man's
+ treasure."[await][pause] If you find items in your
+ journey that seem useless, someone
+ may be seeking them in the future.[await]'''
 dialog_data[479] = '''[await]'''
 dialog_data[480] = '''[await]'''
 dialog_data[481] = '''[await]'''

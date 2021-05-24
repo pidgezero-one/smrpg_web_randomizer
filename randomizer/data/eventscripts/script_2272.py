@@ -16,11 +16,6 @@ script = [
         "args": [0x7086, 0, 'EVENT_2272_jmp_if_bit_clear_28']
     },
     {
-        "identifier": 'EVENT_2272_jmp_8',
-        "command": 'jmp',
-        "args": ['EVENT_2272_jmp_if_bit_clear_9']
-    },
-    {
         "identifier": 'EVENT_2272_jmp_if_bit_clear_9',
         "command": 'jmp_if_bit_clear',
         "args": [0x7088, 1, 'EVENT_2272_jmp_if_bit_set_12']
@@ -94,8 +89,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_put_inventory_23',
-        "command": 'put_inventory',
-        "args": [items.LuckyJewel]
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2272_jmp_24',
@@ -196,8 +191,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_put_inventory_43',
-        "command": 'put_inventory',
-        "args": [items.LuckyJewel]
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2272_jmp_44',
@@ -269,8 +264,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_put_inventory_58',
-        "command": 'put_inventory',
-        "args": [items.MysteryEgg]
+        "command": 'run_event_as_subroutine',
+        "args": [179]
     },
     {
         "identifier": 'EVENT_2272_jmp_59',
@@ -444,8 +439,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_put_inventory_93',
-        "command": 'put_inventory',
-        "args": [items.MysteryEgg]
+        "command": 'run_event_as_subroutine',
+        "args": [179]
     },
     {
         "identifier": 'EVENT_2272_jmp_94',
@@ -517,8 +512,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2272_put_inventory_108',
-        "command": 'put_inventory',
-        "args": [items.FryingPan]
+        "command": 'run_event_as_subroutine',
+        "args": [180]
     },
     {
         "identifier": 'EVENT_2272_jmp_109',

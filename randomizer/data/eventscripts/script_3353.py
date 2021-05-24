@@ -8,10 +8,11 @@ script = [
     {
         "identifier": 'EVENT_3353_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._468_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2C_BALL_SOLITAIRE, RadialDirections.NORTHEAST, 22, 123, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
+        "args": [Rooms._468_BOWSERS_KEEP_6DOOR_PUZZLE_ROOM_2C_BALL_SOLITAIRE, RadialDirections.NORTHEAST, 22, 123, 0, []]
     },
     {
-        "identifier": 'EVENT_3353_ret_1',
-        "command": 'ret'
+        "identifier": 'EVENT_3353_jmp_to_event_2',
+        "command": 'jmp_to_event',
+        "args": [3778]
     }
 ]

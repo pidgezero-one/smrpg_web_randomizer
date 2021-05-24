@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1427_jmp_to_event_192',
+        "command": 'run_event_as_subroutine',
+        "args": [202]
+    },
+    {
         "identifier": 'EVENT_1427_action_queue_async_0',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_0],

@@ -6,9 +6,9 @@ room = {
   "partition": 113,
   "music": Music._66_BOWSERS_CASTLE_2ND_TIME,
   "entrance_event": 1824,
-  "event_tiles": [],
-  "exit_fields": [
+  "event_tiles": [
     {
+      "event": 1942,
       "x": 19,
       "y": 28,
       "z": 5,
@@ -17,20 +17,22 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "byte_2_bit_2": False,
-      "destination": Rooms._457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING,
-      "show_message": False,
-      "destination_props": {
-        "x": 2,
-        "y": 57,
-        "z": 0,
-        "z_half": False,
-        "f": RadialDirection.NORTHEAST,
-        "x_bit_7": False
-      }
+      "byte_8_bit_4": False,
+    },
+    {
+      "event": 256,
+      "x": 3,
+      "y": 59,
+      "z": 5,
+      "f": Edge.SOUTHWEST,
+      "length": 2,
+      "height": 0,
+      "nw_se_edge_active": True,
+      "ne_sw_edge_active": False,
+      "byte_8_bit_4": False,
     }
   ],
+  "exit_fields": [],
   "objects": [
     {
       "id": 0,
@@ -180,11 +182,11 @@ room = {
       "type": ObjectType.CHEST,
       "initiator": Initiator.HIT_FROM_BELOW,
       "model": 503,
-      "event_script": 3153,
+      "event_script": 3390,
       "action_script": 14,
       "speed": 0,
-      "star_offset": 12,
-      "item_offset": 6,
+      "star_offset": 108,
+      "item_offset": 0,
       "visible": True,
       "x": 7,
       "y": 52,

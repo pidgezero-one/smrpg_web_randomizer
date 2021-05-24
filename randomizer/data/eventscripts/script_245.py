@@ -33,12 +33,77 @@ script = [
     {
         "identifier": "EVENT_245_room_144_jump",
         "command": 'jmp_if_7000_equals_short',
-        "args": [144, "EVENT_245_room_144_logic"]
+        "args": [144, "EVENT_245_room_144_446_logic"]
     },
     {
         "identifier": "EVENT_245_room_199_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [199, "EVENT_245_room_199_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_234_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [234, "EVENT_245_room_234_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_242_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [242, "EVENT_245_room_242_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_301_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [301, "EVENT_245_room_301_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_322_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [322, "EVENT_245_room_322_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_331_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [331, "EVENT_245_room_331_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_405_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [405, "EVENT_245_room_405_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_421_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [421, "EVENT_245_room_421_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_425_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [425, "EVENT_245_room_425_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_443_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [443, "EVENT_245_room_443_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_446_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [446, "EVENT_245_room_144_446_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_455_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [455, "EVENT_245_room_455_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_457_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [457, "EVENT_245_room_457_logic"]
+    },
+    {
+        "identifier": "EVENT_245_room_458_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [458, "EVENT_245_room_458_logic"]
     },
     {
         "identifier": "EVENT_245_pandorite_jump",
@@ -85,14 +150,34 @@ script = [
         "args": [3072]
     },
     {
-        "identifier": "EVENT_245_room_144_logic",
+        "identifier": "EVENT_245_room_144_446_logic",
         "command": 'set',
         "args": [0x70A7, 30]
     },
     {
-        "identifier": "EVENT_245_room_144_logic_2",
+        "identifier": "EVENT_245_room_144_446_logic_2",
         "command": 'jmp_to_event',
         "args": [3089]
+    },
+    {
+        "identifier": "EVENT_245_room_199_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_245_room_234_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_245_room_242_logic",
+        "command": 'jmp_to_event',
+        "args": [3081]
+    },
+    {
+        "identifier": "EVENT_245_room_331_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
     },
     {
         "identifier": "EVENT_245_pandorite_logic",
@@ -115,8 +200,53 @@ script = [
         "args": [3074]
     },
     {
-        "identifier": "EVENT_245_room_199_logic",
+        "identifier": "EVENT_245_room_301_logic",
+        "command": 'set',
+        "args": [0x70A7, 166]
+    },
+    {
+        "identifier": "EVENT_245_room_301_logic_2",
+        "command": 'jmp_to_event',
+        "args": [3089]
+    },
+    {
+        "identifier": "EVENT_245_room_322_logic",
+        "command": 'jmp_to_event',
+        "args": [3089]
+    },
+    {
+        "identifier": "EVENT_245_room_405_logic",
+        "command": 'jmp_to_event',
+        "args": [3089]
+    },
+    {
+        "identifier": "EVENT_245_room_421_logic",
         "command": 'jmp_to_event',
         "args": [3072]
+    },
+    {
+        "identifier": "EVENT_245_room_425_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_245_room_443_logic",
+        "command": 'jmp_to_event',
+        "args": [3072]
+    },
+    {
+        "identifier": "EVENT_245_room_455_logic",
+        "command": 'jmp_to_event',
+        "args": [3089]
+    },
+    {
+        "identifier": "EVENT_245_room_457_logic",
+        "command": 'jmp_to_event',
+        "args": [3089]
+    },
+    {
+        "identifier": "EVENT_245_room_458_logic",
+        "command": 'jmp_to_event',
+        "args": [3089]
     },
 ]

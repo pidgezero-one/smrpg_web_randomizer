@@ -1833,8 +1833,8 @@ script = [
     },
     {
         "identifier": 'EVENT_738_start_battle_107',
-        "command": 'start_battle',
-        "args": [0x00ab, 24]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_738_set_108',
@@ -1884,14 +1884,9 @@ script = [
         "command": 'fade_in_from_black_sync'
     },
     {
-        "identifier": 'EVENT_738_set_short_212',
-        "command": 'set_short',
-        "args": [0x700a, 0x00dd]
-    },
-    {
         "identifier": 'EVENT_738_jmp_to_event_213',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_738_ret_214',

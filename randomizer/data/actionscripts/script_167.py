@@ -40,8 +40,7 @@ script = [
     },
     {
         "identifier": 'ACTION_167_db_7',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_167_set_animation_speed_8',

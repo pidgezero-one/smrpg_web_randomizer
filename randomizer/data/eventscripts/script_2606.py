@@ -214,8 +214,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2606_start_battle_38',
-        "command": 'start_battle',
-        "args": [0x0092, 48]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2606_jmp_if_bit_clear_39',
@@ -248,6 +248,11 @@ script = [
         "identifier": 'EVENT_2606_set_bit_49',
         "command": 'set_bit',
         "args": [0x7059, 4]
+    },
+    {
+        "identifier": 'EVENT_2606_star_piece',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_2606_enter_area_50',

@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'EVENT_2048_jmp_if_7000_equals_short_3',
         "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2048_action_queue_async_5']
+        "args": [0, 'EVENT_2048_jmp_if_bit_set_6']
     },
     {
         "identifier": 'EVENT_2048_action_queue_async_4',
@@ -43,18 +43,6 @@ script = [
             {
                 "identifier": 'EVENT_2048_action_queue_async_4_SUBSCRIPT_end_loop_2',
                 "command": 'end_loop'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2048_action_queue_async_5',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2048_action_queue_async_5_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },

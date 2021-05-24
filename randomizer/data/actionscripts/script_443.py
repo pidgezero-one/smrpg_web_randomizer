@@ -73,8 +73,7 @@ script = [
     },
     {
         "identifier": 'ACTION_443_db_14',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_443_end_loop_15',

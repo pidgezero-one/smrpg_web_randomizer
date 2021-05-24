@@ -31,8 +31,7 @@ script = [
     },
     {
         "identifier": 'ACTION_47_db_5',
-        "command": 'db',
-        "args": [0x99]
+        "command": 'transfer_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_47_play_sound_6',

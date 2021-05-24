@@ -54,10 +54,9 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "byte_8_bit_4": False,
-    }
-  ],
-  "exit_fields": [
+    },
     {
+      "event": 1948,
       "x": 22,
       "y": 25,
       "z": 0,
@@ -66,20 +65,10 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "byte_2_bit_2": False,
-      "destination": Rooms._460_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1B_1ST_FIGHT_ALLEY_RAT,
-      "show_message": False,
-      "destination_props": {
-        "x": 2,
-        "y": 63,
-        "z": 0,
-        "z_half": False,
-        "f": RadialDirection.NORTHEAST,
-        "x_bit_7": False
-      }
+      "byte_8_bit_4": False,
     }
   ],
+  "exit_fields": [],
   "objects": [
     {
       "id": 0,

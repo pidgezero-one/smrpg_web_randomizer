@@ -5,14 +5,84 @@ from randomizer.data.eventtables import ControllerDirections, RadialDirections, 
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
 script = [
+
+
+
     {
-        "identifier": 'EVENT_1845_set_short_0',
-        "command": 'set_short',
-        "args": [0x700e, 0x00cf]
+        "identifier": 'EVENT_1845_jmp_if_bit_clear_0',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7076, 0, 'EVENT_1845_disable_trigger_2']
     },
     {
         "identifier": 'EVENT_1845_jmp_to_event_1',
-        "command": 'jmp_to_event',
-        "args": [17]
-    }
+        "command": 'run_event_as_subroutine',
+        "args": [255]
+    },
+    {
+        "identifier": "EVENT_1845_",
+        "command": "jmp",
+        "args": ['EVENT_1845_jmp_if_already_got_star_piece']
+    },
+    {
+        "identifier": 'EVENT_1845_disable_trigger_2',
+        "command": 'disable_trigger',
+        "args": [AreaObjects.MEM_70A8]
+    },
+    {
+        "identifier": 'EVENT_1845_clear_bit_3',
+        "command": 'clear_bit',
+        "args": [0x707c, 5]
+    },
+    {
+        "identifier": 'EVENT_1845_clear_bit_4',
+        "command": 'clear_bit',
+        "args": [0x707c, 6]
+    },
+    {
+        "identifier": 'EVENT_1845_set_bit_5',
+        "command": 'set_bit',
+        "args": [0x707c, 7]
+    },
+    {
+        "identifier": 'EVENT_1845_start_battle_700E_6',
+        "command": 'set',
+        "args": [0x7000, 519]
+    },
+    {
+        "identifier": 'EVENT_1845_fight',
+        "command": 'run_event_as_subroutine',
+        "args": [353]
+    },
+    {
+        "identifier": 'EVENT_1845_jmp_to_event_7',
+        "command": 'run_event_as_subroutine',
+        "args": [24]
+    },
+
+
+
+    {
+        "identifier": 'EVENT_1845_jmp_if_already_got_star_piece',
+        "command": "jmp_if_bit_set",
+        "args": [0x7081, 7, 'EVENT_1845_ret']
+    },
+    {
+        "identifier": 'EVENT_1845_set',
+        "command": 'set_bit',
+        "args": [0x7081, 7]
+    },
+    {
+        "identifier": 'EVENT_1845_set_',
+        "command": 'set',
+        "args": [0x7000, 519]
+    },
+    {
+        "identifier": 'EVENT_1845_grant_star',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
+    },
+    {
+        "identifier": 'EVENT_1845_ret',
+        "command": 'ret'
+    },
 ]

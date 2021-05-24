@@ -16,19 +16,9 @@ script = [
         "args": [0x7083, 0]
     },
     {
-        "identifier": 'EVENT_379_set_2',
-        "command": 'set',
-        "args": [0x70a7, 85]
-    },
-    {
-        "identifier": 'EVENT_379_set_3',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_379_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_379_ret_5',

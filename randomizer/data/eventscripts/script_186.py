@@ -4,4 +4,53 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": "EVENT_186_current_lvl",
+        "command": 'set_7000_to_current_level'
+    },
+    {
+        "identifier": "EVENT_186_room_154_jump___",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [154, "EVENT_186_room_154_logic"]
+    },
+    {
+        "identifier": "EVENT_186_room_205_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [205, "EVENT_186_room_205_logic"]
+    },
+    {
+        "identifier": "EVENT_186_room_232_jump_",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [232, "EVENT_186_room_232_logic"]
+    },
+    {
+        "identifier": "EVENT_186_room_284_jump__",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [284, "EVENT_186_room_284_logic"]
+    },
+    {
+        "identifier": 'EVENT_186_ret_34',
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_186_room_154_logic",
+        "command": 'jmp_to_event',
+        "args": [197]
+    },
+    {
+        "identifier": "EVENT_186_room_205_logic",
+        "command": 'jmp_to_event',
+        "args": [194]
+    },
+    {
+        "identifier": "EVENT_186_room_232_logic",
+        "command": 'jmp_to_event',
+        "args": [195]
+    },
+    {
+        "identifier": "EVENT_186_room_284_logic",
+        "command": 'jmp_to_event',
+        "args": [196]
+    },
+]

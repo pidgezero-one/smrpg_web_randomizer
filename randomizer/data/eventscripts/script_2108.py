@@ -30,12 +30,12 @@ script = [
     {
         "identifier": 'EVENT_2108_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x7090, 1, 'EVENT_2108_load_music_insert']
+        "args": [0x7090, 1, 'EVENT_2108_jmp_if_bit_set_14']
     },
     {
         "identifier": 'EVENT_2108_jmp_if_bit_set_5',
         "command": 'jmp_if_bit_set',
-        "args": [0x7092, 6, 'EVENT_2108_load_music_insert']
+        "args": [0x7092, 6, 'EVENT_2108_jmp_if_bit_set_14']
     },
     {
         "identifier": 'EVENT_2108_jmp_if_bit_set_12',
@@ -47,11 +47,6 @@ script = [
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_1],
         "subscript": [
-            {
-                "identifier": 'EVENT_2108_action_queue_async_13_SUBSCRIPT_shift_to_xy_coords_0',
-                "command": 'shift_to_xy_coords',
-                "args": [19, 16]
-            },
             {
                 "identifier": 'EVENT_2108_action_queue_async_13_SUBSCRIPT_shift_northeast_pixels_1',
                 "command": 'shift_northeast_pixels',
@@ -69,11 +64,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2108_load_music_insert',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_2108_jmp_if_bit_sub_0']
-    },
-    {
         "identifier": 'EVENT_2108_jmp_if_bit_set_14',
         "command": 'jmp_if_bit_set',
         "args": [0x7044, 7, 'EVENT_2108_run_event_as_subroutine_17']
@@ -88,6 +78,11 @@ script = [
     },
     {
         "identifier": 'EVENT_2108_run_event_as_subroutine_17',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_2108_jmp_if_bit_sub_0']
+    },
+    {
+        "identifier": 'EVENT_2108_run_event_as_subroutine_17_',
         "command": 'run_event_as_subroutine',
         "args": [81]
     },

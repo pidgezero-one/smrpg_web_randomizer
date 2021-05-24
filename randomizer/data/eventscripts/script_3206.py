@@ -16,6 +16,16 @@ script = [
         "args": [0x7018, 0x0026]
     },
     {
+        "identifier": 'EVENT_3206_set_bit_40',
+        "command": 'set_bit',
+        "args": [0x7067, 5]
+    },
+    {
+        "identifier": 'EVENT_3206_set_bit_40_',
+        "command": 'set_bit',
+        "args": [0x706F, 4]
+    },
+    {
         "identifier": 'EVENT_3206_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
         "args": [66]

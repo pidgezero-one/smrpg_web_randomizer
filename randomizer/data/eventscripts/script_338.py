@@ -37,8 +37,8 @@ script = [
     },
     {
         "identifier": 'EVENT_338_jmp_to_event_8',
-        "command": 'jmp_to_event',
-        "args": [560]
+        "command": 'jmp',
+        "args": ['EVENT_338_jmp_if_bit_set_355']
     },
     {
         "identifier": 'EVENT_338_run_dialog_9',
@@ -60,8 +60,8 @@ script = [
         "args": ['EVENT_338_run_dialog_9']
     },
     {
-        "identifier": 'EVENT_338_jmp_to_event_13',
+        "identifier": 'EVENT_338_jmp_if_bit_set_355',
         "command": 'jmp_to_event',
-        "args": [560]
-    }
+        "args": [290]
+    },
 ]

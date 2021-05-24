@@ -711,10 +711,12 @@ class ObjectSequenceScript:
         return self
 
     # 0x89
-    def run_away_transfer(self):
+    def transfer_to_7016_7018(self):
         self.append_byte(0x89)
         return self
-    def run_away_transfer_8A(self):
+
+    # 0x8A
+    def walk_to_7016_7018(self):
         self.append_byte(0x8A)
         return self
 
@@ -762,6 +764,16 @@ class ObjectSequenceScript:
     def transfer_to_object_xyz(self, obj):
         self.append_byte(0x95)
         self.append_byte(obj)
+        return self
+
+    # 0x98
+    def walk_to_7016_7018_701A(self):
+        self.append_byte(0x98)
+        return self
+
+    # 0x99
+    def transfer_to_7016_7018_701A(self):
+        self.append_byte(0x99)
         return self
 
     # 0x9B

@@ -79,8 +79,8 @@ script = [
         "args": [0x707c, 5]
     },
     {
-        "identifier": 'EVENT_24_load_600f_15',
-        "command": 'load_600f'
+        "identifier": 'EVENT_24_reactivate_trigger_if_mario_on_top_of_object_15',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_24_ret_16',
@@ -107,6 +107,6 @@ script = [
     {
         "identifier": 'EVENT_24_jmp_21',
         "command": 'jmp',
-        "args": ['EVENT_24_load_600f_15']
+        "args": ['EVENT_24_reactivate_trigger_if_mario_on_top_of_object_15']
     }
 ]

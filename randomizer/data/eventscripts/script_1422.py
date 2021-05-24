@@ -214,19 +214,9 @@ script = [
         "args": [15]
     },
     {
-        "identifier": 'EVENT_1422_set_22',
-        "command": 'set',
-        "args": [0x70a7, 115]
-    },
-    {
-        "identifier": 'EVENT_1422_set_23',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_1422_run_event_as_subroutine_24',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_1422_pause_25',

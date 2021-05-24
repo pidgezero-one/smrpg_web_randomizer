@@ -18,10 +18,9 @@ room = {
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
       "byte_8_bit_4": False,
-    }
-  ],
-  "exit_fields": [
+    },
     {
+      "event": 1946,
       "x": 22,
       "y": 124,
       "z": 0,
@@ -30,20 +29,10 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "byte_2_bit_2": False,
-      "destination": Rooms._458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS,
-      "show_message": False,
-      "destination_props": {
-        "x": 20,
-        "y": 88,
-        "z": 2,
-        "z_half": False,
-        "f": RadialDirection.SOUTHWEST,
-        "x_bit_7": False
-      }
+      "byte_8_bit_4": False,
     }
   ],
+  "exit_fields": [],
   "objects": [
     {
       "id": 0,

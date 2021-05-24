@@ -16,17 +16,86 @@ script = [
         "args": [Sounds._014_FLOWER, 6]
     },
     {
-        "identifier": 'EVENT_3089_run_dialog_25',
-        "command": 'run_dialog',
-        "args": [1177, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
-    },
-    {
         "identifier": 'EVENT_3089_put_inventory_26',
         "command": 'put_inventory',
         "args": [0x70a7]
     },
     {
+        "identifier": 'EVENT_3089_check_12',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 28, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_1',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 78, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_2',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 81, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_10',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 80, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_3',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 84, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_4',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 103, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_9',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 105, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_11',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 114, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_8',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 121, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_5',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 126, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_7',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 141, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_check_6',
+        "command": 'jmp_if_var_equals_byte',
+        "args": [0x70a7, 151, 'EVENT_3089_run_dialog_25_']
+    },
+    {
+        "identifier": 'EVENT_3089_run_dialog_25',
+        "command": 'run_dialog',
+        "args": [1177, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
+    },
+    {
         "identifier": 'EVENT_3089_ret_259',
         "command": 'ret'
-    }
+    },
+    {
+        "identifier": 'EVENT_3089_run_dialog_25_',
+        "command": 'run_dialog',
+        "args": [1178, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
+    },
+    {
+        "identifier": 'EVENT_3089_ret_259_',
+        "command": 'ret'
+    },
 ]

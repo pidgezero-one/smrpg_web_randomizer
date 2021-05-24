@@ -49,6 +49,11 @@ script = [
         "args": [items.CricketPie]
     },
     {
+        "identifier": 'EVENT_1111_open_forest',
+        "command": 'run_event_as_subroutine',
+        "args": [203]
+    },
+    {
         "identifier": 'EVENT_1111_run_event_as_subroutine_9',
         "command": 'run_event_as_subroutine',
         "args": [178]

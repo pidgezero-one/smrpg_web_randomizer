@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_3331_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x707e, 0, 'EVENT_3331_play_music_default_volume_23']
+        "args": [0x707e, 0, 'EVENT_3331_ret_24']
     },
     {
         "identifier": 'EVENT_3331_pause_short_1',
@@ -17,8 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3331_start_battle_2',
-        "command": 'start_battle',
-        "args": [0x00ac, 8]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_3331_set_bit_3',
@@ -109,19 +109,9 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_3331_set_short_21',
-        "command": 'set_short',
-        "args": [0x700a, 0x00de]
-    },
-    {
         "identifier": 'EVENT_3331_jmp_to_event_22',
         "command": 'jmp_to_event',
-        "args": [720]
-    },
-    {
-        "identifier": 'EVENT_3331_play_music_default_volume_23',
-        "command": 'play_music_default_volume',
-        "args": [Music._15_HERES_SOME_WEAPONS]
+        "args": [168]
     },
     {
         "identifier": 'EVENT_3331_ret_24',

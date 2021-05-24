@@ -369,8 +369,8 @@ names[0x86] = named('maximize_sequence_speed_86')
 names[0x87] = named('transfer_to_object_xy', byte(
     prefix="AreaObjects", table=area_object_table))
 names[0x88] = named('run_away_shift')
-names[0x89] = named('run_away_transfer')
-names[0x8A] = named('run_away_transfer_8A')  # indistinguishable from 0x89
+names[0x89] = named('transfer_to_7016_7018')
+names[0x8A] = named('walk_to_7016_7018')  # indistinguishable from 0x89
 # 0x8B - 0x8F undocumented
 names[0x90] = named('bounce_to_xy_with_height',
                     byte_int(), byte_int(), byte_int())

@@ -71,19 +71,9 @@ script = [
         "args": [671, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_395_set_13',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
-        "identifier": 'EVENT_395_set_14',
-        "command": 'set',
-        "args": [0x70a7, 115]
-    },
-    {
         "identifier": 'EVENT_395_run_event_as_subroutine_15',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [179]
     },
     {
         "identifier": 'EVENT_395_remove_one_from_inventory_16',

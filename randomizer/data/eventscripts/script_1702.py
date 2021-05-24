@@ -144,15 +144,6 @@ script = [
                 "identifier": 'EVENT_1702_action_queue_sync_7_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_1702_action_queue_sync_7_SUBSCRIPT_jmp_if_bit_set_4',
-                "command": 'jmp_if_bit_set',
-                "args": [0x7077, 5, 'EVENT_1702_action_queue_async_8']
-            },
-            {
-                "identifier": 'EVENT_1702_action_queue_sync_7_SUBSCRIPT_visibility_off_5',
-                "command": 'visibility_off'
             }
         ]
     },
@@ -180,15 +171,6 @@ script = [
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             },
-            {
-                "identifier": 'EVENT_1702_action_queue_async_8_SUBSCRIPT_jmp_if_bit_set_4',
-                "command": 'jmp_if_bit_set',
-                "args": [0x7077, 6, 'EVENT_1702_set_action_script_sync_9']
-            },
-            {
-                "identifier": 'EVENT_1702_action_queue_async_8_SUBSCRIPT_visibility_off_5',
-                "command": 'visibility_off'
-            }
         ]
     },
     {

@@ -292,8 +292,8 @@ script = [
                 "args": [0x7016, 0x0030]
             },
             {
-                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41_SUBSCRIPT_run_away_transfer_6',
-                "command": 'run_away_transfer'
+                "identifier": 'EVENT_3143_start_embedded_action_script_sync_F1_41_SUBSCRIPT_transfer_to_7016_7018_6',
+                "command": 'transfer_to_7016_7018'
             }
         ]
     },

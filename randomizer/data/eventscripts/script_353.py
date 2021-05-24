@@ -4,4 +4,557 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": "EVENT_353_room_28_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [28, "EVENT_353_room_28_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_103_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [103, "EVENT_353_room_103_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_154_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [154, "EVENT_353_room_154_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_177_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [177, "EVENT_353_room_177_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_192_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [192, "EVENT_353_room_192_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_258_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [258, "EVENT_353_room_258_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_205_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [205, "EVENT_353_room_205_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_206_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [206, "EVENT_353_room_206_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_223_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [223, "EVENT_353_room_223_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_232_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [232, "EVENT_353_room_232_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_254_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [254, "EVENT_353_room_254_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_255_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [255, "EVENT_353_room_255_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_266_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [266, "EVENT_353_room_266_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_268_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [268, "EVENT_353_room_268_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_271_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [271, "EVENT_353_room_271_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_302_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [302, "EVENT_353_room_302_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_315_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [315, "EVENT_353_room_315_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_326_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [326, "EVENT_353_room_326_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_351_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [351, "EVENT_353_room_351_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_352_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [352, "EVENT_353_room_352_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_393_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [393, "EVENT_353_room_393_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_409_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [409, "EVENT_353_room_409_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_430_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [430, "EVENT_353_room_430_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_469_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [469, "EVENT_353_room_469_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_470_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [470, "EVENT_353_room_470_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_471_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [471, "EVENT_353_room_471_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_472_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [472, "EVENT_353_room_472_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_512_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [512, "EVENT_353_room_512_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_513_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [513, "EVENT_353_room_513_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_514_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [514, "EVENT_353_room_514_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_515_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [515, "EVENT_353_room_515_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_516_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [516, "EVENT_353_room_516_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_517_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [517, "EVENT_353_room_517_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_518_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [518, "EVENT_353_room_518_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_519_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [519, "EVENT_353_room_519_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_520_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [520, "EVENT_353_room_520_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_521_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [521, "EVENT_353_room_521_logic"]
+    },
+    {
+        "identifier": "EVENT_353_room_522_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [522, "EVENT_353_room_522_logic"]
+    },
+    {
+        "identifier": "EVENT_353_cancel",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_28_logic",  # johnny
+        "command": 'start_battle',
+        "args": [166, 4]
+    },
+    {
+        "identifier": "EVENT_353_room_28_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_103_logic",  # cloaker/domino
+        "command": 'start_battle',
+        "args": [184, 40]
+    },
+    {
+        "identifier": "EVENT_353_room_103_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_154_logic",  # bundt
+        "command": 'start_battle',
+        "args": [176, 35]
+    },
+    {
+        "identifier": "EVENT_353_room_154_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_177_logic",  # kalimari
+        "command": 'start_battle',
+        "args": [167, 3]
+    },
+    {
+        "identifier": "EVENT_353_room_177_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_192_logic",  # booster
+        "command": 'start_battle',
+        "args": [161, 12]
+    },
+    {
+        "identifier": "EVENT_353_room_192_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_258_logic",  # KGGG
+        "command": 'start_battle',
+        "args": [177, 17]
+    },
+    {
+        "identifier": "EVENT_353_room_258_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_205_logic",  # hammer bro
+        "command": 'start_battle',
+        "args": [183, 9]
+    },
+    {
+        "identifier": "EVENT_353_room_205_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_206_logic",  # croco 1
+        "command": 'start_battle',
+        "args": [163, 9]
+    },
+    {
+        "identifier": "EVENT_353_room_206_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_223_logic",  # count down
+        "command": 'start_battle',
+        "args": [174, 18]
+    },
+    {
+        "identifier": "EVENT_353_room_223_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_232_logic",  # bowyer
+        "command": 'start_battle',
+        "args": [181, 1]
+    },
+    {
+        "identifier": "EVENT_353_room_232_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_254_logic",  # megasmilax
+        "command": 'start_battle',
+        "args": [173, 41]
+    },
+    {
+        "identifier": "EVENT_353_room_254_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_255_logic",  # jagger
+        "command": 'start_battle',
+        "args": [189, 46]
+    },
+    {
+        "identifier": "EVENT_353_room_255_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_266_logic",  # magikoopa
+        "command": 'start_battle',
+        "args": [209, 7]
+    },
+    {
+        "identifier": "EVENT_353_room_266_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_268_logic",  # belome 2
+        "command": 'start_battle',
+        "args": [169, 42]
+    },
+    {
+        "identifier": "EVENT_353_room_268_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_271_logic",  # punchinello
+        "command": 'start_battle',
+        "args": [140, 5]
+    },
+    {
+        "identifier": "EVENT_353_room_271_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_302_logic",  # belome 1
+        "command": 'start_battle',
+        "args": [168, 21]
+    },
+    {
+        "identifier": "EVENT_353_room_302_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_315_logic",  # yaridovich
+        "command": 'start_battle',
+        "args": [180, 37]
+    },
+    {
+        "identifier": "EVENT_353_room_315_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_326_logic",  # mack
+        "command": 'start_battle',
+        "args": [179, 15]
+    },
+    {
+        "identifier": "EVENT_353_room_326_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_351_logic",  # culex
+        "command": 'start_battle',
+        "args": [216, 47]
+    },
+    {
+        "identifier": "EVENT_353_room_351_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_352_logic",  # czar
+        "command": 'start_battle',
+        "args": [172, 8]
+    },
+    {
+        "identifier": "EVENT_353_room_352_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_393_logic",  # axems
+        "command": 'start_battle',
+        "args": [182, 39]
+    },
+    {
+        "identifier": "EVENT_353_room_393_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_409_logic",  # birdetta
+        "command": 'start_battle',
+        "args": [175, 23]
+    },
+    {
+        "identifier": "EVENT_353_room_409_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_430_logic",  # valentina
+        "command": 'start_battle',
+        "args": [171, 24]
+    },
+    {
+        "identifier": "EVENT_353_room_430_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_469_logic",  # clerk
+        "command": 'start_battle',
+        "args": [146, 48]
+    },
+    {
+        "identifier": "EVENT_353_room_469_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_470_logic",  # gunyolk
+        "command": 'start_battle',
+        "args": [149, 48]
+    },
+    {
+        "identifier": "EVENT_353_room_470_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_471_logic",  # manager
+        "command": 'start_battle',
+        "args": [147, 48]
+    },
+    {
+        "identifier": "EVENT_353_room_471_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_472_logic",  # director
+        "command": 'start_battle',
+        "args": [148, 48]
+    },
+    {
+        "identifier": "EVENT_353_room_472_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_512_logic",  # pandorite chest
+        "command": 'set_short',
+        "args": [0x700e, 156]
+    },
+    {
+        "identifier": "EVENT_353_room_512_logic__",
+        "command": 'start_battle_700E'
+    },
+    {
+        "identifier": "EVENT_353_room_512_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_513_logic",  # hidon chest
+        "command": 'set_short',
+        "args": [0x700e, 157]
+    },
+    {
+        "identifier": "EVENT_353_room_513_logic__",
+        "command": 'start_battle_700E'
+    },
+    {
+        "identifier": "EVENT_353_room_513_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_514_logic",  # box boy chest
+        "command": 'set_short',
+        "args": [0x700e, 158]
+    },
+    {
+        "identifier": "EVENT_353_room_514_logic__",
+        "command": 'start_battle_700E'
+    },
+    {
+        "identifier": "EVENT_353_room_514_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_515_logic",  # jinx 1
+        "command": 'start_battle',
+        "args": [178, 46]
+    },
+    {
+        "identifier": "EVENT_353_room_515_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_516_logic",  # jinx 2
+        "command": 'start_battle',
+        "args": [187, 46]
+    },
+    {
+        "identifier": "EVENT_353_room_516_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_517_logic",  # jinx 3
+        "command": 'start_battle',
+        "args": [188, 46]
+    },
+    {
+        "identifier": "EVENT_353_room_517_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_518_logic",  # croco 2
+        "command": 'start_battle',
+        "args": [164, 5]
+    },
+    {
+        "identifier": "EVENT_353_room_518_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_353_room_519_logic',  # mokura
+        "command": 'set_short',
+        "args": [0x700e, 207]
+    },
+    {
+        "identifier": "EVENT_353_room_519_logic__",
+        "command": 'start_battle_700E'
+    },
+    {
+        "identifier": "EVENT_353_room_519_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_520_logic",  # dodo
+        "command": 'start_battle',
+        "args": [208, 22]
+    },
+    {
+        "identifier": "EVENT_353_room_520_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_521_logic",  # boomer
+        "command": 'start_battle',
+        "args": [210, 29]
+    },
+    {
+        "identifier": "EVENT_353_room_521_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_522_logic",  # exor
+        "command": 'start_battle',
+        "args": [186, 16]
+    },
+    {
+        "identifier": "EVENT_353_room_522_logic_",
+        "command": 'ret'
+    }
+]

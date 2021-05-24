@@ -677,7 +677,7 @@ for i in room_table:
 
 location_table = {
     0x00: '_000_TO_MARIOS_PAD_BEFORE',
-    0x01: '_001_BOWSERS_KEEP_BEFORE',
+    0x01: '_001_INNER_FACTORY',
     0x02: '_002_TO_MARIOS_PAD',
     0x03: '_003_VISTA_HILL',
     0x04: '_004_BOWSERS_KEEP',

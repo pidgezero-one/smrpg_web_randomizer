@@ -33,6 +33,6 @@ script = [
     {
         "identifier": 'EVENT_3380_jmp_5',
         "command": 'jmp',
-        "args": ['EVENT_3376_mem_7000_and_const_56']
+        "args": ['EVENT_3376_clear_attempt_counter']
     }
 ]

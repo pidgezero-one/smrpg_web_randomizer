@@ -16,19 +16,9 @@ script = [
         "args": [0x704b, 6]
     },
     {
-        "identifier": 'EVENT_3685_set_2',
-        "command": 'set',
-        "args": [0x70a7, 93]
-    },
-    {
-        "identifier": 'EVENT_3685_set_3',
-        "command": 'set',
-        "args": [0x7000, 524]
-    },
-    {
         "identifier": 'EVENT_3685_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [241]
     },
     {
         "identifier": 'EVENT_3685_ret_5',

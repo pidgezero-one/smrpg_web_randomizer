@@ -270,8 +270,7 @@ script = [
     },
     {
         "identifier": 'ACTION_57_db_54',
-        "command": 'db',
-        "args": [0x98]
+        "command": 'walk_to_7016_7018_701A'
     },
     {
         "identifier": 'ACTION_57_set_700C_to_7000_short_mem_55',

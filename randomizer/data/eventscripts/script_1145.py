@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_1145_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7058, 7, 'EVENT_1146_action_queue_sync_2']
+        "args": [0x7057, 1, 'EVENT_1146_action_queue_sync_2']
     },
     {
         "identifier": 'EVENT_1145_fade_in_from_black_async_1',

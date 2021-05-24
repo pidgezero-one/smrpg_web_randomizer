@@ -154,31 +154,12 @@ script = [
     {
         "identifier": 'EVENT_3194_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_3194_close_dialog_13']
+        "args": [0x7040, 1, 'EVENT_3194_clear_bit_14']
     },
     {
         "identifier": 'EVENT_3194_set_9',
-        "command": 'set',
-        "args": [0x70a7, 115]
-    },
-    {
-        "identifier": 'EVENT_3194_play_sound_10',
-        "command": 'play_sound',
-        "args": [Sounds._085_FLOWER, 6]
-    },
-    {
-        "identifier": 'EVENT_3194_run_dialog_11',
-        "command": 'run_dialog',
-        "args": [524, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3194_put_inventory_12',
-        "command": 'put_inventory',
-        "args": [0x70a7]
-    },
-    {
-        "identifier": 'EVENT_3194_close_dialog_13',
-        "command": 'close_dialog'
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_3194_clear_bit_14',

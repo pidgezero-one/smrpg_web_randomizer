@@ -67,20 +67,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3640_jmp_if_bit_set_9',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705f, 4, 'EVENT_3640_action_queue_sync_18']
-    },
-    {
-        "identifier": 'EVENT_3640_jmp_10',
-        "command": 'jmp',
-        "args": ['EVENT_3640_action_queue_sync_12']
-    },
-    {
-        "identifier": 'EVENT_3640_ret_11',
-        "command": 'ret'
-    },
-    {
         "identifier": 'EVENT_3640_action_queue_sync_12',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_0],
@@ -146,106 +132,6 @@ script = [
     {
         "identifier": 'EVENT_3640_fade_in_from_black_async_15',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_3640_jmp_16',
-        "command": 'jmp',
-        "args": ['EVENT_3640_fade_out_music_to_volume_24']
-    },
-    {
-        "identifier": 'EVENT_3640_ret_17',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3640_action_queue_sync_18',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_18_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [5]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_18_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_18_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_18_SUBSCRIPT_shadow_off_3',
-                "command": 'shadow_off'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3640_action_queue_sync_19',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_19_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [5]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_19_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_19_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_19_SUBSCRIPT_shadow_off_3',
-                "command": 'shadow_off'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3640_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_async_20_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [5]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_20_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_20_SUBSCRIPT_shadow_off_3',
-                "command": 'shadow_off'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3640_fade_in_from_black_async_21',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_3640_jmp_22',
-        "command": 'jmp',
-        "args": ['EVENT_3640_fade_out_music_to_volume_24']
-    },
-    {
-        "identifier": 'EVENT_3640_ret_23',
-        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3640_fade_out_music_to_volume_24',
@@ -1791,11 +1677,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3640_set_bit_203',
-        "command": 'set_bit',
-        "args": [0x7092, 7]
-    },
-    {
         "identifier": 'EVENT_3640_pause_210',
         "command": 'pause',
         "args": [60]
@@ -1860,20 +1741,50 @@ script = [
         "identifier": 'EVENT_3640_unfreeze_camera_217',
         "command": 'unfreeze_camera'
     },
+
+
     {
-        "identifier": 'EVENT_3640_set_218',
-        "command": 'set',
-        "args": [0x70a7, 91]
+        "identifier": 'EVENT_3640_jmp_if_alt_condition_on',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7086, 7, 'EVENT_3640_set_bit_203']
+    },
+
+    
+    {
+        "identifier": 'EVENT_3640_jmp_if_already_checked_star_piece_1',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7081, 2, 'EVENT_3640_jmp_']
     },
     {
-        "identifier": 'EVENT_3640_set_219',
+        "identifier": 'EVENT_3640_set_sp_bit_1',
+        "command": "set_bit",
+        "args": [0x7081, 2]
+    },
+
+    {
+        "identifier": 'EVENT_3640_set',
         "command": 'set',
-        "args": [0x7000, 524]
+        "args": [0x7000, 520]
     },
     {
-        "identifier": 'EVENT_3640_run_event_as_subroutine_220',
+        "identifier": 'EVENT_3640_star',
         "command": 'run_event_as_subroutine',
-        "args": [3828]
+        "args": [167]
+    },
+    {
+        "identifier": 'EVENT_3640_jmp_',
+        "command": 'jmp',
+        "args": ['EVENT_3640_item']
+    },
+    {
+        "identifier": 'EVENT_3640_set_bit_203',
+        "command": 'set_bit',
+        "args": [0x7092, 7]
+    },
+    {
+        "identifier": 'EVENT_3640_item',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_3640_ret_226',
@@ -2223,8 +2134,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_start_battle_249',
-        "command": 'start_battle',
-        "args": [0x00d0, 22]
+        "command": 'set',
+        "args": [0x7000, 520]
+    },
+    {
+        "identifier": 'EVENT_3640_start_battle_700E_4',
+        "command": 'run_event_as_subroutine',
+        'args': [353]
     },
     {
         "identifier": 'EVENT_3640_jmp_if_bit_clear_250',
@@ -2363,15 +2279,26 @@ script = [
         "command": 'play_music_default_volume',
         "args": [Music._61_VALENTINA]
     },
+    
     {
-        "identifier": 'EVENT_3640_set_short_270',
-        "command": 'set_short',
-        "args": [0x700a, 0x00db]
+        "identifier": 'EVENT_3640_jmp_if_already_checked_star_piece_2',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7081, 2, 'EVENT_3640_ret_272']
     },
     {
-        "identifier": 'EVENT_3640_jmp_to_event_271',
-        "command": 'jmp_to_event',
-        "args": [720]
+        "identifier": 'EVENT_3640_set_sp_bit_2',
+        "command": "set_bit",
+        "args": [0x7081, 2]
+    },
+    {
+        "identifier": 'EVENT_3640_set_',
+        "command": 'set',
+        "args": [0x7000, 520]
+    },
+    {
+        "identifier": 'EVENT_3640_star_',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
     },
     {
         "identifier": 'EVENT_3640_ret_272',
@@ -2383,14 +2310,24 @@ script = [
         "args": [Music._50_NIMBUS_LAND]
     },
     {
-        "identifier": 'EVENT_3640_set_short_274',
-        "command": 'set_short',
-        "args": [0x700a, 0x00db]
+        "identifier": 'EVENT_3640_jmp_if_already_checked_star_piece_3',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7081, 2, 'EVENT_3640_ret_276']
     },
     {
-        "identifier": 'EVENT_3640_jmp_to_event_275',
-        "command": 'jmp_to_event',
-        "args": [720]
+        "identifier": 'EVENT_3640_set_sp_bit_3',
+        "command": "set_bit",
+        "args": [0x7081, 2]
+    },
+    {
+        "identifier": 'EVENT_3640_set__',
+        "command": 'set',
+        "args": [0x7000, 520]
+    },
+    {
+        "identifier": 'EVENT_3640_star__',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
     },
     {
         "identifier": 'EVENT_3640_ret_276',
@@ -3008,6 +2945,10 @@ script = [
                 "command": 'walk_1_step_northwest'
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_3640_ret_430_',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3640_run_dialog__',

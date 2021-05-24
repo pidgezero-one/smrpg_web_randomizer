@@ -152,7 +152,7 @@ room = {
       "type": ObjectType.OBJECT,
       "initiator": Initiator.ANYTHING_EXCEPT_PRESS_A,
       "model": 195,
-      "event_script": 3238,
+      "event_script": 241,
       "action_script": 925,
       "speed": 0,
       "npc_id_offset": 0,

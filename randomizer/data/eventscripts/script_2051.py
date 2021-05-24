@@ -20,11 +20,6 @@ script = [
                 "command": 'sequence_looping_on'
             },
             {
-                "identifier": 'EVENT_2051_action_queue_sync_7_SUBSCRIPT_transfer_to_xyzf_2',
-                "command": 'transfer_to_xyzf',
-                "args": [15, 19, 0, RadialDirections.EAST]
-            },
-            {
                 "identifier": 'EVENT_2051_action_queue_sync_7_SUBSCRIPT_shift_southeast_pixels_3',
                 "command": 'shift_southeast_pixels',
                 "args": [8]
@@ -70,11 +65,6 @@ script = [
             {
                 "identifier": 'EVENT_2051_action_queue_sync_8_SUBSCRIPT_sequence_looping_on_3',
                 "command": 'sequence_looping_on'
-            },
-            {
-                "identifier": 'EVENT_2051_action_queue_sync_8_SUBSCRIPT_transfer_to_xyzf_4',
-                "command": 'transfer_to_xyzf',
-                "args": [13, 17, 2, RadialDirections.EAST]
             },
             {
                 "identifier": 'EVENT_2051_action_queue_sync_8_SUBSCRIPT_shift_southeast_pixels_5',
@@ -124,11 +114,6 @@ script = [
                 "command": 'sequence_looping_on'
             },
             {
-                "identifier": 'EVENT_2051_action_queue_sync_9_SUBSCRIPT_transfer_to_xyzf_4',
-                "command": 'transfer_to_xyzf',
-                "args": [14, 18, 2, RadialDirections.EAST]
-            },
-            {
                 "identifier": 'EVENT_2051_action_queue_sync_9_SUBSCRIPT_shift_southeast_pixels_5',
                 "command": 'shift_southeast_pixels',
                 "args": [8]
@@ -176,11 +161,6 @@ script = [
                 "command": 'sequence_looping_on'
             },
             {
-                "identifier": 'EVENT_2051_action_queue_async_10_SUBSCRIPT_transfer_to_xyzf_4',
-                "command": 'transfer_to_xyzf',
-                "args": [14, 19, 2, RadialDirections.EAST]
-            },
-            {
                 "identifier": 'EVENT_2051_action_queue_async_10_SUBSCRIPT_shift_southeast_pixels_5',
                 "command": 'shift_southeast_pixels',
                 "args": [4]
@@ -203,21 +183,6 @@ script = [
                 "command": 'shadow_off'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_2051_set_action_script_sync_11',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_1, 878]
-    },
-    {
-        "identifier": 'EVENT_2051_set_action_script_sync_12',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 879]
-    },
-    {
-        "identifier": 'EVENT_2051_set_action_script_sync_13',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_2, 879]
     },
     {
         "identifier": 'EVENT_2051_apply_solidity_mod_14',

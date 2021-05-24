@@ -23,6 +23,6 @@ script = [
     {
         "identifier": 'EVENT_1842_jmp_to_event_3',
         "command": 'jmp_to_event',
-        "args": [1838]
+        "args": [241]
     }
 ]

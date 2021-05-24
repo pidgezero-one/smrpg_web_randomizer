@@ -117,7 +117,7 @@ dialog_data[66] = '''Even though `TOWER_BOSS_1` and
  bad fanfic, invites to this wedding
  are highly exclusive.[await]'''
 dialog_data[67] = ''' Don't listen to that guy,
- Toadstool x `RANDOM_BOSS_NAME_1`
+ `MARRYMORE_CHAARCTER` x `RANDOM_BOSS_NAME_1`
  is a much better ship.[await]'''
 dialog_data[68] = ''' We were about to begin the
  ceremony when some kids, wearing
@@ -316,8 +316,7 @@ dialog_data[191] = '''[await]'''
 dialog_data[192] = '''[await]'''
 dialog_data[193] = ''' If you want more Frog Coins, you
  can get some from scaling the
- Land's End cliff in
- under 11 seconds.[await]'''
+ Land's End cliff under 11 seconds.[await]'''
 dialog_data[194] = '''\n            Got a Frog Coin![await]'''
 dialog_data[195] = '''[await]'''
 dialog_data[196] = '''[await]'''
@@ -645,7 +644,7 @@ dialog_data[367] = ''' You might find something nice if
  of our town square.[await]
  ...But only if you get into a fight
  with the castle's owner first.[await]
- Why?[delay_30] I don't know.[await][delay] We have some
+ Why?[delay_30] I don't know.[delay] We have some
  weird laws here.[await]'''
 dialog_data[368] = ''' Garro lives in the north part of
  town, just west of the castle.[await][pause] He
@@ -1109,7 +1108,8 @@ dialog_data[673] = '''[await]'''
 dialog_data[674] = '''[await]'''
 dialog_data[675] = '''[await]'''
 dialog_data[676] = '''         Need the key to get in[await]'''
-dialog_data[677] = '''[await]'''
+dialog_data[677] = '''
+     Need the “Shed Key” to get in[await]'''
 dialog_data[678] = '''[await]'''
 dialog_data[679] = '''[await]'''
 dialog_data[680] = '''[await]'''
@@ -1455,7 +1455,7 @@ dialog_data[908] = '''[await]'''
 dialog_data[909] = '''[await]'''
 dialog_data[910] = '''[await]'''
 dialog_data[911] = '''[await]'''
-dialog_data[912] = '''[await]'''
+dialog_data[912] = '''  You will enter combat against me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''
 dialog_data[913] = '''[await]'''
 dialog_data[914] = '''[await]'''
 dialog_data[915] = '''[await]'''
@@ -1471,3 +1471,5 @@ dialog_data[919] = ''' All right, let’s hear it again.[await]'''
 dialog_data[920] = ''' To recompose the song, just jump
  on the froggies.[await]'''
 dialog_data[921] = '''[await]'''
+
+        

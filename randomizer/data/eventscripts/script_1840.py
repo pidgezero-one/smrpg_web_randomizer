@@ -251,8 +251,8 @@ script = [
         "args": [AreaObjects.MEM_70A8, 'EVENT_1840_pause_46']
     },
     {
-        "identifier": 'EVENT_1840_load_600f_51',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1840_reactivate_trigger_if_mario_on_top_of_object_51',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1840_ret_52',
@@ -375,8 +375,8 @@ script = [
         "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
-        "identifier": 'EVENT_1840_load_600f_68',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1840_reactivate_trigger_if_mario_on_top_of_object_68',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1840_ret_69',
@@ -453,7 +453,7 @@ script = [
     {
         "identifier": 'EVENT_1840_jmp_if_7000_equals_short_82',
         "command": 'jmp_if_7000_equals_short',
-        "args": [455, 'EVENT_1840_load_600f_85']
+        "args": [455, 'EVENT_1840_reactivate_trigger_if_mario_on_top_of_object_85']
     },
     {
         "identifier": 'EVENT_1840_unfreeze_all_npcs_83',
@@ -465,8 +465,8 @@ script = [
         "args": [0x704d, 1]
     },
     {
-        "identifier": 'EVENT_1840_load_600f_85',
-        "command": 'load_600f'
+        "identifier": 'EVENT_1840_reactivate_trigger_if_mario_on_top_of_object_85',
+        "command": 'reactivate_trigger_if_mario_on_top_of_object'
     },
     {
         "identifier": 'EVENT_1840_ret_86',
