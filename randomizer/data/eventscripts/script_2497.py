@@ -99,6 +99,26 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
+        "identifier": 'EVENT_2497_____starter_1',
+        "command": 'run_event_as_subroutine',
+        "args": [179]
+    },
+    {
+        "identifier": 'EVENT_2497_____starter_2',
+        "command": 'run_event_as_subroutine',
+        "args": [180]
+    },
+    {
+        "identifier": 'EVENT_2497_____starter_3',
+        "command": 'run_event_as_subroutine',
+        "args": [181]
+    },
+    {
+        "identifier": 'EVENT_2497_____starter_4',
+        "command": 'run_event_as_subroutine',
+        "args": [182]
+    },
+    {
         "identifier": 'EVENT_2497_____play_music_default_volume_242',
         "command": 'play_music_default_volume',
         "args": [Music._14_MARIOS_PAD]

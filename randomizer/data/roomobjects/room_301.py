@@ -64,7 +64,7 @@ room = {
       "initiator": Initiator.HIT_FROM_BELOW,
       "model": 503,
       "event_script": 172,
-      "action_script": 435,
+      "action_script": 14,
       "speed": 0,
       "star_offset": 0,
       "item_offset": 0,

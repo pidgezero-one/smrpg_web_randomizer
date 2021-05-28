@@ -44,6 +44,10 @@ script = [
         "command": 'restore_all_fp'
     },
     {
+        "identifier": 'EVENT_3201_fade_in_from_black_async_365',
+        "command": 'fade_in_from_black_async'
+    },
+    {
         "identifier": 'EVENT_3201_action_queue_async_14',
         "command": 'action_queue_async',
         "args": [AreaObjects.MEM_70A8],

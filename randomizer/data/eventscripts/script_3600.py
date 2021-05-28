@@ -1765,6 +1765,26 @@ script = [
         "args": [178]
     },
     {
+        "identifier": 'EVENT_3600_pause_277_',
+        "command": 'pause',
+        "args": [10]
+    },
+    {
+        "identifier": "EVENT_3600_item_grant_",
+        "command": "run_event_as_subroutine",
+        "args": [180]
+    },
+    {
+        "identifier": 'EVENT_3600_pause_277__',
+        "command": 'pause',
+        "args": [10]
+    },
+    {
+        "identifier": "EVENT_3600_item_grant__",
+        "command": "run_event_as_subroutine",
+        "args": [181]
+    },
+    {
         "identifier": 'EVENT_3600_pause_277',
         "command": 'pause',
         "args": [10]

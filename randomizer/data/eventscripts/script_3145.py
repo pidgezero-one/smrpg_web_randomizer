@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_3145_jmp_to_event_2',
         "command": 'jmp_to_event',
-        "args": [246]
+        "args": [173]
     },
     {
         "identifier": 'EVENT_3145_set_4',
@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'EVENT_3145_set_bit_9',
         "command": 'jmp_to_event',
-        "args": [245]
+        "args": [174]
     },
     {
         "identifier": 'EVENT_3145_ret_10',

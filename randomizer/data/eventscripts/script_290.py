@@ -42,7 +42,7 @@ script = [
     {
         "identifier": 'EVENT_290_set_361',
         "command": 'set',
-        "args": [0x70a7, 128]
+        "args": [0x7000, 128]
     },
     {
         "identifier": 'EVENT_290_store_7000_item_quantity_to_70A7_362',
@@ -61,6 +61,10 @@ script = [
     {
         "identifier": 'EVENT_290_fade_in_from_black_async_365',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_290_ret_360__',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_290_run_event_as_subroutine_359_',

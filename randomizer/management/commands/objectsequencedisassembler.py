@@ -526,7 +526,8 @@ fd_names[0x19] = named('object_memory_set_bit', con(0x0D), con_bitarray([6]))
 # 0x1A - 0x3C undocumented
 fd_names[0x3D] = named('jmp_if_object_in_air', byte(
     prefix="AreaObjects", table=area_object_table), short())
-fd_names[0x3E] = named('unknown_jmp_FD_3E', byte(), byte(), byte(), short())
+fd_names[0x3E] = named('create_packet_event_at_coords_jmp_if_null', byte(
+    prefix="NPCPackets", table=npc_packet_table), short_int(), short())
 # 0x3F - 0x9B undocumented
 # 0x1A - 0x9B undocumente
 fd_names[0x9E] = named('play_sound', byte(

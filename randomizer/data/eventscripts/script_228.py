@@ -10,6 +10,11 @@ script = [
         "command": 'set_7000_to_current_level'
     },
     {
+        "identifier": "EVENT_228_room_41_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [41, 'EVENT_228_room_41_set']
+    },
+    {
         "identifier": "EVENT_228_room_422_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [422, "EVENT_228_room_422_logic"]
@@ -17,6 +22,16 @@ script = [
     {
         "identifier": "EVENT_228_cancel",
         "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_228_room_41_logic',
+        "command": 'set',
+        "args": [0x70a7, 140]
+    },
+    {
+        "identifier": 'EVENT_228_room_41_jmp',
+        "command": 'jmp_to_event',
+        "args": [165]
     },
     {
         "identifier": 'EVENT_228_room_422_logic',

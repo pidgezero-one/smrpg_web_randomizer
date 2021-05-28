@@ -409,7 +409,7 @@ script = [
     {
         "identifier": 'EVENT_2342_run_event_as_subroutine_31',
         "command": 'run_event_as_subroutine',
-        "args": [241]
+        "args": [253]
     },
     {
         "identifier": 'EVENT_2342_set_action_script_async_41',

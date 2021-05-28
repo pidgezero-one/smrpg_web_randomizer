@@ -5,26 +5,6 @@ from randomizer.data.eventtables import ControllerDirections, RadialDirections, 
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
 script = [
-    {
-        "identifier": 'EVENT_192_____put_inventory_23',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
-    },
-    {
-        "identifier": 'EVENT_192_____put_inventory_24',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
-    },
-    {
-        "identifier": 'EVENT_192_____put_inventory_25',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
-    },
-    {
-        "identifier": 'EVENT_192_____put_inventory_26',
-        "command": 'put_inventory',
-        "args": [items.Mushroom]
-    },
 
     # skip bowsers keep
     {

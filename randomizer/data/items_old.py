@@ -9,45 +9,10 @@ from randomizer.logic.patch import Patch
 from .characters import Mario, Mallow, Geno, Bowser, Peach
 
 
-class OverworldItem:
-    def __init__(self, model, action_script):
-        self.model = model
-        self.action_script = action_script
-
-
-overworld_items = {
-    "flower": OverworldItem(196, 15),
-    "mushroom": OverworldItem(196, 831),
-    "key": OverworldItem(196, 830),
-    "ring": OverworldItem(222, 793),
-    "shoes": OverworldItem(222, 830),
-    "junk": OverworldItem(222, 15),
-    "feather": OverworldItem(131, 830),
-    "brooch": OverworldItem(222, 201),
-    "music": OverworldItem(195, 202),
-    "mushroom_item": OverworldItem(264, 483),
-    "hammer": OverworldItem(31, 15),
-    "coin": OverworldItem(499, 925),
-    "small_coin": OverworldItem(194, 163),
-    "frog_coin": OverworldItem(195, 925),
-    "star_piece": OverworldItem(28, 591),
-    "bomb": OverworldItem(37, 15),
-    "egg": OverworldItem(462, 15),
-    "default": OverworldItem(195, 773),
-}
-
-
 class ItemShuffleType(enum.Enum):
     """Enumeration for key item types for shuffling."""
     Required = enum.auto()
     Extra = enum.auto()
-
-
-class ItemUnique(enum.Enum):
-    """Enumeration for items that may need to be restricted by how many times they can appear."""
-    Always = enum.auto()
-    BalancedOnly = enum.auto()
-    Never = enum.auto()
 
 
 class Item:
@@ -66,8 +31,7 @@ class Item:
     NUM_ITEMS = 256
 
     # Stats used during equipment randomization.
-    EQUIP_STATS = ["speed", "attack", "defense",
-                   "magic_attack", "magic_defense"]
+    EQUIP_STATS = ["speed", "attack", "defense", "magic_attack", "magic_defense"]
 
     # Default per-item attributes.
     index = 0
@@ -93,12 +57,7 @@ class Item:
     frog_coin_item = False
     rare = False
     basic = False
-    effect_type = "normal"
-
-    # Shuffle properties
     shuffle_type = ItemShuffleType.Extra
-    unique = ItemUnique.Never
-    max_allowed = 1
     rank_value = 0
     rank_order = 0
     rank_order_reverse = 0
@@ -106,17 +65,8 @@ class Item:
     vanilla_shop = False
     hard_tier = 0
     magic_weapon = False
+    effect_type = "normal"
 
-    # Shuffle event builders
-    model = overworld_items["default"]
-    chest_70A7_lower = 0
-    chest_70A7_upper = 0
-    packet = 37
-    chest_events = []
-    quick_chest_events = []
-    npc_events = []
-    overworld_events = []
-    overworld_midas_events = []
     dialog_replacements = []
 
     # Flag to override whether we include the item stats in the patch data.  By default, we only include equipment but
@@ -397,8 +347,7 @@ class Item:
                 data += utils.ByteField(val).as_bytes()
 
                 # Which characters can equip
-                data += utils.BitMapSet(1,
-                                        [c.index for c in self.equip_chars]).as_bytes()
+                data += utils.BitMapSet(1, [c.index for c in self.equip_chars]).as_bytes()
 
                 patch.add_data(base_addr, data)
 
@@ -418,8 +367,7 @@ class Item:
 
         # Price
         price_addr = self.BASE_PRICE_ADDRESS + (self.index * 2)
-        patch.add_data(price_addr, utils.ByteField(
-            self.price, num_bytes=2).as_bytes())
+        patch.add_data(price_addr, utils.ByteField(self.price, num_bytes=2).as_bytes())
 
         return patch
 
@@ -457,17 +405,14 @@ class Item:
         for desc in descriptions:
             # If the description is empty, just use the null byte at the very beginning.
             if not desc:
-                pointer = cls.BASE_DESC_DATA_ADDRESSES[0][0] - \
-                    cls.DESC_DATA_POINTER_OFFSET
-                pointer_data += utils.ByteField(pointer,
-                                                num_bytes=2).as_bytes()
+                pointer = cls.BASE_DESC_DATA_ADDRESSES[0][0] - cls.DESC_DATA_POINTER_OFFSET
+                pointer_data += utils.ByteField(pointer, num_bytes=2).as_bytes()
                 continue
 
             # Compute pointer from base address and current data length.  If we exceed the ending address of the current
             # data bank, move to the next one.  If we run out, it's an error.
             while True:
-                pointer = cls.BASE_DESC_DATA_ADDRESSES[current_bank][0] + len(
-                    text_data[current_bank])
+                pointer = cls.BASE_DESC_DATA_ADDRESSES[current_bank][0] + len(text_data[current_bank])
                 if (pointer + len(desc) + 1) > cls.BASE_DESC_DATA_ADDRESSES[current_bank][1]:
                     current_bank += 1
                     if current_bank >= len(cls.BASE_DESC_DATA_ADDRESSES):
@@ -476,8 +421,7 @@ class Item:
 
                 # Subtract base pointer offset from computed final address.
                 pointer -= cls.DESC_DATA_POINTER_OFFSET
-                pointer_data += utils.ByteField(pointer,
-                                                num_bytes=2).as_bytes()
+                pointer_data += utils.ByteField(pointer, num_bytes=2).as_bytes()
                 break
 
             # Add null byte to terminate the text string.
@@ -487,16 +431,14 @@ class Item:
 
         # Sanity check that pointer data has the correct number of items.
         if len(pointer_data) != cls.NUM_ITEMS * 2:
-            raise ValueError(
-                "Wrong length for pointer data, something went wrong...")
+            raise ValueError("Wrong length for pointer data, something went wrong...")
 
         # Sanity check that text data doesn't exceed size of each bank.
         for i, bank in enumerate(cls.BASE_DESC_DATA_ADDRESSES):
             data_len = len(text_data[i])
             bank_len = bank[1] - bank[0] + 1
             if data_len > bank_len:
-                raise ValueError("Item description data bank {} too long: {} > max {}".format(
-                    i, data_len, bank_len))
+                raise ValueError("Item description data bank {} too long: {} > max {}".format(i, data_len, bank_len))
 
         # Add item description data to the patch data.
         patch.add_data(cls.BASE_DESC_POINTER_ADDRESS, pointer_data)
@@ -506,35 +448,9 @@ class Item:
         return patch
 
 
-class RegularItem(Item):
-    chest_events = [3089]
-    npc_events = [160]
-    overworld_events = [165]
-    overworld_midas_events = [2820]
-
-    def __init__(self, world):
-        """
-
-        Args:
-            world (randomizer.logic.main.GameWorld):
-
-        """
-        super().__init__(world)
-        self.chest_70A7_lower = self.index
-
-    def get_patch(self):
-        """Get patch for this item.
-
-        Returns:
-            randomizer.logic.patch.Patch:
-        """
-        patch = super().get_patch()
-        return patch
-
 # *************************** Actual item classes
 
-
-class Hammer(RegularItem):
+class Hammer(Item):
     index = 5
     description = 'Pounds\x01enemies'
     tier = 5
@@ -544,19 +460,14 @@ class Hammer(RegularItem):
     variance = 1
     price = 70
     rare = True
-    unique = ItemUnique.BalancedOnly
-    model = overworld_items["hammer"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class FroggieStick(RegularItem):
+class FroggieStick(Item):
     index = 6
     description = 'Frogfucius\x01made it'
     tier = 5
@@ -566,18 +477,14 @@ class FroggieStick(RegularItem):
     variance = 2
     price = 180
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Caster's Staff”!\n It looks pretty good at bonking.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Caster's Staff”.\n It looks pretty good at bonking.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Caster's Staff”.\n It looks pretty good at bonking.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Caster's Staff”!\n It looks pretty good at bonking.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Caster's Staff”.\n It looks pretty good at bonking.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Caster's Staff”.\n It looks pretty good at bonking.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class NokNokShell(RegularItem):
+class NokNokShell(Item):
     index = 7
     description = 'Kick to attack'
     tier = 5
@@ -587,18 +494,14 @@ class NokNokShell(RegularItem):
     variance = 2
     price = 20
     vanilla_shop = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Green Shell”!\n There's no turtle inside of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Green Shell”.\n There's no turtle inside of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Green Shell”.\n There's no turtle inside of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Green Shell”!\n There's no turtle inside of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Green Shell”.\n There's no turtle inside of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Green Shell”.\n There's no turtle inside of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class PunchGlove(RegularItem):
+class PunchGlove(Item):
     index = 8
     description = 'Knock out\x01power!'
     tier = 5
@@ -610,7 +513,7 @@ class PunchGlove(RegularItem):
     vanilla_shop = True
 
 
-class FingerShot(RegularItem):
+class FingerShot(Item):
     index = 9
     description = 'Fingers shoot\x01bullets'
     tier = 5
@@ -622,7 +525,7 @@ class FingerShot(RegularItem):
     vanilla_shop = True
 
 
-class Cymbals(RegularItem):
+class Cymbals(Item):
     index = 10
     description = 'Scare enemies\x01with a clash'
     tier = 5
@@ -632,10 +535,9 @@ class Cymbals(RegularItem):
     variance = 3
     price = 42
     vanilla_shop = True
-    model = overworld_items["music"]
 
 
-class Chomp(RegularItem):
+class Chomp(Item):
     index = 11
     description = 'Just spin me\x01at an enemy!'
     tier = 3
@@ -645,18 +547,14 @@ class Chomp(RegularItem):
     variance = 4
     price = 140
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Chain Chomp”!\n It's hungry to stir up some trouble.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Chain Chomp”.\n It's hungry to stir up some trouble.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Chain Chomp”.\n It's hungry to stir up some trouble.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Chain Chomp”!\n It's hungry to stir up some trouble.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Chain Chomp”.\n It's hungry to stir up some trouble.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Chain Chomp”.\n It's hungry to stir up some trouble.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class Masher(RegularItem):
+class Masher(Item):
     index = 12
     description = 'Makes monster\x01mash!'
     tier = 3
@@ -666,19 +564,14 @@ class Masher(RegularItem):
     variance = 30
     price = 160
     rare = True
-    unique = ItemUnique.BalancedOnly
-    model = overworld_items["hammer"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class ChompShell(RegularItem):
+class ChompShell(Item):
     index = 13
     description = 'It~s a\x01Kinklink shell'
     tier = 5
@@ -690,7 +583,7 @@ class ChompShell(RegularItem):
     vanilla_shop = True
 
 
-class SuperHammer(RegularItem):
+class SuperHammer(Item):
     index = 14
     description = 'The standard\x01for hammers!'
     tier = 5
@@ -700,10 +593,9 @@ class SuperHammer(RegularItem):
     variance = 4
     price = 70
     vanilla_shop = True
-    model = overworld_items["hammer"]
 
 
-class HandGun(RegularItem):
+class HandGun(Item):
     index = 15
     description = 'It packs a kick'
     tier = 5
@@ -715,7 +607,7 @@ class HandGun(RegularItem):
     vanilla_shop = True
 
 
-class WhompGlove(RegularItem):
+class WhompGlove(Item):
     index = 16
     description = 'The old double\x01whammie!'
     tier = 5
@@ -727,7 +619,7 @@ class WhompGlove(RegularItem):
     vanilla_shop = True
 
 
-class SlapGlove(RegularItem):
+class SlapGlove(Item):
     index = 17
     description = 'It slaps ~em\x01silly'
     tier = 5
@@ -736,18 +628,14 @@ class SlapGlove(RegularItem):
     attack = 40
     variance = 4
     price = 100
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Little Glove”!\n You don't drink water out of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Little Glove”.\n You don't drink water out of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Little Glove”.\n You don't drink water out of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Little Glove”!\n You don't drink water out of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Little Glove”.\n You don't drink water out of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Little Glove”.\n You don't drink water out of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class TroopaShell(RegularItem):
+class TroopaShell(Item):
     index = 18
     description = 'Kick with it!'
     tier = 5
@@ -759,7 +647,7 @@ class TroopaShell(RegularItem):
     vanilla_shop = True
 
 
-class Parasol(RegularItem):
+class Parasol(Item):
     index = 19
     description = 'Inflicts\x01serious pain!'
     tier = 5
@@ -771,7 +659,7 @@ class Parasol(RegularItem):
     vanilla_shop = True
 
 
-class HurlyGloves(RegularItem):
+class HurlyGloves(Item):
     index = 20
     description = 'A classic\x01Mario}toss\x01attack'
     tier = 5
@@ -792,15 +680,13 @@ class HurlyGloves(RegularItem):
 
         # Alter Hurly Gloves animation script so it thinks Mario is dead and always uses the doll.  This avoids softlock
         # issues in some situations when Mario is alive but not present, or Mario uses the gloves to throw himself!
-        patch.add_data(0x35f672, bytes(
-            [0x20, 0x0f, 0x01, 0x00, 0x2c, 0x0f, 0x00, 0x00]))
-        patch.add_data(0x35f5f8, bytes(
-            [0x20, 0x0f, 0x01, 0x00, 0x2c, 0x0f, 0x00, 0x00]))
+        patch.add_data(0x35f672, bytes([0x20, 0x0f, 0x01, 0x00, 0x2c, 0x0f, 0x00, 0x00]))
+        patch.add_data(0x35f5f8, bytes([0x20, 0x0f, 0x01, 0x00, 0x2c, 0x0f, 0x00, 0x00]))
 
         return patch
 
 
-class DoublePunch(RegularItem):
+class DoublePunch(Item):
     index = 21
     description = 'A handy double\x01rocket punch'
     tier = 5
@@ -812,7 +698,7 @@ class DoublePunch(RegularItem):
     vanilla_shop = True
 
 
-class RibbitStick(RegularItem):
+class RibbitStick(Item):
     index = 22
     description = 'It~ll come\x01in handy'
     tier = 5
@@ -824,7 +710,7 @@ class RibbitStick(RegularItem):
     vanilla_shop = True
 
 
-class SpikedLink(RegularItem):
+class SpikedLink(Item):
     index = 23
     description = 'A studded ball\x01and chain!'
     tier = 4
@@ -836,7 +722,7 @@ class SpikedLink(RegularItem):
     vanilla_shop = True
 
 
-class MegaGlove(RegularItem):
+class MegaGlove(Item):
     index = 24
     description = 'Packs a mega\x01wallop!'
     tier = 4
@@ -848,7 +734,7 @@ class MegaGlove(RegularItem):
     vanilla_shop = True
 
 
-class WarFan(RegularItem):
+class WarFan(Item):
     index = 25
     description = 'A mysterious\x01battle fan!'
     tier = 4
@@ -860,7 +746,7 @@ class WarFan(RegularItem):
     vanilla_shop = True
 
 
-class HandCannon(RegularItem):
+class HandCannon(Item):
     index = 26
     description = 'Shoots bullets\x01from elbow!'
     tier = 3
@@ -872,7 +758,7 @@ class HandCannon(RegularItem):
     vanilla_shop = True
 
 
-class StickyGlove(RegularItem):
+class StickyGlove(Item):
     index = 27
     description = 'Launches a\x01punch attack.'
     tier = 4
@@ -884,7 +770,7 @@ class StickyGlove(RegularItem):
     vanilla_shop = True
 
 
-class UltraHammer(RegularItem):
+class UltraHammer(Item):
     index = 28
     description = 'The ultimate\x01hammer!'
     tier = 2
@@ -894,19 +780,14 @@ class UltraHammer(RegularItem):
     variance = 7
     price = 115
     rare = True
-    model = overworld_items["hammer"]
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Hammer”!\n I'm not sure if it does anything\n else.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Hammer”.\n I'm not sure if it does anything\n else.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class SuperSlap(RegularItem):
+class SuperSlap(Item):
     index = 29
     description = 'The Princess~\x01mega}slap!'
     tier = 2
@@ -916,18 +797,14 @@ class SuperSlap(RegularItem):
     variance = 7
     price = 110
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Big Glove”!\n You don't drink water out of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Big Glove”.\n You don't drink water out of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Big Glove”.\n You don't drink water out of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Big Glove”!\n You don't drink water out of it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Big Glove”.\n You don't drink water out of it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Big Glove”.\n You don't drink water out of it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class DrillClaw(RegularItem):
+class DrillClaw(Item):
     index = 30
     description = 'A drilling\x01claw!'
     tier = 2
@@ -937,18 +814,14 @@ class DrillClaw(RegularItem):
     variance = 7
     price = 118
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Drilling Appendage”!\n I bet you could do some real damage\n with this.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Drilling Appendage”.\n I bet you could do some real damage\n with this.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Drilling Appendage”.\n I bet you could do some real damage\n with this.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Drilling Appendage”!\n I bet you could do some real damage\n with this.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Drilling Appendage”.\n I bet you could do some real damage\n with this.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Drilling Appendage”.\n I bet you could do some real damage\n with this.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class StarGun(RegularItem):
+class StarGun(Item):
     index = 31
     description = 'Try shooting\x01stars!'
     tier = 1
@@ -958,18 +831,14 @@ class StarGun(RegularItem):
     variance = 7
     price = 120
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Celestial Launcher”!\n I bet you could do some real damage\n with this.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Celestial Launcher”.\n I bet you could do some real damage\n with this.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Celestial Launcher”.\n I bet you could do some real damage\n with this.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Celestial Launcher”!\n I bet you could do some real damage\n with this.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Celestial Launcher”.\n I bet you could do some real damage\n with this.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Celestial Launcher”.\n I bet you could do some real damage\n with this.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class SonicCymbal(RegularItem):
+class SonicCymbal(Item):
     index = 32
     description = 'Puts noise to\x01work for you!'
     tier = 2
@@ -979,19 +848,14 @@ class SonicCymbal(RegularItem):
     variance = 7
     price = 108
     rare = True
-    model = overworld_items["music"]
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Psych Percussion”!\n This could catch monsters\n off-guard.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Psych Percussion”.\n This could catch monsters\n off-guard.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Psych Percussion”.\n This could catch monsters\n off-guard.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Psych Percussion”!\n This could catch monsters\n off-guard.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Psych Percussion”.\n This could catch monsters\n off-guard.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Psych Percussion”.\n This could catch monsters\n off-guard.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class LazyShellWeapon(RegularItem):
+class LazyShellWeapon(Item):
     index = 33
     description = 'Toss a shell\x01at an enemy!'
     tier = 1
@@ -1001,18 +865,14 @@ class LazyShellWeapon(RegularItem):
     variance = 40
     price = 200
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: An “Oversized Shell”!\n You could do some real damage\n with this.[await][await] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: An “Oversized Shell”.\n You could do some real damage\n with this.[await][await] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: An “Oversized Shell”.\n You could do some real damage\n with this.[await][await] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: An “Oversized Shell”!\n You could do some real damage\n with this.[await][await] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: An “Oversized Shell”.\n You could do some real damage\n with this.[await][await] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: An “Oversized Shell”.\n You could do some real damage\n with this.[await][await] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class FryingPan(RegularItem):
+class FryingPan(Item):
     index = 34
     description = 'Enough iron to\x01be dangerous!'
     tier = 1
@@ -1022,16 +882,14 @@ class FryingPan(RegularItem):
     variance = 20
     price = 300
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
         (2908, ''' Item #1: A “Metal Plate”![await]\n Don't know what it’s used for,\n but I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Metal Plate”.[await]\n Don't know what it’s used for,\n but it's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2911, ''' Item #2: A “Metal Plate”.[await]\n Don't know what it’s used for,\n but it's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
         (2914, ''' Item #3: A “Metal Plate”.[await]\n Don't know what it’s used for,\n but I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class LuckyHammer(RegularItem):
+class LuckyHammer(Item):
     index = 35
     description = 'A lucky hammer!'
     tier = 1
@@ -1039,10 +897,9 @@ class LuckyHammer(RegularItem):
     equip_chars = [Mario]
     price = 123
     vanilla_shop = True
-    model = overworld_items["hammer"]
 
 
-class Shirt(RegularItem):
+class Shirt(Item):
     index = 37
     description = 'It~s a\x01shirt!'
     tier = 5
@@ -1055,7 +912,7 @@ class Shirt(RegularItem):
     vanilla_shop = True
 
 
-class Pants(RegularItem):
+class Pants(Item):
     index = 38
     description = 'It~s a pair\x01of pants!'
     tier = 5
@@ -1068,7 +925,7 @@ class Pants(RegularItem):
     vanilla_shop = True
 
 
-class ThickShirt(RegularItem):
+class ThickShirt(Item):
     index = 39
     description = 'A padded shirt'
     tier = 5
@@ -1081,7 +938,7 @@ class ThickShirt(RegularItem):
     vanilla_shop = True
 
 
-class ThickPants(RegularItem):
+class ThickPants(Item):
     index = 40
     description = 'Padded pants'
     tier = 5
@@ -1094,7 +951,7 @@ class ThickPants(RegularItem):
     vanilla_shop = True
 
 
-class MegaShirt(RegularItem):
+class MegaShirt(Item):
     index = 41
     description = 'Durable stay}\x01pressed shirt'
     tier = 5
@@ -1107,7 +964,7 @@ class MegaShirt(RegularItem):
     vanilla_shop = True
 
 
-class MegaPants(RegularItem):
+class MegaPants(Item):
     index = 42
     description = 'Durable work\x01pants'
     tier = 5
@@ -1120,7 +977,7 @@ class MegaPants(RegularItem):
     vanilla_shop = True
 
 
-class WorkPants(RegularItem):
+class WorkPants(Item):
     index = 43
     description = 'Sweaty\x01work pants!'
     tier = 5
@@ -1136,7 +993,7 @@ class WorkPants(RegularItem):
     vanilla_shop = True
 
 
-class MegaCape(RegularItem):
+class MegaCape(Item):
     index = 44
     description = 'Durable\x01pressed cape'
     tier = 5
@@ -1149,7 +1006,7 @@ class MegaCape(RegularItem):
     vanilla_shop = True
 
 
-class HappyShirt(RegularItem):
+class HappyShirt(Item):
     index = 45
     description = 'A lucky shirt'
     tier = 5
@@ -1162,7 +1019,7 @@ class HappyShirt(RegularItem):
     vanilla_shop = True
 
 
-class HappyPants(RegularItem):
+class HappyPants(Item):
     index = 46
     description = 'A lucky\x01pair of pants'
     tier = 5
@@ -1175,7 +1032,7 @@ class HappyPants(RegularItem):
     vanilla_shop = True
 
 
-class HappyCape(RegularItem):
+class HappyCape(Item):
     index = 47
     description = 'A lucky cape'
     tier = 5
@@ -1188,7 +1045,7 @@ class HappyCape(RegularItem):
     vanilla_shop = True
 
 
-class HappyShell(RegularItem):
+class HappyShell(Item):
     index = 48
     description = 'A lucky shell'
     tier = 5
@@ -1201,7 +1058,7 @@ class HappyShell(RegularItem):
     vanilla_shop = True
 
 
-class PolkaDress(RegularItem):
+class PolkaDress(Item):
     index = 49
     description = 'A flashy dress'
     tier = 5
@@ -1212,18 +1069,14 @@ class PolkaDress(RegularItem):
     magic_defense = 12
     price = 160
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Casual Gown”!\n It's pink with little polka dots![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Casual Gown”.\n It's pink with little polka dots![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Casual Gown”.\n It's pink with little polka dots![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Casual Gown”!\n It's pink with little polka dots![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Casual Gown”.\n It's pink with little polka dots![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Casual Gown”.\n It's pink with little polka dots![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class SailorShirt(RegularItem):
+class SailorShirt(Item):
     index = 50
     description = 'A sailor~s\x01suit'
     tier = 5
@@ -1236,7 +1089,7 @@ class SailorShirt(RegularItem):
     vanilla_shop = True
 
 
-class SailorPants(RegularItem):
+class SailorPants(Item):
     index = 51
     description = 'A sailor~s\x01pants'
     tier = 5
@@ -1249,7 +1102,7 @@ class SailorPants(RegularItem):
     vanilla_shop = True
 
 
-class SailorCape(RegularItem):
+class SailorCape(Item):
     index = 52
     description = 'A sailor~s\x01cape'
     tier = 5
@@ -1262,7 +1115,7 @@ class SailorCape(RegularItem):
     vanilla_shop = True
 
 
-class NauticaDress(RegularItem):
+class NauticaDress(Item):
     index = 53
     description = 'A female\x01sailor~s dress'
     tier = 5
@@ -1275,7 +1128,7 @@ class NauticaDress(RegularItem):
     vanilla_shop = True
 
 
-class CourageShell(RegularItem):
+class CourageShell(Item):
     index = 54
     description = 'A stout shell'
     tier = 4
@@ -1288,7 +1141,7 @@ class CourageShell(RegularItem):
     vanilla_shop = True
 
 
-class FuzzyShirt(RegularItem):
+class FuzzyShirt(Item):
     index = 55
     description = 'A fuzzy shirt'
     tier = 4
@@ -1301,7 +1154,7 @@ class FuzzyShirt(RegularItem):
     vanilla_shop = True
 
 
-class FuzzyPants(RegularItem):
+class FuzzyPants(Item):
     index = 56
     description = 'Fuzzy pants'
     tier = 4
@@ -1314,7 +1167,7 @@ class FuzzyPants(RegularItem):
     vanilla_shop = True
 
 
-class FuzzyCape(RegularItem):
+class FuzzyCape(Item):
     index = 57
     description = 'A fuzzy cape'
     tier = 4
@@ -1327,7 +1180,7 @@ class FuzzyCape(RegularItem):
     vanilla_shop = True
 
 
-class FuzzyDress(RegularItem):
+class FuzzyDress(Item):
     index = 58
     description = 'A fuzzy dress'
     tier = 4
@@ -1340,7 +1193,7 @@ class FuzzyDress(RegularItem):
     vanilla_shop = True
 
 
-class FireShirt(RegularItem):
+class FireShirt(Item):
     index = 59
     description = 'Determined\x01person~s shirt'
     tier = 4
@@ -1353,7 +1206,7 @@ class FireShirt(RegularItem):
     vanilla_shop = True
 
 
-class FirePants(RegularItem):
+class FirePants(Item):
     index = 60
     description = 'Determined\x01person~s pants'
     tier = 4
@@ -1366,7 +1219,7 @@ class FirePants(RegularItem):
     vanilla_shop = True
 
 
-class FireCape(RegularItem):
+class FireCape(Item):
     index = 61
     description = 'Determined\x01person~s cape'
     tier = 4
@@ -1379,7 +1232,7 @@ class FireCape(RegularItem):
     vanilla_shop = True
 
 
-class FireShell(RegularItem):
+class FireShell(Item):
     index = 62
     description = 'Determined\x01person~s shell'
     tier = 4
@@ -1392,7 +1245,7 @@ class FireShell(RegularItem):
     vanilla_shop = True
 
 
-class FireDress(RegularItem):
+class FireDress(Item):
     index = 63
     description = 'Determined\x01woman~s dress'
     tier = 4
@@ -1405,7 +1258,7 @@ class FireDress(RegularItem):
     vanilla_shop = True
 
 
-class HeroShirt(RegularItem):
+class HeroShirt(Item):
     index = 64
     description = 'A legendary\x01shirt.'
     tier = 3
@@ -1418,7 +1271,7 @@ class HeroShirt(RegularItem):
     vanilla_shop = True
 
 
-class PrincePants(RegularItem):
+class PrincePants(Item):
     index = 65
     description = 'Legendary\x01pants!'
     tier = 3
@@ -1431,7 +1284,7 @@ class PrincePants(RegularItem):
     vanilla_shop = True
 
 
-class StarCape(RegularItem):
+class StarCape(Item):
     index = 66
     description = 'A legendary\x01cape.'
     tier = 3
@@ -1444,7 +1297,7 @@ class StarCape(RegularItem):
     vanilla_shop = True
 
 
-class HealShell(RegularItem):
+class HealShell(Item):
     index = 67
     description = 'A legendary\x01shell.'
     tier = 3
@@ -1457,7 +1310,7 @@ class HealShell(RegularItem):
     vanilla_shop = True
 
 
-class RoyalDress(RegularItem):
+class RoyalDress(Item):
     index = 68
     description = 'A legendary\x01dress!'
     tier = 3
@@ -1470,7 +1323,7 @@ class RoyalDress(RegularItem):
     vanilla_shop = True
 
 
-class SuperSuit(RegularItem):
+class SuperSuit(Item):
     index = 69
     description = 'A truly fine\x01suit!'
     tier = 1
@@ -1487,18 +1340,14 @@ class SuperSuit(RegularItem):
     price = 700
     rare = True
     effect_type = "elemental immunity"
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Jumpsuit”!\n It looks pretty powerful, right?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Jumpsuit”.\n It looks pretty powerful, right?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Jumpsuit”.\n It looks pretty powerful, right?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Jumpsuit”!\n It looks pretty powerful, right?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Jumpsuit”.\n It looks pretty powerful, right?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Jumpsuit”.\n It looks pretty powerful, right?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class LazyShellArmor(RegularItem):
+class LazyShellArmor(Item):
     index = 70
     description = 'A stout and\x01durable shell.'
     tier = 1
@@ -1515,18 +1364,14 @@ class LazyShellArmor(RegularItem):
     price = 222
     rare = True
     effect_type = "elemental immunity"
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: An “Oversized Shell”!\n It's quite beefy and protective.[await]\n I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: An “Oversized Shell”.\n It's quite beefy and protective.[await]\n It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: An “Oversized Shell”.\n It's quite beefy and protective.[await]\n I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: An “Oversized Shell”!\n It's quite beefy and protective.[await]\n I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: An “Oversized Shell”.\n It's quite beefy and protective.[await]\n It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: An “Oversized Shell”.\n It's quite beefy and protective.[await]\n I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class ZoomShoes(RegularItem):
+class ZoomShoes(Item):
     index = 74
     description = 'Speed up by 10!'
     tier = 4
@@ -1537,19 +1382,14 @@ class ZoomShoes(RegularItem):
     defense = 5
     magic_defense = 5
     price = 100
-    model = overworld_items["shoes"]
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: “Pegasus Boots”!\n These will make you fast like Sonic![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: “Pegasus Boots”.\n These will make you fast like Sonic![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: “Pegasus Boots”.\n These will make you fast like Sonic![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: “Pegasus Boots”!\n These will make you fast like Sonic![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: “Pegasus Boots”.\n These will make you fast like Sonic![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: “Pegasus Boots”.\n These will make you fast like Sonic![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class SafetyBadge(RegularItem):
+class SafetyBadge(Item):
     index = 75
     description = 'Prevents Mute \x9c\x01Poison attacks'
     tier = 2
@@ -1562,19 +1402,14 @@ class SafetyBadge(RegularItem):
     price = 500
     rare = True
     effect_type = "status protection"
-    model = overworld_items["brooch"]
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Status Protector”!\n It can prevent weird things from\n happening to you.[await][pause] I'll sell it to\n you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Status Protector”.\n It can prevent weird things from\n happening to you.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Status Protector”.\n It can prevent weird things from\n happening to you.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Status Protector”!\n It can prevent weird things from\n happening to you.[await][pause] I'll sell it to\n you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Status Protector”.\n It can prevent weird things from\n happening to you.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Status Protector”.\n It can prevent weird things from\n happening to you.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class JumpShoes(RegularItem):
+class JumpShoes(Item):
     index = 76
     description = 'Use jump attacks\x01against any foe'
     tier = 5
@@ -1587,10 +1422,9 @@ class JumpShoes(RegularItem):
     magic_defense = 1
     price = 30
     vanilla_shop = True
-    model = overworld_items["shoes"]
 
 
-class SafetyRing(RegularItem):
+class SafetyRing(Item):
     index = 77
     description = 'Guards against\x01mortal blows.'
     tier = 1
@@ -1606,19 +1440,14 @@ class SafetyRing(RegularItem):
     price = 800
     rare = True
     effect_type = "elemental immunity"
-    unique = ItemUnique.BalancedOnly
-    model = overworld_items["ring"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Protective Charm”!\n Never go into battle without it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Protective Charm”.\n Never go into battle without it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Protective Charm”.\n Never go into battle without it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Protective Charm”!\n Never go into battle without it.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Protective Charm”.\n Never go into battle without it.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Protective Charm”.\n Never go into battle without it.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class Amulet(RegularItem):
+class Amulet(Item):
     index = 78
     description = 'Great item,\x01bad smell!'
     tier = 2
@@ -1634,19 +1463,14 @@ class Amulet(RegularItem):
     price = 200
     rare = True
     effect_type = "elemental resistance"
-    unique = ItemUnique.BalancedOnly
-    model = overworld_items["brooch"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Stinky Charm”!\n It'll help you weather the elements.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Stinky Charm”.\n It'll help you weather the elements.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Stinky Charm”.\n It'll help you weather the elements.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Stinky Charm”!\n It'll help you weather the elements.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Stinky Charm”.\n It'll help you weather the elements.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Stinky Charm”.\n It'll help you weather the elements.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class ScroogeRing(RegularItem):
+class ScroogeRing(Item):
     index = 79
     description = 'Cuts FP use\x01in half\x01during battle'
     tier = 4
@@ -1657,19 +1481,14 @@ class ScroogeRing(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    model = overworld_items["ring"]
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Mage Totem”!\n It might help with spellcasting.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Mage Totem”.\n It might help with spellcasting.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Mage Totem”.\n It might help with spellcasting.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Mage Totem”!\n It might help with spellcasting.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Mage Totem”.\n It might help with spellcasting.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Mage Totem”.\n It might help with spellcasting.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class ExpBooster(RegularItem):
+class ExpBooster(Item):
     index = 80
     description = 'Doubles Exp.\x01when equipped'
     tier = 4
@@ -1681,18 +1500,14 @@ class ExpBooster(RegularItem):
     rare = True
     vanilla_shop = True
     effect_type = "few effects"
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Training Device”!\n This'll make you strong in no time![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Training Device”.\n This'll make you strong in no time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Training Device”.\n This'll make you strong in no time![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Training Device”!\n This'll make you strong in no time![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Training Device”.\n This'll make you strong in no time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Training Device”.\n This'll make you strong in no time![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class AttackScarf(RegularItem):
+class AttackScarf(Item):
     index = 81
     description = 'So comfy it~ll\x01make you jump!'
     tier = 1
@@ -1707,18 +1522,14 @@ class AttackScarf(RegularItem):
     prevent_ko = True
     price = 1500
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Jumper's Scarf”!\n It could save your life![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Jumper's Scarf”.\n It could save your life![await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Jumper's Scarf”.\n It could save your life![await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Jumper's Scarf”!\n It could save your life![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Jumper's Scarf”.\n It could save your life![await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Jumper's Scarf”.\n It could save your life![await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class RareScarf(RegularItem):
+class RareScarf(Item):
     index = 82
     description = 'Raises defense\x01power!'
     tier = 4
@@ -1729,18 +1540,14 @@ class RareScarf(RegularItem):
     magic_defense = 15
     price = 150
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: An “Unusual Garment”!\n I don't see these around often.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: An “Unusual Garment”.\n I don't see these around often.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: An “Unusual Garment”.\n I don't see these around often.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: An “Unusual Garment”!\n I don't see these around often.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: An “Unusual Garment”.\n I don't see these around often.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: An “Unusual Garment”.\n I don't see these around often.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class BtubRing(RegularItem):
+class BtubRing(Item):
     index = 83
     description = 'You~ll win her\x01heart with this!'
     tier = 2
@@ -1750,10 +1557,9 @@ class BtubRing(RegularItem):
     elemental_resistances = [4, 5, 6, 7]
     price = 145
     vanilla_shop = True
-    model = overworld_items["ring"]
 
 
-class AntidotePin(RegularItem):
+class AntidotePin(Item):
     index = 84
     description = 'Prevents\x01poison damage'
     tier = 3
@@ -1766,10 +1572,9 @@ class AntidotePin(RegularItem):
     price = 28
     vanilla_shop = True
     effect_type = "status protection"
-    model = overworld_items["brooch"]
 
 
-class WakeUpPin(RegularItem):
+class WakeUpPin(Item):
     index = 85
     description = 'Prevents Mute \x9c\x01Sleep attacks'
     tier = 3
@@ -1782,10 +1587,9 @@ class WakeUpPin(RegularItem):
     price = 42
     vanilla_shop = True
     effect_type = "status protection"
-    model = overworld_items["brooch"]
 
 
-class FearlessPin(RegularItem):
+class FearlessPin(Item):
     index = 86
     description = 'Prevents Fear\x01attacks'
     tier = 3
@@ -1798,10 +1602,9 @@ class FearlessPin(RegularItem):
     price = 130
     vanilla_shop = True
     effect_type = "status protection"
-    model = overworld_items["brooch"]
 
 
-class TrueformPin(RegularItem):
+class TrueformPin(Item):
     index = 87
     description = 'You won~t be\x01turned into\x01Mushrooms or\x01Scarecrows!'
     tier = 3
@@ -1814,10 +1617,9 @@ class TrueformPin(RegularItem):
     price = 60
     vanilla_shop = True
     effect_type = "status protection"
-    model = overworld_items["brooch"]
 
 
-class CoinTrick(RegularItem):
+class CoinTrick(Item):
     index = 88
     description = 'Doubles the\x01coins you win\x01in battle'
     tier = 4
@@ -1829,18 +1631,14 @@ class CoinTrick(RegularItem):
     rare = True
     vanilla_shop = True
     effect_type = "few effects"
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Fortune Charm”!\n It's sure to make you very rich.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Fortune Charm”!\n It's sure to make you very rich.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Fortune Charm”.\n It's sure to make you very rich.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class GhostMedal(RegularItem):
+class GhostMedal(Item):
     index = 89
     description = 'Raises defense\x01while attacking'
     tier = 2
@@ -1851,18 +1649,14 @@ class GhostMedal(RegularItem):
     price = 1600
     rare = True
     effect_type = "buffs"
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Scavenger's Prize”!\n It resembles a medal of honor.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Scavenger's Prize”.\n It resembles a medal of honor.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Scavenger's Prize”.\n It resembles a medal of honor.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Scavenger's Prize”!\n It resembles a medal of honor.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Scavenger's Prize”.\n It resembles a medal of honor.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Scavenger's Prize”.\n It resembles a medal of honor.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class JinxBelt(RegularItem):
+class JinxBelt(Item):
     index = 90
     description = 'Jinx~s emblem\x01of power!'
     tier = 1
@@ -1875,18 +1669,14 @@ class JinxBelt(RegularItem):
     prevent_ko = True
     price = 1998
     rare = True
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Martial Sash”!\n A true fighter would love this.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Martial Sash”.\n A true fighter would love this.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Martial Sash”.\n A true fighter would love this.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Martial Sash”!\n A true fighter would love this.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Martial Sash”.\n A true fighter would love this.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Martial Sash”.\n A true fighter would love this.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class Feather(RegularItem):
+class Feather(Item):
     index = 91
     description = 'Speed up by 20'
     tier = 2
@@ -1898,19 +1688,14 @@ class Feather(RegularItem):
     magic_defense = 5
     price = 666
     rare = True
-    unique = ItemUnique.BalancedOnly
-    model = overworld_items["feather"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Fluttering Quill”!\n It's pretty exotic, isn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Fluttering Quill”.\n It's pretty exotic, isn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Fluttering Quill”.\n It's pretty exotic, isn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Fluttering Quill”!\n It's pretty exotic, isn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Fluttering Quill”.\n It's pretty exotic, isn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Fluttering Quill”.\n It's pretty exotic, isn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class TroopaPin(RegularItem):
+class TroopaPin(Item):
     index = 92
     description = 'Grants "Troopa#\x01confidence!'
     tier = 2
@@ -1922,19 +1707,14 @@ class TroopaPin(RegularItem):
     price = 1000
     rare = True
     effect_type = "buffs"
-    model = overworld_items["brooch"]
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Military Decoration”!\n I wonder what powers it bestows?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Military Decoration”.\n I wonder what powers it bestows?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Military Decoration”.\n I wonder what powers it bestows?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Military Decoration”!\n I wonder what powers it bestows?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Military Decoration”.\n I wonder what powers it bestows?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Military Decoration”.\n I wonder what powers it bestows?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class SignalRing(RegularItem):
+class SignalRing(Item):
     index = 93
     description = 'Noise indicates\x01a hidden chest.'
     tier = 4
@@ -1944,19 +1724,14 @@ class SignalRing(RegularItem):
     speed = 10
     price = 600
     rare = True
-    model = overworld_items["ring"]
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Treasure Beacon”!\n I wonder what it can help you find?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Treasure Beacon”!\n I wonder what it can help you find?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Treasure Beacon”.\n I wonder what it can help you find?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class QuartzCharm(RegularItem):
+class QuartzCharm(Item):
     index = 94
     description = 'Shining source\x01of power!'
     tier = 1
@@ -1968,19 +1743,14 @@ class QuartzCharm(RegularItem):
     price = 7
     rare = True
     effect_type = "buffs"
-    model = overworld_items["ring"]
-    unique = ItemUnique.BalancedOnly
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Crystal Ring”!\n It could save your life![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Crystal Ring”.\n It could save your life![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Crystal Ring”.\n It could save your life![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Crystal Ring”!\n It could save your life![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Crystal Ring”.\n It could save your life![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Crystal Ring”.\n It could save your life![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class Mushroom(RegularItem):
+class Mushroom(Item):
     index = 96
     description = 'Recovers 30 HP'
     order = 15
@@ -1990,10 +1760,13 @@ class Mushroom(RegularItem):
     basic = True
     vanilla_shop = True
     hard_tier = 1
-    model = overworld_items["mushroom_item"]
+    dialog_replacements = [
+        (2908, ''' Item #1: A “Triple Healer”![await]\n It's sure to help any new\n adventurer out in their travels.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Triple Healer”.[await]\n It's sure to help any new\n adventurer out in their travels.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Triple Healer”.[await]\n It's sure to help any new\n adventurer out in their travels.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
 
-
-class MidMushroom(RegularItem):
+class MidMushroom(Item):
     index = 97
     description = 'Recovers 80 HP'
     order = 13
@@ -2003,10 +1776,9 @@ class MidMushroom(RegularItem):
     basic = True
     vanilla_shop = True
     hard_tier = 2
-    model = overworld_items["mushroom_item"]
 
 
-class MaxMushroom(RegularItem):
+class MaxMushroom(Item):
     index = 98
     description = 'Recovers all HP'
     order = 11
@@ -2016,10 +1788,9 @@ class MaxMushroom(RegularItem):
     basic = True
     vanilla_shop = True
     hard_tier = 3
-    model = overworld_items["mushroom_item"]
 
 
-class HoneySyrup(RegularItem):
+class HoneySyrup(Item):
     index = 99
     description = 'Recovers 10 FP'
     order = 8
@@ -2031,7 +1802,7 @@ class HoneySyrup(RegularItem):
     hard_tier = 1
 
 
-class MapleSyrup(RegularItem):
+class MapleSyrup(Item):
     index = 100
     description = 'Recovers 40 FP'
     order = 10
@@ -2043,7 +1814,7 @@ class MapleSyrup(RegularItem):
     hard_tier = 2
 
 
-class RoyalSyrup(RegularItem):
+class RoyalSyrup(Item):
     index = 101
     description = 'Recovers all FP'
     order = 21
@@ -2055,7 +1826,7 @@ class RoyalSyrup(RegularItem):
     hard_tier = 3
 
 
-class PickMeUp(RegularItem):
+class PickMeUp(Item):
     index = 102
     description = 'Revives downed\x01allies'
     order = 17
@@ -2067,7 +1838,7 @@ class PickMeUp(RegularItem):
     hard_tier = 1
 
 
-class AbleJuice(RegularItem):
+class AbleJuice(Item):
     index = 103
     description = 'Heal status\x01ailments'
     item_type = 3
@@ -2079,7 +1850,7 @@ class AbleJuice(RegularItem):
     hard_tier = 1
 
 
-class Bracer(RegularItem):
+class Bracer(Item):
     index = 104
     description = 'Raises ally~s\x01def. in battle'
     order = 2
@@ -2094,7 +1865,7 @@ class Bracer(RegularItem):
     rank_value = 10
 
 
-class Energizer(RegularItem):
+class Energizer(Item):
     index = 105
     description = 'Raises ally~s\x01battle power\x01during battle'
     order = 5
@@ -2108,7 +1879,7 @@ class Energizer(RegularItem):
     hard_tier = 2
 
 
-class YoshiAde(RegularItem):
+class YoshiAde(Item):
     index = 106
     description = 'Power raised\x01during battle'
     order = 23
@@ -2120,7 +1891,7 @@ class YoshiAde(RegularItem):
     hard_tier = 3
 
 
-class RedEssence(RegularItem):
+class RedEssence(Item):
     index = 107
     description = 'Become invincible\x01for 3 turns'
     order = 19
@@ -2132,7 +1903,7 @@ class RedEssence(RegularItem):
     hard_tier = 4
 
 
-class KerokeroCola(RegularItem):
+class KerokeroCola(Item):
     index = 108
     description = 'All members\x01recover fully'
     order = 9
@@ -2143,7 +1914,7 @@ class KerokeroCola(RegularItem):
     hard_tier = 4
 
 
-class YoshiCookie(RegularItem):
+class YoshiCookie(Item):
     index = 109
     description = 'Summons Yoshi\x01during battle'
     order = 26
@@ -2152,9 +1923,14 @@ class YoshiCookie(RegularItem):
     price = 100
     rare = True
     hard_tier = 1
+    dialog_replacements = [
+        (2908, ''' Item #1: A “Summoner's Snack”![await]\n If a friend helps you out in battle,\n they probably deserve a treat.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Summoner's Snack”.[await]\n If a friend helps you out in battle,\n they probably deserve a treat.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Summoner's Snack”.[await]\n If a friend helps you out in battle,\n they probably deserve a treat.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
 
 
-class PureWater(RegularItem):
+class PureWater(Item):
     index = 110
     description = 'Defeats ghosts\x01in a wink'
     order = 30
@@ -2165,7 +1941,7 @@ class PureWater(RegularItem):
     hard_tier = 1
 
 
-class SleepyBomb(RegularItem):
+class SleepyBomb(Item):
     index = 111
     description = 'Puts enemies\x01to sleep'
     order = 32
@@ -2179,7 +1955,7 @@ class SleepyBomb(RegularItem):
     hard_tier = 1
 
 
-class BadMushroom(RegularItem):
+class BadMushroom(Item):
     index = 112
     description = 'Poisons\x01an enemy'
     order = 1
@@ -2189,10 +1965,9 @@ class BadMushroom(RegularItem):
     price = 30
     vanilla_shop = True
     hard_tier = 2
-    model = overworld_items["mushroom_item"]
 
 
-class FireBomb(RegularItem):
+class FireBomb(Item):
     index = 113
     description = 'Hit all\x01enemies w/fire'
     order = 27
@@ -2203,7 +1978,7 @@ class FireBomb(RegularItem):
     hard_tier = 3
 
 
-class IceBomb(RegularItem):
+class IceBomb(Item):
     index = 114
     description = 'Hit all\x01enemies w/ice'
     order = 29
@@ -2214,7 +1989,7 @@ class IceBomb(RegularItem):
     hard_tier = 3
 
 
-class FlowerTab(RegularItem):
+class FlowerTab(Item):
     index = 115
     description = 'Raise FP by 1'
     order = 43
@@ -2225,7 +2000,7 @@ class FlowerTab(RegularItem):
     hard_tier = 2
 
 
-class FlowerJar(RegularItem):
+class FlowerJar(Item):
     index = 116
     description = 'Raise FP by 3'
     order = 42
@@ -2236,7 +2011,7 @@ class FlowerJar(RegularItem):
     hard_tier = 3
 
 
-class FlowerBox(RegularItem):
+class FlowerBox(Item):
     index = 117
     description = 'Raise FP by 5'
     order = 41
@@ -2247,7 +2022,7 @@ class FlowerBox(RegularItem):
     hard_tier = 4
 
 
-class YoshiCandy(RegularItem):
+class YoshiCandy(Item):
     index = 118
     description = 'Heals 100 HP'
     order = 25
@@ -2259,7 +2034,7 @@ class YoshiCandy(RegularItem):
     hard_tier = 2
 
 
-class FroggieDrink(RegularItem):
+class FroggieDrink(Item):
     index = 119
     description = 'Party heals\x0130 HP'
     order = 7
@@ -2270,7 +2045,7 @@ class FroggieDrink(RegularItem):
     hard_tier = 1
 
 
-class MukuCookie(RegularItem):
+class MukuCookie(Item):
     index = 120
     description = 'Party heals\x0169 HP'
     order = 24
@@ -2282,7 +2057,7 @@ class MukuCookie(RegularItem):
     hard_tier = 3
 
 
-class Elixir(RegularItem):
+class Elixir(Item):
     index = 121
     description = 'Party heals\x0180 HP'
     order = 4
@@ -2293,7 +2068,7 @@ class Elixir(RegularItem):
     hard_tier = 2
 
 
-class Megalixir(RegularItem):
+class Megalixir(Item):
     index = 122
     description = 'Party heals\x01150 HP'
     order = 12
@@ -2305,7 +2080,7 @@ class Megalixir(RegularItem):
     basic = True
 
 
-class SeeYa(RegularItem):
+class SeeYa(Item):
     index = 123
     description = 'Run away from\x01battles'
     order = 39
@@ -2317,36 +2092,27 @@ class SeeYa(RegularItem):
     rare = True
     vanilla_shop = True
     hard_tier = 2
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: An “Eject Button”!\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: An “Eject Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: An “Eject Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: An “Eject Button”!\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: An “Eject Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: An “Eject Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class TempleKey(RegularItem):
+class TempleKey(Item):
     index = 124
     order = 150
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
-    model = overworld_items["key"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class GoodieBag(RegularItem):
+class GoodieBag(Item):
     index = 125
     order = 35
     item_type = 3
@@ -2355,18 +2121,14 @@ class GoodieBag(RegularItem):
     price = 1110
     rare = True
     hard_tier = 1
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Coin Sack”!\n It could make you rich![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Coin Sack”.\n It could make you rich![await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Coin Sack”.\n It could make you rich![await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Coin Sack”!\n It could make you rich![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Coin Sack”.\n It could make you rich![await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Coin Sack”.\n It could make you rich![await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class EarlierTimes(RegularItem):
+class EarlierTimes(Item):
     index = 126
     description = 'Use it to start\x01a battle over'
     order = 34
@@ -2378,18 +2140,14 @@ class EarlierTimes(RegularItem):
     rare = True
     vanilla_shop = True
     hard_tier = 1
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Reset Button”!\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Reset Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Reset Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Reset Button”!\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Reset Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Reset Button”.\n Sounds useful in a pinch, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class FreshenUp(RegularItem):
+class FreshenUp(Item):
     index = 127
     description = 'Heals party\x01status ailments'
     order = 6
@@ -2401,59 +2159,47 @@ class FreshenUp(RegularItem):
     hard_tier = 2
 
 
-class RareFrogCoin(RegularItem):
+class RareFrogCoin(Item):
     index = 128
     order = 144
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Green Coin”!\n It looks different from most Frog\n Coins.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Green Coin”.\n It looks different from most Frog\n Coins.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Green Coin”.\n It looks different from most Frog\n Coins.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Green Coin”!\n It looks different from most Frog\n Coins.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Green Coin”.\n It looks different from most Frog\n Coins.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Green Coin”.\n It looks different from most Frog\n Coins.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class Wallet(RegularItem):
+class Wallet(Item):
     index = 129
     order = 152
     item_type = 3
     price = 246
     rare = True
     hard_tier = 1
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Coin Sack”!\n It looks like it belongs to someone.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Coin Sack”.\n It looks like it belongs to someone.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Coin Sack”.\n It looks like it belongs to someone.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Coin Sack”!\n It looks like it belongs to someone.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Coin Sack”.\n It looks like it belongs to someone.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Coin Sack”.\n It looks like it belongs to someone.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class CricketPie(RegularItem):
+class CricketPie(Item):
     index = 130
     order = 138
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Baked Pastry”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Baked Pastry”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Baked Pastry”.\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Baked Pastry”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Baked Pastry”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Baked Pastry”.\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class RockCandy(RegularItem):
+class RockCandy(Item):
     index = 131
     description = 'Attack all\x01enemies'
     order = 31
@@ -2464,50 +2210,38 @@ class RockCandy(RegularItem):
     hard_tier = 4
 
 
-class CastleKey1(RegularItem):
+class CastleKey1(Item):
     index = 132
     order = 135
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
-    model = overworld_items["key"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class CastleKey2(RegularItem):
+class CastleKey2(Item):
     index = 134
     order = 136
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
-    model = overworld_items["key"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class BambinoBomb(RegularItem):
+class BambinoBomb(Item):
     index = 135
     order = 136
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
-    model = overworld_items["bomb"]
 
 
 class SheepAttack(Item):
@@ -2519,114 +2253,82 @@ class SheepAttack(Item):
     price = 150
     rare = True
     hard_tier = 2
-    unique = ItemUnique.Always
-    max_allowed = 0
     dialog_replacements = [
-        (2908,
-         ''' Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class CarboCookie(RegularItem):
+class CarboCookie(Item):
     index = 137
     order = 134
     item_type = 3
     price = 2
     rare = True
-    unique = ItemUnique.Always
-    max_allowed = 0
     hard_tier = 1
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
-    # set price to 0 if shuffle FW is on
 
 
-class ShinyStone(RegularItem):
+class ShinyStone(Item):
     index = 138
     order = 148
     item_type = 3
     price = 4
     rare = True
     hard_tier = 2
-    unique = ItemUnique.Always
-    max_allowed = 0
     shuffle_type = ItemShuffleType.Required
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
-    # set price to 0 if shuffle FW is on
 
 
-class RoomKey(RegularItem):
+class RoomKey(Item):
     index = 140
     order = 145
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
-    model = overworld_items["key"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class ElderKey(RegularItem):
+class ElderKey(Item):
     index = 141
     order = 140
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
-    model = overworld_items["key"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class ShedKey(RegularItem):
+class ShedKey(Item):
     index = 142
     order = 147
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
-    model = overworld_items["key"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Golden Key”!\n I wonder what it opens?[await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Golden Key”.\n I wonder what it opens?[await][pause] It's yours\n for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Golden Key”.\n I wonder what it opens?[await][pause] I'll sell it\n for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class LambsLure(RegularItem):
+class LambsLure(Item):
     index = 143
     order = 36
     item_type = 3
@@ -2635,20 +2337,14 @@ class LambsLure(RegularItem):
     price = 40
     rare = True
     hard_tier = 2
-    unique = ItemUnique.Always
-    max_allowed = 0
-    model = overworld_items["egg"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class FrightBomb(RegularItem):
+class FrightBomb(Item):
     index = 144
     description = 'Inflict fear\x01on one enemy'
     order = 28
@@ -2659,7 +2355,7 @@ class FrightBomb(RegularItem):
     hard_tier = 2
 
 
-class MysteryEgg(RegularItem):
+class MysteryEgg(Item):
     index = 145
     order = 38
     item_type = 3
@@ -2668,38 +2364,28 @@ class MysteryEgg(RegularItem):
     price = 200
     rare = True
     hard_tier = 1
-    unique = ItemUnique.Always
-    max_allowed = 0
-    model = overworld_items["egg"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class BeetleBox(RegularItem):
+class BeetleBox(Item):
     index = 146
     order = 130
     item_type = 3
-    unique = ItemUnique.Always
-    max_allowed = 0
     rare = True
 
 
-class BeetleBox2(RegularItem):
+class BeetleBox2(Item):
     index = 147
     order = 131
     item_type = 3
-    unique = ItemUnique.Always
-    max_allowed = 0
     rare = True
 
 
-class LuckyJewel(RegularItem):
+class LuckyJewel(Item):
     index = 148
     order = 37
     item_type = 3
@@ -2708,15 +2394,11 @@ class LuckyJewel(RegularItem):
     price = 100
     rare = True
     vanilla_shop = True
-    unique = ItemUnique.Always
     hard_tier = 1
     dialog_replacements = [
-        (2908,
-         ''' Item #1: An “Lucky Jewel”!\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: An “Lucky Jewel”.\n It’s sure to bring you plenty of\n good luck.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: An “Lucky Jewel”.\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: An “Lucky Jewel”!\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: An “Lucky Jewel”.\n It’s sure to bring you plenty of\n good luck.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: An “Lucky Jewel”.\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
@@ -2725,15 +2407,11 @@ class SopranoCard(Item):
     order = 149
     item_type = 3
     rare = True
-    unique = ItemUnique.Always
-    max_allowed = 0
+    shuffle_type = ItemShuffleType.Required
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
@@ -2742,15 +2420,11 @@ class AltoCard(Item):
     order = 129
     item_type = 3
     rare = True
-    unique = ItemUnique.Always
-    max_allowed = 0
+    shuffle_type = ItemShuffleType.Required
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
@@ -2759,19 +2433,15 @@ class TenorCard(Item):
     order = 151
     item_type = 3
     rare = True
-    unique = ItemUnique.Always
-    max_allowed = 0
+    shuffle_type = ItemShuffleType.Required
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class Crystalline(RegularItem):
+class Crystalline(Item):
     index = 153
     description = 'Raises party~s\x01Defense in\x01battle'
     order = 3
@@ -2785,7 +2455,7 @@ class Crystalline(RegularItem):
     hard_tier = 3
 
 
-class PowerBlast(RegularItem):
+class PowerBlast(Item):
     index = 154
     description = 'Raises party~s\x01Attack Power\x01in battle'
     order = 18
@@ -2799,7 +2469,7 @@ class PowerBlast(RegularItem):
     hard_tier = 3
 
 
-class WiltShroom(RegularItem):
+class WiltShroom(Item):
     index = 155
     order = 22
     item_type = 3
@@ -2808,10 +2478,9 @@ class WiltShroom(RegularItem):
     rare = True
     basic = True
     hard_tier = 1
-    model = overworld_items["junk"]
 
 
-class RottenMush(RegularItem):
+class RottenMush(Item):
     index = 156
     order = 20
     item_type = 3
@@ -2820,10 +2489,9 @@ class RottenMush(RegularItem):
     rare = True
     basic = True
     hard_tier = 1
-    model = overworld_items["junk"]
 
 
-class MoldyMush(RegularItem):
+class MoldyMush(Item):
     index = 157
     order = 14
     item_type = 3
@@ -2832,155 +2500,118 @@ class MoldyMush(RegularItem):
     rare = True
     basic = True
     hard_tier = 1
-    model = overworld_items["junk"]
 
 
-class Seed(RegularItem):
+class Seed(Item):
     index = 158
     order = 146
     item_type = 3
     rare = True
     hard_tier = 3
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Mysterious Seed”!\n I wonder what will grow from it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Mysterious Seed”.\n I wonder what will grow from it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Mysterious Seed”.\n I wonder what will grow from it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Mysterious Seed”!\n I wonder what will grow from it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Mysterious Seed”.\n I wonder what will grow from it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Mysterious Seed”.\n I wonder what will grow from it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class Fertilizer(RegularItem):
+class Fertilizer(Item):
     index = 159
     order = 141
     item_type = 3
     rare = True
     hard_tier = 3
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Bag of Dirt”!\n It seems different from the soil\n I dug it out of.[await][pause] I'll sell it to you\n for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Bag of Dirt”.\n It seems different from the soil\n I dug it out of.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Bag of Dirt”.\n It seems different from the soil\n I dug it out of.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Bag of Dirt”!\n It seems different from the soil\n I dug it out of.[await][pause] I'll sell it to you\n for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Bag of Dirt”.\n It seems different from the soil\n I dug it out of.[await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Bag of Dirt”.\n It seems different from the soil\n I dug it out of.[await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class BigBooFlag(RegularItem):
+class BigBooFlag(Item):
     index = 161
     order = 132
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class DryBonesFlag(RegularItem):
+class DryBonesFlag(Item):
     index = 162
     order = 139
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class GreaperFlag(RegularItem):
+class GreaperFlag(Item):
     index = 163
     order = 143
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2914,
-         ''' Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: An “Invisible Flag”!\n I wonder if someone is looking for\n this?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] It's yours for 200 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2914, ''' Item #3: An “Invisible Flag”.\n I wonder if someone is looking for\n this?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class CricketJam(RegularItem):
+class CricketJam(Item):
     index = 166
     order = 137
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
     dialog_replacements = [
-        (2908,
-         ''' Item #1: “Green Jelly”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: “Green Jelly”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: “Green Jelly”.\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class Fireworks(RegularItem):
+class Fireworks(Item):
     index = 172
     description = ' A gorgeous\x01 firework'
     # ?
     # order = 133
     item_type = 3
     # rare = True
-    unique = ItemUnique.Always
-    chest_events = [3099]
-    npc_events = [184]
-    overworld_events = [3112]
-    overworld_midas_events = [3398]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
-    # set price to 0 if shuffle FW is on
 
 
-class BrightCard(RegularItem):
+
+class BrightCard(Item):
     index = 174
     description = 'For the casino'
     order = 133
     item_type = 3
     rare = True
-    unique = ItemUnique.Always
     hard_tier = 1
     dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Shiny Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: A “Shiny Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-class Mushroom2(RegularItem):
+class Mushroom2(Item):
     index = 175
     description = 'Recoers 30 HP,\x01but...'
     order = 16
@@ -2992,10 +2623,9 @@ class Mushroom2(RegularItem):
     vanilla_shop = True
     hard_tier = 1
     include_stats_in_patch = True
-    model = overworld_items["mushroom_item"]
 
 
-class StarEgg(RegularItem):
+class StarEgg(Item):
     index = 176
     description = 'Reusable battle\x01item'
     order = 33
@@ -3005,294 +2635,116 @@ class StarEgg(RegularItem):
     price = 300
     rare = True
     hard_tier = 4
-    unique = ItemUnique.Always
-    model = overworld_items["egg"]
     dialog_replacements = [
-        (2908,
-         ''' Item #1: An “Adorable Bomb”!\n Seems like it'll last a long time![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: An “Adorable Bomb”.\n Seems like it'll last a long time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: An “Adorable Bomb”.\n Seems like it'll last a long time![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+        (2908, ''' Item #1: An “Adorable Bomb”!\n Seems like it'll last a long time![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: An “Adorable Bomb”.\n Seems like it'll last a long time![await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: An “Adorable Bomb”.\n Seems like it'll last a long time![await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
+
+class Beetlemania(Item):
+    index = 164
+    description = 'Beetlemania'
+    hard_tier = 1
+    dialog_replacements = [
+        (2908, ''' Item #1: A “Handheld Game”!\n Sounds pretty fun, doesn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Handheld Game”.\n Sounds pretty fun, doesn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Handheld Game”.\n Sounds pretty fun, doesn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
+    ]
+
+class StarPiece(Item):
+    description = 'Star Hunt star piece'
+    hard_tier = 4
+    dialog_replacements = [
+        (2908, ''' Item #1: A “Shooting Star”!\n It's sure to make all your wishes\n come true.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
+        (2911, ''' Item #2: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
+        (2914, ''' Item #3: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
 
-# ****************************** Other data classes
 
-class MiscReward(Item):
-    """Base class for items requiring special logic."""
+
+# ****************************** Chest content/rewards data classes
+
+class ChestReward(Item):
+    """Base class for chest-only rewards."""
     pass
-
-# *** Progressive items
-
-
-class ProgressiveCard(MiscReward):
-    index = 195
-    model = overworld_items["music"]
-    shuffle_type = ItemShuffleType.Required
-    unique = ItemUnique.Always
-    max_allowed = 3
-    chest_events = [3086]
-    npc_events = [3097]
-    overworld_events = [3110]
-    overworld_midas_events = [3396]
-    dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Musical Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
-    ]
-
-
-class ProgressiveEgg(MiscReward):
-    index = 196
-    model = overworld_items["egg"]
-    unique = ItemUnique.Always
-    reuseable = True
-    consumable = True
-    max_allowed = 3
-    chest_events = [3087]
-    npc_events = [3098]
-    overworld_events = [3111]
-    overworld_midas_events = [3397]
-    dialog_replacements = [
-        (2908,
-         ''' Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] It's yours for\n 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: “Shepherd's Bait”.\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it for\n 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
-    ]
-
-
-class ProgressiveFireworks(MiscReward):
-    index = 197
-    unique = ItemUnique.Always
-    max_allowed = 3
-    chest_events = [3100]
-    npc_events = [185]
-    overworld_events = [3113]
-    overworld_midas_events = [3399]
-    dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
-    ]
-
-# *** Mimics
-
-
-class MimicFight(MiscReward):
-    """Base class for items requiring special logic."""
-    pass
-
-
-class PandoriteFight(MimicFight):
-    index = 211
-    description = 'Pandorite fight'
-    unique = ItemUnique.Always
-    hard_tier = 1
-    chest_events = [3124]
-
-
-class HidonFight(MimicFight):
-    index = 212
-    description = 'hidon fight'
-    unique = ItemUnique.Always
-    hard_tier = 1
-    chest_events = [3126]
-
-
-class BoxBoyFight(MimicFight):
-    index = 213
-    description = 'box boy fight'
-    unique = ItemUnique.Always
-    hard_tier = 1
-    chest_events = [2493]
 
 
 # *** Coins
 
-class Coins(MiscReward):
-    index = 192
+class Coins(ChestReward):
+    """Base class for coins."""
     hard_tier = 0
-    amount = 0
-    multiplier = 0
-    chest_events = [3074]
-    quick_chest_events = [3080]
-    npc_events = [159]
 
-    def __init__(self, world, amount):
-        """
 
-        Args:
-            world (randomizer.logic.main.GameWorld):
-            amount (int)
+class Coins5(Coins):
+    index = 192
+    hard_tier = 1
 
-        """
-        super().__init__(world)
-        if amount < 10:
-            self.chest_70A7_upper = 8
-            rounded = amount
-        else:
-            self.chest_70A7_upper = 10
-            rounded = (amount // 10)
-        self.amount = amount
-        chest_70A7_lower = rounded % 15
-        self.chest_70A7_lower = chest_70A7_lower
-        self.multiplier = (rounded - chest_70A7_lower) / 15
 
-class Coins10(Coins):
+class Coins8(Coins):
     index = 193
     hard_tier = 1
-    overworld_events = [3146]
-    overworld_midas_events = [2818]
-    model = overworld_items["coin"]
-    def __init__(self, world):
-        super().__init__(world, 10)
 
-class Coins1(Coins):
+
+class Coins10(Coins):
     index = 194
     hard_tier = 1
-    overworld_events = [1293]
-    overworld_midas_events = [2819]
-    model = overworld_items["small_coin"]
-    def __init__(self, world):
-        super().__init__(world, 1)
-
-# *** Misc.
-
-class Beetlemania(MiscReward):
-    index = 164
-    description = 'Beetlemania'
-    unique = ItemUnique.Always
-    chest_events = [162]
-    npc_events = [161]
-    overworld_events = [3109]
-    overworld_midas_events = [3395]
-    dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Handheld Game”!\n Sounds pretty fun, doesn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Handheld Game”.\n Sounds pretty fun, doesn't it?[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Handheld Game”.\n Sounds pretty fun, doesn't it?[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
-    ]
-
-# slot machine needs to write its own events using data/eventscripts/utils/slot_machine, logic for this contained elsewhere
 
 
-class SlotMachineChest(MiscReward):
-    index = 214
-    description = 'Slots'
-    unique = ItemUnique.BalancedOnly
-    max_allowed = 3
+class Coins150(Coins):
+    index = 195
+    hard_tier = 2
 
 
-class InfiniteCoins(MiscReward):
-    index = 216
-    description = 'Infinite coins'
-    unique = ItemUnique.Always
-    chest_events = [3074]
-    chest_70A7_lower = 0
-    chest_70A7_upper = 15
+class Coins100(Coins):
+    index = 196
+    hard_tier = 2
 
 
-class StarPiece(MiscReward):
-    description = 'Star Hunt star piece'
-    hard_tier = 4
-    unique = ItemUnique.Always
-    max_allowed = 7
-    chest_events = [3094, 3092]
-    npc_events = [164]
-    overworld_events = [166]
-    overworld_midas_events = [2821]
-    dialog_replacements = [
-        (2908,
-         ''' Item #1: A “Shooting Star”!\n It's sure to make all your wishes\n come true.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
-        (2911,
-         ''' Item #2: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),
-        (2914,
-         ''' Item #3: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
-    ]
+class Coins50(Coins):
+    index = 197
+    hard_tier = 2
 
 
-class Flower(MiscReward):
+class CoinsDoubleBig(Coins):
+    index = 209
+    hard_tier = 1
+
+
+# *** Non-coin items (flower, frog coin, mushroom, miss)
+
+class NonCoins(ChestReward):
+    """Base class for non-coin bonuses (frog coin, flower, mushroom)."""
+    hard_tier = 0
+    pass
+
+
+class Flower(NonCoins):
     index = 198
     hard_tier = 1
-    model = overworld_items["flower"]
-    chest_70A7_upper = 2
-    packet = 35
-    chest_events = [3072]
-    overworld_events = [1801]
-    overworld_midas_events = [2817]
 
 
-class RecoveryMushroom(MiscReward):
+class RecoveryMushroom(NonCoins):
     index = 199
     hard_tier = 1
-    packet = 36
-    chest_events = [3072]
-    overworld_events = [2822]
-    npc_events = [397]
-    overworld_events = [2822]
 
 
-class FrogCoin(MiscReward):
+class FrogCoin(NonCoins):
     index = 200
     hard_tier = 1
-    amount = 0
-    model = overworld_items["frog_coin"]
-    chest_70A7_upper = 3
-    chest_events = [3072]
-    npc_events = [157]
-    overworld_events = [3238]
-    overworld_midas_events = [2816]
 
 
-class MultiFrogCoin(MiscReward):
-    index = 215
-    hard_tier = 0
-    amount = 0
-    multiplier = 0
-    chest_events = [3091]
-    quick_chest_events = [3082]
-    npc_events = [158]
-    chest_70A7_upper = 0
-
-    def __init__(self, world, amount):
-        """
-
-        Args:
-            world (randomizer.logic.main.GameWorld):
-            amount (int)
-
-        """
-        super().__init__(world)
-        self.amount = amount
-        chest_70A7_lower = amount % 15
-        self.chest_70A7_lower = chest_70A7_lower
-        self.multiplier = (amount - chest_70A7_lower) / 15
-
-
-class YouMissed(MiscReward):
+class YouMissed(NonCoins):
     index = 210
     hard_tier = 1
-    chest_events = [3081]
 
 
 # *** Invincibility stars
 
-class InvincibilityStar(MiscReward):
+class InvincibilityStar(ChestReward):
     """Base class for invincibility stars."""
     hard_tier = 0
-    chest_70A7_upper = 1
-    chest_events = [3072]
     pass
 
 
@@ -3304,43 +2756,36 @@ class BanditsWayStar(InvincibilityStar):
 class KeroSewersStar(InvincibilityStar):
     index = 202
     hard_tier = 1
-    chest_70A7_lower = 1
 
 
 class MolevilleMinesStar(InvincibilityStar):
     index = 203
     hard_tier = 2
-    chest_70A7_lower = 2
 
 
 class SeaStar(InvincibilityStar):
     index = 204
     hard_tier = 3
-    chest_70A7_lower = 3
 
 
 class LandsEndVolcanoStar(InvincibilityStar):
     index = 205
     hard_tier = 4
-    chest_70A7_lower = 5
 
 
 class NimbusLandStar(InvincibilityStar):
     index = 206
     hard_tier = 2
-    chest_70A7_lower = 7
 
 
 class LandsEndStar2(InvincibilityStar):
     index = 207
     hard_tier = 3
-    chest_70A7_lower = 8
 
 
 class LandsEndStar3(InvincibilityStar):
     index = 208
     hard_tier = 3
-    chest_70A7_lower = 9
 
 
 # ************************** Shop data classes
@@ -3353,8 +2798,6 @@ class Shop:
     index = 0
     frog_coin_shop = False
     items = []
-    retain_size = False
-    event_shop = False
 
     def __init__(self, world):
         """
@@ -3436,8 +2879,7 @@ class PartialJuiceBarShop(JuiceBarShop):
 
 class MushroomKingdomShop(Shop):
     index = 0
-    items = [Mushroom, HoneySyrup, PickMeUp, AbleJuice,
-             Shirt, Pants, JumpShoes, AntidotePin]
+    items = [Mushroom, HoneySyrup, PickMeUp, AbleJuice, Shirt, Pants, JumpShoes, AntidotePin]
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -3450,8 +2892,7 @@ class MushroomKingdomShop(Shop):
 
         """
         # For standard mode, make sure the first two characters can equip items.
-        first_chars = set(
-            [c.index for c in self.world.character_join_order[:2]])
+        first_chars = set([c.index for c in self.world.character_join_order[:2]])
         equip_chars = set([c.index for c in item.equip_chars])
         can_equip = self.world.open_mode or bool(equip_chars & first_chars)
         return item.consumable or ((item.is_armor or item.is_accessory) and can_equip)
@@ -3476,8 +2917,7 @@ class RoseTownItemShop(Shop):
 
 class RoseTownArmorShop(Shop):
     index = 2
-    items = [ThickShirt, ThickPants, JumpShoes,
-             AntidotePin, WakeUpPin, TrueformPin, FearlessPin]
+    items = [ThickShirt, ThickPants, JumpShoes, AntidotePin, WakeUpPin, TrueformPin, FearlessPin]
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -3490,8 +2930,7 @@ class RoseTownArmorShop(Shop):
 
         """
         # For standard mode, make sure the first three characters can equip items.
-        first_chars = set(
-            [c.index for c in self.world.character_join_order[:3]])
+        first_chars = set([c.index for c in self.world.character_join_order[:3]])
         equip_chars = set([c.index for c in item.equip_chars])
         can_equip = self.world.open_mode or bool(equip_chars & first_chars)
         return (item.is_armor or item.is_accessory) and can_equip
@@ -3500,14 +2939,12 @@ class RoseTownArmorShop(Shop):
 class DiscipleShop(Shop):
     index = 3
     frog_coin_shop = True
-    retain_size = True
     items = [SeeYa, EarlierTimes, ExpBooster, CoinTrick, ScroogeRing]
 
 
 class MolevilleShop(Shop):
     index = 4
-    items = [PunchGlove, FingerShot, Cymbals, MegaShirt,
-             MegaCape, MegaPants, WorkPants, MidMushroom, MapleSyrup]
+    items = [PunchGlove, FingerShot, Cymbals, MegaShirt, MegaCape, MegaPants, WorkPants, MidMushroom, MapleSyrup]
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -3520,8 +2957,7 @@ class MolevilleShop(Shop):
 
         """
         # For standard mode, make sure the first three characters can equip items.
-        first_chars = set(
-            [c.index for c in self.world.character_join_order[:3]])
+        first_chars = set([c.index for c in self.world.character_join_order[:3]])
         equip_chars = set([c.index for c in item.equip_chars])
         can_equip = self.world.open_mode or bool(equip_chars & first_chars)
         return item.consumable or ((item.is_armor or item.is_weapon) and can_equip)
@@ -3638,8 +3074,7 @@ class SeasideArmorShop(Shop):
 
 class SeasideAccessoryShop(Shop):
     index = 15
-    items = [JumpShoes, AntidotePin, WakeUpPin,
-             FearlessPin, TrueformPin, ZoomShoes]
+    items = [JumpShoes, AntidotePin, WakeUpPin, FearlessPin, TrueformPin, ZoomShoes]
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -3656,8 +3091,7 @@ class SeasideAccessoryShop(Shop):
 
 class SeasideItemShop(Shop):
     index = 16
-    items = [Mushroom, MidMushroom, HoneySyrup,
-             MapleSyrup, PickMeUp, AbleJuice, FreshenUp]
+    items = [Mushroom, MidMushroom, HoneySyrup, MapleSyrup, PickMeUp, AbleJuice, FreshenUp]
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -3674,8 +3108,7 @@ class SeasideItemShop(Shop):
 
 class MonstroTownShop(Shop):
     index = 17
-    items = [SpikedLink, CourageShell, MidMushroom,
-             MapleSyrup, PickMeUp, AbleJuice, FreshenUp]
+    items = [SpikedLink, CourageShell, MidMushroom, MapleSyrup, PickMeUp, AbleJuice, FreshenUp]
 
     def is_item_allowed(self, item):
         return item.consumable or (item.is_armor or item.is_weapon)
@@ -3743,8 +3176,7 @@ class NimbusLandItemWeaponShop(Shop):
 
 class CrocoShop1(Shop):
     index = 22
-    items = [MidMushroom, MapleSyrup, PickMeUp, FreshenUp,
-             FireShirt, FirePants, FireCape, FireShell, FireDress]
+    items = [MidMushroom, MapleSyrup, PickMeUp, FreshenUp, FireShirt, FirePants, FireCape, FireShell, FireDress]
 
     def is_item_allowed(self, item):
         return item.consumable or item.is_armor
@@ -3752,8 +3184,7 @@ class CrocoShop1(Shop):
 
 class CrocoShop2(Shop):
     index = 23
-    items = [MidMushroom, MapleSyrup, PickMeUp, FreshenUp,
-             HeroShirt, PrincePants, StarCape, HealShell, RoyalDress]
+    items = [MidMushroom, MapleSyrup, PickMeUp, FreshenUp, HeroShirt, PrincePants, StarCape, HealShell, RoyalDress]
 
     def is_item_allowed(self, item):
         return item.consumable or item.is_armor
@@ -3761,8 +3192,7 @@ class CrocoShop2(Shop):
 
 class ToadShop(Shop):
     index = 24
-    items = [MidMushroom, MaxMushroom, MapleSyrup,
-             PickMeUp, AbleJuice, FreshenUp, FroggieDrink]
+    items = [MidMushroom, MaxMushroom, MapleSyrup, PickMeUp, AbleJuice, FreshenUp, FroggieDrink]
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -3777,43 +3207,7 @@ class ToadShop(Shop):
         return item.consumable
 
 
-class RoomServiceShop(Shop):
-    retain_size = True
-    event_shop = True
-    items = [PickMeUp, KerokeroCola]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable and not item.reuseable
-
-
-class MolevilleSwapShop(Shop):
-    retain_size = True
-    event_shop = True
-    items = [FrightBomb, FireBomb, IceBomb]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable and not item.reuseable and item.hard_tier >= 3
-
 # ********************* Default shop and item lists for world
-
 
 def get_default_items(world):
     """Get default vanilla item list for the world.
@@ -4019,6 +3413,4 @@ def get_default_shops(world):
         CrocoShop1(world),
         CrocoShop2(world),
         ToadShop(world),
-        RoomServiceShop(world),
-        MolevilleSwapShop(world),
     ]

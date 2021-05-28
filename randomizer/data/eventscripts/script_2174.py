@@ -170,8 +170,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2174_start_battle_11',
-        "command": 'start_battle',
-        "args": [0x00eb, 7]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_2174_jmp_if_bit_clear_12',
@@ -185,6 +185,11 @@ script = [
     {
         "identifier": 'EVENT_2174_restore_all_fp_14',
         "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_2174_start_battle_11_',
+        "command": 'run_event_as_subroutine',
+        "args": [168]
     },
     {
         "identifier": 'EVENT_2174_jmp_to_event_15',

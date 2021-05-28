@@ -6,12 +6,49 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3113_run_dialog_0',
-        "command": 'run_dialog',
-        "args": [1793, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "identifier": 'EVENT_3113_disable',
+        "command": 'disable_trigger',
+        "args": [AreaObjects.MEM_70A8]
     },
     {
-        "identifier": 'EVENT_3113_ret_1',
-        "command": 'ret'
-    }
+        "identifier": 'EVENT_3113_action_queue_async_0',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MEM_70A8],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3113_action_queue_async_0_SUBSCRIPT_object_memory_set_bit_0',
+                "command": 'object_memory_set_bit',
+                "args": [0x30, [4]]
+            },
+            {
+                "identifier": 'EVENT_3113_action_queue_async_0_SUBSCRIPT_play_sound_1',
+                "command": 'play_sound',
+                "args": [Sounds._027_FOUND_AN_ITEM, 4]
+            },
+            {
+                "identifier": 'EVENT_3113_action_queue_async_0_SUBSCRIPT_set_sprite_sequence_2',
+                "command": 'set_sprite_sequence',
+                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3113_action_queue_async_0_SUBSCRIPT_pause_3',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_3113_action_queue_async_0_SUBSCRIPT_visibility_off_4',
+                "command": 'visibility_off'
+            },
+            {
+                "identifier": 'EVENT_3113_action_queue_async_0_SUBSCRIPT_db_5',
+                "command": 'db',
+                "args": [0xfd, 0xf2]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3113_put_inventory_105',
+        "command": 'jmp_to_event',
+        "args": [185]
+    },
 ]

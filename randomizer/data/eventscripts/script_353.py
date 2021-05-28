@@ -121,6 +121,11 @@ script = [
         "args": [430, "EVENT_353_room_430_logic"]
     },
     {
+        "identifier": "EVENT_353_room_461_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [461, "EVENT_353_room_461_logic"]
+    },
+    {
         "identifier": "EVENT_353_room_469_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [469, "EVENT_353_room_469_logic"]
@@ -404,6 +409,15 @@ script = [
     },
     {
         "identifier": "EVENT_353_room_430_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_461_logic",  # chester
+        "command": 'start_battle',
+        "args": [235, 7]
+    },
+    {
+        "identifier": "EVENT_353_room_461_logic_",
         "command": 'ret'
     },
     {

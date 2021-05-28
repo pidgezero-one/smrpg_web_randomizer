@@ -178,8 +178,8 @@ script = [
     },
     {
         "identifier": 'ACTION_439_db_36',
-        "command": 'unknown_jmp_FD_3E',
-        "args": [0x1c, 0x05, 0x0c, 'ACTION_439_reset_properties_37']
+        "command": 'create_packet_event_at_coords_jmp_if_null',
+        "args": [NPCPackets._028_MUSHROOM_THROWN_SW, 3077, 'ACTION_439_reset_properties_37']
     },
     {
         "identifier": 'ACTION_439_reset_properties_37',
@@ -239,8 +239,8 @@ script = [
     },
     {
         "identifier": 'ACTION_439_db_49',
-        "command": 'unknown_jmp_FD_3E',
-        "args": [0x1c, 0x05, 0x0c, 'ACTION_439_reset_properties_50']
+        "command": 'create_packet_event_at_coords_jmp_if_null',
+        "args": [NPCPackets._028_MUSHROOM_THROWN_SW, 3077, 'ACTION_439_reset_properties_50']
     },
     {
         "identifier": 'ACTION_439_reset_properties_50',

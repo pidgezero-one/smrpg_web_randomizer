@@ -132,6 +132,11 @@ script = [
         "args": [438, "EVENT_167_room_438_logic"]
     },
     {
+        "identifier": "EVENT_167_room_461_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [461, "EVENT_167_room_461_logic"]
+    },
+    {
         "identifier": "EVENT_167_room_469_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [469, "EVENT_167_room_469_logic"]
@@ -145,6 +150,11 @@ script = [
         "identifier": "EVENT_167_room_471_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [471, "EVENT_167_room_471_logic"]
+    },
+    {
+        "identifier": "EVENT_167_room_472_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [472, "EVENT_167_room_472_logic"]
     },
     {
         "identifier": "EVENT_167_room_512_jump",
@@ -305,6 +315,10 @@ script = [
     },
     {
         "identifier": "EVENT_167_room_438_logic", # valentina
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_167_room_461_logic", # chester
         "command": 'ret'
     },
     {

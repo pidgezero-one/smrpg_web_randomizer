@@ -3017,7 +3017,7 @@ models[130] = {
   "byte6_bit2": False
 } # 0x1dbb8e
 models[131] = {
-  "sprite": SpriteName._393_DODO,
+  "sprite": SpriteName._131_DODO_AS_PARSON,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,

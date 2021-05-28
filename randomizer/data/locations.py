@@ -33,6 +33,7 @@ class Area(Enum):
     LandsEnd = auto()
     BelomeTemple = auto()
     MonstroTown = auto()
+    Casino = auto()
     BeanValley = auto()
     NimbusLand = auto()
     BarrelVolcano = auto()
@@ -48,6 +49,11 @@ class ItemLocation:
     missable = False
     access = 0
     not_depletable = False
+    rooms = []
+    script = None
+    key = False
+    coinsanity = False
+    description = ""
 
     def __init__(self, world):
         """
@@ -112,7 +118,7 @@ class ItemLocation:
 
         """
         # If this is a missable location, it cannot contain a key item.
-        if self.missable and not utils.isclass_or_instance(item, items.ChestReward) and item.is_key:
+        if self.missable and item.is_key:
             return False
 
         # If this is a non-depletable chest, it can only contain a frog coin or recovery mushroom.

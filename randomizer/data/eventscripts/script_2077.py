@@ -215,6 +215,21 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
+        "identifier": 'EVENT_2077_item_grant',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
+    },
+    {
+        "identifier": 'EVENT_2077_pause_64_',
+        "command": 'set',
+        "args": [0x7000, 517]
+    },
+    {
+        "identifier": 'EVENT_2077_star',
+        "command": 'run_event_as_subroutine',
+        "args": [167]
+    },
+    {
         "identifier": 'EVENT_2077_action_queue_sync_61',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_3],
@@ -580,16 +595,6 @@ script = [
         "identifier": 'EVENT_2077_set_bit_87',
         "command": 'set_bit',
         "args": [0x708a, 5]
-    },
-    {
-        "identifier": 'EVENT_2077_pause_64_',
-        "command": 'set',
-        "args": [0x7000, 517]
-    },
-    {
-        "identifier": 'EVENT_2077_star',
-        "command": 'run_event_as_subroutine',
-        "args": [167]
     },
     {
         "identifier": 'EVENT_2077_ret_90',
