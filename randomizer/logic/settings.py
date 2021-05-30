@@ -77,6 +77,15 @@ class NumberThresholdFlag(Flag):
 
 # ******** Star pieces
 
+class ShuffleStarPieces(BooleanFlag):
+    name = 'Randomize the locations of Star Pieces'
+    description = '''If enabled, the Star Pieces may be found in places other than their original locations.
+    
+    If disabled, they will be rewarded by defeating the final bosses of Mushroom Kindom, Forest Maze, Moleville, Seaside Town, and Barrel Volcano, as well as a freestanding piece on Star Hill.'''
+    modes = ['open']
+    default = False
+# if this is disabled, no other options in this category can be changed
+
 class TotalStarPieces(NumberThresholdFlag):
     name = 'Total star pieces'
     description = "The total number of star pieces (0-7) that can appear in the seed."
@@ -92,6 +101,20 @@ class StarPiecesRequired(NumberThresholdFlag):
     min = 0
     max = 7
     modes = ['open']
+
+class WinConditions(enum.Enum):
+    """Enumeration for win condition options"""
+    FinalBoss = enum.value("Unlocks final boss")
+    WinGame = enum.value("Beat the game")
+
+class WinCondition(SelectOneFlag):
+    name = "When required Star Pieces are collected"
+    """Enumeration for win condition options"""
+    description = '''Unlocks final boss: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss.
+    
+    Beat the game: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the game is over and the credits will roll.'''
+    options = [o.value for o in WinConditions]
+    default = WinConditions.FinalBoss
 
 class StarPieceAvailability(BooleanFlag):
     name = 'Star Pieces can appear in the general item pool'
@@ -112,7 +135,112 @@ class RequireBossFights(BooleanFlag):
     modes = ['open']
     default = False
 
-# ******** Gating & Warps
+boss_star_piece_locations = [
+    ShuffleLocationSelector.BanditsWayStarPiece, 
+    ShuffleLocationSelector.BarrelVolcanoBoss1, 
+    ShuffleLocationSelector.BarrelVolcanoBoss2, 
+    ShuffleLocationSelector.BeanValleyBoss, 
+    ShuffleLocationSelector.BelomeTempleBoss, 
+    ShuffleLocationSelector.BoosterTowerStarPiece1, 
+    ShuffleLocationSelector.BoosterTowerStarPiece2, 
+    ShuffleLocationSelector.BowsersKeepBoss1, 
+    ShuffleLocationSelector.BowsersKeepBoss2, 
+    ShuffleLocationSelector.BowsersKeepBoss3, 
+    ShuffleLocationSelector.BowsersKeepBossChester, 
+    ShuffleLocationSelector.BoxBoyBoss, 
+    ShuffleLocationSelector.CulexBoss, 
+    ShuffleLocationSelector.DojoBoss1, 
+    ShuffleLocationSelector.DojoBoss2, 
+    ShuffleLocationSelector.DojoBoss3, 
+    ShuffleLocationSelector.DojoBoss4, 
+    ShuffleLocationSelector.FactoryBoss1, 
+    ShuffleLocationSelector.FactoryBoss2, 
+    ShuffleLocationSelector.ForestMazeBoss, 
+    ShuffleLocationSelector.HidonBoss, 
+    ShuffleLocationSelector.InnerFactoryBoss1, 
+    ShuffleLocationSelector.InnerFactoryBoss2, 
+    ShuffleLocationSelector.InnerFactoryBoss3, 
+    ShuffleLocationSelector.InnerFactoryBoss4, 
+    ShuffleLocationSelector.InvasionStarPiece, 
+    ShuffleLocationSelector.KeroSewersBoss, 
+    ShuffleLocationSelector.LandsEndStarPiece1, 
+    ShuffleLocationSelector.MarrymoreStarPiece, 
+    ShuffleLocationSelector.MolevilleMinesBoss1, 
+    ShuffleLocationSelector.MolevilleMinesBoss2, 
+    ShuffleLocationSelector.MushroomWayStarPiece, 
+    ShuffleLocationSelector.NimbusCastleStarPiece2, 
+    ShuffleLocationSelector.NimbusCastleStarPiece3, 
+    ShuffleLocationSelector.NimbusLandStarPiece1, 
+    ShuffleLocationSelector.PandoriteBoss, 
+    ShuffleLocationSelector.SeasideTownBoss, 
+    ShuffleLocationSelector.StarHillStarPiece1, 
+    ShuffleLocationSelector.SunkenShipBoss, 
+    ShuffleLocationSelector.SunkenShipMidboss]
+class EnabledBossChecks(CategorizationFlag):
+    name = 'Eligible Star Piece boss fights'
+    description = '''If a check is in the left column, it is eligible to reward a Star Piece.
+    
+    If a check is in the right column, it will still house a boss fight, but is guaranteed to not reward a Star Piece.'''
+    options = [o.value for o in boss_star_piece_locations]
+
+# ******** Playable Characters
+
+class ShuffleCharacters(BooleanFlag):
+    name = 'Randomize the locations of recruited characters'
+    description = '''If enabled, Mario, Mallow, Geno, Peach, and Bowser will join your party in a random order.
+    
+    If disabled, you will start with Mario and recruit characters near their original locations.'''
+    modes = ['open']
+    default = False
+# if this is disabled, no starting/available options in this category can be changed
+
+class StartingCharacters(NumberThresholdFlag):
+    # remember to set switch bit if > 3
+    name = 'Starting party size'
+    description = "The number of characters you will have already recruited at the start of the seed, including your starter."
+    default = 1
+    min = 1
+    max = 5
+    modes = ['open']
+
+class PlayableCharacters(enum.Enum):
+    """Enumeration for win condition options"""
+    Mario = enum.value("Mario")
+    Mallow = enum.value("Mallow")
+    Geno = enum.value("Geno")
+    Bowser = enum.value("Bowser")
+    Toadstool = enum.value("Toadstool")
+    Random = enum.value("Random")
+
+class StartingCharacter(SelectOneFlag):
+    name = "Starting Character"
+    description = '''The first character in your party, who will appear on your save menu.'''
+    choices = [o.value for o in PlayableCharacters]
+    default = PlayableCharacters.Mario
+
+class AvailableCharacters(CategorizationFlag):
+    name = "Available Characters"
+    description = '''Characters on the left will appear in the seed. Characters on the right will not.'''
+    options = [o.value for o in [PlayableCharacters.Mario, PlayableCharacters.Mallow, PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]]
+
+class CharacterStats(BooleanFlag):
+    name = 'Randomize character stats'
+    description = '''If enabled, stats and stat curves for each playable character will be randomized.
+    
+    If disabled, playable characters retain their original stats and stat curves.'''
+    default = False
+
+class CharacterLearnedSpells(BooleanFlag):
+    name = 'Randomize character learned spells'
+    description = "The pool of spells learnable by each character will be randomized. This only covers spells originally learn-able by playable characters, and does not include enemy spells."
+    default = False
+
+class CharacterSpellStats(BooleanFlag):
+    name = 'Randomize character spell stats'
+    description = "The power and FP cost of character magic spells will be randomized."
+    default = False
+
+# ******** Area Access
 
 class BanditsWayGating(enum.Enum):
     """Enumeration for Bandit's Way gating flag option"""
@@ -394,7 +522,24 @@ class FastTravel(BooleanFlag):
     modes = ['open']
     default = False
 
-# Item Location Settings
+class BowserDoorRequirements(NumberThresholdFlag):
+    name = 'Required Bowser\'s Keep obstacle doors'
+    description = "The number of doors required to progress through Bowser's Keep."
+    default = 4
+    min = 1
+    max = 6
+    modes = ['open']
+
+# ******** Item Checks
+
+class ShuffleItems(BooleanFlag):
+    name = 'Randomize the contents of item rewards'
+    description = '''If enabled, the contents of treasure chests, quest rewards, and (optionally) freestanding small items will be shuffled.
+    
+    If disabled, chests, quest rewards, and freestanding small items will remain unchanged from the original game.'''
+    modes = ['open']
+    default = False
+# if this is disabled, no options in this category can be changed
 
 class FireworksOptions(enum.Enum):
     """Enumeration for Fireworks flag option"""
@@ -507,247 +652,467 @@ class SuperJump2Threshold(NumberThresholdFlag):
     max = 100
     modes = ['open']
 
-# move location descriptions into an enum to be used in the setting
-# and reference those enum values in the location classes
-
-class BowsersKeepOpen(Flag):
-    name = "Include Bowser's Keep locations"
-    description = ("Bowser's Keep is open from the start and the boss locations inside the keep may have Star Pieces.  "
-                   "The Factory will be opened once you find all Star Pieces.")
-    inverse_description = ("(Bowser's Keep will not contain any Star Pieces, and will be opened when you find all your "
-                           "Star Pieces.)")
-    value = 'Rk'
+class ShuffleBeetlemania(BooleanFlag):
+    name = 'Shuffle Beetlemania'
+    description = '''If enabled, Beetlemania will be unlocked by a random item check, and the Mushroom Kingdom inn kid will sell you a random item check.'''
     modes = ['open']
+    default = False
 
-
-class CulexStarShuffle(Flag):
-    name = "Include Culex's Lair"
-    description = "Culex's Lair in Monstro Town may have a Star Piece."
-    inverse_description = "(Culex's Lair in Monstro Town will not have a Star Piece.)"
-    value = 'Rc'
-    hard = True
-    modes = ['open']
-
-
-class StarPieceShuffle(Flag):
-    name = 'Randomize star pieces'
-    description = ("Assigns six star pieces to random boss locations, excluding Culex's Lair, Bowser's Keep, and the "
-                   "Factory. Collect all the star pieces to open Bowser's Keep and progress to the end of the game.")
-    inverse_description = "(The star pieces will stay in their original locations.)"
-    value = 'R'
-    modes = ['open']
-    options = [
-        SevenStarHunt,
-        BowsersKeepOpen,
-        CulexStarShuffle,
+regular_checks = [
+        ShuffleLocationSelector.BanditsWay1, 
+        ShuffleLocationSelector.BanditsWay2, 
+        ShuffleLocationSelector.BanditsWayCroco, 
+        ShuffleLocationSelector.BanditsWayDogJump, 
+        ShuffleLocationSelector.BanditsWayStarChest, 
+        ShuffleLocationSelector.BarrelVolcanoBeforeStar1, 
+        ShuffleLocationSelector.BarrelVolcanoBeforeStar2, 
+        ShuffleLocationSelector.BarrelVolcanoDonut1, 
+        ShuffleLocationSelector.BarrelVolcanoDonut2, 
+        ShuffleLocationSelector.BarrelVolcanoHinopio, 
+        ShuffleLocationSelector.BarrelVolcanoLavaPool, 
+        ShuffleLocationSelector.BarrelVolcanoSaveRoom1, 
+        ShuffleLocationSelector.BarrelVolcanoSaveRoom2, 
+        ShuffleLocationSelector.BarrelVolcanoSecret1, 
+        ShuffleLocationSelector.BarrelVolcanoSecret2, 
+        ShuffleLocationSelector.BarrelVolcanoStarRoom, 
+        ShuffleLocationSelector.BeanValley1, 
+        ShuffleLocationSelector.BeanValley2, 
+        ShuffleLocationSelector.BeanValleyBeanstalk, 
+        ShuffleLocationSelector.BeanValleyBottomLeftPiranhaPipe, 
+        ShuffleLocationSelector.BeanValleyBottomRightPiranhaPipeLower, 
+        ShuffleLocationSelector.BeanValleyBottomRightPiranhaPipeUpper, 
+        ShuffleLocationSelector.BeanValleyBoxBoyRoom1, 
+        ShuffleLocationSelector.BeanValleyBoxBoyRoom2, 
+        ShuffleLocationSelector.BeanValleyCloud1, 
+        ShuffleLocationSelector.BeanValleyCloud2, 
+        ShuffleLocationSelector.BeanValleyFall1, 
+        ShuffleLocationSelector.BeanValleyFall2, 
+        ShuffleLocationSelector.BeanValleyLeftPiranhaPipe, 
+        ShuffleLocationSelector.BeanValleyMegasmilaxRoom, 
+        ShuffleLocationSelector.BeanValleyPiranhaPlants, 
+        ShuffleLocationSelector.BelomeTempleAfterFortune1, 
+        ShuffleLocationSelector.BelomeTempleAfterFortune2, 
+        ShuffleLocationSelector.BelomeTempleAfterFortune3, 
+        ShuffleLocationSelector.BelomeTempleAfterFortune4, 
+        ShuffleLocationSelector.BelomeTempleFortune1, 
+        ShuffleLocationSelector.BelomeTempleFortune2, 
+        ShuffleLocationSelector.BelomeTempleFortune3, 
+        ShuffleLocationSelector.BelomeTempleFortune4, 
+        ShuffleLocationSelector.BelomeTempleFortuneTeller, 
+        ShuffleLocationSelector.BelomeTempleTreasure1, 
+        ShuffleLocationSelector.BelomeTempleTreasure2, 
+        ShuffleLocationSelector.BelomeTempleTreasure3, 
+        ShuffleLocationSelector.BoosterPass1, 
+        ShuffleLocationSelector.BoosterPass2, 
+        ShuffleLocationSelector.BoosterPassSecret1, 
+        ShuffleLocationSelector.BoosterPassSecret2, 
+        ShuffleLocationSelector.BoosterPassSecret3, 
+        ShuffleLocationSelector.BoosterTowerChomp, 
+        ShuffleLocationSelector.BoosterTowerKnifeGuy, 
+        ShuffleLocationSelector.BoosterTowerMasher, 
+        ShuffleLocationSelector.BoosterTowerParachute, 
+        ShuffleLocationSelector.BoosterTowerPortraits, 
+        ShuffleLocationSelector.BoosterTowerRailway, 
+        ShuffleLocationSelector.BoosterTowerRoomKey, 
+        ShuffleLocationSelector.BoosterTowerSpookum, 
+        ShuffleLocationSelector.BoosterTowerThwomp, 
+        ShuffleLocationSelector.BoosterTowerTop1, 
+        ShuffleLocationSelector.BoosterTowerTop2, 
+        ShuffleLocationSelector.BoosterTowerTop3, 
+        ShuffleLocationSelector.BoosterTowerZoomShoes, 
+        ShuffleLocationSelector.BowsersKeepCannonballRoom1, 
+        ShuffleLocationSelector.BowsersKeepCannonballRoom2, 
+        ShuffleLocationSelector.BowsersKeepCannonballRoom3, 
+        ShuffleLocationSelector.BowsersKeepCannonballRoom4, 
+        ShuffleLocationSelector.BowsersKeepCannonballRoom5, 
+        ShuffleLocationSelector.BowsersKeepCrocoShop1, 
+        ShuffleLocationSelector.BowsersKeepCrocoShop2, 
+        ShuffleLocationSelector.BowsersKeepDarkRoom, 
+        ShuffleLocationSelector.BowsersKeepDoorReward1, 
+        ShuffleLocationSelector.BowsersKeepDoorReward2, 
+        ShuffleLocationSelector.BowsersKeepDoorReward3, 
+        ShuffleLocationSelector.BowsersKeepDoorReward4, 
+        ShuffleLocationSelector.BowsersKeepDoorReward5, 
+        ShuffleLocationSelector.BowsersKeepDoorReward6, 
+        ShuffleLocationSelector.BowsersKeepElevatorPlatforms, 
+        ShuffleLocationSelector.BowsersKeepInvisibleBridge1, 
+        ShuffleLocationSelector.BowsersKeepInvisibleBridge2, 
+        ShuffleLocationSelector.BowsersKeepInvisibleBridge3, 
+        ShuffleLocationSelector.BowsersKeepInvisibleBridge4, 
+        ShuffleLocationSelector.BowsersKeepMagikoopa, 
+        ShuffleLocationSelector.BowsersKeepMovingPlatforms1, 
+        ShuffleLocationSelector.BowsersKeepMovingPlatforms2, 
+        ShuffleLocationSelector.BowsersKeepMovingPlatforms3, 
+        ShuffleLocationSelector.BowsersKeepMovingPlatforms4, 
+        ShuffleLocationSelector.BowsersKeepRotatingPlatforms1, 
+        ShuffleLocationSelector.BowsersKeepRotatingPlatforms2, 
+        ShuffleLocationSelector.BowsersKeepRotatingPlatforms3, 
+        ShuffleLocationSelector.BowsersKeepRotatingPlatforms4, 
+        ShuffleLocationSelector.BowsersKeepRotatingPlatforms5, 
+        ShuffleLocationSelector.BowsersKeepRotatingPlatforms6, 
+        ShuffleLocationSelector.BucketGirl, 
+        ShuffleLocationSelector.CasinoGrateGuyPrize, 
+        ShuffleLocationSelector.CricketJamReward, 
+        ShuffleLocationSelector.CricketPieReward, 
+        ShuffleLocationSelector.Croco1Reward, 
+        ShuffleLocationSelector.Croco1Reward2, 
+        ShuffleLocationSelector.Croco2Item, 
+        ShuffleLocationSelector.CulexReward, 
+        ShuffleLocationSelector.FactoryBehindSnakes1, 
+        ShuffleLocationSelector.FactoryBehindSnakes2, 
+        ShuffleLocationSelector.FactoryBoltPlatforms, 
+        ShuffleLocationSelector.FactoryConveyorPlatforms1, 
+        ShuffleLocationSelector.FactoryConveyorPlatforms2, 
+        ShuffleLocationSelector.FactoryFallingAxems, 
+        ShuffleLocationSelector.FactorySaveRoom, 
+        ShuffleLocationSelector.FactoryToadGift, 
+        ShuffleLocationSelector.FactoryTreasurePit1, 
+        ShuffleLocationSelector.FactoryTreasurePit2, 
+        ShuffleLocationSelector.FireworksShop, 
+        ShuffleLocationSelector.ForestMaze1, 
+        ShuffleLocationSelector.ForestMaze2, 
+        ShuffleLocationSelector.ForestMazeRedEssence, 
+        ShuffleLocationSelector.ForestMazeSecret1, 
+        ShuffleLocationSelector.ForestMazeSecret2, 
+        ShuffleLocationSelector.ForestMazeSecret3, 
+        ShuffleLocationSelector.ForestMazeSecret4, 
+        ShuffleLocationSelector.ForestMazeSecret5, 
+        ShuffleLocationSelector.ForestMazeUnderground1, 
+        ShuffleLocationSelector.ForestMazeUnderground2, 
+        ShuffleLocationSelector.ForestMazeUnderground3, 
+        ShuffleLocationSelector.GardenerCloud1, 
+        ShuffleLocationSelector.GardenerCloud2, 
+        ShuffleLocationSelector.Gaz, 
+        ShuffleLocationSelector.GoombaThumping1, 
+        ShuffleLocationSelector.GoombaThumping2, 
+        ShuffleLocationSelector.HammerBrosReward, 
+        ShuffleLocationSelector.HidonReward1, 
+        ShuffleLocationSelector.HidonReward2, 
+        ShuffleLocationSelector.JinxDojoReward, 
+        ShuffleLocationSelector.KeroSewersBeforeBelomeLower, 
+        ShuffleLocationSelector.KeroSewersBeforeBelomeUpper2, 
+        ShuffleLocationSelector.KeroSewersPandoriteRoom, 
+        ShuffleLocationSelector.KeroSewersStarChest, 
+        ShuffleLocationSelector.LandsEndBeeRoom, 
+        ShuffleLocationSelector.LandsEndChowPit1, 
+        ShuffleLocationSelector.LandsEndChowPit2, 
+        ShuffleLocationSelector.LandsEndRedEssence, 
+        ShuffleLocationSelector.LandsEndSecret1, 
+        ShuffleLocationSelector.LandsEndSecret2, 
+        ShuffleLocationSelector.LandsEndShyAway, 
+        ShuffleLocationSelector.LandsEndStarChest1, 
+        ShuffleLocationSelector.LandsEndStarChest2, 
+        ShuffleLocationSelector.LandsEndStarChest3, 
+        ShuffleLocationSelector.MariosPadBed, 
+        ShuffleLocationSelector.MariosPadStarter1, 
+        ShuffleLocationSelector.MariosPadStarter2, 
+        ShuffleLocationSelector.MariosPadStarter3, 
+        ShuffleLocationSelector.MariosPadStarter4, 
+        ShuffleLocationSelector.MarrymoreInn, 
+        ShuffleLocationSelector.MarrymorePrize1, 
+        ShuffleLocationSelector.MarrymorePrize2, 
+        ShuffleLocationSelector.MarrymorePrize3, 
+        ShuffleLocationSelector.MarrymorePrize4, 
+        ShuffleLocationSelector.MarrymorePrize5, 
+        ShuffleLocationSelector.MarrymorePrize6, 
+        ShuffleLocationSelector.MelodyBay1, 
+        ShuffleLocationSelector.MelodyBay2, 
+        ShuffleLocationSelector.MelodyBay3, 
+        ShuffleLocationSelector.MidasRiverFirstTime, 
+        ShuffleLocationSelector.MolevilleMinesCoins, 
+        ShuffleLocationSelector.MolevilleMinesPunchinello1, 
+        ShuffleLocationSelector.MolevilleMinesPunchinello2, 
+        ShuffleLocationSelector.MonstroTownEntrance, 
+        ShuffleLocationSelector.MonstroTownThwomp, 
+        ShuffleLocationSelector.MushroomKingdomHallway, 
+        ShuffleLocationSelector.MushroomKingdomInn, 
+        ShuffleLocationSelector.MushroomKingdomStore, 
+        ShuffleLocationSelector.MushroomKingdomStoreBasement1, 
+        ShuffleLocationSelector.MushroomKingdomStoreBasement2, 
+        ShuffleLocationSelector.MushroomKingdomStoreExchange, 
+        ShuffleLocationSelector.MushroomKingdomVault1, 
+        ShuffleLocationSelector.MushroomKingdomVault2, 
+        ShuffleLocationSelector.MushroomKingdomVault3, 
+        ShuffleLocationSelector.MushroomWay1, 
+        ShuffleLocationSelector.MushroomWay2, 
+        ShuffleLocationSelector.MushroomWay3, 
+        ShuffleLocationSelector.MushroomWay4, 
+        ShuffleLocationSelector.NimbusCastleAfterEgg1, 
+        ShuffleLocationSelector.NimbusCastleAfterEgg2, 
+        ShuffleLocationSelector.NimbusCastleBeforeBirdetta2, 
+        ShuffleLocationSelector.NimbusCastleBirdetta, 
+        ShuffleLocationSelector.NimbusCastleCornerChestAfterValentina, 
+        ShuffleLocationSelector.NimbusCastleOutOfBounds1, 
+        ShuffleLocationSelector.NimbusCastleOutOfBounds2, 
+        ShuffleLocationSelector.NimbusCastleSingleGoldBird, 
+        ShuffleLocationSelector.NimbusCastleStarAfterValentina, 
+        ShuffleLocationSelector.NimbusLandCellar, 
+        ShuffleLocationSelector.NimbusLandInn, 
+        ShuffleLocationSelector.NimbusLandInn2, 
+        ShuffleLocationSelector.NimbusLandPrisoners, 
+        ShuffleLocationSelector.NimbusLandPrisoners2, 
+        ShuffleLocationSelector.NimbusLandRightSide, 
+        ShuffleLocationSelector.NimbusLandShop, 
+        ShuffleLocationSelector.NimbusLandSignalRing, 
+        ShuffleLocationSelector.PandoriteChest, 
+        ShuffleLocationSelector.PandoriteReward1, 
+        ShuffleLocationSelector.PandoriteReward2, 
+        ShuffleLocationSelector.PeachSurprise, 
+        ShuffleLocationSelector.PipeVaultNippers1, 
+        ShuffleLocationSelector.PipeVaultNippers2, 
+        ShuffleLocationSelector.PipeVaultSlide1, 
+        ShuffleLocationSelector.PipeVaultSlide2, 
+        ShuffleLocationSelector.PipeVaultSlide3, 
+        ShuffleLocationSelector.RoseTownFlag, 
+        ShuffleLocationSelector.RoseTownStore1, 
+        ShuffleLocationSelector.RoseTownStore2, 
+        ShuffleLocationSelector.RoseTownToad, 
+        ShuffleLocationSelector.RoseTownTreasureHouse1, 
+        ShuffleLocationSelector.RoseTownTreasureHouse2, 
+        ShuffleLocationSelector.RoseTownTreasureHouse3, 
+        ShuffleLocationSelector.RoseTownTreasureHouseMazeReward, 
+        ShuffleLocationSelector.RoseWayFiveChests1, 
+        ShuffleLocationSelector.RoseWayFiveChests2, 
+        ShuffleLocationSelector.RoseWayFiveChests3, 
+        ShuffleLocationSelector.RoseWayFiveChests4, 
+        ShuffleLocationSelector.RoseWayFiveChests5, 
+        ShuffleLocationSelector.RoseWayPlatform, 
+        ShuffleLocationSelector.SeaSaveRoom1, 
+        ShuffleLocationSelector.SeaSaveRoom2, 
+        ShuffleLocationSelector.SeaSaveRoom3, 
+        ShuffleLocationSelector.SeasideTownBossPrize, 
+        ShuffleLocationSelector.SeasideTownRescue, 
+        ShuffleLocationSelector.SeaStarChest, 
+        ShuffleLocationSelector.SeaWhirlpoolChest, 
+        ShuffleLocationSelector.SunkenShip3DMaze, 
+        ShuffleLocationSelector.SunkenShipBandanaReds, 
+        ShuffleLocationSelector.SunkenShipCannonballPuzzle, 
+        ShuffleLocationSelector.SunkenShipCloneRoom, 
+        ShuffleLocationSelector.SunkenShipCoins1, 
+        ShuffleLocationSelector.SunkenShipCoins2, 
+        ShuffleLocationSelector.SunkenShipFrogCoinRoom, 
+        ShuffleLocationSelector.SunkenShipHidonChest, 
+        ShuffleLocationSelector.SunkenShipHidonMushroom, 
+        ShuffleLocationSelector.SunkenShipRatStairs, 
+        ShuffleLocationSelector.SunkenShipSafetyRing, 
+        ShuffleLocationSelector.SunkenShipShop, 
+        ShuffleLocationSelector.SuperJumps100, 
+        ShuffleLocationSelector.SuperJumps30, 
+        ShuffleLocationSelector.ThreeMustyFears, 
+        ShuffleLocationSelector.TreasureSeller1, 
+        ShuffleLocationSelector.TreasureSeller2, 
+        ShuffleLocationSelector.TreasureSeller3, 
+        ShuffleLocationSelector.TroopaClimb, 
+        ShuffleLocationSelector.YosterIsleEntrance, 
+        ShuffleLocationSelector.YosterIsleFlag, 
+        ShuffleLocationSelector.YosterIsleRaceReward1, 
+        ShuffleLocationSelector.YosterIsleRaceReward2, 
+        ShuffleLocationSelector.YosterIsleRaceReward3
     ]
+class EnabledRegularChecks(CategorizationFlag):
+    name = 'Chest & reward checks'
+    description = '''If a check is in the left column, it is eligible to contain items required to complete the seed.
+    
+    If a check is in the right column, its contents will be shuffled, but it will not contain any items required to complete the seed.'''
+    options = [o.value for o in regular_checks]
 
-
-# ******** Key item shuffle
-
-class IncludeSeedFertilizer(Flag):
-    name = 'Include Seed and Fertilizer'
-    description = 'The **Seed** and **Fertilizer** will be included in the key item shuffle.'
-    inverse_description = "(The Seed and Fertilizer can be found in their original locations.)"
-    value = 'Ks'
-    modes = ['open']
-
-
-class IncludeBrightCard(Flag):
-    name = 'Include Bright Card'
-    description = 'The **Bright Card** will be included in the key item shuffle.'
-    inverse_description = "(The Bright Card can be found in Booster's Tower after completing it.)"
-    value = 'Kb'
-    modes = ['open']
-
-
-class KeyItemShuffle(Flag):
-    name = 'Randomize key items'
-    description = ("The locations of key items are shuffled amongst each other.  For example, you may find the "
-                   "Shed Key at Croco 1 instead of the Rare Frog Coin.\n\nThe items randomized this way are the "
-                   "**Rare Frog Coin**, **Cricket Pie**, **Bambino Bomb**, **Castle Key 1**, **Castle Key 2**, "
-                   "**Alto Card**, **Tenor Card**, **Soprano Card**, **Greaper Flag**, **Dry Bones Flag**, "
-                   "**Big Boo Flag**, **Shed Key**, **Elder Key**, **Cricket Jam**, **Temple Key**, and **Room Key**.")
-    inverse_description = "(The key items will stay in their original locations.)"
-    value = 'K'
-    modes = ['open']
-    options = [
-        IncludeSeedFertilizer,
-        IncludeBrightCard,
+freestanding_checks = [
+    ShuffleLocationSelector.BanditsWayCoin1, 
+    ShuffleLocationSelector.BanditsWayCoin2, 
+    ShuffleLocationSelector.BanditsWayCoin3, 
+    ShuffleLocationSelector.BarrelVolcanoReverse, 
+    ShuffleLocationSelector.BeanValleyBeanstalkCoin1, 
+    ShuffleLocationSelector.BeanValleyBeanstalkCoin2, 
+    ShuffleLocationSelector.BeanValleyBeanstalkCoin3, 
+    ShuffleLocationSelector.BeanValleyBeanstalkFrogCoin, 
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin1, 
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin2, 
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin3, 
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin4, 
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin5, 
+    ShuffleLocationSelector.BeanValleyFirstVineRoomFrogCoin, 
+    ShuffleLocationSelector.BeanValleyFirstVineRoomLowerCoin, 
+    ShuffleLocationSelector.BeanValleyFirstVineRoomMiddleCoin, 
+    ShuffleLocationSelector.BeanValleyFirstVineRoomUpperCoin, 
+    ShuffleLocationSelector.BeanValleyWestBeanstalkCoin1, 
+    ShuffleLocationSelector.BeanValleyWestBeanstalkCoin2, 
+    ShuffleLocationSelector.BeanValleyWestBeanstalkCoin3, 
+    ShuffleLocationSelector.BeanValleyWestBeanstalkFrogCoin, 
+    ShuffleLocationSelector.BelomeTempleTreasureFlower1, 
+    ShuffleLocationSelector.BelomeTempleTreasureFlower2, 
+    ShuffleLocationSelector.BelomeTempleTreasureFlower3, 
+    ShuffleLocationSelector.BelomeTempleTreasureFlower4, 
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin1, 
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin2, 
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin3, 
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin4, 
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin5, 
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin6, 
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin7, 
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin8, 
+    ShuffleLocationSelector.BoosterPassBush, 
+    ShuffleLocationSelector.BoosterPassFlower, 
+    ShuffleLocationSelector.BoosterTowerCoin1, 
+    ShuffleLocationSelector.BoosterTowerCoin2, 
+    ShuffleLocationSelector.BoosterTowerCoin3, 
+    ShuffleLocationSelector.BoosterTowerCoin4, 
+    ShuffleLocationSelector.BoosterTowerCoin5, 
+    ShuffleLocationSelector.BoosterTowerCoin6, 
+    ShuffleLocationSelector.BoosterTowerCoin7, 
+    ShuffleLocationSelector.BoosterTowerCoin8, 
+    ShuffleLocationSelector.BoosterTowerCoin9, 
+    ShuffleLocationSelector.BoosterTowerFrogCoin1, 
+    ShuffleLocationSelector.BoosterTowerFrogCoin2, 
+    ShuffleLocationSelector.BoosterTowerFrogCoin3, 
+    ShuffleLocationSelector.BoosterTowerFrogCoin4, 
+    ShuffleLocationSelector.BoosterTowerParachuteCrevice, 
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin1, 
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin2, 
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin3, 
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin4, 
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin5, 
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin6, 
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin7, 
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin8, 
+    ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin1, 
+    ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin2, 
+    ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin3, 
+    ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin4, 
+    ShuffleLocationSelector.MidasRiverBottomLeftCave, 
+    ShuffleLocationSelector.MidasRiverBottomRightCave, 
+    ShuffleLocationSelector.MolevilleMinesShyGuy, 
+    ShuffleLocationSelector.PipeVaultSlideCoin1, 
+    ShuffleLocationSelector.PipeVaultSlideCoin2, 
+    ShuffleLocationSelector.PipeVaultSlideCoin3, 
+    ShuffleLocationSelector.PipeVaultSlideCoin4, 
+    ShuffleLocationSelector.PipeVaultSlideCoin5, 
+    ShuffleLocationSelector.PipeVaultSlideFrogCoin, 
+    ShuffleLocationSelector.RoseWayCoin1, 
+    ShuffleLocationSelector.RoseWayCoin2, 
+    ShuffleLocationSelector.RoseWayCoin3, 
+    ShuffleLocationSelector.RoseWayCoin4, 
+    ShuffleLocationSelector.RoseWayCoin5, 
+    ShuffleLocationSelector.RoseWayFlower, 
+    ShuffleLocationSelector.RoseWayMushroom, 
+    ShuffleLocationSelector.SunkenShip3DMaze, 
+    ShuffleLocationSelector.SunkenShipBarrelPuzzle, 
+    ShuffleLocationSelector.SunkenShipBlooberRoom, 
+    ShuffleLocationSelector.SunkenShipCannonballPuzzle, 
+    ShuffleLocationSelector.SunkenShipCoinSnake, 
+    ShuffleLocationSelector.SunkenShipRatStairsFlower, 
+    ShuffleLocationSelector.SunkenShipTrampolinePuzzle, 
+    ShuffleLocationSelector.SunkenShipTroopaPuzzle, 
+    ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin1, 
+    ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin2, 
+    ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin3, 
+    ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin4
     ]
+class EnabledFreestandingChecks(CategorizationFlag):
+    name = 'Freestanding coin/flower/mushroom checks'
+    description = '''If a check is in the left column, it is eligible to contain items required to complete the seed.
+    
+    If a check is in the right column, it will not be shuffled, nor can it contain any items required to complete the seed.'''
+    options = [o.value for o in freestanding_checks]
 
+# ******** Item Distribution
 
-# ******** Character shuffle flags
-
-class CharacterStats(Flag):
-    name = 'Randomize character stats'
-    description = "Stats for each character will be randomized."
-    inverse_description = ("(The characters will retain their original attack, defense, magic attack, magic defense, "
-                           "and speed stats.)")
-    value = 'Cs'
-
-
-class CharacterJoinOrder(Flag):
-    name = 'Randomize character join order'
-    description = ("Characters join your party at the same spots, but the character you get there is randomized.  The "
-                   "character that joins the party will have their stats and starting level scaled for that spot.")
-    inverse_description = "(You will start with Mario, Mallow, and Geno, and must recruit Bowser and Peach.)"
-    value = 'Cj'
-
-
-class CharacterLearnedSpells(Flag):
-    name = 'Randomize character learned spells'
-    description = "The spells each character learns and what level they learn them are randomized."
-    inverse_description = "(Characters retain their original spell lists.)"
-    value = 'Cl'
-
-
-class CharacterSpellStats(Flag):
-    name = 'Randomize character spell stats'
-    description = "The power and FP cost of character magic spells will be randomized."
-    inverse_description = "(Base power and FP cost of party spells are unchanged from the original game.)"
-    value = 'Cp'
-
-
-class CharacterShuffle(Flag):
-    name = 'Randomize characters'
-    value = '@C'
-    options = [
-        CharacterStats,
-        CharacterSpellStats,
-        CharacterJoinOrder,
-        CharacterLearnedSpells,
-    ]
-
-
-class StartMario(Flag):
-    name = 'Start as Mario'
-    value = 'Ym'
-class StartMallow(Flag):
-    name = 'Start as Mallow'
-    value = 'Yw'
-class StartGeno(Flag):
-    name = 'Start as Geno'
-    value = 'Yg'
-class StartBowser(Flag):
-    name = 'Start as Bowser'
-    value = 'Yb'
-class StartToadstool(Flag):
-    name = 'Start as Toadstool'
-    value = 'Yt'
-
-class ExcludeMario(Flag):
-    name = 'Exclude Mario'
-    description = "Mario cannot be recruited."
-    value = 'Zm'
-class ExcludeMallow(Flag):
-    name = 'Exclude Mallow'
-    description = "Mallow cannot be recruited."
-    value = 'Zw'
-class ExcludeGeno(Flag):
-    name = 'Exclude Geno'
-    description = "Geno cannot be recruited."
-    value = 'Zg'
-class ExcludeBowser(Flag):
-    name = 'Exclude Bowser'
-    description = "Bowser cannot be recruited."
-    value = 'Zb'
-class ExcludeToadstool(Flag):
-    name = 'Exclude Toadstool'
-    description = "Toadstool cannot be recruited."
-    value = 'Zt'
-
-class ExcludeMario(Flag):
-    name = 'Exclude Mario'
-    description = "Mario cannot be recruited."
-    value = 'Zm'
-class ExcludeMallow(Flag):
-    name = 'Exclude Mallow'
-    description = "Mallow cannot be recruited."
-    value = 'Zw'
-class ExcludeGeno(Flag):
-    name = 'Exclude Geno'
-    description = "Geno cannot be recruited."
-    value = 'Zg'
-class ExcludeBowser(Flag):
-    name = 'Exclude Bowser'
-    description = "Bowser cannot be recruited."
-    value = 'Zb'
-class ExcludeToadstool(Flag):
-    name = 'Exclude Toadstool'
-    description = "Toadstool cannot be recruited."
-    value = 'Zt'
-
-class NoFreeCharacters(Flag):
-    name = 'No Free Characters'
-    description = "Instead of starting with 3 characters, you start off with only one. Mushroom Way and Moleville Mines area bosses will add characters to your party in addition to Marrymore and Forest Maze."
+class KeyItemsAnywhere(BooleanFlag):
+    name = '"Special Items" can appear anywhere'
+    description = '''If enabled, items belonging to your "Special Items" pocket can appear in any item location.
+    
+    If disabled, the "Special Items" will only be shuffled within each other's locations.
+    
+    The items targeted by this setting are the **Rare Frog Coin**, **Cricket Pie**, **Bambino Bomb**, **Castle Key 1**, **Castle Key 2**, *Alto Card**, **Tenor Card**, **Soprano Card**, **Greaper Flag**, **Dry Bones Flag**, **Big Boo Flag**, **Shed Key**, **Elder Key**, **Cricket Jam**, **Temple Key**, and **Room Key**.'''
     modes = ['open']
-    value = '-nfc'
+    default = False
 
-class ExcludeCharacters(Flag):
-    name = 'Exclude characters'
-    description = "If a character is excluded, their designated recruitment spot will be empty."
+class RestrictSpecialEquips(BooleanFlag):
+    name = 'Restrict key item exchange equips & Monstro Town reward equips'
+    description = '''If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will be shuffled within each other's locations, and will not appear anywhere else in the seed.
+    
+    If disabled, these items can appear anywhere.'''
     modes = ['open']
-    value = '@Z'
-    options = [
-        ExcludeMario,
-        ExcludeMallow,
-        ExcludeGeno,
-        ExcludeBowser,
-        ExcludeToadstool
-    ]
+    default = False
 
-class ChooseStarter(Flag):
-    name = 'Choose starting character'
-    description = "Guarantees that your first party slot will be the chosen character"
+class EXPStarsAnywhere(BooleanFlag):
+    name = 'EXP stars can appear anywhere'
+    description = '''If enabled, EXP stars may appear in any chest near monsters.
+    
+    If disabled, EXP stars will be restricted to their original locations within Bandit's Way, Kero Sewers, Moleville Mines, Sea, Land's End, Nimbus Land, and Barrel Volcano.'''
     modes = ['open']
-    value = '@Y'
-    choices = [
-        StartMario,
-        StartMallow,
-        StartGeno,
-        StartBowser,
-        StartToadstool
-    ]
+    default = False
+
+class SlotsAnywhere(BooleanFlag):
+    name = 'Slot machines can appear anywhere'
+    description = '''If enabled, any chest in the world could contain a slot machine.
+    
+    If disabled, slot machines will be restricted to their original locations in Bean Valley.
+    
+    Note that a bad roll on a slot machine will initiate a duplicate of the third mimic fight.'''
+    modes = ['open']
+    default = False
+
+# ******** Puzzles
+
+class RandomTadpolePongSong(BooleanFlag):
+    name = 'Randomize Tadpole Pond songs'
+    description = '''If enabled, the songs required for the three Tadpole Pond songs will be selected from a random pool, submitted by players. Hints will be available in their normal locations within Tadpole Pond, Moleville Mines, and Monstro Town.'''
+    modes = ['open']
+    default = False
+
+class RandomSunkenShipPassword(BooleanFlag):
+    name = 'Randomize Sunken Ship password'
+    description = '''If enabled, the password for the Sunken Ship will be changed. Hints are available in the 6 ship puzzles, and occasionally on posted notes within the Sunken Ship.'''
+    modes = ['open']
+    default = False
+
+class BowserDoorShuffle(BooleanFlag):
+    name = 'Randomize Bowser\'s Keep room sequences"
+    description = '''If enabled, the 18 rooms making up the six Bowser's Keep obstacle course doors will be shuffled into six random sequences of three rooms each.'''
+    modes = ['open']
+    default = False
+
+# ******** Enemies & Bosses
+
+class MimicsAnywhere(BooleanFlag):
+    name = 'Mimics can appear anywhere'
+    description = '''If enabled, the three mimic chests could be in any chest in the world.
+    
+    If disabled, they will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley.'''
+    modes = ['open']
+    default = False
 
 
-# ******** Enemy shuffle flags
-
-class EnemyStats(Flag):
+class EnemyStats(BooleanFlag):
     name = 'Randomize enemy stats'
-    description = "Enemy stats and immunities/weaknesses will be randomized."
-    inverse_description = ("(The enemies will retain their original attack, defense, m.attack, m.defense, speed, "
-                           "weaknesses, and immunities.)")
-    value = 'Es'
+    description = '''If enabled, enemy stats and immunities/weaknesses will be randomized.
+    
+    If disabled, enemies retain their original stats (subject to placement shuffling, if enabled), immunities, and vulnerabilities.'''
+    default = False
 
 
-class EnemyDrops(Flag):
+class EnemyDrops(BooleanFlag):
     name = 'Randomize enemy drops'
-    description = "The EXP and items received from enemies will be randomized."
-    inverse_description = "(Battle prize drops are unchanged from the original game.)"
-    value = 'Ed'
+    description = "If enabled, the EXP and in-battle items received from battles will be randomized."
+    default = False
 
 
 class EnemyFormations(Flag):
-    name = 'Randomize enemy formations'
-    description = "Normal enemy battle formations will be randomized.  Boss formations are not affected."
-    inverse_description = "(Random battle formations remain the same as in the original game.)"
-    value = 'Ef'
+    name = 'Randomize formations'
+    description = "If enabled, enemy encounters may contain random unexpected additional enemies and be laid out erratically. Boss formations are not affected."
+    default = False
 
 
 class EnemyAttacks(Flag):
-    name = 'Randomize enemy attacks'
-    description = "Enemy spells and attacks will have their power and potential status effects randomized."
-    inverse_description = ("(Base power and status casts of enemy spells and attacks are unchanged from the original "
-                           "game.)")
-    value = 'Ea'
+    name = 'Randomize attacks'
+    description = "If enabled, enemy spells and attacks will have their power randomized. Attacks which cast statuses will have the status effects randomized, and attacks which normally don't inflict statuses may inflict unexpected statuses."
+    default = False
 
 
 class EnemySpells(Flag):
     name = 'Randomize enemy spells'
-    description = "Enemies can cast random spells. I.E. Mack could cast Blast instead of Flame."
-    inverse_description = ("(Enemies cast the normal spells they're expected to.)")
-    value = 'Ec'
+    description = "If enabled, enemies can cast random spells. I.E. Mack could cast Blast instead of Flame."
+    default = False
     hard = True
     modes = ['open']
 
@@ -755,30 +1120,8 @@ class EnemySpells(Flag):
 class EnemyNoSafetyChecks(Flag):
     name = 'No safety checks'
     description = "Removes safety checks on enemy attack shuffle that prevent abnormally large effects."
-    inverse_description = "(Enemy stat shuffling should not skew abnormally high.)"
-    value = 'E!'
+    default = False
     hard = True
-
-
-class EnemyShuffle(Flag):
-    name = 'Randomize enemies'
-    value = '@E'
-    options = [
-        EnemyDrops,
-        EnemyFormations,
-        EnemyStats,
-        EnemyAttacks,
-        EnemySpells,
-        EnemyNoSafetyChecks,
-    ]
-
-
-class BossShuffleCulex(Flag):
-    name = 'Include Culex'
-    inverse_description = "(Culex will remain in his door in Monstro Town.)"
-    value = 'Bc'
-    hard = True
-
 
 class BossShuffleKeepStats(Flag):
     name = "Don't scale stats"
