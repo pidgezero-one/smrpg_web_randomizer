@@ -30,11 +30,6 @@ script = [
     {
         "identifier": 'EVENT_290_jmp_if_bit_set_355_',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7088, 7, 'EVENT_290_set_361']
-    },
-    {
-        "identifier": 'EVENT_290_jmp_if_bit_set_355__',
-        "command": 'jmp_if_bit_clear',
         "args": [0x7082, 0, 'EVENT_290_open_shop_364']
     },
 

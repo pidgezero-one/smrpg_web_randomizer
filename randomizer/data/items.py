@@ -3343,6 +3343,29 @@ class LandsEndStar3(InvincibilityStar):
     chest_70A7_lower = 9
 
 
+# *** Characters
+
+class RecruitedCharacter(Item):
+    starter_script = None
+    container_script = None
+
+class PeachRecruit(RecruitedCharacter):
+    starter_script = 191
+    container_script = 197
+
+class MallowRecruit(RecruitedCharacter):
+    starter_script = 188
+    container_script = 194
+
+class GenoRecruit(RecruitedCharacter):
+    starter_script = 189
+    container_script = 195
+
+class BowserRecruit(RecruitedCharacter):
+    starter_script = 190
+    container_script = 196
+
+
 # ************************** Shop data classes
 
 class Shop:

@@ -4,6 +4,9 @@ from randomizer.data import items, ItemUnique
 from randomizer.logic.utils import isclass_or_instance
 from . import locations
 
+# locations inherit world, and therefore settings
+# inventory does not
+# how to make work with optional gating?
 
 # ******* Chest location classes
 
@@ -28,7 +31,6 @@ class NPCReward(locations.ItemLocation):
 class StarterItem(NPCReward):
 
     def item_allowed(self, item):
-        # NPC rewards cannot contain "You Missed!" or chest-only rewards.
         return super().item_allowed(item) and item.consumable
 
 
@@ -38,7 +40,6 @@ class TreasureSellerReward(NPCReward):
     shopsanity = True
 
     def item_allowed(self, item):
-        # Treasure seller should only sell limited-quantity items
         # update this when shuffle modes integrated
         return super().item_allowed(item) and (item.unique == ItemUnique.Always or (item.unique == ItemUnique.BalancedOnly and true))
 
@@ -71,6 +72,36 @@ class PacketItem(OverworldItem):
         # FIXME: Non-KI NPC rewards don't work with progressive cards for now.  Remove this when fixed.
         return super().item_allowed(item) and not isclass_or_instance(item, (items.MimicFight, items.SlotMachineChest, items.MultiFrogCoin, items.YouMissed, items.InvincibilityStar, items.InfiniteCoins))
 
+# ******* Boss star piece classes
+
+class BossStarPiece(locations.ItemLocation):
+    """Subclass for boss star piece location."""
+    shopsanity = False
+    coinsanity = False
+    dialogs_to_replace = []
+    item = None
+    
+
+    def item_allowed(self, item):
+        # Can only be Star Piece, or empty
+        return isclass_or_instance(item, item.StarPiece)
+
+# ******* Character recruitment classes
+
+class CharacterRecruit(locations.ItemLocation):
+    """Subclass for character recruit location."""
+    shopsanity = False
+    coinsanity = False
+    dialogs_to_replace = []
+    item = None
+    
+    def item_allowed(self, item):
+        # Can only be Star Piece, or empty
+        return isclass_or_instance(item, item.Character)
+
+class StarterCharacterRecruit(locations.CharacterRecruit):
+    pass
+
 
 class MidasRiverTunnelItem(OverworldItem):
     pass
@@ -87,6 +118,32 @@ class BelomeTempleTreasure(OverworldItem):
 # ****************************** Actual chest classes
 
 # *** Marios Pad
+
+class StarterCharacter1(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = "Starter character 1"
+    item = items.MarioRecruit
+    event = 192
+
+class StarterCharacter2(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = "Starter character 2"
+    event = 192
+
+class StarterCharacter3(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = "Starter character 3"
+    event = 192
+
+class StarterCharacter4(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = "Starter character 4"
+    event = 192
+
+class StarterCharacter5(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = "Starter character 5"
+    event = 192
 
 class MariosPadBed(NPCReward):
     description = "Mushroom Kingdom eastern guard rescue (invasion)"
@@ -132,6 +189,7 @@ class MariosPadStarter4(StarterItem):
 # *** Mushroom Way
 
 class MushroomWay1(Chest):
+    description = "Mushroom Way first chest"
     area = locations.Area.MushroomWay
     item = items.Coins(Chest, 5)
     rooms = [203]
@@ -139,6 +197,7 @@ class MushroomWay1(Chest):
 
 
 class MushroomWay2(Chest):
+    description = "Mushroom Way second chest"
     area = locations.Area.MushroomWay
     item = items.Coins(Chest, 8)
     rooms = [203]
@@ -146,6 +205,7 @@ class MushroomWay2(Chest):
 
 
 class MushroomWay3(Chest):
+    description = "Mushroom Way flower jump left chest"
     area = locations.Area.MushroomWay
     item = items.Flower
     rooms = [204]
@@ -153,6 +213,7 @@ class MushroomWay3(Chest):
 
 
 class MushroomWay4(Chest):
+    description = "Mushroom Way second room right chest"
     area = locations.Area.MushroomWay
     item = items.RecoveryMushroom
     rooms = [204]
@@ -160,6 +221,7 @@ class MushroomWay4(Chest):
 
 
 class ToadRescue1(NPCReward):
+    description = "Mushroom Way first Toad reward"
     area = locations.Area.MushroomWay
     item = items.HoneySyrup
     missable = True
@@ -168,6 +230,7 @@ class ToadRescue1(NPCReward):
 
 
 class ToadRescue2(NPCReward):
+    description = "Mushroom Way second Toad reward"
     area = locations.Area.MushroomWay
     item = items.FlowerTab
     missable = True
@@ -176,10 +239,27 @@ class ToadRescue2(NPCReward):
 
 
 class HammerBrosReward(NPCReward):
+    description = "Mushroom Way boss reward"
     area = locations.Area.MushroomWay
     item = items.Hammer
     rooms = [205]
     event = 253
+
+
+class MushroomWayCharacter(CharacterRecruit):
+    area = locations.Area.MushroomWay
+    description = "Mushroom Way character join"
+    item = items.MallowRecruit
+    rooms = [205]
+    event = 186
+
+
+class MushroomWayStarPiece(BossStarPiece):
+    area = locations.Area.MushroomWay
+    description = "Mushroom Way boss star piece"
+    rooms = [205]
+    event = 167
+
 
 
 # *** Mushroom Kingdom
@@ -344,6 +424,15 @@ class InvasionGuestRoom(NPCReward):
     missable = True
     # bandits way access
 
+class InvasionStarPiece(BossStarPiece):
+    description = "Mushroom Kingdom invasion boss star piece"
+    area = locations.Area.MushroomKingdom
+    rooms = [326]
+    event = 167
+    item = items.StarPiece
+    # bandits way access
+
+
 
 class MushroomKingdomInn(NPCReward):
     area = locations.Area.MushroomKingdom
@@ -351,6 +440,7 @@ class MushroomKingdomInn(NPCReward):
     rooms = [493]
     event = 253
     item = items.Beetlemania
+    # bandits way access
 
 
 # *** Bandit's Way
@@ -448,6 +538,14 @@ class Croco1Reward2(NPCReward):
     item = items.Wallet
     # bandits way access
 
+class BanditsWayStarPiece(BossStarPiece):
+    area = locations.Area.BanditsWay
+    description = "Bandit's Way boss star piece"
+    rooms = [206]
+    event = 167
+    # bandits way access
+
+
 # *** Kero Sewers
 
 
@@ -468,20 +566,34 @@ class PandoriteChest(Chest):
 
 
 class PandoriteReward1(NPCReward):
-    description = "Pandorite first reward"
+    description = "Mimic #1 first reward"
     item = items.TrueformPin
     rooms = [512]
     event = 253
-    # requirements are same as whichever chest gets items.PandoriteFight
+    
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.PandoriteFight)
 
 
 class PandoriteReward2(Chest):
-    description = "Pandorite reload reward"
+    description = "Mimic #1 reload reward"
     item = items.Coins(Chest, 50)
     rooms = [512]
     event = 245
-    # requirements are same as whichever chest gets items.PandoriteFight
+    
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.PandoriteFight)
 
+class PandoriteBoss(BossStarPiece):
+    description = "Mimic #1 star piece"
+    rooms = [512]
+    event = 167
+    
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.PandoriteFight)
 
 class KeroSewersStarChest(Chest):
     description = "Kero Sewers four rat room chest"
@@ -515,6 +627,13 @@ class KeroSewersBeforeBelomeUpper2(Chest):
     rooms = [301]
     event = 245
     key = True
+
+
+class KeroSewersBoss(BossStarPiece):
+    description = "Kero Sewers boss star piece"
+    area = locations.Area.KeroSewers
+    rooms = [302]
+    event = 167
 
 
 # *** Midas River
@@ -922,6 +1041,24 @@ class ForestMazeSecret5(Chest):
     # forest access
 
 
+class ForestMazeCharacter(CharacterRecruit):
+    area = locations.Area.ForestMaze
+    description = "Forest Maze character recruit"
+    item = items.GenoRecruit
+    rooms = [232]
+    event = 186
+    # forest access
+
+
+class ForestMazeBoss(BossStarPiece):
+    area = locations.Area.ForestMaze
+    description = "Forest Maze boss star piece"
+    rooms = [232]
+    event = 167
+    item = items.StarPiece
+    # forest access
+
+
 # *** Pipe Vault
 
 class PipeVaultSlide1(Chest):
@@ -1097,6 +1234,7 @@ class BucketGirl(NPCReward):
 
 
 class TreasureSeller1(TreasureSellerReward):
+    description = "Moleville first treasure shop item"
     area = locations.Area.Moleville
     rooms = [336]
     event = 253
@@ -1109,6 +1247,7 @@ class TreasureSeller1(TreasureSellerReward):
 
 
 class TreasureSeller2(TreasureSellerReward):
+    description = "Moleville second treasure shop item"
     area = locations.Area.Moleville
     rooms = [336]
     event = 252
@@ -1122,6 +1261,7 @@ class TreasureSeller2(TreasureSellerReward):
 
 
 class TreasureSeller3(TreasureSellerReward):
+    description = "Moleville third treasure shop item"
     area = locations.Area.Moleville
     rooms = [336]
     event = 251
@@ -1140,6 +1280,7 @@ class FireworksShop(NPCReward):
     rooms = [339]
     event = 253
     item = items.Fireworks
+    key = True
 
     @staticmethod
     def can_access(inventory):
@@ -1209,6 +1350,29 @@ class MolevilleMinesPunchinello2(Chest):
         return inventory.has_item(items.BambinoBomb)
 
 
+class MolevilleMinesBoss2(BossStarPiece):
+    description = "Moleville Mines final boss star piece"
+    area = locations.Area.MolevilleMines
+    rooms = [271]
+    event = 167
+    item = items.StarPiece
+
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.BambinoBomb)
+
+class MolevilleMinesCharacter(CharacterRecruit):
+    area = locations.Area.ForestMaze
+    description = "Moleville Mines character recruit"
+    item = items.BowserRecruit
+    rooms = [284]
+    event = 186
+
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.BambinoBomb)
+
+
 class CrocoFlunkie1(NPCReward):
     description = "Moleville Mines trampoline bandit"
     area = locations.Area.MolevilleMines
@@ -1243,6 +1407,13 @@ class Croco2Item(NPCReward):
     event = 253
     item = items.BambinoBomb
     key = True
+
+
+class MolevilleMinesBoss1(BossStarPiece):
+    description = "Moleville Mines first boss star piece"
+    area = locations.Area.MolevilleMines
+    rooms = [518]
+    event = 167
 
 # *** Booster Pass
 
@@ -1336,6 +1507,7 @@ class BoosterTowerKnifeGuy(NPCReward):
     event = 253
     # tower access
     key = True
+    # false if casino warp is off
 
 
 class BoosterTowerRoomKey(OverworldItem):
@@ -1595,6 +1767,21 @@ class BoosterTowerCurtainGame(NPCReward):
     # tower access
 
 
+class BoosterTowerStarPiece1(BossStarPiece):
+    area = locations.Area.BoosterTower
+    description = "Booster Tower curtain room boss star piece"
+    rooms = [192]
+    event = 167
+
+
+class BoosterTowerStarPiece2(BossStarPiece):
+    area = locations.Area.BoosterTower
+    description = "Booster Tower balcony boss star piece"
+    rooms = [258]
+    event = 167
+
+
+
 # *** Marrymore
 
 class MarrymorePrize1(NPCReward):
@@ -1652,7 +1839,43 @@ class MarrymoreInn(Chest):
     rooms = [9]
     event = 247
 
+
+class MarrymoreStarPiece(BossStarPiece):
+    area = locations.Area.Marrymore
+    description = "Marrymore boss star piece"
+    rooms = [154]
+    event = 167
+
+
+class MarrymoreCharacter(CharacterRecruit):
+    area = locations.Area.Marrymore
+    description = "Marrymore character join"
+    item = items.PeachRecruit
+    rooms = [154]
+    event = 186
+    # marrymore access
+
+
+# *** Star Hill
+
+
+class StarHillStarPiece1(BossStarPiece):
+    area = locations.Area.StarHill
+    description = "Star Hill freestanding star piece"
+    rooms = [157]
+    event = 167
+    item = items.StarPiece
+
+
+
 # *** Seaside Town
+
+class SeasideTownBoss(BossStarPiece):
+    description = "Seaside Town boss star piece"
+    area = locations.Area.SeasideTown
+    rooms = [315]
+    event = 167
+    item = items.StarPiece
 
 
 class SeasideTownBossPrize(OverworldItem):
@@ -1816,19 +2039,34 @@ class SunkenShipHidonChest(Chest):
 
 
 class HidonReward1(NPCReward):
-    description = "Hidon first reward"
+    description = "Mimic #2 first reward"
     rooms = [513]
     event = 253
     item = items.SafetyBadge
-    # will have same requirements as whichever chest gets item.HidonFight
+    
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.HidonFight)
 
 
 class HidonReward2(Chest):
-    description = "Hidon reload reward"
+    description = "Mimic #2 reload reward"
     rooms = [513]
     event = 245
     item = items.Coins(Chest, 100)
-    # will have same requirements as whichever chest gets item.HidonFight
+    
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.HidonFight)
+
+class HidonBoss(BossStarPiece):
+    description = "Mimic #2 star piece"
+    rooms = [513]
+    event = 167
+    
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.HidonFight)
 
 
 class SunkenShipUnderwaterFrogCoin1(OverworldItem):
@@ -1963,6 +2201,24 @@ class SunkenShipBarrelPuzzle(PacketItem):
     item = items.RecoveryMushroom
     # ship access
 
+
+
+class SunkenShipMidboss(BossStarPiece):
+    description = "Sunken Ship password boss star piece"
+    area = locations.Area.SunkenShip
+    rooms = [177]
+    event = 167
+    # ship access
+
+
+class SunkenShipBoss(BossStarPiece):
+    description = "Sunken Ship final boss star piece"
+    area = locations.Area.SunkenShip
+    rooms = [28]
+    event = 167
+    # ship access
+
+
 # *** Land's End
 
 
@@ -2052,6 +2308,13 @@ class TroopaClimb(NPCReward):
     rooms = [407]
     event = 253
     item = items.TroopaPin
+
+
+class LandsEndStarPiece1(BossStarPiece):
+    area = locations.Area.LandsEnd
+    description = "Land's End/Belome Temple cloud star piece"
+    rooms = [519]
+    event = 167
 
 
 # *** Belome Temple
@@ -2265,6 +2528,13 @@ class BelomeTempleTreasure3(BelomeTempleTreasure):
     item = items.FireBomb
     coinsanity = False
 
+class BelomeTempleBoss(BossStarPiece):
+    description = "Belome Temple boss star piece"
+    area = locations.Area.BelomeTemple
+    rooms = [268]
+    event = 167
+
+
 
 # *** Monstro Town
 
@@ -2292,6 +2562,39 @@ class JinxDojoReward(NPCReward):
     rooms = [255]
     event = 253
     item = items.JinxBelt
+
+class DojoBoss1(BossStarPiece):
+    description = "Monstro Town dojo first fight star piece"
+    area = locations.Area.MonstroTown
+    rooms = [255]
+    event = 167
+
+class DojoBoss2(BossStarPiece):
+    description = "Monstro Town dojo second fight star piece"
+    area = locations.Area.MonstroTown
+    rooms = [515]
+    event = 167
+
+class DojoBoss3(BossStarPiece):
+    description = "Monstro Town dojo third fight star piece"
+    area = locations.Area.MonstroTown
+    rooms = [516]
+    event = 167
+
+
+class DojoBoss4(BossStarPiece):
+    description = "Monstro Town dojo fourth fight star piece"
+    area = locations.Area.MonstroTown
+    rooms = [517]
+    event = 167
+
+
+class CulexBoss(BossStarPiece):
+    description = "Monstro Town sealed door star piece"
+    area = locations.Area.MonstroTown
+    rooms = [351]
+    event = 167
+
 
 
 class CulexReward(NPCReward):
@@ -2394,6 +2697,15 @@ class BeanValleyBoxBoyRoom1(Chest):
     event = 247
     item = items.BoxBoyFight
 
+class BoxBoyBoss(BossStarPiece):
+    description = "Mimic #2 star piece"
+    rooms = [514]
+    event = 167
+    
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.BoxBoyFight)
+
 
 class BeanValleyBoxBoyRoom2(Chest):
     area = locations.Area.BeanValley
@@ -2403,7 +2715,7 @@ class BeanValleyBoxBoyRoom2(Chest):
     item = items.RedEssence
 
 
-class BeanValleyBoxBoyRoomHidden(Chest):
+class BeanValleyBoxBoyRoomHidden(NPCReward):
     area = locations.Area.BeanValley
     description = "Bean Valley right piranha pipe hidden stairway item"
     rooms = [335]
@@ -2421,11 +2733,19 @@ class BeanValleyPiranhaPlants(Chest):
 
 
 class BeanValleyMegasmilaxRoom(NPCReward):
+    description = "Bean Valley boss reward"
     area = locations.Area.BeanValley
     rooms = [254]
     event = 253
     item = items.Seed
     key = True
+
+class BeanValleyBoss(BossStarPiece):
+    description = "Bean Valley boss star piece"
+    area = locations.Area.BeanValley
+    rooms = [254]
+    event = 167
+
 
 
 class BeanValleyBeanstalk(Chest):
@@ -2685,8 +3005,20 @@ class NimbusCastleBirdetta(NPCReward):
     event = 253
     item = items.CastleKey2
     key = True
-    # castle key 1
 
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.CastleKey1)
+
+class NimbusCastleStarPiece2(BossStarPiece):
+    description = "Nimbus Land giant egg boss star piece"
+    area = locations.Area.NimbusLand
+    rooms = [409]
+    event = 167
+
+    @staticmethod
+    def can_access(inventory):
+        return inventory.has_item(items.CastleKey1)
 
 class NimbusCastleOutOfBounds1(Chest):
     area = locations.Area.NimbusLand
@@ -2735,6 +3067,16 @@ class NimbusCastleAfterEgg2(Chest):
     def can_access(inventory):
         return locations.can_clear_nimbus_castle(inventory)
 
+
+class NimbusCastleStarPiece3(BossStarPiece):
+    description = "Nimbus Land final boss star piece"
+    area = locations.Area.NimbusLand
+    rooms = [430]
+    event = 167
+
+    @staticmethod
+    def can_access(inventory):
+        return locations.can_clear_nimbus_castle(inventory)
 
 class NimbusCastleStarChest(Chest):
     description = "Nimbus Castle post-throne chest (occupied)"
@@ -2794,6 +3136,12 @@ class DodoReward(NPCReward):
     item = items.Feather
     missable = True
 
+
+class NimbusLandStarPiece1(BossStarPiece):
+    description = "Nimbus Land statue keeper boss star piece"
+    area = locations.Area.NimbusLand
+    rooms = [520]
+    event = 167
 
 class NimbusLandPrisoners(NPCReward):
     area = locations.Area.NimbusLand
@@ -2948,6 +3296,21 @@ class BarrelVolcanoHinopio(Chest):
     item = items.Coins(Chest, 100)
     # volcano access
 
+class BarrelVolcanoBoss1(BossStarPiece):
+    description = "Barrel Volcano first boss star piece"
+    area = locations.Area.BarrelVolcano
+    rooms = [352]
+    event = 167
+    # volcano access
+
+class BarrelVolcanoBoss2(BossStarPiece):
+    description = "Barrel Volcano second boss star piece"
+    area = locations.Area.BarrelVolcano
+    rooms = [393]
+    event = 167
+    item = items.StarPiece
+    # volcano access
+
 
 # *** Bowser's Keep
 
@@ -2984,6 +3347,21 @@ class BowsersKeepMagikoopa(Chest):
     rooms = [266]
     script = 247
     item = items.InfiniteCoins
+    # keep access
+
+
+class BowsersKeepBossChester(BossStarPiece):
+    description = "Bowser's Keep battle door star piece"
+    area = locations.Area.BowsersKeep
+    rooms = [461]
+    event = 167
+
+
+class BowsersKeepBoss1(BossStarPiece):
+    description = "Bowser's Keep first boss star piece"
+    area = locations.Area.BowsersKeep
+    rooms = [266]
+    event = 167
     # keep access
 
 
@@ -3341,6 +3719,21 @@ class BowsersKeepDoorReward6(Chest):
     # keep access
 
 
+class BowsersKeepBoss2(BossStarPiece):
+    description = "Bowser's Keep second boss star piece"
+    area = locations.Area.BowsersKeep
+    rooms = [521]
+    event = 167
+    # keep access
+
+class BowsersKeepBoss3(BossStarPiece):
+    description = "Bowser's Keep third boss star piece"
+    area = locations.Area.BowsersKeep
+    rooms = [522]
+    event = 167
+    # keep access
+
+
 # *** Factory
 
 class FactorySaveRoom(Chest):
@@ -3360,6 +3753,13 @@ class FactoryBoltPlatforms(Chest):
     item = items.UltraHammer
     # factory access
 
+
+class FactoryBoss1(BossStarPiece):
+    description = "Outer Factory first boss star piece"
+    area = locations.Area.Factory
+    rooms = [223]
+    event = 167
+    # factory access
 
 class FactoryFallingAxems(Chest):
     area = locations.Area.Factory
@@ -3408,7 +3808,7 @@ class FactoryConveyorPlatforms2(Chest):
 
 class FactoryBehindSnakes1(Chest):
     area = locations.Area.Factory
-    description = "Factory room behind machine yarid right chest"
+    description = "Outer Factory room behind machine yarid right chest"
     rooms = [443]
     event = 246
     item = items.RecoveryMushroom
@@ -3417,12 +3817,18 @@ class FactoryBehindSnakes1(Chest):
 
 class FactoryBehindSnakes2(Chest):
     area = locations.Area.Factory
-    description = "Factory room behind machine yarid left chest"
+    description = "Outer Factory room behind machine yarid left chest"
     rooms = [443]
     event = 244
     item = items.Flower
     # factory access
 
+class FactoryBoss2(BossStarPiece):
+    description = "Outer Factory second boss star piece"
+    area = locations.Area.Factory
+    rooms = [103]
+    event = 167
+    # factory access
 
 class FactoryToadGift(NPCReward):
     area = locations.Area.Factory
@@ -3430,6 +3836,34 @@ class FactoryToadGift(NPCReward):
     rooms = [406]
     event = 253
     item = items.RockCandy
+    # factory access
+
+class InnerFactoryBoss1(BossStarPiece):
+    description = "Inner Factory first boss star piece"
+    area = locations.Area.Factory
+    rooms = [469]
+    event = 167
+    # factory access
+
+class InnerFactoryBoss2(BossStarPiece):
+    description = "Inner Factory second boss star piece"
+    area = locations.Area.Factory
+    rooms = [470]
+    event = 167
+    # factory access
+
+class InnerFactoryBoss3(BossStarPiece):
+    description = "Inner Factory third boss star piece"
+    area = locations.Area.Factory
+    rooms = [471]
+    event = 167
+    # factory access
+
+class InnerFactoryBoss4(BossStarPiece):
+    description = "Inner Factory fourth boss star piece"
+    area = locations.Area.Factory
+    rooms = [472]
+    event = 167
     # factory access
 
 
@@ -3478,9 +3912,6 @@ def get_default_chests(world):
         InvasionGuestRoom(world),
         MushroomKingdomInn(world),
         BanditsWay1(world),
-        BanditsWayCoin1(world),
-        BanditsWayCoin2(world),
-        BanditsWayCoin3(world),
         BanditsWay2(world),
         BanditsWayStarChest(world),
         BanditsWayDogJump(world),
@@ -3496,21 +3927,12 @@ def get_default_chests(world):
         KeroSewersBeforeBelomeUpper1(world),
         KeroSewersBeforeBelomeUpper2(world),
         MidasRiverFirstTime(world),
-        MidasRiverBottomLeftCave(world),
-        MidasRiverBottomRightCave(world),
         CricketPieReward(world),
         CricketJamReward(world),
         MelodyBay1(world),
         MelodyBay2(world),
         MelodyBay3(world),
         RoseWayPlatform(world),
-        RoseWayFlower(world),
-        RoseWayMushroom(world),
-        RoseWayCoin1(world),
-        RoseWayCoin2(world),
-        RoseWayCoin3(world),
-        RoseWayCoin4(world),
-        RoseWayCoin5(world),
         RoseWayFiveChests1(world),
         RoseWayFiveChests2(world),
         RoseWayFiveChests3(world),
@@ -3541,12 +3963,6 @@ def get_default_chests(world):
         PipeVaultSlide1(world),
         PipeVaultSlide2(world),
         PipeVaultSlide3(world),
-        PipeVaultSlideCoin1(world),
-        PipeVaultSlideCoin2(world),
-        PipeVaultSlideCoin3(world),
-        PipeVaultSlideCoin4(world),
-        PipeVaultSlideCoin5(world),
-        PipeVaultSlideFrogCoin(world),
         PipeVaultNippers1(world),
         PipeVaultNippers2(world),
         GoombaThumping1(world),
@@ -3572,7 +3988,6 @@ def get_default_chests(world):
         Croco2Item(world),
         BoosterPass1(world),
         BoosterPass2(world),
-        BoosterPassBush(world),
         BoosterPassFlower(world),
         BoosterPassSecret1(world),
         BoosterPassSecret2(world),
@@ -3581,22 +3996,8 @@ def get_default_chests(world):
         BoosterTowerThwomp(world),
         BoosterTowerKnifeGuy(world),
         BoosterTowerRoomKey(world),
-        BoosterTowerFrogCoin1(world),
-        BoosterTowerFrogCoin2(world),
-        BoosterTowerFrogCoin3(world),
-        BoosterTowerFrogCoin4(world),
-        BoosterTowerCoin1(world),
-        BoosterTowerCoin2(world),
-        BoosterTowerCoin3(world),
-        BoosterTowerCoin4(world),
-        BoosterTowerCoin5(world),
-        BoosterTowerCoin6(world),
-        BoosterTowerCoin7(world),
-        BoosterTowerCoin8(world),
-        BoosterTowerCoin9(world),
         BoosterTowerMasher(world),
         BoosterTowerParachute(world),
-        BoosterTowerParachuteCrevice(world),
         BoosterTowerZoomShoes(world),
         BoosterTowerTop1(world),
         BoosterTowerTop2(world),
@@ -3620,7 +4021,6 @@ def get_default_chests(world):
         SeaSaveRoom3(world),
         SeaWhirlpoolChest(world),
         SunkenShipRatStairs(world),
-        SunkenShipRatStairsFlower(world),
         SunkenShipShop(world),
         SunkenShipCoins1(world),
         SunkenShipCoins2(world),
@@ -3630,19 +4030,10 @@ def get_default_chests(world):
         SunkenShipHidonChest(world),
         HidonReward1(world),
         HidonReward2(world),
-        SunkenShipUnderwaterFrogCoin1(world),
-        SunkenShipUnderwaterFrogCoin2(world),
-        SunkenShipUnderwaterFrogCoin3(world),
-        SunkenShipUnderwaterFrogCoin4(world),
         SunkenShipSafetyRing(world),
         SunkenShipBandanaReds(world),
-        SunkenShipBlooberRoom(world),
-        SunkenShipTrampolinePuzzle(world),
-        SunkenShipTroopaPuzzle(world),
         SunkenShip3DMaze(world),
-        SunkenShipCoinSnake(world),
         SunkenShipCannonballPuzzle(world),
-        SunkenShipBarrelPuzzle(world),
         LandsEndRedEssence(world),
         LandsEndChowPit1(world),
         LandsEndChowPit2(world),
@@ -3663,18 +4054,6 @@ def get_default_chests(world):
         BelomeTempleAfterFortune2(world),
         BelomeTempleAfterFortune3(world),
         BelomeTempleAfterFortune4(world),
-        BelomeTempleTreasureFlower1(world),
-        BelomeTempleTreasureFlower2(world),
-        BelomeTempleTreasureFlower3(world),
-        BelomeTempleTreasureFlower4(world),
-        BelomeTempleTreasureFrogCoin1(world),
-        BelomeTempleTreasureFrogCoin2(world),
-        BelomeTempleTreasureFrogCoin3(world),
-        BelomeTempleTreasureFrogCoin4(world),
-        BelomeTempleTreasureFrogCoin5(world),
-        BelomeTempleTreasureFrogCoin6(world),
-        BelomeTempleTreasureFrogCoin7(world),
-        BelomeTempleTreasureFrogCoin8(world),
         BelomeTempleTreasure1(world),
         BelomeTempleTreasure2(world),
         BelomeTempleTreasure3(world),
@@ -3693,31 +4072,14 @@ def get_default_chests(world):
         BeanValleyBottomRightPiranhaPipeLower(world),
         BeanValleyBoxBoyRoom1(world),
         BeanValleyBoxBoyRoom2(world),
-        BeanValleyBoxBoyRoomHidden(world),
         BeanValleyPiranhaPlants(world),
         BeanValleyMegasmilaxRoom(world),
         BeanValleyBeanstalk(world),
         BeanValleyBeanstalkFrogCoin(world),
-        BeanValleyBeanstalkCoin1(world),
-        BeanValleyBeanstalkCoin2(world),
-        BeanValleyBeanstalkCoin3(world),
-        BeanValleyEastBeanstalkCoin1(world),
-        BeanValleyEastBeanstalkCoin2(world),
-        BeanValleyEastBeanstalkCoin3(world),
-        BeanValleyEastBeanstalkCoin4(world),
-        BeanValleyEastBeanstalkCoin5(world),
-        BeanValleyWestBeanstalkCoin1(world),
-        BeanValleyWestBeanstalkCoin2(world),
-        BeanValleyWestBeanstalkCoin3(world),
-        BeanValleyWestBeanstalkFrogCoin(world),
         BeanValleyCloud1(world),
         BeanValleyCloud2(world),
         BeanValleyFall1(world),
         BeanValleyFall2(world),
-        BeanValleyFirstVineRoomFrogCoin(world),
-        BeanValleyFirstVineRoomMiddleCoin(world),
-        BeanValleyFirstVineRoomUpperCoin(world),
-        BeanValleyFirstVineRoomLowerCoin(world),
         CasinoGrateGuyPrize(world),
         NimbusLandShop(world),
         NimbusLandInn(world),
@@ -3741,10 +4103,6 @@ def get_default_chests(world):
         NimbusLandCellar(world),
         BarrelVolcanoSecret1(world),
         BarrelVolcanoSecret2(world),
-        BarrelVolcanoReverse(world),
-        BarrelVolcanoDonut1(world),
-        BarrelVolcanoDonut2(world),
-        BarrelVolcanoLavaPool(world),
         BarrelVolcanoBeforeStar1(world),
         BarrelVolcanoBeforeStar2(world),
         BarrelVolcanoStarRoom(world),
@@ -3759,10 +4117,6 @@ def get_default_chests(world):
         BowsersKeepInvisibleBridge2(world),
         BowsersKeepInvisibleBridge3(world),
         BowsersKeepInvisibleBridge4(world),
-        BowsersKeepInvisibleBridgeCoin1(world),
-        BowsersKeepInvisibleBridgeCoin2(world),
-        BowsersKeepInvisibleBridgeCoin3(world),
-        BowsersKeepInvisibleBridgeCoin4(world),
         BowsersKeepMovingPlatforms1(world),
         BowsersKeepMovingPlatforms2(world),
         BowsersKeepMovingPlatforms3(world),
@@ -3773,14 +4127,6 @@ def get_default_chests(world):
         BowsersKeepCannonballRoom3(world),
         BowsersKeepCannonballRoom4(world),
         BowsersKeepCannonballRoom5(world),
-        BowsersKeepCannonballRoomCoin1(world),
-        BowsersKeepCannonballRoomCoin2(world),
-        BowsersKeepCannonballRoomCoin3(world),
-        BowsersKeepCannonballRoomCoin4(world),
-        BowsersKeepCannonballRoomCoin5(world),
-        BowsersKeepCannonballRoomCoin6(world),
-        BowsersKeepCannonballRoomCoin7(world),
-        BowsersKeepCannonballRoomCoin8(world),
         BowsersKeepRotatingPlatforms1(world),
         BowsersKeepRotatingPlatforms2(world),
         BowsersKeepRotatingPlatforms3(world),
@@ -3805,3 +4151,600 @@ def get_default_chests(world):
         FactoryToadGift(world),
 
     ]
+
+def get_freestanding_item_checks(world):
+    """Get reward lists for freestanding coins, frog coins, flowers, and mushrooms.
+
+    Args:
+        world (randomizer.logic.main.GameWorld):
+
+    Returns:
+        list[ItemLocation]: List of default freestanding objects.
+    """
+    return [
+        # Chests
+        BanditsWayCoin1(world),
+        BanditsWayCoin2(world),
+        BanditsWayCoin3(world),
+        MidasRiverBottomLeftCave(world),
+        MidasRiverBottomRightCave(world),
+        RoseWayFlower(world),
+        RoseWayMushroom(world),
+        RoseWayCoin1(world),
+        RoseWayCoin2(world),
+        RoseWayCoin3(world),
+        RoseWayCoin4(world),
+        RoseWayCoin5(world),
+        PipeVaultSlideCoin1(world),
+        PipeVaultSlideCoin2(world),
+        PipeVaultSlideCoin3(world),
+        PipeVaultSlideCoin4(world),
+        PipeVaultSlideCoin5(world),
+        PipeVaultSlideFrogCoin(world),
+        BoosterPassBush(world),
+        BoosterPassFlower(world),
+        BoosterTowerFrogCoin1(world),
+        BoosterTowerFrogCoin2(world),
+        BoosterTowerFrogCoin3(world),
+        BoosterTowerFrogCoin4(world),
+        BoosterTowerCoin1(world),
+        BoosterTowerCoin2(world),
+        BoosterTowerCoin3(world),
+        BoosterTowerCoin4(world),
+        BoosterTowerCoin5(world),
+        BoosterTowerCoin6(world),
+        BoosterTowerCoin7(world),
+        BoosterTowerCoin8(world),
+        BoosterTowerCoin9(world),
+        BoosterTowerParachuteCrevice(world),
+        SunkenShipRatStairsFlower(world),
+        SunkenShipUnderwaterFrogCoin1(world),
+        SunkenShipUnderwaterFrogCoin2(world),
+        SunkenShipUnderwaterFrogCoin3(world),
+        SunkenShipUnderwaterFrogCoin4(world),
+        SunkenShipBlooberRoom(world),
+        SunkenShipTrampolinePuzzle(world),
+        SunkenShipTroopaPuzzle(world),
+        SunkenShipCoinSnake(world),
+        SunkenShipBarrelPuzzle(world),
+        BelomeTempleTreasureFlower1(world),
+        BelomeTempleTreasureFlower2(world),
+        BelomeTempleTreasureFlower3(world),
+        BelomeTempleTreasureFlower4(world),
+        BelomeTempleTreasureFrogCoin1(world),
+        BelomeTempleTreasureFrogCoin2(world),
+        BelomeTempleTreasureFrogCoin3(world),
+        BelomeTempleTreasureFrogCoin4(world),
+        BelomeTempleTreasureFrogCoin5(world),
+        BelomeTempleTreasureFrogCoin6(world),
+        BelomeTempleTreasureFrogCoin7(world),
+        BelomeTempleTreasureFrogCoin8(world),
+        BeanValleyBoxBoyRoomHidden(world),
+        BeanValleyBeanstalkFrogCoin(world),
+        BeanValleyBeanstalkCoin1(world),
+        BeanValleyBeanstalkCoin2(world),
+        BeanValleyBeanstalkCoin3(world),
+        BeanValleyEastBeanstalkCoin1(world),
+        BeanValleyEastBeanstalkCoin2(world),
+        BeanValleyEastBeanstalkCoin3(world),
+        BeanValleyEastBeanstalkCoin4(world),
+        BeanValleyEastBeanstalkCoin5(world),
+        BeanValleyWestBeanstalkCoin1(world),
+        BeanValleyWestBeanstalkCoin2(world),
+        BeanValleyWestBeanstalkCoin3(world),
+        BeanValleyWestBeanstalkFrogCoin(world),
+        BeanValleyFirstVineRoomFrogCoin(world),
+        BeanValleyFirstVineRoomMiddleCoin(world),
+        BeanValleyFirstVineRoomUpperCoin(world),
+        BeanValleyFirstVineRoomLowerCoin(world),
+        BarrelVolcanoReverse(world),
+        BarrelVolcanoDonut1(world),
+        BarrelVolcanoDonut2(world),
+        BarrelVolcanoLavaPool(world),
+        BowsersKeepInvisibleBridgeCoin1(world),
+        BowsersKeepInvisibleBridgeCoin2(world),
+        BowsersKeepInvisibleBridgeCoin3(world),
+        BowsersKeepInvisibleBridgeCoin4(world),
+        BowsersKeepCannonballRoomCoin1(world),
+        BowsersKeepCannonballRoomCoin2(world),
+        BowsersKeepCannonballRoomCoin3(world),
+        BowsersKeepCannonballRoomCoin4(world),
+        BowsersKeepCannonballRoomCoin5(world),
+        BowsersKeepCannonballRoomCoin6(world),
+        BowsersKeepCannonballRoomCoin7(world),
+        BowsersKeepCannonballRoomCoin8(world),
+
+    ]
+
+def get_boss_star_piece_checks(world):
+    """Get list of star piece exclusive locations.
+
+    Args:
+        world (randomizer.logic.main.GameWorld):
+
+    Returns:
+        list[ItemLocation]: List of exclusive star piece location objects.
+    """
+    return [
+        MushroomWayStarPiece(world),
+        InvasionStarPiece(world),
+        BanditsWayStarPiece(world),
+        PandoriteBoss(world),
+        KeroSewersBoss(world),
+        ForestMazeBoss(world),
+        MolevilleMinesBoss1(world),
+        MolevilleMinesBoss2(world),
+        BoosterTowerStarPiece1(world),
+        BoosterTowerStarPiece2(world),
+        MarrymoreStarPiece(world),
+        StarHillStarPiece1(world),
+        SeasideTownBoss(world),
+        HidonBoss(world),
+        SunkenShipMidboss(world),
+        SunkenShipBoss(world),
+        LandsEndStarPiece1(world),
+        BelomeTempleBoss(world),
+        DojoBoss1(world),
+        DojoBoss2(world),
+        DojoBoss3(world),
+        DojoBoss4(world),
+        CulexBoss(world),
+        BoxBoyBoss(world),
+        BeanValleyBoss(world),
+        NimbusLandStarPiece1(world),
+        NimbusCastleStarPiece2(world),
+        NimbusCastleStarPiece3(world),
+        BarrelVolcanoBoss1(world),
+        BarrelVolcanoBoss2(world),
+        BowsersKeepBossChester(world),
+        BowsersKeepBoss1(world),
+        BowsersKeepBoss2(world),
+        BowsersKeepBoss3(world),
+        FactoryBoss1(world),
+        FactoryBoss2(world),
+        InnerFactoryBoss1(world),
+        InnerFactoryBoss2(world),
+        InnerFactoryBoss3(world),
+        InnerFactoryBoss4(world)
+    ]
+
+def get_starter_character_checks(world):
+    """Get list of starter character placeholders.
+
+    Args:
+        world (randomizer.logic.main.GameWorld):
+
+    Returns:
+        list[ItemLocation]: List of starter character placeholder objects.
+    """
+    return [
+        StarterCharacter1(world),
+        StarterCharacter2(world),
+        StarterCharacter3(world),
+        StarterCharacter4(world),
+        StarterCharacter5(world)
+
+    ]
+
+def get_recruitable_character_checks(world):
+    """Get list of recruitable character locations.
+
+    Args:
+        world (randomizer.logic.main.GameWorld):
+
+    Returns:
+        list[ItemLocation]: List of recruitable character location objects..
+    """
+    return [
+        MushroomWayCharacter(world),
+        ForestMazeCharacter(world),
+        MolevilleMinesCharacter(world),
+        MarrymoreCharacter(world)
+    ]
+
+class ShuffleLocationSelector(enum.Enum):
+    """Enumeration for enabling and disabling locations"""
+    StarterCharacter1 = enum.Value("Starter character 1")
+    StarterCharacter2 = enum.Value("Starter character 2")
+    StarterCharacter3 = enum.Value("Starter character 3")
+    StarterCharacter4 = enum.Value("Starter character 4")
+    StarterCharacter5 = enum.Value("Starter character 5")
+    MariosPadBed = enum.Value("Mushroom Kingdom eastern guard rescue (invasion)")
+    MariosPadStarter1 = enum.Value("Starter item 1")
+    MariosPadStarter2 = enum.Value("Starter item 2")
+    MariosPadStarter3 = enum.Value("Starter item 3")
+    MariosPadStarter4 = enum.Value("Starter item 4")
+    MushroomWay1 = enum.Value("Mushroom Way first chest")
+    MushroomWay2 = enum.Value("Mushroom Way second chest")
+    MushroomWay3 = enum.Value("Mushroom Way flower jump left chest")
+    MushroomWay4 = enum.Value("Mushroom Way second room right chest")
+    ToadRescue1 = enum.Value("Mushroom Way first Toad reward")
+    ToadRescue2 = enum.Value("Mushroom Way second Toad reward")
+    HammerBrosReward = enum.Value("Mushroom Way boss reward")
+    MushroomWayCharacter = enum.Value("Mushroom Way character join")
+    MushroomWayStarPiece = enum.Value("Mushroom Way boss star piece")
+    MushroomKingdomHallway = enum.Value("Mushroom Kingdom castle main hallway chest")
+    MushroomKingdomVault1 = enum.Value("Mushroom Kingdom vault left chest")
+    MushroomKingdomVault2 = enum.Value("Mushroom Kingdom vault right chest")
+    MushroomKingdomVault3 = enum.Value("Mushroom Kingdom vault middle chest")
+    InvasionVault1 = enum.Value("Mushroom Kingdom vault left chest (invasion)")
+    InvasionVault2 = enum.Value("Mushroom Kingdom vault right chest (invasion)")
+    InvasionVault3 = enum.Value("Mushroom Kingdom vault middle chest (invasion)")
+    InvasionEasternGuard = enum.Value("Mushroom Kingdom eastern guard rescue (invasion)")
+    WalletGuy1 = enum.Value("Wallet reward 1")
+    WalletGuy2 = enum.Value("Wallet reward 2")
+    MushroomKingdomStore = enum.Value("Mushroom Kingdom shop free item")
+    MushroomKingdomStoreExchange = enum.Value("Mushroom Kingdom shop Rare Frog Coin exchange")
+    MushroomKingdomStoreBasement1 = enum.Value("Mushroom Kingdom shop basement left chest")
+    MushroomKingdomStoreBasement2 = enum.Value("Mushroom Kingdom shop basement right chest")
+    PeachSurprise = enum.Value("Mushroom Kingdom Toadstool's room chair item")
+    InvasionToadRescue = enum.Value("Mushroom Kingdom Toadstool's room toad rescue item (invasion)")
+    InvasionFamily = enum.Value("Mushroom Kingdom invasion family rescue")
+    InvasionGuestRoom = enum.Value("Mushroom Kingdom invasion guest room")
+    InvasionStarPiece = enum.Value("Mushroom Kingdom invasion boss star piece")
+    MushroomKingdomInn = enum.Value("Mushroom Kingdom gameboy kid")
+    BanditsWay1 = enum.Value("Bandit's Way flower chest")
+    BanditsWayCoin1 = enum.Value("Bandit's Way 1st coin")
+    BanditsWayCoin2 = enum.Value("Bandit's Way 2nd coin")
+    BanditsWayCoin3 = enum.Value("Bandit's Way 3rd coin")
+    BanditsWay2 = enum.Value("Bandit's Way long room chest")
+    BanditsWayStarChest = enum.Value("Bandit's Way star chest")
+    BanditsWayDogJump = enum.Value("Bandit's Way dog jump chest")
+    BanditsWayCroco = enum.Value("Bandit's Way Croco chase chest")
+    Croco1Reward = enum.Value("Bandit's Way boss reward 1")
+    Croco1Reward2 = enum.Value("Bandit's Way boss reward 2")
+    BanditsWayStarPiece = enum.Value("Bandit's Way boss star piece")
+    KeroSewersPandoriteRoom = enum.Value("Kero Sewers stairway room left chest")
+    PandoriteChest = enum.Value("Kero Sewers stairway room right chest")
+    PandoriteReward1 = enum.Value("Mimic #1 first reward")
+    PandoriteReward2 = enum.Value("Mimic #1 reload reward")
+    PandoriteBoss = enum.Value("Mimic #1 star piece")
+    KeroSewersStarChest = enum.Value("Kero Sewers four rat room chest")
+    KeroSewersBeforeBelomeLower = enum.Value("Kero Sewers before boss lower chest")
+    KeroSewersBeforeBelomeUpper1 = enum.Value("Kero Sewers before boss upper chest, before Land's End")
+    KeroSewersBeforeBelomeUpper2 = enum.Value("Kero Sewers before boss upper chest, after Land's End")
+    KeroSewersBoss = enum.Value("Kero Sewers boss star piece")
+    MidasRiverFirstTime = enum.Value("Midas River first play reward")
+    MidasRiverBottomLeftCave = enum.Value("Midas River bottom left tunnel freestanding frog coin")
+    MidasRiverBottomRightCave = enum.Value("Midas River bottom right tunnel freestanding flower")
+    CricketPieReward = enum.Value("Tadpole Pond Cricket Pie exchange")
+    CricketJamReward = enum.Value("Tadpole Pond Cricket Jam exchange")
+    MelodyBay1 = enum.Value("Melody Bay song 1 reward")
+    MelodyBay2 = enum.Value("Melody Bay song 2 reward")
+    MelodyBay3 = enum.Value("Melody Bay song 3 reward")
+    RoseWayPlatform = enum.Value("Rose Way swinging Shy Guy chest")
+    RoseWayFlower = enum.Value("Rose Way freestanding flower")
+    RoseWayMushroom = enum.Value("Rose Way freestanding mushroom")
+    RoseWayCoin1 = enum.Value("Rose Way freestanding coin 1")
+    RoseWayCoin2 = enum.Value("Rose Way freestanding coin 2")
+    RoseWayCoin3 = enum.Value("Rose Way freestanding coin 3")
+    RoseWayCoin4 = enum.Value("Rose Way freestanding coin 4")
+    RoseWayCoin5 = enum.Value("Rose Way freestanding coin 5")
+    RoseWayFiveChests1 = enum.Value("Rose Way five-chest area top middle chest")
+    RoseWayFiveChests2 = enum.Value("Rose Way five-chest area bottom left chest")
+    RoseWayFiveChests3 = enum.Value("Rose Way five-chest top right chest")
+    RoseWayFiveChests4 = enum.Value("Rose Way five-chest top left chest")
+    RoseWayFiveChests5 = enum.Value("Rose Way five-chest bottom right chest")
+    RoseTownFlag = enum.Value("Rose Town behind sign")
+    RoseTownStore1 = enum.Value("Rose Town shop right chest")
+    RoseTownStore2 = enum.Value("Rose Town shop left chest")
+    GardenerCloud1 = enum.Value("Rose Town gardener right chest")
+    GardenerCloud2 = enum.Value("Rose Town gardener left chest")
+    RoseTownToad = enum.Value("Rose Town Inn Toad gift")
+    Gaz = enum.Value("Rose Town (unoccupied) Gaz gift")
+    RoseTownTreasureHouse1 = enum.Value("Rose Town upper house left chest")
+    RoseTownTreasureHouse2 = enum.Value("Rose Town upper house right chest")
+    RoseTownTreasureHouseMazeReward = enum.Value("Rose Town upper house Maze Secret prize")
+    RoseTownTreasureHouse3 = enum.Value("Rose Town upper house top floor chest")
+    ForestMaze1 = enum.Value("Forest Maze 1st room chest")
+    ForestMaze2 = enum.Value("Forest Maze first chest after underground")
+    ForestMazeUnderground1 = enum.Value("Forest Maze wiggler chest")
+    ForestMazeUnderground2 = enum.Value("Forest Maze bottom right stump chest")
+    ForestMazeUnderground3 = enum.Value("Forest Maze middle left stump chest")
+    ForestMazeRedEssence = enum.Value("Forest Maze before maze chest")
+    ForestMazeSecret1 = enum.Value("Forest Maze secret top right chest")
+    ForestMazeSecret2 = enum.Value("Forest Maze secret bottom right chest")
+    ForestMazeSecret3 = enum.Value("Forest Maze secret top middle chest")
+    ForestMazeSecret4 = enum.Value("Forest Maze secret bottom middle chest")
+    ForestMazeSecret5 = enum.Value("Forest Maze secret left chest")
+    ForestMazeCharacter = enum.Value("Forest Maze character recruit")
+    ForestMazeBoss = enum.Value("Forest Maze boss star piece")
+    PipeVaultSlide1 = enum.Value("Pipe Vault slide room back chest")
+    PipeVaultSlide2 = enum.Value("Pipe Vault slide room middle chest")
+    PipeVaultSlide3 = enum.Value("Pipe Vault slide room front chest")
+    PipeVaultSlideCoin1 = enum.Value("Pipe Vault slide room freestanding coin 1")
+    PipeVaultSlideCoin2 = enum.Value("Pipe Vault slide room freestanding coin 2")
+    PipeVaultSlideCoin3 = enum.Value("Pipe Vault slide room freestanding coin 3")
+    PipeVaultSlideCoin4 = enum.Value("Pipe Vault slide room freestanding coin 4")
+    PipeVaultSlideCoin5 = enum.Value("Pipe Vault slide room freestanding coin 5")
+    PipeVaultSlideFrogCoin = enum.Value("Pipe Vault slide room freestanding frog coin")
+    PipeVaultNippers1 = enum.Value("Pipe Vault nipper room first chest")
+    PipeVaultNippers2 = enum.Value("Pipe Vault nipper room second chest")
+    GoombaThumping1 = enum.Value("Pipe Vault Goomba Thumpin first prize")
+    GoombaThumping2 = enum.Value("Pipe Vault Goomba Thumpin second prize")
+    YosterIsleEntrance = enum.Value("Yo'ster Isle entrance chest")
+    YosterIsleRaceReward1 = enum.Value("Yo'ster Isle first race prize item 1")
+    YosterIsleRaceReward2 = enum.Value("Yo'ster Isle invisible GOAL item")
+    YosterIsleRaceReward3 = enum.Value("Yo'ster Isle first race prize item 2")
+    YosterIsleFlag = enum.Value("Yo'ster Isle first race prize item 3")
+    BucketGirl = enum.Value("Moleville bucket girl")
+    TreasureSeller1 = enum.Value("Moleville first treasure shop item")
+    TreasureSeller2 = enum.Value("Moleville second treasure shop item")
+    TreasureSeller3 = enum.Value("Moleville third treasure shop item")
+    FireworksShop = enum.Value("Moleville Mines two-level traintrack room chest")
+    MolevilleMinesShyGuy = enum.Value("Moleville Mines shy guy cart")
+    MolevilleMinesCoins = enum.Value("Moleville Mines near final train tracks chest")
+    MolevilleMinesPunchinello1 = enum.Value("Moleville Mines before boss left chest")
+    MolevilleMinesPunchinello2 = enum.Value("Moleville Mines before boss upper chest")
+    MolevilleMinesBoss2 = enum.Value("Moleville Mines final boss star piece")
+    MolevilleMinesCharacter = enum.Value("Moleville Mines character recruit")
+    CrocoFlunkie1 = enum.Value("Moleville Mines trampoline bandit")
+    CrocoFlunkie2 = enum.Value("Moleville Mines left bandit")
+    CrocoFlunkie3 = enum.Value("Moleville Mines right bandit")
+    Croco2Item = enum.Value("Moleville Mines first boss item")
+    MolevilleMinesBoss1 = enum.Value("Moleville Mines first boss star piece")
+    BoosterPass1 = enum.Value("Booster Pass main area left chest")
+    BoosterPass2 = enum.Value("Booster Pass main area right chest")
+    BoosterPassBush = enum.Value("Booster Pass main area bush check")
+    BoosterPassFlower = enum.Value("Booster Pass freestanding flower")
+    BoosterPassSecret1 = enum.Value("Booster Pass secret middle chest")
+    BoosterPassSecret2 = enum.Value("Booster Pass secret right chest")
+    BoosterPassSecret3 = enum.Value("Booster Pass secret left chest")
+    BoosterTowerSpookum = enum.Value("Booster Tower first stairway chest")
+    BoosterTowerThwomp = enum.Value("Booster Tower upper thwomp room chest")
+    BoosterTowerKnifeGuy = enum.Value("Booster Tower Knife Guy reward")
+    BoosterTowerRoomKey = enum.Value("Booster Tower checkerboard room item")
+    BoosterTowerFrogCoin1 = enum.Value("Booster Tower checkerboard room freestanding frog coin 1")
+    BoosterTowerFrogCoin2 = enum.Value("Booster Tower checkerboard room freestanding frog coin 2")
+    BoosterTowerFrogCoin3 = enum.Value("Booster Tower checkerboard room freestanding frog coin 3")
+    BoosterTowerFrogCoin4 = enum.Value("Booster Tower checkerboard room freestanding frog coin 4")
+    BoosterTowerCoin1 = enum.Value("Booster Tower checkerboard room freestanding coin 1")
+    BoosterTowerCoin2 = enum.Value("Booster Tower checkerboard room freestanding coin 2")
+    BoosterTowerCoin3 = enum.Value("Booster Tower checkerboard room freestanding coin 3")
+    BoosterTowerCoin4 = enum.Value("Booster Tower checkerboard room freestanding coin 4")
+    BoosterTowerCoin5 = enum.Value("Booster Tower checkerboard room freestanding coin 5")
+    BoosterTowerCoin6 = enum.Value("Booster Tower checkerboard room freestanding coin 6")
+    BoosterTowerCoin7 = enum.Value("Booster Tower checkerboard room freestanding coin 7")
+    BoosterTowerCoin8 = enum.Value("Booster Tower checkerboard room freestanding coin 8")
+    BoosterTowerCoin9 = enum.Value("Booster Tower checkerboard room freestanding coin 9")
+    BoosterTowerMasher = enum.Value("Booster Tower Masher chest")
+    BoosterTowerParachute = enum.Value("Booster Tower parachute room chest")
+    BoosterTowerParachuteCrevice = enum.Value("Booster Tower parachute room stair crevice")
+    BoosterTowerZoomShoes = enum.Value("Booster Tower Room Key chest")
+    BoosterTowerTop1 = enum.Value("Booster Tower top floor lower chest")
+    BoosterTowerTop2 = enum.Value("Booster Tower top floor upper chest")
+    BoosterTowerTop3 = enum.Value("Booster Tower top floor corner chest")
+    BoosterTowerRailway = enum.Value("Booster Tower railway room")
+    BoosterTowerPortraits = enum.Value("Booster Tower portrait prize")
+    BoosterTowerChomp = enum.Value("Booster Tower Elder Key room")
+    BoosterTowerCurtainGame = enum.Value("Booster Tower curtain prize")
+    BoosterTowerStarPiece1 = enum.Value("Booster Tower curtain room boss star piece")
+    BoosterTowerStarPiece2 = enum.Value("Booster Tower balcony boss star piece")
+    MarrymorePrize1 = enum.Value("Marrymore Suite total stays prize 1")
+    MarrymorePrize2 = enum.Value("Marrymore Suite total stays prize 2")
+    MarrymorePrize3 = enum.Value("Marrymore Suite total stays prize 3")
+    MarrymorePrize4 = enum.Value("Marrymore Suite total stays prize 4")
+    MarrymorePrize5 = enum.Value("Marrymore Suite total stays prize 5")
+    MarrymorePrize6 = enum.Value("Marrymore Suite total stays prize 6")
+    MarrymoreInn = enum.Value("Marrymore Inn regular room chest")
+    MarrymoreStarPiece = enum.Value("Marrymore boss star piece")
+    MarrymoreCharacter = enum.Value("Marrymore character join")
+    StarHillStarPiece1 = enum.Value("Star Hill freestanding star piece")
+    SeasideTownBoss = enum.Value("Seaside Town boss star piece")
+    SeasideTownBossPrize = enum.Value("Seaside Town boss prize")
+    SeasideTownRescue = enum.Value("Seaside Town shed rescue")
+    SeaStarChest = enum.Value("Sea starslap room chest")
+    SeaSaveRoom1 = enum.Value("Sea save room back chest")
+    SeaSaveRoom2 = enum.Value("Sea save room middle chest")
+    SeaSaveRoom3 = enum.Value("Sea save room front chest")
+    SeaWhirlpoolChest = enum.Value("Sea whirlpool room chest")
+    SunkenShipRatStairs = enum.Value("Sunken Ship first stairway chest")
+    SunkenShipRatStairsFlower = enum.Value("Sunken Ship first stairway freestanding flower")
+    SunkenShipShop = enum.Value("Sunken Ship shop area chest")
+    SunkenShipCoins1 = enum.Value("Sunken Ship outside clone room left chest")
+    SunkenShipCoins2 = enum.Value("Sunken Ship outside clone room right chest")
+    SunkenShipCloneRoom = enum.Value("Sunken Ship clone room chest")
+    SunkenShipFrogCoinRoom = enum.Value("Sunken Ship hidden box room chest")
+    SunkenShipHidonMushroom = enum.Value("Sunken Ship Hidon's room left chest")
+    SunkenShipHidonChest = enum.Value("Sunken Ship Hidon's room right chest")
+    HidonReward1 = enum.Value("Mimic #2 first reward")
+    HidonReward2 = enum.Value("Mimic #2 reload reward")
+    HidonBoss = enum.Value("Mimic #2 star piece")
+    SunkenShipUnderwaterFrogCoin1 = enum.Value("Sunken Ship underwater freestanding frog coin 1")
+    SunkenShipUnderwaterFrogCoin2 = enum.Value("Sunken Ship underwater freestanding frog coin 2")
+    SunkenShipUnderwaterFrogCoin3 = enum.Value("Sunken Ship underwater freestanding frog coin 3")
+    SunkenShipUnderwaterFrogCoin4 = enum.Value("Sunken Ship underwater freestanding frog coin 4")
+    SunkenShipSafetyRing = enum.Value("Sunken Ship hidden underwater room chest")
+    SunkenShipBandanaReds = enum.Value("Sunken Ship near final boss chest")
+    SunkenShipBlooberRoom = enum.Value("Sunken Ship large pool freestanding frog coin")
+    SunkenShipTrampolinePuzzle = enum.Value("Sunken Ship trampoline puzzle prize")
+    SunkenShipTroopaPuzzle = enum.Value("Sunken Ship troopa cannonball prize")
+    SunkenShip3DMaze = enum.Value("Sunken Ship 3D maze prize")
+    SunkenShipCoinSnake = enum.Value("Sunken Ship coin snake puzzle prize")
+    SunkenShipCannonballPuzzle = enum.Value("Sunken Ship cannonball puzzle prize")
+    SunkenShipBarrelPuzzle = enum.Value("Sunken Ship barrel switch prize")
+    SunkenShipMidboss = enum.Value("Sunken Ship password boss star piece")
+    SunkenShipBoss = enum.Value("Sunken Ship final boss star piece")
+    LandsEndRedEssence = enum.Value("Land's End first chest")
+    LandsEndChowPit1 = enum.Value("Land's End chow pit left chest")
+    LandsEndChowPit2 = enum.Value("Land's End chow pit right chest")
+    LandsEndBeeRoom = enum.Value("Land's End bee room chest")
+    LandsEndSecret1 = enum.Value("Land's End grotto first chest")
+    LandsEndSecret2 = enum.Value("Land's End grotto corner chest")
+    LandsEndShyAway = enum.Value("Land's End grotto near sewer chest")
+    LandsEndStarChest1 = enum.Value("Land's End whirlpool 1st underground chest")
+    LandsEndStarChest2 = enum.Value("Land's End 1st purchase chest")
+    LandsEndStarChest3 = enum.Value("Land's End 2nd purchase chest")
+    TroopaClimb = enum.Value("Land's End Troopa Climb sub-12 second prize")
+    LandsEndStarPiece1 = enum.Value("Land's End/Belome Temple cloud star piece")
+    BelomeTempleFortuneTeller = enum.Value("Belome Temple first fortune-telling room chest")
+    BelomeTempleFortune1 = enum.Value("Belome Temple left-middle-right fortune chest")
+    BelomeTempleFortune2 = enum.Value("Belome Temple left-right-middle fortune chest")
+    BelomeTempleFortune3 = enum.Value("Belome Temple right-left-middle fortune chest")
+    BelomeTempleFortune4 = enum.Value("Belome Temple right-middle-left fortune chest")
+    BelomeTempleAfterFortune1 = enum.Value("Belome Temple after fortune area right chest")
+    BelomeTempleAfterFortune2 = enum.Value("Belome Temple after fortune area lower left chest")
+    BelomeTempleAfterFortune3 = enum.Value("Belome Temple after fortune area middle chest")
+    BelomeTempleAfterFortune4 = enum.Value("Belome Temple after fortune area upper left chest")
+    BelomeTempleTreasureFlower1 = enum.Value("Belome Temple vault flower 1")
+    BelomeTempleTreasureFlower2 = enum.Value("Belome Temple vault flower 2")
+    BelomeTempleTreasureFlower3 = enum.Value("Belome Temple vault flower 3")
+    BelomeTempleTreasureFlower4 = enum.Value("Belome Temple vault flower 4")
+    BelomeTempleTreasureFrogCoin1 = enum.Value("Belome Temple vault frog coin 1")
+    BelomeTempleTreasureFrogCoin2 = enum.Value("Belome Temple vault frog coin 2")
+    BelomeTempleTreasureFrogCoin3 = enum.Value("Belome Temple vault frog coin 3")
+    BelomeTempleTreasureFrogCoin4 = enum.Value("Belome Temple vault frog coin 4")
+    BelomeTempleTreasureFrogCoin5 = enum.Value("Belome Temple vault frog coin 5")
+    BelomeTempleTreasureFrogCoin6 = enum.Value("Belome Temple vault frog coin 6")
+    BelomeTempleTreasureFrogCoin7 = enum.Value("Belome Temple vault frog coin 7")
+    BelomeTempleTreasureFrogCoin8 = enum.Value("Belome Temple vault frog coin 8")
+    BelomeTempleTreasure1 = enum.Value("Belome Temple vault middle item bag")
+    BelomeTempleTreasure2 = enum.Value("Belome Temple vault left item bag")
+    BelomeTempleTreasure3 = enum.Value("Belome Temple vault right item bag")
+    BelomeTempleBoss = enum.Value("Belome Temple boss star piece")
+    MonstroTownEntrance = enum.Value("Monstro Town entrance chest")
+    MonstroTownThwomp = enum.Value("Monstro Town thwomp key")
+    JinxDojoReward = enum.Value("Monstro Town dojo prize")
+    DojoBoss1 = enum.Value("Monstro Town dojo first fight star piece")
+    DojoBoss2 = enum.Value("Monstro Town dojo second fight star piece")
+    DojoBoss3 = enum.Value("Monstro Town dojo third fight star piece")
+    DojoBoss4 = enum.Value("Monstro Town dojo fourth fight star piece")
+    CulexBoss = enum.Value("Monstro Town sealed door star piece")
+    CulexReward = enum.Value("Monstro Town sealed door prize")
+    SuperJumps30 = enum.Value("Monstro Town Super Jump first prize")
+    SuperJumps100 = enum.Value("Monstro Town Super Jump second prize")
+    ThreeMustyFears = enum.Value("Monstro Town flag exchange prize")
+    BeanValley1 = enum.Value("Bean Valley south upper level chest")
+    BeanValley2 = enum.Value("Bean Valley north upper level chest")
+    BeanValleyLeftPiranhaPipe = enum.Value("Bean Valley left piranha pipe chest")
+    BeanValleyBottomLeftPiranhaPipe = enum.Value("Bean Valley bottom left piranha pipe chest")
+    BeanValleyBottomRightPiranhaPipeUpper = enum.Value("Bean Valley bottom right piranha pipe upper chest")
+    BeanValleyBottomRightPiranhaPipeLower = enum.Value("Bean Valley bottom right piranha pipe lower chest")
+    BeanValleyBoxBoyRoom1 = enum.Value("Bean Valley right piranha pipe left chest")
+    BoxBoyBoss = enum.Value("Mimic #2 star piece")
+    BeanValleyBoxBoyRoom2 = enum.Value("Bean Valley right piranha pipe right chest")
+    BeanValleyBoxBoyRoomHidden = enum.Value("Bean Valley right piranha pipe hidden stairway item")
+    BeanValleyPiranhaPlants = enum.Value("Bean Valley chest above Box Boy's room")
+    BeanValleyMegasmilaxRoom = enum.Value("Bean Valley boss star piece")
+    BeanValleyBeanstalk = enum.Value("Bean Valley clouds solo vine chest")
+    BeanValleyBeanstalkFrogCoin = enum.Value("Bean Valley middle vine room freestanding frog coin")
+    BeanValleyBeanstalkCoin1 = enum.Value("Bean Valley middle vine room lowest freestanding coin")
+    BeanValleyBeanstalkCoin2 = enum.Value("Bean Valley middle vine room middle freestanding coin")
+    BeanValleyBeanstalkCoin3 = enum.Value("Bean Valley middle vine room highest freestanding coin")
+    BeanValleyEastBeanstalkCoin1 = enum.Value("Bean Valley east vine room lowest freestanding coin")
+    BeanValleyEastBeanstalkCoin2 = enum.Value("Bean Valley east vine room lowest freestanding coin")
+    BeanValleyEastBeanstalkCoin3 = enum.Value("Bean Valley east vine room middle freestanding coin")
+    BeanValleyEastBeanstalkCoin4 = enum.Value("Bean Valley east vine room higher freestanding coin")
+    BeanValleyEastBeanstalkCoin5 = enum.Value("Bean Valley east vine room highest freestanding coin")
+    BeanValleyWestBeanstalkCoin1 = enum.Value("Bean Valley west vine room lower freestanding coin")
+    BeanValleyWestBeanstalkCoin2 = enum.Value("Bean Valley west vine room middle freestanding coin")
+    BeanValleyWestBeanstalkCoin3 = enum.Value("Bean Valley west vine room upper freestanding coin")
+    BeanValleyWestBeanstalkFrogCoin = enum.Value("Bean Valley west vine room freestanding frog coin")
+    BeanValleyCloud1 = enum.Value("Bean Valley clouds upper left chest")
+    BeanValleyCloud2 = enum.Value("Bean Valley clouds upper right chest")
+    BeanValleyFall1 = enum.Value("Bean Valley clouds lower left chest")
+    BeanValleyFall2 = enum.Value("Bean Valley clouds lower right chest")
+    BeanValleyFirstVineRoomFrogCoin = enum.Value("Bean Valley lowest vine room freestanding frog coin")
+    BeanValleyFirstVineRoomMiddleCoin = enum.Value("Bean Valley lowest vine room middle freestanding coin")
+    BeanValleyFirstVineRoomUpperCoin = enum.Value("Bean Valley lowest vine room upper freestanding coin")
+    BeanValleyFirstVineRoomLowerCoin = enum.Value("Bean Valley lowest vine room lower freestanding coin")
+    CasinoGrateGuyPrize = enum.Value("Grate Guy's Casino LOTW prize")
+    NimbusLandShop = enum.Value("Nimbus Land shop chest")
+    NimbusLandInn = enum.Value("Nimbus Land dream cushion 1st item")
+    NimbusLandInn2 = enum.Value("Nimbus Land dream cushion 2nd item")
+    NimbusCastleBeforeBirdetta1 = enum.Value("Nimbus Castle (occupied) 5-door room chest")
+    NimbusCastleBeforeBirdetta2 = enum.Value("Nimbus Castle west two-level room chest")
+    NimbusCastleBirdetta = enum.Value("Nimbus Castle giant egg prize")
+    NimbusCastleStarPiece2 = enum.Value("Nimbus Land giant egg boss star piece")
+    NimbusCastleOutOfBounds1 = enum.Value("Nimbus Castle west stairway room left chest")
+    NimbusCastleOutOfBounds2 = enum.Value("Nimbus Castle west stairway room right chest")
+    NimbusCastleSingleGoldBird = enum.Value("Nimbus Castle single gold bird room chest")
+    NimbusCastleAfterEgg1 = enum.Value("Nimbus Castle east two-level room lower chest")
+    NimbusCastleAfterEgg2 = enum.Value("Nimbus Castle east two-level room upper chest")
+    NimbusCastleStarPiece3 = enum.Value("Nimbus Land final boss star piece")
+    NimbusCastleStarChest = enum.Value("Nimbus Castle post-throne chest (occupied)")
+    NimbusCastleStarAfterValentina = enum.Value("Nimbus Castle post-throne chest (unoccupied)")
+    NimbusCastleCornerChestAfterValentina = enum.Value("Nimbus Castle (unoccupied) 5-door room chest")
+    NimbusLandRightSide = enum.Value("Nimbus Land post-invasion off-cloud item")
+    DodoReward = enum.Value("Nimbus Land Dodo's statue game prize")
+    NimbusLandStarPiece1 = enum.Value("Nimbus Land statue keeper boss star piece")
+    NimbusLandPrisoners = enum.Value("Nimbus Castle west cellar civilian")
+    NimbusLandPrisoners2 = enum.Value("Nimbus Castle west cellar guard")
+    NimbusLandSignalRing = enum.Value("Nimbus Land post-invasion upper right house")
+    NimbusLandCellar = enum.Value("Nimbus Castle post-invasion north cellar")
+    BarrelVolcanoSecret1 = enum.Value("Barrel Volcano secret room left chest")
+    BarrelVolcanoSecret2 = enum.Value("Barrel Volcano secret room right chest")
+    BarrelVolcanoReverse = enum.Value("Barrel Volcano reverse lava recoil frog coin")
+    BarrelVolcanoDonut1 = enum.Value("Barrel Volcano first donut lift room right freestanding frog coin")
+    BarrelVolcanoDonut2 = enum.Value("Barrel Volcano first donut lift room left freestanding frog coin")
+    BarrelVolcanoLavaPool = enum.Value("Barrel Volcano lava pool freestanding frog coin")
+    BarrelVolcanoBeforeStar1 = enum.Value("Barrel Volcano second arrow sign room left chest")
+    BarrelVolcanoBeforeStar2 = enum.Value("Barrel Volcano second arrow sign room right chest")
+    BarrelVolcanoStarRoom = enum.Value("Barrel Volcano star chest")
+    BarrelVolcanoSaveRoom1 = enum.Value("Barrel Volcano save room lower chest")
+    BarrelVolcanoSaveRoom2 = enum.Value("Barrel Volcano save room upper chest")
+    BarrelVolcanoHinopio = enum.Value("Barrel Volcano Hinopio shop chest")
+    BarrelVolcanoBoss1 = enum.Value("Barrel Volcano first boss star piece")
+    BarrelVolcanoBoss2 = enum.Value("Barrel Volcano second boss star piece")
+    BowsersKeepDarkRoom = enum.Value("Bowser's Keep dark room chest")
+    BowsersKeepCrocoShop1 = enum.Value("Bowser's Keep near first shop left chest")
+    BowsersKeepCrocoShop2 = enum.Value("Bowser's Keep near first shop right chest")
+    BowsersKeepMagikoopa = enum.Value("Bowser's Keep Magikoopa's room chest")
+    BowsersKeepBossChester = enum.Value("Bowser's Keep battle door star piece")
+    BowsersKeepBoss1 = enum.Value("Bowser's Keep first boss star piece")
+    BowsersKeepInvisibleBridge1 = enum.Value("Bowser's Keep 6-door invisble bridge bottom chest")
+    BowsersKeepInvisibleBridge2 = enum.Value("Bowser's Keep 6-door invisble bridge right chest")
+    BowsersKeepInvisibleBridge3 = enum.Value("Bowser's Keep 6-door invisble bridge left chest")
+    BowsersKeepInvisibleBridge4 = enum.Value("Bowser's Keep 6-door invisble bridge top chest")
+    BowsersKeepInvisibleBridgeCoin1 = enum.Value("Bowser's Keep 6-door invisble bridge bottom left coin")
+    BowsersKeepInvisibleBridgeCoin2 = enum.Value("Bowser's Keep 6-door invisble bridge bottom right coin")
+    BowsersKeepInvisibleBridgeCoin3 = enum.Value("Bowser's Keep 6-door invisble bridge top left coin")
+    BowsersKeepInvisibleBridgeCoin4 = enum.Value("Bowser's Keep 6-door invisble bridge top right coin")
+    BowsersKeepMovingPlatforms1 = enum.Value("Bowser's Keep X-Y platform room left exit chest")
+    BowsersKeepMovingPlatforms2 = enum.Value("Bowser's Keep X-Y platform room left entrance chest")
+    BowsersKeepMovingPlatforms3 = enum.Value("Bowser's Keep X-Y platform room right entrance chest")
+    BowsersKeepMovingPlatforms4 = enum.Value("Bowser's Keep X-Y platform room right exit chest")
+    BowsersKeepElevatorPlatforms = enum.Value("Bowser's Keep 6-door elevator platform room chest")
+    BowsersKeepCannonballRoom1 = enum.Value("Bowser's Keep cannonball room lower right chest")
+    BowsersKeepCannonballRoom2 = enum.Value("Bowser's Keep cannonball room exit chest")
+    BowsersKeepCannonballRoom3 = enum.Value("Bowser's Keep cannonball room lower left chest")
+    BowsersKeepCannonballRoom4 = enum.Value("Bowser's Keep cannonball room upper right chest")
+    BowsersKeepCannonballRoom5 = enum.Value("Bowser's Keep cannonball room upper left chest")
+    BowsersKeepCannonballRoomCoin1 = enum.Value("Bowser's Keep cannonball room freestanding coin 1")
+    BowsersKeepCannonballRoomCoin2 = enum.Value("Bowser's Keep cannonball room freestanding coin 2")
+    BowsersKeepCannonballRoomCoin3 = enum.Value("Bowser's Keep cannonball room freestanding coin 3")
+    BowsersKeepCannonballRoomCoin4 = enum.Value("Bowser's Keep cannonball room freestanding coin 4")
+    BowsersKeepCannonballRoomCoin5 = enum.Value("Bowser's Keep cannonball room freestanding coin 5")
+    BowsersKeepCannonballRoomCoin6 = enum.Value("Bowser's Keep cannonball room freestanding coin 6")
+    BowsersKeepCannonballRoomCoin7 = enum.Value("Bowser's Keep cannonball room freestanding coin 7")
+    BowsersKeepCannonballRoomCoin8 = enum.Value("Bowser's Keep cannonball room freestanding coin 8")
+    BowsersKeepRotatingPlatforms1 = enum.Value("Bowser's Keep rotating platform room entrance chest")
+    BowsersKeepRotatingPlatforms2 = enum.Value("Bowser's Keep rotating platform lower left chest")
+    BowsersKeepRotatingPlatforms3 = enum.Value("Bowser's Keep rotating platform right chest")
+    BowsersKeepRotatingPlatforms4 = enum.Value("Bowser's Keep rotating platform center chest")
+    BowsersKeepRotatingPlatforms5 = enum.Value("Bowser's Keep rotating platform upper left chest")
+    BowsersKeepRotatingPlatforms6 = enum.Value("Bowser's Keep rotating platform exit chest")
+    BowsersKeepDoorReward1 = enum.Value("Bowser's Keep door prize 1")
+    BowsersKeepDoorReward2 = enum.Value("Bowser's Keep door prize 2")
+    BowsersKeepDoorReward3 = enum.Value("Bowser's Keep door prize 3")
+    BowsersKeepDoorReward4 = enum.Value("Bowser's Keep door prize 4")
+    BowsersKeepDoorReward5 = enum.Value("Bowser's Keep door prize 5")
+    BowsersKeepDoorReward6 = enum.Value("Bowser's Keep door prize 6")
+    BowsersKeepBoss2 = enum.Value("Bowser's Keep second boss star piece")
+    BowsersKeepBoss3 = enum.Value("Bowser's Keep third boss star piece")
+    FactorySaveRoom = enum.Value("Outer Factory early save room chest")
+    FactoryBoltPlatforms = enum.Value("Outer Factory bot platform chest")
+    FactoryBoss1 = enum.Value("Outer Factory first boss star piece")
+    FactoryFallingAxems = enum.Value("Outer Factory falling axem room chest")
+    FactoryTreasurePit1 = enum.Value("Outer Factory pit back chest")
+    FactoryTreasurePit2 = enum.Value("Outer Factory pit front chest")
+    FactoryConveyorPlatforms1 = enum.Value("Outer Factory conveyor room right chest")
+    FactoryConveyorPlatforms2 = enum.Value("Outer Factory conveyor room left chest")
+    FactoryBehindSnakes1 = enum.Value("Outer Factory room behind machine yarid right chest")
+    FactoryBehindSnakes2 = enum.Value("Outer Factory room behind machine yarid left chest")
+    FactoryBoss2 = enum.Value("Outer Factory second boss star piece")
+    FactoryToadGift = enum.Value("Inner Factory toad gift")
+    InnerFactoryBoss1 = enum.Value("Inner Factory first boss star piece")
+    InnerFactoryBoss2 = enum.Value("Inner Factory second boss star piece")
+    InnerFactoryBoss3 = enum.Value("Inner Factory third boss star piece")
+    InnerFactoryBoss4 = enum.Value("Inner Factory fourth boss star piece")
