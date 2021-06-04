@@ -45,6 +45,7 @@ class Settings:
         self._mode = mode
         self._debug_mode = debug_mode
         self._enabled_flags = set()
+        self._all_flags = []
 
         # If flag string provided, make fake form data based on it to parse.
         flag_data = {}
@@ -79,6 +80,8 @@ class Settings:
             flag_data (dict): Form data dictionary.
 
         """
+        # change this to access all set values in _all_flags
+
         if flag.available_in_mode(self.mode):
             if flag.value.startswith('-'):
                 # Solo flag that begins with a dash.
@@ -187,6 +190,30 @@ class Settings:
         """
         return flag in self._enabled_flags
 
+    def get_flag(self, flag):
+        """
+        Args:
+            flag: Flag class to check.
+
+        Returns:
+            bool: True if flag is enabled at value, False otherwise.
+        """
+        narrowed = [i for i in self._all_flags if i[0] == flag]
+        _, val = narrowed[0]
+        return val
+
+    def is_flag_value(self, flag, value):
+        """
+        Args:
+            flag: Flag class to check.
+
+        Returns:
+            bool: True if flag is enabled at value, False otherwise.
+        """
+        narrowed = [i for i in self._all_flags if i[0] == flag]
+        _, val = narrowed[0]
+        return val == value
+
     def get_flag_choice(self, flag):
         """
         Args:
@@ -227,6 +254,8 @@ class GameWorld:
         self.character_join_order = self.characters[:]
         self.meta_join_order = self.character_join_order.copy()
         self.levelup_xps = data.characters.LevelUpExps()
+        self.starter_character_checks = data.chests.get_starter_character_checks(self)
+        self.recruitable_character_checks = data.chests.get_recruitable_character_checks(self)
 
         # Spells
         self.spells = data.spells.get_default_spells(self)
@@ -257,9 +286,12 @@ class GameWorld:
         # Get item location data.
         self.key_locations = data.keys.get_default_key_item_locations(self)
         self.chest_locations = data.chests.get_default_chests(self)
+        self.freestanding_item_locations = data.chests.get_freestanding_item_checks(self)
+        
 
         # Get boss location data.
         self.boss_locations = data.bosses.get_default_boss_locations(self)
+        self.boss_star_checks = data.chests.get_boss_star_piece_checks(self)
 
         # Events
         self.eventscripts = copy.copy(eventscripts)

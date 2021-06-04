@@ -6,77 +6,77 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_185_store_7000_item_quantity_to_70A7_283',
+        "identifier": 'EVENT_3399_store_7000_item_quantity_to_70A7_283',
         "command": 'store_item_amount_7000',
         "args": [items.Fireworks]
     },
     {
-        "identifier": 'EVENT_185_jmp_if_7000_equals_short_284',
+        "identifier": 'EVENT_3399_jmp_if_7000_equals_short_284',
         "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_185_set_298']
+        "args": [1, 'EVENT_3399_set_298']
     },
     {
-        "identifier": 'EVENT_185_store_7000_item_quantity_to_70A7_283_',
+        "identifier": 'EVENT_3399_store_7000_item_quantity_to_70A7_283_',
         "command": 'store_item_amount_7000',
         "args": [items.ShinyStone]
     },
     {
-        "identifier": 'EVENT_185_jmp_if_7000_equals_short_287',
+        "identifier": 'EVENT_3399_jmp_if_7000_equals_short_287',
         "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_185_set_294']
+        "args": [1, 'EVENT_3399_set_294']
     },
     {
-        "identifier": "EVENT_185_set_fireworks",
+        "identifier": "EVENT_3399_set_fireworks",
         "command": 'set',
         "args": [0x70EA, 5]
     },
     {
-        "identifier": 'EVENT_185_set_291',
+        "identifier": 'EVENT_3399_set_291',
         "command": 'set',
         "args": [0x70a7, 172]
     },
     {
-        "identifier": 'EVENT_185_ret_293',
+        "identifier": 'EVENT_3399_ret_293',
         "command": 'jmp_to_event',
         "args": [2820]
     },
     {
-        "identifier": 'EVENT_185_set_294',
+        "identifier": 'EVENT_3399_set_294',
         "command": 'set',
         "args": [0x70a7, 137]
     },
     {
-        "identifier": 'EVENT_185_remove_one_from_inventory_295',
+        "identifier": 'EVENT_3399_remove_one_from_inventory_295',
         "command": 'remove_one_from_inventory',
         "args": [items.ShinyStone]
     },
     {
-        "identifier": 'EVENT_185_ret_297',
+        "identifier": 'EVENT_3399_ret_297',
         "command": 'jmp_to_event',
         "args": [2820]
     },
     {
-        "identifier": 'EVENT_185_set_298',
+        "identifier": 'EVENT_3399_set_298',
         "command": 'set',
         "args": [0x70a7, 138]
     },
     {
-        "identifier": 'EVENT_185_apply_solidity_mod_7',
+        "identifier": 'EVENT_3399_apply_solidity_mod_7',
         "command": 'apply_solidity_mod',
         "args": [Rooms._324_MONSTRO_TOWN_OUTSIDE, 0, [_0x6BFlags.PERMANENT]]
     },
     {
-        "identifier": 'EVENT_185_remove_from_level_12',
+        "identifier": 'EVENT_3399_remove_from_level_12',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_2, Rooms._324_MONSTRO_TOWN_OUTSIDE]
     },
     {
-        "identifier": 'EVENT_185_remove_one_from_inventory_299',
+        "identifier": 'EVENT_3399_remove_one_from_inventory_299',
         "command": 'remove_one_from_inventory',
         "args": [items.Fireworks]
     },
     {
-        "identifier": 'EVENT_185_ret_301',
+        "identifier": 'EVENT_3399_ret_301',
         "command": 'jmp_to_event',
         "args": [2820]
     }

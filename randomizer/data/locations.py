@@ -3,9 +3,12 @@
 from enum import Enum, auto
 from inspect import isclass
 
-from randomizer.data import items
+from randomizer.data import items, spells
+from randomizer.data.characters import Mario, Mallow, Peach, Bowser, Geno
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
+from randomizer.logic import flags
+from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BarrelVolcanoGating, BowsersKeepGating,  FactoryGating
 
 
 class Area(Enum):
@@ -24,9 +27,11 @@ class Area(Enum):
     MolevilleMines = auto()
     BoosterPass = auto()
     BoosterTower = auto()
+    BoosterHill = auto()
     PipeVault = auto()
     YosterIsle = auto()
     Marrymore = auto()
+    StarHill = auto()
     SeasideTown = auto()
     Sea = auto()
     SunkenShip = auto()
@@ -147,9 +152,11 @@ class ItemLocation:
             value(randomizer.data.items.Item|type): Item to place in this location, if allowed.
         """
         if not utils.isclass_or_instance(value, items.Item):
-            raise ValueError("Location {} - Trying to assign value {} that isn't an item class".format(self, value))
+            raise ValueError(
+                "Location {} - Trying to assign value {} that isn't an item class".format(self, value))
         if not self.item_allowed(value):
-            raise ValueError("Location {} - Item {} not allowed".format(self, value))
+            raise ValueError(
+                "Location {} - Item {} not allowed".format(self, value))
         self._item = value
 
 
@@ -526,3 +533,146 @@ def can_clear_nimbus_castle(inventory):
     """
     # Castle Key 2 is needed to access this location, plus defeating Birdo.
     return can_access_birdo(inventory) and inventory.has_item(items.CastleKey2)
+
+
+def can_access_bandits_way(world, inventory):
+    if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitMario):
+        return inventory.has_item(items.MarioRecruit)
+    elif world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitMallow):
+        return inventory.has_item(items.MallowRecruit)
+    elif world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitGeno):
+        return inventory.has_item(items.GenoRecruit)
+    elif world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitBowser):
+        return inventory.has_item(items.BowserRecruit)
+    elif world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitToadstool):
+        return inventory.has_item(items.ToadstoolRecruit)
+    else:
+        return True
+
+
+def can_access_tower(world, inventory):
+    if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitMario):
+        return inventory.has_item(items.MarioRecruit)
+    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitMallow):
+        return inventory.has_item(items.MallowRecruit)
+    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitGeno):
+        return inventory.has_item(items.GenoRecruit)
+    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitBowser):
+        return inventory.has_item(items.BowserRecruit)
+    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitToadstool):
+        return inventory.has_item(items.ToadstoolRecruit)
+    elif world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.FinishMoleville):
+        return inventory.has_item(items.BambinoBomb)
+    else:
+        return True
+
+
+def can_access_marrymore(world, inventory):
+    if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.FinishBoosterTower):
+        return can_access_tower(world, inventory)
+    else:
+        return True
+
+
+def can_access_forest(world, inventory):
+    if world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario):
+        return inventory.has_item(items.MarioRecruit) or inventory.has_item(items.MarioSpotted)
+    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow):
+        return inventory.has_item(items.MallowRecruit) or inventory.has_item(items.MallowSpotted)
+    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno):
+        return inventory.has_item(items.GenoRecruit) or inventory.has_item(items.GenoSpotted)
+    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser):
+        return inventory.has_item(items.BowserRecruit) or inventory.has_item(items.BowserSpotted)
+    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool):
+        return inventory.has_item(items.ToadstoolRecruit) or inventory.has_item(items.ToadstoolSpotted)
+    elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.ExchangeCricketPie):
+        return inventory.has_item(items.CricketPie)
+    else:
+        return True
+
+
+def can_access_sea(world, inventory):
+    if world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitMario):
+        return inventory.has_item(items.MarioRecruit)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitMallow):
+        return inventory.has_item(items.MallowRecruit)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitGeno):
+        return inventory.has_item(items.GenoRecruit)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitBowser):
+        return inventory.has_item(items.BowserRecruit)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitToadstool):
+        return inventory.has_item(items.ToadstoolRecruit)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.Find1Star):
+        return inventory.has_item(items.StarPiece)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.Find2Star):
+        return inventory.has_item_count(items.StarPiece, 2)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.Find3Star):
+        return inventory.has_item_count(items.StarPiece, 3)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.Find4Star):
+        return inventory.has_item_count(items.StarPiece, 4)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.Find5Star):
+        return inventory.has_item_count(items.StarPiece, 5)
+    elif world.settings.is_flag_value(flags.SeaGate, SeaGating.Find6Star):
+        return inventory.has_item_count(items.StarPiece, 6)
+    else:
+        return True
+
+
+def can_access_yaridovich(world, inventory):
+    if world.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.FinishSunkenShip):
+        return can_access_sea(world, inventory)
+    else:
+        return True
+
+
+def can_access_volcano(world, inventory):
+    if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.FinishNimbusLand):
+        return can_clear_nimbus_castle(inventory)
+    else:
+        return True
+
+
+def can_access_keep(world, inventory):
+    if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.FinishBarrelVolcano):
+        return can_access_volcano(world, inventory)
+    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find1Star):
+        return inventory.has_item(items.StarPiece)
+    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find2Star):
+        return inventory.has_item_count(items.StarPiece, 2)
+    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find3Star):
+        return inventory.has_item_count(items.StarPiece, 3)
+    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find4Star):
+        return inventory.has_item_count(items.StarPiece, 4)
+    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find5Star):
+        return inventory.has_item_count(items.StarPiece, 5)
+    elif world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find6Star):
+        return inventory.has_item_count(items.StarPiece, 6)
+    else:
+        return True
+
+
+def can_access_factory(world, inventory):
+    if world.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find1Star):
+        return inventory.has_item(items.StarPiece) and can_access_keep(world, inventory)
+    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find2Star):
+        return inventory.has_item_count(items.StarPiece, 2) and can_access_keep(world, inventory)
+    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find3Star):
+        return inventory.has_item_count(items.StarPiece, 3) and can_access_keep(world, inventory)
+    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find4Star):
+        return inventory.has_item_count(items.StarPiece, 4) and can_access_keep(world, inventory)
+    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find5Star):
+        return inventory.has_item_count(items.StarPiece, 5) and can_access_keep(world, inventory)
+    elif world.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find6Star):
+        return inventory.has_item_count(items.StarPiece, 6) and can_access_keep(world, inventory)
+    else:
+        return can_access_keep(world, inventory)
+
+
+def can_super_jump(world, inventory):
+    can_access = False
+    for c in world.characters:
+        has_super_jump = len(
+            [s for s in c.learned_spells if s == spells.SuperJump]) > 0
+        if has_super_jump and ((utils.isclass_or_instance(c, Mario) and inventory.has_item(items.MarioRecruit)) or (utils.isclass_or_instance(c, Mallow) and inventory.has_item(items.MallowRecruit)) or (utils.isclass_or_instance(c, Geno) and inventory.has_item(items.GenoRecruit)) or (utils.isclass_or_instance(c, Bowser) and inventory.has_item(items.BowserRecruit)) or (utils.isclass_or_instance(c, Peach) and inventory.has_item(items.ToadstoolRecruit))):
+            can_access = True
+    return can_access

@@ -27,7 +27,7 @@ from .logic.patch import PatchJSONEncoder
 logger = logging.getLogger(__name__)
 
 
-def _build_flag_json_data(flag, parent_modes=None):
+def _build_flag_json_data(flag):
     """
 
     Args:
@@ -39,19 +39,16 @@ def _build_flag_json_data(flag, parent_modes=None):
 
     """
     modes = flag.modes.copy()
-    if parent_modes is not None:
-        modes = list(set(modes) & set(parent_modes))
 
     d = {
-        'value': flag.value,
+        'flag': flag.get_slug(),
         'modes': modes,
-        'choices': [],
-        'options': [],
+        'type': flag.type
     }
-    for choice in flag.choices:
-        d['choices'].append(_build_flag_json_data(choice, parent_modes=modes))
-    for option in flag.options:
-        d['options'].append(_build_flag_json_data(option, parent_modes=modes))
+    if flag.type == "categorization":
+        d['options'] = flag.options
+    elif flag.type == "select_one":
+        d['choices'] = flag.choices
 
     return d
 

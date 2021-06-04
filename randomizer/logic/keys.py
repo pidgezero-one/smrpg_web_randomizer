@@ -23,6 +23,18 @@ class Inventory(list):
         """
         return any([i for i in self if i == item])
 
+    def has_item_count(self, item, value = 1):
+        """
+
+        Args:
+            item: Item class to check for.
+
+        Returns:
+            bool: True if inventory contains this item, False otherwise.
+
+        """
+        incidence = [i for i in self if i == item]
+        return any(incidence) and len(incidence) >= value
 
 def item_location_filter(world, location):
     """Filter function for key item locations based on whether Seed/Fertilizer are included.
@@ -131,7 +143,7 @@ def _collect_items(world, collected=None):
 
     # Search all locations and collect items until we can't get any more.
     while True:
-        search_locations = [l for l in available_locations if l.can_access(my_items)]
+        search_locations = [l for l in available_locations if l.can_access(world, my_items)] 
         available_locations = [l for l in available_locations if l not in search_locations]
         found_items = Inventory([l.item for l in search_locations])
         my_items.extend(found_items)

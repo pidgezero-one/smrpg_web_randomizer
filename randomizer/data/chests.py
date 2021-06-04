@@ -1,1109 +1,3023 @@
 # Data module for chest data.
 
+import enum
 from randomizer.data import items
+from randomizer.data.items import ItemUnique
 from randomizer.logic.utils import isclass_or_instance
 from . import locations
+from randomizer.logic import flags
+from randomizer.logic.flags import ItemQualities, FireworksOptions
+from randomizer.data.helpers import ShuffleLocationSelector
 
+# locations inherit world, and therefore settings
+# inventory does not
+# how to make work with optional gating?
 
 # ******* Chest location classes
+
 
 class Chest(locations.ItemLocation):
     """Subclass for treasure chest location."""
     ms_override = False
-
-
-class NonCoinChest(Chest):
-    """Subclass for chest that cannot contain coin items."""
-
-    def item_allowed(self, item):
-        """
-
-        Args:
-            item(randomizer.data.items.Item|type): Item to check.
-
-        Returns:
-            bool: True if the given item is allowed to be placed in this spot, False otherwise.
-
-        """
-        return super().item_allowed(item) and not isclass_or_instance(item, items.Coins)
-
-
-class StarAllowedChest(Chest):
-    """Subclass for chests that are in the same room as an invincibility star."""
-
-    def item_allowed(self, item):
-        """
-
-        Args:
-            item(randomizer.data.items.Item|type): Item to check.
-
-        Returns:
-            bool: True if the given item is allowed to be placed in this spot, False otherwise.
-
-        """
-        return super().item_allowed(item) or isclass_or_instance(item, items.InvincibilityStar)
-
-
-class RoseTownGardenerChest(Chest):
-    """Subclass for the Lazy Shell chests in Rose Town."""
-
-    @staticmethod
-    def can_access(inventory):
-        return inventory.has_item(items.Seed) and inventory.has_item(items.Fertilizer)
-
-
-class MolevilleMinesBackChest(Chest):
-    """Subclass for the back chests in Moleville Mines requiring Bambino Bomb to access."""
-
-    @staticmethod
-    def can_access(inventory):
-        return locations.can_access_mines_back(inventory)
-
-
-class BowserDoorReward(Chest):
-    """Subclass for Bowser door rewards because they can only be inventory items or you missed."""
-
-    def item_allowed(self, item):
-        """
-
-        Args:
-            item(randomizer.data.items.Item|type): Item to check.
-
-        Returns:
-            bool: True if the given item is allowed to be placed in this spot, False otherwise.
-
-        """
-        return super().item_allowed(item) and not isclass_or_instance(item, items.ChestReward)
+    shopsanity = False
+    coinsanity = False
+    manual_70A7 = False
+    dialogs_to_replace = []
 
 
 # ******* NPC reward data classes
 
-class Reward(locations.ItemLocation):
+class NPCReward(locations.ItemLocation):
     """Subclass for NPC reward location."""
 
     def item_allowed(self, item):
         # NPC rewards cannot contain "You Missed!" or chest-only rewards.
-        # FIXME: Non-KI NPC rewards don't work with progressive cards for now.  Remove this when fixed.
-        return super().item_allowed(item) and not isclass_or_instance(item, (items.AltoCard, items.ChestReward))
+        return super().item_allowed(item) and not isclass_or_instance(item, (items.MimicFight, items.SlotMachineChest, items.Flower, items.YouMissed, items.InvincibilityStar, items.InfiniteCoins))
 
 
-class TreasureSellerReward(Reward):
+class StarterItem(NPCReward):
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and item.consumable
+
+
+class TreasureSellerReward(NPCReward):
     """Subclass for Moleville treasure seller NPC to check access.  Need to beat mines to unlock this."""
 
-    @staticmethod
-    def can_access(inventory):
-        return locations.can_access_mines_back(inventory)
+    shopsanity = True
+
+    def item_allowed(self, item):
+        # update this when shuffle modes integrated
+        return super().item_allowed(item) and (item.unique == ItemUnique.Always or (item.unique == ItemUnique.BalancedOnly and self.world.settings.is_flag_value(flags.ItemQuality == ItemQualities.Original)))
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
+
+class FrogCoinShopItem(NPCReward):
+    shopsanity = True
+
+    def item_allowed(self, item):
+        # update this when shuffle modes integrated
+        return super().item_allowed(item) and isclass_or_instance(item, items.RegularItem) and (item.unique == ItemUnique.Always or (item.unique == ItemUnique.BalancedOnly and self.world.settings.is_flag_value(flags.ItemQuality == ItemQualities.Original)))
 
 
-class BelomeTempleTreasure(Reward):
+# ******* Overworld item classes
+
+
+class OverworldItem(locations.ItemLocation):
+    """Subclass for NPC reward location."""
+
+    coinsanity = True
+    npc_ids = None
+
+    def item_allowed(self, item):
+        # NPC rewards cannot contain "You Missed!" or chest-only rewards.
+        # FIXME: Non-KI NPC rewards don't work with progressive cards for now.  Remove this when fixed.
+
+        return super().item_allowed(item) and not isclass_or_instance(item, (items.MimicFight, items.SlotMachineChest, items.MultiFrogCoin, items.YouMissed, items.InvincibilityStar, items.InfiniteCoins))
+
+
+class PacketItem(OverworldItem):
+    """Subclass for NPC reward location."""
+    script_id = None
+
+    def item_allowed(self, item):
+        # NPC rewards cannot contain "You Missed!" or chest-only rewards.
+        # FIXME: Non-KI NPC rewards don't work with progressive cards for now.  Remove this when fixed.
+        return super().item_allowed(item) and not isclass_or_instance(item, (items.MimicFight, items.SlotMachineChest, items.MultiFrogCoin, items.YouMissed, items.InvincibilityStar, items.InfiniteCoins))
+
+# ******* Boss star piece classes
+
+
+class BossStarPiece(locations.ItemLocation):
+    """Subclass for boss star piece location."""
+    shopsanity = False
+    coinsanity = False
+    dialogs_to_replace = []
+    item = None
+
+    def item_allowed(self, item):
+        # Can only be Star Piece, or empty
+        return isclass_or_instance(item, item.StarPiece) or item == None
+
+# ******* Character recruitment classes
+
+
+class CharacterRecruit(locations.ItemLocation):
+    """Subclass for character recruit location."""
+    shopsanity = False
+    coinsanity = False
+    dialogs_to_replace = []
+    item = None
+
+    def item_allowed(self, item):
+        # Can only be character
+        return isclass_or_instance(item, item.RecruitedCharacter) or item == None
+
+class CharacterSpotted(locations.ItemLocation):
+    """Subclass for character recruit location."""
+    shopsanity = False
+    coinsanity = False
+    dialogs_to_replace = []
+    item = None
+
+    def item_allowed(self, item):
+        # Can only be corresponding character
+        return isclass_or_instance(item, item.SpottedCharacter)
+
+
+class StarterCharacterRecruit(CharacterRecruit):
+    pass
+
+
+class MidasRiverTunnelItem(OverworldItem):
+    pass
+
+
+class BelomeTempleTreasure(OverworldItem):
     """Subclass for Belome Temple rewards."""
 
-    @staticmethod
-    def can_access(inventory):
+    
+    def can_access(self, inventory):
         return inventory.has_item(items.TempleKey)
+
 
 
 # ****************************** Actual chest classes
 
+# *** Marios Pad
+
+class StarterCharacter1(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = ShuffleLocationSelector.StarterCharacter1
+    item = items.MarioRecruit
+    event = 192
+
+
+class StarterCharacter2(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = ShuffleLocationSelector.StarterCharacter2
+    event = 192
+
+
+class StarterCharacter3(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = ShuffleLocationSelector.StarterCharacter3
+    event = 192
+
+
+class StarterCharacter4(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = ShuffleLocationSelector.StarterCharacter4
+    event = 192
+
+
+class StarterCharacter5(StarterCharacterRecruit):
+    area = locations.Area.MariosPad
+    description = ShuffleLocationSelector.StarterCharacter5
+    event = 192
+
+
+class MariosPadBed(NPCReward):
+    description = ShuffleLocationSelector.MariosPadBed
+    area = locations.Area.MariosPad
+    item = items.DryBonesFlag
+    rooms = [189]
+    event = 253
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+
+
+class MariosPadStarter1(StarterItem):
+    description = ShuffleLocationSelector.MariosPadStarter1
+    area = locations.Area.MariosPad
+    item = items.Mushroom
+    rooms = [189]
+    event = 252
+
+
+class MariosPadStarter2(StarterItem):
+    description = ShuffleLocationSelector.MariosPadStarter2
+    area = locations.Area.MariosPad
+    item = items.Mushroom
+    rooms = [189]
+    event = 251
+
+
+class MariosPadStarter3(StarterItem):
+    description = ShuffleLocationSelector.MariosPadStarter3
+    area = locations.Area.MariosPad
+    item = items.Mushroom
+    rooms = [189]
+    event = 250
+
+
+class MariosPadStarter4(StarterItem):
+    description = ShuffleLocationSelector.MariosPadStarter4
+    area = locations.Area.MariosPad
+    item = items.Mushroom
+    rooms = [189]
+    event = 249
+
+
 # *** Mushroom Way
 
 class MushroomWay1(Chest):
+    description = ShuffleLocationSelector.MushroomWay1
     area = locations.Area.MushroomWay
-    addresses = [0x14b389]
-    item = items.Coins5
-    access = 1
+    item = items.Coins(Chest, 5)
+    rooms = [203]
+    event = 247
 
 
 class MushroomWay2(Chest):
+    description = ShuffleLocationSelector.MushroomWay2
     area = locations.Area.MushroomWay
-    addresses = [0x14b38d]
-    item = items.Coins8
-    access = 1
+    item = items.Coins(Chest, 8)
+    rooms = [203]
+    event = 246
 
 
 class MushroomWay3(Chest):
+    description = ShuffleLocationSelector.MushroomWay3
     area = locations.Area.MushroomWay
-    addresses = [0x14b3da]
     item = items.Flower
-    access = 2
+    rooms = [204]
+    event = 247
 
 
 class MushroomWay4(Chest):
+    description = ShuffleLocationSelector.MushroomWay4
     area = locations.Area.MushroomWay
-    addresses = [0x14b3de]
     item = items.RecoveryMushroom
-    access = 1
+    rooms = [204]
+    event = 246
 
 
-class ToadRescue1(Reward):
+class ToadRescue1(NPCReward):
+    description = ShuffleLocationSelector.ToadRescue1
     area = locations.Area.MushroomWay
-    addresses = [0x1efedc]
     item = items.HoneySyrup
-    access = 2
+    missable = True
+    rooms = [203]
+    event = 253
 
 
-class ToadRescue2(Reward):
+class ToadRescue2(NPCReward):
+    description = ShuffleLocationSelector.ToadRescue2
     area = locations.Area.MushroomWay
-    addresses = [0x1efe1e]
     item = items.FlowerTab
-    access = 2
+    missable = True
+    rooms = [204]
+    event = 253
 
 
-class HammerBrosReward(Reward):
+class HammerBrosReward(NPCReward):
+    description = ShuffleLocationSelector.HammerBrosReward
     area = locations.Area.MushroomWay
-    addresses = [0x1e94c4]
     item = items.Hammer
-    access = 3
+    rooms = [205]
+    event = 253
+
+
+class MushroomWayCharacter(CharacterRecruit):
+    area = locations.Area.MushroomWay
+    description = ShuffleLocationSelector.MushroomWayCharacter
+    item = items.MallowRecruit
+    rooms = [205]
+    event = 186
+
+
+class MushroomWayStarPiece(BossStarPiece):
+    area = locations.Area.MushroomWay
+    description = ShuffleLocationSelector.MushroomWayStarPiece
+    rooms = [205]
+    event = 167
+
 
 
 # *** Mushroom Kingdom
 
+class MushroomKingdomHallway(Chest):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.MushroomKingdomHallway
+    item = items.FrogCoin
+    rooms = [17, 325]
+    event = 247
+
+
 class MushroomKingdomVault1(Chest):
     area = locations.Area.MushroomKingdom
-    addresses = [0x148ad3]
+    description = ShuffleLocationSelector.MushroomKingdomVault1
+    rooms = [31]
+    event = 247
     item = items.Coins10
-    access = 1
 
 
 class MushroomKingdomVault2(Chest):
     area = locations.Area.MushroomKingdom
-    addresses = [0x148adf]
+    description = ShuffleLocationSelector.MushroomKingdomVault2
+    rooms = [31]
+    event = 246
     item = items.RecoveryMushroom
-    access = 1
 
 
 class MushroomKingdomVault3(Chest):
     area = locations.Area.MushroomKingdom
-    addresses = [0x148aeb]
+    description = ShuffleLocationSelector.MushroomKingdomVault3
+    rooms = [31]
+    event = 245
     item = items.Flower
-    access = 1
 
 
-class WalletGuy1(Reward):
+class InvasionVault1(Chest):
     area = locations.Area.MushroomKingdom
-    addresses = [0x1e3765]
+    description = ShuffleLocationSelector.InvasionVault1
+    item = items.Coins10
+    rooms = [331]
+    event = 247
+    missable = True
+
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class InvasionVault2(Chest):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.InvasionVault2
+    item = items.RecoveryMushroom
+    rooms = [331]
+    event = 246
+    missable = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class InvasionVault3(Chest):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.InvasionVault3
+    item = items.Flower
+    rooms = [331]
+    event = 245
+    missable = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class InvasionEasternGuard(NPCReward):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.InvasionEasternGuard
+    rooms = [190]
+    event = 253
+    item = items.Coins10
+    missable = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class WalletGuy1(NPCReward):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.WalletGuy1
+    rooms = [190, 191]
+    event = 252
     item = items.FlowerTab
     missable = True
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
 
-class WalletGuy2(Reward):
+class WalletGuy2(NPCReward):
     area = locations.Area.MushroomKingdom
-    addresses = [0x1e17de]
+    description = ShuffleLocationSelector.WalletGuy2
+    rooms = [190, 191]
+    event = 251
     item = items.FrogCoin
     missable = True
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory) and locations.can_access_marrymore(self.world, inventory)
 
 
-class MushroomKingdomStore(Reward):
+class MushroomKingdomStore(NPCReward):
     area = locations.Area.MushroomKingdom
-    addresses = [0x1e65f8]
+    description = ShuffleLocationSelector.MushroomKingdomStore
+    rooms = [483, 491]
+    event = 253
     item = items.PickMeUp
-    access = 1
 
 
-class PeachSurprise(Reward):
+class MushroomKingdomStoreExchange(NPCReward):
     area = locations.Area.MushroomKingdom
-    addresses = [0x1e26b2]
+    description = ShuffleLocationSelector.MushroomKingdomStoreExchange
+    rooms = [483, 491]
+    event = 252
+    item = items.CricketPie
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class MushroomKingdomStoreBasement1(Chest):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.MushroomKingdomStoreBasement1
+    rooms = [492]
+    event = 247
+    item = items.Flower
+
+
+class MushroomKingdomStoreBasement2(Chest):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.MushroomKingdomStoreBasement2
+    rooms = [492]
+    event = 246
+    item = items.Flower
+
+
+class PeachSurprise(NPCReward):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.PeachSurprise
     item = items.Mushroom
-    access = 2
+    rooms = [20, 328]
+    event = 253
 
 
-class InvasionFamily(Reward):
-    area = locations.Area.MushroomKingdom
-    addresses = [0x1e3a74, 0x1e39b9]
+class InvasionToadRescue(NPCReward):
+    description = ShuffleLocationSelector.InvasionToadRescue
     item = items.FlowerTab
     missable = True
-    access = 3
+    rooms = [20, 328]
+    event = 252
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
 
-class InvasionGuestRoom(Reward):
+class InvasionFamily(NPCReward):
     area = locations.Area.MushroomKingdom
-    addresses = [0x1e3373]
+    description = ShuffleLocationSelector.InvasionFamily
+    rooms = [480, 481]
+    script = 253
+    item = items.FlowerTab
+    missable = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class InvasionGuestRoom(NPCReward):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.InvasionGuestRoom
+    rooms = [330]
+    script = 253
     item = items.WakeUpPin
     missable = True
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
-
-class InvasionGuard(Reward):
+class InvasionStarPiece(BossStarPiece):
+    description = ShuffleLocationSelector.InvasionStarPiece
     area = locations.Area.MushroomKingdom
-    addresses = [0x1e3514]
-    item = items.FlowerTab
-    missable = True
-    access = 3
+    rooms = [326]
+    event = 167
+    item = items.StarPiece
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+
+class MushroomKingdomInn(NPCReward):
+    area = locations.Area.MushroomKingdom
+    description = ShuffleLocationSelector.MushroomKingdomInn
+    rooms = [493]
+    event = 253
+    item = items.Beetlemania
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
 
 # *** Bandit's Way
 
 class BanditsWay1(Chest):
+    description = ShuffleLocationSelector.BanditsWay1
     area = locations.Area.BanditsWay
-    addresses = [0x14b535]
+    rooms = [207]
+    event = 247
     item = items.KerokeroCola
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class BanditsWayCoin1(OverworldItem):
+    description = ShuffleLocationSelector.BanditsWayCoin1
+    area = locations.Area.BanditsWay
+    rooms = [207]
+    event = 239
+    npc_ids = [3]
+    item = items.Coins1
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class BanditsWayCoin2(OverworldItem):
+    description = ShuffleLocationSelector.BanditsWayCoin2
+    area = locations.Area.BanditsWay
+    rooms = [207]
+    event = 240
+    npc_ids = [4]
+    item = items.Coins1
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class BanditsWayCoin3(OverworldItem):
+    description = ShuffleLocationSelector.BanditsWayCoin3
+    area = locations.Area.BanditsWay
+    rooms = [207]
+    event = 241
+    npc_ids = [5]
+    item = items.Coins1
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
 
 class BanditsWay2(Chest):
+    description = ShuffleLocationSelector.BanditsWay2
     area = locations.Area.BanditsWay
-    addresses = [0x1495ff]
+    rooms = [77]
+    event = 253
     item = items.RecoveryMushroom
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
 
-class BanditsWayStarChest(StarAllowedChest):
+class BanditsWayStarChest(Chest):
+    description = ShuffleLocationSelector.BanditsWayStarChest
     area = locations.Area.BanditsWay
-    addresses = [0x14964c]
+    rooms = [78]
+    event = 253
     item = items.BanditsWayStar
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
 
-class BanditsWayDogJump(StarAllowedChest):
+class BanditsWayDogJump(Chest):
+    description = ShuffleLocationSelector.BanditsWayDogJump
+    rooms = [78]
+    event = 252
     area = locations.Area.BanditsWay
-    addresses = [0x149650]
     item = items.Flower
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
 
 class BanditsWayCroco(Chest):
+    description = ShuffleLocationSelector.BanditsWayCroco
     area = locations.Area.BanditsWay
-    addresses = [0x14b494]
+    rooms = [206]
+    event = 247
     item = items.RecoveryMushroom
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
 
-class Croco1Reward(Reward):
+class Croco1Reward(NPCReward):
+    description = ShuffleLocationSelector.Croco1Reward
     area = locations.Area.BanditsWay
-    addresses = [0x1e94f0]
+    rooms = [206]
+    event = 253
+    item = items.RareFrogCoin
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+
+class Croco1Reward2(NPCReward):
+    description = ShuffleLocationSelector.Croco1Reward2
+    area = locations.Area.BanditsWay
+    rooms = [206]
+    event = 252
     item = items.Wallet
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
+
+class BanditsWayStarPiece(BossStarPiece):
+    area = locations.Area.BanditsWay
+    description = ShuffleLocationSelector.BanditsWayStarPiece
+    rooms = [206]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_bandits_way(self.world, inventory)
 
 
 # *** Kero Sewers
 
+
 class KeroSewersPandoriteRoom(Chest):
+    description = ShuffleLocationSelector.KeroSewersPandoriteRoom
     area = locations.Area.KeroSewers
-    addresses = [0x149053]
     item = items.Flower
-    access = 1
+    rooms = [60]
+    event = 247
 
 
-class KeroSewersStarChest(StarAllowedChest):
+class PandoriteChest(Chest):
+    description = ShuffleLocationSelector.PandoriteChest
     area = locations.Area.KeroSewers
-    addresses = [0x14901e]
-    item = items.KeroSewersStar
-    access = 1
+    item = items.PandoriteFight
+    rooms = [60]
+    event = 246
 
 
-class PandoriteReward(Reward):
-    area = locations.Area.KeroSewers
-    addresses = [0x1e950d]
+class PandoriteReward1(NPCReward):
+    description = ShuffleLocationSelector.PandoriteReward1
     item = items.TrueformPin
-    access = 3
+    rooms = [512]
+    event = 253
+    
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.PandoriteFight)
+
+
+class PandoriteReward2(Chest):
+    description = ShuffleLocationSelector.PandoriteReward2
+    item = items.Coins(Chest, 50)
+    rooms = [512]
+    event = 245
+    
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.PandoriteFight)
+
+class PandoriteBoss(BossStarPiece):
+    description = ShuffleLocationSelector.PandoriteBoss
+    rooms = [512]
+    event = 167
+    
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.PandoriteFight)
+
+class KeroSewersStarChest(Chest):
+    description = ShuffleLocationSelector.KeroSewersStarChest
+    area = locations.Area.KeroSewers
+    item = items.KeroSewersStar
+    rooms = [59]
+    event = 247
+
+
+class KeroSewersBeforeBelomeLower(Chest):
+    description = ShuffleLocationSelector.KeroSewersBeforeBelomeLower
+    area = locations.Area.KeroSewers
+    item = items.RecoveryMushroom
+    rooms = [301]
+    event = 247
+
+
+class KeroSewersBeforeBelomeUpper1(Chest):
+    description = ShuffleLocationSelector.KeroSewersBeforeBelomeUpper1
+    area = locations.Area.KeroSewers
+    item = items.Flower
+    rooms = [301]
+    event = 246
+    manual_70A7 = True
+    missable = True
+
+
+class KeroSewersBeforeBelomeUpper2(Chest):
+    description = ShuffleLocationSelector.KeroSewersBeforeBelomeUpper2
+    area = locations.Area.KeroSewers
+    item = items.CricketJam
+    rooms = [301]
+    event = 245
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+
+
+class KeroSewersBoss(BossStarPiece):
+    description = ShuffleLocationSelector.KeroSewersBoss
+    area = locations.Area.KeroSewers
+    rooms = [302]
+    event = 167
 
 
 # *** Midas River
 
-class MidasRiverFirstTime(Reward):
+class MidasRiverFirstTime(NPCReward):
+    description = ShuffleLocationSelector.MidasRiverFirstTime
     area = locations.Area.MidasRiver
-    addresses = [0x205fd3]
     item = items.NokNokShell
-    access = 3
+    rooms = [67]
+    event = 253
 
+
+class MidasRiverBottomLeftCave(MidasRiverTunnelItem):
+    description = ShuffleLocationSelector.MidasRiverBottomLeftCave
+    area = locations.Area.MidasRiver
+    item = items.FrogCoin
+    rooms = [72]
+    event = 241
+    npc_ids = [1]
+
+
+class MidasRiverBottomRightCave(MidasRiverTunnelItem):
+    description = ShuffleLocationSelector.MidasRiverBottomRightCave
+    area = locations.Area.MidasRiver
+    item = items.Flower
+    rooms = [73]
+    event = 241
+    npc_ids = [4]
 
 # *** Tadpole Pond
 
-class CricketPieReward(Reward):
-    area = locations.Area.TadpolePond
-    addresses = [0x1e6636]
-    item = items.FroggieStick
-    access = 3
 
-    @staticmethod
-    def can_access(inventory):
+class CricketPieReward(NPCReward):
+    description = ShuffleLocationSelector.CricketPieReward
+    area = locations.Area.TadpolePond
+    item = items.FroggieStick
+    rooms = [75]
+    event = 253
+    
+    def can_access(self, inventory):
         return inventory.has_item(items.CricketPie)
 
 
-class CricketJamReward(Reward):
+class CricketJamReward(NPCReward):
+    description = ShuffleLocationSelector.CricketJamReward
     area = locations.Area.TadpolePond
-    addresses = [0x1e6642]
-    item = items.FrogCoin
-    access = 3
-    num_frog_coins = 10
+    rooms = [75]
+    event = 252
+    item = items.MultiFrogCoin(NPCReward, 10)
 
-    @staticmethod
-    def can_access(inventory):
+    
+    def can_access(self, inventory):
         return inventory.has_item(items.CricketJam)
 
-    def get_patch(self):
-        patch = super().get_patch()
 
-        # If we're giving frog coins at this spot, write the number of frog coins to a special address.
-        if isclass_or_instance(self.item, items.FrogCoin):
-            patch.add_data(0x1e6650, self.num_frog_coins)
-        # Otherwise extra bytes are needed to enable this spot to use the regular item granting subroutine.
-        else:
-            patch.add_data(0x1e6631, bytes([0x40, 0x66]))
+class MelodyBay1(NPCReward):
+    description = ShuffleLocationSelector.MelodyBay1
+    area = locations.Area.TadpolePond
+    item = items.ProgressiveCard
+    rooms = [74]
+    event = 253
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
 
-        return patch
 
+
+class MelodyBay2(NPCReward):
+    description = ShuffleLocationSelector.MelodyBay2
+    area = locations.Area.TadpolePond
+    item = items.ProgressiveCard
+    rooms = [74]
+    event = 252
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
+
+
+class MelodyBay3(NPCReward):
+    description = ShuffleLocationSelector.MelodyBay3
+    area = locations.Area.TadpolePond
+    item = items.ProgressiveCard
+    rooms = [74]
+    event = 251
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
 
 # *** Rose Way
 
-class RoseWayPlatform(Chest):
-    area = locations.Area.RoseWay
-    addresses = [0x14973e]
-    item = items.FrogCoin
-    access = 2
 
+class RoseWayPlatform(Chest):
+    description = ShuffleLocationSelector.RoseWayPlatform
+    area = locations.Area.RoseWay
+    rooms = [80]
+    event = 247
+    item = items.FrogCoin
+
+
+class RoseWayFlower(OverworldItem):
+    description = ShuffleLocationSelector.RoseWayFlower
+    area = locations.Area.RoseWay
+    item = items.Flower
+    rooms = [79]
+    event = 241
+    npc_ids = [7]
+
+
+class RoseWayMushroom(OverworldItem):
+    description = ShuffleLocationSelector.RoseWayMushroom
+    area = locations.Area.RoseWay
+    item = items.RecoveryMushroom
+    rooms = [79]
+    event = 240
+    npc_ids = [8]
+
+
+class RoseWayCoin1(OverworldItem):
+    description = ShuffleLocationSelector.RoseWayCoin1
+    area = locations.Area.RoseWay
+    item = items.Coins10
+    rooms = [79]
+    event = 235
+    npc_ids = [18]
+
+
+class RoseWayCoin2(OverworldItem):
+    description = ShuffleLocationSelector.RoseWayCoin2
+    area = locations.Area.RoseWay
+    item = items.Coins10
+    rooms = [79]
+    event = 236
+    npc_ids = [19]
+
+
+class RoseWayCoin3(OverworldItem):
+    description = ShuffleLocationSelector.RoseWayCoin3
+    area = locations.Area.RoseWay
+    item = items.Coins10
+    rooms = [79]
+    event = 237
+    npc_ids = [20]
+
+
+class RoseWayCoin4(OverworldItem):
+    description = ShuffleLocationSelector.RoseWayCoin4
+    area = locations.Area.RoseWay
+    item = items.Coins10
+    rooms = [79]
+    event = 238
+    npc_ids = [21]
+
+
+class RoseWayCoin5(OverworldItem):
+    description = ShuffleLocationSelector.RoseWayCoin5
+    area = locations.Area.RoseWay
+    item = items.Coins10
+    rooms = [79]
+    event = 239
+    npc_ids = [22]
+
+
+class RoseWayFiveChests1(Chest):
+    description = ShuffleLocationSelector.RoseWayFiveChests1
+    area = locations.Area.RoseWay
+    rooms = [81]
+    event = 247
+    item = items.RecoveryMushroom
+
+
+class RoseWayFiveChests2(Chest):
+    description = ShuffleLocationSelector.RoseWayFiveChests2
+    area = locations.Area.RoseWay
+    rooms = [81]
+    event = 246
+    item = items.Coins(Chest, 5)
+
+
+class RoseWayFiveChests3(Chest):
+    description = ShuffleLocationSelector.RoseWayFiveChests3
+    area = locations.Area.RoseWay
+    rooms = [81]
+    event = 245
+    item = items.Coins(Chest, 5)
+
+
+class RoseWayFiveChests4(Chest):
+    description = ShuffleLocationSelector.RoseWayFiveChests4
+    area = locations.Area.RoseWay
+    rooms = [81]
+    event = 244
+    item = items.Coins(Chest, 5)
+
+
+class RoseWayFiveChests5(Chest):
+    description = ShuffleLocationSelector.RoseWayFiveChests5
+    area = locations.Area.RoseWay
+    rooms = [81]
+    event = 243
+    item = items.Coins(Chest, 5)
 
 # *** Rose Town
 
+
+class RoseTownFlag(NPCReward):
+    description = ShuffleLocationSelector.RoseTownFlag
+    rooms = [83, 84]
+    event = 253
+    area = locations.Area.RoseTown
+    item = items.GreaperFlag
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+
+
 class RoseTownStore1(Chest):
     area = locations.Area.RoseTown
-    addresses = [0x1499ad]
+    description = ShuffleLocationSelector.RoseTownStore1
+    rooms = [87]
+    event = 247
     item = items.Flower
-    access = 1
 
 
 class RoseTownStore2(Chest):
     area = locations.Area.RoseTown
-    addresses = [0x1499b9]
+    description = ShuffleLocationSelector.RoseTownStore2
+    rooms = [87]
+    event = 246
     item = items.FrogCoin
-    access = 1
 
 
-class GardenerCloud1(RoseTownGardenerChest):
+class GardenerCloud1(Chest):
     area = locations.Area.RoseTownClouds
-    addresses = [0x14de24]
+    description = ShuffleLocationSelector.GardenerCloud1
+    rooms = [419]
+    event = 247
     item = items.LazyShellArmor
-    access = 4
-    ms_override = True
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) and inventory.has_item(items.Seed) and inventory.has_item(items.Fertilizer)
 
 
-class GardenerCloud2(RoseTownGardenerChest):
+class GardenerCloud2(Chest):
     area = locations.Area.RoseTownClouds
-    addresses = [0x14de28]
+    description = ShuffleLocationSelector.GardenerCloud2
+    rooms = [419]
+    event = 246
     item = items.LazyShellWeapon
-    access = 4
-    ms_override = True
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.Seed) and inventory.has_item(items.Fertilizer)
 
 
-class RoseTownToad(Reward):
+class RoseTownToad(NPCReward):
+    description = ShuffleLocationSelector.RoseTownToad
     area = locations.Area.RoseTown
-    addresses = [0x1e6030]
+    rooms = [95, 96]
+    event = 253
     item = items.FlowerTab
-    missable = True
-    access = 3
 
 
-class Gaz(Reward):
+class Gaz(NPCReward):
     area = locations.Area.RoseTown
-    addresses = [0x1e61ff]
+    description = ShuffleLocationSelector.Gaz
+    rooms = [86]
+    event = 253
     item = items.FingerShot
-    access = 3
 
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
+
+
+class RoseTownTreasureHouse1(Chest):
+    description = ShuffleLocationSelector.RoseTownTreasureHouse1
+    area = locations.Area.RoseTown
+    rooms = [93, 94]
+    event = 247
+    item = items.Flower
+
+
+class RoseTownTreasureHouse2(Chest):
+    description = ShuffleLocationSelector.RoseTownTreasureHouse2
+    area = locations.Area.RoseTown
+    rooms = [93, 94]
+    event = 246
+    item = items.Flower
+
+
+class RoseTownTreasureHouseMazeReward(NPCReward):
+    description = ShuffleLocationSelector.RoseTownTreasureHouseMazeReward
+    area = locations.Area.RoseTown
+    rooms = [93, 94]
+    event = 253
+    item = items.FrogCoin
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
+
+
+class RoseTownTreasureHouse3(Chest):
+    description = ShuffleLocationSelector.RoseTownTreasureHouse3
+    area = locations.Area.RoseTown
+    rooms = [97, 98]
+    event = 246
+    item = items.FrogCoin
 
 # *** Forest Maze
 
+
 class ForestMaze1(Chest):
+    description = ShuffleLocationSelector.ForestMaze1
     area = locations.Area.ForestMaze
-    addresses = [0x14b75e]
+    rooms = [223]
+    event = 247
     item = items.KerokeroCola
-    access = 1
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
 
 
 class ForestMaze2(Chest):
+    description = ShuffleLocationSelector.ForestMaze2
     area = locations.Area.ForestMaze
-    addresses = [0x14b872]
+    rooms = [228]
+    event = 247
     item = items.FrogCoin
-    access = 1
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
 
 
 class ForestMazeUnderground1(Chest):
+    description = ShuffleLocationSelector.ForestMazeUnderground1
     area = locations.Area.ForestMaze
-    addresses = [0x14bb9d]
+    rooms = [242]
+    event = 247
     item = items.KerokeroCola
-    access = 1
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
 
 
 class ForestMazeUnderground2(Chest):
+    description = ShuffleLocationSelector.ForestMazeUnderground2
     area = locations.Area.ForestMaze
-    addresses = [0x14bba1]
+    rooms = [242]
+    event = 246
     item = items.Flower
-    access = 3
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
 
 
 class ForestMazeUnderground3(Chest):
+    description = ShuffleLocationSelector.ForestMazeUnderground3
     area = locations.Area.ForestMaze
-    addresses = [0x14bba5]
+    rooms = [242]
+    event = 245
     item = items.YouMissed
-    access = 2
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
 
 
 class ForestMazeRedEssence(Chest):
+    description = ShuffleLocationSelector.ForestMazeRedEssence
     area = locations.Area.ForestMaze
-    addresses = [0x14b841]
+    rooms = [227]
+    event = 247
     item = items.RedEssence
-    access = 2
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
+
+
+class ForestMazeSecret1(Chest):
+    description = ShuffleLocationSelector.ForestMazeSecret1
+    area = locations.Area.ForestMaze
+    rooms = [234]
+    event = 247
+    item = items.FrogCoin
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
+
+
+class ForestMazeSecret2(Chest):
+    description = ShuffleLocationSelector.ForestMazeSecret2
+    area = locations.Area.ForestMaze
+    rooms = [234]
+    event = 246
+    item = items.Flower
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
+
+
+class ForestMazeSecret3(Chest):
+    description = ShuffleLocationSelector.ForestMazeSecret3
+    area = locations.Area.ForestMaze
+    rooms = [234]
+    event = 245
+    item = items.Flower
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
+
+
+class ForestMazeSecret4(Chest):
+    description = ShuffleLocationSelector.ForestMazeSecret4
+    area = locations.Area.ForestMaze
+    rooms = [234]
+    event = 244
+    item = items.Flower
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
+
+
+class ForestMazeSecret5(Chest):
+    description = ShuffleLocationSelector.ForestMazeSecret5
+    area = locations.Area.ForestMaze
+    rooms = [234]
+    event = 243
+    item = items.RecoveryMushroom
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
+
+
+class ForestMazeCharacter(CharacterRecruit):
+    area = locations.Area.ForestMaze
+    description = ShuffleLocationSelector.ForestMazeCharacter
+    item = items.GenoRecruit
+    rooms = [232]
+    event = 186
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
+
+
+class ForestMazeBoss(BossStarPiece):
+    area = locations.Area.ForestMaze
+    description = ShuffleLocationSelector.ForestMazeBoss
+    rooms = [232]
+    event = 167
+    item = items.StarPiece
+
+    def can_access(self, inventory):
+        return locations.can_access_forest(self.world, inventory) 
 
 
 # *** Pipe Vault
 
 class PipeVaultSlide1(Chest):
     area = locations.Area.PipeVault
-    addresses = [0x14a2b7]
+    description = ShuffleLocationSelector.PipeVaultSlide1
+    rooms = [125]
+    event = 245
     item = items.Flower
-    access = 2
 
 
 class PipeVaultSlide2(Chest):
     area = locations.Area.PipeVault
-    addresses = [0x14a2c3]
+    description = ShuffleLocationSelector.PipeVaultSlide2
+    rooms = [125]
+    event = 246
     item = items.FrogCoin
-    access = 2
 
 
 class PipeVaultSlide3(Chest):
     area = locations.Area.PipeVault
-    addresses = [0x14a2cf]
+    description = ShuffleLocationSelector.PipeVaultSlide3
+    rooms = [125]
+    event = 247
     item = items.FrogCoin
-    access = 2
+
+
+class PipeVaultSlideCoin1(OverworldItem):
+    area = locations.Area.PipeVault
+    description = ShuffleLocationSelector.PipeVaultSlideCoin1
+    rooms = [125]
+    event = 237
+    item = items.Coins1
+    npc_ids = [0]
+
+
+class PipeVaultSlideCoin2(OverworldItem):
+    area = locations.Area.PipeVault
+    description = ShuffleLocationSelector.PipeVaultSlideCoin2
+    rooms = [125]
+    event = 238
+    item = items.Coins1
+    npc_ids = [1]
+
+
+class PipeVaultSlideCoin3(OverworldItem):
+    area = locations.Area.PipeVault
+    description = ShuffleLocationSelector.PipeVaultSlideCoin3
+    rooms = [125]
+    event = 239
+    item = items.Coins1
+    npc_ids = [2]
+
+
+class PipeVaultSlideCoin4(OverworldItem):
+    area = locations.Area.PipeVault
+    description = ShuffleLocationSelector.PipeVaultSlideCoin4
+    rooms = [125]
+    event = 240
+    item = items.Coins1
+    npc_ids = [3]
+
+
+class PipeVaultSlideCoin5(OverworldItem):
+    area = locations.Area.PipeVault
+    description = ShuffleLocationSelector.PipeVaultSlideCoin5
+    rooms = [125]
+    event = 241
+    item = items.Coins1
+    npc_ids = [4]
+
+
+class PipeVaultSlideFrogCoin(OverworldItem):
+    area = locations.Area.PipeVault
+    description = ShuffleLocationSelector.PipeVaultSlideFrogCoin
+    rooms = [125]
+    event = 236
+    item = items.FrogCoin
+    npc_ids = [5]
 
 
 class PipeVaultNippers1(Chest):
     area = locations.Area.PipeVault
-    addresses = [0x14a33e]
+    description = ShuffleLocationSelector.PipeVaultNippers1
+    rooms = [128]
+    event = 247
     item = items.Flower
-    access = 2
+    npc_ids = [6]
 
 
 class PipeVaultNippers2(Chest):
     area = locations.Area.PipeVault
-    addresses = [0x14a34a]
-    item = items.CoinsDoubleBig
-    access = 2
+    description = ShuffleLocationSelector.PipeVaultNippers2
+    rooms = [128]
+    event = 246
+    item = items.Coins(Chest, 20)
 
 
-class GoombaThumping1(Reward):
+class GoombaThumping1(NPCReward):
     area = locations.Area.PipeVault
-    addresses = [0x1e3f9c]
+    description = ShuffleLocationSelector.GoombaThumping1
+    rooms = [143]
+    event = 253
     item = items.FlowerTab
-    access = 3
 
 
-class GoombaThumping2(Reward):
+class GoombaThumping2(NPCReward):
     area = locations.Area.PipeVault
-    addresses = [0x1e3fae]
+    description = ShuffleLocationSelector.GoombaThumping2
+    rooms = [143]
+    event = 252
     item = items.FlowerJar
-    access = 3
 
 
 # *** Yo'ster Isle
 
 class YosterIsleEntrance(Chest):
+    description = ShuffleLocationSelector.YosterIsleEntrance
     area = locations.Area.YosterIsle
-    addresses = [0x148b39]
+    rooms = [33]
     item = items.FrogCoin
-    access = 3
+    event = 247
+
+
+class YosterIsleRaceReward1(NPCReward):
+    description = ShuffleLocationSelector.YosterIsleRaceReward1
+    area = locations.Area.YosterIsle
+    rooms = [34]
+    item = items.YoshiCookie
+    event = 253
+
+
+class YosterIsleRaceReward2(NPCReward):
+    description = ShuffleLocationSelector.YosterIsleRaceReward2
+    area = locations.Area.YosterIsle
+    rooms = [34]
+    item = items.YoshiCookie
+    event = 251
+
+
+class YosterIsleRaceReward3(NPCReward):
+    description = ShuffleLocationSelector.YosterIsleRaceReward3
+    area = locations.Area.YosterIsle
+    rooms = [34]
+    item = items.YoshiCookie
+    event = 250
+
+
+class YosterIsleFlag(NPCReward):
+    description = ShuffleLocationSelector.YosterIsleFlag
+    area = locations.Area.YosterIsle
+    rooms = [34]
+    item = items.BigBooFlag
+    event = 252
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
 
 
 # *** Moleville
 
 
-class TreasureSeller1(TreasureSellerReward):
+class BucketGirl(NPCReward):
+    description = ShuffleLocationSelector.BucketGirl
     area = locations.Area.Moleville
-    addresses = [0x1f8ca5]
-    item = items.LuckyJewel
-    access = 4
+    rooms = [108]
+    event = 253
+    item = items.FrogCoin
     dialogs_to_replace = [2911]
+
+    def item_allowed(self, item):
+        if not (self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks) or self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks)):
+            return False
+        return super().item_allowed(item)
+    
+    def can_access(self, inventory):
+        # always have a frog coin if inaccessible
+        fireworks_access = False
+        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
+            fireworks_access = inventory.has_item(items.ProgressiveFireworks)
+        elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
+            fireworks_access = inventory.has_item_count(items.ProgressiveFireworks, 3)
+        return fireworks_access and inventory.has_item(items.BambinoBomb) and self.world.settings.is_flag_value(flags.BucketWarp, False)
+
+
+class TreasureSeller1(TreasureSellerReward):
+    description = ShuffleLocationSelector.TreasureSeller1
+    area = locations.Area.Moleville
+    rooms = [336]
+    event = 253
+    item = items.LuckyJewel
+    dialogs_to_replace = [2911]
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
 
 
 class TreasureSeller2(TreasureSellerReward):
+    description = ShuffleLocationSelector.TreasureSeller2
     area = locations.Area.Moleville
-    addresses = [0x1f8cd1]
+    rooms = [336]
+    event = 252
     item = items.MysteryEgg
-    access = 4
     dialogs_to_replace = [2908]
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb) and locations.can_access_yaridovich(self, inventory)
 
 
 class TreasureSeller3(TreasureSellerReward):
+    description = ShuffleLocationSelector.TreasureSeller3
     area = locations.Area.Moleville
-    addresses = [0x1f8cfd]
+    rooms = [336]
+    event = 251
     item = items.FryingPan
-    access = 4
     dialogs_to_replace = [2914]
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb) and locations.can_access_volcano(self, inventory)
+
+
+class FireworksShop(NPCReward):
+    # Fireworks shuffle/progressive ONLY
+    area = locations.Area.Moleville
+    rooms = [339]
+    event = 253
+    item = items.Fireworks
+    
+    def __init__(self, world):
+        super().__init__(world)
+        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
+            self.key = True
+        elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
+            self.key = True
+
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False) and (self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks) or self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks)):
+            return super().item_allowed(item) and item.is_key
+        else:
+            return super().item_allowed(item)
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
 
 
 # *** Moleville Mines
 
-class MolevilleMinesStarChest(MolevilleMinesBackChest, StarAllowedChest):
+class MolevilleMinesStarChest(Chest):
+    description = ShuffleLocationSelector.FireworksShop
     area = locations.Area.MolevilleMines
-    addresses = [0x14c4af]
+    rooms = [285]
+    event = 247
     item = items.MolevilleMinesStar
-    access = 3
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
 
 
-class MolevilleMinesCoins(MolevilleMinesBackChest):
+class MolevilleMinesShyGuy(OverworldItem):
+    description = ShuffleLocationSelector.MolevilleMinesShyGuy
     area = locations.Area.MolevilleMines
-    addresses = [0x14c3c6]
-    item = items.Coins150
-    access = 3
+    rooms = [286]
+    event = 241
+    npc_ids = [2]
+    item = items.FrogCoin
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
 
 
-class MolevilleMinesPunchinello1(MolevilleMinesBackChest):
+class MolevilleMinesCoins(Chest):
+    description = ShuffleLocationSelector.MolevilleMinesCoins
     area = locations.Area.MolevilleMines
-    addresses = [0x14c546]
+    rooms = [280]
+    event = 247
+    item = items.Coins(Chest, 150)
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
+
+
+class MolevilleMinesPunchinello1(Chest):
+    description = ShuffleLocationSelector.MolevilleMinesPunchinello1
+    area = locations.Area.MolevilleMines
+    rooms = [288]
+    event = 247
     item = items.RecoveryMushroom
-    access = 3
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
 
 
-class MolevilleMinesPunchinello2(MolevilleMinesBackChest):
+class MolevilleMinesPunchinello2(Chest):
+    description = ShuffleLocationSelector.MolevilleMinesPunchinello2
     area = locations.Area.MolevilleMines
-    addresses = [0x14c552]
+    rooms = [288]
+    event = 246
     item = items.Flower
-    access = 3
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
 
 
-class CrocoFlunkie1(Reward):
+class MolevilleMinesBoss2(BossStarPiece):
+    description = ShuffleLocationSelector.MolevilleMinesBoss2
     area = locations.Area.MolevilleMines
-    addresses = [0x202073]
+    rooms = [271]
+    event = 167
+    item = items.StarPiece
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
+
+class MolevilleMinesCharacter(CharacterRecruit):
+    area = locations.Area.ForestMaze
+    description = ShuffleLocationSelector.MolevilleMinesCharacter
+    item = items.BowserRecruit
+    rooms = [284]
+    event = 186
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BambinoBomb)
+
+
+class CrocoFlunkie1(NPCReward):
+    description = ShuffleLocationSelector.CrocoFlunkie1
+    area = locations.Area.MolevilleMines
+    rooms = [273]
+    event = 253
     item = items.FlowerTab
     missable = True
-    access = 3
 
 
-class CrocoFlunkie2(Reward):
+class CrocoFlunkie2(NPCReward):
+    description = ShuffleLocationSelector.CrocoFlunkie2
     area = locations.Area.MolevilleMines
-    addresses = [0x2020cc]
+    rooms = [277]
+    event = 253
     item = items.FlowerTab
     missable = True
-    access = 3
 
 
-class CrocoFlunkie3(Reward):
+class CrocoFlunkie3(NPCReward):
+    description = ShuffleLocationSelector.CrocoFlunkie3
     area = locations.Area.MolevilleMines
-    addresses = [0x202123]
+    rooms = [283]
+    event = 253
     item = items.FlowerTab
     missable = True
-    access = 3
 
+
+class Croco2Item(NPCReward):
+    description = ShuffleLocationSelector.Croco2Item
+    area = locations.Area.MolevilleMines
+    rooms = [518]
+    event = 253
+    item = items.BambinoBomb
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+
+class MolevilleMinesBoss1(BossStarPiece):
+    description = ShuffleLocationSelector.MolevilleMinesBoss1
+    area = locations.Area.MolevilleMines
+    rooms = [518]
+    event = 167
 
 # *** Booster Pass
 
+
 class BoosterPass1(Chest):
+    description = ShuffleLocationSelector.BoosterPass1
     area = locations.Area.BoosterPass
-    addresses = [0x149c62]
+    rooms = [100]
+    event = 247
     item = items.Flower
-    access = 2
 
 
 class BoosterPass2(Chest):
+    description = ShuffleLocationSelector.BoosterPass2
     area = locations.Area.BoosterPass
-    addresses = [0x149c6e]
+    rooms = [100]
+    event = 246
     item = items.RockCandy
-    access = 1
+
+
+class BoosterPassBush(NPCReward):
+    description = ShuffleLocationSelector.BoosterPassBush
+    area = locations.Area.BoosterPass
+    rooms = [100]
+    event = 253
+    item = items.FrogCoin
+    coinsanity = True
+
+
+class BoosterPassFlower(OverworldItem):
+    description = ShuffleLocationSelector.BoosterPassFlower
+    area = locations.Area.BoosterPass
+    rooms = [101]
+    event = 241
+    npc_ids = [6]
+    item = items.Flower
 
 
 class BoosterPassSecret1(Chest):
     area = locations.Area.BoosterPass
-    addresses = [0x14da32]
+    description = ShuffleLocationSelector.BoosterPassSecret1
+    rooms = [401]
+    event = 247
     item = items.FrogCoin
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
 class BoosterPassSecret2(Chest):
     area = locations.Area.BoosterPass
-    addresses = [0x14da36]
+    description = ShuffleLocationSelector.BoosterPassSecret2
+    rooms = [401]
+    event = 246
     item = items.Flower
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
 class BoosterPassSecret3(Chest):
     area = locations.Area.BoosterPass
-    addresses = [0x14da42]
+    description = ShuffleLocationSelector.BoosterPassSecret3
+    rooms = [401]
+    event = 245
     item = items.KerokeroCola
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
 # *** Booster Tower
 
 class BoosterTowerSpookum(Chest):
+    description = ShuffleLocationSelector.BoosterTowerSpookum
     area = locations.Area.BoosterTower
-    addresses = [0x14b23e]
     item = items.FrogCoin
-    access = 1
+    rooms = [196]
+    event = 247
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
 class BoosterTowerThwomp(Chest):
+    description = ShuffleLocationSelector.BoosterTowerThwomp
     area = locations.Area.BoosterTower
-    addresses = [0x148c60]
     item = items.RecoveryMushroom
-    access = 1
+    rooms = [36]
+    event = 247
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
-class BoosterTowerMasher(Reward):
+class BoosterTowerKnifeGuy(NPCReward):
+    description = ShuffleLocationSelector.BoosterTowerKnifeGuy
     area = locations.Area.BoosterTower
-    addresses = [0x1f9ce9]
+    item = items.BrightCard
+    rooms = [39]
+    event = 253
+    
+    def __init__(self, world):
+        super().__init__(world)
+        if self.world.settings.is_flag_value(flags.CasinoWarp, True):
+            self.key = True
+
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False) and self.world.settings.is_flag_value(flags.CasinoWarp, True):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerRoomKey(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerRoomKey
+    area = locations.Area.BoosterTower
+    item = items.RoomKey
+    coinsanity = False
+    rooms = [41]
+    event = 228
+    npc_ids = [5]
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerFrogCoin1(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerFrogCoin1
+    area = locations.Area.BoosterTower
+    item = items.FrogCoin
+    rooms = [41]
+    event = 241
+    npc_ids = [0]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerFrogCoin2(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerFrogCoin2
+    area = locations.Area.BoosterTower
+    item = items.FrogCoin
+    rooms = [41]
+    event = 240
+    npc_ids = [1]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerFrogCoin3(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerFrogCoin3
+    area = locations.Area.BoosterTower
+    item = items.FrogCoin
+    rooms = [41]
+    event = 239
+    npc_ids = [2]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerFrogCoin4(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerFrogCoin4
+    area = locations.Area.BoosterTower
+    item = items.FrogCoin
+    rooms = [41]
+    event = 238
+    npc_ids = [3]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerCoin1(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerCoin1
+    area = locations.Area.BoosterTower
+    item = items.Coins1
+    rooms = [41]
+    event = 237
+    npc_ids = [7]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerCoin2(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerCoin2
+    area = locations.Area.BoosterTower
+    item = items.Coins1
+    rooms = [41]
+    event = 236
+    npc_ids = [8]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerCoin3(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerCoin3
+    area = locations.Area.BoosterTower
+    item = items.Coins1
+    rooms = [41]
+    event = 235
+    npc_ids = [9]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerCoin4(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerCoin4
+    area = locations.Area.BoosterTower
+    item = items.Coins1
+    rooms = [41]
+    event = 234
+    npc_ids = [10]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerCoin5(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerCoin5
+    area = locations.Area.BoosterTower
+    item = items.Coins1
+    rooms = [41]
+    event = 233
+    npc_ids = [11]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerCoin6(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerCoin6
+    area = locations.Area.BoosterTower
+    item = items.Coins1
+    rooms = [41]
+    event = 232
+    npc_ids = [12]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerCoin7(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerCoin7
+    area = locations.Area.BoosterTower
+    item = items.Coins1
+    rooms = [41]
+    event = 231
+    npc_ids = [13]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerCoin8(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerCoin8
+    area = locations.Area.BoosterTower
+    item = items.Coins1
+    rooms = [41]
+    event = 230
+    npc_ids = [14]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerCoin9(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerCoin9
+    area = locations.Area.BoosterTower
+    item = items.Coins1
+    rooms = [41]
+    event = 229
+    npc_ids = [15]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerMasher(OverworldItem):
+    description = ShuffleLocationSelector.BoosterTowerMasher
+    area = locations.Area.BoosterTower
+    rooms = [197]
+    event = 253
     item = items.Masher
-    access = 3
+    npc_ids = [3]
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
 class BoosterTowerParachute(Chest):
+    description = ShuffleLocationSelector.BoosterTowerParachute
     area = locations.Area.BoosterTower
-    addresses = [0x148c2f]
     item = items.FrogCoin
-    access = 1
+    rooms = [35]
+    event = 247
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerParachuteCrevice(NPCReward):
+    description = ShuffleLocationSelector.BoosterTowerParachuteCrevice
+    area = locations.Area.BoosterTower
+    item = items.FrogCoin
+    coinsanity = True
+    rooms = [35]
+    event = 253
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
 class BoosterTowerZoomShoes(Chest):
+    description = ShuffleLocationSelector.BoosterTowerZoomShoes
     area = locations.Area.BoosterTower
-    addresses = [0x148eac]
     item = items.ZoomShoes
-    access = 3
-    ms_override = True
+    rooms = [48]
+    event = 247
 
-    @staticmethod
-    def can_access(inventory):
-        return inventory.has_item(items.RoomKey)
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.RoomKey) and locations.can_access_tower(self, inventory)
 
 
-class BoosterTowerTop1(NonCoinChest):
+class BoosterTowerTop1(Chest):
+    description = ShuffleLocationSelector.BoosterTowerTop1
     area = locations.Area.BoosterTower
-    addresses = [0x14b2d1]
+    rooms = [199]
+    script = 247
     item = items.FrogCoin
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
 class BoosterTowerTop2(Chest):
+    description = ShuffleLocationSelector.BoosterTowerTop2
     area = locations.Area.BoosterTower
-    addresses = [0x14b2e1]
+    rooms = [199]
+    script = 246
     item = items.GoodieBag
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
 class BoosterTowerTop3(Chest):
+    description = ShuffleLocationSelector.BoosterTowerTop3
     area = locations.Area.BoosterTower
-    addresses = [0x14b325]
+    rooms = [199]
+    script = 245
     item = items.RecoveryMushroom
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
-class BoosterTowerRailway(Reward):
+class BoosterTowerRailway(NPCReward):
     area = locations.Area.BoosterTower
-    addresses = [0x1ee468]
+    description = ShuffleLocationSelector.BoosterTowerRailway
+    rooms = [194]
+    event = 253
     item = items.FlowerTab
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
 
 
-class BoosterTowerChomp(Reward):
+class BoosterTowerPortraits(OverworldItem):
     area = locations.Area.BoosterTower
-    addresses = [0x1ee27b]
+    description = ShuffleLocationSelector.BoosterTowerPortraits
+    rooms = [195]
+    event = 241
+    npc_ids = [7]
+    item = items.ElderKey
+    coinsanity = False
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerChomp(OverworldItem):
+    area = locations.Area.BoosterTower
+    description = ShuffleLocationSelector.BoosterTowerChomp
+    rooms = [200]
+    event = 241
+    npc_ids = [0]
     item = items.Chomp
-    access = 3
+    coinsanity = False
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.ElderKey) and locations.can_access_tower(self, inventory)
 
-    @staticmethod
-    def can_access(inventory):
-        return inventory.has_item(items.ElderKey)
 
-
-class BoosterTowerCurtainGame(Reward):
+class BoosterTowerCurtainGame(NPCReward):
     area = locations.Area.BoosterTower
-    addresses = [0x1ef49b]
+    description = ShuffleLocationSelector.BoosterTowerCurtainGame
+    rooms = [192]
+    event = 253
     item = items.Amulet
-    access = 3
+    missable = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerStarPiece1(BossStarPiece):
+    area = locations.Area.BoosterTower
+    description = ShuffleLocationSelector.BoosterTowerStarPiece1
+    rooms = [192]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
+
+class BoosterTowerStarPiece2(BossStarPiece):
+    area = locations.Area.BoosterTower
+    description = ShuffleLocationSelector.BoosterTowerStarPiece2
+    rooms = [258]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_tower(self, inventory)
+
 
 
 # *** Marrymore
 
+class MarrymorePrize1(NPCReward):
+    area = locations.Area.Marrymore
+    description = ShuffleLocationSelector.MarrymorePrize1
+    item = items.FlowerTab
+    rooms = [9]
+    event = 253
+
+
+class MarrymorePrize2(NPCReward):
+    area = locations.Area.Marrymore
+    description = ShuffleLocationSelector.MarrymorePrize2
+    item = items.FlowerJar
+    rooms = [9]
+    event = 252
+
+
+class MarrymorePrize3(NPCReward):
+    area = locations.Area.Marrymore
+    item = items.MultiFrogCoin(NPCReward, 5)
+    description = ShuffleLocationSelector.MarrymorePrize3
+    rooms = [9]
+    event = 251
+
+
+class MarrymorePrize4(NPCReward):
+    area = locations.Area.Marrymore
+    item = items.MultiFrogCoin(NPCReward, 10)
+    description = ShuffleLocationSelector.MarrymorePrize4
+    rooms = [9]
+    event = 250
+
+
+class MarrymorePrize5(NPCReward):
+    area = locations.Area.Marrymore
+    item = items.MultiFrogCoin(NPCReward, 15)
+    description = ShuffleLocationSelector.MarrymorePrize5
+    rooms = [9]
+    event = 249
+
+
+class MarrymorePrize6(NPCReward):
+    area = locations.Area.Marrymore
+    item = items.MultiFrogCoin(NPCReward, 20)
+    description = ShuffleLocationSelector.MarrymorePrize6
+    rooms = [9]
+    event = 248
+
+
 class MarrymoreInn(Chest):
     area = locations.Area.Marrymore
-    addresses = [0x1485d7]
+    description = ShuffleLocationSelector.MarrymoreInn
     item = items.FrogCoin
-    access = 1
+    rooms = [9]
+    event = 247
 
-##### NEW TO MARRYMORE #####
 
-# Event 602 contains the # of stays after which you get these prizes.
-# Can target that when applying settings.
-# Byte 70D7
-# test this a lot. unsure what the line that sets 70D7 to 255 is doing
-class MarrymoreInnSuitePrize1(Reward):
+class MarrymoreStarPiece(BossStarPiece):
     area = locations.Area.Marrymore
-    event = 602
-    item = items.FlowerTab
-    access = 2
-class MarrymoreInnSuitePrize2(Reward):
-    area = locations.Area.Marrymore
-    event = 602
-    item = items.FlowerJar
-    access = 3
-class MarrymoreInnSuitePrize3(Reward):
-    area = locations.Area.Marrymore
-    event = 602
-    item = items.FrogCoin
-    access = 4
-class MarrymoreInnSuitePrize4(Reward):
-    area = locations.Area.Marrymore
-    event = 602
-    item = items.FrogCoin
-    access = 4
-class MarrymoreInnSuitePrize5(Reward):
-    area = locations.Area.Marrymore
-    event = 602
-    item = items.FrogCoin
-    access = 4
-class MarrymoreInnSuitePrize6(Reward):
-    area = locations.Area.Marrymore
-    event = 602
-    item = items.FrogCoin
-    access = 4
-class MarrymoreInnTipPrize(Reward):
-    area = locations.Area.Marrymore
-    event = 603
-    item = items.MidMushroom
-    access = 2
-class MarrymoreInnTipPrizeAsBellhop(Reward):
-    area = locations.Area.Marrymore
-    event = 621
-    item = items.MidMushroom
-    access = 2
-class MarrymoreInnTipPrizeAsBellhop2(Reward):
-    area = locations.Area.Marrymore
-    event = 621
-    # make item insertion a method on this class?
-    # insert it into world.scripts location of the item
-    item = items.MidMushroom
-    access = 2
+    description = ShuffleLocationSelector.MarrymoreStarPiece
+    rooms = [154]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_marrymore(self, inventory)
 
-# how about we get rid of the non-depletables and replace them with 70A7 = random # in range?
-# maybe have subroutine events that choose a random item with a more complicated algo
-# pick an unused consumable and set 70A7 to the result
-# run it as a subroutine when granting items in event 603, event 621
-# have 4 sub-events: one for each tier of item
-# a 5th event determines the random chance of running each of those 4 sub-events
-# i.e. maybe you always want marrymore to grant a tier 4, but like, grate guy maybe only 20% of the time
+
+class MarrymoreCharacter(CharacterRecruit):
+    area = locations.Area.Marrymore
+    description = ShuffleLocationSelector.MarrymoreCharacter
+    item = items.ToadstoolRecruit
+    rooms = [154]
+    event = 186
+    
+    def can_access(self, inventory):
+        return locations.can_access_marrymore(self, inventory)
+
+# populate this with the corresponding character in MarrymoreCharacter
+class MarrymoreCharacterSpotted(CharacterSpotted):
+    area = locations.Area.BoosterHill
+    description = ShuffleLocationSelector.MarrymoreCharacter
+    item = items.ToadstoolSpotted
+
+
+# *** Star Hill
+
+
+class StarHillStarPiece1(BossStarPiece):
+    area = locations.Area.StarHill
+    description = ShuffleLocationSelector.StarHillStarPiece1
+    rooms = [157]
+    event = 167
+    item = items.StarPiece
+
+
 
 # *** Seaside Town
 
-class SeasideTownRescue(Reward):
-    area = locations.Area.SeasideTown
-    addresses = [0x1ed6c7]
-    item = items.FlowerBox
-    access = 3
 
-    @staticmethod
-    def can_access(inventory):
-        return inventory.has_item(items.ShedKey)
+
+class FrogDisciple1(FrogCoinShopItem):
+    description = ShuffleLocationSelector.FrogDisciple1
+    area = locations.Area.SeasideTown
+    item = items.SeeYa
+class FrogDisciple2(FrogCoinShopItem):
+    description = ShuffleLocationSelector.FrogDisciple2
+    area = locations.Area.SeasideTown
+    item = items.EarlierTimes
+class FrogDisciple3(FrogCoinShopItem):
+    description = ShuffleLocationSelector.FrogDisciple3
+    area = locations.Area.SeasideTown
+    item = items.ExpBooster
+class FrogDisciple4(FrogCoinShopItem):
+    description = ShuffleLocationSelector.FrogDisciple4
+    area = locations.Area.SeasideTown
+    item = items.CoinTrick
+class FrogDisciple5(FrogCoinShopItem):
+    description = ShuffleLocationSelector.FrogDisciple5
+    area = locations.Area.SeasideTown
+    item = items.ScroogeRing
+
+
+class SeasideTownBoss(BossStarPiece):
+    description = ShuffleLocationSelector.SeasideTownBoss
+    area = locations.Area.SeasideTown
+    rooms = [315]
+    event = 167
+    item = items.StarPiece
+    
+    def can_access(self, inventory):
+        return locations.can_access_yaridovich(self, inventory)
+
+
+class SeasideTownBossPrize(OverworldItem):
+    area = locations.Area.SeasideTown
+    description = ShuffleLocationSelector.SeasideTownBossPrize
+    rooms = [316]
+    event = 241
+    npc_ids = [0]
+    item = items.ShedKey
+    coinsanity = False
+    key = True
+
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+    
+    def can_access(self, inventory):
+        return locations.can_access_yaridovich(self, inventory)
+
+
+class SeasideTownRescue(NPCReward):
+    area = locations.Area.SeasideTown
+    description = ShuffleLocationSelector.SeasideTownRescue
+    rooms = [314]
+    event = 253
+    item = items.FlowerBox
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.ShedKey) and locations.can_access_yaridovich(self, inventory)
 
 
 # *** Sea
 
-class SeaStarChest(StarAllowedChest):
+class SeaStarChest(Chest):
     area = locations.Area.Sea
-    addresses = [0x14a458]
+    description = ShuffleLocationSelector.SeaStarChest
+    rooms = [134]
+    event = 247
     item = items.SeaStar
-    access = 1
+
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SeaSaveRoom1(Chest):
     area = locations.Area.Sea
-    addresses = [0x14a40e]
+    description = ShuffleLocationSelector.SeaSaveRoom1
+    rooms = [132]
+    event = 245
     item = items.FrogCoin
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SeaSaveRoom2(Chest):
     area = locations.Area.Sea
-    addresses = [0x14a412]
+    description = ShuffleLocationSelector.SeaSaveRoom2
+    rooms = [132]
+    event = 246
     item = items.Flower
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SeaSaveRoom3(Chest):
     area = locations.Area.Sea
-    addresses = [0x14a416]
+    description = ShuffleLocationSelector.SeaSaveRoom3
+    rooms = [132]
+    event = 247
     item = items.RecoveryMushroom
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
-class SeaSaveRoom4(Chest):
+class SeaWhirlpoolChest(Chest):
+    description = ShuffleLocationSelector.SeaWhirlpoolChest
     area = locations.Area.Sea
-    addresses = [0x14a42f]
+    rooms = [133]
+    event = 247
     item = items.MaxMushroom
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 # *** Sunken Ship
 
 class SunkenShipRatStairs(Chest):
     area = locations.Area.SunkenShip
-    addresses = [0x14ac26]
-    item = items.Coins100
-    access = 1
+    description = ShuffleLocationSelector.SunkenShipRatStairs
+    rooms = [167]
+    event = 247
+    item = items.Coins(Chest, 100)
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShipRatStairsFlower(PacketItem):
+    area = locations.Area.SunkenShip
+    description = ShuffleLocationSelector.SunkenShipRatStairsFlower
+    rooms = [167]
+    script_id = 3385
+    event = 241
+    item = items.Flower
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SunkenShipShop(Chest):
     area = locations.Area.SunkenShip
-    addresses = [0x14ac70]
-    item = items.Coins100
-    access = 3
+    description = ShuffleLocationSelector.SunkenShipShop
+    rooms = [169]
+    event = 247
+    item = items.Coins(Chest, 100)
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SunkenShipCoins1(Chest):
     area = locations.Area.SunkenShip
-    addresses = [0x14ad85]
-    item = items.Coins100
-    access = 3
+    description = ShuffleLocationSelector.SunkenShipCoins1
+    rooms = [175]
+    event = 247
+    item = items.Coins(Chest, 100)
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SunkenShipCoins2(Chest):
     area = locations.Area.SunkenShip
-    addresses = [0x14ad89]
-    item = items.Coins100
-    access = 3
+    description = ShuffleLocationSelector.SunkenShipCoins2
+    rooms = [175]
+    event = 246
+    item = items.Coins(Chest, 100)
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SunkenShipCloneRoom(Chest):
     area = locations.Area.SunkenShip
-    addresses = [0x14ae61]
+    description = ShuffleLocationSelector.SunkenShipCloneRoom
+    rooms = [179]
+    event = 247
     item = items.KerokeroCola
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SunkenShipFrogCoinRoom(Chest):
     area = locations.Area.SunkenShip
-    addresses = [0x14aef5]
+    description = ShuffleLocationSelector.SunkenShipFrogCoinRoom
+    rooms = [183]
+    event = 247
     item = items.FrogCoin
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SunkenShipHidonMushroom(Chest):
     area = locations.Area.SunkenShip
-    addresses = [0x14af0e]
+    description = ShuffleLocationSelector.SunkenShipHidonMushroom
+    rooms = [184]
+    event = 247
     item = items.RecoveryMushroom
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShipHidonChest(Chest):
+    area = locations.Area.SunkenShip
+    description = ShuffleLocationSelector.SunkenShipHidonChest
+    rooms = [184]
+    event = 246
+    item = items.HidonFight
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class HidonReward1(NPCReward):
+    description = ShuffleLocationSelector.HidonReward1
+    rooms = [513]
+    event = 253
+    item = items.SafetyBadge
+    
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.HidonFight)
+
+
+class HidonReward2(Chest):
+    description = ShuffleLocationSelector.HidonReward2
+    rooms = [513]
+    event = 245
+    item = items.Coins(Chest, 100)
+    
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.HidonFight)
+
+class HidonBoss(BossStarPiece):
+    description = ShuffleLocationSelector.HidonBoss
+    rooms = [513]
+    event = 167
+    
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.HidonFight)
+
+
+class SunkenShipUnderwaterFrogCoin1(OverworldItem):
+    description = ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin1
+    area = locations.Area.SunkenShip
+    item = items.FrogCoin
+    rooms = [187]
+    event = 241
+    npc_ids = [0]
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShipUnderwaterFrogCoin2(OverworldItem):
+    description = ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin2
+    area = locations.Area.SunkenShip
+    item = items.FrogCoin
+    rooms = [187]
+    event = 240
+    npc_ids = [1]
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShipUnderwaterFrogCoin3(OverworldItem):
+    description = ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin3
+    area = locations.Area.SunkenShip
+    item = items.FrogCoin
+    rooms = [187]
+    event = 239
+    npc_ids = [2]
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShipUnderwaterFrogCoin4(OverworldItem):
+    description = ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin4
+    area = locations.Area.SunkenShip
+    item = items.FrogCoin
+    rooms = [187]
+    event = 238
+    npc_ids = [3]
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SunkenShipSafetyRing(Chest):
+    description = ShuffleLocationSelector.SunkenShipSafetyRing
     area = locations.Area.SunkenShip
-    addresses = [0x14af27]
+    rooms = [185]
+    event = 247
     item = items.SafetyRing
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 class SunkenShipBandanaReds(Chest):
+    description = ShuffleLocationSelector.SunkenShipBandanaReds
     area = locations.Area.SunkenShip
-    addresses = [0x14895d]
     item = items.RecoveryMushroom
-    access = 3
+    rooms = [24]
+    event = 247
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
-class SunkenShip3DMaze(Reward):
+class SunkenShipBlooberRoom(OverworldItem):
+    description = ShuffleLocationSelector.SunkenShipBlooberRoom
     area = locations.Area.SunkenShip
-    addresses = [0x203b30]
+    item = items.FrogCoin
+    rooms = [27]
+    event = 241
+    npc_ids = [5]
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShipTrampolinePuzzle(PacketItem):
+    area = locations.Area.SunkenShip
+    description = ShuffleLocationSelector.SunkenShipTrampolinePuzzle
+    rooms = [163]
+    event = 241
+    script_id = 3383
+    item = items.Flower
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShipTroopaPuzzle(PacketItem):
+    area = locations.Area.SunkenShip
+    description = ShuffleLocationSelector.SunkenShipTroopaPuzzle
+    rooms = [166]
+    event = 241
+    script_id = 3384
+    item = items.RecoveryMushroom
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShip3DMaze(PacketItem):
+    area = locations.Area.SunkenShip
+    description = ShuffleLocationSelector.SunkenShip3DMaze
+    rooms = [168]
+    event = 241
+    script_id = 3386
     item = items.RoyalSyrup
-    access = 3
+    coinsanity = False
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
-class SunkenShipCannonballPuzzle(Reward):
+class SunkenShipCoinSnake(NPCReward):
     area = locations.Area.SunkenShip
-    addresses = [0x203b57]
+    description = ShuffleLocationSelector.SunkenShipCoinSnake
+    rooms = [171]
+    event = 253
+    npc_ids = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+    item = items.Coins(NPCReward, 150)
+    # Needs special considerations for the sound played in 3216
+    # and the sequences performed in 3216 and 3215
+    # depending on the item
+    # ship access
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShipCannonballPuzzle(PacketItem):
+    area = locations.Area.SunkenShip
+    description = ShuffleLocationSelector.SunkenShipCannonballPuzzle
+    rooms = [172]
+    event = 241
+    script_id = 3387
     item = items.Mushroom
-    access = 2
+    coinsanity = False
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
-class SunkenShipHidonReward(Reward):
+class SunkenShipBarrelPuzzle(PacketItem):
     area = locations.Area.SunkenShip
-    addresses = [0x1e979c]
-    item = items.SafetyBadge
-    access = 4
+    description = ShuffleLocationSelector.SunkenShipBarrelPuzzle
+    rooms = [176]
+    event = 241
+    script_id = 3389
+    item = items.RecoveryMushroom
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+
+class SunkenShipMidboss(BossStarPiece):
+    description = ShuffleLocationSelector.SunkenShipMidboss
+    area = locations.Area.SunkenShip
+    rooms = [177]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
+
+
+class SunkenShipBoss(BossStarPiece):
+    description = ShuffleLocationSelector.SunkenShipBoss
+    area = locations.Area.SunkenShip
+    rooms = [28]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_sea(self, inventory)
 
 
 # *** Land's End
 
+
 class LandsEndRedEssence(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14a4df]
+    description = ShuffleLocationSelector.LandsEndRedEssence
+    rooms = [137]
+    event = 247
     item = items.RedEssence
-    access = 1
 
 
 class LandsEndChowPit1(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14a51c]
+    description = ShuffleLocationSelector.LandsEndChowPit1
+    rooms = [138]
+    event = 247
     item = items.KerokeroCola
-    access = 2
 
 
 class LandsEndChowPit2(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14a528]
+    description = ShuffleLocationSelector.LandsEndChowPit2
+    rooms = [138]
+    event = 246
     item = items.FrogCoin
-    access = 2
 
 
 class LandsEndBeeRoom(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14a5a2]
+    description = ShuffleLocationSelector.LandsEndBeeRoom
+    rooms = [141]
+    event = 247
     item = items.FrogCoin
-    access = 2
 
 
 class LandsEndSecret1(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14c1f4]
+    description = ShuffleLocationSelector.LandsEndSecret1
+    rooms = [270]
+    event = 247
     item = items.FrogCoin
-    access = 1
 
 
 class LandsEndSecret2(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14c200]
+    description = ShuffleLocationSelector.LandsEndSecret2
+    rooms = [270]
+    event = 246
     item = items.FrogCoin
-    access = 1
 
 
 class LandsEndShyAway(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14d932]
+    description = ShuffleLocationSelector.LandsEndShyAway
+    rooms = [401]
+    event = 247
     item = items.RecoveryMushroom
-    access = 1
 
 
-class LandsEndStarChest1(StarAllowedChest):
+class LandsEndStarChest1(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14c069]
+    description = ShuffleLocationSelector.LandsEndStarChest1
+    rooms = [263]
+    event = 172
     item = items.LandsEndVolcanoStar
-    access = 2
 
 
-class LandsEndStarChest2(StarAllowedChest):
+class LandsEndStarChest2(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14c02c]
+    description = ShuffleLocationSelector.LandsEndStarChest2
+    rooms = [262]
+    event = 172
     item = items.LandsEndStar2
-    access = 2
 
 
-class LandsEndStarChest3(StarAllowedChest):
+class LandsEndStarChest3(Chest):
     area = locations.Area.LandsEnd
-    addresses = [0x14c030]
+    description = ShuffleLocationSelector.LandsEndStarChest3
+    rooms = [262]
+    event = 173
     item = items.LandsEndStar3
-    access = 3
 
 
-class TroopaClimb(Reward):
+class TroopaClimb(NPCReward):
     area = locations.Area.LandsEnd
-    addresses = [0x1f5282]
+    description = ShuffleLocationSelector.TroopaClimb
+    rooms = [407]
+    event = 253
     item = items.TroopaPin
-    access = 3
+
+
+class LandsEndStarPiece1(BossStarPiece):
+    area = locations.Area.LandsEnd
+    description = ShuffleLocationSelector.LandsEndStarPiece1
+    rooms = [519]
+    event = 167
 
 
 # *** Belome Temple
 
 class BelomeTempleFortuneTeller(Chest):
     area = locations.Area.BelomeTemple
-    addresses = [0x14de81]
-    item = items.Coins50
-    access = 2
+    description = ShuffleLocationSelector.BelomeTempleFortuneTeller
+    rooms = [420]
+    event = 247
+    item = items.Coins(Chest, 50)
+
+
+class BelomeTempleFortune1(Chest):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleFortune1
+    rooms = [421]
+    event = 247
+    item = items.RecoveryMushroom
+
+
+class BelomeTempleFortune2(Chest):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleFortune2
+    rooms = [421]
+    event = 246
+    item = items.YoshiCookie
+
+
+class BelomeTempleFortune3(Chest):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleFortune3
+    rooms = [421]
+    event = 245
+    item = items.Flower
+
+
+class BelomeTempleFortune4(Chest):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleFortune4
+    rooms = [421]
+    event = 244
+    item = items.Coins(Chest, 100)
 
 
 class BelomeTempleAfterFortune1(Chest):
     area = locations.Area.BelomeTemple
-    addresses = [0x14df69]
+    description = ShuffleLocationSelector.BelomeTempleAfterFortune1
+    rooms = [425]
+    event = 247
     item = items.FrogCoin
-    access = 2
 
 
 class BelomeTempleAfterFortune2(Chest):
     area = locations.Area.BelomeTemple
-    addresses = [0x14df6d]
-    item = items.Coins150
-    access = 2
+    description = ShuffleLocationSelector.BelomeTempleAfterFortune2
+    rooms = [425]
+    event = 246
+    item = items.Coins(Chest, 150)
 
 
 class BelomeTempleAfterFortune3(Chest):
     area = locations.Area.BelomeTemple
-    addresses = [0x14df79]
+    description = ShuffleLocationSelector.BelomeTempleAfterFortune3
+    rooms = [425]
+    event = 245
     item = items.FrogCoin
-    access = 2
 
 
 class BelomeTempleAfterFortune4(Chest):
     area = locations.Area.BelomeTemple
-    addresses = [0x14df7d]
+    description = ShuffleLocationSelector.BelomeTempleAfterFortune4
+    rooms = [425]
+    event = 244
     item = items.FrogCoin
-    access = 2
+
+
+class BelomeTempleTreasureFlower1(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFlower1
+    rooms = [422]
+    npc_ids = [0]
+    event = 241
+    item = items.Flower
+
+
+class BelomeTempleTreasureFlower2(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFlower2
+    rooms = [422]
+    npc_ids = [1]
+    event = 240
+    item = items.Flower
+
+
+class BelomeTempleTreasureFlower3(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFlower3
+    rooms = [422]
+    npc_ids = [2]
+    event = 239
+    item = items.Flower
+
+
+class BelomeTempleTreasureFlower4(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFlower4
+    rooms = [422]
+    npc_ids = [3]
+    event = 238
+    item = items.Flower
+
+
+class BelomeTempleTreasureFrogCoin1(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFrogCoin1
+    rooms = [422]
+    npc_ids = [4]
+    event = 237
+    item = items.FrogCoin
+
+
+class BelomeTempleTreasureFrogCoin2(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFrogCoin2
+    rooms = [422]
+    npc_ids = [5]
+    event = 236
+    item = items.FrogCoin
+
+
+class BelomeTempleTreasureFrogCoin3(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFrogCoin3
+    rooms = [422]
+    npc_ids = [6]
+    event = 235
+    item = items.FrogCoin
+
+
+class BelomeTempleTreasureFrogCoin4(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFrogCoin4
+    rooms = [422]
+    npc_ids = [7]
+    event = 234
+    item = items.FrogCoin
+
+
+class BelomeTempleTreasureFrogCoin5(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFrogCoin5
+    rooms = [422]
+    npc_ids = [8]
+    event = 233
+    item = items.FrogCoin
+
+
+class BelomeTempleTreasureFrogCoin6(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFrogCoin6
+    rooms = [422]
+    npc_ids = [9]
+    event = 232
+    item = items.FrogCoin
+
+
+class BelomeTempleTreasureFrogCoin7(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFrogCoin7
+    rooms = [422]
+    npc_ids = [10]
+    event = 231
+    item = items.FrogCoin
+
+
+class BelomeTempleTreasureFrogCoin8(BelomeTempleTreasure):
+    area = locations.Area.BelomeTemple
+    description = ShuffleLocationSelector.BelomeTempleTreasureFrogCoin8
+    rooms = [422]
+    npc_ids = [11]
+    event = 230
+    item = items.FrogCoin
 
 
 class BelomeTempleTreasure1(BelomeTempleTreasure):
     area = locations.Area.BelomeTemple
-    addresses = [0x1f4fba]
+    description = ShuffleLocationSelector.BelomeTempleTreasure1
+    rooms = [422]
+    npc_ids = [14]
+    event = 228
     item = items.RoyalSyrup
-    access = 3
+    coinsanity = False
 
 
 class BelomeTempleTreasure2(BelomeTempleTreasure):
     area = locations.Area.BelomeTemple
-    addresses = [0x1f4fc0]
+    description = ShuffleLocationSelector.BelomeTempleTreasure2
+    rooms = [422]
+    npc_ids = [13]
+    event = 229
     item = items.MaxMushroom
-    access = 3
+    coinsanity = False
 
 
 class BelomeTempleTreasure3(BelomeTempleTreasure):
     area = locations.Area.BelomeTemple
-    addresses = [0x1f4fc6]
+    description = ShuffleLocationSelector.BelomeTempleTreasure3
+    rooms = [422]
+    npc_ids = [15]
+    event = 227
     item = items.FireBomb
-    access = 3
+    coinsanity = False
+
+class BelomeTempleBoss(BossStarPiece):
+    description = ShuffleLocationSelector.BelomeTempleBoss
+    area = locations.Area.BelomeTemple
+    rooms = [268]
+    event = 167
+
 
 
 # *** Monstro Town
 
 class MonstroTownEntrance(Chest):
     area = locations.Area.MonstroTown
-    addresses = [0x14c10d]
+    description = ShuffleLocationSelector.MonstroTownEntrance
+    rooms = [267]
+    event = 257
     item = items.FrogCoin
-    access = 1
 
 
-class JinxDojoReward(Reward):
+class MonstroTownThwomp(OverworldItem):
     area = locations.Area.MonstroTown
-    addresses = [0x1e982a]
+    description = ShuffleLocationSelector.MonstroTownThwomp
+    rooms = [324]
+    event = 241
+    npc_ids = [0]
+    item = items.TempleKey
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+
+class JinxDojoReward(NPCReward):
+    area = locations.Area.MonstroTown
+    description = ShuffleLocationSelector.JinxDojoReward
+    rooms = [255]
+    event = 253
     item = items.JinxBelt
-    access = 4
 
-
-class CulexReward(Reward):
+class DojoBoss1(BossStarPiece):
+    description = ShuffleLocationSelector.DojoBoss1
     area = locations.Area.MonstroTown
-    addresses = [0x1e98bf]
+    rooms = [255]
+    event = 167
+
+class DojoBoss2(BossStarPiece):
+    description = ShuffleLocationSelector.DojoBoss2
+    area = locations.Area.MonstroTown
+    rooms = [515]
+    event = 167
+
+class DojoBoss3(BossStarPiece):
+    description = ShuffleLocationSelector.DojoBoss3
+    area = locations.Area.MonstroTown
+    rooms = [516]
+    event = 167
+
+
+class DojoBoss4(BossStarPiece):
+    description = ShuffleLocationSelector.DojoBoss4
+    area = locations.Area.MonstroTown
+    rooms = [517]
+    event = 167
+
+
+class CulexBoss(BossStarPiece):
+    description = ShuffleLocationSelector.CulexBoss
+    area = locations.Area.MonstroTown
+    rooms = [351]
+    event = 167
+
+
+
+class CulexReward(NPCReward):
+    area = locations.Area.MonstroTown
+    description = ShuffleLocationSelector.CulexReward
+    rooms = [351]
+    event = 253
     item = items.QuartzCharm
-    access = 4
 
-    @staticmethod
-    def can_access(inventory):
-        return inventory.has_item(items.ShinyStone)
+    def can_access(self, inventory):
+        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
+            return inventory.has_item(items.ProgressiveFireworks) and inventory.has_item(items.BambinoBomb)
+        elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
+            return inventory.has_item_count(items.ProgressiveFireworks, 2)
+        else:
+            return inventory.has_item(items.Fireworks) and inventory.has_item(items.BambinoBomb)
 
 
-class SuperJumps30(Reward):
+
+class SuperJumps30(NPCReward):
     area = locations.Area.MonstroTown
-    addresses = [0x1f6b41, 0x1f6b6a]
+    description = ShuffleLocationSelector.SuperJumps30
+    rooms = [397]
+    event = 253
     item = items.AttackScarf
-    access = 4
+
+    def can_access(self, inventory):
+        return locations.can_super_jump(self, inventory)
 
 
-class SuperJumps100(Reward):
+
+
+class SuperJumps100(NPCReward):
     area = locations.Area.MonstroTown
-    addresses = [0x1f6b8f]
+    description = ShuffleLocationSelector.SuperJumps100
+    rooms = [397]
+    event = 252
     item = items.SuperSuit
-    access = 4
+
+    def can_access(self, inventory):
+        return locations.can_super_jump(self, inventory)
 
 
-class ThreeMustyFears(Reward):
+class ThreeMustyFears(NPCReward):
     area = locations.Area.MonstroTown
-    addresses = [0x1f7160]
+    description = ShuffleLocationSelector.ThreeMustyFears
+    rooms = [399]
+    event = 253
     item = items.GhostMedal
-    access = 4
 
-    @staticmethod
-    def can_access(inventory):
+    
+    def can_access(self, inventory):
         return (inventory.has_item(items.BigBooFlag) and inventory.has_item(items.GreaperFlag) and
                 inventory.has_item(items.DryBonesFlag))
 
@@ -1111,188 +3025,566 @@ class ThreeMustyFears(Reward):
 # *** Bean Valley
 
 class BeanValley1(Chest):
+    description = ShuffleLocationSelector.BeanValley1
     area = locations.Area.BeanValley
-    addresses = [0x14bde3]
+    rooms = [252]
+    event = 247
     item = items.Flower
-    access = 2
 
 
 class BeanValley2(Chest):
+    description = ShuffleLocationSelector.BeanValley2
     area = locations.Area.BeanValley
-    addresses = [0x14bdef]
+    rooms = [252]
+    event = 246
     item = items.FrogCoin
-    access = 1
 
 
-class BeanValleyBoxBoyRoom(NonCoinChest):
+class BeanValleyLeftPiranhaPipe(Chest):
     area = locations.Area.BeanValley
-    addresses = [0x14cc58]
-    item = items.RedEssence
-    access = 2
+    description = ShuffleLocationSelector.BeanValleyLeftPiranhaPipe
+    rooms = [334]
+    event = 247
+    item = items.SlotMachineChest
 
 
-class BeanValleySlotRoom(NonCoinChest):
+class BeanValleyBottomLeftPiranhaPipe(Chest):
     area = locations.Area.BeanValley
-    addresses = [0x14cf7e]
+    description = ShuffleLocationSelector.BeanValleyBottomLeftPiranhaPipe
+    rooms = [348]
+    event = 247
+    item = items.SlotMachineChest
+
+
+class BeanValleyBottomRightPiranhaPipeUpper(Chest):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBottomRightPiranhaPipeUpper
+    rooms = [349]
+    event = 247
+    item = items.SlotMachineChest
+
+
+class BeanValleyBottomRightPiranhaPipeLower(Chest):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBottomRightPiranhaPipeLower
+    rooms = [349]
+    event = 246
     item = items.KerokeroCola
-    access = 2
+
+
+class BeanValleyBoxBoyRoom1(Chest):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBoxBoyRoom1
+    rooms = [335]
+    event = 247
+    item = items.BoxBoyFight
+
+class BoxBoyBoss(BossStarPiece):
+    description = ShuffleLocationSelector.BoxBoyBoss
+    rooms = [514]
+    event = 167
+    
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BoxBoyFight)
+
+
+class BeanValleyBoxBoyRoom2(Chest):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBoxBoyRoom2
+    rooms = [335]
+    event = 246
+    item = items.RedEssence
+
+
+class BeanValleyBoxBoyRoomHidden(NPCReward):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBoxBoyRoomHidden
+    rooms = [335]
+    event = 253
+    item = items.FrogCoin
+    coinsanity = True
 
 
 class BeanValleyPiranhaPlants(Chest):
+    description = ShuffleLocationSelector.BeanValleyPiranhaPlants
     area = locations.Area.BeanValley
-    addresses = [0x14bdb6]
+    rooms = [251]
+    event = 247
     item = items.FrogCoin
-    access = 2
 
 
-class BeanValleyBeanstalk(NonCoinChest):
+class BeanValleyMegasmilaxRoom(NPCReward):
+    description = ShuffleLocationSelector.BeanValleyMegasmilaxRoom
     area = locations.Area.BeanValley
-    addresses = [0x14d444]
+    rooms = [254]
+    event = 253
+    item = items.Seed
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+class BeanValleyBoss(BossStarPiece):
+    description = ShuffleLocationSelector.BeanValleyBoss
+    area = locations.Area.BeanValley
+    rooms = [254]
+    event = 167
+
+
+
+class BeanValleyBeanstalk(Chest):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBeanstalk
+    rooms = [379]
+    event = 247
     item = items.Flower
-    access = 3
+
+
+class BeanValleyBeanstalkFrogCoin(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBeanstalkFrogCoin
+    rooms = [379]
+    event = 241
+    npc_ids = [6]
+    item = items.FrogCoin
+
+
+class BeanValleyBeanstalkCoin1(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBeanstalkCoin1
+    rooms = [379]
+    event = 240
+    npc_ids = [3]
+    item = items.Coins10
+
+
+class BeanValleyBeanstalkCoin2(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBeanstalkCoin2
+    rooms = [379]
+    event = 239
+    npc_ids = [4]
+    item = items.Coins10
+
+
+class BeanValleyBeanstalkCoin3(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyBeanstalkCoin3
+    rooms = [379]
+    event = 238
+    npc_ids = [5]
+    item = items.Coins10
+
+
+class BeanValleyEastBeanstalkCoin1(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyEastBeanstalkCoin1
+    rooms = [380]
+    event = 241
+    npc_ids = [3]
+    item = items.Coins10
+
+
+class BeanValleyEastBeanstalkCoin2(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyEastBeanstalkCoin2
+    rooms = [380]
+    event = 240
+    npc_ids = [4]
+    item = items.Coins10
+
+
+class BeanValleyEastBeanstalkCoin3(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyEastBeanstalkCoin3
+    rooms = [380]
+    event = 239
+    npc_ids = [5]
+    item = items.Coins10
+
+
+class BeanValleyEastBeanstalkCoin4(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyEastBeanstalkCoin4
+    rooms = [380]
+    event = 238
+    npc_ids = [6]
+    item = items.Coins10
+
+
+class BeanValleyEastBeanstalkCoin5(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyEastBeanstalkCoin5
+    rooms = [380]
+    event = 237
+    npc_ids = [7]
+    item = items.Coins10
+
+
+class BeanValleyWestBeanstalkCoin1(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyWestBeanstalkCoin1
+    rooms = [381]
+    event = 241
+    npc_ids = [4]
+    item = items.Coins10
+
+
+class BeanValleyWestBeanstalkCoin2(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyWestBeanstalkCoin2
+    rooms = [381]
+    event = 240
+    npc_ids = [5]
+    item = items.Coins10
+
+
+class BeanValleyWestBeanstalkCoin3(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyWestBeanstalkCoin3
+    rooms = [381]
+    event = 239
+    npc_ids = [6]
+    item = items.Coins10
+
+
+class BeanValleyWestBeanstalkFrogCoin(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyWestBeanstalkFrogCoin
+    rooms = [381]
+    event = 238
+    npc_ids = [7]
+    item = items.FrogCoin
 
 
 class BeanValleyCloud1(Chest):
     area = locations.Area.BeanValley
-    addresses = [0x14d2f1]
+    description = ShuffleLocationSelector.BeanValleyCloud1
+    rooms = [372]
+    event = 247
     item = items.FrogCoin
-    access = 3
 
 
-class BeanValleyCloud2(NonCoinChest):
+class BeanValleyCloud2(Chest):
     area = locations.Area.BeanValley
-    addresses = [0x14d2fd]
+    description = ShuffleLocationSelector.BeanValleyCloud2
+    rooms = [372]
+    event = 246
     item = items.RareScarf
-    access = 3
 
 
 class BeanValleyFall1(Chest):
     area = locations.Area.BeanValley
-    addresses = [0x14d316]
+    description = ShuffleLocationSelector.BeanValleyFall1
+    rooms = [373]
+    event = 247
     item = items.Flower
-    access = 3
 
 
-class BeanValleyFall2(NonCoinChest):
+class BeanValleyFall2(Chest):
     area = locations.Area.BeanValley
-    addresses = [0x14d322]
+    description = ShuffleLocationSelector.BeanValleyFall2
+    rooms = [373]
+    event = 246
     item = items.Flower
-    access = 3
+
+
+class BeanValleyFirstVineRoomFrogCoin(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyFirstVineRoomFrogCoin
+    rooms = [378]
+    script = 241
+    npc_ids = [3]
+    item = items.FrogCoin
+
+
+class BeanValleyFirstVineRoomMiddleCoin(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyFirstVineRoomMiddleCoin
+    rooms = [378]
+    script = 240
+    npc_ids = [4]
+    item = items.Coins10
+
+
+class BeanValleyFirstVineRoomUpperCoin(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyFirstVineRoomUpperCoin
+    rooms = [378]
+    script = 239
+    npc_ids = [5]
+    item = items.Coins10
+
+
+class BeanValleyFirstVineRoomLowerCoin(OverworldItem):
+    area = locations.Area.BeanValley
+    description = ShuffleLocationSelector.BeanValleyFirstVineRoomLowerCoin
+    rooms = [378]
+    script = 238
+    npc_ids = [6]
+    item = items.Coins10
+
+# *** Grate Guy's Casino
+
+
+class CasinoGrateGuyPrize(NPCReward):
+    area = locations.Area.Casino
+    description = ShuffleLocationSelector.CasinoGrateGuyPrize
+    rooms = [92]
+    event = 253
+    item = items.StarEgg
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.BrightCard)
 
 
 # *** Nimbus Land
 
-class NimbusLandShop(NonCoinChest):
+class NimbusLandShop(Chest):
     area = locations.Area.NimbusLand
-    addresses = [0x14ce25]
+    description = ShuffleLocationSelector.NimbusLandShop
+    rooms = [344]
+    event = 247
     item = items.FrogCoin
-    access = 1
 
 
-class NimbusLandInn(Reward):
+class NimbusLandInn(NPCReward):
     area = locations.Area.NimbusLand
-    addresses = [0x1e122c]
+    description = ShuffleLocationSelector.NimbusLandInn
+    shops = [346]
+    script = 253
     item = items.RedEssence
-    access = 3
-
-    def item_allowed(self, item):
-        """FIXME: This spot grants the same item twice, it must be one-time consumables only until item code fixed."""
-        return super().item_allowed(item) and item.consumable and not item.reuseable
 
 
-class NimbusCastleBeforeBirdo1(Chest):
+class NimbusLandInn2(NPCReward):
     area = locations.Area.NimbusLand
-    addresses = [0x14a088]
+    description = ShuffleLocationSelector.NimbusLandInn2
+    shops = [346]
+    script = 252
+    item = items.RedEssence
+
+
+class NimbusCastleBeforeBirdetta1(Chest):
+    description = ShuffleLocationSelector.NimbusCastleBeforeBirdetta1
+    area = locations.Area.NimbusLand
+    rooms = [118]
+    event = 247
     item = items.Flower
     missable = True
-    access = 1
 
 
-class NimbusCastleBeforeBirdo2(Chest):
+class NimbusCastleBeforeBirdetta2(Chest):
     area = locations.Area.NimbusLand
-    addresses = [0x14eda7]
-    item = items.FrogCoin
-    access = 4
+    description = ShuffleLocationSelector.NimbusCastleBeforeBirdetta2
+    rooms = [111, 500]
+    event = 247
+    item = items.Flower
 
 
-class NimbusCastleOutOfBounds1(NonCoinChest):
+class NimbusCastleBirdetta(NPCReward):
     area = locations.Area.NimbusLand
-    addresses = [0x14db97]
+    description = ShuffleLocationSelector.NimbusCastleBirdetta
+    rooms = [409]
+    event = 253
+    item = items.CastleKey2
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.CastleKey1)
+
+class NimbusCastleStarPiece2(BossStarPiece):
+    description = ShuffleLocationSelector.NimbusCastleStarPiece2
+    area = locations.Area.NimbusLand
+    rooms = [409]
+    event = 167
+
+    
+    def can_access(self, inventory):
+        return inventory.has_item(items.CastleKey1)
+
+class NimbusCastleOutOfBounds1(Chest):
+    area = locations.Area.NimbusLand
+    description = ShuffleLocationSelector.NimbusCastleOutOfBounds1
+    rooms = [410]
+    event = 247
     item = items.FrogCoin
-    access = 2
 
 
 class NimbusCastleOutOfBounds2(Chest):
     area = locations.Area.NimbusLand
-    addresses = [0x14dba3]
+    description = ShuffleLocationSelector.NimbusCastleOutOfBounds2
+    rooms = [410]
+    event = 246
     item = items.FrogCoin
-    access = 2
 
 
 class NimbusCastleSingleGoldBird(Chest):
     area = locations.Area.NimbusLand
-    addresses = [0x149f47]
+    description = ShuffleLocationSelector.NimbusCastleSingleGoldBird
+    rooms = [113]
+    event = 247
     item = items.RecoveryMushroom
-    access = 1
 
 
-class NimbusCastleStarChest(StarAllowedChest):
+class NimbusCastleAfterEgg1(Chest):
+    description = ShuffleLocationSelector.NimbusCastleAfterEgg1
     area = locations.Area.NimbusLand
-    addresses = [0x14a1a3]
+    rooms = [114, 498]
+    event = 247
+    item = items.Flower
+
+    
+    def can_access(self, inventory):
+        return locations.can_clear_nimbus_castle(inventory)
+
+
+class NimbusCastleAfterEgg2(Chest):
+    description = ShuffleLocationSelector.NimbusCastleAfterEgg2
+    area = locations.Area.NimbusLand
+    rooms = [114, 498]
+    event = 246
+    item = items.FrogCoin
+
+    
+    def can_access(self, inventory):
+        return locations.can_clear_nimbus_castle(inventory)
+
+
+class NimbusCastleStarPiece3(BossStarPiece):
+    description = ShuffleLocationSelector.NimbusCastleStarPiece3
+    area = locations.Area.NimbusLand
+    rooms = [430]
+    event = 167
+
+    
+    def can_access(self, inventory):
+        return locations.can_clear_nimbus_castle(inventory)
+
+class NimbusCastleStarChest(Chest):
+    description = ShuffleLocationSelector.NimbusCastleStarChest
+    area = locations.Area.NimbusLand
+    rooms = [121]
+    event = 247
     item = items.NimbusLandStar
     missable = True
-    access = 4
 
-    @staticmethod
-    def can_access(inventory):
+    
+    def can_access(self, inventory):
         return locations.can_clear_nimbus_castle(inventory)
 
 
 class NimbusCastleStarAfterValentina(Chest):
+    description = ShuffleLocationSelector.NimbusCastleStarAfterValentina
     area = locations.Area.NimbusLand
-    addresses = [0x14a1af]
+    rooms = [121]
+    event = 246
     item = items.Flower
-    access = 4
 
-    @staticmethod
-    def can_access(inventory):
+    
+    def can_access(self, inventory):
         return locations.can_clear_nimbus_castle(inventory)
 
 
-class DodoReward(Reward):
+class NimbusCastleCornerChestAfterValentina(Chest):
+    description = ShuffleLocationSelector.NimbusCastleCornerChestAfterValentina
     area = locations.Area.NimbusLand
-    addresses = [0x20936a]
+    rooms = [499]
+    event = 247
+    item = items.FrogCoin
+
+    
+    def can_access(self, inventory):
+        return locations.can_clear_nimbus_castle(inventory)
+
+
+class NimbusLandRightSide(NPCReward):
+    description = ShuffleLocationSelector.NimbusLandRightSide
+    area = locations.Area.NimbusLand
+    rooms = [438]
+    event = 253
+    item = items.Fertilizer
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+    
+    def can_access(self, inventory):
+        return locations.can_clear_nimbus_castle(inventory)
+
+
+class DodoReward(NPCReward):
+    description = ShuffleLocationSelector.DodoReward
+    area = locations.Area.NimbusLand
+    rooms = [110]
+    event = 253
     item = items.Feather
-    access = 3
-
-
-class NimbusLandPrisoners(Reward):
-    area = locations.Area.NimbusLand
-    addresses = [0x20a9c5]
-    item = items.FlowerJar
     missable = True
-    access = 3
 
 
-class NimbusLandSignalRing(Reward):
+class NimbusLandStarPiece1(BossStarPiece):
+    description = ShuffleLocationSelector.NimbusLandStarPiece1
     area = locations.Area.NimbusLand
-    addresses = [0x20a456]
-    item = items.SignalRing
-    access = 4
+    rooms = [520]
+    event = 167
 
-    @staticmethod
-    def can_access(inventory):
+class NimbusLandPrisoners(NPCReward):
+    area = locations.Area.NimbusLand
+    description = ShuffleLocationSelector.NimbusLandPrisoners
+    rooms = [414]
+    event = 253
+    item = items.FlowerJar
+
+
+class NimbusLandPrisoners2(NPCReward):
+    area = locations.Area.NimbusLand
+    description = ShuffleLocationSelector.NimbusLandPrisoners2
+    rooms = [414]
+    event = 252
+    item = items.CastleKey1
+    key = True
+    
+    def item_allowed(self, item):
+        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+            return super().item_allowed(item) and item.is_key
+        return super().item_allowed(item)
+
+
+class NimbusLandSignalRing(OverworldItem):
+    area = locations.Area.NimbusLand
+    description = ShuffleLocationSelector.NimbusLandSignalRing
+    rooms = [345]
+    npc_ids = [5]
+    event = 241
+    item = items.SignalRing
+    coinsanity = False
+
+    
+    def can_access(self, inventory):
         return locations.can_clear_nimbus_castle(inventory)
 
 
-class NimbusLandCellar(Reward):
+class NimbusLandCellar(NPCReward):
     area = locations.Area.NimbusLand
-    addresses = [0x1ea732]
+    description = ShuffleLocationSelector.NimbusLandCellar
+    rooms = [413]
+    event = 253
     item = items.FlowerJar
-    access = 4
 
-    @staticmethod
-    def can_access(inventory):
+    
+    def can_access(self, inventory):
         return locations.can_clear_nimbus_castle(inventory)
 
 
@@ -1300,336 +3592,840 @@ class NimbusLandCellar(Reward):
 
 class BarrelVolcanoSecret1(Chest):
     area = locations.Area.BarrelVolcano
-    addresses = [0x14d048]
+    description = ShuffleLocationSelector.BarrelVolcanoSecret1
+    rooms = [355]
+    event = 247
     item = items.Flower
-    access = 2
+
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
 
 
 class BarrelVolcanoSecret2(Chest):
     area = locations.Area.BarrelVolcano
-    addresses = [0x14d04c]
+    description = ShuffleLocationSelector.BarrelVolcanoSecret2
+    rooms = [355]
+    event = 246
     item = items.Flower
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
+
+
+class BarrelVolcanoReverse(OverworldItem):
+    area = locations.Area.BarrelVolcano
+    description = ShuffleLocationSelector.BarrelVolcanoReverse
+    rooms = [383]
+    event = 241
+    npc_ids = [4]
+    item = items.FrogCoin
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
+
+
+class BarrelVolcanoDonut1(Chest):
+    area = locations.Area.BarrelVolcano
+    description = ShuffleLocationSelector.BarrelVolcanoDonut1
+    rooms = [358]
+    event = 241
+    item = items.FrogCoin
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
+
+
+class BarrelVolcanoDonut2(Chest):
+    area = locations.Area.BarrelVolcano
+    description = ShuffleLocationSelector.BarrelVolcanoDonut2
+    rooms = [358]
+    event = 240
+    item = items.FrogCoin
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
+
+
+class BarrelVolcanoLavaPool(Chest):
+    area = locations.Area.BarrelVolcano
+    description = ShuffleLocationSelector.BarrelVolcanoLavaPool
+    rooms = [361]
+    event = 241
+    item = items.FrogCoin
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
 
 
 class BarrelVolcanoBeforeStar1(Chest):
     area = locations.Area.BarrelVolcano
-    addresses = [0x14d595]
+    description = ShuffleLocationSelector.BarrelVolcanoBeforeStar1
+    rooms = [384]
+    event = 247
     item = items.Flower
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
 
 
 class BarrelVolcanoBeforeStar2(Chest):
     area = locations.Area.BarrelVolcano
-    addresses = [0x14d5a1]
-    item = items.Coins100
-    access = 1
+    description = ShuffleLocationSelector.BarrelVolcanoBeforeStar2
+    rooms = [384]
+    event = 246
+    item = items.Coins(Chest, 100)
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
 
 
-class BarrelVolcanoStarRoom(StarAllowedChest):
+class BarrelVolcanoStarRoom(Chest):
     area = locations.Area.BarrelVolcano
-    addresses = [0x14d5ce]
+    description = ShuffleLocationSelector.BarrelVolcanoStarRoom
+    rooms = [385]
+    event = 247
     item = items.LandsEndVolcanoStar
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
 
 
 class BarrelVolcanoSaveRoom1(Chest):
     area = locations.Area.BarrelVolcano
-    addresses = [0x14d203]
+    description = ShuffleLocationSelector.BarrelVolcanoSaveRoom1
+    rooms = [366]
+    event = 247
     item = items.Flower
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
 
 
 class BarrelVolcanoSaveRoom2(Chest):
     area = locations.Area.BarrelVolcano
-    addresses = [0x14d207]
+    description = ShuffleLocationSelector.BarrelVolcanoSaveRoom2
+    rooms = [366]
+    event = 246
     item = items.FrogCoin
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
 
 
-class BarrelVolcanoHinnopio(Chest):
+class BarrelVolcanoHinopio(Chest):
     area = locations.Area.BarrelVolcano
-    addresses = [0x14d220]
-    item = items.Coins100
-    access = 2
+    description = ShuffleLocationSelector.BarrelVolcanoHinopio
+    rooms = [367]
+    event = 247
+    item = items.Coins(Chest, 100)
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
+
+class BarrelVolcanoBoss1(BossStarPiece):
+    description = ShuffleLocationSelector.BarrelVolcanoBoss1
+    area = locations.Area.BarrelVolcano
+    rooms = [352]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
+
+class BarrelVolcanoBoss2(BossStarPiece):
+    description = ShuffleLocationSelector.BarrelVolcanoBoss2
+    area = locations.Area.BarrelVolcano
+    rooms = [393]
+    event = 167
+    item = items.StarPiece
+    
+    def can_access(self, inventory):
+        return locations.can_access_volcano(self, inventory)
 
 
 # *** Bowser's Keep
 
 class BowsersKeepDarkRoom(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e3b1]
+    description = ShuffleLocationSelector.BowsersKeepDarkRoom
+    rooms = [453]
+    event = 247
     item = items.RecoveryMushroom
-    access = 1
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepCrocoShop1(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e37f]
-    item = items.Coins150
-    access = 1
+    description = ShuffleLocationSelector.BowsersKeepCrocoShop1
+    rooms = [451]
+    event = 247
+    item = items.Coins(Chest, 150)
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepCrocoShop2(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e38b]
+    description = ShuffleLocationSelector.BowsersKeepCrocoShop2
+    rooms = [451]
+    event = 246
     item = items.RecoveryMushroom
-    access = 1
-    not_depletable = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepMagikoopa(Chest):
+    description = ShuffleLocationSelector.BowsersKeepMagikoopa
+    area = locations.Area.BowsersKeep
+    rooms = [266]
+    script = 247
+    item = items.InfiniteCoins
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepBossChester(BossStarPiece):
+    description = ShuffleLocationSelector.BowsersKeepBossChester
+    area = locations.Area.BowsersKeep
+    rooms = [461]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepBoss1(BossStarPiece):
+    description = ShuffleLocationSelector.BowsersKeepBoss1
+    area = locations.Area.BowsersKeep
+    rooms = [266]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepInvisibleBridge1(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14c9b3]
+    description = ShuffleLocationSelector.BowsersKeepInvisibleBridge1
+    rooms = [322]
+    script = 247
     item = items.FrightBomb
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepInvisibleBridge2(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14c9b7]
+    description = ShuffleLocationSelector.BowsersKeepInvisibleBridge2
+    rooms = [322]
+    script = 246
     item = items.RoyalSyrup
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepInvisibleBridge3(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14c9bb]
+    description = ShuffleLocationSelector.BowsersKeepInvisibleBridge3
+    rooms = [322]
+    script = 245
     item = items.IceBomb
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepInvisibleBridge4(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14c9bf]
+    description = ShuffleLocationSelector.BowsersKeepInvisibleBridge4
+    rooms = [322]
+    script = 244
     item = items.RockCandy
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepInvisibleBridgeCoin1(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin1
+    rooms = [322]
+    script = 241
+    npc_ids = [8]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepInvisibleBridgeCoin2(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin2
+    rooms = [322]
+    script = 240
+    npc_ids = [9]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepInvisibleBridgeCoin3(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin3
+    rooms = [322]
+    script = 239
+    npc_ids = [10]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepInvisibleBridgeCoin4(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin4
+    rooms = [322]
+    script = 238
+    npc_ids = [11]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepMovingPlatforms1(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e536]
+    description = ShuffleLocationSelector.BowsersKeepMovingPlatforms1
+    rooms = [458]
+    event = 247
     item = items.Flower
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepMovingPlatforms2(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e542]
+    description = ShuffleLocationSelector.BowsersKeepMovingPlatforms2
+    rooms = [458]
+    event = 246
     item = items.RedEssence
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepMovingPlatforms3(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e546]
+    description = ShuffleLocationSelector.BowsersKeepMovingPlatforms3
+    rooms = [458]
+    event = 245
     item = items.MaxMushroom
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepMovingPlatforms4(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e54a]
+    description = ShuffleLocationSelector.BowsersKeepMovingPlatforms4
+    rooms = [458]
+    event = 244
     item = items.FireBomb
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepElevatorPlatforms(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14c97a]
+    description = ShuffleLocationSelector.BowsersKeepElevatorPlatforms
+    rooms = [321]
+    script = 247
     item = items.KerokeroCola
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepCannonballRoom1(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e4b1]
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoom1
+    rooms = [457]
+    event = 247
     item = items.Flower
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepCannonballRoom2(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e4b5]
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoom2
+    rooms = [457]
+    event = 246
     item = items.Flower
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepCannonballRoom3(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e4c1]
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoom3
+    rooms = [457]
+    event = 245
     item = items.PickMeUp
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepCannonballRoom4(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e4c5]
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoom4
+    rooms = [457]
+    event = 244
     item = items.RockCandy
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepCannonballRoom5(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e4c9]
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoom5
+    rooms = [457]
+    event = 243
     item = items.MaxMushroom
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepCannonballRoomCoin1(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoomCoin1
+    rooms = [457]
+    event = 241
+    npc_ids = [8]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepCannonballRoomCoin2(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoomCoin2
+    rooms = [457]
+    event = 240
+    npc_ids = [9]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepCannonballRoomCoin3(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoomCoin3
+    rooms = [457]
+    event = 239
+    npc_ids = [10]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepCannonballRoomCoin4(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoomCoin4
+    rooms = [457]
+    event = 238
+    npc_ids = [11]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepCannonballRoomCoin5(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoomCoin5
+    rooms = [457]
+    event = 237
+    npc_ids = [12]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepCannonballRoomCoin6(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoomCoin6
+    rooms = [457]
+    event = 236
+    npc_ids = [13]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepCannonballRoomCoin7(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoomCoin7
+    rooms = [457]
+    event = 235
+    npc_ids = [14]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepCannonballRoomCoin8(OverworldItem):
+    area = locations.Area.BowsersKeep
+    description = ShuffleLocationSelector.BowsersKeepCannonballRoomCoin8
+    rooms = [457]
+    event = 234
+    npc_ids = [15]
+    item = items.Coins10
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepRotatingPlatforms1(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e3ff]
+    description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms1
+    rooms = [455]
+    event = 247
     item = items.Flower
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepRotatingPlatforms2(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e403]
+    description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms2
+    rooms = [455]
+    event = 246
     item = items.Flower
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepRotatingPlatforms3(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e40f]
+    description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms3
+    rooms = [455]
+    event = 245
     item = items.FireBomb
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepRotatingPlatforms4(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e413]
+    description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms4
+    rooms = [455]
+    event = 244
     item = items.RoyalSyrup
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepRotatingPlatforms5(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e417]
+    description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms5
+    rooms = [455]
+    event = 243
     item = items.PickMeUp
-    access = 3
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 class BowsersKeepRotatingPlatforms6(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x14e41b]
+    description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms6
+    rooms = [455]
+    event = 242
     item = items.KerokeroCola
-    access = 2
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
-class BowsersKeepDoorReward1(BowserDoorReward):
+class BowsersKeepDoorReward1(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x204bfc]
+    description = ShuffleLocationSelector.BowsersKeepDoorReward1
+    rooms = [144, 446]
+    event = 247
     item = items.SonicCymbal
-    access = 4
+    manual_70A7 = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
-class BowsersKeepDoorReward2(BowserDoorReward):
+class BowsersKeepDoorReward2(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x204c02]
+    description = ShuffleLocationSelector.BowsersKeepDoorReward2
+    rooms = [144, 446]
+    event = 246
     item = items.SuperSlap
-    access = 4
+    manual_70A7 = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
-class BowsersKeepDoorReward3(BowserDoorReward):
+class BowsersKeepDoorReward3(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x204c08]
+    description = ShuffleLocationSelector.BowsersKeepDoorReward3
+    rooms = [144, 446]
+    event = 245
     item = items.DrillClaw
-    access = 4
+    manual_70A7 = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
-class BowsersKeepDoorReward4(BowserDoorReward):
+class BowsersKeepDoorReward4(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x204c0e]
+    description = ShuffleLocationSelector.BowsersKeepDoorReward4
+    rooms = [144, 446]
+    event = 244
     item = items.StarGun
-    access = 4
+    manual_70A7 = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
-class BowsersKeepDoorReward5(BowserDoorReward):
+class BowsersKeepDoorReward5(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x204c14]
+    description = ShuffleLocationSelector.BowsersKeepDoorReward5
+    rooms = [144, 446]
+    event = 243
     item = items.RockCandy
-    access = 4
+    manual_70A7 = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
-class BowsersKeepDoorReward6(BowserDoorReward):
+class BowsersKeepDoorReward6(Chest):
     area = locations.Area.BowsersKeep
-    addresses = [0x204c1a]
+    description = ShuffleLocationSelector.BowsersKeepDoorReward6
+    rooms = [144, 446]
+    event = 242
     item = items.RockCandy
-    access = 4
+    manual_70A7 = True
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+
+class BowsersKeepBoss2(BossStarPiece):
+    description = ShuffleLocationSelector.BowsersKeepBoss2
+    area = locations.Area.BowsersKeep
+    rooms = [521]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
+
+class BowsersKeepBoss3(BossStarPiece):
+    description = ShuffleLocationSelector.BowsersKeepBoss3
+    area = locations.Area.BowsersKeep
+    rooms = [522]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_keep(self, inventory)
 
 
 # *** Factory
 
 class FactorySaveRoom(Chest):
     area = locations.Area.Factory
-    addresses = [0x14bafa]
+    description = ShuffleLocationSelector.FactorySaveRoom
+    rooms = [237]
+    event = 247
     item = items.RecoveryMushroom
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
 
 class FactoryBoltPlatforms(Chest):
     area = locations.Area.Factory
-    addresses = [0x14bb6c]
+    description = ShuffleLocationSelector.FactoryBoltPlatforms
+    rooms = [239]
+    event = 247
     item = items.UltraHammer
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
+
+class FactoryBoss1(BossStarPiece):
+    description = ShuffleLocationSelector.FactoryBoss1
+    area = locations.Area.Factory
+    rooms = [223]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
 class FactoryFallingAxems(Chest):
     area = locations.Area.Factory
-    addresses = [0x14e0c8]
+    description = ShuffleLocationSelector.FactoryFallingAxems
+    rooms = [434]
+    event = 247
     item = items.RecoveryMushroom
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
 
 class FactoryTreasurePit1(Chest):
     area = locations.Area.Factory
-    addresses = [0x14e2c4]
+    description = ShuffleLocationSelector.FactoryTreasurePit1
+    rooms = [443]
+    event = 247
     item = items.RecoveryMushroom
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
 
-class FactoryTreasurePit2(NonCoinChest):
+class FactoryTreasurePit2(Chest):
     area = locations.Area.Factory
-    addresses = [0x14e2cc]
+    description = ShuffleLocationSelector.FactoryTreasurePit2
+    rooms = [443]
+    event = 245
     item = items.Flower
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
 
 class FactoryConveyorPlatforms1(Chest):
     area = locations.Area.Factory
-    addresses = [0x14e9cb]
+    description = ShuffleLocationSelector.FactoryConveyorPlatforms1
+    rooms = [475]
+    event = 247
     item = items.RoyalSyrup
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
 
 class FactoryConveyorPlatforms2(Chest):
     area = locations.Area.Factory
-    addresses = [0x14e9cf]
+    description = ShuffleLocationSelector.FactoryConveyorPlatforms2
+    rooms = [475]
+    event = 246
     item = items.MaxMushroom
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
 
 class FactoryBehindSnakes1(Chest):
     area = locations.Area.Factory
-    addresses = [0x14e2c8]
+    description = ShuffleLocationSelector.FactoryBehindSnakes1
+    rooms = [443]
+    event = 246
     item = items.RecoveryMushroom
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
 
 class FactoryBehindSnakes2(Chest):
     area = locations.Area.Factory
-    addresses = [0x14e2d0]
+    description = ShuffleLocationSelector.FactoryBehindSnakes2
+    rooms = [443]
+    event = 244
     item = items.Flower
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
-
-class FactoryToadGift(Reward):
+class FactoryBoss2(BossStarPiece):
+    description = ShuffleLocationSelector.FactoryBoss2
     area = locations.Area.Factory
-    addresses = [0x1ff7ed]
+    rooms = [103]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
+
+class FactoryToadGift(NPCReward):
+    area = locations.Area.Factory
+    description = ShuffleLocationSelector.FactoryToadGift
+    rooms = [406]
+    event = 253
     item = items.RockCandy
-    access = 4
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
+
+class InnerFactoryBoss1(BossStarPiece):
+    description = ShuffleLocationSelector.InnerFactoryBoss1
+    area = locations.Area.Factory
+    rooms = [469]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
+
+class InnerFactoryBoss2(BossStarPiece):
+    description = ShuffleLocationSelector.InnerFactoryBoss2
+    area = locations.Area.Factory
+    rooms = [470]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
+
+class InnerFactoryBoss3(BossStarPiece):
+    description = ShuffleLocationSelector.InnerFactoryBoss3
+    area = locations.Area.Factory
+    rooms = [471]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
+
+class InnerFactoryBoss4(BossStarPiece):
+    description = ShuffleLocationSelector.InnerFactoryBoss4
+    area = locations.Area.Factory
+    rooms = [472]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_factory(self, inventory)
 
 
 # ********************* Default objects for world
@@ -1645,60 +4441,146 @@ def get_default_chests(world):
     """
     return [
         # Chests
+        MariosPadBed(world),
+        MariosPadStarter1(world),
+        MariosPadStarter2(world),
+        MariosPadStarter3(world),
+        MariosPadStarter4(world),
         MushroomWay1(world),
         MushroomWay2(world),
         MushroomWay3(world),
         MushroomWay4(world),
+        ToadRescue1(world),
+        ToadRescue2(world),
+        HammerBrosReward(world),
+        MushroomKingdomHallway(world),
         MushroomKingdomVault1(world),
         MushroomKingdomVault2(world),
         MushroomKingdomVault3(world),
+        InvasionVault1(world),
+        InvasionVault2(world),
+        InvasionVault3(world),
+        InvasionEasternGuard(world),
+        WalletGuy1(world),
+        WalletGuy2(world),
+        MushroomKingdomStore(world),
+        MushroomKingdomStoreExchange(world),
+        MushroomKingdomStoreBasement1(world),
+        MushroomKingdomStoreBasement2(world),
+        PeachSurprise(world),
+        InvasionToadRescue(world),
+        InvasionFamily(world),
+        InvasionGuestRoom(world),
+        MushroomKingdomInn(world),
         BanditsWay1(world),
         BanditsWay2(world),
         BanditsWayStarChest(world),
         BanditsWayDogJump(world),
         BanditsWayCroco(world),
+        Croco1Reward(world),
+        Croco1Reward2(world),
         KeroSewersPandoriteRoom(world),
+        PandoriteChest(world),
+        PandoriteReward1(world),
+        PandoriteReward2(world),
         KeroSewersStarChest(world),
+        KeroSewersBeforeBelomeLower(world),
+        KeroSewersBeforeBelomeUpper1(world),
+        KeroSewersBeforeBelomeUpper2(world),
+        MidasRiverFirstTime(world),
+        CricketPieReward(world),
+        CricketJamReward(world),
+        MelodyBay1(world),
+        MelodyBay2(world),
+        MelodyBay3(world),
         RoseWayPlatform(world),
+        RoseWayFiveChests1(world),
+        RoseWayFiveChests2(world),
+        RoseWayFiveChests3(world),
+        RoseWayFiveChests4(world),
+        RoseWayFiveChests5(world),
+        RoseTownFlag(world),
         RoseTownStore1(world),
         RoseTownStore2(world),
         GardenerCloud1(world),
         GardenerCloud2(world),
+        RoseTownToad(world),
+        Gaz(world),
+        RoseTownTreasureHouse1(world),
+        RoseTownTreasureHouse2(world),
+        RoseTownTreasureHouseMazeReward(world),
+        RoseTownTreasureHouse3(world),
         ForestMaze1(world),
         ForestMaze2(world),
         ForestMazeUnderground1(world),
         ForestMazeUnderground2(world),
         ForestMazeUnderground3(world),
         ForestMazeRedEssence(world),
+        ForestMazeSecret1(world),
+        ForestMazeSecret2(world),
+        ForestMazeSecret3(world),
+        ForestMazeSecret4(world),
+        ForestMazeSecret5(world),
         PipeVaultSlide1(world),
         PipeVaultSlide2(world),
         PipeVaultSlide3(world),
         PipeVaultNippers1(world),
         PipeVaultNippers2(world),
+        GoombaThumping1(world),
+        GoombaThumping2(world),
         YosterIsleEntrance(world),
+        YosterIsleRaceReward1(world),
+        YosterIsleRaceReward2(world),
+        YosterIsleRaceReward3(world),
+        YosterIsleFlag(world),
+        BucketGirl(world),
+        TreasureSeller1(world),
+        TreasureSeller2(world),
+        TreasureSeller3(world),
+        FireworksShop(world),
         MolevilleMinesStarChest(world),
+        MolevilleMinesShyGuy(world),
         MolevilleMinesCoins(world),
         MolevilleMinesPunchinello1(world),
         MolevilleMinesPunchinello2(world),
+        CrocoFlunkie1(world),
+        CrocoFlunkie2(world),
+        CrocoFlunkie3(world),
+        Croco2Item(world),
         BoosterPass1(world),
         BoosterPass2(world),
+        BoosterPassFlower(world),
         BoosterPassSecret1(world),
         BoosterPassSecret2(world),
         BoosterPassSecret3(world),
         BoosterTowerSpookum(world),
         BoosterTowerThwomp(world),
+        BoosterTowerKnifeGuy(world),
+        BoosterTowerRoomKey(world),
         BoosterTowerMasher(world),
         BoosterTowerParachute(world),
         BoosterTowerZoomShoes(world),
         BoosterTowerTop1(world),
         BoosterTowerTop2(world),
         BoosterTowerTop3(world),
+        BoosterTowerRailway(world),
+        BoosterTowerPortraits(world),
+        BoosterTowerChomp(world),
+        BoosterTowerCurtainGame(world),
+        MarrymorePrize1(world),
+        MarrymorePrize2(world),
+        MarrymorePrize3(world),
+        MarrymorePrize4(world),
+        MarrymorePrize5(world),
+        MarrymorePrize6(world),
         MarrymoreInn(world),
+        SeasideTownBossPrize(world),
+        SeasideTownRescue(world),
         SeaStarChest(world),
         SeaSaveRoom1(world),
         SeaSaveRoom2(world),
         SeaSaveRoom3(world),
-        SeaSaveRoom4(world),
+        SeaWhirlpoolChest(world),
         SunkenShipRatStairs(world),
         SunkenShipShop(world),
         SunkenShipCoins1(world),
@@ -1706,8 +4588,13 @@ def get_default_chests(world):
         SunkenShipCloneRoom(world),
         SunkenShipFrogCoinRoom(world),
         SunkenShipHidonMushroom(world),
+        SunkenShipHidonChest(world),
+        HidonReward1(world),
+        HidonReward2(world),
         SunkenShipSafetyRing(world),
         SunkenShipBandanaReds(world),
+        SunkenShip3DMaze(world),
+        SunkenShipCannonballPuzzle(world),
         LandsEndRedEssence(world),
         LandsEndChowPit1(world),
         LandsEndChowPit2(world),
@@ -1718,30 +4605,63 @@ def get_default_chests(world):
         LandsEndStarChest1(world),
         LandsEndStarChest2(world),
         LandsEndStarChest3(world),
+        TroopaClimb(world),
         BelomeTempleFortuneTeller(world),
+        BelomeTempleFortune1(world),
+        BelomeTempleFortune2(world),
+        BelomeTempleFortune3(world),
+        BelomeTempleFortune4(world),
         BelomeTempleAfterFortune1(world),
         BelomeTempleAfterFortune2(world),
         BelomeTempleAfterFortune3(world),
         BelomeTempleAfterFortune4(world),
+        BelomeTempleTreasure1(world),
+        BelomeTempleTreasure2(world),
+        BelomeTempleTreasure3(world),
         MonstroTownEntrance(world),
+        MonstroTownThwomp(world),
+        JinxDojoReward(world),
+        CulexReward(world),
+        SuperJumps30(world),
+        SuperJumps100(world),
+        ThreeMustyFears(world),
         BeanValley1(world),
         BeanValley2(world),
-        BeanValleyBoxBoyRoom(world),
-        BeanValleySlotRoom(world),
+        BeanValleyLeftPiranhaPipe(world),
+        BeanValleyBottomLeftPiranhaPipe(world),
+        BeanValleyBottomRightPiranhaPipeUpper(world),
+        BeanValleyBottomRightPiranhaPipeLower(world),
+        BeanValleyBoxBoyRoom1(world),
+        BeanValleyBoxBoyRoom2(world),
         BeanValleyPiranhaPlants(world),
+        BeanValleyMegasmilaxRoom(world),
         BeanValleyBeanstalk(world),
+        BeanValleyBeanstalkFrogCoin(world),
         BeanValleyCloud1(world),
         BeanValleyCloud2(world),
         BeanValleyFall1(world),
         BeanValleyFall2(world),
+        CasinoGrateGuyPrize(world),
         NimbusLandShop(world),
-        NimbusCastleBeforeBirdo1(world),
-        NimbusCastleBeforeBirdo2(world),
+        NimbusLandInn(world),
+        NimbusLandInn2(world),
+        NimbusCastleBeforeBirdetta1(world),
+        NimbusCastleBeforeBirdetta2(world),
+        NimbusCastleBirdetta(world),
         NimbusCastleOutOfBounds1(world),
         NimbusCastleOutOfBounds2(world),
         NimbusCastleSingleGoldBird(world),
+        NimbusCastleAfterEgg1(world),
+        NimbusCastleAfterEgg2(world),
         NimbusCastleStarChest(world),
         NimbusCastleStarAfterValentina(world),
+        NimbusCastleCornerChestAfterValentina(world),
+        NimbusLandRightSide(world),
+        DodoReward(world),
+        NimbusLandPrisoners(world),
+        NimbusLandPrisoners2(world),
+        NimbusLandSignalRing(world),
+        NimbusLandCellar(world),
         BarrelVolcanoSecret1(world),
         BarrelVolcanoSecret2(world),
         BarrelVolcanoBeforeStar1(world),
@@ -1749,10 +4669,11 @@ def get_default_chests(world):
         BarrelVolcanoStarRoom(world),
         BarrelVolcanoSaveRoom1(world),
         BarrelVolcanoSaveRoom2(world),
-        BarrelVolcanoHinnopio(world),
+        BarrelVolcanoHinopio(world),
         BowsersKeepDarkRoom(world),
         BowsersKeepCrocoShop1(world),
         BowsersKeepCrocoShop2(world),
+        BowsersKeepMagikoopa(world),
         BowsersKeepInvisibleBridge1(world),
         BowsersKeepInvisibleBridge2(world),
         BowsersKeepInvisibleBridge3(world),
@@ -1788,53 +4709,196 @@ def get_default_chests(world):
         FactoryConveyorPlatforms2(world),
         FactoryBehindSnakes1(world),
         FactoryBehindSnakes2(world),
-
-        # NPC rewards
-        ToadRescue1(world),
-        ToadRescue2(world),
-        HammerBrosReward(world),
-        WalletGuy1(world),
-        WalletGuy2(world),
-        MushroomKingdomStore(world),
-        PeachSurprise(world),
-        InvasionFamily(world),
-        InvasionGuestRoom(world),
-        InvasionGuard(world),
-        Croco1Reward(world),
-        PandoriteReward(world),
-        MidasRiverFirstTime(world),
-        RoseTownToad(world),
-        Gaz(world),
-        TreasureSeller1(world),
-        TreasureSeller2(world),
-        TreasureSeller3(world),
-        CrocoFlunkie1(world),
-        CrocoFlunkie2(world),
-        CrocoFlunkie3(world),
-        BoosterTowerRailway(world),
-        BoosterTowerChomp(world),
-        BoosterTowerCurtainGame(world),
-        SeasideTownRescue(world),
-        SunkenShip3DMaze(world),
-        SunkenShipCannonballPuzzle(world),
-        SunkenShipHidonReward(world),
-        BelomeTempleTreasure1(world),
-        BelomeTempleTreasure2(world),
-        BelomeTempleTreasure3(world),
-        JinxDojoReward(world),
-        CulexReward(world),
-        SuperJumps30(world),
-        SuperJumps100(world),
-        ThreeMustyFears(world),
-        TroopaClimb(world),
-        DodoReward(world),
-        NimbusLandInn(world),
-        NimbusLandPrisoners(world),
-        NimbusLandSignalRing(world),
-        NimbusLandCellar(world),
         FactoryToadGift(world),
-        GoombaThumping1(world),
-        GoombaThumping2(world),
-        CricketPieReward(world),
-        CricketJamReward(world),
+
+    ]
+
+def get_freestanding_item_checks(world):
+    """Get reward lists for freestanding coins, frog coins, flowers, and mushrooms.
+
+    Args:
+        world (randomizer.logic.main.GameWorld):
+
+    Returns:
+        list[ItemLocation]: List of default freestanding objects.
+    """
+    return [
+        # Chests
+        BanditsWayCoin1(world),
+        BanditsWayCoin2(world),
+        BanditsWayCoin3(world),
+        MidasRiverBottomLeftCave(world),
+        MidasRiverBottomRightCave(world),
+        RoseWayFlower(world),
+        RoseWayMushroom(world),
+        RoseWayCoin1(world),
+        RoseWayCoin2(world),
+        RoseWayCoin3(world),
+        RoseWayCoin4(world),
+        RoseWayCoin5(world),
+        PipeVaultSlideCoin1(world),
+        PipeVaultSlideCoin2(world),
+        PipeVaultSlideCoin3(world),
+        PipeVaultSlideCoin4(world),
+        PipeVaultSlideCoin5(world),
+        PipeVaultSlideFrogCoin(world),
+        BoosterPassBush(world),
+        BoosterPassFlower(world),
+        BoosterTowerFrogCoin1(world),
+        BoosterTowerFrogCoin2(world),
+        BoosterTowerFrogCoin3(world),
+        BoosterTowerFrogCoin4(world),
+        BoosterTowerCoin1(world),
+        BoosterTowerCoin2(world),
+        BoosterTowerCoin3(world),
+        BoosterTowerCoin4(world),
+        BoosterTowerCoin5(world),
+        BoosterTowerCoin6(world),
+        BoosterTowerCoin7(world),
+        BoosterTowerCoin8(world),
+        BoosterTowerCoin9(world),
+        BoosterTowerParachuteCrevice(world),
+        SunkenShipRatStairsFlower(world),
+        SunkenShipUnderwaterFrogCoin1(world),
+        SunkenShipUnderwaterFrogCoin2(world),
+        SunkenShipUnderwaterFrogCoin3(world),
+        SunkenShipUnderwaterFrogCoin4(world),
+        SunkenShipBlooberRoom(world),
+        SunkenShipTrampolinePuzzle(world),
+        SunkenShipTroopaPuzzle(world),
+        SunkenShipCoinSnake(world),
+        SunkenShipBarrelPuzzle(world),
+        BelomeTempleTreasureFlower1(world),
+        BelomeTempleTreasureFlower2(world),
+        BelomeTempleTreasureFlower3(world),
+        BelomeTempleTreasureFlower4(world),
+        BelomeTempleTreasureFrogCoin1(world),
+        BelomeTempleTreasureFrogCoin2(world),
+        BelomeTempleTreasureFrogCoin3(world),
+        BelomeTempleTreasureFrogCoin4(world),
+        BelomeTempleTreasureFrogCoin5(world),
+        BelomeTempleTreasureFrogCoin6(world),
+        BelomeTempleTreasureFrogCoin7(world),
+        BelomeTempleTreasureFrogCoin8(world),
+        BeanValleyBoxBoyRoomHidden(world),
+        BeanValleyBeanstalkFrogCoin(world),
+        BeanValleyBeanstalkCoin1(world),
+        BeanValleyBeanstalkCoin2(world),
+        BeanValleyBeanstalkCoin3(world),
+        BeanValleyEastBeanstalkCoin1(world),
+        BeanValleyEastBeanstalkCoin2(world),
+        BeanValleyEastBeanstalkCoin3(world),
+        BeanValleyEastBeanstalkCoin4(world),
+        BeanValleyEastBeanstalkCoin5(world),
+        BeanValleyWestBeanstalkCoin1(world),
+        BeanValleyWestBeanstalkCoin2(world),
+        BeanValleyWestBeanstalkCoin3(world),
+        BeanValleyWestBeanstalkFrogCoin(world),
+        BeanValleyFirstVineRoomFrogCoin(world),
+        BeanValleyFirstVineRoomMiddleCoin(world),
+        BeanValleyFirstVineRoomUpperCoin(world),
+        BeanValleyFirstVineRoomLowerCoin(world),
+        BarrelVolcanoReverse(world),
+        BarrelVolcanoDonut1(world),
+        BarrelVolcanoDonut2(world),
+        BarrelVolcanoLavaPool(world),
+        BowsersKeepInvisibleBridgeCoin1(world),
+        BowsersKeepInvisibleBridgeCoin2(world),
+        BowsersKeepInvisibleBridgeCoin3(world),
+        BowsersKeepInvisibleBridgeCoin4(world),
+        BowsersKeepCannonballRoomCoin1(world),
+        BowsersKeepCannonballRoomCoin2(world),
+        BowsersKeepCannonballRoomCoin3(world),
+        BowsersKeepCannonballRoomCoin4(world),
+        BowsersKeepCannonballRoomCoin5(world),
+        BowsersKeepCannonballRoomCoin6(world),
+        BowsersKeepCannonballRoomCoin7(world),
+        BowsersKeepCannonballRoomCoin8(world),
+
+    ]
+
+def get_boss_star_piece_checks(world):
+    """Get list of star piece exclusive locations.
+
+    Args:
+        world (randomizer.logic.main.GameWorld):
+
+    Returns:
+        list[ItemLocation]: List of exclusive star piece location objects.
+    """
+    return [
+        MushroomWayStarPiece(world),
+        InvasionStarPiece(world),
+        BanditsWayStarPiece(world),
+        PandoriteBoss(world),
+        KeroSewersBoss(world),
+        ForestMazeBoss(world),
+        MolevilleMinesBoss1(world),
+        MolevilleMinesBoss2(world),
+        BoosterTowerStarPiece1(world),
+        BoosterTowerStarPiece2(world),
+        MarrymoreStarPiece(world),
+        StarHillStarPiece1(world),
+        SeasideTownBoss(world),
+        HidonBoss(world),
+        SunkenShipMidboss(world),
+        SunkenShipBoss(world),
+        LandsEndStarPiece1(world),
+        BelomeTempleBoss(world),
+        DojoBoss1(world),
+        DojoBoss2(world),
+        DojoBoss3(world),
+        DojoBoss4(world),
+        CulexBoss(world),
+        BoxBoyBoss(world),
+        BeanValleyBoss(world),
+        NimbusLandStarPiece1(world),
+        NimbusCastleStarPiece2(world),
+        NimbusCastleStarPiece3(world),
+        BarrelVolcanoBoss1(world),
+        BarrelVolcanoBoss2(world),
+        BowsersKeepBossChester(world),
+        BowsersKeepBoss1(world),
+        BowsersKeepBoss2(world),
+        BowsersKeepBoss3(world),
+        FactoryBoss1(world),
+        FactoryBoss2(world),
+        InnerFactoryBoss1(world),
+        InnerFactoryBoss2(world),
+        InnerFactoryBoss3(world),
+        InnerFactoryBoss4(world)
+    ]
+
+def get_starter_character_checks(world):
+    """Get list of starter character placeholders.
+
+    Args:
+        world (randomizer.logic.main.GameWorld):
+
+    Returns:
+        list[ItemLocation]: List of starter character placeholder objects.
+    """
+    return [
+        StarterCharacter1(world),
+        StarterCharacter2(world),
+        StarterCharacter3(world),
+        StarterCharacter4(world),
+        StarterCharacter5(world)
+
+    ]
+
+def get_recruitable_character_checks(world):
+    """Get list of recruitable character locations.
+
+    Args:
+        world (randomizer.logic.main.GameWorld):
+
+    Returns:
+        list[ItemLocation]: List of recruitable character location objects..
+    """
+    return [
+        MushroomWayCharacter(world),
+        ForestMazeCharacter(world),
+        MolevilleMinesCharacter(world),
+        MarrymoreCharacter(world)
     ]

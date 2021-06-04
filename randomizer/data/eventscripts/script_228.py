@@ -12,7 +12,7 @@ script = [
     {
         "identifier": "EVENT_228_room_41_jump",
         "command": 'jmp_if_7000_equals_short',
-        "args": [41, 'EVENT_228_room_41_set']
+        "args": [41, 'EVENT_228_room_41_logic']
     },
     {
         "identifier": "EVENT_228_room_422_jump",

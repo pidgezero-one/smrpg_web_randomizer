@@ -101,14 +101,11 @@
                     </div>
                 </div>
                 <div class="card-header bg-info text-white" id="review-flags">
-                    <h4 class="card-title">Review Flags</h4>
-                    <h6 class="card-title">Flags in <span class="text-danger">red</span> are considered "hard"
-                        settings and are not recommended for new players.
-                    </h6>
+                    <h4 class="card-title">Review Settings</h4>
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <button type="button" class="btn btn-warning" onclick="applyFlags('');">Clear All Flags</button>
+                        <button type="button" class="btn btn-warning" onclick="applyFlags('');">Reset All to Default</button>
                     </div>
                     <div class="row">
                         {# Show categories and flag inputs. #}
@@ -119,7 +116,7 @@
                                     <div class="card-body">
                                         {# Show flags and options here. #}
                                         {% for flag in category.flags %}
-                                            {% include 'randomizer/_show_flag_ui.html' with flag=flag parent_value='' is_radio=False checked=False %}
+                                            {% include 'randomizer/_show_flag_ui.html' with flag=flag %}
                                         {% endfor %}
                                     </div>
                                 </div>

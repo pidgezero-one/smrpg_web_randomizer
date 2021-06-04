@@ -6,7 +6,6 @@ import random
 from randomizer.data import items, locations, chests
 from randomizer.data.keys import KeyItemLocation
 from randomizer.logic import flags, keys
-from randomizer.logic.flags import PlayableCharacters
 from . import utils
 
 
@@ -28,10 +27,6 @@ def _intershuffle_chests(chest_locations):
             swap = random.choice(options)
             chest.item, swap.item = swap.item, chest.item
 
-def set_item(collection, location, item):
-    for i in range(len(collection)):
-        if utils.isclass_or_instance(collection[i], location):
-            collection[i].item = item
 
 def randomize_all(world):
     """
@@ -40,84 +35,6 @@ def randomize_all(world):
         world (randomizer.logic.main.GameWorld): Game world to randomize.
 
     """
-
-    # populate characters
-    number_of_starting_characters = world.settings.get_flag(flags.StartingCharacters).value
-    starting_party = [None]*5
-    allCharacters = [PlayableCharacters.Mario, PlayableCharacters.Mallow,
-                                 PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
-    charactersInSeed = [c for c in allCharacters if c in world.settings.get_flag(AvailableCharacters).enabled]
-    if len(charactersInSeed) < number_of_starting_characters:
-        raise Exception('not enough characters to fill desired starting party')
-    random.shuffle(charactersInSeed)
-    starter = world.settings.get_flag(flags.StartingCharacter).value
-    if starter != PlayableCharacters.Random:
-        charactersInSeed = [c for c in charactersInSeed if c != starter]
-        charactersInSeed.insert(0, starter)
-    starting_characters = charactersInSeed[:number_of_starting_characters]
-    recruitable_characters = charactersInSeed[number_of_starting_characters:]
-    for i in range(len(starting_characters)):
-        starting_party[i] = starting_characters[i]
-    num_of_recruit_locations = len(world.recruitable_character_checks)
-    recruited_party = [None]*num_of_recruit_locations
-    for i in range(len(recruitable_characters)):
-        recruited_party[i] = recruitable_characters[i]
-    random.shuffle(recruited_party)
-    # set starters
-    for i in range(len(starting_characters)):
-        if i == 0:
-            location = chests.StarterCharacter1
-        elif i == 1:
-            location = chests.StarterCharacter2
-        elif i == 2:
-            location = chests.StarterCharacter3
-        elif i == 3:
-            location = chests.StarterCharacter4
-        elif i == 4:
-            location = chests.StarterCharacter5
-        else:
-            raise Exception("invalid starter character index %i" % i)
-        if starting_characters[i] == PlayableCharacters.Mario:
-            character = items.MarioRecruit
-        elif starting_characters[i] == PlayableCharacters.Mallow:
-            character = items.MallowRecruit
-        elif starting_characters[i] == PlayableCharacters.Geno:
-            character = items.GenoRecruit
-        elif starting_characters[i] == PlayableCharacters.Bowser:
-            character = items.BowserRecruit
-        elif starting_characters[i] == PlayableCharacters.Toadstool:
-            character = items.ToadstoolRecruit
-        elif starting_characters[i] == None:
-            character = None
-        else:
-            raise Exception("invalid character %r" % starting_characters[i])
-        set_item(world.starter_character_checks, location, character)
-
-    recruitable_character_items = []
-    # set recruits
-    for char in recruitable_characters:
-        if char == PlayableCharacters.Mario:
-            recruitable_character_items.append(items.MarioRecruit)
-        elif char == PlayableCharacters.Mallow:
-            recruitable_character_items.append(items.MallowRecruit)
-        elif char == PlayableCharacters.Geno:
-            recruitable_character_items.append(items.GenoRecruit)
-        elif char == PlayableCharacters.Bowser:
-            recruitable_character_items.append(items.BowserRecruit)
-        elif char == PlayableCharacters.Toadstool:
-            recruitable_character_items.append(items.ToadstoolRecruit)
-        elif starting_characters[i] == None:
-            recruitable_character_items.append(None)
-        else:
-            raise Exception("invalid character %r" % starting_characters[i])
-
-        
-        set_item(world.starter_character_checks, location, character)
-
-    # fill in items. event generation can happen in main.py
-    # do animations
-    # will need to sub in characters for animations where no char is recruited (ie who goes in marrymore in a solo challenge?)
-
 
     # Get limitation of items allowed first
     tiers_allowed = 4

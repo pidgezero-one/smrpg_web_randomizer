@@ -3349,21 +3349,49 @@ class RecruitedCharacter(Item):
     starter_script = None
     container_script = None
 
-class PeachRecruit(RecruitedCharacter):
+class MarioRecruit(RecruitedCharacter):
+    index = 220
+    starter_script = 187
+    container_script = 193
+
+class ToadstoolRecruit(RecruitedCharacter):
+    index = 221
     starter_script = 191
     container_script = 197
 
 class MallowRecruit(RecruitedCharacter):
+    index = 222
     starter_script = 188
     container_script = 194
 
 class GenoRecruit(RecruitedCharacter):
+    index = 223
     starter_script = 189
     container_script = 195
 
 class BowserRecruit(RecruitedCharacter):
+    index = 224
     starter_script = 190
     container_script = 196
+
+class SpottedCharacter(Item):
+    starter_script = None
+    container_script = None
+
+class MarioSpotted(SpottedCharacter):
+    index = 225
+
+class ToadstoolSpotted(SpottedCharacter):
+    index = 226
+
+class MallowSpotted(SpottedCharacter):
+    index = 227
+
+class GenoSpotted(SpottedCharacter):
+    index = 228
+
+class BowserSpotted(SpottedCharacter):
+    index = 229
 
 
 # ************************** Shop data classes
