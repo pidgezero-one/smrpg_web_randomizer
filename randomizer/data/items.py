@@ -7,6 +7,8 @@ import math
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 from .characters import Mario, Mallow, Geno, Bowser, Peach
+from randomizer.logic import flags
+from randomizer.logic.flags import FireworksOptions, PlayableCharacters
 
 
 class OverworldItem:
@@ -2535,7 +2537,6 @@ class CarboCookie(RegularItem):
     index = 137
     order = 134
     item_type = 3
-    price = 2
     rare = True
     unique = ItemUnique.Always
     max_allowed = 0
@@ -2548,19 +2549,20 @@ class CarboCookie(RegularItem):
         (2914,
          ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
-    # set price to 0 if shuffle FW is on
+    def __init__(self, world):
+        super().__init__(world)
+        if not (world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks)):
+            self.price = 2
 
 
 class ShinyStone(RegularItem):
     index = 138
     order = 148
     item_type = 3
-    price = 4
     rare = True
     hard_tier = 2
     unique = ItemUnique.Always
     max_allowed = 0
-    shuffle_type = ItemShuffleType.Required
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2569,7 +2571,10 @@ class ShinyStone(RegularItem):
         (2914,
          ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
-    # set price to 0 if shuffle FW is on
+    def __init__(self, world):
+        super().__init__(world)
+        if not (world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks)):
+            self.price = 4
 
 
 class RoomKey(RegularItem):
@@ -2840,7 +2845,6 @@ class Seed(RegularItem):
     order = 146
     item_type = 3
     rare = True
-    hard_tier = 3
     shuffle_type = ItemShuffleType.Required
     unique = ItemUnique.Always
     dialog_replacements = [
@@ -2858,7 +2862,6 @@ class Fertilizer(RegularItem):
     order = 141
     item_type = 3
     rare = True
-    hard_tier = 3
     shuffle_type = ItemShuffleType.Required
     unique = ItemUnique.Always
     dialog_replacements = [
@@ -2942,11 +2945,9 @@ class CricketJam(RegularItem):
 class Fireworks(RegularItem):
     index = 172
     description = ' A gorgeous\x01 firework'
-    # ?
-    # order = 133
     item_type = 3
-    # rare = True
     unique = ItemUnique.Always
+    hard_tier = 2
     chest_events = [3099]
     npc_events = [184]
     overworld_events = [3112]
@@ -2959,7 +2960,10 @@ class Fireworks(RegularItem):
         (2914,
          ''' Item #3: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
-    # set price to 0 if shuffle FW is on
+    def __init__(self, world):
+        super().__init__(world)
+        if not (world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks)):
+            self.price = 500
 
 
 class BrightCard(RegularItem):
@@ -2978,6 +2982,11 @@ class BrightCard(RegularItem):
         (2914,
          ''' Item #3: A “Shiny Card”.\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.CasinoWarp, False):
+            self.price = 1554
+
 
 
 class Mushroom2(RegularItem):
@@ -3053,6 +3062,7 @@ class ProgressiveEgg(MiscReward):
     reuseable = True
     consumable = True
     max_allowed = 3
+    hard_tier = 2
     chest_events = [3087]
     npc_events = [3098]
     overworld_events = [3111]
@@ -3120,7 +3130,7 @@ class BoxBoyFight(MimicFight):
 
 class Coins(MiscReward):
     index = 192
-    hard_tier = 0
+    hard_tier = 1
     amount = 0
     multiplier = 0
     chest_events = [3074]
@@ -3171,6 +3181,7 @@ class Beetlemania(MiscReward):
     index = 164
     description = 'Beetlemania'
     unique = ItemUnique.Always
+    hard_tier = 1
     chest_events = [162]
     npc_events = [161]
     overworld_events = [3109]
@@ -3190,6 +3201,7 @@ class Beetlemania(MiscReward):
 class SlotMachineChest(MiscReward):
     index = 214
     description = 'Slots'
+    hard_tier = 2
     unique = ItemUnique.BalancedOnly
     max_allowed = 3
 
@@ -3199,6 +3211,7 @@ class InfiniteCoins(MiscReward):
     description = 'Infinite coins'
     unique = ItemUnique.Always
     chest_events = [3074]
+    hard_tier = 2
     chest_70A7_lower = 0
     chest_70A7_upper = 15
 
@@ -3257,7 +3270,7 @@ class FrogCoin(MiscReward):
 
 class MultiFrogCoin(MiscReward):
     index = 215
-    hard_tier = 0
+    hard_tier = 2
     amount = 0
     multiplier = 0
     chest_events = [3091]
@@ -3351,26 +3364,31 @@ class RecruitedCharacter(Item):
 
 class MarioRecruit(RecruitedCharacter):
     index = 220
+    description = PlayableCharacters.Mario
     starter_script = 187
     container_script = 193
 
 class ToadstoolRecruit(RecruitedCharacter):
     index = 221
+    description = PlayableCharacters.Toadstool
     starter_script = 191
     container_script = 197
 
 class MallowRecruit(RecruitedCharacter):
     index = 222
+    description = PlayableCharacters.Mallow
     starter_script = 188
     container_script = 194
 
 class GenoRecruit(RecruitedCharacter):
     index = 223
+    description = PlayableCharacters.Geno
     starter_script = 189
     container_script = 195
 
 class BowserRecruit(RecruitedCharacter):
     index = 224
+    description = PlayableCharacters.Bowser
     starter_script = 190
     container_script = 196
 
@@ -3865,6 +3883,14 @@ class MolevilleSwapShop(Shop):
 
 # ********************* Default shop and item lists for world
 
+def get_recruitable_characters(world):
+    return [
+        MarioRecruit(world),
+        MallowRecruit(world),
+        GenoRecruit(world),
+        BowserRecruit(world),
+        ToadstoolRecruit(world)
+    ]
 
 def get_default_items(world):
     """Get default vanilla item list for the world.
@@ -4003,8 +4029,6 @@ def get_default_items(world):
         CastleKey2(world),
         BambinoBomb(world),
         SheepAttack(world),
-        CarboCookie(world),
-        ShinyStone(world),
         RoomKey(world),
         ElderKey(world),
         ShedKey(world),

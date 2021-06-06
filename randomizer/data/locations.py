@@ -8,7 +8,7 @@ from randomizer.data.characters import Mario, Mallow, Peach, Bowser, Geno
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 from randomizer.logic import flags
-from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BarrelVolcanoGating, BowsersKeepGating,  FactoryGating
+from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EnabledRegularChecks
 
 
 class Area(Enum):
@@ -126,12 +126,27 @@ class ItemLocation:
         if self.missable and item.is_key:
             return False
 
-        # If this is a non-depletable chest, it can only contain a frog coin or recovery mushroom.
-        if self.not_depletable and not utils.isclass_or_instance(item, (items.FrogCoin, items.RecoveryMushroom)):
+        # If this is an excluded location, it cannot contain a key item.
+        if item.is_key and (self.description in self.world.settings.get_flag(flags.EnabledRegularChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledFreestandingChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledFreestandingChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledBossChecks).disabled)
             return False
 
-        # Normal locations can be anything except an invincibility star.
-        return not utils.isclass_or_instance(item, items.InvincibilityStar)
+        # Restrict key items based on requirements
+        if item.is_key: 
+            if self.key:
+                return True
+            elif self.world.settings.is_flag_enabled(flags.KeyItemsAnywhere):
+                return True
+            else:
+                return False
+        else:
+            if self.key and self.world.settings.is_flag_enabled(flags.KeyItemsAnywhere):
+                return True
+            elif self.key:
+                return False
+            else:
+                return True
+
+        return True
 
     @property
     def has_item(self):

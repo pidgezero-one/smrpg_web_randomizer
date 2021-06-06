@@ -266,6 +266,7 @@ class GameWorld:
 
         # Items
         self.items = data.items.get_default_items(self)
+        self.recruitable_characters = data.items.get_recruitable_characters(self)
         self.items_dict = dict([(i.index, i) for i in self.items])
 
         # Shops
@@ -284,7 +285,7 @@ class GameWorld:
         self.formation_packs_dict = dict((p.index, p) for p in self.formation_packs)
 
         # Get item location data.
-        self.key_locations = data.keys.get_default_key_item_locations(self)
+        # self.key_locations = data.keys.get_default_key_item_locations(self)
         self.chest_locations = data.chests.get_default_chests(self)
         self.freestanding_item_locations = data.chests.get_freestanding_item_checks(self)
         
