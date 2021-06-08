@@ -8,6 +8,26 @@ from randomizer.data import bosses, enemies
 from . import flags, utils
 
 
+def _boss_star_piece_filter(world, location):
+    """Filter function for boss location star piece shuffle based on whether Culex and/or Bowser's Keep is included.
+
+    Args:
+        world (randomizer.logic.main.GameWorld):
+        location (randomizer.data.bosses.StarLocation):
+
+    Returns:
+        bool: True is location is okay to be included, False otherwise.
+
+    """
+    if not isinstance(location, bosses.StarLocation):
+        return False
+    if isinstance(location, bosses.Culex) and not world.settings.is_flag_enabled(flags.CulexStarShuffle):
+        return False
+    if isinstance(location, bosses.BowsersKeepLocation) and not world.settings.is_flag_enabled(flags.BowsersKeepOpen):
+        return False
+    return True
+
+
 def _boss_fight_filter(world, location):
     """
 
@@ -21,11 +41,8 @@ def _boss_fight_filter(world, location):
     """
     if not isinstance(location, bosses.BossLocation):
         return False
-
-    bosses_to_ignore = world.settings.get_flag(flags.AvailableBosses).disabled
-    if location.description in bosses_to_ignore:
+    if isinstance(location, bosses.Culex) and not world.settings.is_flag_enabled(flags.BossShuffleCulex):
         return False
-
     return True
 
 
@@ -34,7 +51,7 @@ def swapPositions(list, pos1, pos2):
     return list
 
 def randomize_all(world):
-    """Randomize the boss locations.
+    """Randomize all the boss settings for the world.
 
     Args:
         world (randomizer.logic.main.GameWorld): Game world to randomize.
@@ -42,6 +59,19 @@ def randomize_all(world):
     """
     # Open mode-specific shuffles.
     if world.open_mode:
+        # Shuffle boss star locations.
+        if world.settings.is_flag_enabled(flags.StarPieceShuffle):
+            for boss in world.boss_locations:
+                boss.has_star = False
+
+            possible_stars = [b for b in world.boss_locations if _boss_star_piece_filter(world, b)]
+
+            # Check if we're doing 6 or 7 stars.
+            num_stars = 7 if world.settings.is_flag_enabled(flags.SevenStarHunt) else 6
+            star_bosses = random.sample(possible_stars, num_stars)
+            for boss in star_bosses:
+                boss.has_star = True
+
         # Shuffle boss encounters.
         if world.settings.is_flag_enabled(flags.BossShuffle):
             locations = [b for b in world.boss_locations if _boss_fight_filter(world, b)]
@@ -88,7 +118,7 @@ def randomize_all(world):
                     location.music = random.choice(music_choices)
 
             # Scale boss stats accordingly if keep stats not enabled.
-            if world.settings.is_flag_value(flags.BossShuffleScaleStats, True):
+            if not world.settings.is_flag_enabled(flags.BossShuffleKeepStats):
                 # First calculate total stats for each slot based on anchors and stats shuffled already.
                 location_stats = []
                 for location in locations:
@@ -278,8 +308,6 @@ def randomize_all(world):
 
             # Formation 368 is a solo Mad Mallet fight before the factory boss rush.
             # These enemies need to be changed to some other factory enemies when doing boss shuffle.
-            # TODO: See if we can dupe Mad Mallet over an unused enemy and use that here instead
-            # See if we can do that for Bahamutt too, and Snifits
             factory_enemies = [
                 enemies.LilBoo,
                 enemies.MachineMadeShyster,

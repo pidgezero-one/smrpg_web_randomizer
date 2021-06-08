@@ -2281,7 +2281,6 @@ class ShinyStone(Item):
     price = 4
     rare = True
     hard_tier = 2
-    shuffle_type = ItemShuffleType.Required
     dialog_replacements = [
         (2908, ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
         (2911, ''' Item #2: A “Trade Item”. It almost\n feels kind of sinister, somehow...[await][pause] It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]'''),

@@ -8,6 +8,8 @@ from randomizer.logic.patch import Patch
 from randomizer.data.npcmodels import models
 from randomizer.data.roomobjecttables import Rooms
 
+from randomizer.logic.flags import AvailableBosses
+
 
 class Battlefields(IntEnum):
     """Enumeration for ID values for battlefields."""
@@ -109,6 +111,7 @@ class BossLocation:
     model = None
     original_boss = -1
     target_npcs = None
+    description = ""
 
     def __init__(self, world):
         """
@@ -214,6 +217,8 @@ class BowsersKeepLocation(BossAndStarLocation):
 
 # ****************************** Actual location classes
 class HammerBros(BossAndStarLocation):
+    description = AvailableBosses.HammerBro
+    name = "Hammer Bro"
     star_address = 0x1e94ce
     battle_address = 0x1ffd56
     pack_number = 183
@@ -232,6 +237,8 @@ class HammerBros(BossAndStarLocation):
 
 
 class Croco1(BossAndStarLocation):
+    description = AvailableBosses.Croco1
+    name = "Croco"
     star_address = 0x1e94fa
     battle_address = 0x1f3a54
     pack_number = 163
@@ -264,6 +271,8 @@ class Croco1(BossAndStarLocation):
 
 
 class Mack(BossAndStarLocation):
+    description = AvailableBosses.Mack
+    name = "Mack"
     star_address = 0x1e9951
     has_star = True
     battle_address = 0x1e2d35
@@ -317,6 +326,8 @@ class Mack(BossAndStarLocation):
 
 
 class Pandorite(BossAndStarLocation):
+    description = AvailableBosses.Pandorite
+    name = "Pandorite"
     star_address = 0x1e9517
     battle_address = 0x200a30
     pack_number = 156
@@ -333,6 +344,8 @@ class Belome1(BossAndStarLocation):
     music = BattleMusic.Boss1
     sprite_height = 54
     sprite_width = 49
+    description = AvailableBosses.Belome1
+    name = "Belome"
     model = {**models[371]}
     target_npcs = [
         {
@@ -344,6 +357,8 @@ class Belome1(BossAndStarLocation):
 
 
 class Bowyer(BossAndStarLocation):
+    description = AvailableBosses.Bowyer
+    name = "Bowyer"
     star_address = 0x1e953d
     has_star = True
     battle_address = 0x1fc4f3
@@ -365,6 +380,8 @@ class Bowyer(BossAndStarLocation):
 
 
 class Croco2(BossAndStarLocation):
+    description = AvailableBosses.Croco2
+    name = "Croco"
     star_address = 0x1e95bd
     battle_address = 0x1e9554
     pack_number = 164
@@ -404,6 +421,8 @@ class Croco2(BossAndStarLocation):
 
 
 class Punchinello(BossAndStarLocation):
+    description = AvailableBosses.Punchinello
+    name = "Punchinello"
     star_address = 0x1e96d9
     has_star = True
     battle_address = 0x1e693c
@@ -424,6 +443,8 @@ class Punchinello(BossAndStarLocation):
 
 
 class Booster(BossAndStarLocation):
+    description = AvailableBosses.Booster
+    name = "Booster"
     star_address = 0x1e96ec
     battle_address = [0x1ef4e8, 0x20d7f5]
     pack_number = 161
@@ -488,6 +509,9 @@ class ClownBros(BossAndStarLocation):
     battlefield = Battlefields.ClownBros
     music = BattleMusic.Boss1
     original_boss = 192
+    description = AvailableBosses.KnifeGuyGrateGuy
+    name = "Grate Guy"
+    model = {**models[452]}
 
 
 class Bundt(BossAndStarLocation):
@@ -496,6 +520,8 @@ class Bundt(BossAndStarLocation):
     pack_number = 176
     battlefield = Battlefields.Bundt
     music = BattleMusic.Boss1
+    description = AvailableBosses.Bundt
+    name = "Bundt"
     model = {**models[470]}
     target_npcs = [
         {
@@ -535,6 +561,8 @@ class KingCalamari(BossAndStarLocation):
     battlefield = Battlefields.SunkenShip
     music = BattleMusic.Boss1
     sprite_width = 48
+    description = AvailableBosses.KingCalamari
+    name = "King Calamari"
     model = {**models[168]}
     target_npcs = [
         {
@@ -551,6 +579,8 @@ class Hidon(BossAndStarLocation):
     battle_address = 0x200a37
     pack_number = 157
     battlefield = Battlefields.SunkenShip
+    description = AvailableBosses.Hidon
+    name = "Hidon"
     original_boss = 87
     model = {**models[196]}
 
@@ -561,6 +591,8 @@ class Johnny(BossAndStarLocation):
     pack_number = 166
     battlefield = Battlefields.SunkenShip
     music = BattleMusic.Boss1
+    description = AvailableBosses.Johnny
+    name = "Johnny"
     model = {**models[52]}
     target_npcs = [
         {
@@ -587,6 +619,8 @@ class Johnny(BossAndStarLocation):
 
 
 class Yaridovich(BossAndStarLocation):
+    description = AvailableBosses.Yaridovich
+    name = "Yaridovich"
     star_address = 0x1e97cc
     has_star = True
     battle_address = 0x1ed255
@@ -651,9 +685,14 @@ class Mokura(BossAndStarLocation):
     sprite_height = 38
     sprite_width = 48
     original_boss = 148
+    description = AvailableBosses.Mokura
+    name = "Mokura"
+    model = {**models[201]}
 
 
 class Belome2(BossAndStarLocation):
+    description = AvailableBosses.Belome2
+    name = "Belome"
     star_address = 0x1e9813
     battle_address = 0x1e97dd
     pack_number = 169
@@ -672,6 +711,8 @@ class Belome2(BossAndStarLocation):
 
 
 class Jagger(BossAndStarLocation):
+    description = AvailableBosses.Jagger
+    name = "Jagger"
     star_address = 0x1e99e2
     battle_address = 0x1f6ca4
     pack_number = 189
@@ -688,7 +729,9 @@ class Jagger(BossAndStarLocation):
     dialogs_to_replace = [3044, 3352]
 
 
-class Jinx1(BossLocation):
+class Jinx1(BossAndStarLocation):
+    description = AvailableBosses.Jinx1
+    name = "Jinx"
     battle_address = 0x1f6e8f
     pack_number = 178
     battlefield = Battlefields.JinxDojo
@@ -704,7 +747,9 @@ class Jinx1(BossLocation):
     original_boss = 195
 
 
-class Jinx2(BossLocation):
+class Jinx2(BossAndStarLocation):
+    description = AvailableBosses.Jinx2
+    name = "Jinx"
     battle_address = 0x1f6e96
     pack_number = 187
     battlefield = Battlefields.JinxDojo
@@ -721,6 +766,8 @@ class Jinx2(BossLocation):
 
 
 class Jinx3(BossAndStarLocation):
+    description = AvailableBosses.Jinx3
+    name = "Jinx"
     star_address = 0x1e9834
     battle_address = 0x1f6e9d
     pack_number = 188
@@ -739,6 +786,8 @@ class Jinx3(BossAndStarLocation):
 
 
 class Culex(BossAndStarLocation):
+    description = AvailableBosses.Culex
+    name = "Culex"
     star_address = 0x1e98c9
     battle_address = 0x1f6fd7
     pack_number = 216
@@ -759,9 +808,13 @@ class BoxBoy(BossAndStarLocation):
     pack_number = 158
     battlefield = Battlefields.KeroSewers
     original_boss = 134
+    description = AvailableBosses.BoxBoy
+    name = "Box Boy"
 
 
 class MegaSmilax(BossAndStarLocation):
+    description = AvailableBosses.Megasmilax
+    name = "Megasmilax"
     star_address = 0x1e98dc
     battle_address = 0x1fdb4f
     pack_number = 173
@@ -778,6 +831,8 @@ class MegaSmilax(BossAndStarLocation):
 
 
 class Dodo(BossAndStarLocation):
+    description = AvailableBosses.Dodo
+    name = "Dodo"
     star_address = 0x1e98ef
     battle_address = [0x1f7a1b, 0x209405]
     pack_number = 208
@@ -804,6 +859,8 @@ class Dodo(BossAndStarLocation):
 
 
 class Birdo(BossAndStarLocation):
+    description = AvailableBosses.Birdetta
+    name = "Birdetta"
     star_address = 0x1e9902
     battle_address = 0x20a397
     pack_number = 175
@@ -814,6 +871,8 @@ class Birdo(BossAndStarLocation):
 
 
 class Valentina(BossAndStarLocation):
+    description = AvailableBosses.Valentina
+    name = "Valentina"
     star_address = 0x1e9915
     battle_address = 0x1ea5dd
     pack_number = 171
@@ -913,6 +972,8 @@ class Valentina(BossAndStarLocation):
 
 
 class CzarDragon(BossAndStarLocation):
+    description = AvailableBosses.CzarDragon
+    name = "Czar Dragon"
     star_address = 0x1e9928
     battle_address = 0x204100
     pack_number = 172
@@ -934,6 +995,8 @@ class CzarDragon(BossAndStarLocation):
 
 
 class AxemRangers(BossAndStarLocation):
+    description = AvailableBosses.AxemRangers
+    name = "Axem Red"
     star_address = 0x1e993b
     has_star = True
     battle_address = 0x2046fc
@@ -978,7 +1041,9 @@ class AxemRangers(BossAndStarLocation):
     ]
     original_boss = 245
 
-class Chester(BowsersKeepLocation):
+class Chester(BossAndStarLocation):
+    description = AvailableBosses.chester
+    name = "Chester"
     pack_number = 235
     battlefield = Battlefields.BowsersKeep
     music = BattleMusic.Normal 
@@ -993,6 +1058,8 @@ class Chester(BowsersKeepLocation):
 
 
 class Magikoopa(BowsersKeepLocation):
+    description = AvailableBosses.Magikoopa
+    name = "Magikoopa"
     star_address = 0x1e9a1b
     battle_address = 0x1f8847
     pack_number = 209
@@ -1033,6 +1100,8 @@ class Magikoopa(BowsersKeepLocation):
 
 
 class Boomer(BowsersKeepLocation):
+    description = AvailableBosses.Boomer
+    name = "Boomer"
     star_address = 0x1e9a2e
     battle_address = 0x1f8a3a
     pack_number = 210
@@ -1052,6 +1121,8 @@ class Boomer(BowsersKeepLocation):
 
 
 class Exor(BowsersKeepLocation):
+    description = AvailableBosses.Exor
+    name = "Exor"
     star_address = 0x1e9a41
     battle_address = 0x1f8a58
     pack_number = 186
@@ -1062,6 +1133,8 @@ class Exor(BowsersKeepLocation):
 
 
 class Countdown(BossLocation):
+    description = AvailableBosses.CountDown
+    name = "Count Down"
     battle_address = 0x1fe11d
     pack_number = 174
     battlefield = Battlefields.Gate
@@ -1077,6 +1150,8 @@ class Countdown(BossLocation):
 
 
 class CloakerDomino(BossLocation):
+    description = AvailableBosses.CloakerDomino
+    name = "Cloaker"
     battle_address = 0x1f61d9
     pack_number = 184
     battlefield = Battlefields.Gate
@@ -1085,6 +1160,8 @@ class CloakerDomino(BossLocation):
 
 
 class Clerk(BossLocation):
+    description = AvailableBosses.Clerk
+    name = "Clerk"
     battle_address = 0x1fe3ec
     pack_number = 146
     battlefield = Battlefields.Factory
@@ -1100,6 +1177,8 @@ class Clerk(BossLocation):
 
 
 class Manager(BossLocation):
+    description = AvailableBosses.Manager
+    name = "Manager"
     battle_address = 0x1fe819
     pack_number = 147
     battlefield = Battlefields.Factory
@@ -1115,6 +1194,8 @@ class Manager(BossLocation):
 
 
 class Director(BossLocation):
+    description = AvailableBosses.Director
+    name = "Director"
     battle_address = 0x1fea21
     pack_number = 148
     battlefield = Battlefields.Factory
@@ -1130,6 +1211,8 @@ class Director(BossLocation):
 
 
 class Gunyolk(BossLocation):
+    description = AvailableBosses.Gunyolk
+    name = "Factory Chief"
     battle_address = 0x1fe247
     pack_number = 149
     battlefield = Battlefields.Factory
@@ -1203,6 +1286,7 @@ def get_default_boss_locations(world):
         Hidon(world),
         Johnny(world),
         Yaridovich(world),
+        Mokura(world),
         Belome2(world),
         Jagger(world),
         Jinx1(world),
@@ -1216,6 +1300,7 @@ def get_default_boss_locations(world):
         Valentina(world),
         CzarDragon(world),
         AxemRangers(world),
+        Chester(world),
         Magikoopa(world),
         Boomer(world),
         Exor(world),

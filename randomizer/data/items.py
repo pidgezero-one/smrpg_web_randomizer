@@ -35,6 +35,7 @@ overworld_items = {
     "star_piece": OverworldItem(28, 591),
     "bomb": OverworldItem(37, 15),
     "egg": OverworldItem(462, 15),
+    "nothing": OverworldItem(255, 164),
     "default": OverworldItem(195, 773),
 }
 
@@ -106,7 +107,7 @@ class Item:
     rank_order_reverse = 0
     arbitrary_value = 0
     vanilla_shop = False
-    hard_tier = 0
+    tier = 0
     magic_weapon = False
 
     # Shuffle event builders
@@ -120,6 +121,9 @@ class Item:
     overworld_events = []
     overworld_midas_events = []
     dialog_replacements = []
+
+    can_be_key = False
+    special_equip = False
 
     # Flag to override whether we include the item stats in the patch data.  By default, we only include equipment but
     # a small handful of consumable items have their effects shuffled as well.
@@ -168,7 +172,8 @@ class Item:
     @property
     def is_key(self):
         """:rtype: bool"""
-        return not (self.is_equipment or self.consumable) and self.price == 0
+        return (self.can_be_key and not (self.is_equipment or self.consumable) and self.price == 0) or self.index == 230
+        # 230 = star piece
 
     @property
     def is_frog_coin_item(self):
@@ -513,6 +518,7 @@ class RegularItem(Item):
     npc_events = [160]
     overworld_events = [165]
     overworld_midas_events = [2820]
+    can_be_key = True
 
     def __init__(self, world):
         """
@@ -568,6 +574,7 @@ class FroggieStick(RegularItem):
     variance = 2
     price = 180
     rare = True
+    special_equip = True
     unique = ItemUnique.BalancedOnly
     dialog_replacements = [
         (2908,
@@ -648,6 +655,7 @@ class Chomp(RegularItem):
     price = 140
     rare = True
     unique = ItemUnique.BalancedOnly
+    special_equip = True
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Chain Chomp”!\n It's hungry to stir up some trouble.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -1004,6 +1012,7 @@ class LazyShellWeapon(RegularItem):
     price = 200
     rare = True
     unique = ItemUnique.BalancedOnly
+    special_equip = True
     dialog_replacements = [
         (2908,
          ''' Item #1: An “Oversized Shell”!\n You could do some real damage\n with this.[await][await] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -1488,6 +1497,7 @@ class SuperSuit(RegularItem):
     status_immunities = [0, 1, 2, 3, 4, 5, 6]
     price = 700
     rare = True
+    special_equip = True
     effect_type = "elemental immunity"
     unique = ItemUnique.BalancedOnly
     dialog_replacements = [
@@ -1514,6 +1524,7 @@ class LazyShellArmor(RegularItem):
     magic_defense = 127
     elemental_immunities = [4, 5, 6, 7]
     status_immunities = [0, 1, 2, 3, 4, 5, 6]
+    special_equip = True
     price = 222
     rare = True
     effect_type = "elemental immunity"
@@ -1541,6 +1552,7 @@ class ZoomShoes(RegularItem):
     price = 100
     model = overworld_items["shoes"]
     unique = ItemUnique.BalancedOnly
+    special_equip = True
     dialog_replacements = [
         (2908,
          ''' Item #1: “Pegasus Boots”!\n These will make you fast like Sonic![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -1710,6 +1722,7 @@ class AttackScarf(RegularItem):
     price = 1500
     rare = True
     unique = ItemUnique.BalancedOnly
+    special_equip = True
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Jumper's Scarf”!\n It could save your life![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -1854,6 +1867,7 @@ class GhostMedal(RegularItem):
     rare = True
     effect_type = "buffs"
     unique = ItemUnique.BalancedOnly
+    special_equip = True
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Scavenger's Prize”!\n It resembles a medal of honor.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -1875,6 +1889,7 @@ class JinxBelt(RegularItem):
     attack = 27
     defense = 27
     prevent_ko = True
+    special_equip = True
     price = 1998
     rare = True
     unique = ItemUnique.BalancedOnly
@@ -1972,6 +1987,7 @@ class QuartzCharm(RegularItem):
     effect_type = "buffs"
     model = overworld_items["ring"]
     unique = ItemUnique.BalancedOnly
+    special_equip = True
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Crystal Ring”!\n It could save your life![await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -1991,7 +2007,7 @@ class Mushroom(RegularItem):
     price = 4
     basic = True
     vanilla_shop = True
-    hard_tier = 1
+    tier = 1
     model = overworld_items["mushroom_item"]
 
 
@@ -2004,7 +2020,7 @@ class MidMushroom(RegularItem):
     price = 20
     basic = True
     vanilla_shop = True
-    hard_tier = 2
+    tier = 2
     model = overworld_items["mushroom_item"]
 
 
@@ -2017,7 +2033,7 @@ class MaxMushroom(RegularItem):
     price = 78
     basic = True
     vanilla_shop = True
-    hard_tier = 3
+    tier = 3
     model = overworld_items["mushroom_item"]
 
 
@@ -2030,7 +2046,7 @@ class HoneySyrup(RegularItem):
     price = 10
     basic = True
     vanilla_shop = True
-    hard_tier = 1
+    tier = 1
 
 
 class MapleSyrup(RegularItem):
@@ -2042,7 +2058,7 @@ class MapleSyrup(RegularItem):
     price = 30
     basic = True
     vanilla_shop = True
-    hard_tier = 2
+    tier = 2
 
 
 class RoyalSyrup(RegularItem):
@@ -2054,7 +2070,7 @@ class RoyalSyrup(RegularItem):
     price = 101
     rare = True
     basic = True
-    hard_tier = 3
+    tier = 3
 
 
 class PickMeUp(RegularItem):
@@ -2066,7 +2082,7 @@ class PickMeUp(RegularItem):
     price = 5
     basic = True
     vanilla_shop = True
-    hard_tier = 1
+    tier = 1
 
 
 class AbleJuice(RegularItem):
@@ -2078,7 +2094,7 @@ class AbleJuice(RegularItem):
     price = 4
     basic = True
     vanilla_shop = True
-    hard_tier = 1
+    tier = 1
 
 
 class Bracer(RegularItem):
@@ -2092,7 +2108,7 @@ class Bracer(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    hard_tier = 2
+    tier = 2
     rank_value = 10
 
 
@@ -2107,7 +2123,7 @@ class Energizer(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    hard_tier = 2
+    tier = 2
 
 
 class YoshiAde(RegularItem):
@@ -2119,7 +2135,7 @@ class YoshiAde(RegularItem):
     status_buffs = [3, 4, 5, 6]
     price = 200
     rare = True
-    hard_tier = 3
+    tier = 3
 
 
 class RedEssence(RegularItem):
@@ -2131,7 +2147,7 @@ class RedEssence(RegularItem):
     status_immunities = [7]
     price = 400
     rare = True
-    hard_tier = 4
+    tier = 4
 
 
 class KerokeroCola(RegularItem):
@@ -2142,7 +2158,7 @@ class KerokeroCola(RegularItem):
     consumable = True
     price = 400
     vanilla_shop = True
-    hard_tier = 4
+    tier = 4
 
 
 class YoshiCookie(RegularItem):
@@ -2153,7 +2169,7 @@ class YoshiCookie(RegularItem):
     consumable = True
     price = 100
     rare = True
-    hard_tier = 1
+    tier = 1
 
 
 class PureWater(RegularItem):
@@ -2164,7 +2180,7 @@ class PureWater(RegularItem):
     consumable = True
     price = 150
     rare = True
-    hard_tier = 1
+    tier = 1
 
 
 class SleepyBomb(RegularItem):
@@ -2178,7 +2194,7 @@ class SleepyBomb(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    hard_tier = 1
+    tier = 1
 
 
 class BadMushroom(RegularItem):
@@ -2190,7 +2206,7 @@ class BadMushroom(RegularItem):
     status_immunities = [2]
     price = 30
     vanilla_shop = True
-    hard_tier = 2
+    tier = 2
     model = overworld_items["mushroom_item"]
 
 
@@ -2202,7 +2218,7 @@ class FireBomb(RegularItem):
     consumable = True
     price = 200
     vanilla_shop = True
-    hard_tier = 3
+    tier = 3
 
 
 class IceBomb(RegularItem):
@@ -2213,7 +2229,7 @@ class IceBomb(RegularItem):
     consumable = True
     price = 250
     vanilla_shop = True
-    hard_tier = 3
+    tier = 3
 
 
 class FlowerTab(RegularItem):
@@ -2224,7 +2240,7 @@ class FlowerTab(RegularItem):
     consumable = True
     price = 200
     rare = True
-    hard_tier = 2
+    tier = 2
 
 
 class FlowerJar(RegularItem):
@@ -2235,7 +2251,7 @@ class FlowerJar(RegularItem):
     consumable = True
     price = 600
     rare = True
-    hard_tier = 3
+    tier = 3
 
 
 class FlowerBox(RegularItem):
@@ -2246,7 +2262,7 @@ class FlowerBox(RegularItem):
     consumable = True
     price = 1000
     rare = True
-    hard_tier = 4
+    tier = 4
 
 
 class YoshiCandy(RegularItem):
@@ -2258,7 +2274,7 @@ class YoshiCandy(RegularItem):
     price = 140
     rare = True
     basic = True
-    hard_tier = 2
+    tier = 2
 
 
 class FroggieDrink(RegularItem):
@@ -2269,7 +2285,7 @@ class FroggieDrink(RegularItem):
     consumable = True
     price = 16
     vanilla_shop = True
-    hard_tier = 1
+    tier = 1
 
 
 class MukuCookie(RegularItem):
@@ -2281,7 +2297,7 @@ class MukuCookie(RegularItem):
     status_immunities = [0, 1, 2, 3, 4, 5, 6]
     price = 69
     vanilla_shop = True
-    hard_tier = 3
+    tier = 3
 
 
 class Elixir(RegularItem):
@@ -2292,7 +2308,7 @@ class Elixir(RegularItem):
     consumable = True
     price = 48
     vanilla_shop = True
-    hard_tier = 2
+    tier = 2
 
 
 class Megalixir(RegularItem):
@@ -2303,7 +2319,7 @@ class Megalixir(RegularItem):
     consumable = True
     price = 120
     vanilla_shop = True
-    hard_tier = 3
+    tier = 3
     basic = True
 
 
@@ -2312,13 +2328,12 @@ class SeeYa(RegularItem):
     description = 'Run away from\x01battles'
     order = 39
     item_type = 3
-    consumable = True
     reuseable = True
     price = 250
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    hard_tier = 2
+    tier = 2
     unique = ItemUnique.Always
     dialog_replacements = [
         (2908,
@@ -2352,11 +2367,10 @@ class GoodieBag(RegularItem):
     index = 125
     order = 35
     item_type = 3
-    consumable = True
     reuseable = True
     price = 1110
     rare = True
-    hard_tier = 1
+    tier = 1
     unique = ItemUnique.Always
     dialog_replacements = [
         (2908,
@@ -2373,13 +2387,12 @@ class EarlierTimes(RegularItem):
     description = 'Use it to start\x01a battle over'
     order = 34
     item_type = 3
-    consumable = True
     reuseable = True
     price = 375
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    hard_tier = 1
+    tier = 1
     unique = ItemUnique.Always
     dialog_replacements = [
         (2908,
@@ -2400,7 +2413,7 @@ class FreshenUp(RegularItem):
     status_immunities = [0, 1, 2, 3, 4, 5, 6]
     price = 50
     vanilla_shop = True
-    hard_tier = 2
+    tier = 2
 
 
 class RareFrogCoin(RegularItem):
@@ -2426,7 +2439,7 @@ class Wallet(RegularItem):
     item_type = 3
     price = 246
     rare = True
-    hard_tier = 1
+    tier = 1
     unique = ItemUnique.Always
     dialog_replacements = [
         (2908,
@@ -2463,7 +2476,7 @@ class RockCandy(RegularItem):
     consumable = True
     price = 400
     rare = True
-    hard_tier = 4
+    tier = 4
 
 
 class CastleKey1(RegularItem):
@@ -2516,11 +2529,10 @@ class SheepAttack(Item):
     index = 136
     order = 40
     item_type = 3
-    consumable = True
     reuseable = True
     price = 150
     rare = True
-    hard_tier = 2
+    tier = 2
     unique = ItemUnique.Always
     max_allowed = 0
     dialog_replacements = [
@@ -2540,7 +2552,7 @@ class CarboCookie(RegularItem):
     rare = True
     unique = ItemUnique.Always
     max_allowed = 0
-    hard_tier = 1
+    tier = 1
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2560,7 +2572,7 @@ class ShinyStone(RegularItem):
     order = 148
     item_type = 3
     rare = True
-    hard_tier = 2
+    tier = 2
     unique = ItemUnique.Always
     max_allowed = 0
     dialog_replacements = [
@@ -2635,11 +2647,10 @@ class LambsLure(RegularItem):
     index = 143
     order = 36
     item_type = 3
-    consumable = True
     reuseable = True
     price = 40
     rare = True
-    hard_tier = 2
+    tier = 2
     unique = ItemUnique.Always
     max_allowed = 0
     model = overworld_items["egg"]
@@ -2661,18 +2672,17 @@ class FrightBomb(RegularItem):
     consumable = True
     status_immunities = [3]
     price = 100
-    hard_tier = 2
+    tier = 2
 
 
 class MysteryEgg(RegularItem):
     index = 145
     order = 38
     item_type = 3
-    consumable = True
     reuseable = True
     price = 200
     rare = True
-    hard_tier = 1
+    tier = 1
     unique = ItemUnique.Always
     max_allowed = 0
     model = overworld_items["egg"]
@@ -2708,13 +2718,12 @@ class LuckyJewel(RegularItem):
     index = 148
     order = 37
     item_type = 3
-    consumable = True
     reuseable = True
     price = 100
     rare = True
     vanilla_shop = True
     unique = ItemUnique.Always
-    hard_tier = 1
+    tier = 1
     dialog_replacements = [
         (2908,
          ''' Item #1: An “Lucky Jewel”!\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2787,7 +2796,7 @@ class Crystalline(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    hard_tier = 3
+    tier = 3
 
 
 class PowerBlast(RegularItem):
@@ -2801,7 +2810,7 @@ class PowerBlast(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    hard_tier = 3
+    tier = 3
 
 
 class WiltShroom(RegularItem):
@@ -2812,7 +2821,7 @@ class WiltShroom(RegularItem):
     price = 8
     rare = True
     basic = True
-    hard_tier = 1
+    tier = 1
     model = overworld_items["junk"]
 
 
@@ -2824,7 +2833,7 @@ class RottenMush(RegularItem):
     price = 4
     rare = True
     basic = True
-    hard_tier = 1
+    tier = 1
     model = overworld_items["junk"]
 
 
@@ -2836,7 +2845,7 @@ class MoldyMush(RegularItem):
     price = 2
     rare = True
     basic = True
-    hard_tier = 1
+    tier = 1
     model = overworld_items["junk"]
 
 
@@ -2947,7 +2956,7 @@ class Fireworks(RegularItem):
     description = ' A gorgeous\x01 firework'
     item_type = 3
     unique = ItemUnique.Always
-    hard_tier = 2
+    tier = 2
     chest_events = [3099]
     npc_events = [184]
     overworld_events = [3112]
@@ -2973,7 +2982,7 @@ class BrightCard(RegularItem):
     item_type = 3
     rare = True
     unique = ItemUnique.Always
-    hard_tier = 1
+    tier = 1
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Shiny Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2999,7 +3008,7 @@ class Mushroom2(RegularItem):
     price = 4
     basic = True
     vanilla_shop = True
-    hard_tier = 1
+    tier = 1
     include_stats_in_patch = True
     model = overworld_items["mushroom_item"]
 
@@ -3009,11 +3018,10 @@ class StarEgg(RegularItem):
     description = 'Reusable battle\x01item'
     order = 33
     item_type = 3
-    consumable = True
     reuseable = True
     price = 300
     rare = True
-    hard_tier = 4
+    tier = 4
     unique = ItemUnique.Always
     model = overworld_items["egg"]
     dialog_replacements = [
@@ -3062,7 +3070,7 @@ class ProgressiveEgg(MiscReward):
     reuseable = True
     consumable = True
     max_allowed = 3
-    hard_tier = 2
+    tier = 2
     chest_events = [3087]
     npc_events = [3098]
     overworld_events = [3111]
@@ -3106,7 +3114,7 @@ class PandoriteFight(MimicFight):
     index = 211
     description = 'Pandorite fight'
     unique = ItemUnique.Always
-    hard_tier = 1
+    tier = 1
     chest_events = [3124]
 
 
@@ -3114,7 +3122,7 @@ class HidonFight(MimicFight):
     index = 212
     description = 'hidon fight'
     unique = ItemUnique.Always
-    hard_tier = 1
+    tier = 1
     chest_events = [3126]
 
 
@@ -3122,7 +3130,7 @@ class BoxBoyFight(MimicFight):
     index = 213
     description = 'box boy fight'
     unique = ItemUnique.Always
-    hard_tier = 1
+    tier = 1
     chest_events = [2493]
 
 
@@ -3130,7 +3138,7 @@ class BoxBoyFight(MimicFight):
 
 class Coins(MiscReward):
     index = 192
-    hard_tier = 1
+    tier = 1
     amount = 0
     multiplier = 0
     chest_events = [3074]
@@ -3159,7 +3167,7 @@ class Coins(MiscReward):
 
 class Coins10(Coins):
     index = 193
-    hard_tier = 1
+    tier = 1
     overworld_events = [3146]
     overworld_midas_events = [2818]
     model = overworld_items["coin"]
@@ -3168,7 +3176,7 @@ class Coins10(Coins):
 
 class Coins1(Coins):
     index = 194
-    hard_tier = 1
+    tier = 1
     overworld_events = [1293]
     overworld_midas_events = [2819]
     model = overworld_items["small_coin"]
@@ -3181,7 +3189,7 @@ class Beetlemania(MiscReward):
     index = 164
     description = 'Beetlemania'
     unique = ItemUnique.Always
-    hard_tier = 1
+    tier = 1
     chest_events = [162]
     npc_events = [161]
     overworld_events = [3109]
@@ -3201,7 +3209,7 @@ class Beetlemania(MiscReward):
 class SlotMachineChest(MiscReward):
     index = 214
     description = 'Slots'
-    hard_tier = 2
+    tier = 2
     unique = ItemUnique.BalancedOnly
     max_allowed = 3
 
@@ -3211,14 +3219,16 @@ class InfiniteCoins(MiscReward):
     description = 'Infinite coins'
     unique = ItemUnique.Always
     chest_events = [3074]
-    hard_tier = 2
+    tier = 2
     chest_70A7_lower = 0
     chest_70A7_upper = 15
 
 
 class StarPiece(MiscReward):
+    can_be_key = True
+    index = 230
     description = 'Star Hunt star piece'
-    hard_tier = 4
+    tier = 4
     unique = ItemUnique.Always
     max_allowed = 7
     chest_events = [3094, 3092]
@@ -3234,10 +3244,16 @@ class StarPiece(MiscReward):
          ''' Item #3: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
 
+class Nothing(MiscReward):
+    chest_events = [3081]
+    npc_events = [256]
+    model = overworld_items["nothing"]
+    overworld_midas_events = [256]
+    overworld_events = [256]
 
 class Flower(MiscReward):
     index = 198
-    hard_tier = 1
+    tier = 1
     model = overworld_items["flower"]
     chest_70A7_upper = 2
     packet = 35
@@ -3248,7 +3264,7 @@ class Flower(MiscReward):
 
 class RecoveryMushroom(MiscReward):
     index = 199
-    hard_tier = 1
+    tier = 1
     packet = 36
     chest_events = [3072]
     overworld_events = [2822]
@@ -3258,7 +3274,7 @@ class RecoveryMushroom(MiscReward):
 
 class FrogCoin(MiscReward):
     index = 200
-    hard_tier = 1
+    tier = 1
     amount = 0
     model = overworld_items["frog_coin"]
     chest_70A7_upper = 3
@@ -3270,7 +3286,7 @@ class FrogCoin(MiscReward):
 
 class MultiFrogCoin(MiscReward):
     index = 215
-    hard_tier = 2
+    tier = 2
     amount = 0
     multiplier = 0
     chest_events = [3091]
@@ -3295,7 +3311,7 @@ class MultiFrogCoin(MiscReward):
 
 class YouMissed(MiscReward):
     index = 210
-    hard_tier = 1
+    tier = 1
     chest_events = [3081]
 
 
@@ -3303,7 +3319,7 @@ class YouMissed(MiscReward):
 
 class InvincibilityStar(MiscReward):
     """Base class for invincibility stars."""
-    hard_tier = 0
+    tier = 0
     chest_70A7_upper = 1
     chest_events = [3072]
     pass
@@ -3311,48 +3327,48 @@ class InvincibilityStar(MiscReward):
 
 class BanditsWayStar(InvincibilityStar):
     index = 201
-    hard_tier = 1
+    tier = 1
 
 
 class KeroSewersStar(InvincibilityStar):
     index = 202
-    hard_tier = 1
+    tier = 1
     chest_70A7_lower = 1
 
 
 class MolevilleMinesStar(InvincibilityStar):
     index = 203
-    hard_tier = 2
+    tier = 2
     chest_70A7_lower = 2
 
 
 class SeaStar(InvincibilityStar):
     index = 204
-    hard_tier = 3
+    tier = 3
     chest_70A7_lower = 3
 
 
 class LandsEndVolcanoStar(InvincibilityStar):
     index = 205
-    hard_tier = 4
+    tier = 4
     chest_70A7_lower = 5
 
 
 class NimbusLandStar(InvincibilityStar):
     index = 206
-    hard_tier = 2
+    tier = 2
     chest_70A7_lower = 7
 
 
 class LandsEndStar2(InvincibilityStar):
     index = 207
-    hard_tier = 3
+    tier = 3
     chest_70A7_lower = 8
 
 
 class LandsEndStar3(InvincibilityStar):
     index = 208
-    hard_tier = 3
+    tier = 3
     chest_70A7_lower = 9
 
 
@@ -3412,476 +3428,7 @@ class BowserSpotted(SpottedCharacter):
     index = 229
 
 
-# ************************** Shop data classes
-
-class Shop:
-    """Class representing a shop with a list of items."""
-    BASE_ADDRESS = 0x3a44df
-
-    # Default per-shop attributes.
-    index = 0
-    frog_coin_shop = False
-    items = []
-    retain_size = False
-    event_shop = False
-
-    def __init__(self, world):
-        """
-
-        Args:
-            world (randomizer.logic.main.GameWorld):
-
-        """
-        self.world = world
-        # Get actual item instances for this world.
-        self.items = [world.get_item_instance(i) for i in self.items]
-
-    def __str__(self):
-        return "<{}: items {}>".format(self.name, self.items)
-
-    def __repr__(self):
-        return str(self)
-
-    @property
-    def name(self):
-        return self.__class__.__name__
-
-    @property
-    def rank(self):
-        """Rank for the shop based on highest priced item for balancing.
-
-        :rtype: int
-        """
-        maxprice = max([i.price for i in self.items])
-        if self.frog_coin_shop:
-            maxprice += 2000
-        return maxprice
-
-    def get_patch(self):
-        """Get patch for this shop.
-
-        :return: Patch data.
-        :rtype: randomizer.logic.patch.Patch
-        """
-        patch = Patch()
-        base_addr = self.BASE_ADDRESS + (self.index * 16)
-
-        data = bytearray()
-        for item in self.items:
-            data += utils.ByteField(item.index).as_bytes()
-
-        # Fill out extra shop fields with no item value.
-        while len(data) < 15:
-            data += utils.ByteField(255).as_bytes()
-
-        # First byte is shop flags, don't change those.  Put items one byte later.
-        patch.add_data(base_addr + 1, data)
-
-        return patch
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return True
-
-
-class JuiceBarShop(Shop):
-    """Extra subclass to identify juice bar shops."""
-    pass
-
-
-class PartialJuiceBarShop(JuiceBarShop):
-    pass
-
-
-# **************** Actual shop classes
-
-class MushroomKingdomShop(Shop):
-    index = 0
-    items = [Mushroom, HoneySyrup, PickMeUp, AbleJuice,
-             Shirt, Pants, JumpShoes, AntidotePin]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        # For standard mode, make sure the first two characters can equip items.
-        first_chars = set(
-            [c.index for c in self.world.character_join_order[:2]])
-        equip_chars = set([c.index for c in item.equip_chars])
-        can_equip = self.world.open_mode or bool(equip_chars & first_chars)
-        return item.consumable or ((item.is_armor or item.is_accessory) and can_equip)
-
-
-class RoseTownItemShop(Shop):
-    index = 1
-    items = [Mushroom, HoneySyrup, PickMeUp, AbleJuice]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable
-
-
-class RoseTownArmorShop(Shop):
-    index = 2
-    items = [ThickShirt, ThickPants, JumpShoes,
-             AntidotePin, WakeUpPin, TrueformPin, FearlessPin]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        # For standard mode, make sure the first three characters can equip items.
-        first_chars = set(
-            [c.index for c in self.world.character_join_order[:3]])
-        equip_chars = set([c.index for c in item.equip_chars])
-        can_equip = self.world.open_mode or bool(equip_chars & first_chars)
-        return (item.is_armor or item.is_accessory) and can_equip
-
-
-class DiscipleShop(Shop):
-    index = 3
-    frog_coin_shop = True
-    retain_size = True
-    items = [SeeYa, EarlierTimes, ExpBooster, CoinTrick, ScroogeRing]
-
-
-class MolevilleShop(Shop):
-    index = 4
-    items = [PunchGlove, FingerShot, Cymbals, MegaShirt,
-             MegaCape, MegaPants, WorkPants, MidMushroom, MapleSyrup]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        # For standard mode, make sure the first three characters can equip items.
-        first_chars = set(
-            [c.index for c in self.world.character_join_order[:3]])
-        equip_chars = set([c.index for c in item.equip_chars])
-        can_equip = self.world.open_mode or bool(equip_chars & first_chars)
-        return item.consumable or ((item.is_armor or item.is_weapon) and can_equip)
-
-
-class MarrymoreShop(Shop):
-    index = 5
-    items = [SuperHammer, HandGun, WhompGlove, ChompShell, HappyShirt, HappyPants, HappyCape, HappyShell, BtubRing,
-             MidMushroom, MapleSyrup]
-
-    def is_item_allowed(self, item):
-        return item.consumable or item.is_equipment
-
-
-class FrogCoinEmporiumShop(Shop):
-    index = 6
-    frog_coin_shop = True
-    items = [SleepyBomb, Bracer, Energizer, Crystalline, PowerBlast]
-
-
-class SeaShop(Shop):
-    index = 7
-    items = [HurlyGloves, SuperHammer, HandGun, WhompGlove, SailorShirt, SailorPants, SailorCape, NauticaDress,
-             MidMushroom, MapleSyrup, PickMeUp, AbleJuice, FreshenUp]
-
-    def is_item_allowed(self, item):
-        return item.consumable or (item.is_armor or item.is_weapon)
-
-
-class SeasideYaridShop(Shop):
-    index = 8
-    items = [BadMushroom, MukuCookie, FrightBomb, FireBomb, IceBomb]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable
-
-
-class JuiceBarPartial1(PartialJuiceBarShop):
-    index = 9
-    items = [FroggieDrink]
-
-
-class JuiceBarPartial2(PartialJuiceBarShop):
-    index = 10
-    items = [FroggieDrink, Elixir]
-
-
-class JuiceBarPartial3(PartialJuiceBarShop):
-    index = 11
-    items = [FroggieDrink, Elixir, Megalixir]
-
-
-class JuiceBarFull(JuiceBarShop):
-    index = 12
-    items = [FroggieDrink, Elixir, Megalixir, KerokeroCola]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable and not item.reuseable
-
-
-class SeasideWeaponShop(Shop):
-    index = 13
-    items = [TroopaShell, Parasol, HurlyGloves, DoublePunch, RibbitStick, NokNokShell, PunchGlove, FingerShot, Cymbals,
-             ChompShell, SuperHammer, HandGun, WhompGlove, SlapGlove, LuckyHammer]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.is_weapon
-
-
-class SeasideArmorShop(Shop):
-    index = 14
-    items = [SailorShirt, SailorPants, SailorCape, NauticaDress, Shirt, Pants, ThickShirt, ThickPants, MegaShirt,
-             MegaPants, MegaCape, HappyShirt, HappyPants, HappyCape, HappyShell]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.is_armor
-
-
-class SeasideAccessoryShop(Shop):
-    index = 15
-    items = [JumpShoes, AntidotePin, WakeUpPin,
-             FearlessPin, TrueformPin, ZoomShoes]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.is_accessory
-
-
-class SeasideItemShop(Shop):
-    index = 16
-    items = [Mushroom, MidMushroom, HoneySyrup,
-             MapleSyrup, PickMeUp, AbleJuice, FreshenUp]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable
-
-
-class MonstroTownShop(Shop):
-    index = 17
-    items = [SpikedLink, CourageShell, MidMushroom,
-             MapleSyrup, PickMeUp, AbleJuice, FreshenUp]
-
-    def is_item_allowed(self, item):
-        return item.consumable or (item.is_armor or item.is_weapon)
-
-
-class NimbusLandShop(Shop):
-    index = 18
-    items = [MidMushroom, MapleSyrup, PickMeUp, AbleJuice, FreshenUp]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable
-
-
-class HinopioShop(Shop):
-    index = 19
-    items = [FireShirt, FirePants, FireCape, FireShell, FireDress]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.is_armor
-
-
-class BabyGoombaShop(Shop):
-    index = 20
-    items = [Mushroom2]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable
-
-
-class NimbusLandItemWeaponShop(Shop):
-    index = 21
-    items = [MidMushroom, MapleSyrup, PickMeUp, AbleJuice, FreshenUp, MegaGlove, WarFan, HandCannon, StickyGlove,
-             FuzzyShirt, FuzzyPants, FuzzyCape, FuzzyDress]
-
-    def is_item_allowed(self, item):
-        return item.consumable or (item.is_armor or item.is_weapon)
-
-
-class CrocoShop1(Shop):
-    index = 22
-    items = [MidMushroom, MapleSyrup, PickMeUp, FreshenUp,
-             FireShirt, FirePants, FireCape, FireShell, FireDress]
-
-    def is_item_allowed(self, item):
-        return item.consumable or item.is_armor
-
-
-class CrocoShop2(Shop):
-    index = 23
-    items = [MidMushroom, MapleSyrup, PickMeUp, FreshenUp,
-             HeroShirt, PrincePants, StarCape, HealShell, RoyalDress]
-
-    def is_item_allowed(self, item):
-        return item.consumable or item.is_armor
-
-
-class ToadShop(Shop):
-    index = 24
-    items = [MidMushroom, MaxMushroom, MapleSyrup,
-             PickMeUp, AbleJuice, FreshenUp, FroggieDrink]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable
-
-
-class RoomServiceShop(Shop):
-    retain_size = True
-    event_shop = True
-    items = [PickMeUp, KerokeroCola]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable and not item.reuseable
-
-
-class MolevilleSwapShop(Shop):
-    retain_size = True
-    event_shop = True
-    items = [FrightBomb, FireBomb, IceBomb]
-
-    def is_item_allowed(self, item):
-        """Check if an item is allowed in this shop given the game world.
-
-        Args:
-            item (Item):
-
-        Returns:
-            bool: True if item is allowed in this shop/world, False otherwise.
-
-        """
-        return item.consumable and not item.reuseable and item.hard_tier >= 3
-
-# ********************* Default shop and item lists for world
+# ********************* Default item lists for world
 
 def get_recruitable_characters(world):
     return [
@@ -4055,45 +3602,4 @@ def get_default_items(world):
         BrightCard(world),
         Mushroom2(world),
         StarEgg(world),
-    ]
-
-
-def get_default_shops(world):
-    """
-
-    Args:
-        world (randomizer.logic.main.GameWorld):
-
-    Returns:
-        list[Shop]: Default list of items.
-
-    """
-    return [
-        MushroomKingdomShop(world),
-        RoseTownItemShop(world),
-        RoseTownArmorShop(world),
-        DiscipleShop(world),
-        MolevilleShop(world),
-        MarrymoreShop(world),
-        FrogCoinEmporiumShop(world),
-        SeaShop(world),
-        SeasideYaridShop(world),
-        JuiceBarPartial1(world),
-        JuiceBarPartial2(world),
-        JuiceBarPartial3(world),
-        JuiceBarFull(world),
-        SeasideWeaponShop(world),
-        SeasideArmorShop(world),
-        SeasideAccessoryShop(world),
-        SeasideItemShop(world),
-        MonstroTownShop(world),
-        NimbusLandShop(world),
-        HinopioShop(world),
-        BabyGoombaShop(world),
-        NimbusLandItemWeaponShop(world),
-        CrocoShop1(world),
-        CrocoShop2(world),
-        ToadShop(world),
-        RoomServiceShop(world),
-        MolevilleSwapShop(world),
     ]

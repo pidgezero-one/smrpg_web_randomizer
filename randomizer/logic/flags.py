@@ -210,6 +210,18 @@ class EnabledBossChecks(CategorizationFlag):
     options = [o for o in boss_star_piece_locations]
     enabled = [o for o in boss_star_piece_locations]
 
+class StarPiecesRestrictedByArea(BooleanFlag):
+    name = 'Restrict number of star pieces in an area'
+    description = '''If enabled, each of the seven overworld map areas may only contain up to one star piece each.'''
+    modes = ['open']
+    default = False
+
+class StarPieceHints(BooleanFlag):
+    name = 'Signal Ring hints at star pieces'
+    description = '''If equipped, the Signal Ring will play a sound when you enter a world area that contains a Star Piece.'''
+    modes = ['open']
+    default = False
+
 # ******** Party
 
 
@@ -289,7 +301,7 @@ class EquipmentProperties(BooleanFlag):
     name = 'Equipment stats & buffs'
     description = '''Default: The stats and buffs on equipment are unchanged from the original game.
     
-    Some buffs added: The stats and buffs on equipment are mostly unchanged from the original game, except most armors are given one additional property (e.g. Fire Shirt nullifies damage from fire attacks).
+    Some buffs added: The stats and buffs on equipment are mostly unchanged from the original game, except most armors are given one additional property (e.g. Fire Shirt nullifies damage from fire attacks) Additionally, some weapons will boost magic attack instead of physical attack.
     
     Completely random: The stats and buffs on each piece of equipment is randomized.'''
     choices = [o for o in EquipmentPropertiesOptions]
@@ -696,6 +708,14 @@ class ShuffleBeetlemania(BooleanFlag):
     default = False
 
 
+class ShuffleMagikoopaChest(BooleanFlag):
+    name = 'Shuffle Magikoopa\'s coin chest'
+    description = '''If enabled, Magikoopa's infinite coin box could appear in any chest, and the chest in his room will be an item check.'''
+    modes = ['open']
+    default = False
+
+
+
 class KeyItemsAnywhere(BooleanFlag):
     name = '"Special Items" can appear anywhere'
     description = '''If enabled, items belonging to your "Special Items" pocket can appear in any item location.
@@ -709,9 +729,9 @@ class KeyItemsAnywhere(BooleanFlag):
 
 class RestrictSpecialEquips(BooleanFlag):
     name = 'Restrict key item exchange equips & Monstro Town reward equips'
-    description = '''If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will be shuffled within each other's locations, and will not appear anywhere else in the seed.
+    description = '''If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will appear once each, shuffled only within each other's locations. This option ignores your chosen Item Quality setting.
     
-    If disabled, these items can appear anywhere.'''
+    If disabled, these items can appear anywhere, subject to the restrictions of your chosen Item Quality setting.'''
     modes = ['open']
     default = False
 
@@ -771,7 +791,11 @@ class ItemQualities(enum.Enum):
 
 class ItemQuality(SelectOneFlag):
     name = '''Item pool quality'''
-    description = '''Restricts the incidence of certain items within the shuffled pool.'''
+    description = '''Restricts the incidence of certain items within the shuffled pool. 
+
+    If "Original item pool" is selected, two copies of the progressive Mystery Egg will be added to the pool, replacing some small items.
+    
+    If "Completely empty" is selected, any chest which does not contain a required item will be a "You Missed" chest.'''
     modes = ['open']
     choices = [o for o in ItemQualities]
     default = ItemQualities.Original
@@ -1257,7 +1281,9 @@ class EnabledFreestandingChecks(CategorizationFlag):
     name = 'Freestanding coin/flower/mushroom checks'
     description = '''If a check is in the left column, it is eligible to contain items required to complete the seed.
     
-    If a check is in the right column, it will not be shuffled, nor can it contain any items required to complete the seed.'''
+    If a check is in the right column, it will not be shuffled, nor can it contain any items required to complete the seed.
+    
+    If item quality is set to "Completely empty", only checks on the left will be affected.'''
     options = [o for o in freestanding_checks]
     enabled = [o for o in freestanding_checks]
 
@@ -1553,7 +1579,9 @@ class StarPiecesCategory(FlagCategory):
         WinCondition,
         StarPieceAvailability,
         RequireBossFights,
-        EnabledBossChecks
+        EnabledBossChecks,
+        StarPiecesRestrictedByArea,
+        StarPieceHints
     ]
 
 class PartyCategory(FlagCategory):
@@ -1598,6 +1626,7 @@ class ItemsCategory(FlagCategory):
         FireworksSetting,
         PoisonMushroom,
         ShuffleBeetlemania,
+        ShuffleMagikoopaChest,
         KeyItemsAnywhere,
         RestrictSpecialEquips,
         EXPStarsAnywhere,

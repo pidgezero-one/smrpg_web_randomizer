@@ -4,7 +4,7 @@ import collections
 import random
 import inspect
 
-from randomizer.data import characters, spells, palettes, items, chests
+from randomizer.data import characters, spells, palettes
 from randomizer.logic import flags, utils
 
 
@@ -344,6 +344,25 @@ def randomize_all(world):
 
     :type world: randomizer.logic.main.GameWorld
     """
+    # Palettes!!!!
+    def find_subclasses(module, clazz):
+        return [
+            cls
+            for name, cls in inspect.getmembers(module)
+            if inspect.isclass(cls) and issubclass(cls, clazz) and cls != clazz
+        ]
+    mario_palettes = find_subclasses(palettes, palettes.MarioPalette)
+    mallow_palettes = find_subclasses(palettes, palettes.MallowPalette)
+    geno_palettes = find_subclasses(palettes, palettes.GenoPalette)
+    bowser_palettes = find_subclasses(palettes, palettes.BowserPalette)
+    toadstool_palettes = find_subclasses(palettes, palettes.ToadstoolPalette)
+
+    if world.settings.is_flag_enabled(flags.PaletteSwaps):
+        world.characters[0].palette = random.choice(mario_palettes)
+        world.characters[1].palette = random.choice(mallow_palettes)
+        world.characters[2].palette = random.choice(geno_palettes)
+        world.characters[3].palette = random.choice(bowser_palettes)
+        world.characters[4].palette = random.choice(toadstool_palettes)
 
     # Shuffle learned spells for all characters.
     if world.settings.is_flag_enabled(flags.CharacterLearnedSpells):
@@ -385,7 +404,71 @@ def randomize_all(world):
         # Now randomize everything else including the intershuffled bonus values and other levelup growths.
         for character in world.characters:
             _randomize_character(character)
-            
+
+    # If we're shuffling join order, do that now before we finalize the characters.  For standard mode, keep Mario as
+    # the first character and shuffle the others.  For open mode, shuffle the whole list.
+    if world.settings.is_flag_enabled(flags.CharacterJoinOrder):
+        if world.open_mode:
+            random.shuffle(world.character_join_order)
+        else:
+            extra_characters = world.character_join_order[1:]
+            random.shuffle(extra_characters)
+            world.character_join_order = world.character_join_order[:1] + extra_characters
+
+    #No Free Characters and Choose Starting Characters logic - adjust join order where appropriate
+    if world.open_mode:
+        # Fail if starter is excluded, or if everyone excluded
+        if (world.settings.is_flag_enabled(flags.ExcludeMario) and world.settings.is_flag_enabled(
+                flags.StartMario)) or (
+                world.settings.is_flag_enabled(flags.ExcludeMallow) and world.settings.is_flag_enabled(
+            flags.StartMallow)) or (
+                world.settings.is_flag_enabled(flags.ExcludeGeno) and world.settings.is_flag_enabled(
+            flags.StartGeno)) or (
+                world.settings.is_flag_enabled(flags.ExcludeBowser) and world.settings.is_flag_enabled(
+            flags.StartBowser)) or (
+                world.settings.is_flag_enabled(flags.ExcludeToadstool) and world.settings.is_flag_enabled(
+            flags.StartToadstool)):
+            raise flags.FlagError("Cannot exclude your starter")
+        elif world.settings.is_flag_enabled(flags.ExcludeMario) and world.settings.is_flag_enabled(
+                flags.ExcludeMallow) and world.settings.is_flag_enabled(
+            flags.ExcludeGeno) and world.settings.is_flag_enabled(
+            flags.ExcludeBowser) and world.settings.is_flag_enabled(flags.ExcludeToadstool):
+            raise flags.FlagError("Cannot exclude all 5 characters")
+        # Move chosen starting character to front of join order
+        else:
+            for char in world.character_join_order:
+                if (world.settings.is_flag_enabled(flags.StartMario) and char.index == 0) or (
+                        world.settings.is_flag_enabled(flags.StartMallow) and char.index == 4) or (
+                        world.settings.is_flag_enabled(flags.StartGeno) and char.index == 3) or (
+                        world.settings.is_flag_enabled(flags.StartBowser) and char.index == 2) or (
+                        world.settings.is_flag_enabled(flags.StartToadstool) and char.index == 1):
+                    world.character_join_order.insert(0, world.character_join_order.pop(
+                        world.character_join_order.index(char)))
+        #Count number of excluded characters, and empty their slots
+        position_iterator = 0
+        empties = 0
+        world.meta_join_order = world.character_join_order.copy()
+        for char in world.meta_join_order:
+            if (world.settings.is_flag_enabled(flags.ExcludeMario) and char.index == 0) or (
+                    world.settings.is_flag_enabled(flags.ExcludeMallow) and char.index == 4) or (
+                    world.settings.is_flag_enabled(flags.ExcludeGeno) and char.index == 3) or (
+                    world.settings.is_flag_enabled(flags.ExcludeBowser) and char.index == 2) or (
+                    world.settings.is_flag_enabled(flags.ExcludeToadstool) and char.index == 1):
+                world.meta_join_order[position_iterator] = None
+                empties += 1
+            position_iterator += 1
+        #Make sure first three slots are filled when NFC is turned off, when possible
+        if not world.settings.is_flag_enabled(flags.NoFreeCharacters):
+            for i in range(empties):
+                position_iterator = 0
+                for char in world.meta_join_order:
+                    if char is None and position_iterator < 3:
+                        if char in world.meta_join_order:
+                            world.meta_join_order.append(world.meta_join_order.pop(world.meta_join_order.index(char)))
+                        if char in world.character_join_order:
+                            world.character_join_order.append(world.character_join_order.pop(world.character_join_order[position_iterator]))
+                    position_iterator += 1
+
     # Adjust starting levels according to join order.  Get original levels, then update starting levels based on
     # join order with Mallow = 4, Geno = 3, Bowser = 2, Peach = 1.
     orig_levels = {}
@@ -395,41 +478,15 @@ def randomize_all(world):
     # For open mode, make the first three characters level 1 to start.  The final two join at Bowyer and Bundt,
     # so make their levels the same as Geno and Peach respectively.
     if world.open_mode:
-        for l in world.starter_character_checks:
-            if l.has_item:
-                if utils.isclass_or_instance(l.item, items.MarioRecruit):
-                    world.characters[0].starting_level = 1
-                elif utils.isclass_or_instance(l.item, items.MallowRecruit):
-                    world.characters[1].starting_level = 1
-                elif utils.isclass_or_instance(l.item, items.GenoRecruit):
-                    world.characters[2].starting_level = 1
-                elif utils.isclass_or_instance(l.item, items.BowserRecruit):
-                    world.characters[3].starting_level = 1
-                elif utils.isclass_or_instance(l.item, items.ToadstoolRecruit):
-                    world.characters[4].starting_level = 1
-        
-        for l in world.recruitable_character_checks:
-            if l.has_item:
-                lvl = 1
-                if utils.isclass_or_instance(l, chests.MushroomWayCharacter):
-                    lvl = orig_levels[4]
-                elif utils.isclass_or_instance(l, chests.ForestMazeCharacter):
-                    lvl = orig_levels[3]
-                elif utils.isclass_or_instance(l, chests.MolevilleMinesCharacter):
-                    lvl = orig_levels[2]
-                elif utils.isclass_or_instance(l, chests.MarrymoreCharacter):
-                    lvl = orig_levels[1]
-                if utils.isclass_or_instance(l.item, items.MarioRecruit):
-                    world.characters[0].starting_level = lvl
-                elif utils.isclass_or_instance(l.item, items.MallowRecruit):
-                    world.characters[1].starting_level = lvl
-                elif utils.isclass_or_instance(l.item, items.GenoRecruit):
-                    world.characters[2].starting_level = lvl
-                elif utils.isclass_or_instance(l.item, items.BowserRecruit):
-                    world.characters[3].starting_level = lvl
-                elif utils.isclass_or_instance(l.item, items.ToadstoolRecruit):
-                    world.characters[4].starting_level = lvl
-
+        world.character_join_order[0].starting_level = 1
+        if world.settings.is_flag_enabled(flags.NoFreeCharacters):
+            world.character_join_order[1].starting_level = orig_levels[4]
+            world.character_join_order[2].starting_level = orig_levels[2]
+        else:
+            world.character_join_order[1].starting_level = 1
+            world.character_join_order[2].starting_level = 1
+        world.character_join_order[3].starting_level = orig_levels[3]
+        world.character_join_order[4].starting_level = orig_levels[1]
     # For standard mode, just make their levels the same as the vanilla join order.
     else:
         for i, character in enumerate(world.character_join_order[1:]):

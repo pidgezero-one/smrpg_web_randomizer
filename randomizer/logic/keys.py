@@ -139,7 +139,7 @@ def _collect_items(world, collected=None):
     if collected is not None:
         my_items.extend(collected)
 
-    available_locations = [l for l in world.key_locations + world.chest_locations if l.has_item]
+    available_locations = [l for l in world.recruitable_character_checks + world.starter_character_checks + world.chest_locations + world.freestanding_item_locations + world.boss_star_checks if l.has_item]
 
     # Search all locations and collect items until we can't get any more.
     while True:

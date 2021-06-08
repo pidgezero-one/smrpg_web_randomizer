@@ -8,6 +8,7 @@ from inspect import isclass
 from randomizer.data import items
 from randomizer.data.characters import Mario, Mallow, Geno, Bowser, Peach
 from . import flags, utils
+from randomizer.logic.flags import EquipmentPropertiesOptions
 
 
 def _randomize_item(item):
@@ -19,7 +20,7 @@ def _randomize_item(item):
     if not item.is_equipment:
         return
 
-    if item.world.settings.is_flag_enabled(flags.EquipmentStats):
+    if item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random):
         # Randomize number of attributes to go up or down. Guarantee >= 1 attribute goes up, but none go down.
         # For each set, 1/3 chance all non-zero ones go up/down.  Otherwise, weighted random number of stats.
         # ...attributes going up
@@ -92,33 +93,6 @@ def _randomize_item(item):
         if item.variance:
             item.variance = utils.mutate_normal(item.variance, minimum=1, maximum=127)
 
-    if item.world.settings.is_flag_enabled(flags.EquipmentCharacters):
-        # Randomize which characters can equip this item.
-        # Old linear mode logic: Geno can only equip his own weapons, and nobody else can equip his due to softlocks!
-        # This is fixed in open mode.
-        if item.world.open_mode or (not item.is_weapon or Geno not in item.equip_chars):
-            # Pick random number of characters with lower numbers weighted heavier.
-            new_chars = set()
-            num_equippable = random.randint(1, random.randint(1, 5))
-
-            for _ in range(num_equippable):
-                char_choices = {Mario, Mallow, Geno, Bowser, Peach} - new_chars
-
-                # Linear mode: Geno can only equip his own weapons (we checked if this was one of his above).
-                if not item.world.open_mode and item.is_weapon and Geno in char_choices:
-                    char_choices.remove(Geno)
-
-                if not char_choices:
-                    break
-
-                # Now choose a random character to be equipable.
-                char_choices = sorted(char_choices, key=lambda c: c.index)
-                new_chars.add(random.choice(char_choices))
-
-            item.equip_chars = list(new_chars)
-
-    # Shuffle special properties.
-    if item.world.settings.is_flag_enabled(flags.EquipmentBuffs):
         if item.tier == 1:
             odds = 2 / 3
         elif item.tier == 2:
@@ -185,8 +159,7 @@ def _randomize_item(item):
 
             # For certain namesake items, keep their status immunities so people don't get confused for safety.
             guaranteed_immunities = []
-            if (isinstance(item, (items.FearlessPin, items.AntidotePin, items.TrueformPin, items.WakeUpPin)) and
-                    not item.world.settings.is_flag_enabled(flags.EquipmentNoSafetyChecks)):
+            if (isinstance(item, (items.FearlessPin, items.AntidotePin, items.TrueformPin, items.WakeUpPin))):
                 guaranteed_immunities = item.status_immunities
 
             # Status immunities.
@@ -228,6 +201,70 @@ def _randomize_item(item):
                 if utils.coin_flip(odds * buff_odds):
                     item.status_buffs.append(i)
 
+    # "Some buffs added": add one buff to each "standard" armor, make some weapons buff magic
+    elif item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.some_buffs_added):
+        if (isinstance(item, (items.Shirt, items.Pants))):
+            item.status_immunities.append(4)
+        elif (isinstance(item, (items.ThickShirt, items.ThickPants))):
+            item.status_buffs.append(5)
+        elif (isinstance(item, (items.MegaShirt, items.MegaPants, items.MegaCape))):
+            item.status_buffs.append(6)
+        elif (isinstance(item, (items.HappyShirt, items.HappyPants, items.HappyCape, items.HappyShell, items.PolkaDress))):
+            item.elemental_immunities.append(4)
+        elif (isinstance(item, (items.CourageShell))):
+            item.status_immunities.append(3)
+        elif (isinstance(item, (items.FuzzyShirt, items.FuzzyPants, items.FuzzyCape, items.FuzzyDress))):
+            item.elemental_immunities.append(5)
+        elif (isinstance(item, (items.FireShirt, items.FirePants, items.FireCape, items.FireShell, items.FireDress))):
+            item.elemental_immunities.append(6)
+        elif (isinstance(item, (items.HeroShirt))):
+            item.status_immunities.append(6)
+        elif (isinstance(item, (items.PrincePants))):
+            item.status_immunities.append(0)
+        elif (isinstance(item, (items.RoyalDress))):
+            item.status_immunities.append(1)
+        elif (isinstance(item, (items.HealShell))):
+            item.status_immunities.append(2)
+        elif (isinstance(item, (items.StarCape))):
+            item.status_immunities.append(4)
+        elif (isinstance(item, (items.FroggieStick, items.Cymbals, items.RibbitStick, items.SonicCymbal, items.WarFan, items.Parasol))):
+            mag = item.magic_attack
+            atk = item.attack
+            item.attack = mag
+            item.magic_attack = atk
+
+
+    if item.world.settings.is_flag_value(flags.EquipmentNoSafety, True):
+        item.prevent_ko = False
+
+    
+    if item.world.settings.is_flag_enabled(flags.EquipmentCharacters):
+        # Randomize which characters can equip this item.
+        # Old linear mode logic: Geno can only equip his own weapons, and nobody else can equip his due to softlocks!
+        # This is fixed in open mode.
+        if item.world.open_mode or (not item.is_weapon or Geno not in item.equip_chars):
+            # Pick random number of characters with lower numbers weighted heavier.
+            new_chars = set()
+            num_equippable = random.randint(1, random.randint(1, 5))
+
+            for _ in range(num_equippable):
+                char_choices = {Mario, Mallow, Geno, Bowser, Peach} - new_chars
+
+                # Linear mode: Geno can only equip his own weapons (we checked if this was one of his above).
+                if not item.world.open_mode and item.is_weapon and Geno in char_choices:
+                    char_choices.remove(Geno)
+
+                if not char_choices:
+                    break
+
+                # Now choose a random character to be equipable.
+                char_choices = sorted(char_choices, key=lambda c: c.index)
+                new_chars.add(random.choice(char_choices))
+
+            item.equip_chars = list(new_chars)
+
+    
+
 
 def randomize_all(world):
     """Randomize everything for items for a single seed.
@@ -249,7 +286,7 @@ def randomize_all(world):
 
     # Base Shuffle for equipment to set up for further shuffling
     for item in world.items:
-        if not item.is_equipment or not item.world.settings.is_flag_enabled(flags.EquipmentStats):
+        if not item.is_equipment or not item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random):
             continue
         if random.randint(1, 10) == 1:
             item.effect_type = random.choice(["normal", "buffs", "status protection", "elemental resistance", "elemental immunity", "extra stats", "few effects"])
@@ -309,7 +346,7 @@ def randomize_all(world):
     endgame_count = 0
 
     for item in world.items:
-        if not item.is_equipment or not item.world.settings.is_flag_enabled(flags.EquipmentStats):
+        if not item.is_equipment or not item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random):
             continue
         if item.is_weapon:
             temp_weapon_stats = weapon_stats[(item.index - 5)]
@@ -361,7 +398,7 @@ def randomize_all(world):
              item.price = round(high_accessory_costs.pop() / 62.5)
 
     # Designate 1-4 magic weapons
-    if world.settings.is_flag_enabled(flags.EquipmentStats):
+    if item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random):
         magic_weapon_count = random.randint(1, 4)
         magic_weapon_candidates = []
         for item in world.items:
@@ -374,9 +411,9 @@ def randomize_all(world):
     for item in world.items:
         _randomize_item(item)
 
-    # Safety check that at least four tier equips have instant death protection for safety.
-    if (world.settings.is_flag_enabled(flags.EquipmentBuffs) and
-            not world.settings.is_flag_enabled(flags.EquipmentNoSafetyChecks)):
+    # Safety check that at least four equips have instant death protection for safety.
+    if (item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random) and
+            not item.world.settings.is_flag_value(flags.EquipmentNoSafety, True)):
         instant_ko_items = len([item for item in world.items if item.prevent_ko])
         if instant_ko_items < 4:
             top_armor = [item for item in world.items if (item.is_armor or item.is_accessory) and item.tier == 1 and
@@ -418,13 +455,13 @@ def randomize_all(world):
             item.rank_order = (ranks.index(item) + 1 if item in ranks else 0)
             item.rank_order_reverse = (ranks_reverse.index(item) + 1 if item in ranks_reverse else 0)
             if item.rank_order <= 15:
-                item.hard_tier = 4
+                item.tier = 4
             elif item.rank_order <= 35:
-                item.hard_tier = 3
+                item.tier = 3
             elif item.rank_order <= 55:
-                item.hard_tier = 2
+                item.tier = 2
             else:
-                item.hard_tier = 1
+                item.tier = 1
 
     # Useful debug function to print equipment property table.
     """
@@ -439,340 +476,8 @@ def randomize_all(world):
                   + ("Th" if (6 in item.elemental_resistances) else "") + ("Ju" if (7 in item.elemental_resistances) else "")+ ("; " if item.elemental_resistances != [] else "") + ("Buffs: " if item.status_buffs != [] else "")
                   + ("At" if (3 in item.status_buffs) else "") + ("Df" if (4 in item.status_buffs) else "") + ("MA" if (5 in item.status_buffs) else "") + ("MD" if (6 in item.status_buffs) else ""))
     """
-
-    # Shuffle shop contents and prices.
-    free_shops = world.settings.is_flag_enabled(flags.FreeShops)
-
-    if world.settings.is_flag_enabled(flags.ShopShuffle):
-        assignments = {}
-
-        # ************************ Phase 0: Calculate raw value to use as basis for pricing as well as Sb, Tb assignment
-
-        # Calculate raw rank value
-
-        # Exclude wallet, shiny stone, carbo cookie
-        excluded_items = [129, 137, 138]
-
-        # Check for Sx - Goodie Bag only
-        if world.settings.is_flag_enabled(flags.ShopTierX):
-            for shop in world.shops:
-                shop.items = [world.get_item_instance(items.GoodieBag)]
-        else:
-            tiers_allowed = 4
-            if world.settings.is_flag_enabled(flags.ShopTier1):
-                tiers_allowed = 1
-            elif world.settings.is_flag_enabled(flags.ShopTier2):
-                tiers_allowed = 2
-            elif world.settings.is_flag_enabled(flags.ShopTier3):
-                tiers_allowed = 3
-
-            # Always exclude special equips from shops if Mx is set
-            if world.settings.is_flag_enabled(flags.MonstroExcludeElsewhere):
-                for item in world.items:
-                    if world.settings.is_flag_enabled(flags.MonstroTownLite):
-                        if item.index in [69, 81, 89, 94, 90]:
-                            item.hard_tier = 5
-                    elif world.settings.is_flag_enabled(flags.MonstroTownHard):
-                        if item.index in [69, 70, 74, 81, 89, 94, 90, 6, 11, 33]:
-                            item.hard_tier = 5
-
-            # Establish an array for each shop's items
-            for shop in world.shops:
-                assignments[shop.index] = []
-
-            done_already = set()
-
-            # Function determining what can go in a shop, based on flags selected
-            def get_valid_items(base, shop, exclude=None):
-                if exclude is None:
-                    exclude = []
-                valid_items = []
-
-                # Sb and Sv - obsolete
-                if (world.settings.is_flag_enabled(flags.ShopShuffleBalanced) and
-                        world.settings.is_flag_enabled(flags.ShopShuffleVanilla) and
-                        not world.settings.is_flag_enabled(flags.ShopTier1)):
-                    # Open shops
-                    if (shop.index in [0, 1, 2, 4, 5, 7, 17, 20, 21] or
-                            (shop.index == 22 and world.settings.is_flag_enabled(flags.BowsersKeepOpen))):
-                        valid_items = [i for i in base if i not in done_already and i.vanilla_shop and
-                                       i not in exclude and shop.is_item_allowed(i) and
-                                       (((tiers_allowed == 1 or tiers_allowed == 2) and i.hard_tier == 1) or
-                                        ((tiers_allowed == 3 or tiers_allowed == 4) and i.hard_tier <= 2))]
-                        # In case the equip shuffle logic works out so that nothing belongs in a tiered shop,
-                        # pick any item of the appropriate class, ignoring tier
-                        # if not valid_items:
-                        #     valid_items = [i for i in base if i not in done_already and i.vanilla_shop and
-                        #                    i not in exclude and shop.is_item_allowed(i)]
-                    # Locked shops
-                    elif (shop.index in [12, 13, 14, 15, 16, 18, 19, 23, 24] or
-                          (shop.index == 22 and not world.settings.is_flag_enabled(flags.BowsersKeepOpen))):
-                        valid_items = [i for i in base if i not in done_already and i.vanilla_shop and
-                                       shop.is_item_allowed(i) and
-                                       ((3 >= tiers_allowed == i.hard_tier) or
-                                        (tiers_allowed == 4 and 2 < i.hard_tier <= 4))]
-                        # if not valid_items:
-                        #     valid_items = [i for i in base if i not in done_already and i.vanilla_shop and
-                        #                    i not in exclude and shop.is_item_allowed(i)]
-                    # Missable shop
-                    elif shop.index == 8:
-                        valid_items = [i for i in base if shop.is_item_allowed(i) and i.vanilla_shop and
-                                       i not in exclude and i.hard_tier <= tiers_allowed and not i.reuseable]
-                # Sv only
-                elif world.settings.is_flag_enabled(flags.ShopShuffleVanilla):
-                    if shop.index == 8:
-                        valid_items = [i for i in base if shop.is_item_allowed(i) and i.vanilla_shop and
-                                       i not in exclude and i.hard_tier <= tiers_allowed and not i.reuseable]
-                    else:
-                        valid_items = [i for i in base if i not in done_already and shop.is_item_allowed(i) and
-                                       i.vanilla_shop and i not in exclude and i.hard_tier <= tiers_allowed]
-
-                # Sb only
-                elif (world.settings.is_flag_enabled(flags.ShopShuffleBalanced) and
-                      not world.settings.is_flag_enabled(flags.ShopTier1)):
-                    # Open shops
-                    if (shop.index in [0, 1, 2, 4, 5, 7, 17, 20, 21] or
-                            (shop.index == 22 and world.settings.is_flag_enabled(flags.BowsersKeepOpen))):
-                        valid_items = [i for i in base if i not in done_already and i not in exclude and
-                                       shop.is_item_allowed(i) and
-                                       (((tiers_allowed == 1 or tiers_allowed == 2) and i.hard_tier == 1) or
-                                        ((tiers_allowed == 3 or tiers_allowed == 4) and i.hard_tier <= 2))]
-                        # if not valid_items:
-                        #     valid_items = [i for i in base if i not in done_already and i not in exclude and
-                        #                    i.vanilla_shop and shop.is_item_allowed(i)]
-                    # Locked shops
-                    elif (shop.index in [12, 13, 14, 15, 16, 18, 19, 23, 24] or
-                          (shop.index == 22 and not world.settings.is_flag_enabled(flags.BowsersKeepOpen))):
-                        valid_items = [i for i in base if i not in done_already and i not in exclude and
-                                       shop.is_item_allowed(i) and
-                                       ((3 >= tiers_allowed == i.hard_tier) or
-                                        (tiers_allowed == 4 and 2 < i.hard_tier <= 4))]
-                        # if not valid_items:
-                        #     valid_items = [i for i in base if i not in done_already and i not in exclude and
-                        #                    i.vanilla_shop and shop.is_item_allowed(i)]
-                    # Missable shop
-                    elif shop.index == 8:
-                        valid_items = [i for i in base if shop.is_item_allowed(i) and i not in exclude and
-                                       i.hard_tier <= tiers_allowed and not i.reuseable]
-                # Neither Sb nor Sv
-                else:
-                    if shop.index == 8:
-                        valid_items = [i for i in base if shop.is_item_allowed(i) and i not in exclude and
-                                       i.hard_tier <= tiers_allowed and not i.reuseable]
-                    else:
-                        valid_items = [i for i in base if i not in done_already and i not in exclude and
-                                       shop.is_item_allowed(i) and i.hard_tier <= tiers_allowed]
-                return valid_items
-
-            # Do juice bar before frog coin shops. Frog coin shops dont leave enough items for juice bar in Sv1.
-
-            # Juice bar gets "first dibs"
-            jpshop = None
-            for shop1 in world.shops:
-                if shop1.index == items.JuiceBarFull.index:
-                    jpshop = shop1
-            # pick full juice bar
-            assignments[12] = []
-            possible_jb3 = get_valid_items(world.items, jpshop)
-            partial4 = random.sample(possible_jb3, random.randint(4, min(len(possible_jb3), 15)))
-            for item in partial4:
-                assignments[12].append(item)
-            partial3 = random.sample(partial4, random.randint(3, (len(partial4)-1)))
-            for item in partial3:
-                assignments[11].append(item)
-            partial2 = random.sample(partial3, random.randint(2, (len(partial3)-1)))
-            for item in partial2:
-                assignments[10].append(item)
-            partial1 = random.sample(partial2, random.randint(1, (len(partial2)-1)))
-            for item in partial1:
-                assignments[9].append(item)
-
-            # ******************************* Phase 1: Frog coin shops
-
-            # Sv
-            if world.settings.is_flag_enabled(flags.ShopShuffleVanilla):
-                # Sv and Sb - only allow the chosen highest tiers of items here - obsolete
-                if world.settings.is_flag_enabled(flags.ShopShuffleBalanced):
-                    frog_candidates = [i for i in world.items if i.price and i.vanilla_shop and i not in assignments[12] and
-                                       ((3 >= tiers_allowed == i.hard_tier) or
-                                        (tiers_allowed == 4 and 2 < i.hard_tier <= 4)) and i not in excluded_items]
-                # Sv only - allow any item here, as long as permitted by tier exclusion flag
-                else:
-                    frog_candidates = [i for i in world.items if i.price and i.vanilla_shop and i not in assignments[12] and
-                                       i.hard_tier <= tiers_allowed and i not in excluded_items]
-            # Sb only
-            elif world.settings.is_flag_enabled(flags.ShopShuffleBalanced):
-                # Only allow the chosen highest tiers of items here
-                frog_candidates = [i for i in world.items if i.price and i not in assignments[12] and
-                                   ((3 >= tiers_allowed == i.hard_tier) or
-                                    (tiers_allowed == 4 and 2 < i.hard_tier <= 4)) and i not in excluded_items]
-            # Allow anything within tier exclusion flag
-            else:
-                frog_candidates = [i for i in world.items if i.price and i not in assignments[12] and i.hard_tier <= tiers_allowed and i not in excluded_items]
-            # Pick 25 items to be in the frog coin shops total.
-            frog_chosen = random.sample(frog_candidates, min(len(frog_candidates), 25))
-            disciple_shop = 3
-            frog_coin_emporium = 6
-
-            # Get list of items where only one is needed for disciple shop:
-            # only one character can equip, or it's reuseable.
-            one_only = [i for i in frog_chosen if
-                        (i.is_equipment and len(i.equip_chars) == 1) or
-                        (i.consumable and i.reuseable)]
-
-            # Choose 5-10.
-            num_choose = min(10, len(one_only))
-            num_choose = random.randint(min(1, num_choose), num_choose)
-            chosen = random.sample(one_only, num_choose)
-
-            # If we have less than 10 items chosen, include other equipment in the mix and choose some more.
-            choose_again = [i for i in frog_chosen if i not in chosen and (i in one_only or i.is_equipment)]
-            num_choose = 10 - len(chosen)
-            num_choose = random.randint(0, num_choose)
-            num_choose = min(num_choose, len(choose_again))
-            if num_choose and choose_again:
-                chosen += random.sample(choose_again, num_choose)
-
-            # Put the chosen in the disciple shop and up to 15 remaining in the Emporium
-            assignments[items.DiscipleShop.index] = chosen
-            num_emporium = random.randint(random.randint(1, 15), 15)
-            frog_remaining = [i for i in frog_chosen if i not in chosen]
-            num_emporium = min(num_emporium, len(frog_remaining))
-            assignments[items.FrogCoinEmporiumShop.index] = random.sample(frog_remaining, num_emporium)
-
-            # ******************************* Phase 2: Non-frog coin shops
-
-            # Collect remaining items that aren't in frog coin shops and aren't key items.
-
-            if world.settings.is_flag_enabled(flags.ShopShuffleVanilla):
-                shop_items = [i for i in world.items if
-                              i not in assignments[items.DiscipleShop.index] and
-                              i not in assignments[items.FrogCoinEmporiumShop.index] and
-                              i.price
-                              and i.hard_tier <= tiers_allowed
-                              and i.index not in excluded_items
-                              and i.vanilla_shop]
-            else:
-                shop_items = [i for i in world.items if
-                              i not in assignments[items.DiscipleShop.index] and
-                              i not in assignments[items.FrogCoinEmporiumShop.index] and
-                              i.price
-                              and i.hard_tier <= tiers_allowed
-                              and i.index not in excluded_items]
-
-            # First, we want every item to wind up in a shop.
-            # But we need a backup reserve of items to pull from in case the logic doesnt work out
-            # i.e. Sb is enabled but there are no accessories in the upper tiers
-            item_reserve = shop_items
-
-            # Unique items will first be split among the shops (anything except basic healing items)
-            unique_items = [i for i in shop_items if not (i.consumable and not i.reuseable and i.basic)]
-            basic_items = [i for i in shop_items if (i.consumable and not i.reuseable and i.basic)]
-
-            # Randomly assign anything to Yaridovich shop
-            for shop in world.shops:
-                if shop.index == 8:
-                    valid_items = get_valid_items(item_reserve, shop)
-                    yarid_items = random.sample(valid_items, random.randint(1, min(len(valid_items), 15)))
-                    for item in yarid_items:
-                        assignments[shop.index].append(item)
-
-            if not world.settings.is_flag_enabled(flags.ShopNotGuaranteed):
-                # guarantee pick me up in toad shop if not full
-                for item in world.items:
-                    for shop in world.shops:
-                        if item.index == 102 and shop.index == 24:
-                            if item not in assignments[24] and item in shop_items:
-                                assignments[shop.index].append(item)
-                # Assign each item to one shop by default
-                for item in item_reserve:
-                    if item not in assignments[12]:
-                        eligible_shops = [s for s in world.shops if len(assignments[s.index]) < 15 and s.index not in [3, 6, 8, 9, 10, 11, 12] and item in get_valid_items(item_reserve, s, assignments[s.index])]
-                        if eligible_shops:
-                            shop = random.choice(eligible_shops)
-                            if item not in assignments[shop.index]:
-                                assignments[shop.index].append(item)
-
-
-            # Randomly assign anything to shops with space remaining
-            done_already.clear()
-            for shop in world.shops:
-                if shop.index not in [3, 6, 8, 9, 10, 11, 12]:
-                    if len(assignments[shop.index]) < 15:
-                        valid_items = get_valid_items(unique_items, shop, assignments[shop.index])
-                        if valid_items:
-                            max_remaining = min(15 - len(assignments[shop.index]), len(valid_items))
-                            if max_remaining > 0:
-                                if not world.settings.is_flag_enabled(flags.ShopNotGuaranteed):
-                                    append_items = random.sample(valid_items, random.randint(1, random.randint(1, random.randint(1, random.randint(1, max_remaining)))))
-                                else:
-                                    append_items = random.sample(valid_items, random.randint(1, random.randint(1, max_remaining)))
-                                for item in append_items:
-                                    assignments[shop.index].append(item)
-
-            # Loop through shops to find any that are empty, and just add Pick Me Up
-            pmu = world.get_item_instance(items.PickMeUp)
-            for shop in world.shops:
-                if not (isinstance(shop, items.PartialJuiceBarShop) or
-                        shop.index in [disciple_shop, frog_coin_emporium]):
-                    if not assignments[shop.index]:
-                        assignments[shop.index].append(pmu)
-
-            # ******************************* Phase 3: Repricing
-
-            for shop in world.shops:
-                assigned_items = assignments[shop.index]
-                for item in assigned_items:
-
-                    # Turn the item into a frog coin price if it's in one of those shops.
-
-                    # #######Set new regular-coin prices for FC items
-
-                    if free_shops:
-                        if shop.frog_coin_shop:
-                            item.frog_coin_item = True
-                            item.price = 1
-                        else:
-                            item.price = 1
-                    else:
-                        if item.is_equipment:
-                            if shop.frog_coin_shop:
-                                item.frog_coin_item = True
-                                item.price = min(item.max_price, max(math.ceil(item.rank_value / 5), 1))
-                            else:
-                                # Change constant to a lower value if items seem generally too expensive, or increase it
-                                # if too cheap. Will affect better items more than bad ones
-                                price = math.ceil(item.rank_value *
-                                                  (2 + (item.rank_order_reverse / len(ranks_reverse))))
-                                price = min(item.max_price, max(2, price))
-                                price = utils.mutate_normal(price, minimum=price*0.9, maximum=price*1.1)
-                                item.price = price
-                        else:
-                            if shop.frog_coin_shop:
-                                item.frog_coin_item = True
-                                price = utils.mutate_normal(item.price, minimum=item.price*0.9, maximum=item.price*1.1)
-                                item.price = min(item.max_price, max(math.ceil(price / 25), 1))
-                            else:
-                                # muku cooki price should never change
-                                if item.index != 120:
-                                    price = min(item.max_price, max(2, item.price))
-                                    price = utils.mutate_normal(price, minimum=item.price*0.9, maximum=item.price*1.1)
-                                    item.price = price
-
-            # Sort the list of items by the ordering rank for display, and assign to the shop.
-            for shop in world.shops:
-                shop.items = sorted(assignments[shop.index], key=lambda i: i.order)
-
-    # Check for free shops, and make sure item prices don't go above 9999 or below 1 as a general rule.
-    for shop in world.shops:
-        for item in shop.items:
-            item.price = max(1, min(item.max_price, item.price))
-            if free_shops:
-                if shop.frog_coin_shop:
-                    item.frog_coin_item = True
-                item.price = 1
-
-    if world.settings.is_flag_enabled(flags.PoisonMushroom):
+    
+    if world.settings.is_flag_value(flags.PoisonMushroom, True):
         for item in world.items:
             if item.index == 175:
                 item.status_immunities = [random.randint(0, 7)]

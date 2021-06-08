@@ -25,6 +25,7 @@ from . import items
 from . import keys
 from . import map
 from . import spells
+from . import shops
 from . import utils
 from .patch import Patch
 from .battleassembler import assemble_battle_scripts
@@ -188,7 +189,7 @@ class Settings:
         Returns:
             bool: True if flag is enabled, False otherwise.
         """
-        return flag in self._enabled_flags
+        return self.is_flag_value(flag, True)
 
     def get_flag(self, flag):
         """
@@ -256,6 +257,7 @@ class GameWorld:
         self.levelup_xps = data.characters.LevelUpExps()
         self.starter_character_checks = data.chests.get_starter_character_checks(self)
         self.recruitable_character_checks = data.chests.get_recruitable_character_checks(self)
+        self.spotted_character_checks = data.chests.get_spotted_character_checks(self)
 
         # Spells
         self.spells = data.spells.get_default_spells(self)
@@ -270,7 +272,8 @@ class GameWorld:
         self.items_dict = dict([(i.index, i) for i in self.items])
 
         # Shops
-        self.shops = data.items.get_default_shops(self)
+        self.shops = data.shops.get_default_shops(self)
+        self.special_shops = data.shops.get_event_shops(self)
 
         # Enemies
         self.enemies = data.enemies.get_default_enemies(self)
@@ -375,10 +378,10 @@ class GameWorld:
         characters.randomize_all(self)
         spells.randomize_all(self)
         items.randomize_all(self)
+        chests.randomize_all(self)
+        shops.randomize_all(self)
         enemies.randomize_all(self)
         bosses.randomize_all(self)
-        keys.randomize_all(self)
-        chests.randomize_all(self)
         games.randomize_all(self)
         dialogs.randomize_all(self)
 

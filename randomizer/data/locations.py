@@ -59,6 +59,7 @@ class ItemLocation:
     key = False
     coinsanity = False
     description = ""
+    special_equip = False
 
     def __init__(self, world):
         """
@@ -127,24 +128,8 @@ class ItemLocation:
             return False
 
         # If this is an excluded location, it cannot contain a key item.
-        if item.is_key and (self.description in self.world.settings.get_flag(flags.EnabledRegularChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledFreestandingChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledFreestandingChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledBossChecks).disabled)
+        if item.is_key and (self.description in self.world.settings.get_flag(flags.EnabledRegularChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledFreestandingChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledFreestandingChecks).disabled or self.description in self.world.settings.get_flag(flags.EnabledBossChecks).disabled):
             return False
-
-        # Restrict key items based on requirements
-        if item.is_key: 
-            if self.key:
-                return True
-            elif self.world.settings.is_flag_enabled(flags.KeyItemsAnywhere):
-                return True
-            else:
-                return False
-        else:
-            if self.key and self.world.settings.is_flag_enabled(flags.KeyItemsAnywhere):
-                return True
-            elif self.key:
-                return False
-            else:
-                return True
 
         return True
 

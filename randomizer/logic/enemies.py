@@ -6,6 +6,7 @@ from functools import reduce
 from randomizer.data import bosses, enemies
 from randomizer.data.formations import FormationMember
 from . import flags, utils
+from randomizer.data.flags import EXPMultiplierOptions
 
 
 def _randomize_enemy_attack(attack):
@@ -15,7 +16,7 @@ def _randomize_enemy_attack(attack):
         attack(randomizer.data.attacks.EnemyAttack):
     """
     # Use old logic if no safety checks enabled, allows for instant KO applied to other attacks and random strong stuff.
-    if attack.world.settings.is_flag_enabled(flags.EnemyNoSafetyChecks):
+    if attack.world.settings.is_flag_value(flags.EnemyNoSafetyChecks, True):
         # If the attack has no special damage types or buffs, randomize the attack priority level.
         # Allow a small chance (1 in 495) to get the instant KO flag.  Otherwise attack level is 1-7, lower more likely.
         if not attack.damage_types and not attack.buffs:
@@ -225,7 +226,7 @@ def randomize_all(world):
 
     :type world: randomizer.logic.main.GameWorld
     """
-    if world.settings.is_flag_enabled(flags.EnemyAttacks):
+    if world.settings.is_flag_value(flags.EnemyAttacks, True):
         # *** Shuffle enemy attacks ***
         # Intershuffle hit rate of attacks with status effects.
         with_status_effects = [a for a in world.enemy_attacks if a.status_effects]
@@ -242,7 +243,7 @@ def randomize_all(world):
         for attack in world.enemy_attacks:
             _randomize_enemy_attack(attack)
 
-    if world.settings.is_flag_enabled(flags.EnemyStats):
+    if world.settings.is_flag_value(flags.EnemyStats, True):
 
         # *** Shuffle enemy stats ***
         # Start with inter-shuffling some stats between non-boss enemies around the same rank as each other.
@@ -295,7 +296,7 @@ def randomize_all(world):
             head.hp = main_head.hp
 
     # Randomize individual rewards on their own.
-    if world.settings.is_flag_enabled(flags.EnemyDrops):
+    if world.settings.is_flag_value(flags.EnemyDrops, True):
         for enemy in world.enemies:
             enemy.coins = utils.mutate_normal(enemy.coins, maximum=255)
 
@@ -328,32 +329,32 @@ def randomize_all(world):
                 enemy.yoshi_cookie_item = None
 
     # Shuffle enemy formations.
-    if world.settings.is_flag_enabled(flags.EnemyFormations):
+    if world.settings.is_flag_value(flags.EnemyFormations, True):
         for formation in world.enemy_formations:
             _randomize_formation(formation)
 
     # XP boost.
-    if world.settings.is_flag_enabled(flags.ExperienceBoost2x):
+    if world.settings.is_flag_value(flags.EXPMultiplier, EXPMultiplierOptions.Double):
         for enemy in world.enemies:
             enemy.xp *= 2
-    elif world.settings.is_flag_enabled(flags.ExperienceBoost3x):
+    elif world.settings.is_flag_value(flags.EXPMultiplier, EXPMultiplierOptions.Triple):
         for enemy in world.enemies:
             enemy.xp *= 3
 
     boss_enemies = set()
     # No XP from regular encounters.
-    if world.settings.is_flag_enabled(flags.ExperienceNoRegular) or world.settings.is_flag_enabled(flags.ExperienceNoBosses):
+    if world.settings.is_flag_value(flags.ExperienceNoRegular, True) or world.settings.is_flag_value(flags.ExperienceNoBosses, True):
         for location in world.boss_locations:
             if isinstance(location, bosses.BossLocation):
                 for member in location.formation.members:
                     boss_enemies.add(member.enemy)
 
-    if world.settings.is_flag_enabled(flags.ExperienceNoRegular):
+    if world.settings.is_flag_value(flags.ExperienceNoRegular, True):
         for enemy in world.enemies:
             if (not enemy.boss or enemy not in boss_enemies):
                 enemy.xp = 0
 
-    if world.settings.is_flag_enabled(flags.ExperienceNoBosses):
+    if world.settings.is_flag_value(flags.ExperienceNoBosses, True):
         for enemy in boss_enemies:
             enemy.xp = 0
 
