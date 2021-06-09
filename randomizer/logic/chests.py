@@ -7,7 +7,7 @@ import enum
 from scipy.stats import gamma
 
 from randomizer.data import items, locations, chests
-from randomizer.data.items. import ItemUnique
+from randomizer.data.items import ItemUnique
 from randomizer.data.locations import Area
 from randomizer.data.keys import KeyItemLocation
 from randomizer.logic import flags, keys

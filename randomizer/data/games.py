@@ -1,7 +1,6 @@
 # Data module for minigame data.
 
 from randomizer.logic import utils
-from randomizer.logic.patch import Patch
 
 
 # ******** Ball Solitaire
@@ -92,7 +91,7 @@ class BallSolitaireGame:
             step1.has_ball = True
             step2.has_ball = True
 
-    BASE_ADDRESS = 0x20c0e5
+    EVENT = 3884
 
     def __init__(self, world):
         """
@@ -223,23 +222,13 @@ class BallSolitaireGame:
     def num_balls(self):
         return len([s for s in self.spots if s.has_ball])
 
-    def get_patch(self):
-        """
-
-        Returns:
-            randomizer.logic.patch.Patch: Patch data
-
-        """
-        patch = Patch()
-
-        # Balls should be in 0-indexed bit order already.
+    def get_event_value(self):
+        # Spots should be in 0-indexed bit order already.
         result = 0
         for i, spot in enumerate(self.spots):
             if spot.has_ball:
                 result |= (1 << i)
-        patch.add_data(self.BASE_ADDRESS, utils.ByteField(result, num_bytes=2).as_bytes())
-
-        return patch
+        return utils.ByteField(result, num_bytes=2).as_bytes()
 
 
 # ******** Magic Buttons
@@ -275,7 +264,7 @@ class MagicButtonsGame:
                 if spot is not None:
                     spot.pressed = not spot.pressed
 
-    BASE_ADDRESS = 0x205137
+    EVENT = 3358
 
     def __init__(self, world):
         """
@@ -402,20 +391,10 @@ class MagicButtonsGame:
     def __repr__(self):
         return str(self)
 
-    def get_patch(self):
-        """
-
-        Returns:
-            randomizer.logic.patch.Patch: Patch data
-
-        """
-        patch = Patch()
-
+    def get_event_value(self):
         # Spots should be in 0-indexed bit order already.
         result = 0
         for i, spot in enumerate(self.spots):
             if spot.pressed:
                 result |= (1 << i)
-        patch.add_data(self.BASE_ADDRESS, utils.ByteField(result, num_bytes=2).as_bytes())
-
-        return patch
+        return utils.ByteField(result, num_bytes=2).as_bytes()

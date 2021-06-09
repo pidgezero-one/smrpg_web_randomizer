@@ -6,11 +6,17 @@ import random
 import re
 import binascii
 import copy
+import uuid
+import enum
 
 
 from randomizer import data
 from randomizer.data.eventscripts.events import scripts as eventscripts
 from randomizer.data.actionscripts.actions import scripts as actionscripts
+from randomizer.data.roomobjects.roomobjects import rooms as roomdata
+from randomizer.data.npcmodels import models as npcmodels
+from randomizer.data.dialog_data.dialog_data import dialog_data
+from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
 from . import bosses
 from . import bosses_overworld
 from . import credits
@@ -29,6 +35,17 @@ from . import shops
 from . import utils
 from .patch import Patch
 from .battleassembler import assemble_battle_scripts
+from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, FireworksOptions, EXPchallengeOptions
+
+from randomizer.data.eventscripts.utils.slot_machine.event import script as slot_machine_commands
+from randomizer.data.eventscripts.utils.slot_machine.objects import objects as slot_machine_npcs
+
+from randomizer.data.eventscripts.utils.tower_access.mario import script as tower_mario
+from randomizer.data.eventscripts.utils.tower_access.mallow import script as tower_mallow
+from randomizer.data.eventscripts.utils.tower_access.geno import script as tower_geno
+from randomizer.data.eventscripts.utils.tower_access.bowser import script as tower_bowser
+from randomizer.data.eventscripts.utils.tower_access.toadstool import script as tower_toadstool
+
 
 # Current version number
 VERSION = '8.2.8'
@@ -228,6 +245,23 @@ class Settings:
                 return choice
         return None
 
+class CommandTypes(enum.Enum):
+    Action = enum.auto()
+    Event = enum.auto()
+
+def new_command(event_id, command, args=None, t=CommandTypes.Event):
+    if t == CommandTypes.Action:
+        cmdType = "ACTION"
+    else:
+        cmdType = "EVENT"
+    cmd = {
+        "identifier": "%s_%i_%s" % (cmdType, event_id, str(uuid.uuid4())),
+        "command": command
+    }
+    if args is not None:
+        cmd["args"] = args
+    return cmd
+
 
 class GameWorld:
     """Master container class representing the entire game world to be randomized.  This class doesn't do much on its
@@ -300,13 +334,17 @@ class GameWorld:
         # Events
         self.eventscripts = copy.copy(eventscripts)
         self.actionscripts = copy.copy(actionscripts)
-        
+
         # Get default npc and model data. Keep them for reference. 
-        self.original_models = copy.copy(data.npcmodels.models)
-        self.original_rooms = copy.copy(data.roomobjects.roomobjects.rooms)
+        self.original_models = copy.copy(npcmodels)
+        self.original_rooms = copy.copy(roomdata)
         # Malleable versions
-        self.models = copy.copy(data.npcmodels.models)
-        self.rooms = copy.copy(data.roomobjects.roomobjects.rooms)
+        self.models = copy.copy(npcmodels)
+        self.rooms = copy.copy(roomdata)
+
+        #Dialogs
+        self.dialog_pointers = copy.copy(dialog_pointers)
+        self.dialog_data = copy.copy(dialog_data)
 
         # Minigame data.
         self.ball_solitaire = data.games.BallSolitaireGame(self)
@@ -399,12 +437,519 @@ class GameWorld:
         final_seed += self.settings.flag_string.encode('utf-8')
         self.hash = hashlib.md5(final_seed).hexdigest()
 
+    def replace_dialog(self, id, content):
+        dialog_info = self.dialog_pointers[id]
+        index = dialog_info["index"]
+        if dialog_info["bank"] = 0x22:
+            self.dialog_data[0][index] = content
+        elif dialog_info["bank"] = 0x23:
+            self.dialog_data[1][index] = content
+        elif dialog_info["bank"] = 0x24:
+            self.dialog_data[2][index] = content
+
+    def search_replace_dialog(self, search, replace):
+        for bank_id in len(self.dialog_data):
+            for index in len(self.dialog_data[bank_id]):
+                self.dialog_data[bank_id][index] = self.dialog_data[bank_id][index].replace(search, replace)
+
+    def prepend_bits(self, event, pairs):
+        for pair in pairs:
+            self.eventscripts[event].insert(0, new_command(event, "set_bit", pair))
+
     def build_patch(self):
         """Build patch data for this instance.
 
         :rtype: randomizer.logic.patch.Patch
         """
         patch = Patch()
+
+        # Set number of star pieces required for win condition
+        required_star_pieces = self.settings.get_flag(flags.TotalStarPieces).value
+        self.eventscripts[1969][0]["args"] = [required_star_pieces]
+
+        # Alternate star piece win conditions
+        if self.settings.is_flag_value(flags.RequireBossFights, True):
+            self.prepend_bits(192, [[0x7086, 7]])
+
+        # Bandit's Way gating
+        if self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x7065, 4], [0x706D, 4]])
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.FinishMushroomWay):
+            self.prepend_bits(199, [[0x7065, 4], [0x706D, 4]])
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitMario):
+            self.prepend_bits(187, [[0x7065, 4], [0x706D, 4]])
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitMallow):
+            self.prepend_bits(198, [[0x7065, 4], [0x706D, 4]])
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitGeno):
+            self.prepend_bits(189, [[0x7065, 4], [0x706D, 4]])
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitBowser):
+            self.prepend_bits(190, [[0x7065, 4], [0x706D, 4]])
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitToadstool):
+            self.prepend_bits(191, [[0x7065, 4], [0x706D, 4]])
+
+        # Forest Maze gating, special conditions
+        if self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
+        elif self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.ExchangeCricketPie):
+            self.prepend_bits(203, [[0x7066, 3], [0x706E, 3]])
+
+        # Booster Tower gating
+        if self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x7053, 6]])
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.FinishMoleville):
+            self.prepend_bits(198, [[0x7053, 6]])
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitMario):
+            self.prepend_bits(187, [[0x7053, 7]])
+            self.eventscripts[1331] = tower_mario
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitMallow):
+            self.prepend_bits(198, [[0x7053, 7]])
+            self.eventscripts[1331] = tower_mallow
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitGeno):
+            self.prepend_bits(189, [[0x7053, 7]])
+            self.eventscripts[1331] = tower_geno
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitBowser):
+            self.prepend_bits(190, [[0x7053, 7]])
+            self.eventscripts[1331] = tower_bowser
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitToadstool):
+            self.prepend_bits(191, [[0x7053, 7]])
+            self.eventscripts[1331] = tower_toadstool
+
+        # Marrymore gating
+        if self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x704C, 7]])
+        elif self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.FinishBoosterHill):
+            self.prepend_bits(204, [[0x704C, 7]])
+            self.replace_dialog(2116, '''You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy on Booster Hill.''')
+        elif self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.FinishBoosterTower):
+            self.prepend_bits(205, [[0x704C, 7]])
+            self.replace_dialog(2116, '''You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy up atop Booster Tower.''')
+
+        # Sea gating
+        if self.settings.is_flag_value(flags.SeaGate, SeaGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x7067, 4], [0x706F, 3], [0x7067, 5], [0x706F, 4]])
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitMario):
+            self.prepend_bits(187, [[0x7067, 4], [0x706F, 3]])
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitMallow):
+            self.prepend_bits(198, [[0x7067, 4], [0x706F, 3]])
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitGeno):
+            self.prepend_bits(189, [[0x7067, 4], [0x706F, 3]])
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitBowser):
+            self.prepend_bits(190, [[0x7067, 4], [0x706F, 3]])
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitToadstool):
+            self.prepend_bits(191, [[0x7067, 4], [0x706F, 3]])
+        else:
+            if self.settings.is_flag_value(flags.SeaGate, SeaGating.Find1Star):
+                value = 1
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find2Star):
+                value = 2
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find3Star):
+                value = 3
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find4Star):
+                value = 4
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find5Star):
+                value = 5
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find6Star):
+                value = 6
+            else
+                raise Exception("failed to set star piece gate on sea")
+            gate_script = copy.copy(self.eventscripts[206])
+            gate_script[1]["args"][1] = value
+            self.eventscripts[206] = gate_script
+            self.prepend_bits(192, [[0x7051, 0]])
+
+        # Yaridovich gating
+        if self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x7051, 1]])
+        elif self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.FinishSunkenShip):
+            self.prepend_bits(210, [[0x7051, 1]])
+
+        # Monstro Town gating
+        if self.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x7067, 7], [0x706F, 6]])
+        elif self.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.FinishLandsEnd):
+            pass
+
+        # Volcano gating
+        if self.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x7090, 0], [0x7070, 1], [0x7068, 2]])
+        elif self.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.FinishNimbusLand):
+            pass
+
+        # Bowser's Keep gating
+        if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x7068, 3]])
+        elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.FinishBarrelVolcano):
+            self.prepend_bits(192, [[0x707B, 2]])
+        else:
+            if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find1Star):
+                value = 1
+            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find2Star):
+                value = 2
+            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find3Star):
+                value = 3
+            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find4Star):
+                value = 4
+            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find5Star):
+                value = 5
+            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find6Star):
+                value = 6
+            else
+                raise Exception("failed to set star piece gate on keep")
+            keep_script = copy.copy(self.eventscripts[207])
+            keep_script[1]["args"][1] = value
+            self.eventscripts[207] = keep_script
+            self.prepend_bits(192, [[0x7051, 1], [0x707A, 3]])
+
+        # Factory gating
+        if self.settings.is_flag_value(flags.FactoryGate, FactoryGating.AlwaysOpen):
+            self.prepend_bits(192, [[0x7070, 5], [0x7068, 5]])
+        elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.FinishBowsersKeep):
+            self.prepend_bits(2149, [[0x7070, 5], [0x7068, 5]])
+        else:
+            if self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find1Star):
+                value = 1
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find2Star):
+                value = 2
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find3Star):
+                value = 3
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find4Star):
+                value = 4
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find5Star):
+                value = 5
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find6Star):
+                value = 6
+            else
+                raise Exception("failed to set star piece gate on factory")
+            factory_script = copy.copy(self.eventscripts[3093])
+            factory_script[1]["args"][1] = value
+            self.eventscripts[3093] = factory_script
+            self.prepend_bits(192, [[0x7051, 3]])
+
+        # Casino warp
+        if self.settings.is_flag_value(flags.CasinoWarp, True):
+            self.prepend_bits(192, [[0x7088, 5]])
+            casino_script = copy.copy(self.eventscripts[2645])
+            casino_script[1]["args"][1] = required_star_pieces
+            self.eventscripts[2645] = casino_script
+
+        # Bucket warp
+        if self.settings.is_flag_value(flags.BucketWarp, True):
+            self.prepend_bits(192, [[0x705E, 6]])
+            bucket_script = copy.copy(self.eventscripts[2651])
+            bucket_script[0]["args"][1] = required_star_pieces
+            self.eventscripts[2651] = bucket_script
+
+        # Fast travel
+        if self.settings.is_flag_value(flags.FastTravel, True):
+            self.prepend_bits(192, [[0x708B, 0]])
+
+        # Fireworks
+        if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.Vanilla):
+            pass
+        else:
+            # assign one of 3 random fireworks
+            fireworks_credits = random.randint(1, 6)
+            for script_id in [184, 3399]:
+                for index in len(self.eventscripts[script_id]):
+                    cmd = self.eventscripts[script_id][index]
+                    if cmd["command"] == "set" and cmd["args"][0] == 0x70EA:
+                        self.eventscripts[script_id][index]["args"][1] = fireworks_credits
+            # append the setting
+            if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
+                self.prepend_bits(192, [[0x705D, 4]])
+            if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
+                self.prepend_bits(192, [[0x705D, 5]])
+
+        # EXP progression option
+        if self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.easystars) or self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.hardstars):
+            self.prepend_bits(192, [[0x7056, 0]])
+        elif self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.easybosses) or self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.hardbosses):
+            self.prepend_bits(192, [[0x7056, 1]])
+
+        # If star piece exp progression is on, set exp values for each star piece number and enable flag.
+        if self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.default):
+            pass
+        else:
+            if self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.easystars) or self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.easybosses):
+                exps = (2, 4, 5, 6, 8, 9, 11)
+            elif self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.hardstars) or self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.hardbosses):
+                exps = (1, 2, 3, 5, 6, 7, 11)
+            elif self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.none):
+                exps = (0, 0, 0, 0, 0, 0, 0)
+            else:
+                raise ValueError("Unrecognized value for star exp challenge")
+            patch.add_data(0x39bc44, utils.ByteField(exps[0]).as_bytes())  # 0 stars
+            patch.add_data(0x39bc46, utils.ByteField(exps[1]).as_bytes())  # 1 star
+            patch.add_data(0x39bc48, utils.ByteField(exps[2]).as_bytes())  # 2 stars
+            patch.add_data(0x39bc4a, utils.ByteField(exps[3]).as_bytes())  # 3 stars
+            patch.add_data(0x39bc4c, utils.ByteField(exps[4]).as_bytes())  # 4 stars
+            patch.add_data(0x39bc4e, utils.ByteField(exps[5]).as_bytes())  # 5 stars
+            patch.add_data(0x39bc52, utils.ByteField(exps[6]).as_bytes())  # 6/7 stars
+            patch.add_data(0x1fd32d, utils.ByteField(0xa0).as_bytes())  # Enable flag
+
+        # Grate Guy threshold
+        value = self.settings.get_flag(flags.GrateGuyPrizeThreshold).value
+        self.eventscripts[2650][0]["args"] = [value]
+
+        # Knife Guy threshold
+        value = self.settings.get_flag(flags.KnifeGuyPrizeThreshold).value
+        self.eventscripts[2671][0]["args"] = [value]
+
+        # Suite Prize thresholds
+        value1 = self.settings.get_flag(flags.SuitePrize1Threshold).value
+        value2 = self.settings.get_flag(flags.SuitePrize2Threshold).value
+        value3 = self.settings.get_flag(flags.SuitePrize3Threshold).value
+        value4 = self.settings.get_flag(flags.SuitePrize4Threshold).value
+        value5 = self.settings.get_flag(flags.SuitePrize5Threshold).value
+        value6 = self.settings.get_flag(flags.SuitePrize6Threshold).value
+        self.eventscripts[708][0]["args"][0] = value1
+        self.eventscripts[708][1]["args"][0] = value2
+        self.eventscripts[708][2]["args"][0] = value3
+        self.eventscripts[708][3]["args"][0] = value4
+        self.eventscripts[708][4]["args"][0] = value5
+        self.eventscripts[708][5]["args"][0] = value6
+        if not (value1 < value2 and value2 < value3 and value3 < value4 and value4 < value5 and value5 < value6):
+            raise Exception("marrymore item thresholds must be in increasing order")
+        
+        # Attack Scarf threshold
+        value = self.settings.get_flag(flags.SuperJump1Threshold).value
+        self.eventscripts[3393][0]["args"] = [value]
+
+        # Super Suit threshold
+        value = self.settings.get_flag(flags.SuperJump2Threshold).value
+        if value <= self.settings.get_flag(flags.SuperJump1Threshold).value:
+            raise Exception("2nd super jump threshold must be higher than 1st")
+        self.eventscripts[3394][0]["args"] = [value]
+
+        # Starting characters
+        for c in self.starter_character_checks:
+            if c.item is not None:
+                # set character
+                self.eventscripts[c.event].insert(0, new_command(c.event, "run_event_as_subroutine", [c.item.starter_script]))
+                # check if character gates forest maze
+                if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+            self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
+
+
+        ######### write character/item/star piece granters
+
+        grant_builders = {}
+
+        # recruitable characters
+        for c in self.recruitable_character_checks:
+            if c.item is not None:
+                if c.event not in grant_builders:
+                    grant_builders[c.event] = {
+                        "jumps": [new_command(c.event, 'set_7000_to_current_level')],
+                        "executions": []
+                    }
+                cmd = new_command(c.event, 'jmp_to_event', [c.item.container_script])
+                grant_builders[c.event]["executions"].append(cmd)
+                for r in c.rooms:
+                    jmp = new_command(c.event, 'jmp_if_7000_equals_short', [r, cmd["identifier"]])
+                    grant_builders[c.event]["jumps"].append(jmp)
+                # forest maze gating
+                if utils.isclass_or_instance(c, data.chests.MushroomWayCharacter):
+                    if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                        self.prepend_bits(202, [[0x7066, 3], [0x706E, 3]])
+                elif utils.isclass_or_instance(c, data.chests.MolevilleMinesCharacter):
+                    if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                        self.prepend_bits(201, [[0x7066, 3], [0x706E, 3]])
+                elif utils.isclass_or_instance(c, data.chests.MarrymoreCharacter):
+                    # What to do about this if you DON'T get a character here?
+                    self.search_replace_dialog("`MARRYMORE_CHARACTER`", c.item.description)
+                    random_character = random.choice([i.description for i in [data.items.MarioRecruit, data.items.MallowRecruit, data.items.GenoRecruit, data.items.BowserRecruit, data.items.ToadstoolRecruit] if not utils.isclass_or_instance(c.item, i)])
+                    self.search_replace_dialog("`RANDOM_CHARACTER_NAME`", c.item.description)
+                    if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                        self.prepend_bits(200, [[0x7066, 3], [0x706E, 3]])
+        
+        # chests
+        for c in self.chest_locations:
+            if c.item is not None:
+                if c.event not in grant_builders:
+                    grant_builders[c.event] = {
+                        "jumps": [],
+                        "executions": []
+                    }
+                cmds = []
+                # physical chests
+                if utils.isclass_or_instance(c, data.chests.Chest): 
+                    # slot machines - doesn't take a 70A7 value
+                    if utils.isclass_or_instance(c.item, data.items.SlotMachineChest): 
+                        for i in len(c.rooms):
+                            # count NPCs in room
+                            r = c.rooms[i]
+                            ctr = 0
+                            for object_id in len(self.rooms[r]["objects"]):
+                                o = self.rooms[r]["objects"][object_id]
+                                ctr += 1
+                                for clone_id in len(o["clones"]):
+                                    ctr += 1
+                            # insert a slot machine script with the NPC IDs adjusted to this room
+                            slot_logic = copy.copy(slot_machine_commands)
+                            for j in len(slot_logic):
+                                cmd = slot_logic[j]
+                                if cmd["command"] in ["stop_embedded_action_script", "pause_action_script", "set_action_script_sync", "summon_to_current_level", "action_queue_async", "action_queue_sync"] and cmd["args"][0] >= 0x16 and cmd["args"][0] <= 0x1A:
+                                    cmd["args"][0] = cmd["args"][0] - 0x16 + ctr
+                                slot_logic[j] = cmd
+                            cmds.extend(slot_logic)
+                            # add slot machine NPCs to this room
+                            self.rooms[r]["objects"].extend(slot_machine_npcs)
+                            grant_builders[c.event]["executions"].extend(cmds)
+                            jmp = new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
+                            grant_builders[c.event]["jumps"].append(jmp)
+                    else:
+                        if c.manual_70A7 or len([r for r in c.item.rooms if r > 509]) > 0:
+                            # set 70A7 manually if chest is used multiple times
+                            manual_70A7 = (c.item.chest_70A7_upper << 4) + c.item.chest_70A7_lower
+                            cmds.append(new_command(c.event, 'set', [0x70A7, manual_70A7]))
+                        else:
+                            # set 70A7 on chest itself
+                            for i in len(c.rooms):
+                                r = c.rooms[i]
+                                ctr = 0
+                                for object_id in len(self.rooms[r]["objects"]):
+                                    o = self.rooms[r]["objects"][object_id]
+                                    if ctr == c.npc_ids[i]:
+                                        self.rooms[r]["objects"][object_id]["item_offset"] = c.item.chest_70A7_upper
+                                        self.rooms[r]["objects"][object_id]["star_offset"] = c.item.chest_70A7_lower
+                                    ctr += 1
+                                    for clone_id in len(o["clones"]):
+                                        if ctr == c.npc_ids[i]:
+                                            self.rooms[r]["objects"][object_id]["clones"][clone_id]["item_offset"] = c.item.chest_70A7_upper
+                                            self.rooms[r]["objects"][object_id]["clones"][clone_id]["star_offset"] = c.item.chest_70A7_lower
+                                        ctr += 1
+                        if utils.isclass_or_instance(c.item, data.items.Coins) or utils.isclass_or_instance(c.item, data.items.MultiFrogCoin):
+                            cmds.append(new_command(c.event, 'set', [0x70BC, 0]))
+                        elif utils.isclass_or_instance(c.item, data.items.StarPiece): 
+                            cmds.append(new_command(c.event, 'run_event_as_subroutine', [3092]))
+                        # jump based on type
+                        if self.settings.is_flag_value(flags.QuickHitCoins, True) and (utils.isclass_or_instance(c.item, data.items.Coins) or utils.isclass_or_instance(c.item, data.items.MultiFrogCoin)):
+                            cmds.append(new_command(c.event, 'jmp_to_event', [c.item.quick_chest_event]))
+                        elif c.item.chest_event:
+                            cmds.append(new_command(c.event, 'jmp_to_event', [c.item.chest_event]))
+                        # add jumps
+                        grant_builders[c.event]["executions"].extend(cmds)
+                        for r in c.rooms:
+                            jmp = new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
+                            grant_builders[c.event]["jumps"].append(jmp)
+                # npc rewards
+                else:
+                    if utils.isclass_or_instance(c.item, data.items.RegularItem):
+                        # set 70A7 for granting a normal item
+                        cmds.append(new_command(c.event, 'set', [0x70A7, c.item.chest_70A7_lower]))
+                    elif utils.isclass_or_instance(c.item, data.items.Coins) or utils.isclass_or_instance(c.item, data.items.MultiFrogCoin):
+                        # set 7000 for quantity
+                        cmds.append(new_command(c.event, 'set', [0x7000, c.item.amount]))
+                    cmds.append(new_command(c.event, 'jmp_to_event', [c.item.npc_event]))
+                    grant_builders[c.event]["executions"].extend(cmds)
+                    for r in c.rooms:
+                        jmp = new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
+                        grant_builders[c.event]["jumps"].append(jmp)
+                    # coin snake considerations
+                    if utils.isclass_or_instance(c, data.chests.SunkenShipCoinSnake):
+                        model_id = c.item.model.model
+                        action_script = model_id = c.item.model.action_script
+                        for r in c.rooms:
+                            ctr = 0
+                            for object_id in len(self.rooms[r]["objects"]):
+                                o = self.rooms[r]["objects"][object_id]
+                                if ctr in c.npc_ids:
+                                    self.rooms[r]["objects"][object_id]["model"] = model_id
+                                ctr += 1
+                                for clone_id in len(o["clones"]):
+                                    ctr += 1
+                        # set the right sequence on the object in AS 199 and 200
+                        action_script_contents = copy.copy([s for s in self.actionscripts[action_script] if s["command"] != "ret"])
+                        as_199 = copy.copy(self.actionscripts[199]).pop()
+                        as_200 = copy.copy(self.actionscripts[200]).pop()
+                        self.actionscripts[199] = action_script_contents + as_199
+                        self.actionscripts[200] = action_script_contents + as_200
+                        # remove coin sequences if necessary
+                        if not utils.isclass_or_instance(c.item, data.items.Coins) and not utils.isclass_or_instance(c.item, data.items.FrogCoin) and not utils.isclass_or_instance(c.item, data.items.MultiFrogCoin):
+                            e_3215 = copy.copy(self.eventscripts[3215])
+                            for command_index in len(e_3215):
+                                command = e_3215[command_index]
+                                if "subscript" in command:
+                                    subscript = [ss for ss in command["subscript"] if ss["command"] != 'set_sprite_sequence']
+                                    e_3215[command_index]["subscript"] = subscript
+                            e_3216 = copy.copy(self.eventscripts[3216])
+                            for command_index in len(e_3216):
+                                command = e_3216[command_index]
+                                if "subscript" in command:
+                                    subscript = [ss for ss in command["subscript"] if ss["command"] != 'set_sprite_sequence']
+                                    e_3216[command_index]["subscript"] = subscript
+                            self.eventscripts[3215] = e_3215
+                            self.eventscripts[3216] = e_3216
+                                
+        # freestanding items
+        for c in self.freestanding_item_locations:
+            if c.item is not None:
+                if c.event not in grant_builders:
+                    grant_builders[c.event] = {
+                        "jumps": [new_command(c.event, 'set_7000_to_current_level')],
+                        "executions": []
+                    }
+                cmds = []
+                if utils.isclass_or_instance(c, data.chests.PacketItem): 
+                    # generate the right packet for the item
+                    generator = copy.copy(self.eventscripts[c.script_id])
+                    generator[0]["args"][0] = c.item.packet
+                    self.eventscripts[c.script_id] = generator
+                else:
+                    # set the NPC and action script for the item
+                    model_id = c.item.model.model
+                    action_script = model_id = c.item.model.action_script
+                    for r in c.rooms:
+                        ctr = 0
+                        for object_id in len(self.rooms[r]["objects"]):
+                            o = self.rooms[r]["objects"][object_id]
+                            if ctr in c.npc_ids:
+                                self.rooms[r]["objects"][object_id]["model"] = model_id
+                                self.rooms[r]["objects"][object_id]["action_script"] = action_script
+                            ctr += 1
+                            for clone_id in len(o["clones"]):
+                                if ctr in c.npc_ids:
+                                    self.rooms[r]["objects"][object_id]["clones"][clone_id]["action_offset"] = 0
+                                    self.rooms[r]["objects"][object_id]["clones"][clone_id]["npc_id_offset"] = 0
+                                ctr += 1
+                # sett the item grant
+                if utils.isclass_or_instance(c.item, data.items.RegularItem):
+                    # set 70A7 for granting a normal item
+                    cmds.append(new_command(c.event, 'set', [0x70A7, c.item.chest_70A7_lower]))
+                if utils.isclass_or_instance(c, data.chests.MidasRiverTunnelItem): 
+                    # midas river grant
+                    cmds.append(new_command(c.event, 'jmp_to_event', [c.item.overworld_midas_event]))
+                else:
+                    # all other overworld item grant
+                    cmds.append(new_command(c.event, 'jmp_to_event', [c.item.overworld_event]))
+                grant_builders[c.event]["executions"].extend(cmds)
+                # generate room-based jumps
+                for r in c.rooms:
+                    jmp = new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
+                    grant_builders[c.event]["jumps"].append(jmp)
+                # edit action script 43 if midas runnel #3 item is not a coin
+                if utils.isclass_or_instance(c, data.chests.MidasRiverBottomLeftCave) and not utils.isclass_or_instance(c.item, data.items.Coins) and not utils.isclass_or_instance(c.item, data.items.FrogCoin) and not utils.isclass_or_instance(c.item, data.items.MultiFrogCoin):
+                    self.actionscripts[43] = [a for a in self.actionscripts[43] if a["command"] != 'set_sprite_sequence']
+
+        # boss star pieces
+        for c in self.boss_star_checks:
+            if c.item is not None:
+                if c.event not in grant_builders:
+                    grant_builders[c.event] = {
+                        "jumps": [new_command(c.event, 'inc', [0x70E6])],
+                        "executions": []
+                    }
+                cmd = new_command(c.event, 'jmp_to_event', 3092)
+                grant_builders[c.event]["executions"].append(cmd)
+                for r in c.rooms:
+                    jmp = new_command(c.event, 'jmp_if_7000_equals_short', [r, cmd["identifier"]])
+                    grant_builders[c.event]["jumps"].append(jmp)
+                
+        # finalize granter scripts
+        for e in grant_builders[c.event]:
+            grant_builders[e]["jumps"].append(new_command(e, "ret"))
+            self.eventscripts[e] = copy.copy(grant_builders[e]["jumps"]) + copy.copy(grant_builders[e]["executions"])
 
         # Characters
         for character in self.characters:
@@ -690,27 +1235,6 @@ class GameWorld:
 
             if self.settings.is_flag_enabled(flags.BowsersKeepOpen):
                 patch.add_data(0x1fd343, utils.ByteField(0xa2).as_bytes())
-
-            # If star piece exp progression is on, set exp values for each star piece number and enable flag.
-            choice = self.settings.get_flag_choice(flags.StarExpChallenge)
-            if choice:
-                if choice is flags.StarExp1:
-                    exps = (2, 4, 5, 6, 8, 9, 11)
-                elif choice is flags.StarExp2:
-                    exps = (1, 2, 3, 5, 6, 7, 11)
-                elif choice is flags.StarExp3:
-                    exps = (0, 0, 0, 0, 0, 0, 0)
-                else:
-                    raise ValueError("Got unrecognized value for star exp challenge: {!r}".format(choice))
-
-                patch.add_data(0x39bc44, utils.ByteField(exps[0]).as_bytes())  # 0 stars
-                patch.add_data(0x39bc46, utils.ByteField(exps[1]).as_bytes())  # 1 star
-                patch.add_data(0x39bc48, utils.ByteField(exps[2]).as_bytes())  # 2 stars
-                patch.add_data(0x39bc4a, utils.ByteField(exps[3]).as_bytes())  # 3 stars
-                patch.add_data(0x39bc4c, utils.ByteField(exps[4]).as_bytes())  # 4 stars
-                patch.add_data(0x39bc4e, utils.ByteField(exps[5]).as_bytes())  # 5 stars
-                patch.add_data(0x39bc52, utils.ByteField(exps[6]).as_bytes())  # 6/7 stars
-                patch.add_data(0x1fd32d, utils.ByteField(0xa0).as_bytes())  # Enable flag
 
             # Minigames
             patch += self.ball_solitaire.get_patch()

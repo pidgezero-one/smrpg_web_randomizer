@@ -13,7 +13,7 @@ script = [
     {
         "identifier": "EVENT_207_skip",
         "command": 'jmp_if_var_equals_byte',
-        "args": [0x70D5, 6, "EVENT_207_ret_"]
+        "args": [0x70D5, 6, 'EVENT_207_remove_map_connector']
     },
     {
         "identifier": "EVENT_207_ret",

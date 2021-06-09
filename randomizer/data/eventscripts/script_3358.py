@@ -154,32 +154,4 @@ script = [
         "identifier": 'EVENT_3358_ret_16',
         "command": 'ret'
     },
-    {
-        "identifier": 'EVENT_3358_stop_sound_17',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3358_stop_sound_18',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3358_stop_sound_19',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3358_stop_sound_20',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3358_stop_sound_21',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3358_stop_sound_22',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3358_ret_23',
-        "command": 'ret'
-    }
 ]

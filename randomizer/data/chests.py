@@ -95,6 +95,12 @@ class OverworldItem(locations.ItemLocation):
 class PacketItem(OverworldItem):
     """Subclass for NPC reward location."""
     script_id = None
+    def item_allowed(self, item):
+        # NPC rewards cannot contain "You Missed!" or chest-only rewards.
+        # FIXME: Non-KI NPC rewards don't work with progressive cards for now.  Remove this when fixed.
+
+        return super().item_allowed(item) and not isclass_or_instance(item, (items.Coins, item.FrogCoin))
+
 
 # ******* Boss star piece classes
 
@@ -318,6 +324,7 @@ class MushroomKingdomHallway(Chest):
     description = ShuffleLocationSelector.MushroomKingdomHallway
     item = items.FrogCoin
     rooms = [17, 325]
+    npc_ids = [2, 6]
     event = 247
 
 
@@ -325,6 +332,7 @@ class MushroomKingdomVault1(Chest):
     area = locations.Area.MushroomKingdom
     description = ShuffleLocationSelector.MushroomKingdomVault1
     rooms = [31]
+    npc_ids = [0]
     event = 247
     item = items.Coins10
 
@@ -333,6 +341,7 @@ class MushroomKingdomVault2(Chest):
     area = locations.Area.MushroomKingdom
     description = ShuffleLocationSelector.MushroomKingdomVault2
     rooms = [31]
+    npc_ids = [1]
     event = 246
     item = items.RecoveryMushroom
 
@@ -341,6 +350,7 @@ class MushroomKingdomVault3(Chest):
     area = locations.Area.MushroomKingdom
     description = ShuffleLocationSelector.MushroomKingdomVault3
     rooms = [31]
+    npc_ids = [2]
     event = 245
     item = items.Flower
 
@@ -350,6 +360,7 @@ class InvasionVault1(StarAllowedChest):
     description = ShuffleLocationSelector.InvasionVault1
     item = items.Coins10
     rooms = [331]
+    npc_ids = [0]
     event = 247
     missable = True
     access = 2
@@ -368,6 +379,7 @@ class InvasionVault2(StarAllowedChest):
     description = ShuffleLocationSelector.InvasionVault2
     item = items.RecoveryMushroom
     rooms = [331]
+    npc_ids = [1]
     event = 246
     missable = True
     access = 2
@@ -386,6 +398,7 @@ class InvasionVault3(StarAllowedChest):
     description = ShuffleLocationSelector.InvasionVault3
     item = items.Flower
     rooms = [331]
+    npc_ids = [2]
     event = 245
     missable = True
     access = 2
@@ -474,6 +487,7 @@ class MushroomKingdomStoreBasement1(Chest):
     area = locations.Area.MushroomKingdom
     description = ShuffleLocationSelector.MushroomKingdomStoreBasement1
     rooms = [492]
+    npc_ids = [0]
     event = 247
     item = items.Flower
 
@@ -482,6 +496,7 @@ class MushroomKingdomStoreBasement2(Chest):
     area = locations.Area.MushroomKingdom
     description = ShuffleLocationSelector.MushroomKingdomStoreBasement2
     rooms = [492]
+    npc_ids = [1]
     event = 246
     item = items.Flower
 
@@ -566,6 +581,7 @@ class BanditsWay1(StarAllowedChest):
     description = ShuffleLocationSelector.BanditsWay1
     area = locations.Area.BanditsWay
     rooms = [207]
+    npc_ids = [9]
     event = 247
     item = items.KerokeroCola
     
@@ -613,6 +629,7 @@ class BanditsWay2(StarAllowedChest):
     description = ShuffleLocationSelector.BanditsWay2
     area = locations.Area.BanditsWay
     rooms = [77]
+    npc_ids = [0]
     event = 253
     item = items.RecoveryMushroom
     
@@ -624,6 +641,7 @@ class BanditsWayStarChest(StarAllowedChest):
     description = ShuffleLocationSelector.BanditsWayStarChest
     area = locations.Area.BanditsWay
     rooms = [78]
+    npc_ids = [0]
     event = 253
     item = items.BanditsWayStar
     
@@ -634,6 +652,7 @@ class BanditsWayStarChest(StarAllowedChest):
 class BanditsWayDogJump(StarAllowedChest):
     description = ShuffleLocationSelector.BanditsWayDogJump
     rooms = [78]
+    npc_ids = [1]
     event = 252
     area = locations.Area.BanditsWay
     item = items.Flower
@@ -646,6 +665,7 @@ class BanditsWayCroco(StarAllowedChest):
     description = ShuffleLocationSelector.BanditsWayCroco
     area = locations.Area.BanditsWay
     rooms = [206]
+    npc_ids = [0]
     event = 247
     item = items.RecoveryMushroom
     
@@ -699,6 +719,7 @@ class KeroSewersPandoriteRoom(StarAllowedChest):
     area = locations.Area.KeroSewers
     item = items.Flower
     rooms = [60]
+    npc_ids = [0]
     event = 247
 
 
@@ -707,6 +728,7 @@ class PandoriteChest(StarAllowedChest):
     area = locations.Area.KeroSewers
     item = items.PandoriteFight
     rooms = [60]
+    npc_ids = [1]
     event = 246
 
 
@@ -725,6 +747,7 @@ class PandoriteReward2(Chest):
     description = ShuffleLocationSelector.PandoriteReward2
     item = items.Coins(Chest, 50)
     rooms = [512]
+    manual_70A7 = True
     event = 245
     access = 2
     
@@ -745,6 +768,7 @@ class KeroSewersStarChest(StarAllowedChest):
     area = locations.Area.KeroSewers
     item = items.KeroSewersStar
     rooms = [59]
+    npc_ids = [0]
     event = 247
 
 
@@ -753,6 +777,7 @@ class KeroSewersBeforeBelomeLower(StarAllowedChest):
     area = locations.Area.KeroSewers
     item = items.RecoveryMushroom
     rooms = [301]
+    npc_ids = [0]
     event = 247
 
 
@@ -760,9 +785,9 @@ class KeroSewersBeforeBelomeUpper1(StarAllowedChest):
     description = ShuffleLocationSelector.KeroSewersBeforeBelomeUpper1
     area = locations.Area.KeroSewers
     item = items.Flower
+    npc_ids = [1]
     rooms = [301]
     event = 246
-    manual_70A7 = True
     missable = True
 
 
@@ -772,6 +797,7 @@ class KeroSewersBeforeBelomeUpper2(StarAllowedChest):
     item = items.CricketJam
     rooms = [301]
     event = 245
+    manual_70A7 = True
     key = True
     
     def item_allowed(self, item):
@@ -899,6 +925,7 @@ class RoseWayPlatform(StarAllowedChest):
     description = ShuffleLocationSelector.RoseWayPlatform
     area = locations.Area.RoseWay
     rooms = [80]
+    npc_ids = [0]
     event = 247
     item = items.FrogCoin
 
@@ -970,6 +997,7 @@ class RoseWayFiveChests1(StarAllowedChest):
     description = ShuffleLocationSelector.RoseWayFiveChests1
     area = locations.Area.RoseWay
     rooms = [81]
+    npc_ids = [0]
     event = 247
     item = items.RecoveryMushroom
 
@@ -978,6 +1006,7 @@ class RoseWayFiveChests2(StarAllowedChest):
     description = ShuffleLocationSelector.RoseWayFiveChests2
     area = locations.Area.RoseWay
     rooms = [81]
+    npc_ids = [1]
     event = 246
     item = items.Coins(Chest, 5)
 
@@ -986,6 +1015,7 @@ class RoseWayFiveChests3(StarAllowedChest):
     description = ShuffleLocationSelector.RoseWayFiveChests3
     area = locations.Area.RoseWay
     rooms = [81]
+    npc_ids = [2]
     event = 245
     item = items.Coins(Chest, 5)
 
@@ -994,6 +1024,7 @@ class RoseWayFiveChests4(StarAllowedChest):
     description = ShuffleLocationSelector.RoseWayFiveChests4
     area = locations.Area.RoseWay
     rooms = [81]
+    npc_ids = [3]
     event = 244
     item = items.Coins(Chest, 5)
 
@@ -1002,6 +1033,7 @@ class RoseWayFiveChests5(StarAllowedChest):
     description = ShuffleLocationSelector.RoseWayFiveChests5
     area = locations.Area.RoseWay
     rooms = [81]
+    npc_ids = [4]
     event = 243
     item = items.Coins(Chest, 5)
 
@@ -1027,6 +1059,7 @@ class RoseTownStore1(Chest):
     area = locations.Area.RoseTown
     description = ShuffleLocationSelector.RoseTownStore1
     rooms = [87]
+    npc_ids = [4]
     event = 247
     item = items.Flower
 
@@ -1035,6 +1068,7 @@ class RoseTownStore2(Chest):
     area = locations.Area.RoseTown
     description = ShuffleLocationSelector.RoseTownStore2
     rooms = [87]
+    npc_ids = [5]
     event = 246
     item = items.FrogCoin
 
@@ -1043,6 +1077,7 @@ class GardenerCloud1(Chest):
     area = locations.Area.RoseTownClouds
     description = ShuffleLocationSelector.GardenerCloud1
     rooms = [419]
+    npc_ids = [0]
     event = 247
     item = items.LazyShellArmor
     access = 2
@@ -1056,6 +1091,7 @@ class GardenerCloud2(Chest):
     area = locations.Area.RoseTownClouds
     description = ShuffleLocationSelector.GardenerCloud2
     rooms = [419]
+    npc_ids = [1]
     event = 246
     item = items.LazyShellWeapon
     access = 2
@@ -1094,6 +1130,7 @@ class RoseTownTreasureHouse1(Chest):
     description = ShuffleLocationSelector.RoseTownTreasureHouse1
     area = locations.Area.RoseTown
     rooms = [93, 94]
+    npc_ids = [0, 0]
     event = 247
     item = items.Flower
 
@@ -1102,6 +1139,7 @@ class RoseTownTreasureHouse2(Chest):
     description = ShuffleLocationSelector.RoseTownTreasureHouse2
     area = locations.Area.RoseTown
     rooms = [93, 94]
+    npc_ids = [1, 1]
     event = 246
     item = items.Flower
 
@@ -1127,6 +1165,7 @@ class RoseTownTreasureHouse3(Chest):
     description = ShuffleLocationSelector.RoseTownTreasureHouse3
     area = locations.Area.RoseTown
     rooms = [97, 98]
+    npc_ids = [1, 1]
     event = 246
     item = items.FrogCoin
 
@@ -1136,7 +1175,8 @@ class RoseTownTreasureHouse3(Chest):
 class ForestMaze1(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMaze1
     area = locations.Area.ForestMaze
-    rooms = [223]
+    rooms = [224]
+    npc_ids = [2]
     event = 247
     item = items.KerokeroCola
 
@@ -1148,6 +1188,7 @@ class ForestMaze2(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMaze2
     area = locations.Area.ForestMaze
     rooms = [228]
+    npc_ids = [2]
     event = 247
     item = items.FrogCoin
 
@@ -1159,6 +1200,7 @@ class ForestMazeUnderground1(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMazeUnderground1
     area = locations.Area.ForestMaze
     rooms = [242]
+    npc_ids = [2]
     event = 247
     item = items.KerokeroCola
 
@@ -1170,6 +1212,7 @@ class ForestMazeUnderground2(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMazeUnderground2
     area = locations.Area.ForestMaze
     rooms = [242]
+    npc_ids = [3]
     event = 246
     item = items.Flower
 
@@ -1181,6 +1224,7 @@ class ForestMazeUnderground3(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMazeUnderground3
     area = locations.Area.ForestMaze
     rooms = [242]
+    npc_ids = [4]
     event = 245
     item = items.YouMissed
 
@@ -1192,6 +1236,7 @@ class ForestMazeRedEssence(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMazeRedEssence
     area = locations.Area.ForestMaze
     rooms = [227]
+    npc_ids = [5]
     event = 247
     item = items.RedEssence
 
@@ -1203,6 +1248,7 @@ class ForestMazeSecret1(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMazeSecret1
     area = locations.Area.ForestMaze
     rooms = [234]
+    npc_ids = [1]
     event = 247
     item = items.FrogCoin
 
@@ -1214,6 +1260,7 @@ class ForestMazeSecret2(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMazeSecret2
     area = locations.Area.ForestMaze
     rooms = [234]
+    npc_ids = [2]
     event = 246
     item = items.Flower
 
@@ -1225,6 +1272,7 @@ class ForestMazeSecret3(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMazeSecret3
     area = locations.Area.ForestMaze
     rooms = [234]
+    npc_ids = [3]
     event = 245
     item = items.Flower
 
@@ -1236,6 +1284,7 @@ class ForestMazeSecret4(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMazeSecret4
     area = locations.Area.ForestMaze
     rooms = [234]
+    npc_ids = [4]
     event = 244
     item = items.Flower
 
@@ -1247,6 +1296,7 @@ class ForestMazeSecret5(StarAllowedChest):
     description = ShuffleLocationSelector.ForestMazeSecret5
     area = locations.Area.ForestMaze
     rooms = [234]
+    npc_ids = [5]
     event = 243
     item = items.RecoveryMushroom
 
@@ -1282,6 +1332,7 @@ class PipeVaultSlide1(StarAllowedChest):
     area = locations.Area.PipeVault
     description = ShuffleLocationSelector.PipeVaultSlide1
     rooms = [125]
+    npc_ids = [8]
     event = 245
     item = items.Flower
 
@@ -1290,6 +1341,7 @@ class PipeVaultSlide2(StarAllowedChest):
     area = locations.Area.PipeVault
     description = ShuffleLocationSelector.PipeVaultSlide2
     rooms = [125]
+    npc_ids = [9]
     event = 246
     item = items.FrogCoin
 
@@ -1298,6 +1350,7 @@ class PipeVaultSlide3(StarAllowedChest):
     area = locations.Area.PipeVault
     description = ShuffleLocationSelector.PipeVaultSlide3
     rooms = [125]
+    npc_ids = [10]
     event = 247
     item = items.FrogCoin
 
@@ -1360,6 +1413,7 @@ class PipeVaultNippers1(StarAllowedChest):
     area = locations.Area.PipeVault
     description = ShuffleLocationSelector.PipeVaultNippers1
     rooms = [128]
+    npc_ids = [0]
     event = 247
     item = items.Flower
     npc_ids = [6]
@@ -1369,6 +1423,7 @@ class PipeVaultNippers2(StarAllowedChest):
     area = locations.Area.PipeVault
     description = ShuffleLocationSelector.PipeVaultNippers2
     rooms = [128]
+    npc_ids = [1]
     event = 246
     item = items.Coins(Chest, 20)
 
@@ -1395,6 +1450,7 @@ class YosterIsleEntrance(Chest):
     description = ShuffleLocationSelector.YosterIsleEntrance
     area = locations.Area.YosterIsle
     rooms = [33]
+    npc_ids = [1]
     item = items.FrogCoin
     event = 247
 
@@ -1537,6 +1593,7 @@ class MolevilleMinesStarChest(StarAllowedChest):
     description = ShuffleLocationSelector.FireworksShop
     area = locations.Area.MolevilleMines
     rooms = [285]
+    npc_ids = [0]
     event = 247
     item = items.MolevilleMinesStar
     access = 2
@@ -1562,6 +1619,7 @@ class MolevilleMinesCoins(StarAllowedChest):
     description = ShuffleLocationSelector.MolevilleMinesCoins
     area = locations.Area.MolevilleMines
     rooms = [280]
+    npc_ids = [0]
     event = 247
     item = items.Coins(Chest, 150)
     access = 2
@@ -1574,6 +1632,7 @@ class MolevilleMinesPunchinello1(StarAllowedChest):
     description = ShuffleLocationSelector.MolevilleMinesPunchinello1
     area = locations.Area.MolevilleMines
     rooms = [288]
+    npc_ids = [0]
     event = 247
     item = items.RecoveryMushroom
     access = 2
@@ -1586,6 +1645,7 @@ class MolevilleMinesPunchinello2(StarAllowedChest):
     description = ShuffleLocationSelector.MolevilleMinesPunchinello2
     area = locations.Area.MolevilleMines
     rooms = [288]
+    npc_ids = [1]
     event = 246
     item = items.Flower
     access = 2
@@ -1669,6 +1729,7 @@ class BoosterPass1(StarAllowedChest):
     description = ShuffleLocationSelector.BoosterPass1
     area = locations.Area.BoosterPass
     rooms = [100]
+    npc_ids = [8]
     event = 247
     item = items.Flower
 
@@ -1677,6 +1738,7 @@ class BoosterPass2(StarAllowedChest):
     description = ShuffleLocationSelector.BoosterPass2
     area = locations.Area.BoosterPass
     rooms = [100]
+    npc_ids = [9]
     event = 246
     item = items.RockCandy
 
@@ -1702,7 +1764,8 @@ class BoosterPassFlower(OverworldItem):
 class BoosterPassSecret1(StarAllowedChest):
     area = locations.Area.BoosterPass
     description = ShuffleLocationSelector.BoosterPassSecret1
-    rooms = [401]
+    rooms = [405]
+    npc_ids = [10]
     event = 247
     item = items.FrogCoin
     access = 2
@@ -1719,7 +1782,8 @@ class BoosterPassSecret1(StarAllowedChest):
 class BoosterPassSecret2(StarAllowedChest):
     area = locations.Area.BoosterPass
     description = ShuffleLocationSelector.BoosterPassSecret2
-    rooms = [401]
+    rooms = [405]
+    npc_ids = [11]
     event = 246
     item = items.Flower
     access = 2
@@ -1736,7 +1800,8 @@ class BoosterPassSecret2(StarAllowedChest):
 class BoosterPassSecret3(StarAllowedChest):
     area = locations.Area.BoosterPass
     description = ShuffleLocationSelector.BoosterPassSecret3
-    rooms = [401]
+    rooms = [405]
+    npc_ids = [12]
     event = 245
     item = items.KerokeroCola
     access = 2
@@ -1757,6 +1822,7 @@ class BoosterTowerSpookum(StarAllowedChest):
     area = locations.Area.BoosterTower
     item = items.FrogCoin
     rooms = [196]
+    npc_ids = [7]
     event = 247
     
     def can_access(self, inventory):
@@ -1768,6 +1834,7 @@ class BoosterTowerThwomp(StarAllowedChest):
     area = locations.Area.BoosterTower
     item = items.RecoveryMushroom
     rooms = [36]
+    npc_ids = [2]
     event = 247
     
     def can_access(self, inventory):
@@ -1988,6 +2055,7 @@ class BoosterTowerParachute(StarAllowedChest):
     area = locations.Area.BoosterTower
     item = items.FrogCoin
     rooms = [35]
+    npc_ids = [9]
     event = 247
     
     def can_access(self, inventory):
@@ -2011,6 +2079,7 @@ class BoosterTowerZoomShoes(StarAllowedChest):
     area = locations.Area.BoosterTower
     item = items.ZoomShoes
     rooms = [48]
+    npc_ids = [0]
     event = 247
     access = 2
     special_equip = True
@@ -2023,6 +2092,7 @@ class BoosterTowerTop1(StarAllowedChest):
     description = ShuffleLocationSelector.BoosterTowerTop1
     area = locations.Area.BoosterTower
     rooms = [199]
+    npc_ids = [0]
     script = 247
     item = items.FrogCoin
     
@@ -2034,6 +2104,7 @@ class BoosterTowerTop2(StarAllowedChest):
     description = ShuffleLocationSelector.BoosterTowerTop2
     area = locations.Area.BoosterTower
     rooms = [199]
+    npc_ids = [1]
     script = 246
     item = items.GoodieBag
     
@@ -2045,6 +2116,7 @@ class BoosterTowerTop3(StarAllowedChest):
     description = ShuffleLocationSelector.BoosterTowerTop3
     area = locations.Area.BoosterTower
     rooms = [199]
+    npc_ids = [5]
     script = 245
     item = items.RecoveryMushroom
     
@@ -2186,6 +2258,7 @@ class MarrymoreInn(Chest):
     description = ShuffleLocationSelector.MarrymoreInn
     item = items.FrogCoin
     rooms = [9]
+    npc_ids = [0]
     event = 247
 
 
@@ -2320,6 +2393,7 @@ class SeaStarChest(StarAllowedChest):
     area = locations.Area.Sea
     description = ShuffleLocationSelector.SeaStarChest
     rooms = [134]
+    npc_ids = [0]
     event = 247
     item = items.SeaStar
     access = 1
@@ -2338,6 +2412,7 @@ class SeaSaveRoom1(StarAllowedChest):
     area = locations.Area.Sea
     description = ShuffleLocationSelector.SeaSaveRoom1
     rooms = [132]
+    npc_ids = [0]
     event = 245
     item = items.FrogCoin
     access = 1
@@ -2356,6 +2431,7 @@ class SeaSaveRoom2(StarAllowedChest):
     area = locations.Area.Sea
     description = ShuffleLocationSelector.SeaSaveRoom2
     rooms = [132]
+    npc_ids = [1]
     event = 246
     item = items.Flower
     access = 1
@@ -2374,6 +2450,7 @@ class SeaSaveRoom3(StarAllowedChest):
     area = locations.Area.Sea
     description = ShuffleLocationSelector.SeaSaveRoom3
     rooms = [132]
+    npc_ids = [2]
     event = 247
     item = items.RecoveryMushroom
     access = 1
@@ -2392,6 +2469,7 @@ class SeaWhirlpoolChest(StarAllowedChest):
     description = ShuffleLocationSelector.SeaWhirlpoolChest
     area = locations.Area.Sea
     rooms = [133]
+    npc_ids = [0]
     event = 247
     item = items.MaxMushroom
     access = 1
@@ -2412,6 +2490,7 @@ class SunkenShipRatStairs(StarAllowedChest):
     area = locations.Area.SunkenShip
     description = ShuffleLocationSelector.SunkenShipRatStairs
     rooms = [167]
+    npc_ids = [0]
     event = 247
     item = items.Coins(Chest, 100)
     access = 1
@@ -2449,6 +2528,7 @@ class SunkenShipShop(StarAllowedChest):
     area = locations.Area.SunkenShip
     description = ShuffleLocationSelector.SunkenShipShop
     rooms = [169]
+    npc_ids = [0]
     event = 247
     item = items.Coins(Chest, 100)
     access = 1
@@ -2467,6 +2547,7 @@ class SunkenShipCoins1(StarAllowedChest):
     area = locations.Area.SunkenShip
     description = ShuffleLocationSelector.SunkenShipCoins1
     rooms = [175]
+    npc_ids = [0]
     event = 247
     item = items.Coins(Chest, 100)
     access = 2
@@ -2479,6 +2560,7 @@ class SunkenShipCoins2(StarAllowedChest):
     area = locations.Area.SunkenShip
     description = ShuffleLocationSelector.SunkenShipCoins2
     rooms = [175]
+    npc_ids = [1]
     event = 246
     item = items.Coins(Chest, 100)
     access = 2
@@ -2491,6 +2573,7 @@ class SunkenShipCloneRoom(StarAllowedChest):
     area = locations.Area.SunkenShip
     description = ShuffleLocationSelector.SunkenShipCloneRoom
     rooms = [179]
+    npc_ids = [2]
     event = 247
     item = items.KerokeroCola
     access = 2
@@ -2503,6 +2586,7 @@ class SunkenShipFrogCoinRoom(StarAllowedChest):
     area = locations.Area.SunkenShip
     description = ShuffleLocationSelector.SunkenShipFrogCoinRoom
     rooms = [183]
+    npc_ids = [0]
     event = 247
     item = items.FrogCoin
     access = 2
@@ -2515,6 +2599,7 @@ class SunkenShipHidonMushroom(StarAllowedChest):
     area = locations.Area.SunkenShip
     description = ShuffleLocationSelector.SunkenShipHidonMushroom
     rooms = [184]
+    npc_ids = [1]
     event = 247
     item = items.RecoveryMushroom
     access = 2
@@ -2527,6 +2612,7 @@ class SunkenShipHidonChest(StarAllowedChest):
     area = locations.Area.SunkenShip
     description = ShuffleLocationSelector.SunkenShipHidonChest
     rooms = [184]
+    npc_ids = [2]
     event = 246
     item = items.HidonFight
     access = 2
@@ -2550,6 +2636,7 @@ class HidonReward2(Chest):
     description = ShuffleLocationSelector.HidonReward2
     rooms = [513]
     event = 245
+    manual_70A7 = True
     item = items.Coins(Chest, 100)
     access = 2
     
@@ -2621,6 +2708,7 @@ class SunkenShipSafetyRing(StarAllowedChest):
     description = ShuffleLocationSelector.SunkenShipSafetyRing
     area = locations.Area.SunkenShip
     rooms = [185]
+    npc_ids = [0]
     event = 247
     item = items.SafetyRing
     access = 2
@@ -2634,6 +2722,7 @@ class SunkenShipBandanaReds(StarAllowedChest):
     area = locations.Area.SunkenShip
     item = items.RecoveryMushroom
     rooms = [24]
+    npc_ids = [4]
     event = 247
     access = 2
     
@@ -2761,6 +2850,7 @@ class LandsEndRedEssence(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndRedEssence
     rooms = [137]
+    npc_ids = [4]
     event = 247
     item = items.RedEssence
 
@@ -2769,6 +2859,7 @@ class LandsEndChowPit1(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndChowPit1
     rooms = [138]
+    npc_ids = [6]
     event = 247
     item = items.KerokeroCola
 
@@ -2777,6 +2868,7 @@ class LandsEndChowPit2(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndChowPit2
     rooms = [138]
+    npc_ids = [7]
     event = 246
     item = items.FrogCoin
 
@@ -2785,6 +2877,7 @@ class LandsEndBeeRoom(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndBeeRoom
     rooms = [141]
+    npc_ids = [6]
     event = 247
     item = items.FrogCoin
 
@@ -2793,6 +2886,7 @@ class LandsEndSecret1(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndSecret1
     rooms = [270]
+    npc_ids = [6]
     event = 247
     item = items.FrogCoin
 
@@ -2801,14 +2895,16 @@ class LandsEndSecret2(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndSecret2
     rooms = [270]
+    npc_ids = [7]
     event = 246
-    item = items.FrogCoin
+    item = items.Flower
 
 
 class LandsEndShyAway(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndShyAway
     rooms = [401]
+    npc_ids = [6]
     event = 247
     item = items.RecoveryMushroom
 
@@ -2817,7 +2913,8 @@ class LandsEndStarChest1(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndStarChest1
     rooms = [263]
-    event = 172
+    npc_ids = [5]
+    event = 247
     item = items.LandsEndVolcanoStar
 
 
@@ -2825,7 +2922,8 @@ class LandsEndStarChest2(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndStarChest2
     rooms = [262]
-    event = 172
+    npc_ids = [18]
+    event = 247
     item = items.LandsEndStar2
 
 
@@ -2833,7 +2931,8 @@ class LandsEndStarChest3(StarAllowedChest):
     area = locations.Area.LandsEnd
     description = ShuffleLocationSelector.LandsEndStarChest3
     rooms = [262]
-    event = 173
+    npc_ids = [19]
+    event = 246
     item = items.LandsEndStar3
 
 
@@ -2858,6 +2957,7 @@ class BelomeTempleFortuneTeller(Chest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleFortuneTeller
     rooms = [420]
+    npc_ids = [5]
     event = 247
     item = items.Coins(Chest, 50)
 
@@ -2866,6 +2966,7 @@ class BelomeTempleFortune1(Chest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleFortune1
     rooms = [421]
+    npc_ids = [6]
     event = 247
     item = items.RecoveryMushroom
     access = 2
@@ -2875,6 +2976,7 @@ class BelomeTempleFortune2(Chest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleFortune2
     rooms = [421]
+    npc_ids = [7]
     event = 246
     item = items.YoshiCookie
     access = 2
@@ -2884,6 +2986,7 @@ class BelomeTempleFortune3(Chest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleFortune3
     rooms = [421]
+    npc_ids = [8]
     event = 245
     item = items.Flower
     access = 2
@@ -2893,6 +2996,7 @@ class BelomeTempleFortune4(Chest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleFortune4
     rooms = [421]
+    npc_ids = [9]
     event = 244
     item = items.Coins(Chest, 100)
     access = 2
@@ -2902,6 +3006,7 @@ class BelomeTempleAfterFortune1(Chest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleAfterFortune1
     rooms = [425]
+    npc_ids = [0]
     event = 247
     item = items.FrogCoin
 
@@ -2910,6 +3015,7 @@ class BelomeTempleAfterFortune2(Chest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleAfterFortune2
     rooms = [425]
+    npc_ids = [1]
     event = 246
     item = items.Coins(Chest, 150)
 
@@ -2918,6 +3024,7 @@ class BelomeTempleAfterFortune3(Chest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleAfterFortune3
     rooms = [425]
+    npc_ids = [2]
     event = 245
     item = items.FrogCoin
 
@@ -2926,6 +3033,7 @@ class BelomeTempleAfterFortune4(Chest):
     area = locations.Area.BelomeTemple
     description = ShuffleLocationSelector.BelomeTempleAfterFortune4
     rooms = [425]
+    npc_ids = [3]
     event = 244
     item = items.FrogCoin
 
@@ -3096,6 +3204,7 @@ class MonstroTownEntrance(Chest):
     area = locations.Area.MonstroTown
     description = ShuffleLocationSelector.MonstroTownEntrance
     rooms = [267]
+    npc_ids = [1]
     event = 257
     item = items.FrogCoin
     access = 2
@@ -3248,6 +3357,7 @@ class BeanValley1(StarAllowedChest):
     description = ShuffleLocationSelector.BeanValley1
     area = locations.Area.BeanValley
     rooms = [252]
+    npc_ids = [3]
     event = 247
     item = items.Flower
 
@@ -3256,6 +3366,7 @@ class BeanValley2(StarAllowedChest):
     description = ShuffleLocationSelector.BeanValley2
     area = locations.Area.BeanValley
     rooms = [252]
+    npc_ids = [4]
     event = 246
     item = items.FrogCoin
 
@@ -3264,6 +3375,7 @@ class BeanValleyLeftPiranhaPipe(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyLeftPiranhaPipe
     rooms = [334]
+    npc_ids = [0]
     event = 247
     item = items.SlotMachineChest
 
@@ -3272,6 +3384,7 @@ class BeanValleyBottomLeftPiranhaPipe(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyBottomLeftPiranhaPipe
     rooms = [348]
+    npc_ids = [0]
     event = 247
     item = items.SlotMachineChest
 
@@ -3280,6 +3393,7 @@ class BeanValleyBottomRightPiranhaPipeUpper(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyBottomRightPiranhaPipeUpper
     rooms = [349]
+    npc_ids = [0]
     event = 247
     item = items.SlotMachineChest
 
@@ -3288,6 +3402,7 @@ class BeanValleyBottomRightPiranhaPipeLower(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyBottomRightPiranhaPipeLower
     rooms = [349]
+    npc_ids = [2]
     event = 246
     item = items.KerokeroCola
 
@@ -3296,6 +3411,7 @@ class BeanValleyBoxBoyRoom1(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyBoxBoyRoom1
     rooms = [335]
+    npc_ids = [5]
     event = 247
     item = items.BoxBoyFight
 
@@ -3314,6 +3430,7 @@ class BeanValleyBoxBoyRoom2(StarAllowedChest):
     description = ShuffleLocationSelector.BeanValleyBoxBoyRoom2
     rooms = [335]
     event = 246
+    npc_ids = [7]
     item = items.RedEssence
 
 
@@ -3330,6 +3447,7 @@ class BeanValleyPiranhaPlants(StarAllowedChest):
     description = ShuffleLocationSelector.BeanValleyPiranhaPlants
     area = locations.Area.BeanValley
     rooms = [251]
+    npc_ids = [13]
     event = 247
     item = items.FrogCoin
 
@@ -3359,6 +3477,7 @@ class BeanValleyBeanstalk(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyBeanstalk
     rooms = [379]
+    npc_ids = [0]
     event = 247
     item = items.Flower
 
@@ -3484,6 +3603,7 @@ class BeanValleyCloud1(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyCloud1
     rooms = [372]
+    npc_ids = [1]
     event = 247
     item = items.FrogCoin
     access = 2
@@ -3493,6 +3613,7 @@ class BeanValleyCloud2(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyCloud2
     rooms = [372]
+    npc_ids = [2]
     event = 246
     item = items.RareScarf
     access = 2
@@ -3502,6 +3623,7 @@ class BeanValleyFall1(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyFall1
     rooms = [373]
+    npc_ids = [1]
     event = 247
     item = items.Flower
     access = 2
@@ -3511,6 +3633,7 @@ class BeanValleyFall2(StarAllowedChest):
     area = locations.Area.BeanValley
     description = ShuffleLocationSelector.BeanValleyFall2
     rooms = [373]
+    npc_ids = [2]
     event = 246
     item = items.Flower
     access = 2
@@ -3572,6 +3695,7 @@ class NimbusLandShop(Chest):
     area = locations.Area.NimbusLand
     description = ShuffleLocationSelector.NimbusLandShop
     rooms = [344]
+    npc_ids = [0]
     event = 247
     item = items.FrogCoin
 
@@ -3596,6 +3720,7 @@ class NimbusCastleBeforeBirdetta1(StarAllowedChest):
     description = ShuffleLocationSelector.NimbusCastleBeforeBirdetta1
     area = locations.Area.NimbusLand
     rooms = [118]
+    npc_ids = [0]
     event = 247
     item = items.Flower
     missable = True
@@ -3605,6 +3730,7 @@ class NimbusCastleBeforeBirdetta2(StarAllowedChest):
     area = locations.Area.NimbusLand
     description = ShuffleLocationSelector.NimbusCastleBeforeBirdetta2
     rooms = [111, 500]
+    npc_ids = [2, 0]
     event = 247
     item = items.Flower
 
@@ -3641,6 +3767,7 @@ class NimbusCastleOutOfBounds1(StarAllowedChest):
     area = locations.Area.NimbusLand
     description = ShuffleLocationSelector.NimbusCastleOutOfBounds1
     rooms = [410]
+    npc_ids = [0]
     event = 247
     item = items.FrogCoin
 
@@ -3649,6 +3776,7 @@ class NimbusCastleOutOfBounds2(StarAllowedChest):
     area = locations.Area.NimbusLand
     description = ShuffleLocationSelector.NimbusCastleOutOfBounds2
     rooms = [410]
+    npc_ids = [1]
     event = 246
     item = items.FrogCoin
 
@@ -3657,6 +3785,7 @@ class NimbusCastleSingleGoldBird(StarAllowedChest):
     area = locations.Area.NimbusLand
     description = ShuffleLocationSelector.NimbusCastleSingleGoldBird
     rooms = [113]
+    npc_ids = [1]
     event = 247
     item = items.RecoveryMushroom
 
@@ -3665,6 +3794,7 @@ class NimbusCastleAfterEgg1(StarAllowedChest):
     description = ShuffleLocationSelector.NimbusCastleAfterEgg1
     area = locations.Area.NimbusLand
     rooms = [114, 498]
+    npc_ids = [0, 0]
     event = 247
     item = items.Flower
     access = 2
@@ -3677,6 +3807,7 @@ class NimbusCastleAfterEgg2(StarAllowedChest):
     description = ShuffleLocationSelector.NimbusCastleAfterEgg2
     area = locations.Area.NimbusLand
     rooms = [114, 498]
+    npc_ids = [1, 1]
     event = 246
     item = items.FrogCoin
     access = 2
@@ -3698,6 +3829,7 @@ class NimbusCastleStarChest(StarAllowedChest):
     description = ShuffleLocationSelector.NimbusCastleStarChest
     area = locations.Area.NimbusLand
     rooms = [121]
+    npc_ids = [0]
     event = 247
     item = items.NimbusLandStar
     missable = True
@@ -3711,6 +3843,7 @@ class NimbusCastleStarAfterValentina(Chest):
     description = ShuffleLocationSelector.NimbusCastleStarAfterValentina
     area = locations.Area.NimbusLand
     rooms = [121]
+    npc_ids = [1]
     event = 246
     item = items.Flower
     access = 2
@@ -3723,6 +3856,7 @@ class NimbusCastleCornerChestAfterValentina(Chest):
     description = ShuffleLocationSelector.NimbusCastleCornerChestAfterValentina
     area = locations.Area.NimbusLand
     rooms = [499]
+    npc_ids = [0]
     event = 247
     item = items.FrogCoin
     access = 2
@@ -3819,6 +3953,7 @@ class BarrelVolcanoSecret1(StarAllowedChest):
     area = locations.Area.BarrelVolcano
     description = ShuffleLocationSelector.BarrelVolcanoSecret1
     rooms = [355]
+    npc_ids = [1]
     event = 247
     item = items.Flower
     access = 2
@@ -3836,6 +3971,7 @@ class BarrelVolcanoSecret2(StarAllowedChest):
     area = locations.Area.BarrelVolcano
     description = ShuffleLocationSelector.BarrelVolcanoSecret2
     rooms = [355]
+    npc_ids = [2]
     event = 246
     item = items.Flower
     access = 2
@@ -3922,6 +4058,7 @@ class BarrelVolcanoBeforeStar1(StarAllowedChest):
     area = locations.Area.BarrelVolcano
     description = ShuffleLocationSelector.BarrelVolcanoBeforeStar1
     rooms = [384]
+    npc_ids = [0]
     event = 247
     item = items.Flower
     access = 2
@@ -3939,6 +4076,7 @@ class BarrelVolcanoBeforeStar2(StarAllowedChest):
     area = locations.Area.BarrelVolcano
     description = ShuffleLocationSelector.BarrelVolcanoBeforeStar2
     rooms = [384]
+    npc_ids = [1]
     event = 246
     item = items.Coins(Chest, 100)
     access = 2
@@ -3956,6 +4094,7 @@ class BarrelVolcanoStarRoom(StarAllowedChest):
     area = locations.Area.BarrelVolcano
     description = ShuffleLocationSelector.BarrelVolcanoStarRoom
     rooms = [385]
+    npc_ids = [0]
     event = 247
     item = items.LandsEndVolcanoStar
     access = 2
@@ -3973,6 +4112,7 @@ class BarrelVolcanoSaveRoom1(StarAllowedChest):
     area = locations.Area.BarrelVolcano
     description = ShuffleLocationSelector.BarrelVolcanoSaveRoom1
     rooms = [366]
+    npc_ids = [0]
     event = 247
     item = items.Flower
     access = 2
@@ -3990,6 +4130,7 @@ class BarrelVolcanoSaveRoom2(StarAllowedChest):
     area = locations.Area.BarrelVolcano
     description = ShuffleLocationSelector.BarrelVolcanoSaveRoom2
     rooms = [366]
+    npc_ids = [1]
     event = 246
     item = items.FrogCoin
     access = 2
@@ -4007,6 +4148,7 @@ class BarrelVolcanoHinopio(StarAllowedChest):
     area = locations.Area.BarrelVolcano
     description = ShuffleLocationSelector.BarrelVolcanoHinopio
     rooms = [367]
+    npc_ids = [0]
     event = 247
     item = items.Coins(Chest, 100)
     access = 2
@@ -4045,6 +4187,7 @@ class BowsersKeepDarkRoom(StarAllowedChest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepDarkRoom
     rooms = [453]
+    npc_ids = [0]
     event = 247
     item = items.RecoveryMushroom
     access = 2
@@ -4062,6 +4205,7 @@ class BowsersKeepCrocoShop1(StarAllowedChest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepCrocoShop1
     rooms = [451]
+    npc_ids = [0]
     event = 247
     item = items.Coins(Chest, 150)
     access = 2
@@ -4079,6 +4223,7 @@ class BowsersKeepCrocoShop2(StarAllowedChest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepCrocoShop2
     rooms = [451]
+    npc_ids = [1]
     event = 246
     item = items.RecoveryMushroom
     access = 2
@@ -4097,6 +4242,7 @@ class BowsersKeepMagikoopa(Chest):
     area = locations.Area.BowsersKeep
     rooms = [266]
     script = 247
+    npc_ids = [0]
     item = items.InfiniteCoins
     access = 2
     
@@ -4128,6 +4274,7 @@ class BowsersKeepInvisibleBridge1(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepInvisibleBridge1
     rooms = [322]
+    npc_ids = [4]
     script = 247
     item = items.FrightBomb
     access = 2
@@ -4145,6 +4292,7 @@ class BowsersKeepInvisibleBridge2(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepInvisibleBridge2
     rooms = [322]
+    npc_ids = [5]
     script = 246
     item = items.RoyalSyrup
     access = 2
@@ -4162,6 +4310,7 @@ class BowsersKeepInvisibleBridge3(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepInvisibleBridge3
     rooms = [322]
+    npc_ids = [6]
     script = 245
     item = items.IceBomb
     access = 2
@@ -4179,6 +4328,7 @@ class BowsersKeepInvisibleBridge4(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepInvisibleBridge4
     rooms = [322]
+    npc_ids = [7]
     script = 244
     item = items.RockCandy
     access = 2
@@ -4268,6 +4418,7 @@ class BowsersKeepMovingPlatforms1(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepMovingPlatforms1
     rooms = [458]
+    npc_ids = [10]
     event = 247
     item = items.Flower
     access = 2
@@ -4285,6 +4436,7 @@ class BowsersKeepMovingPlatforms2(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepMovingPlatforms2
     rooms = [458]
+    npc_ids = [11]
     event = 246
     item = items.RedEssence
     access = 2
@@ -4302,6 +4454,7 @@ class BowsersKeepMovingPlatforms3(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepMovingPlatforms3
     rooms = [458]
+    npc_ids = [12]
     event = 245
     item = items.MaxMushroom
     access = 2
@@ -4319,6 +4472,7 @@ class BowsersKeepMovingPlatforms4(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepMovingPlatforms4
     rooms = [458]
+    npc_ids = [13]
     event = 244
     item = items.FireBomb
     access = 2
@@ -4336,6 +4490,7 @@ class BowsersKeepElevatorPlatforms(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepElevatorPlatforms
     rooms = [321]
+    npc_ids = [8]
     script = 247
     item = items.KerokeroCola
     access = 2
@@ -4353,6 +4508,7 @@ class BowsersKeepCannonballRoom1(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepCannonballRoom1
     rooms = [457]
+    npc_ids = [3]
     event = 247
     item = items.Flower
     access = 2
@@ -4370,6 +4526,7 @@ class BowsersKeepCannonballRoom2(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepCannonballRoom2
     rooms = [457]
+    npc_ids = [4]
     event = 246
     item = items.Flower
     access = 2
@@ -4387,6 +4544,7 @@ class BowsersKeepCannonballRoom3(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepCannonballRoom3
     rooms = [457]
+    npc_ids = [5]
     event = 245
     item = items.PickMeUp
     access = 2
@@ -4404,6 +4562,7 @@ class BowsersKeepCannonballRoom4(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepCannonballRoom4
     rooms = [457]
+    npc_ids = [6]
     event = 244
     item = items.RockCandy
     access = 2
@@ -4421,6 +4580,7 @@ class BowsersKeepCannonballRoom5(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepCannonballRoom5
     rooms = [457]
+    npc_ids = [7]
     event = 243
     item = items.MaxMushroom
     access = 2
@@ -4582,6 +4742,7 @@ class BowsersKeepRotatingPlatforms1(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms1
     rooms = [455]
+    npc_ids = [1]
     event = 247
     item = items.Flower
     access = 2
@@ -4599,6 +4760,7 @@ class BowsersKeepRotatingPlatforms2(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms2
     rooms = [455]
+    npc_ids = [2]
     event = 246
     item = items.Flower
     access = 2
@@ -4616,6 +4778,7 @@ class BowsersKeepRotatingPlatforms3(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms3
     rooms = [455]
+    npc_ids = [3]
     event = 245
     item = items.FireBomb
     access = 2
@@ -4633,6 +4796,7 @@ class BowsersKeepRotatingPlatforms4(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms4
     rooms = [455]
+    npc_ids = [4]
     event = 244
     item = items.RoyalSyrup
     access = 2
@@ -4650,6 +4814,7 @@ class BowsersKeepRotatingPlatforms5(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms5
     rooms = [455]
+    npc_ids = [5]
     event = 243
     item = items.PickMeUp
     access = 2
@@ -4667,6 +4832,7 @@ class BowsersKeepRotatingPlatforms6(Chest):
     area = locations.Area.BowsersKeep
     description = ShuffleLocationSelector.BowsersKeepRotatingPlatforms6
     rooms = [455]
+    npc_ids = [6]
     event = 242
     item = items.KerokeroCola
     access = 2
@@ -4783,6 +4949,7 @@ class FactorySaveRoom(StarAllowedChest):
     area = locations.Area.Factory
     description = ShuffleLocationSelector.FactorySaveRoom
     rooms = [237]
+    npc_ids = [1]
     event = 247
     item = items.RecoveryMushroom
     access = 2
@@ -4800,6 +4967,7 @@ class FactoryBoltPlatforms(StarAllowedChest):
     area = locations.Area.Factory
     description = ShuffleLocationSelector.FactoryBoltPlatforms
     rooms = [239]
+    npc_ids = [7]
     event = 247
     item = items.UltraHammer
     access = 2
@@ -4826,6 +4994,7 @@ class FactoryFallingAxems(StarAllowedChest):
     area = locations.Area.Factory
     description = ShuffleLocationSelector.FactoryFallingAxems
     rooms = [434]
+    npc_ids = [6]
     event = 247
     item = items.RecoveryMushroom
     access = 2
@@ -4838,6 +5007,7 @@ class FactoryTreasurePit1(StarAllowedChest):
     area = locations.Area.Factory
     description = ShuffleLocationSelector.FactoryTreasurePit1
     rooms = [443]
+    npc_ids = [0]
     event = 247
     item = items.RecoveryMushroom
     access = 2
@@ -4850,6 +5020,7 @@ class FactoryTreasurePit2(StarAllowedChest):
     area = locations.Area.Factory
     description = ShuffleLocationSelector.FactoryTreasurePit2
     rooms = [443]
+    npc_ids = [2]
     event = 245
     item = items.Flower
     access = 2
@@ -4862,6 +5033,7 @@ class FactoryConveyorPlatforms1(StarAllowedChest):
     area = locations.Area.Factory
     description = ShuffleLocationSelector.FactoryConveyorPlatforms1
     rooms = [475]
+    npc_ids = [8]
     event = 247
     item = items.RoyalSyrup
     access = 2
@@ -4874,6 +5046,7 @@ class FactoryConveyorPlatforms2(StarAllowedChest):
     area = locations.Area.Factory
     description = ShuffleLocationSelector.FactoryConveyorPlatforms2
     rooms = [475]
+    npc_ids = [9]
     event = 246
     item = items.MaxMushroom
     access = 2
@@ -4886,6 +5059,7 @@ class FactoryBehindSnakes1(StarAllowedChest):
     area = locations.Area.Factory
     description = ShuffleLocationSelector.FactoryBehindSnakes1
     rooms = [443]
+    npc_ids = [1]
     event = 246
     item = items.RecoveryMushroom
     access = 2
@@ -4898,6 +5072,7 @@ class FactoryBehindSnakes2(StarAllowedChest):
     area = locations.Area.Factory
     description = ShuffleLocationSelector.FactoryBehindSnakes2
     rooms = [443]
+    npc_ids = [3]
     event = 244
     item = items.Flower
     access = 2

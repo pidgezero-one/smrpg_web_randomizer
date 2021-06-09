@@ -115,11 +115,11 @@ class Item:
     chest_70A7_lower = 0
     chest_70A7_upper = 0
     packet = 37
-    chest_events = []
-    quick_chest_events = []
-    npc_events = []
-    overworld_events = []
-    overworld_midas_events = []
+    chest_event = None
+    quick_chest_event = None
+    npc_event = None
+    overworld_event = None
+    overworld_midas_event = None
     dialog_replacements = []
 
     can_be_key = False
@@ -514,10 +514,10 @@ class Item:
 
 
 class RegularItem(Item):
-    chest_events = [3089]
-    npc_events = [160]
-    overworld_events = [165]
-    overworld_midas_events = [2820]
+    chest_event = 3089
+    npc_event = 160
+    overworld_event = 165
+    overworld_midas_event = 2820
     can_be_key = True
 
     def __init__(self, world):
@@ -2957,10 +2957,10 @@ class Fireworks(RegularItem):
     item_type = 3
     unique = ItemUnique.Always
     tier = 2
-    chest_events = [3099]
-    npc_events = [184]
-    overworld_events = [3112]
-    overworld_midas_events = [3398]
+    chest_event = 3099
+    npc_event = 184
+    overworld_event = 3112
+    overworld_midas_event = 3398
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3049,10 +3049,10 @@ class ProgressiveCard(MiscReward):
     shuffle_type = ItemShuffleType.Required
     unique = ItemUnique.Always
     max_allowed = 3
-    chest_events = [3086]
-    npc_events = [3097]
-    overworld_events = [3110]
-    overworld_midas_events = [3396]
+    chest_event = 3086
+    npc_event = 3097
+    overworld_event = 3110
+    overworld_midas_event = 3396
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3071,10 +3071,10 @@ class ProgressiveEgg(MiscReward):
     consumable = True
     max_allowed = 3
     tier = 2
-    chest_events = [3087]
-    npc_events = [3098]
-    overworld_events = [3111]
-    overworld_midas_events = [3397]
+    chest_event = 3087
+    npc_event = 3098
+    overworld_event = 3111
+    overworld_midas_event = 3397
     dialog_replacements = [
         (2908,
          ''' Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3089,10 +3089,10 @@ class ProgressiveFireworks(MiscReward):
     index = 197
     unique = ItemUnique.Always
     max_allowed = 3
-    chest_events = [3100]
-    npc_events = [185]
-    overworld_events = [3113]
-    overworld_midas_events = [3399]
+    chest_event = 3100
+    npc_event = 185
+    overworld_event = 3113
+    overworld_midas_event = 3399
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3115,7 +3115,7 @@ class PandoriteFight(MimicFight):
     description = 'Pandorite fight'
     unique = ItemUnique.Always
     tier = 1
-    chest_events = [3124]
+    chest_event = 3124
 
 
 class HidonFight(MimicFight):
@@ -3123,7 +3123,7 @@ class HidonFight(MimicFight):
     description = 'hidon fight'
     unique = ItemUnique.Always
     tier = 1
-    chest_events = [3126]
+    chest_event = 3126
 
 
 class BoxBoyFight(MimicFight):
@@ -3131,7 +3131,7 @@ class BoxBoyFight(MimicFight):
     description = 'box boy fight'
     unique = ItemUnique.Always
     tier = 1
-    chest_events = [2493]
+    chest_event = 2493
 
 
 # *** Coins
@@ -3141,9 +3141,9 @@ class Coins(MiscReward):
     tier = 1
     amount = 0
     multiplier = 0
-    chest_events = [3074]
-    quick_chest_events = [3080]
-    npc_events = [159]
+    chest_event = 3074
+    quick_chest_event = 3080
+    npc_event = 159
 
     def __init__(self, world, amount):
         """
@@ -3168,8 +3168,8 @@ class Coins(MiscReward):
 class Coins10(Coins):
     index = 193
     tier = 1
-    overworld_events = [3146]
-    overworld_midas_events = [2818]
+    overworld_event = 3146
+    overworld_midas_event = 2818
     model = overworld_items["coin"]
     def __init__(self, world):
         super().__init__(world, 10)
@@ -3177,8 +3177,8 @@ class Coins10(Coins):
 class Coins1(Coins):
     index = 194
     tier = 1
-    overworld_events = [1293]
-    overworld_midas_events = [2819]
+    overworld_event = 1293
+    overworld_midas_event = 2819
     model = overworld_items["small_coin"]
     def __init__(self, world):
         super().__init__(world, 1)
@@ -3190,10 +3190,10 @@ class Beetlemania(MiscReward):
     description = 'Beetlemania'
     unique = ItemUnique.Always
     tier = 1
-    chest_events = [162]
-    npc_events = [161]
-    overworld_events = [3109]
-    overworld_midas_events = [3395]
+    chest_event = 162
+    npc_event = 161
+    overworld_event = 3109
+    overworld_midas_event = 3395
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Handheld Game”!\n Sounds pretty fun, doesn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3218,7 +3218,7 @@ class InfiniteCoins(MiscReward):
     index = 216
     description = 'Infinite coins'
     unique = ItemUnique.Always
-    chest_events = [3074]
+    chest_event = 3074
     tier = 2
     chest_70A7_lower = 0
     chest_70A7_upper = 15
@@ -3231,10 +3231,10 @@ class StarPiece(MiscReward):
     tier = 4
     unique = ItemUnique.Always
     max_allowed = 7
-    chest_events = [3094, 3092]
-    npc_events = [164]
-    overworld_events = [166]
-    overworld_midas_events = [2821]
+    chest_event = 3092
+    npc_event = 164
+    overworld_event = 166
+    overworld_midas_event = 2821
     dialog_replacements = [
         (2908,
          ''' Item #1: A “Shooting Star”!\n It's sure to make all your wishes\n come true.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3245,11 +3245,11 @@ class StarPiece(MiscReward):
     ]
 
 class Nothing(MiscReward):
-    chest_events = [3081]
-    npc_events = [256]
+    chest_event = 3081
+    npc_event = 256
     model = overworld_items["nothing"]
-    overworld_midas_events = [256]
-    overworld_events = [256]
+    overworld_midas_event = 256
+    overworld_event = 256
 
 class Flower(MiscReward):
     index = 198
@@ -3257,19 +3257,19 @@ class Flower(MiscReward):
     model = overworld_items["flower"]
     chest_70A7_upper = 2
     packet = 35
-    chest_events = [3072]
-    overworld_events = [1801]
-    overworld_midas_events = [2817]
+    chest_event = 3072
+    overworld_event = 1801
+    overworld_midas_event = 2817
 
 
 class RecoveryMushroom(MiscReward):
     index = 199
     tier = 1
     packet = 36
-    chest_events = [3072]
-    overworld_events = [2822]
-    npc_events = [397]
-    overworld_events = [2822]
+    chest_event = 3072
+    overworld_event = 2822
+    npc_event = 397
+    overworld_event = 2822
 
 
 class FrogCoin(MiscReward):
@@ -3278,10 +3278,10 @@ class FrogCoin(MiscReward):
     amount = 0
     model = overworld_items["frog_coin"]
     chest_70A7_upper = 3
-    chest_events = [3072]
-    npc_events = [157]
-    overworld_events = [3238]
-    overworld_midas_events = [2816]
+    chest_event = 3072
+    npc_event = 157
+    overworld_event = 3238
+    overworld_midas_event = 2816
 
 
 class MultiFrogCoin(MiscReward):
@@ -3289,9 +3289,9 @@ class MultiFrogCoin(MiscReward):
     tier = 2
     amount = 0
     multiplier = 0
-    chest_events = [3091]
-    quick_chest_events = [3082]
-    npc_events = [158]
+    chest_event = 3091
+    quick_chest_event = 3082
+    npc_event = 158
     chest_70A7_upper = 0
 
     def __init__(self, world, amount):
@@ -3312,7 +3312,7 @@ class MultiFrogCoin(MiscReward):
 class YouMissed(MiscReward):
     index = 210
     tier = 1
-    chest_events = [3081]
+    chest_event = 3081
 
 
 # *** Invincibility stars
@@ -3321,7 +3321,7 @@ class InvincibilityStar(MiscReward):
     """Base class for invincibility stars."""
     tier = 0
     chest_70A7_upper = 1
-    chest_events = [3072]
+    chest_event = 3072
     pass
 
 

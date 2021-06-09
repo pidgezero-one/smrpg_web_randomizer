@@ -212,7 +212,9 @@ class EnabledBossChecks(CategorizationFlag):
 
 class StarPiecesRestrictedByArea(BooleanFlag):
     name = 'Restrict number of star pieces in an area'
-    description = '''If enabled, each of the seven overworld map areas may only contain up to one star piece each.'''
+    description = '''If enabled, each of the seven overworld map areas may only contain up to one star piece each.
+    
+    Note: This may not be perfectly respected if Bowser's Keep and Factory are both gated by high star piece counts.'''
     modes = ['open']
     default = False
 
@@ -752,6 +754,14 @@ class StarProgressionchallengeOptions(enum.Enum):
     bosses = "Bosses"
     none = "No EXP"
 
+class EXPchallengeOptions(enum.Enum):
+    default = "Default"
+    easystars = "Star pieces (easy)"
+    hardstars = "Star pieces (hard)"
+    eastbosses = "Bosses (easy"
+    hardbosses = "Bosses (hard)"
+    none = "None"
+
 
 class EXPChallenge(SelectOneFlag):
     name = 'EXP Star Challenge'
@@ -761,11 +771,13 @@ class EXPChallenge(SelectOneFlag):
     
     Star pieces (hard): EXP stars can give you 1, 2, 3, 5, 6, 7, or 11 EXP per hit, based on the number of Star Pieces collected. This is not adjusted for lower max Star Piece counts.
     
-    Bosses: EXP stars give you more EXP depending on how many bosses you have defeated. The scaling for this option is heavily front-loaded.
+    Bosses (easy): EXP stars can give you 2, 4, 5, 6, 8, 9, or 11 EXP depending on how many bosses you have defeated. The scaling for this option is heavily front-loaded.
+    
+    Bosses (hard): EXP stars can give you 1, 2, 3, 5, 6, 7, or 11 EXP depending on how many bosses you have defeated. The scaling for this option is heavily front-loaded.
     
     No EXP: EXP stars give you 0 EXP.'''
-    choices = [o for o in EXPMultiplierOptions]
-    default = EXPMultiplierOptions.default
+    choices = [o for o in EXPchallengeOptions]
+    default = EXPchallengeOptions.default
 
 
 class SlotsAnywhere(BooleanFlag):
@@ -793,7 +805,7 @@ class ItemQuality(SelectOneFlag):
     name = '''Item pool quality'''
     description = '''Restricts the incidence of certain items within the shuffled pool. 
 
-    If "Original item pool" is selected, two copies of the progressive Mystery Egg will be added to the pool, replacing some small items.
+    If "Original item pool" is selected, items which only appear once in the original game will also not appear in unlimited shops. Additionally, two copies of the progressive Mystery Egg will be added to the pool, replacing some small items.
     
     If "Completely empty" is selected, any chest which does not contain a required item will be a "You Missed" chest.'''
     modes = ['open']
@@ -823,7 +835,7 @@ class ReplaceItems(BooleanFlag):
 
 class QuickHitCoins(BooleanFlag):
     name = 'Quick-hit coin chests'
-    description = 'If enabled, all coin chests will grant coins in a single hit instead of multiple hits.'
+    description = 'If enabled, all coin and frog coin chests will grant coins in a single hit instead of multiple hits.'
     modes = ['open']
     default = False
 
@@ -905,7 +917,7 @@ class SuperJump1Threshold(NumberThresholdFlag):
     description = "The number of consecutive Super Jumps required for the first prize in Monstro Town"
     default = 30
     min = 1
-    max = 100
+    max = 99
     modes = ['open']
 
 
@@ -913,7 +925,7 @@ class SuperJump2Threshold(NumberThresholdFlag):
     name = 'Required Super Jumps for prize #2'
     description = "The number of consecutive Super Jumps required for the second prize in Monstro Town"
     default = 100
-    min = 1
+    min = 2
     max = 100
     modes = ['open']
 
@@ -1310,7 +1322,11 @@ class ShopQualities(enum.Enum):
 
 class ShopQuality(SelectOneFlag):
     name = '''Shop quality'''
-    description = '''Restricts the incidence of certain items in shops. If "Completely empty" is selected, all shops will only sell the Goodie Bag.'''
+    description = '''Restricts the incidence of certain items in shops. 
+
+    "Completely random" means that some items which originally did not appear in shops may now appear in shops, but only a small pool of items are guaranteed to appear. Some items will never appear in non-depletable shops. 
+    
+    If "Completely empty" is selected, all shops will only sell the Goodie Bag.'''
     modes = ['open']
     choices = [o for o in ShopQualities] # maybe just o for o
     default = ShopQualities.Original
@@ -1350,8 +1366,8 @@ class BossShuffleScaleStats(BooleanFlag):
 
 
 class BossReplaceMinigameSprites(BooleanFlag):
-    name = "Replace important sprites to match shuffled bosses"
-    description = '''If enabled: All sprites related to an area boss will be changed to match the shuffled positions of bosses.
+    name = "Replace important NPCs to match shuffled bosses"
+    description = '''If enabled: All sprites related to an area boss will be changed to match the shuffled positions of bosses. Battle packs, such as the Snifits in Booster Tower, will also be changed accordingly.
     
     If disabled: Most sprites related to an area boss will be changed to match the shuffled positions of bosses, but some will be left unchanged to accommodate for minigame visual cues. Examples of this include: Booster Hill snifits, Dodo in the statue polishing game.'''
     default = False

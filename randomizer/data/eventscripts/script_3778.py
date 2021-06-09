@@ -98,8 +98,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3778_set_11',
-        "command": 'set',
-        "args": [0x7000, 49151]
+        "command": 'run_event_as_subroutine',
+        "args": [3884]
     },
     {
         "identifier": 'EVENT_3778_jmp_if_7000_any_bits_set_12',
@@ -680,130 +680,6 @@ script = [
     },
     {
         "identifier": 'EVENT_3778_ret_46',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_47',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_48',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_49',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_50',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_51',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_52',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_53',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_54',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_55',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_56',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_57',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_58',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_59',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_60',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_61',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_62',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_63',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_64',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_65',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_66',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_67',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_68',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_69',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_70',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_71',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_72',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_73',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_74',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_75',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_stop_sound_76',
-        "command": 'stop_sound'
-    },
-    {
-        "identifier": 'EVENT_3778_ret_77',
         "command": 'ret'
     }
 ]
