@@ -150,6 +150,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2601_remove_trampoline_if_smithy_defeated',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7052, 0, 'EVENT_2601_summon_to_level_37___']
+    },
+    {
         "identifier": 'EVENT_2601_star_piece',
         "command": 'run_event_as_subroutine',
         "args": [1969]
@@ -175,6 +180,24 @@ script = [
     },
     {
         "identifier": 'EVENT_2601_ret_8',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_2601_summon_to_level_37___',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_14, Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]
+    },
+    {
+        "identifier": 'EVENT_2601_summon_to_level_37__',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_14]
+    },
+    {
+        "identifier": 'EVENT_2601_fade_in_from_black_async_7_',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_2601_ret_8_',
         "command": 'ret'
     }
 ]

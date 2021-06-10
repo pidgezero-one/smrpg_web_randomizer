@@ -37,6 +37,7 @@ class Battlefields(IntEnum):
     CloakerDomino = 0x28
     BeanValley = 0x29
     BelomeTemple = 0x2a
+    Smithy = 0x2c
     JinxDojo = 0x2e
     Culex = 0x2f
     Factory = 0x30
@@ -1042,7 +1043,7 @@ class AxemRangers(BossAndStarLocation):
     original_boss = 245
 
 class Chester(BossAndStarLocation):
-    description = AvailableBosses.chester
+    description = AvailableBosses.Chester
     name = "Chester"
     pack_number = 235
     battlefield = Battlefields.BowsersKeep
@@ -1231,30 +1232,38 @@ class Gunyolk(BossLocation):
     ]
     original_boss = 51
 
-    # smithy
-    #
-    # target_npcs = [
-    #     {
-    #         "room": Rooms._406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
-    #         "sidekicks": [1, 2, 3, 4, 5, 6]
-    #     },
-    #     {
-    #         "room": Rooms._469_FACTORY_GROUNDS_AREA_01,
-    #         "sidekicks": [0, 1, 2, 3, 4, 5]
-    #     },
-    #     {
-    #         "room": Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
-    #         "sidekicks": [7, 8, 9, 10, 11, 15]
-    #     },
-    #     {
-    #         "room": Rooms._471_FACTORY_GROUNDS_AREA_02,
-    #         "sidekicks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] #6-11 are painted
-    #     },
-    #     {
-    #         "room": Rooms._472_FACTORY_GROUNDS_AREA_03,
-    #         "sidekicks": [1, 2, 3, 4, 5, 6]
-    #     }
-    # ]
+
+class Smithy(BossLocation):
+    description = AvailableBosses.Smithy
+    name = "Smithy"
+    pack_number = 185
+    battlefield = Battlefields.Smithy 
+    music = BattleMusic.Smithy
+    wide_sprite = True
+    tall_sprite = True
+    model = {**models[351]} # using a jabit because smithy is made up of like a billion models
+    target_npcs = [
+        {
+            "room": Rooms._406_FACTORY_GROUNDS_AREA_01_WITH_TOAD,
+            "sidekicks": [1, 2, 3, 4, 5, 6]
+        },
+        {
+            "room": Rooms._469_FACTORY_GROUNDS_AREA_01,
+            "sidekicks": [0, 1, 2, 3, 4, 5]
+        },
+        {
+            "room": Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
+            "sidekicks": [7, 8, 9, 10, 11, 15]
+        },
+        {
+           "room": Rooms._471_FACTORY_GROUNDS_AREA_02,
+            "sidekicks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] #6-11 are painted
+        },
+        {
+            "room": Rooms._472_FACTORY_GROUNDS_AREA_03,
+            "sidekicks": [1, 2, 3, 4, 5, 6]
+        }
+    ]
 
 
 # ********************* Default lists for the world.
@@ -1310,4 +1319,5 @@ def get_default_boss_locations(world):
         Manager(world),
         Director(world),
         Gunyolk(world),
+        Smithy(world),
     ]

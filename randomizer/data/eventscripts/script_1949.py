@@ -6,6 +6,10 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1949_fade_out_to_black_async_0',
+        "command": 'fade_out_to_black_async'
+    },
+    {
         "identifier": 'EVENT_1949_enter_area_0',
         "command": 'enter_area',
         "args": [Rooms._461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB, RadialDirections.NORTHEAST, 2, 63, 0, []]

@@ -27,7 +27,7 @@ def randomize_all(world):
     # Check flag?
     if world.open_mode:
         randomize_wishes(world)
-        if world.settings.is_flag_enabled(flags.QuizShuffle):
+        if world.settings.is_flag_value(flags.QuizShuffle, True):
             randomize_quiz(world)
 
 
@@ -41,28 +41,10 @@ def randomize_wishes(world):
     world.wishes.wishes.clear()
     available_wishes = dialogs.wish_strings.copy()
 
-    # These are the existing wishes.
-    free_list = {
-        0x240958: 415,
-        0x243e32: 80,
-        0x24344d: 32,
-        0x240e2a: 1349,  # Factory gate dialog
-        # 0x22dba5: 843,  # Axem dialog (possibly problematic to use, text here gets cut weird???)
-    }
     for dialog_id in dialogs.wish_dialogs:
-        biggest_space = max(free_list.values())
-        possible_wishes = [s for s in available_wishes if len(s) <= biggest_space]
-        if not possible_wishes:
-            raise ValueError("Unable to allocate space for wishes: {!r}; {!r}".format(free_list, world.wishes.wishes))
-
         wish = random.choice(possible_wishes)
-        base = allocate_string(len(wish), free_list)
         available_wishes.remove(wish)
-        # Wish strings should be short enough that this doesn't happen, but give us a traceback if it does.
-        if not base:
-            raise ValueError("Unable to allocate space for wish: {!r}".format(wish))
-
-        world.wishes.wishes.append((dialog_id, base, wish))
+        world.wishes.wishes.append((dialog_id, wish))
 
 
 def randomize_quiz(world):
@@ -96,8 +78,7 @@ def randomize_quiz(world):
         else:
             correct = 2
         string = question.get_string(correct)
-        base = allocate_string(len(string), free_list)
         # Questions should be short enough that this doesn't happen, but give us a traceback if it does.
         if not base:
             raise ValueError("Unable to allocate space for question: {!r}".format(string))
-        world.quiz.questions.append((dialog_id, base, string))
+        world.quiz.questions.append((dialog_id, string))

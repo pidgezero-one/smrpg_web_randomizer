@@ -37,6 +37,11 @@ script = [
         "args": [65]
     },
     {
+        "identifier": 'EVENT_3878_casino_warp',
+        "command": 'set_bit',
+        "args": [0x708F, 1]
+    },
+    {
         "identifier": 'EVENT_3878_open_location_20',
         "command": 'jmp_to_event',
         "args": [3791]

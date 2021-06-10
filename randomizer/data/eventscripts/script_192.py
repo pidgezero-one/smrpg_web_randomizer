@@ -18,7 +18,7 @@ script = [
         "identifier": 'EVENT_192_____leave_party_22_',
         "command": 'run_event_as_subroutine',
         "args": [187]
-    },
+    }, # remove this in prod
     {
         "identifier": 'EVENT_192_____leave_party_22',
         "command": 'leave_party',

@@ -161,13 +161,6 @@ def decompress(b):
         cursor += 1
     return output
 
-
-
-    var_handled_string = handle_vars(string)
-    for token, char in compression_table:
-        var_handled_string = var_handled_string.replace(char, token)
-    return var_handled_string
-
 # Formatting is tricky. Probably should test it out in the game itself.
 # 1. Use newlines. If a string goes too long, sometimes it wraps around to the
 #    other side and sometimes it softlocks the game. Definitely test these first
@@ -216,6 +209,12 @@ wish_strings = list(map(compress, [
     '\n\n    I wish you\'d come to my house.\n    Do some stuff at my house.\n    Play some Kaizo at my house.',
     '\n\n    I wish Ridley I weren\'t\n    too big to fit in this game',
     '\n\n    Yo Mario, I\'m really happy\n    for you, Imma let you finish,\n    but Sonic had one of the best\n    video games of all time...\n    one of the best video games\n    of all time!',
+    '\n\n    I wish Bowsette were canon.',
+    '\n\n    I understand why they do it,\n    but I wish they\'d give\n    an option to remove the beeping.',
+    '\n\n    I wish the Bowser warp\n    was still a thing.',
+    '\n\n    I wish Mario would stop\n    dropping me down pits.',
+    '\n\n         I wish Link would find\n             my Varia Suit.',
+    '\n\n       I wish Samus would find\n          my Cane of Somaria.',
 ]))
 
 wish_dialogs = [
@@ -247,22 +246,6 @@ class Wishes:
     def name(self):
         return self.__class__.__name__
 
-    def get_patch(self):
-        """
-        Returns:
-            randomizer.logic.patch.Patch: Patch data
-        """
-        patch = Patch()
-
-        # A big assumption here is that the dialogs aren't getting relocated
-        # out if the 0x240000 bank.
-        for dialog_id, pointer, wish in self.wishes:
-            table_entry = DIALOG_POINTER_BASE_ADDRESS + dialog_id * 2
-            patch.add_data(table_entry, utils.ByteField((pointer - 4) & 0xFFFF, num_bytes=2).as_bytes())
-            patch.add_data(pointer, wish)
-
-        return patch
-
 
 quiz_dialogs = list(range(1842, 1882))
 wrong_indexes = [[1, 2], [0, 2], [0, 1]]
@@ -276,21 +259,6 @@ class Quiz:
     @property
     def name(self):
         return self.__class__.__name__
-
-    def get_patch(self):
-        """
-        Returns:
-            randomizer.logic.patch.Patch: Patch data
-        """
-        patch = Patch()
-
-        for dialog_id, pointer, question in self.questions:
-            table_entry = DIALOG_POINTER_BASE_ADDRESS + dialog_id * 2
-            patch.add_data(table_entry, utils.ByteField((pointer - 8) & 0xFFFF, num_bytes=2).as_bytes())
-            if question:
-                patch.add_data(pointer, question)
-
-        return patch
 
 
 class Question:

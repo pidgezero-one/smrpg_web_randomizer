@@ -231,6 +231,16 @@ script = [
         "args": [Rooms._324_MONSTRO_TOWN_OUTSIDE, 33, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
+        "identifier": "EVENT_2074_check_gating",
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7051, 7, 'EVENT_2074_enter_area_27']
+    },
+    {
+        "identifier": 'EVENT_2074_set_bit_399',
+        "command": 'jmp_to_event',
+        "args": [3886]
+    },
+    {
         "identifier": 'EVENT_2074_enter_area_27',
         "command": 'enter_area',
         "args": [Rooms._324_MONSTRO_TOWN_OUTSIDE, RadialDirections.SOUTHWEST, 11, 63, 4, []]

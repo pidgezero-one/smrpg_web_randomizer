@@ -124,7 +124,7 @@ class ItemLocation:
 
         """
         # If this is a missable location, it cannot contain a key item.
-        if self.missable and (item.is_key or utils.isclass_or_instance(item, items.MimicFight) or utils.isclass_or_instance(item, items.BrightCard)):
+        if self.missable and (item.is_key or utils.isclass_or_instance(item, items.MimicFight) or utils.isclass_or_instance(item, items.BrightCard) or utils.isclass_or_instance(item, items.SignalRing)):
             return False
 
         # If this is an excluded location, it cannot contain a key item.
@@ -666,6 +666,18 @@ def can_access_factory(world, inventory):
         return inventory.has_item_count(items.StarPiece, 6) and can_access_keep(world, inventory)
     else:
         return can_access_keep(world, inventory)
+
+
+def can_access_final_boss(world, inventory):
+    value = world.settings.get_flag(flags.StarPiecesRequired).value
+    has_stars = inventory.has_item_count(items.StarPiece, value)
+    if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
+        fireworks_access = inventory.has_item(items.ProgressiveFireworks)
+    elif world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
+        fireworks_access = inventory.has_item_count(items.ProgressiveFireworks, 3)
+    can_access_bucket = fireworks_access and inventory.has_item(items.BambinoBomb) and world.settings.is_flag_value(flags.BucketWarp, False)
+    can_access_casino = world.settings.is_flag_value(flags.CasinoWarp, True) and inventory.has_item(items.BrightCard)
+    return has_stars and (can_access_bucket or can_access_casino or can_access_factory(world, inventory))
 
 
 def can_super_jump(world, inventory):

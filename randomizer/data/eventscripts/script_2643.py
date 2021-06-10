@@ -26,15 +26,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2643_open_shop_6',
-        "command": 'open_shop',
-        "args": [Shops._24_TOADS_SHOP]
-    },
-    {
-        "identifier": 'EVENT_2643_fade_in_from_black_async_7',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2643_ret_8',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1185]
     }
 ]

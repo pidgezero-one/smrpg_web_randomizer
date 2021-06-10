@@ -62,12 +62,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3311_open_shop_12',
-        "command": 'open_shop',
-        "args": [Shops._07_SEA_ITEM_SHOP]
-    },
-    {
-        "identifier": 'EVENT_3311_fade_in_from_black_async_13',
-        "command": 'fade_in_from_black_async'
+        "command": 'run_event_as_subroutine',
+        "args": [3297]
     },
     {
         "identifier": 'EVENT_3311_jmp_if_bit_set_14',

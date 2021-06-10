@@ -1274,9 +1274,8 @@ dialog_data[700] = '''[await]'''
 dialog_data[701] = '''[await]'''
 dialog_data[702] = '''GRATE GUY: Whoa, hold on a sec,
  Mario![await]
- There's no turning back once you
- take that trampoline, and the fight
- you'll get into is pretty tough.[await][page]
+ There's a pretty tough fight on the
+ other side of that trampoline.[await][page]
  Are you SURE you wanna continue?
   [select] (Yes)
   [select] (No)[await]'''

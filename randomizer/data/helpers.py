@@ -212,7 +212,7 @@ class ShuffleLocationSelector(enum.Enum):
     SunkenShipCloneRoom = "Sunken Ship clone room chest"
     SunkenShipFrogCoinRoom = "Sunken Ship hidden box room chest"
     SunkenShipHidonMushroom = "Sunken Ship Hidon's room left chest"
-    SunkenShipHidonChest = "Sunken Ship Hidon's room right chest"
+    HidonChest = "Sunken Ship Hidon's room right chest"
     HidonReward1 = "Mimic #2 first reward"
     HidonReward2 = "Mimic #2 reload reward"
     HidonBoss = "Mimic #2 star piece"
@@ -415,4 +415,5 @@ class ShuffleLocationSelector(enum.Enum):
     InnerFactoryBoss2 = "Inner Factory second boss star piece"
     InnerFactoryBoss3 = "Inner Factory third boss star piece"
     InnerFactoryBoss4 = "Inner Factory fourth boss star piece"
+    InnerFactoryBossFinal = "Factory final boss star piece"
 

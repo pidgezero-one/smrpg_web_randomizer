@@ -92,6 +92,11 @@ script = [
         "args": [[_0x84Flags.LAYER_1, _0x84Flags.LAYER_2, _0x84Flags.LAYER_3], 8, 196]
     },
     {
+        "identifier": 'EVENT_1622_remove_trampoline_if_smithy_defeated',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7052, 0, 'EVENT_1622_set_bit_7']
+    },
+    {
         "identifier": 'EVENT_1622_check_bucket_warp',
         "command": 'jmp_if_bit_set',
         "args": [0x705E, 6, 'EVENT_1622_bucket_warp']
@@ -112,6 +117,11 @@ script = [
     },
     {
         "identifier": 'EVENT_1622_bucket_warp',
+        "command": 'set_bit',
+        "args": [0x708F, 0]
+    },
+    {
+        "identifier": 'EVENT_1622_bucket_warp_',
         "command": 'jmp_to_event',
         "args": [2651]
     },

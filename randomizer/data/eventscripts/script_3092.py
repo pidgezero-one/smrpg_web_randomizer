@@ -164,13 +164,9 @@ script = [
         "command": 'pause_script_until_effect_done'
     },
     {
-        "identifier": 'EVENT_3092_fade_in_from_black_async_415',
-        "command": 'fade_in_from_black_async'
-    },
-    {
         "identifier": 'EVENT_3092_open_gate__',
         "command": 'jmp_to_event',
-        "args": [206]
+        "args": [3101]
     },
     {
         "identifier": 'EVENT_3092_ret_418',

@@ -157,6 +157,11 @@ script = [
         "args": [472, "EVENT_167_room_472_logic"]
     },
     {
+        "identifier": "EVENT_167_room_496_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [496, "EVENT_167_room_496_logic"]
+    },
+    {
         "identifier": "EVENT_167_room_512_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [512, "EVENT_167_room_512_logic"]
@@ -335,6 +340,10 @@ script = [
     },
     {
         "identifier": "EVENT_167_room_472_logic", # director
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_167_room_496_logic", # smithy
         "command": 'ret'
     },
     {

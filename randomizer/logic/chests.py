@@ -11,7 +11,7 @@ from randomizer.data.items import ItemUnique
 from randomizer.data.locations import Area
 from randomizer.data.keys import KeyItemLocation
 from randomizer.logic import flags, keys
-from randomizer.logic.flags import FireworksOptions, ItemQualities, ShopQualities, PlayableCharacters, BanditsWayGating, ForestMazeGating, BoosterTowerGating, SeaGating
+from randomizer.logic.flags import FireworksOptions, ItemQualities, ShopQualities, PlayableCharacters, BanditsWayGating, ForestMazeGating, BoosterTowerGating, SeaGating, WinConditions, ShuffleLocationSelector
 from randomizer.logic import utils
 
 class RandomGrantEnum(enum.Enum):
@@ -300,6 +300,10 @@ def fill_locations(world, locations_to_fill, required_items, extra_items=None, e
 
     # Remove prohibited star piece boss checks
     bosses_to_completely_ignore = world.settings.get_flag(flags.EnabledBossChecks).disabled
+    if world.settings.is_flag_value(flags.WinCondition, WinConditions.FinalBoss):
+        bosses_to_completely_ignore.append(ShuffleLocationSelector.InnerFactoryBossFinal)
+    if world.settings.is_flag_value(flags.WinCondition, WinConditions.Culex):
+        bosses_to_completely_ignore.append(ShuffleLocationSelector.CulexBoss)
     locations_to_fill = [l for l in locations_to_fill if l.description not in bosses_to_completely_ignore]
 
     # Shuffle locations, required items and extra items.
@@ -339,6 +343,11 @@ def fill_locations(world, locations_to_fill, required_items, extra_items=None, e
     # Reverse remaining empty locations, then fill extra items.
     locations_to_fill = [l for l in locations_to_fill if not l.has_item]
     locations_to_fill.reverse()
+    # Prioritize frog shop and treasure seller since those are highly restrictive
+    priority = [l for l in locations_to_fill if utils.isclass_or_instance(l, chests.TreasureSellerReward) or utils.isclass_or_instance(l, FrogCoinShopItem)]
+    locations_to_fill = [l for l in locations_to_fill if l not in priority]
+    locations_to_fill = priority + locations_to_fill
+
     _place_items(world, regular_items, locations_to_fill, existing_inventory)
     # Rest of spots can be filled up with as many flowers/mushrooms/frog coins as we have available
     # This will likely not be a concern outside of Original Item Pool
@@ -413,11 +422,11 @@ def generate_nonrequired_item(world, table, chest):
                 item = items.MultiFrogCoin(world, value)
     elif result == RandomGrantEnum.Equip or result == RandomGrantEnum.RegularItem:
         if result == RandomGrantEnum.Equip:
-            all_choices = [i for i in world.items if i.is_equipment and i.tier <= max_tier]
+            all_choices = [i for i in world.items if (i.unique == ItemUnique.Never or (i.unique == ItemUnique.BalancedOnly and not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Original))) and i.is_equipment and i.tier <= max_tier]
         else:
-            all_choices = [i for i in world.items if i.consumable and i.tier <= max_tier]
+            all_choices = [i for i in world.items if (i.unique == ItemUnique.Never or (i.unique == ItemUnique.BalancedOnly and not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Original))) and i.tier <= max_tier]
         if utils.isclass_or_instance(chest, chests.TreasureSellerReward):
-            all_choices = [i for i in all_choices if i.unique == ItemUnique.Always or i.unique == ItemUnique.BalancedOnly]
+            all_choices = [i for i in all_choices if i.unique == ItemUnique.BalancedOnly]
         possibilities = [1, 2, 3, 4]
         if world.settings.is_flag_value(flags.BiasItemShuffle, True):
             if chest.access == 1:
@@ -471,7 +480,7 @@ def randomize_all(world):
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.BowsersKeepMagikoopa)]
         # mimics shuffle
         if world.settings.is_flag_value(flags.SlotsAnywhere, False):
-            all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.PandoriteChest) and not utils.isclass_or_instance(a, chests.HidonChest) and not utils.isclass_or_instance(a, chests.BoxBoyChest)]
+            all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.PandoriteChest) and not utils.isclass_or_instance(a, chests.HidonChest) and not utils.isclass_or_instance(a, chests.BeanValleyBoxBoyRoom1)]
         # slots shuffle
         if world.settings.is_flag_value(flags.MimicsAnywhere, False):
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.BeanValleyLeftPiranhaPipe) and not utils.isclass_or_instance(a, chests.BeanValleyBottomLeftPiranhaPipe) and not utils.isclass_or_instance(a, chests.BeanValleyBottomRightPiranhaPipeUpper)]
@@ -587,7 +596,7 @@ def randomize_all(world):
             # magikoopa's chest shuffle
             if world.settings.is_flag_value(flags.ShuffleMagikoopaChest, True):
                 extra_item_pool.append(items.InfiniteCoins)
-            limited_items = [items.GoodieBag, items.YouMissed, items.SeeYa, items.EarlierTimes, items.SignalRing, items.StarEgg, items.Wallet]
+            limited_items = [items.GoodieBag, items.YouMissed, items.SeeYa, items.EarlierTimes, items.SignalRing, items.StarEgg, items.Wallet, items.LuckyJewel]
             max_tier = get_max_item_quality(world)
             extra_item_pool += [i for i in limited_items if i.tier <= max_tier]
         remainder_check = extra_item_pool.copy()

@@ -146,6 +146,11 @@ script = [
         "args": [472, "EVENT_353_room_472_logic"]
     },
     {
+        "identifier": "EVENT_353_room_496_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [496, "EVENT_353_room_496_logic"]
+    },
+    {
         "identifier": "EVENT_353_room_512_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [512, "EVENT_353_room_512_logic"]
@@ -454,6 +459,15 @@ script = [
     },
     {
         "identifier": "EVENT_353_room_472_logic_",
+        "command": 'ret'
+    },
+    {
+        "identifier": "EVENT_353_room_496_logic",  # smithy
+        "command": 'start_battle',
+        "args": [185, 44]
+    },
+    {
+        "identifier": "EVENT_353_room_496_logic_",
         "command": 'ret'
     },
     {

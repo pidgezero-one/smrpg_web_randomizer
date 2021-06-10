@@ -17,16 +17,16 @@ def assemble_from_table(pointer_table, data_table):
     # `PEACH_NAME`
     # `PEACH_ARTICLE`
     # `TOWER_BOSS_1`
-    # `MARRYMORE_CHARACTER`
+    # done - `MARRYMORE_CHARACTER`
     # `RANDOM_BOSS_NAME_1` should exclude `TOWER_BOSS_1`
     # `RANDOM_BOSS_NAME_2` should exclude `TOWER_BOSS_1`
     # `RANDOM_BOSS_NAME_3` should exclude `TOWER_BOSS_1`
-    # `RANDOM_CHARACTER_NAME` should exclude `MARRYMORE_CHARACTER`
-    # `SUPER_JUMP_PRIZE_1_CAP`
-    # `SUPER_JUMP_PRIZE_2_CAP`
-    # `GRATE_GUY_PRIZE_CAP`
-    # 3847 needs generated bellhop menu
-    # Set 2116 to either:
+    # doen - `RANDOM_CHARACTER_NAME` should exclude `MARRYMORE_CHARACTER`
+    # done - `SUPER_JUMP_PRIZE_1_CAP`
+    # done - `SUPER_JUMP_PRIZE_2_CAP`
+    # done - `GRATE_GUY_PRIZE_CAP`
+    # done - 3847 needs generated bellhop menu
+    # done - Set 2116 to either:
     #    You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy on Booster Hill.
     #    You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy up atop Booster Tower.
     # Set strong Mushroom Kingdom NPC hint to 2235
@@ -34,7 +34,7 @@ def assemble_from_table(pointer_table, data_table):
     # Set strong Marrymore hint to pointer 1006 (bellhop says something like "I can't let you leave yet. If you really need to go visit <place with a star piece>, you can wait until you're finished working.")
     # Set strong Johnny Note hint to pointer 1787. Figure out how to write it in-character for whoever replaced Johnny
     # Set strong Booster Tower note hint to pointer 2822
-    # Dialogs 1222, 1223, 1224, 1227 will need to change dpeending on if star shuffle is on or not.
+    # done - Dialogs 1222, 1223, 1224, 1227 will need to change dpeending on if star shuffle is on or not.
     # password hints: 1664, 1665, 1667, 1668, 1669, 1673, 1674, 1675, 1676, 1690
     # tadpole pond hints: 2664, 2665, 2668 (tadpole); 2718 (scroll);
     # Character palette names: overwrite 1179-1183

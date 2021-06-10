@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_2645_remove_trampoline_if_smithy_defeated',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7052, 0, 'EVENT_2645_summon_to_level_51_']
+    },
+    {
         "identifier": 'EVENT_2645_stop_sound_0_',
         "command": 'jmp_if_bit_clear',
         "args": [0x7088, 5, 'EVENT_2645_summon_to_level_51_']

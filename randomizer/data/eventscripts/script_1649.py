@@ -73,6 +73,26 @@ script = [
         "args": [0x707a, 6, 'EVENT_1649_clear_bit_11']
     },
     {
+        "identifier": 'EVENT_1649_jump_out_of_bucket',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x708F, 0, 'EVENT_1649_fade_in_from_black_async_7']
+    },
+    {
+        "identifier": 'EVENT_1649_clear_1',
+        "command": 'clear_bit',
+        "args": [0x708F, 0]
+    },
+    {
+        "identifier": 'EVENT_1649_clear_2',
+        "command": 'clear_bit',
+        "args": [0x708F, 1]
+    },
+    {
+        "identifier": 'EVENT_1649_jump_out_of_bucket_',
+        "command": 'jmp_to_event',
+        "args": [81]
+    },
+    {
         "identifier": 'EVENT_1649_fade_in_from_black_async_7',
         "command": 'fade_in_from_black_async'
     },

@@ -11,6 +11,7 @@ import enum
 
 
 from randomizer import data
+from randomizer.data.eventtables import _0x68Flags
 from randomizer.data.eventscripts.events import scripts as eventscripts
 from randomizer.data.actionscripts.actions import scripts as actionscripts
 from randomizer.data.roomobjects.roomobjects import rooms as roomdata
@@ -35,7 +36,7 @@ from . import shops
 from . import utils
 from .patch import Patch
 from .battleassembler import assemble_battle_scripts
-from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, FireworksOptions, EXPchallengeOptions
+from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, FireworksOptions, EXPChallengeOptions, PlayableCharacters, WinConditions, ShopQualities, WinConditions
 
 from randomizer.data.eventscripts.utils.slot_machine.event import script as slot_machine_commands
 from randomizer.data.eventscripts.utils.slot_machine.objects import objects as slot_machine_npcs
@@ -420,11 +421,14 @@ class GameWorld:
         shops.randomize_all(self)
         enemies.randomize_all(self)
         bosses.randomize_all(self)
+        doors.randomize_all(self)
         games.randomize_all(self)
         dialogs.randomize_all(self)
 
         # Rebuild hash after randomization.
         self._rebuild_hash()
+
+        # move cosmetics to after hash build
 
     def _rebuild_hash(self):
         """Build hash value for choosing file select character and file name hash.
@@ -440,11 +444,11 @@ class GameWorld:
     def replace_dialog(self, id, content):
         dialog_info = self.dialog_pointers[id]
         index = dialog_info["index"]
-        if dialog_info["bank"] = 0x22:
+        if dialog_info["bank"] == 0x22:
             self.dialog_data[0][index] = content
-        elif dialog_info["bank"] = 0x23:
+        elif dialog_info["bank"] == 0x23:
             self.dialog_data[1][index] = content
-        elif dialog_info["bank"] = 0x24:
+        elif dialog_info["bank"] == 0x24:
             self.dialog_data[2][index] = content
 
     def search_replace_dialog(self, search, replace):
@@ -550,7 +554,7 @@ class GameWorld:
                 value = 5
             elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find6Star):
                 value = 6
-            else
+            else:
                 raise Exception("failed to set star piece gate on sea")
             gate_script = copy.copy(self.eventscripts[206])
             gate_script[1]["args"][1] = value
@@ -593,7 +597,7 @@ class GameWorld:
                 value = 5
             elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find6Star):
                 value = 6
-            else
+            else:
                 raise Exception("failed to set star piece gate on keep")
             keep_script = copy.copy(self.eventscripts[207])
             keep_script[1]["args"][1] = value
@@ -618,7 +622,7 @@ class GameWorld:
                 value = 5
             elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find6Star):
                 value = 6
-            else
+            else:
                 raise Exception("failed to set star piece gate on factory")
             factory_script = copy.copy(self.eventscripts[3093])
             factory_script[1]["args"][1] = value
@@ -629,7 +633,7 @@ class GameWorld:
         if self.settings.is_flag_value(flags.CasinoWarp, True):
             self.prepend_bits(192, [[0x7088, 5]])
             casino_script = copy.copy(self.eventscripts[2645])
-            casino_script[1]["args"][1] = required_star_pieces
+            casino_script[2]["args"][1] = required_star_pieces
             self.eventscripts[2645] = casino_script
 
         # Bucket warp
@@ -642,6 +646,13 @@ class GameWorld:
         # Fast travel
         if self.settings.is_flag_value(flags.FastTravel, True):
             self.prepend_bits(192, [[0x708B, 0]])
+
+        # Win condition
+        if self.settings.is_flag_value(flags.WinCondition, WinConditions.StarPieces):
+            self.prepend_bits(192, [[0x7051, 6]])
+            self.eventscripts[3101][1]["args"][1] = [required_star_pieces]
+        elif self.settings.is_flag_value(flags.WinCondition, WinConditions.Culex):
+            self.prepend_bits(192, [[0x7051, 7]])
 
         # Fireworks
         if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.Vanilla):
@@ -661,20 +672,20 @@ class GameWorld:
                 self.prepend_bits(192, [[0x705D, 5]])
 
         # EXP progression option
-        if self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.easystars) or self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.hardstars):
+        if self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.easystars) or self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.hardstars):
             self.prepend_bits(192, [[0x7056, 0]])
-        elif self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.easybosses) or self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.hardbosses):
+        elif self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.easybosses) or self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.hardbosses):
             self.prepend_bits(192, [[0x7056, 1]])
 
         # If star piece exp progression is on, set exp values for each star piece number and enable flag.
-        if self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.default):
+        if self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.default):
             pass
         else:
-            if self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.easystars) or self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.easybosses):
+            if self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.easystars) or self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.easybosses):
                 exps = (2, 4, 5, 6, 8, 9, 11)
-            elif self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.hardstars) or self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.hardbosses):
+            elif self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.hardstars) or self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.hardbosses):
                 exps = (1, 2, 3, 5, 6, 7, 11)
-            elif self.settings.is_flag_value(flags.EXPChallenge, EXPchallengeOptions.none):
+            elif self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.none):
                 exps = (0, 0, 0, 0, 0, 0, 0)
             else:
                 raise ValueError("Unrecognized value for star exp challenge")
@@ -690,6 +701,7 @@ class GameWorld:
         # Grate Guy threshold
         value = self.settings.get_flag(flags.GrateGuyPrizeThreshold).value
         self.eventscripts[2650][0]["args"] = [value]
+        self.search_replace_dialog('`GRATE_GUY_PRIZE_CAP`', value)
 
         # Knife Guy threshold
         value = self.settings.get_flag(flags.KnifeGuyPrizeThreshold).value
@@ -710,16 +722,33 @@ class GameWorld:
         self.eventscripts[708][5]["args"][0] = value6
         if not (value1 < value2 and value2 < value3 and value3 < value4 and value4 < value5 and value5 < value6):
             raise Exception("marrymore item thresholds must be in increasing order")
-        
+
         # Attack Scarf threshold
         value = self.settings.get_flag(flags.SuperJump1Threshold).value
         self.eventscripts[3393][0]["args"] = [value]
+        self.search_replace_dialog('`SUPER_JUMP_PRIZE_1_CAP`', value)
 
         # Super Suit threshold
         value = self.settings.get_flag(flags.SuperJump2Threshold).value
         if value <= self.settings.get_flag(flags.SuperJump1Threshold).value:
             raise Exception("2nd super jump threshold must be higher than 1st")
         self.eventscripts[3394][0]["args"] = [value]
+        self.search_replace_dialog('`SUPER_JUMP_PRIZE_2_CAP`', value)
+
+        # Bowser's Keep threshold
+        value = self.settings.get_flag(flags.BowserDoorRequirements).value
+        for c in len(self.eventscripts[3350]):
+            cmd = self.eventscripts[3350][c]
+            if cmd[c]["command"] == 'jmp_if_var_equals_byte' and cmd[c]["args"][0] == 0x70b6 and cmd[c]["args"][1] == 4:
+                cmd = self.eventscripts[3350][c]["args"][1] = value
+        
+        # some more dialogs
+        if self.settings.is_flag_value(flags.EXPStarsAnywhere, True):
+            self.replace_dialog(1222, ''' I have a chest to sell, but you\n don't have enough coins.[await]''')
+            self.replace_dialog(1223, ''' You're looking for chests?\n I'll sell one for 400 coins.\n Are you interested?[await]\n  [select] (Yes)\n  [select] (No)[await]''')
+            self.replace_dialog(1224, ''' You want another chest?[await]\n  [select] (Yes)\n  [select] (No)[await]''')
+            self.replace_dialog(1227, ''' I found another chest.\n I'll sell it for 800 coins.[await]\n  [select] (Buy it)\n  [select] (Pass)[await]''')
+
 
         # Starting characters
         for c in self.starter_character_checks:
@@ -728,7 +757,33 @@ class GameWorld:
                 self.eventscripts[c.event].insert(0, new_command(c.event, "run_event_as_subroutine", [c.item.starter_script]))
                 # check if character gates forest maze
                 if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
-            self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
+                    self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
+ 
+        # Use first character to join as file select cursor.
+        if (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.Mallow)):
+            cursor_id = 4
+        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.Geno)):
+            cursor_id = 3
+        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.Bowser)):
+            cursor_id = 2
+        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.Toadstool)):
+            cursor_id = 1
+        else:
+            cursor_id = 0
+
+        # Star Hill wishes
+        for id, wish in self.wishes.wishes:
+            self.replace_dialog(id, wish)
+
+
+
+        ######### Minigames
+
+        # Dr Topper quiz
+        if self.settings.is_flag_value(flags.QuizShuffle, True):
+            for id, question in self.quiz.questions:
+                self.replace_dialog(id, question)
+
 
 
         ######### write character/item/star piece granters
@@ -738,6 +793,10 @@ class GameWorld:
         # recruitable characters
         for c in self.recruitable_character_checks:
             if c.item is not None:
+                for d in c.dialogs_to_replace:
+                    for id, dat in c.item.dialog_replacements:
+                        if d == id:
+                            self.replace_dialog(id, dat)
                 if c.event not in grant_builders:
                     grant_builders[c.event] = {
                         "jumps": [new_command(c.event, 'set_7000_to_current_level')],
@@ -766,6 +825,10 @@ class GameWorld:
         # chests
         for c in self.chest_locations:
             if c.item is not None:
+                for d in c.dialogs_to_replace:
+                    for id, dat in c.item.dialog_replacements:
+                        if d == id:
+                            self.replace_dialog(id, dat)
                 if c.event not in grant_builders:
                     grant_builders[c.event] = {
                         "jumps": [],
@@ -885,6 +948,10 @@ class GameWorld:
         # freestanding items
         for c in self.freestanding_item_locations:
             if c.item is not None:
+                for d in c.dialogs_to_replace:
+                    for id, dat in c.item.dialog_replacements:
+                        if d == id:
+                            self.replace_dialog(id, dat)
                 if c.event not in grant_builders:
                     grant_builders[c.event] = {
                         "jumps": [new_command(c.event, 'set_7000_to_current_level')],
@@ -935,6 +1002,10 @@ class GameWorld:
         # boss star pieces
         for c in self.boss_star_checks:
             if c.item is not None:
+                for d in c.dialogs_to_replace:
+                    for id, dat in c.item.dialog_replacements:
+                        if d == id:
+                            self.replace_dialog(id, dat)
                 if c.event not in grant_builders:
                     grant_builders[c.event] = {
                         "jumps": [new_command(c.event, 'inc', [0x70E6])],
@@ -950,6 +1021,103 @@ class GameWorld:
         for e in grant_builders[c.event]:
             grant_builders[e]["jumps"].append(new_command(e, "ret"))
             self.eventscripts[e] = copy.copy(grant_builders[e]["jumps"]) + copy.copy(grant_builders[e]["executions"])
+
+
+
+        ######### shops
+
+        if self.settings.is_flag_value(flags.ShuffleShops, True):
+            # block off any shops that ended up with no items
+            # if room service menu, replace with a blue dialog that says "It's broken"
+            # otherwise, replace with a dialog that says "Sorry, we're all sold out today."
+            for s in [s for s in (self.shops + self.special_shops)]:
+                if self.settings.is_flag_value(flags.ShopQuality, ShopQualities.Empty) or len(s.items) == 0:
+                    if utils.isclass_or_instance(s, data.shops.MolevilleTreasureShop):
+                        self.prepend_bits(192, [[0x7088, 0], [0x7088, 1], [0x7088, 2]])
+                    elif utils.isclass_or_instance(s, data.shops.DiscipleShop):
+                        self.prepend_bits(192, [[0x704A, 4], [0x704A, 5], [0x704A, 6], [0x704A, 7], [0x704B, 0]])
+                    elif utils.isclass_or_instance(s, data.shops.RoomServiceShop):
+                        self.eventscripts[s.event_id] = [
+                            new_command(s.event_id, "run_dialog", [3158, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]),
+                            new_command(s.event_id, "ret"),
+                        ]
+                    else:
+                        self.eventscripts[s.event_id] = [
+                            new_command(s.event_id, "run_dialog", [3159, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]),
+                            new_command(s.event_id, "ret"),
+                        ]
+                # build room service shop
+                elif utils.isclass_or_instance(s, data.shops.RoomServiceShop):
+                    # cheaper item should be first
+                    if (s.items[0].price < s.items[1].price):
+                        rs_item_1 = s.items[0]
+                        rs_item_2 = s.items[1]
+                    else:
+                        rs_item_1 = s.items[1]
+                        rs_item_2 = s.items[0]
+                    # prices reduced to 75% (kerokerocola baseline)
+                    price_1 = max(2, (rs_item_1.price * 0.75) // 1)
+                    price_2 = max(2, (rs_item_1.price * 0.75) // 1)
+                    menu_string_1 = rs_item_1.room_service
+                    if (price_1 < 100):
+                        menu_string_1 += "."
+                    if (price_1 < 10):
+                        menu_string_1 += "."
+                    menu_string_2 = rs_item_2.room_service
+                    if (price_2 < 100):
+                        menu_string_2 += "."
+                    if (price_2 < 10):
+                        menu_string_2 += "."
+                    # write dialog
+                    self.replace_dialog(3847, '''[page]\n Here is the menu.[await]\n [select]  (%s%i Coins)\n [select]  (%s%i Coins)\n [select]  (No thanks)[await]''' % (menu_string_1, price_1, menu_string_2, price_2))
+                    # replace the item and price values with new ones
+                    for c in len(self.eventscripts[3657]):
+                        cmd = self.eventscripts[3657][c]
+                        if cmd[c]["command"] == "set" and cmd[c]["args"][0] == 0x70a7 and cmd[c]["args"][1] == 102:
+                            cmd = self.eventscripts[3657][c]["args"][1] = rs_item_1.index
+                        elif cmd[c]["command"] == "set" and cmd[c]["args"][0] == 0x70a7 and cmd[c]["args"][1] == 108:
+                            cmd = self.eventscripts[3657][c]["args"][1] = rs_item_2.index
+                        elif cmd[c]["command"] == "set" and (cmd[c]["args"][0] == 0x7000 or cmd[c]["args"][0] == 0x7024) and cmd[c]["args"][1] == 10:
+                            cmd = self.eventscripts[3657][c]["args"][1] = price_1
+                        elif cmd[c]["command"] == "set" and (cmd[c]["args"][0] == 0x7000 or cmd[c]["args"][0] == 0x7024) and cmd[c]["args"][1] == 150:
+                            cmd = self.eventscripts[3657][c]["args"][1] = price_2
+                # build trade shop
+                elif utils.isclass_or_instance(s, data.shops.RoomServiceShop):
+                    ts_item_1 = s.items[0]
+                    ts_item_2 = s.items[1]
+                    ts_item_3 = s.items[2]
+                    self.replace_dialog(1217, ''' If we total that up, you've got\n [0x7000] points![await][page]\n You have more than 100 points,\n so go ahead and choose an item.[await][page]\n  [select]  (%s)\n  [select]  (%s)\n  [select]  (%s)[await]''' % (ts_item_1.item_name, ts_item_2.item_name, ts_item_3.item_name))
+                    self.replace_dialog(1175, '''\n  Bring your unwanted items here![await][page]\n  We'll exchange your Mushrooms\n       and Syrups for points.[await]\n        For every 100 points\n    you'll get an item in return![await][page]\n           You can choose\n     one of the following gifts\n       to take away with you.[await][page]\n  1)“%s”\n  2)“%s”\n  3)“%s”[await]''' % (ts_item_1.item_name, ts_item_2.item_name, ts_item_3.item_name))
+                    for c in len(self.eventscripts[1636]):
+                        cmd = self.eventscripts[1636][c]
+                        if cmd[c]["command"] == "set" and cmd[c]["args"][0] == 0x70a7 and cmd[c]["args"][1] == 144:
+                            cmd = self.eventscripts[1636][c]["args"][1] = ts_item_1.index
+                        elif cmd[c]["command"] == "set" and cmd[c]["args"][0] == 0x70a7 and cmd[c]["args"][1] == 113:
+                            cmd = self.eventscripts[1636][c]["args"][1] = ts_item_2.index
+                        elif cmd[c]["command"] == "set" and cmd[c]["args"][0] == 0x70a7 and cmd[c]["args"][1] == 114:
+                            cmd = self.eventscripts[1636][c]["args"][1] = ts_item_3.index
+        
+
+
+
+        ########## Finally, build patches
+
+        # Shops
+
+        for shop in self.shops:
+            patch += shop.get_patch()
+
+        # Patch removes ANDing by current party from shop menu code.
+        # Replaces it with ANDing by #$1F, which is all party members.
+        if self.settings.is_flag_value(flags.ShowEquips, True):
+            patch.add_data(0x033B6D, bytes([0x29, 0x1F, 0xEA]))
+
+
+
+
+
+
+
 
         # Characters
         for character in self.characters:
@@ -1236,10 +1404,6 @@ class GameWorld:
             if self.settings.is_flag_enabled(flags.BowsersKeepOpen):
                 patch.add_data(0x1fd343, utils.ByteField(0xa2).as_bytes())
 
-            # Minigames
-            patch += self.ball_solitaire.get_patch()
-            patch += self.magic_buttons.get_patch()
-
             # Dialogs
             patch += self.wishes.get_patch()
             patch += self.quiz.get_patch()
@@ -1257,8 +1421,6 @@ class GameWorld:
         if self.debug_mode and not self.open_mode:
             patch += map.unlock_world_map()
 
-        # Bowser's Keep doors
-        patch += doors.patch_bowser_doors(self)
 
         # factory warp
         if self.settings.is_flag_enabled(flags.CasinoWarp):

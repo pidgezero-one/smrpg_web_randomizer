@@ -9,7 +9,7 @@ from randomizer.data.items import ItemUnique
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 from randomizer.logic import flags
-from randomizer.logic.flags import FireworksOptions, PlayableCharacters, SeaGating
+from randomizer.logic.flags import FireworksOptions, PlayableCharacters, SeaGating, BowsersKeepGating
 
 
 # ************************** Shop data classes
@@ -25,6 +25,7 @@ class Shop:
     retain_size = False
     forced_size = 0
     access = 1
+    event_id = None
 
     def __init__(self, world):
         """
@@ -159,6 +160,7 @@ class MushroomKingdomShop(Shop):
     index = 0
     items = [items.Mushroom, items.HoneySyrup, items.PickMeUp, items.AbleJuice,
              items.Shirt, items.Pants, items.JumpShoes, items.AntidotePin]
+    event_id = 284
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -181,6 +183,7 @@ class MushroomKingdomShop(Shop):
 class RoseTownItemShop(Shop):
     index = 1
     items = [items.Mushroom, items.HoneySyrup, items.PickMeUp, items.AbleJuice]
+    event_id = 525
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -199,6 +202,7 @@ class RoseTownArmorShop(Shop):
     index = 2
     items = [items.ThickShirt, items.ThickPants, items.JumpShoes,
              items.AntidotePin, items.WakeUpPin, items.TrueformPin, items.FearlessPin]
+    event_id = 526
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -232,6 +236,7 @@ class MolevilleShop(Shop):
     index = 4
     items = [items.PunchGlove, items.FingerShot, items.Cymbals, items.MegaShirt,
              items.MegaCape, items.MegaPants, items.WorkPants, items.MidMushroom, items.MapleSyrup]
+    event_id = 1624
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -255,6 +260,7 @@ class MarrymoreShop(Shop):
     index = 5
     items = [items.SuperHammer, items.HandGun, items.WhompGlove, items.ChompShell, items.HappyShirt, items.HappyPants, items.HappyCape, items.HappyShell, items.BtubRing,
              items.MidMushroom, items.MapleSyrup]
+    event_id = 646
 
     def is_item_allowed(self, item):
         return item.consumable or item.is_equipment
@@ -264,12 +270,14 @@ class FrogCoinEmporiumShop(Shop):
     index = 6
     frog_coin_shop = True
     items = [items.SleepyBomb, items.Bracer, items.Energizer, items.Crystalline, items.PowerBlast]
+    event_id = 1112
 
 
 class SeaShop(Shop):
     index = 7
     items = [items.HurlyGloves, items.SuperHammer, items.HandGun, items.WhompGlove, items.SailorShirt, items.SailorPants, items.SailorCape, items.NauticaDress,
              items.MidMushroom, items.MapleSyrup, items.PickMeUp, items.AbleJuice, items.FreshenUp]
+    event_id = 3297
 
     def __init__(self, world):
         super().__init__(world)
@@ -284,6 +292,7 @@ class SeaShop(Shop):
 class SeasideYaridShop(Shop):
     index = 8
     items = [items.BadMushroom, items.MukuCookie, items.FrightBomb, items.FireBomb, items.IceBomb]
+    event_id = 1140
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -301,22 +310,26 @@ class SeasideYaridShop(Shop):
 class JuiceBarPartial1(PartialJuiceBarShop):
     index = 9
     items = [items.FroggieDrink]
+    event_id = 1179
 
 
 class JuiceBarPartial2(PartialJuiceBarShop):
     index = 10
     items = [items.FroggieDrink, items.Elixir]
+    event_id = 1180
 
 
 class JuiceBarPartial3(PartialJuiceBarShop):
     index = 11
     items = [items.FroggieDrink, items.Elixir, items.Megalixir]
+    event_id = 1181
 
 
 class JuiceBarFull(JuiceBarShop):
     index = 12
     items = [items.FroggieDrink, items.Elixir, items.Megalixir, items.KerokeroCola]
     access = 2
+    event_id = 1182
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -336,6 +349,7 @@ class SeasideWeaponShop(Shop):
     access = 2
     items = [items.TroopaShell, items.Parasol, items.HurlyGloves, items.DoublePunch, items.RibbitStick, items.NokNokShell, items.PunchGlove, items.FingerShot, items.Cymbals,
              items.ChompShell, items.SuperHammer, items.HandGun, items.WhompGlove, items.SlapGlove, items.LuckyHammer]
+    event_id = 1173
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -355,6 +369,7 @@ class SeasideArmorShop(Shop):
     access = 2
     items = [items.SailorShirt, items.SailorPants, items.SailorCape, items.NauticaDress, items.Shirt, items.Pants, items.ThickShirt, items.ThickPants, items.MegaShirt,
              items.MegaPants, items.MegaCape, items.HappyShirt, items.HappyPants, items.HappyCape, items.HappyShell]
+    event_id = 1174
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -374,6 +389,7 @@ class SeasideAccessoryShop(Shop):
     access = 2
     items = [items.JumpShoes, items.AntidotePin, items.WakeUpPin,
              items.FearlessPin, items.TrueformPin, items.ZoomShoes]
+    event_id = 1171
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -393,6 +409,7 @@ class SeasideItemShop(Shop):
     access = 2
     items = [items.Mushroom, items.MidMushroom, items.HoneySyrup,
              items.MapleSyrup, items.PickMeUp, items.AbleJuice, items.FreshenUp]
+    event_id = 1170
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -411,6 +428,7 @@ class MonstroTownShop(Shop):
     index = 17
     items = [items.SpikedLink, items.CourageShell, items.MidMushroom,
              items.MapleSyrup, items.PickMeUp, items.AbleJuice, items.FreshenUp]
+    event_id = 2054
 
     def is_item_allowed(self, item):
         return item.consumable or (item.is_armor or item.is_weapon)
@@ -420,6 +438,7 @@ class HinopioItemShop(Shop):
     index = 18
     access = 2
     items = [items.MidMushroom, items.MapleSyrup, items.PickMeUp, items.AbleJuice, items.FreshenUp]
+    event_id = 1183
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -438,6 +457,7 @@ class HinopioArmorShop(Shop):
     index = 19
     access = 2
     items = [items.FireShirt, items.FirePants, items.FireCape, items.FireShell, items.FireDress]
+    event_id = 1184
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -455,6 +475,7 @@ class HinopioArmorShop(Shop):
 class BabyGoombaShop(Shop):
     index = 20
     items = [items.Mushroom2]
+    event_id = 2053
 
     def is_item_allowed(self, item):
         """Check if an item is allowed in this shop given the game world.
@@ -473,6 +494,7 @@ class NimbusLandItemWeaponShop(Shop):
     index = 21
     items = [items.MidMushroom, items.MapleSyrup, items.PickMeUp, items.AbleJuice, items.FreshenUp, items.MegaGlove, items.WarFan, items.HandCannon, items.StickyGlove,
              items.FuzzyShirt, items.FuzzyPants, items.FuzzyCape, items.FuzzyDress]
+    event_id = 3643
 
     def is_item_allowed(self, item):
         return item.consumable or (item.is_armor or item.is_weapon)
@@ -482,6 +504,13 @@ class CrocoShop1(Shop):
     index = 22
     items = [items.MidMushroom, items.MapleSyrup, items.PickMeUp, items.FreshenUp,
              items.FireShirt, items.FirePants, items.FireCape, items.FireShell, items.FireDress]
+    event_id = 1862
+    access = 2
+
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+            self.access = 1
 
     def is_item_allowed(self, item):
         return item.consumable or item.is_armor
@@ -490,6 +519,7 @@ class CrocoShop1(Shop):
 class CrocoShop2(Shop):
     index = 23
     access = 2
+    event_id = 1863
     items = [items.MidMushroom, items.MapleSyrup, items.PickMeUp, items.FreshenUp,
              items.HeroShirt, items.PrincePants, items.StarCape, items.HealShell, items.RoyalDress]
 
@@ -500,6 +530,7 @@ class CrocoShop2(Shop):
 class ToadShop(Shop):
     index = 24
     access = 2
+    event_id = 1185
     items = [items.MidMushroom, items.MaxMushroom, items.MapleSyrup,
              items.PickMeUp, items.AbleJuice, items.FreshenUp, items.FroggieDrink]
 
@@ -521,6 +552,7 @@ class RoomServiceShop(NPCShop):
     forced_size = 2
     event_shop = True
     access = 2
+    event_id = 3688
     items = [items.PickMeUp, items.KerokeroCola]
 
     def is_item_allowed(self, item):
@@ -541,6 +573,7 @@ class MolevilleSwapShop(NPCShop):
     forced_size = 3
     event_shop = True
     access = 2
+    event_id = 1636
     items = [items.FrightBomb, items.FireBomb, items.IceBomb]
 
     def is_item_allowed(self, item):

@@ -51,16 +51,8 @@ script = [
     },
     {
         "identifier": 'EVENT_602_open_shop_9',
-        "command": 'open_shop',
-        "args": [Shops._05_MARRYMORE_SHOP]
-    },
-    {
-        "identifier": 'EVENT_602_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_602_ret_11',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [646]
     },
     {
         "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_12',

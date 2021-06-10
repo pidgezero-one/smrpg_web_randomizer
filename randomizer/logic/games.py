@@ -99,7 +99,9 @@ def randomize_all(world):
     # Ball Solitaire shuffle
     if world.settings.is_flag_enabled(flags.BallSolitaireShuffle):
         randomize_ball_solitaire(world.ball_solitaire)
+        world.eventscripts[world.ball_solitaire.EVENT][0]["args"][1] = world.ball_solitaire.get_event_value()
 
     # Magic button shuffle
     if world.settings.is_flag_enabled(flags.MagicButtonShuffle):
         randomize_magic_buttons(world.magic_buttons)
+        world.eventscripts[world.magic_buttons.EVENT][0]["args"][1] = world.magic_buttons.get_event_value()

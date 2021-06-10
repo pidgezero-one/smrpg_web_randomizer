@@ -17,16 +17,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2100_open_shop_3',
-        "command": 'open_shop',
-        "args": [Shops._18_NIMBUS_LAND_SHOP]
-    },
-    {
-        "identifier": 'EVENT_2100_fade_in_from_black_async_4',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2100_ret_5',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1183]
     },
     {
         "identifier": 'EVENT_2100_run_dialog_6',
@@ -292,15 +284,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2100_open_shop_49',
-        "command": 'open_shop',
-        "args": [Shops._19_HINOPIOS_SHOP]
-    },
-    {
-        "identifier": 'EVENT_2100_fade_in_from_black_async_50',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2100_ret_51',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1184]
     }
 ]

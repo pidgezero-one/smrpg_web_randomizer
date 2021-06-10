@@ -114,7 +114,7 @@ class TotalStarPieces(NumberThresholdFlag):
 
 
 class StarPiecesRequired(NumberThresholdFlag):
-    name = 'Star pieces required to beat the game'
+    name = 'Star pieces required to access the final boss'
     description = "The total number of star pieces (0-7) that are required to access the final boss. Cannot be higher than Total Star Pieces."
     default = 6
     min = 0
@@ -124,16 +124,19 @@ class StarPiecesRequired(NumberThresholdFlag):
 
 class WinConditions(enum.Enum):
     """Enumeration for win condition options"""
-    FinalBoss = "Unlocks final boss"
-    WinGame = "Beat the game"
+    FinalBoss = "Beat the Factory"
+    Culex = "Beat Monstro Town sealed door"
+    StarPieces = "Collect required star pieces"
 
 
 class WinCondition(SelectOneFlag):
-    name = "When required Star Pieces are collected"
+    name = "Condition required to beat the game"
     """Enumeration for win condition options"""
-    description = '''Unlocks final boss: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss.
+    description = '''Beat the Factory: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.
     
-    Beat the game: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the game is over and the credits will roll.'''
+    Collect required star pieces: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the game is over and the credits will roll.
+    
+    Beat Monstro Town sealed door: The game is over when you defeat the boss behind the sealed door in Monstro Town, regardless of your Star Piece count.'''
     choices = [o for o in WinConditions]
     default = WinConditions.FinalBoss
 
@@ -185,6 +188,7 @@ boss_star_piece_locations = [
     ShuffleLocationSelector.InnerFactoryBoss2,
     ShuffleLocationSelector.InnerFactoryBoss3,
     ShuffleLocationSelector.InnerFactoryBoss4,
+    ShuffleLocationSelector.InnerFactoryBossFinal,
     ShuffleLocationSelector.InvasionStarPiece,
     ShuffleLocationSelector.KeroSewersBoss,
     ShuffleLocationSelector.LandsEndStarPiece1,
@@ -199,7 +203,8 @@ boss_star_piece_locations = [
     ShuffleLocationSelector.SeasideTownBoss,
     ShuffleLocationSelector.StarHillStarPiece1,
     ShuffleLocationSelector.SunkenShipBoss,
-    ShuffleLocationSelector.SunkenShipMidboss]
+    ShuffleLocationSelector.SunkenShipMidboss
+    ]
 
 
 class EnabledBossChecks(CategorizationFlag):
@@ -754,11 +759,11 @@ class StarProgressionchallengeOptions(enum.Enum):
     bosses = "Bosses"
     none = "No EXP"
 
-class EXPchallengeOptions(enum.Enum):
+class EXPChallengeOptions(enum.Enum):
     default = "Default"
     easystars = "Star pieces (easy)"
     hardstars = "Star pieces (hard)"
-    eastbosses = "Bosses (easy"
+    easybosses = "Bosses (easy"
     hardbosses = "Bosses (hard)"
     none = "None"
 
@@ -776,8 +781,8 @@ class EXPChallenge(SelectOneFlag):
     Bosses (hard): EXP stars can give you 1, 2, 3, 5, 6, 7, or 11 EXP depending on how many bosses you have defeated. The scaling for this option is heavily front-loaded.
     
     No EXP: EXP stars give you 0 EXP.'''
-    choices = [o for o in EXPchallengeOptions]
-    default = EXPchallengeOptions.default
+    choices = [o for o in EXPChallengeOptions]
+    default = EXPChallengeOptions.default
 
 
 class SlotsAnywhere(BooleanFlag):
@@ -1168,7 +1173,7 @@ regular_checks = [
     ShuffleLocationSelector.SunkenShipCoins1,
     ShuffleLocationSelector.SunkenShipCoins2,
     ShuffleLocationSelector.SunkenShipFrogCoinRoom,
-    ShuffleLocationSelector.SunkenShipHidonChest,
+    ShuffleLocationSelector.HidonChest,
     ShuffleLocationSelector.SunkenShipHidonMushroom,
     ShuffleLocationSelector.SunkenShipRatStairs,
     ShuffleLocationSelector.SunkenShipSafetyRing,
@@ -1326,7 +1331,7 @@ class ShopQuality(SelectOneFlag):
 
     "Completely random" means that some items which originally did not appear in shops may now appear in shops, but only a small pool of items are guaranteed to appear. Some items will never appear in non-depletable shops. 
     
-    If "Completely empty" is selected, all shops will only sell the Goodie Bag.'''
+    If "Completely empty" is selected, all shops will be disabled.'''
     modes = ['open']
     choices = [o for o in ShopQualities] # maybe just o for o
     default = ShopQualities.Original
@@ -1344,6 +1349,12 @@ class FreeShops(BooleanFlag):
     description = '''If enabled, all shop items will cost 1 coin. You will start with 9999 coins and 999 frog coins.'''
     modes = ['open']
     default = False
+
+class ShowEquips(BooleanFlag):
+    name = 'Show Equips'
+    description = 'Always show who can equip what in stores.'
+    inverse_description = '(Only current party members know what they can wear.)'
+    value = '-showequips'
 
 # ******** Enemies & Bosses
 
@@ -1493,6 +1504,7 @@ class AvailableBosses(enum.Enum):
     Manager = "Manager"
     Director = "Director"
     Gunyolk = "Gunyolk & Factory Chief"
+    Smithy = "Smithy"
 
 
 class ShuffledBosses(CategorizationFlag):

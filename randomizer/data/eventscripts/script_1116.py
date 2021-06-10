@@ -49,54 +49,22 @@ script = [
     },
     {
         "identifier": 'EVENT_1116_open_shop_9',
-        "command": 'open_shop',
-        "args": [Shops._09_JUICE_BAR_NO_CARD]
-    },
-    {
-        "identifier": 'EVENT_1116_fade_in_from_black_async_10',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1116_ret_11',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1179]
     },
     {
         "identifier": 'EVENT_1116_open_shop_12',
-        "command": 'open_shop',
-        "args": [Shops._12_JUICE_BAR_SOPRANO_CARD]
-    },
-    {
-        "identifier": 'EVENT_1116_fade_in_from_black_async_13',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1116_ret_14',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1182]
     },
     {
         "identifier": 'EVENT_1116_open_shop_15',
-        "command": 'open_shop',
-        "args": [Shops._11_JUICE_BAR_TENOR_CARD]
-    },
-    {
-        "identifier": 'EVENT_1116_fade_in_from_black_async_16',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1116_ret_17',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1181]
     },
     {
         "identifier": 'EVENT_1116_open_shop_18',
-        "command": 'open_shop',
-        "args": [Shops._10_JUICE_BAR_ALTO_CARD]
-    },
-    {
-        "identifier": 'EVENT_1116_fade_in_from_black_async_19',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1116_ret_59',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [1180]
     }
 ]

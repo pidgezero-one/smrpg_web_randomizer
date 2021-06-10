@@ -50,16 +50,8 @@ script = [
     },
     {
         "identifier": 'EVENT_290_open_shop_364',
-        "command": 'open_shop',
-        "args": [Shops._00_MUSHROOM_KINGDOM]
-    },
-    {
-        "identifier": 'EVENT_290_fade_in_from_black_async_365',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_290_ret_360__',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": [284]
     },
     {
         "identifier": 'EVENT_290_run_event_as_subroutine_359_',

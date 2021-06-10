@@ -41,6 +41,7 @@ class StarAllowedChest(Chest):
 class NPCReward(locations.ItemLocation):
     """Subclass for NPC reward location."""
     access = 1
+    dialogs_to_replace = []
 
     def item_allowed(self, item):
         # NPC rewards cannot contain "You Missed!" or chest-only rewards.
@@ -84,6 +85,7 @@ class OverworldItem(locations.ItemLocation):
 
     coinsanity = True
     npc_ids = None
+    dialogs_to_replace = []
 
     def item_allowed(self, item):
         # NPC rewards cannot contain "You Missed!" or chest-only rewards.
@@ -2608,9 +2610,9 @@ class SunkenShipHidonMushroom(StarAllowedChest):
         return locations.can_access_sea(self, inventory)
 
 
-class SunkenShipHidonChest(StarAllowedChest):
+class HidonChest(StarAllowedChest):
     area = locations.Area.SunkenShip
-    description = ShuffleLocationSelector.SunkenShipHidonChest
+    description = ShuffleLocationSelector.HidonChest
     rooms = [184]
     npc_ids = [2]
     event = 246
@@ -5137,6 +5139,16 @@ class InnerFactoryBoss4(BossStarPiece):
     def can_access(self, inventory):
         return locations.can_access_factory(self, inventory)
 
+class InnerFactoryBossFinal(BossStarPiece):
+    description = ShuffleLocationSelector.InnerFactoryBossFinal
+    area = locations.Area.Factory
+    rooms = [496]
+    event = 167
+    
+    def can_access(self, inventory):
+        return locations.can_access_final_boss(self, inventory)
+
+
 
 # ********************* Default objects for world
 
@@ -5298,7 +5310,7 @@ def get_default_chests(world):
         SunkenShipCloneRoom(world),
         SunkenShipFrogCoinRoom(world),
         SunkenShipHidonMushroom(world),
-        SunkenShipHidonChest(world),
+        HidonChest(world),
         HidonReward1(world),
         HidonReward2(world),
         SunkenShipSafetyRing(world),
@@ -5576,7 +5588,8 @@ def get_boss_star_piece_checks(world):
         InnerFactoryBoss1(world),
         InnerFactoryBoss2(world),
         InnerFactoryBoss3(world),
-        InnerFactoryBoss4(world)
+        InnerFactoryBoss4(world),
+        InnerFactoryBossFinal(world)
     ]
 
 def get_starter_character_checks(world):
