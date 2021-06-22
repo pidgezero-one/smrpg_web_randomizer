@@ -96,6 +96,16 @@ script = [
         "args": [0x70dd, 0]
     },
     {
+        "identifier": 'EVENT_2598_set_9_',
+        "command": 'set',
+        "args": [0x70f8, 0]
+    },
+    {
+        "identifier": 'EVENT_2598_set_9__',
+        "command": 'set',
+        "args": [0x70f9, 0]
+    },
+    {
         "identifier": 'EVENT_2598_jmp_if_bit_clear_18',
         "command": 'jmp_if_bit_clear',
         "args": [0x7047, 0, 'EVENT_2598_fade_in_from_black_async_26']

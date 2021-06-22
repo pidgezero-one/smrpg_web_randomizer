@@ -44,6 +44,7 @@ class Area(Enum):
     BarrelVolcano = auto()
     BowsersKeep = auto()
     Factory = auto()
+    InnerFactory = auto()
 
 
 class ItemLocation:

@@ -36,12 +36,8 @@ script = [
         "args": [0x707c, 7]
     },
     {
-        "identifier": 'EVENT_18_start_battle_700E_6',
-        "command": 'start_battle_700E'
-    },
-    {
         "identifier": 'EVENT_18_jmp_to_event_7',
         "command": 'jmp_to_event',
-        "args": [24]
+        "args": [1186]
     }
 ]

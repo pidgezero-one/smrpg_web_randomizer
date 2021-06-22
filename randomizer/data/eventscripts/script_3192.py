@@ -16,13 +16,13 @@ script = [
     },
     {
         "identifier": 'EVENT_3192_set_short_2',
-        "command": 'set_short',
-        "args": [0x700e, 0x008d]
+        "command": 'run_event_as_subroutine',
+        "args": [18]
     },
     {
         "identifier": 'EVENT_3192_run_event_as_subroutine_3',
         "command": 'run_event_as_subroutine',
-        "args": [18]
+        "args": [24]
     },
     {
         "identifier": 'EVENT_3192_action_queue_sync_4',

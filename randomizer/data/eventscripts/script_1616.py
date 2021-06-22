@@ -11,8 +11,42 @@ script = [
         "args": [1, 96]
     },
     {
+        "identifier": 'EVENT_1616_jmp_if_bit_clear_7______',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7044, 7, 'EVENT_1616_jmp_to_event_1']
+    },
+    {
+        "identifier": 'EVENT_1616_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_1616_jmp_to_event_1',
-        "command": 'jmp_to_event',
+        "command": 'run_event_as_subroutine',
         "args": [15]
-    }
+    },
+    {
+        "identifier": 'EVENT_1616_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_1616_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1616_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_1616_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_1616_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1616_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3897]
+    },
+    {
+        "identifier": 'EVENT_1616_ret_26',
+        "command": 'ret'
+    },
 ]

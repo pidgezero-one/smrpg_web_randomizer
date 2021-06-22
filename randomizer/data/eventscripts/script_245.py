@@ -132,7 +132,7 @@ script = [
     {
         "identifier": "EVENT_245_room_81_logic_2",
         "command": 'jmp_to_event',
-        "args": [3074]
+        "args": [3402]
     },
     {
         "identifier": "EVENT_245_room_125_logic",
@@ -187,7 +187,7 @@ script = [
     {
         "identifier": "EVENT_245_pandorite_logic_2",
         "command": 'jmp_to_event',
-        "args": [3074]
+        "args": [3402]
     },
     {
         "identifier": "EVENT_245_hidon_logic",
@@ -197,7 +197,7 @@ script = [
     {
         "identifier": "EVENT_245_hidon_logic_2",
         "command": 'jmp_to_event',
-        "args": [3074]
+        "args": [3402]
     },
     {
         "identifier": "EVENT_245_room_301_logic",

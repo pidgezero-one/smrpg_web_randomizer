@@ -50,6 +50,26 @@ script = [
         "args": [0x7022, 0x0028]
     },
     {
+        "identifier": 'EVENT_3285_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_3285_jmp_to_event_9']
+    },
+    {
+        "identifier": 'EVENT_3285_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_3285_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_3285_jmp_to_event_9']
+    },
+    {
+        "identifier": 'EVENT_3285_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3905]
+    },
+    {
         "identifier": 'EVENT_3285_jmp_to_event_9',
         "command": 'jmp_to_event',
         "args": [15]

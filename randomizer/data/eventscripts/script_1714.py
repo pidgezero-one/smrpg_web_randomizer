@@ -24,8 +24,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1714_jmp_to_event_2',
-        "command": 'jmp_to_event',
+        "command": 'run_event_as_subroutine',
         "args": [14]
+    },
+    {
+        "identifier": 'EVENT_1714_ret_26',
+        "command": 'jmp',
+        "args": ['EVENT_1714_jmp_if_bit_clear_7']
     },
     {
         "identifier": 'EVENT_1714_set_bit_3',
@@ -226,6 +231,26 @@ script = [
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_1714_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_1714_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1714_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_1714_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_1714_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1714_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3890]
     },
     {
         "identifier": 'EVENT_1714_ret_17',

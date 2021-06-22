@@ -22,6 +22,21 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
+        "identifier": 'EVENT_2793_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_2793_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_2793_ret_2']
+    },
+    {
+        "identifier": 'EVENT_2793_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3903]
+    },
+    {
         "identifier": 'EVENT_2793_ret_2',
         "command": 'ret'
     }

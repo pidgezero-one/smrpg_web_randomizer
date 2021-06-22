@@ -115,7 +115,7 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3486_jmp_if_bit_clear_7',
+        "identifier": 'EVENT_3486_jmp_if_bit_clear_7__',
         "command": 'jmp_if_bit_clear',
         "args": [0x7096, 5, 'EVENT_3486_jmp_if_bit_set_9']
     },
@@ -150,9 +150,43 @@ script = [
         "args": [0x702a, 0x0000]
     },
     {
+        "identifier": 'EVENT_3486_jmp_if_bit_clear_7______',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7044, 7, 'EVENT_3486_jmp_to_event_14']
+    },
+    {
+        "identifier": 'EVENT_3486_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_3486_jmp_to_event_14',
-        "command": 'jmp_to_event',
+        "command": 'run_event_as_subroutine',
         "args": [15]
+    },
+    {
+        "identifier": 'EVENT_3486_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_3486_ret_26']
+    },
+    {
+        "identifier": 'EVENT_3486_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_3486_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_3486_ret_26']
+    },
+    {
+        "identifier": 'EVENT_3486_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3892]
+    },
+    {
+        "identifier": 'EVENT_3486_ret_26',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3486_action_queue_async_15',

@@ -29,7 +29,7 @@ script = [
     {
         "identifier": 'EVENT_531_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x7044, 7, 'EVENT_531_run_event_as_subroutine_6']
+        "args": [0x7044, 7, 'EVENT_531_clear_bit_0']
     },
     {
         "identifier": 'EVENT_531_fade_in_from_black_async_4',
@@ -40,9 +40,39 @@ script = [
         "command": 'ret'
     },
     {
+        "identifier": 'EVENT_531_jmp_if_bit_clear_7______',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7044, 7, 'EVENT_531_run_event_as_subroutine_6']
+    },
+    {
+        "identifier": 'EVENT_531_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_531_run_event_as_subroutine_6',
         "command": 'run_event_as_subroutine',
         "args": [265]
+    },
+    {
+        "identifier": 'EVENT_531_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_531_ret_7']
+    },
+    {
+        "identifier": 'EVENT_531_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_531_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_531_ret_7']
+    },
+    {
+        "identifier": 'EVENT_531_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3895]
     },
     {
         "identifier": 'EVENT_531_ret_7',

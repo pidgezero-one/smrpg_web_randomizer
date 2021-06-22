@@ -9,7 +9,7 @@ script = [
     {
         "identifier": "EVENT_167_inc_boss_count",
         "command": "inc",
-        "args": [0x70E6]
+        "args": [0x70E3]
     },
     {
         "identifier": "EVENT_167_room_28_jump",
@@ -27,9 +27,9 @@ script = [
         "args": [154, "EVENT_167_room_154_logic"]
     },
     {
-        "identifier": "EVENT_167_room_157_jump",
+        "identifier": "EVENT_167_room_159_jump",
         "command": 'jmp_if_7000_equals_short',
-        "args": [157, "EVENT_167_room_157_logic"]
+        "args": [159, "EVENT_167_room_159_logic"]
     },
     {
         "identifier": "EVENT_167_room_173_jump",
@@ -233,7 +233,7 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": "EVENT_167_room_157_logic", # star hill
+        "identifier": "EVENT_167_room_159_logic", # star hill
         "command": 'jmp_to_event',
         "args": [3092]
     },

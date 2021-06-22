@@ -108,7 +108,7 @@ dialog_data[64] = '''RAZ: Oh NO![delay_60]
  I forgot to sign the guest book for
  `TOWER_BOSS_1` & `MARRYMORE_CHARACTER`'s wedding![await]'''
 dialog_data[65] = '''RAINI: I think the back door to the
- chapel was left unlocked. But Raz
+ chapel was left unlocked.[await] But Raz
  is afraid of getting caught
  sneaking in.[await]'''
 dialog_data[66] = '''Even though `TOWER_BOSS_1` and
@@ -709,7 +709,7 @@ dialog_data[419] = ''' Hello.
  [select]  (I'd like to rest awhile)
  [select]  (I'm fine, thank you)[await]'''
 dialog_data[420] = '''[page]
- Yes, I see.
+ Yes, I see.[await]
  We here at the Marrymore Hotel
  are offering a very special
  deal for a limited time only.[await][page]
@@ -939,7 +939,7 @@ dialog_data[539] = ''' Some of my friends are hiding away
  If you fight them, they might give
  you Star Pieces.[await][page]
  And you should remember to visit
- them again afterwards. They might
+ them again afterwards.[await][pause] They might
  have extra goodies for you.[await]'''
 dialog_data[540] = '''[await]'''
 dialog_data[541] = '''[await]'''
@@ -1231,8 +1231,7 @@ dialog_data[770] = '''[await]'''
 dialog_data[771] = ''' I don't think I'm going to find any
  more items today.[await][pause] But if you
  change your mind about the ones
- I've still got, feel free to come
- again.[await]'''
+ I have, feel free to come again.[await]'''
 dialog_data[772] = '''[await]'''
 dialog_data[773] = '''[await]'''
 dialog_data[774] = ''' Check back with me after you kill
@@ -1344,12 +1343,12 @@ dialog_data[816] = '''[await]'''
 dialog_data[817] = '''[await]'''
 dialog_data[818] = '''[await]'''
 dialog_data[819] = '''         Attention, Civilians![await]
-         Short on Frog Coins?
+         Short on Frog Coins?[await]
  Climb our cliff in under 11 seconds,
       and win FIVE Frog Coins![await][page]
   Claim as many times as you like!
             Stop on by soon.
-                      - The Sky Troopas[await]'''
+                      ~The Sky Troopas[await]'''
 dialog_data[820] = '''
             See you around.[await]'''
 dialog_data[821] = '''[await]'''
@@ -1406,7 +1405,7 @@ dialog_data[864] = '''[await]'''
 dialog_data[865] = '''[await]'''
 dialog_data[866] = ''' Sorry, we're on vacation![await]
  If you find our flags, show them to
- our mushroom assistant.[delay]
+ our mushroom assistant.[await]
                   ~The 3 MUSTY FEARS[await]'''
 dialog_data[867] = '''[await]'''
 dialog_data[868] = '''[await]'''

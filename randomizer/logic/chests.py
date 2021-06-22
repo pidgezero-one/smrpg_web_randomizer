@@ -76,7 +76,7 @@ area_3 = [Area.Moleville, Area.MolevilleMines, Area.BoosterPass, Area.BoosterTow
 area_4 = [Area.StarHill, Area.SeasideTown, Area.Sea, Area.SunkenShip]
 area_5 = [Area.LandsEnd, Area.BelomeTemple, Area.MonstroTown, Area.Casino, Area.BeanValley]
 area_6 = [Area.NimbusLand, Area.BarrelVolcano]
-area_7 = [Area.BowsersKeep, Area.Factory]
+area_7 = [Area.BowsersKeep, Area.Factory, Area.InnerFactory]
 area_8 = [Area.YosterIsle]
 
 class Inventory(list):
@@ -127,7 +127,7 @@ def _intershuffle_chests(chest_locations):
             chest.item, swap.item = swap.item, chest.item
 
 
-def _place_items(world, items, locations, base_inventory=None):
+def _place_items(world, _items, locations, base_inventory=None):
     """Place the given list of items within the given locations, and optionally a given starting inventory.
 
     Args:
@@ -140,7 +140,7 @@ def _place_items(world, items, locations, base_inventory=None):
     if base_inventory is None:
         base_inventory = Inventory()
 
-    remaining_fill_items = Inventory(items)
+    remaining_fill_items = Inventory(_items)
 
     # if len(remaining_fill_items) > len([l for l in locations if not l.has_item]):
     #    raise ValueError("Trying to fill more items than available locations")
@@ -149,7 +149,7 @@ def _place_items(world, items, locations, base_inventory=None):
 
     # Firstly, bias Super Suit (or whatever the best of the 10 special equips ends up being) to the 100 jump location under the right conditions
     if world.settings.is_flag_value(flags.RestrictSpecialEquips, True):
-        jumps2_location_open = [l for l in locations if utils.isclass_or_instance(l, items.SuperJumps100) and l.access == 2]
+        jumps2_location_open = [l for l in locations if utils.isclass_or_instance(l, chests.SuperJumps100) and l.access == 2]
         if len(jumps2_location_open) > 0:
             bias = random.randint(1, 10)
             if bias <= 3:
@@ -163,7 +163,7 @@ def _place_items(world, items, locations, base_inventory=None):
 
     blocked_star_piece_areas = []
 
-    for item in items:
+    for item in _items:
         # filter down locations if eligible for biased shuffling
         # 80% chance that better items appear in locations with more gating, and vice versa
         if item.tier > 0 and not item.is_key and world.settings.is_flag_value(flags.BiasItemShuffle, True):
@@ -235,6 +235,19 @@ def _place_items(world, items, locations, base_inventory=None):
                     blocked_star_piece_areas.extend(area_7)
                 elif fillable_locations[0].area in area_8:
                     blocked_star_piece_areas.extend(area_8)
+
+            # if this is a mimic, set all chests dependent on that mimic to have the same area property as this chest
+            # so that way we don't run the risk of violating StarPiecesRestrictedByArea by populating chests w/ unknown locations under MimicsAnywhere
+            chests_missing_locations = []
+            if utils.isclass_or_instance(item, items.PandoriteFight):
+                chests_missing_locations = [c for c in world.chests if utils.isclass_or_instance(c, chests.PandoriteReward1) or utils.isclass_or_instance(c, chests.PandoriteReward2) or utils.isclass_or_instance(c, chests.PandoriteBoss)]
+            elif utils.isclass_or_instance(item, items.PandoriteFight):
+                chests_missing_locations = [c for c in world.chests if utils.isclass_or_instance(c, chests.HidonReward1) or utils.isclass_or_instance(c, chests.HidonReward2) or utils.isclass_or_instance(c, chests.HidonBoss)]
+            elif utils.isclass_or_instance(item, items.BoxBoyFight):
+                chests_missing_locations = [c for c in world.chests if utils.isclass_or_instance(c, chests.BoxBoyBoss)]
+            for c in chests_missing_locations:
+                c.area = fillable_locations[0].area
+
 
             # does this enter the marrymore char sighting into sphere 0?
             assumed_items = _collect_items(
@@ -344,7 +357,7 @@ def fill_locations(world, locations_to_fill, required_items, extra_items=None, e
     locations_to_fill = [l for l in locations_to_fill if not l.has_item]
     locations_to_fill.reverse()
     # Prioritize frog shop and treasure seller since those are highly restrictive
-    priority = [l for l in locations_to_fill if utils.isclass_or_instance(l, chests.TreasureSellerReward) or utils.isclass_or_instance(l, FrogCoinShopItem)]
+    priority = [l for l in locations_to_fill if utils.isclass_or_instance(l, chests.TreasureSellerReward) or utils.isclass_or_instance(l, chests.FrogCoinShopItem)]
     locations_to_fill = [l for l in locations_to_fill if l not in priority]
     locations_to_fill = priority + locations_to_fill
 
@@ -563,7 +576,8 @@ def randomize_all(world):
         # add star pieces
         if world.settings.is_flag_value(flags.ShuffleStarPieces, True):
             total_star_pieces = world.settings.get_flag(flags.TotalStarPieces).value
-            required_item_pool += ([items.StarPiece] * total_star_pieces)
+            star_pieces = [items.StarPiece1, items.StarPiece2, items.StarPiece3, items.StarPiece4, items.StarPiece5, items.StarPiece6, items.StarPiece7]
+            required_item_pool += (star_pieces[0:total_star_pieces])
         # apply fireworks settings
         if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
             required_item_pool.append(items.Fireworks)
@@ -585,6 +599,9 @@ def randomize_all(world):
         # if Restrict Special Equips is on, must guarantee all ten appear once
         if world.settings.is_flag_value(flags.RestrictSpecialEquips, True):
             extra_item_pool += [i for i in world.items if i.special_equip]
+        # if star piece hints is on, must guarantee signal ring
+        if world.settings.is_flag_value(flags.StarPieceHints, True):
+            extra_item_pool.append(items.SignalRing)
         # other items
         if not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Empty):
             if world.settings.is_flag_value(flags.ShuffleShops, False) and not world.settings.is_flag_value(flags.ShopQuality, ShopQualities.Empty):
@@ -596,7 +613,7 @@ def randomize_all(world):
             # magikoopa's chest shuffle
             if world.settings.is_flag_value(flags.ShuffleMagikoopaChest, True):
                 extra_item_pool.append(items.InfiniteCoins)
-            limited_items = [items.GoodieBag, items.YouMissed, items.SeeYa, items.EarlierTimes, items.SignalRing, items.StarEgg, items.Wallet, items.LuckyJewel]
+            limited_items = [items.GoodieBag, items.YouMissed, items.SeeYa, items.EarlierTimes, items.StarEgg, items.Wallet, items.LuckyJewel]
             max_tier = get_max_item_quality(world)
             extra_item_pool += [i for i in limited_items if i.tier <= max_tier]
         remainder_check = extra_item_pool.copy()

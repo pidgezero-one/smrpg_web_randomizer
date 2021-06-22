@@ -18,6 +18,7 @@ from randomizer.data.roomobjects.roomobjects import rooms as roomdata
 from randomizer.data.npcmodels import models as npcmodels
 from randomizer.data.dialog_data.dialog_data import dialog_data
 from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
+from randomizer.data.locations import Area
 from . import bosses
 from . import bosses_overworld
 from . import credits
@@ -452,8 +453,8 @@ class GameWorld:
             self.dialog_data[2][index] = content
 
     def search_replace_dialog(self, search, replace):
-        for bank_id in len(self.dialog_data):
-            for index in len(self.dialog_data[bank_id]):
+        for bank_id in range(len(self.dialog_data)):
+            for index in range(len(self.dialog_data[bank_id])):
                 self.dialog_data[bank_id][index] = self.dialog_data[bank_id][index].replace(search, replace)
 
     def prepend_bits(self, event, pairs):
@@ -467,6 +468,11 @@ class GameWorld:
         """
         patch = Patch()
 
+        # Remove commands from game loader that are required to make the base rom run properly on its own
+        # These commands will be replaced according to the user's settings
+        self.eventscripts[192].pop(0)
+        self.eventscripts[192].pop(0)
+
         # Set number of star pieces required for win condition
         required_star_pieces = self.settings.get_flag(flags.TotalStarPieces).value
         self.eventscripts[1969][0]["args"] = [required_star_pieces]
@@ -474,6 +480,9 @@ class GameWorld:
         # Alternate star piece win conditions
         if self.settings.is_flag_value(flags.RequireBossFights, True):
             self.prepend_bits(192, [[0x7086, 7]])
+            # disable mack skip
+            chancellor_index = len(self.rooms[326]["objects"])
+            self.rooms[326]["objects"][chancellor_index - 1]["event"] = 256
 
         # Bandit's Way gating
         if self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.AlwaysOpen):
@@ -582,27 +591,29 @@ class GameWorld:
         # Bowser's Keep gating
         if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
             self.prepend_bits(192, [[0x7068, 3]])
-        elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.FinishBarrelVolcano):
-            self.prepend_bits(192, [[0x707B, 2]])
         else:
-            if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find1Star):
-                value = 1
-            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find2Star):
-                value = 2
-            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find3Star):
-                value = 3
-            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find4Star):
-                value = 4
-            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find5Star):
-                value = 5
-            elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find6Star):
-                value = 6
+            self.prepend_bits(192, [[0x707A, 3]])
+            if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.FinishBarrelVolcano):
+                self.prepend_bits(192, [[0x707B, 2]])
             else:
-                raise Exception("failed to set star piece gate on keep")
-            keep_script = copy.copy(self.eventscripts[207])
-            keep_script[1]["args"][1] = value
-            self.eventscripts[207] = keep_script
-            self.prepend_bits(192, [[0x7051, 1], [0x707A, 3]])
+                if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find1Star):
+                    value = 1
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find2Star):
+                    value = 2
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find3Star):
+                    value = 3
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find4Star):
+                    value = 4
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find5Star):
+                    value = 5
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find6Star):
+                    value = 6
+                else:
+                    raise Exception("failed to set star piece gate on keep")
+                keep_script = copy.copy(self.eventscripts[207])
+                keep_script[1]["args"][1] = value
+                self.eventscripts[207] = keep_script
+                self.prepend_bits(192, [[0x7051, 1], [0x707A, 3]])
 
         # Factory gating
         if self.settings.is_flag_value(flags.FactoryGate, FactoryGating.AlwaysOpen):
@@ -661,7 +672,7 @@ class GameWorld:
             # assign one of 3 random fireworks
             fireworks_credits = random.randint(1, 6)
             for script_id in [184, 3399]:
-                for index in len(self.eventscripts[script_id]):
+                for index in range(len(self.eventscripts[script_id])):
                     cmd = self.eventscripts[script_id][index]
                     if cmd["command"] == "set" and cmd["args"][0] == 0x70EA:
                         self.eventscripts[script_id][index]["args"][1] = fireworks_credits
@@ -737,7 +748,7 @@ class GameWorld:
 
         # Bowser's Keep threshold
         value = self.settings.get_flag(flags.BowserDoorRequirements).value
-        for c in len(self.eventscripts[3350]):
+        for c in range(len(self.eventscripts[3350])):
             cmd = self.eventscripts[3350][c]
             if cmd[c]["command"] == 'jmp_if_var_equals_byte' and cmd[c]["args"][0] == 0x70b6 and cmd[c]["args"][1] == 4:
                 cmd = self.eventscripts[3350][c]["args"][1] = value
@@ -839,18 +850,18 @@ class GameWorld:
                 if utils.isclass_or_instance(c, data.chests.Chest): 
                     # slot machines - doesn't take a 70A7 value
                     if utils.isclass_or_instance(c.item, data.items.SlotMachineChest): 
-                        for i in len(c.rooms):
+                        for i in range(len(c.rooms)):
                             # count NPCs in room
                             r = c.rooms[i]
                             ctr = 0
-                            for object_id in len(self.rooms[r]["objects"]):
+                            for object_id in range(len(self.rooms[r]["objects"])):
                                 o = self.rooms[r]["objects"][object_id]
                                 ctr += 1
-                                for clone_id in len(o["clones"]):
+                                for clone_id in range(len(o["clones"])):
                                     ctr += 1
                             # insert a slot machine script with the NPC IDs adjusted to this room
                             slot_logic = copy.copy(slot_machine_commands)
-                            for j in len(slot_logic):
+                            for j in range(len(slot_logic)):
                                 cmd = slot_logic[j]
                                 if cmd["command"] in ["stop_embedded_action_script", "pause_action_script", "set_action_script_sync", "summon_to_current_level", "action_queue_async", "action_queue_sync"] and cmd["args"][0] >= 0x16 and cmd["args"][0] <= 0x1A:
                                     cmd["args"][0] = cmd["args"][0] - 0x16 + ctr
@@ -868,29 +879,31 @@ class GameWorld:
                             cmds.append(new_command(c.event, 'set', [0x70A7, manual_70A7]))
                         else:
                             # set 70A7 on chest itself
-                            for i in len(c.rooms):
+                            for i in range(len(c.rooms)):
                                 r = c.rooms[i]
                                 ctr = 0
-                                for object_id in len(self.rooms[r]["objects"]):
+                                for object_id in range(len(self.rooms[r]["objects"])):
                                     o = self.rooms[r]["objects"][object_id]
                                     if ctr == c.npc_ids[i]:
                                         self.rooms[r]["objects"][object_id]["item_offset"] = c.item.chest_70A7_upper
                                         self.rooms[r]["objects"][object_id]["star_offset"] = c.item.chest_70A7_lower
                                     ctr += 1
-                                    for clone_id in len(o["clones"]):
+                                    for clone_id in range(len(o["clones"])):
                                         if ctr == c.npc_ids[i]:
                                             self.rooms[r]["objects"][object_id]["clones"][clone_id]["item_offset"] = c.item.chest_70A7_upper
                                             self.rooms[r]["objects"][object_id]["clones"][clone_id]["star_offset"] = c.item.chest_70A7_lower
                                         ctr += 1
                         if utils.isclass_or_instance(c.item, data.items.Coins) or utils.isclass_or_instance(c.item, data.items.MultiFrogCoin):
                             cmds.append(new_command(c.event, 'set', [0x70BC, 0]))
-                        elif utils.isclass_or_instance(c.item, data.items.StarPiece): 
+                        elif utils.isclass_or_instance(c.item, data.items.StarPiece):
+                            hint_variable, hint_bit = c.item.hint_bit
+                            cmds.append(new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
                             cmds.append(new_command(c.event, 'run_event_as_subroutine', [3092]))
                         # jump based on type
                         if self.settings.is_flag_value(flags.QuickHitCoins, True) and (utils.isclass_or_instance(c.item, data.items.Coins) or utils.isclass_or_instance(c.item, data.items.MultiFrogCoin)):
                             cmds.append(new_command(c.event, 'jmp_to_event', [c.item.quick_chest_event]))
                         elif c.item.chest_event:
-                            cmds.append(new_command(c.event, 'jmp_to_event', [c.item.chest_event]))
+                            cmds.append(new_command(c.event, 'jmp_to_event', [c.item.get_chest_event(c.event)]))
                         # add jumps
                         grant_builders[c.event]["executions"].extend(cmds)
                         for r in c.rooms:
@@ -898,52 +911,56 @@ class GameWorld:
                             grant_builders[c.event]["jumps"].append(jmp)
                 # npc rewards
                 else:
-                    if utils.isclass_or_instance(c.item, data.items.RegularItem):
-                        # set 70A7 for granting a normal item
-                        cmds.append(new_command(c.event, 'set', [0x70A7, c.item.chest_70A7_lower]))
-                    elif utils.isclass_or_instance(c.item, data.items.Coins) or utils.isclass_or_instance(c.item, data.items.MultiFrogCoin):
-                        # set 7000 for quantity
-                        cmds.append(new_command(c.event, 'set', [0x7000, c.item.amount]))
-                    cmds.append(new_command(c.event, 'jmp_to_event', [c.item.npc_event]))
-                    grant_builders[c.event]["executions"].extend(cmds)
-                    for r in c.rooms:
-                        jmp = new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
-                        grant_builders[c.event]["jumps"].append(jmp)
-                    # coin snake considerations
-                    if utils.isclass_or_instance(c, data.chests.SunkenShipCoinSnake):
-                        model_id = c.item.model.model
-                        action_script = model_id = c.item.model.action_script
+                    # starter items
+                    if utils.isclass_or_instance(c, data.chests.StarterItem):
+                        self.eventscripts[192].insert(0, new_command(c.event, 'put_inventory', [c.item.index]))
+                    else:
+                        if utils.isclass_or_instance(c.item, data.items.RegularItem):
+                            # set 70A7 for granting a normal item
+                            cmds.append(new_command(c.event, 'set', [0x70A7, c.item.chest_70A7_lower]))
+                        elif utils.isclass_or_instance(c.item, data.items.Coins) or utils.isclass_or_instance(c.item, data.items.MultiFrogCoin):
+                            # set 7000 for quantity
+                            cmds.append(new_command(c.event, 'set', [0x7000, c.item.amount]))
+                        cmds.append(new_command(c.event, 'jmp_to_event', [c.item.npc_event]))
+                        grant_builders[c.event]["executions"].extend(cmds)
                         for r in c.rooms:
-                            ctr = 0
-                            for object_id in len(self.rooms[r]["objects"]):
-                                o = self.rooms[r]["objects"][object_id]
-                                if ctr in c.npc_ids:
-                                    self.rooms[r]["objects"][object_id]["model"] = model_id
-                                ctr += 1
-                                for clone_id in len(o["clones"]):
+                            jmp = new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
+                            grant_builders[c.event]["jumps"].append(jmp)
+                        # coin snake considerations
+                        if utils.isclass_or_instance(c, data.chests.SunkenShipCoinSnake):
+                            model_id = c.item.model.model
+                            action_script = model_id = c.item.model.action_script
+                            for r in c.rooms:
+                                ctr = 0
+                                for object_id in range(len(self.rooms[r]["objects"])):
+                                    o = self.rooms[r]["objects"][object_id]
+                                    if ctr in c.npc_ids:
+                                        self.rooms[r]["objects"][object_id]["model"] = model_id
                                     ctr += 1
-                        # set the right sequence on the object in AS 199 and 200
-                        action_script_contents = copy.copy([s for s in self.actionscripts[action_script] if s["command"] != "ret"])
-                        as_199 = copy.copy(self.actionscripts[199]).pop()
-                        as_200 = copy.copy(self.actionscripts[200]).pop()
-                        self.actionscripts[199] = action_script_contents + as_199
-                        self.actionscripts[200] = action_script_contents + as_200
-                        # remove coin sequences if necessary
-                        if not utils.isclass_or_instance(c.item, data.items.Coins) and not utils.isclass_or_instance(c.item, data.items.FrogCoin) and not utils.isclass_or_instance(c.item, data.items.MultiFrogCoin):
-                            e_3215 = copy.copy(self.eventscripts[3215])
-                            for command_index in len(e_3215):
-                                command = e_3215[command_index]
-                                if "subscript" in command:
-                                    subscript = [ss for ss in command["subscript"] if ss["command"] != 'set_sprite_sequence']
-                                    e_3215[command_index]["subscript"] = subscript
-                            e_3216 = copy.copy(self.eventscripts[3216])
-                            for command_index in len(e_3216):
-                                command = e_3216[command_index]
-                                if "subscript" in command:
-                                    subscript = [ss for ss in command["subscript"] if ss["command"] != 'set_sprite_sequence']
-                                    e_3216[command_index]["subscript"] = subscript
-                            self.eventscripts[3215] = e_3215
-                            self.eventscripts[3216] = e_3216
+                                    for clone_id in range(len(o["clones"])):
+                                        ctr += 1
+                            # set the right sequence on the object in AS 199 and 200
+                            action_script_contents = copy.copy([s for s in self.actionscripts[action_script] if s["command"] != "ret"])
+                            as_199 = copy.copy(self.actionscripts[199]).pop()
+                            as_200 = copy.copy(self.actionscripts[200]).pop()
+                            self.actionscripts[199] = action_script_contents + as_199
+                            self.actionscripts[200] = action_script_contents + as_200
+                            # remove coin sequences if necessary
+                            if not utils.isclass_or_instance(c.item, data.items.Coins) and not utils.isclass_or_instance(c.item, data.items.FrogCoin) and not utils.isclass_or_instance(c.item, data.items.MultiFrogCoin):
+                                e_3215 = copy.copy(self.eventscripts[3215])
+                                for command_index in range(len(e_3215)):
+                                    command = e_3215[command_index]
+                                    if "subscript" in command:
+                                        subscript = [ss for ss in command["subscript"] if ss["command"] != 'set_sprite_sequence']
+                                        e_3215[command_index]["subscript"] = subscript
+                                e_3216 = copy.copy(self.eventscripts[3216])
+                                for command_index in range(len(e_3216)):
+                                    command = e_3216[command_index]
+                                    if "subscript" in command:
+                                        subscript = [ss for ss in command["subscript"] if ss["command"] != 'set_sprite_sequence']
+                                        e_3216[command_index]["subscript"] = subscript
+                                self.eventscripts[3215] = e_3215
+                                self.eventscripts[3216] = e_3216
                                 
         # freestanding items
         for c in self.freestanding_item_locations:
@@ -969,13 +986,13 @@ class GameWorld:
                     action_script = model_id = c.item.model.action_script
                     for r in c.rooms:
                         ctr = 0
-                        for object_id in len(self.rooms[r]["objects"]):
+                        for object_id in range(len(self.rooms[r]["objects"])):
                             o = self.rooms[r]["objects"][object_id]
                             if ctr in c.npc_ids:
                                 self.rooms[r]["objects"][object_id]["model"] = model_id
                                 self.rooms[r]["objects"][object_id]["action_script"] = action_script
                             ctr += 1
-                            for clone_id in len(o["clones"]):
+                            for clone_id in range(len(o["clones"])):
                                 if ctr in c.npc_ids:
                                     self.rooms[r]["objects"][object_id]["clones"][clone_id]["action_offset"] = 0
                                     self.rooms[r]["objects"][object_id]["clones"][clone_id]["npc_id_offset"] = 0
@@ -1016,13 +1033,85 @@ class GameWorld:
                 for r in c.rooms:
                     jmp = new_command(c.event, 'jmp_if_7000_equals_short', [r, cmd["identifier"]])
                     grant_builders[c.event]["jumps"].append(jmp)
+            elif utils.isclass_or_instance(c, data.chests.StarHillStarPiece1):
+                # remove freestanding star if empty
+                self.eventscripts[2405].pop(0)
                 
         # finalize granter scripts
         for e in grant_builders[c.event]:
             grant_builders[e]["jumps"].append(new_command(e, "ret"))
             self.eventscripts[e] = copy.copy(grant_builders[e]["jumps"]) + copy.copy(grant_builders[e]["executions"])
 
-
+        # if star piece signal ring hints turned on, set the appropriate bit checks in each area
+        if self.settings.is_flag_value(flags.StarPieceHints, True):
+            for c in [c in self.recruitable_character_checks + self.chest_locations + self.freestanding_item_locations + self.boss_star_checks]:
+                if utils.isclass_or_instance(c.item, data.items.StarPiece):
+                    hint_event = None
+                    if c.area == Area.MariosPad:
+                        hint_event = 3887
+                    elif c.area == Area.MushroomWay:
+                        hint_event = 3888
+                    elif c.area == Area.MushroomKingdom:
+                        hint_event = 3889
+                    elif c.area == Area.BanditsWay:
+                        hint_event = 3890
+                    elif c.area == Area.KeroSewers:
+                        hint_event = 3891
+                    elif c.area == Area.MidasRiver:
+                        hint_event = 3892
+                    elif c.area == Area.TadpolePond:
+                        hint_event = 3893
+                    elif c.area == Area.RoseWay:
+                        hint_event = 3894
+                    elif c.area == Area.RoseTown:
+                        hint_event = 3895
+                    elif c.area == Area.ForestMaze:
+                        hint_event = 3896
+                    elif c.area == Area.Moleville or c.area == Area.MolevilleMines:
+                        hint_event = 3897
+                    elif c.area == Area.BoosterPass:
+                        hint_event = 3898
+                    elif c.area == Area.BoosterTower:
+                        hint_event = 3899
+                    elif c.area == Area.PipeVault:
+                        hint_event = 3900
+                    elif c.area == Area.YosterIsle:
+                        hint_event = 3901
+                    elif c.area == Area.Marrymore:
+                        hint_event = 3902
+                    elif c.area == Area.StarHill:
+                        hint_event = 3903
+                    elif c.area == Area.SeasideTown:
+                        hint_event = 3904
+                    elif c.area == Area.Sea:
+                        hint_event = 3905
+                    elif c.area == Area.SunkenShip:
+                        hint_event = 3906
+                    elif c.area == Area.LandsEnd:
+                        hint_event = 3907
+                    elif c.area == Area.BelomeTemple:
+                        hint_event = 3908
+                    elif c.area == Area.MonstroTown:
+                        hint_event = 3909
+                    elif c.area == Area.Casino:
+                        hint_event = 3910
+                    elif c.area == Area.BeanValley:
+                        hint_event = 3911
+                    elif c.area == Area.NimbusLand:
+                        hint_event = 3912
+                    elif c.area == Area.BarrelVolcano:
+                        hint_event = 3913
+                    elif c.area == Area.BowsersKeep:
+                        hint_event = 3914
+                    elif c.area == Area.Factory:
+                        hint_event = 3915
+                    elif c.area == Area.InnerFactory:
+                        hint_event = 3916
+                    if hint_event is not None:
+                        # get name of sound command
+                        sound_command = [cmd for cmd in self.eventscripts[hint_event] if cmd["command"] == 'play_sound'][0]
+                        hint_var, hint_bit = c.item.hint_bit
+                        self.eventscripts[hint_event].insert(0, new_command(hint_event, "jmp_if_bit_clear", [hint_var, hint_bit, sound_command["identifier"]]))
 
         ######### shops
 
@@ -1071,7 +1160,7 @@ class GameWorld:
                     # write dialog
                     self.replace_dialog(3847, '''[page]\n Here is the menu.[await]\n [select]  (%s%i Coins)\n [select]  (%s%i Coins)\n [select]  (No thanks)[await]''' % (menu_string_1, price_1, menu_string_2, price_2))
                     # replace the item and price values with new ones
-                    for c in len(self.eventscripts[3657]):
+                    for c in range(len(self.eventscripts[3657])):
                         cmd = self.eventscripts[3657][c]
                         if cmd[c]["command"] == "set" and cmd[c]["args"][0] == 0x70a7 and cmd[c]["args"][1] == 102:
                             cmd = self.eventscripts[3657][c]["args"][1] = rs_item_1.index
@@ -1088,7 +1177,7 @@ class GameWorld:
                     ts_item_3 = s.items[2]
                     self.replace_dialog(1217, ''' If we total that up, you've got\n [0x7000] points![await][page]\n You have more than 100 points,\n so go ahead and choose an item.[await][page]\n  [select]  (%s)\n  [select]  (%s)\n  [select]  (%s)[await]''' % (ts_item_1.item_name, ts_item_2.item_name, ts_item_3.item_name))
                     self.replace_dialog(1175, '''\n  Bring your unwanted items here![await][page]\n  We'll exchange your Mushrooms\n       and Syrups for points.[await]\n        For every 100 points\n    you'll get an item in return![await][page]\n           You can choose\n     one of the following gifts\n       to take away with you.[await][page]\n  1)“%s”\n  2)“%s”\n  3)“%s”[await]''' % (ts_item_1.item_name, ts_item_2.item_name, ts_item_3.item_name))
-                    for c in len(self.eventscripts[1636]):
+                    for c in range(len(self.eventscripts[1636])):
                         cmd = self.eventscripts[1636][c]
                         if cmd[c]["command"] == "set" and cmd[c]["args"][0] == 0x70a7 and cmd[c]["args"][1] == 144:
                             cmd = self.eventscripts[1636][c]["args"][1] = ts_item_1.index

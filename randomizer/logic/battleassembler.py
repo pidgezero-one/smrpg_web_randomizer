@@ -1,7 +1,7 @@
 from . import utils
-from .dialogs import allocate_string
+from .utils import allocate_string
 from .patch import Patch
-from randomizer.data import battlescripts
+from randomizer.data.battlescripts import scripts as bscripts
 from randomizer.data.attacks import EnemyAttack
 from randomizer.data.items import Item
 from randomizer.data.spells import Spell, CharacterSpell, EnemySpell
@@ -376,7 +376,7 @@ def assemble_battle_scripts(world):
         else:
             # This makes round tripping possible
             # Might be worth it to remove them and save on space...
-            script = battlescripts.scripts[index]
+            script = bscripts[index]
         script_bytes = BattleScriptAssember.assemble_from_tuples(script)
         script_base = allocate_string(len(script_bytes), free_list)
         offset = index * 2
@@ -386,3 +386,28 @@ def assemble_battle_scripts(world):
         patch.add_data(script_base, script_bytes)
 
     return patch
+
+
+def assemble_battle_scripts_as_slices():
+    free_list = {
+        0x3932AA: 10058, # Original battle script location
+        0x39F400: 3072,  # Lazy shell also saves scripts here
+    }
+    ptr_table_base = 0x3930AA
+
+    ptrs = []
+    bank_1 = []
+    bank_2 = []
+    for index in range(256):
+        script = bscripts[index]
+        script_bytes = BattleScriptAssember.assemble_from_tuples(script)
+        script_base = allocate_string(len(script_bytes), free_list)
+        offset = index * 2
+        script_short = script_base & 0xFFFF
+        ptrs += utils.ByteField(script_short, num_bytes=2).as_bytes()
+        if script_base >= 0x39F400:
+            bank_2 += script_bytes
+        else:
+            bank_1 += script_bytes
+
+    return ptrs, bank_1, bank_2

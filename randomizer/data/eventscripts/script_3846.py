@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_3846_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_3846_enter_area_0',
         "command": 'enter_area',
         "args": [Rooms._067_MIDAS_RIVER_BUSINESS_TRANSACTION_AREA, RadialDirections.NORTHWEST, 22, 35, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]

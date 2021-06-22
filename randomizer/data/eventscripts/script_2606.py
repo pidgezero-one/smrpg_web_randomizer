@@ -137,8 +137,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2606_start_battle_25',
-        "command": 'start_battle',
-        "args": [0x0096, 48]
+        "command": 'run_event_as_subroutine',
+        "args": [1186]
     },
     {
         "identifier": 'EVENT_2606_jmp_if_bit_clear_26',

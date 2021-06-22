@@ -6,6 +6,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_128_stop_music_0',
+        "command": 'stop_music'
+    },
+    {
+        "identifier": "EVENT_128_ret",
+        "command": "ret"
+    },
+    {
         "identifier": 'EVENT_128_summon_to_current_level_0',
         "command": 'summon_to_current_level',
         "args": [AreaObjects.MARIO]

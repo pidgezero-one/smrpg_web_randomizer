@@ -31,6 +31,11 @@ script = [
         "args": [65]
     },
     {
+        "identifier": 'EVENT_1582_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_1582_enter_area_5',
         "command": 'enter_area',
         "args": [Rooms._301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS, RadialDirections.SOUTH, 8, 100, 14, [_0x68Flags.RUN_ENTRANCE_EVENT]]

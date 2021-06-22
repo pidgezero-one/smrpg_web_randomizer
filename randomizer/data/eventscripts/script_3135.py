@@ -6,7 +6,7 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3135_clear_bit_0',
+        "identifier": 'EVENT_3135_clear_bit_0_',
         "command": 'clear_bit',
         "args": [0x707c, 5]
     },
@@ -79,12 +79,42 @@ script = [
         "command": 'reset_priority_set'
     },
     {
+        "identifier": 'EVENT_3135_jmp_if_bit_clear_7______',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7044, 7, 'EVENT_3135_run_event_as_subroutine_15']
+    },
+    {
+        "identifier": 'EVENT_3135_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_3135_run_event_as_subroutine_15',
         "command": 'run_event_as_subroutine',
         "args": [15]
     },
     {
-        "identifier": 'EVENT_3135_ret_32',
+        "identifier": 'EVENT_3135_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_3135_ret_26']
+    },
+    {
+        "identifier": 'EVENT_3135_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_3135_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_3135_ret_26']
+    },
+    {
+        "identifier": 'EVENT_3135_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3891]
+    },
+    {
+        "identifier": 'EVENT_3135_ret_26',
         "command": 'ret'
     }
 ]

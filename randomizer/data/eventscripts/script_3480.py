@@ -114,6 +114,26 @@ script = [
         "args": [80]
     },
     {
+        "identifier": 'EVENT_3480_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_3480_jmp_if_bit_set_19']
+    },
+    {
+        "identifier": 'EVENT_3480_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_3480_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_3480_jmp_if_bit_set_19']
+    },
+    {
+        "identifier": 'EVENT_3480_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3892]
+    },
+    {
         "identifier": 'EVENT_3480_jmp_if_bit_set_19',
         "command": 'jmp_if_bit_set',
         "args": [0x7096, 5, 'EVENT_3480_action_queue_async_22']

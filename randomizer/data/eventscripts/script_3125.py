@@ -16,6 +16,11 @@ script = [
         "args": [0x7018, 0x0064]
     },
     {
+        "identifier": 'EVENT_3125_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_3125_run_event_as_subroutine_2',
         "command": 'run_event_as_subroutine',
         "args": [66]

@@ -56,6 +56,16 @@ script = [
         "args": [0x70dd, 0]
     },
     {
+        "identifier": 'EVENT_14_set_9_',
+        "command": 'set',
+        "args": [0x70f8, 0]
+    },
+    {
+        "identifier": 'EVENT_14_set_9__',
+        "command": 'set',
+        "args": [0x70f9, 0]
+    },
+    {
         "identifier": 'EVENT_14_fade_in_from_black_sync_10',
         "command": 'fade_in_from_black_sync'
     },

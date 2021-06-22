@@ -15,14 +15,14 @@ script = [
         "args": [0x7043, 0]
     },
     {
-        "identifier": 'EVENT_3194_set_short_2',
-        "command": 'set_short',
-        "args": [0x700e, 0x008d]
+        "identifier": 'EVENT_3194_run_event_as_subroutine_3_',
+        "command": 'run_event_as_subroutine',
+        "args": [18]
     },
     {
         "identifier": 'EVENT_3194_run_event_as_subroutine_3',
         "command": 'run_event_as_subroutine',
-        "args": [18]
+        "args": [24]
     },
     {
         "identifier": 'EVENT_3194_action_queue_sync_4',

@@ -11,6 +11,11 @@ script = [
         "args": [65]
     },
     {
+        "identifier": 'EVENT_2055_set_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_2055_enter_area_1',
         "command": 'enter_area',
         "args": [Rooms._427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN, RadialDirections.SOUTH, 29, 46, 0, [_0x68Flags.SHOW_MESSAGE]]

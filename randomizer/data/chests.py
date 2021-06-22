@@ -1,6 +1,5 @@
 # Data module for chest data.
 
-import enum
 from randomizer.data import items
 from randomizer.data.items import ItemUnique
 from randomizer.logic.utils import isclass_or_instance
@@ -741,6 +740,11 @@ class PandoriteReward1(NPCReward):
     event = 253
     access = 2
     
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MimicsAnywhere, False):
+            self.area = locations.Area.KeroSewers
+    
     def can_access(self, inventory):
         return inventory.has_item(items.PandoriteFight)
 
@@ -753,6 +757,11 @@ class PandoriteReward2(Chest):
     event = 245
     access = 2
     
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MimicsAnywhere, False):
+            self.area = locations.Area.KeroSewers
+    
     def can_access(self, inventory):
         return inventory.has_item(items.PandoriteFight)
 
@@ -761,7 +770,11 @@ class PandoriteBoss(BossStarPiece):
     rooms = [512]
     event = 167
     
-    
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MimicsAnywhere, False):
+            self.area = locations.Area.KeroSewers
+
     def can_access(self, inventory):
         return inventory.has_item(items.PandoriteFight)
 
@@ -1076,7 +1089,7 @@ class RoseTownStore2(Chest):
 
 
 class GardenerCloud1(Chest):
-    area = locations.Area.RoseTownClouds
+    area = locations.Area.RoseTown
     description = ShuffleLocationSelector.GardenerCloud1
     rooms = [419]
     npc_ids = [0]
@@ -1090,7 +1103,7 @@ class GardenerCloud1(Chest):
 
 
 class GardenerCloud2(Chest):
-    area = locations.Area.RoseTownClouds
+    area = locations.Area.RoseTown
     description = ShuffleLocationSelector.GardenerCloud2
     rooms = [419]
     npc_ids = [1]
@@ -2303,7 +2316,7 @@ class MarrymoreCharacterSpotted(CharacterSpotted):
 class StarHillStarPiece1(BossStarPiece):
     area = locations.Area.StarHill
     description = ShuffleLocationSelector.StarHillStarPiece1
-    rooms = [157]
+    rooms = [159]
     event = 167
     item = items.StarPiece
 
@@ -2630,6 +2643,11 @@ class HidonReward1(NPCReward):
     item = items.SafetyBadge
     access = 2
     
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MimicsAnywhere, False):
+            self.area = locations.Area.SunkenShip
+    
     def can_access(self, inventory):
         return inventory.has_item(items.HidonFight)
 
@@ -2642,6 +2660,11 @@ class HidonReward2(Chest):
     item = items.Coins(Chest, 100)
     access = 2
     
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MimicsAnywhere, False):
+            self.area = locations.Area.SunkenShip
+    
     def can_access(self, inventory):
         return inventory.has_item(items.HidonFight)
 
@@ -2649,6 +2672,11 @@ class HidonBoss(BossStarPiece):
     description = ShuffleLocationSelector.HidonBoss
     rooms = [513]
     event = 167
+    
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MimicsAnywhere, False):
+            self.area = locations.Area.SunkenShip
     
     def can_access(self, inventory):
         return inventory.has_item(items.HidonFight)
@@ -3422,6 +3450,10 @@ class BoxBoyBoss(BossStarPiece):
     rooms = [514]
     event = 167
     
+    def __init__(self, world):
+        super().__init__(world)
+        if world.settings.is_flag_value(flags.MimicsAnywhere, False):
+            self.area = locations.Area.BeanValley
     
     def can_access(self, inventory):
         return inventory.has_item(items.BoxBoyFight)
@@ -5093,7 +5125,7 @@ class FactoryBoss2(BossStarPiece):
         return locations.can_access_factory(self, inventory)
 
 class FactoryToadGift(NPCReward):
-    area = locations.Area.Factory
+    area = locations.Area.InnerFactory
     description = ShuffleLocationSelector.FactoryToadGift
     rooms = [406]
     event = 253
@@ -5105,7 +5137,7 @@ class FactoryToadGift(NPCReward):
 
 class InnerFactoryBoss1(BossStarPiece):
     description = ShuffleLocationSelector.InnerFactoryBoss1
-    area = locations.Area.Factory
+    area = locations.Area.InnerFactory
     rooms = [469]
     event = 167
     
@@ -5114,7 +5146,7 @@ class InnerFactoryBoss1(BossStarPiece):
 
 class InnerFactoryBoss2(BossStarPiece):
     description = ShuffleLocationSelector.InnerFactoryBoss2
-    area = locations.Area.Factory
+    area = locations.Area.InnerFactory
     rooms = [470]
     event = 167
     
@@ -5123,7 +5155,7 @@ class InnerFactoryBoss2(BossStarPiece):
 
 class InnerFactoryBoss3(BossStarPiece):
     description = ShuffleLocationSelector.InnerFactoryBoss3
-    area = locations.Area.Factory
+    area = locations.Area.InnerFactory
     rooms = [471]
     event = 167
     
@@ -5132,7 +5164,7 @@ class InnerFactoryBoss3(BossStarPiece):
 
 class InnerFactoryBoss4(BossStarPiece):
     description = ShuffleLocationSelector.InnerFactoryBoss4
-    area = locations.Area.Factory
+    area = locations.Area.InnerFactory
     rooms = [472]
     event = 167
     
@@ -5141,7 +5173,7 @@ class InnerFactoryBoss4(BossStarPiece):
 
 class InnerFactoryBossFinal(BossStarPiece):
     description = ShuffleLocationSelector.InnerFactoryBossFinal
-    area = locations.Area.Factory
+    area = locations.Area.InnerFactory
     rooms = [496]
     event = 167
     

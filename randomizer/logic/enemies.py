@@ -334,10 +334,10 @@ def randomize_all(world):
             _randomize_formation(formation)
 
     # XP boost.
-    if world.settings.is_flag_value(flags.EXPMultiplier, EXPMultiplierOptions.Double):
+    if world.settings.is_flag_value(flags.EXPMultiplier, EXPMultiplierOptions.double):
         for enemy in world.enemies:
             enemy.xp *= 2
-    elif world.settings.is_flag_value(flags.EXPMultiplier, EXPMultiplierOptions.Triple):
+    elif world.settings.is_flag_value(flags.EXPMultiplier, EXPMultiplierOptions.triple):
         for enemy in world.enemies:
             enemy.xp *= 3
 

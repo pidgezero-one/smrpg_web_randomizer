@@ -210,6 +210,21 @@ script = [
         "args": [0x7044, 7]
     },
     {
+        "identifier": 'EVENT_2364_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_2364_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_2364_ret_26']
+    },
+    {
+        "identifier": 'EVENT_2364_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3899]
+    },
+    {
         "identifier": 'EVENT_2364_jmp_17',
         "command": 'jmp',
         "args": ['EVENT_2364_ret_26']

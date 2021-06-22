@@ -100,9 +100,9 @@ script = [
         "args": [60]
     },
     {
-        "identifier": 'EVENT_3281_start_battle_8',
-        "command": 'start_battle',
-        "args": [0x0045, 4]
+        "identifier": 'EVENT_3281_jmp_if_bit_set_18',
+        "command": 'run_event_as_subroutine',
+        "args": [1186]
     },
     {
         "identifier": 'EVENT_3281_set_bit_9',

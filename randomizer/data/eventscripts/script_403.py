@@ -6,9 +6,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_403_start_battle_0',
-        "command": 'start_battle',
-        "args": [0x000b, 28]
+        "identifier": 'EVENT_403_run_event_as_subroutine_4_',
+        "command": 'run_event_as_subroutine',
+        "args": [1190]
     },
     {
         "identifier": 'EVENT_403_set_bit_1',

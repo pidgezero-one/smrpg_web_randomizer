@@ -6,29 +6,26 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
 
+    # these commands get removed at shuffle time
     # skip bowsers keep
     {
         "identifier": 'EVENT_192_set_map_connector',
         "command": 'set_bit',
         "args": [0x707A, 3]
     },
-
-    # populate starting party
     {
         "identifier": 'EVENT_192_____leave_party_22_',
         "command": 'run_event_as_subroutine',
         "args": [187]
-    }, # remove this in prod
+    }, 
+
+
+
     {
         "identifier": 'EVENT_192_____leave_party_22',
         "command": 'leave_party',
         "args": [AreaObjects.DUMMY_0X05]
     },
-
-
-
-    # TEST
-
     # finish loading game
     {
         "identifier": 'EVENT_192___set_bit_17', 

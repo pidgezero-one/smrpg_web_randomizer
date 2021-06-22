@@ -737,3 +737,33 @@ location_table = {
 Locations = SimpleNamespace()
 for i in location_table:
     setattr(Locations, location_table[i], i)
+
+partition_buffer_table = {
+    0x00: '_3_SPRITES_PER_ROW',
+    0x01: '_4_SPRITES_PER_ROW',
+    0x02: 'TREASURE_CHEST',
+    0x03: 'EMPTY_TREASURE_CHEST',
+    0x04: 'COINS',
+    0x05: 'EMPTY_1',
+    0x06: 'EMPTY_2',
+    0x07: 'EMPTY_3',
+}
+
+PartitionBufferTypes = SimpleNamespace()
+for i in partition_buffer_table:
+    setattr(PartitionBufferTypes, partition_buffer_table[i], i)
+
+partition_space_table = {
+    0x00: '_0_BYTES',
+    0x01: '_256_BYTES',
+    0x02: '_512_BYTES',
+    0x03: '_768_BYTES',
+    0x04: '_1024_BYTES',
+    0x05: '_1280_BYTES',
+    0x06: '_1536_BYTES',
+    0x07: '_1792_BYTES',
+}
+
+PartitionMainSpace = SimpleNamespace()
+for i in partition_space_table:
+    setattr(PartitionMainSpace, partition_space_table[i], i)

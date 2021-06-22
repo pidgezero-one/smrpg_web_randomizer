@@ -4,4 +4,235 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": "EVENT_1186_current_lvl",
+        "command": 'set_7000_to_current_level'
+    },
+    {
+        "identifier": "EVENT_1186_room_24_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [24, "EVENT_1186_room_24_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_25_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [25, "EVENT_1186_room_25_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_37_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [37, "EVENT_1186_room_37_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_43_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [43, "EVENT_1186_room_43_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_190_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [190, "EVENT_1186_room_190_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_194_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [194, "EVENT_1186_room_194_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_273_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [273, "EVENT_1186_room_273_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_277_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [277, "EVENT_1186_room_277_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_283_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [283, "EVENT_1186_room_283_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_325_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [325, "EVENT_1186_room_325_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_327_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [327, "EVENT_1186_room_327_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_332_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [332, "EVENT_1186_room_332_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_469_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [469, "EVENT_1186_room_469_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_480_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [480, "EVENT_1186_room_480_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_room_481_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [481, "EVENT_1186_room_481_logic"]
+    },
+    {
+        "identifier": "EVENT_1186_cancel",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_24_logic',
+        "command": 'start_battle',
+        "args": [68, 4]
+    },
+    {
+        "identifier": "EVENT_1186_room_24_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_25_logic',
+        "command": 'start_battle',
+        "args": [69, 4]
+    },
+    {
+        "identifier": "EVENT_1186_room_25_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_37_logic',
+        "command": 'start_battle',
+        "args": [142, 12]
+    },
+    {
+        "identifier": "EVENT_1186_room_37_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_43_logic',
+        "command": 'start_battle',
+        "args": [142, 12]
+    },
+    {
+        "identifier": "EVENT_1186_room_43_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_190_logic',
+        "command": 'start_battle',
+        "args": [11, 28]
+    },
+    {
+        "identifier": "EVENT_1186_room_190_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_194_logic',
+        "command": 'start_battle',
+        "args": [142, 12]
+    },
+    {
+        "identifier": "EVENT_1186_room_194_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_273_logic',
+        "command": 'set_short',
+        "args": [0x700e, 141]
+    },
+    {
+        "identifier": "EVENT_1186_room_273_logic__",
+        "command": 'start_battle_700E'
+    },
+    {
+        "identifier": "EVENT_1186_room_273_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_277_logic',
+        "command": 'set_short',
+        "args": [0x700e, 141]
+    },
+    {
+        "identifier": "EVENT_1186_room_277_logic__",
+        "command": 'start_battle_700E'
+    },
+    {
+        "identifier": "EVENT_1186_room_277_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_283_logic',
+        "command": 'set_short',
+        "args": [0x700e, 141]
+    },
+    {
+        "identifier": "EVENT_1186_room_283_logic__",
+        "command": 'start_battle_700E'
+    },
+    {
+        "identifier": "EVENT_1186_room_283_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_325_logic',
+        "command": 'start_battle',
+        "args": [10, 15]
+    },
+    {
+        "identifier": "EVENT_1186_room_325_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_327_logic',
+        "command": 'start_battle',
+        "args": [11, 15]
+    },
+    {
+        "identifier": "EVENT_1186_room_327_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_332_logic',
+        "command": 'start_battle',
+        "args": [11, 15]
+    },
+    {
+        "identifier": "EVENT_1186_room_332_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_469_logic',
+        "command": 'start_battle',
+        "args": [150, 48]
+    },
+    {
+        "identifier": "EVENT_1186_room_469_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_480_logic',
+        "command": 'start_battle',
+        "args": [11, 11]
+    },
+    {
+        "identifier": "EVENT_1186_room_480_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_481_logic',
+        "command": 'start_battle',
+        "args": [11, 11]
+    },
+    {
+        "identifier": "EVENT_1186_room_481_end",
+        "command": 'ret'
+    },
+]

@@ -133,6 +133,26 @@ script = [
         "args": [0x709f, 5]
     },
     {
+        "identifier": 'EVENT_556_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_556_ret_40']
+    },
+    {
+        "identifier": 'EVENT_556_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_556_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_556_ret_40']
+    },
+    {
+        "identifier": 'EVENT_556_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3895]
+    },
+    {
         "identifier": 'EVENT_556_ret_40',
         "command": 'ret'
     }

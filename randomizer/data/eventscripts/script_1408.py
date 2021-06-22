@@ -42,12 +42,33 @@ script = [
     },
     {
         "identifier": 'EVENT_1408_ret_18',
-        "command": 'ret'
+        "command": 'jmp',
+        "args": ['EVENT_1408_jmp_if_bit_clear_7']
     },
     {
         "identifier": 'EVENT_1408_run_event_as_subroutine_25',
         "command": 'run_event_as_subroutine',
         "args": [81]
+    },
+    {
+        "identifier": 'EVENT_1408_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_1408_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1408_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_1408_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_1408_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1408_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3887]
     },
     {
         "identifier": 'EVENT_1408_ret_26',

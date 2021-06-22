@@ -26,6 +26,21 @@ script = [
         "args": [81]
     },
     {
+        "identifier": 'EVENT_2595_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_2595_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_2595_ret_13']
+    },
+    {
+        "identifier": 'EVENT_2595_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3915]
+    },
+    {
         "identifier": 'EVENT_2595_jmp_5',
         "command": 'jmp',
         "args": ['EVENT_2595_ret_13']

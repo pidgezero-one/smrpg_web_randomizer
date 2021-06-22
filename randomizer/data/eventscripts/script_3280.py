@@ -314,8 +314,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3280_jmp_if_bit_set_18',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7058, 5, 'EVENT_3280_start_battle_23']
+        "command": 'run_event_as_subroutine',
+        "args": [1186]
     },
     {
         "identifier": 'EVENT_3280_action_queue_sync_19',

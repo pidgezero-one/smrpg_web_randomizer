@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1677_set_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_1677_remove_from_level_0',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_1, Rooms._317_LANDS_END_DESERT_AREA_01]

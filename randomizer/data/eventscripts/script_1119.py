@@ -86,6 +86,26 @@ script = [
         "command": 'fade_in_from_black_sync'
     },
     {
+        "identifier": 'EVENT_1119_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_1119_ret_32']
+    },
+    {
+        "identifier": 'EVENT_1119_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_1119_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_1119_ret_32']
+    },
+    {
+        "identifier": 'EVENT_1119_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3904]
+    },
+    {
         "identifier": 'EVENT_1119_ret_32',
         "command": 'ret'
     },
@@ -308,6 +328,26 @@ script = [
     {
         "identifier": 'EVENT_1119_fade_in_from_black_async_41',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_1119_jmp_if_bit_clear_7__',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_1119_action_queue_async_42']
+    },
+    {
+        "identifier": 'EVENT_1119_run_event_as_subroutine_25___',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_1119_jmp_if_bit_clear_7___',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_1119_action_queue_async_42']
+    },
+    {
+        "identifier": 'EVENT_1119_run_event_as_subroutine_25____',
+        "command": 'run_event_as_subroutine',
+        "args": [3904]
     },
     {
         "identifier": 'EVENT_1119_action_queue_async_42',

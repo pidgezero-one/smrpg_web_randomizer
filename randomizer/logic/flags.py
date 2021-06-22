@@ -225,7 +225,9 @@ class StarPiecesRestrictedByArea(BooleanFlag):
 
 class StarPieceHints(BooleanFlag):
     name = 'Signal Ring hints at star pieces'
-    description = '''If equipped, the Signal Ring will play a sound when you enter a world area that contains a Star Piece.'''
+    description = '''If enabled, the Signal Ring (if equipped to your active party) will play a sound when you enter a world area that contains a Star Piece.  
+    
+    The Signal Ring will only sound off when you enter an area from the World Map, from loading a save, or from an area warp (ex: the Kero Sewers - Land's End pipe). Therefore, the chime does not necessarily indicate that your current room contains a star piece, but rather that at least one room in the area does.'''
     modes = ['open']
     default = False
 

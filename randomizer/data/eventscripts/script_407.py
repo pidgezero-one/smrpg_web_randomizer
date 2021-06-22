@@ -22,8 +22,8 @@ script = [
     },
     {
         "identifier": 'EVENT_407_start_battle_3',
-        "command": 'start_battle',
-        "args": [0x000b, 11]
+        "command": 'run_event_as_subroutine',
+        "args": [1186]
     },
     {
         "identifier": 'EVENT_407_run_event_as_subroutine_4',

@@ -6,6 +6,70 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1584_set_bit_0',
+        "command": 'jmp_if_bit_set',
+        "args": [0x708A, 0, 'EVENT_1584_summon_to_level_248']
+    },
+    {
+        "identifier": 'EVENT_1584_action_queue_async_4_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1584_action_queue_async_4_SUBSCRIPT_shift_east_pixels_0',
+                "command": 'shift_west_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_1584_action_queue_async_4_SUBSCRIPT_shift_north_pixels_1',
+                "command": 'shift_south_pixels',
+                "args": [8]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1584_action_queue_async_4__',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1584_action_queue_async_4_SUBSCRIPT_shift_east_pixels_0',
+                "command": 'shift_west_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_1584_action_queue_async_4_SUBSCRIPT_shift_north_pixels_1',
+                "command": 'shift_south_pixels',
+                "args": [8]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1584_jmp_0',
+        "command": 'jmp',
+        "args": ['EVENT_1584_set_0']
+    },
+    {
+        "identifier": 'EVENT_1584_summon_to_level_248',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, Rooms._427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN]
+    },
+    {
+        "identifier": 'EVENT_1584_summon_to_level_248__',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_1]
+    },
+    {
+        "identifier": 'EVENT_1584_summon_to_level_248_',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_2, Rooms._427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN]
+    },
+    {
+        "identifier": 'EVENT_1584_summon_to_level_248___',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_2]
+    },
+    {
         "identifier": 'EVENT_1584_set_0',
         "command": 'set',
         "args": [0x70df, 37]
@@ -36,12 +100,13 @@ script = [
         "args": [0x7044, 6, 'EVENT_1584_set_bit_8']
     },
     {
-        "identifier": 'EVENT_1584_fade_in_from_black_async_6',
+        "identifier": 'EVENT_1584_fade_in_from_black_sync_44___',
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_1584_ret_7',
-        "command": 'ret'
+        "identifier": 'EVENT_1584_jmp_0_',
+        "command": 'jmp',
+        "args": ['EVENT_1584_jmp_if_bit_clear_7']
     },
     {
         "identifier": 'EVENT_1584_set_bit_8',
@@ -228,7 +293,27 @@ script = [
         "args": [AreaObjects.MARIO, 10]
     },
     {
-        "identifier": 'EVENT_1584_ret_46',
+        "identifier": 'EVENT_1584_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_1584_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1584_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_1584_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_1584_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1584_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3908]
+    },
+    {
+        "identifier": 'EVENT_1584_ret_26',
         "command": 'ret'
     }
 ]

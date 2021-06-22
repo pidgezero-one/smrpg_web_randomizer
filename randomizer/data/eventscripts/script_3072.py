@@ -237,7 +237,7 @@ script = [
     {
         "identifier": 'EVENT_3072_check_21_bosses',
         "command": 'mem_compare',
-        "args": [0x70E6, 21]
+        "args": [0x70E3, 21]
     },
     {
         "identifier": 'EVENT_3072_jmp_if_21',
@@ -247,7 +247,7 @@ script = [
     {
         "identifier": 'EVENT_3072_check_15_bosses',
         "command": 'mem_compare',
-        "args": [0x70E6, 15]
+        "args": [0x70E3, 15]
     },
     {
         "identifier": 'EVENT_3072_jmp_if_15',
@@ -257,7 +257,7 @@ script = [
     {
         "identifier": 'EVENT_3072_check_10_bosses',
         "command": 'mem_compare',
-        "args": [0x70E6, 10]
+        "args": [0x70E3, 10]
     },
     {
         "identifier": 'EVENT_3072_jmp_if_10',
@@ -267,7 +267,7 @@ script = [
     {
         "identifier": 'EVENT_3072_check_6_bosses',
         "command": 'mem_compare',
-        "args": [0x70E6, 6]
+        "args": [0x70E3, 6]
     },
     {
         "identifier": 'EVENT_3072_jmp_if_6',
@@ -277,7 +277,7 @@ script = [
     {
         "identifier": 'EVENT_3072_check_3_bosses',
         "command": 'mem_compare',
-        "args": [0x70E6, 3]
+        "args": [0x70E3, 3]
     },
     {
         "identifier": 'EVENT_3072_jmp_if_3',
@@ -287,7 +287,7 @@ script = [
     {
         "identifier": 'EVENT_3072_check_1_bosses',
         "command": 'mem_compare',
-        "args": [0x70E6, 1]
+        "args": [0x70E3, 1]
     },
     {
         "identifier": 'EVENT_3072_jmp_if_1',

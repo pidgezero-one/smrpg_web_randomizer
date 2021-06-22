@@ -338,10 +338,10 @@ def patch_overworld_bosses(world):
 
 
                 # add preloaders to world scripts
-                for script_id in len(preloaders):
+                for script_id in range(len(preloaders)):
                     preloader_script = []
 
-                    for room_id in len(preloaders[script_id]):
+                    for room_id in range(len(preloaders[script_id])):
                         preloader = preloaders[script_id][room_id]
                         if preloader is not None:
                             jump_target = preloader[0]["identifier"]

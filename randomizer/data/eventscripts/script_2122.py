@@ -16,13 +16,8 @@ script = [
         "args": [AreaObjects.NPC_9]
     },
     {
-        "identifier": 'EVENT_2122_set_short_2',
-        "command": 'set_short',
-        "args": [0x700a, 0x00d2]
-    },
-    {
         "identifier": 'EVENT_2122_jmp_to_event_3',
         "command": 'jmp_to_event',
-        "args": [720]
+        "args": [168]
     }
 ]

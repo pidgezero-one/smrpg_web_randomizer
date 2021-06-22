@@ -130,8 +130,27 @@ script = [
     },
     {
         "identifier": 'EVENT_2430_jmp_to_event_28',
-        "command": 'jmp_to_event',
+        "command": 'run_event_as_subroutine',
         "args": [81]
+    },
+    {
+        "identifier": 'EVENT_2430_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_2430_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_2430_ret_26']
+    },
+    {
+        "identifier": 'EVENT_2430_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3896]
+    },
+    {
+        "identifier": 'EVENT_2430_ret_26',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_2430_fade_in_from_black_async_29',

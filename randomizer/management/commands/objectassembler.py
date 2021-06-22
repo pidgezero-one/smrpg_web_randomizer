@@ -4,7 +4,7 @@ from randomizer.data.roomobjects.roomobjects import rooms
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        npcs, eventtiles, exits = RoomObjects.assemble_from_table(rooms)
+        npcs, eventtiles, exits, partitions = RoomObjects.assemble_from_table(rooms)
 
         allnpcbytes = npcs[0] + npcs[1]
         print("combined length", hex(len(allnpcbytes)), len(allnpcbytes))
@@ -26,4 +26,8 @@ class Command(BaseCommand):
 
         f = open(f'write_to_0x1D2D64.img', 'wb')
         f.write(allexitbytes)
+        f.close()
+
+        f = open(f'write_to_0x1DDE00.img', 'wb')
+        f.write(partitions)
         f.close()

@@ -28,8 +28,42 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_561_jmp_if_bit_clear_7______',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7044, 7, 'EVENT_561_jmp_to_event_3']
+    },
+    {
+        "identifier": 'EVENT_561_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_561_jmp_to_event_3',
-        "command": 'jmp_to_event',
+        "command": 'run_event_as_subroutine',
         "args": [265]
+    },
+    {
+        "identifier": 'EVENT_561_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_561_ret_7']
+    },
+    {
+        "identifier": 'EVENT_561_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_561_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_561_ret_7']
+    },
+    {
+        "identifier": 'EVENT_561_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3895]
+    },
+    {
+        "identifier": 'EVENT_561_ret_7',
+        "command": 'ret'
     }
 ]

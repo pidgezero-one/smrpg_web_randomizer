@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1768_summon_to_level_0',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_0, Rooms._396_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_2F]
-    },
-    {
         "identifier": 'EVENT_1768_start_battle_229',
         "command": 'run_event_as_subroutine',
         "args": [354]
@@ -114,8 +109,13 @@ script = [
     },
     {
         "identifier": 'EVENT_1768_summon_to_level_248',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_1, Rooms._324_MONSTRO_TOWN_OUTSIDE]
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, Rooms._427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN]
+    },
+    {
+        "identifier": 'EVENT_1768_summon_to_level_248_',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_2, Rooms._427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN]
     },
     {
         "identifier": 'EVENT_1768_summon_to_level__248',

@@ -125,7 +125,7 @@ END_TITLES_DELAY = 40
 DEV_MESSAGES = [
     ('DONT TRY IT...ALANIM.', 'I ALREADY DID IT.', '   PAST ALANIM'),
     ('NOW TRY IT', 'BLINDFOLDED', '     PATCDR'),
-    ('I KEPT MY WORD.', '', '      PIDGE'),
+    ('I KEPT MY WORD... SORTA.', '', '      PIDGE'),
 ]
 
 # Takes world because everything does.
@@ -457,6 +457,17 @@ def update_credits(world):
     credits.add_credit(0x80, 0x80, 0xc0, dev_line1)
     credits.add_credit(0x80, 0x40, 0x81, dev_line2)
     credits.add_credit(0x80, 0x00, 0xc2, dev_line3)
+
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, 'DEDICATED IN MEMORY OF')
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xc0, 'TINYWETBLANKET')
+    credits.add_credit(0x80, 0x40, 0x81, 'WE MISS YOU MIKAYLA')
+    credits.add_credit(0x80, 0x00, 0xc2, 'THANK YOU FOR EVERYTHING')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
 
     credits.end_thing(END_CREDITS_DELAY_1) # Yeah, my abstraction breaks at the end.
 

@@ -213,7 +213,7 @@ def randomize_all(world):
                         # Do not raise King Bomb's stats more than normal.
                         no_raise = isinstance(enemy, enemies.KingBomb)
                         # dont raise def on jinx clone or bahamutt, gets ridiculous and or boring. attack tho, learn 2 block
-                        no_raise_defense = isinstance(enemy, enemies.Bahamutt) or isinstance(enemy, enemies.JinxClone)
+                        no_raise_defense = isinstance(enemy, enemies.BahamuttMagikoopa) or isinstance(enemy, enemies.BahamuttChester) or isinstance(enemy, enemies.JinxClone)
 
 
                         enemy.hp = min(int(round(stats['hp'] * enemy.ratio_hp)), enemy.hp if no_raise else 65535)
@@ -272,25 +272,6 @@ def randomize_all(world):
                     location.formation.members[2].x_pos = 0
                     location.formation.members[2].y_pos = 255
 
-
-
-            # *** Certain formation changes necessary for boss shuffle.
-
-            # Formation 368 is a solo Mad Mallet fight before the factory boss rush.
-            # These enemies need to be changed to some other factory enemies when doing boss shuffle.
-            # TODO: See if we can dupe Mad Mallet over an unused enemy and use that here instead
-            # See if we can do that for Bahamutt too, and Snifits
-            factory_enemies = [
-                enemies.LilBoo,
-                enemies.MachineMadeShyster,
-                enemies.Puppox,
-                enemies.Doppel,
-                enemies.Hippopo,
-            ]
-            formation = world.get_enemy_formation_by_index(368)
-            for member in formation.members:
-                choices = [e for e in factory_enemies if not e.one_per_battle or e not in formation.enemies]
-                member.enemy = random.choice(choices)
 
 
     # *** Make sure certain enemies always have max speed for required battle scripts!

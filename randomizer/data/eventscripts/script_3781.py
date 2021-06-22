@@ -72,6 +72,21 @@ script = [
         "args": [0x70df, 49]
     },
     {
+        "identifier": 'EVENT_3781_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_3781_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_3781_ret_12']
+    },
+    {
+        "identifier": 'EVENT_3781_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3912]
+    },
+    {
         "identifier": 'EVENT_3781_ret_12',
         "command": 'ret'
     }

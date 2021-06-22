@@ -274,8 +274,8 @@ script = [
     },
     {
         "identifier": 'EVENT_381_start_battle_23',
-        "command": 'start_battle',
-        "args": [0x000b, 15]
+        "command": 'run_event_as_subroutine',
+        "args": [1186]
     },
     {
         "identifier": 'EVENT_381_set_bit_24',

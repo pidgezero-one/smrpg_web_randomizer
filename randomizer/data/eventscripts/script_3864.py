@@ -22,7 +22,26 @@ script = [
     },
     {
         "identifier": 'EVENT_3864_jmp_to_event_3',
-        "command": 'jmp_to_event',
+        "command": 'run_event_as_subroutine',
         "args": [282]
+    },
+    {
+        "identifier": 'EVENT_3864_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_3864_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_3864_ret_4']
+    },
+    {
+        "identifier": 'EVENT_3864_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3912]
+    },
+    {
+        "identifier": 'EVENT_3864_ret_4',
+        "command": 'ret'
     }
 ]

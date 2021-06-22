@@ -306,7 +306,7 @@ script = [
     {
         "identifier": 'EVENT_3600_jmp_45',
         "command": 'jmp',
-        "args": ['EVENT_3600_run_dialog_47']
+        "args": ['EVENT_3600_play_sound_48']
     },
     {
         "identifier": 'EVENT_3600_action_queue_async_46',
@@ -322,11 +322,6 @@ script = [
                 "command": 'face_northwest'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_3600_run_dialog_47',
-        "command": 'run_dialog',
-        "args": [892, AreaObjects.NPC_1, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3600_play_sound_48',
@@ -1747,7 +1742,7 @@ script = [
     {
         "identifier": 'EVENT_3600_pause_265',
         "command": 'pause',
-        "args": [10]
+        "args": [60]
     },
     {
         "identifier": 'EVENT_3600_set_action_script_async_266',

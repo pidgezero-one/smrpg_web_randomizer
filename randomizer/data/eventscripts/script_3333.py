@@ -22,7 +22,7 @@ script = [
     {
         "identifier": 'EVENT_3333_jmp_if_7000_equals_short_3',
         "command": 'jmp_if_7000_equals_short',
-        "args": [354, 'EVENT_3333_run_background_event_5']
+        "args": [354, 'EVENT_3333_run_background_event_5_']
     },
     {
         "identifier": 'EVENT_3333_action_queue_async_4',
@@ -57,6 +57,35 @@ script = [
     },
     {
         "identifier": 'EVENT_3333_ret_6',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3333_run_background_event_5_',
+        "command": 'run_background_event',
+        "args": [3329, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
+    },
+    {
+        "identifier": 'EVENT_3333_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_3333_ret_6_']
+    },
+    {
+        "identifier": 'EVENT_3333_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_3333_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_3333_ret_6_']
+    },
+    {
+        "identifier": 'EVENT_3333_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3913]
+    },
+    {
+        "identifier": 'EVENT_3333_ret_6_',
         "command": 'ret'
     }
 ]

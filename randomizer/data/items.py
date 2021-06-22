@@ -145,6 +145,9 @@ class Item:
     def __repr__(self):
         return str(self)
 
+    def get_chest_event(self, parent):
+        return self.chest_event
+
     @property
     def name(self):
         return self.__class__.__name__
@@ -1962,7 +1965,7 @@ class SignalRing(RegularItem):
     price = 600
     rare = True
     model = overworld_items["ring"]
-    unique = ItemUnique.BalancedOnly
+    unique = ItemUnique.Always
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Treasure Beacon”!\n I wonder what it can help you find?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3186,6 +3189,22 @@ class Coins(MiscReward):
     quick_chest_event = 3080
     npc_event = 159
 
+    # coins and multi frog coins need 6 different events
+    # because they run on per-chest counters (0x70DA-0x70DD and 0x70F8-0x70F9)
+    def get_chest_event(self, parent):
+        if parent == 246:
+            return 3401
+        elif parent == 245:
+            return 3402
+        elif parent == 244:
+            return 3403
+        elif parent == 243:
+            return 3404
+        elif parent == 242:
+            return 3405
+        else:
+            return 3074
+
     def __init__(self, world, amount):
         """
 
@@ -3266,6 +3285,7 @@ class InfiniteCoins(MiscReward):
 
 
 class StarPiece(MiscReward):
+    hint_bit = None
     can_be_key = True
     index = 230
     description = 'Star Hunt star piece'
@@ -3285,6 +3305,27 @@ class StarPiece(MiscReward):
         (2914,
          ''' Item #3: A “Shooting Star”.\n It's sure to make all your wishes\n come true.[await]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]'''),
     ]
+
+class StarPiece1(StarPiece):
+    hint_bit = (0x7081, 5)
+
+class StarPiece2(StarPiece):
+    hint_bit = (0x7081, 6)
+
+class StarPiece3(StarPiece):
+    hint_bit = (0x7082, 1)
+
+class StarPiece4(StarPiece):
+    hint_bit = (0x7082, 2)
+
+class StarPiece5(StarPiece):
+    hint_bit = (0x7084, 4)
+
+class StarPiece6(StarPiece):
+    hint_bit = (0x7085, 5)
+
+class StarPiece7(StarPiece):
+    hint_bit = (0x7085, 6)
 
 class Nothing(MiscReward):
     chest_event = 3081
@@ -3335,6 +3376,20 @@ class MultiFrogCoin(MiscReward):
     quick_chest_event = 3082
     npc_event = 158
     chest_70A7_upper = 0
+
+    def get_chest_event(self, parent):
+        if parent == 246:
+            return 3406
+        elif parent == 245:
+            return 3407
+        elif parent == 244:
+            return 3408
+        elif parent == 243:
+            return 3409
+        elif parent == 242:
+            return 3410
+        else:
+            return 3082
 
     def __init__(self, world, amount):
         """
@@ -3617,13 +3672,10 @@ def get_default_items(world):
         CastleKey1(world),
         CastleKey2(world),
         BambinoBomb(world),
-        SheepAttack(world),
         RoomKey(world),
         ElderKey(world),
         ShedKey(world),
-        LambsLure(world),
         FrightBomb(world),
-        MysteryEgg(world),
         BeetleBox(world),
         BeetleBox2(world),
         LuckyJewel(world),

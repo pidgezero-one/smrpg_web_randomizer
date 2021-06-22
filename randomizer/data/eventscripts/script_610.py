@@ -169,11 +169,8 @@ script = [
     },
     {
         "identifier": 'EVENT_610_fade_in_from_black_async_31',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_610_ret_32',
-        "command": 'ret'
+        "command": 'jmp',
+        "args": ['EVENT_610_fade_in_from_black_async_42']
     },
     {
         "identifier": 'EVENT_610_action_queue_sync_33',
@@ -270,7 +267,27 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_610_ret_43',
+        "identifier": 'EVENT_610_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_610_ret_26']
+    },
+    {
+        "identifier": 'EVENT_610_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_610_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_610_ret_26']
+    },
+    {
+        "identifier": 'EVENT_610_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3902]
+    },
+    {
+        "identifier": 'EVENT_610_ret_26',
         "command": 'ret'
     }
 ]

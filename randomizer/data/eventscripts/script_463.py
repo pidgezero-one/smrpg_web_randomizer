@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'EVENT_463_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x7085, 3, 'EVENT_463_run_dialog_20']
+        "args": [0x7085, 3, 'EVENT_463_store_item_amount_7000_21']
     },
     {
         "identifier": 'EVENT_463_jmp_if_bit_set_6',
@@ -79,11 +79,6 @@ script = [
         "command": 'ret'
     },
     {
-        "identifier": 'EVENT_463_run_dialog_20',
-        "command": 'run_dialog',
-        "args": [904, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
         "identifier": 'EVENT_463_store_item_amount_7000_21',
         "command": 'store_item_amount_7000',
         "args": [items.YoshiCookie]
@@ -107,6 +102,11 @@ script = [
         "identifier": 'EVENT_463_jmp_if_7000_equals_short_25',
         "command": 'jmp_if_7000_equals_short',
         "args": [0, 'EVENT_463_play_sound_30']
+    },
+    {
+        "identifier": 'EVENT_463_run_dialog_20',
+        "command": 'run_dialog',
+        "args": [904, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_463_close_dialog_26',

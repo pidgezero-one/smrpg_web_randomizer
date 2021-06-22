@@ -3592,7 +3592,7 @@ models[155] = {
   "byte6_bit2": False
 } # 0x1dbc3d
 models[156] = {
-  "sprite": SpriteName._256_TERRAPIN,
+  "sprite": SpriteName._237_TERRAPIN_WALKING,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -5892,7 +5892,7 @@ models[255] = {
   "byte6_bit2": False
 } # 0x1dbef9
 models[256] = {
-  "sprite": SpriteName._256_TERRAPIN,
+  "sprite": SpriteName._237_TERRAPIN_WALKING,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -8859,16 +8859,16 @@ models[384] = {
   "byte6_bit2": True
 } # 0x1dc280
 models[385] = {
-  "sprite": SpriteName._385___NOTHING,
+  "sprite": SpriteName._39_RED_SCARECROW,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
-  "show_shadow": False,
+  "show_shadow": True,
   "shadow": ShadowSize._00_OVAL_SMALL,
-  "y_pixel_shift": 1,
-  "acute_axis": 7,
-  "obtuse_axis": 7,
-  "height": 13,
+  "y_pixel_shift": 0,
+  "acute_axis": 5,
+  "obtuse_axis": 5,
+  "height": 12,
   "vram_store": VramStore._00_SWSE_NWNE,
   "vram_size": 0,
   "cannot_clone": False,
@@ -8877,21 +8877,21 @@ models[385] = {
   "byte2_bit2": False,
   "byte2_bit3": False,
   "byte2_bit4": False,
-  "byte5_bit6": True,
-  "byte5_bit7": True,
-  "byte6_bit2": True
+  "byte5_bit6": False,
+  "byte5_bit7": False,
+  "byte6_bit2": False
 } # 0x1dc287
 models[386] = {
-  "sprite": SpriteName._386___NOTHING,
+  "sprite": SpriteName._786_WIND_CRYSTAL,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
-  "show_shadow": False,
+  "show_shadow": True,
   "shadow": ShadowSize._00_OVAL_SMALL,
-  "y_pixel_shift": 1,
-  "acute_axis": 7,
-  "obtuse_axis": 7,
-  "height": 13,
+  "y_pixel_shift": 0,
+  "acute_axis": 5,
+  "obtuse_axis": 5,
+  "height": 12,
   "vram_store": VramStore._00_SWSE_NWNE,
   "vram_size": 0,
   "cannot_clone": False,
@@ -8900,9 +8900,9 @@ models[386] = {
   "byte2_bit2": False,
   "byte2_bit3": False,
   "byte2_bit4": False,
-  "byte5_bit6": True,
-  "byte5_bit7": True,
-  "byte6_bit2": True
+  "byte5_bit6": False,
+  "byte5_bit7": False,
+  "byte6_bit2": False
 } # 0x1dc28e
 models[387] = {
   "sprite": SpriteName._387___NOTHING,
@@ -8951,7 +8951,7 @@ models[388] = {
   "byte6_bit2": False
 } # 0x1dc29c
 models[389] = {
-  "sprite": SpriteName._389___LITTLE_BIRD,
+  "sprite": SpriteName._777_STAR_EGG_LITTLE_BROWN_BIRD,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -10009,23 +10009,23 @@ models[434] = {
   "byte6_bit2": False
 } # 0x1dc3de
 models[435] = {
-  "sprite": SpriteName._434_ZEOSTAR,
+  "sprite": SpriteName._789_WATER_CRYSTAL,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
   "show_shadow": True,
-  "shadow": ShadowSize._01_OVAL_MED,
-  "y_pixel_shift": -4,
-  "acute_axis": 6,
-  "obtuse_axis": 6,
-  "height": 5,
-  "vram_store": VramStore._02_SWSE,
+  "shadow": ShadowSize._00_OVAL_SMALL,
+  "y_pixel_shift": 0,
+  "acute_axis": 5,
+  "obtuse_axis": 5,
+  "height": 12,
+  "vram_store": VramStore._00_SWSE_NWNE,
   "vram_size": 0,
   "cannot_clone": False,
-  "byte2_bit0": True,
+  "byte2_bit0": False,
   "byte2_bit1": False,
   "byte2_bit2": False,
-  "byte2_bit3": True,
+  "byte2_bit3": False,
   "byte2_bit4": False,
   "byte5_bit6": False,
   "byte5_bit7": False,
@@ -10515,7 +10515,7 @@ models[456] = {
   "byte6_bit2": False
 } # 0x1dc478
 models[457] = {
-  "sprite": SpriteName._457___BELOME,
+  "sprite": SpriteName._455_BELOME_1ST_TIME,
   "priority_0": True,
   "priority_1": True,
   "priority_2": False,
@@ -11182,7 +11182,7 @@ models[485] = {
   "byte6_bit2": False
 } # 0x1dc543
 models[486] = {
-  "sprite": SpriteName._241_BOWYER,
+  "sprite": SpriteName._486_BOWYER,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -11228,19 +11228,19 @@ models[487] = {
   "byte6_bit2": False
 } # 0x1dc551
 models[488] = {
-  "sprite": SpriteName._488___EXOR_MOUTH,
-  "priority_0": True,
-  "priority_1": True,
-  "priority_2": False,
-  "show_shadow": False,
-  "shadow": ShadowSize._00_OVAL_SMALL,
-  "y_pixel_shift": 1,
-  "acute_axis": 11,
-  "obtuse_axis": 11,
-  "height": 13,
-  "vram_store": VramStore._02_SWSE,
-  "vram_size": 0,
-  "cannot_clone": False,
+  "sprite": SpriteName._545_THROWN_HAMMER,
+  "priority_0": False,
+  "priority_1": False,
+  "priority_2": True,
+  "show_shadow": True,
+  "shadow": ShadowSize._01_OVAL_MED,
+  "y_pixel_shift": 0,
+  "acute_axis": 5,
+  "obtuse_axis": 4,
+  "height": 12,
+  "vram_store": VramStore._07_ALL_DIRECTIONS,
+  "vram_size": 2,
+  "cannot_clone": True,
   "byte2_bit0": False,
   "byte2_bit1": False,
   "byte2_bit2": False,
@@ -11347,15 +11347,15 @@ models[493] = {
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
-  "show_shadow": True,
-  "shadow": ShadowSize._02_OVAL_BIG,
+  "show_shadow": False,
+  "shadow": ShadowSize._00_OVAL_SMALL,
   "y_pixel_shift": 1,
-  "acute_axis": 9,
-  "obtuse_axis": 9,
-  "height": 15,
-  "vram_store": VramStore._02_SWSE,
-  "vram_size": 1,
-  "cannot_clone": True,
+  "acute_axis": 7,
+  "obtuse_axis": 7,
+  "height": 13,
+  "vram_store": VramStore._00_SWSE_NWNE,
+  "vram_size": 0,
+  "cannot_clone": False,
   "byte2_bit0": False,
   "byte2_bit1": False,
   "byte2_bit2": False,
@@ -11389,7 +11389,7 @@ models[494] = {
   "byte6_bit2": False
 } # 0x1dc582
 models[495] = {
-  "sprite": SpriteName._389___LITTLE_BIRD,
+  "sprite": SpriteName._777_STAR_EGG_LITTLE_BROWN_BIRD,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -11439,15 +11439,15 @@ models[497] = {
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
-  "show_shadow": True,
-  "shadow": ShadowSize._02_OVAL_BIG,
+  "show_shadow": False,
+  "shadow": ShadowSize._00_OVAL_SMALL,
   "y_pixel_shift": 1,
-  "acute_axis": 9,
-  "obtuse_axis": 9,
-  "height": 15,
-  "vram_store": VramStore._02_SWSE,
-  "vram_size": 1,
-  "cannot_clone": True,
+  "acute_axis": 7,
+  "obtuse_axis": 7,
+  "height": 13,
+  "vram_store": VramStore._00_SWSE_NWNE,
+  "vram_size": 0,
+  "cannot_clone": False,
   "byte2_bit0": False,
   "byte2_bit1": False,
   "byte2_bit2": False,

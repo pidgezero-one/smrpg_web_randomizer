@@ -107,6 +107,11 @@ script = [
         "args": [0x7096, 5]
     },
     {
+        "identifier": 'EVENT_1622_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_1622_enter_area_9',
         "command": 'enter_area',
         "args": [Rooms._069_MIDAS_RIVER_WATERFALL, RadialDirections.SOUTH, 9, 108, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]

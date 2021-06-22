@@ -41,6 +41,11 @@ script = [
         "args": [[]]
     },
     {
+        "identifier": 'EVENT_3206_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_3206_enter_area_7',
         "command": 'enter_area',
         "args": [Rooms._160_SUNKEN_SHIP_AREA_01, RadialDirections.SOUTH, 4, 18, 8, [_0x68Flags.RUN_ENTRANCE_EVENT]]

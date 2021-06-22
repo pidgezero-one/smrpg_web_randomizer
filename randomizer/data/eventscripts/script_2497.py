@@ -252,11 +252,6 @@ script = [
         "args": [30]
     },
     {
-        "identifier": 'EVENT_2497_____remove_from_level_252',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._396_MONSTRO_TOWN_MONSTERMAMAS_HOUSE_2F]
-    },
-    {
         "identifier": 'EVENT_2497______remove_from_level_173',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_1, Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE]

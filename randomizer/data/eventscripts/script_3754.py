@@ -10,6 +10,11 @@ script = [
         "command": 'fade_out_to_black_async'
     },
     {
+        "identifier": 'EVENT_3754_clear_bit_0',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
         "identifier": 'EVENT_3754_open_volcano',
         "command": 'set_bit',
         "args": [0x7070, 1]

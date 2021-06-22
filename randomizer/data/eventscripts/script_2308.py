@@ -95,6 +95,26 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
+        "identifier": 'EVENT_2308_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_2308_ret_38']
+    },
+    {
+        "identifier": 'EVENT_2308_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_2308_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_2308_ret_38']
+    },
+    {
+        "identifier": 'EVENT_2308_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3898]
+    },
+    {
         "identifier": 'EVENT_2308_ret_38',
         "command": 'ret'
     }

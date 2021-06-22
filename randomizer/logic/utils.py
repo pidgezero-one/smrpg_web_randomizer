@@ -185,3 +185,14 @@ def split_camel_case(string):
 
     """
     return re.sub(r'(?!^)([A-Z0-9][a-z]*)', r' \1', string)
+    
+def allocate_string(string_length, free_list):
+    for base in sorted(free_list, key=lambda x: free_list[x]):
+        if free_list[base] >= string_length:
+            size = free_list[base]
+            del free_list[base]
+            free_list[base+string_length] = size - string_length
+            return base
+
+    # If we get this far, we couldn't find space for the string.
+    return None

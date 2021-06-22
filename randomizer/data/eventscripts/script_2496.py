@@ -271,11 +271,6 @@ script = [
         "args": [0x7068, 4]
     },
     {
-        "identifier": 'EVENT_2496_remove_from_level_62',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._324_MONSTRO_TOWN_OUTSIDE]
-    },
-    {
         "identifier": 'EVENT_2496_remove_from_level_63',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_3, Rooms._021_MUSHROOM_KINGDOM_CASTLE_BRANCH_ROOM_TO_VAULTGUEST_ROOM]
@@ -432,6 +427,16 @@ script = [
         "identifier": 'EVENT_2496___set_60',
         "command": 'set',
         "args": [0x70dd, 0]
+    },
+    {
+        "identifier": 'EVENT_2496_set_9_',
+        "command": 'set',
+        "args": [0x70f8, 0]
+    },
+    {
+        "identifier": 'EVENT_2496_set_9__',
+        "command": 'set',
+        "args": [0x70f9, 0]
     },
     {
         "identifier": 'EVENT_2496___stop_music_FDA2_61',

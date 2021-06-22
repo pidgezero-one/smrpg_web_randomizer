@@ -806,8 +806,8 @@ dialog_data[478] = ''' The world around us is always
  changing.[await][pause] It is wise to visit places
  more than once, especially if
  something major has happened.[await][page]
- "One man's trash is another man's
- treasure."[await][pause] If you find items in your
+ “One man's trash is another man's
+ treasure.”[await][pause] If you find items in your
  journey that seem useless, someone
  may be seeking them in the future.[await]'''
 dialog_data[479] = '''[await]'''

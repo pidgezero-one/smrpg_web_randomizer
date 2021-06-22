@@ -69,11 +69,8 @@ script = [
     },
     {
         "identifier": 'EVENT_1328_fade_in_from_black_async_4',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_1328_ret_5',
-        "command": 'ret'
+        "command": 'jmp_to_event',
+        "args": ['EVENT_1328_fade_in_from_black_async_4_']
     },
     {
         "identifier": 'EVENT_1328_remove_from_current_level_3_',
@@ -85,7 +82,27 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_1328_ret_5_',
+        "identifier": 'EVENT_1328_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_1328_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1328_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_1328_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_1328_ret_26']
+    },
+    {
+        "identifier": 'EVENT_1328_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3899]
+    },
+    {
+        "identifier": 'EVENT_1328_ret_26',
         "command": 'ret'
     }
 ]

@@ -31,9 +31,28 @@ script = [
         "args": [0x7044, 6]
     },
     {
-        "identifier": 'EVENT_3284_jmp_to_event_5',
-        "command": 'jmp_to_event',
+        "identifier": 'EVENT_3284_jmp_to_event_13',
+        "command": 'run_event_as_subroutine',
         "args": [81]
+    },
+    {
+        "identifier": 'EVENT_3284_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_3284_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_3284_ret_26']
+    },
+    {
+        "identifier": 'EVENT_3284_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3906]
+    },
+    {
+        "identifier": 'EVENT_3284_ret_26',
+        "command": 'ret'
     },
     {
         "identifier": 'EVENT_3284_clear_bit_6',
@@ -74,6 +93,16 @@ script = [
         "identifier": 'EVENT_3284_set_13',
         "command": 'set',
         "args": [0x70dd, 0]
+    },
+    {
+        "identifier": 'EVENT_3284_set_9_',
+        "command": 'set',
+        "args": [0x70f8, 0]
+    },
+    {
+        "identifier": 'EVENT_3284_set_9__',
+        "command": 'set',
+        "args": [0x70f9, 0]
     },
     {
         "identifier": 'EVENT_3284_fade_in_from_black_async_14',

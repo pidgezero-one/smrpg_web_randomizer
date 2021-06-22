@@ -179,9 +179,9 @@ dialog_data[108] = '''[page]
 dialog_data[109] = ''' Hey Mario! Think you can get 100
  Super Jumps today?[await][page]
  Even though it's tricky, just
- remember, if you're dropping
- around 13 or 14, you're just a
- hair too early.[await]
+ remember this tip:[await]
+ If you're dropping around 13 or 14,
+ you're just a hair too early.[delay]
  Good luck![await]'''
 dialog_data[110] = '''[await]'''
 dialog_data[111] = '''[await]'''
@@ -268,7 +268,7 @@ dialog_data[180] = ''' Huh?[delay] No, I don't have anything
  vault?[await]'''
 dialog_data[181] = ''' I saw the guy in the guest room
  pick something up that looked
- important, but he ran off before I
+ important.[await] But he ran off before I
  could ask him what it was![await][pause]
  Maybe he'll show you what it is.[await]'''
 dialog_data[182] = '''
@@ -468,10 +468,10 @@ dialog_data[311] = ''' See, arrows come flying out
  hit, you can't move! See, look![await]
  I can't move a muscle. Now I know
  how a scarecrow feels![await]'''
-dialog_data[312] = ''' Since some jerk waltzed into the
- forest and started messing things
- up in there, arrows have been
- showering our town![await]'''
+dialog_data[312] = ''' Some jerk waltzed into the forest
+ and started messing things up.[await]
+ Ever since then, arrows have been
+ showering all over our town![await]'''
 dialog_data[313] = ''' I tell you, it’s scary out here, but
  someone’s got to pump the water.[await]'''
 dialog_data[314] = ''' My husband still hasn't come back!
@@ -483,11 +483,11 @@ dialog_data[318] = '''[await]'''
 dialog_data[319] = ''' There's so much treasure to be
  found in this world.
  Leave no stone unturned![await]'''
-dialog_data[320] = ''' I'll tell you a secret.[await][pause] Enter the
- forest. When you hit an area with 4
- paths, go left, left, straight,
- right- in that order.[await]
- You'll surely find something [await][pause]NICE.[await]'''
+dialog_data[320] = ''' I'll tell you a secret.[await][pause]
+ When you hit an area in the forest
+ with 4 paths, go left, left,
+ straight, right- in that order.[await]
+ You'll surely find something[delay] NICE.[await]'''
 dialog_data[321] = ''' There may be some places you can\n go, or things you can do, only\n after completing something else.[await][page]\n It's a good idea to revisit some\n areas from time to time.[await]'''
 dialog_data[322] = ''' Sorry, I don't have any advice
  today.[await]'''
@@ -515,9 +515,7 @@ dialog_data[335] = ''' We're told not to go outside
 dialog_data[336] = ''' Grandpa’s pumping some water for
  us. I wish we could help, too...[await]'''
 dialog_data[337] = ''' I'm worried about my husband, but
- he'd rather go out to pump the
- water so the kids can stay safe
- indoors.[await]'''
+ at least the kids are safe indoors.[await]'''
 dialog_data[338] = '''[await]'''
 dialog_data[339] = '''[await]'''
 dialog_data[340] = ''' The last time it started raining
@@ -637,7 +635,9 @@ dialog_data[404] = '''[await]'''
 dialog_data[405] = '''[await]'''
 dialog_data[406] = ''' Hey![delay][delay]...[delay][delay]You gave it to someone![await]
  You're gonna get it![await]'''
-dialog_data[407] = '''[await]'''
+dialog_data[407] = '''YOSHI: (Looks like I need a little
+ more practice. Oh, well...
+ let's try it again sometime.)[await]'''
 dialog_data[408] = ''' (Oh, you were SO close!
   Too bad Yoshi lost...
   Let’s race again, sometime.)[await]'''
@@ -650,7 +650,7 @@ dialog_data[413] = '''[await]'''
 dialog_data[414] = '''YOSHI: (Come on, hop aboard!)[await]'''
 dialog_data[415] = ''' (It's best to alternate A and B to
   the percussion rhythm.[await]
-  But some audio setups may have
+  But some emulators may have
   problems synchronizing, and then
   you'll be way off.)[await]'''
 dialog_data[416] = ''' (Come see me later after you beat
@@ -658,12 +658,11 @@ dialog_data[416] = ''' (Come see me later after you beat
   Cookies.)[await]'''
 dialog_data[417] = '''
            (Gotta go fast!)[await]'''
-dialog_data[418] = ''' (If you feed the baby 21 cookies,
-  he'll get bigger.[await]
-  Then you can feed him more, and he
+dialog_data[418] = ''' (If you feed a baby 21
+  cookies, it'll get bigger.[await]
+  Then you can feed it more, and it
   has some pretty great items for
-  you if you give him 10 at a time.)
-  [await]'''
+  you if you give it 10 at a time.)[await]'''
 dialog_data[419] = '''[await]'''
 dialog_data[420] = '''BOSHI: (What're YOU lookin' at?[await]
  If you wanna challenge me,
@@ -682,8 +681,9 @@ dialog_data[430] = '''[await]'''
 dialog_data[431] = '''[await]'''
 dialog_data[432] = '''[await]'''
 dialog_data[433] = '''            Found a Cookie![end]'''
-dialog_data[434] = ''' (The baby Yoshi has some new
-  items!)[await]'''
+dialog_data[434] = ''' (Baby Yoshies are known for
+  their voracious appetites, but
+  also for their generosity.)[await]'''
 dialog_data[435] = '''[await]'''
 dialog_data[436] = '''[page]
 
@@ -984,8 +984,7 @@ dialog_data[591] = ''' A couple o' jerks barged into the
  you gotta help us![await]'''
 dialog_data[592] = ''' Our friend up there's tryin' to drill
  through the mountain an' rescue the
- folks trapped inside, but it's
- hard![await]
+ folks trapped inside.[await]
  Say, Mario, you wouldn't happen to
  have anything that could blow it
  open from inside, would ya?[await]'''
@@ -1119,22 +1118,13 @@ dialog_data[639] = ''' Hey mister, have ya ever been to
  hidden under some stairs
  underground, or somethin'.[await]
  I think she's pullin' my leg![await]'''
-dialog_data[640] = ''' My sister's friend says if ya jump
- around a golden “Chomp”, you'll
- hear some weird noises, and
- somethin' special will happen.[await]
- I think she's been readin' too many
- bedtime stories!'''
+dialog_data[640] = ''' My sister's friend must be sick, or
+ somethin'.[await][pause] She's been rattlin' off
+ about jumping, gold “Chomps”,
+ secret passages, and such.[await] Dunno
+ what she's on about!'''
 dialog_data[641] = ''' Hey mister, didja know Land's End
- connects to the sewers?[await][pause] Gross![await][page]
- But I heard ya can find something
- in a high-up box if ya get to it
- before goin' there through Land's 
- End.[await]
- Something about jumpin' on a
- ghost.[await][page]
- Iunno, that sounds like a buncha'
- hooey to me![await]'''
+ connects to the sewers?[await][pause] Gross![await]'''
 dialog_data[642] = ''' I'm so hungry!
  Sure wish I had a Carbo Cookie.[await]'''
 dialog_data[643] = ''' Ooh, you have a Carbo Cookie!
@@ -1370,7 +1360,7 @@ dialog_data[729] = ''' The Sky Troopas aren't here yet.[await][page]
  don't you pass the time by heading
  down the whirlpools?[await][page]
  There's a temple down there, and
- its patron saint loves visitors.[2]
+ its patron saint loves visitors.[await]
  In fact, I might just head down
  there myself. See ya![await]'''
 dialog_data[730] = ''' Give me the Temple Key, and I'll let
@@ -1725,7 +1715,7 @@ dialog_data[901] = '''
 
     Moleville Safety Board (MSB)[await]'''
 dialog_data[902] = '''PA' MOLE: There ain't much left in
- the mines past this point, but you
+ the mines past this point.[await] But you
  can keep goin' if ya wanna ride the
  minecart for free.[await]'''
 dialog_data[903] = '''[await]'''

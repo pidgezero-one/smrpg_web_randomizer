@@ -504,6 +504,14 @@ class MadMallet(Enemy):
     coins = 1
     yoshi_cookie_item = items.Energizer
 
+    model_small = {**models[259]}
+
+
+class MadMalletHenchman(MadMallet):
+    index = 185
+    address = 0x390C06
+    reward_address = 0x391A6E
+
     # Boss shuffle attributes.
     ratio_hp = 0.2222
     ratio_fp = 0.3333
@@ -514,9 +522,6 @@ class MadMallet(Enemy):
     ratio_speed = 1.3333
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
-
-    model_small = {**models[259]}
-
 
 class Shaman(Enemy):
     index = 4
@@ -571,6 +576,30 @@ class Crook(Enemy):
         **models[261],
         "is_wide": True
     }
+
+class CrookHenchman(Crook):
+    index = 78
+    address = 0x3909B6
+    reward_address = 0x39192A
+
+    # Boss shuffle attributes.
+    ratio_hp = (38 / 750)
+    ratio_fp = 100 / 12
+    ratio_attack = (35 / 52)
+    ratio_defense = 0.64
+    ratio_magic_attack = (12 / 27)
+    ratio_magic_defense = 0.5
+    ratio_speed = 1.1
+    ratio_evade = 2.0
+    ratio_magic_evade = 3.0
+
+    model_small = {
+        **models[145],
+        "extra_props": {
+            "is_skinny": True
+        }
+    }
+
 
 
 class Goomba(Enemy):
@@ -627,6 +656,23 @@ class PiranhaPlant(Enemy):
             "is_skinny": True
         }
     }
+
+
+class PiranhaPlantHenchman(PiranhaPlant):
+    index = 131
+    address = 0x390A86
+    reward_address = 0x391978
+
+    # Boss shuffle attributes.
+    # Partially taken from Chewy to be closer to Megasmilax
+    ratio_hp = (168 / 2600)
+    ratio_fp = (1 / 9)
+    ratio_attack = (110 / 940)
+    ratio_defense = (52 / 720)
+    ratio_magic_attack = (1 / 9)
+    ratio_magic_defense = (52 / 480)
+    ratio_speed = (6 / 42)
+
 
 
 class Amanita(Enemy):
@@ -712,6 +758,23 @@ class Bloober(Enemy):
     rare_item = items.HoneySyrup
 
 
+class BlooberHenchman(Bloober):
+    index = 172
+    address = 0x390BA6
+    reward_address = 0x391A3E
+
+    # Boss shuffle attributes.
+    ratio_hp = 130 / (800 + 260 + 200)
+    ratio_fp = 100 / (100 + 100 + 100)
+    ratio_attack = 80 / (100 + 82 + 87)
+    ratio_defense = 36 / (80 + 50 + 70)
+    ratio_magic_attack = 21 / (30 + 35 + 35)
+    ratio_magic_defense = 16 / (40 + 40 + 23)
+    ratio_speed = 23 / (8 + 21 + 21)
+
+
+
+
 class BandanaRed(Enemy):
     index = 11
     address = 0x390576
@@ -735,6 +798,22 @@ class BandanaRed(Enemy):
     coins = 10
     yoshi_cookie_item = items.Energizer
     rare_item = items.Mushroom
+
+
+class BandanaRedHenchman(BandanaRed):
+    index = 130
+    address = 0x390A76
+    reward_address = 0x391972
+
+    # Boss shuffle attributes.
+    ratio_hp = 120 / 820
+    ratio_fp = 1.0
+    ratio_attack = 78 / 85
+    ratio_defense = 0.75
+    ratio_magic_attack = 1.0
+    ratio_magic_defense = 25 / 60
+    ratio_speed = 20 / 13
+
 
 
 class Lakitu(Enemy):
@@ -800,6 +879,23 @@ class Birdy(Enemy):
             "is_wide": True
         }
     }
+
+class BirdyHenchman(Birdy):
+    index = 160
+    address = 0x390AE6
+    reward_address = 0x3919F6
+
+    # Boss shuffle attributes.
+    anchor = False
+    ratio_hp = (150 / 2400)
+    ratio_fp = (100 / 350)
+    ratio_attack = (110 / 260)
+    ratio_defense = (75 / 180)
+    ratio_magic_attack = (55 / 89)
+    ratio_magic_defense = (13 / 120)
+    ratio_evade = 1.8
+
+
 
 
 class Pinwheel(Enemy):
@@ -1124,7 +1220,7 @@ class ShyRanger(Enemy):
 
 
 class Bobomb(Enemy):
-    index = 25
+    index = 111
     address = 0x3903b6
     boss = True
     hp = 90
@@ -1145,6 +1241,11 @@ class Bobomb(Enemy):
     xp = 4
     yoshi_cookie_item = items.Mushroom
     normal_item = items.PickMeUp
+
+class BobombHenchman(Bobomb):
+    index = 25
+    address = 0x3909B6
+    reward_address = 0x39192A
 
     # Boss shuffle attributes.
     ratio_hp = 0.075
@@ -1799,7 +1900,7 @@ class Cluster(Enemy):
     rare_item = items.PickMeUp
 
 
-class Bahamutt(Enemy):
+class BahamuttMagikoopa(Enemy):
     index = 47
     address = 0x390996
     boss = True
@@ -1832,6 +1933,41 @@ class Bahamutt(Enemy):
     ratio_speed = 0.6667
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
+
+class BahamuttChester(Enemy):
+    index = 171
+    address = 0x390B96
+    boss = True
+    hp = 500
+    speed = 8
+    attack = 170
+    defense = 100
+    magic_attack = 80
+    magic_defense = 20
+    fp = 100
+    sound_on_hit = 32
+    resistances = [6]
+    weaknesses = [4]
+    status_immunities = [1, 3]
+    palette = 32
+    flower_bonus_type = 1
+    flower_bonus_chance = 2
+
+    # Reward attributes
+    reward_address = 0x391A38
+    yoshi_cookie_item = items.Mushroom
+
+    # Boss shuffle attributes.
+    ratio_hp = (5 / 12)
+    ratio_fp = 1.0
+    ratio_attack = (17 / 22)
+    ratio_defense = (5 / 6)
+    ratio_magic_attack = (2 / 3)
+    ratio_magic_defense = 0.25
+    ratio_speed = 8.0
+    ratio_evade = 0.0
+    ratio_magic_evade = 0.0
+
 
 
 class Octolot(Enemy):
@@ -3004,6 +3140,22 @@ class Bluebird(Enemy):
         }
     }
 
+class BluebirdHenchman(Bluebird):
+    index = 141
+    address = 0x390AC6
+    reward_address = 0x391996
+
+
+    # Boss shuffle attributes.
+    anchor = False
+    ratio_hp = (200 / 2400)
+    ratio_fp = (100 / 350)
+    ratio_attack = (95 / 260)
+    ratio_defense = (50 / 180)
+    ratio_magic_attack = (80 / 89)
+    ratio_magic_defense = (94 / 120)
+    ratio_evade = 0.8
+
 
 class AlleyRat(Enemy):
     index = 79
@@ -3180,6 +3332,22 @@ class Pyrosphere(Enemy):
     xp = 17
     coins = 2
     yoshi_cookie_item = items.FireBomb
+
+class PyrosphereHenchman(Pyrosphere):
+    index = 183
+    address = 0x390BF6
+    reward_address = 0x391A68
+
+    # Boss shuffle attributes.
+    anchor = False
+    ratio_hp = (167 / 3200)
+    ratio_fp = 0.5
+    ratio_attack = (105 / 350)
+    ratio_defense = (66 / 160)
+    ratio_magic_attack = (100 / 200)
+    ratio_magic_defense = (48 / 170)
+    ratio_speed = (24 / 26)
+    ratio_evade = 0.35
 
 
 class ChompChomp(Enemy):
@@ -3372,6 +3540,25 @@ class ShyGuy(Enemy):
     yoshi_cookie_item = items.HoneySyrup
 
     model_small = {**models[159]}
+
+class ShyGuyHenchman(ShyGuy):
+    index = 185
+    address = 0x390C06
+    reward_address = 0x391A6E
+
+    # Boss shuffle attributes.
+    # Taken from Sling Shy for closer match
+    anchor = False
+    ratio_hp = 0.06
+    ratio_fp = 0.5
+    ratio_attack = 0.54
+    ratio_defense = (4 / 7)
+    ratio_magic_attack = 1.2
+    ratio_magic_defense = (21 / 26)
+    ratio_speed = (8 / 9)
+    ratio_evade = 0
+    ratio_magic_evade = 0.0
+
 
 
 class Ninja(Enemy):
@@ -4309,6 +4496,21 @@ class Apprentice(Enemy):
     normal_item = items.MidMushroom
 
 
+class ApprenticeHenchman(Apprentice):
+    index = 129
+    address = 0x390A66
+    reward_address = 0x39196C
+
+    # Boss shuffle attributes.
+    ratio_hp = (3 / 35)
+    ratio_fp = 0.33
+    ratio_attack = (50 / 255)
+    ratio_defense = (50 / 235)
+    ratio_magic_attack = 1.0
+    ratio_magic_defense = 0.5
+    ratio_speed = (10 / 51)
+
+
 class BoxBoy(Enemy):
     index = 134
     address = 0x390956
@@ -4534,6 +4736,7 @@ class Chester(Enemy):
     index = 139
     address = 0x390966
     boss = True
+    anchor = True
     hp = 1200
     speed = 1
     attack = 220
@@ -4739,7 +4942,19 @@ class MachineMadeShyster(Enemy):
 
     # Reward attributes
     reward_address = 0x3919a2
+    xp = 28
     yoshi_cookie_item = items.Mushroom
+
+    # Boss shuffle attributes.
+    ratio_hp = 0.05
+    ratio_fp = 1.0
+    ratio_attack = (135 / 230)
+    ratio_defense = (19 / 26)
+    ratio_magic_attack = 0.9
+    ratio_magic_defense = 0.65
+    ratio_speed = 1.2
+    ratio_evade = 1.0
+    ratio_magic_evade = 0.0
 
 
 class MachineMadeDrillBit(Enemy):
@@ -5309,6 +5524,14 @@ class Smelter(Enemy):
     reward_address = 0x391a02
     yoshi_cookie_item = items.Mushroom
 
+    # Boss shuffle attributes.
+    ratio_hp = 0.75
+    ratio_fp = (100 / 250)
+    ratio_attack = 0.0
+    ratio_defense = (120 / 130)
+    ratio_magic_attack = 0.0
+    ratio_magic_defense = 1.0
+
 
 class MachineMadeMack(Enemy):
     index = 163
@@ -5416,6 +5639,22 @@ class MachineMadeAxemPink(Enemy):
     yoshi_cookie_item = items.Mushroom
     rare_item = items.MapleSyrup
 
+class MachineMadeAxemPinkHenchman(MachineMadeAxemPink):
+    index = 174
+    address = 0x390BC6
+    reward_address = 0x391A4A
+
+    # Boss shuffle attributes.
+    ratio_hp = (100 / (800 + 400 + 550 + 600 + 450 + 999))
+    ratio_fp = (200 / (100 + 200 + 100 + 100 + 200 + 100))
+    ratio_attack = (40 / (150 + 120 + 140 + 170 + 110 + 0))
+    ratio_defense = (100 / (100 + 80 + 120 + 130 + 60 + 100))
+    ratio_magic_attack = (40 / (24 + 80 + 4 + 6 + 90 + 120))
+    ratio_magic_defense = (100 / (80 + 100 + 40 + 60 + 120 + 100))
+    ratio_speed = (35 / (30 + 25 + 35 + 3 + 20 + 200))
+    ratio_evade = (25 / (10 + 25 + 30 + 0 + 0 + 0))
+    ratio_magic_evade = (10 / (0 + 10 + 0 + 0 + 20 + 0))
+
 
 class MachineMadeAxemBlack(Enemy):
     index = 167
@@ -5441,6 +5680,22 @@ class MachineMadeAxemBlack(Enemy):
     xp = 20
     yoshi_cookie_item = items.Mushroom
     rare_item = items.MaxMushroom
+
+class MachineMadeAxemBlackHenchman(MachineMadeAxemBlack):
+    index = 173
+    address = 0x390BB6
+    reward_address = 0x391A44
+
+    # Boss shuffle attributes.
+    ratio_hp = (120 / (800 + 400 + 550 + 600 + 450 + 999))
+    ratio_fp = (100 / (100 + 200 + 100 + 100 + 200 + 100))
+    ratio_attack = (120 / (150 + 120 + 140 + 170 + 110 + 0))
+    ratio_defense = (40 / (100 + 80 + 120 + 130 + 60 + 100))
+    ratio_magic_attack = (4 / (24 + 80 + 4 + 6 + 90 + 120))
+    ratio_magic_defense = (40 / (80 + 100 + 40 + 60 + 120 + 100))
+    ratio_speed = (55 / (30 + 25 + 35 + 3 + 20 + 200))
+    ratio_evade = (30 / (10 + 25 + 30 + 0 + 0 + 0))
+    ratio_magic_evade = (0 / (0 + 10 + 0 + 0 + 20 + 0))
 
 
 class MachineMadeAxemRed(Enemy):
@@ -5470,6 +5725,24 @@ class MachineMadeAxemRed(Enemy):
     rare_item = items.RoyalSyrup
 
 
+class MachineMadeAxemRedHenchman(MachineMadeAxemRed):
+    index = 201
+    address = 0x390DB6
+    reward_address = 0x391AF2
+
+    # Boss shuffle attributes.
+    ratio_hp = (180 / (800 + 400 + 550 + 600 + 450 + 999))
+    ratio_fp = (100 / (100 + 200 + 100 + 100 + 200 + 100))
+    ratio_attack = (135 / (150 + 120 + 140 + 170 + 110 + 0))
+    ratio_defense = (95 / (100 + 80 + 120 + 130 + 60 + 100))
+    ratio_magic_attack = (24 / (24 + 80 + 4 + 6 + 90 + 120))
+    ratio_magic_defense = (80 / (80 + 100 + 40 + 60 + 120 + 100))
+    ratio_speed = (45 / (30 + 25 + 35 + 3 + 20 + 200))
+    ratio_evade = (10 / (10 + 25 + 30 + 0 + 0 + 0))
+    ratio_magic_evade = (0 / (0 + 10 + 0 + 0 + 20 + 0))
+
+
+
 class MachineMadeAxemYellow(Enemy):
     index = 169
     address = 0x390b76
@@ -5496,6 +5769,25 @@ class MachineMadeAxemYellow(Enemy):
     rare_item = items.MaxMushroom
 
 
+class MachineMadeAxemYellowHenchman(MachineMadeAxemYellow):
+    index = 242
+    address = 0x391056
+    reward_address = 0x391BE8
+
+    # Boss shuffle attributes.
+    ratio_hp = (200 / (800 + 400 + 550 + 600 + 450 + 999))
+    ratio_fp = (100 / (100 + 200 + 100 + 100 + 200 + 100))
+    ratio_attack = (140 / (150 + 120 + 140 + 170 + 110 + 0))
+    ratio_defense = (20 / (100 + 80 + 120 + 130 + 60 + 100))
+    ratio_magic_attack = (16 / (24 + 80 + 4 + 6 + 90 + 120))
+    ratio_magic_defense = (20 / (80 + 100 + 40 + 60 + 120 + 100))
+    ratio_speed = (20 / (30 + 25 + 35 + 3 + 20 + 200))
+    ratio_evade = (0 / (10 + 25 + 30 + 0 + 0 + 0))
+    ratio_magic_evade = (0 / (0 + 10 + 0 + 0 + 20 + 0))
+
+
+
+
 class MachineMadeAxemGreen(Enemy):
     index = 170
     address = 0x390b86
@@ -5520,6 +5812,25 @@ class MachineMadeAxemGreen(Enemy):
     xp = 10
     yoshi_cookie_item = items.Mushroom
     rare_item = items.RoyalSyrup
+
+
+class MachineMadeAxemGreenHenchman(MachineMadeAxemGreen):
+    index = 232
+    address = 0x390F56
+    reward_address = 0x391B9A
+
+    # Boss shuffle attributes.
+    ratio_hp = (80 / (800 + 400 + 550 + 600 + 450 + 999))
+    ratio_fp = (250 / (100 + 200 + 100 + 100 + 200 + 100))
+    ratio_attack = (105 / (150 + 120 + 140 + 170 + 110 + 0))
+    ratio_defense = (80 / (100 + 80 + 120 + 130 + 60 + 100))
+    ratio_magic_attack = (80 / (24 + 80 + 4 + 6 + 90 + 120))
+    ratio_magic_defense = (120 / (80 + 100 + 40 + 60 + 120 + 100))
+    ratio_speed = (40 / (30 + 25 + 35 + 3 + 20 + 200))
+    ratio_evade = (0 / (10 + 25 + 30 + 0 + 0 + 0))
+    ratio_magic_evade = (20 / (0 + 10 + 0 + 0 + 20 + 0))
+
+
 
 
 class Starslap(Enemy):
@@ -8113,6 +8424,48 @@ class DrillBit(Enemy):
     coins = 1
     yoshi_cookie_item = items.Mushroom
 
+    # Boss shuffle attributes.
+    ratio_hp = 0.04
+    ratio_fp = 0.4
+    ratio_attack = (17 / 46)
+    ratio_defense = (7 / 13)
+    ratio_magic_attack = 0.4
+    ratio_magic_defense = 0.56
+    ratio_speed = 0.5
+    ratio_evade = 0.0
+    ratio_magic_evade = 0.0
+
+
+class YaridovichDrillBit(Enemy):
+    index = 244
+    address = 0x391066
+    hp = 80
+    speed = 15
+    attack = 85
+    defense = 70
+    magic_attack = 40
+    magic_defense = 56
+    fp = 100
+    status_immunities = [0, 1, 2, 3]
+    palette = 8
+    flower_bonus_type = 1
+    flower_bonus_chance = 2
+
+    # Reward attributes
+    reward_address = 0x391bee
+    xp = 11
+    coins = 1
+    yoshi_cookie_item = items.Mushroom
+
+    # Boss shuffle attributes.
+    # Attuned to ratio of machine made drill bit to machine made yarid.
+    ratio_hp = (180 / 800)
+    ratio_fp = (100 / 250)
+    ratio_attack = (130 / 180)
+    ratio_defense = (82 / 130)
+    ratio_magic_attack = (31 / 90)
+    ratio_magic_defense = (69 / 50)
+    ratio_speed = (24 / 18)
 
 class AxemPink(Enemy):
     index = 228
@@ -8296,11 +8649,17 @@ class Bowyer(Enemy):
     ]
 
 
-class Aero(Enemy):
+class AeroBowyer(Enemy):
+    # Borrow stats from Bob-omb to be relatively reasonable to match Bowyer
     index = 231
     address = 0x390f46
     boss = True
-    hp = 10
+    hp = 90
+    speed = 1
+    attack = 50
+    defense = 38
+    magic_attack = 1
+    magic_defense = 10
     fp = 100
     status_immunities = [0, 1, 2, 3]
     palette = 8
@@ -8309,7 +8668,63 @@ class Aero(Enemy):
 
     # Reward attributes
     reward_address = 0x391b94
+    xp = 4
     yoshi_cookie_item = items.Mushroom
+
+    # Boss shuffle attributes.
+    ratio_hp = 0.125
+    ratio_fp = 0.4
+    ratio_attack = 1.0
+    ratio_defense = 0.95
+    ratio_magic_attack = (1 / 30)
+    ratio_magic_defense = (10 / 35)
+    ratio_speed = 1.5
+    ratio_evade = 0.0
+    ratio_magic_evade = 0.0
+
+    model_small = {
+        **models[487],
+        "extra_props": {
+            "statue_mold": 3,
+            "sequence": 1,
+            "freeze": True,
+            "is_skinny": True,
+        }
+    }
+
+
+class AeroSmithy(Enemy):
+    # Borrow stats from Poundette to be relatively reasonable to match Smithy
+    index = 175
+    address = 0x390BD6
+    boss = True
+    hp = 150
+    speed = 30
+    attack = 140
+    defense = 60
+    magic_attack = 66
+    magic_defense = 45
+    fp = 100
+    status_immunities = [0, 1, 2, 3]
+    palette = 8
+    flower_bonus_type = 1
+    flower_bonus_chance = 2
+
+    # Reward attributes
+    reward_address = 0x391A50
+    xp = 28
+    yoshi_cookie_item = items.Mushroom
+
+    # Boss shuffle attributes.
+    ratio_hp = 0.075
+    ratio_fp = 0.4
+    ratio_attack = (14 / 23)
+    ratio_defense = (6 / 13)
+    ratio_magic_attack = 0.66
+    ratio_magic_defense = 0.45
+    ratio_speed = 1.0
+    ratio_evade = 0.0
+    ratio_magic_evade = 0.0
 
     model_small = {
         **models[487],
@@ -8808,26 +9223,6 @@ class Earthlink(Enemy):
     ratio_speed = 0.8889
 
 
-class Bowser(Enemy):
-    index = 244
-    address = 0x391066
-    boss = True
-    hp = 320
-    speed = 15
-    attack = 1
-    defense = 12
-    fp = 100
-    death_immune = True
-    sound_on_hit = 32
-    status_immunities = [0, 1, 2, 3]
-    palette = 8
-    flower_bonus_type = 1
-    flower_bonus_chance = 2
-
-    # Reward attributes
-    reward_address = 0x391bee
-    yoshi_cookie_item = items.Mushroom
-
 
 class AxemRangers(Enemy):
     index = 245
@@ -9040,12 +9435,21 @@ class Snifit(Enemy):
     flower_bonus_type = 5
     flower_bonus_chance = 8
 
+    model_small = {
+        **models[36]
+    }
+
     # Reward attributes
     reward_address = 0x39171a
     xp = 2
     coins = 15
     yoshi_cookie_item = items.Mushroom
     rare_item = items.Mushroom
+
+class SnifitHenchman(Snifit):
+    index = 115
+    address = 0x3909E6
+    reward_address = 0x39193C
 
     # Boss shuffle attributes.
     ratio_hp = 0.14
@@ -9058,9 +9462,6 @@ class Snifit(Enemy):
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
 
-    model_small = {
-        **models[504]
-    }
 
 
 class Johnny(Enemy):
@@ -9483,16 +9884,22 @@ def get_default_enemies(world):
         Spikey(world),
         Skytroopa(world),
         MadMallet(world),
+        MadMalletHenchman(world),
         Shaman(world),
         Crook(world),
+        CrookHenchman(world),
         Goomba(world),
         PiranhaPlant(world),
+        PiranhaPlantHenchman(world),
         Amanita(world),
         Goby(world),
         Bloober(world),
+        BlooberHenchman(world),
         BandanaRed(world),
+        BandanaRedHenchman(world),
         Lakitu(world),
         Birdy(world),
+        BirdyHenchman(world),
         Pinwheel(world),
         Ratfunk(world),
         K9(world),
@@ -9505,6 +9912,7 @@ def get_default_enemies(world):
         Pandorite(world),
         ShyRanger(world),
         Bobomb(world),
+        BobombHenchman(world),
         Spookum(world),
         HammerBro(world),
         Buzzer(world),
@@ -9526,7 +9934,8 @@ def get_default_enemies(world):
         HeavyTroopa(world),
         Shadow(world),
         Cluster(world),
-        Bahamutt(world),
+        BahamuttChester(world),
+        BahamuttMagikoopa(world),
         Octolot(world),
         Frogog(world),
         Clerk(world),
@@ -9557,6 +9966,7 @@ def get_default_enemies(world):
         BandanaBlue(world),
         Manager(world),
         Bluebird(world),
+        BluebirdHenchman(world),
         AlleyRat(world),
         Chow(world),
         Magmus(world),
@@ -9564,11 +9974,13 @@ def get_default_enemies(world):
         Vomer(world),
         GlumReaper(world),
         Pyrosphere(world),
+        PyrosphereHenchman(world),
         ChompChomp(world),
         Hidon(world),
         SlingShy(world),
         Robomb(world),
         ShyGuy(world),
+        ShyGuyHenchman(world),
         Ninja(world),
         Stinger(world),
         Goombette(world),
@@ -9604,6 +10016,7 @@ def get_default_enemies(world):
         MastaBlasta(world),
         Piledriver(world),
         Apprentice(world),
+        ApprenticeHenchman(world),
         BoxBoy(world),
         Shelly(world),
         Superspike(world),
@@ -9639,6 +10052,11 @@ def get_default_enemies(world):
         MachineMadeAxemRed(world),
         MachineMadeAxemYellow(world),
         MachineMadeAxemGreen(world),
+        MachineMadeAxemPinkHenchman(world),
+        MachineMadeAxemBlackHenchman(world),
+        MachineMadeAxemRedHenchman(world),
+        MachineMadeAxemYellowHenchman(world),
+        MachineMadeAxemGreenHenchman(world),
         Starslap(world),
         Mukumuku(world),
         Zeostar(world),
@@ -9690,7 +10108,8 @@ def get_default_enemies(world):
         AxemPink(world),
         AxemBlack(world),
         Bowyer(world),
-        Aero(world),
+        AeroBowyer(world),
+        AeroSmithy(world),
         Exor(world),
         Smithy1(world),
         Shyper(world),
@@ -9706,6 +10125,7 @@ def get_default_enemies(world):
         Booster(world),
         Booster2(world),
         Snifit(world),
+        SnifitHenchman(world),
         Johnny(world),
         JohnnySolo(world),
         Valentina(world),

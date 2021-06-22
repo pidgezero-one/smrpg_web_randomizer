@@ -23,7 +23,7 @@ script = [
     {
         "identifier": 'EVENT_2048_jmp_if_7000_equals_short_3',
         "command": 'jmp_if_7000_equals_short',
-        "args": [0, 'EVENT_2048_jmp_if_bit_set_6']
+        "args": [0, 'EVENT_2048_jmp_if_bit_set_11']
     },
     {
         "identifier": 'EVENT_2048_action_queue_async_4',
@@ -47,17 +47,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2048_jmp_if_bit_set_6',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7044, 7, 'EVENT_2079_enable_controls_until_return_0']
-    },
-    {
         "identifier": 'EVENT_2048_fade_in_from_black_async_7',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2048_ret_8',
-        "command": 'ret'
+        "command": 'jmp',
+        "args": ['EVENT_2048_jmp_if_bit_set_11']
     },
     {
         "identifier": 'EVENT_2048_set_bit_9',
@@ -83,15 +75,50 @@ script = [
     },
     {
         "identifier": 'EVENT_2048_jmp_if_bit_set_11',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7044, 7, 'EVENT_2079_enable_controls_until_return_0']
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7044, 7, 'EVENT_2048_fade_in_from_black_async_12']
+    },
+    {
+        "identifier": 'EVENT_2048_set_bit_0_',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
+    },
+    {
+        "identifier": 'EVENT_2048_save_jump',
+        "command": 'run_event_as_subroutine',
+        "args": [2079]
+    },
+    {
+        "identifier": 'EVENT_2048_save_jump_',
+        "command": 'jmp',
+        "args": ['EVENT_2048_jmp_if_bit_clear_7']
     },
     {
         "identifier": 'EVENT_2048_fade_in_from_black_async_12',
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_2048_ret_13',
+        "identifier": 'EVENT_2048_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_2048_ret_26']
+    },
+    {
+        "identifier": 'EVENT_2048_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_2048_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_2048_ret_26']
+    },
+    {
+        "identifier": 'EVENT_2048_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3909]
+    },
+    {
+        "identifier": 'EVENT_2048_ret_26',
         "command": 'ret'
     }
 ]

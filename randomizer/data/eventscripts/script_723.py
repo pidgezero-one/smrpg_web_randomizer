@@ -16,8 +16,41 @@ script = [
         "args": [0x70df, 10]
     },
     {
-        "identifier": 'EVENT_723_jmp_to_event_15',
-        "command": 'jmp_to_event',
-        "args": [262]
+        "identifier": 'EVENT_723_play_sound_1',
+        "command": 'play_sound',
+        "args": [Sounds._000_SILENCE, 4]
+    },
+    {
+        "identifier": 'EVENT_723_fade_out_music_to_volume_2',
+        "command": 'fade_out_music_to_volume',
+        "args": [1, 127]
+    },
+    {
+        "identifier": 'EVENT_723_fade_in_from_black_async_3',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_723_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_723_ret_4']
+    },
+    {
+        "identifier": 'EVENT_723_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_723_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_723_ret_4']
+    },
+    {
+        "identifier": 'EVENT_723_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3889]
+    },
+    {
+        "identifier": 'EVENT_723_ret_4',
+        "command": 'ret'
     }
 ]

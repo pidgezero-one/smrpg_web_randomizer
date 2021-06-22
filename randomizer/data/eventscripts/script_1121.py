@@ -24,6 +24,21 @@ script = [
         "args": [81]
     },
     {
+        "identifier": 'EVENT_1121_run_event_as_subroutine_25___',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_1121_jmp_if_bit_clear_7___',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_1121_ret_4']
+    },
+    {
+        "identifier": 'EVENT_1121_run_event_as_subroutine_25____',
+        "command": 'run_event_as_subroutine',
+        "args": [3904]
+    },
+    {
         "identifier": 'EVENT_1121_ret_4',
         "command": 'ret'
     }

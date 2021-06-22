@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline, bit_bool_from_num
-from randomizer.data.roomobjecttables import object_type, event_initiator, post_battle_behaviour, radial_direction_table, music_table, edge_table, exit_type_table, location_table, room_table
+from randomizer.data.roomobjecttables import object_type, event_initiator, post_battle_behaviour, radial_direction_table, music_table, edge_table, exit_type_table, location_table, room_table, partition_space_table, partition_buffer_table
 
 
 start = 0x148400
@@ -17,6 +17,9 @@ roomexit_start = 0x1D3166
 roomexit_end = 0x1D4904
 roomexit_ptrstart = 0x1D2D64
 roomexit_ptrend = 0x1D3165  # might be 0x20FDC7
+
+partitionstart = 0x1DDE00
+partitionend = 0x1DDFDF
 
 
 class Command(BaseCommand):
@@ -41,10 +44,28 @@ class Command(BaseCommand):
         rooms_raw_data = []
         roomevent_raw_data = []
         roomexit_raw_data = []
+        partitions = []
 
         ptrs = []
         roomevent_ptrs = []
         roomexit_ptrs = []
+        for i in range(partitionstart, partitionend, 4):
+            partition_data = rom[i:i+4]
+            partition = {}
+            partition["allow_extra_sprite_buffer"] = partition_data[0] & 0x10 == 0x10
+            partition["full_palette_buffer"] = partition_data[0] & 0x80 == 0x80
+            partition["ally_sprite_buffer_size"] = (partition_data[0] & 0x60) >> 5
+            partition["extra_sprite_buffer_size"] = partition_data[0] & 0x0F
+            partition["clone_buffer_a_type"] = partition_data[1] & 0x07
+            partition["clone_buffer_a_space"] = (partition_data[1] & 0x70) >> 4
+            partition["clone_buffer_a_index_in_main"] = partition_data[1] & 0x80 == 0x80
+            partition["clone_buffer_b_type"] = partition_data[2] & 0x07
+            partition["clone_buffer_b_space"] = (partition_data[2] & 0x70) >> 4
+            partition["clone_buffer_b_index_in_main"] = partition_data[2] & 0x80 == 0x80
+            partition["clone_buffer_c_type"] = partition_data[3] & 0x07
+            partition["clone_buffer_c_space"] = (partition_data[3] & 0x70) >> 4
+            partition["clone_buffer_c_index_in_main"] = partition_data[3] & 0x80 == 0x80
+            partitions.append(partition)
 
         for i in range(ptrstart, ptrend, 2):
             ptrs.append((0x14 << 16) | (shortify(rom, i)))
@@ -111,7 +132,7 @@ class Command(BaseCommand):
                 writeline(
                     file, '# python manage.py objectdisassembler --rom ROM')
                 writeline(
-                    file, 'from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms')
+                    file, 'from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace')
 
                 if len(d) == 0 and len(r) == 0 and len(e) == 0:
                     writeline(file, 'room = None')
@@ -120,7 +141,35 @@ class Command(BaseCommand):
 
                     if len(d) > 0:
                         partition = d[0]
-                        writeline(file, '  "partition": %i,' % partition)
+                        p = partitions[partition]
+                        print(p)
+                        writeline(file, '  "partition": {')
+                        writeline(file, '    "ally_sprite_buffer_size": %i,' % p["ally_sprite_buffer_size"])
+                        writeline(file, '    "allow_extra_sprite_buffer": %r,' % p["allow_extra_sprite_buffer"])
+                        writeline(file, '    "extra_sprite_buffer_size": %i,' % p["extra_sprite_buffer_size"])
+                        writeline(file, '    "buffer_a": {')
+                        type_a, _ = byte(prefix="PartitionBufferTypes", table=partition_buffer_table)([p["clone_buffer_a_type"]])
+                        writeline(file, '      "type": %s,' % type_a)
+                        space_a, _ = byte(prefix="PartitionMainSpace", table=partition_space_table)([p["clone_buffer_a_space"]])
+                        writeline(file, '      "main_buffer_space": %s,' % space_a)
+                        writeline(file, '      "index_in_main_buffer": %r,' % p["clone_buffer_a_index_in_main"])
+                        writeline(file, '    },')
+                        writeline(file, '    "buffer_b": {')
+                        type_b, _ = byte(prefix="PartitionBufferTypes", table=partition_buffer_table)([p["clone_buffer_b_type"]])
+                        writeline(file, '      "type": %s,' % type_b)
+                        space_b, _ = byte(prefix="PartitionMainSpace", table=partition_space_table)([p["clone_buffer_b_space"]])
+                        writeline(file, '      "main_buffer_space": %s,' % space_b)
+                        writeline(file, '      "index_in_main_buffer": %r,' % p["clone_buffer_b_index_in_main"])
+                        writeline(file, '    },')
+                        writeline(file, '    "buffer_c": {')
+                        type_c, _ = byte(prefix="PartitionBufferTypes", table=partition_buffer_table)([p["clone_buffer_c_type"]])
+                        writeline(file, '      "type": %s,' % type_c)
+                        space_c, _ = byte(prefix="PartitionMainSpace", table=partition_space_table)([p["clone_buffer_c_space"]])
+                        writeline(file, '      "main_buffer_space": %s,' % space_c)
+                        writeline(file, '      "index_in_main_buffer": %r,' % p["clone_buffer_c_index_in_main"])
+                        writeline(file, '    },')
+                        writeline(file, '    "full_palette_buffer": %r,' % p["full_palette_buffer"])
+                        writeline(file, '  },')
                     else: 
                         writeline(file, '  "partition": None,')
 

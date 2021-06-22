@@ -46,6 +46,16 @@ script = [
         "args": [0x70dd, 0]
     },
     {
+        "identifier": 'EVENT_2814_set_9_',
+        "command": 'set',
+        "args": [0x70f8, 0]
+    },
+    {
+        "identifier": 'EVENT_2814_set_9__',
+        "command": 'set',
+        "args": [0x70f9, 0]
+    },
+    {
         "identifier": 'EVENT_2814_remove_from_level_8',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_0, Rooms._205_MUSHROOM_WAY_AREA_03]
@@ -63,6 +73,26 @@ script = [
     {
         "identifier": 'EVENT_2814_fade_in_from_black_async_12',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_2814_jmp_if_bit_clear_7',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7087, 0, 'EVENT_2814_run_background_event_13']
+    },
+    {
+        "identifier": 'EVENT_2814_run_event_as_subroutine_25_',
+        "command": 'run_event_as_subroutine',
+        "args": [3588]
+    },
+    {
+        "identifier": 'EVENT_2814_jmp_if_bit_clear_7_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 7, 'EVENT_2814_run_background_event_13']
+    },
+    {
+        "identifier": 'EVENT_2814_run_event_as_subroutine_25__',
+        "command": 'run_event_as_subroutine',
+        "args": [3888]
     },
     {
         "identifier": 'EVENT_2814_run_background_event_13',

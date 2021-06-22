@@ -14,6 +14,8 @@ class RoomObjects:
         eventtile_output = []
         exit_output = []
 
+        partitions = []
+
         for i in range(len(table)):
             room = table[i]
 
@@ -42,11 +44,32 @@ class RoomObjects:
                 #objects
 
                 npcs = room["objects"]
+                room_bytes = bytearray([])
 
                 if room["partition"] is not None:
-                    room_bytes = bytearray([room["partition"]])
-                else:
-                    room_bytes = bytearray([])
+                    p = room["partition"]
+                    partition_byte_1 = p["allow_extra_sprite_buffer"] * 0x10 
+                    partition_byte_1 += (p["ally_sprite_buffer_size"] << 5)
+                    partition_byte_1 += (p["extra_sprite_buffer_size"] & 0x0F)
+                    partition_byte_1 += p["full_palette_buffer"] * 0x80 
+                    partition_byte_2 = p["buffer_a"]["type"] & 0x07
+                    partition_byte_2 += (p["buffer_a"]["main_buffer_space"] << 4)
+                    partition_byte_2 += p["buffer_a"]["index_in_main_buffer"] * 0x80
+                    partition_byte_3 = p["buffer_b"]["type"] & 0x07
+                    partition_byte_3 += (p["buffer_b"]["main_buffer_space"] << 4)
+                    partition_byte_3 += p["buffer_b"]["index_in_main_buffer"] * 0x80
+                    partition_byte_4 = p["buffer_c"]["type"] & 0x07
+                    partition_byte_4 += (p["buffer_c"]["main_buffer_space"] << 4)
+                    partition_byte_4 += p["buffer_c"]["index_in_main_buffer"] * 0x80
+                    partition_bytes = [partition_byte_1, partition_byte_2, partition_byte_3, partition_byte_4]
+                    partition_index = None
+                    for index in range(len(partitions)):
+                        if partition_bytes == partitions[index]:
+                            partition_index = index
+                    if partition_index is None:
+                        partition_index = len(partitions)
+                        partitions.append(partition_bytes)
+                    room_bytes = bytearray([partition_index])
 
                 if len(npcs) > 0:
                     for n in npcs:
@@ -219,6 +242,11 @@ class RoomObjects:
             exit_output += bytearray([0xFF for x in range(empty_space)])
         exits = [exit_pointers, bytearray(exit_output)]
 
-        return npcs, eventtiles, exits
+        if len(partitions) > 120:
+            raise Exception("Too many partitions (got %i, expected up to 120)" % len(partitions))
+        for _ in range(len(partitions), 120):
+            partitions.append([0, 0, 0, 0])
+
+        return npcs, eventtiles, exits, bytearray([p for partition in partitions for p in partition])
 
 
