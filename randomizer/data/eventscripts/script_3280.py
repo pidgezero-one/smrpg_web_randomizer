@@ -28,6 +28,11 @@ script = [
         ]
     },
     {
+        "identifier": "EVENT_3280_sequence_setter",
+        "command": "run_event_as_subroutine",
+        "args": [803]
+    },
+    {
         "identifier": 'EVENT_3280_run_event_as_subroutine_3',
         "command": 'run_event_as_subroutine',
         "args": [15]
@@ -303,19 +308,14 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3280_jmp_if_bit_set_16',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7058, 5, 'EVENT_3280_set_action_script_sync_17']
-    },
-    {
         "identifier": 'EVENT_3280_set_action_script_sync_17',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_4, 14]
     },
     {
         "identifier": 'EVENT_3280_jmp_if_bit_set_18',
-        "command": 'run_event_as_subroutine',
-        "args": [1186]
+        "command": 'jmp_if_bit_set',
+        "args": [0x7058, 5, 'EVENT_3280_start_battle_23']
     },
     {
         "identifier": 'EVENT_3280_action_queue_sync_19',
@@ -411,8 +411,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3280_start_battle_23',
-        "command": 'start_battle',
-        "args": [0x0044, 4]
+        "command": 'run_event_as_subroutine',
+        "args": [1186]
     },
     {
         "identifier": 'EVENT_3280_set_bit_24',

@@ -11,6 +11,11 @@ script = [
         "args": [0x7058, 7, 'EVENT_3282_jmp_if_bit_set_129']
     },
     {
+        "identifier": "EVENT_3282_sequence_setter",
+        "command": "run_event_as_subroutine",
+        "args": [801]
+    },
+    {
         "identifier": 'EVENT_3282_run_event_as_subroutine_3',
         "command": 'run_event_as_subroutine',
         "args": [15]

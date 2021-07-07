@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_405_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [770]
+    },
+    {
         "identifier": 'EVENT_405_set_bit_0',
         "command": 'set_bit',
         "args": [0x704a, 2]

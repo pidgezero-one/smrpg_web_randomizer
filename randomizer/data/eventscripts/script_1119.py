@@ -82,6 +82,11 @@ script = [
         "command": 'ret'
     },
     {
+        "identifier": "EVENT_1119_sequence_setter_2",
+        "command": "run_event_as_subroutine",
+        "args": [806]
+    },
+    {
         "identifier": 'EVENT_1119_fade_in_from_black_sync_31',
         "command": 'fade_in_from_black_sync'
     },
@@ -112,12 +117,12 @@ script = [
     {
         "identifier": 'EVENT_1119_jmp_if_bit_set_33',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7057, 1, 'EVENT_1119_fade_in_from_black_sync_31']
+        "args": [0x7057, 1, "EVENT_1119_sequence_setter_2"]
     },
     {
         "identifier": 'EVENT_1119_jmp_if_bit_set_33_',
         "command": 'jmp_if_bit_set',
-        "args": [0x7086, 1, 'EVENT_1119_fade_in_from_black_sync_31']
+        "args": [0x7086, 1, "EVENT_1119_sequence_setter_2"]
     },
     {
         "identifier": 'EVENT_1119_action_queue_sync_2',
@@ -324,6 +329,11 @@ script = [
         "identifier": 'EVENT_1119_set_action_script_sync_40',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_4, 147]
+    },
+    {
+        "identifier": "EVENT_1119_sequence_setter",
+        "command": "run_event_as_subroutine",
+        "args": [806]
     },
     {
         "identifier": 'EVENT_1119_fade_in_from_black_async_41',

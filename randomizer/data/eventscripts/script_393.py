@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_393_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [770]
+    },
+    {
         "identifier": 'EVENT_393_jmp_if_object_in_level_0',
         "command": 'jmp_if_object_in_level',
         "args": [AreaObjects.NPC_3, Rooms._480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, 'EVENT_393_set_bit_16']

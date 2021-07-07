@@ -2074,6 +2074,12 @@ class EventScript:
         return self
 
     # FD 0xFE
+    def xor_3105_with_01(self):
+        self.append_byte(0xFD)
+        self.append_byte(0xFE)
+        return self
+
+    # FD 0xFE
     def return_fd(self):
         self.append_byte(0xFD)
         self.append_byte(0xFE)

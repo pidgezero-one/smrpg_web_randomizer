@@ -53,11 +53,6 @@ script = [
                 "args": [8]
             },
             {
-                "identifier": 'EVENT_2108_action_queue_async_13_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
                 "identifier": 'EVENT_2108_action_queue_async_13_SUBSCRIPT_visibility_on_3',
                 "command": 'visibility_on'
             }
@@ -67,6 +62,11 @@ script = [
         "identifier": 'EVENT_2108_jmp_if_bit_set_14',
         "command": 'jmp_if_bit_set',
         "args": [0x7044, 7, 'EVENT_2108_run_event_as_subroutine_17']
+    },
+    {
+        "identifier": "EVENT_2108_sequence_setter_1",
+        "command": "run_event_as_subroutine",
+        "args": [818]
     },
     {
         "identifier": 'EVENT_2108_fade_in_from_black_async_15',
@@ -80,6 +80,11 @@ script = [
         "identifier": 'EVENT_2108_run_event_as_subroutine_17',
         "command": 'jmp_to_subroutine',
         "args": ['EVENT_2108_jmp_if_bit_sub_0']
+    },
+    {
+        "identifier": "EVENT_2108_sequence_setter_2a",
+        "command": "run_event_as_subroutine",
+        "args": [818]
     },
     {
         "identifier": 'EVENT_2108_run_event_as_subroutine_17_',

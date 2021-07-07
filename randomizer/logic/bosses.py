@@ -5,6 +5,7 @@ import random
 import statistics
 
 from randomizer.data import bosses, enemies
+from randomizer.data.formations import FormationMember
 from . import flags, utils
 
 
@@ -32,6 +33,17 @@ def _boss_fight_filter(world, location):
 def swapPositions(list, pos1, pos2):
     list[pos1], list[pos2] = list[pos2], list[pos1]
     return list
+
+def set_henchman_run_flags(world, boss, henchman):
+    if henchman.pack_number is not None:
+        henchman_pack = world.get_formation_pack_by_index(henchman.pack_number)
+        for f in henchman_pack.formations:
+            # dont run away
+            if utils.isclass_or_instance(boss, bosses.MackBoss) or utils.isclass_or_instance(boss, bosses.BoosterBoss):
+                world.get_enemy_formation_by_index(f.index).music_run_flags = 3
+            # do run away
+            else:
+                world.get_enemy_formation_by_index(f.index).music_run_flags = 1
 
 def randomize_all(world):
     """Randomize the boss locations.
@@ -78,7 +90,7 @@ def randomize_all(world):
             # swapPositions(shuffled_locations, index_jinx, index_exor)
             # swapPositions(shuffled_locations, index_jagger, index_countdown)
 
-            shuffled_packs = [b.pack for b in shuffled_locations]
+            shuffled_bosses = [b.boss for b in shuffled_locations]
 
             # Randomize boss music for locations if enabled.
             if world.settings.is_flag_enabled(flags.BossShuffleMusic):
@@ -86,6 +98,37 @@ def randomize_all(world):
                 music_choices = list(bosses.BattleMusic)
                 for location in locations:
                     location.music = random.choice(music_choices)
+
+
+            # Put Shelly in the right battle & give it the right arguments to use for new script
+            for location, boss in zip(locations, shuffled_bosses):
+                if utils.isclass_or_instance(location, bosses.Birdetta):
+                    # Do not allow Shelly to join battles that need their own fixed backgrounds
+                    if utils.isclass_or_instance(boss, bosses.BirdettaBoss) or utils.isclass_or_instance(boss, bosses.ExorBoss) or utils.isclass_or_instance(boss, bosses.CloakerDominoBoss) or utils.isclass_or_instance(boss, bosses.KingCalamariBoss) or utils.isclass_or_instance(boss, bosses.CountdownBoss) or utils.isclass_or_instance(boss, bosses.SmithyBoss) or utils.isclass_or_instance(boss, bosses.AxemRangersBoss):
+                        pass
+                    else:
+                        # i hope this works. i dont understand when python passes objects by value or reference
+                        # get list of enemy ID vals who should be summoned by shelly
+                        summons = []
+                        target_formation = world.get_enemy_formation_by_index(boss.pack_number)
+                        for index, member in enumerate(target_formation.members):
+                            if not member.hidden_at_start:
+                                summons.append(0x28 + member.index)
+                                target_formation.members[index].hidden_at_start = True
+                        target_formation.members.append(FormationMember(len(target_formation.members), False, world.get_enemy_instance(enemies.Shelly), 171, 103))
+                        # shelly will modify its summon script at the time of patch build
+                        world.get_enemy_instance(enemies.Shelly).summons = summons
+                        # if target formation has a loder event, move it into shelly's script instead
+                        world.get_enemy_instance(enemies.Shelly).summon_event = target_formation.event_at_start
+                        target_formation.event_at_start = None
+                        # force shelly battle to have egg background
+                        target_formation.required_battlefield = bosses.Battlefields.Birdo
+                        # now, fix birdetta background, hide her instance of shelly, and have her be starting enemy
+                        target_formation_birdetta = world.get_enemy_formation_by_index(297)
+                        target_formation_birdetta.required_battlefield = None
+                        target_formation_birdetta.members[0].hidden_at_start = False
+                        target_formation_birdetta.members[1].hidden_at_start = True
+
 
             # Scale boss stats accordingly if keep stats not enabled.
             if world.settings.is_flag_value(flags.BossShuffleScaleStats, True):
@@ -256,17 +299,72 @@ def randomize_all(world):
                             enemy.xp = 0
                             enemy.coins = 0
 
+            # What to do about EXP?
+
             # Assign packs to their new locations and update music and can't run flags.
-            for location, pack in zip(locations, shuffled_packs):
-                location.pack = pack
-                location.formation.music = location.music
-                location.formation.can_run_away = location.can_run_away
+            for location, boss in zip(locations, shuffled_bosses):
+                location.boss = boss
+                location.boss.formation.music = location.music
+                location.boss.formation.can_run_away = location.can_run_away
+
+                unique_henchmen = boss.unique_henchmen
+                repeatable_henchmen = boss.repeatable_henchmen
+
+                # prepare NPC locations to patch the correct models
+
+                #set boss model to each room associated with this location
+                for index, model in enumerate(location.boss_locations):
+                    if world.settings.is_flag_value(flags.BossReplaceMinigameSprites, True) or not model.minigames_only:
+                        location.boss_locations[index].occupant = boss
+
+                # set priority henchmen to locations that can take them
+                for index, henchman in enumerate(location.unique_henchmen):
+                    for index2, model in enumerate(henchman):
+                        if world.settings.is_flag_value(flags.BossReplaceMinigameSprites, True) or not model.minigames_only:
+                            # if the boss has unique henchmen to donate, use it
+                            requires_henchman_with_pack = location.unique_henchmen[index][index2].fill_type is not bosses.HenchmanType.NPCOnly
+                            new_unique_henchman = unique_henchmen[index]
+                            eligible_repeatable_henchmen = [r for r in repeatable_henchmen if ((requires_henchman_with_pack and r.pack_number is not None) or not requires_henchman_with_pack)]
+                            
+                            if index < len(unique_henchmen) and not (requires_henchman_with_pack and new_unique_henchman.pack_number is None):
+                                new_henchman = new_unique_henchman
+                                world.get_formation_pack_by_index(new_henchman.pack_number)
+                                location.unique_henchmen[index][index2].occupant = new_henchman
+                                set_henchman_run_flags(world, boss, new_henchman)
+                            # otherwise, repeatable henchmen can fill the npc slot if permitted
+                            elif len(eligible_repeatable_henchmen) > 0:
+                                new_henchman = random.choice(eligible_repeatable_henchmen)
+                                if location.unique_henchmen[index][index2].repeatable_allowed:
+                                    location.unique_henchmen[index][index2].occupant = new_henchman
+                                    set_henchman_run_flags(world, boss, new_henchman)
+                                elif location.unique_henchmen[index][index2].remove_if_empty:
+                                    location.unique_henchmen[index][index2].occupant = None
+                            # remove if no repeatables available & npc should be hidden if empty
+                            elif location.unique_henchmen[index][index2].remove_if_empty:
+                                location.unique_henchmen[index][index2].occupant = None
+
+                # set npcs that require non-unique henchmen
+                for index, henchman in enumerate(location.repeatable_henchmen):
+                    for index2, model in enumerate(henchman):
+                        if world.settings.is_flag_value(flags.BossReplaceMinigameSprites, True) or not model.minigames_only:
+                            # ignore punchinello's microbombs unless the substituted boss is Hidon, Birdetta, or King Calamari
+                            if (utils.isclass_or_instance(location, bosses.Punchinello) and (utils.isclass_or_instance(boss, bosses.KingCalamariBoss) or utils.isclass_or_instance(boss, bosses.HidonBoss) or utils.isclass_or_instance(boss, bosses.BirdettaBoss))) or not utils.isclass_or_instance(location, bosses.Punchinello):
+                                if len(repeatable_henchmen) > 0:
+                                    if utils.isclass_or_instance(location, bosses.Punchinello) and utils.isclass_or_instance(boss, bosses.KingCalamariBoss):
+                                        new_henchman = bosses.KingCalamariTinyBloober
+                                    else:
+                                        new_henchman = random.choice(repeatable_henchmen)
+                                    location.repeatable_henchmen[index][index2].occupant = new_henchman
+                                    set_henchman_run_flags(world, boss, new_henchman)
+                                elif location.repeatable_henchmen[index][index2].remove_if_empty:
+                                    location.repeatable_henchmen[index][index2].occupant = None
+                    
 
                 # *** Special cases
 
                 # For Boomer fight, "hide" the Hangin' Shy enemies by moving them off the screen.  This is needed
                 # because they set bits for the Boomer fight and disable themselves.  Also make sure speed is max.
-                if location.formation.index == 358 and not isinstance(location, bosses.Boomer):
+                if isinstance(location, bosses.Boomer) and not isinstance(boss, bosses.BoomerBoss):
                     location.formation.members[1].x_pos = 0
                     location.formation.members[1].y_pos = 255
                     location.formation.members[2].x_pos = 0

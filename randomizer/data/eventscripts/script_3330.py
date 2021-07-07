@@ -58,6 +58,11 @@ script = [
         "args": [Rooms._352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM, 2, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
+        "identifier": "EVENT_3330_sequence_setter_1",
+        "command": "run_event_as_subroutine",
+        "args": [840]
+    },
+    {
         "identifier": 'EVENT_3330_run_event_as_subroutine_9',
         "command": 'run_event_as_subroutine',
         "args": [15]

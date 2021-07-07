@@ -97,6 +97,11 @@ script = [
         "args": [AreaObjects.NPC_0, 119]
     },
     {
+        "identifier": "EVENT_737_sequence_setter_1",
+        "command": "run_event_as_subroutine",
+        "args": [821]
+    },
+    {
         "identifier": 'EVENT_737_fade_in_from_black_async_20',
         "command": 'fade_in_from_black_async'
     },

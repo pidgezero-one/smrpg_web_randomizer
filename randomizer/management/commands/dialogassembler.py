@@ -16,11 +16,11 @@ def assemble_from_table(pointer_table, data_table):
     # Will need to substitute vars into any strings here where appropriate. i.e. Peach's name into #735
     # `PEACH_NAME`
     # `PEACH_ARTICLE`
-    # `TOWER_BOSS_1`
-    # done - `MARRYMORE_CHARACTER`
-    # `RANDOM_BOSS_NAME_1` should exclude `TOWER_BOSS_1`
-    # `RANDOM_BOSS_NAME_2` should exclude `TOWER_BOSS_1`
-    # `RANDOM_BOSS_NAME_3` should exclude `TOWER_BOSS_1`
+    # done - `TOWER_BOSS_1`
+    # partially done - needs handler for when recruit is empty - `MARRYMORE_CHARACTER`
+    # done - `RANDOM_BOSS_NAME_1` should exclude `TOWER_BOSS_1`
+    # done - `RANDOM_BOSS_NAME_2` should exclude `TOWER_BOSS_1`
+    # done - `RANDOM_BOSS_NAME_3` should exclude `TOWER_BOSS_1`
     # doen - `RANDOM_CHARACTER_NAME` should exclude `MARRYMORE_CHARACTER`
     # done - `SUPER_JUMP_PRIZE_1_CAP`
     # done - `SUPER_JUMP_PRIZE_2_CAP`

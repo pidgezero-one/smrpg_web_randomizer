@@ -11,6 +11,11 @@ script = [
         "args": [0x7093, 6, 'EVENT_2208_set_action_script_sync_10']
     },
     {
+        "identifier": 'EVENT_2208_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [847]
+    },
+    {
         "identifier": 'EVENT_2208_fade_in_from_black_async_1',
         "command": 'fade_in_from_black_async'
     },
@@ -67,6 +72,11 @@ script = [
                 "command": 'visibility_on'
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_2208_sequence_setter_2',
+        "command": 'run_event_as_subroutine',
+        "args": [847]
     },
     {
         "identifier": 'EVENT_2208_fade_in_from_black_async_13',

@@ -134,6 +134,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2224_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [853]
+    },
+    {
         "identifier": 'EVENT_2224_fade_in_from_black_async_4',
         "command": 'fade_in_from_black_async'
     },

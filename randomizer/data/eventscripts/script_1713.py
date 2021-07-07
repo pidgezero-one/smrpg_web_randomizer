@@ -33,6 +33,11 @@ script = [
         "args": [0x7077, 2, 'EVENT_1713_jmp_if_bit_clear_6']
     },
     {
+        "identifier": 'EVENT_1713_sequence_setter_1',
+        "command": 'run_event_as_subroutine',
+        "args": [758]
+    },
+    {
         "identifier": 'EVENT_1713_run_event_as_subroutine_4',
         "command": 'run_event_as_subroutine',
         "args": [15]
@@ -44,12 +49,17 @@ script = [
     {
         "identifier": 'EVENT_1713_jmp_if_bit_clear_6',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7077, 7, 'EVENT_1713_fade_in_from_black_sync_10']
+        "args": [0x7077, 7, 'EVENT_1713_sequence_setter_3']
     },
     {
         "identifier": 'EVENT_1713_set_action_script_sync_7',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_8, 162]
+    },
+    {
+        "identifier": 'EVENT_1713_sequence_setter_2',
+        "command": 'run_event_as_subroutine',
+        "args": [758]
     },
     {
         "identifier": 'EVENT_1713_run_event_as_subroutine_8',
@@ -59,6 +69,11 @@ script = [
     {
         "identifier": 'EVENT_1713_ret_9',
         "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1713_sequence_setter_3',
+        "command": 'run_event_as_subroutine',
+        "args": [758]
     },
     {
         "identifier": 'EVENT_1713_fade_in_from_black_sync_10',

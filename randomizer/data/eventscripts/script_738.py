@@ -72,6 +72,11 @@ script = [
         ]
     },
     {
+        "identifier": "EVENT_738_sequence_setter_1",
+        "command": "run_event_as_subroutine",
+        "args": [822]
+    },
+    {
         "identifier": 'EVENT_738_fade_in_from_black_sync_duration_6',
         "command": 'fade_in_from_black_sync_duration',
         "args": [60]

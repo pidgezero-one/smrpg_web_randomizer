@@ -78,6 +78,11 @@ script = [
         ]
     },
     {
+        "identifier": "EVENT_2064_sequence_setter",
+        "command": "run_event_as_subroutine",
+        "args": [815]
+    },
+    {
         "identifier": 'EVENT_2064_fade_in_from_black_async_5',
         "command": 'fade_in_from_black_async'
     },
@@ -109,6 +114,11 @@ script = [
                 "command": 'visibility_on'
             }
         ]
+    },
+    {
+        "identifier": "EVENT_2064_sequence_setter_2",
+        "command": "run_event_as_subroutine",
+        "args": [815]
     },
     {
         "identifier": 'EVENT_2064_fade_in_from_black_async_9',
@@ -159,6 +169,11 @@ script = [
         ]
     },
     {
+        "identifier": "EVENT_2064_sequence_setter_3",
+        "command": "run_event_as_subroutine",
+        "args": [815]
+    },
+    {
         "identifier": 'EVENT_2064_fade_in_from_black_async_13',
         "command": 'fade_in_from_black_async'
     },
@@ -207,6 +222,11 @@ script = [
         ]
     },
     {
+        "identifier": "EVENT_2064_sequence_setter_4",
+        "command": "run_event_as_subroutine",
+        "args": [815]
+    },
+    {
         "identifier": 'EVENT_2064_fade_in_from_black_async__13',
         "command": 'fade_in_from_black_async'
     },
@@ -253,6 +273,11 @@ script = [
                 "command": 'visibility_on'
             }
         ]
+    },
+    {
+        "identifier": "EVENT_2064_sequence_setter_5",
+        "command": "run_event_as_subroutine",
+        "args": [815]
     },
     {
         "identifier": 'EVENT_2064_fade_in_from_black_async___13',
@@ -325,6 +350,11 @@ script = [
         "identifier": 'EVENT_2064_set_action_script_sync_18',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.NPC_1, 1006]
+    },
+    {
+        "identifier": "EVENT_2064_sequence_setter_6",
+        "command": "run_event_as_subroutine",
+        "args": [815]
     },
     {
         "identifier": 'EVENT_2064_fade_in_from_black_async_19',

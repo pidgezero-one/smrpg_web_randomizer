@@ -1387,7 +1387,7 @@ class BossReplaceMinigameSprites(BooleanFlag):
 
 class MimicsAnywhere(BooleanFlag):
     name = 'Mimics can appear anywhere'
-    description = '''If enabled, the three mimic chests could be in any chest in the world.
+    description = '''If enabled, the three mimic chests could be in any chest in the world. Save often with this setting turned on, especially if item-hunting at the start of the seed.
     
     If disabled, they will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley.'''
     modes = ['open']

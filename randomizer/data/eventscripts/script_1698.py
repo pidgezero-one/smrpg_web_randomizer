@@ -189,6 +189,11 @@ script = [
         "args": [AreaObjects.NPC_5]
     },
     {
+        "identifier": 'EVENT_1698_sequence_setter_1',
+        "command": 'run_event_as_subroutine',
+        "args": [759]
+    },
+    {
         "identifier": 'EVENT_1698_run_event_as_subroutine_27',
         "command": 'run_event_as_subroutine',
         "args": [14]
@@ -270,6 +275,11 @@ script = [
         "identifier": 'EVENT_1698_set_bit_34',
         "command": 'set_bit',
         "args": [0x7077, 3]
+    },
+    {
+        "identifier": 'EVENT_1698_sequence_setter_2',
+        "command": 'run_event_as_subroutine',
+        "args": [759]
     },
     {
         "identifier": 'EVENT_1698_run_event_as_subroutine_35',

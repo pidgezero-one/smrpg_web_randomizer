@@ -194,6 +194,11 @@ script = [
         "args": [0x7077, 1, 'EVENT_1702_set_bit_20']
     },
     {
+        "identifier": 'EVENT_1702_sequence_setter_1',
+        "command": 'run_event_as_subroutine',
+        "args": [756]
+    },
+    {
         "identifier": 'EVENT_1702_fade_in_from_black_async_13',
         "command": 'fade_in_from_black_async'
     },
@@ -205,6 +210,11 @@ script = [
         "identifier": 'EVENT_1702_set_bit_20',
         "command": 'set_bit',
         "args": [0x7077, 1]
+    },
+    {
+        "identifier": 'EVENT_1702_sequence_setter_2',
+        "command": 'run_event_as_subroutine',
+        "args": [756]
     },
     {
         "identifier": 'EVENT_1702_fade_in_from_black_sync_21',

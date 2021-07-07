@@ -32,11 +32,52 @@ overworld_items = {
     "coin": OverworldItem(499, 925),
     "small_coin": OverworldItem(194, 163),
     "frog_coin": OverworldItem(195, 925),
+    "static_frog_coin": OverworldItem(195, 15),
+    "static_coin": OverworldItem(499, 15),
+    "star": OverworldItem(388, 831),
     "star_piece": OverworldItem(28, 591),
     "bomb": OverworldItem(37, 15),
     "egg": OverworldItem(462, 15),
     "nothing": OverworldItem(255, 164),
     "default": OverworldItem(195, 773),
+    "cookie": OverworldItem(45, 480),
+    "chomp": OverworldItem(30, 831), # might be too big
+    "berry": OverworldItem(144, 15),
+    "cannonball": OverworldItem(430, 15),
+    "beetle": OverworldItem(255, 15),
+    "crown": OverworldItem(222, 840),
+    "stick": OverworldItem(474, 841),
+    "shell": OverworldItem(148, 830),
+    "parasol": OverworldItem(205, 830),
+    "fan": OverworldItem(44, 842),
+    "frying_pan": OverworldItem(235, 843),
+    "card": OverworldItem(150, 1017),
+    "candy": OverworldItem(153, 1018),
+    "red_syrup": OverworldItem(250, 831),
+    "green_syrup": OverworldItem(153, 831),
+    "yellow_syrup": OverworldItem(277, 831),
+    "blue_syrup": OverworldItem(146, 831),
+    "red_bomb": OverworldItem(250, 1019),
+    "green_bomb": OverworldItem(153, 1019),
+    "yellow_bomb": OverworldItem(277, 1019),
+    "blue_bomb": OverworldItem(146, 1019),
+    "green_juice": OverworldItem(153, 830),
+    "red_juice": OverworldItem(250, 830),
+    "blue_r_drink": OverworldItem(146, 202),
+    "yellow_d_drink": OverworldItem(277, 840),
+    "green_p_drink": OverworldItem(153, 201),
+    "green_frog_drink": OverworldItem(153, 1020),
+    "yellow_music_drink": OverworldItem(277, 773),
+    "blue_music_drink": OverworldItem(146, 773),
+    "red_music_drink": OverworldItem(250, 773),
+    "red_star_drink": OverworldItem(250, 1021),
+    # fish (81/239), urchins? spinys (sprite 257 seq 8)?
+    # small cloud? 518 seq 1 or 3
+    # tiny bird?
+    # heart? sprite 793 sequence 2
+    # knife: sprite 806 sequence 1
+    # balloon: sprite 942
+    # unused NPCs: maybe 501
 }
 
 
@@ -579,6 +620,7 @@ class FroggieStick(RegularItem):
     rare = True
     special_equip = True
     unique = ItemUnique.BalancedOnly
+    model = overworld_items["stick"]
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Caster's Staff”!\n It looks pretty good at bonking.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -595,6 +637,7 @@ class NokNokShell(RegularItem):
     tier = 5
     order = 58
     equip_chars = [Mario]
+    model = overworld_items["shell"]
     attack = 20
     variance = 2
     price = 20
@@ -658,6 +701,7 @@ class Chomp(RegularItem):
     price = 140
     rare = True
     unique = ItemUnique.BalancedOnly
+    model = overworld_items["chomp"]
     special_equip = True
     dialog_replacements = [
         (2911,
@@ -694,6 +738,7 @@ class Masher(RegularItem):
 class ChompShell(RegularItem):
     index = 13
     description = 'It~s a\x01Kinklink shell'
+    model = overworld_items["chomp"]
     tier = 5
     order = 65
     equip_chars = [Bowser]
@@ -763,6 +808,7 @@ class SlapGlove(RegularItem):
 class TroopaShell(RegularItem):
     index = 18
     description = 'Kick with it!'
+    model = overworld_items["shell"]
     tier = 5
     order = 59
     equip_chars = [Mario]
@@ -775,6 +821,7 @@ class TroopaShell(RegularItem):
 class Parasol(RegularItem):
     index = 19
     description = 'Inflicts\x01serious pain!'
+    model = overworld_items["parasol"]
     tier = 5
     order = 68
     equip_chars = [Peach]
@@ -828,6 +875,7 @@ class DoublePunch(RegularItem):
 class RibbitStick(RegularItem):
     index = 22
     description = 'It~ll come\x01in handy'
+    model = overworld_items["stick"]
     tier = 5
     order = 69
     equip_chars = [Mallow]
@@ -843,6 +891,7 @@ class SpikedLink(RegularItem):
     tier = 4
     order = 66
     equip_chars = [Bowser]
+    model = overworld_items["chomp"]
     attack = 30
     variance = 6
     price = 94
@@ -864,6 +913,7 @@ class MegaGlove(RegularItem):
 class WarFan(RegularItem):
     index = 25
     description = 'A mysterious\x01battle fan!'
+    model = overworld_items["fan"]
     tier = 4
     order = 63
     equip_chars = [Peach]
@@ -967,6 +1017,7 @@ class StarGun(RegularItem):
     tier = 1
     order = 73
     equip_chars = [Geno]
+    model = overworld_items["star"]
     attack = 57
     variance = 7
     price = 120
@@ -1007,6 +1058,7 @@ class SonicCymbal(RegularItem):
 class LazyShellWeapon(RegularItem):
     index = 33
     description = 'Toss a shell\x01at an enemy!'
+    model = overworld_items["shell"]
     tier = 1
     order = 57
     equip_chars = [Mario]
@@ -1029,6 +1081,7 @@ class LazyShellWeapon(RegularItem):
 class FryingPan(RegularItem):
     index = 34
     description = 'Enough iron to\x01be dangerous!'
+    model = overworld_items["frying_pan"]
     tier = 1
     order = 62
     equip_chars = [Peach]
@@ -1205,6 +1258,7 @@ class HappyCape(RegularItem):
 class HappyShell(RegularItem):
     index = 48
     description = 'A lucky shell'
+    model = overworld_items["shell"]
     tier = 5
     order = 86
     item_type = 1
@@ -1292,6 +1346,7 @@ class NauticaDress(RegularItem):
 class CourageShell(RegularItem):
     index = 54
     description = 'A stout shell'
+    model = overworld_items["shell"]
     tier = 4
     order = 74
     item_type = 1
@@ -1396,6 +1451,7 @@ class FireCape(RegularItem):
 class FireShell(RegularItem):
     index = 62
     description = 'Determined\x01person~s shell'
+    model = overworld_items["shell"]
     tier = 4
     order = 78
     item_type = 1
@@ -1443,11 +1499,13 @@ class PrincePants(RegularItem):
     magic_defense = 24
     price = 100
     vanilla_shop = True
+    model = overworld_items["crown"]
 
 
 class StarCape(RegularItem):
     index = 66
     description = 'A legendary\x01cape.'
+    model = overworld_items["star"]
     tier = 3
     order = 103
     item_type = 1
@@ -1461,6 +1519,7 @@ class StarCape(RegularItem):
 class HealShell(RegularItem):
     index = 67
     description = 'A legendary\x01shell.'
+    model = overworld_items["shell"]
     tier = 3
     order = 88
     item_type = 1
@@ -1482,6 +1541,7 @@ class RoyalDress(RegularItem):
     magic_defense = 24
     price = 100
     vanilla_shop = True
+    model = overworld_items["crown"]
 
 
 class SuperSuit(RegularItem):
@@ -1516,6 +1576,7 @@ class SuperSuit(RegularItem):
 class LazyShellArmor(RegularItem):
     index = 70
     description = 'A stout and\x01durable shell.'
+    model = overworld_items["shell"]
     tier = 1
     order = 90
     item_type = 1
@@ -2046,6 +2107,7 @@ class MaxMushroom(RegularItem):
 class HoneySyrup(RegularItem):
     index = 99
     description = 'Recovers 10 FP'
+    model = overworld_items["red_syrup"]
     order = 8
     item_type = 3
     consumable = True
@@ -2059,6 +2121,7 @@ class HoneySyrup(RegularItem):
 class MapleSyrup(RegularItem):
     index = 100
     description = 'Recovers 40 FP'
+    model = overworld_items["green_syrup"]
     order = 10
     item_type = 3
     consumable = True
@@ -2072,6 +2135,7 @@ class MapleSyrup(RegularItem):
 class RoyalSyrup(RegularItem):
     index = 101
     description = 'Recovers all FP'
+    model = overworld_items["yellow_syrup"]
     order = 21
     item_type = 3
     consumable = True
@@ -2093,11 +2157,13 @@ class PickMeUp(RegularItem):
     vanilla_shop = True
     tier = 1
     room_service = "Pick Me Up......."
+    model = overworld_items["red_star_drink"]
 
 
 class AbleJuice(RegularItem):
     index = 103
     description = 'Heal status\x01ailments'
+    model = overworld_items["blue_r_drink"]
     item_type = 3
     consumable = True
     status_immunities = [0, 1, 2, 3, 4, 5, 6]
@@ -2122,6 +2188,7 @@ class Bracer(RegularItem):
     tier = 2
     rank_value = 10
     room_service = "Bracer..........."
+    model = overworld_items["yellow_d_drink"]
 
 
 class Energizer(RegularItem):
@@ -2137,11 +2204,13 @@ class Energizer(RegularItem):
     vanilla_shop = True
     tier = 2
     room_service = "Energizer........"
+    model = overworld_items["green_p_drink"]
 
 
 class YoshiAde(RegularItem):
     index = 106
     description = 'Power raised\x01during battle'
+    model = overworld_items["green_juice"]
     order = 23
     item_type = 3
     consumable = True
@@ -2155,6 +2224,7 @@ class YoshiAde(RegularItem):
 class RedEssence(RegularItem):
     index = 107
     description = 'Become invincible\x01for 3 turns'
+    model = overworld_items["red_juice"]
     order = 19
     item_type = 3
     consumable = True
@@ -2175,6 +2245,7 @@ class KerokeroCola(RegularItem):
     vanilla_shop = True
     tier = 4
     room_service = "KerokeroCola....."
+    model = overworld_items["green_frog_drink"]
 
 
 class YoshiCookie(RegularItem):
@@ -2185,6 +2256,7 @@ class YoshiCookie(RegularItem):
     consumable = True
     price = 100
     rare = True
+    model = overworld_items["cookie"]
     tier = 1
     room_service = "Yoshi Cookie......"
 
@@ -2192,6 +2264,7 @@ class YoshiCookie(RegularItem):
 class PureWater(RegularItem):
     index = 110
     description = 'Defeats ghosts\x01in a wink'
+    model = overworld_items["blue_syrup"]
     order = 30
     item_type = 3
     consumable = True
@@ -2209,6 +2282,7 @@ class SleepyBomb(RegularItem):
     item_type = 3
     consumable = True
     status_immunities = [1]
+    model = overworld_items["yellow_bomb"]
     price = 25
     frog_coin_item = True
     rare = True
@@ -2236,6 +2310,7 @@ class FireBomb(RegularItem):
     item_name = "Fire Bomb"
     index = 113
     description = 'Hit all\x01enemies w/fire'
+    model = overworld_items["red_bomb"]
     order = 27
     item_type = 3
     consumable = True
@@ -2249,6 +2324,7 @@ class IceBomb(RegularItem):
     item_name = "Ice Bomb"
     index = 114
     description = 'Hit all\x01enemies w/ice'
+    model = overworld_items["blue_bomb"]
     order = 29
     item_type = 3
     consumable = True
@@ -2268,6 +2344,7 @@ class FlowerTab(RegularItem):
     rare = True
     tier = 2
     room_service = "Flower Tab......."
+    model = overworld_items["flower"]
 
 
 class FlowerJar(RegularItem):
@@ -2280,6 +2357,7 @@ class FlowerJar(RegularItem):
     rare = True
     tier = 3
     room_service = "Flower Jar......."
+    model = overworld_items["flower"]
 
 
 class FlowerBox(RegularItem):
@@ -2292,6 +2370,7 @@ class FlowerBox(RegularItem):
     rare = True
     tier = 4
     room_service = "Flower Box......."
+    model = overworld_items["flower"]
 
 
 class YoshiCandy(RegularItem):
@@ -2303,6 +2382,7 @@ class YoshiCandy(RegularItem):
     price = 140
     rare = True
     basic = True
+    model = overworld_items["candy"]
     tier = 2
     room_service = "Yoshi Candy......"
 
@@ -2317,6 +2397,7 @@ class FroggieDrink(RegularItem):
     vanilla_shop = True
     tier = 1
     room_service = "FroggieDrink......"
+    model = overworld_items["yellow_music_drink"]
 
 
 class MukuCookie(RegularItem):
@@ -2326,6 +2407,7 @@ class MukuCookie(RegularItem):
     item_type = 3
     consumable = True
     status_immunities = [0, 1, 2, 3, 4, 5, 6]
+    model = overworld_items["cookie"]
     price = 69
     vanilla_shop = True
     tier = 3
@@ -2341,7 +2423,8 @@ class Elixir(RegularItem):
     price = 48
     vanilla_shop = True
     tier = 2
-    room_service = "Muku Cookie......"
+    room_service = "Elixir............."
+    model = overworld_items["blue_music_drink"]
 
 
 class Megalixir(RegularItem):
@@ -2354,7 +2437,8 @@ class Megalixir(RegularItem):
     vanilla_shop = True
     tier = 3
     basic = True
-    room_service = "Elixir............."
+    room_service = "Megalixir.........."
+    model = overworld_items["red_music_drink"]
 
 
 class SeeYa(RegularItem):
@@ -2406,6 +2490,7 @@ class GoodieBag(RegularItem):
     rare = True
     tier = 1
     unique = ItemUnique.Always
+    model = overworld_items["static_coin"]
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Coin Sack”!\n It could make you rich![await][pause] I'll sell it\n to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2447,6 +2532,7 @@ class FreshenUp(RegularItem):
     status_immunities = [0, 1, 2, 3, 4, 5, 6]
     price = 50
     vanilla_shop = True
+    model = overworld_items["blue_r_drink"]
     tier = 2
     room_service = "Freshen Up......."
 
@@ -2458,6 +2544,7 @@ class RareFrogCoin(RegularItem):
     rare = True
     shuffle_type = ItemShuffleType.Required
     unique = ItemUnique.Always
+    model = overworld_items["static_frog_coin"]
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Green Coin”!\n It looks different from most Frog\n Coins.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2474,6 +2561,7 @@ class Wallet(RegularItem):
     item_type = 3
     price = 246
     rare = True
+    model = overworld_items["static_coin"]
     tier = 1
     unique = ItemUnique.Always
     dialog_replacements = [
@@ -2493,6 +2581,7 @@ class CricketPie(RegularItem):
     rare = True
     shuffle_type = ItemShuffleType.Required
     unique = ItemUnique.Always
+    model = overworld_items["cookie"]
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Baked Pastry”!\n Sorta makes you curious, doesn't\n it?[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2507,6 +2596,7 @@ class RockCandy(RegularItem):
     item_name = "Rock Candy"
     index = 131
     description = 'Attack all\x01enemies'
+    model = overworld_items["candy"]
     order = 31
     item_type = 3
     consumable = True
@@ -2571,6 +2661,7 @@ class SheepAttack(Item):
     rare = True
     tier = 2
     unique = ItemUnique.Always
+    model = overworld_items["egg"]
     max_allowed = 0
     dialog_replacements = [
         (2911,
@@ -2588,6 +2679,7 @@ class CarboCookie(RegularItem):
     item_type = 3
     rare = True
     unique = ItemUnique.Always
+    model = overworld_items["cookie"]
     max_allowed = 0
     tier = 1
     dialog_replacements = [
@@ -2705,6 +2797,7 @@ class FrightBomb(RegularItem):
     item_name = "Fright Bomb"
     index = 144
     description = 'Inflict fear\x01on one enemy'
+    model = overworld_items["green_bomb"]
     order = 28
     item_type = 3
     consumable = True
@@ -2779,6 +2872,7 @@ class SopranoCard(Item):
     item_type = 3
     rare = True
     unique = ItemUnique.Always
+    model = overworld_items["card"]
     max_allowed = 0
     dialog_replacements = [
         (2911,
@@ -2796,6 +2890,7 @@ class AltoCard(Item):
     item_type = 3
     rare = True
     unique = ItemUnique.Always
+    model = overworld_items["card"]
     max_allowed = 0
     dialog_replacements = [
         (2911,
@@ -2813,6 +2908,7 @@ class TenorCard(Item):
     item_type = 3
     rare = True
     unique = ItemUnique.Always
+    model = overworld_items["card"]
     max_allowed = 0
     dialog_replacements = [
         (2911,
@@ -2837,6 +2933,7 @@ class Crystalline(RegularItem):
     vanilla_shop = True
     tier = 3
     room_service = "Crystalline......."
+    model = overworld_items["yellow_d_drink"]
 
 
 class PowerBlast(RegularItem):
@@ -2852,6 +2949,7 @@ class PowerBlast(RegularItem):
     vanilla_shop = True
     tier = 3
     room_service = "Power Blast......"
+    model = overworld_items["green_p_drink"]
 
 
 class WiltShroom(RegularItem):
@@ -2900,6 +2998,7 @@ class Seed(RegularItem):
     rare = True
     shuffle_type = ItemShuffleType.Required
     unique = ItemUnique.Always
+    model = overworld_items["berry"]
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Mysterious Seed”!\n I wonder what will grow from it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2933,6 +3032,7 @@ class BigBooFlag(RegularItem):
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
+    model = overworld_items["card"]
     unique = ItemUnique.Always
     dialog_replacements = [
         (2911,
@@ -2950,6 +3050,7 @@ class DryBonesFlag(RegularItem):
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
+    model = overworld_items["card"]
     unique = ItemUnique.Always
     dialog_replacements = [
         (2911,
@@ -2967,6 +3068,7 @@ class GreaperFlag(RegularItem):
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
+    model = overworld_items["card"]
     unique = ItemUnique.Always
     dialog_replacements = [
         (2911,
@@ -2984,6 +3086,7 @@ class CricketJam(RegularItem):
     item_type = 3
     rare = True
     shuffle_type = ItemShuffleType.Required
+    model = overworld_items["green_juice"]
     unique = ItemUnique.Always
     dialog_replacements = [
         (2911,
@@ -3005,6 +3108,7 @@ class Fireworks(RegularItem):
     npc_event = 184
     overworld_event = 3112
     overworld_midas_event = 3398
+    model = overworld_items["star"]
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3022,6 +3126,7 @@ class Fireworks(RegularItem):
 class BrightCard(RegularItem):
     index = 174
     description = 'For the casino'
+    model = overworld_items["card"]
     order = 133
     item_type = 3
     rare = True
@@ -3090,7 +3195,7 @@ class MiscReward(Item):
 
 class ProgressiveCard(MiscReward):
     index = 195
-    model = overworld_items["music"]
+    model = overworld_items["card"]
     shuffle_type = ItemShuffleType.Required
     unique = ItemUnique.Always
     max_allowed = 3
@@ -3132,6 +3237,7 @@ class ProgressiveEgg(MiscReward):
 class ProgressiveFireworks(MiscReward):
     index = 197
     unique = ItemUnique.Always
+    model = overworld_items["star"]
     max_allowed = 3
     chest_event = 3100
     npc_event = 185
@@ -3249,6 +3355,7 @@ class Beetlemania(MiscReward):
     index = 164
     description = 'Beetlemania'
     unique = ItemUnique.Always
+    model = overworld_items["beetle"]
     tier = 1
     chest_event = 162
     npc_event = 161
@@ -3353,6 +3460,7 @@ class RecoveryMushroom(MiscReward):
     overworld_event = 2822
     npc_event = 397
     overworld_event = 2822
+    model = overworld_items["mushroom"]
 
 
 class FrogCoin(MiscReward):
@@ -3374,6 +3482,7 @@ class MultiFrogCoin(MiscReward):
     multiplier = 0
     chest_event = 3091
     quick_chest_event = 3082
+    model = overworld_items["frog_coin"]
     npc_event = 158
     chest_70A7_upper = 0
 

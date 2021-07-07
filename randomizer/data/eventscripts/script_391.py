@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_391_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [766]
+    },
+    {
         "identifier": 'EVENT_391_jmp_if_object_not_in_level_0',
         "command": 'jmp_if_object_not_in_level',
         "args": [AreaObjects.NPC_1, Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, 'EVENT_257_fade_in_from_black_async_0']

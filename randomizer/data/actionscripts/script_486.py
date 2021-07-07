@@ -15,11 +15,6 @@ script = [
         "args": [VramPriority.MARIO_OVERLAPS_ON_ALL_SIDES]
     },
     {
-        "identifier": 'ACTION_486_set_sprite_sequence_2',
-        "command": 'set_sprite_sequence',
-        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-    },
-    {
         "identifier": 'ACTION_486_ret_3',
         "command": 'ret'
     }

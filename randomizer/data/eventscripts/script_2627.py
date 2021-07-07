@@ -54,30 +54,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2627_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_10],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2627_action_queue_async_11_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [1, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2627_action_queue_async_15',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_10],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2627_action_queue_async_15_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2627_action_queue_sync_25',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_10],

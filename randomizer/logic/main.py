@@ -11,14 +11,18 @@ import enum
 
 
 from randomizer import data
-from randomizer.data.eventtables import _0x68Flags
+from randomizer.data.eventtables import _0x68Flags, _0x60Flags, AreaObjects
 from randomizer.data.eventscripts.events import scripts as eventscripts
+from randomizer.data.objectsequencetables import _0x08Flags
 from randomizer.data.actionscripts.actions import scripts as actionscripts
 from randomizer.data.roomobjects.roomobjects import rooms as roomdata
 from randomizer.data.npcmodels import models as npcmodels
+from randomizer.data.npcmodeltables import VramStore, SpriteName
+from randomizer.data.roomobjecttables import RadialDirection
 from randomizer.data.dialog_data.dialog_data import dialog_data
 from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
 from randomizer.data.locations import Area
+from randomizer.data.bosses import SpriteSize, HenchmanType, SequenceType
 from . import bosses
 from . import bosses_overworld
 from . import credits
@@ -251,6 +255,11 @@ class CommandTypes(enum.Enum):
     Action = enum.auto()
     Event = enum.auto()
 
+def new_animation(event_id, command, npc_id, subscript):
+    cmd = new_command(event_id, command, [npc_id + 0x14])
+    cmd["subscript"] = subscript
+    return cmd
+
 def new_command(event_id, command, args=None, t=CommandTypes.Event):
     if t == CommandTypes.Action:
         cmdType = "ACTION"
@@ -263,6 +272,62 @@ def new_command(event_id, command, args=None, t=CommandTypes.Event):
     if args is not None:
         cmd["args"] = args
     return cmd
+
+def is_animation_header(command, npc_id):
+    return command["command"] in ['action_queue_async', 'action_queue_sync', 'start_embedded_action_script_async_F0', 'start_embedded_action_script_async_F1', 'start_embedded_action_script_sync_F0', 'start_embedded_action_script_sync_F1'] and command["args"][0] == npc_id + 0x14
+
+def remove_sequence_changes_from_action_script(script):
+    return [a for a in script if a["command"] != 'set_sprite_sequence' and a["command"] != "reset_properties"]
+
+def fix_script_for_scarecrow(script):
+    s = [a for a in script if a["command"] != "reset_properties"]
+    output = []
+    for command in s:
+        if command["command"] == "face_northwest":
+            command["command"] = "face_southwest"
+            output.append(command)
+        elif command["command"] == "face_northeast":
+            command["command"] = "face_southeast"
+            output.append(command)
+        elif command["command"] == "face_southeast":
+            command["command"] = "face_northwest"
+            output.append(command)
+        elif command["command"] == "face_southwest":
+            command["command"] = "face_northeast"
+            output.append(command)
+        elif command["command"] == "face_mario":
+            pass # could possibly substitute a series of "ifs" comparing coord to mario's, and set direction based on that info, but that would be hella complicated and i dont know what temp vars would make sense for it
+        elif command["command"] in ["walk_1_step_east", "walk_1_step_northeast", "shift_east_steps", "shift_northeast_steps", "shift_east_pixels", "shift_northeast_pixels"]:
+            output.append({"identifier": "dummy", "command": "face_southwest"})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append(command)
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
+        elif command["command"] in ["walk_1_step_southeast", "shift_southeast_steps", "shift_southeast_pixels"]:
+            output.append({"identifier": "dummy", "command": "face_northeast"})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append(command)
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
+        elif command["command"] in ["walk_1_step_south", "shift_south_steps", "shift_south_pixels"]:
+            output.append({"identifier": "dummy", "command": "face_northeast"})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append({"identifier": "dummy", "command": "set_sprite_sequence", "args": [2, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
+        elif command["command"] in ["walk_1_step_west", "walk_1_step_southwest", "shift_west_steps", "shift_southwest_steps", "shift_west_pixels", "shift_southwest_pixels"]:
+            output.append({"identifier": "dummy", "command": "face_northwest"})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append(command)
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
+        elif command["command"] in ["walk_1_step_north", "walk_1_step_northwest", "shift_north_steps", "shift_northwest_steps", "shift_north_pixels", "shift_northwest_pixels"]:
+            output.append({"identifier": "dummy", "command": "face_southeast"})
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append(command)
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
+        elif command["command"] in ["shift_f_direction_steps", "shift_z_20_steps", "shift_z_up_steps", "shift_z_down_steps", "shift_z_up_20_steps", "shift_z_down_20_steps", "shift_f_direction_pixels", "walk_f_direction_16_pixels", "shift_z_up_pixels", "shift_z_down_pixels", "shift_to_xy_coords", "shift_xy_steps", "shift_xy_pixels", "walk_1_step_f_direction", "walk_f_direction_16_pixels", "walk_to_xy_coords", "walk_xy_steps", "walk_to_7016_7018", "walk_to_7016_7018_701A"]:
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append(command)
+            output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
+        else:
+            output.append(command)
 
 
 class GameWorld:
@@ -420,8 +485,9 @@ class GameWorld:
         items.randomize_all(self)
         chests.randomize_all(self)
         shops.randomize_all(self)
-        enemies.randomize_all(self)
         bosses.randomize_all(self)
+        # Bosses might have to go before enemies to make formation rando work as intended?
+        enemies.randomize_all(self)
         doors.randomize_all(self)
         games.randomize_all(self)
         dialogs.randomize_all(self)
@@ -829,7 +895,7 @@ class GameWorld:
                     # What to do about this if you DON'T get a character here?
                     self.search_replace_dialog("`MARRYMORE_CHARACTER`", c.item.description)
                     random_character = random.choice([i.description for i in [data.items.MarioRecruit, data.items.MallowRecruit, data.items.GenoRecruit, data.items.BowserRecruit, data.items.ToadstoolRecruit] if not utils.isclass_or_instance(c.item, i)])
-                    self.search_replace_dialog("`RANDOM_CHARACTER_NAME`", c.item.description)
+                    self.search_replace_dialog("`RANDOM_CHARACTER_NAME`", random_character)
                     if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
                         self.prepend_bits(200, [[0x7066, 3], [0x706E, 3]])
         
@@ -1038,7 +1104,7 @@ class GameWorld:
                 self.eventscripts[2405].pop(0)
                 
         # finalize granter scripts
-        for e in grant_builders[c.event]:
+        for e in grant_builders:
             grant_builders[e]["jumps"].append(new_command(e, "ret"))
             self.eventscripts[e] = copy.copy(grant_builders[e]["jumps"]) + copy.copy(grant_builders[e]["executions"])
 
@@ -1186,6 +1252,328 @@ class GameWorld:
                         elif cmd[c]["command"] == "set" and cmd[c]["args"][0] == 0x70a7 and cmd[c]["args"][1] == 114:
                             cmd = self.eventscripts[1636][c]["args"][1] = ts_item_3.index
         
+        ########## boss NPCs
+        fight_builders = {}
+        sequence_setters = []
+
+
+        for b in self.boss_locations:
+            # create boss fight initiation builder
+            boss = b.boss
+            # 353 is the event ID that houses all the boss battle pack fight initiators
+            # events for overworld NPCs/tiles that initiate these fights all reference event 353 in some way shape or form
+            if 353 not in fight_builders:
+                fight_builders[353] = {
+                    "jumps": [],
+                    "executions": []
+                }
+            # fights with forced backgrounds need to have them, otherwise just use whatever the level's default background is
+            # this -should- in theory prevent us from having to do tedious work to give "Mimics Anywhere" chest fights the right location backgrounds
+            formation = b.formation
+            if formation.required_battlefield is not None:
+                cmds = [new_command(353, 'set_short', [0x700E, boss.pack_number]), new_command(353, 'start_battle_700E')]
+            else:
+                cmds = [new_command(353, 'start_battle', [boss.pack_number, formation.required_battlefield])]
+            fight_builders[353]["executions"].extend(cmds)
+            jmp = new_command(353, 'jmp_if_7000_equals_short', [b.identifier, cmds[0]["identifier"]])
+            fight_builders[353]["jumps"].append(jmp)
+            
+            # put the shuffled boss names in dialogs that use them
+            if utils.isclass_or_instance(b, data.bosses.Booster):
+                self.search_replace_dialog("`TOWER_BOSS_1`", boss.name)
+                random_bosses = random.choices([loc.boss.name for loc in self.boss_locations if not utils.isclass_or_instance(loc, data.bosses.Booster)], k=3)
+                self.search_replace_dialog("`RANDOM_BOSS_NAME_1`", random_bosses[0])
+                self.search_replace_dialog("`RANDOM_BOSS_NAME_2`", random_bosses[1])
+                self.search_replace_dialog("`RANDOM_BOSS_NAME_3`", random_bosses[2])
+
+            # prepare overworld to handle shuffled boss sprites
+            for boss_location in b.boss_locations:
+                occupant = boss_location.occupant
+
+                # some of these operations will apply to clones, so need a completely distinct array
+                flattened_object_array = []
+                for index, obj in enumerate(self.rooms[boss_location.room_id]["objects"]):
+                    clones = copy.copy(obj["clones"])
+                    o = copy.copy(obj)
+                    o["clones"] = []
+                    o["original_index"] = index
+                    flattened_object_array.append(o)
+                    for index2, obj2 in clones:
+                        o2 = copy.copy(obj2)
+                        o2["parent_index"] = index
+                        o2["clone_index"] = index2
+                        flattened_object_array.append(o2)
+
+                # replace and animate the models
+                for index, obj in enumerate(flattened_object_array):
+                    if index == boss_location.npc_id:
+                        preferred_size = None
+                        # pick the model from what the incoming boss has available according to what the location prefers
+                        if boss_location.preferred_size == SpriteSize.Attack:
+                            if occupant.attack_models is not None:
+                                preferred_size = SpriteSize.Attack
+                            elif occupant.big_model is not None:
+                                preferred_size = SpriteSize.Large
+                            else:
+                                preferred_size = SpriteSize.Small
+                        elif boss_location.preferred_size == SpriteSize.Large:
+                            if occupant.big_model is not None:
+                                preferred_size = SpriteSize.Large
+                            else:
+                                preferred_size = SpriteSize.Small
+                        elif boss_location.preferred_size == SpriteSize.Statue:
+                            if occupant.statue_model is not None:
+                                preferred_size = SpriteSize.Statue
+                            else:
+                                preferred_size = SpriteSize.Small
+                        else:
+                            preferred_size = SpriteSize.Small
+
+                        if preferred_size == SpriteSize.Small:
+                            model = occupant.small_model
+                        elif preferred_size == SpriteSize.Statue:
+                            model = occupant.statue_model
+                        elif preferred_size == SpriteSize.Large:
+                            model = occupant.big_model
+                        elif preferred_size == SpriteSize.Attack:
+                            model = occupant.attack_model
+                        if model is None:
+                            raise Exception("what boss did you try to put here?")
+
+
+                        # replace the models
+
+                        if obj["original_index"] is not None:
+
+                            if preferred_size == SpriteSize.Small:
+                                self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["model"] = model.model_id
+
+                            elif preferred_size == SpriteSize.Statue:
+                                self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["model"] = model.model_id
+                                
+                            elif preferred_size == SpriteSize.Large:
+                                model_num = self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["model"]
+                                self.models[model_num] = model.model_details
+
+                            elif preferred_size == SpriteSize.Attack:
+                                model_num = self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["model"]
+                                self.models[model_num] = model.model_details
+
+
+                        # statues: flip directions where necessary
+                        if boss_location.preferred_size == SpriteSize.Statue:
+                            current_direction = self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["direction"]
+                            new_direction = current_direction
+
+                            if obj["original_index"] is not None:
+                                model_num = self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["model"]
+                            else:
+                                model_num = self.rooms[boss_location.room_id]["objects"][obj["parent_index"]]["model"] + self.rooms[boss_location.room_id]["objects"][obj["parent_index"]]["clones"][obj["clone_index"]]["npc_id_offset"]
+                            
+                            eligible_directions = self.models[model_num]["vram_store"]
+
+                            # swap directions for scarecrow sprites
+                            if self.models[model_num]["sprite"] == SpriteName._39_RED_SCARECROW:
+                                if current_direction == RadialDirection.SOUTHWEST:
+                                    new_direction = RadialDirection.NORTHWEST
+                                elif current_direction == RadialDirection.NORTHWEST:
+                                    new_direction = RadialDirection.SOUTHEAST
+                                elif current_direction == RadialDirection.NORTHEAST:
+                                    new_direction = RadialDirection.SOUTHWEST
+                                elif current_direction == RadialDirection.SOUTHEAST:
+                                    new_direction = RadialDirection.NORTHEAST
+
+                            # replace directions on original room objects
+                            if eligible_directions == VramStore._02_SWSE:
+                                if obj["original_index"] is not None:
+                                    self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["direction"] = RadialDirection.SOUTHWEST
+                                else:
+                                    self.rooms[boss_location.room_id]["objects"][obj["parent_index"]]["clones"][obj["clone_index"]]["direction"] = RadialDirection.SOUTHWEST
+                            else:
+                                if obj["original_index"] is not None:
+                                    self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["direction"] = new_direction
+                                else:
+                                    self.rooms[boss_location.room_id]["objects"][obj["parent_index"]]["clones"][obj["clone_index"]]["direction"] = new_direction
+                                
+                            # pixel shifts
+                            if (new_direction == RadialDirection.SOUTHEAST or new_direction == RadialDirection.SOUTHWEST) and (model.horizontal_pixel_shift > 0 or model.vertical_pixel_shift > 0):
+                                if boss_location.sequence_setter not in sequence_setters:
+                                    sequence_setters[boss_location.sequence_setter] = []
+                                horizontal_shift = 0xFF & (0xFF + model.horizontal_pixel_shift + 1)
+                                vertical_shift = 0xFF & (0xFF + model.vertical_pixel_shift + 1)
+                                cmd = new_animation(boss_location.sequence_setter, 'action_queue_async', boss_location.npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [horizontal_shift, vertical_shift]}])
+                                sequence_setters[boss_location.sequence_setter].append(cmd)
+                            elif (new_direction == RadialDirection.NORTHEAST or new_direction == RadialDirection.NORTHWEST) and (model.north_facing_horizontal_pixel_shift > 0 or model.north_facing_vertical_pixel_shift > 0):
+                                if boss_location.sequence_setter not in sequence_setters:
+                                    sequence_setters[boss_location.sequence_setter] = []
+                                if new_direction == RadialDirection.NORTHEAST:
+                                    horizontal_shift = 0xFF & (0xFF + (-1 * model.north_facing_horizontal_pixel_shift) + 1)
+                                    vertical_shift = 0xFF & (0xFF + (-1 * model.north_facing_vertical_pixel_shift) + 1)
+                                elif new_direction == RadialDirection.NORTHWEST:
+                                    horizontal_shift = 0xFF & (0xFF + model.north_facing_horizontal_pixel_shift + 1)
+                                    vertical_shift = 0xFF & (0xFF + model.north_facing_vertical_pixel_shift + 1)
+                                cmd = new_animation(boss_location.sequence_setter, 'action_queue_async', boss_location.npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [horizontal_shift, vertical_shift]}])
+                                sequence_setters[boss_location.sequence_setter].append(cmd)
+
+
+
+                        # if model requires a specific sequence or mold, set it now in room loader subroutine
+                        sprite_offset = model.sprite_offset
+                        if model.sequence_type == SequenceType.Mold or model.sequence > 0:
+                            if boss_location.sequence_setter not in sequence_setters:
+                                sequence_setters[boss_location.sequence_setter] = []
+                            if model.sequence_type == SequenceType.Mold:
+                                cmd = new_animation(boss_location.sequence_setter, 'action_queue_async', boss_location.npc_id, [{"identifier": "dummy", "command": "set_sprite_sequence", "args": [model.mold, sprite_offset, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_MOLD]]}])
+                            else:
+                                cmd = new_animation(boss_location.sequence_setter, 'action_queue_async', boss_location.npc_id, [{"identifier": "dummy", "command": "set_sprite_sequence", "args": [model.sequence, sprite_offset, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]}])
+                            sequence_setters[boss_location.sequence_setter].append(cmd)
+                            # and then, get rid of any commands that may un-set the sequence or mold
+                            for script_id in boss_location.target_scripts:
+                                script = self.eventscripts[script_id]
+                                for command_index, command in enumerate(script):
+                                    if is_animation_header(command, boss_location.npc_id):
+                                        command["subscript"] = remove_sequence_changes_from_action_script(command["subscript"])
+                                        self.eventscripts[script_id][command_index] = command
+                            for script_id in boss_location.target_action_scripts:
+                                self.actionscripts[script_id] = remove_sequence_changes_from_action_script(self.actionscripts[script_id])
+                                        
+
+                        # if model is a scarecrow, fix all of its directional commands
+                        model_info = self.models[model.model_id]
+                        if model_info["sprite"] == SpriteName._39_RED_SCARECROW:
+                            for script_id in boss_location.target_scripts:
+                                script = self.eventscripts[script_id]
+                                for command_index, command in enumerate(script):
+                                    if is_animation_header(command, boss_location.npc_id):
+                                        command["subscript"] = fix_script_for_scarecrow(command["subscript"])
+                                        self.eventscripts[script_id][command_index] = command
+                            for script_id in boss_location.target_action_scripts:
+                                self.actionscripts[script_id] = fix_script_for_scarecrow(self.actionscripts[script_id])
+
+
+                        # SPECIAL ANIMATIONS
+                        for script_id in boss_location.target_scripts:
+                            script = self.eventscripts[script_id]
+
+
+                            # bandit's way - distraction
+                            # also do this w action scripts?
+                            if utils.isclass_or_instance(b, data.bosses.Croco1):
+                                for command_index, command in enumerate(script):
+                                    if is_animation_header(command, boss_location.npc_id):
+                                        # replace croco animation if this npc has an appropriate one
+                                        if model.animations.bandits_way_distracted is not None:
+                                            # swap sprite if needed (ie Booster punch)
+                                            if model.animations.bandits_way_distracted.new_sprite_id is not None:
+                                                self.models[model.model_id]["sprite"] = model.animations.bandits_way_distracted.new_sprite_id
+                                            for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                                if subscript_command["command"] == 'set_sprite_sequence':
+                                                    subscript_command["args"][0] = model.animations.bandits_way_distracted.sequence_id
+                                                    # no support for sprite offsets, but not necessary with the sprites we're using
+                                                    self.eventscripts[script_id][command_index]["subscript"][subscript_command_index] = subscript_command
+                                        # remove animation altogether otherwise
+                                        else:
+                                            self.eventscripts[script_id][command_index]["subscript"] = [a for a in command["subscript"] if a["command"] != 'set_sprite_sequence']
+                            
+                            # punchinello - hits you away if you run into him
+                            elif utils.isclass_or_instance(b, data.bosses.Punchinello) and script_id == 594:
+                                for command_index, command in enumerate(script):
+                                    if is_animation_header(command, boss_location.npc_id):
+                                        # remove forced mold at end of subscript
+                                        pause = 10
+                                        subscript = [a for a in command["subscript"] if not (a["command"] == 'set_sprite_sequence' and _0x08Flags.READ_AS_MOLD in a["args"][2])]
+                                        if model.animations.mines_punch is not None:
+                                            if model.animations.bandits_way_distracted.contact_frame > 0:
+                                                pause = model.animations.bandits_way_distracted.contact_frame + 8
+                                            else:
+                                                pause = model.animations.bandits_way_distracted.total_duration
+                                            # swap sprite if needed (ie Booster punch)
+                                            if model.animations.bandits_way_distracted.new_sprite_id is not None:
+                                                self.models[model.model_id]["sprite"] = model.animations.bandits_way_distracted.new_sprite_id
+                                            # punch animation
+                                            for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                                if subscript_command["command"] == 'set_sprite_sequence':
+                                                    subscript_command["args"][0] = model.animations.bandits_way_distracted.sequence_id
+                                                elif subscript_command["command"] == 'pause':
+                                                    subscript_command["args"][0] = pause
+                                                self.eventscripts[script_id][command_index]["subscript"][subscript_command_index] = subscript_command
+                                            # set the time it takes for Mario to fly backwards
+                                            mario_script = script[command_index + 1] # assumes that no commands will come between two sync scripts, which honestly, nothing should
+                                            for subscript_command_index, subscript_command in enumerate(mario_script["subscript"]):
+                                                if subscript_command["command"] == 'pause':
+                                                    subscript_command["args"][0] = pause - 2
+                                                self.eventscripts[script_id][command_index + 1]["subscript"][subscript_command_index] = subscript_command
+                                        else:
+                                            self.eventscripts[script_id][command_index]["subscript"] = [a for a in subscript if a["command"] != 'set_sprite_sequence']
+                                            for subscript_command_index, subscript_command in enumerate(self.eventscripts[script_id][command_index]["subscript"]):
+                                                if subscript_command["command"] == 'pause':
+                                                    subscript_command["args"][0] = pause
+                                                self.eventscripts[script_id][command_index]["subscript"][subscript_command_index] = subscript_command
+                                            mario_script = script[command_index + 1] # assumes that no commands will come between two sync scripts, which honestly, nothing should
+                                            for subscript_command_index, subscript_command in enumerate(mario_script["subscript"]):
+                                                if subscript_command["command"] == 'pause':
+                                                    subscript_command["args"][0] = pause - 2
+                                                self.eventscripts[script_id][command_index + 1]["subscript"][subscript_command_index] = subscript_command
+
+
+
+                        # replace relevant dialogs
+                        for dialog_id in boss_location.dialogs:
+                            for d_id, d_data in occupant.dialog_replacements:
+                                if d_id == dialog_id:
+                                    self.replace_dialog(d_id, d_data)
+                            if self.settings.is_flag_value(flags.BossReplaceMinigameSprites, True):
+                                for d_id, d_data in occupant.optional_dialog_replacements:
+                                    if d_id == dialog_id:
+                                        self.replace_dialog(d_id, d_data)
+
+            # Replace the henchmen in each room
+            for u in b.unique_henchmen + b.repeatable_henchmen:
+                for henchman_location in u:
+                    occupant = henchman_location.occupant
+                    ctr = 0
+                    for index, obj in enumerate(self.rooms[henchman_location.room_id]):
+                        if ctr == henchman_location.npc_id:
+                            # if model requires a specific sequence, set it now in room loader subroutine
+                            if occupant.sequence is not None:
+                                if henchman_location.sequence_setter not in sequence_setters:
+                                    sequence_setters[henchman_location.sequence_setter] = []
+                                cmd = new_animation(henchman_location.sequence_setter, 'action_queue_async', henchman_location.npc_id, [{"identifier": "dummy", "command": "set_sprite_sequence", "args": [occupant.sequence, occupant.sprite_offset, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]}])
+                                sequence_setters[henchman_location.sequence_setter].append(cmd)
+                            # animation replacements
+                            #tbd
+                            # what to do about animations for vanilla placements? i.e. king calamri tentacle extend/retract animations
+                            self.rooms[henchman_location.room_id][ctr]["model"] = occupant.model_id
+                            if henchman_location.model_type == HenchmanType.Event or henchman_location.model_type == HenchmanType.ExternalEvent:
+                                if henchman_location.event_id not in fight_builders:
+                                    fight_builders[henchman_location.event_id] = {
+                                        "jumps": [new_command(henchman_location.event_id, 'set_7000_to_current_level')],
+                                        "executions": []
+                                    }
+                                cmds = [new_command(henchman_location.event_id, 'set_short', [0x700E, occupant.pack_number]), new_command(henchman_location.event_id, 'start_battle_700E')]
+                                fight_builders[henchman_location.event_id]["executions"].extend(cmds)
+                                jmp = new_command(henchman_location.event_id, 'jmp_if_7000_equals_short', [henchman_location.room_id, cmds[0]["identifier"]])
+                                fight_builders[henchman_location.event_id]["jumps"].append(jmp)
+                            elif henchman_location.model_type == HenchmanType.Pack:
+                                self.rooms[henchman_location.room_id][ctr]["battle_pack"] = occupant.pack_number
+                        ctr += 1
+                        for _ in obj["clones"]:
+                            ctr += 1
+                            
+        # finalize battle pack scripts and sequence setter scripts
+        for e in fight_builders:
+            fight_builders[e]["jumps"].append(new_command(e, "ret"))
+            self.eventscripts[e] = copy.copy(fight_builders[e]["jumps"]) + copy.copy(fight_builders[e]["executions"])
+        for e in sequence_setters:
+            sequence_setters[e].append(new_command(e, "ret"))
+            self.eventscripts[e] = copy.copy(sequence_setters[e])
+        # figure out partitions
+        # figure out sequence insertions
+        # figure out substituting directions for scarecrows, removing any "reset properties" or sequence setters for NPCs that need a certain sequence
+        # figure out moleville mines punch
+
+
+
 
 
 
@@ -1200,6 +1588,24 @@ class GameWorld:
         # Replaces it with ANDing by #$1F, which is all party members.
         if self.settings.is_flag_value(flags.ShowEquips, True):
             patch.add_data(0x033B6D, bytes([0x29, 0x1F, 0xEA]))
+
+        # Enemies
+        for enemy in self.enemies:
+            patch += enemy.get_patch()
+            enemy.patch_script()
+        patch += data.enemies.Enemy.build_psychopath_patch(self)
+
+        # Enemy attacks
+        for attack in self.enemy_attacks:
+            patch += attack.get_patch()
+
+        # Enemy formations
+        for formation in self.enemy_formations:
+            patch += formation.get_patch()
+
+        # Enemy packs
+        for pack in self.formation_packs:
+            patch += pack.get_patch()
 
 
 

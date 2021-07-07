@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2605_stop_sound_0_',
         "command": 'jmp_if_bit_clear',
-        "args": [0x708B, 0, 'EVENT_2605_action_queue_sync_0']
+        "args": [0x708B, 0, 'EVENT_2605_sequence_setter']
     },
     {
         "identifier": 'EVENT_2605_summon_to_current_level_0',
@@ -16,16 +16,9 @@ script = [
         "args": [AreaObjects.NPC_9]
     },
     {
-        "identifier": 'EVENT_2605_action_queue_sync_0',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2605_action_queue_sync_0_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [2, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
+        "identifier": 'EVENT_2605_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [855]
     },
     {
         "identifier": 'EVENT_2605_fade_in_from_black_async_1',

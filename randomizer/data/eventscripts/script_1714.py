@@ -18,6 +18,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_1714_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [757]
+    },
+    {
         "identifier": 'EVENT_1714_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
         "args": [0x7077, 0, 'EVENT_1714_set_bit_3']

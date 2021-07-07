@@ -638,16 +638,6 @@ script = [
         "args": [0x708a, 2]
     },
     {
-        "identifier": 'EVENT_2067_set_short_12',
-        "command": 'set_short',
-        "args": [0x700a, 0x00e2]
-    },
-    {
-        "identifier": 'EVENT_2067_jmp_to_event_13',
-        "command": 'jmp_to_event',
-        "args": [720]
-    },
-    {
         "identifier": 'EVENT_2067_ret_14',
         "command": 'ret'
     }

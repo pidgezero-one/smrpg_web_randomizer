@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._27_DUNGEON_IS_FULL_OF_MONSTERS,
-  "entrance_event": 3135,
+  "entrance_event": 773,
   "event_tiles": [],
   "exit_fields": [],
   "objects": [

@@ -23,6 +23,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_3342_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [843]
+    },
+    {
         "identifier": 'EVENT_3342_run_event_as_subroutine_2',
         "command": 'run_event_as_subroutine',
         "args": [15]

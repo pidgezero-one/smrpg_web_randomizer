@@ -175,6 +175,11 @@ script = [
         "args": [AreaObjects.NPC_14]
     },
     {
+        "identifier": 'EVENT_2601_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [858]
+    },
+    {
         "identifier": 'EVENT_2601_fade_in_from_black_async_7',
         "command": 'fade_in_from_black_async'
     },
@@ -191,6 +196,11 @@ script = [
         "identifier": 'EVENT_2601_summon_to_level_37__',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_14]
+    },
+    {
+        "identifier": 'EVENT_2601_sequence_setter_2',
+        "command": 'run_event_as_subroutine',
+        "args": [858]
     },
     {
         "identifier": 'EVENT_2601_fade_in_from_black_async_7_',

@@ -87,6 +87,11 @@ script = [
         "args": [AreaObjects.NPC_7]
     },
     {
+        "identifier": 'EVENT_1708_sequence_setter_1',
+        "command": 'run_event_as_subroutine',
+        "args": [760]
+    },
+    {
         "identifier": 'EVENT_1708_run_event_as_subroutine_13',
         "command": 'run_event_as_subroutine',
         "args": [15]
@@ -99,6 +104,11 @@ script = [
         "identifier": 'EVENT_1708_jmp_if_bit_clear_15',
         "command": 'jmp_if_bit_clear',
         "args": [0x7077, 4, 'EVENT_1708_set_bit_20']
+    },
+    {
+        "identifier": 'EVENT_1708_sequence_setter_2',
+        "command": 'run_event_as_subroutine',
+        "args": [760]
     },
     {
         "identifier": 'EVENT_1708_run_event_as_subroutine_16',
@@ -123,6 +133,11 @@ script = [
         "identifier": 'EVENT_1708_set_bit_20',
         "command": 'set_bit',
         "args": [0x7077, 4]
+    },
+    {
+        "identifier": 'EVENT_1708_sequence_setter_3',
+        "command": 'run_event_as_subroutine',
+        "args": [760]
     },
     {
         "identifier": 'EVENT_1708_run_event_as_subroutine_21',

@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._00_CURRENT,
-  "entrance_event": 15,
+  "entrance_event": 776,
   "event_tiles": [],
   "exit_fields": [
     {

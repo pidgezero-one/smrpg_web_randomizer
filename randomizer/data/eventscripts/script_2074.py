@@ -28,6 +28,11 @@ script = [
         "args": [AreaObjects.LAYER_1, 575]
     },
     {
+        "identifier": "EVENT_2074_sequence_setter_1",
+        "command": "run_event_as_subroutine",
+        "args": [816]
+    },
+    {
         "identifier": 'EVENT_2074_fade_in_from_black_async_duration_4',
         "command": 'fade_in_from_black_async_duration',
         "args": [70]

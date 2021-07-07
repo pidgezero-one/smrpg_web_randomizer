@@ -32,6 +32,11 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
+        "identifier": "EVENT_3756_sequence_setter_2",
+        "command": "run_event_as_subroutine",
+        "args": [832]
+    },
+    {
         "identifier": 'EVENT_3756_ret_4',
         "command": 'ret'
     }

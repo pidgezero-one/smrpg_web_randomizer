@@ -10,6 +10,26 @@ script = [
         "command": 'stop_music'
     },
     {
+        "identifier": 'EVENT_128_stop_music_2',
+        "command": 'stop_music_FD9F'
+    },
+    {
+        "identifier": 'EVENT_128_stop_music_3',
+        "command": 'stop_music_FDA0'
+    },
+    {
+        "identifier": 'EVENT_128_stop_music_4',
+        "command": 'stop_music_FDA1'
+    },
+    {
+        "identifier": 'EVENT_128_stop_music_5',
+        "command": 'stop_music_FDA2'
+    },
+    {
+        "identifier": 'EVENT_128_stop_music_6',
+        "command": 'stop_music_FDA6'
+    },
+    {
         "identifier": "EVENT_128_ret",
         "command": "ret"
     },

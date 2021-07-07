@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._26_FOREST_MAZE,
-  "entrance_event": 15,
+  "entrance_event": 774,
   "event_tiles": [
     {
       "event": 2436,

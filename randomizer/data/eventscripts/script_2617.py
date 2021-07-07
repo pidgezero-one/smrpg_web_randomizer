@@ -8,7 +8,7 @@ script = [
     {
         "identifier": 'EVENT_2617_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
-        "args": [0x7091, 3, 'EVENT_2617_fade_in_from_black_async_5']
+        "args": [0x7091, 3, 'EVENT_2617_sequence_setter']
     },
     {
         "identifier": 'EVENT_2617_action_queue_sync_1',
@@ -24,11 +24,6 @@ script = [
                 "identifier": 'EVENT_2617_action_queue_sync_1_SUBSCRIPT_set_priority_1',
                 "command": 'set_priority',
                 "args": [3]
-            },
-            {
-                "identifier": 'EVENT_2617_action_queue_sync_1_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             },
             {
                 "identifier": 'EVENT_2617_action_queue_sync_1_SUBSCRIPT_shift_northwest_pixels_3',
@@ -62,11 +57,6 @@ script = [
                 "args": [3]
             },
             {
-                "identifier": 'EVENT_2617_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
                 "identifier": 'EVENT_2617_action_queue_sync_2_SUBSCRIPT_shift_northwest_pixels_3',
                 "command": 'shift_northwest_pixels',
                 "args": [8]
@@ -98,11 +88,6 @@ script = [
                 "args": [3]
             },
             {
-                "identifier": 'EVENT_2617_action_queue_sync_3_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
                 "identifier": 'EVENT_2617_action_queue_sync_3_SUBSCRIPT_shift_northwest_pixels_3',
                 "command": 'shift_northwest_pixels',
                 "args": [8]
@@ -123,12 +108,12 @@ script = [
                 "command": 'set_priority',
                 "args": [3]
             },
-            {
-                "identifier": 'EVENT_2617_action_queue_async_4_SUBSCRIPT_set_sprite_sequence_1',
-                "command": 'set_sprite_sequence',
-                "args": [2, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            }
         ]
+    },
+    {
+        "identifier": 'EVENT_2617_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [856]
     },
     {
         "identifier": 'EVENT_2617_fade_in_from_black_async_5',

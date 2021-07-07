@@ -146,18 +146,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2618_action_queue_async_31',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_15],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2618_action_queue_async_31_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2618_action_queue_sync_33',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_15],
@@ -379,18 +367,6 @@ script = [
             {
                 "identifier": 'EVENT_2618_action_queue_sync_58_SUBSCRIPT_face_southeast_0',
                 "command": 'face_southeast'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2618_action_queue_async_59',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_15],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2618_action_queue_async_59_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             }
         ]
     },

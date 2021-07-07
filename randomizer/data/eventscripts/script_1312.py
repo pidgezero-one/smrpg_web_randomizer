@@ -93,6 +93,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_1312_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [797]
+    },
+    {
         "identifier": 'EVENT_1312_jmp_if_object_not_in_level_4',
         "command": 'jmp_if_object_not_in_level',
         "args": [AreaObjects.NPC_1, Rooms._043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM, 'EVENT_1312_pause_action_script_8']

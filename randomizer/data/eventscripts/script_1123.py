@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": "EVENT_1123_sequence_setter",
+        "command": "run_event_as_subroutine",
+        "args": [805]
+    },
+    {
         "identifier": 'EVENT_1123_fade_in_from_black_async_0',
         "command": 'fade_in_from_black_async'
     },

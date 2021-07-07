@@ -100,6 +100,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2295_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [795]
+    },
+    {
         "identifier": 'EVENT_2295_star_mask_expand_from_screen_center_7',
         "command": 'star_mask_expand_from_screen_center'
     },

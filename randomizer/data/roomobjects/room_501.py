@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._50_NIMBUS_LAND,
-  "entrance_event": 15,
+  "entrance_event": 501,
   "event_tiles": [],
   "exit_fields": [
     {

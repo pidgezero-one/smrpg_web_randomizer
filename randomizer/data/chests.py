@@ -24,6 +24,16 @@ class Chest(locations.ItemLocation):
     dialogs_to_replace = []
 
     def item_allowed(self, item):
+        # If scaling boss stats, it would defeat the purpose of the setting if a mimic chest with Box Boy's stats could appear in the earlygame.
+        # Place some restrictions on where the mimics can appear.
+        if self.world.flags.is_flag_value(flags.MimicsAnywhere, True) and self.world.flags.is_flag_value(flags.BossShuffleScaleStats, True):
+            if isclass_or_instance(item, items.PandoriteFight) and self.area in [locations.Area.MushroomWay, locations.Area.MushroomKingdom]:
+                return False
+            elif isclass_or_instance(item, items.HidonFight) and self.area in [locations.Area.MushroomWay, locations.Area.MushroomKingdom, locations.Area.BanditsWay, locations.Area.KeroSewers, locations.Area.RoseWay, locations.Area.RoseTown, locations.Area.ForestMaze, locations.Area.Moleville, locations.Area.MolevilleMines, locations.Area.PipeVault, locations.Area.YosterIsle]:
+                return False
+            elif isclass_or_instance(item, items.BoxBoyFight) and self.area in [locations.Area.MushroomWay, locations.Area.MushroomKingdom, locations.Area.BanditsWay, locations.Area.KeroSewers, locations.Area.RoseWay, locations.Area.RoseTown, locations.Area.ForestMaze, locations.Area.Moleville, locations.Area.MolevilleMines, locations.Area.BoosterPass, locations.Area.BoosterTower, locations.Area.PipeVault, locations.Area.YosterIsle, locations.Area.Marrymore, locations.Area.Sea, locations.Area.SunkenShip]:
+                return False
+
         return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 

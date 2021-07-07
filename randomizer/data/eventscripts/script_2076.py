@@ -325,7 +325,7 @@ script = [
     {
         "identifier": 'EVENT_2076_action_queue_sync_61',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2076_action_queue_sync_61_SUBSCRIPT_pause_0',

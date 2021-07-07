@@ -18,12 +18,12 @@ script = [
     {
         "identifier": 'EVENT_3730_jmp_if_bit_set_2',
         "command": 'jmp_if_bit_set',
-        "args": [0x705f, 4, 'EVENT_3730_fade_in_from_black_async_14']
+        "args": [0x705f, 4, "EVENT_3730_sequence_setter_1"]
     },
     {
         "identifier": 'EVENT_3730_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
-        "args": [0x7090, 1, 'EVENT_3585_fade_in_from_black_async_0']
+        "args": [0x7090, 1, "EVENT_3730_sequence_setter_1"]
     },
     {
         "identifier": 'EVENT_3730_jmp_if_bit_set_4',
@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'EVENT_3730_jmp_5',
         "command": 'jmp',
-        "args": ['EVENT_3585_fade_in_from_black_async_0']
+        "args": ["EVENT_3730_sequence_setter_1"]
     },
     {
         "identifier": 'EVENT_3730_palette_set_6',
@@ -99,6 +99,11 @@ script = [
     {
         "identifier": 'EVENT_3730_fade_in_from_black_async_14',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": "EVENT_3730_sequence_setter_1",
+        "command": "run_event_as_subroutine",
+        "args": [824]
     },
     {
         "identifier": 'EVENT_3730_ret_15',

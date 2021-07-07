@@ -31,6 +31,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_3344_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [844]
+    },
+    {
         "identifier": 'EVENT_3344_run_event_as_subroutine_2',
         "command": 'run_event_as_subroutine',
         "args": [15]

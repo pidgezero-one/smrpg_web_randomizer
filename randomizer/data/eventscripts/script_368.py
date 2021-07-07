@@ -100,11 +100,6 @@ script = [
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_368_action_queue_sync_8_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [7, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
                 "identifier": 'EVENT_368_action_queue_sync_8_SUBSCRIPT_set_priority_1',
                 "command": 'set_priority',
                 "args": [3]
@@ -164,6 +159,11 @@ script = [
                 "args": [0, 252, 0, RadialDirections.EAST]
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_368_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [761]
     },
     {
         "identifier": 'EVENT_368_fade_in_from_black_async_13',

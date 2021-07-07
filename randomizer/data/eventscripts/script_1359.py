@@ -170,6 +170,11 @@ script = [
         "args": [0x7053, 4, 'EVENT_1359_apply_solidity_mod_20']
     },
     {
+        "identifier": 'EVENT_1359_sequence_setter_1',
+        "command": 'run_event_as_subroutine',
+        "args": [789]
+    },
+    {
         "identifier": 'EVENT_1359_fade_in_from_black_async_8',
         "command": 'fade_in_from_black_async'
     },
@@ -225,6 +230,11 @@ script = [
         "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 33, [_0x6AFlags.USE_ALTERNATE]]
     },
     {
+        "identifier": 'EVENT_1359_sequence_setter_2',
+        "command": 'run_event_as_subroutine',
+        "args": [789]
+    },
+    {
         "identifier": 'EVENT_1359_fade_in_from_black_async_18',
         "command": 'fade_in_from_black_async'
     },
@@ -236,6 +246,11 @@ script = [
         "identifier": 'EVENT_1359_apply_solidity_mod_20',
         "command": 'apply_solidity_mod',
         "args": [Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 2, [_0x6BFlags.PERMANENT]]
+    },
+    {
+        "identifier": 'EVENT_1359_sequence_setter_3',
+        "command": 'run_event_as_subroutine',
+        "args": [789]
     },
     {
         "identifier": 'EVENT_1359_fade_in_from_black_async_21',

@@ -21,12 +21,16 @@ script = [
 
 
 
+    # DEBUG
+
+
+
+    # finish loading game
     {
         "identifier": 'EVENT_192_____leave_party_22',
         "command": 'leave_party',
         "args": [AreaObjects.DUMMY_0X05]
     },
-    # finish loading game
     {
         "identifier": 'EVENT_192___set_bit_17', 
         "command": 'jmp_to_event',

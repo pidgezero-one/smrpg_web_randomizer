@@ -21,6 +21,11 @@ script = [
         "args": [0x0162, []]
     },
     {
+        "identifier": 'EVENT_600_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [790]
+    },
+    {
         "identifier": 'EVENT_600_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
         "args": [0x704c, 6, 'EVENT_257_fade_in_from_black_async_0']

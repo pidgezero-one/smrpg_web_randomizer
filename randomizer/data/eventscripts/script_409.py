@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_409_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [771]
+    },
+    {
         "identifier": 'EVENT_409_remove_from_current_level_0',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_2]

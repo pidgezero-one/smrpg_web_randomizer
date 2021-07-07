@@ -28,6 +28,11 @@ script = [
         ]
     },
     {
+        "identifier": "EVENT_3726_sequence_setter_1",
+        "command": "run_event_as_subroutine",
+        "args": [825]
+    },
+    {
         "identifier": 'EVENT_3726_fade_in_from_black_async_3',
         "command": 'fade_in_from_black_async'
     },
@@ -53,6 +58,11 @@ script = [
     {
         "identifier": 'EVENT_3726_fade_in_from_black_async_16',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": "EVENT_3726_sequence_setter_2",
+        "command": "run_event_as_subroutine",
+        "args": [825]
     },
     {
         "identifier": 'EVENT_3726_ret_17',

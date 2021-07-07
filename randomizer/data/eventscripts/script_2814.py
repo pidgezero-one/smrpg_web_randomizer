@@ -71,6 +71,11 @@ script = [
         "args": [AreaObjects.NPC_2, Rooms._205_MUSHROOM_WAY_AREA_03]
     },
     {
+        "identifier": 'EVENT_2814_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [755]
+    },
+    {
         "identifier": 'EVENT_2814_fade_in_from_black_async_12',
         "command": 'fade_in_from_black_async'
     },

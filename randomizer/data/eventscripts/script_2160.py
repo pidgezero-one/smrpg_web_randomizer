@@ -26,6 +26,11 @@ script = [
         "args": [0x7043, 4]
     },
     {
+        "identifier": 'EVENT_2160_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [850]
+    },
+    {
         "identifier": 'EVENT_2160_fade_in_from_black_async_0',
         "command": 'fade_in_from_black_async'
     },

@@ -41,6 +41,11 @@ script = [
         "args": [0x70ac, 0]
     },
     {
+        "identifier": 'EVENT_3224_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [800]
+    },
+    {
         "identifier": 'EVENT_3224_jmp_if_bit_clear_7',
         "command": 'jmp_if_bit_clear',
         "args": [0x7042, 6, 'EVENT_3224_run_event_as_subroutine_12']

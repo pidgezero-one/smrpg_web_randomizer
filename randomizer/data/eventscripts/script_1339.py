@@ -263,6 +263,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_1339_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [791]
+    },
+    {
         "identifier": 'EVENT_1339_jmp_if_bit_set_8',
         "command": 'jmp_if_bit_set',
         "args": [0x7054, 0, 'EVENT_1339_set_bit_18']

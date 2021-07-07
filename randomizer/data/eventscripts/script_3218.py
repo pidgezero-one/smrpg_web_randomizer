@@ -236,7 +236,7 @@ script = [
     {
         "identifier": 'EVENT_3218_set_action_script_sync_46',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_7, 351]
+        "args": [AreaObjects.NPC_7, 203]
     },
     {
         "identifier": 'EVENT_3218_action_queue_async_47',

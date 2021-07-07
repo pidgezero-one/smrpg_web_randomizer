@@ -4600,7 +4600,7 @@ class Shelly(Enemy):
     yoshi_cookie_item = items.Mushroom
 
     # Boss shuffle attributes.
-    ratio_hp = 0.0129
+    ratio_hp = (500 / 777)
     ratio_fp = 0.0
     ratio_attack = 0.0
     ratio_defense = 0.6154
@@ -4609,6 +4609,52 @@ class Shelly(Enemy):
     ratio_speed = 0.0
     ratio_evade = 0.0
     ratio_magic_evade = 0.0
+
+    # Specific to Shelly
+    summons = [0x28]
+    summon_event = None
+
+    def patch_script(self):
+
+        script = BattleScript()
+        
+        script.start_counter()
+        script.if_hp(round(self.hp * 0.8))
+        script.if_bits_clear(0x7ee004, 0x08)
+        script.set(0x7ee004, 0x08)
+        script.animate(0x04)
+        script.wait_return()
+        
+        script.if_hp(round(self.hp * 0.6))
+        script.if_bits_clear(0x7ee004, 0x04)
+        script.set(0x7ee004, 0x04)
+        script.animate(0x05)
+        script.wait_return()
+        
+        script.if_hp(round(self.hp * 0.4))
+        script.if_bits_clear(0x7ee004, 0x02)
+        script.set(0x7ee004, 0x02)
+        script.animate(0x06)
+        script.wait_return()
+        
+        script.if_hp(round(self.hp * 0.2))
+        script.if_bits_clear(0x7ee004, 0x01)
+        script.set(0x7ee004, 0x01)
+        script.animate(0x07)
+        script.wait_return()
+        
+        script.if_hp(0x0000)
+        script.animate(0x08)
+        script.battle_event(92)
+        for id in self.summons:
+            script.call(id)
+        script.animate(0x02)
+        if self.summon_event is not None:
+            script.battle_event(self.summon_event)
+        script.remove(0x1b)
+        script.wait_return()
+
+        self.script = script.fin()
 
 
 class Superspike(Enemy):
@@ -4998,6 +5044,16 @@ class Formless(Enemy):
     # Reward attributes
     reward_address = 0x3919ae
     yoshi_cookie_item = items.Mushroom
+
+    # Boss shuffle attributes.
+    ratio_hp = (1 / 62)
+    ratio_fp = 1.0
+    ratio_attack = 0.0
+    ratio_defense = 0.0
+    ratio_magic_attack = 0.625
+    ratio_magic_defense = 0.0
+    ratio_speed = 0.08
+    ratio_magic_evade = 0.0
 
 
 class Mokura(Enemy):

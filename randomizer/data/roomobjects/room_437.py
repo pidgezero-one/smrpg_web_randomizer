@@ -142,19 +142,42 @@ room = {
       "slidable_along_walls": True,
       "cant_move_if_in_air": True,
       "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 2,
-          "action_offset": 0,
-          "pack_offset": 0,
-          "visible": True,
-          "x": 3,
-          "y": 91,
-          "z": 1,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHEAST
-        }
-      ]
+      "clones": []
+    },
+    {
+      "id": 1,
+      "type": ObjectType.BATTLE,
+      "initiator": Initiator.ANYTHING_EXCEPT_PRESS_A,
+      "model": 333,
+      "battle_pack": 95,
+      "after_battle": 0,
+      "action_script": 30,
+      "speed": 0,
+      "action_offset": 0,
+      "pack_offset": 0,
+      "visible": True,
+      "x": 3,
+      "y": 91,
+      "z": 1,
+      "z_half": False,
+      "direction": RadialDirection.SOUTHEAST,
+      "face_on_trigger": True,
+      "cant_enter_doors": False,
+      "byte2_bit5": False,
+      "set_sequence_playback": True,
+      "cant_float": False,
+      "cant_walk_up_stairs": False,
+      "cant_walk_under": False,
+      "cant_pass_walls": True,
+      "cant_jump_through": False,
+      "cant_pass_npcs": True,
+      "byte3_bit5": True,
+      "cant_walk_through": True,
+      "byte3_bit7": True,
+      "slidable_along_walls": True,
+      "cant_move_if_in_air": True,
+      "byte7_upper2": 0x03,
+      "clones": []
     }
   ]
 }

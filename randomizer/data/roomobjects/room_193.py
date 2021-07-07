@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._32_AND_MY_NAMES_BOOSTER,
-  "entrance_event": 15,
+  "entrance_event": 793,
   "event_tiles": [
     {
       "event": 2339,

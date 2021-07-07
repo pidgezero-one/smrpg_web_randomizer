@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": "EVENT_3702_sequence_setter_2",
+        "command": "run_event_as_subroutine",
+        "args": [830]
+    },
+    {
         "identifier": 'EVENT_3702_jmp_if_object_not_in_level_0',
         "command": 'jmp_if_object_not_in_level',
         "args": [AreaObjects.NPC_3, Rooms._408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM_, 'EVENT_3702_jmp_if_object_not_in_level_3']

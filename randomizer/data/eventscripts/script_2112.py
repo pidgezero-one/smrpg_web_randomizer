@@ -74,6 +74,11 @@ script = [
         ]
     },
     {
+        "identifier": "EVENT_2112_sequence_setter_1",
+        "command": "run_event_as_subroutine",
+        "args": [819]
+    },
+    {
         "identifier": 'EVENT_2112_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
         "args": [0x7092, 6, 'EVENT_2112_fade_in_from_black_async_16']
@@ -169,6 +174,11 @@ script = [
                 "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             }
         ]
+    },
+    {
+        "identifier": "EVENT_2112_sequence_setter_2",
+        "command": "run_event_as_subroutine",
+        "args": [819]
     },
     {
         "identifier": 'EVENT_2112_fade_in_from_black_async_21',

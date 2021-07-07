@@ -21,6 +21,11 @@ script = [
         "args": [377, [_0x40Flags.RETURN_ON_LEVEL_EXIT, _0x40Flags.BIT_6]]
     },
     {
+        "identifier": 'EVENT_371_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [765]
+    },
+    {
         "identifier": 'EVENT_371_fade_in_from_black_async_5',
         "command": 'fade_in_from_black_async'
     },

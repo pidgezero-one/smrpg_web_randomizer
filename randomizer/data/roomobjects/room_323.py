@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._15_HERES_SOME_WEAPONS,
-  "entrance_event": 15,
+  "entrance_event": 764,
   "event_tiles": [],
   "exit_fields": [
     {
@@ -107,19 +107,42 @@ room = {
       "slidable_along_walls": False,
       "cant_move_if_in_air": False,
       "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 1,
-          "action_offset": 1,
-          "pack_offset": 1,
-          "visible": True,
-          "x": 28,
-          "y": 97,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        }
-      ]
+      "clones": []
+    },
+    {
+      "id": 1,
+      "type": ObjectType.BATTLE,
+      "initiator": Initiator.ANYTHING_EXCEPT_PRESS_A,
+      "model": 414,
+      "battle_pack": 11,
+      "after_battle": 0,
+      "action_script": 116,
+      "speed": 0,
+      "action_offset": 0,
+      "pack_offset": 0,
+      "visible": True,
+      "x": 28,
+      "y": 97,
+      "z": 0,
+      "z_half": False,
+      "direction": RadialDirection.SOUTHWEST,
+      "face_on_trigger": False,
+      "cant_enter_doors": False,
+      "byte2_bit5": False,
+      "set_sequence_playback": True,
+      "cant_float": False,
+      "cant_walk_up_stairs": False,
+      "cant_walk_under": False,
+      "cant_pass_walls": False,
+      "cant_jump_through": True,
+      "cant_pass_npcs": False,
+      "byte3_bit5": False,
+      "cant_walk_through": False,
+      "byte3_bit7": False,
+      "slidable_along_walls": False,
+      "cant_move_if_in_air": False,
+      "byte7_upper2": 0x03,
+      "clones": []
     }
   ]
 }

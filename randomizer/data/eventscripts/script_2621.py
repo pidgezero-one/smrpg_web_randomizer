@@ -24,18 +24,13 @@ script = [
                 "identifier": 'EVENT_2621_action_queue_sync_2_SUBSCRIPT_shift_northeast_pixels_0',
                 "command": 'shift_northeast_pixels',
                 "args": [8]
-            },
-            {
-                "identifier": 'EVENT_2621_action_queue_sync_2_SUBSCRIPT_set_sprite_sequence_1',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             }
         ]
     },
     {
         "identifier": 'EVENT_2621_jmp_if_bit_clear_3',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 7, 'EVENT_2621_fade_in_from_black_async_14']
+        "args": [0x7044, 7, 'EVENT_2621_sequence_setter_2']
     },
     {
         "identifier": 'EVENT_2621_enable_controls_4',
@@ -77,6 +72,11 @@ script = [
                 "args": [3]
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_2621_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [857]
     },
     {
         "identifier": 'EVENT_2621_fade_in_from_black_async_7',
@@ -163,6 +163,11 @@ script = [
     {
         "identifier": 'EVENT_2621_ret_13',
         "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_2621_sequence_setter_2',
+        "command": 'run_event_as_subroutine',
+        "args": [857]
     },
     {
         "identifier": 'EVENT_2621_fade_in_from_black_async_14',

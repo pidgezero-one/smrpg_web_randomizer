@@ -11,6 +11,11 @@ script = [
         "args": [0x707e, 4, 'EVENT_3341_jmp_to_event_6']
     },
     {
+        "identifier": 'EVENT_3341_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [845]
+    },
+    {
         "identifier": 'EVENT_3341_run_event_as_subroutine_1',
         "command": 'run_event_as_subroutine',
         "args": [15]
