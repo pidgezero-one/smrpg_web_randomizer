@@ -826,7 +826,7 @@ belome_attack = SpriteAnimation(
 class Belome1Boss(Boss):
     name = "Belome"
     pack_number = 168
-    small_model = SmallModelDetails(385, width=32, height=32, invert_directions=True, animations=SpriteAnimationCollection(
+    small_model = SmallModelDetails(385, width=32, height=32, mold=10, invert_directions=True, animations=SpriteAnimationCollection(
         bandits_way_distracted=scarecrow_wiggle,
         chapel_laugh=scarecrow_wiggle,
         ship_beckon=scarecrow_wiggle
@@ -2188,7 +2188,7 @@ class MokuraBoss(Boss):
 class Belome2Boss(Boss):
     name = "Belome"
     pack_number = 169
-    small_model = SmallModelDetails(385, width=32, height=32, invert_directions=True, animations=SpriteAnimationCollection(
+    small_model = SmallModelDetails(385, width=32, height=32, mold=10, invert_directions=True, animations=SpriteAnimationCollection(
         bandits_way_distracted=scarecrow_wiggle,
         chapel_laugh=scarecrow_wiggle,
         ship_beckon=scarecrow_wiggle
@@ -2502,7 +2502,7 @@ class CulexBoss(Boss):
     name = "Culex"
     pack_number = 216
     statue_model = StatueModelDetails(511, mold=3)
-    small_model = SmallModelDetails(511, sequence=8)
+    small_model = SmallModelDetails(511, sequence=8, mold=3)
     big_model = BigModelDetails({
         "sprite": SpriteName._511_CULEX,
         "priority_0": False,
@@ -2898,11 +2898,12 @@ class BirdettaEggbert(Henchman):
 birdetta_attack = SpriteAnimation(
     sequence_id=3, contact_frame=40, total_duration=50)
 
+eggbert_expand = SpriteAnimation(sequence_id=2, total_duration=32)
 
 class BirdettaBoss(Boss):
     name = "Birdetta"
     pack_number = 175
-    small_model = SmallModelDetails(462, 16, 16)
+    small_model = SmallModelDetails(462, 16, 16, animations=SpriteAnimationCollection(bandits_way_distracted=eggbert_expand))
     big_model = BigModelDetails({
         "sprite": SpriteName._461_BIRDO,
         "priority_0": False,
@@ -4862,7 +4863,7 @@ class Punchinello(BossAndStarLocation):
     boss = PunchinelloBoss
     boss_locations = [
         BossModelFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 0,
-                      PunchinelloBoss, SpriteSize.Attack, False, target_scripts=[592, 596], sequence_setter=788),
+                      PunchinelloBoss, SpriteSize.Attack, False, target_scripts=[592, 596, 594, 860], sequence_setter=788),
     ]
     repeatable_henchmen = [
         [  # needs special considerations for only tiny sprites
@@ -4897,7 +4898,7 @@ class Booster(BossAndStarLocation):
         BossModelFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 7, BoosterBoss, SpriteSize.Small,
                       False, target_scripts=[1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], sequence_setter=789),
         BossModelFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 7, BoosterBoss,
-                      SpriteSize.Small, False, dialogs=[2504], target_scripts=[3809, 600], sequence_setter=790),
+                      SpriteSize.Small, False, dialogs=[2504], target_scripts=[3809], sequence_setter=790),
         BossModelFill(Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, 6, BoosterBoss,
                       SpriteSize.Small, False, target_scripts=[1339, 1335], target_action_scripts=[], sequence_setter=791),
         BossModelFill(Rooms._193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS, 6, BoosterBoss,

@@ -276,6 +276,9 @@ def new_command(event_id, command, args=None, t=CommandTypes.Event):
 def is_animation_header(command, npc_id):
     return command["command"] in ['action_queue_async', 'action_queue_sync', 'start_embedded_action_script_async_F0', 'start_embedded_action_script_async_F1', 'start_embedded_action_script_sync_F0', 'start_embedded_action_script_sync_F1'] and command["args"][0] == npc_id + 0x14
 
+def is_mario_animation_header(command):
+    return command["command"] in ['action_queue_async', 'action_queue_sync', 'start_embedded_action_script_async_F0', 'start_embedded_action_script_async_F1', 'start_embedded_action_script_sync_F0', 'start_embedded_action_script_sync_F1'] and command["args"][0] == AreaObjects.MARIO
+
 def remove_sequence_changes_from_action_script(script):
     return [a for a in script if a["command"] != 'set_sprite_sequence' and a["command"] != "reset_properties"]
 
@@ -328,6 +331,128 @@ def fix_script_for_scarecrow(script):
             output.append({"identifier": "dummy", "command": "fixed_f_coord_off"})
         else:
             output.append(command)
+    return output
+
+def is_vanilla(boss, location):
+    return (utils.isclass_or_instance(location, data.bosses.HammerBros) and utils.isclass_or_instance(boss, data.bosses.HammerBroBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Croco1) and utils.isclass_or_instance(boss, data.bosses.Croco1Boss)) or
+    (utils.isclass_or_instance(location, data.bosses.Mack) and utils.isclass_or_instance(boss, data.bosses.MackBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Pandorite) and utils.isclass_or_instance(boss, data.bosses.PandoriteBoss)) or
+    ((utils.isclass_or_instance(location, data.bosses.Belome1) or utils.isclass_or_instance(location, data.bosses.Belome2)) and (utils.isclass_or_instance(boss, data.bosses.Belome1Boss) or utils.isclass_or_instance(boss, data.bosses.Belome2Boss))) or
+    (utils.isclass_or_instance(location, data.bosses.Bowyer) and utils.isclass_or_instance(boss, data.bosses.BowyerBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Croco2) and utils.isclass_or_instance(boss, data.bosses.Croco2Boss)) or
+    (utils.isclass_or_instance(location, data.bosses.Punchinello) and utils.isclass_or_instance(boss, data.bosses.PunchinelloBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Booster) and utils.isclass_or_instance(boss, data.bosses.BoosterBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.ClownBros) and utils.isclass_or_instance(boss, data.bosses.GrateGuyBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Bundt) and utils.isclass_or_instance(boss, data.bosses.Bundt)) or
+    (utils.isclass_or_instance(location, data.bosses.KingCalamari) and utils.isclass_or_instance(boss, data.bosses.KingCalamariBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Hidon) and utils.isclass_or_instance(boss, data.bosses.HidonBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Johnny) and utils.isclass_or_instance(boss, data.bosses.JohnnyBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Yaridovich) and utils.isclass_or_instance(boss, data.bosses.YaridovichBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Mokura) and utils.isclass_or_instance(boss, data.bosses.MokuraBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Jagger) and utils.isclass_or_instance(boss, data.bosses.JaggerBoss)) or
+    ((utils.isclass_or_instance(location, data.bosses.Jinx1) or utils.isclass_or_instance(location, data.bosses.Jinx2) or utils.isclass_or_instance(location, data.bosses.Jinx3)) and (utils.isclass_or_instance(boss, data.bosses.Jinx1Boss) or utils.isclass_or_instance(boss, data.bosses.Jinx2Boss) or utils.isclass_or_instance(boss, data.bosses.Jinx3Boss))) or
+    (utils.isclass_or_instance(location, data.bosses.Culex) and utils.isclass_or_instance(boss, data.bosses.Culex)) or
+    (utils.isclass_or_instance(location, data.bosses.BoxBoy) and utils.isclass_or_instance(boss, data.bosses.BoxBoyBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.MegaSmilax) and utils.isclass_or_instance(boss, data.bosses.MegaSmilaxBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Dodo) and utils.isclass_or_instance(boss, data.bosses.DodoBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Birdetta) and utils.isclass_or_instance(boss, data.bosses.BirdettaBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Valentina) and utils.isclass_or_instance(boss, data.bosses.ValentinaBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.CzarDragon) and utils.isclass_or_instance(boss, data.bosses.CzarBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.AxemRangers) and utils.isclass_or_instance(boss, data.bosses.AxemRangersBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Chester) and utils.isclass_or_instance(boss, data.bosses.ChesterBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Magikoopa) and utils.isclass_or_instance(boss, data.bosses.MagikoopaBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Boomer) and utils.isclass_or_instance(boss, data.bosses.BoomerBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Exor) and utils.isclass_or_instance(boss, data.bosses.ExorBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Countdown) and utils.isclass_or_instance(boss, data.bosses.CountdownBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.CloakerDomino) and utils.isclass_or_instance(boss, data.bosses.CloakerDominoBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Clerk) and utils.isclass_or_instance(boss, data.bosses.ClerkBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Manager) and utils.isclass_or_instance(boss, data.bosses.ManagerBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Director) and utils.isclass_or_instance(boss, data.bosses.DirectorBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Gunyolk) and utils.isclass_or_instance(boss, data.bosses.GunyolkBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Smithy) and utils.isclass_or_instance(boss, data.bosses.SmithyBoss))
+
+
+def is_vanilla_strict(boss, location):
+    return (utils.isclass_or_instance(location, data.bosses.HammerBros) and utils.isclass_or_instance(boss, data.bosses.HammerBroBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Croco1) and utils.isclass_or_instance(boss, data.bosses.Croco1Boss)) or
+    (utils.isclass_or_instance(location, data.bosses.Mack) and utils.isclass_or_instance(boss, data.bosses.MackBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Pandorite) and utils.isclass_or_instance(boss, data.bosses.PandoriteBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Belome1) and utils.isclass_or_instance(boss, data.bosses.Belome1Boss)) or
+    (utils.isclass_or_instance(location, data.bosses.Bowyer) and utils.isclass_or_instance(boss, data.bosses.BowyerBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Croco2) and utils.isclass_or_instance(boss, data.bosses.Croco2Boss)) or
+    (utils.isclass_or_instance(location, data.bosses.Punchinello) and utils.isclass_or_instance(boss, data.bosses.PunchinelloBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Booster) and utils.isclass_or_instance(boss, data.bosses.BoosterBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.ClownBros) and utils.isclass_or_instance(boss, data.bosses.GrateGuyBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Bundt) and utils.isclass_or_instance(boss, data.bosses.Bundt)) or
+    (utils.isclass_or_instance(location, data.bosses.KingCalamari) and utils.isclass_or_instance(boss, data.bosses.KingCalamariBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Hidon) and utils.isclass_or_instance(boss, data.bosses.HidonBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Johnny) and utils.isclass_or_instance(boss, data.bosses.JohnnyBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Yaridovich) and utils.isclass_or_instance(boss, data.bosses.YaridovichBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Mokura) and utils.isclass_or_instance(boss, data.bosses.MokuraBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Belome2) and utils.isclass_or_instance(boss, data.bosses.Belome2Boss)) or
+    (utils.isclass_or_instance(location, data.bosses.Jagger) and utils.isclass_or_instance(boss, data.bosses.JaggerBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Jinx1) and utils.isclass_or_instance(boss, data.bosses.Jinx1Boss)) or
+    (utils.isclass_or_instance(location, data.bosses.Jinx2) and utils.isclass_or_instance(boss, data.bosses.Jinx2Boss)) or
+    (utils.isclass_or_instance(location, data.bosses.Jinx3) and utils.isclass_or_instance(boss, data.bosses.Jinx3Boss)) or
+    (utils.isclass_or_instance(location, data.bosses.Culex) and utils.isclass_or_instance(boss, data.bosses.Culex)) or
+    (utils.isclass_or_instance(location, data.bosses.BoxBoy) and utils.isclass_or_instance(boss, data.bosses.BoxBoyBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.MegaSmilax) and utils.isclass_or_instance(boss, data.bosses.MegaSmilaxBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Dodo) and utils.isclass_or_instance(boss, data.bosses.DodoBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Birdetta) and utils.isclass_or_instance(boss, data.bosses.BirdettaBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Valentina) and utils.isclass_or_instance(boss, data.bosses.ValentinaBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.CzarDragon) and utils.isclass_or_instance(boss, data.bosses.CzarBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.AxemRangers) and utils.isclass_or_instance(boss, data.bosses.AxemRangersBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Chester) and utils.isclass_or_instance(boss, data.bosses.ChesterBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Magikoopa) and utils.isclass_or_instance(boss, data.bosses.MagikoopaBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Boomer) and utils.isclass_or_instance(boss, data.bosses.BoomerBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Exor) and utils.isclass_or_instance(boss, data.bosses.ExorBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Countdown) and utils.isclass_or_instance(boss, data.bosses.CountdownBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.CloakerDomino) and utils.isclass_or_instance(boss, data.bosses.CloakerDominoBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Clerk) and utils.isclass_or_instance(boss, data.bosses.ClerkBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Manager) and utils.isclass_or_instance(boss, data.bosses.ManagerBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Director) and utils.isclass_or_instance(boss, data.bosses.DirectorBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Gunyolk) and utils.isclass_or_instance(boss, data.bosses.GunyolkBoss)) or
+    (utils.isclass_or_instance(location, data.bosses.Smithy) and utils.isclass_or_instance(boss, data.bosses.SmithyBoss))
+
+def sanitize_animation_script(boss, boss_location, script, model):
+    # leave script alone if character is vanilla
+    if not is_vanilla(boss, boss_location):
+        new_script = []
+        for subscript_command_index, subscript_command in enumerate(subscript):
+            # Pretty much all of these animations are based around sequence setting
+            if subscript_command["command"] == 'set_sprite_sequence':
+                # molds
+                if _0x08Flags.READ_AS_MOLD in subscript_command["args"][2]:
+                    # if setting mold to 0, that's ok, just reset to the right default mold for scarecrow or culex
+                    if subscript_command["args"][0] == 0:
+                        subscript_command["args"][0] = model.mold
+                        new_script.append(subscript_command)
+                    # otherwise, it's subject to animation-specific rules
+                    else:
+                        if utils.isclass_or_instance(boss_location, data.bosses.Booster):
+                            if subscript_command["args"][0] == 12:
+                                new_script.append({"identifier": "dummy", "command": "face_northeast"})
+
+                # sequences
+                else:
+                    # bandit's way distraction
+                    if utils.isclass_or_instance(boss_location, data.bosses.Croco1) and model.animations.bandits_way_distracted is not None:
+                        if subscript_command["args"][0] == 5:
+                            subscript_command["args"][0] = model.animations.bandits_way_distracted.sequence_id
+                            # no support for sprite offsets, but not necessary with the sprites we're using
+                            new_script.append(subscript_command)
+                    # moleville mines punch
+                    elif utils.isclass_or_instance(boss_location, data.bosses.Punchinello):
+                        if model.animations.mines_punch is not None:
+                            if subscript_command["args"][0] == 3:
+                                subscript_command["args"][0] = model.animations.mines_punch.sequence_id
+                                new_script.append(subscript_command)
+            else:
+                new_script.append(subscript_command)
+        return new_script
+    else:
+        return script
 
 
 class GameWorld:
@@ -1360,10 +1485,27 @@ class GameWorld:
                                 self.models[model_num] = model.model_details
 
 
+                        current_direction = self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["direction"]
+                        new_direction = current_direction
+
+                        # swap directions for scarecrow sprites
+                        if self.models[model_num]["sprite"] == SpriteName._39_RED_SCARECROW:
+                            if current_direction == RadialDirection.SOUTHWEST:
+                                new_direction = RadialDirection.NORTHWEST
+                            elif current_direction == RadialDirection.NORTHWEST:
+                                new_direction = RadialDirection.SOUTHEAST
+                            elif current_direction == RadialDirection.NORTHEAST:
+                                new_direction = RadialDirection.SOUTHWEST
+                            elif current_direction == RadialDirection.SOUTHEAST:
+                                new_direction = RadialDirection.NORTHEAST
+                                
+                        if obj["original_index"] is not None:
+                            self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["direction"] = new_direction
+                        else:
+                            self.rooms[boss_location.room_id]["objects"][obj["parent_index"]]["clones"][obj["clone_index"]]["direction"] = new_direction
+
                         # statues: flip directions where necessary
                         if boss_location.preferred_size == SpriteSize.Statue:
-                            current_direction = self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["direction"]
-                            new_direction = current_direction
 
                             if obj["original_index"] is not None:
                                 model_num = self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["model"]
@@ -1372,29 +1514,14 @@ class GameWorld:
                             
                             eligible_directions = self.models[model_num]["vram_store"]
 
-                            # swap directions for scarecrow sprites
-                            if self.models[model_num]["sprite"] == SpriteName._39_RED_SCARECROW:
-                                if current_direction == RadialDirection.SOUTHWEST:
-                                    new_direction = RadialDirection.NORTHWEST
-                                elif current_direction == RadialDirection.NORTHWEST:
-                                    new_direction = RadialDirection.SOUTHEAST
-                                elif current_direction == RadialDirection.NORTHEAST:
-                                    new_direction = RadialDirection.SOUTHWEST
-                                elif current_direction == RadialDirection.SOUTHEAST:
-                                    new_direction = RadialDirection.NORTHEAST
-
                             # replace directions on original room objects
                             if eligible_directions == VramStore._02_SWSE:
-                                if obj["original_index"] is not None:
-                                    self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["direction"] = RadialDirection.SOUTHWEST
-                                else:
-                                    self.rooms[boss_location.room_id]["objects"][obj["parent_index"]]["clones"][obj["clone_index"]]["direction"] = RadialDirection.SOUTHWEST
-                            else:
+                                new_direction = RadialDirection.SOUTHWEST
                                 if obj["original_index"] is not None:
                                     self.rooms[boss_location.room_id]["objects"][obj["original_index"]]["direction"] = new_direction
                                 else:
                                     self.rooms[boss_location.room_id]["objects"][obj["parent_index"]]["clones"][obj["clone_index"]]["direction"] = new_direction
-                                
+                              
                             # pixel shifts
                             if (new_direction == RadialDirection.SOUTHEAST or new_direction == RadialDirection.SOUTHWEST) and (model.horizontal_pixel_shift > 0 or model.vertical_pixel_shift > 0):
                                 if boss_location.sequence_setter not in sequence_setters:
@@ -1436,28 +1563,46 @@ class GameWorld:
                                         self.eventscripts[script_id][command_index] = command
                             for script_id in boss_location.target_action_scripts:
                                 self.actionscripts[script_id] = remove_sequence_changes_from_action_script(self.actionscripts[script_id])
-                                        
-
-                        # if model is a scarecrow, fix all of its directional commands
-                        model_info = self.models[model.model_id]
-                        if model_info["sprite"] == SpriteName._39_RED_SCARECROW:
-                            for script_id in boss_location.target_scripts:
-                                script = self.eventscripts[script_id]
-                                for command_index, command in enumerate(script):
-                                    if is_animation_header(command, boss_location.npc_id):
-                                        command["subscript"] = fix_script_for_scarecrow(command["subscript"])
-                                        self.eventscripts[script_id][command_index] = command
-                            for script_id in boss_location.target_action_scripts:
-                                self.actionscripts[script_id] = fix_script_for_scarecrow(self.actionscripts[script_id])
-
+                               
 
                         # SPECIAL ANIMATIONS
                         for script_id in boss_location.target_scripts:
                             script = self.eventscripts[script_id]
+                            # Repeat all of these with appropriate actions scripts
 
+                            # replace model sprite if necessary
+                            if utils.isclass_or_instance(b, data.bosses.Croco1) and model.animations.bandits_way_distracted.new_sprite_id is not None:
+                                self.models[model.model_id]["sprite"] = model.animations.bandits_way_distracted.new_sprite_id
+
+                            # pause adjustments & sequence/mold sanitization need to happen separately
+
+                            # adjust mines punch animation pauses
+                            if utils.isclass_or_instance(b, data.bosses.Punchinello) and script_id == 860:
+                                pause = 10
+                                for command_index, command in enumerate(script):
+                                    if is_animation_header(command, boss_location.npc_id):
+                                        if model.animations.mines_punch is not None:
+                                            if model.animations.mines_punch.contact_frame > 0:
+                                                pause = model.animations.mines_punch.contact_frame + 8
+                                            else:
+                                                pause = model.animations.mines_punch.total_duration
+                                        for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                            if subscript_command["command"] == 'pause':
+                                                subscript_command["args"][0] = pause
+                                                command["subscript"][subscript_command_index] = subscript_command
+                                        self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
+                                    elif is_mario_animation_header(command):
+                                        for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                            if subscript_command["command"] == 'pause':
+                                                subscript_command["args"][0] = pause - 2
+                                                command["subscript"][subscript_command_index] = subscript_command
+                                        self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
+                                    elif command["command"] == "pause":
+                                        self.eventscripts[script_id][command_index]["args"][0] = pause - 4
+
+                                        
 
                             # bandit's way - distraction
-                            # also do this w action scripts?
                             if utils.isclass_or_instance(b, data.bosses.Croco1):
                                 for command_index, command in enumerate(script):
                                     if is_animation_header(command, boss_location.npc_id):
@@ -1475,7 +1620,7 @@ class GameWorld:
                                         else:
                                             self.eventscripts[script_id][command_index]["subscript"] = [a for a in command["subscript"] if a["command"] != 'set_sprite_sequence']
                             
-                            # punchinello - hits you away if you run into him
+                            # moleville mines - run into boss, get hit backwards
                             elif utils.isclass_or_instance(b, data.bosses.Punchinello) and script_id == 594:
                                 for command_index, command in enumerate(script):
                                     if is_animation_header(command, boss_location.npc_id):
@@ -1483,26 +1628,28 @@ class GameWorld:
                                         pause = 10
                                         subscript = [a for a in command["subscript"] if not (a["command"] == 'set_sprite_sequence' and _0x08Flags.READ_AS_MOLD in a["args"][2])]
                                         if model.animations.mines_punch is not None:
-                                            if model.animations.bandits_way_distracted.contact_frame > 0:
-                                                pause = model.animations.bandits_way_distracted.contact_frame + 8
+                                            if model.animations.mines_punch.contact_frame > 0:
+                                                pause = model.animations.mines_punch.contact_frame + 8
                                             else:
-                                                pause = model.animations.bandits_way_distracted.total_duration
+                                                pause = model.animations.mines_punch.total_duration
                                             # swap sprite if needed (ie Booster punch)
-                                            if model.animations.bandits_way_distracted.new_sprite_id is not None:
-                                                self.models[model.model_id]["sprite"] = model.animations.bandits_way_distracted.new_sprite_id
+                                            if model.animations.mines_punch.new_sprite_id is not None:
+                                                self.models[model.model_id]["sprite"] = model.animations.mines_punch.new_sprite_id
                                             # punch animation
-                                            for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                            for subscript_command_index, subscript_command in enumerate(subscript):
                                                 if subscript_command["command"] == 'set_sprite_sequence':
-                                                    subscript_command["args"][0] = model.animations.bandits_way_distracted.sequence_id
+                                                    subscript_command["args"][0] = model.animations.mines_punch.sequence_id
                                                 elif subscript_command["command"] == 'pause':
                                                     subscript_command["args"][0] = pause
-                                                self.eventscripts[script_id][command_index]["subscript"][subscript_command_index] = subscript_command
+                                                subscript[subscript_command_index] = subscript_command
+                                                self.eventscripts[script_id][command_index]["subscript"] = subscript
                                             # set the time it takes for Mario to fly backwards
                                             mario_script = script[command_index + 1] # assumes that no commands will come between two sync scripts, which honestly, nothing should
                                             for subscript_command_index, subscript_command in enumerate(mario_script["subscript"]):
                                                 if subscript_command["command"] == 'pause':
                                                     subscript_command["args"][0] = pause - 2
                                                 self.eventscripts[script_id][command_index + 1]["subscript"][subscript_command_index] = subscript_command
+                                            self.eventscripts[script_id][command_index + 2]["args"][0] = pause - 4 # ditto
                                         else:
                                             self.eventscripts[script_id][command_index]["subscript"] = [a for a in subscript if a["command"] != 'set_sprite_sequence']
                                             for subscript_command_index, subscript_command in enumerate(self.eventscripts[script_id][command_index]["subscript"]):
@@ -1514,7 +1661,55 @@ class GameWorld:
                                                 if subscript_command["command"] == 'pause':
                                                     subscript_command["args"][0] = pause - 2
                                                 self.eventscripts[script_id][command_index + 1]["subscript"][subscript_command_index] = subscript_command
+                                            self.eventscripts[script_id][command_index + 2]["args"][0] = pause - 4 # ditto
 
+
+                            # marrymore cutscene
+                            elif utils.isclass_or_instance(b, data.bosses.Booster):
+                                for command_index, command in enumerate(script):
+                                    if is_animation_header(command, boss_location.npc_id):
+                                        # remove mold sets
+                                        subscript = command["subscript"]
+                                        if not utils.isclass_or_instance(boss, data.bosses.BoosterBoss):
+                                            # replace mold 12 with face northeast
+                                            for subscript_command_index, subscript_command in enumerate(subscript):
+                                                if subscript_command["command"] == 'set_sprite_sequence' and _0x08Flags.READ_AS_MOLD in subscript_command["args"][2] and subscript_command["args"][0] == 12:
+                                                    subscript[subscript_command_index]["command"] = "face_northeast"
+                                                    subscript[subscript_command_index].pop("args", None)
+                                            # remove all other mold sets
+                                            subscript = [a for a in subscript if not (a["command"] == 'set_sprite_sequence' and _0x08Flags.READ_AS_MOLD in a["args"][2])]
+                                            
+                                        # replace booster animation if this npc has an appropriate one
+                                        if model.animations.chapel_laugh is not None:
+                                            # swap sprite if needed (ie Booster punch)
+                                            if model.animations.chapel_laugh.new_sprite_id is not None:
+                                                self.models[model.model_id]["sprite"] = model.animations.chapel_laugh.new_sprite_id
+                                            for subscript_command_index, subscript_command in enumerate(subscript):
+                                                if subscript_command["command"] == 'set_sprite_sequence':
+                                                    subscript_command["args"][0] = model.animations.chapel_laugh.sequence_id
+                                                    # no support for sprite offsets, but not necessary with the sprites we're using
+                                                    subscript[subscript_command_index] = subscript_command
+                                        # remove animation altogether otherwise
+                                        else:
+                                            subscript = [a for a in subscript if a["command"] != 'set_sprite_sequence']
+                                        self.eventscripts[script_id][command_index]["subscript"] = subscript
+
+                            # remove all potentially erroneous mold sets for other bosses that don't have special animations
+                            else:
+                                pass
+
+                        # if model is a scarecrow, fix all of its directional commands
+                        model_info = self.models[model.model_id]
+                        if model_info["sprite"] == SpriteName._39_RED_SCARECROW:
+                            for script_id in boss_location.target_scripts:
+                                script = self.eventscripts[script_id]
+                                for command_index, command in enumerate(script):
+                                    if is_animation_header(command, boss_location.npc_id):
+                                        command["subscript"] = fix_script_for_scarecrow(command["subscript"])
+                                        self.eventscripts[script_id][command_index] = command
+                            for script_id in boss_location.target_action_scripts:
+                                self.actionscripts[script_id] = fix_script_for_scarecrow(self.actionscripts[script_id])
+                            
 
 
                         # replace relevant dialogs
@@ -1567,10 +1762,8 @@ class GameWorld:
         for e in sequence_setters:
             sequence_setters[e].append(new_command(e, "ret"))
             self.eventscripts[e] = copy.copy(sequence_setters[e])
+
         # figure out partitions
-        # figure out sequence insertions
-        # figure out substituting directions for scarecrows, removing any "reset properties" or sequence setters for NPCs that need a certain sequence
-        # figure out moleville mines punch
 
 
 
