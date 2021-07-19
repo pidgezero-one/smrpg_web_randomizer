@@ -58,13 +58,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2161_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_0, 1004]
-    },
-    {
-        "identifier": 'EVENT_2161_pause_6',
-        "command": 'pause',
-        "args": [60]
+        "command": 'run_event_as_subroutine',
+        "args": [941]
     },
     {
         "identifier": 'EVENT_2161_create_packet_at_object_coords_jmp_if_null_7',

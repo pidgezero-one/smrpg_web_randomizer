@@ -214,90 +214,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_39',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_shift_to_xy_coords_0',
-                "command": 'shift_to_xy_coords',
-                "args": [2, 56]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_shift_southwest_pixels_1',
-                "command": 'shift_southwest_pixels',
-                "args": [5]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_shift_southeast_pixels_2',
-                "command": 'shift_southeast_pixels',
-                "args": [16]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_sequence_playback_off_3',
-                "command": 'sequence_playback_off'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_set_sprite_sequence_4',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_visibility_on_5',
-                "command": 'visibility_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_pause_6',
-                "command": 'pause',
-                "args": [31]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_set_sprite_sequence_7',
-                "command": 'set_sprite_sequence',
-                "args": [5, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_pause_8',
-                "command": 'pause',
-                "args": [31]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_set_animation_speed_9',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_sequence_playback_on_10',
-                "command": 'sequence_playback_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_sequence_looping_on_11',
-                "command": 'sequence_looping_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_set_sprite_sequence_12',
-                "command": 'set_sprite_sequence',
-                "args": [4, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_pause_13',
-                "command": 'pause',
-                "args": [66]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_sequence_looping_off_14',
-                "command": 'sequence_looping_off'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_set_sprite_sequence_15',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_39_SUBSCRIPT_pause_16',
-                "command": 'pause',
-                "args": [17]
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [939]
     },
     {
         "identifier": 'EVENT_3640_jmp_to_subroutine_40',
@@ -406,19 +324,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_61',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_async_61_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_61_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest'
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [938]
     },
     {
         "identifier": 'EVENT_3640_set_short_62',
@@ -465,37 +372,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_sync_71',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_71_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_71_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_71_SUBSCRIPT_set_animation_speed_2',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_71_SUBSCRIPT_set_sprite_sequence_3',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_71_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [20]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_71_SUBSCRIPT_sequence_looping_off_5',
-                "command": 'sequence_looping_off'
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [937]
     },
     {
         "identifier": 'EVENT_3640_clear_bit_72',
@@ -761,19 +639,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_103',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_async_103_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_103_SUBSCRIPT_face_southeast_1',
-                "command": 'face_southeast'
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [938]
     },
     {
         "identifier": 'EVENT_3640_pause_104',
@@ -847,19 +714,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_118',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_async_118_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_118_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest'
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [938]
     },
     {
         "identifier": 'EVENT_3640_set_short_119',
@@ -906,37 +762,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_sync_128',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_128_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_128_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_128_SUBSCRIPT_set_animation_speed_2',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_128_SUBSCRIPT_set_sprite_sequence_3',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_128_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [20]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_128_SUBSCRIPT_sequence_looping_off_5',
-                "command": 'sequence_looping_off'
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [937]
     },
     {
         "identifier": 'EVENT_3640_clear_bit_129',
@@ -1089,19 +916,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_148',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_async_148_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_148_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest'
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [938]
     },
     {
         "identifier": 'EVENT_3640_set_short_149',
@@ -1148,37 +964,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_sync_158',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_158_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_158_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_158_SUBSCRIPT_set_animation_speed_2',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_158_SUBSCRIPT_set_sprite_sequence_3',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_158_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [20]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_158_SUBSCRIPT_sequence_looping_off_5',
-                "command": 'sequence_looping_off'
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [937]
     },
     {
         "identifier": 'EVENT_3640_clear_bit_159',
@@ -1508,37 +1295,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_sync_185',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_185_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_185_SUBSCRIPT_sequence_looping_on_1',
-                "command": 'sequence_looping_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_185_SUBSCRIPT_set_animation_speed_2',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_185_SUBSCRIPT_set_sprite_sequence_3',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_185_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [20]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_185_SUBSCRIPT_sequence_looping_off_5',
-                "command": 'sequence_looping_off'
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [937]
     },
     {
         "identifier": 'EVENT_3640_clear_bit_186',
@@ -1801,35 +1559,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_228',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_async_228_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_228_SUBSCRIPT_pause_1',
-                "command": 'pause',
-                "args": [20]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_228_SUBSCRIPT_set_animation_speed_2',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_228_SUBSCRIPT_set_sprite_sequence_3',
-                "command": 'set_sprite_sequence',
-                "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_228_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [45]
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [940]
     },
     {
         "identifier": 'EVENT_3640_action_queue_sync_229',
@@ -2482,57 +2213,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_action_queue_async_292',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_sequence_playback_on_0',
-                "command": 'sequence_playback_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_set_animation_speed_1',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_pause_2',
-                "command": 'pause',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_face_southwest_3',
-                "command": 'face_southwest'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_set_sprite_sequence_4',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_pause_5',
-                "command": 'pause',
-                "args": [15]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_sequence_looping_on_6',
-                "command": 'sequence_looping_on'
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_set_sprite_sequence_7',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.LOOPING_OFF]]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_pause_8',
-                "command": 'pause',
-                "args": [19]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_292_SUBSCRIPT_set_sprite_sequence_9',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
+        "command": 'jmp_to_event',
+        "args": [936]
     },
     {
         "identifier": 'EVENT_3640_ret_293',
@@ -2540,8 +2222,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_set_temp_action_script_async_294',
-        "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_0, 333]
+        "command": 'jmp_to_event',
+        "args": [2115]
     },
     {
         "identifier": 'EVENT_3640_ret_304',
@@ -2549,8 +2231,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_set_temp_action_script_async_305',
-        "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_1, 333]
+        "command": 'jmp_to_event',
+        "args": [2116]
     },
     {
         "identifier": 'EVENT_3640_ret_315',
@@ -2860,8 +2542,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3640_set_temp_action_script_async_337',
-        "command": 'set_temp_action_script_async',
-        "args": [AreaObjects.NPC_2, 333]
+        "command": 'jmp_to_event',
+        "args": [2117]
     },
     {
         "identifier": 'EVENT_3640_ret_347',

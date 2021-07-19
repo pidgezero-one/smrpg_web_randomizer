@@ -58,59 +58,8 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2066_action_queue_sync_9',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_9_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on'
-            },
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_9_SUBSCRIPT_set_animation_speed_1',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_9_SUBSCRIPT_jump_to_height_silent_2',
-                "command": 'jump_to_height_silent',
-                "args": [53]
-            },
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_9_SUBSCRIPT_shift_northeast_steps_3',
-                "command": 'shift_northeast_steps',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_9_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [20]
-            },
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_9_SUBSCRIPT_set_animation_speed_5',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_9_SUBSCRIPT_play_sound_6',
-                "command": 'play_sound',
-                "args": [Sounds._101_TERRAPIN_ATTACK, 6]
-            },
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_7',
-                "command": 'set_sprite_sequence',
-                "args": [4, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_9_SUBSCRIPT_pause_8',
-                "command": 'pause',
-                "args": [45]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2066_action_queue_async_10',
-        "command": 'action_queue_async',
+        "command": 'action_queue_sync',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
@@ -153,6 +102,11 @@ script = [
                 "args": [45]
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_2066_action_queue_sync_9',
+        "command": 'run_event_as_subroutine',
+        "args": [861]
     },
     {
         "identifier": 'EVENT_2066_start_battle_11',
@@ -306,7 +260,7 @@ script = [
     {
         "identifier": 'EVENT_2066_jmp_if_bit_set_22',
         "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_2066_ret_32']
+        "args": [0x7040, 1, 'EVENT_2066_stop_music_FDA2_24']
     },
     {
         "identifier": 'EVENT_2066_jmp_if_bit_clear_23',

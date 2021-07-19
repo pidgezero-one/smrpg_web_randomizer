@@ -14,11 +14,6 @@ script = [
                 "identifier": 'EVENT_628_action_queue_async_0_SUBSCRIPT_set_priority_0',
                 "command": 'set_priority',
                 "args": [3]
-            },
-            {
-                "identifier": 'EVENT_628_action_queue_async_0_SUBSCRIPT_set_sprite_sequence_1',
-                "command": 'set_sprite_sequence',
-                "args": [8, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             }
         ]
     },

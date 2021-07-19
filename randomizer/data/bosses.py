@@ -8,6 +8,7 @@ from randomizer.logic.patch import Patch
 from randomizer.data.npcmodels import models
 from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.data.roomobjecttables import Rooms
+from randomizer.data.objectsequencetables import SequenceSpeeds
 
 from randomizer.logic.flags import AvailableBosses
 
@@ -82,6 +83,7 @@ class Henchman:
 
 
 class Boss:
+    name = ""
     pack_number = None
     identifier = None
     statue_model_id = None
@@ -111,12 +113,14 @@ class SpriteAnimation:
     contact_frame = 0
     total_duration = 0
     new_sprite_id = None
+    speed = SequenceSpeeds.NORMAL
 
-    def __init__(self, sequence_id=0, contact_frame=0, total_duration=0, new_sprite_id=None):
+    def __init__(self, sequence_id=0, contact_frame=0, total_duration=0, new_sprite_id=None, speed=SequenceSpeeds.NORMAL):
         self.sequence_id = sequence_id
         self.contact_frame = contact_frame
         self.total_duration = total_duration
         self.new_sprite_id = new_sprite_id
+        self.speed = speed
 
 
 class SpriteAnimationCollection:
@@ -128,13 +132,15 @@ class SpriteAnimationCollection:
     ship_beckon = None
     ship_chair = None
     dojo_challenge = None
+    statue_intro = None
     statue_peck = None
+    statue_flustered = None
     keep_challenge = None
     keep_summon = None
     chandelier_challenge = None
     endgame_challenge = None
 
-    def __init__(self, bandits_way_distracted=None, mines_punch=None, tower_bullet=None, chapel_laugh=None, kitchen_prep=None, ship_beckon=None, ship_chair=None, dojo_challenge=None, statue_peck=None, keep_challenge=None, keep_summon=None, chandelier_challenge=None, endgame_challenge=None):
+    def __init__(self, bandits_way_distracted=None, mines_punch=None, tower_bullet=None, chapel_laugh=None, kitchen_prep=None, ship_beckon=None, ship_chair=None, dojo_challenge=None, statue_intro=None, statue_peck=None, statue_flustered=None, keep_challenge=None, keep_summon=None, chandelier_challenge=None, endgame_challenge=None):
         self.bandits_way_distracted = bandits_way_distracted
         self.mines_punch = mines_punch
         self.tower_bullet = tower_bullet
@@ -143,7 +149,9 @@ class SpriteAnimationCollection:
         self.ship_beckon = ship_beckon
         self.ship_chair = ship_chair
         self.dojo_challenge = dojo_challenge
+        self.statue_intro = statue_intro
         self.statue_peck = statue_peck
+        self.statue_flustered = statue_flustered
         self.keep_challenge = keep_challenge
         self.keep_summon = keep_summon
         self.chandelier_challenge = chandelier_challenge
@@ -163,6 +171,7 @@ class ModelDetails:
     north_facing_horizontal_pixel_shift = 0
     north_facing_vertical_pixel_shift = 0
     animations = SpriteAnimationCollection()
+    directional_capability = None
 
     def __init__(self, model_id, model_details, width, height, sequence, mold, sprite_offset, invert_directions, sequence_type, horizontal_pixel_shift, vertical_pixel_shift, north_facing_horizontal_pixel_shift, north_facing_vertical_pixel_shift, animations):
         self.model_id = model_id
@@ -421,7 +430,10 @@ class BowsersKeepLocation(BossAndStarLocation):
 
 hammer_bro_bop = SpriteAnimation(
     sequence_id=3, contact_frame=36, total_duration=48)
+hammer_bro_bop_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=16, total_duration=21, speed=SequenceSpeeds.FAST)
 hammer_bro_taunt = SpriteAnimation(sequence_id=5, total_duration=20)
+hammer_bro_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 
 
 class HammerBroBoss(Boss):
@@ -453,7 +465,9 @@ class HammerBroBoss(Boss):
         "byte6_bit2": False
     }, 40, 45, animations=SpriteAnimationCollection(
         mines_punch=hammer_bro_bop,
-        statue_peck=hammer_bro_bop,
+        statue_intro=hammer_bro_taunt,
+        statue_peck=hammer_bro_bop_fast,
+        statue_flustered=hammer_bro_recoil,
         chandelier_challenge=hammer_bro_taunt,
         endgame_challenge=hammer_bro_taunt
     ))
@@ -502,6 +516,7 @@ croco_bag_loop = SpriteAnimation(sequence_id=5, total_duration=104)
 croco_bag_hit = SpriteAnimation(
     sequence_id=4, contact_frame=152, total_duration=158)
 croco_bag_summon = SpriteAnimation(sequence_id=6, total_duration=136)
+croco_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class Croco1Boss(Boss):
@@ -514,6 +529,7 @@ class Croco1Boss(Boss):
         mines_punch=croco_bag_hit,
         chapel_laugh=croco_bag_loop,
         dojo_challenge=croco_bag_summon,
+        statue_flustered=croco_recoil,
         keep_challenge=croco_bag_summon,
         keep_summon=croco_bag_hit,
         chandelier_challenge=croco_bag_summon,
@@ -559,6 +575,7 @@ class Croco1Boss(Boss):
 
 shyster_taunt = SpriteAnimation(
     sequence_id=4, contact_frame=56, total_duration=56)
+shyster_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
 class MackShyster1(Henchman):
@@ -593,7 +610,9 @@ class DefaultShyster2(Henchman):
     ), width=24, height=32)
 
 
-mack_hit = SpriteAnimation(sequence_id=4, contact_frame=22, total_duration=24)
+mack_hit = SpriteAnimation(sequence_id=4, contact_frame=22, total_duration=28)
+mack_hit_fast = SpriteAnimation(
+    sequence_id=4, contact_frame=13, total_duration=16, speed=SequenceSpeeds.FAST)
 mack_challenge = SpriteAnimation(sequence_id=2, total_duration=12)
 
 
@@ -606,6 +625,7 @@ class MackBoss(Boss):
         ship_beckon=shyster_taunt,
         dojo_challenge=shyster_taunt,
         statue_peck=shyster_taunt,
+        statue_flustered=shyster_recoil,
         keep_challenge=shyster_taunt,
         keep_summon=shyster_taunt,
         chandelier_challenge=shyster_taunt,
@@ -635,7 +655,7 @@ class MackBoss(Boss):
         "byte6_bit2": False
     }, 43, 57, animations=SpriteAnimationCollection(
         mines_punch=mack_hit,
-        statue_peck=mack_hit,
+        statue_peck=mack_hit_fast,
         chandelier_challenge=mack_challenge,
         endgame_challenge=mack_hit
     ), sequence=7)
@@ -663,7 +683,8 @@ class MackBoss(Boss):
         "byte6_bit2": False
     }, 43, 57, animations=SpriteAnimationCollection(
         mines_punch=mack_hit,
-        statue_peck=mack_hit,
+        statue_peck=mack_hit_fast,
+        statue_flustered=mack_challenge,
         chandelier_challenge=mack_challenge,
         endgame_challenge=mack_hit
     ))
@@ -743,6 +764,10 @@ class MackBoss(Boss):
 
 pandorite_attack = SpriteAnimation(
     sequence_id=3, contact_frame=70, total_duration=80)
+pandorite_short = SpriteAnimation(
+    sequence_id=3, contact_frame=8, total_duration=80)
+pandorite_shake = SpriteAnimation(sequence_id=4, total_duration=58)
+pandorite_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 
 
 class PandoriteBoss(Boss):
@@ -773,7 +798,9 @@ class PandoriteBoss(Boss):
         "byte6_bit2": False
     }, 36, 40, animations=SpriteAnimationCollection(
         mines_punch=pandorite_attack,
-        statue_peck=pandorite_attack,
+        statue_intro=pandorite_shake,
+        statue_peck=pandorite_short,
+        statue_flustered=pandorite_recoil,
         chandelier_challenge=pandorite_attack,
         endgame_challenge=pandorite_attack
     ))
@@ -821,6 +848,10 @@ class PandoriteBoss(Boss):
 scarecrow_wiggle = SpriteAnimation(sequence_id=10, total_duration=32)
 belome_attack = SpriteAnimation(
     sequence_id=3, contact_frame=36, total_duration=48)
+belome_attack_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=18, total_duration=24)
+belome_wiggle = SpriteAnimation(sequence_id=4, total_duration=66)
+belome_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
 class Belome1Boss(Boss):
@@ -855,7 +886,9 @@ class Belome1Boss(Boss):
         "byte6_bit2": False
     }, 49, 54, animations=SpriteAnimationCollection(
         mines_punch=belome_attack,
-        statue_peck=belome_attack,
+        statue_intro=belome_wiggle,
+        statue_flustered=belome_recoil,
+        statue_peck=belome_attack_fast,
         chandelier_challenge=belome_attack,
         endgame_challenge=belome_attack
     ))
@@ -909,6 +942,7 @@ class BowyerAero(Henchman):
 bowyer_hit = SpriteAnimation(
     sequence_id=3, contact_frame=76, total_duration=82)
 bowyer_taunt = SpriteAnimation(sequence_id=4, total_duration=62)
+bowyer_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class BowyerBoss(Boss):
@@ -963,7 +997,8 @@ class BowyerBoss(Boss):
         "byte6_bit2": False
     }, 47, 52, animations=SpriteAnimationCollection(
         mines_punch=bowyer_hit,
-        statue_peck=bowyer_hit,
+        statue_intro=bowyer_taunt,
+        statue_flustered=bowyer_recoil,
         chandelier_challenge=bowyer_taunt,
         endgame_challenge=bowyer_taunt
     ))
@@ -1072,6 +1107,7 @@ class Croco2Boss(Boss):
         mines_punch=croco_bag_hit,
         chapel_laugh=croco_bag_loop,
         dojo_challenge=croco_bag_summon,
+        statue_flustered=croco_recoil,
         keep_challenge=croco_bag_summon,
         keep_summon=croco_bag_hit,
         chandelier_challenge=croco_bag_summon,
@@ -1176,7 +1212,11 @@ class DefaultBobomb(Henchman):
 
 punchinello_hit = SpriteAnimation(
     sequence_id=3, contact_frame=26, total_duration=34)
+punchinello_hit_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=14, total_duration=24, speed=SequenceSpeeds.FAST)
 punchinello_taunt = SpriteAnimation(sequence_id=4, total_duration=54)
+punchinello_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
+punchinello_jump = SpriteAnimation(sequence_id=5, total_duration=34)
 
 
 class PunchinelloBoss(Boss):
@@ -1187,6 +1227,8 @@ class PunchinelloBoss(Boss):
         chapel_laugh=bomb_tick,
         ship_beckon=bomb_tick,
         dojo_challenge=bomb_tick,
+        statue_flustered=bomb_tick,
+        statue_intro=bomb_tick,
         keep_challenge=bomb_tick,
         keep_summon=bomb_tick,
         chandelier_challenge=bomb_tick,
@@ -1216,7 +1258,9 @@ class PunchinelloBoss(Boss):
         "byte6_bit2": False
     }, 45, 45, animations=SpriteAnimationCollection(
         mines_punch=punchinello_hit,
-        statue_peck=punchinello_hit,
+        statue_intro=punchinello_jump,
+        statue_peck=punchinello_hit_fast,
+        statue_flustered=punchinello_recoil,
         chandelier_challenge=punchinello_taunt,
         endgame_challenge=punchinello_taunt
     ))
@@ -1340,6 +1384,7 @@ class BoosterApprentice(Henchman):
 booster_laugh = SpriteAnimation(sequence_id=2)
 booster_punch = SpriteAnimation(
     sequence_id=3, contact_frame=74, total_duration=92, new_sprite_id=502)  # maybe 503
+booster_jump = SpriteAnimation(sequence_id=4)
 
 
 class BoosterBoss(Boss):
@@ -1351,10 +1396,11 @@ class BoosterBoss(Boss):
         chapel_laugh=booster_laugh,
         ship_beckon=booster_laugh,
         ship_chair=booster_laugh,
-        dojo_challenge=booster_punch,
-        statue_peck=booster_punch,
-        keep_challenge=booster_punch,
-        keep_summon=booster_punch,
+        dojo_challenge=booster_jump,
+        statue_intro=booster_laugh,
+        statue_flustered=booster_jump,
+        keep_challenge=booster_jump,
+        keep_summon=booster_laugh,
         chandelier_challenge=booster_punch,
         endgame_challenge=booster_punch
     ), width=24, height=32)
@@ -1439,7 +1485,10 @@ class GrateGuyKnifeGuy(Henchman):  # What to do with this? Can't have a pack
 
 grate_guy_hit = SpriteAnimation(
     sequence_id=4, contact_frame=52, total_duration=62)
+grate_guy_hit_fast = SpriteAnimation(
+    sequence_id=4, contact_frame=14, total_duration=17, speed=SequenceSpeeds.VERY_FAST)
 grate_guy_taunt = SpriteAnimation(sequence_id=3, total_duration=64)
+grate_guy_recoil = SpriteAnimation(sequence_id=2, total_duration=20)
 
 
 class GrateGuyBoss(Boss):
@@ -1472,7 +1521,9 @@ class GrateGuyBoss(Boss):
         "byte6_bit2": False
     }, width=41, height=47, animations=SpriteAnimationCollection(
         mines_punch=grate_guy_hit,
-        statue_peck=grate_guy_hit,
+        statue_intro=grate_guy_taunt,
+        statue_peck=grate_guy_hit_fast,
+        statue_flustered=grate_guy_recoil,
         chandelier_challenge=grate_guy_taunt,
         endgame_challenge=grate_guy_taunt
     ))
@@ -1534,8 +1585,11 @@ class BundtTorte2(Henchman):
     ), width=24, height=32)  # maybe 397
 
 
+bundt_recoil = SpriteAnimation(sequence_id=2, total_duration=30)
 bundt_taunt = SpriteAnimation(
     sequence_id=4, contact_frame=74, total_duration=82)
+bundt_short = SpriteAnimation(
+    sequence_id=4, contact_frame=13, total_duration=16, speed=SequenceSpeeds.FASTEST)
 
 
 class BundtBoss(Boss):
@@ -1568,7 +1622,9 @@ class BundtBoss(Boss):
         "byte6_bit2": False
     }, width=35, height=56, animations=SpriteAnimationCollection(
         mines_punch=bundt_taunt,
-        statue_peck=bundt_taunt,
+        statue_intro=bundt_taunt,
+        statue_peck=bundt_short,
+        statue_flustered=bundt_recoil,
         chandelier_challenge=bundt_taunt,
         endgame_challenge=bundt_taunt
     ))
@@ -1643,6 +1699,7 @@ class BundtBoss(Boss):
     ]
 
 
+squid_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 squid_hit = SpriteAnimation(sequence_id=3, contact_frame=36, total_duration=48)
 tentacle_beckon = SpriteAnimation(sequence_id=1, new_sprite_id=223)
 
@@ -1675,6 +1732,7 @@ class KingCalamariBoss(Boss):
         mines_punch=squid_hit,
         dojo_challenge=squid_hit,
         statue_peck=squid_hit,
+        statue_flustered=squid_recoil,
         keep_challenge=squid_hit,
         keep_summon=squid_hit,
         chandelier_challenge=squid_hit,
@@ -1740,6 +1798,9 @@ class HidonGoombette(Henchman):
 hidon_attack = SpriteAnimation(
     sequence_id=3, contact_frame=60, total_duration=60)
 
+hidon_attack_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=18, total_duration=30, speed=SequenceSpeeds.FAST)
+
 
 class HidonBoss(Boss):
     name = "Hidon"
@@ -1769,7 +1830,9 @@ class HidonBoss(Boss):
         "byte6_bit2": False
     }, 36, 40, animations=SpriteAnimationCollection(
         mines_punch=hidon_attack,
-        statue_peck=hidon_attack,
+        statue_flustered=pandorite_recoil,
+        statue_peck=hidon_attack_fast,
+        statue_intro=pandorite_shake,
         chandelier_challenge=hidon_attack,
         endgame_challenge=hidon_attack
     ))
@@ -1896,6 +1959,7 @@ small_johnny_sit = SpriteAnimation(sequence_id=10)
 johnny_hit = SpriteAnimation(
     sequence_id=3, contact_frame=48, total_duration=84)
 johnny_taunt = SpriteAnimation(sequence_id=4, total_duration=62)
+johnny_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class JohnnyBoss(Boss):
@@ -1911,7 +1975,7 @@ class JohnnyBoss(Boss):
         chandelier_challenge=small_johnny_sit,
         endgame_challenge=small_johnny_sit
     ), width=32, height=32)  # maybe 52
-    big_model = BigModelDetails({
+    big_model = BigModelDetails({ # does not break shadows
         "sprite": SpriteName._505_JOHNNY,
         "priority_0": False,
         "priority_1": False,
@@ -1935,7 +1999,8 @@ class JohnnyBoss(Boss):
         "byte6_bit2": False
     }, 45, 45, animations=SpriteAnimationCollection(
         mines_punch=johnny_hit,
-        statue_peck=johnny_hit,
+        statue_intro=johnny_taunt,
+        statue_flustered=johnny_recoil,
         chandelier_challenge=johnny_taunt,
         endgame_challenge=johnny_taunt
     ))
@@ -1999,8 +2064,11 @@ class JohnnyBoss(Boss):
 yaridovich_hit = SpriteAnimation(
     sequence_id=3, contact_frame=78, total_duration=84)
 yaridovich_taunt = SpriteAnimation(sequence_id=4, total_duration=40)
+yaridovich_taunt_fast = SpriteAnimation(
+    sequence_id=4, total_duration=40, contact_frame=15, speed=SequenceSpeeds.FAST)
 yaridovich_alt_taunt = SpriteAnimation(
     sequence_id=0, total_duration=48)  # set sequence to 0 when this runs
+yaridovich_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class YaridovichHenchman(Henchman):
@@ -2038,7 +2106,7 @@ class YaridovichBoss(Boss):
         chandelier_challenge=yaridovich_alt_taunt,
         endgame_challenge=yaridovich_alt_taunt
     ))
-    attack_model = BigModelDetails({
+    attack_model = BigModelDetails({ # does not break shadows
         "sprite": SpriteName._482_YARIDOVICH,
         "priority_0": False,
         "priority_1": False,
@@ -2062,7 +2130,8 @@ class YaridovichBoss(Boss):
         "byte6_bit2": False
     }, width=56, height=84, animations=SpriteAnimationCollection(
         mines_punch=yaridovich_hit,
-        statue_peck=yaridovich_hit,
+        statue_intro=yaridovich_taunt,
+        statue_flustered=yaridovich_recoil,
         chandelier_challenge=yaridovich_taunt,
         endgame_challenge=yaridovich_taunt
     ))
@@ -2217,7 +2286,9 @@ class Belome2Boss(Boss):
         "byte6_bit2": False
     }, 49, 54, animations=SpriteAnimationCollection(
         mines_punch=belome_attack,
-        statue_peck=belome_attack,
+        statue_intro=belome_wiggle,
+        statue_peck=belome_attack_fast,
+        statue_flustered=belome_recoil,
         chandelier_challenge=belome_attack,
         endgame_challenge=belome_attack
     ))
@@ -2263,6 +2334,7 @@ class Belome2Boss(Boss):
     ]
 
 
+jagger_recoil = SpriteAnimation(sequence_id=2, total_duration=18)
 jagger_look = SpriteAnimation(sequence_id=8)
 jagger_punch = SpriteAnimation(
     sequence_id=4, contact_frame=54, total_duration=74)
@@ -2279,7 +2351,9 @@ class JaggerBoss(Boss):
         chapel_laugh=jagger_look,
         ship_beckon=jagger_taunt,
         dojo_challenge=jagger_punch,
+        statue_intro=jagger_look,
         statue_peck=jagger_taunt,
+        statue_flustered=jagger_recoil,
         keep_challenge=jagger_punch,
         keep_summon=jagger_punch,
         chandelier_challenge=jagger_punch,
@@ -2335,6 +2409,7 @@ class Jinx1Boss(Boss):
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
         dojo_challenge=jinx_punch,
+        statue_intro=jinx_punch,
         statue_peck=jinx_punch,
         keep_challenge=jinx_punch,
         keep_summon=jinx_punch,
@@ -2385,6 +2460,7 @@ class Jinx2Boss(Boss):
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
         dojo_challenge=jinx_punch,
+        statue_intro=jinx_punch,
         statue_peck=jinx_punch,
         keep_challenge=jinx_punch,
         keep_summon=jinx_punch,
@@ -2435,6 +2511,7 @@ class Jinx3Boss(Boss):
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
         dojo_challenge=jinx_punch,
+        statue_intro=jinx_punch,
         statue_peck=jinx_punch,
         keep_challenge=jinx_punch,
         keep_summon=jinx_punch,
@@ -2503,7 +2580,7 @@ class CulexBoss(Boss):
     pack_number = 216
     statue_model = StatueModelDetails(511, mold=3)
     small_model = SmallModelDetails(511, sequence=8, mold=3)
-    big_model = BigModelDetails({
+    big_model = BigModelDetails({ # incredibly, does not break shadows
         "sprite": SpriteName._511_CULEX,
         "priority_0": False,
         "priority_1": False,
@@ -2511,8 +2588,8 @@ class CulexBoss(Boss):
         "show_shadow": True,
         "shadow": ShadowSize._01_OVAL_MED,
         "y_pixel_shift": 1,
-        "acute_axis": 16,
-        "obtuse_axis": 16,
+        "acute_axis": 15,
+        "obtuse_axis": 15,
         "height": 31,
         "vram_store": VramStore._02_SWSE,
         "vram_size": 0,
@@ -2603,6 +2680,8 @@ class CulexBoss(Boss):
 
 boxboy_attack = SpriteAnimation(
     sequence_id=3, contact_frame=76, total_duration=98)
+boxboy_short = SpriteAnimation(
+    sequence_id=3, contact_frame=8, total_duration=98)
 
 
 class BoxBoyBoss(Boss):
@@ -2633,7 +2712,9 @@ class BoxBoyBoss(Boss):
         "byte6_bit2": False
     }, 36, 40, animations=SpriteAnimationCollection(
         mines_punch=boxboy_attack,
-        statue_peck=boxboy_attack,
+        statue_intro=pandorite_shake,
+        statue_peck=boxboy_short,
+        statue_flustered=pandorite_recoil,
         chandelier_challenge=boxboy_attack,
         endgame_challenge=boxboy_attack
     ))
@@ -2680,6 +2761,8 @@ class BoxBoyBoss(Boss):
 piranha_taunt = SpriteAnimation(sequence_id=4, total_duration=16)
 piranha_bite = SpriteAnimation(
     sequence_id=3, contact_frame=20, total_duration=52)
+piranha_recoil = SpriteAnimation(sequence_id=2, total_duration=20)
+megasmilax_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 megasmilax_bite = SpriteAnimation(
     sequence_id=3, contact_frame=18, total_duration=28)
 megasmilax_taunt = SpriteAnimation(sequence_id=4, total_duration=38)
@@ -2698,11 +2781,13 @@ class MegaSmilaxBoss(Boss):
         263, 24, 32, mold=1, horizontal_pixel_shift=-3, vertical_pixel_shift=-4)
     small_model = SmallModelDetails(263, width=24, height=32, animations=SpriteAnimationCollection(
         bandits_way_distracted=piranha_taunt,
-        punchinello_hit=piranha_bite,
+        mines_punch=piranha_bite,
         chapel_laugh=piranha_taunt,
         ship_beckon=piranha_taunt,
         dojo_challenge=piranha_bite,
+        statue_intro=piranha_bite,
         statue_peck=piranha_bite,
+        statue_flustered=piranha_recoil,
         keep_challenge=piranha_bite,
         keep_summon=piranha_bite,
         chandelier_challenge=piranha_bite,
@@ -2732,6 +2817,7 @@ class MegaSmilaxBoss(Boss):
         "byte6_bit2": False
     }, 37, 37, animations=SpriteAnimationCollection(
         mines_punch=megasmilax_bite,
+        statue_flustered=megasmilax_recoil,
         statue_peck=megasmilax_bite,
         chandelier_challenge=megasmilax_taunt,
         endgame_challenge=megasmilax_taunt
@@ -2850,6 +2936,8 @@ class DodoBoss(Boss):
         "byte6_bit2": True
     }, height=56, width=46, animations=SpriteAnimationCollection(
         mines_punch=dodo_peck,
+        statue_intro=dodo_taunt,
+        statue_flustered=dodo_taunt,
         statue_peck=dodo_peck,
         chandelier_challenge=dodo_taunt,
         endgame_challenge=dodo_taunt
@@ -2897,13 +2985,19 @@ class BirdettaEggbert(Henchman):
 
 birdetta_attack = SpriteAnimation(
     sequence_id=3, contact_frame=40, total_duration=50)
+birdetta_attack_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=14, total_duration=18, speed=SequenceSpeeds.FASTEST)
+birdetta_recoil = SpriteAnimation(sequence_id=2, total_duration=18)
+birdetta_taunt = SpriteAnimation(sequence_id=4, total_duration=48)
 
 eggbert_expand = SpriteAnimation(sequence_id=2, total_duration=32)
+
 
 class BirdettaBoss(Boss):
     name = "Birdetta"
     pack_number = 175
-    small_model = SmallModelDetails(462, 16, 16, animations=SpriteAnimationCollection(bandits_way_distracted=eggbert_expand))
+    small_model = SmallModelDetails(462, 16, 16, animations=SpriteAnimationCollection(
+        bandits_way_distracted=eggbert_expand, statue_flustered=eggbert_expand, statue_intro=eggbert_expand))
     big_model = BigModelDetails({
         "sprite": SpriteName._461_BIRDO,
         "priority_0": False,
@@ -2928,7 +3022,9 @@ class BirdettaBoss(Boss):
         "byte6_bit2": False
     }, height=57, width=38, animations=SpriteAnimationCollection(
         mines_punch=birdetta_attack,
-        statue_peck=birdetta_attack,
+        statue_flustered=birdetta_recoil,
+        statue_peck=birdetta_attack_fast,
+        statue_intro=birdetta_taunt,
         chandelier_challenge=birdetta_attack,
         endgame_challenge=birdetta_attack
     ))
@@ -3054,6 +3150,7 @@ valentina_laugh = SpriteAnimation(sequence_id=2)
 valentina_hit = SpriteAnimation(
     sequence_id=3, contact_frame=18, total_duration=28)
 valentina_taunt = SpriteAnimation(sequence_id=4, total_duration=58)
+valentina_recoil = SpriteAnimation(sequence_id=2, total_duration=34)
 
 
 class ValentinaBoss(Boss):
@@ -3067,6 +3164,7 @@ class ValentinaBoss(Boss):
         ship_beckon=valentina_laugh,
         ship_chair=valentina_stand,
         dojo_challenge=valentina_laugh,
+        statue_intro=valentina_laugh,
         keep_challenge=valentina_laugh,
         keep_summon=valentina_laugh,
         chandelier_challenge=valentina_laugh,
@@ -3094,7 +3192,14 @@ class ValentinaBoss(Boss):
         "byte5_bit6": False,
         "byte5_bit7": False,
         "byte6_bit2": False
-    }, height=82, width=51, animations=SpriteAnimationCollection(mines_punch=valentina_hit, statue_peck=valentina_hit, chandelier_challenge=valentina_taunt, endgame_challenge=valentina_taunt))
+    }, height=82, width=51, animations=SpriteAnimationCollection(
+        # mines_punch=valentina_hit,
+        statue_intro=valentina_taunt,
+        # statue_peck=valentina_hit,
+        statue_flustered=valentina_recoil,
+        chandelier_challenge=valentina_taunt,
+        endgame_challenge=valentina_taunt)
+    )
     repeatable_henchmen = [ValentinaBluebird, ValentinaBirdy]
     dialog_replacements = [
         (49,
@@ -3179,6 +3284,7 @@ class ValentinaBoss(Boss):
 
 fireball_spin = SpriteAnimation(
     sequence_id=3, contact_frame=40, total_duration=62)
+fireball_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 
 
 class CzarPyrosphere(Henchman):
@@ -3189,6 +3295,8 @@ class CzarPyrosphere(Henchman):
 
 czar_dragon_hit = SpriteAnimation(
     sequence_id=3, contact_frame=56, total_duration=66)
+czar_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
+czar_taunt = SpriteAnimation(sequence_id=5)
 
 
 class CzarBoss(Boss):
@@ -3198,13 +3306,15 @@ class CzarBoss(Boss):
         mines_punch=fireball_spin,
         ship_beckon=fireball_spin,
         dojo_challenge=fireball_spin,
+        statue_intro=fireball_spin,
         statue_peck=fireball_spin,
+        statue_flustered=fireball_recoil,
         keep_challenge=fireball_spin,
         keep_summon=fireball_spin,
         chandelier_challenge=fireball_spin,
         endgame_challenge=fireball_spin
     ))
-    big_model = BigModelDetails({
+    big_model = BigModelDetails({  # does not break shadows!
         "sprite": SpriteName._476_CZAR_DRAGON,
         "priority_0": False,
         "priority_1": False,
@@ -3226,11 +3336,33 @@ class CzarBoss(Boss):
         "byte5_bit6": False,
         "byte5_bit7": False,
         "byte6_bit2": False
-    }, height=54, width=59, animations=SpriteAnimationCollection(
+    }, height=67, width=81, animations=SpriteAnimationCollection(
         mines_punch=czar_dragon_hit,
-        statue_peck=czar_dragon_hit,
-        chandelier_challenge=czar_dragon_hit,
-        endgame_challenge=czar_dragon_hit))
+        statue_intro=czar_taunt,
+        statue_flustered=czar_recoil))
+    # attack_model = BigModelDetails({
+    #     "sprite": SpriteName._216_CZAR_DRAGON_BODY,
+    #     "priority_0": False,
+    #     "priority_1": False,
+    #     "priority_2": True,
+    #     "show_shadow": False,
+    #     "shadow": ShadowSize._00_OVAL_SMALL,
+    #     "y_pixel_shift": 0,
+    #     "acute_axis": 13,
+    #     "obtuse_axis": 13,
+    #     "height": 9,
+    #     "vram_store": VramStore._02_SWSE,
+    #     "vram_size": 3,
+    #     "cannot_clone": True,
+    #     "byte2_bit0": False,
+    #     "byte2_bit1": False,
+    #     "byte2_bit2": False,
+    #     "byte2_bit3": False,
+    #     "byte2_bit4": False,
+    #     "byte5_bit6": False,
+    #     "byte5_bit7": False,
+    #     "byte6_bit2": False
+    # }, height=53, width=58) # overworld object - unsure what to use for
     repeatable_henchmen = [CzarPyrosphere]
     dialog_replacements = [
         (49, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
@@ -3296,7 +3428,10 @@ axem_pink_hit = SpriteAnimation(
     sequence_id=3, contact_frame=26, total_duration=58)
 axem_red_hit = SpriteAnimation(
     sequence_id=3, contact_frame=26, total_duration=66)
+axem_red_hit_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=13, total_duration=33, speed=SequenceSpeeds.FAST)
 axem_red_taunt = SpriteAnimation(sequence_id=4, total_duration=120)
+axem_red_recoil = SpriteAnimation(sequence_id=2, total_duration=22)
 
 
 class AxemRangersAxemBlack(Henchman):
@@ -3338,13 +3473,16 @@ class AxemRangersMachine2(Henchman):
 class AxemRangersBoss(Boss):
     name = "Axem Red"
     pack_number = 188
+    forced_background = 39
     statue_model = StatueModelDetails(
         208, width=32, height=32, horizontal_pixel_shift=-6)
     small_model = SmallModelDetails(208, width=32, height=32, animations=SpriteAnimationCollection(
         mines_punch=axem_red_hit,
         ship_beckon=axem_red_hit,
         dojo_challenge=axem_red_taunt,
-        statue_peck=axem_red_hit,
+        statue_intro=axem_red_taunt,
+        statue_peck=axem_red_hit_fast,
+        statue_flustered=axem_red_recoil,
         keep_challenge=axem_red_taunt,
         keep_summon=axem_red_hit,
         chandelier_challenge=axem_red_taunt,
@@ -3431,6 +3569,8 @@ class AxemRangersBoss(Boss):
 
 chester_attack = SpriteAnimation(
     sequence_id=3, contact_frame=50, total_duration=64)
+chester_attack_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=18, total_duration=26)
 
 
 class ChesterBoss(Boss):
@@ -3461,7 +3601,9 @@ class ChesterBoss(Boss):
         "byte6_bit2": False
     }, 36, 40, animations=SpriteAnimationCollection(
         mines_punch=chester_attack,
-        statue_peck=chester_attack,
+        statue_intro=pandorite_shake,
+        statue_peck=chester_attack_fast,
+        statue_flustered=pandorite_recoil,
         chandelier_challenge=chester_attack,
         endgame_challenge=chester_attack
     ))
@@ -3508,7 +3650,10 @@ small_magikoopa_hit = SpriteAnimation(
     sequence_id=10, contact_frame=44, total_duration=72)
 big_magikoopa_hit = SpriteAnimation(
     sequence_id=3, contact_frame=38, total_duration=62)
+big_magikoopa_hit_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=14, total_duration=32, speed=SequenceSpeeds.VERY_FAST)
 big_magikoopa_taunt = SpriteAnimation(sequence_id=4, total_duration=60)
+big_magikoopa_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class MagikoopaBoss(Boss):
@@ -3520,7 +3665,7 @@ class MagikoopaBoss(Boss):
         mines_punch=small_magikoopa_hit,
         ship_beckon=small_magikoopa_hit,
         dojo_challenge=small_magikoopa_hit,
-        statue_peck=small_magikoopa_hit,
+        # statue_peck=small_magikoopa_hit,
         keep_challenge=small_magikoopa_hit,
         keep_summon=small_magikoopa_hit,
         chandelier_challenge=small_magikoopa_hit,
@@ -3550,7 +3695,9 @@ class MagikoopaBoss(Boss):
         "byte6_bit2": False
     }, height=42, width=45, animations=SpriteAnimationCollection(
         mines_punch=big_magikoopa_hit,
-        statue_peck=big_magikoopa_hit,
+        statue_intro=big_magikoopa_taunt,
+        statue_peck=big_magikoopa_hit_fast,
+        statue_flustered=big_magikoopa_recoil,
         chandelier_challenge=big_magikoopa_taunt,
         endgame_challenge=big_magikoopa_taunt))
     dialog_replacements = [
@@ -3592,6 +3739,7 @@ shyguy_spin = SpriteAnimation(sequence_id=5)
 shyguy_hit = SpriteAnimation(
     sequence_id=3, contact_frame=32, total_duration=40)
 shyguy_taunt = SpriteAnimation(sequence_id=4, total_duration=110)
+shyguy_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
 class BoomerShyGuy(Henchman):
@@ -3604,6 +3752,7 @@ boomer_alt_taunt = SpriteAnimation(sequence_id=1)
 boomer_hit = SpriteAnimation(
     sequence_id=3, contact_frame=42, total_duration=52)
 boomer_taunt = SpriteAnimation(sequence_id=4, total_duration=48)
+boomer_recoil = SpriteAnimation(sequence_id=2, total_duration=18)
 
 
 class BoomerBoss(Boss):
@@ -3618,7 +3767,9 @@ class BoomerBoss(Boss):
         ship_beckon=shyguy_taunt,
         ship_chair=shyguy_spin,
         dojo_challenge=shyguy_taunt,
-        statue_peck=shyguy_hit,
+        statue_intro=shyguy_taunt,
+        # statue_peck=shyguy_hit,
+        statue_flustered=shyguy_recoil,
         keep_challenge=shyguy_taunt,
         keep_summon=shyguy_taunt,
         chandelier_challenge=shyguy_taunt,
@@ -3650,7 +3801,7 @@ class BoomerBoss(Boss):
         chandelier_challenge=boomer_alt_taunt,
         endgame_challenge=boomer_alt_taunt
     ))
-    attack_model = BigModelDetails({
+    attack_model = BigModelDetails({  # hit animation breaks but shadow does not, can keep
         "sprite": SpriteName._308_BOOMER,
         "priority_0": False,
         "priority_1": False,
@@ -3673,8 +3824,10 @@ class BoomerBoss(Boss):
         "byte5_bit7": False,
         "byte6_bit2": False
     }, width=52, height=49, animations=SpriteAnimationCollection(
-        mines_punch=boomer_hit,
-        statue_peck=boomer_hit,
+        # mines_punch=boomer_hit, # vram issues
+        statue_intro=boomer_taunt,
+        # statue_peck=boomer_hit, # vram issues
+        statue_flustered=boomer_recoil,
         chandelier_challenge=boomer_taunt,
         endgame_challenge=boomer_taunt
     ))
@@ -3809,6 +3962,8 @@ class ExorBoss(Boss):
 
 dingaling_attack = SpriteAnimation(
     sequence_id=4, contact_frame=32, total_duration=44)
+dingaling_attack_fast = SpriteAnimation(
+    sequence_id=4, contact_frame=16, total_duration=22, speed=SequenceSpeeds.FAST)
 dingaling_taunt = SpriteAnimation(sequence_id=7, total_duration=62)
 dingaling_circle = SpriteAnimation(
     sequence_id=3, contact_frame=22, total_duration=34)
@@ -3827,7 +3982,7 @@ class CountdownBoss(Boss):
     small_model = SmallModelDetails(454, animations=SpriteAnimationCollection(
         mines_punch=dingaling_attack,
         dojo_challenge=dingaling_taunt,
-        statue_peck=dingaling_attack,
+        statue_peck=dingaling_attack_fast,
         keep_challenge=dingaling_taunt,
         keep_summon=dingaling_taunt,
         chandelier_challenge=dingaling_taunt,
@@ -3888,6 +4043,7 @@ class CountdownBoss(Boss):
 
 cloaker_hit = SpriteAnimation(
     sequence_id=3, contact_frame=38, total_duration=50)
+cloaker_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class CloakerDominoBoss(Boss):
@@ -3897,7 +4053,7 @@ class CloakerDominoBoss(Boss):
     statue_model = StatueModelDetails(
         429, 32, 32, horizontal_pixel_shift=-4, vertical_pixel_shift=-3)
     small_model = SmallModelDetails(429, 32, 32)  # maybe 249
-    big_model = BigModelDetails({
+    big_model = BigModelDetails({  # animations break, but presence in room does not break shadows, can keep
         "sprite": SpriteName._477_CLOAKER_1ST_TIME,
         "priority_0": False,
         "priority_1": False,
@@ -3920,10 +4076,11 @@ class CloakerDominoBoss(Boss):
         "byte5_bit7": False,
         "byte6_bit2": False
     }, width=48, height=51, animations=SpriteAnimationCollection(
-        mines_punch=cloaker_hit,
-        statue_peck=cloaker_hit,
-        chandelier_challenge=cloaker_hit,
-        endgame_challenge=cloaker_hit
+        # mines_punch=cloaker_hit, # breaks vram
+        # statue_peck=cloaker_hit, # breaks vram
+        statue_flustered=cloaker_recoil,
+        # chandelier_challenge=cloaker_hit, # breaks vram
+        # endgame_challenge=cloaker_hit # breaks vram
     ))
     dialog_replacements = [
         (49,
@@ -3987,6 +4144,8 @@ shovelknight_tile = SpriteAnimation(sequence_id=2)
 shovelknight_attack = SpriteAnimation(
     sequence_id=3, contact_frame=32, total_duration=44)
 shovelknight_taunt = SpriteAnimation(sequence_id=4, total_duration=44)
+shovelknight_recoil = SpriteAnimation(sequence_id=2, total_duration=24)
+shovelknight_alt_taunt = SpriteAnimation(sequence_id=5)
 
 
 class ClerkBoss(Boss):
@@ -4004,34 +4163,36 @@ class ClerkBoss(Boss):
     ))
     statue_model = StatueModelDetails(
         446, 32, 32, horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._306_CLERK,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 1,
-        "acute_axis": 7,
-        "obtuse_axis": 7,
-        "height": 13,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 7,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=60, height=58, animations=SpriteAnimationCollection(
-        mines_punch=shovelknight_attack,
-        statue_peck=shovelknight_attack,
-        chandelier_challenge=shovelknight_taunt,
-        endgame_challenge=shovelknight_taunt
-    ))
+    # big_model = BigModelDetails({
+    #     "sprite": SpriteName._306_CLERK,
+    #     "priority_0": False,
+    #     "priority_1": False,
+    #     "priority_2": True,
+    #     "show_shadow": False,
+    #     "shadow": ShadowSize._00_OVAL_SMALL,
+    #     "y_pixel_shift": 1,
+    #     "acute_axis": 7,
+    #     "obtuse_axis": 7,
+    #     "height": 13,
+    #     "vram_store": VramStore._02_SWSE,
+    #     "vram_size": 7,
+    #     "cannot_clone": True,
+    #     "byte2_bit0": False,
+    #     "byte2_bit1": False,
+    #     "byte2_bit2": False,
+    #     "byte2_bit3": False,
+    #     "byte2_bit4": False,
+    #     "byte5_bit6": False,
+    #     "byte5_bit7": False,
+    #     "byte6_bit2": False
+    # }, width=60, height=58, animations=SpriteAnimationCollection(
+    #     mines_punch=shovelknight_attack,
+    #     statue_peck=shovelknight_attack,
+    #     statue_intro=shovelknight_alt_taunt,
+    #     statue_flustered=shovelknight_recoil,
+    #     chandelier_challenge=shovelknight_taunt,
+    #     endgame_challenge=shovelknight_taunt
+    # ))
     unique_henchmen = [ClerkMadMallet, ClerkMadMallet]
     repeatable_henchmen = [ClerkMadMallet]
     dialog_replacements = [
@@ -4132,34 +4293,36 @@ class ManagerBoss(Boss):
     ))
     statue_model = StatueModelDetails(
         493, 32, 32, horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._332_MANAGER,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 1,
-        "acute_axis": 7,
-        "obtuse_axis": 7,
-        "height": 13,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 7,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=60, height=58, animations=SpriteAnimationCollection(
-        mines_punch=shovelknight_attack,
-        statue_peck=shovelknight_attack,
-        chandelier_challenge=shovelknight_taunt,
-        endgame_challenge=shovelknight_taunt
-    ))
+    # big_model = BigModelDetails({
+    #     "sprite": SpriteName._332_MANAGER,
+    #     "priority_0": False,
+    #     "priority_1": False,
+    #     "priority_2": True,
+    #     "show_shadow": False,
+    #     "shadow": ShadowSize._00_OVAL_SMALL,
+    #     "y_pixel_shift": 1,
+    #     "acute_axis": 7,
+    #     "obtuse_axis": 7,
+    #     "height": 13,
+    #     "vram_store": VramStore._02_SWSE,
+    #     "vram_size": 7,
+    #     "cannot_clone": True,
+    #     "byte2_bit0": False,
+    #     "byte2_bit1": False,
+    #     "byte2_bit2": False,
+    #     "byte2_bit3": False,
+    #     "byte2_bit4": False,
+    #     "byte5_bit6": False,
+    #     "byte5_bit7": False,
+    #     "byte6_bit2": False
+    # }, width=60, height=58, animations=SpriteAnimationCollection(
+    #     mines_punch=shovelknight_attack,
+    #     statue_peck=shovelknight_attack,
+    #     statue_intro=shovelknight_alt_taunt,
+    #     statue_flustered=shovelknight_recoil,
+    #     chandelier_challenge=shovelknight_taunt,
+    #     endgame_challenge=shovelknight_taunt
+    # ))
     unique_henchmen = [ManagerPounder, ManagerPounder,
                        ManagerPounder, ManagerPounder]
     repeatable_henchmen = [ManagerPounder]
@@ -4261,34 +4424,36 @@ class DirectorBoss(Boss):
     ))
     statue_model = StatueModelDetails(
         497, 32, 32, horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._332_MANAGER,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 1,
-        "acute_axis": 7,
-        "obtuse_axis": 7,
-        "height": 13,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 7,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=60, height=58, animations=SpriteAnimationCollection(
-        mines_punch=shovelknight_attack,
-        statue_peck=shovelknight_attack,
-        chandelier_challenge=shovelknight_taunt,
-        endgame_challenge=shovelknight_taunt
-    ))
+    # big_model = BigModelDetails({
+    #     "sprite": SpriteName._332_MANAGER,
+    #     "priority_0": False,
+    #     "priority_1": False,
+    #     "priority_2": True,
+    #     "show_shadow": False,
+    #     "shadow": ShadowSize._00_OVAL_SMALL,
+    #     "y_pixel_shift": 1,
+    #     "acute_axis": 7,
+    #     "obtuse_axis": 7,
+    #     "height": 13,
+    #     "vram_store": VramStore._02_SWSE,
+    #     "vram_size": 7,
+    #     "cannot_clone": True,
+    #     "byte2_bit0": False,
+    #     "byte2_bit1": False,
+    #     "byte2_bit2": False,
+    #     "byte2_bit3": False,
+    #     "byte2_bit4": False,
+    #     "byte5_bit6": False,
+    #     "byte5_bit7": False,
+    #     "byte6_bit2": False
+    # }, width=60, height=58, animations=SpriteAnimationCollection(
+    #     mines_punch=shovelknight_attack,
+    #     statue_peck=shovelknight_attack,
+    #     statue_intro=shovelknight_alt_taunt,
+    #     statue_flustered=shovelknight_recoil,
+    #     chandelier_challenge=shovelknight_taunt,
+    #     endgame_challenge=shovelknight_taunt
+    # ))
     unique_henchmen = [DirectorPoundette, DirectorPoundette,
                        DirectorPoundette, DirectorPoundette]
     repeatable_henchmen = [DirectorPoundette]
@@ -4386,8 +4551,11 @@ class GunyolkPiece(Henchman):
     model = SmallModelDetails(403)
 
 
-ninja_hit = SpriteAnimation(sequence_id=3, contact_frame=36, total_duration=48)
+ninja_hit = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=38)
+ninja_hit_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=13, total_duration=19)
 ninja_taunt = SpriteAnimation(sequence_id=4, total_duration=54)
+ninja_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
 class GunyolkBoss(Boss):
@@ -4400,7 +4568,9 @@ class GunyolkBoss(Boss):
         chapel_laugh=ninja_taunt,
         ship_beckon=ninja_taunt,
         dojo_challenge=ninja_hit,
-        statue_peck=ninja_hit,
+        statue_intro=ninja_taunt,
+        statue_peck=ninja_hit_fast,
+        statue_flustered=ninja_recoil,
         keep_challenge=ninja_hit,
         keep_summon=ninja_taunt,
         chandelier_challenge=ninja_hit,
@@ -4453,6 +4623,7 @@ class GunyolkBoss(Boss):
 drillbit_hit = SpriteAnimation(
     sequence_id=3, contact_frame=54, total_duration=64)
 drillbit_taunt = SpriteAnimation(sequence_id=4, total_duration=56)
+drillbit_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
 class SmithyDrillBit(Henchman):
@@ -4476,6 +4647,8 @@ class SmithyAero(Henchman):
 
 smithy_hit = SpriteAnimation(
     sequence_id=1, contact_frame=76, total_duration=122)
+smithy_hit_fast = SpriteAnimation(
+    sequence_id=1, contact_frame=14, total_duration=24, speed=SequenceSpeeds.FASTEST)
 
 
 class SmithyBoss(Boss):
@@ -4488,7 +4661,9 @@ class SmithyBoss(Boss):
         ship_beckon=drillbit_taunt,
         ship_chair=drillbit_taunt,
         dojo_challenge=drillbit_taunt,
+        statue_intro=drillbit_taunt,
         statue_peck=drillbit_hit,
+        statue_flustered=drillbit_recoil,
         keep_challenge=drillbit_taunt,
         keep_summon=drillbit_taunt,
         chandelier_challenge=drillbit_taunt,
@@ -4501,10 +4676,10 @@ class SmithyBoss(Boss):
         "priority_2": False,
         "show_shadow": False,
         "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 2,
-        "acute_axis": 10,
-        "obtuse_axis": 10,
-        "height": 18,
+        "y_pixel_shift": -16,
+        "acute_axis": 12,
+        "obtuse_axis": 15,
+        "height": 13,
         "vram_store": VramStore._02_SWSE,
         "vram_size": 5,
         "cannot_clone": False,
@@ -4518,7 +4693,7 @@ class SmithyBoss(Boss):
         "byte6_bit2": False
     }, width=49, height=31, animations=SpriteAnimationCollection(
         mines_punch=smithy_hit,
-        statue_peck=smithy_hit,
+        statue_peck=smithy_hit_fast,
         chandelier_challenge=smithy_hit,
         endgame_challenge=smithy_hit
     ))
@@ -5288,7 +5463,7 @@ class Dodo(BossAndStarLocation):
         BossModelFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 0, DodoBoss,
                       SpriteSize.Large, False, target_scripts=[2295], target_action_scripts=[], sequence_setter=795),
         BossModelFill(Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, 3, DodoBoss,
-                      SpriteSize.Attack, True, target_scripts=[3640], target_action_scripts=[], sequence_setter=819),
+                      SpriteSize.Attack, True, target_scripts=[3640, 936, 937, 938, 939, 940], target_action_scripts=[], sequence_setter=819),
         BossModelFill(Rooms._437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD, 0, DodoBoss, SpriteSize.Large,
                       False, target_scripts=[3736], target_action_scripts=[], sequence_setter=820),
     ]
@@ -5522,20 +5697,20 @@ class Magikoopa(BowsersKeepLocation):
     music = BattleMusic.Boss1
     boss = MagikoopaBoss
     boss_locations = [
-        BossModelFill(Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, 2, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[2208, 2209], target_action_scripts=[
+        BossModelFill(Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, 2, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[2208, 2209, 942], target_action_scripts=[
         ], sequence_setter=847),  # may need to remove palette setter if not magikoopa, may need special animation when summoning
         BossModelFill(Rooms._376_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2B_1ST_FIGHT_CHEWY, 0, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[
-                      2181, 2182, 2183, 2184], target_action_scripts=[1004, 1005], sequence_setter=848),  # may need special animation when summoning
+                      2181, 2182, 2183, 2184, 941], target_action_scripts=[1004, 1005], sequence_setter=848),  # may need special animation when summoning
         BossModelFill(Rooms._377_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2C_1ST_FIGHT_SPARKY, 0, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[
-                      2186, 2187, 2188, 2189], target_action_scripts=[1004, 1005], sequence_setter=849),  # may need special animation when summoning
+                      2186, 2187, 2188, 2189, 941], target_action_scripts=[1004, 1005], sequence_setter=849),  # may need special animation when summoning
         BossModelFill(Rooms._459_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1A_1ST_FIGHT_TERRA_COTTA, 0, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[
-                      2161, 2162, 2163, 2164], target_action_scripts=[1004, 1005], sequence_setter=850),  # may need special animation when summoning
+                      2161, 2162, 2163, 2164, 941], target_action_scripts=[1004, 1005], sequence_setter=850),  # may need special animation when summoning
         BossModelFill(Rooms._460_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1B_1ST_FIGHT_ALLEY_RAT, 0, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[
-                      2166, 2167, 2168, 2169], target_action_scripts=[1004, 1005], sequence_setter=851),  # may need special animation when summoning
+                      2166, 2167, 2168, 2169, 941], target_action_scripts=[1004, 1005], sequence_setter=851),  # may need special animation when summoning
         BossModelFill(Rooms._461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB, 0, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[
-                      2171, 2172, 2173, 2174], target_action_scripts=[1004, 1005], sequence_setter=846),  # may need special animation when summoning
+                      2171, 2172, 2173, 2174, 941], target_action_scripts=[1004, 1005], sequence_setter=846),  # may need special animation when summoning
         BossModelFill(Rooms._462_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2A_1ST_FIGHT_GU_GOOMBA, 0, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[
-                      2176, 2177, 2178, 2179], target_action_scripts=[1004, 1005], sequence_setter=852),  # may need special animation when summoning
+                      2176, 2177, 2178, 2179, 941], target_action_scripts=[1004, 1005], sequence_setter=852),  # may need special animation when summoning
     ]
 
 

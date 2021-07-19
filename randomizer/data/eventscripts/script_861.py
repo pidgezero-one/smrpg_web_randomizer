@@ -4,4 +4,60 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_861_action_queue_sync_9',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_861_action_queue_sync_9_SUBSCRIPT_fixed_f_coord_on_0',
+                "command": 'fixed_f_coord_on'
+            },
+            {
+                "identifier": 'EVENT_861_action_queue_sync_9_SUBSCRIPT_set_animation_speed_1',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_861_action_queue_sync_9_SUBSCRIPT_jump_to_height_silent_2',
+                "command": 'jump_to_height_silent',
+                "args": [53]
+            },
+            {
+                "identifier": 'EVENT_861_action_queue_sync_9_SUBSCRIPT_shift_northeast_steps_3',
+                "command": 'shift_northeast_steps',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_861_action_queue_sync_9_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [20]
+            },
+            {
+                "identifier": 'EVENT_861_action_queue_sync_9_SUBSCRIPT_set_animation_speed_5',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_861_action_queue_sync_9_SUBSCRIPT_play_sound_6',
+                "command": 'play_sound',
+                "args": [Sounds._101_TERRAPIN_ATTACK, 6]
+            },
+            {
+                "identifier": 'EVENT_861_action_queue_sync_9_SUBSCRIPT_set_sprite_sequence_7',
+                "command": 'set_sprite_sequence',
+                "args": [4, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_861_action_queue_sync_9_SUBSCRIPT_pause_8',
+                "command": 'pause',
+                "args": [45]
+            }
+        ]
+    },
+    {
+        "identifier": "EVENT_861_ret",
+        "command": "ret"
+    }
+]

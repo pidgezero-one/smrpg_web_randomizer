@@ -58,13 +58,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2174_set_action_script_async_5',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_0, 1004]
-    },
-    {
-        "identifier": 'EVENT_2174_pause_6',
-        "command": 'pause',
-        "args": [60]
+        "command": 'run_event_as_subroutine',
+        "args": [941]
     },
     {
         "identifier": 'EVENT_2174_create_packet_at_object_coords_jmp_if_null_7',
@@ -101,11 +96,6 @@ script = [
             {
                 "identifier": 'EVENT_2174_action_queue_async_10_SUBSCRIPT_face_southwest_0',
                 "command": 'face_southwest'
-            },
-            {
-                "identifier": 'EVENT_2174_action_queue_async_10_SUBSCRIPT_set_sprite_sequence_1',
-                "command": 'set_sprite_sequence',
-                "args": [4, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
                 "identifier": 'EVENT_2174_action_queue_async_10_SUBSCRIPT_visibility_on_2',

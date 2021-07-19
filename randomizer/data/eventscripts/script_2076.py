@@ -57,54 +57,8 @@ script = [
         "command": 'freeze_camera'
     },
     {
-        "identifier": 'EVENT_2076_action_queue_sync_43',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on'
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_set_animation_speed_1',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_jump_to_height_silent_2',
-                "command": 'jump_to_height_silent',
-                "args": [53]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_shift_northeast_steps_3',
-                "command": 'shift_northeast_steps',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_pause_4',
-                "command": 'pause',
-                "args": [20]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_set_animation_speed_5',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_set_sprite_sequence_6',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_pause_7',
-                "command": 'pause',
-                "args": [45]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2076_action_queue_async_44',
-        "command": 'action_queue_async',
+        "command": 'action_queue_sync',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
@@ -162,6 +116,11 @@ script = [
                 "args": [30]
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_2076_action_queue_sync_43',
+        "command": 'run_event_as_subroutine',
+        "args": [864]
     },
     {
         "identifier": 'EVENT_2076_start_battle_49',
@@ -232,43 +191,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2076_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2076_action_queue_async_12_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [5, 15, 0, RadialDirections.SOUTHWEST]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_async_12_SUBSCRIPT_visibility_on_2',
-                "command": 'visibility_on'
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_fixed_f_coord_on_0',
-                "command": 'fixed_f_coord_on'
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_set_animation_speed_1',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_shift_northeast_steps_3',
-                "command": 'shift_northeast_steps',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_set_animation_speed_5',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2076_action_queue_sync_43_SUBSCRIPT_set_sprite_sequence_6',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [865]
     },
     {
         "identifier": 'EVENT_2076_fade_in_from_black_async___60',
@@ -413,6 +337,16 @@ script = [
     {
         "identifier": 'EVENT_2076_unfreeze_camera_63',
         "command": 'unfreeze_camera'
+    },
+    {
+        "identifier": 'EVENT_2076_jmp_if_bit_set___65_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7040, 1, 'EVENT_2076_pause_64']
+    },
+    {
+        "identifier": 'EVENT_2076_jmp_if_bit_set___66_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7040, 0, 'EVENT_2076_pause_64']
     },
     {
         "identifier": 'EVENT_2076_pause_64_',
