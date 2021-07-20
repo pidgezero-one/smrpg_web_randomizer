@@ -3449,7 +3449,7 @@ class AxemRangersAxemPink(Henchman):
 class AxemRangersAxemYellow(Henchman):
     pack_number = 250
     model = SmallModelDetails(211, 32, 32, animations=SpriteAnimationCollection(
-        tower_bullet=axem_yellow_hit, kitchen_prep=axem_yellow_hit))  # 463 is a clone, could free up
+        tower_bullet=axem_yellow_hit, kitchen_prep=axem_yellow_hit)) 
 
 
 class AxemRangersAxemGreen(Henchman):
@@ -3748,7 +3748,7 @@ class BoomerShyGuy(Henchman):
         tower_bullet=shyguy_hit, kitchen_prep=shyguy_taunt))  # maybe 346
 
 
-boomer_alt_taunt = SpriteAnimation(sequence_id=1)
+boomer_alt_taunt = SpriteAnimation(sequence_id=1, total_duration=16)
 boomer_hit = SpriteAnimation(
     sequence_id=3, contact_frame=42, total_duration=52)
 boomer_taunt = SpriteAnimation(sequence_id=4, total_duration=48)
@@ -3916,9 +3916,9 @@ class ExorBoss(Boss):
     pack_number = 186
     forced_background = 16
     statue_model = SmallModelDetails(
-        0, width=24, height=32, mold=22, sprite_offset=3)
+        463, width=24, height=32, mold=22, sprite_offset=3)
     small_model = SmallModelDetails(
-        0, width=24, height=32, sequence=10, sprite_offset=3)
+        463, width=24, height=32, sequence=10, sprite_offset=3)
     # potentially, put sprite #3 on an unused NPC and don't worry about the sprite offset
     dialog_replacements = [
         (49, '''  EXOR: What do you want? Get\n lost![await]'''),
@@ -5723,7 +5723,7 @@ class Boomer(BowsersKeepLocation):
     boss = BoomerBoss
     boss_locations = [
         BossModelFill(Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, 0, BoomerBoss, SpriteSize.Large, False, target_scripts=[
-                      2224, 2225], target_action_scripts=[], sequence_setter=853),  # 2225 may need a sequence switch
+                      2224, 2225, 943], target_action_scripts=[], sequence_setter=853),  # 2225 may need a sequence switch
     ]
 
 
@@ -5864,7 +5864,7 @@ class Smithy(BossLocation):
     # hide all other parts of smithy if shuffled
     boss_locations = [
         BossModelFill(Rooms._509_FACTORY_GROUNDS_SMITHYS_PAD, 6, SmithyBoss, SpriteSize.Large, False, target_scripts=[
-                      3792, 3794], target_action_scripts=[], sequence_setter=859),  # hide a lot of clones if not vanilla
+                      3792, 3794, 944], target_action_scripts=[], sequence_setter=859),  # hide a lot of clones if not vanilla
     ]
     repeatable_henchmen = [
         [

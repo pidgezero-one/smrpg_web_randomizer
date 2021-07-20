@@ -6,17 +6,17 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_940_set_action_script_async_5',
+        "identifier": 'EVENT_941_set_action_script_async_5',
         "command": 'set_action_script_async',
         "args": [AreaObjects.NPC_0, 1004]
     },
     {
-        "identifier": 'EVENT_940_pause_6',
+        "identifier": 'EVENT_941_pause_6',
         "command": 'pause',
         "args": [60]
     },
     {
-        "identifier": 'EVENT_940_ret_291',
+        "identifier": 'EVENT_941_ret_291',
         "command": 'ret'
     }
 ]

@@ -208,34 +208,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2225_action_queue_async_8',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2225_action_queue_async_8_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTER, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_8_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on'
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_8_SUBSCRIPT_pause_2',
-                "command": 'pause',
-                "args": [20]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_8_SUBSCRIPT_set_animation_speed_3',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_8_SUBSCRIPT_set_sprite_sequence_4',
-                "command": 'set_sprite_sequence',
-                "args": [1, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
+        "command": 'run_event_as_subroutine',
+        "args": [943]
     },
     {
         "identifier": 'EVENT_2225_fade_out_music_to_volume_9',

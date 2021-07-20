@@ -13,7 +13,7 @@ import enum
 from randomizer import data
 from randomizer.data.eventtables import _0x68Flags, _0x60Flags, AreaObjects
 from randomizer.data.eventscripts.events import scripts as eventscripts
-from randomizer.data.objectsequencetables import _0x08Flags
+from randomizer.data.objectsequencetables import SequenceSpeeds, _0x08Flags, _0x10Flags
 from randomizer.data.actionscripts.actions import scripts as actionscripts
 from randomizer.data.roomobjects.roomobjects import rooms as roomdata
 from randomizer.data.npcmodels import models as npcmodels
@@ -412,6 +412,15 @@ def sanitize_animation_script(boss, boss_location, script, model):
 
                 # sequences
                 else:
+                    # if setting sequence to 1, that's ok IF the sprite in question supports NW/NE
+                    # for scarecrows, this is adjusted in post
+                    # if subscript_command["args"][0] == 1:
+                    #     if model.directional_capability == VramStore._02_SWSE:
+                    #         subscript_command["args"][0] = 0
+                    #     else:
+                    #         subscript_command["args"][0] = 1
+                    #     new_script.append(subscript_command)
+
                     # bandit's way distraction
                     if utils.isclass_or_instance(boss_location, data.bosses.Croco1) and model.animations.bandits_way_distracted is not None:
                         if subscript_command["args"][0] == 5:
@@ -463,13 +472,12 @@ def sanitize_animation_script(boss, boss_location, script, model):
                             if subscript_command["args"][0] == 3:
                                 subscript_command["args"][0] = model.animations.dojo_challenge.sequence_id
                                 new_script.append(subscript_command)
-                    # if setting sequence to 1, that's ok IF the sprite in question supports NW/NE
-                    if subscript_command["args"][0] == 1:
-                        if model.directional_capability == VramStore._02_SWSE:
-                            subscript_command["args"][0] = 0
-                        else:
-                            subscript_command["args"][0] = 1
-                        new_script.append(subscript_command)
+                    # magikoopa - challenge only. sequence #10 also used in battle doors, which will be handled separately
+                    elif utils.isclass_or_instance(boss_location, data.bosses.Magikoopa):
+                        if model.animations.keep_challenge is not None:
+                            if subscript_command["args"][0] == 10:
+                                subscript_command["args"][0] = model.animations.keep_challenge.sequence_id
+                                new_script.append(subscript_command)
             else:
                 new_script.append(subscript_command)
         return new_script
@@ -1578,7 +1586,9 @@ class GameWorld:
 
                         # if model requires a specific sequence or mold, set it now in room loader subroutine
                         sprite_offset = model.sprite_offset
-                        if model.sequence_type == SequenceType.Mold or model.sequence > 0:
+                        if model.model_details is not None and model.model_details["sprite"] == SpriteName._221_YARIDOVICH_OUT_OF_BATTLE and (utils.isclass_or_instance(b, data.bosses.Boomer) or utils.isclass_or_instance(b, data.bosses.Smithy)):
+                            pass # mid-sized yaridovich should NOT be set to sequence 1 in these particular locations
+                        elif model.sequence_type == SequenceType.Mold or model.sequence > 0:
                             if boss_location.sequence_setter not in sequence_setters:
                                 sequence_setters[boss_location.sequence_setter] = []
                             if model.sequence_type == SequenceType.Mold:
@@ -1622,196 +1632,298 @@ class GameWorld:
                         elif utils.isclass_or_instance(b, data.bosses.Smithy) and model.animations.endgame_challenge.new_sprite_id is not None:
                             self.models[model.model_id]["sprite"] = model.animations.endgame_challenge.new_sprite_id
 
+                        if not is_vanilla(boss, boss_location):
+                            # hide composite NPCs that aren't used if shuffled
+                            if utils.isclass_or_instance(b, data.bosses.Gunyolk):
+                                self.rooms[470]["objects"][0]["visible"] = False
+                                self.rooms[470]["objects"][0]["clones"][0]["visible"] = False
+                                self.rooms[470]["objects"][0]["clones"][1]["visible"] = False
+                                self.rooms[470]["objects"][0]["clones"][3]["visible"] = False
+                                self.rooms[470]["objects"][0]["clones"][4]["visible"] = False
+                                self.rooms[470]["objects"][0]["clones"][5]["visible"] = False
+
+                            # hide composite NPCs that aren't used if shuffled
+                            if utils.isclass_or_instance(b, data.bosses.Smithy):
+                                self.rooms[509]["objects"][2]["visible"] = False
+                                self.rooms[509]["objects"][3]["visible"] = False
+                                self.rooms[509]["objects"][4]["clones"][0]["visible"] = False
+                                self.rooms[509]["objects"][5]["visible"] = False
+                                self.rooms[509]["objects"][5]["clones"][0]["visible"] = False
+
                         # SPECIAL ANIMATIONS
                         for script_id in boss_location.target_scripts:
-                            script = self.eventscripts[script_id]
-                            # Repeat all of these with appropriate actions scripts
-
-
-                            # adjust mines punch pause
-                            if utils.isclass_or_instance(b, data.bosses.Punchinello) and script_id == 860:
-                                pause = 10
-                                for command_index, command in enumerate(script):
-                                    if is_animation_header(command, boss_location.npc_id):
-                                        if model.animations.mines_punch is not None:
-                                            if model.animations.mines_punch.contact_frame > 0:
-                                                pause = model.animations.mines_punch.contact_frame + 8
-                                            else:
-                                                pause = model.animations.mines_punch.total_duration
-                                        for subscript_command_index, subscript_command in enumerate(command["subscript"]):
-                                            if subscript_command["command"] == 'pause':
-                                                subscript_command["args"][0] = pause
-                                                command["subscript"][subscript_command_index] = subscript_command
-                                        self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
-                                    elif is_mario_animation_header(command):
-                                        for subscript_command_index, subscript_command in enumerate(command["subscript"]):
-                                            if subscript_command["command"] == 'pause':
-                                                subscript_command["args"][0] = pause - 2
-                                                command["subscript"][subscript_command_index] = subscript_command
-                                        self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
-                                    elif command["command"] == "pause":
-                                        self.eventscripts[script_id][command_index]["args"][0] = pause - 4
-
-                            # adjust dojo pause
-                            elif utils.isclass_or_instance(b, data.bosses.Jagger) and model.animations.dojo_challenge is not None and script_id == 861:
-                                for command_index, command in enumerate(script):
-                                    if is_animation_header(command, boss_location.npc_id):
-                                        pause = max(45, model.animations.dojo_challenge.total_duration)
-                                        for subscript_command_index, subscript_command in enumerate(command["subscript"]):
-                                            if subscript_command["command"] == 'pause' and subscript_command["args"] == 45:
-                                                subscript_command["args"][0] = pause
-                                                command["subscript"][subscript_command_index] = subscript_command
-                                        self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
-                            elif utils.isclass_or_instance(b, data.bosses.Jinx1) and model.animations.dojo_challenge is not None:
-                                for command_index, command in enumerate(script):
-                                    if is_animation_header(command, boss_location.npc_id):
-                                        for subscript_command_index, subscript_command in enumerate(command["subscript"]):
-                                            if (script_id == 862):
-                                                pause = max(45, model.animations.dojo_challenge.total_duration)
-                                                if subscript_command["command"] == 'pause' and subscript_command["args"] == 45:
-                                                    subscript_command["args"][0] = pause
-                                                    command["subscript"][subscript_command_index] = subscript_command
-                                            elif (script_id == 863):
-                                                if subscript_command["command"] == 'pause' and subscript_command["args"] == 18:
-                                                    subscript_command["args"][0] = model.animations.dojo_challenge.total_duration
-                                                    command["subscript"][subscript_command_index] = subscript_command
-                                        self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
-                            elif utils.isclass_or_instance(b, data.bosses.Jinx2) and model.animations.dojo_challenge is not None:
-                                for command_index, command in enumerate(script):
-                                    if is_animation_header(command, boss_location.npc_id):
-                                        for subscript_command_index, subscript_command in enumerate(command["subscript"]):
-                                            if (script_id == 864):
-                                                pause = max(45, model.animations.dojo_challenge.total_duration)
-                                                if subscript_command["command"] == 'pause' and subscript_command["args"] == 45:
-                                                    subscript_command["args"][0] = pause
-                                                    command["subscript"][subscript_command_index] = subscript_command
-                                            elif (script_id == 865):
-                                                if subscript_command["command"] == 'pause' and subscript_command["args"] == 18:
-                                                    subscript_command["args"][0] = model.animations.dojo_challenge.total_duration
-                                                    command["subscript"][subscript_command_index] = subscript_command
-                                        self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
-                            elif utils.isclass_or_instance(b, data.bosses.Jinx3) and model.animations.dojo_challenge is not None and script_id == 866:
-                                for command_index, command in enumerate(script):
-                                    if is_animation_header(command, boss_location.npc_id):
-                                        pause = max(45, model.animations.dojo_challenge.total_duration)
-                                        for subscript_command_index, subscript_command in enumerate(command["subscript"]):
-                                            if subscript_command["command"] == 'pause' and subscript_command["args"] == 45:
-                                                subscript_command["args"][0] = pause
-                                                command["subscript"][subscript_command_index] = subscript_command
-                                        self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
-                                        
-
-                            # dodo statue subroutines need some explicitly written pauses
-                            elif utils.isclass_or_instance(b, data.bosses.Dodo) and (script_id == 936):
-                                if model.animations.statue_peck is None:
-                                    self.eventscripts[script_id] = statue_bonk
-                                else:
-                                    rewritten_peck_subroutine = [
-                                        {"identifier": 'dummy', "command": 'sequence_playback_on'},
-                                        {"identifier": 'dummy', "command": 'set_animation_speed', "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]},
-                                        {"identifier": 'dummy', "command": 'pause', "args": [3]},
-                                        {"identifier": 'dummy', "command": 'face_southwest'},
-                                        {"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]}
-                                    ]
-
-                                    peck_duration = model.animations.statue_peck.contact_frame
-                                    if peck_duration > 19 or peck_duration is None:
-                                        raise Exception('%s statue peck animation contact frame is illegal value' % boss.name)
-                                    animation_wait = 15 + 16 - peck_duration
-                                    animation_duration = peck_duration + 3
-                                    rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'pause', "args": [animation_wait]})
-                                    
-                                    rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'sequence_looping_on'})
-                                    
-                                    # set animation speed & sequence
-                                    if model.animations.statue_peck.speed is not None:
-                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_animation_speed', "args": [model.animations.statue_peck.speed, [_0x10Flags.SEQUENCE]]})
-                                    rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [model.animations.statue_peck.sequence_id, 0, [_0x08Flags.LOOPING_OFF]]}) # no support for increased sprite #, but no use case for it yet
-                                    rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'pause', "args": [animation_duration]})
-                                    
-                                    rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]})
-                                    
-                                    self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_peck_subroutine)
                             
-                            elif utils.isclass_or_instance(b, data.bosses.Dodo) and (script_id == 937):
-                                if model.animations.statue_peck is None:
-                                    self.eventscripts[script_id] = statue_bonk_mario
-                                else:
-                                    rewritten_peck_subroutine = [
-                                        {"identifier": 'dummy', "command": 'sequence_playback_on'},
-                                        {"identifier": 'dummy', "command": 'sequence_looping_on'},
-                                        {"identifier": 'dummy', "command": 'set_animation_speed', "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]}
-                                    ]
+                            if not is_vanilla(boss, boss_location):
 
-                                    if peck_duration > 20 or peck_duration is None:
-                                        raise Exception('%s statue peck animation contact frame is illegal value' % boss.name)
-                                    animation_wait = max(16 - peck_duration, 0)
-                                    animation_duration = 20 - animation_wait
-                                    if animation_wait > 0:
-                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'pause', "args": [animation_wait]})
-                                    # set animation speed & sequence
-                                    if model.animations.statue_peck.speed is not None:
-                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_animation_speed', "args": [model.animations.statue_peck.speed, [_0x10Flags.SEQUENCE]]})
-                                    rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [model.animations.statue_peck.sequence_id, 0, [_0x08Flags.LOOPING_OFF]]}) # no support for increased sprite #, but no use case for it yet
-                                    rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'pause', "args": [animation_duration]})
+                                script = self.eventscripts[script_id]
 
-                                    rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'sequence_looping_off'})
-                                    
-                                    self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_peck_subroutine)
 
-                            elif utils.isclass_or_instance(b, data.bosses.Dodo) and (script_id == 939) and model.animations.statue_intro is not None:
-                                rewritten_intro_subroutine = [
-                                    {"identifier": 'dummy', "command": 'shift_to_xy_coords', 'args': [2, 56]},
-                                    {"identifier": 'dummy', "command": 'shift_southwest_pixels', 'args': [5]},
-                                    {"identifier": 'dummy', "command": 'shift_southeast_pixels', 'args': [16]},
-                                    {"identifier": 'dummy', "command": 'sequence_playback_off'},
-                                    {"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]},
-                                    {"identifier": 'dummy', "command": 'visibility_on'},
-                                    {"identifier": 'dummy', "command": 'pause', 'args': [31]},
-                                    {"identifier": 'dummy', "command": 'pause', 'args': [31]},
-                                    {"identifier": 'dummy', "command": 'set_animation_speed', 'args': [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]},
-                                    {"identifier": 'dummy', "command": 'sequence_playback_on'},
-                                    {"identifier": 'dummy', "command": 'sequence_looping_on'}
-                                ]
+                                # adjust mines punch pause, still perform sanitization at the end
+                                if utils.isclass_or_instance(b, data.bosses.Punchinello) and script_id == 860:
+                                    pause = 10
+                                    for command_index, command in enumerate(script):
+                                        if is_animation_header(command, boss_location.npc_id):
+                                            if model.animations.mines_punch is not None:
+                                                if model.animations.mines_punch.contact_frame > 0:
+                                                    pause = model.animations.mines_punch.contact_frame + 8
+                                                else:
+                                                    pause = model.animations.mines_punch.total_duration
+                                            for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                                if subscript_command["command"] == 'pause':
+                                                    subscript_command["args"][0] = pause
+                                                    command["subscript"][subscript_command_index] = subscript_command
+                                            self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
+                                        elif is_mario_animation_header(command):
+                                            for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                                if subscript_command["command"] == 'pause':
+                                                    subscript_command["args"][0] = pause - 2
+                                                    command["subscript"][subscript_command_index] = subscript_command
+                                            self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
+                                        elif command["command"] == "pause":
+                                            self.eventscripts[script_id][command_index]["args"][0] = pause - 4
+                                            
+                                # magikoopa needs pauses adjusted, still perform sanitization at the end
+                                if utils.isclass_or_instance(b, data.bosses.Magikoopa) and model.animations.keep_summon is not None and script_id == 941:
+                                    if model.animations.keep_summon.contact_frame is not None:
+                                        self.eventscripts[script_id][1]["args"][0] = model.animations.keep_summon.contact_frame + 16
 
-                                if model.animations.statue_intro.total_duration is not None:
-                                    intro_duration = min(model.animations.statue_intro.total_duration, 66)
-                                    if intro_duration < 66:
-                                        rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'pause', 'args': [66 - intro_duration]})
-                                    rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [model.animations.statue_intro.sequence_id, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]})
-                                    rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'pause', 'args': [intro_duration]})
-                                else:
-                                    rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [model.animations.statue_intro.sequence_id, 0, [_0x08Flags.MIRROR_SPRITE]]})
-                                    rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'pause', 'args': [66]})
 
-                                rewritten_intro_subroutine.extend([
-                                    {"identifier": 'dummy', "command": 'sequence_looping_off'},
-                                    {"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]},
-                                    {"identifier": 'dummy', "command": 'pause', 'args': [17]}
-                                ])
-
-                                self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_intro_subroutine)
-
-                            elif utils.isclass_or_instance(b, data.bosses.Dodo) and (script_id == 940) and model.animations.statue_flustered is not None:
-                                rewritten_recoil_subroutine = [
-                                    {"identifier": 'dummy', "command": 'shift_to_xy_coords', 'args': [7, 66]},
-                                    {"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]},
-                                    {"identifier": 'dummy', "command": 'pause', 'args': [20]},
-                                    {"identifier": 'dummy', "command": 'set_animation_speed', 'args': [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]},
-                                ]
-
-                                rewritten_recoil_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [model.animations.statue_flustered.sequence_id, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]})
-                                rewritten_recoil_subroutine.append({"identifier": 'dummy', "command": 'pause', 'args': [45]})
-
-                                self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_recoil_subroutine)
-
+                                # adjust dojo pause
+                                if utils.isclass_or_instance(b, data.bosses.Jagger) and model.animations.dojo_challenge is not None and script_id == 861:
+                                    for command_index, command in enumerate(script):
+                                        if is_animation_header(command, boss_location.npc_id):
+                                            pause = max(45, model.animations.dojo_challenge.total_duration)
+                                            for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                                if subscript_command["command"] == 'pause' and subscript_command["args"] == 45:
+                                                    subscript_command["args"][0] = pause
+                                                    command["subscript"][subscript_command_index] = subscript_command
+                                            self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
+                                elif utils.isclass_or_instance(b, data.bosses.Jinx1) and model.animations.dojo_challenge is not None:
+                                    for command_index, command in enumerate(script):
+                                        if is_animation_header(command, boss_location.npc_id):
+                                            for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                                if (script_id == 862):
+                                                    pause = max(45, model.animations.dojo_challenge.total_duration)
+                                                    if subscript_command["command"] == 'pause' and subscript_command["args"] == 45:
+                                                        subscript_command["args"][0] = pause
+                                                        command["subscript"][subscript_command_index] = subscript_command
+                                                elif (script_id == 863):
+                                                    if subscript_command["command"] == 'pause' and subscript_command["args"] == 18:
+                                                        subscript_command["args"][0] = model.animations.dojo_challenge.total_duration
+                                                        command["subscript"][subscript_command_index] = subscript_command
+                                            self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
+                                elif utils.isclass_or_instance(b, data.bosses.Jinx2) and model.animations.dojo_challenge is not None:
+                                    for command_index, command in enumerate(script):
+                                        if is_animation_header(command, boss_location.npc_id):
+                                            for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                                if (script_id == 864):
+                                                    pause = max(45, model.animations.dojo_challenge.total_duration)
+                                                    if subscript_command["command"] == 'pause' and subscript_command["args"] == 45:
+                                                        subscript_command["args"][0] = pause
+                                                        command["subscript"][subscript_command_index] = subscript_command
+                                                elif (script_id == 865):
+                                                    if subscript_command["command"] == 'pause' and subscript_command["args"] == 18:
+                                                        subscript_command["args"][0] = model.animations.dojo_challenge.total_duration
+                                                        command["subscript"][subscript_command_index] = subscript_command
+                                            self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
+                                elif utils.isclass_or_instance(b, data.bosses.Jinx3) and model.animations.dojo_challenge is not None and script_id == 866:
+                                    for command_index, command in enumerate(script):
+                                        if is_animation_header(command, boss_location.npc_id):
+                                            pause = max(45, model.animations.dojo_challenge.total_duration)
+                                            for subscript_command_index, subscript_command in enumerate(command["subscript"]):
+                                                if subscript_command["command"] == 'pause' and subscript_command["args"] == 45:
+                                                    subscript_command["args"][0] = pause
+                                                    command["subscript"][subscript_command_index] = subscript_command
+                                            self.eventscripts[script_id][command_index]["subscript"] = command["subscript"]
                                             
 
+                                # dodo statue subroutines need some explicitly written pauses
+                                elif utils.isclass_or_instance(b, data.bosses.Dodo) and (script_id == 936):
+                                    if model.animations.statue_peck is None:
+                                        self.eventscripts[script_id] = statue_bonk
+                                    else:
+                                        rewritten_peck_subroutine = [
+                                            {"identifier": 'dummy', "command": 'sequence_playback_on'},
+                                            {"identifier": 'dummy', "command": 'set_animation_speed', "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]},
+                                            {"identifier": 'dummy', "command": 'pause', "args": [3]},
+                                            {"identifier": 'dummy', "command": 'face_southwest'},
+                                            {"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]}
+                                        ]
+
+                                        peck_duration = model.animations.statue_peck.contact_frame
+                                        if peck_duration > 19 or peck_duration is None:
+                                            raise Exception('%s statue peck animation contact frame is illegal value' % boss.name)
+                                        animation_wait = 15 + 16 - peck_duration
+                                        animation_duration = peck_duration + 3
+                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'pause', "args": [animation_wait]})
+                                        
+                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'sequence_looping_on'})
+                                        
+                                        # set animation speed & sequence
+                                        if model.animations.statue_peck.speed is not None:
+                                            rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_animation_speed', "args": [model.animations.statue_peck.speed, [_0x10Flags.SEQUENCE]]})
+                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [model.animations.statue_peck.sequence_id, 0, [_0x08Flags.LOOPING_OFF]]}) # no support for increased sprite #, but no use case for it yet
+                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'pause', "args": [animation_duration]})
+                                        
+                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]})
+                                        
+                                        self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_peck_subroutine)
+                                
+                                elif utils.isclass_or_instance(b, data.bosses.Dodo) and (script_id == 937):
+                                    if model.animations.statue_peck is None:
+                                        self.eventscripts[script_id] = statue_bonk_mario
+                                    else:
+                                        rewritten_peck_subroutine = [
+                                            {"identifier": 'dummy', "command": 'sequence_playback_on'},
+                                            {"identifier": 'dummy', "command": 'sequence_looping_on'},
+                                            {"identifier": 'dummy', "command": 'set_animation_speed', "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]}
+                                        ]
+
+                                        if peck_duration > 20 or peck_duration is None:
+                                            raise Exception('%s statue peck animation contact frame is illegal value' % boss.name)
+                                        animation_wait = max(16 - peck_duration, 0)
+                                        animation_duration = 20 - animation_wait
+                                        if animation_wait > 0:
+                                            rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'pause', "args": [animation_wait]})
+                                        # set animation speed & sequence
+                                        if model.animations.statue_peck.speed is not None:
+                                            rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_animation_speed', "args": [model.animations.statue_peck.speed, [_0x10Flags.SEQUENCE]]})
+                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [model.animations.statue_peck.sequence_id, 0, [_0x08Flags.LOOPING_OFF]]}) # no support for increased sprite #, but no use case for it yet
+                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'pause', "args": [animation_duration]})
+
+                                        rewritten_peck_subroutine.append({"identifier": 'dummy', "command": 'sequence_looping_off'})
+                                        
+                                        self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_peck_subroutine)
+
+                                elif utils.isclass_or_instance(b, data.bosses.Dodo) and (script_id == 939) and model.animations.statue_intro is not None:
+                                    rewritten_intro_subroutine = [
+                                        {"identifier": 'dummy', "command": 'shift_to_xy_coords', 'args': [2, 56]},
+                                        {"identifier": 'dummy', "command": 'shift_southwest_pixels', 'args': [5]},
+                                        {"identifier": 'dummy', "command": 'shift_southeast_pixels', 'args': [16]},
+                                        {"identifier": 'dummy', "command": 'sequence_playback_off'},
+                                        {"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.MIRROR_SPRITE]]},
+                                        {"identifier": 'dummy', "command": 'visibility_on'},
+                                        {"identifier": 'dummy', "command": 'pause', 'args': [31]},
+                                        {"identifier": 'dummy', "command": 'pause', 'args': [31]},
+                                        {"identifier": 'dummy', "command": 'set_animation_speed', 'args': [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]},
+                                        {"identifier": 'dummy', "command": 'sequence_playback_on'},
+                                        {"identifier": 'dummy', "command": 'sequence_looping_on'}
+                                    ]
+
+                                    if model.animations.statue_intro.total_duration is not None:
+                                        intro_duration = min(model.animations.statue_intro.total_duration, 66)
+                                        if intro_duration < 66:
+                                            rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'pause', 'args': [66 - intro_duration]})
+                                        rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [model.animations.statue_intro.sequence_id, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]})
+                                        rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'pause', 'args': [intro_duration]})
+                                    else:
+                                        rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [model.animations.statue_intro.sequence_id, 0, [_0x08Flags.MIRROR_SPRITE]]})
+                                        rewritten_intro_subroutine.append({"identifier": 'dummy', "command": 'pause', 'args': [66]})
+
+                                    rewritten_intro_subroutine.extend([
+                                        {"identifier": 'dummy', "command": 'sequence_looping_off'},
+                                        {"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]},
+                                        {"identifier": 'dummy', "command": 'pause', 'args': [17]}
+                                    ])
+
+                                    self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_intro_subroutine)
+
+                                elif utils.isclass_or_instance(b, data.bosses.Dodo) and (script_id == 940) and model.animations.statue_flustered is not None:
+                                    rewritten_recoil_subroutine = [
+                                        {"identifier": 'dummy', "command": 'shift_to_xy_coords', 'args': [7, 66]},
+                                        {"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]},
+                                        {"identifier": 'dummy', "command": 'pause', 'args': [20]},
+                                        {"identifier": 'dummy', "command": 'set_animation_speed', 'args': [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]},
+                                    ]
+
+                                    rewritten_recoil_subroutine.append({"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [model.animations.statue_flustered.sequence_id, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.MIRROR_SPRITE]]})
+                                    rewritten_recoil_subroutine.append({"identifier": 'dummy', "command": 'pause', 'args': [45]})
+
+                                    self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_recoil_subroutine)
+
+
+                                elif utils.isclass_or_instance(b, data.bosses.Magikoopa) and (script_id == 942):
+                                    if model.animations.keep_summon is not None:
+                                        rewritten_keep_subscript = [
+                                            {"identifier": 'dummy', "command": 'face_southeast'},
+                                            {"identifier": 'dummy', "command": 'pause', 'args': [60]},
+                                            {"identifier": 'dummy', "command": 'set_sprite_sequence', 'args': [model.animations.keep_summon.sequence_id, 0, [_0x08Flags.MIRROR_SPRITE, _0x08Flags.READ_AS_SEQUENCE]]},
+                                            {"identifier": 'dummy', "command": 'pause', 'args': [model.animations.keep_summon.total_duration]},
+                                        ]
+                                    else:
+                                        rewritten_keep_subscript = [
+                                            {"identifier": 'dummy', "command": 'face_southeast'},
+                                            {"identifier": 'dummy', "command": 'pause', 'args': [60]}
+                                        ]
+
+                                    rewritten_keep_event = [
+                                        {"identifier": 'EVENT_942_action_queue_async', "command": 'action_queue_async', 'args': [AreaObjects.NPC_1], "subscript": rewritten_keep_subscript},
+                                        {"identifier": 'EVENT_942_ret_291', "command": 'ret'},
+                                    ]
+
+                                    self.eventscripts[script_id] = copy.copy(rewritten_keep_event)
+
+                                # boomer will need pause adjustments
+                                elif utils.isclass_or_instance(b, data.bosses.Boomer) and (script_id == 943):
+                                    rewritten_chandelier_subscript = [
+                                        {"identifier": 'dummy', "command": 'set_animation_speed', 'args': [SequenceSpeeds.FASTER, [_0x10Flags.WALKING]]},
+                                        {"identifier": 'dummy', "command": 'fixed_f_coord_on'},
+                                        {"identifier": 'dummy', "command": 'pause', "args": [20]},
+                                        {"identifier": 'dummy', "command": 'set_animation_speed', 'args': [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]}
+                                    ]
+                                    if model.animations.chandelier_challenge is not None:
+                                        rewritten_chandelier_subscript.append({"identifier": 'dummy', "command": 'set_sprite_sequence', "args": [model.animations.chandelier_challenge.sequence_id, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]})
+                                        if model.animations.total_duration is not None:
+                                            rewritten_chandelier_subscript.append({"identifier": 'dummy', "command": 'pause', "args": [model.animations.chandelier_challenge.total_duration + 29]})
+                                        else:
+                                            rewritten_chandelier_subscript.append({"identifier": 'dummy', "command": 'pause', "args": [45]})
+                                    else:
+                                        rewritten_chandelier_subscript.append({"identifier": 'dummy', "command": 'pause', "args": [45]})
+                                    
+                                    self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_chandelier_subscript)
+
+                                elif utils.isclass_or_isinstance(b, data.bosses.Smithy) and (script_id == 944) and model.animations.endgame_challenge is not None:
+                                    endgame_animation = {
+                                        "identifier": "EVENT_944_taunt",
+                                        "command": 'action_queue_sync',
+                                        "args": [AreaObjects.NPC_3],
+                                        "subscript": [
+                                            {
+                                                "identifier": "dummy",
+                                                "command": 'set_sprite_sequence',
+                                                'args': [model.animations.endgame_challenge.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.LOOPING_OFF]]
+                                            }
+                                        ]
+                                    }
+                                    self.eventscripts[script_id].insert(0, endgame_animation)
+
+
+                                                
+
+                                else:
+                                    # replace all sequences and molds if appropriate, remove if not
+                                    for command_index, command in enumerate(script):
+                                        if is_animation_header(command, henchman_location.npc_id):
+                                            self.eventscripts[script_id][command_index] = sanitize_animation_script(henchman_location.occupant, b, command, model)
+
+
+
+                        # action scripts
+                        for script_id in boss_location.target_action_scripts:
+                            script = self.actionscripts[script_id]
+
+                            # adjust kitchen animation pauses
+                            if utils.isclass_or_instance(b, data.bosses.Magikoopa) and script_id == 1004 and model.animations.keep_summon is not None:
+                                for subscript_command_index, subscript_command in enumerate(script):
+                                    # set the proper animation for the sprite, and determine if it should loop or not
+                                    if subscript_command["command"] == 'set_sprite_sequence':
+                                        subscript_command["args"][0] = model.animations.keep_summon.sequence_id
+                                        self.actionscripts[script_id][subscript_command_index] = subscript_command
 
                             # replace all sequences and molds if appropriate, remove if not
-                            for command_index, command in enumerate(script):
-                                if is_animation_header(command, henchman_location.npc_id):
-                                    self.eventscripts[script_id][command_index] = sanitize_animation_script(henchman_location.occupant, b, command, model)
+                            else:
+                                self.actionscripts[script_id] = sanitize_animation_script(boss, b, script, model)
+
 
                         # if model is a scarecrow, fix all of its directional commands
                         model_info = self.models[model.model_id]
@@ -1911,88 +2023,85 @@ class GameWorld:
                             if not is_vanilla(boss, boss_location):
 
                                 # event scripts
-                                for script_id in boss_location.target_scripts:
+                                for script_id in henchman_location.target_scripts:
                                     # event scripts
                                     script = self.eventscripts[script_id]
 
-                                    # otherwise, replace all sequences and molds if appropriate, remove if not
-                                    else:
-                                        for command_index, command in enumerate(script):
-                                            if is_animation_header(command, boss_location.npc_id):
-                                                self.eventscripts[script_id][command_index] = sanitize_animation_script(boss, b, command, model)
+                                    # replace all sequences and molds if appropriate, remove if not
+                                    for command_index, command in enumerate(script):
+                                        if is_animation_header(command, henchman_location.npc_id):
+                                            self.eventscripts[script_id][command_index] = sanitize_animation_script(boss, b, command, model)
 
                                 # action scripts
-                                for script_id in boss_location.target_action_scripts:
+                                for script_id in henchman_location.target_action_scripts:
                                     script = self.actionscripts[script_id]
-                                    # Repeat all of these with appropriate actions scripts
 
-                                    if not is_vanilla(boss, boss_location):
-                                        # adjust kitchen animation pauses
-                                        if utils.isclass_or_instance(b, data.bosses.Bundt) and script_id in [330,331] and model.animations.kitchen_prep is not None:
-                                            for subscript_command_index, subscript_command in enumerate(script):
-                                                # set the proper animation for the sprite, and determine if it should loop or not
-                                                if subscript_command["command"] == 'set_sprite_sequence':
+                                    # adjust kitchen animation pauses
+                                    if utils.isclass_or_instance(b, data.bosses.Bundt) and script_id in [330,331] and model.animations.kitchen_prep is not None:
+                                        for subscript_command_index, subscript_command in enumerate(script):
+                                            # set the proper animation for the sprite, and determine if it should loop or not
+                                            if subscript_command["command"] == 'set_sprite_sequence':
+                                                subscript_command["args"][0] = model.animations.kitchen_prep.sequence_id
+                                                cmd_flags = subscript_command["args"][2]
+                                                cmd_flags = [f for f in cmd_flags if f is not _0x08Flags.LOOPING_OFF]
+                                                if model.animations.kitchen_prep.total_duration is not None:
+                                                    cmd_flags.append(_0x08Flags.LOOPING_OFF)
+                                                subscript_command["args"][2] = copy.copy(cmd_flags)
+                                                self.actionscripts[script_id][subscript_command_index] = subscript_command
+                                            # set the pause to last for the entirety of the animation, if not looped
+                                            elif subscript_command["command"] == 'pause' and subscript_command["args"][0] == 20:
+                                                if model.animations.kitchen_prep.total_duration is not None:
                                                     subscript_command["args"][0] = model.animations.kitchen_prep.total_duration
-                                                    cmd_flags = subscript_command["args"][2]
-                                                    cmd_flags = [f for f in cmd_flags if f is not _0x08Flags.LOOPING_OFF]
-                                                    if model.animations.kitchen_prep.total_duration is not None:
-                                                        cmd_flags.append(_0x08Flags.LOOPING_OFF)
-                                                    subscript_command["args"][2] = copy.copy(cmd_flags)
                                                     self.actionscripts[script_id][subscript_command_index] = subscript_command
-                                                # set the pause to last for the entirety of the animation, if not looped
-                                                elif subscript_command["command"] == 'pause' and subscript_command["args"][0] == 20:
-                                                    if model.animations.kitchen_prep.total_duration is not None:
-                                                        subscript_command["args"][0] = model.animations.kitchen_prep.total_duration
-                                                        self.actionscripts[script_id][subscript_command_index] = subscript_command
-                                                
-                                        # overwrite snifit 3's bullet script
-                                        elif utils.isclass_or_instance(b, data.bosses.Booster) and script_id == 386:
-                                            # replace the entire contents of snifit bullet script
-                                            if model.animations.tower_bullet is None:
-                                                self.actionscripts[script_id] = [
-                                                    {"identifier": 'ACTION_386_face_southeast_0', "command": 'face_southeast'},
-                                                    {"identifier": 'ACTION_386_pause_1', "command": 'pause', "args": [18]},
-                                                    {"identifier": 'ACTION_386_face_southwest_2', "command": 'face_southwest'},
-                                                    {"identifier": 'ACTION_386_pause_3', "command": 'pause', "args": [18]},
-                                                    {"identifier": 'ACTION_386_pause_init', "command": 'pause', "args": [56]},
-                                                    {"identifier": 'ACTION_386_set_bit_18', "command": 'set_bit', "args": [0x7043, 3]},
-                                                    {"identifier": 'ACTION_386_pause_second', "command": 'pause', "args": [40]},
-                                                    {"identifier": 'ACTION_386_jmp_27', "command": 'jmp', "args": ['ACTION_386_pause_init']}
-                                                ]
-                                            elif model.animations.tower_bullet.total_duration is None:
-                                                self.actionscripts[script_id] = [
-                                                    {"identifier": 'ACTION_386_face_southeast_0', "command": 'face_southeast'},
-                                                    {"identifier": 'ACTION_386_pause_1', "command": 'pause', "args": [18]},
-                                                    {"identifier": 'ACTION_386_face_southwest_2', "command": 'face_southwest'},
-                                                    {"identifier": 'ACTION_386_pause_3', "command": 'pause', "args": [18]},
-                                                    {"identifier": 'ACTION_386_set_sprite_sequence_16', "command": 'set_sprite_sequence', "args": [model.animations.tower_bullet.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE]]},
-                                                    {"identifier": 'ACTION_386_pause_init', "command": 'pause', "args": [56]},
-                                                    {"identifier": 'ACTION_386_set_bit_18', "command": 'set_bit', "args": [0x7043, 3]},
-                                                    {"identifier": 'ACTION_386_pause_second', "command": 'pause', "args": [40]},
-                                                    {"identifier": 'ACTION_386_jmp_27', "command": 'jmp', "args": ['ACTION_386_pause_init']}
-                                                ]
-                                            else:
-                                                contact = model.animations.tower_bullet.total_duration
-                                                if model.animations.tower_bullet.contact_frame is not None:
-                                                    contact = model.animations.tower_bullet.contact_frame
-                                                if contact > 63: # figure out what to do here, how does the math work out if you speed it up...
-                                                    pass
-                                                self.actionscripts[script_id] = [
-                                                    {"identifier": 'ACTION_386_face_southeast_0', "command": 'face_southeast'},
-                                                    {"identifier": 'ACTION_386_pause_1', "command": 'pause', "args": [18]},
-                                                    {"identifier": 'ACTION_386_face_southwest_2', "command": 'face_southwest'},
-                                                    {"identifier": 'ACTION_386_pause_3', "command": 'pause', "args": [18]},
-                                                    {"identifier": 'ACTION_386_pause_init', "command": 'pause', "args": [64 - contact]},
-                                                    {"identifier": 'ACTION_386_set_sprite_sequence_16', "command": 'set_sprite_sequence', "args": [model.animations.tower_bullet.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.LOOPING_OFF]]},
-                                                    {"identifier": 'ACTION_386_pause_intermediate', "command": 'pause', "args": [contact - 8]},
-                                                    {"identifier": 'ACTION_386_set_bit_18', "command": 'set_bit', "args": [0x7043, 3]},
-                                                    {"identifier": 'ACTION_386_pause_second', "command": 'pause', "args": [40]},
-                                                    {"identifier": 'ACTION_386_jmp_27', "command": 'jmp', "args": ['ACTION_386_pause_init']}
-                                                ]
-
-                                        # replace all sequences and molds if appropriate, remove if not
+                                            
+                                    # overwrite snifit 3's bullet script
+                                    elif utils.isclass_or_instance(b, data.bosses.Booster) and script_id == 386:
+                                        # replace the entire contents of snifit bullet script
+                                        if model.animations.tower_bullet is None:
+                                            self.actionscripts[script_id] = [
+                                                {"identifier": 'ACTION_386_face_southeast_0', "command": 'face_southeast'},
+                                                {"identifier": 'ACTION_386_pause_1', "command": 'pause', "args": [18]},
+                                                {"identifier": 'ACTION_386_face_southwest_2', "command": 'face_southwest'},
+                                                {"identifier": 'ACTION_386_pause_3', "command": 'pause', "args": [18]},
+                                                {"identifier": 'ACTION_386_pause_init', "command": 'pause', "args": [56]},
+                                                {"identifier": 'ACTION_386_set_bit_18', "command": 'set_bit', "args": [0x7043, 3]},
+                                                {"identifier": 'ACTION_386_pause_second', "command": 'pause', "args": [40]},
+                                                {"identifier": 'ACTION_386_jmp_27', "command": 'jmp', "args": ['ACTION_386_pause_init']}
+                                            ]
+                                        elif model.animations.tower_bullet.total_duration is None:
+                                            self.actionscripts[script_id] = [
+                                                {"identifier": 'ACTION_386_face_southeast_0', "command": 'face_southeast'},
+                                                {"identifier": 'ACTION_386_pause_1', "command": 'pause', "args": [18]},
+                                                {"identifier": 'ACTION_386_face_southwest_2', "command": 'face_southwest'},
+                                                {"identifier": 'ACTION_386_pause_3', "command": 'pause', "args": [18]},
+                                                {"identifier": 'ACTION_386_set_sprite_sequence_16', "command": 'set_sprite_sequence', "args": [model.animations.tower_bullet.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE]]},
+                                                {"identifier": 'ACTION_386_pause_init', "command": 'pause', "args": [56]},
+                                                {"identifier": 'ACTION_386_set_bit_18', "command": 'set_bit', "args": [0x7043, 3]},
+                                                {"identifier": 'ACTION_386_pause_second', "command": 'pause', "args": [40]},
+                                                {"identifier": 'ACTION_386_jmp_27', "command": 'jmp', "args": ['ACTION_386_pause_init']}
+                                            ]
                                         else:
-                                            self.actionscripts[script_id] = sanitize_animation_script(boss, b, script, model)
+                                            contact = model.animations.tower_bullet.total_duration
+                                            if model.animations.tower_bullet.contact_frame is not None:
+                                                contact = model.animations.tower_bullet.contact_frame
+                                            if contact > 63: # figure out what to do here, how does the math work out if you speed it up...
+                                                pass
+                                            self.actionscripts[script_id] = [
+                                                {"identifier": 'ACTION_386_face_southeast_0', "command": 'face_southeast'},
+                                                {"identifier": 'ACTION_386_pause_1', "command": 'pause', "args": [18]},
+                                                {"identifier": 'ACTION_386_face_southwest_2', "command": 'face_southwest'},
+                                                {"identifier": 'ACTION_386_pause_3', "command": 'pause', "args": [18]},
+                                                {"identifier": 'ACTION_386_pause_init', "command": 'pause', "args": [64 - contact]},
+                                                {"identifier": 'ACTION_386_set_sprite_sequence_16', "command": 'set_sprite_sequence', "args": [model.animations.tower_bullet.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.LOOPING_OFF]]},
+                                                {"identifier": 'ACTION_386_pause_intermediate', "command": 'pause', "args": [contact - 8]},
+                                                {"identifier": 'ACTION_386_set_bit_18', "command": 'set_bit', "args": [0x7043, 3]},
+                                                {"identifier": 'ACTION_386_pause_second', "command": 'pause', "args": [40]},
+                                                {"identifier": 'ACTION_386_jmp_27', "command": 'jmp', "args": ['ACTION_386_pause_init']}
+                                            ]
+
+                                    # replace all sequences and molds if appropriate, remove if not
+                                    else:
+                                        self.actionscripts[script_id] = sanitize_animation_script(boss, b, script, model)
 
 
                             

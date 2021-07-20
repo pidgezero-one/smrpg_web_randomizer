@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_3797_start_battle_17',
         "command": 'run_event_as_subroutine',
-        "args": [353]
+        "args": [354]
     },
     {
         "identifier": 'EVENT_3797_set_bit_18',
