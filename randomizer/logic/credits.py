@@ -1,6 +1,6 @@
 import random
 
-from randomizer.logic import utils
+from randomizer.logic import utils, flags
 from randomizer.logic.dialogs import allocate_string
 from randomizer.logic.patch import Patch
 
@@ -125,7 +125,7 @@ END_TITLES_DELAY = 40
 DEV_MESSAGES = [
     ('DONT TRY IT...ALANIM.', 'I ALREADY DID IT.', '   PAST ALANIM'),
     ('NOW TRY IT', 'BLINDFOLDED', '     PATCDR'),
-    ('I KEPT MY WORD... SORTA.', '', '      PIDGE'),
+    ('SEE YOU IN TWITCH CHAT...', '', '               PIDGEZERO_ONE'),
 ]
 
 # Takes world because everything does.
@@ -356,17 +356,17 @@ def update_credits(world):
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xc0, 'ALANIM    DORKMASTER FLEK')
     credits.add_credit(0x80, 0x40, 0x81, 'YAKIBOMB  SWINCH  PATCDR')
-    credits.add_credit(0x80, 0x00, 0xc2, 'ATBIGELOW')
+    credits.add_credit(0x80, 0x00, 0xc2, 'PIDGEZERO_ONE')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'PIDGEZERO_ONE')
+    credits.add_credit(0x80, 0x80, 0xc0, 'ATBIGELOW')
     credits.add_credit(0x80, 0x40, 0x81, 'SNESCHALMERS')
     credits.add_credit(0x80, 0x00, 0xc2, 'AMAZING AMPHAROS')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'ARTWORK')
+    credits.add_title(0x80, 0x00, 0x08, 'PALETTES AND CUSTOM SPRITES')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
@@ -394,7 +394,7 @@ def update_credits(world):
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'EVENT RESEARCH')
+    credits.add_title(0x80, 0x00, 0x08, 'SCRIPT ANALYSIS')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
@@ -408,6 +408,33 @@ def update_credits(world):
     credits.add_credit(0x80, 0x40, 0x81, 'GOODMORNINGCRONO')
     credits.add_credit(0x80, 0x00, 0xc2, 'ANTHONY MULBERRY')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+    
+    if world.settings.is_flag_enabled(flags.RandomTadpolePondSong):
+
+        credits.begin_titles(BEGIN_TITLES_DELAY)
+        credits.add_title(0x80, 0x00, 0x08, 'MELODY BAY TUNES FOR THIS SEED')
+        credits.end_titles(END_TITLES_DELAY)
+
+        credits.begin_credits()
+        if len(world.tadpole_submitters) == 1:
+            credits.add_credit(0x80, 0x40, 0x81, world.tadpole_submitters[0])
+        else:
+            credits.add_credit(0x80, 0x80, 0xc0, world.tadpole_submitters[0])
+            credits.add_credit(0x80, 0x40, 0x81, world.tadpole_submitters[1])
+            if len(world.tadpole_submitters) > 2:
+                credits.add_credit(0x80, 0x00, 0xc2, world.tadpole_submitters[2])
+        credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+    
+    
+    if world.settings.is_flag_enabled(flags.RandomSunkenShipPassword):
+
+        credits.begin_titles(BEGIN_TITLES_DELAY)
+        credits.add_title(0x80, 0x00, 0x08, 'SUNKEN SHIP PASSWORD FOR THIS SEED')
+        credits.end_titles(END_TITLES_DELAY)
+
+        credits.begin_credits()
+        credits.add_credit(0x80, 0x40, 0x81, world.password_submitter)
+        credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_titles(BEGIN_TITLES_DELAY)
     credits.add_title(0x80, 0x00, 0x08, 'SPECIAL THANKS')
@@ -416,12 +443,16 @@ def update_credits(world):
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xc0, 'DARKKEFKA       DOOMSDAY')
     credits.add_credit(0x80, 0x40, 0x81, 'GIANGURGOLO        OMEGA')
-    credits.add_credit(0x80, 0x00, 0xc2, 'FFIV FREE ENTERPRISE')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, 'INSPIRATION')
+    credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xc0, 'ALTTP RANDOMIZER')
     credits.add_credit(0x80, 0x40, 0x81, 'OOT RANDOMIZER')
+    credits.add_credit(0x80, 0x00, 0xc2, 'FFIV FREE ENTERPRISE')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # Clear the titles
@@ -438,14 +469,6 @@ def update_credits(world):
 
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xc0, 'NONE OF THIS WOULD BE POSSIBLE.')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'STATS...COMING SOON')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'MEMES...COMING SOON')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_titles(BEGIN_TITLES_DELAY)

@@ -17,6 +17,8 @@ class Spell:
     hit_rate = 0
     instant_ko = False
 
+    title = None
+
     def __init__(self, world):
         """
 
@@ -35,6 +37,13 @@ class Spell:
     @property
     def name(self):
         return self.__class__.__name__
+
+    @property
+    def title(self):
+        if self.title is None:
+            return self.__class__.__name__
+        else:
+            return self.title
 
     def get_patch(self):
         """Get patch for this spell.
@@ -94,6 +103,7 @@ class FireOrb(CharacterSpell):
     fp = 5
     power = 20
     hit_rate = 100
+    title = "Fire Orb"
 
 
 class SuperJump(CharacterSpell):
@@ -101,6 +111,7 @@ class SuperJump(CharacterSpell):
     fp = 7
     power = 45
     hit_rate = 100
+    title = "Super Jump"
 
 
 class SuperFlame(CharacterSpell):
@@ -108,6 +119,7 @@ class SuperFlame(CharacterSpell):
     fp = 9
     power = 40
     hit_rate = 100
+    title = "Super Flame"
 
 
 class UltraJump(CharacterSpell):
@@ -115,6 +127,7 @@ class UltraJump(CharacterSpell):
     fp = 11
     power = 65
     hit_rate = 100
+    title = "Ultra Jump"
 
 
 class UltraFlame(CharacterSpell):
@@ -122,6 +135,7 @@ class UltraFlame(CharacterSpell):
     fp = 14
     power = 60
     hit_rate = 100
+    title = "Ultra Flame"
 
 
 class Therapy(CharacterSpell):
@@ -136,18 +150,21 @@ class GroupHug(CharacterSpell):
     fp = 4
     power = 30
     hit_rate = 100
+    title = "Group Hug"
 
 
 class SleepyTime(CharacterSpell):
     index = 8
     fp = 4
     hit_rate = 99
+    title = "Sleepy Time"
 
 
 class ComeBack(CharacterSpell):
     index = 9
     fp = 2
     hit_rate = 100
+    title = "Come Back"
 
 
 class Mute(CharacterSpell):
@@ -161,6 +178,7 @@ class PsychBomb(CharacterSpell):
     fp = 15
     power = 60
     hit_rate = 100
+    title = "Psych Bomb"
 
 
 class Terrorize(CharacterSpell):
@@ -175,6 +193,7 @@ class PoisonGas(CharacterSpell):
     fp = 10
     power = 20
     hit_rate = 90
+    title = "Poison Gas"
 
 
 class Crusher(CharacterSpell):
@@ -189,6 +208,7 @@ class BowserCrush(CharacterSpell):
     fp = 16
     power = 58
     hit_rate = 100
+    title = "Bowser Crush"
 
 
 class GenoBeam(CharacterSpell):
@@ -196,12 +216,14 @@ class GenoBeam(CharacterSpell):
     fp = 3
     power = 40
     hit_rate = 100
+    title = "Geno Beam"
 
 
 class GenoBoost(CharacterSpell):
     index = 17
     fp = 4
     hit_rate = 100
+    title = "Geno Boost"
 
 
 class GenoWhirl(CharacterSpell):
@@ -209,6 +231,7 @@ class GenoWhirl(CharacterSpell):
     fp = 8
     power = 45
     hit_rate = 100
+    title = "Geno Whirl"
 
 
 class GenoBlast(CharacterSpell):
@@ -216,6 +239,7 @@ class GenoBlast(CharacterSpell):
     fp = 12
     power = 50
     hit_rate = 100
+    title = "Geno Blast"
 
 
 class GenoFlash(CharacterSpell):
@@ -223,6 +247,7 @@ class GenoFlash(CharacterSpell):
     fp = 16
     power = 60
     hit_rate = 100
+    title = "Geno Flash"
 
 
 class Thunderbolt(CharacterSpell):
@@ -237,6 +262,7 @@ class HPRain(CharacterSpell):
     fp = 2
     power = 10
     hit_rate = 100
+    title = "HP Rain"
 
 
 class Psychopath(CharacterSpell):
@@ -264,6 +290,7 @@ class StarRain(CharacterSpell):
     fp = 14
     power = 55
     hit_rate = 100
+    title = "Star Rain"
 
 
 class Drain(EnemySpell):

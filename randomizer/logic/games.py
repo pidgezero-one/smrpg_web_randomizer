@@ -3,6 +3,8 @@
 import random
 
 from . import flags
+from randomizer.data.tadpole_songs import all_songs as tadpole_pond_song_pool
+from randomizer.data.eventscripts.utils.tadpole_pond.moleville import script as moleville_blues_script
 
 
 # ******** Ball solitaire
@@ -105,3 +107,29 @@ def randomize_all(world):
     if world.settings.is_flag_enabled(flags.MagicButtonShuffle):
         randomize_magic_buttons(world.magic_buttons)
         world.eventscripts[world.magic_buttons.EVENT][0]["args"][1] = world.magic_buttons.get_event_value()
+
+    # Melody Bay shuffle
+    if world.settings.is_flag_enabled(flags.RandomTadpolePondSong):
+        songs = random.sample(tadpole_pond_song_pool, 3)
+        # song 1
+        world.eventscripts[1082] = songs[0].generate_input_script(0)
+        world.eventscripts[1079] = songs[0].generate_playback_script(0)
+        # hints
+        world.replace_dialog(2718, songs[0].scroll_text)
+        world.replace_dialog(2664, songs[0].apprentice_hint_1)
+        # song 2
+        world.eventscripts[1083] = songs[1].generate_input_script(1)
+        world.eventscripts[1080] = songs[1].generate_playback_script(1)
+        # hints
+        world.replace_dialog(2665, songs[1].apprentice_hint_2)
+        world.replace_dialog(1615, songs[1].mole_hint)
+        world.eventscripts[3132] = moleville_blues_script
+        # song 3
+        world.eventscripts[1084] = songs[2].generate_input_script(2)
+        world.eventscripts[1081] = songs[2].generate_playback_script(2)
+        # hints
+        world.eventscripts[2061][2]["subscript"] = songs[2].generate_starfish_hint(world.eventscripts[2061][2]["subscript"])
+        world.eventscripts[1088] = songs[2].generate_tadpole_hint()
+
+        world.tadpole_submitters = list(set([songs[0].submitter_credits, songs[1].submitter_credits, songs[2].submitter_credits]))
+

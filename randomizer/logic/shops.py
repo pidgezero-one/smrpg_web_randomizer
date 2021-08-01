@@ -157,13 +157,13 @@ def randomize_all(world):
                     sample = gamma.rvs(sample, size=1)[0] // 1
                     sample = min(sample, remaining_space)
                     sample = min(sample, len(item_pool))
-                items_to_add = random.choices(item_pool, k=sample)
+                items_to_add = random.sample(item_pool, sample)
                 shop.items.extend(items_to_add)
                 if shop.frog_coin_shop:
                     frog_coin_items.extend(items_to_add)
                 # juice bar needs at least 4 items
                 if utils.isclass_or_instance(shop, shops.JuiceBarFull) and len(shop.items) < 4:
-                    items_to_add = random.choices(item_pool, k=4-len(shop.items))
+                    items_to_add = random.sample(item_pool, 4-len(shop.items))
                     shop.items.extend(items_to_add)
                 shop.items.sort(key=lambda x: x.rank_value)
 
@@ -171,7 +171,7 @@ def randomize_all(world):
             # fill partial juice bars
             shop = [s for s in shops_to_fill if utils.isclass_or_instance(s, shops.JuiceBarFull)]
             juice_bar_possible_lengths = list(range(1, len(shop.items)))
-            juice_bar_lengths = random.choices(juice_bar_possible_lengths, 3).sort()
+            juice_bar_lengths = random.sample(juice_bar_possible_lengths, 3).sort()
             juice_bar1 = [s for s in shops_to_fill if utils.isclass_or_instance(s, shops.JuiceBarPartial1)][0]
             juice_bar2 = [s for s in shops_to_fill if utils.isclass_or_instance(s, shops.JuiceBarPartial2)][0]
             juice_bar3 = [s for s in shops_to_fill if utils.isclass_or_instance(s, shops.JuiceBarPartial3)][0]

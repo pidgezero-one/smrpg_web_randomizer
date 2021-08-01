@@ -259,6 +259,10 @@ script = [
     },
     {
         "identifier": 'EVENT_444_set_action_script_async_40',
+        "command": 'close_dialog',
+    },
+    {
+        "identifier": 'EVENT_444_set_action_script_async_40_',
         "command": 'set_action_script_async',
         "args": [AreaObjects.MARIO, 671]
     },
@@ -297,6 +301,41 @@ script = [
         "args": ['EVENT_444_set_7000_to_7000_short_mem_56']
     },
     {
+        "identifier": 'EVENT_444_jmp_if_bit_set_60_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7099, 4, 'EVENT_444_run_dialog_49']
+    },
+    {
+        "identifier": 'EVENT_444_jmp_if_bit_set_60__',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7099, 5, 'EVENT_444_run_dialog_49']
+    },
+    {
+        "identifier": 'EVENT_444_inc_34',
+        "command": 'add_short',
+        "args": [0x7028, 1]
+    },
+    {
+        "identifier": 'EVENT_444_jmp_if_var_equals_byte_11',
+        "command": 'jmp_if_var_not_equals_short',
+        "args": [0x7028, 3, 'EVENT_444_run_dialog_49']
+    },
+    {
+        "identifier": 'EVENT_444_run_dialog_49_',
+        "command": 'run_dialog',
+        "args": [841, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_444_set_7000_to_7000_short_mem_56_',
+        "command": 'set_short',
+        "args": [0x7028, 0]
+    },
+    {
+        "identifier": 'EVENT_444_jmp____',
+        "command": 'jmp',
+        "args": ['EVENT_444_set_bit_67']
+    },
+    {
         "identifier": 'EVENT_444_run_dialog_49',
         "command": 'run_dialog',
         "args": [840, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
@@ -333,6 +372,11 @@ script = [
         "identifier": 'EVENT_444_set_7000_to_7000_short_mem_56',
         "command": 'set_7000_to_7000_short_mem',
         "args": [0x7024]
+    },
+    {
+        "identifier": 'EVENT_444_set_7000_to_7000_short_mem_56__',
+        "command": 'set_short',
+        "args": [0x7028, 0]
     },
     {
         "identifier": 'EVENT_444_add_57',

@@ -55,6 +55,10 @@ from randomizer.data.eventscripts.utils.tower_access.toadstool import script as 
 from randomizer.data.eventscripts.utils.castle_statue_room.bonk import script as statue_bonk
 from randomizer.data.eventscripts.utils.castle_statue_room.bonk_mario import script as statue_bonk_mario
 
+from randomizer.data.eventscripts.utils.smithy_room.non_smithy_3792 import script as non_smithy_3792
+from randomizer.data.eventscripts.utils.smithy_room.non_smithy_3794 import script as non_smithy_3794
+from randomizer.data.eventscripts.utils.smithy_room.non_smithy_room_509 import objects as non_smithy_509_objects
+
 
 # Current version number
 VERSION = '8.2.8'
@@ -576,6 +580,13 @@ class GameWorld:
         self.wishes = data.dialogs.Wishes(self)
         self.quiz = data.dialogs.Quiz(self)
 
+        # Credits for specifically chosen tadpole pond and sunken ship submissions
+        self.tadpole_submitters = []
+        self.password_submitter = ""
+
+        # Music (moved this into its own classes to make exclusion easier)
+        self.music_pool = data.music.get_default_music
+
     @property
     def open_mode(self):
         """Check if this game world is Open mode.
@@ -967,6 +978,14 @@ class GameWorld:
         self.eventscripts[3394][0]["args"] = [value]
         self.search_replace_dialog('`SUPER_JUMP_PRIZE_2_CAP`', value)
 
+        # disable sj dog checks if SJ not learnable in seed
+        if flags.LearnableSpells.SuperJump in self.settings.get_flag(flags.AvailableSpells).disabled:
+            self.eventscripts[2063] = [
+                new_command(2063, 'run_dialog', [2049, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]),
+                new_command(2063, 'ret')
+            ]
+    
+
         # Bowser's Keep threshold
         value = self.settings.get_flag(flags.BowserDoorRequirements).value
         for c in range(len(self.eventscripts[3350])):
@@ -974,6 +993,11 @@ class GameWorld:
             if cmd[c]["command"] == 'jmp_if_var_equals_byte' and cmd[c]["args"][0] == 0x70b6 and cmd[c]["args"][1] == 4:
                 cmd = self.eventscripts[3350][c]["args"][1] = value
         
+
+        # Skip Minecart
+        if self.settings.is_flag_value(flags.SkipMinecart, True):
+            self.prepend_bits(192, [[0x707B, 6]])
+
         # some more dialogs
         if self.settings.is_flag_value(flags.EXPStarsAnywhere, True):
             self.replace_dialog(1222, ''' I have a chest to sell, but you\n don't have enough coins.[await]''')
@@ -1436,7 +1460,7 @@ class GameWorld:
             # put the shuffled boss names in dialogs that use them
             if utils.isclass_or_instance(b, data.bosses.Booster):
                 self.search_replace_dialog("`TOWER_BOSS_1`", boss.name)
-                random_bosses = random.choices([loc.boss.name for loc in self.boss_locations if not utils.isclass_or_instance(loc, data.bosses.Booster)], k=3)
+                random_bosses = random.sample([loc.boss.name for loc in self.boss_locations if not utils.isclass_or_instance(loc, data.bosses.Booster)], 3)
                 self.search_replace_dialog("`RANDOM_BOSS_NAME_1`", random_bosses[0])
                 self.search_replace_dialog("`RANDOM_BOSS_NAME_2`", random_bosses[1])
                 self.search_replace_dialog("`RANDOM_BOSS_NAME_3`", random_bosses[2])
@@ -1644,11 +1668,9 @@ class GameWorld:
 
                             # hide composite NPCs that aren't used if shuffled
                             if utils.isclass_or_instance(b, data.bosses.Smithy):
-                                self.rooms[509]["objects"][2]["visible"] = False
-                                self.rooms[509]["objects"][3]["visible"] = False
-                                self.rooms[509]["objects"][4]["clones"][0]["visible"] = False
-                                self.rooms[509]["objects"][5]["visible"] = False
-                                self.rooms[509]["objects"][5]["clones"][0]["visible"] = False
+                                self.rooms[509]["objects"] = copy.copy()
+
+                        # TODO: partitions
 
                         # SPECIAL ANIMATIONS
                         for script_id in boss_location.target_scripts:
@@ -1882,20 +1904,22 @@ class GameWorld:
                                     
                                     self.eventscripts[script_id][0]["subscript"] = copy.copy(rewritten_chandelier_subscript)
 
-                                elif utils.isclass_or_isinstance(b, data.bosses.Smithy) and (script_id == 944) and model.animations.endgame_challenge is not None:
-                                    endgame_animation = {
-                                        "identifier": "EVENT_944_taunt",
-                                        "command": 'action_queue_sync',
-                                        "args": [AreaObjects.NPC_3],
-                                        "subscript": [
-                                            {
-                                                "identifier": "dummy",
-                                                "command": 'set_sprite_sequence',
-                                                'args': [model.animations.endgame_challenge.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.LOOPING_OFF]]
-                                            }
-                                        ]
-                                    }
-                                    self.eventscripts[script_id].insert(0, endgame_animation)
+                                # smithy needs A LOT of adjustments, to the point of complete script replacement and npc removal
+                                elif utils.isclass_or_instance(b, data.bosses.Smithy) and (script_id == 3792):
+                                    self.eventscripts[script_id] = copy.copy(non_smithy_3792)
+                                elif utils.isclass_or_instance(b, data.bosses.Smithy) and (script_id == 3794):
+                                    self.eventscripts[script_id] = copy.copy(non_smithy_3794)
+                                    if model.animations.endgame_challenge is not None:
+                                        if model.animations.endgame_challenge.total_duration is not None:
+                                            challenge_duration = model.animations.endgame_challenge.total_duration
+                                            if challenge_duration > 55:
+                                                self.eventscripts[945][0]["args"] = challenge_duration
+                                                self.eventscripts[946][0]["subscript"].insert(0, {"identifier": "dummy", "command": "pause", "args": [challenge_duration - 55]})
+                                            endgame_animation = {"identifier": "EVENT_944_taunt", "command": 'action_queue_sync', "args": [AreaObjects.NPC_6], "subscript": [{"identifier": "dummy", "command": 'set_sprite_sequence', 'args': [model.animations.endgame_challenge.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.LOOPING_OFF]]}]}
+                                            self.eventscripts[944].insert(0, endgame_animation)
+                                        else:
+                                            endgame_animation = {"identifier": "EVENT_944_taunt", "command": 'action_queue_sync', "args": [AreaObjects.NPC_6], "subscript": [{"identifier": "dummy", "command": 'set_sprite_sequence', 'args': [model.animations.endgame_challenge.sequence_id, 0, [_0x08Flags.READ_AS_SEQUENCE]]}]}
+                                            self.eventscripts[944].insert(0, endgame_animation)
 
 
                                                 
@@ -2114,9 +2138,6 @@ class GameWorld:
             self.eventscripts[e] = copy.copy(sequence_setters[e])
 
         # figure out partitions
-
-
-
 
 
 

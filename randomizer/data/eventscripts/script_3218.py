@@ -159,64 +159,9 @@ script = [
         "args": [0x7042, 2]
     },
     {
-        "identifier": 'EVENT_3218_jmp_if_var_not_equals_short_31',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7024, 4, 'EVENT_3218_jmp_if_var_not_equals_short_33']
-    },
-    {
-        "identifier": 'EVENT_3218_inc_32',
-        "command": 'inc',
-        "args": [0x70ac]
-    },
-    {
-        "identifier": 'EVENT_3218_jmp_if_var_not_equals_short_33',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7026, 2, 'EVENT_3218_jmp_if_var_not_equals_short_35']
-    },
-    {
-        "identifier": 'EVENT_3218_inc_34',
-        "command": 'inc',
-        "args": [0x70ac]
-    },
-    {
-        "identifier": 'EVENT_3218_jmp_if_var_not_equals_short_35',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x7028, 0, 'EVENT_3218_jmp_if_var_not_equals_short_37']
-    },
-    {
-        "identifier": 'EVENT_3218_inc_36',
-        "command": 'inc',
-        "args": [0x70ac]
-    },
-    {
-        "identifier": 'EVENT_3218_jmp_if_var_not_equals_short_37',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702a, 2, 'EVENT_3218_jmp_if_var_not_equals_short_39']
-    },
-    {
-        "identifier": 'EVENT_3218_inc_38',
-        "command": 'inc',
-        "args": [0x70ac]
-    },
-    {
-        "identifier": 'EVENT_3218_jmp_if_var_not_equals_short_39',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702c, 3, 'EVENT_3218_jmp_if_var_not_equals_short_41']
-    },
-    {
-        "identifier": 'EVENT_3218_inc_40',
-        "command": 'inc',
-        "args": [0x70ac]
-    },
-    {
-        "identifier": 'EVENT_3218_jmp_if_var_not_equals_short_41',
-        "command": 'jmp_if_var_not_equals_short',
-        "args": [0x702e, 0, 'EVENT_3218_jmp_if_var_not_equals_byte_43']
-    },
-    {
-        "identifier": 'EVENT_3218_inc_42',
-        "command": 'inc',
-        "args": [0x70ac]
+        "identifier": "EVENT_3218_check_password",
+        "command": "run_event_as_subroutine",
+        "args": [3411]
     },
     {
         "identifier": 'EVENT_3218_jmp_if_var_not_equals_byte_43',

@@ -4,7 +4,8 @@
 dialog_data = [None]*922
 dialog_data[0] = ''' I slept like a baby.
  Thanks![await]'''
-dialog_data[1] = '''[await]'''
+dialog_data[1] = ''' Super Jump?[await]
+ Oh, no, not today.[delay] It's my day off.[await]'''
 dialog_data[2] = '''[await]'''
 dialog_data[3] = '''[await]'''
 dialog_data[4] = '''[await]'''
@@ -962,10 +963,12 @@ dialog_data[548] = ''' Are you looking for Toadofsky?
  I hear it's quite the attraction
  for treasure hunters.[await]'''
 dialog_data[549] = ''' My favorite song?[await]'''
-dialog_data[550] = ''' It’s Frogfucius' suite #18.
+dialog_data[550] = ''' My favorite song?[await][page]
+ It’s Frogfucius' suite #18.
  ♪“So La Mi Re Do Re Do Re”.
  Toadofsky’s fond of it, too![await]'''
-dialog_data[551] = ''' It’s the Moleville miners' song,
+dialog_data[551] = ''' My favorite song?[await][page]
+ It’s the Moleville miners' song,
  ♪“Mi Do So Do Re La Ti Do”.
  It’s got soul![await]'''
 dialog_data[552] = '''[await]'''

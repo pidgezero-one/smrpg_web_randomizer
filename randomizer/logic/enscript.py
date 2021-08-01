@@ -1787,7 +1787,7 @@ class EventScript:
         return self
 
     # 0xB4, 0xB5, 0xBA, 0xBB, 0xBC
-    def set_7000_short_mem_to_7000_short_mem(self, address_left, address_right):
+    def set_7000_short_mem_to_7000_short_mem(self, address_left, address_right): # for some reason, left and right are reversed. in disassembled code, you're actually setting the value of arg 1 to the value of arg 0
         assert 0x7000 <= address_left <= 0x71FE and 0x7000 <= address_right <= 0x71FE
         self.append_byte(0xBC)
         self.append_byte((address_left - 0x7000) // 2)

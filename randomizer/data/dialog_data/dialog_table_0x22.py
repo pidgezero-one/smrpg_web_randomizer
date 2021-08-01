@@ -549,7 +549,9 @@ dialog_data[356] = '''[await]'''
 dialog_data[357] = ''' Looks like you've got
  yourself a tough road ahead.
  Good luck![await]'''
-dialog_data[358] = '''[await]'''
+dialog_data[358] = ''' Listen, buddy, I admire how hard
+ you're tryin' for this second prize.
+ Tell ya what, just take it.[await]'''
 dialog_data[359] = '''[await]'''
 dialog_data[360] = '''[await]'''
 dialog_data[361] = '''[await]'''
@@ -1224,7 +1226,7 @@ dialog_data[675] = '''
 dialog_data[676] = '''
                 Geno joins![await]'''
 dialog_data[677] = '''
-               Bowser joins![await]'''
+              Bowser joins![await]'''
 dialog_data[678] = '''
             Toadstool joins![await]'''
 dialog_data[679] = '''[await]'''

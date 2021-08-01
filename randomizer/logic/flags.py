@@ -5,6 +5,7 @@ import re
 from django.utils.html import mark_safe
 from markdown import markdown
 from randomizer.data.helpers import ShuffleLocationSelector
+from randomizer.data import music, spells
 
 
 # ************************************** Flag classes
@@ -274,10 +275,10 @@ class StartingCharacter(SelectOneFlag):
 class AvailableCharacters(CategorizationFlag):
     name = "Available Characters"
     description = '''Characters on the left will appear in the seed. Characters on the right will not.'''
-    options = [o for o in [PlayableCharacters.Mario, PlayableCharacters.Mallow,
-                                 PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]]
-    enabled = [o for o in [PlayableCharacters.Mario, PlayableCharacters.Mallow,
-                                 PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]]
+    options = [PlayableCharacters.Mario, PlayableCharacters.Mallow,
+                                 PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
+    enabled = [PlayableCharacters.Mario, PlayableCharacters.Mallow,
+                                 PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
 
 class CharacterStats(BooleanFlag):
     name = 'Randomize character stats'
@@ -286,6 +287,44 @@ class CharacterStats(BooleanFlag):
     If disabled, playable characters retain their original stats and stat curves.'''
     default = False
 
+class LearnableSpells(enum.Enum):
+    Jump = spells.Jump.title
+    FireOrb = spells.FireOrb.title
+    SuperJump = spells.SuperJump.title
+    SuperFlame = spells.SuperFlame.title
+    UltraJump = spells.UltraJump.title
+    UltraFlame = spells.UltraFlame.title
+    Therapy = spells.Therapy.title
+    GroupHug = spells.GroupHug.title
+    SleepyTime = spells.SleepyTime.title
+    ComeBack = spells.ComeBack.title
+    Mute = spells.Mute.title
+    PsychBomb = spells.PsychBomb.title
+    Terrorize = spells.Terrorize.title
+    PoisonGas = spells.PoisonGas.title
+    Crusher = spells.Crusher.title
+    BowserCrush = spells.BowserCrush.title
+    GenoBeam = spells.GenoBeam.title
+    GenoBoost = spells.GenoBoost.title
+    GenoWhirl = spells.GenoWhirl.title
+    GenoBlast = spells.GenoBlast.title
+    GenoFlash = spells.GenoFlash.title
+    Thunderbolt = spells.Thunderbolt.title
+    HPRain = spells.HPRain.title
+    Psychopath = spells.Psychopath.title
+    Shocker = spells.Shocker.title
+    Snowy = spells.Snowy.title
+    StarRain = spells.StarRain.title
+
+
+class AvailableSpells(CategorizationFlag):
+    name = "Available Player Spells"
+    description = '''Spells on the left will be learned by at least one character. Spells on the right will not be learned by any character.
+    
+    Excluded spells are not replaced in characters' learnsets by other spells, so some characters will learn less than six total.'''
+    options = [LearnableSpells.Jump, LearnableSpells.FireOrb, LearnableSpells.SuperJump, LearnableSpells.SuperFlame, LearnableSpells.UltraJump, LearnableSpells.UltraFlame, LearnableSpells.Therapy, LearnableSpells.GroupHug, LearnableSpells.SleepyTime, LearnableSpells.ComeBack, LearnableSpells.Mute, LearnableSpells.PsychBomb, LearnableSpells.Terrorize, LearnableSpells.PoisonGas, LearnableSpells.Crusher, LearnableSpells.BowserCrush, LearnableSpells.GenoBeam, LearnableSpells.GenoBoost, LearnableSpells.GenoWhirl, LearnableSpells.GenoBlast, LearnableSpells.GenoFlash, LearnableSpells.Thunderbolt, LearnableSpells.HPRain, LearnableSpells.Psychopath, LearnableSpells.Shocker, LearnableSpells.Snowy, LearnableSpells.StarRain]
+    enabled = [LearnableSpells.Jump, LearnableSpells.FireOrb, LearnableSpells.SuperJump, LearnableSpells.SuperFlame, LearnableSpells.UltraJump, LearnableSpells.UltraFlame, LearnableSpells.Therapy, LearnableSpells.GroupHug, LearnableSpells.SleepyTime, LearnableSpells.ComeBack, LearnableSpells.Mute, LearnableSpells.PsychBomb, LearnableSpells.Terrorize, LearnableSpells.PoisonGas, LearnableSpells.Crusher, LearnableSpells.BowserCrush, LearnableSpells.GenoBeam, LearnableSpells.GenoBoost, LearnableSpells.GenoWhirl, LearnableSpells.GenoBlast, LearnableSpells.GenoFlash, LearnableSpells.Thunderbolt, LearnableSpells.HPRain, LearnableSpells.Psychopath, LearnableSpells.Shocker, LearnableSpells.Snowy, LearnableSpells.StarRain]
+    
 
 class CharacterLearnedSpells(BooleanFlag):
     name = 'Randomize character learned spells'
@@ -1538,7 +1577,7 @@ class QuizShuffle(BooleanFlag):
     default = False
 
 
-class RandomTadpolePongSong(BooleanFlag):
+class RandomTadpolePondSong(BooleanFlag):
     name = 'Randomize Tadpole Pond songs'
     description = '''If enabled, the songs required for the three Tadpole Pond songs will be selected from a random pool, submitted by players. Hints will be available in their normal locations within Tadpole Pond, Moleville Mines, and Monstro Town.'''
     modes = ['open']
@@ -1558,6 +1597,13 @@ class BowserDoorShuffle(BooleanFlag):
     modes = ['open']
     default = False
 
+
+class SkipMinecart(BooleanFlag):
+    name = "Skip Minecart minigame"
+    description = '''If enabled, boarding the minecart for the first time will teleport you back to Moleville. Subsequent visits to the minecart room will play the minigame as normal.'''
+    modes = ['open']
+    default = False
+
 # ******** Cosmetic
 
 
@@ -1570,12 +1616,12 @@ class BossShuffleMusic(BooleanFlag):
     # Add selector to remove certain songs from pool
 
 class AvailableMusic(enum.Enum):
-    Normal = "Regular encounter theme"
-    Boss1 = "Midboss theme"
-    Boss2 = "Smithy Gang theme"
-    Smithy = "Smithy phase 1 theme"
-    Culex = "Final Fantasy 4 boss theme"
-    Corn = "Moleville Minecart theme"
+    Normal = music.NormalBattleMusic.name
+    Boss1 = music.MidbossMusic.name
+    Boss2 = music.BossMusic.name
+    Smithy = music.Smithy1Music.name
+    Culex = music.CulexMusic.name
+    Corn = music.CorndillyMusic.name
 
 
 class ShuffledMusic(CategorizationFlag):
@@ -1590,6 +1636,12 @@ class ShuffledMusic(CategorizationFlag):
 class PaletteSwaps(BooleanFlag):
     name = 'Palette Swaps'
     description = 'Your party members get a change of wardrobe!'
+    inverse_description = '(Sprite colours are not modified.)'
+    value = '-palette'
+
+class ChangeNames(BooleanFlag): # not available unless PaletteSwaps enabled
+    name = 'Change character names'
+    description = '''Some palette swaps are references to other media. If this flag is enabled, the character's name will be changed to match the palette.'''
     inverse_description = '(Sprite colours are not modified.)'
     value = '-palette'
 
@@ -1712,14 +1764,15 @@ class BossCategory(FlagCategory):
     ]
 
 class PuzzleCategory(FlagCategory):
-    name = 'Puzzles'
+    name = 'Puzzles & Minigames'
     flags = [
         BallSolitaireShuffle,
         MagicButtonShuffle,
         QuizShuffle,
-        RandomTadpolePongSong,
+        RandomTadpolePondSong,
         RandomSunkenShipPassword,
-        BowserDoorShuffle
+        BowserDoorShuffle,
+        SkipMinecart
     ]
 
 class CosmeticCategory(FlagCategory):
@@ -1727,7 +1780,8 @@ class CosmeticCategory(FlagCategory):
     flags = [
         BossShuffleMusic,
         ShuffledMusic,
-        PaletteSwaps
+        PaletteSwaps,
+        ChangeNames
     ]
 
 # ************************************** Preset classes

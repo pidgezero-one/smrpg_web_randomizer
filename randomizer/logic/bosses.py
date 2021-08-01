@@ -95,7 +95,7 @@ def randomize_all(world):
             # Randomize boss music for locations if enabled.
             if world.settings.is_flag_enabled(flags.BossShuffleMusic):
                 # noinspection PyTypeChecker
-                music_choices = list(bosses.BattleMusic)
+                music_choices = [m for m in world.music_pool if m.name not in world.settings.get_flag(flags.ShuffledMusic).disabled]
                 for location in locations:
                     location.music = random.choice(music_choices)
 

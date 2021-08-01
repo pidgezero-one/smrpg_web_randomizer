@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_454_set_7000_to_7000_short_mem_56_',
+        "command": 'set_short',
+        "args": [0x7028, 0]
+    },
+    {
         "identifier": 'EVENT_454_action_queue_sync_0',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_1],

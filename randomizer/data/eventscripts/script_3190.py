@@ -590,6 +590,16 @@ script = [
         "args": [0x702e]
     },
     {
+        "identifier": 'EVENT_3190_set_bit_45__',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x707B, 6, 'EVENT_3190_run_moleville_mountain_sequence_42']
+    },
+    {
+        "identifier": 'EVENT_3190_set_bit_45_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x707A, 5, 'EVENT_3190_enter_area_43']
+    },
+    {
         "identifier": 'EVENT_3190_run_moleville_mountain_sequence_42',
         "command": 'run_moleville_mountain_sequence'
     },

@@ -349,6 +349,16 @@ def randomize_all(world):
     if world.settings.is_flag_enabled(flags.CharacterLearnedSpells):
         _randomize_learned_spells(world)
 
+    # Get rid of excluded spells after the fact.
+    # Did it this way so that you can't do things like remove status spells for the pool in order to get a higher chance of having more healers, etc
+    for character in world.characters:
+        illegal_spell_keys = []
+        for key, value in character.learned_spells.items():
+            if value.title in world.settings.get_flag(flags.AvailableSpells).disabled:
+                illegal_spell_keys.append(key)
+        for level in illegal_spell_keys:
+            character.learned_spells.pop(level, None)
+ 
     # Shuffle character stats.
     if world.settings.is_flag_enabled(flags.CharacterStats):
         _randomize_levelup_xps(world.levelup_xps)

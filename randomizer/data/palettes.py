@@ -11,6 +11,7 @@ class Palette:
     doll_addresses = [] # only populate this if it follows different palette rules. currently only used for mario
     poison_addresses = []
     underwater_addresses = []
+    classic_addresses = []
     
     colours = []
     poison_colours = []
@@ -34,7 +35,6 @@ class MarioPalette(Palette):
         0x257A4C,
         #scarecrow/mushroom
         0x256AF2
-        
     ]
     doll_addresses = [
         #doll 1 - for mario, 6th colour should be 7th in palette, 7th colour should be 8th in palette, and 8th and 9th colour should both be 9th in palette. 10th colour should be 11th in palette, 11th and 12th colour should be 12th in palette
@@ -42,6 +42,9 @@ class MarioPalette(Palette):
     ]
     minecart_addresses = [
         0x256DFE
+    ]
+    classic_addresses = [
+        0x2567E6
     ]
     poison_addresses = [0x2579D4, 0x257BB4]
     #Poison palette for battle portrait will not be edited. It is shared by all 5 characters.

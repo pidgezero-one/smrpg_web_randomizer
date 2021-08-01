@@ -5,6 +5,7 @@ from enum import IntEnum, Enum, auto
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 
+from randomizer.data import music
 from randomizer.data.npcmodels import models
 from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.data.roomobjecttables import Rooms
@@ -44,15 +45,14 @@ class Battlefields(IntEnum):
     Culex = 0x2f
     Factory = 0x30
 
-
-class BattleMusic(IntEnum):
+class BattleMusic(Enum):
     """Enumeration for ID values for battle music."""
-    Normal = 0x01
-    Boss1 = 0x04
-    Boss2 = 0x08
-    Smithy = 0x0c
-    Culex = 0x1c
-    Corn = 0x10
+    Normal = music.NormalBattleMusic
+    Boss1 = music.MidbossMusic
+    Boss2 = music.BossMusic
+    Smithy = music.Smithy1Music
+    Culex = music.CulexMusic
+    Corn = music.CorndillyMusic
 
 
 class HenchmanType(Enum):
@@ -314,7 +314,7 @@ class BossLocation:
     pack_number = 0
     battlefield = None
     can_run_away = False
-    music = BattleMusic.Normal
+    music = music.NormalBattleMusic
     wide_sprite = False
     tall_sprite = False
     sprite_width = 32
@@ -713,8 +713,8 @@ class MackBoss(Boss):
         (2062, '''BODYGUARD: We've gotten REAL\n good with fondant![await]'''),
         (2504,
          '''MACK: I'm not happy to delay the\n party, but we can't get started\n until you find [0x7024] more item(s)![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Mack's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
-        (2572, '''SNIFIT 2: Please refrain\n from bothering Mack.[await]'''),
+        (2560, '''BODYGUARD: Welcome![await][pause] Our party is invitation-only, so\n please come back another time.[await][page]\n[delay] ...You're here to crash it anyway?[delay]\n Alright, wise guy, let's go![await]'''),
+        (2572, '''\n   BODYGUARD: Oh, no you don't![0][await]'''),
         (2831, '''\n   MACK: What are you doing here?[await]'''),
         (2832,
          ''' Yo! You look tired.[delay] How 'bout a\n night on the house?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -743,6 +743,10 @@ class MackBoss(Boss):
          '''MACK: Think you're gonna beat the\n dojo master today?[await]'''),
         (3057,
          ''' You come to crash my party?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''BODYGUARD: I almost feel bad\n for all those fools out there,\n who can't even bounce...[await]'''),
+        (3073,
+         '''BODYGUARD: How 'bout a fat lip to\n go with that ugly moustache?[await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bouncing-this and Party-that.[await]'''),
         (3352, '''MACK: I guess you CAN bounce\n after all.[await]'''),
@@ -752,13 +756,7 @@ class MackBoss(Boss):
         (1694,
          '''BODYGUARD: Think you're tough,\n pal?[await][delay] March that ugly mustache into\n Mack's room, and see what\n happens![await]'''),
         (1695,
-         '''BODYGUARD: You beat Mack?[await]\n This is not good![delay_30]\n I guess you can bounce after all.[await]'''),
-        (2560, '''BODYGUARD: Welcome![await][pause] Our party is invitation-only, so\n please come back another time.[await][page]\n[delay] ...You're here to crash it anyway?[delay]\n Alright, wise guy, let's go![await]'''),
-        (2572, '''\n   BODYGUARD: Oh, no you don't![0][await]'''),
-        (3072,
-         '''BODYGUARD: I almost feel bad\n for all those fools out there,\n who can't even bounce...[await]'''),
-        (3073,
-         '''BODYGUARD: How 'bout a fat lip to\n go with that ugly moustache?[await]'''),
+         '''BODYGUARD: You beat Mack?[await]\n This is not good![delay_30]\n I guess you can bounce after all.[await]''')
     ]
 
 
@@ -1031,8 +1029,9 @@ class BowyerBoss(Boss):
         (2062, '''FLUNKIE: We've gotten REAL\n good with fondant![await]'''),
         (2504,
          '''BOWYER: Nya, NYA!?[await][pause] Disturb me\n you must not, until [0x7024] more item(s)\n you find, nya![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Bowyer's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
-        (2572, '''SNIFIT 2: Please refrain\n from bothering Bowyer.[await]'''),
+        (2560, '''FLUNKIE: Hello.[await][pause] Bowyer is busy\n now, and he really hates to be\n interrupted.[await][page]\n[delay] ...If you're not going to leave,\n I'll have to kick you out myself![await]'''),
+        (2572,
+         '''FLUNKIE: I'm gonna have to ask you\n not to interrupt Bowyer's target\n practice.[await]'''),
         (2831, '''\nBOWYER: Nya! Boring here, it is...[await]'''),
         (2832,
          ''' Since I'm having a good day, you\n can stay here free of charge.\n [delay]How's that sound?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -1063,6 +1062,9 @@ class BowyerBoss(Boss):
         (3044, '''\n BOWYER: Interesting, this will be![await]'''),
         (3057,
          ''' Fight me, you will, nya?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
+        (3072, '''FLUNKIE: ...sigh... [delay]Bowyer scolded\n me for interrupting his shooting\n practice.[await][pause] I was just trying to warn\n him that Mario is here![await]'''),
+        (3073,
+         '''FLUNKIE: You look like you'd make\n for a good statue![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arrow-this and Target-that.[await]'''),
         (3352, '''BOWYER: 1000 jumps I must do,\n nya![await]'''),
@@ -1073,12 +1075,6 @@ class BowyerBoss(Boss):
          '''FLUNKIE: Whoa! You sure showed\n us! Go on ahead to Bowyer's\n place![await]'''),
         (1695,
          '''FLUNKIE: Come back and visit\n us sometime. Bowyer won't stay\n mad forever![await]'''),
-        (2560, '''FLUNKIE: Hello.[await][pause] Bowyer is busy\n now, and he really hates to be\n interrupted.[await][page]\n[delay] ...If you're not going to leave,\n I'll have to kick you out myself![await]'''),
-        (2572,
-         '''FLUNKIE: I'm gonna have to ask you\n not to interrupt Bowyer's target\n practice.[await]'''),
-        (3072, '''FLUNKIE: ...sigh... [delay]Bowyer scolded\n me for interrupting his shooting\n practice.[await][pause] I was just trying to warn\n him that Mario is here![await]'''),
-        (3073,
-         '''FLUNKIE: You look like you'd make\n for a good statue![await]'''),
     ]
 
 
@@ -1137,8 +1133,9 @@ class Croco2Boss(Boss):
         (2061,
          '''FLUNKIE: Doesn't this cake\n look just like Croco?[await]'''),
         (2062, '''FLUNKIE: We've gotten REAL\n good with fondant![await]'''),
-        (2504, '''CROCO: What's dis?[await][pause] You fools're\n gonna take another 100 years to\n find the last [0x7024] item(s)![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Croco's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560,
+         '''FLUNKIE: Croco's busy! Scram![await][page]\n  ...Not leaving, huh?\n[delay] Alright buddy, you asked for it![await]'''),
+        (2572, '''FLUNKIE: Where d'ya think YOU'RE\n going?![await]'''),
         (2572, '''SNIFIT 2: Please refrain\n from bothering Croco.[await]'''),
         (2831, '''CROCO: Whaddya doin' hangin\n 'round here?[await]'''),
         (2832,
@@ -1168,6 +1165,8 @@ class Croco2Boss(Boss):
          '''CROCO: Think ya can beat the dojo\n master, chump? I'd like to see ya\n try![await]'''),
         (3057,
          ''' Whaddya want, bub?[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]'''),
+        (3072, '''\n  FLUNKIE: I could use a stepstool.[await]'''),
+        (3073, '''\n      FLUNKIE: A tough guy, eh?[await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Wallet-this and Coin-that.[await]'''),
         (3352,
@@ -1180,11 +1179,6 @@ class Croco2Boss(Boss):
          '''FLUNKIE: (Sob, sob...)[delay_30]\n You're pretty tough. I guess I'll let\n you through to Croco's place.[await]'''),
         (1695,
          '''FLUNKIE: You beat Croco!?[delay_30]\n We'll getcha for this![await][page]\n Maybe not today, maybe not\n tomorrow, but someday...[await]'''),
-        (2560,
-         '''FLUNKIE: Croco's busy! Scram![await][page]\n  ...Not leaving, huh?\n[delay] Alright buddy, you asked for it![await]'''),
-        (2572, '''FLUNKIE: Where d'ya think YOU'RE\n going?![await]'''),
-        (3072, '''\n  FLUNKIE: I could use a stepstool.[await]'''),
-        (3073, '''\n      FLUNKIE: A tough guy, eh?[await]'''),
     ]
 
 
@@ -1291,9 +1285,9 @@ class PunchinelloBoss(Boss):
         (2062, '''BOB-OMB: We've gotten quite\n good with fondant.[await]'''),
         (2504,
          '''PUNCHINELLO: Huh?[delay_30] What the hay?[await]\n Where are the other [0x7024] item(s)?[await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Punchinello's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560, '''BOB-OMB: Hello there.[await][pause] If you've\n come for Punchinello's autograph,\n please allow me to buzz you up...[await][page]\n [delay]...You're not here for that?[await]\n [delay]Uh oh, he'll be pretty mad!\n [delay]I'd better do something![await]'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering Punchinello.[await]'''),
+         '''BOB-OMB: There's nothing to see\n back here...[await][pause] I mean that.[await]\n You don't believe me?[await]'''),
         (2831,
          '''PUNCHINELLO: Hmmm... [delay]Huh?\n [delay]A visitor? [delay]Well, there's not much\n to do around here.[await]'''),
         (2832, ''' Hello there.[await][pause] Today, we've got an\n explosively good deal for you![delay] All\n inn expenses are free of charge.[await]\n Would you like to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -1324,6 +1318,10 @@ class PunchinelloBoss(Boss):
          '''PUNCHINELLO: A challenge from\n the dojo master, eh? Let's see\n where this goes.[await]'''),
         (3057,
          ''' Hello. Are you with the press?[await]\n  [select] (I'm here to fight you)\n  [select] (Sorry, wrong number)[await]'''),
+        (3072,
+         '''BOB-OMB: I don't look like the\n other bob-ombs here. [delay]That's weird.[await]'''),
+        (3073,
+         '''BOB-OMB: You don't think it makes\n sense for a bob-omb to be shooting\n bullets?[await][pause] ...Fight me about it![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Bomb-this and Famous-that.[await]'''),
         (3352,
@@ -1336,13 +1334,6 @@ class PunchinelloBoss(Boss):
          '''BOB-OMB: I guess I was a little\n hot-headed, thinking I could win.\n Go on in to Punchinello's room.[await]'''),
         (1695,
          '''BOB-OMB: Wow, you beat\n Punchinello! He's not very happy\n about that.[await]'''),
-        (2560, '''BOB-OMB: Hello there.[await][pause] If you've\n come for Punchinello's autograph,\n please allow me to buzz you up...[await][page]\n [delay]...You're not here for that?[await]\n [delay]Uh oh, he'll be pretty mad!\n [delay]I'd better do something![await]'''),
-        (2572,
-         '''BOB-OMB: There's nothing to see\n back here...[await][pause] I mean that.[await]\n You don't believe me?[await]'''),
-        (3072,
-         '''BOB-OMB: I don't look like the\n other bob-ombs here. [delay]That's weird.[await]'''),
-        (3073,
-         '''BOB-OMB: You don't think it makes\n sense for a bob-omb to be shooting\n bullets?[await][pause] ...Fight me about it![await]'''),
     ]
 
 
@@ -1648,9 +1639,11 @@ class BundtBoss(Boss):
          '''APPRENTICE: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (2504,
          '''Wait... Did that cake just move?[await]\n Let's worry about it after finding\n the last [0x7024] item(s).[await]'''),  # do this one with no background
-        (2560, '''SNIFIT 1: Hello there.[await]\n Bundt's busy right now, so it\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560,
+         '''APPRENTICE: Welcome to our\n world-class culinary school.[await]\n Please come back later to try some\n of our famous Bundt Cake.[await][page]\n [delay]...You want it NOW?\n [delay]How impatient! [delay]I oughtta teach you a lesson![await]'''),
         (2571, '''[delay_60][end]'''),
-        (2572, '''SNIFIT 2: Please refrain\n from bothering Bundt.[await]'''),
+        (2572,
+         '''CHEF TORTE: Ve are busy preparing\n ze batter at ze moment...[await]\n No, you can't have any right zees\n second! [delay]How rude![await]'''),
         (2831, '''[delay_60][end]'''),
         (2832,
          ''' Welcome. Our inn services are free\n tonight.[await][pause] We've unfortunately run\n out of complimentary cake, but\n would you like to stay anyway?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -1679,6 +1672,9 @@ class BundtBoss(Boss):
         (2848, ''' Why's the door locked? [delay]Uh... [delay]We're\n uh... [delay]baking a very important\n cake! [delay]Do not disturb! [delay_30](I'm so sly!)[await]'''),
         (3044, '''[delay_60][end]'''),
         (3057, '''[delay_60][await]\n  [select] (Fight me)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''APPRENTICE: (Please let this cake\n not be evil... please let this cake\n not be evil...)[await]'''),
+        (3073, '''APPRENTICE: You again?! Leave\n our cake alone![await]'''),
         (3338,
          ''' It's really weird.\n I never hear the next door\n neighbour.[await][pause] Maybe they don't move\n around much.[await]'''),
         (3352, '''[delay_60][end]'''),
@@ -1689,13 +1685,6 @@ class BundtBoss(Boss):
          '''APPRENTICE: All right, we'll let\n you through. But don't mess our\n cake up, we spent all day on it.[await]'''),
         (1695,
          '''APPRENTICE: I thought we asked\n you not to mess our cake up![await]'''),
-        (2560,
-         '''APPRENTICE: Welcome to our\n world-class culinary school.[await]\n Please come back later to try some\n of our famous Bundt Cake.[await][page]\n [delay]...You want it NOW?\n [delay]How impatient! [delay]I oughtta teach you a lesson![await]'''),
-        (2572,
-         '''CHEF TORTE: Ve are busy preparing\n ze batter at ze moment...[await]\n No, you can't have any right zees\n second! [delay]How rude![await]'''),
-        (3072,
-         '''APPRENTICE: (Please let this cake\n not be evil... please let this cake\n not be evil...)[await]'''),
-        (3073, '''APPRENTICE: You again?! Leave\n our cake alone![await]'''),
     ]
 
 
@@ -1866,8 +1855,10 @@ class HidonBoss(Boss):
         (2062, '''GOOMBETTE: We've gotten REAL\n good with fondant![await]'''),
         (2504,
          '''HIDON: ...I don't know where the\n last [0x7024] item(s) are. Ask the\n Goombettes.[await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Hidon's busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
-        (2572, '''SNIFIT 2: Please refrain\n from bothering Hidon.[await]'''),
+        (2560,
+         '''GOOMBETTE: I need a pen, but I\n can't reach the top drawer of this\n desk. Can you help me out?[await][page]\n [delay]...What?[delay] “How are you going to\n use a pen when you don't have any\n arms”?[await][pause] You makin' fun of me?!\n [delay]That's IT, buddy! Get down here![await]'''),
+        (2572,
+         '''GOOMBETTE: Hey! Hidon's trying to\n stay in hidin' over here![delay] Get lost![await]'''),
         (2831, '''\n          HIDON: Oh, it's you.[await]'''),
         (2832,
          ''' Hey! Why don't you crash here for\n the night? It's free! FREE![await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -1896,6 +1887,9 @@ class HidonBoss(Boss):
         (3044, '''HIDON: The dojo master's pretty\n tough.[await]'''),
         (3057,
          ''' Ugh... What'd you wake me up for?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''GOOMBETTE: (I'm too short to see\n out this window.)[await]'''),
+        (3073, '''GOOMBETTE: Put up your dukes,\n big man![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Treasure-this and Piranha-that.[await]'''),
         (3352,
@@ -1907,13 +1901,6 @@ class HidonBoss(Boss):
         (1694,
          '''GOOMBETTE: You mighta' won\n against us, but Hidon's gonna\n beat you up![await]'''),
         (1695, '''GOOMBETTE: You beat Hidon?![await]\n Oh, man...[await]'''),
-        (2560,
-         '''GOOMBETTE: I need a pen, but I\n can't reach the top drawer of this\n desk. Can you help me out?[await][page]\n [delay]...What?[delay] “How are you going to\n use a pen when you don't have any\n arms”?[await][pause] You makin' fun of me?!\n [delay]That's IT, buddy! Get down here![await]'''),
-        (2572,
-         '''GOOMBETTE: Hey! Hidon's trying to\n stay in hidin' over here![delay] Get lost![await]'''),
-        (3072,
-         '''GOOMBETTE: (I'm too short to see\n out this window.)[await]'''),
-        (3073, '''GOOMBETTE: Put up your dukes,\n big man![await]'''),
     ]
 
 
@@ -2017,8 +2004,9 @@ class JohnnyBoss(Boss):
         (2062,
          '''PIRATE: Us pirates are pretty\n good with food, arr harr![await]'''),
         (2504, '''JOHNNY: Found [0x7000] item(s), eh? Arr,\n harr, harr...! You gotta find [0x7024]\n more, matey![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Johnny's busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
-        (2572, '''SNIFIT 2: Please refrain\n from bothering Johnny.[await]'''),
+        (2560, '''PIRATE: Welcome, matey![await][pause] Here to\n spar with Johnny, are ye?[await][page]\n Arr, good fun! Let's have a\n warm-up round![await]'''),
+        (2572,
+         '''PIRATE: This ain't the corner you\n want, matey![await][pause] But while you're here,\n let's have a spar, arr harr![await]'''),
         (2831, '''\n        JOHNNY: Ahoy, matey![await]'''),
         (2832,
          ''' Welcome, matey! How'd ya like to\n stay here tonight, on the house?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -2046,18 +2034,13 @@ class JohnnyBoss(Boss):
          '''JOHNNY: Good luck, matey. The dojo\n master's mighty tough.[await]'''),
         (3057,
          ''' Arr, what brings ye here?[await]\n  [select] (I want a fight)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''PIRATE: I know there be some fine\n loot in this tower, but it's too far\n 'bove sea level for my liking![await]'''),
+        (3073, '''PIRATE: I'll make ya see stars,\n arr harr![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Arr-this and Matey-that.[await]'''),
         (3352, '''JOHNNY: Matey, I've got lots o'\n training to do![await]'''),
         (3353, '''JOHNNY: Matey, I've got lots o'\n training to do![await]'''),
-    ]
-    optional_dialog_replacements = [
-        (2560, '''PIRATE: Welcome, matey![await][pause] Here to\n spar with Johnny, are ye?[await][page]\n Arr, good fun! Let's have a\n warm-up round![await]'''),
-        (2572,
-         '''PIRATE: This ain't the corner you\n want, matey![await][pause] But while you're here,\n let's have a spar, arr harr![await]'''),
-        (3072,
-         '''PIRATE: I know there be some fine\n loot in this tower, but it's too far\n 'bove sea level for my liking![await]'''),
-        (3073, '''PIRATE: I'll make ya see stars,\n arr harr![await]'''),
     ]
 
 
@@ -2166,13 +2149,15 @@ class YaridovichBoss(Boss):
         (2062, '''TOWNSPERSON: We need... more\n fondant.[await]'''),
         (2504,
          '''YARIDOVICH: Eee hee...! You're\n still missing [0x7024] item(s)! Isn't that\n a shame?[await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Yaridovich is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
-        (2572,
-         '''SNIFIT 2: Please refrain\n from bothering Yaridovich.[await]'''),
+        (2560,
+         '''TOWNSPERSON: I'm just... a\n secretary. Don't bother...\n Yaridovich.[await]'''),
+        (2572, '''TOWNSPERSON: This is...not...\n the right...way.[await]'''),
         (3044,
          '''YARIDOVICH: A challenge from the\n dojo master? [delay]Eee hee hee, this\n ought to be interesting![await]'''),
         (3057,
          ''' Eee hee...! You want to fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
+        (3072, '''TOWNSPERSON: It's nice...\n outside.[await]'''),
+        (3073, '''TOWNSPERSON: You want...to\n fight?[await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Brownie-this and Tickle-that.[await]'''),
         (3352,
@@ -2184,11 +2169,6 @@ class YaridovichBoss(Boss):
         (1694,
          '''TOWNSPERSON: Well done...\n You may go on... to Yaridovich.[await]'''),
         (1695, '''TOWNSPERSON: You won...\n Well done...[await]'''),
-        (2560,
-         '''TOWNSPERSON: I'm just... a\n secretary. Don't bother...\n Yaridovich.[await]'''),
-        (2572, '''TOWNSPERSON: This is...not...\n the right...way.[await]'''),
-        (3072, '''TOWNSPERSON: It's nice...\n outside.[await]'''),
-        (3073, '''TOWNSPERSON: You want...to\n fight?[await]'''),
     ]
 
 
@@ -2634,8 +2614,9 @@ class CulexBoss(Boss):
          '''WATER CRYSTAL: We must shape\n this confection to resemble Culex.[await]'''),
         (2504,
          '''CULEX: You must retrieve [0x7024] more\n item(s) before we may proceed.[await]\n Godspeed, champion knight![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Culex is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
-        (2572, '''SNIFIT 2: Please refrain\n from bothering Culex.[await]'''),
+        (2560, '''EARTH CRYSTAL: Greetings.[await][pause] Culex\n is making preparations to head\n back to his home world, so he's\n busy right now.[await][page]\n Please come back later...\n [delay]unless you want to get hurt![await]'''),
+        (2572,
+         '''FIRE CRYSTAL: You are not going\n to find what you're seeking back\n here.[delay] Stay out.[await]'''),
         (2831, '''\n           CULEX: Good day.[await]'''),
         (2832, '''WIND CRYSTAL: Welcome to our inn.[await][pause] To compete\n with our price-hiking rivals in the\n Feymarch Inn,[delay] we are offering free\n stays here in Seaside.[await]\n Will you be staying tonight?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
@@ -2659,22 +2640,18 @@ class CulexBoss(Boss):
          '''WATER CRYSTAL: This door is a...\n uh... portal to another dimension!\n We can't let you fall into it.[await]'''),
         (3044,
          '''CULEX: It will be quite difficult to\n claim victory over the dojo master.\n I wish you luck.[await]'''),
+        (3072,
+         '''WATER CRYSTAL: Wind Crystal\n really should have been the one\n standing guard all the way up here.[await]'''),
+        (3073,
+         '''WATER CRYSTAL: Stand back!\n I might know Water Blast![await]'''),
         (3352,
          '''CULEX: Well met! Thank you for\n the excellent battle.[await]'''),
         (3353,
          '''CULEX: Well met! Thank you for\n the excellent battle.[await]'''),
     ]
-    # Not sure if optional sidekicks really works with Culex as a donor, the 4 crystals are kinda distinct
     optional_dialog_replacements = [
-        #    (1694, '''CRYSTAL: Proceed forth. Culex\n awaits you.[await]'''),
-        #    (1695, '''CRYSTAL: Well met! You have\n satisfied Culex's hunger for a\n true challenge.[await]'''),
-        (2560, '''EARTH CRYSTAL: Greetings.[await][pause] Culex\n is making preparations to head\n back to his home world, so he's\n busy right now.[await][page]\n Please come back later...\n [delay]unless you want to get hurt![await]'''),
-        (2572,
-         '''FIRE CRYSTAL: You are not going\n to find what you're seeking back\n here.[delay] Stay out.[await]'''),
-        (3072,
-         '''WATER CRYSTAL: Wind Crystal\n really should have been the one\n standing guard all the way up here.[await]'''),
-        (3073,
-         '''WATER CRYSTAL: Stand back!\n I might know Water Blast![await]'''),
+            (1694, '''CRYSTAL: Proceed forth. Culex\n awaits you.[await]'''),
+            (1695, '''CRYSTAL: Well met! You have\n satisfied Culex's hunger for a\n true challenge.[await]'''),
     ]
 
 
@@ -2849,9 +2826,10 @@ class MegaSmilaxBoss(Boss):
          '''SMILAX: I hope the wedding party\n likes it. If they don't...[delay] well,[delay]\n they DID hire plants to bake a cake.[await]'''),
         (2504,
          '''MEGASMILAX: Hm?[await]\n [0x7024] more item(s)?[await]\n Don't ask me.[delay] I'm just a plant.[await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Megasmilax is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560,
+         '''SMILAX: Hello there. Are you the\n gardener?[await][page]\n No?[await][pause] Well, [delay]we didn't call for a\n plumber today... [await][pause]]I better get you\n outta here![await]'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering Megasmilax.[await]'''),
+         '''SMILAX: If you didn't come back\n here to water us, you'd better get\n outta here.[await]'''),
         (2831, '''\n         MEGASMILAX: Hmm...[await]'''),
         (2832,
          ''' Hello there. Are you tired?\n We don't charge any fees here,\n if you'd like to stay.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -2882,6 +2860,8 @@ class MegaSmilaxBoss(Boss):
          '''MEGASMILAX: I would love to\n watch your match with the dojo\n master.[await]'''),
         (3057,
          ''' You don't look like the gardener...[await]\n  [select] (I'm here to fight you)\n  [select] (Oops, my mistake)[await]'''),
+        (3072, '''\n          SMILAX: I'm thirsty.[await]'''),
+        (3073, '''\n       SMILAX: Careful, I bite.[await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Water-this and Fertilizer-that.[await]\n ...[delay]Actually, [delay]that doesn't sound\n so bad![await]'''),
         (3352,
@@ -2894,12 +2874,6 @@ class MegaSmilaxBoss(Boss):
          '''SMILAX: Go on ahead to visit\n Megasmilax. But be warned, it's\n pretty tough when it's hydrated.[await]'''),
         (1695,
          '''SMILAX: Wow, you won![await][pause] Shy Away\n must have watered you more than\n he watered Megasmilax.[await]'''),
-        (2560,
-         '''SMILAX: Hello there. Are you the\n gardener?[await][page]\n No?[await][pause] Well, [delay]we didn't call for a\n plumber today... [delay]I better get you\n outta here![await]'''),
-        (2572,
-         '''SMILAX: If you didn't come back\n here to water us, you'd better get\n outta here.[await]'''),
-        (3072, '''\n          SMILAX: I'm thirsty.[await]'''),
-        (3073, '''\n       SMILAX: Careful, I bite.[await]'''),
     ]
 
 
@@ -3054,9 +3028,10 @@ class BirdettaBoss(Boss):
          '''EGGBERT: No eggs were harmed\n in the making of this cake.[await]'''),
         (2504,
          '''BIRDETTA: Hello♥![await]\n ...Oh, no, you're still missing\n [0x7024] items![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Birdetta's busy right now, so she\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560,
+         '''EGGBERT: Birdetta's feeling lonely\n today, so feel free to pay her a\n visit upstairs.[await][pause] I'm sure she'd love\n the company.[await][page]\n Just, let me make sure you'll be\n nice, first![await]'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering Birdetta.[await]'''),
+         '''EGGBERT: Pardon me, Birdetta's\n not back here. Please refrain from\n snooping around.[await]'''),
         (2831, '''\n          BIRDETTA: Hello♥![await]'''),
         (2832,
          ''' Hello! You've been chosen to stay\n here in our lovely inn for FREE!\n Aren't you lucky?[await]\n Will you stay with us?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -3085,6 +3060,10 @@ class BirdettaBoss(Boss):
          '''BIRDETTA: Ooh, are you gonna play\n with the dojo master?![await]'''),
         (3057,
          ''' Hello♥! Did you come to play?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''EGGBERT: What did Birdetta want\n me to do here, again? I'm just an\n egg![await]'''),
+        (3073,
+         '''EGGBERT: You're making me so\n mad, I could explode![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the lady next door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await]'''),
         (3352, '''BIRDETTA: Thanks for playing with\n me~![await]'''),
@@ -3094,14 +3073,6 @@ class BirdettaBoss(Boss):
         (1694,
          '''EGGBERT: Wow, you sure showed\n us! Don't disappoint Birdetta![await]'''),
         (1695, '''EGGBERT: Thanks for playing\n with us today![await]'''),
-        (2560,
-         '''EGGBERT: Birdetta's feeling lonely\n today, so feel free to pay her a\n visit upstairs.[await][pause] I'm sure she'd love\n the company.[await][page]\n Just, let me make sure you'll be\n nice, first![await]'''),
-        (2572,
-         '''EGGBERT: Pardon me, Birdetta's\n not back here. Please refrain from\n snooping around.[await]'''),
-        (3072,
-         '''EGGBERT: What did Birdetta want\n me to do here, again? I'm just an\n egg![await]'''),
-        (3073,
-         '''EGGBERT: You're making me so\n mad, I could explode![await]'''),
     ]
 
 
@@ -3230,9 +3201,10 @@ class ValentinaBoss(Boss):
          '''BLUEBIRD: We're making a cake\n that looks like Valentina.[await]\n What else are we gonna do\n on our day off?[await]'''),
         (2504,
          '''VALENTINA: STOP BOTHERING ME![await]\n If you need something to do, go\n look for [0x7024] more item(s)![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Valentina's busy right now, so she\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560,
+         '''BLUEBIRD: I hate being a secretary!\n And... [delay_30]I'm going to make this\n your problem![await]'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering Valentina.[await]'''),
+         '''BLUEBIRD: Whaddya want?[await][pause] You\n better not be trying to bother\n Valentina, [delay]or I'll be in trouble![await]'''),
         (2831, '''\n   VALENTINA: I'm SO frustrated![await]'''),
         (2832, ''' Welcome![delay] I'll let you stay here for\n free, but don't tell Valentina.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
@@ -3260,6 +3232,9 @@ class ValentinaBoss(Boss):
          '''VALENTINA: You? Fighting the dojo\n master? Good luck, chump![await]'''),
         (3057,
          ''' What? What do you want?![await]\n  [select] (Fight me)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''BLUEBIRD: Valentina only gives us\n the most boring jobs to do...[await]'''),
+        (3073, '''\nBLUEBIRD: I'm bored. Entertain me![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the lady next door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await]'''),
         (3352,
@@ -3272,13 +3247,6 @@ class ValentinaBoss(Boss):
          '''BLUEBIRD: Whatever, go on and\n fight Valentina. She doesn't pay\n us enough to keep you out.[await]'''),
         (1695,
          '''BLUEBIRD: Oh, you won?[await]\n [delay_30](...[delay_30]It's about time!)[await]'''),
-        (2560,
-         '''BLUEBIRD: I hate being a secretary!\n And... [delay_30]I'm going to make this\n your problem![await]'''),
-        (2572,
-         '''BLUEBIRD: Whaddya want?[await][pause] You\n better not be trying to bother\n Valentina, [delay]or I'll be in trouble![await]'''),
-        (3072,
-         '''BLUEBIRD: Valentina only gives us\n the most boring jobs to do...[await]'''),
-        (3073, '''\nBLUEBIRD: I'm bored. Entertain me![await]'''),
     ]
 
 
@@ -3382,10 +3350,9 @@ class CzarBoss(Boss):
         (2062, '''[delay_60][end]'''),
         (2504,
          '''CZAR DRAGON: BLARRGGGG[await]'''),  # can we make him say BLARG as many times as you have items remaining?
-        (2560, '''SNIFIT 1: Hello there.[await]\n The Czar Dragon's busy right now,\n so it can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560, '''[delay_60][end]'''),
         (2571, '''BLARRGGGG?[await]'''),
-        (2572,
-         '''SNIFIT 2: Please refrain\n from bothering the Czar Dragon.[await]'''),
+        (2572, '''[delay_60][end]'''),
         (2831, '''\n  CZAR DRAGON: BLAAARRRGGGG[await]'''),
         (2832,
          ''' (Stay in the inn for free?)[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -3403,6 +3370,8 @@ class CzarBoss(Boss):
         (2848, '''[delay_60][end]'''),
         (3044, '''\n  CZAR DRAGON: BLAAARRRGGGG[await]'''),
         (3057, '''[delay_60][await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
+        (3072, '''[delay_60][end]'''),
+        (3073, '''[delay_60][end]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always yelling about\n BLARRRRG-this and\n BLAHGAHRGGH-that.[await]'''),
         (3352, '''\n  CZAR DRAGON: BLAAARRRGGGG[await]'''),
@@ -3411,10 +3380,6 @@ class CzarBoss(Boss):
     optional_dialog_replacements = [
         (1694, '''[delay_60][end]'''),
         (1695, '''[delay_60][end]'''),
-        (2560, '''[delay_60][end]'''),
-        (2572, '''[delay_60][end]'''),
-        (3072, '''[delay_60][end]'''),
-        (3073, '''[delay_60][end]'''),
     ]
 
 
@@ -3518,9 +3483,10 @@ class AxemRangersBoss(Boss):
          '''AXEM GREEN: Not EVERYTHING\n we do is evil. Today we're baking a\n cake that looks like Axem Red.[await]'''),
         (2504,
          '''AXEM RED: Listen! You're not\n going anywhere until you find [0x7024]\n more of `MARRYMORE_CHARACTER`'s item(s)![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n The Axem Rangers are busy right\n now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560,
+         '''AXEM YELLOW: Green hasn't showed\n up to cover me for lunch yet! I'm\n so HUNGRY![await][page]\n ...I need a distraction![await]'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering the Axem Rangers.[await]'''),
+         '''AXEM BLACK: Where do you clods\n think you're going?![await]'''),
         (2831,
          '''AXEM RED: Listen up![await]\n Quit snooping around town![await]'''),
         (2832, '''AXEM PINK: Hi~![delay] Are you sleepy?\n I'm feeling nice today, so you can\n stay for free.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -3550,20 +3516,13 @@ class AxemRangersBoss(Boss):
          '''AXEM RED: Yo! It won't be enough\n to win just once. The dojo master\n has three forms.[await]'''),
         (3057,
          ''' Yo! What do you want?![await]\n  [select] (A fight)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''AXEM PINK: It's so nice outside!\n Why does Red want us cooped up\n in here, anyway?![await]'''),
+        (3073, '''AXEM PINK: What the heck do you\n want?![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Shades-this and Makeup-that.[await]'''),
         (3352, '''\n  AXEM RED: I'm way outta shape![await]'''),
         (3353, '''\n  AXEM RED: I'm way outta shape![await]'''),
-    ]
-    optional_dialog_replacements = [
-        # probably not going to do many optional sidekicks with axems as a donor
-        (2560,
-         '''AXEM YELLOW: Green hasn't showed\n up to cover me for lunch yet! I'm\n so HUNGRY![await][page]\n ...I need a distraction![await]'''),
-        (2572,
-         '''AXEM BLACK: Where do you clods\n think you're going?![await]'''),
-        (3072,
-         '''AXEM PINK: It's so nice outside!\n Why does Red want us cooped up\n in here, anyway?![await]'''),
-        (3073, '''AXEM PINK: What the heck do you\n want?![await]'''),
     ]
 
 
@@ -3859,8 +3818,9 @@ class BoomerBoss(Boss):
         (2062,
          '''CHANDELI-HO: We've gotten REAL\n good with fondant![await]'''),
         (2504, '''BOOMER: Ha ha ha![delay_30] So, you found\n [0x7000] item(s) already. Impressive.[await][pause] But\n now you've got to find [0x7024] more![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Boomer's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
-        (2572, '''SNIFIT 2: Please refrain\n from bothering Boomer.[await]'''),
+        (2560,
+         '''CHANDELI-HO: Welcome! Have you\n come to install the chandelier?[await][page]\n ...No?[delay] Well, you'd better leave\n Boomer alone![await]'''),
+        (2572, '''CHANDELI-HO: I won't let you\n bother Boomer![await]'''),
         (2831,
          '''BOOMER: Ha ha ha![await]\n So, you've\n found our village![await]'''),
         (2832,
@@ -3890,6 +3850,10 @@ class BoomerBoss(Boss):
          '''BOOMER: Ha ha ha! A match\n against the dojo master?!\n This ought to be fun![await]'''),
         (3057,
          ''' Gahahaha! Is it a fight you seek?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''CHANDELI-HO: Whew...[delay] It's weird\n for me to say,[delay]  but I think I might\n be afraid of heights.[await]'''),
+        (3073,
+         '''CHANDELI-HO: I won't let anything\n bad happen to Boomer![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Soldier-this and Honor-that.[await]'''),
         (3352,
@@ -3901,13 +3865,6 @@ class BoomerBoss(Boss):
         (1694, '''CHANDELI-HO: Oh, no, I lost!\n Good luck, Boomer![await]'''),
         (1695,
          '''CHANDELI-HO: I hope you didn't\n hurt Boomer too bad![await]'''),
-        (2560,
-         '''CHANDELI-HO: Welcome! Have you\n come to install the chandelier?[await][page]\n ...No?[delay] Well, you'd better leave\n Boomer alone![await]'''),
-        (2572, '''CHANDELI-HO: I won't let you\n bother Boomer![await]'''),
-        (3072,
-         '''CHANDELI-HO: Whew... It's weird\n for me to say, but I think I might\n be afraid of heights.[await]'''),
-        (3073,
-         '''CHANDELI-HO: I won't let anything\n bad happen to Boomer![await]'''),
     ]
 
 
@@ -4222,9 +4179,9 @@ class ClerkBoss(Boss):
          '''MAD MALLET: We've gotten REAL\n good with fondant![await]'''),
         (2504,
          '''CLERK: Whatcha got? [0x7000] item(s)?\n At this rate, you should find the\n last [0x7024] in no time![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n The Clerk is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560, '''MAD MALLET: Welcome.[await][pause] It's the\n Clerk's day off, so he's not taking\n visitors today.[await][page]\n ...But if you insist, I'll have to\n keep you out myself![await]'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering the Clerk.[await]'''),
+         '''MAD MALLET: Listen, the Clerk\n doesn't get paid enough to deal\n with you.[await][page]\n  I certainly don't either, but I'm\n having a bad day![await]'''),
         (2831,
          '''CLERK: Not much happens in this\n quiet and completely unsuspicious\n town.[await]'''),
         (2832, ''' Welcome.[delay] Would you like to stay\n here for free?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -4253,6 +4210,9 @@ class ClerkBoss(Boss):
          '''CLERK: Now this should be\n interesting. Can you beat THE\n master, Mario?[await]'''),
         (3057,
          ''' Are you here for a fight?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''MAD MALLET: Wow! I can see\n Nimbus Land from here![await]'''),
+        (3073, '''MAD MALLET: I'm gonna THRASH\n ya![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Puffball-that.[await]'''),
         (3352, '''CLERK: If anyone asks, I'm on\n break![await]'''),
@@ -4263,12 +4223,6 @@ class ClerkBoss(Boss):
          '''MAD MALLET: You trashed us!\n Go on to the Clerk's place.[await]'''),
         (1695,
          '''MAD MALLET: Whoa... No one's\n beaten the Clerk in 10 years![await]'''),
-        (2560, '''MAD MALLET: Welcome.[await][pause] It's the\n Clerk's day off, so he's not taking\n visitors today.[await][page]\n ...But if you insist, I'll have to\n keep you out myself![await]'''),
-        (2572,
-         '''MAD MALLET: Listen, the Clerk\n doesn't get paid enough to deal\n with you.[await][page]\n  I certainly don't either, but I'm\n having a bad day![await]'''),
-        (3072,
-         '''MAD MALLET: Wow! I can see\n Nimbus Land from here![await]'''),
-        (3073, '''MAD MALLET: I'm gonna THRASH\n ya![await]'''),
     ]
 
 
@@ -4352,9 +4306,9 @@ class ManagerBoss(Boss):
         (2062, '''POUNDER: We've gotten REAL\n good with fondant![await]'''),
         (2504,
          '''MANAGER: Heh heh heh.[delay] Good work.[await]\n You just need [0x7024] more item(s).[await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n The Manager is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560, '''POUNDER: Good day.[await][pause] The Manager\n is busy today and will not be\n seeing any guests.[await][pause]\n If you try to force your way in,\n I'll have to deal with you![await]'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering the Manager.[await]'''),
+         '''POUNDER: Stay outta our hair![await]\n [delay]...Huh? [delay]“You don't have hair”?[await][pause]\n That's it, you're asking for it![await]'''),
         (2831,
          '''MANAGER: Come to invade our\n town, have you?[await][pause] No need, there's\n nothing of interest here, I swear![await]'''),
         (2832, ''' Good day.[delay] We're offering free\n reservations today. Would you like\n to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -4383,6 +4337,10 @@ class ManagerBoss(Boss):
         (3044,
          '''MANAGER: You think you can beat\n the dojo master?![await]'''),
         (3057, ''' Yes?[await][pause] What do you want?[await]\n  [select] (Fight me!)\n  [select] (Uh...)[await]'''),
+        (3072,
+         '''POUNDER: Man, I need a break. This\n job is tiring.[await]'''),
+        (3073,
+         '''POUNDER: Bullet Bill production is\n on schedule! Don't get in my way![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Schedule-that.[await]'''),
         (3352, '''MANAGER: Don't interrupt me while\n I'm training![await]'''),
@@ -4393,13 +4351,6 @@ class ManagerBoss(Boss):
          '''POUNDER: We lost, but we made\n the Manager proud![await]'''),
         (1695,
          '''POUNDER: Wow! The Manager's\n been here 25 years, and you just\n dethroned him![await]'''),
-        (2560, '''POUNDER: Good day.[await][pause] The Manager\n is busy today and will not be\n seeing any guests.[await][pause]\n If you try to force your way in,\n I'll have to deal with you![await]'''),
-        (2572,
-         '''POUNDER: Stay outta our hair![await]\n [delay]...Huh? [delay]“You don't have hair”?[await][pause]\n That's it, you're asking for it![await]'''),
-        (3072,
-         '''POUNDER: Man, I need a break. This\n job is tiring.[await]'''),
-        (3073,
-         '''POUNDER: Bullet Bill production is\n on schedule! Don't get in my way![await]'''),
     ]
 
 
@@ -4484,9 +4435,9 @@ class DirectorBoss(Boss):
         (2062, '''POUNDETTE: We've gotten REAL\n good with fondant![await]'''),
         (2504,
          '''DIRECTOR: I'm afraid you must\n continue searching.[delay] There are\n [0x7024] item(s) remaining.[await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n The Director is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560, '''POUNDETTE: Salutations.[await][pause] Would you\n like to book an appointment with\n the Director?[await][pause]\n ...You want to just barge right\n in?![delay] No way![await]\n Time to teach you some manners![await]'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering the Director.[await]'''),
+         '''POUNDETTE: The Director doesn't\n want anyone coming back here,\n so I'm going to have to ask you\n to leave.[await]'''),
         (2831,
          '''DIRECTOR: I'm afraid there is\n nothing of concern to you in\n this town.[await]'''),
         (2832,
@@ -4518,6 +4469,8 @@ class DirectorBoss(Boss):
          '''DIRECTOR: I'm afraid the dojo\n master will be quite a challenge for\n you to beat.[await]'''),
         (3057,
          ''' State your business.[await]\n  [select] (Fight me)\n  [select] (Uh...)[await]'''),
+        (3072, '''POUNDETTE: Finally, some time to\n rest![await]'''),
+        (3073, '''\nPOUNDETTE: Let's see whatcha got![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Hammer-this and Meltdown-that.[await]'''),
         (3352,
@@ -4528,11 +4481,6 @@ class DirectorBoss(Boss):
     optional_dialog_replacements = [
         (1694, '''POUNDETTE: Well, we lost.\n Time for a break.[await]'''),
         (1695, '''POUNDETTE: You beat the Director!\n Impressive![await]'''),
-        (2560, '''POUNDETTE: Salutations.[await][pause] Would you\n like to book an appointment with\n the Director?[await][pause]\n ...You want to just barge right\n in?![delay] No way![await]\n Time to teach you some manners![await]'''),
-        (2572,
-         '''POUNDETTE: The Director doesn't\n want anyone coming back here,\n so I'm going to have to ask you\n to leave.[await]'''),
-        (3072, '''POUNDETTE: Finally, some time to\n rest![await]'''),
-        (3073, '''\nPOUNDETTE: Let's see whatcha got![await]'''),
     ]
 
 
@@ -4726,8 +4674,9 @@ class SmithyBoss(Boss):
          '''MACHINE MADE: We've gotten REAL\n good with fondant![await]'''),
         (2504,
          '''SMITHY: How utterly annoying![await]\n Give me [28][1] more item(s)![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Smithy's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
-        (2572, '''SNIFIT 2: Please refrain\n from bothering Smithy.[await]'''),
+        (2560, '''MACHINE MADE: Yo![await][pause] Smithy's busy,\n so come back another time! [await][page]\n [delay]...You sure you wanna just barge\n in like that?[await][pause] Alright buddy, don't\n say I didn't warn you![await]'''),
+        (2572,
+         '''MACHINE MADE: Man, what's your\n deal?[await][pause] Quit snooping around!\n Smithy'll have a fit![await]'''),
         (2831,
          '''SMITHY: So, it's YOU![await]\n Unfortunately for you, there's\n nothing evil in this town that\n demands your attention.[await]'''),
         (2832,
@@ -4757,23 +4706,20 @@ class SmithyBoss(Boss):
         (3057,
          ''' Grr... What do you want?[await]\n  [select] (Fight me!)\n  [select] (Uh...)[await]'''),
         (3044, '''\n   SMITHY: Grr... Leave me alone![await]'''),
+        (3072, '''MACHINE MADE: It's pretty drafty\n in here![await]'''),
+        (3073, '''\n MACHINE MADE: Oh, no you don't![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Factory-this and Weapon-that.[await]'''),
+        (3352,
+         '''SMITHY: Grr... [delay]You're stronger\n than I thought...[await]'''),
+        (3353,
+         '''SMITHY: Grr... [delay]You're stronger\n than I thought...[await]'''),
     ]
     optional_dialog_replacements = [
         (1694,
          '''DRILL BIT: You're pretty tough,\n but are you ready to fight Smithy?[await]'''),
         (1695,
          '''DRILL BIT: Oh, wow, you did it!\n No wonder we lost to you...[await]'''),
-        (2560, '''MACHINE MADE: Yo![await][pause] Smithy's busy,\n so come back another time! [await][page]\n [delay]...You sure you wanna just barge\n in like that?[await][pause] Alright buddy, don't\n say I didn't warn you![await]'''),
-        (2572,
-         '''MACHINE MADE: Man, what's your\n deal?[await][pause] Quit snooping around!\n Smithy'll have a fit![await]'''),
-        (3072, '''MACHINE MADE: It's pretty drafty\n in here![await]'''),
-        (3073, '''\n MACHINE MADE: Oh, no you don't![await]'''),
-        (3352,
-         '''SMITHY: Grr... [delay]You're stronger\n than I thought...[await]'''),
-        (3353,
-         '''SMITHY: Grr... [delay]You're stronger\n than I thought...[await]'''),
     ]
 
 
@@ -4783,7 +4729,7 @@ class HammerBros(BossAndStarLocation):
     description = AvailableBosses.HammerBro
     name = "Hammer Bro"
     battlefield = Battlefields.MushroomWay
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
 
     boss = HammerBroBoss
     boss_locations = [
@@ -4797,7 +4743,7 @@ class Croco1(BossAndStarLocation):
     description = AvailableBosses.Croco1
     name = "Croco"
     battlefield = Battlefields.MushroomWay
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = Croco1Boss
     boss_locations = [
         BossModelFill(Rooms._076_BANDITS_WAY_AREA_01, 5, Croco1Boss,
@@ -4818,7 +4764,7 @@ class Mack(BossAndStarLocation):
     description = AvailableBosses.Mack
     name = "Mack"
     battlefield = Battlefields.MushroomKingdomThroneRoom
-    music = BattleMusic.Boss2
+    music = music.BossMusic
     boss = MackBoss
     boss_locations = [
         BossModelFill(Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, 3, MackBoss, SpriteSize.Large,
@@ -4915,7 +4861,7 @@ class Pandorite(BossAndStarLocation):
 class Belome1(BossAndStarLocation):
     identifier = 302
     battlefield = Battlefields.KeroSewers
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     description = AvailableBosses.Belome1
     name = "Belome"
     boss = Belome1Boss
@@ -4930,7 +4876,7 @@ class Bowyer(BossAndStarLocation):
     description = AvailableBosses.Bowyer
     name = "Bowyer"
     battlefield = Battlefields.Bowyer
-    music = BattleMusic.Boss2
+    music = music.BossMusic
     boss = BowyerBoss
     boss_locations = [
         BossModelFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 11, BowyerBoss,
@@ -4985,7 +4931,7 @@ class Croco2(BossAndStarLocation):
     description = AvailableBosses.Croco2
     name = "Croco"
     battlefield = Battlefields.MolevilleMines
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = Croco2Boss
     boss_locations = [
         BossModelFill(Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, 0, Croco2Boss, SpriteSize.Small,
@@ -5034,7 +4980,7 @@ class Punchinello(BossAndStarLocation):
     description = AvailableBosses.Punchinello
     name = "Punchinello"
     battlefield = Battlefields.MolevilleMines
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = PunchinelloBoss
     boss_locations = [
         BossModelFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 0,
@@ -5065,7 +5011,7 @@ class Booster(BossAndStarLocation):
     description = AvailableBosses.Booster
     name = "Booster"
     battlefield = Battlefields.BoosterTower
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = BoosterBoss
     boss_locations = [
         BossModelFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 0, BoosterBoss, SpriteSize.Small,
@@ -5154,7 +5100,7 @@ class Booster(BossAndStarLocation):
 class ClownBros(BossAndStarLocation):
     identifier = 353
     battlefield = Battlefields.ClownBros
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     description = AvailableBosses.KnifeGuyGrateGuy
     name = "Grate Guy"
     boss = GrateGuyBoss
@@ -5163,7 +5109,7 @@ class ClownBros(BossAndStarLocation):
 class Bundt(BossAndStarLocation):
     identifier = 154
     battlefield = Battlefields.Bundt
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     description = AvailableBosses.Bundt
     name = "Bundt"
     boss = BundtBoss
@@ -5186,7 +5132,7 @@ class Bundt(BossAndStarLocation):
 class KingCalamari(BossAndStarLocation):
     identifier = 177
     battlefield = Battlefields.SunkenShip
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     description = AvailableBosses.KingCalamari
     name = "King Calamari"
     boss = KingCalamariBoss
@@ -5207,7 +5153,7 @@ class Hidon(BossAndStarLocation):
 class Johnny(BossAndStarLocation):
     identifier = 28
     battlefield = Battlefields.SunkenShip
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     description = AvailableBosses.Johnny
     name = "Johnny"
     boss = JohnnyBoss
@@ -5264,7 +5210,7 @@ class Yaridovich(BossAndStarLocation):
     description = AvailableBosses.Yaridovich
     name = "Yaridovich"
     battlefield = Battlefields.Yaridovich
-    music = BattleMusic.Boss2
+    music = music.BossMusic
     boss = YaridovichBoss
     boss_locations = [
         BossModelFill(Rooms._211_SEASIDE_TOWN_DURING_YARIDOVICH_ELDERS_HOUSE_1F, 0, YaridovichBoss, SpriteSize.Small,
@@ -5342,7 +5288,7 @@ class Yaridovich(BossAndStarLocation):
 
 class Mokura(BossAndStarLocation):
     identifier = 519
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     description = AvailableBosses.Mokura
     name = "Mokura"
     boss = MokuraBoss
@@ -5353,7 +5299,7 @@ class Belome2(BossAndStarLocation):
     description = AvailableBosses.Belome2
     name = "Belome"
     battlefield = Battlefields.BelomeTemple
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = Belome2Boss
     boss_locations = [
         BossModelFill(Rooms._268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM, 4, Belome2Boss, SpriteSize.Large,
@@ -5380,7 +5326,7 @@ class Jinx1(BossAndStarLocation):
     name = "Jinx"
     battlefield = Battlefields.JinxDojo
     can_run_away = True
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = Jinx1Boss
     boss_locations = [
         BossModelFill(Rooms._255_MONSTRO_TOWN_JINXS_DOJO, 0, Jinx1Boss, SpriteSize.Small, False, target_scripts=[
@@ -5394,7 +5340,7 @@ class Jinx2(BossAndStarLocation):
     name = "Jinx"
     battlefield = Battlefields.JinxDojo
     can_run_away = True
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = Jinx2Boss
     boss_locations = [
         BossModelFill(Rooms._255_MONSTRO_TOWN_JINXS_DOJO, 2, Jinx2Boss, SpriteSize.Small, False, target_scripts=[
@@ -5408,7 +5354,7 @@ class Jinx3(BossAndStarLocation):
     name = "Jinx"
     battlefield = Battlefields.JinxDojo
     can_run_away = True
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = Jinx3Boss
     boss_locations = [
         BossModelFill(Rooms._255_MONSTRO_TOWN_JINXS_DOJO, 3, Jinx3Boss, SpriteSize.Small, False, dialogs=[
@@ -5421,7 +5367,7 @@ class Culex(BossAndStarLocation):
     description = AvailableBosses.Culex
     name = "Culex"
     battlefield = Battlefields.Culex
-    music = BattleMusic.Culex
+    music = music.CulexMusic
     boss = CulexBoss
     boss_locations = [
         BossModelFill(Rooms._351_CULEXS_ROOM, 0, CulexBoss, SpriteSize.Small, False, dialogs=[
@@ -5442,7 +5388,7 @@ class MegaSmilax(BossAndStarLocation):
     description = AvailableBosses.Megasmilax
     name = "Megasmilax"
     battlefield = Battlefields.BeanValley
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = MegaSmilaxBoss
     boss_locations = [
         BossModelFill(Rooms._254_BEAN_VALLEY_SMILAX_AREA, 1, MegaSmilaxBoss, SpriteSize.Small, False, target_scripts=[
@@ -5455,7 +5401,7 @@ class Dodo(BossAndStarLocation):
     description = AvailableBosses.Dodo
     name = "Dodo"
     battlefield = Battlefields.NimbusCastle
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = DodoBoss
     boss_locations = [
         BossModelFill(Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT, 2, DodoBoss,
@@ -5474,7 +5420,7 @@ class Birdetta(BossAndStarLocation):
     description = AvailableBosses.Birdetta
     name = "Birdetta"
     battlefield = Battlefields.Birdo
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     dialogs_to_replace = [49]
     boss = BirdettaBoss
 
@@ -5484,7 +5430,7 @@ class Valentina(BossAndStarLocation):
     description = AvailableBosses.Valentina
     name = "Valentina"
     battlefield = Battlefields.Valentina
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = ValentinaBoss
     boss_locations = [
         BossModelFill(Rooms._341_NIMBUS_LAND_GARROS_HOUSE, 1, ValentinaBoss, SpriteSize.Statue,
@@ -5599,7 +5545,7 @@ class CzarDragon(BossAndStarLocation):
     description = AvailableBosses.CzarDragon
     name = "Czar Dragon"
     battlefield = Battlefields.CzarDragon
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = CzarBoss
     boss_locations = [
         BossModelFill(Rooms._352_VOLCANO_AREA_21_CZAR_DRAGONS_ROOM, 1, CzarBoss, SpriteSize.Large,
@@ -5632,7 +5578,7 @@ class AxemRangers(BossAndStarLocation):
     description = AvailableBosses.AxemRangers
     name = "Axem Red"
     battlefield = Battlefields.AxemRangers
-    music = BattleMusic.Boss2
+    music = music.BossMusic
     boss = AxemRangersBoss
     boss_locations = [
         BossModelFill(Rooms._392_VOLCANO_POSTCD_AREA_06, 0, AxemRangersBoss, SpriteSize.Small,
@@ -5681,7 +5627,7 @@ class Chester(BossAndStarLocation):
     description = AvailableBosses.Chester
     name = "Chester"
     battlefield = Battlefields.BowsersKeep
-    music = BattleMusic.Normal
+    music = music.NormalBattleMusic
     boss = ChesterBoss
     boss_locations = [
         BossModelFill(Rooms._461_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_1C_1ST_FIGHT_BOBOMB, 4, ChesterBoss, SpriteSize.Small,
@@ -5694,7 +5640,7 @@ class Magikoopa(BowsersKeepLocation):
     description = AvailableBosses.Magikoopa
     name = "Magikoopa"
     battlefield = Battlefields.BowsersKeep
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = MagikoopaBoss
     boss_locations = [
         BossModelFill(Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, 2, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[2208, 2209, 942], target_action_scripts=[
@@ -5719,7 +5665,7 @@ class Boomer(BowsersKeepLocation):
     description = AvailableBosses.Boomer
     name = "Boomer"
     battlefield = Battlefields.Boomer
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = BoomerBoss
     boss_locations = [
         BossModelFill(Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, 0, BoomerBoss, SpriteSize.Large, False, target_scripts=[
@@ -5732,7 +5678,7 @@ class Exor(BowsersKeepLocation):
     description = AvailableBosses.Exor
     name = "Exor"
     battlefield = Battlefields.BowsersKeep
-    music = BattleMusic.Boss2
+    music = music.BossMusic
     boss = ExorBoss
 
 
@@ -5741,7 +5687,7 @@ class Countdown(BossLocation):
     description = AvailableBosses.CountDown
     name = "Count Down"
     battlefield = Battlefields.Gate
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = CountdownBoss
     boss_locations = [
         BossModelFill(Rooms._223_SMITHY_FACTORY_AREA_07_COUNT_DOWNS_ROOM, 0, CountdownBoss,
@@ -5762,7 +5708,7 @@ class CloakerDomino(BossLocation):
     description = AvailableBosses.CloakerDomino
     name = "Cloaker"
     battlefield = Battlefields.Gate
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = CloakerDominoBoss
 
 
@@ -5840,7 +5786,7 @@ class Gunyolk(BossLocation):
     description = AvailableBosses.Gunyolk
     name = "Factory Chief"
     battlefield = Battlefields.Factory
-    music = BattleMusic.Boss1
+    music = music.MidbossMusic
     boss = GunyolkBoss
     boss_locations = [
         BossModelFill(Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, 12, GunyolkBoss, SpriteSize.Small,
@@ -5859,12 +5805,12 @@ class Smithy(BossLocation):
     description = AvailableBosses.Smithy
     name = "Smithy"
     battlefield = Battlefields.Smithy
-    music = BattleMusic.Smithy
+    music = music.Smithy1Music
     boss = SmithyBoss
     # hide all other parts of smithy if shuffled
     boss_locations = [
-        BossModelFill(Rooms._509_FACTORY_GROUNDS_SMITHYS_PAD, 6, SmithyBoss, SpriteSize.Large, False, target_scripts=[
-                      3792, 3794, 944], target_action_scripts=[], sequence_setter=859),  # hide a lot of clones if not vanilla
+        BossModelFill(Rooms._509_FACTORY_GROUNDS_SMITHYS_PAD, 0, SmithyBoss, SpriteSize.Large, False, target_scripts=[
+                      3792, 3794], target_action_scripts=[], sequence_setter=859),  # hide a lot of clones if not vanilla
     ]
     repeatable_henchmen = [
         [

@@ -4,4 +4,59 @@
 from randomizer.data.eventtables import ControllerDirections, RadialDirections, Rooms, Sounds, AreaObjects, NPCPackets, Locations, Shops, EventSequences, MenuTutorials, OverworldSequences, PlayableCharacters, EquipSlots, DialogDurations, IntroTitles, Colours, PaletteSetTypes, Music, MusicDirections, MusicPitch, Coords, CoordUnits, Tutorials, _0x40Flags, _0x60Flags, _0x62Flags, _0x63Flags, _0x68Flags, _0x6AFlags, _0x6BFlags, _0x81Flags, _0x84Flags
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
-script = []
+script = [
+    {
+        "identifier": 'EVENT_1088_play_sound_18',
+        "command": 'play_sound',
+        "args": [Sounds._038_TADPOLE_POND_STAFF_MI, 6]
+    },
+    {
+        "identifier": 'EVENT_1088_pause_19',
+        "command": 'pause',
+        "args": [45]
+    },
+    {
+        "identifier": 'EVENT_1088_play_sound_20',
+        "command": 'play_sound',
+        "args": [Sounds._039_TADPOLE_POND_STAFF_FA, 6]
+    },
+    {
+        "identifier": 'EVENT_1088_pause_21',
+        "command": 'pause',
+        "args": [45]
+    },
+    {
+        "identifier": 'EVENT_1088_play_sound_22',
+        "command": 'play_sound',
+        "args": [Sounds._040_TADPOLE_POND_STAFF_SO, 6]
+    },
+    {
+        "identifier": 'EVENT_1088_pause_23',
+        "command": 'pause',
+        "args": [45]
+    },
+    {
+        "identifier": 'EVENT_1088_play_sound_24',
+        "command": 'play_sound',
+        "args": [Sounds._041_TADPOLE_POND_STAFF_LA, 6]
+    },
+    {
+        "identifier": 'EVENT_1088_pause_25',
+        "command": 'pause',
+        "args": [75]
+    },
+    {
+        "identifier": 'EVENT_1088_play_sound_26',
+        "command": 'play_sound',
+        "args": [Sounds._037_TADPOLE_POND_STAFF_RE, 6]
+    },
+    {
+        "identifier": 'EVENT_1088_pause_27',
+        "command": 'pause',
+        "args": [100]
+    },
+    {
+        "identifier": 'EVENT_1088_ret',
+        "command": 'ret'
+    },
+]

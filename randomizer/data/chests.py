@@ -5203,7 +5203,7 @@ def get_default_chests(world):
     Returns:
         list[ItemLocation]: List of default chest objects.
     """
-    return [
+    chests = [
         # Chests
         MariosPadBed(world),
         MariosPadStarter1(world),
@@ -5386,8 +5386,6 @@ def get_default_chests(world):
         MonstroTownThwomp(world),
         JinxDojoReward(world),
         CulexReward(world),
-        SuperJumps30(world),
-        SuperJumps100(world),
         ThreeMustyFears(world),
         BeanValley1(world),
         BeanValley2(world),
@@ -5474,8 +5472,16 @@ def get_default_chests(world):
         FactoryBehindSnakes1(world),
         FactoryBehindSnakes2(world),
         FactoryToadGift(world),
-
     ]
+
+    # don't consider these as locations at all if super jump is turned off
+    if flags.LearnableSpells.SuperJump in world.settings.get_flag(flags.AvailableSpells).enabled:
+        chests.extend([
+            SuperJumps30(world),
+            SuperJumps100(world)
+        ])
+
+    return chests
 
 def get_freestanding_item_checks(world):
     """Get reward lists for freestanding coins, frog coins, flowers, and mushrooms.
