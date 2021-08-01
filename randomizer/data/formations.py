@@ -192,7 +192,7 @@ class EnemyFormation:
         # Add formation metadata.
         data = bytearray()
         data += utils.ByteField(self.event_at_start if self.event_at_start is not None else 0xff).as_bytes()
-        music_run_flags = self.music
+        music_run_flags = self.music.value
         if not self.can_run_away:
             music_run_flags |= 0x03
         data += utils.ByteField(music_run_flags).as_bytes()
