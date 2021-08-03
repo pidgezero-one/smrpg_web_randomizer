@@ -78,7 +78,7 @@ room = {
       "id": 0,
       "type": ObjectType.CHEST,
       "initiator": Initiator.HIT_FROM_BELOW,
-      "model": 94,
+      "model": 503,
       "event_script": 172,
       "action_script": 14,
       "speed": 0,
@@ -154,9 +154,9 @@ room = {
       "event_offset": 0,
       "action_offset": 0,
       "visible": True,
-      "x": 24,
-      "y": 77,
-      "z": 3,
+      "x": 23,
+      "y": 79,
+      "z": 0,
       "z_half": False,
       "direction": RadialDirection.SOUTHWEST,
       "face_on_trigger": False,
@@ -175,23 +175,10 @@ room = {
       "slidable_along_walls": True,
       "cant_move_if_in_air": True,
       "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 3,
-          "npc_id_offset": 0,
-          "event_offset": 0,
-          "action_offset": 0,
-          "visible": True,
-          "x": 23,
-          "y": 79,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        }
-      ]
+      "clones": []
     },
     {
-      "id": 4,
+      "id": 3,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.JUMP_ON,
       "model": 102,
@@ -226,7 +213,7 @@ room = {
       "clones": []
     },
     {
-      "id": 5,
+      "id": 4,
       "type": ObjectType.CHEST,
       "initiator": Initiator.HIT_FROM_BELOW,
       "model": 503,

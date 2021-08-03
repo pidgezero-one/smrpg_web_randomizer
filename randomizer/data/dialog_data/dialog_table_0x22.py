@@ -1012,8 +1012,20 @@ dialog_data[599] = ''' Let me tally up the numbers...
 dialog_data[600] = '''MA'MOLE: I wonder how those
  kids're doing?
  Sure wish they'd hurry home![await]'''
-dialog_data[601] = '''[await]'''
-dialog_data[602] = '''[await]'''
+dialog_data[601] = ''' Hey, Mario! We've got something
+ fun for you today.[await][page]\n
+ We've each hidden a random item
+ somewhere in the world.[await][delay] It might
+ be our flags, or it might be
+ something completely different![await][page]
+ We'll give you hints for the special
+ items we hid. Whatever you find,
+ you can keep for yourself.[await][page]
+ But if you DO find our three flags,
+ you can bring them back here. Show
+ 'em to our assistant for a prize.[await][page]
+   Anyway, about my secret item...[await]'''
+dialog_data[602] = '''   Invisible items have been placed.[await]'''
 dialog_data[603] = '''[await]'''
 dialog_data[604] = '''[await]'''
 dialog_data[605] = '''[await]'''

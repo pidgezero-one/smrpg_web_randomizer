@@ -193,7 +193,7 @@ room = {
       "id": 4,
       "type": ObjectType.BATTLE,
       "initiator": Initiator.ANYTHING_EXCEPT_PRESS_A,
-      "model": 277,
+      "model": 155,
       "battle_pack": 106,
       "after_battle": 0,
       "action_script": 277,

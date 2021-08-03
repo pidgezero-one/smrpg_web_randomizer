@@ -69,7 +69,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1328_fade_in_from_black_async_4',
-        "command": 'jmp_to_event',
+        "command": 'jmp',
         "args": ['EVENT_1328_fade_in_from_black_async_4_']
     },
     {

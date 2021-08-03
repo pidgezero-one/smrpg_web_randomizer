@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._00_CURRENT,
-  "entrance_event": 275,
+  "entrance_event": 15,
   "event_tiles": [],
   "exit_fields": [
     {
@@ -160,7 +160,7 @@ room = {
       "id": 3,
       "type": ObjectType.BATTLE,
       "initiator": Initiator.ANYTHING_EXCEPT_PRESS_A,
-      "model": 277,
+      "model": 155,
       "battle_pack": 38,
       "after_battle": 6,
       "action_script": 726,

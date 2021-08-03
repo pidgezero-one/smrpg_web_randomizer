@@ -8,7 +8,7 @@ from randomizer.data.characters import Mario, Mallow, Peach, Bowser, Geno
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 from randomizer.logic import flags
-from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EnabledRegularChecks
+from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EnabledRegularChecks, FireworksOptions
 
 
 class Area(Enum):
@@ -159,6 +159,18 @@ class ItemLocation:
             raise ValueError(
                 "Location {} - Item {} not allowed".format(self, value))
         self._item = value
+
+
+
+# ******* "3 Musty Fears Flags Anywhere"
+
+class InvisibleFlagLocation(ItemLocation):
+    item = None
+    coords = (0, 0, 0)
+    shift = (0, 0)
+    clue = ""
+    key = True
+    access = 4
 
 
 class BowserRoom:

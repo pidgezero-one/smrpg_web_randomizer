@@ -998,6 +998,12 @@ class GameWorld:
         if self.settings.is_flag_value(flags.SkipMinecart, True):
             self.prepend_bits(192, [[0x707B, 6]])
 
+        # Invisible Checks Anywhere
+        if self.settings.is_flag_value(flags.InvisibleFlagsSetting, True):
+            self.prepend_bits(192, [[0x7060, 2]])
+        else:
+            self.prepend_bits(192, [[0x705F, 2]])
+
         # some more dialogs
         if self.settings.is_flag_value(flags.EXPStarsAnywhere, True):
             self.replace_dialog(1222, ''' I have a chest to sell, but you\n don't have enough coins.[await]''')

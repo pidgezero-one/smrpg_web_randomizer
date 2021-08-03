@@ -205,7 +205,7 @@ boss_star_piece_locations = [
     ShuffleLocationSelector.StarHillStarPiece1,
     ShuffleLocationSelector.SunkenShipBoss,
     ShuffleLocationSelector.SunkenShipMidboss
-    ]
+]
 
 
 class EnabledBossChecks(CategorizationFlag):
@@ -216,6 +216,7 @@ class EnabledBossChecks(CategorizationFlag):
     options = [o for o in boss_star_piece_locations]
     enabled = [o for o in boss_star_piece_locations]
 
+
 class StarPiecesRestrictedByArea(BooleanFlag):
     name = 'Restrict number of star pieces in an area'
     description = '''If enabled, each of the seven overworld map areas may only contain up to one star piece each.
@@ -223,6 +224,7 @@ class StarPiecesRestrictedByArea(BooleanFlag):
     Note: This may not be perfectly respected if Bowser's Keep and Factory are both gated by high star piece counts.'''
     modes = ['open']
     default = False
+
 
 class StarPieceHints(BooleanFlag):
     name = 'Signal Ring hints at star pieces'
@@ -276,9 +278,10 @@ class AvailableCharacters(CategorizationFlag):
     name = "Available Characters"
     description = '''Characters on the left will appear in the seed. Characters on the right will not.'''
     options = [PlayableCharacters.Mario, PlayableCharacters.Mallow,
-                                 PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
+               PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
     enabled = [PlayableCharacters.Mario, PlayableCharacters.Mallow,
-                                 PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
+               PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
+
 
 class CharacterStats(BooleanFlag):
     name = 'Randomize character stats'
@@ -286,6 +289,7 @@ class CharacterStats(BooleanFlag):
     
     If disabled, playable characters retain their original stats and stat curves.'''
     default = False
+
 
 class LearnableSpells(enum.Enum):
     Jump = spells.Jump.title
@@ -321,10 +325,14 @@ class AvailableSpells(CategorizationFlag):
     name = "Available Player Spells"
     description = '''Spells on the left will be learned by at least one character. Spells on the right will not be learned by any character.
     
-    Excluded spells are not replaced in characters' learnsets by other spells, so some characters will learn less than six total.'''
-    options = [LearnableSpells.Jump, LearnableSpells.FireOrb, LearnableSpells.SuperJump, LearnableSpells.SuperFlame, LearnableSpells.UltraJump, LearnableSpells.UltraFlame, LearnableSpells.Therapy, LearnableSpells.GroupHug, LearnableSpells.SleepyTime, LearnableSpells.ComeBack, LearnableSpells.Mute, LearnableSpells.PsychBomb, LearnableSpells.Terrorize, LearnableSpells.PoisonGas, LearnableSpells.Crusher, LearnableSpells.BowserCrush, LearnableSpells.GenoBeam, LearnableSpells.GenoBoost, LearnableSpells.GenoWhirl, LearnableSpells.GenoBlast, LearnableSpells.GenoFlash, LearnableSpells.Thunderbolt, LearnableSpells.HPRain, LearnableSpells.Psychopath, LearnableSpells.Shocker, LearnableSpells.Snowy, LearnableSpells.StarRain]
-    enabled = [LearnableSpells.Jump, LearnableSpells.FireOrb, LearnableSpells.SuperJump, LearnableSpells.SuperFlame, LearnableSpells.UltraJump, LearnableSpells.UltraFlame, LearnableSpells.Therapy, LearnableSpells.GroupHug, LearnableSpells.SleepyTime, LearnableSpells.ComeBack, LearnableSpells.Mute, LearnableSpells.PsychBomb, LearnableSpells.Terrorize, LearnableSpells.PoisonGas, LearnableSpells.Crusher, LearnableSpells.BowserCrush, LearnableSpells.GenoBeam, LearnableSpells.GenoBoost, LearnableSpells.GenoWhirl, LearnableSpells.GenoBlast, LearnableSpells.GenoFlash, LearnableSpells.Thunderbolt, LearnableSpells.HPRain, LearnableSpells.Psychopath, LearnableSpells.Shocker, LearnableSpells.Snowy, LearnableSpells.StarRain]
+    Excluded spells are not replaced in characters' learnsets by other spells, so some characters will learn less than six total.
     
+    Note: Excluding "Super Jump" may make some equips inaccessible depending on your other settings.'''
+    options = [LearnableSpells.Jump, LearnableSpells.FireOrb, LearnableSpells.SuperJump, LearnableSpells.SuperFlame, LearnableSpells.UltraJump, LearnableSpells.UltraFlame, LearnableSpells.Therapy, LearnableSpells.GroupHug, LearnableSpells.SleepyTime, LearnableSpells.ComeBack, LearnableSpells.Mute, LearnableSpells.PsychBomb, LearnableSpells.Terrorize,
+               LearnableSpells.PoisonGas, LearnableSpells.Crusher, LearnableSpells.BowserCrush, LearnableSpells.GenoBeam, LearnableSpells.GenoBoost, LearnableSpells.GenoWhirl, LearnableSpells.GenoBlast, LearnableSpells.GenoFlash, LearnableSpells.Thunderbolt, LearnableSpells.HPRain, LearnableSpells.Psychopath, LearnableSpells.Shocker, LearnableSpells.Snowy, LearnableSpells.StarRain]
+    enabled = [LearnableSpells.Jump, LearnableSpells.FireOrb, LearnableSpells.SuperJump, LearnableSpells.SuperFlame, LearnableSpells.UltraJump, LearnableSpells.UltraFlame, LearnableSpells.Therapy, LearnableSpells.GroupHug, LearnableSpells.SleepyTime, LearnableSpells.ComeBack, LearnableSpells.Mute, LearnableSpells.PsychBomb, LearnableSpells.Terrorize,
+               LearnableSpells.PoisonGas, LearnableSpells.Crusher, LearnableSpells.BowserCrush, LearnableSpells.GenoBeam, LearnableSpells.GenoBoost, LearnableSpells.GenoWhirl, LearnableSpells.GenoBlast, LearnableSpells.GenoFlash, LearnableSpells.Thunderbolt, LearnableSpells.HPRain, LearnableSpells.Psychopath, LearnableSpells.Shocker, LearnableSpells.Snowy, LearnableSpells.StarRain]
+
 
 class CharacterLearnedSpells(BooleanFlag):
     name = 'Randomize character learned spells'
@@ -763,7 +771,6 @@ class ShuffleMagikoopaChest(BooleanFlag):
     default = False
 
 
-
 class KeyItemsAnywhere(BooleanFlag):
     name = '"Special Items" can appear anywhere'
     description = '''If enabled, items belonging to your "Special Items" pocket can appear in any item location.
@@ -771,6 +778,28 @@ class KeyItemsAnywhere(BooleanFlag):
     If disabled, the "Special Items" will only be shuffled within each other's locations.
     
     The items targeted by this setting are the **Rare Frog Coin**, **Cricket Pie**, **Bambino Bomb**, **Castle Key 1**, **Castle Key 2**, *Alto Card**, **Tenor Card**, **Soprano Card**, **Greaper Flag**, **Dry Bones Flag**, **Big Boo Flag**, **Shed Key**, **Elder Key**, **Cricket Jam**, **Temple Key**, and **Room Key**.'''
+    modes = ['open']
+    default = False
+
+
+class InvisibleFlagsSetting(BooleanFlag):
+    name = 'Shuffle invisible flags'
+    description = '''Chooses where the invisible items placed by the Three Musty Fears are located. 
+
+    If "Default locations" is selected, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
+    
+    If enabled, the three checks will be located somewhere random in the world as an invisible item. The Three Musty Fears will give you hints as to their locations. The three default item locations will be disabled.'''
+    modes = ['open']
+    default = False
+
+
+class GateInvisibleFlags(BooleanFlag):
+    name = 'Skip 3 Musty Feats sequence'
+    description = '''This flag affects the Musty Fears checks (normally Mario's Pad bed, Rose Town sign, and Yo'ster Isle goalpost; or whichever three locations are added to the seed when "Shuffle invisible flags" is set to "Any landmark").
+    
+    If disabled, the affected checks will become available after you rest in the Musty Fears Inn in Monstro Town.
+    
+    If enabled, the affected checks will be available from the start of the seed.'''
     modes = ['open']
     default = False
 
@@ -799,6 +828,7 @@ class StarProgressionchallengeOptions(enum.Enum):
     sp2 = "Star pieces (hard)"
     bosses = "Bosses"
     none = "No EXP"
+
 
 class EXPChallengeOptions(enum.Enum):
     default = "Default"
@@ -857,6 +887,7 @@ class ItemQuality(SelectOneFlag):
     modes = ['open']
     choices = [o for o in ItemQualities]
     default = ItemQualities.Original
+
 
 class BetterTips(BooleanFlag):
     name = 'Better Consolation Prizes'
@@ -1242,6 +1273,7 @@ class EnabledRegularChecks(CategorizationFlag):
     options = [o for o in regular_checks]
     enabled = [o for o in regular_checks]
 
+
 freestanding_checks = [
     ShuffleLocationSelector.BanditsWayCoin1,
     ShuffleLocationSelector.BanditsWayCoin2,
@@ -1374,7 +1406,7 @@ class ShopQuality(SelectOneFlag):
     
     If "Completely empty" is selected, all shops will be disabled.'''
     modes = ['open']
-    choices = [o for o in ShopQualities] # maybe just o for o
+    choices = [o for o in ShopQualities]  # maybe just o for o
     default = ShopQualities.Original
 
 
@@ -1390,6 +1422,7 @@ class FreeShops(BooleanFlag):
     description = '''If enabled, all shop items will cost 1 coin. You will start with 9999 coins and 999 frog coins.'''
     modes = ['open']
     default = False
+
 
 class ShowEquips(BooleanFlag):
     name = 'Show Equips'
@@ -1423,6 +1456,7 @@ class BossReplaceMinigameSprites(BooleanFlag):
     
     If disabled: Most sprites related to an area boss will be changed to match the shuffled positions of bosses, but some will be left unchanged to accommodate for minigame visual cues. Examples of this include: Booster Hill snifits, Dodo in the statue polishing game.'''
     default = False
+
 
 class MimicsAnywhere(BooleanFlag):
     name = 'Mimics can appear anywhere'
@@ -1615,6 +1649,7 @@ class BossShuffleMusic(BooleanFlag):
 
     # Add selector to remove certain songs from pool
 
+
 class AvailableMusic(enum.Enum):
     Normal = music.NormalBattleMusic.name
     Boss1 = music.MidbossMusic.name
@@ -1639,7 +1674,8 @@ class PaletteSwaps(BooleanFlag):
     inverse_description = '(Sprite colours are not modified.)'
     value = '-palette'
 
-class ChangeNames(BooleanFlag): # not available unless PaletteSwaps enabled
+
+class ChangeNames(BooleanFlag):  # not available unless PaletteSwaps enabled
     name = 'Change character names'
     description = '''Some palette swaps are references to other media. If this flag is enabled, the character's name will be changed to match the palette.'''
     inverse_description = '(Sprite colours are not modified.)'
@@ -1651,6 +1687,7 @@ class ChangeNames(BooleanFlag): # not available unless PaletteSwaps enabled
 class FlagCategory:
     name = ''
     flags = []
+
 
 class StarPiecesCategory(FlagCategory):
     name = 'Star Pieces'
@@ -1665,6 +1702,7 @@ class StarPiecesCategory(FlagCategory):
         StarPiecesRestrictedByArea,
         StarPieceHints
     ]
+
 
 class PartyCategory(FlagCategory):
     name = 'Party'
@@ -1681,6 +1719,7 @@ class PartyCategory(FlagCategory):
         EquipmentNoSafety,
         EXPMultiplier
     ]
+
 
 class AccessCategory(FlagCategory):
     name = 'Area Access'
@@ -1701,6 +1740,7 @@ class AccessCategory(FlagCategory):
         BowserDoorRequirements
     ]
 
+
 class ItemsCategory(FlagCategory):
     name = 'Items'
     flags = [
@@ -1715,10 +1755,10 @@ class ItemsCategory(FlagCategory):
         EXPChallenge,
         SlotsAnywhere,
         ItemQuality,
-        BetterTips, 
+        BetterTips,
         BiasItemShuffle,
-        ReplaceItems, 
-        QuickHitCoins, 
+        ReplaceItems,
+        QuickHitCoins,
         GrateGuyPrizeThreshold,
         KnifeGuyPrizeThreshold,
         SuitePrize1Threshold,
@@ -1733,6 +1773,7 @@ class ItemsCategory(FlagCategory):
         EnabledFreestandingChecks
     ]
 
+
 class ShopsCategory(FlagCategory):
     name = 'Shops'
     flags = [
@@ -1741,6 +1782,7 @@ class ShopsCategory(FlagCategory):
         BiasShopShuffle,
         FreeShops
     ]
+
 
 class BossCategory(FlagCategory):
     name = 'Enemies & Bosses'
@@ -1763,6 +1805,7 @@ class BossCategory(FlagCategory):
         ShuffledBosses
     ]
 
+
 class PuzzleCategory(FlagCategory):
     name = 'Puzzles & Minigames'
     flags = [
@@ -1774,6 +1817,7 @@ class PuzzleCategory(FlagCategory):
         BowserDoorShuffle,
         SkipMinecart
     ]
+
 
 class CosmeticCategory(FlagCategory):
     name = 'Cosmetics'
@@ -1787,6 +1831,8 @@ class CosmeticCategory(FlagCategory):
 # ************************************** Preset classes
 
 # decide what to do with these later
+
+
 class Preset:
     name = ''
     description = ''

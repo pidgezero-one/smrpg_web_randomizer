@@ -6,6 +6,60 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": "EVENT_2080_jmp_if_flag_shuffle_off",
+        "command": "jmp_if_bit_set",
+        "args": [0x7060, 2, 'EVENT_2080_action_queue_async_1']
+    },
+    {
+        "identifier": 'EVENT_2080_hide_note',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
+                "command": 'visibility_off'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2080_show_guy_1',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2080_show_guy_2',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2080_show_guy_3',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": "EVENT_2080_jmp",
+        "command": "jmp",
+        "args": ['EVENT_2080_fade_in_from_black_async_2']
+    },
+    {
         "identifier": 'EVENT_2080_action_queue_async_1',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_1],
@@ -35,6 +89,11 @@ script = [
     {
         "identifier": 'EVENT_2080_fade_in_from_black_async_2',
         "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": "EVENT_2080_summoner", 
+        "command": "run_event_as_subroutine", 
+        "args": [91]
     },
     {
         "identifier": 'EVENT_2080_ret_3',
