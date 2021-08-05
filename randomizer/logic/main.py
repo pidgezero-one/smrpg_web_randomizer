@@ -23,6 +23,7 @@ from randomizer.data.dialog_data.dialog_data import dialog_data
 from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
 from randomizer.data.locations import Area
 from randomizer.data.bosses import SpriteSize, HenchmanType, SequenceType
+from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating, LearnableSpells
 from . import bosses
 from . import bosses_overworld
 from . import credits
@@ -41,7 +42,6 @@ from . import shops
 from . import utils
 from .patch import Patch
 from .battleassembler import assemble_battle_scripts
-from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, FireworksOptions, EXPChallengeOptions, PlayableCharacters, WinConditions, ShopQualities, WinConditions
 
 from randomizer.data.eventscripts.utils.slot_machine.event import script as slot_machine_commands
 from randomizer.data.eventscripts.utils.slot_machine.objects import objects as slot_machine_npcs
@@ -738,11 +738,27 @@ class GameWorld:
         elif self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.ExchangeCricketPie):
             self.prepend_bits(203, [[0x7066, 3], [0x706E, 3]])
 
+        # Pipe Vault gating
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.FinishForestMaze):
+            self.prepend_bits(211, [[0x7055, 7]])
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitMario):
+            self.prepend_bits(187, [[0x7055, 7]])
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitMallow):
+            self.prepend_bits(198, [[0x7055, 7]])
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitGeno):
+            self.prepend_bits(189, [[0x7055, 7]])
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitBowser):
+            self.prepend_bits(190, [[0x7055, 7]])
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitToadstool):
+            self.prepend_bits(191, [[0x7055, 7]])
+        else:
+            self.prepend_bits(192, [[0x7055, 7]])
+
         # Booster Tower gating
         if self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.AlwaysOpen):
             self.prepend_bits(192, [[0x7053, 6]])
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.FinishMoleville):
-            self.prepend_bits(198, [[0x7053, 6]])
+            self.prepend_bits(199, [[0x7053, 6]])
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitMario):
             self.prepend_bits(187, [[0x7053, 7]])
             self.eventscripts[1331] = tower_mario
@@ -979,7 +995,7 @@ class GameWorld:
         self.search_replace_dialog('`SUPER_JUMP_PRIZE_2_CAP`', value)
 
         # disable sj dog checks if SJ not learnable in seed
-        if flags.LearnableSpells.SuperJump in self.settings.get_flag(flags.AvailableSpells).disabled:
+        if LearnableSpells.SuperJump in self.settings.get_flag(flags.AvailableSpells).disabled:
             self.eventscripts[2063] = [
                 new_command(2063, 'run_dialog', [2049, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]),
                 new_command(2063, 'ret')

@@ -4,11 +4,12 @@ import enum
 import random
 import math
 
+from randomizer.data.helpers import FireworksOptions, PlayableCharacters
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
-from .characters import Mario, Mallow, Geno, Bowser, Peach
+from randomizer.data.characters import Mario, Mallow, Geno, Bowser, Peach
 from randomizer.logic import flags
-from randomizer.logic.flags import FireworksOptions, PlayableCharacters
+
 
 
 class OverworldItem:

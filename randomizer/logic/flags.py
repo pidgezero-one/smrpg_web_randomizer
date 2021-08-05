@@ -1,11 +1,11 @@
 # Flag definitions and logic.
 
-import enum
 import re
 from django.utils.html import mark_safe
 from markdown import markdown
 from randomizer.data.helpers import ShuffleLocationSelector
-from randomizer.data import music, spells
+from randomizer.data.bosses import AvailableBosses
+from randomizer.data.helpers import FireworksOptions, WinConditions, PlayableCharacters, LearnableSpells, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, StarProgressionchallengeOptions, EXPChallengeOptions, ItemQualities, ShopQualities, AvailableMusic
 
 
 # ************************************** Flag classes
@@ -123,16 +123,8 @@ class StarPiecesRequired(NumberThresholdFlag):
     modes = ['open']
 
 
-class WinConditions(enum.Enum):
-    """Enumeration for win condition options"""
-    FinalBoss = "Beat the Factory"
-    Culex = "Beat Monstro Town sealed door"
-    StarPieces = "Collect required star pieces"
-
-
 class WinCondition(SelectOneFlag):
     name = "Condition required to beat the game"
-    """Enumeration for win condition options"""
     description = '''Beat the Factory: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.
     
     Collect required star pieces: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the game is over and the credits will roll.
@@ -257,15 +249,6 @@ class StartingCharacters(NumberThresholdFlag):
     modes = ['open']
 
 
-class PlayableCharacters(enum.Enum):
-    """Enumeration for win condition options"""
-    Mario = "Mario"
-    Mallow = "Mallow"
-    Geno = "Geno"
-    Bowser = "Bowser"
-    Toadstool = "Toadstool"
-    Random = "Random"
-
 
 class StartingCharacter(SelectOneFlag):
     name = "Starting Character"
@@ -289,36 +272,6 @@ class CharacterStats(BooleanFlag):
     
     If disabled, playable characters retain their original stats and stat curves.'''
     default = False
-
-
-class LearnableSpells(enum.Enum):
-    Jump = spells.Jump.title
-    FireOrb = spells.FireOrb.title
-    SuperJump = spells.SuperJump.title
-    SuperFlame = spells.SuperFlame.title
-    UltraJump = spells.UltraJump.title
-    UltraFlame = spells.UltraFlame.title
-    Therapy = spells.Therapy.title
-    GroupHug = spells.GroupHug.title
-    SleepyTime = spells.SleepyTime.title
-    ComeBack = spells.ComeBack.title
-    Mute = spells.Mute.title
-    PsychBomb = spells.PsychBomb.title
-    Terrorize = spells.Terrorize.title
-    PoisonGas = spells.PoisonGas.title
-    Crusher = spells.Crusher.title
-    BowserCrush = spells.BowserCrush.title
-    GenoBeam = spells.GenoBeam.title
-    GenoBoost = spells.GenoBoost.title
-    GenoWhirl = spells.GenoWhirl.title
-    GenoBlast = spells.GenoBlast.title
-    GenoFlash = spells.GenoFlash.title
-    Thunderbolt = spells.Thunderbolt.title
-    HPRain = spells.HPRain.title
-    Psychopath = spells.Psychopath.title
-    Shocker = spells.Shocker.title
-    Snowy = spells.Snowy.title
-    StarRain = spells.StarRain.title
 
 
 class AvailableSpells(CategorizationFlag):
@@ -346,13 +299,6 @@ class CharacterSpellStats(BooleanFlag):
     default = False
 
 
-class EquipmentPropertiesOptions(enum.Enum):
-    """Enumeration for win condition options"""
-    default = "Default"
-    some_buffs_added = "Some buffs added"
-    completely_random = "Completely random"
-
-
 class EquipmentProperties(BooleanFlag):
     name = 'Equipment stats & buffs'
     description = '''Default: The stats and buffs on equipment are unchanged from the original game.
@@ -376,12 +322,6 @@ class EquipmentNoSafety(BooleanFlag):
     default = False
 
 
-class EXPMultiplierOptions(enum.Enum):
-    default = "Default"
-    double = "Double"
-    triple = "Triple"
-
-
 class EXPMultiplier(SelectOneFlag):
     name = 'EXP multiplier'
     description = '''If not set to "Default", all EXP gained will be doubled or tripled.'''
@@ -390,17 +330,6 @@ class EXPMultiplier(SelectOneFlag):
 
 
 # ******** Area Access
-
-
-class BanditsWayGating(enum.Enum):
-    """Enumeration for Bandit's Way gating flag option"""
-    RecruitMario = "Recruit Mario"
-    RecruitMallow = "Recruit Mallow"
-    RecruitGeno = "Recruit Geno"
-    RecruitBowser = "Recruit Bowser"
-    RecruitToadstool = "Recruit Toadstool"
-    FinishMushroomWay = "Finish Mushroom Way"
-    AlwaysOpen = "Always open"
 
 
 class BanditsWayGate(SelectOneFlag):
@@ -423,17 +352,6 @@ class BanditsWayGate(SelectOneFlag):
     default = BanditsWayGating.RecruitMallow
 
 
-class ForestMazeGating(enum.Enum):
-    """Enumeration for Forest Maze gating flag option"""
-    FindMario = "Find Mario"
-    FindMallow = "Find Mallow"
-    FindGeno = "Find Geno"
-    FindBowser = "Find Bowser"
-    FindToadstool = "Find Toadstool"
-    ExchangeCricketPie = "Exchange Cricket Pie"
-    AlwaysOpen = "Always open"
-
-
 class ForestMazeGate(SelectOneFlag):
     name = '''ForestMaze access'''
     description = '''Find Mario: Forest Maze will become available on the world map when you determine where Mario is (whether or not you recruit him).
@@ -454,15 +372,24 @@ class ForestMazeGate(SelectOneFlag):
     default = ForestMazeGating.FindGeno
 
 
-class BoosterTowerGating(enum.Enum):
-    """Enumeration for Booster Tower gating flag option"""
-    RecruitMario = "Recruit Mario"
-    RecruitMallow = "Recruit Mallow"
-    RecruitGeno = "Recruit Geno"
-    RecruitBowser = "Recruit Bowser"
-    RecruitToadstool = "Recruit Toadstool"
-    FinishMoleville = "Finish Moleville"
-    AlwaysOpen = "Always open"
+class PipeVaultGate(SelectOneFlag):
+    name = '''Pipe Vault access'''
+    description = '''Recruit Mario: Pipe Vault will be unblocked when you recruit Mario.
+    
+    Recruit Mallow: Pipe Vault will be unblocked when you recruit Mallow.
+    
+    Recruit Geno: Pipe Vault will be unblocked when you recruit Geno.
+    
+    Recruit Bowser: Pipe Vault will be unblocked when you recruit Bowser.
+    
+    Recruit Toadstool: Pipe Vault will be unblocked when you recruit Toadstool.
+    
+    Finish Forest Maze: Pipe Vault will be unblocked when you defeat the final boss of Forest Maze.
+    
+    Always Open: Pipe Vault will be unblocked from the start of the game.'''
+    modes = ['open']
+    choices = [o for o in PipeVaultGating]
+    default = PipeVaultGating.AlwaysOpen
 
 
 class BoosterTowerGate(SelectOneFlag):
@@ -485,13 +412,6 @@ class BoosterTowerGate(SelectOneFlag):
     default = BoosterTowerGating.RecruitBowser
 
 
-class MarrymoreGating(enum.Enum):
-    """Enumeration for Marrymore gating flag option"""
-    FinishBoosterHill = "Finish Booster Hill"
-    FinishBoosterTower = "Finish Booster Tower"
-    AlwaysOpen = "Always open"
-
-
 class MarrymoreGate(SelectOneFlag):
     name = '''Marrymore back door access'''
     description = '''Finish Booster Hill: The chapel back door will become available on the world map when you complete Booster Hill one time.
@@ -502,22 +422,6 @@ class MarrymoreGate(SelectOneFlag):
     modes = ['open']
     choices = [o for o in MarrymoreGating]
     default = MarrymoreGating.FinishBoosterHill
-
-
-class SeaGating(enum.Enum):
-    """Enumeration for Sea & Sunken Ship gating flag option"""
-    RecruitMario = "Recruit Mario"
-    RecruitMallow = "Recruit Mallow"
-    RecruitGeno = "Recruit Geno"
-    RecruitBowser = "Recruit Bowser"
-    RecruitToadstool = "Recruit Toadstool"
-    Find1Star = "Collect 1 Star Piece"
-    Find2Star = "Collect 2 Star Pieces"
-    Find3Star = "Collect 3 Star Pieces"
-    Find4Star = "Collect 4 Star Pieces"
-    Find5Star = "Collect 5 Star Pieces"
-    Find6Star = "Collect 6 Star Pieces"
-    AlwaysOpen = "Always open"
 
 
 class SeaGate(SelectOneFlag):
@@ -550,12 +454,6 @@ class SeaGate(SelectOneFlag):
     default = SeaGating.Find4Star
 
 
-class YaridovichGating(enum.Enum):
-    """Enumeration for Seaside boss gating flag option"""
-    FinishSunkenShip = "Finish Sunken Ship"
-    AlwaysOpen = "Always available"
-
-
 class YaridovichGate(SelectOneFlag):
     name = '''Seaside boss fight access'''
     description = '''Finish Sunken Ship: The Seaside boss fight will become available after you defeat the final boss of Sunken Ship.
@@ -564,12 +462,6 @@ class YaridovichGate(SelectOneFlag):
     modes = ['open']
     choices = [o for o in YaridovichGating]
     default = YaridovichGating.FinishSunkenShip
-
-
-class MonstroTownGating(enum.Enum):
-    """Enumeration for Monstro Town gating flag option"""
-    FinishLandsEnd = "Finish Land's End"
-    AlwaysOpen = "Always open"
 
 
 class MonstroTownGate(SelectOneFlag):
@@ -582,12 +474,6 @@ class MonstroTownGate(SelectOneFlag):
     default = MonstroTownGating.FinishLandsEnd
 
 
-class BarrelVolcanoGating(enum.Enum):
-    """Enumeration for Barrel Volcano gating flag option"""
-    FinishNimbusLand = "Finish Nimbus Land"
-    AlwaysOpen = "Always open"
-
-
 class BarrelVolcanoGate(SelectOneFlag):
     name = '''Barrel Volcano access'''
     description = '''Finish Nimbus Land: Barrel Volcano will become available on the World Map once you defeat the final boss of Nimbus Castle.
@@ -596,19 +482,6 @@ class BarrelVolcanoGate(SelectOneFlag):
     modes = ['open']
     choices = [o for o in BarrelVolcanoGating]
     default = BarrelVolcanoGating.FinishNimbusLand
-
-
-class BowsersKeepGating(enum.Enum):
-    """Enumeration for Bowser's Keep gating flag option"""
-    Find1Star = "Collect 1 Star Piece"
-    Find2Star = "Collect 2 Star Pieces"
-    Find3Star = "Collect 3 Star Pieces"
-    Find4Star = "Collect 4 Star Pieces"
-    Find5Star = "Collect 5 Star Pieces"
-    Find6Star = "Collect 6 Star Pieces"
-    FinishBarrelVolcano = "Finish Barrel Volcano"
-    AlwaysOpen = "Always open"
-
 
 class BowsersKeepGate(SelectOneFlag):
     name = '''Bowser's Keep access'''
@@ -630,18 +503,6 @@ class BowsersKeepGate(SelectOneFlag):
     modes = ['open']
     choices = [o for o in BowsersKeepGating]
     default = BowsersKeepGating.Find6Star
-
-
-class FactoryGating(enum.Enum):
-    """Enumeration for Factory gating flag option"""
-    AlwaysOpen = "Open when Bowser's Keep is opened"
-    FinishBowsersKeep = "Finish Bowser's Keep"
-    Find1Star = "Collect 1 Star Piece"
-    Find2Star = "Collect 2 Star Pieces"
-    Find3Star = "Collect 3 Star Pieces"
-    Find4Star = "Collect 4 Star Pieces"
-    Find5Star = "Collect 5 Star Pieces"
-    Find6Star = "Collect 6 Star Pieces"
 
 
 class FactoryGate(SelectOneFlag):
@@ -714,13 +575,6 @@ class ShuffleItems(BooleanFlag):
     modes = ['open']
     default = False
 # if this is disabled, no options in this category can be changed
-
-
-class FireworksOptions(enum.Enum):
-    """Enumeration for Fireworks flag option"""
-    Vanilla = "Vanilla"
-    ShuffleFireworks = "Shuffle Fireworks"
-    ProgressiveFireworks = "Shuffle Progressive Fireworks"
 
 
 class FireworksSetting(SelectOneFlag):
@@ -822,23 +676,6 @@ class EXPStarsAnywhere(BooleanFlag):
     default = False
 
 
-class StarProgressionchallengeOptions(enum.Enum):
-    default = "Default"
-    sp1 = "Star pieces (easy)"
-    sp2 = "Star pieces (hard)"
-    bosses = "Bosses"
-    none = "No EXP"
-
-
-class EXPChallengeOptions(enum.Enum):
-    default = "Default"
-    easystars = "Star pieces (easy)"
-    hardstars = "Star pieces (hard)"
-    easybosses = "Bosses (easy"
-    hardbosses = "Bosses (hard)"
-    none = "None"
-
-
 class EXPChallenge(SelectOneFlag):
     name = 'EXP Star Challenge'
     description = '''Default: EXP stars can give you 1 to 11 EXP per hit as normal.
@@ -865,16 +702,6 @@ class SlotsAnywhere(BooleanFlag):
     Note that a bad roll on a slot machine will initiate a duplicate of the third mimic fight.'''
     modes = ['open']
     default = False
-
-
-class ItemQualities(enum.Enum):
-    """Enumeration for item shuffle quality option"""
-    Original = "Original item pool"
-    Tier4 = "Completely random, unrestricted"
-    Tier3 = "Completely random, exclude top-tier items"
-    Tier2 = "Completely random, include some good items"
-    Tier1 = "Completely random, bad items only"
-    Empty = "Completely empty"
 
 
 class ItemQuality(SelectOneFlag):
@@ -1388,16 +1215,6 @@ class ShuffleShops(BooleanFlag):
 # if this is disabled, no options in this category can be changed
 
 
-class ShopQualities(enum.Enum):
-    """Enumeration for shop shuffle quality option"""
-    Original = "Original shop pool"
-    Tier4 = "Completely random, unrestricted"
-    Tier3 = "Completely random, exclude top-tier items"
-    Tier2 = "Completely random, include some good items"
-    Tier1 = "Completely random, bad items only"
-    Empty = "Completely empty"
-
-
 class ShopQuality(SelectOneFlag):
     name = '''Shop quality'''
     description = '''Restricts the incidence of certain items in shops. 
@@ -1539,49 +1356,6 @@ class NoOHKO(BooleanFlag):
     default = False
 
 
-class AvailableBosses(enum.Enum):
-    HammerBro = "Hammer Bros"
-    Mack = "Mack"
-    Croco1 = "Croco 1"
-    Pandorite = "Pandorite"
-    Belome1 = "Belome 1"
-    Bowyer = "Bowyer"
-    Croco2 = "Croco 2"
-    Punchinello = "Punchinello"
-    Booster = "Booster"
-    KnifeGuyGrateGuy = "Knife Guy & Grate Guy"
-    Bundt = "Bundt"
-    KingCalamari = "King Calamari"
-    Hidon = "Hidon"
-    Johnny = "Johnny"
-    Yaridovich = "Yaridovich"
-    Mokura = "Mokura"
-    Belome2 = "Belome 2"
-    Jagger = "Jagger"
-    Jinx1 = "Jinx 1"
-    Jinx2 = "Jinx 2"
-    Jinx3 = "Jinx 3"
-    Culex = "Culex"
-    BoxBoy = "Box Boy"
-    Megasmilax = "Megasmilax"
-    Dodo = "Dodo"
-    Birdetta = "Birdetta"
-    Valentina = "Valentina"
-    CzarDragon = "Czar Dragon"
-    AxemRangers = "Axem Rangers"
-    Chester = "Chester"
-    Magikoopa = "Magikoopa"
-    Boomer = "Boomer"
-    Exor = "Exor"
-    CountDown = "Count Down"
-    CloakerDomino = "Cloaker & Domino"
-    Clerk = "Clerk"
-    Manager = "Manager"
-    Director = "Director"
-    Gunyolk = "Gunyolk & Factory Chief"
-    Smithy = "Smithy"
-
-
 class ShuffledBosses(CategorizationFlag):
     name = 'Shuffled boss fights'
     description = '''If a boss is in the left column, it will be shuffled into a pool and placed in a random boss location.
@@ -1648,15 +1422,6 @@ class BossShuffleMusic(BooleanFlag):
     value = 'Bm'
 
     # Add selector to remove certain songs from pool
-
-
-class AvailableMusic(enum.Enum):
-    Normal = music.NormalBattleMusic.name
-    Boss1 = music.MidbossMusic.name
-    Boss2 = music.BossMusic.name
-    Smithy = music.Smithy1Music.name
-    Culex = music.CulexMusic.name
-    Corn = music.CorndillyMusic.name
 
 
 class ShuffledMusic(CategorizationFlag):

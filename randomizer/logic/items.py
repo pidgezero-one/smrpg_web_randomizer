@@ -7,8 +7,8 @@ from inspect import isclass
 
 from randomizer.data import items
 from randomizer.data.characters import Mario, Mallow, Geno, Bowser, Peach
+from randomizer.data.helpers import EquipmentPropertiesOptions
 from . import flags, utils
-from randomizer.logic.flags import EquipmentPropertiesOptions
 
 
 def _randomize_item(item):

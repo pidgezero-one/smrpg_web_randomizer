@@ -8,8 +8,8 @@ from scipy.stats import gamma
 
 from randomizer.data import items, shops, chests
 from randomizer.data.items import ItemUnique
+from randomizer.data.helpers import ShopQualities, ItemQualities
 from . import flags, utils
-from randomizer.logic.flags import ShopQualities, ItemQualities
 
 
 def get_max_item_quality(world):

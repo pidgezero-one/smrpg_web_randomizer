@@ -6,27 +6,27 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": "EVENT_82_jmp_if_flag_shuffle_off",
+        "identifier": "EVENT_84_jmp_if_flag_shuffle_off",
         "command": "jmp_if_bit_set",
-        "args": [0x7061, 5, 'EVENT_82_run_dialog_1']
+        "args": [0x7061, 5, 'EVENT_84_run_dialog_1']
     },
     {
-        "identifier": 'EVENT_82_run_dialog_0',
+        "identifier": 'EVENT_84_run_dialog_0',
         "command": 'run_dialog',
         "args": [1105, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": "EVENT_82_set_bit",
+        "identifier": "EVENT_84_set_bit",
         "command": "set_bit",
         "args": [0x7061, 5]
     },
     {
-        "identifier": 'EVENT_82_run_dialog_1',
+        "identifier": 'EVENT_84_run_dialog_1',
         "command": 'run_dialog',
         "args": [1108, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
-        "identifier": 'EVENT_82_ret_1',
+        "identifier": 'EVENT_84_ret_1',
         "command": 'ret'
     }
 ]

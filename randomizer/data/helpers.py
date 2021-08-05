@@ -1,7 +1,10 @@
+# Contains most selectors needed for logic/flags.py
 
 import enum
+from randomizer.data import music, spells
 
 # ****************************** Location enum
+
 
 class ShuffleLocationSelector(enum.Enum):
     """Enumeration for enabling and disabling locations"""
@@ -417,3 +420,224 @@ class ShuffleLocationSelector(enum.Enum):
     InnerFactoryBoss4 = "Inner Factory fourth boss star piece"
     InnerFactoryBossFinal = "Factory final boss star piece"
 
+
+class FireworksOptions(enum.Enum):
+    """Enumeration for Fireworks flag option"""
+    Vanilla = "Vanilla"
+    ShuffleFireworks = "Shuffle Fireworks"
+    ProgressiveFireworks = "Shuffle Progressive Fireworks"
+
+
+class WinConditions(enum.Enum):
+    """Enumeration for win condition options"""
+    FinalBoss = "Beat the Factory"
+    Culex = "Beat Monstro Town sealed door"
+    StarPieces = "Collect required star pieces"
+
+
+class PlayableCharacters(enum.Enum):
+    """Enumeration for win condition options"""
+    Mario = "Mario"
+    Mallow = "Mallow"
+    Geno = "Geno"
+    Bowser = "Bowser"
+    Toadstool = "Toadstool"
+    Random = "Random"
+
+
+class LearnableSpells(enum.Enum):
+    Jump = spells.Jump.title
+    FireOrb = spells.FireOrb.title
+    SuperJump = spells.SuperJump.title
+    SuperFlame = spells.SuperFlame.title
+    UltraJump = spells.UltraJump.title
+    UltraFlame = spells.UltraFlame.title
+    Therapy = spells.Therapy.title
+    GroupHug = spells.GroupHug.title
+    SleepyTime = spells.SleepyTime.title
+    ComeBack = spells.ComeBack.title
+    Mute = spells.Mute.title
+    PsychBomb = spells.PsychBomb.title
+    Terrorize = spells.Terrorize.title
+    PoisonGas = spells.PoisonGas.title
+    Crusher = spells.Crusher.title
+    BowserCrush = spells.BowserCrush.title
+    GenoBeam = spells.GenoBeam.title
+    GenoBoost = spells.GenoBoost.title
+    GenoWhirl = spells.GenoWhirl.title
+    GenoBlast = spells.GenoBlast.title
+    GenoFlash = spells.GenoFlash.title
+    Thunderbolt = spells.Thunderbolt.title
+    HPRain = spells.HPRain.title
+    Psychopath = spells.Psychopath.title
+    Shocker = spells.Shocker.title
+    Snowy = spells.Snowy.title
+    StarRain = spells.StarRain.title
+
+
+class EquipmentPropertiesOptions(enum.Enum):
+    """Enumeration for win condition options"""
+    default = "Default"
+    some_buffs_added = "Some buffs added"
+    completely_random = "Completely random"
+
+
+class EXPMultiplierOptions(enum.Enum):
+    default = "Default"
+    double = "Double"
+    triple = "Triple"
+
+
+class BanditsWayGating(enum.Enum):
+    """Enumeration for Bandit's Way gating flag option"""
+    RecruitMario = "Recruit Mario"
+    RecruitMallow = "Recruit Mallow"
+    RecruitGeno = "Recruit Geno"
+    RecruitBowser = "Recruit Bowser"
+    RecruitToadstool = "Recruit Toadstool"
+    FinishMushroomWay = "Finish Mushroom Way"
+    AlwaysOpen = "Always open"
+
+
+class ForestMazeGating(enum.Enum):
+    """Enumeration for Forest Maze gating flag option"""
+    FindMario = "Find Mario"
+    FindMallow = "Find Mallow"
+    FindGeno = "Find Geno"
+    FindBowser = "Find Bowser"
+    FindToadstool = "Find Toadstool"
+    ExchangeCricketPie = "Exchange Cricket Pie"
+    AlwaysOpen = "Always open"
+
+
+class PipeVaultGating(enum.Enum):
+    """Enumeration for Pipe Vault gating flag option"""
+    RecruitMario = "Find Mario"
+    RecruitMallow = "Find Mallow"
+    RecruitGeno = "Find Geno"
+    RecruitBowser = "Find Bowser"
+    RecruitToadstool = "Find Toadstool"
+    FinishForestMaze = "Finish Forest Maze"
+    AlwaysOpen = "Always open"
+
+
+class BoosterTowerGating(enum.Enum):
+    """Enumeration for Booster Tower gating flag option"""
+    RecruitMario = "Recruit Mario"
+    RecruitMallow = "Recruit Mallow"
+    RecruitGeno = "Recruit Geno"
+    RecruitBowser = "Recruit Bowser"
+    RecruitToadstool = "Recruit Toadstool"
+    FinishMoleville = "Finish Moleville"
+    AlwaysOpen = "Always open"
+
+
+class MarrymoreGating(enum.Enum):
+    """Enumeration for Marrymore gating flag option"""
+    FinishBoosterHill = "Finish Booster Hill"
+    FinishBoosterTower = "Finish Booster Tower"
+    AlwaysOpen = "Always open"
+
+
+class SeaGating(enum.Enum):
+    """Enumeration for Sea & Sunken Ship gating flag option"""
+    RecruitMario = "Recruit Mario"
+    RecruitMallow = "Recruit Mallow"
+    RecruitGeno = "Recruit Geno"
+    RecruitBowser = "Recruit Bowser"
+    RecruitToadstool = "Recruit Toadstool"
+    Find1Star = "Collect 1 Star Piece"
+    Find2Star = "Collect 2 Star Pieces"
+    Find3Star = "Collect 3 Star Pieces"
+    Find4Star = "Collect 4 Star Pieces"
+    Find5Star = "Collect 5 Star Pieces"
+    Find6Star = "Collect 6 Star Pieces"
+    AlwaysOpen = "Always open"
+
+
+class YaridovichGating(enum.Enum):
+    """Enumeration for Seaside boss gating flag option"""
+    FinishSunkenShip = "Finish Sunken Ship"
+    AlwaysOpen = "Always available"
+
+
+class MonstroTownGating(enum.Enum):
+    """Enumeration for Monstro Town gating flag option"""
+    FinishLandsEnd = "Finish Land's End"
+    AlwaysOpen = "Always open"
+
+
+class BarrelVolcanoGating(enum.Enum):
+    """Enumeration for Barrel Volcano gating flag option"""
+    FinishNimbusLand = "Finish Nimbus Land"
+    AlwaysOpen = "Always open"
+
+
+class BowsersKeepGating(enum.Enum):
+    """Enumeration for Bowser's Keep gating flag option"""
+    Find1Star = "Collect 1 Star Piece"
+    Find2Star = "Collect 2 Star Pieces"
+    Find3Star = "Collect 3 Star Pieces"
+    Find4Star = "Collect 4 Star Pieces"
+    Find5Star = "Collect 5 Star Pieces"
+    Find6Star = "Collect 6 Star Pieces"
+    FinishBarrelVolcano = "Finish Barrel Volcano"
+    AlwaysOpen = "Always open"
+
+
+class FactoryGating(enum.Enum):
+    """Enumeration for Factory gating flag option"""
+    AlwaysOpen = "Open when Bowser's Keep is opened"
+    FinishBowsersKeep = "Finish Bowser's Keep"
+    Find1Star = "Collect 1 Star Piece"
+    Find2Star = "Collect 2 Star Pieces"
+    Find3Star = "Collect 3 Star Pieces"
+    Find4Star = "Collect 4 Star Pieces"
+    Find5Star = "Collect 5 Star Pieces"
+    Find6Star = "Collect 6 Star Pieces"
+
+
+class StarProgressionchallengeOptions(enum.Enum):
+    default = "Default"
+    sp1 = "Star pieces (easy)"
+    sp2 = "Star pieces (hard)"
+    bosses = "Bosses"
+    none = "No EXP"
+
+
+class EXPChallengeOptions(enum.Enum):
+    default = "Default"
+    easystars = "Star pieces (easy)"
+    hardstars = "Star pieces (hard)"
+    easybosses = "Bosses (easy"
+    hardbosses = "Bosses (hard)"
+    none = "None"
+
+
+class ItemQualities(enum.Enum):
+    """Enumeration for item shuffle quality option"""
+    Original = "Original item pool"
+    Tier4 = "Completely random, unrestricted"
+    Tier3 = "Completely random, exclude top-tier items"
+    Tier2 = "Completely random, include some good items"
+    Tier1 = "Completely random, bad items only"
+    Empty = "Completely empty"
+
+
+class ShopQualities(enum.Enum):
+    """Enumeration for shop shuffle quality option"""
+    Original = "Original shop pool"
+    Tier4 = "Completely random, unrestricted"
+    Tier3 = "Completely random, exclude top-tier items"
+    Tier2 = "Completely random, include some good items"
+    Tier1 = "Completely random, bad items only"
+    Empty = "Completely empty"
+
+
+class AvailableMusic(enum.Enum):
+    Normal = music.NormalBattleMusic.name
+    Boss1 = music.MidbossMusic.name
+    Boss2 = music.BossMusic.name
+    Smithy = music.Smithy1Music.name
+    Culex = music.CulexMusic.name
+    Corn = music.CorndillyMusic.name

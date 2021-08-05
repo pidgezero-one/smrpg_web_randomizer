@@ -1,8 +1,8 @@
 # Data module for enemy data.
 
 from randomizer.logic import flags, utils
-from randomizer.logic.battleassembler import BattleScript
 from randomizer.logic.patch import Patch
+
 from . import attacks
 from . import battlescripts
 from . import items
@@ -11,6 +11,7 @@ from .utils import palette_to_bytes
 from .battletables import Monsters, Targets
 from randomizer.data.npcmodels import models
 from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
+from randomizer.data.battleassembler import BattleScript
 
 # Number of enemies
 NUM_ENEMIES = 256

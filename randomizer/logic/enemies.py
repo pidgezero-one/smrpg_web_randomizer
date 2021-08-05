@@ -5,8 +5,8 @@ from functools import reduce
 
 from randomizer.data import bosses, enemies
 from randomizer.data.formations import FormationMember
+from randomizer.data.helpers import EXPMultiplierOptions
 from . import flags, utils
-from randomizer.logic.flags import EXPMultiplierOptions
 
 
 def _randomize_enemy_attack(attack):

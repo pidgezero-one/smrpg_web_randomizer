@@ -2,15 +2,14 @@
 import random
 import copy
 
-from randomizer.data import items
-from randomizer.data.items import ItemUnique
-from randomizer.logic.utils import isclass_or_instance
-from . import locations
-from randomizer.data.locations import InvisibleFlagLocation
 from randomizer.logic import flags
-from randomizer.logic.flags import ItemQualities, FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, YaridovichGating, SeaGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating
-from randomizer.data.helpers import ShuffleLocationSelector
+from randomizer.logic.utils import isclass_or_instance
+
+from randomizer.data import items, locations
+from randomizer.data.items import ItemUnique
+from randomizer.data.helpers import ShuffleLocationSelector, FireworksOptions, LearnableSpells, ItemQualities, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, YaridovichGating, SeaGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating
 from randomizer.data.roomobjecttables import ObjectType, Initiator, RadialDirection
+from randomizer.data.eventtables import AreaObjects, _0x60Flags
 
 # locations inherit world, and therefore settings
 # inventory does not
@@ -128,6 +127,17 @@ class BossStarPiece(locations.ItemLocation):
     def item_allowed(self, item):
         # Can only be Star Piece, or empty
         return isclass_or_instance(item, items.StarPiece) or item == None
+
+
+# ******* "3 Musty Fears Flags Anywhere"
+
+class InvisibleFlagLocation(locations.ItemLocation):
+    item = None
+    coords = (0, 0, 0)
+    shift = (0, 0)
+    clue = ""
+    key = True
+    access = 4
 
 # ******* Character recruitment classes
 
@@ -1357,6 +1367,9 @@ class PipeVaultSlide1(StarAllowedChest):
     event = 245
     item = items.Flower
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class PipeVaultSlide2(StarAllowedChest):
     area = locations.Area.PipeVault
@@ -1365,6 +1378,9 @@ class PipeVaultSlide2(StarAllowedChest):
     npc_ids = [9]
     event = 246
     item = items.FrogCoin
+
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
 
 
 class PipeVaultSlide3(StarAllowedChest):
@@ -1375,6 +1391,9 @@ class PipeVaultSlide3(StarAllowedChest):
     event = 247
     item = items.FrogCoin
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class PipeVaultSlideCoin1(OverworldItem):
     area = locations.Area.PipeVault
@@ -1383,6 +1402,9 @@ class PipeVaultSlideCoin1(OverworldItem):
     event = 237
     item = items.Coins1
     npc_ids = [0]
+
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
 
 
 class PipeVaultSlideCoin2(OverworldItem):
@@ -1393,6 +1415,9 @@ class PipeVaultSlideCoin2(OverworldItem):
     item = items.Coins1
     npc_ids = [1]
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class PipeVaultSlideCoin3(OverworldItem):
     area = locations.Area.PipeVault
@@ -1401,6 +1426,9 @@ class PipeVaultSlideCoin3(OverworldItem):
     event = 239
     item = items.Coins1
     npc_ids = [2]
+
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
 
 
 class PipeVaultSlideCoin4(OverworldItem):
@@ -1411,6 +1439,9 @@ class PipeVaultSlideCoin4(OverworldItem):
     item = items.Coins1
     npc_ids = [3]
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class PipeVaultSlideCoin5(OverworldItem):
     area = locations.Area.PipeVault
@@ -1420,6 +1451,9 @@ class PipeVaultSlideCoin5(OverworldItem):
     item = items.Coins1
     npc_ids = [4]
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class PipeVaultSlideFrogCoin(OverworldItem):
     area = locations.Area.PipeVault
@@ -1428,6 +1462,9 @@ class PipeVaultSlideFrogCoin(OverworldItem):
     event = 236
     item = items.FrogCoin
     npc_ids = [5]
+
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
 
 
 class PipeVaultNippers1(StarAllowedChest):
@@ -1439,6 +1476,9 @@ class PipeVaultNippers1(StarAllowedChest):
     item = items.Flower
     npc_ids = [6]
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class PipeVaultNippers2(StarAllowedChest):
     area = locations.Area.PipeVault
@@ -1448,6 +1488,9 @@ class PipeVaultNippers2(StarAllowedChest):
     event = 246
     item = items.Coins(Chest, 20)
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class GoombaThumping1(NPCReward):
     area = locations.Area.PipeVault
@@ -1456,6 +1499,9 @@ class GoombaThumping1(NPCReward):
     event = 253
     item = items.FlowerTab
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class GoombaThumping2(NPCReward):
     area = locations.Area.PipeVault
@@ -1463,6 +1509,9 @@ class GoombaThumping2(NPCReward):
     rooms = [143]
     event = 252
     item = items.FlowerJar
+
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
 
 
 # *** Yo'ster Isle
@@ -1475,6 +1524,9 @@ class YosterIsleEntrance(Chest):
     item = items.FrogCoin
     event = 247
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class YosterIsleRaceReward1(NPCReward):
     description = ShuffleLocationSelector.YosterIsleRaceReward1
@@ -1482,6 +1534,9 @@ class YosterIsleRaceReward1(NPCReward):
     rooms = [34]
     item = items.YoshiCookie
     event = 253
+
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
 
 
 class YosterIsleRaceReward2(NPCReward):
@@ -1491,6 +1546,9 @@ class YosterIsleRaceReward2(NPCReward):
     item = items.YoshiCookie
     event = 251
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class YosterIsleRaceReward3(NPCReward):
     description = ShuffleLocationSelector.YosterIsleRaceReward3
@@ -1498,6 +1556,9 @@ class YosterIsleRaceReward3(NPCReward):
     rooms = [34]
     item = items.YoshiCookie
     event = 250
+
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
 
 
 class YosterIsleFlag(NPCReward):
@@ -1512,6 +1573,9 @@ class YosterIsleFlag(NPCReward):
         if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
+
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
 
 
 # *** Moleville
@@ -5408,6 +5472,9 @@ class PipeVaultExterior(InvisibleFlagLocation):
     clue = " Mine is by a pipe in the middle of\n the road.[await]"
     rooms = [55]
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class PipeVaultRedPipe(InvisibleFlagLocation):
     item = None
@@ -5417,6 +5484,9 @@ class PipeVaultRedPipe(InvisibleFlagLocation):
     clue = "\n     Mine is behind a low red pipe.[await]"
     rooms = [129]
 
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
+
 
 class YosterIsleHut(InvisibleFlagLocation):
     item = None
@@ -5424,6 +5494,9 @@ class YosterIsleHut(InvisibleFlagLocation):
     area = locations.Area.YosterIsle
     clue = "\n         Mine's in a fruity hut.[await]"
     rooms = [34]
+
+    def can_access(self, inventory):
+        return locations.can_access_pipe_vault(self, inventory)
 
 
 class MolevilleHydrant(InvisibleFlagLocation):
@@ -6433,7 +6506,7 @@ def get_default_chests(world):
         world.eventscript[91].append({"identifier": "EVENT_91_ret", "command": "ret"})
 
     # don't consider these as locations at all if super jump is turned off
-    if flags.LearnableSpells.SuperJump in world.settings.get_flag(flags.AvailableSpells).enabled:
+    if LearnableSpells.SuperJump in world.settings.get_flag(flags.AvailableSpells).enabled:
         chests.extend([
             SuperJumps30(world),
             SuperJumps100(world)

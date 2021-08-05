@@ -7,12 +7,11 @@ import enum
 from scipy.stats import gamma
 
 from randomizer.data import items, locations, chests
+from randomizer.data.helpers import FireworksOptions, WinConditions, ItemQualities, ShopQualities, PlayableCharacters, BanditsWayGating, ForestMazeGating, BoosterTowerGating, SeaGating, ShuffleLocationSelector
 from randomizer.data.items import ItemUnique
 from randomizer.data.locations import Area
 from randomizer.data.keys import KeyItemLocation
-from randomizer.logic import flags, keys
-from randomizer.logic.flags import FireworksOptions, ItemQualities, ShopQualities, PlayableCharacters, BanditsWayGating, ForestMazeGating, BoosterTowerGating, SeaGating, WinConditions, ShuffleLocationSelector
-from randomizer.logic import utils
+from randomizer.logic import flags, keys, utils
 
 class RandomGrantEnum(enum.Enum):
     RegularItem = enum.auto()

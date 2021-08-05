@@ -11,8 +11,50 @@ from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.data.roomobjecttables import Rooms
 from randomizer.data.objectsequencetables import SequenceSpeeds
 
-from randomizer.logic.flags import AvailableBosses
 
+
+
+class AvailableBosses(Enum):
+    HammerBro = "Hammer Bros"
+    Mack = "Mack"
+    Croco1 = "Croco 1"
+    Pandorite = "Pandorite"
+    Belome1 = "Belome 1"
+    Bowyer = "Bowyer"
+    Croco2 = "Croco 2"
+    Punchinello = "Punchinello"
+    Booster = "Booster"
+    KnifeGuyGrateGuy = "Knife Guy & Grate Guy"
+    Bundt = "Bundt"
+    KingCalamari = "King Calamari"
+    Hidon = "Hidon"
+    Johnny = "Johnny"
+    Yaridovich = "Yaridovich"
+    Mokura = "Mokura"
+    Belome2 = "Belome 2"
+    Jagger = "Jagger"
+    Jinx1 = "Jinx 1"
+    Jinx2 = "Jinx 2"
+    Jinx3 = "Jinx 3"
+    Culex = "Culex"
+    BoxBoy = "Box Boy"
+    Megasmilax = "Megasmilax"
+    Dodo = "Dodo"
+    Birdetta = "Birdetta"
+    Valentina = "Valentina"
+    CzarDragon = "Czar Dragon"
+    AxemRangers = "Axem Rangers"
+    Chester = "Chester"
+    Magikoopa = "Magikoopa"
+    Boomer = "Boomer"
+    Exor = "Exor"
+    CountDown = "Count Down"
+    CloakerDomino = "Cloaker & Domino"
+    Clerk = "Clerk"
+    Manager = "Manager"
+    Director = "Director"
+    Gunyolk = "Gunyolk & Factory Chief"
+    Smithy = "Smithy"
 
 class Battlefields(IntEnum):
     """Enumeration for ID values for battlefields."""

@@ -6,10 +6,10 @@ import math
 
 from randomizer.data import items
 from randomizer.data.items import ItemUnique
+from randomizer.data.helpers import PlayableCharacters, SeaGating, BowsersKeepGating
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
 from randomizer.logic import flags
-from randomizer.logic.flags import FireworksOptions, PlayableCharacters, SeaGating, BowsersKeepGating
 
 
 # ************************** Shop data classes

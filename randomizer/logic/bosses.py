@@ -9,6 +9,8 @@ from randomizer.data.formations import FormationMember
 from . import flags, utils
 
 
+
+
 def _boss_fight_filter(world, location):
     """
 
@@ -23,7 +25,7 @@ def _boss_fight_filter(world, location):
     if not isinstance(location, bosses.BossLocation):
         return False
 
-    bosses_to_ignore = world.settings.get_flag(flags.AvailableBosses).disabled
+    bosses_to_ignore = world.settings.get_flag(bosses.AvailableBosses).disabled
     if location.description in bosses_to_ignore:
         return False
 

@@ -120,6 +120,58 @@ script = [
         "args": [0x70df, 20]
     },
     {
+        "identifier": 'EVENT_455_action_queue_async_1',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
+                "command": 'shift_east_pixels',
+                "args": [11]
+            },
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_shift_northwest_pixels_0',
+                "command": 'shift_northeast_pixels',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_2',
+                "command": 'set_sprite_sequence',
+                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_2080_action_queue_async_1_SUBSCRIPT_set_vram_priority_3',
+                "command": 'set_vram_priority',
+                "args": [VramPriority.NORMAL]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_455_jmp_if_',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7055, 7, 'EVENT_455_fade_in_from_black_async_23']
+    },
+    {
+        "identifier": 'EVENT_455_action_queue_async_1_',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_1]
+    },
+    {
+        "identifier": 'EVENT_455_action_queue_async_1__',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_0]
+    },
+    {
+        "identifier": 'EVENT_455_action_queue_async_1___',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_1, 55]
+    },
+    {
+        "identifier": 'EVENT_455_action_queue_async_1____',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, 55]
+    },
+    {
         "identifier": 'EVENT_455_fade_in_from_black_async_23',
         "command": 'fade_in_from_black_async'
     },

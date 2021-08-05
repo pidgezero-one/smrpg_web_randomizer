@@ -3,12 +3,13 @@
 from enum import Enum, auto
 from inspect import isclass
 
+from randomizer.logic import flags
+
 from randomizer.data import items, spells
+from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, PipeVaultGating
 from randomizer.data.characters import Mario, Mallow, Peach, Bowser, Geno
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
-from randomizer.logic import flags
-from randomizer.logic.flags import BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EnabledRegularChecks, FireworksOptions
 
 
 class Area(Enum):
@@ -161,16 +162,6 @@ class ItemLocation:
         self._item = value
 
 
-
-# ******* "3 Musty Fears Flags Anywhere"
-
-class InvisibleFlagLocation(ItemLocation):
-    item = None
-    coords = (0, 0, 0)
-    shift = (0, 0)
-    clue = ""
-    key = True
-    access = 4
 
 
 class BowserRoom:
@@ -600,6 +591,23 @@ def can_access_forest(world, inventory):
         return inventory.has_item(items.ToadstoolRecruit) or inventory.has_item(items.ToadstoolSpotted)
     elif world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.ExchangeCricketPie):
         return inventory.has_item(items.CricketPie)
+    else:
+        return True
+
+
+def can_access_pipe_vault(world, inventory):
+    if world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitMario):
+        return inventory.has_item(items.MarioRecruit) or inventory.has_item(items.MarioSpotted)
+    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitMallow):
+        return inventory.has_item(items.MallowRecruit) or inventory.has_item(items.MallowSpotted)
+    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitGeno):
+        return inventory.has_item(items.GenoRecruit) or inventory.has_item(items.GenoSpotted)
+    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitBowser):
+        return inventory.has_item(items.BowserRecruit) or inventory.has_item(items.BowserSpotted)
+    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitToadstool):
+        return inventory.has_item(items.ToadstoolRecruit) or inventory.has_item(items.ToadstoolSpotted)
+    elif world.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.FinishForestMaze):
+        return can_access_forest(world, inventory)
     else:
         return True
 

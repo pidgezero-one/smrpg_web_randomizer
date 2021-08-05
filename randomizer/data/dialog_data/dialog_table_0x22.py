@@ -1029,7 +1029,9 @@ dialog_data[602] = '''   Invisible items have been placed.[await]'''
 dialog_data[603] = '''[await]'''
 dialog_data[604] = '''[await]'''
 dialog_data[605] = '''[await]'''
-dialog_data[606] = '''[await]'''
+dialog_data[606] = '''      CLOSED FOR MAINTENANCE
+        Please come back later.
+                                    ~ Luigi[await]'''
 dialog_data[607] = '''[await]'''
 dialog_data[608] = '''[await]'''
 dialog_data[609] = '''[await]'''

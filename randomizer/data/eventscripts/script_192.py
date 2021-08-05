@@ -22,6 +22,46 @@ script = [
 
 
     # DEBUG
+    """     {
+        "identifier": 'EVENT_192_',
+        "command": 'put_inventory',
+        "args": [items.RedEssence]
+    },
+    {
+        "identifier": 'EVENT_192__',
+        "command": 'put_inventory',
+        "args": [items.RedEssence]
+    },
+    {
+        "identifier": 'EVENT_192___',
+        "command": 'put_inventory',
+        "args": [items.RedEssence]
+    },
+    {
+        "identifier": 'EVENT_192____',
+        "command": 'put_inventory',
+        "args": [items.RedEssence]
+    },
+    {
+        "identifier": 'EVENT_192_____',
+        "command": 'put_inventory',
+        "args": [items.RedEssence]
+    },
+    {
+        "identifier": 'EVENT_192______',
+        "command": 'put_inventory',
+        "args": [items.AttackScarf]
+    },
+    {
+        "identifier": 'EVENT_192_______',
+        "command": 'put_inventory',
+        "args": [items.SuperSuit]
+    },
+    {
+        "identifier": 'EVENT_192________',
+        "command": 'put_inventory',
+        "args": [items.LazyShellWeapon]
+    }, """
 
 
 

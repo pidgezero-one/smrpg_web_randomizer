@@ -351,6 +351,11 @@ script = [
         "args": [354]
     },
     {
+        "identifier": 'EVENT_2448_start_battle_91_',
+        "command": 'run_event_as_subroutine',
+        "args": [211]
+    },
+    {
         "identifier": 'EVENT_2448_jmp_if_bit_clear_92',
         "command": 'jmp_if_bit_clear',
         "args": [0x7040, 0, 'EVENT_2448_set_bit_94']

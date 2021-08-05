@@ -1821,7 +1821,7 @@ def get_default_enemy_formations(world):
             world.get_enemy_instance(enemies.Bundt),
             world.get_enemy_instance(enemies.Raspberry),
         ]),
-        EnemyFormation(299, 17, 7, [
+        EnemyFormation(299, None, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.KnifeGuy), 151, 119),
             FormationMember(1, False, world.get_enemy_instance(enemies.GrateGuy), 199, 143),
         ]),
@@ -1860,7 +1860,7 @@ def get_default_enemy_formations(world):
             FormationMember(4, True, world.get_enemy_instance(enemies.AxemGreen), 183, 151),
             FormationMember(5, True, world.get_enemy_instance(enemies.AxemYellow), 215, 151),
         ], required_battlefield=Battlefields.AxemRangers),
-        EnemyFormation(305, 3, 11, [
+        EnemyFormation(305, None, 11, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Bowyer), 183, 127),
         ]),
         EnemyFormation(306, None, 7, [
@@ -1923,7 +1923,7 @@ def get_default_enemy_formations(world):
             FormationMember(0, False, world.get_enemy_instance(enemies.Artichoker), 151, 119),
             FormationMember(1, False, world.get_enemy_instance(enemies.Artichoker), 215, 143),
         ]),
-        EnemyFormation(314, 14, 7, [
+        EnemyFormation(314, None, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Punchinello), 199, 119),
             FormationMember(1, True, world.get_enemy_instance(enemies.Microbomb), 135, 119),
             FormationMember(2, True, world.get_enemy_instance(enemies.Microbomb), 151, 135),
@@ -2100,8 +2100,8 @@ def get_default_enemy_formations(world):
             FormationMember(1, False, world.get_enemy_instance(enemies.PyrosphereHenchman), 215, 135),
             FormationMember(2, False, world.get_enemy_instance(enemies.PyrosphereHenchman), 183, 103),
         ]),
-        EnemyFormation(353, None, 1, [
-            FormationMember(0, False, world.get_enemy_instance(enemies.FireCrystal), 183, 127),
+        EnemyFormation(353, 76, 1, [
+            FormationMember(0, None, world.get_enemy_instance(enemies.FireCrystal), 183, 127),
         ]),
         EnemyFormation(354, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Shogun), 167, 135),
@@ -2344,13 +2344,13 @@ def get_default_enemy_formations(world):
         EnemyFormation(400, None, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Smithy2Body), 183, 127),
         ]),
-        EnemyFormation(405, None, 1, [
+        EnemyFormation(405, 20, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.WaterCrystal), 183, 127),
         ]),
-        EnemyFormation(406, None, 1, [
+        EnemyFormation(406, 11, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.EarthCrystal), 183, 127),
         ]),
-        EnemyFormation(407, None, 1, [
+        EnemyFormation(407, 35, 1, [
             FormationMember(0, False, world.get_enemy_instance(enemies.WindCrystal), 183, 127),
         ]),
         EnemyFormation(408, None, 1, [
