@@ -28,3 +28,5 @@ class Command(BaseCommand):
         f = open(f'write_to_0x3A6004.img', 'wb')
         f.write(allbytes)
         f.close()
+
+        # This NEEDS jump support.

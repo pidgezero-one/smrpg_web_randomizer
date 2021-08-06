@@ -22,7 +22,37 @@ script = [
 
 
     # DEBUG
-    """     {
+    {
+        "identifier": 'EVENT_192_set_map_connector_',
+        "command": 'set_bit',
+        "args": [0x7067, 4]
+    },
+    {
+        "identifier": 'EVENT_192_set_map_connector__',
+        "command": 'set_bit',
+        "args": [0x7067, 5]
+    },
+    {
+        "identifier": 'EVENT_192_set_map_connector___',
+        "command": 'set_bit',
+        "args": [0x706F, 3]
+    },
+    {
+        "identifier": 'EVENT_192_set_map_connector____',
+        "command": 'set_bit',
+        "args": [0x706F, 4]
+    },
+    {
+        "identifier": 'EVENT_192_____leave_party_22_-',
+        "command": 'run_event_as_subroutine',
+        "args": [188]
+    }, 
+    {
+        "identifier": 'EVENT_192_____leave_party_22_--',
+        "command": 'run_event_as_subroutine',
+        "args": [189]
+    }, 
+    {
         "identifier": 'EVENT_192_',
         "command": 'put_inventory',
         "args": [items.RedEssence]
@@ -48,20 +78,50 @@ script = [
         "args": [items.RedEssence]
     },
     {
-        "identifier": 'EVENT_192______',
+        "identifier": 'EVENT_192_____-----',
+        "command": 'put_inventory',
+        "args": [items.FireBomb]
+    },
+    {
+        "identifier": 'EVENT_192_____----',
+        "command": 'put_inventory',
+        "args": [items.FireBomb]
+    },
+    {
+        "identifier": 'EVENT_192_____---',
+        "command": 'put_inventory',
+        "args": [items.FireBomb]
+    },
+    {
+        "identifier": 'EVENT_192_____--',
+        "command": 'put_inventory',
+        "args": [items.FireBomb]
+    },
+    {
+        "identifier": 'EVENT_192__-____',
         "command": 'put_inventory',
         "args": [items.AttackScarf]
+    },
+    {
+        "identifier": 'EVENT_192___-____',
+        "command": 'put_inventory',
+        "args": [items.SuperSuit]
+    },
+    {
+        "identifier": 'EVENT_192_____-___',
+        "command": 'put_inventory',
+        "args": [items.LazyShellWeapon]
+    },
+    {
+        "identifier": 'EVENT_192______',
+        "command": 'put_inventory',
+        "args": [items.TroopaPin]
     },
     {
         "identifier": 'EVENT_192_______',
         "command": 'put_inventory',
         "args": [items.SuperSuit]
     },
-    {
-        "identifier": 'EVENT_192________',
-        "command": 'put_inventory',
-        "args": [items.LazyShellWeapon]
-    }, """
 
 
 
