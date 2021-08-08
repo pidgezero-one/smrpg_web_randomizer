@@ -18,6 +18,11 @@ script = [
         "command": 'run_event_as_subroutine',
         "args": [187]
     }, 
+    {
+        "identifier": 'EVENT_192_____leave_party_22',
+        "command": 'leave_party',
+        "args": [AreaObjects.DUMMY_0X05]
+    },
 
 
 
@@ -46,11 +51,6 @@ script = [
         "identifier": 'EVENT_192_____leave_party_22_-',
         "command": 'run_event_as_subroutine',
         "args": [188]
-    }, 
-    {
-        "identifier": 'EVENT_192_____leave_party_22_--',
-        "command": 'run_event_as_subroutine',
-        "args": [189]
     }, 
     {
         "identifier": 'EVENT_192_',
@@ -99,38 +99,38 @@ script = [
     },
     {
         "identifier": 'EVENT_192__-____',
-        "command": 'put_inventory',
-        "args": [items.AttackScarf]
+        "command": 'equip_item_to_character',
+        "args": [AreaObjects.MARIO, items.AttackScarf]
     },
     {
         "identifier": 'EVENT_192___-____',
-        "command": 'put_inventory',
-        "args": [items.SuperSuit]
+        "command": 'equip_item_to_character',
+        "args": [AreaObjects.MARIO, items.SuperSuit]
     },
     {
         "identifier": 'EVENT_192_____-___',
-        "command": 'put_inventory',
-        "args": [items.LazyShellWeapon]
+        "command": 'equip_item_to_character',
+        "args": [AreaObjects.MARIO, items.LazyShellWeapon]
+    },
+    {
+        "identifier": 'EVENT_192____-_-___-',
+        "command": 'equip_item_to_character',
+        "args": [AreaObjects.MALLOW, items.SonicCymbal]
     },
     {
         "identifier": 'EVENT_192______',
-        "command": 'put_inventory',
-        "args": [items.TroopaPin]
+        "command": 'equip_item_to_character',
+        "args": [AreaObjects.MALLOW, items.TroopaPin]
     },
     {
         "identifier": 'EVENT_192_______',
-        "command": 'put_inventory',
-        "args": [items.SuperSuit]
+        "command": 'equip_item_to_character',
+        "args": [AreaObjects.MALLOW, items.SuperSuit]
     },
 
 
 
     # finish loading game
-    {
-        "identifier": 'EVENT_192_____leave_party_22',
-        "command": 'leave_party',
-        "args": [AreaObjects.DUMMY_0X05]
-    },
     {
         "identifier": 'EVENT_192___set_bit_17', 
         "command": 'jmp_to_event',

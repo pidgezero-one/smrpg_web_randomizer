@@ -79,7 +79,8 @@ banks = {
             "end": 0x3A60CF
         },
         "start": 0x3A60D0,
-        "end": 0x3A705C
+        # "end": 0x3A705C
+        "end": 0x3A7036 # changed this cause i inserted a party size subroutine
     }
 }
 
