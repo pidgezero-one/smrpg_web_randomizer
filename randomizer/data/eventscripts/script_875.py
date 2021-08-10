@@ -6,9 +6,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": "EVENT_875_room_232_logic",  # bowyer
+        "identifier": "EVENT_875_room_232_logic",  # axems
         "command": 'start_battle',
-        "args": [181, 1]
+        "args": [182, 39]
     },
     {
         "identifier": "EVENT_875_room_232_logic_",

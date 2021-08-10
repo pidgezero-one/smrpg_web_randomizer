@@ -148,6 +148,7 @@ class CharacterRecruit(locations.ItemLocation):
     coinsanity = False
     dialogs_to_replace = []
     item = None
+    npcs = []
 
     def item_allowed(self, item):
         # Can only be character
@@ -328,6 +329,11 @@ class MushroomWayCharacter(CharacterRecruit):
     item = items.MallowRecruit
     rooms = [205]
     event = 186
+    npcs = [
+        (203, 8, [], []),
+        (204, 7, [], []),
+        (205, 7, [], [])
+    ]
 
 
 class MushroomWayStarPiece(BossStarPiece):
@@ -1341,6 +1347,10 @@ class ForestMazeCharacter(CharacterRecruit):
     item = items.GenoRecruit
     rooms = [232]
     event = 186
+    npcs = [
+        (230, 11, [], [488]),
+        (232, 10, [2448], [])
+    ]
 
     def can_access(self, inventory):
         return locations.can_access_forest(self.world, inventory)
@@ -1755,6 +1765,9 @@ class MolevilleMinesCharacter(CharacterRecruit):
     item = items.BowserRecruit
     rooms = [284]
     event = 186
+    npcs = [
+        (284, 1, [], [488])
+    ]
 
     def can_access(self, inventory):
         return inventory.has_item(items.BambinoBomb)
@@ -2368,6 +2381,10 @@ class MarrymoreCharacter(CharacterRecruit):
     item = items.ToadstoolRecruit
     rooms = [154]
     event = 186
+    npcs = [
+        (154, 8, [3809], []),
+        (54, 8, [3499, 3502], [])
+    ]
 
     def can_access(self, inventory):
         return locations.can_access_marrymore(self, inventory)

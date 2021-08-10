@@ -268,7 +268,7 @@ class AvailableCharacters(CategorizationFlag):
 
 class CharacterStats(BooleanFlag):
     name = 'Randomize character stats'
-    description = '''If enabled, stats and stat curves for each playable character will be randomized.
+    description = '''If enabled, stats and stat curves for each playable character will be randomized. This also randomizes the number of FP you start with.
     
     If disabled, playable characters retain their original stats and stat curves.'''
     default = False
@@ -291,6 +291,12 @@ class CharacterLearnedSpells(BooleanFlag):
     name = 'Randomize character learned spells'
     description = "The pool of spells learnable by each character will be randomized. This only covers spells originally learn-able by playable characters, and does not include enemy spells."
     default = False
+
+class UncapSuperJumps(BooleanFlag):
+    name = 'Uncap Super Jumps'
+    description = "If enabled, you can do more than 100 Super Jumps at once."
+    default = False
+    # this needs testing
 
 
 class CharacterSpellStats(BooleanFlag):
@@ -1446,6 +1452,14 @@ class ChangeNames(BooleanFlag):  # not available unless PaletteSwaps enabled
     inverse_description = '(Sprite colours are not modified.)'
     value = '-palette'
 
+class RemoveFlashes(BooleanFlag):
+    name = "Remove flashes"
+    description = '''Removes some flashing animations (from spells, attacks, etc). 
+    
+    Disclaimer: While this feature is intended to promote accessibility, developers cannot promise that every feature in the game with screen flashes has had them removed. Players and viewers with photosensitivity should continue to engage with this randomizer at their own risk. 
+    
+    If you would like to suggest an animation that should have flashes removed by this feature, please see the "Contributing" section and fill out the form.'''
+
 
 # ************************************** Category classes
 
@@ -1590,7 +1604,8 @@ class CosmeticCategory(FlagCategory):
         BossShuffleMusic,
         ShuffledMusic,
         PaletteSwaps,
-        ChangeNames
+        ChangeNames,
+        RemoveFlashes
     ]
 
 # ************************************** Preset classes

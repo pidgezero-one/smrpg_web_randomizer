@@ -394,6 +394,60 @@ def is_vanilla(boss, location):
     (utils.isclass_or_instance(location, data.bosses.Smithy) and utils.isclass_or_instance(boss, data.bosses.SmithyBoss))
  """
 
+def sanitize_character_animation_script(sequence_types, script):
+    new_script = []
+    for index, command in enumerate(script):
+        cmd = copy.copy(command)
+        seq = cmd["args"][0]
+        spr = cmd["args"][1]
+        if cmd["command"] == 'set_sprite_sequence':
+            key = None
+            if _0x08Flags.READ_AS_MOLD in cmd["args"][2]:
+                if spr == 5 and seq == 0:
+                    key = "hurt"
+                elif spr == 0 and seq == 14:
+                    key = "looking_down_static"
+                elif spr == 2 and seq == 1:
+                    key = "floored"
+                elif spr == 0 and seq == 20:
+                    key = "south"
+                elif spr == 1 and seq == 17:
+                    key = "defend"
+            else:
+                if spr == 2 and seq == 3:
+                    key = "shocked_loop"
+                elif spr == 2 and seq == 4:
+                    key = "shocked_loop_backwards"
+                elif spr == 0 and seq == 13:
+                    key = "crying"
+                elif spr == 0 and seq == 14:
+                    key = "crying_backwards"
+                elif spr == 0 and seq == 1:
+                    key = "face_north"
+                elif spr == 0 and seq == 0:
+                    key = "face_south"
+                elif spr == 0 and seq == 8:
+                    key = "shaking_head"
+                elif spr == 0 and seq == 9:
+                    key = "shaking_head_backward"
+                elif spr == 0 and seq == 6:
+                    key = "looking_down"
+                elif spr == 1 and seq == 6:
+                    key = "sleeping"
+                elif spr == 1 and seq == 3:
+                    key = "shocked_backwards_sequence"
+        if key is not None:
+            flags = [a for a in in cmd["args"][2] if a != _0x08Flags.READ_AS_MOLD]
+            sprite, sequence, is_mold = sequence_types[key]
+            if is_mold:
+                flags.append(_0x08Flags.READ_AS_MOLD)
+            cmd["args"] = [sequence, sprite, flags]
+            new_script.append(cmd)
+        else:
+            new_script.append(cmd)
+    return new_script
+
+
 def sanitize_animation_script(boss, boss_location, script, model):
     # leave script alone if character is vanilla
     if not is_vanilla(boss, boss_location):
@@ -1027,7 +1081,6 @@ class GameWorld:
             self.replace_dialog(1224, ''' You want another chest?[await]\n  [select] (Yes)\n  [select] (No)[await]''')
             self.replace_dialog(1227, ''' I found another chest.\n I'll sell it for 800 coins.[await]\n  [select] (Buy it)\n  [select] (Pass)[await]''')
 
-
         # Starting characters
         for c in self.starter_character_checks:
             if c.item is not None:
@@ -1049,6 +1102,7 @@ class GameWorld:
         else:
             cursor_id = 0
 
+
         # Star Hill wishes
         for id, wish in self.wishes.wishes:
             self.replace_dialog(id, wish)
@@ -1067,6 +1121,8 @@ class GameWorld:
         ######### write character/item/star piece granters
 
         grant_builders = {}
+
+
 
         # recruitable characters
         for c in self.recruitable_character_checks:
@@ -1093,12 +1149,64 @@ class GameWorld:
                     if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
                         self.prepend_bits(201, [[0x7066, 3], [0x706E, 3]])
                 elif utils.isclass_or_instance(c, data.chests.MarrymoreCharacter):
-                    # What to do about this if you DON'T get a character here?
                     self.search_replace_dialog("`MARRYMORE_CHARACTER`", c.item.description)
                     random_character = random.choice([i.description for i in [data.items.MarioRecruit, data.items.MallowRecruit, data.items.GenoRecruit, data.items.BowserRecruit, data.items.ToadstoolRecruit] if not utils.isclass_or_instance(c.item, i)])
                     self.search_replace_dialog("`RANDOM_CHARACTER_NAME`", random_character)
                     if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
                         self.prepend_bits(200, [[0x7066, 3], [0x706E, 3]])
+                for room_id, npc, eventscripts, actionscripts in c.npcs:
+                    roomobject = 0
+                    # replace model
+                    for o_index, o in enumerate(self.rooms[room_id]["objects"]):
+                        if roomobject == npc:
+                            self.rooms[room_id]["objects"][o_index]["model"] = c.item.model
+                        roomobject += 1 + len(o["clones"])
+                    # format scripts
+                    for script_id in eventscripts:
+                        for command_index, cmd in enumerate(self.eventscripts[script_id]):
+                            if is_animation_header(cmd, npc):
+                                self.eventscripts[script_id][command_index]["subscript"] = sanitize_character_animation_script(c.item.sprites, cmd["subscript"])
+                    for script_id in actionscripts:
+                        for command_index, cmd in enumerate(self.actionscripts[script_id]):
+                            self.actionscripts[script_id] = sanitize_character_animation_script(c.item.sprites, self.actionscripts[script_id])
+            elif not utils.isclass_or_instance(c, data.chests.MolevilleMinesCharacter): # replace with Toad if empty
+                toad_sprites = {
+                    "south": (0, 6, True),
+                    "defend": (0, 1, True),
+                    "face_north": (0, 1, False),
+                    "face_south": (0, 0, False),
+                    "shocked_loop": (0, 0, False),
+                    "shocked_loop_backwards": (0, 1, False),
+                    "shocked_backwards_sequence": (0, 1, False),
+                    "crying": (0, 0, False),
+                    "crying_backwards": (0, 1, False),
+                    "looking_down_static": (0, 0, True),
+                    "looking_down": (0, 0, False),
+                    "floored": (0, 0, True),
+                    "hurt": (0, 0, True),
+                    "shaking_head": (0, 0, False),
+                    "shaking_head_backward": (0, 1, False),
+                    "sleeping": (0, 1, False)
+                }
+                if utils.isclass_or_instance(c, data.chests.MarrymoreCharacter):
+                    self.search_replace_dialog("`MARRYMORE_CHARACTER`", "Toad")
+                    self.search_replace_dialog("`RANDOM_CHARACTER_NAME`", "Yoshi")
+                for room_id, npc, eventscripts, actionscripts in c.npcs:
+                    roomobject = 0
+                    # replace model
+                    for o_index, o in enumerate(self.rooms[room_id]["objects"]):
+                        if roomobject == npc:
+                            self.rooms[room_id]["objects"][o_index]["model"] = 64
+                        roomobject += 1 + len(o["clones"])
+                    # format scripts
+                    for script_id in eventscripts:
+                        for command_index, cmd in enumerate(self.eventscripts[script_id]):
+                            if is_animation_header(cmd, npc):
+                                self.eventscripts[script_id][command_index]["subscript"] = sanitize_character_animation_script(toad_sprites, cmd["subscript"])
+                    for script_id in actionscripts:
+                        for command_index, cmd in enumerate(self.actionscripts[script_id]):
+                            self.actionscripts[script_id] = sanitize_character_animation_script(toad_sprites, self.actionscripts[script_id])
+
         
         # chests
         for c in self.chest_locations:
@@ -2193,198 +2301,85 @@ class GameWorld:
         for pack in self.formation_packs:
             patch += pack.get_patch()
 
+        # Uncap Super Jumps
+        if self.settings.is_flag_enabled(flags.UncapSuperJumps):
+            patch.add_data(0x35C758, [0xFF, 0xFF])
+
+        # Remove screen flashes
+        if self.settings.is_flag_enabled(flags.RemoveFlashes):
+            # Thunderbolt
+            patch.add_data(0x35BEDF, [0x8E, 0x00, 0x01])
+            patch.add_data(0x35BF0E, [0x8E, 0x00, 0x03])
+
+            # Geno Flash
+            patch.add_data(0x35BE52, [0x0A, 0x0A])
+
+            # Geno Blast
+            patch.add_data(0x35BC75, [0x0A, 0x0A])
+
+            # Crusher
+            patch.add_data(0x35B0A1, [0x8E, 0x00, 0x01])
+
+            # Big Bang
+            patch.add_data(0x354A04, [0x72, 0x04, 0x19])
+
+            # Fire Bomb
+            patch.add_data(0x35DC9b, [0x72, 0x04, 0x19])
+
+            # Ice Bomb
+            patch.add_data(0x35DCBe, [0x8E, 0x00, 0x01])
+
+            # Solidify
+            patch.add_data(0x355721, [0x8E, 0x00, 0x01])
+
+            # Corona
+            patch.add_data(0x355DE4, [0x0A, 0x0A])
+
+            # Dark Star
+            patch.add_data(0x35C54F, [0x8E, 0x00, 0x01])
+
+            # Shaker, Silver Bullet
+            patch.add_data(0x35358A, [0x8E, 0x00, 0x01])
+
+            # spiked link
+            patch.add_data(0x35F5B1, [0x8E, 0x00, 0x01])
+            patch.add_data(0x35F5C2, [0x8E, 0x00, 0x01])
+            patch.add_data(0x35F5D3, [0x8E, 0x00, 0x01])
+
+            # Static E
+            patch.add_data(0x354E9B, [0x8E, 0x00, 0x01])
+
+            # Smithy
+            patch.add_data(0x3AE888, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
+            patch.add_data(0x3A6CAE, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
+            patch.add_data(0x3A6CBB, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
+            patch.add_data(0x3AE81F, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01]) # may need to extend by 3 bytes
+            patch.add_data(0x3AE888, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
+            patch.add_data(0x3A6C90, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
+            patch.add_data(0x3A6CAE, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
+
+            # meteor swarm - dunno if this is right at all
+            patch.add_data(0x355CA8, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
+
+            # rock candy
+            patch.add_data(0x35E051, [0x8E, 0x00, 0x01])
+
+            # meteor blast
+            patch.add_data(0x3555C0, [0x8E, 0x00, 0x01])
 
 
-
-
-
-
-
-        # Characters
+        # Character stats and such
         for character in self.characters:
             patch += character.get_patch()
 
-        # Update party join script events for the final order.  These are different for standard vs open mode.
-        if self.open_mode:
-            # Add characters to Mushroom Way and Moleville when NFC is turned on
-            if self.settings.is_flag_enabled(flags.NoFreeCharacters):
-                addresses = [0x1ef86c, 0x1ffd82, 0x1fc4f1, 0x1e6d58, 0x1e8b71]
-            else:
-                addresses = [0x1ef86c, 0x1ef86e, 0x1ef870, 0x1fc4f1, 0x1e8b71]
-            dialogue_iterator = 0
-            for addr, character in zip(addresses, self.meta_join_order):
-                dialogue_iterator += 1
-                # Character joins and dialogues are 0x9B by default, replaced with this code when populated
-                if character is not None:
-                    # Write message stating who joined
-                    if character.palette is not None and character.palette.rename_character:
-                        message = '"' + character.palette.name + '" (' + character.original_name + ') joins!'
-                    else:
-                        message = character.original_name + " joins!"
-                    messagestring = binascii.hexlify(bytes(message, encoding='ascii'))
-                    messagebytes = [int(messagestring[i:i + 2], 16) for i in range(0, len(messagestring), 2)]
-                    messagebytes.append(0x00)
-                    # Append character join event and corresponding message to code
-                    if self.settings.is_flag_enabled(flags.NoFreeCharacters):
-                        if dialogue_iterator == 2:
-                            patch.add_data(0x242c52, messagebytes)
-                            patch.add_data(0x1ffd84, [0x60, 0xac, 0xac, 0x00])
-                        if dialogue_iterator == 3:
-                            patch.add_data(0x221475, messagebytes)
-                            patch.add_data(0x1fc8dd, [0x60, 0x48, 0xa2, 0x00])
-                            # show character walking around forest maze
-                        if dialogue_iterator == 4:
-                            patch.add_data(0x242238, messagebytes)
-                            patch.add_data(0x1e6d5a, [0x60, 0x89, 0xac, 0x00])
-                        if dialogue_iterator == 5:
-                            patch.add_data(0x23abf2, messagebytes)
-                            patch.add_data(0x1e8b49, [0x60, 0xff, 0xaa, 0x00])
-                    else:
-                        if dialogue_iterator == 4:
-                            patch.add_data(0x242c52, messagebytes)
-                            patch.add_data(0x1fc8dd, [0x60, 0xac, 0xac, 0x00])
-                        if dialogue_iterator == 5:
-                            patch.add_data(0x221475, messagebytes)
-                            patch.add_data(0x1e8b49, [0x60, 0x48, 0xa2, 0x00])
-                    patch.add_data(addr, [0x36, 0x80 + character.index])
-            dialogue_iterator = 0
-            for character in self.character_join_order:
-                dialogue_iterator += 1
-                # replace overworld characters in recruitment spots - there are no partitions identical to 89 that have
-                # CBC set to 3 instead of 4, so modify 89 since it's only used by this room
-
-                if self.settings.is_flag_enabled(flags.NoFreeCharacters) and dialogue_iterator == 2:
-                    # mushroom way
-                    patch.add_data(0x14b3BC, character.mway_1_npc_id)
-                    patch.add_data(0x14b411, character.mway_2_npc_id)
-                    patch.add_data(0x14b452, character.mway_3_npc_id)
-                    # change partition to accommodate mallow's sprite in mway
-                    if character.name is "Mallow":
-                        patch.add_data(0x1ddf67, 0x80)
-                if ((dialogue_iterator == 4 and not self.settings.is_flag_enabled(flags.NoFreeCharacters)) or
-                        (self.settings.is_flag_enabled(flags.NoFreeCharacters) and dialogue_iterator == 3)):
-                    # forest maze
-                    patch.add_data(0x14b8eb, character.forest_maze_sprite_id)
-                    if character.name is "Mario":
-                        patch.add_data(0x215e4f, 0x42)
-                        patch.add_data(0x215e56, 0x12)
-                if self.settings.is_flag_enabled(flags.NoFreeCharacters) and dialogue_iterator == 4:
-                    # moleville
-                    patch.add_data(0x14c491, character.moleville_sprite_id)
-                    if character.name in ["Mario", "Peach", "Geno"]:
-                        # patch moleville minecart room partition
-                        patch.add_data(0x1DDF45, 0x81)
-                        if character.name is "Mario":
-                            patch.add_data(0x1DB801, 0x00)
-                    # make cutscene look less weird
-                    if character.name is not "Bowser":
-                        patch.add_data(0x201F04, [0x3D, 0x02, 0x63])
-                        if character.name is "Mario":
-                            patch.add_data(0x201F07, 0x09)
-                        elif character.name is "Peach":
-                            patch.add_data(0x201F07, 0x0F)
-                        elif character.name is "Mallow":
-                            patch.add_data(0x201F07, 0x0E)
-                        else:
-                            patch.add_data(0x201F07, 0x0C)
-                    patch.add_data(0x201F5B, 0x00)
-                if dialogue_iterator == 5:
-                    # show character in marrymore
-                    patch.add_data(0x14a94d, character.forest_maze_sprite_id)
-                    patch.add_data(0x148f91, character.forest_maze_sprite_id)
-                    # fix booster hill solidity
-                    if character.name is "Mallow":
-                        patch.add_data(0x1DB819, [0x56, 0x2C])
-                    elif character.name is "Geno":
-                        patch.add_data(0x1DB820, 0x56)
-                    elif character.name is "Mario":
-                        patch.add_data(0x1DB804, 0x56)
-                    elif character.name is "Peach":
-                        patch.add_data(0x1DB80B, 0x56)
-                    if character.name is not "Peach":
-                        # marrymore sequence
-                        if character.name is "Mario":
-                            # surprised
-                            patch.add_data(0x20d338, [0x08, 0x43, 0x00])
-                            # on ground
-                            patch.add_data(0x20d34e, [0x08, 0x4B, 0x01])
-                            # sitting
-                            patch.add_data(0x20d43b, [0x08, 0x4a, 0x1f])
-                            # looking down
-                            patch.add_data(0x20d445, [0x08, 0x48, 0x06])
-                            patch.add_data(0x20d459, [0x08, 0x48, 0x06])
-                            # crying
-                            patch.add_data(0x20d464, [0x10, 0x80])
-                            patch.add_data(0x20d466, [0x08, 0x43, 0x03])
-                            # surprised
-                            patch.add_data(0x20d48c, [0x08, 0x43, 0x00])
-                            # looking down
-                            patch.add_data(0x20d4d4, [0x08, 0x48, 0x06])
-                            # crying
-                            patch.add_data(0x20d4d9, [0x10, 0x80])
-                            patch.add_data(0x20d4db, [0x08, 0x43, 0x03])
-                            # surprised reversed
-                            patch.add_data(0x20d5d8, [0x08, 0x43, 0x80])
-                            # crying in other direction
-                            patch.add_data(0x20d5e3, [0x08, 0x43, 0x84])
-                            # booster hill
-                            patch.add_data(0x207147, [0x08, 0x43, 0x89])
-                            patch.add_data(0x20714E, [0x08, 0x43, 0x09])
-                            patch.add_data(0x207160, [0x08, 0x43, 0x89])
-                            patch.add_data(0x207165, [0x08, 0x43, 0x88])
-                            patch.add_data(0x206b1a, [0x08, 0x43, 0x88])
-                            patch.add_data(0x206d19, [0x08, 0x43, 0x89])
-                            patch.add_data(0x206d20, [0x08, 0x43, 0x09])
-                            patch.add_data(0x206d34, [0x08, 0x43, 0x89])
-                            patch.add_data(0x206d39, [0x08, 0x43, 0x88])
-                        else:
-                            # surprised
-                            patch.add_data(0x20d338, [0x08, 0x42, 0x00])
-                            patch.add_data(0x20d48c, [0x08, 0x42, 0x00])
-                            # surprised reversed
-                            patch.add_data(0x20d5d8, [0x08, 0x42, 0x80])
-                            # sitting
-                            patch.add_data(0x20d43b, [0x08, 0x49, 0x1f])
-                            #booster hill
-                            patch.add_data(0x207147, [0x08, 0x42, 0x09])
-                            patch.add_data(0x20714E, [0x08, 0x42, 0x89])
-                            patch.add_data(0x207160, [0x08, 0x42, 0x09])
-                            patch.add_data(0x207165, [0x08, 0x42, 0x88])
-                            patch.add_data(0x206b1a, [0x08, 0x42, 0x88])
-                            patch.add_data(0x206d19, [0x08, 0x42, 0x09])
-                            patch.add_data(0x206d20, [0x08, 0x42, 0x89])
-                            patch.add_data(0x206d34, [0x08, 0x42, 0x09])
-                            patch.add_data(0x206d39, [0x08, 0x42, 0x88])
-                            patch.add_data(0x206F40, [0x08, 0x42, 0x09])
-                            if character.name is "Geno":
-                                # crying
-                                patch.add_data(0x20d464, [0x10, 0x80])
-                                patch.add_data(0x20d466, [0x08, 0x40, 0x0B])
-                                # surprised
-                                patch.add_data(0x20d48c, [0x08, 0x42, 0x00])
-                                # looking down
-                                patch.add_data(0x20d4d4, [0x08, 0x48, 0x06])
-                                # crying
-                                patch.add_data(0x20d4d9, [0x10, 0x80])
-                                patch.add_data(0x20d4db, [0x08, 0x40, 0x0B])
-                                # surprised reversed
-                                patch.add_data(0x20d5d8, [0x08, 0x42, 0x80])
-                                # crying in other direction
-                                patch.add_data(0x20d5e3, [0x08, 0x40, 0x8C])
-                            else:
-                                # surprised
-                                patch.add_data(0x20d338, [0x08, 0x42, 0x00])
-                                patch.add_data(0x20d48c, [0x08, 0x42, 0x00])
-                                # surprised reversed
-                                patch.add_data(0x20d5d8, [0x08, 0x42, 0x80])
-                                # sitting
-                                patch.add_data(0x20d43b, [0x08, 0x49, 0x1f])
-
-        else:
+        # Update party join script events for the final order - Linear only
+        if not self.open_mode:
             # For standard mode, Mario is the first character.  Update the other four only.
             addresses = [0x1e2155, 0x1fc506, 0x1edf98, 0x1e8b79]
             for addr, character in zip(addresses, self.character_join_order[1:]):
                 patch.add_data(addr, 0x80 + character.index)
+
+            cursor_id = random.randint(0, 4)
 
             # Update other battle scripts so Belome eats the first one to join.
             for addr in (
@@ -2398,13 +2393,6 @@ class GameWorld:
                     0x3ab95a,
             ):
                 patch.add_data(addr, self.character_join_order[1].index)
-
-        # Use first character to join as file select cursor.
-        cursor_id = 0
-        for character in self.character_join_order:
-            if character is not None:
-                cursor_id = character.index
-                break
 
         # Learned spells and level-up exp.
         patch += self.levelup_xps.get_patch()
@@ -2425,7 +2413,8 @@ class GameWorld:
             patch.add_data(0x351481, 0x0a)
 
         # Starting FP (twice for starting/max FP)
-        patch.add_data(0x3a00dd, utils.ByteField(self.starting_fp).as_bytes() * 2)
+        if (self.settings.is_flag_enabled(flags.CharacterStats)):
+            patch.add_data(0x3a00dd, utils.ByteField(self.starting_fp).as_bytes() * 2)
 
         # For debug mode, start with 9999 coins and 99 frog coins.
         if self.debug_mode or self.settings.is_flag_enabled(flags.FreeShops):
@@ -2461,6 +2450,9 @@ class GameWorld:
 
         # Open mode specific data.
         if self.open_mode:
+
+
+
             # Item locations.
             # FIXME
             # for location in self.key_locations + self.chest_locations:

@@ -10,6 +10,8 @@ hint_authors = [
     "       Memo left by Gozengatta:",
     "     Memo left by inthenameofDT:",
     "     Memo left by LockeColeLive:",
+    "          Memo left by Cynas:",
+    "        Memo left by Broatmeal:",
     "         Memo left by patcdr:",
     "          Memo left by pidge:",
     "        Memo left by SeanCass:",
@@ -18,6 +20,7 @@ hint_authors = [
     "         Memo left by swinch:",
     "     Memo left by Tinywetblanket:",
     "        Memo left by Yakibomb:",
+    " Memo left by [filename]:"
 ]
 
 

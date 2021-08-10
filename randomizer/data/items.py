@@ -3584,36 +3584,133 @@ class LandsEndStar3(InvincibilityStar):
 class RecruitedCharacter(Item):
     starter_script = None
     container_script = None
+    model = 0
+    sprites = {}
 
 class MarioRecruit(RecruitedCharacter):
     index = 220
     description = PlayableCharacters.Mario
     starter_script = 187
     container_script = 193
+    model = 0
+    sprites = {
+        "south": (0, 12, True),
+        "defend": (2, 17, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (3, 8, False),
+        "shocked_loop_backwards": (3, 9, False),
+        "shocked_backwards_sequence": (2, 3, False),
+        "crying": (3, 3, False),
+        "crying_backwards": (3, 4, False),
+        "looking_down_static": (0, 6, True),
+        "looking_down": (0, 6, False),
+        "floored": (3, 1, True),
+        "hurt": (0, 6, True),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (2, 6, False)
+    }
 
 class ToadstoolRecruit(RecruitedCharacter):
     index = 221
     description = PlayableCharacters.Toadstool
     starter_script = 191
     container_script = 197
+    model = 1
+    sprites = {
+        "south": (0, 20, True),
+        "defend": (1, 17, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (2, 3, False),
+        "shocked_loop_backwards": (2, 4, False),
+        "shocked_backwards_sequence": (1, 3, False),
+        "crying": (0, 13, False),
+        "crying_backwards": (0, 14, False),
+        "looking_down_static": (0, 14, True),
+        "looking_down": (0, 6, False),
+        "floored": (2, 1, True),
+        "hurt": (5, 0, True),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (1, 6, False)
+    }
 
 class MallowRecruit(RecruitedCharacter):
     index = 222
     description = PlayableCharacters.Mallow
     starter_script = 188
     container_script = 194
+    model = 3
+    sprites = {
+        "south": (0, 20, True),
+        "defend": (1, 17, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (2, 8, False),
+        "shocked_loop_backwards": (2, 9, False),
+        "shocked_backwards_sequence": (1, 3, False),
+        "crying": (0, 13, False),
+        "crying_backwards": (0, 14, False),
+        "looking_down_static": (0, 14, True),
+        "looking_down": (0, 6, False),
+        "floored": (2, 1, True),
+        "hurt": (0, 14, True),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (1, 6, False)
+    }
 
 class GenoRecruit(RecruitedCharacter):
     index = 223
     description = PlayableCharacters.Geno
     starter_script = 189
     container_script = 195
+    model = 4
+    sprites = {
+        "south": (0, 20, True),
+        "defend": (0, 17, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (2, 8, False),
+        "shocked_loop_backwards": (2, 9, False),
+        "shocked_backwards_sequence": (1, 3, False),
+        "crying": (0, 11, False),
+        "crying_backwards": (0, 12, False),
+        "looking_down_static": (0, 14, True),
+        "looking_down": (0, 6, False),
+        "floored": (2, 1, True),
+        "hurt": (0, 22, True),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (1, 6, False)
+    }
 
 class BowserRecruit(RecruitedCharacter):
     index = 224
+    model = 2
     description = PlayableCharacters.Bowser
     starter_script = 190
     container_script = 196
+    sprites = {
+        "south": (0, 20, True),
+        "defend": (0, 17, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (2, 8, False),
+        "shocked_loop_backwards": (2, 9, False),
+        "shocked_backwards_sequence": (1, 3, False),
+        "crying": (0, 13, False),
+        "crying_backwards": (0, 14, False),
+        "looking_down_static": (0, 14, True),
+        "looking_down": (0, 6, False),
+        "floored": (2, 1, True),
+        "hurt": (0, 6, False),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (1, 6, False)
+    }
 
 class SpottedCharacter(Item):
     starter_script = None

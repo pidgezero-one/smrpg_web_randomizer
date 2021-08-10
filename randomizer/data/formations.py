@@ -1647,7 +1647,7 @@ def get_default_enemy_formations(world):
         EnemyFormation(277, None, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Croco1), 183, 127),
         ]),
-        EnemyFormation(278, None, 7, [
+        EnemyFormation(278, 14, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Croco2), 183, 127),
         ], stat_scaling_enemies=[
             world.get_enemy_instance(enemies.Croco2),
@@ -1736,7 +1736,7 @@ def get_default_enemy_formations(world):
             world.get_enemy_instance(enemies.BowserClone),
             world.get_enemy_instance(enemies.PeachClone),
         ]),
-        EnemyFormation(289, None, 7, [
+        EnemyFormation(289, 14, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Valentina), 183, 127),
             FormationMember(1, True, world.get_enemy_instance(enemies.Dodo), 199, 151),
         ], stat_scaling_enemies=[
@@ -1811,7 +1811,7 @@ def get_default_enemy_formations(world):
             # Only include Birdo for boss shuffle logic.
             world.get_enemy_instance(enemies.Birdo),
         ], required_battlefield=Battlefields.Birdo),
-        EnemyFormation(298, None, 7, [
+        EnemyFormation(298, 14, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Bundt), 199, 127),
             FormationMember(1, False, world.get_enemy_instance(enemies.Raspberry), 199, 119),
             FormationMember(2, False, world.get_enemy_instance(enemies.Torte), 199, 151),
@@ -1860,7 +1860,7 @@ def get_default_enemy_formations(world):
             FormationMember(4, True, world.get_enemy_instance(enemies.AxemGreen), 183, 151),
             FormationMember(5, True, world.get_enemy_instance(enemies.AxemYellow), 215, 151),
         ], required_battlefield=Battlefields.AxemRangers),
-        EnemyFormation(305, None, 11, [
+        EnemyFormation(305, 14, 11, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Bowyer), 183, 127),
         ]),
         EnemyFormation(306, None, 7, [
@@ -1872,7 +1872,7 @@ def get_default_enemy_formations(world):
             FormationMember(2, True, world.get_enemy_instance(enemies.RightEye), 174, 145),
             FormationMember(3, True, world.get_enemy_instance(enemies.LeftEye), 203, 157),
         ], required_battlefield=Battlefields.Exor),
-        EnemyFormation(308, None, 15, [
+        EnemyFormation(308, 14, 15, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Smithy1), 199, 127),
             FormationMember(1, False, world.get_enemy_instance(enemies.Smelter), 87, 87),
             FormationMember(2, True, world.get_enemy_instance(enemies.MachineMadeShyster), 135, 127),

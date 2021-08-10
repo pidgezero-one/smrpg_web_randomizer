@@ -48,11 +48,6 @@ script = [
         "args": [0x706F, 4]
     },
     {
-        "identifier": 'EVENT_192_____leave_party_22_-',
-        "command": 'run_event_as_subroutine',
-        "args": [188]
-    }, 
-    {
         "identifier": 'EVENT_192_',
         "command": 'put_inventory',
         "args": [items.RedEssence]
@@ -98,9 +93,99 @@ script = [
         "args": [items.FireBomb]
     },
     {
+        "identifier": 'EVENT_192_____--~',
+        "command": 'put_inventory',
+        "args": [items.FireBomb]
+    },
+    {
+        "identifier": 'EVENT_192-_____--',
+        "command": 'put_inventory',
+        "args": [items.IceBomb]
+    },
+    {
+        "identifier": 'EVENT_192--_____--',
+        "command": 'put_inventory',
+        "args": [items.IceBomb]
+    },
+    {
+        "identifier": 'EVENT_192---_____--',
+        "command": 'put_inventory',
+        "args": [items.IceBomb]
+    },
+    {
+        "identifier": 'EVENT_192----_____--',
+        "command": 'put_inventory',
+        "args": [items.IceBomb]
+    },
+    {
+        "identifier": 'EVENT_192------_____--',
+        "command": 'put_inventory',
+        "args": [items.IceBomb]
+    },
+    {
+        "identifier": 'EVENT_192------___-__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192------__-_-__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192------___---__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192------___-~~~__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192------___~-~-~-__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192_------___~-~-~-__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192__------___~-~-~-__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192___------___~-~-~-__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192____------___~-~-~-__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192______------___~-~-~-__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    {
+        "identifier": 'EVENT_192_______------___~-~-~-__--',
+        "command": 'put_inventory',
+        "args": [items.RockCandy]
+    },
+    # {
+    #     "identifier": 'EVENT_192__-____',
+    #     "command": 'equip_item_to_character',
+    #     "args": [AreaObjects.MARIO, items.AttackScarf]
+    # },
+    {
         "identifier": 'EVENT_192__-____',
         "command": 'equip_item_to_character',
-        "args": [AreaObjects.MARIO, items.AttackScarf]
+        "args": [AreaObjects.MARIO, items.TroopaPin]
     },
     {
         "identifier": 'EVENT_192___-____',
@@ -112,6 +197,11 @@ script = [
         "command": 'equip_item_to_character',
         "args": [AreaObjects.MARIO, items.LazyShellWeapon]
     },
+    {
+        "identifier": 'EVENT_192_____leave_party_22_-',
+        "command": 'run_event_as_subroutine',
+        "args": [188]
+    }, 
     {
         "identifier": 'EVENT_192____-_-___-',
         "command": 'equip_item_to_character',
@@ -126,6 +216,26 @@ script = [
         "identifier": 'EVENT_192_______',
         "command": 'equip_item_to_character',
         "args": [AreaObjects.MALLOW, items.SuperSuit]
+    },
+    {
+        "identifier": 'EVENT_192_____leave_party_22_--',
+        "command": 'run_event_as_subroutine',
+        "args": [189]
+    }, 
+    {
+        "identifier": 'EVENT_192____-_-___',
+        "command": 'equip_item_to_character',
+        "args": [AreaObjects.GENO, items.StarGun]
+    },
+    {
+        "identifier": 'EVENT_192______2',
+        "command": 'equip_item_to_character',
+        "args": [AreaObjects.GENO, items.TroopaPin]
+    },
+    {
+        "identifier": 'EVENT_192___-____2',
+        "command": 'equip_item_to_character',
+        "args": [AreaObjects.GENO, items.SuperSuit]
     },
 
 

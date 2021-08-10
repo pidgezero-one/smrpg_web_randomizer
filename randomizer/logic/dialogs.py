@@ -147,6 +147,7 @@ def randomize_password(world):
     writers = [password.submitter_hint_prefix] + \
         random.shuffle(ship_passwords.hint_authors)
     for s in writers:
+        # randomize the order of these
         if RWRITER in password.troopa_hint:
             password.troopa_hint = password.troopa_hint.replace(RWRITER, s)
             continue
