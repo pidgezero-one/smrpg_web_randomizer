@@ -109,19 +109,51 @@
                     </div>
                     <div class="row">
                         {# Show categories and flag inputs. #}
-                        {% for category in categories %}
-                            <div class="col-md-6 category-container">
-                                <div class="card border-info my-2">
-                                    <div class="card-header"><h5>{{ category.name }}</h5></div>
-                                    <div class="card-body">
-                                        {# Show flags and options here. #}
-                                        {% for flag in category.flags %}
-                                            {% include 'randomizer/_show_flag_ui.html' with flag=flag %}
-                                        {% endfor %}
+                        
+                        <div class="col-md-12">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    {% for category in categories %}
+                                    {% if forloop.counter == 1 %}
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="{{ category.get_slug }}-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ category.get_slug }}" type="button" role="tab" aria-controls="tab-{{ category.get_slug }}" aria-selected="true">{{ category.name }}</button>
+                                    </li>
+                                    {% else %}
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="{{ category.get_slug }}-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ category.get_slug }}" type="button" role="tab" aria-controls="tab-{{ category.get_slug }}" aria-selected="false">{{ category.name }}</button>
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            <div class="tab-content">
+                                {% for category in categories %}
+                                    {% if forloop.counter == 1 %}
+                                    <div class="tab-pane show active" id="tab-{{ category.get_slug }}" role="tabpanel" aria-labelledby="{{ category.get_slug }}-tab">
+                                    {% else %}
+                                    <div class="tab-pane" id="tab-{{ category.get_slug }}" role="tabpanel" aria-labelledby="{{ category.get_slug }}-tab">
+                                    {% endif %}
+                                        <div class="card border-info my-2">
+                                            <div class="card-header"><h5>{{ category.name }}</h5></div>
+                                            <div class="card-body">
+                                                {# Show flags and options here. #}
+                                                {% for flag in category.flags %}
+                                                    {% include 'randomizer/_show_flag_ui.html' with flag=flag %}
+                                                {% endfor %}
+                                                <div class="row subcategory">
+                                                {% for subcategory in category.subcategories %}
+                                                    <div class="col-md-{{ subcategory.size }}">
+                                                        {# Show flags and options here. #}
+                                                        {% for flag in subcategory.flags %}
+                                                            {% include 'randomizer/_show_flag_ui.html' with flag=flag %}
+                                                        {% endfor %}
+                                                    </div>
+                                                {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
-                        {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="card-header">
@@ -383,7 +415,7 @@
 
                 // Hide categories that have no visible flags for this mode.
                 $(".category-container").show().each((index, elem) => {
-                    if ($(elem).find(`.card > .card-body > .flag-${mode}`).length === 0) {
+                    if ($(elem).find(`.card > .card-body > .flag-${mode}`).length === 0 && $(elem).find(`.card > .card-body > .subcategory`).length === 0) {
                         $(elem).hide();
                     } else {
                         $(elem).show();

@@ -59,9 +59,13 @@ from randomizer.data.eventscripts.utils.smithy_room.non_smithy_3792 import scrip
 from randomizer.data.eventscripts.utils.smithy_room.non_smithy_3794 import script as non_smithy_3794
 from randomizer.data.eventscripts.utils.smithy_room.non_smithy_room_509 import objects as non_smithy_509_objects
 
+from .enscript import EventScript
+from .osscript import ObjectSequenceScript
+from .roomobject import RoomObjects
+from .npcmodel import NPCModels
 
 # Current version number
-VERSION = '8.2.8'
+VERSION = '9.0.0'
 
 
 class Settings:
@@ -437,7 +441,7 @@ def sanitize_character_animation_script(sequence_types, script):
                 elif spr == 1 and seq == 3:
                     key = "shocked_backwards_sequence"
         if key is not None:
-            flags = [a for a in in cmd["args"][2] if a != _0x08Flags.READ_AS_MOLD]
+            flags = [a for a in cmd["args"][2] if a != _0x08Flags.READ_AS_MOLD]
             sprite, sequence, is_mold = sequence_types[key]
             if is_mold:
                 flags.append(_0x08Flags.READ_AS_MOLD)
@@ -2451,94 +2455,35 @@ class GameWorld:
         # Open mode specific data.
         if self.open_mode:
 
+            # Assemble and patch event banks
+            event_code = EventScript.assemble_from_table(self.eventscripts)
+            patch.add_data(0x1E0000, event_code)
 
+            # Assemble and patch object sequence bank
+            sequence_code = ObjectSequenceScript.assemble_from_table(self.actionscripts)
+            patch.add_data(0x210000, sequence_code)
 
-            # Item locations.
-            # FIXME
-            # for location in self.key_locations + self.chest_locations:
-            #     print(">>>>>>>> {}".format(location))
+            # Assemble and patch room NPC data, exit data, event tile data, and partition data
+            npc_code, eventtile_code, exit_code, partition_code = RoomObjects.assemble_from_table(self.rooms)
+            patch.add_data(0x148000, npc_code[0] + npc_code[1])
+            patch.add_data(0x20E000, eventtile_code[0] + eventtile_code[1])
+            patch.add_data(0x1D2D64, exit_code[0] + exit_code[1])
+            patch.add_data(0x1DDE00, partition_code)
 
-            for location in self.key_locations:
-                patch += location.get_patch()
+            # Assemble and patch NPC model data
+            model_code = NPCModels.assemble_from_table(self.models)
+            patch.add_data(0x1DB800, sequence_code)
 
-            for location in self.chest_locations:
-                patch += location.get_patch()
-
-            # Boss locations.
-            for boss in self.boss_locations:
-                # FIXME
-                # print(">>>>>>>>>>>>>>>> {}".format(boss))
-                patch += boss.get_patch()
-
-            # Set flags for seven star mode and Bowser's Keep.
-            if self.settings.is_flag_enabled(flags.SevenStarHunt):
-                patch.add_data(0x1fd341, utils.ByteField(0xa2).as_bytes())
-
-            if self.settings.is_flag_enabled(flags.BowsersKeepOpen):
-                patch.add_data(0x1fd343, utils.ByteField(0xa2).as_bytes())
-
-            # Dialogs
-            patch += self.wishes.get_patch()
-            patch += self.quiz.get_patch()
-
-            # FIXME
-            # print(">>>>>>>> WISHES")
-            # for wish in self.wishes.wishes:
-            #     print(">>>>>>>>>>>>>>>> {}".format(wish))
-
-            # print(">>>>>>>> QUIZ")
-            # for question in self.quiz.questions:
-            #     print(">>>>>>>>>>>>>>>> {}".format(question))
+            # Assemble and patch dialog data
+            dialog_ptrs, dialog_code = dialogs.assemble_from_table(self.dialog_pointers, self.dialog_data)
+            patch.add_data(0x37E000, dialog_ptrs)
+            patch.add_data(0x220000, dialog_code[0])
+            patch.add_data(0x230000, dialog_code[1])
+            patch.add_data(0x240000, dialog_code[2])
 
         # Unlock the whole map if in debug mode in standard.
         if self.debug_mode and not self.open_mode:
             patch += map.unlock_world_map()
-
-
-        # factory warp
-        if self.settings.is_flag_enabled(flags.CasinoWarp):
-            # patch the event jump
-            # event 2637
-
-            # star piece event check
-            # sometimes lazy shell can cause some weirdness with addresses, but we know this event began at 0x1FF451
-            # and our custom code should start +3 after that
-
-            # if R7 is turned on, we want this to be a check for 7 star pieces, not 6
-
-            if self.settings.is_flag_enabled(flags.SevenStarHunt):
-                patch.add_data(0x1FF454, [0xE0, 0x35, 0x07, 0x5C, 0xF4])
-            else:
-                patch.add_data(0x1FF454, [0xE0, 0x35, 0x06, 0x5C, 0xF4])
-
-            patch.add_data(0x1FF459, [0xD2, 0x67, 0xF4, 0xD0, 0x48, 0x08])
-
-            original_event_address = 0x1FF467
-            start9_b_address = 0x1FF45F
-            i = start9_b_address
-            while i < original_event_address:
-                patch.add_data(i, 0x9B)
-                i += 1
-
-            # event 2120
-            patch.add_data(0x1F7A4D,
-                           [0x60, 0x80, 0xAB, 0xC0, 0x66, 0x58, 0x7A, 0xD2, 0x67, 0xF4, 0xFE, 0x74, 0xD0, 0xCF, 0x0E,
-                            0xFE])
-            original_end_address = 0x1F7A90
-            start9_b_address = 0x1F7A5D
-            i = start9_b_address
-            while i <= original_end_address:
-                patch.add_data(i, 0x9B)
-                i += 1
-
-            # Dialog
-            patch.add_data(0x23D3CE, [0x44, 0x6F, 0x0F, 0x20, 0x77, 0x61, 0x6E, 0x74, 0x11, 0x67, 0x6F, 0x11, 0x53,
-                                      0x6D, 0x69, 0x74, 0x68, 0x79, 0x3F, 0x02, 0x08, 0x07, 0x20, 0x28, 0x4E, 0x6F,
-                                      0x29, 0x01, 0x08, 0x07, 0x20, 0x28, 0x59, 0x65, 0x73, 0x29, 0x00])
-
-        # Overworld boss sprites
-        if self.open_mode:
-            patch += bosses_overworld.patch_overworld_bosses(self)
 
         # This needs to happen after all battle script randomization.
         patch += assemble_battle_scripts(self)

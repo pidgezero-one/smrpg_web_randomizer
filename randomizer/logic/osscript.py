@@ -111,7 +111,7 @@ class ObjectSequenceScript:
             bank_21_scripts += bytearray([0xFF for x in range(empty_space)])
         print("bank 21 after", hex(len(bank_21_scripts)), len(bank_21_scripts))
         
-        return [bank_21_pointer_table, bank_21_scripts]
+        return bank_21_pointer_table + bank_21_scripts
 
     
     #assembles an array of hex lines corresponding to an embedded action script, for assembling in enscript.py

@@ -27,216 +27,211 @@ script = [
 
 
     # DEBUG
-    {
-        "identifier": 'EVENT_192_set_map_connector_',
-        "command": 'set_bit',
-        "args": [0x7067, 4]
-    },
-    {
-        "identifier": 'EVENT_192_set_map_connector__',
-        "command": 'set_bit',
-        "args": [0x7067, 5]
-    },
-    {
-        "identifier": 'EVENT_192_set_map_connector___',
-        "command": 'set_bit',
-        "args": [0x706F, 3]
-    },
-    {
-        "identifier": 'EVENT_192_set_map_connector____',
-        "command": 'set_bit',
-        "args": [0x706F, 4]
-    },
-    {
-        "identifier": 'EVENT_192_',
-        "command": 'put_inventory',
-        "args": [items.RedEssence]
-    },
-    {
-        "identifier": 'EVENT_192__',
-        "command": 'put_inventory',
-        "args": [items.RedEssence]
-    },
-    {
-        "identifier": 'EVENT_192___',
-        "command": 'put_inventory',
-        "args": [items.RedEssence]
-    },
-    {
-        "identifier": 'EVENT_192____',
-        "command": 'put_inventory',
-        "args": [items.RedEssence]
-    },
-    {
-        "identifier": 'EVENT_192_____',
-        "command": 'put_inventory',
-        "args": [items.RedEssence]
-    },
-    {
-        "identifier": 'EVENT_192_____-----',
-        "command": 'put_inventory',
-        "args": [items.FireBomb]
-    },
-    {
-        "identifier": 'EVENT_192_____----',
-        "command": 'put_inventory',
-        "args": [items.FireBomb]
-    },
-    {
-        "identifier": 'EVENT_192_____---',
-        "command": 'put_inventory',
-        "args": [items.FireBomb]
-    },
-    {
-        "identifier": 'EVENT_192_____--',
-        "command": 'put_inventory',
-        "args": [items.FireBomb]
-    },
-    {
-        "identifier": 'EVENT_192_____--~',
-        "command": 'put_inventory',
-        "args": [items.FireBomb]
-    },
-    {
-        "identifier": 'EVENT_192-_____--',
-        "command": 'put_inventory',
-        "args": [items.IceBomb]
-    },
-    {
-        "identifier": 'EVENT_192--_____--',
-        "command": 'put_inventory',
-        "args": [items.IceBomb]
-    },
-    {
-        "identifier": 'EVENT_192---_____--',
-        "command": 'put_inventory',
-        "args": [items.IceBomb]
-    },
-    {
-        "identifier": 'EVENT_192----_____--',
-        "command": 'put_inventory',
-        "args": [items.IceBomb]
-    },
-    {
-        "identifier": 'EVENT_192------_____--',
-        "command": 'put_inventory',
-        "args": [items.IceBomb]
-    },
-    {
-        "identifier": 'EVENT_192------___-__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192------__-_-__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192------___---__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192------___-~~~__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192------___~-~-~-__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192_------___~-~-~-__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192__------___~-~-~-__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192___------___~-~-~-__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192____------___~-~-~-__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192______------___~-~-~-__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
-    {
-        "identifier": 'EVENT_192_______------___~-~-~-__--',
-        "command": 'put_inventory',
-        "args": [items.RockCandy]
-    },
+    # {
+    #     "identifier": 'EVENT_192_set_map_connector_',
+    #     "command": 'set_bit',
+    #     "args": [0x7067, 4]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_set_map_connector__',
+    #     "command": 'set_bit',
+    #     "args": [0x7067, 5]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_set_map_connector___',
+    #     "command": 'set_bit',
+    #     "args": [0x706F, 3]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_set_map_connector____',
+    #     "command": 'set_bit',
+    #     "args": [0x706F, 4]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_',
+    #     "command": 'put_inventory',
+    #     "args": [items.RedEssence]
+    # },
+    # {
+    #     "identifier": 'EVENT_192__',
+    #     "command": 'put_inventory',
+    #     "args": [items.RedEssence]
+    # },
+    # {
+    #     "identifier": 'EVENT_192___',
+    #     "command": 'put_inventory',
+    #     "args": [items.RedEssence]
+    # },
+    # {
+    #     "identifier": 'EVENT_192____',
+    #     "command": 'put_inventory',
+    #     "args": [items.RedEssence]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_____',
+    #     "command": 'put_inventory',
+    #     "args": [items.RedEssence]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_____-----',
+    #     "command": 'put_inventory',
+    #     "args": [items.FireBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_____----',
+    #     "command": 'put_inventory',
+    #     "args": [items.FireBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_____---',
+    #     "command": 'put_inventory',
+    #     "args": [items.FireBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_____--',
+    #     "command": 'put_inventory',
+    #     "args": [items.FireBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_____--~',
+    #     "command": 'put_inventory',
+    #     "args": [items.FireBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192-_____--',
+    #     "command": 'put_inventory',
+    #     "args": [items.IceBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192--_____--',
+    #     "command": 'put_inventory',
+    #     "args": [items.IceBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192---_____--',
+    #     "command": 'put_inventory',
+    #     "args": [items.IceBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192----_____--',
+    #     "command": 'put_inventory',
+    #     "args": [items.IceBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192------_____--',
+    #     "command": 'put_inventory',
+    #     "args": [items.IceBomb]
+    # },
+    # {
+    #     "identifier": 'EVENT_192------___-__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192------__-_-__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192------___---__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192------___-~~~__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192------___~-~-~-__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_------___~-~-~-__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192__------___~-~-~-__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192___------___~-~-~-__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192____------___~-~-~-__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192______------___~-~-~-__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_______------___~-~-~-__--',
+    #     "command": 'put_inventory',
+    #     "args": [items.RockCandy]
+    # },
     # {
     #     "identifier": 'EVENT_192__-____',
     #     "command": 'equip_item_to_character',
-    #     "args": [AreaObjects.MARIO, items.AttackScarf]
+    #     "args": [AreaObjects.MARIO, items.TroopaPin]
     # },
-    {
-        "identifier": 'EVENT_192__-____',
-        "command": 'equip_item_to_character',
-        "args": [AreaObjects.MARIO, items.TroopaPin]
-    },
-    {
-        "identifier": 'EVENT_192___-____',
-        "command": 'equip_item_to_character',
-        "args": [AreaObjects.MARIO, items.SuperSuit]
-    },
-    {
-        "identifier": 'EVENT_192_____-___',
-        "command": 'equip_item_to_character',
-        "args": [AreaObjects.MARIO, items.LazyShellWeapon]
-    },
-    {
-        "identifier": 'EVENT_192_____leave_party_22_-',
-        "command": 'run_event_as_subroutine',
-        "args": [188]
-    }, 
-    {
-        "identifier": 'EVENT_192____-_-___-',
-        "command": 'equip_item_to_character',
-        "args": [AreaObjects.MALLOW, items.SonicCymbal]
-    },
-    {
-        "identifier": 'EVENT_192______',
-        "command": 'equip_item_to_character',
-        "args": [AreaObjects.MALLOW, items.TroopaPin]
-    },
-    {
-        "identifier": 'EVENT_192_______',
-        "command": 'equip_item_to_character',
-        "args": [AreaObjects.MALLOW, items.SuperSuit]
-    },
-    {
-        "identifier": 'EVENT_192_____leave_party_22_--',
-        "command": 'run_event_as_subroutine',
-        "args": [189]
-    }, 
-    {
-        "identifier": 'EVENT_192____-_-___',
-        "command": 'equip_item_to_character',
-        "args": [AreaObjects.GENO, items.StarGun]
-    },
-    {
-        "identifier": 'EVENT_192______2',
-        "command": 'equip_item_to_character',
-        "args": [AreaObjects.GENO, items.TroopaPin]
-    },
-    {
-        "identifier": 'EVENT_192___-____2',
-        "command": 'equip_item_to_character',
-        "args": [AreaObjects.GENO, items.SuperSuit]
-    },
+    # {
+    #     "identifier": 'EVENT_192___-____',
+    #     "command": 'equip_item_to_character',
+    #     "args": [AreaObjects.MARIO, items.SuperSuit]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_____-___',
+    #     "command": 'equip_item_to_character',
+    #     "args": [AreaObjects.MARIO, items.LazyShellWeapon]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_____leave_party_22_-',
+    #     "command": 'run_event_as_subroutine',
+    #     "args": [188]
+    # }, 
+    # {
+    #     "identifier": 'EVENT_192____-_-___-',
+    #     "command": 'equip_item_to_character',
+    #     "args": [AreaObjects.MALLOW, items.SonicCymbal]
+    # },
+    # {
+    #     "identifier": 'EVENT_192______',
+    #     "command": 'equip_item_to_character',
+    #     "args": [AreaObjects.MALLOW, items.TroopaPin]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_______',
+    #     "command": 'equip_item_to_character',
+    #     "args": [AreaObjects.MALLOW, items.SuperSuit]
+    # },
+    # {
+    #     "identifier": 'EVENT_192_____leave_party_22_--',
+    #     "command": 'run_event_as_subroutine',
+    #     "args": [189]
+    # }, 
+    # {
+    #     "identifier": 'EVENT_192____-_-___',
+    #     "command": 'equip_item_to_character',
+    #     "args": [AreaObjects.GENO, items.StarGun]
+    # },
+    # {
+    #     "identifier": 'EVENT_192______2',
+    #     "command": 'equip_item_to_character',
+    #     "args": [AreaObjects.GENO, items.TroopaPin]
+    # },
+    # {
+    #     "identifier": 'EVENT_192___-____2',
+    #     "command": 'equip_item_to_character',
+    #     "args": [AreaObjects.GENO, items.SuperSuit]
+    # },
 
 
 

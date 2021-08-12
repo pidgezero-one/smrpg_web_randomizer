@@ -2,18 +2,22 @@
 
 import enum
 from randomizer.data import music, spells
+from json import JSONEncoder
 
 # ****************************** Location enum
 
+class FlagOptions(str, enum.Enum):
+    pass
 
-class ShuffleLocationSelector(enum.Enum):
+
+class ShuffleLocationSelector(FlagOptions):
     """Enumeration for enabling and disabling locations"""
     StarterCharacter1 = "Starter character 1"
     StarterCharacter2 = "Starter character 2"
     StarterCharacter3 = "Starter character 3"
     StarterCharacter4 = "Starter character 4"
     StarterCharacter5 = "Starter character 5"
-    MariosPadBed = "Mushroom Kingdom eastern guard rescue (invasion)"
+    MariosPadBed = "Invisible Musty Fears Item #1"
     MariosPadStarter1 = "Starter item 1"
     MariosPadStarter2 = "Starter item 2"
     MariosPadStarter3 = "Starter item 3"
@@ -26,7 +30,7 @@ class ShuffleLocationSelector(enum.Enum):
     ToadRescue2 = "Mushroom Way second Toad reward"
     HammerBrosReward = "Mushroom Way boss reward"
     MushroomWayCharacter = "Mushroom Way character join"
-    MushroomWayStarPiece = "Mushroom Way boss star piece"
+    MushroomWayStarPiece = "Mushroom Way boss Star Piece"
     MushroomKingdomHallway = "Mushroom Kingdom castle main hallway chest"
     MushroomKingdomVault1 = "Mushroom Kingdom vault left chest"
     MushroomKingdomVault2 = "Mushroom Kingdom vault right chest"
@@ -45,7 +49,7 @@ class ShuffleLocationSelector(enum.Enum):
     InvasionToadRescue = "Mushroom Kingdom Toadstool's room toad rescue item (invasion)"
     InvasionFamily = "Mushroom Kingdom invasion family rescue"
     InvasionGuestRoom = "Mushroom Kingdom invasion guest room"
-    InvasionStarPiece = "Mushroom Kingdom invasion boss star piece"
+    InvasionStarPiece = "Mushroom Kingdom invasion boss Star Piece"
     MushroomKingdomInn = "Mushroom Kingdom gameboy kid"
     BanditsWay1 = "Bandit's Way flower chest"
     BanditsWayCoin1 = "Bandit's Way 1st coin"
@@ -57,17 +61,17 @@ class ShuffleLocationSelector(enum.Enum):
     BanditsWayCroco = "Bandit's Way Croco chase chest"
     Croco1Reward = "Bandit's Way boss reward 1"
     Croco1Reward2 = "Bandit's Way boss reward 2"
-    BanditsWayStarPiece = "Bandit's Way boss star piece"
+    BanditsWayStarPiece = "Bandit's Way boss Star Piece"
     KeroSewersPandoriteRoom = "Kero Sewers stairway room left chest"
     PandoriteChest = "Kero Sewers stairway room right chest"
-    PandoriteReward1 = "Mimic #1 first reward"
-    PandoriteReward2 = "Mimic #1 reload reward"
-    PandoriteBoss = "Mimic #1 star piece"
+    PandoriteReward1 = "Mimic Chest #1 first reward"
+    PandoriteReward2 = "Mimic Chest #1 reload reward"
+    PandoriteBoss = "Mimic Chest #1 Star Piece"
     KeroSewersStarChest = "Kero Sewers four rat room chest"
     KeroSewersBeforeBelomeLower = "Kero Sewers before boss lower chest"
     KeroSewersBeforeBelomeUpper1 = "Kero Sewers before boss upper chest, before Land's End"
     KeroSewersBeforeBelomeUpper2 = "Kero Sewers before boss upper chest, after Land's End"
-    KeroSewersBoss = "Kero Sewers boss star piece"
+    KeroSewersBoss = "Kero Sewers boss Star Piece"
     MidasRiverFirstTime = "Midas River first play reward"
     MidasRiverBottomLeftCave = "Midas River bottom left tunnel freestanding frog coin"
     MidasRiverBottomRightCave = "Midas River bottom right tunnel freestanding flower"
@@ -89,7 +93,7 @@ class ShuffleLocationSelector(enum.Enum):
     RoseWayFiveChests3 = "Rose Way five-chest top right chest"
     RoseWayFiveChests4 = "Rose Way five-chest top left chest"
     RoseWayFiveChests5 = "Rose Way five-chest bottom right chest"
-    RoseTownFlag = "Rose Town behind sign"
+    RoseTownFlag = "Invisible Musty Fears Item #2"
     RoseTownStore1 = "Rose Town shop right chest"
     RoseTownStore2 = "Rose Town shop left chest"
     GardenerCloud1 = "Rose Town gardener right chest"
@@ -112,7 +116,7 @@ class ShuffleLocationSelector(enum.Enum):
     ForestMazeSecret4 = "Forest Maze secret bottom middle chest"
     ForestMazeSecret5 = "Forest Maze secret left chest"
     ForestMazeCharacter = "Forest Maze character recruit"
-    ForestMazeBoss = "Forest Maze boss star piece"
+    ForestMazeBoss = "Forest Maze boss Star Piece"
     PipeVaultSlide1 = "Pipe Vault slide room back chest"
     PipeVaultSlide2 = "Pipe Vault slide room middle chest"
     PipeVaultSlide3 = "Pipe Vault slide room front chest"
@@ -128,7 +132,7 @@ class ShuffleLocationSelector(enum.Enum):
     GoombaThumping2 = "Pipe Vault Goomba Thumpin second prize"
     YosterIsleEntrance = "Yo'ster Isle entrance chest"
     YosterIsleRaceReward1 = "Yo'ster Isle first race prize item 1"
-    YosterIsleRaceReward2 = "Yo'ster Isle invisible GOAL item"
+    YosterIsleRaceReward2 = "Invisible Musty Fears Item #3"
     YosterIsleRaceReward3 = "Yo'ster Isle first race prize item 2"
     YosterIsleFlag = "Yo'ster Isle first race prize item 3"
     BucketGirl = "Moleville bucket girl"
@@ -140,13 +144,13 @@ class ShuffleLocationSelector(enum.Enum):
     MolevilleMinesCoins = "Moleville Mines near final train tracks chest"
     MolevilleMinesPunchinello1 = "Moleville Mines before boss left chest"
     MolevilleMinesPunchinello2 = "Moleville Mines before boss upper chest"
-    MolevilleMinesBoss2 = "Moleville Mines final boss star piece"
+    MolevilleMinesBoss2 = "Moleville Mines final boss Star Piece"
     MolevilleMinesCharacter = "Moleville Mines character recruit"
     CrocoFlunkie1 = "Moleville Mines trampoline bandit"
     CrocoFlunkie2 = "Moleville Mines left bandit"
     CrocoFlunkie3 = "Moleville Mines right bandit"
     Croco2Item = "Moleville Mines first boss item"
-    MolevilleMinesBoss1 = "Moleville Mines first boss star piece"
+    MolevilleMinesBoss1 = "Moleville Mines first boss Star Piece"
     BoosterPass1 = "Booster Pass main area left chest"
     BoosterPass2 = "Booster Pass main area right chest"
     BoosterPassBush = "Booster Pass main area bush check"
@@ -182,8 +186,8 @@ class ShuffleLocationSelector(enum.Enum):
     BoosterTowerPortraits = "Booster Tower portrait prize"
     BoosterTowerChomp = "Booster Tower Elder Key room"
     BoosterTowerCurtainGame = "Booster Tower curtain prize"
-    BoosterTowerStarPiece1 = "Booster Tower curtain room boss star piece"
-    BoosterTowerStarPiece2 = "Booster Tower balcony boss star piece"
+    BoosterTowerStarPiece1 = "Booster Tower curtain room boss Star Piece"
+    BoosterTowerStarPiece2 = "Booster Tower balcony boss Star Piece"
     MarrymorePrize1 = "Marrymore Suite total stays prize 1"
     MarrymorePrize2 = "Marrymore Suite total stays prize 2"
     MarrymorePrize3 = "Marrymore Suite total stays prize 3"
@@ -191,15 +195,15 @@ class ShuffleLocationSelector(enum.Enum):
     MarrymorePrize5 = "Marrymore Suite total stays prize 5"
     MarrymorePrize6 = "Marrymore Suite total stays prize 6"
     MarrymoreInn = "Marrymore Inn regular room chest"
-    MarrymoreStarPiece = "Marrymore boss star piece"
+    MarrymoreStarPiece = "Marrymore boss Star Piece"
     MarrymoreCharacter = "Marrymore character join"
-    StarHillStarPiece1 = "Star Hill freestanding star piece"
+    StarHillStarPiece1 = "Star Hill freestanding Star Piece"
     FrogDisciple1 = "Disciple shop first item"
     FrogDisciple2 = "Disciple shop second item"
     FrogDisciple3 = "Disciple shop third item"
     FrogDisciple4 = "Disciple shop fourth item"
     FrogDisciple5 = "Disciple shop fifth item"
-    SeasideTownBoss = "Seaside Town boss star piece"
+    SeasideTownBoss = "Seaside Town boss Star Piece"
     SeasideTownBossPrize = "Seaside Town boss prize"
     SeasideTownRescue = "Seaside Town shed rescue"
     SeaStarChest = "Sea starslap room chest"
@@ -216,9 +220,9 @@ class ShuffleLocationSelector(enum.Enum):
     SunkenShipFrogCoinRoom = "Sunken Ship hidden box room chest"
     SunkenShipHidonMushroom = "Sunken Ship Hidon's room left chest"
     HidonChest = "Sunken Ship Hidon's room right chest"
-    HidonReward1 = "Mimic #2 first reward"
-    HidonReward2 = "Mimic #2 reload reward"
-    HidonBoss = "Mimic #2 star piece"
+    HidonReward1 = "Mimic Chest #2 first reward"
+    HidonReward2 = "Mimic Chest #2 reload reward"
+    HidonBoss = "Mimic Chest #2 Star Piece"
     SunkenShipUnderwaterFrogCoin1 = "Sunken Ship underwater freestanding frog coin 1"
     SunkenShipUnderwaterFrogCoin2 = "Sunken Ship underwater freestanding frog coin 2"
     SunkenShipUnderwaterFrogCoin3 = "Sunken Ship underwater freestanding frog coin 3"
@@ -232,8 +236,8 @@ class ShuffleLocationSelector(enum.Enum):
     SunkenShipCoinSnake = "Sunken Ship coin snake puzzle prize"
     SunkenShipCannonballPuzzle = "Sunken Ship cannonball puzzle prize"
     SunkenShipBarrelPuzzle = "Sunken Ship barrel switch prize"
-    SunkenShipMidboss = "Sunken Ship password boss star piece"
-    SunkenShipBoss = "Sunken Ship final boss star piece"
+    SunkenShipMidboss = "Sunken Ship password boss Star Piece"
+    SunkenShipBoss = "Sunken Ship final boss Star Piece"
     LandsEndRedEssence = "Land's End first chest"
     LandsEndChowPit1 = "Land's End chow pit left chest"
     LandsEndChowPit2 = "Land's End chow pit right chest"
@@ -245,7 +249,7 @@ class ShuffleLocationSelector(enum.Enum):
     LandsEndStarChest2 = "Land's End 1st purchase chest"
     LandsEndStarChest3 = "Land's End 2nd purchase chest"
     TroopaClimb = "Land's End Troopa Climb sub-12 second prize"
-    LandsEndStarPiece1 = "Land's End/Belome Temple cloud star piece"
+    LandsEndStarPiece1 = "Land's End/Belome Temple cloud Star Piece"
     BelomeTempleFortuneTeller = "Belome Temple first fortune-telling room chest"
     BelomeTempleFortune1 = "Belome Temple left-middle-right fortune chest"
     BelomeTempleFortune2 = "Belome Temple left-right-middle fortune chest"
@@ -270,15 +274,15 @@ class ShuffleLocationSelector(enum.Enum):
     BelomeTempleTreasure1 = "Belome Temple vault middle item bag"
     BelomeTempleTreasure2 = "Belome Temple vault left item bag"
     BelomeTempleTreasure3 = "Belome Temple vault right item bag"
-    BelomeTempleBoss = "Belome Temple boss star piece"
+    BelomeTempleBoss = "Belome Temple boss Star Piece"
     MonstroTownEntrance = "Monstro Town entrance chest"
     MonstroTownThwomp = "Monstro Town thwomp key"
     JinxDojoReward = "Monstro Town dojo prize"
-    DojoBoss1 = "Monstro Town dojo first fight star piece"
-    DojoBoss2 = "Monstro Town dojo second fight star piece"
-    DojoBoss3 = "Monstro Town dojo third fight star piece"
-    DojoBoss4 = "Monstro Town dojo fourth fight star piece"
-    CulexBoss = "Monstro Town sealed door star piece"
+    DojoBoss1 = "Monstro Town dojo first fight Star Piece"
+    DojoBoss2 = "Monstro Town dojo second fight Star Piece"
+    DojoBoss3 = "Monstro Town dojo third fight Star Piece"
+    DojoBoss4 = "Monstro Town dojo fourth fight Star Piece"
+    CulexBoss = "Monstro Town sealed door Star Piece"
     CulexReward = "Monstro Town sealed door prize"
     SuperJumps30 = "Monstro Town Super Jump first prize"
     SuperJumps100 = "Monstro Town Super Jump second prize"
@@ -290,19 +294,19 @@ class ShuffleLocationSelector(enum.Enum):
     BeanValleyBottomRightPiranhaPipeUpper = "Bean Valley bottom right piranha pipe upper chest"
     BeanValleyBottomRightPiranhaPipeLower = "Bean Valley bottom right piranha pipe lower chest"
     BeanValleyBoxBoyRoom1 = "Bean Valley right piranha pipe left chest"
-    BoxBoyBoss = "Mimic #2 star piece"
+    BoxBoyBoss = "Mimic Chest #3 Star Piece"
     BeanValleyBoxBoyRoom2 = "Bean Valley right piranha pipe right chest"
     BeanValleyBoxBoyRoomHidden = "Bean Valley right piranha pipe hidden stairway item"
     BeanValleyPiranhaPlants = "Bean Valley chest above Box Boy's room"
     BeanValleyMegasmilaxRoom = "Bean Valley boss reward"
-    BeanValleyBoss = "Bean Valley boss star piece"
+    BeanValleyBoss = "Bean Valley boss Star Piece"
     BeanValleyBeanstalk = "Bean Valley clouds solo vine chest"
     BeanValleyBeanstalkFrogCoin = "Bean Valley middle vine room freestanding frog coin"
     BeanValleyBeanstalkCoin1 = "Bean Valley middle vine room lowest freestanding coin"
     BeanValleyBeanstalkCoin2 = "Bean Valley middle vine room middle freestanding coin"
     BeanValleyBeanstalkCoin3 = "Bean Valley middle vine room highest freestanding coin"
     BeanValleyEastBeanstalkCoin1 = "Bean Valley east vine room lowest freestanding coin"
-    BeanValleyEastBeanstalkCoin2 = "Bean Valley east vine room lowest freestanding coin"
+    BeanValleyEastBeanstalkCoin2 = "Bean Valley east vine room lower freestanding coin"
     BeanValleyEastBeanstalkCoin3 = "Bean Valley east vine room middle freestanding coin"
     BeanValleyEastBeanstalkCoin4 = "Bean Valley east vine room higher freestanding coin"
     BeanValleyEastBeanstalkCoin5 = "Bean Valley east vine room highest freestanding coin"
@@ -325,19 +329,19 @@ class ShuffleLocationSelector(enum.Enum):
     NimbusCastleBeforeBirdetta1 = "Nimbus Castle (occupied) 5-door room chest"
     NimbusCastleBeforeBirdetta2 = "Nimbus Castle west two-level room chest"
     NimbusCastleBirdetta = "Nimbus Castle giant egg prize"
-    NimbusCastleStarPiece2 = "Nimbus Land giant egg boss star piece"
+    NimbusCastleStarPiece2 = "Nimbus Land giant egg boss Star Piece"
     NimbusCastleOutOfBounds1 = "Nimbus Castle west stairway room left chest"
     NimbusCastleOutOfBounds2 = "Nimbus Castle west stairway room right chest"
     NimbusCastleSingleGoldBird = "Nimbus Castle single gold bird room chest"
     NimbusCastleAfterEgg1 = "Nimbus Castle east two-level room lower chest"
     NimbusCastleAfterEgg2 = "Nimbus Castle east two-level room upper chest"
-    NimbusCastleStarPiece3 = "Nimbus Land final boss star piece"
+    NimbusCastleStarPiece3 = "Nimbus Land final boss Star Piece"
     NimbusCastleStarChest = "Nimbus Castle post-throne chest (occupied)"
     NimbusCastleStarAfterValentina = "Nimbus Castle post-throne chest (unoccupied)"
     NimbusCastleCornerChestAfterValentina = "Nimbus Castle (unoccupied) 5-door room chest"
     NimbusLandRightSide = "Nimbus Land post-invasion off-cloud item"
     DodoReward = "Nimbus Land Dodo's statue game prize"
-    NimbusLandStarPiece1 = "Nimbus Land statue keeper boss star piece"
+    NimbusLandStarPiece1 = "Nimbus Land statue keeper boss Star Piece"
     NimbusLandPrisoners = "Nimbus Castle west cellar civilian"
     NimbusLandPrisoners2 = "Nimbus Castle west cellar guard"
     NimbusLandSignalRing = "Nimbus Land post-invasion upper right house"
@@ -354,14 +358,14 @@ class ShuffleLocationSelector(enum.Enum):
     BarrelVolcanoSaveRoom1 = "Barrel Volcano save room lower chest"
     BarrelVolcanoSaveRoom2 = "Barrel Volcano save room upper chest"
     BarrelVolcanoHinopio = "Barrel Volcano Hinopio shop chest"
-    BarrelVolcanoBoss1 = "Barrel Volcano first boss star piece"
-    BarrelVolcanoBoss2 = "Barrel Volcano second boss star piece"
+    BarrelVolcanoBoss1 = "Barrel Volcano first boss Star Piece"
+    BarrelVolcanoBoss2 = "Barrel Volcano second boss Star Piece"
     BowsersKeepDarkRoom = "Bowser's Keep dark room chest"
     BowsersKeepCrocoShop1 = "Bowser's Keep near first shop left chest"
     BowsersKeepCrocoShop2 = "Bowser's Keep near first shop right chest"
     BowsersKeepMagikoopa = "Bowser's Keep Magikoopa's room chest"
-    BowsersKeepBossChester = "Bowser's Keep battle door star piece"
-    BowsersKeepBoss1 = "Bowser's Keep first boss star piece"
+    BowsersKeepBossChester = "Bowser's Keep battle door Star Piece"
+    BowsersKeepBoss1 = "Bowser's Keep first boss Star Piece"
     BowsersKeepInvisibleBridge1 = "Bowser's Keep 6-door invisble bridge bottom chest"
     BowsersKeepInvisibleBridge2 = "Bowser's Keep 6-door invisble bridge right chest"
     BowsersKeepInvisibleBridge3 = "Bowser's Keep 6-door invisble bridge left chest"
@@ -400,11 +404,11 @@ class ShuffleLocationSelector(enum.Enum):
     BowsersKeepDoorReward4 = "Bowser's Keep door prize 4"
     BowsersKeepDoorReward5 = "Bowser's Keep door prize 5"
     BowsersKeepDoorReward6 = "Bowser's Keep door prize 6"
-    BowsersKeepBoss2 = "Bowser's Keep second boss star piece"
-    BowsersKeepBoss3 = "Bowser's Keep third boss star piece"
+    BowsersKeepBoss2 = "Bowser's Keep second boss Star Piece"
+    BowsersKeepBoss3 = "Bowser's Keep third boss Star Piece"
     FactorySaveRoom = "Outer Factory early save room chest"
     FactoryBoltPlatforms = "Outer Factory bot platform chest"
-    FactoryBoss1 = "Outer Factory first boss star piece"
+    FactoryBoss1 = "Outer Factory first boss Star Piece"
     FactoryFallingAxems = "Outer Factory falling axem room chest"
     FactoryTreasurePit1 = "Outer Factory pit back chest"
     FactoryTreasurePit2 = "Outer Factory pit front chest"
@@ -412,30 +416,30 @@ class ShuffleLocationSelector(enum.Enum):
     FactoryConveyorPlatforms2 = "Outer Factory conveyor room left chest"
     FactoryBehindSnakes1 = "Outer Factory room behind machine yarid right chest"
     FactoryBehindSnakes2 = "Outer Factory room behind machine yarid left chest"
-    FactoryBoss2 = "Outer Factory second boss star piece"
+    FactoryBoss2 = "Outer Factory second boss Star Piece"
     FactoryToadGift = "Inner Factory toad gift"
-    InnerFactoryBoss1 = "Inner Factory first boss star piece"
-    InnerFactoryBoss2 = "Inner Factory second boss star piece"
-    InnerFactoryBoss3 = "Inner Factory third boss star piece"
-    InnerFactoryBoss4 = "Inner Factory fourth boss star piece"
-    InnerFactoryBossFinal = "Factory final boss star piece"
+    InnerFactoryBoss1 = "Inner Factory first boss Star Piece"
+    InnerFactoryBoss2 = "Inner Factory second boss Star Piece"
+    InnerFactoryBoss3 = "Inner Factory third boss Star Piece"
+    InnerFactoryBoss4 = "Inner Factory fourth boss Star Piece"
+    InnerFactoryBossFinal = "Factory final boss Star Piece"
 
 
-class FireworksOptions(enum.Enum):
+class FireworksOptions(FlagOptions):
     """Enumeration for Fireworks flag option"""
     Vanilla = "Vanilla"
     ShuffleFireworks = "Shuffle Fireworks"
     ProgressiveFireworks = "Shuffle Progressive Fireworks"
 
 
-class WinConditions(enum.Enum):
+class WinConditions(FlagOptions):
     """Enumeration for win condition options"""
-    FinalBoss = "Beat the Factory"
+    FinalBoss = "Beat the final Factory boss"
     Culex = "Beat Monstro Town sealed door"
-    StarPieces = "Collect required star pieces"
+    StarPieces = "Collect required Star Pieces"
 
 
-class PlayableCharacters(enum.Enum):
+class PlayableCharacters(FlagOptions):
     """Enumeration for win condition options"""
     Mario = "Mario"
     Mallow = "Mallow"
@@ -444,8 +448,14 @@ class PlayableCharacters(enum.Enum):
     Toadstool = "Toadstool"
     Random = "Random"
 
+class EquipmentCharactersOptions(FlagOptions):
+    Default = "Vanilla"
+    AccessoriesOnAnyone = "Vanilla, except anyone can wear any accessory"
+    AccessoriesOnAnyoneRandom = "Random, except anyone can wear any accessory"
+    CompletelyRandom = "Completely random"
 
-class LearnableSpells(enum.Enum):
+
+class LearnableSpells(FlagOptions):
     Jump = spells.Jump.title
     FireOrb = spells.FireOrb.title
     SuperJump = spells.SuperJump.title
@@ -475,20 +485,20 @@ class LearnableSpells(enum.Enum):
     StarRain = spells.StarRain.title
 
 
-class EquipmentPropertiesOptions(enum.Enum):
+class EquipmentPropertiesOptions(FlagOptions):
     """Enumeration for win condition options"""
     default = "Default"
     some_buffs_added = "Some buffs added"
     completely_random = "Completely random"
 
 
-class EXPMultiplierOptions(enum.Enum):
+class EXPMultiplierOptions(FlagOptions):
     default = "Default"
     double = "Double"
     triple = "Triple"
 
 
-class BanditsWayGating(enum.Enum):
+class BanditsWayGating(FlagOptions):
     """Enumeration for Bandit's Way gating flag option"""
     RecruitMario = "Recruit Mario"
     RecruitMallow = "Recruit Mallow"
@@ -499,7 +509,7 @@ class BanditsWayGating(enum.Enum):
     AlwaysOpen = "Always open"
 
 
-class ForestMazeGating(enum.Enum):
+class ForestMazeGating(FlagOptions):
     """Enumeration for Forest Maze gating flag option"""
     FindMario = "Find Mario"
     FindMallow = "Find Mallow"
@@ -510,18 +520,18 @@ class ForestMazeGating(enum.Enum):
     AlwaysOpen = "Always open"
 
 
-class PipeVaultGating(enum.Enum):
+class PipeVaultGating(FlagOptions):
     """Enumeration for Pipe Vault gating flag option"""
-    RecruitMario = "Find Mario"
-    RecruitMallow = "Find Mallow"
-    RecruitGeno = "Find Geno"
-    RecruitBowser = "Find Bowser"
-    RecruitToadstool = "Find Toadstool"
+    RecruitMario = "Recruit Mario"
+    RecruitMallow = "Recruit Mallow"
+    RecruitGeno = "Recruit Geno"
+    RecruitBowser = "Recruit Bowser"
+    RecruitToadstool = "Recruit Toadstool"
     FinishForestMaze = "Finish Forest Maze"
     AlwaysOpen = "Always open"
 
 
-class BoosterTowerGating(enum.Enum):
+class BoosterTowerGating(FlagOptions):
     """Enumeration for Booster Tower gating flag option"""
     RecruitMario = "Recruit Mario"
     RecruitMallow = "Recruit Mallow"
@@ -532,14 +542,14 @@ class BoosterTowerGating(enum.Enum):
     AlwaysOpen = "Always open"
 
 
-class MarrymoreGating(enum.Enum):
+class MarrymoreGating(FlagOptions):
     """Enumeration for Marrymore gating flag option"""
     FinishBoosterHill = "Finish Booster Hill"
     FinishBoosterTower = "Finish Booster Tower"
     AlwaysOpen = "Always open"
 
 
-class SeaGating(enum.Enum):
+class SeaGating(FlagOptions):
     """Enumeration for Sea & Sunken Ship gating flag option"""
     RecruitMario = "Recruit Mario"
     RecruitMallow = "Recruit Mallow"
@@ -555,25 +565,25 @@ class SeaGating(enum.Enum):
     AlwaysOpen = "Always open"
 
 
-class YaridovichGating(enum.Enum):
+class YaridovichGating(FlagOptions):
     """Enumeration for Seaside boss gating flag option"""
     FinishSunkenShip = "Finish Sunken Ship"
     AlwaysOpen = "Always available"
 
 
-class MonstroTownGating(enum.Enum):
+class MonstroTownGating(FlagOptions):
     """Enumeration for Monstro Town gating flag option"""
     FinishLandsEnd = "Finish Land's End"
     AlwaysOpen = "Always open"
 
 
-class BarrelVolcanoGating(enum.Enum):
+class BarrelVolcanoGating(FlagOptions):
     """Enumeration for Barrel Volcano gating flag option"""
     FinishNimbusLand = "Finish Nimbus Land"
     AlwaysOpen = "Always open"
 
 
-class BowsersKeepGating(enum.Enum):
+class BowsersKeepGating(FlagOptions):
     """Enumeration for Bowser's Keep gating flag option"""
     Find1Star = "Collect 1 Star Piece"
     Find2Star = "Collect 2 Star Pieces"
@@ -585,7 +595,7 @@ class BowsersKeepGating(enum.Enum):
     AlwaysOpen = "Always open"
 
 
-class FactoryGating(enum.Enum):
+class FactoryGating(FlagOptions):
     """Enumeration for Factory gating flag option"""
     AlwaysOpen = "Open when Bowser's Keep is opened"
     FinishBowsersKeep = "Finish Bowser's Keep"
@@ -597,24 +607,24 @@ class FactoryGating(enum.Enum):
     Find6Star = "Collect 6 Star Pieces"
 
 
-class StarProgressionchallengeOptions(enum.Enum):
+class StarProgressionchallengeOptions(FlagOptions):
     default = "Default"
-    sp1 = "Star pieces (easy)"
-    sp2 = "Star pieces (hard)"
+    sp1 = "Star Pieces (easy)"
+    sp2 = "Star Pieces (hard)"
     bosses = "Bosses"
     none = "No EXP"
 
 
-class EXPChallengeOptions(enum.Enum):
+class EXPChallengeOptions(FlagOptions):
     default = "Default"
-    easystars = "Star pieces (easy)"
-    hardstars = "Star pieces (hard)"
-    easybosses = "Bosses (easy"
+    easystars = "Star Pieces (easy)"
+    hardstars = "Star Pieces (hard)"
+    easybosses = "Bosses (easy)"
     hardbosses = "Bosses (hard)"
     none = "None"
 
 
-class ItemQualities(enum.Enum):
+class ItemQualities(FlagOptions):
     """Enumeration for item shuffle quality option"""
     Original = "Original item pool"
     Tier4 = "Completely random, unrestricted"
@@ -624,7 +634,7 @@ class ItemQualities(enum.Enum):
     Empty = "Completely empty"
 
 
-class ShopQualities(enum.Enum):
+class ShopQualities(FlagOptions):
     """Enumeration for shop shuffle quality option"""
     Original = "Original shop pool"
     Tier4 = "Completely random, unrestricted"
@@ -634,7 +644,7 @@ class ShopQualities(enum.Enum):
     Empty = "Completely empty"
 
 
-class AvailableMusic(enum.Enum):
+class AvailableMusic(FlagOptions):
     Normal = music.NormalBattleMusic.name
     Boss1 = music.MidbossMusic.name
     Boss2 = music.BossMusic.name

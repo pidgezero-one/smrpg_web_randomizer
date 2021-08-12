@@ -13,7 +13,9 @@ dialog_data[6] = '''[await]'''
 dialog_data[7] = '''\n            Got a Star Piece![await]'''
 dialog_data[8] = '''[await]'''
 dialog_data[9] = '''[await]'''
-dialog_data[10] = '''[await]'''
+dialog_data[10] = ''' Can you believe there are people
+ who call themselves gamers but
+ don't own a single pair of jorts?[await]'''
 dialog_data[11] = '''[await]'''
 dialog_data[12] = '''[await]'''
 dialog_data[13] = '''GARDENER: ••[delay]••[delay]••[delay]

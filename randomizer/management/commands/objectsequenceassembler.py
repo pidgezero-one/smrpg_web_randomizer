@@ -6,10 +6,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         b = OSCommand.assemble_from_table(scripts)
 
-        allbytes = b[0] + b[1]
-        print("combined length", hex(len(allbytes)), len(allbytes))
+        print("combined length", hex(len(b)), len(b))
 
 
         f = open(f'write_to_0x210000.img', 'wb')
-        f.write(allbytes)
+        f.write(b)
         f.close()

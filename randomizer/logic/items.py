@@ -7,7 +7,7 @@ from inspect import isclass
 
 from randomizer.data import items
 from randomizer.data.characters import Mario, Mallow, Geno, Bowser, Peach
-from randomizer.data.helpers import EquipmentPropertiesOptions
+from randomizer.data.helpers import EquipmentPropertiesOptions, EquipmentCharactersOptions
 from . import flags, utils
 
 
@@ -238,30 +238,36 @@ def _randomize_item(item):
         item.prevent_ko = False
 
     
-    if item.world.settings.is_flag_enabled(flags.EquipmentCharacters):
+    if not item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.Default):
         # Randomize which characters can equip this item.
         # Old linear mode logic: Geno can only equip his own weapons, and nobody else can equip his due to softlocks!
         # This is fixed in open mode.
         if item.world.open_mode or (not item.is_weapon or Geno not in item.equip_chars):
             # Pick random number of characters with lower numbers weighted heavier.
+
             new_chars = set()
-            num_equippable = random.randint(1, random.randint(1, 5))
 
-            for _ in range(num_equippable):
-                char_choices = {Mario, Mallow, Geno, Bowser, Peach} - new_chars
+            if item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.CompletelyRandom) or (item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.AccessoriesOnAnyoneRandom) and not item.is_accessory):
+                num_equippable = random.randint(1, random.randint(1, 5))
 
-                # Linear mode: Geno can only equip his own weapons (we checked if this was one of his above).
-                if not item.world.open_mode and item.is_weapon and Geno in char_choices:
-                    char_choices.remove(Geno)
+                for _ in range(num_equippable):
+                    char_choices = {Mario, Mallow, Geno, Bowser, Peach} - new_chars
 
-                if not char_choices:
-                    break
+                    # Linear mode: Geno can only equip his own weapons (we checked if this was one of his above).
+                    if not item.world.open_mode and item.is_weapon and Geno in char_choices:
+                        char_choices.remove(Geno)
 
-                # Now choose a random character to be equipable.
-                char_choices = sorted(char_choices, key=lambda c: c.index)
-                new_chars.add(random.choice(char_choices))
+                    if not char_choices:
+                        break
 
-            item.equip_chars = list(new_chars)
+                    # Now choose a random character to be equipable.
+                    char_choices = sorted(char_choices, key=lambda c: c.index)
+                    new_chars.add(random.choice(char_choices))
+
+                item.equip_chars = list(new_chars)
+                    
+            elif item.is_accessory and (item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.AccessoriesOnAnyone) or item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.AccessoriesOnAnyoneRandom)):
+                item.equip_chars = list({Mario, Mallow, Geno, Bowser, Peach})
 
     
 

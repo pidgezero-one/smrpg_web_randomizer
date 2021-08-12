@@ -476,7 +476,10 @@ def randomize_all(world):
         # Excluded freestanding items will remain vanilla.
         # Excluded boss checks will receive "None"
         # Character locations cannot be excluded, but will receive "None" if unassigned
-        all_locations = world.chest_locations.copy() + [c for c in world.freestanding_item_locations if c.description not in locations_to_completely_ignore] + world.boss_star_checks.copy() + world.recruitable_character_checks.copy() + world.spotted_character_checks.copy()
+        if world.settings.is_flag_enabled(flags.ShuffleItems):
+            all_locations = world.chest_locations.copy() + [c for c in world.freestanding_item_locations if c.description not in locations_to_completely_ignore] + world.boss_star_checks.copy() + world.recruitable_character_checks.copy() + world.spotted_character_checks.copy()
+        else:
+            all_locations = world.boss_star_checks.copy() + world.recruitable_character_checks.copy() + world.spotted_character_checks.copy()
         # remove unused checks
         # bucket girl
         if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.Vanilla) or world.settings.is_flag_value(flags.BucketWarp, True):

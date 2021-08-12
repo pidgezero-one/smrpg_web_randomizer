@@ -185,14 +185,59 @@ label {
 
 /* Flag styles */
 
-.flag-form-input {
+/*.flag-form-input {
     display: none;
-}
+}*/
 
-.flag-container {
+
+/*.flag-container {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-gap: 1rem;
+}*/
+
+.flag-container:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.flag-container:not(:first-child) {
+    padding-top: 10px;
+}
+
+
+
+.flag-container-checkbox {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 1rem;
+}
+
+.flag-container-number {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flag-container-number > input {
+    width: 75px;
+}
+.flag-container-number > label {
+    flex-basis: 1em;
+    flex-grow: 1;
+}
+
+.flag-container,
+.flag-container select,
+.flag-container .btn,
+.flag-container select, 
+.flag-container input[type="number"] {
+    font-size: 0.85rem;
+}
+
+.flag-container select, .flag-container input[type="number"] {
+    border: 1px solid #666;
+    border-radius: .25rem;
+    height: min-content;
 }
 
 .flag-checkbox, .flag-radio {
@@ -288,4 +333,65 @@ label {
 }
 .inline-flag-description .display-cell:first-child, .disabled-inline-flag-description .display-cell:first-child {
     min-width: 1.5rem;
+}
+
+.flag-container-list .multiselect-option label {
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+    border: none;
+    background: #FFFFFF;
+    color: #666;
+}
+
+.multiselect-option-container {
+    border: 1px solid #666;
+    max-height: 300px;
+    display: flex;
+    justify-content: initial;
+}
+
+.multiselect-option {
+    width: 100%;
+}
+.multiselect-option:not(:first-child) {
+    margin-top: 1px;
+}
+
+.multiselect-option .btn-check:active+.btn-outline-primary,
+.multiselect-option .btn-check:checked+.btn-outline-primary,
+.multiselect-option .btn-outline-primary.active,
+.multiselect-option .btn-outline-primary.dropdown-toggle.show,
+.multiselect-option .btn-outline-primary:active,
+.form-check-input:checked {
+    background-color: #1da2f7;
+    border-color: #1da2f7;
+}
+
+.multiselect-option .btn-check:active+.btn-outline-primary:focus, 
+.multiselect-option .btn-check:checked+.btn-outline-primary:focus, 
+.multiselect-option .btn-outline-primary.active:focus, 
+.multiselect-option .btn-outline-primary.dropdown-toggle.show:focus, 
+.multiselect-option .btn-outline-primary:active:focus,
+.multiselect-option .btn-check:focus+.btn-outline-primary, 
+.multiselect-option .btn-outline-primary:focus {
+    box-shadow: none;
+}
+
+
+.multiselect-button-container {
+    display: flex;
+    align-content: space-between;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.multiselect-button-container .separator {
+    flex-grow: 1;
+}
+.multiselect-button-container .btn {
+    border-color: #c3c3c3;
+}
+
+.subcategory > div:not(:last-child) {
+    border-right: 1px solid #ddd;
 }

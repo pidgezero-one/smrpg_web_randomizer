@@ -5,7 +5,7 @@ from django.utils.html import mark_safe
 from markdown import markdown
 from randomizer.data.helpers import ShuffleLocationSelector
 from randomizer.data.bosses import AvailableBosses
-from randomizer.data.helpers import FireworksOptions, WinConditions, PlayableCharacters, LearnableSpells, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, StarProgressionchallengeOptions, EXPChallengeOptions, ItemQualities, ShopQualities, AvailableMusic
+from randomizer.data.helpers import FireworksOptions, WinConditions, PlayableCharacters, LearnableSpells, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, StarProgressionchallengeOptions, EXPChallengeOptions, ItemQualities, ShopQualities, AvailableMusic, EquipmentCharactersOptions
 
 
 # ************************************** Flag classes
@@ -23,9 +23,17 @@ class Flag:
     modes = ['linear', 'open']
     default = None
 
+    def get_option_slug(self, option):
+        return re.sub(r'[^a-z0-9]+', '_', option.lower())
+        
+        
+    @classmethod
+    def id(cls):
+        return re.sub(r'[^a-z0-9]+', '_', cls.__name__.lower())
+
     @classmethod
     def get_slug(cls):
-        return re.sub(r'[^a-z0-9]+', '_', cls.name.lower())
+        return re.sub(r'[^a-z0-9]+', '_', cls.__name__.lower())
 
     @classmethod
     def description_as_markdown(cls):
@@ -71,6 +79,15 @@ class CategorizationFlag(Flag):
     enabled = []
     disabled = []
 
+    @property
+    def options_dict(self):
+        return [{"text": c, "id": re.sub(r'[^a-z0-9]+', '_', c.lower())} for c in self.options]
+
+    @property
+    def default_dict(self):
+        return [re.sub(r'[^a-z0-9]+', '_', c.lower()) for c in self.enabled]
+        # this really should be coming from its enum
+
 
 class SelectOneFlag(Flag):
     """For things like choosing an area gating option can and cannot contain progression"""
@@ -78,6 +95,15 @@ class SelectOneFlag(Flag):
     choices = []
     value = None
 
+    @property
+    def choices_dict(self):
+        return [{"text": c, "id": re.sub(r'[^a-z0-9]+', '_', c.lower())} for c in self.choices]
+        # this really should be coming from its enum
+
+    @property
+    def default_dict(self):
+        return {"text": self.default.value, "id": re.sub(r'[^a-z0-9]+', '_', self.default.value)}
+        # this really should be coming from its enum
 
 class BooleanFlag(Flag):
     """For settings which can only be on or off"""
@@ -92,22 +118,22 @@ class NumberThresholdFlag(Flag):
     max = 0
     value = 0
 
-# ******** Star pieces
+# ******** Star Pieces
 
 
 class ShuffleStarPieces(BooleanFlag):
     name = 'Randomize the locations of Star Pieces'
     description = '''If enabled, the Star Pieces may be found in places other than their original locations.
-    
-    If disabled, they will be rewarded by defeating the final bosses of Mushroom Kindom, Forest Maze, Moleville, Seaside Town, and Barrel Volcano, as well as a freestanding piece on Star Hill.'''
+<br>
+<br>If disabled, they will be rewarded by defeating the final bosses of Mushroom Kindom, Forest Maze, Moleville, Seaside Town, and Barrel Volcano, as well as a freestanding piece on Star Hill.'''
     modes = ['open']
     default = False
 # if this is disabled, no other options in this category can be changed
 
 
 class TotalStarPieces(NumberThresholdFlag):
-    name = 'Total star pieces'
-    description = "The total number of star pieces (0-7) that can appear in the seed."
+    name = 'Total Star Pieces available'
+    description = "The total number of Star Pieces (0-7) that can appear in the seed."
     default = 6
     min = 0
     max = 7
@@ -115,8 +141,8 @@ class TotalStarPieces(NumberThresholdFlag):
 
 
 class StarPiecesRequired(NumberThresholdFlag):
-    name = 'Star pieces required to access the final boss'
-    description = "The total number of star pieces (0-7) that are required to access the final boss. Cannot be higher than Total Star Pieces."
+    name = 'Star Pieces required to access the final Factory boss'
+    description = "The total number of Star Pieces (0-7) that are required to access the final boss. Cannot be higher than Total Star Pieces."
     default = 6
     min = 0
     max = 7
@@ -125,12 +151,12 @@ class StarPiecesRequired(NumberThresholdFlag):
 
 class WinCondition(SelectOneFlag):
     name = "Condition required to beat the game"
-    description = '''Beat the Factory: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.
-    
-    Collect required star pieces: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the game is over and the credits will roll.
-    
-    Beat Monstro Town sealed door: The game is over when you defeat the boss behind the sealed door in Monstro Town, regardless of your Star Piece count.'''
-    choices = [o for o in WinConditions]
+    description = '''<b>Beat the Factory</b>: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the button in the Inner Factory (as well as any enabled warps) will be enabled to allow you to access the final boss and beat the game.
+<br>
+<br><b>Collect required Star Pieces</b>: When you collect the number of Star Pieces specified in your Required Star Pieces setting, the game is over and the credits will roll.
+<br>
+<br><b>Beat Monstro Town sealed door</b>: The game is over when you defeat the boss behind the sealed door in Monstro Town, regardless of your Star Piece count.'''
+    choices = [o.value for o in WinConditions]
     default = WinConditions.FinalBoss
 
 
@@ -144,13 +170,13 @@ class StarPieceAvailability(BooleanFlag):
 class RequireBossFights(BooleanFlag):
     name = 'Disable all boss fight skips'
     description = '''If set, the following actions will NOT grant you a Star Piece, and you must fight the associated boss in order to retrieve their Star Piece (if they have one):
-    
-    * Performing Mack Skip (the Chancellor will not advance the script)
-    * Completing the Booster Tower curtain minigame (a copy of the boss will appear in the room corner)
-    * Completing the Nimbus Castle statue minigame, or eliminating the boss in the final hallway with an EXP star (a copy of the boss will appear in the nearby save room)
-    * Failing a Slot Machine chest and completing the forced mimic encounter (the mimic encounter is available on its own in a separate chest)
-    
-    If unset, the above actions will grant you a star piece if one is assigned to the associated boss. Each boss' star piece can only be obtained once.'''
+<ul>
+<li> Performing Mack Skip (the Chancellor will not advance the script)</li>
+<li> Completing the Booster Tower curtain minigame (a copy of the boss will appear in the room corner)</li>
+<li> Completing the Nimbus Castle statue minigame, or eliminating the boss in the final hallway with an EXP star (a copy of the boss will appear in the nearby save room)</li>
+<li> Failing a Slot Machine chest and completing the forced mimic encounter (the mimic encounter is available on its own in a separate chest)</li>
+</ul>
+<br/>If unset, the above actions will grant you a Star Piece if one is assigned to the associated boss. Each boss' Star Piece can only be obtained once.'''
     modes = ['open']
     default = False
 
@@ -201,28 +227,28 @@ boss_star_piece_locations = [
 
 
 class EnabledBossChecks(CategorizationFlag):
-    name = 'Eligible Star Piece boss fights'
-    description = '''If a check is in the left column, it is eligible to reward a Star Piece.
-    
-    If a check is in the right column, it will still house a boss fight, but is guaranteed to not reward a Star Piece.'''
-    options = [o for o in boss_star_piece_locations]
-    enabled = [o for o in boss_star_piece_locations]
+    name = 'Eligible Star Piece boss fight locations'
+    description = '''If a check is highlighted (white text over blue), it is eligible to reward a Star Piece.
+<br>
+<br>If a check is not highlighted, it will still house a boss fight, but is guaranteed to not reward a Star Piece.'''
+    options = [o.value for o in boss_star_piece_locations]
+    enabled = [o.value for o in boss_star_piece_locations]
 
 
 class StarPiecesRestrictedByArea(BooleanFlag):
-    name = 'Restrict number of star pieces in an area'
-    description = '''If enabled, each of the seven overworld map areas may only contain up to one star piece each.
-    
-    Note: This may not be perfectly respected if Bowser's Keep and Factory are both gated by high star piece counts.'''
+    name = 'Restrict number of Star Pieces in a World Map area'
+    description = '''If enabled, each of the seven overworld map areas may only contain up to one Star Piece each.
+<br>
+<br>Note: This may not be perfectly respected if Bowser's Keep and Factory are both gated by high Star Piece counts.'''
     modes = ['open']
     default = False
 
 
 class StarPieceHints(BooleanFlag):
-    name = 'Signal Ring hints at star pieces'
+    name = 'Signal Ring Star Piece hints'
     description = '''If enabled, the Signal Ring (if equipped to your active party) will play a sound when you enter a world area that contains a Star Piece.  
-    
-    The Signal Ring will only sound off when you enter an area from the World Map, from loading a save, or from an area warp (ex: the Kero Sewers - Land's End pipe). Therefore, the chime does not necessarily indicate that your current room contains a star piece, but rather that at least one room in the area does.'''
+<br>
+<br>The Signal Ring will only sound off when you enter an area from the World Map, from loading a save, or from an area warp (ex: the Kero Sewers - Land's End pipe). Therefore, the chime does not necessarily indicate that your current room contains a Star Piece, but rather that at least one room in the area does.'''
     modes = ['open']
     default = False
 
@@ -231,9 +257,9 @@ class StarPieceHints(BooleanFlag):
 
 class ShuffleCharacters(BooleanFlag):
     name = 'Randomize the locations of recruited characters'
-    description = '''If enabled, Mario, Mallow, Geno, Peach, and Bowser will join your party in a random order.
-    
-    If disabled, you will start with Mario and recruit characters near their original locations.'''
+    description = '''If enabled, your characters will join your party in a random order.
+<br>
+<br>If disabled, you will start with Mario and recruit characters near their original locations.'''
     modes = ['open']
     default = False
 # if this is disabled, no starting/available options in this category can be changed
@@ -253,38 +279,34 @@ class StartingCharacters(NumberThresholdFlag):
 class StartingCharacter(SelectOneFlag):
     name = "Starting Character"
     description = '''The first character in your party, who will appear on your save menu.'''
-    choices = [o for o in PlayableCharacters]
+    choices = [o.value for o in PlayableCharacters]
     default = PlayableCharacters.Mario
 
 
 class AvailableCharacters(CategorizationFlag):
     name = "Available Characters"
-    description = '''Characters on the left will appear in the seed. Characters on the right will not.'''
-    options = [PlayableCharacters.Mario, PlayableCharacters.Mallow,
-               PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
-    enabled = [PlayableCharacters.Mario, PlayableCharacters.Mallow,
-               PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
+    description = '''If a character is highlighted (white text over blue), they will appear in the seed. Otherwise, they will not.'''
+    options = [o.value for o in PlayableCharacters if o != PlayableCharacters.Random]
+    enabled = [o.value for o in PlayableCharacters if o != PlayableCharacters.Random]
 
 
 class CharacterStats(BooleanFlag):
     name = 'Randomize character stats'
     description = '''If enabled, stats and stat curves for each playable character will be randomized. This also randomizes the number of FP you start with.
-    
-    If disabled, playable characters retain their original stats and stat curves.'''
+<br>
+<br>If disabled, playable characters retain their original stats and stat curves.'''
     default = False
 
 
 class AvailableSpells(CategorizationFlag):
     name = "Available Player Spells"
-    description = '''Spells on the left will be learned by at least one character. Spells on the right will not be learned by any character.
-    
-    Excluded spells are not replaced in characters' learnsets by other spells, so some characters will learn less than six total.
-    
-    Note: Excluding "Super Jump" may make some equips inaccessible depending on your other settings.'''
-    options = [LearnableSpells.Jump, LearnableSpells.FireOrb, LearnableSpells.SuperJump, LearnableSpells.SuperFlame, LearnableSpells.UltraJump, LearnableSpells.UltraFlame, LearnableSpells.Therapy, LearnableSpells.GroupHug, LearnableSpells.SleepyTime, LearnableSpells.ComeBack, LearnableSpells.Mute, LearnableSpells.PsychBomb, LearnableSpells.Terrorize,
-               LearnableSpells.PoisonGas, LearnableSpells.Crusher, LearnableSpells.BowserCrush, LearnableSpells.GenoBeam, LearnableSpells.GenoBoost, LearnableSpells.GenoWhirl, LearnableSpells.GenoBlast, LearnableSpells.GenoFlash, LearnableSpells.Thunderbolt, LearnableSpells.HPRain, LearnableSpells.Psychopath, LearnableSpells.Shocker, LearnableSpells.Snowy, LearnableSpells.StarRain]
-    enabled = [LearnableSpells.Jump, LearnableSpells.FireOrb, LearnableSpells.SuperJump, LearnableSpells.SuperFlame, LearnableSpells.UltraJump, LearnableSpells.UltraFlame, LearnableSpells.Therapy, LearnableSpells.GroupHug, LearnableSpells.SleepyTime, LearnableSpells.ComeBack, LearnableSpells.Mute, LearnableSpells.PsychBomb, LearnableSpells.Terrorize,
-               LearnableSpells.PoisonGas, LearnableSpells.Crusher, LearnableSpells.BowserCrush, LearnableSpells.GenoBeam, LearnableSpells.GenoBoost, LearnableSpells.GenoWhirl, LearnableSpells.GenoBlast, LearnableSpells.GenoFlash, LearnableSpells.Thunderbolt, LearnableSpells.HPRain, LearnableSpells.Psychopath, LearnableSpells.Shocker, LearnableSpells.Snowy, LearnableSpells.StarRain]
+    description = '''Highlighted (white text over blue) spells will be learned by at least one character. Spells that are not highlighted will not be learned by any character.
+<br>
+<br>Excluded spells are not replaced in characters' learnsets by other spells, so some characters will learn less than six total.
+<br>
+<br>Note: Excluding "Super Jump" may make some equips inaccessible depending on your other settings.'''
+    options = [o.value for o in LearnableSpells]
+    enabled =  [o.value for o in LearnableSpells]
 
 
 class CharacterLearnedSpells(BooleanFlag):
@@ -305,21 +327,29 @@ class CharacterSpellStats(BooleanFlag):
     default = False
 
 
-class EquipmentProperties(BooleanFlag):
+class EquipmentProperties(SelectOneFlag):
     name = 'Equipment stats & buffs'
-    description = '''Default: The stats and buffs on equipment are unchanged from the original game.
-    
-    Some buffs added: The stats and buffs on equipment are mostly unchanged from the original game, except most armors are given one additional property (e.g. Fire Shirt nullifies damage from fire attacks) Additionally, some weapons will boost magic attack instead of physical attack.
-    
-    Completely random: The stats and buffs on each piece of equipment is randomized.'''
-    choices = [o for o in EquipmentPropertiesOptions]
+    description = '''<b>Default</b>: The stats and buffs on equipment are unchanged from the original game.
+<br>
+<br><b>Some buffs added</b>: The stats and buffs on equipment are mostly unchanged from the original game, except most armors are given one additional property (e.g. Fire Shirt nullifies damage from fire attacks). Additionally, some weapons will boost magic attack instead of physical attack.
+<br>
+<br><b>Completely random</b>: The stats and buffs on each piece of equipment is randomized.'''
+    choices = [o.value for o in EquipmentPropertiesOptions]
     default = EquipmentPropertiesOptions.default
 
 
-class EquipmentCharacters(BooleanFlag):
-    name = 'Randomize allowed characters'
-    description = "Each equip's list of characters that can wear it will be randomized."
+class EquipmentCharacters(SelectOneFlag):
+    name = 'Equipment permissions'
+    description = '''<b>Vanilla</b>: The list of characters who are permitted to equip each item remains unchanged from the original game.
+<br>
+<br><b>Vanilla, except anyone can wear any accessory</b>: Armor and weapon permissions are unchanged from the original game, but all accessories (including the Attack Scarf) can be equipped by anyone.
+<br>
+<br><b>Random, except anyone can wear any accessory</b>: Armor and weapon permissions are randomized, but all accessories can be equipped by anyone.
+<br>
+<br><b>Completely random</b>: All equips' permissions are randomized.'''
     default = False
+    choices = [o.value for o in EquipmentCharactersOptions]
+    default = EquipmentCharactersOptions.Default
 
 
 class EquipmentNoSafety(BooleanFlag):
@@ -331,7 +361,7 @@ class EquipmentNoSafety(BooleanFlag):
 class EXPMultiplier(SelectOneFlag):
     name = 'EXP multiplier'
     description = '''If not set to "Default", all EXP gained will be doubled or tripled.'''
-    choices = [o for o in EXPMultiplierOptions]
+    choices = [o.value for o in EXPMultiplierOptions]
     default = EXPMultiplierOptions.default
 
 
@@ -340,211 +370,139 @@ class EXPMultiplier(SelectOneFlag):
 
 class BanditsWayGate(SelectOneFlag):
     name = '''Bandit's Way access'''
-    description = '''Recruit Mario: Bandit's Way will become available on the world map when you recruit Mario.
-    
-    Recruit Mallow: Bandit's Way will become available on the world map when you recruit Mallow.
-    
-    Recruit Geno: Bandit's Way will become available on the world map when you recruit Geno.
-    
-    Recruit Bowser: Bandit's Way will become available on the world map when you recruit Bowser.
-    
-    Recruit Toadstool: Bandit's Way will become available on the world map when you recruit Toadstool.
-    
-    Finish Mushroom Way: Bandit's Way will become available on the world map when you defeat the boss of Mushroom Way.
-    
-    Always Open: Bandit's Way will be available on the world map from the start of the game.'''
+    description = '''<b>Recruit character</b>: Bandit's Way will become available on the world map when you recruit the selected character.
+<br>
+<br><b>Finish Mushroom Way</b>: Bandit's Way will become available on the world map when you defeat the boss of Mushroom Way.
+<br>
+<br><b>Always Open</b>: Bandit's Way will be available on the world map from the start of the game.'''
     modes = ['open']
-    choices = [o for o in BanditsWayGating]
+    choices = [o.value for o in BanditsWayGating]
     default = BanditsWayGating.RecruitMallow
 
 
 class ForestMazeGate(SelectOneFlag):
-    name = '''ForestMaze access'''
-    description = '''Find Mario: Forest Maze will become available on the world map when you determine where Mario is (whether or not you recruit him).
-    
-    Find Mallow: Forest Maze will become available on the world map when you determine where Mallow is (whether or not you recruit him).
-    
-    Find Geno: Forest Maze will become available on the world map when you determine where Geno is (whether or not you recruit him).
-    
-    Find Bowser: Forest Maze will become available on the world map when you determine where Bowser is (whether or not you recruit him).
-    
-    Find Toadstool: Forest Maze will become available on the world map when you determine where Toadstool is (whether or not you recruit her).
-    
-    Exchange Cricket Pie: Forest Maze will become available on the world map when you turn in the Cricket Pie to Frogfucius.
-    
-    Always Open: Forest Maze will be available on the world map from the start of the game.'''
+    name = '''Forest Maze access'''
+    description = '''<b>Find character</b>: Forest Maze will become available on the world map when you first see the selected character. "See" does not necessarily mean "recruit".
+<br>
+<br><b>Exchange Cricket Pie</b>: Forest Maze will become available on the world map when you turn in the Cricket Pie to Frogfucius.
+<br>
+<br><b>Always Open</b>: Forest Maze will be available on the world map from the start of the game.'''
     modes = ['open']
-    choices = [o for o in ForestMazeGating]
+    choices = [o.value for o in ForestMazeGating]
     default = ForestMazeGating.FindGeno
 
 
 class PipeVaultGate(SelectOneFlag):
     name = '''Pipe Vault access'''
-    description = '''Recruit Mario: Pipe Vault will be unblocked when you recruit Mario.
-    
-    Recruit Mallow: Pipe Vault will be unblocked when you recruit Mallow.
-    
-    Recruit Geno: Pipe Vault will be unblocked when you recruit Geno.
-    
-    Recruit Bowser: Pipe Vault will be unblocked when you recruit Bowser.
-    
-    Recruit Toadstool: Pipe Vault will be unblocked when you recruit Toadstool.
-    
-    Finish Forest Maze: Pipe Vault will be unblocked when you defeat the final boss of Forest Maze.
-    
-    Always Open: Pipe Vault will be unblocked from the start of the game.'''
+    description = '''<b>Recruit character</b>: Pipe Vault will be unblocked when you recruit the selected character.
+<br>
+<br><b>Finish Forest Maze</b>: Pipe Vault will be unblocked when you defeat the final boss of Forest Maze.
+<br>
+<br><b>Always Open</b>: Pipe Vault will be unblocked from the start of the game.'''
     modes = ['open']
-    choices = [o for o in PipeVaultGating]
+    choices = [o.value for o in PipeVaultGating]
     default = PipeVaultGating.AlwaysOpen
 
 
 class BoosterTowerGate(SelectOneFlag):
     name = '''Booster Tower access'''
-    description = '''Recruit Mario: Booster Tower will become available on the world map when you recruit Mario.
-    
-    Recruit Mallow: Booster Tower will become available on the world map when you recruit Mallow.
-    
-    Recruit Geno: Booster Tower will become available on the world map when you recruit Geno.
-    
-    Recruit Bowser: Booster Tower will become available on the world map when you recruit Bowser.
-    
-    Recruit Toadstool: Booster Tower will become available on the world map when you recruit Toadstool.
-    
-    Finish Moleville: Booster Tower will become available on the world map when you defeat the final boss of Moleville.
-    
-    Always Open: Booster Tower will be available on the world map from the start of the game.'''
+    description = '''<b>Recruit character</b>: Booster Tower's door can be unlocked when you recruit the selected character.
+<br>
+<br><b>Finish Moleville</b>: Booster Tower's door will unlock when you defeat the final boss of Moleville.
+<br>
+<br><b>Always Open</b>: Booster Tower's door will be unlocked from the start of the game.'''
     modes = ['open']
-    choices = [o for o in BoosterTowerGating]
+    choices = [o.value for o in BoosterTowerGating]
     default = BoosterTowerGating.RecruitBowser
 
 
 class MarrymoreGate(SelectOneFlag):
     name = '''Marrymore back door access'''
-    description = '''Finish Booster Hill: The chapel back door will become available on the world map when you complete Booster Hill one time.
-    
-    Finish Booster Tower: The chapel back door will become available on the world map when you defeat the balcony boss of Booster Tower.
-    
-    Always Open: The chapel back door will be open from the start of the game.'''
+    description = '''<b>Finish Booster Hill</b>: The chapel back door will become available on the world map when you complete Booster Hill one time.
+<br>
+<br><b>Finish Booster Tower</b>: The chapel back door will become available on the world map when you defeat the balcony boss of Booster Tower.
+<br>
+<br><b>Always Open</b>: The chapel back door will be open from the start of the game.'''
     modes = ['open']
-    choices = [o for o in MarrymoreGating]
+    choices = [o.value for o in MarrymoreGating]
     default = MarrymoreGating.FinishBoosterHill
 
 
 class SeaGate(SelectOneFlag):
     name = '''Sea & Sunken Ship access'''
-    description = '''Recruit Mario: The Sea will become available on the world map when you recruit Mario.
-    
-    Recruit Mallow: The Sea will become available on the world map when you recruit Mallow.
-    
-    Recruit Geno: The Sea will become available on the world map when you recruit Geno.
-    
-    Recruit Bowser: The Sea will become available on the world map when you recruit Bowser.
-    
-    Recruit Toadstool: The Sea will become available on the world map when you recruit Toadstool.
-    
-    Collect 1 Star Piece: The Sea will become available on the world map when you collect 1 Star Piece.
-    
-    Collect 2 Star Pieces: The Sea will become available on the world map when you collect 2 Star Pieces.
-    
-    Collect 3 Star Pieces: The Sea will become available on the world map when you collect 3 Star Pieces.
-    
-    Collect 4 Star Pieces: The Sea will become available on the world map when you collect 4 Star Piece.
-    
-    Collect 5 Star Pieces: The Sea will become available on the world map when you collect 5 Star Piece.
-    
-    Collect 6 Star Pieces: The Sea will become available on the world map when you collect 6 Star Pieces.
-    
-    Always Open: The Sea & Sunken Ship will be available on the world map from the start of the game.'''
+    description = '''<b>Recruit character</b>: The Sea will become available on the world map when you recruit the selected character.
+<br>
+<br><b>Collect Star Pieces</b>: The Sea will become available on the world map when you collect the selected number of Star Pieces.
+<br>
+<br><b>Always Open</b>: The Sea & Sunken Ship will be available on the world map from the start of the game.'''
     modes = ['open']
-    choices = [o for o in SeaGating]
+    choices = [o.value for o in SeaGating]
     default = SeaGating.Find4Star
 
 
 class YaridovichGate(SelectOneFlag):
     name = '''Seaside boss fight access'''
-    description = '''Finish Sunken Ship: The Seaside boss fight will become available after you defeat the final boss of Sunken Ship.
-    
-    Always Open: The Seaside boss will be available from the start of the game.'''
+    description = '''<b>Finish Sunken Ship</b>: The Seaside boss fight will become available after you defeat the final boss of Sunken Ship.
+<br>
+<br><b>Always Open</b>: The Seaside boss will be available from the start of the game.'''
     modes = ['open']
-    choices = [o for o in YaridovichGating]
+    choices = [o.value for o in YaridovichGating]
     default = YaridovichGating.FinishSunkenShip
 
 
 class MonstroTownGate(SelectOneFlag):
     name = '''Monstro Town access'''
-    description = '''Finish Land's End: Monstro Town will become available on the World Map once you take the pipe behind the boss of Belome Temple.
-    
-    Always Open: Monstro Town will be available on the World Map from the start of the game.'''
+    description = '''<b>Finish Land's End</b>: Monstro Town will become available on the World Map once you take the pipe behind the boss of Belome Temple.
+<br>
+<br><b>Always Open</b>: Monstro Town will be available on the World Map from the start of the game.'''
     modes = ['open']
-    choices = [o for o in MonstroTownGating]
+    choices = [o.value for o in MonstroTownGating]
     default = MonstroTownGating.FinishLandsEnd
 
 
 class BarrelVolcanoGate(SelectOneFlag):
     name = '''Barrel Volcano access'''
-    description = '''Finish Nimbus Land: Barrel Volcano will become available on the World Map once you defeat the final boss of Nimbus Castle.
-    
-    Always Open: Barrel Volcano will be available on the World Map from the start of the game.'''
+    description = '''<b>Finish Nimbus Land</b>: Barrel Volcano will become available on the World Map once you defeat the final boss of Nimbus Castle.
+<br>
+<br><b>Always Open</b>: Barrel Volcano will be available on the World Map from the start of the game.'''
     modes = ['open']
-    choices = [o for o in BarrelVolcanoGating]
+    choices = [o.value for o in BarrelVolcanoGating]
     default = BarrelVolcanoGating.FinishNimbusLand
 
 class BowsersKeepGate(SelectOneFlag):
     name = '''Bowser's Keep access'''
-    description = '''Collect 1 Star Piece: Bowser's Keep will become available on the world map when you collect 1 Star Piece.
-    
-    Collect 2 Star Pieces: Bowser's Keep will become available on the world map when you collect 2 Star Pieces.
-    
-    Collect 3 Star Pieces: Bowser's Keep will become available on the world map when you collect 3 Star Pieces.
-    
-    Collect 4 Star Pieces: Bowser's Keep will become available on the world map when you collect 4 Star Piece.
-    
-    Collect 5 Star Pieces: Bowser's Keep will become available on the world map when you collect 5 Star Piece.
-    
-    Collect 6 Star Pieces: Bowser's Keep will become available on the world map when you collect 6 Star Pieces.
-    
-    Finish Barrel Volcano: Bowser's Keep will become available on the World Map once you defeat the final boss of Barrel Volcano.
-    
-    Always Open: Bowser's Keep will be available on the world map from the start of the game.'''
+    description = '''<b>Collect Star Pieces</b>: Bowser's Keep will become available on the world map when you collect the selected number of Star Pieces.
+<br>
+<br><b>Finish Barrel Volcano</b>: Bowser's Keep will become available on the World Map once you defeat the final boss of Barrel Volcano.
+<br>
+<br><b>Always Open</b>: Bowser's Keep will be available on the world map from the start of the game.'''
     modes = ['open']
-    choices = [o for o in BowsersKeepGating]
+    choices = [o.value for o in BowsersKeepGating]
     default = BowsersKeepGating.Find6Star
 
 
 class FactoryGate(SelectOneFlag):
-    name = '''Bowser's Keep access'''
-    description = '''If dependent on Star Pieces, cannot be higher than 'Star pieces required to beat the game'.
-    
-    Open when Bowser's Keep is opened: When Bowser's Keep becomes available on the world map, Factory will also be immediately available on the world map.
-    
-    Collect 1 Star Piece: Factory will become available on the world map when you collect 1 Star Piece and Bowser's Keep has been opened.
-    
-    Collect 2 Star Pieces: Factory will become available on the world map when you collect 2 Star Pieces and Bowser's Keep has been opened.
-    
-    Collect 3 Star Pieces: Factory will become available on the world map when you collect 3 Star Pieces and Bowser's Keep has been opened.
-    
-    Collect 4 Star Pieces: Factory will become available on the world map when you collect 4 Star Pieces and Bowser's Keep has been opened.
-    
-    Collect 5 Star Pieces: Factory will become available on the world map when you collect 5 Star Pieces and Bowser's Keep has been opened.
-    
-    Collect 6 Star Pieces: Factory will become available on the world map when you collect 6 Star Pieces and Bowser's Keep has been opened.
-    
-    Finish Bowser's Keep: Factory will become available on the world map when you complete Bowser's Keep for the first time.'''
+    name = '''Factory access'''
+    description = '''<b>Open when Bowser's Keep is opened</b>: When Bowser's Keep becomes available on the world map, Factory will also be immediately available on the world map.
+<br>
+<br><b>Finish Bowser's Keep</b>: Factory will become available on the world map when you complete Bowser's Keep for the first time.
+<br>
+<br><b>Collect Star Pieces</b>: Factory will become available on the world map when you collect the selected number of Star Pieces and Bowser's Keep has been opened. Cannot be higher than 'Star Pieces required to beat the game'.'''
     modes = ['open']
-    choices = [o for o in FactoryGating]
+    choices = [o.value for o in FactoryGating]
     default = FactoryGating.FinishBowsersKeep
 
 
 class CasinoWarp(BooleanFlag):
     name = 'Casino Warp'
-    description = "If enabled, a trampoline warping directly to the final boss will become available in Grate Guy's Casino once you have collected the number of star pieces specified in 'Star pieces required to beat the game'. The Bright Card becomes a key item, and Knife Guy's juggling reward becomes a key item check."
+    description = "If enabled, a trampoline warping directly to the final boss will become available in Grate Guy's Casino once you have collected the number of Star Pieces specified in 'Star Pieces required to beat the game'. The Bright Card becomes a key item, and Knife Guy's juggling reward becomes a key item check."
     modes = ['open']
     default = False
 
 
 class BucketWarp(BooleanFlag):
     name = 'Bucket Warp'
-    description = "If enabled, trading a Carbo Cookie to the bucket girl in Moleville will reveal a warp to the final boss once you have collected the number of star pieces specified in 'Star pieces required to beat the game'."
+    description = "If enabled, trading a Carbo Cookie to the bucket girl in Moleville will reveal a warp to the final boss once you have collected the number of Star Pieces specified in 'Star Pieces required to beat the game'."
     modes = ['open']
     default = False
 
@@ -552,12 +510,11 @@ class BucketWarp(BooleanFlag):
 class FastTravel(BooleanFlag):
     name = 'Fast travel'
     description = '''If enabled, the following changes will be applied to the game:
-    
-    1) Traveling to the top of Booster Tower after defeating the balcony boss will always warp you to the ground.
-    
-    2) Reaching the Inner Factory will reveal a trampoline that warps you to the world map.
-    
-    3) Reaching the Inner Factory will enable a world map shortcut that places you in Inner Factory.'''
+<ol>
+<li>Traveling to the top of Booster Tower after defeating the balcony boss will always warp you to the ground.</li>
+<li>Reaching the Inner Factory will reveal a trampoline that warps you to the world map.</li>
+<li>Reaching the Inner Factory will enable a world map shortcut that places you in Inner Factory.</li>
+</ol>'''
     modes = ['open']
     default = False
 
@@ -574,43 +531,31 @@ class BowserDoorRequirements(NumberThresholdFlag):
 
 
 class ShuffleItems(BooleanFlag):
-    name = 'Randomize the contents of item rewards'
+    name = 'Randomize the contents of treasure chests and item rewards'
     description = '''If enabled, the contents of treasure chests, quest rewards, and (optionally) freestanding small items will be shuffled.
-    
-    If disabled, chests, quest rewards, and freestanding small items will remain unchanged from the original game.'''
+<br>
+<br>If disabled, chests, quest rewards, and freestanding small items will remain unchanged from the original game.'''
     modes = ['open']
     default = False
 # if this is disabled, no options in this category can be changed
 
 
 class FireworksSetting(SelectOneFlag):
-    name = '''Fireworks distribution'''
-    description = '''Vanilla: Unchanged from the original game. Fireworks may be purchased in any amount from the Moleville house after completing the Mines.
-    
-    Shuffle Fireworks: 
-    * One Fireworks is shuffled somewhere in the game.
-    * The ending credits fireworks are random. 
-    * Fireworks, Shiny Stone, and Carbo Cookie are key items. 
-    * The Fireworks shop sells a single item check after completing the Mines. 
-    * The Fireworks, Shiny Stone, and Carbo Cookie are still traded in their normal places.
-    * If Bucket Warp is disabled, exchanging the Carbo Cookie is a single item check. 
-    * You may ask the Item Shop girl for your Shiny Stone back if you need it in Monstro Town.
-    
-    Shuffle Progressive Fireworks: 
-    * Fireworks, Shiny Stone, and Carbo Cookie are each shuffled somewhere in the game, and you will always receive them in order. 
-    * The ending credits fireworks are random. 
-    * Fireworks, Shiny Stone, and Carbo Cookie are key items. 
-    * The Fireworks shop sells a single item check after completing the Mines.  
-    * The Pur-tend store and Moleville item shop trade girl are disabled.
-    * If Bucket Warp is disabled, exchanging the Carbo Cookie is a single item check. 
-    * The Monstro Town sealed door is automatically opened when you find the Shiny Stone.'''
+    name = '''Fireworks trade sequence'''
+    description = '''<b>Vanilla</b>: Unchanged from the original game. Fireworks may be purchased in any amount from the Moleville house after completing the Mines.
+<br>
+<br><b>Shuffle Fireworks</b>: One Fireworks is shuffled somewhere in the game. The trading sequence is otherwise unchanged. If needed, you may get your Shiny Stone back from the shop girl after you have completed the trade sequence.
+<br>
+<br><b>Shuffle Progressive Fireworks</b>: One Fireworks, Shiny Stone, and Carbo Cookie are each shuffled somewhere in the game, and you will always receive them in order. The Monstro Town sealed door is unlocked when you find the Shiny Stone.
+<br>
+<br>Note: If you do not have Bucket Warp enabled, completing the Carbo Cookie trade sequence will give you a random item if "Shuffle Fireworks" or "Shuffle Progressive Fireworks" is selected.'''
     modes = ['open']
-    choices = [o for o in FireworksOptions]
+    choices = [o.value for o in FireworksOptions]
     default = FireworksOptions.Vanilla
 
 
 class PoisonMushroom(BooleanFlag):
-    name = 'Change Fake Mushroom\'s Status'
+    name = 'Change Fake Mushroom\'s Effect'
     description = ('Randomize the status effect inflicted on a party member with the Fake Mushroom. It will only give '
                    'one status effect per seed, which has a 1/8 chance of being Invincibility.')
     modes = ['open']
@@ -634,32 +579,32 @@ class ShuffleMagikoopaChest(BooleanFlag):
 class KeyItemsAnywhere(BooleanFlag):
     name = '"Special Items" can appear anywhere'
     description = '''If enabled, items belonging to your "Special Items" pocket can appear in any item location.
-    
-    If disabled, the "Special Items" will only be shuffled within each other's locations.
-    
-    The items targeted by this setting are the **Rare Frog Coin**, **Cricket Pie**, **Bambino Bomb**, **Castle Key 1**, **Castle Key 2**, *Alto Card**, **Tenor Card**, **Soprano Card**, **Greaper Flag**, **Dry Bones Flag**, **Big Boo Flag**, **Shed Key**, **Elder Key**, **Cricket Jam**, **Temple Key**, and **Room Key**.'''
+<br>
+<br>If disabled, the "Special Items" will only be shuffled within each other's locations.
+<br>
+<br>The items targeted by this setting are the <b>Rare Frog Coin</b>, <b>Cricket Pie</b>, <b>Bambino Bomb</b>, <b>Castle Key 1</b>, <b>Castle Key 2</b>, <b>Alto Card</b>, <b>Tenor Card</b>, <b>Soprano Card</b>, <b>Greaper Flag</b>, <b>Dry Bones Flag</b>, <b>Big Boo Flag</b>, <b>Shed Key</b>, <b>Elder Key</b>, <b>Cricket Jam</b>, <b>Temple Key</b>, <b>Room Key</b>, <b>Seed</b>, and <b>Fertilizer</b> (and sometimes <b>Bright Card</b> and <b>Fireworks</b>).'''
     modes = ['open']
     default = False
 
 
 class InvisibleFlagsSetting(BooleanFlag):
-    name = 'Shuffle invisible flags'
+    name = 'Move invisible flag checks'
     description = '''Chooses where the invisible items placed by the Three Musty Fears are located. 
-
-    If "Default locations" is selected, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
-    
-    If enabled, the three checks will be located somewhere random in the world as an invisible item. The Three Musty Fears will give you hints as to their locations. The three default item locations will be disabled.'''
+<br>
+<br>If "Default locations" is selected, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
+<br>
+<br>If enabled, the three checks will be located somewhere random in the world as an invisible item. The Three Musty Fears will give you hints as to their locations. The three default item locations will be disabled.'''
     modes = ['open']
     default = False
 
 
 class GateInvisibleFlags(BooleanFlag):
-    name = 'Skip 3 Musty Feats sequence'
-    description = '''This flag affects the Musty Fears checks (normally Mario's Pad bed, Rose Town sign, and Yo'ster Isle goalpost; or whichever three locations are added to the seed when "Shuffle invisible flags" is set to "Any landmark").
-    
-    If disabled, the affected checks will become available after you rest in the Musty Fears Inn in Monstro Town.
-    
-    If enabled, the affected checks will be available from the start of the seed.'''
+    name = 'Skip 3 Musty Fears sequence'
+    description = '''This flag affects the Musty Fears checks (normally Mario's Pad bed, Rose Town sign, and Yo'ster Isle goalpost; or whichever three locations are added to the seed when "Move invisible flag checks" is set to "Any landmark").
+<br>
+<br>If disabled, the affected checks will become available after you visit the Musty Fears Inn in Monstro Town.
+<br>
+<br>If enabled, the affected checks will be available from the start of the seed.'''
     modes = ['open']
     default = False
 
@@ -667,8 +612,8 @@ class GateInvisibleFlags(BooleanFlag):
 class RestrictSpecialEquips(BooleanFlag):
     name = 'Restrict key item exchange equips & Monstro Town reward equips'
     description = '''If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will appear once each, shuffled only within each other's locations. This option ignores your chosen Item Quality setting.
-    
-    If disabled, these items can appear anywhere, subject to the restrictions of your chosen Item Quality setting.'''
+<br>
+<br>If disabled, these items can appear anywhere, subject to the restrictions of your chosen Item Quality setting.'''
     modes = ['open']
     default = False
 
@@ -676,36 +621,36 @@ class RestrictSpecialEquips(BooleanFlag):
 class EXPStarsAnywhere(BooleanFlag):
     name = 'EXP stars can appear anywhere'
     description = '''If enabled, EXP stars may appear in any chest near monsters.
-    
-    If disabled, EXP stars will be restricted to their original locations within Bandit's Way, Kero Sewers, Moleville Mines, Sea, Land's End, Nimbus Land, and Barrel Volcano.'''
+<br>
+<br>If disabled, EXP stars will be restricted to their original locations within Bandit's Way, Kero Sewers, Moleville Mines, Sea, Land's End, Nimbus Land, and Barrel Volcano.'''
     modes = ['open']
     default = False
 
 
 class EXPChallenge(SelectOneFlag):
-    name = 'EXP Star Challenge'
-    description = '''Default: EXP stars can give you 1 to 11 EXP per hit as normal.
-    
-    Star pieces (easy): EXP stars can give you 2, 4, 5, 6, 8, 9, or 11 EXP per hit, based on the number of Star Pieces collected. This is not adjusted for lower max Star Piece counts.
-    
-    Star pieces (hard): EXP stars can give you 1, 2, 3, 5, 6, 7, or 11 EXP per hit, based on the number of Star Pieces collected. This is not adjusted for lower max Star Piece counts.
-    
-    Bosses (easy): EXP stars can give you 2, 4, 5, 6, 8, 9, or 11 EXP depending on how many bosses you have defeated. The scaling for this option is heavily front-loaded.
-    
-    Bosses (hard): EXP stars can give you 1, 2, 3, 5, 6, 7, or 11 EXP depending on how many bosses you have defeated. The scaling for this option is heavily front-loaded.
-    
-    No EXP: EXP stars give you 0 EXP.'''
-    choices = [o for o in EXPChallengeOptions]
+    name = 'EXP Star Behaviour'
+    description = '''<b>Default</b>: EXP stars can give you 1 to 11 EXP per hit as normal.
+<br>
+<br><b>Star Pieces (easy)</b>: EXP stars can give you 2, 4, 5, 6, 8, 9, or 11 EXP per hit, based on the number of Star Pieces collected. This is not adjusted for lower max Star Piece counts.
+<br>
+<br><b>Star Pieces (hard)</b>: EXP stars can give you 1, 2, 3, 5, 6, 7, or 11 EXP per hit, based on the number of Star Pieces collected. This is not adjusted for lower max Star Piece counts.
+<br>
+<br><b>Bosses (easy)</b>: EXP stars can give you 2, 4, 5, 6, 8, 9, or 11 EXP depending on how many bosses you have defeated. The scaling for this option is heavily front-loaded.
+<br>
+<br><b>Bosses (hard)</b>: EXP stars can give you 1, 2, 3, 5, 6, 7, or 11 EXP depending on how many bosses you have defeated. The scaling for this option is heavily front-loaded.
+<br>
+<br><b>No EXP</b>: EXP stars give you 0 EXP.'''
+    choices = [o.value for o in EXPChallengeOptions]
     default = EXPChallengeOptions.default
 
 
 class SlotsAnywhere(BooleanFlag):
     name = 'Slot machines can appear anywhere'
     description = '''If enabled, any chest in the world could contain a slot machine.
-    
-    If disabled, slot machines will be restricted to their original locations in Bean Valley.
-    
-    Note that a bad roll on a slot machine will initiate a duplicate of the third mimic fight.'''
+<br>
+<br>If disabled, slot machines will be restricted to their original locations in Bean Valley.
+<br>
+<br>Note that a bad roll on a slot machine will initiate a duplicate of the third mimic chest fight.'''
     modes = ['open']
     default = False
 
@@ -713,12 +658,12 @@ class SlotsAnywhere(BooleanFlag):
 class ItemQuality(SelectOneFlag):
     name = '''Item pool quality'''
     description = '''Restricts the incidence of certain items within the shuffled pool. 
-
-    If "Original item pool" is selected, items which only appear once in the original game will also not appear in unlimited shops. Additionally, two copies of the progressive Mystery Egg will be added to the pool, replacing some small items.
-    
-    If "Completely empty" is selected, any chest which does not contain a required item will be a "You Missed" chest.'''
+<br>
+<br>If "Original item pool" is selected, items which only appear once in the original game will also not appear in unlimited shops. Additionally, two copies of the progressive Mystery Egg will be added to the pool, replacing some small items.
+<br>
+<br>If "Completely empty" is selected, any chest which does not contain a required item will be a "You Missed" chest.'''
     modes = ['open']
-    choices = [o for o in ItemQualities]
+    choices = [o.value for o in ItemQualities]
     default = ItemQualities.Original
 
 
@@ -1100,11 +1045,13 @@ regular_checks = [
 
 class EnabledRegularChecks(CategorizationFlag):
     name = 'Chest & reward checks'
-    description = '''If a check is in the left column, it is eligible to contain items required to complete the seed.
-    
-    If a check is in the right column, its contents will be shuffled, but it will not contain any items required to complete the seed.'''
-    options = [o for o in regular_checks]
-    enabled = [o for o in regular_checks]
+    description = '''If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
+<br>
+<br>If a check is not highlighted, its contents will still be shuffled, but it will not contain any items required to complete the seed.
+<br>
+<br>This setting only applies if you have "Special Items can appear anywhere" or "Star Pieces can appear in the general item pool" enabled.'''
+    options = [o.value for o in regular_checks]
+    enabled = [o.value for o in regular_checks]
 
 
 freestanding_checks = [
@@ -1202,34 +1149,33 @@ freestanding_checks = [
 
 class EnabledFreestandingChecks(CategorizationFlag):
     name = 'Freestanding coin/flower/mushroom checks'
-    description = '''If a check is in the left column, it is eligible to contain items required to complete the seed.
-    
-    If a check is in the right column, it will not be shuffled, nor can it contain any items required to complete the seed.
-    
-    If item quality is set to "Completely empty", only checks on the left will be affected.'''
-    options = [o for o in freestanding_checks]
-    enabled = [o for o in freestanding_checks]
+    description = '''If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
+<br>
+<br>If a check is not highlighted, it will not be shuffled, nor can it contain any items required to complete the seed.
+<br>
+<br>If item quality is set to "Completely empty", only highlighted checks will be affected.'''
+    options = [o.value for o in freestanding_checks]
 
 # ******** Shops
 
 
 class ShuffleShops(BooleanFlag):
     name = 'Randomize the contents of shops'
-    description = '''If enabled, the contents of all regular shops and Frog Coin shops, including the Moleville treasure shop, Marrymore Suite room service menu, and Moleville swap shop will be randomized.'''
+    description = '''If enabled, the contents of all regular shops and Frog Coin shops (including the Moleville treasure shop, Marrymore Suite room service menu, and Moleville swap shop) will be randomized.'''
     modes = ['open']
     default = False
 # if this is disabled, no options in this category can be changed
 
 
 class ShopQuality(SelectOneFlag):
-    name = '''Shop quality'''
+    name = '''Shop contents quality'''
     description = '''Restricts the incidence of certain items in shops. 
-
-    "Completely random" means that some items which originally did not appear in shops may now appear in shops, but only a small pool of items are guaranteed to appear. Some items will never appear in non-depletable shops. 
-    
-    If "Completely empty" is selected, all shops will be disabled.'''
+<br>
+<br>"Completely random" means that some items which originally did not appear in shops may now appear in shops, but only a small pool of items are guaranteed to appear. Some items will never appear in non-depletable shops. 
+<br>
+<br>If "Completely empty" is selected, all shops will be disabled.'''
     modes = ['open']
-    choices = [o for o in ShopQualities]  # maybe just o for o
+    choices = [o.value for o in ShopQualities]  # maybe just o for o
     default = ShopQualities.Original
 
 
@@ -1248,16 +1194,15 @@ class FreeShops(BooleanFlag):
 
 
 class ShowEquips(BooleanFlag):
-    name = 'Show Equips'
+    name = 'Always show all permitted characters on equips'
     description = 'Always show who can equip what in stores.'
-    inverse_description = '(Only current party members know what they can wear.)'
-    value = '-showequips'
+    default = False
 
 # ******** Enemies & Bosses
 
 
 class BossShuffle(BooleanFlag):
-    name = 'Randomize bosses'
+    name = 'Randomize boss positions'
     description = (
         "If enabled, the positions of bosses (including Pandorite, Hidon, Box Boy, Chester, and Mokura) are shuffled.")
     modes = ['open']
@@ -1268,24 +1213,24 @@ class BossShuffle(BooleanFlag):
 class BossShuffleScaleStats(BooleanFlag):
     name = "Scale boss stats to area difficulty"
     description = '''If enabled: A boss fight that has been shuffled into a different area will have its stats scaled to match the area's original boss.
-    
-    If disabled: Boss fights retain their original stats, regardless of where they are placed.'''
+<br>
+<br>If disabled: Boss fights retain their original stats, regardless of where they are placed.'''
     default = True
 
 
 class BossReplaceMinigameSprites(BooleanFlag):
     name = "Replace important NPCs to match shuffled bosses"
-    description = '''If enabled: All sprites related to an area boss will be changed to match the shuffled positions of bosses. Battle packs, such as the Snifits in Booster Tower, will also be changed accordingly.
-    
-    If disabled: Most sprites related to an area boss will be changed to match the shuffled positions of bosses, but some will be left unchanged to accommodate for minigame visual cues. Examples of this include: Booster Hill snifits, Dodo in the statue polishing game.'''
+    description = '''If enabled: All sprites related to an area boss will be changed to match the shuffled positions of bosses.
+<br>
+<br>If disabled: Some sprites will be left unchanged from the original game to accommodate visual cues (such as the Booster Hill snifits, or Dodo in his statue room) or progression knowledge on required sub-fights (such as the Bandana Reds in Sunken Ship).'''
     default = False
 
 
 class MimicsAnywhere(BooleanFlag):
     name = 'Mimics can appear anywhere'
-    description = '''If enabled, the three mimic chests could be in any chest in the world. Save often with this setting turned on, especially if item-hunting at the start of the seed.
-    
-    If disabled, they will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley.'''
+    description = '''If enabled, the three mimics could be in any chest in the world. If you have "Scale boss stats to area difficulty" enabled, each mimic will be restricted to areas that are appropriate for its stats. However you should save often with this setting turned on, especially if item-hunting at the start of the seed.
+<br>
+<br>If disabled, mimic chests will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley.'''
     modes = ['open']
     default = False
 
@@ -1293,8 +1238,8 @@ class MimicsAnywhere(BooleanFlag):
 class EnemyStats(BooleanFlag):
     name = 'Randomize enemy stats'
     description = '''If enabled, enemy stats and immunities/weaknesses will be randomized.
-    
-    If disabled, enemies retain their original stats (subject to placement shuffling, if enabled), immunities, and vulnerabilities.'''
+<br>
+<br>If disabled, enemies retain their original stats (subject to placement shuffling, if enabled), immunities, and vulnerabilities.'''
     default = False
 
 
@@ -1364,11 +1309,11 @@ class NoOHKO(BooleanFlag):
 
 class ShuffledBosses(CategorizationFlag):
     name = 'Shuffled boss fights'
-    description = '''If a boss is in the left column, it will be shuffled into a pool and placed in a random boss location.
-    
-    If a boss is in the right column, it will stay in its original location.'''
-    options = [o for o in AvailableBosses]
-    enabled = [o for o in AvailableBosses]
+    description = '''If a boss is highlighted (white text over blue), it will be shuffled into a pool and placed in a random boss location.
+<br>
+<br>If a boss is not highlighted, it will stay in its original location.'''
+    options = [o.value for o in AvailableBosses]
+    enabled = [o.value for o in AvailableBosses]
 
 
 # ******** Puzzles
@@ -1432,11 +1377,11 @@ class BossShuffleMusic(BooleanFlag):
 
 class ShuffledMusic(CategorizationFlag):
     name = 'Allowable shuffled music'
-    description = '''If a song is in the left column, it can appear in any boss fight.
-    
-    If a boss is in the right column, it will never appear in a boss fight.'''
-    options = [o for o in AvailableMusic]
-    enabled = [o for o in AvailableMusic]
+    description = '''If a song is highlighted (white text over blue), it can appear in any boss fight.
+<br>
+<br>If a song is not highlighted, it will never appear in a boss fight.'''
+    options = [o.value for o in AvailableMusic]
+    enabled = [o.value for o in AvailableMusic]
 
 
 class PaletteSwaps(BooleanFlag):
@@ -1455,134 +1400,92 @@ class ChangeNames(BooleanFlag):  # not available unless PaletteSwaps enabled
 class RemoveFlashes(BooleanFlag):
     name = "Remove flashes"
     description = '''Removes some flashing animations (from spells, attacks, etc). 
-    
-    Disclaimer: While this feature is intended to promote accessibility, developers cannot promise that every feature in the game with screen flashes has had them removed. Players and viewers with photosensitivity should continue to engage with this randomizer at their own risk. 
-    
-    If you would like to suggest an animation that should have flashes removed by this feature, please see the "Contributing" section and fill out the form.'''
+<br>
+<br>Disclaimer: While this feature is intended to promote accessibility, developers cannot promise that every feature in the game with screen flashes has had them removed. Players and viewers with photosensitivity should continue to engage with this randomizer at their own risk. 
+<br>
+<br>If you would like to suggest an animation that should have flashes removed by this feature, please see the "Contributing" section and fill out the form.'''
 
 
 # ************************************** Category classes
 
 class FlagCategory:
     name = ''
+    subcategories = []
     flags = []
+    size = 3
 
 
-class StarPiecesCategory(FlagCategory):
-    name = 'Star Pieces'
+    @classmethod
+    def get_slug(cls):
+        return re.sub(r'[^a-z0-9]+', '_', cls.name.lower())
+    
+
+
+class CharacterRecruitmentSubcategory(FlagCategory):
     flags = [
-        ShuffleStarPieces,
-        TotalStarPieces,
-        StarPiecesRequired,
-        WinCondition,
-        StarPieceAvailability,
-        RequireBossFights,
-        EnabledBossChecks,
-        StarPiecesRestrictedByArea,
-        StarPieceHints
-    ]
-
-
-class PartyCategory(FlagCategory):
-    name = 'Party'
-    flags = [
-        ShuffleCharacters,
         StartingCharacters,
         StartingCharacter,
+        ShuffleCharacters,
         AvailableCharacters,
+    ]
+    size = 4
+
+class CharacterStatsSpellsSubcategory(FlagCategory):
+    flags = [
+        EXPMultiplier,
         CharacterStats,
         CharacterLearnedSpells,
         CharacterSpellStats,
+        UncapSuperJumps,
+        AvailableSpells
+    ]
+    size = 4
+
+class CharacterEquipmentSubcategory(FlagCategory):
+    flags = [
         EquipmentProperties,
         EquipmentCharacters,
         EquipmentNoSafety,
-        EXPMultiplier
+        StarPieceHints
+    ]
+    size = 4
+
+
+class PartyCategory(FlagCategory):
+    name = 'Party & Equipment'
+    subcategories = [
+        CharacterRecruitmentSubcategory,
+        CharacterEquipmentSubcategory,
+        CharacterStatsSpellsSubcategory
     ]
 
-
-class AccessCategory(FlagCategory):
-    name = 'Area Access'
+class AreaAccessSubcategory(FlagCategory):
     flags = [
         BanditsWayGate,
         ForestMazeGate,
+        PipeVaultGate,
         BoosterTowerGate,
         MarrymoreGate,
         SeaGate,
-        YaridovichGate,
         MonstroTownGate,
         BarrelVolcanoGate,
+    ]
+    size = 3
+
+class OtherAccessSubcategory(FlagCategory):
+    flags = [
+        YaridovichGate,
+        GateInvisibleFlags,
         BowsersKeepGate,
+        BowserDoorRequirements,
         FactoryGate,
+        StarPiecesRequired,
         CasinoWarp,
         BucketWarp,
         FastTravel,
-        BowserDoorRequirements
+        WinCondition,
     ]
-
-
-class ItemsCategory(FlagCategory):
-    name = 'Items'
-    flags = [
-        ShuffleItems,
-        FireworksSetting,
-        PoisonMushroom,
-        ShuffleBeetlemania,
-        ShuffleMagikoopaChest,
-        KeyItemsAnywhere,
-        RestrictSpecialEquips,
-        EXPStarsAnywhere,
-        EXPChallenge,
-        SlotsAnywhere,
-        ItemQuality,
-        BetterTips,
-        BiasItemShuffle,
-        ReplaceItems,
-        QuickHitCoins,
-        GrateGuyPrizeThreshold,
-        KnifeGuyPrizeThreshold,
-        SuitePrize1Threshold,
-        SuitePrize2Threshold,
-        SuitePrize3Threshold,
-        SuitePrize4Threshold,
-        SuitePrize5Threshold,
-        SuitePrize6Threshold,
-        SuperJump1Threshold,
-        SuperJump2Threshold,
-        EnabledRegularChecks,
-        EnabledFreestandingChecks
-    ]
-
-
-class ShopsCategory(FlagCategory):
-    name = 'Shops'
-    flags = [
-        ShuffleShops,
-        ShopQuality,
-        BiasShopShuffle,
-        FreeShops
-    ]
-
-
-class BossCategory(FlagCategory):
-    name = 'Enemies & Bosses'
-    flags = [
-        BossShuffle,
-        BossShuffleScaleStats,
-        BossReplaceMinigameSprites,
-        MimicsAnywhere,
-        EnemyStats,
-        EnemyDrops,
-        EnemyFormations,
-        EnemyAttacks,
-        EnemySpells,
-        EnemyNoSafetyChecks,
-        ExperienceNoRegular,
-        ExperienceNoBosses,
-        NoGenoWhirlExor,
-        FixMagikoopa,
-        NoOHKO,
-        ShuffledBosses
-    ]
+    size = 3
 
 
 class PuzzleCategory(FlagCategory):
@@ -1596,16 +1499,159 @@ class PuzzleCategory(FlagCategory):
         BowserDoorShuffle,
         SkipMinecart
     ]
+    size = 3
+
+
+class ShopsCategory(FlagCategory):
+    flags = [
+        ShuffleShops,
+        ShopQuality,
+        BiasShopShuffle,
+        ShowEquips,
+        FreeShops
+    ]
+    size = 3
+
+class AccessCategory(FlagCategory):
+    name = 'Progression & Shops'
+    subcategories=[AreaAccessSubcategory, OtherAccessSubcategory, PuzzleCategory, ShopsCategory]
+
+
+class StarPiecesCategory(FlagCategory):
+    flags = [
+        ShuffleStarPieces,
+        TotalStarPieces,
+        EnabledBossChecks,
+    ]
+    size = 3
+
+class ItemLocationSubcategory(FlagCategory):
+    flags = [
+        ShuffleItems,
+        ItemQuality,
+        BiasItemShuffle,
+        RestrictSpecialEquips,
+        StarPiecesRestrictedByArea,
+        BetterTips,
+        EXPStarsAnywhere,
+        SlotsAnywhere,
+        ShuffleBeetlemania,
+        ShuffleMagikoopaChest,
+        FireworksSetting,
+    ]
+
+class QualitySubcategory(FlagCategory):
+    flags = [
+        InvisibleFlagsSetting,
+        ReplaceItems,
+        QuickHitCoins,
+        PoisonMushroom,
+        EXPChallenge,
+        GrateGuyPrizeThreshold,
+        KnifeGuyPrizeThreshold,
+        SuitePrize1Threshold,
+        SuitePrize2Threshold,
+        SuitePrize3Threshold,
+        SuitePrize4Threshold,
+        SuitePrize5Threshold,
+        SuitePrize6Threshold,
+        SuperJump1Threshold,
+        SuperJump2Threshold
+    ]
+
+class ItemCheckSubcategory(FlagCategory):
+    flags = [
+        KeyItemsAnywhere,
+        StarPieceAvailability,
+        EnabledRegularChecks,
+        EnabledFreestandingChecks
+    ]
+
+
+
+class ItemsCategory(FlagCategory):
+    name = 'Items & Star Pieces'
+    subcategories = [
+        StarPiecesCategory,
+        ItemLocationSubcategory,
+        ItemCheckSubcategory,
+        QualitySubcategory
+    ]
+
+class BossPositionSubcategory(FlagCategory):
+    flags = [
+        BossShuffle,
+        BossShuffleScaleStats,
+        BossReplaceMinigameSprites,
+        MimicsAnywhere,
+    ]
+    size = 3
+
+class BossCheeseSubcategory(FlagCategory):
+    flags = [
+        RequireBossFights,
+        NoGenoWhirlExor,
+        FixMagikoopa,
+        NoOHKO,
+    ]
+    size = 3
+
+class BossStatSubcategory(FlagCategory):
+    flags = [
+        EnemyStats,
+        EnemyDrops,
+        EnemyFormations,
+        EnemyAttacks,
+        EnemyNoSafetyChecks,
+        EnemySpells,
+        ExperienceNoRegular,
+        ExperienceNoBosses,
+    ]
+    size = 3
+
+class AvailableBossesSubcategory(FlagCategory):
+    flags = [
+        ShuffledBosses
+    ]
+    size = 3
+
+
+class BossCategory(FlagCategory):
+    name = 'Enemies & Boss Fights'
+    subcategories = [
+        BossPositionSubcategory,
+        AvailableBossesSubcategory,
+        BossStatSubcategory,
+        BossCheeseSubcategory
+    ]
+
+class AccessibilitySubcategory(FlagCategory):
+    flags = [
+        RemoveFlashes
+    ]
+    size = 4
+
+class MusicSubcategory(FlagCategory):
+    flags = [
+        BossShuffleMusic,
+        ShuffledMusic,
+    ]
+    size = 4
+
+class PaletteSubcategory(FlagCategory):
+    flags = [
+        PaletteSwaps,
+        ChangeNames,
+    ]
+    size = 4
 
 
 class CosmeticCategory(FlagCategory):
     name = 'Cosmetics'
-    flags = [
-        BossShuffleMusic,
-        ShuffledMusic,
-        PaletteSwaps,
-        ChangeNames,
-        RemoveFlashes
+    subcategories = [
+        PaletteSubcategory,
+        MusicSubcategory,
+        AccessibilitySubcategory
     ]
 
 # ************************************** Preset classes
@@ -1653,13 +1699,10 @@ class QuickPreset(Preset):
 
 # List of categories for the site.
 CATEGORIES = (
-    StarPiecesCategory,
     PartyCategory,
-    AccessCategory,
     ItemsCategory,
-    ShopsCategory,
+    AccessCategory,
     BossCategory,
-    PuzzleCategory,
     CosmeticCategory
 )
 

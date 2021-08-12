@@ -96,6 +96,7 @@ class Jump(CharacterSpell):
     fp = 3
     power = 25
     hit_rate = 100
+    title = "Jump"
 
 
 class FireOrb(CharacterSpell):
@@ -143,6 +144,7 @@ class Therapy(CharacterSpell):
     fp = 2
     power = 40
     hit_rate = 100
+    title = "Therapy"
 
 
 class GroupHug(CharacterSpell):
@@ -171,6 +173,7 @@ class Mute(CharacterSpell):
     index = 10
     fp = 3
     hit_rate = 99
+    title = "Mute"
 
 
 class PsychBomb(CharacterSpell):
@@ -186,6 +189,7 @@ class Terrorize(CharacterSpell):
     fp = 6
     power = 10
     hit_rate = 90
+    title = "Terrorize"
 
 
 class PoisonGas(CharacterSpell):
@@ -201,6 +205,7 @@ class Crusher(CharacterSpell):
     fp = 12
     power = 60
     hit_rate = 100
+    title = "Crusher"
 
 
 class BowserCrush(CharacterSpell):
@@ -255,6 +260,7 @@ class Thunderbolt(CharacterSpell):
     fp = 2
     power = 15
     hit_rate = 100
+    title = "Thunderbolt"
 
 
 class HPRain(CharacterSpell):
@@ -269,6 +275,7 @@ class Psychopath(CharacterSpell):
     index = 23
     fp = 1
     hit_rate = 100
+    title = "Psychopath"
 
 
 class Shocker(CharacterSpell):
@@ -276,6 +283,7 @@ class Shocker(CharacterSpell):
     fp = 8
     power = 60
     hit_rate = 100
+    title = "Shocker"
 
 
 class Snowy(CharacterSpell):
@@ -283,6 +291,7 @@ class Snowy(CharacterSpell):
     fp = 12
     power = 40
     hit_rate = 100
+    title = "Snowy"
 
 
 class StarRain(CharacterSpell):

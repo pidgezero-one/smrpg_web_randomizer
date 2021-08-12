@@ -7,9 +7,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         b = EventScript.assemble_from_table(scripts)
 
-        allbytes = b[0] + b[1] + b[2] + b[3] + b[4] + b[5]
-        print("combined length", hex(len(allbytes)), len(allbytes))
+        print("combined length", hex(len(b)), len(b))
 
         f = open(f'write_to_0x1E0000.img', 'wb')
-        f.write(allbytes)
+        f.write(b)
         f.close()

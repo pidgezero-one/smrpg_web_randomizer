@@ -254,7 +254,7 @@ class EventScript:
             bank_20_scripts += bytearray([0xFF for x in range(empty_space)])
         print("bank 20 after", hex(len(bank_20_scripts)), len(bank_20_scripts))
 
-        return [bank_1E_pointer_table, bank_1E_scripts, bank_1F_pointer_table, bank_1F_scripts, bank_20_pointer_table, bank_20_scripts]
+        return bank_1E_pointer_table + bank_1E_scripts + bank_1F_pointer_table + bank_1F_scripts + bank_20_pointer_table + bank_20_scripts
 
         """ for name, args in tuples:
             func = getattr(assembler, name, None)
