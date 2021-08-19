@@ -13,6 +13,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="region" id="region" value=""/>
                 <input type="hidden" name="flags" id="flags" value=""/>
+                <input type="hidden" name="cosmetics" id="cosmetics" value=""/>
 
                 <div class="card-header bg-success text-white">
                     <h3 class="card-title">Generate Randomized Game (v{{ version|default:'UNKNOWN' }})</h3>
@@ -77,9 +78,7 @@
                                     <option value="custom">Custom Flag String</option>
                                 </select>
                                 <div class="input-group-append">
-                                    <button type="button" class="btn btn-info"
-                                            onclick="applyFlags();">Apply
-                                    </button>
+                                    <button type="button" id="apply-flags" class="btn btn-info">Apply</button>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +86,7 @@
                     {% for preset in presets %}
                         <p class="preset-description" data-preset-flags="{{ preset.flags }}">{{ preset.description }}</p>
                         <p class="preset-description text-info" data-preset-flags="{{ preset.flags }}">
-                            <em>{{ preset.flags }}</em>
+                            <em id="flagstring-{{ preset.id }}">{{ preset.flags }}</em>
                         </p>
                     {% endfor %}
                     <div class="row" id="custom-flag-entry">
@@ -105,31 +104,31 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <button type="button" class="btn btn-warning" onclick="applyFlags('');">Reset All to Default</button>
+                        <button id="reset-flags" type="button" class="btn btn-warning">Reset All Flags to Default</button>
                     </div>
-                    <div class="row">
+                    <div class="row flag-nav-interface" id="all-flags-container">
                         {# Show categories and flag inputs. #}
                         
                         <div class="col-md-12">
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    {% for category in categories %}
-                                    {% if forloop.counter == 1 %}
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="{{ category.get_slug }}-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ category.get_slug }}" type="button" role="tab" aria-controls="tab-{{ category.get_slug }}" aria-selected="true">{{ category.name }}</button>
-                                    </li>
-                                    {% else %}
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="{{ category.get_slug }}-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ category.get_slug }}" type="button" role="tab" aria-controls="tab-{{ category.get_slug }}" aria-selected="false">{{ category.name }}</button>
-                                    </li>
-                                    {% endif %}
-                                    {% endfor %}
-                                </ul>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                {% for category in categories %}
+                                {% if forloop.counter == 1 %}
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="{{ category.id }}-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ category.id }}" type="button" role="tab" aria-controls="tab-{{ category.id }}" aria-selected="true">{{ category.name }}</button>
+                                </li>
+                                {% else %}
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="{{ category.id }}-tab" data-bs-toggle="tab" data-bs-target="#tab-{{ category.id }}" type="button" role="tab" aria-controls="tab-{{ category.id }}" aria-selected="false">{{ category.name }}</button>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
                             <div class="tab-content">
                                 {% for category in categories %}
                                     {% if forloop.counter == 1 %}
-                                    <div class="tab-pane show active" id="tab-{{ category.get_slug }}" role="tabpanel" aria-labelledby="{{ category.get_slug }}-tab">
+                                    <div class="tab-pane show active" id="tab-{{ category.id }}" role="tabpanel" aria-labelledby="{{ category.id }}-tab">
                                     {% else %}
-                                    <div class="tab-pane" id="tab-{{ category.get_slug }}" role="tabpanel" aria-labelledby="{{ category.get_slug }}-tab">
+                                    <div class="tab-pane" id="tab-{{ category.id }}" role="tabpanel" aria-labelledby="{{ category.id }}-tab">
                                     {% endif %}
                                         <div class="card border-info my-2">
                                             <div class="card-header"><h5>{{ category.name }}</h5></div>
@@ -158,8 +157,8 @@
                 </div>
                 <div class="card-header">
                     <div class="form-group">
-                        <input type="text" id="flag-string" class="form-control form-control-lg text-center" readonly
-                               onclick="$(this).select(); document.execCommand('copy');">
+                        <textarea id="flag-string" class="form-control text-center" rows="9" readonly
+                               onclick="$(this).select(); document.execCommand('copy');"></textarea>
                         <label for="flag-string" class="d-none"></label>
                     </div>
                     <p class="font-italic">This is the flag string for this randomization. Copy and save this text if
@@ -237,288 +236,641 @@
     {{ flags|json_script:"flags_json" }}
 
     <script>
-        const FLAGS = JSON.parse(document.getElementById('flags_json').textContent);
+        const table = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+        const getBase64StringFromBoolean = (values) => {
+            bytes = []
+            ctr = 0
+            val = 0
+            for (i of values) {
+                val += (i << ctr)
+                ctr++
+                if (ctr == 6) {
+                    bytes.push(val)
+                    ctr = 0
+                    val = 0
+                }
+            }
+            if (ctr != 0) {
+                bytes.push(val)
+            }
 
-        function applySeed(rom) {
-            return new Promise((resolve, reject) => {
-                $("#region").val(rom.region);
-                $.post("{% url 'randomizer:generate' %}", $("#config").serialize(), (patch) => {
-                    if (patch.error) {
-                        reject(patch);
+            return bytes.map(b => table[b]).join("")
+        }
+
+        $(document).ready(function() {
+            const FLAGS = JSON.parse(document.getElementById('flags_json').textContent);
+
+            function applySeed(rom) {
+                return new Promise((resolve, reject) => {
+                    $("#region").val(rom.region);
+                    console.log("{% url 'randomizer:generate' %}")
+                    console.log($("#config").serialize())
+                    $.post("{% url 'randomizer:generate' %}", $("#config").serialize(), (patch) => {
+                        console.log(patch)
+                        if (patch.error) {
+                            reject(patch);
+                        } else {
+                            rom.applyModeChanges(patch.mode).then(() => {
+                                rom.parsePatch(patch.patch);
+                                resolve(patch);
+                            });
+                        }
+                    }, "json").fail(reject);
+                });
+            }
+
+            function seedFailed(patch = {}) {
+                let errmsg;
+                if (patch.error) {
+                    errmsg = patch.error;
+                } else {
+                    errmsg = "Failed Creating Seed :(";
+                }
+
+                $("#generate-btn").html("Generate ROM").prop("disabled", false);
+                $("#generate-error-message").html(errmsg);
+                $("#generate-error-box").show().delay(2000).fadeOut("slow");
+            }
+
+            function seedApplied(patch) {
+                return new Promise((resolve) => {
+                    $("#generate-btn").html("Generate").prop("disabled", false);
+                    $("#btn-save-rom").prop("disabled", false);
+                    if (wad.valid) {
+                        $("#btn-save-wad").prop("disabled", false);
                     } else {
-                        rom.applyModeChanges(patch.mode).then(() => {
-                            rom.parsePatch(patch.patch);
-                            resolve(patch);
+                        $("#btn-save-wad").prop("disabled", true);
+                    }
+                    updateSeedDetailsFromPatch(patch);
+                    rom.parseInfoFromPatch(patch);
+                    // Scroll back to the top after generation is done.
+                    $('html').animate({scrollTop: 0}, 500);
+                    resolve(rom);
+                });
+            }
+
+            const resetFlags = () => {
+                applyFlags()
+            }
+            $('#reset-flags').click(function() {
+                resetFlags()
+            })
+            $('#apply-flags').click(function() {
+                if ($('#preset').val() != "custom") {
+                    applyFlags($('#preset').val())
+                }
+                else {
+                    applyFlags($('#quick-custom').val())
+                }
+            })
+            // Apply custom seed flag.
+            const applyFlags = (flags = null, initial_load = false) => {
+
+                FLAGS.forEach(flag => {
+                    if (flag.subcategory !== 'R') {
+                        $(".multiselect-option").show();
+                        $(".multiselect-button-container input[type='text']").val('');
+                        if (flag.type == "number") {
+                            idval = $.escapeSelector(`${flag.subcategory}.${flag.id}`)
+                            $(`#${idval}`).val(flag.default)
+                        }
+                        else if (flag.type == "select_one") {
+                            idval = $.escapeSelector(`${flag.subcategory}.${flag.id}`)
+                            $(`#${idval}`).val(flag.default.id)
+                        }
+                        else if (flag.type == "boolean") {
+                            idval = $.escapeSelector(`${flag.subcategory}.${flag.id}`)
+                            $(`#${idval}`).prop("checked", flag.default)
+                        }
+                        else if (flag.type == "categorization") {
+                            idval = $.escapeSelector(`${flag.subcategory}.${flag.id}`)
+                            boxes = $(`#${idval}`).find("input[type='checkbox']").toArray()
+                            boxes.forEach(box => {
+                                val_to_check_split = $(box).prop("id").split(".")
+                                val_to_check = val_to_check_split[val_to_check_split.length - 1]
+                                exists_in_default = !!(flag.default.filter(d => d.id == val_to_check)).length
+                                $(box).prop("checked", exists_in_default)
+                            })
+                        }
+                    }
+                })
+                // what to do about cosmetics? have its own reset button?
+
+                if (!!flags) {
+                    // Parse flag string and set flags on the page.
+                    for (let word of flags.trim().split(/ +/g)) {
+                        subcategory = word[0]
+                        subcategory_flags = word.substring(1).split("|")
+                        for (flag of subcategory_flags) {
+                            flag_parsed = flag.split(":")
+                            if (flag_parsed.length == 1) {
+                                idval = `${subcategory}.${flag}`
+                                $(`#${$.escapeSelector(idval)}`).prop("checked", true)
+                            }
+                            else {
+                                idval = `${subcategory}.${flag_parsed[0]}`
+                                obj = $(`#${$.escapeSelector(idval)}`)
+                                type = obj[0].type
+                                if (type == "number" || type == "select-one") {
+                                    obj.val(flag_parsed[1])
+                                }
+                                else {
+                                    // condensed checkbox data
+                                    checkboxes = obj.find("input[type='checkbox']").toArray()
+                                    strval = flag_parsed[1]
+                                    checkbox_index = 0
+                                    for (var i = 0; i < strval.length; i++) {
+                                        letter = strval[i]
+                                        numval = table.indexOf(letter)
+                                        for (b = 0; b < 6; b++) {
+                                            is_checked = !!(numval & (1 << b))
+                                            $(checkboxes[checkbox_index]).prop("checked", is_checked)
+                                            checkbox_index++
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                buildFlagString();
+
+                // Scroll to review flags.
+                if (!initial_load)
+                    $('html').animate({scrollTop: $('#review-flags').offset().top}, 500);
+            }
+
+            // Helper function to build flag string part for a specific flag and recursively handle choices and suboptions.
+            function buildFlagStringPart(flag, mode, flagStrings, parent_value = '') {
+                let idval = `#${flag.subcategory}\\.${flag.id}`;
+
+                if (flag.modes.includes(mode)) {
+                    if (flag.type == "boolean") {
+                        if ($(idval).prop("disabled")) {
+                            return null
+                        }
+                        else if ($(idval).is(':checked')) {
+                            return flag.id
+                        }
+                        else {
+                            return null
+                        }
+                    }
+                    else if (flag.type == "select_one" || flag.type == "number") {
+                        if ($(idval).prop("disabled")) {
+                            return null
+                        }
+                        return `${flag.id}:${$(idval).val()}`
+                    }
+                    else if (flag.type == "categorization") {
+                        if ($(`${idval}\\.container`).hasClass("disabled")) {
+                            return null
+                        }
+                        checkboxes = $(idval).find("input[type='checkbox']")
+                        checks = []
+                        for (box of checkboxes) {
+                            checks.push($(box).prop("checked"))
+                        }
+                        return `${flag.id}:${getBase64StringFromBoolean(checks)}`
+                    }
+                }
+                else {
+                    return null
+                }
+            }
+
+            // Build flag string based on selected flags visible for this mode.
+            function buildFlagString() {
+                
+
+                $('#all-flags-container').find('input[type="checkbox"]').toArray().forEach(c => {
+                    apply_dependencies($(c), 'checkbox')
+                })
+                $('#all-flags-container').find('select').toArray().forEach(c => {
+                    apply_dependencies($(c), 'select')
+                })
+                $('#all-flags-container').find('input[type="number"]').toArray().forEach(c => {
+                    apply_dependencies($(c), 'number')
+                })
+
+                let mode = $('#mode').val();
+
+                flags_grouped = {}
+                for (let flag of FLAGS) {
+                    if (!flags_grouped[flag.subcategory]) {
+                        flags_grouped[flag.subcategory] = []
+                    }
+                    flags_grouped[flag.subcategory].push(flag)
+                }
+
+                flag_chunks = []
+                cosmetic_chunks = []
+
+                // Check each flag if it's selected, and check choices and/or options for it.
+                for (letter in flags_grouped) {
+                    flag_strings = flags_grouped[letter].map(f => buildFlagStringPart(f, mode)).filter(f => !!f)
+                    if (!!flag_strings.length) {
+                        word = `${letter}${flag_strings.join("|")}`
+                        if (letter == "R") {
+                            cosmetic_chunks.push(word)
+                        }
+                        else {
+                            flag_chunks.push(word)
+                        }
+                    }
+                }
+
+                // Set flag string from selected flags.
+                flagString = flag_chunks.join("     ")
+                cosmeticsString = cosmetic_chunks.join("     ")
+
+                $('#flag-string').val(flagString);
+                $('#cosmetics').val(cosmeticsString);
+                $('#flags').val(flagString);
+
+                // Save current flags in local storage.
+                localforage.setItem("rom.flags", flagString).then(() => {
+                    localforage.setItem("rom.cosmetics", cosmeticsString)
+                });
+            }
+
+            $(() => {
+                $("#seed-clear").click(() => {
+                    $("#seed").val("");
+                });
+
+                // Randomization mode
+                $("#mode").change((event) => {
+                    let mode = $(event.target).val();
+                    localforage.setItem("rom.mode", mode);
+
+                    // Show description for the selected mode.
+                    $('.mode-description').hide();
+                    $(`#mode-description-${mode}`).show();
+
+                    // Show flags that are for this mode only.
+                    let flags = $('.flag-container');
+                    flags.not(`.flag-${mode}`).hide();
+                    flags.filter(`.flag-${mode}`).show();
+
+                    // Hide categories that have no visible flags for this mode.
+                    $(".category-container").show().each((index, elem) => {
+                        if ($(elem).find(`.card > .card-body > .flag-${mode}`).length === 0 && $(elem).find(`.card > .card-body > .subcategory`).length === 0) {
+                            $(elem).hide();
+                        } else {
+                            $(elem).show();
+                        }
+                    });
+
+                    // Rebuild flag string for new flags.
+                    buildFlagString();
+                });
+
+                stored_flag_string = ""
+
+                // Apply stored flags, if any.
+                localforage.getItem("rom.flags").then((value_flags) => {
+                    localforage.getItem("rom.cosmetics").then((value_cosmetics) => {
+                        value = `${value_flags}     ${value_cosmetics}`
+                        if (value) {
+                            stored_flag_string = value
+                        }
+                        
+
+                        localforage.getItem("rom.mode").then((value) => {
+                            let elem = $("#mode");
+                            if (value === null) {
+                                value = 'open';
+                            }
+
+                            // If they had an old mode value cached, default to open mode.
+                            if (elem.prop('selectedIndex') === -1) {
+                                elem.val('open');
+                            }
+
+                            elem.change();
+
+                            
+
+                            if (!!stored_flag_string) {
+                                applyFlags(stored_flag_string, true);
+                            }
                         });
-                    }
-                }, "json").fail(reject);
-            });
-        }
 
-        function seedFailed(patch = {}) {
-            let errmsg;
-            if (patch.error) {
-                errmsg = patch.error;
-            } else {
-                errmsg = "Failed Creating Seed :(";
-            }
 
-            $("#generate-btn").html("Generate ROM").prop("disabled", false);
-            $("#generate-error-message").html(errmsg);
-            $("#generate-error-box").show().delay(2000).fadeOut("slow");
-        }
+                    });
+                });
 
-        function seedApplied(patch) {
-            return new Promise((resolve) => {
-                $("#generate-btn").html("Generate").prop("disabled", false);
-                $("#btn-save-rom").prop("disabled", false);
-                if (wad.valid) {
-                    $("#btn-save-wad").prop("disabled", false);
-                } else {
-                    $("#btn-save-wad").prop("disabled", true);
-                }
-                updateSeedDetailsFromPatch(patch);
-                rom.parseInfoFromPatch(patch);
-                // Scroll back to the top after generation is done.
-                $('html').animate({scrollTop: 0}, 500);
-                resolve(rom);
-            });
-        }
-
-        // Apply custom seed flag.
-        function applyFlags(flags = null, initial_load = false) {
-            // Get flag string from selected preset if not provided.
-            if (flags === null || flags === undefined) {
-                flags = $('#preset').val();
-                if (flags === 'custom') {
-                    flags = $('#quick-custom').val();
-                }
-            }
-
-            // Clear all the checkbox options first.  Leave radio buttons alone.
-            $('.flag-form-input-checkbox').prop('checked', false);
-
-            // Parse flag string and set flags on the page.
-            for (let flag of flags.split(' ')) {
-                if (flag.startsWith('-')) {
-                    // Solo flag that begins with a dash.
-                    $('.flag-' + $.escapeSelector(flag)).prop('checked', true);
-                } else {
-                    // Flag that may have a subsection of choices and/or options.
-                    let first = flag.slice(0, 1);
-                    $('.flag-' + $.escapeSelector('@' + first)).add('.flag-' + $.escapeSelector(first))
-                        .prop('checked', true);
-                    for (let char of flag.slice(1)) {
-                        $('.flag-' + $.escapeSelector(first + char)).prop('checked', true);
-                    }
-                }
-            }
-
-            buildFlagString();
-
-            // Scroll to review flags.
-            if (!initial_load)
-                $('html').animate({scrollTop: $('#review-flags').offset().top}, 500);
-        }
-
-        // Helper function to build flag string part for a specific flag and recursively handle choices and suboptions.
-        function buildFlagStringPart(flag, mode, flagStrings, parent_value = '') {
-            let idval = '#flag-' + $.escapeSelector(flag.value);
-            if (parent_value)
-                idval += $.escapeSelector(parent_value);
-
-            if (flag.modes.includes(mode) && $(idval).is(':checked')) {
-                if (flag.value.startsWith('-')) {
-                    // Solo flag that begins with a dash.
-                    flagStrings.set(flag.value, true);
-                } else {
-                    let char;
-                    let rest = '';
-                    if (flag.value.startsWith('@')) {
-                        char = flag.value.slice(1, 2);
-                        flagStrings.get('@').push(char);
+                // Hide quick custom input when not selected.
+                $('#preset').change((event) => {
+                    let flags = $(event.target).val();
+                    let descriptions = $('.preset-description');
+                    descriptions.hide();
+                    if (flags === 'custom') {
+                        $('#custom-flag-entry').show();
                     } else {
-                        char = flag.value.slice(0, 1);
-                        rest = flag.value.slice(1);
+                        $('#custom-flag-entry').hide();
+                        descriptions.filter(`[data-preset-flags='${flags}']`).show();
                     }
+                }).change();
 
-                    // Check if this key is in the map yet.
-                    if (!flagStrings.has(char)) {
-                        flagStrings.set(char, []);
-                    }
-                    if (rest) {
-                        flagStrings.get(char).push(rest);
-                    }
+                // unfocus tooltips on setting flag
+                $(".flag-form-input").change(() => {buildFlagString(); $(':focus').blur()});
 
-                    // Flag that may have a subsection of choices and/or options.
-                    for (let choice of flag.choices) {
-                        buildFlagStringPart(choice, mode, flagStrings, '-' + flag.value + parent_value);
-                    }
+                // Generate button
+                $("#generate-btn").click((event) => {
+                    $("#seed-details").hide();
+                    $(event.target).html("Generating...").prop("disabled", true);
+                    resetRom().then((rom) => {
+                        applySeed(rom).then(seedApplied, seedFailed);
+                    });
+                });
 
-                    for (let option of flag.options) {
-                        buildFlagStringPart(option, mode, flagStrings, '-' + flag.value + parent_value);
+                // Save ROM button
+                $("#btn-save-rom").click(() => {
+                    return rom.save(rom.makeFilename("sfc"));
+                });
+
+                // Save WAD button
+                $("#btn-save-wad").click(() => {
+                    rom.updateChecksum().then(() => {
+                        $("#btn-save-wad").html("Generating...").prop("disabled", true);
+                        $("#btn-save-rom").prop("disabled", true);
+
+                        let fd = new FormData();
+                        fd.append("region", rom.region);
+                        fd.append("rom", rom.toBlob());
+                        fd.append("wad", wad.toBlob());
+
+                        $.ajax("{% url 'randomizer:pack' %}", {
+                            method: "POST",
+                            processData: false,
+                            contentType: false,
+                            dataType: 'binary',
+                            data: fd,
+                            xhrFields: {
+                                responseType: 'blob',
+                            },
+                            success: (result) => {
+                                let filename = rom.makeFilename("wad");
+                                saveAs(result, filename);
+                            },
+                            error: () => {
+                                $("#error-message").html("Failed Packing Wad :(");
+                                $("#error-box").show().delay(2000).fadeOut("slow");
+                            },
+                            complete: () => {
+                                $("#btn-save-wad").html("Save Wad").prop("disabled", false);
+                                $("#btn-save-rom").prop("disabled", false);
+                            },
+                        });
+                    });
+                });
+
+                // Generate Another button
+                $("#generate-another").click(() => {
+                    $("#seed-details").hide();
+                    $("#generate-container").show();
+                });
+            });
+            
+            $('body').on('click', '.multiselect-select-all', function() {
+                container = $(this).closest(".flag-container-list");
+                container.find("input[type='checkbox']").prop('checked', true);
+                buildFlagString();
+            })
+            $('body').on('click', '.multiselect-clear-all', function() {
+                container = $(this).closest(".flag-container-list");
+                container.find("input[type='checkbox']").prop('checked', false);
+                buildFlagString();
+            })
+            $('body').on('click', '.clear-multiselect', function() {
+                container = $(this).closest(".flag-container-list");
+                txtbox = container.find("input[type='text']")
+                if (!txtbox.prop("disabled")) {
+                    txtbox.val('');
+                    boxes = container.find("input[type='checkbox']").toArray()
+                    boxes.forEach(b => {
+                        $(b).closest(".multiselect-option").show();
+                    })
+                }
+            })
+            $('body').on('keyup', '.multiselect-filter', function() {
+                searchterm = $(this).val();
+                container = $(this).closest(".flag-container-list");
+                boxes = container.find("input[type='checkbox']").toArray()
+                if (!(searchterm.trim())) {
+                    boxes.forEach(b => {
+                        $(b).closest(".multiselect-option").show();
+                    })
+                }
+                else {
+                    boxes.forEach(b => {
+                        if ($(b).prop("id").toLowerCase().includes(searchterm.toLowerCase())) {
+                            $(b).closest(".multiselect-option").show();
+                        }
+                        else {
+                            $(b).closest(".multiselect-option").hide();
+                        }
+                    })
+                }
+            })
+
+            // I really would have liked to auto generate this from the python definitions but couldnt figure out a nice way to do it
+            const apply_dependencies = (item, type) => {
+                id = item.prop("id")
+                if (type == "checkbox") {
+                    value = item.prop("checked")
+                    id_parts = id.split('.')
+                    if (id_parts.length == 3 && `${id_parts[0]}.${id_parts[1]}` == "P.avail") {
+                        if (value == false) {
+                            if ($('#P\\.start').val() == id_parts[2]) {
+                                $('#P\\.start').val('random')
+                            }
+                        }
+                        $(`#P\\.start option[value="${id_parts[2]}"]`).prop("disabled", !value)
+                    }
+                    else if (id == "P.random") {
+                        boxes = $(`#${$.escapeSelector('P.avail')}`).find("input[type='checkbox']").toArray()
+                        dependent_ids = ["P.size", "P.start", ...(boxes.map(b => $(b).prop("id")))]
+                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
+                        $("#P\\.avail\\.container .multiselect-button-container button").prop("disabled", !value)
+                        $("#P\\.avail\\.container .multiselect-button-container .multiselect-filter").prop("disabled", !value)
+                        if (value == false) {
+                            $(`#${$.escapeSelector("P.avail.container")}`).addClass("disabled")
+                            $(`#${$.escapeSelector('P.start')}`).siblings("label").addClass("disabled")
+                            $(`#${$.escapeSelector('P.size')}`).siblings("label").addClass("disabled")
+                        }
+                        else {
+                            $(`#${$.escapeSelector("P.avail.container")}`).removeClass("disabled")
+                            $(`#${$.escapeSelector('P.start')}`).siblings("label").removeClass("disabled")
+                            $(`#${$.escapeSelector('P.size')}`).siblings("label").removeClass("disabled")
+                        }
+                    }
+                    else if (id == "X.random") {
+                        boxes = $(`#${$.escapeSelector('X.fights')}`).find("input[type='checkbox']").toArray()
+                        dependent_ids = ["X.avail", "X.restrict_map", ...(boxes.map(b => $(b).prop("id")))]
+                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
+                        $("#X\\.fights\\.container .multiselect-button-container button").prop("disabled", !value)
+                        $("#X\\.fights\\.container .multiselect-button-container .multiselect-filter").prop("disabled", !value)
+                        if (value == false) {
+                            $(`#${$.escapeSelector("X.fights.container")}`).addClass("disabled")
+                            $(`#${$.escapeSelector('X.avail')}`).siblings("label").addClass("disabled")
+                        }
+                        else {
+                            $(`#${$.escapeSelector("X.fights.container")}`).removeClass("disabled")
+                            $(`#${$.escapeSelector('X.avail')}`).siblings("label").removeClass("disabled")
+                        }
+                    }
+                    else if (id == "T.random") {
+                        boxes = $(`#${$.escapeSelector('L.chests')}, #${$.escapeSelector('L.coins')}`).find("input[type='checkbox']").toArray()
+                        dependent_ids = ["L.keys_anywhere", "L.stars_anywhere", "T.beetle", "T.kamek", "T.quality", "T.fireworks", "T.restrict_monstro"]
+                        if (value == false || $(`#${$.escapeSelector('T.quality')}`).val() != "empty") {
+                            dependent_ids.push(...["T.bias", "T.xpstars_anywhere", "T.slots_anywhere"])
+                        }
+                        else if (value == true || $(`#${$.escapeSelector('T.quality')}`).val() == "empty") {
+                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", true)
+                            $(`#I\\.xpstar`).siblings("label").addClass("disabled")
+                        }
+                        else {
+                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", false)
+                            $(`#I\\.xpstar`).siblings("label").removeClass("disabled")
+                        }
+                        if (value == false || $(`#${$.escapeSelector('L.keys_anywhere')}`).prop("checked") == true || $(`#${$.escapeSelector('L.stars_anywhere')}`).prop("checked") == true) {
+                            $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container .multiselect-button-container button").prop("disabled", !value)
+                            $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container .multiselect-button-container .multiselect-filter").prop("disabled", !value)
+                            dependent_ids.push(...(boxes.map(b => $(b).prop("id"))))
+                            if (value == false) {
+                                $(`#${$.escapeSelector("L.chests.container")}`).addClass("disabled")
+                                $(`#${$.escapeSelector("L.coins.container")}`).addClass("disabled")
+                            }
+                            else {
+                                $(`#${$.escapeSelector("L.chests.container")}`).removeClass("disabled")
+                                $(`#${$.escapeSelector("L.coins.container")}`).removeClass("disabled")
+                            }
+                        }
+                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
+                        if (value == false) {
+                            $(`#T\\.quality, #T\\.fireworks`).siblings("label").addClass("disabled")
+                        }
+                        else {
+                            $(`#T\\.quality, #T\\.fireworks`).siblings("label").removeClass("disabled")
+                        }
+                    }
+                    else if (id == "L.keys_anywhere" || id == "L.stars_anywhere") {
+                        show_lists = $(`#${$.escapeSelector('T.random')}`).prop("checked") && ($(`#${$.escapeSelector('L.keys_anywhere')}`).prop("checked") || $(`#${$.escapeSelector('L.stars_anywhere')}`).prop("checked"))
+                        boxes = $(`#${$.escapeSelector('L.chests')}, #${$.escapeSelector('L.coins')}`).find("input[type='checkbox']").toArray()
+                        $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container button").prop("disabled", !show_lists)
+                        $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container .multiselect-button-container").prop("disabled", !show_lists)
+                        if (show_lists) {
+                            $(`#${$.escapeSelector("L.chests.container")}`).removeClass("disabled")
+                            $(`#${$.escapeSelector("L.coins.container")}`).removeClass("disabled")
+                        }
+                        else {
+                            $(`#${$.escapeSelector("L.chests.container")}`).addClass("disabled")
+                            $(`#${$.escapeSelector("L.coins.container")}`).addClass("disabled")
+                        }
+                    }
+                    else if (id == "S.random") {
+                        dependent_ids = ["S.quality"]
+                        if (value == false || $(`#${$.escapeSelector('S.quality')}`).val() != "empty") {
+                            dependent_ids.push(...["S.bias"])
+                        }
+                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
+                        if (value == false) {
+                            $(`#S\\.quality`).siblings("label").addClass("disabled")
+                        }
+                        else {
+                            $(`#S\\.quality`).siblings("label").removeClass("disabled")
+                        }
+                    }
+                    else if (id == "B.random") {
+                        boxes = $(`#${$.escapeSelector('B.pool')}`).find("input[type='checkbox']").toArray()
+                        dependent_ids = ["B.scale", "B.allsprites", "B.mimics_anywhere", ...(boxes.map(b => $(b).prop("id")))]
+                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
+                        $("#B\\.pool\\.container .multiselect-button-container button").prop("disabled", !value)
+                        $("#B\\.pool\\.container .multiselect-button-container .multiselect-button-container").prop("disabled", !show_lists)
+                        if (value == false) {
+                            $(`#${$.escapeSelector("B.pool.container")}`).addClass("disabled")
+                        }
+                        else {
+                            $(`#${$.escapeSelector("B.pool.container")}`).removeClass("disabled")
+                        }
+                    }
+                    else if (id == "R.palette") {
+                        $("#R\\.names").prop("disabled", !value)
+                    }
+                    else if (id == "R.music") {
+                        boxes = $(`#${$.escapeSelector('R.avail')}`).find("input[type='checkbox']").toArray()
+                        dependent_ids = [...(boxes.map(b => $(b).prop("id")))]
+                        $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
+                        $("#R\\.avail\\.container .multiselect-button-container button").prop("disabled", !value)
+                        $("#R\\.avail\\.container .multiselect-button-container .multiselect-button-container").prop("disabled", !show_lists)
+                        if (value == false) {
+                            $(`#${$.escapeSelector("R.avail.container")}`).addClass("disabled")
+                        }
+                        else {
+                            $(`#${$.escapeSelector("R.avail.container")}`).removeClass("disabled")
+                        }
+                    }
+                    else if (id == "C.avail.SuperJump") {
+                        $("#I\\.sj1, #I\\.sj2").prop("disabled", !value)
+                        if (value == false) {
+                            $("#I\\.sj1, #I\\.sj2").siblings("label").addClass("disabled")
+                        }
+                        else {
+                            $("#I\\.sj1, #I\\.sj2").siblings("label").removeClass("disabled")
+                        }
                     }
                 }
-            }
-        }
-
-        // Build flag string based on selected flags visible for this mode.
-        function buildFlagString() {
-            let mode = $('#mode').val();
-            let flagStrings = new Map();
-            flagStrings.set('@', []);
-
-            // Check each flag if it's selected, and check choices and/or options for it.
-            for (let flag of FLAGS) {
-                buildFlagStringPart(flag, mode, flagStrings);
-            }
-
-            // Set flag string from selected flags.
-            let flagString = '';
-            for (let [key, vals] of flagStrings) {
-                if (key !== '@') {
-                    if (key.startsWith('-')) {
-                        flagString += key + ' ';
-                    } else {
-                        if (vals.length > 0 || !flagStrings.get('@').includes(key)) {
-                            flagString += key + vals.join('') + ' ';
+                else if (type == "select") {
+                    value = item.val()
+                    if (id == "T.quality") {
+                        if (value == "empty" && $(`#${$.escapeSelector('T.random')}`).prop("checked") == true) {
+                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", true)
+                            $(`#I\\.xpstar`).siblings("label").addClass("disabled")
+                            $(`#${$.escapeSelector("I.replace")}`).prop("disabled", true)
+                            $(`#${$.escapeSelector("I.quick")}`).prop("disabled", true)
+                        }
+                        else {
+                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", false)
+                            $(`#I\\.xpstar`).siblings("label").removeClass("disabled")
+                            $(`#${$.escapeSelector("I.replace")}`).prop("disabled", false)
+                            $(`#${$.escapeSelector("I.quick")}`).prop("disabled", false)
+                        }
+                        if (value == "empty" || $(`#${$.escapeSelector('T.random')}`).prop("checked") == false) {
+                            $(`#${$.escapeSelector("T.bias")}`).prop("disabled", true)
+                            $(`#${$.escapeSelector("T.xpstars_anywhere")}`).prop("disabled", true)
+                            $(`#${$.escapeSelector("T.slots_anywhere")}`).prop("disabled", true)
+                        }
+                        else {
+                            $(`#${$.escapeSelector("T.bias")}`).prop("disabled", false)
+                            $(`#${$.escapeSelector("T.xpstars_anywhere")}`).prop("disabled", false)
+                            $(`#${$.escapeSelector("T.slots_anywhere")}`).prop("disabled", false)
+                        }
+                    }
+                    else if (id == "S.quality") {
+                        if (value == "empty" || $(`#${$.escapeSelector('S.random')}`).prop("checked") == false) {
+                            $(`#${$.escapeSelector("S.bias")}`).prop("disabled", true)
+                        }
+                        else {
+                            $(`#${$.escapeSelector("S.bias")}`).prop("disabled", false)
                         }
                     }
                 }
             }
 
-            $('#flag-string').val(flagString);
-            $('#flags').val(flagString);
+            /*$('body').on('change', 'input[type="checkbox"]', function() {
+                apply_dependencies($(this), 'checkbox')
+            })
+            $('body').on('change', 'select', function() {
+                apply_dependencies($(this), 'select')
+            })
+            $('body').on('change', 'input[type="number"]', function() {
+                apply_dependencies($(this), "number")
+            })*/
 
-            // Save current flags in local storage.
-            localforage.setItem("rom.flags", flagString);
-        }
-
-        $(() => {
-            $("#seed-clear").click(() => {
-                $("#seed").val("");
-            });
-
-            // Randomization mode
-            $("#mode").change((event) => {
-                let mode = $(event.target).val();
-                localforage.setItem("rom.mode", mode);
-
-                // Show description for the selected mode.
-                $('.mode-description').hide();
-                $(`#mode-description-${mode}`).show();
-
-                // Show flags that are for this mode only.
-                let flags = $('.flag-container');
-                flags.not(`.flag-${mode}`).hide();
-                flags.filter(`.flag-${mode}`).show();
-
-                // Hide categories that have no visible flags for this mode.
-                $(".category-container").show().each((index, elem) => {
-                    if ($(elem).find(`.card > .card-body > .flag-${mode}`).length === 0 && $(elem).find(`.card > .card-body > .subcategory`).length === 0) {
-                        $(elem).hide();
-                    } else {
-                        $(elem).show();
-                    }
-                });
-
-                // Rebuild flag string for new flags.
-                buildFlagString();
-            });
-
-            localforage.getItem("rom.mode").then((value) => {
-                let elem = $("#mode");
-                if (value === null) {
-                    value = 'open';
-                }
-                elem.val(value);
-
-                // If they had an old mode value cached, default to open mode.
-                if (elem.prop('selectedIndex') === -1) {
-                    elem.val('open');
-                }
-
-                elem.change();
-            });
-
-            // Hide quick custom input when not selected.
-            $('#preset').change((event) => {
-                let flags = $(event.target).val();
-                let descriptions = $('.preset-description');
-                descriptions.hide();
-                if (flags === 'custom') {
-                    $('#custom-flag-entry').show();
-                } else {
-                    $('#custom-flag-entry').hide();
-                    descriptions.filter(`[data-preset-flags='${flags}']`).show();
-                }
-            }).change();
-
-            // Flag javascript event handlers.
-            $(".flag-form-input").change(buildFlagString);
-
-            // Generate button
-            $("#generate-btn").click((event) => {
-                $("#seed-details").hide();
-                $(event.target).html("Generating...").prop("disabled", true);
-                resetRom().then((rom) => {
-                    applySeed(rom).then(seedApplied, seedFailed);
-                });
-            });
-
-            // Save ROM button
-            $("#btn-save-rom").click(() => {
-                return rom.save(rom.makeFilename("sfc"));
-            });
-
-            // Save WAD button
-            $("#btn-save-wad").click(() => {
-                rom.updateChecksum().then(() => {
-                    $("#btn-save-wad").html("Generating...").prop("disabled", true);
-                    $("#btn-save-rom").prop("disabled", true);
-
-                    let fd = new FormData();
-                    fd.append("region", rom.region);
-                    fd.append("rom", rom.toBlob());
-                    fd.append("wad", wad.toBlob());
-
-                    $.ajax("{% url 'randomizer:pack' %}", {
-                        method: "POST",
-                        processData: false,
-                        contentType: false,
-                        dataType: 'binary',
-                        data: fd,
-                        xhrFields: {
-                            responseType: 'blob',
-                        },
-                        success: (result) => {
-                            let filename = rom.makeFilename("wad");
-                            saveAs(result, filename);
-                        },
-                        error: () => {
-                            $("#error-message").html("Failed Packing Wad :(");
-                            $("#error-box").show().delay(2000).fadeOut("slow");
-                        },
-                        complete: () => {
-                            $("#btn-save-wad").html("Save Wad").prop("disabled", false);
-                            $("#btn-save-rom").prop("disabled", false);
-                        },
-                    });
-                });
-            });
-
-            // Generate Another button
-            $("#generate-another").click(() => {
-                $("#seed-details").hide();
-                $("#generate-container").show();
-            });
-
-            // Apply stored flags, if any.
-            localforage.getItem("rom.flags").then((value) => {
-                if (value) {
-                    applyFlags(value, true);
-                }
-            });
-        });
+        })
     </script>
 {% endblock %}

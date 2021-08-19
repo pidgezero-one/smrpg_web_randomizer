@@ -101,6 +101,7 @@ class NPCShop:
     retain_size = True
     event_shop = False
     access = 1
+    frog_coin_shop = False
 
     def __init__(self, world):
         """
@@ -281,7 +282,7 @@ class SeaShop(Shop):
 
     def __init__(self, world):
         super().__init__(world)
-        for option in [SeaGating.Find1Star, SeaGating.Find2Star, SeaGating.Find3Star, SeaGating.Find4Star, SeaGating.Find5Star, SeaGating.Find6Star]:
+        for option in [SeaGating.star1, SeaGating.star2, SeaGating.star3, SeaGating.star4, SeaGating.star5, SeaGating.star6]:
             if world.settings.is_flag_value(flags.SeaGate, option):
                 self.access = 2
 
@@ -509,7 +510,7 @@ class CrocoShop1(Shop):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def is_item_allowed(self, item):

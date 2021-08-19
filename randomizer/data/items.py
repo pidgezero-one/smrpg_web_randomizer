@@ -217,6 +217,9 @@ class Item:
     @property
     def is_key(self):
         """:rtype: bool"""
+        # progressive fireworks should never end up in key item slots
+        if self.index == 197:
+            return False
         return (self.can_be_key and not (self.is_equipment or self.consumable) and self.price == 0) or self.index == 230
         # 230 = star piece
 
@@ -1434,6 +1437,7 @@ class FirePants(RegularItem):
     magic_defense = 21
     price = 90
     vanilla_shop = True
+    elemental_immunities = []
 
 
 class FireCape(RegularItem):
@@ -1728,7 +1732,7 @@ class Amulet(RegularItem):
 class ScroogeRing(RegularItem):
     index = 79
     description = 'Cuts FP use\x01in half\x01during battle'
-    tier = 4
+    tier = 3
     order = 123
     item_type = 2
     equip_chars = [Mario, Mallow, Geno, Bowser, Peach]
@@ -1751,7 +1755,7 @@ class ScroogeRing(RegularItem):
 class ExpBooster(RegularItem):
     index = 80
     description = 'Doubles Exp.\x01when equipped'
-    tier = 4
+    tier = 3
     order = 113
     item_type = 2
     equip_chars = [Mario, Mallow, Geno, Bowser, Peach]
@@ -1801,7 +1805,7 @@ class AttackScarf(RegularItem):
 class RareScarf(RegularItem):
     index = 82
     description = 'Raises defense\x01power!'
-    tier = 4
+    tier = 3
     order = 120
     item_type = 2
     equip_chars = [Mario, Mallow, Geno, Bowser, Peach]
@@ -2072,7 +2076,7 @@ class Mushroom(RegularItem):
     price = 4
     basic = True
     vanilla_shop = True
-    tier = 1
+    tier = 5
     model = overworld_items["mushroom_item"]
     room_service = "Mushroom........"
 
@@ -2086,7 +2090,7 @@ class MidMushroom(RegularItem):
     price = 20
     basic = True
     vanilla_shop = True
-    tier = 2
+    tier = 4
     model = overworld_items["mushroom_item"]
     room_service = "Mid Mushroom...."
 
@@ -2115,7 +2119,7 @@ class HoneySyrup(RegularItem):
     price = 10
     basic = True
     vanilla_shop = True
-    tier = 1
+    tier = 5
     room_service = "Honey Syrup......"
 
 
@@ -2129,7 +2133,7 @@ class MapleSyrup(RegularItem):
     price = 30
     basic = True
     vanilla_shop = True
-    tier = 2
+    tier = 4
     room_service = "Maple Syrup......"
 
 
@@ -2156,7 +2160,7 @@ class PickMeUp(RegularItem):
     price = 5
     basic = True
     vanilla_shop = True
-    tier = 1
+    tier = 4
     room_service = "Pick Me Up......."
     model = overworld_items["red_star_drink"]
 
@@ -2171,7 +2175,7 @@ class AbleJuice(RegularItem):
     price = 4
     basic = True
     vanilla_shop = True
-    tier = 1
+    tier = 5
     room_service = "Able Juice........"
 
 
@@ -2186,7 +2190,7 @@ class Bracer(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    tier = 2
+    tier = 4
     rank_value = 10
     room_service = "Bracer..........."
     model = overworld_items["yellow_d_drink"]
@@ -2203,7 +2207,7 @@ class Energizer(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    tier = 2
+    tier = 4
     room_service = "Energizer........"
     model = overworld_items["green_p_drink"]
 
@@ -2232,7 +2236,7 @@ class RedEssence(RegularItem):
     status_immunities = [7]
     price = 400
     rare = True
-    tier = 4
+    tier = 1
     room_service = "Red Essence......"
 
 
@@ -2244,7 +2248,7 @@ class KerokeroCola(RegularItem):
     consumable = True
     price = 400
     vanilla_shop = True
-    tier = 4
+    tier = 1
     room_service = "KerokeroCola....."
     model = overworld_items["green_frog_drink"]
 
@@ -2258,7 +2262,7 @@ class YoshiCookie(RegularItem):
     price = 100
     rare = True
     model = overworld_items["cookie"]
-    tier = 1
+    tier = 5
     room_service = "Yoshi Cookie......"
 
 
@@ -2271,7 +2275,7 @@ class PureWater(RegularItem):
     consumable = True
     price = 150
     rare = True
-    tier = 1
+    tier = 4
     room_service = "Pure Water......."
 
 
@@ -2288,7 +2292,7 @@ class SleepyBomb(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    tier = 1
+    tier = 4
     room_service = "Sleepy Bomb......"
 
 
@@ -2343,7 +2347,7 @@ class FlowerTab(RegularItem):
     consumable = True
     price = 200
     rare = True
-    tier = 2
+    tier = 4
     room_service = "Flower Tab......."
     model = overworld_items["flower"]
 
@@ -2369,7 +2373,7 @@ class FlowerBox(RegularItem):
     consumable = True
     price = 1000
     rare = True
-    tier = 4
+    tier = 2
     room_service = "Flower Box......."
     model = overworld_items["flower"]
 
@@ -2384,7 +2388,7 @@ class YoshiCandy(RegularItem):
     rare = True
     basic = True
     model = overworld_items["candy"]
-    tier = 2
+    tier = 4
     room_service = "Yoshi Candy......"
 
 
@@ -2396,7 +2400,7 @@ class FroggieDrink(RegularItem):
     consumable = True
     price = 16
     vanilla_shop = True
-    tier = 1
+    tier = 4
     room_service = "FroggieDrink......"
     model = overworld_items["yellow_music_drink"]
 
@@ -2423,7 +2427,7 @@ class Elixir(RegularItem):
     consumable = True
     price = 48
     vanilla_shop = True
-    tier = 2
+    tier = 3
     room_service = "Elixir............."
     model = overworld_items["blue_music_drink"]
 
@@ -2436,7 +2440,7 @@ class Megalixir(RegularItem):
     consumable = True
     price = 120
     vanilla_shop = True
-    tier = 3
+    tier = 2
     basic = True
     room_service = "Megalixir.........."
     model = overworld_items["red_music_drink"]
@@ -2452,7 +2456,7 @@ class SeeYa(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    tier = 2
+    tier = 3
     unique = ItemUnique.Always
     dialog_replacements = [
         (2911,
@@ -2489,7 +2493,7 @@ class GoodieBag(RegularItem):
     reuseable = True
     price = 1110
     rare = True
-    tier = 1
+    tier = 4
     unique = ItemUnique.Always
     model = overworld_items["static_coin"]
     dialog_replacements = [
@@ -2512,7 +2516,7 @@ class EarlierTimes(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    tier = 1
+    tier = 5
     unique = ItemUnique.Always
     dialog_replacements = [
         (2911,
@@ -2534,7 +2538,7 @@ class FreshenUp(RegularItem):
     price = 50
     vanilla_shop = True
     model = overworld_items["blue_r_drink"]
-    tier = 2
+    tier = 3
     room_service = "Freshen Up......."
 
 
@@ -2563,7 +2567,7 @@ class Wallet(RegularItem):
     price = 246
     rare = True
     model = overworld_items["static_coin"]
-    tier = 1
+    tier = 5
     unique = ItemUnique.Always
     dialog_replacements = [
         (2911,
@@ -2603,7 +2607,7 @@ class RockCandy(RegularItem):
     consumable = True
     price = 400
     rare = True
-    tier = 4
+    tier = 1
     room_service = "Rock Candy......"
 
 
@@ -2660,7 +2664,7 @@ class SheepAttack(Item):
     reuseable = True
     price = 150
     rare = True
-    tier = 2
+    tier = 3
     unique = ItemUnique.Always
     model = overworld_items["egg"]
     max_allowed = 0
@@ -2682,7 +2686,7 @@ class CarboCookie(RegularItem):
     unique = ItemUnique.Always
     model = overworld_items["cookie"]
     max_allowed = 0
-    tier = 1
+    price = 0
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2693,7 +2697,7 @@ class CarboCookie(RegularItem):
     ]
     def __init__(self, world):
         super().__init__(world)
-        if not (world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks)):
+        if not (world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive)):
             self.price = 2
 
 
@@ -2702,9 +2706,9 @@ class ShinyStone(RegularItem):
     order = 148
     item_type = 3
     rare = True
-    tier = 2
     unique = ItemUnique.Always
     max_allowed = 0
+    price = 0
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2715,7 +2719,7 @@ class ShinyStone(RegularItem):
     ]
     def __init__(self, world):
         super().__init__(world)
-        if not (world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks)):
+        if not (world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive)):
             self.price = 4
 
 
@@ -2780,7 +2784,6 @@ class LambsLure(RegularItem):
     reuseable = True
     price = 40
     rare = True
-    tier = 2
     unique = ItemUnique.Always
     max_allowed = 0
     model = overworld_items["egg"]
@@ -2804,7 +2807,7 @@ class FrightBomb(RegularItem):
     consumable = True
     status_immunities = [3]
     price = 100
-    tier = 2
+    tier = 3
     room_service = "Fright Bomb......"
 
 
@@ -2815,7 +2818,6 @@ class MysteryEgg(RegularItem):
     reuseable = True
     price = 200
     rare = True
-    tier = 1
     unique = ItemUnique.Always
     max_allowed = 0
     model = overworld_items["egg"]
@@ -2856,7 +2858,7 @@ class LuckyJewel(RegularItem):
     rare = True
     vanilla_shop = True
     unique = ItemUnique.Always
-    tier = 1
+    tier = 5
     dialog_replacements = [
         (2911,
          ''' Item #1: An “Lucky Jewel”!\n It’s sure to bring you plenty of\n good luck.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -2932,7 +2934,7 @@ class Crystalline(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    tier = 3
+    tier = 2
     room_service = "Crystalline......."
     model = overworld_items["yellow_d_drink"]
 
@@ -2948,7 +2950,7 @@ class PowerBlast(RegularItem):
     frog_coin_item = True
     rare = True
     vanilla_shop = True
-    tier = 3
+    tier = 2
     room_service = "Power Blast......"
     model = overworld_items["green_p_drink"]
 
@@ -2961,7 +2963,7 @@ class WiltShroom(RegularItem):
     price = 8
     rare = True
     basic = True
-    tier = 1
+    tier = 5
     model = overworld_items["junk"]
     room_service = "Wilt Shroom......"
 
@@ -2974,7 +2976,7 @@ class RottenMush(RegularItem):
     price = 4
     rare = True
     basic = True
-    tier = 1
+    tier = 5
     model = overworld_items["junk"]
     room_service = "Rotten Mush....."
 
@@ -2987,7 +2989,7 @@ class MoldyMush(RegularItem):
     price = 2
     rare = True
     basic = True
-    tier = 1
+    tier = 5
     model = overworld_items["junk"]
     room_service = "Moldy Mush......."
 
@@ -3104,11 +3106,11 @@ class Fireworks(RegularItem):
     description = ' A gorgeous\x01 firework'
     item_type = 3
     unique = ItemUnique.Always
-    tier = 2
     chest_event = 3099
     npc_event = 184
     overworld_event = 3112
     overworld_midas_event = 3398
+    price = 0
     model = overworld_items["star"]
     dialog_replacements = [
         (2911,
@@ -3120,7 +3122,7 @@ class Fireworks(RegularItem):
     ]
     def __init__(self, world):
         super().__init__(world)
-        if not (world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks)):
+        if not (world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive)):
             self.price = 500
 
 
@@ -3158,7 +3160,7 @@ class Mushroom2(RegularItem):
     price = 4
     basic = True
     vanilla_shop = True
-    tier = 1
+    tier = 5
     include_stats_in_patch = True
     model = overworld_items["mushroom_item"]
     room_service = "Mushroom........"
@@ -3170,9 +3172,9 @@ class StarEgg(RegularItem):
     order = 33
     item_type = 3
     reuseable = True
-    price = 300
+    price = 700
     rare = True
-    tier = 4
+    tier = 1
     unique = ItemUnique.Always
     model = overworld_items["egg"]
     dialog_replacements = [
@@ -3204,6 +3206,7 @@ class ProgressiveCard(MiscReward):
     npc_event = 3097
     overworld_event = 3110
     overworld_midas_event = 3396
+    item_type = 3
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Musical Card”!\n It's sure to bring you an air of\n prestige.[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3225,6 +3228,7 @@ class ProgressiveEgg(MiscReward):
     npc_event = 3098
     overworld_event = 3111
     overworld_midas_event = 3397
+    item_type = 3
     dialog_replacements = [
         (2911,
          ''' Item #1: “Shepherd's Bait”!\n You'll be the envy of sheep tamers\n everywhere![await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3244,6 +3248,8 @@ class ProgressiveFireworks(MiscReward):
     npc_event = 185
     overworld_event = 3113
     overworld_midas_event = 3399
+    item_type = 3
+    rare = True
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3267,6 +3273,7 @@ class PandoriteFight(MimicFight):
     unique = ItemUnique.Always
     tier = 1
     chest_event = 3124
+    item_type = 3
 
 
 class HidonFight(MimicFight):
@@ -3275,6 +3282,7 @@ class HidonFight(MimicFight):
     unique = ItemUnique.Always
     tier = 1
     chest_event = 3126
+    item_type = 3
 
 
 class BoxBoyFight(MimicFight):
@@ -3283,6 +3291,7 @@ class BoxBoyFight(MimicFight):
     unique = ItemUnique.Always
     tier = 1
     chest_event = 2493
+    item_type = 3
 
 
 # *** Coins
@@ -3295,6 +3304,7 @@ class Coins(MiscReward):
     chest_event = 3074
     quick_chest_event = 3080
     npc_event = 159
+    item_type = 3
 
     # coins and multi frog coins need 6 different events
     # because they run on per-chest counters (0x70DA-0x70DD and 0x70F8-0x70F9)
@@ -3362,6 +3372,8 @@ class Beetlemania(MiscReward):
     npc_event = 161
     overworld_event = 3109
     overworld_midas_event = 3395
+    price = 500
+    item_type = 3
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Handheld Game”!\n Sounds pretty fun, doesn't it?[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3380,6 +3392,7 @@ class SlotMachineChest(MiscReward):
     tier = 2
     unique = ItemUnique.BalancedOnly
     max_allowed = 3
+    item_type = 3
 
 
 class InfiniteCoins(MiscReward):
@@ -3390,6 +3403,7 @@ class InfiniteCoins(MiscReward):
     tier = 2
     chest_70A7_lower = 0
     chest_70A7_upper = 15
+    item_type = 3
 
 
 class StarPiece(MiscReward):
@@ -3405,6 +3419,7 @@ class StarPiece(MiscReward):
     overworld_event = 166
     overworld_midas_event = 2821
     model = overworld_items["star_piece"]
+    item_type = 3
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Shooting Star”!\n It's sure to make all your wishes\n come true.[await]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3441,6 +3456,7 @@ class Nothing(MiscReward):
     model = overworld_items["nothing"]
     overworld_midas_event = 256
     overworld_event = 256
+    item_type = 3
 
 class Flower(MiscReward):
     index = 198
@@ -3451,6 +3467,7 @@ class Flower(MiscReward):
     chest_event = 3072
     overworld_event = 1801
     overworld_midas_event = 2817
+    item_type = 3
 
 
 class RecoveryMushroom(MiscReward):
@@ -3462,6 +3479,7 @@ class RecoveryMushroom(MiscReward):
     npc_event = 397
     overworld_event = 2822
     model = overworld_items["mushroom"]
+    item_type = 3
 
 
 class FrogCoin(MiscReward):
@@ -3474,6 +3492,7 @@ class FrogCoin(MiscReward):
     npc_event = 157
     overworld_event = 3238
     overworld_midas_event = 2816
+    item_type = 3
 
 
 class MultiFrogCoin(MiscReward):
@@ -3486,6 +3505,7 @@ class MultiFrogCoin(MiscReward):
     model = overworld_items["frog_coin"]
     npc_event = 158
     chest_70A7_upper = 0
+    item_type = 3
 
     def get_chest_event(self, parent):
         if parent == 246:
@@ -3520,6 +3540,7 @@ class YouMissed(MiscReward):
     index = 210
     tier = 1
     chest_event = 3081
+    item_type = 3
 
 
 # *** Invincibility stars
@@ -3529,6 +3550,7 @@ class InvincibilityStar(MiscReward):
     tier = 0
     chest_70A7_upper = 1
     chest_event = 3072
+    item_type = 3
     pass
 
 
@@ -3586,10 +3608,11 @@ class RecruitedCharacter(Item):
     container_script = None
     model = 0
     sprites = {}
+    item_type = 3
 
 class MarioRecruit(RecruitedCharacter):
     index = 220
-    description = PlayableCharacters.Mario
+    description = PlayableCharacters.mario
     starter_script = 187
     container_script = 193
     model = 0
@@ -3614,7 +3637,7 @@ class MarioRecruit(RecruitedCharacter):
 
 class ToadstoolRecruit(RecruitedCharacter):
     index = 221
-    description = PlayableCharacters.Toadstool
+    description = PlayableCharacters.toadstool
     starter_script = 191
     container_script = 197
     model = 1
@@ -3639,7 +3662,7 @@ class ToadstoolRecruit(RecruitedCharacter):
 
 class MallowRecruit(RecruitedCharacter):
     index = 222
-    description = PlayableCharacters.Mallow
+    description = PlayableCharacters.mallow
     starter_script = 188
     container_script = 194
     model = 3
@@ -3664,7 +3687,7 @@ class MallowRecruit(RecruitedCharacter):
 
 class GenoRecruit(RecruitedCharacter):
     index = 223
-    description = PlayableCharacters.Geno
+    description = PlayableCharacters.geno
     starter_script = 189
     container_script = 195
     model = 4
@@ -3690,7 +3713,7 @@ class GenoRecruit(RecruitedCharacter):
 class BowserRecruit(RecruitedCharacter):
     index = 224
     model = 2
-    description = PlayableCharacters.Bowser
+    description = PlayableCharacters.bowser
     starter_script = 190
     container_script = 196
     sprites = {
@@ -3715,6 +3738,7 @@ class BowserRecruit(RecruitedCharacter):
 class SpottedCharacter(Item):
     starter_script = None
     container_script = None
+    item_type = 3
 
 class MarioSpotted(SpottedCharacter):
     index = 225
@@ -3753,7 +3777,7 @@ def get_default_items(world):
         list[Item]: List of default item objects.
 
     """
-    return [
+    items = [
         Hammer(world),
         FroggieStick(world),
         NokNokShell(world),
@@ -3883,12 +3907,8 @@ def get_default_items(world):
         ElderKey(world),
         ShedKey(world),
         FrightBomb(world),
-        BeetleBox(world),
-        BeetleBox2(world),
         LuckyJewel(world),
-        SopranoCard(world),
-        AltoCard(world),
-        TenorCard(world),
+        ProgressiveCard(world),
         Crystalline(world),
         PowerBlast(world),
         WiltShroom(world),
@@ -3903,4 +3923,14 @@ def get_default_items(world):
         BrightCard(world),
         Mushroom2(world),
         StarEgg(world),
+        ProgressiveEgg(world),
     ]
+
+    if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1) or world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
+        items.append(ProgressiveFireworks(world))
+    else:
+        items.append(Fireworks(world))
+        items.append(ShinyStone(world))
+        items.append(CarboCookie(world))
+
+    return items

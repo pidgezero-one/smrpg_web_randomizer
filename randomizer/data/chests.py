@@ -29,7 +29,7 @@ class Chest(locations.ItemLocation):
     def item_allowed(self, item):
         # If scaling boss stats, it would defeat the purpose of the setting if a mimic chest with Box Boy's stats could appear in the earlygame.
         # Place some restrictions on where the mimics can appear.
-        if self.world.flags.is_flag_value(flags.MimicsAnywhere, True) and self.world.flags.is_flag_value(flags.BossShuffleScaleStats, True):
+        if self.world.settings.is_flag_value(flags.MimicsAnywhere, True) and self.world.settings.is_flag_value(flags.BossShuffleScaleStats, True):
             if isclass_or_instance(item, items.PandoriteFight) and self.area in [locations.Area.MushroomWay, locations.Area.MushroomKingdom]:
                 return False
             elif isclass_or_instance(item, items.HidonFight) and self.area in [locations.Area.MushroomWay, locations.Area.MushroomKingdom, locations.Area.BanditsWay, locations.Area.KeroSewers, locations.Area.RoseWay, locations.Area.RoseTown, locations.Area.ForestMaze, locations.Area.Moleville, locations.Area.MolevilleMines, locations.Area.PipeVault, locations.Area.YosterIsle]:
@@ -70,7 +70,7 @@ class TreasureSellerReward(NPCReward):
 
     def item_allowed(self, item):
         # update this when shuffle modes integrated
-        return super().item_allowed(item) and (item.unique == ItemUnique.Always or item.unique == ItemUnique.BalancedOnly)
+        return super().item_allowed(item) and not (isclass_or_instance(item, items.MultiFrogCoin)) and not (isclass_or_instance(item, items.FrogCoin)) and not (isclass_or_instance(item, items.Coins)) and (item.unique == ItemUnique.Always or item.unique == ItemUnique.BalancedOnly)
 
     def can_access(self, inventory):
         return inventory.has_item(items.BambinoBomb)
@@ -82,7 +82,7 @@ class FrogCoinShopItem(NPCReward):
 
     def item_allowed(self, item):
         # update this when shuffle modes integrated
-        return super().item_allowed(item) and not item.is_key and (item.is_equipment or item.unique == ItemUnique.Always or item.unique == ItemUnique.BalancedOnly)
+        return super().item_allowed(item) and not (item.price == 0) and not (isclass_or_instance(item, items.MultiFrogCoin)) and not (isclass_or_instance(item, items.Beetlemania)) and not (isclass_or_instance(item, items.FrogCoin)) and not (isclass_or_instance(item, items.Coins)) and not item.is_key and (item.is_equipment or item.unique == ItemUnique.Always or item.unique == ItemUnique.BalancedOnly)
 
 
 # ******* Overworld item classes
@@ -123,6 +123,7 @@ class BossStarPiece(locations.ItemLocation):
     coinsanity = False
     dialogs_to_replace = []
     item = None
+    star_location = True
 
     def item_allowed(self, item):
         # Can only be Star Piece, or empty
@@ -131,13 +132,13 @@ class BossStarPiece(locations.ItemLocation):
 
 # ******* "3 Musty Fears Flags Anywhere"
 
-class InvisibleFlagLocation(locations.ItemLocation):
+class InvisibleFlagLocation(NPCReward):
     item = None
     coords = (0, 0, 0)
     shift = (0, 0)
     clue = ""
     key = True
-    access = 4
+    access = 2
 
 # ******* Character recruitment classes
 
@@ -149,6 +150,7 @@ class CharacterRecruit(locations.ItemLocation):
     dialogs_to_replace = []
     item = None
     npcs = []
+    is_character_recruit = True
 
     def item_allowed(self, item):
         # Can only be character
@@ -226,7 +228,7 @@ class MariosPadBed(NPCReward):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -393,7 +395,7 @@ class InvasionVault1(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.AlwaysOpen) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.FinishMushroomWay):
+        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.open) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mushroomway):
             self.access = 1
 
     def can_access(self, inventory):
@@ -412,7 +414,7 @@ class InvasionVault2(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.AlwaysOpen) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.FinishMushroomWay):
+        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.open) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mushroomway):
             self.access = 1
 
     def can_access(self, inventory):
@@ -431,7 +433,7 @@ class InvasionVault3(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.AlwaysOpen) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.FinishMushroomWay):
+        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.open) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mushroomway):
             self.access = 1
 
     def can_access(self, inventory):
@@ -449,7 +451,7 @@ class InvasionEasternGuard(NPCReward):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.AlwaysOpen) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.FinishMushroomWay):
+        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.open) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mushroomway):
             self.access = 1
 
     def can_access(self, inventory):
@@ -500,7 +502,7 @@ class MushroomKingdomStoreExchange(NPCReward):
     access = 2
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -570,7 +572,7 @@ class InvasionGuestRoom(NPCReward):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.AlwaysOpen) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.FinishMushroomWay):
+        if world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.open) or world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mushroomway):
             self.access = 1
 
     def can_access(self, inventory):
@@ -707,7 +709,7 @@ class Croco1Reward(NPCReward):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -772,6 +774,10 @@ class PandoriteReward1(NPCReward):
     def can_access(self, inventory):
         return inventory.has_item(items.PandoriteFight)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight)
+
+
 
 class PandoriteReward2(Chest):
     description = ShuffleLocationSelector.PandoriteReward2
@@ -788,6 +794,10 @@ class PandoriteReward2(Chest):
 
     def can_access(self, inventory):
         return inventory.has_item(items.PandoriteFight)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight)
+
 
 
 class PandoriteBoss(BossStarPiece):
@@ -842,7 +852,7 @@ class KeroSewersBeforeBelomeUpper2(StarAllowedChest):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -916,7 +926,7 @@ class MelodyBay1(NPCReward):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -931,7 +941,7 @@ class MelodyBay2(NPCReward):
     access = 2
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -949,7 +959,7 @@ class MelodyBay3(NPCReward):
     access = 2
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -1087,7 +1097,7 @@ class RoseTownFlag(NPCReward):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -1156,7 +1166,7 @@ class Gaz(NPCReward):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.open):
             self.access = 1
 
     def can_access(self, inventory):
@@ -1191,7 +1201,7 @@ class RoseTownTreasureHouseMazeReward(NPCReward):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.open):
             self.access = 1
 
     def can_access(self, inventory):
@@ -1378,7 +1388,7 @@ class PipeVaultSlide1(StarAllowedChest):
     item = items.Flower
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultSlide2(StarAllowedChest):
@@ -1390,7 +1400,7 @@ class PipeVaultSlide2(StarAllowedChest):
     item = items.FrogCoin
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultSlide3(StarAllowedChest):
@@ -1402,7 +1412,7 @@ class PipeVaultSlide3(StarAllowedChest):
     item = items.FrogCoin
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultSlideCoin1(OverworldItem):
@@ -1414,7 +1424,7 @@ class PipeVaultSlideCoin1(OverworldItem):
     npc_ids = [0]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultSlideCoin2(OverworldItem):
@@ -1426,7 +1436,7 @@ class PipeVaultSlideCoin2(OverworldItem):
     npc_ids = [1]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultSlideCoin3(OverworldItem):
@@ -1438,7 +1448,7 @@ class PipeVaultSlideCoin3(OverworldItem):
     npc_ids = [2]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultSlideCoin4(OverworldItem):
@@ -1450,7 +1460,7 @@ class PipeVaultSlideCoin4(OverworldItem):
     npc_ids = [3]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultSlideCoin5(OverworldItem):
@@ -1462,7 +1472,7 @@ class PipeVaultSlideCoin5(OverworldItem):
     npc_ids = [4]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultSlideFrogCoin(OverworldItem):
@@ -1474,7 +1484,7 @@ class PipeVaultSlideFrogCoin(OverworldItem):
     npc_ids = [5]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultNippers1(StarAllowedChest):
@@ -1487,7 +1497,7 @@ class PipeVaultNippers1(StarAllowedChest):
     npc_ids = [6]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultNippers2(StarAllowedChest):
@@ -1499,7 +1509,7 @@ class PipeVaultNippers2(StarAllowedChest):
     item = items.Coins(Chest, 20)
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class GoombaThumping1(NPCReward):
@@ -1510,7 +1520,7 @@ class GoombaThumping1(NPCReward):
     item = items.FlowerTab
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class GoombaThumping2(NPCReward):
@@ -1521,7 +1531,7 @@ class GoombaThumping2(NPCReward):
     item = items.FlowerJar
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 # *** Yo'ster Isle
@@ -1535,7 +1545,7 @@ class YosterIsleEntrance(Chest):
     event = 247
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class YosterIsleRaceReward1(NPCReward):
@@ -1546,7 +1556,7 @@ class YosterIsleRaceReward1(NPCReward):
     event = 253
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class YosterIsleRaceReward2(NPCReward):
@@ -1557,7 +1567,7 @@ class YosterIsleRaceReward2(NPCReward):
     event = 251
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class YosterIsleRaceReward3(NPCReward):
@@ -1568,7 +1578,7 @@ class YosterIsleRaceReward3(NPCReward):
     event = 250
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class YosterIsleFlag(NPCReward):
@@ -1580,12 +1590,12 @@ class YosterIsleFlag(NPCReward):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 # *** Moleville
@@ -1601,16 +1611,16 @@ class BucketGirl(NPCReward):
     access = 2
 
     def item_allowed(self, item):
-        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.Vanilla) or self.world.settings.is_flag_value(flags.BucketWarp, True):
+        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.vanilla) or self.world.settings.is_flag_value(flags.BucketWarp, True):
             return False
         return super().item_allowed(item)
 
     def can_access(self, inventory):
         # always have a frog coin if inaccessible
         fireworks_access = False
-        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
+        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1):
             fireworks_access = inventory.has_item(items.ProgressiveFireworks)
-        elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
+        elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
             fireworks_access = inventory.has_item_count(
                 items.ProgressiveFireworks, 3)
         return fireworks_access and inventory.has_item(items.BambinoBomb) and self.world.settings.is_flag_value(flags.BucketWarp, False)
@@ -1639,7 +1649,7 @@ class TreasureSeller2(TreasureSellerReward):
     access = 2
 
     def can_access(self, inventory):
-        return inventory.has_item(items.BambinoBomb) and locations.can_access_yaridovich(self, inventory)
+        return inventory.has_item(items.BambinoBomb) and locations.can_access_yaridovich(self.world, inventory)
 
 
 class TreasureSeller3(TreasureSellerReward):
@@ -1652,11 +1662,12 @@ class TreasureSeller3(TreasureSellerReward):
     access = 2
 
     def can_access(self, inventory):
-        return inventory.has_item(items.BambinoBomb) and locations.can_access_volcano(self, inventory)
+        return inventory.has_item(items.BambinoBomb) and locations.can_access_volcano(self.world, inventory)
 
 
 class FireworksShop(NPCReward):
     # Fireworks shuffle/progressive ONLY
+    description = ShuffleLocationSelector.FireworksShop
     area = locations.Area.Moleville
     rooms = [339]
     event = 253
@@ -1665,13 +1676,13 @@ class FireworksShop(NPCReward):
 
     def __init__(self, world):
         super().__init__(world)
-        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
-            self.key = True
-        elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
+        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
+            self.item = items.ProgressiveFireworks
+        elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1):
             self.key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False) and (self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks) or self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks)):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False) and (self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1) or self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive)):
             return super().item_allowed(item) and item.is_key
         else:
             return super().item_allowed(item)
@@ -1683,7 +1694,7 @@ class FireworksShop(NPCReward):
 # *** Moleville Mines
 
 class MolevilleMinesStarChest(StarAllowedChest):
-    description = ShuffleLocationSelector.FireworksShop
+    description = ShuffleLocationSelector.MolevilleMinesStarChest
     area = locations.Area.MolevilleMines
     rooms = [285]
     npc_ids = [0]
@@ -1809,7 +1820,7 @@ class Croco2Item(NPCReward):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -1870,11 +1881,11 @@ class BoosterPassSecret1(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterPassSecret2(StarAllowedChest):
@@ -1888,11 +1899,11 @@ class BoosterPassSecret2(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterPassSecret3(StarAllowedChest):
@@ -1906,11 +1917,11 @@ class BoosterPassSecret3(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 # *** Booster Tower
@@ -1924,7 +1935,7 @@ class BoosterTowerSpookum(StarAllowedChest):
     event = 247
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerThwomp(StarAllowedChest):
@@ -1936,7 +1947,7 @@ class BoosterTowerThwomp(StarAllowedChest):
     event = 247
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerKnifeGuy(NPCReward):
@@ -1953,12 +1964,12 @@ class BoosterTowerKnifeGuy(NPCReward):
             self.key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False) and self.world.settings.is_flag_value(flags.CasinoWarp, True):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False) and self.world.settings.is_flag_value(flags.CasinoWarp, True):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerRoomKey(OverworldItem):
@@ -1972,12 +1983,12 @@ class BoosterTowerRoomKey(OverworldItem):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerFrogCoin1(OverworldItem):
@@ -1989,7 +2000,7 @@ class BoosterTowerFrogCoin1(OverworldItem):
     npc_ids = [0]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerFrogCoin2(OverworldItem):
@@ -2001,7 +2012,7 @@ class BoosterTowerFrogCoin2(OverworldItem):
     npc_ids = [1]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerFrogCoin3(OverworldItem):
@@ -2013,7 +2024,7 @@ class BoosterTowerFrogCoin3(OverworldItem):
     npc_ids = [2]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerFrogCoin4(OverworldItem):
@@ -2025,7 +2036,7 @@ class BoosterTowerFrogCoin4(OverworldItem):
     npc_ids = [3]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCoin1(OverworldItem):
@@ -2037,7 +2048,7 @@ class BoosterTowerCoin1(OverworldItem):
     npc_ids = [7]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCoin2(OverworldItem):
@@ -2049,7 +2060,7 @@ class BoosterTowerCoin2(OverworldItem):
     npc_ids = [8]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCoin3(OverworldItem):
@@ -2061,7 +2072,7 @@ class BoosterTowerCoin3(OverworldItem):
     npc_ids = [9]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCoin4(OverworldItem):
@@ -2073,7 +2084,7 @@ class BoosterTowerCoin4(OverworldItem):
     npc_ids = [10]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCoin5(OverworldItem):
@@ -2085,7 +2096,7 @@ class BoosterTowerCoin5(OverworldItem):
     npc_ids = [11]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCoin6(OverworldItem):
@@ -2097,7 +2108,7 @@ class BoosterTowerCoin6(OverworldItem):
     npc_ids = [12]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCoin7(OverworldItem):
@@ -2109,7 +2120,7 @@ class BoosterTowerCoin7(OverworldItem):
     npc_ids = [13]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCoin8(OverworldItem):
@@ -2121,7 +2132,7 @@ class BoosterTowerCoin8(OverworldItem):
     npc_ids = [14]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCoin9(OverworldItem):
@@ -2133,7 +2144,7 @@ class BoosterTowerCoin9(OverworldItem):
     npc_ids = [15]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerMasher(OverworldItem):
@@ -2145,7 +2156,10 @@ class BoosterTowerMasher(OverworldItem):
     npc_ids = [3]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight)
 
 
 class BoosterTowerParachute(StarAllowedChest):
@@ -2157,7 +2171,7 @@ class BoosterTowerParachute(StarAllowedChest):
     event = 247
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerParachuteCrevice(NPCReward):
@@ -2169,7 +2183,7 @@ class BoosterTowerParachuteCrevice(NPCReward):
     event = 253
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerZoomShoes(StarAllowedChest):
@@ -2183,7 +2197,7 @@ class BoosterTowerZoomShoes(StarAllowedChest):
     special_equip = True
 
     def can_access(self, inventory):
-        return inventory.has_item(items.RoomKey) and locations.can_access_tower(self, inventory)
+        return inventory.has_item(items.RoomKey) and locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerTop1(StarAllowedChest):
@@ -2195,7 +2209,7 @@ class BoosterTowerTop1(StarAllowedChest):
     item = items.FrogCoin
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerTop2(StarAllowedChest):
@@ -2207,7 +2221,7 @@ class BoosterTowerTop2(StarAllowedChest):
     item = items.GoodieBag
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerTop3(StarAllowedChest):
@@ -2219,7 +2233,7 @@ class BoosterTowerTop3(StarAllowedChest):
     item = items.RecoveryMushroom
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerRailway(NPCReward):
@@ -2230,7 +2244,7 @@ class BoosterTowerRailway(NPCReward):
     item = items.FlowerTab
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerPortraits(OverworldItem):
@@ -2244,12 +2258,12 @@ class BoosterTowerPortraits(OverworldItem):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerChomp(OverworldItem):
@@ -2264,7 +2278,7 @@ class BoosterTowerChomp(OverworldItem):
     special_equip = True
 
     def can_access(self, inventory):
-        return inventory.has_item(items.ElderKey) and locations.can_access_tower(self, inventory)
+        return inventory.has_item(items.ElderKey) and locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCurtainGame(NPCReward):
@@ -2277,7 +2291,7 @@ class BoosterTowerCurtainGame(NPCReward):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerStarPiece1(BossStarPiece):
@@ -2287,7 +2301,7 @@ class BoosterTowerStarPiece1(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerStarPiece2(BossStarPiece):
@@ -2297,7 +2311,7 @@ class BoosterTowerStarPiece2(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 # *** Marrymore
@@ -2368,11 +2382,11 @@ class MarrymoreStarPiece(BossStarPiece):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.FinishBoosterTower):
+        if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
             self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self, inventory)
+        return locations.can_access_marrymore(self.world, inventory)
 
 
 class MarrymoreCharacter(CharacterRecruit):
@@ -2387,7 +2401,7 @@ class MarrymoreCharacter(CharacterRecruit):
     ]
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self, inventory)
+        return locations.can_access_marrymore(self.world, inventory)
 
 # populate this with the corresponding character in MarrymoreCharacter
 
@@ -2450,7 +2464,7 @@ class SeasideTownBoss(BossStarPiece):
     item = items.StarPiece
 
     def can_access(self, inventory):
-        return locations.can_access_yaridovich(self, inventory)
+        return locations.can_access_yaridovich(self.world, inventory)
 
 
 class SeasideTownBossPrize(OverworldItem):
@@ -2466,16 +2480,16 @@ class SeasideTownBossPrize(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.open):
             self.access = 1
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
     def can_access(self, inventory):
-        return locations.can_access_yaridovich(self, inventory)
+        return locations.can_access_yaridovich(self.world, inventory)
 
 
 class SeasideTownRescue(NPCReward):
@@ -2488,11 +2502,11 @@ class SeasideTownRescue(NPCReward):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return inventory.has_item(items.ShedKey) and locations.can_access_yaridovich(self, inventory)
+        return inventory.has_item(items.ShedKey) and locations.can_access_yaridovich(self.world, inventory)
 
 
 # *** Sea
@@ -2508,12 +2522,12 @@ class SeaStarChest(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        for option in [SeaGating.Find1Star, SeaGating.Find2Star, SeaGating.Find3Star, SeaGating.Find4Star, SeaGating.Find5Star, SeaGating.Find6Star]:
+        for option in [SeaGating.star1, SeaGating.star2, SeaGating.star3, SeaGating.star4, SeaGating.star5, SeaGating.star6]:
             if world.settings.is_flag_value(flags.SeaGate, option):
                 self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SeaSaveRoom1(StarAllowedChest):
@@ -2527,12 +2541,12 @@ class SeaSaveRoom1(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        for option in [SeaGating.Find1Star, SeaGating.Find2Star, SeaGating.Find3Star, SeaGating.Find4Star, SeaGating.Find5Star, SeaGating.Find6Star]:
+        for option in [SeaGating.star1, SeaGating.star2, SeaGating.star3, SeaGating.star4, SeaGating.star5, SeaGating.star6]:
             if world.settings.is_flag_value(flags.SeaGate, option):
                 self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SeaSaveRoom2(StarAllowedChest):
@@ -2546,12 +2560,12 @@ class SeaSaveRoom2(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        for option in [SeaGating.Find1Star, SeaGating.Find2Star, SeaGating.Find3Star, SeaGating.Find4Star, SeaGating.Find5Star, SeaGating.Find6Star]:
+        for option in [SeaGating.star1, SeaGating.star2, SeaGating.star3, SeaGating.star4, SeaGating.star5, SeaGating.star6]:
             if world.settings.is_flag_value(flags.SeaGate, option):
                 self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SeaSaveRoom3(StarAllowedChest):
@@ -2565,12 +2579,12 @@ class SeaSaveRoom3(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        for option in [SeaGating.Find1Star, SeaGating.Find2Star, SeaGating.Find3Star, SeaGating.Find4Star, SeaGating.Find5Star, SeaGating.Find6Star]:
+        for option in [SeaGating.star1, SeaGating.star2, SeaGating.star3, SeaGating.star4, SeaGating.star5, SeaGating.star6]:
             if world.settings.is_flag_value(flags.SeaGate, option):
                 self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SeaWhirlpoolChest(StarAllowedChest):
@@ -2584,12 +2598,12 @@ class SeaWhirlpoolChest(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        for option in [SeaGating.Find1Star, SeaGating.Find2Star, SeaGating.Find3Star, SeaGating.Find4Star, SeaGating.Find5Star, SeaGating.Find6Star]:
+        for option in [SeaGating.star1, SeaGating.star2, SeaGating.star3, SeaGating.star4, SeaGating.star5, SeaGating.star6]:
             if world.settings.is_flag_value(flags.SeaGate, option):
                 self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 # *** Sunken Ship
@@ -2605,12 +2619,12 @@ class SunkenShipRatStairs(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        for option in [SeaGating.Find1Star, SeaGating.Find2Star, SeaGating.Find3Star, SeaGating.Find4Star, SeaGating.Find5Star, SeaGating.Find6Star]:
+        for option in [SeaGating.star1, SeaGating.star2, SeaGating.star3, SeaGating.star4, SeaGating.star5, SeaGating.star6]:
             if world.settings.is_flag_value(flags.SeaGate, option):
                 self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipRatStairsFlower(PacketItem):
@@ -2624,12 +2638,12 @@ class SunkenShipRatStairsFlower(PacketItem):
 
     def __init__(self, world):
         super().__init__(world)
-        for option in [SeaGating.Find1Star, SeaGating.Find2Star, SeaGating.Find3Star, SeaGating.Find4Star, SeaGating.Find5Star, SeaGating.Find6Star]:
+        for option in [SeaGating.star1, SeaGating.star2, SeaGating.star3, SeaGating.star4, SeaGating.star5, SeaGating.star6]:
             if world.settings.is_flag_value(flags.SeaGate, option):
                 self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipShop(StarAllowedChest):
@@ -2643,12 +2657,12 @@ class SunkenShipShop(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        for option in [SeaGating.Find1Star, SeaGating.Find2Star, SeaGating.Find3Star, SeaGating.Find4Star, SeaGating.Find5Star, SeaGating.Find6Star]:
+        for option in [SeaGating.star1, SeaGating.star2, SeaGating.star3, SeaGating.star4, SeaGating.star5, SeaGating.star6]:
             if world.settings.is_flag_value(flags.SeaGate, option):
                 self.access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipCoins1(StarAllowedChest):
@@ -2661,7 +2675,7 @@ class SunkenShipCoins1(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipCoins2(StarAllowedChest):
@@ -2674,7 +2688,7 @@ class SunkenShipCoins2(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipCloneRoom(StarAllowedChest):
@@ -2687,7 +2701,7 @@ class SunkenShipCloneRoom(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipFrogCoinRoom(StarAllowedChest):
@@ -2700,7 +2714,7 @@ class SunkenShipFrogCoinRoom(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipHidonMushroom(StarAllowedChest):
@@ -2713,7 +2727,7 @@ class SunkenShipHidonMushroom(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class HidonChest(StarAllowedChest):
@@ -2726,7 +2740,7 @@ class HidonChest(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class HidonReward1(NPCReward):
@@ -2744,6 +2758,9 @@ class HidonReward1(NPCReward):
     def can_access(self, inventory):
         return inventory.has_item(items.HidonFight)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight)
+
 
 class HidonReward2(Chest):
     description = ShuffleLocationSelector.HidonReward2
@@ -2760,6 +2777,10 @@ class HidonReward2(Chest):
 
     def can_access(self, inventory):
         return inventory.has_item(items.HidonFight)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight)
+
 
 
 class HidonBoss(BossStarPiece):
@@ -2786,7 +2807,7 @@ class SunkenShipUnderwaterFrogCoin1(OverworldItem):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipUnderwaterFrogCoin2(OverworldItem):
@@ -2799,7 +2820,7 @@ class SunkenShipUnderwaterFrogCoin2(OverworldItem):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipUnderwaterFrogCoin3(OverworldItem):
@@ -2812,7 +2833,7 @@ class SunkenShipUnderwaterFrogCoin3(OverworldItem):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipUnderwaterFrogCoin4(OverworldItem):
@@ -2825,7 +2846,7 @@ class SunkenShipUnderwaterFrogCoin4(OverworldItem):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipSafetyRing(StarAllowedChest):
@@ -2838,7 +2859,7 @@ class SunkenShipSafetyRing(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipBandanaReds(StarAllowedChest):
@@ -2851,7 +2872,7 @@ class SunkenShipBandanaReds(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipBlooberRoom(OverworldItem):
@@ -2864,7 +2885,7 @@ class SunkenShipBlooberRoom(OverworldItem):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipTrampolinePuzzle(PacketItem):
@@ -2876,7 +2897,7 @@ class SunkenShipTrampolinePuzzle(PacketItem):
     item = items.Flower
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipTroopaPuzzle(PacketItem):
@@ -2888,7 +2909,7 @@ class SunkenShipTroopaPuzzle(PacketItem):
     item = items.RecoveryMushroom
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShip3DMaze(PacketItem):
@@ -2902,7 +2923,7 @@ class SunkenShip3DMaze(PacketItem):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipCoinSnake(NPCReward):
@@ -2918,7 +2939,7 @@ class SunkenShipCoinSnake(NPCReward):
     # ship access
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipCannonballPuzzle(PacketItem):
@@ -2931,7 +2952,7 @@ class SunkenShipCannonballPuzzle(PacketItem):
     coinsanity = False
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipBarrelPuzzle(PacketItem):
@@ -2943,7 +2964,7 @@ class SunkenShipBarrelPuzzle(PacketItem):
     item = items.RecoveryMushroom
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipMidboss(BossStarPiece):
@@ -2953,7 +2974,7 @@ class SunkenShipMidboss(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SunkenShipBoss(BossStarPiece):
@@ -2963,7 +2984,7 @@ class SunkenShipBoss(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 # *** Land's End
@@ -3334,7 +3355,7 @@ class MonstroTownEntrance(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.open):
             self.access = 1
 
 
@@ -3350,11 +3371,11 @@ class MonstroTownThwomp(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.open):
             self.access = 1
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -3403,6 +3424,18 @@ class CulexBoss(BossStarPiece):
     rooms = [351]
     event = 167
 
+    def can_access(self, inventory):
+        if inventory.has_item(items.BambinoBomb):
+            if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1):
+                return inventory.has_item(items.Fireworks)
+            elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
+                return inventory.has_item_count(items.ProgressiveFireworks, 2)
+            else:
+                return True
+        else:
+            return False
+
+
 
 class CulexReward(NPCReward):
     area = locations.Area.MonstroTown
@@ -3414,12 +3447,15 @@ class CulexReward(NPCReward):
     special_equip = True
 
     def can_access(self, inventory):
-        if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
-            return inventory.has_item(items.ProgressiveFireworks) and inventory.has_item(items.BambinoBomb)
-        elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
-            return inventory.has_item_count(items.ProgressiveFireworks, 2)
+        if inventory.has_item(items.BambinoBomb):
+            if self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1):
+                return inventory.has_item(items.Fireworks)
+            elif self.world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
+                return inventory.has_item_count(items.ProgressiveFireworks, 2)
+            else:
+                return True
         else:
-            return inventory.has_item(items.Fireworks) and inventory.has_item(items.BambinoBomb)
+            return False
 
 
 class SuperJumps30(NPCReward):
@@ -3437,7 +3473,7 @@ class SuperJumps30(NPCReward):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_super_jump(self, inventory)
+        return locations.can_super_jump(self.world, inventory)
 
 
 class SuperJumps100(NPCReward):
@@ -3456,7 +3492,7 @@ class SuperJumps100(NPCReward):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_super_jump(self, inventory)
+        return locations.can_super_jump(self.world, inventory)
 
 
 class ThreeMustyFears(NPCReward):
@@ -3589,7 +3625,7 @@ class BeanValleyMegasmilaxRoom(NPCReward):
     access = 2
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -3873,7 +3909,7 @@ class NimbusCastleBirdetta(NPCReward):
     access = 2
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -4005,7 +4041,7 @@ class NimbusLandRightSide(NPCReward):
     access = 2
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -4047,7 +4083,7 @@ class NimbusLandPrisoners2(NPCReward):
     key = True
 
     def item_allowed(self, item):
-        if self.world.flags.is_flag_value(flags.KeyItemsAnywhere, False):
+        if self.world.settings.is_flag_value(flags.KeyItemsAnywhere, False):
             return super().item_allowed(item) and item.is_key
         return super().item_allowed(item)
 
@@ -4091,11 +4127,11 @@ class BarrelVolcanoSecret1(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoSecret2(StarAllowedChest):
@@ -4109,11 +4145,11 @@ class BarrelVolcanoSecret2(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoReverse(OverworldItem):
@@ -4127,11 +4163,11 @@ class BarrelVolcanoReverse(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoDonut1(OverworldItem):
@@ -4144,11 +4180,11 @@ class BarrelVolcanoDonut1(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoDonut2(OverworldItem):
@@ -4161,11 +4197,11 @@ class BarrelVolcanoDonut2(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoLavaPool(OverworldItem):
@@ -4178,11 +4214,11 @@ class BarrelVolcanoLavaPool(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoBeforeStar1(StarAllowedChest):
@@ -4196,11 +4232,11 @@ class BarrelVolcanoBeforeStar1(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoBeforeStar2(StarAllowedChest):
@@ -4214,11 +4250,11 @@ class BarrelVolcanoBeforeStar2(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoStarRoom(StarAllowedChest):
@@ -4232,11 +4268,11 @@ class BarrelVolcanoStarRoom(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoSaveRoom1(StarAllowedChest):
@@ -4250,11 +4286,11 @@ class BarrelVolcanoSaveRoom1(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoSaveRoom2(StarAllowedChest):
@@ -4268,11 +4304,11 @@ class BarrelVolcanoSaveRoom2(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoHinopio(StarAllowedChest):
@@ -4286,11 +4322,11 @@ class BarrelVolcanoHinopio(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoBoss1(BossStarPiece):
@@ -4300,7 +4336,7 @@ class BarrelVolcanoBoss1(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class BarrelVolcanoBoss2(BossStarPiece):
@@ -4311,7 +4347,7 @@ class BarrelVolcanoBoss2(BossStarPiece):
     item = items.StarPiece
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 # *** Bowser's Keep
@@ -4327,11 +4363,11 @@ class BowsersKeepDarkRoom(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCrocoShop1(StarAllowedChest):
@@ -4345,11 +4381,11 @@ class BowsersKeepCrocoShop1(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCrocoShop2(StarAllowedChest):
@@ -4363,11 +4399,11 @@ class BowsersKeepCrocoShop2(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepMagikoopa(Chest):
@@ -4380,7 +4416,7 @@ class BowsersKeepMagikoopa(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepBossChester(BossStarPiece):
@@ -4390,7 +4426,7 @@ class BowsersKeepBossChester(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepBoss1(BossStarPiece):
@@ -4400,7 +4436,7 @@ class BowsersKeepBoss1(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepInvisibleBridge1(Chest):
@@ -4414,11 +4450,11 @@ class BowsersKeepInvisibleBridge1(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepInvisibleBridge2(Chest):
@@ -4432,11 +4468,11 @@ class BowsersKeepInvisibleBridge2(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepInvisibleBridge3(Chest):
@@ -4450,11 +4486,11 @@ class BowsersKeepInvisibleBridge3(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepInvisibleBridge4(Chest):
@@ -4468,11 +4504,11 @@ class BowsersKeepInvisibleBridge4(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepInvisibleBridgeCoin1(OverworldItem):
@@ -4486,11 +4522,11 @@ class BowsersKeepInvisibleBridgeCoin1(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepInvisibleBridgeCoin2(OverworldItem):
@@ -4504,11 +4540,11 @@ class BowsersKeepInvisibleBridgeCoin2(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepInvisibleBridgeCoin3(OverworldItem):
@@ -4522,11 +4558,11 @@ class BowsersKeepInvisibleBridgeCoin3(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepInvisibleBridgeCoin4(OverworldItem):
@@ -4540,11 +4576,11 @@ class BowsersKeepInvisibleBridgeCoin4(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepMovingPlatforms1(Chest):
@@ -4558,11 +4594,11 @@ class BowsersKeepMovingPlatforms1(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepMovingPlatforms2(Chest):
@@ -4576,11 +4612,11 @@ class BowsersKeepMovingPlatforms2(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepMovingPlatforms3(Chest):
@@ -4594,11 +4630,11 @@ class BowsersKeepMovingPlatforms3(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepMovingPlatforms4(Chest):
@@ -4612,11 +4648,11 @@ class BowsersKeepMovingPlatforms4(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepElevatorPlatforms(Chest):
@@ -4630,11 +4666,11 @@ class BowsersKeepElevatorPlatforms(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoom1(Chest):
@@ -4648,11 +4684,11 @@ class BowsersKeepCannonballRoom1(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoom2(Chest):
@@ -4666,11 +4702,11 @@ class BowsersKeepCannonballRoom2(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoom3(Chest):
@@ -4684,11 +4720,11 @@ class BowsersKeepCannonballRoom3(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoom4(Chest):
@@ -4702,11 +4738,11 @@ class BowsersKeepCannonballRoom4(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoom5(Chest):
@@ -4720,11 +4756,11 @@ class BowsersKeepCannonballRoom5(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoomCoin1(OverworldItem):
@@ -4738,11 +4774,11 @@ class BowsersKeepCannonballRoomCoin1(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoomCoin2(OverworldItem):
@@ -4756,11 +4792,11 @@ class BowsersKeepCannonballRoomCoin2(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoomCoin3(OverworldItem):
@@ -4774,11 +4810,11 @@ class BowsersKeepCannonballRoomCoin3(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoomCoin4(OverworldItem):
@@ -4792,11 +4828,11 @@ class BowsersKeepCannonballRoomCoin4(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoomCoin5(OverworldItem):
@@ -4810,11 +4846,11 @@ class BowsersKeepCannonballRoomCoin5(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoomCoin6(OverworldItem):
@@ -4828,11 +4864,11 @@ class BowsersKeepCannonballRoomCoin6(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoomCoin7(OverworldItem):
@@ -4846,11 +4882,11 @@ class BowsersKeepCannonballRoomCoin7(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepCannonballRoomCoin8(OverworldItem):
@@ -4864,11 +4900,11 @@ class BowsersKeepCannonballRoomCoin8(OverworldItem):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepRotatingPlatforms1(Chest):
@@ -4882,11 +4918,11 @@ class BowsersKeepRotatingPlatforms1(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepRotatingPlatforms2(Chest):
@@ -4900,11 +4936,11 @@ class BowsersKeepRotatingPlatforms2(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepRotatingPlatforms3(Chest):
@@ -4918,11 +4954,11 @@ class BowsersKeepRotatingPlatforms3(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepRotatingPlatforms4(Chest):
@@ -4936,11 +4972,11 @@ class BowsersKeepRotatingPlatforms4(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepRotatingPlatforms5(Chest):
@@ -4954,11 +4990,11 @@ class BowsersKeepRotatingPlatforms5(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepRotatingPlatforms6(Chest):
@@ -4972,11 +5008,11 @@ class BowsersKeepRotatingPlatforms6(Chest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepDoorReward1(Chest):
@@ -4989,7 +5025,7 @@ class BowsersKeepDoorReward1(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepDoorReward2(Chest):
@@ -5002,7 +5038,7 @@ class BowsersKeepDoorReward2(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepDoorReward3(Chest):
@@ -5015,7 +5051,7 @@ class BowsersKeepDoorReward3(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepDoorReward4(Chest):
@@ -5028,7 +5064,7 @@ class BowsersKeepDoorReward4(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepDoorReward5(Chest):
@@ -5041,7 +5077,7 @@ class BowsersKeepDoorReward5(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepDoorReward6(Chest):
@@ -5054,7 +5090,7 @@ class BowsersKeepDoorReward6(Chest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepBoss2(BossStarPiece):
@@ -5064,7 +5100,7 @@ class BowsersKeepBoss2(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class BowsersKeepBoss3(BossStarPiece):
@@ -5074,7 +5110,7 @@ class BowsersKeepBoss3(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 # *** Factory
@@ -5090,11 +5126,11 @@ class FactorySaveRoom(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.FactoryGate, FactoryGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.FactoryGate, FactoryGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryBoltPlatforms(StarAllowedChest):
@@ -5108,11 +5144,11 @@ class FactoryBoltPlatforms(StarAllowedChest):
 
     def __init__(self, world):
         super().__init__(world)
-        if world.settings.is_flag_value(flags.FactoryGate, FactoryGating.AlwaysOpen):
+        if world.settings.is_flag_value(flags.FactoryGate, FactoryGating.open):
             self.access = 1
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryBoss1(BossStarPiece):
@@ -5122,7 +5158,7 @@ class FactoryBoss1(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryFallingAxems(StarAllowedChest):
@@ -5135,7 +5171,7 @@ class FactoryFallingAxems(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryTreasurePit1(StarAllowedChest):
@@ -5148,7 +5184,7 @@ class FactoryTreasurePit1(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryTreasurePit2(StarAllowedChest):
@@ -5161,7 +5197,7 @@ class FactoryTreasurePit2(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryConveyorPlatforms1(StarAllowedChest):
@@ -5174,7 +5210,7 @@ class FactoryConveyorPlatforms1(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryConveyorPlatforms2(StarAllowedChest):
@@ -5187,7 +5223,7 @@ class FactoryConveyorPlatforms2(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryBehindSnakes1(StarAllowedChest):
@@ -5200,7 +5236,7 @@ class FactoryBehindSnakes1(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryBehindSnakes2(StarAllowedChest):
@@ -5213,7 +5249,7 @@ class FactoryBehindSnakes2(StarAllowedChest):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryBoss2(BossStarPiece):
@@ -5224,7 +5260,7 @@ class FactoryBoss2(BossStarPiece):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class FactoryToadGift(NPCReward):
@@ -5236,7 +5272,7 @@ class FactoryToadGift(NPCReward):
     access = 2
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class InnerFactoryBoss1(BossStarPiece):
@@ -5246,7 +5282,7 @@ class InnerFactoryBoss1(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class InnerFactoryBoss2(BossStarPiece):
@@ -5256,7 +5292,7 @@ class InnerFactoryBoss2(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class InnerFactoryBoss3(BossStarPiece):
@@ -5266,7 +5302,7 @@ class InnerFactoryBoss3(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class InnerFactoryBoss4(BossStarPiece):
@@ -5276,7 +5312,7 @@ class InnerFactoryBoss4(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_factory(self, inventory)
+        return locations.can_access_factory(self.world, inventory)
 
 
 class InnerFactoryBossFinal(BossStarPiece):
@@ -5286,7 +5322,7 @@ class InnerFactoryBossFinal(BossStarPiece):
     event = 167
 
     def can_access(self, inventory):
-        return locations.can_access_final_boss(self, inventory)
+        return locations.can_access_final_boss(self.world, inventory)
 
 
 # "Musty Fears Flag Anywhere" locations
@@ -5490,7 +5526,7 @@ class PipeVaultExterior(InvisibleFlagLocation):
     rooms = [55]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class PipeVaultRedPipe(InvisibleFlagLocation):
@@ -5502,7 +5538,7 @@ class PipeVaultRedPipe(InvisibleFlagLocation):
     rooms = [129]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class YosterIsleHut(InvisibleFlagLocation):
@@ -5513,7 +5549,7 @@ class YosterIsleHut(InvisibleFlagLocation):
     rooms = [34]
 
     def can_access(self, inventory):
-        return locations.can_access_pipe_vault(self, inventory)
+        return locations.can_access_pipe_vault(self.world, inventory)
 
 
 class MolevilleHydrant(InvisibleFlagLocation):
@@ -5597,7 +5633,7 @@ class BoosterTowerDesk(InvisibleFlagLocation):
     rooms = [43]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerMasherRoom(InvisibleFlagLocation):
@@ -5609,7 +5645,7 @@ class BoosterTowerMasherRoom(InvisibleFlagLocation):
     rooms = [197]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerCurtain(InvisibleFlagLocation):
@@ -5621,7 +5657,7 @@ class BoosterTowerCurtain(InvisibleFlagLocation):
     rooms = [193]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerThwompInvisible(InvisibleFlagLocation):
@@ -5632,7 +5668,7 @@ class BoosterTowerThwompInvisible(InvisibleFlagLocation):
     rooms = [36]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerBrokenFrame(InvisibleFlagLocation):
@@ -5644,7 +5680,7 @@ class BoosterTowerBrokenFrame(InvisibleFlagLocation):
     rooms = [38]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerBeetleCage(InvisibleFlagLocation):
@@ -5655,7 +5691,7 @@ class BoosterTowerBeetleCage(InvisibleFlagLocation):
     rooms = [192]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class BoosterTowerToyBox(InvisibleFlagLocation):
@@ -5667,7 +5703,7 @@ class BoosterTowerToyBox(InvisibleFlagLocation):
     rooms = [192]
 
     def can_access(self, inventory):
-        return locations.can_access_tower(self, inventory)
+        return locations.can_access_tower(self.world, inventory)
 
 
 class MarrymoreOutsideCrate(InvisibleFlagLocation):
@@ -5697,7 +5733,7 @@ class MarrymoreKitchen(InvisibleFlagLocation):
     rooms = [155]
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self, inventory)
+        return locations.can_access_marrymore(self.world, inventory)
 
 
 class MarrymoreFireplace(InvisibleFlagLocation):
@@ -5709,7 +5745,7 @@ class MarrymoreFireplace(InvisibleFlagLocation):
     rooms = [152]
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self, inventory)
+        return locations.can_access_marrymore(self.world, inventory)
 
 
 class MarrymoreOrgan(InvisibleFlagLocation):
@@ -5721,7 +5757,7 @@ class MarrymoreOrgan(InvisibleFlagLocation):
     rooms = [65, 154]
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self, inventory)
+        return locations.can_access_marrymore(self.world, inventory)
 
 
 class MarrymoreAltar(InvisibleFlagLocation):
@@ -5732,7 +5768,7 @@ class MarrymoreAltar(InvisibleFlagLocation):
     rooms = [65, 154]
 
     def can_access(self, inventory):
-        return locations.can_access_marrymore(self, inventory)
+        return locations.can_access_marrymore(self.world, inventory)
 
 
 class StarHillNorthStar(InvisibleFlagLocation):
@@ -5788,7 +5824,7 @@ class SeasideTownShedBox(InvisibleFlagLocation):
     rooms = [314]
 
     def can_access(self, inventory):
-        return inventory.has_item(items.ShedKey) and locations.can_access_yaridovich(self, inventory)
+        return inventory.has_item(items.ShedKey) and locations.can_access_yaridovich(self.world, inventory)
 
 
 class SeaArrow(InvisibleFlagLocation):
@@ -5800,7 +5836,7 @@ class SeaArrow(InvisibleFlagLocation):
     rooms = [130]
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SeaBoxes(InvisibleFlagLocation):
@@ -5812,7 +5848,7 @@ class SeaBoxes(InvisibleFlagLocation):
     rooms = [130]
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SeaStalagnate(InvisibleFlagLocation):
@@ -5824,7 +5860,7 @@ class SeaStalagnate(InvisibleFlagLocation):
     rooms = [133]
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class SeaSail(InvisibleFlagLocation):
@@ -5835,7 +5871,7 @@ class SeaSail(InvisibleFlagLocation):
     rooms = [174]
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class ShipBarrelPile(InvisibleFlagLocation):
@@ -5846,7 +5882,7 @@ class ShipBarrelPile(InvisibleFlagLocation):
     rooms = [162]
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class ShipDoorMarker(InvisibleFlagLocation):
@@ -5858,7 +5894,7 @@ class ShipDoorMarker(InvisibleFlagLocation):
     rooms = [165]
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class ShipButton(InvisibleFlagLocation):
@@ -5869,7 +5905,7 @@ class ShipButton(InvisibleFlagLocation):
     rooms = [166]
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class ShipSwitch(InvisibleFlagLocation):
@@ -5880,7 +5916,7 @@ class ShipSwitch(InvisibleFlagLocation):
     rooms = [179]
 
     def can_access(self, inventory):
-        return locations.can_access_sea(self, inventory)
+        return locations.can_access_sea(self.world, inventory)
 
 
 class LandsEndPlatform(InvisibleFlagLocation):
@@ -6053,7 +6089,7 @@ class NimbusHotSprings(InvisibleFlagLocation):
     rooms = [447]
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class VolcanoShips(InvisibleFlagLocation):
@@ -6064,7 +6100,7 @@ class VolcanoShips(InvisibleFlagLocation):
     rooms = [353]
 
     def can_access(self, inventory):
-        return locations.can_access_volcano(self, inventory)
+        return locations.can_access_volcano(self.world, inventory)
 
 
 class KeepMagikoopaRoom(InvisibleFlagLocation):
@@ -6076,7 +6112,7 @@ class KeepMagikoopaRoom(InvisibleFlagLocation):
     rooms = [266]
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class KeepThwomp(InvisibleFlagLocation):
@@ -6087,7 +6123,7 @@ class KeepThwomp(InvisibleFlagLocation):
     rooms = [449]
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 class FactoryButton(InvisibleFlagLocation):
@@ -6098,7 +6134,7 @@ class FactoryButton(InvisibleFlagLocation):
     rooms = [406]
 
     def can_access(self, inventory):
-        return locations.can_access_keep(self, inventory)
+        return locations.can_access_keep(self.world, inventory)
 
 
 # ********************* Default objects for world
@@ -6378,6 +6414,11 @@ def get_default_chests(world):
         FactoryBehindSnakes1(world),
         FactoryBehindSnakes2(world),
         FactoryToadGift(world),
+        FrogDisciple1(world),
+        FrogDisciple2(world),
+        FrogDisciple3(world),
+        FrogDisciple4(world),
+        FrogDisciple5(world),
     ]
     if world.settings.is_flag_value(flags.GateInvisibleFlags, True):
         world.eventscript[91] = [
@@ -6473,7 +6514,7 @@ def get_default_chests(world):
                 number_of_objects = 0
                 for o in world.rooms[room]["objects"]:
                     number_of_objects += 1
-                    number_of_objects += o["clones"].length
+                    number_of_objects += len(o["clones"])
                 eventscript.append({"identifier": "EVENT_%i_remove_%i" % (es_assignment, index), "command": 'remove_from_level', "args": [0x14+number_of_objects, room]})
                 # add the npc to the rooms
                 world.rooms[room]["objects"].append({

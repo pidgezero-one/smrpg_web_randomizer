@@ -7,6 +7,7 @@ import random
 import string
 import tempfile
 import shutil
+import time
 
 from django.conf import settings
 from django.db import transaction
@@ -27,7 +28,7 @@ from .logic.patch import PatchJSONEncoder
 logger = logging.getLogger(__name__)
 
 
-def _build_flag_json_data(flag):
+def _build_flag_json_data(f, letter):
     """
 
     Args:
@@ -38,17 +39,23 @@ def _build_flag_json_data(flag):
         dict: Flag data.
 
     """
+    flag = f() # man i dont know what im doing
     modes = flag.modes.copy()
 
     d = {
-        'flag': flag.get_slug(),
+        'subcategory': letter,
+        'id': flag.id,
         'modes': modes,
-        'type': flag.type
+        'type': flag.type,
     }
     if flag.type == "categorization":
-        d['options'] = flag.options
+        d['options'] = flag.options_dict
+        d["default"] = flag.default_dict
     elif flag.type == "select_one":
-        d['choices'] = flag.choices
+        d['choices'] = flag.choices_dict
+        d["default"] = flag.default_dict
+    else:
+        d["default"] = flag.default
 
     return d
 
@@ -56,8 +63,9 @@ def _build_flag_json_data(flag):
 # Build JSON representation of flag hierarchy.
 FLAGS = []
 for category in CATEGORIES:
-    for flag in category.flags:
-        FLAGS.append(_build_flag_json_data(flag))
+    for subcategory in category.subcategories:
+        for flag in subcategory.flags:
+            FLAGS.append(_build_flag_json_data(flag, subcategory().id))
 
 
 class RandomizerView(TemplateView):
@@ -124,6 +132,7 @@ class GenerateView(FormView):
         # If seed is provided, use it.  Otherwise generate a random seed (10 digits max).
         # For non-numeric values, take the CRC32 checksum of it.
         seed = data['seed']
+
         if seed:
             if seed.isdigit():
                 seed = int(seed)
@@ -143,7 +152,7 @@ class GenerateView(FormView):
         race_mode = bool(data['race_mode'])
 
         # Build game world, randomize it, and generate the patch.
-        world = GameWorld(seed, Settings(mode, debug_mode, data['flags'] or ''))
+        world = GameWorld(seed, Settings(mode, debug_mode, data['flags'] or '', data['cosmetics'] or ''))
 
         try:
             world.randomize()

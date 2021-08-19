@@ -49,7 +49,7 @@ def randomize_password(world):
 
     # modify the letter selection and recitation to be for this word
     for index, letter in enumerate(list(password.word)):
-        letters = ship_passwords.suggest_letter_bank(password.word, index, decoy_word)
+        letters = ship_passwords.suggest_letter_bank(password.word, index, decoy_word.word)
         correct_position = letters.index(password.word[index])
         correct_positions.append(correct_position)
 
@@ -143,10 +143,13 @@ def randomize_password(world):
     ]
 
     # populate hint dialogs
-    writers = [password.submitter_hint_prefix] + \
-        random.shuffle(ship_passwords.hint_authors)
+    random.shuffle(ship_passwords.hint_authors)
+    # guarantee that the hint submitter will get their name on one of the hints
+    writers = [password.submitter_hint_prefix] + ship_passwords.hint_authors
+    number_of_writers = len([h for h in [password.troopa_hint, password.trampoline_hint, password.maze_hint, password.snake_hint, password.cannonball_hint, password.barrel_hint, password.entrance_hint, password.saveroom_hint, password.greaper_hint_2, password.greaper_hint, password.drybones_hint] if h is not None and RWRITER in h])
+    writers = writers[:number_of_writers]
+    random.shuffle(writers)
     for s in writers:
-        # randomize the order of these
         if RWRITER in password.troopa_hint:
             password.troopa_hint = password.troopa_hint.replace(RWRITER, s)
             continue
@@ -167,20 +170,20 @@ def randomize_password(world):
         if RWRITER in password.barrel_hint:
             password.barrel_hint = password.barrel_hint.replace(RWRITER, s)
             continue
-        if RWRITER in password.entrance_hint:
+        if password.entrance_hint and RWRITER in password.entrance_hint:
             password.entrance_hint = password.entrance_hint.replace(RWRITER, s)
             continue
-        if RWRITER in password.saveroom_hint:
+        if password.saveroom_hint and RWRITER in password.saveroom_hint:
             password.saveroom_hint = password.saveroom_hint.replace(RWRITER, s)
             continue
-        if RWRITER in password.greaper_hint:
-            password.greaper_hint = password.greaper_hint_2.replace(RWRITER, s)
+        if password.greaper_hint and RWRITER in password.greaper_hint:
+            password.greaper_hint = password.greaper_hint.replace(RWRITER, s)
             continue
-        if RWRITER in password.greaper_hint:
+        if password.greaper_hint_2 and RWRITER in password.greaper_hint_2:
             password.greaper_hint_2 = password.greaper_hint_2.replace(
                 RWRITER, s)
             continue
-        if RWRITER in password.drybones_hint:
+        if password.drybones_hint and RWRITER in password.drybones_hint:
             password.drybones_hint = password.drybones_hint.replace(RWRITER, s)
             continue
     world.replace_dialog(1664, password.troopa_hint)
@@ -212,12 +215,11 @@ def randomize_wishes(world):
 
     """
     world.wishes.wishes.clear()
-    available_wishes = dialogs.wish_strings.copy()
 
-    for dialog_id in dialogs.wish_dialogs:
-        wish = random.choice(dialogs.wish_strings)
-        available_wishes.remove(wish)
-        world.wishes.wishes.append((dialog_id, wish))
+    selected_wishes = random.sample(dialogs.wish_strings, len(dialogs.wish_dialogs))
+
+    for index, dialog_id in enumerate(dialogs.wish_dialogs):
+        world.wishes.wishes.append((dialog_id, selected_wishes[index]))
 
 
 def randomize_quiz(world):

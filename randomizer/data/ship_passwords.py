@@ -4,14 +4,14 @@ hint_authors = [
     "         Memo left by Alanim:",
     "   Memo left by Amazing Ampharos:",
     "        Memo left by atbigelow:",
+    "        Memo left by Broatmeal:",
     "        Memo left by Cavin856:",
+    "          Memo left by Cynas:",
     "    Memo left by Dorkmaster Flek:",
     "        Memo left by FlareRDB:",
     "       Memo left by Gozengatta:",
     "     Memo left by inthenameofDT:",
     "     Memo left by LockeColeLive:",
-    "          Memo left by Cynas:",
-    "        Memo left by Broatmeal:",
     "         Memo left by patcdr:",
     "          Memo left by pidge:",
     "        Memo left by SeanCass:",
@@ -19,6 +19,7 @@ hint_authors = [
     "     Memo left by SNESChalmers:"
     "         Memo left by swinch:",
     "     Memo left by Tinywetblanket:",
+    "       Memo left by WeffJebster:",
     "        Memo left by Yakibomb:",
     " Memo left by [filename]:"
 ]
@@ -426,6 +427,6 @@ def suggest_letter_bank(word, position, decoy_word):
     if len(letter_bank) < 5 - len(letters):
         letters.extend(random.sample(letter_bank, min(5-len(letters), len(letter_bank))))
     if len(letters) < 5:
-        letters.extend(random.sample([c for c in common_consonants if c not in letters], 5-letters))
+        letters.extend(random.sample([c for c in common_consonants if c not in letters], 5-len(letters)))
     random.shuffle(letters)
     return letters

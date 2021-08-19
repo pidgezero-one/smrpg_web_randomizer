@@ -3,6 +3,7 @@
 import math
 import random
 import enum
+import copy
 
 from scipy.stats import gamma
 
@@ -25,23 +26,23 @@ class RandomGrantEnum(enum.Enum):
 
 chest_grant_table = [
     (2, RandomGrantEnum.SlotMachine),
-    (10, RandomGrantEnum.RecoveryMushroom),
-    (10, RandomGrantEnum.Flower),
-    (10, RandomGrantEnum.FrogCoins),
-    (10, RandomGrantEnum.Coins),
+    (8, RandomGrantEnum.RecoveryMushroom),
+    (8, RandomGrantEnum.Flower),
+    (8, RandomGrantEnum.FrogCoins),
+    (8, RandomGrantEnum.Coins),
     (19, RandomGrantEnum.Equip),
-    (29, RandomGrantEnum.RegularItem)
+    (37, RandomGrantEnum.RegularItem)
 ]
 
 star_chest_grant_table = [
     (2, RandomGrantEnum.SlotMachine),
-    (10, RandomGrantEnum.EXPStar),
-    (10, RandomGrantEnum.RecoveryMushroom),
-    (10, RandomGrantEnum.Flower),
-    (10, RandomGrantEnum.FrogCoins),
-    (10, RandomGrantEnum.Coins),
+    (8, RandomGrantEnum.EXPStar),
+    (8, RandomGrantEnum.RecoveryMushroom),
+    (8, RandomGrantEnum.Flower),
+    (8, RandomGrantEnum.FrogCoins),
+    (8, RandomGrantEnum.Coins),
     (19, RandomGrantEnum.Equip),
-    (29, RandomGrantEnum.RegularItem)
+    (39, RandomGrantEnum.RegularItem)
 ]
 
 starter_grant_table = [
@@ -81,18 +82,6 @@ area_8 = [Area.YosterIsle]
 class Inventory(list):
     """List subclass for item inventory during key item shuffle logic."""
 
-    def has_item(self, item):
-        """
-
-        Args:
-            item: Item class to check for.
-
-        Returns:
-            bool: True if inventory contains this item, False otherwise.
-
-        """
-        return any([i for i in self if i == item])
-
     def has_item_count(self, item, value = 1):
         """
 
@@ -103,8 +92,28 @@ class Inventory(list):
             bool: True if inventory contains this item, False otherwise.
 
         """
-        incidence = [i for i in self if i == item]
-        return any(incidence) and len(incidence) >= value
+
+        # this really should be illegal, I'm so sorry
+        classes = [i for i in self if type(i) == type]
+        instances = [i for i in self if isinstance(i, items.Item)]
+        if type(item) == type:
+            exists = [i for i in classes if item == i] + [i for i in instances if utils.isclass_or_instance(i, item)]
+        else:
+            exists = [i for i in classes if utils.isclass_or_instance(item, i)] + [i for i in instances if i == item]
+        return len(exists) >= value
+
+    def has_item(self, item):
+        """
+
+        Args:
+            item: Item class to check for.
+
+        Returns:
+            bool: True if inventory contains this item, False otherwise.
+
+        """
+
+        return self.has_item_count(item, 1)
 
 
 def _intershuffle_chests(chest_locations):
@@ -126,7 +135,8 @@ def _intershuffle_chests(chest_locations):
             chest.item, swap.item = swap.item, chest.item
 
 
-def _place_items(world, _items, locations, base_inventory=None):
+def _place_items(world, _items, locations, base_inventory=None, allow_replacements=True):
+    # update this with get_item_instance
     """Place the given list of items within the given locations, and optionally a given starting inventory.
 
     Args:
@@ -141,32 +151,64 @@ def _place_items(world, _items, locations, base_inventory=None):
 
     remaining_fill_items = Inventory(_items)
 
+    # print("INITIAL_INVENTORY ", remaining_fill_items)
+
     # if len(remaining_fill_items) > len([l for l in locations if not l.has_item]):
     #    raise ValueError("Trying to fill more items than available locations")
 
     # For each required item, place it assuming we can get all other items.
 
-    # Firstly, bias Super Suit (or whatever the best of the 10 special equips ends up being) to the 100 jump location under the right conditions
+    # Get items we can get assuming we have everything but the one we're placing.
+
+    blocked_star_piece_areas = []
+
+    item_loop = copy.copy(_items)
+
+    #print(locations)
+    #print(len(locations))
+    #print(base_inventory)
+    
+    # Place best restricted equip 30% chance
     if world.settings.is_flag_value(flags.RestrictSpecialEquips, True):
+        equips = [i for i in _items if i.special_equip]
+        equips.sort(key=lambda x: x.rank_value, reverse=True) # use best item of the 10, to account for stat randomization
         jumps2_location_open = [l for l in locations if utils.isclass_or_instance(l, chests.SuperJumps100) and l.access == 2]
         if len(jumps2_location_open) > 0:
             bias = random.randint(1, 10)
             if bias <= 3:
-                item = remaining_fill_items[0] # best item of the 10, to account for stat randomization
+                item = equips[0] 
+                item_loop.remove(item)
                 remaining_fill_items.remove(item)
                 jumps2_location_open[0].item = item
 
-    # Get items we can get assuming we have everything but the one we're placing.
-    assumed_items = _collect_items(
-        world, remaining_fill_items + base_inventory)
 
-    blocked_star_piece_areas = []
+    for item in item_loop:
 
-    for item in _items:
+        if type(item) == type:
+            item = item(world)
+
+        remaining_fill_items_without_this_item = copy.copy(remaining_fill_items)
+        try:
+            remaining_fill_items_without_this_item.remove(item)
+        except:
+            print(item, remaining_fill_items_without_this_item)
+        assumed_items = _collect_items(
+            world, remaining_fill_items_without_this_item + base_inventory)
+
+        # print (item, [i for i in assumed_items if utils.isclass_or_instance(i, items.RecruitedCharacter)])
+
+
+        #for l in locations:
+        #    if utils.isclass_or_instance(l, chests.BanditsWay1):
+        #        print (item, l.can_access(assumed_items))
+
         # filter down locations if eligible for biased shuffling
         # 80% chance that better items appear in locations with more gating, and vice versa
-        if item.tier > 0 and not item.is_key and world.settings.is_flag_value(flags.BiasItemShuffle, True):
-            if item.tier == 1 or item.tier == 2:
+        if world.settings.is_flag_value(flags.RestrictSpecialEquips, True) and item.special_equip:
+            fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
+                            and l.item_allowed(item)]
+        elif item.tier > 0 and not item.is_key and world.settings.is_flag_value(flags.BiasItemShuffle, True):
+            if item.tier >= 3:
                 chooser = random.randint(1, 10)
                 if chooser > 2:
                     fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
@@ -174,47 +216,60 @@ def _place_items(world, _items, locations, base_inventory=None):
                 if chooser <= 2 or len(fillable_locations) == 0:
                     fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
                             and l.item_allowed(item) and l.access != 1]
-            elif item.tier == 3 or item.tier == 4:
+            else:
                 chooser = random.randint(1, 10)
                 if chooser > 2:
                     fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
-                            and l.item_allowed(item) and l.access == 2]
+                            and l.item_allowed(item) and l.access >= 2]
                 if chooser <= 2 or len(fillable_locations) == 0:
                     fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
-                            and l.item_allowed(item) and l.access != 2]
+                            and l.item_allowed(item) and l.access < 2]
         elif utils.isclass_or_instance(item, items.StarPiece):
-             fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
-                              and l.item_allowed(item) and not l.area in blocked_star_piece_areas]
+            fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
+                            and l.item_allowed(item) and not l.area in blocked_star_piece_areas]
         else:
             fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
-                              and l.item_allowed(item)]
+                            and l.item_allowed(item)]
         # if star piece is blocked by world map restriction, loosen up on it
         if not fillable_locations and utils.isclass_or_instance(item, items.StarPiece):
             fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
-                              and l.item_allowed(item)]
-
+                            and l.item_allowed(item)]
+        
+        #print (item, len(fillable_locations))
+        # print(item, fillable_locations)
         if fillable_locations:
+
+            # Prioritize frog shop and treasure seller since those are highly restrictive
+            priority = [l for l in fillable_locations if utils.isclass_or_instance(l, chests.TreasureSellerReward) or utils.isclass_or_instance(l, chests.FrogCoinShopItem)]
+            if len(priority) > 0:
+                fillable_locations = priority
+
+            #print(item, remaining_fill_items.index(item), len(remaining_fill_items), len(fillable_locations))
+            #if remaining_fill_items.index(item) > 0:
+            #    print("     ", item, remaining_fill_items)
             remaining_fill_items.remove(item)
 
             # Place item in the first fillable location.
-            if item.tier == 1 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
+            if allow_replacements and not(item.is_key or item.special_equip) and not(utils.isclass_or_instance(fillable_locations[0], chests.FrogCoinShopItem) or utils.isclass_or_instance(fillable_locations[0], chests.TreasureSellerReward))  and item.tier == 1 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
                 fillable_locations[0].item = items.Coins(world, item.price // 2)
             else:
                 fillable_locations[0].item = item
 
             # Populate corresponding spotted character, if eligible (currently only affects Forest Maze access)
             if utils.isclass_or_instance(fillable_locations[0], chests.MarrymoreCharacter):
-                if item == items.MarioRecruit:
+                if utils.isclass_or_instance(item, items.MarioRecruit):
                     spotted = items.MarioSpotted
-                elif item == items.MallowRecruit:
+                elif utils.isclass_or_instance(item, items.MallowRecruit):
                     spotted = items.MallowSpotted
-                elif item == items.GenoRecruit:
+                elif utils.isclass_or_instance(item, items.GenoRecruit):
                     spotted = items.GenoSpotted
-                elif item == items.BowserRecruit:
+                elif utils.isclass_or_instance(item, items.BowserRecruit):
                     spotted = items.BowserSpotted
-                elif item == items.ToadstoolRecruit:
+                elif utils.isclass_or_instance(item, items.ToadstoolRecruit):
                     spotted = items.ToadstoolSpotted
-                set_item(world.spotted_character_checks, chests.MarrymoreCharacterSpotted, spotted)
+                if spotted is not None:
+                    set_item(world.spotted_character_checks, chests.MarrymoreCharacterSpotted, world.get_item_instance(spotted))
+                    base_inventory.append(spotted)
             
             # Restrict star piece location eligibility if the proper flag is enabled
             if utils.isclass_or_instance(item, items.StarPiece) and world.settings.is_flag_value(flags.StarPiecesRestrictedByArea, True):
@@ -239,20 +294,36 @@ def _place_items(world, _items, locations, base_inventory=None):
             # so that way we don't run the risk of violating StarPiecesRestrictedByArea by populating chests w/ unknown locations under MimicsAnywhere
             chests_missing_locations = []
             if utils.isclass_or_instance(item, items.PandoriteFight):
-                chests_missing_locations = [c for c in world.chests if utils.isclass_or_instance(c, chests.PandoriteReward1) or utils.isclass_or_instance(c, chests.PandoriteReward2) or utils.isclass_or_instance(c, chests.PandoriteBoss)]
+                chests_missing_locations = [c for c in world.chest_locations if utils.isclass_or_instance(c, chests.PandoriteReward1) or utils.isclass_or_instance(c, chests.PandoriteReward2) or utils.isclass_or_instance(c, chests.PandoriteBoss)]
             elif utils.isclass_or_instance(item, items.PandoriteFight):
-                chests_missing_locations = [c for c in world.chests if utils.isclass_or_instance(c, chests.HidonReward1) or utils.isclass_or_instance(c, chests.HidonReward2) or utils.isclass_or_instance(c, chests.HidonBoss)]
+                chests_missing_locations = [c for c in world.chest_locations if utils.isclass_or_instance(c, chests.HidonReward1) or utils.isclass_or_instance(c, chests.HidonReward2) or utils.isclass_or_instance(c, chests.HidonBoss)]
             elif utils.isclass_or_instance(item, items.BoxBoyFight):
-                chests_missing_locations = [c for c in world.chests if utils.isclass_or_instance(c, chests.BoxBoyBoss)]
+                chests_missing_locations = [c for c in world.chest_locations if utils.isclass_or_instance(c, chests.BoxBoyBoss)]
             for c in chests_missing_locations:
                 c.area = fillable_locations[0].area
+        else:
+            # print("")
+            # print("")
+            # print("")
+            # print(item, locations)
+            # print("")
+            # print("")
+            # print("")
+            pass
 
-
-            # does this enter the marrymore char sighting into sphere 0?
-            assumed_items = _collect_items(
-                world, remaining_fill_items + base_inventory)
+    item_loop = Inventory(remaining_fill_items)
+    # print("")
+    # print("")
+    # print("")
+    # print("leftover: ", item_loop)
+    # for l in locations:
+    #     print(l)
+    # print("")
+    # print("")
+    # print("")
 
     return remaining_fill_items
+
 
 
 def _collect_items(world, collected=None):
@@ -270,15 +341,22 @@ def _collect_items(world, collected=None):
     if collected is not None:
         my_items.extend(collected)
 
-    available_locations = [l for l in world.recruitable_character_checks + world.starter_character_checks + world.chest_locations + world.freestanding_item_locations + world.boss_star_checks if l.has_item]
+    available_locations = []
+    available_locations += [l for l in world.recruitable_character_checks if l.has_item]
+    available_locations += [l for l in world.spotted_character_checks if l.has_item]
+    available_locations += [l for l in world.starter_character_checks if l.has_item]
+    available_locations += [l for l in world.chest_locations if l.has_item]
+    available_locations += [l for l in world.freestanding_item_locations if l.has_item]
+    available_locations += [l for l in world.boss_star_checks if l.has_item]
 
+    # print(available_locations)
     # Search all locations and collect items until we can't get any more.
     while True:
         search_locations = [
-            l for l in available_locations if l.can_access(world, my_items)]
+            l for l in available_locations if l.can_access(my_items)]
         available_locations = [
             l for l in available_locations if l not in search_locations]
-        found_items = Inventory([l.item for l in search_locations])
+        found_items = Inventory([world.get_item_instance(l.item) for l in search_locations])
         my_items.extend(found_items)
         if len(found_items) == 0:
             break
@@ -296,6 +374,11 @@ def fill_locations(world, locations_to_fill, required_items, extra_items=None, e
         extra_items (Inventory): Extra items to place.
 
     """
+    
+    # Clear existing items to start.
+    for location in locations_to_fill:
+        location.item = None
+
     if extra_items is None:
         extra_items = Inventory()
 
@@ -303,18 +386,14 @@ def fill_locations(world, locations_to_fill, required_items, extra_items=None, e
         existing_inventory = Inventory()
 
     # Sanity check to make sure we're filling the right number of spots.
-    if len(locations_to_fill) < len(required_items) + len(extra_items):
-        raise ValueError("Not enough locations for number of items.")
-
-    # Clear existing items to start.
-    for location in locations_to_fill:
-        location.item = None
+    # if len(locations_to_fill) < len(required_items) + len(extra_items):
+    #     raise ValueError("Not enough locations for number of items.")
 
     # Remove prohibited star piece boss checks
     bosses_to_completely_ignore = world.settings.get_flag(flags.EnabledBossChecks).disabled
-    if world.settings.is_flag_value(flags.WinCondition, WinConditions.FinalBoss):
+    if world.settings.is_flag_value(flags.WinCondition,WinConditions.factory):
         bosses_to_completely_ignore.append(ShuffleLocationSelector.InnerFactoryBossFinal)
-    if world.settings.is_flag_value(flags.WinCondition, WinConditions.Culex):
+    if world.settings.is_flag_value(flags.WinCondition,WinConditions.sealed):
         bosses_to_completely_ignore.append(ShuffleLocationSelector.CulexBoss)
     locations_to_fill = [l for l in locations_to_fill if l.description not in bosses_to_completely_ignore]
 
@@ -323,29 +402,25 @@ def fill_locations(world, locations_to_fill, required_items, extra_items=None, e
     random.shuffle(required_items)
     random.shuffle(extra_items)
 
-    # Place required items first.
-    equips = []
-    # Place the ten Special Equips first if that flag is enabled
-    if world.settings.is_flag_value(flags.RestrictSpecialEquips, True):
-        equips = [i for i in extra_items if i.special_equip]
-        equips.sort(key=lambda x: x.rank_value, reverse=True)
-        extra_items = [i for i in extra_items if not i.special_equip]
-        remainder = _place_items(world, equips, [l for l in locations_to_fill if l.special_equip], existing_inventory)
-        extra_items += remainder
-
+    remainder = []
     star_pieces = []
-    # Attempt to fill key item locations next if Key Items Anywhere is not enabled
-    if not world.settings.is_flag_enabled(flags.KeyItemsAnywhere):
-        star_pieces = [i for i in required_items if utils.isclass_or_instance(i, items.StarPiece)]
-        required_items = [i for i in required_items if not utils.isclass_or_instance(i, items.StarPiece)]
-        remainder += star_pieces
-        remainder = _place_items(world, [i for i in required_items if not utils.isclass_or_instance(i, items.StarPiece)], [l for l in locations_to_fill if l.key], existing_inventory)
-    else:
-        remainder = _place_items(world, required_items, locations_to_fill, existing_inventory)
 
+    # Fill required items. Keys, star pieces, characters, and important items that should only appear once.
+    # With Progressive Fireworks, two of them should be in the general pool, so take care of that now.
+    if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
+        required_items = [r for r in required_items if not utils.isclass_or_instance(r, items.ProgressiveFireworks)]
+        required_items.extend([items.ProgressiveFireworks(world), items.ProgressiveFireworks(world), items.ProgressiveFireworks(world)])
+    remainder = _place_items(world, required_items, locations_to_fill, existing_inventory, False)
+    # Figure out what to do about remaining fireworks
+
+    #print("placing required items...")
     # If any required items were left over (due to star piece shuffle, KIs anywhere, progressive fireworks, etc), handle them first
     locations_to_fill = [l for l in locations_to_fill if not l.has_item]
     remainder = _place_items(world, remainder, locations_to_fill, existing_inventory)
+    #print("unplaced required items: ", remainder)
+    if len([l for l in remainder if utils.isclass_or_instance(l, items.RecruitedCharacter)]) > 0:
+        # try again in randomizer_all loop if characters could not be placed in a possible manner
+        return remainder
     
     # Fill the rest of items
     # Tackle items that are not frog coins, flowers, or mushrooms first, in case we have more items than locations (may happen on Original Item Pool)
@@ -367,7 +442,7 @@ def fill_locations(world, locations_to_fill, required_items, extra_items=None, e
 
     # If we have items left over, return them. Calling function will raise an error if leftover items are important
     collected_items = set(_collect_items(world))
-    leftover = set(required_items + star_pieces + extra_items + equips) - collected_items
+    leftover = set(required_items + star_pieces + extra_items) - collected_items
     return leftover
 
 
@@ -377,84 +452,78 @@ def set_item(collection, location, item):
             collection[i].item = item
 
 def get_max_item_quality(world):
-    tiers_allowed = 4
-    if world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Tier1):
-        tiers_allowed = 1
-    elif world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Tier2):
-        tiers_allowed = 2
-    elif world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Tier3):
+    tiers_allowed = 1
+    if world.settings.is_flag_value(flags.ItemQuality, ItemQualities.t1):
+        tiers_allowed = 4
+    elif world.settings.is_flag_value(flags.ItemQuality, ItemQualities.t2):
         tiers_allowed = 3
+    elif world.settings.is_flag_value(flags.ItemQuality, ItemQualities.t3):
+        tiers_allowed = 2
     return tiers_allowed
 
 def generate_nonrequired_item(world, table, chest):
+
     max_tier = get_max_item_quality(world)
-    total_chance = 0
-    for chance, _ in table:
-        total_chance += chance
-    proc = random.randint(1, total_chance)
-    counter = 0
-    result = None
-    for chance, res in table:
-        counter += chance
-        if proc >= counter:
-            continue
-        else:
-            result = res
-            break
+    weights, possible_options = list(zip(*table))
+    result = random.choices(possible_options, weights=weights, k=1)[0]
     if result == RandomGrantEnum.SlotMachine:
-        item = items.SlotMachineChest
+        item = world.get_item_instance(items.SlotMachineChest)
     elif result == RandomGrantEnum.RecoveryMushroom:
-        item = items.RecoveryMushroom
+        item = world.get_item_instance(items.RecoveryMushroom)
     elif result == RandomGrantEnum.Flower:
-        item = items.Flower
+        item = world.get_item_instance(items.Flower)
     elif result == RandomGrantEnum.EXPStar:
-        all_choices = [i for i in world.items if utils.isclass_or_instance(i, items.InvincibilityStar)]
-        rand = random.randint(1, len(all_choices))
-        item = all_choices[rand - 1]
+        all_choices = [world.get_item_instance(i) for i in [items.BanditsWayStar, items.KeroSewersStar, items.MolevilleMinesStar, items.SeaStar, items.LandsEndVolcanoStar, items.LandsEndVolcanoStar, items.NimbusLandStar, items.LandsEndStar2, items.LandsEndStar3]]
+        item = random.choice(all_choices)(world)
     elif result == RandomGrantEnum.Coins:
         if utils.isclass_or_instance(chest, chests.OverworldItem):
             rand = random.randint(1, 10)
             if rand > 3:
-                item = items.Coins10
+                item = world.get_item_instance(items.Coins10)
             else:
-                item = items.Coins1
+                item = world.get_item_instance(items.Coins1)
         else:
             value = gamma.rvs(80, size=1)[0] // 1
             item = items.Coins(world, value)
     elif result == RandomGrantEnum.FrogCoins:
         if utils.isclass_or_instance(chest, chests.OverworldItem):
-            item = items.FrogCoin
+            item = world.get_item_instance(items.FrogCoin)
         else:
             rand = random.randint(1, 10)
             if rand > 1:
-                item = items.FrogCoin
+                item = world.get_item_instance(items.FrogCoin)
             else:
                 possibilities = [2, 3, 4, 5, 6, 7, 8, 9, 10]
                 value = random.choices(possibilities, weights=(10, 9, 8, 7, 6, 5, 4, 3, 2), k=1)[0]
                 item = items.MultiFrogCoin(world, value)
     elif result == RandomGrantEnum.Equip or result == RandomGrantEnum.RegularItem:
         if result == RandomGrantEnum.Equip:
-            all_choices = [i for i in world.items if (i.unique == ItemUnique.Never or (i.unique == ItemUnique.BalancedOnly and not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Original))) and i.is_equipment and i.tier <= max_tier]
+            all_choices = [i for i in world.items if (i.unique == ItemUnique.Never or (i.unique == ItemUnique.BalancedOnly and not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.original))) and i.is_equipment and i.tier >= max_tier]
         else:
-            all_choices = [i for i in world.items if (i.unique == ItemUnique.Never or (i.unique == ItemUnique.BalancedOnly and not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Original))) and i.tier <= max_tier]
+            all_choices = [i for i in world.items if (i.unique == ItemUnique.Never or (i.unique == ItemUnique.BalancedOnly and not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.original))) and i.tier >= max_tier]
         if utils.isclass_or_instance(chest, chests.TreasureSellerReward):
             all_choices = [i for i in all_choices if i.unique == ItemUnique.BalancedOnly]
-        possibilities = [1, 2, 3, 4]
+        possibilities = [1, 2, 3, 4, 5]
         if world.settings.is_flag_value(flags.BiasItemShuffle, True):
             if chest.access == 1:
-                weights=[30, 50, 15, 5]
+                weights=[3, 10, 30, 35, 22]
             elif chest.access == 2:
-                weights=[5, 15, 60, 20]
-            else:
-                weights=[20, 45, 25, 10]
+                weights=[5, 20, 40, 25, 10]
+            elif chest.access == 4:
+                weights=[100, 0, 0, 0, 0]
         else:
-            weights=[20, 45, 25, 10]
-        possibilities = possibilities[:max_tier]
-        weights = tuple(weights[:max_tier])
-        value = random.choices(possibilities, weights, k=1)[0]
-        choices = [i for i in all_choices if i.tier == value]
-        rand = random.randint(1, len(choices))
-        item = choices[rand - 1]
+            weights=[10, 20, 40, 20, 10]
+        possibilities = possibilities[max_tier-1:]
+        weights = tuple(weights[max_tier-1:])
+        choices = []
+        while len(choices) == 0:
+            # is it possible for this to loop infinitely?
+            value = random.choices(possibilities, weights, k=1)[0]
+            choices = [i for i in all_choices if i.tier == value]
+        item = random.choice(choices)
+        # print(possibilities, weights, value, item, item.tier)
+    else:
+        raise Exception("couldn't place a randomly generated item at %r" % chest)
     return item
 
 def randomize_all(world):
@@ -472,6 +541,8 @@ def randomize_all(world):
         # Collect pool of locations that need item assignments
         locations_to_completely_ignore = world.settings.get_flag(flags.EnabledFreestandingChecks).disabled
 
+        inventory = Inventory([])
+
         # Contents of excluded chests will still be shuffled, they just will not contain progression items.
         # Excluded freestanding items will remain vanilla.
         # Excluded boss checks will receive "None"
@@ -482,59 +553,67 @@ def randomize_all(world):
             all_locations = world.boss_star_checks.copy() + world.recruitable_character_checks.copy() + world.spotted_character_checks.copy()
         # remove unused checks
         # bucket girl
-        if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.Vanilla) or world.settings.is_flag_value(flags.BucketWarp, True):
+        if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.vanilla) or world.settings.is_flag_value(flags.BucketWarp, True):
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.BucketGirl)]
         # fireworks shuffle
-        if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.Vanilla):
+        if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.vanilla):
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.FireworksShop)]
+            #inventory.append(items.Fireworks(world))
         # beetlemania shuffle
         if world.settings.is_flag_value(flags.ShuffleBeetlemania, False):
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.MushroomKingdomInn)]
+            #inventory.append(items.Beetlemania(world))
         # magikoopa's chest shuffle
         if world.settings.is_flag_value(flags.ShuffleMagikoopaChest, False):
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.BowsersKeepMagikoopa)]
+            #inventory.append(items.InfiniteCoins(world))
         # mimics shuffle
-        if world.settings.is_flag_value(flags.SlotsAnywhere, False):
-            all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.PandoriteChest) and not utils.isclass_or_instance(a, chests.HidonChest) and not utils.isclass_or_instance(a, chests.BeanValleyBoxBoyRoom1)]
-        # slots shuffle
         if world.settings.is_flag_value(flags.MimicsAnywhere, False):
+            all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.PandoriteChest) and not utils.isclass_or_instance(a, chests.HidonChest) and not utils.isclass_or_instance(a, chests.BeanValleyBoxBoyRoom1)]
+            #inventory.extend([items.PandoriteFight(world), items.HidonFight(world), items.BoxBoyFight(world)])
+        # slots shuffle
+        if world.settings.is_flag_value(flags.SlotsAnywhere, False):
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.BeanValleyLeftPiranhaPipe) and not utils.isclass_or_instance(a, chests.BeanValleyBottomLeftPiranhaPipe) and not utils.isclass_or_instance(a, chests.BeanValleyBottomRightPiranhaPipeUpper)]
+            #inventory.extend([items.SlotMachineChest(world), items.SlotMachineChest(world), items.SlotMachineChest(world)])
         # exp stars shuffle
         if world.settings.is_flag_value(flags.EXPStarsAnywhere, False):
+            #inventory.extend([c.item for c in all_locations if utils.isclass_or_instance(c.item, items.InvincibilityStar)])
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.BanditsWayStarChest) and not utils.isclass_or_instance(a, chests.KeroSewersStarChest) and not utils.isclass_or_instance(a, chests.MolevilleMinesStarChest) and not utils.isclass_or_instance(a, chests.SeaStarChest) and not utils.isclass_or_instance(a, chests.LandsEndStarChest1) and not utils.isclass_or_instance(a, chests.LandsEndStarChest2) and not utils.isclass_or_instance(a, chests.LandsEndStarChest3) and not utils.isclass_or_instance(a, chests.NimbusCastleStarChest) and not utils.isclass_or_instance(a, chests.BarrelVolcanoStarRoom)]
         # star piece shuffle
         if world.settings.is_flag_value(flags.ShuffleStarPieces, False):
+            #inventory.extend([c.item for c in all_locations if utils.isclass_or_instance(c.item, items.StarPiece)])
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.BossStarPiece)]
         # remove frog disciple checks and treasure seller if shop shuffle is off or if shops empty
-        if world.settings.is_flag_value(flags.ShuffleShops, False) or world.settings.is_flag_value(flags.ShopQuality, ShopQualities.Empty):
+        if world.settings.is_flag_value(flags.ShuffleShops, False) or world.settings.is_flag_value(flags.ShopQuality, ShopQualities.empty):
+            #inventory.extend([c.item for c in all_locations if utils.isclass_or_instance(c, chests.FrogCoinShopItem)])
+            #inventory.extend([c.item for c in all_locations if utils.isclass_or_instance(c, chests.TreasureSellerReward)])
             all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.FrogCoinShopItem) and not utils.isclass_or_instance(a, chests.TreasureSellerReward)]
-        inventory = Inventory([])
-
+        all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.CharacterSpotted)]
+        
         # populate starting characters
-        number_of_starting_characters = world.settings.get_flag(
-            flags.StartingCharacters).value
+        number_of_starting_characters = world.settings.get_flag(flags.StartingCharacters).value
         starting_party = [None]*5
-        allCharacters = [PlayableCharacters.Mario, PlayableCharacters.Mallow,
-                        PlayableCharacters.Geno, PlayableCharacters.Bowser, PlayableCharacters.Toadstool]
+        allCharacters = [PlayableCharacters.mario, PlayableCharacters.mallow,
+                        PlayableCharacters.geno, PlayableCharacters.bowser, PlayableCharacters.toadstool]
         charactersInSeed = [c for c in allCharacters if c in world.settings.get_flag(
             flags.AvailableCharacters).enabled]
         # throw error if any required chars are excluded
-        if PlayableCharacters.Mario in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitMario) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitMario) or world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitMario)):
+        if PlayableCharacters.mario in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario) or world.settings.is_flag_value(flags.SeaGate, SeaGating.mario)):
             raise Exception('cannot exclude Mario when required for area access')
-        if PlayableCharacters.Mallow in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitMallow) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitMallow) or world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitMallow)):
+        if PlayableCharacters.mallow in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mallow) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow) or world.settings.is_flag_value(flags.SeaGate, SeaGating.mallow)):
             raise Exception('cannot exclude Mallow when required for area access')
-        if PlayableCharacters.Geno in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitGeno) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitGeno) or world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitGeno)):
+        if PlayableCharacters.geno in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno) or world.settings.is_flag_value(flags.SeaGate, SeaGating.geno)):
             raise Exception('cannot exclude Geno when required for area access')
-        if PlayableCharacters.Bowser in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitBowser) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitBowser) or world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitBowser)):
+        if PlayableCharacters.bowser in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.bowser) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser) or world.settings.is_flag_value(flags.SeaGate, SeaGating.bowser)):
             raise Exception('cannot exclude Bowser when required for area access')
-        if PlayableCharacters.Toadstool in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitToadstool) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitToadstool) or world.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitToadstool)):
+        if PlayableCharacters.toadstool in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.toadstool) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool) or world.settings.is_flag_value(flags.SeaGate, SeaGating.toadstool)):
             raise Exception('cannot exclude Toadstool when required for area access')
         # throw error if not enough chars to fill desired party
         if len(charactersInSeed) < number_of_starting_characters:
             raise Exception('not enough characters to fill desired starting party')
         random.shuffle(charactersInSeed)
         starter = world.settings.get_flag(flags.StartingCharacter).value
-        if starter != PlayableCharacters.Random:
+        if starter != PlayableCharacters.random:
             charactersInSeed = [c for c in charactersInSeed if c != starter]
             charactersInSeed.insert(0, starter)
         starting_characters = charactersInSeed[:number_of_starting_characters]
@@ -554,92 +633,118 @@ def randomize_all(world):
                 location = chests.StarterCharacter5
             else:
                 raise Exception("invalid starter character index %i" % i)
-            if starting_characters[i] == PlayableCharacters.Mario:
+            if starting_characters[i] == PlayableCharacters.mario:
                 character = items.MarioRecruit
-            elif starting_characters[i] == PlayableCharacters.Mallow:
+            elif starting_characters[i] == PlayableCharacters.mallow:
                 character = items.MallowRecruit
-            elif starting_characters[i] == PlayableCharacters.Geno:
+            elif starting_characters[i] == PlayableCharacters.geno:
                 character = items.GenoRecruit
-            elif starting_characters[i] == PlayableCharacters.Bowser:
+            elif starting_characters[i] == PlayableCharacters.bowser:
                 character = items.BowserRecruit
-            elif starting_characters[i] == PlayableCharacters.Toadstool:
+            elif starting_characters[i] == PlayableCharacters.toadstool:
                 character = items.ToadstoolRecruit
-            elif starting_characters[i] == None:
-                character = None
             else:
                 raise Exception("invalid character %r" % starting_characters[i])
+            character = world.get_item_instance(character)
             set_item(world.starter_character_checks, location, character)
             inventory.append(character)
+
+        remainder = []
 
         # will this work? combining classes and instances?
         # Collect required base item pool
         # key items + characters
-        required_item_pool = [i for i in world.items if i.is_key] + [c for c in world.recruitable_characters if c.description in charactersInSeed and c.description not in starting_characters]
+        required_item_pool = [i for i in world.items if i.is_key] + [world.get_item_instance(char) for char in [items.MarioRecruit, items.MallowRecruit, items.GenoRecruit, items.BowserRecruit, items.ToadstoolRecruit] if char.description in [c for c in charactersInSeed if c not in starting_characters]]
         # add star pieces
         if world.settings.is_flag_value(flags.ShuffleStarPieces, True):
             total_star_pieces = world.settings.get_flag(flags.TotalStarPieces).value
-            star_pieces = [items.StarPiece1, items.StarPiece2, items.StarPiece3, items.StarPiece4, items.StarPiece5, items.StarPiece6, items.StarPiece7]
+            star_pieces = [world.get_item_instance(s) for s in [items.StarPiece1, items.StarPiece2, items.StarPiece3, items.StarPiece4, items.StarPiece5, items.StarPiece6, items.StarPiece7]]
             required_item_pool += (star_pieces[0:total_star_pieces])
         # apply fireworks settings
-        if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
-            required_item_pool.append(items.Fireworks)
-        elif world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
-            required_item_pool += ([items.ProgressiveFireworks] * 3)
-            # consideration: two of these will not be able to make it into the key item pool
+        if world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1):
+            required_item_pool.append(world.get_item_instance(items.Fireworks))
+        elif world.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
+            # put one in required pool, sort two more into random locations after
+            required_item_pool.extend([world.get_item_instance(items.ProgressiveFireworks)] * 3)
+
 
         extra_item_pool = []
         # non-key items which should always only appear up to a certain # of times
         # bright card, if not a KI
         if world.settings.is_flag_value(flags.CasinoWarp, False):
-            extra_item_pool.append(items.BrightCard)
+            required_item_pool.append(world.get_item_instance(items.BrightCard))
         # beetlemania
         if world.settings.is_flag_value(flags.ShuffleBeetlemania, True):
-            extra_item_pool.append(items.Beetlemania)
+            required_item_pool.append(world.get_item_instance(items.Beetlemania))
         # mimics anywhere
         if world.settings.is_flag_value(flags.MimicsAnywhere, True):
-            extra_item_pool += [items.PandoriteFight, items.HidonFight, items.BoxBoyFight]
+            required_item_pool += [world.get_item_instance(f) for f in [items.PandoriteFight, items.HidonFight, items.BoxBoyFight]]
         # if Restrict Special Equips is on, must guarantee all ten appear once
         if world.settings.is_flag_value(flags.RestrictSpecialEquips, True):
-            extra_item_pool += [i for i in world.items if i.special_equip]
+            required_item_pool += [i for i in world.items if i.special_equip]
         # if star piece hints is on, must guarantee signal ring
         if world.settings.is_flag_value(flags.StarPieceHints, True):
-            extra_item_pool.append(items.SignalRing)
+            required_item_pool.append(world.get_item_instance(items.SignalRing))
         # other items
-        if not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Empty):
-            if world.settings.is_flag_value(flags.ShuffleShops, False) and not world.settings.is_flag_value(flags.ShopQuality, ShopQualities.Empty):
+        if not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.empty):
+            if world.settings.is_flag_value(flags.ShuffleShops, False) and not world.settings.is_flag_value(flags.ShopQuality, ShopQualities.empty):
                 # add 2 progressive eggs if one is guaranteed in treasure shop
-                extra_item_pool += ([items.ProgressiveEgg] * 2)
+                required_item_pool += ([world.get_item_instance(items.ProgressiveEgg)] * 2)
             else:
                 # add 3 otherwise
-                extra_item_pool += ([items.ProgressiveEgg] * 3)
+                required_item_pool += ([world.get_item_instance(items.ProgressiveEgg)] * 3)
             # magikoopa's chest shuffle
             if world.settings.is_flag_value(flags.ShuffleMagikoopaChest, True):
-                extra_item_pool.append(items.InfiniteCoins)
-            limited_items = [items.GoodieBag, items.YouMissed, items.SeeYa, items.EarlierTimes, items.StarEgg, items.Wallet, items.LuckyJewel]
+                required_item_pool.append(world.get_item_instance(items.InfiniteCoins))
+            limited_items = [world.get_item_instance(i) for i in [items.GoodieBag, items.YouMissed, items.SeeYa, items.EarlierTimes, items.StarEgg, items.Wallet, items.LuckyJewel]]
             max_tier = get_max_item_quality(world)
-            extra_item_pool += [i for i in limited_items if i.tier <= max_tier]
-        remainder_check = extra_item_pool.copy()
-        # balanced only: populate extra_item_pool with existing item pool
-        if world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Original):
-            extra_item_pool += [c.item for c in all_locations if c not in required_item_pool and c not in extra_item_pool]
+            required_item_pool += [i for i in limited_items if i.tier <= max_tier]
 
-        # place all the items that this seed NEEDS to have by definition
-        # event generation can happen in main.py
-        remainder = fill_locations(world, all_locations, required_item_pool, extra_item_pool, inventory)
+        # balanced only: populate extra_item_pool with existing item pool
+        if world.settings.is_flag_value(flags.ItemQuality, ItemQualities.original):
+            filtered = [world.get_item_instance(c.item) for c in all_locations if c.item is not None and c.item.index not in [i.index for i in required_item_pool + extra_item_pool + inventory if i is not None]]
+            unique_balanced = [i for i in filtered if filtered.count(i) == 1]
+            required_item_pool += unique_balanced
+            extra_item_pool += [i for i in filtered if i not in unique_balanced]
+
+        # sanitize
+        for index, r in enumerate(required_item_pool):
+            if type(r) == type:
+                required_item_pool[index] = r(world)
+        for index, r in enumerate(extra_item_pool):
+            if type(r) == type:
+                extra_item_pool[index] = r(world)
+
+        remainder_check = copy.copy(required_item_pool)
+
+
+        #print("items: ", len([i for i in required_item_pool + extra_item_pool if not(utils.isclass_or_instance(i, items.StarPiece) or utils.isclass_or_instance(i, items.RecruitedCharacter))]))
+        #print("locations: ", len([i for i in all_locations if not(utils.isclass_or_instance(i, chests.BossStarPiece) or utils.isclass_or_instance(i, chests.CharacterRecruit))]))
+
+        #print([i for i in all_locations if utils.isclass_or_instance(i, chests.InvisibleFlagLocation)])
+        # keep rolling until characters are placed in a logically completable way
+        while True:
+            remainder = fill_locations(world, copy.copy(all_locations), copy.copy(required_item_pool), copy.copy(extra_item_pool), copy.copy(inventory))
+            if len([i for i in remainder if utils.isclass_or_instance(i, items.RecruitedCharacter)]) == 0:
+                break
+
         if remainder:
             excluded_important_items = [i for i in remainder if i.is_key or i in remainder_check or utils.isclass_or_instance(i, items.RecruitedCharacter)]
             if len(excluded_important_items) > 0:
                 raise ValueError("Items were not placed: {!r}".format(
                     excluded_important_items))
 
+
         # next step: fill empty grants, if any, with randomly generated items
         all_remaining_locations = [a for a in all_locations if not a.has_item and (utils.isclass_or_instance(a, chests.Chest) or utils.isclass_or_instance(a, chests.NPCReward) or utils.isclass_or_instance(a, chests.OverworldItem))]
+        
+        
         for chest in all_remaining_locations:
-            if world.settings.is_flag_value(flags.ItemQuality, ItemQualities.Empty):
+            if world.settings.is_flag_value(flags.ItemQuality, ItemQualities.empty):
                 if not utils.isclass_or_instance(chest, chests.FrogCoinShopItem):
-                    chest.item = items.Nothing
+                    chest.item = world.get_item_instance(items.Nothing)
                 else:
-                    chest.item = items.GoodieBag
+                    chest.item = world.get_item_instance(items.GoodieBag)
             else:
                 item = None
                 if utils.isclass_or_instance(chest, chests.StarAllowedChest):
@@ -655,11 +760,16 @@ def randomize_all(world):
                 elif utils.isclass_or_instance(chest, chests.OverworldItem):
                     item = generate_nonrequired_item(world, overworld_grant_table, chest)
                 if item:
-                    if item.tier == 1 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
+                    if item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
                         item = items.Coins(world, item.price // 2)
                     chest.item = item
                 # Ignore empty boss locations and empty character recruit locations, those SHOULD be empty if they don't receive an item
-
+            #print(chest, chest.access, item.tier)
+        
+        # print(required_item_pool)
+        # print(len(required_item_pool), len(extra_item_pool))
+        for l in all_locations:
+            pass
         # todo: character animations
         # will need to sub in characters for animations where no char is recruited (ie who goes in marrymore in a solo challenge?)
         # at some point, will need to figure out partitioning for rooms where coins end up

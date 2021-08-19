@@ -56,7 +56,7 @@ class Note:
     duration = 0
 
     def __init__(self, note, duration):
-        self.note = Note
+        self.note = note
         self.duration = duration
 
 original_toadofsky_confirmations = ['EVENT_1074_pause_107', 'EVENT_1074_pause_113', 'EVENT_1074_pause_113', 'EVENT_1074_pause_121', 'EVENT_1074_pause_121', 'EVENT_1074_pause_129', 'EVENT_1074_pause_129', 'EVENT_1074_pause_137', 'EVENT_1074_pause_145']
@@ -84,8 +84,7 @@ class Song:
     def generate_starfish_hint(self, subscript):
         note_index = 0
         output = []
-        for index in len(subscript):
-            cmd = subscript[index]
+        for index, cmd in enumerate(subscript):
             # replace or remove the sound effect
             if cmd["command"] == 'play_sound' and note_index < len(self.notes):
                 output.append(
@@ -113,7 +112,7 @@ class Song:
 
         output = []
 
-        for index, pair in len(notes_to_write):
+        for index, pair in enumerate(notes_to_write):
             output.extend([
                 {
                     "identifier": 'EVENT_1088_play_sound_%i' % index,
@@ -146,8 +145,6 @@ class Song:
 
         for index, pair in enumerate(note_variable_pairs):
             address = pair[1]
-            note = pair[0].note.val
-            duration = pair[0].duration
 
             note_input = [
                 {
@@ -205,7 +202,7 @@ class Song:
                     "args": [1085]
                 },
             ]
-            if index < len(note_variable_pairs) - 1:
+            if index < len(self.notes) - 1:
                 note_input.extend([
                     {
                         "identifier": 'set_7000_short_mem_to_7000_short_mem_%i' % index,
@@ -318,7 +315,7 @@ class Song:
                         "args": [0x7000, 0x7010]
                     },
                 ])
-                if len(note_variable_pairs) == 8:
+                if len(self.notes) == 8:
                     note_input.append(
                         {
                             "identifier": 'jmp_to_subroutine_end',
@@ -326,7 +323,7 @@ class Song:
                             "args": [1085]
                         }
                     )
-                elif len(note_variable_pairs) == 7:
+                elif len(self.notes) == 7:
                     note_input.append(
                         {
                             "identifier": 'jmp_to_subroutine_end',
@@ -370,8 +367,8 @@ class Song:
 
         # for songs with less than 8 notes, figure out how toadofsky should react to %s of correctness
         toadofsky_confirmations = []
-        for i in range(0, len(note_variable_pairs) + 1):
-            ratio = round(len(original_toadofsky_confirmations) * i / len(note_variable_pairs) + 1)
+        for i in range(0, len(self.notes)):
+            ratio = round(len(original_toadofsky_confirmations) * (i + 1) / len(self.notes)) - 1
             toadofsky_confirmations.append(original_toadofsky_confirmations[ratio])
 
         # build scripts
@@ -446,7 +443,7 @@ class Song:
                 {
                     "identifier": 'jmp_if_var_not_equals_short_correctcheck_%i' % index,
                     "command": 'jmp_if_var_not_equals_short',
-                    "args": [address, note, prefix_command_name('jmp_if_var_not_equals_short_correctcheck_%i' % index + 1) if index < len(note_variable_pairs) - 1 else script_toadofsky_reactions[0]["identifier"]]
+                    "args": [address, note, prefix_command_name('jmp_if_var_not_equals_short_correctcheck_%i' % (index + 1)) if index < len(self.notes) - 1 else script_toadofsky_reactions[0]["identifier"]]
                 },
                 {
                     "identifier": 'inc_correctcheck_%i' % index,

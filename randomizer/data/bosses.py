@@ -366,7 +366,7 @@ class BossLocation:
     boss = None
     boss_locations = []
     unique_henchmen = []
-    repeatable_henchmen_locations = []
+    repeatable_henchmen = []
 
     def __init__(self, world):
         """
@@ -378,7 +378,7 @@ class BossLocation:
         self.world = world
 
         # Get actual pack object based on the pack number.
-        self.pack = self.world.get_formation_pack_by_index(self.pack_number)
+        self.pack = self.world.get_formation_pack_by_index(self.boss.pack_number)
 
     def __str__(self):
         return "<{}: music {}, members {}>".format(self.name, self.music, [m.enemy for m in self.formation.members])
@@ -398,7 +398,7 @@ class BossLocation:
             randomizer.data.formations.EnemyFormation: Formation for this location.
 
         """
-        return self.boss.pack.formations[0]
+        return self.world.get_formation_pack_by_index(self.boss.pack_number)[0]
 
     def get_patch(self):
         """
@@ -448,7 +448,7 @@ class BossAndStarLocation(StarLocation, BossLocation):
 
     def __str__(self):
         return "<{}: has_star {}, music {}, members {}>".format(
-            self.name, self.has_star, self.music, [m.enemy for m in self.formation.members])
+            self.name, self.has_star, self.music, self.boss)
 
     def __repr__(self):
         return str(self)
@@ -3969,7 +3969,7 @@ dingaling_circle = SpriteAnimation(
 
 
 class CountdownDingALing(Henchman):
-    pack_number = 419
+    pack_number = 252
     model = SmallModelDetails(
         454, animations=SpriteAnimationCollection(tower_bullet=dingaling_circle))
 

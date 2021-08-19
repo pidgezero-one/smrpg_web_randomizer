@@ -22,10 +22,10 @@ def _boss_fight_filter(world, location):
         bool: True is location is okay to be included, False otherwise.
 
     """
-    if not isinstance(location, bosses.BossLocation):
+    if not utils.isclass_or_instance(location, bosses.BossLocation):
         return False
 
-    bosses_to_ignore = world.settings.get_flag(bosses.AvailableBosses).disabled
+    bosses_to_ignore = world.settings.get_flag(flags.ShuffledBosses).disabled
     if location.description in bosses_to_ignore:
         return False
 
@@ -137,84 +137,86 @@ def randomize_all(world):
                 # First calculate total stats for each slot based on anchors and stats shuffled already.
                 location_stats = []
                 for location in locations:
-                    elist = location.formation.stat_total_enemies
+                    pack = world.get_formation_pack_by_index(location.boss.pack_number)
+                    formation = world.get_enemy_formation_by_index(pack.formations[0].index)
+                    elist = formation.stat_total_enemies
                     # HP
                     # For Exor fight, only count Exor and average of Left + Right Eye mandatory HP.
-                    if any(e for e in elist if isinstance(e, enemies.Exor)):
+                    if any(e for e in elist if utils.isclass_or_instance(e, enemies.Exor)):
                         hp = 0
                         eyes = 0
                         for e in elist:
-                            if isinstance(e, enemies.Exor):
+                            if utils.isclass_or_instance(e, enemies.Exor):
                                 hp += e.hp
-                            elif isinstance(e, (enemies.LeftEye, enemies.RightEye)):
+                            elif utils.isclass_or_instance(e, (enemies.LeftEye, enemies.RightEye)):
                                 eyes += e.hp
                         hp += int(eyes / 2)
-                        xp = sum(e.xp for e in elist if isinstance(e, enemies.Exor))
-                        coins = sum(e.coins for e in elist if isinstance(e, enemies.Exor))
+                        xp = sum(e.xp for e in elist if utils.isclass_or_instance(e, enemies.Exor))
+                        coins = sum(e.coins for e in elist if utils.isclass_or_instance(e, enemies.Exor))
                     # For Cloaker/Domino, count average HP of each phase of the fight.
-                    elif any(e for e in elist if isinstance(e, enemies.Cloaker)):
+                    elif any(e for e in elist if utils.isclass_or_instance(e, enemies.Cloaker)):
                         dudes = 0
                         sneks = 0
                         for e in elist:
-                            if isinstance(e, (enemies.Cloaker, enemies.Domino)):
+                            if utils.isclass_or_instance(e, (enemies.Cloaker, enemies.Domino)):
                                 dudes += e.hp
-                            elif isinstance(e, (enemies.Earthlink, enemies.MadAdder)):
+                            elif utils.isclass_or_instance(e, (enemies.Earthlink, enemies.MadAdder)):
                                 sneks += e.hp
                         hp = int(round((dudes / 2) + (sneks / 2)))
-                        xp = sum(e.xp for e in elist if isinstance(e, (enemies.Cloaker, enemies.Domino)))
-                        coins = sum(e.coins for e in elist if isinstance(e, (enemies.Cloaker, enemies.Domino)))
+                        xp = sum(e.xp for e in elist if utils.isclass_or_instance(e, (enemies.Cloaker, enemies.Domino)))
+                        coins = sum(e.coins for e in elist if utils.isclass_or_instance(e, (enemies.Cloaker, enemies.Domino)))
                     # For Dodo/Valentina, count 40% of Dodo's HP.
-                    elif any(e for e in elist if isinstance(e, enemies.Valentina)):
+                    elif any(e for e in elist if utils.isclass_or_instance(e, enemies.Valentina)):
                         dodo = 0
                         valentina = 0
                         for e in elist:
-                            if isinstance(e, enemies.Dodo):
+                            if utils.isclass_or_instance(e, enemies.Dodo):
                                 dodo += e.hp * 0.4
-                            elif isinstance(e, enemies.Valentina):
+                            elif utils.isclass_or_instance(e, enemies.Valentina):
                                 valentina += e.hp
                         hp = int(round(dodo + valentina))
                         xp = sum(e.xp for e in elist)
                         coins = sum(e.coins for e in elist)
                     # For King Calimari, need special exp calc
-                    elif any(e for e in elist if isinstance(e, enemies.KingCalamari)):
+                    elif any(e for e in elist if utils.isclass_or_instance(e, enemies.KingCalamari)):
                         hp = sum(e.hp for e in elist)
-                        xp = sum(e.xp for e in elist if isinstance(e, enemies.KingCalamari))
-                        coins = sum(e.coins for e in elist if isinstance(e, enemies.KingCalamari))
+                        xp = sum(e.xp for e in elist if utils.isclass_or_instance(e, enemies.KingCalamari))
+                        coins = sum(e.coins for e in elist if utils.isclass_or_instance(e, enemies.KingCalamari))
                     # For Megasmilax, need special exp calc
-                    elif any(e for e in elist if isinstance(e, enemies.Megasmilax)):
+                    elif any(e for e in elist if utils.isclass_or_instance(e, enemies.Megasmilax)):
                         hp = sum(e.hp for e in elist)
-                        xp = sum(e.xp for e in elist if isinstance(e, enemies.Megasmilax))
-                        coins = sum(e.coins for e in elist if isinstance(e, enemies.Megasmilax))
+                        xp = sum(e.xp for e in elist if utils.isclass_or_instance(e, enemies.Megasmilax))
+                        coins = sum(e.coins for e in elist if utils.isclass_or_instance(e, enemies.Megasmilax))
                     # For Axems, need special exp calc
-                    elif any(e for e in elist if isinstance(e, enemies.AxemRangers)):
+                    elif any(e for e in elist if utils.isclass_or_instance(e, enemies.AxemRangers)):
                         hp = sum(e.hp for e in elist)
-                        xp = sum(e.xp for e in elist if isinstance(e, enemies.AxemRangers))
-                        coins = sum(e.coins for e in elist if isinstance(e, enemies.AxemRangers))
+                        xp = sum(e.xp for e in elist if utils.isclass_or_instance(e, enemies.AxemRangers))
+                        coins = sum(e.coins for e in elist if utils.isclass_or_instance(e, enemies.AxemRangers))
                     # For Belome 2, need special exp calc
-                    elif any(e for e in elist if isinstance(e, enemies.Belome2)):
+                    elif any(e for e in elist if utils.isclass_or_instance(e, enemies.Belome2)):
                         hp = sum(e.hp for e in elist)
-                        xp = sum(e.xp for e in world.enemies if isinstance(e, (enemies.Belome2, enemies.MarioClone)))
+                        xp = sum(e.xp for e in world.enemies if utils.isclass_or_instance(e, (enemies.Belome2, enemies.MarioClone)))
                         coins = sum(e.coins for e in world.enemies if
-                                    isinstance(e, (enemies.Belome2, enemies.MarioClone)))
+                                    utils.isclass_or_instance(e, (enemies.Belome2, enemies.MarioClone)))
                     # For Culex, need special exp calc
-                    elif any(e for e in elist if isinstance(e, enemies.Culex)):
+                    elif any(e for e in elist if utils.isclass_or_instance(e, enemies.Culex)):
                         hp = sum(e.hp for e in elist)
                         xp = sum(e.xp for e in world.enemies if
-                                 isinstance(e, (enemies.Culex, enemies.WindCrystal, enemies.WaterCrystal,
+                                 utils.isclass_or_instance(e, (enemies.Culex, enemies.WindCrystal, enemies.WaterCrystal,
                                                 enemies.FireCrystal, enemies.EarthCrystal)))
                         coins = sum(e.coins for e in world.enemies if
-                                    isinstance(e, (enemies.Culex, enemies.WindCrystal, enemies.WaterCrystal,
+                                    utils.isclass_or_instance(e, (enemies.Culex, enemies.WindCrystal, enemies.WaterCrystal,
                                                    enemies.FireCrystal, enemies.EarthCrystal)))
                     # For Johnny, need special exp calc
-                    elif any(e for e in elist if isinstance(e, enemies.Johnny)):
+                    elif any(e for e in elist if utils.isclass_or_instance(e, enemies.Johnny)):
                         hp = sum(e.hp for e in elist)
                         xp = 0
                         coins = 0
                         for e in world.enemies:
-                            if isinstance(e, enemies.Johnny):
+                            if utils.isclass_or_instance(e, enemies.Johnny):
                                 xp += e.xp
                                 coins += e.coins
-                            elif isinstance(e, enemies.BandanaBlue):
+                            elif utils.isclass_or_instance(e, enemies.BandanaBlue):
                                 xp += 4 * e.xp
                                 coins += 4 * e.coins
                     # Anything else, just sum all HP/xp/coins.
@@ -224,7 +226,7 @@ def randomize_all(world):
                         coins = sum(e.coins for e in elist)
 
                     # For other stats, if there's an anchor then take that enemy's stats.  Otherwise average them.
-                    anchor = location.formation.shuffle_anchor
+                    anchor = formation.shuffle_anchor
                     if anchor:
                         attack = anchor.attack
                         defense = anchor.defense
@@ -254,11 +256,13 @@ def randomize_all(world):
 
                 # Now adjust stats for each shuffled pack given the total stats for the slot it's going into.
                 for location, stats in zip(shuffled_locations, location_stats):
-                    for i, enemy in enumerate(location.formation.stat_scaling_enemies):
+                    pack = world.get_formation_pack_by_index(location.boss.pack_number)
+                    formation = world.get_enemy_formation_by_index(pack.formations[0].index)
+                    for i, enemy in enumerate(formation.stat_scaling_enemies):
                         # Do not raise King Bomb's stats more than normal.
-                        no_raise = isinstance(enemy, enemies.KingBomb)
+                        no_raise = utils.isclass_or_instance(enemy, enemies.KingBomb)
                         # dont raise def on jinx clone or bahamutt, gets ridiculous and or boring. attack tho, learn 2 block
-                        no_raise_defense = isinstance(enemy, enemies.BahamuttMagikoopa) or isinstance(enemy, enemies.BahamuttChester) or isinstance(enemy, enemies.JinxClone)
+                        no_raise_defense = utils.isclass_or_instance(enemy, enemies.BahamuttMagikoopa) or utils.isclass_or_instance(enemy, enemies.BahamuttChester) or utils.isclass_or_instance(enemy, enemies.JinxClone)
 
 
                         enemy.hp = min(int(round(stats['hp'] * enemy.ratio_hp)), enemy.hp if no_raise else 65535)
@@ -274,16 +278,16 @@ def randomize_all(world):
                         enemy.magic_evade = min(int(round(stats['magic_evade'] * enemy.ratio_magic_evade)), 100)
 
                         # For snek fight, the XP/coins need to be put on Cloaker/Domino 2 because you fight either one.
-                        if location.formation.index == 309:
-                            if isinstance(enemy, (enemies.Cloaker2, enemies.Domino2)):
+                        if formation.index == 309:
+                            if utils.isclass_or_instance(enemy, (enemies.Cloaker2, enemies.Domino2)):
                                 enemy.xp = min(stats['xp'], 0xffff)
                                 enemy.coins = min(stats['coins'], 255)
                             else:
                                 enemy.xp = 0
                                 enemy.coins = 0
                         # For Countdown fight, use the Ding-A-Lings because Countdown disables himself.
-                        elif location.formation.index == 295:
-                            if isinstance(enemy, enemies.DingALing):
+                        elif formation.index == 295:
+                            if utils.isclass_or_instance(enemy, enemies.DingALing):
                                 enemy.xp = min(int(round(stats['xp'] / 2)), 0xffff)
                                 enemy.coins = min(int(round(stats['coins'] / 2)), 255)
                             else:
@@ -291,7 +295,7 @@ def randomize_all(world):
                                 enemy.coins = 0
                         # Otherwise give the first enemy all the XP/coins, except for Hammer Bros that need half.
                         elif i == 0:
-                            if isinstance(enemy, enemies.HammerBro):
+                            if utils.isclass_or_instance(enemy, enemies.HammerBro):
                                 enemy.xp = min(int(round(stats['xp'] / 2)), 0xffff)
                                 enemy.coins = min(int(round(stats['coins'] / 2)), 255)
                             else:
@@ -305,9 +309,11 @@ def randomize_all(world):
 
             # Assign packs to their new locations and update music and can't run flags.
             for location, boss in zip(locations, shuffled_bosses):
+                pack = world.get_formation_pack_by_index(boss.pack_number)
+                formation = world.get_enemy_formation_by_index(pack.formations[0].index)
+                formation.music = location.music
+                formation.can_run_away = location.can_run_away
                 location.boss = boss
-                location.boss.formation.music = location.music
-                location.boss.formation.can_run_away = location.can_run_away
 
                 unique_henchmen = boss.unique_henchmen
                 repeatable_henchmen = boss.repeatable_henchmen
@@ -325,10 +331,10 @@ def randomize_all(world):
                         if world.settings.is_flag_value(flags.BossReplaceMinigameSprites, True) or not model.minigames_only:
                             # if the boss has unique henchmen to donate, use it
                             requires_henchman_with_pack = location.unique_henchmen[index][index2].fill_type is not bosses.HenchmanType.NPCOnly
-                            new_unique_henchman = unique_henchmen[index]
                             eligible_repeatable_henchmen = [r for r in repeatable_henchmen if ((requires_henchman_with_pack and r.pack_number is not None) or not requires_henchman_with_pack)]
                             
-                            if index < len(unique_henchmen) and not (requires_henchman_with_pack and new_unique_henchman.pack_number is None):
+                            if index < len(unique_henchmen) and not (requires_henchman_with_pack and unique_henchmen[index].pack_number is None):
+                                new_unique_henchman = unique_henchmen[index]
                                 new_henchman = new_unique_henchman
                                 world.get_formation_pack_by_index(new_henchman.pack_number)
                                 location.unique_henchmen[index][index2].occupant = new_henchman
@@ -366,11 +372,11 @@ def randomize_all(world):
 
                 # For Boomer fight, "hide" the Hangin' Shy enemies by moving them off the screen.  This is needed
                 # because they set bits for the Boomer fight and disable themselves.  Also make sure speed is max.
-                if isinstance(location, bosses.Boomer) and not isinstance(boss, bosses.BoomerBoss):
-                    location.formation.members[1].x_pos = 0
-                    location.formation.members[1].y_pos = 255
-                    location.formation.members[2].x_pos = 0
-                    location.formation.members[2].y_pos = 255
+                if not utils.isclass_or_instance(location, bosses.Boomer) and utils.isclass_or_instance(boss, bosses.BoomerBoss):
+                    formation.members[1].x_pos = 0
+                    formation.members[1].y_pos = 255
+                    formation.members[2].x_pos = 0
+                    formation.members[2].y_pos = 255
 
 
 
@@ -414,9 +420,9 @@ def get_spoiler(world):
 
     for boss in world.boss_locations:
         data = collections.OrderedDict()
-        if isinstance(boss, bosses.StarLocation) and boss.has_star:
+        if utils.isclass_or_instance(boss, bosses.StarLocation) and boss.has_star:
             data['Star Piece'] = 'Yes'
-        if isinstance(boss, bosses.BossLocation):
+        if utils.isclass_or_instance(boss, bosses.BossLocation):
             name = utils.split_camel_case(boss.formation.bosses[0].name)
             data['Boss'] = special_names.get(name, name)
         spoiler[utils.split_camel_case(boss.name)] = data

@@ -37,12 +37,12 @@ class CorndillyMusic(Music):
 # ********************* Default objects for world
 
 
-def get_default_music(world):
+def get_default_music():
     return [
-        NormalBattleMusic(world),
-        MidbossMusic(world),
-        BossMusic(world),
-        Smithy1Music(world),
-        CulexMusic(world),
-        CorndillyMusic(world)
+        NormalBattleMusic(),
+        MidbossMusic(),
+        BossMusic(),
+        Smithy1Music(),
+        CulexMusic(),
+        CorndillyMusic()
     ]

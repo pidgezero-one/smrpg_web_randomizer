@@ -67,9 +67,10 @@ from .npcmodel import NPCModels
 # Current version number
 VERSION = '9.0.0'
 
+b64_table = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 
 class Settings:
-    def __init__(self, mode, debug_mode=False, flag_string=''):
+    def __init__(self, mode, debug_mode=False, flag_string='', cosmetics_string = ''):
         """Provide either form data fields or flag string to set flags on creation.
 
         Args:
@@ -79,71 +80,58 @@ class Settings:
         """
         self._mode = mode
         self._debug_mode = debug_mode
-        self._enabled_flags = set()
         self._all_flags = []
 
-        # If flag string provided, make fake form data based on it to parse.
-        flag_data = {}
-        for flag in flag_string.strip().split():
-            if flag.startswith('-'):
-                # Solo flag that begins with a dash.
-                flag_data[flag] = True
-            elif flag:
-                # Flag that may have a subsection of choices and/or options.
-                if flag[0] not in flag_data:
-                    flag_data[flag[0]] = []
-                flag_data[flag[0]] += [c for c in flag[1:]]
+        flag_dict = {}
+        flag_words = re.compile("\s+").split(flag_string) + re.compile("\s+").split(cosmetics_string)
+        flag_words = [f for f in flag_words if f.strip() != '']
+        # index the supplied flag values to be referenced by category loop
+        for w in flag_words:
+            subcat = w[0]
+            flag_dict[subcat] = {}
+            params = w[1:]
+            flags_with_settings = params.split("|")
+            for s in flags_with_settings:
+                setting_data = s.split(":")
+                if len(setting_data) == 1:
+                    flag_dict[subcat][setting_data[0]] = True
+                else:
+                    flag_dict[subcat][setting_data[0]] = setting_data[1]
 
         # Get flags from form data.
         for category in flags.CATEGORIES:
-            for flag in category.flags:
-                self._check_flag_from_form_data(flag, flag_data)
-
-        # Sanity check.
-        if debug_mode:
-            provided_parts = set(flag_string.strip().split())
-            parsed_parts = set(self.flag_string.split())
-            if provided_parts != parsed_parts:
-                raise ValueError("Generated flags {!r} don't match provided {!r} - difference: {!r}".format(
-                    parsed_parts, provided_parts, provided_parts - parsed_parts))
-
-    def _check_flag_from_form_data(self, flag, flag_data):
-        """
-
-        Args:
-            flag (randomizer.logic.flags.Flag): Flag to check if enabled.
-            flag_data (dict): Form data dictionary.
-
-        """
-        # change this to access all set values in _all_flags
-
-        if flag.available_in_mode(self.mode):
-            if flag.value.startswith('-'):
-                # Solo flag that begins with a dash.
-                if flag_data.get(flag.value):
-                    self._enabled_flags.add(flag)
-            else:
-                # Flag that may be on its own with choices and/or suboptions.
-                if flag.value.startswith('@'):
-                    if flag.value[1] in flag_data:
-                        self._enabled_flags.add(flag)
-                else:
-                    char = flag.value[0]
-                    rest = flag.value[1:]
-
-                    # Single character flag, just check if it's enabled.  Otherwise, make sure the small char is there.
-                    if rest:
-                        if rest in flag_data.get(char, []):
-                            self._enabled_flags.add(flag)
-                    elif char in flag_data:
-                        self._enabled_flags.add(flag)
-
-            # If flag was enabled, check choices/options recursively.
-            if self.is_flag_enabled(flag):
-                for choice in flag.choices:
-                    self._check_flag_from_form_data(choice, flag_data)
-                for option in flag.options:
-                    self._check_flag_from_form_data(option, flag_data)
+            for subcategory in category.subcategories:
+                for flag in subcategory.flags:
+                    if subcategory.id in flag_dict and flag.id in flag_dict[subcategory.id]:
+                        if utils.isclass_or_instance(flag, flags.CategorizationFlag):
+                            option_booleans = []
+                            b64_string = flag_dict[subcategory.id][flag.id]
+                            for c in b64_string:
+                                b64val = b64_table.index(c)
+                                for b in range(0,6):
+                                    option_booleans.append((b64val & (1 << b)) != 0)
+                            checked_tuples = zip(option_booleans, flag.options)
+                            enabled = [v[1] for v in checked_tuples if v[0]]
+                            flag.enabled = enabled
+                            flag.disabled = [v for v in flag.options if v not in enabled]
+                        elif utils.isclass_or_instance(flag, flags.NumberThresholdFlag):
+                            flag.value = int(flag_dict[subcategory.id][flag.id])
+                        elif utils.isclass_or_instance(flag, flags.SelectOneFlag):
+                            val = next((x for x in flag.choices if x.name == flag_dict[subcategory.id][flag.id]), None)
+                            if val is None:
+                                raise Exception("invalid property for %s.%s flag: %s" % (subcategory.id, flag.id, flag_dict[subcategory.id][flag.id]))
+                            flag.value = val
+                        else:
+                            flag.value = flag_dict[subcategory.id][flag.id]
+                    else:
+                        if utils.isclass_or_instance(flag, flags.CategorizationFlag):
+                            flag.disabled = [i for i in flag.options if i not in flag.enabled]
+                        else:
+                            flag.value = flag.default
+                    self._all_flags.append(flag)
+        
+    #    for flag in self._all_flags:
+    #        print (flag.id, flag.type, flag.enabled if utils.isclass_or_instance(flag, flags.CategorizationFlag) else flag.value)
 
     @property
     def mode(self):
@@ -155,63 +143,41 @@ class Settings:
         """:rtype: bool"""
         return self._debug_mode
 
-    def _build_flag_string_part(self, flag, flag_strings):
-        """
-
-        Args:
-            flag (randomizer.logic.flags.Flag): Flag to process.
-            flag_strings (dict): Dictionary for flag strings.
-
-        Returns:
-            str: Flag string piece for this flag.
-
-        """
-        if self.is_flag_enabled(flag):
-            # Solo flag that begins with a dash.
-            if flag.value.startswith('-'):
-                flag_strings[flag.value] = True
-            # Flag that may have a subsection of choices and/or options.
-            else:
-                rest = ''
-                if flag.value.startswith('@'):
-                    char = flag.value[1]
-                    flag_strings['@'].append(char)
-                else:
-                    char = flag.value[0]
-                    rest = flag.value[1:]
-
-                # Check if this key is in the map yet.
-                if char not in flag_strings:
-                    flag_strings[char] = []
-                if rest:
-                    flag_strings[char].append(rest)
-
-                for choice in flag.choices:
-                    self._build_flag_string_part(choice, flag_strings)
-
-                for option in flag.options:
-                    self._build_flag_string_part(option, flag_strings)
-
     @property
     def flag_string(self):
         """
         Returns:
             str: Computed flag string for these settings.
         """
-        flag_strings = collections.OrderedDict()
-        flag_strings['@'] = []
 
-        for category in flags.CATEGORIES:
-            for flag in category.flags:
-                self._build_flag_string_part(flag, flag_strings)
+        flag_strings = []
 
-        flag_string = ''
-        for key, vals in flag_strings.items():
-            if key != '@':
-                if key.startswith('-'):
-                    flag_string += key + ' '
-                elif vals or key not in flag_strings['@']:
-                    flag_string += key + ''.join(vals) + ' '
+        for category in [f for f in flags.CATEGORIES if not utils.isclass_or_instance(f, flags.CosmeticCategory)]:
+            for subcategory in category.subcategories:
+                flagstring_parts = []
+                for flag in subcategory.flags:
+                    if utils.isclass_or_instance(flag, flags.BooleanFlag):
+                        if flag.value:
+                            flagstring_parts.append(flag.id)
+                    elif utils.isclass_or_instance(flag, flags.SelectOneFlag):
+                        flagstring_parts.append("%s:%s" % (flag.id, flag.value.name))
+                    elif utils.isclass_or_instance(flag, flags.NumberThresholdFlag):
+                        flagstring_parts.append("%s:%i" % (flag.id, flag.value))
+                    elif utils.isclass_or_instance(flag, flags.CategorizationFlag):
+                        ctr = 0
+                        choice_rep = 0
+                        choice_rep_string = ''
+                        for f in flag.options:
+                            if f in flag.enabled:
+                                choice_rep += (1 << ctr)
+                            ctr += 1
+                            if ctr == 6:
+                                choice_rep_string += b64_table[choice_rep]
+                                ctr = 0
+                                choice_rep = 0
+                        flagstring_parts.append("%s:%s" % (flag.id, choice_rep_string))
+                flag_strings.append('%s.%s' % (subcategory.id, '|'.join(flagstring_parts)))
+        flag_string = "     ".join(flag_strings)
 
         return flag_string.strip()
 
@@ -233,9 +199,8 @@ class Settings:
         Returns:
             bool: True if flag is enabled at value, False otherwise.
         """
-        narrowed = [i for i in self._all_flags if i[0] == flag]
-        _, val = narrowed[0]
-        return val
+        narrowed = [i for i in self._all_flags if i == flag]
+        return narrowed[0]
 
     def is_flag_value(self, flag, value):
         """
@@ -245,22 +210,8 @@ class Settings:
         Returns:
             bool: True if flag is enabled at value, False otherwise.
         """
-        narrowed = [i for i in self._all_flags if i[0] == flag]
-        _, val = narrowed[0]
-        return val == value
-
-    def get_flag_choice(self, flag):
-        """
-        Args:
-            flag: Flag class to get choice for.
-
-        Returns:
-            randomizer.logic.flags.Flag: Selected choice for this flag.
-        """
-        for choice in flag.choices:
-            if self.is_flag_enabled(choice):
-                return choice
-        return None
+        narrowed = [i for i in self._all_flags if i == flag]
+        return narrowed[0].value == value
 
 class CommandTypes(enum.Enum):
     Action = enum.auto()
@@ -354,49 +305,6 @@ def fix_script_for_scarecrow(script):
 def is_vanilla(boss, location):
     return (utils.isclass_or_instance(location, data.bosses.HammerBros) and utils.isclass_or_instance(boss, data.bosses.HammerBroBoss)) or (utils.isclass_or_instance(location, data.bosses.Croco1) and utils.isclass_or_instance(boss, data.bosses.Croco1Boss)) or (utils.isclass_or_instance(location, data.bosses.Mack) and utils.isclass_or_instance(boss, data.bosses.MackBoss)) or (utils.isclass_or_instance(location, data.bosses.Pandorite) and utils.isclass_or_instance(boss, data.bosses.PandoriteBoss)) or ((utils.isclass_or_instance(location, data.bosses.Belome1) or utils.isclass_or_instance(location, data.bosses.Belome2)) and (utils.isclass_or_instance(boss, data.bosses.Belome1Boss) or utils.isclass_or_instance(boss, data.bosses.Belome2Boss))) or (utils.isclass_or_instance(location, data.bosses.Bowyer) and utils.isclass_or_instance(boss, data.bosses.BowyerBoss)) or (utils.isclass_or_instance(location, data.bosses.Croco2) and utils.isclass_or_instance(boss, data.bosses.Croco2Boss)) or (utils.isclass_or_instance(location, data.bosses.Punchinello) and utils.isclass_or_instance(boss, data.bosses.PunchinelloBoss)) or (utils.isclass_or_instance(location, data.bosses.Booster) and utils.isclass_or_instance(boss, data.bosses.BoosterBoss)) or (utils.isclass_or_instance(location, data.bosses.ClownBros) and utils.isclass_or_instance(boss, data.bosses.GrateGuyBoss)) or (utils.isclass_or_instance(location, data.bosses.Bundt) and utils.isclass_or_instance(boss, data.bosses.Bundt)) or (utils.isclass_or_instance(location, data.bosses.KingCalamari) and utils.isclass_or_instance(boss, data.bosses.KingCalamariBoss)) or (utils.isclass_or_instance(location, data.bosses.Hidon) and utils.isclass_or_instance(boss, data.bosses.HidonBoss)) or (utils.isclass_or_instance(location, data.bosses.Johnny) and utils.isclass_or_instance(boss, data.bosses.JohnnyBoss)) or (utils.isclass_or_instance(location, data.bosses.Yaridovich) and utils.isclass_or_instance(boss, data.bosses.YaridovichBoss)) or (utils.isclass_or_instance(location, data.bosses.Mokura) and utils.isclass_or_instance(boss, data.bosses.MokuraBoss)) or (utils.isclass_or_instance(location, data.bosses.Jagger) and utils.isclass_or_instance(boss, data.bosses.JaggerBoss)) or ((utils.isclass_or_instance(location, data.bosses.Jinx1) or utils.isclass_or_instance(location, data.bosses.Jinx2) or utils.isclass_or_instance(location, data.bosses.Jinx3)) and (utils.isclass_or_instance(boss, data.bosses.Jinx1Boss) or utils.isclass_or_instance(boss, data.bosses.Jinx2Boss) or utils.isclass_or_instance(boss, data.bosses.Jinx3Boss))) or (utils.isclass_or_instance(location, data.bosses.Culex) and utils.isclass_or_instance(boss, data.bosses.Culex)) or (utils.isclass_or_instance(location, data.bosses.BoxBoy) and utils.isclass_or_instance(boss, data.bosses.BoxBoyBoss)) or (utils.isclass_or_instance(location, data.bosses.MegaSmilax) and utils.isclass_or_instance(boss, data.bosses.MegaSmilaxBoss)) or (utils.isclass_or_instance(location, data.bosses.Dodo) and utils.isclass_or_instance(boss, data.bosses.DodoBoss)) or (utils.isclass_or_instance(location, data.bosses.Birdetta) and utils.isclass_or_instance(boss, data.bosses.BirdettaBoss)) or (utils.isclass_or_instance(location, data.bosses.Valentina) and utils.isclass_or_instance(boss, data.bosses.ValentinaBoss)) or (utils.isclass_or_instance(location, data.bosses.CzarDragon) and utils.isclass_or_instance(boss, data.bosses.CzarBoss)) or (utils.isclass_or_instance(location, data.bosses.AxemRangers) and utils.isclass_or_instance(boss, data.bosses.AxemRangersBoss)) or (utils.isclass_or_instance(location, data.bosses.Chester) and utils.isclass_or_instance(boss, data.bosses.ChesterBoss)) or (utils.isclass_or_instance(location, data.bosses.Magikoopa) and utils.isclass_or_instance(boss, data.bosses.MagikoopaBoss)) or (utils.isclass_or_instance(location, data.bosses.Boomer) and utils.isclass_or_instance(boss, data.bosses.BoomerBoss)) or (utils.isclass_or_instance(location, data.bosses.Exor) and utils.isclass_or_instance(boss, data.bosses.ExorBoss)) or (utils.isclass_or_instance(location, data.bosses.Countdown) and utils.isclass_or_instance(boss, data.bosses.CountdownBoss)) or (utils.isclass_or_instance(location, data.bosses.CloakerDomino) and utils.isclass_or_instance(boss, data.bosses.CloakerDominoBoss)) or (utils.isclass_or_instance(location, data.bosses.Clerk) and utils.isclass_or_instance(boss, data.bosses.ClerkBoss)) or (utils.isclass_or_instance(location, data.bosses.Manager) and utils.isclass_or_instance(boss, data.bosses.ManagerBoss)) or (utils.isclass_or_instance(location, data.bosses.Director) and utils.isclass_or_instance(boss, data.bosses.DirectorBoss)) or (utils.isclass_or_instance(location, data.bosses.Gunyolk) and utils.isclass_or_instance(boss, data.bosses.GunyolkBoss)) or (utils.isclass_or_instance(location, data.bosses.Smithy) and utils.isclass_or_instance(boss, data.bosses.SmithyBoss))
 
-
-""" def is_vanilla_strict(boss, location):
-    return (utils.isclass_or_instance(location, data.bosses.HammerBros) and utils.isclass_or_instance(boss, data.bosses.HammerBroBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Croco1) and utils.isclass_or_instance(boss, data.bosses.Croco1Boss)) or
-    (utils.isclass_or_instance(location, data.bosses.Mack) and utils.isclass_or_instance(boss, data.bosses.MackBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Pandorite) and utils.isclass_or_instance(boss, data.bosses.PandoriteBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Belome1) and utils.isclass_or_instance(boss, data.bosses.Belome1Boss)) or
-    (utils.isclass_or_instance(location, data.bosses.Bowyer) and utils.isclass_or_instance(boss, data.bosses.BowyerBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Croco2) and utils.isclass_or_instance(boss, data.bosses.Croco2Boss)) or
-    (utils.isclass_or_instance(location, data.bosses.Punchinello) and utils.isclass_or_instance(boss, data.bosses.PunchinelloBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Booster) and utils.isclass_or_instance(boss, data.bosses.BoosterBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.ClownBros) and utils.isclass_or_instance(boss, data.bosses.GrateGuyBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Bundt) and utils.isclass_or_instance(boss, data.bosses.Bundt)) or
-    (utils.isclass_or_instance(location, data.bosses.KingCalamari) and utils.isclass_or_instance(boss, data.bosses.KingCalamariBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Hidon) and utils.isclass_or_instance(boss, data.bosses.HidonBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Johnny) and utils.isclass_or_instance(boss, data.bosses.JohnnyBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Yaridovich) and utils.isclass_or_instance(boss, data.bosses.YaridovichBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Mokura) and utils.isclass_or_instance(boss, data.bosses.MokuraBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Belome2) and utils.isclass_or_instance(boss, data.bosses.Belome2Boss)) or
-    (utils.isclass_or_instance(location, data.bosses.Jagger) and utils.isclass_or_instance(boss, data.bosses.JaggerBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Jinx1) and utils.isclass_or_instance(boss, data.bosses.Jinx1Boss)) or
-    (utils.isclass_or_instance(location, data.bosses.Jinx2) and utils.isclass_or_instance(boss, data.bosses.Jinx2Boss)) or
-    (utils.isclass_or_instance(location, data.bosses.Jinx3) and utils.isclass_or_instance(boss, data.bosses.Jinx3Boss)) or
-    (utils.isclass_or_instance(location, data.bosses.Culex) and utils.isclass_or_instance(boss, data.bosses.Culex)) or
-    (utils.isclass_or_instance(location, data.bosses.BoxBoy) and utils.isclass_or_instance(boss, data.bosses.BoxBoyBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.MegaSmilax) and utils.isclass_or_instance(boss, data.bosses.MegaSmilaxBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Dodo) and utils.isclass_or_instance(boss, data.bosses.DodoBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Birdetta) and utils.isclass_or_instance(boss, data.bosses.BirdettaBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Valentina) and utils.isclass_or_instance(boss, data.bosses.ValentinaBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.CzarDragon) and utils.isclass_or_instance(boss, data.bosses.CzarBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.AxemRangers) and utils.isclass_or_instance(boss, data.bosses.AxemRangersBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Chester) and utils.isclass_or_instance(boss, data.bosses.ChesterBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Magikoopa) and utils.isclass_or_instance(boss, data.bosses.MagikoopaBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Boomer) and utils.isclass_or_instance(boss, data.bosses.BoomerBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Exor) and utils.isclass_or_instance(boss, data.bosses.ExorBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Countdown) and utils.isclass_or_instance(boss, data.bosses.CountdownBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.CloakerDomino) and utils.isclass_or_instance(boss, data.bosses.CloakerDominoBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Clerk) and utils.isclass_or_instance(boss, data.bosses.ClerkBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Manager) and utils.isclass_or_instance(boss, data.bosses.ManagerBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Director) and utils.isclass_or_instance(boss, data.bosses.DirectorBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Gunyolk) and utils.isclass_or_instance(boss, data.bosses.GunyolkBoss)) or
-    (utils.isclass_or_instance(location, data.bosses.Smithy) and utils.isclass_or_instance(boss, data.bosses.SmithyBoss))
- """
 
 def sanitize_character_animation_script(sequence_types, script):
     new_script = []
@@ -564,6 +472,21 @@ class GameWorld:
         self.file_select_hash = 'MARIO1 / MARIO2 / MARIO3 / MARIO4'
         self._rebuild_hash()
 
+        # Events
+        self.eventscripts = copy.copy(eventscripts)
+        self.actionscripts = copy.copy(actionscripts)
+
+        # Get default npc and model data. Keep them for reference. 
+        self.original_models = copy.copy(npcmodels)
+        self.original_rooms = copy.copy(roomdata)
+        # Malleable versions
+        self.models = copy.copy(npcmodels)
+        self.rooms = copy.copy(roomdata)
+
+        #Dialogs
+        self.dialog_pointers = copy.copy(dialog_pointers)
+        self.dialog_data = copy.copy(dialog_data)
+
         # Bundt palette swap flag.
         self.chocolate_cake = False
 
@@ -615,21 +538,6 @@ class GameWorld:
         self.boss_locations = data.bosses.get_default_boss_locations(self)
         self.boss_star_checks = data.chests.get_boss_star_piece_checks(self)
 
-        # Events
-        self.eventscripts = copy.copy(eventscripts)
-        self.actionscripts = copy.copy(actionscripts)
-
-        # Get default npc and model data. Keep them for reference. 
-        self.original_models = copy.copy(npcmodels)
-        self.original_rooms = copy.copy(roomdata)
-        # Malleable versions
-        self.models = copy.copy(npcmodels)
-        self.rooms = copy.copy(roomdata)
-
-        #Dialogs
-        self.dialog_pointers = copy.copy(dialog_pointers)
-        self.dialog_data = copy.copy(dialog_data)
-
         # Minigame data.
         self.ball_solitaire = data.games.BallSolitaireGame(self)
         self.magic_buttons = data.games.MagicButtonsGame(self)
@@ -643,7 +551,7 @@ class GameWorld:
         self.password_submitter = ""
 
         # Music (moved this into its own classes to make exclusion easier)
-        self.music_pool = data.music.get_default_music
+        self.music_pool = data.music.get_default_music()
 
     @property
     def open_mode(self):
@@ -673,7 +581,13 @@ class GameWorld:
         Returns:
             randomizer.data.items.Item: Item instance for this world.
         """
-        return self.items_dict[cls.index]
+        if self.items_dict and cls.index in self.items_dict:
+            return self.items_dict[cls.index]
+        else:
+            if type(cls) == type:
+                return cls(self)
+            else:
+                return cls
 
     def get_enemy_instance(self, cls):
         """
@@ -703,6 +617,7 @@ class GameWorld:
         """Randomize this entire game world instance."""
         # Seed the PRNG at the start.
         random.seed(self.seed)
+        print(self.seed)
 
         characters.randomize_all(self)
         spells.randomize_all(self)
@@ -775,99 +690,99 @@ class GameWorld:
             self.rooms[326]["objects"][chancellor_index - 1]["event"] = 256
 
         # Bandit's Way gating
-        if self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.open):
             self.prepend_bits(192, [[0x7065, 4], [0x706D, 4]])
-        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.FinishMushroomWay):
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mushroomway):
             self.prepend_bits(199, [[0x7065, 4], [0x706D, 4]])
-        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitMario):
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario):
             self.prepend_bits(187, [[0x7065, 4], [0x706D, 4]])
-        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitMallow):
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mallow):
             self.prepend_bits(198, [[0x7065, 4], [0x706D, 4]])
-        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitGeno):
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.geno):
             self.prepend_bits(189, [[0x7065, 4], [0x706D, 4]])
-        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitBowser):
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.bowser):
             self.prepend_bits(190, [[0x7065, 4], [0x706D, 4]])
-        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.RecruitToadstool):
+        elif self.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.toadstool):
             self.prepend_bits(191, [[0x7065, 4], [0x706D, 4]])
 
         # Forest Maze gating, special conditions
-        if self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.open):
             self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
-        elif self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.ExchangeCricketPie):
+        elif self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.pie):
             self.prepend_bits(203, [[0x7066, 3], [0x706E, 3]])
 
         # Pipe Vault gating
-        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.FinishForestMaze):
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.forest):
             self.prepend_bits(211, [[0x7055, 7]])
-        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitMario):
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.mario):
             self.prepend_bits(187, [[0x7055, 7]])
-        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitMallow):
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.mallow):
             self.prepend_bits(198, [[0x7055, 7]])
-        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitGeno):
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.geno):
             self.prepend_bits(189, [[0x7055, 7]])
-        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitBowser):
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.bowser):
             self.prepend_bits(190, [[0x7055, 7]])
-        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.RecruitToadstool):
+        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.toadstool):
             self.prepend_bits(191, [[0x7055, 7]])
         else:
             self.prepend_bits(192, [[0x7055, 7]])
 
         # Booster Tower gating
-        if self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.open):
             self.prepend_bits(192, [[0x7053, 6]])
-        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.FinishMoleville):
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mines):
             self.prepend_bits(199, [[0x7053, 6]])
-        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitMario):
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario):
             self.prepend_bits(187, [[0x7053, 7]])
             self.eventscripts[1331] = tower_mario
-        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitMallow):
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow):
             self.prepend_bits(198, [[0x7053, 7]])
             self.eventscripts[1331] = tower_mallow
-        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitGeno):
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno):
             self.prepend_bits(189, [[0x7053, 7]])
             self.eventscripts[1331] = tower_geno
-        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitBowser):
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser):
             self.prepend_bits(190, [[0x7053, 7]])
             self.eventscripts[1331] = tower_bowser
-        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.RecruitToadstool):
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool):
             self.prepend_bits(191, [[0x7053, 7]])
             self.eventscripts[1331] = tower_toadstool
 
         # Marrymore gating
-        if self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.open):
             self.prepend_bits(192, [[0x704C, 7]])
-        elif self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.FinishBoosterHill):
+        elif self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.hill):
             self.prepend_bits(204, [[0x704C, 7]])
             self.replace_dialog(2116, '''You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy on Booster Hill.''')
-        elif self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.FinishBoosterTower):
+        elif self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
             self.prepend_bits(205, [[0x704C, 7]])
             self.replace_dialog(2116, '''You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy up atop Booster Tower.''')
 
         # Sea gating
-        if self.settings.is_flag_value(flags.SeaGate, SeaGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.SeaGate, SeaGating.open):
             self.prepend_bits(192, [[0x7067, 4], [0x706F, 3], [0x7067, 5], [0x706F, 4]])
-        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitMario):
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.mario):
             self.prepend_bits(187, [[0x7067, 4], [0x706F, 3]])
-        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitMallow):
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.mallow):
             self.prepend_bits(198, [[0x7067, 4], [0x706F, 3]])
-        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitGeno):
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.geno):
             self.prepend_bits(189, [[0x7067, 4], [0x706F, 3]])
-        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitBowser):
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.bowser):
             self.prepend_bits(190, [[0x7067, 4], [0x706F, 3]])
-        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.RecruitToadstool):
+        elif self.settings.is_flag_value(flags.SeaGate, SeaGating.toadstool):
             self.prepend_bits(191, [[0x7067, 4], [0x706F, 3]])
         else:
-            if self.settings.is_flag_value(flags.SeaGate, SeaGating.Find1Star):
+            if self.settings.is_flag_value(flags.SeaGate, SeaGating.star1):
                 value = 1
-            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find2Star):
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star2):
                 value = 2
-            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find3Star):
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star3):
                 value = 3
-            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find4Star):
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star4):
                 value = 4
-            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find5Star):
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star5):
                 value = 5
-            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.Find6Star):
+            elif self.settings.is_flag_value(flags.SeaGate, SeaGating.star6):
                 value = 6
             else:
                 raise Exception("failed to set star piece gate on sea")
@@ -877,42 +792,42 @@ class GameWorld:
             self.prepend_bits(192, [[0x7051, 0]])
 
         # Yaridovich gating
-        if self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.open):
             self.prepend_bits(192, [[0x7051, 1]])
-        elif self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.FinishSunkenShip):
+        elif self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.ship):
             self.prepend_bits(210, [[0x7051, 1]])
 
         # Monstro Town gating
-        if self.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.open):
             self.prepend_bits(192, [[0x7067, 7], [0x706F, 6]])
-        elif self.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.FinishLandsEnd):
+        elif self.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.landsend):
             pass
 
         # Volcano gating
-        if self.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
             self.prepend_bits(192, [[0x7090, 0], [0x7070, 1], [0x7068, 2]])
-        elif self.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.FinishNimbusLand):
+        elif self.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.nimbus):
             pass
 
         # Bowser's Keep gating
-        if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.open):
             self.prepend_bits(192, [[0x7068, 3]])
         else:
             self.prepend_bits(192, [[0x707A, 3]])
-            if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.FinishBarrelVolcano):
+            if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.volcano):
                 self.prepend_bits(192, [[0x707B, 2]])
             else:
-                if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find1Star):
+                if self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star1):
                     value = 1
-                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find2Star):
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star2):
                     value = 2
-                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find3Star):
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star3):
                     value = 3
-                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find4Star):
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star4):
                     value = 4
-                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find5Star):
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star5):
                     value = 5
-                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.Find6Star):
+                elif self.settings.is_flag_value(flags.BowsersKeepGate, BowsersKeepGating.star6):
                     value = 6
                 else:
                     raise Exception("failed to set star piece gate on keep")
@@ -922,22 +837,22 @@ class GameWorld:
                 self.prepend_bits(192, [[0x7051, 1], [0x707A, 3]])
 
         # Factory gating
-        if self.settings.is_flag_value(flags.FactoryGate, FactoryGating.AlwaysOpen):
+        if self.settings.is_flag_value(flags.FactoryGate, FactoryGating.open):
             self.prepend_bits(192, [[0x7070, 5], [0x7068, 5]])
-        elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.FinishBowsersKeep):
+        elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.keep):
             self.prepend_bits(2149, [[0x7070, 5], [0x7068, 5]])
         else:
-            if self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find1Star):
+            if self.settings.is_flag_value(flags.FactoryGate, FactoryGating.star1):
                 value = 1
-            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find2Star):
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.star2):
                 value = 2
-            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find3Star):
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.star3):
                 value = 3
-            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find4Star):
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.star4):
                 value = 4
-            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find5Star):
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.star5):
                 value = 5
-            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.Find6Star):
+            elif self.settings.is_flag_value(flags.FactoryGate, FactoryGating.star6):
                 value = 6
             else:
                 raise Exception("failed to set star piece gate on factory")
@@ -965,14 +880,14 @@ class GameWorld:
             self.prepend_bits(192, [[0x708B, 0]])
 
         # Win condition
-        if self.settings.is_flag_value(flags.WinCondition, WinConditions.StarPieces):
+        if self.settings.is_flag_value(flags.WinCondition,WinConditions.stars):
             self.prepend_bits(192, [[0x7051, 6]])
             self.eventscripts[3101][1]["args"][1] = [required_star_pieces]
-        elif self.settings.is_flag_value(flags.WinCondition, WinConditions.Culex):
+        elif self.settings.is_flag_value(flags.WinCondition,WinConditions.sealed):
             self.prepend_bits(192, [[0x7051, 7]])
 
         # Fireworks
-        if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.Vanilla):
+        if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.vanilla):
             pass
         else:
             # assign one of 3 random fireworks
@@ -983,9 +898,9 @@ class GameWorld:
                     if cmd["command"] == "set" and cmd["args"][0] == 0x70EA:
                         self.eventscripts[script_id][index]["args"][1] = fireworks_credits
             # append the setting
-            if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ShuffleFireworks):
+            if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.shuffle1):
                 self.prepend_bits(192, [[0x705D, 4]])
-            if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.ProgressiveFireworks):
+            if self.settings.is_flag_value(flags.FireworksSetting, FireworksOptions.progressive):
                 self.prepend_bits(192, [[0x705D, 5]])
 
         # EXP progression option
@@ -995,7 +910,7 @@ class GameWorld:
             self.prepend_bits(192, [[0x7056, 1]])
 
         # If star piece exp progression is on, set exp values for each star piece number and enable flag.
-        if self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.default):
+        if self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.vanilla):
             pass
         else:
             if self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.easystars) or self.settings.is_flag_value(flags.EXPChallenge, EXPChallengeOptions.easybosses):
@@ -1091,17 +1006,17 @@ class GameWorld:
                 # set character
                 self.eventscripts[c.event].insert(0, new_command(c.event, "run_event_as_subroutine", [c.item.starter_script]))
                 # check if character gates forest maze
-                if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
                     self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
  
         # Use first character to join as file select cursor.
-        if (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.Mallow)):
+        if (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.mallow)):
             cursor_id = 4
-        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.Geno)):
+        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.geno)):
             cursor_id = 3
-        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.Bowser)):
+        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.bowser)):
             cursor_id = 2
-        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.Toadstool)):
+        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.toadstool)):
             cursor_id = 1
         else:
             cursor_id = 0
@@ -1147,16 +1062,16 @@ class GameWorld:
                     grant_builders[c.event]["jumps"].append(jmp)
                 # forest maze gating
                 if utils.isclass_or_instance(c, data.chests.MushroomWayCharacter):
-                    if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                    if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
                         self.prepend_bits(202, [[0x7066, 3], [0x706E, 3]])
                 elif utils.isclass_or_instance(c, data.chests.MolevilleMinesCharacter):
-                    if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                    if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
                         self.prepend_bits(201, [[0x7066, 3], [0x706E, 3]])
                 elif utils.isclass_or_instance(c, data.chests.MarrymoreCharacter):
                     self.search_replace_dialog("`MARRYMORE_CHARACTER`", c.item.description)
                     random_character = random.choice([i.description for i in [data.items.MarioRecruit, data.items.MallowRecruit, data.items.GenoRecruit, data.items.BowserRecruit, data.items.ToadstoolRecruit] if not utils.isclass_or_instance(c.item, i)])
                     self.search_replace_dialog("`RANDOM_CHARACTER_NAME`", random_character)
-                    if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindMallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindGeno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindBowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.FindToadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                    if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
                         self.prepend_bits(200, [[0x7066, 3], [0x706E, 3]])
                 for room_id, npc, eventscripts, actionscripts in c.npcs:
                     roomobject = 0
@@ -1499,7 +1414,7 @@ class GameWorld:
             # if room service menu, replace with a blue dialog that says "It's broken"
             # otherwise, replace with a dialog that says "Sorry, we're all sold out today."
             for s in [s for s in (self.shops + self.special_shops)]:
-                if self.settings.is_flag_value(flags.ShopQuality, ShopQualities.Empty) or len(s.items) == 0:
+                if self.settings.is_flag_value(flags.ShopQuality, ShopQualities.empty) or len(s.items) == 0:
                     if utils.isclass_or_instance(s, data.shops.MolevilleTreasureShop):
                         self.prepend_bits(192, [[0x7088, 0], [0x7088, 1], [0x7088, 2]])
                     elif utils.isclass_or_instance(s, data.shops.DiscipleShop):

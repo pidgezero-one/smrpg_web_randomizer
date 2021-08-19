@@ -2,6 +2,7 @@
 
 import random
 import math
+import copy
 
 from inspect import isclass
 
@@ -20,16 +21,18 @@ def _randomize_item(item):
     if not item.is_equipment:
         return
 
-    if item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random):
+    if item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random):
         # Randomize number of attributes to go up or down. Guarantee >= 1 attribute goes up, but none go down.
         # For each set, 1/3 chance all non-zero ones go up/down.  Otherwise, weighted random number of stats.
         # ...attributes going up
         ups = []
         if random.randint(1, 3) == 1:
-            ups = [attr for attr in item.EQUIP_STATS if getattr(item, attr) > 0]
+            ups = [attr for attr in item.EQUIP_STATS if getattr(
+                item, attr) > 0]
 
         if not ups:
-            num_up = random.choices([1, 2, 3, 4, 5], weights=[5, 10, 10, 5, 1])[0]
+            num_up = random.choices(
+                [1, 2, 3, 4, 5], weights=[5, 10, 10, 5, 1])[0]
             while True:
                 ups = random.sample(item.EQUIP_STATS, num_up)
                 if set(ups) & set(item.primary_stats):
@@ -37,9 +40,11 @@ def _randomize_item(item):
 
         # ...attributes going down
         if random.randint(1, 3) == 1:
-            downs = [attr for attr in item.EQUIP_STATS if getattr(item, attr) >= 128]
+            downs = [attr for attr in item.EQUIP_STATS if getattr(
+                item, attr) >= 128]
         else:
-            num_down = random.choices([0, 1, 2, 3, 4, 5], weights=[1, 5, 10, 10, 5, 1])[0]
+            num_down = random.choices([0, 1, 2, 3, 4, 5], weights=[
+                                      1, 5, 10, 10, 5, 1])[0]
             downs = random.sample(item.EQUIP_STATS, num_down)
 
         # Give priority to going up if a stat was picked to go up.
@@ -58,7 +63,8 @@ def _randomize_item(item):
             if score != 0:
                 down_points = random.randint(0, random.randint(0, score))
             else:
-                down_points = random.randint(0, random.randint(0, random.randint(0, 100)))
+                down_points = random.randint(
+                    0, random.randint(0, random.randint(0, 100)))
 
             # Spread number of "down points" randomly across stats being decreased.  Add this number of points to
             # the "score" of the item so we add stat increases to compensate.
@@ -83,15 +89,18 @@ def _randomize_item(item):
 
         # Perform standard mutation on new non-zero stats.
         for attr in up_vals:
-            setattr(item, attr, utils.mutate_normal(up_vals[attr], minimum=1, maximum=127))
+            setattr(item, attr, utils.mutate_normal(
+                up_vals[attr], minimum=1, maximum=127))
 
         for attr in down_vals:
-            value = utils.mutate_normal(down_vals[attr], minimum=1, maximum=127)
+            value = utils.mutate_normal(
+                down_vals[attr], minimum=1, maximum=127)
             setattr(item, attr, -value)
 
         # If this is a weapon with a variance value, shuffle that too.
         if item.variance:
-            item.variance = utils.mutate_normal(item.variance, minimum=1, maximum=127)
+            item.variance = utils.mutate_normal(
+                item.variance, minimum=1, maximum=127)
 
         if item.tier == 1:
             odds = 2 / 3
@@ -202,43 +211,47 @@ def _randomize_item(item):
                     item.status_buffs.append(i)
 
     # "Some buffs added": add one buff to each "standard" armor, make some weapons buff magic
-    elif item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.some_buffs_added):
+    elif item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.some):
+        immunities_to_add = copy.copy(item.elemental_immunities)
+        buffs_to_add = copy.copy(item.status_buffs)
+        resistances_to_add = copy.copy(item.elemental_resistances)
         if (isinstance(item, (items.Shirt, items.Pants))):
-            item.status_immunities.append(4)
+            immunities_to_add.append(4)
         elif (isinstance(item, (items.ThickShirt, items.ThickPants))):
-            item.status_buffs.append(5)
+            buffs_to_add.append(5)
         elif (isinstance(item, (items.MegaShirt, items.MegaPants, items.MegaCape))):
-            item.status_buffs.append(6)
+            buffs_to_add.append(6)
         elif (isinstance(item, (items.HappyShirt, items.HappyPants, items.HappyCape, items.HappyShell, items.PolkaDress))):
-            item.elemental_immunities.append(4)
+            immunities_to_add.append(4)
         elif (isinstance(item, (items.CourageShell))):
-            item.status_immunities.append(3)
+            immunities_to_add.append(3)
         elif (isinstance(item, (items.FuzzyShirt, items.FuzzyPants, items.FuzzyCape, items.FuzzyDress))):
-            item.elemental_immunities.append(5)
+            immunities_to_add.append(5)
         elif (isinstance(item, (items.FireShirt, items.FirePants, items.FireCape, items.FireShell, items.FireDress))):
-            item.elemental_immunities.append(6)
+            immunities_to_add.append(6)
         elif (isinstance(item, (items.HeroShirt))):
-            item.status_immunities.append(6)
+            immunities_to_add.append(6)
         elif (isinstance(item, (items.PrincePants))):
-            item.status_immunities.append(0)
+            immunities_to_add.append(0)
         elif (isinstance(item, (items.RoyalDress))):
-            item.status_immunities.append(1)
+            immunities_to_add.append(1)
         elif (isinstance(item, (items.HealShell))):
-            item.status_immunities.append(2)
+            immunities_to_add.append(2)
         elif (isinstance(item, (items.StarCape))):
-            item.status_immunities.append(4)
+            immunities_to_add.append(4)
         elif (isinstance(item, (items.FroggieStick, items.Cymbals, items.RibbitStick, items.SonicCymbal, items.WarFan, items.Parasol))):
             mag = item.magic_attack
             atk = item.attack
             item.attack = mag
             item.magic_attack = atk
-
+        item.status_buffs = buffs_to_add
+        item.elemental_immunities = immunities_to_add
+        item.elemental_resistances = resistances_to_add
 
     if item.world.settings.is_flag_value(flags.EquipmentNoSafety, True):
         item.prevent_ko = False
 
-    
-    if not item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.Default):
+    if not item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.vanilla):
         # Randomize which characters can equip this item.
         # Old linear mode logic: Geno can only equip his own weapons, and nobody else can equip his due to softlocks!
         # This is fixed in open mode.
@@ -247,11 +260,14 @@ def _randomize_item(item):
 
             new_chars = set()
 
-            if item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.CompletelyRandom) or (item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.AccessoriesOnAnyoneRandom) and not item.is_accessory):
+            if item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.equip_all):
+                item.equip_chars = list({Mario, Mallow, Geno, Bowser, Peach})
+            elif item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.random) or (item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.r_accessories_all) and not item.is_accessory):
                 num_equippable = random.randint(1, random.randint(1, 5))
 
                 for _ in range(num_equippable):
-                    char_choices = {Mario, Mallow, Geno, Bowser, Peach} - new_chars
+                    char_choices = {Mario, Mallow,
+                                    Geno, Bowser, Peach} - new_chars
 
                     # Linear mode: Geno can only equip his own weapons (we checked if this was one of his above).
                     if not item.world.open_mode and item.is_weapon and Geno in char_choices:
@@ -265,11 +281,9 @@ def _randomize_item(item):
                     new_chars.add(random.choice(char_choices))
 
                 item.equip_chars = list(new_chars)
-                    
-            elif item.is_accessory and (item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.AccessoriesOnAnyone) or item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.AccessoriesOnAnyoneRandom)):
-                item.equip_chars = list({Mario, Mallow, Geno, Bowser, Peach})
 
-    
+            elif item.is_accessory and (item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.v_accessories_all) or item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.r_accessories_all)):
+                item.equip_chars = list({Mario, Mallow, Geno, Bowser, Peach})
 
 
 def randomize_all(world):
@@ -292,10 +306,11 @@ def randomize_all(world):
 
     # Base Shuffle for equipment to set up for further shuffling
     for item in world.items:
-        if not item.is_equipment or not item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random):
+        if not item.is_equipment or not item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random):
             continue
         if random.randint(1, 10) == 1:
-            item.effect_type = random.choice(["normal", "buffs", "status protection", "elemental resistance", "elemental immunity", "extra stats", "few effects"])
+            item.effect_type = random.choice(
+                ["normal", "buffs", "status protection", "elemental resistance", "elemental immunity", "extra stats", "few effects"])
         if item.is_weapon:
             temp_weapon_stat = (item.attack, item.price)
             weapon_stats.append(temp_weapon_stat)
@@ -327,10 +342,10 @@ def randomize_all(world):
             mid_accessory_costs.append(item.price)
         # Safety Ring, Attack Scarf, Ghost Medal, Jinx Belt, Troopa Pin
         elif item.index in [77, 81, 89, 90, 92]:
-             high_accessory_costs.append(item.price)
+            high_accessory_costs.append(item.price)
         # Scrooge Ring, EXP Booster, Coin Trick
         elif item.index in [79, 80, 88]:
-             high_accessory_costs.append(round(item.price * 62.5))
+            high_accessory_costs.append(round(item.price * 62.5))
 
     random.shuffle(weapon_stats)
     random.shuffle(weapon_tiers)
@@ -352,7 +367,7 @@ def randomize_all(world):
     endgame_count = 0
 
     for item in world.items:
-        if not item.is_equipment or not item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random):
+        if not item.is_equipment or not item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random):
             continue
         if item.is_weapon:
             temp_weapon_stats = weapon_stats[(item.index - 5)]
@@ -398,13 +413,13 @@ def randomize_all(world):
             item.price = mid_accessory_costs.pop()
         # Safety Ring, Attack Scarf, Ghost Medal, Jinx Belt, Troopa Pin
         elif item.index in [77, 81, 89, 90, 92]:
-             item.price = high_accessory_costs.pop()
+            item.price = high_accessory_costs.pop()
         # Scrooge Ring, EXP Booster, Coin Trick
         elif item.index in [79, 80, 88]:
-             item.price = round(high_accessory_costs.pop() / 62.5)
+            item.price = round(high_accessory_costs.pop() / 62.5)
 
     # Designate 1-4 magic weapons
-    if item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random):
+    if item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random):
         magic_weapon_count = random.randint(1, 4)
         magic_weapon_candidates = []
         for item in world.items:
@@ -418,9 +433,10 @@ def randomize_all(world):
         _randomize_item(item)
 
     # Safety check that at least four equips have instant death protection for safety.
-    if (item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.completely_random) and
+    if (item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random) and
             not item.world.settings.is_flag_value(flags.EquipmentNoSafety, True)):
-        instant_ko_items = len([item for item in world.items if item.prevent_ko])
+        instant_ko_items = len(
+            [item for item in world.items if item.prevent_ko])
         if instant_ko_items < 4:
             top_armor = [item for item in world.items if (item.is_armor or item.is_accessory) and item.tier == 1 and
                          not item.prevent_ko]
@@ -437,19 +453,21 @@ def randomize_all(world):
                 item.arbitrary_value = 1
             elif item.index == 80:
                 item.arbitrary_value = 10
-            item.rank_value = (item.attack * max(0, min(2, (item.attack + item.variance) /
-                                                        (1 if (item.attack - item.variance == 0) else
-                                                         (item.attack - item.variance)))) +
-                               max(0, (item.magic_attack / (2 if item.magic_attack < 0 else 1)) +
-                                   (item.magic_defense / (2 if item.magic_defense < 0 else 1)) +
-                                   (item.defense / (2 if item.defense < 0 else 1)) +
-                                   min(20, item.speed / 2)) +
-                               10 * len(item.status_immunities) +
-                               15 * len(item.elemental_immunities) +
-                               7.5 * len(item.elemental_resistances) +
-                               50 * (1 if item.prevent_ko else 0) +
-                               30 * len(item.status_buffs) + 10 *
-                               item.arbitrary_value)
+            item.rank_value = (
+                item.attack * max(
+                    0, min(
+                        2, (item.attack + item.variance) / (1 if (item.attack - item.variance == 0) else (item.attack - item.variance))
+                    )
+                ) + max(
+                    0, (item.magic_attack / (2 if item.magic_attack < 0 else 1)) + (item.magic_defense / (2 if item.magic_defense < 0 else 1)) + (item.defense / (2 if item.defense < 0 else 1)) + min(20, item.speed / 2)
+                ) +
+                15 * len(item.status_immunities) +
+                15 * len(item.elemental_immunities) +
+                7.5 * len(item.elemental_resistances) +
+                50 * (1 if item.prevent_ko else 0) +
+                30 * len(item.status_buffs) + 
+                10 *
+                item.arbitrary_value)
 
     # Calculate list position (used as a factor in pricing)
     ranks = [item for item in world.items if item.is_equipment]
@@ -459,15 +477,18 @@ def randomize_all(world):
     for item in world.items:
         if item.is_equipment:
             item.rank_order = (ranks.index(item) + 1 if item in ranks else 0)
-            item.rank_order_reverse = (ranks_reverse.index(item) + 1 if item in ranks_reverse else 0)
+            item.rank_order_reverse = (ranks_reverse.index(
+                item) + 1 if item in ranks_reverse else 0)
             if item.rank_order <= 15:
-                item.tier = 4
-            elif item.rank_order <= 35:
-                item.tier = 3
-            elif item.rank_order <= 55:
-                item.tier = 2
-            else:
                 item.tier = 1
+            elif item.rank_order <= 35:
+                item.tier = 2
+            elif item.rank_order <= 55:
+                item.tier = 3
+            elif item.rank_order <= 75:
+                item.tier = 4
+            else:
+                item.tier = 5
 
     # Useful debug function to print equipment property table.
     """
@@ -482,7 +503,7 @@ def randomize_all(world):
                   + ("Th" if (6 in item.elemental_resistances) else "") + ("Ju" if (7 in item.elemental_resistances) else "")+ ("; " if item.elemental_resistances != [] else "") + ("Buffs: " if item.status_buffs != [] else "")
                   + ("At" if (3 in item.status_buffs) else "") + ("Df" if (4 in item.status_buffs) else "") + ("MA" if (5 in item.status_buffs) else "") + ("MD" if (6 in item.status_buffs) else ""))
     """
-    
+
     if world.settings.is_flag_value(flags.PoisonMushroom, True):
         for item in world.items:
             if item.index == 175:

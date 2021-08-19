@@ -224,6 +224,7 @@ label {
 .flag-container-number > label {
     flex-basis: 1em;
     flex-grow: 1;
+    padding-right: 5px;
 }
 
 .flag-container,
@@ -346,7 +347,7 @@ label {
 
 .multiselect-option-container {
     border: 1px solid #666;
-    max-height: 300px;
+    height: 300px;
     display: flex;
     justify-content: initial;
 }
@@ -387,11 +388,51 @@ label {
 }
 .multiselect-button-container .separator {
     flex-grow: 1;
+    text-align: center;
+    display: flex;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.disabled .separator .clear-multiselect {
+    cursor: default;
+}
+.separator .clear-multiselect {
+    position: absolute;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+}
+.multiselect-button-container .separator input {
+    width: 100%;
 }
 .multiselect-button-container .btn {
     border-color: #c3c3c3;
+    white-space: nowrap;
 }
 
 .subcategory > div:not(:last-child) {
     border-right: 1px solid #ddd;
+}
+
+.flag-nav-interface {
+    margin-top: 20px;
+}
+
+
+#flag-string {
+    font-family: monospace;
+}
+
+.flag-container-list.disabled label,
+label.disabled,
+select:disabled,
+input[type="number"]:disabled {
+    opacity: 0.5;
+}
+
+.flag-container-list.disabled .multiselect-option-container {
+    overflow: hidden!important;
 }

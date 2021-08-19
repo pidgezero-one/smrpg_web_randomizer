@@ -141,6 +141,7 @@ class ShuffleLocationSelector(FlagOptions):
     TreasureSeller3 = "Moleville third treasure shop item"
     FireworksShop = "Moleville Mines two-level traintrack room chest"
     MolevilleMinesShyGuy = "Moleville Mines shy guy cart"
+    MolevilleMinesStarChest = "Moleville Mines star chest"
     MolevilleMinesCoins = "Moleville Mines near final train tracks chest"
     MolevilleMinesPunchinello1 = "Moleville Mines before boss left chest"
     MolevilleMinesPunchinello2 = "Moleville Mines before boss upper chest"
@@ -424,35 +425,401 @@ class ShuffleLocationSelector(FlagOptions):
     InnerFactoryBoss4 = "Inner Factory fourth boss Star Piece"
     InnerFactoryBossFinal = "Factory final boss Star Piece"
 
+regular_checks = [ # excludes key item checks. can't turn those off
+    ShuffleLocationSelector.MariosPadStarter1,
+    ShuffleLocationSelector.MariosPadStarter2,
+    ShuffleLocationSelector.MariosPadStarter3,
+    ShuffleLocationSelector.MariosPadStarter4,
+
+    ShuffleLocationSelector.MushroomWay1,
+    ShuffleLocationSelector.MushroomWay2,
+    ShuffleLocationSelector.MushroomWay3,
+    ShuffleLocationSelector.MushroomWay4,
+    ShuffleLocationSelector.HammerBrosReward,
+
+    ShuffleLocationSelector.MushroomKingdomHallway,
+    ShuffleLocationSelector.PeachSurprise,
+    ShuffleLocationSelector.MushroomKingdomVault1,
+    ShuffleLocationSelector.MushroomKingdomVault2,
+    ShuffleLocationSelector.MushroomKingdomVault3,
+    ShuffleLocationSelector.MushroomKingdomStore,
+    ShuffleLocationSelector.MushroomKingdomStoreBasement1,
+    ShuffleLocationSelector.MushroomKingdomStoreBasement2,
+    ShuffleLocationSelector.MushroomKingdomInn,
+
+    ShuffleLocationSelector.BanditsWay1,
+    ShuffleLocationSelector.BanditsWay2,
+    ShuffleLocationSelector.BanditsWayStarChest,
+    ShuffleLocationSelector.BanditsWayDogJump,
+    ShuffleLocationSelector.BanditsWayCroco,
+    ShuffleLocationSelector.Croco1Reward2,
+
+    ShuffleLocationSelector.PandoriteChest,
+    ShuffleLocationSelector.PandoriteReward1,
+    ShuffleLocationSelector.PandoriteReward2,
+    ShuffleLocationSelector.KeroSewersPandoriteRoom,
+    ShuffleLocationSelector.KeroSewersStarChest,
+    ShuffleLocationSelector.KeroSewersBeforeBelomeLower,
+
+    ShuffleLocationSelector.MidasRiverFirstTime,
+
+    ShuffleLocationSelector.CricketJamReward,
+    ShuffleLocationSelector.CricketPieReward,
+
+    ShuffleLocationSelector.RoseWayFiveChests1,
+    ShuffleLocationSelector.RoseWayFiveChests2,
+    ShuffleLocationSelector.RoseWayFiveChests3,
+    ShuffleLocationSelector.RoseWayFiveChests4,
+    ShuffleLocationSelector.RoseWayFiveChests5,
+    ShuffleLocationSelector.RoseWayPlatform,
+
+    ShuffleLocationSelector.RoseTownStore1,
+    ShuffleLocationSelector.RoseTownStore2,
+    ShuffleLocationSelector.RoseTownTreasureHouse1,
+    ShuffleLocationSelector.RoseTownTreasureHouse2,
+    ShuffleLocationSelector.RoseTownTreasureHouse3,
+    ShuffleLocationSelector.RoseTownToad,
+    ShuffleLocationSelector.Gaz,
+    ShuffleLocationSelector.RoseTownTreasureHouseMazeReward,
+    ShuffleLocationSelector.GardenerCloud1,
+    ShuffleLocationSelector.GardenerCloud2,
+
+    ShuffleLocationSelector.ForestMaze1,
+    ShuffleLocationSelector.ForestMaze2,
+    ShuffleLocationSelector.ForestMazeUnderground1,
+    ShuffleLocationSelector.ForestMazeUnderground2,
+    ShuffleLocationSelector.ForestMazeUnderground3,
+    ShuffleLocationSelector.ForestMazeRedEssence,
+    ShuffleLocationSelector.ForestMazeSecret1,
+    ShuffleLocationSelector.ForestMazeSecret2,
+    ShuffleLocationSelector.ForestMazeSecret3,
+    ShuffleLocationSelector.ForestMazeSecret4,
+    ShuffleLocationSelector.ForestMazeSecret5,
+
+    ShuffleLocationSelector.PipeVaultSlide1,
+    ShuffleLocationSelector.PipeVaultSlide2,
+    ShuffleLocationSelector.PipeVaultSlide3,
+    ShuffleLocationSelector.GoombaThumping1,
+    ShuffleLocationSelector.GoombaThumping2,
+    ShuffleLocationSelector.PipeVaultNippers1,
+    ShuffleLocationSelector.PipeVaultNippers2,
+
+    ShuffleLocationSelector.YosterIsleEntrance,
+    ShuffleLocationSelector.YosterIsleRaceReward1,
+    ShuffleLocationSelector.YosterIsleRaceReward2,
+    ShuffleLocationSelector.YosterIsleRaceReward3,
+
+    ShuffleLocationSelector.MolevilleMinesStarChest,
+    ShuffleLocationSelector.MolevilleMinesCoins,
+    ShuffleLocationSelector.MolevilleMinesPunchinello1,
+    ShuffleLocationSelector.MolevilleMinesPunchinello2,
+    ShuffleLocationSelector.TreasureSeller1,
+    ShuffleLocationSelector.TreasureSeller2,
+    ShuffleLocationSelector.TreasureSeller3,
+    ShuffleLocationSelector.BucketGirl,
+
+    ShuffleLocationSelector.BoosterPass1,
+    ShuffleLocationSelector.BoosterPass2,
+    ShuffleLocationSelector.BoosterPassSecret1,
+    ShuffleLocationSelector.BoosterPassSecret2,
+    ShuffleLocationSelector.BoosterPassSecret3,
+
+    ShuffleLocationSelector.BoosterTowerSpookum,
+    ShuffleLocationSelector.BoosterTowerRailway,
+    ShuffleLocationSelector.BoosterTowerMasher,
+    ShuffleLocationSelector.BoosterTowerThwomp,
+    ShuffleLocationSelector.BoosterTowerParachute,
+    ShuffleLocationSelector.BoosterTowerTop1,
+    ShuffleLocationSelector.BoosterTowerTop2,
+    ShuffleLocationSelector.BoosterTowerTop3,
+    
+    ShuffleLocationSelector.MarrymoreInn,
+    ShuffleLocationSelector.MarrymorePrize1,
+    ShuffleLocationSelector.MarrymorePrize2,
+    ShuffleLocationSelector.MarrymorePrize3,
+    ShuffleLocationSelector.MarrymorePrize4,
+    ShuffleLocationSelector.MarrymorePrize5,
+    ShuffleLocationSelector.MarrymorePrize6,
+
+    ShuffleLocationSelector.FrogDisciple1,
+    ShuffleLocationSelector.FrogDisciple2,
+    ShuffleLocationSelector.FrogDisciple3,
+    ShuffleLocationSelector.FrogDisciple4,
+    ShuffleLocationSelector.FrogDisciple5,
+    ShuffleLocationSelector.SeasideTownRescue,
+
+    ShuffleLocationSelector.SeaStarChest,
+    ShuffleLocationSelector.SeaSaveRoom1,
+    ShuffleLocationSelector.SeaSaveRoom2,
+    ShuffleLocationSelector.SeaSaveRoom3,
+    ShuffleLocationSelector.SeaWhirlpoolChest,
+
+    ShuffleLocationSelector.SunkenShipRatStairs,
+    ShuffleLocationSelector.SunkenShipCannonballPuzzle,
+    ShuffleLocationSelector.SunkenShip3DMaze,
+    ShuffleLocationSelector.SunkenShipShop,
+    ShuffleLocationSelector.SunkenShipCoins1,
+    ShuffleLocationSelector.SunkenShipCoins2,
+    ShuffleLocationSelector.SunkenShipCloneRoom,
+    ShuffleLocationSelector.SunkenShipFrogCoinRoom,
+    ShuffleLocationSelector.SunkenShipHidonMushroom,
+    ShuffleLocationSelector.HidonChest,
+    ShuffleLocationSelector.HidonReward1,
+    ShuffleLocationSelector.HidonReward2,
+    ShuffleLocationSelector.SunkenShipSafetyRing,
+    ShuffleLocationSelector.SunkenShipBandanaReds,
+
+    ShuffleLocationSelector.LandsEndRedEssence,
+    ShuffleLocationSelector.LandsEndChowPit1,
+    ShuffleLocationSelector.LandsEndChowPit2,
+    ShuffleLocationSelector.LandsEndBeeRoom,
+    ShuffleLocationSelector.LandsEndSecret1,
+    ShuffleLocationSelector.LandsEndSecret2,
+    ShuffleLocationSelector.LandsEndShyAway,
+    ShuffleLocationSelector.LandsEndStarChest1,
+    ShuffleLocationSelector.LandsEndStarChest2,
+    ShuffleLocationSelector.LandsEndStarChest3,
+    ShuffleLocationSelector.TroopaClimb,
+
+    ShuffleLocationSelector.BelomeTempleFortuneTeller,
+    ShuffleLocationSelector.BelomeTempleFortune1,
+    ShuffleLocationSelector.BelomeTempleFortune2,
+    ShuffleLocationSelector.BelomeTempleFortune3,
+    ShuffleLocationSelector.BelomeTempleFortune4,
+    ShuffleLocationSelector.BelomeTempleAfterFortune1,
+    ShuffleLocationSelector.BelomeTempleAfterFortune2,
+    ShuffleLocationSelector.BelomeTempleAfterFortune3,
+    ShuffleLocationSelector.BelomeTempleAfterFortune4,
+    ShuffleLocationSelector.BelomeTempleTreasure1,
+    ShuffleLocationSelector.BelomeTempleTreasure2,
+    ShuffleLocationSelector.BelomeTempleTreasure3,
+
+    ShuffleLocationSelector.MonstroTownEntrance,
+    ShuffleLocationSelector.JinxDojoReward,
+    ShuffleLocationSelector.CulexReward,
+    ShuffleLocationSelector.SuperJumps100,
+    ShuffleLocationSelector.SuperJumps30,
+    ShuffleLocationSelector.ThreeMustyFears,
+
+    ShuffleLocationSelector.BeanValley1,
+    ShuffleLocationSelector.BeanValley2,
+    ShuffleLocationSelector.BeanValleyLeftPiranhaPipe,
+    ShuffleLocationSelector.BeanValleyBottomLeftPiranhaPipe,
+    ShuffleLocationSelector.BeanValleyBottomRightPiranhaPipeLower,
+    ShuffleLocationSelector.BeanValleyBottomRightPiranhaPipeUpper,
+    ShuffleLocationSelector.BeanValleyBoxBoyRoom1,
+    ShuffleLocationSelector.BeanValleyBoxBoyRoom2,
+    ShuffleLocationSelector.BeanValleyPiranhaPlants,
+    ShuffleLocationSelector.BeanValleyBeanstalk,
+    ShuffleLocationSelector.BeanValleyCloud1,
+    ShuffleLocationSelector.BeanValleyCloud2,
+    ShuffleLocationSelector.BeanValleyFall1,
+    ShuffleLocationSelector.BeanValleyFall2,
+
+    ShuffleLocationSelector.CasinoGrateGuyPrize,
+
+    ShuffleLocationSelector.NimbusLandInn,
+    ShuffleLocationSelector.NimbusLandInn2,
+    ShuffleLocationSelector.NimbusLandShop,
+    ShuffleLocationSelector.NimbusCastleBeforeBirdetta2,
+    ShuffleLocationSelector.NimbusCastleOutOfBounds1,
+    ShuffleLocationSelector.NimbusCastleOutOfBounds2,
+    ShuffleLocationSelector.NimbusLandPrisoners,
+    ShuffleLocationSelector.NimbusCastleSingleGoldBird,
+    ShuffleLocationSelector.NimbusCastleAfterEgg1,
+    ShuffleLocationSelector.NimbusCastleAfterEgg2,
+    ShuffleLocationSelector.NimbusCastleCornerChestAfterValentina,
+    ShuffleLocationSelector.NimbusCastleStarAfterValentina,
+    ShuffleLocationSelector.NimbusLandCellar,
+    ShuffleLocationSelector.NimbusLandSignalRing,
+    
+    ShuffleLocationSelector.BarrelVolcanoSecret1,
+    ShuffleLocationSelector.BarrelVolcanoSecret2,
+    ShuffleLocationSelector.BarrelVolcanoBeforeStar1,
+    ShuffleLocationSelector.BarrelVolcanoBeforeStar2,
+    ShuffleLocationSelector.BarrelVolcanoStarRoom,
+    ShuffleLocationSelector.BarrelVolcanoHinopio,
+    ShuffleLocationSelector.BarrelVolcanoLavaPool,
+    ShuffleLocationSelector.BarrelVolcanoSaveRoom1,
+    ShuffleLocationSelector.BarrelVolcanoSaveRoom2,
+
+    ShuffleLocationSelector.BowsersKeepDarkRoom,
+    ShuffleLocationSelector.BowsersKeepCrocoShop1,
+    ShuffleLocationSelector.BowsersKeepCrocoShop2,
+    ShuffleLocationSelector.BowsersKeepInvisibleBridge1,
+    ShuffleLocationSelector.BowsersKeepInvisibleBridge2,
+    ShuffleLocationSelector.BowsersKeepInvisibleBridge3,
+    ShuffleLocationSelector.BowsersKeepInvisibleBridge4,
+    ShuffleLocationSelector.BowsersKeepMovingPlatforms1,
+    ShuffleLocationSelector.BowsersKeepMovingPlatforms2,
+    ShuffleLocationSelector.BowsersKeepMovingPlatforms3,
+    ShuffleLocationSelector.BowsersKeepMovingPlatforms4,
+    ShuffleLocationSelector.BowsersKeepElevatorPlatforms,
+    ShuffleLocationSelector.BowsersKeepCannonballRoom1,
+    ShuffleLocationSelector.BowsersKeepCannonballRoom2,
+    ShuffleLocationSelector.BowsersKeepCannonballRoom3,
+    ShuffleLocationSelector.BowsersKeepCannonballRoom4,
+    ShuffleLocationSelector.BowsersKeepCannonballRoom5,
+    ShuffleLocationSelector.BowsersKeepRotatingPlatforms1,
+    ShuffleLocationSelector.BowsersKeepRotatingPlatforms2,
+    ShuffleLocationSelector.BowsersKeepRotatingPlatforms3,
+    ShuffleLocationSelector.BowsersKeepRotatingPlatforms4,
+    ShuffleLocationSelector.BowsersKeepRotatingPlatforms5,
+    ShuffleLocationSelector.BowsersKeepRotatingPlatforms6,
+    ShuffleLocationSelector.BowsersKeepDoorReward1,
+    ShuffleLocationSelector.BowsersKeepDoorReward2,
+    ShuffleLocationSelector.BowsersKeepDoorReward3,
+    ShuffleLocationSelector.BowsersKeepDoorReward4,
+    ShuffleLocationSelector.BowsersKeepDoorReward5,
+    ShuffleLocationSelector.BowsersKeepDoorReward6,
+    ShuffleLocationSelector.BowsersKeepMagikoopa,
+
+    ShuffleLocationSelector.FactorySaveRoom,
+    ShuffleLocationSelector.FactoryBoltPlatforms,
+    ShuffleLocationSelector.FactoryFallingAxems,
+    ShuffleLocationSelector.FactoryTreasurePit1,
+    ShuffleLocationSelector.FactoryTreasurePit2,
+    ShuffleLocationSelector.FactoryConveyorPlatforms1,
+    ShuffleLocationSelector.FactoryConveyorPlatforms2,
+    ShuffleLocationSelector.FactoryBehindSnakes1,
+    ShuffleLocationSelector.FactoryBehindSnakes2,
+
+    ShuffleLocationSelector.FactoryToadGift,
+]
+
+freestanding_checks = [
+    ShuffleLocationSelector.BanditsWayCoin1,
+    ShuffleLocationSelector.BanditsWayCoin2,
+    ShuffleLocationSelector.BanditsWayCoin3,
+
+    ShuffleLocationSelector.MidasRiverBottomLeftCave,
+    ShuffleLocationSelector.MidasRiverBottomRightCave,
+
+    ShuffleLocationSelector.RoseWayMushroom,
+    ShuffleLocationSelector.RoseWayFlower,
+    ShuffleLocationSelector.RoseWayCoin1,
+    ShuffleLocationSelector.RoseWayCoin2,
+    ShuffleLocationSelector.RoseWayCoin3,
+    ShuffleLocationSelector.RoseWayCoin4,
+    ShuffleLocationSelector.RoseWayCoin5,
+
+    ShuffleLocationSelector.PipeVaultSlideCoin1,
+    ShuffleLocationSelector.PipeVaultSlideCoin2,
+    ShuffleLocationSelector.PipeVaultSlideCoin3,
+    ShuffleLocationSelector.PipeVaultSlideCoin4,
+    ShuffleLocationSelector.PipeVaultSlideCoin5,
+    ShuffleLocationSelector.PipeVaultSlideFrogCoin,
+
+    ShuffleLocationSelector.MolevilleMinesShyGuy,
+    
+    ShuffleLocationSelector.BoosterPassBush,
+    ShuffleLocationSelector.BoosterPassFlower,
+
+    ShuffleLocationSelector.BoosterTowerParachuteCrevice,
+    ShuffleLocationSelector.BoosterTowerCoin1,
+    ShuffleLocationSelector.BoosterTowerCoin2,
+    ShuffleLocationSelector.BoosterTowerCoin3,
+    ShuffleLocationSelector.BoosterTowerCoin4,
+    ShuffleLocationSelector.BoosterTowerCoin5,
+    ShuffleLocationSelector.BoosterTowerCoin6,
+    ShuffleLocationSelector.BoosterTowerCoin7,
+    ShuffleLocationSelector.BoosterTowerCoin8,
+    ShuffleLocationSelector.BoosterTowerCoin9,
+    ShuffleLocationSelector.BoosterTowerFrogCoin1,
+    ShuffleLocationSelector.BoosterTowerFrogCoin2,
+    ShuffleLocationSelector.BoosterTowerFrogCoin3,
+    ShuffleLocationSelector.BoosterTowerFrogCoin4,
+    
+    ShuffleLocationSelector.SunkenShipRatStairsFlower,
+    ShuffleLocationSelector.SunkenShipTroopaPuzzle,
+    ShuffleLocationSelector.SunkenShipCoinSnake,
+    ShuffleLocationSelector.SunkenShipTrampolinePuzzle,
+    ShuffleLocationSelector.SunkenShipBarrelPuzzle,
+    ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin1,
+    ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin2,
+    ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin3,
+    ShuffleLocationSelector.SunkenShipUnderwaterFrogCoin4,
+    ShuffleLocationSelector.SunkenShipBlooberRoom,
+
+    ShuffleLocationSelector.BelomeTempleTreasureFlower1,
+    ShuffleLocationSelector.BelomeTempleTreasureFlower2,
+    ShuffleLocationSelector.BelomeTempleTreasureFlower3,
+    ShuffleLocationSelector.BelomeTempleTreasureFlower4,
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin1,
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin2,
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin3,
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin4,
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin5,
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin6,
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin7,
+    ShuffleLocationSelector.BelomeTempleTreasureFrogCoin8,
+
+    ShuffleLocationSelector.BeanValleyBoxBoyRoomHidden,
+    ShuffleLocationSelector.BeanValleyFirstVineRoomFrogCoin,
+    ShuffleLocationSelector.BeanValleyFirstVineRoomLowerCoin,
+    ShuffleLocationSelector.BeanValleyFirstVineRoomMiddleCoin,
+    ShuffleLocationSelector.BeanValleyFirstVineRoomUpperCoin,
+    ShuffleLocationSelector.BeanValleyBeanstalkCoin1,
+    ShuffleLocationSelector.BeanValleyBeanstalkCoin2,
+    ShuffleLocationSelector.BeanValleyBeanstalkCoin3,
+    ShuffleLocationSelector.BeanValleyBeanstalkFrogCoin,
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin1,
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin2,
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin3,
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin4,
+    ShuffleLocationSelector.BeanValleyEastBeanstalkCoin5,
+    ShuffleLocationSelector.BeanValleyWestBeanstalkCoin1,
+    ShuffleLocationSelector.BeanValleyWestBeanstalkCoin2,
+    ShuffleLocationSelector.BeanValleyWestBeanstalkCoin3,
+    ShuffleLocationSelector.BeanValleyWestBeanstalkFrogCoin,
+
+    ShuffleLocationSelector.BarrelVolcanoDonut1,
+    ShuffleLocationSelector.BarrelVolcanoDonut2,
+    ShuffleLocationSelector.BarrelVolcanoReverse,
+
+    ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin1,
+    ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin2,
+    ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin3,
+    ShuffleLocationSelector.BowsersKeepInvisibleBridgeCoin4,
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin1,
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin2,
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin3,
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin4,
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin5,
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin6,
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin7,
+    ShuffleLocationSelector.BowsersKeepCannonballRoomCoin8,
+]
 
 class FireworksOptions(FlagOptions):
     """Enumeration for Fireworks flag option"""
-    Vanilla = "Vanilla"
-    ShuffleFireworks = "Shuffle Fireworks"
-    ProgressiveFireworks = "Shuffle Progressive Fireworks"
+    vanilla = "Vanilla"
+    shuffle1 = "Shuffle Fireworks"
+    progressive = "Shuffle Progressive Fireworks"
 
 
 class WinConditions(FlagOptions):
     """Enumeration for win condition options"""
-    FinalBoss = "Beat the final Factory boss"
-    Culex = "Beat Monstro Town sealed door"
-    StarPieces = "Collect required Star Pieces"
+    factory = "Beat the final Factory boss"
+    sealed = "Beat Monstro Town sealed door"
+    stars = "Collect required Star Pieces"
 
 
 class PlayableCharacters(FlagOptions):
     """Enumeration for win condition options"""
-    Mario = "Mario"
-    Mallow = "Mallow"
-    Geno = "Geno"
-    Bowser = "Bowser"
-    Toadstool = "Toadstool"
-    Random = "Random"
+    mario = "Mario"
+    mallow = "Mallow"
+    geno = "Geno"
+    bowser = "Bowser"
+    toadstool = "Toadstool"
+    random = "Random"
 
 class EquipmentCharactersOptions(FlagOptions):
-    Default = "Vanilla"
-    AccessoriesOnAnyone = "Vanilla, except anyone can wear any accessory"
-    AccessoriesOnAnyoneRandom = "Random, except anyone can wear any accessory"
-    CompletelyRandom = "Completely random"
+    vanilla = "Vanilla"
+    v_accessories_all = "Vanilla, except anyone can wear any accessory"
+    r_accessories_all = "Random, except anyone can wear any accessory"
+    random = "Completely random"
+    equip_all = "Anyone can equip anything"
 
 
 class LearnableSpells(FlagOptions):
@@ -487,136 +854,128 @@ class LearnableSpells(FlagOptions):
 
 class EquipmentPropertiesOptions(FlagOptions):
     """Enumeration for win condition options"""
-    default = "Default"
-    some_buffs_added = "Some buffs added"
-    completely_random = "Completely random"
+    vanilla = "Vanilla"
+    some = "Some buffs added"
+    random = "Completely random"
 
 
 class EXPMultiplierOptions(FlagOptions):
-    default = "Default"
+    vanilla = "Default"
     double = "Double"
     triple = "Triple"
 
 
 class BanditsWayGating(FlagOptions):
     """Enumeration for Bandit's Way gating flag option"""
-    RecruitMario = "Recruit Mario"
-    RecruitMallow = "Recruit Mallow"
-    RecruitGeno = "Recruit Geno"
-    RecruitBowser = "Recruit Bowser"
-    RecruitToadstool = "Recruit Toadstool"
-    FinishMushroomWay = "Finish Mushroom Way"
-    AlwaysOpen = "Always open"
+    mario = "Recruit Mario"
+    mallow = "Recruit Mallow"
+    geno = "Recruit Geno"
+    bowser = "Recruit Bowser"
+    toadstool = "Recruit Toadstool"
+    mushroomway = "Finish Mushroom Way"
+    open = "Always open"
 
 
 class ForestMazeGating(FlagOptions):
     """Enumeration for Forest Maze gating flag option"""
-    FindMario = "Find Mario"
-    FindMallow = "Find Mallow"
-    FindGeno = "Find Geno"
-    FindBowser = "Find Bowser"
-    FindToadstool = "Find Toadstool"
-    ExchangeCricketPie = "Exchange Cricket Pie"
-    AlwaysOpen = "Always open"
+    mario = "Find Mario"
+    mallow = "Find Mallow"
+    geno = "Find Geno"
+    bowser = "Find Bowser"
+    toadstool = "Find Toadstool"
+    pie = "Exchange Cricket Pie"
+    open = "Always open"
 
 
 class PipeVaultGating(FlagOptions):
     """Enumeration for Pipe Vault gating flag option"""
-    RecruitMario = "Recruit Mario"
-    RecruitMallow = "Recruit Mallow"
-    RecruitGeno = "Recruit Geno"
-    RecruitBowser = "Recruit Bowser"
-    RecruitToadstool = "Recruit Toadstool"
-    FinishForestMaze = "Finish Forest Maze"
-    AlwaysOpen = "Always open"
+    mario = "Recruit Mario"
+    mallow = "Recruit Mallow"
+    geno = "Recruit Geno"
+    bowser = "Recruit Bowser"
+    toadstool = "Recruit Toadstool"
+    forest = "Finish Forest Maze"
+    open = "Always open"
 
 
 class BoosterTowerGating(FlagOptions):
     """Enumeration for Booster Tower gating flag option"""
-    RecruitMario = "Recruit Mario"
-    RecruitMallow = "Recruit Mallow"
-    RecruitGeno = "Recruit Geno"
-    RecruitBowser = "Recruit Bowser"
-    RecruitToadstool = "Recruit Toadstool"
-    FinishMoleville = "Finish Moleville"
-    AlwaysOpen = "Always open"
+    mario = "Recruit Mario"
+    mallow = "Recruit Mallow"
+    geno = "Recruit Geno"
+    bowser = "Recruit Bowser"
+    toadstool = "Recruit Toadstool"
+    mines = "Finish Moleville Mines"
+    open = "Always open"
 
 
 class MarrymoreGating(FlagOptions):
     """Enumeration for Marrymore gating flag option"""
-    FinishBoosterHill = "Finish Booster Hill"
-    FinishBoosterTower = "Finish Booster Tower"
-    AlwaysOpen = "Always open"
+    hill = "Finish Booster Hill"
+    tower = "Finish Booster Tower"
+    open = "Always open"
 
 
 class SeaGating(FlagOptions):
     """Enumeration for Sea & Sunken Ship gating flag option"""
-    RecruitMario = "Recruit Mario"
-    RecruitMallow = "Recruit Mallow"
-    RecruitGeno = "Recruit Geno"
-    RecruitBowser = "Recruit Bowser"
-    RecruitToadstool = "Recruit Toadstool"
-    Find1Star = "Collect 1 Star Piece"
-    Find2Star = "Collect 2 Star Pieces"
-    Find3Star = "Collect 3 Star Pieces"
-    Find4Star = "Collect 4 Star Pieces"
-    Find5Star = "Collect 5 Star Pieces"
-    Find6Star = "Collect 6 Star Pieces"
-    AlwaysOpen = "Always open"
+    mario = "Recruit Mario"
+    mallow = "Recruit Mallow"
+    geno = "Recruit Geno"
+    bowser = "Recruit Bowser"
+    toadstool = "Recruit Toadstool"
+    star1 = "Collect 1 Star Piece"
+    star2 = "Collect 2 Star Pieces"
+    star3 = "Collect 3 Star Pieces"
+    star4 = "Collect 4 Star Pieces"
+    star5 = "Collect 5 Star Pieces"
+    star6 = "Collect 6 Star Pieces"
+    open = "Always open"
 
 
 class YaridovichGating(FlagOptions):
     """Enumeration for Seaside boss gating flag option"""
-    FinishSunkenShip = "Finish Sunken Ship"
-    AlwaysOpen = "Always available"
+    ship = "Finish Sunken Ship"
+    open = "Always available"
 
 
 class MonstroTownGating(FlagOptions):
     """Enumeration for Monstro Town gating flag option"""
-    FinishLandsEnd = "Finish Land's End"
-    AlwaysOpen = "Always open"
+    landsend = "Finish Land's End"
+    open = "Always open"
 
 
 class BarrelVolcanoGating(FlagOptions):
     """Enumeration for Barrel Volcano gating flag option"""
-    FinishNimbusLand = "Finish Nimbus Land"
-    AlwaysOpen = "Always open"
+    nimbus = "Finish Nimbus Land"
+    open = "Always open"
 
 
 class BowsersKeepGating(FlagOptions):
     """Enumeration for Bowser's Keep gating flag option"""
-    Find1Star = "Collect 1 Star Piece"
-    Find2Star = "Collect 2 Star Pieces"
-    Find3Star = "Collect 3 Star Pieces"
-    Find4Star = "Collect 4 Star Pieces"
-    Find5Star = "Collect 5 Star Pieces"
-    Find6Star = "Collect 6 Star Pieces"
-    FinishBarrelVolcano = "Finish Barrel Volcano"
-    AlwaysOpen = "Always open"
+    star1 = "Collect 1 Star Piece"
+    star2 = "Collect 2 Star Pieces"
+    star3 = "Collect 3 Star Pieces"
+    star4 = "Collect 4 Star Pieces"
+    star5 = "Collect 5 Star Pieces"
+    star6 = "Collect 6 Star Pieces"
+    volcano = "Finish Barrel Volcano"
+    open = "Always open"
 
 
 class FactoryGating(FlagOptions):
     """Enumeration for Factory gating flag option"""
-    AlwaysOpen = "Open when Bowser's Keep is opened"
-    FinishBowsersKeep = "Finish Bowser's Keep"
-    Find1Star = "Collect 1 Star Piece"
-    Find2Star = "Collect 2 Star Pieces"
-    Find3Star = "Collect 3 Star Pieces"
-    Find4Star = "Collect 4 Star Pieces"
-    Find5Star = "Collect 5 Star Pieces"
-    Find6Star = "Collect 6 Star Pieces"
-
-
-class StarProgressionchallengeOptions(FlagOptions):
-    default = "Default"
-    sp1 = "Star Pieces (easy)"
-    sp2 = "Star Pieces (hard)"
-    bosses = "Bosses"
-    none = "No EXP"
+    open = "Open when Bowser's Keep is opened"
+    keep = "Finish Bowser's Keep"
+    star1 = "Collect 1 Star Piece"
+    star2 = "Collect 2 Star Pieces"
+    star3 = "Collect 3 Star Pieces"
+    star4 = "Collect 4 Star Pieces"
+    star5 = "Collect 5 Star Pieces"
+    star6 = "Collect 6 Star Pieces"
 
 
 class EXPChallengeOptions(FlagOptions):
-    default = "Default"
+    vanilla = "Vanilla"
     easystars = "Star Pieces (easy)"
     hardstars = "Star Pieces (hard)"
     easybosses = "Bosses (easy)"
@@ -626,28 +985,28 @@ class EXPChallengeOptions(FlagOptions):
 
 class ItemQualities(FlagOptions):
     """Enumeration for item shuffle quality option"""
-    Original = "Original item pool"
-    Tier4 = "Completely random, unrestricted"
-    Tier3 = "Completely random, exclude top-tier items"
-    Tier2 = "Completely random, include some good items"
-    Tier1 = "Completely random, bad items only"
-    Empty = "Completely empty"
+    original = "Original item pool"
+    t4 = "Completely random, unrestricted"
+    t3 = "Completely random, exclude top-tier items"
+    t2 = "Completely random, include some good items"
+    t1 = "Completely random, bad items only"
+    empty = "Completely empty"
 
 
 class ShopQualities(FlagOptions):
     """Enumeration for shop shuffle quality option"""
-    Original = "Original shop pool"
-    Tier4 = "Completely random, unrestricted"
-    Tier3 = "Completely random, exclude top-tier items"
-    Tier2 = "Completely random, include some good items"
-    Tier1 = "Completely random, bad items only"
-    Empty = "Completely empty"
+    original = "Original shop pool"
+    t4 = "Completely random, unrestricted"
+    t3 = "Completely random, exclude top-tier items"
+    t2 = "Completely random, include some good items"
+    t1 = "Completely random, bad items only"
+    empty = "Completely empty"
 
 
 class AvailableMusic(FlagOptions):
-    Normal = music.NormalBattleMusic.name
-    Boss1 = music.MidbossMusic.name
-    Boss2 = music.BossMusic.name
-    Smithy = music.Smithy1Music.name
-    Culex = music.CulexMusic.name
-    Corn = music.CorndillyMusic.name
+    normal = music.NormalBattleMusic.name
+    boss1 = music.MidbossMusic.name
+    boss2 = music.BossMusic.name
+    smithy = music.Smithy1Music.name
+    culex = music.CulexMusic.name
+    corn = music.CorndillyMusic.name

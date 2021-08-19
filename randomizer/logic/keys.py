@@ -201,11 +201,13 @@ def fill_locations(world, locations_to_fill, required_items, extra_items=None):
     random.shuffle(required_items)
     random.shuffle(extra_items)
 
+    print(len(locations_to_fill))
     # Place required items first.
     _place_items(world, required_items, locations_to_fill)
 
     # Reverse remaining empty locations, then fill extra items.
     locations_to_fill = [l for l in locations_to_fill if not l.has_item]
+    print(len(locations_to_fill))
     locations_to_fill.reverse()
     _place_items(world, extra_items, locations_to_fill)
 
