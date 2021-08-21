@@ -829,7 +829,7 @@ class YaridovichGate(SelectOneFlag):
     id = "seaside"
 
 
-class GateInvisibleFlags(BooleanFlag):
+class SkipMustyFearsSequence(BooleanFlag):
     name = 'Skip 3 Musty Fears sequence'
     description = '''This flag affects the Musty Fears checks (normally Mario's Pad bed, Rose Town sign, and Yo'ster Isle goalpost; or whichever three locations are added to the seed when "Move invisible flag checks" is set to "Any landmark").
 <br>
@@ -1352,7 +1352,7 @@ class AreaAccessSubcategory(FlagCategory):
 class OtherAccessSubcategory(FlagCategory):
     flags = [
         YaridovichGate,
-        GateInvisibleFlags,
+        SkipMustyFearsSequence,
         BowserDoorRequirements,
         StarPiecesRequired,
         CasinoWarp,

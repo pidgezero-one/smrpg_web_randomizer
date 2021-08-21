@@ -165,7 +165,7 @@ def decompress(b):
 # 1. Use newlines. If a string goes too long, sometimes it wraps around to the
 #    other side and sometimes it softlocks the game. Definitely test these first
 #    before updating.
-wish_strings = list(map(compress, [
+wish_strings = [
     '\n\n    I wish for fish.',
     '\n\n    I weesh for quiche.',
     '\n\n    I wish I was a little bit taller.',
@@ -215,7 +215,7 @@ wish_strings = list(map(compress, [
     '\n\n    I wish Mario would stop\n    dropping me down pits.',
     '\n\n         I wish Link would find\n             my Varia Suit.',
     '\n\n       I wish Samus would find\n          my Cane of Somaria.',
-]))
+]
 
 wish_dialogs = [
     3111,
@@ -269,13 +269,13 @@ class Question:
 
     def get_string(self, correct_index):
         answers = [''] * 3
-        answers[correct_index] = ' \x07  ' + self.correct_answer + '\n'
+        answers[correct_index] = ' [select]  ' + self.correct_answer + '\n'
         index_1, index_2 = wrong_indexes[correct_index]
-        answers[index_1] = ' \x07  ' + self.wrong_answers[0] + '\n'
-        answers[index_2] = ' \x07  ' + self.wrong_answers[1] + '\n'
-        final_string = self.question + '\x03' + ''.join(answers)
+        answers[index_1] = ' [select]  ' + self.wrong_answers[0] + '\n'
+        answers[index_2] = ' [select]  ' + self.wrong_answers[1] + '\n'
+        final_string = self.question + '[await][page]\n' + ''.join(answers)
         final_string = final_string[:-1]  # Remove trailing newline from final answer.
-        return compress(final_string)
+        return final_string
 
     @property
     def string_length(self):

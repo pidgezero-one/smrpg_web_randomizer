@@ -512,15 +512,18 @@ def randomize_all(world):
 
 def get_spoiler(world):
     acc = {}
-    for location in world.key_locations + world.chest_locations:
-        if location.item.shuffle_type != items.ItemShuffleType.Required:
-            continue
+    
+    for location in world.starter_character_checks + world.recruitable_character_checks + world.spotted_character_checks + world.boss_star_checks + world.chest_locations + world.freestanding_item_locations:
         if isinstance(location.item, items.Item):
             item_str = location.item.name
         elif isclass(location.item):
             item_str = location.item.__name__
         else:
             item_str = str(location.item)
+        if utils.isclass_or_instance(location.item, items.Coins):
+            item_str = 'Coins%i' % location.item.amount
+        elif utils.isclass_or_instance(location.item, items.MultiFrogCoin):
+            item_str = 'FrogCoins%i' % location.item.amount
 
         acc[location.name] = item_str
 

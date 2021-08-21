@@ -118,7 +118,7 @@ dialog_data[66] = '''Even though `TOWER_BOSS_1` and
  bad fanfic, invites to this wedding
  are highly exclusive.[await]'''
 dialog_data[67] = ''' Don't listen to that guy,
- `MARRYMORE_CHAARCTER` x `RANDOM_BOSS_NAME_1`
+ `MARRYMORE_CHARACTER` x `RANDOM_BOSS_NAME_1`
  is a much better ship.[await]'''
 dialog_data[68] = ''' We were about to begin the
  ceremony when some kids, wearing

@@ -7,7 +7,7 @@ script = [
     {
         "identifier": 'ACTION_1017_set_sprite_sequence_0',
         "command": 'set_sprite_sequence',
-        "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [1, 0, [_0x08Flags.READ_AS_MOLD]]
     },
     {
         "identifier": 'ACTION_1017_ret_1',

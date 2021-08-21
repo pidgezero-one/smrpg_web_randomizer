@@ -13,6 +13,11 @@ script = [
         "args": [0x7044, 2]
     },
     {
+        "identifier": 'run_background_event_12',
+        "command": 'run_background_event',
+        "args": [93, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
+    },
+    {
         "identifier": 'pause_action_script_2',
         "command": 'pause_action_script',
         "args": [AreaObjects.MEM_70A8]
@@ -785,6 +790,10 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
+        "identifier": 'disable_event_trigger_for_object_at_70A8_2',
+        "command": 'disable_event_trigger_for_object_at_70A8'
+    },
+    {
         "identifier": 'clear_bit_1',
         "command": 'clear_bit',
         "args": [0x7044, 2]
@@ -802,5 +811,5 @@ script = [
     {
         "identifier": 'ret_100',
         "command": 'ret'
-    }
+    },
 ]

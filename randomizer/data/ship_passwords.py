@@ -11,7 +11,7 @@ hint_authors = [
     "        Memo left by FlareRDB:",
     "       Memo left by Gozengatta:",
     "     Memo left by inthenameofDT:",
-    "     Memo left by LockeColeLive:",
+    "      Memo left by LockeColeLive:",
     "         Memo left by patcdr:",
     "          Memo left by pidge:",
     "        Memo left by SeanCass:",
@@ -371,9 +371,9 @@ pool = (
         " This hero is “crazy” about a\n specific type of food![await]",
         " He makes a cameo here in the\n Mushroom Kingdom![await][pause] Though, he\n doesn't appreciate his wardrobe\n very much...[await]"
         "DRY BONES: He's the leader of the\n bunch, you know him well![await]",
-        "LimeFiasco",
-        "LIMEFIASCO",
-        "       Memo left by LimeFiasco:"
+        submitter="LimeFiasco",
+        submitter_credits="LIMEFIASCO",
+        submitter_hint_prefix="       Memo left by LimeFiasco:"
     ),
     Password(
         "weston",
@@ -417,7 +417,10 @@ def suggest_letter_bank(word, position, decoy_word):
     # add correct letter
     letters = [word[position]]
     # pick one other letter from this word
-    letters.append(random.choice([c for c in list(word) if c != word[position]]))
+    other_letters = [c for c in list(word) if c != word[position]]
+    if not other_letters:
+        other_letters = [c for c in list(word)]
+    letters.append(random.choice(other_letters))
     # pick letter at this index from decoy word (another random word in the pool)
     if decoy_word[position] not in letters:
         letters.append(decoy_word[position])

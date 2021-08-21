@@ -7,7 +7,7 @@ class Music:
 
 class NormalBattleMusic(Music):
     name = "Regular encounter theme"
-    value = 0x01
+    value = 0x00
 
 
 class MidbossMusic(Music):

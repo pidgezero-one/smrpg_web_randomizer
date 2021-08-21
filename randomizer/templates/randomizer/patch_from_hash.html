@@ -76,7 +76,7 @@
             // Save WAD button
             $("#btn-save-wad").click(function () {
                 rom.updateChecksum().then(function () {
-                    $("#btn-save-wad").html("Generating...").prop("disabled", true);
+                    $("#btn-save-wad").html("Generating... (this may take a few minutes)").prop("disabled", true);
                     $("#btn-save-rom").prop("disabled", true);
 
                     let fd = new FormData();

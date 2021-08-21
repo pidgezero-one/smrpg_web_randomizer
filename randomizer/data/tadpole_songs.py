@@ -76,6 +76,7 @@ class Song:
         self.notes = [Note(n, d) for (n, d) in notes]
         self.name = name
         self.submitter = submitter
+        self.submitter_credits = submitter_credits
         self.apprentice_hint_1 = hint_1
         self.apprentice_hint_2 = hint_2
         self.mole_hint = hint_3
@@ -164,7 +165,7 @@ class Song:
                 {
                     "identifier": 'jmp_if_7000_equals_short_%i' % index,
                     "command": 'jmp_if_7000_equals_short',
-                    "args": [128, 'EVENT_1082_jmp_if_bit_clear_5']
+                    "args": [128, prefix_command_name('jmp_if_bit_clear_%i' % index)]
                 },
                 {
                     "identifier": 'jmp_%i' % index,
@@ -285,12 +286,12 @@ class Song:
                         "args": [AreaObjects.MARIO]
                     },
                     {
-                        "identifier": 'set_7000_short_mem_to_7000_short_mem_%i' % index,
+                        "identifier": 'set_7000_short_mem_to_7000_short_mem____%i' % index,
                         "command": 'set_7000_short_mem_to_7000_short_mem',
                         "args": [0x7012, address]
                     },
                     {
-                        "identifier": 'set_7000_short_mem_to_7000_short_mem__%i' % index,
+                        "identifier": 'set_7000_short_mem_to_7000_short_mem______%i' % index,
                         "command": 'set_7000_short_mem_to_7000_short_mem',
                         "args": [0x7012, 0x7010]
                     },
@@ -300,8 +301,8 @@ class Song:
                         "args": [10]
                     },
                     {
-                        "identifier": 'set_7000_short_mem_to_7000_short_mem__%i' % index,
-                        "command": 'set_7000_short_mem_to_7000_short_mem',
+                        "identifier": 'set_7000_short_mem_to_7000_short_mem_-_%i' % index,
+                        "command": 'set_short',
                         "args": [0x7012, 3]
                     },
                     {
@@ -350,9 +351,9 @@ class Song:
                         "command": 'ret'
                     },
                 ])
-        for item in range(len(note_input)):
-            note_input[item]["identifier"] = prefix_command_name(note_input[item]["identifier"])
-        output.extend(note_input)
+            for item in range(len(note_input)):
+                note_input[item]["identifier"] = prefix_command_name(note_input[item]["identifier"])
+            output.extend(note_input)
 
         return output
 
@@ -381,6 +382,8 @@ class Song:
             address = pair[1]
             note = pair[0].note.val
             duration = pair[0].duration
+            if duration == 0:
+                duration = 35
 
             script_toadofsky_reactions.append({
                 "identifier": prefix_command_name('jmp_if_7000_equals_reaction_%i' % index),
@@ -420,7 +423,7 @@ class Song:
                     "args": [prefix_command_name('pause_notecheck_%i' % index)]
                 },
                 {
-                    "identifier": 'set_action_script_sync_notecheck_%i' % index,
+                    "identifier": 'set_action_script_sync_notecheck__%i' % index,
                     "command": 'set_action_script_sync',
                     "args": [0x14 + index, 572]
                 },

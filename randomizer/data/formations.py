@@ -2,7 +2,7 @@
 
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
-from . import enemies
+from . import enemies, music
 from .bosses import Battlefields
 
 
@@ -125,7 +125,9 @@ class EnemyFormation:
 
         # Parse out can't run and music flags.
         self.can_run_away = not bool(music_run_flags & 0x02)
-        self.music = music_run_flags & 0xfd
+        musicid = music_run_flags & 0xfc
+        self.music = [m for m in music.get_default_music() if m.value == musicid][0]
+        self.unknown = music_run_flags & 0x01
 
     @property
     def enemies(self):
@@ -194,7 +196,8 @@ class EnemyFormation:
         data += utils.ByteField(self.event_at_start if self.event_at_start is not None else 0xff).as_bytes()
         music_run_flags = self.music.value
         if not self.can_run_away:
-            music_run_flags |= 0x03
+            music_run_flags |= 0x02
+        music_run_flags |= self.unknown
         data += utils.ByteField(music_run_flags).as_bytes()
 
         base_addr = self.BASE_META_ADDRESS + self.index * 3 + 1

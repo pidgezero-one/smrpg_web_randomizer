@@ -250,7 +250,7 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
             remaining_fill_items.remove(item)
 
             # Place item in the first fillable location.
-            if allow_replacements and not(item.is_key or item.special_equip) and not(utils.isclass_or_instance(fillable_locations[0], chests.FrogCoinShopItem) or utils.isclass_or_instance(fillable_locations[0], chests.TreasureSellerReward))  and item.tier == 1 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
+            if allow_replacements and not utils.isclass_or_instance(fillable_locations[0], chests.OverworldItem) and not(item.is_key or item.special_equip) and not(utils.isclass_or_instance(fillable_locations[0], chests.FrogCoinShopItem) or utils.isclass_or_instance(fillable_locations[0], chests.TreasureSellerReward))  and item.tier == 1 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
                 fillable_locations[0].item = items.Coins(world, item.price // 2)
             else:
                 fillable_locations[0].item = item
@@ -760,7 +760,7 @@ def randomize_all(world):
                 elif utils.isclass_or_instance(chest, chests.OverworldItem):
                     item = generate_nonrequired_item(world, overworld_grant_table, chest)
                 if item:
-                    if item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
+                    if not utils.isclass_or_instance(chest, chests.OverworldItem) and item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
                         item = items.Coins(world, item.price // 2)
                     chest.item = item
                 # Ignore empty boss locations and empty character recruit locations, those SHOULD be empty if they don't receive an item

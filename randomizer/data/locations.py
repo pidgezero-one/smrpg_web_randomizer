@@ -57,7 +57,7 @@ class ItemLocation:
     access = 0
     not_depletable = False
     rooms = []
-    script = None
+    event = None
     key = False
     coinsanity = False
     description = ""

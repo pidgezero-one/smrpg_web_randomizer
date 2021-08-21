@@ -28,6 +28,7 @@ class EventScript:
                 try:
                     command_header = int(x.group(1))
                 except:
+                    #print(command)
                     raise Exception("event %i failed audit: one or more commands missing prefix" % i)
                 if (i != command_header):
                     errors.append("mismatched event id in script_%i identifier: %s" % (i, id))
@@ -66,12 +67,14 @@ class EventScript:
                 script_with_length = command
                 assembler = EventScript()
                 func = getattr(assembler, command["command"], None)
+                #print(command)
                 if "args" in command.keys():
                     dummy_args = [0 if isinstance(
                         arg, str) else arg for arg in command["args"]]
                 else:
                     dummy_args = []
                 if "subscript" in command.keys():
+                    print(command["identifier"])
                     dummy_subscript_lines = OSCommand.get_dummy_bytearray(
                         command["subscript"])
                     dummy_subscript = b''.join(dummy_subscript_lines)
@@ -81,7 +84,10 @@ class EventScript:
                 if not func:
                     raise Exception(
                         '%s(%s) is an invalid instruction!' % (command["command"], dummy_args))
-                func(*dummy_args)
+                try:
+                    func(*dummy_args)
+                except Exception as e:
+                    print("error: ", e, command)
                 try:
                     command_line = assembler.fin()
                 except:
@@ -222,37 +228,37 @@ class EventScript:
                     bank_20_scripts += command["line"]
                 offset += len(command["line"])
 
-        print("bank 1E ptrs", hex(len(bank_1E_pointer_table)), len(bank_1E_pointer_table))
-        print("bank 1F ptrs", hex(len(bank_1F_pointer_table)), len(bank_1F_pointer_table))
-        print("bank 20 ptrs", hex(len(bank_20_pointer_table)), len(bank_20_pointer_table))
+        #print("bank 1E ptrs", hex(len(bank_1E_pointer_table)), len(bank_1E_pointer_table))
+        #print("bank 1F ptrs", hex(len(bank_1F_pointer_table)), len(bank_1F_pointer_table))
+        #print("bank 20 ptrs", hex(len(bank_20_pointer_table)), len(bank_20_pointer_table))
 
-        print("bank 1E before", hex(len(bank_1E_scripts)), len(bank_1E_scripts))
+        #print("bank 1E before", hex(len(bank_1E_scripts)), len(bank_1E_scripts))
         empty_space = 0xF400 - len(bank_1E_scripts)
-        print("empty", hex(empty_space), empty_space)
+        #print("empty", hex(empty_space), empty_space)
         if (empty_space < 0):
             #bank_1E_scripts = bank_1E_scripts[0:(empty_space)]
             raise Exception("Bank 0x1E event script data too long: %i bytes (expected up to %i)" % (len(bank_1E_scripts), 0xF400))
         else:
             bank_1E_scripts += bytearray([0xFF for x in range(empty_space)])
-        print("bank 1E after", hex(len(bank_1E_scripts)), len(bank_1E_scripts))
-        print("bank 1F before", hex(len(bank_1F_scripts)), len(bank_1F_scripts))
+        #print("bank 1E after", hex(len(bank_1E_scripts)), len(bank_1E_scripts))
+        #print("bank 1F before", hex(len(bank_1F_scripts)), len(bank_1F_scripts))
         empty_space = 0xF400 - len(bank_1F_scripts)
-        print("empty", hex(empty_space), empty_space)
+        #print("empty", hex(empty_space), empty_space)
         if (empty_space < 0):
             #bank_1F_scripts = bank_1F_scripts[0:(empty_space)]
             raise Exception("Bank 0x1F event script data too long: %i bytes (expected up to %i)" % (len(bank_1F_scripts), 0xF400))
         else:
             bank_1F_scripts += bytearray([0xFF for x in range(empty_space)])
-        print("bank 1F after", hex(len(bank_1F_scripts)), len(bank_1F_scripts))
-        print("bank 20 before", hex(len(bank_20_scripts)), len(bank_20_scripts))
+        #print("bank 1F after", hex(len(bank_1F_scripts)), len(bank_1F_scripts))
+        #print("bank 20 before", hex(len(bank_20_scripts)), len(bank_20_scripts))
         empty_space = 0xD800 - len(bank_20_scripts)
-        print("empty", hex(empty_space), empty_space)
+        #print("empty", hex(empty_space), empty_space)
         if (empty_space < 0):
             #bank_20_scripts = bank_20_scripts[0:(empty_space)]
             raise Exception("Bank 0x20 event script data too long: %i bytes (expected up to %i)" % (len(bank_20_scripts), 0xD800))
         else:
             bank_20_scripts += bytearray([0xFF for x in range(empty_space)])
-        print("bank 20 after", hex(len(bank_20_scripts)), len(bank_20_scripts))
+        #print("bank 20 after", hex(len(bank_20_scripts)), len(bank_20_scripts))
 
         return bank_1E_pointer_table + bank_1E_scripts + bank_1F_pointer_table + bank_1F_scripts + bank_20_pointer_table + bank_20_scripts
 

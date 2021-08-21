@@ -23,6 +23,7 @@ class ObjectSequenceScript:
                 #print(command["identifier"])
                 script_with_length = command
                 assembler = ObjectSequenceScript()
+                #print(command)
                 func = getattr(assembler, command["command"], None)
                 if "args" in command.keys():
                     dummy_args = [0 if isinstance(
@@ -32,6 +33,7 @@ class ObjectSequenceScript:
                 if not func:
                     raise Exception(
                         '%s(%s) is an invalid instruction!' % (command["command"], dummy_args))
+                print(command)
                 func(*dummy_args)
                 command_line = assembler.fin()
                 script_with_length["line"] = command_line
@@ -98,18 +100,18 @@ class ObjectSequenceScript:
         #print(hex(offset))
         #print(hex(0x21be9a - 0x210800))
 
-        print("bank 21 ptrs", hex(len(bank_21_pointer_table)), len(bank_21_pointer_table))
-        print("bank 21 before", hex(len(bank_21_scripts)), len(bank_21_scripts))
+        #print("bank 21 ptrs", hex(len(bank_21_pointer_table)), len(bank_21_pointer_table))
+        #print("bank 21 before", hex(len(bank_21_scripts)), len(bank_21_scripts))
         #empty_space = 0xB2DF - len(bank_21_scripts)
         empty_space = 0xB800 - len(bank_21_scripts)
-        print("empty", hex(empty_space), empty_space)
+        #print("empty", hex(empty_space), empty_space)
         if (empty_space < 0):
             #bank_21_scripts = bank_21_scripts[0:(empty_space)]
             #raise Exception("Bank 0x21 sequence script data too long: %i bytes (expected up to %i)" % (len(bank_21_scripts), 0xB2DF))
             raise Exception("Bank 0x21 sequence script data too long: %i bytes (expected up to %i)" % (len(bank_21_scripts), 0xB800))
         else:
             bank_21_scripts += bytearray([0xFF for x in range(empty_space)])
-        print("bank 21 after", hex(len(bank_21_scripts)), len(bank_21_scripts))
+        #print("bank 21 after", hex(len(bank_21_scripts)), len(bank_21_scripts))
         
         return bank_21_pointer_table + bank_21_scripts
 

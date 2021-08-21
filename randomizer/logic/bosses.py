@@ -336,7 +336,7 @@ def randomize_all(world):
                             if index < len(unique_henchmen) and not (requires_henchman_with_pack and unique_henchmen[index].pack_number is None):
                                 new_unique_henchman = unique_henchmen[index]
                                 new_henchman = new_unique_henchman
-                                world.get_formation_pack_by_index(new_henchman.pack_number)
+                                # world.get_formation_pack_by_index(new_henchman.pack_number) # why was this even herE?
                                 location.unique_henchmen[index][index2].occupant = new_henchman
                                 set_henchman_run_flags(world, boss, new_henchman)
                             # otherwise, repeatable henchmen can fill the npc slot if permitted
@@ -420,11 +420,7 @@ def get_spoiler(world):
 
     for boss in world.boss_locations:
         data = collections.OrderedDict()
-        if utils.isclass_or_instance(boss, bosses.StarLocation) and boss.has_star:
-            data['Star Piece'] = 'Yes'
-        if utils.isclass_or_instance(boss, bosses.BossLocation):
-            name = utils.split_camel_case(boss.formation.bosses[0].name)
-            data['Boss'] = special_names.get(name, name)
+        data['Boss'] = boss.boss.name
         spoiler[utils.split_camel_case(boss.name)] = data
 
     return spoiler

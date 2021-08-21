@@ -65,7 +65,7 @@ def randomize_all(world):
     world.eventscripts[1959][0]["args"] = [hallways[1][0].to_proceed]
     world.eventscripts[1961][0]["args"] = [hallways[2][0].to_proceed]
     world.eventscripts[1963][0]["args"] = [hallways[3][0].to_proceed]
-    world.eventscripts[1965][0]["args"] = [hallways[4][0].to_proceed]
+    world.eventscripts[1965][1]["args"] = [hallways[4][0].to_proceed] 
     world.eventscripts[1967][0]["args"] = [hallways[5][0].to_proceed]
 
     for hall in hallways:
@@ -75,25 +75,25 @@ def randomize_all(world):
         # first room
         # if first room in the hallway, do not allow to go backwards
         if first_room.return_index is not None:
-            world.rooms[first_room.room]["event_tiles"][first_room.return_index] = 256
+            world.rooms[first_room.room]["event_tiles"][first_room.return_index]["event"] = 256
         # if this room has a normal exit, write the next room's loader into its designated exit event trigger
         if first_room.exit_type == ExitType.Tile:
-            world.rooms[first_room.room]["event_tiles"][first_room.proceed_index] = second_room.to_proceed
+            world.rooms[first_room.room]["event_tiles"][first_room.proceed_index]["event"] = second_room.to_proceed
         # if this room has an automatic exit (barrel counting, quiz, coins), write the next room's loader into its designated exit event
         else:
             world.eventscripts[first_room.proceed_index][0]["args"] = [second_room.to_proceed]
         # middle room
         if second_room.return_index is not None:
-            world.rooms[second_room.room]["event_tiles"][second_room.return_index] = first_room.to_return if first_room.to_return is not None else 256
+            world.rooms[second_room.room]["event_tiles"][second_room.return_index]["event"] = first_room.to_return if first_room.to_return is not None else 256
         if second_room.exit_type == ExitType.Tile:
-            world.rooms[second_room.room]["event_tiles"][second_room.proceed_index] = third_room.to_proceed
+            world.rooms[second_room.room]["event_tiles"][second_room.proceed_index]["event"] = third_room.to_proceed
         else:
             world.eventscripts[second_room.proceed_index][0]["args"] = [third_room.to_proceed]
         # final room
         if third_room.return_index is not None:
-            world.rooms[third_room.room]["event_tiles"][third_room.return_index] = second_room.to_return if second_room.to_return is not None else 256
+            world.rooms[third_room.room]["event_tiles"][third_room.return_index]["event"] = second_room.to_return if second_room.to_return is not None else 256
         # final room must always exit with 3350
         if third_room.exit_type == ExitType.Tile:
-            world.rooms[third_room.room]["event_tiles"][third_room.proceed_index] = 3350
+            world.rooms[third_room.room]["event_tiles"][third_room.proceed_index]["event"] = 3350
         else:
             world.eventscripts[third_room.proceed_index][0]["args"] = [3350]

@@ -81,7 +81,7 @@ def randomize_all(world):
             # NO protection from frog coin emporium
             pmu_instance = [i for i in item_pool if utils.isclass_or_instance(i, items.PickMeUp)]
             if (pmu_instance):
-                random.choice([a for a in shops_to_fill if a.access == 1 and not utils.isclass_or_instance(a, shops.NPCShop) and not utils.isclass_or_instance(a, shops.SeasideYaridShop)]).items.append(items.PickMeUp(world))
+                random.choice([a for a in shops_to_fill if a.access == 1 and not utils.isclass_or_instance(a, shops.NPCShop) and not utils.isclass_or_instance(a, shops.SeasideYaridShop)]).items.append(world.get_item_instance(items.PickMeUp))
                 item_pool.remove(pmu_instance[0])
 
             item_ids_that_cannot_be_in_a_frog_coin_shop = []
@@ -127,7 +127,7 @@ def randomize_all(world):
                 if remaining_space == 0:
                     continue
                 if utils.isclass_or_instance(shop, shops.ToadShop) and len([i for i in shop.items if utils.isclass_or_instance(i, items.PickMeUp)]) == 0:
-                    shop.items.append(items.PickMeUp(world))
+                    shop.items.append(world.get_item_instance(items.PickMeUp))
                     remaining_space -= 1
                 if world.settings.is_flag_enabled(flags.BiasShopShuffle):
                     good_optional = [i for i in game_should_optionally_include if shop.is_item_allowed(i) and i not in shop.items and (i.tier == 3 or i.tier == 4) and i not in frog_coin_items]

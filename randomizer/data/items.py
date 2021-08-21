@@ -3338,9 +3338,11 @@ class Coins(MiscReward):
             self.chest_70A7_upper = 10
             rounded = (amount // 10)
         self.amount = amount
-        chest_70A7_lower = rounded % 15
-        self.chest_70A7_lower = chest_70A7_lower
-        self.multiplier = (rounded - chest_70A7_lower) / 15
+        self.multiplier = (rounded - (rounded % 16)) / 15
+
+    @property
+    def chest_70A7_lower(self):
+        return self.amount % 16
 
 class Coins10(Coins):
     index = 193
@@ -3477,7 +3479,7 @@ class RecoveryMushroom(MiscReward):
     chest_event = 3072
     overworld_event = 2822
     npc_event = 397
-    overworld_event = 2822
+    overworld_midas_event = 2822
     model = overworld_items["mushroom"]
     item_type = 3
 
@@ -3507,6 +3509,10 @@ class MultiFrogCoin(MiscReward):
     chest_70A7_upper = 0
     item_type = 3
 
+    @property
+    def chest_70A7_lower(self):
+        return self.amount % 16
+
     def get_chest_event(self, parent):
         if parent == 246:
             return 3406
@@ -3531,9 +3537,7 @@ class MultiFrogCoin(MiscReward):
         """
         super().__init__(world)
         self.amount = amount
-        chest_70A7_lower = amount % 15
-        self.chest_70A7_lower = chest_70A7_lower
-        self.multiplier = (amount - chest_70A7_lower) / 15
+        self.multiplier = (amount - (amount % 16)) / 15
 
 
 class YouMissed(MiscReward):
@@ -3612,7 +3616,7 @@ class RecruitedCharacter(Item):
 
 class MarioRecruit(RecruitedCharacter):
     index = 220
-    description = PlayableCharacters.mario
+    description = PlayableCharacters.mario.value
     starter_script = 187
     container_script = 193
     model = 0
@@ -3637,7 +3641,7 @@ class MarioRecruit(RecruitedCharacter):
 
 class ToadstoolRecruit(RecruitedCharacter):
     index = 221
-    description = PlayableCharacters.toadstool
+    description = PlayableCharacters.toadstool.value
     starter_script = 191
     container_script = 197
     model = 1
@@ -3662,7 +3666,7 @@ class ToadstoolRecruit(RecruitedCharacter):
 
 class MallowRecruit(RecruitedCharacter):
     index = 222
-    description = PlayableCharacters.mallow
+    description = PlayableCharacters.mallow.value
     starter_script = 188
     container_script = 194
     model = 3
@@ -3687,7 +3691,7 @@ class MallowRecruit(RecruitedCharacter):
 
 class GenoRecruit(RecruitedCharacter):
     index = 223
-    description = PlayableCharacters.geno
+    description = PlayableCharacters.geno.value
     starter_script = 189
     container_script = 195
     model = 4
@@ -3713,7 +3717,7 @@ class GenoRecruit(RecruitedCharacter):
 class BowserRecruit(RecruitedCharacter):
     index = 224
     model = 2
-    description = PlayableCharacters.bowser
+    description = PlayableCharacters.bowser.value
     starter_script = 190
     container_script = 196
     sprites = {

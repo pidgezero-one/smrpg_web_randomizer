@@ -311,7 +311,7 @@ def assemble_from_table(pointer_table, data_table):
         # convert pointer data to offsets
         for dialog_id in range(len(compressed_dialog[b])):
             d = compressed_dialog[b][dialog_id]
-            print ('0x%02x' % (8 + pointer_position))
+            #print ('0x%02x' % (8 + pointer_position))
             for i in range(len(d)):
                 indices = [j for j, x in enumerate(pointer_table) if x["bank"] == bank and x["index"] == dialog_id and x["pos"] == i]
                 #if len(indices) > 0:
@@ -321,12 +321,12 @@ def assemble_from_table(pointer_table, data_table):
                     new_pointer_table[matched_pointer] = pointer_position
                 pointer_position += 1
             assembled_dialog_for_this_bank += d
-            print (dialog_id)
-            print (str(d))
-            print (len(d), pointer_position)
-            print ([hex(c) for c in d])
-            print ('')
-            print ('')
+            #print (dialog_id)
+            #print (str(d))
+            #print (len(d), pointer_position)
+            #print ([hex(c) for c in d])
+            #print ('')
+            #print ('')
                 
         # convert to pointers relative to section pointer
         if b == 0:
@@ -376,7 +376,7 @@ def assemble_from_table(pointer_table, data_table):
     # pointer bytes
     for i in range(len(new_pointer_table)):
         val = new_pointer_table[i]
-        print(i, hex(val))
+        #print(i, hex(val))
         assembled_pointers.append(val & 0xFF)
         assembled_pointers.append(val >> 8)
     

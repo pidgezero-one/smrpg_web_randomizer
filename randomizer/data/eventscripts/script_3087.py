@@ -41,8 +41,9 @@ script = [
         "args": [0x70a7, 145]
     },
     {
-        "identifier": 'EVENT_3087_ret_293',
-        "command": 'ret'
+        "identifier": 'EVENT_3087_set_291_',
+        "command": 'jmp_to_event',
+        "args": [3089]
     },
     {
         "identifier": 'EVENT_3087_subroutine',
@@ -64,8 +65,9 @@ script = [
         "args": [items.LambsLure]
     },
     {
-        "identifier": 'EVENT_3087_ret_297',
-        "command": 'ret'
+        "identifier": 'EVENT_3087_set_291__',
+        "command": 'jmp_to_event',
+        "args": [3089]
     },
     {
         "identifier": 'EVENT_3087_set_298',
@@ -78,8 +80,9 @@ script = [
         "args": [items.MysteryEgg]
     },
     {
-        "identifier": 'EVENT_3087_ret_301',
-        "command": 'ret'
+        "identifier": 'EVENT_3087_set_291___',
+        "command": 'jmp_to_event',
+        "args": [3089]
     }
 ]
 
