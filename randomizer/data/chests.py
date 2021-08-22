@@ -270,7 +270,7 @@ class MariosPadStarter4(StarterItem):
 class MushroomWay1(StarAllowedChest):
     description = ShuffleLocationSelector.MushroomWay1.value
     area = locations.Area.MushroomWay
-    item = items.Coins(Chest, 5)
+    item = items.Coins(5)
     rooms = [203]
     npc_ids = [0]
     event = 247
@@ -279,7 +279,7 @@ class MushroomWay1(StarAllowedChest):
 class MushroomWay2(StarAllowedChest):
     description = ShuffleLocationSelector.MushroomWay2.value
     area = locations.Area.MushroomWay
-    item = items.Coins(Chest, 8)
+    item = items.Coins(8)
     rooms = [203]
     npc_ids = [1]
     event = 246
@@ -679,6 +679,10 @@ class BanditsWayStarChest(StarAllowedChest):
     def can_access(self, inventory):
         return locations.can_access_bandits_way(self.world, inventory)
 
+    def item_allowed(self, item):
+        # dont allow slot machines on moving platforms
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
+
 
 class BanditsWayDogJump(StarAllowedChest):
     description = ShuffleLocationSelector.BanditsWayDogJump.value
@@ -690,6 +694,10 @@ class BanditsWayDogJump(StarAllowedChest):
 
     def can_access(self, inventory):
         return locations.can_access_bandits_way(self.world, inventory)
+
+    def item_allowed(self, item):
+        # dont allow slot machines on moving platforms
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
 
 
 class BanditsWayCroco(StarAllowedChest):
@@ -785,7 +793,7 @@ class PandoriteReward1(NPCReward):
 
 class PandoriteReward2(Chest):
     description = ShuffleLocationSelector.PandoriteReward2.value
-    item = items.Coins(Chest, 50)
+    item = items.Coins(50)
     rooms = [512]
     manual_70A7 = True
     event = 245
@@ -1060,7 +1068,7 @@ class RoseWayFiveChests2(StarAllowedChest):
     rooms = [81]
     npc_ids = [1]
     event = 246
-    item = items.Coins(Chest, 5)
+    item = items.Coins(5)
 
 
 class RoseWayFiveChests3(StarAllowedChest):
@@ -1069,7 +1077,7 @@ class RoseWayFiveChests3(StarAllowedChest):
     rooms = [81]
     npc_ids = [2]
     event = 245
-    item = items.Coins(Chest, 5)
+    item = items.Coins(5)
 
 
 class RoseWayFiveChests4(StarAllowedChest):
@@ -1078,7 +1086,7 @@ class RoseWayFiveChests4(StarAllowedChest):
     rooms = [81]
     npc_ids = [3]
     event = 244
-    item = items.Coins(Chest, 5)
+    item = items.Coins(5)
 
 
 class RoseWayFiveChests5(StarAllowedChest):
@@ -1087,7 +1095,7 @@ class RoseWayFiveChests5(StarAllowedChest):
     rooms = [81]
     npc_ids = [4]
     event = 243
-    item = items.Coins(Chest, 5)
+    item = items.Coins(5)
 
 # *** Rose Town
 
@@ -1510,7 +1518,7 @@ class PipeVaultNippers2(StarAllowedChest):
     rooms = [128]
     npc_ids = [1]
     event = 246
-    item = items.Coins(Chest, 20)
+    item = items.Coins(20)
 
     def can_access(self, inventory):
         return locations.can_access_pipe_vault(self.world, inventory)
@@ -1729,7 +1737,7 @@ class MolevilleMinesCoins(StarAllowedChest):
     rooms = [280]
     npc_ids = [0]
     event = 247
-    item = items.Coins(Chest, 150)
+    item = items.Coins(150)
     access = 2
 
     def can_access(self, inventory):
@@ -2227,6 +2235,9 @@ class BoosterTowerTop2(StarAllowedChest):
     def can_access(self, inventory):
         return locations.can_access_tower(self.world, inventory)
 
+    def item_allowed(self, item):
+        # dont allow slot machines when theres a chance of falling through the lower box
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
 
 class BoosterTowerTop3(StarAllowedChest):
     description = ShuffleLocationSelector.BoosterTowerTop3.value
@@ -2324,7 +2335,7 @@ class MarrymorePrize1(NPCReward):
     area = locations.Area.Marrymore
     description = ShuffleLocationSelector.MarrymorePrize1.value
     item = items.FlowerTab
-    rooms = [9]
+    rooms = [7]
     event = 253
 
 
@@ -2332,31 +2343,31 @@ class MarrymorePrize2(NPCReward):
     area = locations.Area.Marrymore
     description = ShuffleLocationSelector.MarrymorePrize2.value
     item = items.FlowerJar
-    rooms = [9]
+    rooms = [7]
     event = 252
 
 
 class MarrymorePrize3(NPCReward):
     area = locations.Area.Marrymore
-    item = items.MultiFrogCoin(NPCReward, 5)
+    item = items.MultiFrogCoin(NPCReward, 1)
     description = ShuffleLocationSelector.MarrymorePrize3.value
-    rooms = [9]
+    rooms = [7]
     event = 251
 
 
 class MarrymorePrize4(NPCReward):
     area = locations.Area.Marrymore
-    item = items.MultiFrogCoin(NPCReward, 10)
+    item = items.MultiFrogCoin(NPCReward, 2)
     description = ShuffleLocationSelector.MarrymorePrize4.value
-    rooms = [9]
+    rooms = [7]
     event = 250
 
 
 class MarrymorePrize5(NPCReward):
     area = locations.Area.Marrymore
-    item = items.MultiFrogCoin(NPCReward, 15)
+    item = items.MultiFrogCoin(NPCReward, 3)
     description = ShuffleLocationSelector.MarrymorePrize5.value
-    rooms = [9]
+    rooms = [7]
     event = 249
 
 
@@ -2364,7 +2375,7 @@ class MarrymorePrize6(NPCReward):
     area = locations.Area.Marrymore
     item = items.MultiFrogCoin(NPCReward, 20)
     description = ShuffleLocationSelector.MarrymorePrize6.value
-    rooms = [9]
+    rooms = [7]
     event = 248
 
 
@@ -2401,7 +2412,7 @@ class MarrymoreCharacter(CharacterRecruit):
     event = 186
     npcs = [
         (154, 8, [3809], []),
-        (54, 8, [3499, 3502], [])
+        (54, 8, [3499, 3502, 3506], [])
     ]
 
     def can_access(self, inventory):
@@ -2618,7 +2629,7 @@ class SunkenShipRatStairs(StarAllowedChest):
     rooms = [167]
     npc_ids = [0]
     event = 247
-    item = items.Coins(Chest, 100)
+    item = items.Coins(100)
     access = 1
 
     def __init__(self, world):
@@ -2656,7 +2667,7 @@ class SunkenShipShop(StarAllowedChest):
     rooms = [169]
     npc_ids = [0]
     event = 247
-    item = items.Coins(Chest, 100)
+    item = items.Coins(100)
     access = 1
 
     def __init__(self, world):
@@ -2675,7 +2686,7 @@ class SunkenShipCoins1(StarAllowedChest):
     rooms = [175]
     npc_ids = [0]
     event = 247
-    item = items.Coins(Chest, 100)
+    item = items.Coins(100)
     access = 2
 
     def can_access(self, inventory):
@@ -2688,7 +2699,7 @@ class SunkenShipCoins2(StarAllowedChest):
     rooms = [175]
     npc_ids = [1]
     event = 246
-    item = items.Coins(Chest, 100)
+    item = items.Coins(100)
     access = 2
 
     def can_access(self, inventory):
@@ -2771,7 +2782,7 @@ class HidonReward2(Chest):
     rooms = [513]
     event = 245
     manual_70A7 = True
-    item = items.Coins(Chest, 100)
+    item = items.Coins(100)
     access = 2
 
     def __init__(self, world):
@@ -2936,7 +2947,7 @@ class SunkenShipCoinSnake(NPCReward):
     rooms = [171]
     event = 253
     npc_ids = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-    item = items.Coins(NPCReward, 150)
+    item = items.Coins(150)
     # Needs special considerations for the sound played in 3216
     # and the sequences performed in 3216 and 3215
     # depending on the item
@@ -3019,6 +3030,10 @@ class LandsEndChowPit2(StarAllowedChest):
     npc_ids = [7]
     event = 246
     item = items.FrogCoin
+
+    def item_allowed(self, item):
+        # dont allow slot machines on moving platforms
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
 
 
 class LandsEndBeeRoom(StarAllowedChest):
@@ -3107,7 +3122,7 @@ class BelomeTempleFortuneTeller(Chest):
     rooms = [420]
     npc_ids = [5]
     event = 247
-    item = items.Coins(Chest, 50)
+    item = items.Coins(50)
 
 
 class BelomeTempleFortune1(Chest):
@@ -3146,7 +3161,7 @@ class BelomeTempleFortune4(Chest):
     rooms = [421]
     npc_ids = [9]
     event = 244
-    item = items.Coins(Chest, 100)
+    item = items.Coins(100)
     access = 2
 
 
@@ -3165,7 +3180,7 @@ class BelomeTempleAfterFortune2(Chest):
     rooms = [425]
     npc_ids = [1]
     event = 246
-    item = items.Coins(Chest, 150)
+    item = items.Coins(150)
 
 
 class BelomeTempleAfterFortune3(Chest):
@@ -4252,7 +4267,7 @@ class BarrelVolcanoBeforeStar2(StarAllowedChest):
     rooms = [384]
     npc_ids = [1]
     event = 246
-    item = items.Coins(Chest, 100)
+    item = items.Coins(100)
     access = 2
 
     def __init__(self, world):
@@ -4324,7 +4339,7 @@ class BarrelVolcanoHinopio(StarAllowedChest):
     rooms = [367]
     npc_ids = [0]
     event = 247
-    item = items.Coins(Chest, 100)
+    item = items.Coins(100)
     access = 2
 
     def __init__(self, world):
@@ -4383,7 +4398,7 @@ class BowsersKeepCrocoShop1(StarAllowedChest):
     rooms = [451]
     npc_ids = [0]
     event = 247
-    item = items.Coins(Chest, 150)
+    item = items.Coins(150)
     access = 2
 
     def __init__(self, world):
@@ -4607,6 +4622,10 @@ class BowsersKeepMovingPlatforms1(Chest):
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
 
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
+
 
 class BowsersKeepMovingPlatforms2(Chest):
     area = locations.Area.BowsersKeep
@@ -4624,6 +4643,10 @@ class BowsersKeepMovingPlatforms2(Chest):
 
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
+
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
 
 
 class BowsersKeepMovingPlatforms3(Chest):
@@ -4643,6 +4666,10 @@ class BowsersKeepMovingPlatforms3(Chest):
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
 
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
+
 
 class BowsersKeepMovingPlatforms4(Chest):
     area = locations.Area.BowsersKeep
@@ -4660,6 +4687,10 @@ class BowsersKeepMovingPlatforms4(Chest):
 
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
+
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
 
 
 class BowsersKeepElevatorPlatforms(Chest):
@@ -4931,6 +4962,10 @@ class BowsersKeepRotatingPlatforms1(Chest):
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
 
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
+
 
 class BowsersKeepRotatingPlatforms2(Chest):
     area = locations.Area.BowsersKeep
@@ -4948,6 +4983,10 @@ class BowsersKeepRotatingPlatforms2(Chest):
 
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
+
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
 
 
 class BowsersKeepRotatingPlatforms3(Chest):
@@ -4967,6 +5006,10 @@ class BowsersKeepRotatingPlatforms3(Chest):
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
 
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
+
 
 class BowsersKeepRotatingPlatforms4(Chest):
     area = locations.Area.BowsersKeep
@@ -4984,6 +5027,10 @@ class BowsersKeepRotatingPlatforms4(Chest):
 
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
+
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
 
 
 class BowsersKeepRotatingPlatforms5(Chest):
@@ -5003,6 +5050,10 @@ class BowsersKeepRotatingPlatforms5(Chest):
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
 
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
+
 
 class BowsersKeepRotatingPlatforms6(Chest):
     area = locations.Area.BowsersKeep
@@ -5020,6 +5071,10 @@ class BowsersKeepRotatingPlatforms6(Chest):
 
     def can_access(self, inventory):
         return locations.can_access_keep(self.world, inventory)
+
+    def item_allowed(self, item):
+        # dont allow slot machines on moving ground
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
 
 
 class BowsersKeepDoorReward1(Chest):
@@ -6262,7 +6317,6 @@ def get_default_chests(world):
         Croco2Item(world),
         BoosterPass1(world),
         BoosterPass2(world),
-        BoosterPassFlower(world),
         BoosterPassSecret1(world),
         BoosterPassSecret2(world),
         BoosterPassSecret3(world),

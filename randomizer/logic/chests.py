@@ -250,8 +250,9 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
             remaining_fill_items.remove(item)
 
             # Place item in the first fillable location.
-            if allow_replacements and not utils.isclass_or_instance(fillable_locations[0], chests.OverworldItem) and not(item.is_key or item.special_equip) and not(utils.isclass_or_instance(fillable_locations[0], chests.FrogCoinShopItem) or utils.isclass_or_instance(fillable_locations[0], chests.TreasureSellerReward))  and item.tier == 1 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
-                fillable_locations[0].item = items.Coins(world, item.price // 2)
+            if allow_replacements and not utils.isclass_or_instance(fillable_locations[0], chests.OverworldItem) and not(item.is_key or item.special_equip) and not(utils.isclass_or_instance(fillable_locations[0], chests.FrogCoinShopItem) or utils.isclass_or_instance(fillable_locations[0], chests.TreasureSellerReward))  and item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
+                fillable_locations[0].item = items.Coins(item.price // 2, world)
+                #print ("default:", item, item.tier, items.Coins(item.price // 2, world).amount)
             else:
                 fillable_locations[0].item = item
 
@@ -484,7 +485,8 @@ def generate_nonrequired_item(world, table, chest):
                 item = world.get_item_instance(items.Coins1)
         else:
             value = gamma.rvs(80, size=1)[0] // 1
-            item = items.Coins(world, value)
+            #print ("nonrequired:", item, item.tier, items.Coins(value, world).amount)
+            item = items.Coins(value, world)
     elif result == RandomGrantEnum.FrogCoins:
         if utils.isclass_or_instance(chest, chests.OverworldItem):
             item = world.get_item_instance(items.FrogCoin)
@@ -761,7 +763,8 @@ def randomize_all(world):
                     item = generate_nonrequired_item(world, overworld_grant_table, chest)
                 if item:
                     if not utils.isclass_or_instance(chest, chests.OverworldItem) and item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
-                        item = items.Coins(world, item.price // 2)
+                        #print("empty grants:", item, item.tier, items.Coins(item.price // 2, world))
+                        item = items.Coins(item.price // 2, world)
                     chest.item = item
                 # Ignore empty boss locations and empty character recruit locations, those SHOULD be empty if they don't receive an item
             #print(chest, chest.access, item.tier)
@@ -773,3 +776,12 @@ def randomize_all(world):
         # todo: character animations
         # will need to sub in characters for animations where no char is recruited (ie who goes in marrymore in a solo challenge?)
         # at some point, will need to figure out partitioning for rooms where coins end up
+
+def get_spoiler(world):
+    acc = []
+    
+    for location in world.starter_character_checks + world.recruitable_character_checks + world.spotted_character_checks + world.boss_star_checks + world.chest_locations + world.freestanding_item_locations:
+        if isinstance(location, chests.InvisibleFlagLocation):
+            acc.append(location.name)
+
+    return acc

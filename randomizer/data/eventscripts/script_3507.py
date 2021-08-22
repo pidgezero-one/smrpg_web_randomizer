@@ -6,6 +6,85 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_3507_action_queue_async_0',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3507_action_queue_async_0_SUBSCRIPT_object_memory_set_bit_0',
+                "command": 'object_memory_set_bit',
+                "args": [0x0b, [3]]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3507_set_short_1',
+        "command": 'set_short',
+        "args": [0x7024, 0x0000]
+    },
+    {
+        "identifier": 'EVENT_3507_set_short_2',
+        "command": 'set_short',
+        "args": [0x7034, 0x0010]
+    },
+    {
+        "identifier": 'EVENT_3507_set_short_3',
+        "command": 'set_short',
+        "args": [0x7026, 0x0001]
+    },
+    {
+        "identifier": 'EVENT_3507_set_random_4',
+        "command": 'set_random',
+        "args": [0x702c, 6]
+    },
+    {
+        "identifier": 'EVENT_3507_inc_short_5',
+        "command": 'inc_short',
+        "args": [0x702c]
+    },
+    {
+        "identifier": 'EVENT_3507_set_6',
+        "command": 'set',
+        "args": [0x70af, 3]
+    },
+    {
+        "identifier": 'EVENT_3507_freeze_camera_7',
+        "command": 'freeze_camera'
+    },
+    {
+        "identifier": 'EVENT_3507_action_queue_sync_8',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3507_action_queue_sync_8_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [11, 67, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3507_action_queue_sync_9',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.LAYER_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3507_action_queue_sync_9_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_3507_action_queue_sync_9_SUBSCRIPT_shift_northwest_steps_1',
+                "command": 'shift_northwest_steps',
+                "args": [18]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3507_fade_in_from_black_async_10',
+        "command": 'fade_in_from_black_async'
+    },
+    {
         "identifier": 'EVENT_3507_set_0',
         "command": 'set',
         "args": [0x70ae, 26]

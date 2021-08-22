@@ -26,11 +26,6 @@ script = [
                 "args": [Sounds._027_FOUND_AN_ITEM, 4]
             },
             {
-                "identifier": 'EVENT_3112_action_queue_async_0_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
                 "identifier": 'EVENT_3112_action_queue_async_0_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [30]

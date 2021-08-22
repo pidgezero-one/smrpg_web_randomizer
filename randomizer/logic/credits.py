@@ -92,7 +92,6 @@ class Credits(object):
         credit_len = 3380
         string_table_start = 0x3FE8E4
         string_table_size = len(self.strings) * 2
-        print(len(self.acc))
         assert len(self.acc) <= credit_len
         # Fill the unused section of credits script with 0.
         # This is very important.

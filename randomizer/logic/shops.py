@@ -70,6 +70,7 @@ def randomize_all(world):
 
             if world.settings.is_flag_value(flags.ShopQuality, ShopQualities.original):
                 item_pool = original_item_pool
+                game_should_optionally_include = []
             else:
                 item_pool = game_should_include
 
@@ -110,7 +111,7 @@ def randomize_all(world):
                     shop_pool = eligible_shops
                 if len(shop_pool) == 0:
                     # skip the item if no eligible shops
-                    pass
+                    continue
                 else:
                     shop_pool[0].items.append(item)
                 if shop_pool[0].frog_coin_shop:

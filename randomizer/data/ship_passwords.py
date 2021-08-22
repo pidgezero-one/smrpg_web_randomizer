@@ -394,7 +394,7 @@ pool = (
     ),
 )
 
-all_symbols = list('''♥♪•~©:;#×+%↑→←*&()-/?!.,\'''')
+all_symbols = list('''0123456789♥♪•~©:;#×+%↑→←*&()-/?!.,\'''')
 vowels = list('aeiouy')
 uncommon_consonants = list('bcdfghjklmnpqrstvwxz')
 

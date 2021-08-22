@@ -33,7 +33,7 @@ class ObjectSequenceScript:
                 if not func:
                     raise Exception(
                         '%s(%s) is an invalid instruction!' % (command["command"], dummy_args))
-                print(command)
+                #print(command)
                 func(*dummy_args)
                 command_line = assembler.fin()
                 script_with_length["line"] = command_line

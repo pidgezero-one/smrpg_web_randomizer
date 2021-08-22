@@ -6,12 +6,8 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_537_move_script_to_background_thread_1_0',
-        "command": 'move_script_to_background_thread_1'
-    },
-    {
         "identifier": 'EVENT_537_action_queue_sync_3',
-        "command": 'action_queue_sync',
+        "command": 'action_queue_async',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
@@ -30,10 +26,6 @@ script = [
         "identifier": 'EVENT_537_fade_out_music_to_volume_10',
         "command": 'fade_out_music_to_volume',
         "args": [1, 96]
-    },
-    {
-        "identifier": 'EVENT_537_remember_last_object_11',
-        "command": 'remember_last_object'
     },
     {
         "identifier": 'EVENT_537_fade_in_from_black_async_12',

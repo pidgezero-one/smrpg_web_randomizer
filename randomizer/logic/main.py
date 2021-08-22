@@ -998,7 +998,19 @@ class GameWorld:
             self.replace_dialog(1227, ''' I found another chest.\n I'll sell it for 800 coins.[await]\n  [select] (Buy it)\n  [select] (Pass)[await]''')
 
         # Starting characters
-        for c in self.starter_character_checks:
+        for position, c in enumerate(self.starter_character_checks):
+            if position == 0:
+                # Use first character to join as file select cursor.
+                if (utils.isclass_or_instance(c.item, data.items.MallowRecruit)):
+                    cursor_id = 4
+                elif (utils.isclass_or_instance(c.item, data.items.GenoRecruit)):
+                    cursor_id = 3
+                elif (utils.isclass_or_instance(c.item, data.items.BowserRecruit)):
+                    cursor_id = 2
+                elif (utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                    cursor_id = 1
+                else:
+                    cursor_id = 0
             if c.item is not None:
                 # set character
                 self.eventscripts[c.event].insert(0, new_command(c.event, "run_event_as_subroutine", [c.item.starter_script]))
@@ -1006,17 +1018,6 @@ class GameWorld:
                 if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
                     self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
  
-        # Use first character to join as file select cursor.
-        if (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.mallow)):
-            cursor_id = 4
-        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.geno)):
-            cursor_id = 3
-        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.bowser)):
-            cursor_id = 2
-        elif (self.settings.is_flag_value(flags.StartingCharacter, PlayableCharacters.toadstool)):
-            cursor_id = 1
-        else:
-            cursor_id = 0
 
 
         # Star Hill wishes
@@ -1122,8 +1123,20 @@ class GameWorld:
                             self.actionscripts[script_id] = sanitize_character_animation_script(toad_sprites, self.actionscripts[script_id])
 
         
+        # booster tower door animation
+        if self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario):
+            self.rooms[202]["objects"][0]["model"] = 0
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow):
+            self.rooms[202]["objects"][0]["model"] = 3
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno):
+            self.rooms[202]["objects"][0]["model"] = 4
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser):
+            self.rooms[202]["objects"][0]["model"] = 2
+        elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool):
+            self.rooms[202]["objects"][0]["model"] = 1
+
         # chests
-        for c in self.chest_locations + [x for x in self.freestanding_item_locations if not utils.isclass_or_instance(x, data.chests.OverworldItem)]:
+        for c in self.chest_locations + [x for x in self.freestanding_item_locations if not utils.isclass_or_instance(x, data.chests.OverworldItem) and not utils.isclass_or_instance(x, data.chests.SunkenShipCoinSnake)]:
             if c.item is not None and not utils.isclass_or_instance(c, data.chests.FrogCoinShopItem):
                 for d in c.dialogs_to_replace:
                     for id, dat in c.item.dialog_replacements:
@@ -1134,6 +1147,8 @@ class GameWorld:
                         "jumps": [],
                         "executions": []
                     }
+                    if utils.isclass_or_instance(c, data.chests.OverworldItem):
+                        grant_builders[c.event]["jumps"].append(new_command(c.event, 'set_7000_to_current_level'))
                 cmds = []
                 # physical chests
                 if utils.isclass_or_instance(c, data.chests.Chest): 
@@ -1235,6 +1250,7 @@ class GameWorld:
                             grant_builders[c.event]["jumps"].append(jmp)
                         # coin snake considerations
                         if utils.isclass_or_instance(c, data.chests.SunkenShipCoinSnake):
+                            print(c, c.item)
                             model_id = c.item.model.model
                             action_script = c.item.model.action_script
                             for r in c.rooms:
@@ -1272,7 +1288,7 @@ class GameWorld:
                                 self.eventscripts[3216] = e_3216
                                 
         # freestanding items
-        for c in [c for c in self.freestanding_item_locations if utils.isclass_or_instance(c, data.chests.OverworldItem)]:
+        for c in [x for x in self.freestanding_item_locations if utils.isclass_or_instance(x, data.chests.OverworldItem) or utils.isclass_or_instance(x, data.chests.SunkenShipCoinSnake)]:
             if c.item is not None:
                 for d in c.dialogs_to_replace:
                     for id, dat in c.item.dialog_replacements:
@@ -1280,9 +1296,11 @@ class GameWorld:
                             self.replace_dialog(id, dat)
                 if c.event not in grant_builders:
                     grant_builders[c.event] = {
-                        "jumps": [new_command(c.event, 'set_7000_to_current_level')],
+                        "jumps": [],
                         "executions": []
                     }
+                    if utils.isclass_or_instance(c, data.chests.OverworldItem):
+                        grant_builders[c.event]["jumps"].append(new_command(c.event, 'set_7000_to_current_level'))
                 cmds = []
                 if utils.isclass_or_instance(c, data.chests.PacketItem): 
                     # generate the right packet for the item
@@ -1293,6 +1311,7 @@ class GameWorld:
                     # set the NPC and action script for the item
                     model_id = c.item.model.model
                     action_script = c.item.model.action_script
+                    is_floating = c.item.model.hover
                     for r in c.rooms:
                         ctr = 0
                         for object_id in range(len(self.rooms[r]["objects"])):
@@ -1300,11 +1319,13 @@ class GameWorld:
                             if ctr in c.npc_ids:
                                 self.rooms[r]["objects"][object_id]["model"] = model_id
                                 self.rooms[r]["objects"][object_id]["action_script"] = action_script
+                                self.rooms[r]["objects"][object_id]["z_half"] = is_floating
                             ctr += 1
                             for clone_id in range(len(o["clones"])):
                                 if ctr in c.npc_ids:
                                     self.rooms[r]["objects"][object_id]["clones"][clone_id]["action_offset"] = 0
                                     self.rooms[r]["objects"][object_id]["clones"][clone_id]["npc_id_offset"] = 0
+                                    self.rooms[r]["objects"][object_id]["clones"][clone_id]["z_half"] = is_floating
                                 ctr += 1
                 # sett the item grant
                 if utils.isclass_or_instance(c.item, data.items.RegularItem):
@@ -1313,6 +1334,9 @@ class GameWorld:
                 if utils.isclass_or_instance(c, data.chests.MidasRiverTunnelItem): 
                     # midas river grant
                     cmds.append(new_command(c.event, 'jmp_to_event', [c.item.overworld_midas_event]))
+                elif not utils.isclass_or_instance(c, data.chests.OverworldItem): 
+                    # npc grants that should be treated as overworld items
+                    cmds.append(new_command(c.event, 'jmp_to_event', [c.item.npc_event]))
                 else:
                     # all other overworld item grant
                     cmds.append(new_command(c.event, 'jmp_to_event', [c.item.overworld_event]))
@@ -1455,7 +1479,7 @@ class GameWorld:
                         rs_item_2 = s.items[0]
                     # prices reduced to 75% (kerokerocola baseline)
                     price_1 = max(2, (rs_item_1.price * 0.75) // 1)
-                    price_2 = max(2, (rs_item_1.price * 0.75) // 1)
+                    price_2 = max(2, (rs_item_2.price * 0.75) // 1)
                     menu_string_1 = rs_item_1.room_service
                     if (price_1 < 100):
                         menu_string_1 += "."
@@ -1615,6 +1639,9 @@ class GameWorld:
                         else:
                             current_direction = self.rooms[boss_location.room_id]["objects"][obj["parent_index"]]["clones"][obj["clone_index"]]["direction"]
 
+
+                        if boss_location.room_id == 54:
+                            print(preferred_size, model.model_id, occupant)
                         new_direction = current_direction
 
                         # swap directions for scarecrow sprites
@@ -1740,6 +1767,11 @@ class GameWorld:
                             if utils.isclass_or_instance(b, data.bosses.Smithy):
                                 self.rooms[509]["objects"] = copy.deepcopy(non_smithy_509_objects)
 
+                            # move NPCs in megasmilax's room
+                            if utils.isclass_or_instance(b, data.bosses.MegaSmilax):
+                                self.rooms[254]["objects"][0]["visible"] = False
+                                self.rooms[254]["objects"][1]["z"] = 1
+
                         # TODO: partitions
 
                         # SPECIAL ANIMATIONS
@@ -1755,7 +1787,7 @@ class GameWorld:
                                     pause = 10
                                     for command_index, command in enumerate(script):
                                         if is_animation_header(command, boss_location.npc_id):
-                                            if model.animations.mines_punch is not None:
+                                            if model.animations is not None and model.animations.mines_punch is not None:
                                                 if model.animations.mines_punch.contact_frame > 0:
                                                     pause = model.animations.mines_punch.contact_frame + 8
                                                 else:
@@ -1979,7 +2011,7 @@ class GameWorld:
                                     self.eventscripts[script_id] = copy.deepcopy(non_smithy_3792)
                                 elif utils.isclass_or_instance(b, data.bosses.Smithy) and (script_id == 3794):
                                     self.eventscripts[script_id] = copy.deepcopy(non_smithy_3794)
-                                    if model.animations.endgame_challenge is not None:
+                                    if model.animations is not None and model.animations.endgame_challenge is not None:
                                         if model.animations.endgame_challenge.total_duration is not None:
                                             challenge_duration = model.animations.endgame_challenge.total_duration
                                             if challenge_duration > 55:
@@ -2097,9 +2129,9 @@ class GameWorld:
                                 
                                 # replace model sprite if necessary
                                 if model.animations is not None:
-                                    if utils.isclass_or_instance(b, data.bosses.Booster) and model.animations.tower_bullet.new_sprite_id is not None:
+                                    if utils.isclass_or_instance(b, data.bosses.Booster) and model.animations.tower_bullet is not None and model.animations.tower_bullet.new_sprite_id is not None:
                                         self.models[model.model_id]["sprite"] = model.animations.tower_bullet.new_sprite_id
-                                    elif utils.isclass_or_instance(b, data.bosses.Bundt) and model.animations.kitchen_prep.new_sprite_id is not None:
+                                    elif utils.isclass_or_instance(b, data.bosses.Bundt) and model.animations.kitchen_prep is not None and model.animations.kitchen_prep.new_sprite_id is not None:
                                         self.models[model.model_id]["sprite"] = model.animations.kitchen_prep.new_sprite_id
 
 
@@ -2244,8 +2276,7 @@ class GameWorld:
             fight_builders[e]["jumps"].append(new_command(e, "ret"))
             self.eventscripts[e] = copy.deepcopy(fight_builders[e]["jumps"]) + copy.deepcopy(fight_builders[e]["executions"])
         for e in sequence_setters:
-            sequence_setters[e].append(new_command(e, "ret"))
-            self.eventscripts[e] = copy.deepcopy(sequence_setters[e])
+            self.eventscripts[e] = copy.deepcopy(sequence_setters[e]) + self.eventscripts[e]
 
         # figure out partitions
 
@@ -2546,5 +2577,6 @@ class GameWorld:
         if self.open_mode:
             spoiler['Boss Locations'] = bosses.get_spoiler(self)
             spoiler['Item Locations'] = items.get_spoiler(self)
+            spoiler['Moved Invisible Items'] = chests.get_spoiler(self)
 
         return spoiler

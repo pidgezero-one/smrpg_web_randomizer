@@ -74,7 +74,7 @@ class EventScript:
                 else:
                     dummy_args = []
                 if "subscript" in command.keys():
-                    print(command["identifier"])
+                    #print(command["identifier"])
                     dummy_subscript_lines = OSCommand.get_dummy_bytearray(
                         command["subscript"])
                     dummy_subscript = b''.join(dummy_subscript_lines)

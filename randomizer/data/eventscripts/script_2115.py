@@ -24,10 +24,6 @@ script = [
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING, _0x10Flags.SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_2115_action_queue_async_0_SUBSCRIPT_fixed_f_coord_on_1',
-                "command": 'fixed_f_coord_on'
-            },
-            {
                 "identifier": 'EVENT_2115_action_queue_async_0_SUBSCRIPT_shift_southwest_pixels_2',
                 "command": 'shift_southwest_pixels',
                 "args": [5]

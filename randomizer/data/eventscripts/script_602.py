@@ -43,7 +43,7 @@ script = [
     {
         "identifier": 'EVENT_602_jmp_if_dialog_option_b_or_c_7',
         "command": 'jmp_if_dialog_option_b_or_c',
-        "args": ['EVENT_602_set_7000_to_70A0_short_mem_12', 'EVENT_602_run_dialog_59']
+        "args": ['EVENT_602_run_dialog_18', 'EVENT_602_run_dialog_59']
     },
     {
         "identifier": 'EVENT_602_close_dialog_8',
@@ -53,36 +53,6 @@ script = [
         "identifier": 'EVENT_602_open_shop_9',
         "command": 'jmp_to_event',
         "args": [646]
-    },
-    {
-        "identifier": 'EVENT_602_set_7000_to_70A0_short_mem_12',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70d7]
-    },
-    {
-        "identifier": 'EVENT_602_mem_compare_val_13',
-        "command": 'mem_compare_val',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_602_jmp_if_comparison_result_is_greater_or_equal_14',
-        "command": 'jmp_if_comparison_result_is_greater_or_equal',
-        "args": ['EVENT_602_run_dialog_18']
-    },
-    {
-        "identifier": 'EVENT_602_run_dialog_15',
-        "command": 'run_dialog',
-        "args": [2471, AreaObjects.MEM_70A8, [_0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
-    },
-    {
-        "identifier": 'EVENT_602_jmp_if_dialog_option_b_or_c_16',
-        "command": 'jmp_if_dialog_option_b_or_c',
-        "args": ['EVENT_602_set_short_31', 'EVENT_602_run_dialog_59']
-    },
-    {
-        "identifier": 'EVENT_602_jmp_17',
-        "command": 'jmp',
-        "args": ['EVENT_602_set_short_20']
     },
     {
         "identifier": 'EVENT_602_run_dialog_18',

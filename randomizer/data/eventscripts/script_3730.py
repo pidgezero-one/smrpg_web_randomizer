@@ -106,6 +106,10 @@ script = [
         "args": [824]
     },
     {
+        "identifier": 'EVENT_3730_fade_in_from_black_async_14_',
+        "command": 'fade_in_from_black_async'
+    },
+    {
         "identifier": 'EVENT_3730_ret_15',
         "command": 'ret'
     }

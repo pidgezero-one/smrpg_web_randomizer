@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": "EVENT_582_DISABLE_CHEST_ROOM_1",
-        "command": "disable_trigger_in_level",
-        "args": [AreaObjects.NPC_1, Rooms._097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F]
-    },
-    {
         "identifier": "EVENT_582_DISABLE_CHEST_ROOM_2",
         "command": "disable_trigger_in_level",
         "args": [AreaObjects.NPC_1, Rooms._098_ROSE_TOWN_TREASURE_HOUSE_2F]

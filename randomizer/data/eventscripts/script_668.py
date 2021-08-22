@@ -208,11 +208,6 @@ script = [
         "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
-        "identifier": 'EVENT_668_set_bit_137',
-        "command": 'set_bit',
-        "args": [0x7062, 2]
-    },
-    {
         "identifier": 'EVENT_668_jmp_to_event_139_',
         "command": 'run_event_as_subroutine',
         "args": [186]

@@ -1652,7 +1652,6 @@ class BundtBoss(Boss):
     }, width=35, height=56, animations=SpriteAnimationCollection(
         mines_punch=bundt_taunt,
         statue_intro=bundt_taunt,
-        statue_peck=bundt_short,
         statue_flustered=bundt_recoil,
         chandelier_challenge=bundt_taunt,
         endgame_challenge=bundt_taunt
@@ -1728,6 +1727,7 @@ class BundtBoss(Boss):
 
 squid_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 squid_hit = SpriteAnimation(sequence_id=3, contact_frame=36, total_duration=48)
+squid_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=18, total_duration=24, speed=SequenceSpeeds.FAST)
 tentacle_beckon = SpriteAnimation(sequence_id=1, new_sprite_id=223)
 
 
@@ -3891,7 +3891,7 @@ class BoomerBoss(Boss):
         (3057,
          ''' Gahahaha! Is it a fight you seek?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3072,
-         '''CHANDELI-HO: Whew...[delay] It's weird\n for me to say,[delay]  but I think I might\n be afraid of heights.[await]'''),
+         '''CHANDELI-HO: Whew...[delay] It's weird\n for me to say,[delay] but I think I might\n be afraid of heights.[await]'''),
         (3073,
          '''CHANDELI-HO: I won't let anything\n bad happen to Boomer![await]'''),
         (3338,
@@ -5065,7 +5065,11 @@ class Booster(BossAndStarLocation):
         BossModelFill(Rooms._193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS, 6, BoosterBoss,
                       SpriteSize.Small, False, target_action_scripts=[702], sequence_setter=792),
         BossModelFill(Rooms._054_BOOSTER_HILL_____DUMMY, 7, BoosterBoss, SpriteSize.Small, False, target_scripts=[
-                      3499, 3502, 3500, 3503], target_action_scripts=[], sequence_setter=200),
+                      3499, 3502, 3500, 3503, 3506], target_action_scripts=[717, 718], sequence_setter=200),
+        BossModelFill(Rooms._202_BOOSTER_TOWER_ENTRANCE, 1, BoosterBoss, SpriteSize.Small,
+                      False, target_scripts=[1328], target_action_scripts=[519], sequence_setter=878),
+        BossModelFill(Rooms._043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM, 3, BoosterBoss, SpriteSize.Small,
+                      False, target_scripts=[1312], target_action_scripts=[518], sequence_setter=797),
         BossModelFill(Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, 3, BoosterBoss, SpriteSize.Small,
                       False, target_scripts=[1282, 2278], target_action_scripts=[], sequence_setter=794),
         BossModelFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 10, BoosterBoss,
@@ -5444,7 +5448,7 @@ class Dodo(BossAndStarLocation):
     music = music.MidbossMusic
     boss = DodoBoss
     boss_locations = [
-        BossModelFill(Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT, 2, DodoBoss,
+        BossModelFill(Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT, 1, DodoBoss,
                       SpriteSize.Large, False, target_scripts=[2108], target_action_scripts=[], sequence_setter=818),
         BossModelFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 0, DodoBoss,
                       SpriteSize.Large, False, target_scripts=[2295], target_action_scripts=[], sequence_setter=795),

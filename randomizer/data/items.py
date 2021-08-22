@@ -13,9 +13,13 @@ from randomizer.logic import flags
 
 
 class OverworldItem:
-    def __init__(self, model, action_script):
+    model = None
+    action_script = 15
+    hover = False
+    def __init__(self, model, action_script, hover=False):
         self.model = model
         self.action_script = action_script
+        self.hover = hover
 
 
 overworld_items = {
@@ -52,7 +56,7 @@ overworld_items = {
     "parasol": OverworldItem(205, 830),
     "fan": OverworldItem(44, 842),
     "frying_pan": OverworldItem(235, 843),
-    "card": OverworldItem(150, 1017),
+    "card": OverworldItem(150, 1017, True),
     "candy": OverworldItem(153, 1018),
     "red_syrup": OverworldItem(250, 831),
     "green_syrup": OverworldItem(153, 831),
@@ -3305,6 +3309,7 @@ class Coins(MiscReward):
     quick_chest_event = 3080
     npc_event = 159
     item_type = 3
+    model = overworld_items["coin"]
 
     # coins and multi frog coins need 6 different events
     # because they run on per-chest counters (0x70DA-0x70DD and 0x70F8-0x70F9)
@@ -3322,7 +3327,7 @@ class Coins(MiscReward):
         else:
             return 3074
 
-    def __init__(self, world, amount):
+    def __init__(self, amount, world=None):
         """
 
         Args:
@@ -3333,16 +3338,16 @@ class Coins(MiscReward):
         super().__init__(world)
         if amount < 10:
             self.chest_70A7_upper = 8
-            rounded = amount
+            self.chest_70A7_lower = amount
         else:
             self.chest_70A7_upper = 10
-            rounded = (amount // 10)
+            hits = amount // 10
+            loops = hits // 16
+            leftover = hits - 15 * loops
+            self.multiplier = loops
+            self.chest_70A7_lower = leftover
         self.amount = amount
-        self.multiplier = (rounded - (rounded % 16)) / 15
 
-    @property
-    def chest_70A7_lower(self):
-        return self.amount % 16
 
 class Coins10(Coins):
     index = 193
@@ -3351,7 +3356,7 @@ class Coins10(Coins):
     overworld_midas_event = 2818
     model = overworld_items["coin"]
     def __init__(self, world):
-        super().__init__(world, 10)
+        super().__init__(10, world)
 
 class Coins1(Coins):
     index = 194
@@ -3360,7 +3365,7 @@ class Coins1(Coins):
     overworld_midas_event = 2819
     model = overworld_items["small_coin"]
     def __init__(self, world):
-        super().__init__(world, 1)
+        super().__init__(1, world)
 
 # *** Misc.
 

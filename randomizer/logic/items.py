@@ -215,30 +215,33 @@ def _randomize_item(item):
         immunities_to_add = copy.copy(item.elemental_immunities)
         buffs_to_add = copy.copy(item.status_buffs)
         resistances_to_add = copy.copy(item.elemental_resistances)
+        statuses_to_add = copy.copy(item.status_immunities)
         if (isinstance(item, (items.Shirt, items.Pants))):
-            immunities_to_add.append(4)
+            statuses_to_add.append(4)
         elif (isinstance(item, (items.ThickShirt, items.ThickPants))):
             buffs_to_add.append(5)
         elif (isinstance(item, (items.MegaShirt, items.MegaPants, items.MegaCape))):
             buffs_to_add.append(6)
         elif (isinstance(item, (items.HappyShirt, items.HappyPants, items.HappyCape, items.HappyShell, items.PolkaDress))):
-            immunities_to_add.append(4)
+            item.prevent_ko = True
         elif (isinstance(item, (items.CourageShell))):
-            immunities_to_add.append(3)
+            statuses_to_add.append(3)
+        elif (isinstance(item, (items.SailorShirt, items.SailorPants, items.SailorCape, items.NauticaDress))):
+            immunities_to_add.append(4)
         elif (isinstance(item, (items.FuzzyShirt, items.FuzzyPants, items.FuzzyCape, items.FuzzyDress))):
             immunities_to_add.append(5)
         elif (isinstance(item, (items.FireShirt, items.FirePants, items.FireCape, items.FireShell, items.FireDress))):
             immunities_to_add.append(6)
         elif (isinstance(item, (items.HeroShirt))):
-            immunities_to_add.append(6)
+            statuses_to_add.append(6)
         elif (isinstance(item, (items.PrincePants))):
-            immunities_to_add.append(0)
+            statuses_to_add.append(0)
         elif (isinstance(item, (items.RoyalDress))):
-            immunities_to_add.append(1)
+            statuses_to_add.append(1)
         elif (isinstance(item, (items.HealShell))):
-            immunities_to_add.append(2)
+            statuses_to_add.append(2)
         elif (isinstance(item, (items.StarCape))):
-            immunities_to_add.append(4)
+            statuses_to_add.append(4)
         elif (isinstance(item, (items.FroggieStick, items.Cymbals, items.RibbitStick, items.SonicCymbal, items.WarFan, items.Parasol))):
             mag = item.magic_attack
             atk = item.attack
@@ -247,6 +250,7 @@ def _randomize_item(item):
         item.status_buffs = buffs_to_add
         item.elemental_immunities = immunities_to_add
         item.elemental_resistances = resistances_to_add
+        item.status_immunities = statuses_to_add
 
     if item.world.settings.is_flag_value(flags.EquipmentNoSafety, True):
         item.prevent_ko = False
@@ -304,122 +308,123 @@ def randomize_all(world):
     mid_accessory_costs = []
     high_accessory_costs = []
 
-    # Base Shuffle for equipment to set up for further shuffling
-    for item in world.items:
-        if not item.is_equipment or not item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random):
-            continue
-        if random.randint(1, 10) == 1:
-            item.effect_type = random.choice(
-                ["normal", "buffs", "status protection", "elemental resistance", "elemental immunity", "extra stats", "few effects"])
-        if item.is_weapon:
-            temp_weapon_stat = (item.attack, item.price)
-            weapon_stats.append(temp_weapon_stat)
-            weapon_tiers.append(item.tier)
-        elif item.is_armor:
-            armor_tiers.append(item.tier)
-            if item.index in [41, 42, 44]:
-                temp_armor_stat = (item.defense, item.magic_defense)
-                mega_armor.append(temp_armor_stat)
-            elif item.index in [45, 46, 47, 48, 49]:
-                temp_armor_stat = (item.defense, item.magic_defense)
-                happy_armor.append(temp_armor_stat)
-            elif item.index in [50, 51, 52, 53, 54]:
-                temp_armor_stat = (item.defense, item.magic_defense)
-                sailor_armor.append(temp_armor_stat)
-            elif item.index in [55, 56, 57, 58]:
-                temp_armor_stat = (item.defense, item.magic_defense)
-                fuzzy_armor.append(temp_armor_stat)
-            elif item.index in [59, 60, 61, 62, 63]:
-                temp_armor_stat = (item.defense, item.magic_defense)
-                fire_armor.append(temp_armor_stat)
-            elif item.index in [64, 65, 66, 67, 68]:
-                temp_armor_stat = (item.defense, item.magic_defense)
-                endgame_armor.append(temp_armor_stat)
-        elif item.index in [84, 85, 86, 87]:
-            pins_costs.append(item.price)
-        # Zoom Shoes, Safety Badge, Jump Shoes, Amulet, Rare Scarf, B'Tub Ring, Feather, Signal Ring
-        elif item.index in [74, 75, 76, 78, 82, 83, 91, 93]:
-            mid_accessory_costs.append(item.price)
-        # Safety Ring, Attack Scarf, Ghost Medal, Jinx Belt, Troopa Pin
-        elif item.index in [77, 81, 89, 90, 92]:
-            high_accessory_costs.append(item.price)
-        # Scrooge Ring, EXP Booster, Coin Trick
-        elif item.index in [79, 80, 88]:
-            high_accessory_costs.append(round(item.price * 62.5))
+    if world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random):
 
-    random.shuffle(weapon_stats)
-    random.shuffle(weapon_tiers)
-    random.shuffle(armor_tiers)
-    random.shuffle(mega_armor)
-    random.shuffle(happy_armor)
-    random.shuffle(sailor_armor)
-    random.shuffle(fuzzy_armor)
-    random.shuffle(fire_armor)
-    random.shuffle(endgame_armor)
-    random.shuffle(pins_costs)
-    random.shuffle(mid_accessory_costs)
-    random.shuffle(high_accessory_costs)
-    mega_count = 0
-    happy_count = 0
-    sailor_count = 0
-    fuzzy_count = 0
-    fire_count = 0
-    endgame_count = 0
+        # Base Shuffle for equipment to set up for further shuffling
+        for item in world.items:
+            if not item.is_equipment:
+                continue
+            if random.randint(1, 10) == 1:
+                item.effect_type = random.choice(
+                    ["normal", "buffs", "status protection", "elemental resistance", "elemental immunity", "extra stats", "few effects"])
+            if item.is_weapon:
+                temp_weapon_stat = (item.attack, item.price)
+                weapon_stats.append(temp_weapon_stat)
+                weapon_tiers.append(item.tier)
+            elif item.is_armor:
+                armor_tiers.append(item.tier)
+                if item.index in [41, 42, 44]:
+                    temp_armor_stat = (item.defense, item.magic_defense)
+                    mega_armor.append(temp_armor_stat)
+                elif item.index in [45, 46, 47, 48, 49]:
+                    temp_armor_stat = (item.defense, item.magic_defense)
+                    happy_armor.append(temp_armor_stat)
+                elif item.index in [50, 51, 52, 53, 54]:
+                    temp_armor_stat = (item.defense, item.magic_defense)
+                    sailor_armor.append(temp_armor_stat)
+                elif item.index in [55, 56, 57, 58]:
+                    temp_armor_stat = (item.defense, item.magic_defense)
+                    fuzzy_armor.append(temp_armor_stat)
+                elif item.index in [59, 60, 61, 62, 63]:
+                    temp_armor_stat = (item.defense, item.magic_defense)
+                    fire_armor.append(temp_armor_stat)
+                elif item.index in [64, 65, 66, 67, 68]:
+                    temp_armor_stat = (item.defense, item.magic_defense)
+                    endgame_armor.append(temp_armor_stat)
+            elif item.index in [84, 85, 86, 87]:
+                pins_costs.append(item.price)
+            # Zoom Shoes, Safety Badge, Jump Shoes, Amulet, Rare Scarf, B'Tub Ring, Feather, Signal Ring
+            elif item.index in [74, 75, 76, 78, 82, 83, 91, 93]:
+                mid_accessory_costs.append(item.price)
+            # Safety Ring, Attack Scarf, Ghost Medal, Jinx Belt, Troopa Pin
+            elif item.index in [77, 81, 89, 90, 92]:
+                high_accessory_costs.append(item.price)
+            # Scrooge Ring, EXP Booster, Coin Trick
+            elif item.index in [79, 80, 88]:
+                high_accessory_costs.append(round(item.price * 62.5))
 
-    for item in world.items:
-        if not item.is_equipment or not item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random):
-            continue
-        if item.is_weapon:
-            temp_weapon_stats = weapon_stats[(item.index - 5)]
-            item.attack = temp_weapon_stats[0]
-            item.price = temp_weapon_stats[1]
-            item.tier = weapon_tiers.pop()
-        elif item.is_armor:
-            item.tier = armor_tiers.pop()
-            if item.index in [41, 42, 44]:
-                temp_armor_stat = mega_armor[mega_count]
-                item.defense = temp_armor_stat[0]
-                item.magic_defense = temp_armor_stat[1]
-                mega_count += 1
-            elif item.index in [45, 46, 47, 48, 49]:
-                temp_armor_stat = happy_armor[happy_count]
-                item.defense = temp_armor_stat[0]
-                item.magic_defense = temp_armor_stat[1]
-                happy_count += 1
-            elif item.index in [50, 51, 52, 53, 54]:
-                temp_armor_stat = sailor_armor[sailor_count]
-                item.defense = temp_armor_stat[0]
-                item.magic_defense = temp_armor_stat[1]
-                sailor_count += 1
-            elif item.index in [55, 56, 57, 58]:
-                temp_armor_stat = fuzzy_armor[fuzzy_count]
-                item.defense = temp_armor_stat[0]
-                item.magic_defense = temp_armor_stat[1]
-                fuzzy_count += 1
-            elif item.index in [59, 60, 61, 62, 63]:
-                temp_armor_stat = fire_armor[fire_count]
-                item.defense = temp_armor_stat[0]
-                item.magic_defense = temp_armor_stat[1]
-                fire_count += 1
-            elif item.index in [64, 65, 66, 67, 68]:
-                temp_armor_stat = endgame_armor[endgame_count]
-                item.defense = temp_armor_stat[0]
-                item.magic_defense = temp_armor_stat[1]
-                endgame_count += 1
-        elif item.index in [84, 85, 86, 87]:
-            item.price = pins_costs.pop()
-        # Zoom Shoes, Safety Badge, Jump Shoes, Amulet, Rare Scarf, B'Tub Ring, Feather, Signal Ring
-        elif item.index in [74, 75, 76, 78, 82, 83, 91, 93]:
-            item.price = mid_accessory_costs.pop()
-        # Safety Ring, Attack Scarf, Ghost Medal, Jinx Belt, Troopa Pin
-        elif item.index in [77, 81, 89, 90, 92]:
-            item.price = high_accessory_costs.pop()
-        # Scrooge Ring, EXP Booster, Coin Trick
-        elif item.index in [79, 80, 88]:
-            item.price = round(high_accessory_costs.pop() / 62.5)
+        random.shuffle(weapon_stats)
+        random.shuffle(weapon_tiers)
+        random.shuffle(armor_tiers)
+        random.shuffle(mega_armor)
+        random.shuffle(happy_armor)
+        random.shuffle(sailor_armor)
+        random.shuffle(fuzzy_armor)
+        random.shuffle(fire_armor)
+        random.shuffle(endgame_armor)
+        random.shuffle(pins_costs)
+        random.shuffle(mid_accessory_costs)
+        random.shuffle(high_accessory_costs)
+        mega_count = 0
+        happy_count = 0
+        sailor_count = 0
+        fuzzy_count = 0
+        fire_count = 0
+        endgame_count = 0
 
-    # Designate 1-4 magic weapons
-    if item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random):
+        for item in world.items:
+            if not item.is_equipment:
+                continue
+            if item.is_weapon:
+                temp_weapon_stats = weapon_stats[(item.index - 5)]
+                item.attack = temp_weapon_stats[0]
+                item.price = temp_weapon_stats[1]
+                item.tier = weapon_tiers.pop()
+            elif item.is_armor:
+                item.tier = armor_tiers.pop()
+                if item.index in [41, 42, 44]:
+                    temp_armor_stat = mega_armor[mega_count]
+                    item.defense = temp_armor_stat[0]
+                    item.magic_defense = temp_armor_stat[1]
+                    mega_count += 1
+                elif item.index in [45, 46, 47, 48, 49]:
+                    temp_armor_stat = happy_armor[happy_count]
+                    item.defense = temp_armor_stat[0]
+                    item.magic_defense = temp_armor_stat[1]
+                    happy_count += 1
+                elif item.index in [50, 51, 52, 53, 54]:
+                    temp_armor_stat = sailor_armor[sailor_count]
+                    item.defense = temp_armor_stat[0]
+                    item.magic_defense = temp_armor_stat[1]
+                    sailor_count += 1
+                elif item.index in [55, 56, 57, 58]:
+                    temp_armor_stat = fuzzy_armor[fuzzy_count]
+                    item.defense = temp_armor_stat[0]
+                    item.magic_defense = temp_armor_stat[1]
+                    fuzzy_count += 1
+                elif item.index in [59, 60, 61, 62, 63]:
+                    temp_armor_stat = fire_armor[fire_count]
+                    item.defense = temp_armor_stat[0]
+                    item.magic_defense = temp_armor_stat[1]
+                    fire_count += 1
+                elif item.index in [64, 65, 66, 67, 68]:
+                    temp_armor_stat = endgame_armor[endgame_count]
+                    item.defense = temp_armor_stat[0]
+                    item.magic_defense = temp_armor_stat[1]
+                    endgame_count += 1
+            elif item.index in [84, 85, 86, 87]:
+                item.price = pins_costs.pop()
+            # Zoom Shoes, Safety Badge, Jump Shoes, Amulet, Rare Scarf, B'Tub Ring, Feather, Signal Ring
+            elif item.index in [74, 75, 76, 78, 82, 83, 91, 93]:
+                item.price = mid_accessory_costs.pop()
+            # Safety Ring, Attack Scarf, Ghost Medal, Jinx Belt, Troopa Pin
+            elif item.index in [77, 81, 89, 90, 92]:
+                item.price = high_accessory_costs.pop()
+            # Scrooge Ring, EXP Booster, Coin Trick
+            elif item.index in [79, 80, 88]:
+                item.price = round(high_accessory_costs.pop() / 62.5)
+
+        # Designate 1-4 magic weapons
         magic_weapon_count = random.randint(1, 4)
         magic_weapon_candidates = []
         for item in world.items:
@@ -428,20 +433,19 @@ def randomize_all(world):
         for item in random.sample(magic_weapon_candidates, magic_weapon_count):
             item.magic_weapon = True
 
+        # Safety check that at least four equips have instant death protection for safety.
+        if not item.world.settings.is_flag_enabled(flags.EquipmentNoSafety):
+            instant_ko_items = len(
+                [item for item in world.items if item.prevent_ko])
+            if instant_ko_items < 4:
+                top_armor = [item for item in world.items if (item.is_armor or item.is_accessory) and item.tier == 1 and
+                            not item.prevent_ko]
+                for item in random.sample(top_armor, 4 - instant_ko_items):
+                    item.prevent_ko = True
+
     # Shuffle equipment stats and equip characters.
     for item in world.items:
         _randomize_item(item)
-
-    # Safety check that at least four equips have instant death protection for safety.
-    if (item.world.settings.is_flag_value(flags.EquipmentProperties, EquipmentPropertiesOptions.random) and
-            not item.world.settings.is_flag_value(flags.EquipmentNoSafety, True)):
-        instant_ko_items = len(
-            [item for item in world.items if item.prevent_ko])
-        if instant_ko_items < 4:
-            top_armor = [item for item in world.items if (item.is_armor or item.is_accessory) and item.tier == 1 and
-                         not item.prevent_ko]
-            for item in random.sample(top_armor, 4 - instant_ko_items):
-                item.prevent_ko = True
 
     for item in world.items:
         if item.is_equipment:

@@ -11,6 +11,11 @@ script = [
         "args": [0x7092, 5, 'EVENT_3640_run_dialog__']
     },
     {
+        "identifier": 'EVENT_3640_set_bit_215',
+        "command": 'set_bit',
+        "args": [0x7092, 5]
+    },
+    {
         "identifier": 'EVENT_3640_fade_out_to_black_sync_duration_1',
         "command": 'fade_out_to_black_sync_duration',
         "args": [60]
@@ -1492,11 +1497,6 @@ script = [
         "args": [AreaObjects.MARIO, 395]
     },
     {
-        "identifier": 'EVENT_3640_set_bit_215',
-        "command": 'set_bit',
-        "args": [0x7092, 5]
-    },
-    {
         "identifier": 'EVENT_3640_remove_from_level_216',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_1, Rooms._112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT]
@@ -1509,7 +1509,7 @@ script = [
 
     {
         "identifier": 'EVENT_3640_jmp_if_alt_condition_on',
-        "command": 'jmp_if_bit_clear',
+        "command": 'jmp_if_bit_set',
         "args": [0x7086, 7, 'EVENT_3640_set_bit_203']
     },
 
@@ -1536,6 +1536,11 @@ script = [
         "args": [167]
     },
     {
+        "identifier": 'EVENT_3640_jmp_sub',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_3400_determine_nimbus_music']
+    },
+    {
         "identifier": 'EVENT_3640_jmp_',
         "command": 'jmp',
         "args": ['EVENT_3640_item']
@@ -1544,6 +1549,11 @@ script = [
         "identifier": 'EVENT_3640_set_bit_203',
         "command": 'set_bit',
         "args": [0x7092, 7]
+    },
+    {
+        "identifier": 'EVENT_3640_jmp_sub_2',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_3400_determine_nimbus_music']
     },
     {
         "identifier": 'EVENT_3640_item',
@@ -2132,6 +2142,14 @@ script = [
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
+                "identifier": 'EVENT_3640_reset',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_3640_',
+                "command": 'face_southeast'
+            },
+            {
                 "identifier": 'EVENT_3640_action_queue_async_288_SUBSCRIPT_sequence_playback_off_0',
                 "command": 'sequence_playback_off'
             },
@@ -2175,6 +2193,14 @@ script = [
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_3],
         "subscript": [
+            {
+                "identifier": 'EVENT_3640_reset',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_3640_',
+                "command": 'face_southeast'
+            },
             {
                 "identifier": 'EVENT_3640_action_queue_async_290_SUBSCRIPT_sequence_playback_off_0',
                 "command": 'sequence_playback_off'

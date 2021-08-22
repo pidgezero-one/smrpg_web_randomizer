@@ -99,7 +99,7 @@ script = [
                 "identifier": 'action_queue_async_292_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
                 "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            }
+            },
         ]
     },
     {

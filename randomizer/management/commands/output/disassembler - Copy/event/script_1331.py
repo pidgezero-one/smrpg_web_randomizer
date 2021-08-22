@@ -724,11 +724,6 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
-        "identifier": 'EVENT_1331_set_bit_48',
-        "command": 'set_bit',
-        "args": [0x7062, 2]
-    },
-    {
         "identifier": 'EVENT_1331_set_bit_49',
         "command": 'set_bit',
         "args": [0x7053, 6]

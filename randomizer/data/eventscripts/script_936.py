@@ -55,8 +55,12 @@ script = [
             {
                 "identifier": 'EVENT_936_action_queue_async_292_SUBSCRIPT_set_sprite_sequence_9',
                 "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            }
+                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            },
+            {
+                "identifier": 'EVENT_936_action_queue_async_292_SUBSCRIPT_face_southwest_3',
+                "command": 'face_southeast'
+            },
         ]
     },
     {

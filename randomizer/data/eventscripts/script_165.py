@@ -12,7 +12,7 @@ script = [
     },
     {
         "identifier": 'EVENT_165_action_queue_async_0',
-        "command": 'action_queue_async',
+        "command": 'action_queue_sync',
         "args": [AreaObjects.MEM_70A8],
         "subscript": [
             {
@@ -24,16 +24,6 @@ script = [
                 "identifier": 'EVENT_165_action_queue_async_0_SUBSCRIPT_play_sound_1',
                 "command": 'play_sound',
                 "args": [Sounds._027_FOUND_AN_ITEM, 4]
-            },
-            {
-                "identifier": 'EVENT_165_action_queue_async_0_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [6, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_165_action_queue_async_0_SUBSCRIPT_pause_3',
-                "command": 'pause',
-                "args": [30]
             },
             {
                 "identifier": 'EVENT_165_action_queue_async_0_SUBSCRIPT_visibility_off_4',
@@ -114,26 +104,16 @@ script = [
     {
         "identifier": 'EVENT_165_run_dialog_104',
         "command": 'run_dialog',
-        "args": [1177, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
+        "args": [1177, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
     },
     {
-        "identifier": 'EVENT_165_pause_12',
-        "command": 'pause',
-        "args": [60]
-    },
-    {
-        "identifier": "EVENT_165_ret",
+        "identifier": 'EVENT_165_ret_106',
         "command": "ret"
     },
     {
         "identifier": 'EVENT_165_run_dialog_104_',
         "command": 'run_dialog',
-        "args": [1178, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC]]
-    },
-    {
-        "identifier": 'EVENT_165_pause_12_',
-        "command": 'pause',
-        "args": [60]
+        "args": [1178, AreaObjects.MARIO, [_0x60Flags.BIT_6]]
     },
     {
         "identifier": "EVENT_165_ret_",

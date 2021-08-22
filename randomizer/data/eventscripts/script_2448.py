@@ -541,11 +541,6 @@ script = [
         "args": [AreaObjects.NPC_9]
     },
     {
-        "identifier": 'EVENT_2448_set_bit_269',
-        "command": 'set_bit',
-        "args": [0x7062, 2]
-    },
-    {
         "identifier": 'EVENT_2448_jmp_to_event_271',
         "command": 'jmp_to_event',
         "args": [168]

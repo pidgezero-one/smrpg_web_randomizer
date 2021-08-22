@@ -16,6 +16,16 @@ script = [
         "args": [AreaObjects.NPC_6, Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL]
     },
     {
+        "identifier": 'EVENT_3477_j',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7042, 0, 'EVENT_3477_item_grant']
+    },
+    {
+        "identifier": 'EVENT_3477_s',
+        "command": 'set_bit',
+        "args": [0x7042, 0]
+    },
+    {
         "identifier": 'EVENT_3477_freeze_camera_137',
         "command": 'freeze_camera'
     },
@@ -43,7 +53,12 @@ script = [
                 "identifier": 'EVENT_3477_action_queue_sync_138_SUBSCRIPT_shift_z_down_steps_3',
                 "command": 'shift_z_down_steps',
                 "args": [2]
-            }
+            },
+            {
+                "identifier": 'EVENT_3477_s2',
+                "command": 'clear_bit',
+                "args": [0x7042, 0]
+            },
         ]
     },
     {

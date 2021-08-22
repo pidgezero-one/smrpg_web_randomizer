@@ -28,6 +28,11 @@ script = [
         "args": [0x7092, 7, 'EVENT_2108_action_queue_async_13']
     },
     {
+        "identifier": 'EVENT_2108_jmp_if_bit_set_0',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7092, 5, 'EVENT_2108_jmp_if_bit_set_14']
+    },
+    {
         "identifier": 'EVENT_2108_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
         "args": [0x7090, 1, 'EVENT_2108_jmp_if_bit_set_14']
