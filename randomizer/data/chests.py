@@ -3889,6 +3889,10 @@ class NimbusLandShop(Chest):
     event = 247
     item = items.FrogCoin
 
+    def item_allowed(self, item):
+        # dont allow slot machines on moving platforms
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
+
 
 class NimbusLandInn(NPCReward):
     area = locations.Area.NimbusLand
@@ -4042,6 +4046,10 @@ class NimbusCastleStarAfterValentina(Chest):
 
     def can_access(self, inventory):
         return locations.can_clear_nimbus_castle(inventory)
+
+    def item_allowed(self, item):
+        # dont allow slot machines on platforms
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
 
 
 class NimbusCastleCornerChestAfterValentina(Chest):

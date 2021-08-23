@@ -9,8 +9,103 @@ from randomizer.data import music
 from randomizer.data.npcmodels import models
 from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.data.roomobjecttables import Rooms
-from randomizer.data.objectsequencetables import SequenceSpeeds
+from randomizer.data.objectsequencetables import SequenceSpeeds, _0x08Flags
 
+
+def is_vanilla(boss, location):
+    return (utils.isclass_or_instance(location, HammerBros) and utils.isclass_or_instance(boss, HammerBroBoss)) or (utils.isclass_or_instance(location, Croco1) and utils.isclass_or_instance(boss, Croco1Boss)) or (utils.isclass_or_instance(location, Mack) and utils.isclass_or_instance(boss, MackBoss)) or (utils.isclass_or_instance(location, Pandorite) and utils.isclass_or_instance(boss, PandoriteBoss)) or ((utils.isclass_or_instance(location, Belome1) or utils.isclass_or_instance(location, Belome2)) and (utils.isclass_or_instance(boss, Belome1Boss) or utils.isclass_or_instance(boss, Belome2Boss))) or (utils.isclass_or_instance(location, Bowyer) and utils.isclass_or_instance(boss, BowyerBoss)) or (utils.isclass_or_instance(location, Croco2) and utils.isclass_or_instance(boss, Croco2Boss)) or (utils.isclass_or_instance(location, Punchinello) and utils.isclass_or_instance(boss, PunchinelloBoss)) or (utils.isclass_or_instance(location, Booster) and utils.isclass_or_instance(boss, BoosterBoss)) or (utils.isclass_or_instance(location, ClownBros) and utils.isclass_or_instance(boss, GrateGuyBoss)) or (utils.isclass_or_instance(location, Bundt) and utils.isclass_or_instance(boss, Bundt)) or (utils.isclass_or_instance(location, KingCalamari) and utils.isclass_or_instance(boss, KingCalamariBoss)) or (utils.isclass_or_instance(location, Hidon) and utils.isclass_or_instance(boss, HidonBoss)) or (utils.isclass_or_instance(location, Johnny) and utils.isclass_or_instance(boss, JohnnyBoss)) or (utils.isclass_or_instance(location, Yaridovich) and utils.isclass_or_instance(boss, YaridovichBoss)) or (utils.isclass_or_instance(location, Mokura) and utils.isclass_or_instance(boss, MokuraBoss)) or (utils.isclass_or_instance(location, Jagger) and utils.isclass_or_instance(boss, JaggerBoss)) or ((utils.isclass_or_instance(location, Jinx1) or utils.isclass_or_instance(location, Jinx2) or utils.isclass_or_instance(location, Jinx3)) and (utils.isclass_or_instance(boss, Jinx1Boss) or utils.isclass_or_instance(boss, Jinx2Boss) or utils.isclass_or_instance(boss, Jinx3Boss))) or (utils.isclass_or_instance(location, Culex) and utils.isclass_or_instance(boss, Culex)) or (utils.isclass_or_instance(location, BoxBoy) and utils.isclass_or_instance(boss, BoxBoyBoss)) or (utils.isclass_or_instance(location, MegaSmilax) and utils.isclass_or_instance(boss, MegaSmilaxBoss)) or (utils.isclass_or_instance(location, Dodo) and utils.isclass_or_instance(boss, DodoBoss)) or (utils.isclass_or_instance(location, Birdetta) and utils.isclass_or_instance(boss, BirdettaBoss)) or (utils.isclass_or_instance(location, Valentina) and utils.isclass_or_instance(boss, ValentinaBoss)) or (utils.isclass_or_instance(location, CzarDragon) and utils.isclass_or_instance(boss, CzarBoss)) or (utils.isclass_or_instance(location, AxemRangers) and utils.isclass_or_instance(boss, AxemRangersBoss)) or (utils.isclass_or_instance(location, Chester) and utils.isclass_or_instance(boss, ChesterBoss)) or (utils.isclass_or_instance(location, Magikoopa) and utils.isclass_or_instance(boss, MagikoopaBoss)) or (utils.isclass_or_instance(location, Boomer) and utils.isclass_or_instance(boss, BoomerBoss)) or (utils.isclass_or_instance(location, Exor) and utils.isclass_or_instance(boss, ExorBoss)) or (utils.isclass_or_instance(location, Countdown) and utils.isclass_or_instance(boss, CountdownBoss)) or (utils.isclass_or_instance(location, CloakerDomino) and utils.isclass_or_instance(boss, CloakerDominoBoss)) or (utils.isclass_or_instance(location, Clerk) and utils.isclass_or_instance(boss, ClerkBoss)) or (utils.isclass_or_instance(location, Manager) and utils.isclass_or_instance(boss, ManagerBoss)) or (utils.isclass_or_instance(location, Director) and utils.isclass_or_instance(boss, DirectorBoss)) or (utils.isclass_or_instance(location, Gunyolk) and utils.isclass_or_instance(boss, GunyolkBoss)) or (utils.isclass_or_instance(location, Smithy) and utils.isclass_or_instance(boss, SmithyBoss))
+
+def has_vanilla_henchmen(boss, location):
+    return len(location.repeatable_henchmen + location.unique_henchmen) == 0 or len(boss.repeatable_henchmen + boss.unique_henchmen) == 0
+
+def sanitize_animation_script(boss, boss_location, script, model):
+    '''Helper function that helps ensure that illegal sequences cannot be performed for substituted sprites in specific slots, but also substitutes specifically chosen sequences where appropriate.'''
+    # leave script alone if character is vanilla
+    if not is_vanilla(boss, boss_location):
+        new_script = []
+        for _, subscript_command in enumerate(script):
+            # Pretty much all of these animations are based around sequence setting
+            # if a specific mold or sequence doesn't have an equivalent, just don't include it in the sanitized script
+            if subscript_command["command"] == 'set_sprite_sequence':
+                # molds
+                if _0x08Flags.READ_AS_MOLD in subscript_command["args"][2]:
+                    # if setting mold to 0, that's ok, just reset to the right default mold for scarecrow or culex
+                    if subscript_command["args"][0] == 0:
+                        subscript_command["args"][0] = model.mold
+                        new_script.append(subscript_command)
+                    # otherwise, it's subject to animation-specific rules
+                    else:
+                        if utils.isclass_or_instance(boss_location, Booster):
+                            if subscript_command["args"][0] == 12:
+                                new_script.append(
+                                    {"identifier": "dummy", "command": "face_northeast"})
+
+                # sequences
+                else:
+                    # bandit's way distraction
+                    if utils.isclass_or_instance(boss_location, Croco1) and model.animations is not None and model.animations.bandits_way_distracted is not None:
+                        if subscript_command["args"][0] == 5:
+                            subscript_command["args"][0] = model.animations.bandits_way_distracted.sequence_id
+                            # no support for sprite offsets, but not necessary with the sprites we're using
+                            new_script.append(subscript_command)
+                    # moleville mines punch
+                    elif utils.isclass_or_instance(boss_location, Punchinello):
+                        if model.animations is not None and model.animations.mines_punch is not None:
+                            if subscript_command["args"][0] == 3:
+                                subscript_command["args"][0] = model.animations.mines_punch.sequence_id
+                                new_script.append(subscript_command)
+                    # chapel laughing
+                    elif utils.isclass_or_instance(boss_location, Booster):
+                        if model.animations is not None and model.animations.chapel_laugh is not None:
+                            if subscript_command["args"][0] == 2:
+                                subscript_command["args"][0] = model.animations.chapel_laugh.sequence_id
+                                new_script.append(subscript_command)
+                    # marrymore kitchen
+                    elif utils.isclass_or_instance(boss_location, Bundt):
+                        if model.animations is not None and model.animations.kitchen_prep is not None:
+                            if subscript_command["args"][0] == 3:
+                                subscript_command["args"][0] = model.animations.kitchen_prep.sequence_id
+                                if model.animations.kitchen_prep.total_duration is not None:
+                                    subscript_command["args"][2].append(
+                                        _0x08Flags.LOOPING_OFF)
+                                new_script.append(subscript_command)
+                    # ship beckon
+                    elif utils.isclass_or_instance(boss_location, KingCalamari):
+                        if model.animations is not None and model.animations.ship_beckon is not None:
+                            if subscript_command["args"][0] == 1:
+                                subscript_command["args"][0] = model.animations.ship_beckon.sequence_id
+                                subscript_command["args"][2].append(
+                                    _0x08Flags.LOOPING_OFF)
+                                new_script.append(subscript_command)
+                    # ship chair
+                    elif utils.isclass_or_instance(boss_location, Johnny):
+                        if model.animations is not None and model.animations.ship_chair is not None:
+                            if subscript_command["args"][0] == 10:
+                                subscript_command["args"][0] = model.animations.ship_chair.sequence_id
+                                new_script.append(subscript_command)
+                    # jagger
+                    elif utils.isclass_or_instance(boss_location, Jagger):
+                        if model.animations is not None and model.animations.dojo_challenge is not None:
+                            if subscript_command["args"][0] == 4:
+                                subscript_command["args"][0] = model.animations.dojo_challenge.sequence_id
+                                new_script.append(subscript_command)
+                    # jinx
+                    elif utils.isclass_or_instance(boss_location, Jinx1) or utils.isclass_or_instance(boss_location, Jinx2) or utils.isclass_or_instance(boss_location, Jinx3):
+                        if model.animations is not None and model.animations.dojo_challenge is not None:
+                            if subscript_command["args"][0] == 3:
+                                subscript_command["args"][0] = model.animations.dojo_challenge.sequence_id
+                                new_script.append(subscript_command)
+                    # magikoopa - challenge only. sequence #10 also used in battle doors, which will be handled separately
+                    elif utils.isclass_or_instance(boss_location, Magikoopa):
+                        if model.animations is not None and model.animations.keep_challenge is not None:
+                            if subscript_command["args"][0] == 10:
+                                subscript_command["args"][0] = model.animations.keep_challenge.sequence_id
+                                new_script.append(subscript_command)
+            else:
+                new_script.append(subscript_command)
+        return new_script
+    else:
+        return script
 
 
 
@@ -56,6 +151,7 @@ class AvailableBosses(Enum):
     Gunyolk = "Gunyolk & Factory Chief"
     Smithy = "Smithy"
 
+
 class Battlefields(IntEnum):
     """Enumeration for ID values for battlefields."""
     Bowyer = 0x01
@@ -86,6 +182,7 @@ class Battlefields(IntEnum):
     JinxDojo = 0x2e
     Culex = 0x2f
     Factory = 0x30
+
 
 class BattleMusic(Enum):
     """Enumeration for ID values for battle music."""
@@ -375,7 +472,8 @@ class BossLocation:
         self.world = world
 
         # Get actual pack object based on the pack number.
-        self.pack = self.world.get_formation_pack_by_index(self.boss.pack_number)
+        self.pack = self.world.get_formation_pack_by_index(
+            self.boss.pack_number)
 
     def __str__(self):
         return "<{}: music {}, members {}>".format(self.name, self.music, [m.enemy for m in self.formation.members])
@@ -1739,7 +1837,8 @@ class BundtBoss(Boss):
 
 squid_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 squid_hit = SpriteAnimation(sequence_id=3, contact_frame=36, total_duration=48)
-squid_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=18, total_duration=24, speed=SequenceSpeeds.FAST)
+squid_hit_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=18, total_duration=24, speed=SequenceSpeeds.FAST)
 tentacle_beckon = SpriteAnimation(sequence_id=1, new_sprite_id=223)
 
 
@@ -2015,7 +2114,7 @@ class JohnnyBoss(Boss):
         chandelier_challenge=small_johnny_sit,
         endgame_challenge=small_johnny_sit
     ), width=32, height=32)  # maybe 52
-    big_model = BigModelDetails({ # does not break shadows
+    big_model = BigModelDetails({  # does not break shadows
         "sprite": SpriteName._505_JOHNNY,
         "priority_0": False,
         "priority_1": False,
@@ -2143,7 +2242,7 @@ class YaridovichBoss(Boss):
         chandelier_challenge=yaridovich_alt_taunt,
         endgame_challenge=yaridovich_alt_taunt
     ))
-    attack_model = BigModelDetails({ # does not break shadows
+    attack_model = BigModelDetails({  # does not break shadows
         "sprite": SpriteName._482_YARIDOVICH,
         "priority_0": False,
         "priority_1": False,
@@ -2620,7 +2719,7 @@ class CulexBoss(Boss):
     pack_number = 216
     statue_model = StatueModelDetails(511, mold=3)
     small_model = SmallModelDetails(511, sequence=8, mold=3)
-    big_model = BigModelDetails({ # incredibly, does not break shadows
+    big_model = BigModelDetails({  # incredibly, does not break shadows
         "sprite": SpriteName._511_CULEX,
         "priority_0": False,
         "priority_1": False,
@@ -2710,8 +2809,9 @@ class CulexBoss(Boss):
          '''CULEX: Well met! Thank you for\n the excellent battle.[await]'''),
     ]
     optional_dialog_replacements = [
-            (1694, '''CRYSTAL: Proceed forth. Culex\n awaits you.[await]'''),
-            (1695, '''CRYSTAL: Well met! You have\n satisfied Culex's hunger for a\n true challenge.[await]'''),
+        (1694, '''CRYSTAL: Proceed forth. Culex\n awaits you.[await]'''),
+        (1695,
+         '''CRYSTAL: Well met! You have\n satisfied Culex's hunger for a\n true challenge.[await]'''),
     ]
 
 
@@ -3482,7 +3582,7 @@ class AxemRangersAxemPink(Henchman):
 class AxemRangersAxemYellow(Henchman):
     pack_number = 250
     model = SmallModelDetails(211, 32, 32, animations=SpriteAnimationCollection(
-        tower_bullet=axem_yellow_hit_fast, kitchen_prep=axem_yellow_hit)) 
+        tower_bullet=axem_yellow_hit_fast, kitchen_prep=axem_yellow_hit))
 
 
 class AxemRangersAxemGreen(Henchman):

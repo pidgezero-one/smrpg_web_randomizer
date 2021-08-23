@@ -82,3 +82,17 @@ def randomize_all(world):
     # If we're generating a debug mode seed for testing, set max FP to start.
     if world.debug_mode:
         world.starting_fp = 99
+
+    # Attack Scarf threshold
+    value = world.settings.get_flag(flags.SuperJump1Threshold).value
+    world.eventscripts[3393][0]["args"] = [value]
+    world.search_replace_dialog('`SUPER_JUMP_PRIZE_1_CAP`', '%i' % value)
+
+    # Super Suit threshold
+    value = world.settings.get_flag(flags.SuperJump2Threshold).value
+    if value <= world.settings.get_flag(flags.SuperJump1Threshold).value:
+        raise Exception("2nd super jump threshold must be higher than 1st")
+    world.eventscripts[3394][0]["args"] = [value]
+    world.search_replace_dialog('`SUPER_JUMP_PRIZE_2_CAP`', '%i' % value)
+
+    

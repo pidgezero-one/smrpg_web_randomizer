@@ -2,10 +2,13 @@ import random
 
 from randomizer.data import dialogs, ship_passwords
 from . import flags
+from .utils import new_command
+from randomizer.data.helpers import MarrymoreGating
+from randomizer.data.eventtables import _0x60Flags, AreaObjects
+from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating, LearnableSpells
+
 # There's a way to do perfect allocations with DYNAMIC PROGRAMMING,
 # but I'm not doing that.
-
-
 def allocate_string(string_length, free_list):
     for base in sorted(free_list, key=lambda x: free_list[x]):
         if free_list[base] >= string_length:
@@ -32,6 +35,33 @@ def randomize_all(world):
             randomize_quiz(world)
         if world.settings.is_flag_value(flags.RandomSunkenShipPassword, True):
             randomize_password(world)
+
+        for id, wish in world.wishes.wishes:
+            world.replace_dialog(id, wish)
+        if world.settings.is_flag_value(flags.QuizShuffle, True):
+            for id, question in world.quiz.questions:
+                world.replace_dialog(id, question)
+
+        # misc. dialogs
+        if world.settings.is_flag_enabled(flags.EXPStarsAnywhere):
+            world.replace_dialog(1222, ''' I have an item to sell, but you\n don't have enough coins.[await]''')
+            world.replace_dialog(1223, ''' You're looking for items?\n I'll sell one for 400 coins.\n Are you interested?[await]\n  [select] (Yes)\n  [select] (No)[await]''')
+            world.replace_dialog(1224, ''' You want another item?[await]\n  [select] (Yes)\n  [select] (No)[await]''')
+            world.replace_dialog(1227, ''' I found another item.\n I'll sell it for 800 coins.[await]\n  [select] (Buy it)\n  [select] (Pass)[await]''')
+        if world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.hill):
+            world.replace_dialog(2116, '''You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy on Booster Hill.''')
+        elif world.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.tower):
+            world.replace_dialog(2116, '''You want to know why we're\n standing around?\n I'm waiting for something\n interesting to happen, but I think\n the usual troublemakers are busy up atop Booster Tower.''')
+        value = world.settings.get_flag(flags.GrateGuyPrizeThreshold).value
+        world.search_replace_dialog('`GRATE_GUY_PRIZE_CAP`', '%i' % value)
+        # disable sj dog checks if SJ not learnable in seed
+        if LearnableSpells.SuperJump in world.settings.get_flag(flags.AvailableSpells).disabled:
+            world.eventscripts[2063] = [
+                new_command(2063, 'run_dialog', [2049, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]),
+                new_command(2063, 'ret')
+            ]
+
+    
 
 
 RWRITER = "%RANDOM_WRITER%"

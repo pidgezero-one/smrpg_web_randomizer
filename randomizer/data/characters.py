@@ -303,6 +303,7 @@ class Character:
                     clone_name += " "
                 patch.add_data(self.palette.name_address, name)
                 patch.add_data(self.palette.clone_name_address, clone_name)
+        
 
         return patch
 

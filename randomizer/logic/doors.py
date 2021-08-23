@@ -97,3 +97,10 @@ def randomize_all(world):
             world.rooms[third_room.room]["event_tiles"][third_room.proceed_index]["event"] = 3350
         else:
             world.eventscripts[third_room.proceed_index][0]["args"] = [3350]
+
+    
+    # Bowser's Keep threshold
+    value = world.settings.get_flag(flags.BowserDoorRequirements).value
+    for c, cmd in enumerate(world.eventscripts[3350]):
+        if cmd["command"] == 'jmp_if_var_equals_byte' and cmd["args"][0] == 0x70b6 and cmd["args"][1] == 4:
+            cmd = world.eventscripts[3350][c]["args"][1] = value

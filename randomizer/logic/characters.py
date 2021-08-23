@@ -448,3 +448,23 @@ def randomize_all(world):
     # Now finalize the characters and get patch data.
     for character in world.characters:
         _finalize_character(character)
+
+def randomize_palettes(world):
+    # Palettes!!!!
+    mario_palettes = utils.find_subclasses(palettes, palettes.MarioPalette)
+    mallow_palettes = utils.find_subclasses(palettes, palettes.MallowPalette)
+    geno_palettes = utils.find_subclasses(palettes, palettes.GenoPalette)
+    bowser_palettes = utils.find_subclasses(palettes, palettes.BowserPalette)
+    toadstool_palettes = utils.find_subclasses(palettes, palettes.ToadstoolPalette)
+
+    if world.settings.is_flag_enabled(flags.PaletteSwaps):
+        world.characters[0].palette = random.choice(mario_palettes)
+        world.characters[1].palette = random.choice(mallow_palettes)
+        world.characters[2].palette = random.choice(geno_palettes)
+        world.characters[3].palette = random.choice(bowser_palettes)
+        world.characters[4].palette = random.choice(toadstool_palettes)
+        world.search_replace_dialog('`PEACH_NAME`', '%s' % world.characters[4].palette.name)
+        world.search_replace_dialog('`PEACH_ARTICLE`', 'n' if world.characters[4].palette.name[0] in ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'] else '')
+    else:
+        world.search_replace_dialog('`PEACH_NAME`', 'Toadstool')
+        world.search_replace_dialog('`PEACH_ARTICLE`', '')
