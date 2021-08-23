@@ -257,7 +257,7 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
                 fillable_locations[0].item = item
 
             # Populate corresponding spotted character, if eligible (currently only affects Forest Maze access)
-            if utils.isclass_or_instance(fillable_locations[0], chests.MarrymoreCharacter):
+            if utils.isclass_or_instance(fillable_locations[0], chests.MarrymoreCharacter) or utils.isclass_or_instance(fillable_locations[0], chests.MushroomWayCharacter):
                 if utils.isclass_or_instance(item, items.MarioRecruit):
                     spotted = items.MarioSpotted
                 elif utils.isclass_or_instance(item, items.MallowRecruit):
@@ -269,7 +269,10 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
                 elif utils.isclass_or_instance(item, items.ToadstoolRecruit):
                     spotted = items.ToadstoolSpotted
                 if spotted is not None:
-                    set_item(world.spotted_character_checks, chests.MarrymoreCharacterSpotted, world.get_item_instance(spotted))
+                    if utils.isclass_or_instance(fillable_locations[0], chests.MarrymoreCharacter):
+                        set_item(world.spotted_character_checks, chests.MarrymoreCharacterSpotted, world.get_item_instance(spotted))
+                    elif utils.isclass_or_instance(fillable_locations[0], chests.MushroomWayCharacter):
+                        set_item(world.spotted_character_checks, chests.MushroomWayCharacterSpotted, world.get_item_instance(spotted))
                     base_inventory.append(spotted)
             
             # Restrict star piece location eligibility if the proper flag is enabled

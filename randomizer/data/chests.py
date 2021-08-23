@@ -341,6 +341,13 @@ class MushroomWayCharacter(CharacterRecruit):
         (205, 5, [], [])
     ]
 
+# populate this with the corresponding character in MarrymoreCharacter
+
+
+class MushroomWayCharacterSpotted(CharacterSpotted):
+    area = locations.Area.MushroomWay
+    description = ShuffleLocationSelector.MushroomWayCharacter.value
+    item = items.MallowSpotted
 
 class MushroomWayStarPiece(BossStarPiece):
     area = locations.Area.MushroomWay

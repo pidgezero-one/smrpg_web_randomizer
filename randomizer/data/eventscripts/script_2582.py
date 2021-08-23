@@ -29,7 +29,7 @@ script = [
     },
     {
         "identifier": 'EVENT_2582_inc_15',
-        "command": 'run_event_as_subroutine',
+        "command": 'jmp_to_event',
         "args": [173]
     },
     {

@@ -275,6 +275,13 @@ script = [
                 "command": 'shift_southwest_pixels',
                 "args": [32]
             },
+        ]
+    },
+    {
+        "identifier": 'EVENT_2067_action_queue_async_4_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
             {
                 "identifier": 'EVENT_2067_action_queue_async_4_SUBSCRIPT_visibility_on_31',
                 "command": 'visibility_on'
@@ -520,7 +527,14 @@ script = [
                 "identifier": 'EVENT_2067_action_queue_async_7_SUBSCRIPT_pause_23',
                 "command": 'pause',
                 "args": [1]
-            },
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2067_action_queue_async_7_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
             {
                 "identifier": 'EVENT_2067_action_queue_async_7_SUBSCRIPT_face_southwest_24',
                 "command": 'face_southwest'

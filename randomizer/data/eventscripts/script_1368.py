@@ -1412,6 +1412,10 @@ script = [
         "args": [168]
     },
     {
+        "identifier": 'EVENT_1368_ret_148_',
+        "command": 'ret'
+    },
+    {
         "identifier": 'EVENT_1368_summon_to_level_145',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_7, Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM]

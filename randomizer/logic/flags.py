@@ -341,7 +341,9 @@ class EnabledBossChecks(CategorizationFlag):
     name = 'Eligible Star Piece boss fight locations'
     description = '''If a check is highlighted (white text over blue), it is eligible to reward a Star Piece.
 <br>
-<br>If a check is not highlighted, it will still house a boss fight, but is guaranteed to not reward a Star Piece.'''
+<br>If a check is not highlighted, it will still house a boss fight, but is guaranteed to not reward a Star Piece.
+<br>
+<br>Note: "Nimbus Land statue keeper" will always be the same fight as the enemy running through the final Nimbus Land hallway. You can fight either instance of this boss to get its star piece, but you will never get 2 star pieces from doing both copies of the fight.'''
     optionEnum = ShuffleLocationSelector
     options = [o for o in boss_star_piece_locations]
     enabled = [o for o in boss_star_piece_locations]

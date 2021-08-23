@@ -138,6 +138,7 @@ class Boss:
     description = ""
     dialog_replacements = []
     optional_dialog_replacements = []
+    eye_height = 17
 
 
 class SequenceType(Enum):
@@ -477,6 +478,7 @@ hammer_bro_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 class HammerBroBoss(Boss):
     name = "Hammer Bro"
     pack_number = 183
+    eye_height = 16
     small_model = SmallModelDetails(488)
     statue_model = StatueModelDetails(488)
     big_model = BigModelDetails({
@@ -559,6 +561,7 @@ croco_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 class Croco1Boss(Boss):
     name = "Croco"
+    eye_height = 13
     pack_number = 163
     statue_model = StatueModelDetails(
         48,  width=32, height=32, horizontal_pixel_shift=-3)
@@ -657,6 +660,7 @@ mack_challenge = SpriteAnimation(sequence_id=2, total_duration=12)
 class MackBoss(Boss):
     name = "Mack"
     pack_number = 179
+    eye_height = 19
 
     small_model = SmallModelDetails(414, animations=SpriteAnimationCollection(
         mines_punch=shyster_taunt,
@@ -808,6 +812,7 @@ pandorite_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 
 class PandoriteBoss(Boss):
     name = "Pandorite"
+    eye_height = 4
     pack_number = 156
     small_model = SmallModelDetails(199, sequence=4)
     big_model = BigModelDetails({
@@ -892,6 +897,7 @@ belome_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 class Belome1Boss(Boss):
     name = "Belome"
+    eye_height = 14
     pack_number = 168
     small_model = SmallModelDetails(385, width=32, height=32, mold=10, invert_directions=True, animations=SpriteAnimationCollection(
         bandits_way_distracted=scarecrow_wiggle,
@@ -983,6 +989,7 @@ bowyer_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 class BowyerBoss(Boss):
     name = "Bowyer"
+    eye_height = 16
     pack_number = 181
     statue_model = StatueModelDetails(487, width=24, height=32, mold=3)
     small_model = SmallModelDetails(487, width=24, height=32, sequence=1)
@@ -1133,6 +1140,7 @@ class DefaultCrook(Henchman):
 
 class Croco2Boss(Boss):
     name = "Croco"
+    eye_height = 13
     pack_number = 164
     statue_model = StatueModelDetails(
         48,  width=32, height=32, horizontal_pixel_shift=-3)
@@ -1254,6 +1262,7 @@ punchinello_jump = SpriteAnimation(sequence_id=5, total_duration=34)
 class PunchinelloBoss(Boss):
     name = "Punchinello"
     pack_number = 140
+    eye_height = 8
     small_model = SmallModelDetails(145, animations=SpriteAnimationCollection(
         bandits_way_distracted=bomb_tick,
         chapel_laugh=bomb_tick,
@@ -1418,6 +1427,7 @@ booster_jump = SpriteAnimation(sequence_id=4)
 
 class BoosterBoss(Boss):
     name = "Booster"
+    eye_height = 17
     pack_number = 161
     small_model = SmallModelDetails(50, animations=SpriteAnimationCollection(
         bandits_way_distracted=booster_laugh,
@@ -1523,6 +1533,7 @@ grate_guy_recoil = SpriteAnimation(sequence_id=2, total_duration=20)
 class GrateGuyBoss(Boss):
     name = "Grate Guy"
     pack_number = 177
+    eye_height = 16
     statue_model = StatueModelDetails(
         452, width=32, height=32, horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-2)
     small_model = SmallModelDetails(452, width=32, height=32)
@@ -1623,6 +1634,7 @@ bundt_short = SpriteAnimation(
 
 class BundtBoss(Boss):
     name = "Bundt"
+    eye_height = 8
     pack_number = 176
     statue_model = StatueModelDetails(
         470, width=32, height=32, horizontal_pixel_shift=-3)
@@ -1754,6 +1766,7 @@ class KingCalamariTentacle(Henchman):
 class KingCalamariBoss(Boss):
     name = "King Calamari"
     pack_number = 167
+    eye_height = 10
     forced_background = 35
     small_model = SmallModelDetails(266, width=24, height=32, animations=SpriteAnimationCollection(
         mines_punch=squid_hit,
@@ -1831,6 +1844,7 @@ hidon_attack_fast = SpriteAnimation(
 
 class HidonBoss(Boss):
     name = "Hidon"
+    eye_height = 4
     pack_number = 157
     small_model = SmallModelDetails(199, sequence=4)  # could be 196 or 111
     big_model = BigModelDetails({
@@ -1989,6 +2003,7 @@ johnny_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 class JohnnyBoss(Boss):
     name = "Johnny"
+    eye_height = 18
     pack_number = 166
     small_model = SmallModelDetails(55, animations=SpriteAnimationCollection(
         bandits_way_distracted=small_johnny_sit,
@@ -2099,6 +2114,7 @@ class YaridovichHenchman(Henchman):
 
 class YaridovichBoss(Boss):
     name = "Yaridovich"
+    eye_height = 10
     pack_number = 180
     small_model = SmallModelDetails(40, width=24, height=32)
     big_model = BigModelDetails({
@@ -2212,6 +2228,7 @@ class YaridovichBoss(Boss):
 
 class MokuraBoss(Boss):
     name = "Mokura"
+    eye_height = 4
     pack_number = 207
     small_model = SmallModelDetails(201, width=16, height=16)
     big_model = BigModelDetails({
@@ -2275,6 +2292,7 @@ class MokuraBoss(Boss):
 class Belome2Boss(Boss):
     name = "Belome"
     pack_number = 169
+    eye_height = 14
     small_model = SmallModelDetails(385, width=32, height=32, mold=10, invert_directions=True, animations=SpriteAnimationCollection(
         bandits_way_distracted=scarecrow_wiggle,
         chapel_laugh=scarecrow_wiggle,
@@ -2423,6 +2441,7 @@ jinx_punch = SpriteAnimation(
 class Jinx1Boss(Boss):
     name = "Jinx"
     pack_number = 178
+    eye_height = 4
     small_model = SmallModelDetails(207, animations=SpriteAnimationCollection(
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
@@ -2474,6 +2493,7 @@ class Jinx1Boss(Boss):
 class Jinx2Boss(Boss):
     name = "Jinx"
     pack_number = 187
+    eye_height = 4
     small_model = SmallModelDetails(415, animations=SpriteAnimationCollection(
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
@@ -2525,6 +2545,7 @@ class Jinx2Boss(Boss):
 class Jinx3Boss(Boss):
     name = "Jinx"
     pack_number = 188
+    eye_height = 4
     small_model = SmallModelDetails(416, animations=SpriteAnimationCollection(
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
@@ -2595,6 +2616,7 @@ class CulexWindCrystal(Henchman):
 
 class CulexBoss(Boss):
     name = "Culex"
+    eye_height = 12
     pack_number = 216
     statue_model = StatueModelDetails(511, mold=3)
     small_model = SmallModelDetails(511, sequence=8, mold=3)
@@ -2701,6 +2723,7 @@ boxboy_short = SpriteAnimation(
 
 class BoxBoyBoss(Boss):
     name = "Box Boy"
+    eye_height = 4
     pack_number = 158
     small_model = SmallModelDetails(199, sequence=4)  # could be 196 or 111
     big_model = BigModelDetails({
@@ -2792,6 +2815,7 @@ class MegaSmilaxPiranha(Henchman):
 class MegaSmilaxBoss(Boss):
     name = "Megasmilax"
     pack_number = 173
+    eye_height = 14
     statue_model = StatueModelDetails(
         263, 24, 32, mold=1, horizontal_pixel_shift=-3, vertical_pixel_shift=-4)
     small_model = SmallModelDetails(263, width=24, height=32, animations=SpriteAnimationCollection(
@@ -2922,6 +2946,7 @@ dodo_taunt = SpriteAnimation(sequence_id=4, total_duration=66)
 class DodoBoss(Boss):
     name = "Dodo"
     pack_number = 208
+    eye_height = 2
     statue_model = StatueModelDetails(131, mold=4, vertical_pixel_shift=-3)
     small_model = SmallModelDetails(131, sequence=2)
     big_model = BigModelDetails({
@@ -3007,6 +3032,7 @@ eggbert_expand = SpriteAnimation(sequence_id=2, total_duration=32)
 
 class BirdettaBoss(Boss):
     name = "Birdetta"
+    eye_height = 6
     pack_number = 175
     small_model = SmallModelDetails(462, 16, 16, animations=SpriteAnimationCollection(
         bandits_way_distracted=eggbert_expand, statue_flustered=eggbert_expand, statue_intro=eggbert_expand))
@@ -3165,6 +3191,7 @@ valentina_recoil = SpriteAnimation(sequence_id=2, total_duration=34)
 class ValentinaBoss(Boss):
     name = "Valentina"
     pack_number = 171
+    eye_height = 16
     statue_model = StatueModelDetails(63, width=32, height=32, horizontal_pixel_shift=-3,
                                       vertical_pixel_shift=-1, north_facing_horizontal_pixel_shift=-2)
     small_model = SmallModelDetails(56, width=24, height=32, animations=SpriteAnimationCollection(
@@ -3307,6 +3334,7 @@ czar_taunt = SpriteAnimation(sequence_id=5)
 
 class CzarBoss(Boss):
     name = "Czar Dragon"
+    eye_height = 3
     pack_number = 172
     small_model = SmallModelDetails(56, width=24, height=32, animations=SpriteAnimationCollection(
         mines_punch=fireball_spin,
@@ -3477,6 +3505,7 @@ class AxemRangersMachine2(Henchman):
 
 class AxemRangersBoss(Boss):
     name = "Axem Red"
+    eye_height = 15
     pack_number = 188
     forced_background = 39
     statue_model = StatueModelDetails(
@@ -3575,6 +3604,7 @@ chester_attack_fast = SpriteAnimation(
 class ChesterBoss(Boss):
     name = "Chester"
     pack_number = 235
+    eye_height = 4
     small_model = SmallModelDetails(199, sequence=4)  # could be 196 or 111
     big_model = BigModelDetails({
         "sprite": SpriteName._395_CHESTER,
@@ -3657,6 +3687,7 @@ big_magikoopa_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 class MagikoopaBoss(Boss):
     name = "Magikoopa"
+    eye_height = 12
     pack_number = 209
     statue_model = StatueModelDetails(190, width=24, height=32, horizontal_pixel_shift=2,
                                       north_facing_horizontal_pixel_shift=-4, north_facing_vertical_pixel_shift=-1)
@@ -3756,6 +3787,7 @@ boomer_recoil = SpriteAnimation(sequence_id=2, total_duration=18)
 
 class BoomerBoss(Boss):
     name = "Boomer"
+    eye_height = 8
     pack_number = 210
     statue_model = StatueModelDetails(
         159, width=24, height=32, horizontal_pixel_shift=2, north_facing_horizontal_pixel_shift=-2)  # maybe 346
@@ -3910,6 +3942,7 @@ class BoomerBoss(Boss):
 
 class ExorBoss(Boss):
     name = "Exor"
+    eye_height = 16
     pack_number = 186
     forced_background = 16
     statue_model = SmallModelDetails(
@@ -3975,6 +4008,7 @@ class CountdownDingALing(Henchman):
 class CountdownBoss(Boss):
     name = "Count Down"
     pack_number = 174
+    eye_height = 15
     forced_background = 18
     small_model = SmallModelDetails(454, animations=SpriteAnimationCollection(
         mines_punch=dingaling_attack,
@@ -4046,6 +4080,7 @@ cloaker_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 class CloakerDominoBoss(Boss):
     name = "Cloaker"
     pack_number = 184
+    eye_height = 6
     forced_background = 40
     statue_model = StatueModelDetails(
         429, 32, 32, horizontal_pixel_shift=-4, vertical_pixel_shift=-3)
@@ -4147,6 +4182,7 @@ shovelknight_alt_taunt = SpriteAnimation(sequence_id=5)
 
 class ClerkBoss(Boss):
     name = "Clerk"
+    eye_height = 10
     pack_number = 146
     small_model = SmallModelDetails(446, 32, 32, animations=SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
@@ -4274,6 +4310,7 @@ class ManagerPounder(Henchman):
 
 class ManagerBoss(Boss):
     name = "Manager"
+    eye_height = 10
     pack_number = 147
     small_model = SmallModelDetails(493, 32, 32, animations=SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
@@ -4402,6 +4439,7 @@ class DirectorPoundette(Henchman):
 
 class DirectorBoss(Boss):
     name = "Director"
+    eye_height = 10
     pack_number = 148
     small_model = SmallModelDetails(497, 32, 32, animations=SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
@@ -4548,6 +4586,7 @@ ninja_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 class GunyolkBoss(Boss):
     name = "Factory Chief"
+    eye_height = 16
     pack_number = 149
     small_model_id = 484
     statue_model = StatueModelDetails(484, 32, 32, horizontal_pixel_shift=-1)
@@ -4641,6 +4680,7 @@ smithy_hit_fast = SpriteAnimation(
 
 class SmithyBoss(Boss):
     name = "Smithy"
+    eye_height = 18
     pack_number = 185
     small_model = SmallModelDetails(351, 32, 32, animations=SpriteAnimationCollection(
         bandits_way_distracted=drillbit_taunt,
@@ -5142,7 +5182,7 @@ class Booster(BossAndStarLocation):
 
 
 class ClownBros(BossAndStarLocation):
-    identifier = 353
+    identifier = 258
     battlefield = Battlefields.ClownBros
     music = music.MidbossMusic
     description = AvailableBosses.KnifeGuyGrateGuy.value

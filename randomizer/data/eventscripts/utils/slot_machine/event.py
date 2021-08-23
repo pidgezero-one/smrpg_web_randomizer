@@ -724,29 +724,24 @@ script = [
         "args": [32]
     },
     {
-        "identifier": 'jmp_if_bit_set_351',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7086, 7, 'start_battle_94_']
-    },
-    {
         "identifier": 'start_battle_94',
         "command": 'run_event_as_subroutine',
         "args": [1931]
     },
     {
-        "identifier": 'jmp_if_bit_set_351_',
-        "command": 'jmp',
-        "args": ['remove_from_current_level_97']
+        "identifier": 'remove_from_current_level_97',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_2]
+    },
+    {
+        "identifier": 'jmp_if_bit_set_351',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7086, 7, 'fade_in_from_black_async_98']
     },
     {
         "identifier": 'start_battle_94_',
         "command": 'run_event_as_subroutine',
         "args": [171]
-    },
-    {
-        "identifier": 'remove_from_current_level_97',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2]
     },
     {
         "identifier": 'fade_in_from_black_async_98',

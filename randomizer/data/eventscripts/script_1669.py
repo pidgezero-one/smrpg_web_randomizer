@@ -15,14 +15,14 @@ script = [
         "args": [0x7076, 0, 'EVENT_1669_set_short_3']
     },
     {
-        "identifier": 'EVENT_1669_jmp_to_event_2',
-        "command": 'jmp_to_event',
-        "args": [255]
-    },
-    {
         "identifier": 'EVENT_1669_set_dodo_star_piece_bit_',
         "command": 'set_bit',
         "args": [0x704F, 4]
+    },
+    {
+        "identifier": 'EVENT_1669_jmp_to_event_2',
+        "command": 'jmp_to_event',
+        "args": [255]
     },
     {
         "identifier": 'EVENT_1669_set_short_3',
@@ -89,6 +89,26 @@ script = [
     {
         "identifier": 'EVENT_1669_unfreeze_all_npcs_13',
         "command": 'unfreeze_all_npcs'
+    },
+    {
+        "identifier": 'EVENT_1669_check_if_dodo_sp_already_got_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7081, 2, 'EVENT_1669_ret_14'] 
+    },
+    {
+        "identifier": 'EVENT_1669_set_dodo_star_piece',
+        "command": 'set_bit',
+        "args": [0x7081, 2]
+    },
+    {
+        "identifier": 'EVENT_1669_set',
+        "command": 'set',
+        "args": [0x7000, 520]
+    },
+    {
+        "identifier": 'EVENT_1669_star',
+        "command": 'jmp_to_event',
+        "args": [167]
     },
     {
         "identifier": 'EVENT_1669_ret_14',
