@@ -16,7 +16,7 @@ hint_authors = [
     "          Memo left by pidge:",
     "        Memo left by SeanCass:",
     "           Memo left by Smbai:",
-    "     Memo left by SNESChalmers:"
+    "     Memo left by SNESChalmers:",
     "         Memo left by swinch:",
     "     Memo left by Tinywetblanket:",
     "       Memo left by WeffJebster:",
@@ -135,7 +135,7 @@ pool = (
         "%RANDOM_WRITER%\n\n    Doesn't look like a frog to me.[await]",
         "\nDRY BONES: The password is a\n name.[await]",
         "Naegleria",
-        "NAEGLERIA",
+        "NAEGLERIA        CYNAS",
         "        Memo left by Naegleria:"
     ),
     Password(
@@ -212,8 +212,8 @@ pool = (
         "%RANDOM_WRITER%\n\n    The “W” comes before the “T”.[await]",
         "\n             I may be folded.[await]",
         "\n            I may be stuffed.[await]",
-        "\n           I may be on a chain.[await]"
-        "\n           I might have a bill.[await]"
+        "\n           I may be on a chain.[await]",
+        "\n           I might have a bill.[await]",
         "\n     DRY BONES: I may be sat on.[await]",
         "Aweglib",
         "AWEGLIB",
@@ -228,7 +228,7 @@ pool = (
         "%RANDOM_WRITER%\n\n   It is also an emote from a king.[await]",
         "%RANDOM_WRITER%\n\n    The “M” comes before the “O”.[await]",
         None,
-        " BarbarousKing passed through\n here. He was so lost, he started\n guessing at the password.[await][page]\n But all he could think of was the\n actor that played Jesse on\n “Full House”.[await]"
+        " BarbarousKing passed through\n here. He was so lost, he started\n guessing at the password.[await][page]\n But all he could think of was the\n actor that played Jesse on\n “Full House”.[await]",
         " It's a make-shift crossword\n puzzle. The letters contain\n “S”, “M”, “A”, “O”, and “T”.[await]",
         "%RANDOM_WRITER%\n\n  You could just Google the answer.[await]",
         "DRY BONES: Have you been reading\n the notes posted around these\n rooms?[await]",
@@ -307,9 +307,9 @@ pool = (
         "  Memo left by Traveling Sisters 3:\n\n   We love charades! .. 2 words![await]",
         "  Memo left by Traveling Sisters 3:\n   We're too terrified of the biting\n         plants to use that![await]",
         " You ever notice how sometimes you\n can just skip letters and still\n know what a word is?",
-        " Lk, cn y rd ths vn thgh thr rn't ny\n vwls?[await]"
+        " Lk, cn y rd ths vn thgh thr rn't ny\n vwls?[await]",
         " Classic modes of moving from one\n place to another are the best.[await][pause] Well,\n other than running.[delay] Gross.[await]",
-        " You ever wonder how plumbers move\n around so quickly?[await][pause] One second\n they're in a sewer, and the next\n they're in the sky.[await]\n It's kinda weird.[await]"
+        " You ever wonder how plumbers move\n around so quickly?[await][pause] One second\n they're in a sewer, and the next\n they're in the sky.[await]\n It's kinda weird.[await]",
         "\n   DRY BONES: Naps are the best.[await]",
         "Calereliya",
         "CALERELIYA",
@@ -352,7 +352,7 @@ pool = (
         "%RANDOM_WRITER%\n\n            Find more pearls.",
         "%RANDOM_WRITER%\n\n      Scour the sea bed for them.",
         "%RANDOM_WRITER%\n\n          They were all empty.",
-        "%RANDOM_WRITER%\n Is there a difference between those\n found in the sea and on the beach?[await]"
+        "%RANDOM_WRITER%\n Is there a difference between those\n found in the sea and on the beach?[await]",
         "\n    DRY BONES: She sells them...[await]",
         "Naegleria",
         "NAEGLERIA",
@@ -369,7 +369,7 @@ pool = (
         " The password is about the hero of\n another far-off island...[await]",
         " His greatest foe got his start on\n a ship similar to this one...[await]",
         " This hero is “crazy” about a\n specific type of food![await]",
-        " He makes a cameo here in the\n Mushroom Kingdom![await][pause] Though, he\n doesn't appreciate his wardrobe\n very much...[await]"
+        " He makes a cameo here in the\n Mushroom Kingdom![await][pause] Though, he\n doesn't appreciate his wardrobe\n very much...[await]",
         "DRY BONES: He's the leader of the\n bunch, you know him well![await]",
         submitter="LimeFiasco",
         submitter_credits="LIMEFIASCO",

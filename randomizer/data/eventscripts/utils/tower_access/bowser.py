@@ -38,7 +38,7 @@ script = [
                 "args": [[_0x0AFlags.CANT_PASS_WALLS]]
             },
             {
-                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6',
+                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6_',
                 "command": 'walk_to_xy_coords',
                 "args": [4, 114]
             },
@@ -75,7 +75,7 @@ script = [
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6',
+                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6__',
                 "command": 'walk_to_xy_coords',
                 "args": [5, 115]
             },
@@ -99,7 +99,7 @@ script = [
                 "args": [15]
             },
             {
-                "identifier": 'EVENT_1331_action_queue_async_11_SUBSCRIPT_set_animation_speed_6',
+                "identifier": 'EVENT_1331_action_queue_async_11_SUBSCRIPT_set_animation_speed_6_',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.SLOW, [_0x10Flags.SEQUENCE]]
             },
@@ -164,11 +164,11 @@ script = [
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {
-                "identifier": 'EVENT_1331_action_queue_sync_12_SUBSCRIPT_sequence_looping_off_0',
+                "identifier": 'EVENT_1331_action_queue_sync_12_SUBSCRIPT_sequence_looping_off_0_',
                 "command": 'sequence_looping_off'
             },
             {
-                "identifier": 'EVENT_1331_action_queue_sync_12_SUBSCRIPT_sequence_playback_off_1',
+                "identifier": 'EVENT_1331_action_queue_sync_12_SUBSCRIPT_sequence_playback_off_1_',
                 "command": 'sequence_playback_off'
             },
             {
@@ -270,7 +270,7 @@ script = [
                 "command": 'reset_properties'
             },
             {
-                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6',
+                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6___',
                 "command": 'face_southwest',
             },
         ]
@@ -284,12 +284,12 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6',
+                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_6____',
                 "command": 'walk_to_xy_coords',
                 "args": [5, 116]
             },
             {
-                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_face_east_3',
+                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_face_east_3_',
                 "command": 'face_northeast'
             },
         ]
@@ -313,7 +313,7 @@ script = [
                 "command": 'sequence_playback_on'
             },
             {
-                "identifier": 'EVENT_1331_action_queue_async_11_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_1331_action_queue_async_11_SUBSCRIPT_set_animation_speed_0_',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
             },
@@ -328,7 +328,7 @@ script = [
                 "args": [5, 116]
             },
             {
-                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_face_east_3',
+                "identifier": 'EVENT_1331_action_queue_async_10_SUBSCRIPT_face_east_3__',
                 "command": 'visibility_off'
             },
         ]

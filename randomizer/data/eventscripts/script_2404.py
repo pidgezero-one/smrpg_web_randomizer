@@ -45,7 +45,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_set_priority_2',
-                "command": 'set_priority',
+                "command": 'set_vram_priority',
                 "args": [3]
             },
             {
@@ -64,23 +64,9 @@ script = [
                 "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_db_6',
-                "command": 'db',
-                "args": [0x20, 0x04]
-            },
-            {
-                "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_db_7',
-                "command": 'db',
-                "args": [0x25, 0xc0, 0x06, 0xc0, 0xff]
-            },
-            {
                 "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_pause_8',
                 "command": 'pause',
                 "args": [54]
-            },
-            {
-                "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_bpl_26_27_28_9',
-                "command": 'bpl_26_27_28'
             },
             {
                 "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_pause_10',
@@ -89,8 +75,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_set_priority_11',
-                "command": 'set_priority',
-                "args": [2]
+                "command": 'set_vram_priority',
+                "args": [1]
             },
             {
                 "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_shift_east_pixels_12',
@@ -99,7 +85,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2404_action_queue_sync_5_SUBSCRIPT_set_priority_13',
-                "command": 'set_priority',
+                "command": 'set_vram_priority',
                 "args": [3]
             },
             {
@@ -182,8 +168,8 @@ script = [
         "subscript": [
             {
                 "identifier": 'EVENT_2404_action_queue_sync_10_SUBSCRIPT_set_priority_0',
-                "command": 'set_priority',
-                "args": [2]
+                "command": 'set_vram_priority',
+                "args": [1]
             },
             {
                 "identifier": 'EVENT_2404_action_queue_sync_10_SUBSCRIPT_set_sprite_sequence_1',
@@ -207,7 +193,7 @@ script = [
     {
         "identifier": 'EVENT_2404_jmp_12',
         "command": 'jmp',
-        "args": ['EVENT_2403_remove_from_current_level_10']
+        "args": ['EVENT_2403_action_queue_async_9_']
     },
     {
         "identifier": 'EVENT_2404_ret_13',

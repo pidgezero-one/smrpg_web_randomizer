@@ -310,7 +310,7 @@ def randomize_all(world):
 
             # Shuffle reward items with other consumable items.
             linked = enemy.normal_item == enemy.rare_item
-            consumables = [i for i in world.items if i.consumable and not i.reuseable]
+            consumables = [i for i in world.items if i.consumable]
 
             # Shuffle normal item, if this reward has one.
             if enemy.normal_item:

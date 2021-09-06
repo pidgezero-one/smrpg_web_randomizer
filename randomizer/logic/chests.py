@@ -7,7 +7,7 @@ import copy
 
 from scipy.stats import gamma
 
-from randomizer.data import items, locations, chests
+from randomizer.data import items, locations, chests, bosses
 from randomizer.data.helpers import FireworksOptions, WinConditions, ItemQualities, ShopQualities, PlayableCharacters, BanditsWayGating, ForestMazeGating, BoosterTowerGating, SeaGating, ShuffleLocationSelector
 from randomizer.data.items import ItemUnique
 from randomizer.data.locations import Area
@@ -16,60 +16,14 @@ from randomizer.logic import flags, keys, utils
 from randomizer.data.eventscripts.utils.slot_machine.event import script as slot_machine_commands
 from randomizer.data.eventscripts.utils.slot_machine.objects import objects as slot_machine_npcs
 
-class RandomGrantEnum(enum.Enum):
-    RegularItem = enum.auto()
-    Equip = enum.auto()
-    Coins = enum.auto()
-    FrogCoins = enum.auto()
-    Flower = enum.auto()
-    RecoveryMushroom = enum.auto()
-    SlotMachine = enum.auto()
-    EXPStar = enum.auto()
-
-chest_grant_table = [
-    (2, RandomGrantEnum.SlotMachine),
-    (8, RandomGrantEnum.RecoveryMushroom),
-    (8, RandomGrantEnum.Flower),
-    (8, RandomGrantEnum.FrogCoins),
-    (8, RandomGrantEnum.Coins),
-    (19, RandomGrantEnum.Equip),
-    (37, RandomGrantEnum.RegularItem)
-]
-
-star_chest_grant_table = [
-    (2, RandomGrantEnum.SlotMachine),
-    (8, RandomGrantEnum.EXPStar),
-    (8, RandomGrantEnum.RecoveryMushroom),
-    (8, RandomGrantEnum.Flower),
-    (8, RandomGrantEnum.FrogCoins),
-    (8, RandomGrantEnum.Coins),
-    (19, RandomGrantEnum.Equip),
-    (39, RandomGrantEnum.RegularItem)
-]
-
-starter_grant_table = [
-    (2, RandomGrantEnum.RegularItem)
-]
-
-shop_grant_table = [
-    (2, RandomGrantEnum.Equip)
-]
-
-npc_grant_table = [
-    (5, RandomGrantEnum.RecoveryMushroom),
-    (10, RandomGrantEnum.FrogCoins),
-    (5, RandomGrantEnum.Coins),
-    (10, RandomGrantEnum.Equip),
-    (20, RandomGrantEnum.RegularItem)
-]
-
-overworld_grant_table = [
-    (5, RandomGrantEnum.RecoveryMushroom),
-    (15, RandomGrantEnum.Flower),
-    (15, RandomGrantEnum.FrogCoins),
-    (55, RandomGrantEnum.Coins),
-    (5, RandomGrantEnum.Equip),
-    (5, RandomGrantEnum.RegularItem)
+reward_table = [
+    (2, items.SlotMachineChest),
+    (5, items.InvincibilityStar),
+    (5, items.RecoveryMushroom),
+    (7, items.Flower),
+    (6, items.FrogCoin),
+    (6, items.Coins),
+    (69, items.RegularItem)
 ]
 
 area_1 = [Area.MariosPad, Area.MushroomWay, Area.MushroomKingdom, Area.BanditsWay]
@@ -236,6 +190,18 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
         if not fillable_locations and utils.isclass_or_instance(item, items.StarPiece):
             fillable_locations = [l for l in locations if not l.has_item and l.can_access(assumed_items)
                             and l.item_allowed(item)]
+
+        # no more than one slot machine per room, too many NPCs to handle
+        if utils.isclass_or_instance(item, items.SlotMachineChest):
+            rooms_arrays_that_already_have_slot_machines = [l.rooms for l in locations if utils.isclass_or_instance(l.item, items.SlotMachineChest)]
+            rooms_that_already_have_slot_machines = [item for sublist in rooms_arrays_that_already_have_slot_machines for item in sublist]
+            for r in rooms_that_already_have_slot_machines:
+                fillable_locations = [l for l in fillable_locations if r not in l.rooms]
+
+        # bias star pieces toward boss locations, slightly, even if SPs Anywhere enabled
+        if world.settings.is_flag_enabled(flags.StarPieceAvailability) and utils.isclass_or_instance(item, items.StarPiece):
+            if random.randint(0, 9) > 5:
+                fillable_locations = [l for l in fillable_locations if l.star_location]
         
         #print (item, len(fillable_locations))
         # print(item, fillable_locations)
@@ -252,7 +218,7 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
             remaining_fill_items.remove(item)
 
             # Place item in the first fillable location.
-            if allow_replacements and not utils.isclass_or_instance(fillable_locations[0], chests.OverworldItem) and not(item.is_key or item.special_equip) and not(utils.isclass_or_instance(fillable_locations[0], chests.FrogCoinShopItem) or utils.isclass_or_instance(fillable_locations[0], chests.TreasureSellerReward))  and item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
+            if allow_replacements and fillable_locations[0].item_allowed(items.Coins) and not(item.is_key or item.special_equip) and item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
                 fillable_locations[0].item = items.Coins(item.price // 2, world)
                 #print ("default:", item, item.tier, items.Coins(item.price // 2, world).amount)
             else:
@@ -300,11 +266,11 @@ def _place_items(world, _items, locations, base_inventory=None, allow_replacemen
             # so that way we don't run the risk of violating StarPiecesRestrictedByArea by populating chests w/ unknown locations under MimicsAnywhere
             chests_missing_locations = []
             if utils.isclass_or_instance(item, items.PandoriteFight):
-                chests_missing_locations = [c for c in world.chest_locations if utils.isclass_or_instance(c, chests.PandoriteReward1) or utils.isclass_or_instance(c, chests.PandoriteReward2) or utils.isclass_or_instance(c, chests.PandoriteBoss)]
+                chests_missing_locations = [c for c in world.chest_locations + world.boss_star_checks if utils.isclass_or_instance(c, chests.PandoriteReward1) or utils.isclass_or_instance(c, chests.PandoriteReward2) or utils.isclass_or_instance(c, chests.PandoriteBoss)]
             elif utils.isclass_or_instance(item, items.PandoriteFight):
-                chests_missing_locations = [c for c in world.chest_locations if utils.isclass_or_instance(c, chests.HidonReward1) or utils.isclass_or_instance(c, chests.HidonReward2) or utils.isclass_or_instance(c, chests.HidonBoss)]
+                chests_missing_locations = [c for c in world.chest_locations + world.boss_star_checks if utils.isclass_or_instance(c, chests.HidonReward1) or utils.isclass_or_instance(c, chests.HidonReward2) or utils.isclass_or_instance(c, chests.HidonBoss)]
             elif utils.isclass_or_instance(item, items.BoxBoyFight):
-                chests_missing_locations = [c for c in world.chest_locations if utils.isclass_or_instance(c, chests.BoxBoyBoss)]
+                chests_missing_locations = [c for c in world.chest_locations + world.boss_star_checks if utils.isclass_or_instance(c, chests.BoxBoyBoss)]
             for c in chests_missing_locations:
                 c.area = fillable_locations[0].area
         else:
@@ -467,21 +433,21 @@ def get_max_item_quality(world):
         tiers_allowed = 2
     return tiers_allowed
 
-def generate_nonrequired_item(world, table, chest):
+def generate_nonrequired_item(world, chest):
 
     max_tier = get_max_item_quality(world)
+    table = [t for t in reward_table if chest.item_allowed(t[1])]
+    if not world.settings.is_flag_enabled(flags.SlotsAnywhere):
+        table = [t for t in reward_table if not utils.isclass_or_instance(t, items.SlotMachineChest)]
+    if not world.settings.is_flag_enabled(flags.EXPStarsAnywhere):
+        table = [t for t in reward_table if not utils.isclass_or_instance(t, items.InvincibilityStar)]
+
     weights, possible_options = list(zip(*table))
     result = random.choices(possible_options, weights=weights, k=1)[0]
-    if result == RandomGrantEnum.SlotMachine:
-        item = world.get_item_instance(items.SlotMachineChest)
-    elif result == RandomGrantEnum.RecoveryMushroom:
-        item = world.get_item_instance(items.RecoveryMushroom)
-    elif result == RandomGrantEnum.Flower:
-        item = world.get_item_instance(items.Flower)
-    elif result == RandomGrantEnum.EXPStar:
+    if result == items.InvincibilityStar:
         all_choices = [world.get_item_instance(i) for i in [items.BanditsWayStar, items.KeroSewersStar, items.MolevilleMinesStar, items.SeaStar, items.LandsEndVolcanoStar, items.LandsEndVolcanoStar, items.NimbusLandStar, items.LandsEndStar2, items.LandsEndStar3]]
         item = random.choice(all_choices)(world)
-    elif result == RandomGrantEnum.Coins:
+    elif result == items.Coins:
         if utils.isclass_or_instance(chest, chests.OverworldItem):
             rand = random.randint(1, 10)
             if rand > 3:
@@ -492,7 +458,7 @@ def generate_nonrequired_item(world, table, chest):
             value = gamma.rvs(80, size=1)[0] // 1
             #print ("nonrequired:", item, item.tier, items.Coins(value, world).amount)
             item = items.Coins(value, world)
-    elif result == RandomGrantEnum.FrogCoins:
+    elif result == items.FrogCoin:
         if utils.isclass_or_instance(chest, chests.OverworldItem):
             item = world.get_item_instance(items.FrogCoin)
         else:
@@ -503,13 +469,12 @@ def generate_nonrequired_item(world, table, chest):
                 possibilities = [2, 3, 4, 5, 6, 7, 8, 9, 10]
                 value = random.choices(possibilities, weights=(10, 9, 8, 7, 6, 5, 4, 3, 2), k=1)[0]
                 item = items.MultiFrogCoin(world, value)
-    elif result == RandomGrantEnum.Equip or result == RandomGrantEnum.RegularItem:
-        if result == RandomGrantEnum.Equip:
-            all_choices = [i for i in world.items if (i.unique == ItemUnique.Never or (i.unique == ItemUnique.BalancedOnly and not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.original))) and i.is_equipment and i.tier >= max_tier]
-        else:
-            all_choices = [i for i in world.items if (i.unique == ItemUnique.Never or (i.unique == ItemUnique.BalancedOnly and not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.original))) and i.tier >= max_tier]
+    elif result == items.RegularItem:
+        all_choices = [i for i in world.items if (i.unique == ItemUnique.Never or (i.unique == ItemUnique.BalancedOnly and not world.settings.is_flag_value(flags.ItemQuality, ItemQualities.original))) and i.tier >= max_tier]
         if utils.isclass_or_instance(chest, chests.TreasureSellerReward):
             all_choices = [i for i in all_choices if i.unique == ItemUnique.BalancedOnly]
+        elif random.randint(0, 9) >= 3:
+            all_choices = [i for i in world.items if i.is_equipment]
         possibilities = [1, 2, 3, 4, 5]
         if world.settings.is_flag_value(flags.BiasItemShuffle, True):
             if chest.access == 1:
@@ -528,9 +493,10 @@ def generate_nonrequired_item(world, table, chest):
             value = random.choices(possibilities, weights, k=1)[0]
             choices = [i for i in all_choices if i.tier == value]
         item = random.choice(choices)
-        # print(possibilities, weights, value, item, item.tier)
+        if chest.item_allowed(items.Coins) and item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
+            item = items.Coins(item.price // 2, world)
     else:
-        raise Exception("couldn't place a randomly generated item at %r" % chest)
+        item = world.get_item_instance(result)
     return item
 
 def randomize_all(world):
@@ -661,7 +627,7 @@ def randomize_all(world):
         # will this work? combining classes and instances?
         # Collect required base item pool
         # key items + characters
-        required_item_pool = [i for i in world.items if i.is_key] + [world.get_item_instance(char) for char in [items.MarioRecruit, items.MallowRecruit, items.GenoRecruit, items.BowserRecruit, items.ToadstoolRecruit] if char.description in [c for c in charactersInSeed if c not in starting_characters]]
+        required_item_pool = [i for i in world.items if i.is_key and not i.is_subitem] + [world.get_item_instance(char) for char in [items.MarioRecruit, items.MallowRecruit, items.GenoRecruit, items.BowserRecruit, items.ToadstoolRecruit] if char.description in [c for c in charactersInSeed if c not in starting_characters]]
         # add star pieces
         if world.settings.is_flag_value(flags.ShuffleStarPieces, True):
             total_star_pieces = world.settings.get_flag(flags.TotalStarPieces).value
@@ -738,6 +704,8 @@ def randomize_all(world):
         if remainder:
             excluded_important_items = [i for i in remainder if i.is_key or i in remainder_check or utils.isclass_or_instance(i, items.RecruitedCharacter)]
             if len(excluded_important_items) > 0:
+                for l in all_locations:
+                    print(l)
                 raise ValueError("Items were not placed: {!r}".format(
                     excluded_important_items))
 
@@ -753,31 +721,14 @@ def randomize_all(world):
                 else:
                     chest.item = world.get_item_instance(items.GoodieBag)
             else:
-                item = None
-                if utils.isclass_or_instance(chest, chests.StarAllowedChest):
-                    item = generate_nonrequired_item(world, star_chest_grant_table, chest)
-                elif utils.isclass_or_instance(chest, chests.Chest):
-                    item = generate_nonrequired_item(world, chest_grant_table, chest)
-                elif utils.isclass_or_instance(chest, chests.StarterItem):
-                    item = generate_nonrequired_item(world, starter_grant_table, chest)
-                elif utils.isclass_or_instance(chest, chests.TreasureSellerReward) or utils.isclass_or_instance(chest, chests.FrogCoinShopItem):
-                    item = generate_nonrequired_item(world, shop_grant_table, chest)
-                elif utils.isclass_or_instance(chest, chests.NPCReward):
-                    item = generate_nonrequired_item(world, npc_grant_table, chest)
-                elif utils.isclass_or_instance(chest, chests.OverworldItem):
-                    item = generate_nonrequired_item(world, overworld_grant_table, chest)
+                item = generate_nonrequired_item(world, chest)
                 if item:
-                    if not utils.isclass_or_instance(chest, chests.OverworldItem) and item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
+                    if chest.item_allowed(items.Coins) and item.tier == 5 and item.price != 0 and world.settings.is_flag_value(flags.ReplaceItems, True):
                         #print("empty grants:", item, item.tier, items.Coins(item.price // 2, world))
                         item = items.Coins(item.price // 2, world)
                     chest.item = item
                 # Ignore empty boss locations and empty character recruit locations, those SHOULD be empty if they don't receive an item
             #print(chest, chest.access, item.tier)
-        
-        # print(required_item_pool)
-        # print(len(required_item_pool), len(extra_item_pool))
-        for l in all_locations:
-            pass
         
         # at some point, will need to figure out partitioning for rooms where coins end up
 
@@ -817,12 +768,8 @@ def randomize_all(world):
                     if (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, items.MarioRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, items.MallowRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, items.GenoRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, items.BowserRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, items.ToadstoolRecruit)):
                         world.prepend_bits(200, [[0x7066, 3], [0x706E, 3]])
                 for room_id, npc, eventscripts, actionscripts in c.npcs:
-                    roomobject = 0
                     # replace model
-                    for o_index, o in enumerate(world.rooms[room_id]["objects"]):
-                        if roomobject == npc:
-                            world.rooms[room_id]["objects"][o_index]["model"] = c.item.model
-                        roomobject += 1 + len(o["clones"])
+                    world.update_room_npc_property_by_id(room_id, npc, "model", c.item.model)
                     # format scripts
                     for script_id in eventscripts:
                         for command_index, cmd in enumerate(world.eventscripts[script_id]):
@@ -854,12 +801,7 @@ def randomize_all(world):
                     world.search_replace_dialog("`MARRYMORE_CHARACTER`", "Toad")
                     world.search_replace_dialog("`RANDOM_CHARACTER_NAME`", "Yoshi")
                 for room_id, npc, eventscripts, actionscripts in c.npcs:
-                    roomobject = 0
-                    # replace model
-                    for o_index, o in enumerate(world.rooms[room_id]["objects"]):
-                        if roomobject == npc:
-                            world.rooms[room_id]["objects"][o_index]["model"] = 64
-                        roomobject += 1 + len(o["clones"])
+                    world.update_room_npc_property_by_id(room_id, npc, "model", 64)
                     # format scripts
                     for script_id in eventscripts:
                         for command_index, cmd in enumerate(world.eventscripts[script_id]):
@@ -870,7 +812,7 @@ def randomize_all(world):
                             world.actionscripts[script_id] = utils.sanitize_character_animation_script(toad_sprites, world.actionscripts[script_id])
 
         # chests
-        for c in world.chest_locations + [x for x in world.freestanding_item_locations if not utils.isclass_or_instance(x, chests.OverworldItem) and not utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:
+        for c in [x for x in world.chest_locations if not utils.isclass_or_instance(x, chests.OverworldItem)] + [x for x in world.freestanding_item_locations if not utils.isclass_or_instance(x, chests.OverworldItem) and not utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:
             if c.item is not None and not utils.isclass_or_instance(c, chests.FrogCoinShopItem):
                 for d in c.dialogs_to_replace:
                     for id, dat in c.item.dialog_replacements:
@@ -888,20 +830,27 @@ def randomize_all(world):
                 if utils.isclass_or_instance(c, chests.Chest): 
                     # slot machines - doesn't take a 70A7 value
                     if utils.isclass_or_instance(c.item, items.SlotMachineChest): 
-                        for i in range(len(c.rooms)):
+                        for i, r in enumerate(c.rooms):
                             # count NPCs in room
-                            r = c.rooms[i]
-                            ctr = 0
-                            for object_id in range(len(world.rooms[r]["objects"])):
-                                o = world.rooms[r]["objects"][object_id]
-                                ctr += 1
-                                for clone_id in range(len(o["clones"])):
-                                    ctr += 1
+                            ctr = world.get_npc_count_by_room_id(r)
                             # insert a slot machine script with the NPC IDs adjusted to this room
-                            slot_logic = copy.deepcopy(slot_machine_commands)
+                            slot_logic = copy.deepcopy([{**s} for s in slot_machine_commands])
                             for j, cmd in enumerate(slot_logic):
                                 if cmd["command"] in ["stop_embedded_action_script", "pause_action_script", "set_action_script_sync", "summon_to_current_level", "action_queue_async", "action_queue_sync", "remove_from_current_level"] and cmd["args"][0] >= 0x16 and cmd["args"][0] <= 0x1A:
                                     cmd["args"][0] = cmd["args"][0] - 2 + ctr
+                                elif cmd["command"] == "start_battle":
+                                    battlefield = None
+                                    for b_f in bosses.battlefield_room_table:
+                                        if r in b_f[1]:
+                                            battlefield = b_f[0]
+                                            break
+                                    for b_l in world.boss_locations:
+                                        if utils.isclass_or_instance(b_l, bosses.BoxBoy):
+                                            cmd["args"][0] = b_l.boss.pack_number
+                                            if b_l.formation.required_battlefield is not None:
+                                                battlefield = b_l.formation.required_battlefield
+                                            cmd["args"][1] = battlefield
+                                            break
                                 slot_logic[j] = cmd
 
                             old_new_identifiers = {}
@@ -917,9 +866,36 @@ def randomize_all(world):
                                         cmdindex = cmd["args"].index(old_id)
                                         slot_logic[index]["args"][cmdindex] = old_new_identifiers[old_id]
                             # add slot machine NPCs to this room
-                            cmds.extend(slot_logic)
+                            cmds.extend(copy.deepcopy([{**s} for s in slot_logic]))
                             world.rooms[r]["objects"].extend(slot_machine_npcs)
-                            grant_builders[c.event]["executions"].extend(cmds)
+                            jmp = utils.new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
+                            grant_builders[c.event]["jumps"].append(jmp)
+                        grant_builders[c.event]["executions"].extend(cmds)
+                    # mimics - update battlefield
+                    elif utils.isclass_or_instance(c.item, items.PandoriteFight) or utils.isclass_or_instance(c.item, items.HidonFight) or utils.isclass_or_instance(c.item, items.BoxBoyFight):
+                        battlefield = None
+                        for b_f in bosses.battlefield_room_table:
+                            if c.rooms[0] in b_f[1]:
+                                battlefield = b_f[0]
+                                break
+                        boss = None
+                        pack_number = None
+                        for b_l in world.boss_locations:
+                            if (utils.isclass_or_instance(c.item, items.PandoriteFight) and utils.isclass_or_instance(b_l, bosses.Pandorite)) or (utils.isclass_or_instance(c.item, items.HidonFight) and utils.isclass_or_instance(b_l, bosses.Hidon)) or (utils.isclass_or_instance(c.item, items.BoxBoyFight) and utils.isclass_or_instance(b_l, bosses.BoxBoy)):
+                                pack_number = b_l.boss.pack_number
+                                if b_l.formation.required_battlefield is not None:
+                                    battlefield = b_l.formation.required_battlefield
+                                break
+                        if boss is not None:
+                            for cmd_index, cmd in enumerate(world.eventscripts[353]):
+                                if cmd["command"] == "start_battle" and cmd["args"][0] == pack_number:
+                                    cmd["args"][1] = battlefield
+                                    world.eventscripts[353][cmd_index] = cmd
+                                    break
+                        # add jumps
+                        cmds.append(utils.new_command(c.event, 'jmp_to_event', [c.item.get_chest_event(c.event)]))
+                        grant_builders[c.event]["executions"].extend(cmds)
+                        for r in c.rooms:
                             jmp = utils.new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
                             grant_builders[c.event]["jumps"].append(jmp)
                     else:
@@ -928,25 +904,12 @@ def randomize_all(world):
                             manual_70A7 = (c.item.chest_70A7_upper << 4) + c.item.chest_70A7_lower
                             cmds.append(utils.new_command(c.event, 'set', [0x70A7, manual_70A7]))
                         else:
-                            #if utils.isclass_or_instance(c.item, items.Coins):
-                            #    print(c.item.amount, c.item.chest_70A7_lower)
                             # set 70A7 on chest itself
-                            for i in range(len(c.rooms)):
-                                r = c.rooms[i]
-                                ctr = 0
-                                for object_id in range(len(world.rooms[r]["objects"])):
-                                    o = world.rooms[r]["objects"][object_id]
-                                    if ctr == c.npc_ids[i]:
-                                        world.rooms[r]["objects"][object_id]["item_offset"] = c.item.chest_70A7_upper
-                                        world.rooms[r]["objects"][object_id]["star_offset"] = c.item.chest_70A7_lower
-                                    ctr += 1
-                                    for clone_id in range(len(o["clones"])):
-                                        if ctr == c.npc_ids[i]:
-                                            world.rooms[r]["objects"][object_id]["clones"][clone_id]["item_offset"] = c.item.chest_70A7_upper
-                                            world.rooms[r]["objects"][object_id]["clones"][clone_id]["star_offset"] = c.item.chest_70A7_lower
-                                        ctr += 1
+                            for r, npc_id in zip(c.rooms, c.npc_ids):
+                                world.update_room_npc_property_by_id(r, npc_id, "item_offset", c.item.chest_70A7_upper)
+                                world.update_room_npc_property_by_id(r, npc_id, "star_offset", c.item.chest_70A7_lower)
                         if utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.MultiFrogCoin):
-                            cmds.append(utils.new_command(c.event, 'set', [0x70BC, 0]))
+                            cmds.append(utils.new_command(c.event, 'set', [0x70BC, c.item.multiplier]))
                         elif utils.isclass_or_instance(c.item, items.StarPiece):
                             hint_variable, hint_bit = c.item.hint_bit
                             cmds.append(utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
@@ -965,7 +928,7 @@ def randomize_all(world):
                 else:
                     # starter items
                     if utils.isclass_or_instance(c, chests.StarterItem):
-                        world.eventscripts[c.event].insert(0, utils.new_command(c.event, 'put_inventory', [c.item.index]))
+                        world.eventscripts[2497].insert(0, utils.new_command(2497, 'put_inventory', [c.item.index]))
                     else:
                         if utils.isclass_or_instance(c.item, items.RegularItem):
                             # set 70A7 for granting a normal item
@@ -984,35 +947,32 @@ def randomize_all(world):
                             grant_builders[c.event]["jumps"].append(jmp)
                         # coin snake considerations
                         if utils.isclass_or_instance(c, chests.SunkenShipCoinSnake):
-                            print(c, c.item)
                             model_id = c.item.model.model
                             action_script = c.item.model.action_script
-                            for r in c.rooms:
-                                ctr = 0
-                                for object_id in range(len(world.rooms[r]["objects"])):
-                                    o = world.rooms[r]["objects"][object_id]
-                                    if ctr in c.npc_ids:
-                                        world.rooms[r]["objects"][object_id]["model"] = model_id
-                                    ctr += 1
-                                    for clone_id in range(len(o["clones"])):
-                                        ctr += 1
+                            for r, npc_id in zip(c.rooms, c.npc_ids):
+                                world.update_room_npc_property_by_id(r, npc_id, "model", model_id)
                             # set the right sequence on the object in AS 199 and 200
-                            action_script_contents = copy.deepcopy([s for s in world.actionscripts[action_script] if s["command"] != "ret"])
-                            as_199 = copy.deepcopy(world.actionscripts[199])
-                            as_199.pop()
-                            as_200 = copy.deepcopy(world.actionscripts[200])
-                            as_200.pop()
-                            world.actionscripts[199] = action_script_contents + as_199
-                            world.actionscripts[200] = action_script_contents + as_200
+                            action_script_contents = copy.deepcopy([{**s} for s in world.actionscripts[action_script] if s["command"] != "ret"])
+                            for ind in [199, 200]:
+                                as_ = copy.deepcopy([{**s} for s in world.actionscripts[ind]])
+                                as_.pop()
+                                working_script = [{**a, "identifier": a["identifier"].replace("ACTION_%i_"%str(action_script), "ACTION_%i_"%str(ind))} for a in action_script_contents] + as_
+                                for subs_index, sub_cmd in enumerate(working_script):
+                                    if "args" in sub_cmd:
+                                        for sub_cmd_arg_index, sub_cmd_arg in enumerate(sub_cmd["args"]):
+                                            if type(sub_cmd_arg) == str:
+                                                sub_cmd["args"][sub_cmd_arg_index] = sub_cmd_arg.replace("ACTION_%i_"%str(action_script), "ACTION_%i_"%str(ind))
+                                        working_script[subs_index] = sub_cmd
+                                world.actionscripts[ind] = working_script
                             # remove coin sequences if necessary
                             if not utils.isclass_or_instance(c.item, items.Coins) and not utils.isclass_or_instance(c.item, items.FrogCoin) and not utils.isclass_or_instance(c.item, items.MultiFrogCoin):
-                                e_3215 = copy.deepcopy(world.eventscripts[3215])
+                                e_3215 = copy.deepcopy([{**s} for s in world.eventscripts[3215]])
                                 for command_index in range(len(e_3215)):
                                     command = e_3215[command_index]
                                     if "subscript" in command:
                                         subscript = [ss for ss in command["subscript"] if ss["command"] != 'set_sprite_sequence']
                                         e_3215[command_index]["subscript"] = subscript
-                                e_3216 = copy.deepcopy(world.eventscripts[3216])
+                                e_3216 = copy.deepcopy([{**s} for s in world.eventscripts[3216]])
                                 for command_index in range(len(e_3216)):
                                     command = e_3216[command_index]
                                     if "subscript" in command:
@@ -1022,7 +982,7 @@ def randomize_all(world):
                                 world.eventscripts[3216] = e_3216
                                 
         # freestanding items
-        for c in [x for x in world.freestanding_item_locations if utils.isclass_or_instance(x, chests.OverworldItem) or utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:
+        for c in [x for x in world.freestanding_item_locations if utils.isclass_or_instance(x, chests.OverworldItem)] + [x for x in world.chest_locations if utils.isclass_or_instance(x, chests.OverworldItem) or utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:
             if c.item is not None:
                 for d in c.dialogs_to_replace:
                     for id, dat in c.item.dialog_replacements:
@@ -1038,29 +998,19 @@ def randomize_all(world):
                 cmds = []
                 if utils.isclass_or_instance(c, chests.PacketItem): 
                     # generate the right packet for the item
-                    generator = copy.deepcopy(world.eventscripts[c.script_id])
+                    generator = copy.deepcopy([{**s} for s in world.eventscripts[c.script_id]])
                     generator[0]["args"][0] = c.item.packet
                     world.eventscripts[c.script_id] = generator
                 else:
-                    # set the NPC and action script for the item
-                    model_id = c.item.model.model
-                    action_script = c.item.model.action_script
-                    is_floating = c.item.model.hover
-                    for r in c.rooms:
-                        ctr = 0
-                        for object_id in range(len(world.rooms[r]["objects"])):
-                            o = world.rooms[r]["objects"][object_id]
-                            if ctr in c.npc_ids:
-                                world.rooms[r]["objects"][object_id]["model"] = model_id
-                                world.rooms[r]["objects"][object_id]["action_script"] = action_script
-                                world.rooms[r]["objects"][object_id]["z_half"] = is_floating
-                            ctr += 1
-                            for clone_id in range(len(o["clones"])):
-                                if ctr in c.npc_ids:
-                                    world.rooms[r]["objects"][object_id]["clones"][clone_id]["action_offset"] = 0
-                                    world.rooms[r]["objects"][object_id]["clones"][clone_id]["npc_id_offset"] = 0
-                                    world.rooms[r]["objects"][object_id]["clones"][clone_id]["z_half"] = is_floating
-                                ctr += 1
+                    if not ((utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.FrogCoin)) and c.description in world.settings.get_flag(flags.EnabledFreestandingChecks).disabled):
+                        # set the NPC and action script for the item if it's NOT an excluded COIN overworld item location
+                        model_id = c.item.model.model
+                        action_script = c.item.model.action_script
+                        is_floating = c.item.model.hover
+                        for r, npc_id in zip(c.rooms, c.npc_ids):
+                            world.update_room_npc_property_by_id(r, npc_id, "model", model_id)
+                            world.update_room_npc_property_by_id(r, npc_id, "action_script", action_script)
+                            world.update_room_npc_property_by_id(r, npc_id, "z_half", is_floating)
                 # sett the item grant
                 if utils.isclass_or_instance(c.item, items.RegularItem):
                     # set 70A7 for granting a normal item
@@ -1082,6 +1032,20 @@ def randomize_all(world):
                 # edit action script 43 if midas runnel #3 item is not a coin
                 if utils.isclass_or_instance(c, chests.MidasRiverBottomLeftCave) and not utils.isclass_or_instance(c.item, items.Coins) and not utils.isclass_or_instance(c.item, items.FrogCoin) and not utils.isclass_or_instance(c.item, items.MultiFrogCoin):
                     world.actionscripts[43] = [a for a in world.actionscripts[43] if a["command"] != 'set_sprite_sequence']
+                # for elder key, need to forcefully set the sequence/mold of the item in script 1335
+                if utils.isclass_or_instance(c, chests.BoosterTowerPortraits):
+                    action_script_contents = [{**a, "identifier": "EVENT_1335_" + a["identifier"]} for a in world.actionscripts[c.item.model.action_script] if a["command"] != "ret"]
+                    for i, command in enumerate(world.eventscripts[1335]):
+                        if utils.is_animation_header(command, 7):
+                            command["subscript"] = copy.deepcopy([{**s} for s in action_script_contents])
+                            for subs_index, sub_cmd in enumerate(command["subscript"]):
+                                if "args" in sub_cmd:
+                                    for sub_cmd_arg_index, sub_cmd_arg in enumerate(sub_cmd["args"]):
+                                        if type(sub_cmd_arg) == str:
+                                            sub_cmd["args"][sub_cmd_arg_index] = "EVENT_1335_" + sub_cmd_arg
+                                    command["subscript"][subs_index] = sub_cmd
+                            world.eventscripts[1335][i] = command
+                            break # only apply to first command
 
         # boss star pieces
         for c in world.boss_star_checks:
@@ -1107,12 +1071,13 @@ def randomize_all(world):
         # finalize granter scripts
         for e in grant_builders:
             grant_builders[e]["jumps"].append(utils.new_command(e, "ret"))
-            world.eventscripts[e] = copy.deepcopy(grant_builders[e]["jumps"]) + copy.deepcopy(grant_builders[e]["executions"])
+            world.eventscripts[e] = copy.deepcopy([{**s} for s in grant_builders[e]["jumps"]]) + copy.deepcopy([{**s} for s in grant_builders[e]["executions"]])
 
         # if star piece signal ring hints turned on, set the appropriate bit checks in each area
         if world.settings.is_flag_value(flags.StarPieceHints, True):
             for c in world.recruitable_character_checks + world.chest_locations + world.freestanding_item_locations + world.boss_star_checks:
                 if c.item is not None and utils.isclass_or_instance(c.item, items.StarPiece):
+                    print(c.area, c.name, c.item)
                     hint_event = None
                     if c.area == Area.MariosPad:
                         hint_event = 3887

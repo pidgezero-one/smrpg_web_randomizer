@@ -6,6 +6,16 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1823_j',
+        "command": 'jmp_if_bit_set',
+        "args": [0x709C, 1, 'EVENT_1823_inc_7']
+    },
+    {
+        "identifier": 'EVENT_1823_s',
+        "command": 'set_bit',
+        "args": [0x709C, 1]
+    },
+    {
         "identifier": 'EVENT_1823_freeze_camera_6',
         "command": 'freeze_camera'
     },

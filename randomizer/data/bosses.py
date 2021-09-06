@@ -4,6 +4,7 @@ from enum import IntEnum, Enum, auto
 
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
+from randomizer.logic.utils import SequenceType
 
 from randomizer.data import music
 from randomizer.data.npcmodels import models
@@ -101,12 +102,21 @@ def sanitize_animation_script(boss, boss_location, script, model):
                             if subscript_command["args"][0] == 10:
                                 subscript_command["args"][0] = model.animations.keep_challenge.sequence_id
                                 new_script.append(subscript_command)
+                    # similar to mold, restore default sequence if appropriate
+                    else:
+                        if subscript_command["args"][0] == 0:
+                            subscript_command["args"][0] = model.sequence
+                            new_script.append(subscript_command)
             else:
                 new_script.append(subscript_command)
         return new_script
     else:
         return script
 
+class CrownHeight(Enum):
+    Short = auto()
+    Mid = auto()
+    Tall = auto()
 
 
 class AvailableBosses(Enum):
@@ -154,34 +164,73 @@ class AvailableBosses(Enum):
 
 class Battlefields(IntEnum):
     """Enumeration for ID values for battlefields."""
+    Forest = 0x00
     Bowyer = 0x01
+    Beanstalks = 0x02
     KingCalamari = 0x03
     SunkenShip = 0x04
     MolevilleMines = 0x05
     BowsersKeep = 0x07
     CzarDragon = 0x08
     MushroomWay = 0x09
+    Mountains = 0x0A
+    House = 0x0B
     BoosterTower = 0x0c
+    MushroomKingdom = 0x0D
+    Underwater = 0x0E
     MushroomKingdomThroneRoom = 0x0f
     Exor = 0x10
     ClownBros = 0x11
     Countdown = 0x12
     Gate = 0x13
+    Volcano = 0x14
     KeroSewers = 0x15
     NimbusCastle = 0x16
     Birdo = 0x17
     Valentina = 0x18
+    Underground = 0x19
+    MushroomKingdomOutside = 0x1C
     Boomer = 0x1d
+    Plateau = 0x21
+    SeaEnclave = 0x22
     Bundt = 0x23
+    StarHill = 0x24
     Yaridovich = 0x25
+    Sea = 0x26
     AxemRangers = 0x27
     CloakerDomino = 0x28
     BeanValley = 0x29
     BelomeTemple = 0x2a
+    Desert = 0x2b
     Smithy = 0x2c
+    SmithyFinal = 0x2d
     JinxDojo = 0x2e
     Culex = 0x2f
     Factory = 0x30
+    BeanValleyUnderground = 0x31
+
+battlefield_room_table = [
+    (Battlefields.Forest, [Rooms._224_FOREST_MAZE_AREA_01, Rooms._227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, Rooms._228_FOREST_MAZE_AREA_04, Rooms._234_FOREST_MAZE_SECRET, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]),
+    (Battlefields.Beanstalks, [Rooms._372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, Rooms._373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, Rooms._419_LAZY_SHELL_CLOUD]),
+    (Battlefields.SunkenShip, [Rooms._024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, Rooms._167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS, Rooms._169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN, Rooms._175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM, Rooms._179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, Rooms._183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN, Rooms._184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, Rooms._185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING, Rooms._379_BEAN_VALLEY_BEANSTALKS_AREA_02]),
+    (Battlefields.MushroomKingdom, [Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, Rooms._031_MUSHROOM_KINGDOM_CASTLE_VAULT, Rooms._331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT, ]),
+    (Battlefields.BowsersKeep, [Rooms._144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM, Rooms._446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS, Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, Rooms._321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS, Rooms._322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, Rooms._455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, Rooms._457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, Rooms._458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, Rooms._451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, Rooms._453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, Rooms._457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, Rooms._458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, Rooms._451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, Rooms._453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM]),
+    (Battlefields.MushroomWay, [Rooms._077_BANDITS_WAY_AREA_03, Rooms._078_BANDITS_WAY_AREA_04, Rooms._080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS, Rooms._081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, Rooms._203_MUSHROOM_WAY_AREA_01, Rooms._204_MUSHROOM_WAY_AREA_02, Rooms._206_BANDITS_WAY_AREA_05, Rooms._207_BANDITS_WAY_AREA_02, Rooms._267_MONSTRO_TOWN_ENTRANCE]),
+    (Battlefields.Mountains, [Rooms._100_BOOSTER_PASS_AREA_01, Rooms._137_LANDS_END_AREA_01, Rooms._138_LANDS_END_AREA_02, Rooms._405_BOOSTER_PASS_SECRET]),
+    (Battlefields.House, [Rooms._009_MARRYMORE_INN_REGULAR_ROOM, Rooms._087_ROSE_TOWN_ITEM_SHOP, Rooms._093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, Rooms._094_ROSE_TOWN_TREASURE_HOUSE_1F, Rooms._097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F, Rooms._098_ROSE_TOWN_TREASURE_HOUSE_2F, Rooms._492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]),
+    (Battlefields.BoosterTower, [Rooms._035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, Rooms._036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER, Rooms._048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, Rooms._196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]),
+    (Battlefields.Volcano, [Rooms._355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, Rooms._366_VOLCANO_AREA_13_WSAVE_POINT, Rooms._367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP, Rooms._384_VOLCANO_AREA_05, Rooms._385_VOLCANO_AREA_06]),
+    (Battlefields.KeroSewers, [Rooms._059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS, Rooms._060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, Rooms._128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, Rooms._301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]),
+    (Battlefields.NimbusCastle, [Rooms._111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE, Rooms._500_NIMBUS_CASTLE_AREA_04_____DUMMY, Rooms._113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, Rooms._114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, Rooms._498_NIMBUS_CASTLE_AREA_10_____DUMMY, Rooms._118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, Rooms._121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, Rooms._410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE, Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]),
+    (Battlefields.Valentina, [Rooms._344_NIMBUS_LAND_ITEM_SHOP]),
+    (Battlefields.Underground, [Rooms._262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, Rooms._263_LANDS_END_UNDERGROUND_AREA_01, Rooms._270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, Rooms._280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC, Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, Rooms._288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, Rooms._401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]),
+    (Battlefields.Plateau, [Rooms._033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT, Rooms._141_LANDS_END_AREA_04_ROTATING_FLOWERS]),
+    (Battlefields.Sea, [Rooms._132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, Rooms._133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS, Rooms._134_SEA_AREA_03_SUPER_STAR_ROOM]),
+    (Battlefields.BeanValley, [Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA, Rooms._252_BEAN_VALLEY_MAIN_AREA]),
+    (Battlefields.BelomeTemple, [Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, Rooms._425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]),
+    (Battlefields.Factory, [Rooms._237_SMITHY_FACTORY_AREA_05_WSAVE_POINT, Rooms._239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER, Rooms._434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS, Rooms._443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, Rooms._475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS, ]),
+    (Battlefields.BeanValleyUnderground, [Rooms._334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE, Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, Rooms._348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT, Rooms._349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT])
+]
 
 
 class BattleMusic(Enum):
@@ -236,11 +285,11 @@ class Boss:
     dialog_replacements = []
     optional_dialog_replacements = []
     eye_height = 17
+    crown_height = CrownHeight.Mid
 
-
-class SequenceType(Enum):
-    Sequence = auto()
-    Mold = auto()
+    @property
+    def classname(self):
+        return self.__class__.__name__
 
 
 class SpriteAnimation:
@@ -273,9 +322,10 @@ class SpriteAnimationCollection:
     keep_challenge = None
     keep_summon = None
     chandelier_challenge = None
+    factory_pierce = None
     endgame_challenge = None
 
-    def __init__(self, bandits_way_distracted=None, mines_punch=None, tower_bullet=None, chapel_laugh=None, kitchen_prep=None, ship_beckon=None, ship_chair=None, dojo_challenge=None, statue_intro=None, statue_peck=None, statue_flustered=None, keep_challenge=None, keep_summon=None, chandelier_challenge=None, endgame_challenge=None):
+    def __init__(self, bandits_way_distracted=None, mines_punch=None, tower_bullet=None, chapel_laugh=None, kitchen_prep=None, ship_beckon=None, ship_chair=None, dojo_challenge=None, statue_intro=None, statue_peck=None, statue_flustered=None, keep_challenge=None, keep_summon=None, chandelier_challenge=None, factory_pierce=None, endgame_challenge=None):
         self.bandits_way_distracted = bandits_way_distracted
         self.mines_punch = mines_punch
         self.tower_bullet = tower_bullet
@@ -290,6 +340,7 @@ class SpriteAnimationCollection:
         self.keep_challenge = keep_challenge
         self.keep_summon = keep_summon
         self.chandelier_challenge = chandelier_challenge
+        self.factory_pierce = factory_pierce
         self.endgame_challenge = endgame_challenge
 
 
@@ -364,8 +415,9 @@ class ModelFill:
     target_scripts = []
     target_action_scripts = []
     sequence_setter = None
+    battlefield = None
 
-    def __init__(self, fill_type, room_id, npc_id, event_id, occupant, preferred_size, minigames_only, repeatable_allowed, remove_if_empty, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None):
+    def __init__(self, fill_type, room_id, npc_id, event_id, occupant, preferred_size, minigames_only, repeatable_allowed, remove_if_empty, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None):
         self.fill_type = fill_type
         self.room_id = room_id
         self.npc_id = npc_id
@@ -379,24 +431,25 @@ class ModelFill:
         self.target_scripts = target_scripts
         self.target_action_scripts = target_action_scripts
         self.sequence_setter = sequence_setter
+        self.battlefield = battlefield
 
 
 class BossModelFill(ModelFill):
     def __init__(self, room_id, npc_id, occupant, size, minigames_only, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None):
         super().__init__(HenchmanType.Boss, room_id, npc_id, None, occupant, size, minigames_only,
-                         False, False, dialogs, target_scripts, target_action_scripts, sequence_setter)
+                         False, False, dialogs, target_scripts, target_action_scripts, sequence_setter, None)
 
 
 class UniqueHenchmanFill(ModelFill):
-    def __init__(self, room_id, npc_id, occupant, minigames_only, repeatable_allowed, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None):
+    def __init__(self, room_id, npc_id, occupant, minigames_only, repeatable_allowed, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None):
         super().__init__(fill_type, room_id, npc_id, event_id, occupant, SpriteSize.Small, minigames_only,
-                         repeatable_allowed, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter)
+                         repeatable_allowed, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield)
 
 
 class RepeatableHenchmanFill(ModelFill):
-    def __init__(self, room_id, npc_id, occupant, minigames_only, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None):
+    def __init__(self, room_id, npc_id, occupant, minigames_only, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None):
         super().__init__(fill_type, room_id, npc_id, event_id, occupant, SpriteSize.Small, minigames_only,
-                         True, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter)
+                         True, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield)
 
 
 class StarLocation:
@@ -576,7 +629,7 @@ hammer_bro_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 class HammerBroBoss(Boss):
     name = "Hammer Bro"
     pack_number = 183
-    eye_height = 16
+    eye_height = 6
     small_model = SmallModelDetails(488)
     statue_model = StatueModelDetails(488)
     big_model = BigModelDetails({
@@ -714,6 +767,7 @@ class Croco1Boss(Boss):
 
 shyster_taunt = SpriteAnimation(
     sequence_id=4, contact_frame=56, total_duration=56)
+shyster_fast = SpriteAnimation(sequence_id=4, contact_frame=28, total_duration=28, speed=SequenceSpeeds.FAST)
 shyster_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
@@ -721,7 +775,8 @@ class MackShyster1(Henchman):
     pack_number = 194
     model = SmallModelDetails(414, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt
+        kitchen_prep=shyster_taunt,
+        factory_pierce=shyster_fast
     ), width=24, height=32)
 
 
@@ -729,7 +784,8 @@ class MackShyster2(Henchman):
     pack_number = 195
     model = SmallModelDetails(414, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt
+        kitchen_prep=shyster_taunt,
+        factory_pierce=shyster_fast
     ), width=24, height=32)
 
 
@@ -737,7 +793,8 @@ class DefaultShyster1(Henchman):
     pack_number = 10
     model = SmallModelDetails(414, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt
+        kitchen_prep=shyster_taunt,
+        factory_pierce=shyster_fast
     ), width=24, height=32)
 
 
@@ -745,7 +802,8 @@ class DefaultShyster2(Henchman):
     pack_number = 11
     model = SmallModelDetails(414, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt
+        kitchen_prep=shyster_taunt,
+        factory_pierce=shyster_fast
     ), width=24, height=32)
 
 
@@ -854,7 +912,7 @@ class MackBoss(Boss):
         (2504,
          '''MACK: I'm not happy to delay the\n party, but we can't get started\n until you find [0x7024] more item(s)![await]'''),
         (2560, '''BODYGUARD: Welcome![await][pause] Our party is invitation-only, so\n please come back another time.[await][page]\n[delay] ...You're here to crash it anyway?[delay]\n Alright, wise guy, let's go![await]'''),
-        (2572, '''\n   BODYGUARD: Oh, no you don't![0][await]'''),
+        (2572, '''\n   BODYGUARD: Oh, no you don't![await]'''),
         (2831, '''\n   MACK: What are you doing here?[await]'''),
         (2832,
          ''' Yo! You look tired.[delay] How 'bout a\n night on the house?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -863,7 +921,7 @@ class MackBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Mack's house\n up on the hill yet?[await]'''),
         (2839,
@@ -988,7 +1046,7 @@ scarecrow_wiggle = SpriteAnimation(sequence_id=10, total_duration=32)
 belome_attack = SpriteAnimation(
     sequence_id=3, contact_frame=36, total_duration=48)
 belome_attack_fast = SpriteAnimation(
-    sequence_id=3, contact_frame=18, total_duration=24)
+    sequence_id=3, contact_frame=18, total_duration=24, speed=SequenceSpeeds.FAST)
 belome_wiggle = SpriteAnimation(sequence_id=4, total_duration=66)
 belome_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
@@ -1183,7 +1241,7 @@ class BowyerBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Bowyer's house\n up on the hill yet?[await]'''),
         (2839,
@@ -1227,13 +1285,13 @@ crook_scratch = SpriteAnimation(sequence_id=4, total_duration=20)
 class Croco2Crook(Henchman):
     pack_number = 141
     model = SmallModelDetails(261, width=32, height=24, animations=SpriteAnimationCollection(
-        tower_bullet=crook_scratch, kitchen_prep=crook_scratch))
+        tower_bullet=crook_scratch, kitchen_prep=crook_scratch, factory_pierce=crook_scratch))
 
 
 class DefaultCrook(Henchman):
     pack_number = 199
     model = SmallModelDetails(261, width=32, height=24, animations=SpriteAnimationCollection(
-        tower_bullet=crook_scratch, kitchen_prep=crook_scratch))
+        tower_bullet=crook_scratch, kitchen_prep=crook_scratch, factory_pierce=crook_scratch))
 
 
 class Croco2Boss(Boss):
@@ -1289,7 +1347,7 @@ class Croco2Boss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Croco's house\n up on the hill yet?[await]'''),
         (2839, ''' You better not be snooping around\n the shed![await]'''),
@@ -1333,19 +1391,19 @@ bomb_tick = SpriteAnimation(sequence_id=2)
 class PunchinelloBobomb(Henchman):
     pack_number = 1
     model = SmallModelDetails(145, width=32, height=24, animations=SpriteAnimationCollection(
-        tower_bullet=bomb_tick, kitchen_prep=bomb_tick))  # maybe 281
+        tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 281
 
 
 class DefaultMicrobomb(Henchman):
     pack_number = None
     model = SmallModelDetails(37, width=16, height=16, animations=SpriteAnimationCollection(
-        tower_bullet=bomb_tick, kitchen_prep=bomb_tick))  # maybe 440
+        tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 440
 
 
 class DefaultBobomb(Henchman):
     pack_number = 36
     model = SmallModelDetails(145, width=32, height=24, animations=SpriteAnimationCollection(
-        tower_bullet=bomb_tick, kitchen_prep=bomb_tick))  # maybe 281
+        tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 281
 
 
 punchinello_hit = SpriteAnimation(
@@ -1441,7 +1499,7 @@ class PunchinelloBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Punchinello's\n house up on the hill yet?[await]'''),
         (2839, ''' Hello there.[delay] Welcome to our humble\n town. We have the least suspicious\n shed in all the land.[await]'''),
@@ -1491,7 +1549,8 @@ class BoosterSnifit(Henchman):
     pack_number = 0
     model = SmallModelDetails(36, animations=SpriteAnimationCollection(
         tower_bullet=snifit_shoot,
-        kitchen_prep=snifit_taunt
+        kitchen_prep=snifit_taunt,
+        factory_pierce=snifit_taunt
     ), width=24, height=32)  # maybe 504 or 505
 
 
@@ -1505,7 +1564,8 @@ class DefaultSnifit(Henchman):
     pack_number = 142
     model = SmallModelDetails(36, animations=SpriteAnimationCollection(
         tower_bullet=snifit_shoot,
-        kitchen_prep=snifit_taunt
+        kitchen_prep=snifit_taunt,
+        factory_pierce=snifit_taunt
     ), width=24, height=32)  # maybe 504 or 505
 
 
@@ -1513,7 +1573,8 @@ class BoosterApprentice(Henchman):
     pack_number = 32
     model = SmallModelDetails(384, animations=SpriteAnimationCollection(
         tower_bullet=snifit_shoot,
-        kitchen_prep=snifit_taunt
+        kitchen_prep=snifit_taunt,
+        factory_pierce=snifit_taunt
     ), width=24, height=32)  # maybe 282
 
 
@@ -1573,7 +1634,7 @@ class BoosterBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Booster's\n house up on the hill yet?[await]'''),
         (2839, '''\n You'd better not go near our shed![await]'''),
@@ -1705,13 +1766,15 @@ class GrateGuyBoss(Boss):
 
 
 torte_taunt = SpriteAnimation(sequence_id=3, total_duration=40)
+torte_taunt_fast = SpriteAnimation(sequence_id=3, total_duration=20, speed=SequenceSpeeds.FAST)
 
 
 class BundtTorte1(Henchman):
     pack_number = 54
     model = SmallModelDetails(398, animations=SpriteAnimationCollection(
         tower_bullet=torte_taunt,
-        kitchen_prep=torte_taunt
+        kitchen_prep=torte_taunt,
+        factory_pierce=torte_taunt_fast
     ), width=24, height=32)  # maybe 397
 
 
@@ -1719,7 +1782,8 @@ class BundtTorte2(Henchman):
     pack_number = 55
     model = SmallModelDetails(398, animations=SpriteAnimationCollection(
         tower_bullet=torte_taunt,
-        kitchen_prep=torte_taunt
+        kitchen_prep=torte_taunt,
+        factory_pierce=torte_taunt_fast
     ), width=24, height=32)  # maybe 397
 
 
@@ -1799,7 +1863,7 @@ class BundtBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Bundt's\n house up on the hill yet?[await]'''),
         (2839,
@@ -1924,6 +1988,7 @@ class KingCalamariBoss(Boss):
 goombette_hit = SpriteAnimation(
     sequence_id=3, contact_frame=42, total_duration=52)
 goombette_taunt = SpriteAnimation(sequence_id=2, total_duration=12)
+goombette_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=21, total_duration=26, speed=SequenceSpeeds.FAST)
 
 
 class HidonGoombette(Henchman):
@@ -1931,7 +1996,8 @@ class HidonGoombette(Henchman):
     model = SmallModelDetails(349, width=16, height=16,
                               animations=SpriteAnimationCollection(
                                   tower_bullet=goombette_hit,
-                                  kitchen_prep=goombette_taunt))  # maybe 172 or 173
+                                  kitchen_prep=goombette_taunt,
+                                  factory_pierce=goombette_hit_fast))  # maybe 172 or 173
 
 
 hidon_attack = SpriteAnimation(
@@ -2018,7 +2084,7 @@ class HidonBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Hidon's\n house up on the hill yet?[await]'''),
         (2839,
@@ -2066,7 +2132,8 @@ class DefaultBandanaRed1(Henchman):
     model = SmallModelDetails(267, width=24, height=32,
                               animations=SpriteAnimationCollection(
                                   tower_bullet=bandana_taunt,
-                                  kitchen_prep=bandana_attack))
+                                  kitchen_prep=bandana_attack,
+                                  factory_pierce=bandana_attack))
 
 
 class DefaultBandanaRed2(Henchman):
@@ -2074,7 +2141,8 @@ class DefaultBandanaRed2(Henchman):
     model = SmallModelDetails(267, width=24, height=32,
                               animations=SpriteAnimationCollection(
                                   tower_bullet=bandana_taunt,
-                                  kitchen_prep=bandana_attack))
+                                  kitchen_prep=bandana_attack,
+                                  factory_pierce=bandana_attack))
 
 
 class JohnnyBandanaRed(Henchman):
@@ -2082,7 +2150,8 @@ class JohnnyBandanaRed(Henchman):
     model = SmallModelDetails(267, width=24, height=32,
                               animations=SpriteAnimationCollection(
                                   tower_bullet=bandana_taunt,
-                                  kitchen_prep=bandana_attack))
+                                  kitchen_prep=bandana_attack,
+                                  factory_pierce=bandana_attack))
 
 
 class JohnnyBandanaBlue(Henchman):
@@ -2090,7 +2159,8 @@ class JohnnyBandanaBlue(Henchman):
     model = SmallModelDetails(331, width=24, height=32,
                               animations=SpriteAnimationCollection(
                                   tower_bullet=bandana_taunt,
-                                  kitchen_prep=bandana_attack))
+                                  kitchen_prep=bandana_attack,
+                                  factory_pierce=bandana_attack))
 
 
 small_johnny_sit = SpriteAnimation(sequence_id=10)
@@ -2102,7 +2172,7 @@ johnny_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 class JohnnyBoss(Boss):
     name = "Johnny"
-    eye_height = 18
+    eye_height = 20
     pack_number = 166
     small_model = SmallModelDetails(55, animations=SpriteAnimationCollection(
         bandits_way_distracted=small_johnny_sit,
@@ -2138,8 +2208,6 @@ class JohnnyBoss(Boss):
         "byte6_bit2": False
     }, 45, 45, animations=SpriteAnimationCollection(
         mines_punch=johnny_hit,
-        statue_intro=johnny_taunt,
-        statue_flustered=johnny_recoil,
         chandelier_challenge=johnny_taunt,
         endgame_challenge=johnny_taunt
     ))
@@ -2167,7 +2235,7 @@ class JohnnyBoss(Boss):
         (2836,
          ''' Y'arr, so ye want to visit the ship,\n do ye? Ya gotta go through the\n whirlpools, matey![await]'''),
         (2837,
-         ''' Y'arr, so ye want to visit the ship,\n do ye? Ya gotta crash a wedding a\n few towns over first, matey![await]'''),
+         ''' It ain't always easy gettin' into\n the Sea.[await][pause] Ya might need to do\n somethin' else, first![await]'''),
         (2838,
          ''' Have ye been to visit Johnny up\n on the hill yet, matey?[await]'''),
         (2839,
@@ -2371,7 +2439,7 @@ class MokuraBoss(Boss):
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (2061,
          '''CHEF TORTE: Zees cake, ve make\n it look like big cloud! It is...\n masterpiece![await]'''),
-        (2504, '''MOKURA: Uhh... You need [0x7024] more\n items...[await]'''),
+        (2504, '''MOKURA: Uhh... You need [0x7024] more\n item(s)...[await]'''),
         (2560, '''SNIFIT 1: Hello there.[await]\n Mokura's busy right now, so he[1] can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
         (2572, '''SNIFIT 2: Please refrain\n from bothering Mokura.[await]'''),
         (2831, '''\n       MOKURA: Mwa, ha, ha![await]'''),
@@ -2773,17 +2841,17 @@ class CulexBoss(Boss):
          '''WATER CRYSTAL: We must shape\n this confection to resemble Culex.[await]'''),
         (2504,
          '''CULEX: You must retrieve [0x7024] more\n item(s) before we may proceed.[await]\n Godspeed, champion knight![await]'''),
-        (2560, '''EARTH CRYSTAL: Greetings.[await][pause] Culex\n is making preparations to head\n back to his home world, so he's\n busy right now.[await][page]\n Please come back later...\n [delay]unless you want to get hurt![await]'''),
+        (2560, '''EARTH CRYSTAL: Greetings.[await][pause] Culex\n is making preparations to head\n back to his home world.[await][pause] He's\n busy right now.[await][page]\n Please come back later...\n [delay]unless you want to get hurt![await]'''),
         (2572,
          '''FIRE CRYSTAL: You are not going\n to find what you're seeking back\n here.[delay] Stay out.[await]'''),
         (2831, '''\n           CULEX: Good day.[await]'''),
-        (2832, '''WIND CRYSTAL: Welcome to our inn.[await][pause] To compete\n with our price-hiking rivals in the\n Feymarch Inn,[delay] we are offering free\n stays here in Seaside.[await]\n Will you be staying tonight?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
+        (2832, ''' Welcome to our inn.[await]\n We are offering a competitive price\n of zero coins per night.[await]\n Will you be staying tonight?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Culex's\n house up on the hill yet?[await]'''),
         (2841,
@@ -2909,7 +2977,7 @@ megasmilax_taunt = SpriteAnimation(sequence_id=4, total_duration=38)
 class MegaSmilaxPiranha(Henchman):
     pack_number = 222
     model = SmallModelDetails(263, width=24, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=piranha_bite, kitchen_prep=piranha_bite))
+        tower_bullet=piranha_bite, kitchen_prep=piranha_bite, factory_pierce=piranha_bite))
 
 
 class MegaSmilaxBoss(Boss):
@@ -3000,7 +3068,7 @@ class MegaSmilaxBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Megasmilax's\n house up on the hill yet?[await]'''),
         (2839,
@@ -3191,7 +3259,7 @@ class BirdettaBoss(Boss):
         (2062,
          '''EGGBERT: No eggs were harmed\n in the making of this cake.[await]'''),
         (2504,
-         '''BIRDETTA: Hello♥![await]\n ...Oh, no, you're still missing\n [0x7024] items![await]'''),
+         '''BIRDETTA: Hello♥![await]\n ...Oh, no, you're still missing\n [0x7024] item(s)![await]'''),
         (2560,
          '''EGGBERT: Birdetta's feeling lonely\n today, so feel free to pay her a\n visit upstairs.[await][pause] I'm sure she'd love\n the company.[await][page]\n Just, let me make sure you'll be\n nice, first![await]'''),
         (2572,
@@ -3204,7 +3272,7 @@ class BirdettaBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Birdetta's\n house up on the hill yet?[await]'''),
         (2839, ''' Hi![delay] Welcome to our town![delay]\n Stay away from our shed, OK~?[await]'''),
@@ -3229,7 +3297,7 @@ class BirdettaBoss(Boss):
         (3073,
          '''EGGBERT: You're making me so\n mad, I could explode![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the lady next door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await]'''),
         (3352, '''BIRDETTA: Thanks for playing with\n me~![await]'''),
         (3353, '''BIRDETTA: Thanks for playing with\n me~![await]'''),
     ]
@@ -3247,37 +3315,37 @@ bird_attack = SpriteAnimation(
 class DefaultBluebird1(Henchman):
     pack_number = 94
     model = SmallModelDetails(333, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack))  # maybe 334
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 334
 
 
 class DefaultBluebird2(Henchman):
     pack_number = 95
     model = SmallModelDetails(333, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack))  # maybe 334
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 334
 
 
 class DefaultBirdy1(Henchman):
     pack_number = 92
     model = SmallModelDetails(183, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack))  # maybe 269 or 279
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 269 or 279
 
 
 class DefaultBirdy2(Henchman):
     pack_number = 93
     model = SmallModelDetails(183, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack))  # maybe 269 or 279
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 269 or 279
 
 
 class ValentinaBluebird(Henchman):
     pack_number = 160
     model = SmallModelDetails(333, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack))  # maybe 334
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 334
 
 
 class ValentinaBirdy(Henchman):
     pack_number = 201
     model = SmallModelDetails(183, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack))  # maybe 269 or 279
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 269 or 279
 
 
 valentina_stand = SpriteAnimation(sequence_id=10)
@@ -3377,7 +3445,7 @@ class ValentinaBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Valentina's\n house up on the hill yet?[await]'''),
         (2839, ''' Hmm...[delay] What're you loitering\n around here for?[delay] Uh...[delay] Stay away\n from the shed, OK?[await]'''),
@@ -3401,11 +3469,11 @@ class ValentinaBoss(Boss):
          '''BLUEBIRD: Valentina only gives us\n the most boring jobs to do...[await]'''),
         (3073, '''\nBLUEBIRD: I'm bored. Entertain me![await]'''),
         (3338,
-         ''' It's really weird.\n Sometimes I hear the lady next door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await]'''),
+         ''' It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await]'''),
         (3352,
-         '''VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[delay_30] pay a cordial visit\n to Nimbus Land?![await]'''),
+         '''VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]'''),
         (3353,
-         '''VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[delay_30] pay a cordial visit\n to Nimbus Land?![await]'''),
+         '''VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[await][pause][delay_30] pay a cordial visit\n to Nimbus Land?![await]'''),
     ]
     optional_dialog_replacements = [
         (1694,
@@ -3419,11 +3487,13 @@ fireball_spin = SpriteAnimation(
     sequence_id=3, contact_frame=40, total_duration=62)
 fireball_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 
+fireball_spin_fast = SpriteAnimation(sequence_id=3, contact_frame=20, total_duration=31, speed=SequenceSpeeds.FAST)
+
 
 class CzarPyrosphere(Henchman):
     pack_number = 190
     model = SmallModelDetails(155, 24, 32, animations=SpriteAnimationCollection(
-        tower_bullet=fireball_spin, kitchen_prep=fireball_spin))  # maybe 277. these are the exact same, could free one up
+        tower_bullet=fireball_spin, kitchen_prep=fireball_spin, factory_pierce=fireball_spin_fast))  # maybe 277. these are the exact same, could free one up
 
 
 czar_dragon_hit = SpriteAnimation(
@@ -3551,6 +3621,8 @@ class CzarBoss(Boss):
 
 axem_green_hit = SpriteAnimation(
     sequence_id=3, contact_frame=56, total_duration=84)
+axem_green_hit_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=28, total_duration=42, speed=SequenceSpeeds.FAST)
 axem_yellow_hit = SpriteAnimation(
     sequence_id=3, contact_frame=82, total_duration=108)
 axem_yellow_hit_fast = SpriteAnimation(
@@ -3570,13 +3642,13 @@ axem_red_recoil = SpriteAnimation(sequence_id=2, total_duration=22)
 class AxemRangersAxemBlack(Henchman):
     pack_number = 248
     model = SmallModelDetails(209, 32, 32, animations=SpriteAnimationCollection(
-        tower_bullet=axem_black_hit, kitchen_prep=axem_black_hit))
+        tower_bullet=axem_black_hit, kitchen_prep=axem_black_hit, factory_pierce=axem_black_hit))
 
 
 class AxemRangersAxemPink(Henchman):
     pack_number = 249
     model = SmallModelDetails(210, 32, 32, animations=SpriteAnimationCollection(
-        tower_bullet=axem_pink_hit, kitchen_prep=axem_pink_hit))
+        tower_bullet=axem_pink_hit, kitchen_prep=axem_pink_hit, factory_pierce=axem_pink_hit))
 
 
 class AxemRangersAxemYellow(Henchman):
@@ -3588,25 +3660,25 @@ class AxemRangersAxemYellow(Henchman):
 class AxemRangersAxemGreen(Henchman):
     pack_number = 251
     model = SmallModelDetails(212, 32, 32, animations=SpriteAnimationCollection(
-        tower_bullet=axem_green_hit, kitchen_prep=axem_green_hit))  # 467 is a clone, could free up
+        tower_bullet=axem_green_hit, kitchen_prep=axem_green_hit, factory_pierce=axem_green_hit_fast))  # 467 is a clone, could free up
 
 
 class AxemRangersMachine1(Henchman):
     pack_number = 203
     model = SmallModelDetails(185, 32, 32, animations=SpriteAnimationCollection(
-        tower_bullet=axem_red_hit, kitchen_prep=axem_red_hit))
+        tower_bullet=axem_red_hit, kitchen_prep=axem_red_hit, factory_pierce=axem_red_hit))
 
 
 class AxemRangersMachine2(Henchman):
     pack_number = 203
     model = SmallModelDetails(422, 32, 32, animations=SpriteAnimationCollection(
-        tower_bullet=axem_pink_hit, kitchen_prep=axem_pink_hit))
+        tower_bullet=axem_pink_hit, kitchen_prep=axem_pink_hit, factory_pierce=axem_pink_hit))
 
 
 class AxemRangersBoss(Boss):
     name = "Axem Red"
     eye_height = 15
-    pack_number = 188
+    pack_number = 182
     forced_background = 39
     statue_model = StatueModelDetails(
         208, width=32, height=32, horizontal_pixel_shift=-6)
@@ -3664,7 +3736,7 @@ class AxemRangersBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Axem Red's\n house up on the hill yet?[await]'''),
         (2839,
@@ -3758,14 +3830,14 @@ class ChesterBoss(Boss):
         (2061,
          '''CHEF TORTE: Zees cake, ve make\n it look like mimic! It is...\n masterpiece![await]'''),
         (2504,
-         '''CHESTER: Don't bother me unless\n you have found [0x7024] more items.[await]'''),
+         '''CHESTER: Don't bother me unless\n you have found [0x7024] more item(s).[await]'''),
         (2560, '''SNIFIT 1: Hello there.[await]\n Chester's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
         (2572,
          '''SNIFIT 2: Please refrain\n from bothering Chester.[await]'''),
         (2831, '''CHESTER: This town is pretty\n quiet.[await]'''),
         (2838,
          ''' You will find Chester...\n in his house. He is...the most\n respected person here.[await]'''),
-        (3044, '''\n   CHESTER: Now THIS I gotta see.[0][await]'''),
+        (3044, '''\n   CHESTER: Now THIS I gotta see.[await]'''),
         (3057,
          ''' You're interrupting my sleep.[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]'''),
         (3338,
@@ -3875,7 +3947,7 @@ shyguy_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 class BoomerShyGuy(Henchman):
     pack_number = 200
     model = SmallModelDetails(159, width=24, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=shyguy_hit, kitchen_prep=shyguy_taunt))  # maybe 346
+        tower_bullet=shyguy_hit, kitchen_prep=shyguy_taunt, factory_pierce=shyguy_hit))  # maybe 346
 
 
 boomer_alt_taunt = SpriteAnimation(sequence_id=1, total_duration=16)
@@ -4002,7 +4074,7 @@ class BoomerBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Boomer's house\n up on the hill yet?[await]'''),
         (2839, ''' ...Stay away from the shed, OK?\n It's scary![await]'''),
@@ -4097,27 +4169,36 @@ dingaling_attack_fast = SpriteAnimation(
 dingaling_taunt = SpriteAnimation(sequence_id=7, total_duration=62)
 dingaling_circle = SpriteAnimation(
     sequence_id=3, contact_frame=22, total_duration=34)
+countdown_loop = SpriteAnimation(sequence_id=9, total_duration=32)
 
 
 class CountdownDingALing(Henchman):
     pack_number = 252
     model = SmallModelDetails(
-        454, animations=SpriteAnimationCollection(tower_bullet=dingaling_circle))
+        454, animations=SpriteAnimationCollection(tower_bullet=dingaling_circle, factory_pierce=dingaling_circle))
 
 
 class CountdownBoss(Boss):
     name = "Count Down"
     pack_number = 174
-    eye_height = 15
+    eye_height = 8
     forced_background = 18
-    small_model = SmallModelDetails(454, animations=SpriteAnimationCollection(
-        mines_punch=dingaling_attack,
-        dojo_challenge=dingaling_taunt,
-        statue_peck=dingaling_attack_fast,
-        keep_challenge=dingaling_taunt,
-        keep_summon=dingaling_taunt,
-        chandelier_challenge=dingaling_taunt,
-        endgame_challenge=dingaling_taunt
+    # small_model = SmallModelDetails(454, animations=SpriteAnimationCollection(
+    #     mines_punch=dingaling_attack,
+    #     dojo_challenge=dingaling_taunt,
+    #     statue_peck=dingaling_attack_fast,
+    #     keep_challenge=dingaling_taunt,
+    #     keep_summon=dingaling_taunt,
+    #     chandelier_challenge=dingaling_taunt,
+    #     endgame_challenge=dingaling_taunt
+    # ))
+    small_model = SmallModelDetails(453, animations=SpriteAnimationCollection(
+        mines_punch=countdown_loop,
+        dojo_challenge=countdown_loop,
+        keep_challenge=countdown_loop,
+        keep_summon=countdown_loop,
+        chandelier_challenge=countdown_loop,
+        endgame_challenge=countdown_loop
     ))
     unique_henchmen = [CountdownDingALing, CountdownDingALing]
     repeatable_henchmen = [CountdownDingALing]
@@ -4136,23 +4217,44 @@ class CountdownBoss(Boss):
          '''COUNT DOWN: What are you still\n doing around here? Taking a break,\n huh?[await]'''),
         (1781, '''\n   COUNT DOWN: This is not good![await]'''),
         (1784,
-         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
-        (1792,
-         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
-        (1793,
-         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+         '''DING-A-LING: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
+        (1785,
+         '''DING-A-LING: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (2061,
-         '''CHEF TORTE: Zees cake, ve make\n it look like big bell! It is...\n masterpiece![await]'''),
+         '''DING-A-LING: I guess it is a little\n weird to make a cake that looks\n like a clock with no body.[await]'''),
+        (2062,
+         '''DING-A-LING: Are you impressed by\n how well we can bake without\n having any hands?[await]'''),
         (2504,
          '''COUNT DOWN: You've only got\n [0x7000] item(s)! You're missing [0x7024]![await]\n You better do something![await]'''),
-        (2560, '''SNIFIT 1: Hello there.[await]\n Count Down's busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
+        (2560, '''DING-A-LING: Mario's HERE![await][pause][delay_30] I'd\n better do something![await]'''),
         (2572,
-         '''SNIFIT 2: Please refrain\n from bothering Count Down.[await]'''),
+         '''DING-A-LING: You won't find\n Count Down back here![await]\n Leave us alone![await]'''),
         (2831, '''COUNT DOWN: There's nothing to\n do here![await]'''),
+        (2832, ''' Our inn is free![await][pause] Why?[delay_30] Uh...[delay]\n I'm not sure.[delay_30] Anyway,[delay] do you\n want to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
+        (2834,
+         ''' The two guys in the left building\n have been acting suspicious.[await]'''),
+        (2836,
+         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
+        (2837,
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
-         ''' You will find Count Down...\n in his house. He is...the most\n respected person here.[await]'''),
+         ''' Have you been to Count Down's\n house up on the hill yet?[await]'''),
+        (2841,
+         ''' Have you found the Sunken Ship\n yet? There's something about it I\n was supposed to tell you...[await]'''),
+        (2842,
+         ''' Oh, yeah, there's a wall of boxes\n hiding a treasure chest. It's pretty\n easy to miss it.[await]'''),
+        (2843,
+         ''' Once you get through the Sunken\n Ship, you can... er...[await]'''),
+        (2844,
+         ''' You can come back here. We'll have\n something good waiting for you...\n heh heh...[await]'''),
+        (2847, '''\n       This is off-limits! Scram![await]'''),
+        (2848, '''\n       Get outta here! Beat it![await]'''),
         (3044,
          '''COUNT DOWN: The dojo master will\n be tough to beat![await]'''),
+        (3072,
+         '''DING-A-LING: Man...[delay_15] I'm tired.[await]\n Even alarm bells get tired\n sometimes.[await]'''),
+        (3073,
+         '''DING-A-LING: Back off![delay_15] I know\n Fear Roulette and I'm not afraid\n to use it![await]'''),
         (3057,
          ''' Uh-oh! Are you looking for trouble?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
         (3338,
@@ -4263,13 +4365,13 @@ hammer_hit = SpriteAnimation(
 class DefaultMadMallet(Henchman):
     pack_number = 150
     model = SmallModelDetails(
-        259, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit))
+        259, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
 
 
 class ClerkMadMallet(Henchman):
     pack_number = 202
     model = SmallModelDetails(
-        259, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit))
+        259, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
 
 
 shovelknight_tile = SpriteAnimation(sequence_id=2)
@@ -4366,7 +4468,7 @@ class ClerkBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to the Clerk's\n house up on the hill yet?[await]'''),
         (2839, '''\nDon't go snooping around our town![await]'''),
@@ -4405,7 +4507,7 @@ class ClerkBoss(Boss):
 class ManagerPounder(Henchman):
     pack_number = 126
     model = SmallModelDetails(
-        323, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit))
+        323, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
 
 
 class ManagerBoss(Boss):
@@ -4455,7 +4557,7 @@ class ManagerBoss(Boss):
     #     endgame_challenge=shovelknight_taunt
     # ))
     unique_henchmen = [ManagerPounder, ManagerPounder,
-                       ManagerPounder, ManagerPounder]
+                       ManagerPounder]
     repeatable_henchmen = [ManagerPounder]
     dialog_replacements = [
         (49, '''MANAGER: I'm going to sleep for 25\n years.[await]'''),
@@ -4494,7 +4596,7 @@ class ManagerBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to the Manager's\n house up on the hill yet?[await]'''),
         (2839,
@@ -4534,7 +4636,7 @@ class ManagerBoss(Boss):
 class DirectorPoundette(Henchman):
     pack_number = 128
     model = SmallModelDetails(
-        324, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit))  # maybe 477
+        324, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))  # maybe 477
 
 
 class DirectorBoss(Boss):
@@ -4625,7 +4727,7 @@ class DirectorBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to the Director's\n house up on the hill yet?[await]'''),
         (2839,
@@ -4749,6 +4851,8 @@ class GunyolkBoss(Boss):
 
 drillbit_hit = SpriteAnimation(
     sequence_id=3, contact_frame=54, total_duration=64)
+drillbit_hit_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=27, total_duration=32, speed=SequenceSpeeds.FAST)
 drillbit_taunt = SpriteAnimation(sequence_id=4, total_duration=56)
 drillbit_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
@@ -4756,14 +4860,15 @@ drillbit_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 class SmithyDrillBit(Henchman):
     pack_number = 253
     model = SmallModelDetails(
-        483, animations=SpriteAnimationCollection(tower_bullet=drillbit_hit, kitchen_prep=drillbit_hit))
+        483, animations=SpriteAnimationCollection(tower_bullet=drillbit_hit, kitchen_prep=drillbit_hit, factory_pierce=drillbit_hit_fast))
 
 
 class SmithyShyster(Henchman):
     pack_number = 254
     model = SmallModelDetails(401, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
-        kitchen_prep=shyster_taunt
+        kitchen_prep=shyster_taunt,
+        factory_pierce=shyguy_hit
     ), width=24, height=32)
 
 
@@ -4866,7 +4971,7 @@ class SmithyBoss(Boss):
         (2836,
          ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there after\n you crash the wedding over in\n Marrymore.[await]'''),
+         ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
          ''' Have you been to Smithy's house\n up on the hill yet?[await]'''),
         (2839,
@@ -4981,51 +5086,51 @@ class Mack(BossAndStarLocation):
             RepeatableHenchmanFill(Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, 3, DefaultShyster1, False,
                                    False, HenchmanType.Pack, target_scripts=[376], target_action_scripts=[132], sequence_setter=762),
             RepeatableHenchmanFill(Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, 5, DefaultShyster1, False, False, HenchmanType.Event, 1189, target_scripts=[
-                                   376], target_action_scripts=[130, 107, 106, 105, 104], sequence_setter=762),
+                                   376], target_action_scripts=[130, 107, 106, 105, 104], sequence_setter=762, battlefield=Battlefields.MushroomKingdomOutside),
             RepeatableHenchmanFill(Rooms._323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM, 0, DefaultShyster1, False,
                                    False, HenchmanType.Pack, target_scripts=[764], target_action_scripts=[115, 107, 106, 105, 104], sequence_setter=763),
             RepeatableHenchmanFill(Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, 0, DefaultShyster1, False,
-                                   False, HenchmanType.Event, 1186, target_scripts=[371, 377], target_action_scripts=[110], sequence_setter=765),
+                                   False, HenchmanType.Event, 1186, target_scripts=[371, 377], target_action_scripts=[110], sequence_setter=765, battlefield=Battlefields.MushroomKingdomThroneRoom),
             RepeatableHenchmanFill(Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, 1, DefaultShyster1, False,
-                                   False, HenchmanType.Event, 1187, target_scripts=[371, 377], target_action_scripts=[110], sequence_setter=765),
+                                   False, HenchmanType.Event, 1187, target_scripts=[371, 377], target_action_scripts=[110], sequence_setter=765, battlefield=Battlefields.MushroomKingdomThroneRoom),
             RepeatableHenchmanFill(Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, 2, DefaultShyster1, False,
-                                   False, HenchmanType.Event, 1188, target_scripts=[371, 377], target_action_scripts=[108], sequence_setter=765),
+                                   False, HenchmanType.Event, 1188, target_scripts=[371, 377], target_action_scripts=[108], sequence_setter=765, battlefield=Battlefields.MushroomKingdomThroneRoom),
             RepeatableHenchmanFill(Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, 3, DefaultShyster1, False,
                                    False, HenchmanType.Pack, target_scripts=[371, 377], target_action_scripts=[109], sequence_setter=765),
             RepeatableHenchmanFill(Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, 4, DefaultShyster1, False,
-                                   False, HenchmanType.Event, 1189, target_scripts=[371, 377], target_action_scripts=[111], sequence_setter=765),
+                                   False, HenchmanType.Event, 1189, target_scripts=[371, 377], target_action_scripts=[111], sequence_setter=765, battlefield=Battlefields.MushroomKingdomThroneRoom),
             RepeatableHenchmanFill(Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, 0, DefaultShyster1,
                                    False, False, HenchmanType.Pack, target_scripts=[391], target_action_scripts=[125], sequence_setter=766),
             RepeatableHenchmanFill(Rooms._329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM, 1, DefaultShyster1,
                                    False, False, HenchmanType.Pack, target_scripts=[767], target_action_scripts=[123], sequence_setter=768),
             RepeatableHenchmanFill(Rooms._480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, 4, DefaultShyster1, False,
-                                   False, HenchmanType.Event, 1187, target_scripts=[393, 407, 405], target_action_scripts=[103], sequence_setter=770),
+                                   False, HenchmanType.Event, 1187, target_scripts=[393, 407, 405], target_action_scripts=[103], sequence_setter=770, battlefield=Battlefields.House),
         ],
         [
             RepeatableHenchmanFill(Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, 0, DefaultShyster2, False, False,
-                                   HenchmanType.Event, 1186, target_scripts=[376], target_action_scripts=[133], sequence_setter=762),
+                                   HenchmanType.Event, 1186, target_scripts=[376], target_action_scripts=[133], sequence_setter=762, battlefield=Battlefields.MushroomKingdomOutside),
             RepeatableHenchmanFill(Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, 1, DefaultShyster2, False, False,
-                                   HenchmanType.Event, 1187, target_scripts=[376], target_action_scripts=[133], sequence_setter=762),
+                                   HenchmanType.Event, 1187, target_scripts=[376], target_action_scripts=[133], sequence_setter=762, battlefield=Battlefields.MushroomKingdomOutside),
             RepeatableHenchmanFill(Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, 2, DefaultShyster2, False, False,
-                                   HenchmanType.Event, 1188, target_scripts=[376], target_action_scripts=[136], sequence_setter=762),
+                                   HenchmanType.Event, 1188, target_scripts=[376], target_action_scripts=[136], sequence_setter=762, battlefield=Battlefields.MushroomKingdomOutside),
             RepeatableHenchmanFill(Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, 4, DefaultShyster2, False,
                                    False, HenchmanType.Pack, target_scripts=[376], target_action_scripts=[135], sequence_setter=762),
             RepeatableHenchmanFill(Rooms._190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, 6, DefaultShyster2, False, False, HenchmanType.Event, 1190, target_scripts=[
-                                   376], target_action_scripts=[134, 107, 106, 105, 104], sequence_setter=762),
+                                   376], target_action_scripts=[134, 107, 106, 105, 104], sequence_setter=762, battlefield=Battlefields.MushroomKingdomOutside),
             RepeatableHenchmanFill(Rooms._323_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_THRONE_ROOM, 1, DefaultShyster2, False,
                                    False, HenchmanType.Pack, target_scripts=[764], target_action_scripts=[116, 107, 106, 105, 104], sequence_setter=763),
             RepeatableHenchmanFill(Rooms._327_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_STAIRWELL_TO_TOADSTOOLS_ROOM, 1, DefaultShyster2,
-                                   False, False, HenchmanType.Event, 1186, target_scripts=[391], target_action_scripts=[124], sequence_setter=766),
+                                   False, False, HenchmanType.Event, 1186, target_scripts=[391], target_action_scripts=[124], sequence_setter=766, battlefield=Battlefields.MushroomKingdom),
             RepeatableHenchmanFill(Rooms._329_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_BRANCH_ROOM_TO_VAULTGUEST_ROOM, 0, DefaultShyster2,
                                    False, False, HenchmanType.Pack, target_scripts=[767], target_action_scripts=[122], sequence_setter=768),
             RepeatableHenchmanFill(Rooms._332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM, 0, DefaultShyster2, False,
-                                   False, HenchmanType.ExternalEvent, 1186, target_scripts=[384, 381], target_action_scripts=[103], sequence_setter=769),
+                                   False, HenchmanType.ExternalEvent, 1186, target_scripts=[384, 381], target_action_scripts=[103], sequence_setter=769, battlefield=Battlefields.MushroomKingdom),
             RepeatableHenchmanFill(Rooms._332_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_ENTRANCE_TO_TOADSTOOLS_ROOM, 1, DefaultShyster2,
-                                   False, False, HenchmanType.NPCOnly, target_scripts=[384, 381], target_action_scripts=[103], sequence_setter=769),
+                                   False, False, HenchmanType.NPCOnly, target_scripts=[384, 381], target_action_scripts=[103], sequence_setter=769, battlefield=Battlefields.MushroomKingdom),
             RepeatableHenchmanFill(Rooms._480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, 3, DefaultShyster2, False,
-                                   False, HenchmanType.Event, 1186, target_scripts=[393, 407, 405], target_action_scripts=[103], sequence_setter=770),
+                                   False, HenchmanType.Event, 1186, target_scripts=[393, 407, 405], target_action_scripts=[103], sequence_setter=770, battlefield=Battlefields.House),
             RepeatableHenchmanFill(Rooms._481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, 1, DefaultShyster2, False,
-                                   False, HenchmanType.Event, 1186, target_scripts=[409, 410], target_action_scripts=[103], sequence_setter=771),
+                                   False, HenchmanType.Event, 1186, target_scripts=[409, 410], target_action_scripts=[103], sequence_setter=771, battlefield=Battlefields.House),
         ]
     ]
 
@@ -5046,13 +5151,13 @@ class Belome1(BossAndStarLocation):
     name = "Belome"
     boss = Belome1Boss
     boss_locations = [
-        BossModelFill(Rooms._302_KERO_SEWERS_AREA_08_BELOMES_ROOM, 3, Belome1Boss,
+        BossModelFill(Rooms._302_KERO_SEWERS_AREA_08_BELOMES_ROOM, 1, Belome1Boss,
                       SpriteSize.Large, False, target_scripts=[773, 3135], sequence_setter=772),
     ]
 
 
 class Bowyer(BossAndStarLocation):
-    identifier = 353
+    identifier = 232
     description = AvailableBosses.Bowyer.value
     name = "Bowyer"
     battlefield = Battlefields.Bowyer
@@ -5072,6 +5177,22 @@ class Bowyer(BossAndStarLocation):
                                HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
         ],
         [
+            UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 3, BowyerAero, False, False, True,
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+        ],
+        [
+            UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 9, BowyerAero, False, False, True,
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+        ],
+        [
+            UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 4, BowyerAero, False, False, True,
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+        ],
+        [
+            UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 5, BowyerAero, False, False, True,
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+        ],
+        [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 2, BowyerAero, False, False, True,
                                HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
         ],
@@ -5087,22 +5208,6 @@ class Bowyer(BossAndStarLocation):
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 6, BowyerAero, False, False, True,
                                HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
         ],
-        [
-            UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 3, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
-        ],
-        [
-            UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 9, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
-        ],
-        [
-            UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 4, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
-        ],
-        [
-            UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 5, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
-        ]
     ]
 
 
@@ -5130,27 +5235,27 @@ class Croco2(BossAndStarLocation):
     unique_henchmen = [
         [
             UniqueHenchmanFill(Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, 1, DefaultCrook, False, True, False,
-                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777),
+                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777, battlefield=Battlefields.MolevilleMines),
             UniqueHenchmanFill(Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, 2, DefaultCrook, False, True, False,
-                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777),
+                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777, battlefield=Battlefields.MolevilleMines),
             UniqueHenchmanFill(Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, 3, DefaultCrook, False, True, False,
-                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777),
+                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777, battlefield=Battlefields.MolevilleMines),
         ],
         [
             UniqueHenchmanFill(Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, 1, DefaultCrook, False, True,
-                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779),
+                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779, battlefield=Battlefields.MolevilleMines),
             UniqueHenchmanFill(Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, 2, DefaultCrook, False, True,
-                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779),
+                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779, battlefield=Battlefields.MolevilleMines),
             UniqueHenchmanFill(Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, 3, DefaultCrook, False, True,
-                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779),
+                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779, battlefield=Battlefields.MolevilleMines),
         ],
         [
             UniqueHenchmanFill(Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, 1, DefaultCrook, False,
-                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787),
+                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787, battlefield=Battlefields.MolevilleMines),
             UniqueHenchmanFill(Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, 2, DefaultCrook, False,
-                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787),
+                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787, battlefield=Battlefields.MolevilleMines),
             UniqueHenchmanFill(Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, 3, DefaultCrook, False,
-                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787),
+                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787, battlefield=Battlefields.MolevilleMines),
         ]
     ]
 
@@ -5218,7 +5323,7 @@ class Booster(BossAndStarLocation):
     unique_henchmen = [
         [
             UniqueHenchmanFill(Rooms._043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM, 4, DefaultSnifit, False, True, False, HenchmanType.Event, 1186, dialogs=[
-                               2560], target_scripts=[1312], target_action_scripts=[], sequence_setter=797),
+                               2560], target_scripts=[1312], target_action_scripts=[], sequence_setter=797, battlefield=Battlefields.BoosterTower),
             UniqueHenchmanFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 1, DefaultSnifit, False, True, False, HenchmanType.NPCOnly, target_scripts=[
                                1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], target_action_scripts=[576, 577, 579], sequence_setter=789),
             UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 0, DefaultSnifit, False, True, False,
@@ -5232,9 +5337,9 @@ class Booster(BossAndStarLocation):
         ],
         [
             UniqueHenchmanFill(Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM, 0, DefaultSnifit, False, True, False,
-                               HenchmanType.ExternalEvent, 1186, dialogs=[2572], target_scripts=[1344, 1346], target_action_scripts=[], sequence_setter=798),
+                               HenchmanType.ExternalEvent, 1186, dialogs=[2572], target_scripts=[1344, 1346], target_action_scripts=[], sequence_setter=798, battlefield=Battlefields.BoosterTower),
             UniqueHenchmanFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 2, DefaultSnifit, False, True, False, HenchmanType.NPCOnly, target_scripts=[
-                               1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], target_action_scripts=[576, 577, 580], sequence_setter=789),
+                               1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], target_action_scripts=[576, 577, 580], sequence_setter=789, battlefield=Battlefields.BoosterTower),
             UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 1, DefaultSnifit, False, True, False,
                                HenchmanType.NPCOnly, target_scripts=[3809, 600], target_action_scripts=[373], sequence_setter=790),
             UniqueHenchmanFill(Rooms._054_BOOSTER_HILL_____DUMMY, 4, BoosterHillSnifit, True, True, False, HenchmanType.NPCOnly, target_scripts=[
@@ -5246,7 +5351,7 @@ class Booster(BossAndStarLocation):
         ],
         [
             UniqueHenchmanFill(Rooms._037_BOOSTER_TOWER_4F_3LEVEL_ROOM_WJUMPING_SPOOKUMS, 8, DefaultSnifit, False, True, False, HenchmanType.Event, 1186, dialogs=[
-                               3072, 3073], target_scripts=[2348, 2352, 2351], target_action_scripts=[386], sequence_setter=799),
+                               3072, 3073], target_scripts=[2348, 2352, 2351], target_action_scripts=[386], sequence_setter=799, battlefield=Battlefields.BoosterTower),
             UniqueHenchmanFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 3, DefaultSnifit, False, True, False, HenchmanType.NPCOnly, target_scripts=[
                                1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], target_action_scripts=[576, 577, 578], sequence_setter=789),
             UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 2, DefaultSnifit, False, True, False,
@@ -5372,7 +5477,7 @@ class Johnny(BossAndStarLocation):
     repeatable_henchmen = [
         [
             RepeatableHenchmanFill(Rooms._024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, 0, DefaultBandanaRed1,
-                                   True, False, HenchmanType.ExternalEvent, 1186, target_scripts=[3280], target_action_scripts=[], sequence_setter=803),
+                                   True, False, HenchmanType.ExternalEvent, 1186, target_scripts=[3280], target_action_scripts=[], sequence_setter=803, battlefield=Battlefields.SunkenShip),
             RepeatableHenchmanFill(Rooms._024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, 1, DefaultBandanaRed1,
                                    True, False, HenchmanType.NPCOnly, target_scripts=[3280], target_action_scripts=[], sequence_setter=803),
             RepeatableHenchmanFill(Rooms._024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, 2, DefaultBandanaRed1,
@@ -5382,7 +5487,7 @@ class Johnny(BossAndStarLocation):
         ],
         [
             RepeatableHenchmanFill(Rooms._025_SUNKEN_SHIP_POSTKC_AREA_16_ENTRANCE_TO_JOHNNYS_ROOM, 0, DefaultBandanaRed2, True, False,
-                                   HenchmanType.ExternalEvent, 1186, dialogs=[1694, 1695], target_scripts=[3281], target_action_scripts=[], sequence_setter=804),
+                                   HenchmanType.ExternalEvent, 1186, dialogs=[1694, 1695], target_scripts=[3281], target_action_scripts=[], sequence_setter=804, battlefield=Battlefields.SunkenShip),
             RepeatableHenchmanFill(Rooms._025_SUNKEN_SHIP_POSTKC_AREA_16_ENTRANCE_TO_JOHNNYS_ROOM, 1, DefaultBandanaRed2,
                                    True, False, HenchmanType.NPCOnly, target_scripts=[3281], target_action_scripts=[], sequence_setter=804),
         ]
@@ -5500,7 +5605,7 @@ class Jagger(BossAndStarLocation):
     boss = JaggerBoss
     boss_locations = [
         BossModelFill(Rooms._255_MONSTRO_TOWN_JINXS_DOJO, 1, JaggerBoss, SpriteSize.Small, False, dialogs=[
-                      3044, 3352], target_scripts=[2064, 2066, 2067, 2077], target_action_scripts=[1006], sequence_setter=815),
+                      3044, 3352], target_scripts=[861, 2064, 2066, 2067, 2077], target_action_scripts=[1006], sequence_setter=815),
     ]
 
 
@@ -5514,7 +5619,7 @@ class Jinx1(BossAndStarLocation):
     boss = Jinx1Boss
     boss_locations = [
         BossModelFill(Rooms._255_MONSTRO_TOWN_JINXS_DOJO, 0, Jinx1Boss, SpriteSize.Small, False, target_scripts=[
-                      2064, 2066, 2067, 2068], target_action_scripts=[], sequence_setter=815),
+                      862, 2064, 2066, 2067, 2068], target_action_scripts=[], sequence_setter=815),
     ]
 
 
@@ -5528,7 +5633,7 @@ class Jinx2(BossAndStarLocation):
     boss = Jinx2Boss
     boss_locations = [
         BossModelFill(Rooms._255_MONSTRO_TOWN_JINXS_DOJO, 2, Jinx2Boss, SpriteSize.Small, False, target_scripts=[
-                      2064, 2068, 2076], target_action_scripts=[], sequence_setter=815),
+                      863, 864, 2064, 2068, 2076], target_action_scripts=[], sequence_setter=815),
     ]
 
 
@@ -5542,7 +5647,7 @@ class Jinx3(BossAndStarLocation):
     boss = Jinx3Boss
     boss_locations = [
         BossModelFill(Rooms._255_MONSTRO_TOWN_JINXS_DOJO, 3, Jinx3Boss, SpriteSize.Small, False, dialogs=[
-                      3353], target_scripts=[2064, 2076, 2077], target_action_scripts=[1006], sequence_setter=815),
+                      3353], target_scripts=[865, 866, 2064, 2076, 2077], target_action_scripts=[1006], sequence_setter=815),
     ]
 
 
@@ -5827,7 +5932,7 @@ class Magikoopa(BowsersKeepLocation):
     music = music.MidbossMusic
     boss = MagikoopaBoss
     boss_locations = [
-        BossModelFill(Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, 2, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[2208, 2209, 942], target_action_scripts=[
+        BossModelFill(Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, 1, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[2208, 2209, 942], target_action_scripts=[
         ], sequence_setter=847),  # may need to remove palette setter if not magikoopa, may need special animation when summoning
         BossModelFill(Rooms._376_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2B_1ST_FIGHT_CHEWY, 0, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[
                       2181, 2182, 2183, 2184, 941], target_action_scripts=[1004, 1005], sequence_setter=848),  # may need special animation when summoning
@@ -5909,7 +6014,7 @@ class Clerk(BossLocation):
     repeatable_henchmen = [
         [
             RepeatableHenchmanFill(Rooms._469_FACTORY_GROUNDS_AREA_01, 6, DefaultMadMallet, False, False,
-                                   HenchmanType.ExternalEvent, 1186, target_scripts=[2606], target_action_scripts=[], sequence_setter=855),
+                                   HenchmanType.ExternalEvent, 1186, target_scripts=[2606], target_action_scripts=[], sequence_setter=855, battlefield=Battlefields.Factory),
             RepeatableHenchmanFill(Rooms._469_FACTORY_GROUNDS_AREA_01, 7, DefaultMadMallet, False, False,
                                    HenchmanType.NPCOnly, target_scripts=[2606], target_action_scripts=[], sequence_setter=855),
         ]
@@ -5953,13 +6058,17 @@ class Director(BossLocation):
         BossModelFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 10, DirectorBoss, SpriteSize.Small,
                       False, target_scripts=[2621, 2627], target_action_scripts=[], sequence_setter=857),
     ]
-    repeatable_henchmen = [
+    unique_henchmen = [
         [
-            RepeatableHenchmanFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 7, DirectorPoundette, False, False,
+            UniqueHenchmanFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 7, DirectorPoundette, True, False, False,
                                    HenchmanType.NPCOnly, target_scripts=[2621], target_action_scripts=[962], sequence_setter=857),
-            RepeatableHenchmanFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 8, DirectorPoundette, False, False,
+        ],
+        [
+            UniqueHenchmanFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 8, DirectorPoundette, True, False, False,
                                    HenchmanType.NPCOnly, target_scripts=[2621], target_action_scripts=[963], sequence_setter=857),
-            RepeatableHenchmanFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 9, DirectorPoundette, False, False,
+        ],
+        [
+            UniqueHenchmanFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 9, DirectorPoundette, True, False, False,
                                    HenchmanType.NPCOnly, target_scripts=[2621], target_action_scripts=[964], sequence_setter=857),
         ]
     ]
@@ -5978,7 +6087,7 @@ class Gunyolk(BossLocation):
     ]
     unique_henchmen = [
         [
-            UniqueHenchmanFill(Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, 3, GunyolkPiece, False, True, True, HenchmanType.NPCOnly, target_scripts=[
+            UniqueHenchmanFill(Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, 0, GunyolkPiece, False, True, True, HenchmanType.NPCOnly, target_scripts=[
                                2601], target_action_scripts=[], sequence_setter=858),  # hide a lot of clones if not vanilla
         ],
     ]

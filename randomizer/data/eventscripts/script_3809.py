@@ -40,6 +40,10 @@ script = [
         "args": [AreaObjects.NPC_7],
         "subscript": [
             {
+                "identifier": 'EVENT_3809_action_queue_sync_32_SUBSCRIPT_v2',
+                "command": 'visibility_on'
+            },
+            {
                 "identifier": 'EVENT_3809_action_queue_sync_28_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [252, 248, 0, RadialDirections.EAST]
@@ -156,6 +160,10 @@ script = [
         "args": [AreaObjects.NPC_8],
         "subscript": [
             {
+                "identifier": 'EVENT_3809_action_queue_sync_32_SUBSCRIPT_v2',
+                "command": 'visibility_on'
+            },
+            {
                 "identifier": 'EVENT_3809_action_queue_sync_29_SUBSCRIPT_transfer_xyzf_pixels_0',
                 "command": 'transfer_xyzf_pixels',
                 "args": [8, 4, 6, RadialDirections.EAST]
@@ -256,6 +264,10 @@ script = [
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_0],
         "subscript": [
+            {
+                "identifier": 'EVENT_3809_action_queue_sync_32_SUBSCRIPT_v2',
+                "command": 'visibility_on'
+            },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_31_SUBSCRIPT_fixed_f_coord_on_0',
                 "command": 'fixed_f_coord_on'
@@ -680,31 +692,6 @@ script = [
                 "command": 'visibility_on'
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_45',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_46',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_47',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_48',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
-    },
-    {
-        "identifier": 'EVENT_3809_remove_from_level_49',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._153_MARRYMORE_CHAPEL_ENTRANCE_TO_SANCTUARY]
     },
     {
         "identifier": 'EVENT_3809_remember_last_object_50',
@@ -2062,6 +2049,16 @@ script = [
         "args": [10]
     },
     {
+        "identifier": 'EVENT_3809_await_camera__',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'EVENT_3809_await_camera_2__',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7042, 0, 'EVENT_3809_await_camera__']
+    },
+    {
         "identifier": 'EVENT_3809_set_action_script_sync_353',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.SCREEN_FOCUS, 215]
@@ -2140,6 +2137,16 @@ script = [
         "args": [20]
     },
     {
+        "identifier": 'EVENT_3809_await_camera_',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'EVENT_3809_await_camera_2_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7042, 0, 'EVENT_3809_await_camera_']
+    },
+    {
         "identifier": 'EVENT_3809_set_action_script_sync_363',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.SCREEN_FOCUS, 215]
@@ -2191,26 +2198,26 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3809_pause_368',
-        "command": 'pause',
-        "args": [30]
-    },
-    {
         "identifier": 'EVENT_3809_action_queue_sync_372',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_5],
         "subscript": [
             {
-                "identifier": 'EVENT_3809_action_queue_sync_372_SUBSCRIPT_transfer_to_xyzf_0',
+                "identifier": 'EVENT_3809_action_queue_sync_173_SUBSCRIPT_transfer_to_xyzf_0',
                 "command": 'transfer_to_xyzf',
                 "args": [22, 73, 6, RadialDirections.EAST]
             },
             {
-                "identifier": 'EVENT_3809_action_queue_sync_372_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "identifier": 'EVENT_3809_action_queue_sync_173_SUBSCRIPT_transfer_xyzf_pixels_1',
                 "command": 'transfer_xyzf_pixels',
                 "args": [8, 4, 26, RadialDirections.NORTHEAST]
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_3809_pause_368',
+        "command": 'pause',
+        "args": [30]
     },
     {
         "identifier": 'EVENT_3809_set_action_script_sync_373',
@@ -2226,6 +2233,16 @@ script = [
         "identifier": 'EVENT_3809_set_bit_177__',
         "command": 'set_bit',
         "args": [0x7049, 2]
+    },
+    {
+        "identifier": 'EVENT_3809_await_camera',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'EVENT_3809_await_camera_2',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7042, 0, 'EVENT_3809_await_camera']
     },
     {
         "identifier": 'EVENT_3809_run_event_as_subroutine_178',

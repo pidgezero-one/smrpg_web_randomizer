@@ -11,6 +11,89 @@ script = [
         "args": [0x708f, 7, 'EVENT_2596_ret_42']
     },
     {
+        "identifier": 'EVENT_2596_pause_4',
+        "command": 'pause',
+        "args": [16]
+    },
+    {
+        "identifier": 'EVENT_2596_action_queue_async_5',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2596_action_queue_async_5_SUBSCRIPT_start_loop_n_times_0',
+                "command": 'start_loop_n_times',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2596_action_queue_async_5_SUBSCRIPT_set_sprite_sequence_1',
+                "command": 'set_sprite_sequence',
+                "args": [0, 3, [_0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_2596_action_queue_async_5_SUBSCRIPT_pause_2',
+                "command": 'pause',
+                "args": [16]
+            },
+            {
+                "identifier": 'EVENT_2596_action_queue_async_5_SUBSCRIPT_set_sprite_sequence_3',
+                "command": 'set_sprite_sequence',
+                "args": [0, 3, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            },
+            {
+                "identifier": 'EVENT_2596_action_queue_async_5_SUBSCRIPT_pause_4',
+                "command": 'pause',
+                "args": [16]
+            },
+            {
+                "identifier": 'EVENT_2596_action_queue_async_5_SUBSCRIPT_end_loop_5',
+                "command": 'end_loop'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2596_action_queue_async_9',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2596_action_queue_async_9_SUBSCRIPT_reset_properties_0',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_2596_action_queue_async_9_SUBSCRIPT_face_northeast_1',
+                "command": 'face_northeast'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2596_action_queue_async_10',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.SCREEN_FOCUS],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2596_action_queue_async_10_SUBSCRIPT_walk_to_xy_coords_0',
+                "command": 'walk_to_xy_coords',
+                "args": [4, 69]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2596_pause_11',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_2596_set_action_script_sync_29',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.MARIO, 861]
+    },
+    {
+        "identifier": 'EVENT_2596_set_action_script_sync_30',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.SCREEN_FOCUS, 862]
+    },
+    {
         "identifier": 'EVENT_2596_start_battle_33',
         "command": 'run_event_as_subroutine',
         "args": [354]

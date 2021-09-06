@@ -6,6 +6,16 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1841_j',
+        "command": 'jmp_if_bit_set',
+        "args": [0x709C, 1, 'EVENT_1841_inc_7']
+    },
+    {
+        "identifier": 'EVENT_1841_s',
+        "command": 'set_bit',
+        "args": [0x709C, 1]
+    },
+    {
         "identifier": 'EVENT_1841_priority_set_0',
         "command": 'priority_set',
         "args": [[_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [_0x81Flags.LAYER_3], [_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES, _0x81Flags.HALF_INTENSITY]]

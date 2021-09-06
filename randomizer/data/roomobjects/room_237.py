@@ -113,7 +113,7 @@ room = {
       "id": 1,
       "type": ObjectType.CHEST,
       "initiator": Initiator.HIT_FROM_BELOW,
-      "model": 94,
+      "model": 503,
       "event_script": 172,
       "action_script": 14,
       "speed": 0,

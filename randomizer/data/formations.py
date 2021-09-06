@@ -183,10 +183,16 @@ class EnemyFormation:
         data += utils.BitMapSet(1, monsters_hidden).as_bytes()
 
         # Monster data.
-        for member in self.members:
-            data += utils.ByteField(member.enemy.index).as_bytes()
-            data += utils.ByteField(member.x_pos).as_bytes()
-            data += utils.ByteField(member.y_pos).as_bytes()
+        for index in range(0, 8):
+            member = next((obj for obj in self.members if obj.index == index), None)
+            if member is not None:
+                data += utils.ByteField(member.enemy.index).as_bytes()
+                data += utils.ByteField(member.x_pos).as_bytes()
+                data += utils.ByteField(member.y_pos).as_bytes()
+            else:
+                data += utils.ByteField(0).as_bytes()
+                data += utils.ByteField(0).as_bytes()
+                data += utils.ByteField(0).as_bytes()
 
         base_addr = self.BASE_ADDRESS + (self.index * 26)
         patch.add_data(base_addr, data)
@@ -244,11 +250,12 @@ class FormationPack:
         hi_num = False
         for formation in self.formations:
             val = formation.index
+            #print(self.index, val)
 
             # For formations > 255, set the high bank indicator since each formation is a single byte only.
             if val > 255:
                 hi_num = True
-                val -= 255
+                val -= 256
 
             data += utils.ByteField(val).as_bytes()
 
@@ -258,6 +265,7 @@ class FormationPack:
 
         base_addr = self.BASE_ADDRESS + (self.index * 4)
         patch.add_data(base_addr, data)
+        #print(self.index, '0x%06x' % base_addr, [('0x%02x' % b) for b in data], [b for b in data])
 
         return patch
 
@@ -1882,12 +1890,16 @@ def get_default_enemy_formations(world):
             FormationMember(3, True, world.get_enemy_instance(enemies.MachineMadeShyster), 199, 159),
         ], stat_total_enemies=[
             world.get_enemy_instance(enemies.Smithy1),
+            world.get_enemy_instance(enemies.Smithy2Body),
+            world.get_enemy_instance(enemies.Smithy2Head),
         ], stat_scaling_enemies=[
             world.get_enemy_instance(enemies.Smithy1),
             world.get_enemy_instance(enemies.Smelter),
             world.get_enemy_instance(enemies.MachineMadeShyster),
             world.get_enemy_instance(enemies.AeroSmithy),
             world.get_enemy_instance(enemies.DrillBit),
+            world.get_enemy_instance(enemies.Smithy2Body),
+            world.get_enemy_instance(enemies.Smithy2Head)
         ], required_battlefield=Battlefields.Smithy),
         EnemyFormation(309, 52, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Cloaker), 151, 111),

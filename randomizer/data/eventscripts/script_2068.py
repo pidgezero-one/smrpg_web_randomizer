@@ -185,9 +185,19 @@ script = [
         "args": [AreaObjects.NPC_0]
     },
     {
+        "identifier": "EVENT_2068_remove_from_current_level_",
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, Rooms._255_MONSTRO_TOWN_JINXS_DOJO]
+    },
+    {
         "identifier": 'EVENT_2068_summon_to_current_level_69',
         "command": 'summon_to_current_level',
         "args": [AreaObjects.NPC_2]
+    },
+    {
+        "identifier": "EVENT_2068_summon_to_current_level_",
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_2, Rooms._255_MONSTRO_TOWN_JINXS_DOJO]
     },
     {
         "identifier": 'EVENT_2068_action_queue_async_12',

@@ -56,7 +56,7 @@ def randomize_all(world):
             # Guarantee that consumable pool from original game ends up in shops no matter what
             game_should_include = [i for i in original_item_pool if i.consumable and i not in disciple_shop.items and i not in treasure_shop.items and not (i.special_equip and world.settings.is_flag_value(flags.RestrictSpecialEquips, True))]
             # All other eligible items may or may not appear in shops
-            game_should_optionally_include = [i for i in world.items if i not in disciple_shop.items and i not in treasure_shop.items and i not in game_should_include and not i.is_key and not i.unique == ItemUnique.Always and not (i.unique == ItemUnique.BalancedOnly and world.settings.is_flag_value(flags.ItemQuality, ItemQualities.original)) and not (i.special_equip and world.settings.is_flag_value(flags.RestrictSpecialEquips, True))]
+            game_should_optionally_include = [i for i in world.items if i not in disciple_shop.items and i not in treasure_shop.items and i not in game_should_include and not i.is_key and not i.is_subitem and not i.unique == ItemUnique.Always and not (i.unique == ItemUnique.BalancedOnly and world.settings.is_flag_value(flags.ItemQuality, ItemQualities.original)) and not (i.special_equip and world.settings.is_flag_value(flags.RestrictSpecialEquips, True))]
 
 
             # filter by max quality
@@ -157,8 +157,12 @@ def randomize_all(world):
                 else:
                     extra_item_pool = [i for i in initial_item_pool if shop.is_item_allowed(i) and i not in shop.items and i not in frog_coin_items]
                 extra_item_pool = list(set(extra_item_pool))
-                if shop.retain_size:
-                    sample = remaining_space
+                if shop.retain_size or (utils.isclass_or_instance(shop, shops.JuiceBarFull) and len(shop.items) < 4):
+                    # juice bar needs at least 4 items
+                    if utils.isclass_or_instance(shop, shops.JuiceBarFull):
+                        sample = 4 - len(shop.items)
+                    else:
+                        sample = remaining_space
                     if len(extra_item_pool) < sample:
                         extra_item_pool = list(set([i for i in initial_item_pool + extra_item_pool if shop.is_item_allowed(i) and i not in shop.items and i not in frog_coin_items]))
                 else:
@@ -174,10 +178,6 @@ def randomize_all(world):
                 shop.items.extend(items_to_add)
                 if shop.frog_coin_shop:
                     frog_coin_items.extend(items_to_add)
-                # juice bar needs at least 4 items
-                if utils.isclass_or_instance(shop, shops.JuiceBarFull) and len(shop.items) < 4:
-                    items_to_add = random.sample(extra_item_pool, 4-len(shop.items))
-                    shop.items.extend(items_to_add)
                 shop.items.sort(key=lambda x: x.rank_value)
 
 
@@ -213,7 +213,7 @@ def randomize_all(world):
                 item.frog_coin_item = True
 
             for item in world.items:
-                if not item.is_key:
+                if not item.is_key and not item.is_subitem and item.price != 0:
                     if item.is_equipment:
                         if item.frog_coin_item:
                             item.price = min(item.max_price, max(math.ceil(item.rank_value / 5), 1))

@@ -263,10 +263,10 @@
             function applySeed(rom) {
                 return new Promise((resolve, reject) => {
                     $("#region").val(rom.region);
-                    console.log("{% url 'randomizer:generate' %}")
-                    console.log($("#config").serialize())
+                    //console.log("{% url 'randomizer:generate' %}")
+                    //console.log($("#config").serialize())
                     $.post("{% url 'randomizer:generate' %}", $("#config").serialize(), (patch) => {
-                        console.log(patch)
+                        //console.log(patch)
                         if (patch.error) {
                             reject(patch);
                         } else {
@@ -857,6 +857,9 @@
                         else {
                             $(`#${$.escapeSelector("S.bias")}`).prop("disabled", false)
                         }
+                    }
+                    else if (id == "Q.stats") {
+                        $(`#${$.escapeSelector("Q.unsafe")}`).prop("disabled", value != "random")
                     }
                 }
             }

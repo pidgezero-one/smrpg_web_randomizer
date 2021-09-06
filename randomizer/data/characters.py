@@ -418,7 +418,7 @@ class Mario(Character):
                     patch.add_data(address + j*2, color_to_bytes(colour))
 
         if self.palette is not None:
-            special_palette([None, None, 9, None, None, None, None, None, None, None, None, None, None, None, None, None], self.palette.classic_addresses[0])
+            special_palette([10, 6, 1, None, None, None, None, None, None, None, None, None, None, None, None], self.palette.classic_addresses[0])
             special_palette([0, 1, 2, 3, 4, 6, 7, 8, 8, 10, 11, 11, 12, 13, 14], self.palette.doll_addresses[0])
             special_palette([None, 13, 1, 2, None, 5, 3, 6, 7, 9, 4, 9, 8, 10, 11], self.palette.minecart_addresses[0])
 

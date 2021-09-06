@@ -180,12 +180,7 @@ script = [
         "args": [10]
     },
     {
-        "identifier": 'EVENT_1335_jmp_if_object_not_in_level_11_',
-        "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_7]
-    },
-    {
-        "identifier": 'EVENT_1335_action_queue_async_20',
+        "identifier": 'EVENT_1335_action_queue_async_20_seq',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_7],
         "subscript": [
@@ -194,6 +189,13 @@ script = [
                 "command": 'set_sprite_sequence',
                 "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
             },
+        ]
+    },
+    {
+        "identifier": 'EVENT_1335_action_queue_async_20',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_7],
+        "subscript": [
             {
                 "identifier": 'EVENT_1335_action_queue_async_20_SUBSCRIPT_visibility_on_1',
                 "command": 'visibility_on'

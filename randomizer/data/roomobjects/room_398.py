@@ -66,7 +66,7 @@ room = {
       "visible": False,
       "x": 13,
       "y": 17,
-      "z": 2,
+      "z": 1,
       "z_half": False,
       "direction": RadialDirection.SOUTHWEST,
       "face_on_trigger": False,
@@ -94,7 +94,7 @@ room = {
           "visible": False,
           "x": 14,
           "y": 18,
-          "z": 2,
+          "z": 1,
           "z_half": False,
           "direction": RadialDirection.SOUTHWEST
         },
@@ -106,7 +106,7 @@ room = {
           "visible": False,
           "x": 14,
           "y": 19,
-          "z": 2,
+          "z": 1,
           "z_half": False,
           "direction": RadialDirection.SOUTHWEST
         }

@@ -211,11 +211,6 @@ script = [
         "args": [AreaObjects.NPC_12]
     },
     {
-        "identifier": 'EVENT_2603_summon_to_current_level_28',
-        "command": 'summon_to_current_level',
-        "args": [AreaObjects.NPC_14]
-    },
-    {
         "identifier": 'EVENT_2603_remove_from_level_29',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_0, Rooms._470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM]

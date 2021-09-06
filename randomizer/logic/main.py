@@ -6,7 +6,6 @@ import random
 import re
 import binascii
 import copy
-import uuid
 import enum
 from datetime import datetime
 
@@ -160,8 +159,11 @@ class Settings:
                                 choice_rep_string += b64_table[choice_rep]
                                 ctr = 0
                                 choice_rep = 0
+                        if ctr > 0:
+                            choice_rep_string += b64_table[choice_rep]
                         flagstring_parts.append("%s:%s" % (flag.id, choice_rep_string))
-                flag_strings.append('%s.%s' % (subcategory.id, '|'.join(flagstring_parts)))
+                if len(flagstring_parts) is not 0:
+                    flag_strings.append('%s.%s' % (subcategory.id, '|'.join(flagstring_parts)))
         flag_string = "     ".join(flag_strings)
 
         return flag_string.strip()
@@ -210,6 +212,8 @@ class GameWorld:
         :type settings: randomizer.logic.main.Settings
         """
         self.seed = seed
+        random.seed(seed)
+        print(self.seed)
         self.settings = settings
         self.file_select_character = 'Mario'
         self.file_select_hash = 'MARIO1 / MARIO2 / MARIO3 / MARIO4'
@@ -296,6 +300,7 @@ class GameWorld:
         # Music (moved this into its own classes to make exclusion easier)
         self.music_pool = data.music.get_default_music()
 
+
     @property
     def open_mode(self):
         """Check if this game world is Open mode.
@@ -359,23 +364,22 @@ class GameWorld:
     def randomize(self):
         """Randomize this entire game world instance."""
         # Seed the PRNG at the start.
-        random.seed(self.seed)
-        print(self.seed)
-
         characters.randomize_all(self)
         spells.randomize_all(self)
         items.randomize_all(self)
-        chests.randomize_all(self)
-        shops.randomize_all(self)
         bosses.randomize_all(self)
         # Bosses might have to go before enemies to make formation rando work as intended?
+        # Goes before chests so that slot machine scripts can be written
         enemies.randomize_all(self)
+        chests.randomize_all(self)
+        shops.randomize_all(self)
         doors.randomize_all(self)
         games.randomize_all(self)
         dialogs.randomize_all(self)
 
         # Rebuild hash after randomization.
         self._rebuild_hash()
+        print(self.seed)
 
         # apply random cosmetics after hash build
         random.seed(datetime.now())
@@ -385,6 +389,8 @@ class GameWorld:
         # If palette swap is enabled, give us a 50/50 chance at a chocolate cake.
         if self.settings.is_flag_enabled(flags.PaletteSwaps):
             self.chocolate_cake = utils.coin_flip()
+
+        random.seed(self.seed)
 
     def _rebuild_hash(self):
         """Build hash value for choosing file select character and file name hash.
@@ -421,19 +427,69 @@ class GameWorld:
         for parent_id, npc in enumerate(self.rooms[room_id]["objects"]):
             if ctr == npc_id:
                 if prop not in self.rooms[room_id]["objects"][parent_id]:
-                    raise Exception("npc %i in room %i has no property %s" % (npc_id, room_id, prop)
+                    raise Exception("npc %i in room %i has no property %s" % (npc_id, room_id, prop))
                 self.rooms[room_id]["objects"][parent_id][prop] = value
                 return
             ctr += 1
             if "clones" in npc:
-                for clone_id, clone in enumerate(self.rooms[room_id]["objects"][ctr]["clones"]):
+                for clone_id, clone in enumerate(npc["clones"]):
                     if ctr == npc_id:
-                        if prop not in self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]:
-                            raise Exception("clone npc %i in room %i has no property %s" % (npc_id, room_id, prop)
+                        if prop not in clone:
+                            if prop in ["model", "event_script", "action_script", "battle_pack"] and prop in npc:
+                                base_value_id = npc[prop]
+                                offset = value - base_value_id
+                                if offset > 7:
+                                    raise Exception("illegal %s value for clone npc %i in room %i: %i (parent is %i)" % (prop, npc_id, room_id, value, npc[prop]))
+                                if prop == "model":
+                                    self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]["npc_id_offset"] = offset
+                                elif prop == "event_script":
+                                    self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]["event_offset"] = offset
+                                elif prop == "action_script":
+                                    self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]["action_offset"] = offset
+                                elif prop == "battle_pack":
+                                    self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]["pack_offset"] = offset
+                            return
                         self.rooms[room_id]["objects"][parent_id]["clones"][clone_id][prop] = value
                         return
                     ctr += 1
+        raise Exception("npc %i not found in room %i" % (npc_id, room_id))
 
+    def get_room_npc_property_by_id(self, room_id, npc_id, prop):
+        ctr = 0
+        for parent_id, npc in enumerate(self.rooms[room_id]["objects"]):
+            if ctr == npc_id:
+                if prop not in self.rooms[room_id]["objects"][parent_id]:
+                    raise Exception("npc %i in room %i has no property %s" % (npc_id, room_id, prop))
+                return self.rooms[room_id]["objects"][parent_id][prop]
+            ctr += 1
+            if "clones" in npc:
+                for _, clone in enumerate(npc["clones"]):
+                    if ctr == npc_id:
+                        if prop not in clone:
+                            if prop in ["model", "event_script", "action_script", "battle_pack"]:
+                                base_value_id = npc["model"]
+                                if prop == "model":
+                                    return base_value_id + clone["npc_id_offset"]
+                                elif prop == "event_script":
+                                    return base_value_id + clone["event_offset"]
+                                elif prop == "action_script":
+                                    return base_value_id + clone["action_offset"]
+                                elif prop == "battle_pack":
+                                    return base_value_id + clone["pack_offset"]
+                            else:
+                                raise Exception("clone npc %i in room %i has no property %s" % (npc_id, room_id, prop))
+                        return clone[prop]
+                    ctr += 1
+        raise Exception("npc %i not found in room %i" %(npc_id, room_id))
+
+    def get_npc_count_by_room_id(self, room_id):
+        ctr = 0
+        for _, npc in enumerate(self.rooms[room_id]["objects"]):
+            ctr += 1
+            if "clones" in npc:
+                for _ in npc["clones"]:
+                    ctr += 1
+        return ctr
 
     def build_patch(self):
         """Build patch data for this instance.
@@ -453,13 +509,12 @@ class GameWorld:
 
         # Set number of star pieces required for win condition
         required_star_pieces = self.settings.get_flag(flags.TotalStarPieces).value
-        self.eventscripts[1969][0]["args"] = [required_star_pieces]
+        self.eventscripts[1969][1]["args"] = [required_star_pieces]
 
         # Alternate star piece win conditions
         if self.settings.is_flag_value(flags.RequireBossFights, True):
             self.prepend_bits(192, [[0x7086, 7]])
             # disable mack skip
-            chancellor_index = len(self.rooms[326]["objects"])
             self.update_room_npc_property_by_id(326, 10, "event", 256)
 
         # Bandit's Way gating
@@ -557,7 +612,7 @@ class GameWorld:
                 value = 6
             else:
                 raise Exception("failed to set star piece gate on sea")
-            gate_script = copy.deepcopy(self.eventscripts[206])
+            gate_script = copy.deepcopy([{**s} for s in self.eventscripts[206]])
             gate_script[1]["args"][1] = value
             self.eventscripts[206] = gate_script
             self.prepend_bits(192, [[0x7051, 0]])
@@ -602,7 +657,7 @@ class GameWorld:
                     value = 6
                 else:
                     raise Exception("failed to set star piece gate on keep")
-                keep_script = copy.deepcopy(self.eventscripts[207])
+                keep_script = copy.deepcopy([{**s} for s in self.eventscripts[207]])
                 keep_script[1]["args"][1] = value
                 self.eventscripts[207] = keep_script
                 self.prepend_bits(192, [[0x7051, 1], [0x707A, 3]])
@@ -627,7 +682,7 @@ class GameWorld:
                 value = 6
             else:
                 raise Exception("failed to set star piece gate on factory")
-            factory_script = copy.deepcopy(self.eventscripts[3093])
+            factory_script = copy.deepcopy([{**s} for s in self.eventscripts[3093]])
             factory_script[1]["args"][1] = value
             self.eventscripts[3093] = factory_script
             self.prepend_bits(192, [[0x7051, 3]])
@@ -635,14 +690,14 @@ class GameWorld:
         # Casino warp
         if self.settings.is_flag_value(flags.CasinoWarp, True):
             self.prepend_bits(192, [[0x7088, 5]])
-            casino_script = copy.deepcopy(self.eventscripts[2645])
+            casino_script = copy.deepcopy([{**s} for s in self.eventscripts[2645]])
             casino_script[2]["args"][1] = required_star_pieces
             self.eventscripts[2645] = casino_script
 
         # Bucket warp
         if self.settings.is_flag_value(flags.BucketWarp, True):
             self.prepend_bits(192, [[0x705E, 6]])
-            bucket_script = copy.deepcopy(self.eventscripts[2651])
+            bucket_script = copy.deepcopy([{**s} for s in self.eventscripts[2651]])
             bucket_script[0]["args"][1] = required_star_pieces
             self.eventscripts[2651] = bucket_script
 
@@ -699,7 +754,7 @@ class GameWorld:
             patch.add_data(0x39bc4c, utils.ByteField(exps[4]).as_bytes())  # 4 stars
             patch.add_data(0x39bc4e, utils.ByteField(exps[5]).as_bytes())  # 5 stars
             patch.add_data(0x39bc52, utils.ByteField(exps[6]).as_bytes())  # 6/7 stars
-            patch.add_data(0x1fd32d, utils.ByteField(0xa0).as_bytes())  # Enable flag
+            #patch.add_data(0x1fd32d, utils.ByteField(0xa0).as_bytes())  # Enable flag
 
         # Grate Guy threshold
         value = self.settings.get_flag(flags.GrateGuyPrizeThreshold).value
@@ -736,9 +791,9 @@ class GameWorld:
         # Invisible Checks Anywhere
         if self.settings.is_flag_enabled(flags.InvisibleFlagsSetting):
             self.prepend_bits(192, [[0x7060, 2]])
-        if not self.settings.is_flag_enabled(flags.SkipMustyFearsSequence):
-            self.prepend_bits(192, [[0x705F, 2]])
-
+        if self.settings.is_flag_enabled(flags.SkipMustyFearsSequence):
+            self.eventscripts[192].insert(0, {"identifier": "EVENT_192_summon_invisible_flags", "command": 'run_event_as_subroutine', "args": [91]})
+            
         # Starting characters
         for position, c in enumerate(self.starter_character_checks):
             if position == 0:
@@ -842,7 +897,7 @@ class GameWorld:
             patch.add_data(0x35C54F, [0x8E, 0x00, 0x01])
 
             # Shaker, Silver Bullet
-            patch.add_data(0x35358A, [0x8E, 0x00, 0x01])
+            patch.add_data(0x35358A, [0x3A, 0x34, 0x0F, 0x3F, 0x80, 0x15, 0x00, 0x00, 0x84, 0xA8, 0x02, 0x00, 0x40, 0x0F, 0xFF, 0x73, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11])
 
             # spiked link
             patch.add_data(0x35F5B1, [0x8E, 0x00, 0x01])
@@ -850,7 +905,7 @@ class GameWorld:
             patch.add_data(0x35F5D3, [0x8E, 0x00, 0x01])
 
             # Static E
-            patch.add_data(0x354E9B, [0x8E, 0x00, 0x01])
+            patch.add_data(0x354E9B, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
 
             # Smithy
             patch.add_data(0x3AE888, [0x8E, 0x00, 0x01, 0x8E, 0x00, 0x01])
@@ -919,37 +974,16 @@ class GameWorld:
         if (self.settings.is_flag_enabled(flags.CharacterStats)):
             patch.add_data(0x3a00dd, utils.ByteField(self.starting_fp).as_bytes() * 2)
 
-        # For debug mode, start with 9999 coins and 99 frog coins.
+        # For debug mode, start with 9999 coins and 999 frog coins.
         if self.debug_mode or self.settings.is_flag_enabled(flags.FreeShops):
             patch.add_data(0x3a00db, utils.ByteField(9999, num_bytes=2).as_bytes())
-            patch.add_data(0x3a00df, utils.ByteField(99, num_bytes=2).as_bytes())
-
-        # No Mack Skip flag
-        if self.settings.is_flag_enabled(flags.RequireBossFights):
-            patch.add_data(0x14ca6c, bytes([0xA5]))
+            patch.add_data(0x3a00df, utils.ByteField(999, num_bytes=2).as_bytes())
 
         # Items
         for item in self.items:
             patch += item.get_patch()
         patch += data.items.Item.build_descriptions_patch(self)
 
-        # Shops
-        for shop in self.shops:
-            patch += shop.get_patch()
-
-        # Enemies
-        for enemy in self.enemies:
-            patch += enemy.get_patch()
-            enemy.patch_script()
-        patch += data.enemies.Enemy.build_psychopath_patch(self)
-
-        # Enemy attacks
-        for attack in self.enemy_attacks:
-            patch += attack.get_patch()
-
-        # Enemy formations
-        for formation in self.enemy_formations:
-            patch += formation.get_patch()
 
         # Open mode specific data.
         if self.open_mode:

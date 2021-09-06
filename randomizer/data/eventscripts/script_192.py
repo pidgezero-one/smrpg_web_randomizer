@@ -236,6 +236,12 @@ script = [
 
 
     # finish loading game
+    
+    {
+        "identifier": 'EVENT_192_____enter_area_178',
+        "command": 'enter_area',
+        "args": [Rooms._189_MARIOS_PIPEHOUSE, RadialDirections.SOUTHEAST, 3, 13, 0, []]
+    },
     {
         "identifier": 'EVENT_192___set_bit_17', 
         "command": 'jmp_to_event',

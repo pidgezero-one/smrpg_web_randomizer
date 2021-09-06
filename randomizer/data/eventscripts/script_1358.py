@@ -26,6 +26,11 @@ script = [
         "args": [AreaObjects.NPC_4, Rooms._043_BOOSTER_TOWER_1F_AREA_01_MAIN_ROOM]
     },
     {
+        "identifier": 'EVENT_1358_remove_from_level_12',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_0, Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
+    },
+    {
         "identifier": 'EVENT_1358_move_script_to_background_thread_2_5',
         "command": 'move_script_to_background_thread_2'
     },

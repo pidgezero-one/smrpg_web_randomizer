@@ -126,6 +126,7 @@ class ObjectSequenceScript:
                 dummy_args = [0 if isinstance(arg, str) else arg for arg in command["args"]]
             else:
                 dummy_args = []
+            #print(script)
             func(*dummy_args)
             dummy_lines.append(assembler.fin())
         return dummy_lines

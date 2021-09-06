@@ -16,6 +16,22 @@ script = [
         "args": [0x708a, 2, 'EVENT_2066_run_dialog_35']
     },
     {
+        "identifier": 'EVENT_2066_action_queue_sync_8',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2066_action_queue_sync_8_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_2066_action_queue_sync_8_SUBSCRIPT_face_southwest_1',
+                "command": 'face_southwest'
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_2066_action_queue_async_7',
         "command": 'action_queue_async',
         "args": [AreaObjects.MARIO],
@@ -42,20 +58,13 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2066_action_queue_sync_8',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_8_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2066_action_queue_sync_8_SUBSCRIPT_face_southwest_1',
-                "command": 'face_southwest'
-            }
-        ]
+        "identifier": 'EVENT_2066_pause_7',
+        "command": 'pause',
+        "args": [30]
+    },
+    {
+        "identifier": 'EVENT_2066_freeze_camera_8',
+        "command": 'freeze_camera'
     },
     {
         "identifier": 'EVENT_2066_action_queue_async_10',
@@ -97,9 +106,24 @@ script = [
                 "args": [2, 4, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
             },
             {
-                "identifier": 'EVENT_2066_action_queue_async_10_SUBSCRIPT_pause_7',
+                "identifier": 'EVENT_2077_action_queue_async_44_SUBSCRIPT_play_sound_7',
+                "command": 'play_sound',
+                "args": [Sounds._096_SWINGING_FIST, 6]
+            },
+            {
+                "identifier": 'EVENT_2077_action_queue_async_44_SUBSCRIPT_pause_8',
                 "command": 'pause',
-                "args": [45]
+                "args": [15]
+            },
+            {
+                "identifier": 'EVENT_2077_action_queue_async_44_SUBSCRIPT_play_sound_9',
+                "command": 'play_sound',
+                "args": [Sounds._096_SWINGING_FIST, 6]
+            },
+            {
+                "identifier": 'EVENT_2077_action_queue_async_44_SUBSCRIPT_pause_10',
+                "command": 'pause',
+                "args": [30]
             }
         ]
     },

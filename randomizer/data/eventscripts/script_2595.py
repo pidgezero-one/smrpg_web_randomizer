@@ -11,11 +11,6 @@ script = [
         "args": [0x70c0, 237]
     },
     {
-        "identifier": 'EVENT_2595_set_action_script_async_2',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.NPC_1, 690]
-    },
-    {
         "identifier": 'EVENT_2595_jmp_if_bit_clear_3',
         "command": 'jmp_if_bit_clear',
         "args": [0x7044, 7, 'EVENT_2595_fade_in_from_black_async_6']

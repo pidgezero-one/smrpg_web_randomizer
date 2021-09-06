@@ -23,7 +23,15 @@ class Command(BaseCommand):
             for cmd_index, cmd in enumerate(script):
                 data[index][cmd_index]["address"] = addr
                 addr += cmd["length"]
-            data[index].insert(0, {"id": "dummy_%i" % index, "length": "2", "address": script_dex, "data": [offset & 0xFF, (offset >> 8) & 0xFF]})
+            secondary_ptr = offset
+            if index == 22:
+                secondary_ptr += 2
+            elif index == 70 or index == 85:
+                secondary_ptr += 4
+            data[index].insert(0, {"id": "dummy_%i" % index, "length": "2", "address": script_dex, "data": [secondary_ptr & 0xFF, (secondary_ptr >> 8) & 0xFF]})
+            if index == 69 and addr < 0x3A6B86:
+                data[index].append({"id": "filler", "data": [0x11] * (0x3A6B86 - addr), "length": 0x3A6B86 - addr, "address": addr})
+                addr += (0x3A6B86 - addr)
             script_dex = addr
 
         # make sure no dupes
@@ -40,11 +48,12 @@ class Command(BaseCommand):
                 for arg_index, arg in enumerate(cmd["data"]):
                     if type(arg) == str:
                         found = None
-                        for comp_index, comp_script in enumerate(data):
-                            for comp_cmd_index, comp_cmd in enumerate(script):
+                        for _, comp_script in enumerate(data):
+                            for _, comp_cmd in enumerate(comp_script):
                                 if comp_cmd["id"] == arg:
                                     found = comp_cmd
                         if found:
+                            #print(arg, found)
                             del data[index][cmd_index]["data"][arg_index]
                             addr_bytes = [(found["address"] & 0xFF), (found["address"] >> 8) & 0xFF]
                             # print(cmd, comp_cmd, addr_bytes)
@@ -60,13 +69,14 @@ class Command(BaseCommand):
                 code.extend(cmd["data"])
 
         allbytes = ptrs + code
-        expected_length = 0x3A7036 + 1 - 0x3A6004
+        #expected_length = 0x3A7036 + 1 - 0x3A6004
+        expected_length = 0x3A705D - 0x3A6004
 
         empty_space = expected_length - len(allbytes)
         if (empty_space < 0):
             raise Exception("bank too long: expected %i got %i" % (expected_length, len(allbytes)))
         else:
-            allbytes += bytearray([0x07 for x in range(empty_space)])
+            allbytes += bytearray([0x11 for x in range(empty_space)])
         
         f = open(f'write_to_0x3A6004.img', 'wb')
         f.write(allbytes)

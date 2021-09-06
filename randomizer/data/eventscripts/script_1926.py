@@ -52,11 +52,6 @@ script = [
         "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, RadialDirections.SOUTHWEST, 5, 114, 15, []]
     },
     {
-        "identifier": 'EVENT_1926_fade_out_to_black_async_44_',
-        "command": 'run_event_as_subroutine',
-        "args": [1328]
-    },
-    {
         "identifier": 'EVENT_1926_restore_all_hp_58',
         "command": 'restore_all_hp'
     },
@@ -78,6 +73,11 @@ script = [
         "identifier": 'EVENT_1926_run_event_as_subroutine_57',
         "command": 'run_event_as_subroutine',
         "args": [168]
+    },
+    {
+        "identifier": 'EVENT_1926_fade_out_to_black_async_44_',
+        "command": 'jmp_to_event',
+        "args": [1328]
     },
     {
         "identifier": 'EVENT_1926_ret_61',

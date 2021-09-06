@@ -125,7 +125,7 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2067_action_queue_async_4',
+        "identifier": 'EVENT_2067_action_queue_async_4-_',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_0],
         "subscript": [
@@ -195,7 +195,14 @@ script = [
                 "identifier": 'EVENT_2067_action_queue_async_4_SUBSCRIPT_play_sound_13',
                 "command": 'play_sound',
                 "args": [Sounds._121_AXEM_RANGER_TELEPORT, 4]
-            },
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2067_action_queue_async_4__',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
             {
                 "identifier": 'EVENT_2067_action_queue_async_4_SUBSCRIPT_shift_southeast_pixels_14',
                 "command": 'shift_southeast_pixels',
@@ -472,6 +479,13 @@ script = [
                 "identifier": 'EVENT_2067_action_queue_async_7_SUBSCRIPT_face_southeast_11',
                 "command": 'face_southeast'
             },
+        ]
+    },
+    {
+        "identifier": 'EVENT_2067_action_queue_async_7-_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
             {
                 "identifier": 'EVENT_2067_action_queue_async_7_SUBSCRIPT_pause_12',
                 "command": 'pause',

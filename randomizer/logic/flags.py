@@ -166,19 +166,6 @@ class AvailableCharacters(CategorizationFlag):
 # ******** Equipment
 
 
-class EquipmentProperties(SelectOneFlag):
-    name = 'Equipment stats & buffs'
-    description = '''<b>Default</b>: The stats and buffs on equipment are unchanged from the original game.
-<br>
-<br><b>Some buffs added</b>: The stats and buffs on equipment are mostly unchanged from the original game, except most armors are given one additional property (e.g. Fire Shirt nullifies damage from fire attacks). Additionally, some weapons will boost magic attack instead of physical attack.
-<br>
-<br><b>Completely random</b>: The stats and buffs on each piece of equipment is randomized.'''
-    optionEnum = EquipmentPropertiesOptions
-    choices = [o for o in EquipmentPropertiesOptions]
-    default = EquipmentPropertiesOptions.vanilla
-    id = "stats"
-
-
 class EquipmentCharacters(SelectOneFlag):
     name = 'Equipment permissions'
     description = '''<b>Vanilla</b>: The list of characters who are permitted to equip each item remains unchanged from the original game.
@@ -196,9 +183,22 @@ class EquipmentCharacters(SelectOneFlag):
     id = "perms"
 
 
+class EquipmentProperties(SelectOneFlag):
+    name = 'Equipment stats & buffs'
+    description = '''<b>Default</b>: The stats and buffs on equipment are unchanged from the original game.
+<br>
+<br><b>Some buffs added</b>: The stats and buffs on equipment are mostly unchanged from the original game, except most armors are given one additional property (e.g. Fire Shirt nullifies damage from fire attacks). Additionally, some weapons will boost magic attack instead of physical attack.
+<br>
+<br><b>Completely random</b>: The stats and buffs on each piece of equipment is randomized.'''
+    optionEnum = EquipmentPropertiesOptions
+    choices = [o for o in EquipmentPropertiesOptions]
+    default = EquipmentPropertiesOptions.vanilla
+    id = "stats"
+
+
 class EquipmentNoSafety(BooleanFlag):
-    name = 'No OHKO Safety'
-    description = "If enabled, no equipment will protect against OHKO moves."
+    name = 'No Equipment Property Safety'
+    description = "Normally, certain namesake items retain their protections: <b>Fearless Pin</b>, <b>Antidote Pin</b>, <b>Trueform Pin</b>, and <b>Wakeup Pin</b>. In addition, at least four equips will have OHKO protection. This flag removes those checks."
     
     id = "unsafe"
 
@@ -338,10 +338,10 @@ boss_star_piece_locations = [
 
 
 class EnabledBossChecks(CategorizationFlag):
-    name = 'Eligible Star Piece boss fight locations'
+    name = 'Eligible Star Piece boss fight & mimic fight locations'
     description = '''If a check is highlighted (white text over blue), it is eligible to reward a Star Piece.
 <br>
-<br>If a check is not highlighted, it will still house a boss fight, but is guaranteed to not reward a Star Piece.
+<br>If a check is not highlighted, it will still house a boss or mimic fight, but is guaranteed to not reward a Star Piece.
 <br>
 <br>Note: "Nimbus Land statue keeper" will always be the same fight as the enemy running through the final Nimbus Land hallway. You can fight either instance of this boss to get its star piece, but you will never get 2 star pieces from doing both copies of the fight.'''
     optionEnum = ShuffleLocationSelector
@@ -397,7 +397,7 @@ class BiasItemShuffle(BooleanFlag):
 
 
 class RestrictSpecialEquips(BooleanFlag):
-    name = 'Restrict key item exchange equips & Monstro Town reward equips'
+    name = 'Restrict "Special Item" exchange equips & Monstro Town reward equips'
     description = '''If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will appear once each, shuffled only within each other's locations. This option ignores your chosen Item Quality setting.
 <br>
 <br>If disabled, these items can appear anywhere, subject to the restrictions of your chosen Item Quality setting.'''
@@ -454,13 +454,14 @@ class ShuffleMagikoopaChest(BooleanFlag):
 
 class FireworksSetting(SelectOneFlag):
     name = '''Fireworks trade sequence'''
-    description = '''<b>Vanilla</b>: Unchanged from the original game. Fireworks may be purchased in any amount from the Moleville house after completing the Mines.
+    description = '''<b>Vanilla</b>: Unchanged from the original game.
 <br>
-<br><b>Shuffle Fireworks</b>: One Fireworks is shuffled somewhere in the game. The trading sequence is otherwise unchanged. If needed, you may get your Shiny Stone back from the shop girl after you have completed the trade sequence.
+<br><b>Shuffle Fireworks</b>: Fireworks is added to the "Special Item" pool, and the Fireworks shop becomes a "Special Item" location. The trading sequence is otherwise unchanged. If needed, you may get your Shiny Stone back from the shop girl after you have completed the trade sequence.
 <br>
-<br><b>Shuffle Progressive Fireworks</b>: One Fireworks, Shiny Stone, and Carbo Cookie are each shuffled somewhere in the game, and you will always receive them in order. The Monstro Town sealed door is unlocked when you find the Shiny Stone.
+<br><b>Shuffle Progressive Fireworks</b>: One Fireworks, Shiny Stone, and Carbo Cookie are each shuffled somewhere completely random in the game, and you will always receive them in order. The Monstro Town sealed door is unlocked when you find the Shiny Stone.
 <br>
-<br>Note: If you do not have Bucket Warp enabled, completing the Carbo Cookie trade sequence will give you a random item if "Shuffle Fireworks" or "Shuffle Progressive Fireworks" is selected.'''
+<br>Note: If you do not have Bucket Warp enabled, completing the Carbo Cookie trade sequence will give you a random item if "Shuffle Fireworks" or "Shuffle Progressive Fireworks" is selected.
+'''
     modes = ['open']
     optionEnum = FireworksOptions
     choices = [o for o in FireworksOptions]
@@ -545,7 +546,7 @@ class ReplaceItems(BooleanFlag):
 
 class QuickHitCoins(BooleanFlag):
     name = 'Quick-hit coin chests'
-    description = 'If enabled, all coin and frog coin chests will grant coins in a single hit instead of multiple hits.'
+    description = 'If enabled, all coin and frog coin chests will grant coins in a single hit instead of multiple hits. (Normally, only chests in room which graphically cannot load coins will at this way.)'
     modes = ['open']
     
     id = "quick"
@@ -833,7 +834,7 @@ class YaridovichGate(SelectOneFlag):
 
 class SkipMustyFearsSequence(BooleanFlag):
     name = 'Skip 3 Musty Fears sequence'
-    description = '''This flag affects the Musty Fears checks (normally Mario's Pad bed, Rose Town sign, and Yo'ster Isle goalpost; or whichever three locations are added to the seed when "Move invisible flag checks" is set to "Any landmark").
+    description = '''This flag affects the Musty Fears checks (normally Mario's Pad bed, Rose Town sign, and Yo'ster Isle goalpost; or whichever three locations are added to the seed when "Move invisible flag checks" is set).
 <br>
 <br>If disabled, the affected checks will become available after you visit the Musty Fears Inn in Monstro Town.
 <br>
@@ -865,7 +866,7 @@ class StarPiecesRequired(NumberThresholdFlag):
 
 class CasinoWarp(BooleanFlag):
     name = 'Casino Warp'
-    description = "If enabled, a trampoline warping directly to the final boss will become available in Grate Guy's Casino once you have collected the number of Star Pieces specified in 'Star Pieces required to beat the game'. The Bright Card becomes a key item, and Knife Guy's juggling reward becomes a key item check."
+    description = '''If enabled, a trampoline warping directly to the final boss will become available in Grate Guy's Casino once you have collected the number of Star Pieces specified in 'Star Pieces required to beat the game'. The Bright Card becomes a "Special Item", and Knife Guy's juggling reward becomes a "Special Item" check.'''
     modes = ['open']
     
     id = "cwarp"
@@ -1233,8 +1234,8 @@ class CharacterRecruitmentSubcategory(FlagCategory):
 
 class CharacterEquipmentSubcategory(FlagCategory):
     flags = [
-        EquipmentProperties,
         EquipmentCharacters,
+        EquipmentProperties,
         EquipmentNoSafety,
         StarPieceHints
     ]

@@ -36,6 +36,11 @@ script = [
         "args": [0x70a7, 172]
     },
     {
+        "identifier": 'EVENT_3100_j',
+        "command": 'jmp_to_event',
+        "args": [3089]
+    },
+    {
         "identifier": 'EVENT_3100_ret_293',
         "command": 'ret'
     },
@@ -48,6 +53,11 @@ script = [
         "identifier": 'EVENT_3100_remove_one_from_inventory_295',
         "command": 'remove_one_from_inventory',
         "args": [items.ShinyStone]
+    },
+    {
+        "identifier": 'EVENT_3100_j2',
+        "command": 'jmp_to_event',
+        "args": [3089]
     },
     {
         "identifier": 'EVENT_3100_ret_297',
@@ -72,6 +82,11 @@ script = [
         "identifier": 'EVENT_3100_remove_one_from_inventory_299',
         "command": 'remove_one_from_inventory',
         "args": [items.Fireworks]
+    },
+    {
+        "identifier": 'EVENT_3100_j3',
+        "command": 'jmp_to_event',
+        "args": [3089]
     },
     {
         "identifier": 'EVENT_3100_ret_301',

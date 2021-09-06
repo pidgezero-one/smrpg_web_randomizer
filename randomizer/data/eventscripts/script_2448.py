@@ -258,7 +258,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2448_action_queue_async_84_SUBSCRIPT_jump_to_height_4',
-                "command": 'jump_to_height',
+                "command": 'jump_to_height_silent',
                 "args": [1]
             },
             {
@@ -274,7 +274,7 @@ script = [
             {
                 "identifier": 'EVENT_2448_action_queue_async_84_SUBSCRIPT_db_7',
                 "command": 'jmp_if_object_in_air',
-                "args": [AreaObjects.NPC_13, 'EVENT_2448_action_queue_async_84_SUBSCRIPT_pause_6']
+                "args": [AreaObjects.NPC_10, 'EVENT_2448_action_queue_async_84_SUBSCRIPT_pause_6']
             },
             {
                 "identifier": 'EVENT_2448_action_queue_async_84_SUBSCRIPT_play_sound_8',
@@ -415,6 +415,16 @@ script = [
         "args": [AreaObjects.NPC_8]
     },
     {
+        "identifier": 'EVENT_2448_remove_from_current_level_268',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_9]
+    },
+    {
+        "identifier": 'EVENT_2448_remove_from_current_level_268_',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_10]
+    },
+    {
         "identifier": 'EVENT_2448_remove_from_current_level_107',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_11]
@@ -490,6 +500,22 @@ script = [
         "args": [AreaObjects.NPC_1, Rooms._228_FOREST_MAZE_AREA_04]
     },
     {
+        "identifier": 'EVENT_2448_action_queue_sync_87_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2448_action_queue_sync_87_SUBSCRIPT_sequence_looping_on_1',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_2448_action_queue_sync_87_SUBSCRIPT_set_animation_speed_0',
+                "command": 'transfer_to_xyzf',
+                "args": [11, 29, 0, RadialDirections.NORTHWEST]
+            },
+        ]
+    },
+    {
         "identifier": 'EVENT_2448_fade_in_from_black_async_254',
         "command": 'fade_in_from_black_async'
     },
@@ -509,36 +535,6 @@ script = [
     {
         "identifier": 'EVENT_2448_unfreeze_camera_262',
         "command": 'unfreeze_camera'
-    },
-    {
-        "identifier": 'EVENT_2448_remove_from_current_level_263',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_2448_remove_from_current_level_264',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5]
-    },
-    {
-        "identifier": 'EVENT_2448_remove_from_current_level_265',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6]
-    },
-    {
-        "identifier": 'EVENT_2448_remove_from_current_level_266',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7]
-    },
-    {
-        "identifier": 'EVENT_2448_remove_from_current_level_267',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_8]
-    },
-    {
-        "identifier": 'EVENT_2448_remove_from_current_level_268',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_2448_jmp_to_event_271',

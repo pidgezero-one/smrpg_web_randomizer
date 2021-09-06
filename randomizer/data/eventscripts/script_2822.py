@@ -24,11 +24,11 @@ script = [
         "identifier": 'EVENT_2822_move_script_to_background_thread_2_12',
         "command": 'move_script_to_background_thread_2'
     },
-    {
-        "identifier": 'EVENT_2822_enable_controls_until_return_13',
-        "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
-    },
+    #{
+    #    "identifier": 'EVENT_2822_enable_controls_until_return_13',
+    #    "command": 'enable_controls_until_return',
+    #    "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
+    #},
     {
         "identifier": 'EVENT_2822_restore_all_hp_14',
         "command": 'restore_all_hp'

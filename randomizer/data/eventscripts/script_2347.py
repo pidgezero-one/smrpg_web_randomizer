@@ -6,21 +6,49 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2347_action_queue_sync_2',
+        "identifier": 'EVENT_2347_s',
+        "command": 'set_bit',
+        "args": [0x7042, 0]
+    },
+    {
+        "identifier": 'EVENT_2347_freeze_camera_137',
+        "command": 'freeze_camera'
+    },
+    {
+        "identifier": 'EVENT_2347_action_queue_sync_138',
         "command": 'action_queue_sync',
         "args": [AreaObjects.SCREEN_FOCUS],
         "subscript": [
             {
-                "identifier": 'EVENT_2347_action_queue_sync_2_SUBSCRIPT_set_animation_speed_0',
+                "identifier": 'EVENT_2347_action_queue_sync_138_SUBSCRIPT_set_animation_speed_0',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
             },
             {
-                "identifier": 'EVENT_2347_action_queue_sync_2_SUBSCRIPT_shift_north_steps_1',
-                "command": 'shift_north_steps',
-                "args": [3]
-            }
+                "identifier": 'EVENT_2347_action_queue_sync_138_SUBSCRIPT_shift_z_up_steps_1',
+                "command": 'shift_z_up_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_2347_action_queue_sync_138_SUBSCRIPT_set_animation_speed_2',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_2347_action_queue_sync_138_SUBSCRIPT_shift_z_down_steps_3',
+                "command": 'shift_z_down_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_2347_s2',
+                "command": 'clear_bit',
+                "args": [0x7042, 0]
+            },
         ]
+    },
+    {
+        "identifier": 'EVENT_2347_unfreeze_camera_137',
+        "command": 'unfreeze_camera'
     },
     {
         "identifier": "EVENT_2347_grant",

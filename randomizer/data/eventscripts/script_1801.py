@@ -11,6 +11,10 @@ script = [
         "args": [AreaObjects.MEM_70A8]
     },
     {
+        "identifier": 'EVENT_1801_remove_object_at_70A8_from_current_level_1',
+        "command": 'remove_object_at_70A8_from_current_level'
+    },
+    {
         "identifier": 'EVENT_1801_set_1',
         "command": 'set',
         "args": [0x7000, 1]

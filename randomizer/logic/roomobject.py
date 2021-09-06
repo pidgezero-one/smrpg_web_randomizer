@@ -98,7 +98,11 @@ class RoomObjects:
                         room_bytes.append((n["direction"] << 5) | n["z"])
                         for c in n["clones"]:
                             if (n["type"] == 0):
-                                room_bytes.append((c["event_offset"] << 5) | (c["action_offset"] << 3) | c["npc_id_offset"])
+                                try:
+                                    room_bytes.append((c["event_offset"] << 5) | (c["action_offset"] << 3) | c["npc_id_offset"])
+                                except Exception as e:
+                                    print(room)
+                                    raise e
                             elif (n["type"] == 1):
                                 room_bytes.append((c["item_offset"] << 4) | c["star_offset"])
                             elif (n["type"] == 2):

@@ -5,12 +5,6 @@ from randomizer.data.eventtables import ControllerDirections, RadialDirections, 
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
 script = [
-    
-    {
-        "identifier": 'EVENT_2497_____enter_area_178',
-        "command": 'enter_area',
-        "args": [Rooms._189_MARIOS_PIPEHOUSE, RadialDirections.SOUTHEAST, 3, 13, 0, []]
-    },
     {
         "identifier": 'EVENT_2497_____palette_set_179',
         "command": 'palette_set',

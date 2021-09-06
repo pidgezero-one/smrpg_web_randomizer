@@ -47,6 +47,22 @@ script = [
         "args": [859]
     },
     {
+        "identifier": 'EVENT_3792_red_thing',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.LAYER_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3792_action_queue_sync_5_SUBSCRIPT_transfer_to_xyzf_0_',
+                "command": 'visibility_off'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_3792_red_thing_2',
+        "command": 'priority_set',
+        "args": [[_0x81Flags.LAYER_1, _0x81Flags.LAYER_2, _0x81Flags.NPC_SPRITES], [], []]
+    },
+    {
         "identifier": 'EVENT_3792_fade_in_from_black_async_31',
         "command": 'fade_in_from_black_async'
     },

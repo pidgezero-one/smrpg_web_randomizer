@@ -5,6 +5,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
+        "identifier": 'ACTION_215_set_camera_bit',
+        "command": 'set_bit',
+        "args": [0x7042, 0]
+    },
+    {
         "identifier": 'ACTION_215_set_animation_speed_0',
         "command": 'set_animation_speed',
         "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
@@ -13,6 +18,11 @@ script = [
         "identifier": 'ACTION_215_shift_southwest_steps_1',
         "command": 'shift_southwest_steps',
         "args": [6]
+    },
+    {
+        "identifier": 'ACTION_215_clear_camera_bit',
+        "command": 'clear_bit',
+        "args": [0x7042, 0]
     },
     {
         "identifier": 'ACTION_215_ret_2',

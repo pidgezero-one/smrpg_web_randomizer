@@ -377,7 +377,7 @@ dialog_data[247] = '''[await]'''
 dialog_data[248] = '''[await]'''
 dialog_data[249] = '''TOAD: I suppose our security
  could use some improvement.[await]
- Ah well.[delay] I'm sure this castle will
+ Ah well.[delay_15] I'm sure this castle will
  never be invaded again.[await]'''
 dialog_data[250] = '''[await]'''
 dialog_data[251] = ''' It would really stink if another
@@ -408,9 +408,9 @@ dialog_data[265] = '''[await]'''
 dialog_data[266] = '''[await]'''
 dialog_data[267] = '''[await]'''
 dialog_data[268] = '''[await]'''
-dialog_data[269] = ''' See that chest up there? Alanim
+dialog_data[269] = ''' See that chest up there?[await][pause] Alanim
  could have kept it permanently
- missable. But he didn't.[await]
+ missable.[delay] But he didn't.[await]
  What a great guy![await]'''
 dialog_data[270] = ''' I would never snoop through the
  Princess' room.[await][pause] But I bet she has
@@ -949,17 +949,17 @@ dialog_data[542] = '''[await]'''
 dialog_data[543] = '''[await]'''
 dialog_data[544] = '''[await]'''
 dialog_data[545] = '''[await]'''
-dialog_data[546] = ''' Are you looking for Toadofsky?
+dialog_data[546] = ''' Are you looking for Toadofsky?[delay_15]
  He's probably busy right now.[await][page]
- To pass the time... have you taken
+ To pass the time...[delay_15] have you taken
  a ride on the minecart in Moleville?[await]
  I'd love to try it once I grow
  a pair of legs.[await]'''
 dialog_data[547] = '''[await]'''
-dialog_data[548] = ''' Are you looking for Toadofsky?
- He'll be back later[await][page]
- To pass the time... have you been
- to the temple in Land's End[await]
+dialog_data[548] = ''' Are you looking for Toadofsky?[delay_15]
+ He'll be back later.[await][page]
+ To pass the time...[delay_15] have you been
+ to the temple in Land's End?[await]
  I hear it's quite the attraction
  for treasure hunters.[await]'''
 dialog_data[549] = ''' My favorite song?[await]'''

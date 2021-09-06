@@ -229,6 +229,11 @@ script = [
         "args": [1]
     },
     {
+        "identifier": 'EVENT_3403_enable_trigger_0',
+        "command": 'enable_trigger',
+        "args": [AreaObjects.MEM_70AA]
+    },
+    {
         "identifier": 'EVENT_3403_ret_80',
         "command": 'ret'
     }

@@ -6,9 +6,9 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1346_jmp_if_bit_clear_0',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7044, 3, 'EVENT_1346_ret_16']
+        "identifier": 'EVENT_1346_jmp_if_object_not_in_level_4',
+        "command": 'jmp_if_object_not_in_level',
+        "args": [AreaObjects.NPC_0, Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM, 'EVENT_1346_ret_16']
     },
     {
         "identifier": 'EVENT_1346_action_queue_sync_1',
@@ -146,11 +146,6 @@ script = [
         "identifier": 'EVENT_1346_remove_from_level_12',
         "command": 'remove_from_level',
         "args": [AreaObjects.NPC_0, Rooms._194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM]
-    },
-    {
-        "identifier": 'EVENT_1346_clear_bit_13',
-        "command": 'clear_bit',
-        "args": [0x7044, 3]
     },
     {
         "identifier": 'EVENT_1346_set_action_script_async_14',

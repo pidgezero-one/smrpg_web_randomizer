@@ -12,11 +12,11 @@ script = [
         "command": 'set_bit',
         "args": [0x7044, 2]
     },
-    {
-        "identifier": 'run_background_event_12',
-        "command": 'run_background_event',
-        "args": [93, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
-    },
+    #{
+    #    "identifier": 'run_background_event_12',
+    #    "command": 'run_background_event',
+    #    "args": [93, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
+    #}, # background event disables non-jump controls to make you finish the slot machine chest - decided not to do this since it has too much potential for softlocking
     {
         "identifier": 'pause_action_script_2',
         "command": 'pause_action_script',
@@ -724,9 +724,18 @@ script = [
         "args": [32]
     },
     {
-        "identifier": 'start_battle_94',
-        "command": 'run_event_as_subroutine',
-        "args": [1931]
+        "identifier": 'set_7K',
+        "command": 'start_battle',
+        "args": [518, 0x31]
+    },
+    {
+        "identifier": 'jmp_if_bit_clear_47',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7040, 0, 'remove_from_current_level_97']
+    },
+    {
+        "identifier": 'reset_and_choose_game_48',
+        "command": 'reset_and_choose_game'
     },
     {
         "identifier": 'remove_from_current_level_97',

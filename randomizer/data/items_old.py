@@ -3032,7 +3032,7 @@ class JuiceBarFull(JuiceBarShop):
             bool: True if item is allowed in this shop/world, False otherwise.
 
         """
-        return item.consumable and not item.reuseable
+        return item.consumable
 
 
 class SeasideWeaponShop(Shop):

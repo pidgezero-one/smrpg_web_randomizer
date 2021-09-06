@@ -169,13 +169,9 @@ def add_desc_fields(fields):
         if isinstance(attr, (list, tuple)):
             if flag in attr:
                 d += chars
-            else:
-                d += '\x20'
         elif isinstance(attr, bool):
             if attr:
                 d += chars
-            else:
-                d += '\x20'
     return d
 
 
@@ -205,6 +201,10 @@ def allocate_string(string_length, free_list):
 
 # animation utils
 
+
+class SequenceType(enum.Enum):
+    Sequence = enum.auto()
+    Mold = enum.auto()
 
 class CommandTypes(enum.Enum):
     Action = enum.auto()
@@ -236,24 +236,79 @@ def is_animation_header(command, npc_id):
 
 
 def remove_sequence_changes_from_action_script(script):
+    #if NPC is supposed to keep a certain mold/sequence, make sure it never resets
     return [a for a in script if a["command"] != 'set_sprite_sequence' and a["command"] != "reset_properties"]
 
+def fix_directions_for_sequenced_sprite(script, sequence_type=SequenceType.Sequence, sequence_id=0, sprite_offset=0):
+    # specific sequence sprites: face left or right depending on intent of script
+    output = []
+    flags = []
+    if sequence_type==SequenceType.Sequence:
+        flags.append(_0x08Flags.READ_AS_SEQUENCE)
+    else:
+        flags.append(_0x08Flags.READ_AS_MOLD)
+    for command in script:
+        if command["command"] in ["face_southeast", "face_northeast"]:
+            output.append({
+                "identifier": 'dummy',
+                "command": 'set_sprite_sequence',
+                "args": [sequence_id, sprite_offset, [*flags, _0x08Flags.MIRROR_SPRITE]]
+            })
+        elif command["command"] in ["face_southwest", "face_northwest"]:
+            output.append({
+                "identifier": 'dummy',
+                "command": 'set_sprite_sequence',
+                "args": [sequence_id, sprite_offset, flags]
+            })
+        elif command["command"] in ["walk_1_step_east", "walk_1_step_northeast", "shift_east_steps", "shift_northeast_steps", "shift_east_pixels", "shift_northeast_pixels", "walk_1_step_southeast", "shift_southeast_steps", "shift_southeast_pixels", "walk_1_step_south", "shift_south_steps", "shift_south_pixels"]:
+            c = {
+                "identifier": 'dummy',
+                "command": 'set_sprite_sequence',
+                "args": [sequence_id, sprite_offset, [*flags, _0x08Flags.MIRROR_SPRITE]]
+            }
+            output.append(c)
+            output.append(
+                {"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append(command)
+            output.append(
+                {"identifier": "dummy", "command": "fixed_f_coord_off"})
+        elif command["command"] in ["walk_1_step_west", "walk_1_step_southwest", "shift_west_steps", "shift_southwest_steps", "shift_west_pixels", "shift_southwest_pixels", "walk_1_step_north", "walk_1_step_northwest", "shift_north_steps", "shift_northwest_steps", "shift_north_pixels", "shift_northwest_pixels"]:
+            c = {
+                "identifier": 'dummy',
+                "command": 'set_sprite_sequence',
+                "args": [sequence_id, sprite_offset, flags]
+            }
+            output.append(c)
+            output.append(
+                {"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append(command)
+            output.append(
+                {"identifier": "dummy", "command": "fixed_f_coord_off"})
+        elif command["command"] in ["shift_f_direction_steps", "shift_z_20_steps", "shift_z_up_steps", "shift_z_down_steps", "shift_z_up_20_steps", "shift_z_down_20_steps", "shift_f_direction_pixels", "walk_f_direction_16_pixels", "shift_z_up_pixels", "shift_z_down_pixels", "shift_to_xy_coords", "shift_xy_steps", "shift_xy_pixels", "walk_1_step_f_direction", "walk_f_direction_16_pixels", "walk_to_xy_coords", "walk_xy_steps", "walk_to_7016_7018", "walk_to_7016_7018_701A"]:
+            output.append(
+                {"identifier": "dummy", "command": "fixed_f_coord_on"})
+            output.append(command)
+            output.append(
+                {"identifier": "dummy", "command": "fixed_f_coord_off"})
+        else:
+            output.append(command)
+    return output
 
 def fix_script_for_scarecrow(script):
     s = [a for a in script if a["command"] != "reset_properties"]
     output = []
     for command in s:
         if command["command"] == "face_northwest":
-            command["command"] = "face_southwest"
-            output.append(command)
-        elif command["command"] == "face_northeast":
             command["command"] = "face_southeast"
             output.append(command)
+        elif command["command"] == "face_northeast":
+            command["command"] = "face_southwest"
+            output.append(command)
         elif command["command"] == "face_southeast":
-            command["command"] = "face_northwest"
+            command["command"] = "face_northeast"
             output.append(command)
         elif command["command"] == "face_southwest":
-            command["command"] = "face_northeast"
+            command["command"] = "face_northwest"
             output.append(command)
         elif command["command"] == "face_mario":
             pass  # could possibly substitute a series of "ifs" comparing coord to mario's, and set direction based on that info, but that would be hella complicated and i dont know what temp vars would make sense for it
@@ -275,8 +330,8 @@ def fix_script_for_scarecrow(script):
             output.append({"identifier": "dummy", "command": "face_northeast"})
             output.append(
                 {"identifier": "dummy", "command": "fixed_f_coord_on"})
-            output.append({"identifier": "dummy", "command": "set_sprite_sequence", "args": [
-                          2, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]})
+            #output.append({"identifier": "dummy", "command": "set_sprite_sequence", "args": [2, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]})
+            output.append(command)
             output.append(
                 {"identifier": "dummy", "command": "fixed_f_coord_off"})
         elif command["command"] in ["walk_1_step_west", "walk_1_step_southwest", "shift_west_steps", "shift_southwest_steps", "shift_west_pixels", "shift_southwest_pixels"]:

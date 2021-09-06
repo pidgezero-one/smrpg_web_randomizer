@@ -1398,7 +1398,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1368_jmp_if_no_alt_win_condition',
-        "command": 'jmp_if_bit_clear',
+        "command": 'jmp_if_bit_set',
         "args": [0x7086, 7, 'EVENT_1368_summon_to_level_145']
     },
     {

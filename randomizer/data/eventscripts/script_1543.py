@@ -24,6 +24,11 @@ script = [
                 "identifier": 'EVENT_1543_action_queue_sync_0_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1543_s',
+                "command": 'clear_bit',
+                "args": [0x709C, 1]
             }
         ]
     },

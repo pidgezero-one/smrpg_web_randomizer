@@ -3,7 +3,10 @@ from randomizer.data.eventtables import controller_direction_table, radial_direc
 from randomizer.data.items import get_default_items
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline
 from randomizer.management.commands.objectsequencedisassembler import Command as OSCommand
+from randomizer.logic.main import Settings, GameWorld
+from datetime import datetime
 import sys
+
 sys.stdout.reconfigure(encoding='utf-8')
 
 banks = [
@@ -79,7 +82,7 @@ obj_event_lens = [
     3, 3, 4, 4, 4, 4, 2, 2,  2, 2, 2, 2, 2, 2, 2, 2,
 ]
 
-items_table = build_table(get_default_items(None))
+items_table = build_table(get_default_items(GameWorld(0, Settings(mode="open"))))
 
 jmp_cmds = [0x3F, 0x3E, 0x3A, 0xD2, 0xD3, 0x41, 0xE6, 0xE7, 0xDC, 0xDD, 0xDE, 0xD8, 0xD9, 0xDA, 0xEC, 0xED, 0x66, 0xEA,
             0xEF, 0xEE, 0xEB, 0x3D, 0x39, 0xDF, 0xDB, 0xF8, 0x3A, 0x32, 0xE8, 0xE0, 0xE2, 0xE4, 0xE1, 0xE3, 0xE5, 0xD3]
@@ -1122,6 +1125,8 @@ class Command(BaseCommand):
             for cmd in script:
                 jumps = []
                 commands_to_replace = len(cmd["jumps"]) * -1
+                print(i, cmd, [hex(x) for x in cmd["jumps"]], [
+                            c for c in sd if c["original_offset"] == j])
                 for j in cmd["jumps"]:
                     for sd in scripts_data:
                         candidates = [

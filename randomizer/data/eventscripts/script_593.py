@@ -74,6 +74,10 @@ script = [
         "command": 'restore_all_fp'
     },
     {
+        "identifier": 'EVENT_593_restore_all_fp_18_',
+        "command": 'fade_in_from_black_async'
+    },
+    {
         "identifier": 'EVENT_593_jmp_to_event_192',
         "command": 'run_event_as_subroutine',
         "args": [201]

@@ -114,7 +114,7 @@ data = [
         {'id': 'command_0x3a6346', 'data': [0x09, 0x50, 0x75]},
     ], # 13
     [
-        {'id': 'command_~-~-0x3a6521_', 'data': [0x10, 0x37, 0x70]},
+        {'id': 'command_~-~-0x3a6521_', 'data': [0x10, 'partysize_subroutine']},
         {'id': 'command__0x3a63c1_______', 'data': [0x09, 0x50, 0x75]},
     ], # 14
     [
@@ -253,7 +253,7 @@ data = [
         {'id': 'command_0x3a64f1', 'data': [0x09, 0x50, 0x75]},
     ], # 25
     [
-        {'id': 'command_-0x3a6521_', 'data': [0x10, 0x37, 0x70]},
+        {'id': 'command_-0x3a6521_', 'data': [0x10, 'partysize_subroutine']},
         {'id': 'command_0x3a64f6', 'data': [0x10, 0x31, 0x75]},
         {'id': 'command_0x3a64f9', 'data': [0xba]},
         {'id': 'command_0x3a64fa', 'data': [0x03, 0x03, 0x00, 0x00, 0x00, 0x78]},
@@ -513,7 +513,7 @@ data = [
         {'id': 'command_0x3a68e0__', 'data': [0x09, 0x50, 0x75]},
     ], # 51
     [
-        {'id': 'command_~-~-0x3a6521__', 'data': [0x10, 0x37, 0x70]},
+        {'id': 'command_~-~-0x3a6521__', 'data': [0x10, 'partysize_subroutine']},
         {'id': 'command_0x3a6875', 'data': [0x10, 0x31, 0x75]},
         {'id': 'command_0x3a6878', 'data': [0xba, 0x03, 0x28, 0x00, 0x00, 0x00, 0x78, 0xff]},
         {'id': 'command_0x3a6880', 'data': [0xa3, 0x0d]},
@@ -653,7 +653,7 @@ data = [
         {'id': 'command_0x3a6a0b', 'data': [0x09, 0x50, 0x75]},
     ], # 60
     [
-        {'id': 'command_~-~-0x3a6521_!!', 'data': [0x10, 0x37, 0x70]},
+        {'id': 'command_~-~-0x3a6521_!!', 'data': [0x10, 'partysize_subroutine']},
         {'id': 'command_0x3a6a10', 'data': [0x10, 0x31, 0x75]},
         {'id': 'command_0x3a6a13', 'data': [0x5d, 0x14, 0x00, 0x44, 0xdd]},
         {'id': 'command_0x3a6a18', 'data': [0x5d, 0x14, 0x01, 0xea, 0xda]},
@@ -722,11 +722,18 @@ data = [
         {'id': 'command_~0x3a6b6c~~', 'data': [0x04, 0x10, 0x18, 0x00]},
         {'id': 'command_0x3a6b82', 'data': [0x87]},
         {'id': 'command_0x3a6b83', 'data': [0x09, 0x50, 0x75]},
+        {'id': 'partysize_subroutine', 'data': [0x20, 0x10, 0x80, 0xFB, 0x38, 0x00, 0x80, 'partysize_subroutine_1', 0x20, 0x08, 0x03, 0x00]},
+        {'id': 'partysize_subroutine_', 'data': [0x09, 'partysize_subroutine__']},
+        {'id': 'partysize_subroutine_1', 'data': [0x20, 0x10, 0x00, 0xFB]},
+        {'id': 'partysize_subroutine_2', 'data': [0x38, 0x00, 0x80, 'partysize_subroutine___', 0x20, 0x08, 0x01, 0x00]},
+        {'id': 'partysize_subroutine__', 'data': [0x22, 0x18, 0x0A, 0xE0]},
+        {'id': 'partysize_subroutine___', 'data': [0x34, 0x00, 0x34, 0x08, 0x11]}
+        # Note about above: Offset for 70-73 should never change
     ], # 69
     [
-        {'id': 'command_0x3a6b88', 'data': [0x93]},
-        {'id': 'command_0x3a6b89', 'data': [0x6b, 0x9a, 0x6b, 0x10]},
-        {'id': 'command_0x3a6b8d', 'data': [0x31, 0x75]},
+        {'id': 'command_0x3a6b88', 'data': [0x93, 0x6b]},
+        {'id': 'command_0x3a6b89', 'data': [0x9a, 0x6b]},
+        {'id': 'command_0x3a6b8d', 'data': [0x10, 0x31, 0x75]},
         {'id': 'command_0x3a6b8f', 'data': [0x10, 0xbf, 0xeb]},
         {'id': 'command_0x3a6b92', 'data': [0xe2]},
         {'id': 'command_0x3a6b93', 'data': [0x10, 0x31, 0x75]},
@@ -735,6 +742,7 @@ data = [
         {'id': 'command_0x3a6b9a', 'data': [0x10, 0x31, 0x75]},
         {'id': 'command_0x3a6b9d', 'data': [0x10, 0xdc, 0xec]},
         {'id': 'command_0x3a6ba0', 'data': [0xe2]},
+        #{'id': 'command_0x3a6bae~', 'data': [0x09, 0x50, 0x75]},
     ], # 70
     [
         {'id': 'command_0x3a6ba3', 'data': [0x10, 0x31, 0x75]},

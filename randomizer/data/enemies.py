@@ -175,49 +175,47 @@ class Enemy:
         """
         desc = ''
 
+        elemental_immunities = ''
+        elemental_weaknesses = ''
+        status_vulnerabilities = ''
+
         # Elemental immunities.
         if self.resistances:
-            desc += '\x7C'
-            desc += utils.add_desc_fields((
+            elemental_immunities += '\x7C'
+            elemental_immunities += utils.add_desc_fields((
                 ('\x7E', 6, self.resistances),
                 ('\x7D', 4, self.resistances),
                 ('\x7F', 5, self.resistances),
                 ('\x85', 7, self.resistances),
             ))
-        else:
-            desc += '\x20' * 5
-
-        desc += '\x20'
 
         # Elemental weaknesses.
         if self.weaknesses:
-            desc += '\x7B'
-            desc += utils.add_desc_fields((
+            elemental_weaknesses += '\x7B'
+            elemental_weaknesses += utils.add_desc_fields((
                 ('\x7E', 6, self.weaknesses),
                 ('\x7D', 4, self.weaknesses),
                 ('\x7F', 5, self.weaknesses),
                 ('\x85', 7, self.weaknesses),
             ))
-        else:
-            desc += '\x20' * 5
-
-        desc += '\x20\x20'
 
         # Status vulnerabilities.
         vulnerabilities = [i for i in range(
             4) if i not in self.status_immunities]
         if vulnerabilities:
-            desc += utils.add_desc_fields((
+            status_vulnerabilities += utils.add_desc_fields((
                 ('\x82', 0, vulnerabilities),
                 ('\x80', 1, vulnerabilities),
                 ('\x83', 2, vulnerabilities),
                 ('\x81', 3, vulnerabilities),
                 ('\x84\x84', True, not self.death_immune),
             ))
-        else:
-            desc += '\x20' * 6
 
-        desc += '\x02'
+        eligible = [s for s in [status_vulnerabilities, elemental_weaknesses, elemental_immunities] if s != '']
+        if len(eligible) == 0:
+            desc = "No weaknesses or resistances.\x02"
+        else:
+            desc = "  \x2A  ".join(eligible) + '\x02'
 
         return desc
 
@@ -399,6 +397,10 @@ class Enemy:
         if len(pointer_data) != NUM_ENEMIES * 2:
             raise ValueError(
                 "Wrong length for pointer data, something went wrong...")
+        # Sanity check that data doesn't overflow into battlefield tilesets.
+        if len(text_data) > 5235:
+            raise ValueError(
+                "Psychopath text too long (got %i, want <= %i)" % (len(text_data), 5235))
 
         # Add pointer data, then add text data.
         patch.add_data(cls.BASE_PSYCHOPATH_POINTER_ADDRESS, pointer_data)
@@ -509,7 +511,7 @@ class MadMallet(Enemy):
 
 
 class MadMalletHenchman(MadMallet):
-    index = 185
+    index = 133
     address = 0x390C06
     reward_address = 0x391A6E
 
@@ -7340,7 +7342,7 @@ class Birdo(Enemy):
         (2848, ''' There's nothing weird going on\n here![await]'''),
         (3044, '''BIRDETTA: Ooh, are you gonna play\n with the dojo master?![await]'''),
         (3057, ''' Hello♥! Did you come to play?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
-        (3338, ''' It's really weird.\n Sometimes I hear the lady next door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await]'''),
+        (3338, ''' It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Egg-this and Playtime-that.[await]'''),
         (3352, '''BIRDETTA: Thanks for playing with\n me~![await]'''),
         (3353, '''BIRDETTA: Thanks for playing with\n me~![await]'''),
     ]
@@ -9738,7 +9740,7 @@ class Valentina(Enemy):
         (2848, '''\n         Hey! Who're YOU?!...[await]'''),
         (3044, '''VALENTINA: You? Fighting the dojo\n master? Good luck, chump![await]'''),
         (3057, ''' What? What do you want?![await]\n  [select] (Fight me)\n  [select] (Uh...)[await]'''),
-        (3338, ''' It's really weird.\n Sometimes I hear the lady next door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await]'''),
+        (3338, ''' It's really weird.\n Sometimes I hear the lady next\n door.[await][page]\n She's always mumbling about\n Queen-this and Dodo-that.[await]'''),
         (3352, '''VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[delay_30] pay a cordial visit\n to Nimbus Land?![await]'''),
         (3353, '''VALENTINA: Is this REALLY going to\n make me powerful enough to take\n ov...[delay_30] I mean...[delay_30] pay a cordial visit\n to Nimbus Land?![await]'''),
     ]

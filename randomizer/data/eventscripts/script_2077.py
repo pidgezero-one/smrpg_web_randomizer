@@ -368,6 +368,13 @@ script = [
                 "command": 'pause',
                 "args": [1]
             },
+        ]
+    },
+    {
+        "identifier": 'EVENT_2077_action_queue_async_78_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
             {
                 "identifier": 'EVENT_2077_action_queue_async_78_SUBSCRIPT_play_sound_13',
                 "command": 'play_sound',

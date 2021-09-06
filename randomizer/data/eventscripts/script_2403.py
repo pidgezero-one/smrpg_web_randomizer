@@ -45,7 +45,7 @@ script = [
             },
             {
                 "identifier": 'EVENT_2403_action_queue_sync_5_SUBSCRIPT_set_priority_2',
-                "command": 'set_priority',
+                "command": 'set_vram_priority',
                 "args": [3]
             },
             {
@@ -79,8 +79,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_2403_action_queue_sync_5_SUBSCRIPT_set_priority_9',
-                "command": 'set_priority',
-                "args": [2]
+                "command": 'set_vram_priority',
+                "args": [1]
             },
             {
                 "identifier": 'EVENT_2403_action_queue_sync_5_SUBSCRIPT_set_sprite_sequence_10',
@@ -126,10 +126,28 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2403_remove_from_current_level_10',
-        "command": 'remove_from_current_level',
+        "identifier": 'EVENT_2403_action_queue_async_9_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2403_action_queue_async_3_SUBSCRIPT_reset',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_2403_action_queue_async_3_SUBSCRIPT_shift_to_xy_coords_0_',
+                "command": 'visibility_off'
+            },
+        ]
+    },
+    {
+        "identifier": 'EVENT_2403_action_queue_async_9_res',
+        "command": 'reset_coords',
         "args": [AreaObjects.NPC_0]
     },
+
+    
+
     {
         "identifier": 'EVENT_2403_fade_out_music_FDA3_11',
         "command": 'fade_out_music_FDA3'
@@ -228,6 +246,10 @@ script = [
         "identifier": 'EVENT_2403_enable_controls_20',
         "command": 'enable_controls',
         "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
+    },
+    {
+        "identifier": 'EVENT_2403_reset_priority',
+        "command": 'reset_priority_set'
     },
     {
         "identifier": 'EVENT_2403_clear_bit_13',

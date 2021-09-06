@@ -12,7 +12,7 @@ from randomizer.data.helpers import EquipmentPropertiesOptions, EquipmentCharact
 from . import flags, utils
 
 
-def _randomize_item(item):
+def _randomize_item(item, safetychecks_on = True):
     """Perform randomization for an item.  Non-equipment will not be shuffled (price is done in the shop logic).
 
     Args:
@@ -52,8 +52,6 @@ def _randomize_item(item):
 
         # Track increases and decreases for each stat.
         score = item.stat_point_value
-        if item.effect_type == "extra stats":
-            score = max((score + 15), round(score * 1.5))
         up_vals = dict([(u, 0) for u in ups])
         down_vals = dict([(d, 0) for d in downs])
 
@@ -123,18 +121,18 @@ def _randomize_item(item):
             KO_odds_factor = 1
             if item.is_weapon:
                 KO_odds_factor /= 2
-            if item.effect_type in ["extra stats", "few effects"]:
+            if item.effect_type == items.EffectType.FewEffects:
                 KO_odds_factor /= 3
-            if item.effect_type in ["buffs", "elemental immunity"]:
+            if item.effect_type in [items.EffectType.Buffs, items.EffectType.ElementalImmunity]:
                 KO_odds_factor *= 1.5
             item.prevent_ko = utils.coin_flip(odds * KO_odds_factor)
 
             # Elemental immunities.
             item.elemental_immunities = []
             item.elemental_resistances = []
-            if item.effect_type in ["normal", "buffs", "status protection"]:
+            if item.effect_type in [items.EffectType.Normal, items.EffectType.Buffs, items.EffectType.StatusProtection]:
                 elemental_multiplier = 0.5
-                if item.effect_type == "normal":
+                if item.effect_type == items.EffectType.Normal:
                     elemental_multiplier = 1
                 if random.randint(1, 2) == 1:
                     for i in range(4, 7):
@@ -148,10 +146,10 @@ def _randomize_item(item):
                             item.elemental_resistances.append(i)
                         elif utils.coin_flip(odds * elemental_multiplier):
                             item.elemental_immunities.append(i)
-            elif item.effect_type in ["extra stats", "few effects", "elemental resistance"]:
+            elif item.effect_type in [items.EffectType.FewEffects, items.EffectType.ElementalResistance]:
                 elemental_multiplier1 = 0.5
                 elemental_multiplier2 = 0.5
-                if item.effect_type == "elemental resistance":
+                if item.effect_type == items.EffectType.ElementalResistance:
                     elemental_multiplier1 = 2.5
                     elemental_multiplier2 = 1
                 for i in range(4, 7):
@@ -168,15 +166,15 @@ def _randomize_item(item):
 
             # For certain namesake items, keep their status immunities so people don't get confused for safety.
             guaranteed_immunities = []
-            if (isinstance(item, (items.FearlessPin, items.AntidotePin, items.TrueformPin, items.WakeUpPin))):
+            if (safetychecks_on and isinstance(item, (items.FearlessPin, items.AntidotePin, items.TrueformPin, items.WakeUpPin))):
                 guaranteed_immunities = item.status_immunities
 
             # Status immunities.
             item.status_immunities = []
             status_multiplier = 1
-            if item.effect_type == "status protection":
+            if item.effect_type == items.EffectType.StatusProtection:
                 status_multiplier = 2
-            elif item.effect_type in ["buffs", "extra stats", "few effects"]:
+            elif item.effect_type in [items.EffectType.Buffs, items.EffectType.FewEffects]:
                 status_multiplier = 0.5
             for i in range(0, 7):
                 # Skip berserk status if the safety checks on enemy shuffle is not enabled.
@@ -197,9 +195,9 @@ def _randomize_item(item):
                 buff_odds = 1 / 2
             elif item.is_armor or item.index in [78, 81, 82, 90, 91]:
                 buff_odds = 1 / 5
-            if item.effect_type == "buffs":
+            if item.effect_type == items.EffectType.Buffs:
                 buff_odds *= 2.5
-            elif item.effect_type == "normal":
+            elif item.effect_type == items.EffectType.Normal:
                 pass
             else:
                 buff_odds *= 0.25
@@ -217,7 +215,7 @@ def _randomize_item(item):
         resistances_to_add = copy.copy(item.elemental_resistances)
         statuses_to_add = copy.copy(item.status_immunities)
         if (isinstance(item, (items.Shirt, items.Pants))):
-            statuses_to_add.append(4)
+            statuses_to_add.append(5)
         elif (isinstance(item, (items.ThickShirt, items.ThickPants))):
             buffs_to_add.append(5)
         elif (isinstance(item, (items.MegaShirt, items.MegaPants, items.MegaCape))):
@@ -251,9 +249,6 @@ def _randomize_item(item):
         item.elemental_immunities = immunities_to_add
         item.elemental_resistances = resistances_to_add
         item.status_immunities = statuses_to_add
-
-    if item.world.settings.is_flag_value(flags.EquipmentNoSafety, True):
-        item.prevent_ko = False
 
     if not item.world.settings.is_flag_value(flags.EquipmentCharacters, EquipmentCharactersOptions.vanilla):
         # Randomize which characters can equip this item.
@@ -316,7 +311,7 @@ def randomize_all(world):
                 continue
             if random.randint(1, 10) == 1:
                 item.effect_type = random.choice(
-                    ["normal", "buffs", "status protection", "elemental resistance", "elemental immunity", "extra stats", "few effects"])
+                    [items.EffectType.Normal, items.EffectType.Buffs, items.EffectType.StatusProtection, items.EffectType.ElementalResistance, items.EffectType.ElementalImmunity, items.EffectType.FewEffects])
             if item.is_weapon:
                 temp_weapon_stat = (item.attack, item.price)
                 weapon_stats.append(temp_weapon_stat)
@@ -427,11 +422,11 @@ def randomize_all(world):
         # Designate 1-4 magic weapons
         magic_weapon_count = random.randint(1, 4)
         magic_weapon_candidates = []
-        for item in world.items:
-            if item.is_weapon and item.attack < 40:
-                magic_weapon_candidates.append(item)
+        for item in [i for i in world.items if item.is_weapon]:
+            magic_weapon_candidates.append(item)
         for item in random.sample(magic_weapon_candidates, magic_weapon_count):
-            item.magic_weapon = True
+            item.magic_attack = item.attack
+            item.attack = 0
 
         # Safety check that at least four equips have instant death protection for safety.
         if not item.world.settings.is_flag_enabled(flags.EquipmentNoSafety):
@@ -445,7 +440,7 @@ def randomize_all(world):
 
     # Shuffle equipment stats and equip characters.
     for item in world.items:
-        _randomize_item(item)
+        _randomize_item(item, world.settings.is_flag_enabled(flags.EquipmentNoSafety))
 
     for item in world.items:
         if item.is_equipment:

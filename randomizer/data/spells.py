@@ -40,10 +40,7 @@ class Spell:
 
     @property
     def title(self):
-        if self.title is None:
-            return self.__class__.__name__
-        else:
-            return self.title
+        return self.__class__.__name__
 
     def get_patch(self):
         """Get patch for this spell.

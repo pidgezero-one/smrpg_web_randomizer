@@ -31,6 +31,11 @@ script = [
         "args": [0x7043, 1]
     },
     {
+        "identifier": 'EVENT_1315_set_bit_4_',
+        "command": 'set_bit',
+        "args": [0x7054, 1]
+    },
+    {
         "identifier": 'EVENT_1315_ret_5',
         "command": 'ret'
     }

@@ -5,7 +5,17 @@ from randomizer.data.eventtables import ControllerDirections, RadialDirections, 
 from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _0x08Flags, _0x0AFlags, _0x10Flags
 from randomizer.data import items
 script = [
-        {
+    {
+        "identifier": 'EVENT_1588_j',
+        "command": 'jmp_if_bit_set',
+        "args": [0x709C, 1, 'EVENT_1588_inc_7']
+    },
+    {
+        "identifier": 'EVENT_1588_s',
+        "command": 'set_bit',
+        "args": [0x709C, 1]
+    },
+    {
         "identifier": 'EVENT_1588_freeze_camera_5',
         "command": 'freeze_camera'
     },

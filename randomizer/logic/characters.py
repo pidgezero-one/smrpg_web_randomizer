@@ -463,8 +463,13 @@ def randomize_palettes(world):
         world.characters[2].palette = random.choice(geno_palettes)
         world.characters[3].palette = random.choice(bowser_palettes)
         world.characters[4].palette = random.choice(toadstool_palettes)
-        world.search_replace_dialog('`PEACH_NAME`', '%s' % world.characters[4].palette.name)
-        world.search_replace_dialog('`PEACH_ARTICLE`', 'n' if world.characters[4].palette.name[0] in ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'] else '')
-    else:
+        if world.characters[4].palette.rename_character:
+            world.search_replace_dialog('`PEACH_NAME`', '%s' % world.characters[4].palette.name)
+            world.search_replace_dialog('`PEACH_ARTICLE`', 'n' if world.characters[4].palette.name[0] in ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'] else '')
+        else:
+            world.search_replace_dialog('`PEACH_NAME`', 'Toadstool')
+            world.search_replace_dialog('`PEACH_ARTICLE`', '')
+        if world.settings.is_flag_enabled(flags.ChangeNames) and world.characters[1].palette.rename_character:
+            world.search_replace_dialog('`MALLOW:`', '%s:' % world.characters[1].palette.name.upper())
         world.search_replace_dialog('`PEACH_NAME`', 'Toadstool')
         world.search_replace_dialog('`PEACH_ARTICLE`', '')

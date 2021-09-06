@@ -3675,31 +3675,31 @@ script = [
         "command": 'run_star_piece_sequence',
         "args": [8]
     },
-    {
-        "identifier": 'EVENT_3885_palette_set_282',
-        "command": 'palette_set',
-        "args": [163, 1, [3]]
-    },
-    {
-        "identifier": 'EVENT_3885_palette_set_283',
-        "command": 'palette_set',
-        "args": [164, 1, [0, 3]]
-    },
-    {
-        "identifier": 'EVENT_3885_palette_set_284',
-        "command": 'palette_set',
-        "args": [166, 1, [1, 3]]
-    },
-    {
-        "identifier": 'EVENT_3885_palette_set_285',
-        "command": 'palette_set',
-        "args": [167, 1, [0, 1, 3]]
-    },
-    {
-        "identifier": 'EVENT_3885_palette_set_286',
-        "command": 'palette_set',
-        "args": [165, 1, [0, 2, 3]]
-    },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_282',
+    #     "command": 'palette_set',
+    #     "args": [163, 1, [3]]
+    # },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_283',
+    #     "command": 'palette_set',
+    #     "args": [164, 1, [0, 3]]
+    # },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_284',
+    #     "command": 'palette_set',
+    #     "args": [166, 1, [1, 3]]
+    # },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_285',
+    #     "command": 'palette_set',
+    #     "args": [167, 1, [0, 1, 3]]
+    # },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_286',
+    #     "command": 'palette_set',
+    #     "args": [165, 1, [0, 2, 3]]
+    # },
     {
         "identifier": 'EVENT_3885_action_queue_sync_287',
         "command": 'action_queue_sync',
@@ -4009,31 +4009,31 @@ script = [
         "command": 'palette_set_morphs',
         "args": [PaletteSetTypes.FADE_TO, 12, 162, 5]
     },
-    {
-        "identifier": 'EVENT_3885_palette_set_morphs_317',
-        "command": 'palette_set_morphs',
-        "args": [PaletteSetTypes.FADE_TO, 12, 84, 8]
-    },
-    {
-        "identifier": 'EVENT_3885_palette_set_morphs_318',
-        "command": 'palette_set_morphs',
-        "args": [PaletteSetTypes.FADE_TO, 12, 85, 10]
-    },
-    {
-        "identifier": 'EVENT_3885_palette_set_morphs_319',
-        "command": 'palette_set_morphs',
-        "args": [PaletteSetTypes.FADE_TO, 12, 86, 11]
-    },
-    {
-        "identifier": 'EVENT_3885_palette_set_morphs_320',
-        "command": 'palette_set_morphs',
-        "args": [PaletteSetTypes.FADE_TO, 12, 141, 9]
-    },
-    {
-        "identifier": 'EVENT_3885_palette_set_morphs_321',
-        "command": 'palette_set_morphs',
-        "args": [PaletteSetTypes.FADE_TO, 12, 140, 13]
-    },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_morphs_317',
+    #     "command": 'palette_set_morphs',
+    #     "args": [PaletteSetTypes.FADE_TO, 12, 84, 8]
+    # },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_morphs_318',
+    #     "command": 'palette_set_morphs',
+    #     "args": [PaletteSetTypes.FADE_TO, 12, 85, 10]
+    # },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_morphs_319',
+    #     "command": 'palette_set_morphs',
+    #     "args": [PaletteSetTypes.FADE_TO, 12, 86, 11]
+    # },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_morphs_320',
+    #     "command": 'palette_set_morphs',
+    #     "args": [PaletteSetTypes.FADE_TO, 12, 141, 9]
+    # },
+    # {
+    #     "identifier": 'EVENT_3885_palette_set_morphs_321',
+    #     "command": 'palette_set_morphs',
+    #     "args": [PaletteSetTypes.FADE_TO, 12, 140, 13]
+    # },
     {
         "identifier": 'EVENT_3885_pause_script_until_effect_done_322',
         "command": 'pause_script_until_effect_done'

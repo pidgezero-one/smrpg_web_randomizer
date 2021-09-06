@@ -16,6 +16,7 @@ class Area(Enum):
     MariosPad = auto()
     MushroomWay = auto()
     MushroomKingdom = auto()
+    MushroomKingdomOccupiedOnly = auto()
     BanditsWay = auto()
     KeroSewers = auto()
     MidasRiver = auto()
@@ -42,6 +43,7 @@ class Area(Enum):
     Casino = auto()
     BeanValley = auto()
     NimbusLand = auto()
+    NimbusCastle = auto()
     BarrelVolcano = auto()
     BowsersKeep = auto()
     Factory = auto()
@@ -159,6 +161,18 @@ class ItemLocation:
             return False
         if not self.is_character_recruit and utils.isclass_or_instance(item, items.RecruitedCharacter):
             return False
+
+        # only allow up to one slot machine per room
+        if utils.isclass_or_instance(item, items.SlotMachineChest):
+            for c in self.world.chest_locations:
+                if utils.isclass_or_instance(c.item, items.SlotMachineChest) and len(set(c.rooms).intersection(self.rooms)) > 0:
+                    return False
+
+        # only allow up to one exp star per area
+        if utils.isclass_or_instance(item, items.InvincibilityStar):
+            for c in self.world.chest_locations:
+                if utils.isclass_or_instance(c.item, items.InvincibilityStar) and (c.area == self.area):
+                    return False
 
 
         return True

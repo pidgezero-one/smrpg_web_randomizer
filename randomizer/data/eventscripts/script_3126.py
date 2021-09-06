@@ -135,7 +135,7 @@ script = [
     {
         "identifier": 'EVENT_3126_start_battle_18',
         "command": 'set',
-        "args": [7000, 513]
+        "args": [0x7000, 513]
     },
     {
         "identifier": 'EVENT_3126_start_battle_32',

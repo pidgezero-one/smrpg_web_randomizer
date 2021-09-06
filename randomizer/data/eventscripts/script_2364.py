@@ -58,31 +58,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2364_action_queue_sync_4',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_4_SUBSCRIPT_shift_south_pixels_0',
-                "command": 'shift_south_pixels',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_4_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_sync_4_SUBSCRIPT_shift_southwest_pixels_2',
-                "command": 'shift_southwest_pixels',
-                "args": [3]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2364_action_queue_sync_5',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_3],
+        "args": [AreaObjects.NPC_2],
         "subscript": [
             {
                 "identifier": 'EVENT_2364_action_queue_sync_5_SUBSCRIPT_shift_northwest_pixels_0',

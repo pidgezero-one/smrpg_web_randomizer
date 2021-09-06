@@ -7,7 +7,7 @@ from randomizer.data import items
 script = [
     {
         "identifier": 'EVENT_3794_action_queue_sync_38',
-        "command": 'action_queue_sync',
+        "command": 'action_queue_async',
         "args": [AreaObjects.MARIO],
         "subscript": [
             {

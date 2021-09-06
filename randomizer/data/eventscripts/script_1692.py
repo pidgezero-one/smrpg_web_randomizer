@@ -144,6 +144,11 @@ script = [
         "args": [AreaObjects.NPC_6, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     },
     {
+        "identifier": "EVENT_1692_jmp_1",
+        "command": "jmp_if_object_trigger_disabled",
+        "args": [AreaObjects.NPC_6, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, 'EVENT_1692_ret_68_-']
+    },
+    {
         "identifier": 'EVENT_1692_ret_38',
         "command": 'ret'
     },
@@ -156,6 +161,11 @@ script = [
         "identifier": 'EVENT_1692_summon_to_level_40',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_7, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
+    },
+    {
+        "identifier": "EVENT_1692_jmp_2",
+        "command": "jmp_if_object_trigger_disabled",
+        "args": [AreaObjects.NPC_7, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, 'EVENT_1692_ret_68_-']
     },
     {
         "identifier": 'EVENT_1692_ret_42',
@@ -210,6 +220,11 @@ script = [
         "args": [AreaObjects.NPC_8, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     },
     {
+        "identifier": "EVENT_1692_jmp_3",
+        "command": "jmp_if_object_trigger_disabled",
+        "args": [AreaObjects.NPC_8, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, 'EVENT_1692_ret_68_-']
+    },
+    {
         "identifier": 'EVENT_1692_ret_64',
         "command": 'ret'
     },
@@ -224,7 +239,21 @@ script = [
         "args": [AreaObjects.NPC_9, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE]
     },
     {
+        "identifier": "EVENT_1692_jmp_4",
+        "command": "jmp_if_object_trigger_disabled",
+        "args": [AreaObjects.NPC_9, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, 'EVENT_1692_ret_68_-']
+    },
+    {
         "identifier": 'EVENT_1692_ret_68',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1692_ret_68_-',
+        "command": 'set_bit',
+        "args": [0x704F, 2]
+    },
+    {
+        "identifier": 'EVENT_1692_ret_68_',
         "command": 'ret'
     }
 ]

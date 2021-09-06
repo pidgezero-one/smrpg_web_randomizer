@@ -35,6 +35,14 @@ script = [
                 "args": [20]
             },
             {
+                "identifier": 'EVENT_862_action_queue_sync_43_SUBSCRIPT_fixed_f_coord_on_0_',
+                "command": 'fixed_f_coord_off'
+            },
+            {
+                "identifier": 'EVENT_862_action_queue_sync_43_SUBSCRIPT_fixed_f_coord_on_0__',
+                "command": 'face_southwest'
+            },
+            {
                 "identifier": 'EVENT_862_action_queue_sync_43_SUBSCRIPT_set_animation_speed_5',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]

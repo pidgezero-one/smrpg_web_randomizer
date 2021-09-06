@@ -33,7 +33,7 @@ room = {
       "id": 0,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.NONE,
-      "model": 131,
+      "model": 21,
       "event_script": 0,
       "action_script": 15,
       "speed": 0,

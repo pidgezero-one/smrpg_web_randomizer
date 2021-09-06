@@ -45,7 +45,7 @@ script = [
     {
         "identifier": 'EVENT_3079_check_if_dodo_',
         "command": 'jmp_if_bit_clear',
-        "args": [0x704F, 4, 'EVENT_3079_ret_8'] 
+        "args": [0x704F, 4, 'EVENT_3079_music'] 
     },
     {
         "identifier": 'EVENT_3079_clear_dodo_star_piece_bit_',
@@ -55,12 +55,12 @@ script = [
     {
         "identifier": 'EVENT_3079_alt_boss_condition',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7086, 7, 'EVENT_3079_ret_8']
+        "args": [0x7086, 7, 'EVENT_3079_music']
     },
     {
         "identifier": 'EVENT_3079_check_if_dodo_sp_already_got_',
         "command": 'jmp_if_bit_set',
-        "args": [0x7081, 2, 'EVENT_3079_ret_8'] 
+        "args": [0x7081, 2, 'EVENT_3079_music'] 
     },
     {
         "identifier": 'EVENT_3079_set_dodo_star_piece',
@@ -76,6 +76,11 @@ script = [
         "identifier": 'EVENT_3079_star',
         "command": 'jmp_to_event',
         "args": [167]
+    },
+    {
+        "identifier": 'EVENT_3079_music',
+        "command": 'jmp_to_event',
+        "args": [3400]
     },
     {
         "identifier": 'EVENT_3079_ret_8',

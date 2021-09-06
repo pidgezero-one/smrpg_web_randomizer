@@ -60,42 +60,55 @@ class EventScript:
 
         # get bytes that will give you an idea of how long each command should be
         table_with_lengths = []
-        for script in table:
+        for i, script in enumerate(table):
             scripts_with_lengths = []
-            for command in script:
+            for script_index, command in enumerate(script):
                 #print(command["identifier"])
                 script_with_length = command
                 assembler = EventScript()
                 func = getattr(assembler, command["command"], None)
                 #print(command)
                 if "args" in command.keys():
-                    dummy_args = [0 if isinstance(
-                        arg, str) else arg for arg in command["args"]]
+                    dummy_args = [(0 if isinstance(
+                        arg, str) else arg) for arg in command["args"]]
                 else:
                     dummy_args = []
                 if "subscript" in command.keys():
                     #print(command["identifier"])
+                    #print(script)
                     dummy_subscript_lines = OSCommand.get_dummy_bytearray(
                         command["subscript"])
                     dummy_subscript = b''.join(dummy_subscript_lines)
                     script_with_length["subscript_lines"] = dummy_subscript_lines
                     script_with_length["subscript_combined_lines"] = dummy_subscript
-                    dummy_args.append(dummy_subscript)
+                    if dummy_subscript not in dummy_args: # I don't know why sometimes dummy_subscript is already in dummy_args, but it's annoying and i just want to finish this. It might need unique identifiers per subscript action like parent actions have
+                        dummy_args.append(dummy_subscript)
                 if not func:
                     raise Exception(
                         '%s(%s) is an invalid instruction!' % (command["command"], dummy_args))
                 try:
                     func(*dummy_args)
                 except Exception as e:
-                    print("error: ", e, command)
+                    print("error: ", script_index)
+                    print("")
+                    print(e)
+                    print("")
+                    print(command, command["identifier"], command["args"], dummy_args)
+                    print("")
+                    raise Exception
                 try:
                     command_line = assembler.fin()
                 except:
                     raise Exception(command["identifier"])
                 script_with_length["line"] = command_line
                 scripts_with_lengths.append(script_with_length)
+                #if i == 2630:
+                #    print(command, " ".join([hex(q) for q in command_line]))
             table_with_lengths.append(scripts_with_lengths)
 
+        #print("")
+        #print("")
+        #print("")
 
         # calculate offsets
         bank = 0x1E
@@ -154,8 +167,7 @@ class EventScript:
         for i in range(len(table_with_offsets)):
             script = table_with_offsets[i]
             s = []
-            for j in range(len(script)):
-                command = script[j]
+            for j, command in enumerate(script):
                 assembler = EventScript()
                 func = getattr(assembler, command["command"], None)
                 if "args" in command.keys():
@@ -184,21 +196,39 @@ class EventScript:
                         subscript.append(subscript_command)
                     command["subscript"] = subscript
                     subscript_bytes = b''.join([sc["line"] for sc in command["subscript"]])
-                    command["args"].append(subscript_bytes)
+                    if subscript_bytes not in command["args"]: # I don't know why sometimes dummy_subscript is already in dummy_args, but it's annoying and i just want to finish this. It might need unique identifiers per subscript action like parent actions have
+                        command["args"].append(subscript_bytes)
                 if not func:
                     raise Exception(
                         '%s(%s) is an invalid instruction!' % (command["command"], command["args"]))
-                func(*command["args"])
+                try:
+                    func(*command["args"])
+                except Exception as e:
+                    print("error: ", script_index)
+                    print("")
+                    print(e)
+                    print("")
+                    print(command, command["identifier"], command["args"], len(command["args"]))
+                    print("")
+                    raise Exception
                 line = assembler.fin()
                 command["line"] = line
                 s.append(command)
+                #if i == 2630:
+                    #print(hex(command["offset"]), " ".join([hex(q) for q in line]), command)
             table_with_real_args.append(s)
 
         # put it all together
 
+        #print("")
+        #print("")
+        #print("")
+
         bank = 0x1E
         offset = 0x1E0C00
         for i in range(len(table_with_real_args)):
+            #if (i == 2630):
+                #print(i, offset)
             if i < bank_lengths[0] and bank != 0x1E:
                 bank = 0x1E
                 offset = 0x1E0C00
@@ -317,16 +347,16 @@ class EventScript:
     # 0x00-0x30 assemblers are below
     def action_queue_async(self, obj, script):
         self.append_byte(obj)
-        assert len(script) <= 128
-        self.append_byte(0x00 | (0x80) | len(script))
+        assert (len(script) + (0x80)) < 0xF0 # if 2nd byte is >= 0xF0, that's a different command
+        self.append_byte(0x00 + (0x80) + len(script))
         for b in script:
             self.commands.append(b)
         return self
 
     def action_queue_sync(self, obj, script):
         self.append_byte(obj)
-        assert len(script) <= 128
-        self.append_byte(0x00 | len(script))
+        assert len(script) < 0x80 # if 2nd byte is >= 0x80, that's a different command
+        self.append_byte(0x00 + len(script))
         for b in script:
             self.commands.append(b)
         return self
@@ -334,16 +364,16 @@ class EventScript:
     def start_embedded_action_script_async_F0(self, obj, script):
         self.append_byte(obj)
         self.append_byte(0xF0)
-        assert len(script) <= 128
-        self.append_byte(0x00 | (0x80) | len(script))
+        assert len(script) < 0x80
+        self.append_byte(0x00 + (0x80) + len(script))
         for b in script:
             self.commands.append(b)
         return self
     def start_embedded_action_script_async_F1(self, obj, script):
         self.append_byte(obj)
         self.append_byte(0xF1)
-        assert len(script) <= 128
-        self.append_byte(0x00 | (0x80) | len(script))
+        assert len(script) < 0x80
+        self.append_byte(0x00 + (0x80) + len(script))
         for b in script:
             self.commands.append(b)
         return self
@@ -356,16 +386,16 @@ class EventScript:
     def start_embedded_action_script_sync_F0(self, obj, script):
         self.append_byte(obj)
         self.append_byte(0xF0)
-        assert len(script) <= 128
-        self.append_byte(0x00 | len(script))
+        assert len(script) < 0x80
+        self.append_byte(0x00 + len(script))
         for b in script:
             self.commands.append(b)
         return self
     def start_embedded_action_script_sync_F1(self, obj, script):
         self.append_byte(obj)
         self.append_byte(0xF1)
-        assert len(script) <= 128
-        self.append_byte(0x00 | len(script))
+        assert len(script) < 0x80
+        self.append_byte(0x00 + len(script))
         for b in script:
             self.commands.append(b)
         return self

@@ -10,11 +10,11 @@ script = [
         "command": 'fade_out_music_to_volume',
         "args": [0, 1]
     },
-    {
-        "identifier": 'EVENT_3797_start_battle_17',
-        "command": 'run_event_as_subroutine',
-        "args": [354]
-    },
+    # {
+    #     "identifier": 'EVENT_3797_start_battle_17',
+    #     "command": 'run_event_as_subroutine',
+    #     "args": [354]
+    # },
     {
         "identifier": 'EVENT_3797_set_bit_18',
         "command": 'set_bit',

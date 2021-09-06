@@ -367,7 +367,7 @@ class Song:
         note_variable_pairs = zip(self.notes, [0x7024, 0x7026, 0x7028, 0x702A, 0x702C, 0x702E, 0x7030, 0x7032])
 
         # for songs with less than 8 notes, figure out how toadofsky should react to %s of correctness
-        toadofsky_confirmations = []
+        toadofsky_confirmations = [original_toadofsky_confirmations[0]]
         for i in range(0, len(self.notes)):
             ratio = round(len(original_toadofsky_confirmations) * (i + 1) / len(self.notes)) - 1
             toadofsky_confirmations.append(original_toadofsky_confirmations[ratio])
@@ -376,8 +376,13 @@ class Song:
 
         script_note_checks = []
         script_correctness_checks = []
-        script_toadofsky_reactions = []
-
+        script_toadofsky_reactions = [
+            {
+                "identifier": prefix_command_name('jmp_if_7000_equals_reaction_%i' % 0),
+                "command": 'jmp_if_7000_equals_short',
+                "args": [0, toadofsky_confirmations[0]]
+            }
+        ]
         for index, pair in enumerate(note_variable_pairs):
             address = pair[1]
             note = pair[0].note.val
@@ -386,9 +391,9 @@ class Song:
                 duration = 35
 
             script_toadofsky_reactions.append({
-                "identifier": prefix_command_name('jmp_if_7000_equals_reaction_%i' % index),
+                "identifier": prefix_command_name('jmp_if_7000_equals_reaction_%i' % (index + 1)),
                 "command": 'jmp_if_7000_equals_short',
-                "args": [index, toadofsky_confirmations[index]]
+                "args": [index + 1, toadofsky_confirmations[index + 1]]
             })
 
             note_check = [
@@ -405,7 +410,7 @@ class Song:
                 {
                     "identifier": 'jmp_if_var_not_equals_notecheck_%i' % index,
                     "command": 'jmp_if_var_not_equals_short',
-                    "args": [address, note, prefix_command_name('set_action_script_sync_notecheck_%i' % index)]
+                    "args": [address, note, prefix_command_name('set_action_script_sync_notecheck__%i' % index)]
                 },
                 {
                     "identifier": 'set_action_script_sync_notecheck_%i' % index,
@@ -837,7 +842,7 @@ all_songs = [
         hint_1=" My favorite song?[await][page]\n It's the Song of Healing,\n ♪“Ti La Fa Ti La Fa”.\n Toadofsky's font of it, too![await]",
         hint_2=" My favorite song?[await][page]\n It's the Song of Healing.[await]\n I feel so clean and refreshed\n every time I hear it.[await]",
         hint_3="\n        When the “TI”me comes~[await][page]\n\n        To “LA”y down to rest~[await][page]\n\n          I will “FA”ll asleep~[await][page]\n\n      And my soul will refresh~![await][page]\n If you sing that song twice in\n a row...[delay] well, you'll be feelin'\n much better![await]",
-        scroll="\n          Re Ti Re Ti Fa La Fa[await]"
+        scroll="\n            Ti La Fa Ti Ta Fa[await]"
     ),
     Song(
         [(Fa, 35), (La, 35), (Ti, 35), (Fa, 35), (La, 35), (Ti, 35), (La, 35), (Fa, 0)],

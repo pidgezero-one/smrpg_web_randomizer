@@ -11,6 +11,11 @@ script = [
         "args": [Music._13_ROAD_IS_FULL_OF_DANGERS]
     },
     {
+        "identifier": 'EVENT_1328_seq',
+        "command": 'run_event_as_subroutine',
+        "args": [878]
+    },
+    {
         "identifier": 'EVENT_1328_jmp_if_bit_set_0',
         "command": 'jmp_if_bit_set',
         "args": [0x7053, 6, 'EVENT_1328_remove_from_current_level_3_']

@@ -760,6 +760,131 @@ script = [
         "identifier": 'EVENT_1082_set_action_script_sync_107',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.MARIO, 515]
+    },{
+        "identifier": 'EVENT_1082_set_7000_to_tapped_button_108',
+        "command": 'set_7000_to_tapped_button'
+    },
+    {
+        "identifier": 'EVENT_1082_pause_109',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'EVENT_1082_mem_7000_and_const_110',
+        "command": 'mem_7000_and_const',
+        "args": [0x0080]
+    },
+    {
+        "identifier": 'EVENT_1082_jmp_if_7000_equals_short_111',
+        "command": 'jmp_if_7000_equals_short',
+        "args": [128, 'EVENT_1082_jmp_if_bit_clear_113']
+    },
+    {
+        "identifier": 'EVENT_1082_jmp_112',
+        "command": 'jmp',
+        "args": ['EVENT_1082_set_7000_to_tapped_button_108']
+    },
+    {
+        "identifier": 'EVENT_1082_jmp_if_bit_clear_113',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7044, 3, 'EVENT_1082_set_7000_to_tapped_button_108']
+    },
+    {
+        "identifier": 'EVENT_1082_set_action_script_sync_114',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_6, 571]
+    },
+    {
+        "identifier": 'EVENT_1082_set_7000_to_7000_short_mem_115',
+        "command": 'set_7000_to_7000_short_mem',
+        "args": [0x7012]
+    },
+    {
+        "identifier": 'EVENT_1082_jmp_to_subroutine_116',
+        "command": 'jmp_to_subroutine',
+        "args": ['EVENT_1074_jmp_if_7000_equals_short_369']
+    },
+    {
+        "identifier": 'EVENT_1082_dec_short_mem_117',
+        "command": 'dec_short_mem',
+        "args": [0x7000, 0x7010]
+    },
+    {
+        "identifier": 'EVENT_1082_jmp_to_subroutine_118',
+        "command": 'run_event_as_subroutine',
+        "args": [1085]
+    },
+    {
+        "identifier": 'EVENT_1082_set_7000_short_mem_to_7000_short_mem_119',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "args": [0x7012, 0x7030]
+    },
+    {
+        "identifier": 'EVENT_1082_set_7000_short_mem_to_7000_short_mem_120',
+        "command": 'set_7000_short_mem_to_7000_short_mem',
+        "args": [0x7012, 0x7010]
+    },
+    {
+        "identifier": 'EVENT_1082_action_queue_sync_121',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.SCREEN_FOCUS],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1082_action_queue_sync_121_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_1082_action_queue_sync_121_SUBSCRIPT_shift_northeast_steps_1',
+                "command": 'shift_northeast_steps',
+                "args": [2]
+            },
+            {
+                "identifier": 'EVENT_1082_action_queue_sync_121_SUBSCRIPT_ret_2',
+                "command": 'ret'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1082_action_queue_async_122',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_7],
+        "subscript": [
+            {
+                "identifier": 'EVENT_1082_action_queue_async_122_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [13, 29, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_1082_action_queue_async_122_SUBSCRIPT_shift_southeast_pixels_1',
+                "command": 'shift_southeast_pixels',
+                "args": [5]
+            },
+            {
+                "identifier": 'EVENT_1082_action_queue_async_122_SUBSCRIPT_shift_southwest_pixels_2',
+                "command": 'shift_southwest_pixels',
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_1082_action_queue_async_122_SUBSCRIPT_ret_3',
+                "command": 'ret'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_1082_set_action_script_sync_123',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.NPC_7, 570]
+    },
+    {
+        "identifier": 'EVENT_1082_set_124',
+        "command": 'set',
+        "args": [0x70a9, 27]
+    },
+    {
+        "identifier": 'EVENT_1082_set_action_script_sync_125',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.MARIO, 515]
     },
     {
         "identifier": 'EVENT_1082_set_7000_to_tapped_button_126',

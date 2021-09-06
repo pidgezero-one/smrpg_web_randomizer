@@ -97,10 +97,6 @@ script = [
         "command": 'remember_last_object'
     },
     {
-        "identifier": 'EVENT_3730_fade_in_from_black_async_14',
-        "command": 'fade_in_from_black_async'
-    },
-    {
         "identifier": "EVENT_3730_sequence_setter_1",
         "command": "run_event_as_subroutine",
         "args": [824]

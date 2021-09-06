@@ -51,40 +51,6 @@ script = [
         "args": [0x703e, 0x0000]
     },
     {
-        "identifier": 'EVENT_3148_jmp_if_object_not_in_level_9',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_7, Rooms._079_ROSE_WAY_MAIN_AREA, 'EVENT_3148_jmp_if_object_not_in_level_11']
-    },
-    {
-        "identifier": 'EVENT_3148_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_7],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3148_action_queue_sync_10_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3148_jmp_if_object_not_in_level_11',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_8, Rooms._079_ROSE_WAY_MAIN_AREA, 'EVENT_3148_jmp_to_event_13']
-    },
-    {
-        "identifier": 'EVENT_3148_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_8],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3148_action_queue_sync_12_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_3148_jmp_to_event_13',
         "command": 'run_event_as_subroutine',
         "args": [15]

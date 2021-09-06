@@ -371,6 +371,18 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2618_action_queue_async_60',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_15],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2618_action_queue_async_60_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_2618_action_queue_sync_65',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_12],

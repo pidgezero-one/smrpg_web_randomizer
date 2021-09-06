@@ -37,7 +37,7 @@ dialog_data[20] = '''  Now that our kingdom isn't in peril
  How exciting![await]'''
 dialog_data[21] = '''Whoa, you won [0x7000] time(s)!
  Here's a special prize for you![await]'''
-dialog_data[22] = '''FROGFUCIUS: Grasshopper, if your\n travels yield any cricket-related\n food, please bring it to me.[await]'''
+dialog_data[22] = '''FROGFUCIUS: Grasshopper, if your\n travels yield any cricket-related\n food, please bring it to me.[await]\n  (...But bring me the Cricket Pie\n first.)[await]'''
 dialog_data[23] = '''[await]'''
 dialog_data[24] = '''[await]'''
 dialog_data[25] = '''
@@ -62,7 +62,7 @@ dialog_data[41] = '''          Got a “[0x70A7]”![end]'''
 dialog_data[42] = '''          Got a “[0x70A7]”![await]'''
 dialog_data[43] = '''
           Get down from there![await]'''
-dialog_data[44] = '''              Got [0x7000] coin(s)![end]'''
+dialog_data[44] = '''              Got [0x7000] coin(s)![await]'''
 dialog_data[45] = '''          Found a “[0x70A7]”![await]'''
 dialog_data[46] = '''      You win[delay_4][end]'''
 dialog_data[47] = '''      You lose[delay_4][end]'''
@@ -158,7 +158,7 @@ dialog_data[94] = '''[await]'''
 dialog_data[95] = '''[await]'''
 dialog_data[96] = '''[await]'''
 dialog_data[97] = '''CHANCELLOR: It's a shame I don't
- have a sitting sprite. Nobody uses
+ have a sitting sprite.[delay] Nobody uses
  that chair over there.[await]'''
 dialog_data[98] = '''[await]'''
 dialog_data[99] = '''[await]'''
@@ -207,7 +207,7 @@ dialog_data[130] = '''[await]'''
 dialog_data[131] = '''[await]'''
 dialog_data[132] = ''' I heard that monsters can
  sometimes make you start attacking
- yourself. Pretty scary, huh?[await][page]
+ yourself.[delay_30] Pretty scary, huh?[await][page]
  If you find any equipment that has
  an “AX” symbol in the description,
  you can protect yourself with it.[await]'''
@@ -1013,9 +1013,9 @@ dialog_data[600] = '''MA'MOLE: I wonder how those
  kids're doing?
  Sure wish they'd hurry home![await]'''
 dialog_data[601] = ''' Hey, Mario! We've got something
- fun for you today.[await][page]\n
+ fun for you today.[await][page]
  We've each hidden a random item
- somewhere in the world.[await][delay] It might
+ somewhere in the world.[await][pause] It might
  be our flags, or it might be
  something completely different![await][page]
  We'll give you hints for the special
@@ -1024,6 +1024,7 @@ dialog_data[601] = ''' Hey, Mario! We've got something
  But if you DO find our three flags,
  you can bring them back here. Show
  'em to our assistant for a prize.[await][page]
+
    Anyway, about my secret item...[await]'''
 dialog_data[602] = '''   Invisible items have been placed.[await]'''
 dialog_data[603] = '''[await]'''

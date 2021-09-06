@@ -48,10 +48,25 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
+                "identifier": 'EVENT_2606_action_queue_sync_3_SUBSCRIPT_walk_to_xy_coords_0',
+                "command": 'walk_to_xy_coords',
+                "args": [10, 47]
+            },
+            {
                 "identifier": 'EVENT_2606_action_queue_sync_4_SUBSCRIPT_face_northwest_0',
                 "command": 'face_northwest'
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_2606_stop_embedded_action_script_5',
+        "command": 'stop_embedded_action_script',
+        "args": [AreaObjects.NPC_9]
+    },
+    {
+        "identifier": 'EVENT_2606_stop_embedded_action_script_6',
+        "command": 'stop_embedded_action_script',
+        "args": [AreaObjects.SCREEN_FOCUS]
     },
     {
         "identifier": 'EVENT_2606_action_queue_async_10',
@@ -85,10 +100,15 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2606_action_queue_sync_22',
+        "identifier": 'EVENT_2606_action_queue_async_25',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_8],
         "subscript": [
+            {
+                "identifier": 'EVENT_2606_action_queue_sync_25_SUBSCRIPT_shift_northwest_pixels_0',
+                "command": 'shift_northwest_pixels',
+                "args": [12]
+            }
         ]
     },
     {

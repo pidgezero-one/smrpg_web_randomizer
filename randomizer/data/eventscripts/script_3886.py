@@ -11,6 +11,10 @@ script = [
         "args": [Rooms._496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, RadialDirections.NORTHEAST, 4, 51, 0, []]
     },
     {
+        "identifier": 'EVENT_3886_end_game_',
+        "command": 'fade_in_from_black_async'
+    },
+    {
         "identifier": 'EVENT_3886_end_game',
         "command": 'jmp_to_event',
         "args": [3885]
