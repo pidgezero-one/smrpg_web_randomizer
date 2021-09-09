@@ -51,6 +51,15 @@ def _randomize_learned_spells(world):
     waiting_spells = default_spells[:]
     charspells = collections.defaultdict(list)
 
+    # Super Jump MUST NOT be on a character who is not included in the seed. Do this first.
+    charactersInSeed = [c for c in world.characters if c.original_name in world.settings.get_flag(
+        flags.AvailableCharacters).enabled]
+    if len(charactersInSeed) < 5:
+        super_jump_character = random.choice(charactersInSeed)
+        charspells[super_jump_character].append(spells.SuperJump)
+        waiting_spells.remove(spells.SuperJump)
+
+
     # Place spells in characters who still need spells until we have no more.
     while True:
         still_need = [c for c in world.characters if
@@ -71,6 +80,7 @@ def _randomize_learned_spells(world):
 
     # Guarantee Geno Boost and Group Hug isn't the last spell a character learns if they have it.
     for character in world.characters:
+        random.shuffle(charspells[character]) # shuffle once to make sure Super Jump isn't always spell #1
         our_spells = charspells[character]
         for s in (
                 spells.GenoBoost,
@@ -473,3 +483,11 @@ def randomize_palettes(world):
             world.search_replace_dialog('`MALLOW:`', '%s:' % world.characters[1].palette.name.upper())
         world.search_replace_dialog('`PEACH_NAME`', 'Toadstool')
         world.search_replace_dialog('`PEACH_ARTICLE`', '')
+
+def get_spoiler(world):
+    acc = {}
+    
+    for character in world.characters:
+        acc[character.original_name] = [{s: character.learned_spells[s].title} for s in character.learned_spells]
+
+    return acc

@@ -174,6 +174,7 @@ def randomize_all(world):
                     sample = min(sample, remaining_space)
                     sample = min(sample, len(extra_item_pool))
                     sample = max(0, sample)
+                #print(shop, sample, extra_item_pool)
                 items_to_add = random.sample(extra_item_pool, int(round(sample)))
                 shop.items.extend(items_to_add)
                 if shop.frog_coin_shop:

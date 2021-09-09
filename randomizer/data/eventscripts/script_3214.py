@@ -12,8 +12,8 @@ script = [
     },
     {
         "identifier": 'EVENT_3214_start_battle_183',
-        "command": 'start_battle',
-        "args": [0x00a7, 3]
+        "command": 'run_event_as_subroutine',
+        "args": [354]
     },
     {
         "identifier": 'EVENT_3214_set_bit_184',

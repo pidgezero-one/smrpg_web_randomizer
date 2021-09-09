@@ -58,12 +58,12 @@ script = [
     {
         "identifier": 'EVENT_3183_summon_to_level_10',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_4, Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
+        "args": [AreaObjects.NPC_2, Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
     },
     {
         "identifier": 'EVENT_3183_summon_to_level_11',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_5, Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
+        "args": [AreaObjects.NPC_3, Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
     },
     {
         "identifier": 'EVENT_3183_summon_to_level_12',
@@ -113,17 +113,17 @@ script = [
     {
         "identifier": 'EVENT_3183_summon_to_level_21',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_4, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
+        "args": [AreaObjects.NPC_2, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
     },
     {
         "identifier": 'EVENT_3183_summon_to_level_22',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_5, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
+        "args": [AreaObjects.NPC_3, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
     },
     {
         "identifier": 'EVENT_3183_summon_to_level_23',
         "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_6, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
+        "args": [AreaObjects.NPC_4, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
     },
     {
         "identifier": 'EVENT_3183_summon_to_level_24',
@@ -173,12 +173,12 @@ script = [
     {
         "identifier": 'EVENT_3183_remove_from_level_33',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
+        "args": [AreaObjects.NPC_2, Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
     },
     {
         "identifier": 'EVENT_3183_remove_from_level_34',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
+        "args": [AreaObjects.NPC_3, Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM]
     },
     {
         "identifier": 'EVENT_3183_remove_from_level_35',
@@ -228,17 +228,17 @@ script = [
     {
         "identifier": 'EVENT_3183_remove_from_level_44',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
+        "args": [AreaObjects.NPC_2, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
     },
     {
         "identifier": 'EVENT_3183_remove_from_level_45',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
+        "args": [AreaObjects.NPC_3, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
     },
     {
         "identifier": 'EVENT_3183_remove_from_level_46',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_6, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
+        "args": [AreaObjects.NPC_4, Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM]
     },
     {
         "identifier": 'EVENT_3183_remove_from_level_47',

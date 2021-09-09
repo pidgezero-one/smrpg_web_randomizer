@@ -286,12 +286,12 @@ script = [
     {
         "identifier": 'EVENT_373_pause_action_script_22',
         "command": 'pause_action_script',
-        "args": [AreaObjects.NPC_13]
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_373_set_action_script_sync_23',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_13, 103]
+        "args": [AreaObjects.NPC_10, 103]
     },
     {
         "identifier": 'EVENT_373_set_action_script_sync_24',
@@ -504,7 +504,7 @@ script = [
     {
         "identifier": 'EVENT_373_set_action_script_sync_38',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_13, 113]
+        "args": [AreaObjects.NPC_10, 113]
     },
     {
         "identifier": 'EVENT_373_action_queue_async_39',
@@ -645,11 +645,6 @@ script = [
         "identifier": 'EVENT_373_clear_bit_50',
         "command": 'clear_bit',
         "args": [0x7043, 5]
-    },
-    {
-        "identifier": 'EVENT_373_run_event_as_subroutine_51',
-        "command": 'run_event_as_subroutine',
-        "args": [272]
     },
     {
         "identifier": 'EVENT_373_action_queue_sync_52',

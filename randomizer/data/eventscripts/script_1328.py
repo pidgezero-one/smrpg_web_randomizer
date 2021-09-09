@@ -83,6 +83,21 @@ script = [
         "args": [AreaObjects.NPC_1]
     },
     {
+        "identifier": 'EVENT_1328_remove_from_current_level_3__',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_2]
+    },
+    {
+        "identifier": 'EVENT_1328_apply_solidity_mod_14',
+        "command": 'apply_solidity_mod',
+        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, 0, [_0x6BFlags.PERMANENT]]
+    },
+    {
+        "identifier": 'EVENT_1328_apply_tile_mod_15',
+        "command": 'apply_tile_mod',
+        "args": [Rooms._202_BOOSTER_TOWER_ENTRANCE, 32, [_0x6AFlags.USE_ALTERNATE]]
+    },
+    {
         "identifier": 'EVENT_1328_fade_in_from_black_async_4_',
         "command": 'fade_in_from_black_async'
     },

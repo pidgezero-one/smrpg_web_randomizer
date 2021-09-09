@@ -122,7 +122,7 @@ room = {
       "action_offset": 0,
       "visible": False,
       "x": 4,
-      "y": 17,
+      "y": 24,
       "z": 0,
       "z_half": False,
       "direction": RadialDirection.NORTHEAST,
@@ -142,35 +142,10 @@ room = {
       "slidable_along_walls": True,
       "cant_move_if_in_air": True,
       "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 2,
-          "npc_id_offset": 0,
-          "event_offset": 0,
-          "action_offset": 0,
-          "visible": True,
-          "x": 4,
-          "y": 24,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.NORTHEAST
-        },
-        {
-          "id": 3,
-          "npc_id_offset": 0,
-          "event_offset": 0,
-          "action_offset": 0,
-          "visible": False,
-          "x": 2,
-          "y": 23,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.NORTHWEST
-        }
-      ]
+      "clones": []
     },
     {
-      "id": 4,
+      "id": 2,
       "type": ObjectType.BATTLE,
       "initiator": Initiator.ANYTHING_EXCEPT_PRESS_A,
       "model": 273,
@@ -204,7 +179,7 @@ room = {
       "byte7_upper2": 0x03,
       "clones": [
         {
-          "id": 5,
+          "id": 3,
           "action_offset": 0,
           "pack_offset": 0,
           "visible": True,

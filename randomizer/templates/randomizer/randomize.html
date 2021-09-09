@@ -725,11 +725,20 @@
                     }
                     else if (id == "T.random") {
                         boxes = $(`#${$.escapeSelector('L.chests')}, #${$.escapeSelector('L.coins')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["L.keys_anywhere", "L.stars_anywhere", "T.beetle", "T.kamek", "T.quality", "T.fireworks", "T.restrict_monstro"]
-                        if (value == false || $(`#${$.escapeSelector('T.quality')}`).val() != "empty") {
-                            dependent_ids.push(...["T.bias", "T.xpstars_anywhere", "T.slots_anywhere"])
+                        dependent_ids = ["L.keys_anywhere", "L.stars_anywhere", "T.beetle", "T.kamek", "T.quality", "T.fireworks", "T.restrict_monstro", "T.mimics", "T.xpstars", "T.slots"]
+                        if (!value || $(`#${$.escapeSelector('T.quality')}`).val() != "empty") {
+                            dependent_ids.push(...["T.bias", "T.restrict_monstro", "L.moveflags"])
                         }
-                        else if (value == true || $(`#${$.escapeSelector('T.quality')}`).val() == "empty") {
+                        if (!value || $(`#${$.escapeSelector('T.quality')}`).val() != "empty") {
+                            $(`#${$.escapeSelector('T.ym')}`).prop("disabled", true)
+                        }
+                        else {
+                            $(`#${$.escapeSelector('T.ym')}`).prop("disabled", false)
+                        }
+                        
+
+
+                        if (value && $(`#${$.escapeSelector('T.quality')}`).val() == "empty" && $(`#${$.escapeSelector('T.xpstars')}`).prop("checked")) {
                             $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", true)
                             $(`#I\\.xpstar`).siblings("label").addClass("disabled")
                         }
@@ -737,11 +746,13 @@
                             $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", false)
                             $(`#I\\.xpstar`).siblings("label").removeClass("disabled")
                         }
-                        if (value == false || $(`#${$.escapeSelector('L.keys_anywhere')}`).prop("checked") == true || $(`#${$.escapeSelector('L.stars_anywhere')}`).prop("checked") == true) {
+
+
+                        if (!value || $(`#${$.escapeSelector('L.keys_anywhere')}`).prop("checked") || $(`#${$.escapeSelector('L.stars_anywhere')}`).prop("checked")) {
                             $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container .multiselect-button-container button").prop("disabled", !value)
                             $("#L\\.chests\\.container .multiselect-button-container button, #L\\.coins\\.container .multiselect-button-container .multiselect-filter").prop("disabled", !value)
                             dependent_ids.push(...(boxes.map(b => $(b).prop("id"))))
-                            if (value == false) {
+                            if (!value) {
                                 $(`#${$.escapeSelector("L.chests.container")}`).addClass("disabled")
                                 $(`#${$.escapeSelector("L.coins.container")}`).addClass("disabled")
                             }
@@ -751,7 +762,7 @@
                             }
                         }
                         $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
-                        if (value == false) {
+                        if (!value) {
                             $(`#T\\.quality, #T\\.fireworks`).siblings("label").addClass("disabled")
                         }
                         else {
@@ -787,7 +798,7 @@
                     }
                     else if (id == "B.random") {
                         boxes = $(`#${$.escapeSelector('B.pool')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["B.scale", "B.allsprites", "B.mimics_anywhere", ...(boxes.map(b => $(b).prop("id")))]
+                        dependent_ids = ["B.scale", "B.allsprites", ...(boxes.map(b => $(b).prop("id")))]
                         $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
                         $("#B\\.pool\\.container .multiselect-button-container button").prop("disabled", !value)
                         $("#B\\.pool\\.container .multiselect-button-container .multiselect-button-container").prop("disabled", !show_lists)
@@ -828,26 +839,36 @@
                     value = item.val()
                     if (id == "T.quality") {
                         if (value == "empty" && $(`#${$.escapeSelector('T.random')}`).prop("checked") == true) {
-                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", true)
-                            $(`#I\\.xpstar`).siblings("label").addClass("disabled")
                             $(`#${$.escapeSelector("I.replace")}`).prop("disabled", true)
                             $(`#${$.escapeSelector("I.quick")}`).prop("disabled", true)
                         }
                         else {
-                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", false)
-                            $(`#I\\.xpstar`).siblings("label").removeClass("disabled")
                             $(`#${$.escapeSelector("I.replace")}`).prop("disabled", false)
                             $(`#${$.escapeSelector("I.quick")}`).prop("disabled", false)
                         }
+                        if (value == "empty" && !(!$(`#${$.escapeSelector('T.random')}`).prop("checked") || !$(`#${$.escapeSelector('T.xpstars')}`).prop("checked"))) {
+                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", true)
+                            $(`#I\\.xpstar`).siblings("label").addClass("disabled")
+                        }
+                        else {
+                            $(`#${$.escapeSelector("I.xpstar")}`).prop("disabled", false)
+                            $(`#I\\.xpstar`).siblings("label").removeClass("disabled")
+                        }
                         if (value == "empty" || $(`#${$.escapeSelector('T.random')}`).prop("checked") == false) {
                             $(`#${$.escapeSelector("T.bias")}`).prop("disabled", true)
-                            $(`#${$.escapeSelector("T.xpstars_anywhere")}`).prop("disabled", true)
-                            $(`#${$.escapeSelector("T.slots_anywhere")}`).prop("disabled", true)
+                            $(`#${$.escapeSelector("T.restrict_monstro")}`).prop("disabled", true)
+                            $(`#${$.escapeSelector("L.moveflags")}`).prop("disabled", true)
                         }
                         else {
                             $(`#${$.escapeSelector("T.bias")}`).prop("disabled", false)
-                            $(`#${$.escapeSelector("T.xpstars_anywhere")}`).prop("disabled", false)
-                            $(`#${$.escapeSelector("T.slots_anywhere")}`).prop("disabled", false)
+                            $(`#${$.escapeSelector("T.restrict_monstro")}`).prop("disabled", false)
+                            $(`#${$.escapeSelector("L.moveflags")}`).prop("disabled", false)
+                        }
+                        if (value != "empty" || $(`#${$.escapeSelector('T.random')}`).prop("checked") == false) {
+                            $(`#${$.escapeSelector("T.ym")}`).prop("disabled", true)
+                        }
+                        else {
+                            $(`#${$.escapeSelector("T.ym")}`).prop("disabled", false)
                         }
                     }
                     else if (id == "S.quality") {

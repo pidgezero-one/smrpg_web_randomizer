@@ -1069,7 +1069,7 @@ class Command(BaseCommand):
                 nonembedded = False
                 if (is_jump(line)):
                     arg_index = get_jump_args(line, args)
-                    jump_args = [(int(ja, 16) | (offset & 0xFF0000))
+                    jump_args = [(int(ja, 16) + (offset & 0xFF0000))
                                  for ja in args[arg_index:]]
                 else:
                     jump_args = []
@@ -1094,7 +1094,7 @@ class Command(BaseCommand):
                             cmd = disassembled_queue_commands[k]
                             if cmd["has_jump"]:
                                 sub_jump_args = [
-                                    (int(ja, 16) | (offset & 0xFF0000)) for ja in cmd["parsed_args"][-1:]]
+                                    (int(ja, 16) + (offset & 0xFF0000)) for ja in cmd["parsed_args"][-1:]]
                             else:
                                 sub_jump_args = []
                             subscript.append({

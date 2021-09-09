@@ -109,7 +109,7 @@ script = [
     {
         "identifier": 'EVENT_368_action_queue_sync_9',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_13],
+        "args": [AreaObjects.NPC_10],
         "subscript": [
             {
                 "identifier": 'EVENT_368_action_queue_sync_9_SUBSCRIPT_set_priority_0',

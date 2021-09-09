@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1538_j',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7043, 1, 'EVENT_1538_j_']
+    },
+    {
         "identifier": 'EVENT_1538_set_bit_0',
         "command": 'set_bit',
         "args": [0x7043, 1]
@@ -15,6 +20,18 @@ script = [
         "command": 'clear_bit',
         "args": [0x7043, 2]
     },
+    
+    {
+        "identifier": 'EVENT_1538_j_',
+        "command": 'jmp_if_bit_set',
+        "args": [0x709C, 1, 'EVENT_1538_jmp_to_event_4']
+    },
+    {
+        "identifier": 'EVENT_1538_s',
+        "command": 'set_bit',
+        "args": [0x709C, 1]
+    },
+
     {
         "identifier": 'EVENT_1538_run_background_event_2',
         "command": 'run_background_event',
@@ -39,7 +56,12 @@ script = [
                 "identifier": 'EVENT_1538_action_queue_async_3_SUBSCRIPT_set_animation_speed_2',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.WALKING]]
-            }
+            },
+            {
+                "identifier": 'EVENT_1538_s2',
+                "command": 'clear_bit',
+                "args": [0x709C, 1]
+            },
         ]
     },
     {

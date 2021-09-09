@@ -6,17 +6,12 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
 
-    # these commands get removed at shuffle time
+    # this command gets emptied at shuffle time
     # skip bowsers keep
-    {
-        "identifier": 'EVENT_192_set_map_connector',
-        "command": 'set_bit',
-        "args": [0x707A, 3]
-    },
     {
         "identifier": 'EVENT_192_____leave_party_22_',
         "command": 'run_event_as_subroutine',
-        "args": [187]
+        "args": [13]
     }, 
     {
         "identifier": 'EVENT_192_____leave_party_22',

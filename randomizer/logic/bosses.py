@@ -10,7 +10,7 @@ from randomizer.data import bosses, enemies
 from randomizer.data.bosses import is_vanilla, has_vanilla_henchmen, sanitize_animation_script, SpriteSize, HenchmanType, SequenceType, CrownHeight
 from randomizer.data.formations import FormationMember
 from randomizer.data.npcmodeltables import VramStore, SpriteName
-from randomizer.data.eventtables import AreaObjects
+from randomizer.data.eventtables import AreaObjects, Sounds
 from randomizer.data.objectsequencetables import SequenceSpeeds, _0x08Flags, _0x10Flags
 from randomizer.data.roomobjecttables import RadialDirection, Rooms
 
@@ -433,18 +433,16 @@ def randomize_all(world):
                         "executions": []
                     }
                 # fights with forced backgrounds need to have them, otherwise just use whatever the level's default background is
-                # this -should- in theory prevent us from having to do tedious work to give "Mimics Anywhere" chest fights the right location backgrounds
                 formation = boss_location.formation
                 if formation.required_battlefield is None:
                     if utils.isclass_or_instance(boss_location, bosses.Mokura):
                         cmds = [new_command(353, 'set_short', [0x700E, boss.pack_number]), new_command(353, 'start_battle_700E')]
                     else:
-                        if boss_location.battlefield is None: # pick battlefield from room if not exists
-                            fields = bosses.battlefield_room_table
-                            for t in fields:
-                                if boss_location.identifier in t[1]:
-                                    boss_location.battlefield = t[0]
-                                    break
+                        fields = bosses.battlefield_room_table
+                        for t, t_r in fields:
+                            if boss_location.identifier in t_r:
+                                boss_location.battlefield = t
+                                break
                         if boss_location.battlefield is None: # default to BV underground if still empty
                             boss_location.battlefield = bosses.Battlefields.BeanValleyUnderground
                         cmds = [new_command(353, 'start_battle', [boss.pack_number, boss_location.battlefield])]
@@ -1121,7 +1119,7 @@ def randomize_all(world):
                                             ])
                                             
                                     # overwrite poundette background animation
-                                    elif utils.isclass_or_instance(boss_location, bosses.Director) and script_id in [962, 963, 964] and model.animations.factory_pierce is not None:
+                                    elif utils.isclass_or_instance(boss_location, bosses.Director) and script_id in [962, 963, 964] and model.animations is not None and model.animations.factory_pierce is not None:
                                         scr = []
                                         for subscript_command_index, subscript_command in enumerate(script):
                                             if subscript_command["command"] == 'set_sprite_sequence':
@@ -1190,7 +1188,51 @@ def randomize_all(world):
                     for dialog_id in targeted_dialogs:
                         for d_id, d_data in incoming_dialogs:
                             if d_id == dialog_id:
-                                world.replace_dialog(d_id, d_data)
+                                if d_data == bosses.EMPTY_DIALOG:
+                                    # ugh, this sucks
+                                    # TODO: implement this better
+                                    for e_index in [396, 630, 1133, 1134, 1135, 1136, 1137, 1138, 1139, 1141, 1142, 1143, 1274, 1313, 1323, 1346, 2066, 2077, 2353, 3218, 3286, 3287, 3301, 3302, 3316, 3680]:
+                                        new_script = []
+                                        for cmd in world.eventscripts[e_index]:
+                                            if cmd["command"] == "run_dialog" and cmd["args"][0] == d_id:
+                                                if utils.isclass_or_instance(boss, bosses.CzarBoss):
+                                                    cmd["command"] = "play_sound"
+                                                    cmd["args"] = [Sounds._084_SMOKED]
+                                                    new_script.append(cmd)
+                                                    new_script.append(new_command(e_index, "pause", [60]))
+                                                elif utils.isclass_or_instance(boss, bosses.BundtBoss):
+                                                    cmd["command"] = "action_queue_async"
+                                                    cmd["args"] = [AreaObjects.MEM_70A8]
+                                                    cmd["subscript"] = [
+                                                        {"identifier": 'dummy', "command": 'face_southwest_7D', "args": [0x00]},
+                                                        {"identifier": 'dummy', "command": 'fixed_f_coord_on'},
+                                                        {"identifier": 'dummy', "command": 'turn_clockwise_45_degrees_n_times', "args": [4]},
+                                                        {"identifier": 'dummy', "command": 'shift_f_direction_pixels', "args": [1]},
+                                                        {"identifier": 'dummy', "command": 'pause', "args": [2]},
+                                                        {"identifier": 'dummy', "command": 'shift_f_direction_pixels', "args": [3]},
+                                                        {"identifier": 'dummy', "command": 'pause', "args": [2]},
+                                                        {"identifier": 'dummy', "command": 'turn_clockwise_45_degrees_n_times', "args": [4]},
+                                                        {"identifier": 'dummy', "command": 'shift_f_direction_pixels', "args": [4]},
+                                                        {"identifier": 'dummy', "command": 'pause', "args": [2]},
+                                                        {"identifier": 'dummy', "command": 'turn_clockwise_45_degrees_n_times', "args": [4]},
+                                                        {"identifier": 'dummy', "command": 'shift_f_direction_pixels', "args": [1]},
+                                                        {"identifier": 'dummy', "command": 'pause', "args": [2]},
+                                                        {"identifier": 'dummy', "command": 'shift_f_direction_pixels', "args": [3]},
+                                                        {"identifier": 'dummy', "command": 'pause', "args": [2]},
+                                                        {"identifier": 'dummy', "command": 'turn_clockwise_45_degrees_n_times', "args": [4]},
+                                                        {"identifier": 'dummy', "command": 'shift_f_direction_pixels', "args": [4]},
+                                                        {"identifier": 'dummy', "command": 'pause', "args": [10]},
+                                                    ]
+                                                    new_script.append(cmd)
+                                                else:
+                                                    cmd["command"] = "pause"
+                                                    cmd["args"] = [30]
+                                                    new_script.append(cmd)
+                                            else:
+                                                new_script.append(cmd)
+                                        world.eventscripts[e_index] = new_script
+                                else:
+                                    world.replace_dialog(d_id, d_data)
 
 
                 # Always set packs for henchmen, vanilla or not

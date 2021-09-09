@@ -67,23 +67,23 @@ class Credits(object):
 
     def add_credit(self, x, y, font, string, scroll=0):
         self.current_credits.append((x, y, font))
-        self.add(x, y, font, string, scroll)
+        self.add(x, y, font, string, scroll) #7
 
-    def end_credits(self, delay_1, delay_2):
+    def end_credits(self, delay_1, delay_2): # 26
         self.end_thing(delay_1)
         self.end_thing_2(delay_2)
         self.clear(self.current_credits)
 
     def begin_titles(self, delay):
-        self.end_thing_3(delay)
-        self.clear(self.current_titles)
+        self.end_thing_3(delay) # 13
+        self.clear(self.current_titles) #7
 
     def add_title(self, x, y, font, string, scroll=0):
         self.current_titles.append((x, y, font))
-        self.add(x, y, font, string, scroll)
+        self.add(x, y, font, string, scroll) #7
 
     def end_titles(self, delay):
-        self.end_thing_4(delay)
+        self.end_thing_4(delay) #13
 
     def empty_title(self):
         self.acc += [0xE3, 0, 0, 0, 0, 0, 0]
@@ -93,10 +93,23 @@ class Credits(object):
         acc = []
         credit_start = 0x3FDBB0
         credit_len = 3380
+        assert len(self.acc) <= credit_len
+
+        # fill remaining space with pointers to empty text
+        while credit_len - len(self.acc) >= 73:
+            self.begin_titles(BEGIN_TITLES_DELAY)
+            self.add_title(0x80, 0x00, 0x08, EMPTY_STRING)
+            self.end_titles(END_TITLES_DELAY)
+            self.begin_credits()
+            self.add_credit(0x80, 0x80, 0xc0, EMPTY_STRING)
+            self.add_credit(0x80, 0x40, 0x81, EMPTY_STRING)
+            self.add_credit(0x80, 0x00, 0xc2, EMPTY_STRING)
+            self.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+        # print(len(self.acc))
+
         string_table_start = 0x3FE8E4
         string_table_size = len(self.strings) * 2
-        print(len(self.acc))
-        assert len(self.acc) <= credit_len
 
         # Fill the unused section of credits script with 0.
         # This is very important.
@@ -128,10 +141,12 @@ END_TITLES_DELAY = 40
 
 # LINE 1, LINE 2, LINE 3. put EMPTY_STRING if you don't have anything.
 DEV_MESSAGES = [
-    ['DONT TRY IT...ALANIM.', 'I ALREADY DID IT.', '   PAST ALANIM'],
-    ['NOW TRY IT', 'BLINDFOLDED', '     PATCDR'],
-    ['I MIGHT BE LURKING', 'YOUR STREAM RIGHT NOW', '           PIDGEZERO_ONE'],
-    ['GARY WAS HERE', 'ASH IS A LOSER'],
+    ('DONT TRY IT...ALANIM.', 'I ALREADY DID IT.', '   PAST ALANIM'),
+    ('NOW TRY IT', 'BLINDFOLDED', '     PATCDR'),
+    ('OH MAN I REALLY', 'HOPE THAT CODE WORKED', '       PIDGEZERO_ONE'),
+    ('OHH I GOTTA THINK', 'OF SOMETHING FUNNY', '       YAKI'),
+    ('WHY ARE YOU', 'USING ZSNES', '    DORKMASTER FLEK'),
+    ('GARY WAS HERE', 'ASH IS A LOSER', EMPTY_STRING),
 ]
 
 # Takes world because everything does.
@@ -371,28 +386,32 @@ def update_credits(world):
         credits.begin_titles(BEGIN_TITLES_DELAY)
         credits.add_title(0x80, 0x00, 0x08, 'MELODY BAY TUNES FOR THIS SEED')
         credits.end_titles(END_TITLES_DELAY)
-        print(world.tadpole_submitters)
 
         credits.begin_credits()
-        if len(world.tadpole_submitters) == 1:
-            credits.add_credit(0x80, 0x40, 0x81, world.tadpole_submitters[0])
+        tadpole_submitters = list(set([world.tadpole_songs[0].submitter_credits, world.tadpole_songs[1].submitter_credits, world.tadpole_songs[2].submitter_credits]))
+        if len(tadpole_submitters) == 1:
+            credits.add_credit(0x80, 0x80, 0xc0, EMPTY_STRING)
+            credits.add_credit(0x80, 0x40, 0x81, tadpole_submitters[0])
+            credits.add_credit(0x80, 0x00, 0xc2, EMPTY_STRING)
+        elif len(tadpole_submitters) == 2:
+            credits.add_credit(0x80, 0x80, 0xc0, EMPTY_STRING)
+            credits.add_credit(0x80, 0xc0, 0xc0, tadpole_submitters[0])
+            credits.add_credit(0x80, 0x80, 0x81, tadpole_submitters[1])
         else:
-            credits.add_credit(0x80, 0xc0, 0xc0, world.tadpole_submitters[0])
-            credits.add_credit(0x80, 0x80, 0x81, world.tadpole_submitters[1])
-            if len(world.tadpole_submitters) > 2:
-                credits.add_credit(0x80, 0x00, 0xc2, world.tadpole_submitters[2])
+            credits.add_credit(0x80, 0x80, 0xc0, tadpole_submitters[0])
+            credits.add_credit(0x80, 0x40, 0x81, tadpole_submitters[1])
+            credits.add_credit(0x80, 0x00, 0xc2, tadpole_submitters[2])
         credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
     
     #30
     if world.settings.is_flag_enabled(flags.RandomSunkenShipPassword):
 
-        print(world.password_submitter)
         credits.begin_titles(BEGIN_TITLES_DELAY)
         credits.add_title(0x80, 0x00, 0x08, 'SHIP PASSWORD FOR THIS SEED')
         credits.end_titles(END_TITLES_DELAY)
 
         credits.begin_credits()
-        credits.add_credit(0x80, 0x40, 0x81, world.password_submitter)
+        credits.add_credit(0x80, 0x40, 0x81, world.password.submitter_credits)
         credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #31
@@ -416,9 +435,18 @@ def update_credits(world):
     credits.add_credit(0x80, 0x00, 0xc2, 'FFIV FREE ENTERPRISE')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
-    # Clear the titles
+    #new
     credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, 'IF YOU WANT YOUR NAME HERE...')
     credits.end_titles(END_TITLES_DELAY)
+
+
+    dev_line1, dev_line2, dev_line3 = random.choice(DEV_MESSAGES)
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xc0, "VISIT")
+    credits.add_credit(0x80, 0x40, 0x81, "RANDOMIZER.SMRPGSPEEDRUNS.COM")
+    credits.add_credit(0x80, 0x00, 0xc2, "TO CONTRIBUTE")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #38
     credits.begin_titles(BEGIN_TITLES_DELAY)
@@ -426,19 +454,38 @@ def update_credits(world):
     credits.end_titles(END_TITLES_DELAY)
 
 
+    dev_line1, dev_line2, dev_line3 = random.choice(DEV_MESSAGES)
     credits.begin_credits()
-    devmessage = random.choice(DEV_MESSAGES)
-    if len(devmessage) == 3:
-        credits.add_credit(0x80, 0x80, 0xc0, devmessage[0])
-        credits.add_credit(0x80, 0x40, 0x81, devmessage[1])
-        credits.add_credit(0x80, 0x00, 0xc2, devmessage[2])
-    elif len(devmessage) == 2:
-        credits.add_credit(0x80, 0xc0, 0xc0, devmessage[0])
-        credits.add_credit(0x80, 0x80, 0x81, devmessage[1])
-    else:
-        credits.add_credit(0x80, 0x40, 0x81, devmessage[0])
+    credits.add_credit(0x80, 0x80, 0xc0, dev_line1)
+    credits.add_credit(0x80, 0x40, 0x81, dev_line2)
+    credits.add_credit(0x80, 0x00, 0xc2, dev_line3)
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
+    # Clear the titles
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.end_titles(END_TITLES_DELAY)
+
+    #33
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x40, 0x81, 'THANK YOU SMRPG COMMUNITY.')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    #34
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x40, 0x81, 'WITHOUT YOU...')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    #35
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x40, 0x81, 'NONE OF THIS WOULD BE POSSIBLE.')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    #new
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x40, 0x81, 'THANK YOU FOR PLAYING.')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    #38
     credits.begin_titles(BEGIN_TITLES_DELAY)
     credits.add_title(0x80, 0x00, 0x08, 'DEDICATED IN MEMORY OF')
     credits.end_titles(END_TITLES_DELAY)
@@ -447,6 +494,7 @@ def update_credits(world):
     credits.add_credit(0x80, 0x80, 0xc0, 'TINYWETBLANKET')
     credits.add_credit(0x80, 0x40, 0x81, 'THANK YOU MIKAYLA')
     credits.add_credit(0x80, 0x00, 0xc2, 'WE MISS YOU')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.end_thing(END_CREDITS_DELAY_1) # Yeah, my abstraction breaks at the end.
 

@@ -8,6 +8,7 @@ import copy
 import uuid
 from randomizer.data.objectsequencetables import _0x08Flags
 from randomizer.data.eventtables import AreaObjects
+from randomizer.data.helpers import SequenceType
 
 # Amount to boost very small values when shuffling to give a bit more range for very small values.
 SMALL_BOOST_AMOUNT = 2.0
@@ -200,11 +201,6 @@ def allocate_string(string_length, free_list):
     return None
 
 # animation utils
-
-
-class SequenceType(enum.Enum):
-    Sequence = enum.auto()
-    Mold = enum.auto()
 
 class CommandTypes(enum.Enum):
     Action = enum.auto()

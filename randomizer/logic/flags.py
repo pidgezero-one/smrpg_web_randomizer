@@ -5,7 +5,7 @@ from django.utils.html import mark_safe
 from markdown import markdown
 from randomizer.data.helpers import ShuffleLocationSelector
 from randomizer.data.bosses import AvailableBosses
-from randomizer.data.helpers import FireworksOptions, WinConditions, PlayableCharacters, LearnableSpells, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, ItemQualities, ShopQualities, AvailableMusic, EquipmentCharactersOptions, regular_checks, freestanding_checks
+from randomizer.data.helpers import FireworksOptions, WinConditions, PlayableCharacters, LearnableSpells, EquipmentPropertiesOptions, EXPMultiplierOptions, BanditsWayGating, ForestMazeGating, PipeVaultGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, ItemQualities, ShopQualities, AvailableMusic, EquipmentCharactersOptions, regular_checks, freestanding_checks
 
 
 # ************************************** Flag classes
@@ -198,7 +198,7 @@ class EquipmentProperties(SelectOneFlag):
 
 class EquipmentNoSafety(BooleanFlag):
     name = 'No Equipment Property Safety'
-    description = "Normally, certain namesake items retain their protections: <b>Fearless Pin</b>, <b>Antidote Pin</b>, <b>Trueform Pin</b>, and <b>Wakeup Pin</b>. In addition, at least four equips will have OHKO protection. This flag removes those checks."
+    description = "Normally, certain namesake items retain their protections: <b>Fearless Pin</b>, <b>Antidote Pin</b>, <b>Trueform Pin</b>, and <b>Wakeup Pin</b>. In addition, at least four equips will have OHKO protection. This flag removes those guarantees."
     
     id = "unsafe"
 
@@ -380,7 +380,7 @@ class ItemQuality(SelectOneFlag):
 <br>
 <br>If "Original item pool" is selected, items which only appear once in the original game will also not appear in unlimited shops. Additionally, two copies of the progressive Mystery Egg will be added to the pool, replacing some small items.
 <br>
-<br>If "Completely empty" is selected, any chest which does not contain a required item will be a "You Missed" chest.'''
+<br>If "Completely empty" is selected, any chest which does not contain a required item will be empty.'''
     modes = ['open']
     optionEnum = ItemQualities
     choices = [o for o in ItemQualities]
@@ -400,7 +400,7 @@ class RestrictSpecialEquips(BooleanFlag):
     name = 'Restrict "Special Item" exchange equips & Monstro Town reward equips'
     description = '''If enabled, the FroggieStick, Chomp, Zoom Shoes, Attack Scarf, Super Suit, Quartz Charm, Jinx Belt, Ghost Medal, and both Lazy Shells will appear once each, shuffled only within each other's locations. This option ignores your chosen Item Quality setting.
 <br>
-<br>If disabled, these items can appear anywhere, subject to the restrictions of your chosen Item Quality setting.'''
+<br>If disabled, these items can appear anywhere, subject to the restrictions of your chosen Item Pool Quality setting.'''
     modes = ['open']
     
     id = "restrict_monstro"
@@ -415,30 +415,30 @@ class BetterTips(BooleanFlag):
 
 
 class EXPStarsAnywhere(BooleanFlag):
-    name = 'EXP stars can appear anywhere'
-    description = '''If enabled, EXP stars may appear in any chest near monsters.
+    name = 'Shuffle EXP star chests'
+    description = '''If enabled, the chests originally containing EXP stars will contain random checks. EXP stars may appear in any chest near monsters, unless your item pool is set to "Completely Empty".
 <br>
 <br>If disabled, EXP stars will be restricted to their original locations within Bandit's Way, Kero Sewers, Moleville Mines, Sea, Land's End, Nimbus Land, and Barrel Volcano.'''
     modes = ['open']
     
-    id = "xpstars_anywhere"
+    id = "xpstars"
 
 
 class SlotsAnywhere(BooleanFlag):
-    name = 'Slot machines can appear anywhere'
-    description = '''If enabled, any chest in the world could contain a slot machine.
+    name = 'Shuffle slot machine chests'
+    description = '''If enabled, the three slot machine chests in Bean Valley will contain random item checks. Random chests in the world can contain slot machines, unless your item pool is set to "Completely Empty".
 <br>
-<br>If disabled, slot machines will be restricted to their original locations in Bean Valley.
+<br>If disabled, the three original slot machines in Bean Valley will be unchanged.
 <br>
-<br>Note that a bad roll on a slot machine will initiate a duplicate of the third mimic chest fight.'''
+<br>Note that a bad roll on a slot machine will initiate the third mimic chest fight. You can avoid this by timing your jumps to make the first two slots match, but be careful with this setting.'''
     modes = ['open']
     
-    id = "slots_anywhere"
+    id = "slots"
 
 
 class ShuffleBeetlemania(BooleanFlag):
     name = 'Shuffle Beetlemania'
-    description = '''If enabled, Beetlemania will be unlocked by a random item check, and the Mushroom Kingdom inn kid will sell you a random item check.'''
+    description = '''If enabled, the Mushroom Kingdom inn kid will give you a random item check for 500 coins. Beetlemania will appear in a random location, unless your item pool is set to "Completely Empty".'''
     modes = ['open']
     
     id = "beetle"
@@ -446,10 +446,18 @@ class ShuffleBeetlemania(BooleanFlag):
 
 class ShuffleMagikoopaChest(BooleanFlag):
     name = 'Shuffle Magikoopa\'s coin chest'
-    description = '''If enabled, Magikoopa's infinite coin box could appear in any chest, and the chest in his room will be an item check.'''
+    description = '''If enabled, the chest in Magikoopa's room will contain a random item check. A random chest somewhere in the game will contain infinite coins, unless your item pool is set to "Completely Empty".'''
     modes = ['open']
     
     id = "kamek"
+
+
+class AnnoyingChests(BooleanFlag):
+    name = 'Empty chests should perform the "You Missed" animation'
+    description = '''If disabled, chests will simply appear as pre-opened.'''
+    modes = ['open']
+    
+    id = "ym"
 
 
 class FireworksSetting(SelectOneFlag):
@@ -491,7 +499,7 @@ class StarPieceAvailability(BooleanFlag):
     
     id = "stars_anywhere"
 
-
+# disable this setting if empty chests is turned on. Doesn't make sense to hunt down a check with no confirmation that you've found it
 class InvisibleFlagsSetting(BooleanFlag):
     name = 'Move invisible flag checks'
     description = '''Chooses where the invisible items placed by the Three Musty Fears are located. 
@@ -525,7 +533,7 @@ class EnabledFreestandingChecks(CategorizationFlag):
     name = 'Freestanding coin/flower/mushroom checks'
     description = '''If a check is highlighted (white text over blue), it is eligible to contain items required to complete the seed.
 <br>
-<br>If a check is not highlighted, it will not be shuffled, nor can it contain any items required to complete the seed.
+<br>If a check is not highlighted, it will not be shuffled, nor can it contain any items required to complete the seed. (However, it will disappear if Item Pool is set to "Completely Empty".)
 <br>
 <br>If item quality is set to "Completely empty", only highlighted checks will be affected.'''
     optionEnum = ShuffleLocationSelector
@@ -763,6 +771,18 @@ class SeaGate(SelectOneFlag):
     choices = [o for o in SeaGating]
     default = SeaGating.star4
     id = "sea"
+
+
+class BelomeTempleGate(SelectOneFlag):
+    name = '''Belome Temple access'''
+    description = '''<b>Finish Seaside Town</b>: The first Fortune Teller shaman will not appear until you have defeated the boss of Seaside Town.
+<br>
+<br><b>Always Open</b>: Belome Temple access is unrestricted.'''
+    modes = ['open']
+    optionEnum = BelomeTempleGating
+    choices = [o for o in BelomeTempleGating]
+    default = BelomeTempleGating.open
+    id = "tmpl"
 
 
 class MonstroTownGate(SelectOneFlag):
@@ -1044,13 +1064,13 @@ class BossReplaceMinigameSprites(BooleanFlag):
 
 
 class MimicsAnywhere(BooleanFlag):
-    name = 'Mimics can appear anywhere'
+    name = 'Shuffle mimic chests'
     description = '''If enabled, the three mimics could be in any chest in the world. If you have "Scale boss stats to area difficulty" enabled, each mimic will be restricted to areas that are appropriate for its stats. However you should save often with this setting turned on, especially if item-hunting at the start of the seed.
 <br>
 <br>If disabled, mimic chests will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley.'''
     modes = ['open']
     
-    id = "mimics_anywhere"
+    id = "mimics"
     requires_all = [(ShuffleItems(), True)]
 
 
@@ -1284,9 +1304,11 @@ class ItemShuffleSubcategory(FlagCategory):
         BiasItemShuffle,
         RestrictSpecialEquips,
         EXPStarsAnywhere,
+        MimicsAnywhere,
         SlotsAnywhere,
         ShuffleBeetlemania,
         ShuffleMagikoopaChest,
+        AnnoyingChests,
         FireworksSetting,
         BetterTips,
     ]
@@ -1343,6 +1365,7 @@ class AreaAccessSubcategory(FlagCategory):
         BoosterTowerGate,
         MarrymoreGate,
         SeaGate,
+        BelomeTempleGate,
         MonstroTownGate,
         BarrelVolcanoGate,
         BowsersKeepGate,
@@ -1410,7 +1433,6 @@ class BossPositionSubcategory(FlagCategory):
         BossShuffle,
         BossShuffleScaleStats,
         BossReplaceMinigameSprites,
-        MimicsAnywhere,
         ShuffledBosses
     ]
     size = 4
@@ -1535,12 +1557,12 @@ class QuickPreset(Preset):
 class ExplorerPreset(Preset):
     name = "Explorer"
     description = "A flagset that draws on strong knowledge of the original game, and will require a lot of hunting."
-    flags = "Psize:1|start:random|random|avail:f     Qstats:some|perms:v_accessories_all|hints     Cexp:double|spells|uncap|avail:////H     Xrandom|avail:6|fights://////f     Trandom|quality:original|restrict_monstro|xpstars_anywhere|slots_anywhere|beetle|kamek|fireworks:progressive|tips     Lmoveflags|keys_anywhere|chests://////////////////////////////////////H|coins:4BgPAgN4/PAAAAA     Ifake|replace|xpstar:easybosses|gg:1|kg:1|s1:1|s2:2|s3:3|s4:4|s5:5|s6:6|sj1:30|sj2:100     Abw:mallow|fm:geno|pv:forest|bt:bowser|mm:tower|sea:star4|mt:landsend|bv:nimbus|bk:volcano|wf:open     Oseaside:ship|doors:1|endgame:6|cwarp|bwarp|fasttravel|objective:factory     Gquiz|melody|pwd|skipcart     Srandom|quality:original|bias|showperms     Brandom|scale|allsprites|mimics_anywhere|pool://////P"
+    flags = "Psize:1|start:random|random|avail:f     Qstats:some|perms:v_accessories_all|hints     Cexp:double|spells|uncap|avail:////H     Xrandom|avail:6|fights://////f     Trandom|quality:original|restrict_monstro|xpstars|mimics|slots|beetle|kamek|fireworks:progressive|tips     Lmoveflags|keys_anywhere|chests://////////////////////////////////////H|coins:4BgPAgN4/PAAAAA     Ifake|replace|xpstar:easybosses|gg:1|kg:1|s1:1|s2:2|s3:3|s4:4|s5:5|s6:6|sj1:30|sj2:100     Abw:mallow|fm:geno|pv:forest|bt:bowser|mm:tower|sea:star4|tmpl:seaside|mt:landsend|bv:nimbus|bk:volcano|wf:open     Oseaside:ship|doors:1|endgame:6|cwarp|bwarp|fasttravel|objective:factory     Gquiz|melody|pwd|skipcart     Srandom|quality:original|bias|showperms     Brandom|scale|allsprites|pool://////P"
 
 class Spring2021AsyncTourneyPreset(Preset):
     name = "Spring 2021 Async Tournament (approximate)"
     description = "Flagset for the 2021 Async Tourney"
-    flags = "Psize:1|start:random|random|avail:f     Qstats:random|perms:random     Cexp:triple|stats|spells|spellstats|avail:////H     Xrandom|avail:6|fights://vv/OA     Trandom|quality:t4|restrict_monstro|fireworks:vanilla     Ifake|xpstar:vanilla|gg:100|kg:12|s1:1|s2:3|s3:5|s4:10|s5:15|s6:200|sj1:30|sj2:100     Abw:open|fm:open|pv:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:star6     Oseaside:open|skip_musty|doors:2|endgame:6|cwarp|objective:factory     Gdoors     Srandom|quality:t4|showperms     Brandom|scale|pool://3/f/H     Estats|drops|formations|attacks"
+    flags = "Psize:1|start:random|random|avail:f     Qstats:random|perms:random     Cexp:triple|stats|spells|spellstats|avail:////H     Xrandom|avail:6|fights://vv/OA     Trandom|quality:t4|restrict_monstro|fireworks:vanilla     Ifake|xpstar:vanilla|gg:100|kg:12|s1:1|s2:3|s3:5|s4:10|s5:15|s6:200|sj1:30|sj2:100     Abw:open|fm:open|pv:open|bt:open|mm:open|sea:open|tmpl:open|mt:open|bv:open|bk:open|wf:star6     Oseaside:open|skip_musty|doors:2|endgame:6|cwarp|objective:factory     Gdoors     Srandom|quality:t4|showperms     Brandom|scale|pool://3/f/H     Estats|drops|formations|attacks"
     # needs m2 without x
 
 # ************************************** Default lists for the site.

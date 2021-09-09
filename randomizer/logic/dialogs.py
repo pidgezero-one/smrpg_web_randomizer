@@ -66,7 +66,7 @@ def randomize_all(world):
 
 RWRITER = "%RANDOM_WRITER%"
 box_dialog_ids = [[1696, 1697, 1698, 1699, 1700], [1708, 1709, 1710, 1711, 1712], [1720, 1721, 1722, 1723, 1724], [
-    1732, 1733, 1734, 1735, 1736], [1744, 1745, 1746, 1747, 1748], [1759, 1757, 1758, 1759, 1760]]
+    1732, 1733, 1734, 1735, 1736], [1744, 1745, 1746, 1747, 1748], [1756, 1757, 1758, 1759, 1760]]
 recitation_ids = [[1701, 1702, 1703, 1704, 1705], [1713, 1714, 1715, 1716, 1717], [1725, 1726, 1727, 1728, 1729], [
     1737, 1738, 1739, 1740, 1741], [1749, 1750, 1751, 1752, 1753], [1761, 1762, 1763, 1764, 1765]]
 
@@ -86,15 +86,15 @@ def randomize_password(world):
         # generate the dialogs that display your letter selection when you stand under the boxes
         box_dialogs = []
         box_dialogs.append('''[page]\n Key letter%i  <%s> %s  %s  %s  %s[end]''' % (
-            index, letters[0], letters[1], letters[2], letters[3], letters[4]))
+            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
         box_dialogs.append('''[page]\n Key letter%i   %s <%s> %s  %s  %s[end]''' % (
-            index, letters[0], letters[1], letters[2], letters[3], letters[4]))
+            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
         box_dialogs.append('''[page]\n Key letter%i   %s  %s <%s> %s  %s[end]''' % (
-            index, letters[0], letters[1], letters[2], letters[3], letters[4]))
+            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
         box_dialogs.append('''[page]\n Key letter%i   %s  %s  %s <%s> %s[end]''' % (
-            index, letters[0], letters[1], letters[2], letters[3], letters[4]))
+            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
         box_dialogs.append('''[page]\n Key letter%i   %s  %s  %s  %s <%s>[end]''' % (
-            index, letters[0], letters[1], letters[2], letters[3], letters[4]))
+            index+1, letters[0], letters[1], letters[2], letters[3], letters[4]))
         box_dialog_pairs = zip(box_dialogs, box_dialog_ids[index])
         for dialog_content, dialog_id in box_dialog_pairs:
             world.replace_dialog(dialog_id, dialog_content)
@@ -234,7 +234,7 @@ def randomize_password(world):
         world.replace_dialog(1656, password.drybones_hint)
 
     # credits
-    world.password_submitter = password.submitter_credits
+    world.password = password
 
 
 def randomize_wishes(world):

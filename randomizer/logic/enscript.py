@@ -1,6 +1,7 @@
 from collections import defaultdict
 from randomizer.logic.osscript import ObjectSequenceScript as OSCommand
 import re
+import numbers
 
 bank_lengths = [1536, 1536, 1024]
 
@@ -315,7 +316,7 @@ class EventScript:
         return val
 
     def append_byte(self, val):
-        if not isinstance(val, int):
+        if not isinstance(val, numbers.Number):
             val = val.index
         assert 0 <= val <= 0xFF
         self.commands.append(val)

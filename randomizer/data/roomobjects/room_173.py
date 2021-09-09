@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._41_SUNKEN_SHIP,
-  "entrance_event": 15,
+  "entrance_event": 879,
   "event_tiles": [
     {
       "event": 3263,

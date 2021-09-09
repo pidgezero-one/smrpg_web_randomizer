@@ -5,6 +5,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
+        "identifier": 'ACTION_519_placeholder',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
         "identifier": 'ACTION_519_face_southwest_0',
         "command": 'face_southwest'
     },
@@ -60,7 +65,7 @@ script = [
     {
         "identifier": 'ACTION_519_jmp_13',
         "command": 'jmp',
-        "args": ['ACTION_519_face_southwest_0']
+        "args": ['ACTION_519_placeholder']
     },
     {
         "identifier": 'ACTION_519_visibility_off_14',

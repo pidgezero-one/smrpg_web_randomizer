@@ -939,7 +939,7 @@ script = [
         "args": [Rooms._316_SEASIDE_TOWN_BEACH, RadialDirections.NORTHWEST, 8, 30, 0, []]
     },
     {
-        "identifier": 'EVENT_1147_set_bit_44',
+        "identifier": 'EVENT_1147_set_bit_44_',
         "command": 'set_bit',
         "args": [0x7086, 0]
     },
@@ -1003,6 +1003,11 @@ script = [
     {
         "identifier": 'EVENT_1147_restore_all_fp_64',
         "command": 'restore_all_fp'
+    },
+    {
+        "identifier": 'EVENT_1147_set_bit_44',
+        "command": 'set_bit',
+        "args": [0x7052, 2]
     },
     {
         "identifier": 'EVENT_1147_jmp_to_event_66',

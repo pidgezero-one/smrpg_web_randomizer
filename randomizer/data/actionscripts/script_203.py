@@ -28,6 +28,10 @@ script = [
         "command": 'reset_properties'
     },
     {
+        "identifier": 'ACTION_203_visibility_off_sw',
+        "command": 'face_southwest'
+    },
+    {
         "identifier": 'ACTION_203_pause_7',
         "command": 'pause',
         "args": [60]

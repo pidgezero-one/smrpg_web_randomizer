@@ -52,6 +52,8 @@ def _randomize_item(item, safetychecks_on = True):
 
         # Track increases and decreases for each stat.
         score = item.stat_point_value
+        if item.effect_type == "extra stats":
+            score = max((score + 15), round(score * 1.5))
         up_vals = dict([(u, 0) for u in ups])
         down_vals = dict([(d, 0) for d in downs])
 
@@ -467,6 +469,20 @@ def randomize_all(world):
                 30 * len(item.status_buffs) + 
                 10 *
                 item.arbitrary_value)
+    
+    # Useful debug function to print equipment property table.
+    """
+    for item in world.items:
+        if item.is_equipment:
+            print(item.name + " " * (19 - len(item.name)) + ": Sp:" + str(item.speed) + ", At:" + str(item.attack) + ", Df:" + str(item.defense) + ", MA:" + str(item.magic_attack) + ", MD:" + str(item.magic_defense) + "; "
+                  + ("KO" if item.prevent_ko else "") + (", " if (item.prevent_ko and item.status_immunities != []) else "") + ("Psn" if (2 in item.status_immunities) else "") + ("Mute" if (0 in item.status_immunities) else "")
+                  + ("Slp" if (1 in item.status_immunities) else "")  + ("SCrow" if (6 in item.status_immunities) else "") + ("Mush" if (5 in item.status_immunities) else "") + ("Fear" if (3 in item.status_immunities) else "")
+                  + ("Bsrk" if (4 in item.status_immunities) else "") + ("; " if (item.prevent_ko or item.status_immunities != []) else "") + ("Imm: " if item.elemental_immunities != [] else "")
+                  + ("Ic" if (4 in item.elemental_immunities) else "") + ("Fi" if (5 in item.elemental_immunities) else "") + ("Th" if (6 in item.elemental_immunities) else "") + ("Ju" if (7 in item.elemental_immunities) else "")
+                  + ("; " if item.elemental_immunities != [] else "") + ("Res: " if item.elemental_resistances != [] else "") + ("Ic" if (4 in item.elemental_resistances) else "") + ("Fi" if (5 in item.elemental_resistances) else "")
+                  + ("Th" if (6 in item.elemental_resistances) else "") + ("Ju" if (7 in item.elemental_resistances) else "")+ ("; " if item.elemental_resistances != [] else "") + ("Buffs: " if item.status_buffs != [] else "")
+                  + ("At" if (3 in item.status_buffs) else "") + ("Df" if (4 in item.status_buffs) else "") + ("MA" if (5 in item.status_buffs) else "") + ("MD" if (6 in item.status_buffs) else ""))
+    """
 
     # Calculate list position (used as a factor in pricing)
     ranks = [item for item in world.items if item.is_equipment]

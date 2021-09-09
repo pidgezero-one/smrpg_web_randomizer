@@ -36,11 +36,6 @@ script = [
         "args": [AreaObjects.NPC_4, Rooms._480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, 'EVENT_405_pause_action_script_6']
     },
     {
-        "identifier": 'EVENT_407_sequence_setter',
-        "command": 'run_event_as_subroutine',
-        "args": [770]
-    },
-    {
         "identifier": 'EVENT_407_fade_in_from_black_async_6',
         "command": 'fade_in_from_black_async'
     },

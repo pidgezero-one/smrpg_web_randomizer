@@ -131,5 +131,13 @@ def randomize_all(world):
         world.eventscripts[2061][2]["subscript"] = songs[2].generate_starfish_hint(world.eventscripts[2061][2]["subscript"])
         world.eventscripts[1088] = songs[2].generate_tadpole_hint()
 
-        world.tadpole_submitters = list(set([songs[0].submitter_credits, songs[1].submitter_credits, songs[2].submitter_credits]))
+        world.tadpole_songs = songs
 
+
+def get_spoiler(world):
+    acc = {}
+    
+    acc["password"] = world.password.word
+    acc["songs"] = [s.scroll_text for s in world.tadpole_songs]
+
+    return acc

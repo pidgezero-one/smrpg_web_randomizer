@@ -240,7 +240,7 @@ script = [
     {
         "identifier": 'EVENT_1714_jmp_if_bit_clear_7',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7087, 0, 'EVENT_1714_ret_26']
+        "args": [0x7087, 0, 'EVENT_1714_ret_17']
     },
     {
         "identifier": 'EVENT_1714_run_event_as_subroutine_25_',
@@ -250,7 +250,7 @@ script = [
     {
         "identifier": 'EVENT_1714_jmp_if_bit_clear_7_',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7099, 7, 'EVENT_1714_ret_26']
+        "args": [0x7099, 7, 'EVENT_1714_ret_17']
     },
     {
         "identifier": 'EVENT_1714_run_event_as_subroutine_25__',

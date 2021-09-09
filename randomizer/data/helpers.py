@@ -938,6 +938,13 @@ class YaridovichGating(FlagOptions):
     open = "Always available"
 
 
+class BelomeTempleGating(FlagOptions):
+    """Enumeration for Belome Temple gating flag option"""
+    seaside = "Finish Seaside Town"
+    open = "Always open"
+
+
+
 class MonstroTownGating(FlagOptions):
     """Enumeration for Monstro Town gating flag option"""
     landsend = "Finish Land's End"
@@ -1010,3 +1017,8 @@ class AvailableMusic(FlagOptions):
     smithy = music.Smithy1Music.name
     culex = music.CulexMusic.name
     corn = music.CorndillyMusic.name
+
+
+class SequenceType(enum.Enum):
+    Sequence = enum.auto()
+    Mold = enum.auto()

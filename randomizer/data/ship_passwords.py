@@ -426,9 +426,9 @@ def suggest_letter_bank(word, position, decoy_word):
         letters.append(decoy_word[position])
     # get random letters similar to this one
     letter_bank = [c for c in get_similar_letters(word[position]) if c not in letters]
-    # if not enough fillable letters from that, add a random consonant
-    if len(letter_bank) < 5 - len(letters):
+    if len(letter_bank) >= 5 - len(letters):
         letters.extend(random.sample(letter_bank, min(5-len(letters), len(letter_bank))))
+    # if not enough fillable letters from that, add a random consonant
     if len(letters) < 5:
         letters.extend(random.sample([c for c in common_consonants if c not in letters], 5-len(letters)))
     random.shuffle(letters)

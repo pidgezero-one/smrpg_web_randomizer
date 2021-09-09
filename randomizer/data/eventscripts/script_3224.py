@@ -6,6 +6,66 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_3224_action_queue_sync_13',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_0]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_15',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_1]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_16',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_2]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_17',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_3]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_18',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_4]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_19',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_5]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_13_',
+        "command": 'resume_action_script',
+        "args": [AreaObjects.NPC_0]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_15_',
+        "command": 'resume_action_script',
+        "args": [AreaObjects.NPC_1]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_16_',
+        "command": 'resume_action_script',
+        "args": [AreaObjects.NPC_2]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_17_',
+        "command": 'resume_action_script',
+        "args": [AreaObjects.NPC_3]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_18_',
+        "command": 'resume_action_script',
+        "args": [AreaObjects.NPC_4]
+    },
+    {
+        "identifier": 'EVENT_3224_action_queue_sync_19_',
+        "command": 'resume_action_script',
+        "args": [AreaObjects.NPC_5]
+    },
+    {
         "identifier": 'EVENT_3224_set_short_0',
         "command": 'set_short',
         "args": [0x7024, 0x0000]

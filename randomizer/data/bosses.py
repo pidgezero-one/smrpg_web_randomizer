@@ -4,13 +4,15 @@ from enum import IntEnum, Enum, auto
 
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
-from randomizer.logic.utils import SequenceType
 
 from randomizer.data import music
+from randomizer.data.helpers import SequenceType
 from randomizer.data.npcmodels import models
 from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
 from randomizer.data.roomobjecttables import Rooms
 from randomizer.data.objectsequencetables import SequenceSpeeds, _0x08Flags
+
+EMPTY_DIALOG = auto()
 
 
 def is_vanilla(boss, location):
@@ -918,8 +920,6 @@ class MackBoss(Boss):
          ''' Yo! You look tired.[delay] How 'bout a\n night on the house?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -1238,8 +1238,6 @@ class BowyerBoss(Boss):
          ''' Since I'm having a good day, you\n can stay here free of charge.\n [delay]How's that sound?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -1344,8 +1342,6 @@ class Croco2Boss(Boss):
          ''' You tired? You can stay here\n for free.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -1496,8 +1492,6 @@ class PunchinelloBoss(Boss):
         (2832, ''' Hello there.[await][pause] Today, we've got an\n explosively good deal for you![delay] All\n inn expenses are free of charge.[await]\n Would you like to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -1631,8 +1625,6 @@ class BoosterBoss(Boss):
         (2832, '''SNIFIT 1: Welcome![delay] How would you\n like to stay in our fabulous inn\n for free today?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -1852,16 +1844,13 @@ class BundtBoss(Boss):
          '''Wait... Did that cake just move?[await]\n Let's worry about it after finding\n the last [0x7024] item(s).[await]'''),  # do this one with no background
         (2560,
          '''APPRENTICE: Welcome to our\n world-class culinary school.[await]\n Please come back later to try some\n of our famous Bundt Cake.[await][page]\n [delay]...You want it NOW?\n [delay]How impatient! [delay]I oughtta teach you a lesson![await]'''),
-        (2571, '''[delay_60][end]'''),
         (2572,
          '''CHEF TORTE: Ve are busy preparing\n ze batter at ze moment...[await]\n No, you can't have any right zees\n second! [delay]How rude![await]'''),
-        (2831, '''[delay_60][end]'''),
+        (2831, EMPTY_DIALOG),
         (2832,
          ''' Welcome. Our inn services are free\n tonight.[await][pause] We've unfortunately run\n out of complimentary cake, but\n would you like to stay anyway?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -1881,15 +1870,15 @@ class BundtBoss(Boss):
         (2847,
          ''' You can't just barge in here while\n I'm standing guard.[await]'''),
         (2848, ''' Why's the door locked? [delay]Uh... [delay]We're\n uh... [delay]baking a very important\n cake! [delay]Do not disturb! [delay_30](I'm so sly!)[await]'''),
-        (3044, '''[delay_60][end]'''),
+        (3044, EMPTY_DIALOG),
         (3057, '''[delay_60][await]\n  [select] (Fight me)\n  [select] (Uh...)[await]'''),
         (3072,
          '''APPRENTICE: (Please let this cake\n not be evil... please let this cake\n not be evil...)[await]'''),
         (3073, '''APPRENTICE: You again?! Leave\n our cake alone![await]'''),
         (3338,
          ''' It's really weird.\n I never hear the next door\n neighbour.[await][pause] Maybe they don't move\n around much.[await]'''),
-        (3352, '''[delay_60][end]'''),
-        (3353, '''[delay_60][end]'''),
+        (3352, EMPTY_DIALOG),
+        (3353, EMPTY_DIALOG),
     ]
     optional_dialog_replacements = [
         (1694,
@@ -2081,8 +2070,6 @@ class HidonBoss(Boss):
          ''' Hey! Why don't you crash here for\n the night? It's free! FREE![await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -2232,8 +2219,6 @@ class JohnnyBoss(Boss):
          ''' Welcome, matey! How'd ya like to\n stay here tonight, on the house?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two fellas o'er in the left\n building have been actin' weird.[await]'''),
-        (2836,
-         ''' Y'arr, so ye want to visit the ship,\n do ye? Ya gotta go through the\n whirlpools, matey![await]'''),
         (2837,
          ''' It ain't always easy gettin' into\n the Sea.[await][pause] Ya might need to do\n somethin' else, first![await]'''),
         (2838,
@@ -2848,8 +2833,6 @@ class CulexBoss(Boss):
         (2832, ''' Welcome to our inn.[await]\n We are offering a competitive price\n of zero coins per night.[await]\n Will you be staying tonight?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -3065,8 +3048,6 @@ class MegaSmilaxBoss(Boss):
          ''' Hello there. Are you tired?\n We don't charge any fees here,\n if you'd like to stay.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -3149,15 +3130,15 @@ class DodoBoss(Boss):
     ))  # could be 21 or 312
     dialog_replacements = [
         # actually, don't use dialogs for dodo, just play sfx... how to handle this?
-        (49, '''[delay_60][end]'''),  # time this according to how long the feather sound effect is
-        (1660, '''[delay_60][end]'''),
+        (49, EMPTY_DIALOG),  # time this according to how long the feather sound effect is
+        (1660, EMPTY_DIALOG),
         (1694,
          '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Dodo's place.[await]'''),
         (1695,
          '''PIRATE: That's AMAZING!\n No one's EVER whipped DODO!![await]'''),
-        (1778, '''[delay_60][end]'''),
-        (1780, '''[delay_60][end]'''),
-        (1781, '''[delay_60][end]'''),
+        (1778, EMPTY_DIALOG),
+        (1780, EMPTY_DIALOG),
+        (1781, EMPTY_DIALOG),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
@@ -3169,17 +3150,16 @@ class DodoBoss(Boss):
         (2504,
          '''    Dodo is a bird of few words.[await]\n    You still have [0x7024] item(s) left\n                 to find.[await]'''),  # use async for this one too
         (2560, '''SNIFIT 1: Hello there.[await]\n Dodo's busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
-        (2571, '''[delay_60][end]'''),
         (2572, '''SNIFIT 2: Please refrain\n from bothering Dodo.[await]'''),
-        (2831, '''[delay_60][end]'''),
+        (2831, EMPTY_DIALOG),
         (2838,
          ''' You will find Dodo...\n in his house. He is...the most\n respected person here.[await]'''),
-        (3044, '''[delay_60][end]'''),
+        (3044, EMPTY_DIALOG),
         (3057, '''[delay_60][await]\n  [select] (I'm here for a fight)\n  [select] (Uh...)[await]'''),
         (3338,
          ''' It's really weird.\n I never hear the guy next door.[await]\n Maybe he can't talk.[await]'''),
-        (3352, '''[delay_60][end]'''),
-        (3353, '''[delay_60][end]'''),
+        (3352, EMPTY_DIALOG),
+        (3353, EMPTY_DIALOG),
     ]
 
 
@@ -3269,8 +3249,6 @@ class BirdettaBoss(Boss):
          ''' Hello! You've been chosen to stay\n here in our lovely inn for FREE!\n Aren't you lucky?[await]\n Will you stay with us?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -3442,8 +3420,6 @@ class ValentinaBoss(Boss):
         (2832, ''' Welcome![delay] I'll let you stay here for\n free, but don't tell Valentina.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -3578,44 +3554,42 @@ class CzarBoss(Boss):
         (1778, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
         (1780, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
         (1781, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
-        (1784, '''[delay_60][end]'''),
-        (1785, '''[delay_60][end]'''),
-        (1792, '''[delay_60][end]'''),
-        (1793, '''[delay_60][end]'''),
-        (2061, '''[delay_60][end]'''),
-        (2062, '''[delay_60][end]'''),
+        (1784, EMPTY_DIALOG),
+        (1785, EMPTY_DIALOG),
+        (1792, EMPTY_DIALOG),
+        (1793, EMPTY_DIALOG),
+        (2061, EMPTY_DIALOG),
+        (2062, EMPTY_DIALOG),
         (2504,
          '''CZAR DRAGON: BLARRGGGG[await]'''),  # can we make him say BLARG as many times as you have items remaining?
-        (2560, '''[delay_60][end]'''),
-        (2571, '''BLARRGGGG?[await]'''),
-        (2572, '''[delay_60][end]'''),
+        (2560, EMPTY_DIALOG),
+        (2572, EMPTY_DIALOG),
         (2831, '''\n  CZAR DRAGON: BLAAARRRGGGG[await]'''),
         (2832,
          ''' (Stay in the inn for free?)[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
-        (2834, '''[delay_60][end]'''),
-        (2836, '''[delay_60][end]'''),
-        (2837, '''[delay_60][end]'''),
-        (2838, '''[delay_60][end]'''),
-        (2839, '''[delay_60][end]'''),
-        (2841, '''[delay_60][end]'''),
-        (2842, '''[delay_60][end]'''),
-        (2843, '''[delay_60][end]'''),
-        (2844, '''[delay_60][end]'''),
-        (2845, '''[delay_60][end]'''),
-        (2847, '''[delay_60][end]'''),
-        (2848, '''[delay_60][end]'''),
+        (2834, EMPTY_DIALOG),
+        (2837, EMPTY_DIALOG),
+        (2838, EMPTY_DIALOG),
+        (2839, EMPTY_DIALOG),
+        (2841, EMPTY_DIALOG),
+        (2842, EMPTY_DIALOG),
+        (2843, EMPTY_DIALOG),
+        (2844, EMPTY_DIALOG),
+        (2845, EMPTY_DIALOG),
+        (2847, EMPTY_DIALOG),
+        (2848, EMPTY_DIALOG),
         (3044, '''\n  CZAR DRAGON: BLAAARRRGGGG[await]'''),
         (3057, '''[delay_60][await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''),
-        (3072, '''[delay_60][end]'''),
-        (3073, '''[delay_60][end]'''),
+        (3072, EMPTY_DIALOG),
+        (3073, EMPTY_DIALOG),
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always yelling about\n BLARRRRG-this and\n BLAHGAHRGGH-that.[await]'''),
         (3352, '''\n  CZAR DRAGON: BLAAARRRGGGG[await]'''),
         (3353, '''\n  CZAR DRAGON: BLAAARRRGGGG[await]'''),
     ]
     optional_dialog_replacements = [
-        (1694, '''[delay_60][end]'''),
-        (1695, '''[delay_60][end]'''),
+        (1694, EMPTY_DIALOG),
+        (1695, EMPTY_DIALOG),
     ]
 
 
@@ -3683,6 +3657,7 @@ class AxemRangersBoss(Boss):
     statue_model = StatueModelDetails(
         208, width=32, height=32, horizontal_pixel_shift=-6)
     small_model = SmallModelDetails(208, width=32, height=32, animations=SpriteAnimationCollection(
+        bandits_way_distracted=axem_red_taunt,
         mines_punch=axem_red_hit,
         ship_beckon=axem_red_hit,
         dojo_challenge=axem_red_taunt,
@@ -3733,8 +3708,6 @@ class AxemRangersBoss(Boss):
         (2832, '''AXEM PINK: Hi~![delay] Are you sleepy?\n I'm feeling nice today, so you can\n stay for free.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -4071,8 +4044,6 @@ class BoomerBoss(Boss):
          ''' Hi! Are you tired? You can rest\n up here, and you don't have to\n pay me anything.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -4233,8 +4204,6 @@ class CountdownBoss(Boss):
         (2832, ''' Our inn is free![await][pause] Why?[delay_30] Uh...[delay]\n I'm not sure.[delay_30] Anyway,[delay] do you\n want to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -4465,8 +4434,6 @@ class ClerkBoss(Boss):
         (2832, ''' Welcome.[delay] Would you like to stay\n here for free?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -4593,8 +4560,6 @@ class ManagerBoss(Boss):
         (2832, ''' Good day.[delay] We're offering free\n reservations today. Would you like\n to stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -4724,8 +4689,6 @@ class DirectorBoss(Boss):
          ''' Salutations. How would you like to\n stay in our inn for free today?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -4968,8 +4931,6 @@ class SmithyBoss(Boss):
          ''' Yo. This inn doesn't charge\n anything for our services.\n Wanna stay?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
-        (2836,
-         ''' If you haven't been to the Sunken\n Ship yet, you can get there through\n the whirlpools in the sea.[await]'''),
         (2837,
          ''' If you can't get into the Sunken\n Ship, you might have to check it\n out later.[await]'''),
         (2838,
@@ -5040,7 +5001,7 @@ class Croco1(BossAndStarLocation):
         BossModelFill(Rooms._078_BANDITS_WAY_AREA_04, 12, Croco1Boss,
                       SpriteSize.Small, False, target_scripts=[1698], sequence_setter=759),
         BossModelFill(Rooms._206_BANDITS_WAY_AREA_05, 8, Croco1Boss, SpriteSize.Small, False, target_scripts=[
-                      1708, 1709], target_action_scripts=[469], sequence_setter=760),
+                      1708, 1709, 1710], target_action_scripts=[469], sequence_setter=760),
     ]
 
 
@@ -5235,27 +5196,15 @@ class Croco2(BossAndStarLocation):
     unique_henchmen = [
         [
             UniqueHenchmanFill(Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, 1, DefaultCrook, False, True, False,
-                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777, battlefield=Battlefields.MolevilleMines),
-            UniqueHenchmanFill(Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, 2, DefaultCrook, False, True, False,
-                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777, battlefield=Battlefields.MolevilleMines),
-            UniqueHenchmanFill(Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, 3, DefaultCrook, False, True, False,
-                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777, battlefield=Battlefields.MolevilleMines),
+                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777, battlefield=Battlefields.MolevilleMines)
         ],
         [
             UniqueHenchmanFill(Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, 1, DefaultCrook, False, True,
-                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779, battlefield=Battlefields.MolevilleMines),
-            UniqueHenchmanFill(Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, 2, DefaultCrook, False, True,
-                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779, battlefield=Battlefields.MolevilleMines),
-            UniqueHenchmanFill(Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, 3, DefaultCrook, False, True,
-                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779, battlefield=Battlefields.MolevilleMines),
+                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779, battlefield=Battlefields.MolevilleMines)
         ],
         [
             UniqueHenchmanFill(Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, 1, DefaultCrook, False,
-                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787, battlefield=Battlefields.MolevilleMines),
-            UniqueHenchmanFill(Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, 2, DefaultCrook, False,
-                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787, battlefield=Battlefields.MolevilleMines),
-            UniqueHenchmanFill(Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, 3, DefaultCrook, False,
-                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787, battlefield=Battlefields.MolevilleMines),
+                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787, battlefield=Battlefields.MolevilleMines)
         ]
     ]
 

@@ -17,7 +17,7 @@ from randomizer.data.roomobjects.roomobjects import rooms as roomdata
 from randomizer.data.npcmodels import models as npcmodels
 from randomizer.data.dialog_data.dialog_data import dialog_data
 from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
-from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
+from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
 from . import bosses
 from . import bosses_overworld
 from . import credits
@@ -218,6 +218,7 @@ class GameWorld:
         self.file_select_character = 'Mario'
         self.file_select_hash = 'MARIO1 / MARIO2 / MARIO3 / MARIO4'
         self._rebuild_hash()
+        self.version = VERSION
 
         # Events
         self.eventscripts = copy.deepcopy(eventscripts)
@@ -294,8 +295,8 @@ class GameWorld:
         self.quiz = data.dialogs.Quiz(self)
 
         # Credits for specifically chosen tadpole pond and sunken ship submissions
-        self.tadpole_submitters = []
-        self.password_submitter = ""
+        self.tadpole_songs = []
+        self.password = None
 
         # Music (moved this into its own classes to make exclusion easier)
         self.music_pool = data.music.get_default_music()
@@ -438,7 +439,7 @@ class GameWorld:
                             if prop in ["model", "event_script", "action_script", "battle_pack"] and prop in npc:
                                 base_value_id = npc[prop]
                                 offset = value - base_value_id
-                                if offset > 7:
+                                if offset > 7 or offset < 0:
                                     raise Exception("illegal %s value for clone npc %i in room %i: %i (parent is %i)" % (prop, npc_id, room_id, value, npc[prop]))
                                 if prop == "model":
                                     self.rooms[room_id]["objects"][parent_id]["clones"][clone_id]["npc_id_offset"] = offset
@@ -504,8 +505,7 @@ class GameWorld:
 
         # Remove commands from game loader that are required to make the base rom run properly on its own
         # These commands will be replaced according to the user's settings
-        self.eventscripts[192].pop(0)
-        self.eventscripts[192].pop(0)
+        self.eventscripts[13] = [utils.new_command(13, "ret")]
 
         # Set number of star pieces required for win condition
         required_star_pieces = self.settings.get_flag(flags.TotalStarPieces).value
@@ -622,6 +622,12 @@ class GameWorld:
             self.prepend_bits(192, [[0x7051, 1]])
         elif self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.ship):
             self.prepend_bits(210, [[0x7051, 1]])
+
+        # Belome Temple gating
+        if self.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.open):
+            self.prepend_bits(192, [[0x7052, 2]])
+        elif self.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.seaside):
+            pass
 
         # Monstro Town gating
         if self.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.open):
@@ -1105,5 +1111,7 @@ class GameWorld:
             spoiler['Item Locations'] = items.get_spoiler(self)
             spoiler['Moved Invisible Items'] = chests.get_spoiler(self)
             spoiler['Shop Items'] = shops.get_spoiler(self)
+            spoiler['Character Spells'] = characters.get_spoiler(self)
+            spoiler['Puzzles'] = games.get_spoiler(self)
 
         return spoiler

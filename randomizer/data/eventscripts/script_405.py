@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_405_sequence_setter',
-        "command": 'run_event_as_subroutine',
-        "args": [770]
-    },
-    {
         "identifier": 'EVENT_405_set_bit_0',
         "command": 'set_bit',
         "args": [0x704a, 2]
@@ -152,7 +147,7 @@ script = [
     {
         "identifier": 'EVENT_405_jmp_if_object_not_in_level_17',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, 'EVENT_405_set_43']
+        "args": [AreaObjects.NPC_1, Rooms._481_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_2F, 'EVENT_405_fade_in_from_black_async_24_']
     },
     {
         "identifier": 'EVENT_405_action_queue_async_18',
@@ -247,12 +242,20 @@ script = [
         "command": 'fade_in_from_black_async'
     },
     {
-        "identifier": 'EVENT_405_set_43',
+        "identifier": 'EVENT_405_ret_46',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_405_fade_in_from_black_async_24_',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_405_set_43_',
         "command": 'run_event_as_subroutine',
         "args": [178]
     },
     {
-        "identifier": 'EVENT_405_ret_46',
+        "identifier": 'EVENT_405_ret_46_',
         "command": 'ret'
     }
 ]

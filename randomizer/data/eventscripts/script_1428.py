@@ -20,11 +20,6 @@ script = [
         "command": 'freeze_all_npcs_until_return'
     },
     {
-        "identifier": 'EVENT_1428_resume_action_script_3',
-        "command": 'resume_action_script',
-        "args": [AreaObjects.NPC_1]
-    },
-    {
         "identifier": 'EVENT_1428_start_battle_4',
         "command": 'start_battle',
         "args": [0x0006, 9]

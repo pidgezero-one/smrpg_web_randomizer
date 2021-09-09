@@ -3142,9 +3142,9 @@ class Coins(MiscReward):
             hits = amount // 10
             loops = hits // 16
             leftover = hits - 15 * loops
-            self.multiplier = loops
-            self.chest_70A7_lower = leftover
-        self.amount = amount
+            self.multiplier = int(loops)
+            self.chest_70A7_lower = int(leftover)
+        self.amount = int(amount)
 
 
 class Coins10(Coins):
@@ -3337,9 +3337,9 @@ class MultiFrogCoin(MiscReward):
         hits = amount
         loops = hits // 16
         leftover = hits - 15 * loops
-        self.multiplier = loops
-        self.chest_70A7_lower = leftover
-        self.amount = amount
+        self.multiplier = int(loops)
+        self.chest_70A7_lower = int(leftover)
+        self.amount = int(amount)
 
 
 class YouMissed(MiscReward):

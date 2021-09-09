@@ -6,7 +6,7 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1688_jmp_if_bit_clear_0',
+        "identifier": 'EVENT_1688_jmp_if_bit_clear_0_',
         "command": 'jmp_if_bit_clear',
         "args": [0x7050, 6, 'EVENT_1688_set_7000_to_70A0_short_mem_2']
     },
@@ -98,7 +98,7 @@ script = [
     {
         "identifier": 'EVENT_1688_jmp_if_bit_clear_18',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7094, 0, 'EVENT_1688_jmp_to_event_23']
+        "args": [0x7094, 0, 'EVENT_1688_jmp_if_bit_clear_0']
     },
     {
         "identifier": 'EVENT_1688_action_queue_sync_19',
@@ -217,7 +217,7 @@ script = [
     {
         "identifier": 'EVENT_1688_jmp_if_bit_clear_21',
         "command": 'jmp_if_bit_clear',
-        "args": [0x7050, 7, 'EVENT_1688_jmp_to_event_23']
+        "args": [0x7050, 7, 'EVENT_1688_jmp_if_bit_clear_0']
     },
     {
         "identifier": 'EVENT_1688_action_queue_sync_22',
@@ -259,6 +259,47 @@ script = [
             }
         ]
     },
+
+
+
+    {
+        "identifier": 'EVENT_1688_jmp_if_bit_clear_0',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7052, 2, 'EVENT_1688_remove_shaman']
+    },
+
+    {
+        "identifier": 'EVENT_1688_remove_from_current_level_6',
+        "command": 'summon_to_current_level',
+        "args": [AreaObjects.NPC_3]
+    },
+    {
+        "identifier": 'EVENT_1688_remove_from_level_6_',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
+    },
+
+
+    {
+        "identifier": 'EVENT_1688_jmp',
+        "command": 'jmp',
+        "args": ['EVENT_1688_jmp_to_event_23']
+    },
+
+
+    
+    {
+        "identifier": 'EVENT_1688_remove_shaman',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_3]
+    },
+    {
+        "identifier": 'EVENT_1688_also_remove_shaman',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
+    },
+
+
     {
         "identifier": 'EVENT_1688_jmp_to_event_23',
         "command": 'jmp_to_event',

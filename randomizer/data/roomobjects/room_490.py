@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._02_MUSHROOM_KINGDOM,
-  "entrance_event": 261,
+  "entrance_event": 344,
   "event_tiles": [
     {
       "event": 263,

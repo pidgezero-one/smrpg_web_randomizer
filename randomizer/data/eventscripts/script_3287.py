@@ -6,27 +6,26 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3287_set_0',
-        "command": 'set',
-        "args": [0x7000, 1694]
-    },
-    {
         "identifier": 'EVENT_3287_jmp_if_bit_clear_1',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7058, 7, 'EVENT_3287_run_dialog_3']
-    },
-    {
-        "identifier": 'EVENT_3287_inc_2',
-        "command": 'inc',
-        "args": [0x7000]
+        "command": 'jmp_if_bit_set',
+        "args": [0x7058, 7, 'EVENT_3287_run_dialog_3_']
     },
     {
         "identifier": 'EVENT_3287_run_dialog_3',
         "command": 'run_dialog',
-        "args": [0x7000, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+        "args": [1694, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
     },
     {
         "identifier": 'EVENT_3287_ret_4',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_3287_run_dialog_3_',
+        "command": 'run_dialog',
+        "args": [1695, AreaObjects.MEM_70A8, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]
+    },
+    {
+        "identifier": 'EVENT_3287_ret_4_',
         "command": 'ret'
     }
 ]

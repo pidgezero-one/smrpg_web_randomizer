@@ -6,7 +6,7 @@ from inspect import isclass
 from randomizer.logic import flags
 
 from randomizer.data import items, spells
-from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, PipeVaultGating
+from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, MarrymoreGating, BoosterTowerGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, PipeVaultGating
 from randomizer.data.characters import Mario, Mallow, Peach, Bowser, Geno
 from randomizer.logic import utils
 from randomizer.logic.patch import Patch
@@ -684,6 +684,27 @@ def can_access_sea(world, inventory):
 def can_access_yaridovich(world, inventory):
     if world.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.ship):
         return can_access_sea(world, inventory)
+    else:
+        return True
+
+
+def can_access_temple(world, inventory):
+    if world.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.seaside):
+        return can_access_yaridovich(world, inventory)
+    else:
+        return True
+
+
+def can_access_monstro_town(world, inventory):
+    if world.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.landsend):
+        return can_access_temple(world, inventory)
+    else:
+        return True
+
+
+def can_access_invisible_flags(world, inventory):
+    if not world.settings.is_flag_enabled(flags.SkipMustyFearsSequence):
+        return can_access_monstro_town(world, inventory)
     else:
         return True
 
