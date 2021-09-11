@@ -7,6 +7,8 @@ import re
 import binascii
 import copy
 import enum
+import yaml
+import os
 from datetime import datetime
 
 
@@ -43,6 +45,8 @@ from randomizer.data.eventscripts.utils.tower_access.geno import script as tower
 from randomizer.data.eventscripts.utils.tower_access.bowser import script as tower_bowser
 from randomizer.data.eventscripts.utils.tower_access.toadstool import script as tower_toadstool
 
+from randomizer.data.roomobjecttables import RadialDirection
+
 from .enscript import EventScript
 from .osscript import ObjectSequenceScript
 from .roomobject import RoomObjects
@@ -65,6 +69,14 @@ class Settings:
         self._mode = mode
         self._debug_mode = debug_mode
         self._all_flags = []
+        self._override = {}
+        
+        if debug_mode:
+            with open("randomizer/debug/config.yml", "r") as stream:
+                try:
+                    self._override = yaml.safe_load(stream)
+                except yaml.YAMLError as exc:
+                    print(exc)
 
         flag_dict = {}
         flag_words = re.compile("\s+").split(flag_string) + re.compile("\s+").split(cosmetics_string)
@@ -126,6 +138,11 @@ class Settings:
     def debug_mode(self):
         """:rtype: bool"""
         return self._debug_mode
+
+    @property
+    def override(self):
+        """:rtype: dict"""
+        return self._override
 
     @property
     def flag_string(self):
@@ -619,9 +636,9 @@ class GameWorld:
 
         # Yaridovich gating
         if self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.open):
-            self.prepend_bits(192, [[0x7051, 1]])
+            self.prepend_bits(192, [[0x7057, 1]])
         elif self.settings.is_flag_value(flags.YaridovichGate, YaridovichGating.ship):
-            self.prepend_bits(210, [[0x7051, 1]])
+            self.prepend_bits(210, [[0x7057, 1]])
 
         # Belome Temple gating
         if self.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.open):
@@ -984,6 +1001,17 @@ class GameWorld:
         if self.debug_mode or self.settings.is_flag_enabled(flags.FreeShops):
             patch.add_data(0x3a00db, utils.ByteField(9999, num_bytes=2).as_bytes())
             patch.add_data(0x3a00df, utils.ByteField(999, num_bytes=2).as_bytes())
+        # Add items specified by debug config.
+        if "items" in self.settings.override and "start" in self.settings.override["items"]:
+            for item in self.settings.override["items"]["start"]:
+                self.eventscripts[192].insert(0, utils.new_command(192, "put_inventory", [eval('data.items.%s.index' % item)]))
+        # Set debug room specified by override config
+        if "house_exit" in self.settings.override:
+            self.rooms[189]["exit_fields"][0]["destination"] = self.settings.override["house_exit"]["room"]
+            self.rooms[189]["exit_fields"][0]["destination_props"]["x"] = self.settings.override["house_exit"]["x"]
+            self.rooms[189]["exit_fields"][0]["destination_props"]["y"] = self.settings.override["house_exit"]["y"]
+            self.rooms[189]["exit_fields"][0]["destination_props"]["z"] = self.settings.override["house_exit"]["z"]
+            self.rooms[189]["exit_fields"][0]["destination_props"]["f"] = eval("RadialDirection.%s" % self.settings.override["house_exit"]["direction"])
 
         # Items
         for item in self.items:
@@ -1021,8 +1049,8 @@ class GameWorld:
             patch.add_data(0x240000, dialog_code[2])
 
         # Unlock the whole map if in debug mode in standard.
-        if self.debug_mode and not self.open_mode:
-            patch += map.unlock_world_map()
+        #if self.debug_mode and not self.open_mode:
+        #    patch += map.unlock_world_map()
 
         # This needs to happen after all battle script randomization.
         patch += assemble_battle_scripts(self)

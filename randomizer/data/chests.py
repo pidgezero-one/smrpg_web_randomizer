@@ -811,9 +811,6 @@ class PandoriteReward1(NPCReward):
     def can_access(self, inventory):
         return inventory.has_item(items.PandoriteFight)
 
-    def item_allowed(self, item):
-        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight)
-
 
 
 class PandoriteReward2(Chest):
@@ -833,7 +830,7 @@ class PandoriteReward2(Chest):
         return inventory.has_item(items.PandoriteFight)
 
     def item_allowed(self, item):
-        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight) and not isclass_or_instance(item, items.SlotMachineChest)
+        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight) and not isclass_or_instance(item, items.SlotMachineChest) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 
@@ -2208,7 +2205,7 @@ class BoosterTowerMasher(OverworldItem):
         return locations.can_access_tower(self.world, inventory)
 
     def item_allowed(self, item):
-        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight)
+        return super().item_allowed(item)
 
 
 class BoosterTowerParachute(Chest):
@@ -2806,9 +2803,6 @@ class HidonReward1(NPCReward):
     def can_access(self, inventory):
         return inventory.has_item(items.HidonFight)
 
-    def item_allowed(self, item):
-        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight)
-
 
 class HidonReward2(Chest):
     description = ShuffleLocationSelector.HidonReward2.value
@@ -2827,7 +2821,7 @@ class HidonReward2(Chest):
         return inventory.has_item(items.HidonFight)
 
     def item_allowed(self, item):
-        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight) and not isclass_or_instance(item, items.SlotMachineChest)
+        return super().item_allowed(item) and not isclass_or_instance(item, items.MimicFight) and not isclass_or_instance(item, items.SlotMachineChest) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 
@@ -2909,6 +2903,9 @@ class SunkenShipSafetyRing(Chest):
     def can_access(self, inventory):
         return locations.can_access_sea(self.world, inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
 
 class SunkenShipBandanaReds(Chest):
     description = ShuffleLocationSelector.SunkenShipBandanaReds.value
@@ -2921,6 +2918,9 @@ class SunkenShipBandanaReds(Chest):
 
     def can_access(self, inventory):
         return locations.can_access_sea(self.world, inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class SunkenShipBlooberRoom(OverworldItem):
@@ -4288,6 +4288,11 @@ class NimbusCastleStarAfterValentina(Chest):
     def can_access(self, inventory):
         return locations.can_clear_nimbus_castle(inventory)
 
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
+
+
+
 
 class NimbusCastleCornerChestAfterValentina(Chest):
     description = ShuffleLocationSelector.NimbusCastleCornerChestAfterValentina.value
@@ -4300,6 +4305,9 @@ class NimbusCastleCornerChestAfterValentina(Chest):
 
     def can_access(self, inventory):
         return locations.can_clear_nimbus_castle(inventory)
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InvincibilityStar)
 
 
 class NimbusLandRightSide(NPCReward):

@@ -20,7 +20,6 @@ script = [
     },
 
 
-
     # DEBUG
     # {
     #     "identifier": 'EVENT_192_set_map_connector_',

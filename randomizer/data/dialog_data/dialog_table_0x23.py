@@ -109,13 +109,13 @@ dialog_data[64] = '''RAZ: Oh NO![delay_60]
  I forgot to sign the guest book for
  `TOWER_BOSS_1` & `MARRYMORE_CHARACTER`'s wedding![await]'''
 dialog_data[65] = '''RAINI: I think the back door to the
- chapel was left unlocked.[await] But Raz
+ chapel was left unlocked.[await][pause] But Raz
  is afraid of getting caught
  sneaking in.[await]'''
-dialog_data[66] = '''Even though `TOWER_BOSS_1` and
- `MARRYMORE_CHARACTER` getting married
- sounds like something out of a
- bad fanfic, invites to this wedding
+dialog_data[66] = '''`TOWER_BOSS_1` and `MARRYMORE_CHARACTER`
+ getting married sounds like
+ something out of a bad fanfic.[await]
+ Even so, invites to this wedding
  are highly exclusive.[await]'''
 dialog_data[67] = ''' Don't listen to that guy,
  `MARRYMORE_CHARACTER` x `RANDOM_BOSS_NAME_1`
@@ -125,14 +125,13 @@ dialog_data[68] = ''' We were about to begin the
  dark clothes, kicked us out![await]'''
 dialog_data[69] = ''' Don't listen to that guy, he's just
  mad because he ships
- `RANDOM_CHARACTER_NAME` x `TOWER_BOSS_1`.[await]'''
-dialog_data[70] = ''' Personally, I was hoping for this
- seed to finally resolve the romantic
- tension between `RANDOM_BOSS_NAME_2`
- and `RANDOM_BOSS_NAME_3`.[await]
+ `RANDOM_CHARACTER_NAME` and `TOWER_BOSS_1`.[await]'''
+dialog_data[70] = ''' I was hoping for this seed to solve
+ the romantic tension between
+ `RANDOM_BOSS_NAME_2` and `RANDOM_BOSS_NAME_3`.[await]
  Oh well, can't win 'em all.[await]'''
 dialog_data[71] = ''' Really? `MARRYMORE_CHARACTER` and `TOWER_BOSS_1`
- getting married?[delay_30] Are these writers
+ getting married?[delay_30] Are these devs
  even trying anymore?[await]'''
 dialog_data[72] = ''' Huh?[delay_30] A bathroom?[delay_30] No, I'm just
  cold![await]'''
@@ -248,11 +247,11 @@ dialog_data[146] = ''' Did you know that the hotel offers
  the Suite repeatedly?[await]
  I wonder what they're giving out?[await]'''
 dialog_data[147] = ''' I stayed in the hotel for two nights
- when I only paid for one.[delay] And I
+ when I only paid for one.[await][pause] And I
  didn't have enough money to cover
  the second night.[await]
  They made me work to make up the
- difference. And you know what?[await]
+ difference.[delay] And you know what?[await]
  The tips were great![await]'''
 dialog_data[148] = '''
           Pipe down and relax.[await]'''
@@ -1159,8 +1158,9 @@ dialog_data[707] = ''' The workers...in the left
 dialog_data[708] = '''[await]'''
 dialog_data[709] = ''' If you...want to enter the ocean,
  jump into...the whirlpools.'''
-dialog_data[710] = ''' If you...want to enter the ocean,
- you must...interrupt a wedding.[await]'''
+dialog_data[710] = ''' If you cannot...enter the ocean,
+ you may have to...do something
+ else first.[await]'''
 dialog_data[711] = ''' You will find Yaridovich...
  in his house. He is...the most
  respected person here.[await]'''

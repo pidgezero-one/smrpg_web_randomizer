@@ -30,6 +30,134 @@ script = [
         "command": 'stop_background_event',
         "args": [0x701e]
     },
+
+
+
+    {
+        "identifier": 'EVENT_668_pause_6',
+        "command": 'pause',
+        "args": [10]
+    },
+    {
+        "identifier": 'EVENT_668_action_queue_sync_7',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_668_action_queue_sync_7_SUBSCRIPT_face_southwest_0',
+                "command": 'face_southwest'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_668_action_queue_sync_9',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_8],
+        "subscript": [
+            {
+                "identifier": 'EVENT_668_action_queue_sync_25_SUBSCRIPT_set_animation_speed_0_',
+                "command": 'fixed_f_coord_off',
+            },
+            {
+                "identifier": 'EVENT_668_action_queue_sync_9_SUBSCRIPT_face_southwest_0_',
+                "command": 'reset_properties'
+            },
+            {
+                "identifier": 'EVENT_668_action_queue_sync_9_SUBSCRIPT_face_southwest_0',
+                "command": 'face_southwest'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_668_action_queue_sync_10',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_11],
+        "subscript": [
+            {
+                "identifier": 'EVENT_668_action_queue_sync_10_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [9, 97, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_668_action_queue_sync_10_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [16, 8, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_668_action_queue_sync_11',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_9],
+        "subscript": [
+            {
+                "identifier": 'EVENT_668_action_queue_sync_11_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [9, 98, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_668_action_queue_sync_11_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [8, 4, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_668_action_queue_sync_11_SUBSCRIPT_face_northeast_2',
+                "command": 'face_northeast'
+            },
+        ]
+    },
+    {
+        "identifier": 'EVENT_668_action_queue_async_12',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_10],
+        "subscript": [
+            {
+                "identifier": 'EVENT_668_action_queue_async_12_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [10, 95, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_668_action_queue_async_12_SUBSCRIPT_transfer_xyzf_pixels_1',
+                "command": 'transfer_xyzf_pixels',
+                "args": [254, 4, 0, RadialDirections.EAST]
+            },
+            {
+                "identifier": 'EVENT_668_action_queue_async_12_SUBSCRIPT_face_northeast_2',
+                "command": 'face_northeast'
+            },
+        ]
+    },
+    {
+        "identifier": 'EVENT_668_action_queue_sync_13',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.SCREEN_FOCUS],
+        "subscript": [
+            {
+                "identifier": 'EVENT_668_action_queue_sync_13_SUBSCRIPT_set_animation_speed_0',
+                "command": 'set_animation_speed',
+                "args": [SequenceSpeeds.FAST, [_0x10Flags.WALKING]]
+            },
+            {
+                "identifier": 'EVENT_668_action_queue_sync_13_SUBSCRIPT_walk_to_xy_coords_1',
+                "command": 'walk_to_xy_coords',
+                "args": [5, 85]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_668_remember_last_object_14',
+        "command": 'remember_last_object'
+    },
+    {
+        "identifier": 'EVENT_668_set_action_script_sync_27',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.MARIO, 395]
+    },
+    {
+        "identifier": 'EVENT_668_pause_37',
+        "command": 'pause',
+        "args": [30]
+    },
     {
         "identifier": 'EVENT_668_fight',
         "command": 'run_event_as_subroutine',
@@ -47,21 +175,6 @@ script = [
     {
         "identifier": 'EVENT_668_restore_all_fp_62',
         "command": 'restore_all_fp'
-    },
-    {
-        "identifier": 'EVENT_668_remove_from_current_level_63',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
-    },
-    {
-        "identifier": 'EVENT_668_remove_from_current_level_64',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4]
-    },
-    {
-        "identifier": 'EVENT_668_remove_from_current_level_65',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_14]
     },
     {
         "identifier": 'EVENT_668_run_event_as_subroutine_66',
@@ -90,10 +203,25 @@ script = [
     {
         "identifier": 'EVENT_668_remove_from_current_level_71',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_12]
+        "args": [AreaObjects.NPC_7]
     },
     {
-        "identifier": 'EVENT_668_remove_from_current_level_72',
+        "identifier": 'EVENT_668_remove_from_current_level_71_',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_8]
+    },
+    {
+        "identifier": 'EVENT_668_remove_from_current_level_71__',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_9]
+    },
+    {
+        "identifier": 'EVENT_668_remove_from_current_level_71___',
+        "command": 'remove_from_current_level',
+        "args": [AreaObjects.NPC_10]
+    },
+    {
+        "identifier": 'EVENT_668_remove_from_current_level_71____',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.NPC_11]
     },
@@ -118,15 +246,29 @@ script = [
         "args": [AreaObjects.NPC_7, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
     },
     {
-        "identifier": 'EVENT_668_action_queue_sync_79',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_12],
-        "subscript": [
-            {
-                "identifier": 'EVENT_668_action_queue_sync_79_SUBSCRIPT_visibility_off_0',
-                "command": 'visibility_off'
-            }
-        ]
+        "identifier": 'EVENT_668_remove_from_level_76_',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_8, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    },
+    {
+        "identifier": 'EVENT_668_remove_from_level_76__',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_9, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    },
+    {
+        "identifier": 'EVENT_668_remove_from_level_76___',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_10, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    },
+    {
+        "identifier": 'EVENT_668_remove_from_level_76____',
+        "command": 'remove_from_level',
+        "args": [AreaObjects.NPC_11, Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    },
+    {
+        "identifier": 'EVENT_668_open_forest',
+        "command": 'run_event_as_subroutine',
+        "args": [200]
     },
     {
         "identifier": 'EVENT_668_fade_in_from_black_async_80',
@@ -211,11 +353,6 @@ script = [
         "identifier": 'EVENT_668_jmp_to_event_139_',
         "command": 'run_event_as_subroutine',
         "args": [186]
-    },
-    {
-        "identifier": 'EVENT_668_open_forest',
-        "command": 'run_event_as_subroutine',
-        "args": [200]
     },
     {
         "identifier": 'EVENT_668_jmp_to_event_139',

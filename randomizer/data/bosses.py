@@ -418,8 +418,9 @@ class ModelFill:
     target_action_scripts = []
     sequence_setter = None
     battlefield = None
+    can_run_away = False
 
-    def __init__(self, fill_type, room_id, npc_id, event_id, occupant, preferred_size, minigames_only, repeatable_allowed, remove_if_empty, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None):
+    def __init__(self, fill_type, room_id, npc_id, event_id, occupant, preferred_size, minigames_only, repeatable_allowed, remove_if_empty, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None, can_run_away=False):
         self.fill_type = fill_type
         self.room_id = room_id
         self.npc_id = npc_id
@@ -434,6 +435,7 @@ class ModelFill:
         self.target_action_scripts = target_action_scripts
         self.sequence_setter = sequence_setter
         self.battlefield = battlefield
+        self.can_run_away = can_run_away
 
 
 class BossModelFill(ModelFill):
@@ -443,15 +445,15 @@ class BossModelFill(ModelFill):
 
 
 class UniqueHenchmanFill(ModelFill):
-    def __init__(self, room_id, npc_id, occupant, minigames_only, repeatable_allowed, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None):
+    def __init__(self, room_id, npc_id, occupant, minigames_only, repeatable_allowed, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None, can_run_away=False):
         super().__init__(fill_type, room_id, npc_id, event_id, occupant, SpriteSize.Small, minigames_only,
-                         repeatable_allowed, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield)
+                         repeatable_allowed, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield, can_run_away)
 
 
 class RepeatableHenchmanFill(ModelFill):
-    def __init__(self, room_id, npc_id, occupant, minigames_only, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None):
+    def __init__(self, room_id, npc_id, occupant, minigames_only, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None, can_run_away=False):
         super().__init__(fill_type, room_id, npc_id, event_id, occupant, SpriteSize.Small, minigames_only,
-                         True, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield)
+                         True, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield, can_run_away)
 
 
 class StarLocation:
@@ -2533,7 +2535,7 @@ jagger_taunt = SpriteAnimation(
 class JaggerBoss(Boss):
     name = "Jagger"
     pack_number = 189
-    small_model = SmallModelDetails(237, animations=SpriteAnimationCollection(
+    small_model = SmallModelDetails(256, animations=SpriteAnimationCollection(
         bandits_way_distracted=jagger_look,
         mines_punch=jagger_punch,
         chapel_laugh=jagger_look,
@@ -5196,15 +5198,15 @@ class Croco2(BossAndStarLocation):
     unique_henchmen = [
         [
             UniqueHenchmanFill(Rooms._273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, 1, DefaultCrook, False, True, False,
-                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777, battlefield=Battlefields.MolevilleMines)
+                               HenchmanType.Event, 1186, target_scripts=[776], target_action_scripts=[619], sequence_setter=777, battlefield=Battlefields.MolevilleMines, can_run_away=True)
         ],
         [
             UniqueHenchmanFill(Rooms._277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, 1, DefaultCrook, False, True,
-                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779, battlefield=Battlefields.MolevilleMines)
+                               False, HenchmanType.Event, 1186, target_scripts=[778], target_action_scripts=[617], sequence_setter=779, battlefield=Battlefields.MolevilleMines, can_run_away=True)
         ],
         [
             UniqueHenchmanFill(Rooms._283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, 1, DefaultCrook, False,
-                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787, battlefield=Battlefields.MolevilleMines)
+                               True, False, HenchmanType.Event, 1186, target_scripts=[786], target_action_scripts=[618], sequence_setter=787, battlefield=Battlefields.MolevilleMines, can_run_away=True)
         ]
     ]
 
@@ -5231,11 +5233,11 @@ class Punchinello(BossAndStarLocation):
         ],
         [  # check and see if cloning causes vram issues
             RepeatableHenchmanFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 4, DefaultBobomb, False,
-                                   False, HenchmanType.Pack, target_scripts=[592, 596], target_action_scripts=[290, 293], sequence_setter=788),
+                                   False, HenchmanType.Pack, target_scripts=[592, 596], target_action_scripts=[290, 293], sequence_setter=788, can_run_away=True),
             RepeatableHenchmanFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 5, DefaultBobomb, False,
-                                   False, HenchmanType.Pack, target_scripts=[592, 596], target_action_scripts=[292, 293], sequence_setter=788),
+                                   False, HenchmanType.Pack, target_scripts=[592, 596], target_action_scripts=[292, 293], sequence_setter=788, can_run_away=True),
             RepeatableHenchmanFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 6, DefaultBobomb, False,
-                                   False, HenchmanType.Pack, target_scripts=[592, 596], target_action_scripts=[291, 293], sequence_setter=788),
+                                   False, HenchmanType.Pack, target_scripts=[592, 596], target_action_scripts=[291, 293], sequence_setter=788, can_run_away=True),
         ]
     ]
 
@@ -5354,15 +5356,19 @@ class Bundt(BossAndStarLocation):
     boss_locations = [
         BossModelFill(Rooms._155_MARRYMORE_CHAPEL_KITCHEN, 0, BundtBoss, SpriteSize.Small,
                       False, target_scripts=[628], target_action_scripts=[], sequence_setter=796),
+        BossModelFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 11, BundtBoss, SpriteSize.Small,
+                      False, target_scripts=[668], target_action_scripts=[], sequence_setter=790),
     ]
     unique_henchmen = [
         [
             UniqueHenchmanFill(Rooms._155_MARRYMORE_CHAPEL_KITCHEN, 1, BundtTorte1, False, True, False, HenchmanType.NPCOnly, dialogs=[
                                2061], target_scripts=[628], target_action_scripts=[330], sequence_setter=796),
+            UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 9, BundtTorte1, False, True, False, HenchmanType.NPCOnly, target_scripts=[668], target_action_scripts=[636], sequence_setter=790)
         ],
         [
             UniqueHenchmanFill(Rooms._155_MARRYMORE_CHAPEL_KITCHEN, 2, BundtTorte2, False, True, False, HenchmanType.NPCOnly, dialogs=[
                                2062], target_scripts=[628], target_action_scripts=[331], sequence_setter=796),
+            UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 10, BundtTorte2, False, True, False, HenchmanType.NPCOnly, target_scripts=[668], target_action_scripts=[636], sequence_setter=790)
         ]
     ]
 
@@ -5755,25 +5761,25 @@ class Valentina(BossAndStarLocation):
     repeatable_henchmen = [
         [
             RepeatableHenchmanFill(Rooms._411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST, 0, DefaultBluebird2, False,
-                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[29], sequence_setter=838),
+                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[29], sequence_setter=838, can_run_away=True),
         ],
         [
             RepeatableHenchmanFill(Rooms._411_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_1ST, 1, DefaultBluebird2, False,
-                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[458], sequence_setter=838),
+                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[458], sequence_setter=838, can_run_away=True),
             RepeatableHenchmanFill(Rooms._121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, 2, DefaultBluebird2, False,
-                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[458], sequence_setter=839),
+                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[458], sequence_setter=839, can_run_away=True),
         ],
         [
             RepeatableHenchmanFill(Rooms._121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, 3, DefaultBluebird2, False,
-                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=839),
+                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=839, can_run_away=True),
             RepeatableHenchmanFill(Rooms._121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, 4, DefaultBluebird2, False,
-                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=839),
+                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=839, can_run_away=True),
             RepeatableHenchmanFill(Rooms._121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, 5, DefaultBluebird2, False,
-                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=839),
+                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=839, can_run_away=True),
             RepeatableHenchmanFill(Rooms._437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD, 1, DefaultBluebird2, False,
-                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=820),
+                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=820, can_run_away=True),
             RepeatableHenchmanFill(Rooms._437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD, 2, DefaultBluebird2, False,
-                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=820),
+                                   False, HenchmanType.Pack, 95, target_scripts=[], target_action_scripts=[30], sequence_setter=820, can_run_away=True),
         ],
     ]
 

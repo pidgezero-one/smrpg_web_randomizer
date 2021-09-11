@@ -182,7 +182,7 @@ def tok(rom, start, end, bank):
             1/0
 
         bytestring = [('0x%02x' % i) for i in rom[dex:dex+l]]
-        print (hex(dex), " ".join(bytestring))
+        #print (hex(dex), " ".join(bytestring))
         script.append((rom[dex:dex+l], dex))
         dex += l
     return script
@@ -577,6 +577,8 @@ def set_object_presence_in_level(args):
         func = 'summon_to_level'
     else:
         func = 'remove_from_level'
+    #if (obj == 0x15 or obj == 0x16) and level == 28:
+    #    raise Exception("trace")
     return func, ['%s' % (use_table_name('AreaObjects', area_object_table, obj)), '%s' % (use_table_name('Rooms', room_table, level))]
 
 
@@ -1055,7 +1057,7 @@ class Command(BaseCommand):
                     event_lengths.append(bank["end"] - ptrs[i])
                     script_content = tok(rom, ptrs[i], bank["end"], bank)
                 scripts.append(script_content)
-                print('\n\n\n')
+                #print('\n\n\n')
 
         # translate lines into commands and note any jump addresses
         for i in range(len(scripts)):
@@ -1064,6 +1066,8 @@ class Command(BaseCommand):
             for j in range(len(script)):
                 line, offset = script[j]
                 name, args = parse_line(line, offset, False)
+                if len(args) > 1 and ((args[0] == "AreaObjects.NPC_0") and args[1] == "Rooms._177_SUNKEN_SHIP_AREA_09_PASSWORD_ROOM"):
+                    print(i, new_sd)
                 identifier = 'EVENT_%i_%s_%i' % (i, name, j)
                 subscript = []
                 nonembedded = False
@@ -1125,8 +1129,7 @@ class Command(BaseCommand):
             for cmd in script:
                 jumps = []
                 commands_to_replace = len(cmd["jumps"]) * -1
-                print(i, cmd, [hex(x) for x in cmd["jumps"]], [
-                            c for c in sd if c["original_offset"] == j])
+                #print(i, cmd, [hex(x) for x in cmd["jumps"]], [c for c in sd if c["original_offset"] == j])
                 for j in cmd["jumps"]:
                     for sd in scripts_data:
                         candidates = [

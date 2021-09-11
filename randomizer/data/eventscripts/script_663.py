@@ -80,6 +80,42 @@ script = [
         "args": [0x701e]
     },
     {
+        "identifier": 'EVENT_663_action_queue_sync_160',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_663_action_queue_sync_160_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [23, 117, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_663_action_queue_sync_161',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'EVENT_663_action_queue_sync_161_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [23, 117, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_663_action_queue_sync_162',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_663_action_queue_sync_162_SUBSCRIPT_transfer_to_xyzf_0',
+                "command": 'transfer_to_xyzf',
+                "args": [23, 117, 0, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_663_jmp_to_event_317',
         "command": 'jmp_to_event',
         "args": [668]

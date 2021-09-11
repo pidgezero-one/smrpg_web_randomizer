@@ -143,11 +143,6 @@ script = [
         "args": [353]
     },
     {
-        "identifier": 'EVENT_2493_start_battle_350',
-        "command": 'run_event_as_subroutine',
-        "args": [171]
-    },
-    {
         "identifier": 'EVENT_2493_jmp_if_bit_set_15',
         "command": 'jmp_if_bit_set',
         "args": [0x7040, 0, 'EVENT_2493_reset_and_choose_game_26']
@@ -208,6 +203,11 @@ script = [
                 "command": 'bpl_26_27_28'
             },
             {
+                "identifier": 'EVENT_2493_action_queue_sync_25_SUBSCRIPT_jmp_if_bit_set_4',
+                "command": 'jmp_if_bit_set',
+                "args": [0x7040, 1, 'EVENT_2493_action_queue_sync_25_SUBSCRIPT_object_memory_clear_bit_9']
+            },
+            {
                 "identifier": 'EVENT_2493_action_queue_sync_20_SUBSCRIPT_set_sprite_sequence_4',
                 "command": 'set_sprite_sequence',
                 "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
@@ -220,18 +220,44 @@ script = [
             {
                 "identifier": 'EVENT_2493_action_queue_sync_20_SUBSCRIPT_sequence_looping_off_6',
                 "command": 'sequence_looping_off'
+            },
+            {
+                "identifier": 'EVENT_2493_action_queue_sync_25_SUBSCRIPT_ret_12_',
+                "command": 'ret'
+            },
+            {
+                "identifier": 'EVENT_2493_action_queue_sync_25_SUBSCRIPT_object_memory_clear_bit_9',
+                "command": 'object_memory_clear_bit',
+                "args": [0x30, [4]]
+            },
+            {
+                "identifier": 'EVENT_2493_action_queue_sync_25_SUBSCRIPT_sequence_looping_off_10',
+                "command": 'sequence_looping_off'
+            },
+            {
+                "identifier": 'EVENT_2493_action_queue_sync_25_SUBSCRIPT_set_sprite_sequence_11',
+                "command": 'set_sprite_sequence',
+                "args": [0, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_2493_action_queue_sync_25_SUBSCRIPT_ret_12',
+                "command": 'ret'
             }
         ]
     },
     {
-        "identifier": 'EVENT_2493_remove_from_level_21',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.MEM_70A8, Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
+        "identifier": 'EVENT_2493_jmp_if_bit_set_27',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7040, 1, 'EVENT_2493_ret_25']
     },
     {
-        "identifier": 'EVENT_2493_summon_to_level_22',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_6, Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM]
+        "identifier": 'EVENT_2493_disable_trigger_0',
+        "command": 'disable_trigger',
+        "args": [AreaObjects.MEM_70A8]
+    },
+    {
+        "identifier": 'EVENT_2493_disable_event_trigger_for_object_at_70A8_2',
+        "command": 'disable_event_trigger_for_object_at_70A8'
     },
     {
         "identifier": 'EVENT_2493_stop_embedded_action_script_23',
@@ -242,6 +268,11 @@ script = [
         "identifier": 'EVENT_2493_set_action_script_async_24',
         "command": 'set_action_script_async',
         "args": [AreaObjects.MEM_70A8, 15]
+    },
+    {
+        "identifier": 'EVENT_2493_start_battle_350',
+        "command": 'run_event_as_subroutine',
+        "args": [171]
     },
     {
         "identifier": 'EVENT_2493_ret_25',

@@ -730,12 +730,8 @@ script = [
     },
     {
         "identifier": 'jmp_if_bit_clear_47',
-        "command": 'jmp_if_bit_clear',
-        "args": [0x7040, 0, 'remove_from_current_level_97']
-    },
-    {
-        "identifier": 'reset_and_choose_game_48',
-        "command": 'reset_and_choose_game'
+        "command": 'jmp_if_bit_set',
+        "args": [0x7040, 0, 'reset_and_choose_game_48']
     },
     {
         "identifier": 'remove_from_current_level_97',
@@ -814,6 +810,14 @@ script = [
     },
     {
         "identifier": 'ret_100',
+        "command": 'ret'
+    },
+    {
+        "identifier": 'reset_and_choose_game_48',
+        "command": 'reset_and_choose_game'
+    },
+    {
+        "identifier": 'ret_100_',
         "command": 'ret'
     },
 ]

@@ -246,11 +246,6 @@ script = [
         "args": [30]
     },
     {
-        "identifier": 'EVENT_2497______remove_from_level_173',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_1, Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE]
-    },
-    {
         "identifier": 'EVENT_2497______apply_tile_mod_203',
         "command": 'apply_tile_mod',
         "args": [Rooms._083_ROSE_TOWN_DURING_BOWYER_OUTSIDE, 0, [_0x6AFlags.USE_ALTERNATE]]

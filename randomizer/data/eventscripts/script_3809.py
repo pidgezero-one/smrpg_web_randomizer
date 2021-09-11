@@ -35,6 +35,11 @@ script = [
         "command": 'freeze_camera'
     },
     {
+        "identifier": 'EVENT_3809_sequence_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [790]
+    },
+    {
         "identifier": 'EVENT_3809_action_queue_sync_28',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_7],
@@ -574,11 +579,6 @@ script = [
                 "args": [4]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_3809_sequence_setter',
-        "command": 'run_event_as_subroutine',
-        "args": [790]
     },
     {
         "identifier": 'EVENT_3809_fade_in_from_black_sync_38',
@@ -1812,6 +1812,10 @@ script = [
                 "identifier": 'EVENT_3809_action_queue_sync_337_SUBSCRIPT_set_animation_speed_3',
                 "command": 'set_animation_speed',
                 "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
+            },
+            {
+                "identifier": 'EVENT_3809_action_queue_sync_337_SUBSCRIPT_walk_1_step_southeast_2_',
+                "command": 'face_southwest'
             },
             {
                 "identifier": 'EVENT_3809_action_queue_sync_337_SUBSCRIPT_set_sprite_sequence_4',

@@ -553,6 +553,8 @@ def randomize_all(world):
         if world.settings.is_flag_enabled(flags.ShuffleStarPieces):
             all_locations += world.boss_star_checks.copy()
         if world.settings.is_flag_enabled(flags.ShuffleCharacters):
+            for c in world.spotted_character_checks:
+                c.item = None
             all_locations += world.recruitable_character_checks.copy() + world.spotted_character_checks.copy()
 
         # remove unused checks
@@ -595,6 +597,17 @@ def randomize_all(world):
         
         all_locations = [a for a in all_locations if not utils.isclass_or_instance(a, chests.CharacterSpotted)]
         
+        # Do chest overrides and remove them from the pool.
+        if "items" in world.settings.override and "override" in world.settings.override["items"]:
+            for c in world.settings.override["items"]["override"]:
+                chest = eval('chests.%s' % c)
+                item = eval('items.%s' % world.settings.override["items"]["override"][c])
+                for l in all_locations:
+                    if utils.isclass_or_instance(l, chest):
+                        l.item = item
+                        all_locations.remove(l)
+                        break
+
 
         remainder = []
         required_item_pool = []
@@ -740,13 +753,15 @@ def randomize_all(world):
             if len([i for i in remainder if utils.isclass_or_instance(i, items.RecruitedCharacter)]) == 0:
                 break
 
-        if remainder:
-            excluded_important_items = [i for i in remainder if i.is_key or i in remainder_check or utils.isclass_or_instance(i, items.RecruitedCharacter)]
-            if len(excluded_important_items) > 0:
-                for l in all_locations:
-                    print(l)
-                raise ValueError("Items were not placed: {!r}".format(
-                    excluded_important_items))
+        # if this is a real rom attempt with no overrides specified in debug config, error out if required items weren't placed
+        if not ("items" in world.settings.override and "override" in world.settings.override["items"] and len(world.settings.override["items"]["override"]) > 0):
+            if remainder:
+                excluded_important_items = [i for i in remainder if i.is_key or i in remainder_check or utils.isclass_or_instance(i, items.RecruitedCharacter)]
+                if len(excluded_important_items) > 0:
+                    for l in all_locations:
+                        print(l)
+                    raise ValueError("Items were not placed: {!r}".format(
+                        excluded_important_items))
 
 
         # next step: fill empty grants, if any, with randomly generated items
@@ -777,10 +792,11 @@ def randomize_all(world):
         grant_builders = {}
 
         
-        # sanitize exp stars, etc
+        # sanitize exp stars, etc. 
         for c in world.recruitable_character_checks + world.chest_locations + world.freestanding_item_locations + world.boss_star_checks:
             if type(c.item) == type:
                 c.item = c.item(world)
+            
 
 
         # shuffling finished - now apply it to the game
@@ -788,16 +804,16 @@ def randomize_all(world):
 
         # recruitable characters - characters aree treated as items as far as the logic is concerned, so this goes here
         for c in world.recruitable_character_checks:
+            if c.event is not None and c.event not in grant_builders:
+                grant_builders[c.event] = {
+                    "jumps": [utils.new_command(c.event, 'set_7000_to_current_level')],
+                    "executions": []
+                }
             if c.item is not None:
                 for d in c.dialogs_to_replace:
                     for id, dat in c.item.dialog_replacements:
                         if d == id:
                             world.replace_dialog(id, dat)
-                if c.event not in grant_builders:
-                    grant_builders[c.event] = {
-                        "jumps": [utils.new_command(c.event, 'set_7000_to_current_level')],
-                        "executions": []
-                    }
                 cmd = utils.new_command(c.event, 'jmp_to_event', [c.item.container_script])
                 grant_builders[c.event]["executions"].append(cmd)
                 for r in c.rooms:
@@ -862,18 +878,18 @@ def randomize_all(world):
 
         # chests
         for c in [x for x in world.chest_locations if not utils.isclass_or_instance(x, chests.OverworldItem)] + [x for x in world.freestanding_item_locations if not utils.isclass_or_instance(x, chests.OverworldItem) and not utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:
+            if c.event is not None and c.event not in grant_builders:
+                grant_builders[c.event] = {
+                    "jumps": [],
+                    "executions": []
+                }
+                if utils.isclass_or_instance(c, chests.OverworldItem):
+                    grant_builders[c.event]["jumps"].append(utils.new_command(c.event, 'set_7000_to_current_level'))
             if c.item is not None and not utils.isclass_or_instance(c, chests.FrogCoinShopItem):
                 for d in c.dialogs_to_replace:
                     for id, dat in c.item.dialog_replacements:
                         if d == id:
                             world.replace_dialog(id, dat)
-                if c.event not in grant_builders:
-                    grant_builders[c.event] = {
-                        "jumps": [],
-                        "executions": []
-                    }
-                    if utils.isclass_or_instance(c, chests.OverworldItem):
-                        grant_builders[c.event]["jumps"].append(utils.new_command(c.event, 'set_7000_to_current_level'))
                 cmds = []
                 # physical chests
                 if utils.isclass_or_instance(c, chests.Chest): 
@@ -1079,18 +1095,18 @@ def randomize_all(world):
                                 
         # freestanding items
         for c in [x for x in world.freestanding_item_locations if utils.isclass_or_instance(x, chests.OverworldItem)] + [x for x in world.chest_locations if utils.isclass_or_instance(x, chests.OverworldItem) or utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:
+            if c.event is not None and c.event not in grant_builders:
+                grant_builders[c.event] = {
+                    "jumps": [],
+                    "executions": []
+                }
+                if utils.isclass_or_instance(c, chests.OverworldItem):
+                    grant_builders[c.event]["jumps"].append(utils.new_command(c.event, 'set_7000_to_current_level'))
             if c.item is not None:
                 for d in c.dialogs_to_replace:
                     for id, dat in c.item.dialog_replacements:
                         if d == id:
                             world.replace_dialog(id, dat)
-                if c.event not in grant_builders:
-                    grant_builders[c.event] = {
-                        "jumps": [],
-                        "executions": []
-                    }
-                    if utils.isclass_or_instance(c, chests.OverworldItem):
-                        grant_builders[c.event]["jumps"].append(utils.new_command(c.event, 'set_7000_to_current_level'))
                 cmds = []
                 if utils.isclass_or_instance(c, chests.PacketItem): 
                     # generate the right packet for the item
@@ -1150,16 +1166,16 @@ def randomize_all(world):
 
         # boss star pieces
         for c in world.boss_star_checks:
+            if c.event is not None and c.event not in grant_builders:
+                grant_builders[c.event] = {
+                    "jumps": [utils.new_command(c.event, 'inc', [0x70E6])],
+                    "executions": []
+                }
             if c.item is not None:
                 for d in c.dialogs_to_replace:
                     for id, dat in c.item.dialog_replacements:
                         if d == id:
                             world.replace_dialog(id, dat)
-                if c.event not in grant_builders:
-                    grant_builders[c.event] = {
-                        "jumps": [utils.new_command(c.event, 'inc', [0x70E6])],
-                        "executions": []
-                    }
                 cmd = utils.new_command(c.event, 'jmp_to_event', [3092])
                 grant_builders[c.event]["executions"].append(cmd)
                 for r in c.rooms:

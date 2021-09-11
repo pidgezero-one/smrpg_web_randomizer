@@ -93,6 +93,10 @@ script = [
         "args": [Music._39_MARRYMORE]
     },
     {
+        "identifier": 'EVENT_690_ret_16_',
+        "command": 'close_dialog'
+    },
+    {
         "identifier": 'EVENT_690_ret_16',
         "command": 'ret'
     }

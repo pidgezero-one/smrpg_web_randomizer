@@ -131,11 +131,12 @@ def randomize_all(world):
                 if utils.isclass_or_instance(shop, shops.ToadShop) and len([i for i in shop.items if utils.isclass_or_instance(i, items.PickMeUp)]) == 0:
                     shop.items.append(world.get_item_instance(items.PickMeUp))
                     remaining_space -= 1
+                banned_items = [i for i in frog_coin_items] if not utils.isclass_or_instance(shop, shops.MolevilleSwapShop) else [] # swap shop doesn't use coins, so it doesn't need to ignore frog coin bombs
                 if world.settings.is_flag_enabled(flags.BiasShopShuffle):
-                    good_optional = [i for i in game_should_optionally_include if shop.is_item_allowed(i) and i not in shop.items and (i.tier == 3 or i.tier == 4) and i not in frog_coin_items]
-                    good_required = [i for i in game_should_include if shop.is_item_allowed(i) and i not in shop.items and (i.tier == 3 or i.tier == 4) and i not in frog_coin_items]
-                    bad_optional = [i for i in game_should_optionally_include if shop.is_item_allowed(i) and i not in shop.items and (i.tier == 1 or i.tier == 2) and i not in frog_coin_items]
-                    bad_required = [i for i in game_should_include if shop.is_item_allowed(i) and i not in shop.items and (i.tier == 1 or i.tier == 2) and i not in frog_coin_items]
+                    good_optional = [i for i in game_should_optionally_include if shop.is_item_allowed(i) and i not in shop.items and (i.tier == 3 or i.tier == 4) and i not in banned_items]
+                    good_required = [i for i in game_should_include if shop.is_item_allowed(i) and i not in shop.items and (i.tier == 3 or i.tier == 4) and i not in banned_items]
+                    bad_optional = [i for i in game_should_optionally_include if shop.is_item_allowed(i) and i not in shop.items and (i.tier == 1 or i.tier == 2) and i not in banned_items]
+                    bad_required = [i for i in game_should_include if shop.is_item_allowed(i) and i not in shop.items and (i.tier == 1 or i.tier == 2) and i not in banned_items]
 
                     shop_choice = random.randint(1, 5)
                     if (shop_choice <= 4 and shop.access == 2) or (shop_choice > 4 and shop.access == 1):
@@ -155,7 +156,7 @@ def randomize_all(world):
                         if len(extra_item_pool) == 0:
                             extra_item_pool = copy.copy(good_required)
                 else:
-                    extra_item_pool = [i for i in initial_item_pool if shop.is_item_allowed(i) and i not in shop.items and i not in frog_coin_items]
+                    extra_item_pool = [i for i in initial_item_pool if shop.is_item_allowed(i) and i not in shop.items and i not in banned_items]
                 extra_item_pool = list(set(extra_item_pool))
                 if shop.retain_size or (utils.isclass_or_instance(shop, shops.JuiceBarFull) and len(shop.items) < 4):
                     # juice bar needs at least 4 items
@@ -164,7 +165,7 @@ def randomize_all(world):
                     else:
                         sample = remaining_space
                     if len(extra_item_pool) < sample:
-                        extra_item_pool = list(set([i for i in initial_item_pool + extra_item_pool if shop.is_item_allowed(i) and i not in shop.items and i not in frog_coin_items]))
+                        extra_item_pool = list(set([i for i in initial_item_pool + extra_item_pool if shop.is_item_allowed(i) and i not in shop.items and i not in banned_items]))
                 else:
                     if world.settings.is_flag_value(flags.ShopQuality, ShopQualities.original):
                         sample = 2
@@ -174,7 +175,7 @@ def randomize_all(world):
                     sample = min(sample, remaining_space)
                     sample = min(sample, len(extra_item_pool))
                     sample = max(0, sample)
-                #print(shop, sample, extra_item_pool)
+                # print(shop, sample, extra_item_pool)
                 items_to_add = random.sample(extra_item_pool, int(round(sample)))
                 shop.items.extend(items_to_add)
                 if shop.frog_coin_shop:

@@ -1065,9 +1065,9 @@ class BossReplaceMinigameSprites(BooleanFlag):
 
 class MimicsAnywhere(BooleanFlag):
     name = 'Shuffle mimic chests'
-    description = '''If enabled, the three mimics could be in any chest in the world. If you have "Scale boss stats to area difficulty" enabled, each mimic will be restricted to areas that are appropriate for its stats. However you should save often with this setting turned on, especially if item-hunting at the start of the seed.
+    description = '''If enabled, any three chests in the world may be mimics. You will be able to run away from them, including fights initiated by failed slot machines. If you have "Scale boss stats to area difficulty" enabled, each mimic will be restricted to areas that are appropriate for its stats. However you should save often with this setting turned on, especially if item-hunting at the start of the seed.
 <br>
-<br>If disabled, mimic chests will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley.'''
+<br>If disabled, mimic chests will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley. You will not be able to run away from these fights.'''
     modes = ['open']
     
     id = "mimics"
@@ -1149,7 +1149,7 @@ class ExperienceNoBosses(BooleanFlag):
 
 
 class RequireBossFights(BooleanFlag):
-    name = 'Disable all boss fight skips'
+    name = 'Disable all alternate star piece win conditions'
     description = '''If set, the following actions will NOT grant you a Star Piece, and you must fight the associated boss in order to retrieve their Star Piece (if they have one):
 <ul>
 <li> Performing Mack Skip (the Chancellor will not advance the script)</li>

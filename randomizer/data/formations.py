@@ -1676,6 +1676,12 @@ def get_default_enemy_formations(world):
             FormationMember(2, False, world.get_enemy_instance(enemies.BandanaBlue), 135, 135),
             FormationMember(3, False, world.get_enemy_instance(enemies.BandanaBlue), 183, 159),
             FormationMember(4, False, world.get_enemy_instance(enemies.BandanaBlue), 215, 151),
+            # Water Crystals inserted because they use an empty sprite such as to not screw up vram
+            # Johnny's 1v1 event will animate these two objects since they get replaced with a Bandana Blue sprite anyway
+            # This prevents the game from crashing when you use Sheep Attack on the Bandana Blues, 
+            # thus preventing the game from trying to animate an object that no longer exists
+            FormationMember(5, True, world.get_enemy_instance(enemies.WaterCrystal), 91, 111),
+            FormationMember(6, True, world.get_enemy_instance(enemies.WaterCrystal), 215, 181),
         ], stat_total_enemies=[
             # Only count Johnny himself for boss shuffle logic.
             world.get_enemy_instance(enemies.Johnny),

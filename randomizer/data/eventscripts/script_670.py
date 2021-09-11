@@ -129,54 +129,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_670_action_queue_sync_10',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_10],
-        "subscript": [
-            {
-                "identifier": 'EVENT_670_action_queue_sync_10_SUBSCRIPT_set_priority_0',
-                "command": 'set_priority',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_670_action_queue_sync_11',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_11],
-        "subscript": [
-            {
-                "identifier": 'EVENT_670_action_queue_sync_11_SUBSCRIPT_set_priority_0',
-                "command": 'set_priority',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_670_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_12],
-        "subscript": [
-            {
-                "identifier": 'EVENT_670_action_queue_sync_12_SUBSCRIPT_set_priority_0',
-                "command": 'set_priority',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_670_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_13],
-        "subscript": [
-            {
-                "identifier": 'EVENT_670_action_queue_sync_13_SUBSCRIPT_set_priority_0',
-                "command": 'set_priority',
-                "args": [3]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_670_remember_last_object_14',
         "command": 'remember_last_object'
     },

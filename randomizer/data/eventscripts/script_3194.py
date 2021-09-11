@@ -25,6 +25,11 @@ script = [
         "args": [24]
     },
     {
+        "identifier": 'EVENT_3194_jmp_if_bit_set_8',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7040, 1, 'EVENT_3194_clear_bit_14']
+    },
+    {
         "identifier": 'EVENT_3194_action_queue_sync_4',
         "command": 'action_queue_sync',
         "args": [AreaObjects.MEM_70A8],
@@ -150,11 +155,6 @@ script = [
         "identifier": 'EVENT_3194_set_bit_7',
         "command": 'set_bit',
         "args": [0x7043, 1]
-    },
-    {
-        "identifier": 'EVENT_3194_jmp_if_bit_set_8',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7040, 1, 'EVENT_3194_clear_bit_14']
     },
     {
         "identifier": 'EVENT_3194_set_9',

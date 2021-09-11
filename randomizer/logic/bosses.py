@@ -75,37 +75,31 @@ def randomize_all(world):
         if world.settings.is_flag_enabled(flags.BossShuffle):
             locations = [b for b in world.boss_locations if _boss_fight_filter(world, b)]
             shuffled_locations = locations[:]
-            random.shuffle(shuffled_locations)
-            #alpha testing: set the order manually
-            # shuffle_count = 0
-            # while shuffle_count < 5:
-            #     position_iterator = 0
-            #     while position_iterator < 1:
-            #         for location in shuffled_locations:
-            #             if position_iterator < 1:
-            #                 shuffled_locations.append(shuffled_locations.pop(shuffled_locations.index(location)))
-            #                 position_iterator += 1
-            #     shuffle_count += 1
 
-            # index_jinx = -1
-            # index_jagger = -1
-            # index_countdown = -1
-            # index_exor = -1
-            # for l in locations:
-            #     if l.name == 'Jinx3':
-            #         index_jinx = locations.index(l)
-            #     if l.name == 'Jagger':
-            #         index_jagger = locations.index(l)
-            #
-            # for l in shuffled_locations:
-            #     if l.name == 'Countdown':
-            #         index_countdown = shuffled_locations.index(l)
-            #     if l.name == 'Booster':
-            #         index_exor = shuffled_locations.index(l)
-            # print(index_jinx, index_jagger, index_countdown, index_exor)
-            #
-            # swapPositions(shuffled_locations, index_jinx, index_exor)
-            # swapPositions(shuffled_locations, index_jagger, index_countdown)
+            # Testing: simply shift the boss positions by numebr specified
+            if "bosses" in world.settings.override and "shift" in world.settings.override["bosses"]:
+                shift = world.settings.override["bosses"]["shift"]
+                shifts = shuffled_locations[-1 * shift:]
+                shuffled_locations = shuffled_locations[:-1 * shift]
+                shuffled_locations[0:0] = shifts
+            else:
+                random.shuffle(shuffled_locations)
+            
+            # Do boss overrides
+            if "bosses" in world.settings.override and "override" in world.settings.override["bosses"]:
+                for l in world.settings.override["bosses"]["override"]:
+                    location = eval('bosses.%s' % l)
+                    boss = eval('bosses.%s' % world.settings.override["bosses"]["override"][l])
+                    for loc in locations:
+                        if utils.isclass_or_instance(loc, location):
+                            locations.remove(loc)
+                            locations.insert(0, loc)
+                            break
+                    for loc in shuffled_locations:
+                        if utils.isclass_or_instance(loc.boss, boss):
+                            shuffled_locations.remove(loc)
+                            shuffled_locations.insert(0, loc)
+                            break
 
             shuffled_bosses = [b.boss for b in shuffled_locations]
 
@@ -338,7 +332,11 @@ def randomize_all(world):
                 location.boss = boss
                 pack = world.get_formation_pack_by_index(boss.pack_number)
                 formation = world.get_enemy_formation_by_index(pack.formations[0].index)
-                formation.can_run_away = location.can_run_away
+                if world.settings.is_flag_enabled(flags.MimicsAnywhere) and (utils.isclass_or_instance(location, bosses.Pandorite) or utils.isclass_or_instance(location, bosses.Hidon) or utils.isclass_or_instance(location, bosses.BoxBoy)):
+                    formation.can_run_away = True
+                else:
+                    formation.can_run_away = location.can_run_away
+
 
 
                 # unfortunately, smithy aeros generate action scripts on yaridovich that are too long for the game to understand due to their sequence properties
@@ -407,6 +405,16 @@ def randomize_all(world):
                                     elif location.repeatable_henchmen[index][index2].remove_if_empty:
                                         location.repeatable_henchmen[index][index2].occupant = None
                     
+                    # update run flags
+                    for index, henchman in enumerate(location.unique_henchmen + location.repeatable_henchmen):
+                        for index2, model in enumerate(henchman):
+                            if model.occupant is not None and model.occupant.pack_number is not None:
+                                can_run_away = model.can_run_away
+                                pack_number = model.occupant.pack_number
+                                pack = world.get_formation_pack_by_index(pack_number)
+                                formations = [world.get_enemy_formation_by_index(f.index) for f in pack.formations]
+                                for f in formations:
+                                    f.can_run_away = can_run_away
 
                     # *** Special cases
 
@@ -594,7 +602,6 @@ def randomize_all(world):
                         current_direction = world.get_room_npc_property_by_id(room_id, npc_id, "direction")
                         new_direction = current_direction
                         if world.models[model_num]["sprite"] == SpriteName._39_RED_SCARECROW:
-                            world.update_room_npc_property_by_id(room_id, npc_id, "face_on_trigger", False)
                             if current_direction == RadialDirection.SOUTHWEST:
                                 new_direction = RadialDirection.NORTHWEST
                             elif current_direction == RadialDirection.NORTHWEST:
@@ -621,6 +628,7 @@ def randomize_all(world):
                         if model.model_details is not None and model.model_details["sprite"] == SpriteName._221_YARIDOVICH_OUT_OF_BATTLE and (utils.isclass_or_instance(boss_location, bosses.Boomer) or utils.isclass_or_instance(boss_location, bosses.Smithy)):
                             pass # mid-sized yaridovich should NOT be set to sequence 1 in these particular locations
                         elif model.sequence_type == SequenceType.Mold or model.sequence > 0:
+                            world.update_room_npc_property_by_id(room_id, npc_id, "face_on_trigger", False)
                             if model.sequence_type == SequenceType.Mold:
                                 seq = model.mold
                             else:

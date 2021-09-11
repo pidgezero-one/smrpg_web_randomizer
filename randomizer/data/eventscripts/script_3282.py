@@ -89,7 +89,7 @@ script = [
         "args": [3, 'EVENT_3282_clear_bit_14']
     },
     {
-        "identifier": 'EVENT_3282_set_bit_13',
+        "identifier": 'EVENT_3282_set_bit_13_',
         "command": 'set_bit',
         "args": [0x7044, 0]
     },
@@ -359,6 +359,11 @@ script = [
         "command": 'restore_all_fp'
     },
     {
+        "identifier": 'EVENT_3282_set_bit_13',
+        "command": 'set_bit',
+        "args": [0x7058, 7]
+    },
+    {
         "identifier": 'EVENT_3282_set_short_party_capacity_98',
         "command": 'set_short_party_capacity'
     },
@@ -431,10 +436,6 @@ script = [
         "identifier": 'EVENT_3282_db_106',
         "command": 'db',
         "args": [0xfd, 0x8e, 0x72, 0x00, 0x28]
-    },
-    {
-        "identifier": 'EVENT_3282_fade_in_from_black_async_108',
-        "command": 'fade_in_from_black_async'
     },
     {
         "identifier": 'EVENT_3282_star_piece',
