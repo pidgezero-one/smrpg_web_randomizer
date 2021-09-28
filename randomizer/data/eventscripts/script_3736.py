@@ -21,6 +21,10 @@ script = [
                 "args": [252, 252, 0, RadialDirections.EAST]
             },
             {
+                "identifier": 'EVENT_3736_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_1_',
+                "command": 'face_northeast'
+            },
+            {
                 "identifier": 'EVENT_3736_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_1',
                 "command": 'set_sprite_sequence',
                 "args": [1, 0, [_0x08Flags.READ_AS_SEQUENCE]]

@@ -34,5 +34,5 @@ script = [
     {
         "identifier": 'ACTION_906_ret_6',
         "command": 'ret'
-    }
+    },
 ]

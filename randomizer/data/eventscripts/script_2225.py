@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_2225_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
-        "args": [0x7054, 2, 'EVENT_2225_action_queue_async_3_']
+        "args": [0x7054, 2, 'EVENT_2225_start_battle_19']
     },
     {
         "identifier": 'EVENT_2225_action_queue_async_2',
@@ -249,161 +249,29 @@ script = [
         "args": [0x7054, 2]
     },
     {
-        "identifier": 'EVENT_2225_enter_area_16',
-        "command": 'enter_area',
-        "args": [Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, RadialDirections.NORTHEAST, 2, 66, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
-    },
-    {
         "identifier": 'EVENT_2225_set_short_17',
         "command": 'set',
         "args": [0x7000, 521]
     },
     {
+        "identifier": 'EVENT_2225_set_bit__399_',
+        "command": 'set_bit',
+        "args": [0x7099, 0]
+    },
+    {
         "identifier": 'EVENT_2225_jmp_to_event_18',
-        "command": 'jmp_to_event',
+        "command": 'run_event_as_subroutine',
         "args": [167]
     },
     {
-        "identifier": 'EVENT_2225_action_queue_async_3_',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.SCREEN_FOCUS],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2225_action_queue_async_3_SUBSCRIPT_set_animation_speed_0',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTER, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_3_SUBSCRIPT_shift_north_steps_1',
-                "command": 'shift_north_steps',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_3_SUBSCRIPT_set_animation_speed_2',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTER, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_3_SUBSCRIPT_shift_north_steps_3',
-                "command": 'shift_north_steps',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_3_SUBSCRIPT_set_animation_speed_4',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.FASTER, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_3_SUBSCRIPT_shift_north_steps_5',
-                "command": 'shift_north_steps',
-                "args": [11]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2225_pause_4_',
-        "command": 'pause',
-        "args": [60]
+        "identifier": 'EVENT_2225_set_bit__399__',
+        "command": 'clear_bit',
+        "args": [0x7099, 0]
     },
     {
         "identifier": 'EVENT_2225_pause_5_',
         "command": 'pause',
-        "args": [15]
-    },
-    {
-        "identifier": 'EVENT_2225_freeze_camera_6_',
-        "command": 'freeze_camera'
-    },
-    {
-        "identifier": 'EVENT_2225_action_queue_async_7_',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [12, 46, 0, RadialDirections.EAST]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_pause_1',
-                "command": 'pause',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [4, 1, [_0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_set_priority_3',
-                "command": 'set_priority',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_overwrite_solidity_4',
-                "command": 'overwrite_solidity',
-                "args": [[]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_db_5',
-                "command": 'db',
-                "args": [0x20, 0x07]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_db_6',
-                "command": 'db',
-                "args": [0x24, 0xe0, 0xfd, 0x00, 0xff]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_db_7',
-                "command": 'db',
-                "args": [0x25, 0x00, 0x0d, 0x80, 0xff]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_pause_8',
-                "command": 'pause',
-                "args": [44]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_bpl_26_27_28_9',
-                "command": 'bpl_26_27_28'
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_10',
-                "command": 'set_sprite_sequence',
-                "args": [23, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_pause_11',
-                "command": 'pause',
-                "args": [5]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_12',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_pause_13',
-                "command": 'pause',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_14',
-                "command": 'set_sprite_sequence',
-                "args": [15, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE]]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_pause_15',
-                "command": 'pause',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_2225_action_queue_async_7_SUBSCRIPT_set_sprite_sequence_16',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            }
-        ]
+        "args": [10]
     },
     {
         "identifier": 'EVENT_2225_start_battle_19',
@@ -429,14 +297,13 @@ script = [
         "command": 'restore_all_hp'
     },
     {
+        "identifier": 'EVENT_2225_restore_all_fp_14_',
+        "command": 'restore_all_fp'
+    },
+    {
         "identifier": 'EVENT_2225_set_bit_23',
         "command": 'set_bit',
         "args": [0x7093, 7]
-    },
-    {
-        "identifier": 'EVENT_2225_enter_area_25',
-        "command": 'enter_area',
-        "args": [Rooms._400_BOWSERS_KEEP_AREA_13_2ND_THRONE_ROOM_BOOMERS_ROOM, RadialDirections.NORTHEAST, 2, 66, 0, [_0x68Flags.RUN_ENTRANCE_EVENT]]
     },
     {
         "identifier": 'EVENT_2225_set_short_28',
@@ -444,13 +311,28 @@ script = [
         "args": [0x7000, 522]
     },
     {
+        "identifier": 'EVENT_2225_set_bit_399_',
+        "command": 'set_bit',
+        "args": [0x7099, 0]
+    },
+    {
         "identifier": 'EVENT_2225_jmp_to_event_29',
-        "command": 'jmp_to_event',
+        "command": 'run_event_as_subroutine',
         "args": [167]
+    },
+    {
+        "identifier": 'EVENT_2225_set_bit_399___',
+        "command": 'clear_bit',
+        "args": [0x7099, 0]
     },
     {
         "identifier": 'EVENT_2225_stop_sound_30',
         "command": 'stop_sound'
+    },
+    {
+        "identifier": 'EVENT_2225_j',
+        "command": 'jmp_to_event',
+        "args": [2149]
     },
     {
         "identifier": 'EVENT_2225_ret_31',

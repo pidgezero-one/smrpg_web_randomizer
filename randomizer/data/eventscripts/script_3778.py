@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_3778_set_short_3',
+        "command": 'set_short',
+        "args": [0x703e, 0x0010]
+    },
+    {
         "identifier": 'EVENT_3778_action_queue_async_0',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_0],
@@ -43,26 +48,6 @@ script = [
                 "args": [9]
             }
         ]
-    },
-    {
-        "identifier": 'EVENT_3778_set_short_3',
-        "command": 'set_short',
-        "args": [0x703e, 0x0010]
-    },
-    {
-        "identifier": 'EVENT_3778_clear_bit_4',
-        "command": 'clear_bit',
-        "args": [0x7044, 7]
-    },
-    {
-        "identifier": 'EVENT_3778_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 59]
-    },
-    {
-        "identifier": 'EVENT_3778_set_bit_9',
-        "command": 'set_bit',
-        "args": [0x7044, 7]
     },
     {
         "identifier": 'EVENT_3778_action_queue_async_10',

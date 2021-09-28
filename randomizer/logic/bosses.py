@@ -69,6 +69,11 @@ def randomize_all(world):
         world (randomizer.logic.main.GameWorld): Game world to randomize.
 
     """
+    # Change Belome 2's large sprite before any of the substitution work happens.
+    if world.settings.is_flag_enabled(flags.DifferentiateRepeatedBosses):
+        bosses.Belome2Boss.big_model.model_details["sprite"] = 147
+
+
     # Open mode-specific shuffles.
     if world.open_mode:
         # Shuffle boss encounters.
@@ -233,7 +238,25 @@ def randomize_all(world):
 
                     # For other stats, if there's an anchor then take that enemy's stats.  Otherwise average them.
                     anchor = formation.shuffle_anchor
-                    if anchor:
+                    # For Smithy, average stats of form 2's heads
+                    if any(e for e in elist if utils.isclass_or_instance(e, enemies.Smithy1)):
+                        attack = 0
+                        defense = 0
+                        magic_attack = 0
+                        magic_defense = 0
+                        for e in [world.get_enemy_instance(enemies.Smithy2TankHead), world.get_enemy_instance(enemies.Smithy2SafeHead), world.get_enemy_instance(enemies.Smithy2MageHead), world.get_enemy_instance(enemies.Smithy2ChestHead)]:
+                            attack += e.attack
+                            defense += e.defense
+                            magic_attack += e.magic_attack
+                            magic_defense += e.magic_defense
+                        attack = ((attack / 4) + world.get_enemy_instance(enemies.Smithy1).attack) / 2
+                        defense = ((defense / 4) + world.get_enemy_instance(enemies.Smithy1).defense) / 2
+                        magic_attack = ((magic_attack / 4) + world.get_enemy_instance(enemies.Smithy1).magic_attack) / 2
+                        magic_defense = ((magic_defense / 4) + world.get_enemy_instance(enemies.Smithy1).magic_defense) / 2
+                        evade = int(round(statistics.mean(e.evade for e in elist)))
+                        magic_evade = int(round(statistics.mean(e.magic_evade for e in elist)))
+                        #print (hp, attack, defense, magic_attack, magic_defense)
+                    elif anchor:
                         attack = anchor.attack
                         defense = anchor.defense
                         magic_attack = anchor.magic_attack
@@ -294,8 +317,6 @@ def randomize_all(world):
                         enemy.evade = min(int(round(stats['evade'] * enemy.ratio_evade)), 100)
                         enemy.magic_evade = min(int(round(stats['magic_evade'] * enemy.ratio_magic_evade)), 100)
 
-                        #print(enemy, enemy.hp, enemy.attack, enemy.defense, enemy.magic_attack, enemy.magic_defense, enemy.evade, enemy.magic_evade)
-
                         # For snek fight, the XP/coins need to be put on Cloaker/Domino 2 because you fight either one.
                         if formation.index == 309:
                             if utils.isclass_or_instance(enemy, (enemies.Cloaker2, enemies.Domino2)):
@@ -339,13 +360,8 @@ def randomize_all(world):
 
 
 
-                # unfortunately, smithy aeros generate action scripts on yaridovich that are too long for the game to understand due to their sequence properties
-                # find a better solution for this someday, but for now, just removed
-                if utils.isclass_or_instance(location, bosses.Yaridovich) and utils.isclass_or_instance(boss, bosses.SmithyBoss):
-                    unique_henchmen = [h for h in boss.unique_henchmen if not utils.isclass_or_instance(h, bosses.SmithyAero)]
-                    repeatable_henchmen = [h for h in boss.repeatable_henchmen if not utils.isclass_or_instance(h, bosses.SmithyAero)]
                 # de-prioritize background npcs that dont have a pierce animation
-                elif utils.isclass_or_instance(location, bosses.Director):
+                if utils.isclass_or_instance(location, bosses.Director):
                     unique_henchmen = [h for h in boss.unique_henchmen if h.model.animations is not None and h.model.animations.factory_pierce is not None] + [h for h in boss.unique_henchmen if h.model.animations is None or h.model.animations.factory_pierce is None]
                     repeatable_henchmen = [h for h in boss.repeatable_henchmen if h.model.animations is not None and h.model.animations.factory_pierce is not None] + [h for h in boss.repeatable_henchmen if h.model.animations is None or h.model.animations.factory_pierce is None]
                 else:
@@ -530,17 +546,17 @@ def randomize_all(world):
                             else:
                                 preferred_size = SpriteSize.Small
                         elif preferred_size == SpriteSize.Statue:
-                            if occupant.statue_model is not None:
-                                preferred_size = SpriteSize.Statue
-                            else:
-                                preferred_size = SpriteSize.Small
+                            preferred_size = SpriteSize.Statue # special handling
                         else:
                             preferred_size = SpriteSize.Small
 
                         if preferred_size == SpriteSize.Small:
                             model = occupant.small_model
                         elif preferred_size == SpriteSize.Statue:
-                            model = occupant.statue_model
+                            if occupant.statue_model is not None:
+                                model = occupant.statue_model
+                            else:
+                                model = occupant.small_model
                         elif preferred_size == SpriteSize.Large:
                             model = occupant.big_model
                         elif preferred_size == SpriteSize.Attack:
@@ -556,9 +572,14 @@ def randomize_all(world):
 
 
                         # replace the models
-                        if preferred_size == SpriteSize.Small or preferred_size == SpriteSize.Statue:
+                        if preferred_size == SpriteSize.Small:
                             world.update_room_npc_property_by_id(room_id, npc_id, "model", model.model_id)
                             model_num = model.model_id
+                        elif preferred_size == SpriteSize.Statue:
+                            model_num = 63 # sprite will be patched in main.py
+                            sprite_id = world.models[model_num]["sprite"]
+                            world.models[model_num] = copy.deepcopy(world.models[model.model_id])
+                            world.models[model_num]["sprite"] = sprite_id
                         else:
                             model_num = world.get_room_npc_property_by_id(room_id, npc_id, "model")
                             world.models[model_num] = model.model_details
@@ -568,7 +589,7 @@ def randomize_all(world):
                         if boss_sprite_location.preferred_size == SpriteSize.Statue:
 
                             world.update_room_npc_property_by_id(room_id, npc_id, "set_sequence_playback", False)
-                            eligible_directions = world.models[model_num]["vram_store"]
+                            eligible_directions = world.models[model.model_id]["vram_store"]
 
                             # replace directions on original room objects
                             if eligible_directions == VramStore._02_SWSE:
@@ -582,34 +603,35 @@ def randomize_all(world):
                             sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
 
                             # pixel shifts
-                            if (new_direction == RadialDirection.SOUTHEAST or new_direction == RadialDirection.SOUTHWEST) and (model.horizontal_pixel_shift > 0 or model.vertical_pixel_shift > 0):
+                            horizontal_shift = 0
+                            vertical_shift = 0
+                            reverse_horizontal_shift = 0
+                            if model.horizontal_pixel_shift > 0:
+                                horizontal_shift = 0xFF & (model.horizontal_pixel_shift)
+                                reverse_horizontal_shift = 0xFF & (0xFF - model.horizontal_pixel_shift + 1)
+                            elif model.horizontal_pixel_shift < 0:
                                 horizontal_shift = 0xFF & (0xFF + model.horizontal_pixel_shift + 1)
+                                reverse_horizontal_shift = 0xFF & (model.horizontal_pixel_shift * -1)
+                            if model.vertical_pixel_shift > 0:
+                                vertical_shift = 0xFF & (model.vertical_pixel_shift)
+                            elif model.vertical_pixel_shift < 0:
                                 vertical_shift = 0xFF & (0xFF + model.vertical_pixel_shift + 1)
+                            if horizontal_shift != 0 or vertical_shift != 0 and (new_direction == RadialDirection.SOUTHWEST or new_direction == RadialDirection.NORTHWEST):
                                 cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [horizontal_shift, vertical_shift]}])
                                 sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
-                            elif (new_direction == RadialDirection.NORTHEAST or new_direction == RadialDirection.NORTHWEST) and (model.north_facing_horizontal_pixel_shift > 0 or model.north_facing_vertical_pixel_shift > 0):
-                                if new_direction == RadialDirection.NORTHEAST:
-                                    horizontal_shift = 0xFF & (0xFF + (-1 * model.north_facing_horizontal_pixel_shift) + 1)
-                                    vertical_shift = 0xFF & (0xFF + (-1 * model.north_facing_vertical_pixel_shift) + 1)
-                                elif new_direction == RadialDirection.NORTHWEST:
-                                    horizontal_shift = 0xFF & (0xFF + model.north_facing_horizontal_pixel_shift + 1)
-                                    vertical_shift = 0xFF & (0xFF + model.north_facing_vertical_pixel_shift + 1)
-                                cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [horizontal_shift, vertical_shift]}])
+                            elif reverse_horizontal_shift != 0 and vertical_shift != 0 and (new_direction == RadialDirection.NORTHEAST or new_direction == RadialDirection.SOUTHEAST):
+                                cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [reverse_horizontal_shift, vertical_shift]}])
                                 sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
 
 
                         # scarecrow directions are mostly inverted, so swap default directions for scarecrow sprites, don't face on trigger
                         current_direction = world.get_room_npc_property_by_id(room_id, npc_id, "direction")
                         new_direction = current_direction
-                        if world.models[model_num]["sprite"] == SpriteName._39_RED_SCARECROW:
-                            if current_direction == RadialDirection.SOUTHWEST:
-                                new_direction = RadialDirection.NORTHWEST
-                            elif current_direction == RadialDirection.NORTHWEST:
-                                new_direction = RadialDirection.SOUTHEAST
-                            elif current_direction == RadialDirection.NORTHEAST:
-                                new_direction = RadialDirection.SOUTHWEST
-                            elif current_direction == RadialDirection.SOUTHEAST:
+                        if world.models[model_num]["sprite"] in [205, 253]: # SCARECROW
+                            if current_direction == RadialDirection.NORTHWEST:
                                 new_direction = RadialDirection.NORTHEAST
+                            elif current_direction == RadialDirection.NORTHEAST:
+                                new_direction = RadialDirection.NORTHWEST
                             
                         
                         world.update_room_npc_property_by_id(room_id, npc_id, "direction", new_direction)
@@ -625,9 +647,7 @@ def randomize_all(world):
 
                         # if default model requires a specific sequence or mold, set it now in room loader subroutine
                         sprite_offset = model.sprite_offset
-                        if model.model_details is not None and model.model_details["sprite"] == SpriteName._221_YARIDOVICH_OUT_OF_BATTLE and (utils.isclass_or_instance(boss_location, bosses.Boomer) or utils.isclass_or_instance(boss_location, bosses.Smithy)):
-                            pass # mid-sized yaridovich should NOT be set to sequence 1 in these particular locations
-                        elif model.sequence_type == SequenceType.Mold or model.sequence > 0:
+                        if (model.sequence_type == SequenceType.Mold and model.mold) > 0 or model.sequence > 0:
                             world.update_room_npc_property_by_id(room_id, npc_id, "face_on_trigger", False)
                             if model.sequence_type == SequenceType.Mold:
                                 seq = model.mold
@@ -963,7 +983,7 @@ def randomize_all(world):
 
                         # if model is a scarecrow, fix all of its directional commands
                         model_info = world.models[model_num]
-                        if model_info["sprite"] == SpriteName._39_RED_SCARECROW:
+                        if model_info["sprite"] in [205, 253]: # SCARECROW
                             for script_id in boss_sprite_location.target_scripts:
                                 script = world.eventscripts[script_id]
                                 for command_index, command in enumerate(script):
@@ -997,12 +1017,31 @@ def randomize_all(world):
                             occupant = henchman_location.occupant
                             room_id = henchman_location.room_id
                             npc_id = henchman_location.npc_id
+
+                            loop_on_walk = True
+
+                            if room_id == 28:
+                                loop_on_walk = False
                             
                             if occupant is None:
                                 # remove this NPC if necessary when boss has nothing to fill
                                 if henchman_location.remove_if_empty: # is gunyolk npc 0 getting an occupant when it shouldnt be?
                                     world.update_room_npc_property_by_id(room_id, npc_id, "visible", False)
                                 # leave as-is if not required to remove
+
+
+                                # adjust trampoline animation in volcano
+                                if utils.isclass_or_instance(boss_location, bosses.AxemRangers) and script_id == 3344 and room_id == 393:
+                                    # print([com for com in world.eventscripts[script_id] if not is_animation_header(com, npc_id)])
+                                    world.eventscripts[script_id] = [com for com in world.eventscripts[script_id] if not is_animation_header(com, npc_id)]
+                                    for cmd_index, cmd in enumerate(world.eventscripts[script_id]):
+                                        if is_animation_header(cmd, 0):
+                                            for subs_index, subc in enumerate(cmd["subscript"]):
+                                                if subc["command"] == "start_loop_n_times":
+                                                    subc["args"][0] -= 1
+                                                    cmd["subscript"][subs_index] = subc
+                                            world.eventscripts[script_id][cmd_index] = cmd
+
                             elif not has_vanilla_henchmen(boss, boss_location):
                                 # update model packs & pack container events
                                 model = occupant.model
@@ -1019,7 +1058,10 @@ def randomize_all(world):
                                     if model.sequence_type == SequenceType.Mold:
                                         cmd = new_animation(henchman_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "set_sprite_sequence", "args": [model.mold, sprite_offset, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_MOLD]]}])
                                     else:
-                                        cmd = new_animation(henchman_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "set_sprite_sequence", "args": [model.sequence, sprite_offset, [_0x08Flags.READ_AS_SEQUENCE]]}])
+                                        seqargs = [_0x08Flags.READ_AS_SEQUENCE]
+                                        if not loop_on_walk:
+                                            seqargs.append(_0x08Flags.LOOPING_OFF)
+                                        cmd = new_animation(henchman_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "set_sprite_sequence", "args": [model.sequence, sprite_offset, seqargs]}])
                                     sequence_setters[henchman_location.sequence_setter].append(cmd)
                                     # and then, get rid of any commands that may un-set the sequence or mold
                                     for script_id in henchman_location.target_scripts:
@@ -1169,10 +1211,10 @@ def randomize_all(world):
                                         script = world.eventscripts[script_id]
                                         for command_index, command in enumerate(script):
                                             if is_animation_header(command, npc_id):
-                                                command["subscript"] = fix_directions_for_sequenced_sprite(command["subscript"], model.sequence_type, seq, sprite_offset)
+                                                command["subscript"] = fix_directions_for_sequenced_sprite(command["subscript"], model.sequence_type, seq, sprite_offset, loop_on_walk)
                                                 world.eventscripts[script_id][command_index] = command
                                     for script_id in henchman_location.target_action_scripts:
-                                        world.actionscripts[script_id] = fix_directions_for_sequenced_sprite(world.actionscripts[script_id], model.sequence_type, seq, sprite_offset)
+                                        world.actionscripts[script_id] = fix_directions_for_sequenced_sprite(world.actionscripts[script_id], model.sequence_type, seq, sprite_offset, loop_on_walk)
                                 
 
                     # replace relevant dialogs

@@ -6,10 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_1965_fade_out_to_black_async_0',
-        "command": 'fade_out_to_black_async'
-    },
-    {
         "identifier": 'EVENT_1965_jmp_to_event_2',
         "command": 'jmp_to_event',
         "args": [1966]

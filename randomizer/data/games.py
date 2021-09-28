@@ -264,7 +264,7 @@ class MagicButtonsGame:
                 if spot is not None:
                     spot.pressed = not spot.pressed
 
-    EVENT = 3358
+    EVENT = 3357
 
     def __init__(self, world):
         """

@@ -34,7 +34,7 @@ script = [
     {
         "identifier": 'EVENT_1686_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x7043, 1, 'EVENT_1686_ret_30']
+        "args": [0x7087, 7, 'EVENT_1686_ret_30']
     },
     {
         "identifier": 'EVENT_1686_pause_5',
@@ -77,7 +77,7 @@ script = [
     {
         "identifier": 'EVENT_1686_set_bit_13',
         "command": 'set_bit',
-        "args": [0x7043, 1]
+        "args": [0x7087, 7]
     },
     {
         "identifier": 'EVENT_1686_jmp_if_var_not_equals_short_14',

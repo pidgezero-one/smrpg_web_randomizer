@@ -586,7 +586,8 @@ dialog_data[339] = ''' It's worth looking everywhere, even
  you get stuck.[await]
  You never know who might have
  some hot tips for you.[await]'''
-dialog_data[340] = '''[await]'''
+dialog_data[340] = ''' Have you been to the volcano
+ beyond the Hot Springs yet?[await]'''
 dialog_data[341] = '''[await]'''
 dialog_data[342] = '''[await]'''
 dialog_data[343] = '''[await]'''
@@ -636,9 +637,9 @@ dialog_data[365] = ''' Looking for special items? I think
  have some they can give you.[await]
  Just be careful, the birds in there
  are pretty strong.[await]'''
-dialog_data[366] = ''' Garro ran low on gold paint, so
- some of the statues in the castle
- have been looking more realistic.[await]'''
+dialog_data[366] = ''' The statues in the castle look
+ shinier than they used to. Maybe
+ Garro stocked up on gold paint.[await]'''
 dialog_data[367] = ''' You might find something nice if
  you try to walk off the east side
  of our town square.[await]

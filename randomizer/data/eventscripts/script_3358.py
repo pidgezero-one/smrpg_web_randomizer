@@ -69,21 +69,6 @@ script = [
         "args": [AreaObjects.NPC_0, 59]
     },
     {
-        "identifier": 'EVENT_3358_run_dialog_6',
-        "command": 'run_dialog',
-        "args": [1909, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
-        "identifier": 'EVENT_3358_jmp_if_dialog_option_b_7',
-        "command": 'jmp_if_dialog_option_b',
-        "args": ['EVENT_3358_set_bit_9']
-    },
-    {
-        "identifier": 'EVENT_3358_run_dialog_8',
-        "command": 'run_dialog',
-        "args": [1910, AreaObjects.NPC_14, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
-    },
-    {
         "identifier": 'EVENT_3358_set_bit_9',
         "command": 'set_bit',
         "args": [0x7044, 7]

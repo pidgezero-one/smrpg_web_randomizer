@@ -72,69 +72,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3640_action_queue_sync_12',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_12_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_12_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_12_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3640_action_queue_sync_13',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_13_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_13_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_sync_13_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3640_action_queue_async_14',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3640_action_queue_async_14_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_14_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_3640_action_queue_async_14_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast'
-            }
-        ]
-    },
-    {
         "identifier": "EVENT_3640_sequence_setter_1",
         "command": "run_event_as_subroutine",
         "args": [819]

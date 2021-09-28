@@ -21,11 +21,6 @@ script = [
         "args": [0x7053, 6, 'EVENT_1328_remove_from_current_level_3_']
     },
     {
-        "identifier": 'EVENT_1328_jmp_if_bit_set_0_',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7053, 7, 'EVENT_1328_remove_from_current_level_3_']
-    },
-    {
         "identifier": 'EVENT_1328_action_queue_async_1',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_1],

@@ -5,41 +5,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_618_set_700C_to_pressed_button_0',
-        "command": 'set_700C_to_pressed_button'
-    },
-    {
-        "identifier": 'ACTION_618_jmp_if_700C_not_equals_short_1',
-        "command": 'jmp_if_700C_not_equals_short',
-        "args": [22, 'ACTION_617_visibility_off_10']
-    },
-    {
         "identifier": 'ACTION_618_jmp_if_bit_set_3',
         "command": 'jmp_if_bit_set',
         "args": [0x7056, 7, 'ACTION_617_visibility_off_10']
     },
     {
-        "identifier": 'ACTION_618_jmp_if_bit_set_4',
+        "identifier": 'ACTION_618_jmp_if_bit_set_3_',
         "command": 'jmp_if_bit_set',
         "args": [0x7056, 5, 'ACTION_617_visibility_off_10']
-    },
-    {
-        "identifier": 'ACTION_618_transfer_to_xyzf_7',
-        "command": 'transfer_to_xyzf',
-        "args": [9, 20, 0, RadialDirections.EAST]
-    },
-    {
-        "identifier": 'ACTION_618_shift_northeast_pixels_8',
-        "command": 'shift_northeast_pixels',
-        "args": [4]
-    },
-    {
-        "identifier": 'ACTION_618_face_southeast_9',
-        "command": 'face_southeast'
-    },
-    {
-        "identifier": 'ACTION_618_sequence_looping_off_10',
-        "command": 'sequence_looping_off'
     },
     {
         "identifier": 'ACTION_618_ret_11',

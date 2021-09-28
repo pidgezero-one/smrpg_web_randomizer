@@ -29,11 +29,11 @@ dialog_data[19] = ''' I saw something suspicious in the
  southeast part of town.[await][page]
  What was it?[await][pause] ...It might have just
  been my imagination.[await]'''
-dialog_data[20] = '''  Now that our kingdom isn't in peril
+dialog_data[20] = ''' Now that our kingdom isn't in peril
  anymore, I wonder if any visitors
  will travel here sometime soon.[await][page]
  I heard that Link and Samus are
- visiting some towns down below!
+ visiting some towns down below![delay]
  How exciting![await]'''
 dialog_data[21] = '''Whoa, you won [0x7000] time(s)!
  Here's a special prize for you![await]'''

@@ -70,6 +70,11 @@ script = [
         "args": [332, "EVENT_1186_room_332_logic"]
     },
     {
+        "identifier": "EVENT_1186_room_405_jump",
+        "command": 'jmp_if_7000_equals_short',
+        "args": [405, "EVENT_1186_room_405_logic"]
+    },
+    {
         "identifier": "EVENT_1186_room_469_jump",
         "command": 'jmp_if_7000_equals_short',
         "args": [469, "EVENT_1186_room_469_logic"]
@@ -206,6 +211,15 @@ script = [
     },
     {
         "identifier": "EVENT_1186_room_332_end",
+        "command": 'ret'
+    },
+    {
+        "identifier": 'EVENT_1186_room_405_logic',
+        "command": 'start_battle',
+        "args": [32, 0x0A]
+    },
+    {
+        "identifier": "EVENT_1186_room_405_end",
         "command": 'ret'
     },
     {

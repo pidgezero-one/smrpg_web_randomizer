@@ -76,12 +76,12 @@ script = [
     {
         "identifier": 'EVENT_3409_set_70A0_short_mem_to_7000_16',
         "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70F8]
+        "args": [0x70DE]
     },
     {
         "identifier": 'EVENT_3409_jmp_if_var_not_equals_byte_26',
         "command": 'jmp_if_var_not_equals_byte',
-        "args": [0x70F8, 1, 'EVENT_3409_set_temp_action_script_sync_35']
+        "args": [0x70DE, 1, 'EVENT_3409_set_temp_action_script_sync_35']
     },
     {
         "identifier": 'EVENT_3409_set_action_script_sync_33',
@@ -119,6 +119,16 @@ script = [
         "args": [0x7014]
     },
     {
+        "identifier": 'EVENT_3409_dec_53',
+        "command": 'dec',
+        "args": [0x70DE]
+    },
+    {
+        "identifier": 'EVENT_3409_add_coins_49',
+        "command": 'add_frog_coins',
+        "args": [1]
+    },
+    {
         "identifier": 'EVENT_3409_play_sound_46',
         "command": 'play_sound',
         "args": [Sounds._094_FROG_COIN, 6]
@@ -132,16 +142,6 @@ script = [
         "identifier": 'EVENT_3409_set_action_script_sync_48',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.MEM_70A9, 906]
-    },
-    {
-        "identifier": 'EVENT_3409_add_coins_49',
-        "command": 'add_frog_coins',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_3409_dec_53',
-        "command": 'dec',
-        "args": [0x70F8]
     },
     {
         "identifier": 'EVENT_3409_ret_80',

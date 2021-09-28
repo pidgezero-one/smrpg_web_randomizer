@@ -26,9 +26,9 @@ room = {
   },
   "music": Music._00_CURRENT,
   "entrance_event": 3679,
-  "event_tiles": [],
-  "exit_fields": [
+  "event_tiles": [
     {
+      "event": 3514,
       "x": 15,
       "y": 60,
       "z": 0,
@@ -37,20 +37,10 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "byte_2_bit_2": False,
-      "destination": Rooms._118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA,
-      "show_message": False,
-      "destination_props": {
-        "x": 26,
-        "y": 109,
-        "z": 0,
-        "z_half": False,
-        "f": RadialDirection.SOUTHWEST,
-        "x_bit_7": False
-      }
+      "byte_8_bit_4": False,
     },
     {
+      "event": 3515,
       "x": 21,
       "y": 47,
       "z": 0,
@@ -59,20 +49,10 @@ room = {
       "height": 0,
       "nw_se_edge_active": True,
       "ne_sw_edge_active": False,
-      "destination_type": ExitType.ROOM,
-      "byte_2_bit_2": False,
-      "destination": Rooms._114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
-      "show_message": False,
-      "destination_props": {
-        "x": 10,
-        "y": 107,
-        "z": 3,
-        "z_half": False,
-        "f": RadialDirection.NORTHEAST,
-        "x_bit_7": False
-      }
-    }
+      "byte_8_bit_4": False,
+    },
   ],
+  "exit_fields": [],
   "objects": [
     {
       "id": 0,

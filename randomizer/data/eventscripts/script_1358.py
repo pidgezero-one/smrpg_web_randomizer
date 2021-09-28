@@ -356,7 +356,7 @@ script = [
     },
     {
         "identifier": 'EVENT_1358_action_queue_sync_60',
-        "command": 'action_queue_sync',
+        "command": 'action_queue_async',
         "args": [AreaObjects.NPC_0],
         "subscript": [
             {

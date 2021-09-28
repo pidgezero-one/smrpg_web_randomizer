@@ -6,6 +6,36 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1754_set_2',
+        "command": 'set',
+        "args": [0x70ac, 0]
+    },
+    {
+        "identifier": 'EVENT_1754_set_2_',
+        "command": 'clear_bit',
+        "args": [0x7087, 1]
+    },
+    {
+        "identifier": 'EVENT_1754_set_2__',
+        "command": 'clear_bit',
+        "args": [0x7087, 7]
+    },
+    {
+        "identifier": 'EVENT_1754_set_2___',
+        "command": 'clear_bit',
+        "args": [0x708A, 6]
+    },
+    {
+        "identifier": 'EVENT_1754_set_2____',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7052, 2, 'EVENT_1754_jmp_if_object_in_level_0']
+    },
+    {
+        "identifier": 'EVENT_1754_remove_from_level_6_',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
+    },
+    {
         "identifier": 'EVENT_1754_jmp_if_object_in_level_0',
         "command": 'jmp_if_object_in_level',
         "args": [AreaObjects.NPC_2, Rooms._319_LANDS_END_DESERT_AREA_06, 'EVENT_1754_set_7000_to_7000_short_mem_11']

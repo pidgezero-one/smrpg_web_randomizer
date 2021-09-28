@@ -1,3 +1,10 @@
+import copy
+
+from . import utils
+from randomizer.data import palettes, items, chests, graphics
+from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace
+from randomizer.logic import flags
+
 class RoomObjects:
     def __init__(self):
         self.output = []
@@ -66,7 +73,9 @@ class RoomObjects:
                     for index in range(len(partitions)):
                         if partition_bytes == partitions[index]:
                             partition_index = index
+                    # print(i, p)
                     if partition_index is None:
+                        print("{room: %i, json: \"%r\", id: %i}," % (i, p, len(partitions)))
                         partition_index = len(partitions)
                         partitions.append(partition_bytes)
                     room_bytes = bytearray([partition_index])
@@ -256,3 +265,139 @@ class RoomObjects:
         return npcs, eventtiles, exits, bytearray([p for partition in partitions for p in partition])
 
 
+def list_unique(arr):
+    l = set()
+    l_add = l.add
+    return [x for x in arr if not (x in l or l_add(x))]
+
+partition_priority = [
+    PartitionBufferTypes.TREASURE_CHEST,
+    PartitionBufferTypes.COINS,
+    PartitionBufferTypes.EMPTY_3,
+    PartitionBufferTypes._4_SPRITES_PER_ROW,
+    PartitionBufferTypes._3_SPRITES_PER_ROW
+]
+
+def set_partitions(world):
+    pandorite_rooms = []
+    hidon_rooms = []
+    for c in world.chest_locations:
+        if utils.isclass_or_instance(c.item, items.PandoriteFight):
+            pandorite_rooms.extend(c.rooms)
+        elif utils.isclass_or_instance(c.item, items.HidonFight):
+            hidon_rooms.extend(c.rooms)
+
+
+    for room_index, room in enumerate(world.rooms):
+        if room is not None and len(room["objects"]) > 0:
+            partition = room["partition"]
+            if partition is None:
+                partition = {
+                    "ally_sprite_buffer_size": 1,
+                    "allow_extra_sprite_buffer": False,
+                    "extra_sprite_buffer_size": 0,
+                    "buffer_a": {
+                        "type": PartitionBufferTypes.EMPTY_3,
+                        "main_buffer_space": PartitionMainSpace._0_BYTES,
+                        "index_in_main_buffer": True,
+                    },
+                    "buffer_b": {
+                        "type": PartitionBufferTypes.EMPTY_3,
+                        "main_buffer_space": PartitionMainSpace._0_BYTES,
+                        "index_in_main_buffer": True,
+                    },
+                    "buffer_c": {
+                        "type": PartitionBufferTypes.EMPTY_3,
+                        "main_buffer_space": PartitionMainSpace._0_BYTES,
+                        "index_in_main_buffer": True,
+                    },
+                    "full_palette_buffer": True,
+                }
+
+
+            packet_size = partition["extra_sprite_buffer_size"]
+            npcs = room["objects"]
+            # 512, 513, 518
+
+            # get all npc models
+            models = []
+            for npc in npcs:
+                models.append(npc["model"])
+                if len(npc["clones"]) > 0:
+                    for clone in npc["clones"]:
+                        if "npc_id_offset" in clone:
+                            models.append(npc["model"] + clone["npc_id_offset"])
+
+            has_star_chest = False
+
+            npc_buffers = []
+            packet_buffers = []
+
+            # consider chest contents and packets
+            for c in world.chest_locations:
+                if room_index in c.rooms or (512 in c.rooms and room_index in pandorite_rooms) or (513 in c.rooms and room_index in hidon_rooms):
+                    if utils.isclass_or_instance(c, chests.Chest):
+                        if utils.isclass_or_instance(c.item, items.StarPiece):
+                            has_star_chest = True
+                    elif utils.isclass_or_instance(c, chests.PacketItem):
+                        packet_size += 1
+                    if not world.settings.is_flag_enabled(flags.QuickHitCoins) and (utils.isclass_or_instance(c, chests.Chest) or utils.isclass_or_instance(c, chests.PacketItem)) and (utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.FrogCoin) or utils.isclass_or_instance(c.item, items.MultiFrogCoin)):
+                        packet_buffers.append(PartitionBufferTypes.COINS) # coin chests
+            if has_star_chest:
+                packet_size += 1
+                # todo: invincibility stars
+
+            models = list_unique(models)
+            models = [world.models[m] for m in models]
+
+            for model in models:
+                if model["sprite"] < 512:
+                    sprite = graphics.sprites[model["sprite"]]
+                    animation_pack = graphics.animations[sprite.animation_num]
+
+                    if model["sprite"] == 94:
+                        npc_buffers.append(PartitionBufferTypes.TREASURE_CHEST)
+                    elif model["sprite"] in [192, 193, 194, 202]:
+                        npc_buffers.append(PartitionBufferTypes.COINS)
+                    elif animation_pack.properties.vram_size > 2048 or not animation_pack.properties.molds[0].gridplane:
+                        npc_buffers.append(PartitionBufferTypes.EMPTY_3)
+                    elif animation_pack.properties.molds[0].tiles[0].format <= 1:
+                        npc_buffers.append(PartitionBufferTypes._4_SPRITES_PER_ROW)
+                    else:
+                        npc_buffers.append(PartitionBufferTypes._3_SPRITES_PER_ROW)
+
+            npc_buffers = list_unique(npc_buffers)
+            packet_buffers = list_unique(packet_buffers)
+
+            if PartitionBufferTypes.COINS in npc_buffers and PartitionBufferTypes.COINS in packet_buffers:
+                npc_buffers.remove(PartitionBufferTypes.COINS)
+
+            print(room_index, npc_buffers, packet_buffers)
+
+            buffers = npc_buffers + packet_buffers
+
+            if len(buffers) > 3:
+                order = copy.deepcopy(partition_priority)
+                order.reverse()
+                for o in order:
+                    if o in buffers:
+                        buffers.remove(o)
+                        if len(buffers) <= 3:
+                            break
+
+            if len(buffers) < 3:
+                buffers += [PartitionBufferTypes.EMPTY_3] * (3 - min(3, len(buffers)))
+
+            print(room_index, buffers)
+
+            partition["buffer_a"]["type"] = buffers[0]
+            partition["buffer_b"]["type"] = buffers[1]
+            partition["buffer_c"]["type"] = buffers[2]
+
+            partition['ally_sprite_buffer_size'] = 1
+            
+            if packet_size > 0:
+                partition["allow_extra_sprite_buffer"] = True
+                partition["extra_sprite_buffer_size"] = packet_size
+
+            world.rooms[room_index]["partition"] = partition

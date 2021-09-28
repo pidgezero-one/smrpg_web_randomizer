@@ -16,6 +16,11 @@ script = [
         "args": [AreaObjects.MARIO]
     },
     {
+        "identifier": 'EVENT_13_____leave_party_22',
+        "command": 'leave_party',
+        "args": [AreaObjects.DUMMY_0X05]
+    },
+    {
         "identifier": 'EVENT_13_____set_switch_menu_if_necessary',
         "command": 'jmp_to_event',
         "args": [209]

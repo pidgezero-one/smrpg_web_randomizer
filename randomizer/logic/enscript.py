@@ -77,8 +77,11 @@ class EventScript:
                 if "subscript" in command.keys():
                     #print(command["identifier"])
                     #print(script)
-                    dummy_subscript_lines = OSCommand.get_dummy_bytearray(
-                        command["subscript"])
+                    try:
+                        dummy_subscript_lines = OSCommand.get_dummy_bytearray(command["subscript"])
+                    except Exception as e:
+                        print(command["subscript"])
+                        raise e
                     dummy_subscript = b''.join(dummy_subscript_lines)
                     script_with_length["subscript_lines"] = dummy_subscript_lines
                     script_with_length["subscript_combined_lines"] = dummy_subscript
@@ -135,8 +138,7 @@ class EventScript:
                         len(cmd_with_offset["line"]) - \
                         len(cmd_with_offset["subscript_combined_lines"])
                     subscript_commands_with_offsets = []
-                    for j in range(len(cmd_with_offset["subscript"])):
-                        subscript_command_with_offset = cmd_with_offset["subscript"][j]
+                    for j, subscript_command_with_offset in enumerate(cmd_with_offset["subscript"]):
                         subscript_command_with_offset["offset"] = inner_offset
                         inner_offset += len(cmd_with_offset["subscript_lines"][j])
                         subscript_commands_with_offsets.append(

@@ -182,6 +182,13 @@ script = [
 
     # choose which song to load
 
+    # none b/c toadofsky is absent
+    {
+        "identifier": "EVENT_1074_freeplay_",
+        "command": "jmp_if_bit_set",
+        "args": [0x7052, 1, 'EVENT_1074_set_7000_to_7000_short_mem_7']
+    },
+
     # final song finished
     {
         "identifier": "EVENT_1074_freeplay",
@@ -221,7 +228,7 @@ script = [
     {
         "identifier": "EVENT_1074_third_song_not_unlocked_yet",
         "command": "jmp_if_bit_clear",
-        "args": [0x7057, 4, 'EVENT_1074_set_7000_to_7000_short_mem_7']
+        "args": [0x7089, 0, 'EVENT_1074_set_7000_to_7000_short_mem_7']
     },
     {
         "identifier": "EVENT_1074_do_third_song",

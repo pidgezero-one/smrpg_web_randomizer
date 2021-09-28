@@ -6,74 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2112_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x705f, 4, 'EVENT_2112_action_queue_sync_18']
-    },
-    {
-        "identifier": 'EVENT_2112_action_queue_sync_1',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_1_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_1_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_1_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2112_action_queue_sync_2',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_2_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_2_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_2_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2112_action_queue_async_3',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2112_action_queue_async_3_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_async_3_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [3]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_async_3_SUBSCRIPT_face_northeast_2',
-                "command": 'face_northeast'
-            }
-        ]
-    },
-    {
         "identifier": "EVENT_2112_sequence_setter_1",
         "command": "run_event_as_subroutine",
         "args": [819]
@@ -81,12 +13,12 @@ script = [
     {
         "identifier": 'EVENT_2112_jmp_if_bit_set_4',
         "command": 'jmp_if_bit_set',
-        "args": [0x7092, 6, 'EVENT_2112_fade_in_from_black_async_16']
+        "args": [0x7092, 6, 'EVENT_2112_fade_in_from_black_async_14']
     },
     {
         "identifier": 'EVENT_2112_jmp_if_bit_set_5',
         "command": 'jmp_if_bit_set',
-        "args": [0x7090, 1, 'EVENT_2112_fade_in_from_black_async_16']
+        "args": [0x7090, 1, 'EVENT_2112_fade_in_from_black_async_14']
     },
     {
         "identifier": 'EVENT_2112_palette_set_13',
@@ -99,93 +31,6 @@ script = [
     },
     {
         "identifier": 'EVENT_2112_ret_15',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2112_fade_in_from_black_async_16',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2112_ret_17',
-        "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2112_action_queue_sync_18',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_18_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [5]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_18_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_18_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2112_action_queue_sync_19',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_19_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [5]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_19_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_sync_19_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2112_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2112_action_queue_async_20_SUBSCRIPT_shift_southwest_pixels_0',
-                "command": 'shift_southwest_pixels',
-                "args": [5]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_async_20_SUBSCRIPT_shift_northwest_pixels_1',
-                "command": 'shift_northwest_pixels',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2112_action_queue_async_20_SUBSCRIPT_set_sprite_sequence_2',
-                "command": 'set_sprite_sequence',
-                "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            }
-        ]
-    },
-    {
-        "identifier": "EVENT_2112_sequence_setter_2",
-        "command": "run_event_as_subroutine",
-        "args": [819]
-    },
-    {
-        "identifier": 'EVENT_2112_fade_in_from_black_async_21',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2112_ret_22',
         "command": 'ret'
     }
 ]

@@ -184,6 +184,11 @@ script = [
     },
     {
         "identifier": 'ACTION_731_face_northeast_38',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'ACTION_731_face_northeast_38_',
         "command": 'face_northeast'
     },
     {

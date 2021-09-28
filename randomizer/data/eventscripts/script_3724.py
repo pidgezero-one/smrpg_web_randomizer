@@ -11,6 +11,18 @@ script = [
         "args": [0x70df, 49]
     },
     {
+        "identifier": 'EVENT_3724_action_queue_sync_3',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_0],
+        "subscript": [
+            {
+                "identifier": 'EVENT_3724_action_queue_sync_3_SUBSCRIPT_transfer_xyzf_pixels_0',
+                "command": 'transfer_xyzf_pixels',
+                "args": [0, 0, 2, RadialDirections.EAST]
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_3724_jmp_if_bit_set_1',
         "command": 'jmp_if_bit_set',
         "args": [0x705f, 4, 'EVENT_3724_jmp_if_bit_set_5']
@@ -33,18 +45,6 @@ script = [
             {
                 "identifier": 'EVENT_3724_action_queue_sync_2_SUBSCRIPT_reset_properties_2',
                 "command": 'reset_properties'
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3724_action_queue_sync_3',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3724_action_queue_sync_3_SUBSCRIPT_transfer_xyzf_pixels_0',
-                "command": 'transfer_xyzf_pixels',
-                "args": [0, 0, 2, RadialDirections.EAST]
             }
         ]
     },

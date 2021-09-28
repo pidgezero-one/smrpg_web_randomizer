@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1767_enable_controls_until_return_6_',
+        "command": 'enable_controls_until_return',
+        "args": [[]]
+    },
+    {
         "identifier": 'EVENT_1767_set_bit_0',
         "command": 'set_bit',
         "args": [0x704f, 2]
@@ -14,11 +19,6 @@ script = [
         "identifier": 'EVENT_1767_clear_bit_1',
         "command": 'clear_bit',
         "args": [0x7050, 6]
-    },
-    {
-        "identifier": 'EVENT_1767_set_2',
-        "command": 'set',
-        "args": [0x70ac, 0]
     },
     {
         "identifier": 'EVENT_1767_apply_solidity_mod_3',
@@ -125,6 +125,11 @@ script = [
                 "args": [55]
             }
         ]
+    },
+    {
+        "identifier": 'EVENT_1767_enable_controls_until_return_6',
+        "command": 'enable_controls_until_return',
+        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
     },
     {
         "identifier": 'EVENT_1767_action_queue_sync_7',

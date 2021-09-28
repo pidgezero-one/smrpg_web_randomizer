@@ -1095,9 +1095,9 @@ script = [
         "args": [20]
     },
     {
-        "identifier": 'EVENT_1368_play_sound_67',
-        "command": 'play_sound',
-        "args": [Sounds._085_FLOWER, 6]
+        "identifier": 'EVENT_1368_run_event_as_subroutine_91',
+        "command": 'run_event_as_subroutine',
+        "args": [178]
     },
     {
         "identifier": 'EVENT_1368_pause_68',
@@ -1390,11 +1390,6 @@ script = [
     {
         "identifier": 'EVENT_1368_unfreeze_camera_147',
         "command": 'unfreeze_camera'
-    },
-    {
-        "identifier": 'EVENT_1368_run_event_as_subroutine_91',
-        "command": 'run_event_as_subroutine',
-        "args": [178]
     },
     {
         "identifier": 'EVENT_1368_jmp_if_no_alt_win_condition',

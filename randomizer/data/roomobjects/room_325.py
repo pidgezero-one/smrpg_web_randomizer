@@ -233,7 +233,7 @@ room = {
       "action_script": 109,
       "speed": 0,
       "action_offset": 0,
-      "pack_offset": 1,
+      "pack_offset": 0,
       "visible": True,
       "x": 9,
       "y": 19,

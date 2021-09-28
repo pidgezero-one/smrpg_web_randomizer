@@ -10,6 +10,10 @@ script = [
         "args": [0xfd, 0xf2]
     },
     {
+        "identifier": 'ACTION_261_walk_1_step_northeast_2_',
+        "command": 'face_northeast'
+    },
+    {
         "identifier": 'ACTION_261_set_animation_speed_1',
         "command": 'set_animation_speed',
         "args": [SequenceSpeeds.VERY_SLOW, [_0x10Flags.WALKING]]

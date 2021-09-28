@@ -17,10 +17,20 @@ script = [
     },
     {
         "identifier": 'EVENT_3101_ret_418',
-        "command": 'fade_in_from_black_async'
+        "command": 'jmp_if_bit_set',
+        "args": [0x7099, 0,  'EVENT_3101_set_bit_399_']
     },
     {
         "identifier": 'EVENT_3101_ret_418_',
+        "command": 'fade_in_from_black_async'
+    },
+    {
+        "identifier": 'EVENT_3101_set_bit_399_',
+        "command": 'clear_bit',
+        "args": [0x7099, 0]
+    },
+    {
+        "identifier": 'EVENT_3101_ret_418__',
         "command": 'jmp_to_event',
         "args": [206]
     },

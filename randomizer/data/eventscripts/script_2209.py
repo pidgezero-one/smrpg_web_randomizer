@@ -355,32 +355,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2209_action_queue_async_20',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_1],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2209_action_queue_async_20_SUBSCRIPT_pause_0',
-                "command": 'pause',
-                "args": [10]
-            },
-            {
-                "identifier": 'EVENT_2209_action_queue_async_20_SUBSCRIPT_set_animation_speed_1',
-                "command": 'set_animation_speed',
-                "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
-            },
-            {
-                "identifier": 'EVENT_2209_action_queue_async_20_SUBSCRIPT_shift_northwest_pixels_2',
-                "command": 'shift_northwest_pixels',
-                "args": [8]
-            },
-            {
-                "identifier": 'EVENT_2209_action_queue_async_20_SUBSCRIPT_visibility_off_3',
-                "command": 'visibility_off'
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_2209_set_bit_21',
         "command": 'set_bit',
         "args": [0x7093, 6]

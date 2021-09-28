@@ -35,6 +35,11 @@ script = [
     },
     {
         "identifier": 'ACTION_845_set_sprite_sequence_6',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'ACTION_845_set_sprite_sequence_6_',
         "command": 'set_sprite_sequence',
         "args": [0, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
     },

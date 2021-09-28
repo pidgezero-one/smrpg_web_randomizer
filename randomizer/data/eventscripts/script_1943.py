@@ -12,7 +12,7 @@ script = [
     {
         "identifier": 'EVENT_1943_enter_area_0',
         "command": 'enter_area',
-        "args": [Rooms._458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, RadialDirections.NORTHEAST, 7, 117, 12, []]
+        "args": [Rooms._458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, RadialDirections.NORTHEAST, 7, 117, 2, []]
     },
     {
         "identifier": 'EVENT_1943_jmp_to_event_2',

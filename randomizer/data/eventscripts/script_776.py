@@ -11,6 +11,26 @@ script = [
         "args": [777]
     },
     {
+        "identifier": 'EVENT_776_action_queue_async_19',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_1],
+        "subscript": [
+            {
+                "identifier": 'ACTION_619_shift_south_pixels_6',
+                "command": 'shift_south_pixels',
+                "args": [4]
+            },
+            {
+                "identifier": 'ACTION_619_face_southwest_7',
+                "command": 'face_southwest'
+            },
+            {
+                "identifier": 'ACTION_619_sequence_looping_off_8',
+                "command": 'sequence_looping_off'
+            },
+        ]
+    },
+    {
         "identifier": 'EVENT_776_sequence_setter_',
         "command": 'jmp_to_event',
         "args": [15]

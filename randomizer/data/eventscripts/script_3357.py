@@ -59,21 +59,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_3357_clear_bit_4',
-        "command": 'clear_bit',
-        "args": [0x7044, 7]
-    },
-    {
-        "identifier": 'EVENT_3357_set_action_script_sync_5',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_0, 59]
-    },
-    {
-        "identifier": 'EVENT_3357_set_bit_9',
-        "command": 'set_bit',
-        "args": [0x7044, 7]
-    },
-    {
         "identifier": 'EVENT_3357_action_queue_sync_10',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_0],
@@ -115,6 +100,25 @@ script = [
         "identifier": 'EVENT_3357_play_music_default_volume_11',
         "command": 'play_music_default_volume',
         "args": [Music._36_EXPLANATION]
+    },
+    {
+        "identifier": 'EVENT_3357_start_loop_n_times_12',
+        "command": 'start_loop_n_times',
+        "args": [15]
+    },
+    {
+        "identifier": 'EVENT_3357_set_action_script_sync_13',
+        "command": 'set_action_script_sync',
+        "args": [AreaObjects.MEM_70A9, 281]
+    },
+    {
+        "identifier": 'EVENT_3357_inc_14',
+        "command": 'inc',
+        "args": [0x70a9]
+    },
+    {
+        "identifier": 'EVENT_3357_end_loop_15',
+        "command": 'end_loop'
     },
     {
         "identifier": 'EVENT_3357_ret_12',

@@ -289,11 +289,11 @@ def randomize_all(world):
         for enemy in world.enemies:
             _randomize_enemy(enemy)
 
-        # Special logic for Smithy 2: All heads must have the same HP!  Use the base head enemy for this.
-        main_head = world.get_enemy_instance(enemies.Smithy2Head)
-        for e in (enemies.Smithy2TankHead, enemies.Smithy2SafeHead, enemies.Smithy2MageHead, enemies.Smithy2ChestHead):
-            head = world.get_enemy_instance(e)
-            head.hp = main_head.hp
+    # Special logic for Smithy 2: All heads must have the same HP!  Use the base head enemy for this.
+    main_head = world.get_enemy_instance(enemies.Smithy2Head)
+    for e in (enemies.Smithy2TankHead, enemies.Smithy2SafeHead, enemies.Smithy2MageHead, enemies.Smithy2ChestHead):
+        head = world.get_enemy_instance(e)
+        head.hp = main_head.hp
 
     # Randomize individual rewards on their own.
     if world.settings.is_flag_value(flags.EnemyDrops, True):
@@ -363,3 +363,4 @@ def randomize_all(world):
         for enemy in world.enemies:
             if enemy.boss:
                 enemy.death_immune = True
+                enemy.morph_chance = 0

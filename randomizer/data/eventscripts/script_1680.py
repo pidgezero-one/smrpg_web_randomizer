@@ -11,6 +11,36 @@ script = [
         "args": [0x7016, 0x144a]
     },
     {
+        "identifier": 'EVENT_1680_set_2',
+        "command": 'set',
+        "args": [0x70ac, 0]
+    },
+    {
+        "identifier": 'EVENT_1680_set_2_',
+        "command": 'clear_bit',
+        "args": [0x7087, 1]
+    },
+    {
+        "identifier": 'EVENT_1680_set_2__',
+        "command": 'clear_bit',
+        "args": [0x7087, 7]
+    },
+    {
+        "identifier": 'EVENT_1680_set_2___',
+        "command": 'clear_bit',
+        "args": [0x708A, 6]
+    },
+    {
+        "identifier": 'EVENT_1680_set_2____',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7052, 2, 'EVENT_1680_run_event_as_subroutine_1']
+    },
+    {
+        "identifier": 'EVENT_1680_remove_from_level_6_',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]
+    },
+    {
         "identifier": 'EVENT_1680_run_event_as_subroutine_1',
         "command": 'run_event_as_subroutine',
         "args": [66]

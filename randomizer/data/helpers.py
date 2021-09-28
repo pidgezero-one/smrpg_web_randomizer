@@ -639,7 +639,6 @@ regular_checks = [ # excludes key item checks. can't turn those off
     ShuffleLocationSelector.BarrelVolcanoBeforeStar2,
     ShuffleLocationSelector.BarrelVolcanoStarRoom,
     ShuffleLocationSelector.BarrelVolcanoHinopio,
-    ShuffleLocationSelector.BarrelVolcanoLavaPool,
     ShuffleLocationSelector.BarrelVolcanoSaveRoom1,
     ShuffleLocationSelector.BarrelVolcanoSaveRoom2,
 
@@ -773,6 +772,7 @@ freestanding_checks = [
     ShuffleLocationSelector.BeanValleyWestBeanstalkCoin3,
     ShuffleLocationSelector.BeanValleyWestBeanstalkFrogCoin,
 
+    ShuffleLocationSelector.BarrelVolcanoLavaPool,
     ShuffleLocationSelector.BarrelVolcanoDonut1,
     ShuffleLocationSelector.BarrelVolcanoDonut2,
     ShuffleLocationSelector.BarrelVolcanoReverse,

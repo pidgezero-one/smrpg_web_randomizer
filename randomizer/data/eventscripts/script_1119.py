@@ -56,7 +56,7 @@ script = [
     {
         "identifier": 'EVENT_1119_jmp_if_present_in_current_level_25',
         "command": 'jmp_if_present_in_current_level',
-        "args": [AreaObjects.NPC_7, 'EVENT_1119_apply_solidity_mod_28']
+        "args": [AreaObjects.NPC_6, 'EVENT_1119_apply_solidity_mod_28']
     },
     {
         "identifier": 'EVENT_1119_jmp_26',

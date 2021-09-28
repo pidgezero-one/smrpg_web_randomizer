@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._50_NIMBUS_LAND,
-  "entrance_event": 501,
+  "entrance_event": 837,
   "event_tiles": [],
   "exit_fields": [
     {
@@ -199,20 +199,42 @@ room = {
       "slidable_along_walls": False,
       "cant_move_if_in_air": False,
       "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 3,
-          "npc_id_offset": 0,
-          "event_offset": 1,
-          "action_offset": 0,
-          "visible": True,
-          "x": 30,
-          "y": 15,
-          "z": 0,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        }
-      ]
+      "clones": []
+    },
+    {
+      "id": 3,
+      "type": ObjectType.OBJECT,
+      "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
+      "model": 79,
+      "event_script": 3928,
+      "action_script": 119,
+      "speed": 0,
+      "npc_id_offset": 0,
+      "event_offset": 0,
+      "action_offset": 0,
+      "visible": True,
+      "x": 30,
+      "y": 15,
+      "z": 0,
+      "z_half": False,
+      "direction": RadialDirection.SOUTHWEST,
+      "face_on_trigger": True,
+      "cant_enter_doors": False,
+      "byte2_bit5": False,
+      "set_sequence_playback": True,
+      "cant_float": False,
+      "cant_walk_up_stairs": False,
+      "cant_walk_under": False,
+      "cant_pass_walls": False,
+      "cant_jump_through": False,
+      "cant_pass_npcs": False,
+      "byte3_bit5": False,
+      "cant_walk_through": True,
+      "byte3_bit7": False,
+      "slidable_along_walls": False,
+      "cant_move_if_in_air": False,
+      "byte7_upper2": 0x03,
+      "clones": []
     }
   ]
 }

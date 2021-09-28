@@ -21,11 +21,6 @@ script = [
                 "args": [0x30, [4]]
             },
             {
-                "identifier": 'EVENT_3113_action_queue_async_0_SUBSCRIPT_play_sound_1',
-                "command": 'play_sound',
-                "args": [Sounds._027_FOUND_AN_ITEM, 4]
-            },
-            {
                 "identifier": 'EVENT_3113_action_queue_async_0_SUBSCRIPT_pause_3',
                 "command": 'pause',
                 "args": [30]

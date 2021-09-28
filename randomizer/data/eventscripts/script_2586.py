@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_2586_set_7000_to_70A0_short_mem_0',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70e2]
-    },
-    {
         "identifier": 'EVENT_2586_action_queue_async_1',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_9],
@@ -24,8 +19,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2586_start_battle_6',
-        "command": 'start_battle',
-        "args": [0x0097, 10]
+        "command": 'run_event_as_subroutine',
+        "args": [1186]
     },
     {
         "identifier": 'EVENT_2586_jmp_if_bit_set_7',
@@ -40,11 +35,6 @@ script = [
     {
         "identifier": 'EVENT_2586_fade_in_from_black_async_9',
         "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2586_set_bit_10',
-        "command": 'set_bit',
-        "args": [0x708d, 7]
     },
     {
         "identifier": 'EVENT_2586_set_action_script_async_12',
@@ -89,16 +79,6 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2586_clear_bit_19',
-        "command": 'clear_bit',
-        "args": [0x708d, 7]
-    },
-    {
-        "identifier": 'EVENT_2586_set_7000_to_70A0_short_mem_20',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70e2]
-    },
-    {
         "identifier": 'EVENT_2586_fade_in_from_black_async_21',
         "command": 'fade_in_from_black_async'
     },
@@ -106,41 +86,6 @@ script = [
         "identifier": 'EVENT_2586_set_action_script_async_23',
         "command": 'set_action_script_async',
         "args": [AreaObjects.NPC_9, 851]
-    },
-    {
-        "identifier": 'EVENT_2586_inc_24',
-        "command": 'inc',
-        "args": [0x70e2]
-    },
-    {
-        "identifier": 'EVENT_2586_set_7000_to_70A0_short_mem_25',
-        "command": 'set_7000_to_70A0_short_mem',
-        "args": [0x70e2]
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_26',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [5, 'EVENT_2586_summon_to_level_35']
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_27',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [6, 'EVENT_2586_summon_to_level_37']
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_28',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [7, 'EVENT_2586_summon_to_level_39']
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_29',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [8, 'EVENT_2586_summon_to_level_41']
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_if_7000_equals_short_30',
-        "command": 'jmp_if_7000_equals_short',
-        "args": [9, 'EVENT_2586_summon_to_level_43']
     },
     {
         "identifier": 'EVENT_2586_pause_31',
@@ -160,60 +105,5 @@ script = [
     {
         "identifier": 'EVENT_2586_ret_34',
         "command": 'ret'
-    },
-    {
-        "identifier": 'EVENT_2586_summon_to_level_35',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_0, Rooms._198_BOOSTER_TOWER_8F_AREA_03_3LEVEL_WONE_CHOMP]
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_36',
-        "command": 'jmp',
-        "args": ['EVENT_2586_pause_31']
-    },
-    {
-        "identifier": 'EVENT_2586_summon_to_level_37',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_1, Rooms._198_BOOSTER_TOWER_8F_AREA_03_3LEVEL_WONE_CHOMP]
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_38',
-        "command": 'jmp',
-        "args": ['EVENT_2586_pause_31']
-    },
-    {
-        "identifier": 'EVENT_2586_summon_to_level_39',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_2, Rooms._198_BOOSTER_TOWER_8F_AREA_03_3LEVEL_WONE_CHOMP]
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_40',
-        "command": 'jmp',
-        "args": ['EVENT_2586_pause_31']
-    },
-    {
-        "identifier": 'EVENT_2586_summon_to_level_41',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_3, Rooms._198_BOOSTER_TOWER_8F_AREA_03_3LEVEL_WONE_CHOMP]
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_42',
-        "command": 'jmp',
-        "args": ['EVENT_2586_pause_31']
-    },
-    {
-        "identifier": 'EVENT_2586_summon_to_level_43',
-        "command": 'summon_to_level',
-        "args": [AreaObjects.NPC_4, Rooms._198_BOOSTER_TOWER_8F_AREA_03_3LEVEL_WONE_CHOMP]
-    },
-    {
-        "identifier": 'EVENT_2586_remove_from_level_44',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_9, Rooms._405_BOOSTER_PASS_SECRET]
-    },
-    {
-        "identifier": 'EVENT_2586_jmp_45',
-        "command": 'jmp',
-        "args": ['EVENT_2586_pause_31']
     }
 ]

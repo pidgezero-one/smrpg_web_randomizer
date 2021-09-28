@@ -234,19 +234,19 @@ models[9] = {
   "byte6_bit2": False
 } # 0x1db83f
 models[10] = {
-  "sprite": SpriteName._25_GENO_WALKING_DOWNLEFT,
+  "sprite": 252,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
-  "show_shadow": True,
-  "shadow": ShadowSize._01_OVAL_MED,
+  "show_shadow": False,
+  "shadow": ShadowSize._00_OVAL_SMALL,
   "y_pixel_shift": 0,
-  "acute_axis": 4,
-  "obtuse_axis": 4,
-  "height": 12,
-  "vram_store": VramStore._00_SWSE_NWNE,
-  "vram_size": 2,
-  "cannot_clone": True,
+  "acute_axis": 1,
+  "obtuse_axis": 1,
+  "height": 3,
+  "vram_store": VramStore._02_SWSE,
+  "vram_size": 0,
+  "cannot_clone": False,
   "byte2_bit0": False,
   "byte2_bit1": False,
   "byte2_bit2": False,
@@ -326,18 +326,18 @@ models[13] = {
   "byte6_bit2": False
 } # 0x1db85b
 models[14] = {
-  "sprite": SpriteName._19_MALLOW_WALKING_DOWNLEFT,
+  "sprite": 111,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
   "show_shadow": True,
   "shadow": ShadowSize._01_OVAL_MED,
-  "y_pixel_shift": 0,
-  "acute_axis": 3,
-  "obtuse_axis": 3,
-  "height": 8,
-  "vram_store": VramStore._00_SWSE_NWNE,
-  "vram_size": 1,
+  "y_pixel_shift": 1,
+  "acute_axis": 6,
+  "obtuse_axis": 5,
+  "height": 12,
+  "vram_store": VramStore._07_ALL_DIRECTIONS,
+  "vram_size": 0,
   "cannot_clone": False,
   "byte2_bit0": False,
   "byte2_bit1": False,
@@ -3385,17 +3385,17 @@ models[146] = {
   "byte6_bit2": False
 } # 0x1dbbfe
 models[147] = {
-  "sprite": SpriteName._190_BOWSER_WTOADSTOOL_IN_HELICOPTER,
+  "sprite": 190,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
-  "show_shadow": False,
-  "shadow": ShadowSize._00_OVAL_SMALL,
-  "y_pixel_shift": 1,
-  "acute_axis": 3,
-  "obtuse_axis": 3,
-  "height": 4,
-  "vram_store": VramStore._02_SWSE,
+  "show_shadow": True,
+  "shadow": ShadowSize._01_OVAL_MED,
+  "y_pixel_shift": 2,
+  "acute_axis": 5,
+  "obtuse_axis": 5,
+  "height": 10,
+  "vram_store": VramStore._00_SWSE_NWNE,
   "vram_size": 0,
   "cannot_clone": False,
   "byte2_bit0": False,
@@ -3431,19 +3431,19 @@ models[148] = {
   "byte6_bit2": False
 } # 0x1dbc0c
 models[149] = {
-  "sprite": SpriteName._252_GREY_STONE_BRIDGE_BOWSERS_KEEP_RIGHT_SECTION,
+  "sprite": 253,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
-  "show_shadow": False,
+  "show_shadow": True,
   "shadow": ShadowSize._00_OVAL_SMALL,
   "y_pixel_shift": 1,
-  "acute_axis": 1,
-  "obtuse_axis": 1,
-  "height": 1,
-  "vram_store": VramStore._02_SWSE,
-  "vram_size": 3,
-  "cannot_clone": True,
+  "acute_axis": 4,
+  "obtuse_axis": 4,
+  "height": 8,
+  "vram_store": VramStore._00_SWSE_NWNE,
+  "vram_size": 0,
+  "cannot_clone": False,
   "byte2_bit0": False,
   "byte2_bit1": False,
   "byte2_bit2": False,
@@ -3477,7 +3477,7 @@ models[150] = {
   "byte6_bit2": False
 } # 0x1dbc1a
 models[151] = {
-  "sprite": SpriteName._252_GREY_STONE_BRIDGE_BOWSERS_KEEP_RIGHT_SECTION,
+  "sprite": 250,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -4775,7 +4775,7 @@ models[207] = {
   "acute_axis": 2,
   "obtuse_axis": 2,
   "height": 5,
-  "vram_store": VramStore._02_SWSE,
+  "vram_store": VramStore._00_SWSE_NWNE,
   "vram_size": 0,
   "cannot_clone": True,
   "byte2_bit0": False,
@@ -8859,7 +8859,7 @@ models[384] = {
   "byte6_bit2": True
 } # 0x1dc280
 models[385] = {
-  "sprite": SpriteName._39_RED_SCARECROW,
+  "sprite": 205,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -9549,7 +9549,7 @@ models[414] = {
   "byte6_bit2": False
 } # 0x1dc352
 models[415] = {
-  "sprite": SpriteName._207_JINX_WALK,
+  "sprite": 191,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -9559,7 +9559,7 @@ models[415] = {
   "acute_axis": 2,
   "obtuse_axis": 2,
   "height": 5,
-  "vram_store": VramStore._02_SWSE,
+  "vram_store": VramStore._00_SWSE_NWNE,
   "vram_size": 0,
   "cannot_clone": True,
   "byte2_bit0": False,
@@ -9572,7 +9572,7 @@ models[415] = {
   "byte6_bit2": False
 } # 0x1dc359
 models[416] = {
-  "sprite": SpriteName._207_JINX_WALK,
+  "sprite": 415,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -9582,7 +9582,7 @@ models[416] = {
   "acute_axis": 2,
   "obtuse_axis": 2,
   "height": 5,
-  "vram_store": VramStore._02_SWSE,
+  "vram_store": VramStore._00_SWSE_NWNE,
   "vram_size": 0,
   "cannot_clone": True,
   "byte2_bit0": False,
@@ -10653,16 +10653,16 @@ models[462] = {
   "byte6_bit2": False
 } # 0x1dc4a2
 models[463] = {
-  "sprite": SpriteName._00_MARIO_WALKING_DOWNLEFT,
+  "sprite": 110,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
   "show_shadow": True,
-  "shadow": ShadowSize._01_OVAL_MED,
+  "shadow": ShadowSize._00_OVAL_SMALL,
   "y_pixel_shift": 0,
   "acute_axis": 3,
   "obtuse_axis": 3,
-  "height": 12,
+  "height": 3,
   "vram_store": VramStore._02_SWSE,
   "vram_size": 0,
   "cannot_clone": False,
@@ -11205,7 +11205,7 @@ models[486] = {
   "byte6_bit2": False
 } # 0x1dc54a
 models[487] = {
-  "sprite": SpriteName._487_AERO,
+  "sprite": 174,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,

@@ -83,7 +83,7 @@ room = {
       "ne_sw_edge_active": False,
       "destination_type": ExitType.ROOM,
       "byte_2_bit_2": False,
-      "destination": Rooms._107_NIMBUS_CASTLE_AREA_09_STATUE_ROOM_AFTER_VALENTINA,
+      "destination": Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
       "show_message": False,
       "destination_props": {
         "x": 20,
@@ -93,7 +93,7 @@ room = {
         "f": RadialDirection.SOUTHWEST,
         "x_bit_7": False
       }
-    }
+    },
   ],
   "objects": [
     {

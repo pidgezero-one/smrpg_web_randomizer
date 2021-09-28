@@ -276,19 +276,27 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2342_set_7016_to_object_xyz_2',
+        "command": 'set_7016_to_object_xyz',
+        "args": [AreaObjects.NPC_0]
+    },
+    {
+        "identifier": 'EVENT_2342_add_short_14',
+        "command": 'add_short',
+        "args": [0x701A, 304]
+    },
+    {
         "identifier": 'EVENT_2342_action_queue_sync_14',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_3],
         "subscript": [
             {
-                "identifier": 'EVENT_2342_action_queue_sync_14_SUBSCRIPT_shift_east_pixels_0',
-                "command": 'shift_east_pixels',
-                "args": [20]
+                "identifier": 'EVENT_2549_action_queue_sync_11_SUBSCRIPT_shift_south_pixels_1',
+                "command": 'transfer_to_7016_7018_701A'
             },
             {
-                "identifier": 'EVENT_2342_action_queue_sync_14_SUBSCRIPT_shift_north_pixels_1',
-                "command": 'shift_north_pixels',
-                "args": [5]
+                "identifier": 'EVENT_2342_action_queue_sync_14_SUBSCRIPT_visibility_on_2_',
+                "command": 'shadow_off'
             },
             {
                 "identifier": 'EVENT_2342_action_queue_sync_14_SUBSCRIPT_visibility_on_2',
@@ -307,19 +315,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2342_stop_embedded_action_script_15',
-        "command": 'stop_embedded_action_script',
-        "args": [AreaObjects.NPC_3]
-    },
-    {
         "identifier": 'EVENT_2342_play_sound_16',
         "command": 'play_sound',
         "args": [Sounds._014_FLOWER, 6]
-    },
-    {
-        "identifier": 'EVENT_2342_set_action_script_sync_17',
-        "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_3, 14]
     },
     {
         "identifier": 'EVENT_2342_pause_18',
@@ -409,7 +407,7 @@ script = [
     {
         "identifier": 'EVENT_2342_run_event_as_subroutine_31',
         "command": 'run_event_as_subroutine',
-        "args": [253]
+        "args": [178]
     },
     {
         "identifier": 'EVENT_2342_set_action_script_async_41',

@@ -191,12 +191,12 @@ script = [
     {
         "identifier": 'EVENT_3376_enter_area_63',
         "command": 'jmp_to_event',
-        "args": [1967]
+        "args": [1957]
     },
     {
         "identifier": 'EVENT_3376_enter_area_65',
         "command": 'jmp_to_event',
-        "args": [1965]
+        "args": [1959]
     },
     {
         "identifier": 'EVENT_3376_enter_area_67',
@@ -206,16 +206,16 @@ script = [
     {
         "identifier": 'EVENT_3376_enter_area_69',
         "command": 'jmp_to_event',
-        "args": [1957]
+        "args": [1963]
     },
     {
         "identifier": 'EVENT_3376_enter_area_71',
         "command": 'jmp_to_event',
-        "args": [1959]
+        "args": [1965]
     },
     {
         "identifier": 'EVENT_3376_enter_area_73',
         "command": 'jmp_to_event',
-        "args": [1963]
+        "args": [1967]
     }
 ]

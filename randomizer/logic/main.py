@@ -20,6 +20,8 @@ from randomizer.data.npcmodels import models as npcmodels
 from randomizer.data.dialog_data.dialog_data import dialog_data
 from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
 from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
+from randomizer.data.graphics import sprites, images
+from randomizer.data.utils import palette_to_bytes
 from . import bosses
 from . import bosses_overworld
 from . import credits
@@ -36,6 +38,7 @@ from . import map
 from . import spells
 from . import shops
 from . import utils
+from .roomobject import set_partitions
 from .patch import Patch
 from .battleassembler import assemble_battle_scripts
 
@@ -46,6 +49,7 @@ from randomizer.data.eventscripts.utils.tower_access.bowser import script as tow
 from randomizer.data.eventscripts.utils.tower_access.toadstool import script as tower_toadstool
 
 from randomizer.data.roomobjecttables import RadialDirection
+from randomizer.data.eventtables import AreaObjects, Rooms
 
 from .enscript import EventScript
 from .osscript import ObjectSequenceScript
@@ -397,7 +401,6 @@ class GameWorld:
 
         # Rebuild hash after randomization.
         self._rebuild_hash()
-        print(self.seed)
 
         # apply random cosmetics after hash build
         random.seed(datetime.now())
@@ -557,7 +560,7 @@ class GameWorld:
             self.prepend_bits(203, [[0x7066, 3], [0x706E, 3]])
 
         # Pipe Vault gating
-        elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.forest):
+        if self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.forest):
             self.prepend_bits(211, [[0x7055, 7]])
         elif self.settings.is_flag_value(flags.PipeVaultGate, PipeVaultGating.mario):
             self.prepend_bits(187, [[0x7055, 7]])
@@ -644,7 +647,8 @@ class GameWorld:
         if self.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.open):
             self.prepend_bits(192, [[0x7052, 2]])
         elif self.settings.is_flag_value(flags.BelomeTempleGate, BelomeTempleGating.seaside):
-            pass
+            self.eventscripts[192].insert(0, utils.new_command(192, 'remove_from_level', [AreaObjects.NPC_3, Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM]))
+                        
 
         # Monstro Town gating
         if self.settings.is_flag_value(flags.MonstroTownGate, MonstroTownGating.open):
@@ -654,7 +658,7 @@ class GameWorld:
 
         # Volcano gating
         if self.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.open):
-            self.prepend_bits(192, [[0x7090, 0], [0x7070, 1], [0x7068, 2]])
+            self.prepend_bits(192, [[0x7090, 5], [0x7070, 1], [0x7068, 2]])
         elif self.settings.is_flag_value(flags.BarrelVolcanoGate, BarrelVolcanoGating.nimbus):
             pass
 
@@ -818,20 +822,28 @@ class GameWorld:
             self.eventscripts[192].insert(0, {"identifier": "EVENT_192_summon_invisible_flags", "command": 'run_event_as_subroutine', "args": [91]})
             
         # Starting characters
-        for position, c in enumerate(self.starter_character_checks):
-            if position == 0:
-                # Use first character to join as file select cursor.
-                if (utils.isclass_or_instance(c.item, data.items.MallowRecruit)):
-                    cursor_id = 4
-                elif (utils.isclass_or_instance(c.item, data.items.GenoRecruit)):
-                    cursor_id = 3
-                elif (utils.isclass_or_instance(c.item, data.items.BowserRecruit)):
-                    cursor_id = 2
-                elif (utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
-                    cursor_id = 1
-                else:
-                    cursor_id = 0
-            if c.item is not None:
+        # maintain the join order to match cursor character
+        self.starter_character_checks.reverse()
+        populated_starters = [c for c in self.starter_character_checks if c.item is not None]
+        REMOVE_DUMMY = enum.auto()
+        populated_starters.insert(len(populated_starters)-1, REMOVE_DUMMY)
+        for position, c in enumerate(populated_starters):
+            if c == REMOVE_DUMMY:
+                # remove placeholder member after setting first starter char so party size doesnt unintentionally go over 4 and unlock switch menu too early
+                self.eventscripts[192].insert(0, utils.new_command(192, "leave_party", [AreaObjects.DUMMY_0X05]))
+            else:
+                if utils.isclass_or_instance(c, data.chests.StarterCharacter1):
+                    # Use first character to join as file select cursor.
+                    if (utils.isclass_or_instance(c.item, data.items.MallowRecruit)):
+                        cursor_id = 4
+                    elif (utils.isclass_or_instance(c.item, data.items.GenoRecruit)):
+                        cursor_id = 3
+                    elif (utils.isclass_or_instance(c.item, data.items.BowserRecruit)):
+                        cursor_id = 2
+                    elif (utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                        cursor_id = 1
+                    else:
+                        cursor_id = 0
                 # set character
                 self.eventscripts[c.event].insert(0, utils.new_command(c.event, "run_event_as_subroutine", [c.item.starter_script]))
                 # check if character gates forest maze
@@ -885,6 +897,29 @@ class GameWorld:
         # Uncap Super Jumps
         if self.settings.is_flag_enabled(flags.UncapSuperJumps):
             patch.add_data(0x35C758, [0xFF, 0xFF])
+
+        # Substitute Valentina statue sprite
+        for l in self.boss_locations:
+            source_sprite = self.models[l.boss.small_model.model_id]["sprite"]
+            animation_num = sprites[source_sprite].animation_num
+            source_image_num = sprites[source_sprite].image_num
+            palette_addr = images[source_image_num].palette_pointer
+
+            if self.settings.is_flag_enabled(flags.DifferentiateRepeatedBosses):
+                if l.boss.alt_palette is not None:
+                    patch.add_data(palette_addr, palette_to_bytes(l.boss.alt_palette))
+            if utils.isclass_or_instance(l, data.bosses.Valentina) and not utils.isclass_or_instance(l.boss, data.bosses.ValentinaBoss):
+                dest_sprite = self.models[63]["sprite"]
+                dest_image_num = sprites[dest_sprite].image_num
+                dest_palette_addr = images[dest_image_num].palette_pointer
+
+                graphics_offset = images[source_image_num].graphics_pointer
+                gfx_offset_bytes = [(graphics_offset & 0xFF) + ((graphics_offset >> 16) - 0x28), (graphics_offset >> 8) & 0xFF]
+                
+                patch.add_data(0x251800 + dest_image_num * 4, gfx_offset_bytes)
+                patch.add_data(0x250000 + dest_sprite * 4 + 2, [animation_num & 0xFF, (animation_num >> 8)])
+                patch.add_data(dest_palette_addr, palette_to_bytes(l.boss.statue_palette))
+
 
         # Remove screen flashes
         if self.settings.is_flag_enabled(flags.RemoveFlashes):
@@ -1030,6 +1065,9 @@ class GameWorld:
             sequence_code = ObjectSequenceScript.assemble_from_table(self.actionscripts)
             patch.add_data(0x210000, sequence_code)
 
+            # Assign vram partitions
+            set_partitions(self)
+
             # Assemble and patch room NPC data, exit data, event tile data, and partition data
             npc_code, eventtile_code, exit_code, partition_code = RoomObjects.assemble_from_table(self.rooms)
             patch.add_data(0x148000, npc_code[0] + npc_code[1])
@@ -1112,8 +1150,6 @@ class GameWorld:
         if len(version_text) > 10:
             raise ValueError("Version text is too long: {!r}".format(version_text))
         patch.add_data(0x3ef140, version_text)
-
-        # do cosmetics here
 
         # Add title and major version number to SNES header data.
         patch.add_data(0x7fc0, title)

@@ -469,6 +469,11 @@ script = [
         "args": [1]
     },
     {
+        "identifier": 'EVENT_3190_party_join',
+        "command": 'run_event_as_subroutine',
+        "args": [186]
+    },
+    {
         "identifier": 'EVENT_3190_jmp_if_bit_clear_16',
         "command": 'jmp_if_bit_clear',
         "args": [0x7044, 5, 'EVENT_3190_pause_15']

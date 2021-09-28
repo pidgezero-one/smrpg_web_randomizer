@@ -119,6 +119,16 @@ script = [
         "args": [0x7014]
     },
     {
+        "identifier": 'EVENT_3407_dec_53',
+        "command": 'dec',
+        "args": [0x70DC]
+    },
+    {
+        "identifier": 'EVENT_3407_add_coins_49',
+        "command": 'add_frog_coins',
+        "args": [1]
+    },
+    {
         "identifier": 'EVENT_3407_play_sound_46',
         "command": 'play_sound',
         "args": [Sounds._094_FROG_COIN, 6]
@@ -132,16 +142,6 @@ script = [
         "identifier": 'EVENT_3407_set_action_script_sync_48',
         "command": 'set_action_script_sync',
         "args": [AreaObjects.MEM_70A9, 906]
-    },
-    {
-        "identifier": 'EVENT_3407_add_coins_49',
-        "command": 'add_frog_coins',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_3407_dec_53',
-        "command": 'dec',
-        "args": [0x70DC]
     },
     {
         "identifier": 'EVENT_3407_ret_80',

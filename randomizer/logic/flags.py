@@ -424,6 +424,16 @@ class EXPStarsAnywhere(BooleanFlag):
     id = "xpstars"
 
 
+class MimicsAnywhere(BooleanFlag):
+    name = 'Shuffle mimic chests'
+    description = '''If enabled, any three chests in the world may be mimics. You will be able to run away from them, including fights initiated by failed slot machines. If you have "Scale boss stats to area difficulty" enabled, each mimic will be restricted to areas that are appropriate for its stats. However you should save often with this setting turned on, especially if item-hunting at the start of the seed.
+<br>
+<br>If disabled, mimic chests will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley. You will not be able to run away from these fights, or from fights initiated by failed slot machines.'''
+    modes = ['open']
+    
+    id = "mimics"
+
+
 class SlotsAnywhere(BooleanFlag):
     name = 'Shuffle slot machine chests'
     description = '''If enabled, the three slot machine chests in Bean Valley will contain random item checks. Random chests in the world can contain slot machines, unless your item pool is set to "Completely Empty".
@@ -1050,7 +1060,6 @@ class BossShuffleScaleStats(BooleanFlag):
 <br>If disabled: Boss fights retain their original stats, regardless of where they are placed.'''
     
     id = "scale"
-    requires_all = [(BossShuffle(), True)]
 
 
 class BossReplaceMinigameSprites(BooleanFlag):
@@ -1060,18 +1069,13 @@ class BossReplaceMinigameSprites(BooleanFlag):
 <br>If disabled: Some sprites will be left unchanged from the original game to accommodate visual cues (such as the Booster Hill snifits, or Dodo in his statue room) or progression knowledge on required sub-fights (such as the Bandana Reds in Sunken Ship).'''
     
     id = "allsprites"
-    requires_all = [(BossShuffle(), True)]
 
 
-class MimicsAnywhere(BooleanFlag):
-    name = 'Shuffle mimic chests'
-    description = '''If enabled, any three chests in the world may be mimics. You will be able to run away from them, including fights initiated by failed slot machines. If you have "Scale boss stats to area difficulty" enabled, each mimic will be restricted to areas that are appropriate for its stats. However you should save often with this setting turned on, especially if item-hunting at the start of the seed.
-<br>
-<br>If disabled, mimic chests will remain in their original locations in Kero Sewers, Sunken Ship, and Bean Valley. You will not be able to run away from these fights.'''
-    modes = ['open']
+class DifferentiateRepeatedBosses(BooleanFlag):
+    name = "Differentiate similar bosses"
+    description = '''If enabled: Croco, Jinx, and Belome's different iterations will look slightly different in the overworld (battle sprites remain unchanged). Croco 2 will have a darker hat, Jinx 2/3's hair will be black/white respectively, Belome 2's large sprite will be the golden Belome statue, and Belome 2's smaller sprite will be a black-robed scarecrow.'''
     
-    id = "mimics"
-    requires_all = [(ShuffleItems(), True)]
+    id = "diff"
 
 
 class ShuffledBosses(CategorizationFlag):
@@ -1083,7 +1087,6 @@ class ShuffledBosses(CategorizationFlag):
     options = [o for o in AvailableBosses]
     enabled = [o for o in AvailableBosses]
     id = "pool"
-    requires_all = [(ShuffleItems(), True)]
 
 
 class EnemyStats(BooleanFlag):
@@ -1179,8 +1182,8 @@ class FixMagikoopa(BooleanFlag):
 
 class NoOHKO(BooleanFlag):
     name = "No instant KOs on boss allies"
-    description = ('You will not be able to use Geno Whirl or Pure Water to OHKO any allies to a boss (Mallow Clone, '
-                   'Mad Mallet, Fautso, etc).')
+    description = ('You will not be able to use Geno Whirl, Pure Water, or Lamb\'s Lure/Sheep Attack to OHKO any allies to a boss (Mallow Clone, '
+                   'Bandana Blue, Fautso, etc).')
     
     id = "noko"
 
@@ -1433,6 +1436,7 @@ class BossPositionSubcategory(FlagCategory):
         BossShuffle,
         BossShuffleScaleStats,
         BossReplaceMinigameSprites,
+        DifferentiateRepeatedBosses,
         ShuffledBosses
     ]
     size = 4

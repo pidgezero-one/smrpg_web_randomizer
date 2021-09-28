@@ -5,10 +5,10 @@
 #   y: 66
 #   z: 0
 #   direction: NORTHEAST
-# bosses:
-#   shift: 0
-#   override:
-#     Boomer: JohnnyBoss
+bosses:
+  # shift: 0
+  override:
+    Valentina: DodoBoss
 items:
   start:
     - CastleKey1
@@ -17,7 +17,11 @@ items:
     - ShinyStone
     - BrightCard
     - SheepAttack
+    - SignalRing
+    - ShedKey
+    - SeeYa
   # override:
+  #   MariosPadBed: StarPiece1
   #   MushroomWay1: BanditsWayStar
   #   MushroomWay2: BanditsWayStar
   #   MushroomWay3: BanditsWayStar

@@ -346,6 +346,12 @@ def update_credits(world):
     credits.add_credit(0x80, 0x00, 0xc2, 'EGGTALK          HERRSHAUN')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xc0, 'MINAMIYO')
+    credits.add_credit(0x80, 0x40, 0x81, 'XIRR')
+    credits.add_credit(0x80, 0x00, 0xc2, 'PIDGEZERO_ONE')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
     #27
     credits.begin_titles(BEGIN_TITLES_DELAY)
     credits.add_title(0x80, 0x00, 0x08, 'QUALITY ASSURANCE')

@@ -363,7 +363,7 @@ class BowserBlue(BowserPalette):
     colours = ["F8F8F8", "CACEA5", "BCBB6F", "C76714", "21451C", "4E4EE8", "3D3DB8", "1818A5", "103008", "699C69", "387131", "201008", "909080", "606040", "181818"]
     poison_colours = ["F8E088", "E0B050", "D0A028", "E05000", "102800", "483080", "302860", "080050", "001800", "688828", "285808", "100000", "987040", "584810", "080000"]
     underwater_colours = ["7c7cad", "646885", "605c69", "64343a", "102442", "2828a5", "20208d", "0c0c85", "081836", "345065", "1c384a", "100836", "484871", "303052", "0c0c3e"]
-    name = "Blue"
+    name = "Melee Blue"
     rename_character = False
 #toadstool palettes
 class ToadstoolDaisy(ToadstoolPalette):
@@ -468,3 +468,89 @@ class ToadstoolBlack(ToadstoolPalette):
     underwater_colours = ["7c7cad", "7c7489", "704c69", "4c2839", "0c0c3d", "142059", "101851", "0c1045", "380031", "7c684d", "7c4441", "1c1c99", "686495", "3c3461", "0c0c3d"]
     name = "Black"
     rename_character = False
+
+class Sprite:
+    index = 0
+    image_num = 0
+    palette_offset = 0
+    animation_num = 0
+    def __init__(self, index, image_num, animation_num, palette_offset):
+        self.index = index
+        self.image_num = image_num
+        self.animation_num = animation_num
+        self.palette_offset = palette_offset
+
+class ImagePack:
+    index = 0
+    graphics_pointer = 0
+    palette_pointer = 0
+    def __init__(self, index, graphics_pointer, palette_pointer):
+        self.index = index
+        self.graphics_pointer = graphics_pointer
+        self.palette_pointer = palette_pointer
+
+class AnimationPack:
+    index = 0
+    length = 0
+    unknown = 0
+    properties = None
+    def __init__(self, index, properties = None, length = 0, unknown = 0):
+        self.index = index
+        self.properties = properties
+        self.length = length
+        self.unknown = unknown
+
+class AnimationPackProperties:
+    molds = []
+    sequences = []
+    vram_size = 0
+    def __init__(self, sequences, molds, vram_size):
+        self.molds = molds # GridplaneMold or NonGridplaneMold
+        self.sequences = sequences
+        self.vram_size = vram_size
+
+
+class AnimationSequence:
+    frames = []
+    def __init__(self, frames):
+        self.frames = frames
+
+class AnimationSequenceFrame:
+    duration = 0
+    mold_id = 0
+    def __init__(self, duration, mold_id):
+        self.duration = duration
+        self.mold_id = mold_id
+
+class Mold:
+    index = 0
+    gridplane = False
+    tiles = []
+    def __init__(self, index, gridplane, tiles):
+        self.index = index
+        self.gridplane = gridplane
+        self.tiles = tiles
+
+
+class Tile:
+    mirror = False
+    invert = False
+    format = 0
+    is_16bit = False
+    y_plus = False
+    y_minus = False
+    y = 0
+    x = 0
+    subtile_bytes = []
+    length = 0
+    def __init__(self, mirror, invert, format, length, subtile_bytes, is_16bit=False, y_plus = 0, y_minus = 0, x = 0, y = 0):
+        self.mirror = mirror
+        self.invert = invert
+        self.format = format
+        self.length = length
+        self.subtile_bytes = subtile_bytes
+        self.is_16bit = is_16bit
+        self.y_plus = y_plus
+        self.y_minus = y_minus
+        self.y = y
+        self.x = x

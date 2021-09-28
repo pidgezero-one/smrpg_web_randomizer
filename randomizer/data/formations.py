@@ -1894,9 +1894,9 @@ def get_default_enemy_formations(world):
             FormationMember(1, False, world.get_enemy_instance(enemies.Smelter), 87, 87),
             FormationMember(2, True, world.get_enemy_instance(enemies.MachineMadeShyster), 135, 127),
             FormationMember(3, True, world.get_enemy_instance(enemies.MachineMadeShyster), 199, 159),
+            FormationMember(4, True, world.get_enemy_instance(enemies.Smithy2Head), 199, 127),
         ], stat_total_enemies=[
             world.get_enemy_instance(enemies.Smithy1),
-            world.get_enemy_instance(enemies.Smithy2Body),
             world.get_enemy_instance(enemies.Smithy2Head),
         ], stat_scaling_enemies=[
             world.get_enemy_instance(enemies.Smithy1),
@@ -1905,7 +1905,11 @@ def get_default_enemy_formations(world):
             world.get_enemy_instance(enemies.AeroSmithy),
             world.get_enemy_instance(enemies.DrillBit),
             world.get_enemy_instance(enemies.Smithy2Body),
-            world.get_enemy_instance(enemies.Smithy2Head)
+            world.get_enemy_instance(enemies.Smithy2Head),
+            world.get_enemy_instance(enemies.Smithy2TankHead),
+            world.get_enemy_instance(enemies.Smithy2SafeHead),
+            world.get_enemy_instance(enemies.Smithy2MageHead),
+            world.get_enemy_instance(enemies.Smithy2ChestHead)
         ], required_battlefield=Battlefields.Smithy),
         EnemyFormation(309, 52, 7, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Cloaker), 151, 111),
@@ -2097,9 +2101,9 @@ def get_default_enemy_formations(world):
         EnemyFormation(350, None, 31, [
             FormationMember(0, False, world.get_enemy_instance(enemies.Culex), 183, 103),
             FormationMember(1, True, world.get_enemy_instance(enemies.FireCrystal), 135, 103),
-            FormationMember(2, True, world.get_enemy_instance(enemies.FireCrystal), 151, 119),
-            FormationMember(3, True, world.get_enemy_instance(enemies.FireCrystal), 183, 135),
-            FormationMember(4, True, world.get_enemy_instance(enemies.FireCrystal), 215, 143),
+            FormationMember(2, True, world.get_enemy_instance(enemies.WaterCrystal), 151, 119),
+            FormationMember(3, True, world.get_enemy_instance(enemies.EarthCrystal), 183, 135),
+            FormationMember(4, True, world.get_enemy_instance(enemies.WindCrystal), 215, 143),
         ], stat_total_enemies=[
             # Only count Culex himself for the boss shuffle logic.
             world.get_enemy_instance(enemies.Culex),

@@ -277,6 +277,7 @@ class Boss:
     pack_number = None
     identifier = None
     statue_model = None
+    statue_palette = []
     small_model = None
     big_model = None
     attack_model = None
@@ -288,6 +289,7 @@ class Boss:
     optional_dialog_replacements = []
     eye_height = 17
     crown_height = CrownHeight.Mid
+    alt_palette = None
 
     @property
     def classname(self):
@@ -634,6 +636,7 @@ class HammerBroBoss(Boss):
     name = "Hammer Bro"
     pack_number = 183
     eye_height = 6
+    statue_palette = ["E0C000", "482818", "C08020", "906010", "F8E870", "F8E870", "F8E870", "F8F8A0", "F8F8A0", "F8F8F8", "F8F8F8", "F8E870", "F8F8A0", "683808", "0"]
     small_model = SmallModelDetails(488)
     statue_model = StatueModelDetails(488)
     big_model = BigModelDetails({
@@ -682,6 +685,8 @@ class HammerBroBoss(Boss):
          '''HAMMER BRO: Look buddy, you\n already won, you can get off of my\n hammer now.[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1793,
@@ -718,6 +723,7 @@ class Croco1Boss(Boss):
     name = "Croco"
     eye_height = 13
     pack_number = 163
+    statue_palette = ["F8E870", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "C08020", "C08020", "E0C000", "906010", "683808", "784818", "482818", "906010", "301830"]
     statue_model = StatueModelDetails(
         48,  width=32, height=32, horizontal_pixel_shift=-3)
     small_model = SmallModelDetails(48, animations=SpriteAnimationCollection(
@@ -743,6 +749,8 @@ class Croco1Boss(Boss):
         (1780, '''CROCO: Back already? How 'bout a\n drink?[await]'''),
         (1781, '''\n    CROCO: 'Dis some kinda joke?[await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -904,11 +912,11 @@ class MackBoss(Boss):
         (1781, '''MACK: OK, I get it, you can bounce\n too.[await]'''),
         (1784,
          '''BODYGUARD: There's no hard\n feelings. We're all just trying to\n have a good time.[await]'''),
-        (1785,
+        (1793,
          '''BODYGUARD: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''BODYGUARD: There's no hard\n feelings. We're all just trying to\n have a good time.[await]'''),
-        (1793,
+        (1785,
          '''BODYGUARD: There's no hard\n feelings. We're all just trying to\n have a good time.[await]'''),
         (2061,
          '''BODYGUARD: Doesn't this cake\n look just like Mack?[await]'''),
@@ -972,7 +980,8 @@ class PandoriteBoss(Boss):
     name = "Pandorite"
     eye_height = 4
     pack_number = 156
-    small_model = SmallModelDetails(199, sequence=4)
+    statue_palette = ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870", "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"]
+    small_model = SmallModelDetails(463)
     big_model = BigModelDetails({
         "sprite": SpriteName._279_PANDORITE,
         "priority_0": False,
@@ -1019,6 +1028,8 @@ class PandoriteBoss(Boss):
          '''PANDORITE: I can't tell if this is\n better or worse without the\n protection of my box.[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1793,
@@ -1057,11 +1068,12 @@ class Belome1Boss(Boss):
     name = "Belome"
     eye_height = 14
     pack_number = 168
-    small_model = SmallModelDetails(385, width=32, height=32, mold=10, invert_directions=True, animations=SpriteAnimationCollection(
+    small_model = SmallModelDetails(385, width=32, height=32, invert_directions=True, animations=SpriteAnimationCollection(
         bandits_way_distracted=scarecrow_wiggle,
         chapel_laugh=scarecrow_wiggle,
         ship_beckon=scarecrow_wiggle
     ))
+    statue_palette = ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870", "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"]
     big_model = BigModelDetails({
         "sprite": SpriteName._455_BELOME_1ST_TIME,
         "priority_0": True,
@@ -1108,6 +1120,8 @@ class Belome1Boss(Boss):
          '''BELOME: Say, it's past my bedtime.\n Can you get off of my head?[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1793,
@@ -1136,7 +1150,7 @@ class Belome1Boss(Boss):
 
 class BowyerAero(Henchman):
     pack_number = 205
-    model = SmallModelDetails(487, width=24, height=32, sequence=1)
+    model = SmallModelDetails(487, width=24, height=32)
 
 
 bowyer_hit = SpriteAnimation(
@@ -1149,8 +1163,9 @@ class BowyerBoss(Boss):
     name = "Bowyer"
     eye_height = 16
     pack_number = 181
-    statue_model = StatueModelDetails(487, width=24, height=32, mold=3)
-    small_model = SmallModelDetails(487, width=24, height=32, sequence=1)
+    statue_model = StatueModelDetails(487, width=24, height=32)
+    small_model = SmallModelDetails(487, width=24, height=32)
+    statue_palette = ["F8F8A0", "E0C000", "E0C000", "C08020", "C08020", "906010", "F8E870", "0", "C08020", "E0C000", "C08020", "0", "683808", "482818", "482818"]
     big_model = BigModelDetails({
         "sprite": SpriteName._241_BOWYER,
         "priority_0": False,
@@ -1221,11 +1236,11 @@ class BowyerBoss(Boss):
         (1781, '''BOWYER: Nya, NYA?! Stop this,\n you must![await]'''),
         (1784,
          '''FLUNKIE: Bowyer is easily\n distracted from his missions. But\n we're off the hook today.[await]'''),
-        (1785,
+        (1793,
          '''FLUNKIE: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''FLUNKIE: Bowyer is easily\n distracted from his missions. But\n we're off the hook today.[await]'''),
-        (1793,
+        (1785,
          '''FLUNKIE: Bowyer is easily\n distracted from his missions. But\n we're off the hook today.[await]'''),
         (2061,
          '''FLUNKIE: Doesn't this cake\n look just like Bowyer?[await]'''),
@@ -1298,9 +1313,12 @@ class Croco2Boss(Boss):
     name = "Croco"
     eye_height = 13
     pack_number = 164
+    alt_palette = []
+    statue_palette = ["F8E870", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "C08020", "C08020", "E0C000", "906010", "683808", "784818", "482818", "906010", "301830"]
+    alt_palette = ["B8D0C8", "88C090", "A090F8", "F8F8F8", "788080", "A070F8", "9048D0", "300000", "601000", "7030A8", "482880", "480800", "300060", "281000", "000000"]
     statue_model = StatueModelDetails(
-        48,  width=32, height=32, horizontal_pixel_shift=-3)
-    small_model = SmallModelDetails(48, animations=SpriteAnimationCollection(
+        147,  width=32, height=32, horizontal_pixel_shift=-3)
+    small_model = SmallModelDetails(147, animations=SpriteAnimationCollection(
         bandits_way_distracted=croco_bag_loop,
         mines_punch=croco_bag_hit,
         chapel_laugh=croco_bag_loop,
@@ -1326,11 +1344,11 @@ class Croco2Boss(Boss):
         (1781, '''\n    CROCO: 'Dis some kinda joke?[await]'''),
         (1784,
          '''FLUNKIE: To be honest, Croco's not\n really a bad guy.[await][pause] I guess that's why\n we follow him.[await]'''),
-        (1785,
+        (1793,
          '''FLUNKIE: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''FLUNKIE: To be honest, Croco's not\n really a bad guy.[await][pause] I guess that's why\n we follow him.[await]'''),
-        (1793,
+        (1785,
          '''FLUNKIE: To be honest, Croco's not\n really a bad guy.[await][pause] I guess that's why\n we follow him.[await]'''),
         (2061,
          '''FLUNKIE: Doesn't this cake\n look just like Croco?[await]'''),
@@ -1383,12 +1401,12 @@ class Croco2Boss(Boss):
 
 
 # loop a few times since no duration
-bomb_tick = SpriteAnimation(sequence_id=2)
+bomb_tick = SpriteAnimation(sequence_id=4)
 
 
 class PunchinelloBobomb(Henchman):
     pack_number = 1
-    model = SmallModelDetails(145, width=32, height=24, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(281, width=32, height=24, animations=SpriteAnimationCollection(
         tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 281
 
 
@@ -1400,7 +1418,7 @@ class DefaultMicrobomb(Henchman):
 
 class DefaultBobomb(Henchman):
     pack_number = 36
-    model = SmallModelDetails(145, width=32, height=24, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(281, width=32, height=24, animations=SpriteAnimationCollection(
         tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 281
 
 
@@ -1417,7 +1435,7 @@ class PunchinelloBoss(Boss):
     name = "Punchinello"
     pack_number = 140
     eye_height = 8
-    small_model = SmallModelDetails(145, animations=SpriteAnimationCollection(
+    small_model = SmallModelDetails(281, animations=SpriteAnimationCollection(
         bandits_way_distracted=bomb_tick,
         chapel_laugh=bomb_tick,
         ship_beckon=bomb_tick,
@@ -1476,11 +1494,11 @@ class PunchinelloBoss(Boss):
          '''PUNCHINELLO: You've come back to\n visit? I truly must be famous![await]'''),
         (1781,
          '''PUNCHINELLO: They say I'm a hot\n head, so it's a bad idea to stand\n on my head.[await]'''),
-        (1784, '''\n      BOB-OMB: I need a break.[await]'''),
-        (1785,
+        (1785, '''\n      BOB-OMB: I need a break.[await]'''),
+        (1793,
          '''BOB-OMB: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792, '''\n      BOB-OMB: I need a break.[await]'''),
-        (1793, '''\n      BOB-OMB: I need a break.[await]'''),
+        (1784, '''\n      BOB-OMB: I need a break.[await]'''),
         (2061,
          '''BOB-OMB: Doesn't this cake\n look just like Punchinello?[await]'''),
         (2062, '''BOB-OMB: We've gotten quite\n good with fondant.[await]'''),
@@ -1614,10 +1632,10 @@ class BoosterBoss(Boss):
          '''BOOSTER: Eh...? My! It's you\n again![await][page]\n  We're having a heated debate over\n what a “party” is, so you can stay\n if you'd like to contribute.[await]'''),
         (1781, '''BOOSTER: Hm? How's the view up there?[await]'''),
         (1784,
-         '''SNIFIT 1: There's a 70%% chance the\n drink on the table is actually\n punch.[await]'''),
-        (1792,
+         '''SNIFIT 1: There's a 70% chance the\n drink on the table is actually\n punch.[await]'''),
+        (1785,
          '''SNIFIT 2: Booster can't find any\n beetles underwater, but he still\n enjoys watching the fish.[await]'''),
-        (1793,
+        (1792,
          '''SNIFIT 3: Uh... Do you know where\n we could get some cake down here?[await]'''),
         (2061,
          '''SNIFIT 2: Doesn't this cake\n look just like Booster?[await]'''),
@@ -1653,15 +1671,15 @@ class BoosterBoss(Boss):
         (3338,
          ''' It's really weird.\n Sometimes I hear the guy next door.[await][page]\n He's always mumbling about\n Beetle-this and Train-that.[await]'''),
         (3352,
-         '''BOOSTER: Eh?[await][pause] ...Training? [delay]What training?[await]'''),
+         '''BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]'''),
         (3353,
-         '''BOOSTER: Eh?[await][pause] ...Training? [delay]What training?[await]'''),
+         '''BOOSTER: Eh?[await][pause] ...Training?[delay_15] What training?[await]'''),
     ]
     optional_dialog_replacements = [
         (1694,
-         '''SNIFIT: Oh, dear! We've failed to\n keep the intruder away from\n Booster![await]'''),
+         '''APPRENTICE: Oh, dear![delay] We've\n failed to keep the intruder away\n from Booster![await]'''),
         (1695,
-         '''SNIFIT: Booster's not happy about\n losing. Please do not jump on\n his head.[await]'''),
+         '''APPRENTICE: Booster's not happy\n about losing. Please do not jump\n on his head.[await]'''),
     ]
 
 
@@ -1687,6 +1705,7 @@ class GrateGuyBoss(Boss):
     name = "Grate Guy"
     pack_number = 177
     eye_height = 16
+    statue_palette = ["F8F8A0", "E0C000", "E0C000", "906010", "F8E870", "E0C000", "D09020", "784818", "482818", "F8E870", "E0C000", "D09020", "482818", "301830", "181818"]
     statue_model = StatueModelDetails(
         452, width=32, height=32, horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-2)
     small_model = SmallModelDetails(452, width=32, height=32)
@@ -1794,6 +1813,7 @@ class BundtBoss(Boss):
     pack_number = 176
     statue_model = StatueModelDetails(
         470, width=32, height=32, horizontal_pixel_shift=-3)
+    statue_palette = ["F8F8A0", "F8E870", "F8E870", "E0C000", "F8F8F8", "D0A000", "C08020", "C08020", "906010", "C08020", "482818", "D09020", "482818", "E0C000", "301830"]
     small_model = SmallModelDetails(470, width=32, height=32, sequence=8)
     big_model = BigModelDetails({
         "sprite": SpriteName._450_BUNDT,
@@ -1836,7 +1856,7 @@ class BundtBoss(Boss):
         # Find some way to do an animation instead of posting dialogue
         (1784,
          '''CHEF TORTE: Ze apprentice, he\n inseests he saw ze cake MOVE!\n Vhy must he still talk of zees?![await]'''),
-        (1785,
+        (1793,
          '''APPRENTICE: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''APPRENTICE: You saw it too,\n right? I know I wasn't just\n imagining it![await]'''),
@@ -1922,6 +1942,7 @@ class KingCalamariBoss(Boss):
     pack_number = 167
     eye_height = 10
     forced_background = 35
+    statue_palette = ["F8F8A0", "F8F8A0", "F8E870", "E0C000", "F8F8A0", "F8E870", "E0C000", "D0A000", "C08020", "906010", "784818", "482818", "0", "0", "181818"]
     small_model = SmallModelDetails(266, width=24, height=32, animations=SpriteAnimationCollection(
         mines_punch=squid_hit,
         dojo_challenge=squid_hit,
@@ -1947,6 +1968,8 @@ class KingCalamariBoss(Boss):
         (1781,
          '''KING CALAMARI: I'm pretty slimy,\n so this seems like a bad idea.[await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -2002,7 +2025,8 @@ class HidonBoss(Boss):
     name = "Hidon"
     eye_height = 4
     pack_number = 157
-    small_model = SmallModelDetails(199, sequence=4)  # could be 196 or 111
+    small_model = SmallModelDetails(463)  # could be 196 or 111
+    statue_palette = ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870", "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"]
     big_model = BigModelDetails({
         "sprite": SpriteName._343_HIDON,
         "priority_0": False,
@@ -2052,11 +2076,11 @@ class HidonBoss(Boss):
         (1781, '''HIDON: Oh come on, you know I'm\n weak to jumps![await]'''),
         (1784,
          '''GOOMBETTE: Besides when he\n haphazardly throws us at enemies,\n Hidon is very good to us.[await]'''),
-        (1785,
+        (1793,
          '''GOOMBETTE: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''GOOMBETTE: Besides when he\n haphazardly throws us at enemies,\n Hidon is very good to us.[await]'''),
-        (1793,
+        (1785,
          '''GOOMBETTE: Besides when he\n haphazardly throws us at enemies,\n Hidon is very good to us.[await]'''),
         (2061,
          '''GOOMBETTE: Doesn't this cake\n look just like Hidon?[await]'''),
@@ -2163,6 +2187,7 @@ class JohnnyBoss(Boss):
     name = "Johnny"
     eye_height = 20
     pack_number = 166
+    statue_palette = ["F8F8F8", "F8E870", "E0C000", "C08020", "906010", "F8E870", "C08020", "E0C000", "D09020", "906010", "784818", "E0C000", "906010", "683808", "181818"]
     small_model = SmallModelDetails(55, animations=SpriteAnimationCollection(
         bandits_way_distracted=small_johnny_sit,
         chapel_laugh=small_johnny_sit,
@@ -2271,6 +2296,7 @@ class YaridovichBoss(Boss):
     eye_height = 10
     pack_number = 180
     small_model = SmallModelDetails(40, width=24, height=32)
+    statue_palette = ["F8F8A0", "E0C000", "906010", "E0C000", "683808", "482818", "E0C000", "C08020", "482818", "F8E870", "E0C000", "C08020", "906010", "482818", "301830"]
     big_model = BigModelDetails({
         "sprite": SpriteName._221_YARIDOVICH_OUT_OF_BATTLE,
         "priority_0": False,
@@ -2293,7 +2319,7 @@ class YaridovichBoss(Boss):
         "byte5_bit6": False,
         "byte5_bit7": False,
         "byte6_bit2": False
-    }, width=35, height=74, sequence=1, animations=SpriteAnimationCollection(
+    }, width=35, height=74, animations=SpriteAnimationCollection(
         chandelier_challenge=yaridovich_alt_taunt,
         endgame_challenge=yaridovich_alt_taunt
     ))
@@ -2346,11 +2372,11 @@ class YaridovichBoss(Boss):
          '''YARIDOVICH: This is just adding\n insult to injury![await]'''),
         (1784,
          '''TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]'''),
-        (1785,
+        (1793,
          '''TOWNSPERSON: Hop on... then trampoline... in the next room.\n It'll take you... outside.[await]'''),
         (1792,
          '''TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]'''),
-        (1793,
+        (1785,
          '''TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]'''),
         (2061,
          '''TOWNSPERSON: We must... make\n this cake... look exactly...\n like Yaridovich.[await]'''),
@@ -2384,6 +2410,7 @@ class MokuraBoss(Boss):
     name = "Mokura"
     eye_height = 4
     pack_number = 207
+    statue_palette = ["F8F8F8", "F8F8A0", "F8E870", "E0C000", "D09020", "F8F8A0", "784818", "906010", "E0C000", "482818", "D09020", "0", "0", "0", "181818"]
     small_model = SmallModelDetails(201, width=16, height=16)
     big_model = BigModelDetails({
         "sprite": SpriteName._573_MOKURA,
@@ -2420,6 +2447,8 @@ class MokuraBoss(Boss):
         (1781, '''MOKURA: I oughtta go back to\n being invisible...[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1793,
@@ -2447,11 +2476,13 @@ class Belome2Boss(Boss):
     name = "Belome"
     pack_number = 169
     eye_height = 14
-    small_model = SmallModelDetails(385, width=32, height=32, mold=10, invert_directions=True, animations=SpriteAnimationCollection(
+    small_model = SmallModelDetails(149, width=32, height=32, invert_directions=True, animations=SpriteAnimationCollection(
         bandits_way_distracted=scarecrow_wiggle,
         chapel_laugh=scarecrow_wiggle,
         ship_beckon=scarecrow_wiggle
     ))
+    statue_palette = ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870", "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"]
+    alt_palette = ["F8F8F8", "F8C880", "C08848", "A86848", "783830", "505050", "383838", "202828", "181818", "3838E0", "0000D8", "000060", "E0D8D8", "988888", "181818"]
     big_model = BigModelDetails({
         "sprite": SpriteName._455_BELOME_1ST_TIME,
         "priority_0": True,
@@ -2497,6 +2528,8 @@ class Belome2Boss(Boss):
         (1781,
          '''BELOME: Say, it's past my bedtime.\n Can you get off of my head?[await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -2549,6 +2582,7 @@ class JaggerBoss(Boss):
         chandelier_challenge=jagger_punch,
         endgame_challenge=jagger_punch
     ), width=24, height=32)  # could be 156 or 256, or maybe 206 but prob not
+    statue_palette = ["F8F8A0", "F8E870", "D09020", "784818", "482818", "D09020", "784818", "301830", "482818", "F8E870", "E0C000", "D09020", "784818", "301830", "181818"]
     dialog_replacements = [
         (49,
          '''JAGGER: It'd be fun to fight\n again, but I need a nap.[await]'''),
@@ -2565,6 +2599,8 @@ class JaggerBoss(Boss):
         (1781,
          '''JAGGER: Mario, I can't jump as\n high as you. Is this really\n necessary?[await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -2596,6 +2632,7 @@ class Jinx1Boss(Boss):
     name = "Jinx"
     pack_number = 178
     eye_height = 4
+    statue_palette = ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818", "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"]
     small_model = SmallModelDetails(207, animations=SpriteAnimationCollection(
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
@@ -2621,6 +2658,8 @@ class Jinx1Boss(Boss):
          '''JINX: I must accept that I have been\n bested. Good work![await]'''),
         (1781, '''JINX: Yes, I am short! Show a little\n respect![await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -2648,6 +2687,8 @@ class Jinx2Boss(Boss):
     name = "Jinx"
     pack_number = 187
     eye_height = 4
+    statue_palette = ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818", "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"]
+    alt_palette = ["F8F8F8", "E0B068", "985040", "682848", "682848", "C00000", "C00000", "300000", "F8F800", "404040", "181818", "181818", "E0D8D8", "988888", "181818"]
     small_model = SmallModelDetails(415, animations=SpriteAnimationCollection(
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
@@ -2673,6 +2714,8 @@ class Jinx2Boss(Boss):
          '''JINX: I must accept that I have been\n bested. Good work![await]'''),
         (1781, '''JINX: Yes, I am short! Show a little\n respect![await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -2700,6 +2743,8 @@ class Jinx3Boss(Boss):
     name = "Jinx"
     pack_number = 188
     eye_height = 4
+    statue_palette = ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818", "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"]
+    alt_palette = ["F8F8F8", "E0B068", "985040", "682848", "682848", "C00000", "C00000", "300000", "F8F800", "D0D0D0", "707070", "181818", "E0D8D8", "988888", "181818"]
     small_model = SmallModelDetails(416, animations=SpriteAnimationCollection(
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
@@ -2725,6 +2770,8 @@ class Jinx3Boss(Boss):
          '''JINX: I must accept that I have been\n bested. Good work![await]'''),
         (1781, '''JINX: Yes, I am short! Show a little\n respect![await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -2772,8 +2819,9 @@ class CulexBoss(Boss):
     name = "Culex"
     eye_height = 12
     pack_number = 216
-    statue_model = StatueModelDetails(511, mold=3)
-    small_model = SmallModelDetails(511, sequence=8, mold=3)
+    statue_palette = ["482818", "F8E870", "C08020", "906010", "F8F8A0", "F8E870", "D0A000", "E0C000", "482818", "D0A000", "F8E870", "683808", "E0C000", "683808", "F8F8A0"]
+    statue_model = StatueModelDetails(151)
+    small_model = SmallModelDetails(151)
     big_model = BigModelDetails({  # incredibly, does not break shadows
         "sprite": SpriteName._511_CULEX,
         "priority_0": False,
@@ -2814,11 +2862,11 @@ class CulexBoss(Boss):
          '''CULEX: Greetings. It is good to\n make your acquaintance once\n again.[await]'''),
         (1781,
          '''CULEX: This is not the encounter In expected when I came to visit this\n world.[await]'''),
-        (1784,
-         '''WATER CRYSTAL: I guess this is as\n close as I'll get to being returned\n to Mysidia.[await]'''),
         (1785,
-         '''EARTH CRYSTAL: I thought the\n Dark Elf was a bit strange, until\n we came to this world.[await]\n You truly have some characters\n here![await]'''),
+         '''WATER CRYSTAL: I guess this is as\n close as I'll get to being returned\n to Mysidia.[await]'''),
         (1792,
+         '''EARTH CRYSTAL: I thought the\n Dark Elf was a bit strange, until\n we came to this world.[await]\n You truly have some characters\n here![await]'''),
+        (1784,
          '''FIRE CRYSTAL: Of course I'm\n miserable! We're UNDERWATER![await]'''),
         (1793,
          '''WIND CRYSTAL: Culex is nice and\n all, but I miss Yang sometimes.[await]'''),
@@ -2828,9 +2876,9 @@ class CulexBoss(Boss):
          '''WATER CRYSTAL: We must shape\n this confection to resemble Culex.[await]'''),
         (2504,
          '''CULEX: You must retrieve [0x7024] more\n item(s) before we may proceed.[await]\n Godspeed, champion knight![await]'''),
-        (2560, '''EARTH CRYSTAL: Greetings.[await][pause] Culex\n is making preparations to head\n back to his home world.[await][pause] He's\n busy right now.[await][page]\n Please come back later...\n [delay]unless you want to get hurt![await]'''),
+        (2560, '''FIRE CRYSTAL: Greetings.[await][pause] Culex\n is making preparations to head\n back to his home world.[await][pause] He's\n busy right now.[await][page]\n Please come back later...\n [delay]unless you want to get hurt![await]'''),
         (2572,
-         '''FIRE CRYSTAL: You are not going\n to find what you're seeking back\n here.[delay] Stay out.[await]'''),
+         '''WIND CRYSTAL: You are not going\n to find what you're seeking back\n here.[delay] Stay out.[await]'''),
         (2831, '''\n           CULEX: Good day.[await]'''),
         (2832, ''' Welcome to our inn.[await]\n We are offering a competitive price\n of zero coins per night.[await]\n Will you be staying tonight?[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
@@ -2853,9 +2901,9 @@ class CulexBoss(Boss):
         (3044,
          '''CULEX: It will be quite difficult to\n claim victory over the dojo master.\n I wish you luck.[await]'''),
         (3072,
-         '''WATER CRYSTAL: Wind Crystal\n really should have been the one\n standing guard all the way up here.[await]'''),
+         '''EARTH CRYSTAL: Wind Crystal\n really should have been the one\n standing guard all the way up here.[await]'''),
         (3073,
-         '''WATER CRYSTAL: Stand back!\n I might know Water Blast![await]'''),
+         '''EARTH CRYSTAL: Stand back!\n I might know Sandstorm![await]'''),
         (3352,
          '''CULEX: Well met! Thank you for\n the excellent battle.[await]'''),
         (3353,
@@ -2878,7 +2926,8 @@ class BoxBoyBoss(Boss):
     name = "Box Boy"
     eye_height = 4
     pack_number = 158
-    small_model = SmallModelDetails(199, sequence=4)  # could be 196 or 111
+    small_model = SmallModelDetails(463)  # could be 196 or 111
+    statue_palette = ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870", "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"]
     big_model = BigModelDetails({
         "sprite": SpriteName._390_BOX_BOY,
         "priority_0": False,
@@ -2923,6 +2972,8 @@ class BoxBoyBoss(Boss):
         (1781,
          '''BOX BOY: You sure you wanna jump\n on me? I counter special attacks.[await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -2969,6 +3020,7 @@ class MegaSmilaxBoss(Boss):
     name = "Megasmilax"
     pack_number = 173
     eye_height = 14
+    statue_palette = ["F8F8A0", "F8E870", "E0C000", "D0A000", "C08020", "906010", "301830", "C08020", "482818", "F8E870", "E0C000", "C08020", "482818", "E0C000", "301830"]
     statue_model = StatueModelDetails(
         263, 24, 32, mold=1, horizontal_pixel_shift=-3, vertical_pixel_shift=-4)
     small_model = SmallModelDetails(263, width=24, height=32, animations=SpriteAnimationCollection(
@@ -3029,11 +3081,11 @@ class MegaSmilaxBoss(Boss):
         (1781, '''MEGASMILAX: Careful. I have sharp\n teeth.[await]'''),
         (1784,
          '''SMILAX: I guess salt water\n wouldn't be very good for us.[await]'''),
-        (1785,
+        (1793,
          '''SMILAX: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''SMILAX: I guess salt water\n wouldn't be very good for us.[await]'''),
-        (1793,
+        (1785,
          '''SMILAX: I guess salt water\n wouldn't be very good for us.[await]'''),
         (2061,
          '''SMILAX: We're making this cake\n in honour of Megasmilax.[await]'''),
@@ -3098,8 +3150,9 @@ class DodoBoss(Boss):
     name = "Dodo"
     pack_number = 208
     eye_height = 2
-    statue_model = StatueModelDetails(131, mold=4, vertical_pixel_shift=-3)
-    small_model = SmallModelDetails(131, sequence=2)
+    statue_palette = ["F8F8A0", "D09020", "F8E870", "906010", "D09020", "906010", "F8E870", "784818", "482818", "482818", "E0C000", "784818", "301830", "E0C000", "301830"]
+    statue_model = StatueModelDetails(10, horizontal_pixel_shift=-7, vertical_pixel_shift=-4)
+    small_model = SmallModelDetails(10)
     big_model = BigModelDetails({
         "sprite": SpriteName._393_DODO,
         "priority_0": False,
@@ -3142,6 +3195,8 @@ class DodoBoss(Boss):
         (1780, EMPTY_DIALOG),
         (1781, EMPTY_DIALOG),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -3186,6 +3241,7 @@ class BirdettaBoss(Boss):
     pack_number = 175
     small_model = SmallModelDetails(462, 16, 16, animations=SpriteAnimationCollection(
         bandits_way_distracted=eggbert_expand, statue_flustered=eggbert_expand, statue_intro=eggbert_expand))
+    statue_palette = ["F8E870", "E0C000", "0", "0", "C08020", "0", "0", "0", "0", "0", "906010", "0", "0", "0", "181818"]
     big_model = BigModelDetails({
         "sprite": SpriteName._461_BIRDO,
         "priority_0": False,
@@ -3230,11 +3286,11 @@ class BirdettaBoss(Boss):
          '''BIRDETTA: This isn't what I had in\n mind when I said I wanted to play![await]'''),
         (1784,
          '''EGGBERT: You visiting us has\n really made Birdetta happy.\n Thank you![await]'''),
-        (1785,
+        (1793,
          '''EGGBERT: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''EGGBERT: You visiting us has\n really made Birdetta happy.\n Thank you![await]'''),
-        (1793,
+        (1785,
          '''EGGBERT: You visiting us has\n really made Birdetta happy.\n Thank you![await]'''),
         (2061,
          '''EGGBERT: We're making this cake\n look just like Birdetta![await]'''),
@@ -3402,11 +3458,11 @@ class ValentinaBoss(Boss):
          '''VALENTINA: Get OFF of my head\n before I take your shoes and throw\n them in the ocean!!![await]'''),
         (1784,
          '''BLUEBIRD: Valentina's grumpy.\n Booster got her a gold beetle for\n their anniversary.[await][pause] She wanted a\n ladybug.[await][page]\n Married life sounds truly weird.[await]'''),
-        (1785,
+        (1793,
          '''BLUEBIRD: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''BLUEBIRD: Valentina's grumpy.\n Booster got her a gold beetle for\n their anniversary.[await][pause] She wanted a\n ladybug.[await][page]\n Married life sounds truly weird.[await]'''),
-        (1793,
+        (1785,
          '''BLUEBIRD: Valentina's grumpy.\n Booster got her a gold beetle for\n their anniversary.[await][pause] She wanted a\n ladybug.[await][page]\n Married life sounds truly weird.[await]'''),
         (2061,
          '''BLUEBIRD: Why are we making\n a cake that looks like Valentina,\n again?[await]'''),
@@ -3484,6 +3540,7 @@ class CzarBoss(Boss):
     name = "Czar Dragon"
     eye_height = 3
     pack_number = 172
+    statue_palette = ["683808", "0", "0", "0", "906010", "0", "0", "F8F8A0", "0", "F8F8A0", "C08020", "D0A000", "E0C000", "F8E870", "181818"]
     small_model = SmallModelDetails(56, width=24, height=32, animations=SpriteAnimationCollection(
         mines_punch=fireball_spin,
         ship_beckon=fireball_spin,
@@ -3656,9 +3713,10 @@ class AxemRangersBoss(Boss):
     eye_height = 15
     pack_number = 182
     forced_background = 39
+    statue_palette = ["F8F8A0", "F8E870", "906010", "C08020", "906010", "301830", "F8E870", "E0C000", "C08020", "683808", "0", "0", "0", "0", "181818"]
     statue_model = StatueModelDetails(
-        208, width=32, height=32, horizontal_pixel_shift=-6)
-    small_model = SmallModelDetails(208, width=32, height=32, animations=SpriteAnimationCollection(
+        466, width=32, height=32, horizontal_pixel_shift=-6)
+    small_model = SmallModelDetails(466, width=32, height=32, animations=SpriteAnimationCollection(
         bandits_way_distracted=axem_red_taunt,
         mines_punch=axem_red_hit,
         ship_beckon=axem_red_hit,
@@ -3690,8 +3748,8 @@ class AxemRangersBoss(Boss):
          '''AXEM RED: Yo, Mario! This isn't\n cool! Get off of my head.[await]'''),
         (1784,
          '''AXEM BLACK: Red can be kind of\n a chump when he loses.[await]'''),
-        (1785, '''AXEM YELLOW: Say, do you have\n anything to eat?[await]'''),
-        (1792,
+        (1792, '''AXEM YELLOW: Say, do you have\n anything to eat?[await]'''),
+        (1785,
          '''AXEM PINK: I hate it down here!\n The water makes my makeup run![await]'''),
         (1793,
          '''AXEM GREEN: The four of them may\n be hot heads, but I truly enjoy\n causing mischief with them.[await]'''),
@@ -3702,12 +3760,12 @@ class AxemRangersBoss(Boss):
         (2504,
          '''AXEM RED: Listen! You're not\n going anywhere until you find [0x7024]\n more of `MARRYMORE_CHARACTER`'s item(s)![await]'''),
         (2560,
-         '''AXEM YELLOW: Green hasn't showed\n up to cover me for lunch yet! I'm\n so HUNGRY![await][page]\n ...I need a distraction![await]'''),
+         '''AXEM BLACK: Green hasn't showed\n up to cover me for lunch yet![await][pause] I'm\n so mad, I could fight somebody![await]'''),
         (2572,
-         '''AXEM BLACK: Where do you clods\n think you're going?![await]'''),
+         '''AXEM PINK: Where do you clods\n think you're going?![await]'''),
         (2831,
          '''AXEM RED: Listen up![await]\n Quit snooping around town![await]'''),
-        (2832, '''AXEM PINK: Hi~![delay] Are you sleepy?\n I'm feeling nice today, so you can\n stay for free.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
+        (2832, '''AXEM YELLOW: You tired?[await]\n I'm feeling nice today, so you can\n stay for free.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
         (2834,
          ''' The two guys in the left building\n have been acting suspicious.[await]'''),
         (2837,
@@ -3727,14 +3785,14 @@ class AxemRangersBoss(Boss):
         (2845, ''' Why does HE get to be the\n shopkeeper?[await]'''),
         (2847, '''\n     AXEM BLACK: Beat it, clod![await]'''),
         (2848,
-         '''AXEM YELLOW: Get lost, mustache!\n [delay]This shed belongs to the Axem\n Rangers![await]'''),
+         '''AXEM PINK: Get lost, mustache!\n [delay]This shed belongs to the Axem\n Rangers![await]'''),
         (3044,
          '''AXEM RED: Yo! It won't be enough\n to win just once. The dojo master\n has three forms.[await]'''),
         (3057,
          ''' Yo! What do you want?![await]\n  [select] (A fight)\n  [select] (Uh...)[await]'''),
         (3072,
-         '''AXEM PINK: It's so nice outside!\n Why does Red want us cooped up\n in here, anyway?![await]'''),
-        (3073, '''AXEM PINK: What the heck do you\n want?![await]'''),
+         '''AXEM YELLOW: Man...[delay] I wish\n someone would bring me some food\n up here![await]'''),
+        (3073, '''\n    AXEM YELLOW: Get lost, bub![await]'''),
         (3338,
          ''' It's really weird.\n Sometimes I hear the people\n next door.[await][page]\n They're always mumbling about\n Shades-this and Makeup-that.[await]'''),
         (3352, '''\n  AXEM RED: I'm way outta shape![await]'''),
@@ -3752,7 +3810,8 @@ class ChesterBoss(Boss):
     name = "Chester"
     pack_number = 235
     eye_height = 4
-    small_model = SmallModelDetails(199, sequence=4)  # could be 196 or 111
+    small_model = SmallModelDetails(463)  # could be 196 or 111
+    statue_palette = ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870", "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"]
     big_model = BigModelDetails({
         "sprite": SpriteName._395_CHESTER,
         "priority_0": False,
@@ -3797,6 +3856,8 @@ class ChesterBoss(Boss):
          '''CHESTER: You know, I'm kind of a\n big deal over in Bowser's Keep.[await]'''),
         (1781, '''CHESTER: This is unnecessary. Get\n off me![await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -3890,6 +3951,8 @@ class MagikoopaBoss(Boss):
         (1781, '''MAGIKOOPA: Uh, what are you\n doing?[await]'''),
         (1784,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1793,
@@ -3936,6 +3999,7 @@ class BoomerBoss(Boss):
     name = "Boomer"
     eye_height = 8
     pack_number = 210
+    statue_palette = ["F8F8A0", "F8E870", "F8E870", "D0A000", "F8E870", "E0C000", "E0C000", "C08020", "E0C000", "301830", "C08020", "181818", "181818", "906010", "180000"]
     statue_model = StatueModelDetails(
         159, width=24, height=32, horizontal_pixel_shift=2, north_facing_horizontal_pixel_shift=-2)  # maybe 346
     small_model = SmallModelDetails(159, width=24, height=32, animations=SpriteAnimationCollection(
@@ -4026,11 +4090,11 @@ class BoomerBoss(Boss):
         (1781, '''BOOMER: This is absurd! Get off\n of my head.[await]'''),
         (1784,
          '''CHANDELI-HO: There's nowhere for\n Boomer to crash down onto in here!\n Thank goodness![await]'''),
-        (1785,
+        (1793,
          '''CHANDELI-HO: Hop on the\n trampoline in the next room. It'll\n take you outside.[await]'''),
         (1792,
          '''CHANDELI-HO: There's nowhere for\n Boomer to crash down onto in here!\n Thank goodness![await]'''),
-        (1793,
+        (1785,
          '''CHANDELI-HO: There's nowhere for\n Boomer to crash down onto in here!\n Thank goodness![await]'''),
         (2061,
          '''CHANDELI-HO: We're making a cake\n to look just like Boomer![await]'''),
@@ -4090,10 +4154,9 @@ class ExorBoss(Boss):
     eye_height = 16
     pack_number = 186
     forced_background = 16
-    statue_model = SmallModelDetails(
-        463, width=24, height=32, mold=22, sprite_offset=3)
-    small_model = SmallModelDetails(
-        463, width=24, height=32, sequence=10, sprite_offset=3)
+    statue_model = ["F8F8F8", "F8F8A0", "F8E870", "D09020", "704020", "C08020", "906010", "784818", "482818", "D0A000", "683808", "482818", "E0C000", "C08020", "181818"]
+    statue_model = SmallModelDetails(14, width=24, height=32)
+    small_model = SmallModelDetails(14, width=24, height=32)
     # potentially, put sprite #3 on an unused NPC and don't worry about the sprite offset
     dialog_replacements = [
         (49, '''  EXOR: What do you want? Get\n lost![await]'''),
@@ -4110,6 +4173,8 @@ class ExorBoss(Boss):
         (1781,
          '''EXOR: Look, if you really want to\n humiliate me, why not use\n Geno Whirl too, while you're at it?[await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -4154,6 +4219,7 @@ class CountdownDingALing(Henchman):
 class CountdownBoss(Boss):
     name = "Count Down"
     pack_number = 174
+    statue_palette = ["F8F8A0", "F8E870", "E0C000", "E0C000", "E0C000", "D09020", "D09020", "F8E870", "F8E870", "906010", "D09020", "906010", "E0C000", "F8E870", "906010"]
     eye_height = 8
     forced_background = 18
     # small_model = SmallModelDetails(454, animations=SpriteAnimationCollection(
@@ -4255,6 +4321,7 @@ class CloakerDominoBoss(Boss):
     pack_number = 184
     eye_height = 6
     forced_background = 40
+    statue_palette = ["F8F8A0", "F8E870", "E0C000", "E0C000", "F8E870", "E0C000", "D09020", "482818", "301830", "906010", "0", "482818", "482818", "482818", "301830"]
     statue_model = StatueModelDetails(
         429, 32, 32, horizontal_pixel_shift=-4, vertical_pixel_shift=-3)
     small_model = SmallModelDetails(429, 32, 32)  # maybe 249
@@ -4300,6 +4367,8 @@ class CloakerDominoBoss(Boss):
         (1780, '''\n CLOAKER: So, you've returned...![await]'''),
         (1781, '''CLOAKER: I don't like where this is\n going...[await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -4357,6 +4426,7 @@ class ClerkBoss(Boss):
     name = "Clerk"
     eye_height = 10
     pack_number = 146
+    statue_palette = ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830", "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"]
     small_model = SmallModelDetails(446, 32, 32, animations=SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
         chapel_laugh=shovelknight_tile,
@@ -4416,11 +4486,11 @@ class ClerkBoss(Boss):
         (1781, '''CLERK: What do you think you're\n doing?![await]'''),
         (1784,
          '''MAD MALLET: To be honest, I hate\n fighting alone. I'll run away if I'm\n the last one left in a battle.[await]\n  It sounds cowardly, but this is\n just the way I am.[await]'''),
-        (1785,
+        (1793,
          '''MAD MALLET: Hop on the\n trampoline in the next room. It'll\n take you outside.[await]'''),
         (1792,
          '''MAD MALLET: To be honest, I hate\n fighting alone. I'll run away if I'm\n the last one left in a battle.[await]\n  It sounds cowardly, but this is\n just the way I am.[await]'''),
-        (1793,
+        (1785,
          '''MAD MALLET: To be honest, I hate\n fighting alone. I'll run away if I'm\n the last one left in a battle.[await]\n  It sounds cowardly, but this is\n just the way I am.[await]'''),
         (2061,
          '''MAD MALLET: We're making a cake\n to look just like the Clerk![await]'''),
@@ -4483,6 +4553,7 @@ class ManagerBoss(Boss):
     name = "Manager"
     eye_height = 10
     pack_number = 147
+    statue_palette = ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830", "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"]
     small_model = SmallModelDetails(493, 32, 32, animations=SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
         chapel_laugh=shovelknight_tile,
@@ -4543,11 +4614,11 @@ class ManagerBoss(Boss):
          '''MANAGER: Get off of my head\n before I make you take the longestn jump of your life![await]'''),
         (1784,
          '''POUNDER: This is way more fun\n than working in the factory was.[await]'''),
-        (1785,
+        (1793,
          '''POUNDER: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''POUNDER: This is way more fun\n than working in the factory was.[await]'''),
-        (1793,
+        (1785,
          '''POUNDER: This is way more fun\n than working in the factory was.[await]'''),
         (2061,
          '''POUNDER: We're making a cake\n to look just like the Manager![await]'''),
@@ -4610,6 +4681,7 @@ class DirectorBoss(Boss):
     name = "Director"
     eye_height = 10
     pack_number = 148
+    statue_palette = ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830", "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"]
     small_model = SmallModelDetails(497, 32, 32, animations=SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
         chapel_laugh=shovelknight_tile,
@@ -4671,11 +4743,11 @@ class DirectorBoss(Boss):
          '''DIRECTOR: Any tomfoolery will be\n dealt with by immediate meltdown.\n Get off of my head.[await]'''),
         (1784,
          '''POUNDETTE: I don't feel like I'm\n being used to my full potentia\n down here, but I don't mind\n having a break.[await]'''),
-        (1785,
+        (1793,
          '''POUNDETTE: Hop on the trampoline\n in the next room. It'll take you\n outside. Go on, now. Give it a try![await]'''),
         (1792,
          '''POUNDETTE: I don't feel like I'm\n being used to my full potentia\n down here, but I don't mind\n having a break.[await]'''),
-        (1793,
+        (1785,
          '''POUNDETTE: I don't feel like I'm\n being used to my full potentia\n down here, but I don't mind\n having a break.[await]'''),
         (2061,
          '''POUNDETTE: We're making a cake\n to look just like the Director![await]'''),
@@ -4756,6 +4828,7 @@ class GunyolkBoss(Boss):
     eye_height = 16
     pack_number = 149
     small_model_id = 484
+    statue_palette = ["F8F8A0", "E0C000", "C08020", "784818", "F8F8A0", "E0C000", "000000", "906010", "784818", "906010", "301830", "784818", "683808", "482818", "301830"]
     statue_model = StatueModelDetails(484, 32, 32, horizontal_pixel_shift=-1)
     small_model = SmallModelDetails(484, 32, 32, animations=SpriteAnimationCollection(
         mines_punch=ninja_hit,
@@ -4785,6 +4858,8 @@ class GunyolkBoss(Boss):
         (1781,
          '''FACTORY CHIEF: Harrumph! I should\n invent myself a spiky hat![await]'''),
         (1784,
+         ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
+        (1785,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (1792,
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
@@ -4839,7 +4914,7 @@ class SmithyShyster(Henchman):
 
 class SmithyAero(Henchman):
     pack_number = 255
-    model = SmallModelDetails(487, width=24, height=32, sequence=1)
+    model = SmallModelDetails(487, width=24, height=32)
 
 
 smithy_hit = SpriteAnimation(
@@ -4852,6 +4927,7 @@ class SmithyBoss(Boss):
     name = "Smithy"
     eye_height = 18
     pack_number = 185
+    statue_palette = ["F8F8A0", "E0C000", "E0C000", "F8F8F8", "E0C000", "C08020", "906010", "906010", "E0C000", "906010", "683808", "D09020", "683808", "482818", "301830"]
     small_model = SmallModelDetails(351, 32, 32, animations=SpriteAnimationCollection(
         bandits_way_distracted=drillbit_taunt,
         mines_punch=drillbit_hit,
@@ -4911,13 +4987,13 @@ class SmithyBoss(Boss):
          '''SMITHY: Gufaw, haw, haw...\n Not quite as impressive as my\n factory, eh?[await]'''),
         (1781, '''SMITHY: Never have I been so\n wronged![await]'''),
         (1784,
-         '''MACHINE MADE: The foundation in\n this old haunted ship looks pretty\n weak, so we try not to make Smithy\n too mad.[await]'''),
-        (1785,
-         '''MACHINE MADE: Hop on the\n trampoline in the next room. It'll\n take you outside.[await]'''),
-        (1792,
-         '''MACHINE MADE: The foundation in\n this old haunted ship looks pretty\n weak, so we try not to make Smithy\n too mad.[await]'''),
+         ''' The foundation in this old haunted\n ship looks pretty weak. So we try\n not to make Smithy too mad.[await]'''),
         (1793,
-         '''MACHINE MADE: The foundation in\n this old haunted ship looks pretty\n weak, so we try not to make Smithy\n too mad.[await]'''),
+         ''' Hop on the trampoline in the next\n room. It'll take you outside.[await]'''),
+        (1792,
+         ''' The foundation in this old haunted\n ship looks pretty weak. So we try\n not to make Smithy too mad.[await]'''),
+        (1785,
+         ''' The foundation in this old haunted\n ship looks pretty weak. So we try\n not to make Smithy too mad.[await]'''),
         (2061,
          '''MACHINE MADE: We're making a cake\n to look just like Smithy![await]'''),
         (2062,
@@ -4965,9 +5041,9 @@ class SmithyBoss(Boss):
     ]
     optional_dialog_replacements = [
         (1694,
-         '''DRILL BIT: You're pretty tough,\n but are you ready to fight Smithy?[await]'''),
+         ''' You're pretty tough, but are you\n ready to fight Smithy?[await]'''),
         (1695,
-         '''DRILL BIT: Oh, wow, you did it!\n No wonder we lost to you...[await]'''),
+         ''' Oh, wow, you did it![delay] No wonder we\n lost to you...[await]'''),
     ]
 
 
@@ -5002,7 +5078,7 @@ class Croco1(BossAndStarLocation):
                       False, target_scripts=[1713], target_action_scripts=[162], sequence_setter=758),
         BossModelFill(Rooms._078_BANDITS_WAY_AREA_04, 12, Croco1Boss,
                       SpriteSize.Small, False, target_scripts=[1698], sequence_setter=759),
-        BossModelFill(Rooms._206_BANDITS_WAY_AREA_05, 8, Croco1Boss, SpriteSize.Small, False, target_scripts=[
+        BossModelFill(Rooms._206_BANDITS_WAY_AREA_05, 8, Croco1Boss, SpriteSize.Small, False, target_scripts=[1707, 
                       1708, 1709, 1710], target_action_scripts=[469], sequence_setter=760),
     ]
 
@@ -5013,6 +5089,7 @@ class Mack(BossAndStarLocation):
     name = "Mack"
     battlefield = Battlefields.MushroomKingdomThroneRoom
     music = music.BossMusic
+    statue_palette = ["F8E870", "D0A000", "F8E870", "906010", "906010", "D0A000", "C08020", "E0C000", "683808", "301830", "C08020", "301830", "906010", "482818", "181818"]
     boss = MackBoss
     boss_locations = [
         BossModelFill(Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, 3, MackBoss, SpriteSize.Large,
@@ -5217,6 +5294,7 @@ class Punchinello(BossAndStarLocation):
     name = "Punchinello"
     battlefield = Battlefields.MolevilleMines
     music = music.MidbossMusic
+    statue_palette = ["F8F8A0", "000000", "000000", "F8E870", "906010", "F8E870", "E0C000", "D0A000", "E0C000", "C08020", "C08020", "482818", "301830", "301830", "181818"]
     boss = PunchinelloBoss
     boss_locations = [
         BossModelFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 0,
@@ -5249,10 +5327,9 @@ class Booster(BossAndStarLocation):
     battlefield = Battlefields.BoosterTower
     music = music.MidbossMusic
     boss = BoosterBoss
+    statue_palette = ["F8F8A0", "F8E870", "F8E870", "E0C000", "C08020", "906010", "E0C000", "906010", "906010", "E0C000", "C08020", "906010", "683808", "482818", "301830"]
     boss_locations = [
         BossModelFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 0, BoosterBoss, SpriteSize.Small,
-                      False, target_scripts=[1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], sequence_setter=789),
-        BossModelFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 7, BoosterBoss, SpriteSize.Small,
                       False, target_scripts=[1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], sequence_setter=789),
         BossModelFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 7, BoosterBoss,
                       SpriteSize.Small, False, dialogs=[2504], target_scripts=[3809], sequence_setter=790),
@@ -5333,6 +5410,12 @@ class Booster(BossAndStarLocation):
         [
             UniqueHenchmanFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 8, DefaultSnifit, False,
                                True, False, HenchmanType.NPCOnly, target_scripts=[2295], target_action_scripts=[], sequence_setter=795),
+        ],
+    ]
+    repeatable_henchmen = [
+        [
+            RepeatableHenchmanFill(Rooms._405_BOOSTER_PASS_SECRET, 9, BoosterApprentice,
+                                   False, False, HenchmanType.ExternalEvent, 1186, target_scripts=[2586], target_action_scripts=[851], sequence_setter=880, battlefield=Battlefields.Mountains),
         ],
     ]
 
@@ -5636,7 +5719,7 @@ class MegaSmilax(BossAndStarLocation):
     boss = MegaSmilaxBoss
     boss_locations = [
         BossModelFill(Rooms._254_BEAN_VALLEY_SMILAX_AREA, 1, MegaSmilaxBoss, SpriteSize.Small, False, target_scripts=[
-                      2555], target_action_scripts=[], sequence_setter=817),  # despawn NPC 0 and move NPC 1 down one Z coordinate
+                      2555], target_action_scripts=[845], sequence_setter=817),  # despawn NPC 0 and move NPC 1 down one Z coordinate
     ]
 
 
@@ -5867,7 +5950,7 @@ class AxemRangers(BossAndStarLocation):
 
 
 class Chester(BossAndStarLocation):
-    identifier = 461
+    identifier = 463
     description = AvailableBosses.Chester.value
     name = "Chester"
     battlefield = Battlefields.BowsersKeep
@@ -5886,6 +5969,7 @@ class Magikoopa(BowsersKeepLocation):
     battlefield = Battlefields.BowsersKeep
     music = music.MidbossMusic
     boss = MagikoopaBoss
+    statue_palette = ["F8F8A0", "E0C000", "906010", "C08020", "E0C000", "C08020", "683808", "301830", "F8F8A0", "F8E870", "D09020", "784818", "E0C000", "482818", "301830"]
     boss_locations = [
         BossModelFill(Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, 1, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[2208, 2209, 942], target_action_scripts=[
         ], sequence_setter=847),  # may need to remove palette setter if not magikoopa, may need special animation when summoning

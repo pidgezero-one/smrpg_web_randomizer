@@ -553,7 +553,7 @@ def randomize_all(world):
         if world.settings.is_flag_enabled(flags.ShuffleStarPieces):
             all_locations += world.boss_star_checks.copy()
         if world.settings.is_flag_enabled(flags.ShuffleCharacters):
-            for c in world.spotted_character_checks:
+            for c in world.spotted_character_checks + world.recruitable_character_checks:
                 c.item = None
             all_locations += world.recruitable_character_checks.copy() + world.spotted_character_checks.copy()
 
@@ -621,6 +621,7 @@ def randomize_all(world):
                             PlayableCharacters.geno, PlayableCharacters.bowser, PlayableCharacters.toadstool]
             charactersInSeed = [c for c in allCharacters if c in world.settings.get_flag(
                 flags.AvailableCharacters).enabled]
+            #print (charactersInSeed)
             # throw error if any required chars are excluded
             if PlayableCharacters.mario in world.settings.get_flag(flags.AvailableCharacters).disabled and (world.settings.is_flag_value(flags.BanditsWayGate, BanditsWayGating.mario) or world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) or world.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario) or world.settings.is_flag_value(flags.SeaGate, SeaGating.mario)):
                 raise Exception('cannot exclude Mario when required for area access')
@@ -1130,7 +1131,7 @@ def randomize_all(world):
                 if utils.isclass_or_instance(c, chests.MidasRiverTunnelItem): 
                     # midas river grant
                     cmds.append(utils.new_command(c.event, 'jmp_to_event', [c.item.overworld_midas_event]))
-                elif not utils.isclass_or_instance(c, chests.OverworldItem): 
+                elif utils.isclass_or_instance(c, chests.BoosterTowerMasher) or not utils.isclass_or_instance(c, chests.OverworldItem): 
                     # npc grants that should be treated as overworld items
                     cmds.append(utils.new_command(c.event, 'jmp_to_event', [c.item.npc_event]))
                 else:
@@ -1158,10 +1159,17 @@ def randomize_all(world):
                                     command["subscript"][subs_index] = sub_cmd
                             world.eventscripts[1335][i] = command
                             break # only apply to first command
+                # for booster tower, need to do the same
+                if utils.isclass_or_instance(c, chests.BoosterTowerMasher):
+                    for i, command in enumerate(world.eventscripts[2342]):
+                        if command["command"] == "set_action_script_sync" and (command["args"][0] - 0x14) in c.npc_ids:
+                            command["args"][1] = c.item.model.action_script
+                            world.eventscripts[2342][i] = command
+                            break # only apply to first command
             elif utils.isclass_or_instance(c, chests.BoosterTowerMasher):
                 # disable empty chests
-                    world.eventscripts[192].insert(0, utils.new_command(192, 'disable_trigger_in_level', [0x14, 197]))
-                    world.prepend_bits(192, [[0x7048, 0]])
+                world.eventscripts[192].insert(0, utils.new_command(192, 'disable_trigger_in_level', [0x14, 197]))
+                world.prepend_bits(192, [[0x7048, 0]])
 
 
         # boss star pieces

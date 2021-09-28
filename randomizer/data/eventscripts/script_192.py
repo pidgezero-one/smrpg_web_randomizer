@@ -13,11 +13,6 @@ script = [
         "command": 'run_event_as_subroutine',
         "args": [13]
     }, 
-    {
-        "identifier": 'EVENT_192_____leave_party_22',
-        "command": 'leave_party',
-        "args": [AreaObjects.DUMMY_0X05]
-    },
 
 
     # DEBUG

@@ -48,21 +48,6 @@ script = [
         "args": [168]
     },
     {
-        "identifier": 'EVENT_3680_remove_from_current_level_153',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_0]
-    },
-    {
-        "identifier": 'EVENT_3680_remove_from_level_154',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
-    },
-    {
-        "identifier": 'EVENT_3680_remove_from_level_155',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_0, Rooms._107_NIMBUS_CASTLE_AREA_09_STATUE_ROOM_AFTER_VALENTINA]
-    },
-    {
         "identifier": 'EVENT_3680_run_event_as_subroutine_159',
         "command": 'run_event_as_subroutine',
         "args": [178]

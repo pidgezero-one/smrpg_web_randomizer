@@ -1760,6 +1760,7 @@ class MolevilleMinesShyGuy(OverworldItem):
     npc_ids = [2]
     item = items.FrogCoin
     access = 2
+    missable = True
 
     def can_access(self, inventory):
         return inventory.has_item(items.BambinoBomb)
@@ -2205,7 +2206,7 @@ class BoosterTowerMasher(OverworldItem):
         return locations.can_access_tower(self.world, inventory)
 
     def item_allowed(self, item):
-        return super().item_allowed(item)
+        return super().item_allowed(item) and item.npc_event is not None # this looks like a chest, requires an overworld item, but acts like a npc reward
 
 
 class BoosterTowerParachute(Chest):
@@ -4234,9 +4235,6 @@ class NimbusCastleAfterEgg1(Chest):
     event = 247
     item = items.Flower
     access = 2
-
-    def can_access(self, inventory):
-        return locations.can_clear_nimbus_castle(inventory)
 
 
 class NimbusCastleAfterEgg2(Chest):

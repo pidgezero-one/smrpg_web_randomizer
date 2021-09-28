@@ -235,7 +235,7 @@ def remove_sequence_changes_from_action_script(script):
     #if NPC is supposed to keep a certain mold/sequence, make sure it never resets
     return [a for a in script if a["command"] != 'set_sprite_sequence' and a["command"] != "reset_properties"]
 
-def fix_directions_for_sequenced_sprite(script, sequence_type=SequenceType.Sequence, sequence_id=0, sprite_offset=0):
+def fix_directions_for_sequenced_sprite(script, sequence_type=SequenceType.Sequence, sequence_id=0, sprite_offset=0, loop=True):
     # specific sequence sprites: face left or right depending on intent of script
     output = []
     flags = []
@@ -243,6 +243,8 @@ def fix_directions_for_sequenced_sprite(script, sequence_type=SequenceType.Seque
         flags.append(_0x08Flags.READ_AS_SEQUENCE)
     else:
         flags.append(_0x08Flags.READ_AS_MOLD)
+    if not loop:
+        flags.append(_0x08Flags.LOOPING_OFF)
     for command in script:
         if command["command"] in ["face_southeast", "face_northeast"]:
             output.append({
@@ -290,47 +292,21 @@ def fix_directions_for_sequenced_sprite(script, sequence_type=SequenceType.Seque
             output.append(command)
     return output
 
-def fix_script_for_scarecrow(script):
-    s = [a for a in script if a["command"] != "reset_properties"]
+def fix_script_for_scarecrow(s):
     output = []
     for command in s:
+        if command["command"] == "reset_properties":
+            output.append(command)
+            output.append({"identifier": "dummy", "command": "face_southwest"})
         if command["command"] == "face_northwest":
-            command["command"] = "face_southeast"
-            output.append(command)
-        elif command["command"] == "face_northeast":
-            command["command"] = "face_southwest"
-            output.append(command)
-        elif command["command"] == "face_southeast":
             command["command"] = "face_northeast"
             output.append(command)
-        elif command["command"] == "face_southwest":
+        elif command["command"] == "face_northeast":
             command["command"] = "face_northwest"
             output.append(command)
         elif command["command"] == "face_mario":
             pass  # could possibly substitute a series of "ifs" comparing coord to mario's, and set direction based on that info, but that would be hella complicated and i dont know what temp vars would make sense for it
         elif command["command"] in ["walk_1_step_east", "walk_1_step_northeast", "shift_east_steps", "shift_northeast_steps", "shift_east_pixels", "shift_northeast_pixels"]:
-            output.append({"identifier": "dummy", "command": "face_southwest"})
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_on"})
-            output.append(command)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_off"})
-        elif command["command"] in ["walk_1_step_southeast", "shift_southeast_steps", "shift_southeast_pixels"]:
-            output.append({"identifier": "dummy", "command": "face_northeast"})
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_on"})
-            output.append(command)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_off"})
-        elif command["command"] in ["walk_1_step_south", "shift_south_steps", "shift_south_pixels"]:
-            output.append({"identifier": "dummy", "command": "face_northeast"})
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_on"})
-            #output.append({"identifier": "dummy", "command": "set_sprite_sequence", "args": [2, 0, [_0x08Flags.LOOPING_OFF, _0x08Flags.READ_AS_SEQUENCE]]})
-            output.append(command)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_off"})
-        elif command["command"] in ["walk_1_step_west", "walk_1_step_southwest", "shift_west_steps", "shift_southwest_steps", "shift_west_pixels", "shift_southwest_pixels"]:
             output.append({"identifier": "dummy", "command": "face_northwest"})
             output.append(
                 {"identifier": "dummy", "command": "fixed_f_coord_on"})
@@ -338,7 +314,7 @@ def fix_script_for_scarecrow(script):
             output.append(
                 {"identifier": "dummy", "command": "fixed_f_coord_off"})
         elif command["command"] in ["walk_1_step_north", "walk_1_step_northwest", "shift_north_steps", "shift_northwest_steps", "shift_north_pixels", "shift_northwest_pixels"]:
-            output.append({"identifier": "dummy", "command": "face_southeast"})
+            output.append({"identifier": "dummy", "command": "face_northeast"})
             output.append(
                 {"identifier": "dummy", "command": "fixed_f_coord_on"})
             output.append(command)
@@ -351,7 +327,6 @@ def fix_script_for_scarecrow(script):
             output.append(
                 {"identifier": "dummy", "command": "fixed_f_coord_off"})
         elif command["command"] == "set_sprite_sequence" and command["args"][0] == 1:
-            command["args"][0] = 0
             if _0x08Flags.MIRROR_SPRITE in ["args"][0][2]:
                 command["args"][2] = [c for c in command["args"]
                                       [2] if c != _0x08Flags.MIRROR_SPRITE]

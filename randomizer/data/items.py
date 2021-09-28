@@ -23,15 +23,15 @@ class OverworldItem:
 
 
 overworld_items = {
-    "flower": OverworldItem(196, 15),
-    "mushroom": OverworldItem(196, 831),
-    "key": OverworldItem(196, 830),
+    "flower": OverworldItem(111, 15),
+    "mushroom": OverworldItem(111, 831),
+    "key": OverworldItem(111, 830),
     "ring": OverworldItem(222, 773),
     "shoes": OverworldItem(222, 830),
     "junk": OverworldItem(222, 15),
     "feather": OverworldItem(131, 830),
     "brooch": OverworldItem(222, 201),
-    "music": OverworldItem(195, 202),
+    "music": OverworldItem(111, 202),
     "mushroom_item": OverworldItem(264, 483),
     "hammer": OverworldItem(31, 15),
     "coin": OverworldItem(499, 925),
@@ -44,7 +44,7 @@ overworld_items = {
     "bomb": OverworldItem(37, 15),
     "egg": OverworldItem(462, 15),
     "nothing": OverworldItem(255, 164),
-    "default": OverworldItem(195, 773),
+    "default": OverworldItem(111, 773),
     "cookie": OverworldItem(45, 480),
     "chomp": OverworldItem(30, 831), # might be too big
     "berry": OverworldItem(144, 15),

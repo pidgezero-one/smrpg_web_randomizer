@@ -6,6 +6,16 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_2640_j',
+        "command": 'jmp_if_bit_set',
+        "args": [0x709C, 1, "EVENT_2640_grant"]
+    },
+    {
+        "identifier": 'EVENT_2640_s',
+        "command": 'set_bit',
+        "args": [0x709C, 1]
+    },
+    {
         "identifier": 'EVENT_2640_action_queue_sync_1',
         "command": 'action_queue_sync',
         "args": [AreaObjects.SCREEN_FOCUS],
@@ -19,6 +29,11 @@ script = [
                 "identifier": 'EVENT_2640_action_queue_sync_1_SUBSCRIPT_shift_north_steps_1',
                 "command": 'shift_north_steps',
                 "args": [3]
+            },
+            {
+                "identifier": 'EVENT_2640__s',
+                "command": 'clear_bit',
+                "args": [0x709C, 1]
             }
         ]
     },

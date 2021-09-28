@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_1408_pause',
+        "command": 'pause',
+        "args": [4]
+    }, # maintains bowser door manip
+    {
         "identifier": 'EVENT_1408_jmp_if_bit_clear_1',
         "command": 'jmp_if_bit_clear',
         "args": [0x7042, 0, 'EVENT_1408_action_queue_sync_3']
@@ -49,6 +54,11 @@ script = [
         "identifier": 'EVENT_1408_run_event_as_subroutine_25',
         "command": 'run_event_as_subroutine',
         "args": [81]
+    },
+    {
+        "identifier": 'EVENT_1408_set_bit',
+        "command": 'set_bit',
+        "args": [0x7087, 0]
     },
     {
         "identifier": 'EVENT_1408_jmp_if_bit_clear_7',

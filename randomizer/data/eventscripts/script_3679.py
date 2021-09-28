@@ -6,36 +6,14 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3679_jmp_if_object_not_in_level_0',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_0, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_jmp_if_object_not_in_level_2']
-    },
-    {
-        "identifier": 'EVENT_3679_action_queue_async_1',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3679_action_queue_async_1_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-            }
-        ]
-    },
-    {
         "identifier": 'EVENT_3679_jmp_if_object_not_in_level_2',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_6, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_jmp_if_object_not_in_level_4']
+        "args": [AreaObjects.NPC_6, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_action_queue_sync_5']
     },
     {
         "identifier": 'EVENT_3679_apply_solidity_mod_3',
         "command": 'apply_solidity_mod',
         "args": [Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 0, [_0x6BFlags.PERMANENT]]
-    },
-    {
-        "identifier": 'EVENT_3679_jmp_if_object_not_in_level_4',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_1, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3585_fade_in_from_black_async_0']
     },
     {
         "identifier": 'EVENT_3679_action_queue_sync_5',
@@ -67,23 +45,6 @@ script = [
         "identifier": 'EVENT_3679_jmp_if_bit_clear_9',
         "command": 'jmp_if_bit_clear',
         "args": [0x705f, 5, 'EVENT_3679_fade_in_from_black_async_12']
-    },
-    {
-        "identifier": 'EVENT_3679_jmp_if_object_not_in_level_10',
-        "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_0, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM, 'EVENT_3679_fade_in_from_black_async_12']
-    },
-    {
-        "identifier": 'EVENT_3679_action_queue_async_11',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_0],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3679_action_queue_async_11_SUBSCRIPT_transfer_to_xyzf_0',
-                "command": 'transfer_to_xyzf',
-                "args": [17, 56, 0, RadialDirections.EAST]
-            }
-        ]
     },
     {
         "identifier": 'EVENT_3679_fade_in_from_black_async_12',

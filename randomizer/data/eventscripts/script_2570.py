@@ -96,6 +96,11 @@ script = [
         "args": [2571, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]
     },
     {
+        "identifier": 'EVENT_2570_sub',
+        "command": 'run_event_as_subroutine',
+        "args": [880]
+    },
+    {
         "identifier": 'EVENT_2570_fade_in_from_black_async_10',
         "command": 'fade_in_from_black_async'
     },

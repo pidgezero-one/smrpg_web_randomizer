@@ -688,8 +688,8 @@ dialog_data[408] = '''[await]'''
 dialog_data[409] = '''[await]'''
 dialog_data[410] = '''[await]'''
 dialog_data[411] = '''[await]'''
-dialog_data[412] = '''
-                DANGER!!!
+dialog_data[412] = '''                DANGER!!!
+
    Beyond the cliffs is the volcano[await]'''
 dialog_data[413] = '''[await]'''
 dialog_data[414] = '''[await]'''
@@ -866,7 +866,7 @@ dialog_data[512] = '''[await]'''
 dialog_data[513] = '''[await]'''
 dialog_data[514] = '''[await]'''
 dialog_data[515] = '''[await]'''
-dialog_data[516] = '''GARRO:  I don't know why Dodo
+dialog_data[516] = '''GARRO: I don't know why Dodo
  doesn't just get a new helmet that
  won't cover his eyes.[await]'''
 dialog_data[517] = '''[await]'''

@@ -127,7 +127,11 @@ class ObjectSequenceScript:
             else:
                 dummy_args = []
             #print(script)
-            func(*dummy_args)
+            try:
+                func(*dummy_args)
+            except Exception as e:
+                print(command, dummy_args)
+                raise e
             dummy_lines.append(assembler.fin())
         return dummy_lines
 

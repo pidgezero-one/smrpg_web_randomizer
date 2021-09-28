@@ -35,6 +35,16 @@ script = [
         "args": [0x70aa]
     },
     {
+        "identifier": 'EVENT_3401_mem_7000_and_const_6',
+        "command": 'mem_7000_and_const',
+        "args": [0x0005]
+    },
+    {
+        "identifier": 'EVENT_3401_add_8',
+        "command": 'add',
+        "args": [0x7000, 288]
+    },
+    {
         "identifier": 'EVENT_3401_jmp_if_mem_704x_at_7000_bit_set_9',
         "command": 'jmp_if_mem_704x_at_7000_bit_set',
         "args": ['EVENT_3401_jmp_if_var_not_equals_byte_26']
@@ -76,12 +86,12 @@ script = [
     {
         "identifier": 'EVENT_3401_set_70A0_short_mem_to_7000_16',
         "command": 'set_70A0_short_mem_to_7000',
-        "args": [0x70DB]
+        "args": [0x70db]
     },
     {
         "identifier": 'EVENT_3401_jmp_if_var_not_equals_byte_26',
         "command": 'jmp_if_var_not_equals_byte',
-        "args": [0x70DB, 1, 'EVENT_3401_set_temp_action_script_sync_35']
+        "args": [0x70db, 1, 'EVENT_3401_set_temp_action_script_sync_35']
     },
     {
         "identifier": 'EVENT_3401_set_action_script_sync_33',
@@ -131,22 +141,32 @@ script = [
     {
         "identifier": 'EVENT_3401_jmp_if_7000_equals_short_42',
         "command": 'jmp_if_7000_equals_short',
-        "args": [240, 'EVENT_3401_play_sound_76']
+        "args": [240, 'EVENT_3401_add_coins_79']
     },
     {
         "identifier": 'EVENT_3401_jmp_if_7000_equals_short_43',
         "command": 'jmp_if_7000_equals_short',
-        "args": [160, 'EVENT_3401_play_sound_46']
+        "args": [160, 'EVENT_3401_dec_53']
     },
     {
         "identifier": 'EVENT_3401_jmp_if_7000_equals_short_44',
         "command": 'jmp_if_7000_equals_short',
-        "args": [128, 'EVENT_3401_play_sound_61']
+        "args": [128, 'EVENT_3401_dec_68']
     },
     {
         "identifier": 'EVENT_3401_jmp_45',
         "command": 'jmp',
         "args": ['EVENT_3401_ret_80']
+    },
+    {
+        "identifier": 'EVENT_3401_dec_53',
+        "command": 'dec',
+        "args": [0x70db]
+    },
+    {
+        "identifier": 'EVENT_3401_add_coins_49',
+        "command": 'add_coins',
+        "args": [10]
     },
     {
         "identifier": 'EVENT_3401_play_sound_46',
@@ -164,19 +184,19 @@ script = [
         "args": [AreaObjects.MEM_70A9, 906]
     },
     {
-        "identifier": 'EVENT_3401_add_coins_49',
-        "command": 'add_coins',
-        "args": [10]
-    },
-    {
-        "identifier": 'EVENT_3401_dec_53',
-        "command": 'dec',
-        "args": [0x70DB]
-    },
-    {
         "identifier": 'EVENT_3401_jmp_54',
         "command": 'jmp',
         "args": ['EVENT_3401_ret_80']
+    },
+    {
+        "identifier": 'EVENT_3401_dec_68',
+        "command": 'dec',
+        "args": [0x70db]
+    },
+    {
+        "identifier": 'EVENT_3401_add_coins_64',
+        "command": 'add_coins',
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3401_play_sound_61',
@@ -194,19 +214,14 @@ script = [
         "args": [AreaObjects.MEM_70A9, 906]
     },
     {
-        "identifier": 'EVENT_3401_add_coins_64',
-        "command": 'add_coins',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_3401_dec_68',
-        "command": 'dec',
-        "args": [0x70DB]
-    },
-    {
         "identifier": 'EVENT_3401_jmp_69',
         "command": 'jmp',
         "args": ['EVENT_3401_ret_80']
+    },
+    {
+        "identifier": 'EVENT_3401_add_coins_79',
+        "command": 'add_coins',
+        "args": [1]
     },
     {
         "identifier": 'EVENT_3401_play_sound_76',
@@ -224,11 +239,6 @@ script = [
         "args": [AreaObjects.MEM_70A9, 906]
     },
     {
-        "identifier": 'EVENT_3401_add_coins_79',
-        "command": 'add_coins',
-        "args": [1]
-    },
-    {
         "identifier": 'EVENT_3401_enable_trigger_0',
         "command": 'enable_trigger',
         "args": [AreaObjects.MEM_70AA]
@@ -236,5 +246,5 @@ script = [
     {
         "identifier": 'EVENT_3401_ret_80',
         "command": 'ret'
-    }
+    },
 ]

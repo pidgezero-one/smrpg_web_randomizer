@@ -6,184 +6,19 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3282_jmp_if_bit_set_0',
-        "command": 'jmp_if_bit_set',
-        "args": [0x7058, 7, 'EVENT_3282_jmp_if_bit_set_129']
-    },
-    {
         "identifier": "EVENT_3282_sequence_setter",
         "command": "run_event_as_subroutine",
         "args": [801]
     },
     {
+        "identifier": 'EVENT_3282_jmp_if_bit_set_0',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7058, 7, 'EVENT_3282_jmp_if_bit_set_129']
+    },
+    {
         "identifier": 'EVENT_3282_run_event_as_subroutine_3',
         "command": 'run_event_as_subroutine',
         "args": [15]
-    },
-    {
-        "identifier": 'EVENT_3282_set_short_party_capacity_4',
-        "command": 'set_short_party_capacity'
-    },
-    {
-        "identifier": 'EVENT_3282_mem_compare_val_5',
-        "command": 'mem_compare_val',
-        "args": [2]
-    },
-    {
-        "identifier": 'EVENT_3282_jmp_if_comparison_result_is_lesser_6',
-        "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_3282_action_queue_sync_23']
-    },
-    {
-        "identifier": 'EVENT_3282_action_queue_sync_7',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.CHARACTER_IN_SLOT_2],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_7_SUBSCRIPT_transfer_to_object_xy_0',
-                "command": 'transfer_to_object_xy',
-                "args": [AreaObjects.MARIO]
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_7_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast'
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_7_SUBSCRIPT_fixed_f_coord_on_2',
-                "command": 'fixed_f_coord_on'
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_7_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on'
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_7_SUBSCRIPT_shift_east_steps_4',
-                "command": 'shift_east_steps',
-                "args": [2]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_3282_mem_compare_val_8',
-        "command": 'mem_compare_val',
-        "args": [3]
-    },
-    {
-        "identifier": 'EVENT_3282_jmp_if_comparison_result_is_lesser_9',
-        "command": 'jmp_if_comparison_result_is_lesser',
-        "args": ['EVENT_3282_action_queue_sync_23']
-    },
-    {
-        "identifier": 'EVENT_3282_clear_bit_10',
-        "command": 'clear_bit',
-        "args": [0x7044, 0]
-    },
-    {
-        "identifier": 'EVENT_3282_set_short_member_in_slot_11',
-        "command": 'set_short_member_in_slot',
-        "args": [2]
-    },
-    {
-        "identifier": 'EVENT_3282_jmp_if_7000_not_equals_short_12',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [3, 'EVENT_3282_clear_bit_14']
-    },
-    {
-        "identifier": 'EVENT_3282_set_bit_13_',
-        "command": 'set_bit',
-        "args": [0x7044, 0]
-    },
-    {
-        "identifier": 'EVENT_3282_clear_bit_14',
-        "command": 'clear_bit',
-        "args": [0x7044, 1]
-    },
-    {
-        "identifier": 'EVENT_3282_set_short_member_in_slot_15',
-        "command": 'set_short_member_in_slot',
-        "args": [1]
-    },
-    {
-        "identifier": 'EVENT_3282_jmp_if_7000_not_equals_short_16',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [2, 'EVENT_3282_clear_bit_18']
-    },
-    {
-        "identifier": 'EVENT_3282_set_bit_17',
-        "command": 'set_bit',
-        "args": [0x7044, 1]
-    },
-    {
-        "identifier": 'EVENT_3282_clear_bit_18',
-        "command": 'clear_bit',
-        "args": [0x7044, 2]
-    },
-    {
-        "identifier": 'EVENT_3282_set_short_member_in_slot_19',
-        "command": 'set_short_member_in_slot',
-        "args": [2]
-    },
-    {
-        "identifier": 'EVENT_3282_jmp_if_7000_not_equals_short_20',
-        "command": 'jmp_if_7000_not_equals_short',
-        "args": [2, 'EVENT_3282_action_queue_sync_22']
-    },
-    {
-        "identifier": 'EVENT_3282_set_bit_21',
-        "command": 'set_bit',
-        "args": [0x7044, 2]
-    },
-    {
-        "identifier": 'EVENT_3282_action_queue_sync_22',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.CHARACTER_IN_SLOT_3],
-        "subscript": [
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_transfer_to_object_xy_0',
-                "command": 'transfer_to_object_xy',
-                "args": [AreaObjects.MARIO]
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_face_northeast_1',
-                "command": 'face_northeast'
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_fixed_f_coord_on_2',
-                "command": 'fixed_f_coord_on'
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_visibility_on_3',
-                "command": 'visibility_on'
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_shift_north_steps_4',
-                "command": 'shift_north_steps',
-                "args": [2]
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_jmp_if_bit_set_5',
-                "command": 'jmp_if_bit_set',
-                "args": [0x7044, 0, 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_set_sprite_sequence_8']
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_set_sprite_sequence_6',
-                "command": 'set_sprite_sequence',
-                "args": [19, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_ret_7',
-                "command": 'ret'
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_set_sprite_sequence_8',
-                "command": 'set_sprite_sequence',
-                "args": [18, 0, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            },
-            {
-                "identifier": 'EVENT_3282_action_queue_sync_22_SUBSCRIPT_ret_9',
-                "command": 'ret'
-            }
-        ]
     },
     {
         "identifier": 'EVENT_3282_action_queue_sync_23',

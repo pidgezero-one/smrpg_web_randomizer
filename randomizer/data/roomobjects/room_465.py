@@ -25,7 +25,7 @@ room = {
     "full_palette_buffer": True,
   },
   "music": Music._66_BOWSERS_CASTLE_2ND_TIME,
-  "entrance_event": 3358,
+  "entrance_event": 3357,
   "event_tiles": [
     {
       "event": 3353,

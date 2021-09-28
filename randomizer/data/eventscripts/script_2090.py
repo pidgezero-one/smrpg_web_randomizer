@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_2090_pause',
+        "command": 'pause',
+        "args": [2]
+    }, # maintains bowser door manip
+    {
         "identifier": 'EVENT_2090_action_queue_sync_2',
         "command": 'action_queue_sync',
         "args": [AreaObjects.NPC_0],

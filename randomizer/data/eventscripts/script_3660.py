@@ -11,11 +11,6 @@ script = [
         "args": [0x705f, 4]
     },
     {
-        "identifier": 'EVENT_3660_open_hot_springs',
-        "command": 'set_bit',
-        "args": [0x7090, 5]
-    },
-    {
         "identifier": 'EVENT_3660_apply_solidity_mod_2',
         "command": 'apply_solidity_mod',
         "args": [Rooms._438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, 0, [_0x6BFlags.PERMANENT]]
@@ -339,26 +334,6 @@ script = [
         "identifier": 'EVENT_3660_summon_to_level_70',
         "command": 'summon_to_level',
         "args": [AreaObjects.NPC_1, Rooms._368_NIMBUS_LAND_ROYAL_BUS_STATION]
-    },
-    {
-        "identifier": 'EVENT_3660_remove_from_level_71',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_2, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
-    },
-    {
-        "identifier": 'EVENT_3660_remove_from_level_72',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_3, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
-    },
-    {
-        "identifier": 'EVENT_3660_remove_from_level_73',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_4, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
-    },
-    {
-        "identifier": 'EVENT_3660_remove_from_level_74',
-        "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_5, Rooms._409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM]
     },
     {
         "identifier": 'EVENT_3660_remove_from_level_75',

@@ -6,6 +6,11 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
+        "identifier": 'EVENT_2496_summon_to_level_135',
+        "command": 'summon_to_level',
+        "args": [AreaObjects.NPC_0, Rooms._169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN]
+    },
+    {
         "identifier": 'EVENT_2496_apply_tile_mod_0',
         "command": 'apply_tile_mod',
         "args": [Rooms._042_BOOSTER_TOWER_3F_AREA_02_NES_MARIO_ROOM, 0, [_0x6AFlags.USE_ALTERNATE]]

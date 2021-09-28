@@ -178,7 +178,7 @@ room = {
       "initiator": Initiator.NONE,
       "model": 158,
       "event_script": 256,
-      "action_script": 15,
+      "action_script": 0,
       "speed": 0,
       "npc_id_offset": 0,
       "event_offset": 0,
