@@ -78,14 +78,26 @@ script = [
         "args": [AreaObjects.MARIO],
         "subscript": [
             {
-                "identifier": 'EVENT_2448_action_queue_async_13_SUBSCRIPT_overwrite_solidity_0',
-                "command": 'overwrite_solidity',
-                "args": [[]]
-            },
-            {
                 "identifier": 'EVENT_2448_action_queue_async_13_SUBSCRIPT_shift_northwest_steps_1',
                 "command": 'shift_northwest_steps',
                 "args": [2]
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2448_action_queue_sync_24',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.MARIO],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2448_action_queue_sync_24_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'pause',
+                "args": [30]
+            },
+            {
+                "identifier": 'EVENT_2448_action_queue_sync_24_SUBSCRIPT_set_sprite_sequence_0',
+                "command": 'set_sprite_sequence',
+                "args": [3, 2, [_0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
             }
         ]
     },
@@ -102,16 +114,9 @@ script = [
         ]
     },
     {
-        "identifier": 'EVENT_2448_action_queue_sync_24',
-        "command": 'action_queue_sync',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2448_action_queue_sync_24_SUBSCRIPT_set_sprite_sequence_0',
-                "command": 'set_sprite_sequence',
-                "args": [7, 2, [_0x08Flags.READ_AS_MOLD, _0x08Flags.READ_AS_SEQUENCE, _0x08Flags.MIRROR_SPRITE]]
-            }
-        ]
+        "identifier": 'EVENT_2448_jmp_if_present_in_current_level_27',
+        "command": 'jmp_if_object_not_in_level',
+        "args": [AreaObjects.NPC_1, 232, 'EVENT_2448_pause_42']
     },
     {
         "identifier": 'EVENT_2448_set_action_script_sync_27',
@@ -510,8 +515,8 @@ script = [
             },
             {
                 "identifier": 'EVENT_2448_action_queue_sync_87_SUBSCRIPT_set_animation_speed_0',
-                "command": 'transfer_to_xyzf',
-                "args": [11, 29, 0, RadialDirections.NORTHWEST]
+                "command": 'transfer_to_object_xyz',
+                "args": [AreaObjects.NPC_10]
             },
         ]
     },

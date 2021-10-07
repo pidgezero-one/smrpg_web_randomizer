@@ -216,66 +216,6 @@ room = {
     },
     {
       "id": 5,
-      "type": ObjectType.OBJECT,
-      "initiator": Initiator.HIT_FROM_BELOW,
-      "model": 255,
-      "event_script": 2656,
-      "action_script": 15,
-      "speed": 0,
-      "npc_id_offset": 0,
-      "event_offset": 0,
-      "action_offset": 0,
-      "visible": False,
-      "x": 2,
-      "y": 73,
-      "z": 5,
-      "z_half": False,
-      "direction": RadialDirection.SOUTHWEST,
-      "face_on_trigger": False,
-      "cant_enter_doors": False,
-      "byte2_bit5": False,
-      "set_sequence_playback": False,
-      "cant_float": False,
-      "cant_walk_up_stairs": False,
-      "cant_walk_under": False,
-      "cant_pass_walls": False,
-      "cant_jump_through": False,
-      "cant_pass_npcs": False,
-      "byte3_bit5": False,
-      "cant_walk_through": True,
-      "byte3_bit7": False,
-      "slidable_along_walls": True,
-      "cant_move_if_in_air": True,
-      "byte7_upper2": 0x03,
-      "clones": [
-        {
-          "id": 6,
-          "npc_id_offset": 0,
-          "event_offset": 1,
-          "action_offset": 0,
-          "visible": False,
-          "x": 6,
-          "y": 88,
-          "z": 5,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        },
-        {
-          "id": 7,
-          "npc_id_offset": 0,
-          "event_offset": 2,
-          "action_offset": 0,
-          "visible": False,
-          "x": 8,
-          "y": 77,
-          "z": 5,
-          "z_half": False,
-          "direction": RadialDirection.SOUTHWEST
-        }
-      ]
-    },
-    {
-      "id": 8,
       "type": ObjectType.BATTLE,
       "initiator": Initiator.ANYTHING_EXCEPT_PRESS_A,
       "model": 264,
@@ -309,7 +249,7 @@ room = {
       "byte7_upper2": 0x03,
       "clones": [
         {
-          "id": 9,
+          "id": 6,
           "action_offset": 1,
           "pack_offset": 1,
           "visible": True,
@@ -320,7 +260,7 @@ room = {
           "direction": RadialDirection.SOUTHEAST
         },
         {
-          "id": 10,
+          "id": 7,
           "action_offset": 2,
           "pack_offset": 0,
           "visible": True,
@@ -333,7 +273,7 @@ room = {
       ]
     },
     {
-      "id": 11,
+      "id": 8,
       "type": ObjectType.BATTLE,
       "initiator": Initiator.ANYTHING_EXCEPT_PRESS_A,
       "model": 284,
@@ -367,7 +307,7 @@ room = {
       "byte7_upper2": 0x03,
       "clones": [
         {
-          "id": 12,
+          "id": 9,
           "action_offset": 2,
           "pack_offset": 0,
           "visible": True,
@@ -380,7 +320,7 @@ room = {
       ]
     },
     {
-      "id": 13,
+      "id": 10,
       "type": ObjectType.OBJECT,
       "initiator": Initiator.NONE,
       "model": 107,

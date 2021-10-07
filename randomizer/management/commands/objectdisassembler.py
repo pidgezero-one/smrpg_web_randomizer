@@ -19,7 +19,7 @@ roomexit_ptrstart = 0x1D2D64
 roomexit_ptrend = 0x1D3165  # might be 0x20FDC7
 
 partitionstart = 0x1DDE00
-partitionend = 0x1DDFDF
+partitionend = 0x1DDFFF # bumped up from 0x1DDFDF
 
 
 class Command(BaseCommand):

@@ -67,6 +67,11 @@ class Chest(locations.ItemLocation):
         return super().item_allowed(item)
 
 
+class CoinsNotAllowedChest(Chest):
+    def item_allowed(self, item):
+        # restricted for graphical reasons
+        return super().item_allowed(item) and not isclass_or_instance(item, items.InfiniteCoins) and not (self.world.settings.is_flag_value(flags.QuickHitCoins, False) and (isclass_or_instance(item, items.Coins) or isclass_or_instance(item, items.FrogCoin) or isclass_or_instance(item, items.MultiFrogCoin)))
+
 # ******* NPC reward data classes
 
 class NPCReward(locations.ItemLocation):
@@ -1286,37 +1291,40 @@ class ForestMaze2(Chest):
         return locations.can_access_forest(self.world, inventory)
 
 
-class ForestMazeUnderground1(Chest):
+class ForestMazeUnderground1(CoinsNotAllowedChest):
     description = ShuffleLocationSelector.ForestMazeUnderground1.value
     area = locations.Area.ForestMaze
     rooms = [242]
     npc_ids = [2]
     event = 247
     item = items.KerokeroCola
+    manual_70A7 = True
 
     def can_access(self, inventory):
         return locations.can_access_forest(self.world, inventory)
 
 
-class ForestMazeUnderground2(Chest):
+class ForestMazeUnderground2(CoinsNotAllowedChest):
     description = ShuffleLocationSelector.ForestMazeUnderground2.value
     area = locations.Area.ForestMaze
     rooms = [242]
     npc_ids = [3]
     event = 246
     item = items.Flower
+    manual_70A7 = True
 
     def can_access(self, inventory):
         return locations.can_access_forest(self.world, inventory)
 
 
-class ForestMazeUnderground3(Chest):
+class ForestMazeUnderground3(CoinsNotAllowedChest):
     description = ShuffleLocationSelector.ForestMazeUnderground3.value
     area = locations.Area.ForestMaze
     rooms = [242]
     npc_ids = [4]
     event = 245
     item = items.YouMissed
+    manual_70A7 = True
 
     def can_access(self, inventory):
         return locations.can_access_forest(self.world, inventory)
@@ -1326,7 +1334,7 @@ class ForestMazeRedEssence(Chest):
     description = ShuffleLocationSelector.ForestMazeRedEssence.value
     area = locations.Area.ForestMaze
     rooms = [227]
-    npc_ids = [5]
+    npc_ids = [4]
     event = 247
     item = items.RedEssence
 
@@ -1824,7 +1832,7 @@ class MolevilleMinesCharacter(CharacterRecruit):
     rooms = [284]
     event = 186
     npcs = [
-        (284, 1, [], [488])
+        (284, 1, [], [])
     ]
 
     def can_access(self, inventory):

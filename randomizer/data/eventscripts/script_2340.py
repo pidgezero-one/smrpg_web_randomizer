@@ -80,6 +80,11 @@ script = [
         "args": [AreaObjects.MARIO, Coords.Z, [7], CoordUnits.PIXEL]
     },
     {
+        "identifier": 'EVENT_2340_set_7000_to_object_coord_3_',
+        "command": 'run_event_as_subroutine',
+        "args": [881]
+    },
+    {
         "identifier": 'EVENT_2340_jmp_if_7000_equals_short_4',
         "command": 'jmp_if_7000_equals_short',
         "args": [22, 'EVENT_2340_set_bit_7']

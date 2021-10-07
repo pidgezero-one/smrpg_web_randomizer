@@ -842,8 +842,7 @@ def randomize_all(world):
                             if utils.is_animation_header(cmd, npc):
                                 world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(c.item.sprites, cmd["subscript"])
                     for script_id in actionscripts:
-                        for command_index, cmd in enumerate(world.actionscripts[script_id]):
-                            world.actionscripts[script_id] = utils.sanitize_character_animation_script(c.item.sprites, world.actionscripts[script_id])
+                        world.actionscripts[script_id] = utils.sanitize_character_animation_script(c.item.sprites, world.actionscripts[script_id])
             elif not utils.isclass_or_instance(c, chests.MolevilleMinesCharacter): # replace with Toad if empty
                 toad_sprites = {
                     "south": (0, 6, True),

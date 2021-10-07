@@ -3,66 +3,10 @@
 # python manage.py objectdisassembler --rom ROM
 from randomizer.data.roomobjecttables import ObjectType, Initiator, PostBattle, RadialDirection, Music, Edge, ExitType, Locations, Rooms, PartitionBufferTypes, PartitionMainSpace
 room = {
-  "partition": {
-    "ally_sprite_buffer_size": 1,
-    "allow_extra_sprite_buffer": False,
-    "extra_sprite_buffer_size": 0,
-    "buffer_a": {
-      "type": PartitionBufferTypes.EMPTY_3,
-      "main_buffer_space": PartitionMainSpace._0_BYTES,
-      "index_in_main_buffer": True,
-    },
-    "buffer_b": {
-      "type": PartitionBufferTypes.EMPTY_3,
-      "main_buffer_space": PartitionMainSpace._0_BYTES,
-      "index_in_main_buffer": True,
-    },
-    "buffer_c": {
-      "type": PartitionBufferTypes.EMPTY_3,
-      "main_buffer_space": PartitionMainSpace._0_BYTES,
-      "index_in_main_buffer": True,
-    },
-    "full_palette_buffer": True,
-  },
+  "partition": None,
   "music": Music._00_CURRENT,
   "entrance_event": 2293,
   "event_tiles": [],
   "exit_fields": [],
-  "objects": [
-    {
-      "id": 0,
-      "type": ObjectType.OBJECT,
-      "initiator": Initiator.PRESS_A_FROM_ANY_SIDE,
-      "model": 64,
-      "event_script": 1397,
-      "action_script": 0,
-      "speed": 0,
-      "npc_id_offset": 0,
-      "event_offset": 0,
-      "action_offset": 0,
-      "visible": False,
-      "x": 1,
-      "y": 17,
-      "z": 0,
-      "z_half": False,
-      "direction": RadialDirection.SOUTHEAST,
-      "face_on_trigger": True,
-      "cant_enter_doors": False,
-      "byte2_bit5": False,
-      "set_sequence_playback": True,
-      "cant_float": True,
-      "cant_walk_up_stairs": True,
-      "cant_walk_under": True,
-      "cant_pass_walls": False,
-      "cant_jump_through": False,
-      "cant_pass_npcs": True,
-      "byte3_bit5": True,
-      "cant_walk_through": True,
-      "byte3_bit7": True,
-      "slidable_along_walls": True,
-      "cant_move_if_in_air": True,
-      "byte7_upper2": 0x03,
-      "clones": []
-    }
-  ]
+  "objects": []
 }

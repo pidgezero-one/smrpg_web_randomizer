@@ -35,6 +35,11 @@ script = [
         "args": [0x70aa]
     },
     {
+        "identifier": 'EVENT_3407_set_7000_to_70A0_short_mem_4_',
+        "command": 'set',
+        "args": [0x7000, 290]
+    },
+    {
         "identifier": 'EVENT_3407_jmp_if_mem_704x_at_7000_bit_set_9',
         "command": 'jmp_if_mem_704x_at_7000_bit_set',
         "args": ['EVENT_3407_jmp_if_var_not_equals_byte_26']

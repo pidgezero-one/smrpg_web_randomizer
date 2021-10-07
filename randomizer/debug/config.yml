@@ -5,10 +5,10 @@
 #   y: 66
 #   z: 0
 #   direction: NORTHEAST
-bosses:
-  # shift: 0
-  override:
-    Valentina: DodoBoss
+# bosses:
+#   # shift: 0
+#   override:
+#     HammerBros: KingCalamariBoss
 items:
   start:
     - CastleKey1
@@ -20,7 +20,10 @@ items:
     - SignalRing
     - ShedKey
     - SeeYa
-  # override:
+    - FireBomb
+    - PunchGlove
+  override:
+    PipeVaultSlideFrogCoin: StarGun
   #   MariosPadBed: StarPiece1
   #   MushroomWay1: BanditsWayStar
   #   MushroomWay2: BanditsWayStar

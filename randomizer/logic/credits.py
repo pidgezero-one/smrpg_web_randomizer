@@ -364,7 +364,7 @@ def update_credits(world):
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'TINYWETBLANKET   FLARERDB')
+    credits.add_credit(0x80, 0x80, 0xc0, 'TINYWETBLANKET      FLARE')
     credits.add_credit(0x80, 0x40, 0x81, 'WEFFJEBSTER     BROATMEAL')
     credits.add_credit(0x80, 0x00, 0xc2, 'CYNAS')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)

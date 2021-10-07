@@ -212,7 +212,7 @@ class Battlefields(IntEnum):
     BeanValleyUnderground = 0x31
 
 battlefield_room_table = [
-    (Battlefields.Forest, [Rooms._224_FOREST_MAZE_AREA_01, Rooms._227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, Rooms._228_FOREST_MAZE_AREA_04, Rooms._234_FOREST_MAZE_SECRET, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]),
+    (Battlefields.Forest, [Rooms._224_FOREST_MAZE_AREA_01, Rooms._227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, Rooms._228_FOREST_MAZE_AREA_04]),
     (Battlefields.Beanstalks, [Rooms._372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, Rooms._373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, Rooms._419_LAZY_SHELL_CLOUD]),
     (Battlefields.SunkenShip, [Rooms._024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, Rooms._167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS, Rooms._169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN, Rooms._175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM, Rooms._179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, Rooms._183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN, Rooms._184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, Rooms._185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING, Rooms._379_BEAN_VALLEY_BEANSTALKS_AREA_02]),
     (Battlefields.MushroomKingdom, [Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, Rooms._031_MUSHROOM_KINGDOM_CASTLE_VAULT, Rooms._331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT, ]),
@@ -225,7 +225,7 @@ battlefield_room_table = [
     (Battlefields.KeroSewers, [Rooms._059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS, Rooms._060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, Rooms._128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, Rooms._301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]),
     (Battlefields.NimbusCastle, [Rooms._111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE, Rooms._500_NIMBUS_CASTLE_AREA_04_____DUMMY, Rooms._113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, Rooms._114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, Rooms._498_NIMBUS_CASTLE_AREA_10_____DUMMY, Rooms._118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, Rooms._121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, Rooms._410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE, Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]),
     (Battlefields.Valentina, [Rooms._344_NIMBUS_LAND_ITEM_SHOP]),
-    (Battlefields.Underground, [Rooms._262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, Rooms._263_LANDS_END_UNDERGROUND_AREA_01, Rooms._270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, Rooms._280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC, Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, Rooms._288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, Rooms._401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS]),
+    (Battlefields.Underground, [Rooms._262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, Rooms._263_LANDS_END_UNDERGROUND_AREA_01, Rooms._270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, Rooms._280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC, Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, Rooms._288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, Rooms._401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS, Rooms._234_FOREST_MAZE_SECRET, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]),
     (Battlefields.Plateau, [Rooms._033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT, Rooms._141_LANDS_END_AREA_04_ROTATING_FLOWERS]),
     (Battlefields.Sea, [Rooms._132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, Rooms._133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS, Rooms._134_SEA_AREA_03_SUPER_STAR_ROOM]),
     (Battlefields.BeanValley, [Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA, Rooms._252_BEAN_VALLEY_MAIN_AREA]),
@@ -1150,7 +1150,7 @@ class Belome1Boss(Boss):
 
 class BowyerAero(Henchman):
     pack_number = 205
-    model = SmallModelDetails(487, width=24, height=32)
+    model = SmallModelDetails(234, width=24, height=32)
 
 
 bowyer_hit = SpriteAnimation(
@@ -1163,8 +1163,8 @@ class BowyerBoss(Boss):
     name = "Bowyer"
     eye_height = 16
     pack_number = 181
-    statue_model = StatueModelDetails(487, width=24, height=32)
-    small_model = SmallModelDetails(487, width=24, height=32)
+    statue_model = StatueModelDetails(234, width=24, height=32)
+    small_model = SmallModelDetails(234, width=24, height=32)
     statue_palette = ["F8F8A0", "E0C000", "E0C000", "C08020", "C08020", "906010", "F8E870", "0", "C08020", "E0C000", "C08020", "0", "683808", "482818", "482818"]
     big_model = BigModelDetails({
         "sprite": SpriteName._241_BOWYER,
@@ -3272,6 +3272,7 @@ class BirdettaBoss(Boss):
         chandelier_challenge=birdetta_attack,
         endgame_challenge=birdetta_attack
     ))
+    unique_henchmen = [BirdettaEggbert, BirdettaEggbert, BirdettaEggbert]
     repeatable_henchmen = [BirdettaEggbert]
     dialog_replacements = [
         (1660, ''' Oh, yay, you've come to play!\n Come on in~![await]'''),
@@ -4914,7 +4915,7 @@ class SmithyShyster(Henchman):
 
 class SmithyAero(Henchman):
     pack_number = 255
-    model = SmallModelDetails(487, width=24, height=32)
+    model = SmallModelDetails(234, width=24, height=32)
 
 
 smithy_hit = SpriteAnimation(
@@ -5300,6 +5301,7 @@ class Punchinello(BossAndStarLocation):
         BossModelFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 0,
                       PunchinelloBoss, SpriteSize.Attack, False, target_scripts=[592, 596, 594, 860], sequence_setter=788),
     ]
+    # should the bobombs be unique henchmen?
     repeatable_henchmen = [
         [  # needs special considerations for only tiny sprites
             RepeatableHenchmanFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 1, DefaultMicrobomb, False,
@@ -5316,7 +5318,11 @@ class Punchinello(BossAndStarLocation):
                                    False, HenchmanType.Pack, target_scripts=[592, 596], target_action_scripts=[292, 293], sequence_setter=788, can_run_away=True),
             RepeatableHenchmanFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 6, DefaultBobomb, False,
                                    False, HenchmanType.Pack, target_scripts=[592, 596], target_action_scripts=[291, 293], sequence_setter=788, can_run_away=True),
-        ]
+        ],
+        [  # booster tower masher room because lol
+            RepeatableHenchmanFill(197, 1, DefaultBobomb, False,
+                                   False, HenchmanType.NPCOnly, target_scripts=[2340, 2342], target_action_scripts=[], sequence_setter=881)
+        ],
     ]
 
 

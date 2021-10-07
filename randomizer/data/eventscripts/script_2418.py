@@ -109,38 +109,41 @@ script = [
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_13',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2]
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_14',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_15',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4]
-    },
-    {
-        "identifier": 'EVENT_2418_remove_from_current_level_16',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5]
-    },
-    {
-        "identifier": 'EVENT_2418_remove_from_current_level_17',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6]
-    },
-    {
-        "identifier": 'EVENT_2418_remove_from_current_level_18',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7]
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_19',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_13]
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_2418_jmp_if_random_above_128_20',
@@ -150,7 +153,7 @@ script = [
     {
         "identifier": 'EVENT_2418_remove_from_current_level_21',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_8]
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_2418_jmp_if_random_above_128_22',
@@ -160,7 +163,7 @@ script = [
     {
         "identifier": 'EVENT_2418_remove_from_current_level_23',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_9]
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_2418_jmp_if_random_above_128_24',
@@ -170,7 +173,7 @@ script = [
     {
         "identifier": 'EVENT_2418_remove_from_current_level_25',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10]
+        "args": [AreaObjects.NPC_7]
     },
     {
         "identifier": 'EVENT_2418_jmp_if_random_above_128_26',
@@ -180,7 +183,7 @@ script = [
     {
         "identifier": 'EVENT_2418_remove_from_current_level_27',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_11]
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_2418_jmp_if_random_above_128_28',
@@ -190,7 +193,7 @@ script = [
     {
         "identifier": 'EVENT_2418_remove_from_current_level_29',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_12]
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_2418_jmp_30',
@@ -199,58 +202,71 @@ script = [
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_31',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_on'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2418_remove_from_current_level_31_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_32',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4]
-    },
-    {
-        "identifier": 'EVENT_2418_remove_from_current_level_33',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6]
-    },
-    {
-        "identifier": 'EVENT_2418_remove_from_current_level_34',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7]
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_35',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_8]
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_36',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_9]
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_37',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10]
+        "args": [AreaObjects.NPC_7]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_38',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_11]
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_39',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_12]
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_2418_jmp_if_object_not_in_level_40',
         "command": 'jmp_if_object_not_in_level',
-        "args": [AreaObjects.NPC_13, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, 'EVENT_2418_jmp_if_bit_clear_62']
+        "args": [AreaObjects.NPC_10, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, 'EVENT_2418_jmp_if_bit_clear_62']
     },
     {
         "identifier": 'EVENT_2418_action_queue_async_41',
         "command": 'action_queue_async',
-        "args": [AreaObjects.NPC_13],
+        "args": [AreaObjects.NPC_10],
         "subscript": [
             {
                 "identifier": 'EVENT_2418_action_queue_async_41_SUBSCRIPT_shadow_off_0',
@@ -286,7 +302,7 @@ script = [
     {
         "identifier": 'EVENT_2418_set_action_script_sync_42',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_13, 947]
+        "args": [AreaObjects.NPC_10, 947]
     },
     {
         "identifier": 'EVENT_2418_jmp_43',
@@ -300,28 +316,41 @@ script = [
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_45',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2]
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
+    },
+    {
+        "identifier": 'EVENT_2418_remove_from_current_level_45_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_on'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_46',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_4]
-    },
-    {
-        "identifier": 'EVENT_2418_remove_from_current_level_47',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5]
-    },
-    {
-        "identifier": 'EVENT_2418_remove_from_current_level_48',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_7]
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_49',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_13]
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_2418_jmp_50',
@@ -335,53 +364,66 @@ script = [
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_52',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2]
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_2],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_53',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_3]
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_3],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_off'
+            }
+        ]
     },
     {
-        "identifier": 'EVENT_2418_remove_from_current_level_54',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_5]
-    },
-    {
-        "identifier": 'EVENT_2418_remove_from_current_level_55',
-        "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_6]
+        "identifier": 'EVENT_2418_remove_from_current_level_53_',
+        "command": 'action_queue_async',
+        "args": [AreaObjects.NPC_4],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2418_action_queue_sync_76_SUBSCRIPT_set_animation_speed_0',
+                "command": 'visibility_on'
+            }
+        ]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_56',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_8]
+        "args": [AreaObjects.NPC_5]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_57',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_9]
+        "args": [AreaObjects.NPC_6]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_58',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_10]
+        "args": [AreaObjects.NPC_7]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_59',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_11]
+        "args": [AreaObjects.NPC_8]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_60',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_12]
+        "args": [AreaObjects.NPC_9]
     },
     {
         "identifier": 'EVENT_2418_remove_from_current_level_61',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_13]
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_2418_jmp_if_bit_clear_62',

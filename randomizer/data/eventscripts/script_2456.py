@@ -52,12 +52,12 @@ script = [
     {
         "identifier": 'EVENT_2456_remove_from_current_level_9',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_13]
+        "args": [AreaObjects.NPC_10]
     },
     {
         "identifier": 'EVENT_2456_remove_from_level_10',
         "command": 'remove_from_level',
-        "args": [AreaObjects.NPC_13, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
+        "args": [AreaObjects.NPC_10, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]
     },
     {
         "identifier": 'EVENT_2456_action_queue_async_11',

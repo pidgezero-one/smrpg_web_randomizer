@@ -473,6 +473,8 @@ def randomize_palettes(world):
         world.characters[2].palette = random.choice(geno_palettes)
         world.characters[3].palette = random.choice(bowser_palettes)
         world.characters[4].palette = random.choice(toadstool_palettes)
+        if utils.isclass_or_instance(world.characters[4].palette, palettes.ToadstoolBlack):
+            world.replace_dialog(735, ''' This Bowsette costume is missing\n horns. Oh, well...[await]''')
         if world.characters[4].palette.rename_character:
             world.search_replace_dialog('`PEACH_NAME`', '%s' % world.characters[4].palette.name)
             world.search_replace_dialog('`PEACH_ARTICLE`', 'n' if world.characters[4].palette.name[0] in ['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'] else '')

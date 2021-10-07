@@ -3,7 +3,7 @@
 from . import attacks
 from . import bosses
 from . import characters
-from . import chests
+# from . import chests
 from . import dialogs
 from . import enemies
 from . import formations

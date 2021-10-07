@@ -806,6 +806,11 @@ script = [
     },
     {
         "identifier": "EVENT_247_room_242_logic",
+        "command": 'set',
+        "args": [0x70A7, 108]
+    },
+    {
+        "identifier": "EVENT_247_room_242_logic_",
         "command": 'jmp_to_event',
         "args": [3089]
     },

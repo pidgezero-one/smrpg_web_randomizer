@@ -130,7 +130,7 @@ class ItemLocation:
 
         """
         # If this is a missable location, it cannot contain a key item.
-        if self.missable and (item.is_key or utils.isclass_or_instance(item, items.MimicFight) or utils.isclass_or_instance(item, items.BrightCard) or utils.isclass_or_instance(item, items.SignalRing)):
+        if self.missable and (item.is_key or utils.isclass_or_instance(item, items.MimicFight) or utils.isclass_or_instance(item, items.BrightCard) or utils.isclass_or_instance(item, items.SignalRing) or utils.isclass_or_instance(item, items.Wallet)):
             return False
 
         # If this is an excluded location, it cannot contain a key item.

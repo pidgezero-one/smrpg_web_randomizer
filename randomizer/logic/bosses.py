@@ -584,6 +584,20 @@ def randomize_all(world):
                             model_num = world.get_room_npc_property_by_id(room_id, npc_id, "model")
                             world.models[model_num] = model.model_details
 
+                        # TODO check if this works
+                        # set Cannot Clone as long as model is not the same as a henchman
+                        set_exclude = True
+                        for u in boss_location.unique_henchmen + boss_location.repeatable_henchmen:
+                            for henchman_location in u:
+                                occupant_h = henchman_location.occupant
+                                if occupant_h is not None:
+                                    model_h = occupant_h.model
+                                    if model_h.model_id == model_num:
+                                        set_exclude = False
+                        if set_exclude:
+                            world.models[model_num]["cannot_clone"] = True
+
+
 
                         # statues: flip directions where necessary
                         if boss_sprite_location.preferred_size == SpriteSize.Statue:
@@ -1027,6 +1041,7 @@ def randomize_all(world):
                                 # remove this NPC if necessary when boss has nothing to fill
                                 if henchman_location.remove_if_empty: # is gunyolk npc 0 getting an occupant when it shouldnt be?
                                     world.update_room_npc_property_by_id(room_id, npc_id, "visible", False)
+                                    world.update_room_npc_property_by_id(room_id, npc_id, "model", 255)
                                 # leave as-is if not required to remove
 
 
@@ -1049,6 +1064,9 @@ def randomize_all(world):
                                 world.update_room_npc_property_by_id(room_id, npc_id, "model", model.model_id)
 
                                 model.directional_capability = world.models[model.model_id]["vram_store"]
+
+                                # TODO check if this works
+                                # world.models[model.model_id]["cannot_clone"] = True
                                 
                                 # if model requires a specific sequence or mold, set it now in room loader subroutine
                                 sprite_offset = model.sprite_offset

@@ -29,7 +29,7 @@ overworld_items = {
     "ring": OverworldItem(222, 773),
     "shoes": OverworldItem(222, 830),
     "junk": OverworldItem(222, 15),
-    "feather": OverworldItem(131, 830),
+    "feather": OverworldItem(10, 15),
     "brooch": OverworldItem(222, 201),
     "music": OverworldItem(111, 202),
     "mushroom_item": OverworldItem(264, 483),
@@ -39,8 +39,9 @@ overworld_items = {
     "frog_coin": OverworldItem(195, 925),
     "static_frog_coin": OverworldItem(195, 15),
     "static_coin": OverworldItem(499, 15),
-    "star": OverworldItem(388, 831),
-    "star_piece": OverworldItem(28, 591),
+    #"star": OverworldItem(388, 831),
+    "star": OverworldItem(226, 3),
+    #"star_piece": OverworldItem(28, 591),
     "bomb": OverworldItem(37, 15),
     "egg": OverworldItem(462, 15),
     "nothing": OverworldItem(255, 164),
@@ -2913,7 +2914,6 @@ class Fireworks(RegularItem):
     overworld_event = 3112
     overworld_midas_event = 3398
     price = 500
-    model = overworld_items["star"]
     dialog_replacements = [
         (2911,
          ''' Item #1: A “Trade Item”! It almost\n feels kind of sinister, somehow...[await][pause] I'll sell it to you for\n 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]'''),
@@ -3045,7 +3045,6 @@ class ProgressiveEgg(MiscReward):
 class ProgressiveFireworks(MiscReward):
     index = 197
     unique = ItemUnique.Always
-    model = overworld_items["star"]
     chest_event = 3100
     npc_event = 185
     overworld_event = 3113
@@ -3222,7 +3221,7 @@ class StarPiece(MiscReward):
     npc_event = 164
     overworld_event = 166
     overworld_midas_event = 2821
-    model = overworld_items["star_piece"]
+    model = overworld_items["star"]
     item_type = 3
     dialog_replacements = [
         (2911,

@@ -556,7 +556,7 @@ class EnabledFreestandingChecks(CategorizationFlag):
 
 class ReplaceItems(BooleanFlag):
     name = 'Replace some chest items with coins'
-    description = 'If enabled, the worst items (Wilt Shrooms, etc) will be replaced with coins in chests.'
+    description = 'If enabled, the worst items (Wilt Shrooms, etc) will sometimes be replaced with coins in chests.'
     modes = ['open']
     
     id = "replace"

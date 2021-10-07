@@ -35,14 +35,9 @@ script = [
         "args": [0x70aa]
     },
     {
-        "identifier": 'EVENT_3404_mem_7000_and_const_6',
-        "command": 'mem_7000_and_const',
-        "args": [0x0005]
-    },
-    {
-        "identifier": 'EVENT_3404_add_8',
-        "command": 'add',
-        "args": [0x7000, 288]
+        "identifier": 'EVENT_3404_set_7000_to_70A0_short_mem_4_',
+        "command": 'set',
+        "args": [0x7000, 292]
     },
     {
         "identifier": 'EVENT_3404_jmp_if_mem_704x_at_7000_bit_set_9',

@@ -63,7 +63,12 @@ script = [
             {
                 "identifier": 'EVENT_2430_action_queue_async_13_SUBSCRIPT_shift_south_pixels_0',
                 "command": 'shift_south_pixels',
-                "args": [8]
+                "args": [4]
+            },
+            {
+                "identifier": 'EVENT_2430_action_queue_async_13_SUBSCRIPT_shift_south_pixels_0_',
+                "command": 'shift_east_pixels',
+                "args": [4]
             }
         ]
     },

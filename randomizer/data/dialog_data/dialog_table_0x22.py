@@ -37,7 +37,7 @@ dialog_data[20] = ''' Now that our kingdom isn't in peril
  How exciting![await]'''
 dialog_data[21] = '''Whoa, you won [0x7000] time(s)!
  Here's a special prize for you![await]'''
-dialog_data[22] = '''FROGFUCIUS: Grasshopper, if your\n travels yield any cricket-related\n food, please bring it to me.[await]\n  (...But bring me the Cricket Pie\n first.)[await]'''
+dialog_data[22] = '''FROGFUCIUS: Grasshopper, if your\n travels yield any cricket-related\n food, please bring it to me.[await]\n (...But bring me the Cricket Pie\n first.)[await]'''
 dialog_data[23] = '''[await]'''
 dialog_data[24] = '''[await]'''
 dialog_data[25] = '''
@@ -2248,7 +2248,8 @@ dialog_data[1089] = '''DR. TOPPER: Heh...
  Let’s see how well you can count.[await][page]
  Give ya 10 seconds, TEN!
  Tell me the number of barrels
- in the room![await]'''
+ in the room![await][pause] Press A, B, X, or Y
+ if you finish counting early...[await]'''
 dialog_data[1090] = '''[await]'''
 dialog_data[1091] = '''[await]'''
 dialog_data[1092] = '''[page]
@@ -2260,7 +2261,9 @@ dialog_data[1094] = '''[await]'''
 dialog_data[1095] = '''[await]'''
 dialog_data[1096] = '''DR. TOPPER: Now we'll see if you
  can REALLY count. You've got
- 20 seconds....READY?[await]'''
+ 20 seconds.[await][pause] But if you finish
+ early, press A, B, X, or Y to let
+ me know....READY?[await]'''
 dialog_data[1097] = '''[await]'''
 dialog_data[1098] = '''[await]'''
 dialog_data[1099] = '''[await]'''
