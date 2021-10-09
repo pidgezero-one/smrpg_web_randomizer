@@ -55,6 +55,7 @@ from .enscript import EventScript
 from .osscript import ObjectSequenceScript
 from .roomobject import RoomObjects
 from .npcmodel import NPCModels
+from .packets import Packets
 
 # Current version number
 VERSION = '9.0.0'
@@ -249,6 +250,7 @@ class GameWorld:
         self.original_models = copy.deepcopy(npcmodels)
         self.original_rooms = copy.deepcopy(roomdata)
         # Malleable versions
+        self.packets = copy.deepcopy(data.packets)
         self.models = copy.deepcopy(npcmodels)
         self.rooms = copy.deepcopy(roomdata)
 
@@ -1075,7 +1077,9 @@ class GameWorld:
             patch.add_data(0x1D2D64, exit_code[0] + exit_code[1])
             patch.add_data(0x1DDE00, partition_code)
 
-            # Assemble and patch NPC model data
+            # Assemble and patch packet and NPC model data
+            packet_code = Packets.assemble_from_table(self.packets)
+            patch.add_data(0x1DB000, packet_code)
             model_code = NPCModels.assemble_from_table(self.models)
             patch.add_data(0x1DB800, model_code)
 

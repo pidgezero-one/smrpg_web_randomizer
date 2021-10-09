@@ -5,37 +5,17 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_583_set_animation_speed_0',
-        "command": 'set_animation_speed',
-        "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
+        "identifier": 'ACTION_626_visibility_off_0',
+        "command": 'visibility_off'
     },
     {
-        "identifier": 'ACTION_583_set_sprite_sequence_1',
+        "identifier": 'ACTION_626_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [0, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [7, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_583_pause_2',
-        "command": 'pause',
-        "args": [20]
-    },
-    {
-        "identifier": 'ACTION_583_set_animation_speed_3',
-        "command": 'set_animation_speed',
-        "args": [SequenceSpeeds.FAST, [_0x10Flags.SEQUENCE]]
-    },
-    {
-        "identifier": 'ACTION_583_pause_4',
-        "command": 'pause',
-        "args": [45]
-    },
-    {
-        "identifier": 'ACTION_583_set_animation_speed_5',
-        "command": 'set_animation_speed',
-        "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
-    },
-    {
-        "identifier": 'ACTION_583_ret_6',
-        "command": 'ret'
+        "identifier": 'ACTION_626_jmp_2',
+        "command": 'jmp',
+        "args": ['ACTION_917_pause_2']
     }
 ]

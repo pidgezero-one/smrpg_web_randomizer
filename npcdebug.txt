@@ -1,3 +1,1699 @@
+room: 5, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 6, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 7, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 9, partition: 2,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 11, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 12, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 14, partition: 3,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 15, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 16, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 17, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 18, partition: 6,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 20, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 21, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 22, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 24, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 25, partition: 9,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 26, partition: 10,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 27, partition: 11,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 28, partition: 12,
+{'ally_sprite_buffer_size': 3, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 31, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 32, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 33, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 34, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 35, partition: 14,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 36, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 37, partition: 16,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 39, partition: 17,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 40, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 41, partition: 18,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 42, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 43, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 48, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 52, partition: 2,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 54, partition: 3,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 55, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 56, partition: 19,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 4, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 57, partition: 19,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 4, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 58, partition: 19,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 4, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 59, partition: 20,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 60, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 62, partition: 21,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 64, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 65, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 67, partition: 22,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 68, partition: 23,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 69, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 70, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 71, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 72, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 73, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 74, partition: 25,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 4, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 75, partition: 25,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 4, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 76, partition: 26,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 77, partition: 14,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 78, partition: 27,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 79, partition: 28,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 80, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 81, partition: 29,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 2, 'index_in_main_buffer': False}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 82, partition: 23,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 83, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 84, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 85, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 86, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 87, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 88, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 89, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 90, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 91, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 92, partition: 30,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 5, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 93, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 94, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 95, partition: 31,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 96, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 97, partition: 30,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 5, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 98, partition: 30,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 5, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 100, partition: 32,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 2, 'index_in_main_buffer': False}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 101, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 102, partition: 33,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 103, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 104, partition: 2,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 105, partition: 34,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 108, partition: 35,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 109, partition: 36,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 110, partition: 37,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 111, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 112, partition: 39,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 113, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 114, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 115, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 116, partition: 40,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 117, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 118, partition: 41,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 119, partition: 42,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 120, partition: 43,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 121, partition: 44,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 122, partition: 43,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 123, partition: 34,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 124, partition: 34,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 125, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 126, partition: 45,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 127, partition: 46,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 128, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 129, partition: 47,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 130, partition: 34,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 131, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 132, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 133, partition: 49,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 134, partition: 44,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 135, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 136, partition: 50,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 137, partition: 27,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 138, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 139, partition: 51,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 3, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 141, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 142, partition: 41,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 143, partition: 52,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 144, partition: 53,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 145, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 153, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 154, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 155, partition: 54,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 157, partition: 55,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 158, partition: 55,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 159, partition: 56,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 160, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 161, partition: 46,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 162, partition: 37,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 163, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 164, partition: 57,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 165, partition: 46,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 166, partition: 58,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 167, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 168, partition: 59,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 169, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 171, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 172, partition: 58,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 173, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 174, partition: 50,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 175, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 176, partition: 58,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 177, partition: 22,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 178, partition: 60,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 179, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 180, partition: 60,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 181, partition: 60,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 182, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 183, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 184, partition: 44,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 185, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 186, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 187, partition: 61,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 188, partition: 62,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': False}
+
+
+room: 189, partition: 39,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 190, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 191, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 192, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 193, partition: 63,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 194, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 195, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 196, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 197, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 198, partition: 64,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 199, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 200, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 201, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 202, partition: 65,
+{'ally_sprite_buffer_size': 3, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 203, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 204, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 205, partition: 66,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 2, 'index_in_main_buffer': False}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 206, partition: 41,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 207, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 208, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 209, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 210, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 211, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 212, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 213, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 214, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 215, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 216, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 217, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 220, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 221, partition: 56,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 222, partition: 55,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 223, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 224, partition: 67,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 2, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 225, partition: 68,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 226, partition: 68,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 227, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 228, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 229, partition: 68,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 230, partition: 69,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 2, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 232, partition: 16,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 233, partition: 69,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 2, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 234, partition: 70,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 235, partition: 69,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 2, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 236, partition: 69,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 2, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 237, partition: 71,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 238, partition: 72,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 239, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 242, partition: 73,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 251, partition: 14,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 252, partition: 67,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 2, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 253, partition: 37,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 254, partition: 14,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 255, partition: 39,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 258, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 259, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 262, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 263, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 264, partition: 74,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 265, partition: 74,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 266, partition: 2,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 267, partition: 71,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 268, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 269, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 270, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 271, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 272, partition: 60,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 273, partition: 76,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 274, partition: 52,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 275, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 276, partition: 60,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 277, partition: 58,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 278, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 279, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 280, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 281, partition: 58,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 282, partition: 23,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 283, partition: 59,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 284, partition: 77,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 285, partition: 14,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 286, partition: 71,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 287, partition: 23,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 288, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 289, partition: 64,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 290, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 301, partition: 78,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 302, partition: 37,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 305, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 307, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 308, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 310, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 311, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 312, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 313, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 314, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 315, partition: 63,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 316, partition: 54,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 317, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 318, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 319, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 320, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 321, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 322, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 323, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 324, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 325, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 326, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 327, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 328, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 329, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 330, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 331, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 332, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 334, partition: 2,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 335, partition: 27,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 336, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 337, partition: 47,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 338, partition: 34,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 339, partition: 60,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 340, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 341, partition: 79,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 342, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 343, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 344, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 345, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 346, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 347, partition: 22,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 348, partition: 2,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 349, partition: 2,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 350, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 351, partition: 39,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 352, partition: 35,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 353, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 354, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 355, partition: 71,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 356, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 358, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 359, partition: 58,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 360, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 361, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 362, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 363, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 364, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 366, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 367, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 368, partition: 47,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 369, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 370, partition: 80,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 371, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 372, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 373, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 374, partition: 8,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 375, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 376, partition: 81,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 377, partition: 81,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 378, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 379, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 380, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 381, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 383, partition: 18,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 384, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 385, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 386, partition: 22,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 387, partition: 36,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 389, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 390, partition: 22,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 391, partition: 18,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 392, partition: 58,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 393, partition: 22,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 394, partition: 18,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 395, partition: 17,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 396, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 397, partition: 39,
+{'ally_sprite_buffer_size': 2, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 398, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 399, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 400, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 401, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 402, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 403, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 404, partition: 75,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 405, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 406, partition: 43,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 407, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 408, partition: 42,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 409, partition: 43,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 410, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 411, partition: 58,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 412, partition: 22,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 413, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 414, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 416, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 417, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 418, partition: 3,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 419, partition: 2,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 420, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 421, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 422, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 423, partition: 27,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 425, partition: 71,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 427, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 428, partition: 31,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 430, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 432, partition: 81,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 433, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 434, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 435, partition: 36,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 437, partition: 58,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 438, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 440, partition: 22,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 441, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 442, partition: 60,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 443, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 445, partition: 41,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 446, partition: 53,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 447, partition: 57,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 448, partition: 24,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 449, partition: 36,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 450, partition: 60,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 451, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 452, partition: 23,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 453, partition: 70,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 454, partition: 3,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 455, partition: 71,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 456, partition: 82,
+{'ally_sprite_buffer_size': 3, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 457, partition: 38,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 458, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 459, partition: 81,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 460, partition: 81,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 461, partition: 81,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 462, partition: 81,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 463, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 464, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 465, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 466, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 467, partition: 15,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 468, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 469, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 470, partition: 43,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 471, partition: 0,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 472, partition: 3,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 473, partition: 83,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 2, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 474, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 475, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 477, partition: 4,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 478, partition: 80,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 479, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 480, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 481, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 482, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 483, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 487, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 488, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 489, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 490, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 491, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 492, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 493, partition: 7,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 495, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 496, partition: 36,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 497, partition: 56,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 498, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 499, partition: 13,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 500, partition: 5,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 4, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 501, partition: 40,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 502, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 503, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 504, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 505, partition: 1,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 506, partition: 16,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': False, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 507, partition: 41,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 508, partition: 41,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 0, 'buffer_a': {'type': 2, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 1, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
+room: 509, partition: 48,
+{'ally_sprite_buffer_size': 1, 'allow_extra_sprite_buffer': True, 'extra_sprite_buffer_size': 1, 'buffer_a': {'type': 7, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_b': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'buffer_c': {'type': 0, 'main_buffer_space': 0, 'index_in_main_buffer': True}, 'full_palette_buffer': True}
+
+
 combined length 0x8000 32768
 combined length 0x2000 8192
 combined length 0x1ba1 7073

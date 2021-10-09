@@ -5416,10 +5416,10 @@ class Jagger(Enemy):
     ratio_fp = 1.0
 
     # shuffled overworld sprites
-    overworld_sprite = 237
-    overworld_npc = 237
-    battle_sprite = 237
-    battle_npc = 237
+    overworld_sprite = 256
+    overworld_npc = 256
+    battle_sprite = 256
+    battle_npc = 256
     overworld_extra_sequence = 8
     battle_extra_sequence = 8
     overworld_push_sequence = 4

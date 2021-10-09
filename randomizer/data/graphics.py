@@ -65,7 +65,7 @@ sprites = [
     Sprite(59, image_num=174, animation_num=300, palette_offset=0),
     Sprite(60, image_num=258, animation_num=24, palette_offset=0),
     Sprite(61, image_num=258, animation_num=91, palette_offset=0),
-    Sprite(62, image_num=82, animation_num=127, palette_offset=0),
+    Sprite(62, image_num=254, animation_num=444, palette_offset=0),
     Sprite(63, image_num=175, animation_num=301, palette_offset=0),
     Sprite(64, image_num=291, animation_num=303, palette_offset=0),
     Sprite(65, image_num=182, animation_num=306, palette_offset=0),
@@ -208,13 +208,13 @@ sprites = [
     Sprite(202, image_num=2, animation_num=325, palette_offset=2),
     Sprite(203, image_num=189, animation_num=328, palette_offset=0),
     Sprite(204, image_num=197, animation_num=342, palette_offset=2),
-    Sprite(205, image_num=254, animation_num=444, palette_offset=0),
-    Sprite(206, image_num=255, animation_num=2, palette_offset=0),
+    Sprite(205, image_num=82, animation_num=127, palette_offset=0),
+    Sprite(206, image_num=110, animation_num=177, palette_offset=0),
     Sprite(207, image_num=260, animation_num=385, palette_offset=0),
-    Sprite(208, image_num=87, animation_num=143, palette_offset=0),
-    Sprite(209, image_num=88, animation_num=144, palette_offset=0),
-    Sprite(210, image_num=89, animation_num=145, palette_offset=0),
-    Sprite(211, image_num=90, animation_num=146, palette_offset=1),
+    Sprite(208, image_num=155, animation_num=222, palette_offset=0),
+    Sprite(209, image_num=155, animation_num=222, palette_offset=1),
+    Sprite(210, image_num=155, animation_num=222, palette_offset=2),
+    Sprite(211, image_num=155, animation_num=222, palette_offset=3),
     Sprite(212, image_num=91, animation_num=147, palette_offset=1),
     Sprite(213, image_num=92, animation_num=148, palette_offset=0),
     Sprite(214, image_num=39, animation_num=383, palette_offset=0),
@@ -240,7 +240,7 @@ sprites = [
     Sprite(234, image_num=207, animation_num=360, palette_offset=0),
     Sprite(235, image_num=206, animation_num=359, palette_offset=0),
     Sprite(236, image_num=234, animation_num=296, palette_offset=0),
-    Sprite(237, image_num=255, animation_num=1, palette_offset=0),
+    Sprite(237, image_num=84, animation_num=132, palette_offset=0),
     Sprite(238, image_num=205, animation_num=358, palette_offset=0),
     Sprite(239, image_num=194, animation_num=357, palette_offset=1),
     Sprite(240, image_num=205, animation_num=356, palette_offset=0),
@@ -256,8 +256,8 @@ sprites = [
     Sprite(250, image_num=86, animation_num=446, palette_offset=0),
     Sprite(251, image_num=202, animation_num=352, palette_offset=0),
     Sprite(252, image_num=261, animation_num=449, palette_offset=0),
-    Sprite(253, image_num=300, animation_num=445, palette_offset=0),
-    Sprite(254, image_num=200, animation_num=349, palette_offset=0),
+    Sprite(253, image_num=178, animation_num=346, palette_offset=0),
+    Sprite(254, image_num=299, animation_num=451, palette_offset=0),
     Sprite(255, image_num=180, animation_num=348, palette_offset=0),
     Sprite(256, image_num=255, animation_num=1, palette_offset=0),
     Sprite(257, image_num=1, animation_num=3, palette_offset=0),
@@ -344,7 +344,7 @@ sprites = [
     Sprite(338, image_num=14, animation_num=18, palette_offset=1),
     Sprite(339, image_num=25, animation_num=19, palette_offset=1),
     Sprite(340, image_num=15, animation_num=20, palette_offset=1),
-    Sprite(341, image_num=16, animation_num=21, palette_offset=0),
+    Sprite(341, image_num=255, animation_num=2, palette_offset=0),
     Sprite(342, image_num=257, animation_num=22, palette_offset=2),
     Sprite(343, image_num=42, animation_num=51, palette_offset=1),
     Sprite(344, image_num=273, animation_num=116, palette_offset=1),
@@ -395,7 +395,7 @@ sprites = [
     Sprite(389, image_num=259, animation_num=32, palette_offset=0),
     Sprite(390, image_num=42, animation_num=52, palette_offset=2),
     Sprite(391, image_num=73, animation_num=115, palette_offset=0),
-    Sprite(392, image_num=1, animation_num=3, palette_offset=0),
+    Sprite(392, image_num=300, animation_num=445, palette_offset=0),
     Sprite(393, image_num=261, animation_num=74, palette_offset=0),
     Sprite(394, image_num=1, animation_num=3, palette_offset=2),
     Sprite(395, image_num=42, animation_num=53, palette_offset=3),
@@ -101010,6 +101010,24 @@ animations= [
                         AnimationSequenceFrame(duration=2, mold_id=3),
                         AnimationSequenceFrame(duration=2, mold_id=4),
                         AnimationSequenceFrame(duration=2, mold_id=5),
+                    ]
+                ),
+            ]
+        )
+    ),
+    AnimationPack(451, length=29, unknown=0x0002,
+        properties=AnimationPackProperties(vram_size=2048,
+            molds=[
+                Mold(0, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[56, 57, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
+                    ]
+                ),
+            ],
+            sequences=[
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=1, mold_id=26),
                     ]
                 ),
             ]

@@ -150,7 +150,8 @@ class Command(BaseCommand):
         file.write(('pointers = [None]*%i\n' % len(pointers_relative)).encode("utf8"))
         for i in range(len(pointers_relative)):
             ptr = pointers_relative[i]
-            # print(hex(pointers[i]), ptr)
-            file.write(('pointers[%i] = {"bank": 0x%02x, "index": %i, "pos": %i}\n' % (i, ptr["bank"], ptr["index"], ptr["pos"])).encode("utf8"))
+            if ptr is not None:
+                # print(hex(pointers[i]), ptr)
+                file.write(('pointers[%i] = {"bank": 0x%02x, "index": %i, "pos": %i}\n' % (i, ptr["bank"], ptr["index"], ptr["pos"])).encode("utf8"))
         file.close()
 

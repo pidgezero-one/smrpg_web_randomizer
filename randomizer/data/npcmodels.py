@@ -2,7 +2,7 @@
 # Run the following command if you need to rebuild the table
 # python manage.py npcmodeldisassembler --rom ROM
 from randomizer.data.npcmodeltables import SpriteName, VramStore, ShadowSize
-models = [None]* 512
+models = [None]* 1389
 models[0] = {
   "sprite": SpriteName._00_MARIO_WALKING_DOWNLEFT,
   "priority_0": False,
@@ -234,7 +234,7 @@ models[9] = {
   "byte6_bit2": False
 } # 0x1db83f
 models[10] = {
-  "sprite": 252,
+  "sprite": SpriteName._252_GREY_STONE_BRIDGE_BOWSERS_KEEP_RIGHT_SECTION,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -326,7 +326,7 @@ models[13] = {
   "byte6_bit2": False
 } # 0x1db85b
 models[14] = {
-  "sprite": 111,
+  "sprite": SpriteName._111_NIMBUSLAND_BUS_DRIVER,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -418,17 +418,17 @@ models[17] = {
   "byte6_bit2": False
 } # 0x1db877
 models[18] = {
-  "sprite": SpriteName._25_GENO_WALKING_DOWNLEFT,
-  "priority_0": True,
-  "priority_1": True,
-  "priority_2": False,
+  "sprite": 254,
+  "priority_0": False,
+  "priority_1": False,
+  "priority_2": True,
   "show_shadow": True,
-  "shadow": ShadowSize._01_OVAL_MED,
-  "y_pixel_shift": 0,
-  "acute_axis": 4,
-  "obtuse_axis": 4,
-  "height": 12,
-  "vram_store": VramStore._00_SWSE_NWNE,
+  "shadow": ShadowSize._00_OVAL_SMALL,
+  "y_pixel_shift": 1,
+  "acute_axis": 3,
+  "obtuse_axis": 3,
+  "height": 1,
+  "vram_store": VramStore._02_SWSE,
   "vram_size": 0,
   "cannot_clone": True,
   "byte2_bit0": False,
@@ -855,7 +855,7 @@ models[36] = {
   "byte6_bit2": False
 } # 0x1db8fc
 models[37] = {
-  "sprite": SpriteName._62_MICROBOMB,
+  "sprite": SpriteName._440_MICROBOMB,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -3385,7 +3385,7 @@ models[146] = {
   "byte6_bit2": False
 } # 0x1dbbfe
 models[147] = {
-  "sprite": 190,
+  "sprite": SpriteName._190_BOWSER_WTOADSTOOL_IN_HELICOPTER,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -3431,7 +3431,7 @@ models[148] = {
   "byte6_bit2": False
 } # 0x1dbc0c
 models[149] = {
-  "sprite": 253,
+  "sprite": SpriteName._253_TOADSTOOL_HAND_CAPTIVE_FROM_ROPE,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -3477,7 +3477,7 @@ models[150] = {
   "byte6_bit2": False
 } # 0x1dbc1a
 models[151] = {
-  "sprite": 250,
+  "sprite": SpriteName._250_SMALL_BLACK_FENCE,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -3592,7 +3592,7 @@ models[155] = {
   "byte6_bit2": False
 } # 0x1dbc3d
 models[156] = {
-  "sprite": SpriteName._237_TERRAPIN_WALKING,
+  "sprite": SpriteName._256_TERRAPIN,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -4742,7 +4742,7 @@ models[205] = {
   "byte6_bit2": False
 } # 0x1dbd9b
 models[206] = {
-  "sprite": SpriteName._206_TERRAPIN_STILL,
+  "sprite": 341,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -4788,7 +4788,7 @@ models[207] = {
   "byte6_bit2": False
 } # 0x1dbda9
 models[208] = {
-  "sprite": SpriteName._208_AXEM_RED,
+  "sprite": 466,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -4811,7 +4811,7 @@ models[208] = {
   "byte6_bit2": False
 } # 0x1dbdb0
 models[209] = {
-  "sprite": SpriteName._209_AXEM_BLACK,
+  "sprite": 467,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -4834,7 +4834,7 @@ models[209] = {
   "byte6_bit2": False
 } # 0x1dbdb7
 models[210] = {
-  "sprite": SpriteName._210_AXEM_PINK,
+  "sprite": 468,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -4857,7 +4857,7 @@ models[210] = {
   "byte6_bit2": False
 } # 0x1dbdbe
 models[211] = {
-  "sprite": SpriteName._211_AXEM_YELLOW,
+  "sprite": 469,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -5202,7 +5202,7 @@ models[225] = {
   "byte6_bit2": False
 } # 0x1dbe27
 models[226] = {
-  "sprite": 226,
+  "sprite": SpriteName._226_BOOSTERS_TOWER_ENTRANCE_DOOR,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -5386,7 +5386,7 @@ models[233] = {
   "byte6_bit2": False
 } # 0x1dbe5f
 models[234] = {
-  "sprite": 174,
+  "sprite": SpriteName._174_SMALL_CANDY_CLOUD,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -5455,7 +5455,7 @@ models[236] = {
   "byte6_bit2": False
 } # 0x1dbe74
 models[237] = {
-  "sprite": SpriteName._237_TERRAPIN_WALKING,
+  "sprite": SpriteName._256_TERRAPIN,
   "priority_0": False,
   "priority_1": False,
   "priority_2": False,
@@ -5892,7 +5892,7 @@ models[255] = {
   "byte6_bit2": False
 } # 0x1dbef9
 models[256] = {
-  "sprite": SpriteName._237_TERRAPIN_WALKING,
+  "sprite": SpriteName._256_TERRAPIN,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -8859,7 +8859,7 @@ models[384] = {
   "byte6_bit2": True
 } # 0x1dc280
 models[385] = {
-  "sprite": 205,
+  "sprite": 62,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -9549,7 +9549,7 @@ models[414] = {
   "byte6_bit2": False
 } # 0x1dc352
 models[415] = {
-  "sprite": 191,
+  "sprite": SpriteName._191_MINIATURE_TOAD,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -9572,7 +9572,7 @@ models[415] = {
   "byte6_bit2": False
 } # 0x1dc359
 models[416] = {
-  "sprite": 415,
+  "sprite": SpriteName._415_KINKLINK,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -10653,7 +10653,7 @@ models[462] = {
   "byte6_bit2": False
 } # 0x1dc4a2
 models[463] = {
-  "sprite": 110,
+  "sprite": SpriteName._110_TREASURE_CHEST_BAD_PALETTE,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -11205,7 +11205,7 @@ models[486] = {
   "byte6_bit2": False
 } # 0x1dc54a
 models[487] = {
-  "sprite": 487,
+  "sprite": SpriteName._487_AERO,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -11779,3 +11779,880 @@ models[511] = {
   "byte5_bit7": False,
   "byte6_bit2": False
 } # 0x1dc5f9
+models[512] = None # 0x1dc600
+models[513] = None # 0x1dc607
+models[514] = None # 0x1dc60e
+models[515] = None # 0x1dc615
+models[516] = None # 0x1dc61c
+models[517] = None # 0x1dc623
+models[518] = None # 0x1dc62a
+models[519] = None # 0x1dc631
+models[520] = None # 0x1dc638
+models[521] = None # 0x1dc63f
+models[522] = None # 0x1dc646
+models[523] = None # 0x1dc64d
+models[524] = None # 0x1dc654
+models[525] = None # 0x1dc65b
+models[526] = None # 0x1dc662
+models[527] = None # 0x1dc669
+models[528] = None # 0x1dc670
+models[529] = None # 0x1dc677
+models[530] = None # 0x1dc67e
+models[531] = None # 0x1dc685
+models[532] = None # 0x1dc68c
+models[533] = None # 0x1dc693
+models[534] = None # 0x1dc69a
+models[535] = None # 0x1dc6a1
+models[536] = None # 0x1dc6a8
+models[537] = None # 0x1dc6af
+models[538] = None # 0x1dc6b6
+models[539] = None # 0x1dc6bd
+models[540] = None # 0x1dc6c4
+models[541] = None # 0x1dc6cb
+models[542] = None # 0x1dc6d2
+models[543] = None # 0x1dc6d9
+models[544] = None # 0x1dc6e0
+models[545] = None # 0x1dc6e7
+models[546] = None # 0x1dc6ee
+models[547] = None # 0x1dc6f5
+models[548] = None # 0x1dc6fc
+models[549] = None # 0x1dc703
+models[550] = None # 0x1dc70a
+models[551] = None # 0x1dc711
+models[552] = None # 0x1dc718
+models[553] = None # 0x1dc71f
+models[554] = None # 0x1dc726
+models[555] = None # 0x1dc72d
+models[556] = None # 0x1dc734
+models[557] = None # 0x1dc73b
+models[558] = None # 0x1dc742
+models[559] = None # 0x1dc749
+models[560] = None # 0x1dc750
+models[561] = None # 0x1dc757
+models[562] = None # 0x1dc75e
+models[563] = None # 0x1dc765
+models[564] = None # 0x1dc76c
+models[565] = None # 0x1dc773
+models[566] = None # 0x1dc77a
+models[567] = None # 0x1dc781
+models[568] = None # 0x1dc788
+models[569] = None # 0x1dc78f
+models[570] = None # 0x1dc796
+models[571] = None # 0x1dc79d
+models[572] = None # 0x1dc7a4
+models[573] = None # 0x1dc7ab
+models[574] = None # 0x1dc7b2
+models[575] = None # 0x1dc7b9
+models[576] = None # 0x1dc7c0
+models[577] = None # 0x1dc7c7
+models[578] = None # 0x1dc7ce
+models[579] = None # 0x1dc7d5
+models[580] = None # 0x1dc7dc
+models[581] = None # 0x1dc7e3
+models[582] = None # 0x1dc7ea
+models[583] = None # 0x1dc7f1
+models[584] = None # 0x1dc7f8
+models[585] = None # 0x1dc7ff
+models[586] = None # 0x1dc806
+models[587] = None # 0x1dc80d
+models[588] = None # 0x1dc814
+models[589] = None # 0x1dc81b
+models[590] = None # 0x1dc822
+models[591] = None # 0x1dc829
+models[592] = None # 0x1dc830
+models[593] = None # 0x1dc837
+models[594] = None # 0x1dc83e
+models[595] = None # 0x1dc845
+models[596] = None # 0x1dc84c
+models[597] = None # 0x1dc853
+models[598] = None # 0x1dc85a
+models[599] = None # 0x1dc861
+models[600] = None # 0x1dc868
+models[601] = None # 0x1dc86f
+models[602] = None # 0x1dc876
+models[603] = None # 0x1dc87d
+models[604] = None # 0x1dc884
+models[605] = None # 0x1dc88b
+models[606] = None # 0x1dc892
+models[607] = None # 0x1dc899
+models[608] = None # 0x1dc8a0
+models[609] = None # 0x1dc8a7
+models[610] = None # 0x1dc8ae
+models[611] = None # 0x1dc8b5
+models[612] = None # 0x1dc8bc
+models[613] = None # 0x1dc8c3
+models[614] = None # 0x1dc8ca
+models[615] = None # 0x1dc8d1
+models[616] = None # 0x1dc8d8
+models[617] = None # 0x1dc8df
+models[618] = None # 0x1dc8e6
+models[619] = None # 0x1dc8ed
+models[620] = None # 0x1dc8f4
+models[621] = None # 0x1dc8fb
+models[622] = None # 0x1dc902
+models[623] = None # 0x1dc909
+models[624] = None # 0x1dc910
+models[625] = None # 0x1dc917
+models[626] = None # 0x1dc91e
+models[627] = None # 0x1dc925
+models[628] = None # 0x1dc92c
+models[629] = None # 0x1dc933
+models[630] = None # 0x1dc93a
+models[631] = None # 0x1dc941
+models[632] = None # 0x1dc948
+models[633] = None # 0x1dc94f
+models[634] = None # 0x1dc956
+models[635] = None # 0x1dc95d
+models[636] = None # 0x1dc964
+models[637] = None # 0x1dc96b
+models[638] = None # 0x1dc972
+models[639] = None # 0x1dc979
+models[640] = None # 0x1dc980
+models[641] = None # 0x1dc987
+models[642] = None # 0x1dc98e
+models[643] = None # 0x1dc995
+models[644] = None # 0x1dc99c
+models[645] = None # 0x1dc9a3
+models[646] = None # 0x1dc9aa
+models[647] = None # 0x1dc9b1
+models[648] = None # 0x1dc9b8
+models[649] = None # 0x1dc9bf
+models[650] = None # 0x1dc9c6
+models[651] = None # 0x1dc9cd
+models[652] = None # 0x1dc9d4
+models[653] = None # 0x1dc9db
+models[654] = None # 0x1dc9e2
+models[655] = None # 0x1dc9e9
+models[656] = None # 0x1dc9f0
+models[657] = None # 0x1dc9f7
+models[658] = None # 0x1dc9fe
+models[659] = None # 0x1dca05
+models[660] = None # 0x1dca0c
+models[661] = None # 0x1dca13
+models[662] = None # 0x1dca1a
+models[663] = None # 0x1dca21
+models[664] = None # 0x1dca28
+models[665] = None # 0x1dca2f
+models[666] = None # 0x1dca36
+models[667] = None # 0x1dca3d
+models[668] = None # 0x1dca44
+models[669] = None # 0x1dca4b
+models[670] = None # 0x1dca52
+models[671] = None # 0x1dca59
+models[672] = None # 0x1dca60
+models[673] = None # 0x1dca67
+models[674] = None # 0x1dca6e
+models[675] = None # 0x1dca75
+models[676] = None # 0x1dca7c
+models[677] = None # 0x1dca83
+models[678] = None # 0x1dca8a
+models[679] = None # 0x1dca91
+models[680] = None # 0x1dca98
+models[681] = None # 0x1dca9f
+models[682] = None # 0x1dcaa6
+models[683] = None # 0x1dcaad
+models[684] = None # 0x1dcab4
+models[685] = None # 0x1dcabb
+models[686] = None # 0x1dcac2
+models[687] = None # 0x1dcac9
+models[688] = None # 0x1dcad0
+models[689] = None # 0x1dcad7
+models[690] = None # 0x1dcade
+models[691] = None # 0x1dcae5
+models[692] = None # 0x1dcaec
+models[693] = None # 0x1dcaf3
+models[694] = None # 0x1dcafa
+models[695] = None # 0x1dcb01
+models[696] = None # 0x1dcb08
+models[697] = None # 0x1dcb0f
+models[698] = None # 0x1dcb16
+models[699] = None # 0x1dcb1d
+models[700] = None # 0x1dcb24
+models[701] = None # 0x1dcb2b
+models[702] = None # 0x1dcb32
+models[703] = None # 0x1dcb39
+models[704] = None # 0x1dcb40
+models[705] = None # 0x1dcb47
+models[706] = None # 0x1dcb4e
+models[707] = None # 0x1dcb55
+models[708] = None # 0x1dcb5c
+models[709] = None # 0x1dcb63
+models[710] = None # 0x1dcb6a
+models[711] = None # 0x1dcb71
+models[712] = None # 0x1dcb78
+models[713] = None # 0x1dcb7f
+models[714] = None # 0x1dcb86
+models[715] = None # 0x1dcb8d
+models[716] = None # 0x1dcb94
+models[717] = None # 0x1dcb9b
+models[718] = None # 0x1dcba2
+models[719] = None # 0x1dcba9
+models[720] = None # 0x1dcbb0
+models[721] = None # 0x1dcbb7
+models[722] = None # 0x1dcbbe
+models[723] = None # 0x1dcbc5
+models[724] = None # 0x1dcbcc
+models[725] = None # 0x1dcbd3
+models[726] = None # 0x1dcbda
+models[727] = None # 0x1dcbe1
+models[728] = None # 0x1dcbe8
+models[729] = None # 0x1dcbef
+models[730] = None # 0x1dcbf6
+models[731] = None # 0x1dcbfd
+models[732] = None # 0x1dcc04
+models[733] = None # 0x1dcc0b
+models[734] = None # 0x1dcc12
+models[735] = None # 0x1dcc19
+models[736] = None # 0x1dcc20
+models[737] = None # 0x1dcc27
+models[738] = None # 0x1dcc2e
+models[739] = None # 0x1dcc35
+models[740] = None # 0x1dcc3c
+models[741] = None # 0x1dcc43
+models[742] = None # 0x1dcc4a
+models[743] = None # 0x1dcc51
+models[744] = None # 0x1dcc58
+models[745] = None # 0x1dcc5f
+models[746] = None # 0x1dcc66
+models[747] = None # 0x1dcc6d
+models[748] = None # 0x1dcc74
+models[749] = None # 0x1dcc7b
+models[750] = None # 0x1dcc82
+models[751] = None # 0x1dcc89
+models[752] = None # 0x1dcc90
+models[753] = None # 0x1dcc97
+models[754] = None # 0x1dcc9e
+models[755] = None # 0x1dcca5
+models[756] = None # 0x1dccac
+models[757] = None # 0x1dccb3
+models[758] = None # 0x1dccba
+models[759] = None # 0x1dccc1
+models[760] = None # 0x1dccc8
+models[761] = None # 0x1dcccf
+models[762] = None # 0x1dccd6
+models[763] = None # 0x1dccdd
+models[764] = None # 0x1dcce4
+models[765] = None # 0x1dcceb
+models[766] = None # 0x1dccf2
+models[767] = None # 0x1dccf9
+models[768] = None # 0x1dcd00
+models[769] = None # 0x1dcd07
+models[770] = None # 0x1dcd0e
+models[771] = None # 0x1dcd15
+models[772] = None # 0x1dcd1c
+models[773] = None # 0x1dcd23
+models[774] = None # 0x1dcd2a
+models[775] = None # 0x1dcd31
+models[776] = None # 0x1dcd38
+models[777] = None # 0x1dcd3f
+models[778] = None # 0x1dcd46
+models[779] = None # 0x1dcd4d
+models[780] = None # 0x1dcd54
+models[781] = None # 0x1dcd5b
+models[782] = None # 0x1dcd62
+models[783] = None # 0x1dcd69
+models[784] = None # 0x1dcd70
+models[785] = None # 0x1dcd77
+models[786] = None # 0x1dcd7e
+models[787] = None # 0x1dcd85
+models[788] = None # 0x1dcd8c
+models[789] = None # 0x1dcd93
+models[790] = None # 0x1dcd9a
+models[791] = None # 0x1dcda1
+models[792] = None # 0x1dcda8
+models[793] = None # 0x1dcdaf
+models[794] = None # 0x1dcdb6
+models[795] = None # 0x1dcdbd
+models[796] = None # 0x1dcdc4
+models[797] = None # 0x1dcdcb
+models[798] = None # 0x1dcdd2
+models[799] = None # 0x1dcdd9
+models[800] = None # 0x1dcde0
+models[801] = None # 0x1dcde7
+models[802] = None # 0x1dcdee
+models[803] = None # 0x1dcdf5
+models[804] = None # 0x1dcdfc
+models[805] = None # 0x1dce03
+models[806] = None # 0x1dce0a
+models[807] = None # 0x1dce11
+models[808] = None # 0x1dce18
+models[809] = None # 0x1dce1f
+models[810] = None # 0x1dce26
+models[811] = None # 0x1dce2d
+models[812] = None # 0x1dce34
+models[813] = None # 0x1dce3b
+models[814] = None # 0x1dce42
+models[815] = None # 0x1dce49
+models[816] = None # 0x1dce50
+models[817] = None # 0x1dce57
+models[818] = None # 0x1dce5e
+models[819] = None # 0x1dce65
+models[820] = None # 0x1dce6c
+models[821] = None # 0x1dce73
+models[822] = None # 0x1dce7a
+models[823] = None # 0x1dce81
+models[824] = None # 0x1dce88
+models[825] = None # 0x1dce8f
+models[826] = None # 0x1dce96
+models[827] = None # 0x1dce9d
+models[828] = None # 0x1dcea4
+models[829] = None # 0x1dceab
+models[830] = None # 0x1dceb2
+models[831] = None # 0x1dceb9
+models[832] = None # 0x1dcec0
+models[833] = None # 0x1dcec7
+models[834] = None # 0x1dcece
+models[835] = None # 0x1dced5
+models[836] = None # 0x1dcedc
+models[837] = None # 0x1dcee3
+models[838] = None # 0x1dceea
+models[839] = None # 0x1dcef1
+models[840] = None # 0x1dcef8
+models[841] = None # 0x1dceff
+models[842] = None # 0x1dcf06
+models[843] = None # 0x1dcf0d
+models[844] = None # 0x1dcf14
+models[845] = None # 0x1dcf1b
+models[846] = None # 0x1dcf22
+models[847] = None # 0x1dcf29
+models[848] = None # 0x1dcf30
+models[849] = None # 0x1dcf37
+models[850] = None # 0x1dcf3e
+models[851] = None # 0x1dcf45
+models[852] = None # 0x1dcf4c
+models[853] = None # 0x1dcf53
+models[854] = None # 0x1dcf5a
+models[855] = None # 0x1dcf61
+models[856] = None # 0x1dcf68
+models[857] = None # 0x1dcf6f
+models[858] = None # 0x1dcf76
+models[859] = None # 0x1dcf7d
+models[860] = None # 0x1dcf84
+models[861] = None # 0x1dcf8b
+models[862] = None # 0x1dcf92
+models[863] = None # 0x1dcf99
+models[864] = None # 0x1dcfa0
+models[865] = None # 0x1dcfa7
+models[866] = None # 0x1dcfae
+models[867] = None # 0x1dcfb5
+models[868] = None # 0x1dcfbc
+models[869] = None # 0x1dcfc3
+models[870] = None # 0x1dcfca
+models[871] = None # 0x1dcfd1
+models[872] = None # 0x1dcfd8
+models[873] = None # 0x1dcfdf
+models[874] = None # 0x1dcfe6
+models[875] = None # 0x1dcfed
+models[876] = None # 0x1dcff4
+models[877] = None # 0x1dcffb
+models[878] = None # 0x1dd002
+models[879] = None # 0x1dd009
+models[880] = None # 0x1dd010
+models[881] = None # 0x1dd017
+models[882] = None # 0x1dd01e
+models[883] = None # 0x1dd025
+models[884] = None # 0x1dd02c
+models[885] = None # 0x1dd033
+models[886] = None # 0x1dd03a
+models[887] = None # 0x1dd041
+models[888] = None # 0x1dd048
+models[889] = None # 0x1dd04f
+models[890] = None # 0x1dd056
+models[891] = None # 0x1dd05d
+models[892] = None # 0x1dd064
+models[893] = None # 0x1dd06b
+models[894] = None # 0x1dd072
+models[895] = None # 0x1dd079
+models[896] = None # 0x1dd080
+models[897] = None # 0x1dd087
+models[898] = None # 0x1dd08e
+models[899] = None # 0x1dd095
+models[900] = None # 0x1dd09c
+models[901] = None # 0x1dd0a3
+models[902] = None # 0x1dd0aa
+models[903] = None # 0x1dd0b1
+models[904] = None # 0x1dd0b8
+models[905] = None # 0x1dd0bf
+models[906] = None # 0x1dd0c6
+models[907] = None # 0x1dd0cd
+models[908] = None # 0x1dd0d4
+models[909] = None # 0x1dd0db
+models[910] = None # 0x1dd0e2
+models[911] = None # 0x1dd0e9
+models[912] = None # 0x1dd0f0
+models[913] = None # 0x1dd0f7
+models[914] = None # 0x1dd0fe
+models[915] = None # 0x1dd105
+models[916] = None # 0x1dd10c
+models[917] = None # 0x1dd113
+models[918] = None # 0x1dd11a
+models[919] = None # 0x1dd121
+models[920] = None # 0x1dd128
+models[921] = None # 0x1dd12f
+models[922] = None # 0x1dd136
+models[923] = None # 0x1dd13d
+models[924] = None # 0x1dd144
+models[925] = None # 0x1dd14b
+models[926] = None # 0x1dd152
+models[927] = None # 0x1dd159
+models[928] = None # 0x1dd160
+models[929] = None # 0x1dd167
+models[930] = None # 0x1dd16e
+models[931] = None # 0x1dd175
+models[932] = None # 0x1dd17c
+models[933] = None # 0x1dd183
+models[934] = None # 0x1dd18a
+models[935] = None # 0x1dd191
+models[936] = None # 0x1dd198
+models[937] = None # 0x1dd19f
+models[938] = None # 0x1dd1a6
+models[939] = None # 0x1dd1ad
+models[940] = None # 0x1dd1b4
+models[941] = None # 0x1dd1bb
+models[942] = None # 0x1dd1c2
+models[943] = None # 0x1dd1c9
+models[944] = None # 0x1dd1d0
+models[945] = None # 0x1dd1d7
+models[946] = None # 0x1dd1de
+models[947] = None # 0x1dd1e5
+models[948] = None # 0x1dd1ec
+models[949] = None # 0x1dd1f3
+models[950] = None # 0x1dd1fa
+models[951] = None # 0x1dd201
+models[952] = None # 0x1dd208
+models[953] = None # 0x1dd20f
+models[954] = None # 0x1dd216
+models[955] = None # 0x1dd21d
+models[956] = None # 0x1dd224
+models[957] = None # 0x1dd22b
+models[958] = None # 0x1dd232
+models[959] = None # 0x1dd239
+models[960] = None # 0x1dd240
+models[961] = None # 0x1dd247
+models[962] = None # 0x1dd24e
+models[963] = None # 0x1dd255
+models[964] = None # 0x1dd25c
+models[965] = None # 0x1dd263
+models[966] = None # 0x1dd26a
+models[967] = None # 0x1dd271
+models[968] = None # 0x1dd278
+models[969] = None # 0x1dd27f
+models[970] = None # 0x1dd286
+models[971] = None # 0x1dd28d
+models[972] = None # 0x1dd294
+models[973] = None # 0x1dd29b
+models[974] = None # 0x1dd2a2
+models[975] = None # 0x1dd2a9
+models[976] = None # 0x1dd2b0
+models[977] = None # 0x1dd2b7
+models[978] = None # 0x1dd2be
+models[979] = None # 0x1dd2c5
+models[980] = None # 0x1dd2cc
+models[981] = None # 0x1dd2d3
+models[982] = None # 0x1dd2da
+models[983] = None # 0x1dd2e1
+models[984] = None # 0x1dd2e8
+models[985] = None # 0x1dd2ef
+models[986] = None # 0x1dd2f6
+models[987] = None # 0x1dd2fd
+models[988] = None # 0x1dd304
+models[989] = None # 0x1dd30b
+models[990] = None # 0x1dd312
+models[991] = None # 0x1dd319
+models[992] = None # 0x1dd320
+models[993] = None # 0x1dd327
+models[994] = None # 0x1dd32e
+models[995] = None # 0x1dd335
+models[996] = None # 0x1dd33c
+models[997] = None # 0x1dd343
+models[998] = None # 0x1dd34a
+models[999] = None # 0x1dd351
+models[1000] = None # 0x1dd358
+models[1001] = None # 0x1dd35f
+models[1002] = None # 0x1dd366
+models[1003] = None # 0x1dd36d
+models[1004] = None # 0x1dd374
+models[1005] = None # 0x1dd37b
+models[1006] = None # 0x1dd382
+models[1007] = None # 0x1dd389
+models[1008] = None # 0x1dd390
+models[1009] = None # 0x1dd397
+models[1010] = None # 0x1dd39e
+models[1011] = None # 0x1dd3a5
+models[1012] = None # 0x1dd3ac
+models[1013] = None # 0x1dd3b3
+models[1014] = None # 0x1dd3ba
+models[1015] = None # 0x1dd3c1
+models[1016] = None # 0x1dd3c8
+models[1017] = None # 0x1dd3cf
+models[1018] = None # 0x1dd3d6
+models[1019] = None # 0x1dd3dd
+models[1020] = None # 0x1dd3e4
+models[1021] = None # 0x1dd3eb
+models[1022] = None # 0x1dd3f2
+models[1023] = None # 0x1dd3f9
+models[1024] = None # 0x1dd400
+models[1025] = None # 0x1dd407
+models[1026] = None # 0x1dd40e
+models[1027] = None # 0x1dd415
+models[1028] = None # 0x1dd41c
+models[1029] = None # 0x1dd423
+models[1030] = None # 0x1dd42a
+models[1031] = None # 0x1dd431
+models[1032] = None # 0x1dd438
+models[1033] = None # 0x1dd43f
+models[1034] = None # 0x1dd446
+models[1035] = None # 0x1dd44d
+models[1036] = None # 0x1dd454
+models[1037] = None # 0x1dd45b
+models[1038] = None # 0x1dd462
+models[1039] = None # 0x1dd469
+models[1040] = None # 0x1dd470
+models[1041] = None # 0x1dd477
+models[1042] = None # 0x1dd47e
+models[1043] = None # 0x1dd485
+models[1044] = None # 0x1dd48c
+models[1045] = None # 0x1dd493
+models[1046] = None # 0x1dd49a
+models[1047] = None # 0x1dd4a1
+models[1048] = None # 0x1dd4a8
+models[1049] = None # 0x1dd4af
+models[1050] = None # 0x1dd4b6
+models[1051] = None # 0x1dd4bd
+models[1052] = None # 0x1dd4c4
+models[1053] = None # 0x1dd4cb
+models[1054] = None # 0x1dd4d2
+models[1055] = None # 0x1dd4d9
+models[1056] = None # 0x1dd4e0
+models[1057] = None # 0x1dd4e7
+models[1058] = None # 0x1dd4ee
+models[1059] = None # 0x1dd4f5
+models[1060] = None # 0x1dd4fc
+models[1061] = None # 0x1dd503
+models[1062] = None # 0x1dd50a
+models[1063] = None # 0x1dd511
+models[1064] = None # 0x1dd518
+models[1065] = None # 0x1dd51f
+models[1066] = None # 0x1dd526
+models[1067] = None # 0x1dd52d
+models[1068] = None # 0x1dd534
+models[1069] = None # 0x1dd53b
+models[1070] = None # 0x1dd542
+models[1071] = None # 0x1dd549
+models[1072] = None # 0x1dd550
+models[1073] = None # 0x1dd557
+models[1074] = None # 0x1dd55e
+models[1075] = None # 0x1dd565
+models[1076] = None # 0x1dd56c
+models[1077] = None # 0x1dd573
+models[1078] = None # 0x1dd57a
+models[1079] = None # 0x1dd581
+models[1080] = None # 0x1dd588
+models[1081] = None # 0x1dd58f
+models[1082] = None # 0x1dd596
+models[1083] = None # 0x1dd59d
+models[1084] = None # 0x1dd5a4
+models[1085] = None # 0x1dd5ab
+models[1086] = None # 0x1dd5b2
+models[1087] = None # 0x1dd5b9
+models[1088] = None # 0x1dd5c0
+models[1089] = None # 0x1dd5c7
+models[1090] = None # 0x1dd5ce
+models[1091] = None # 0x1dd5d5
+models[1092] = None # 0x1dd5dc
+models[1093] = None # 0x1dd5e3
+models[1094] = None # 0x1dd5ea
+models[1095] = None # 0x1dd5f1
+models[1096] = None # 0x1dd5f8
+models[1097] = None # 0x1dd5ff
+models[1098] = None # 0x1dd606
+models[1099] = None # 0x1dd60d
+models[1100] = None # 0x1dd614
+models[1101] = None # 0x1dd61b
+models[1102] = None # 0x1dd622
+models[1103] = None # 0x1dd629
+models[1104] = None # 0x1dd630
+models[1105] = None # 0x1dd637
+models[1106] = None # 0x1dd63e
+models[1107] = None # 0x1dd645
+models[1108] = None # 0x1dd64c
+models[1109] = None # 0x1dd653
+models[1110] = None # 0x1dd65a
+models[1111] = None # 0x1dd661
+models[1112] = None # 0x1dd668
+models[1113] = None # 0x1dd66f
+models[1114] = None # 0x1dd676
+models[1115] = None # 0x1dd67d
+models[1116] = None # 0x1dd684
+models[1117] = None # 0x1dd68b
+models[1118] = None # 0x1dd692
+models[1119] = None # 0x1dd699
+models[1120] = None # 0x1dd6a0
+models[1121] = None # 0x1dd6a7
+models[1122] = None # 0x1dd6ae
+models[1123] = None # 0x1dd6b5
+models[1124] = None # 0x1dd6bc
+models[1125] = None # 0x1dd6c3
+models[1126] = None # 0x1dd6ca
+models[1127] = None # 0x1dd6d1
+models[1128] = None # 0x1dd6d8
+models[1129] = None # 0x1dd6df
+models[1130] = None # 0x1dd6e6
+models[1131] = None # 0x1dd6ed
+models[1132] = None # 0x1dd6f4
+models[1133] = None # 0x1dd6fb
+models[1134] = None # 0x1dd702
+models[1135] = None # 0x1dd709
+models[1136] = None # 0x1dd710
+models[1137] = None # 0x1dd717
+models[1138] = None # 0x1dd71e
+models[1139] = None # 0x1dd725
+models[1140] = None # 0x1dd72c
+models[1141] = None # 0x1dd733
+models[1142] = None # 0x1dd73a
+models[1143] = None # 0x1dd741
+models[1144] = None # 0x1dd748
+models[1145] = None # 0x1dd74f
+models[1146] = None # 0x1dd756
+models[1147] = None # 0x1dd75d
+models[1148] = None # 0x1dd764
+models[1149] = None # 0x1dd76b
+models[1150] = None # 0x1dd772
+models[1151] = None # 0x1dd779
+models[1152] = None # 0x1dd780
+models[1153] = None # 0x1dd787
+models[1154] = None # 0x1dd78e
+models[1155] = None # 0x1dd795
+models[1156] = None # 0x1dd79c
+models[1157] = None # 0x1dd7a3
+models[1158] = None # 0x1dd7aa
+models[1159] = None # 0x1dd7b1
+models[1160] = None # 0x1dd7b8
+models[1161] = None # 0x1dd7bf
+models[1162] = None # 0x1dd7c6
+models[1163] = None # 0x1dd7cd
+models[1164] = None # 0x1dd7d4
+models[1165] = None # 0x1dd7db
+models[1166] = None # 0x1dd7e2
+models[1167] = None # 0x1dd7e9
+models[1168] = None # 0x1dd7f0
+models[1169] = None # 0x1dd7f7
+models[1170] = None # 0x1dd7fe
+models[1171] = None # 0x1dd805
+models[1172] = None # 0x1dd80c
+models[1173] = None # 0x1dd813
+models[1174] = None # 0x1dd81a
+models[1175] = None # 0x1dd821
+models[1176] = None # 0x1dd828
+models[1177] = None # 0x1dd82f
+models[1178] = None # 0x1dd836
+models[1179] = None # 0x1dd83d
+models[1180] = None # 0x1dd844
+models[1181] = None # 0x1dd84b
+models[1182] = None # 0x1dd852
+models[1183] = None # 0x1dd859
+models[1184] = None # 0x1dd860
+models[1185] = None # 0x1dd867
+models[1186] = None # 0x1dd86e
+models[1187] = None # 0x1dd875
+models[1188] = None # 0x1dd87c
+models[1189] = None # 0x1dd883
+models[1190] = None # 0x1dd88a
+models[1191] = None # 0x1dd891
+models[1192] = None # 0x1dd898
+models[1193] = None # 0x1dd89f
+models[1194] = None # 0x1dd8a6
+models[1195] = None # 0x1dd8ad
+models[1196] = None # 0x1dd8b4
+models[1197] = None # 0x1dd8bb
+models[1198] = None # 0x1dd8c2
+models[1199] = None # 0x1dd8c9
+models[1200] = None # 0x1dd8d0
+models[1201] = None # 0x1dd8d7
+models[1202] = None # 0x1dd8de
+models[1203] = None # 0x1dd8e5
+models[1204] = None # 0x1dd8ec
+models[1205] = None # 0x1dd8f3
+models[1206] = None # 0x1dd8fa
+models[1207] = None # 0x1dd901
+models[1208] = None # 0x1dd908
+models[1209] = None # 0x1dd90f
+models[1210] = None # 0x1dd916
+models[1211] = None # 0x1dd91d
+models[1212] = None # 0x1dd924
+models[1213] = None # 0x1dd92b
+models[1214] = None # 0x1dd932
+models[1215] = None # 0x1dd939
+models[1216] = None # 0x1dd940
+models[1217] = None # 0x1dd947
+models[1218] = None # 0x1dd94e
+models[1219] = None # 0x1dd955
+models[1220] = None # 0x1dd95c
+models[1221] = None # 0x1dd963
+models[1222] = None # 0x1dd96a
+models[1223] = None # 0x1dd971
+models[1224] = None # 0x1dd978
+models[1225] = None # 0x1dd97f
+models[1226] = None # 0x1dd986
+models[1227] = None # 0x1dd98d
+models[1228] = None # 0x1dd994
+models[1229] = None # 0x1dd99b
+models[1230] = None # 0x1dd9a2
+models[1231] = None # 0x1dd9a9
+models[1232] = None # 0x1dd9b0
+models[1233] = None # 0x1dd9b7
+models[1234] = None # 0x1dd9be
+models[1235] = None # 0x1dd9c5
+models[1236] = None # 0x1dd9cc
+models[1237] = None # 0x1dd9d3
+models[1238] = None # 0x1dd9da
+models[1239] = None # 0x1dd9e1
+models[1240] = None # 0x1dd9e8
+models[1241] = None # 0x1dd9ef
+models[1242] = None # 0x1dd9f6
+models[1243] = None # 0x1dd9fd
+models[1244] = None # 0x1dda04
+models[1245] = None # 0x1dda0b
+models[1246] = None # 0x1dda12
+models[1247] = None # 0x1dda19
+models[1248] = None # 0x1dda20
+models[1249] = None # 0x1dda27
+models[1250] = None # 0x1dda2e
+models[1251] = None # 0x1dda35
+models[1252] = None # 0x1dda3c
+models[1253] = None # 0x1dda43
+models[1254] = None # 0x1dda4a
+models[1255] = None # 0x1dda51
+models[1256] = None # 0x1dda58
+models[1257] = None # 0x1dda5f
+models[1258] = None # 0x1dda66
+models[1259] = None # 0x1dda6d
+models[1260] = None # 0x1dda74
+models[1261] = None # 0x1dda7b
+models[1262] = None # 0x1dda82
+models[1263] = None # 0x1dda89
+models[1264] = None # 0x1dda90
+models[1265] = None # 0x1dda97
+models[1266] = None # 0x1dda9e
+models[1267] = None # 0x1ddaa5
+models[1268] = None # 0x1ddaac
+models[1269] = None # 0x1ddab3
+models[1270] = None # 0x1ddaba
+models[1271] = None # 0x1ddac1
+models[1272] = None # 0x1ddac8
+models[1273] = None # 0x1ddacf
+models[1274] = None # 0x1ddad6
+models[1275] = None # 0x1ddadd
+models[1276] = None # 0x1ddae4
+models[1277] = None # 0x1ddaeb
+models[1278] = None # 0x1ddaf2
+models[1279] = None # 0x1ddaf9
+models[1280] = None # 0x1ddb00
+models[1281] = None # 0x1ddb07
+models[1282] = None # 0x1ddb0e
+models[1283] = None # 0x1ddb15
+models[1284] = None # 0x1ddb1c
+models[1285] = None # 0x1ddb23
+models[1286] = None # 0x1ddb2a
+models[1287] = None # 0x1ddb31
+models[1288] = None # 0x1ddb38
+models[1289] = None # 0x1ddb3f
+models[1290] = None # 0x1ddb46
+models[1291] = None # 0x1ddb4d
+models[1292] = None # 0x1ddb54
+models[1293] = None # 0x1ddb5b
+models[1294] = None # 0x1ddb62
+models[1295] = None # 0x1ddb69
+models[1296] = None # 0x1ddb70
+models[1297] = None # 0x1ddb77
+models[1298] = None # 0x1ddb7e
+models[1299] = None # 0x1ddb85
+models[1300] = None # 0x1ddb8c
+models[1301] = None # 0x1ddb93
+models[1302] = None # 0x1ddb9a
+models[1303] = None # 0x1ddba1
+models[1304] = None # 0x1ddba8
+models[1305] = None # 0x1ddbaf
+models[1306] = None # 0x1ddbb6
+models[1307] = None # 0x1ddbbd
+models[1308] = None # 0x1ddbc4
+models[1309] = None # 0x1ddbcb
+models[1310] = None # 0x1ddbd2
+models[1311] = None # 0x1ddbd9
+models[1312] = None # 0x1ddbe0
+models[1313] = None # 0x1ddbe7
+models[1314] = None # 0x1ddbee
+models[1315] = None # 0x1ddbf5
+models[1316] = None # 0x1ddbfc
+models[1317] = None # 0x1ddc03
+models[1318] = None # 0x1ddc0a
+models[1319] = None # 0x1ddc11
+models[1320] = None # 0x1ddc18
+models[1321] = None # 0x1ddc1f
+models[1322] = None # 0x1ddc26
+models[1323] = None # 0x1ddc2d
+models[1324] = None # 0x1ddc34
+models[1325] = None # 0x1ddc3b
+models[1326] = None # 0x1ddc42
+models[1327] = None # 0x1ddc49
+models[1328] = None # 0x1ddc50
+models[1329] = None # 0x1ddc57
+models[1330] = None # 0x1ddc5e
+models[1331] = None # 0x1ddc65
+models[1332] = None # 0x1ddc6c
+models[1333] = None # 0x1ddc73
+models[1334] = None # 0x1ddc7a
+models[1335] = None # 0x1ddc81
+models[1336] = None # 0x1ddc88
+models[1337] = None # 0x1ddc8f
+models[1338] = None # 0x1ddc96
+models[1339] = None # 0x1ddc9d
+models[1340] = None # 0x1ddca4
+models[1341] = None # 0x1ddcab
+models[1342] = None # 0x1ddcb2
+models[1343] = None # 0x1ddcb9
+models[1344] = None # 0x1ddcc0
+models[1345] = None # 0x1ddcc7
+models[1346] = None # 0x1ddcce
+models[1347] = None # 0x1ddcd5
+models[1348] = None # 0x1ddcdc
+models[1349] = None # 0x1ddce3
+models[1350] = None # 0x1ddcea
+models[1351] = None # 0x1ddcf1
+models[1352] = None # 0x1ddcf8
+models[1353] = None # 0x1ddcff
+models[1354] = None # 0x1ddd06
+models[1355] = None # 0x1ddd0d
+models[1356] = None # 0x1ddd14
+models[1357] = None # 0x1ddd1b
+models[1358] = None # 0x1ddd22
+models[1359] = None # 0x1ddd29
+models[1360] = None # 0x1ddd30
+models[1361] = None # 0x1ddd37
+models[1362] = None # 0x1ddd3e
+models[1363] = None # 0x1ddd45
+models[1364] = None # 0x1ddd4c
+models[1365] = None # 0x1ddd53
+models[1366] = None # 0x1ddd5a
+models[1367] = None # 0x1ddd61
+models[1368] = None # 0x1ddd68
+models[1369] = None # 0x1ddd6f
+models[1370] = None # 0x1ddd76
+models[1371] = None # 0x1ddd7d
+models[1372] = None # 0x1ddd84
+models[1373] = None # 0x1ddd8b
+models[1374] = None # 0x1ddd92
+models[1375] = None # 0x1ddd99
+models[1376] = None # 0x1ddda0
+models[1377] = None # 0x1ddda7
+models[1378] = None # 0x1dddae
+models[1379] = None # 0x1dddb5
+models[1380] = None # 0x1dddbc
+models[1381] = None # 0x1dddc3
+models[1382] = None # 0x1dddca
+models[1383] = None # 0x1dddd1
+models[1384] = None # 0x1dddd8
+models[1385] = None # 0x1ddddf
+models[1386] = None # 0x1ddde6
+models[1387] = None # 0x1ddded
+models[1388] = None # 0x1dddf4

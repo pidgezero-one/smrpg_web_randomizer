@@ -5,47 +5,38 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_390_reset_properties_0',
-        "command": 'reset_properties'
+        "identifier": 'ACTION_390_floating_off_0',
+        "command": 'floating_off'
     },
     {
-        "identifier": 'ACTION_390_face_northeast_1',
-        "command": 'face_northeast'
+        "identifier": 'ACTION_390_set_sprite_sequence_1',
+        "command": 'set_sprite_sequence',
+        "args": [4, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_390_set_animation_speed_2',
-        "command": 'set_animation_speed',
-        "args": [SequenceSpeeds.VERY_FAST, [_0x10Flags.SEQUENCE]]
+        "identifier": 'ACTION_390_visibility_off_2',
+        "command": 'visibility_off'
     },
     {
-        "identifier": 'ACTION_390_sequence_looping_on_3',
-        "command": 'sequence_looping_on'
-    },
-    {
-        "identifier": 'ACTION_390_pause_4',
+        "identifier": 'ACTION_390_pause_3',
         "command": 'pause',
-        "args": [32]
+        "args": [9]
     },
     {
-        "identifier": 'ACTION_390_sequence_looping_off_5',
-        "command": 'sequence_looping_off'
+        "identifier": 'ACTION_390_visibility_on_4',
+        "command": 'visibility_on'
     },
     {
-        "identifier": 'ACTION_390_set_animation_speed_6',
-        "command": 'set_animation_speed',
-        "args": [SequenceSpeeds.NORMAL, [_0x10Flags.SEQUENCE]]
-    },
-    {
-        "identifier": 'ACTION_390_pause_7',
+        "identifier": 'ACTION_390_pause_5',
         "command": 'pause',
-        "args": [16]
+        "args": [24]
     },
     {
-        "identifier": 'ACTION_390_face_southwest_8',
-        "command": 'face_southwest'
+        "identifier": 'ACTION_390_visibility_off_6',
+        "command": 'visibility_off'
     },
     {
-        "identifier": 'ACTION_390_ret_9',
+        "identifier": 'ACTION_390_ret_7',
         "command": 'ret'
     }
 ]

@@ -641,7 +641,7 @@ def randomize_all(world):
                         # scarecrow directions are mostly inverted, so swap default directions for scarecrow sprites, don't face on trigger
                         current_direction = world.get_room_npc_property_by_id(room_id, npc_id, "direction")
                         new_direction = current_direction
-                        if world.models[model_num]["sprite"] in [205, 253]: # SCARECROW
+                        if model_num in [385, 149]: # SCARECROW
                             if current_direction == RadialDirection.NORTHWEST:
                                 new_direction = RadialDirection.NORTHEAST
                             elif current_direction == RadialDirection.NORTHEAST:
@@ -997,7 +997,7 @@ def randomize_all(world):
 
                         # if model is a scarecrow, fix all of its directional commands
                         model_info = world.models[model_num]
-                        if model_info["sprite"] in [205, 253]: # SCARECROW
+                        if model_num in [385, 149]: # SCARECROW
                             for script_id in boss_sprite_location.target_scripts:
                                 script = world.eventscripts[script_id]
                                 for command_index, command in enumerate(script):

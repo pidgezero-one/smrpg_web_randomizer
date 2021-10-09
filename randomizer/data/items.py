@@ -16,67 +16,75 @@ class OverworldItem:
     model = None
     action_script = 15
     hover = False
-    def __init__(self, model, action_script, hover=False):
+    static_packet = None
+    falling_packet = None
+    treasure_packet = None
+    def __init__(self, model, action_script, static_packet=None, falling_packet=False, treasure_packet=False, hover=False):
         self.model = model
         self.action_script = action_script
+        self.static_packet = static_packet
+        self.falling_packet = falling_packet
+        self.treasure_packet = treasure_packet
         self.hover = hover
 
 
 overworld_items = {
-    "flower": OverworldItem(111, 15),
-    "mushroom": OverworldItem(111, 831),
-    "key": OverworldItem(111, 830),
-    "ring": OverworldItem(222, 773),
-    "shoes": OverworldItem(222, 830),
-    "junk": OverworldItem(222, 15),
-    "feather": OverworldItem(10, 15),
-    "brooch": OverworldItem(222, 201),
-    "music": OverworldItem(111, 202),
+    "flower": OverworldItem(111, 15, static_packet=86, falling_packet=35, treasure_packet=0),
+    "mushroom": OverworldItem(111, 831, static_packet=87, falling_packet=36, treasure_packet=1),
+    "key": OverworldItem(111, 830, static_packet=88, falling_packet=89, treasure_packet=2),
+    "ring": OverworldItem(222, 773, static_packet=93, falling_packet=92, treasure_packet=91),
+    "shoes": OverworldItem(222, 830, static_packet=97, falling_packet=98, treasure_packet=99),
+    "junk": OverworldItem(222, 15, static_packet=100, falling_packet=101, treasure_packet=102),
+    "feather": OverworldItem(10, 15, static_packet=84, falling_packet=82, treasure_packet=80),
+    "brooch": OverworldItem(222, 201, static_packet=94, falling_packet=95, treasure_packet=96),
+    "music": OverworldItem(111, 202, static_packet=166, falling_packet=167, treasure_packet=168),
     "mushroom_item": OverworldItem(264, 483),
     "hammer": OverworldItem(31, 15),
-    "coin": OverworldItem(499, 925),
-    "small_coin": OverworldItem(194, 163),
-    "frog_coin": OverworldItem(195, 925),
+    "coin": OverworldItem(499, 925, static_packet=109, falling_packet=106, treasure_packet=16),
+    "small_coin": OverworldItem(194, 163, static_packet=110, falling_packet=107, treasure_packet=18),
+    "frog_coin": OverworldItem(195, 925, static_packet=111, falling_packet=108, treasure_packet=19),
     "static_frog_coin": OverworldItem(195, 15),
     "static_coin": OverworldItem(499, 15),
     #"star": OverworldItem(388, 831),
-    "star": OverworldItem(226, 3),
+    "star": OverworldItem(226, 3, static_packet=85, falling_packet=83, treasure_packet=81),
     #"star_piece": OverworldItem(28, 591),
-    "bomb": OverworldItem(37, 15),
-    "egg": OverworldItem(462, 15),
+    "bomb": OverworldItem(37, 15, static_packet=112, falling_packet=113, treasure_packet=114),
+    "egg": OverworldItem(462, 15, static_packet=115, falling_packet=116, treasure_packet=117),
     "nothing": OverworldItem(255, 164),
-    "default": OverworldItem(111, 773),
-    "cookie": OverworldItem(45, 480),
+    "default": OverworldItem(111, 773, static_packet=90, falling_packet=37, treasure_packet=5),
+    "cookie": OverworldItem(18, 15, static_packet=118, falling_packet=119, treasure_packet=120),
     "chomp": OverworldItem(30, 831), # might be too big
-    "berry": OverworldItem(144, 15),
+    "berry": OverworldItem(144, 15, static_packet=121, falling_packet=122, treasure_packet=123),
     "cannonball": OverworldItem(430, 15),
     "beetle": OverworldItem(255, 15),
-    "crown": OverworldItem(222, 840),
+    "crown": OverworldItem(222, 840, static_packet=105, falling_packet=104, treasure_packet=103),
     "stick": OverworldItem(474, 841),
     "shell": OverworldItem(148, 830),
     "parasol": OverworldItem(205, 830),
     "fan": OverworldItem(44, 842),
     "frying_pan": OverworldItem(235, 843),
-    "card": OverworldItem(150, 1017, True),
-    "candy": OverworldItem(153, 1018),
-    "red_syrup": OverworldItem(250, 831),
-    "green_syrup": OverworldItem(153, 831),
-    "yellow_syrup": OverworldItem(277, 831),
-    "blue_syrup": OverworldItem(146, 831),
-    "red_bomb": OverworldItem(250, 1019),
-    "green_bomb": OverworldItem(153, 1019),
-    "yellow_bomb": OverworldItem(277, 1019),
-    "blue_bomb": OverworldItem(146, 1019),
-    "green_juice": OverworldItem(153, 830),
-    "red_juice": OverworldItem(250, 830),
-    "blue_r_drink": OverworldItem(146, 202),
-    "yellow_d_drink": OverworldItem(277, 840),
-    "green_p_drink": OverworldItem(153, 201),
-    "green_frog_drink": OverworldItem(153, 1020),
-    "yellow_music_drink": OverworldItem(277, 773),
-    "blue_music_drink": OverworldItem(146, 773),
-    "red_music_drink": OverworldItem(250, 773),
-    "red_star_drink": OverworldItem(250, 1021),
+    "card": OverworldItem(150, 1017, static_packet=124, falling_packet=125, treasure_packet=126),
+    #"card": OverworldItem(150, 1017, True),
+    "candy": OverworldItem(153, 1018, static_packet=173, falling_packet=174, treasure_packet=175),
+    "candy_blue": OverworldItem(146, 1018, static_packet=176, falling_packet=177, treasure_packet=178),
+    "red_syrup": OverworldItem(250, 831, static_packet=130, falling_packet=131, treasure_packet=132),
+    "green_syrup": OverworldItem(153, 831, static_packet=127, falling_packet=128, treasure_packet=129),
+    "yellow_syrup": OverworldItem(277, 831, static_packet=136, falling_packet=137, treasure_packet=138),
+    "blue_syrup": OverworldItem(146, 831, static_packet=133, falling_packet=134, treasure_packet=135),
+    "red_bomb": OverworldItem(250, 1019, static_packet=182, falling_packet=183, treasure_packet=184),
+    "green_bomb": OverworldItem(153, 1019, static_packet=179, falling_packet=180, treasure_packet=181),
+    "yellow_bomb": OverworldItem(277, 1019, static_packet=188, falling_packet=189, treasure_packet=190),
+    "blue_bomb": OverworldItem(146, 1019, static_packet=185, falling_packet=186, treasure_packet=187),
+    "green_juice": OverworldItem(153, 830, static_packet=139, falling_packet=140, treasure_packet=141),
+    "red_juice": OverworldItem(250, 830, static_packet=142, falling_packet=143, treasure_packet=144),
+    "blue_r_drink": OverworldItem(146, 202, static_packet=163, falling_packet=164, treasure_packet=165),
+    "yellow_d_drink": OverworldItem(277, 840, static_packet=150, falling_packet=149, treasure_packet=149),
+    "green_p_drink": OverworldItem(153, 201, static_packet=145, falling_packet=146, treasure_packet=147),
+    "green_frog_drink": OverworldItem(153, 1020, static_packet=159, falling_packet=158, treasure_packet=157),
+    "yellow_music_drink": OverworldItem(277, 773, static_packet=153, falling_packet=152, treasure_packet=151),
+    "blue_music_drink": OverworldItem(146, 773, static_packet=156, falling_packet=155, treasure_packet=154),
+    "red_music_drink": OverworldItem(250, 773, static_packet=162, falling_packet=161, treasure_packet=160),
+    "red_star_drink": OverworldItem(250, 1021, static_packet=169, falling_packet=170, treasure_packet=171),
     # fish (81/239), urchins? spinys (sprite 257 seq 8)?
     # small cloud? 518 seq 1 or 3
     # tiny bird?
@@ -2428,7 +2436,7 @@ class RockCandy(RegularItem):
     item_name = "Rock Candy"
     index = 131
     description = 'Attack all\x01enemies'
-    model = overworld_items["candy"]
+    model = overworld_items["candy_blue"]
     order = 31
     item_type = 3
     consumable = True
@@ -3217,7 +3225,7 @@ class StarPiece(MiscReward):
     description = 'Star Hunt star piece'
     tier = 4
     unique = ItemUnique.Always
-    chest_event = 3092
+    chest_event = 163
     npc_event = 164
     overworld_event = 166
     overworld_midas_event = 2821
