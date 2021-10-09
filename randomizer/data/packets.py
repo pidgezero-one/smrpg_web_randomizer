@@ -1340,9 +1340,27 @@ packets[190] = { # yellow bomb - chest
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db3b6
-packets[191] = None # 0x1db3bb
-packets[192] = None # 0x1db3c0
-packets[193] = None # 0x1db3c5
+packets[191] = { # beetle - static
+  "sprite": 255,
+  "shadow": False,
+  "action_script": 15,
+  "unknown_bits": [False, False, False],
+  "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
+} # 0x1db3bb
+packets[192] = { # beetle - falling
+  "sprite": 255,
+  "shadow": True,
+  "action_script": 917,
+  "unknown_bits": [False, True, False],
+  "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
+} # 0x1db3c0
+packets[193] = { # beetle - chest
+  "sprite": 255,
+  "shadow": False,
+  "action_script": 525,
+  "unknown_bits": [False, False, False],
+  "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
+} # 0x1db3c5
 packets[194] = None # 0x1db3ca
 packets[195] = None # 0x1db3cf
 packets[196] = None # 0x1db3d4
