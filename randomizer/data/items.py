@@ -56,7 +56,7 @@ overworld_items = {
     "chomp": OverworldItem(30, 831), # might be too big
     "berry": OverworldItem(144, 15, static_packet=121, falling_packet=122, treasure_packet=123),
     "cannonball": OverworldItem(430, 15),
-    "beetle": OverworldItem(255, 15),
+    "beetle": OverworldItem(255, 15, static_packet=191, falling_packet=192, treasure_packet=193),
     "crown": OverworldItem(222, 840, static_packet=105, falling_packet=104, treasure_packet=103),
     "stick": OverworldItem(474, 841),
     "shell": OverworldItem(148, 830),
