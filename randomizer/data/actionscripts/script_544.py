@@ -11,11 +11,34 @@ script = [
     {
         "identifier": 'ACTION_544_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [3, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_544_jmp_2',
+        "identifier": 'ACTION_544_sequence_looping_on_0',
+        "command": 'sequence_looping_on'
+    },
+    {
+        "identifier": 'ACTION_544_set_priority_3',
+        "command": 'set_priority',
+        "args": [3]
+    },
+    {
+        "identifier": 'ACTION_544_visibility_on_4',
+        "command": 'visibility_on'
+    },
+    {
+        "identifier": 'ACTION_544_set_solidity_bits_18',
+        "command": 'set_solidity_bits',
+        "args": [[_0x0AFlags.CANT_JUMP_THROUGH]]
+    },
+    {
+        "identifier": 'ACTION_544_pause_8',
+        "command": 'pause',
+        "args": [1]
+    },
+    {
+        "identifier": 'ACTION_544_jmp_9',
         "command": 'jmp',
-        "args": ['ACTION_917_pause_2']
+        "args": ['ACTION_544_pause_8']
     }
 ]

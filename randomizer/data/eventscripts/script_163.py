@@ -14,5 +14,9 @@ script = [
         "identifier": "EVENT_163_open_gate_3",
         "command": 'jmp_to_event',
         "args": [3092]
-    }
+    },
+    {
+        "identifier": 'EVENT_163_final_ret',
+        "command": 'ret'
+    },
 ]

@@ -5,54 +5,38 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_913_floating_off_0',
+        "identifier": 'ACTION_909_floating_off_0',
         "command": 'floating_off'
     },
     {
-        "identifier": 'ACTION_913_visibility_off_1',
-        "command": 'visibility_off'
-    },
-    {
-        "identifier": 'ACTION_913_pause_2',
-        "command": 'pause',
-        "args": [9]
-    },
-    {
-        "identifier": 'ACTION_913_set_sprite_sequence_3',
+        "identifier": 'ACTION_909_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
         "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_913_visibility_on_4',
+        "identifier": 'ACTION_909_visibility_off_2',
+        "command": 'visibility_off'
+    },
+    {
+        "identifier": 'ACTION_909_pause_3',
+        "command": 'pause',
+        "args": [9]
+    },
+    {
+        "identifier": 'ACTION_909_visibility_on_4',
         "command": 'visibility_on'
     },
     {
-        "identifier": 'ACTION_913_floating_on_5',
-        "command": 'floating_on'
-    },
-    {
-        "identifier": 'ACTION_913_jump_to_height_silent_6',
-        "command": 'jump_to_height_silent',
-        "args": [0]
-    },
-    {
-        "identifier": 'ACTION_913_set_solidity_bits_7',
-        "command": 'set_solidity_bits',
-        "args": [[_0x0AFlags.CANT_JUMP_THROUGH, _0x0AFlags.BIT_4, _0x0AFlags.CANT_WALK_THROUGH]]
-    },
-    {
-        "identifier": 'ACTION_913_set_vram_priority_8',
-        "command": 'set_vram_priority',
-        "args": [VramPriority.NORMAL]
-    },
-    {
-        "identifier": 'ACTION_913_pause_9',
+        "identifier": 'ACTION_909_pause_5',
         "command": 'pause',
-        "args": [1]
+        "args": [24]
     },
     {
-        "identifier": 'ACTION_913_jmp_10',
-        "command": 'jmp',
-        "args": ['ACTION_913_set_vram_priority_8']
+        "identifier": 'ACTION_909_visibility_off_6',
+        "command": 'visibility_off'
+    },
+    {
+        "identifier": 'ACTION_909_ret_7',
+        "command": 'ret'
     }
 ]

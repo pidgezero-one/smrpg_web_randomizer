@@ -8,6 +8,7 @@ import copy
 from scipy.stats import gamma
 
 from randomizer.data import items, locations, chests, bosses
+from randomizer.data.chests import PacketType 
 from randomizer.data.helpers import FireworksOptions, WinConditions, ItemQualities, ShopQualities, PlayableCharacters, BanditsWayGating, ForestMazeGating, BoosterTowerGating, SeaGating, ShuffleLocationSelector
 from randomizer.data.items import ItemUnique
 from randomizer.data.locations import Area
@@ -534,8 +535,11 @@ def randomize_all(world):
 
 
         # Collect pool of locations that need item assignments
-        locations_to_completely_ignore = world.settings.get_flag(flags.EnabledFreestandingChecks).disabled
-
+        overworld_items_to_include = world.settings.get_flag(flags.EnabledFreestandingChecks).enabled
+        #print(overworld_items_to_include)
+        locations_to_completely_ignore = [w.description for w in world.freestanding_item_locations if w.description not in overworld_items_to_include]
+        #print(locations_to_completely_ignore)
+        
         inventory = Inventory([])
 
         # Contents of excluded chests will still be shuffled, they just will not contain progression items.
@@ -607,6 +611,8 @@ def randomize_all(world):
                         l.item = item
                         all_locations.remove(l)
                         break
+
+        #print(all_locations)
 
 
         remainder = []
@@ -834,15 +840,16 @@ def randomize_all(world):
                     if (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, items.MarioRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, items.MallowRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, items.GenoRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, items.BowserRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, items.ToadstoolRecruit)):
                         world.prepend_bits(200, [[0x7066, 3], [0x706E, 3]])
                 for room_id, npc, eventscripts, actionscripts in c.npcs:
-                    # replace model
-                    world.update_room_npc_property_by_id(room_id, npc, "model", c.item.model)
-                    # format scripts
-                    for script_id in eventscripts:
-                        for command_index, cmd in enumerate(world.eventscripts[script_id]):
-                            if utils.is_animation_header(cmd, npc):
-                                world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(c.item.sprites, cmd["subscript"])
-                    for script_id in actionscripts:
-                        world.actionscripts[script_id] = utils.sanitize_character_animation_script(c.item.sprites, world.actionscripts[script_id])
+                    if not c.is_vanilla:
+                        # replace model
+                        world.update_room_npc_property_by_id(room_id, npc, "model", c.item.model)
+                        # format scripts
+                        for script_id in eventscripts:
+                            for command_index, cmd in enumerate(world.eventscripts[script_id]):
+                                if utils.is_animation_header(cmd, npc):
+                                    world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(c.item.sprites, cmd["subscript"], room_id)
+                        for script_id in actionscripts:
+                            world.actionscripts[script_id] = utils.sanitize_character_animation_script(c.item.sprites, world.actionscripts[script_id], room_id)
             elif not utils.isclass_or_instance(c, chests.MolevilleMinesCharacter): # replace with Toad if empty
                 toad_sprites = {
                     "south": (0, 6, True),
@@ -866,15 +873,16 @@ def randomize_all(world):
                     world.search_replace_dialog("`MARRYMORE_CHARACTER`", "Toad")
                     world.search_replace_dialog("`RANDOM_CHARACTER_NAME`", "Yoshi")
                 for room_id, npc, eventscripts, actionscripts in c.npcs:
-                    world.update_room_npc_property_by_id(room_id, npc, "model", 64)
                     # format scripts
-                    for script_id in eventscripts:
-                        for command_index, cmd in enumerate(world.eventscripts[script_id]):
-                            if utils.is_animation_header(cmd, npc):
-                                world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(toad_sprites, cmd["subscript"])
-                    for script_id in actionscripts:
-                        for command_index, cmd in enumerate(world.actionscripts[script_id]):
-                            world.actionscripts[script_id] = utils.sanitize_character_animation_script(toad_sprites, world.actionscripts[script_id])
+                    if not c.is_vanilla:
+                        world.update_room_npc_property_by_id(room_id, npc, "model", 64)
+                        for script_id in eventscripts:
+                            for command_index, cmd in enumerate(world.eventscripts[script_id]):
+                                if utils.is_animation_header(cmd, npc):
+                                    world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(toad_sprites, cmd["subscript"], room_id)
+                        for script_id in actionscripts:
+                            for command_index, cmd in enumerate(world.actionscripts[script_id]):
+                                world.actionscripts[script_id] = utils.sanitize_character_animation_script(toad_sprites, world.actionscripts[script_id], room_id)
 
         # chests
         for c in [x for x in world.chest_locations if not utils.isclass_or_instance(x, chests.OverworldItem)] + [x for x in world.freestanding_item_locations if not utils.isclass_or_instance(x, chests.OverworldItem) and not utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:
@@ -984,7 +992,13 @@ def randomize_all(world):
                         if world.settings.is_flag_value(flags.QuickHitCoins, True) and (utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.MultiFrogCoin)):
                             cmds.append(utils.new_command(c.event, 'jmp_to_event', [c.item.quick_chest_event]))
                         elif c.item.chest_event:
-                            cmds.append(utils.new_command(c.event, 'jmp_to_event', [c.item.get_chest_event(c.event)]))
+                            evt = c.item.get_chest_event(c.event)
+                            if evt == 3089:
+                                evt = c.item.model.chest_event
+                                for r in c.rooms:
+                                    if r in [242]:
+                                        evt = 883
+                            cmds.append(utils.new_command(c.event, 'jmp_to_event', [evt]))
                         # add jumps
                         grant_builders[c.event]["executions"].extend(cmds)
                         for r in c.rooms:
@@ -1095,6 +1109,7 @@ def randomize_all(world):
                                 
         # freestanding items
         for c in [x for x in world.freestanding_item_locations if utils.isclass_or_instance(x, chests.OverworldItem)] + [x for x in world.chest_locations if utils.isclass_or_instance(x, chests.OverworldItem) or utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:
+            # print (c)
             if c.event is not None and c.event not in grant_builders:
                 grant_builders[c.event] = {
                     "jumps": [],
@@ -1111,7 +1126,11 @@ def randomize_all(world):
                 if utils.isclass_or_instance(c, chests.PacketItem): 
                     # generate the right packet for the item
                     generator = copy.deepcopy([{**s} for s in world.eventscripts[c.script_id]])
-                    generator[0]["args"][0] = c.item.packet
+                    if c.preferred == PacketType.Falling:
+                        packetType = c.item.model.falling_packet
+                    else:
+                        packetType = c.item.model.static_packet
+                    generator[0]["args"][0] = packetType
                     world.eventscripts[c.script_id] = generator
                 else:
                     if not ((utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.FrogCoin)) and c.description in world.settings.get_flag(flags.EnabledFreestandingChecks).disabled):
@@ -1120,6 +1139,11 @@ def randomize_all(world):
                         action_script = c.item.model.action_script
                         is_floating = c.item.model.hover
                         for r, npc_id in zip(c.rooms, c.npc_ids):
+                            # special case for rooms that have a lot of big sprites
+                            if r in [125] and model_id not in [499, 194, 195, 111, 196]:
+                                model_id = 111
+                                action_script = 773
+                                is_floating = False
                             world.update_room_npc_property_by_id(r, npc_id, "model", model_id)
                             world.update_room_npc_property_by_id(r, npc_id, "action_script", action_script)
                             world.update_room_npc_property_by_id(r, npc_id, "z_half", is_floating)

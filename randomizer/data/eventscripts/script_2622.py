@@ -32,6 +32,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2622_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [1192]
+    },
+    {
         "identifier": 'EVENT_2622_remove_from_current_level_1',
         "command": 'remove_from_current_level',
         "args": [AreaObjects.MARIO]

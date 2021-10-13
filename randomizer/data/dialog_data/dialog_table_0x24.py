@@ -220,7 +220,7 @@ dialog_data[137] = '''[await]'''
 dialog_data[138] = '''[await]'''
 dialog_data[139] = '''[await]'''
 dialog_data[140] = '''[await]'''
-dialog_data[141] = '''\n        Pick up a “Mushroom”[await]'''
+dialog_data[141] = '''\nPicked up a “[0x70A7]”[await]'''
 dialog_data[142] = '''GARDENER: Hey!
  I haven't finished yet.[await]'''
 dialog_data[143] = '''GARDENER: Short attention span?[await]'''

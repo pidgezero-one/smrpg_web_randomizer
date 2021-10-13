@@ -5,38 +5,40 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_721_floating_off_0',
-        "command": 'floating_off'
+        "identifier": 'ACTION_721_visibility_off_0',
+        "command": 'visibility_off'
     },
     {
         "identifier": 'ACTION_721_set_sprite_sequence_1',
         "command": 'set_sprite_sequence',
-        "args": [9, 0, [_0x08Flags.READ_AS_SEQUENCE]]
+        "args": [2, 0, [_0x08Flags.READ_AS_SEQUENCE]]
     },
     {
-        "identifier": 'ACTION_721_visibility_off_2',
-        "command": 'visibility_off'
+        "identifier": 'ACTION_721_sequence_looping_on_0',
+        "command": 'sequence_looping_on'
     },
     {
-        "identifier": 'ACTION_721_pause_3',
-        "command": 'pause',
-        "args": [9]
+        "identifier": 'ACTION_721_set_priority_3',
+        "command": 'set_priority',
+        "args": [3]
     },
     {
         "identifier": 'ACTION_721_visibility_on_4',
         "command": 'visibility_on'
     },
     {
-        "identifier": 'ACTION_721_pause_5',
+        "identifier": 'ACTION_721_set_solidity_bits_18',
+        "command": 'set_solidity_bits',
+        "args": [[_0x0AFlags.CANT_JUMP_THROUGH]]
+    },
+    {
+        "identifier": 'ACTION_721_pause_8',
         "command": 'pause',
-        "args": [24]
+        "args": [1]
     },
     {
-        "identifier": 'ACTION_721_visibility_off_6',
-        "command": 'visibility_off'
-    },
-    {
-        "identifier": 'ACTION_721_ret_7',
-        "command": 'ret'
+        "identifier": 'ACTION_721_jmp_9',
+        "command": 'jmp',
+        "args": ['ACTION_721_pause_8']
     }
 ]

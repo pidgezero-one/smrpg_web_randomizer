@@ -19,9 +19,10 @@ from randomizer.data.roomobjects.roomobjects import rooms as roomdata
 from randomizer.data.npcmodels import models as npcmodels
 from randomizer.data.dialog_data.dialog_data import dialog_data
 from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
-from randomizer.data.helpers import FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
+from randomizer.data.helpers import ItemQualities, FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
 from randomizer.data.graphics import sprites, images
 from randomizer.data.utils import palette_to_bytes
+from randomizer.data.packets import packets as dpackets
 from . import bosses
 from . import bosses_overworld
 from . import credits
@@ -250,7 +251,7 @@ class GameWorld:
         self.original_models = copy.deepcopy(npcmodels)
         self.original_rooms = copy.deepcopy(roomdata)
         # Malleable versions
-        self.packets = copy.deepcopy(data.packets)
+        self.packets = copy.deepcopy(dpackets)
         self.models = copy.deepcopy(npcmodels)
         self.rooms = copy.deepcopy(roomdata)
 
@@ -528,6 +529,16 @@ class GameWorld:
         # Remove commands from game loader that are required to make the base rom run properly on its own
         # These commands will be replaced according to the user's settings
         self.eventscripts[13] = [utils.new_command(13, "ret")]
+
+        # item quality cap
+        if self.settings.is_flag_value(flags.ItemQuality, ItemQualities.t1):
+            self.prepend_bits(192, [[0x7088, 4]])
+            self.prepend_bits(192, [[0x7088, 3]])
+        elif self.settings.is_flag_value(flags.ItemQuality, ItemQualities.t2):
+            self.prepend_bits(192, [[0x7088, 4]])
+        elif self.settings.is_flag_value(flags.ItemQuality, ItemQualities.t3):
+            self.prepend_bits(192, [[0x7088, 3]])
+
 
         # Set number of star pieces required for win condition
         required_star_pieces = self.settings.get_flag(flags.TotalStarPieces).value
@@ -902,7 +913,9 @@ class GameWorld:
 
         # Substitute Valentina statue sprite
         for l in self.boss_locations:
-            source_sprite = self.models[l.boss.small_model.model_id]["sprite"]
+            model_num = l.boss.small_model.cloneable_all_directions or l.boss.small_model.uncloneable_all_directions or l.boss.small_model.cloneable_south_only or l.boss.small_model.uncloneable_south_only
+            
+            source_sprite = self.models[model_num]["sprite"]
             animation_num = sprites[source_sprite].animation_num
             source_image_num = sprites[source_sprite].image_num
             palette_addr = images[source_image_num].palette_pointer
@@ -911,6 +924,7 @@ class GameWorld:
                 if l.boss.alt_palette is not None:
                     patch.add_data(palette_addr, palette_to_bytes(l.boss.alt_palette))
             if utils.isclass_or_instance(l, data.bosses.Valentina) and not utils.isclass_or_instance(l.boss, data.bosses.ValentinaBoss):
+                model_num = l.boss.statue.reference_model
                 dest_sprite = self.models[63]["sprite"]
                 dest_image_num = sprites[dest_sprite].image_num
                 dest_palette_addr = images[dest_image_num].palette_pointer
@@ -920,7 +934,7 @@ class GameWorld:
                 
                 patch.add_data(0x251800 + dest_image_num * 4, gfx_offset_bytes)
                 patch.add_data(0x250000 + dest_sprite * 4 + 2, [animation_num & 0xFF, (animation_num >> 8)])
-                patch.add_data(dest_palette_addr, palette_to_bytes(l.boss.statue_palette))
+                patch.add_data(dest_palette_addr, palette_to_bytes(l.boss.statue.palette))
 
 
         # Remove screen flashes

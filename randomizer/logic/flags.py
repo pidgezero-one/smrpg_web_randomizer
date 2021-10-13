@@ -408,7 +408,10 @@ class RestrictSpecialEquips(BooleanFlag):
 
 class BetterTips(BooleanFlag):
     name = 'Better Consolation Prizes'
-    description = '''If enabled, some repeatable item grants will give a better, or wider, variety of items. Example of this include Knife Guy's juggling game junk prizes, or tips from working in the Marrymore hotel. This setting has no impact on singular, clearable item checks.'''
+    description = '''If enabled, some repeatable item grants will give a better, or wider, variety of items. Example of this include Knife Guy's juggling game junk prizes, or tips from working in the Marrymore hotel. This setting has no impact on singular, clearable item checks.
+<br/>
+<br/>Additionally, Forest Maze mushrooms may be ANY kind of mushroom, regardless of your max item quality settings.
+    '''
     modes = ['open']
     
     id = "tips"

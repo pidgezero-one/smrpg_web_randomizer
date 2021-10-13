@@ -47,8 +47,18 @@ script = [
     },
     {
         "identifier": 'EVENT_3098_subroutine',
+        "command": 'set',
+        "args": [0x70a7, 136]
+    },
+    {
+        "identifier": 'EVENT_3098_remove_one_from_inventory_299___',
+        "command": 'remove_one_from_inventory',
+        "args": [items.SheepAttack]
+    },
+    {
+        "identifier": 'EVENT_3098_set_291______',
         "command": 'jmp_to_event',
-        "args": [56]
+        "args": [160]
     },
     {
         "identifier": 'EVENT_3098_set_294',

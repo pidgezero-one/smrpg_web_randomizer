@@ -10,6 +10,11 @@ script = [
         "command": 'freeze_camera'
     },
     {
+        "identifier": 'EVENT_3806_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [1193]
+    },
+    {
         "identifier": 'EVENT_3806_run_background_event_1',
         "command": 'run_background_event',
         "args": [3808, [_0x40Flags.RETURN_ON_LEVEL_EXIT]]

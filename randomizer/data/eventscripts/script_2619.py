@@ -28,6 +28,11 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2619_setter',
+        "command": 'run_event_as_subroutine',
+        "args": [1191]
+    },
+    {
         "identifier": 'EVENT_2619_action_queue_async_1',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_0],

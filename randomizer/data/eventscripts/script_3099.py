@@ -13,6 +13,6 @@ script = [
     {
         "identifier": "EVENT_3099_set_fireworks_",
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [883]
     },
 ]

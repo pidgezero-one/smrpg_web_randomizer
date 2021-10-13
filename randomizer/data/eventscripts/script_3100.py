@@ -38,7 +38,7 @@ script = [
     {
         "identifier": 'EVENT_3100_j',
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [883]
     },
     {
         "identifier": 'EVENT_3100_ret_293',
@@ -57,7 +57,7 @@ script = [
     {
         "identifier": 'EVENT_3100_j2',
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [883]
     },
     {
         "identifier": 'EVENT_3100_ret_297',
@@ -86,7 +86,7 @@ script = [
     {
         "identifier": 'EVENT_3100_j3',
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [883]
     },
     {
         "identifier": 'EVENT_3100_ret_301',

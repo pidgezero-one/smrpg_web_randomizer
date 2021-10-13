@@ -11,6 +11,11 @@ script = [
         "args": [33]
     },
     {
+        "identifier": 'EVENT_162_',
+        "command": 'create_packet_at_7010_coords_jmp_if_null',
+        "args": [5, 'EVENT_162_ret_259']
+    },
+    {
         "identifier": 'EVENT_162_play_sound_24',
         "command": 'play_sound',
         "args": [Sounds._014_FLOWER, 6]

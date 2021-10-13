@@ -371,7 +371,7 @@ def update_credits(world):
 
     #28
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'SCRIPT ANALYSIS')
+    credits.add_title(0x80, 0x00, 0x08, 'RESEARCH ASSISTANCE')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
@@ -381,9 +381,14 @@ def update_credits(world):
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'ATEATREE INVARIEL LYLOVIR')
+    credits.add_credit(0x80, 0x80, 0xc0, 'ATEATREE          LYLOVIR')
     credits.add_credit(0x80, 0x40, 0x81, 'GOODMORNINGCRONO')
     credits.add_credit(0x80, 0x00, 0xc2, 'ANTHONY MULBERRY')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0xc0, 0xc0, 'INVARIEL        BROATMEAL')
+    credits.add_credit(0x80, 0x80, 0x81, 'TINYWETBLANKET      CYNAS')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
     
     #29

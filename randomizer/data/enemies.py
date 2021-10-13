@@ -1234,8 +1234,8 @@ class ShyRanger(Enemy):
 
 class Bobomb(Enemy):
     index = 111
-    address = 0x3903b6
-    boss = True
+    address = 0x3909D6
+    
     hp = 90
     speed = 1
     attack = 50
@@ -1250,14 +1250,15 @@ class Bobomb(Enemy):
     flower_bonus_chance = 4
 
     # Reward attributes
-    reward_address = 0x3916c0
+    reward_address = 0x391936
     xp = 4
     yoshi_cookie_item = items.Mushroom
     normal_item = items.PickMeUp
 
 class BobombHenchman(Bobomb):
     index = 25
-    address = 0x3909D6
+    address = 0x3903b6
+    boss = True
 
     # Boss shuffle attributes.
     ratio_hp = 0.075
@@ -1271,7 +1272,7 @@ class BobombHenchman(Bobomb):
     ratio_magic_evade = 0.0
 
     # Reward attributes
-    reward_address = 0x391936
+    reward_address = 0x3916c0
     xp = 4
     yoshi_cookie_item = items.Mushroom
     normal_item = items.PickMeUp

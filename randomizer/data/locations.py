@@ -55,6 +55,7 @@ class ItemLocation:
     area = Area.MariosPad
     addresses = []
     _item = None
+    original_item = None
     missable = False
     access = 0
     not_depletable = False
@@ -202,6 +203,10 @@ class ItemLocation:
             raise ValueError(
                 "Location {} - Item {} not allowed".format(self, value))
         self._item = value
+
+    @property
+    def is_vanilla(self):
+        return self._item == self.original_item
 
 
 

@@ -9,6 +9,7 @@ from inspect import isclass
 from randomizer.data import items
 from randomizer.data.characters import Mario, Mallow, Geno, Bowser, Peach
 from randomizer.data.helpers import EquipmentPropertiesOptions, EquipmentCharactersOptions
+from randomizer.data.eventscripts.utils.random_mushroom import script as random_mushroom
 from . import flags, utils
 
 
@@ -523,6 +524,15 @@ def randomize_all(world):
         for item in world.items:
             if item.index == 175:
                 item.status_immunities = [random.randint(0, 7)]
+
+
+    if world.settings.is_flag_enabled(flags.BetterTips):
+        world.eventscripts[21] = copy.deepcopy(random_mushroom)
+        world.eventscripts[2670] = [utils.new_command(2670, "jmp", [57])]
+        world.eventscripts[2649] = [utils.new_command(2649, "jmp", [57])]
+        world.eventscripts[622] = [utils.new_command(622, "jmp", [51])]
+        world.eventscripts[626] = [utils.new_command(626, "jmp", [51])]
+
 
 
 def get_spoiler(world):

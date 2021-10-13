@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'EVENT_3086_set_291_',
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [895]
     },
     {
         "identifier": 'EVENT_3086_set_294',
@@ -48,7 +48,7 @@ script = [
     {
         "identifier": 'EVENT_3086_set_291__',
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [895]
     },
     {
         "identifier": 'EVENT_3086_set_298',
@@ -63,6 +63,6 @@ script = [
     {
         "identifier": 'EVENT_3086_set_291___',
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [895]
     },
 ]

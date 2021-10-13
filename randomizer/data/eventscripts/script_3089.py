@@ -6,11 +6,6 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": 'EVENT_3089_run_event_as_subroutine_23',
-        "command": 'run_event_as_subroutine',
-        "args": [33]
-    },
-    {
         "identifier": 'EVENT_3089_play_sound_24',
         "command": 'play_sound',
         "args": [Sounds._014_FLOWER, 6]

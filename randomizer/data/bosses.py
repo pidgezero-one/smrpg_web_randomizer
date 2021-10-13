@@ -18,8 +18,10 @@ EMPTY_DIALOG = auto()
 def is_vanilla(boss, location):
     return (utils.isclass_or_instance(location, HammerBros) and utils.isclass_or_instance(boss, HammerBroBoss)) or (utils.isclass_or_instance(location, Croco1) and utils.isclass_or_instance(boss, Croco1Boss)) or (utils.isclass_or_instance(location, Mack) and utils.isclass_or_instance(boss, MackBoss)) or (utils.isclass_or_instance(location, Pandorite) and utils.isclass_or_instance(boss, PandoriteBoss)) or ((utils.isclass_or_instance(location, Belome1) or utils.isclass_or_instance(location, Belome2)) and (utils.isclass_or_instance(boss, Belome1Boss) or utils.isclass_or_instance(boss, Belome2Boss))) or (utils.isclass_or_instance(location, Bowyer) and utils.isclass_or_instance(boss, BowyerBoss)) or (utils.isclass_or_instance(location, Croco2) and utils.isclass_or_instance(boss, Croco2Boss)) or (utils.isclass_or_instance(location, Punchinello) and utils.isclass_or_instance(boss, PunchinelloBoss)) or (utils.isclass_or_instance(location, Booster) and utils.isclass_or_instance(boss, BoosterBoss)) or (utils.isclass_or_instance(location, ClownBros) and utils.isclass_or_instance(boss, GrateGuyBoss)) or (utils.isclass_or_instance(location, Bundt) and utils.isclass_or_instance(boss, Bundt)) or (utils.isclass_or_instance(location, KingCalamari) and utils.isclass_or_instance(boss, KingCalamariBoss)) or (utils.isclass_or_instance(location, Hidon) and utils.isclass_or_instance(boss, HidonBoss)) or (utils.isclass_or_instance(location, Johnny) and utils.isclass_or_instance(boss, JohnnyBoss)) or (utils.isclass_or_instance(location, Yaridovich) and utils.isclass_or_instance(boss, YaridovichBoss)) or (utils.isclass_or_instance(location, Mokura) and utils.isclass_or_instance(boss, MokuraBoss)) or (utils.isclass_or_instance(location, Jagger) and utils.isclass_or_instance(boss, JaggerBoss)) or ((utils.isclass_or_instance(location, Jinx1) or utils.isclass_or_instance(location, Jinx2) or utils.isclass_or_instance(location, Jinx3)) and (utils.isclass_or_instance(boss, Jinx1Boss) or utils.isclass_or_instance(boss, Jinx2Boss) or utils.isclass_or_instance(boss, Jinx3Boss))) or (utils.isclass_or_instance(location, Culex) and utils.isclass_or_instance(boss, Culex)) or (utils.isclass_or_instance(location, BoxBoy) and utils.isclass_or_instance(boss, BoxBoyBoss)) or (utils.isclass_or_instance(location, MegaSmilax) and utils.isclass_or_instance(boss, MegaSmilaxBoss)) or (utils.isclass_or_instance(location, Dodo) and utils.isclass_or_instance(boss, DodoBoss)) or (utils.isclass_or_instance(location, Birdetta) and utils.isclass_or_instance(boss, BirdettaBoss)) or (utils.isclass_or_instance(location, Valentina) and utils.isclass_or_instance(boss, ValentinaBoss)) or (utils.isclass_or_instance(location, CzarDragon) and utils.isclass_or_instance(boss, CzarBoss)) or (utils.isclass_or_instance(location, AxemRangers) and utils.isclass_or_instance(boss, AxemRangersBoss)) or (utils.isclass_or_instance(location, Chester) and utils.isclass_or_instance(boss, ChesterBoss)) or (utils.isclass_or_instance(location, Magikoopa) and utils.isclass_or_instance(boss, MagikoopaBoss)) or (utils.isclass_or_instance(location, Boomer) and utils.isclass_or_instance(boss, BoomerBoss)) or (utils.isclass_or_instance(location, Exor) and utils.isclass_or_instance(boss, ExorBoss)) or (utils.isclass_or_instance(location, Countdown) and utils.isclass_or_instance(boss, CountdownBoss)) or (utils.isclass_or_instance(location, CloakerDomino) and utils.isclass_or_instance(boss, CloakerDominoBoss)) or (utils.isclass_or_instance(location, Clerk) and utils.isclass_or_instance(boss, ClerkBoss)) or (utils.isclass_or_instance(location, Manager) and utils.isclass_or_instance(boss, ManagerBoss)) or (utils.isclass_or_instance(location, Director) and utils.isclass_or_instance(boss, DirectorBoss)) or (utils.isclass_or_instance(location, Gunyolk) and utils.isclass_or_instance(boss, GunyolkBoss)) or (utils.isclass_or_instance(location, Smithy) and utils.isclass_or_instance(boss, SmithyBoss))
 
+
 def has_vanilla_henchmen(boss, location):
     return len(location.repeatable_henchmen + location.unique_henchmen) == 0 or len(boss.repeatable_henchmen + boss.unique_henchmen) == 0
+
 
 def sanitize_animation_script(boss, boss_location, script, model):
     '''Helper function that helps ensure that illegal sequences cannot be performed for substituted sprites in specific slots, but also substitutes specifically chosen sequences where appropriate.'''
@@ -49,6 +51,12 @@ def sanitize_animation_script(boss, boss_location, script, model):
                     if utils.isclass_or_instance(boss_location, Croco1) and model.animations is not None and model.animations.bandits_way_distracted is not None:
                         if subscript_command["args"][0] == 5:
                             subscript_command["args"][0] = model.animations.bandits_way_distracted.sequence_id
+                            # no support for sprite offsets, but not necessary with the sprites we're using
+                            new_script.append(subscript_command)
+                    # ending credits race
+                    elif utils.isclass_or_instance(boss_location, Croco1) and model.animations is not None and model.animations.recoil is not None:
+                        if subscript_command["args"][0] == 2:
+                            subscript_command["args"][0] = model.animations.recoil.sequence_id
                             # no support for sprite offsets, but not necessary with the sprites we're using
                             new_script.append(subscript_command)
                     # moleville mines punch
@@ -114,6 +122,7 @@ def sanitize_animation_script(boss, boss_location, script, model):
         return new_script
     else:
         return script
+
 
 class CrownHeight(Enum):
     Short = auto()
@@ -211,27 +220,47 @@ class Battlefields(IntEnum):
     Factory = 0x30
     BeanValleyUnderground = 0x31
 
+
 battlefield_room_table = [
-    (Battlefields.Forest, [Rooms._224_FOREST_MAZE_AREA_01, Rooms._227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, Rooms._228_FOREST_MAZE_AREA_04]),
-    (Battlefields.Beanstalks, [Rooms._372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, Rooms._373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, Rooms._419_LAZY_SHELL_CLOUD]),
-    (Battlefields.SunkenShip, [Rooms._024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, Rooms._167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS, Rooms._169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN, Rooms._175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM, Rooms._179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, Rooms._183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN, Rooms._184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, Rooms._185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING, Rooms._379_BEAN_VALLEY_BEANSTALKS_AREA_02]),
-    (Battlefields.MushroomKingdom, [Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL, Rooms._031_MUSHROOM_KINGDOM_CASTLE_VAULT, Rooms._331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT, ]),
-    (Battlefields.BowsersKeep, [Rooms._144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM, Rooms._446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS, Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, Rooms._321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS, Rooms._322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, Rooms._455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, Rooms._457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, Rooms._458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, Rooms._451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, Rooms._453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, Rooms._457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, Rooms._458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, Rooms._451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, Rooms._453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM]),
-    (Battlefields.MushroomWay, [Rooms._077_BANDITS_WAY_AREA_03, Rooms._078_BANDITS_WAY_AREA_04, Rooms._080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS, Rooms._081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, Rooms._203_MUSHROOM_WAY_AREA_01, Rooms._204_MUSHROOM_WAY_AREA_02, Rooms._206_BANDITS_WAY_AREA_05, Rooms._207_BANDITS_WAY_AREA_02, Rooms._267_MONSTRO_TOWN_ENTRANCE]),
-    (Battlefields.Mountains, [Rooms._100_BOOSTER_PASS_AREA_01, Rooms._137_LANDS_END_AREA_01, Rooms._138_LANDS_END_AREA_02, Rooms._405_BOOSTER_PASS_SECRET]),
-    (Battlefields.House, [Rooms._009_MARRYMORE_INN_REGULAR_ROOM, Rooms._087_ROSE_TOWN_ITEM_SHOP, Rooms._093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, Rooms._094_ROSE_TOWN_TREASURE_HOUSE_1F, Rooms._097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F, Rooms._098_ROSE_TOWN_TREASURE_HOUSE_2F, Rooms._492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]),
-    (Battlefields.BoosterTower, [Rooms._035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, Rooms._036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER, Rooms._048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, Rooms._196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]),
-    (Battlefields.Volcano, [Rooms._355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, Rooms._366_VOLCANO_AREA_13_WSAVE_POINT, Rooms._367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP, Rooms._384_VOLCANO_AREA_05, Rooms._385_VOLCANO_AREA_06]),
-    (Battlefields.KeroSewers, [Rooms._059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS, Rooms._060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS, Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, Rooms._128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, Rooms._301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]),
-    (Battlefields.NimbusCastle, [Rooms._111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE, Rooms._500_NIMBUS_CASTLE_AREA_04_____DUMMY, Rooms._113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, Rooms._114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM, Rooms._498_NIMBUS_CASTLE_AREA_10_____DUMMY, Rooms._118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, Rooms._121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, Rooms._410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE, Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]),
+    (Battlefields.Forest, [Rooms._224_FOREST_MAZE_AREA_01,
+                           Rooms._227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, Rooms._228_FOREST_MAZE_AREA_04]),
+    (Battlefields.Beanstalks, [Rooms._372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND,
+                               Rooms._373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, Rooms._419_LAZY_SHELL_CLOUD]),
+    (Battlefields.SunkenShip, [Rooms._024_SUNKEN_SHIP_POSTKC_AREA_15_BANDANA_RED_ROOM_WLONG_STAIRWELL, Rooms._167_SUNKEN_SHIP_AREA_05_LONG_STAIRWELL_WITH_RUNNING_ALLEY_RATS, Rooms._169_SUNKEN_SHIP_AREA_07_PUZZLE_ROOM_PASSAGEWAY_BRANCH_ROOM_WSHAMAN, Rooms._175_SUNKEN_SHIP_POSTKC_AREA_05_WDRY_BONES_LINKED_BY_MARIO_MIRROR_ROOM,
+                               Rooms._179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, Rooms._183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN, Rooms._184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, Rooms._185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING, Rooms._379_BEAN_VALLEY_BEANSTALKS_AREA_02]),
+    (Battlefields.MushroomKingdom, [Rooms._017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, Rooms._325_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_MAIN_HALL,
+                                    Rooms._031_MUSHROOM_KINGDOM_CASTLE_VAULT, Rooms._331_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_VAULT, ]),
+    (Battlefields.BowsersKeep, [Rooms._144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM, Rooms._446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS, Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, Rooms._321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS, Rooms._322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, Rooms._455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, Rooms._457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING,
+                                Rooms._458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, Rooms._451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, Rooms._453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, Rooms._457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, Rooms._458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, Rooms._451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, Rooms._453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM]),
+    (Battlefields.MushroomWay, [Rooms._077_BANDITS_WAY_AREA_03, Rooms._078_BANDITS_WAY_AREA_04, Rooms._080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS, Rooms._081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA,
+                                Rooms._203_MUSHROOM_WAY_AREA_01, Rooms._204_MUSHROOM_WAY_AREA_02, Rooms._206_BANDITS_WAY_AREA_05, Rooms._207_BANDITS_WAY_AREA_02, Rooms._267_MONSTRO_TOWN_ENTRANCE]),
+    (Battlefields.Mountains, [Rooms._100_BOOSTER_PASS_AREA_01, Rooms._137_LANDS_END_AREA_01,
+                              Rooms._138_LANDS_END_AREA_02, Rooms._405_BOOSTER_PASS_SECRET]),
+    (Battlefields.House, [Rooms._009_MARRYMORE_INN_REGULAR_ROOM, Rooms._087_ROSE_TOWN_ITEM_SHOP, Rooms._093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F,
+                          Rooms._094_ROSE_TOWN_TREASURE_HOUSE_1F, Rooms._097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F, Rooms._098_ROSE_TOWN_TREASURE_HOUSE_2F, Rooms._492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT]),
+    (Battlefields.BoosterTower, [Rooms._035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, Rooms._036_BOOSTER_TOWER_6F_AREA_04_3LEVEL_WTHWOMP_ON_TEETERTOTTER,
+                                 Rooms._048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, Rooms._196_BOOSTER_TOWER_2F_AREA_01_WCONSTANTLY_APPEARING_SPOOKUMS, Rooms._199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT]),
+    (Battlefields.Volcano, [Rooms._355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, Rooms._366_VOLCANO_AREA_13_WSAVE_POINT,
+                            Rooms._367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP, Rooms._384_VOLCANO_AREA_05, Rooms._385_VOLCANO_AREA_06]),
+    (Battlefields.KeroSewers, [Rooms._059_KERO_SEWERS_AREA_05_SUPER_STAR_ROOM_WFOUR_RAT_FUNKS, Rooms._060_KERO_SEWERS_AREA_04_LARGE_ROOM_WPANDORITE_AND_HIDING_RAT_FUNKS,
+                               Rooms._125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, Rooms._128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, Rooms._301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS]),
+    (Battlefields.NimbusCastle, [Rooms._111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE, Rooms._500_NIMBUS_CASTLE_AREA_04_____DUMMY, Rooms._113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, Rooms._114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
+                                 Rooms._498_NIMBUS_CASTLE_AREA_10_____DUMMY, Rooms._118_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_DURING_VALENTINA, Rooms._121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, Rooms._410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE, Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA]),
     (Battlefields.Valentina, [Rooms._344_NIMBUS_LAND_ITEM_SHOP]),
-    (Battlefields.Underground, [Rooms._262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, Rooms._263_LANDS_END_UNDERGROUND_AREA_01, Rooms._270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, Rooms._280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC, Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, Rooms._288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, Rooms._401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS, Rooms._234_FOREST_MAZE_SECRET, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]),
-    (Battlefields.Plateau, [Rooms._033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT, Rooms._141_LANDS_END_AREA_04_ROTATING_FLOWERS]),
-    (Battlefields.Sea, [Rooms._132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, Rooms._133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS, Rooms._134_SEA_AREA_03_SUPER_STAR_ROOM]),
-    (Battlefields.BeanValley, [Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA, Rooms._252_BEAN_VALLEY_MAIN_AREA]),
-    (Battlefields.BelomeTemple, [Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM, Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, Rooms._425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]),
-    (Battlefields.Factory, [Rooms._237_SMITHY_FACTORY_AREA_05_WSAVE_POINT, Rooms._239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER, Rooms._434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS, Rooms._443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, Rooms._475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS, ]),
-    (Battlefields.BeanValleyUnderground, [Rooms._334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE, Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, Rooms._348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT, Rooms._349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT])
+    (Battlefields.Underground, [Rooms._262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, Rooms._263_LANDS_END_UNDERGROUND_AREA_01, Rooms._270_LANDS_END_SECRET_UNDERGROUND_AREA_01_LEADS_TO_KERO_SEWERS, Rooms._280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC,
+                                Rooms._285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, Rooms._288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS, Rooms._401_LANDS_END_SECRET_UNDERGROUND_AREA_02_LEADS_TO_KERO_SEWERS, Rooms._234_FOREST_MAZE_SECRET, Rooms._242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS]),
+    (Battlefields.Plateau, [Rooms._033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT,
+                            Rooms._141_LANDS_END_AREA_04_ROTATING_FLOWERS]),
+    (Battlefields.Sea, [Rooms._132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT,
+                        Rooms._133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS, Rooms._134_SEA_AREA_03_SUPER_STAR_ROOM]),
+    (Battlefields.BeanValley, [
+     Rooms._251_BEAN_VALLEY_PIRANHA_PIPE_AREA, Rooms._252_BEAN_VALLEY_MAIN_AREA]),
+    (Battlefields.BelomeTemple, [Rooms._420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM,
+                                 Rooms._421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, Rooms._425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM]),
+    (Battlefields.Factory, [Rooms._237_SMITHY_FACTORY_AREA_05_WSAVE_POINT, Rooms._239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER, Rooms._434_SMITHY_FACTORY_AREA_09_FALLING_AXEM_REDS_ON_CONVEYOR_BELTS,
+                            Rooms._443_SMITHY_FACTORY_AREA_16_SMALL_ROOM_WTWO_TREASURES_AFTER_FALLING_YARIDOVICH_ROOM, Rooms._475_SMITHY_FACTORY_AREA_12_LOTS_OF_CONSECUTIVE_CONVEYOR_BELTS_AND_LILXXBOOS, ]),
+    (Battlefields.BeanValleyUnderground, [Rooms._334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE, Rooms._335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM,
+                                          Rooms._348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT, Rooms._349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT])
 ]
 
 
@@ -254,7 +283,6 @@ class HenchmanType(Enum):
 
 
 class SpriteSize(Enum):
-    Statue = auto()
     Small = auto()
     Large = auto()
     Attack = auto()
@@ -269,15 +297,13 @@ class Henchman:
     model_id = None
     sprite_offset = 0
     sequence = None
-    invert_directions = False
 
 
 class Boss:
     name = ""
     pack_number = None
     identifier = None
-    statue_model = None
-    statue_palette = []
+    statue = None
     small_model = None
     big_model = None
     attack_model = None
@@ -312,6 +338,7 @@ class SpriteAnimation:
 
 
 class SpriteAnimationCollection:
+    recoil = None
     bandits_way_distracted = None
     mines_punch = None
     tower_bullet = None
@@ -329,7 +356,8 @@ class SpriteAnimationCollection:
     factory_pierce = None
     endgame_challenge = None
 
-    def __init__(self, bandits_way_distracted=None, mines_punch=None, tower_bullet=None, chapel_laugh=None, kitchen_prep=None, ship_beckon=None, ship_chair=None, dojo_challenge=None, statue_intro=None, statue_peck=None, statue_flustered=None, keep_challenge=None, keep_summon=None, chandelier_challenge=None, factory_pierce=None, endgame_challenge=None):
+    def __init__(self, recoil=None, bandits_way_distracted=None, mines_punch=None, tower_bullet=None, chapel_laugh=None, kitchen_prep=None, ship_beckon=None, ship_chair=None, dojo_challenge=None, statue_intro=None, statue_peck=None, statue_flustered=None, keep_challenge=None, keep_summon=None, chandelier_challenge=None, factory_pierce=None, endgame_challenge=None):
+        self.recoil = recoil
         self.bandits_way_distracted = bandits_way_distracted
         self.mines_punch = mines_punch
         self.tower_bullet = tower_bullet
@@ -348,60 +376,54 @@ class SpriteAnimationCollection:
         self.endgame_challenge = endgame_challenge
 
 
-class ModelDetails:
-    model_id = None
-    model_details = None
-    sequence = 0
+class StatueDetails:
+    reference_model = 63
+    palette = []
     mold = 0
-    sprite_offset = 0
-    invert_directions = False
-    sequence_type = SequenceType.Sequence
     horizontal_pixel_shift = 0
     vertical_pixel_shift = 0
     north_facing_horizontal_pixel_shift = 0
     north_facing_vertical_pixel_shift = 0
-    animations = SpriteAnimationCollection()
-    directional_capability = None
 
-    def __init__(self, model_id, model_details, width, height, sequence, mold, sprite_offset, invert_directions, sequence_type, horizontal_pixel_shift, vertical_pixel_shift, north_facing_horizontal_pixel_shift, north_facing_vertical_pixel_shift, animations):
-        self.model_id = model_id
-        self.model_details = model_details
-        self.width = width
-        self.height = height
-        self.sequence = sequence
+    def __init__(self, reference_model, palette, mold=0, horizontal_pixel_shift=0, vertical_pixel_shift=0, north_facing_horizontal_pixel_shift=0, north_facing_vertical_pixel_shift=0):
+        self.reference_model = reference_model
+        self.palette = palette
         self.mold = mold
-        self.sprite_offset = sprite_offset
-        self.invert_directions = invert_directions
-        self.sequence_type = sequence_type
         self.horizontal_pixel_shift = horizontal_pixel_shift
         self.vertical_pixel_shift = vertical_pixel_shift
         self.north_facing_horizontal_pixel_shift = north_facing_horizontal_pixel_shift
         self.north_facing_vertical_pixel_shift = north_facing_vertical_pixel_shift
+
+
+class ModelDetails:
+    cloneable_all_directions = None
+    cloneable_south_only = None
+    uncloneable_all_directions = None
+    uncloneable_south_only = None
+    sequence = 0
+    mold = 0
+    sequence_type = SequenceType.Sequence
+    animations = SpriteAnimationCollection()
+
+    def __init__(self, cloneable_all_directions, cloneable_south_only, uncloneable_all_directions, uncloneable_south_only, sequence=0, mold=0, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
+        self.cloneable_all_directions = cloneable_all_directions
+        self.cloneable_south_only = cloneable_south_only
+        self.uncloneable_all_directions = uncloneable_all_directions
+        self.uncloneable_south_only = uncloneable_south_only
+        self.sequence = sequence
+        self.mold = mold
+        self.sequence_type = sequence_type
         self.animations = animations
 
 
-class StatueModelDetails(ModelDetails):
-    def __init__(self, model_id, width=0, height=0, mold=0, sprite_offset=0, horizontal_pixel_shift=0, vertical_pixel_shift=0, north_facing_horizontal_pixel_shift=0, north_facing_vertical_pixel_shift=0):
-        super().__init__(model_id, None, 0, width, height, mold, sprite_offset, False,
-                         SequenceType.Mold, horizontal_pixel_shift, vertical_pixel_shift, north_facing_horizontal_pixel_shift, north_facing_vertical_pixel_shift, None)
-
-
 class SmallModelDetails(ModelDetails):
-    def __init__(self, model_id, width=0, height=0, sequence=0, mold=0, sprite_offset=0, invert_directions=False, sequence_type=SequenceType.Sequence, animations=None):
-        super().__init__(model_id, None, width, height, sequence, mold, sprite_offset,
-                         invert_directions, sequence_type, 0, 0, 0, 0, animations)
+    pass
 
 
 class BigModelDetails(ModelDetails):
-    def __init__(self, model_details, width=0, height=0, sequence=0, mold=0, sequence_type=SequenceType.Sequence, animations=None):
-        super().__init__(None, model_details, width, height, sequence, mold,
-                         0, None, sequence_type, 0, 0, 0, 0, animations)
-
-
-class AttackModelDetails(ModelDetails):
-    def __init__(self, model_details, width=0, height=0, sequence=0, mold=0, sequence_type=SequenceType.Sequence, animations=None):
-        super().__init__(None, model_details, width, height, sequence, mold,
-                         0, None, sequence_type, 0, 0, 0, 0, animations)
+    def __init__(self, uncloneable_all_directions, uncloneable_south_only, sequence=0, mold=0, sequence_type=SequenceType.Sequence, animations=SpriteAnimationCollection()):
+        super().__init__(None, None, uncloneable_all_directions,
+                         uncloneable_south_only, sequence, mold, sequence_type, animations)
 
 
 class ModelFill:
@@ -421,8 +443,10 @@ class ModelFill:
     sequence_setter = None
     battlefield = None
     can_run_away = False
+    prefer_uncloneable = False
+    prefer_south_only = False
 
-    def __init__(self, fill_type, room_id, npc_id, event_id, occupant, preferred_size, minigames_only, repeatable_allowed, remove_if_empty, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None, can_run_away=False):
+    def __init__(self, fill_type, room_id, npc_id, event_id, occupant, preferred_size, minigames_only, repeatable_allowed, remove_if_empty, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None, can_run_away=False, prefer_uncloneable=False, prefer_south_only=False):
         self.fill_type = fill_type
         self.room_id = room_id
         self.npc_id = npc_id
@@ -438,24 +462,37 @@ class ModelFill:
         self.sequence_setter = sequence_setter
         self.battlefield = battlefield
         self.can_run_away = can_run_away
+        self.prefer_uncloneable = prefer_uncloneable
+        self.prefer_south_only = prefer_south_only
+
+
+class StatueFill:
+    room_id = None
+    npc_id = None
+    sequence_setter = None
+
+    def __init__(self, room_id, npc_id, sequence_setter):
+        self.room_id = room_id
+        self.npc_id = npc_id
+        self.sequence_setter = sequence_setter
 
 
 class BossModelFill(ModelFill):
-    def __init__(self, room_id, npc_id, occupant, size, minigames_only, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None):
+    def __init__(self, room_id, npc_id, occupant, size, minigames_only, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, prefer_uncloneable=False, prefer_south_only=False):
         super().__init__(HenchmanType.Boss, room_id, npc_id, None, occupant, size, minigames_only,
-                         False, False, dialogs, target_scripts, target_action_scripts, sequence_setter, None)
+                         False, False, dialogs, target_scripts, target_action_scripts, sequence_setter, None, prefer_uncloneable, prefer_south_only)
 
 
 class UniqueHenchmanFill(ModelFill):
-    def __init__(self, room_id, npc_id, occupant, minigames_only, repeatable_allowed, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None, can_run_away=False):
+    def __init__(self, room_id, npc_id, occupant, minigames_only, repeatable_allowed, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None, can_run_away=False, prefer_uncloneable=False, prefer_south_only=False):
         super().__init__(fill_type, room_id, npc_id, event_id, occupant, SpriteSize.Small, minigames_only,
-                         repeatable_allowed, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield, can_run_away)
+                         repeatable_allowed, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield, can_run_away, prefer_uncloneable, prefer_south_only)
 
 
 class RepeatableHenchmanFill(ModelFill):
-    def __init__(self, room_id, npc_id, occupant, minigames_only, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None, can_run_away=False):
+    def __init__(self, room_id, npc_id, occupant, minigames_only, remove_if_empty, fill_type, event_id=None, dialogs=[], target_scripts=[], target_action_scripts=[], sequence_setter=None, battlefield=None, can_run_away=False, prefer_uncloneable=False, prefer_south_only=False):
         super().__init__(fill_type, room_id, npc_id, event_id, occupant, SpriteSize.Small, minigames_only,
-                         True, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield, can_run_away)
+                         True, remove_if_empty, dialogs, target_scripts, target_action_scripts, sequence_setter, battlefield, can_run_away, prefer_uncloneable, prefer_south_only)
 
 
 class StarLocation:
@@ -519,6 +556,7 @@ class BossLocation:
     boss_locations = []
     unique_henchmen = []
     repeatable_henchmen = []
+    statue_locations = []
     dialogs_to_replace = []
 
     def __init__(self, world):
@@ -636,32 +674,10 @@ class HammerBroBoss(Boss):
     name = "Hammer Bro"
     pack_number = 183
     eye_height = 6
-    statue_palette = ["E0C000", "482818", "C08020", "906010", "F8E870", "F8E870", "F8E870", "F8F8A0", "F8F8A0", "F8F8F8", "F8F8F8", "F8E870", "F8F8A0", "683808", "0"]
-    small_model = SmallModelDetails(488)
-    statue_model = StatueModelDetails(488)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._283_HAMMER_BRO,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "y_pixel_shift": 1,
-        "acute_axis": 8,
-        "obtuse_axis": 7,
-        "height": 19,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 40, 45, animations=SpriteAnimationCollection(
+    small_model = SmallModelDetails(None, 512, None, 488)
+    statue = StatueDetails(488, ["E0C000", "482818", "C08020", "906010", "F8E870", "F8E870",
+                                 "F8E870", "F8F8A0", "F8F8A0", "F8F8F8", "F8F8F8", "F8E870", "F8F8A0", "683808", "0"])
+    big_model = BigModelDetails(None, 283, animations=SpriteAnimationCollection(
         mines_punch=hammer_bro_bop,
         statue_intro=hammer_bro_taunt,
         statue_peck=hammer_bro_bop_fast,
@@ -723,10 +739,11 @@ class Croco1Boss(Boss):
     name = "Croco"
     eye_height = 13
     pack_number = 163
-    statue_palette = ["F8E870", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "C08020", "C08020", "E0C000", "906010", "683808", "784818", "482818", "906010", "301830"]
-    statue_model = StatueModelDetails(
-        48,  width=32, height=32, horizontal_pixel_shift=-3)
-    small_model = SmallModelDetails(48, animations=SpriteAnimationCollection(
+
+    statue = StatueDetails(48, ["F8E870", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "C08020", "C08020",
+                                "E0C000", "906010", "683808", "784818", "482818", "906010", "301830"], horizontal_pixel_shift=-3)
+    small_model = SmallModelDetails(48, 513, 42, 514, animations=SpriteAnimationCollection(
+        recoil=croco_recoil,
         bandits_way_distracted=croco_bag_loop,
         mines_punch=croco_bag_hit,
         chapel_laugh=croco_bag_loop,
@@ -736,7 +753,7 @@ class Croco1Boss(Boss):
         keep_summon=croco_bag_hit,
         chandelier_challenge=croco_bag_summon,
         endgame_challenge=croco_bag_summon
-    ), width=32, height=32)  # model id could be 42, 110, 367
+    ))
     dialog_replacements = [
         (49, '''\n CROCO: Get the heck outta here![await]'''),
         (1660,
@@ -779,44 +796,45 @@ class Croco1Boss(Boss):
 
 shyster_taunt = SpriteAnimation(
     sequence_id=4, contact_frame=56, total_duration=56)
-shyster_fast = SpriteAnimation(sequence_id=4, contact_frame=28, total_duration=28, speed=SequenceSpeeds.FAST)
+shyster_fast = SpriteAnimation(
+    sequence_id=4, contact_frame=28, total_duration=28, speed=SequenceSpeeds.FAST)
 shyster_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 
 class MackShyster1(Henchman):
     pack_number = 194
-    model = SmallModelDetails(414, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
         kitchen_prep=shyster_taunt,
         factory_pierce=shyster_fast
-    ), width=24, height=32)
+    ))
 
 
 class MackShyster2(Henchman):
     pack_number = 195
-    model = SmallModelDetails(414, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
         kitchen_prep=shyster_taunt,
         factory_pierce=shyster_fast
-    ), width=24, height=32)
+    ))
 
 
 class DefaultShyster1(Henchman):
     pack_number = 10
-    model = SmallModelDetails(414, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
         kitchen_prep=shyster_taunt,
         factory_pierce=shyster_fast
-    ), width=24, height=32)
+    ))
 
 
 class DefaultShyster2(Henchman):
     pack_number = 11
-    model = SmallModelDetails(414, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
         kitchen_prep=shyster_taunt,
         factory_pierce=shyster_fast
-    ), width=24, height=32)
+    ))
 
 
 mack_hit = SpriteAnimation(sequence_id=4, contact_frame=22, total_duration=28)
@@ -829,8 +847,10 @@ class MackBoss(Boss):
     name = "Mack"
     pack_number = 179
     eye_height = 19
-
-    small_model = SmallModelDetails(414, animations=SpriteAnimationCollection(
+    statue = StatueDetails(414, ["F8E870", "D0A000", "F8E870", "906010", "906010", "D0A000",
+                                 "C08020", "E0C000", "683808", "301830", "C08020", "301830", "906010", "482818", "181818"])
+    small_model = SmallModelDetails(414, 515, 516, 517, animations=SpriteAnimationCollection(
+        recoil=shyster_recoil,
         mines_punch=shyster_taunt,
         ship_beckon=shyster_taunt,
         dojo_challenge=shyster_taunt,
@@ -840,58 +860,9 @@ class MackBoss(Boss):
         keep_summon=shyster_taunt,
         chandelier_challenge=shyster_taunt,
         endgame_challenge=shyster_taunt
-    ), width=24, height=32)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._480_MACK,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 1,
-        "acute_axis": 13,
-        "obtuse_axis": 13,
-        "height": 23,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 43, 57, animations=SpriteAnimationCollection(
-        mines_punch=mack_hit,
-        statue_peck=mack_hit_fast,
-        chandelier_challenge=mack_challenge,
-        endgame_challenge=mack_hit
-    ), sequence=7)
-    attack_model = AttackModelDetails({
-        "sprite": SpriteName._480_MACK,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 1,
-        "acute_axis": 13,
-        "obtuse_axis": 13,
-        "height": 23,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 43, 57, animations=SpriteAnimationCollection(
+    ))
+    big_model = BigModelDetails(None, 480, sequence=7)
+    attack_model = BigModelDetails(None, 480, animations=SpriteAnimationCollection(
         mines_punch=mack_hit,
         statue_peck=mack_hit_fast,
         statue_flustered=mack_challenge,
@@ -980,31 +951,10 @@ class PandoriteBoss(Boss):
     name = "Pandorite"
     eye_height = 4
     pack_number = 156
-    statue_palette = ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870", "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"]
-    small_model = SmallModelDetails(463)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._279_PANDORITE,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "y_pixel_shift": 3,
-        "acute_axis": 7,
-        "obtuse_axis": 7,
-        "height": 12,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 1,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 36, 40, animations=SpriteAnimationCollection(
+    statue = StatueDetails(463, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
+                                 "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
+    small_model = SmallModelDetails(None, 463, None, 518)
+    big_model = BigModelDetails(None, 519, animations=SpriteAnimationCollection(
         mines_punch=pandorite_attack,
         statue_intro=pandorite_shake,
         statue_peck=pandorite_short,
@@ -1068,35 +1018,14 @@ class Belome1Boss(Boss):
     name = "Belome"
     eye_height = 14
     pack_number = 168
-    small_model = SmallModelDetails(385, width=32, height=32, invert_directions=True, animations=SpriteAnimationCollection(
+    statue = StatueDetails(385, ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870",
+                                 "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"])
+    small_model = SmallModelDetails(385, 520, 521, 522, animations=SpriteAnimationCollection(
         bandits_way_distracted=scarecrow_wiggle,
         chapel_laugh=scarecrow_wiggle,
         ship_beckon=scarecrow_wiggle
     ))
-    statue_palette = ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870", "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"]
-    big_model = BigModelDetails({
-        "sprite": SpriteName._455_BELOME_1ST_TIME,
-        "priority_0": True,
-        "priority_1": True,
-        "priority_2": False,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 2,
-        "acute_axis": 10,
-        "obtuse_axis": 10,
-        "height": 18,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 5,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 49, 54, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 371, animations=SpriteAnimationCollection(
         mines_punch=belome_attack,
         statue_intro=belome_wiggle,
         statue_flustered=belome_recoil,
@@ -1150,7 +1079,7 @@ class Belome1Boss(Boss):
 
 class BowyerAero(Henchman):
     pack_number = 205
-    model = SmallModelDetails(234, width=24, height=32)
+    model = SmallModelDetails(None, 234, None, 523)
 
 
 bowyer_hit = SpriteAnimation(
@@ -1163,55 +1092,11 @@ class BowyerBoss(Boss):
     name = "Bowyer"
     eye_height = 16
     pack_number = 181
-    statue_model = StatueModelDetails(234, width=24, height=32)
-    small_model = SmallModelDetails(234, width=24, height=32)
-    statue_palette = ["F8F8A0", "E0C000", "E0C000", "C08020", "C08020", "906010", "F8E870", "0", "C08020", "E0C000", "C08020", "0", "683808", "482818", "482818"]
-    big_model = BigModelDetails({
-        "sprite": SpriteName._241_BOWYER,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": False,
-        "show_shadow": False,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "acute_axis": 6,
-        "obtuse_axis": 8,
-        "height": 16,
-        "y_pixel_shift": 1,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 0,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    })
-    attack_model = AttackModelDetails({
-        "sprite": SpriteName._486_BOWYER,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": False,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "acute_axis": 6,
-        "obtuse_axis": 8,
-        "height": 16,
-        "y_pixel_shift": 1,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 47, 52, animations=SpriteAnimationCollection(
+    statue = StatueDetails(234, ["F8F8A0", "E0C000", "E0C000", "C08020", "C08020", "906010",
+                                 "F8E870", "0", "C08020", "E0C000", "C08020", "0", "683808", "482818", "482818"])
+    small_model = SmallModelDetails(None, 234, None, 523)
+    big_model = BigModelDetails(None, 241)
+    attack_model = BigModelDetails(None, 486, animations=SpriteAnimationCollection(
         mines_punch=bowyer_hit,
         statue_intro=bowyer_taunt,
         statue_flustered=bowyer_recoil,
@@ -1299,13 +1184,13 @@ crook_scratch = SpriteAnimation(sequence_id=4, total_duration=20)
 
 class Croco2Crook(Henchman):
     pack_number = 141
-    model = SmallModelDetails(261, width=32, height=24, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(261, 527, 528, 529, animations=SpriteAnimationCollection(
         tower_bullet=crook_scratch, kitchen_prep=crook_scratch, factory_pierce=crook_scratch))
 
 
 class DefaultCrook(Henchman):
     pack_number = 199
-    model = SmallModelDetails(261, width=32, height=24, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(261, 527, 528, 529, animations=SpriteAnimationCollection(
         tower_bullet=crook_scratch, kitchen_prep=crook_scratch, factory_pierce=crook_scratch))
 
 
@@ -1313,12 +1198,10 @@ class Croco2Boss(Boss):
     name = "Croco"
     eye_height = 13
     pack_number = 164
-    alt_palette = []
-    statue_palette = ["F8E870", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "C08020", "C08020", "E0C000", "906010", "683808", "784818", "482818", "906010", "301830"]
-    alt_palette = ["B8D0C8", "88C090", "A090F8", "F8F8F8", "788080", "A070F8", "9048D0", "300000", "601000", "7030A8", "482880", "480800", "300060", "281000", "000000"]
-    statue_model = StatueModelDetails(
-        147,  width=32, height=32, horizontal_pixel_shift=-3)
-    small_model = SmallModelDetails(147, animations=SpriteAnimationCollection(
+    statue = StatueDetails(147, ["F8E870", "C08020", "F8E870", "F8F8A0", "906010", "E0C000", "C08020", "C08020",
+                                 "E0C000", "906010", "683808", "784818", "482818", "906010", "301830"], horizontal_pixel_shift=-3)
+    small_model = SmallModelDetails(147, 524, 525, 526, animations=SpriteAnimationCollection(
+        recoil=croco_recoil,
         bandits_way_distracted=croco_bag_loop,
         mines_punch=croco_bag_hit,
         chapel_laugh=croco_bag_loop,
@@ -1328,7 +1211,9 @@ class Croco2Boss(Boss):
         keep_summon=croco_bag_hit,
         chandelier_challenge=croco_bag_summon,
         endgame_challenge=croco_bag_summon
-    ), width=32, height=32)  # model id could be 42, 110, 367
+    ))
+    alt_palette = ["B8D0C8", "88C090", "A090F8", "F8F8F8", "788080", "A070F8", "9048D0",
+                   "300000", "601000", "7030A8", "482880", "480800", "300060", "281000", "000000"]
     unique_henchmen = [Croco2Crook, Croco2Crook, Croco2Crook]
     repeatable_henchmen = [Croco2Crook]
     dialog_replacements = [
@@ -1354,7 +1239,7 @@ class Croco2Boss(Boss):
          '''FLUNKIE: Doesn't this cake\n look just like Croco?[await]'''),
         (2062, '''FLUNKIE: We've gotten REAL\n good with fondant![await]'''),
         (2560,
-         '''FLUNKIE: Croco's busy! Scram![await][page]\n  ...Not leaving, huh?\n[delay] Alright buddy, you asked for it![await]'''),
+         '''FLUNKIE: Croco's busy! Scram![await]\n[delay_60] ...Not leaving, huh?\n[delay] Alright buddy, you asked for it![await]'''),
         (2572, '''FLUNKIE: Where d'ya think YOU'RE\n going?![await]'''),
         (2572, '''SNIFIT 2: Please refrain\n from bothering Croco.[await]'''),
         (2831, '''CROCO: Whaddya doin' hangin\n 'round here?[await]'''),
@@ -1402,23 +1287,24 @@ class Croco2Boss(Boss):
 
 # loop a few times since no duration
 bomb_tick = SpriteAnimation(sequence_id=4)
+bomb_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class PunchinelloBobomb(Henchman):
     pack_number = 1
-    model = SmallModelDetails(281, width=32, height=24, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
         tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 281
 
 
 class DefaultMicrobomb(Henchman):
     pack_number = None
-    model = SmallModelDetails(37, width=16, height=16, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
         tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 440
 
 
 class DefaultBobomb(Henchman):
     pack_number = 36
-    model = SmallModelDetails(281, width=32, height=24, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
         tower_bullet=bomb_tick, kitchen_prep=bomb_tick, factory_pierce=bomb_tick))  # maybe 281
 
 
@@ -1435,7 +1321,10 @@ class PunchinelloBoss(Boss):
     name = "Punchinello"
     pack_number = 140
     eye_height = 8
-    small_model = SmallModelDetails(281, animations=SpriteAnimationCollection(
+    statue = StatueDetails(281, ["F8F8A0", "000000", "000000", "F8E870", "906010", "F8E870",
+                                 "E0C000", "D0A000", "E0C000", "C08020", "C08020", "482818", "301830", "301830", "181818"])
+    small_model = SmallModelDetails(281, 530, 531, 532, animations=SpriteAnimationCollection(
+        recoil=bomb_recoil,
         bandits_way_distracted=bomb_tick,
         chapel_laugh=bomb_tick,
         ship_beckon=bomb_tick,
@@ -1446,30 +1335,8 @@ class PunchinelloBoss(Boss):
         keep_summon=bomb_tick,
         chandelier_challenge=bomb_tick,
         endgame_challenge=bomb_tick
-    ), width=24, height=32)  # maybe 281
-    big_model = BigModelDetails({
-        "sprite": SpriteName._464_PUNCHINELLO,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 1,
-        "acute_axis": 11,
-        "obtuse_axis": 8,
-        "height": 19,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 2,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 45, 45, animations=SpriteAnimationCollection(
+    ))
+    big_model = BigModelDetails(None, 464, animations=SpriteAnimationCollection(
         mines_punch=punchinello_hit,
         statue_intro=punchinello_jump,
         statue_peck=punchinello_hit_fast,
@@ -1557,52 +1424,57 @@ class PunchinelloBoss(Boss):
 snifit_shoot = SpriteAnimation(sequence_id=4, total_duration=60)
 snifit_taunt = SpriteAnimation(
     sequence_id=5, contact_frame=30, total_duration=46)
+snifit_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class BoosterSnifit(Henchman):
     pack_number = 0
-    model = SmallModelDetails(36, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(36, 534, 505, 533, animations=SpriteAnimationCollection(
         tower_bullet=snifit_shoot,
         kitchen_prep=snifit_taunt,
         factory_pierce=snifit_taunt
-    ), width=24, height=32)  # maybe 504 or 505
+    ))  # maybe 504 or 505
 
 
 # Remove sequences from zoom animation if not snifit
 class BoosterHillSnifit(Henchman):
     pack_number = None
-    model = SmallModelDetails(38, width=24, height=32)  # maybe 224
+    model = SmallModelDetails(38, None, None, None)  # maybe 224
 
 
 class DefaultSnifit(Henchman):
     pack_number = 142
-    model = SmallModelDetails(36, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(36, 534, 505, 533, animations=SpriteAnimationCollection(
         tower_bullet=snifit_shoot,
         kitchen_prep=snifit_taunt,
         factory_pierce=snifit_taunt
-    ), width=24, height=32)  # maybe 504 or 505
+    ))  # maybe 504 or 505
 
 
 class BoosterApprentice(Henchman):
     pack_number = 32
-    model = SmallModelDetails(384, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(384, 535, 536, 537, animations=SpriteAnimationCollection(
         tower_bullet=snifit_shoot,
         kitchen_prep=snifit_taunt,
         factory_pierce=snifit_taunt
-    ), width=24, height=32)  # maybe 282
+    ))  # maybe 282
 
 
 booster_laugh = SpriteAnimation(sequence_id=2)
 booster_punch = SpriteAnimation(
     sequence_id=3, contact_frame=74, total_duration=92, new_sprite_id=502)  # maybe 503
 booster_jump = SpriteAnimation(sequence_id=4)
+booster_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 
 class BoosterBoss(Boss):
     name = "Booster"
     eye_height = 17
     pack_number = 161
-    small_model = SmallModelDetails(50, animations=SpriteAnimationCollection(
+    statue = StatueDetails(50, ["F8F8A0", "F8E870", "F8E870", "E0C000", "C08020", "906010",
+                                "E0C000", "906010", "906010", "E0C000", "C08020", "906010", "683808", "482818", "301830"])
+    small_model = SmallModelDetails(50, 538, 539, 540, animations=SpriteAnimationCollection(
+        recoil=booster_recoil,
         bandits_way_distracted=booster_laugh,
         mines_punch=booster_punch,
         chapel_laugh=booster_laugh,
@@ -1615,7 +1487,7 @@ class BoosterBoss(Boss):
         keep_summon=booster_laugh,
         chandelier_challenge=booster_punch,
         endgame_challenge=booster_punch
-    ), width=24, height=32)
+    ))
     unique_henchmen = [BoosterSnifit, BoosterSnifit, BoosterSnifit]
     repeatable_henchmen = [BoosterApprentice]
     dialog_replacements = [
@@ -1686,9 +1558,9 @@ class BoosterBoss(Boss):
 knife_guy_taunt = SpriteAnimation(sequence_id=4)
 
 
-class GrateGuyKnifeGuy(Henchman):  # What to do with this? Can't have a pack
+class GrateGuyKnifeGuy(Henchman):
     pack_number = None
-    model = SmallModelDetails(134, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(None, None, None, 134, animations=SpriteAnimationCollection(
         kitchen_prep=knife_guy_taunt
     ), sequence=2)
 
@@ -1705,33 +1577,10 @@ class GrateGuyBoss(Boss):
     name = "Grate Guy"
     pack_number = 177
     eye_height = 16
-    statue_palette = ["F8F8A0", "E0C000", "E0C000", "906010", "F8E870", "E0C000", "D09020", "784818", "482818", "F8E870", "E0C000", "D09020", "482818", "301830", "181818"]
-    statue_model = StatueModelDetails(
-        452, width=32, height=32, horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-2)
-    small_model = SmallModelDetails(452, width=32, height=32)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._449_GRATE_GUY,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": False,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "y_pixel_shift": 1,
-        "acute_axis": 11,
-        "obtuse_axis": 11,
-        "height": 13,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=41, height=47, animations=SpriteAnimationCollection(
+    statue = StatueDetails(452, ["F8F8A0", "E0C000", "E0C000", "906010", "F8E870", "E0C000", "D09020", "784818", "482818", "F8E870",
+                                 "E0C000", "D09020", "482818", "301830", "181818"], horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-2)
+    small_model = SmallModelDetails(452, 541, 542, 543)
+    big_model = BigModelDetails(None, 449, animations=SpriteAnimationCollection(
         mines_punch=grate_guy_hit,
         statue_intro=grate_guy_taunt,
         statue_peck=grate_guy_hit_fast,
@@ -1751,7 +1600,7 @@ class GrateGuyBoss(Boss):
         (1778,
          '''GRATE GUY: Yikes, you're pretty\n tough! I need some time to recover.[await]'''),
         (1780,
-         '''GRATE GUY: It's so boring\n around here... Hey Mario, wanna\n play "Look the other way" with me?[await][page]\n Just kidding![await]'''),
+         '''GRATE GUY: It's so boring\n around here... Hey Mario, wanna\n play "Look the other way" with me?[await][page]\n Hah! [delay_30]Just kidding![await]'''),
         (1781,
          '''GRATE GUY: Sorry, Mario, but\n jumping on my head isn't going to\n teach you Blizzard.[await]'''),
         (1784,
@@ -1779,25 +1628,26 @@ class GrateGuyBoss(Boss):
 
 
 torte_taunt = SpriteAnimation(sequence_id=3, total_duration=40)
-torte_taunt_fast = SpriteAnimation(sequence_id=3, total_duration=20, speed=SequenceSpeeds.FAST)
+torte_taunt_fast = SpriteAnimation(
+    sequence_id=3, total_duration=20, speed=SequenceSpeeds.FAST)
 
 
 class BundtTorte1(Henchman):
     pack_number = 54
-    model = SmallModelDetails(398, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(398, 545, 397, 544, animations=SpriteAnimationCollection(
         tower_bullet=torte_taunt,
         kitchen_prep=torte_taunt,
         factory_pierce=torte_taunt_fast
-    ), width=24, height=32)  # maybe 397
+    ))
 
 
 class BundtTorte2(Henchman):
     pack_number = 55
-    model = SmallModelDetails(398, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(398, 545, 397, 544, animations=SpriteAnimationCollection(
         tower_bullet=torte_taunt,
         kitchen_prep=torte_taunt,
         factory_pierce=torte_taunt_fast
-    ), width=24, height=32)  # maybe 397
+    ))
 
 
 bundt_recoil = SpriteAnimation(sequence_id=2, total_duration=30)
@@ -1811,33 +1661,10 @@ class BundtBoss(Boss):
     name = "Bundt"
     eye_height = 8
     pack_number = 176
-    statue_model = StatueModelDetails(
-        470, width=32, height=32, horizontal_pixel_shift=-3)
-    statue_palette = ["F8F8A0", "F8E870", "F8E870", "E0C000", "F8F8F8", "D0A000", "C08020", "C08020", "906010", "C08020", "482818", "D09020", "482818", "E0C000", "301830"]
-    small_model = SmallModelDetails(470, width=32, height=32, sequence=8)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._450_BUNDT,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 1,
-        "acute_axis": 13,
-        "obtuse_axis": 13,
-        "height": 23,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=35, height=56, animations=SpriteAnimationCollection(
+    statue = StatueDetails(470, ["F8F8A0", "F8E870", "F8E870", "E0C000", "F8F8F8", "D0A000", "C08020", "C08020",
+                                 "906010", "C08020", "482818", "D09020", "482818", "E0C000", "301830"], horizontal_pixel_shift=-3)
+    small_model = SmallModelDetails(None, 546, None, 470)
+    big_model = BigModelDetails(None, 547, animations=SpriteAnimationCollection(
         mines_punch=bundt_taunt,
         statue_intro=bundt_taunt,
         statue_flustered=bundt_recoil,
@@ -1919,20 +1746,20 @@ tentacle_beckon = SpriteAnimation(sequence_id=1, new_sprite_id=223)
 
 class KingCalamariTinyBloober(Henchman):
     pack_number = 204
-    model = SmallModelDetails(266, width=16, height=16,
+    model = SmallModelDetails(None, 266, None, 548,
                               sequence=8)  # maybe 172 or 173
 
 
 class KingCalamariBloober(Henchman):
     pack_number = 204
-    model = SmallModelDetails(266, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(None, 266, None, 548, animations=SpriteAnimationCollection(
         tower_bullet=squid_hit
-    ), width=24, height=32)  # maybe 172 or 173
+    ))  # maybe 172 or 173
 
 
 class KingCalamariTentacle(Henchman):
     pack_number = None
-    model = SmallModelDetails(497, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(None, None, None, 168, animations=SpriteAnimationCollection(
         ship_beckon=tentacle_beckon
     ))
 
@@ -1942,8 +1769,11 @@ class KingCalamariBoss(Boss):
     pack_number = 167
     eye_height = 10
     forced_background = 35
-    statue_palette = ["F8F8A0", "F8F8A0", "F8E870", "E0C000", "F8F8A0", "F8E870", "E0C000", "D0A000", "C08020", "906010", "784818", "482818", "0", "0", "181818"]
-    small_model = SmallModelDetails(266, width=24, height=32, animations=SpriteAnimationCollection(
+
+    statue = StatueDetails(266, ["F8F8A0", "F8F8A0", "F8E870", "E0C000", "F8F8A0", "F8E870",
+                                 "E0C000", "D0A000", "C08020", "906010", "784818", "482818", "0", "0", "181818"])
+    small_model = SmallModelDetails(None, 266, None, 548, animations=SpriteAnimationCollection(
+        recoil=squid_recoil,
         mines_punch=squid_hit,
         dojo_challenge=squid_hit,
         statue_peck=squid_hit,
@@ -2002,16 +1832,16 @@ class KingCalamariBoss(Boss):
 goombette_hit = SpriteAnimation(
     sequence_id=3, contact_frame=42, total_duration=52)
 goombette_taunt = SpriteAnimation(sequence_id=2, total_duration=12)
-goombette_hit_fast = SpriteAnimation(sequence_id=3, contact_frame=21, total_duration=26, speed=SequenceSpeeds.FAST)
+goombette_hit_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=21, total_duration=26, speed=SequenceSpeeds.FAST)
 
 
 class HidonGoombette(Henchman):
     pack_number = 221
-    model = SmallModelDetails(349, width=16, height=16,
-                              animations=SpriteAnimationCollection(
-                                  tower_bullet=goombette_hit,
-                                  kitchen_prep=goombette_taunt,
-                                  factory_pierce=goombette_hit_fast))  # maybe 172 or 173
+    model = SmallModelDetails(349, 549, 540, 541, animations=SpriteAnimationCollection(
+        tower_bullet=goombette_hit,
+        kitchen_prep=goombette_taunt,
+        factory_pierce=goombette_hit_fast))
 
 
 hidon_attack = SpriteAnimation(
@@ -2025,31 +1855,10 @@ class HidonBoss(Boss):
     name = "Hidon"
     eye_height = 4
     pack_number = 157
-    small_model = SmallModelDetails(463)  # could be 196 or 111
-    statue_palette = ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870", "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"]
-    big_model = BigModelDetails({
-        "sprite": SpriteName._343_HIDON,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "y_pixel_shift": 3,
-        "acute_axis": 7,
-        "obtuse_axis": 7,
-        "height": 12,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 1,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 36, 40, animations=SpriteAnimationCollection(
+    statue = StatueDetails(463, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
+                                 "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
+    small_model = SmallModelDetails(None, 463, None, 518)
+    big_model = BigModelDetails(None, 343, animations=SpriteAnimationCollection(
         mines_punch=hidon_attack,
         statue_flustered=pandorite_recoil,
         statue_peck=hidon_attack_fast,
@@ -2142,7 +1951,7 @@ bandana_taunt = SpriteAnimation(
 
 class DefaultBandanaRed1(Henchman):
     pack_number = 68
-    model = SmallModelDetails(267, width=24, height=32,
+    model = SmallModelDetails(267, 552, 553, 554,
                               animations=SpriteAnimationCollection(
                                   tower_bullet=bandana_taunt,
                                   kitchen_prep=bandana_attack,
@@ -2151,7 +1960,7 @@ class DefaultBandanaRed1(Henchman):
 
 class DefaultBandanaRed2(Henchman):
     pack_number = 69
-    model = SmallModelDetails(267, width=24, height=32,
+    model = SmallModelDetails(267, 552, 553, 554,
                               animations=SpriteAnimationCollection(
                                   tower_bullet=bandana_taunt,
                                   kitchen_prep=bandana_attack,
@@ -2160,7 +1969,7 @@ class DefaultBandanaRed2(Henchman):
 
 class JohnnyBandanaRed(Henchman):
     pack_number = 71
-    model = SmallModelDetails(267, width=24, height=32,
+    model = SmallModelDetails(267, 552, 553, 554,
                               animations=SpriteAnimationCollection(
                                   tower_bullet=bandana_taunt,
                                   kitchen_prep=bandana_attack,
@@ -2169,7 +1978,7 @@ class JohnnyBandanaRed(Henchman):
 
 class JohnnyBandanaBlue(Henchman):
     pack_number = 70
-    model = SmallModelDetails(331, width=24, height=32,
+    model = SmallModelDetails(331, 555, 556, 557,
                               animations=SpriteAnimationCollection(
                                   tower_bullet=bandana_taunt,
                                   kitchen_prep=bandana_attack,
@@ -2187,8 +1996,9 @@ class JohnnyBoss(Boss):
     name = "Johnny"
     eye_height = 20
     pack_number = 166
-    statue_palette = ["F8F8F8", "F8E870", "E0C000", "C08020", "906010", "F8E870", "C08020", "E0C000", "D09020", "906010", "784818", "E0C000", "906010", "683808", "181818"]
-    small_model = SmallModelDetails(55, animations=SpriteAnimationCollection(
+    statue = StatueDetails(55, ["F8F8F8", "F8E870", "E0C000", "C08020", "906010", "F8E870",
+                                "C08020", "E0C000", "D09020", "906010", "784818", "E0C000", "906010", "683808", "181818"])
+    small_model = SmallModelDetails(55, 559, 52, 558, animations=SpriteAnimationCollection(
         bandits_way_distracted=small_johnny_sit,
         chapel_laugh=small_johnny_sit,
         ship_beckon=small_johnny_sit,
@@ -2197,30 +2007,8 @@ class JohnnyBoss(Boss):
         keep_challenge=small_johnny_sit,
         chandelier_challenge=small_johnny_sit,
         endgame_challenge=small_johnny_sit
-    ), width=32, height=32)  # maybe 52
-    big_model = BigModelDetails({  # does not break shadows
-        "sprite": SpriteName._505_JOHNNY,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 1,
-        "acute_axis": 13,
-        "obtuse_axis": 13,
-        "height": 23,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 45, 45, animations=SpriteAnimationCollection(
+    ))
+    big_model = BigModelDetails(None, 560, animations=SpriteAnimationCollection(
         mines_punch=johnny_hit,
         chandelier_challenge=johnny_taunt,
         endgame_challenge=johnny_taunt
@@ -2288,64 +2076,21 @@ yaridovich_recoil = SpriteAnimation(sequence_id=2, total_duration=16)
 
 class YaridovichHenchman(Henchman):
     pack_number = 153
-    model = SmallModelDetails(39, width=24, height=32)
+    model = SmallModelDetails(39, 561, 562, 563)
 
 
 class YaridovichBoss(Boss):
     name = "Yaridovich"
     eye_height = 10
     pack_number = 180
-    small_model = SmallModelDetails(40, width=24, height=32)
-    statue_palette = ["F8F8A0", "E0C000", "906010", "E0C000", "683808", "482818", "E0C000", "C08020", "482818", "F8E870", "E0C000", "C08020", "906010", "482818", "301830"]
-    big_model = BigModelDetails({
-        "sprite": SpriteName._221_YARIDOVICH_OUT_OF_BATTLE,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "y_pixel_shift": 1,
-        "acute_axis": 11,
-        "obtuse_axis": 11,
-        "height": 15,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 2,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=35, height=74, animations=SpriteAnimationCollection(
+    small_model = SmallModelDetails(40, 564, 565, 566)
+    statue = StatueDetails(40, ["F8F8A0", "E0C000", "906010", "E0C000", "683808", "482818",
+                                "E0C000", "C08020", "482818", "F8E870", "E0C000", "C08020", "906010", "482818", "301830"])
+    big_model = BigModelDetails(None, 221, animations=SpriteAnimationCollection(
         chandelier_challenge=yaridovich_alt_taunt,
         endgame_challenge=yaridovich_alt_taunt
     ))
-    attack_model = BigModelDetails({  # does not break shadows
-        "sprite": SpriteName._482_YARIDOVICH,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 1,
-        "acute_axis": 13,
-        "obtuse_axis": 13,
-        "height": 23,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=56, height=84, animations=SpriteAnimationCollection(
+    attack_model = BigModelDetails(None, 567, animations=SpriteAnimationCollection(
         mines_punch=yaridovich_hit,
         statue_intro=yaridovich_taunt,
         statue_flustered=yaridovich_recoil,
@@ -2357,7 +2102,7 @@ class YaridovichBoss(Boss):
     repeatable_henchmen = [YaridovichHenchman]
     dialog_replacements = [
         (49,
-         '''YARIDOVICH: How could I lose to\n those... Huh? Hey, get lost![await]'''),
+         '''YARIDOVICH: How could I lose to\n those...[delay] Huh? Hey, get lost![await]'''),
         (1660,
          ''' Eee hee hee! So, you've cracked the\n code... Now, it's time for the\n REAL test![await]'''),
         (1694,
@@ -2410,31 +2155,10 @@ class MokuraBoss(Boss):
     name = "Mokura"
     eye_height = 4
     pack_number = 207
-    statue_palette = ["F8F8F8", "F8F8A0", "F8E870", "E0C000", "D09020", "F8F8A0", "784818", "906010", "E0C000", "482818", "D09020", "0", "0", "0", "181818"]
-    small_model = SmallModelDetails(201, width=16, height=16)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._573_MOKURA,
-        "priority_0": True,
-        "priority_1": True,
-        "priority_2": False,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 2,
-        "acute_axis": 10,
-        "obtuse_axis": 10,
-        "height": 18,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 5,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=48, height=38)
+    statue = StatueDetails(414, ["F8F8F8", "F8F8A0", "F8E870", "E0C000", "D09020", "F8F8A0",
+                                 "784818", "906010", "E0C000", "482818", "D09020", "0", "0", "0", "181818"])
+    small_model = SmallModelDetails(568, None, 201, None)
+    big_model = BigModelDetails(None, 569)
     dialog_replacements = [
         (49, '''\n     MOKURA: Uhh... Go away![await]'''),
         (1660, '''\n             Duh, huh, huh...[await]'''),
@@ -2455,7 +2179,8 @@ class MokuraBoss(Boss):
          ''' Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]'''),
         (2061,
          '''CHEF TORTE: Zees cake, ve make\n it look like big cloud! It is...\n masterpiece![await]'''),
-        (2504, '''MOKURA: Uhh... You need [0x7024] more\n item(s)...[await]'''),
+        (2504,
+         '''MOKURA: Uhh... You need [0x7024] more\n item(s)...[await]'''),
         (2560, '''SNIFIT 1: Hello there.[await]\n Mokura's busy right now, so he[1] can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]'''),
         (2572, '''SNIFIT 2: Please refrain\n from bothering Mokura.[await]'''),
         (2831, '''\n       MOKURA: Mwa, ha, ha![await]'''),
@@ -2476,36 +2201,14 @@ class Belome2Boss(Boss):
     name = "Belome"
     pack_number = 169
     eye_height = 14
-    small_model = SmallModelDetails(149, width=32, height=32, invert_directions=True, animations=SpriteAnimationCollection(
+    statue = StatueDetails(149, ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870",
+                                 "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"])
+    small_model = SmallModelDetails(149, 570, 571, 572, animations=SpriteAnimationCollection(
         bandits_way_distracted=scarecrow_wiggle,
         chapel_laugh=scarecrow_wiggle,
         ship_beckon=scarecrow_wiggle
     ))
-    statue_palette = ["E0C000", "F8E870", "E0C000", "906010", "683808", "F8E870", "E0C000", "C08020", "906010", "0", "0", "0", "C08020", "906010", "482818"]
-    alt_palette = ["F8F8F8", "F8C880", "C08848", "A86848", "783830", "505050", "383838", "202828", "181818", "3838E0", "0000D8", "000060", "E0D8D8", "988888", "181818"]
-    big_model = BigModelDetails({
-        "sprite": SpriteName._455_BELOME_1ST_TIME,
-        "priority_0": True,
-        "priority_1": True,
-        "priority_2": False,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 2,
-        "acute_axis": 10,
-        "obtuse_axis": 10,
-        "height": 18,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 5,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 49, 54, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 455, animations=SpriteAnimationCollection(
         mines_punch=belome_attack,
         statue_intro=belome_wiggle,
         statue_peck=belome_attack_fast,
@@ -2513,6 +2216,8 @@ class Belome2Boss(Boss):
         chandelier_challenge=belome_attack,
         endgame_challenge=belome_attack
     ))
+    alt_palette = ["F8F8F8", "F8C880", "C08848", "A86848", "783830", "505050", "383838",
+                   "202828", "181818", "3838E0", "0000D8", "000060", "E0D8D8", "988888", "181818"]
     dialog_replacements = [
         (49, '''\n        BELOME: Good night~![await]'''),
         (1660,
@@ -2568,7 +2273,9 @@ jagger_taunt = SpriteAnimation(
 class JaggerBoss(Boss):
     name = "Jagger"
     pack_number = 189
-    small_model = SmallModelDetails(256, animations=SpriteAnimationCollection(
+    statue = StatueDetails(256, ["F8F8A0", "F8E870", "D09020", "784818", "482818", "D09020", "784818",
+                                 "301830", "482818", "F8E870", "E0C000", "D09020", "784818", "301830", "181818"])
+    small_model = SmallModelDetails(256, 574, 156, 573, animations=SpriteAnimationCollection(
         bandits_way_distracted=jagger_look,
         mines_punch=jagger_punch,
         chapel_laugh=jagger_look,
@@ -2581,8 +2288,7 @@ class JaggerBoss(Boss):
         keep_summon=jagger_punch,
         chandelier_challenge=jagger_punch,
         endgame_challenge=jagger_punch
-    ), width=24, height=32)  # could be 156 or 256, or maybe 206 but prob not
-    statue_palette = ["F8F8A0", "F8E870", "D09020", "784818", "482818", "D09020", "784818", "301830", "482818", "F8E870", "E0C000", "D09020", "784818", "301830", "181818"]
+    ))  # could be 156 or 256, or maybe 206 but prob not
     dialog_replacements = [
         (49,
          '''JAGGER: It'd be fun to fight\n again, but I need a nap.[await]'''),
@@ -2626,14 +2332,18 @@ class JaggerBoss(Boss):
 
 jinx_punch = SpriteAnimation(
     sequence_id=3, contact_frame=10, total_duration=18)
+jinx_recoil = SpriteAnimation(
+    sequence_id=2, total_duration=16)
 
 
 class Jinx1Boss(Boss):
     name = "Jinx"
     pack_number = 178
     eye_height = 4
-    statue_palette = ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818", "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"]
-    small_model = SmallModelDetails(207, animations=SpriteAnimationCollection(
+    statue = StatueDetails(207, ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818",
+                                 "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"])
+    small_model = SmallModelDetails(None, None, 207, 575, animations=SpriteAnimationCollection(
+        recoil=jinx_recoil,
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
         dojo_challenge=jinx_punch,
@@ -2643,7 +2353,7 @@ class Jinx1Boss(Boss):
         keep_summon=jinx_punch,
         chandelier_challenge=jinx_punch,
         endgame_challenge=jinx_punch
-    ), width=16, height=16)  # could be 415 or 416
+    ))
     dialog_replacements = [
         (49,
          '''JINX: Please do not disturb me.\n I am training in here.[await]'''),
@@ -2687,9 +2397,10 @@ class Jinx2Boss(Boss):
     name = "Jinx"
     pack_number = 187
     eye_height = 4
-    statue_palette = ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818", "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"]
-    alt_palette = ["F8F8F8", "E0B068", "985040", "682848", "682848", "C00000", "C00000", "300000", "F8F800", "404040", "181818", "181818", "E0D8D8", "988888", "181818"]
-    small_model = SmallModelDetails(415, animations=SpriteAnimationCollection(
+    statue = StatueDetails(415, ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818",
+                                 "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"])
+    small_model = SmallModelDetails(None, None, 415, 576, animations=SpriteAnimationCollection(
+        recoil=jinx_recoil,
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
         dojo_challenge=jinx_punch,
@@ -2699,7 +2410,9 @@ class Jinx2Boss(Boss):
         keep_summon=jinx_punch,
         chandelier_challenge=jinx_punch,
         endgame_challenge=jinx_punch
-    ), width=16, height=16)  # could be 207 or 416
+    ))
+    alt_palette = ["F8F8F8", "E0B068", "985040", "682848", "682848", "C00000", "C00000",
+                   "300000", "F8F800", "404040", "181818", "181818", "E0D8D8", "988888", "181818"]
     dialog_replacements = [
         (49,
          '''JINX: Please do not disturb me.\n I am training in here.[await]'''),
@@ -2743,9 +2456,12 @@ class Jinx3Boss(Boss):
     name = "Jinx"
     pack_number = 188
     eye_height = 4
-    statue_palette = ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818", "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"]
-    alt_palette = ["F8F8F8", "E0B068", "985040", "682848", "682848", "C00000", "C00000", "300000", "F8F800", "D0D0D0", "707070", "181818", "E0D8D8", "988888", "181818"]
-    small_model = SmallModelDetails(416, animations=SpriteAnimationCollection(
+    alt_palette = ["F8F8F8", "E0B068", "985040", "682848", "682848", "C00000", "C00000",
+                   "300000", "F8F800", "D0D0D0", "707070", "181818", "E0D8D8", "988888", "181818"]
+    statue = StatueDetails(416, ["F8F8A0", "E0C000", "D09020", "A87828", "482818", "E0C000", "784818",
+                                 "301830", "F8F8A0", "F8E870", "906010", "301830", "F8F8A0", "E0C000", "301830"])
+    small_model = SmallModelDetails(None, None, 416, 577, animations=SpriteAnimationCollection(
+        recoil=jinx_recoil,
         mines_punch=jinx_punch,
         ship_beckon=jinx_punch,
         dojo_challenge=jinx_punch,
@@ -2755,7 +2471,7 @@ class Jinx3Boss(Boss):
         keep_summon=jinx_punch,
         chandelier_challenge=jinx_punch,
         endgame_challenge=jinx_punch
-    ), width=16, height=16)  # could be 207 or 415
+    ))
     dialog_replacements = [
         (49,
          '''JINX: Please do not disturb me.\n I am training in here.[await]'''),
@@ -2797,54 +2513,32 @@ class Jinx3Boss(Boss):
 
 class CulexFireCrystal(Henchman):
     pack_number = 217
-    model = SmallModelDetails(386, sequence=1)
+    model = SmallModelDetails(None, 386, None, 578, sequence=1)
 
 
 class CulexWaterCrystal(Henchman):
     pack_number = 218
-    model = SmallModelDetails(435)
+    model = SmallModelDetails(None, 435, None, 579)
 
 
 class CulexEarthCrystal(Henchman):
     pack_number = 219
-    model = SmallModelDetails(435, sequence=1)
+    model = SmallModelDetails(None, 435, None, 579, sequence=1)
 
 
 class CulexWindCrystal(Henchman):
     pack_number = 220
-    model = SmallModelDetails(386)
+    model = SmallModelDetails(None, 386, None, 578)
 
 
 class CulexBoss(Boss):
     name = "Culex"
     eye_height = 12
     pack_number = 216
-    statue_palette = ["482818", "F8E870", "C08020", "906010", "F8F8A0", "F8E870", "D0A000", "E0C000", "482818", "D0A000", "F8E870", "683808", "E0C000", "683808", "F8F8A0"]
-    statue_model = StatueModelDetails(151)
-    small_model = SmallModelDetails(151)
-    big_model = BigModelDetails({  # incredibly, does not break shadows
-        "sprite": SpriteName._511_CULEX,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "y_pixel_shift": 1,
-        "acute_axis": 15,
-        "obtuse_axis": 15,
-        "height": 31,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 0,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, height=143, width=90)
+    statue = StatueDetails(151, ["482818", "F8E870", "C08020", "906010", "F8F8A0", "F8E870", "D0A000",
+                                 "E0C000", "482818", "D0A000", "F8E870", "683808", "E0C000", "683808", "F8F8A0"])
+    small_model = SmallModelDetails(None, None, None, 151)
+    big_model = BigModelDetails(None, 511)
     unique_henchmen = [CulexFireCrystal, CulexWaterCrystal,
                        CulexEarthCrystal, CulexWindCrystal]
     dialog_replacements = [
@@ -2926,31 +2620,10 @@ class BoxBoyBoss(Boss):
     name = "Box Boy"
     eye_height = 4
     pack_number = 158
-    small_model = SmallModelDetails(463)  # could be 196 or 111
-    statue_palette = ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870", "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"]
-    big_model = BigModelDetails({
-        "sprite": SpriteName._390_BOX_BOY,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "y_pixel_shift": 3,
-        "acute_axis": 7,
-        "obtuse_axis": 7,
-        "height": 12,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 1,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 36, 40, animations=SpriteAnimationCollection(
+    statue = StatueDetails(463, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
+                                 "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
+    small_model = SmallModelDetails(None, 463, None, 518)
+    big_model = BigModelDetails(None, 390, animations=SpriteAnimationCollection(
         mines_punch=boxboy_attack,
         statue_intro=pandorite_shake,
         statue_peck=boxboy_short,
@@ -3012,7 +2685,7 @@ megasmilax_taunt = SpriteAnimation(sequence_id=4, total_duration=38)
 
 class MegaSmilaxPiranha(Henchman):
     pack_number = 222
-    model = SmallModelDetails(263, width=24, height=32, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(263, 580, 581, 582, animations=SpriteAnimationCollection(
         tower_bullet=piranha_bite, kitchen_prep=piranha_bite, factory_pierce=piranha_bite))
 
 
@@ -3020,10 +2693,11 @@ class MegaSmilaxBoss(Boss):
     name = "Megasmilax"
     pack_number = 173
     eye_height = 14
-    statue_palette = ["F8F8A0", "F8E870", "E0C000", "D0A000", "C08020", "906010", "301830", "C08020", "482818", "F8E870", "E0C000", "C08020", "482818", "E0C000", "301830"]
-    statue_model = StatueModelDetails(
-        263, 24, 32, mold=1, horizontal_pixel_shift=-3, vertical_pixel_shift=-4)
-    small_model = SmallModelDetails(263, width=24, height=32, animations=SpriteAnimationCollection(
+    statue_model = StatueDetails(
+        263, ["F8F8A0", "F8E870", "E0C000", "D0A000", "C08020", "906010", "301830",
+              "C08020", "482818", "F8E870", "E0C000", "C08020", "482818", "E0C000", "301830"], mold=1, horizontal_pixel_shift=-3, vertical_pixel_shift=-4)
+    small_model = SmallModelDetails(263, 580, 581, 582, animations=SpriteAnimationCollection(
+        recoil=piranha_recoil,
         bandits_way_distracted=piranha_taunt,
         mines_punch=piranha_bite,
         chapel_laugh=piranha_taunt,
@@ -3037,29 +2711,7 @@ class MegaSmilaxBoss(Boss):
         chandelier_challenge=piranha_bite,
         endgame_challenge=piranha_bite
     ))  # could be 138
-    big_model = BigModelDetails({
-        "sprite": SpriteName._460_MEGASMILAX,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 1,
-        "acute_axis": 11,
-        "obtuse_axis": 11,
-        "height": 13,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 37, 37, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 460, animations=SpriteAnimationCollection(
         mines_punch=megasmilax_bite,
         statue_flustered=megasmilax_recoil,
         statue_peck=megasmilax_bite,
@@ -3136,7 +2788,7 @@ class MegaSmilaxBoss(Boss):
     ]
     optional_dialog_replacements = [
         (1694,
-         '''SMILAX: Go on ahead to visit\n Megasmilax. But be warned, it's\n pretty tough when it's hydrated.[await]'''),
+         '''SMILAX: Go on ahead to visit\n Megasmilax. But be warned, he's\n pretty tough when he's hydrated.[await]'''),
         (1695,
          '''SMILAX: Wow, you won![await][pause] Shy Away\n must have watered you more than\n he watered Megasmilax.[await]'''),
     ]
@@ -3150,42 +2802,21 @@ class DodoBoss(Boss):
     name = "Dodo"
     pack_number = 208
     eye_height = 2
-    statue_palette = ["F8F8A0", "D09020", "F8E870", "906010", "D09020", "906010", "F8E870", "784818", "482818", "482818", "E0C000", "784818", "301830", "E0C000", "301830"]
-    statue_model = StatueModelDetails(10, horizontal_pixel_shift=-7, vertical_pixel_shift=-4)
-    small_model = SmallModelDetails(10)
-    big_model = BigModelDetails({
-        "sprite": SpriteName._393_DODO,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": 1,
-        "acute_axis": 7,
-        "obtuse_axis": 7,
-        "height": 13,
-        "vram_store": VramStore._00_SWSE_NWNE,
-        "vram_size": 0,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": True,
-        "byte5_bit7": True,
-        "byte6_bit2": True
-    }, height=56, width=46, animations=SpriteAnimationCollection(
+    statue = StatueDetails(10, ["F8F8A0", "D09020", "F8E870", "906010", "D09020", "906010", "F8E870",
+                                "784818", "482818", "482818", "E0C000", "784818", "301830", "E0C000", "301830"], horizontal_pixel_shift=-7, vertical_pixel_shift=-4)
+    small_model = SmallModelDetails(None, None, None, 10)
+    big_model = BigModelDetails(393, 583, animations=SpriteAnimationCollection(
         mines_punch=dodo_peck,
         statue_intro=dodo_taunt,
         statue_flustered=dodo_taunt,
         statue_peck=dodo_peck,
         chandelier_challenge=dodo_taunt,
         endgame_challenge=dodo_taunt
-    ))  # could be 21 or 312
+    ))
     dialog_replacements = [
         # actually, don't use dialogs for dodo, just play sfx... how to handle this?
-        (49, EMPTY_DIALOG),  # time this according to how long the feather sound effect is
+        # time this according to how long the feather sound effect is
+        (49, EMPTY_DIALOG),
         (1660, EMPTY_DIALOG),
         (1694,
          '''PIRATE: You're pretty tough, mate.\n All right. I'll let you through to\n Dodo's place.[await]'''),
@@ -3222,7 +2853,7 @@ class DodoBoss(Boss):
 
 class BirdettaEggbert(Henchman):
     pack_number = 223
-    model = SmallModelDetails(462, 16, 16)
+    model = SmallModelDetails(None, None, None, 462)
 
 
 birdetta_attack = SpriteAnimation(
@@ -3239,32 +2870,12 @@ class BirdettaBoss(Boss):
     name = "Birdetta"
     eye_height = 6
     pack_number = 175
-    small_model = SmallModelDetails(462, 16, 16, animations=SpriteAnimationCollection(
+    statue = StatueDetails(462, ["F8E870", "E0C000", "0", "0", "C08020",
+                                 "0", "0", "0", "0", "0", "906010", "0", "0", "0", "181818"])
+    small_model = SmallModelDetails(None, None, None, 462, animations=SpriteAnimationCollection(
+        recoil=eggbert_expand,
         bandits_way_distracted=eggbert_expand, statue_flustered=eggbert_expand, statue_intro=eggbert_expand))
-    statue_palette = ["F8E870", "E0C000", "0", "0", "C08020", "0", "0", "0", "0", "0", "906010", "0", "0", "0", "181818"]
-    big_model = BigModelDetails({
-        "sprite": SpriteName._461_BIRDO,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 0,
-        "acute_axis": 11,
-        "obtuse_axis": 11,
-        "height": 13,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 4,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, height=57, width=38, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 461, animations=SpriteAnimationCollection(
         mines_punch=birdetta_attack,
         statue_flustered=birdetta_recoil,
         statue_peck=birdetta_attack_fast,
@@ -3351,38 +2962,38 @@ bird_attack = SpriteAnimation(
 
 class DefaultBluebird1(Henchman):
     pack_number = 94
-    model = SmallModelDetails(333, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 334
+    model = SmallModelDetails(333, 584, 334, 585, animations=SpriteAnimationCollection(
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
 
 
 class DefaultBluebird2(Henchman):
     pack_number = 95
-    model = SmallModelDetails(333, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 334
+    model = SmallModelDetails(333, 584, 334, 585, animations=SpriteAnimationCollection(
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
 
 
 class DefaultBirdy1(Henchman):
     pack_number = 92
-    model = SmallModelDetails(183, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 269 or 279
+    model = SmallModelDetails(279, 586, 587, 588, animations=SpriteAnimationCollection(
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
 
 
 class DefaultBirdy2(Henchman):
     pack_number = 93
-    model = SmallModelDetails(183, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 269 or 279
+    model = SmallModelDetails(279, 586, 587, 588, animations=SpriteAnimationCollection(
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
 
 
 class ValentinaBluebird(Henchman):
     pack_number = 160
-    model = SmallModelDetails(333, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 334
+    model = SmallModelDetails(333, 584, 334, 585, animations=SpriteAnimationCollection(
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
 
 
 class ValentinaBirdy(Henchman):
     pack_number = 201
-    model = SmallModelDetails(183, width=32, height=32, animations=SpriteAnimationCollection(
-        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))  # maybe 269 or 279
+    model = SmallModelDetails(279, 586, 587, 588, animations=SpriteAnimationCollection(
+        tower_bullet=bird_attack, kitchen_prep=bird_attack, factory_pierce=bird_attack))
 
 
 valentina_stand = SpriteAnimation(sequence_id=10)
@@ -3397,9 +3008,7 @@ class ValentinaBoss(Boss):
     name = "Valentina"
     pack_number = 171
     eye_height = 16
-    statue_model = StatueModelDetails(63, width=32, height=32, horizontal_pixel_shift=-3,
-                                      vertical_pixel_shift=-1, north_facing_horizontal_pixel_shift=-2)
-    small_model = SmallModelDetails(56, width=24, height=32, animations=SpriteAnimationCollection(
+    small_model = SmallModelDetails(56, 589, 590, 591, animations=SpriteAnimationCollection(
         bandits_way_distracted=valentina_stand,
         chapel_laugh=valentina_laugh,
         ship_beckon=valentina_laugh,
@@ -3411,29 +3020,7 @@ class ValentinaBoss(Boss):
         chandelier_challenge=valentina_laugh,
         endgame_challenge=valentina_laugh
     ))
-    big_model = BigModelDetails({
-        "sprite": SpriteName._507_VALENTINA,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 1,
-        "acute_axis": 13,
-        "obtuse_axis": 13,
-        "height": 23,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, height=82, width=51, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 592, animations=SpriteAnimationCollection(
         # mines_punch=valentina_hit,
         statue_intro=valentina_taunt,
         # statue_peck=valentina_hit,
@@ -3522,13 +3109,13 @@ fireball_spin = SpriteAnimation(
     sequence_id=3, contact_frame=40, total_duration=62)
 fireball_recoil = SpriteAnimation(sequence_id=2, total_duration=12)
 
-fireball_spin_fast = SpriteAnimation(sequence_id=3, contact_frame=20, total_duration=31, speed=SequenceSpeeds.FAST)
+fireball_spin_fast = SpriteAnimation(
+    sequence_id=3, contact_frame=20, total_duration=31, speed=SequenceSpeeds.FAST)
 
 
 class CzarPyrosphere(Henchman):
     pack_number = 190
-    model = SmallModelDetails(155, 24, 32, animations=SpriteAnimationCollection(
-        tower_bullet=fireball_spin, kitchen_prep=fireball_spin, factory_pierce=fireball_spin_fast))  # maybe 277. these are the exact same, could free one up
+    model = SmallModelDetails(None, 155, None, 593, animations=SpriteAnimationCollection(tower_bullet=fireball_spin, kitchen_prep=fireball_spin, factory_pierce=fireball_spin_fast))  # maybe 277. these are the exact same, could free one up
 
 
 czar_dragon_hit = SpriteAnimation(
@@ -3541,8 +3128,10 @@ class CzarBoss(Boss):
     name = "Czar Dragon"
     eye_height = 3
     pack_number = 172
-    statue_palette = ["683808", "0", "0", "0", "906010", "0", "0", "F8F8A0", "0", "F8F8A0", "C08020", "D0A000", "E0C000", "F8E870", "181818"]
-    small_model = SmallModelDetails(56, width=24, height=32, animations=SpriteAnimationCollection(
+    statue = StatueDetails(155, ["683808", "0", "0", "0", "906010", "0", "0", "F8F8A0",
+                      "0", "F8F8A0", "C08020", "D0A000", "E0C000", "F8E870", "181818"])
+    small_model = SmallModelDetails(None, 155, None, 593, animations=SpriteAnimationCollection(
+        recoil=fireball_recoil, 
         mines_punch=fireball_spin,
         ship_beckon=fireball_spin,
         dojo_challenge=fireball_spin,
@@ -3554,55 +3143,11 @@ class CzarBoss(Boss):
         chandelier_challenge=fireball_spin,
         endgame_challenge=fireball_spin
     ))
-    big_model = BigModelDetails({  # does not break shadows!
-        "sprite": SpriteName._476_CZAR_DRAGON,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": False,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 0,
-        "acute_axis": 13,
-        "obtuse_axis": 13,
-        "height": 13,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, height=67, width=81, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 594, animations=SpriteAnimationCollection(
         mines_punch=czar_dragon_hit,
         statue_intro=czar_taunt,
         statue_flustered=czar_recoil))
-    # attack_model = BigModelDetails({
-    #     "sprite": SpriteName._216_CZAR_DRAGON_BODY,
-    #     "priority_0": False,
-    #     "priority_1": False,
-    #     "priority_2": True,
-    #     "show_shadow": False,
-    #     "shadow": ShadowSize._00_OVAL_SMALL,
-    #     "y_pixel_shift": 0,
-    #     "acute_axis": 13,
-    #     "obtuse_axis": 13,
-    #     "height": 9,
-    #     "vram_store": VramStore._02_SWSE,
-    #     "vram_size": 3,
-    #     "cannot_clone": True,
-    #     "byte2_bit0": False,
-    #     "byte2_bit1": False,
-    #     "byte2_bit2": False,
-    #     "byte2_bit3": False,
-    #     "byte2_bit4": False,
-    #     "byte5_bit6": False,
-    #     "byte5_bit7": False,
-    #     "byte6_bit2": False
-    # }, height=53, width=58) # overworld object - unsure what to use for
+    # attack_model = BigModelDetails(None, 216) # overworld object - unsure what to use for
     repeatable_henchmen = [CzarPyrosphere]
     dialog_replacements = [
         (49, '''\n    CZAR DRAGON: BLARRGGGG[await]'''),
@@ -3675,37 +3220,37 @@ axem_red_recoil = SpriteAnimation(sequence_id=2, total_duration=22)
 
 class AxemRangersAxemBlack(Henchman):
     pack_number = 248
-    model = SmallModelDetails(209, 32, 32, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(None, 209, None, 595, animations=SpriteAnimationCollection(
         tower_bullet=axem_black_hit, kitchen_prep=axem_black_hit, factory_pierce=axem_black_hit))
 
 
 class AxemRangersAxemPink(Henchman):
     pack_number = 249
-    model = SmallModelDetails(210, 32, 32, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(None, 210, None, 596, animations=SpriteAnimationCollection(
         tower_bullet=axem_pink_hit, kitchen_prep=axem_pink_hit, factory_pierce=axem_pink_hit))
 
 
 class AxemRangersAxemYellow(Henchman):
     pack_number = 250
-    model = SmallModelDetails(211, 32, 32, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(None, 211, None, 597, animations=SpriteAnimationCollection(
         tower_bullet=axem_yellow_hit_fast, kitchen_prep=axem_yellow_hit))
 
 
 class AxemRangersAxemGreen(Henchman):
     pack_number = 251
-    model = SmallModelDetails(212, 32, 32, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(None, 212, None, 598, animations=SpriteAnimationCollection(
         tower_bullet=axem_green_hit, kitchen_prep=axem_green_hit, factory_pierce=axem_green_hit_fast))  # 467 is a clone, could free up
 
 
 class AxemRangersMachine1(Henchman):
     pack_number = 203
-    model = SmallModelDetails(185, 32, 32, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(None, 185, None, 599, animations=SpriteAnimationCollection(
         tower_bullet=axem_red_hit, kitchen_prep=axem_red_hit, factory_pierce=axem_red_hit))
 
 
 class AxemRangersMachine2(Henchman):
     pack_number = 203
-    model = SmallModelDetails(422, 32, 32, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(None, 422, None, 600, animations=SpriteAnimationCollection(
         tower_bullet=axem_pink_hit, kitchen_prep=axem_pink_hit, factory_pierce=axem_pink_hit))
 
 
@@ -3714,10 +3259,9 @@ class AxemRangersBoss(Boss):
     eye_height = 15
     pack_number = 182
     forced_background = 39
-    statue_palette = ["F8F8A0", "F8E870", "906010", "C08020", "906010", "301830", "F8E870", "E0C000", "C08020", "683808", "0", "0", "0", "0", "181818"]
-    statue_model = StatueModelDetails(
-        466, width=32, height=32, horizontal_pixel_shift=-6)
-    small_model = SmallModelDetails(466, width=32, height=32, animations=SpriteAnimationCollection(
+    statue = StatueDetails(208, ["F8F8A0", "F8E870", "906010", "C08020", "906010", "301830",
+                      "F8E870", "E0C000", "C08020", "683808", "0", "0", "0", "0", "181818"], horizontal_pixel_shift=-6)
+    small_model = SmallModelDetails(None, 208, None, 601, animations=SpriteAnimationCollection(
         bandits_way_distracted=axem_red_taunt,
         mines_punch=axem_red_hit,
         ship_beckon=axem_red_hit,
@@ -3729,7 +3273,7 @@ class AxemRangersBoss(Boss):
         keep_summon=axem_red_hit,
         chandelier_challenge=axem_red_taunt,
         endgame_challenge=axem_red_taunt
-    ))  # could be 466
+    ))
     unique_henchmen = [AxemRangersAxemBlack, AxemRangersAxemPink,
                        AxemRangersAxemYellow, AxemRangersAxemGreen]
     repeatable_henchmen = [AxemRangersMachine1, AxemRangersMachine2]
@@ -3811,31 +3355,10 @@ class ChesterBoss(Boss):
     name = "Chester"
     pack_number = 235
     eye_height = 4
-    small_model = SmallModelDetails(463)  # could be 196 or 111
-    statue_palette = ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870", "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"]
-    big_model = BigModelDetails({
-        "sprite": SpriteName._395_CHESTER,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._01_OVAL_MED,
-        "y_pixel_shift": 3,
-        "acute_axis": 7,
-        "obtuse_axis": 7,
-        "height": 12,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 1,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, 36, 40, animations=SpriteAnimationCollection(
+    statue = StatueDetails(463, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
+                                 "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
+    small_model = SmallModelDetails(None, 463, None, 518)
+    big_model = BigModelDetails(None, 330, animations=SpriteAnimationCollection(
         mines_punch=chester_attack,
         statue_intro=pandorite_shake,
         statue_peck=chester_attack_fast,
@@ -3898,9 +3421,8 @@ class MagikoopaBoss(Boss):
     name = "Magikoopa"
     eye_height = 12
     pack_number = 209
-    statue_model = StatueModelDetails(190, width=24, height=32, horizontal_pixel_shift=2,
-                                      north_facing_horizontal_pixel_shift=-4, north_facing_vertical_pixel_shift=-1)
-    small_model = SmallModelDetails(190, width=24, height=32, animations=SpriteAnimationCollection(
+    statue = StatueDetails(190, ["F8F8A0", "E0C000", "906010", "C08020", "E0C000", "C08020", "683808", "301830", "F8F8A0", "F8E870", "D09020", "784818", "E0C000", "482818", "301830"], horizontal_pixel_shift=2, north_facing_horizontal_pixel_shift=-4, north_facing_vertical_pixel_shift=-1)
+    small_model = SmallModelDetails(190, 602, 603, 604, animations=SpriteAnimationCollection(
         mines_punch=small_magikoopa_hit,
         ship_beckon=small_magikoopa_hit,
         dojo_challenge=small_magikoopa_hit,
@@ -3910,29 +3432,7 @@ class MagikoopaBoss(Boss):
         chandelier_challenge=small_magikoopa_hit,
         endgame_challenge=small_magikoopa_hit
     ))
-    big_model = BigModelDetails({
-        "sprite": SpriteName._353_MERLIN,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 1,
-        "acute_axis": 7,
-        "obtuse_axis": 7,
-        "height": 13,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 2,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, height=42, width=45, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 605, animations=SpriteAnimationCollection(
         mines_punch=big_magikoopa_hit,
         statue_intro=big_magikoopa_taunt,
         statue_peck=big_magikoopa_hit_fast,
@@ -3985,7 +3485,7 @@ shyguy_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 class BoomerShyGuy(Henchman):
     pack_number = 200
-    model = SmallModelDetails(159, width=24, height=32, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(346, 605, 606, 607, animations=SpriteAnimationCollection(
         tower_bullet=shyguy_hit, kitchen_prep=shyguy_taunt, factory_pierce=shyguy_hit))  # maybe 346
 
 
@@ -4000,10 +3500,10 @@ class BoomerBoss(Boss):
     name = "Boomer"
     eye_height = 8
     pack_number = 210
-    statue_palette = ["F8F8A0", "F8E870", "F8E870", "D0A000", "F8E870", "E0C000", "E0C000", "C08020", "E0C000", "301830", "C08020", "181818", "181818", "906010", "180000"]
-    statue_model = StatueModelDetails(
-        159, width=24, height=32, horizontal_pixel_shift=2, north_facing_horizontal_pixel_shift=-2)  # maybe 346
-    small_model = SmallModelDetails(159, width=24, height=32, animations=SpriteAnimationCollection(
+    statue = StatueDetails(346, ["F8F8A0", "F8E870", "F8E870", "D0A000", "F8E870", "E0C000", "E0C000",
+                      "C08020", "E0C000", "301830", "C08020", "181818", "181818", "906010", "180000"], horizontal_pixel_shift=2, north_facing_horizontal_pixel_shift=-2)
+    small_model = SmallModelDetails(346, 605, 606, 607, animations=SpriteAnimationCollection(
+        recoil=shyguy_recoil,
         bandits_way_distracted=shyguy_spin,
         mines_punch=shyguy_hit,
         chapel_laugh=shyguy_spin,
@@ -4018,55 +3518,11 @@ class BoomerBoss(Boss):
         chandelier_challenge=shyguy_taunt,
         endgame_challenge=shyguy_taunt
     ))  # maybe 346
-    big_model = BigModelDetails({
-        "sprite": SpriteName._169_BOOMER_RED,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 1,
-        "acute_axis": 8,
-        "obtuse_axis": 8,
-        "height": 17,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=48, height=51, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 482, animations=SpriteAnimationCollection(
         chandelier_challenge=boomer_alt_taunt,
         endgame_challenge=boomer_alt_taunt
     ))
-    attack_model = BigModelDetails({  # hit animation breaks but shadow does not, can keep
-        "sprite": SpriteName._308_BOOMER,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 2,
-        "acute_axis": 9,
-        "obtuse_axis": 9,
-        "height": 22,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": True,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=52, height=49, animations=SpriteAnimationCollection(
+    attack_model = BigModelDetails(None, 308, animations=SpriteAnimationCollection(
         # mines_punch=boomer_hit, # vram issues
         statue_intro=boomer_taunt,
         # statue_peck=boomer_hit, # vram issues
@@ -4155,9 +3611,9 @@ class ExorBoss(Boss):
     eye_height = 16
     pack_number = 186
     forced_background = 16
-    statue_model = ["F8F8F8", "F8F8A0", "F8E870", "D09020", "704020", "C08020", "906010", "784818", "482818", "D0A000", "683808", "482818", "E0C000", "C08020", "181818"]
-    statue_model = SmallModelDetails(14, width=24, height=32)
-    small_model = SmallModelDetails(14, width=24, height=32)
+    statue = StatueDetails(14, ["F8F8F8", "F8F8A0", "F8E870", "D09020", "704020", "C08020", "906010",
+                    "784818", "482818", "D0A000", "683808", "482818", "E0C000", "C08020", "181818"])
+    small_model = SmallModelDetails(None, 14, None, 609)
     # potentially, put sprite #3 on an unused NPC and don't worry about the sprite offset
     dialog_replacements = [
         (49, '''  EXOR: What do you want? Get\n lost![await]'''),
@@ -4213,14 +3669,12 @@ countdown_loop = SpriteAnimation(sequence_id=9, total_duration=32)
 
 class CountdownDingALing(Henchman):
     pack_number = 252
-    model = SmallModelDetails(
-        454, animations=SpriteAnimationCollection(tower_bullet=dingaling_circle, factory_pierce=dingaling_circle))
+    model = SmallModelDetails(None, None, None, 454, animations=SpriteAnimationCollection(tower_bullet=dingaling_circle, factory_pierce=dingaling_circle))
 
 
 class CountdownBoss(Boss):
     name = "Count Down"
     pack_number = 174
-    statue_palette = ["F8F8A0", "F8E870", "E0C000", "E0C000", "E0C000", "D09020", "D09020", "F8E870", "F8E870", "906010", "D09020", "906010", "E0C000", "F8E870", "906010"]
     eye_height = 8
     forced_background = 18
     # small_model = SmallModelDetails(454, animations=SpriteAnimationCollection(
@@ -4232,7 +3686,9 @@ class CountdownBoss(Boss):
     #     chandelier_challenge=dingaling_taunt,
     #     endgame_challenge=dingaling_taunt
     # ))
-    small_model = SmallModelDetails(453, animations=SpriteAnimationCollection(
+    statue = StatueDetails(453, ["F8F8A0", "F8E870", "E0C000", "E0C000", "E0C000", "D09020", "D09020",
+                      "F8E870", "F8E870", "906010", "D09020", "906010", "E0C000", "F8E870", "906010"])
+    small_model = SmallModelDetails(None, None, None, 453, animations=SpriteAnimationCollection(
         mines_punch=countdown_loop,
         dojo_challenge=countdown_loop,
         keep_challenge=countdown_loop,
@@ -4266,7 +3722,8 @@ class CountdownBoss(Boss):
          '''DING-A-LING: Are you impressed by\n how well we can bake without\n having any hands?[await]'''),
         (2504,
          '''COUNT DOWN: You've only got\n [0x7000] item(s)! You're missing [0x7024]![await]\n You better do something![await]'''),
-        (2560, '''DING-A-LING: Mario's HERE![await][pause][delay_30] I'd\n better do something![await]'''),
+        (2560,
+         '''DING-A-LING: Mario's HERE![await][pause][delay_30] I'd\n better do something![await]'''),
         (2572,
          '''DING-A-LING: You won't find\n Count Down back here![await]\n Leave us alone![await]'''),
         (2831, '''COUNT DOWN: There's nothing to\n do here![await]'''),
@@ -4322,33 +3779,10 @@ class CloakerDominoBoss(Boss):
     pack_number = 184
     eye_height = 6
     forced_background = 40
-    statue_palette = ["F8F8A0", "F8E870", "E0C000", "E0C000", "F8E870", "E0C000", "D09020", "482818", "301830", "906010", "0", "482818", "482818", "482818", "301830"]
-    statue_model = StatueModelDetails(
-        429, 32, 32, horizontal_pixel_shift=-4, vertical_pixel_shift=-3)
-    small_model = SmallModelDetails(429, 32, 32)  # maybe 249
-    big_model = BigModelDetails({  # animations break, but presence in room does not break shadows, can keep
-        "sprite": SpriteName._477_CLOAKER_1ST_TIME,
-        "priority_0": False,
-        "priority_1": False,
-        "priority_2": True,
-        "show_shadow": True,
-        "shadow": ShadowSize._02_OVAL_BIG,
-        "y_pixel_shift": 1,
-        "acute_axis": 8,
-        "obtuse_axis": 8,
-        "height": 17,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 3,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=48, height=51, animations=SpriteAnimationCollection(
+    statue = StatueDetails(429, ["F8F8A0", "F8E870", "E0C000", "E0C000", "F8E870", "E0C000",
+                      "D09020", "482818", "301830", "906010", "0", "482818", "482818", "482818", "301830"], horizontal_pixel_shift=-4, vertical_pixel_shift=-3)
+    small_model = SmallModelDetails(None, 429, None, 610)
+    big_model = BigModelDetails(None, 611, animations=SpriteAnimationCollection(
         # mines_punch=cloaker_hit, # breaks vram
         # statue_peck=cloaker_hit, # breaks vram
         statue_flustered=cloaker_recoil,
@@ -4406,13 +3840,13 @@ hammer_hit = SpriteAnimation(
 class DefaultMadMallet(Henchman):
     pack_number = 150
     model = SmallModelDetails(
-        259, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
+        259, 612, 613, 614, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
 
 
 class ClerkMadMallet(Henchman):
     pack_number = 202
     model = SmallModelDetails(
-        259, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
+        259, 612, 613, 614, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
 
 
 shovelknight_tile = SpriteAnimation(sequence_id=2)
@@ -4427,8 +3861,9 @@ class ClerkBoss(Boss):
     name = "Clerk"
     eye_height = 10
     pack_number = 146
-    statue_palette = ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830", "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"]
-    small_model = SmallModelDetails(446, 32, 32, animations=SpriteAnimationCollection(
+    statue = StatueDetails(414, ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830",
+                      "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"], horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
+    small_model = SmallModelDetails(446, 489, 615, 616, animations=SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
         chapel_laugh=shovelknight_tile,
         ship_chair=shovelknight_tile,
@@ -4438,8 +3873,6 @@ class ClerkBoss(Boss):
         chandelier_challenge=shovelknight_tile,
         endgame_challenge=shovelknight_tile
     ))
-    statue_model = StatueModelDetails(
-        446, 32, 32, horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
     # big_model = BigModelDetails({
     #     "sprite": SpriteName._306_CLERK,
     #     "priority_0": False,
@@ -4547,15 +3980,16 @@ class ClerkBoss(Boss):
 class ManagerPounder(Henchman):
     pack_number = 126
     model = SmallModelDetails(
-        323, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
+        323, 636, 637, 638, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))
 
 
 class ManagerBoss(Boss):
     name = "Manager"
     eye_height = 10
     pack_number = 147
-    statue_palette = ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830", "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"]
-    small_model = SmallModelDetails(493, 32, 32, animations=SpriteAnimationCollection(
+    statue = StatueDetails(493, ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830",
+                      "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"], horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
+    small_model = SmallModelDetails(493, 617, 618, 619, animations=SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
         chapel_laugh=shovelknight_tile,
         ship_chair=shovelknight_tile,
@@ -4565,8 +3999,6 @@ class ManagerBoss(Boss):
         chandelier_challenge=shovelknight_tile,
         endgame_challenge=shovelknight_tile
     ))
-    statue_model = StatueModelDetails(
-        493, 32, 32, horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
     # big_model = BigModelDetails({
     #     "sprite": SpriteName._332_MANAGER,
     #     "priority_0": False,
@@ -4675,15 +4107,16 @@ class ManagerBoss(Boss):
 class DirectorPoundette(Henchman):
     pack_number = 128
     model = SmallModelDetails(
-        324, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))  # maybe 477
+        324, 639, 477, 640, animations=SpriteAnimationCollection(tower_bullet=hammer_hit, kitchen_prep=hammer_hit, factory_pierce=hammer_hit))  # maybe 477
 
 
 class DirectorBoss(Boss):
     name = "Director"
     eye_height = 10
     pack_number = 148
-    statue_palette = ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830", "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"]
-    small_model = SmallModelDetails(497, 32, 32, animations=SpriteAnimationCollection(
+    statue = StatueDetails(497, ["F8E870", "F8E870", "E0C000", "D09020", "906010", "784818", "301830",
+                      "784818", "906010", "E0C000", "D09020", "906010", "482818", "301830", "181818"], horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
+    small_model = SmallModelDetails(497, 620, 621, 622, animations=SpriteAnimationCollection(
         bandits_way_distracted=shovelknight_tile,
         chapel_laugh=shovelknight_tile,
         ship_chair=shovelknight_tile,
@@ -4693,8 +4126,6 @@ class DirectorBoss(Boss):
         chandelier_challenge=shovelknight_tile,
         endgame_challenge=shovelknight_tile
     ))
-    statue_model = StatueModelDetails(
-        497, 32, 32, horizontal_pixel_shift=-3, north_facing_horizontal_pixel_shift=-5)
     # big_model = BigModelDetails({
     #     "sprite": SpriteName._332_MANAGER,
     #     "priority_0": False,
@@ -4804,17 +4235,17 @@ class DirectorBoss(Boss):
 
 class DefaultUnpaintedDrillBit(Henchman):
     pack_number = None
-    model = SmallModelDetails(402, width=24, height=32)
+    model = SmallModelDetails(402, None, None, None)
 
 
 class DefaultPaintedDrillBit(Henchman):
     pack_number = None
-    model = SmallModelDetails(351, width=24, height=32)
+    model = SmallModelDetails(351, None, None, None)
 
 
 class GunyolkPiece(Henchman):
     pack_number = None
-    model = SmallModelDetails(403)
+    model = SmallModelDetails(None, 403, None, None)
 
 
 ninja_hit = SpriteAnimation(sequence_id=3, contact_frame=26, total_duration=38)
@@ -4828,10 +4259,10 @@ class GunyolkBoss(Boss):
     name = "Factory Chief"
     eye_height = 16
     pack_number = 149
-    small_model_id = 484
-    statue_palette = ["F8F8A0", "E0C000", "C08020", "784818", "F8F8A0", "E0C000", "000000", "906010", "784818", "906010", "301830", "784818", "683808", "482818", "301830"]
-    statue_model = StatueModelDetails(484, 32, 32, horizontal_pixel_shift=-1)
-    small_model = SmallModelDetails(484, 32, 32, animations=SpriteAnimationCollection(
+    statue = StatueDetails(484, ["F8F8A0", "E0C000", "C08020", "784818", "F8F8A0", "E0C000", "000000",
+                      "906010", "784818", "906010", "301830", "784818", "683808", "482818", "301830"], horizontal_pixel_shift=-1)
+    small_model = SmallModelDetails(484, 623, 624, 625, animations=SpriteAnimationCollection(
+        recoil=ninja_recoil,
         mines_punch=ninja_hit,
         chapel_laugh=ninja_taunt,
         ship_beckon=ninja_taunt,
@@ -4900,22 +4331,21 @@ drillbit_recoil = SpriteAnimation(sequence_id=2, total_duration=14)
 
 class SmithyDrillBit(Henchman):
     pack_number = 253
-    model = SmallModelDetails(
-        483, animations=SpriteAnimationCollection(tower_bullet=drillbit_hit, kitchen_prep=drillbit_hit, factory_pierce=drillbit_hit_fast))
+    model = SmallModelDetails(483, 626, 627, 628, animations=SpriteAnimationCollection(tower_bullet=drillbit_hit, kitchen_prep=drillbit_hit, factory_pierce=drillbit_hit_fast))
 
 
 class SmithyShyster(Henchman):
     pack_number = 254
-    model = SmallModelDetails(401, animations=SpriteAnimationCollection(
+    model = SmallModelDetails(401, 629, 630, 631, animations=SpriteAnimationCollection(
         tower_bullet=shyster_taunt,
         kitchen_prep=shyster_taunt,
         factory_pierce=shyguy_hit
-    ), width=24, height=32)
+    ))
 
 
 class SmithyAero(Henchman):
     pack_number = 255
-    model = SmallModelDetails(234, width=24, height=32)
+    model = SmallModelDetails(None, 234, None, 523)
 
 
 smithy_hit = SpriteAnimation(
@@ -4928,8 +4358,10 @@ class SmithyBoss(Boss):
     name = "Smithy"
     eye_height = 18
     pack_number = 185
-    statue_palette = ["F8F8A0", "E0C000", "E0C000", "F8F8F8", "E0C000", "C08020", "906010", "906010", "E0C000", "906010", "683808", "D09020", "683808", "482818", "301830"]
-    small_model = SmallModelDetails(351, 32, 32, animations=SpriteAnimationCollection(
+    statue = StatueDetails(351, ["F8F8A0", "E0C000", "E0C000", "F8F8F8", "E0C000", "C08020", "906010",
+                      "906010", "E0C000", "906010", "683808", "D09020", "683808", "482818", "301830"])
+    small_model = SmallModelDetails(351, 632, 633, 634, animations=SpriteAnimationCollection(
+        recoil=drillbit_recoil,
         bandits_way_distracted=drillbit_taunt,
         mines_punch=drillbit_hit,
         chapel_laugh=drillbit_taunt,
@@ -4944,29 +4376,7 @@ class SmithyBoss(Boss):
         chandelier_challenge=drillbit_taunt,
         endgame_challenge=drillbit_taunt
     ))
-    big_model = BigModelDetails({
-        "sprite": SpriteName._947_SMITHY,
-        "priority_0": True,
-        "priority_1": True,
-        "priority_2": False,
-        "show_shadow": False,
-        "shadow": ShadowSize._00_OVAL_SMALL,
-        "y_pixel_shift": -16,
-        "acute_axis": 12,
-        "obtuse_axis": 15,
-        "height": 13,
-        "vram_store": VramStore._02_SWSE,
-        "vram_size": 5,
-        "cannot_clone": False,
-        "byte2_bit0": False,
-        "byte2_bit1": False,
-        "byte2_bit2": False,
-        "byte2_bit3": False,
-        "byte2_bit4": False,
-        "byte5_bit6": False,
-        "byte5_bit7": False,
-        "byte6_bit2": False
-    }, width=49, height=31, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 634, animations=SpriteAnimationCollection(
         mines_punch=smithy_hit,
         statue_peck=smithy_hit_fast,
         chandelier_challenge=smithy_hit,
@@ -5079,8 +4489,10 @@ class Croco1(BossAndStarLocation):
                       False, target_scripts=[1713], target_action_scripts=[162], sequence_setter=758),
         BossModelFill(Rooms._078_BANDITS_WAY_AREA_04, 12, Croco1Boss,
                       SpriteSize.Small, False, target_scripts=[1698], sequence_setter=759),
-        BossModelFill(Rooms._206_BANDITS_WAY_AREA_05, 8, Croco1Boss, SpriteSize.Small, False, target_scripts=[1707, 
-                      1708, 1709, 1710], target_action_scripts=[469], sequence_setter=760),
+        BossModelFill(Rooms._206_BANDITS_WAY_AREA_05, 8, Croco1Boss, SpriteSize.Small, False, target_scripts=[1707,
+                                                                                                              1708, 1709, 1710], target_action_scripts=[469], sequence_setter=760),
+        BossModelFill(Rooms._505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI, 10, Croco1Boss, SpriteSize.Small,
+                      False, target_scripts=[3806], target_action_scripts=[239], sequence_setter=1193),
     ]
 
 
@@ -5090,11 +4502,12 @@ class Mack(BossAndStarLocation):
     name = "Mack"
     battlefield = Battlefields.MushroomKingdomThroneRoom
     music = music.BossMusic
-    statue_palette = ["F8E870", "D0A000", "F8E870", "906010", "906010", "D0A000", "C08020", "E0C000", "683808", "301830", "C08020", "301830", "906010", "482818", "181818"]
+    statue_palette = ["F8E870", "D0A000", "F8E870", "906010", "906010", "D0A000", "C08020",
+                      "E0C000", "683808", "301830", "C08020", "301830", "906010", "482818", "181818"]
     boss = MackBoss
     boss_locations = [
         BossModelFill(Rooms._326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM, 3, MackBoss, SpriteSize.Large,
-                      False, target_scripts=[368, 373], target_action_scripts=[636], sequence_setter=761),
+                      False, target_scripts=[368, 373], target_action_scripts=[636], sequence_setter=761, prefer_south_only=True),
     ]
     unique_henchmen = [
         [
@@ -5193,7 +4606,7 @@ class Belome1(BossAndStarLocation):
     boss = Belome1Boss
     boss_locations = [
         BossModelFill(Rooms._302_KERO_SEWERS_AREA_08_BELOMES_ROOM, 1, Belome1Boss,
-                      SpriteSize.Large, False, target_scripts=[773, 3135], sequence_setter=772),
+                      SpriteSize.Attack, False, target_scripts=[773, 3135], sequence_setter=772),
     ]
 
 
@@ -5206,48 +4619,48 @@ class Bowyer(BossAndStarLocation):
     boss = BowyerBoss
     boss_locations = [
         BossModelFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 11, BowyerBoss,
-                      SpriteSize.Large, False, target_scripts=[774, 2448], sequence_setter=775),
+                      SpriteSize.Large, False, target_scripts=[774, 2448], sequence_setter=775, prefer_uncloneable=True, prefer_south_only=True),
     ]
     unique_henchmen = [
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 1, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 7, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 3, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 9, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 4, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 5, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 2, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 8, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 0, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
         [
             UniqueHenchmanFill(Rooms._232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, 6, BowyerAero, False, False, True,
-                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775),
+                               HenchmanType.NPCOnly, target_scripts=[774, 2448], target_action_scripts=[486, 487], sequence_setter=775, prefer_south_only=True),
         ],
     ]
 
@@ -5295,7 +4708,6 @@ class Punchinello(BossAndStarLocation):
     name = "Punchinello"
     battlefield = Battlefields.MolevilleMines
     music = music.MidbossMusic
-    statue_palette = ["F8F8A0", "000000", "000000", "F8E870", "906010", "F8E870", "E0C000", "D0A000", "E0C000", "C08020", "C08020", "482818", "301830", "301830", "181818"]
     boss = PunchinelloBoss
     boss_locations = [
         BossModelFill(Rooms._289_MOLEVILLE_MINES_AREA_17_PUNCHINELLOS_ROOM_BEFORE_BATTLE, 0,
@@ -5333,7 +4745,6 @@ class Booster(BossAndStarLocation):
     battlefield = Battlefields.BoosterTower
     music = music.MidbossMusic
     boss = BoosterBoss
-    statue_palette = ["F8F8A0", "F8E870", "F8E870", "E0C000", "C08020", "906010", "E0C000", "906010", "906010", "E0C000", "C08020", "906010", "683808", "482818", "301830"]
     boss_locations = [
         BossModelFill(Rooms._192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, 0, BoosterBoss, SpriteSize.Small,
                       False, target_scripts=[1359, 1358, 1364, 1365, 1366, 1367, 1368, 1369, 1370], sequence_setter=789),
@@ -5452,12 +4863,14 @@ class Bundt(BossAndStarLocation):
         [
             UniqueHenchmanFill(Rooms._155_MARRYMORE_CHAPEL_KITCHEN, 1, BundtTorte1, False, True, False, HenchmanType.NPCOnly, dialogs=[
                                2061], target_scripts=[628], target_action_scripts=[330], sequence_setter=796),
-            UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 9, BundtTorte1, False, True, False, HenchmanType.NPCOnly, target_scripts=[668], target_action_scripts=[636], sequence_setter=790)
+            UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 9, BundtTorte1, False, True,
+                               False, HenchmanType.NPCOnly, target_scripts=[668], target_action_scripts=[636], sequence_setter=790)
         ],
         [
             UniqueHenchmanFill(Rooms._155_MARRYMORE_CHAPEL_KITCHEN, 2, BundtTorte2, False, True, False, HenchmanType.NPCOnly, dialogs=[
                                2062], target_scripts=[628], target_action_scripts=[331], sequence_setter=796),
-            UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 10, BundtTorte2, False, True, False, HenchmanType.NPCOnly, target_scripts=[668], target_action_scripts=[636], sequence_setter=790)
+            UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 10, BundtTorte2, False, True,
+                               False, HenchmanType.NPCOnly, target_scripts=[668], target_action_scripts=[636], sequence_setter=790)
         ]
     ]
 
@@ -5495,6 +4908,8 @@ class Johnny(BossAndStarLocation):
                       1778, 1780, 1781], target_scripts=[3282], target_action_scripts=[348], sequence_setter=801),
         BossModelFill(Rooms._315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH, 8, JohnnyBoss, SpriteSize.Small,
                       False, target_scripts=[1146, 1147], target_action_scripts=[], sequence_setter=802),
+        BossModelFill(Rooms._432_ENDING_CREDITS_JOHNNY_LOOKING_OUT_AT_SUNSET_ON_BEACH_SHORE, 0, JohnnyBoss, SpriteSize.Small,
+                      False, target_scripts=[2619], target_action_scripts=[], sequence_setter=1191),
     ]
     unique_henchmen = [
         [
@@ -5766,86 +5181,50 @@ class Valentina(BossAndStarLocation):
     music = music.MidbossMusic
     boss = ValentinaBoss
     boss_locations = [
-        BossModelFill(Rooms._341_NIMBUS_LAND_GARROS_HOUSE, 1, ValentinaBoss, SpriteSize.Statue,
-                      False, target_scripts=[737], target_action_scripts=[], sequence_setter=821),
-        BossModelFill(Rooms._341_NIMBUS_LAND_GARROS_HOUSE, 2, ValentinaBoss, SpriteSize.Statue,
-                      False, target_scripts=[737], target_action_scripts=[], sequence_setter=821),
-        BossModelFill(Rooms._341_NIMBUS_LAND_GARROS_HOUSE, 3, ValentinaBoss, SpriteSize.Statue,
-                      False, target_scripts=[737], target_action_scripts=[], sequence_setter=821),
         BossModelFill(Rooms._430_NIMBUS_LAND_OUTSIDE_DURING_VALENTINA, 9, ValentinaBoss, SpriteSize.Small,
                       False, target_scripts=[738], target_action_scripts=[], sequence_setter=822),
-        BossModelFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 0, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=823),
-        BossModelFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 1, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=823),
-        BossModelFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 2, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=823),
-        BossModelFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 3, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=823),
-        BossModelFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 4, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=823),
-        BossModelFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 5, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=823),
-        BossModelFill(Rooms._115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA, 0, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=824),
-        BossModelFill(Rooms._115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA, 1, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=824),
-        BossModelFill(Rooms._122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM, 0, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=825),
-        BossModelFill(Rooms._122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM, 1, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=825),
-        BossModelFill(Rooms._120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA, 0, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=826),
-        BossModelFill(Rooms._120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA, 1, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=826),
-        BossModelFill(Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, 0, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[3640, 2112], target_action_scripts=[], sequence_setter=819),
-        BossModelFill(Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, 1, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[3640, 2112], target_action_scripts=[], sequence_setter=819),
-        BossModelFill(Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, 2, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[3640, 2112], target_action_scripts=[], sequence_setter=819),
-        BossModelFill(Rooms._113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, 3, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=827),
-        BossModelFill(Rooms._119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05, 6, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=829),
-        BossModelFill(Rooms._119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05, 7, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=829),
         BossModelFill(Rooms._258_BOOSTER_TOWER_BALCONY_AT_TOP_FLOOR, 4, ValentinaBoss, SpriteSize.Small,
                       False, target_scripts=[1282, 2278], target_action_scripts=[], sequence_setter=794),
-        BossModelFill(Rooms._408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM_, 6, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=830),
-        BossModelFill(Rooms._408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM_, 7, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=830),
-        BossModelFill(Rooms._440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA, 0, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=831),
-        BossModelFill(Rooms._440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA, 1, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=831),
-        BossModelFill(Rooms._447_NIMBUS_LAND_HOT_SPRINGS, 1, ValentinaBoss, SpriteSize.Statue,
-                      False, target_scripts=[], target_action_scripts=[], sequence_setter=832),
-        BossModelFill(Rooms._447_NIMBUS_LAND_HOT_SPRINGS, 2, ValentinaBoss, SpriteSize.Statue,
-                      False, target_scripts=[], target_action_scripts=[], sequence_setter=832),
-        BossModelFill(Rooms._447_NIMBUS_LAND_HOT_SPRINGS, 3, ValentinaBoss, SpriteSize.Statue,
-                      False, target_scripts=[], target_action_scripts=[], sequence_setter=832),
-        BossModelFill(Rooms._447_NIMBUS_LAND_HOT_SPRINGS, 4, ValentinaBoss, SpriteSize.Statue,
-                      False, target_scripts=[], target_action_scripts=[], sequence_setter=832),
-        BossModelFill(Rooms._497_NIMBUS_CASTLE_AREA_06_____DUMMY, 0, ValentinaBoss, SpriteSize.Statue,
-                      False, target_scripts=[], target_action_scripts=[], sequence_setter=834),
-        BossModelFill(Rooms._497_NIMBUS_CASTLE_AREA_06_____DUMMY, 1, ValentinaBoss, SpriteSize.Statue,
-                      False, target_scripts=[], target_action_scripts=[], sequence_setter=834),
-        BossModelFill(Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 1, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=835),
-        BossModelFill(Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 2, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=835),
-        BossModelFill(Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 3, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=835),
-        BossModelFill(Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 4, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=835),
-        BossModelFill(Rooms._501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA, 0, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=836),
-        BossModelFill(Rooms._501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA, 1, ValentinaBoss,
-                      SpriteSize.Statue, False, target_scripts=[], target_action_scripts=[], sequence_setter=836),
-        BossModelFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 9, ValentinaBoss,
-                      SpriteSize.Small, False, target_scripts=[2295], target_action_scripts=[], sequence_setter=795),
+    ]
+    statue_locations = [
+        StatueFill(Rooms._341_NIMBUS_LAND_GARROS_HOUSE, 1, sequence_setter=821), 
+        StatueFill(Rooms._341_NIMBUS_LAND_GARROS_HOUSE, 2, sequence_setter=821), 
+        StatueFill(Rooms._341_NIMBUS_LAND_GARROS_HOUSE, 3, sequence_setter=821), 
+        StatueFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 0, sequence_setter=823), 
+        StatueFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 1, sequence_setter=823), 
+        StatueFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 2, sequence_setter=823), 
+        StatueFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 3, sequence_setter=823), 
+        StatueFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 4, sequence_setter=823), 
+        StatueFill(Rooms._109_NIMBUS_CASTLE_AREA_01_ENTRANCE_HALL, 5, sequence_setter=823), 
+        StatueFill(Rooms._115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA, 0, sequence_setter=824), 
+        StatueFill(Rooms._115_NIMBUS_CASTLE_AREA_03_4WAY_PATH_DURING_VALENTINA, 1, sequence_setter=824), 
+        StatueFill(Rooms._122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM, 0, sequence_setter=825), 
+        StatueFill(Rooms._122_NIMBUS_CASTLE_AREA_12_ENTRANCE_TO_THRONE_ROOM, 1, sequence_setter=825), 
+        StatueFill(Rooms._120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA, 0, sequence_setter=826), 
+        StatueFill(Rooms._120_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_DURING_VALENTINA, 1, sequence_setter=826), 
+        StatueFill(Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, 0, sequence_setter=819), 
+        StatueFill(Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, 1, sequence_setter=819), 
+        StatueFill(Rooms._110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM, 2, sequence_setter=819), 
+        StatueFill(Rooms._113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15, 3, sequence_setter=827), 
+        StatueFill(Rooms._119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05, 6, sequence_setter=829), 
+        StatueFill(Rooms._119_NIMBUS_CASTLE_AREA_06_LEFTMOST_FRONT_DOOR_FROM_AREA_05, 7, sequence_setter=829), 
+        StatueFill(Rooms._408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM_, 6, sequence_setter=830), 
+        StatueFill(Rooms._408_NIMBUS_CASTLE_AREA_14_RIGHTMOST_FRONT_DOOR_OF_LONG_5EXIT_ROOM_, 7, sequence_setter=830), 
+        StatueFill(Rooms._440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA, 0, sequence_setter=831), 
+        StatueFill(Rooms._440_NIMBUS_CASTLE_AREA_13_THRONE_ROOM_AFTER_VALENTINA, 1, sequence_setter=831), 
+        StatueFill(Rooms._447_NIMBUS_LAND_HOT_SPRINGS, 1, sequence_setter=832), 
+        StatueFill(Rooms._447_NIMBUS_LAND_HOT_SPRINGS, 2, sequence_setter=832), 
+        StatueFill(Rooms._447_NIMBUS_LAND_HOT_SPRINGS, 3, sequence_setter=832), 
+        StatueFill(Rooms._447_NIMBUS_LAND_HOT_SPRINGS, 4, sequence_setter=832), 
+        StatueFill(Rooms._497_NIMBUS_CASTLE_AREA_06_____DUMMY, 0, sequence_setter=834), 
+        StatueFill(Rooms._497_NIMBUS_CASTLE_AREA_06_____DUMMY, 1, sequence_setter=834), 
+        StatueFill(Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 1, sequence_setter=835), 
+        StatueFill(Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 2, sequence_setter=835), 
+        StatueFill(Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 3, sequence_setter=835), 
+        StatueFill(Rooms._499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, 4, sequence_setter=835), 
+        StatueFill(Rooms._501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA, 0, sequence_setter=836), 
+        StatueFill(Rooms._501_NIMBUS_CASTLE_AREA_03_4WAY_PATH_AFTER_VALENTINA, 1, sequence_setter=836), 
+        StatueFill(Rooms._506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA, 9, sequence_setter=795),
     ]
     repeatable_henchmen = [
         [
@@ -5975,7 +5354,6 @@ class Magikoopa(BowsersKeepLocation):
     battlefield = Battlefields.BowsersKeep
     music = music.MidbossMusic
     boss = MagikoopaBoss
-    statue_palette = ["F8F8A0", "E0C000", "906010", "C08020", "E0C000", "C08020", "683808", "301830", "F8F8A0", "F8E870", "D09020", "784818", "E0C000", "482818", "301830"]
     boss_locations = [
         BossModelFill(Rooms._266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, 1, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[2208, 2209, 942], target_action_scripts=[
         ], sequence_setter=847),  # may need to remove palette setter if not magikoopa, may need special animation when summoning
@@ -5991,6 +5369,8 @@ class Magikoopa(BowsersKeepLocation):
                       2171, 2172, 2173, 2174, 941], target_action_scripts=[1004, 1005], sequence_setter=846),  # may need special animation when summoning
         BossModelFill(Rooms._462_BOWSERS_KEEP_6DOOR_BATTLE_ROOM_2A_1ST_FIGHT_GU_GOOMBA, 0, MagikoopaBoss, SpriteSize.Small, False, target_scripts=[
                       2176, 2177, 2178, 2179, 941], target_action_scripts=[1004, 1005], sequence_setter=852),  # may need special animation when summoning
+        BossModelFill(Rooms._435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER__TROOPS_REPAIR, 6, MagikoopaBoss, SpriteSize.Small,
+                      False, target_scripts=[2622], target_action_scripts=[], sequence_setter=1192),
     ]
 
 
@@ -6106,15 +5486,15 @@ class Director(BossLocation):
     unique_henchmen = [
         [
             UniqueHenchmanFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 7, DirectorPoundette, True, False, False,
-                                   HenchmanType.NPCOnly, target_scripts=[2621], target_action_scripts=[962], sequence_setter=857),
+                               HenchmanType.NPCOnly, target_scripts=[2621], target_action_scripts=[962], sequence_setter=857),
         ],
         [
             UniqueHenchmanFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 8, DirectorPoundette, True, False, False,
-                                   HenchmanType.NPCOnly, target_scripts=[2621], target_action_scripts=[963], sequence_setter=857),
+                               HenchmanType.NPCOnly, target_scripts=[2621], target_action_scripts=[963], sequence_setter=857),
         ],
         [
             UniqueHenchmanFill(Rooms._472_FACTORY_GROUNDS_AREA_03, 9, DirectorPoundette, True, False, False,
-                                   HenchmanType.NPCOnly, target_scripts=[2621], target_action_scripts=[964], sequence_setter=857),
+                               HenchmanType.NPCOnly, target_scripts=[2621], target_action_scripts=[964], sequence_setter=857),
         ]
     ]
 

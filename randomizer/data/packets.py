@@ -594,35 +594,35 @@ packets[83] = { # star - fall
 packets[84] = { # feather - static
   "sprite": 252,
   "shadow": False,
-  "action_script": 15,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db1a4
 packets[85] = { # star - static
   "sprite": 226,
   "shadow": False,
-  "action_script": 3,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 }
 packets[86] = { # flower - static
   "sprite": SpriteName._195_FLOWER,
   "shadow": False,
-  "action_script": 15,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db1ae
 packets[87] = { # mushroom - static
   "sprite": SpriteName._195_FLOWER,
   "shadow": False,
-  "action_script": 831,
+  "action_script": 581,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db1b3
 packets[88] = { # key - static
   "sprite": SpriteName._195_FLOWER,
   "shadow": False,
-  "action_script": 830,
+  "action_script": 721,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db1b8
@@ -636,7 +636,7 @@ packets[89] = { # key - falling
 packets[90] = { # bag - static
   "sprite": SpriteName._195_FLOWER,
   "shadow": False,
-  "action_script": 773,
+  "action_script": 545,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db1c2
@@ -657,14 +657,14 @@ packets[92] = { # ring - fall
 packets[93] = { # ring - static
   "sprite": 222,
   "shadow": False,
-  "action_script": 773,
+  "action_script": 545,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db1d1
 packets[94] = { # brooch - static
   "sprite": 222,
   "shadow": False,
-  "action_script": 201,
+  "action_script": 544,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db1d6
@@ -685,7 +685,7 @@ packets[96] = { # brooch - chest
 packets[97] = { # shoes - static
   "sprite": 222,
   "shadow": False,
-  "action_script": 830,
+  "action_script": 721,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db1e5
@@ -706,7 +706,7 @@ packets[99] = { # shoes - chest
 packets[100] = { # junk - static
   "sprite": 222,
   "shadow": False,
-  "action_script": 15,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db1f4
@@ -741,7 +741,7 @@ packets[104] = { # crown - falling
 packets[105] = { # crown - static
   "sprite": 222,
   "shadow": True,
-  "action_script": 840,
+  "action_script": 634,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db20d
@@ -790,7 +790,7 @@ packets[111] = { # frog coin - static
 packets[112] = { # bomb - static
   "sprite": 205,
   "shadow": False,
-  "action_script": 15,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db230
@@ -811,7 +811,7 @@ packets[114] = { # bomb - chest
 packets[115] = { # egg - static
   "sprite": 237,
   "shadow": False,
-  "action_script": 15,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } 
@@ -832,7 +832,7 @@ packets[117] = { # egg - chest
 packets[118] = { # cookie - static
   "sprite": 254,
   "shadow": False,
-  "action_script": 15,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 }  # 0x1db24e
@@ -853,7 +853,7 @@ packets[120] = { # cookie - chest
 packets[121] = { # berry - static
   "sprite": 253,
   "shadow": False,
-  "action_script": 15,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db25d
@@ -874,7 +874,7 @@ packets[123] = { # berry - chest
 packets[124] = { # card - static
   "sprite": 206,
   "shadow": False,
-  "action_script": 15,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db26c
@@ -895,7 +895,7 @@ packets[126] = { # card - chest
 packets[127] = { # green syrup - static
   "sprite": 208,
   "shadow": False,
-  "action_script": 831,
+  "action_script": 581,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db27b
@@ -916,7 +916,7 @@ packets[129] = { # green syrup - chest
 packets[130] = { # red syrup - static
   "sprite": 209,
   "shadow": False,
-  "action_script": 831,
+  "action_script": 581,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db28a
@@ -937,28 +937,28 @@ packets[132] = { # red syrup - chest
 packets[133] = { # blue syrup - static
   "sprite": 210,
   "shadow": False,
-  "action_script": 831,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db299
 packets[134] = { # blue syrup - falling
   "sprite": 210,
   "shadow": True,
-  "action_script": 916,
+  "action_script": 917,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db29e
 packets[135] = { # blue syrup - chest
   "sprite": 210,
   "shadow": False,
-  "action_script": 526,
+  "action_script": 525,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db2a3
 packets[136] = { # yellow syrup - static
   "sprite": 211,
   "shadow": False,
-  "action_script": 831,
+  "action_script": 581,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db2a8
@@ -979,7 +979,7 @@ packets[138] = { # yellow syrup - chest
 packets[139] = { # green juice - static
   "sprite": 208,
   "shadow": False,
-  "action_script": 830,
+  "action_script": 721,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db2b7
@@ -1000,7 +1000,7 @@ packets[141] = { # green juice - chest
 packets[142] = { # red juice - static
   "sprite": 209,
   "shadow": False,
-  "action_script": 830,
+  "action_script": 721,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db2c6
@@ -1021,7 +1021,7 @@ packets[144] = { # red juice - chest
 packets[145] = { # p drink - static
   "sprite": 208,
   "shadow": False,
-  "action_script": 201,
+  "action_script": 544,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db2d5
@@ -1042,126 +1042,126 @@ packets[147] = { # p drink - chest
 packets[148] = { # d drink - chest
   "sprite": 211,
   "shadow": False,
-  "action_script": 390,
+  "action_script": 913,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db2e4
 packets[149] = { # d drink - falling
   "sprite": 211,
   "shadow": True,
-  "action_script": 462,
+  "action_script": 204,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db2e9
 packets[150] = { # d drink - static
   "sprite": 211,
   "shadow": True,
-  "action_script": 840,
+  "action_script": 721,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db2ee
 packets[151] = { # yellow music drink - chest
   "sprite": 211,
   "shadow": False,
-  "action_script": 388,
+  "action_script": 909,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db2f3
 packets[152] = { # yellow music drink - fall
   "sprite": 211,
   "shadow": True,
-  "action_script": 918,
+  "action_script": 460,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db2f8
 packets[153] = { # yellow music drink - static
   "sprite": 211,
   "shadow": False,
-  "action_script": 773,
+  "action_script": 544,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db2fd
 packets[154] = { # blue music drink - chest
   "sprite": 210,
   "shadow": False,
-  "action_script": 388,
+  "action_script": 526,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db302
 packets[155] = { # blue music drink - fall
   "sprite": 210,
   "shadow": True,
-  "action_script": 918,
+  "action_script": 916,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db307
 packets[156] = { # blue music drink - static
   "sprite": 210,
   "shadow": False,
-  "action_script": 773,
+  "action_script": 581,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db30c
 packets[157] = { # frog drink - chest
   "sprite": 208,
   "shadow": False,
-  "action_script": 686,
+  "action_script": 390,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db311
 packets[158] = { # frog drink - fall
   "sprite": 208,
   "shadow": True,
-  "action_script": 626,
+  "action_script": 462,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db316
 packets[159] = { # frog drink - static
   "sprite": 208,
   "shadow": False,
-  "action_script": 1020,
+  "action_script": 634,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db31b
 packets[160] = { # red music drink - chest
   "sprite": 209,
   "shadow": False,
-  "action_script": 388,
+  "action_script": 909,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db320
 packets[161] = { # red music drink - fall
   "sprite": 209,
   "shadow": True,
-  "action_script": 918,
+  "action_script": 460,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db325
 packets[162] = { # red music drink - static
   "sprite": 209,
   "shadow": False,
-  "action_script": 773,
+  "action_script": 544,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db32a
 packets[163] = { # r drink - static
   "sprite": 210,
   "shadow": False,
-  "action_script": 202,
+  "action_script": 721,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db32f
 packets[164] = { # r drink - fall
   "sprite": 210,
   "shadow": True,
-  "action_script": 583,
+  "action_script": 204,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db334
 packets[165] = { # r drink - chest
   "sprite": 210,
   "shadow": False,
-  "action_script": 333,
+  "action_script": 913,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db339
@@ -1189,161 +1189,161 @@ packets[168] = { # music - chest
 packets[169] = { # star drink - static
   "sprite": 209,
   "shadow": False,
-  "action_script": 1021,
+  "action_script": 634,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db34d
 packets[170] = { # star drink - fall
   "sprite": 209,
   "shadow": True,
-  "action_script": 581,
+  "action_script": 462,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db352
 packets[171] = { # star drink - chest
   "sprite": 209,
   "shadow": False,
-  "action_script": 793,
+  "action_script": 390,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db357
 packets[172] = { # star drink - static
   "sprite": 209,
   "shadow": False,
-  "action_script": 1021,
+  "action_script": 634,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db35c
 packets[173] = { # green candy - static
   "sprite": 208,
   "shadow": False,
-  "action_script": 1018,
+  "action_script": 545,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db361
 packets[174] = { # green candy - fall
   "sprite": 208,
   "shadow": True,
-  "action_script": 544,
+  "action_script": 918,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db366
 packets[175] = { # green candy - chest
   "sprite": 208,
   "shadow": False,
-  "action_script": 721,
+  "action_script": 388,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db36b
 packets[176] = { # blue candy - static
   "sprite": 210,
   "shadow": False,
-  "action_script": 1018,
+  "action_script": 544,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db370
 packets[177] = { # blue candy - fall
   "sprite": 210,
   "shadow": True,
-  "action_script": 544,
+  "action_script": 460,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db375
 packets[178] = { # blue candy - chest
   "sprite": 210,
   "shadow": False,
-  "action_script": 721,
+  "action_script": 909,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db37a
 packets[179] = { # green bomb - static
   "sprite": 208,
   "shadow": False,
-  "action_script": 1019,
+  "action_script": 352,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db37f
 packets[180] = { # green bomb - fall
   "sprite": 208,
   "shadow": True,
-  "action_script": 545,
+  "action_script": 626,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db384
 packets[181] = { # green bomb - chest
   "sprite": 208,
   "shadow": False,
-  "action_script": 634,
+  "action_script": 686,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db389
 packets[182] = { # red bomb - static
   "sprite": 209,
   "shadow": False,
-  "action_script": 1019,
+  "action_script": 545,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db38e
 packets[183] = { # red bomb - fall
   "sprite": 209,
   "shadow": True,
-  "action_script": 545,
+  "action_script": 918,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db393
 packets[184] = { # red bomb - chest
   "sprite": 209,
   "shadow": False,
-  "action_script": 634,
+  "action_script": 388,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db398
 packets[185] = { # blue bomb - static
   "sprite": 210,
   "shadow": False,
-  "action_script": 1019,
+  "action_script": 634,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db39d
 packets[186] = { # blue bomb - fall
   "sprite": 210,
   "shadow": True,
-  "action_script": 545,
+  "action_script": 462,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db3a2
 packets[187] = { # blue bomb - chest
   "sprite": 210,
   "shadow": False,
-  "action_script": 634,
+  "action_script": 390,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db3a7
 packets[188] = { # yellow bomb - static
   "sprite": 211,
   "shadow": False,
-  "action_script": 1019,
+  "action_script": 634,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db3ac
 packets[189] = { # yellow bomb - fall
   "sprite": 211,
   "shadow": True,
-  "action_script": 545,
+  "action_script": 462,
   "unknown_bits": [False, True, False],
   "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
 } # 0x1db3b1
 packets[190] = { # yellow bomb - chest
   "sprite": 211,
   "shadow": False,
-  "action_script": 634,
+  "action_script": 390,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db3b6
 packets[191] = { # beetle - static
   "sprite": 255,
   "shadow": False,
-  "action_script": 15,
+  "action_script": 793,
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
 } # 0x1db3bb
@@ -1361,15 +1361,69 @@ packets[193] = { # beetle - chest
   "unknown_bits": [False, False, False],
   "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
 } # 0x1db3c5
-packets[194] = None # 0x1db3ca
-packets[195] = None # 0x1db3cf
-packets[196] = None # 0x1db3d4
-packets[197] = None # 0x1db3d9
-packets[198] = None # 0x1db3de
-packets[199] = None # 0x1db3e3
-packets[200] = None # 0x1db3e8
-packets[201] = None # 0x1db3ed
-packets[202] = None # 0x1db3f2
+packets[194] = { # red mushroom - static
+  "sprite": 209,
+  "shadow": False,
+  "action_script": 793,
+  "unknown_bits": [False, False, False],
+  "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
+} # 0x1db3ca
+packets[195] = { # red mushroom - falling
+  "sprite": 209,
+  "shadow": True,
+  "action_script": 917,
+  "unknown_bits": [False, True, False],
+  "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
+} # 0x1db3cf
+packets[196] = { # red mushroom - chest
+  "sprite": 209,
+  "shadow": False,
+  "action_script": 525,
+  "unknown_bits": [False, False, False],
+  "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
+} # 0x1db3d4
+packets[197] = { # green mushroom - static
+  "sprite": 208,
+  "shadow": False,
+  "action_script": 793,
+  "unknown_bits": [False, False, False],
+  "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
+} # 0x1db3d9
+packets[198] = { # green mushroom - falling
+  "sprite": 208,
+  "shadow": True,
+  "action_script": 917,
+  "unknown_bits": [False, True, False],
+  "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
+} # 0x1db3de
+packets[199] = { # green mushroom - chest
+  "sprite": 208,
+  "shadow": False,
+  "action_script": 525,
+  "unknown_bits": [False, False, False],
+  "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
+} # 0x1db3e3
+packets[200] = { # yellow mushroom - static
+  "sprite": 211,
+  "shadow": False,
+  "action_script": 793,
+  "unknown_bits": [False, False, False],
+  "unknown_bytes": [0, 0, 1, 3, 1, 0, 0]
+} # 0x1db3e8
+packets[201] = { # yellow mushroom - falling
+  "sprite": 211,
+  "shadow": True,
+  "action_script": 917,
+  "unknown_bits": [False, True, False],
+  "unknown_bytes": [0, 0, 1, 4, 1, 0, 0]
+} # 0x1db3ed
+packets[202] = { # yellow mushroom - chest
+  "sprite": 211,
+  "shadow": False,
+  "action_script": 525,
+  "unknown_bits": [False, False, False],
+  "unknown_bytes": [0, 0, 3, 3, 1, 0, 0]
+} # 0x1db3f2
 packets[203] = None # 0x1db3f7
 packets[204] = None # 0x1db3fc
 packets[205] = None # 0x1db401

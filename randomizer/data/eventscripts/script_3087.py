@@ -33,7 +33,7 @@ script = [
     {
         "identifier": 'EVENT_3087_jmp_if_7000_equals_short_287_',
         "command": 'jmp_if_7000_equals_short',
-        "args": [1, 'EVENT_3087_subroutine']
+        "args": [1, 'EVENT_3087_set_298___']
     },
     {
         "identifier": 'EVENT_3087_set_291',
@@ -43,12 +43,22 @@ script = [
     {
         "identifier": 'EVENT_3087_set_291_',
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [892]
     },
     {
-        "identifier": 'EVENT_3087_subroutine',
-        "command": 'run_event_as_subroutine',
-        "args": [56]
+        "identifier": 'EVENT_3087_set_298___',
+        "command": 'set',
+        "args": [0x70a7, 136]
+    },
+    {
+        "identifier": 'EVENT_3087_remove_one_from_inventory_299___',
+        "command": 'remove_one_from_inventory',
+        "args": [items.SheepAttack]
+    },
+    {
+        "identifier": 'EVENT_3087_set_291______',
+        "command": 'jmp_to_event',
+        "args": [892]
     },
     {
         "identifier": 'EVENT_3087_ret_297_',
@@ -67,7 +77,7 @@ script = [
     {
         "identifier": 'EVENT_3087_set_291__',
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [892]
     },
     {
         "identifier": 'EVENT_3087_set_298',
@@ -82,7 +92,7 @@ script = [
     {
         "identifier": 'EVENT_3087_set_291___',
         "command": 'jmp_to_event',
-        "args": [3089]
+        "args": [892]
     }
 ]
 

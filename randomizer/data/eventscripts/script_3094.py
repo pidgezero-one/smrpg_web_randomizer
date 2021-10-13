@@ -60,14 +60,9 @@ script = [
         "args": [0x704a, 3]
     },
     {
-        "identifier": "EVENT_3094_pause_1",
-        "command": "pause",
-        "args": [13]
-    },
-    {
         "identifier": 'EVENT_3094_create_packet_at_7010_coords_jmp_if_null_11',
         "command": 'create_packet_at_7010_coords_jmp_if_null',
-        "args": [NPCPackets._023_SPARKLES_MOVE_W, 'EVENT_3094_ret_12']
+        "args": [81, 'EVENT_3094_ret_12']
     },
     {
         "identifier": "EVENT_3094_pause_2",

@@ -38,7 +38,7 @@ script = [
     {
         "identifier": 'EVENT_3184_action_queue_sync_59',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_1],
+        "args": [AreaObjects.NPC_0],
         "subscript": [
             {
                 "identifier": 'EVENT_3184_action_queue_sync_59_SUBSCRIPT_set_object_memory_bits_0',
@@ -59,7 +59,7 @@ script = [
     {
         "identifier": 'EVENT_3184_action_queue_sync_60',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_1],
         "subscript": [
             {
                 "identifier": 'EVENT_3184_action_queue_sync_60_SUBSCRIPT_set_object_memory_bits_0',
@@ -85,22 +85,22 @@ script = [
     {
         "identifier": 'EVENT_3184_remove_from_current_level_62',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_1]
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_3184_remove_from_current_level_63',
         "command": 'remove_from_current_level',
-        "args": [AreaObjects.NPC_2]
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_3184_disable_trigger_64',
         "command": 'disable_trigger',
-        "args": [AreaObjects.NPC_1]
+        "args": [AreaObjects.NPC_0]
     },
     {
         "identifier": 'EVENT_3184_disable_trigger_65',
         "command": 'disable_trigger',
-        "args": [AreaObjects.NPC_2]
+        "args": [AreaObjects.NPC_1]
     },
     {
         "identifier": 'EVENT_3184_jmp_to_event_66',

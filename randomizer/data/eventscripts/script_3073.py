@@ -60,11 +60,6 @@ script = [
         "args": [0x704a, 3]
     },
     {
-        "identifier": 'EVENT_3073_create_packet_at_7010_coords_jmp_if_null_11',
-        "command": 'create_packet_at_7010_coords_jmp_if_null',
-        "args": [NPCPackets._005_ITEM_BAG, 'EVENT_3073_ret_12']
-    },
-    {
         "identifier": 'EVENT_3073_ret_12',
         "command": 'ret'
     }

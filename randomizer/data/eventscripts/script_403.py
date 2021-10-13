@@ -107,11 +107,6 @@ script = [
         "command": 'unsync_dialog'
     },
     {
-        "identifier": 'EVENT_403_jmp_to_subroutine_13',
-        "command": 'jmp_to_subroutine',
-        "args": ['EVENT_293_jmp_if_bit_set_0']
-    },
-    {
         "identifier": 'EVENT_403_action_queue_async_14',
         "command": 'action_queue_async',
         "args": [AreaObjects.NPC_7],

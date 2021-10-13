@@ -208,13 +208,13 @@ sprites = [
     Sprite(202, image_num=2, animation_num=325, palette_offset=2),
     Sprite(203, image_num=189, animation_num=328, palette_offset=0),
     Sprite(204, image_num=197, animation_num=342, palette_offset=2),
-    Sprite(205, image_num=82, animation_num=127, palette_offset=0),
+    Sprite(205, image_num=82, animation_num=452, palette_offset=0),
     Sprite(206, image_num=110, animation_num=177, palette_offset=0),
     Sprite(207, image_num=260, animation_num=385, palette_offset=0),
-    Sprite(208, image_num=155, animation_num=222, palette_offset=0),
-    Sprite(209, image_num=155, animation_num=222, palette_offset=1),
-    Sprite(210, image_num=155, animation_num=222, palette_offset=2),
-    Sprite(211, image_num=155, animation_num=222, palette_offset=3),
+    Sprite(208, image_num=155, animation_num=454, palette_offset=0),
+    Sprite(209, image_num=155, animation_num=455, palette_offset=1),
+    Sprite(210, image_num=155, animation_num=456, palette_offset=2),
+    Sprite(211, image_num=155, animation_num=457, palette_offset=3),
     Sprite(212, image_num=91, animation_num=147, palette_offset=1),
     Sprite(213, image_num=92, animation_num=148, palette_offset=0),
     Sprite(214, image_num=39, animation_num=383, palette_offset=0),
@@ -240,7 +240,7 @@ sprites = [
     Sprite(234, image_num=207, animation_num=360, palette_offset=0),
     Sprite(235, image_num=206, animation_num=359, palette_offset=0),
     Sprite(236, image_num=234, animation_num=296, palette_offset=0),
-    Sprite(237, image_num=84, animation_num=132, palette_offset=0),
+    Sprite(237, image_num=84, animation_num=453, palette_offset=0),
     Sprite(238, image_num=205, animation_num=358, palette_offset=0),
     Sprite(239, image_num=194, animation_num=357, palette_offset=1),
     Sprite(240, image_num=205, animation_num=356, palette_offset=0),
@@ -42263,7 +42263,7 @@ animations= [
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=1),
+                        AnimationSequenceFrame(duration=2, mold_id=0),
                     ]
                 ),
                 AnimationSequence(
@@ -101028,6 +101028,304 @@ animations= [
                 AnimationSequence(
                     frames=[
                         AnimationSequenceFrame(duration=1, mold_id=26),
+                    ]
+                ),
+            ]
+        )
+    ),
+    AnimationPack(452, length=31, unknown=0x0002,
+        properties=AnimationPackProperties(vram_size=2048,
+            molds=[
+                Mold(0, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 13, 14], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+            ],
+            sequences=[
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                    ]
+                ),
+            ]
+        )
+    ),
+    AnimationPack(453, length=31, unknown=0x0002,
+        properties=AnimationPackProperties(vram_size=2048,
+            molds=[
+                Mold(0, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+            ],
+            sequences=[
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                    ]
+                ),
+            ]
+        )
+    ),
+    AnimationPack(454, length=121, unknown=0x0002,
+        properties=AnimationPackProperties(vram_size=2048,
+            molds=[
+                Mold(0, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[9, 10, 11, 12], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(1, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[13, 14, 15, 16], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(2, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[17, 18, 19, 20], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(3, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 21, 22], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(4, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 5, 6], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(5, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[30, 31, 32, 33], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(6, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+            ],
+            sequences=[
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=0),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=1),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=2),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=3),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=4),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=5),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=6),
+                    ]
+                ),
+            ]
+        )
+    ),
+    AnimationPack(455, length=106, unknown=0x0002,
+        properties=AnimationPackProperties(vram_size=2048,
+            molds=[
+                Mold(0, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[9, 10, 11, 12], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(1, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[13, 14, 15, 16], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(2, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[17, 18, 19, 20], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(3, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 24, 25], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(4, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 28, 29], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(5, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+            ],
+            sequences=[
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=0),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=1),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=2),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=3),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=4),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=5),
+                    ]
+                ),
+            ]
+        )
+    ),
+    AnimationPack(456, length=91, unknown=0x0002,
+        properties=AnimationPackProperties(vram_size=2048,
+            molds=[
+                Mold(0, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[13, 14, 15, 16], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(1, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 24, 25], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(2, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 26, 27], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(3, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[30, 31, 32, 33], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(4, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+            ],
+            sequences=[
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=0),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=1),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=2),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=3),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=4),
+                    ]
+                ),
+            ]
+        )
+    ),
+    AnimationPack(457, length=91, unknown=0x0002,
+        properties=AnimationPackProperties(vram_size=2048,
+            molds=[
+                Mold(0, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[9, 10, 11, 12], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(1, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[13, 14, 15, 16], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(2, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 21, 23], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(3, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 24, 25], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+                Mold(4, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                    ]
+                ),
+            ],
+            sequences=[
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=0),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=1),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=2),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=3),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=16, mold_id=4),
                     ]
                 ),
             ]

@@ -286,7 +286,7 @@ partition_priority = [
     PartitionBufferTypes._3_SPRITES_PER_ROW
 ]
 
-special_case_rooms = [205, 463, 466, 477, 233, 236, 230, 232]
+special_case_rooms = [205, 463, 466, 477, 233, 236, 230, 232, 79]
 # 205 - complicated spiney sequence
 # 463, 466 - barrel count room and logic problem room need this for some reason
 requires_coin_buffer = [242]
@@ -406,10 +406,11 @@ def set_partitions(world):
             # consider chest contents and packets
             for c in world.chest_locations:
                 if room_index in c.rooms or (512 in c.rooms and room_index in pandorite_rooms) or (513 in c.rooms and room_index in hidon_rooms):
-                    if utils.isclass_or_instance(c, chests.Chest):
-                        if utils.isclass_or_instance(c.item, items.StarPiece):
-                            has_star_chest = True
-                    elif utils.isclass_or_instance(c, chests.PacketItem):
+                    #if utils.isclass_or_instance(c, chests.Chest):
+                        #if utils.isclass_or_instance(c.item, items.StarPiece):
+                        #    has_star_chest = True
+                    #elif utils.isclass_or_instance(c, chests.PacketItem):
+                    if utils.isclass_or_instance(c, chests.PacketItem):
                         packet_size += 1
                     if not world.settings.is_flag_enabled(flags.QuickHitCoins) and (utils.isclass_or_instance(c, chests.Chest) or utils.isclass_or_instance(c, chests.PacketItem)) and (utils.isclass_or_instance(c.item, items.FrogCoin) or utils.isclass_or_instance(c.item, items.MultiFrogCoin) or utils.isclass_or_instance(c.item, items.InfiniteCoins) or utils.isclass_or_instance(c.item, items.Coins)):
                         if (utils.isclass_or_instance(c.item, items.Coins) and c.item.chest_70A7_lower != 1) or utils.isclass_or_instance(c.item, items.MultiFrogCoin) or utils.isclass_or_instance(c.item, items.InfiniteCoins):
@@ -423,6 +424,8 @@ def set_partitions(world):
                         #     packet_buffers.append(PartitionBufferTypes.COINS)
                     elif utils.isclass_or_instance(c, chests.Chest) and utils.isclass_or_instance(c.item, items.SlotMachineChest):
                         packet_buffers.append(PartitionBufferTypes.COINS) # slot frog coin
+                    elif utils.isclass_or_instance(c, chests.Chest) and room_index not in requires_coin_buffer and (utils.isclass_or_instance(c.item, items.RegularItem) or utils.isclass_or_instance(c.item, items.ProgressiveItem) or utils.isclass_or_instance(c.item, items.Beetlemania) or utils.isclass_or_instance(c.item, items.StarPiece)):
+                        packet_size = max(1, packet_size) # apparently this might work???
             if has_star_chest:
                 packet_size += 1
                 # todo: invincibility stars

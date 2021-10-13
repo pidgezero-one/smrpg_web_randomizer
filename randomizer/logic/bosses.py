@@ -71,7 +71,11 @@ def randomize_all(world):
     """
     # Change Belome 2's large sprite before any of the substitution work happens.
     if world.settings.is_flag_enabled(flags.DifferentiateRepeatedBosses):
-        bosses.Belome2Boss.big_model.model_details["sprite"] = 147
+        belome_container = bosses.Belome2Boss.big_model
+        if belome_container.uncloneable_all_directions is not None:
+            world.models[belome_container.uncloneable_all_directions]["sprite"] = 147
+        if belome_container.uncloneable_south_only is not None:
+            world.models[belome_container.uncloneable_south_only]["sprite"] = 147
 
 
     # Open mode-specific shuffles.
@@ -424,7 +428,7 @@ def randomize_all(world):
                     # update run flags
                     for index, henchman in enumerate(location.unique_henchmen + location.repeatable_henchmen):
                         for index2, model in enumerate(henchman):
-                            if model.occupant is not None and model.occupant.pack_number is not None:
+                            if model.occupant is not None and model.occupant.pack_number is not None and model.fill_type != HenchmanType.NPCOnly:
                                 can_run_away = model.can_run_away
                                 pack_number = model.occupant.pack_number
                                 pack = world.get_formation_pack_by_index(pack_number)
@@ -491,6 +495,62 @@ def randomize_all(world):
                 # also handles slot-specific dialog replacements
                 
                 if not is_vanilla(boss, boss_location):
+
+                    # nimbus land statues
+                    if utils.isclass_or_instance(boss_location, bosses.Valentina):
+                        statue = boss.statue
+                        sprite_id = world.models[63]["sprite"]
+                        world.models[63] = copy.deepcopy(world.models[statue.reference_model])
+                        world.models[63]["sprite"] = sprite_id # pointers of sprite_id are patched in main.py
+
+                        for statue_location in boss_location.statue_locations:
+                            room_id = statue_location.room_id
+                            npc_id = statue_location.npc_id
+
+                            world.update_room_npc_property_by_id(room_id, npc_id, "set_sequence_playback", False)
+
+                            # flip directions where necessary
+                            eligible_directions = world.models[statue.reference_model]["vram_store"]
+                            current_direction = world.get_room_npc_property_by_id(room_id, npc_id, "direction")
+                            new_direction = current_direction
+
+                            if eligible_directions == VramStore._02_SWSE:
+                                new_direction = RadialDirection.SOUTHWEST
+                            if statue.reference_model in [385, 149]: # SCARECROW
+                                if current_direction == RadialDirection.NORTHWEST:
+                                    new_direction = RadialDirection.NORTHEAST
+                                elif current_direction == RadialDirection.NORTHEAST:
+                                    new_direction = RadialDirection.NORTHWEST
+                            if new_direction != current_direction:
+                                world.update_room_npc_property_by_id(room_id, npc_id, "direction", new_direction)
+
+                            # guarantee freeze
+                            if boss_sprite_location.sequence_setter not in sequence_setters:
+                                sequence_setters[boss_sprite_location.sequence_setter] = []
+                            cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "sequence_playback_off"}])
+                            sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
+
+                            # pixel shifts
+                            horizontal_shift = 0
+                            vertical_shift = 0
+                            reverse_horizontal_shift = 0
+                            if statue.horizontal_pixel_shift > 0:
+                                horizontal_shift = 0xFF & (statue.horizontal_pixel_shift)
+                                reverse_horizontal_shift = 0xFF & (0xFF - statue.horizontal_pixel_shift + 1)
+                            elif statue.horizontal_pixel_shift < 0:
+                                horizontal_shift = 0xFF & (0xFF + statue.horizontal_pixel_shift + 1)
+                                reverse_horizontal_shift = 0xFF & (statue.horizontal_pixel_shift * -1)
+                            if statue.vertical_pixel_shift > 0:
+                                vertical_shift = 0xFF & (statue.vertical_pixel_shift)
+                            elif statue.vertical_pixel_shift < 0:
+                                vertical_shift = 0xFF & (0xFF + statue.vertical_pixel_shift + 1)
+                            if horizontal_shift != 0 or vertical_shift != 0 and (new_direction == RadialDirection.SOUTHWEST or new_direction == RadialDirection.NORTHWEST):
+                                cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [horizontal_shift, vertical_shift]}])
+                                sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
+                            elif reverse_horizontal_shift != 0 and vertical_shift != 0 and (new_direction == RadialDirection.NORTHEAST or new_direction == RadialDirection.SOUTHEAST):
+                                cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [reverse_horizontal_shift, vertical_shift]}])
+                                sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
+
                     for boss_sprite_location in boss_location.boss_locations:
                         occupant = boss_sprite_location.occupant
                         room_id = boss_sprite_location.room_id
@@ -545,18 +605,11 @@ def randomize_all(world):
                                 preferred_size = SpriteSize.Large
                             else:
                                 preferred_size = SpriteSize.Small
-                        elif preferred_size == SpriteSize.Statue:
-                            preferred_size = SpriteSize.Statue # special handling
                         else:
                             preferred_size = SpriteSize.Small
 
                         if preferred_size == SpriteSize.Small:
                             model = occupant.small_model
-                        elif preferred_size == SpriteSize.Statue:
-                            if occupant.statue_model is not None:
-                                model = occupant.statue_model
-                            else:
-                                model = occupant.small_model
                         elif preferred_size == SpriteSize.Large:
                             model = occupant.big_model
                         elif preferred_size == SpriteSize.Attack:
@@ -564,78 +617,33 @@ def randomize_all(world):
                         if model is None:
                             raise Exception("what boss did you try to put here?")
 
-                        # set directional capability
-                        if model.model_details is not None:
-                            model.directional_capability = model.model_details["vram_store"]
+                        if boss_sprite_location.prefer_uncloneable and boss_sprite_location.prefer_south_only:
+                            model_num = model.uncloneable_south_only or model.uncloneable_all_directions or model.cloneable_south_only or model.cloneable_all_directions
+                        elif boss_sprite_location.prefer_uncloneable:
+                            model_num = model.uncloneable_all_directions or model.uncloneable_south_only or model.cloneable_all_directions or model.cloneable_south_only
+                        elif boss_sprite_location.prefer_south_only:
+                            model_num = model.cloneable_south_only or model.cloneable_all_directions or model.uncloneable_south_only or model.uncloneable_all_directions
                         else:
-                            model.directional_capability = world.models[model.model_id]["vram_store"]
+                            model_num = model.cloneable_all_directions or model.uncloneable_all_directions or model.cloneable_south_only or model.uncloneable_south_only
 
+                        # set directional capability
+                        model.directional_capability = world.models[model_num]["vram_store"]
 
                         # replace the models
-                        if preferred_size == SpriteSize.Small:
-                            world.update_room_npc_property_by_id(room_id, npc_id, "model", model.model_id)
-                            model_num = model.model_id
-                        elif preferred_size == SpriteSize.Statue:
-                            model_num = 63 # sprite will be patched in main.py
-                            sprite_id = world.models[model_num]["sprite"]
-                            world.models[model_num] = copy.deepcopy(world.models[model.model_id])
-                            world.models[model_num]["sprite"] = sprite_id
-                        else:
-                            model_num = world.get_room_npc_property_by_id(room_id, npc_id, "model")
-                            world.models[model_num] = model.model_details
+                        world.update_room_npc_property_by_id(room_id, npc_id, "model", model_num)
 
                         # TODO check if this works
                         # set Cannot Clone as long as model is not the same as a henchman
-                        set_exclude = True
-                        for u in boss_location.unique_henchmen + boss_location.repeatable_henchmen:
-                            for henchman_location in u:
-                                occupant_h = henchman_location.occupant
-                                if occupant_h is not None:
-                                    model_h = occupant_h.model
-                                    if model_h.model_id == model_num:
-                                        set_exclude = False
-                        if set_exclude:
-                            world.models[model_num]["cannot_clone"] = True
-
-
-
-                        # statues: flip directions where necessary
-                        if boss_sprite_location.preferred_size == SpriteSize.Statue:
-
-                            world.update_room_npc_property_by_id(room_id, npc_id, "set_sequence_playback", False)
-                            eligible_directions = world.models[model.model_id]["vram_store"]
-
-                            # replace directions on original room objects
-                            if eligible_directions == VramStore._02_SWSE:
-                                new_direction = RadialDirection.SOUTHWEST
-                                world.update_room_npc_property_by_id(room_id, npc_id, "direction", new_direction)
-
-                            # guarantee freeze
-                            if boss_sprite_location.sequence_setter not in sequence_setters:
-                                sequence_setters[boss_sprite_location.sequence_setter] = []
-                            cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "sequence_playback_off"}])
-                            sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
-
-                            # pixel shifts
-                            horizontal_shift = 0
-                            vertical_shift = 0
-                            reverse_horizontal_shift = 0
-                            if model.horizontal_pixel_shift > 0:
-                                horizontal_shift = 0xFF & (model.horizontal_pixel_shift)
-                                reverse_horizontal_shift = 0xFF & (0xFF - model.horizontal_pixel_shift + 1)
-                            elif model.horizontal_pixel_shift < 0:
-                                horizontal_shift = 0xFF & (0xFF + model.horizontal_pixel_shift + 1)
-                                reverse_horizontal_shift = 0xFF & (model.horizontal_pixel_shift * -1)
-                            if model.vertical_pixel_shift > 0:
-                                vertical_shift = 0xFF & (model.vertical_pixel_shift)
-                            elif model.vertical_pixel_shift < 0:
-                                vertical_shift = 0xFF & (0xFF + model.vertical_pixel_shift + 1)
-                            if horizontal_shift != 0 or vertical_shift != 0 and (new_direction == RadialDirection.SOUTHWEST or new_direction == RadialDirection.NORTHWEST):
-                                cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [horizontal_shift, vertical_shift]}])
-                                sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
-                            elif reverse_horizontal_shift != 0 and vertical_shift != 0 and (new_direction == RadialDirection.NORTHEAST or new_direction == RadialDirection.SOUTHEAST):
-                                cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [reverse_horizontal_shift, vertical_shift]}])
-                                sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
+                        # set_exclude = True
+                        # for u in boss_location.unique_henchmen + boss_location.repeatable_henchmen:
+                        #     for henchman_location in u:
+                        #         occupant_h = henchman_location.occupant
+                        #         if occupant_h is not None:
+                        #             model_h = occupant_h.model
+                        #             if model_h.model_id == model_num:
+                        #                 set_exclude = False
+                        # if set_exclude:
+                        #     world.models[model_num]["cannot_clone"] = True
 
 
                         # scarecrow directions are mostly inverted, so swap default directions for scarecrow sprites, don't face on trigger
@@ -648,7 +656,8 @@ def randomize_all(world):
                                 new_direction = RadialDirection.NORTHWEST
                             
                         
-                        world.update_room_npc_property_by_id(room_id, npc_id, "direction", new_direction)
+                        if new_direction != current_direction:
+                            world.update_room_npc_property_by_id(room_id, npc_id, "direction", new_direction)
 
                         # set Z half for short npcs in booster's portrait game room so that theyre visible when giving you the item
                         if utils.isclass_or_instance(boss_location, bosses.Booster) and room_id == Rooms._195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM:
@@ -656,11 +665,8 @@ def randomize_all(world):
                                 world.update_room_npc_property_by_id(room_id, npc_id, "z_half", True)
 
 
-
-
-
                         # if default model requires a specific sequence or mold, set it now in room loader subroutine
-                        sprite_offset = model.sprite_offset
+                        sprite_offset = 0
                         if (model.sequence_type == SequenceType.Mold and model.mold) > 0 or model.sequence > 0:
                             world.update_room_npc_property_by_id(room_id, npc_id, "face_on_trigger", False)
                             if model.sequence_type == SequenceType.Mold:
@@ -689,27 +695,27 @@ def randomize_all(world):
                         # replace animation-specific model sprite if necessary
                         if model.animations is not None:
                             if utils.isclass_or_instance(boss_location, bosses.Croco1) and model.animations.bandits_way_distracted is not None and model.animations.bandits_way_distracted.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.bandits_way_distracted.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.bandits_way_distracted.new_sprite_id
                             elif utils.isclass_or_instance(boss_location, bosses.Punchinello) and model.animations.mines_punch is not None and model.animations.mines_punch.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.mines_punch.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.mines_punch.new_sprite_id
                             elif utils.isclass_or_instance(boss_location, bosses.Booster) and model.animations.chapel_laugh is not None and model.animations.chapel_laugh.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.chapel_laugh.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.chapel_laugh.new_sprite_id
                             elif utils.isclass_or_instance(boss_location, bosses.KingCalamari) and model.animations.ship_beckon is not None and model.animations.ship_beckon.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.ship_beckon.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.ship_beckon.new_sprite_id
                             elif utils.isclass_or_instance(boss_location, bosses.Johnny) and model.animations.ship_chair is not None and model.animations.ship_chair.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.ship_chair.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.ship_chair.new_sprite_id
                             elif (utils.isclass_or_instance(boss_location, bosses.Jinx1) or utils.isclass_or_instance(boss_location, bosses.Jinx2) or utils.isclass_or_instance(boss_location, bosses.Jinx3) or utils.isclass_or_instance(boss_location, bosses.Jagger)) and model.animations.dojo_challenge is not None and model.animations.dojo_challenge.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.dojo_challenge.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.dojo_challenge.new_sprite_id
                             elif utils.isclass_or_instance(boss_location, bosses.Dodo) and model.animations.statue_peck is not None and model.animations.statue_peck.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.statue_peck.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.statue_peck.new_sprite_id
                             elif utils.isclass_or_instance(boss_location, bosses.Magikoopa) and model.animations.keep_challenge is not None and model.animations.keep_challenge.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.keep_challenge.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.keep_challenge.new_sprite_id
                             elif utils.isclass_or_instance(boss_location, bosses.Magikoopa) and model.animations.keep_summon is not None and model.animations.keep_summon.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.keep_summon.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.keep_summon.new_sprite_id
                             elif utils.isclass_or_instance(boss_location, bosses.Boomer) and model.animations.chandelier_challenge is not None and model.animations.chandelier_challenge.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.chandelier_challenge.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.chandelier_challenge.new_sprite_id
                             elif utils.isclass_or_instance(boss_location, bosses.Smithy) and model.animations.endgame_challenge is not None and model.animations.endgame_challenge.new_sprite_id is not None:
-                                world.models[model.model_id]["sprite"] = model.animations.endgame_challenge.new_sprite_id
+                                world.models[model_num]["sprite"] = model.animations.endgame_challenge.new_sprite_id
 
                         # TODO: partitions
 
@@ -1061,15 +1067,24 @@ def randomize_all(world):
                                 # update model packs & pack container events
                                 model = occupant.model
                                 
-                                world.update_room_npc_property_by_id(room_id, npc_id, "model", model.model_id)
+                                if henchman_location.prefer_uncloneable and henchman_location.prefer_south_only:
+                                    model_num = model.uncloneable_south_only or model.uncloneable_all_directions or model.cloneable_south_only or model.cloneable_all_directions
+                                elif henchman_location.prefer_uncloneable:
+                                    model_num = model.uncloneable_all_directions or model.uncloneable_south_only or model.cloneable_all_directions or model.cloneable_south_only
+                                elif henchman_location.prefer_south_only:
+                                    model_num = model.cloneable_south_only or model.cloneable_all_directions or model.uncloneable_south_only or model.uncloneable_all_directions
+                                else:
+                                    model_num = model.cloneable_all_directions or model.uncloneable_all_directions or model.cloneable_south_only or model.uncloneable_south_only
 
-                                model.directional_capability = world.models[model.model_id]["vram_store"]
+                                world.update_room_npc_property_by_id(room_id, npc_id, "model", model_num)
+
+                                model.directional_capability = world.models[model_num]["vram_store"]
 
                                 # TODO check if this works
-                                # world.models[model.model_id]["cannot_clone"] = True
+                                # world.models[model_num]["cannot_clone"] = True
                                 
                                 # if model requires a specific sequence or mold, set it now in room loader subroutine
-                                sprite_offset = model.sprite_offset
+                                sprite_offset = 0
                                 if model.sequence_type == SequenceType.Mold or model.sequence > 0:
                                     if henchman_location.sequence_setter not in sequence_setters:
                                         sequence_setters[henchman_location.sequence_setter] = []
@@ -1094,11 +1109,11 @@ def randomize_all(world):
                                 # replace animation-specific sprite if necessary
                                 if model.animations is not None:
                                     if utils.isclass_or_instance(boss_location, bosses.Booster) and model.animations.tower_bullet is not None and model.animations.tower_bullet.new_sprite_id is not None:
-                                        world.models[model.model_id]["sprite"] = model.animations.tower_bullet.new_sprite_id
+                                        world.models[model_num]["sprite"] = model.animations.tower_bullet.new_sprite_id
                                     elif utils.isclass_or_instance(boss_location, bosses.Bundt) and model.animations.kitchen_prep is not None and model.animations.kitchen_prep.new_sprite_id is not None:
-                                        world.models[model.model_id]["sprite"] = model.animations.factory_pierce.new_sprite_id
+                                        world.models[model_num]["sprite"] = model.animations.factory_pierce.new_sprite_id
                                     elif utils.isclass_or_instance(boss_location, bosses.Director) and model.animations.factory_pierce is not None and model.animations.factory_pierce.new_sprite_id is not None:
-                                        world.models[model.model_id]["sprite"] = model.animations.factory_pierce.new_sprite_id
+                                        world.models[model_num]["sprite"] = model.animations.factory_pierce.new_sprite_id
 
 
                                 # SPECIAL ANIMATIONS

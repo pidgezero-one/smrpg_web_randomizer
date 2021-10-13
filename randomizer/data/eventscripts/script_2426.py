@@ -34,6 +34,11 @@ script = [
         "args": [1]
     },
     {
+        "identifier": 'EVENT_2426_item',
+        "command": 'run_event_as_subroutine',
+        "args": [21]
+    },
+    {
         "identifier": 'EVENT_2426_run_dialog_6',
         "command": 'run_dialog',
         "args": [3213, AreaObjects.MARIO, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]
@@ -46,7 +51,7 @@ script = [
     {
         "identifier": 'EVENT_2426_put_inventory_8',
         "command": 'put_inventory',
-        "args": [items.Mushroom]
+        "args": [0x70a7]
     },
     {
         "identifier": 'EVENT_2426_unfreeze_all_npcs_9',

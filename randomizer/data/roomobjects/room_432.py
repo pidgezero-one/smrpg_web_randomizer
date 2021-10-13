@@ -45,7 +45,7 @@ room = {
       "y": 15,
       "z": 0,
       "z_half": False,
-      "direction": RadialDirection.SOUTHWEST,
+      "direction": RadialDirection.NORTHWEST,
       "face_on_trigger": False,
       "cant_enter_doors": False,
       "byte2_bit5": False,
