@@ -474,11 +474,13 @@ class Sprite:
     image_num = 0
     palette_offset = 0
     animation_num = 0
-    def __init__(self, index, image_num, animation_num, palette_offset):
+    unknown = 0
+    def __init__(self, index, image_num, animation_num, palette_offset, unknown=0):
         self.index = index
         self.image_num = image_num
         self.animation_num = animation_num
         self.palette_offset = palette_offset
+        self.unknown = unknown
 
 class ImagePack:
     index = 0
@@ -525,6 +527,7 @@ class AnimationSequenceFrame:
 class Mold:
     index = 0
     gridplane = False
+    offset = 0
     tiles = []
     def __init__(self, index, gridplane, tiles):
         self.index = index
@@ -543,7 +546,9 @@ class Tile:
     x = 0
     subtile_bytes = []
     length = 0
-    def __init__(self, mirror, invert, format, length, subtile_bytes, is_16bit=False, y_plus = 0, y_minus = 0, x = 0, y = 0):
+    offset = 0
+    is_clone = False
+    def __init__(self, mirror, invert, format, length, subtile_bytes, is_16bit=False, y_plus = 0, y_minus = 0, x = 0, y = 0, is_clone=False):
         self.mirror = mirror
         self.invert = invert
         self.format = format
@@ -554,3 +559,18 @@ class Tile:
         self.y_minus = y_minus
         self.y = y
         self.x = x
+
+class Clone:
+    is_clone = True
+    offset = 0
+    y = 0
+    x = 0
+    mirror = False
+    invert = False
+    tiles = []
+    def __init__(self, x = 0, y = 0, mirror=False, invert=False, tiles=[], is_clone=True):
+        self.y = y
+        self.x = x
+        self.tiles = tiles
+        self.mirror = mirror
+        self.tiles = tiles

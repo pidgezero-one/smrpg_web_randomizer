@@ -3053,9 +3053,9 @@ class ValentinaBoss(Boss):
         (1785,
          '''BLUEBIRD: Valentina's grumpy.\n Booster got her a gold beetle for\n their anniversary.[await][pause] She wanted a\n ladybug.[await][page]\n Married life sounds truly weird.[await]'''),
         (2061,
-         '''BLUEBIRD: Why are we making\n a cake that looks like Valentina,\n again?[await]'''),
+         ''' Why are we making a cake that\n looks like Valentina, again?[await]'''),
         (2062,
-         '''BLUEBIRD: We're making a cake\n that looks like Valentina.[await]\n What else are we gonna do\n on our day off?[await]'''),
+         ''' We're making a cake that looks like[1] Valentina.\n What else are we gonna\n do on our day off?[await]'''),
         (2504,
          '''VALENTINA: STOP BOTHERING ME![await]\n If you need something to do, go\n look for [0x7024] more item(s)![await]'''),
         (2560,
@@ -4855,20 +4855,20 @@ class Bundt(BossAndStarLocation):
     boss = BundtBoss
     boss_locations = [
         BossModelFill(Rooms._155_MARRYMORE_CHAPEL_KITCHEN, 0, BundtBoss, SpriteSize.Small,
-                      False, target_scripts=[628], target_action_scripts=[], sequence_setter=796),
+                      False, target_scripts=[628], target_action_scripts=[], sequence_setter=796, prefer_south_only=True, prefer_uncloneable=True),
         BossModelFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 11, BundtBoss, SpriteSize.Small,
                       False, target_scripts=[668], target_action_scripts=[], sequence_setter=790),
     ]
     unique_henchmen = [
         [
             UniqueHenchmanFill(Rooms._155_MARRYMORE_CHAPEL_KITCHEN, 1, BundtTorte1, False, True, False, HenchmanType.NPCOnly, dialogs=[
-                               2061], target_scripts=[628], target_action_scripts=[330], sequence_setter=796),
+                               2061], target_scripts=[628], target_action_scripts=[330], sequence_setter=796, prefer_uncloneable=True),
             UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 9, BundtTorte1, False, True,
                                False, HenchmanType.NPCOnly, target_scripts=[668], target_action_scripts=[636], sequence_setter=790)
         ],
         [
             UniqueHenchmanFill(Rooms._155_MARRYMORE_CHAPEL_KITCHEN, 2, BundtTorte2, False, True, False, HenchmanType.NPCOnly, dialogs=[
-                               2062], target_scripts=[628], target_action_scripts=[331], sequence_setter=796),
+                               2062], target_scripts=[628], target_action_scripts=[331], sequence_setter=796, prefer_uncloneable=True),
             UniqueHenchmanFill(Rooms._154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, 10, BundtTorte2, False, True,
                                False, HenchmanType.NPCOnly, target_scripts=[668], target_action_scripts=[636], sequence_setter=790)
         ]

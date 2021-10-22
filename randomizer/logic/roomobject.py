@@ -286,11 +286,13 @@ partition_priority = [
     PartitionBufferTypes._3_SPRITES_PER_ROW
 ]
 
-special_case_rooms = [205, 463, 466, 477, 233, 236, 230, 232, 79]
+special_case_rooms = [37, 57, 70, 71, 72, 73, 79, 205, 230, 232, 233, 236, 463, 466, 477]
 # 205 - complicated spiney sequence
 # 463, 466 - barrel count room and logic problem room need this for some reason
-requires_coin_buffer = [242]
+requires_coin_buffer = [242] # maybe 199. 199 needed all NPCs restored bc the graphics interact weirdly with the save box animation
 # 301 - breaks chest sprites if you use extra sprite buffer for coins
+
+always_requires_coin_buffer = [71, 72, 73]
 
 def set_partitions(world):
     pandorite_rooms = []
@@ -303,11 +305,36 @@ def set_partitions(world):
 
 
     for room_index, room in enumerate(world.rooms):
-        if room_index in [376, 377, 459, 460, 461, 462]: # rooms that always need triple empty + ex 1
+        if room_index in [68]:
+            pass
+        elif room_index in [376, 377, 459, 460, 461, 462]: # rooms that always need triple empty + ex 1
             partition = {
                 "ally_sprite_buffer_size": 1,
                 "allow_extra_sprite_buffer": True,
                 "extra_sprite_buffer_size": 1,
+                "buffer_a": {
+                    "type": PartitionBufferTypes.EMPTY_3,
+                    "main_buffer_space": PartitionMainSpace._0_BYTES,
+                    "index_in_main_buffer": True,
+                },
+                "buffer_b": {
+                    "type": PartitionBufferTypes.EMPTY_3,
+                    "main_buffer_space": PartitionMainSpace._0_BYTES,
+                    "index_in_main_buffer": True,
+                },
+                "buffer_c": {
+                    "type": PartitionBufferTypes.EMPTY_3,
+                    "main_buffer_space": PartitionMainSpace._0_BYTES,
+                    "index_in_main_buffer": True,
+                },
+                "full_palette_buffer": True,
+            }
+            world.rooms[room_index]["partition"] = partition
+        elif room_index in [192, 202]: # rooms that always need triple empty + ex 1
+            partition = {
+                "ally_sprite_buffer_size": 1,
+                "allow_extra_sprite_buffer": False,
+                "extra_sprite_buffer_size": 0,
                 "buffer_a": {
                     "type": PartitionBufferTypes.EMPTY_3,
                     "main_buffer_space": PartitionMainSpace._0_BYTES,
@@ -351,7 +378,9 @@ def set_partitions(world):
         #     world.rooms[room_index]["partition"] = partition
         elif room is not None and len(room["objects"]) > 0:
             partition = room["partition"]
-            original_partition = copy.deepcopy(partition)
+            original_partition = None 
+            if partition is not None:
+                original_partition = copy.deepcopy(partition)
             partition = {
                 "ally_sprite_buffer_size": 1,
                 "allow_extra_sprite_buffer": False,
@@ -378,9 +407,11 @@ def set_partitions(world):
                 partition["allow_extra_sprite_buffer"] = original_partition["allow_extra_sprite_buffer"]
                 partition["full_palette_buffer"] = original_partition["full_palette_buffer"]
 
+
             ally_buffer = 1
             
             packet_size = partition["extra_sprite_buffer_size"]
+            # print(room_index, packet_size, partition["allow_extra_sprite_buffer"])
             if partition["allow_extra_sprite_buffer"]:
                 packet_size += 1
             npcs = room["objects"]
@@ -458,7 +489,7 @@ def set_partitions(world):
             # get all npc models
             for npc_index, npc in enumerate(decloned):
                 model = world.models[npc["model"]]
-                print(npc_index, room_index, model)
+                # print(npc_index, room_index, model)
                 if model["sprite"] < 575 and not model["cannot_clone"]:
                     sprite = graphics.sprites[model["sprite"]]
                     animation_pack = graphics.animations[sprite.animation_num]
@@ -553,7 +584,10 @@ def set_partitions(world):
             elif room_index == 301:
                 npc_buffers.append(PartitionBufferTypes._3_SPRITES_PER_ROW)
 
-            if ambiguous_coin_chest is not AmbiguousCoin.none:
+            if room_index in always_requires_coin_buffer:
+                if PartitionBufferTypes.COINS not in packet_buffers:
+                    packet_buffers.append(PartitionBufferTypes.COINS)
+            elif ambiguous_coin_chest is not AmbiguousCoin.none:
                 #if if PartitionBufferTypes.TREASURE_CHEST in priority_buffers and npc_buffers[0:2] == [PartitionBufferTypes._3_SPRITES_PER_ROW] * 2:
                 if has_conundrum_clones or room_index in requires_coin_buffer: # 301 and 401 both have Treasure-3SPRITE-3SPRITe but only 301 breaks w. coins in EX buffer
                     packet_buffers.append(PartitionBufferTypes.COINS)
@@ -567,7 +601,7 @@ def set_partitions(world):
             if PartitionBufferTypes.COINS in priority_buffers and PartitionBufferTypes.COINS in packet_buffers:
                 priority_buffers.remove(PartitionBufferTypes.COINS)
 
-            print(room_index, priority_buffers, npc_buffers, packet_buffers)
+            # print(room_index, priority_buffers, npc_buffers, packet_buffers)
 
             final_buffers = [None] * 3
 
@@ -607,7 +641,9 @@ def set_partitions(world):
             # if len(buffers) < 3:
             #     buffers += [PartitionBufferTypes.EMPTY_3] * (3 - min(3, len(buffers)))
 
-            print(room_index, final_buffers)
+            #print(room_index, final_buffers)
+            
+            #print(room_index, packet_size)
 
             found = False
             buffers_indexes = ["buffer_a", "buffer_b", "buffer_c"]

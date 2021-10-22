@@ -112,9 +112,9 @@ dialog_data[65] = '''RAINI: I think the back door to the
  chapel was left unlocked.[await][pause] But Raz
  is afraid of getting caught
  sneaking in.[await]'''
-dialog_data[66] = '''`TOWER_BOSS_1` and `MARRYMORE_CHARACTER`
- getting married sounds like
- something out of a bad fanfic.[await]
+dialog_data[66] = ''' `TOWER_BOSS_1` and `MARRYMORE_CHARACTER`
+ getting married sounds like an
+ obscure fanfic.[await]
  Even so, invites to this wedding
  are highly exclusive.[await]'''
 dialog_data[67] = ''' Don't listen to that guy,

@@ -58,9 +58,31 @@ script = [
         ]
     },
     {
+        "identifier": 'EVENT_2364_action_queue_sync_4',
+        "command": 'action_queue_sync',
+        "args": [AreaObjects.NPC_5],
+        "subscript": [
+            {
+                "identifier": 'EVENT_2364_action_queue_sync_4_SUBSCRIPT_shift_south_pixels_0',
+                "command": 'shift_south_pixels',
+                "args": [8]
+            },
+            {
+                "identifier": 'EVENT_2364_action_queue_sync_4_SUBSCRIPT_shift_northwest_pixels_1',
+                "command": 'shift_northwest_pixels',
+                "args": [1]
+            },
+            {
+                "identifier": 'EVENT_2364_action_queue_sync_4_SUBSCRIPT_shift_southwest_pixels_2',
+                "command": 'shift_southwest_pixels',
+                "args": [3]
+            }
+        ]
+    },
+    {
         "identifier": 'EVENT_2364_action_queue_sync_5',
         "command": 'action_queue_sync',
-        "args": [AreaObjects.NPC_2],
+        "args": [AreaObjects.NPC_4],
         "subscript": [
             {
                 "identifier": 'EVENT_2364_action_queue_sync_5_SUBSCRIPT_shift_northwest_pixels_0',
@@ -81,111 +103,8 @@ script = [
     },
     {
         "identifier": 'EVENT_2364_enable_controls_until_return_8',
-        "command": 'enable_controls_until_return',
-        "args": [[]]
-    },
-    {
-        "identifier": 'EVENT_2364_freeze_camera_9',
-        "command": 'freeze_camera'
-    },
-    {
-        "identifier": 'EVENT_2364_action_queue_async_10',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2364_action_queue_async_10_SUBSCRIPT_shadow_off_0',
-                "command": 'shadow_off'
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_10_SUBSCRIPT_reset_properties_1',
-                "command": 'reset_properties'
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_10_SUBSCRIPT_face_south_2',
-                "command": 'face_south'
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_10_SUBSCRIPT_floating_off_3',
-                "command": 'floating_off'
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_10_SUBSCRIPT_sequence_playback_off_4',
-                "command": 'sequence_playback_off'
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_10_SUBSCRIPT_set_priority_5',
-                "command": 'set_priority',
-                "args": [3]
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2364_fade_in_from_black_async_11',
-        "command": 'fade_in_from_black_async'
-    },
-    {
-        "identifier": 'EVENT_2364_action_queue_async_12',
-        "command": 'action_queue_async',
-        "args": [AreaObjects.MARIO],
-        "subscript": [
-            {
-                "identifier": 'EVENT_2364_action_queue_async_12_SUBSCRIPT_floating_on_0',
-                "command": 'floating_on'
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_12_SUBSCRIPT_pause_1',
-                "command": 'pause',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_12_SUBSCRIPT_jmp_if_mario_in_air_2',
-                "command": 'jmp_if_mario_in_air',
-                "args": ['EVENT_2364_action_queue_async_12_SUBSCRIPT_pause_1']
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_12_SUBSCRIPT_jump_to_height_3',
-                "command": 'jump_to_height',
-                "args": [108]
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_12_SUBSCRIPT_shadow_on_4',
-                "command": 'shadow_on'
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_12_SUBSCRIPT_walk_1_step_south_5',
-                "command": 'walk_1_step_south'
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_12_SUBSCRIPT_pause_6',
-                "command": 'pause',
-                "args": [1]
-            },
-            {
-                "identifier": 'EVENT_2364_action_queue_async_12_SUBSCRIPT_jmp_if_mario_in_air_7',
-                "command": 'jmp_if_mario_in_air',
-                "args": ['EVENT_2364_action_queue_async_12_SUBSCRIPT_pause_6']
-            }
-        ]
-    },
-    {
-        "identifier": 'EVENT_2364_set_action_script_async_13',
-        "command": 'set_action_script_async',
-        "args": [AreaObjects.MARIO, 395]
-    },
-    {
-        "identifier": 'EVENT_2364_unfreeze_camera_14',
-        "command": 'unfreeze_camera'
-    },
-    {
-        "identifier": 'EVENT_2364_enable_controls_until_return_15',
-        "command": 'enable_controls_until_return',
-        "args": [[ControllerDirections.LEFT, ControllerDirections.RIGHT, ControllerDirections.DOWN, ControllerDirections.UP, ControllerDirections.X, ControllerDirections.A, ControllerDirections.Y, ControllerDirections.B]]
-    },
-    {
-        "identifier": 'EVENT_2364_clear_bit_16',
-        "command": 'clear_bit',
-        "args": [0x7044, 7]
+        "command": 'run_event_as_subroutine',
+        "args": [81]
     },
     {
         "identifier": 'EVENT_2364_run_event_as_subroutine_25_',

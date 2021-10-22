@@ -625,7 +625,7 @@ def randomize_all(world):
                             model_num = model.cloneable_south_only or model.cloneable_all_directions or model.uncloneable_south_only or model.uncloneable_all_directions
                         else:
                             model_num = model.cloneable_all_directions or model.uncloneable_all_directions or model.cloneable_south_only or model.uncloneable_south_only
-
+                        # print(boss_location, model_num)
                         # set directional capability
                         model.directional_capability = world.models[model_num]["vram_store"]
 

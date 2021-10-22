@@ -1,9 +1,9 @@
 from django.core.management.base import BaseCommand
-from randomizer.data.palettes import Sprite, ImagePack, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile
+from randomizer.data.palettes import Sprite, ImagePack, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline
 
 TOP_LEVEL_SPRITE_OFFSET = 0x250000
-TOP_LEVEL_SPRITE_LENGTH = 0x900
+TOP_LEVEL_SPRITE_LENGTH = 0x1000
 
 IMAGE_PACK_INFO_OFFSET = 0x251800
 IMAGE_PACK_INFO_LENGTH = 0x800
@@ -38,8 +38,10 @@ class Command(BaseCommand):
         for index, offset in enumerate(range(TOP_LEVEL_SPRITE_OFFSET, TOP_LEVEL_SPRITE_OFFSET + TOP_LEVEL_SPRITE_LENGTH, 4)):
             img = shortify(rom, offset) & 0x1FF
             pal_off = (rom[offset+1] & 0x0E) >> 1
-            sprite = Sprite(index, img, shortify(rom, offset+2), pal_off)
+            unknown = (rom[offset+1] >> 4)
+            sprite = Sprite(index, img, shortify(rom, offset+2), pal_off, unknown)
             sprites.append(sprite)
+            print(hex(offset), index, hex(rom[offset+1]), unknown)
 
         for index, offset in enumerate(range(IMAGE_PACK_INFO_OFFSET, IMAGE_PACK_INFO_OFFSET + IMAGE_PACK_INFO_LENGTH, 4)):
             gfx_ptr_short = shortify(rom, offset)
@@ -104,32 +106,35 @@ class Command(BaseCommand):
                             tile_length += 2
                         else:
                             subtiles_16bit = 0
-                        subtile_bytes = [1]*16
                         copy_length = 9
                         if format == 1 or format == 2:
                             copy_length = 12
                         elif format == 3:
                             copy_length = 16
                         tile_length += copy_length
+                        subtile_bytes = [1]*copy_length
                         subtile_bytes[0:copy_length] = rom[relative_offset:relative_offset+copy_length]
                         if is_16bit:
                             for j in range(0, copy_length):
                                 if (subtiles_16bit & (2 ** j)) == (2 ** j):
                                     subtile_bytes[j] += 0x100
-                        molds.append(Mold(i, gridplane, [Tile(mirror=mirror, invert=invert, format=format, length=tile_length, subtile_bytes=subtile_bytes, is_16bit=is_16bit, y_plus=y_plus, y_minus=y_minus)]))
+                        molds.append(Mold(i, gridplane, [Tile(mirror=mirror, invert=invert, format=format, length=tile_length, subtile_bytes=subtile_bytes, is_16bit=is_16bit, y_plus=y_plus, y_minus=y_minus, is_clone=False)]))
                     else:
                         tiles = []
                         while rom[relative_offset] != 0:
                             temp_offset = relative_offset
+                            is_clone = False
                             if (rom[relative_offset] & 0x03) == 2:
+                                is_clone = True
                                 y = rom[relative_offset+1]
                                 x = rom[relative_offset+2]
                                 mirror = (rom[relative_offset] & 0x04) == 0x04
-                                invert = (rom[relative_offset] & 0x04) == 0x08
+                                invert = (rom[relative_offset] & 0x08) == 0x08
                                 within_buffer_offset = shortify(rom, relative_offset+3)
                                 if within_buffer_offset >= 0x7FFF:
                                     raise Exception("bad mold offset at %06x, mold %i of animation %i" % (relative_offset, i, index))
                                 relative_offset = within_buffer_offset + property_offset
+                                clone_tiles = []
                                 for _ in range(0, rom[temp_offset] >> 4):
                                     if within_buffer_offset > length:
                                         raise Exception("bad data at %06x, mold %i of animation %i: 0x%04x is larger than length %i" % (relative_offset, i, index, relative_offset - property_offset, length))
@@ -166,7 +171,8 @@ class Command(BaseCommand):
                                                 relative_offset += 1
                                                 tile_length += 1
                                         relative_offset = temp_offset_2 + tile_length
-                                        tiles.append(Tile(mirror=mi, invert=inv, format=format, length=tile_length, subtile_bytes=subtile_bytes, x=tile_x, y=tile_y))    
+                                        clone_tiles.append(Tile(mirror=mi, invert=inv, format=format, length=tile_length, subtile_bytes=subtile_bytes, x=tile_x, y=tile_y, is_clone=is_clone))    
+                                tiles.append(Clone(x, y, mirror, invert, clone_tiles))
                                 relative_offset = temp_offset + 5
                             else:
                                 tile_length = 0
@@ -196,7 +202,7 @@ class Command(BaseCommand):
                                             subtile_bytes[j] = rom[relative_offset]
                                         relative_offset += 1
                                         tile_length += 1
-                                tiles.append(Tile(mirror=mirror, invert=invert, format=format, length=tile_length, subtile_bytes=subtile_bytes, x=tile_x, y=tile_y))    
+                                tiles.append(Tile(mirror=mirror, invert=invert, format=format, length=tile_length, subtile_bytes=subtile_bytes, x=tile_x, y=tile_y, is_clone=is_clone))    
                                 relative_offset = temp_offset + tile_length
                         molds.append(Mold(i, gridplane, tiles))
 
@@ -209,10 +215,10 @@ class Command(BaseCommand):
         writeline(file, '# AUTOGENERATED DO NOT EDIT!!')
         writeline(file, '# Run the following command if you need to rebuild the table')
         writeline(file, '# python manage.py graphicsdisassembler --rom ROM')
-        writeline(file, 'from randomizer.data.palettes import Sprite, ImagePack, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile')
+        writeline(file, 'from randomizer.data.palettes import Sprite, ImagePack, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone')
         writeline(file, 'sprites = [')
         for s in sprites:
-            writeline(file, "    Sprite(%i, image_num=%i, animation_num=%i, palette_offset=%i)," % (s.index, s.image_num, s.animation_num, s.palette_offset))
+            writeline(file, "    Sprite(%i, image_num=%i, animation_num=%i, palette_offset=%i, unknown=%i)," % (s.index, s.image_num, s.animation_num, s.palette_offset, s.unknown))
         writeline(file, ']\n\n')
         writeline(file, 'images = [')
         for i in images:
@@ -227,7 +233,13 @@ class Command(BaseCommand):
                 writeline(file, "                Mold(%i, gridplane=%r," % (m.index, m.gridplane))
                 writeline(file, "                    tiles=[")
                 for t in m.tiles:
-                    writeline(file, "                        Tile(mirror=%r, invert=%r, format=%i, length=%i, subtile_bytes=%r, is_16bit=%r, y_plus=%i, y_minus=%i, x=%i, y=%i)," % (t.mirror, t.invert, t.format, t.length, t.subtile_bytes, t.is_16bit, t.y_plus, t.y_minus, t.x, t.y))
+                    if not t.is_clone:
+                        writeline(file, "                        Tile(mirror=%r, invert=%r, format=%i, length=%i, subtile_bytes=%r, is_16bit=%r, y_plus=%i, y_minus=%i, x=%i, y=%i)," % (t.mirror, t.invert, t.format, t.length, t.subtile_bytes, t.is_16bit, t.y_plus, t.y_minus, t.x, t.y))
+                    else:
+                        writeline(file, "                        Clone(mirror=%r, invert=%r, x=%i, y=%i, tiles=[" % (t.mirror, t.invert, t.x, t.y))
+                        for ct in t.tiles:
+                            writeline(file, "                            Tile(mirror=%r, invert=%r, format=%i, length=%i, subtile_bytes=%r, is_16bit=%r, y_plus=%i, y_minus=%i, x=%i, y=%i)," % (ct.mirror, ct.invert, ct.format, ct.length, ct.subtile_bytes, ct.is_16bit, ct.y_plus, ct.y_minus, ct.x, ct.y))
+                        writeline(file, "                        ]),")
                 writeline(file, "                    ]")
                 writeline(file, "                ),")
             writeline(file, "            ],")

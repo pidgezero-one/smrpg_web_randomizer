@@ -1133,7 +1133,7 @@ def randomize_all(world):
                     generator[0]["args"][0] = packetType
                     world.eventscripts[c.script_id] = generator
                 else:
-                    if not ((utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.FrogCoin)) and c.description in world.settings.get_flag(flags.EnabledFreestandingChecks).disabled):
+                    if not (utils.isclass_or_instance(c.item, items.Coins) or utils.isclass_or_instance(c.item, items.FrogCoin) and c.description in world.settings.get_flag(flags.EnabledFreestandingChecks).enabled):
                         # set the NPC and action script for the item if it's NOT an excluded COIN overworld item location
                         model_id = c.item.model.model
                         action_script = c.item.model.action_script
@@ -1154,6 +1154,15 @@ def randomize_all(world):
                 if utils.isclass_or_instance(c, chests.MidasRiverTunnelItem): 
                     # midas river grant
                     cmds.append(utils.new_command(c.event, 'jmp_to_event', [c.item.overworld_midas_event]))
+                    # make sure midas river item's forced action script references the appropriate sequence setter subroutine for the item itself
+                    new_midas_cmd = []
+                    for as_index, cmd in enumerate(world.actionscripts[c.midas_action_script]):
+                        if cmd["command"] == 'jmp_to_subroutine':
+                            cmd["args"][0] = world.actionscripts[c.item.model.action_script][0]["identifier"]
+                            new_midas_cmd.append(cmd)
+                        elif cmd["command"] != 'set_sprite_sequence' and not utils.isclass_or_instance(c.item, items.Coins) and not utils.isclass_or_instance(c.item, items.FrogCoin):
+                            new_midas_cmd.append(cmd)
+                    world.actionscripts[c.midas_action_script] = new_midas_cmd
                 elif utils.isclass_or_instance(c, chests.BoosterTowerMasher) or not utils.isclass_or_instance(c, chests.OverworldItem): 
                     # npc grants that should be treated as overworld items
                     cmds.append(utils.new_command(c.event, 'jmp_to_event', [c.item.npc_event]))
@@ -1165,9 +1174,9 @@ def randomize_all(world):
                 for r in c.rooms:
                     jmp = utils.new_command(c.event, 'jmp_if_7000_equals_short', [r, cmds[0]["identifier"]])
                     grant_builders[c.event]["jumps"].append(jmp)
-                # edit action script 43 if midas runnel #3 item is not a coin
-                if utils.isclass_or_instance(c, chests.MidasRiverBottomLeftCave) and not utils.isclass_or_instance(c.item, items.Coins) and not utils.isclass_or_instance(c.item, items.FrogCoin) and not utils.isclass_or_instance(c.item, items.MultiFrogCoin):
-                    world.actionscripts[43] = [a for a in world.actionscripts[43] if a["command"] != 'set_sprite_sequence']
+                # edit action script if midas tunnel #3 item is not a coin
+                if utils.isclass_or_instance(c, chests.MidasRiverBottomLeftCave) and not utils.isclass_or_instance(c.item, items.Coins) and not utils.isclass_or_instance(c.item, items.FrogCoin):
+                    world.actionscripts[298] = [a for a in world.actionscripts[298] if a["command"] != 'set_sprite_sequence']
                 # for elder key, need to forcefully set the sequence/mold of the item in script 1335
                 if utils.isclass_or_instance(c, chests.BoosterTowerPortraits):
                     action_script_contents = [{**a, "identifier": "EVENT_1335_" + a["identifier"]} for a in world.actionscripts[c.item.model.action_script] if a["command"] != "ret"]

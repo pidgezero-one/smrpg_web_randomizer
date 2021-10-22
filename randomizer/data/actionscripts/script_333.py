@@ -5,38 +5,95 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data.eventtables import RadialDirections, AreaObjects, NPCPackets, Sounds, Coords, CoordUnits, Rooms
 script = [
     {
-        "identifier": 'ACTION_333_floating_off_0',
-        "command": 'floating_off'
-    },
-    {
-        "identifier": 'ACTION_333_set_sprite_sequence_1',
-        "command": 'set_sprite_sequence',
-        "args": [7, 0, [_0x08Flags.READ_AS_SEQUENCE]]
-    },
-    {
-        "identifier": 'ACTION_333_visibility_off_2',
-        "command": 'visibility_off'
-    },
-    {
-        "identifier": 'ACTION_333_pause_3',
-        "command": 'pause',
-        "args": [9]
-    },
-    {
-        "identifier": 'ACTION_333_visibility_on_4',
+        "identifier": 'ACTION_45_visibility_on_0',
         "command": 'visibility_on'
     },
     {
-        "identifier": 'ACTION_333_pause_5',
-        "command": 'pause',
-        "args": [24]
+        "identifier": 'ACTION_45_seq',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_15_ret_0']
     },
     {
-        "identifier": 'ACTION_333_visibility_off_6',
+        "identifier": 'ACTION_45_pause_1',
+        "command": 'pause',
+        "args": [117]
+    },
+    {
+        "identifier": 'ACTION_45_jmp_if_bit_set_2',
+        "command": 'jmp_if_bit_set',
+        "args": [0x7078, 7, 'ACTION_45_reset_properties_13']
+    },
+    {
+        "identifier": 'ACTION_45_jump_to_height_3',
+        "command": 'jump_to_height',
+        "args": [108]
+    },
+    {
+        "identifier": 'ACTION_45_shift_southwest_steps_4',
+        "command": 'shift_southwest_steps',
+        "args": [2]
+    },
+    {
+        "identifier": 'ACTION_45_play_sound_5',
+        "command": 'set_bit',
+        "args": [0x7078, 7]
+    },
+    {
+        "identifier": 'ACTION_45_start_loop_n_times_6',
+        "command": 'start_loop_n_times',
+        "args": [4]
+    },
+    {
+        "identifier": 'ACTION_45_visibility_on_7',
+        "command": 'visibility_on'
+    },
+    {
+        "identifier": 'ACTION_45_pause_8',
+        "command": 'pause',
+        "args": [2]
+    },
+    {
+        "identifier": 'ACTION_45_visibility_off_9',
         "command": 'visibility_off'
     },
     {
-        "identifier": 'ACTION_333_ret_7',
+        "identifier": 'ACTION_45_pause_10',
+        "command": 'pause',
+        "args": [2]
+    },
+    {
+        "identifier": 'ACTION_45_end_loop_11',
+        "command": 'end_loop'
+    },
+    {
+        "identifier": 'ACTION_45_ret_12',
         "command": 'ret'
+    },
+    {
+        "identifier": 'ACTION_45_reset_properties_13',
+        "command": 'reset_properties'
+    },
+    {
+        "identifier": 'ACTION_45_set_animation_speed_14',
+        "command": 'set_animation_speed',
+        "args": [SequenceSpeeds.SLOW, [_0x10Flags.WALKING]]
+    },
+    {
+        "identifier": 'ACTION_45_set_animation_speed_15',
+        "command": 'set_animation_speed',
+        "args": [SequenceSpeeds.FASTER, [_0x10Flags.SEQUENCE]]
+    },
+    {
+        "identifier": 'ACTION_45_walk_1_step_east_16',
+        "command": 'walk_1_step_east'
+    },
+    {
+        "identifier": 'ACTION_45_walk_1_step_west_17',
+        "command": 'walk_1_step_west'
+    },
+    {
+        "identifier": 'ACTION_45_jmp_18',
+        "command": 'jmp',
+        "args": ['ACTION_45_reset_properties_13']
     }
 ]

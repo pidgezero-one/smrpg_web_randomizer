@@ -23,7 +23,7 @@ script = [
     {
         "identifier": "EVENT_3497_jmp_if_bit_",
         "command": "jmp_if_bit_set",
-        "args": [0x7078, 6, 'EVENT_3497_pause_3']
+        "args": [0x707E, 3, 'EVENT_3497_pause_3']
     },
     {
         "identifier": "EVENT_3497_pause",
@@ -33,7 +33,7 @@ script = [
     {
         "identifier": "EVENT_3497_jmp_if_bit",
         "command": "jmp_if_bit_set",
-        "args": [0x7078, 6, "EVENT_3497_jmp_2"]
+        "args": [0x707E, 3, "EVENT_3497_jmp_2"]
     },
     {
         "identifier": "EVENT_3497_jmp",

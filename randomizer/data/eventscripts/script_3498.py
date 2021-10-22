@@ -13,7 +13,7 @@ script = [
     {
         "identifier": 'EVENT_3498_set_action_script_sync_1',
         "command": 'set_action_script_sync',
-        "args": [AreaObjects.NPC_4, 45]
+        "args": [AreaObjects.NPC_4, 333]
     },
     {
         "identifier": 'EVENT_3498_jmp_2',

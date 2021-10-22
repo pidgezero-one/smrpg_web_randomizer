@@ -50,16 +50,16 @@ script = [
         "command": 'set_short',
         "args": [0x703e, 0x0000]
     },
-    {
-        "identifier": 'EVENT_3148_set_7010_to_object_xyz_13',
-        "command": 'set_7010_to_object_xyz',
-        "args": [AreaObjects.NPC_8]
-    },
-    {
-        "identifier": 'EVENT_3148_jmp_to_event_13_',
-        "command": 'run_event_as_subroutine',
-        "args": [3414]
-    },
+    # {
+    #     "identifier": 'EVENT_3148_set_7010_to_object_xyz_13',
+    #     "command": 'set_7010_to_object_xyz',
+    #     "args": [AreaObjects.NPC_8]
+    # },
+    # {
+    #     "identifier": 'EVENT_3148_jmp_to_event_13_',
+    #     "command": 'run_event_as_subroutine',
+    #     "args": [3414]
+    # },
     {
         "identifier": 'EVENT_3148_jmp_to_event_13',
         "command": 'run_event_as_subroutine',

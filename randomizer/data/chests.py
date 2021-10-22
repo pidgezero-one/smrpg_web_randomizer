@@ -68,7 +68,12 @@ class Chest(locations.ItemLocation):
         return super().item_allowed(item)
 
 
-class CoinsNotAllowedChest(Chest):
+class SlotsNotAllowedChest(Chest):
+    def item_allowed(self, item):
+        # restricted for graphical reasons
+        return super().item_allowed(item) and not isclass_or_instance(item, items.SlotMachineChest)
+
+class CoinsNotAllowedChest(SlotsNotAllowedChest):
     def item_allowed(self, item):
         # restricted for graphical reasons
         return super().item_allowed(item) and not isclass_or_instance(item, items.InfiniteCoins) and not (self.world.settings.is_flag_value(flags.QuickHitCoins, False) and (isclass_or_instance(item, items.Coins) or isclass_or_instance(item, items.FrogCoin) or isclass_or_instance(item, items.MultiFrogCoin)))
@@ -221,7 +226,10 @@ class StarterCharacterRecruit(CharacterRecruit):
 
 
 class MidasRiverTunnelItem(OverworldItem):
-    pass
+    midas_action_script = None
+
+    def item_allowed(self, item):
+        return super().item_allowed(item) and not isclass_or_instance(item, items.RecoveryMushroom)
 
 
 class BelomeTempleTreasure(OverworldItem):
@@ -990,6 +998,7 @@ class MidasRiverBottomLeftCave(MidasRiverTunnelItem):
     area = locations.Area.MidasRiver
     item = items.FrogCoin
     original_item = items.FrogCoin
+    midas_action_script = 43
     rooms = [72]
     event = 241
     npc_ids = [1]
@@ -1000,6 +1009,7 @@ class MidasRiverBottomRightCave(MidasRiverTunnelItem):
     area = locations.Area.MidasRiver
     item = items.Flower
     original_item = items.Flower
+    midas_action_script = 333
     rooms = [73]
     event = 241
     npc_ids = [4]
@@ -1107,24 +1117,24 @@ class RoseWayFlower(OverworldItem):
     npc_ids = [7]
 
 
-# class RoseWayMushroom(OverworldItem):
-#     description = ShuffleLocationSelector.RoseWayMushroom.value
-#     area = locations.Area.RoseWay
-#     item = items.RecoveryMushroom
-#     original_item = items.RecoveryMushroom
-#     rooms = [79]
-#     event = 240
-#     npc_ids = [8]
-
-class RoseWayMushroom(PacketItem):
-    area = locations.Area.RoseWay
+class RoseWayMushroom(OverworldItem):
     description = ShuffleLocationSelector.RoseWayMushroom.value
+    area = locations.Area.RoseWay
     item = items.RecoveryMushroom
     original_item = items.RecoveryMushroom
     rooms = [79]
-    script_id = 3414
     event = 240
-    access = 1
+    npc_ids = [8]
+
+# class RoseWayMushroom(PacketItem):
+#     area = locations.Area.RoseWay
+#     description = ShuffleLocationSelector.RoseWayMushroom.value
+#     item = items.RecoveryMushroom
+#     original_item = items.RecoveryMushroom
+#     rooms = [79]
+#     script_id = 3414
+#     event = 240
+#     access = 1
 
 
 class RoseWayCoin1(OverworldItem):
@@ -1134,7 +1144,7 @@ class RoseWayCoin1(OverworldItem):
     original_item = items.Coins10
     rooms = [79]
     event = 235
-    npc_ids = [18]
+    npc_ids = [17]
 
 
 class RoseWayCoin2(OverworldItem):
@@ -1144,7 +1154,7 @@ class RoseWayCoin2(OverworldItem):
     original_item = items.Coins10
     rooms = [79]
     event = 236
-    npc_ids = [19]
+    npc_ids = [18]
 
 
 class RoseWayCoin3(OverworldItem):
@@ -1154,7 +1164,7 @@ class RoseWayCoin3(OverworldItem):
     original_item = items.Coins10
     rooms = [79]
     event = 237
-    npc_ids = [20]
+    npc_ids = [19]
 
 
 class RoseWayCoin4(OverworldItem):
@@ -1164,7 +1174,7 @@ class RoseWayCoin4(OverworldItem):
     original_item = items.Coins10
     rooms = [79]
     event = 238
-    npc_ids = [21]
+    npc_ids = [20]
 
 
 class RoseWayCoin5(OverworldItem):
@@ -1174,7 +1184,7 @@ class RoseWayCoin5(OverworldItem):
     original_item = items.Coins10
     rooms = [79]
     event = 239
-    npc_ids = [22]
+    npc_ids = [21]
 
 
 class RoseWayFiveChests1(Chest):
@@ -2403,7 +2413,7 @@ class BoosterTowerMasher(OverworldItem):
         return super().item_allowed(item) and item.npc_event is not None # this looks like a chest, requires an overworld item, but acts like a npc reward
 
 
-class BoosterTowerParachute(Chest):
+class BoosterTowerParachute(SlotsNotAllowedChest):
     description = ShuffleLocationSelector.BoosterTowerParachute.value
     area = locations.Area.BoosterTower
     item = items.FrogCoin
@@ -2473,7 +2483,7 @@ class BoosterTowerTop3(Chest):
     description = ShuffleLocationSelector.BoosterTowerTop3.value
     area = locations.Area.BoosterTower
     rooms = [199]
-    npc_ids = [4]
+    npc_ids = [9]
     event = 245
     item = items.RecoveryMushroom
     original_item = items.RecoveryMushroom

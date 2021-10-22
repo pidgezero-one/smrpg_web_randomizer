@@ -47,6 +47,11 @@ script = [
         "command": 'visibility_on'
     },
     {
+        "identifier": 'ACTION_43_seq',
+        "command": 'jmp_to_subroutine',
+        "args": ['ACTION_15_ret_0']
+    },
+    {
         "identifier": 'ACTION_43_pause_9',
         "command": 'pause',
         "args": [14]
@@ -224,7 +229,7 @@ script = [
     {
         "identifier": 'ACTION_43_jmp_if_bit_set_46',
         "command": 'jmp_if_bit_set',
-        "args": [0x7078, 6, 'ACTION_43_shift_west_steps_49']
+        "args": [0x707E, 3, 'ACTION_43_shift_west_steps_49']
     },
     {
         "identifier": 'ACTION_43_shift_east_steps_47',
@@ -234,7 +239,7 @@ script = [
     {
         "identifier": 'ACTION_43_jmp_48',
         "command": 'jmp',
-        "args": ['ACTION_719_clear_solidity_bits_0']
+        "args": ['ACTION_298_clear_solidity_bits_0']
     },
     {
         "identifier": 'ACTION_43_shift_west_steps_49',

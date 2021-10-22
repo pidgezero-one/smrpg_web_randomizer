@@ -65,7 +65,7 @@ sprites = [
     Sprite(59, image_num=174, animation_num=300, palette_offset=0),
     Sprite(60, image_num=258, animation_num=24, palette_offset=0),
     Sprite(61, image_num=258, animation_num=91, palette_offset=0),
-    Sprite(62, image_num=254, animation_num=444, palette_offset=0),
+    Sprite(62, image_num=82, animation_num=127, palette_offset=0),
     Sprite(63, image_num=175, animation_num=301, palette_offset=0),
     Sprite(64, image_num=291, animation_num=303, palette_offset=0),
     Sprite(65, image_num=182, animation_num=306, palette_offset=0),
@@ -113,8 +113,8 @@ sprites = [
     Sprite(107, image_num=176, animation_num=302, palette_offset=0),
     Sprite(108, image_num=195, animation_num=340, palette_offset=0),
     Sprite(109, image_num=196, animation_num=341, palette_offset=0),
-    Sprite(110, image_num=2, animation_num=447, palette_offset=0),
-    Sprite(111, image_num=201, animation_num=448, palette_offset=0),
+    Sprite(110, image_num=188, animation_num=322, palette_offset=1),
+    Sprite(111, image_num=294, animation_num=347, palette_offset=0),
     Sprite(112, image_num=182, animation_num=306, palette_offset=1),
     Sprite(113, image_num=182, animation_num=306, palette_offset=2),
     Sprite(114, image_num=182, animation_num=307, palette_offset=1),
@@ -193,8 +193,8 @@ sprites = [
     Sprite(187, image_num=0, animation_num=0, palette_offset=0),
     Sprite(188, image_num=211, animation_num=412, palette_offset=3),
     Sprite(189, image_num=230, animation_num=284, palette_offset=0),
-    Sprite(190, image_num=289, animation_num=283, palette_offset=0),
-    Sprite(191, image_num=293, animation_num=385, palette_offset=0),
+    Sprite(190, image_num=289, animation_num=247, palette_offset=0),
+    Sprite(191, image_num=293, animation_num=305, palette_offset=0),
     Sprite(192, image_num=2, animation_num=324, palette_offset=0),
     Sprite(193, image_num=2, animation_num=325, palette_offset=0),
     Sprite(194, image_num=2, animation_num=324, palette_offset=2),
@@ -208,13 +208,13 @@ sprites = [
     Sprite(202, image_num=2, animation_num=325, palette_offset=2),
     Sprite(203, image_num=189, animation_num=328, palette_offset=0),
     Sprite(204, image_num=197, animation_num=342, palette_offset=2),
-    Sprite(205, image_num=82, animation_num=452, palette_offset=0),
-    Sprite(206, image_num=110, animation_num=177, palette_offset=0),
+    Sprite(205, image_num=254, animation_num=395, palette_offset=0),
+    Sprite(206, image_num=255, animation_num=2, palette_offset=0),
     Sprite(207, image_num=260, animation_num=385, palette_offset=0),
-    Sprite(208, image_num=155, animation_num=454, palette_offset=0),
-    Sprite(209, image_num=155, animation_num=455, palette_offset=1),
-    Sprite(210, image_num=155, animation_num=456, palette_offset=2),
-    Sprite(211, image_num=155, animation_num=457, palette_offset=3),
+    Sprite(208, image_num=87, animation_num=143, palette_offset=0),
+    Sprite(209, image_num=88, animation_num=144, palette_offset=0),
+    Sprite(210, image_num=89, animation_num=145, palette_offset=0),
+    Sprite(211, image_num=90, animation_num=146, palette_offset=1),
     Sprite(212, image_num=91, animation_num=147, palette_offset=1),
     Sprite(213, image_num=92, animation_num=148, palette_offset=0),
     Sprite(214, image_num=39, animation_num=383, palette_offset=0),
@@ -229,7 +229,7 @@ sprites = [
     Sprite(223, image_num=222, animation_num=375, palette_offset=0),
     Sprite(224, image_num=262, animation_num=77, palette_offset=1),
     Sprite(225, image_num=217, animation_num=374, palette_offset=0),
-    Sprite(226, image_num=102, animation_num=450, palette_offset=0),
+    Sprite(226, image_num=218, animation_num=369, palette_offset=0),
     Sprite(227, image_num=212, animation_num=366, palette_offset=0),
     Sprite(228, image_num=210, animation_num=364, palette_offset=0),
     Sprite(229, image_num=215, animation_num=365, palette_offset=0),
@@ -240,7 +240,7 @@ sprites = [
     Sprite(234, image_num=207, animation_num=360, palette_offset=0),
     Sprite(235, image_num=206, animation_num=359, palette_offset=0),
     Sprite(236, image_num=234, animation_num=296, palette_offset=0),
-    Sprite(237, image_num=84, animation_num=453, palette_offset=0),
+    Sprite(237, image_num=255, animation_num=1, palette_offset=0),
     Sprite(238, image_num=205, animation_num=358, palette_offset=0),
     Sprite(239, image_num=194, animation_num=357, palette_offset=1),
     Sprite(240, image_num=205, animation_num=356, palette_offset=0),
@@ -253,11 +253,11 @@ sprites = [
     Sprite(247, image_num=310, animation_num=410, palette_offset=0),
     Sprite(248, image_num=311, animation_num=411, palette_offset=0),
     Sprite(249, image_num=239, animation_num=382, palette_offset=1),
-    Sprite(250, image_num=86, animation_num=446, palette_offset=0),
+    Sprite(250, image_num=203, animation_num=353, palette_offset=0),
     Sprite(251, image_num=202, animation_num=352, palette_offset=0),
-    Sprite(252, image_num=261, animation_num=449, palette_offset=0),
-    Sprite(253, image_num=178, animation_num=346, palette_offset=0),
-    Sprite(254, image_num=299, animation_num=451, palette_offset=0),
+    Sprite(252, image_num=201, animation_num=351, palette_offset=0),
+    Sprite(253, image_num=300, animation_num=350, palette_offset=0),
+    Sprite(254, image_num=200, animation_num=349, palette_offset=0),
     Sprite(255, image_num=180, animation_num=348, palette_offset=0),
     Sprite(256, image_num=255, animation_num=1, palette_offset=0),
     Sprite(257, image_num=1, animation_num=3, palette_offset=0),
@@ -337,14 +337,14 @@ sprites = [
     Sprite(331, image_num=9, animation_num=12, palette_offset=1),
     Sprite(332, image_num=52, animation_num=62, palette_offset=1),
     Sprite(333, image_num=10, animation_num=14, palette_offset=1),
-    Sprite(334, image_num=4, animation_num=6, palette_offset=0),
+    Sprite(334, image_num=0, animation_num=0, palette_offset=0),
     Sprite(335, image_num=12, animation_num=16, palette_offset=1),
     Sprite(336, image_num=13, animation_num=17, palette_offset=1),
     Sprite(337, image_num=27, animation_num=31, palette_offset=1),
     Sprite(338, image_num=14, animation_num=18, palette_offset=1),
     Sprite(339, image_num=25, animation_num=19, palette_offset=1),
     Sprite(340, image_num=15, animation_num=20, palette_offset=1),
-    Sprite(341, image_num=255, animation_num=2, palette_offset=0),
+    Sprite(341, image_num=16, animation_num=21, palette_offset=0),
     Sprite(342, image_num=257, animation_num=22, palette_offset=2),
     Sprite(343, image_num=42, animation_num=51, palette_offset=1),
     Sprite(344, image_num=273, animation_num=116, palette_offset=1),
@@ -370,11 +370,11 @@ sprites = [
     Sprite(364, image_num=19, animation_num=43, palette_offset=1),
     Sprite(365, image_num=30, animation_num=36, palette_offset=1),
     Sprite(366, image_num=83, animation_num=130, palette_offset=1),
-    Sprite(367, image_num=17, animation_num=25, palette_offset=0),
+    Sprite(367, image_num=48, animation_num=129, palette_offset=1),
     Sprite(368, image_num=67, animation_num=101, palette_offset=1),
     Sprite(369, image_num=31, animation_num=37, palette_offset=1),
     Sprite(370, image_num=52, animation_num=62, palette_offset=2),
-    Sprite(371, image_num=262, animation_num=76, palette_offset=1),
+    Sprite(371, image_num=270, animation_num=131, palette_offset=1),
     Sprite(372, image_num=47, animation_num=57, palette_offset=1),
     Sprite(373, image_num=20, animation_num=39, palette_offset=1),
     Sprite(374, image_num=44, animation_num=54, palette_offset=1),
@@ -388,19 +388,19 @@ sprites = [
     Sprite(382, image_num=50, animation_num=60, palette_offset=1),
     Sprite(383, image_num=36, animation_num=58, palette_offset=1),
     Sprite(384, image_num=262, animation_num=76, palette_offset=0),
-    Sprite(385, image_num=262, animation_num=76, palette_offset=0),
-    Sprite(386, image_num=9, animation_num=12, palette_offset=0),
-    Sprite(387, image_num=6, animation_num=8, palette_offset=0),
+    Sprite(385, image_num=0, animation_num=0, palette_offset=0),
+    Sprite(386, image_num=0, animation_num=0, palette_offset=0),
+    Sprite(387, image_num=0, animation_num=0, palette_offset=0),
     Sprite(388, image_num=102, animation_num=166, palette_offset=0),
-    Sprite(389, image_num=259, animation_num=32, palette_offset=0),
+    Sprite(389, image_num=119, animation_num=186, palette_offset=0),
     Sprite(390, image_num=42, animation_num=52, palette_offset=2),
     Sprite(391, image_num=73, animation_num=115, palette_offset=0),
-    Sprite(392, image_num=300, animation_num=445, palette_offset=0),
+    Sprite(392, image_num=1, animation_num=3, palette_offset=0),
     Sprite(393, image_num=261, animation_num=74, palette_offset=0),
     Sprite(394, image_num=1, animation_num=3, palette_offset=2),
     Sprite(395, image_num=42, animation_num=53, palette_offset=3),
     Sprite(396, image_num=36, animation_num=85, palette_offset=0),
-    Sprite(397, image_num=10, animation_num=14, palette_offset=1),
+    Sprite(397, image_num=36, animation_num=85, palette_offset=1),
     Sprite(398, image_num=65, animation_num=95, palette_offset=0),
     Sprite(399, image_num=275, animation_num=117, palette_offset=0),
     Sprite(400, image_num=260, animation_num=66, palette_offset=0),
@@ -418,8 +418,8 @@ sprites = [
     Sprite(412, image_num=304, animation_num=266, palette_offset=0),
     Sprite(413, image_num=306, animation_num=260, palette_offset=0),
     Sprite(414, image_num=58, animation_num=121, palette_offset=0),
-    Sprite(415, image_num=77, animation_num=385, palette_offset=0),
-    Sprite(416, image_num=10, animation_num=14, palette_offset=0),
+    Sprite(415, image_num=77, animation_num=122, palette_offset=0),
+    Sprite(416, image_num=300, animation_num=350, palette_offset=0),
     Sprite(417, image_num=98, animation_num=153, palette_offset=0),
     Sprite(418, image_num=94, animation_num=155, palette_offset=0),
     Sprite(419, image_num=278, animation_num=81, palette_offset=1),
@@ -430,11 +430,11 @@ sprites = [
     Sprite(424, image_num=87, animation_num=143, palette_offset=2),
     Sprite(425, image_num=90, animation_num=146, palette_offset=3),
     Sprite(426, image_num=91, animation_num=147, palette_offset=3),
-    Sprite(427, image_num=48, animation_num=42, palette_offset=0),
-    Sprite(428, image_num=8, animation_num=11, palette_offset=0),
-    Sprite(429, image_num=88, animation_num=144, palette_offset=2),
-    Sprite(430, image_num=89, animation_num=145, palette_offset=2),
-    Sprite(431, image_num=79, animation_num=124, palette_offset=0),
+    Sprite(427, image_num=5, animation_num=7, palette_offset=0),
+    Sprite(428, image_num=74, animation_num=118, palette_offset=0),
+    Sprite(429, image_num=72, animation_num=114, palette_offset=0),
+    Sprite(430, image_num=82, animation_num=127, palette_offset=0),
+    Sprite(431, image_num=54, animation_num=70, palette_offset=1),
     Sprite(432, image_num=75, animation_num=120, palette_offset=0),
     Sprite(433, image_num=40, animation_num=47, palette_offset=0),
     Sprite(434, image_num=75, animation_num=120, palette_offset=2),
@@ -442,9 +442,9 @@ sprites = [
     Sprite(436, image_num=70, animation_num=109, palette_offset=0),
     Sprite(437, image_num=285, animation_num=157, palette_offset=0),
     Sprite(438, image_num=274, animation_num=156, palette_offset=0),
-    Sprite(439, image_num=16, animation_num=21, palette_offset=0),
+    Sprite(439, image_num=36, animation_num=58, palette_offset=0),
     Sprite(440, image_num=82, animation_num=127, palette_offset=0),
-    Sprite(441, image_num=273, animation_num=116, palette_offset=0),
+    Sprite(441, image_num=258, animation_num=91, palette_offset=0),
     Sprite(442, image_num=36, animation_num=85, palette_offset=0),
     Sprite(443, image_num=96, animation_num=158, palette_offset=0),
     Sprite(444, image_num=0, animation_num=0, palette_offset=0),
@@ -460,7 +460,7 @@ sprites = [
     Sprite(454, image_num=269, animation_num=108, palette_offset=0),
     Sprite(455, image_num=45, animation_num=55, palette_offset=0),
     Sprite(456, image_num=45, animation_num=55, palette_offset=0),
-    Sprite(457, image_num=87, animation_num=143, palette_offset=2),
+    Sprite(457, image_num=45, animation_num=55, palette_offset=0),
     Sprite(458, image_num=6, animation_num=87, palette_offset=0),
     Sprite(459, image_num=6, animation_num=86, palette_offset=0),
     Sprite(460, image_num=6, animation_num=88, palette_offset=0),
@@ -491,7 +491,7 @@ sprites = [
     Sprite(485, image_num=88, animation_num=144, palette_offset=0),
     Sprite(486, image_num=277, animation_num=79, palette_offset=0),
     Sprite(487, image_num=79, animation_num=124, palette_offset=0),
-    Sprite(488, image_num=91, animation_num=147, palette_offset=3),
+    Sprite(488, image_num=85, animation_num=133, palette_offset=0),
     Sprite(489, image_num=97, animation_num=152, palette_offset=0),
     Sprite(490, image_num=279, animation_num=137, palette_offset=0),
     Sprite(491, image_num=279, animation_num=138, palette_offset=0),
@@ -501,9 +501,9 @@ sprites = [
     Sprite(495, image_num=284, animation_num=142, palette_offset=0),
     Sprite(496, image_num=230, animation_num=283, palette_offset=0),
     Sprite(497, image_num=230, animation_num=283, palette_offset=0),
-    Sprite(498, image_num=90, animation_num=146, palette_offset=3),
+    Sprite(498, image_num=230, animation_num=283, palette_offset=0),
     Sprite(499, image_num=266, animation_num=94, palette_offset=1),
-    Sprite(500, image_num=78, animation_num=123, palette_offset=0),
+    Sprite(500, image_num=297, animation_num=254, palette_offset=0),
     Sprite(501, image_num=93, animation_num=149, palette_offset=0),
     Sprite(502, image_num=231, animation_num=286, palette_offset=0),
     Sprite(503, image_num=231, animation_num=286, palette_offset=0),
@@ -1108,7 +1108,7 @@ images = [
     ImagePack(74, graphics_pointer=0x2b4820, palette_pointer=0x2549c8),
     ImagePack(75, graphics_pointer=0x2b5060, palette_pointer=0x254a04),
     ImagePack(76, graphics_pointer=0x2b5ec0, palette_pointer=0x254a9a),
-    ImagePack(77, graphics_pointer=0x2f5a40, palette_pointer=0x254ad6),
+    ImagePack(77, graphics_pointer=0x2b6780, palette_pointer=0x254ad6),
     ImagePack(78, graphics_pointer=0x2b6b60, palette_pointer=0x254af4),
     ImagePack(79, graphics_pointer=0x2b75c0, palette_pointer=0x254b4e),
     ImagePack(80, graphics_pointer=0x2b7b00, palette_pointer=0x254b6c),
@@ -1232,7 +1232,7 @@ images = [
     ImagePack(198, graphics_pointer=0x2d8d40, palette_pointer=0x256624),
     ImagePack(199, graphics_pointer=0x2d8f40, palette_pointer=0x256642),
     ImagePack(200, graphics_pointer=0x2d9540, palette_pointer=0x256660),
-    ImagePack(201, graphics_pointer=0x30c4c0, palette_pointer=0x2571be),
+    ImagePack(201, graphics_pointer=0x2da340, palette_pointer=0x25667e),
     ImagePack(202, graphics_pointer=0x2dade0, palette_pointer=0x25669c),
     ImagePack(203, graphics_pointer=0x2db260, palette_pointer=0x2566ba),
     ImagePack(204, graphics_pointer=0x2db2e0, palette_pointer=0x2566d8),
@@ -1279,13 +1279,13 @@ images = [
     ImagePack(245, graphics_pointer=0x2ee9a0, palette_pointer=0x256eee),
     ImagePack(246, graphics_pointer=0x2ef260, palette_pointer=0x256f0c),
     ImagePack(247, graphics_pointer=0x2ef680, palette_pointer=0x256f2a),
-    ImagePack(248, graphics_pointer=0x2b75c0, palette_pointer=0x256f84),
+    ImagePack(248, graphics_pointer=0x2ef8c0, palette_pointer=0x256f84),
     ImagePack(249, graphics_pointer=0x2efa40, palette_pointer=0x256fa2),
     ImagePack(250, graphics_pointer=0x2f0000, palette_pointer=0x256fc0),
     ImagePack(251, graphics_pointer=0x2f04e0, palette_pointer=0x256fde),
     ImagePack(252, graphics_pointer=0x2f0500, palette_pointer=0x2570b0),
     ImagePack(253, graphics_pointer=0x2f0580, palette_pointer=0x257182),
-    ImagePack(254, graphics_pointer=0x2e2d40, palette_pointer=0x2571be),
+    ImagePack(254, graphics_pointer=0x2f0c80, palette_pointer=0x2571be),
     ImagePack(255, graphics_pointer=0x2f1180, palette_pointer=0x2571fa),
     ImagePack(256, graphics_pointer=0x2f2640, palette_pointer=0x257254),
     ImagePack(257, graphics_pointer=0x2f3520, palette_pointer=0x2572ae),
@@ -1320,18 +1320,18 @@ images = [
     ImagePack(286, graphics_pointer=0x30c4c0, palette_pointer=0x257998),
     ImagePack(287, graphics_pointer=0x30fda0, palette_pointer=0x257a2e),
     ImagePack(288, graphics_pointer=0x310000, palette_pointer=0x257a4c),
-    ImagePack(289, graphics_pointer=0x2e5940, palette_pointer=0x257a6a),
+    ImagePack(289, graphics_pointer=0x310440, palette_pointer=0x257a6a),
     ImagePack(290, graphics_pointer=0x310660, palette_pointer=0x257a88),
     ImagePack(291, graphics_pointer=0x310d80, palette_pointer=0x257b00),
     ImagePack(292, graphics_pointer=0x311680, palette_pointer=0x257b78),
-    ImagePack(293, graphics_pointer=0x2f5a40, palette_pointer=0x257c0e),
+    ImagePack(293, graphics_pointer=0x313c00, palette_pointer=0x257c0e),
     ImagePack(294, graphics_pointer=0x313c80, palette_pointer=0x257c86),
     ImagePack(295, graphics_pointer=0x314000, palette_pointer=0x257ca4),
     ImagePack(296, graphics_pointer=0x3165e0, palette_pointer=0x257d3a),
     ImagePack(297, graphics_pointer=0x318200, palette_pointer=0x257dd0),
     ImagePack(298, graphics_pointer=0x31b9a0, palette_pointer=0x257e66),
     ImagePack(299, graphics_pointer=0x31de60, palette_pointer=0x257efc),
-    ImagePack(300, graphics_pointer=0x2e2d40, palette_pointer=0x257f56),
+    ImagePack(300, graphics_pointer=0x31f940, palette_pointer=0x257f56),
     ImagePack(301, graphics_pointer=0x31fe40, palette_pointer=0x257fb0),
     ImagePack(302, graphics_pointer=0x320000, palette_pointer=0x257fce),
     ImagePack(303, graphics_pointer=0x320280, palette_pointer=0x25800a),
@@ -25976,7 +25976,7 @@ animations= [
                 ),
                 Mold(2, gridplane=True,
                     tiles=[
-                        Tile(mirror=True, invert=False, format=3, length=17, subtile_bytes=[51, 52, 53, 0, 61, 62, 63, 0, 72, 73, 74, 75, 82, 83, 84, 85], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
+                        Tile(mirror=False, invert=False, format=3, length=17, subtile_bytes=[51, 52, 53, 0, 61, 62, 63, 0, 72, 73, 74, 75, 82, 83, 84, 85], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
                     ]
                 ),
             ],
@@ -25988,12 +25988,12 @@ animations= [
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=2),
+                        AnimationSequenceFrame(duration=2, mold_id=1),
                     ]
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=1),
+                        AnimationSequenceFrame(duration=2, mold_id=2),
                     ]
                 ),
             ]
@@ -42711,7 +42711,7 @@ animations= [
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=0),
+                        AnimationSequenceFrame(duration=2, mold_id=1),
                     ]
                 ),
                 AnimationSequence(
@@ -90705,7 +90705,7 @@ animations= [
                 ),
                 Mold(2, gridplane=True,
                     tiles=[
-                        Tile(mirror=True, invert=False, format=3, length=17, subtile_bytes=[0, 0, 0, 0, 0, 1, 2, 0, 0, 9, 10, 0, 0, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
+                        Tile(mirror=False, invert=False, format=3, length=17, subtile_bytes=[0, 0, 0, 0, 0, 1, 2, 0, 0, 9, 10, 0, 0, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
                     ]
                 ),
             ],
@@ -90717,12 +90717,12 @@ animations= [
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=2),
+                        AnimationSequenceFrame(duration=2, mold_id=1),
                     ]
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=1),
+                        AnimationSequenceFrame(duration=2, mold_id=2),
                     ]
                 ),
             ]
@@ -93400,11 +93400,6 @@ animations= [
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=12),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
                         AnimationSequenceFrame(duration=4, mold_id=0),
                         AnimationSequenceFrame(duration=4, mold_id=1),
                         AnimationSequenceFrame(duration=4, mold_id=2),
@@ -93418,6 +93413,11 @@ animations= [
                         AnimationSequenceFrame(duration=2, mold_id=10),
                         AnimationSequenceFrame(duration=2, mold_id=11),
                         AnimationSequenceFrame(duration=4, mold_id=12),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=12),
                     ]
                 ),
             ]
@@ -96257,65 +96257,183 @@ animations= [
             ]
         )
     ),
-    AnimationPack(405, length=148, unknown=0x0002,
+    AnimationPack(405, length=323, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
-                Mold(0, gridplane=True,
+                Mold(0, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[0, 1, 2, 0, 7, 0, 0, 11, 12, 0, 16, 17, 1, 1, 1, 1], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[4, 5, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[8, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=122),
                     ]
                 ),
-                Mold(1, gridplane=True,
+                Mold(1, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[3, 4, 0, 0, 8, 0, 0, 13, 14, 0, 18, 19, 1, 1, 1, 1], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[2, 3, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[8, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=121),
                     ]
                 ),
-                Mold(2, gridplane=True,
+                Mold(2, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[0, 5, 6, 0, 9, 10, 0, 15, 12, 0, 20, 21, 1, 1, 1, 1], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[6, 7, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[8, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=123),
                     ]
                 ),
-                Mold(3, gridplane=True,
+                Mold(3, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[0, 22, 23, 0, 28, 29, 0, 34, 0, 0, 38, 39, 1, 1, 1, 1], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[6, 7, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[8, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=123),
                     ]
                 ),
-                Mold(4, gridplane=True,
+                Mold(4, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[0, 24, 25, 0, 30, 31, 0, 35, 36, 0, 40, 41, 1, 1, 1, 1], is_16bit=False, y_plus=1, y_minus=0, x=0, y=0),
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[4, 5, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[8, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=122, y=124),
                     ]
                 ),
-                Mold(5, gridplane=True,
+                Mold(5, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[0, 26, 27, 0, 32, 33, 0, 37, 0, 0, 42, 0, 1, 1, 1, 1], is_16bit=False, y_plus=0, y_minus=1, x=0, y=0),
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[2, 3, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=122, y=122),
+                    ]
+                ),
+                Mold(6, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[4, 5, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=122, y=112),
+                    ]
+                ),
+                Mold(7, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[4, 5, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=136),
+                    ]
+                ),
+                Mold(8, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[2, 3, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=137),
+                    ]
+                ),
+                Mold(9, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[6, 7, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=122, y=128),
+                    ]
+                ),
+                Mold(10, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[4, 5, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                    ]
+                ),
+                Mold(11, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[6, 7, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                    ]
+                ),
+                Mold(12, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[2, 3, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                    ]
+                ),
+                Mold(13, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[6, 7, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=137),
+                    ]
+                ),
+                Mold(14, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[4, 5, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=137),
+                    ]
+                ),
+                Mold(15, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[11, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=136),
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[4, 5, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                    ]
+                ),
+                Mold(16, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[2, 3, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[12, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=137),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
+                    ]
+                ),
+                Mold(17, gridplane=False,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[6, 7, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=126),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[10, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=137),
+                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=129, y=120),
                     ]
                 ),
             ],
             sequences=[
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=6, mold_id=3),
-                        AnimationSequenceFrame(duration=8, mold_id=4),
-                        AnimationSequenceFrame(duration=6, mold_id=3),
-                        AnimationSequenceFrame(duration=8, mold_id=5),
+                        AnimationSequenceFrame(duration=6, mold_id=0),
+                        AnimationSequenceFrame(duration=8, mold_id=1),
+                        AnimationSequenceFrame(duration=6, mold_id=0),
+                        AnimationSequenceFrame(duration=8, mold_id=2),
                     ]
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=0),
-                        AnimationSequenceFrame(duration=8, mold_id=1),
-                        AnimationSequenceFrame(duration=8, mold_id=0),
-                        AnimationSequenceFrame(duration=4, mold_id=2),
-                        AnimationSequenceFrame(duration=4, mold_id=0),
-                        AnimationSequenceFrame(duration=4, mold_id=1),
-                        AnimationSequenceFrame(duration=4, mold_id=0),
-                        AnimationSequenceFrame(duration=2, mold_id=2),
-                        AnimationSequenceFrame(duration=2, mold_id=1),
-                        AnimationSequenceFrame(duration=2, mold_id=2),
-                        AnimationSequenceFrame(duration=2, mold_id=1),
-                        AnimationSequenceFrame(duration=2, mold_id=2),
-                        AnimationSequenceFrame(duration=2, mold_id=1),
                         AnimationSequenceFrame(duration=6, mold_id=0),
+                        AnimationSequenceFrame(duration=8, mold_id=3),
+                        AnimationSequenceFrame(duration=6, mold_id=4),
+                        AnimationSequenceFrame(duration=8, mold_id=5),
+                        AnimationSequenceFrame(duration=6, mold_id=6),
+                        AnimationSequenceFrame(duration=8, mold_id=9),
+                        AnimationSequenceFrame(duration=6, mold_id=7),
+                        AnimationSequenceFrame(duration=8, mold_id=8),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=16),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=17),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=16),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=17),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=16),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=17),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=16),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=17),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=16),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=17),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                        AnimationSequenceFrame(duration=8, mold_id=16),
+                        AnimationSequenceFrame(duration=6, mold_id=15),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=6, mold_id=10),
+                        AnimationSequenceFrame(duration=8, mold_id=11),
+                        AnimationSequenceFrame(duration=6, mold_id=10),
+                        AnimationSequenceFrame(duration=8, mold_id=12),
                     ]
                 ),
             ]
@@ -100706,1074 +100824,6 @@ animations= [
                     frames=[
                         AnimationSequenceFrame(duration=2, mold_id=3),
                         AnimationSequenceFrame(duration=2, mold_id=4),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(444, length=608, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=5, subtile_bytes=[29, 30, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=128, y=110),
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[1, 2, 16, 17], is_16bit=False, y_plus=0, y_minus=0, x=128, y=94),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[29, 30, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=110),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 16, 17], is_16bit=False, y_plus=0, y_minus=0, x=112, y=94),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(1, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=5, subtile_bytes=[29, 30, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=128, y=364),
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[1, 2, 16, 17], is_16bit=False, y_plus=0, y_minus=0, x=128, y=348),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[29, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 16, 17], is_16bit=False, y_plus=0, y_minus=0, x=112, y=92),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[47, 30, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[3, 4, 18, 19], is_16bit=False, y_plus=0, y_minus=0, x=128, y=92),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 18, 19], is_16bit=False, y_plus=0, y_minus=0, x=112, y=92),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(3, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[3, 4, 18, 19], is_16bit=False, y_plus=0, y_minus=0, x=128, y=346),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 18, 19], is_16bit=False, y_plus=0, y_minus=0, x=112, y=346),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(4, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[5, 6, 20, 21], is_16bit=False, y_plus=0, y_minus=0, x=128, y=88),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[5, 6, 20, 21], is_16bit=False, y_plus=0, y_minus=0, x=112, y=88),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(5, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[5, 6, 20, 21], is_16bit=False, y_plus=0, y_minus=0, x=128, y=342),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[5, 6, 20, 21], is_16bit=False, y_plus=0, y_minus=0, x=112, y=342),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(6, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(7, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=374, y=125),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=382, y=117),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=366, y=109),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=374, y=101),
-                    ]
-                ),
-                Mold(8, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=372, y=126),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=380, y=118),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=364, y=110),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=372, y=102),
-                    ]
-                ),
-                Mold(9, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=370, y=127),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=378, y=119),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=362, y=111),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=370, y=103),
-                    ]
-                ),
-                Mold(10, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[74, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[63, 64, 75, 0], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[50, 0, 61, 62], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[39, 40, 51, 52], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(11, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[67, 68, 77, 0], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[65, 66, 0, 76], is_16bit=False, y_plus=0, y_minus=0, x=112, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(12, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[60, 0, 73, 0], is_16bit=False, y_plus=0, y_minus=0, x=136, y=115),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[58, 59, 71, 72], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[47, 0, 57, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=107),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(13, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[45, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=109),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[46, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=136, y=114),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[55, 56, 71, 72], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 43, 44], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(14, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[46, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=136, y=112),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[45, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=107),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[78, 79, 71, 72], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 69, 70], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(15, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[46, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=136, y=111),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[45, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=106),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[78, 79, 71, 72], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 69, 70], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(16, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[85, 0, 88, 89], is_16bit=False, y_plus=0, y_minus=0, x=118, y=117),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[0, 84, 86, 87], is_16bit=False, y_plus=0, y_minus=0, x=126, y=109),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[80, 81, 82, 83], is_16bit=False, y_plus=0, y_minus=0, x=118, y=101),
-                    ]
-                ),
-                Mold(17, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[85, 0, 88, 89], is_16bit=False, y_plus=0, y_minus=0, x=372, y=118),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[0, 84, 86, 87], is_16bit=False, y_plus=0, y_minus=0, x=380, y=110),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[80, 81, 82, 83], is_16bit=False, y_plus=0, y_minus=0, x=372, y=102),
-                    ]
-                ),
-                Mold(18, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[85, 0, 88, 89], is_16bit=False, y_plus=0, y_minus=0, x=370, y=119),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[0, 84, 86, 87], is_16bit=False, y_plus=0, y_minus=0, x=378, y=111),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[80, 81, 82, 83], is_16bit=False, y_plus=0, y_minus=0, x=370, y=103),
-                    ]
-                ),
-                Mold(19, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[76, 77, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[68, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=137, y=117),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[66, 67, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[65, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=113, y=115),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=121, y=100),
-                    ]
-                ),
-                Mold(20, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[76, 77, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[68, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=137, y=118),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[66, 67, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[65, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=113, y=114),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=121, y=100),
-                    ]
-                ),
-                Mold(21, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[76, 77, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[68, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=135, y=115),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[66, 67, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=119, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[65, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=111, y=117),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=119, y=100),
-                    ]
-                ),
-                Mold(22, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[76, 77, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[68, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=135, y=114),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[66, 67, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=119, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[65, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=111, y=118),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=119, y=100),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=10),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=6),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=11),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=7),
-                        AnimationSequenceFrame(duration=2, mold_id=8),
-                        AnimationSequenceFrame(duration=6, mold_id=9),
-                        AnimationSequenceFrame(duration=2, mold_id=8),
-                        AnimationSequenceFrame(duration=2, mold_id=7),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=12),
-                        AnimationSequenceFrame(duration=2, mold_id=13),
-                        AnimationSequenceFrame(duration=2, mold_id=14),
-                        AnimationSequenceFrame(duration=2, mold_id=15),
-                        AnimationSequenceFrame(duration=6, mold_id=14),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=16),
-                        AnimationSequenceFrame(duration=2, mold_id=17),
-                        AnimationSequenceFrame(duration=6, mold_id=18),
-                        AnimationSequenceFrame(duration=2, mold_id=17),
-                        AnimationSequenceFrame(duration=2, mold_id=16),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=4, mold_id=0),
-                        AnimationSequenceFrame(duration=4, mold_id=1),
-                        AnimationSequenceFrame(duration=4, mold_id=2),
-                        AnimationSequenceFrame(duration=4, mold_id=3),
-                        AnimationSequenceFrame(duration=4, mold_id=4),
-                        AnimationSequenceFrame(duration=4, mold_id=5),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=11),
-                        AnimationSequenceFrame(duration=2, mold_id=19),
-                        AnimationSequenceFrame(duration=2, mold_id=20),
-                        AnimationSequenceFrame(duration=2, mold_id=19),
-                        AnimationSequenceFrame(duration=2, mold_id=11),
-                        AnimationSequenceFrame(duration=2, mold_id=21),
-                        AnimationSequenceFrame(duration=2, mold_id=22),
-                        AnimationSequenceFrame(duration=2, mold_id=21),
-                        AnimationSequenceFrame(duration=2, mold_id=11),
-                        AnimationSequenceFrame(duration=2, mold_id=19),
-                        AnimationSequenceFrame(duration=2, mold_id=20),
-                        AnimationSequenceFrame(duration=2, mold_id=19),
-                        AnimationSequenceFrame(duration=2, mold_id=11),
-                        AnimationSequenceFrame(duration=2, mold_id=21),
-                        AnimationSequenceFrame(duration=2, mold_id=22),
-                        AnimationSequenceFrame(duration=2, mold_id=21),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(445, length=608, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=5, subtile_bytes=[29, 30, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=128, y=110),
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[1, 2, 16, 17], is_16bit=False, y_plus=0, y_minus=0, x=128, y=94),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[29, 30, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=110),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 16, 17], is_16bit=False, y_plus=0, y_minus=0, x=112, y=94),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(1, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=5, subtile_bytes=[29, 30, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=128, y=364),
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[1, 2, 16, 17], is_16bit=False, y_plus=0, y_minus=0, x=128, y=348),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[29, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 16, 17], is_16bit=False, y_plus=0, y_minus=0, x=112, y=92),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[47, 30, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[3, 4, 18, 19], is_16bit=False, y_plus=0, y_minus=0, x=128, y=92),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 18, 19], is_16bit=False, y_plus=0, y_minus=0, x=112, y=92),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(3, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[3, 4, 18, 19], is_16bit=False, y_plus=0, y_minus=0, x=128, y=346),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 18, 19], is_16bit=False, y_plus=0, y_minus=0, x=112, y=346),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(4, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[5, 6, 20, 21], is_16bit=False, y_plus=0, y_minus=0, x=128, y=88),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[5, 6, 20, 21], is_16bit=False, y_plus=0, y_minus=0, x=112, y=88),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(5, gridplane=False,
-                    tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[5, 6, 20, 21], is_16bit=False, y_plus=0, y_minus=0, x=128, y=342),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[5, 6, 20, 21], is_16bit=False, y_plus=0, y_minus=0, x=112, y=342),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(6, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(7, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=374, y=125),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=382, y=117),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=366, y=109),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=374, y=101),
-                    ]
-                ),
-                Mold(8, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=372, y=126),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=380, y=118),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=364, y=110),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=372, y=102),
-                    ]
-                ),
-                Mold(9, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[71, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=370, y=127),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[59, 60, 72, 73], is_16bit=False, y_plus=0, y_minus=0, x=378, y=119),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[47, 0, 57, 58], is_16bit=False, y_plus=0, y_minus=0, x=362, y=111),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=370, y=103),
-                    ]
-                ),
-                Mold(10, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[74, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[63, 64, 75, 0], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[50, 0, 61, 62], is_16bit=False, y_plus=0, y_minus=0, x=112, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[39, 40, 51, 52], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(11, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[67, 68, 77, 0], is_16bit=False, y_plus=0, y_minus=0, x=128, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[65, 66, 0, 76], is_16bit=False, y_plus=0, y_minus=0, x=112, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(12, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[60, 0, 73, 0], is_16bit=False, y_plus=0, y_minus=0, x=136, y=115),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[58, 59, 71, 72], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[47, 0, 57, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=107),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 48, 49], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(13, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[45, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=109),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[46, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=136, y=114),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[55, 56, 71, 72], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 43, 44], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(14, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[46, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=136, y=112),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[45, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=107),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[78, 79, 71, 72], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 69, 70], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(15, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[46, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=136, y=111),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[45, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=112, y=106),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[78, 79, 71, 72], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[37, 38, 69, 70], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
-                    ]
-                ),
-                Mold(16, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[85, 0, 88, 89], is_16bit=False, y_plus=0, y_minus=0, x=118, y=117),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[0, 84, 86, 87], is_16bit=False, y_plus=0, y_minus=0, x=126, y=109),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[80, 81, 82, 83], is_16bit=False, y_plus=0, y_minus=0, x=118, y=101),
-                    ]
-                ),
-                Mold(17, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[85, 0, 88, 89], is_16bit=False, y_plus=0, y_minus=0, x=372, y=118),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[0, 84, 86, 87], is_16bit=False, y_plus=0, y_minus=0, x=380, y=110),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[80, 81, 82, 83], is_16bit=False, y_plus=0, y_minus=0, x=372, y=102),
-                    ]
-                ),
-                Mold(18, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[85, 0, 88, 89], is_16bit=False, y_plus=0, y_minus=0, x=370, y=119),
-                        Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[0, 84, 86, 87], is_16bit=False, y_plus=0, y_minus=0, x=378, y=111),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[80, 81, 82, 83], is_16bit=False, y_plus=0, y_minus=0, x=370, y=103),
-                    ]
-                ),
-                Mold(19, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[76, 77, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[68, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=137, y=117),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[66, 67, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[65, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=113, y=115),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=121, y=100),
-                    ]
-                ),
-                Mold(20, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[76, 77, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[68, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=137, y=118),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[66, 67, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=121, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[65, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=113, y=114),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=121, y=100),
-                    ]
-                ),
-                Mold(21, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[76, 77, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[68, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=135, y=115),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[66, 67, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=119, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[65, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=111, y=117),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=119, y=100),
-                    ]
-                ),
-                Mold(22, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[76, 77, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[68, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=135, y=114),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[66, 67, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=119, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[65, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=111, y=118),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[41, 42, 53, 54], is_16bit=False, y_plus=0, y_minus=0, x=119, y=100),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=10),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=6),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=11),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=7),
-                        AnimationSequenceFrame(duration=2, mold_id=8),
-                        AnimationSequenceFrame(duration=6, mold_id=9),
-                        AnimationSequenceFrame(duration=2, mold_id=8),
-                        AnimationSequenceFrame(duration=2, mold_id=7),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=12),
-                        AnimationSequenceFrame(duration=2, mold_id=13),
-                        AnimationSequenceFrame(duration=2, mold_id=14),
-                        AnimationSequenceFrame(duration=2, mold_id=15),
-                        AnimationSequenceFrame(duration=6, mold_id=14),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=16),
-                        AnimationSequenceFrame(duration=2, mold_id=17),
-                        AnimationSequenceFrame(duration=6, mold_id=18),
-                        AnimationSequenceFrame(duration=2, mold_id=17),
-                        AnimationSequenceFrame(duration=2, mold_id=16),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=4, mold_id=0),
-                        AnimationSequenceFrame(duration=4, mold_id=1),
-                        AnimationSequenceFrame(duration=4, mold_id=2),
-                        AnimationSequenceFrame(duration=4, mold_id=3),
-                        AnimationSequenceFrame(duration=4, mold_id=4),
-                        AnimationSequenceFrame(duration=4, mold_id=5),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=11),
-                        AnimationSequenceFrame(duration=2, mold_id=19),
-                        AnimationSequenceFrame(duration=2, mold_id=20),
-                        AnimationSequenceFrame(duration=2, mold_id=19),
-                        AnimationSequenceFrame(duration=2, mold_id=11),
-                        AnimationSequenceFrame(duration=2, mold_id=21),
-                        AnimationSequenceFrame(duration=2, mold_id=22),
-                        AnimationSequenceFrame(duration=2, mold_id=21),
-                        AnimationSequenceFrame(duration=2, mold_id=11),
-                        AnimationSequenceFrame(duration=2, mold_id=19),
-                        AnimationSequenceFrame(duration=2, mold_id=20),
-                        AnimationSequenceFrame(duration=2, mold_id=19),
-                        AnimationSequenceFrame(duration=2, mold_id=11),
-                        AnimationSequenceFrame(duration=2, mold_id=21),
-                        AnimationSequenceFrame(duration=2, mold_id=22),
-                        AnimationSequenceFrame(duration=2, mold_id=21),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(446, length=99, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[19, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=132, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[17, 18, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=116, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[3, 0, 12, 0], is_16bit=False, y_plus=0, y_minus=0, x=132, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 10, 11], is_16bit=False, y_plus=0, y_minus=0, x=116, y=108),
-                    ]
-                ),
-                Mold(1, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[22, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=132, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[20, 21, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=116, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[6, 0, 14, 0], is_16bit=False, y_plus=0, y_minus=0, x=132, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[4, 5, 13, 11], is_16bit=False, y_plus=0, y_minus=0, x=116, y=108),
-                    ]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[25, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=132, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[23, 24, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=116, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[9, 0, 16, 0], is_16bit=False, y_plus=0, y_minus=0, x=132, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[7, 8, 15, 11], is_16bit=False, y_plus=0, y_minus=0, x=116, y=108),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=6, mold_id=0),
-                        AnimationSequenceFrame(duration=8, mold_id=1),
-                        AnimationSequenceFrame(duration=6, mold_id=0),
-                        AnimationSequenceFrame(duration=8, mold_id=2),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(447, length=31, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[78, 79, 83, 84], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=0),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(448, length=57, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=True,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=15, subtile_bytes=[67, 68, 69, 421, 422, 424, 437, 438, 440, 0, 452, 0, 1, 1, 1, 1], is_16bit=True, y_plus=0, y_minus=0, x=0, y=0),
-                    ]
-                ),
-                Mold(1, gridplane=True,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=1, length=15, subtile_bytes=[67, 68, 69, 421, 422, 424, 437, 408, 440, 0, 452, 0, 1, 1, 1, 1], is_16bit=True, y_plus=0, y_minus=0, x=0, y=0),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=6, mold_id=0),
-                        AnimationSequenceFrame(duration=6, mold_id=1),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(449, length=29, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[1, 0, 4, 0], is_16bit=False, y_plus=0, y_minus=0, x=125, y=120),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=0),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(450, length=155, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=114, y=130),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=114, y=120),
-                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[0, 1, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=133, y=130),
-                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[0, 1, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=133, y=120),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=116, y=123),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[10, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=124, y=124),
-                    ]
-                ),
-                Mold(1, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=124, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=113, y=131),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=113, y=119),
-                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[0, 1, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=134, y=131),
-                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[0, 1, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=134, y=119),
-                    ]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=131),
-                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[0, 1, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=127, y=117),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=113, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=116, y=123),
-                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[0, 1, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=134, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[10, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=124, y=124),
-                    ]
-                ),
-                Mold(3, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=124, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[1, 0, 0, 1], is_16bit=False, y_plus=0, y_minus=0, x=112, y=124),
-                        Tile(mirror=True, invert=False, format=0, length=5, subtile_bytes=[0, 1, 1, 0], is_16bit=False, y_plus=0, y_minus=0, x=127, y=116),
-                    ]
-                ),
-                Mold(4, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=116, y=123),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[1, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[10, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=124, y=124),
-                    ]
-                ),
-                Mold(5, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[9, 0, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=124, y=124),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=0),
-                        AnimationSequenceFrame(duration=2, mold_id=1),
-                        AnimationSequenceFrame(duration=2, mold_id=2),
-                        AnimationSequenceFrame(duration=2, mold_id=3),
-                        AnimationSequenceFrame(duration=2, mold_id=4),
-                        AnimationSequenceFrame(duration=2, mold_id=5),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(451, length=29, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[56, 57, 0, 0], is_16bit=False, y_plus=0, y_minus=0, x=120, y=124),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=1, mold_id=26),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(452, length=31, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 13, 14], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=0),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(453, length=31, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=0),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(454, length=121, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[9, 10, 11, 12], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(1, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[13, 14, 15, 16], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[17, 18, 19, 20], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(3, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 21, 22], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(4, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 5, 6], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(5, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[30, 31, 32, 33], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(6, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=0),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=1),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=2),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=3),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=4),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=5),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=6),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(455, length=106, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[9, 10, 11, 12], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(1, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[13, 14, 15, 16], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[17, 18, 19, 20], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(3, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 24, 25], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(4, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 28, 29], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(5, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=0),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=1),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=2),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=3),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=4),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=5),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(456, length=91, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[13, 14, 15, 16], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(1, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 24, 25], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 26, 27], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(3, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[30, 31, 32, 33], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(4, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=0),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=1),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=2),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=3),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=4),
-                    ]
-                ),
-            ]
-        )
-    ),
-    AnimationPack(457, length=91, unknown=0x0002,
-        properties=AnimationPackProperties(vram_size=2048,
-            molds=[
-                Mold(0, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[9, 10, 11, 12], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(1, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[13, 14, 15, 16], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(2, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 21, 23], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(3, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[1, 2, 24, 25], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-                Mold(4, gridplane=False,
-                    tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[3, 4, 7, 8], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
-                    ]
-                ),
-            ],
-            sequences=[
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=0),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=1),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=2),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=3),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=16, mold_id=4),
                     ]
                 ),
             ]

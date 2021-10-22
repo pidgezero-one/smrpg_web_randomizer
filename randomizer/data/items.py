@@ -2207,7 +2207,6 @@ class FlowerTab(RegularItem):
     price = 200
     tier = 4
     room_service = "Flower Tab......."
-    model = overworld_items["flower"]
 
 
 class FlowerJar(RegularItem):
@@ -2219,7 +2218,6 @@ class FlowerJar(RegularItem):
     price = 600
     tier = 3
     room_service = "Flower Jar......."
-    model = overworld_items["flower"]
 
 
 class FlowerBox(RegularItem):
@@ -2231,7 +2229,6 @@ class FlowerBox(RegularItem):
     price = 1000
     tier = 2
     room_service = "Flower Box......."
-    model = overworld_items["flower"]
 
 
 class YoshiCandy(RegularItem):

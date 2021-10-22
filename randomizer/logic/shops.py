@@ -240,70 +240,70 @@ def randomize_all(world):
             # block off any shops that ended up with no items
             # if room service menu, replace with a blue dialog that says "It's broken"
             # otherwise, replace with a dialog that says "Sorry, we're all sold out today."
-            for s in [s for s in (world.shops + world.special_shops)]:
-                if world.settings.is_flag_value(flags.ShopQuality, ShopQualities.empty) or len(s.items) == 0:
-                    if utils.isclass_or_instance(s, shops.MolevilleTreasureShop):
-                        world.prepend_bits(192, [[0x7088, 0], [0x7088, 1], [0x7088, 2]])
-                    elif utils.isclass_or_instance(s, shops.DiscipleShop):
-                        world.prepend_bits(192, [[0x704A, 4], [0x704A, 5], [0x704A, 6], [0x704A, 7], [0x704B, 0]])
-                    elif utils.isclass_or_instance(s, shops.RoomServiceShop):
-                        world.eventscripts[s.event_id] = [
-                            utils.new_command(s.event_id, "run_dialog", [3158, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]),
-                            utils.new_command(s.event_id, "ret"),
-                        ]
-                    else:
-                        world.eventscripts[s.event_id] = [
-                            utils.new_command(s.event_id, "run_dialog", [3159, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]),
-                            utils.new_command(s.event_id, "ret"),
-                        ]
-                # build room service shop
+        for s in [s for s in (world.shops + world.special_shops)]:
+            if world.settings.is_flag_value(flags.ShopQuality, ShopQualities.empty) or len(s.items) == 0:
+                if utils.isclass_or_instance(s, shops.MolevilleTreasureShop):
+                    world.prepend_bits(192, [[0x7088, 0], [0x7088, 1], [0x7088, 2]])
+                elif utils.isclass_or_instance(s, shops.DiscipleShop):
+                    world.prepend_bits(192, [[0x704A, 4], [0x704A, 5], [0x704A, 6], [0x704A, 7], [0x704B, 0]])
                 elif utils.isclass_or_instance(s, shops.RoomServiceShop):
-                    # cheaper item should be first
-                    if (s.items[0].price < s.items[1].price):
-                        rs_item_1 = s.items[0]
-                        rs_item_2 = s.items[1]
-                    else:
-                        rs_item_1 = s.items[1]
-                        rs_item_2 = s.items[0]
-                    # prices reduced to 75% (kerokerocola baseline)
-                    price_1 = max(2, (rs_item_1.price * 0.75) // 1)
-                    price_2 = max(2, (rs_item_2.price * 0.75) // 1)
-                    menu_string_1 = rs_item_1.room_service
-                    if (price_1 < 100):
-                        menu_string_1 += "."
-                    if (price_1 < 10):
-                        menu_string_1 += "."
-                    menu_string_2 = rs_item_2.room_service
-                    if (price_2 < 100):
-                        menu_string_2 += "."
-                    if (price_2 < 10):
-                        menu_string_2 += "."
-                    # write dialog
-                    world.replace_dialog(3847, '''[page]\n Here is the menu.[await]\n [select]  (%s%i Coins)\n [select]  (%s%i Coins)\n [select]  (No thanks)[await]''' % (menu_string_1, price_1, menu_string_2, price_2))
-                    # replace the item and price values with new ones
-                    for c, cmd in enumerate(world.eventscripts[3657]):
-                        if cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 102:
-                            cmd = world.eventscripts[3657][c]["args"][1] = rs_item_1.index
-                        elif cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 108:
-                            cmd = world.eventscripts[3657][c]["args"][1] = rs_item_2.index
-                        elif cmd["command"] == "set" and (cmd["args"][0] == 0x7000 or cmd["args"][0] == 0x7024) and cmd["args"][1] == 10:
-                            cmd = world.eventscripts[3657][c]["args"][1] = int(price_1)
-                        elif cmd["command"] == "set" and (cmd["args"][0] == 0x7000 or cmd["args"][0] == 0x7024) and cmd["args"][1] == 150:
-                            cmd = world.eventscripts[3657][c]["args"][1] = int(price_2)
-                # build trade shop
-                elif utils.isclass_or_instance(s, shops.MolevilleSwapShop):
-                    ts_item_1 = s.items[0]
-                    ts_item_2 = s.items[1]
-                    ts_item_3 = s.items[2]
-                    world.replace_dialog(1217, ''' If we total that up, you've got\n [0x7000] points![await][page]\n You have more than 100 points,\n so go ahead and choose an item.[await][page]\n  [select]  (%s)\n  [select]  (%s)\n  [select]  (%s)[await]''' % (ts_item_1.item_name, ts_item_2.item_name, ts_item_3.item_name))
-                    world.replace_dialog(1175, '''\n  Bring your unwanted items here![await][page]\n  We'll exchange your Mushrooms\n       and Syrups for points.[await]\n        For every 100 points\n    you'll get an item in return![await][page]\n           You can choose\n     one of the following gifts\n       to take away with you.[await][page]\n  1)“%s”\n  2)“%s”\n  3)“%s”[await]''' % (ts_item_1.item_name, ts_item_2.item_name, ts_item_3.item_name))
-                    for c, cmd in enumerate(world.eventscripts[1636]):
-                        if cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 144:
-                            cmd = world.eventscripts[1636][c]["args"][1] = ts_item_1.index
-                        elif cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 113:
-                            cmd = world.eventscripts[1636][c]["args"][1] = ts_item_2.index
-                        elif cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 114:
-                            cmd = world.eventscripts[1636][c]["args"][1] = ts_item_3.index
+                    world.eventscripts[s.event_id] = [
+                        utils.new_command(s.event_id, "run_dialog", [3158, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE]]),
+                        utils.new_command(s.event_id, "ret"),
+                    ]
+                else:
+                    world.eventscripts[s.event_id] = [
+                        utils.new_command(s.event_id, "run_dialog", [3159, AreaObjects.BOWSER, [_0x60Flags.CLOSABLE, _0x60Flags.ASYNC, _0x60Flags.MULTILINE, _0x60Flags.USE_BACKGROUND]]),
+                        utils.new_command(s.event_id, "ret"),
+                    ]
+            # build room service shop
+            elif utils.isclass_or_instance(s, shops.RoomServiceShop):
+                # cheaper item should be first
+                if (s.items[0].price < s.items[1].price):
+                    rs_item_1 = s.items[0]
+                    rs_item_2 = s.items[1]
+                else:
+                    rs_item_1 = s.items[1]
+                    rs_item_2 = s.items[0]
+                # prices reduced to 75% (kerokerocola baseline)
+                price_1 = max(2, (rs_item_1.price * 0.75) // 1)
+                price_2 = max(2, (rs_item_2.price * 0.75) // 1)
+                menu_string_1 = rs_item_1.room_service
+                if (price_1 < 100):
+                    menu_string_1 += "."
+                if (price_1 < 10):
+                    menu_string_1 += "."
+                menu_string_2 = rs_item_2.room_service
+                if (price_2 < 100):
+                    menu_string_2 += "."
+                if (price_2 < 10):
+                    menu_string_2 += "."
+                # write dialog
+                world.replace_dialog(3847, '''[page]\n Here is the menu.[await]\n [select]  (%s%i Coins)\n [select]  (%s%i Coins)\n [select]  (No thanks)[await]''' % (menu_string_1, price_1, menu_string_2, price_2))
+                # replace the item and price values with new ones
+                for c, cmd in enumerate(world.eventscripts[3657]):
+                    if cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 102:
+                        cmd = world.eventscripts[3657][c]["args"][1] = rs_item_1.index
+                    elif cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 108:
+                        cmd = world.eventscripts[3657][c]["args"][1] = rs_item_2.index
+                    elif cmd["command"] == "set" and (cmd["args"][0] == 0x7000 or cmd["args"][0] == 0x7024) and cmd["args"][1] == 10:
+                        cmd = world.eventscripts[3657][c]["args"][1] = int(price_1)
+                    elif cmd["command"] == "set" and (cmd["args"][0] == 0x7000 or cmd["args"][0] == 0x7024) and cmd["args"][1] == 150:
+                        cmd = world.eventscripts[3657][c]["args"][1] = int(price_2)
+            # build trade shop
+            elif utils.isclass_or_instance(s, shops.MolevilleSwapShop):
+                ts_item_1 = s.items[0]
+                ts_item_2 = s.items[1]
+                ts_item_3 = s.items[2]
+                world.replace_dialog(1217, ''' If we total that up, you've got\n [0x7000] points![await][page]\n You have more than 100 points,\n so go ahead and choose an item.[await][page]\n  [select]  (%s)\n  [select]  (%s)\n  [select]  (%s)[await]''' % (ts_item_1.item_name, ts_item_2.item_name, ts_item_3.item_name))
+                world.replace_dialog(1175, '''\n  Bring your unwanted items here![await][page]\n  We'll exchange your Mushrooms\n       and Syrups for points.[await]\n        For every 100 points\n    you'll get an item in return![await][page]\n           You can choose\n     one of the following gifts\n       to take away with you.[await][page]\n  1)“%s”\n  2)“%s”\n  3)“%s”[await]''' % (ts_item_1.item_name, ts_item_2.item_name, ts_item_3.item_name))
+                for c, cmd in enumerate(world.eventscripts[1636]):
+                    if cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 144:
+                        cmd = world.eventscripts[1636][c]["args"][1] = ts_item_1.index
+                    elif cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 113:
+                        cmd = world.eventscripts[1636][c]["args"][1] = ts_item_2.index
+                    elif cmd["command"] == "set" and cmd["args"][0] == 0x70a7 and cmd["args"][1] == 114:
+                        cmd = world.eventscripts[1636][c]["args"][1] = ts_item_3.index
         
 
 
