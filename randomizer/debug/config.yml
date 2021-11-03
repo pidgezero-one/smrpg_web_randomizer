@@ -23,127 +23,125 @@ items:
     - FireBomb
     - PunchGlove
   override:
-    PipeVaultSlideFrogCoin: StarGun
-  #   MariosPadBed: StarPiece1
-  #   MushroomWay1: BanditsWayStar
-  #   MushroomWay2: BanditsWayStar
-  #   MushroomWay3: BanditsWayStar
-  #   MushroomWay4: BanditsWayStar
-  #   InvasionVault1: BanditsWayStar
-  #   InvasionVault2: BanditsWayStar
-  #   InvasionVault3: BanditsWayStar
-  #   BanditsWay1: BanditsWayStar
-  #   BanditsWay2: BanditsWayStar
-  #   BanditsWayStarChest: BanditsWayStar
-  #   BanditsWayDogJump: BanditsWayStar
-  #   BanditsWayCroco: BanditsWayStar
-  #   KeroSewersPandoriteRoom: BanditsWayStar
-  #   PandoriteChest: BanditsWayStar
-  #   KeroSewersStarChest: BanditsWayStar
-  #   KeroSewersBeforeBelomeLower: BanditsWayStar
-  #   KeroSewersBeforeBelomeUpper1: BanditsWayStar
-  #   KeroSewersBeforeBelomeUpper2: BanditsWayStar
-  #   RoseWayPlatform: BanditsWayStar
-  #   RoseWayFiveChests1: BanditsWayStar
-  #   RoseWayFiveChests2: BanditsWayStar
-  #   RoseWayFiveChests3: BanditsWayStar
-  #   RoseWayFiveChests4: BanditsWayStar
-  #   RoseWayFiveChests5: BanditsWayStar
-  #   ForestMaze2: BanditsWayStar
-  #   ForestMazeUnderground1: BanditsWayStar
-  #   ForestMazeUnderground2: BanditsWayStar
-  #   ForestMazeUnderground3: BanditsWayStar
-  #   ForestMazeRedEssence: BanditsWayStar
-  #   ForestMazeSecret1: BanditsWayStar
-  #   ForestMazeSecret2: BanditsWayStar
-  #   ForestMazeSecret3: BanditsWayStar
-  #   ForestMazeSecret4: BanditsWayStar
-  #   ForestMazeSecret5: BanditsWayStar
-  #   PipeVaultSlide1: BanditsWayStar
-  #   PipeVaultSlide2: BanditsWayStar
-  #   PipeVaultSlide3: BanditsWayStar
-  #   PipeVaultNippers1: BanditsWayStar
-  #   PipeVaultNippers2: BanditsWayStar
-  #   MolevilleMinesStarChest: BanditsWayStar
-  #   MolevilleMinesCoins: BanditsWayStar
-  #   MolevilleMinesPunchinello1: BanditsWayStar
-  #   MolevilleMinesPunchinello2: BanditsWayStar
-  #   BoosterPass1: BanditsWayStar
-  #   BoosterPass2: BanditsWayStar
-  #   BoosterPassSecret1: BanditsWayStar
-  #   BoosterPassSecret2: BanditsWayStar
-  #   BoosterPassSecret3: BanditsWayStar
-  #   BoosterTowerSpookum: BanditsWayStar
-  #   BoosterTowerThwomp: BanditsWayStar
-  #   BoosterTowerParachute: BanditsWayStar
-  #   BoosterTowerZoomShoes: BanditsWayStar
-  #   BoosterTowerTop1: BanditsWayStar
-  #   BoosterTowerTop2: BanditsWayStar
-  #   BoosterTowerTop3: BanditsWayStar
-  #   SeaStarChest: BanditsWayStar
-  #   SeaSaveRoom1: BanditsWayStar
-  #   SeaSaveRoom2: BanditsWayStar
-  #   SeaSaveRoom3: BanditsWayStar
-  #   SeaWhirlpoolChest: BanditsWayStar
-  #   SunkenShipRatStairs: BanditsWayStar
-  #   SunkenShipShop: BanditsWayStar
-  #   SunkenShipCoins1: BanditsWayStar
-  #   SunkenShipCoins2: BanditsWayStar
-  #   SunkenShipCloneRoom: BanditsWayStar
-  #   SunkenShipFrogCoinRoom: BanditsWayStar
-  #   SunkenShipHidonMushroom: BanditsWayStar
-  #   HidonChest: BanditsWayStar
-  #   LandsEndRedEssence: BanditsWayStar
-  #   LandsEndChowPit1: BanditsWayStar
-  #   LandsEndChowPit2: BanditsWayStar
-  #   LandsEndBeeRoom: BanditsWayStar
-  #   LandsEndSecret1: BanditsWayStar
-  #   LandsEndSecret2: BanditsWayStar
-  #   LandsEndShyAway: BanditsWayStar
-  #   LandsEndStarChest1: BanditsWayStar
-  #   LandsEndStarChest2: BanditsWayStar
-  #   LandsEndStarChest3: BanditsWayStar
-  #   BeanValley1: BanditsWayStar
-  #   BeanValley2: BanditsWayStar
-  #   BeanValleyLeftPiranhaPipe: BanditsWayStar
-  #   BeanValleyBottomLeftPiranhaPipe: BanditsWayStar
-  #   BeanValleyBottomRightPiranhaPipeUpper: BanditsWayStar
-  #   BeanValleyBottomRightPiranhaPipeLower: BanditsWayStar
-  #   BeanValleyBoxBoyRoom1: BanditsWayStar
-  #   BeanValleyBoxBoyRoom2: BanditsWayStar
-  #   BeanValleyPiranhaPlants: BanditsWayStar
-  #   BeanValleyBeanstalk: BanditsWayStar
-  #   BeanValleyCloud1: BanditsWayStar
-  #   BeanValleyCloud2: BanditsWayStar
-  #   BeanValleyFall1: BanditsWayStar
-  #   BeanValleyFall2: BanditsWayStar
-  #   NimbusCastleBeforeBirdetta1: BanditsWayStar
-  #   NimbusCastleBeforeBirdetta2: BanditsWayStar
-  #   NimbusCastleOutOfBounds1: BanditsWayStar
-  #   NimbusCastleOutOfBounds2: BanditsWayStar
-  #   NimbusCastleSingleGoldBird: BanditsWayStar
-  #   NimbusCastleAfterEgg1: BanditsWayStar
-  #   NimbusCastleAfterEgg2: BanditsWayStar
-  #   NimbusCastleStarChest: BanditsWayStar
-  #   BarrelVolcanoSecret1: BanditsWayStar
-  #   BarrelVolcanoSecret2: BanditsWayStar
-  #   BarrelVolcanoBeforeStar1: BanditsWayStar
-  #   BarrelVolcanoBeforeStar2: BanditsWayStar
-  #   BarrelVolcanoStarRoom: BanditsWayStar
-  #   BarrelVolcanoSaveRoom1: BanditsWayStar
-  #   BarrelVolcanoSaveRoom2: BanditsWayStar
-  #   BarrelVolcanoHinopio: BanditsWayStar
-  #   BowsersKeepDarkRoom: BanditsWayStar
-  #   BowsersKeepDarkRoom: BanditsWayStar
-  #   BowsersKeepCrocoShop1: BanditsWayStar
-  #   BowsersKeepCrocoShop2: BanditsWayStar
-  #   BowsersKeepMagikoopa: BanditsWayStar
-  #   FactorySaveRoom: BanditsWayStar
-  #   FactoryBoltPlatforms: BanditsWayStar
-  #   FactoryFallingAxems: BanditsWayStar
-  #   FactoryTreasurePit1: BanditsWayStar
-  #   FactoryTreasurePit2: BanditsWayStar
-  #   FactoryConveyorPlatforms1: BanditsWayStar
-  #   FactoryConveyorPlatforms2: BanditsWayStar
-  #   FactoryBehindSnakes1: BanditsWayStar
-  #   FactoryBehindSnakes2: BanditsWayStar
+    MushroomWay1: BanditsWayStar
+    MushroomWay2: BanditsWayStar
+    MushroomWay3: BanditsWayStar
+    MushroomWay4: BanditsWayStar
+    InvasionVault1: BanditsWayStar
+    InvasionVault2: BanditsWayStar
+    InvasionVault3: BanditsWayStar
+    BanditsWay1: BanditsWayStar
+    BanditsWay2: BanditsWayStar
+    BanditsWayStarChest: BanditsWayStar
+    BanditsWayDogJump: BanditsWayStar
+    BanditsWayCroco: BanditsWayStar
+    KeroSewersPandoriteRoom: BanditsWayStar
+    PandoriteChest: BanditsWayStar
+    KeroSewersStarChest: BanditsWayStar
+    KeroSewersBeforeBelomeLower: BanditsWayStar
+    KeroSewersBeforeBelomeUpper1: BanditsWayStar
+    KeroSewersBeforeBelomeUpper2: BanditsWayStar
+    RoseWayPlatform: BanditsWayStar
+    RoseWayFiveChests1: BanditsWayStar
+    RoseWayFiveChests2: BanditsWayStar
+    RoseWayFiveChests3: BanditsWayStar
+    RoseWayFiveChests4: BanditsWayStar
+    RoseWayFiveChests5: BanditsWayStar
+    ForestMaze2: BanditsWayStar
+    ForestMazeUnderground1: BanditsWayStar
+    ForestMazeUnderground2: BanditsWayStar
+    ForestMazeUnderground3: BanditsWayStar
+    ForestMazeRedEssence: BanditsWayStar
+    ForestMazeSecret1: BanditsWayStar
+    ForestMazeSecret2: BanditsWayStar
+    ForestMazeSecret3: BanditsWayStar
+    ForestMazeSecret4: BanditsWayStar
+    ForestMazeSecret5: BanditsWayStar
+    PipeVaultSlide1: BanditsWayStar
+    PipeVaultSlide2: BanditsWayStar
+    PipeVaultSlide3: BanditsWayStar
+    PipeVaultNippers1: BanditsWayStar
+    PipeVaultNippers2: BanditsWayStar
+    MolevilleMinesStarChest: BanditsWayStar
+    MolevilleMinesCoins: BanditsWayStar
+    MolevilleMinesPunchinello1: BanditsWayStar
+    MolevilleMinesPunchinello2: BanditsWayStar
+    BoosterPass1: BanditsWayStar
+    BoosterPass2: BanditsWayStar
+    BoosterPassSecret1: BanditsWayStar
+    BoosterPassSecret2: BanditsWayStar
+    BoosterPassSecret3: BanditsWayStar
+    BoosterTowerSpookum: BanditsWayStar
+    BoosterTowerThwomp: BanditsWayStar
+    BoosterTowerParachute: BanditsWayStar
+    BoosterTowerZoomShoes: BanditsWayStar
+    BoosterTowerTop1: BanditsWayStar
+    BoosterTowerTop2: BanditsWayStar
+    BoosterTowerTop3: BanditsWayStar
+    SeaStarChest: BanditsWayStar
+    SeaSaveRoom1: BanditsWayStar
+    SeaSaveRoom2: BanditsWayStar
+    SeaSaveRoom3: BanditsWayStar
+    SeaWhirlpoolChest: BanditsWayStar
+    SunkenShipRatStairs: BanditsWayStar
+    SunkenShipShop: BanditsWayStar
+    SunkenShipCoins1: BanditsWayStar
+    SunkenShipCoins2: BanditsWayStar
+    SunkenShipCloneRoom: BanditsWayStar
+    SunkenShipFrogCoinRoom: BanditsWayStar
+    SunkenShipHidonMushroom: BanditsWayStar
+    HidonChest: BanditsWayStar
+    LandsEndRedEssence: BanditsWayStar
+    LandsEndChowPit1: BanditsWayStar
+    LandsEndChowPit2: BanditsWayStar
+    LandsEndBeeRoom: BanditsWayStar
+    LandsEndSecret1: BanditsWayStar
+    LandsEndSecret2: BanditsWayStar
+    LandsEndShyAway: BanditsWayStar
+    LandsEndStarChest1: BanditsWayStar
+    LandsEndStarChest2: BanditsWayStar
+    LandsEndStarChest3: BanditsWayStar
+    BeanValley1: BanditsWayStar
+    BeanValley2: BanditsWayStar
+    BeanValleyLeftPiranhaPipe: BanditsWayStar
+    BeanValleyBottomLeftPiranhaPipe: BanditsWayStar
+    BeanValleyBottomRightPiranhaPipeUpper: BanditsWayStar
+    BeanValleyBottomRightPiranhaPipeLower: BanditsWayStar
+    BeanValleyBoxBoyRoom1: BanditsWayStar
+    BeanValleyBoxBoyRoom2: BanditsWayStar
+    BeanValleyPiranhaPlants: BanditsWayStar
+    BeanValleyBeanstalk: BanditsWayStar
+    BeanValleyCloud1: BanditsWayStar
+    BeanValleyCloud2: BanditsWayStar
+    BeanValleyFall1: BanditsWayStar
+    BeanValleyFall2: BanditsWayStar
+    NimbusCastleBeforeBirdetta1: BanditsWayStar
+    NimbusCastleBeforeBirdetta2: BanditsWayStar
+    NimbusCastleOutOfBounds1: BanditsWayStar
+    NimbusCastleOutOfBounds2: BanditsWayStar
+    NimbusCastleSingleGoldBird: BanditsWayStar
+    NimbusCastleAfterEgg1: BanditsWayStar
+    NimbusCastleAfterEgg2: BanditsWayStar
+    NimbusCastleStarChest: BanditsWayStar
+    BarrelVolcanoSecret1: BanditsWayStar
+    BarrelVolcanoSecret2: BanditsWayStar
+    BarrelVolcanoBeforeStar1: BanditsWayStar
+    BarrelVolcanoBeforeStar2: BanditsWayStar
+    BarrelVolcanoStarRoom: BanditsWayStar
+    BarrelVolcanoSaveRoom1: BanditsWayStar
+    BarrelVolcanoSaveRoom2: BanditsWayStar
+    BarrelVolcanoHinopio: BanditsWayStar
+    BowsersKeepDarkRoom: BanditsWayStar
+    BowsersKeepDarkRoom: BanditsWayStar
+    BowsersKeepCrocoShop1: BanditsWayStar
+    BowsersKeepCrocoShop2: BanditsWayStar
+    BowsersKeepMagikoopa: BanditsWayStar
+    FactorySaveRoom: BanditsWayStar
+    FactoryBoltPlatforms: BanditsWayStar
+    FactoryFallingAxems: BanditsWayStar
+    FactoryTreasurePit1: BanditsWayStar
+    FactoryTreasurePit2: BanditsWayStar
+    FactoryConveyorPlatforms1: BanditsWayStar
+    FactoryConveyorPlatforms2: BanditsWayStar
+    FactoryBehindSnakes1: BanditsWayStar
+    FactoryBehindSnakes2: BanditsWayStar

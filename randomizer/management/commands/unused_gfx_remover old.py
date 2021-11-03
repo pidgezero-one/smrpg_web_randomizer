@@ -1,11 +1,25 @@
 from django.core.management.base import BaseCommand
-from randomizer.data import graphics_geno as graphics
+from randomizer.data import graphics_geno
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline, bit_bool_from_num
 from randomizer.data.npcmodeltables import sprite_name_table
 
 import copy
 
-removable_offsets = []
+removable_offsets = [
+    0x2b6780,
+    0x2ba240,
+    0x2d9540,
+    0x2da340,
+    0x2D8E40,
+    0x2db260,
+    0x2e0980,
+    0x2ef8c0,
+    0x2f0c80,
+    0x310440,
+    0x313c00,
+    0x313c80,
+    0x31f940,
+]
 
 START = 0x280000
 END = 0x330000
@@ -16,22 +30,13 @@ ANIM_PTR_END = 0x252C00
 
 PTR_START = 0x251800
 
-insert_before_offset = 0x330000 # none
-#insert_before_offset = 0x324CE0 # mallow
+#insert_before_offset = 0x330000 # none
+insert_before_offset = 0x324CE0 # mallow
 
 insert_at_offsets = [
-    # (0x3204A0, 352), # Geno normal
-    # (0x3230A0, 226) # Geno attack
+    (0x3204A0, 352), # Geno normal
+    (0x3230A0, 226) # Geno attack
 ]
-
-# blank_offsets = [
-#     0x2CF860,
-#     0x2DDD00,
-#     0x2ED800,
-#     0x30D660,
-#     0x318B20,
-#     0x31FF00
-# ]
 
 class Command(BaseCommand):
 
@@ -48,25 +53,16 @@ class Command(BaseCommand):
         global rom
         rom = bytearray(open(options['rom'], 'rb').read())
 
-        sprites = copy.deepcopy(graphics.sprites)
-        images = copy.deepcopy(graphics.images)
+        images = copy.deepcopy(graphics_geno.images)
 
-        used_images = []
-        for sprite in sprites:
-            if sprite.image_num not in used_images:
-                used_images.append(sprite.image_num)
-
-        used_offsets = []
-        for image in used_images:
-            im = graphics.images[image]
-            if im.graphics_pointer not in used_offsets:
-                used_offsets.append(im.graphics_pointer)
-
-
-        offsets = list(set([image.graphics_pointer for image in graphics.images] + blank_offsets))
+        offsets = list(set([image.graphics_pointer for image in graphics_geno.images]))
         offsets.sort()
 
+        print([hex(x) for x in offsets])
+        print(len(offsets))
+
         gfx_data = bytearray([])
+
         ptr_bytes = bytearray([])
 
         len_used_graphics = 0
@@ -78,7 +74,7 @@ class Command(BaseCommand):
                 next_offset = END
             gfx_length = next_offset - offset
 
-            if offset in used_offsets:
+            if offset not in removable_offsets:
                 len_used_graphics += gfx_length
                 
         available_space = TOTAL_LENGTH - len_used_graphics
@@ -91,12 +87,18 @@ class Command(BaseCommand):
             else:
                 next_offset = END
 
+
+
+            #if offset == insert_before_offset:
+            #    gfx_data += bytearray([0] * available_space)
+            #    do something about adding space after attack sprites
+
             for img_index, image in enumerate(images):
                 if image.graphics_pointer == offset:
                     image.graphics_pointer = START + len(gfx_data)
                     images[img_index] = image
 
-            if offset in used_offsets:
+            if offset not in removable_offsets:
                 if offset < insert_before_offset:
                     gfx_data += rom[offset:next_offset]
                 else:
@@ -107,8 +109,6 @@ class Command(BaseCommand):
                         if inserting > 0:
                             gfx_data += bytearray([0] * inserting)
                             available_space -= inserting
-
-        gfx_data += bytearray([0] * (END - START - len(gfx_data)))
         
         f = open(f'write_to_0x280000.img', 'wb')
         f.write(gfx_data)
@@ -129,7 +129,7 @@ class Command(BaseCommand):
 
         used_anims = []
 
-        for s in graphics.sprites:
+        for s in graphics_geno.sprites:
             if s.animation_num not in used_anims:
                 used_anims.append(s.animation_num)
 

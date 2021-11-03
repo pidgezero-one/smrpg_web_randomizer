@@ -486,6 +486,8 @@ def randomize_palettes(world):
         world.search_replace_dialog('`PEACH_NAME`', 'Toadstool')
         world.search_replace_dialog('`PEACH_ARTICLE`', '')
 
+        
+
 def get_spoiler(world):
     acc = {}
     

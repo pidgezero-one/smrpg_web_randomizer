@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from randomizer.data import graphics_geno as graphics
+from randomizer.data import graphics_bowser as graphics
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline, bit_bool_from_num
 from randomizer.data.npcmodeltables import sprite_name_table
 
@@ -16,22 +16,19 @@ ANIM_PTR_END = 0x252C00
 
 PTR_START = 0x251800
 
-insert_before_offset = 0x330000 # none
-#insert_before_offset = 0x324CE0 # mallow
-
 insert_at_offsets = [
-    # (0x3204A0, 352), # Geno normal
-    # (0x3230A0, 226) # Geno attack
+    # (0x31B960, 352), # Geno normal
+    # (0x31E560, 226) # Geno attack
+    # (0x3201A0, 363), # Mallow normal
+    # (0x322F00, 139) # Mallow attack
+    # (0x30FAC0, 303), # Peach normal
+    # (0x3120A0, 225) # Peach attack
+    # (0x313CC0, 445) # Bowser attack
+    (0x31B9A0, 294) # Bowser attack
 ]
 
-# blank_offsets = [
-#     0x2CF860,
-#     0x2DDD00,
-#     0x2ED800,
-#     0x30D660,
-#     0x318B20,
-#     0x31FF00
-# ]
+# blank_starts = 0x32B460
+blank_starts = 0x32F9A0
 
 class Command(BaseCommand):
 
@@ -48,40 +45,17 @@ class Command(BaseCommand):
         global rom
         rom = bytearray(open(options['rom'], 'rb').read())
 
-        sprites = copy.deepcopy(graphics.sprites)
+
         images = copy.deepcopy(graphics.images)
 
-        used_images = []
-        for sprite in sprites:
-            if sprite.image_num not in used_images:
-                used_images.append(sprite.image_num)
-
-        used_offsets = []
-        for image in used_images:
-            im = graphics.images[image]
-            if im.graphics_pointer not in used_offsets:
-                used_offsets.append(im.graphics_pointer)
-
-
-        offsets = list(set([image.graphics_pointer for image in graphics.images] + blank_offsets))
+        offsets = list(set([image.graphics_pointer for image in graphics.images]))
         offsets.sort()
+        print([hex(x) for x in offsets])
 
         gfx_data = bytearray([])
         ptr_bytes = bytearray([])
 
-        len_used_graphics = 0
-
-        for i, offset in enumerate(offsets):
-            if i < len(offsets) - 1:
-                next_offset = offsets[i + 1]
-            else:
-                next_offset = END
-            gfx_length = next_offset - offset
-
-            if offset in used_offsets:
-                len_used_graphics += gfx_length
-                
-        available_space = TOTAL_LENGTH - len_used_graphics
+        available_space = END - blank_starts
 
         print(hex(available_space))
 
@@ -89,30 +63,31 @@ class Command(BaseCommand):
             if i < len(offsets) - 1:
                 next_offset = offsets[i + 1]
             else:
-                next_offset = END
+                next_offset = blank_starts
 
             for img_index, image in enumerate(images):
                 if image.graphics_pointer == offset:
                     image.graphics_pointer = START + len(gfx_data)
                     images[img_index] = image
 
-            if offset in used_offsets:
-                if offset < insert_before_offset:
-                    gfx_data += rom[offset:next_offset]
-                else:
-                    gfx_data += rom[offset:next_offset]
-                for gfx_offset, tile_offset in insert_at_offsets:
-                    if gfx_offset == offset:
-                        inserting = min(available_space, (512 - tile_offset) * 0x20)
-                        if inserting > 0:
-                            gfx_data += bytearray([0] * inserting)
-                            available_space -= inserting
+            gfx_data += rom[offset:next_offset]
+            for gfx_offset, tile_offset in insert_at_offsets:
+                if gfx_offset == offset:
+                    inserting = min(available_space, (512 - tile_offset) * 0x20)
+                    print(inserting)
+                    if inserting > 0:
+                        gfx_data += bytearray([0] * inserting)
+                        available_space -= inserting
+                    print(available_space)
 
-        gfx_data += bytearray([0] * (END - START - len(gfx_data)))
+        print(hex(len(gfx_data)))
+
+        if len(gfx_data) < END - START:
+            gfx_data += bytearray([0] * (END - START - len(gfx_data)))
         
-        f = open(f'write_to_0x280000.img', 'wb')
-        f.write(gfx_data)
-        f.close()
+        # f = open(f'write_to_0x280000.img', 'wb')
+        # f.write(gfx_data)
+        # f.close()
 
         for img_index, image in enumerate(images):
             bank = ((image.graphics_pointer - 0x280000) >> 16) & 0x0F
@@ -123,9 +98,9 @@ class Command(BaseCommand):
 
             ptr_bytes += bytearray([gfx_ptr & 0xFF, (gfx_ptr & 0xFF00) >> 8, palette_ptr & 0xFF, (palette_ptr & 0xFF00) >> 8])
 
-        f = open(f'write_to_0x251800.img', 'wb')
-        f.write(ptr_bytes)
-        f.close()
+        # f = open(f'write_to_0x251800.img', 'wb')
+        # f.write(ptr_bytes)
+        # f.close()
 
         used_anims = []
 
@@ -175,13 +150,13 @@ class Command(BaseCommand):
         animation_bytes_2 += bytearray([0] * (0x370000 - 0x360000 - len(animation_bytes_2)))
 
         
-        f = open(f'write_to_0x252000.img', 'wb')
-        f.write(animation_ptrs)
+        f = open(f'write_to_0x251800.img', 'wb')
+        f.write(ptr_bytes + animation_ptrs)
         f.close()
 
         
         f = open(f'write_to_0x259000.img', 'wb')
-        f.write(animation_bytes_1)
+        f.write(animation_bytes_1 + gfx_data)
         f.close()
 
         

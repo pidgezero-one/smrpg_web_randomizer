@@ -809,7 +809,7 @@ models[34] = {
   "byte6_bit2": False
 } # 0x1db8ee
 models[35] = {
-  "sprite": SpriteName._81_MARIO_DOLL_BOOSTERS_CASTLE,
+  "sprite": 81,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,
@@ -819,7 +819,7 @@ models[35] = {
   "acute_axis": 1,
   "obtuse_axis": 1,
   "height": 3,
-  "vram_store": VramStore._00_SWSE_NWNE,
+  "vram_store": VramStore._02_SWSE,
   "vram_size": 0,
   "cannot_clone": True,
   "byte2_bit0": False,
@@ -1315,7 +1315,7 @@ models[56] = {
   "byte6_bit2": False
 } # 0x1db988
 models[57] = {
-  "sprite": SpriteName._57_MAGIKOOPA,
+  "sprite": SpriteName._236_MAGIKOOPA_BLUE_WALKING,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,

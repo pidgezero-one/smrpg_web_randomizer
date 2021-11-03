@@ -1004,6 +1004,9 @@ class GameWorld:
         for character in self.characters:
             patch += character.get_patch()
 
+
+
+
         # Update party join script events for the final order - Linear only
         if not self.open_mode:
             # For standard mode, Mario is the first character.  Update the other four only.
@@ -1124,6 +1127,24 @@ class GameWorld:
             addresses = [0x34757, 0x3489a, 0x34ee7, 0x340aa, 0x3501e]
             for addr, value in zip(addresses, [0, 1, 0, 0, 1]):
                 patch.add_data(addr, file_select_char_bytes[i] + value)
+
+        # Patch character names into the levelup screen
+        if self.settings.is_flag_enabled(flags.ChangeNames) and self.settings.is_flag_enabled(flags.PaletteSwaps):
+            char_order = [0, 4, 3, 2, 1]
+            names = [self.characters[c] for c in char_order]
+            if names[0].palette.rename_character:
+                mario_name = names[0].palette.name
+            else:
+                mario_name = names[0].name
+            patch.add_data(0x02D3AF, mario_name + "\x00" * (35 - len(mario_name)))
+            other_names = [(n.palette.name if n.palette.rename_character else n.name) for n in names]
+            name_bytes = "\x00".join(other_names[1:]) + "\x00"
+            name_index = (0x030000 - len(name_bytes))
+            patch.add_data(name_index, name_bytes)
+            for i, c in enumerate(other_names[1:]):
+                ptr = name_index & 0xFFFF
+                patch.add_data(0x2D3A7 + i * 2, [ptr & 0xFF, ptr >> 8])
+                name_index += len(c) + 1
 
         # Possible names we can use for the hash values on the file select screen.  Needs to be 6 characters or less.
         file_entry_names = {

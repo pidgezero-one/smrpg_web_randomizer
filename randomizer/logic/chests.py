@@ -867,7 +867,10 @@ def randomize_all(world):
                     "hurt": (0, 0, True),
                     "shaking_head": (0, 0, False),
                     "shaking_head_backward": (0, 1, False),
-                    "sleeping": (0, 1, False)
+                    "sleeping": (0, 1, False),
+                    "salute": (0, 0, False),
+                    "distracted": (0, 0, False),
+                    "displeased": (0, 1, False),
                 }
                 if utils.isclass_or_instance(c, chests.MarrymoreCharacter):
                     world.search_replace_dialog("`MARRYMORE_CHARACTER`", "Toad")
@@ -1020,6 +1023,11 @@ def randomize_all(world):
                             this_event = c.item.overworld_event
                         else:
                             this_event = c.item.npc_event
+                        if utils.isclass_or_instance(c.item, items.StarPiece):
+                            hint_variable, hint_bit = c.item.hint_bit
+                            cmds.append(utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
+                            cmds.append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
+                        
                         cmds.append(utils.new_command(c.event, 'jmp_to_event', [this_event]))
                         grant_builders[c.event]["executions"].extend(cmds)
                         for r in c.rooms:
@@ -1148,6 +1156,10 @@ def randomize_all(world):
                             world.update_room_npc_property_by_id(r, npc_id, "action_script", action_script)
                             world.update_room_npc_property_by_id(r, npc_id, "z_half", is_floating)
                 # sett the item grant
+                if utils.isclass_or_instance(c.item, items.StarPiece):
+                    hint_variable, hint_bit = c.item.hint_bit
+                    cmds.append(utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
+                    cmds.append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
                 if utils.isclass_or_instance(c.item, items.RegularItem):
                     # set 70A7 for granting a normal item
                     cmds.append(utils.new_command(c.event, 'set', [0x70A7, c.item.chest_70A7_lower]))
@@ -1216,6 +1228,9 @@ def randomize_all(world):
                     for id, dat in c.item.dialog_replacements:
                         if d == id:
                             world.replace_dialog(id, dat)
+                hint_variable, hint_bit = c.item.hint_bit
+                grant_builders[c.event]["executions"].append(utils.new_command(c.event, 'set_bit', [hint_variable, hint_bit]))
+                grant_builders[c.event]["executions"].append(utils.new_command(c.event, 'run_event_as_subroutine', [3092]))
                 cmd = utils.new_command(c.event, 'jmp_to_event', [3092])
                 grant_builders[c.event]["executions"].append(cmd)
                 for r in c.rooms:

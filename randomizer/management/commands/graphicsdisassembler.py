@@ -41,7 +41,7 @@ class Command(BaseCommand):
             unknown = (rom[offset+1] >> 4)
             sprite = Sprite(index, img, shortify(rom, offset+2), pal_off, unknown)
             sprites.append(sprite)
-            print(hex(offset), index, hex(rom[offset+1]), unknown)
+            # print(hex(offset), index, hex(rom[offset+1]), unknown)
 
         for index, offset in enumerate(range(IMAGE_PACK_INFO_OFFSET, IMAGE_PACK_INFO_OFFSET + IMAGE_PACK_INFO_LENGTH, 4)):
             gfx_ptr_short = shortify(rom, offset)
@@ -205,6 +205,10 @@ class Command(BaseCommand):
                                 tiles.append(Tile(mirror=mirror, invert=invert, format=format, length=tile_length, subtile_bytes=subtile_bytes, x=tile_x, y=tile_y, is_clone=is_clone))    
                                 relative_offset = temp_offset + tile_length
                         molds.append(Mold(i, gridplane, tiles))
+                else:
+                    molds.append(Mold(i, False, []))
+                if index == 239:
+                    print(len(molds))
 
             pack.properties = AnimationPackProperties(sequences, molds, vram_size)
             packs.append(pack)

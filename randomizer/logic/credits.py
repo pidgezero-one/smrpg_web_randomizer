@@ -331,25 +331,57 @@ def update_credits(world):
 
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xc0, 'ATBIGELOW')
-    credits.add_credit(0x80, 0x40, 0x81, 'SNESCHALMERS ')
-    credits.add_credit(0x80, 0x00, 0xc2, 'AMAZING AMPHAROS ')
+    credits.add_credit(0x80, 0x40, 0x81, 'SNESCHALMERS')
+    credits.add_credit(0x80, 0x00, 0xc2, 'AMAZING AMPHAROS')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'PALETTES AND CUSTOM SPRITES')
+    credits.add_title(0x80, 0x00, 0x08, 'PARTY SPRITES')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'DEVILING  SEANCASS   SMBAI')
-    credits.add_credit(0x80, 0x40, 0x81, 'MYOHMYKE        AARONDOBBE')
-    credits.add_credit(0x80, 0x00, 0xc2, 'EGGTALK          HERRSHAUN')
+    credits.add_credit(0x80, 0x80, 0xc0, 'XIRR')
+    credits.add_credit(0x80, 0x40, 0x81, 'DARKDATA')
+    credits.add_credit(0x80, 0x00, 0xc2, 'TROPICALISTA')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    #26
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, 'PARTY PALETTES')
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0xc0, 0xc0, 'DEVILING             SMBAI')
+    credits.add_credit(0x80, 0x80, 0x81, 'EGGTALK          HERRSHAUN')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xc0, 'MYOHMYKE')
+    credits.add_credit(0x80, 0x40, 0x81, 'AARONDOBBE')
+    credits.add_credit(0x80, 0x00, 0xc2, 'PIDGEZERO_ONE')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    #26
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, 'NIMBUS STATUE PALETTES')
+    credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xc0, 'MINAMIYO')
     credits.add_credit(0x80, 0x40, 0x81, 'XIRR')
     credits.add_credit(0x80, 0x00, 0xc2, 'PIDGEZERO_ONE')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    #26
+    credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, 'FONTS AND ICONS')
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xc0, 'SMBAI')
+    credits.add_credit(0x80, 0x40, 0x81, 'SEANCASS')
+    credits.add_credit(0x80, 0x00, 0xc2, 'ALANIM')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #27
@@ -366,7 +398,7 @@ def update_credits(world):
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xc0, 'TINYWETBLANKET      FLARE')
     credits.add_credit(0x80, 0x40, 0x81, 'WEFFJEBSTER     BROATMEAL')
-    credits.add_credit(0x80, 0x00, 0xc2, 'CYNAS')
+    credits.add_credit(0x80, 0x00, 0xc2, 'CYNAS             AIRNICK')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #28
@@ -387,15 +419,16 @@ def update_credits(world):
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0xc0, 0xc0, 'INVARIEL        BROATMEAL')
-    credits.add_credit(0x80, 0x80, 0x81, 'TINYWETBLANKET      CYNAS')
+    credits.add_credit(0x80, 0x80, 0xc0, 'INVARIEL        BROATMEAL')
+    credits.add_credit(0x80, 0x40, 0x81, 'TINYWETBLANKET      CYNAS')
+    credits.add_credit(0x80, 0x00, 0xc2, 'AIRNICK')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
     
     #29
     if world.settings.is_flag_enabled(flags.RandomTadpolePondSong):
 
         credits.begin_titles(BEGIN_TITLES_DELAY)
-        credits.add_title(0x80, 0x00, 0x08, 'MELODY BAY TUNES FOR THIS SEED')
+        credits.add_title(0x80, 0x00, 0x08, 'MELODY BAY TUNES IN THIS SEED')
         credits.end_titles(END_TITLES_DELAY)
 
         credits.begin_credits()
@@ -418,7 +451,7 @@ def update_credits(world):
     if world.settings.is_flag_enabled(flags.RandomSunkenShipPassword):
 
         credits.begin_titles(BEGIN_TITLES_DELAY)
-        credits.add_title(0x80, 0x00, 0x08, 'SHIP PASSWORD FOR THIS SEED')
+        credits.add_title(0x80, 0x00, 0x08, 'SHIP PASSWORD IN THIS SEED')
         credits.end_titles(END_TITLES_DELAY)
 
         credits.begin_credits()
@@ -437,7 +470,7 @@ def update_credits(world):
 
     #32
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, ' INSPIRATION')
+    credits.add_title(0x80, 0x00, 0x08, 'INSPIRATION')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
