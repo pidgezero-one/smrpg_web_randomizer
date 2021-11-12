@@ -533,6 +533,8 @@ class Mold:
         self.index = index
         self.gridplane = gridplane
         self.tiles = tiles
+    def __str__(self):
+        return "<Mold %i gridplane=%r tiles=[\n  %s\n]>" % (self.index, self.gridplane, "\n  ".join([t.__str__() for t in self.tiles]))
 
 
 class Tile:
@@ -559,6 +561,10 @@ class Tile:
         self.y_minus = y_minus
         self.y = y
         self.x = x
+    def __str__(self):
+        return "<Tile mirror=%r invert=%r x=%i y=%i subtiles=%r>" % (self.mirror, self.invert, self.x, self.y, self.subtile_bytes)
+
+
 
 class Clone:
     is_clone = True
@@ -574,3 +580,16 @@ class Clone:
         self.tiles = tiles
         self.mirror = mirror
         self.tiles = tiles
+    def __str__(self):
+        return "<Clone mirror=%r invert=%r x=%i y=%i tiles=[\n    %s\n  ]>" % (self.mirror, self.invert, self.x, self.y, "\n    ".join([t.__str__() for t in self.tiles]))
+
+class CompleteSprite:
+    animation = None
+    palette_id = 0
+    palette_offset = 0
+    unknown_num = 0
+    def __init__(self, animation, palette_id, palette_offset=0, unknown_num=0):
+        self.animation = animation
+        self.palette_id = palette_id
+        self.palette_offset = palette_offset
+        self.unknown_num = unknown_num

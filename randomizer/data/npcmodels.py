@@ -4742,7 +4742,7 @@ models[205] = {
   "byte6_bit2": False
 } # 0x1dbd9b
 models[206] = {
-  "sprite": 341,
+  "sprite": 212,
   "priority_0": False,
   "priority_1": False,
   "priority_2": True,

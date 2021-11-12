@@ -90,7 +90,6 @@ class Credits(object):
 
     def finalize(self):
         # Return a patch next time...
-        acc = []
         credit_start = 0x3FDBB0
         credit_len = 3380
         assert len(self.acc) <= credit_len
@@ -324,8 +323,14 @@ def update_credits(world):
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'ALANIM    DORKMASTER FLEK')
-    credits.add_credit(0x80, 0x40, 0x81, 'YAKIBOMB  SWINCH  PATCDR')
+    credits.add_credit(0x80, 0x80, 0xc0, 'ALANIM')
+    credits.add_credit(0x80, 0x40, 0x81, 'DORKMASTER FLEK')
+    credits.add_credit(0x80, 0x00, 0xc2, 'YAKIBOMB')
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x80, 0xc0, 'SWINCH')
+    credits.add_credit(0x80, 0x40, 0x81, 'PATCDR')
     credits.add_credit(0x80, 0x00, 0xc2, 'PIDGEZERO_ONE')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
