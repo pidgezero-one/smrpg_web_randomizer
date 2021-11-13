@@ -57,10 +57,13 @@ class Command(BaseCommand):
 
 
         for index, offset in enumerate(range(TOP_LEVEL_SPRITE_OFFSET, TOP_LEVEL_SPRITE_OFFSET + TOP_LEVEL_SPRITE_LENGTH, 4)):
-            img = shortify(rom, offset) & 0x1FF
-            pal_off = (rom[offset+1] & 0x0E) >> 1
-            unknown = (rom[offset+1] >> 4)
-            sprite = Sprite(index, img, shortify(rom, offset+2), pal_off, unknown)
+            if shortify(rom, offset+2) > 443:
+                sprite = Sprite(index, 0, 0, 0, 0)
+            else:
+                img = shortify(rom, offset) & 0x1FF
+                pal_off = (rom[offset+1] & 0x0E) >> 1
+                unknown = (rom[offset+1] >> 4)
+                sprite = Sprite(index, img, shortify(rom, offset+2), pal_off, unknown)
             sprites.append(sprite)
             # print(hex(offset), index, hex(rom[offset+1]), unknown)
 
@@ -72,6 +75,8 @@ class Command(BaseCommand):
 
 
         for index, property_offset_ptr_offset in enumerate(range(ANIMATION_PACK_POINTERS_OFFSET, ANIMATION_PACK_POINTERS_OFFSET + ANIMATION_PACK_POINTERS_LENGTH, 3)):
+            if index > 443:
+                break
             property_offset_ptr_offset = ANIMATION_PACK_POINTERS_OFFSET + (index * 3)
             property_offset = get_animation_pack_data_offset_from_third_byte(shortify(rom, property_offset_ptr_offset), rom[property_offset_ptr_offset + 2])
             if property_offset == -0xc00000:

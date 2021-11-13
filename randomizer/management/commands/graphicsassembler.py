@@ -3,6 +3,7 @@ from randomizer.logic.sprites import Sprites
 from randomizer.data.graphics import sprites, images, animations
 from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline, bit_bool_from_num
 from randomizer.data.sprites.objects.sprites import sprites as commonsprites
+from randomizer.data.sprites.insertions.geno.sprites import sprites as genosprites
 
 class Command(BaseCommand):
 
@@ -24,6 +25,12 @@ class Command(BaseCommand):
         # f = open(f'write_to_0x360000.img', 'wb')
         # f.write(animation_data_bank_2)
         # f.close()
+
+        # for gsi, gs in enumerate(genosprites):
+        #     if gs is not None:
+        #         commonsprites[gsi] = gs
+
+
 
         sprite_data, image_data, animation_pointers, animation_data_bank_1, animation_data_bank_2, tiles = Sprites.assemble_from_tables(commonsprites)
 

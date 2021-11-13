@@ -6,12 +6,12 @@ from randomizer.data.objectsequencetables import SequenceSpeeds, VramPriority, _
 from randomizer.data import items
 script = [
     {
-        "identifier": "EVENT_12_set_0",
+        "identifier": "EVENT_21_set_0",
         "command": "set",
         "args": [0x70a7, 96]
     },
     {
-        "identifier": "EVENT_12_ret_0",
+        "identifier": "EVENT_21_ret_0",
         "command": "ret"
     }
 ]

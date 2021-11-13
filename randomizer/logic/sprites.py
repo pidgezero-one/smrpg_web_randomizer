@@ -177,13 +177,19 @@ def get_clone_ranges(mold_id, tiles, tile_index, compare_tiles, index=0, index2=
         cloned = compare_tiles[start_index:end_index+1]
         if len(cloned) == 0:
             return False
-        elif len(cloned) == 1 and tile.x <= 255 and tile.y <= 255:
-            return False
         elif x_offset < 0 or y_offset < 0:
             return False
-        else:
-            clone_candidates.append((mold_id, start_index, end_index+1, x_offset, y_offset, mirror, invert))
-            return True
+        elif len(cloned) == 1:
+            if tile.x > 255 or tile.y > 255:
+                pass
+            elif max(tile.subtile_bytes) > 255:
+                pass
+            elif len([sb for sb in tile.subtile_bytes if sb != 0]) > 2:
+                pass
+            else:
+                return False
+        clone_candidates.append((mold_id, start_index, end_index+1, x_offset, y_offset, mirror, invert))
+        return True
 
     #for c in compare_tiles:
         #print(c)
@@ -318,6 +324,9 @@ def find_clones(tiles, molds, index=0, index2=0):
     #         print(i, x)
     return output
 
+before_expansion_targets = [0, 1]
+half_expansion_targets = [6]
+small_expansion_targets = [132]
 
 class Sprites:
     def __init__(self):
@@ -366,11 +375,19 @@ class Sprites:
 
             tile_use.sort(key=functools.cmp_to_key(sortByUsedSprites))
 
+            # if 0 in relevant_sprites:
+            #     for tu in tile_use:
+            #         print(tu[1], tu[0])
+            #     print([t[0] for t in tile_use])
+
             # print(len(set([t[0] for t in tile_use])))
             return {
                 "used_by": group["used_by"],
-                "tiles": set([t[0] for t in tile_use])
+                "tiles": [t[0] for t in tile_use]
             }
+
+        
+        all_unique_tiles = []
 
         # collect unique subtiles and group sprites by graphic similarity
         for index, sprite in enumerate(sprites):
@@ -386,8 +403,7 @@ class Sprites:
                             hashable = tuple(subtile)
                             if hashable not in unique_subtiles:
                                 unique_subtiles.append(hashable)
-                            #if subtile not in all_unique_tiles:
-                            #    all_unique_tiles.append(subtile)
+                            all_unique_tiles.append(tuple(subtile))
             key, sim = get_most_similar_tileset(unique_subtiles)
             if key is None or sim < 0.08: # 0.08 seems to be the sweet spot
                 tile_id = random_tile_id()
@@ -413,7 +429,8 @@ class Sprites:
                 #print("")
 
         # calculate free space
-        # free_tiles = (UNCOMPRESSED_GFX_END - UNCOMPRESSED_GFX_START - len(all_unique_tiles) * 0x20) / 0x20
+        free_tiles = (UNCOMPRESSED_GFX_END - UNCOMPRESSED_GFX_START - len(list(set(all_unique_tiles))) * 0x20) / 0x20
+        print("free space", free_tiles)
 
         # within each tile group, determine which sprites actually use which tiles
         for k in tile_groups:
@@ -435,6 +452,8 @@ class Sprites:
                 #print("")
             if has_variance:
                 tile_groups[k] = rearrange_tiles(tile_groups[k])
+            else:
+                tile_groups[k]["tiles"] = list(tile_groups[k]["tiles"])
             tile_groups[k]["variance"] = has_variance
 
         placed_tile_keys = []
@@ -448,10 +467,11 @@ class Sprites:
         # print(len(wip_sprites))
         
 
+        all_used_subtiles = {}
         # start building stuff
         for sprite_index, sprite in enumerate(wip_sprites):
             tile_key = sprite["tile_group"]
-            available_tiles = list(tile_groups[tile_key]["tiles"])
+            available_tiles = tile_groups[tile_key]["tiles"]
             # print(sprite_index, tile_key)
             # for a in available_tiles:
             #     print(a)
@@ -468,20 +488,19 @@ class Sprites:
                 #print("")
                 #print("")
 
-            if sprite_index == 92:
-                for g_i, g in enumerate(available_tiles):
-                    print(g_i, g)
-
             if tile_groups[tile_key]["variance"]:
                 lowest_subtile_index = len(available_tiles)
+                highest_subtile_index = 0
+                used_subtiles = []
                 for t in sprite["tiles"]:
                     tilegroup_index_of_this_tile = available_tiles.index(t)
+                    used_subtiles.append(tilegroup_index_of_this_tile)
                     if tilegroup_index_of_this_tile < lowest_subtile_index:
                         lowest_subtile_index = tilegroup_index_of_this_tile
+                    if tilegroup_index_of_this_tile > highest_subtile_index:
+                        highest_subtile_index = tilegroup_index_of_this_tile
             else:
                 lowest_subtile_index = 0
-            if sprite_index == 92:
-                print(lowest_subtile_index)
 
             # check if this tile group has already been placed
             if tile_key not in placed_tile_keys:
@@ -549,6 +568,16 @@ class Sprites:
 
             # create sprite pack
             complete_sprites.append(Sprite(len(complete_sprites), image_index_to_use, animation_num_to_use, sprite["sprite_data"].palette_offset, sprite["sprite_data"].unknown_num))
+        
+        for i in [0, 1, 2, 3, 412]:
+            unused_tiles = copy.deepcopy(all_used_subtiles[i])
+            for j in all_used_subtiles:
+                if i != j:
+                    for t in all_used_subtiles[i]:
+                        if t in unused_tiles and t in all_used_subtiles[j]:
+                            unused_tiles.remove(t)
+            #print(i, unused_tiles)
+        
         if len(complete_images) < 512:
             ind = len(complete_images)
             while ind < 512:

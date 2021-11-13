@@ -13,6 +13,154 @@ script = [
         "command": 'run_event_as_subroutine',
         "args": [13]
     }, 
+    # open all map areas
+    
+    {
+        "identifier": 'EVENT_192_829deca4-5098-4593-89e6-c667b8f6e79d',
+        "command": 'set_bit',
+        "args": [0x7065, 4]
+    },
+    {
+        "identifier": 'EVENT_192_5635d239-b5f1-4a88-a026-708d26309b49',
+        "command": 'set_bit',
+        "args": [0x706D, 4]
+    },
+    {
+        "identifier": 'EVENT_192_a050dc9c-e7b6-40c6-beb3-eed0d9034a57',
+        "command": 'set_bit',
+        "args": [0x7066, 3]
+    },
+    {
+        "identifier": 'EVENT_192_f3f629c5-58ca-4ea7-88b6-e1fb11862795',
+        "command": 'set_bit',
+        "args": [0x706E, 3]
+    },
+    {
+        "identifier": 'EVENT_192_899d6872-ec63-4126-9f98-268611592f1c',
+        "command": 'set_bit',
+        "args": [0x7055, 7]
+    },
+    {
+        "identifier": 'EVENT_192_76289124-9fef-4203-aa5c-5b96ca9c9460',
+        "command": 'set_bit',
+        "args": [0x7053, 6]
+    },
+    {
+        "identifier": 'EVENT_192_043e2371-03f9-4740-9f63-1daf6ff6757a',
+        "command": 'set_bit',
+        "args": [0x704C, 7]
+    },
+    {
+        "identifier": 'EVENT_192_f487409c-6e2d-401f-986f-03215724d760',
+        "command": 'set_bit',
+        "args": [0x7067, 4]
+    },
+    {
+        "identifier": 'EVENT_192_36fe2687-2d2c-4a2e-84bb-5916c140ee3b',
+        "command": 'set_bit',
+        "args": [0x706F, 3]
+    },
+    {
+        "identifier": 'EVENT_192_525f7af2-c084-4617-bc6e-1d8c75fbce5c',
+        "command": 'set_bit',
+        "args": [0x7067, 5]
+    },
+    {
+        "identifier": 'EVENT_192_e9b52d25-27a2-4689-9e13-7c140447ebfe',
+        "command": 'set_bit',
+        "args": [0x706F, 4]
+    },
+    {
+        "identifier": 'EVENT_192_7db4eb9b-e65d-459e-b136-07a3c282ba76',
+        "command": 'set_bit',
+        "args": [0x7052, 2]
+    },
+    {
+        "identifier": 'EVENT_192_74fa287e-cfbd-4a91-8860-441e29eb89d4',
+        "command": 'set_bit',
+        "args": [0x7090, 5]
+    },
+    {
+        "identifier": 'EVENT_192_789c67cb-2bc3-4971-8695-573ece6cdffb',
+        "command": 'set_bit',
+        "args": [0x7070, 1]
+    },
+    {
+        "identifier": 'EVENT_192_f6b88633-6faa-42a6-968a-c0804902a839',
+        "command": 'set_bit',
+        "args": [0x7068, 2]
+    },
+    {
+        "identifier": 'EVENT_192_6f542a63-0536-4416-b0a7-025f968f20ca',
+        "command": 'set_bit',
+        "args": [0x7068, 3]
+    },
+    {
+        "identifier": 'EVENT_192_cf8d8981-8808-48be-95da-0f0ad4790a9f',
+        "command": 'set_bit',
+        "args": [0x7070, 5]
+    },
+    {
+        "identifier": 'EVENT_192_790d4d57-ceb7-49b9-8d0e-61d6e0cb6fe4',
+        "command": 'set_bit',
+        "args": [0x7068, 5]
+    },
+    {
+        "identifier": 'EVENT_192_70c435b8-18c5-495e-b4cf-64c5b953af6e',
+        "command": 'set_bit',
+        "args": [0x7068, 6]
+    },
+    {
+        "identifier": 'EVENT_192_5b4d09b6-73e7-4b01-a31a-bea6f7aa2673',
+        "command": 'set_bit',
+        "args": [0x7070, 6]
+    },
+    {
+        "identifier": 'EVENT_192_4dd511ca-a7d0-4429-864d-02d408e4df94',
+        "command": 'set_bit',
+        "args": [0x706E, 5]
+    },
+    {
+        "identifier": 'EVENT_192_97a7f25d-b8b0-4f50-8580-54e92c10ba48',
+        "command": 'set_bit',
+        "args": [0x7066, 5]
+    },
+    {
+        "identifier": 'EVENT_192_7063dfd3-7a3d-41ab-82c2-3bbaad1afb59',
+        "command": 'set_bit',
+        "args": [0x7067, 7]
+    },
+    {
+        "identifier": 'EVENT_192_f281444b-fe35-4ed8-bd5d-567e4cee0c07',
+        "command": 'set_bit',
+        "args": [0x706F, 6]
+    },
+    {
+        "identifier": 'EVENT_192__',
+        "command": 'put_inventory',
+        "args": [items.BrightCard]
+    },
+    {
+        "identifier": 'EVENT_192_f281444b-fe35-4ed8-bd5d-567e4cee0c07_',
+        "command": 'set_bit',
+        "args": [0x707A, 5]
+    },
+    {
+        "identifier": 'EVENT_192_f281444b-fe35-4ed8-bd5d-567e4cee0c07__',
+        "command": 'set_bit',
+        "args": [0x7063, 6]
+    },
+    {
+        "identifier": 'EVENT_192_f281444b-fe35-4ed8-bd5d-567e4cee0c07___',
+        "command": 'set_bit',
+        "args": [0x7056, 3]
+    },
+    {
+        "identifier": 'EVENT_192_f281444b-fe35-4ed8-bd5d-567e4cee0c07____',
+        "command": 'set_bit',
+        "args": [0x7057, 4]
+    },
+
 
 
     # DEBUG

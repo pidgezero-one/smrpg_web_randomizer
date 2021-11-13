@@ -284,7 +284,6 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    ),
     palette_id=561,
     palette_offset=0,
     unknown_num=0
