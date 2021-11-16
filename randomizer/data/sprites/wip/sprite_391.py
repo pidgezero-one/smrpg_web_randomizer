@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(115, length=740, unknown=0x0002,
+    animation=AnimationPack(272, length=625, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=6144,
             molds=[
                 Mold(0, gridplane=False,
@@ -217,7 +217,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'\x08\x00\x14\x00"\x00"\x00@\x00@\x00@\x00@\x00\x08\x08\x14\x14""""@@@@@@@@'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=380, y=127),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=127),
                         Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x06\x00\x18\x00`\x00\x90\x00\x08\x00\x00\x00\x00\x00\x00\x00\x06\x06\x18\x18``\x90\x90\x08\x08'),
                             None,
@@ -229,7 +229,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=367, y=116),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=111, y=116),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x01\x00\x02\x00\x0c\x00\x10\x000\x00H\x00H\x00\x80\x00\x01\x01\x02\x02\x0c\x0c\x10\x1000HHHH\x80\x80'),
                             None,
@@ -311,7 +311,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=362, y=130),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=106, y=130),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x08\x00\x14\x00"\x00"\x00@\x00@\x00@\x00@\x00\x08\x08\x14\x14""""@@@@@@@@'),
                             None,
@@ -329,7 +329,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'\x08\x00\x14\x00"\x00"\x00@\x00@\x00@\x00@\x00\x08\x08\x14\x14""""@@@@@@@@'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=368, y=120),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=120),
                         Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b' \x00\x10\x00\x10\x00\x10\x00\x10\x00\x08\x00\x08\x00\x08\x00  \x10\x10\x10\x10\x10\x10\x10\x10\x08\x08\x08\x08\x08\x08'),
                             None,
@@ -341,7 +341,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'\x08\x00\x14\x00"\x00"\x00@\x00@\x00@\x00@\x00\x08\x08\x14\x14""""@@@@@@@@'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=380, y=127),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=127),
                         Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x06\x00\x18\x00`\x00\x90\x00\x08\x00\x00\x00\x00\x00\x00\x00\x06\x06\x18\x18``\x90\x90\x08\x08'),
                             None,
@@ -353,7 +353,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=367, y=116),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=111, y=116),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x01\x00\x02\x00\x0c\x00\x10\x000\x00H\x00H\x00\x80\x00\x01\x01\x02\x02\x0c\x0c\x10\x1000HHHH\x80\x80'),
                             None,
@@ -453,7 +453,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=362, y=130),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=106, y=130),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x08\x00\x14\x00"\x00"\x00@\x00@\x00@\x00@\x00\x08\x08\x14\x14""""@@@@@@@@'),
                             None,
@@ -471,7 +471,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'\x08\x00\x14\x00"\x00"\x00@\x00@\x00@\x00@\x00\x08\x08\x14\x14""""@@@@@@@@'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=368, y=120),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=120),
                         Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b' \x00\x10\x00\x10\x00\x10\x00\x10\x00\x08\x00\x08\x00\x08\x00  \x10\x10\x10\x10\x10\x10\x10\x10\x08\x08\x08\x08\x08\x08'),
                             None,
@@ -483,7 +483,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'\x08\x00\x14\x00"\x00"\x00@\x00@\x00@\x00@\x00\x08\x08\x14\x14""""@@@@@@@@'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=380, y=127),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=127),
                         Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x06\x00\x18\x00`\x00\x90\x00\x08\x00\x00\x00\x00\x00\x00\x00\x06\x06\x18\x18``\x90\x90\x08\x08'),
                             None,
@@ -495,7 +495,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=367, y=116),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=111, y=116),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x01\x00\x02\x00\x0c\x00\x10\x000\x00H\x00H\x00\x80\x00\x01\x01\x02\x02\x0c\x0c\x10\x1000HHHH\x80\x80'),
                             None,
@@ -613,7 +613,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=357, y=379),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=101, y=123),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x01\x00\x07\x00\x1f\x00?\x00>\x00~\x00\xff\x00\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00\x00\x00\x00\x00'),
                             bytearray(b'\xe0\x00\xf8\x00\xfe\x00~\x00\x7f\x00\x7f\x00\xff\x00\xff\x00\x00\x00\x00\x00\x00B\x80p\x80q\x80s\x00\xf7\x00O'),
@@ -647,13 +647,13 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=376, y=368),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=112),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'|\x00\xfe\x00\xff\x00\xff\x00|\x03y\x07:\x06\x00\x00\x00\x04\x00\x06\x00\x0e\x00\x04\x00\x00\x01\x00"\x00\x00\x00'),
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=366, y=138),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=110, y=138),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x1c\x1c}}\xfd\xff\xf9?\xfd\x1b}\x03~\x008\x00\x02\x1e\x02~\x00\xfc\x00\xf8\x00\xf8\x00p\x06\x00\x00\x00'),
                             None,
@@ -683,7 +683,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=355, y=379),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=99, y=123),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x01\x00\x07\x00\x1f\x00?\x00>\x00~\x00\xff\x00\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00\x00\x00\x00\x00'),
                             bytearray(b'\xe0\x00\xf8\x00\xfe\x00~\x00\x7f\x00\x7f\x00\xff\x00\xff\x00\x00\x00\x00\x00\x00B\x80p\x80q\x80s\x00\xf7\x00O'),
@@ -707,7 +707,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00\x06\x02\x1e\x00~\x00\xff\x00\xff\x00\xff\x18\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x18'),
                             bytearray(b'\x03\x00\x07\x00\x0f\x00\x0f\x00\x1f\x00\x1f\x00\x07\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\xff\x1c\xfe0\xfe \xfe\x00\xf8\x04\x84p\xa0`\xc0\x00\x01\x1c 9 1\x00\x00\x00\x02\x04\x08\x00\x18\xc0\x00'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=357, y=354),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=101, y=98),
                     ]
                 ),
                 Mold(8, gridplane=False,
@@ -717,13 +717,13 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=371, y=116),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=115, y=116),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'|\x00\xfe\x00\xff\x00\xff\x00|\x03y\x07:\x06\x00\x00\x00\x04\x00\x06\x00\x0e\x00\x04\x00\x00\x01\x00"\x00\x00\x00'),
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=362, y=142),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=106, y=142),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x1c\x1c}}\xfd\xff\xf9?\xfd\x1b}\x03~\x008\x00\x02\x1e\x02~\x00\xfc\x00\xf8\x00\xf8\x00p\x06\x00\x00\x00'),
                             None,
@@ -765,7 +765,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=351, y=381),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=95, y=125),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x03\r\x03\x1d\x03=\x03=\x03=\x03y\x06{\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00'),
                             bytearray(b'\xe0\x00\xf8\x00\xfe\x00~\x00\x7f\x00\x7f\x00\xff\x00\xff\x00\x00\x00\x00\x00\x00B\x80p\x80q\x80s\x00\xf7\x00O'),
@@ -789,7 +789,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00\x06\x02\x1e\x00~\x00\xff\x00\xff\x00\xff\x18\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x18'),
                             bytearray(b'\x03\x00\x07\x00\x0f\x00\x0f\x00\x1f\x00\x1f\x00\x07\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\xff\x1c\xfe0\xfe \xfe\x00\xf8\x04\x84p\xa0`\xc0\x00\x01\x1c 9 1\x00\x00\x00\x02\x04\x08\x00\x18\xc0\x00'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=353, y=352),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=97, y=96),
                     ]
                 ),
                 Mold(9, gridplane=False,
@@ -799,13 +799,13 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=370, y=114),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=114, y=114),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'|\x00\xfe\x00\xff\x00\xff\x00|\x03y\x07:\x06\x00\x00\x00\x04\x00\x06\x00\x0e\x00\x04\x00\x00\x01\x00"\x00\x00\x00'),
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=363, y=141),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=107, y=141),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x1c\x1c}}\xfd\xff\xf9?\xfd\x1b}\x03~\x008\x00\x02\x1e\x02~\x00\xfc\x00\xf8\x00\xf8\x00p\x06\x00\x00\x00'),
                             None,
@@ -823,7 +823,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'\xff\x00\xff\x00\x7f\x00\x1f\x00\x1e\x01\x0e\x01\x01\x06\x00\x00\x00\xff\x00\xfc\x00~\x00\x1c\x00\x18\x00\x00\x01\x00\x00\x00'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=353, y=393),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=97, y=137),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x1c\x1c}}\xfd\xff\xf9?\xfd\x1b}\x03~\x008\x00\x02\x1e\x02~\x00\xfc\x00\xf8\x00\xf8\x00p\x06\x00\x00\x00'),
                             None,
@@ -835,19 +835,19 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'@\xff\x80\xbf\x80\xbc\x00\x18\x00\x00\x00\x00\x00\x00\x00\x00\xc0?\x80\x7f\x80|\x00\x18\x00\x00\x00\x00\x00\x00\x00\x00'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=159, y=384),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=159, y=128),
                         Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'\x00\x03\r\x03\x1d\x03=\x03=\x03=\x03y\x06{\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00'),
                             None,
                             bytearray(b'{\x06s\x0cf\x1dN9\x1d\xf3:\xe6x\xc4@\x00\x01\x00\x03\x00\x03\x00\x07\x00\x0f\x00\x1e\x00<\x00@\x00'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=399, y=393),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=143, y=137),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'|\x00\xfe\x00\xff\x00\xff\x00|\x03y\x07:\x06\x00\x00\x00\x04\x00\x06\x00\x0e\x00\x04\x00\x00\x01\x00"\x00\x00\x00'),
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=350, y=378),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=94, y=122),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x03\r\x03\x1d\x03=\x03=\x03=\x03y\x06{\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00'),
                             bytearray(b'\xe0\x00\xf8\x00\xfe\x00~\x00\x7f\x00\x7f\x00\xff\x00\xff\x00\x00\x00\x00\x00\x00B\x80p\x80q\x80s\x00\xf7\x00O'),
@@ -871,7 +871,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00\x06\x02\x1e\x00~\x00\xff\x00\xff\x00\xff\x18\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x18'),
                             bytearray(b'\x03\x00\x07\x00\x0f\x00\x0f\x00\x1f\x00\x1f\x00\x07\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\xff\x1c\xfe0\xfe \xfe\x00\xf8\x04\x84p\xa0`\xc0\x00\x01\x1c 9 1\x00\x00\x00\x02\x04\x08\x00\x18\xc0\x00'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=352, y=349),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=96, y=93),
                     ]
                 ),
                 Mold(10, gridplane=False,
@@ -881,13 +881,13 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=371, y=122),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=115, y=122),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'|\x00\xfe\x00\xff\x00\xff\x00|\x03y\x07:\x06\x00\x00\x00\x04\x00\x06\x00\x0e\x00\x04\x00\x00\x01\x00"\x00\x00\x00'),
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=364, y=153),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=108, y=153),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x1c\x1c}}\xfd\xff\xf9?\xfd\x1b}\x03~\x008\x00\x02\x1e\x02~\x00\xfc\x00\xf8\x00\xf8\x00p\x06\x00\x00\x00'),
                             None,
@@ -905,7 +905,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'\xff\x00\xff\x00\x7f\x00\x1f\x00\x1e\x01\x0e\x01\x01\x06\x00\x00\x00\xff\x00\xfc\x00~\x00\x1c\x00\x18\x00\x00\x01\x00\x00\x00'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=353, y=146),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=97, y=146),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x1c\x1c}}\xfd\xff\xf9?\xfd\x1b}\x03~\x008\x00\x02\x1e\x02~\x00\xfc\x00\xf8\x00\xf8\x00p\x06\x00\x00\x00'),
                             None,
@@ -917,7 +917,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'@\xff\x80\xbf\x80\xbc\x00\x18\x00\x00\x00\x00\x00\x00\x00\x00\xc0?\x80\x7f\x80|\x00\x18\x00\x00\x00\x00\x00\x00\x00\x00'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=413, y=138),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=157, y=138),
                         Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'\x00\x03\r\x03\x1d\x03=\x03=\x03=\x03y\x06{\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00'),
                             None,
@@ -929,7 +929,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=350, y=388),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=94, y=132),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x03\r\x03\x1d\x03=\x03=\x03=\x03y\x06{\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00'),
                             bytearray(b'\xe0\x00\xf8\x00\xfe\x00~\x00\x7f\x00\x7f\x00\xff\x00\xff\x00\x00\x00\x00\x00\x00B\x80p\x80q\x80s\x00\xf7\x00O'),
@@ -953,13 +953,13 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=354, y=359),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=98, y=103),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'|\x00\xfe\x00\xff\x00\xff\x00|\x03y\x07:\x06\x00\x00\x00\x04\x00\x06\x00\x0e\x00\x04\x00\x00\x01\x00"\x00\x00\x00'),
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=360, y=368),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=104, y=112),
                     ]
                 ),
                 Mold(11, gridplane=False,
@@ -969,13 +969,13 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=371, y=122),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=115, y=122),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'|\x00\xfe\x00\xff\x00\xff\x00|\x03y\x07:\x06\x00\x00\x00\x04\x00\x06\x00\x0e\x00\x04\x00\x00\x01\x00"\x00\x00\x00'),
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=364, y=153),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=108, y=153),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x1c\x1c}}\xfd\xff\xf9?\xfd\x1b}\x03~\x008\x00\x02\x1e\x02~\x00\xfc\x00\xf8\x00\xf8\x00p\x06\x00\x00\x00'),
                             None,
@@ -993,7 +993,7 @@ sprite = CompleteSprite(
                             None,
                             bytearray(b'\xff\x00\xff\x00\x7f\x00\x1f\x00\x1e\x01\x0e\x01\x01\x06\x00\x00\x00\xff\x00\xfc\x00~\x00\x1c\x00\x18\x00\x00\x01\x00\x00\x00'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=353, y=146),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=97, y=146),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x1c\x1c}}\xfd\xff\xf9?\xfd\x1b}\x03~\x008\x00\x02\x1e\x02~\x00\xfc\x00\xf8\x00\xf8\x00p\x06\x00\x00\x00'),
                             None,
@@ -1017,7 +1017,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=346, y=140),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=90, y=140),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x03\r\x03\x1d\x03=\x03=\x03=\x03y\x06{\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00'),
                             bytearray(b'\xe0\x00\xf8\x00\xfe\x00~\x00\x7f\x00\x7f\x00\xff\x00\xff\x00\x00\x00\x00\x00\x00B\x80p\x80q\x80s\x00\xf7\x00O'),
@@ -1041,13 +1041,13 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=350, y=367),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=350, y=111),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'|\x00\xfe\x00\xff\x00\xff\x00|\x03y\x07:\x06\x00\x00\x00\x04\x00\x06\x00\x0e\x00\x04\x00\x00\x01\x00"\x00\x00\x00'),
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=356, y=376),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=356, y=120),
                     ]
                 ),
                 Mold(12, gridplane=False,
@@ -1099,5 +1099,5 @@ sprite = CompleteSprite(
     ),
     palette_id=219,
     palette_offset=0,
-    unknown_num=8
+    unknown_num=0
 )

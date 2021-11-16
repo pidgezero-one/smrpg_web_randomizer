@@ -24,7 +24,7 @@ sprite = CompleteSprite(
                 ),
                 Mold(1, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[
                             None,
                             bytearray(b'\x00\xff\x00\xff\x00\xff\x00\x7f\x00\x7f\x00?\x00\x1f\x00\x07\x00\xff\x00\xff\x00\xff\x00\x7f\x00\x7f\x00?\x00\x1f\x00\x07'),
                             None,
@@ -208,7 +208,7 @@ sprite = CompleteSprite(
                 ),
                 Mold(11, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[
                             None,
                             bytearray(b'\x00?\x00\x1f\x00\x1f\x00\x0f\x00\x07\x00\x01\x00\x00\x00\x00\x00?\x00\x1f\x00\x1f\x00\x0f\x00\x07\x00\x01\x00\x00\x00\x00'),
                             None,

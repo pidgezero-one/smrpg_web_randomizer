@@ -141,6 +141,16 @@ script = [
         "args": [items.BrightCard]
     },
     {
+        "identifier": 'EVENT_192_~_',
+        "command": 'put_inventory',
+        "args": [items.BambinoBomb]
+    },
+    {
+        "identifier": 'EVENT_192_~_~',
+        "command": 'put_inventory',
+        "args": [items.SeeYa]
+    },
+    {
         "identifier": 'EVENT_192_f281444b-fe35-4ed8-bd5d-567e4cee0c07_',
         "command": 'set_bit',
         "args": [0x707A, 5]

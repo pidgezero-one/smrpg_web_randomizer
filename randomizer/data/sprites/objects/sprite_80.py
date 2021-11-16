@@ -382,7 +382,7 @@ sprite = CompleteSprite(
                 ),
                 Mold(13, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[
                             None,
                             bytearray(b'0\x000\x000\x000\x000\x000\x00`\x00`\x00        \x10\x10\x10\x10@@@@'),
                             None,

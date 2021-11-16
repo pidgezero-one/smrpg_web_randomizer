@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(33, length=285, unknown=0x0002,
+    animation=AnimationPack(268, length=285, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=True,
@@ -243,7 +243,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00\xc0\x00\xd0\xe0F\xb2O\xb3\x8ef\x1c\x1c\x00\x00\x00\x00\xc0\xc0p\xb0~\xb0o\xa3\xfeb\x1c\x00'),
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=371, y=123),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=115, y=123),
                     ]
                 ),
                 Mold(15, gridplane=False,
@@ -259,7 +259,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00\xc0\x00\xd0\xe0F\xb2O\xb3\x8ef\x1c\x1c\x00\x00\x00\x00\xc0\xc0p\xb0~\xb0o\xa3\xfeb\x1c\x00'),
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=371, y=123),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=115, y=123),
                     ]
                 ),
             ],

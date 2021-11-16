@@ -126,30 +126,32 @@ def is_same_animation(animation1, animation2):
 
 def is_clone_start(tile, compare_tile):
     if compare_tile.is_clone:
-        return False, 0, 0, False, False
+        return False, 0, 0
     if tile.subtile_bytes != compare_tile.subtile_bytes:
-        return False, 0, 0, False, False
+        return False, 0, 0
     # Clones might require an x/y offset of at least 1.
     # Unsure
     # Maybe clones can only be within a certain index?
     # Try some of these things if it wont build
     # Definitely cannot be a source tile if x/y is too large - indicates it is also a clone
     if compare_tile.x > 255 or compare_tile.y > 255:
-        return False, 0, 0, False, False
+        return False, 0, 0
     if tile.x - compare_tile.x < 0 or tile.y - compare_tile.y < 0:
-        return False, 0, 0, False, False
-    return True, tile.x - compare_tile.x, tile.y - compare_tile.y, tile.mirror ^ compare_tile.mirror, tile.invert ^ compare_tile.invert
+        return False, 0, 0
+    if tile.mirror != compare_tile.mirror or tile.invert != compare_tile.invert:
+        return False, 0, 0
+    return True, tile.x - compare_tile.x, tile.y - compare_tile.y
 
-def is_clone_continuation(tile, compare_tile, x_offset, y_offset, mirror, invert):
+def is_clone_continuation(tile, compare_tile, x_offset, y_offset):
     if tile.is_clone or compare_tile.is_clone:
         return False
     if tile.subtile_bytes != compare_tile.subtile_bytes:
         return False
     if (tile.x - compare_tile.x) != x_offset or (tile.y - compare_tile.y) != y_offset:
         return False
-    if tile.mirror ^ mirror != compare_tile.mirror:
+    if tile.mirror != compare_tile.mirror:
         return False
-    if tile.invert ^ invert != compare_tile.invert:
+    if tile.invert != compare_tile.invert:
         return False
     return True
 
@@ -173,7 +175,7 @@ def get_clone_ranges(mold_id, tiles, tile_index, compare_tiles, index=0, index2=
     check = tile_index
 
     # final eligibility check of potential clone, adds if passes
-    def finish_candidate(end_index, start_index, x_offset, y_offset, mirror, invert):
+    def finish_candidate(end_index, start_index, x_offset, y_offset):
         cloned = compare_tiles[start_index:end_index+1]
         if len(cloned) == 0:
             return False
@@ -188,11 +190,9 @@ def get_clone_ranges(mold_id, tiles, tile_index, compare_tiles, index=0, index2=
                 pass
             else:
                 return False
-        clone_candidates.append((mold_id, start_index, end_index+1, x_offset, y_offset, mirror, invert))
+        clone_candidates.append((mold_id, start_index, end_index+1, x_offset, y_offset))
         return True
 
-    #for c in compare_tiles:
-        #print(c)
     while tile_compare_index >= 0:
         #print(index, mold_id, index2, tile_index, tile_compare_index)
         compare_tile = compare_tiles[tile_compare_index]
@@ -203,14 +203,14 @@ def get_clone_ranges(mold_id, tiles, tile_index, compare_tiles, index=0, index2=
         #if index == 146 and index2 == 4:
         #    print("sprite", index, "mold:", index2, "tile:", tile_index, tile, "comp mold:", mold_id, "comp tile:", tile_compare_index, compare_tile, "start:", start)
         if not is_candidate:
-            is_candidate, x_offset, y_offset, mirror, invert = is_clone_start(tile, compare_tile)
+            is_candidate, x_offset, y_offset = is_clone_start(tile, compare_tile)
             if is_candidate:
                 end = tile_compare_index
                 # if index == 8:
                 #     print("mold:", index, "tile:", index2, "comp tile:", tile_compare_index, "end:", end)
         # if active clone check, ends it if it comes across an unmatched tile
         elif is_candidate:
-            is_ending = (end - tile_compare_index == 15) or (mold_id == index2 and check == end) or not is_clone_continuation(tiles[check], compare_tile, x_offset, y_offset, mirror, invert)
+            is_ending = (end - tile_compare_index == 15) or (mold_id == index2 and check == end) or not is_clone_continuation(tiles[check], compare_tile, x_offset, y_offset)
         #if index == 16 and index2 == 18:
         #    print("sprite:", index, "mold:", index2, "tile:", tile_index, "check:", check, "matched mold:", mold_id, "matched tile:", tile_compare_index, start, end, x_offset, y_offset, mirror, invert, is_ending)
         if is_candidate:
@@ -218,7 +218,7 @@ def get_clone_ranges(mold_id, tiles, tile_index, compare_tiles, index=0, index2=
                 start = tile_compare_index
                 if is_ending:
                     start += 1
-                added = finish_candidate(end, start, x_offset, y_offset, mirror, invert)
+                added = finish_candidate(end, start, x_offset, y_offset)
                 #if added and index == 0 and index2 == 23:
                 #    print("sprite:", index, "mold:", index2, "matched mold:", mold_id, start, end, x_offset, y_offset, mirror, invert)
                 is_candidate = False
@@ -278,8 +278,8 @@ def find_clones(tiles, molds, index=0, index2=0):
             else:
                 candidate = max(eligible_candidates,key=lambda item:item[2]-item[1])
                 tmp_output.insert(0, Clone(
-                    mirror=candidate[5],
-                    invert=candidate[6],
+                    mirror=False,
+                    invert=False,
                     x=candidate[3],
                     y=candidate[4],
                     tiles=molds[candidate[0]].tiles[candidate[1]:candidate[2]]
@@ -305,8 +305,8 @@ def find_clones(tiles, molds, index=0, index2=0):
         if len(clone_candidates) > 0:
             candidate = max(clone_candidates,key=lambda item:item[2]-item[1])
             output.insert(0, Clone(
-                mirror=candidate[5],
-                invert=candidate[6],
+                mirror=False,
+                invert=False,
                 x=candidate[3],
                 y=candidate[4],
                 tiles=tmp_output[candidate[1]:candidate[2]]
@@ -336,23 +336,27 @@ class Sprites:
         # Image - contains a palette pointer and a graphics offset
         # Animation - image about how to arrange the graphics at the offset in the Image
     
-    def assemble_from_tables(sprites):
+    def assemble_from_tables(sprites, insert_whitespace=False):
 
         tile_groups = {}
         wip_sprites = []
         
-        def get_most_similar_tileset(ts):
+        def get_most_similar_tileset(ts, index=0):
             best = None
             best_similarity = 0
             for k in tile_groups:
                 similarity = tileset_similarity(ts, tile_groups[k]["tiles"])
+                #if index== 400:
+                #    print(index, k, tile_groups[k]["used_by"], similarity)
                 if similarity > best_similarity:
                     best_similarity = similarity
                     best = k
+            #if index == 400:
+            #    print(best, max(best_similarity/len(ts), best_similarity/len(tile_groups[best]["tiles"])))
             if best is not None:
                 return best, max(best_similarity/len(ts), best_similarity/len(tile_groups[best]["tiles"]))
             else:
-                return best, best_similarity
+                return None, 0
 
         def get_comparative_similarity(key1, key2):
             similarity = tileset_similarity(wip_sprites[key1]["tiles"], wip_sprites[key2]["tiles"]) / len([y for y in wip_sprites[key1]["tiles"] if is_significant_tile(y)])
@@ -387,7 +391,7 @@ class Sprites:
             }
 
         
-        all_unique_tiles = []
+        unique_tiles_length = 0
 
         # collect unique subtiles and group sprites by graphic similarity
         for index, sprite in enumerate(sprites):
@@ -403,9 +407,9 @@ class Sprites:
                             hashable = tuple(subtile)
                             if hashable not in unique_subtiles:
                                 unique_subtiles.append(hashable)
-                            all_unique_tiles.append(tuple(subtile))
-            key, sim = get_most_similar_tileset(unique_subtiles)
-            if key is None or sim < 0.08: # 0.08 seems to be the sweet spot
+            key, sim = get_most_similar_tileset(unique_subtiles, index)
+
+            if key is None or sim < 0.075: # 0.075 seems to be the sweet spot
                 tile_id = random_tile_id()
                 while tile_id in tile_groups:
                     tile_id = random_tile_id()
@@ -428,21 +432,19 @@ class Sprites:
                 #print("")
                 #print("")
 
-        # calculate free space
-        free_tiles = (UNCOMPRESSED_GFX_END - UNCOMPRESSED_GFX_START - len(list(set(all_unique_tiles))) * 0x20) / 0x20
-        print("free space", free_tiles)
-
         # within each tile group, determine which sprites actually use which tiles
         for k in tile_groups:
             # group tiles together by proximity
             has_variance = False
             if len(tile_groups[k]["used_by"]) > 1:
-                # print (k, len(tile_groups[k]["tiles"]), tile_groups[k]["used_by"])
+                # if 191 in tile_groups[k]["used_by"] or 474 in tile_groups[k]["used_by"]:
+                #     print (k, len(tile_groups[k]["tiles"]), tile_groups[k]["used_by"])
                 # if len(tile_groups[k]["tiles"]) > 512:
                 #     print("This one may be too long")
                 variance = []
                 for t in tile_groups[k]["used_by"]:
-                #    print([get_comparative_similarity(t, x) for x in tile_groups[k]["used_by"]])
+                    if 191 in tile_groups[k]["used_by"] or 474 in tile_groups[k]["used_by"]:
+                        print([get_comparative_similarity(t, x) for x in tile_groups[k]["used_by"]])
                     variance.append([get_comparative_similarity(t, x) for x in tile_groups[k]["used_by"]])
                 for x in range(len(variance)):
                     for y in range(x+1, len(variance)):
@@ -455,6 +457,15 @@ class Sprites:
             else:
                 tile_groups[k]["tiles"] = list(tile_groups[k]["tiles"])
             tile_groups[k]["variance"] = has_variance
+            unique_tiles_length += len(tile_groups[k]["tiles"])
+
+        # calculate free space
+        free_tiles = (UNCOMPRESSED_GFX_END - UNCOMPRESSED_GFX_START - (unique_tiles_length * 0x20)) // 0x20
+        #print("free space", free_tiles)
+        # reserve 64 tiles for minecart and 8bit
+        free_tiles -= 64
+        if free_tiles < 0:
+            free_tiles = 0
 
         placed_tile_keys = []
 
@@ -467,7 +478,6 @@ class Sprites:
         # print(len(wip_sprites))
         
 
-        all_used_subtiles = {}
         # start building stuff
         for sprite_index, sprite in enumerate(wip_sprites):
             tile_key = sprite["tile_group"]
@@ -488,33 +498,59 @@ class Sprites:
                 #print("")
                 #print("")
 
-            if tile_groups[tile_key]["variance"]:
-                lowest_subtile_index = len(available_tiles)
-                highest_subtile_index = 0
-                used_subtiles = []
-                for t in sprite["tiles"]:
-                    tilegroup_index_of_this_tile = available_tiles.index(t)
-                    used_subtiles.append(tilegroup_index_of_this_tile)
-                    if tilegroup_index_of_this_tile < lowest_subtile_index:
-                        lowest_subtile_index = tilegroup_index_of_this_tile
-                    if tilegroup_index_of_this_tile > highest_subtile_index:
-                        highest_subtile_index = tilegroup_index_of_this_tile
-            else:
-                lowest_subtile_index = 0
+            lowest_subtile_index = len(available_tiles)
+            highest_subtile_index = 0
+            for t in sprite["tiles"]:
+                tilegroup_index_of_this_tile = available_tiles.index(t)
+                if tilegroup_index_of_this_tile < lowest_subtile_index:
+                    lowest_subtile_index = tilegroup_index_of_this_tile
+                if tilegroup_index_of_this_tile > highest_subtile_index:
+                    highest_subtile_index = tilegroup_index_of_this_tile
 
+            inserting_whitespace_before = False
+            whitespace_amount = 0
             # check if this tile group has already been placed
             if tile_key not in placed_tile_keys:
                 offset = UNCOMPRESSED_GFX_START + len(output_tiles)
-                tile_groups[tile_key]["offset"] = offset
+                if insert_whitespace and free_tiles > 0 and sprite_index == 0:
+                    whitespace_amount = min(free_tiles, 510 - (highest_subtile_index - lowest_subtile_index))
+                    tile_groups[tile_key]["offset"] = offset + (0x20 * whitespace_amount)
+                    #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
+                    output_tiles += bytearray([0] * (0x20 * whitespace_amount))
+                    inserting_whitespace_before = True
+                    free_tiles -= whitespace_amount
+                else:
+                    tile_groups[tile_key]["offset"] = offset
                 placed_tile_keys.append(tile_key)
                 for t in available_tiles:
                     output_tiles += bytearray(t)
             else:
                 offset = tile_groups[tile_key]["offset"]
+                if insert_whitespace and sprite_index == 1:
+                    #print(hex(tile_groups[tile_key]["offset"]))
+                    offset += ((lowest_subtile_index) * 0x20)
+                    whitespace_amount = 510 - (highest_subtile_index - lowest_subtile_index)
+                    if (offset - (whitespace_amount * 0x20)) < 0x280000:
+                        whitespace_amount = (offset - 0x280000) // 0x20
+                    #print(hex(offset))
+                    #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
+                    inserting_whitespace_before = True
+                    offset -= (whitespace_amount * 0x20)
             # print(sprite_index, hex(offset))
+            if sprite_index == 6 or sprite_index == 3:
+                whitespace_amount = min(free_tiles, 510 - (highest_subtile_index - lowest_subtile_index))
+                #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
+                free_tiles -= whitespace_amount
+                output_tiles += bytearray([0] * (0x20 * whitespace_amount))
+            elif sprite_index == 132 or sprite_index == 234:
+                whitespace_amount = 32
+                #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
+                free_tiles -= whitespace_amount
+                output_tiles += bytearray([0] * (0x20 * whitespace_amount))
 
             # get image pack #, or create new
-            offset += ((lowest_subtile_index) * 0x20)
+            if not inserting_whitespace_before:
+                offset += ((lowest_subtile_index) * 0x20)
             # need to change this to accommodate diff offsets in same tile group
             palette_ptr = PALETTE_OFFSET + sprite["sprite_data"].palette_id * 30
             image_index_to_use = len(complete_images)
@@ -532,7 +568,7 @@ class Sprites:
                 if is_same_animation(sprite["sprite_data"].animation, prev_sprite["sprite_data"].animation):
                     animation_num_to_use = complete_sprites[prev_sprite_index].animation_num
             # if not found, create new
-            #print(sprite_index, animation_num_to_use)
+            # print(sprite_index, animation_num_to_use)
             if animation_num_to_use == len(complete_animations):
                 molds = []
                 for mold_index, m in enumerate(sprite["sprite_data"].animation.properties.molds):
@@ -545,6 +581,8 @@ class Sprites:
                                 subtile_index = 0
                             else:
                                 subtile_index = available_tiles.index(tuple(subtile)) + 1 - lowest_subtile_index
+                                if inserting_whitespace_before:
+                                    subtile_index += whitespace_amount
                             subtile_bytes.append(subtile_index)
                         this_tile = copy.deepcopy(tile)
                         this_tile.subtile_bytes = subtile_bytes
@@ -569,14 +607,6 @@ class Sprites:
             # create sprite pack
             complete_sprites.append(Sprite(len(complete_sprites), image_index_to_use, animation_num_to_use, sprite["sprite_data"].palette_offset, sprite["sprite_data"].unknown_num))
         
-        for i in [0, 1, 2, 3, 412]:
-            unused_tiles = copy.deepcopy(all_used_subtiles[i])
-            for j in all_used_subtiles:
-                if i != j:
-                    for t in all_used_subtiles[i]:
-                        if t in unused_tiles and t in all_used_subtiles[j]:
-                            unused_tiles.remove(t)
-            #print(i, unused_tiles)
         
         if len(complete_images) < 512:
             ind = len(complete_images)
@@ -614,6 +644,9 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
     animation_pointers = []
     animation_data_bank_1 = []
     animation_data_bank_2 = []
+    animation_banks = [[], [], [], []]
+    animation_bank_bounds = [(0x259000, 0x260000), (0x260000, 0x270000), (0x270000, 0x280000), (0x360000, 0x370000)]
+    bank_in_use = 0
 
     used_animations = []
 
@@ -702,6 +735,8 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
                 this_mold_bytes = bytearray([])
                 if mold.gridplane:
                     for tile_index, tile in enumerate(mold.tiles):
+                        # if anim_id <= 1:
+                        #     print(anim_id, mold_index, tile.subtile_bytes)
                         for i, subtile_byte in enumerate(tile.subtile_bytes):
                             if subtile_byte >= 0x100:
                                 tile.is_16bit = True
@@ -772,7 +807,7 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
                             else:
                                 raise Exception("no clones found for anim %i mold %i" % (anim_id, mold_index))
                         else:
-                            #print(anim_id, mold_index, tile_index, tile.y, tile.x, tile.subtile_bytes)
+                            print(anim_id, mold_index, tile_index, tile.y, tile.x, tile.subtile_bytes)
                             tile_bytes.append(tile.y ^ 0x80)
                             tile_bytes.append(tile.x ^ 0x80)
                             byte_upper_1 = 0
@@ -805,17 +840,28 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
         finished_bytes = length_bytes + sequence_offset + mold_offset + count_bytes + misc_bytes + sequence_ptrs + sequence_bytes + mold_ptrs + mold_bytes
 
         # print(anim_id, len(finished_bytes))
-        if anim_bank == ANIMATION_DATA_BANK_1_START and anim_bank + len(animation_data_bank_1) + len(finished_bytes) >= ANIMATION_DATA_BANK_1_END:
-            anim_bank = ANIMATION_DATA_BANK_2_START
+        if animation_bank_bounds[bank_in_use][0] + len(animation_banks[bank_in_use]) + len(finished_bytes) >= animation_bank_bounds[bank_in_use][1]:
+        #if anim_bank == ANIMATION_DATA_BANK_1_START and anim_bank + len(animation_data_bank_1) + len(finished_bytes) >= ANIMATION_DATA_BANK_1_END:
+            animation_banks[bank_in_use] += bytearray([0] * (animation_bank_bounds[bank_in_use][1] - animation_bank_bounds[bank_in_use][0] - len(animation_banks[bank_in_use])))
+            bank_in_use += 1
+        if bank_in_use > len(animation_banks):
+            raise Exception('too many animation bytes')
 
-        if anim_bank == ANIMATION_DATA_BANK_1_START:
-            anim_ptr = 0xC00000 + len(animation_data_bank_1) + anim_bank
-            animation_data_bank_1.extend(finished_bytes)
-        else: 
-            anim_ptr = 0xC00000 + len(animation_data_bank_2) + anim_bank
-            animation_data_bank_2.extend(finished_bytes)
+        anim_ptr = 0xC00000 + animation_bank_bounds[bank_in_use][0] + len(animation_banks[bank_in_use])
+        animation_banks[bank_in_use].extend(finished_bytes)
+
+        # if anim_bank == ANIMATION_DATA_BANK_1_START:
+        #     #print(anim_id, len(animation_data_bank_1) + anim_bank)
+        #     anim_ptr = 0xC00000 + len(animation_data_bank_1) + anim_bank
+        #     animation_data_bank_1.extend(finished_bytes)
+        # else: 
+        #     #print(anim_id, len(animation_data_bank_2) + anim_bank)
+        #     anim_ptr = 0xC00000 + len(animation_data_bank_2) + anim_bank
+        #     animation_data_bank_2.extend(finished_bytes)
         animation_pointers.extend([anim_ptr & 0xFF, (anim_ptr >> 8) & 0xFF, (anim_ptr >> 16) & 0xFF])
 
+    animation_data_bank_1 = animation_banks[0] + animation_banks[1] + animation_banks[2]
+    animation_data_bank_2 = animation_banks[3]
 
     sprite_data += bytearray([0] * (SPRITE_PTRS_END - SPRITE_PTRS_START - len(sprite_data)))
     image_data += bytearray([0] * (IMAGE_PTRS_END - IMAGE_PTRS_START - len(image_data)))
