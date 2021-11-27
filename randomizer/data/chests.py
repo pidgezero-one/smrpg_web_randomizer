@@ -201,6 +201,7 @@ class CharacterRecruit(locations.ItemLocation):
     item = None
     original_item = None
     npcs = []
+    credits_npcs = []
     is_character_recruit = True
 
     def item_allowed(self, item):
@@ -411,6 +412,8 @@ class MushroomWayCharacter(CharacterRecruit):
         (203, 8, [], []),
         (204, 7, [], []),
         (205, 5, [], []),
+    ]
+    credits_npcs = [
         (269, 0, [3804], [])
     ]
 
@@ -1999,6 +2002,8 @@ class MolevilleMinesCharacter(CharacterRecruit):
     event = 186
     npcs = [
         (284, 1, [], []),
+    ]
+    credits_npcs = [
         (435, 7, [], [969])
     ]
 

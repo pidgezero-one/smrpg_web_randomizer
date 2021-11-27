@@ -693,7 +693,7 @@
                     }
                     else if (id == "P.random") {
                         boxes = $(`#${$.escapeSelector('P.avail')}`).find("input[type='checkbox']").toArray()
-                        dependent_ids = ["P.size", "P.start", ...(boxes.map(b => $(b).prop("id")))]
+                        dependent_ids = ["P.size", "P.start", "P.allsprites", ...(boxes.map(b => $(b).prop("id")))]
                         $(`${dependent_ids.map(i => `#${$.escapeSelector(i)}`).join(", ")}`).prop("disabled", !value)
                         $("#P\\.avail\\.container .multiselect-button-container button").prop("disabled", !value)
                         $("#P\\.avail\\.container .multiselect-button-container .multiselect-filter").prop("disabled", !value)
@@ -701,11 +701,13 @@
                             $(`#${$.escapeSelector("P.avail.container")}`).addClass("disabled")
                             $(`#${$.escapeSelector('P.start')}`).siblings("label").addClass("disabled")
                             $(`#${$.escapeSelector('P.size')}`).siblings("label").addClass("disabled")
+                            $(`#${$.escapeSelector('P.allsprites')}`).addClass("disabled")
                         }
                         else {
                             $(`#${$.escapeSelector("P.avail.container")}`).removeClass("disabled")
                             $(`#${$.escapeSelector('P.start')}`).siblings("label").removeClass("disabled")
                             $(`#${$.escapeSelector('P.size')}`).siblings("label").removeClass("disabled")
+                            $(`#${$.escapeSelector('P.allsprites')}`).removeClass("disabled")
                         }
                     }
                     else if (id == "X.random") {

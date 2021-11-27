@@ -11,6 +11,15 @@ script = [
         "args": [354]
     },
     {
+        "identifier": 'EVENT_3121_jmp_if_bit_set_1',
+        "command": 'jmp_if_bit_clear',
+        "args": [0x7040, 0, 'EVENT_3121_set_bit_103']
+    },
+    {
+        "identifier": 'EVENT_3121_reset_and_choose_game_17',
+        "command": 'reset_and_choose_game'
+    },
+    {
         "identifier": 'EVENT_3121_set_bit_103',
         "command": 'set_bit',
         "args": [0x707c, 5]
@@ -24,11 +33,6 @@ script = [
         "identifier": 'EVENT_3121_clear_bit_105',
         "command": 'clear_bit',
         "args": [0x707c, 7]
-    },
-    {
-        "identifier": 'EVENT_3121_run_event_as_subroutine_106',
-        "command": 'run_event_as_subroutine',
-        "args": [24]
     },
     {
         "identifier": 'EVENT_3121_set_short_107',

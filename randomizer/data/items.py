@@ -3424,7 +3424,8 @@ class RecruitedCharacter(Item):
     starter_script = None
     container_script = None
     model = 0
-    sprites = {}
+    sprites_primary = {}
+    sprites_secondary = {}
     item_type = 3
 
 class MarioRecruit(RecruitedCharacter):
@@ -3433,9 +3434,9 @@ class MarioRecruit(RecruitedCharacter):
     starter_script = 187
     container_script = 193
     model = 0
-    sprites = {
+    sprites_primary = {
         "south": (0, 12, True),
-        "defend": (2, 17, True),
+        "defend": (2, 16, True),
         "face_north": (0, 1, False),
         "face_south": (0, 0, False),
         "shocked_loop": (3, 8, False),
@@ -3450,9 +3451,32 @@ class MarioRecruit(RecruitedCharacter):
         "shaking_head": (0, 8, False),
         "shaking_head_backward": (0, 9, False),
         "sleeping": (2, 6, False),
-        "salute": (2, 9, True),
+        "salute": (1, 9, False),
         "distracted": (0, 10, True),
-        "displeased": (3, 4, False)
+        "displeased": (3, 4, False),
+        "challenge": (4, 2, False)
+    }
+    sprites_secondary = {
+        "south": (0, 20, True),
+        "defend": (1, 16, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (2, 8, False),
+        "shocked_loop_backwards": (2, 9, False),
+        "shocked_backwards_sequence": (1, 3, False),
+        "crying": (0, 4, False),
+        "crying_backwards": (0, 5, False),
+        "looking_down_static": (0, 14, True),
+        "looking_down": (0, 6, False),
+        "floored": (2, 1, True),
+        "hurt": (0, 14, True),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (1, 6, False),
+        "salute": (2, 9, False),
+        "distracted": (0, 10, True),
+        "displeased": (3, 4, False),
+        "challenge": (3, 2, False)
     }
 
 class ToadstoolRecruit(RecruitedCharacter):
@@ -3461,7 +3485,29 @@ class ToadstoolRecruit(RecruitedCharacter):
     starter_script = 191
     container_script = 197
     model = 1
-    sprites = {
+    sprites_primary = {
+        "south": (0, 12, True),
+        "defend": (2, 16, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (3, 8, False),
+        "shocked_loop_backwards": (3, 9, False),
+        "shocked_backwards_sequence": (2, 3, False),
+        "crying": (3, 3, False),
+        "crying_backwards": (3, 4, False),
+        "looking_down_static": (0, 6, True),
+        "looking_down": (0, 6, False),
+        "floored": (3, 1, True),
+        "hurt": (0, 6, True),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (2, 6, False),
+        "salute": (1, 9, False),
+        "distracted": (0, 18, True),
+        "displeased": (0, 5, False),
+        "challenge": (4, 5, False)
+    }
+    sprites_secondary = {
         "south": (0, 20, True),
         "defend": (1, 17, True),
         "face_north": (0, 1, False),
@@ -3480,7 +3526,8 @@ class ToadstoolRecruit(RecruitedCharacter):
         "sleeping": (1, 6, False),
         "salute": (1, 9, True),
         "distracted": (0, 18, True),
-        "displeased": (0, 5, False)
+        "displeased": (0, 5, False),
+        "challenge": (3, 5, False)
     }
 
 class MallowRecruit(RecruitedCharacter):
@@ -3489,7 +3536,29 @@ class MallowRecruit(RecruitedCharacter):
     starter_script = 188
     container_script = 194
     model = 3
-    sprites = {
+    sprites_primary = {
+        "south": (0, 12, True),
+        "defend": (2, 16, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (3, 8, False),
+        "shocked_loop_backwards": (3, 9, False),
+        "shocked_backwards_sequence": (2, 3, False),
+        "crying": (3, 3, False),
+        "crying_backwards": (3, 4, False),
+        "looking_down_static": (0, 6, True),
+        "looking_down": (0, 6, False),
+        "floored": (3, 1, True),
+        "hurt": (0, 6, True),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (2, 6, False),
+        "salute": (1, 9, False),
+        "distracted": (0, 10, True),
+        "displeased": (3, 4, False),
+        "challenge": (4, 5, False)
+    }
+    sprites_secondary = {
         "south": (0, 20, True),
         "defend": (1, 17, True),
         "face_north": (0, 1, False),
@@ -3508,7 +3577,8 @@ class MallowRecruit(RecruitedCharacter):
         "sleeping": (1, 6, False),
         "salute": (2, 17, True),
         "distracted": (0, 18, True),
-        "displeased": (0, 5, False)
+        "displeased": (0, 5, False),
+        "challenge": (3, 5, False)
     }
 
 class GenoRecruit(RecruitedCharacter):
@@ -3517,7 +3587,29 @@ class GenoRecruit(RecruitedCharacter):
     starter_script = 189
     container_script = 195
     model = 4
-    sprites = {
+    sprites_primary = {
+        "south": (0, 12, True),
+        "defend": (2, 16, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (3, 8, False),
+        "shocked_loop_backwards": (3, 9, False),
+        "shocked_backwards_sequence": (2, 3, False),
+        "crying": (3, 3, False),
+        "crying_backwards": (3, 4, False),
+        "looking_down_static": (0, 6, True),
+        "looking_down": (0, 6, False),
+        "floored": (3, 1, True),
+        "hurt": (0, 6, True),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (2, 6, False),
+        "salute": (1, 9, False),
+        "distracted": (0, 10, True),
+        "displeased": (3, 4, False),
+        "challenge": (4, 0, False)
+    }
+    sprites_secondary = {
         "south": (0, 20, True),
         "defend": (0, 17, True),
         "face_north": (0, 1, False),
@@ -3536,7 +3628,8 @@ class GenoRecruit(RecruitedCharacter):
         "sleeping": (1, 6, False),
         "salute": (1, 9, True),
         "distracted": (0, 19, True),
-        "displeased": (0, 5, False)
+        "displeased": (0, 5, False),
+        "challenge": (3, 0, False)
     }
 
 class BowserRecruit(RecruitedCharacter):
@@ -3545,7 +3638,29 @@ class BowserRecruit(RecruitedCharacter):
     description = PlayableCharacters.bowser.value
     starter_script = 190
     container_script = 196
-    sprites = {
+    sprites_primary = {
+        "south": (0, 12, True),
+        "defend": (2, 16, True),
+        "face_north": (0, 1, False),
+        "face_south": (0, 0, False),
+        "shocked_loop": (3, 8, False),
+        "shocked_loop_backwards": (3, 9, False),
+        "shocked_backwards_sequence": (2, 3, False),
+        "crying": (3, 3, False),
+        "crying_backwards": (3, 4, False),
+        "looking_down_static": (0, 6, True),
+        "looking_down": (0, 6, False),
+        "floored": (3, 1, True),
+        "hurt": (0, 6, True),
+        "shaking_head": (0, 8, False),
+        "shaking_head_backward": (0, 9, False),
+        "sleeping": (2, 6, False),
+        "salute": (1, 9, False),
+        "distracted": (0, 10, True),
+        "displeased": (3, 4, False),
+        "challenge": (4, 4, False)
+    }
+    sprites_secondary = {
         "south": (0, 20, True),
         "defend": (0, 17, True),
         "face_north": (0, 1, False),
@@ -3564,7 +3679,8 @@ class BowserRecruit(RecruitedCharacter):
         "sleeping": (1, 6, False),
         "salute": (1, 9, True),
         "distracted": (0, 18, True),
-        "displeased": (0, 5, False)
+        "displeased": (0, 5, False),
+        "challenge": (3, 4, False)
     }
 
 class SpottedCharacter(Item):

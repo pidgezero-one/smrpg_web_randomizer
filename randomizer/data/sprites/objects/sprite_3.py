@@ -600,16 +600,58 @@ sprite = CompleteSprite(
                     tiles=[
                     ]
                 ),
-                Mold(28, gridplane=False,
+                Mold(28, gridplane=True,
                     tiles=[
+                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
                     ]
                 ),
-                Mold(29, gridplane=False,
+                Mold(29, gridplane=True,
                     tiles=[
+                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
                     ]
                 ),
-                Mold(30, gridplane=False,
+                Mold(30, gridplane=True,
                     tiles=[
+                        Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
                     ]
                 ),
             ],

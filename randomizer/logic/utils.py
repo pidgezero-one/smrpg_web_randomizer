@@ -292,51 +292,6 @@ def fix_directions_for_sequenced_sprite(script, sequence_type=SequenceType.Seque
             output.append(command)
     return output
 
-def fix_script_for_scarecrow(s):
-    output = []
-    for command in s:
-        if command["command"] == "reset_properties":
-            output.append(command)
-            output.append({"identifier": "dummy", "command": "face_southwest"})
-        if command["command"] == "face_northwest":
-            command["command"] = "face_northeast"
-            output.append(command)
-        elif command["command"] == "face_northeast":
-            command["command"] = "face_northwest"
-            output.append(command)
-        elif command["command"] == "face_mario":
-            pass  # could possibly substitute a series of "ifs" comparing coord to mario's, and set direction based on that info, but that would be hella complicated and i dont know what temp vars would make sense for it
-        elif command["command"] in ["walk_1_step_east", "walk_1_step_northeast", "shift_east_steps", "shift_northeast_steps", "shift_east_pixels", "shift_northeast_pixels"]:
-            output.append({"identifier": "dummy", "command": "face_northwest"})
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_on"})
-            output.append(command)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_off"})
-        elif command["command"] in ["walk_1_step_north", "walk_1_step_northwest", "shift_north_steps", "shift_northwest_steps", "shift_north_pixels", "shift_northwest_pixels"]:
-            output.append({"identifier": "dummy", "command": "face_northeast"})
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_on"})
-            output.append(command)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_off"})
-        elif command["command"] in ["shift_f_direction_steps", "shift_z_20_steps", "shift_z_up_steps", "shift_z_down_steps", "shift_z_up_20_steps", "shift_z_down_20_steps", "shift_f_direction_pixels", "walk_f_direction_16_pixels", "shift_z_up_pixels", "shift_z_down_pixels", "shift_to_xy_coords", "shift_xy_steps", "shift_xy_pixels", "walk_1_step_f_direction", "walk_f_direction_16_pixels", "walk_to_xy_coords", "walk_xy_steps", "walk_to_7016_7018", "walk_to_7016_7018_701A"]:
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_on"})
-            output.append(command)
-            output.append(
-                {"identifier": "dummy", "command": "fixed_f_coord_off"})
-        elif command["command"] == "set_sprite_sequence" and command["args"][0] == 1:
-            if _0x08Flags.MIRROR_SPRITE in ["args"][0][2]:
-                command["args"][2] = [c for c in command["args"]
-                                      [2] if c != _0x08Flags.MIRROR_SPRITE]
-            else:
-                command["args"][2].append(_0x08Flags.MIRROR_SPRITE)
-            output.append(command)
-        else:
-            output.append(command)
-    return output
-
 
 def is_mario_animation_header(command):
     return command["command"] in ['action_queue_async', 'action_queue_sync', 'start_embedded_action_script_async_F0', 'start_embedded_action_script_async_F1', 'start_embedded_action_script_sync_F0', 'start_embedded_action_script_sync_F1'] and command["args"][0] == AreaObjects.MARIO
@@ -391,6 +346,8 @@ def sanitize_character_animation_script(sequence_types, script, room_id):
                     key = "shocked_backwards_sequence"
                 elif spr == 0 and seq == 5:
                     key = "displeased"
+                elif spr == 4 and seq == 2:
+                    key = "challenge"
         if key is not None:
             flags = [a for a in cmd["args"][2] if a != _0x08Flags.READ_AS_MOLD]
             sprite, sequence, is_mold = sequence_types[key]

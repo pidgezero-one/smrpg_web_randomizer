@@ -318,13 +318,13 @@ sprite = CompleteSprite(
                             None,
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=132, y=116),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=4, subtile_bytes=[
                             None,
                             bytearray(b'\x01\x01\x01\x01\x03\x03\x06\x04\x07\x04\x03\x03\x00\x00\x00\x00\x01\x01\x01\x01\x03\x03\x07\x05\x07\x04\x03\x03\x00\x00\x00\x00'),
                             None,
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=132, y=124),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\xff?\x9e\x80?\xff?\xff|\xfc|\xf4l\xe8\xdc\xdc?\xff\x80\x7f\xff\x00\xff\x00\xfc\x03\xf4\x0b\xe8\x1f\xdc?'),
                             bytearray(b'\xf888\x08\x9c\x84<\x048\x008\x00\xa0\x00 \x008\xf8\x08\xf8\x84|\x04\xfc\x00\xf8\x00\xf8\x00\xe0\x00`'),
                             bytearray(b'\xba\x82ZR\x95\x94\x8f\x0c|\x04\x8f\x07\xf8\xf8\x00\x00\xbcAm\xc1\xef\xce\xff|\xff\x07\xffw\xf8\xf8\x00\x00'),

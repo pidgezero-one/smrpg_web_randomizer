@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(358, length=367, unknown=0x0000,
+    animation=AnimationPack(356, length=389, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -205,13 +205,13 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=382),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=126),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'hXj\x98\n\xfa\x16\xf2\xef\xe0W,\x14,\x00\x00\x1c\x00\x1e\x00\xc6\x01\xce\x01\x1f\x00\xc3<\x00<\x00\x00'),
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=118, y=368),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=118, y=112),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             None,
@@ -314,7 +314,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=106),
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
+                        Tile(mirror=False, invert=True, format=0, length=4, subtile_bytes=[
                             None,
                             None,
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x10\x00\x00\x00\x00\x00\x00'),
@@ -403,7 +403,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=98),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=380, y=354),
                     ]
                 ),
                 Mold(16, gridplane=False,
@@ -425,7 +425,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=96),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=380, y=352),
                     ]
                 ),
                 Mold(17, gridplane=False,
@@ -446,7 +446,7 @@ sprite = CompleteSprite(
                 ),
                 Mold(18, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
+                        Tile(mirror=False, invert=True, format=0, length=4, subtile_bytes=[
                             None,
                             None,
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x10\x00\x00\x00\x00\x00\x00'),
@@ -479,7 +479,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=124, y=94),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=380, y=350),
                     ]
                 ),
                 Mold(20, gridplane=False,
@@ -524,5 +524,5 @@ sprite = CompleteSprite(
     ),
     palette_id=345,
     palette_offset=0,
-    unknown_num=0
+    unknown_num=8
 )

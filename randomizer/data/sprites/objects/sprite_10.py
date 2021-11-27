@@ -1213,6 +1213,33 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=4, mold_id=30),
                     ]
                 ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                        AnimationSequenceFrame(duration=4, mold_id=1),
+                        AnimationSequenceFrame(duration=2, mold_id=2),
+                        AnimationSequenceFrame(duration=2, mold_id=3),
+                        AnimationSequenceFrame(duration=2, mold_id=4),
+                        AnimationSequenceFrame(duration=2, mold_id=5),
+                        AnimationSequenceFrame(duration=2, mold_id=6),
+                        AnimationSequenceFrame(duration=4, mold_id=7),
+                        AnimationSequenceFrame(duration=2, mold_id=6),
+                        AnimationSequenceFrame(duration=2, mold_id=5),
+                        AnimationSequenceFrame(duration=2, mold_id=4),
+                        AnimationSequenceFrame(duration=2, mold_id=3),
+                        AnimationSequenceFrame(duration=2, mold_id=2),
+                        AnimationSequenceFrame(duration=2, mold_id=1),
+                        AnimationSequenceFrame(duration=4, mold_id=0),
+                        AnimationSequenceFrame(duration=4, mold_id=8),
+                        AnimationSequenceFrame(duration=4, mold_id=9),
+                        AnimationSequenceFrame(duration=8, mold_id=10),
+                        AnimationSequenceFrame(duration=2, mold_id=4),
+                        AnimationSequenceFrame(duration=2, mold_id=5),
+                        AnimationSequenceFrame(duration=2, mold_id=6),
+                        AnimationSequenceFrame(duration=2, mold_id=7),
+                        AnimationSequenceFrame(duration=4, mold_id=11),
+                    ]
+                ),
             ]
         )
     ),

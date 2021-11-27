@@ -358,7 +358,7 @@ class Command(BaseCommand):
                         writeline(file, "                        ], is_16bit=%r, y_plus=%i, y_minus=%i, x=%i, y=%i)," % (t.is_16bit, t.y_plus, t.y_minus, t.x, t.y))
                     else:
                         for subt in t.tiles:
-                            writeline(file, "                        Tile(mirror=%r, invert=%r, format=%i, length=%i, subtile_bytes=[" % (t.mirror, t.invert, subt.format, subt.length))
+                            writeline(file, "                        Tile(mirror=%r, invert=%r, format=%i, length=%i, subtile_bytes=[" % (subt.mirror, subt.invert, subt.format, subt.length))
                             for sb in subt.subtile_bytes:
                                 if sb == 0:
                                     writeline(file, "                            None,")

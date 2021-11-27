@@ -21,7 +21,7 @@ from randomizer.data.eventscripts.utils.smithy_room.non_smithy_3794 import scrip
 from randomizer.data.eventscripts.utils.smithy_room.non_smithy_room_509 import objects as non_smithy_509_objects
 
 
-from .utils import fix_directions_for_sequenced_sprite, new_animation, new_command, is_animation_header, remove_sequence_changes_from_action_script, fix_script_for_scarecrow, is_mario_animation_header
+from .utils import fix_directions_for_sequenced_sprite, new_animation, new_command, is_animation_header, remove_sequence_changes_from_action_script, is_mario_animation_header
 
 
 
@@ -516,19 +516,14 @@ def randomize_all(world):
 
                             if eligible_directions == VramStore._02_SWSE:
                                 new_direction = RadialDirection.SOUTHWEST
-                            if statue.reference_model in [385, 149]: # SCARECROW
-                                if current_direction == RadialDirection.NORTHWEST:
-                                    new_direction = RadialDirection.NORTHEAST
-                                elif current_direction == RadialDirection.NORTHEAST:
-                                    new_direction = RadialDirection.NORTHWEST
                             if new_direction != current_direction:
                                 world.update_room_npc_property_by_id(room_id, npc_id, "direction", new_direction)
 
                             # guarantee freeze
-                            if boss_sprite_location.sequence_setter not in sequence_setters:
-                                sequence_setters[boss_sprite_location.sequence_setter] = []
-                            cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "sequence_playback_off"}])
-                            sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
+                            if statue_location.sequence_setter not in sequence_setters:
+                                sequence_setters[statue_location.sequence_setter] = []
+                            cmd = new_animation(statue_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "sequence_playback_off"}])
+                            sequence_setters[statue_location.sequence_setter].append(cmd)
 
                             # pixel shifts
                             horizontal_shift = 0
@@ -544,12 +539,13 @@ def randomize_all(world):
                                 vertical_shift = 0xFF & (statue.vertical_pixel_shift)
                             elif statue.vertical_pixel_shift < 0:
                                 vertical_shift = 0xFF & (0xFF + statue.vertical_pixel_shift + 1)
-                            if horizontal_shift != 0 or vertical_shift != 0 and (new_direction == RadialDirection.SOUTHWEST or new_direction == RadialDirection.NORTHWEST):
-                                cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [horizontal_shift, vertical_shift]}])
-                                sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
-                            elif reverse_horizontal_shift != 0 and vertical_shift != 0 and (new_direction == RadialDirection.NORTHEAST or new_direction == RadialDirection.SOUTHEAST):
-                                cmd = new_animation(boss_sprite_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [reverse_horizontal_shift, vertical_shift]}])
-                                sequence_setters[boss_sprite_location.sequence_setter].append(cmd)
+                            if (horizontal_shift != 0 or vertical_shift != 0) and (new_direction == RadialDirection.SOUTHWEST or new_direction == RadialDirection.NORTHWEST):
+                                cmd = new_animation(statue_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [horizontal_shift, vertical_shift]}])
+                                #print(statue_location.sequence_setter, cmd)
+                                sequence_setters[statue_location.sequence_setter].append(cmd)
+                            elif (reverse_horizontal_shift != 0 or vertical_shift != 0) and (new_direction == RadialDirection.NORTHEAST or new_direction == RadialDirection.SOUTHEAST):
+                                cmd = new_animation(statue_location.sequence_setter, 'action_queue_async', npc_id, [{"identifier": "dummy", "command": "shift_xy_pixels", "args": [reverse_horizontal_shift, vertical_shift]}])
+                                sequence_setters[statue_location.sequence_setter].append(cmd)
 
                     for boss_sprite_location in boss_location.boss_locations:
                         occupant = boss_sprite_location.occupant
@@ -646,14 +642,8 @@ def randomize_all(world):
                         #     world.models[model_num]["cannot_clone"] = True
 
 
-                        # scarecrow directions are mostly inverted, so swap default directions for scarecrow sprites, don't face on trigger
                         current_direction = world.get_room_npc_property_by_id(room_id, npc_id, "direction")
                         new_direction = current_direction
-                        if model_num in [385, 149]: # SCARECROW
-                            if current_direction == RadialDirection.NORTHWEST:
-                                new_direction = RadialDirection.NORTHEAST
-                            elif current_direction == RadialDirection.NORTHEAST:
-                                new_direction = RadialDirection.NORTHWEST
                             
                         
                         if new_direction != current_direction:
@@ -1000,20 +990,8 @@ def randomize_all(world):
                             else:
                                 world.actionscripts[script_id] = sanitize_animation_script(boss, boss_location, script, model)
 
-
-                        # if model is a scarecrow, fix all of its directional commands
-                        model_info = world.models[model_num]
-                        if model_num in [385, 149]: # SCARECROW
-                            for script_id in boss_sprite_location.target_scripts:
-                                script = world.eventscripts[script_id]
-                                for command_index, command in enumerate(script):
-                                    if is_animation_header(command, npc_id):
-                                        command["subscript"] = fix_script_for_scarecrow(command["subscript"])
-                                        world.eventscripts[script_id][command_index] = command
-                            for script_id in boss_sprite_location.target_action_scripts:
-                                world.actionscripts[script_id] = fix_script_for_scarecrow(world.actionscripts[script_id])
                         # if default model requires a specific sequence or mold, fix directional commands
-                        elif model.sequence_type == SequenceType.Mold or model.sequence > 0:
+                        if model.sequence_type == SequenceType.Mold or model.sequence > 0:
                             if model.sequence_type == SequenceType.Mold:
                                 seq = model.mold
                             else:
@@ -1204,6 +1182,7 @@ def randomize_all(world):
                                     # overwrite poundette background animation
                                     elif utils.isclass_or_instance(boss_location, bosses.Director) and script_id in [962, 963, 964] and model.animations is not None and model.animations.factory_pierce is not None:
                                         scr = []
+                                        #print(boss, boss_location)
                                         for subscript_command_index, subscript_command in enumerate(script):
                                             if subscript_command["command"] == 'set_sprite_sequence':
                                                 subs = copy.deepcopy(subscript_command)

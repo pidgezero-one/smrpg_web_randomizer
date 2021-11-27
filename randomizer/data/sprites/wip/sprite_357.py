@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(239, length=453, unknown=0x0000,
+    animation=AnimationPack(239, length=476, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=6144,
             molds=[
                 Mold(0, gridplane=False,
@@ -577,7 +577,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=135, y=119),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=391, y=119),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
                             bytearray(b'\xff\x7f\x7f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'),
                             bytearray(b'\xff\xbe\xfe\xff\xfe\xfe\xfc\xfc\xf0\xf0\xe0\xe0\xc0\xc0\x00\x00\xff\xff\xff\xff\xfe\xfe\xfc\xfc\xf0\xf0\xe0\xe0\xc0\xc0\x00\x00'),
@@ -595,7 +595,7 @@ sprite = CompleteSprite(
                             bytearray(b'xp\xe6\xf8\xa7\xc7o\xbf\xe9p+\x9c\xa5-\xbc\xf9@x\xf0\xfe\x87\xf8?\xc0x\x87=\xc3=\xc3\xf8\x07'),
                             bytearray(b'zc\xd6\xe5\xd8\x12\x8d$\xc3\x90k%?\x87_/\xf3\xfc\xc7\xf8\x9e\xe1<\xc3\xf1\x0f\xe3\x1f\x8f\x7f\x1f\xff'),
                             bytearray(b'\n\xc5\xaf\x97O?\x7f\xbf\x7f\xff\xff\xff\xff\xff\xff\xff\xc2?\x8f\x7f\x1f\xff\x7f\xff\xff\xff\xff\xff\xff\xff\xff\xff'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=375, y=103),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=119, y=103),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'),
                             bytearray(b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xfe\xfc\xfc\xf8\xf8\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xfe\xfc\xfc\xf8\xf8'),
@@ -689,7 +689,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=138, y=372),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=394, y=116),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
                             bytearray(b'\xff\x7f\x7f\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff?\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'),
                             bytearray(b'\xff\xbe\xfe\xff\xfe\xfe\xfc\xfc\xf0\xf0\xe0\xe0\xc0\xc0\x00\x00\xff\xff\xff\xff\xfe\xfe\xfc\xfc\xf0\xf0\xe0\xe0\xc0\xc0\x00\x00'),
@@ -707,7 +707,7 @@ sprite = CompleteSprite(
                             bytearray(b'xp\xe6\xf8\xa7\xc7o\xbf\xe9p+\x9c\xa5-\xbc\xf9@x\xf0\xfe\x87\xf8?\xc0x\x87=\xc3=\xc3\xf8\x07'),
                             bytearray(b'zc\xd6\xe5\xd8\x12\x8d$\xc3\x90k%?\x87_/\xf3\xfc\xc7\xf8\x9e\xe1<\xc3\xf1\x0f\xe3\x1f\x8f\x7f\x1f\xff'),
                             bytearray(b'\n\xc5\xaf\x97O?\x7f\xbf\x7f\xff\xff\xff\xff\xff\xff\xff\xc2?\x8f\x7f\x1f\xff\x7f\xff\xff\xff\xff\xff\xff\xff\xff\xff'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=378, y=100),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=122, y=356),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'),
                             bytearray(b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xfe\xfc\xfc\xf8\xf8\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xfe\xfc\xfc\xf8\xf8'),
@@ -901,7 +901,7 @@ sprite = CompleteSprite(
                             bytearray(b'\xf3\xef\xf3\xef\xfb\xe7\xfb\xc7\xfb\x87\xfb\x07\xf7\x0f\xec\x1c\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfc\xfc'),
                             None,
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=118),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=112, y=374),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x02\x0e\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x03\x0f\x0f'),
                             bytearray(b'\x00\x00\x01\x01\x03\x03\x0e\x0f\x1e\x18r{\xf3\xc4d\x8a\x00\x00\x01\x01\x03\x03\x0e\x0f\x1c\x1fs|\xe7\xf8\x0e\xf1'),
@@ -996,5 +996,5 @@ sprite = CompleteSprite(
     ),
     palette_id=193,
     palette_offset=0,
-    unknown_num=0
+    unknown_num=8
 )

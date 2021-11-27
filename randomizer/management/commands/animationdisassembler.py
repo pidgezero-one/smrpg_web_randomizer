@@ -60,7 +60,7 @@ banks = {
     "ally_spells": {
         "pointers": {
             "start": 0x35C992,
-            "end": 0x35C9C7
+            "end": 0x35C9C7 # NOTE: Adjusted due to cloen spells!
         },
         "start": 0x35C9C8,
         "end": 0x35CAAB

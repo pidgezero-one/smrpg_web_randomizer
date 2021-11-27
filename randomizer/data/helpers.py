@@ -823,33 +823,33 @@ class EquipmentCharactersOptions(FlagOptions):
 
 
 class LearnableSpells(FlagOptions):
-    Jump = spells.Jump.title
-    FireOrb = spells.FireOrb.title
-    SuperJump = spells.SuperJump.title
-    SuperFlame = spells.SuperFlame.title
-    UltraJump = spells.UltraJump.title
-    UltraFlame = spells.UltraFlame.title
-    Therapy = spells.Therapy.title
-    GroupHug = spells.GroupHug.title
-    SleepyTime = spells.SleepyTime.title
-    ComeBack = spells.ComeBack.title
-    Mute = spells.Mute.title
-    PsychBomb = spells.PsychBomb.title
-    Terrorize = spells.Terrorize.title
-    PoisonGas = spells.PoisonGas.title
-    Crusher = spells.Crusher.title
-    BowserCrush = spells.BowserCrush.title
-    GenoBeam = spells.GenoBeam.title
-    GenoBoost = spells.GenoBoost.title
-    GenoWhirl = spells.GenoWhirl.title
-    GenoBlast = spells.GenoBlast.title
-    GenoFlash = spells.GenoFlash.title
-    Thunderbolt = spells.Thunderbolt.title
-    HPRain = spells.HPRain.title
-    Psychopath = spells.Psychopath.title
-    Shocker = spells.Shocker.title
-    Snowy = spells.Snowy.title
-    StarRain = spells.StarRain.title
+    Jump = spells.Jump.base_title
+    FireOrb = spells.FireOrb.base_title
+    SuperJump = spells.SuperJump.base_title
+    SuperFlame = spells.SuperFlame.base_title
+    UltraJump = spells.UltraJump.base_title
+    UltraFlame = spells.UltraFlame.base_title
+    Therapy = spells.Therapy.base_title
+    GroupHug = spells.GroupHug.base_title
+    SleepyTime = spells.SleepyTime.base_title
+    ComeBack = spells.ComeBack.base_title
+    Mute = spells.Mute.base_title
+    PsychBomb = spells.PsychBomb.base_title
+    Terrorize = spells.Terrorize.base_title
+    PoisonGas = spells.PoisonGas.base_title
+    Crusher = spells.Crusher.base_title
+    BowserCrush = spells.BowserCrush.base_title
+    GenoBeam = spells.GenoBeam.base_title
+    GenoBoost = spells.GenoBoost.base_title
+    GenoWhirl = spells.GenoWhirl.base_title
+    GenoBlast = spells.GenoBlast.base_title
+    GenoFlash = spells.GenoFlash.base_title
+    Thunderbolt = spells.Thunderbolt.base_title
+    HPRain = spells.HPRain.base_title
+    Psychopath = spells.Psychopath.base_title
+    Shocker = spells.Shocker.base_title
+    Snowy = spells.Snowy.base_title
+    StarRain = spells.StarRain.base_title
 
 
 class EquipmentPropertiesOptions(FlagOptions):

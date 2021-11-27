@@ -17,6 +17,7 @@ from randomizer.logic import flags, keys, utils
 from randomizer.data.eventscripts.utils.slot_machine.event import script as slot_machine_commands
 from randomizer.data.eventscripts.utils.slot_machine.objects import objects as slot_machine_npcs
 from randomizer.data.eventtables import AreaObjects
+from randomizer.data import characters
 
 dummy_allpurpose_item = items.RegularItem(None)
 dummy_allpurpose_item.consumable = True
@@ -809,8 +810,24 @@ def randomize_all(world):
         # shuffling finished - now apply it to the game
 
 
+
+        if world.settings.is_flag_enabled(flags.ShuffleCharacters):
+            character_order = [None] * 5
+        else:
+            character_order = [items.MarioRecruit, items.MallowRecruit,
+                            items.GenoRecruit, items.BowserRecruit, items.ToadstoolRecruit]
+
+
+
+        # recruitable characters - characters aree treated as items as far as the logic is concerned, so this goes here
+        for c in world.starter_character_checks:
+            if utils.isclass_or_instance(c, chests.StarterCharacter1):
+                character_order[0] = c.item
+
         # recruitable characters - characters aree treated as items as far as the logic is concerned, so this goes here
         for c in world.recruitable_character_checks:
+            if utils.isclass_or_instance(c, chests.StarterCharacter1):
+                print(c, c.item)
             if c.event is not None and c.event not in grant_builders:
                 grant_builders[c.event] = {
                     "jumps": [utils.new_command(c.event, 'set_7000_to_current_level')],
@@ -827,30 +844,76 @@ def randomize_all(world):
                     jmp = utils.new_command(c.event, 'jmp_if_7000_equals_short', [r, cmd["identifier"]])
                     grant_builders[c.event]["jumps"].append(jmp)
                 # forest maze gating
-                if utils.isclass_or_instance(c, chests.MushroomWayCharacter):
+                if utils.isclass_or_instance(c, chests.StarterCharacter1):
+                    character_order[0] = c.item
+                elif utils.isclass_or_instance(c, chests.MushroomWayCharacter):
+                    character_order[1] = c.item
                     if (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, items.MarioRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, items.MallowRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, items.GenoRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, items.BowserRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, items.ToadstoolRecruit)):
                         world.prepend_bits(202, [[0x7066, 3], [0x706E, 3]])
                 elif utils.isclass_or_instance(c, chests.MolevilleMinesCharacter):
+                    character_order[3] = c.item
                     if (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, items.MarioRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, items.MallowRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, items.GenoRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, items.BowserRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, items.ToadstoolRecruit)):
                         world.prepend_bits(201, [[0x7066, 3], [0x706E, 3]])
                 elif utils.isclass_or_instance(c, chests.MarrymoreCharacter):
+                    character_order[4] = c.item
                     world.search_replace_dialog("`MARRYMORE_CHARACTER`", c.item.description)
                     random_character = random.choice([i.description for i in [items.MarioRecruit, items.MallowRecruit, items.GenoRecruit, items.BowserRecruit, items.ToadstoolRecruit] if not utils.isclass_or_instance(c.item, i)])
                     world.search_replace_dialog("`RANDOM_CHARACTER_NAME`", random_character)
                     if (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, items.MarioRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, items.MallowRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, items.GenoRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, items.BowserRecruit)) or (world.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, items.ToadstoolRecruit)):
                         world.prepend_bits(200, [[0x7066, 3], [0x706E, 3]])
-                for room_id, npc, eventscripts, actionscripts in c.npcs:
-                    if not c.is_vanilla:
+                elif utils.isclass_or_instance(c, chests.ForestMazeCharacter):
+                    character_order[2] = c.item
+            elif not utils.isclass_or_instance(c, chests.MolevilleMinesCharacter): # replace with Toad if empty
+                if utils.isclass_or_instance(c, chests.MarrymoreCharacter):
+                    world.search_replace_dialog("`MARRYMORE_CHARACTER`", "Toad")
+                    world.search_replace_dialog("`RANDOM_CHARACTER_NAME`", "Yoshi")
+
+        # replace overworld sprites - in-game is replaced with toad or dyna if no char, but unused chars must always be in ending credits
+        playable_character_order = copy.deepcopy(character_order)
+
+        if world.settings.is_flag_enabled(flags.ShuffleCharacters):
+            empty_char_indexes = []
+            for ind, char in enumerate(character_order):
+                if char is None:
+                    empty_char_indexes.append(ind)
+            remaining_chars = []
+            for chrclass in [items.MarioRecruit, items.ToadstoolRecruit, items.BowserRecruit, items.MallowRecruit, items.GenoRecruit]:
+                used = False
+                for o in character_order:
+                    if utils.isclass_or_instance(o, chrclass):
+                        used = True
+                if not used:
+                    remaining_chars.append(chrclass)
+            random.shuffle(remaining_chars)
+            for ind, char in zip(empty_char_indexes, remaining_chars):
+                character_order[ind] = char
+        else:
+            character_order = [items.MarioRecruit, items.ToadstoolRecruit, items.BowserRecruit, items.MallowRecruit, items.GenoRecruit]
+
+        pickups = [None, chests.MushroomWayCharacter, chests.ForestMazeCharacter, chests.MolevilleMinesCharacter, chests.MarrymoreCharacter]
+        print(character_order)
+        print(playable_character_order)
+        for cindex, (recruitable, ending, chest) in enumerate(zip(playable_character_order, character_order, pickups)):
+            if chest is None:
+                continue
+            sprites = {}
+            if (cindex == 0 and world.settings.is_flag_enabled(flags.PlayAsStarter)) or (utils.isclass_or_instance(ending, items.MarioRecruit) and not world.settings.is_flag_enabled(flags.PlayAsStarter)):
+                sprites = ending.sprites_primary
+            else:
+                sprites = ending.sprites_secondary
+            if recruitable is not None:
+                if not ((utils.isclass_or_instance(chest, chests.ForestMazeCharacter) and utils.isclass_or_instance(recruitable, items.GenoRecruit)) or (utils.isclass_or_instance(chest, chests.MarrymoreCharacter) and utils.isclass_or_instance(recruitable, items.ToadstoolRecruit))):
+                    for room_id, npc, eventscripts, actionscripts in chest.npcs:
                         # replace model
-                        world.update_room_npc_property_by_id(room_id, npc, "model", c.item.model)
+                        world.update_room_npc_property_by_id(room_id, npc, "model", recruitable.model)
                         # format scripts
                         for script_id in eventscripts:
                             for command_index, cmd in enumerate(world.eventscripts[script_id]):
                                 if utils.is_animation_header(cmd, npc):
-                                    world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(c.item.sprites, cmd["subscript"], room_id)
+                                    world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(sprites, cmd["subscript"], room_id)
                         for script_id in actionscripts:
-                            world.actionscripts[script_id] = utils.sanitize_character_animation_script(c.item.sprites, world.actionscripts[script_id], room_id)
-            elif not utils.isclass_or_instance(c, chests.MolevilleMinesCharacter): # replace with Toad if empty
+                            world.actionscripts[script_id] = utils.sanitize_character_animation_script(sprites, world.actionscripts[script_id], room_id)
+            elif not utils.isclass_or_instance(c, chests.MolevilleMinesCharacter):
                 toad_sprites = {
                     "south": (0, 6, True),
                     "defend": (0, 1, True),
@@ -871,21 +934,61 @@ def randomize_all(world):
                     "salute": (0, 0, False),
                     "distracted": (0, 0, False),
                     "displeased": (0, 1, False),
+                    "challenge": (0, 1, False),
                 }
-                if utils.isclass_or_instance(c, chests.MarrymoreCharacter):
-                    world.search_replace_dialog("`MARRYMORE_CHARACTER`", "Toad")
-                    world.search_replace_dialog("`RANDOM_CHARACTER_NAME`", "Yoshi")
-                for room_id, npc, eventscripts, actionscripts in c.npcs:
-                    # format scripts
-                    if not c.is_vanilla:
-                        world.update_room_npc_property_by_id(room_id, npc, "model", 64)
-                        for script_id in eventscripts:
-                            for command_index, cmd in enumerate(world.eventscripts[script_id]):
-                                if utils.is_animation_header(cmd, npc):
-                                    world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(toad_sprites, cmd["subscript"], room_id)
-                        for script_id in actionscripts:
-                            for command_index, cmd in enumerate(world.actionscripts[script_id]):
-                                world.actionscripts[script_id] = utils.sanitize_character_animation_script(toad_sprites, world.actionscripts[script_id], room_id)
+                for room_id, npc, eventscripts, actionscripts in chest.npcs:
+                    world.update_room_npc_property_by_id(room_id, npc, "model", 64)
+                    for script_id in eventscripts:
+                        for command_index, cmd in enumerate(world.eventscripts[script_id]):
+                            if utils.is_animation_header(cmd, npc):
+                                world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(toad_sprites, cmd["subscript"], room_id)
+                    for script_id in actionscripts:
+                        for command_index, cmd in enumerate(world.actionscripts[script_id]):
+                            world.actionscripts[script_id] = utils.sanitize_character_animation_script(toad_sprites, world.actionscripts[script_id], room_id)
+            for room_id, npc, eventscripts, actionscripts in chest.credits_npcs:
+                world.update_room_npc_property_by_id(room_id, npc, "model", ending.model)
+                for script_id in eventscripts:
+                    for command_index, cmd in enumerate(world.eventscripts[script_id]):
+                        if utils.is_animation_header(cmd, npc):
+                            world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(sprites, cmd["subscript"], room_id)
+                for script_id in actionscripts:
+                    world.actionscripts[script_id] = utils.sanitize_character_animation_script(sprites, world.actionscripts[script_id], room_id)
+
+        # update the sprites in the world models
+        if not utils.isclass_or_instance(character_order[0], items.MarioRecruit) and world.settings.is_flag_enabled(flags.PlayAsStarter):
+            mario_models = [(index, copy.deepcopy(m)) for (index, m) in enumerate(world.models) if m is not None and m["sprite"] in characters.Mario.original_weapon_sprite_ids]
+            if utils.isclass_or_instance(character_order[0], items.MallowRecruit):
+                nc = characters.Mallow
+                ni = items.MallowRecruit
+            elif utils.isclass_or_instance(character_order[0], items.GenoRecruit):
+                nc = characters.Geno
+                ni = items.GenoRecruit
+            elif utils.isclass_or_instance(character_order[0], items.BowserRecruit):
+                nc = characters.Bowser
+                ni = items.BowserRecruit
+            else:
+                nc = characters.Peach
+                ni = items.ToadstoolRecruit
+            incoming_models = [(index, copy.deepcopy(m)) for (index, m) in enumerate(world.models) if m is not None and m["sprite"] in nc.original_weapon_sprite_ids]
+            replacements = zip(characters.Mario.original_weapon_sprite_ids, nc.original_weapon_sprite_ids)
+            for mario, incoming in replacements:
+                if mario is not None and incoming is not None:
+                    for m_i, m in mario_models:
+                        if m["sprite"] == mario:
+                            m["sprite"] = incoming
+                            m["vram_store"] = 0
+                            world.models[m_i] = m
+                    for m_i, m in incoming_models:
+                        if m["sprite"] == incoming:
+                            m["sprite"] = mario
+                            m["vram_store"] = 7
+                            world.models[m_i] = m
+            # jinx dojo
+            for script_id in [2066, 2068, 2076, 2077]:
+                for command_index, cmd in enumerate(world.eventscripts[script_id]):
+                    if utils.is_animation_header(cmd, 0):
+                        world.eventscripts[script_id][command_index]["subscript"] = utils.sanitize_character_animation_script(ni.sprites_primary, cmd["subscript"], room_id)
+        
 
         # chests
         for c in [x for x in world.chest_locations if not utils.isclass_or_instance(x, chests.OverworldItem)] + [x for x in world.freestanding_item_locations if not utils.isclass_or_instance(x, chests.OverworldItem) and not utils.isclass_or_instance(x, chests.SunkenShipCoinSnake)]:

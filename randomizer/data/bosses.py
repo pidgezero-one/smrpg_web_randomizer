@@ -894,7 +894,7 @@ class MackBoss(Boss):
         (2062, '''BODYGUARD: We've gotten REAL\n good with fondant![await]'''),
         (2504,
          '''MACK: I'm not happy to delay the\n party, but we can't get started\n until you find [0x7024] more item(s)![await]'''),
-        (2560, '''BODYGUARD: Welcome![await][pause] Our party is invitation-only, so\n please come back another time.[await][page]\n[delay] ...You're here to crash it anyway?[delay]\n Alright, wise guy, let's go![await]'''),
+        (2560, '''BODYGUARD: Welcome![await][pause]\n Our party is invitation-only, so\n please come back another time.[await][page]\n[delay] ...You're here to crash it anyway?[delay]\n Alright, wise guy, let's go![await]'''),
         (2572, '''\n   BODYGUARD: Oh, no you don't![await]'''),
         (2831, '''\n   MACK: What are you doing here?[await]'''),
         (2832,
@@ -951,9 +951,11 @@ class PandoriteBoss(Boss):
     name = "Pandorite"
     eye_height = 4
     pack_number = 156
-    statue = StatueDetails(463, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
+    statue = StatueDetails(644, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
                                  "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
-    small_model = SmallModelDetails(None, 463, None, 518)
+    small_model = SmallModelDetails(None, 644, None, 645)
+    #alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "F8C048", "F89800", "E80000", "F07000", "089000", "085800", "983800"]
+    alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "F8C048", "C87000", "E80000", "984000", "089000", "085800", "783800"]
     big_model = BigModelDetails(None, 519, animations=SpriteAnimationCollection(
         mines_punch=pandorite_attack,
         statue_intro=pandorite_shake,
@@ -1179,7 +1181,7 @@ class BowyerBoss(Boss):
     ]
 
 
-crook_scratch = SpriteAnimation(sequence_id=4, total_duration=20)
+crook_scratch = SpriteAnimation(sequence_id=4, total_duration=20, contact_frame=10)
 
 
 class Croco2Crook(Henchman):
@@ -1241,7 +1243,6 @@ class Croco2Boss(Boss):
         (2560,
          '''FLUNKIE: Croco's busy! Scram![await]\n[delay_60] ...Not leaving, huh?\n[delay] Alright buddy, you asked for it![await]'''),
         (2572, '''FLUNKIE: Where d'ya think YOU'RE\n going?![await]'''),
-        (2572, '''SNIFIT 2: Please refrain\n from bothering Croco.[await]'''),
         (2831, '''CROCO: Whaddya doin' hangin\n 'round here?[await]'''),
         (2832,
          ''' You tired? You can stay here\n for free.[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]'''),
@@ -1776,7 +1777,7 @@ class KingCalamariBoss(Boss):
         recoil=squid_recoil,
         mines_punch=squid_hit,
         dojo_challenge=squid_hit,
-        statue_peck=squid_hit,
+        statue_peck=squid_hit_fast,
         statue_flustered=squid_recoil,
         keep_challenge=squid_hit,
         keep_summon=squid_hit,
@@ -1855,9 +1856,10 @@ class HidonBoss(Boss):
     name = "Hidon"
     eye_height = 4
     pack_number = 157
-    statue = StatueDetails(463, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
+    statue = StatueDetails(646, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
                                  "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
-    small_model = SmallModelDetails(None, 463, None, 518)
+    alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "A0F800", "10A010", "E80000", "106800", "089000", "085800", "004000"]
+    small_model = SmallModelDetails(None, 646, None, 647)
     big_model = BigModelDetails(None, 343, animations=SpriteAnimationCollection(
         mines_punch=hidon_attack,
         statue_flustered=pandorite_recoil,
@@ -2620,9 +2622,10 @@ class BoxBoyBoss(Boss):
     name = "Box Boy"
     eye_height = 4
     pack_number = 158
-    statue = StatueDetails(463, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
+    statue = StatueDetails(650, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
                                  "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
-    small_model = SmallModelDetails(None, 463, None, 518)
+    alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "707870", "484040", "E80000", "384038", "089000", "085800", "181818"]
+    small_model = SmallModelDetails(None, 650, None, 651)
     big_model = BigModelDetails(None, 390, animations=SpriteAnimationCollection(
         mines_punch=boxboy_attack,
         statue_intro=pandorite_shake,
@@ -3355,9 +3358,10 @@ class ChesterBoss(Boss):
     name = "Chester"
     pack_number = 235
     eye_height = 4
-    statue = StatueDetails(463, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
+    statue = StatueDetails(648, ["F8F8A0", "F8E870", "F8E870", "0", "D09020", "F8E870",
                                  "E0C000", "906010", "482818", "906010", "D09020", "482818", "D09020", "0", "181818"])
-    small_model = SmallModelDetails(None, 463, None, 518)
+    alt_palette = ["F8F0D8", "F8F860", "F8E860", "00F8A8", "F8E800", "F8E0B0", "F0B888", "E0A030", "C8A880", "A070B0", "E80000", "603068", "089000", "085800", "481040"]
+    small_model = SmallModelDetails(None, 648, None, 649)
     big_model = BigModelDetails(None, 330, animations=SpriteAnimationCollection(
         mines_punch=chester_attack,
         statue_intro=pandorite_shake,
@@ -3686,9 +3690,9 @@ class CountdownBoss(Boss):
     #     chandelier_challenge=dingaling_taunt,
     #     endgame_challenge=dingaling_taunt
     # ))
-    statue = StatueDetails(453, ["F8F8A0", "F8E870", "E0C000", "E0C000", "E0C000", "D09020", "D09020",
-                      "F8E870", "F8E870", "906010", "D09020", "906010", "E0C000", "F8E870", "906010"])
-    small_model = SmallModelDetails(None, None, None, 453, animations=SpriteAnimationCollection(
+    statue = StatueDetails(642, ["F8F8A0", "F8E870", "E0C000", "E0C000", "E0C000", "D09020", "D09020",
+                      "F8E870", "F8E870", "906010", "D09020", "906010", "E0C000", "F8E870", "906010"], horizontal_pixel_shift=4, vertical_pixel_shift=-1)
+    small_model = SmallModelDetails(None, 642, None, 643, animations=SpriteAnimationCollection(
         mines_punch=countdown_loop,
         dojo_challenge=countdown_loop,
         keep_challenge=countdown_loop,
@@ -4376,7 +4380,7 @@ class SmithyBoss(Boss):
         chandelier_challenge=drillbit_taunt,
         endgame_challenge=drillbit_taunt
     ))
-    big_model = BigModelDetails(None, 634, animations=SpriteAnimationCollection(
+    big_model = BigModelDetails(None, 635, animations=SpriteAnimationCollection(
         mines_punch=smithy_hit,
         statue_peck=smithy_hit_fast,
         chandelier_challenge=smithy_hit,
@@ -4595,6 +4599,7 @@ class Pandorite(BossAndStarLocation):
     name = "Pandorite"
     battlefield = Battlefields.KeroSewers
     boss = PandoriteBoss
+    
 
 
 class Belome1(BossAndStarLocation):

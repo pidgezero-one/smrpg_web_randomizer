@@ -446,7 +446,7 @@ sprite = CompleteSprite(
                 ),
                 Mold(18, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
+                        Tile(mirror=False, invert=True, format=0, length=4, subtile_bytes=[
                             None,
                             None,
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x10\x00\x00\x00\x00\x00\x00'),

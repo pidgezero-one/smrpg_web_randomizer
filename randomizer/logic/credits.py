@@ -92,6 +92,7 @@ class Credits(object):
         # Return a patch next time...
         credit_start = 0x3FDBB0
         credit_len = 3380
+        #print(len(self.acc))
         assert len(self.acc) <= credit_len
 
         # fill remaining space with pointers to empty text
@@ -166,36 +167,23 @@ def update_credits(world):
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, '    C. FUJIOKA      K. MATSUHARA   ')
-    credits.add_credit(0x80, 0x40, 0x81, '    Y. MAEKAWA      Y. MATSUMURA   ')
+    credits.add_credit(0x80, 0x80, 0xc0, 'C. FUJIOKA   K. MATSUHARA')
+    credits.add_credit(0x80, 0x40, 0x81, 'Y. MAEKAWA   Y. MATSUMURA')
     credits.add_credit(0x80, 0x00, 0xc2, 'T. KUDO')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #3
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'Y. HASEBE')
-    credits.add_credit(0x80, 0x40, 0x81, 'F. FUKAYA ')
-    credits.add_credit(0x80, 0x00, 0xc2, 'A. OHTA')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #4
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'R. MUTO')
-    credits.add_credit(0x80, 0x40, 0x81, 'M. YOSHIOKA')
-    credits.add_credit(0x80, 0x00, 0xc2, 'AOY')
+    credits.add_credit(0x80, 0x80, 0xc0, 'Y. HASEBE         R. MUTO')
+    credits.add_credit(0x80, 0x40, 0x81, 'F. FUKAYA     M. YOSHIOKA')
+    credits.add_credit(0x80, 0x00, 0xc2, 'A. OHTA               AOY')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #5
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'H. MINABA')
-    credits.add_credit(0x80, 0x40, 0x81, 'K. KATO')
-    credits.add_credit(0x80, 0x00, 0xc2, ' Y. HATAE ')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #6
-    credits.begin_credits()
-    credits.add_credit(0x80, 0xc0, 0xc0, 'K. KURASHIMA')
-    credits.add_credit(0x80, 0x80, 0x81, ' J. MIFUNE')
+    credits.add_credit(0x80, 0x80, 0xc0, 'H. MINABA    K. KURASHIMA')
+    credits.add_credit(0x80, 0x40, 0x81, 'K. KATO          Y. HATAE')
+    credits.add_credit(0x80, 0x00, 0xc2, 'K. KURASHIMA    J. MIFUNE')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #7
@@ -206,34 +194,29 @@ def update_credits(world):
 
     #8
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, '    A. UEDA         Y. MIYAMOTO    ')
-    credits.add_credit(0x80, 0x40, 0x81, '    Y. ABIRU        M. TSUTSUI     ')
-    credits.add_credit(0x80, 0x00, 0xc2, '    T. MOGI         Y. SASAKI      ')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #9
-    credits.begin_credits()
-    credits.add_credit(0x80, 0xc0, 0xc0, 'T. SAKAGUCHI')
-    credits.add_credit(0x80, 0x80, 0x81, 'Y. AZUMA')
+    credits.add_credit(0x80, 0x80, 0xc0, 'A. UEDA       Y. MIYAMOTO')
+    credits.add_credit(0x80, 0x40, 0x81, 'Y. ABIRU       M. TSUTSUI')
+    credits.add_credit(0x80, 0x00, 0xc2, 'T. MOGI         Y. SASAKI')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #10
     credits.begin_credits()
-    credits.add_credit(0x80, 0xc0, 0xc0, '    Y. SHIMOMURA     T. SUGAWARA   ')
-    credits.add_credit(0x80, 0x80, 0x81, '    H. SUZUKI        M. WATANABE   ')
+    credits.add_credit(0x80, 0x80, 0xc0, 'T. SAKAGUCHI     Y. AZUMA')
+    credits.add_credit(0x80, 0x40, 0x81, 'Y. SHIMOMURA  T. SUGAWARA')
+    credits.add_credit(0x80, 0x00, 0xc2, 'H. SUZUKI     M. WATANABE')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #11
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, '    C. MINEKAWA        Y. HIRATA   ')
-    credits.add_credit(0x80, 0x40, 0x81, '    Y. HIROTA          K. MAEDA    ')
+    credits.add_credit(0x80, 0x80, 0xc0, 'C. MINEKAWA     Y. HIRATA')
+    credits.add_credit(0x80, 0x40, 0x81, 'Y. HIROTA        K. MAEDA')
     credits.add_credit(0x80, 0x00, 0xc2, 'K. TAKAHASHI')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #12
     credits.begin_credits()
-    credits.add_credit(0x80, 0xc0, 0xc0, '    R. MARUYA         N. WADA      ')
-    credits.add_credit(0x80, 0x80, 0x81, '    A. ITO            T. WOOLSEY   ')
+    credits.add_credit(0x80, 0xc0, 0xc0, 'R. MARUYA         N. WADA')
+    credits.add_credit(0x80, 0x80, 0x81, 'A. ITO         T. WOOLSEY')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #13
@@ -245,57 +228,34 @@ def update_credits(world):
 
     #14
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, '    S. HASHIMOTO    K. HASHIMOTO   ')
-    credits.add_credit(0x80, 0x40, 0x81, '    H. OHMORI       M. SAKAKIBARA  ')
-    credits.add_credit(0x80, 0x00, 0xc2, '    T. KAYANO       A. YAMAGUCHI   ')
+    credits.add_credit(0x80, 0x80, 0xc0, 'S. HASHIMOTO    K. HASHIMOTO')
+    credits.add_credit(0x80, 0x40, 0x81, 'H. OHMORI       M. SAKAKIBARA')
+    credits.add_credit(0x80, 0x00, 0xc2, 'T. KAYANO       A. YAMAGUCHI')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #15
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'H. ITOU')
-    credits.add_credit(0x80, 0x40, 0x81, 'N. UEMATSU')
-    credits.add_credit(0x80, 0x00, 0xc2, 'T. NOMURA')
+    credits.add_credit(0x80, 0x80, 0xc0, 'H. ITOU         Y. KOTABE')
+    credits.add_credit(0x80, 0x40, 0x81, 'N. UEMATSU      K. TANABE')
+    credits.add_credit(0x80, 0x00, 0xc2, 'T. NOMURA       A. TEJIMA')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #16
     credits.begin_credits()
-    credits.add_credit(0x80, 0x40, 0x81, 'H. SAKAGUCHI')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #17
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'Y. KOTABE')
-    credits.add_credit(0x80, 0x40, 0x81, 'K. TANABE')
-    credits.add_credit(0x80, 0x00, 0xc2, 'A. TEJIMA')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #18
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x40, 0x81, 'S. TAKAHASHI')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #19
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'T. KURIBAYASHI')
-    credits.add_credit(0x80, 0x40, 0x81, 'H. YAMADA')
-    credits.add_credit(0x80, 0x00, 0xc2, 'K. KONDO')
+    credits.add_credit(0x80, 0x80, 0xc0, 'H. SAKAGUCHI       K. KONDO')
+    credits.add_credit(0x80, 0x40, 0x81, 'S. TAKAHASHI      H. YAMADA')
+    credits.add_credit(0x80, 0x00, 0xc2, 'T. KURIBAYASHI')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #20
     credits.begin_credits()
-    credits.add_credit(0x80, 0xc0, 0xc0, 'J. WORNELL')
-    credits.add_credit(0x80, 0x80, 0x81, 'K. MCDONALD')
+    credits.add_credit(0x80, 0xc0, 0xc0, 'J. WORNELL    H. YAMAUCHI')
+    credits.add_credit(0x80, 0x80, 0x81, 'K. MCDONALD     T. MIZUNO')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #21
     credits.begin_credits()
     credits.add_credit(0x80, 0x40, 0x81, 'S. MIYAMOTO')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #22
-    credits.begin_credits()
-    credits.add_credit(0x80, 0xc0, 0xc0, 'H. YAMAUCHI')
-    credits.add_credit(0x80, 0x80, 0x81, 'T. MIZUNO')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_titles(BEGIN_TITLES_DELAY)
@@ -336,8 +296,8 @@ def update_credits(world):
 
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xc0, 'ATBIGELOW')
-    credits.add_credit(0x80, 0x40, 0x81, 'SNESCHALMERS')
-    credits.add_credit(0x80, 0x00, 0xc2, 'AMAZING AMPHAROS')
+    credits.add_credit(0x80, 0x40, 0x81, 'AMAZING AMPHAROS')
+    credits.add_credit(0x80, 0x00, 0xc2, 'FORALIAS')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #26
@@ -361,20 +321,18 @@ def update_credits(world):
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'MYOHMYKE')
-    credits.add_credit(0x80, 0x40, 0x81, 'AARONDOBBE')
-    credits.add_credit(0x80, 0x00, 0xc2, 'PIDGEZERO_ONE')
+    credits.add_credit(0x80, 0xc0, 0xc0, 'MYOHMYKE        AARONDOBBE')
+    credits.add_credit(0x80, 0x80, 0x81, 'MINAMIYO     PIDGEZERO_ONE')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #26
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'NIMBUS STATUE PALETTES')
+    credits.add_title(0x80, 0x00, 0x08, 'ENEMY AND STATUE PALETTES')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'MINAMIYO')
-    credits.add_credit(0x80, 0x40, 0x81, 'XIRR')
-    credits.add_credit(0x80, 0x00, 0xc2, 'PIDGEZERO_ONE')
+    credits.add_credit(0x80, 0xc0, 0xc0, 'MINAMIYO              XIRR')
+    credits.add_credit(0x80, 0x80, 0x81, 'PIDGEZERO_ONE    HERRSHAUN')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     #26
@@ -390,25 +348,20 @@ def update_credits(world):
 
     #27
     credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'QUALITY ASSURANCE')
+    credits.add_title(0x80, 0x00, 0x08, 'QUALITY ASSURANCE AND RESEARCH')
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'SEANCASS       GOZENGATTA')
-    credits.add_credit(0x80, 0x40, 0x81, 'LOCKECOLELIVE       SMBAI')
-    credits.add_credit(0x80, 0x00, 0xc2, 'CAVIN       INTHENAMEOFDT')
+    credits.add_credit(0x80, 0x80, 0xc0, 'SEANCASS    INTHENAMEOFDT')
+    credits.add_credit(0x80, 0x40, 0x81, 'LOCKECOLELIVE  GOZENGATTA')
+    credits.add_credit(0x80, 0x00, 0xc2, 'CAVIN     FLARE     SMBAI')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'TINYWETBLANKET      FLARE')
+    credits.add_credit(0x80, 0x80, 0xc0, 'TINYWETBLANKET    AIRNICK')
     credits.add_credit(0x80, 0x40, 0x81, 'WEFFJEBSTER     BROATMEAL')
-    credits.add_credit(0x80, 0x00, 0xc2, 'CYNAS             AIRNICK')
+    credits.add_credit(0x80, 0x00, 0xc2, 'CYNAS        SNESCHALMERS')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    #28
-    credits.begin_titles(BEGIN_TITLES_DELAY)
-    credits.add_title(0x80, 0x00, 0x08, 'RESEARCH ASSISTANCE')
-    credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
     credits.add_credit(0x80, 0x80, 0xc0, 'GUNTHERRIDEL     XELECIUM')
@@ -417,15 +370,9 @@ def update_credits(world):
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'ATEATREE          LYLOVIR')
+    credits.add_credit(0x80, 0x80, 0xc0, 'ATEATREE         INVARIEL')
     credits.add_credit(0x80, 0x40, 0x81, 'GOODMORNINGCRONO')
-    credits.add_credit(0x80, 0x00, 0xc2, 'ANTHONY MULBERRY')
-    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
-
-    credits.begin_credits()
-    credits.add_credit(0x80, 0x80, 0xc0, 'INVARIEL        BROATMEAL')
-    credits.add_credit(0x80, 0x40, 0x81, 'TINYWETBLANKET      CYNAS')
-    credits.add_credit(0x80, 0x00, 0xc2, 'AIRNICK')
+    credits.add_credit(0x80, 0x00, 0xc2, 'ANTHONY MULBERRY  LYLOVIR')
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
     
     #29

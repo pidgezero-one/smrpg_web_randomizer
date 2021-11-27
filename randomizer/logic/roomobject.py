@@ -78,9 +78,9 @@ class RoomObjects:
                     if partition_index is None:
                         partition_index = len(partitions)
                         partitions.append(partition_bytes)
-                    print("room: %i, partition: %i," % (i, partition_index))
-                    print(p)
-                    print("\n")
+                    #print("room: %i, partition: %i," % (i, partition_index))
+                    #print(p)
+                    #print("\n")
                     room_bytes = bytearray([partition_index])
 
                 if len(npcs) > 0:

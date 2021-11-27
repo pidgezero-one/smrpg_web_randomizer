@@ -442,6 +442,22 @@ sprite = CompleteSprite(
                 ),
                 Mold(20, gridplane=False,
                     tiles=[
+                    ]
+                ),
+                Mold(21, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(22, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(23, gridplane=False,
+                    tiles=[
+                    ]
+                ),
+                Mold(24, gridplane=False,
+                    tiles=[
                         Tile(mirror=False, invert=False, format=1, length=7, subtile_bytes=[
                             bytearray(b'\xc0\x00\xf8\x00\xfc\x00t\x88\xc80\xf8\x00\xf0\x08\xe0\x10@\x00@\x00D\x00\xcc\x88\xb8\xb0\xa8\xa8\xc8\xc8\xb0\xb0'),
                             None,
@@ -462,7 +478,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
                     ]
                 ),
-                Mold(21, gridplane=False,
+                Mold(25, gridplane=False,
                     tiles=[
                         Tile(mirror=False, invert=False, format=1, length=7, subtile_bytes=[
                             bytearray(b'\x80\x00\xf8\x00\xf8\x00\xe8\x10\x90`\xd0 \xf0\x00\xe0\x10\x80\x00\x88\x00\x88\x00\x98\x10p`pppp\xf0\xf0'),
@@ -484,7 +500,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
                     ]
                 ),
-                Mold(22, gridplane=False,
+                Mold(26, gridplane=False,
                     tiles=[
                         Tile(mirror=False, invert=False, format=1, length=7, subtile_bytes=[
                             bytearray(b'\xe0\x00\xf8\x00\xbe@Z\xa4d\x98d\x98\xf8\x00\xf8\x00 \x00 \x00b@\xe6\xa4\xdc\x98\x9c\x98\x00\x00\xc8\xc8'),
@@ -506,7 +522,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
                     ]
                 ),
-                Mold(23, gridplane=False,
+                Mold(27, gridplane=False,
                     tiles=[
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x01\x01\x07\x07\x1f\x1f>?x\x7f\x00\x00\x00\x00\x00\x00\x01\x06\x07\x18\x1f ?@\x7f\x00'),
@@ -528,7 +544,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=116),
                     ]
                 ),
-                Mold(24, gridplane=False,
+                Mold(28, gridplane=False,
                     tiles=[
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x1f\x01/\x04\x11,\x00oq\x1fp\x9fh\x8fT7\x01\x1f$\x1f0\x0fp_`\x7f\xa0\xbf\xb0\xbfh\x7f'),
@@ -544,7 +560,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=100),
                     ]
                 ),
-                Mold(25, gridplane=True,
+                Mold(29, gridplane=True,
                     tiles=[
                         Tile(mirror=False, invert=False, format=1, length=15, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x01\x0f\x04\x10\x17\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x06\x03\x0b\x1e\x10'),
@@ -626,25 +642,25 @@ sprite = CompleteSprite(
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=20),
-                        AnimationSequenceFrame(duration=8, mold_id=21),
-                        AnimationSequenceFrame(duration=8, mold_id=20),
-                        AnimationSequenceFrame(duration=8, mold_id=22),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
-                        AnimationSequenceFrame(duration=8, mold_id=23),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
                         AnimationSequenceFrame(duration=8, mold_id=24),
+                        AnimationSequenceFrame(duration=8, mold_id=25),
+                        AnimationSequenceFrame(duration=8, mold_id=24),
+                        AnimationSequenceFrame(duration=8, mold_id=26),
                     ]
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=25),
+                        AnimationSequenceFrame(duration=8, mold_id=27),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=8, mold_id=28),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=29),
                     ]
                 ),
             ]

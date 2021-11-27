@@ -20,7 +20,7 @@ from randomizer.data.npcmodels import models as npcmodels
 from randomizer.data.dialog_data.dialog_data import dialog_data
 from randomizer.data.dialog_data.dialog_pointers import pointers as dialog_pointers
 from randomizer.data.helpers import ItemQualities, FireworksOptions, BanditsWayGating, ForestMazeGating, BoosterTowerGating, MarrymoreGating, SeaGating, YaridovichGating, BelomeTempleGating, MonstroTownGating, BarrelVolcanoGating, BowsersKeepGating, FactoryGating, EXPChallengeOptions, PlayableCharacters, ShopQualities, WinConditions, PipeVaultGating
-from randomizer.data.graphics import sprites, images
+from randomizer.data.sprites.objects.sprites import sprites as commonsprites
 from randomizer.data.utils import palette_to_bytes
 from randomizer.data.packets import packets as dpackets
 from . import bosses
@@ -39,6 +39,7 @@ from . import map
 from . import spells
 from . import shops
 from . import utils
+from .sprites import Sprites
 from .roomobject import set_partitions
 from .patch import Patch
 from .battleassembler import assemble_battle_scripts
@@ -48,6 +49,11 @@ from randomizer.data.eventscripts.utils.tower_access.mallow import script as tow
 from randomizer.data.eventscripts.utils.tower_access.geno import script as tower_geno
 from randomizer.data.eventscripts.utils.tower_access.bowser import script as tower_bowser
 from randomizer.data.eventscripts.utils.tower_access.toadstool import script as tower_toadstool
+from randomizer.data.eventscripts.utils.tower_access.mario_self import script as tower_mario_self
+from randomizer.data.eventscripts.utils.tower_access.mallow_self import script as tower_mallow_self
+from randomizer.data.eventscripts.utils.tower_access.geno_self import script as tower_geno_self
+from randomizer.data.eventscripts.utils.tower_access.bowser_self import script as tower_bowser_self
+from randomizer.data.eventscripts.utils.tower_access.toadstool_self import script as tower_toadstool_self
 
 from randomizer.data.roomobjecttables import RadialDirection
 from randomizer.data.eventtables import AreaObjects, Rooms
@@ -387,10 +393,11 @@ class GameWorld:
         return self.formation_packs_dict[index]
 
     def randomize(self):
+        print("randomizing data...")
         """Randomize this entire game world instance."""
         # Seed the PRNG at the start.
-        characters.randomize_all(self)
         spells.randomize_all(self)
+        characters.randomize_all(self)
         items.randomize_all(self)
         bosses.randomize_all(self)
         # Bosses might have to go before enemies to make formation rando work as intended?
@@ -588,6 +595,35 @@ class GameWorld:
         else:
             self.prepend_bits(192, [[0x7055, 7]])
 
+        # Starting characters - necessary to determine booster tower script
+        # maintain the join order to match cursor character
+        self.starter_character_checks.reverse()
+        populated_starters = [c for c in self.starter_character_checks if c.item is not None]
+        REMOVE_DUMMY = enum.auto()
+        populated_starters.insert(len(populated_starters)-1, REMOVE_DUMMY)
+        for position, c in enumerate(populated_starters):
+            if c == REMOVE_DUMMY:
+                # remove placeholder member after setting first starter char so party size doesnt unintentionally go over 4 and unlock switch menu too early
+                self.eventscripts[192].insert(0, utils.new_command(192, "leave_party", [AreaObjects.DUMMY_0X05]))
+            else:
+                if utils.isclass_or_instance(c, data.chests.StarterCharacter1):
+                    # Use first character to join as file select cursor.
+                    if (utils.isclass_or_instance(c.item, data.items.MallowRecruit)):
+                        cursor_id = 4
+                    elif (utils.isclass_or_instance(c.item, data.items.GenoRecruit)):
+                        cursor_id = 3
+                    elif (utils.isclass_or_instance(c.item, data.items.BowserRecruit)):
+                        cursor_id = 2
+                    elif (utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                        cursor_id = 1
+                    else:
+                        cursor_id = 0
+                # set character
+                self.eventscripts[c.event].insert(0, utils.new_command(c.event, "run_event_as_subroutine", [c.item.starter_script]))
+                # check if character gates forest maze
+                if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
+                    self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
+
         # Booster Tower gating
         if self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.open):
             self.prepend_bits(192, [[0x7053, 6]])
@@ -595,19 +631,34 @@ class GameWorld:
             self.prepend_bits(199, [[0x7053, 6]])
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario):
             self.prepend_bits(187, [[0x7053, 7]])
-            self.eventscripts[1331] = tower_mario
+            if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 0:
+                self.eventscripts[1331] = tower_mario_self
+            else:
+                self.eventscripts[1331] = tower_mario
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow):
             self.prepend_bits(198, [[0x7053, 7]])
-            self.eventscripts[1331] = tower_mallow
+            if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 4:
+                self.eventscripts[1331] = tower_mallow_self
+            else:
+                self.eventscripts[1331] = tower_mallow
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno):
             self.prepend_bits(189, [[0x7053, 7]])
-            self.eventscripts[1331] = tower_geno
+            if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 3:
+                self.eventscripts[1331] = tower_geno_self
+            else:
+                self.eventscripts[1331] = tower_geno
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser):
             self.prepend_bits(190, [[0x7053, 7]])
-            self.eventscripts[1331] = tower_bowser
+            if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 2:
+                self.eventscripts[1331] = tower_bowser_self
+            else:
+                self.eventscripts[1331] = tower_bowser
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool):
             self.prepend_bits(191, [[0x7053, 7]])
-            self.eventscripts[1331] = tower_toadstool
+            if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 1:
+                self.eventscripts[1331] = tower_toadstool_self
+            else:
+                self.eventscripts[1331] = tower_toadstool
 
         # Marrymore gating
         if self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.open):
@@ -834,34 +885,51 @@ class GameWorld:
         if self.settings.is_flag_enabled(flags.SkipMustyFearsSequence):
             self.eventscripts[192].insert(0, {"identifier": "EVENT_192_summon_invisible_flags", "command": 'run_event_as_subroutine', "args": [91]})
             
-        # Starting characters
-        # maintain the join order to match cursor character
-        self.starter_character_checks.reverse()
-        populated_starters = [c for c in self.starter_character_checks if c.item is not None]
-        REMOVE_DUMMY = enum.auto()
-        populated_starters.insert(len(populated_starters)-1, REMOVE_DUMMY)
-        for position, c in enumerate(populated_starters):
-            if c == REMOVE_DUMMY:
-                # remove placeholder member after setting first starter char so party size doesnt unintentionally go over 4 and unlock switch menu too early
-                self.eventscripts[192].insert(0, utils.new_command(192, "leave_party", [AreaObjects.DUMMY_0X05]))
+        # perform non-npc sprite replacement for overworld character
+        if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id > 0:
+            if cursor_id == 4:
+                nc = data.characters.Mallow
+                from randomizer.data.sprites.insertions.mallow.sprites import sprites as new_sprites
+            elif cursor_id == 3:
+                nc = data.characters.Geno
+                from randomizer.data.sprites.insertions.geno.sprites import sprites as new_sprites
+            elif cursor_id == 2:
+                nc = data.characters.Bowser
+                from randomizer.data.sprites.insertions.bowser.sprites import sprites as new_sprites
             else:
-                if utils.isclass_or_instance(c, data.chests.StarterCharacter1):
-                    # Use first character to join as file select cursor.
-                    if (utils.isclass_or_instance(c.item, data.items.MallowRecruit)):
-                        cursor_id = 4
-                    elif (utils.isclass_or_instance(c.item, data.items.GenoRecruit)):
-                        cursor_id = 3
-                    elif (utils.isclass_or_instance(c.item, data.items.BowserRecruit)):
-                        cursor_id = 2
-                    elif (utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
-                        cursor_id = 1
-                    else:
-                        cursor_id = 0
-                # set character
-                self.eventscripts[c.event].insert(0, utils.new_command(c.event, "run_event_as_subroutine", [c.item.starter_script]))
-                # check if character gates forest maze
-                if (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mario) and utils.isclass_or_instance(c.item, data.items.MarioRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.mallow) and utils.isclass_or_instance(c.item, data.items.MallowRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.geno) and utils.isclass_or_instance(c.item, data.items.GenoRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.bowser) and utils.isclass_or_instance(c.item, data.items.BowserRecruit)) or (self.settings.is_flag_value(flags.ForestMazeGate, ForestMazeGating.toadstool) and utils.isclass_or_instance(c.item, data.items.ToadstoolRecruit)):
-                    self.prepend_bits(192, [[0x7066, 3], [0x706E, 3]])
+                nc = data.characters.Peach
+                from randomizer.data.sprites.insertions.toadstool.sprites import sprites as new_sprites
+            for gsi, gs in enumerate(new_sprites):
+                if gs is not None:
+                    commonsprites[gsi] = gs
+            patch.add_data(data.characters.Mario.battle_sprite_offset, nc.battle_sprite_id)
+            patch.add_data(nc.battle_sprite_offset, data.characters.Mario.battle_sprite_id)
+            patch.add_data(data.characters.Mario.menu_sprite_offset, nc.menu_sprite_id)
+            patch.add_data(nc.menu_sprite_offset, data.characters.Mario.menu_sprite_id)
+            patch.add_data(data.characters.Mario.abxy_coord_offset, nc.abxy_coord)
+            patch.add_data(nc.abxy_coord_offset, data.characters.Mario.abxy_coord)
+            patch.add_data(data.characters.Mario.cursor_coord_offset, nc.cursor_coord)
+            patch.add_data(nc.cursor_coord_offset, data.characters.Mario.cursor_coord)
+            #patch.add_data(data.characters.Mario.portrait_sprite_offset, nc.portrait_id)
+            #patch.add_data(nc.portrait_sprite_offset, data.characters.Mario.portrait_id)
+            patch.add_data(data.characters.Mario.item_use_offset, nc.item_use_bytes)
+            patch.add_data(nc.item_use_offset, data.characters.Mario.item_use_bytes)
+            patch.add_data(data.characters.Mario.runaway_offset, nc.runaway_bytes)
+            patch.add_data(nc.runaway_offset, data.characters.Mario.runaway_bytes)
+            for addrs, sprite_id in zip(data.characters.Mario.sprite_addresses, nc.original_weapon_sprite_ids):
+                if addrs is not None:
+                    for addr in addrs:
+                        patch.add_data(addr + 3, bytearray([sprite_id & 0xFF, (sprite_id >> 8) & 0xFF]))
+            for addrs, sprite_id in zip(nc.sprite_addresses, nc.sprite_ids_as_main_character):
+                if addrs is not None:
+                    for addr in addrs:
+                        patch.add_data(addr + 3, bytearray([sprite_id & 0xFF, (sprite_id >> 8) & 0xFF]))
+
+
+
+
+            
+
 
 
         # booster tower door animation
@@ -916,9 +984,8 @@ class GameWorld:
             model_num = l.boss.small_model.cloneable_all_directions or l.boss.small_model.uncloneable_all_directions or l.boss.small_model.cloneable_south_only or l.boss.small_model.uncloneable_south_only
             
             source_sprite = self.models[model_num]["sprite"]
-            animation_num = sprites[source_sprite].animation_num
-            source_image_num = sprites[source_sprite].image_num
-            palette_addr = images[source_image_num].palette_pointer
+
+            palette_addr = 30 * (commonsprites[source_sprite].palette_id + commonsprites[source_sprite].palette_offset) + 0x253000
 
             if self.settings.is_flag_enabled(flags.DifferentiateRepeatedBosses):
                 if l.boss.alt_palette is not None:
@@ -926,15 +993,15 @@ class GameWorld:
             if utils.isclass_or_instance(l, data.bosses.Valentina) and not utils.isclass_or_instance(l.boss, data.bosses.ValentinaBoss):
                 model_num = l.boss.statue.reference_model
                 dest_sprite = self.models[63]["sprite"]
-                dest_image_num = sprites[dest_sprite].image_num
-                dest_palette_addr = images[dest_image_num].palette_pointer
-
-                graphics_offset = images[source_image_num].graphics_pointer
-                gfx_offset_bytes = [(graphics_offset & 0xFF) + ((graphics_offset >> 16) - 0x28), (graphics_offset >> 8) & 0xFF]
                 
-                patch.add_data(0x251800 + dest_image_num * 4, gfx_offset_bytes)
-                patch.add_data(0x250000 + dest_sprite * 4 + 2, [animation_num & 0xFF, (animation_num >> 8)])
-                patch.add_data(dest_palette_addr, palette_to_bytes(l.boss.statue.palette))
+                molds = copy.deepcopy(commonsprites[source_sprite].animation.properties.molds)
+                sequences = copy.deepcopy(commonsprites[source_sprite].animation.properties.sequences)
+
+                commonsprites[dest_sprite].animation.properties.molds = molds
+                commonsprites[dest_sprite].animation.properties.sequences = sequences
+
+                palette_addr = 30 * (commonsprites[dest_sprite].palette_id + commonsprites[dest_sprite].palette_offset) + 0x253000
+                patch.add_data(palette_addr, palette_to_bytes(l.boss.statue.palette))
 
 
         # Remove screen flashes
@@ -1048,8 +1115,7 @@ class GameWorld:
             patch.add_data(0x351481, 0x0a)
 
         # Starting FP (twice for starting/max FP)
-        if (self.settings.is_flag_enabled(flags.CharacterStats)):
-            patch.add_data(0x3a00dd, utils.ByteField(self.starting_fp).as_bytes() * 2)
+        patch.add_data(0x3a00dd, utils.ByteField(self.starting_fp).as_bytes() * 2)
 
         # For debug mode, start with 9999 coins and 999 frog coins.
         if self.debug_mode or self.settings.is_flag_enabled(flags.FreeShops):
@@ -1072,9 +1138,16 @@ class GameWorld:
             patch += item.get_patch()
         patch += data.items.Item.build_descriptions_patch(self)
 
+        # If playing as Bowser, partitions need adjustment.
+        if cursor_id == 2 and self.settings.is_flag_enabled(flags.PlayAsStarter):
+            for room_index, room in enumerate(self.rooms):
+                room["partition"]["ally_sprite_buffer_size"] += 1
+                self.rooms[room_index] = room
 
         # Open mode specific data.
         if self.open_mode:
+
+            print("assembling scripts...")
 
             # Assemble and patch event banks
             event_code = EventScript.assemble_from_table(self.eventscripts)
@@ -1087,6 +1160,8 @@ class GameWorld:
             # Assign vram partitions
             set_partitions(self)
 
+            print("assembling rooms...")
+
             # Assemble and patch room NPC data, exit data, event tile data, and partition data
             npc_code, eventtile_code, exit_code, partition_code = RoomObjects.assemble_from_table(self.rooms)
             patch.add_data(0x148000, npc_code[0] + npc_code[1])
@@ -1094,11 +1169,15 @@ class GameWorld:
             patch.add_data(0x1D2D64, exit_code[0] + exit_code[1])
             patch.add_data(0x1DDE00, partition_code)
 
+            print("assembling NPCs...")
+
             # Assemble and patch packet and NPC model data
             packet_code = Packets.assemble_from_table(self.packets)
             patch.add_data(0x1DB000, packet_code)
             model_code = NPCModels.assemble_from_table(self.models)
             patch.add_data(0x1DB800, model_code)
+
+            print("assembling dialogs...")
 
             # Assemble and patch dialog data
             dialog_ptrs, dialog_code = dialogs.assemble_from_table(self.dialog_pointers, self.dialog_data)
@@ -1106,6 +1185,15 @@ class GameWorld:
             patch.add_data(0x220000, dialog_code[0])
             patch.add_data(0x230000, dialog_code[1])
             patch.add_data(0x240000, dialog_code[2])
+
+            print("assembling graphics...")
+
+            # Assemble and patch graphics data
+            sprite_data, image_data, animation_pointers, animation_data_bank_1, animation_data_bank_2, tiles = Sprites.assemble_from_tables(commonsprites)
+            patch.add_data(0x250000, sprite_data)
+            patch.add_data(0x251800, image_data + animation_pointers)
+            patch.add_data(0x259000, animation_data_bank_1 + tiles)
+            patch.add_data(0x360000, animation_data_bank_2)
 
         # Unlock the whole map if in debug mode in standard.
         #if self.debug_mode and not self.open_mode:
@@ -1118,7 +1206,10 @@ class GameWorld:
         patch += credits.update_credits(self)
 
         # Choose character for the file select screen.
-        i = cursor_id
+        if self.settings.is_flag_enabled(flags.PlayAsStarter):
+            i = 0
+        else:
+            i = cursor_id
         file_select_char_bytes = [0, 7, 13, 25, 19]
         self.file_select_character = [c for c in self.characters if c.index == i][0].__class__.__name__
 

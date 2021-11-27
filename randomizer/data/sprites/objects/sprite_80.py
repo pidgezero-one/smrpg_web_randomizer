@@ -388,7 +388,7 @@ sprite = CompleteSprite(
                             None,
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=111, y=114),
-                        Tile(mirror=True, invert=False, format=0, length=5, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'\x0e\x0e6&\x0c\x04N \x14pX\x08\x00\x00\x00\x00\x0c\x1e6.<\x06^@\x14\x08xH\x00\x00\x00\x00'),
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x0e\x1e\x1a\x02.*\x1e:\x1eF\x00\x00\x00\x00\x00\x00\x1e\x1e\x1a\x06>\x02N\x02>\x06'),
                             None,

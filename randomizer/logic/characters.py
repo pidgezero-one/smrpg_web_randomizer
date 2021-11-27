@@ -6,6 +6,16 @@ import inspect
 
 from randomizer.data import characters, spells, palettes, items, chests
 from randomizer.logic import flags, utils
+from randomizer.data.helpers import PlayableCharacters
+
+def new_spell_name(spell, character):
+    working_title = spell.title
+    new_name = character.original_name
+    if new_name == PlayableCharacters.toadstool:
+        new_name = "Peach" # too long otherwise
+    for n in ["Mario", "Mallow", "Geno", "Bowser", "Peach"]:
+        working_title = working_title.replace(n, new_name)
+    return working_title
 
 
 # Move this to character classes instead!
@@ -17,36 +27,12 @@ def _randomize_learned_spells(world):
     """
     # Shuffle all spells.  There are 27 spells, so add an extra 3 random ones to ensure everybody has 6 spells.
     # In linear mode Group Hug only works with Peach, so remove it from the shuffle and give Peach only 5 spells.
-    default_spells = [
-        spells.Jump,
-        spells.FireOrb,
-        spells.SuperJump,
-        spells.SuperFlame,
-        spells.UltraJump,
-        spells.UltraFlame,
-        spells.Therapy,
-        spells.SleepyTime,
-        spells.ComeBack,
-        spells.Mute,
-        spells.PsychBomb,
-        spells.Terrorize,
-        spells.PoisonGas,
-        spells.Crusher,
-        spells.BowserCrush,
-        spells.GenoBeam,
-        spells.GenoBoost,
-        spells.GenoWhirl,
-        spells.GenoBlast,
-        spells.GenoFlash,
-        spells.Thunderbolt,
-        spells.HPRain,
-        spells.Psychopath,
-        spells.Shocker,
-        spells.Snowy,
-        spells.StarRain,
-    ]
-    if world.open_mode:
-        default_spells.append(spells.GroupHug)
+    default_spells = [s for s in world.spells if isinstance(s, spells.CharacterSpell)]
+    
+    sj_index = next((i for i, item in enumerate(default_spells) if item.index == 2), -1)
+    sj = default_spells[sj_index]
+
+    clones = [spells.Clone1, spells.Clone2, spells.Clone3]
 
     waiting_spells = default_spells[:]
     charspells = collections.defaultdict(list)
@@ -56,8 +42,11 @@ def _randomize_learned_spells(world):
         flags.AvailableCharacters).enabled]
     if len(charactersInSeed) < 5:
         super_jump_character = random.choice(charactersInSeed)
-        charspells[super_jump_character].append(spells.SuperJump)
-        waiting_spells.remove(spells.SuperJump)
+        charspells[super_jump_character].append(sj)
+        waiting_spells.remove(sj)
+
+    cloning = False
+    clone_index = 0
 
 
     # Place spells in characters who still need spells until we have no more.
@@ -71,11 +60,31 @@ def _randomize_learned_spells(world):
         for char in still_need:
             possible_spells = [spell for spell in waiting_spells if spell not in charspells[char]]
             spell = random.choice(possible_spells)
+            # Remove spell from list of waiting to be assigned. 
+            waiting_spells.remove(spell)
+
+            if not world.settings.is_flag_enabled(flags.ChangeNames):
+                # change the spell name as long as character names are vanilla
+                spell_name = new_spell_name(spell, char)
+            else:
+                spell_name = spell.title
+
+            if cloning and clone_index < len(clones):
+                clone_spell = clones[clone_index](world, spell_name, spell)
+                spell = clone_spell
+                clone_index += 1
+                world.spells.append(spell)
+            else:
+                spell.title = spell_name
+                index = next((i for i, item in enumerate(world.spells) if item.index == spell.index), -1)
+                world.spells[index] = spell
+
+
             charspells[char].append(spell)
 
-            # Remove spell from list of waiting to be assigned.  If we used them all, reset the list and choose more.
-            waiting_spells.remove(spell)
+            # If we used them all, reset the list and choose more.
             if not waiting_spells:
+                cloning = True
                 waiting_spells = default_spells[:]
 
     # Guarantee Geno Boost and Group Hug isn't the last spell a character learns if they have it.
@@ -364,7 +373,7 @@ def randomize_all(world):
     for character in world.characters:
         illegal_spell_keys = []
         for key, value in character.learned_spells.items():
-            if value.title in world.settings.get_flag(flags.AvailableSpells).disabled:
+            if value.base_title in world.settings.get_flag(flags.AvailableSpells).disabled or (utils.isclass_or_instance(value, spells.CloneSpell) and value.reference_spell in world.settings.get_flag(flags.AvailableSpells).disabled):
                 illegal_spell_keys.append(key)
         for level in illegal_spell_keys:
             character.learned_spells.pop(level, None)

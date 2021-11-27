@@ -17,7 +17,7 @@ class ObjectSequenceScript:
         bank_21_pointer_table = bytearray(b'')
         bank_21_scripts = bytearray(b'')
         table_with_lengths = []
-        for script in table:
+        for script_id, script in enumerate(table):
             scripts_with_lengths = []
             for command in script:
                 #print(command["identifier"])
@@ -33,7 +33,7 @@ class ObjectSequenceScript:
                 if not func:
                     raise Exception(
                         '%s(%s) is an invalid instruction!' % (command["command"], dummy_args))
-                #print(command)
+                #print(script_id, command)
                 func(*dummy_args)
                 command_line = assembler.fin()
                 script_with_length["line"] = command_line

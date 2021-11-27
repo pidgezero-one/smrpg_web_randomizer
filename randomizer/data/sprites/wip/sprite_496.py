@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(47, length=654, unknown=0x0000,
+    animation=AnimationPack(47, length=654, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=True,
@@ -263,7 +263,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00@\x00@\x00\x80@@\x80\xc0@\x80\x80\x00\x00\x80\x00\x80\x00\x80\x00\x00\x00@\x00\x80@\x00\x80'),
                             bytearray(b'\xd6\xae\xb4\x1c<\x9c\xf8\xb0\xb0P\x800\x80\x00\x00\x00D\x82H\x14h\x14X\xb8\xa0\x10\xc0\x00\xe0\x00\x00\x00'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=378, y=365),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=122, y=109),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
                             bytearray(b'\x85\x7f\t\xffv\xfe\x10\xfc\xf4\xfc\xeb\xff\xdf\xff\xf7{\xfc\x03x\x87p\x8e(\xc4L\x80[\x87{\x87\xb7O'),
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x80\x80\x80\x80\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x80\x80\x80\x80\x80'),
@@ -297,7 +297,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00@\x00@\x00\x80@@\x80\xc0@\x80\x80\x00\x00\x80\x00\x80\x00\x80\x00\x00\x00@\x00\x80@\x00\x80'),
                             bytearray(b'\xd6\xae\xb4\x1c<\x9c\xf8\xb0\xb0P\x800\x80\x00\x00\x00D\x82H\x14h\x14X\xb8\xa0\x10\xc0\x00\xe0\x00\x00\x00'),
                             None,
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=376, y=111),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=111),
                         Tile(mirror=False, invert=False, format=0, length=6, subtile_bytes=[
                             bytearray(b'\x85\x7f\t\xffv\xfe\x10\xfc\xf4\xfc\xeb\xff\xdf\xff\xf7{\xfc\x03x\x87p\x8e(\xc4L\x80[\x87{\x87\xb7O'),
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x80\x80\x80\x80\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x80\x80\x80\x80\x80\x80'),

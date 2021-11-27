@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(38, length=458, unknown=0x0000,
+    animation=AnimationPack(38, length=458, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -60,13 +60,13 @@ sprite = CompleteSprite(
                 ),
                 Mold(1, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=5, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=5, subtile_bytes=[
                             bytearray(b'?\x00\x1f\x00\x03\x0c\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00$$\x1e\x1e\x0f\x0f\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\xff\x00\xff\x00\xfe\x01`\x98\x00\x00\x00\x00\x00\x00\x00\x00\x02\x02\x0f\x0f\xef\xef\xf8\xf8\x00\x00\x00\x00\x00\x00\x00\x00'),
                             None,
                             None,
                         ], is_16bit=False, y_plus=0, y_minus=0, x=128, y=364),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b"\x00\x00\x00\x00\x01\x02\x07\x08\x0f\x00?\x00\x7f\x00\x7f\x00\x00\x00\x00\x00\x03\x03\x08\x08\x08\x08\x04\x04\'\'ww"),
                             bytearray(b"\x00\x00\x1e \xff\x00\xff\x00\xff\x00\xff\x00\xff\x00\xfc\x03\x00\x00>>\x86\x86\x02\x02\x00\x00cc\'\'\xff\xff"),
                             bytearray(b'\xfe\x01\xff\x00\xff\x00\xff\x00\xff\x00\x7f\x00\x7f\x00\x7f\x00\xc7\xc7\x83\x83\x8f\x8f\x97\x97\xe3\xe3FFDD@@'),
@@ -176,7 +176,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x1f\x1f\x1f\x1f\x16\x19\x0f\x00\x1f\x10\x1f\x10\x1f\x10\x07\x08\x1f \x1f \x19(\x000\x18(\x19)\x1d\r\x0f\x0f'),
                             bytearray(b'\xff\x83\xf8\xc4\xe4\xfdp\xf3\xe0c\xc0G\xc4C\xc2A\x83\x00\xc4\x07\xfd\x1b\xf3\x0fc\x1f\xc7\xbf\xc7\xbf\xc3\xbf'),
                         ], is_16bit=False, y_plus=0, y_minus=0, x=116, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x00\x01\x00\x03\x00\x1f\x00?\x00>\x00?\x00\x7f\x00\x00\x00\x01\x01\x00\x00\x06\x06\x13\x1322;;cc'),
                             bytearray(b'\x18\x00\xfe\x00\xff\x00\xff\x00\xfe\x00\xfe\x008\x00\x00\x00\x18\x18\xc4\xc4\x01\x01##\xa6\xa6\xe6\xe688\x00\x00'),
                             bytearray(b'~\x00|\x00;\x00\x0f\x00\x1f\x00\x1f\x00\x0f\x00\x03\x00ZZ\\\\::\x0e\x0e\x18\x18\x14\x14\x04\x04\x03\x03'),
@@ -256,7 +256,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x1f\x1f\x1f\x1f\x16\x19\x0f\x00\x1f\x10\x1f\x10\x1f\x10\x07\x08\x1f \x1f \x19(\x000\x18(\x19)\x1d\r\x0f\x0f'),
                             bytearray(b'\xff\x83\xf8\xc4\xe4\xfdp\xf3\xe0c\xc0G\xc4C\xc2A\x83\x00\xc4\x07\xfd\x1b\xf3\x0fc\x1f\xc7\xbf\xc7\xbf\xc3\xbf'),
                         ], is_16bit=False, y_plus=0, y_minus=0, x=116, y=108),
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x04\x00\n\x00\x1c\x00\x1f\x00\x1e\x00\x00\x00\x00\x00\x00\x00\x04\x04\n\n\x1c\x1c\x13\x13\x1a\x1a'),
                             bytearray(b'\x00\x00\x18\x00\xdc\x00~\x00\xfc\x00~\x004\x00\x00\x00\x00\x00\x18\x18\xc4\xc4""\xe4\xe4~~$$\x00\x00'),
                             bytearray(b'>\x004\x00\x1b\x00\x07\x00\x0f\x00\x03\x00\x01\x00\x00\x00**$$\x1b\x1b\x06\x06\r\r\x01\x01\x01\x01\x00\x00'),

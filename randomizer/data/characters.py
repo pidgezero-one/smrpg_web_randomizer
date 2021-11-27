@@ -154,6 +154,22 @@ class Character:
     starting_growths = ()
     starting_bonuses = ()
 
+    standard_sprite_addresses = []
+    original_weapon_sprite_ids = []
+    sprite_ids_as_main_character = []
+    sprite_addresses = [[], [], []] # not building an assembler for this in this version
+
+    battle_sprite_offset = None
+    battle_sprite_id = 0
+    menu_sprite_offset = None
+    menu_sprite_id = 0
+    abxy_coord_offset = None
+    abxy_coord = 0
+    cursor_coord_offset = None
+    cursor_coord = 0
+    portrait_sprite_offset = None
+    portrait_id = 0
+
     def __init__(self, world):
         """
 
@@ -408,6 +424,26 @@ class Mario(Character):
  a pretty good jumper for that.[await]'''), # conditional based on booster's tower flag
     ]
 
+
+    original_weapon_sprite_ids = [0, 1, 2, 3, 4, 5, 6]
+    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 6]
+    sprite_addresses = [[], [], [0x35F119, 0x35FF13, 0x35CD9F], [], [0x35eCF9, 0x35ECF0, 0x35EDC4, 0x35EDDF, 0x35EDD4, 0x35EEF9, 0x35EFAC, 0x35EFB5, 0x35F0d2, 0x358Ce7, 0x358D79, 0x358E0B, 0x35FF6D, 0x35ECF0, 0x35ECF9], [0x35ED8C, 0x35ED7D, 0x35EE58, 0x35EE49, 0x35EE99, 0x35EE8A, 0x35F032, 0x35F023, 0x35F10B], []] # not building an assembler for this in this version
+    
+    battle_sprite_offset = 0x020225
+    battle_sprite_id = 0x02
+    menu_sprite_offset = 0x0318A3
+    menu_sprite_id = 0x02
+    abxy_coord_offset = 0x023685
+    abxy_coord = 0xBF
+    cursor_coord_offset = 0x029752
+    cursor_coord = 0x13
+    portrait_sprite_offset = 0x24123
+    portrait_id = 0x28
+    item_use_offset = 0x3589A5
+    item_use_bytes = bytearray([0x03, 0x81, 0x00, 0x06, 0x00, 0x01])
+    runaway_offset = 0x350547
+    runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x00, 0x00, 0x00])
+
     def get_patch(self):
         patch = super().get_patch()
 
@@ -525,6 +561,26 @@ class Peach(Character):
  a persuasive princess for that.[await]''')
     ]
 
+    original_weapon_sprite_ids = [7, None, 8, 9, 10, 11, 12]
+    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 251]
+    sprite_addresses = [[], None, [0x35FF1A, 0x35FF9D, 0x35A9FD, 0x35CDA8], [], [0x35ED1A, 0x35ED0B, 0x35EEE5, 0x35EED6, 0x35EFDE, 0x35EFCD, 0x35F049, 0x35F058, 0x35FF74], [0x35EF1D, 0x35EF0E, 0x35F0F6, 0x35F0E7], [0x35FF43, 0x35A9A0]] # not building an assembler for this in this version
+
+    battle_sprite_offset = 0x020226
+    battle_sprite_id = 0x08
+    menu_sprite_offset = 0x0318A4
+    menu_sprite_id = 0x08
+    abxy_coord_offset = 0x023687
+    abxy_coord = 0xBE
+    cursor_coord_offset = 0x029753
+    cursor_coord = 0x13
+    portrait_sprite_offset = 0x24124
+    portrait_id = 0x29
+    item_use_offset = 0x358A3c
+    item_use_bytes = bytearray([0x03, 0x81, 0x00, 0x0C, 0x00, 0x03])
+    runaway_offset = 0x35054E
+    runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x07, 0x00, 0x00])
+
+
 class Bowser(Character):
     index = 2
     original_name = PlayableCharacters.bowser
@@ -621,6 +677,25 @@ class Bowser(Character):
  Tower very easily. You'll need
  a REALLY strong person for that.[await]''')
     ]
+
+    original_weapon_sprite_ids = [13, None, 14, 15, 16, 17, 18]
+    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 251]
+    sprite_addresses = [[], None, [0x35FF21, 0x35CDB1], [], [0x35ED2A, 0x35ED35, 0x35F074, 0x35F069, 0x35FF7B], [0x35EE2B, 0x35EE6C, 0x35EF31, 0x35EF95], []] # not building an assembler for this in this version
+
+    battle_sprite_offset = 0x020227
+    battle_sprite_id = 0x0E
+    menu_sprite_offset = 0x0318A5
+    menu_sprite_id = 0x0E
+    abxy_coord_offset = 0x023689
+    abxy_coord = 0xBA
+    cursor_coord_offset = 0x029754
+    cursor_coord = 0x24
+    portrait_sprite_offset = 0x24125
+    portrait_id = 0x2A
+    item_use_offset = 0x358B27
+    item_use_bytes = bytearray([0x03, 0x81, 0x00, 0x12, 0x00, 0x01])
+    runaway_offset = 0x350555
+    runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x0D, 0x00, 0x00])
 
 
 class Geno(Character):
@@ -721,6 +796,24 @@ class Geno(Character):
  a pretty strong gun for that.[await]''')
     ]
 
+    original_weapon_sprite_ids = [25, None, 26, 27, 28, 29, 30]
+    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 251]
+    sprite_addresses = [[], None, [0x35FF28, 0x35BC59, 0x35CDBA], [], [0x35F93C, 0x35ED4F, 0x35F976, 0x35EF58], [0x35FF82, 0x35EDF3, 0x35EEAD, 0x35EFF5, 0x35F09A, 0x35B4F5, 0x35BAAD], [0x35BC4A, 0x35911C]] # not building an assembler for this in this version
+
+    battle_sprite_offset = 0x020228
+    battle_sprite_id = 0x1A
+    menu_sprite_offset = 0x0318A6
+    menu_sprite_id = 0x1A
+    abxy_coord_offset = 0x02368B
+    abxy_coord = 0xC0
+    cursor_coord_offset = 0x029755
+    cursor_coord = 0x13
+    portrait_sprite_offset = 0x24126
+    portrait_id = 0x2C
+    item_use_offset = 0x358BBC
+    item_use_bytes = bytearray([0x03, 0x81, 0x00, 0x1E, 0x00, 0x01])
+    runaway_offset = 0x35055C
+    runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x19, 0x00, 0x00])
 
 class Mallow(Character):
     index = 4
@@ -820,6 +913,26 @@ class Mallow(Character):
  Tower very easily. You'll need
  some pretty magical fluff for that.[await]''')
     ]
+
+    original_weapon_sprite_ids = [19, None, 20, 21, 22, 23, 24]
+    sprite_ids_as_main_character = [0, 1, 2, 3, 4, 5, 6]
+    sprite_addresses = [[], None, [0x35FF2F, 0x35CDC3], [], [0x35ED66, 0x35ED5D, 0x35EEC4, 0x35EEBB, 0x35F003, 0x35F00C, 0x35FF89], [0x35EDB0, 0x35EDA1, 0x35EE17, 0x35EE08, 0x35EF7E, 0x35EF6D, 0x35F0BE, 0x35F0AF], []] # not building an assembler for this in this version
+    standard_sprite_addresses = [0x35FF2F]
+
+    battle_sprite_offset = 0x020229
+    battle_sprite_id = 0x14
+    menu_sprite_offset = 0x0318A7
+    menu_sprite_id = 0x14
+    abxy_coord_offset = 0x02368D
+    abxy_coord = 0xC4
+    cursor_coord_offset = 0x029756
+    cursor_coord = 0x12
+    portrait_sprite_offset = 0x24127
+    portrait_id = 0x2B
+    item_use_offset = 0x358C5F
+    item_use_bytes = bytearray([0x03, 0x81, 0x00, 0x18, 0x00, 0x02])
+    runaway_offset = 0x350563
+    runaway_bytes = bytearray([0x03, 0x81, 0x08, 0x13, 0x00, 0x00])
 
 
 def get_default_characters(world):

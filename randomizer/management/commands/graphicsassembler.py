@@ -5,6 +5,8 @@ from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyt
 from randomizer.data.sprites.objects.sprites import sprites as commonsprites
 from randomizer.data.sprites.insertions.geno.sprites import sprites as genosprites
 from randomizer.data.sprites.insertions.toadstool.sprites import sprites as toadstoolsprites
+from randomizer.data.sprites.insertions.mallow.sprites import sprites as mallowsprites
+from randomizer.data.sprites.insertions.bowser.sprites import sprites as bowsersprites
 
 class Command(BaseCommand):
 
@@ -36,10 +38,17 @@ class Command(BaseCommand):
         #     if gs is not None:
         #         commonsprites[gsi] = gs
 
-        for gsi, gs in enumerate(toadstoolsprites):
-            if gs is not None:
-                commonsprites[gsi] = gs
+        # for gsi, gs in enumerate(toadstoolsprites):
+        #     if gs is not None:
+        #         commonsprites[gsi] = gs
 
+        # for gsi, gs in enumerate(mallowsprites):
+        #     if gs is not None:
+        #         commonsprites[gsi] = gs
+
+        # for gsi, gs in enumerate(bowsersprites):
+        #     if gs is not None:
+        #         commonsprites[gsi] = gs
 
         sprite_data, image_data, animation_pointers, animation_data_bank_1, animation_data_bank_2, tiles = Sprites.assemble_from_tables(commonsprites, whitespace)
 

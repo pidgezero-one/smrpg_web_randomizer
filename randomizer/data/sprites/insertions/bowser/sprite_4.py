@@ -1482,28 +1482,6 @@ sprite = CompleteSprite(
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=0),
-                        AnimationSequenceFrame(duration=2, mold_id=1),
-                        AnimationSequenceFrame(duration=4, mold_id=2),
-                        AnimationSequenceFrame(duration=8, mold_id=3),
-                        AnimationSequenceFrame(duration=8, mold_id=4),
-                        AnimationSequenceFrame(duration=2, mold_id=5),
-                        AnimationSequenceFrame(duration=2, mold_id=6),
-                        AnimationSequenceFrame(duration=2, mold_id=7),
-                        AnimationSequenceFrame(duration=2, mold_id=8),
-                        AnimationSequenceFrame(duration=4, mold_id=9),
-                        AnimationSequenceFrame(duration=2, mold_id=19),
-                        AnimationSequenceFrame(duration=2, mold_id=2),
-                        AnimationSequenceFrame(duration=2, mold_id=20),
-                        AnimationSequenceFrame(duration=2, mold_id=21),
-                        AnimationSequenceFrame(duration=2, mold_id=22),
-                        AnimationSequenceFrame(duration=2, mold_id=23),
-                        AnimationSequenceFrame(duration=2, mold_id=24),
-                        AnimationSequenceFrame(duration=4, mold_id=23),
-                    ]
-                ),
-                AnimationSequence(
-                    frames=[
                         AnimationSequenceFrame(duration=2, mold_id=19),
                         AnimationSequenceFrame(duration=2, mold_id=2),
                         AnimationSequenceFrame(duration=2, mold_id=20),
@@ -1547,6 +1525,28 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=6, mold_id=18),
                         AnimationSequenceFrame(duration=6, mold_id=17),
                         AnimationSequenceFrame(duration=4, mold_id=16),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                        AnimationSequenceFrame(duration=2, mold_id=1),
+                        AnimationSequenceFrame(duration=4, mold_id=2),
+                        AnimationSequenceFrame(duration=8, mold_id=3),
+                        AnimationSequenceFrame(duration=8, mold_id=4),
+                        AnimationSequenceFrame(duration=2, mold_id=5),
+                        AnimationSequenceFrame(duration=2, mold_id=6),
+                        AnimationSequenceFrame(duration=2, mold_id=7),
+                        AnimationSequenceFrame(duration=2, mold_id=8),
+                        AnimationSequenceFrame(duration=4, mold_id=9),
+                        AnimationSequenceFrame(duration=2, mold_id=19),
+                        AnimationSequenceFrame(duration=2, mold_id=2),
+                        AnimationSequenceFrame(duration=2, mold_id=20),
+                        AnimationSequenceFrame(duration=2, mold_id=21),
+                        AnimationSequenceFrame(duration=2, mold_id=22),
+                        AnimationSequenceFrame(duration=2, mold_id=23),
+                        AnimationSequenceFrame(duration=2, mold_id=24),
+                        AnimationSequenceFrame(duration=4, mold_id=23),
                     ]
                 ),
             ]

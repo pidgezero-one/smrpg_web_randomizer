@@ -5,10 +5,10 @@
 #   y: 66
 #   z: 0
 #   direction: NORTHEAST
-# bosses:
-#   # shift: 0
-#   override:
-#     HammerBros: KingCalamariBoss
+bosses:
+  # shift: 0
+  override:
+    Valentina: CountdownBoss
 items:
   start:
     - CastleKey1
@@ -23,7 +23,7 @@ items:
     - FireBomb
     - PunchGlove
   override:
-    MushroomWay1: BanditsWayStar
+    MushroomWay1: Beetlemania
     MushroomWay2: BanditsWayStar
     MushroomWay3: BanditsWayStar
     MushroomWay4: BanditsWayStar

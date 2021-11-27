@@ -143,6 +143,15 @@ class StartingCharacter(SelectOneFlag):
     id = "start"
 
 
+
+class PlayAsStarter(BooleanFlag):
+    name = "Play as starting character everywhere"
+    description = '''If enabled, the character on your file select menu (also the character in your default 1st party position) will also be the character you play as outside of battle.
+<br>
+<br>If disabled, you will always play as Mario outside of battle, regardless of whether or not he is in your party.'''
+    
+    id = "allsprites"
+
 class ShuffleCharacters(BooleanFlag):
     name = 'Randomize the locations of recruited characters'
     description = '''If enabled, your characters will join your party in a random order.
@@ -245,6 +254,13 @@ class CharacterSpellStats(BooleanFlag):
     description = "The power and FP cost of character magic spells will be randomized."
     
     id = "spellstats"
+
+
+class CharacterSpellElements(BooleanFlag):
+    name = 'Randomize character spell elements'
+    description = "For the 9 spells which normally have an infused element, the element will be randomized."
+    
+    id = "spellelements"
 
 
 class UncapSuperJumps(BooleanFlag):
@@ -1252,6 +1268,7 @@ class CharacterRecruitmentSubcategory(FlagCategory):
         ShuffleCharacters,
         StartingCharacters,
         StartingCharacter,
+        PlayAsStarter,
         AvailableCharacters,
     ]
     size = 4
@@ -1275,6 +1292,7 @@ class CharacterStatsSpellsSubcategory(FlagCategory):
         CharacterStats,
         CharacterLearnedSpells,
         CharacterSpellStats,
+        CharacterSpellElements,
         UncapSuperJumps,
         AvailableSpells
     ]

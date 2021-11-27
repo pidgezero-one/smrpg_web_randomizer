@@ -324,9 +324,6 @@ def find_clones(tiles, molds, index=0, index2=0):
     #         print(i, x)
     return output
 
-before_expansion_targets = [0, 1]
-half_expansion_targets = [6]
-small_expansion_targets = [132]
 
 class Sprites:
     def __init__(self):
@@ -395,6 +392,12 @@ class Sprites:
 
         # collect unique subtiles and group sprites by graphic similarity
         for index, sprite in enumerate(sprites):
+
+            if index == 948:
+                for mi, mold in enumerate(sprite.animation.properties.molds):
+                    for ti, tile in enumerate(mold.tiles):
+                        sprite.animation.properties.molds[mi].tiles[ti].y = sprite.animation.properties.molds[mi].tiles[ti].y + 32
+
             wip_sprite = {
                 "sprite_data": sprite
             }
@@ -443,8 +446,8 @@ class Sprites:
                 #     print("This one may be too long")
                 variance = []
                 for t in tile_groups[k]["used_by"]:
-                    if 191 in tile_groups[k]["used_by"] or 474 in tile_groups[k]["used_by"]:
-                        print([get_comparative_similarity(t, x) for x in tile_groups[k]["used_by"]])
+                    #if 191 in tile_groups[k]["used_by"] or 474 in tile_groups[k]["used_by"]:
+                    #    print([get_comparative_similarity(t, x) for x in tile_groups[k]["used_by"]])
                     variance.append([get_comparative_similarity(t, x) for x in tile_groups[k]["used_by"]])
                 for x in range(len(variance)):
                     for y in range(x+1, len(variance)):
@@ -623,9 +626,9 @@ class Sprites:
                 )))
                 ind += 1
         output_tiles += bytearray([0] * (UNCOMPRESSED_GFX_END - UNCOMPRESSED_GFX_START - len(output_tiles)))
-        print("sprites", len(complete_sprites))
-        print("images", len(complete_images))
-        print("animations", len(complete_animations))
+        #print("sprites", len(complete_sprites))
+        #print("images", len(complete_images))
+        #print("animations", len(complete_animations))
 
         return assemble_from_tables_(complete_sprites, complete_images, complete_animations, output_tiles)
 
@@ -807,7 +810,7 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
                             else:
                                 raise Exception("no clones found for anim %i mold %i" % (anim_id, mold_index))
                         else:
-                            print(anim_id, mold_index, tile_index, tile.y, tile.x, tile.subtile_bytes)
+                            #print(anim_id, mold_index, tile_index, tile.y, tile.x, tile.subtile_bytes)
                             tile_bytes.append(tile.y ^ 0x80)
                             tile_bytes.append(tile.x ^ 0x80)
                             byte_upper_1 = 0
