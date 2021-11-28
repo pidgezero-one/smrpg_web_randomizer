@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(318, length=789, unknown=0x0002,
+    animation=AnimationPack(307, length=795, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -169,7 +169,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\x00\xc0@@\x80\x00\x80\x00\xe0\x1a\xc8\x1d\xe9\x00\x00\x80\x00@\x00\x80@\x80\x80\xec\xe0\xe4\xf0\xbe\xc4'),
                             bytearray(b'\x88w\xad\x14\xef\xd27`]s\x17\x18\x0f\x0e\x03\x00o\xff[?\x10\x0f\x88\x07B\t\x10\x06\x0e\x01\x00\x03'),
                             bytearray(b'\xce\xb1\xce9\xbcs,\xd5a\x9e\x1at\xfc\x00\xe0\x00\x06\xb7\x993\x83\x19\x0f\x83\xb7\xcfn\xfe\x1c\xfc\x10\xf0'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=383, y=345),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=127, y=89),
                         Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00r\x97i\x88\t\rbn\x9c\xec\x00\x9f\x07\x1c\x87\x0e~\xfe\xff\x0b\xf7\x0e\xf1\x00\xff\x1b\x07\xe2\x01\xe7\xf8'),
                             bytearray(b'\x00\x00\x00@\x800\xa0LHs\xc2<\xc0Op\xb3\x00\x00\xc0\xc0\xf0\xf0\xfc\xfc?\xff\x1f\xff\x87\xffQ\xef'),
@@ -1022,5 +1022,5 @@ sprite = CompleteSprite(
     ),
     palette_id=196,
     palette_offset=0,
-    unknown_num=8
+    unknown_num=0
 )

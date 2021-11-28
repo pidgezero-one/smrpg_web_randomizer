@@ -384,7 +384,8 @@ class Sprites:
             # print(len(set([t[0] for t in tile_use])))
             return {
                 "used_by": group["used_by"],
-                "tiles": [t[0] for t in tile_use]
+                "tiles": [t[0] for t in tile_use],
+                "extra": group["extra"]
             }
 
         
@@ -416,13 +417,14 @@ class Sprites:
                 tile_id = random_tile_id()
                 while tile_id in tile_groups:
                     tile_id = random_tile_id()
-                tile_groups[tile_id] = {"used_by": [index], "tiles": set(unique_subtiles)}
+                tile_groups[tile_id] = {"used_by": [index], "tiles": set(unique_subtiles), "extra": []}
                 key = tile_id
             else:
                 tile_groups[key]["used_by"].append(index)
                 tile_groups[key]["tiles"] = set(list(tile_groups[key]["tiles"]) + unique_subtiles)
             wip_sprite["tiles"] = unique_subtiles
             wip_sprite["tile_group"] = key
+            wip_sprite["relative_offset"] = 0
             # print(index, len(wip_sprite["tiles"]))
             wip_sprites.append(wip_sprite)
             #if index == 0:
@@ -479,36 +481,86 @@ class Sprites:
         complete_animations = []
 
         # print(len(wip_sprites))
-        
+
+        # find sprites which are going to cause problems because os ubtile deltas > 512
+        # and duplicate tiles where necessary
+        for sprite_index, sprite in enumerate(wip_sprites):
+            tile_key = sprite["tile_group"]
+            available_tiles = tile_groups[tile_key]["tiles"]
+            if len(sprite["tiles"]) == 0:
+                lowest_subtile_index = 0
+            else:
+                lowest_subtile_index = len(available_tiles)
+                highest_subtile_index = 0
+                all_indexes_for_this_tile = []
+                for t in sprite["tiles"]:
+                    tilegroup_index_of_this_tile = available_tiles.index(t)
+                    if tilegroup_index_of_this_tile not in all_indexes_for_this_tile:
+                        all_indexes_for_this_tile.append(tilegroup_index_of_this_tile)
+                    if tilegroup_index_of_this_tile < lowest_subtile_index:
+                        lowest_subtile_index = tilegroup_index_of_this_tile
+                    if tilegroup_index_of_this_tile > highest_subtile_index:
+                        highest_subtile_index = tilegroup_index_of_this_tile
+                all_indexes_for_this_tile.sort()
+
+                
+                # try copying some tiles if range is too big
+                if highest_subtile_index - lowest_subtile_index > 510:
+                    extra_tiles = []
+                    smallest_range = highest_subtile_index - lowest_subtile_index
+                    cutoff_index = lowest_subtile_index
+                    for tg_index, st_index in enumerate(all_indexes_for_this_tile):
+                        next_tg_index = tg_index + 1
+                        next_st_index = st_index+ 1
+                        if next_tg_index >= len(all_indexes_for_this_tile):
+                            continue
+
+                        tiles_needing_shift = all_indexes_for_this_tile[0:next_tg_index]
+                        tentative_clones = [t for t in tiles_needing_shift if available_tiles[t] not in tile_groups[tile_key]["extra"]]
+
+                        remanining_buffer = available_tiles[next_st_index:]
+
+                        this_range = len(remanining_buffer) + len(tile_groups[tile_key]["extra"]) + len(tentative_clones)
+
+                        this_delta = all_indexes_for_this_tile[tg_index+1] - st_index
+                        if this_range < smallest_range:
+                            smallest_range = this_range
+                            cutoff_index = next_st_index
+                    if sprite_index <= 6:
+                        print(smallest_range)
+                    lowest_subtile_index = cutoff_index
+                    # add too-low sprite IDs to be duped at the end
+                    new_tile_pool = tile_groups[tile_key]["tiles"][cutoff_index:] + tile_groups[tile_key]["extra"]
+                    for t_index in all_indexes_for_this_tile:
+                        this_tile = available_tiles[t_index]
+                        if this_tile not in extra_tiles and this_tile not in new_tile_pool:
+                            extra_tiles.append(this_tile)
+                    tile_groups[tile_key]["extra"].extend(extra_tiles)
+            
+            wip_sprites[sprite_index]["relative_offset"] = lowest_subtile_index
+
 
         # start building stuff
         for sprite_index, sprite in enumerate(wip_sprites):
             tile_key = sprite["tile_group"]
-            available_tiles = tile_groups[tile_key]["tiles"]
-            # print(sprite_index, tile_key)
-            # for a in available_tiles:
-            #     print(a)
-            # print(wip_sprite["tiles"])
-            # print(sprite_index, len(wip_sprite["tiles"]))
-            # if sprite_index == 0:
-            #     print(sprite)
-            #     print(available_tiles)
-            #if tile_key == id_to_check:
-                #print(wip_sprite)
-                #print(sprite_index)
-                #print("tiles in sprite %i: " % sprite_index, len(sprite["tiles"]))
-                #print("all tiles in %s: " % tile_key, len(tile_groups[id_to_check]["tiles"]))
-                #print("")
-                #print("")
+            available_tiles = tile_groups[tile_key]["tiles"][sprite["relative_offset"]:] + tile_groups[tile_key]["extra"]
 
             lowest_subtile_index = len(available_tiles)
             highest_subtile_index = 0
+            all_indexes_for_this_tile = []
             for t in sprite["tiles"]:
                 tilegroup_index_of_this_tile = available_tiles.index(t)
                 if tilegroup_index_of_this_tile < lowest_subtile_index:
                     lowest_subtile_index = tilegroup_index_of_this_tile
                 if tilegroup_index_of_this_tile > highest_subtile_index:
                     highest_subtile_index = tilegroup_index_of_this_tile
+            if sprite_index <= 6:
+                print(sprite_index)
+                print("tile group: ", len(tile_groups[tile_key]["tiles"]), "default,", len(tile_groups[tile_key]["extra"]), "extra,", len(available_tiles), "in use")
+                print("available: ", len(available_tiles))
+                print("relative offset: ", sprite["relative_offset"])
+                print("lowest:", lowest_subtile_index, "highest:", highest_subtile_index)
+            
 
             inserting_whitespace_before = False
             whitespace_amount = 0
@@ -524,11 +576,12 @@ class Sprites:
                     free_tiles -= whitespace_amount
                 else:
                     tile_groups[tile_key]["offset"] = offset
+                offset = tile_groups[tile_key]["offset"] + sprite["relative_offset"] * 0x20
                 placed_tile_keys.append(tile_key)
-                for t in available_tiles:
+                for t in tile_groups[tile_key]["tiles"] + tile_groups[tile_key]["extra"]:
                     output_tiles += bytearray(t)
             else:
-                offset = tile_groups[tile_key]["offset"]
+                offset = tile_groups[tile_key]["offset"] + sprite["relative_offset"] * 0x20
                 if insert_whitespace and sprite_index == 1:
                     #print(hex(tile_groups[tile_key]["offset"]))
                     offset += ((lowest_subtile_index) * 0x20)
@@ -540,20 +593,28 @@ class Sprites:
                     inserting_whitespace_before = True
                     offset -= (whitespace_amount * 0x20)
             # print(sprite_index, hex(offset))
-            if sprite_index == 6 or sprite_index == 3:
-                whitespace_amount = min(free_tiles, 510 - (highest_subtile_index - lowest_subtile_index))
-                #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
-                free_tiles -= whitespace_amount
-                output_tiles += bytearray([0] * (0x20 * whitespace_amount))
-            elif sprite_index == 132 or sprite_index == 234:
-                whitespace_amount = 32
-                #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
-                free_tiles -= whitespace_amount
-                output_tiles += bytearray([0] * (0x20 * whitespace_amount))
+            if insert_whitespace:
+                if sprite_index == 6 or sprite_index == 3:
+                    whitespace_amount = min(free_tiles, 510 - (highest_subtile_index - lowest_subtile_index))
+                    #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
+                    free_tiles -= whitespace_amount
+                    output_tiles += bytearray([0] * (0x20 * whitespace_amount))
+                elif sprite_index == 132 or sprite_index == 234:
+                    whitespace_amount = 32
+                    #print(sprite_index, highest_subtile_index, lowest_subtile_index, whitespace_amount, len([0]* (0x20 * whitespace_amount)))
+                    free_tiles -= whitespace_amount
+                    output_tiles += bytearray([0] * (0x20 * whitespace_amount))
 
+
+            if len(available_tiles) > 510:
+                subtile_subtract = lowest_subtile_index
+            else:
+                subtile_subtract = 0
             # get image pack #, or create new
             if not inserting_whitespace_before:
-                offset += ((lowest_subtile_index) * 0x20)
+                offset += ((subtile_subtract) * 0x20)
+            if sprite_index <= 6:
+                print(hex(offset))
             # need to change this to accommodate diff offsets in same tile group
             palette_ptr = PALETTE_OFFSET + sprite["sprite_data"].palette_id * 30
             image_index_to_use = len(complete_images)
@@ -583,7 +644,7 @@ class Sprites:
                             if subtile is None:
                                 subtile_index = 0
                             else:
-                                subtile_index = available_tiles.index(tuple(subtile)) + 1 - lowest_subtile_index
+                                subtile_index = available_tiles.index(tuple(subtile)) + 1 - subtile_subtract
                                 if inserting_whitespace_before:
                                     subtile_index += whitespace_amount
                             subtile_bytes.append(subtile_index)
@@ -610,6 +671,8 @@ class Sprites:
             # create sprite pack
             complete_sprites.append(Sprite(len(complete_sprites), image_index_to_use, animation_num_to_use, sprite["sprite_data"].palette_offset, sprite["sprite_data"].unknown_num))
         
+            if sprite_index <= 6:
+                print("")
         
         if len(complete_images) < 512:
             ind = len(complete_images)
@@ -675,8 +738,6 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
         image_data.append(palette_ptr & 0xFF)
         image_data.append(palette_ptr >> 8)
 
-    anim_bank = ANIMATION_DATA_BANK_1_START
-
     for anim_id, animation in enumerate(animations):
 
         if anim_id not in used_animations:
@@ -725,6 +786,7 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
         mold_offset_short = 0x0C + len(sequence_ptrs) + len(sequence_bytes)
         mold_offset.append(mold_offset_short & 0xFF)
         mold_offset.append((mold_offset_short >> 8) & 0xFF)
+        subtile_indexes = []
         for mold_index, mold in enumerate(animation.properties.molds):
             this_mold_offset = 0x0C + len(sequence_ptrs) + len(sequence_bytes) + (len(animation.properties.molds) + 1) * 2 + len(mold_bytes)
             assert this_mold_offset <= 0x7FFF
@@ -810,7 +872,10 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
                             else:
                                 raise Exception("no clones found for anim %i mold %i" % (anim_id, mold_index))
                         else:
-                            #print(anim_id, mold_index, tile_index, tile.y, tile.x, tile.subtile_bytes)
+                            if anim_id <= 6:
+                                for st in tile.subtile_bytes:
+                                    if st not in subtile_indexes:
+                                        subtile_indexes.append(st)
                             tile_bytes.append(tile.y ^ 0x80)
                             tile_bytes.append(tile.x ^ 0x80)
                             byte_upper_1 = 0
@@ -836,6 +901,12 @@ def assemble_from_tables_(sprites, images, animations, output_tiles=[]):
                 mold_ptrs.extend([0xFF, 0xFF])
                 # this_mold_bytes = bytearray([0x00])
                 # mold_bytes += this_mold_bytes
+        if anim_id <= 6:
+            subtile_indexes.sort()
+            #print(anim_id, subtile_indexes)
+            #print(len(subtile_indexes))
+            #print("")
+
         mold_ptrs.extend([0, 0])
 
         length_bytes_short = 2 + len(sequence_offset) + len(mold_offset) + len(count_bytes) + len(misc_bytes) + len(sequence_ptrs) + len(sequence_bytes) + len(mold_ptrs) + len(mold_bytes)

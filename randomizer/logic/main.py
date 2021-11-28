@@ -632,33 +632,33 @@ class GameWorld:
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mario):
             self.prepend_bits(187, [[0x7053, 7]])
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 0:
-                self.eventscripts[1331] = tower_mario_self
+                self.eventscripts[1331] = copy.deepcopy(tower_mario_self)
             else:
-                self.eventscripts[1331] = tower_mario
+                self.eventscripts[1331] = copy.deepcopy(tower_mario)
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.mallow):
             self.prepend_bits(198, [[0x7053, 7]])
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 4:
-                self.eventscripts[1331] = tower_mallow_self
+                self.eventscripts[1331] = copy.deepcopy(tower_mallow_self)
             else:
-                self.eventscripts[1331] = tower_mallow
+                self.eventscripts[1331] = copy.deepcopy(tower_mallow)
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.geno):
             self.prepend_bits(189, [[0x7053, 7]])
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 3:
-                self.eventscripts[1331] = tower_geno_self
+                self.eventscripts[1331] = copy.deepcopy(tower_geno_self)
             else:
-                self.eventscripts[1331] = tower_geno
+                self.eventscripts[1331] = copy.deepcopy(tower_geno)
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.bowser):
             self.prepend_bits(190, [[0x7053, 7]])
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 2:
-                self.eventscripts[1331] = tower_bowser_self
+                self.eventscripts[1331] = copy.deepcopy(tower_bowser_self)
             else:
-                self.eventscripts[1331] = tower_bowser
+                self.eventscripts[1331] = copy.deepcopy(tower_bowser)
         elif self.settings.is_flag_value(flags.BoosterTowerGate, BoosterTowerGating.toadstool):
             self.prepend_bits(191, [[0x7053, 7]])
             if self.settings.is_flag_enabled(flags.PlayAsStarter) and cursor_id == 1:
-                self.eventscripts[1331] = tower_toadstool_self
+                self.eventscripts[1331] = copy.deepcopy(tower_toadstool_self)
             else:
-                self.eventscripts[1331] = tower_toadstool
+                self.eventscripts[1331] = copy.deepcopy(tower_toadstool)
 
         # Marrymore gating
         if self.settings.is_flag_value(flags.MarrymoreGate, MarrymoreGating.open):
@@ -1141,8 +1141,9 @@ class GameWorld:
         # If playing as Bowser, partitions need adjustment.
         if cursor_id == 2 and self.settings.is_flag_enabled(flags.PlayAsStarter):
             for room_index, room in enumerate(self.rooms):
-                room["partition"]["ally_sprite_buffer_size"] += 1
-                self.rooms[room_index] = room
+                if room is not None and room["partition"] is not None:
+                    room["partition"]["ally_sprite_buffer_size"] += 1
+                    self.rooms[room_index] = room
 
         # Open mode specific data.
         if self.open_mode:

@@ -201,7 +201,7 @@ script = [
         "args": [AreaObjects.NPC_2, Rooms._202_BOOSTER_TOWER_ENTRANCE]
     },
     {
-        "identifier": 'EVENT_1331_pause_19',
+        "identifier": 'EVENT_1331_pause_something',
         "command": 'pause',
         "args": [60]
     },

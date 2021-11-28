@@ -46,9 +46,9 @@ class Command(BaseCommand):
         #     if gs is not None:
         #         commonsprites[gsi] = gs
 
-        # for gsi, gs in enumerate(bowsersprites):
-        #     if gs is not None:
-        #         commonsprites[gsi] = gs
+        for gsi, gs in enumerate(bowsersprites):
+            if gs is not None:
+                commonsprites[gsi] = gs
 
         sprite_data, image_data, animation_pointers, animation_data_bank_1, animation_data_bank_2, tiles = Sprites.assemble_from_tables(commonsprites, whitespace)
 

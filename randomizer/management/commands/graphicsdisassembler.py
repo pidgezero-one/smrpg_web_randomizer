@@ -75,7 +75,8 @@ class Command(BaseCommand):
 
 
         for index, property_offset_ptr_offset in enumerate(range(ANIMATION_PACK_POINTERS_OFFSET, ANIMATION_PACK_POINTERS_OFFSET + ANIMATION_PACK_POINTERS_LENGTH, 3)):
-            if index > 443:
+            if index > 316:
+            #if index > 443:
                 break
             property_offset_ptr_offset = ANIMATION_PACK_POINTERS_OFFSET + (index * 3)
             property_offset = get_animation_pack_data_offset_from_third_byte(shortify(rom, property_offset_ptr_offset), rom[property_offset_ptr_offset + 2])
@@ -320,6 +321,8 @@ class Command(BaseCommand):
             palette_offset = s.palette_offset
             unknown = s.unknown
             i = images[s.image_num]
+            if s.animation_num >= len(packs):
+                break
             p = packs[s.animation_num]
 
             palette_id_original = ((i.palette_pointer - 0x253000) // 30)

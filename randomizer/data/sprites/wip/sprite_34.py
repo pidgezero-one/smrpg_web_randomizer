@@ -3,7 +3,7 @@
 # python manage.py graphicsdisassembler --rom ROM
 from randomizer.data.palettes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
 sprite = CompleteSprite(
-    animation=AnimationPack(34, length=687, unknown=0x0002,
+    animation=AnimationPack(34, length=697, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
                 Mold(0, gridplane=False,
@@ -138,7 +138,7 @@ sprite = CompleteSprite(
                 ),
                 Mold(7, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x07\x07\x1b\x1c)?s@>\x1e\x81\xff\xe5\xba\xd7\xa8\x07\x07\x18\x1f/0_`!@\x80\x80Y\x98\x88\x08'),
                             bytearray(b'\xe0\xe0\xb8\x18T,>\xa2\xd6z\x1dMu\xc5\t\xe9\xe0\xe0\x18\xf84\xcc\xa2F\xe4\x02\xfd\x03\xfc\x03\xd0\x07'),
                             bytearray(b'=\xf2qL\xbe\xc9\x96\xa1T_! \x11\x1f\x07\x07\xc0@\x0b\x88\xc0\x80\xb8\xc0\x1f`\x00?\x10\x1f\x07\x07'),
@@ -160,12 +160,12 @@ sprite = CompleteSprite(
                 ),
                 Mold(8, gridplane=False,
                     tiles=[
-                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x07\x07\x1b\x1c)?s@>\x1e\x81\xff\xe5\xba\xd7\xa8\x07\x07\x18\x1f/0_`!@\x80\x80Y\x98\x88\x08'),
                             bytearray(b'\xe0\xe0\xb8\x18T,>\xa2\xd6z\x1dMu\xc5\t\xe9\xe0\xe0\x18\xf84\xcc\xa2F\xe4\x02\xfd\x03\xfc\x03\xd0\x07'),
                             bytearray(b'=\xf2qL\xbe\xc9\x96\xa1T_! \x11\x1f\x07\x07\xc0@\x0b\x88\xc0\x80\xb8\xc0\x1f`\x00?\x10\x1f\x07\x07'),
                             bytearray(b'\x07\xe9M_\x9f?\x0e\x9e\xde\x1e|\xfc\xf8\xf8\xe0\xe0\xd8\xc7\xb1\x0f\x85\x7fN>\xfc\x0e|\xfc\xf8\xf8\xe0\xe0'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=168, y=88),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=168, y=344),
                         Tile(mirror=False, invert=False, format=0, length=4, subtile_bytes=[
                             bytearray(b'\x00\x00,.\x0b0\x01"\xcf\x0e3?\x1c\x1c\x00\x00\x00\x00,22\r\xc1\x12\x0c\xff>!\x1c\x1c\x00\x00'),
                             None,
@@ -340,7 +340,7 @@ sprite = CompleteSprite(
                 ),
                 Mold(14, gridplane=False,
                     tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x03\x04\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x03\x00\x06\x00'),
                             bytearray(b'\x0e\x0c\x05\x1e!2$!&\x16\xc0\x8a\x80\xc0 @\x0c\x02\x19\x061\x02 7\x06(\xb8F \xc0 @'),
                             bytearray(b'\x04\x04\x04\x0281\x10x\x84\xc8\x90\x84\x98X\x00(\x04\x06\x00\x057\x08d\x18\xc4\x08\x80\xdc\x18\xa0\xe0\x18'),
@@ -368,7 +368,7 @@ sprite = CompleteSprite(
                 ),
                 Mold(15, gridplane=False,
                     tiles=[
-                        Tile(mirror=True, invert=False, format=0, length=7, subtile_bytes=[
+                        Tile(mirror=False, invert=False, format=0, length=7, subtile_bytes=[
                             bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x01\x00\x03\x04\x06\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x03\x00\x06\x00'),
                             bytearray(b'\x0e\x0c\x05\x1e!2$!&\x16\xc0\x8a\x80\xc0 @\x0c\x02\x19\x061\x02 7\x06(\xb8F \xc0 @'),
                             bytearray(b'\x04\x04\x04\x0281\x10x\x84\xc8\x90\x84\x98X\x00(\x04\x06\x00\x057\x08d\x18\xc4\x08\x80\xdc\x18\xa0\xe0\x18'),

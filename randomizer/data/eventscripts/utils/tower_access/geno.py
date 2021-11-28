@@ -256,7 +256,7 @@ script = [
     },
     
     {
-        "identifier": 'EVENT_1331_pause_19',
+        "identifier": 'EVENT_1331_pause_19__________________',
         "command": 'pause',
         "args": [10]
     },
